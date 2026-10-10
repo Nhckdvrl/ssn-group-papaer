@@ -294,3 +294,12 @@ corpus broad nearest“source-conditioned … evidence selection”主要命中R
 这轮阅读不从“哪个新名词与C20相似”出发，先核对论文怎样让重要解释给出有分辨力的预测。补充卡：[Cho信息移除camera-ready v4](cho2026-information-removal.md)、[TR/TL全文](yang2026-task-recognition-learning.md)、[Cho contextualization主文](cho2026-contextualization-channels.md)、[Beyond Owls主文](beyond-owls-capabilities-backdoors.md)；[CoSToM](li2026-costom.md)重读主文用途。阅读范围和DOCUMENTED/RECONSTRUCTED分开记录。
 
 [Xiong正式记录](https://proceedings.mlr.press/v267/xiong25a.html)是ICML2025，已修正上方与工作台README旧记为ICLR的两条；本次读取正式PDF §3/7–8与附录D（原v1章号不同）。混合task vectors只部分复现native任务混合分布，作者明确保留失配；不据此覆盖或否定共享标签下的Source条件化。Cho答辩记录的删减技术展示是slides修改，不是删除论文实验。
+
+### 最新人审计后的设计学习：改变可辨别变量（没有新GPU实验）
+
+- 复读CTA §3.2–3.3：识别position graph之后，另用token身份、功能关系和输入/输出类型的donor区分信息含义。歧义例子不是仅靠“被其它例子修好”解释，明确例子的上下文化有作用。细节服务于不同功能解释。
+- 复读Few-Shot Examples Add Up §5–6：FV质量的QK/V分解后再追examples/query信号来源，capitalization保留相反角色；不假设全部任务共享一种权重来源。
+- 复读[Mixing Mechanisms §3.2–4](https://arxiv.org/html/2510.06182v2)：三种index让输出预测分开；donor答案不在recipient中、下一层再patch，用于分开指针与答案。§4的模型目标是按index条件汇总的平均分布，不要求逐原始样例完整逆向；E85的均值目标不因“平均”自动浅，但解释空间远较有限。
+- [JIT主文卡](li2025-just-in-time-task-representations.md)、[Lepori主文卡](lepori2026-representation-deployment.md)补实际阅读全文范围；以可迁移状态、任务范围和后续计算作对象。旧Lepori摘要条保留为历史，不再把其所有具体机制都标未核对。
+- CAT正式PDF主文§1–3与FaiMA主文§1–3.1也检查过：前者已有counterfactual输入使用测量，后者是显式方面任务与外部例子检索。本文不以一般方面敏感性或ABSA为novelty，不声称已核对两篇全部实验/代码。corpus nearest E87自然Source条件问题命中较散，不能当空白证据。
+- 此次静态检索反例与下一候选的功能预测见ICES综合§14，不把新论文变成追加技术清单，不由近邻自动关线。
