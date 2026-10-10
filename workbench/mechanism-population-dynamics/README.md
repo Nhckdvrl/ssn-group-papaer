@@ -10,6 +10,9 @@
 
 > **Across independently trained model instances, at what abstraction level is a mechanistic claim reproducible: exact component, causal role, algorithm/function, developmental ordering, or only behavior?**
 
+### 2026-10-10 转向判断（待人决定）
+复核 GPT 审计：方向 A（机制知识跨 run 复用）被 E75 现有数据否定（映射头 2/3 即目标自身 top-3）；方向 B 的起点 E24 是语料家族效应（家族内 ρ −0.18）。建议把中心换成“同一份指令数据何时教模型相信上下文、何时教它相信记忆”（从头训练↑ / 中期训练先升后降 / 继续预训练↓ 三处矛盾），见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。
+
 ### 2026-10-08 判别实验（人审 v2 之后）
 **E75：** 按头编号，IOI circuit 在 410M 兄弟模型间几乎不迁移（0.06）；按功能与因果映射后，同初始化 0.85、异初始化 0.94 → 计算相同，只是换了承担的头，“circuit 只部分对应”降级。**E76：** 代表性 Flan 也没有在继续预训练中装入问答开关（+0.15 ± 0.24），该 Flan 具体子线未得到支持，停止作为当前证据；这**不代表整个工作台停止**。2026-10-08 曾建议停止本题，但已被 2026-10-09 用户最新决定明确否决（`logs/2026-10-08.md`）。
 
