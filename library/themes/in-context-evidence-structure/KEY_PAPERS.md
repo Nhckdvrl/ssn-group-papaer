@@ -266,3 +266,10 @@ ICES E69指定prefix K全label列禁读、E70的common key translation仅改变f
 **Ortu et al., Competition of Mechanisms（ACL2024；2402.11655v2，正文§3–6；另TMLR条目同题命中但受访问验证、未全文核对）。** [原文](https://arxiv.org/html/2402.11655v2)。形态：熟知的事实召回与context-copy的竞争，idea来源RECONSTRUCTED于正文；并非完整发现日志。它已发现支持事实的头也读counterfactual word，但主要压低该词；因此“读某token≠采用该token的事实”早有强机制参照。post-softmax缩放两/三条attention边提高原事实响应，含GPT2/Pythia；10K实例按原事实正确、单token属性筛选，alpha网格选最优，logit lens尤其早层不保证重要性，正文主动保留简单模板/模型限制。E74若未来成功仍只是source-scoped证据的候选，必须在新映射、owner/foreign分解与可预测条件上超过该文，不能将泛用的读取/采用区别当首次贡献。
 
 **Khandelwal / Pavlick, How Do Language Models Compose Functions?（2510.01685v2）。** 阅读范围与ICES距离见[论文卡](khandelwal2026-function-composition.md)；本次整理保留一般组合gap与处理机制选择的已有所有权，不继续把函数任务有效性当ICES主线门槛。
+
+### 本次人审计后的核对（2026-10-10）
+- [CoSToM论文卡](li2026-costom.md)：自然心理状态→行为问题，有监督构造与下游验证；不把它说成原生电路完整逆向，也不将涨分方法作为ICES的要求。
+- How Few-Shot Examples Add Up已核对[ICML2026官方记录](https://proceedings.mlr.press/v306/wang26hp.html)，重读§2.3/§4–6及QKV操作定义：干预的Q/K/V主要供最后token的FV，区别于ICES整个query上的实际source-code载体。一般上下文化/QK−V分离已有所有权；这不是完整算法的自动覆盖证明。
+- [Selection–Realization论文卡](li2026-selection-realization.md)：新搜到并读§2–5，已有共存规则的query条件选择与表示恢复/行为恢复区分。不能将自然问题当空白；具体原生载体的反事实分解仍需实测。
+- Test, then Route重读§3–4.2：四donor把predicate与答案身份解耦，筛四donor都正确的范围明确；token-bound路由的结论限指定patch/学习子空间，不是所有路由不可能抽象。
+- corpus nearest本次命中ICR及多个广义routing工作，不能当无近邻证据。以上只输出定位与compression risk，不自动关线；E81只检验source-conditioned分类的具体因果解释。

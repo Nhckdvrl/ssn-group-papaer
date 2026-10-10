@@ -1,6 +1,6 @@
 # E81：保持读取总量时，来源码内部的分配能否改变规则选择？（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING（32-context pilot完成，独立确认待终点）
 - **类型：** PILOT；本次只做一个机制问题，不追加函数/词典能力关卡。
 - **对应：** I04/C16/C17/C19/P12/P13。研究对象是多规则ICL的证据选择；Tag/prefix只是区分解释的操作变量。
 - **为什么现在：** 人审计要求正面对齐Cho、CoSToM、contextualize/aggregate及QK/V近邻。E59–E71已有实质证据，但不能将output source-ranking等同于内部选择。旧E71只存固定prefix位置（D0为Mark，不是Tag来源码）；POST-HOC初读显示公共偏移可能减少而非增加载体mass。要分开权重总量、组内分配与完整结果，不能再追52.7%涨到80%。
@@ -29,4 +29,14 @@
 - **定位：** Cho shortcut/forerunner已解释提前计算，Bakalova与Wang2026已有上下文化/QK−V区分；单softmax的m/pi数学不新。潜在增量是自然的多规则Source条件下，具体读数与反事实可否支持可预测的证据选择解释。CoSToM是读出→有监督构造→对话验证，非原生电路完整逆向；不硬仿训练涨分。
 
 ## 结果（跑完后填写；不改上方读数）
-待运行。E80没有科学运行；自动编号工具因历史文字中出现E80而分配E81，不将编号跳跃计成实验进展。
+E80没有科学运行；自动编号工具因历史文字中出现E80而分配E81，不将编号跳跃计成实验进展。
+
+### 32-context pilot与确认前预测（2026-10-10）
+新seed81001全部32contexts/16条件/4query完成，75.960s=.0211GPU·时。self max2.10e−5、整段/cache max1.66e−4nats，m误差3.58e−7、kind边缘2.38e−7、forbidden mass0。
+Tag/prefix native accuracy .5234/.6250，差+.1016[.0469,.1563]；output source ranking .9688/.9531，绝非accuracy与选择同一指标。
+
+- Tag接收prefix carrier的m/pi：both−native margin−.2177[−.3429,−.0917]，accuracy−1.6点CI跨0；mass-only亦损害margin。prefix接收Tag的m/pi更差，both margin−1.1073[−1.2941,−.9298]，accuracy−11.7[−17.2,−6.3]点。不能把码载体的两种概率统计当成可直接互换的完整程序。
+- 角色对齐的whole-query full-attention donor到Tag：margin+.8618[.6820,1.0681]、accuracy+13.3[7.0,19.5]点；到prefix方向margin−.3001[−.4506,−.1566]、accuracy−6.3[−10.9,−1.6]点。V/cache/输入未换，支持更广的读取分布参与位置收益，但attention donor可能已经含答案相关选择，**不证明抽象来源算法已移植**。
+- 在固定码carrier m与kind边缘下flip source pi：Tag margin−.3178[−.3996,−.2401]；prefix−.8961[−1.0863,−.7140]、accuracy−7.8[−14.1,−2.3]点。来源分配有指定接口的独立因果作用，不是从output排序间接推出来。
+
+**下一次运行预定：** 同源码、同条件/词库/名字/标签，64新context seed181001，不重调偏移、不改层/指标。确认预测为：native prefix收益为正；码carrier both不能把收益转给Tag（margin方向不正）；whole-query角色对齐attention到Tag有正margin/accuracy效应；固定m/kind的Source flip在两布局有负margin，prefix准确率亦下降。全部context/error donor保留。确认只是新context级别复现，不声称新模型/新词表泛化。若未成立按事实收窄，不增加配置追同故事。

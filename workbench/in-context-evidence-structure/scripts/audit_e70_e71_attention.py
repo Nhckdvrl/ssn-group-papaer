@@ -31,9 +31,12 @@ def main():
             data['conditions'][key], raw[key] = {}, {}
             for site in ['prefix', 'label']:
                 for stat in ['mass', 'within_source']:
-                    if site not in first[key]['0']:
+                    flat_prefix = sub.startswith('e70') and site == 'prefix'
+                    if not flat_prefix and site not in first[key]['0']:
                         continue
-                    values = [statistics.mean(v for l in range(nl) for v in r['attention'][key][str(l)][site][stat][:4])
+                    values = [statistics.mean(v for l in range(nl) for v in
+                                              (r['attention'][key][str(l)] if flat_prefix else
+                                               r['attention'][key][str(l)][site])[stat][:4])
                               for r in rows]
                     raw[key][site+'.'+stat] = values
                     data['conditions'][key][site+'.'+stat] = ci(values)
@@ -44,6 +47,7 @@ def main():
             data['contrasts'][key+'.minus_isolated'] = {stat: ci([x-y for x,y in zip(values,raw[iso][stat])])
                                                        for stat,values in raw[key].items()}
         out['datasets'][sub] = data
+    assert all(c for d in out['datasets'].values() for c in d['conditions'].values())
     dest = Path('results/e70_e71_attention_audit_posthoc.json')
     dest.write_text(json.dumps(out, indent=2))
     print(json.dumps({k: d['conditions'] for k,d in out['datasets'].items()}, ensure_ascii=False))
