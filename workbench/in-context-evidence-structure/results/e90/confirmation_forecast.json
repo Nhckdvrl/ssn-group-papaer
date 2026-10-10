@@ -1,0 +1,42 @@
+{
+  "status": "frozen after 24-context discovery, before 48-context confirmation",
+  "discovery_seed": 90001,
+  "confirmation_seed": 190001,
+  "confirmation_n": 48,
+  "engine_sha256": "748c497fbd25257054fb3b0ee6861f39035e9f6ca15f87dce557155a7fbf44a3",
+  "predictions": {
+    "foreign_mapping_effect_native": {
+      "mean": 0.9518085718154907,
+      "ci95": [
+        0.6494765361150105,
+        1.2284262984991072
+      ],
+      "n_contexts": 24
+    },
+    "foreign_mapping_effect_late": {
+      "mean": 0.43632890780766803,
+      "ci95": [
+        0.0458099032441775,
+        0.879767219722271
+      ],
+      "n_contexts": 24
+    },
+    "accuracy_adapter_minus_both": {
+      "mean": 0.34375,
+      "ci95": [
+        0.25,
+        0.4375
+      ],
+      "n_contexts": 24
+    },
+    "accuracy_adapter_late_minus_late": {
+      "mean": 0.296875,
+      "ci95": [
+        0.234375,
+        0.359375
+      ],
+      "n_contexts": 24
+    }
+  },
+  "decision": "Test positive residual foreign-rule effect after all-query oracle selection; preserve adapter-vs-source-exclusion gap. No claim that early isolation improves accuracy unless paired data support it."
+}

@@ -1,6 +1,6 @@
 # E90：只读正确来源是否足以使用正确规则？形成阶段与读取阶段的来源隔离（2026-10-10）
 
-- **状态：** PLANNED
+- **状态：** RUNNING（24-context pilot完成，48-context确认准备）
 - **类型：** PILOT；不新增idea，不做层/头搜索
 - **对应：** I04 / C16 / C20 / P13 / P20；保留E48、E56、E85，不以新任务诊断替代它们
 - **问题（一句话）：** 多来源ICL的规则干扰主要发生在示例表示形成时，还是query读取时；把后者做到oracle级来源选择，是否已足以解释E56的训练收益？
@@ -48,3 +48,15 @@ E48换标签后另一人的答案方向贡献下降，但其位置仍被读取�
 ## 结果（运行后追加）
 
 尚未运行；不能把候选解释写成结果。原始contexts/behavior JSONL保留本地，小preflight/run/analysis入git。
+
+## Pilot结果与确认前更新（原设计不改）
+
+24新contexts全部保留，脚本hash748c497f…，数值最大差5.72e−6nats，144.17秒。native准确率52.60%[44.27,60.42]；late61.46%[55.73,67.19]；both57.81%[49.48,65.62]；adapter92.19%[86.46,96.88]，adapter＋late91.15%[86.46,95.31]。
+
+B规则效应native+.95181[.64948,1.22843]，late仍+.43633[.04581,.87977]nats；both为数学预期的0，不能把这个0当发现。early没有稳定准确率收益，both−late=−3.65[−11.98,+4.17]百分点；**不支持把early isolation叫作修复**。late存在间接B影响与adapter−both=+34.38[25.0,43.75]点值得在48新contexts确认。冻结预测见`results/e90/confirmation_forecast.json`，继续原脚本/原15条件，不选层、任务或样本。
+
+### Pilot后提出、追加运行前冻结：单来源上的同一query模块
+
+adapter比both高不单独说明它在完全无B信息时也有效，因为两个条件的cache不同。为检验“模块是否仅通过避免B干扰而成功”这个具体桥梁，追加最小的native/adapter paired single-source测试：相同24 pilot contexts的A，**prompt根本没有B**；不新训练，不改评论/标签/姓名/顺序。两候选准确率、margin与全词表格式按原定义；用原single结果作no-op数值校对≤.001nats。额外脚本`scripts/e90_single_source_adapter.py`，本条是在看pilot后提出、实际追加运行前写，不冒称原始预注册或独立确认。
+
+若单Source也有明确收益，模块至少执行超出Source排除的读出计算，但可能仅增加anchor访问/改善内容读取；不会自动叫新抽象rule或输入过滤。若无收益，则mixed上下文关系可能是模块行为的条件，需要重新解释上述gap。无论结果，不展开层/attention条件大全。额外预算≤.5 GPU·时，与独立确认可在不同单卡并行。

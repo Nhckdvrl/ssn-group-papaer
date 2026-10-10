@@ -1,0 +1,57 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "weights": "results/e56/Qwen3-8B_query_saved.pt",
+    "out": "results/e90/qwen3_discovery",
+    "n": 24,
+    "seed": 90001,
+    "queries_per_kind": 4,
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "label_ids": [
+    6092,
+    20836
+  ],
+  "prefix_lengths": [
+    573,
+    560,
+    615,
+    603,
+    662,
+    592,
+    543,
+    579,
+    734,
+    497,
+    550,
+    664,
+    680,
+    658,
+    593,
+    590,
+    627,
+    627,
+    589,
+    690,
+    671,
+    491,
+    651,
+    564
+  ],
+  "foreign_changed_labels_per_context": 8,
+  "target_source_changed_tokens": 0,
+  "reversed_contexts": 15,
+  "query_count_per_context": 8,
+  "source_block_token_ownership": "Each complete demo, including separators, belongs to its source; only the initial header is shared.",
+  "interventions": [
+    "native",
+    "early",
+    "late",
+    "both",
+    "instruction",
+    "adapter",
+    "adapter_late",
+    "single"
+  ]
+}
