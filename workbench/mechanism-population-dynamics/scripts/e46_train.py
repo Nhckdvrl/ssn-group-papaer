@@ -140,7 +140,21 @@ def run_name(a):
         n += f"_w{a.warm}"
     if getattr(a, "reset_opt", False):  # E66: branch with a fresh optimizer state
         n += "_ro"
+    if getattr(a, "mask", "none") != "none":  # E84: MDA-style loss masking in a window
+        n += f"_mask{a.mask}{a.mask_frac:g}_{a.mask_from}-{a.mask_to}"
     return n
+
+
+def repeat_score(w):
+    """E23 S1: share of tokens predictable by copying, i.e. the preceding bigram occurred earlier in the window
+    and was followed by the same token."""
+    seen, hit = {}, 0
+    for t in range(2, len(w)):
+        k = (int(w[t - 2]), int(w[t - 1]))
+        if seen.get(k) == int(w[t]):
+            hit += 1
+        seen[k] = int(w[t])
+    return hit / (len(w) - 2)
 
 
 def main():
@@ -162,6 +176,10 @@ def main():
     ap.add_argument("--bs", type=int, default=BS)
     ap.add_argument("--warm", type=int, default=WARM)
     ap.add_argument("--reset-opt", action="store_true")
+    ap.add_argument("--mask", default="none", choices=["none", "random", "repeat"])
+    ap.add_argument("--mask-frac", type=float, default=0.1)
+    ap.add_argument("--mask-from", type=int, default=500)
+    ap.add_argument("--mask-to", type=int, default=2000)
     a = ap.parse_args()
     name = run_name(a)
     f = OUT / f"{name}.json"
@@ -194,6 +212,12 @@ def main():
     micro = max(MICRO, a.bs // 16)  # keep 16 sequences per micro-batch
     nat = torch.tensor(natural_texts(tokenizer()), device=dev)
     log = {"name": name, "args": vars(a), "measures": {}, "loss": {}}
+    thr, mrng = None, np.random.default_rng(90_000 + a.init)  # mask RNG is separate: data order is untouched
+    if a.mask == "repeat":
+        probe = Stream(corpus, 777, 0, bs=4000).next().numpy()
+        thr = float(np.quantile([repeat_score(w) for w in probe], 1 - a.mask_frac))
+        log["mask_threshold"] = thr
+    log["masked"] = 0
     (RUNS / name).mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     model.train()
@@ -212,13 +236,25 @@ def main():
             gr["lr"] = lr_at(step, a.lr, a.warm)
         opt.zero_grad(set_to_none=True)
         loss = 0.0
-        for xc in x.chunk(micro):  # gradient accumulation over equal micro-batches = same mean-loss gradient
+        keep = torch.ones(x.shape[0], device=dev)
+        if a.mask != "none" and a.mask_from <= step < a.mask_to:
+            if a.mask == "random":
+                drop = mrng.random(x.shape[0]) < a.mask_frac
+            else:
+                xs = x.cpu().numpy()
+                drop = np.array([repeat_score(w) >= thr for w in xs])
+            keep = torch.tensor(~drop, dtype=torch.float32, device=dev)
+            log["masked"] += int(drop.sum())
+        n_keep = float(keep.sum().clamp(min=1.0))
+        for xc, kc in zip(x.chunk(micro), keep.chunk(micro)):  # gradient accumulation; masked sequences get zero weight
             with torch.autocast("cuda", dtype=torch.bfloat16):
                 logits = model(xc[:, :-1]).logits
-            lc = torch.nn.functional.cross_entropy(logits.float().reshape(-1, VOCAB), xc[:, 1:].reshape(-1)) / micro
+            tok = torch.nn.functional.cross_entropy(logits.float().reshape(-1, VOCAB), xc[:, 1:].reshape(-1),
+                                                    reduction="none").view(xc.shape[0], -1).mean(1)
+            lc = (tok * kc).sum() / n_keep
             lc.backward()
             loss += float(lc)
-            del logits, lc
+            del logits, lc, tok
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         opt.step()
         if step % 100 == 0:

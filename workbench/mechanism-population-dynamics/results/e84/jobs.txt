@@ -1,0 +1,12 @@
+base1 --size L --init 1 --corpus c4 --order 1 --steps 3000
+base2 --size L --init 2 --corpus c4 --order 1 --steps 3000
+base3 --size L --init 3 --corpus c4 --order 1 --steps 3000
+repeat1 --size L --init 1 --corpus c4 --order 1 --steps 3000 --mask repeat
+repeat2 --size L --init 2 --corpus c4 --order 1 --steps 3000 --mask repeat
+repeat3 --size L --init 3 --corpus c4 --order 1 --steps 3000 --mask repeat
+rerun1 --size L --init 1 --corpus c4 --order 1 --steps 3000 --rerun 1
+rerun2 --size L --init 2 --corpus c4 --order 1 --steps 3000 --rerun 1
+rerun3 --size L --init 3 --corpus c4 --order 1 --steps 3000 --rerun 1
+random1 --size L --init 1 --corpus c4 --order 1 --steps 3000 --mask random
+random2 --size L --init 2 --corpus c4 --order 1 --steps 3000 --mask random
+random3 --size L --init 3 --corpus c4 --order 1 --steps 3000 --mask random
