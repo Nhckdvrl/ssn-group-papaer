@@ -126,7 +126,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-11 | **TERMINATED / 已收尾（用户明确决定）**：已完成大量实验和论文修订，但继续投入的价值和意义有限。保留论文、脚本、结果与日志；不再运行或自动恢复。 |
+| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-11 | **终止并完成结项整理**：[科学总结](mechanism-population-dynamics/CLOSEOUT.md)、[v3 最终工作稿](mechanism-population-dynamics/paper-acl-v3/)、[科研资产索引](mechanism-population-dynamics/ASSET_INDEX.md)。所有旧论文、科研结果与独立复现包保留；清除 13 个再生缓存，不继续实验。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |

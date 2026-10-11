@@ -1,5 +1,7 @@
 # Which Head Takes Which Role? Initialization Leaves a Trace in Attention-Head Specialization — code and results
 
+**Archive notice (2026-10-11):** Self-contained reproduction package for the **earlier v1-era paper**, not the final `paper-acl-v3`. The research is now **CLOSED / TERMINATED**; its bundled measurements have deliberately been retained so the historical CPU scripts keep their expected paths. The instructions below were not rerun during this cleanup. See [closeout](../CLOSEOUT.md) / [assets](../ASSET_INDEX.md).
+
 Anonymous submission. This archive contains the code for the experiments in the paper, the per-model measurements and
 analysis outputs they produced, and the scripts that draw every figure and table from those outputs.
 

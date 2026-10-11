@@ -39,3 +39,9 @@
 - `library/themes/game-npc-social/` 是通用文献知识库，保留；删除 workbench 不代表从 Git 历史抹除旧方案。
 - 当前由 7 个缩至 **5 个 workbench**，`mechanism-population-dynamics` 保持 CLOSED，不恢复研究。
 - 同一决定还要求整理 mechpop：以最终论文 / 结项索引为先，剔除明确缓存文件；实验测量与历史复现包保留。
+
+## Mechpop 结项整理（同日追加）
+
+- 以精简的 `README.md` 与新 `CLOSEOUT.md` / `ASSET_INDEX.md` 替代旧状态堆叠，明确最后一版论文和各实验的证据边界；v0/v1/v2 README 原先都误用 v0 标题，现按真实 LaTeX 标题纠正，四版论文均保留。
+- `software-submission/` 是 v1 时代独立包，1,247 个文件与 `results/` SHA 相同但包内代码依赖这些路径，故不打散；图表生成的缺失 NPZ 依赖也明确标注。
+- 清除 `scripts/__pycache__/` 的 12 个 `.pyc` 和 1 个重复的 `.nfs*`，根 `.gitignore` 新增排除规则。没有清除科学结果、训练脚本或 PDF。
