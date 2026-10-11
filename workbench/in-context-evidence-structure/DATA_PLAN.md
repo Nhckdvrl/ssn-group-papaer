@@ -16,7 +16,8 @@
 | Measuring Hate Speech race/gender真实评论 | 相同形成接口在真实文本的局部因果margin作用 | E109/E112/E116；私有Source规则受控构造，single私有能力弱；新context而非disjoint文本 |
 | 食物×服务四组合合成评论 | 具体方面关联与共同情绪/强度的机制竞争 | E117/E118三家族确认；E11914B正交功能与prospective方向确认，完整正负保留 |
 | SST5原始真实评论、受控新私人约定 | E121正常形成预测与固定word关联，四checkpoint各16→32 | single每方向88.3–99.2%或更高；official train SHA奇偶两池，discovery validation-query/confirmation test-query，字节不相交、未看输出筛材料 |
-| 双方面、两名来源共用同一prefix | E122选择性形成政策的整体预测 | 同一四criterion×私人code框架，两个Actor均请求/评分，非只A跨来源margin；正在运行 |
+| 双方面、两名来源共用同一prefix | E122选择性形成政策的整体预测 | 同一四criterion×私人code框架，两Actor均评分；4模型16→32全部完成，政策功能与代价保留 |
+| SST5原文、双来源私人规则与shared/far词表 | E123自然材料整体功能预测 | 两Actor/3形成政策/whole-query两个scope；4模型16→32预定，14B确认仍在运行 |
 | 真实个人标注预测与强模型 | 机制现象何时有实际后果、能力成功是否仍需解释 | E46–E52、E99既有；不给受控Source冒充真实个人偏好 |
 
 材料服务于不同解释对象，不以更多benchmark或模型数量替代核心机制。自然评论的语义偏好会影响margin；各实验保留single/instruction以及实际条件，需按配对改变解释功能来源。E117/E118查询八个独立字符串、全Food×Service组合，不与本context demos重合；探索与validation词/模板分开。同pool可在context之间共享词句，bootstrap单位为context。E118 Mistral确认原词池token长度无法构造八条unique，评分前仅补新词nasty，几何与字节无重合已核；CPU失败保留。双方面模板Food始终在Service前，功能差异不能外推为位置无关抽象criterion。该材料不是公认真实ABSA benchmark；真实个人规则证据另由E46–52承担。

@@ -1,0 +1,50 @@
+{
+  "args": {
+    "model": "/dev/shm/ices_models/Qwen3-14B",
+    "out": "results/e122/qwen14_discovery",
+    "n": 16,
+    "seed": 122001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "conditions": 61,
+  "policies": [
+    "normal",
+    "answer_cross_off",
+    "all_cross_off"
+  ],
+  "worlds": [
+    "origin",
+    "service_negative",
+    "food_positive",
+    "food_negative"
+  ],
+  "owners": [
+    0,
+    1
+  ],
+  "matched_geometry": true,
+  "prefix_lengths": [
+    365,
+    381,
+    365,
+    381,
+    381,
+    381,
+    381,
+    381,
+    381,
+    381,
+    365,
+    365,
+    365,
+    365,
+    365,
+    365
+  ],
+  "source_generator": "e119_criterion_scale.py",
+  "shared_prefix_for_both_owners": true,
+  "disagree_observations_per_context": 32,
+  "scope": "fixed aspect order, controlled source criterion and convention"
+}

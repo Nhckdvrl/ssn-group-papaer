@@ -57,3 +57,24 @@ E120/E121全部16→32确认与独立raw审计已完成，直接补上原生操�
 下一步[E122](experiments/E122-source-preserving-formation.md)在首评分前5b166d73冻结：对称保护来源答案形成，保留一般上下文化，与全跨Source形成隔离、仅query隔离竞争；两个Actor使用同一prefix缓存。primary是两个Actor平均准确率并分别核A/B，不是同一query“两人同时答对概率”；agree/disagree是两人gold是否相同，不是两函数是否相同。四criterion×code world完整，single各函数/instruction/图零均保留。四模型16→32正在跑，不因探索分数改policy或筛模型。
 
 主文依旧三个认识，正在把它们写成连续过程：来源访问≠关系来源 → output-dependent形成的预测与native操作 → 固定word的关联内容 → 正常/自然功能使用 → 整体Source规则与criterion功能的边界。E122决定构造性预测是否成立，不把每个残差升成新必过关卡。
+
+### 主旨升级前再次核对的直接近邻
+
+2026-10-12重读上述CTA/AddUp关键定义，并回到下面三条已存在论文卡的原文段落。不是事后发现术语相近就撤回形成阳性，也不把设定不同自动判为novelty。
+
+| 最强近邻 | 所拥有的解释 | ICES增量所需的实际证据 |
+|---|---|---|
+| [Yang/Cho/Inoue TR/TL](https://arxiv.org/html/2509.24164v2)；正文定义和H.4前轮已读，本轮再核 | label空间识别与空间内映射；串行任务跨头作用 | 两合法Source共享同label空间，固定A原监督却改变它所携带关系；不是把TR重命名为Source识别 |
+| [Demonstration Conflict](https://arxiv.org/html/2603.04464v1) §4.3.1–4.3.2；预印本接收状态未核 | 少数污染、query forerunner位置敏感、早期创建/晚期解决及head消融 | 两规则都合法，output命名影响prefix中关系形成；操作级阻断与冻结效应预测、保留一般共享的整体使用，而非首次早/晚分离 |
+| [Jurisdiction](https://arxiv.org/html/2609.27603v1) §3/§5；预印本接收状态未核 | context规则是否有权覆盖现实知识，训练选择性使用demonstrations | 不争论现实知识优先，两Source约定都应可用；正交Source关系/输出代码并测原生形成与功能来源，不泛称首次证据适用性 |
+
+这些工作应在主文清楚引用。检索对应accepted/rejected地图；限定venue查询未召回、arXiv搜索阴性均不能当first证据。最强compression risk仍是“已有上下文化加label retrieval足以容纳”，回应须用已经确认的关系来源测量、output-dependent子图预测和新整体反事实，不能靠新组件名或更细接口。
+
+
+## 7. E122完成后的三认识与下一自然用途预测
+
+四checkpoint平均使用收益+2.93/+3.42/+7.37/+2.78pp，targeted比all-cross形成+11.91/+9.81/+12.65/+13.33pp；两gold冲突收益更大，一致goldQwen/14B有显著成本。独立raw/真值/图/数值与主文呈现审计已封，上一审计的两项paper-critical缺环已填。没有把共同平均当每Actor都显著或joint正确，也没有将保留访问当固定其它信息。
+
+C22/C23依据SST真实benchmark＋controlled餐馆、两家族以上n32/§4/§5实测达到有界L3；C24仍单双方面task L2。主文三个认识约3200词＋附录约2400词，图从计算解释到功能反事实递进，不以claim数或实验数自动保证接收。正式候选状态不改。
+
+[E123](experiments/E123-natural-source-function-policy.md)是进一步有信息量的整体验证：同样源函数政策在strong-private真实SST能否发挥作用，输出namespace是否改变收益；它让“output-dependent关系形成”与一般attention扰动在新材料产生不同预测，非再加层/头/alpha。已经首评分前freeze，四family全部16→32执行；不把它未出的结果记入当前主张，也不把E122已有阳性绑在其成功上。

@@ -6,11 +6,11 @@
 
 **新的功能认识：** 请求A且A raw固定时，B的criterion×私人约定对新评论的Food/Service响应可被分别测量。14B完整native下两标准的匹配方面选择性均正，signed rotation .410[.330,.493]；整个query禁读B位置、A仍由完整历史形成时 .190[.073,.310]。A-label交换与答案形成子图产生不同的响应结构，后者仅部分重建actual label反事实；不能将关联传入直接等同于完整criterion程序，也不能说形成端全部只是共同gain。详见§34–35、[完整方向图](results/figs/fig_stronger_model_functional_responses.png)。
 
-**定位与主张：** Cho/CTA/AddUp拥有宽label/上下文化/信息选择解释。具体增量是将Source位置访问与历史关系的功能来源分开，解释输出命名怎样改变来源证据形成，并以冻结形成子图预测原生反事实、检验其具体功能分辨率。C21有界L3；C22/C23/C24有界L2，I04/ACTIVE状态未改。C24明确限定缓存接口而非不同隐藏程序。最强已有解释及compression risk公开列出，不靠“完全空白”或持续弱模型失败定位。
+**定位与主张：** Cho/CTA/AddUp拥有宽label/上下文化/信息选择解释。具体增量是将Source位置访问与历史关系的功能来源分开，解释输出命名怎样改变来源证据形成，并以冻结形成子图预测原生反事实、检验其具体功能分辨率。C21有界L3；C22/C23在E121的第二benchmark/独立raw审计后达到有界L3，C24有界L2，I04/ACTIVE状态未改。C24明确限定缓存接口而非不同隐藏程序。最强已有解释及compression risk公开列出，不靠“完全空白”或持续弱模型失败定位。
 
-**最新证据与当前工作：** E120原生operation与E121可靠private真实SST文本共16批384contexts/164352评分完成，18,064项raw独立复算和图/实际token校验通过。四checkpoint原生targeted阻断减少B-rule，有限图恢复方向依读取环境；自然namespace KV r .931/.948/.930/.966。由此在5b166d73首评分前冻结E122对称形成政策与query隔离，两Actor/四criterion×code整体预测正在运行。上轮Llama/真实MHS/双方面机制/14B确认也均完成。[英文草稿](PAPER_DRAFT.md)、[论文形态](PAPER_SHAPE.md)、[数据覆盖](DATA_PLAN.md)同步到这些结果。探索的正负、部分重建、真实预测后果有限、固定方面顺序、强模型成功仍保留。原MHS任务的single能力弱，不能把它冒称真实个人标准部署。没有因残差自动追加头/层/字段关卡，也没有宣布投稿就绪。
+**最新证据与当前工作：** E120原生operation与E121可靠private真实SST文本共16批384contexts/164352评分完成，18,064项raw独立复算和图/实际token校验通过。四checkpoint原生targeted阻断减少B-rule，有限图恢复方向依读取环境；自然namespace KV r .931/.948/.930/.966。由此在5b166d73首评分前冻结E122对称形成政策与query隔离，两Actor/四criterion×code整体预测已完成四checkpoint确认：均值+2.93/+3.42/+7.37/+2.78pp，同时保留成本；其自然文本/namespace预测E123正在执行。上轮Llama/真实MHS/双方面机制/14B确认也均完成。[英文草稿](PAPER_DRAFT.md)、[论文形态](PAPER_SHAPE.md)、[数据覆盖](DATA_PLAN.md)同步到这些结果。探索的正负、部分重建、真实预测后果有限、固定方面顺序、强模型成功仍保留。原MHS任务的single能力弱，不能把它冒称真实个人标准部署。没有因残差自动追加头/层/字段关卡，也没有宣布投稿就绪。
 
-§1–8保留截至E79的初次综合；§9–36保留后续转折与验证。当前结论以前言与§34–36为准；[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
+§1–8保留截至E79的初次综合；§9–37保留后续转折与验证。当前结论以前言与§34–37为准；[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
 
 ## 1. 我之前哪里做偏了
 
@@ -857,3 +857,21 @@ E121保留原43条件形成、K/KV/V和正常读取引擎，仅替换真实SST5�
 历史共享不是全坏。E120受限恢复方向随读取条件变化，单A靶向阻断不能自动推出共同支持两人。由此在看E122评分之前写卡并freeze5b166d73：对称阻断历史跨Source答案→label，保留一般input/name访问，与全cross前缀阻断和query-only Source隔离竞争，两个Actor共用同一prefix，B criterion×私人代码四world、single每函数和instruction齐。它检验形成解释能否提出一个整体使用预测，而非继续追head/层/修补分数。四模型16→32全部执行，不按结果挑正模型；当前正在运行，尚不把该预测记作成果。
 
 E120/E121共384contexts/164352评分/2.540记录GPU·时。E120/E121全部独立封版，合计18,064项raw数值max5.00e−15、2112实际token流、mask和可达边已核，非独立GPU重跑。实际评分/旧阳性全保留，不由新实验计划提前升级C21–24。整篇对齐见[PAPER_ALIGNMENT](PAPER_ALIGNMENT_2026-10-12.md)。
+
+
+## 37. 从历史形成预测到两个Source的整体使用（E122，2026-10-12）
+
+**新认识：** 选择性保护输出关联的形成与切断所有上下文化、仅在query按Source隔离，具有不同的功能作用。四checkpoint新材料平均收益确认，不能因此宣布“跨Source历史全是坏”：一致gold有成本、部分Actor不显著，query-only在Llama/14B更强。
+
+| 模型，确认n32 | targeted−native平均pp | A | B | 两gold一致 | 两gold冲突 | targeted−all-cross pp |
+|---|---:|---:|---:|---:|---:|---:|
+| Qwen3-8B | 2.93 [1.42, 4.35] | 1.37 [-0.68, 3.32] | 4.49 [2.15, 6.84] | -2.34 [-4.00, -0.78] | 8.20 [5.86, 10.45] | 11.91 [10.25, 13.53] |
+| Mistral-7B-v0.3 | 3.42 [1.17, 5.76] | 5.66 [2.54, 9.08] | 1.17 [-1.27, 3.52] | -1.95 [-4.98, 0.88] | 8.79 [6.15, 11.62] | 9.81 [6.74, 13.04] |
+| Llama-3.1-8B | 7.37 [5.37, 9.43] | 8.01 [4.79, 11.33] | 6.74 [4.49, 8.89] | -1.86 [-4.30, 0.39] | 16.60 [13.87, 19.43] | 12.65 [10.40, 15.04] |
+| Qwen3-14B | 2.78 [0.49, 4.79] | 2.83 [0.00, 5.47] | 2.73 [0.10, 5.37] | -3.61 [-5.86, -1.56] | 9.18 [6.15, 12.30] | 13.33 [11.33, 15.38] |
+
+这把MC1输出相关形成、MC2所传关联、MC3原生使用接成整体预测；研究对象没有缩成又一个token/head。保留其它访问路径不等于数学固定其它激活；target/all-cross所移边数与mass不同，结论为政策/图功能差异，不是等强度纯信息选择。single双方面67.97–88.67%等实际值在卡与附录，不用SST强single代替。严格图隔离后B-world对A为0是工具/图控制，不当作新科学发现。
+
+独立9960项raw复算/实际token和mask通过；主文284数字与旧E90点检通过，[主文](PAPER_DRAFT.md)重组为约3200词三认识，细节移[技术附录](PAPER_APPENDIX.md)，不隐藏近邻CTA/Cho/AddUp/Jurisdiction/Conflict/TRTL。当前已补齐上一整篇审计的native必要贡献和自然功能阳性缺环，不为残差再增head/layer矩阵。
+
+C22/C23经另一会话按§3/4/5核两个材料benchmark与至少两家族后记有界L3（不是模型数自动上升）；C21L3/C24L2保留。E123则明确扩大整体功能预测：真实SST两Source共同使用/strong private controls、shared/far namespace竞争，在91374879首评分前冻结85条件、四模型16→32。它不是承认E122的必过新门槛，真实结果可以使功能范围不同；正在八空卡执行。

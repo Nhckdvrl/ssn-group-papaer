@@ -212,21 +212,21 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 
 [E110](experiments/E110-learned-relation-fixed-label-stream.md)、results/e110/qwen3_discovery/{analysis,run,completeness_audit}.json：16contexts，固定Source/label/位置，B答案第0层KV精确0差；跨类与同类文本置换效应差.0458[−.1358,.2108]nats，答案形成边差.0234[−.0207,.0682]；同类置换已大。该载体对固定label关系改变的完整A label重建r=.323，不能以namespace成功推断通用规则运输。当前需要更清楚的语义关系反事实，E111同任务同时检验namespace/关系；C16/C20 L1仍不改。
 
-## C22：固定输出身份时，历史答案区域消息传递学到的关联（L2，有界、三家族）
+## C22：固定输出身份时，历史答案区域消息传递学到的关联（L3，有界、三家族/两材料benchmark）
 
 | ID | 主张 | 等级 | 证据 | 威胁/校对 |
 |---|---|---|---|---|
-| C22 | Qwen3-8B与Mistral-7B-v0.3、明确餐厅情绪/私人yes-no约定中，B标签词/Source/位置不变，跨情绪配对相对同类置换的超额作用可经历史B答案区域消息在A label形成时部分传入。各32新词/句式确认，A-only query：答案KV差Qwen .618[.446,.813]、Mistral .404[.313,.499]nats；V版本较K明显更强。正常全Source读取时该超额作用也保持：Qwen .241[.149,.348]、Mistral .263[.198,.329] | L2 | [E111](experiments/E111-polarity-relation-versus-namespace.md)、[E113](experiments/E113-relation-content-mistral.md)、[E114](experiments/E114-native-formation-reading-crossing.md)；results/e111/qwen3_validation、results/e113/mistral_confirmation、results/e114/{qwen3_confirmation,mistral_confirmation}的analysis/run/completeness审计；[新增独立校对](results/e114/independent_review_2026-10-11.md)，559项数值与两家族token几何通过 | 两家族但当前同一明确情绪任务，保留L2，未称跨任务程序。传递部分关联，KV/V不等价；native存在通道差异、其它路径大。答案区域包含实际分隔token（Mistral32/Qwen16个B sender），非只word。Mistral实际分块token流含额外空格、非字面整串编码；条件内配对仍严格相同。CTA/QK-V宽所有权保留 |
+| C22 | 在明确餐厅情绪与独立官方SST5真实Movie情绪两材料benchmark的私人yes-no约定中，Qwen3-8B/Mistral-7B-v0.3等家族，B标签词/Source/位置不变，跨情绪配对相对同类置换的超额作用可经历史B答案区域消息在A label形成时部分传入。各32新词/句式确认，A-only query：答案KV差Qwen .618[.446,.813]、Mistral .404[.313,.499]nats；V版本较K明显更强。正常全Source读取时该超额作用也保持：Qwen .241[.149,.348]、Mistral .263[.198,.329]；E121 SST32 KV绝对超额Qwen.493[.280,.764]/Mistral.128[.056,.213]、Llama.183[.135,.239]、14B.211[.120,.311] | L3 | [E111](experiments/E111-polarity-relation-versus-namespace.md)、[E113](experiments/E113-relation-content-mistral.md)、[E114](experiments/E114-native-formation-reading-crossing.md)；results/e111/qwen3_validation、results/e113/mistral_confirmation、results/e114/{qwen3_confirmation,mistral_confirmation}的analysis/run/completeness审计；[新增独立校对](results/e114/independent_review_2026-10-11.md)，559项数值与两家族token几何通过；[E121](experiments/E121-natural-sentiment-mechanism.md)、results/e121/*_confirmation/{analysis,run,preflight,completeness_audit}.json、[自然数据/机制独立校对](results/e121/independent_review_2026-10-12.md)、[覆盖判断](results/e122/manuscript_claim_audit_2026-10-12.md) | E121后已有明确餐馆与官方SST独立Movie benchmark直接实测、独立校对，支持有界L3；不称跨任务完整程序。传递部分关联，KV/V不等价；native存在通道差异、其它路径大。答案区域包含实际分隔token（Mistral32/Qwen16个B sender），非只word。Mistral实际分块token流含额外空格、非字面整串编码；条件内配对仍严格相同。CTA/QK-V宽所有权保留 |
 
 C21的L3登记依据E109/E111/E112的三个已验证组合与独立校对，§4/5通过；不能当成全部ICL统一理论或论文已就绪。E111完成时C22为单模型范围；不要求残差完美覆盖才承认有界增量，也不因跨模型namespace确认把关联V一并泛化。
 
 **2026-10-11 E113/E114更新：** C22关联内容的家族范围由Qwen扩至Mistral，并接回native全Source读取；该更新依据独立的关联实验而非由C21推断。等级不机械升级，任务范围仍为明确情绪。此前“单模型”是E111完成时记录。C21形成路径获得native支持，范围与精度见C23，不能直接将旧gated精度外推到完整模型。
 
-## C23：原生判断同时依赖形成后的本来源证据与其它来源的读取环境（L2，有界）
+## C23：原生判断同时依赖形成后的本来源证据与其它来源的读取环境（L3，有界）
 
 | ID | 主张 | 等级 | 证据 | 威胁/校对 |
 |---|---|---|---|---|
-| C23 | Qwen3-8B/Mistral-7B-v0.3受控情绪/私人yes-no任务中，query允许读取全部来源，固定B位置缓存时改变A位置缓存的namespace形成历史，仍改变对B配对的rule响应：B shared环境下幅度减弱2.098[1.344,2.892]/1.238[1.037,1.464]nats；B far时为.759[.269,1.269]/.684[.461,.896]。A/B缓存交叉的signed rule交互.775[.113,1.440]/.321[.187,.454]。历史答案区域K/KV形成反事实仍可预测原生A label接口的部分namespace作用，两个读取背景均保持（KV r：Qwen .899/.930、Mistral .959/.968） | L2 | [E114](experiments/E114-native-formation-reading-crossing.md)；results/e114/{qwen3_confirmation,mistral_confirmation}/{analysis,run,preflight,completeness_audit}.json；[独立校对](results/e114/independent_review_2026-10-11.md)、independent_recalculation_2026-10-11.json；完整§4审计见卡 | 两模型/一个明确任务，尚无native跨任务覆盖。F/R是位置缓存因子；B缓存也已上下文化且可含A信息，query/attention继续演化，不是固定reader/两个纯Source模块。混合corner为诊断，完整native两端阳性另核；actual donor的近似/部分重建，非唯一必要路径或无donor行为模型。signed交互直接支持本设计的非加性，不以absolute交互单独推断。Mistral分块序列化范围明确；raw比值不作中介份额 |
+| C23 | Qwen3-8B/Mistral-7B-v0.3等家族，在受控餐馆情绪与独立官方SST5真实Movie私有yes-no任务中，query允许读取全部来源，固定B位置缓存时改变A位置缓存的namespace形成历史，仍改变对B配对的rule响应：B shared环境下幅度减弱2.098[1.344,2.892]/1.238[1.037,1.464]nats；B far时为.759[.269,1.269]/.684[.461,.896]。A/B缓存交叉的signed rule交互.775[.113,1.440]/.321[.187,.454]。历史答案区域K/KV形成反事实仍可预测原生A label接口的部分namespace作用，两个读取背景均保持（KV r：Qwen .899/.930、Mistral .959/.968）；SST32 formed-A/B-shared幅度Qwen2.151[1.487,2.895]/Mistral1.091[.925,1.258]，signed交互.767[.283,1.244]/.524[.378,.673] | L3 | [E114](experiments/E114-native-formation-reading-crossing.md)；results/e114/{qwen3_confirmation,mistral_confirmation}/{analysis,run,preflight,completeness_audit}.json；[独立校对](results/e114/independent_review_2026-10-11.md)、independent_recalculation_2026-10-11.json；完整§4审计见卡；[E121](experiments/E121-natural-sentiment-mechanism.md)对应自然形成/读取完整analysis/run、[SST独立raw](results/e121/independent_review_2026-10-12.md)、[L3覆盖核对](results/e122/manuscript_claim_audit_2026-10-12.md) | E121后已有两家族/controlled餐馆与官方SST5真实Movie benchmark，MHS另有局部native验证；只在实际接口/语义范围记L3。F/R是位置缓存因子；B缓存也已上下文化且可含A信息，query/attention继续演化，不是固定reader/两个纯Source模块。混合corner为诊断，完整native两端阳性另核；actual donor的近似/部分重建，非唯一必要路径或无donor行为模型。signed交互直接支持本设计的非加性，不以absolute交互单独推断。Mistral分块序列化范围明确；raw比值不作中介份额 |
 
 C23把Source-gated形成接口接回原生多来源判断，补齐当前叙事的功能联系；不要求解释全部ICL或完美覆盖关系残差才记成果。C16/C20、I04及ACTIVE状态不变，没有自动进入candidate或新增实验关卡。
 
@@ -275,3 +275,19 @@ C21–C23新增直接证据，不把旧重建冒称独占必要路径。| 模型
 | Qwen3-14B | 99.2% [97.7, 100.0] | 93.8% [87.5, 99.2] | 1.678 [1.340, 2.052] | 0.966 / 0.519 / 1.949 | 0.211 [0.120, 0.311] |
 
 实验卡[E120](experiments/E120-operation-necessity.md)/[E121](experiments/E121-natural-sentiment-mechanism.md)与results/e120、e121每批analysis/run/behavior可复核。E120独立9736项/完整token和图校验通过，E121完整8328项审计已封版；不将复算称独立GPU复跑。single within-answer-off的Mistral损伤/Qwencross-within CI跨零均保留，范围不夸成来源专用构件。未改变I04与ACTIVE正式状态。
+
+
+### 2026-10-12：E122构造性功能预测与C22/C23证据升级
+
+| 模型，确认n32 | targeted−native平均pp | A | B | 两gold一致 | 两gold冲突 | targeted−all-cross pp |
+|---|---:|---:|---:|---:|---:|---:|
+| Qwen3-8B | 2.93 [1.42, 4.35] | 1.37 [-0.68, 3.32] | 4.49 [2.15, 6.84] | -2.34 [-4.00, -0.78] | 8.20 [5.86, 10.45] | 11.91 [10.25, 13.53] |
+| Mistral-7B-v0.3 | 3.42 [1.17, 5.76] | 5.66 [2.54, 9.08] | 1.17 [-1.27, 3.52] | -1.95 [-4.98, 0.88] | 8.79 [6.15, 11.62] | 9.81 [6.74, 13.04] |
+| Llama-3.1-8B | 7.37 [5.37, 9.43] | 8.01 [4.79, 11.33] | 6.74 [4.49, 8.89] | -1.86 [-4.30, 0.39] | 16.60 [13.87, 19.43] | 12.65 [10.40, 15.04] |
+| Qwen3-14B | 2.78 [0.49, 4.79] | 2.83 [0.00, 5.47] | 2.73 [0.10, 5.37] | -3.61 [-5.86, -1.56] | 9.18 [6.15, 12.30] | 13.33 [11.33, 15.38] |
+
+C23新增[选择性形成/读取功能证据E122](experiments/E122-source-preserving-formation.md)：8批16→32、三家族＋更大同族在同prefix请求两个Actor，primary平均收益确认；一致gold成本/每Actor区间/模型query-only差异完整。它不是同一query joint正确率，也不是独立source-selection head或固定其它latent信息的纯操作。E123真实文本/namespace功能预测在91374879首评分前冻结，正在执行；E122结论不以E123阳性作资格条件。
+
+**登记升级：C22 L2→有界L3、C23 L2→有界L3。** 依据不是模型数增加，而是controlled restaurant与独立公认SST5 Movie benchmark的实际n32 paired确认、至少Qwen/Mistral两家族、§4审计及§5独立raw校对。C22 SST固定word内容KV abs .493/.128，两方向/private与signed全部核；C23 SST形成条件作用和signed交互在两家族确认，不将14B其它材料的负交互抹掉。主行范围同步，旧“仍L2”均为当时历史登记。C21有界L3保留，C24固定双方面单任务仍L2，不把其它主张自动上调。
+
+证据追加[E121](experiments/E121-natural-sentiment-mechanism.md)与`results/e121/{qwen3,mistral,llama,qwen14}_confirmation/{analysis,run,preflight,completeness_audit}.json`；[独立自然数据/机制审计](results/e121/independent_review_2026-10-12.md)8328项max5e−15，[E122原始审计](results/e122/independent_review_2026-10-12.md)9960项max0和[独立整篇/覆盖判断](results/e122/manuscript_claim_audit_2026-10-12.md)。Source函数正确性、priors、图归一化、多重比较、实际token构造范围明列；无独立GPU复跑。未改I04/ACTIVE、未自动转candidate或使用H判决。
