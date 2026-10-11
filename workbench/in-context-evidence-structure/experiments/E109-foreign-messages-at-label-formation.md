@@ -1,6 +1,6 @@
 # E109：共同输出怎样让外来源信息进入本来源的标签证据？（2026-10-11）
 
-- **状态：** RUNNING-CONFIRMATION
+- **状态：** DONE-CONFIRMATION
 - **类型：** PILOT / 形成机制的竞争反事实
 - **对应：** I04、P17、C16/C20。
 - **问题（一句话）：** namespace改变本Source标签证据，主要通过过去外Source的答案载体，还是过去外Source的输入/来源编码？答案载体起作用时，是K选择还是V消息？
@@ -47,3 +47,30 @@ Wang2023已解释label anchors，Cho2025已有forerunner→label合并/denoising
 不拟合系数。对每个query/world用形成边干预的Δmargin（相对shared gate）以系数1预测完整far-label KV的Δmargin；全部answer K/KV/V、prelabel KV、all-B KV都报RMSE/correlation与零预测基线。此为discovery后新增的辅助分析，确认原始评分虽然正在生成，但尚未查看；protocol文件明确时点。它预测的是已定义干预的功能效果，不是假称无需donor激活的通用行为模型。
 
 同一确认查看前，还冻结rule double-contrast预测：[(mode aligned−conflict)−(shared aligned−conflict)]，target为far-label。这样消掉与B私人规则无关的共同alias输出偏移；必须与单world namespace差同时报，避免raw correlation只反映标签先验。仍全部5预测器、系数1、无拟合。
+
+### 独立确认完成（全部6144评分）
+
+32新context：label interface减弱.553[.353,.761]nats；仅B答案形成边KV减弱.544[.340,.754]，K-only .561[.360,.772]，V-only .241[.075,.413]；B prelabel KV .0097[−.0086,.0338]。self edge重建0、源cache不变、最大整段/分段margin差.000202<.001；.1006 GPU·时。
+
+冻结系数1、无拟合的**rule double-contrast**预测：答案K r=.969[.955,.979]、RMSE .810[.666,.958]nats；答案KV r=.985[.978,.990]、RMSE .562[.490,.630]，零预测RMSE3.267。prelabel KV r=.074[−.188,.251]、RMSE3.259。它超过均值定位，近似重建这项namespace反事实的逐query因果效果；依赖actual donor激活，不称无需donor的通用行为模型。
+
+机制更新：共享输出身份主要通过**先前答案载体的K→本来源label形成**改变后续可被读取的自身证据。Source-conditioned query寻址仍可把这种历史依赖带入答案；与“来源完全不用”不同。E110固定label stream的关系反事实没有被该子图完整重建，不能将此结果直接称私人规则prototype；E111在同一简化任务比较namespace与关系。C16/C20 L1保持。
+
+### C21 L2混杂审计（§4逐项；当前范围内）
+
+| 项 | 状态与证据 |
+|---|---|
+| 噪声地板 | 已控制：self edge0；max FP32整段/分段.000202，科学效应约.55nats |
+| 工具有效性 | 已控制：完整A复制精确重建far gate，直接label接口强 |
+| 采样耦合 | 已控制：预先MHS分类池、随机新context、所有polarity/8query保留；不按输出选择 |
+| 自校准 | 已控制：固定safe/toxic logit差，无condition增益；absolute/signed事前均报告 |
+| prompt默认值 | 已控制范围：instruction运行；结论是指定原生形成反事实，非能力缺失 |
+| 输入一致性 | 已控制：A全部raw、query、Source/位置/词频固定；B命名为研究变量。不把alias身份与语义拆成已独立因素 |
+| 幸存种子 | 已控制：16→32新seed；初版0科学样本数值失败保留，同seed修复重跑 |
+| 算力公平 | 无方法提升主张；未训练，全部预定干预报告，不用更多调用与一个方法争准确率 |
+| 污染/集合重叠 | 新context独立，但MHS原始评论并非disjoint，确切overlap见sample_overlap_audit.json。预训练见过语义不确定；不称新知识学习，私人映射为实验配置 |
+| 多重比较 | 全5消息/通道不选winner，先发现后冻结；逐query预测是探索后、确认结果查看前冻结，文件与时点保存 |
+| 饱和/地板 | raw logits主读数，无bounded比例或100% ceiling作为机制证据；完整影响与弱路径均报 |
+| 系统范围 | Qwen3-8B/MHS受控私人规则、FP32/eager；跨模型/任务未据此自动声称，E111/E112另测 |
+
+**C21可记L2：** 本设定中的namespace形成路径得到独立context重复与冻结功能重建。未达到广泛L3/完整机制L4，也尚无其它人/会话的独立校对；C16/C20不跟随升级。
