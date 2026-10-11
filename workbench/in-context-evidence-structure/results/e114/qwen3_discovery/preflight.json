@@ -1,0 +1,161 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e114/qwen3_discovery",
+    "n": 16,
+    "seed": 114001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        902
+      ],
+      [
+        9834
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    295,
+    294,
+    292,
+    291,
+    293,
+    289,
+    292,
+    289,
+    291,
+    292,
+    292,
+    291,
+    291,
+    290,
+    290,
+    290
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "excellent",
+      "great",
+      "wonderful",
+      "superb",
+      "pleasant",
+      "delicious",
+      "fantastic",
+      "lovely",
+      "tasty",
+      "delightful"
+    ],
+    "negative": [
+      "terrible",
+      "poor",
+      "awful",
+      "horrible",
+      "unpleasant",
+      "disgusting",
+      "dreadful",
+      "bad",
+      "nasty",
+      "disappointing"
+    ],
+    "templates": [
+      "The food was {a}.",
+      "The meal was {a}.",
+      "The food was absolutely {a}.",
+      "The meal was truly {a}.",
+      "My dinner was {a}.",
+      "Our lunch was {a}.",
+      "The soup was {a}.",
+      "The dessert was {a}.",
+      "The food tasted {a}.",
+      "The meal tasted absolutely {a}."
+    ]
+  },
+  "valid_quartet_length_bins": 2,
+  "quartet_lengths": [
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ]
+  ],
+  "reversed_contexts": 8,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

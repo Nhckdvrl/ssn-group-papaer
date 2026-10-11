@@ -1,0 +1,47 @@
+{
+  "measurements": [
+    {
+      "model": "Qwen3-8B",
+      "gated_run": "results/e111/qwen3_validation",
+      "native_run": "results/e114/qwen3_confirmation",
+      "gated": {
+        "mean": 0.6183552667498589,
+        "ci95": [
+          0.44571763407438997,
+          0.8130407903343438
+        ],
+        "n_contexts": 32
+      },
+      "native": {
+        "mean": 0.2408093586564064,
+        "ci95": [
+          0.14932066295295954,
+          0.3481611000373959
+        ],
+        "n_contexts": 32
+      }
+    },
+    {
+      "model": "Mistral-7B-v0.3",
+      "gated_run": "results/e113/mistral_confirmation",
+      "native_run": "results/e114/mistral_confirmation",
+      "gated": {
+        "mean": 0.40424999594688416,
+        "ci95": [
+          0.31315076183527707,
+          0.4994771994650364
+        ],
+        "n_contexts": 32
+      },
+      "native": {
+        "mean": 0.2625350095331669,
+        "ci95": [
+          0.19834493398666384,
+          0.3291562952101231
+        ],
+        "n_contexts": 32
+      }
+    }
+  ],
+  "caption": "Association contrast through the B-answer KV edge during A-label formation, relative to same-polarity text permutations. All output words, positions and input multisets are fixed within each experiment. Different runs use independently sampled contexts: bar-height differences between gated and native interfaces are descriptive, not a matched causal gate effect. Positive transfer does not explain the complete label effect, prove an abstract program, or make K/V interventions independent modules."
+}

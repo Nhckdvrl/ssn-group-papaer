@@ -1,6 +1,6 @@
 # E114：形成路径怎样参与原生的多来源判断？（2026-10-11）
 
-- **状态：** PLANNED
+- **状态：** DONE-CONFIRMATION
 - **类型：** PILOT / 原生计算的阶段竞争与确认
 - **对应：** C21/C22、I04、P17；拟C23仅在结果支持时登记。
 - **问题（一句话）：** 已定位的label形成消息在模型正常读取全部Source时是否仍有功能作用，输出命名的效果由形成后的本来源证据、foreign缓存读取及二者交互怎样共同实现？
@@ -20,9 +20,49 @@
 | 2×2明显非加性 | 放弃简单两阶段相加解释，保留条件效应，确认相同交互；不事后找更好系数 |
 | 数值/原子阳性失败 | 修执行或限定不可识别，不进行机制叙述 |
 
-- **算力预算：** Qwen discovery+确认及必要Mistral确认合计≤.6 GPU·时，独立单卡；实际待记。
+- **算力预算：** Qwen discovery+确认及必要Mistral确认合计≤.6 GPU·时，独立单卡；实际.035912＋.076813＋.109836＝.222561 GPU·时。
 - **定位/依据：** CTA在完整功能图中验证路径；How Few-Shot Examples Add Up §5的2×2保留两个背景下的条件效应。本项不是首次factorial/QK-V，也不照搬最终FV操作：交叉对象是本来源形成后的证据与foreign读取环境；目标为原生多来源私人判断。CoSToM提供保持接口接回实际功能的尺度。此实验补叙事必需的native联系，不增加新能力任务或逐层搜索。
 
 ## 结果（运行后追加）
 
-待运行。
+Qwen16context/5504评分完整完成：正常允许读取全部Source时，A形成条件效应在B shared/far两个环境分别2.731[1.464,3.866]/1.332[.560,2.195]nats；B读取条件效应分别3.867/2.469；总namespace5.199[3.816,6.509]，absolute交互1.399[.298,2.475]，signed交互1.074[.092,2.076]。它支持形成路径参与原生判断，并提示两者不能简单相加。历史答案K对原生label接口的冻结rule预测在B两环境r=.919/.952，KV r=.945/.966；不是gating人为创造了全部作用。
+
+原生固定label关联的label cross−within差.507[.110,.922]、答案形成边.244[.033,.517]；仍为部分路径，所有signed效果与弱结果保留。self0、原生corner重建/源fingerprint通过，native full/split max7.82e−5。single两方向100%，.035912 GPU·时。以上为n16探索，按原决策表对32新词句seed114101同源码确认；随后冻结接口在Mistral确认，不把pilot交互当已泛化定律。
+
+### 两家族新材料确认完成
+
+Qwen seed114101与Mistral seed114201各32完整contexts/11008评分，validation词/句式提前冻结。Mistral在Qwen探索通过后直接检验冻结接口，无另选层/词。各自private方向16/16；single A Qwen99.61%、Mistral98.83%，能力阳性通过。Qwen探索与validation评论交集0。
+
+| 条件作用：rule幅度的改变（nats） | Qwen3-8B | Mistral-7B-v0.3 |
+|---|---:|---:|
+| A形成，B缓存shared | 2.0977[1.3440,2.8922] | 1.2377[1.0368,1.4644] |
+| A形成，B缓存far | .7587[.2688,1.2693] | .6836[.4609,.8957] |
+| B读取环境，A缓存shared | 3.7571[2.6453,4.8397] | 1.9022[1.2456,2.5344] |
+| B读取环境，A缓存far | 2.4181[1.5956,3.3075] | 1.3481[.8149,1.8714] |
+| 总namespace作用 | 4.5158[3.6868,5.3216] | 2.5858[2.0537,3.1122] |
+| signed rule交互 | .7747[.1131,1.4403] | .3207[.1875,.4541] |
+
+signed交互本身也确认；不能仅用absolute交互1.339/.554声称原始计算非加性。这里是A/B缓存因子交叉，query状态与实际attention竞争仍可演化；固定B缓存不是固定全部reader，不是两个独立模块的份额。两种条件下形成效应均有杠杆，已将旧A-only接口接回正常全Source读取。
+
+冻结系数1的原生A-label接口rule重建：Qwen K r=.865/.896、RMSE1.750/1.073，KV r=.899/.930、RMSE1.560/.868（B shared/far顺序）；Mistral K r=.918/.907、RMSE.547/.619，KV r=.959/.968、RMSE.388/.396。全A形成接口亦报告，Qwen KV r=.808/.854、Mistral .966/.965；重建部分但不是全部原生功能，更不把gated的高精度无条件外推。全部K/KV/V和两个target保留。
+
+固定词表的原生关联：label cross−within Qwen .4540[.2040,.7252]、Mistral .3187[.1920,.4535]；答案KV形成边Qwen .2408[.1493,.3482]、Mistral .2625[.1983,.3292]。不是V/KV等价：Mistral native的KV−V幅度−.03356（独立95%CI[−.06680,−.00362]）；Qwen signed差亦为负。V通常更强仍属于部分路径，不能拼成独立完整rule program。
+
+self0、原生11 corner/full-split/source指纹/全层消费通过；Qwen numeric4.96e−5、Mistral7.63e−6。小结果/完整性审计位于`results/e114/{qwen3_discovery,qwen3_confirmation,mistral_confirmation}/`；原始JSONL不入git。独立校对已完成（见下），范围是这一个明确情绪任务的两家族native计算。
+
+### 独立校对与§4审计完成
+
+`results/e114/independent_review_2026-10-11.md`：E114两确认各218项与作者一致，559项连同E113最大差4.77e−15；两家族各192个world/namespace流独立CPU重建通过。独立seed20261012、20000 context-bootstrap复算signed交互为Qwen .7747[.1217,1.4244]、Mistral .3207[.1891,.4578]，差异是重采样，不换作者读数。
+
+| §4项 | 核对 |
+|---|---|
+| 噪声/工具 | matched FP32 self0，native corner/full-split bound≤4.96e−5；真实消费全部层/目标receiver；未假称独立会话重跑GPU |
+| 采样/默认值 | 预定n16/32和seed全保留，按token几何而非输出选材料；两个私人约定与single/instruction阳性完整 |
+| 输入/自校准 | raw z全条件相同尺度，A token/Source/频率不变，cross/within多重集固定；namespace本为研究变量 |
+| 幸存/算力 | 不丢差种子或改读数，无训练/配置搜索；完整43条件保留，三批确认并行同固定引擎 |
+| 重叠/饱和 | 探索与validation文本交集0；不同context仍复用词/模板，按contextbootstrap；能力ceil不是机制效应 |
+| 多重比较 | 全部条件作用、signed/absolute、K/KV/V、两个读取背景和两个target保存；非加性用signed，不选最好预测器 |
+| 系统/范围 | 两家族/同一受控情绪任务；F/R为位置缓存因子，不是固定全reader或两个Source语义模块；混合corner诊断 |
+| 实际序列化 | Mistral分块SentencePiece流含额外空格，B答案scope32token，Qwen16；native指本实际流，不称普通整串tokenization或格式不变性 |
+
+Mistral首context分块351token、整串335；差异固定而非namespace处理伪影，全部配对控制成立。远端权重此前E112身份审计沿用，本轮独立校对重验tokenizer而未重新hash权重。没有需作废的硬问题；C23记有界L2，native关联与C22家族扩展记录，正式状态不改。

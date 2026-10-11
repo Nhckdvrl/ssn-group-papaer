@@ -1,0 +1,6291 @@
+{
+  "review_date": "2026-10-11",
+  "blind_initial_calculation": true,
+  "bootstrap": {
+    "draws": 20000,
+    "seed": 20261012,
+    "unit": "context preserving all paired worlds, conditions and 8 queries",
+    "ci": "percentile 95%"
+  },
+  "datasets": {
+    "results/e113/mistral_confirmation": {
+      "completeness_and_sampling": {
+        "read_only_after_complete_run": true,
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 24,
+        "total_scores": 6144,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_gold_names_and_source_balance_recomputed_exact": true,
+        "B_text_multiset_and_reassignment_recomputed_exact": true,
+        "no_within_context_demo_query_overlap": true,
+        "contexts_sha256_matches_run": true,
+        "script_sha256_matches_run": true,
+        "reverse_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "edge_consumption": {
+          "n_layers": 32,
+          "counts_identical_all_layers": true,
+          "each_layer": {
+            "answer_cross_kv": 32,
+            "answer_cross_k": 32,
+            "answer_cross_v": 32,
+            "answer_within_kv": 32,
+            "self": 1,
+            "ns_origin_answer_kv": 32,
+            "ns_origin_answer_k": 32,
+            "ns_origin_answer_v": 32,
+            "ns_cross_answer_kv": 32,
+            "ns_cross_answer_k": 32,
+            "ns_cross_answer_v": 32
+          }
+        },
+        "raw_sha256": {
+          "behavior.jsonl": "7977f9df75fb6b5b54fc8f932424d6e774e59f54b3f0f3e2e9854a152520d616",
+          "contexts.jsonl": "dbdc189883ecee1945e7da109d3b009374ffe24923f3594d0ccd382131659c71",
+          "run.json": "5fe75caa35b7b2def100a3658d271f57a1cfd320fcdc5d38d757769ca5ebf753",
+          "preflight.json": "6dc90d03f01b79b0125ebf69775bd489370b6d99aef8699d23c96f27f30f13a2"
+        },
+        "discovery_overlap": {
+          "old_contexts": 16,
+          "exact_contexts": 0,
+          "unique_all_text_intersection": 0
+        }
+      },
+      "run_controls": {
+        "numeric_max_error": 0.0,
+        "elapsed_seconds": 306.6340470314026,
+        "gpu_hours": 0.08517612417538961,
+        "script_sha256": "9fca5bb08ac6079aa4ba101b21e29576c3c45c95c52348d91204d916c1f364eb",
+        "contexts_sha256": "dbdc189883ecee1945e7da109d3b009374ffe24923f3594d0ccd382131659c71",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "3903138efabfc175322dedabdaf662495bd5bf67",
+        "sender_layer0_KV_max_error": 0.0,
+        "model_revision": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+        "dtype": "float32",
+        "attention": "eager",
+        "model_type": "mistral",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "query_source_gate_scope": "all query positions"
+      },
+      "metrics": {
+        "within_instruction": {
+          "accuracy": {
+            "mean": 0.796875,
+            "ci95": [
+              0.73046875,
+              0.85546875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.796875,
+            "ci95": [
+              0.73046875,
+              0.85546875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_within_kv": {
+          "accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.78125,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.78125,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_v": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_v": {
+          "accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_within": {
+          "accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.78125,
+              0.90234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.78125,
+              0.90234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.953125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.953125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_cross_gate": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_origin": {
+          "accuracy": {
+            "mean": 0.95703125,
+            "ci95": [
+              0.92578125,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.95703125,
+            "ci95": [
+              0.92578125,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_origin_gate": {
+          "accuracy": {
+            "mean": 0.94921875,
+            "ci95": [
+              0.921875,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94921875,
+            "ci95": [
+              0.921875,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_kv": {
+          "accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90625,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90625,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_gate": {
+          "accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.78515625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.78515625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate": {
+          "accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.77734375,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.77734375,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_cross": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_k": {
+          "accuracy": {
+            "mean": 0.94921875,
+            "ci95": [
+              0.91015625,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94921875,
+            "ci95": [
+              0.91015625,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.9453125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.9453125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A_cross": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.953125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.953125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_kv": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_k": {
+          "accuracy": {
+            "mean": 0.83203125,
+            "ci95": [
+              0.76171875,
+              0.8984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.83203125,
+            "ci95": [
+              0.76171875,
+              0.8984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.91015625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_v": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "accuracy": {
+            "mean": 0.77734375,
+            "ci95": [
+              0.71875,
+              0.83203125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.77734375,
+            "ci95": [
+              0.71875,
+              0.83203125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_k": {
+          "accuracy": {
+            "mean": 0.953125,
+            "ci95": [
+              0.92578125,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.953125,
+            "ci95": [
+              0.92578125,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "single_A_by_polarity": {
+        "False": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 16
+        },
+        "True": {
+          "mean": 0.953125,
+          "ci95": [
+            0.9140625,
+            0.984375
+          ],
+          "n_contexts": 16
+        }
+      },
+      "effects": {
+        "within_instruction": {
+          "signed": {
+            "mean": -1.0085807107388973,
+            "ci95": [
+              -1.5253490197472275,
+              -0.5075280856341126
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3609650917351246,
+            "ci95": [
+              0.9727033923380077,
+              1.7701907341368486
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_within_kv": {
+          "signed": {
+            "mean": 0.034377507865428925,
+            "ci95": [
+              0.00986732542514801,
+              0.06056196140125392
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.060315415263175964,
+            "ci95": [
+              0.042692096531391145,
+              0.08004399370402095
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_v": {
+          "signed": {
+            "mean": 0.4595233164727688,
+            "ci95": [
+              0.33148578330874445,
+              0.6070148789323864
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.463879968971014,
+            "ci95": [
+              0.33724863473325967,
+              0.6101052596233782
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_v": {
+          "signed": {
+            "mean": 0.4767827279865742,
+            "ci95": [
+              0.3750467194244266,
+              0.587305064219981
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.4767827279865742,
+            "ci95": [
+              0.3750467194244266,
+              0.587305064219981
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_within": {
+          "signed": {
+            "mean": 0.09690113738179207,
+            "ci95": [
+              0.010303843859583139,
+              0.19023126326501363
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.19041310623288155,
+            "ci95": [
+              0.12616311153396964,
+              0.26461451295763244
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate": {
+          "signed": {
+            "mean": 1.318092081695795,
+            "ci95": [
+              1.0585611852817238,
+              1.5934072133153676
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.318092081695795,
+            "ci95": [
+              1.0585611852817238,
+              1.5934072133153676
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_cross_gate": {
+          "signed": {
+            "mean": 0.7538866102695465,
+            "ci95": [
+              0.556018961686641,
+              0.9504190978594124
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.8026164025068283,
+            "ci95": [
+              0.6305387420579791,
+              0.977457870915532
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_origin": {
+          "signed": {
+            "mean": 0.6890019066631794,
+            "ci95": [
+              0.5242167464457452,
+              0.8612793481908737
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.6974967308342457,
+            "ci95": [
+              0.5372843774966896,
+              0.8657990696839987
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "signed": {
+            "mean": 1.2277572378516197,
+            "ci95": [
+              0.906638411898166,
+              1.5337501403875642
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3415228724479675,
+            "ci95": [
+              1.0887573421001435,
+              1.5935585873201488
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_origin_gate": {
+          "signed": {
+            "mean": 0.6553805582225323,
+            "ci95": [
+              0.49427321860566736,
+              0.8254772844724356
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.6698152236640453,
+            "ci95": [
+              0.5152832771651447,
+              0.8336587137542664
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_kv": {
+          "signed": {
+            "mean": 1.006717186421156,
+            "ci95": [
+              0.8035777756012976,
+              1.21832092506811
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.0105981044471264,
+            "ci95": [
+              0.8101237323135138,
+              1.2201027601025998
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_gate": {
+          "signed": {
+            "mean": 0.0928061231970787,
+            "ci95": [
+              -0.02002762574702501,
+              0.2020153722725808
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.23521416634321213,
+            "ci95": [
+              0.15691163744777442,
+              0.3204833739437161
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate": {
+          "signed": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_cross": {
+          "signed": {
+            "mean": 0.8533520177006721,
+            "ci95": [
+              0.6435840862803162,
+              1.063077163416892
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.8975601494312286,
+            "ci95": [
+              0.7146748094819486,
+              1.088045622780919
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_k": {
+          "signed": {
+            "mean": 0.4701553247869015,
+            "ci95": [
+              0.34385067913681266,
+              0.605487051513046
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.48247843608260155,
+            "ci95": [
+              0.362434272095561,
+              0.6135487238876521
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "signed": {
+            "mean": 1.476311795413494,
+            "ci95": [
+              1.238160905148834,
+              1.7116200131364168
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.476311795413494,
+            "ci95": [
+              1.238160905148834,
+              1.7116200131364168
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A_cross": {
+          "signed": {
+            "mean": 1.318092081695795,
+            "ci95": [
+              1.0585611852817238,
+              1.5934072133153676
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.318092081695795,
+            "ci95": [
+              1.0585611852817238,
+              1.5934072133153676
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_kv": {
+          "signed": {
+            "mean": 0.5289072394371033,
+            "ci95": [
+              0.3912865538150072,
+              0.6758351657539606
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5305804386734962,
+            "ci95": [
+              0.3935567244887352,
+              0.6765812785364687
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_k": {
+          "signed": {
+            "mean": 0.031088680028915405,
+            "ci95": [
+              -0.017387576494365932,
+              0.07747637685388324
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.10193850845098495,
+            "ci95": [
+              0.07128904405981303,
+              0.13780968552455303
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv": {
+          "signed": {
+            "mean": 0.4645654112100601,
+            "ci95": [
+              0.3689331236295402,
+              0.5649730804376302
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.4645654112100601,
+            "ci95": [
+              0.3689331236295402,
+              0.5649730804376302
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross": {
+          "signed": {
+            "mean": 1.1710646115243435,
+            "ci95": [
+              0.9499673120677471,
+              1.4018673799932002
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.1710646115243435,
+            "ci95": [
+              0.9499673120677471,
+              1.4018673799932002
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_v": {
+          "signed": {
+            "mean": 1.393436461687088,
+            "ci95": [
+              1.1294919852167369,
+              1.6752521579153834
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.393436461687088,
+            "ci95": [
+              1.1294919852167369,
+              1.6752521579153834
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "signed": {
+            "mean": -1.048898071050644,
+            "ci95": [
+              -1.5679852714762093,
+              -0.5413316587917516
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3905799016356468,
+            "ci95": [
+              0.9964951410889625,
+              1.805091537069529
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_k": {
+          "signed": {
+            "mean": 1.0950982645154,
+            "ci95": [
+              0.8685224536806345,
+              1.3395782615989444
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.0950982645154,
+            "ci95": [
+              0.8685224536806345,
+              1.3395782615989444
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "paired_relation_differences": {
+        "cross_gate_minus_within_gate": {
+          "signed": {
+            "mean": 1.2252859584987164,
+            "ci95": [
+              0.9917160955257713,
+              1.4680677640251816
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.082877915352583,
+            "ci95": [
+              0.8212251745164394,
+              1.3434625254943962
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross_minus_label_within": {
+          "signed": {
+            "mean": 1.0741634741425514,
+            "ci95": [
+              0.8664013359695673,
+              1.2855685323476784
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.980651505291462,
+            "ci95": [
+              0.772774738073349,
+              1.1923029323108492
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv_minus_answer_within_kv": {
+          "signed": {
+            "mean": 0.4301879033446312,
+            "ci95": [
+              0.34165685093030335,
+              0.5226295092143117
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.40424999594688416,
+            "ci95": [
+              0.31384136183187367,
+              0.4999899144284427
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross_minus_answer_cross_kv": {
+          "signed": {
+            "mean": 0.7064992003142834,
+            "ci95": [
+              0.5478601878508925,
+              0.8730189797468483
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.7064992003142834,
+            "ci95": [
+              0.5478601878508925,
+              0.8730189797468483
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv_minus_answer_cross_k": {
+          "signed": {
+            "mean": 0.4334767311811447,
+            "ci95": [
+              0.33845292329788207,
+              0.5348683882504699
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.36262690275907516,
+            "ci95": [
+              0.27802394442260264,
+              0.4532443454489111
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv_minus_answer_cross_v": {
+          "signed": {
+            "mean": -0.012217316776514053,
+            "ci95": [
+              -0.04338148608803749,
+              0.018486048933118563
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": -0.012217316776514053,
+            "ci95": [
+              -0.04338148608803749,
+              0.018486048933118563
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "relation_prediction": {
+        "answer_cross_k": {
+          "rmse": 1.4384448081149255,
+          "rmse_ci95": [
+            1.1721870334208175,
+            1.6854027257382098
+          ],
+          "correlation": 0.13033938760261102,
+          "correlation_ci95": [
+            -0.29108070583821305,
+            0.5159420044708549
+          ],
+          "zero_rmse": 1.4490498517307253,
+          "relative_mse_explained": 0.014583675595311818,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "answer_cross_kv": {
+          "rmse": 0.9375144565788271,
+          "rmse_ci95": [
+            0.7519380984138131,
+            1.1076173904640878
+          ],
+          "correlation": 0.9130693388258315,
+          "correlation_ci95": [
+            0.8868908508106667,
+            0.936832853215821
+          ],
+          "zero_rmse": 1.4490498517307253,
+          "relative_mse_explained": 0.5814095719316447,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "answer_cross_v": {
+          "rmse": 0.9517018841257707,
+          "rmse_ci95": [
+            0.7548817691415781,
+            1.1288809929138932
+          ],
+          "correlation": 0.8852278107147411,
+          "correlation_ci95": [
+            0.8472911301840484,
+            0.92062490258316
+          ],
+          "zero_rmse": 1.4490498517307253,
+          "relative_mse_explained": 0.568644634323042,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      },
+      "namespace_prediction": {
+        "k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.4974075226839733,
+            "rmse_ci95": [
+              0.42911676411697247,
+              0.566127248478921
+            ],
+            "correlation": 0.8491600317123058,
+            "correlation_ci95": [
+              0.7902717516622781,
+              0.8934989920858306
+            ],
+            "zero_rmse": 0.913856510135782,
+            "relative_mse_explained": 0.7037429607182843,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.6883228027353963,
+            "rmse_ci95": [
+              0.5458383537468577,
+              0.8301368081976755
+            ],
+            "correlation": 0.9254591193453697,
+            "correlation_ci95": [
+              0.8813944191440904,
+              0.956762663413888
+            ],
+            "zero_rmse": 1.4760653106517494,
+            "relative_mse_explained": 0.7825431131193161,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.3132900835063609,
+            "rmse_ci95": [
+              0.2702831913013433,
+              0.35657130596722825
+            ],
+            "correlation": 0.9512993355092523,
+            "correlation_ci95": [
+              0.9313655643816369,
+              0.9663363886743835
+            ],
+            "zero_rmse": 0.913856510135782,
+            "relative_mse_explained": 0.8824731010836441,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.44684342589055515,
+            "rmse_ci95": [
+              0.38880728726582964,
+              0.5004875176583893
+            ],
+            "correlation": 0.9746100240681277,
+            "correlation_ci95": [
+              0.9621797874147014,
+              0.982619548289736
+            ],
+            "zero_rmse": 1.4760653106517494,
+            "relative_mse_explained": 0.9083569366600043,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.7667314389135773,
+            "rmse_ci95": [
+              0.6445307996325597,
+              0.8925267549742177
+            ],
+            "correlation": 0.5477100200628745,
+            "correlation_ci95": [
+              0.39059114067279316,
+              0.67856872482669
+            ],
+            "zero_rmse": 0.913856510135782,
+            "relative_mse_explained": 0.2960683007365509,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.060906703007804,
+            "rmse_ci95": [
+              0.8218084574716465,
+              1.2935905487865342
+            ],
+            "correlation": 0.7858280022502829,
+            "correlation_ci95": [
+              0.638537087566419,
+              0.8852336938473235
+            ],
+            "zero_rmse": 1.4760653106517494,
+            "relative_mse_explained": 0.4834132782650242,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "raw_full_A_cross_vs_cross_gate_max_error": 0.0,
+      "independent_token_geometry": {
+        "tokenizer_path": "/home/xiang/.cache/huggingface/hub/models--mistralai--Mistral-7B-v0.3/snapshots/caa1feb0e54d415e2df31207e5f4e273e33509b1/tokenizer.json",
+        "tokenizer_sha256": "e553af6fff7d7ad76e830608b218c5c0b0822998d5a1a96099a74cd3c1cb1a49",
+        "method": "Rust tokenizers CPU only, no model load",
+        "all_world_namespace_encodings_checked": 192,
+        "all_lengths_roles_anchors_content_and_answer_scopes_exact": true,
+        "all_own_A_tokens_invariant": true,
+        "fixed_labels_and_source_tokens_in_relation_worlds": true,
+        "namespace_changed_only_designated_B_answer_tokens": true,
+        "word_ids_match_preflight": true,
+        "formation_receivers": "all 8 A label anchors",
+        "B_answer_send_scope_tokens": [
+          32
+        ],
+        "blockwise_vs_whole_literal_string_encoding_differs_contexts": 32
+      }
+    },
+    "results/e114/qwen3_confirmation": {
+      "completeness_and_sampling": {
+        "read_only_after_complete_run": true,
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 43,
+        "total_scores": 11008,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_gold_names_and_source_balance_recomputed_exact": true,
+        "B_text_multiset_and_reassignment_recomputed_exact": true,
+        "no_within_context_demo_query_overlap": true,
+        "contexts_sha256_matches_run": true,
+        "script_sha256_matches_run": true,
+        "reverse_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "edge_consumption": {
+          "n_layers": 36,
+          "counts_identical_all_layers": true,
+          "each_layer": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          }
+        },
+        "raw_sha256": {
+          "behavior.jsonl": "78d1448f7d2545fc7f0a61fa60e1b1199bbc01204cef0c41439933c1cbfa8990",
+          "contexts.jsonl": "b1f0b18ea6c9997aeb2e9f741f9720d4d0da96634e1cf76e2fa9615d4d911f3a",
+          "run.json": "389f91799b6b04df5dd2c33c97777099bdc6aba17d51581239e6b9637732d67e",
+          "preflight.json": "d1c9ab7cc96a99d8c186cf1d650f5aef2ddd1506197c2500dc232d68869c5ffb"
+        },
+        "discovery_overlap": {
+          "old_contexts": 16,
+          "exact_contexts": 0,
+          "unique_all_text_intersection": 0
+        },
+        "all_43_planned_condition_names_exact": true
+      },
+      "run_controls": {
+        "numeric_max_error": 4.9591064453125e-05,
+        "elapsed_seconds": 276.52812337875366,
+        "gpu_hours": 0.07681336760520935,
+        "script_sha256": "2ae995abf40944e5018814cd42c0e0a28b71dfaf90206ec44e3df9890e703499",
+        "contexts_sha256": "b1f0b18ea6c9997aeb2e9f741f9720d4d0da96634e1cf76e2fa9615d4d911f3a",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "3903138efabfc175322dedabdaf662495bd5bf67",
+        "sender_layer0_KV_max_error": 0.0,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "dtype": "float32",
+        "attention": "eager",
+        "model_type": "qwen3",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "primary_query_scope": "native all prefix positions; gated controls at all query positions",
+        "native_crossing": "A cached evidence formation x B cached reading environment"
+      },
+      "metrics": {
+        "origin_f1r1": {
+          "accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_edge_k": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f0r1": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.8359375,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.90625,
+            "ci95": [
+              0.84375,
+              0.9609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_native": {
+          "accuracy": {
+            "mean": 0.8671875,
+            "ci95": [
+              0.81640625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8671875,
+            "ci95": [
+              0.81640625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_kv_r0": {
+          "accuracy": {
+            "mean": 0.91796875,
+            "ci95": [
+              0.88671875,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.91796875,
+            "ci95": [
+              0.88671875,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_instruction": {
+          "accuracy": {
+            "mean": 0.8984375,
+            "ci95": [
+              0.84375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8984375,
+            "ci95": [
+              0.84375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_label": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f0r1": {
+          "accuracy": {
+            "mean": 0.9375,
+            "ci95": [
+              0.8984375,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.859375,
+            "ci95": [
+              0.796875,
+              0.91796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.8515625,
+              0.9609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_v_r0": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f0r0": {
+          "accuracy": {
+            "mean": 0.8671875,
+            "ci95": [
+              0.81640625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8671875,
+            "ci95": [
+              0.81640625,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_k_r0": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_within_kv_native": {
+          "accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8203125,
+              0.91796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8203125,
+              0.91796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_label_r1": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_kv_r0": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f1r0": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_kv_r1": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.9609375,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.9453125,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_kv_r1": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_kv_native": {
+          "accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.78515625,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.78515625,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_shared": {
+          "accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_cross_native": {
+          "accuracy": {
+            "mean": 0.82421875,
+            "ci95": [
+              0.7734375,
+              0.87109375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.82421875,
+            "ci95": [
+              0.7734375,
+              0.87109375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.84375,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.84375,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f0r1": {
+          "accuracy": {
+            "mean": 0.9609375,
+            "ci95": [
+              0.921875,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9609375,
+            "ci95": [
+              0.921875,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_v_r0": {
+          "accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8203125,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8203125,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_edge_k": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_v_r1": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.9453125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9140625,
+            "ci95": [
+              0.8515625,
+              0.96484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.8671875,
+              0.97265625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_within_native": {
+          "accuracy": {
+            "mean": 0.859375,
+            "ci95": [
+              0.80859375,
+              0.90625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.859375,
+            "ci95": [
+              0.80859375,
+              0.90625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_k_r0": {
+          "accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.890625,
+              0.95703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.890625,
+              0.95703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_shared": {
+          "accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.86328125,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.86328125,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f1r1": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.95703125,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.96875,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_v_native": {
+          "accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.82421875,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.82421875,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_label_r1": {
+          "accuracy": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_label_r0": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.96875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.96875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_label": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.9765625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_v_r1": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90234375,
+            "ci95": [
+              0.84765625,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.8984375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f0r0": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_k_r1": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.9609375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f1r0": {
+          "accuracy": {
+            "mean": 0.828125,
+            "ci95": [
+              0.77734375,
+              0.875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.828125,
+            "ci95": [
+              0.77734375,
+              0.875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f1r0": {
+          "accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87890625,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87890625,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "accuracy": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_k_r1": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_label_r0": {
+          "accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87890625,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87890625,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_k_native": {
+          "accuracy": {
+            "mean": 0.86328125,
+            "ci95": [
+              0.80859375,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.86328125,
+            "ci95": [
+              0.80859375,
+              0.9140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "single_A_by_polarity": {
+        "False": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 16
+        },
+        "True": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.9765625,
+            1.0
+          ],
+          "n_contexts": 16
+        }
+      },
+      "rule_dependence": {
+        "f0r0": {
+          "signed": {
+            "mean": 5.770140677690506,
+            "ci95": [
+              4.985353132151067,
+              6.583683693036436
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 5.770140677690506,
+            "ci95": [
+              4.985353132151067,
+              6.583683693036436
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f0r1": {
+          "signed": {
+            "mean": 1.839280217885971,
+            "ci95": [
+              1.2198346519842744,
+              2.4882129453122603
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.013054773211479,
+            "ci95": [
+              1.4671546090394258,
+              2.6038835240527987
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f1r0": {
+          "signed": {
+            "mean": 3.6724409759044647,
+            "ci95": [
+              2.914527895860374,
+              4.524661199189722
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.6724409759044647,
+            "ci95": [
+              2.914527895860374,
+              4.524661199189722
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f1r1": {
+          "signed": {
+            "mean": 0.5162553414702415,
+            "ci95": [
+              0.021916831843554974,
+              0.9943564560264342
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.2543620690703392,
+            "ci95": [
+              0.9774626921862364,
+              1.5471967156976452
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_r0": {
+          "signed": {
+            "mean": 4.131680108606815,
+            "ci95": [
+              3.2957665937021376,
+              5.036786131374538
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 4.150555022060871,
+            "ci95": [
+              3.3295089235529303,
+              5.049087675847113
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_r1": {
+          "signed": {
+            "mean": 0.6165117025375366,
+            "ci95": [
+              0.14947042409330608,
+              1.0676785400137303
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.2203577160835266,
+            "ci95": [
+              0.9480713829398155,
+              1.5094553781673306
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_k_r0": {
+          "signed": {
+            "mean": 4.05288740247488,
+            "ci95": [
+              3.4333624243736267,
+              4.704576348885894
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 4.05288740247488,
+            "ci95": [
+              3.4333624243736267,
+              4.704576348885894
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_k_r1": {
+          "signed": {
+            "mean": 1.1759424656629562,
+            "ci95": [
+              0.6848919067531825,
+              1.6682623313739895
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.4368761032819748,
+            "ci95": [
+              1.043552652746439,
+              1.8519455824047326
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_kv_r0": {
+          "signed": {
+            "mean": 3.8560332730412483,
+            "ci95": [
+              3.1492504863068462,
+              4.591297221556306
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.8560332730412483,
+            "ci95": [
+              3.1492504863068462,
+              4.591297221556306
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_kv_r1": {
+          "signed": {
+            "mean": 0.9722969084978104,
+            "ci95": [
+              0.4796184150502086,
+              1.468581715226173
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3902433812618256,
+            "ci95": [
+              1.0457940453663468,
+              1.7576085383072493
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_v_r0": {
+          "signed": {
+            "mean": 4.818938948214054,
+            "ci95": [
+              4.153466138802469,
+              5.513876056298612
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 4.818938948214054,
+            "ci95": [
+              4.153466138802469,
+              5.513876056298612
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_v_r1": {
+          "signed": {
+            "mean": 1.4918209612369537,
+            "ci95": [
+              0.97409083917737,
+              2.0129539381712673
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.7114171981811523,
+            "ci95": [
+              1.2877588855102657,
+              2.151488568633794
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_shared": {
+          "signed": {
+            "mean": 2.021759144961834,
+            "ci95": [
+              1.4081136962398886,
+              2.6953654501587145
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.149325154721737,
+            "ci95": [
+              1.5881006877869368,
+              2.786151909641921
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_label": {
+          "signed": {
+            "mean": 0.7556320354342461,
+            "ci95": [
+              0.35698219034820794,
+              1.1644533507525918
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.0856022164225578,
+            "ci95": [
+              0.7960351986810565,
+              1.406499782577157
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_edge_k": {
+          "signed": {
+            "mean": 1.5030147284269333,
+            "ci95": [
+              1.111533790640533,
+              1.9162230560556048
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.538918748497963,
+            "ci95": [
+              1.1668517626821995,
+              1.9385402958840126
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "stage_contrasts": {
+        "A_formation_B_shared": {
+          "signed": {
+            "mean": 2.0976997017860413,
+            "ci95": [
+              1.3624833693727851,
+              2.886821982078254
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.0976997017860413,
+            "ci95": [
+              1.3624833693727851,
+              2.886821982078254
+            ],
+            "n_contexts": 32
+          }
+        },
+        "A_formation_B_far": {
+          "signed": {
+            "mean": 1.3230248764157295,
+            "ci95": [
+              0.8201881401240826,
+              1.8500773904845118
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.75869270414114,
+            "ci95": [
+              0.2768349086865783,
+              1.2679849321022627
+            ],
+            "n_contexts": 32
+          }
+        },
+        "B_reading_A_shared": {
+          "signed": {
+            "mean": 3.930860459804535,
+            "ci95": [
+              2.799264912120998,
+              5.06261331718415
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.757085904479027,
+            "ci95": [
+              2.684577569924295,
+              4.834472130052745
+            ],
+            "n_contexts": 32
+          }
+        },
+        "B_reading_A_far": {
+          "signed": {
+            "mean": 3.156185634434223,
+            "ci95": [
+              2.1846390971913934,
+              4.245208291895687
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.4180789068341255,
+            "ci95": [
+              1.6146549608558416,
+              3.312106694467365
+            ],
+            "n_contexts": 32
+          }
+        },
+        "total_namespace": {
+          "signed": {
+            "mean": 5.253885336220264,
+            "ci95": [
+              4.165967520326376,
+              6.416541871614753
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 4.515778608620167,
+            "ci95": [
+              3.721721095405519,
+              5.324431136809289
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_effect_B_shared": {
+          "signed": {
+            "mean": 1.6384605690836906,
+            "ci95": [
+              0.9430952575057745,
+              2.3915118150413033
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.6195856556296349,
+            "ci95": [
+              0.9266550477594138,
+              2.3645673926919692
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_effect_B_far": {
+          "signed": {
+            "mean": 1.2227685153484344,
+            "ci95": [
+              0.7851113231852651,
+              1.7032614786177862
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.7926970571279526,
+            "ci95": [
+              0.3785512359812856,
+              1.2693133149296043
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_K_B_shared": {
+          "signed": {
+            "mean": 1.7172532752156258,
+            "ci95": [
+              1.1488255416974424,
+              2.369832156971096
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.7172532752156258,
+            "ci95": [
+              1.1488255416974424,
+              2.369832156971096
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_K_B_far": {
+          "signed": {
+            "mean": 0.6633377522230148,
+            "ci95": [
+              0.3166211128234863,
+              1.0669157756492487
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5761786699295044,
+            "ci95": [
+              0.24494277480989696,
+              0.9774153165519237
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "stage_interaction": {
+        "signed": {
+          "mean": 0.7746748253703117,
+          "ci95": [
+            0.12165574692189694,
+            1.4243502721190446
+          ],
+          "n_contexts": 32
+        },
+        "absolute_rule_amplitude": {
+          "mean": 1.3390069976449013,
+          "ci95": [
+            0.539644475094974,
+            2.219763815589248
+          ],
+          "n_contexts": 32
+        }
+      },
+      "reviewer_posthoc_raw_query_interaction": {
+        "rule_double_contrast_RMS": 3.4656104416741598,
+        "mean_context_absolute_signed_interaction": {
+          "mean": 1.5588185116648674,
+          "ci95": [
+            1.1170580510050059,
+            2.025439977645874
+          ],
+          "n_contexts": 32
+        },
+        "note": "Not a replacement for registered signed mean; absolute rule amplitude interaction alone cannot establish nonadditivity of raw computation."
+      },
+      "native_namespace_prediction": {
+        "label_interface_B0_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.3289835791318794,
+            "rmse_ci95": [
+              1.1308124276843692,
+              1.5272574226157718
+            ],
+            "correlation": 0.8357178611190124,
+            "correlation_ci95": [
+              0.7399317653165582,
+              0.8919921382474144
+            ],
+            "zero_rmse": 2.3730196864982065,
+            "relative_mse_explained": 0.6863563152103108,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.749923148521709,
+            "rmse_ci95": [
+              1.396797475493888,
+              2.0984175713346964
+            ],
+            "correlation": 0.864714616479261,
+            "correlation_ci95": [
+              0.7545915117300614,
+              0.9246635827983801
+            ],
+            "zero_rmse": 3.387934345892945,
+            "relative_mse_explained": 0.733210961981217,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B0_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.1943168856887683,
+            "rmse_ci95": [
+              0.9988345382564966,
+              1.3853689317256501
+            ],
+            "correlation": 0.8751177020226153,
+            "correlation_ci95": [
+              0.8016168474999199,
+              0.9193559655266776
+            ],
+            "zero_rmse": 2.3730196864982065,
+            "relative_mse_explained": 0.746699257481465,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.5604734526573405,
+            "rmse_ci95": [
+              1.2366263828212234,
+              1.8866727255509836
+            ],
+            "correlation": 0.8994506037000954,
+            "correlation_ci95": [
+              0.8189350895958981,
+              0.9433856109815791
+            ],
+            "zero_rmse": 3.387934345892945,
+            "relative_mse_explained": 0.787850116258159,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B0_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.523469526773665,
+            "rmse_ci95": [
+              1.2995170058940795,
+              1.7333550957206012
+            ],
+            "correlation": 0.7696590352198764,
+            "correlation_ci95": [
+              0.661558532712877,
+              0.8414486693881352
+            ],
+            "zero_rmse": 2.3730196864982065,
+            "relative_mse_explained": 0.5878409303085793,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.1630508012238354,
+            "rmse_ci95": [
+              1.764448728721376,
+              2.5365952815076476
+            ],
+            "correlation": 0.7658378107025612,
+            "correlation_ci95": [
+              0.6488015029712774,
+              0.8429703371238375
+            ],
+            "zero_rmse": 3.387934345892945,
+            "relative_mse_explained": 0.5923725074304371,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.8709074860014716,
+            "rmse_ci95": [
+              1.5509510896473844,
+              2.19185607190722
+            ],
+            "correlation": 0.7359636786472792,
+            "correlation_ci95": [
+              0.5710722820460443,
+              0.8431819403842177
+            ],
+            "zero_rmse": 2.762372681289101,
+            "relative_mse_explained": 0.5412880177612815,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.402355810394415,
+            "rmse_ci95": [
+              1.8923070994336413,
+              2.9408402039061707
+            ],
+            "correlation": 0.7876432581032281,
+            "correlation_ci95": [
+              0.6008843969727051,
+              0.8900843881349779
+            ],
+            "zero_rmse": 3.925803358230511,
+            "relative_mse_explained": 0.6255295288786935,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.8081792250459554,
+            "rmse_ci95": [
+              1.4711311432278487,
+              2.148481389596613
+            ],
+            "correlation": 0.7603499812632156,
+            "correlation_ci95": [
+              0.6078626727592165,
+              0.8586021866473721
+            ],
+            "zero_rmse": 2.762372681289101,
+            "relative_mse_explained": 0.5715319830184771,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.3181192530589643,
+            "rmse_ci95": [
+              1.7837161988627939,
+              2.8835398380803796
+            ],
+            "correlation": 0.8077957183761577,
+            "correlation_ci95": [
+              0.6349500585657332,
+              0.9021891137340785
+            ],
+            "zero_rmse": 3.925803358230511,
+            "relative_mse_explained": 0.6513300948388734,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 2.0434744246791907,
+            "rmse_ci95": [
+              1.7254857852231265,
+              2.3544065714268987
+            ],
+            "correlation": 0.6709511225908809,
+            "correlation_ci95": [
+              0.5016149754226109,
+              0.7892875917000235
+            ],
+            "zero_rmse": 2.762372681289101,
+            "relative_mse_explained": 0.45276499201108555,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.772339104132824,
+            "rmse_ci95": [
+              2.286984385483788,
+              3.264213921851929
+            ],
+            "correlation": 0.7042613232479323,
+            "correlation_ci95": [
+              0.5034952601031619,
+              0.8260758241612502
+            ],
+            "zero_rmse": 3.925803358230511,
+            "relative_mse_explained": 0.5013043073012012,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.9466894118370889,
+            "rmse_ci95": [
+              0.8335358736853187,
+              1.0506644815894735
+            ],
+            "correlation": 0.8857894545502876,
+            "correlation_ci95": [
+              0.8460872569843549,
+              0.9136776150145275
+            ],
+            "zero_rmse": 2.0885796362384146,
+            "relative_mse_explained": 0.7945467758178176,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.0729375188742083,
+            "rmse_ci95": [
+              0.9229579564286848,
+              1.2197906195548136
+            ],
+            "correlation": 0.895545566809164,
+            "correlation_ci95": [
+              0.8251716138654028,
+              0.9341975635942432
+            ],
+            "zero_rmse": 2.3157612839373325,
+            "relative_mse_explained": 0.7853349774244234,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.8114342468109932,
+            "rmse_ci95": [
+              0.6393188409984303,
+              1.018065491432887
+            ],
+            "correlation": 0.9173301597412886,
+            "correlation_ci95": [
+              0.8500396868981839,
+              0.9533264832614261
+            ],
+            "zero_rmse": 2.0885796362384146,
+            "relative_mse_explained": 0.8490599157853568,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.8677970637097187,
+            "rmse_ci95": [
+              0.6931820271922657,
+              1.0707400615886213
+            ],
+            "correlation": 0.9302829712169176,
+            "correlation_ci95": [
+              0.8628342733181669,
+              0.9610554453512016
+            ],
+            "zero_rmse": 2.3157612839373325,
+            "relative_mse_explained": 0.8595735959611496,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.505322502361416,
+            "rmse_ci95": [
+              1.2466850028282632,
+              1.7467227023094518
+            ],
+            "correlation": 0.7012941930773325,
+            "correlation_ci95": [
+              0.6005784251336019,
+              0.7770409946589918
+            ],
+            "zero_rmse": 2.0885796362384146,
+            "relative_mse_explained": 0.48053411788240863,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.647407467825085,
+            "rmse_ci95": [
+              1.246630094392592,
+              2.0177757448765097
+            ],
+            "correlation": 0.7038033790980894,
+            "correlation_ci95": [
+              0.5203073084919614,
+              0.8271462946993615
+            ],
+            "zero_rmse": 2.3157612839373325,
+            "relative_mse_explained": 0.4939254671604948,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.4714057340700883,
+            "rmse_ci95": [
+              1.1404846710729095,
+              1.8151578590878454
+            ],
+            "correlation": 0.7800174911714206,
+            "correlation_ci95": [
+              0.659266326875929,
+              0.8633700788430732
+            ],
+            "zero_rmse": 2.3887325894186415,
+            "relative_mse_explained": 0.6205716135247438,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.5142099300493204,
+            "rmse_ci95": [
+              1.2379758225868271,
+              1.7872640731331952
+            ],
+            "correlation": 0.8047888453653514,
+            "correlation_ci95": [
+              0.6812874469855993,
+              0.874538158039991
+            ],
+            "zero_rmse": 2.53842186816226,
+            "relative_mse_explained": 0.6441683464087742,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.4003421277244414,
+            "rmse_ci95": [
+              0.9726383097219263,
+              1.857988238103611
+            ],
+            "correlation": 0.8026732532279316,
+            "correlation_ci95": [
+              0.6473980797329073,
+              0.9044639607951026
+            ],
+            "zero_rmse": 2.3887325894186415,
+            "relative_mse_explained": 0.6563366341966294,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.3203748996555607,
+            "rmse_ci95": [
+              1.021698339544777,
+              1.629758609649386
+            ],
+            "correlation": 0.8540652345507311,
+            "correlation_ci95": [
+              0.7436229796232167,
+              0.9156070707408841
+            ],
+            "zero_rmse": 2.53842186816226,
+            "relative_mse_explained": 0.7294379264791855,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 1.907008709572577,
+            "rmse_ci95": [
+              1.5647341848174103,
+              2.233973269754621
+            ],
+            "correlation": 0.6051303556680765,
+            "correlation_ci95": [
+              0.4583184422668335,
+              0.7255641027337605
+            ],
+            "zero_rmse": 2.3887325894186415,
+            "relative_mse_explained": 0.36266130945621966,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.9466800094271204,
+            "rmse_ci95": [
+              1.5204729580300604,
+              2.34874451058749
+            ],
+            "correlation": 0.6473521140931225,
+            "correlation_ci95": [
+              0.4459658798018351,
+              0.7906300192199649
+            ],
+            "zero_rmse": 2.53842186816226,
+            "relative_mse_explained": 0.4118859737944798,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "native_relation_differences": {
+        "full_native": {
+          "signed": {
+            "mean": 5.609013952314854,
+            "ci95": [
+              4.870436959154904,
+              6.366987641714513
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 5.211118705570698,
+            "ci95": [
+              4.425655841641128,
+              6.027321155369282
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_native": {
+          "signed": {
+            "mean": 0.5614666417241096,
+            "ci95": [
+              0.2953493570908904,
+              0.8404931301251051
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.4540294483304024,
+            "ci95": [
+              0.20631976816803219,
+              0.7262410398572673
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_native": {
+          "signed": {
+            "mean": 0.19899115711450577,
+            "ci95": [
+              0.07099428996443749,
+              0.3360027249902486
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.2408093586564064,
+            "ci95": [
+              0.14945098273456098,
+              0.3482726890593765
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_KV_minus_K": {
+          "signed": {
+            "mean": 0.2309679239988327,
+            "ci95": [
+              0.11214499995112419,
+              0.36337597034871566
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.21442905068397522,
+            "ci95": [
+              0.12185410503298044,
+              0.31943205781280987
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_KV_minus_V": {
+          "signed": {
+            "mean": -0.08915712684392929,
+            "ci95": [
+              -0.13300376553088428,
+              -0.04488371219485998
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": -0.03557135909795761,
+            "ci95": [
+              -0.08198073115199804,
+              0.011140427924692609
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "native_relation_effects": {
+        "relation_f0r1": {
+          "signed": {
+            "mean": 3.329482063651085,
+            "ci95": [
+              2.566617422737181,
+              4.109304014593361
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.3759693056344986,
+            "ci95": [
+              2.638848672248423,
+              4.138772283308207
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f1r0": {
+          "signed": {
+            "mean": 0.8765221610665321,
+            "ci95": [
+              0.5800097595900298,
+              1.1803984904661768
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.98818788677454,
+            "ci95": [
+              0.7436354065313935,
+              1.2498481042683123
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_cross_native": {
+          "signed": {
+            "mean": 0.5567524656653404,
+            "ci95": [
+              0.2876673387363553,
+              0.8395269157364957
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.7268428280949593,
+            "ci95": [
+              0.514153803512454,
+              0.9639234527945517
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_within_native": {
+          "signed": {
+            "mean": -0.004714176058769226,
+            "ci95": [
+              -0.13980625569820404,
+              0.13038748018443583
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.2728133797645569,
+            "ci95": [
+              0.18075027484446765,
+              0.3758315188810229
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_kv_native": {
+          "signed": {
+            "mean": 0.19373057037591934,
+            "ci95": [
+              0.07030658684670925,
+              0.32655811347067354
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.3090892806649208,
+            "ci95": [
+              0.21684958580881358,
+              0.41309773009270406
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_k_native": {
+          "signed": {
+            "mean": -0.03723735362291336,
+            "ci95": [
+              -0.08027942031621933,
+              0.0034143598750233607
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.09466022998094559,
+            "ci95": [
+              0.06810094546526671,
+              0.12553232125937935
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_v_native": {
+          "signed": {
+            "mean": 0.28288769721984863,
+            "ci95": [
+              0.16234329156577587,
+              0.4104357156902551
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.3446606397628784,
+            "ci95": [
+              0.2443986117839813,
+              0.45284798052161934
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_within_kv_native": {
+          "signed": {
+            "mean": -0.005260586738586426,
+            "ci95": [
+              -0.03864007648080588,
+              0.025648597627878182
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.0682799220085144,
+            "ci95": [
+              0.0477860689163208,
+              0.09210248570889233
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "reviewer_posthoc_native_relation_prediction": {
+        "relation_answer_cross_k_native": {
+          "rmse": 1.654212340291172,
+          "rmse_ci95": [
+            1.310308353453275,
+            1.9766416558125992
+          ],
+          "correlation": 0.11790944282901433,
+          "correlation_ci95": [
+            -0.1032725718535621,
+            0.32097328255647667
+          ],
+          "zero_rmse": 1.666497658320483,
+          "relative_mse_explained": 0.014689531262790267,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "relation_answer_cross_kv_native": {
+          "rmse": 1.3156705188437814,
+          "rmse_ci95": [
+            1.0480412272339923,
+            1.5767028784918746
+          ],
+          "correlation": 0.6657115409511862,
+          "correlation_ci95": [
+            0.4666890443300041,
+            0.7979133221183607
+          ],
+          "zero_rmse": 1.666497658320483,
+          "relative_mse_explained": 0.376717589398213,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "relation_answer_cross_v_native": {
+          "rmse": 1.3493218435619172,
+          "rmse_ci95": [
+            1.093363994549745,
+            1.5973065673070637
+          ],
+          "correlation": 0.6257938719355032,
+          "correlation_ci95": [
+            0.4395001315841508,
+            0.756550826403833
+          ],
+          "zero_rmse": 1.666497658320483,
+          "relative_mse_explained": 0.34442605227400414,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      },
+      "independent_token_geometry": {
+        "tokenizer": "local Qwen tokenizer.json via Rust tokenizers, no model load",
+        "all_world_namespace_encodings_checked": 192,
+        "all_lengths_roles_anchors_content_and_answer_scopes_exact": true,
+        "all_own_A_tokens_invariant": true,
+        "fixed_labels_and_source_tokens_in_relation_worlds": true,
+        "namespace_changed_only_designated_B_answer_tokens": true,
+        "word_ids_match_preflight": true,
+        "formation_receivers": "all 8 A label anchors",
+        "B_answer_send_scope_tokens": [
+          16
+        ]
+      }
+    },
+    "results/e114/mistral_confirmation": {
+      "completeness_and_sampling": {
+        "read_only_after_complete_run": true,
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 43,
+        "total_scores": 11008,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_gold_names_and_source_balance_recomputed_exact": true,
+        "B_text_multiset_and_reassignment_recomputed_exact": true,
+        "no_within_context_demo_query_overlap": true,
+        "contexts_sha256_matches_run": true,
+        "script_sha256_matches_run": true,
+        "reverse_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "edge_consumption": {
+          "n_layers": 32,
+          "counts_identical_all_layers": true,
+          "each_layer": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          }
+        },
+        "raw_sha256": {
+          "behavior.jsonl": "967febebc2e0da1fd0a4f7c6d2c72e9d075378f873d23d6bfcbd9b9d4ff8ca0d",
+          "contexts.jsonl": "8fe13c12db39ed163f5f6def986b3a624d649cbb6454d7292fe3b811443cba18",
+          "run.json": "4e2f2427b839752dfd0b5b5051cfcade77c0a273f7992814cfca9a1a7423d264",
+          "preflight.json": "05b6dfda3dd6f094532cc9df28065acb8821fd4f2a74349595a229af7d52625f"
+        },
+        "all_43_planned_condition_names_exact": true
+      },
+      "run_controls": {
+        "numeric_max_error": 7.62939453125e-06,
+        "elapsed_seconds": 395.41024804115295,
+        "gpu_hours": 0.10983618001143138,
+        "script_sha256": "2ae995abf40944e5018814cd42c0e0a28b71dfaf90206ec44e3df9890e703499",
+        "contexts_sha256": "8fe13c12db39ed163f5f6def986b3a624d649cbb6454d7292fe3b811443cba18",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "3903138efabfc175322dedabdaf662495bd5bf67",
+        "sender_layer0_KV_max_error": 0.0,
+        "model_revision": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+        "dtype": "float32",
+        "attention": "eager",
+        "model_type": "mistral",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "primary_query_scope": "native all prefix positions; gated controls at all query positions",
+        "native_crossing": "A cached evidence formation x B cached reading environment"
+      },
+      "metrics": {
+        "origin_f1r1": {
+          "accuracy": {
+            "mean": 0.9375,
+            "ci95": [
+              0.890625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.93359375,
+            "ci95": [
+              0.88671875,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_edge_k": {
+          "accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.8359375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.8359375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f0r1": {
+          "accuracy": {
+            "mean": 0.96484375,
+            "ci95": [
+              0.9375,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6328125,
+            "ci95": [
+              0.52734375,
+              0.734375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.65234375,
+            "ci95": [
+              0.546875,
+              0.7578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_native": {
+          "accuracy": {
+            "mean": 0.72265625,
+            "ci95": [
+              0.65625,
+              0.78515625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.72265625,
+            "ci95": [
+              0.65625,
+              0.78515625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_kv_r0": {
+          "accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8125,
+              0.921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8125,
+              0.921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_instruction": {
+          "accuracy": {
+            "mean": 0.7578125,
+            "ci95": [
+              0.6796875,
+              0.828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.7578125,
+            "ci95": [
+              0.6796875,
+              0.828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_label": {
+          "accuracy": {
+            "mean": 0.90625,
+            "ci95": [
+              0.84765625,
+              0.95703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90625,
+            "ci95": [
+              0.84765625,
+              0.95703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f0r1": {
+          "accuracy": {
+            "mean": 0.828125,
+            "ci95": [
+              0.75390625,
+              0.8984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.4921875,
+            "ci95": [
+              0.390625,
+              0.58984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.57421875,
+            "ci95": [
+              0.45703125,
+              0.68359375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_v_r0": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.94921875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.94921875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f0r0": {
+          "accuracy": {
+            "mean": 0.7109375,
+            "ci95": [
+              0.65234375,
+              0.76953125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.7109375,
+            "ci95": [
+              0.65234375,
+              0.76953125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_k_r0": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_within_kv_native": {
+          "accuracy": {
+            "mean": 0.73046875,
+            "ci95": [
+              0.671875,
+              0.7890625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.73046875,
+            "ci95": [
+              0.671875,
+              0.7890625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_label_r1": {
+          "accuracy": {
+            "mean": 0.9375,
+            "ci95": [
+              0.890625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9296875,
+            "ci95": [
+              0.8828125,
+              0.96875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_kv_r0": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f1r0": {
+          "accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.87890625,
+              0.96484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.87890625,
+              0.96484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_kv_r1": {
+          "accuracy": {
+            "mean": 0.921875,
+            "ci95": [
+              0.87109375,
+              0.96484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90234375,
+            "ci95": [
+              0.8515625,
+              0.94921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.95703125,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_kv_r1": {
+          "accuracy": {
+            "mean": 0.95703125,
+            "ci95": [
+              0.921875,
+              0.984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90234375,
+            "ci95": [
+              0.8359375,
+              0.953125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_kv_native": {
+          "accuracy": {
+            "mean": 0.83984375,
+            "ci95": [
+              0.78125,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.83984375,
+            "ci95": [
+              0.78125,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_shared": {
+          "accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.94140625,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.94140625,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_cross_native": {
+          "accuracy": {
+            "mean": 0.78125,
+            "ci95": [
+              0.71875,
+              0.84375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.78125,
+            "ci95": [
+              0.71875,
+              0.84375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "accuracy": {
+            "mean": 0.73046875,
+            "ci95": [
+              0.65234375,
+              0.80078125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.73046875,
+            "ci95": [
+              0.65234375,
+              0.80078125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f0r1": {
+          "accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.78125,
+              0.91796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.78125,
+              0.91796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_v_r0": {
+          "accuracy": {
+            "mean": 0.8359375,
+            "ci95": [
+              0.78125,
+              0.88671875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8359375,
+            "ci95": [
+              0.78125,
+              0.88671875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_edge_k": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_v_r1": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.9609375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.7734375,
+            "ci95": [
+              0.6953125,
+              0.84765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.78125,
+            "ci95": [
+              0.703125,
+              0.85546875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_within_native": {
+          "accuracy": {
+            "mean": 0.71484375,
+            "ci95": [
+              0.65234375,
+              0.77734375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.71484375,
+            "ci95": [
+              0.65234375,
+              0.77734375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_k_r0": {
+          "accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.7890625,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8515625,
+            "ci95": [
+              0.7890625,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate_shared": {
+          "accuracy": {
+            "mean": 0.78515625,
+            "ci95": [
+              0.703125,
+              0.86328125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.78515625,
+            "ci95": [
+              0.703125,
+              0.86328125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f1r1": {
+          "accuracy": {
+            "mean": 0.96484375,
+            "ci95": [
+              0.93359375,
+              0.9883789062499915
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.890625,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.9453125,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_v_native": {
+          "accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.7890625,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84375,
+            "ci95": [
+              0.7890625,
+              0.89453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_label_r1": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.94921875,
+            "ci95": [
+              0.91015625,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94140625,
+              0.9921875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_label_r0": {
+          "accuracy": {
+            "mean": 0.9375,
+            "ci95": [
+              0.890625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9375,
+            "ci95": [
+              0.890625,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate_label": {
+          "accuracy": {
+            "mean": 0.93359375,
+            "ci95": [
+              0.8828125,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.93359375,
+            "ci95": [
+              0.8828125,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_v_r1": {
+          "accuracy": {
+            "mean": 0.921875,
+            "ci95": [
+              0.87109375,
+              0.96875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.76171875,
+            "ci95": [
+              0.68359375,
+              0.8359375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.8125,
+            "ci95": [
+              0.73828125,
+              0.8828125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9765625,
+            "ci95": [
+              0.953125,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_f0r0": {
+          "accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94140625,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94140625,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_edge_k_r1": {
+          "accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.85546875,
+              0.95703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8671875,
+            "ci95": [
+              0.8046875,
+              0.92578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.95703125,
+            "ci95": [
+              0.9140625,
+              0.98828125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f1r0": {
+          "accuracy": {
+            "mean": 0.77734375,
+            "ci95": [
+              0.71484375,
+              0.83984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.77734375,
+            "ci95": [
+              0.71484375,
+              0.83984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_f1r0": {
+          "accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.79296875,
+              0.8984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.84765625,
+            "ci95": [
+              0.79296875,
+              0.8984375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.96875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.96875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_edge_k_r1": {
+          "accuracy": {
+            "mean": 0.96484375,
+            "ci95": [
+              0.9375,
+              0.98828125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.83203125,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.921875,
+            "ci95": [
+              0.87109375,
+              0.96484375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_label_r0": {
+          "accuracy": {
+            "mean": 0.828125,
+            "ci95": [
+              0.76953125,
+              0.87890625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.828125,
+            "ci95": [
+              0.76953125,
+              0.87890625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_k_native": {
+          "accuracy": {
+            "mean": 0.66796875,
+            "ci95": [
+              0.6015625,
+              0.734375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.66796875,
+            "ci95": [
+              0.6015625,
+              0.734375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "single_A_by_polarity": {
+        "False": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 16
+        },
+        "True": {
+          "mean": 0.9765625,
+          "ci95": [
+            0.9375,
+            1.0
+          ],
+          "n_contexts": 16
+        }
+      },
+      "rule_dependence": {
+        "f0r0": {
+          "signed": {
+            "mean": 3.012015398591757,
+            "ci95": [
+              2.511422544904053,
+              3.527984243631362
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.012015398591757,
+            "ci95": [
+              2.511422544904053,
+              3.527984243631362
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f0r1": {
+          "signed": {
+            "mean": 1.0858165100216866,
+            "ci95": [
+              0.851611350942403,
+              1.3275319276377557
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.109777793288231,
+            "ci95": [
+              0.8902011054567993,
+              1.33950014160946
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f1r0": {
+          "signed": {
+            "mean": 1.6838821060955524,
+            "ci95": [
+              1.1605389131233097,
+              2.2166382520459593
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.7743092961609364,
+            "ci95": [
+              1.2877223600633443,
+              2.2708942893892528
+            ],
+            "n_contexts": 32
+          }
+        },
+        "f1r1": {
+          "signed": {
+            "mean": 0.07840213179588318,
+            "ci95": [
+              -0.10507405456155539,
+              0.254415761865675
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.42617808282375336,
+            "ci95": [
+              0.32668070290237666,
+              0.5309707377105951
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_r0": {
+          "signed": {
+            "mean": 1.9620285294950008,
+            "ci95": [
+              1.4224492727778852,
+              2.510325143393129
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.0217574574053288,
+            "ci95": [
+              1.5101230809465052,
+              2.53892603488639
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_r1": {
+          "signed": {
+            "mean": 0.1570380963385105,
+            "ci95": [
+              -0.03514887345954776,
+              0.3435214121825992
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.46238091215491295,
+            "ci95": [
+              0.3545744023285806,
+              0.5776681541465223
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_k_r0": {
+          "signed": {
+            "mean": 2.096416912972927,
+            "ci95": [
+              1.5774562887847423,
+              2.618929004948586
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.1257162541151047,
+            "ci95": [
+              1.624259015917778,
+              2.6355423915199934
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_k_r1": {
+          "signed": {
+            "mean": 0.47104035690426826,
+            "ci95": [
+              0.2993065849877894,
+              0.6492863873951135
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5651484318077564,
+            "ci95": [
+              0.43499199943616984,
+              0.7103878721594807
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_kv_r0": {
+          "signed": {
+            "mean": 2.011628732085228,
+            "ci95": [
+              1.4949571043252945,
+              2.533085015323011
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.051624968647957,
+            "ci95": [
+              1.5542987783439457,
+              2.555215900111943
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_kv_r1": {
+          "signed": {
+            "mean": 0.3524344190955162,
+            "ci95": [
+              0.16932055028155446,
+              0.5371560943312943
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5260667949914932,
+            "ci95": [
+              0.4083323528058827,
+              0.6533424180932342
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_v_r0": {
+          "signed": {
+            "mean": 2.774971477687359,
+            "ci95": [
+              2.3010816513560712,
+              3.2590739680454135
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.774971477687359,
+            "ci95": [
+              2.3010816513560712,
+              3.2590739680454135
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_v_r1": {
+          "signed": {
+            "mean": 0.8373590894043446,
+            "ci95": [
+              0.6016331550665199,
+              1.0759148380719123
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.9141870923340321,
+            "ci95": [
+              0.7202481757849455,
+              1.1199421950615942
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_shared": {
+          "signed": {
+            "mean": 1.3935684822499752,
+            "ci95": [
+              1.176032187603414,
+              1.6110031473450361
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3935684822499752,
+            "ci95": [
+              1.176032187603414,
+              1.6110031473450361
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_label": {
+          "signed": {
+            "mean": 0.14883644878864288,
+            "ci95": [
+              -0.018179549369961023,
+              0.3218944956548511
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.3950956091284752,
+            "ci95": [
+              0.29000665778294205,
+              0.5142213339917361
+            ],
+            "n_contexts": 32
+          }
+        },
+        "gate_edge_k": {
+          "signed": {
+            "mean": 0.5742312744259834,
+            "ci95": [
+              0.3954332223162055,
+              0.7587705759331579
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.6325905695557594,
+            "ci95": [
+              0.4794501950033009,
+              0.7943466812372205
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "stage_contrasts": {
+        "A_formation_B_shared": {
+          "signed": {
+            "mean": 1.3281332924962044,
+            "ci95": [
+              1.1125153415836393,
+              1.56466512652114
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.2377061024308205,
+            "ci95": [
+              1.0364130082540215,
+              1.460000886954367
+            ],
+            "n_contexts": 32
+          }
+        },
+        "A_formation_B_far": {
+          "signed": {
+            "mean": 1.0074143782258034,
+            "ci95": [
+              0.8059470752254129,
+              1.2231624349951744
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.6835997104644775,
+            "ci95": [
+              0.46372627234086394,
+              0.8998816934414205
+            ],
+            "n_contexts": 32
+          }
+        },
+        "B_reading_A_shared": {
+          "signed": {
+            "mean": 1.9261988885700703,
+            "ci95": [
+              1.282822233811021,
+              2.5735853020101787
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.902237605303526,
+            "ci95": [
+              1.2663266520015894,
+              2.5371578141115605
+            ],
+            "n_contexts": 32
+          }
+        },
+        "B_reading_A_far": {
+          "signed": {
+            "mean": 1.6054799742996693,
+            "ci95": [
+              1.0117191861383616,
+              2.212478331848978
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.348131213337183,
+            "ci95": [
+              0.8279955579899252,
+              1.8802631651982662
+            ],
+            "n_contexts": 32
+          }
+        },
+        "total_namespace": {
+          "signed": {
+            "mean": 2.9336132667958736,
+            "ci95": [
+              2.326875382382423,
+              3.555489583034068
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.5858373157680035,
+            "ci95": [
+              2.066839441563934,
+              3.1175257166847583
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_effect_B_shared": {
+          "signed": {
+            "mean": 1.049986869096756,
+            "ci95": [
+              0.8578887387178838,
+              1.2621973993256688
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.9902579411864281,
+            "ci95": [
+              0.8226963317021727,
+              1.1681545604020356
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_effect_B_far": {
+          "signed": {
+            "mean": 0.928778413683176,
+            "ci95": [
+              0.7313497544266283,
+              1.1427910057827828
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.647396881133318,
+            "ci95": [
+              0.4381069626659155,
+              0.8517494892701506
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_K_B_shared": {
+          "signed": {
+            "mean": 0.9155984856188297,
+            "ci95": [
+              0.7337442995049059,
+              1.1188619149848817
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.8862991444766521,
+            "ci95": [
+              0.7112356173805893,
+              1.0866469812579451
+            ],
+            "n_contexts": 32
+          }
+        },
+        "edge_K_B_far": {
+          "signed": {
+            "mean": 0.6147761531174183,
+            "ci95": [
+              0.4357021600008011,
+              0.8068285543471574
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5446293614804745,
+            "ci95": [
+              0.36641518184915184,
+              0.742165055964142
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "stage_interaction": {
+        "signed": {
+          "mean": 0.320718914270401,
+          "ci95": [
+            0.18911145450547337,
+            0.4578368882648642
+          ],
+          "n_contexts": 32
+        },
+        "absolute_rule_amplitude": {
+          "mean": 0.5541063919663429,
+          "ci95": [
+            0.2772614449262619,
+            0.8734866309911005
+          ],
+          "n_contexts": 32
+        }
+      },
+      "reviewer_posthoc_raw_query_interaction": {
+        "rule_double_contrast_RMS": 0.7445216857559054,
+        "mean_context_absolute_signed_interaction": {
+          "mean": 0.409223809838295,
+          "ci95": [
+            0.3149542035534978,
+            0.517537925671786
+          ],
+          "n_contexts": 32
+        },
+        "note": "Not a replacement for registered signed mean; absolute rule amplitude interaction alone cannot establish nonadditivity of raw computation."
+      },
+      "native_namespace_prediction": {
+        "label_interface_B0_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.4236731407599779,
+            "rmse_ci95": [
+              0.35079447232998134,
+              0.4964666649931029
+            ],
+            "correlation": 0.8653999143140458,
+            "correlation_ci95": [
+              0.8307977779668498,
+              0.9002440182196659
+            ],
+            "zero_rmse": 0.8309596110099198,
+            "relative_mse_explained": 0.7400426902154741,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.5468908898225449,
+            "rmse_ci95": [
+              0.438486740583004,
+              0.6522746034747934
+            ],
+            "correlation": 0.9184051818013581,
+            "correlation_ci95": [
+              0.8942800523058316,
+              0.9435161101540442
+            ],
+            "zero_rmse": 1.3596190567283486,
+            "relative_mse_explained": 0.8382043311993361,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B0_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.3188233429248837,
+            "rmse_ci95": [
+              0.2684158047866885,
+              0.3711269090373124
+            ],
+            "correlation": 0.9290051906044376,
+            "correlation_ci95": [
+              0.9093227420295394,
+              0.9481789967667587
+            ],
+            "zero_rmse": 0.8309596110099198,
+            "relative_mse_explained": 0.8527889563470837,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.3876719917147808,
+            "rmse_ci95": [
+              0.3140245091065537,
+              0.46010489155818535
+            ],
+            "correlation": 0.9591151924122918,
+            "correlation_ci95": [
+              0.945477824023955,
+              0.9728391320771966
+            ],
+            "zero_rmse": 1.3596190567283486,
+            "relative_mse_explained": 0.91869928504863,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B0_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.6478843627337469,
+            "rmse_ci95": [
+              0.5753651782997838,
+              0.7237629943574937
+            ],
+            "correlation": 0.6313934465332057,
+            "correlation_ci95": [
+              0.5374280769246567,
+              0.7126410124950604
+            ],
+            "zero_rmse": 0.8309596110099198,
+            "relative_mse_explained": 0.39209577000804907,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.027679978941755,
+            "rmse_ci95": [
+              0.8765886267311453,
+              1.1987203747117239
+            ],
+            "correlation": 0.7400120744114194,
+            "correlation_ci95": [
+              0.6168459560547266,
+              0.822905734487907
+            ],
+            "zero_rmse": 1.3596190567283486,
+            "relative_mse_explained": 0.4286775297603004,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.47633684773095714,
+            "rmse_ci95": [
+              0.41347539403419686,
+              0.5368276149194801
+            ],
+            "correlation": 0.8709863784780939,
+            "correlation_ci95": [
+              0.8317664086725541,
+              0.9016359947575056
+            ],
+            "zero_rmse": 0.9483901339979443,
+            "relative_mse_explained": 0.7477365669368242,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.6704174665538299,
+            "rmse_ci95": [
+              0.5555086276944351,
+              0.7836977376885154
+            ],
+            "correlation": 0.9325752776751635,
+            "correlation_ci95": [
+              0.9127446512657884,
+              0.9500971332073112
+            ],
+            "zero_rmse": 1.6104165464235232,
+            "relative_mse_explained": 0.8266937628603641,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.3707208829781766,
+            "rmse_ci95": [
+              0.33045505883522186,
+              0.40954501315164443
+            ],
+            "correlation": 0.9273564783890235,
+            "correlation_ci95": [
+              0.900568066083613,
+              0.9483952677963958
+            ],
+            "zero_rmse": 0.9483901339979443,
+            "relative_mse_explained": 0.8472011636447592,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.5134605922448436,
+            "rmse_ci95": [
+              0.439301408646163,
+              0.5817821809666615
+            ],
+            "correlation": 0.9658449095432361,
+            "correlation_ci95": [
+              0.9506337407728601,
+              0.9776266068877775
+            ],
+            "zero_rmse": 1.6104165464235232,
+            "relative_mse_explained": 0.8983428835518934,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B0_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.7716553068507621,
+            "rmse_ci95": [
+              0.6972977664900099,
+              0.8459968110855551
+            ],
+            "correlation": 0.5922451925171287,
+            "correlation_ci95": [
+              0.47138781375336186,
+              0.6912816301771374
+            ],
+            "zero_rmse": 0.9483901339979443,
+            "relative_mse_explained": 0.3379776680180352,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.2748442645154794,
+            "rmse_ci95": [
+              1.123249026402882,
+              1.4367883500259648
+            ],
+            "correlation": 0.7372610836199318,
+            "correlation_ci95": [
+              0.596033225110999,
+              0.8279141687624059
+            ],
+            "zero_rmse": 1.6104165464235232,
+            "relative_mse_explained": 0.37333156416878055,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.46874197585170685,
+            "rmse_ci95": [
+              0.4236455725335234,
+              0.5113612122695329
+            ],
+            "correlation": 0.899498981941052,
+            "correlation_ci95": [
+              0.870045531659776,
+              0.921898317462964
+            ],
+            "zero_rmse": 1.053532268759875,
+            "relative_mse_explained": 0.8020424782152175,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.6193422905676399,
+            "rmse_ci95": [
+              0.5336418061344584,
+              0.699900789605016
+            ],
+            "correlation": 0.9069514813798071,
+            "correlation_ci95": [
+              0.8645405027679343,
+              0.9371899688504854
+            ],
+            "zero_rmse": 1.3240701059726518,
+            "relative_mse_explained": 0.7812039329838778,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.3187211719956176,
+            "rmse_ci95": [
+              0.28864414267347915,
+              0.34856105282267796
+            ],
+            "correlation": 0.9574472426742379,
+            "correlation_ci95": [
+              0.9443350973144026,
+              0.9672505740116494
+            ],
+            "zero_rmse": 1.053532268759875,
+            "relative_mse_explained": 0.908477864917345,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.3963336396856655,
+            "rmse_ci95": [
+              0.34182194855221465,
+              0.44854218258293765
+            ],
+            "correlation": 0.9678502719911503,
+            "correlation_ci95": [
+              0.9519423405801927,
+              0.9791091245576705
+            ],
+            "zero_rmse": 1.3240701059726518,
+            "relative_mse_explained": 0.9104016709771441,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "label_interface_B1_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.8217235684646044,
+            "rmse_ci95": [
+              0.7198678583441892,
+              0.917935380195625
+            ],
+            "correlation": 0.6063702939049578,
+            "correlation_ci95": [
+              0.5085427176726247,
+              0.6914114457137447
+            ],
+            "zero_rmse": 1.053532268759875,
+            "relative_mse_explained": 0.39164679199280716,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.926784237430819,
+            "rmse_ci95": [
+              0.7546199598778208,
+              1.1114557157245295
+            ],
+            "correlation": 0.7789355913566018,
+            "correlation_ci95": [
+              0.7017571079051386,
+              0.844268340548618
+            ],
+            "zero_rmse": 1.3240701059726518,
+            "relative_mse_explained": 0.5100685524691875,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_k": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.5092663655446504,
+            "rmse_ci95": [
+              0.4581145215547034,
+              0.5610726854316521
+            ],
+            "correlation": 0.8921775283421446,
+            "correlation_ci95": [
+              0.8568607868525249,
+              0.9181823275252314
+            ],
+            "zero_rmse": 1.095848258089097,
+            "relative_mse_explained": 0.7840321299738857,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.6670161797053387,
+            "rmse_ci95": [
+              0.5865877147742862,
+              0.7416993291085348
+            ],
+            "correlation": 0.9094401670736633,
+            "correlation_ci95": [
+              0.8698000251082665,
+              0.937960322582698
+            ],
+            "zero_rmse": 1.3913342191263942,
+            "relative_mse_explained": 0.770168366213611,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_kv": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.357734360524077,
+            "rmse_ci95": [
+              0.32647357644550856,
+              0.39029742301232173
+            ],
+            "correlation": 0.9515393000599084,
+            "correlation_ci95": [
+              0.936209701132076,
+              0.9633200405447456
+            ],
+            "zero_rmse": 1.095848258089097,
+            "relative_mse_explained": 0.8934335571691278,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.4540951598054516,
+            "rmse_ci95": [
+              0.4052791861780729,
+              0.49962404680168676
+            ],
+            "correlation": 0.965367544108749,
+            "correlation_ci95": [
+              0.9490431627490882,
+              0.9773401320327787
+            ],
+            "zero_rmse": 1.3913342191263942,
+            "relative_mse_explained": 0.8934800846679707,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_A_formation_B1_v": {
+          "fit": false,
+          "coefficient": 1,
+          "raw": {
+            "rmse": 0.8631202264997214,
+            "rmse_ci95": [
+              0.752407189771022,
+              0.9693933999759661
+            ],
+            "correlation": 0.5973242852784384,
+            "correlation_ci95": [
+              0.48952666205916545,
+              0.6905380421235024
+            ],
+            "zero_rmse": 1.095848258089097,
+            "relative_mse_explained": 0.3796429175039403,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.0039598538439083,
+            "rmse_ci95": [
+              0.839124737952837,
+              1.182656254423986
+            ],
+            "correlation": 0.7601417932296075,
+            "correlation_ci95": [
+              0.6789698082234572,
+              0.8279907782225979
+            ],
+            "zero_rmse": 1.3913342191263942,
+            "relative_mse_explained": 0.4793213617705664,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "native_relation_differences": {
+        "full_native": {
+          "signed": {
+            "mean": 2.9854519106447697,
+            "ci95": [
+              2.4751634783111514,
+              3.5163120314478866
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.861080091446638,
+            "ci95": [
+              2.3703725710511208,
+              3.3704345257021484
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_native": {
+          "signed": {
+            "mean": 0.38211170211434364,
+            "ci95": [
+              0.24715732652693986,
+              0.5262033033184706
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.31874673441052437,
+            "ci95": [
+              0.18942939080297946,
+              0.4575223038904368
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_native": {
+          "signed": {
+            "mean": 0.28999466076493263,
+            "ci95": [
+              0.22362518245354296,
+              0.35820197081193317
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.2625350095331669,
+            "ci95": [
+              0.19740198720246555,
+              0.3294746614061295
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_KV_minus_K": {
+          "signed": {
+            "mean": 0.31710298359394073,
+            "ci95": [
+              0.2371183772571385,
+              0.39929488906636834
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.240610733628273,
+            "ci95": [
+              0.18630434991791844,
+              0.2970155627466738
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_KV_minus_V": {
+          "signed": {
+            "mean": -0.041684266179800034,
+            "ci95": [
+              -0.07410634635016322,
+              -0.012903257552534343
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": -0.03356143459677696,
+            "ci95": [
+              -0.06679816972464322,
+              -0.0036205411888659326
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "native_relation_effects": {
+        "relation_f0r1": {
+          "signed": {
+            "mean": 1.7438128739595413,
+            "ci95": [
+              1.2611087738536297,
+              2.237147446442394
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.7469813972711563,
+            "ci95": [
+              1.2660126031376422,
+              2.2396588559262454
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_f1r0": {
+          "signed": {
+            "mean": 0.470049399882555,
+            "ci95": [
+              0.30825748201459646,
+              0.6434863914735615
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5161030180752277,
+            "ci95": [
+              0.37447844110429285,
+              0.6733153568580745
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_cross_native": {
+          "signed": {
+            "mean": 0.39227114990353584,
+            "ci95": [
+              0.25961021706461906,
+              0.5370836865156888
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.4093363471329212,
+            "ci95": [
+              0.28151749409735205,
+              0.5469563562422989
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_label_within_native": {
+          "signed": {
+            "mean": 0.0101594477891922,
+            "ci95": [
+              -0.03250950928777456,
+              0.048406215757131554
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.09058961272239685,
+            "ci95": [
+              0.06587522709742188,
+              0.11885165134444832
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_kv_native": {
+          "signed": {
+            "mean": 0.29210593923926353,
+            "ci95": [
+              0.22419559601694344,
+              0.3606634075753391
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.3012712858617306,
+            "ci95": [
+              0.23818971030414104,
+              0.3659196013584733
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_k_native": {
+          "signed": {
+            "mean": -0.0249970443546772,
+            "ci95": [
+              -0.05465765129774809,
+              0.0019160169176757021
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.060660552233457565,
+            "ci95": [
+              0.04146559108048677,
+              0.08348251115530725
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_cross_v_native": {
+          "signed": {
+            "mean": 0.33379020541906357,
+            "ci95": [
+              0.2613073824904859,
+              0.40828897655010216
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.33483272045850754,
+            "ci95": [
+              0.26285825204104185,
+              0.40861514518037434
+            ],
+            "n_contexts": 32
+          }
+        },
+        "relation_answer_within_kv_native": {
+          "signed": {
+            "mean": 0.002111278474330902,
+            "ci95": [
+              -0.018529953062534334,
+              0.020411269739270203
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.03873627632856369,
+            "ci95": [
+              0.02537736762315035,
+              0.05417471602559089
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "reviewer_posthoc_native_relation_prediction": {
+        "relation_answer_cross_k_native": {
+          "rmse": 0.9026359503928654,
+          "rmse_ci95": [
+            0.7161782285860379,
+            1.0816581163192425
+          ],
+          "correlation": -0.39831994875369076,
+          "correlation_ci95": [
+            -0.5880978927468302,
+            -0.12355519585097886
+          ],
+          "zero_rmse": 0.8556044659101228,
+          "relative_mse_explained": -0.11295900551830651,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "relation_answer_cross_kv_native": {
+          "rmse": 0.5230133131731607,
+          "rmse_ci95": [
+            0.42217444521947706,
+            0.6187736333479954
+          ],
+          "correlation": 0.825049986235785,
+          "correlation_ci95": [
+            0.7245978105054591,
+            0.8975606562393109
+          ],
+          "zero_rmse": 0.8556044659101228,
+          "relative_mse_explained": 0.6263375971374561,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "relation_answer_cross_v_native": {
+          "rmse": 0.5678375473871922,
+          "rmse_ci95": [
+            0.44770034107468204,
+            0.6861822177841608
+          ],
+          "correlation": 0.7625463286990375,
+          "correlation_ci95": [
+            0.6196727855891502,
+            0.8709442340084838
+          ],
+          "zero_rmse": 0.8556044659101228,
+          "relative_mse_explained": 0.5595444092563588,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      },
+      "independent_token_geometry": {
+        "tokenizer_path": "/home/xiang/.cache/huggingface/hub/models--mistralai--Mistral-7B-v0.3/snapshots/caa1feb0e54d415e2df31207e5f4e273e33509b1/tokenizer.json",
+        "tokenizer_sha256": "e553af6fff7d7ad76e830608b218c5c0b0822998d5a1a96099a74cd3c1cb1a49",
+        "method": "Rust tokenizers CPU only, no model load",
+        "all_world_namespace_encodings_checked": 192,
+        "all_lengths_roles_anchors_content_and_answer_scopes_exact": true,
+        "all_own_A_tokens_invariant": true,
+        "fixed_labels_and_source_tokens_in_relation_worlds": true,
+        "namespace_changed_only_designated_B_answer_tokens": true,
+        "word_ids_match_preflight": true,
+        "formation_receivers": "all 8 A label anchors",
+        "B_answer_send_scope_tokens": [
+          32
+        ],
+        "blockwise_vs_whole_literal_string_encoding_differs_contexts": 32
+      }
+    }
+  },
+  "frozen_calculation_sha256_before_author_comparison": "22888db3ece4f03a677dbae561572994c6d8e488fa131bffa0cb5836a92b22ab",
+  "author_comparison_after_freeze": {
+    "results/e113/mistral_confirmation": {
+      "number_of_checks": 123,
+      "maximum_absolute_difference": 1.1102230246251565e-16
+    },
+    "results/e114/qwen3_confirmation": {
+      "number_of_checks": 218,
+      "maximum_absolute_difference": 2.886579864025407e-15
+    },
+    "results/e114/mistral_confirmation": {
+      "number_of_checks": 218,
+      "maximum_absolute_difference": 4.773959005888173e-15
+    }
+  },
+  "notes": [
+    "No model/GPU was started; all computations use complete raw records and recorded run controls.",
+    "All primary values were frozen before author analysis, cards, claims or synthesis for E113/E114 were read.",
+    "F switches all A cached evidence; R switches all contextualized B cached evidence available for query reading. R is not a fixed reader or pure direct label copying.",
+    "Absolute-amplitude interaction alone cannot establish nonadditivity; signed interaction is reported and positive in both confirmations.",
+    "K-only/V-only refer to direct edge interchange; active descendants and query states can change.",
+    "Native relation reconstruction diagnostics are reviewer POST-HOC and do not redefine primary readouts.",
+    "Mistral blockwise prefix encoding differs from whole literal-string encoding in every confirmation context: enc(newline-newline) has leading metaspace token, with 32 B-answer-scope tokens versus Qwen 16. The matched native/split controls concern the actual blockwise token stream."
+  ]
+}

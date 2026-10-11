@@ -1,0 +1,239 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e113/mistral_confirmation",
+    "n": 32,
+    "seed": 113101,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        1476
+      ],
+      [
+        5849
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    355,
+    351,
+    356,
+    364,
+    362,
+    353,
+    361,
+    356,
+    352,
+    361,
+    366,
+    367,
+    353,
+    370,
+    358,
+    352,
+    359,
+    351,
+    361,
+    370,
+    370,
+    362,
+    357,
+    365,
+    363,
+    368,
+    356,
+    361,
+    358,
+    360,
+    366,
+    359
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional",
+      "magnificent",
+      "incredible"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable",
+      "disastrous",
+      "displeasing"
+    ],
+    "templates": [
+      "The dish was {a}.",
+      "The dinner was {a}.",
+      "The lunch was really {a}.",
+      "The sandwich was simply {a}.",
+      "This salad was {a}.",
+      "Our breakfast was {a}.",
+      "The pizza was {a}.",
+      "The experience was {a}.",
+      "The dish tasted {a}.",
+      "The dinner tasted remarkably {a}."
+    ]
+  },
+  "valid_quartet_length_bins": 4,
+  "quartet_lengths": [
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      16,
+      19
+    ],
+    [
+      17,
+      19
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      17,
+      19
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      16
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      16,
+      19
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      18
+    ],
+    [
+      17,
+      19
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      16,
+      19
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      16,
+      19
+    ],
+    [
+      16,
+      19
+    ],
+    [
+      19,
+      16
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      16,
+      19
+    ]
+  ],
+  "reversed_contexts": 16,
+  "patch_scope": "B answer messages at A label formation; only recomputed A label KV consumed by A-only query"
+}

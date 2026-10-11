@@ -120,3 +120,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E110](E110-learned-relation-fixed-label-stream.md) | 固定label stream的MHS关系反事实 | DONE-DISCOVERY；同类置换已大、关系差CI跨0，控制不足保留，不加n救故事 |
 | [E111](E111-polarity-relation-versus-namespace.md) | 明确情绪关联与命名在同任务的功能差异 | DONE-VALIDATION；32新词/句式，single100%，答案V传关联差.618[.446,.813]，C22 L2 |
 | [E112](E112-formation-mechanism-mistral-family.md) | 第二模型家族是否保持已冻结的形成路径 | DONE-CONFIRMATION；Mistral base16→32新ctx，答案K减弱.0611[.0284,.0986]，固定rule重建r=.966；独立校对通过 |
+| [E113](E113-relation-content-mistral.md) | 固定标签的关联传递是否保持于另一家族 | DONE-CONFIRMATION；Mistral16→32新词句，答案KV cross−within .404[.313,.499]；C22两家族L2，原始复算通过 |
+| [E114](E114-native-formation-reading-crossing.md) | 形成路径怎样参与正常多来源判断 | DONE-CONFIRMATION；Qwen16→32、Mistral32；形成条件作用2.098/1.238，signed交互.775/.321；原生关联亦保持，C23有界L2；559项独立校对通过 |

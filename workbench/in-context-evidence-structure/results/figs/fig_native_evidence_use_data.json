@@ -1,0 +1,91 @@
+{
+  "sources": [
+    {
+      "directory": "results/e114/qwen3_confirmation",
+      "signed_interaction": {
+        "mean": 0.7746748253703117,
+        "ci95": [
+          0.1131322441622615,
+          1.4402963057160376
+        ],
+        "n_contexts": 32
+      },
+      "native_label_reconstruction": [
+        {
+          "rmse": 1.5604734526573405,
+          "rmse_ci95": [
+            1.229864612613163,
+            1.8863778082226124
+          ],
+          "correlation": 0.8994506037000953,
+          "correlation_ci95": [
+            0.8213205123091195,
+            0.9439232274112999
+          ],
+          "zero_rmse": 3.387934345892945,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        {
+          "rmse": 0.8677970637097187,
+          "rmse_ci95": [
+            0.6921985127306656,
+            1.068879139442899
+          ],
+          "correlation": 0.9302829712169147,
+          "correlation_ci95": [
+            0.8595748008192076,
+            0.9609304763294103
+          ],
+          "zero_rmse": 2.3157612839373325,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      ]
+    },
+    {
+      "directory": "results/e114/mistral_confirmation",
+      "signed_interaction": {
+        "mean": 0.320718914270401,
+        "ci95": [
+          0.18745762687176465,
+          0.4540976356714963
+        ],
+        "n_contexts": 32
+      },
+      "native_label_reconstruction": [
+        {
+          "rmse": 0.3876719917147808,
+          "rmse_ci95": [
+            0.31336412712360306,
+            0.4594197695264433
+          ],
+          "correlation": 0.9591151924122896,
+          "correlation_ci95": [
+            0.9452661883772269,
+            0.9725061803223649
+          ],
+          "zero_rmse": 1.3596190567283486,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        {
+          "rmse": 0.3963336396856655,
+          "rmse_ci95": [
+            0.3412125059677085,
+            0.4489989134042123
+          ],
+          "correlation": 0.9678502719911505,
+          "correlation_ci95": [
+            0.9519157676615964,
+            0.9790760708495477
+          ],
+          "zero_rmse": 1.3240701059726518,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      ]
+    }
+  ],
+  "caption": "Each model has 32 independently sampled validation contexts. Top: the signed B-rule contrast changes when A-position caches are drawn from shared/far namespace formation, under both fixed B cache environments. Nonparallel lines are supported by a paired signed interaction, rather than an absolute-value interaction alone. Bottom: donor-assisted coefficient-one historical-answer KV reconstruction of the native A-label intervention. All query positions may read all sources. Factors are token-position cache groups; both groups are contextualized and the live reader can evolve. Mistral uses the explicitly recorded block-tokenized stream with its extra SentencePiece separator spaces, not literal whole-string tokenization."
+}
