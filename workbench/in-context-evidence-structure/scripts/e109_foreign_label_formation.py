@@ -157,10 +157,11 @@ def main():
             kk=key.clone();kk[...,sender,:]=src.keys[...,sender,:]
         if 'v' in active['kind']:
             vv=value.clone();vv[...,sender,:]=src.values[...,sender,:]
-        mask=None if attention_mask is None else attention_mask[:,:,receivers,:]
-        alt,aw=native_eager(module,query[:,:,receivers,:],kk,vv,mask,scaling,dropout,**kwargs)
-        out=out.clone();out[:,receivers]=alt
-        weights=weights.clone();weights[:,:,receivers,:]=aw
+        # Keep native GEMM geometry. Computing only eight receiver rows caused
+        # a measurable FP32 self-interchange drift after many layers.
+        alt,aw=native_eager(module,query,kk,vv,attention_mask,scaling,dropout,**kwargs)
+        out=out.clone();out[:,receivers]=alt[:,receivers]
+        weights=weights.clone();weights[:,:,receivers,:]=aw[:,:,receivers,:]
         d=covered[module.layer_idx];mode=active['mode'];d[mode]=d.get(mode,0)+1
         return out,weights
     mq.eager_attention_forward=edge_eager

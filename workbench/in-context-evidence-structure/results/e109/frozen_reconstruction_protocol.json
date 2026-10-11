@@ -1,0 +1,75 @@
+{
+  "declared_after": "discovery_fixed 16 contexts",
+  "confirmation_results_inspected": false,
+  "coefficient": 1.0,
+  "fit": false,
+  "target": "delta far-label KV minus shared gate at each context/world/query",
+  "predictors": [
+    "answer_k",
+    "answer_kv",
+    "answer_v",
+    "prelabel_kv",
+    "all_b_kv"
+  ],
+  "selection": "all five reported; no best-head/layer/coefficient fit",
+  "discovery": {
+    "answer_k": {
+      "rmse": 0.8222411254602425,
+      "correlation": 0.9675717554061839,
+      "target_zero_rmse": 3.2392890892646045,
+      "n_scores": 256
+    },
+    "answer_kv": {
+      "rmse": 0.6785001533332327,
+      "correlation": 0.9782686977948991,
+      "target_zero_rmse": 3.2392890892646045,
+      "n_scores": 256
+    },
+    "answer_v": {
+      "rmse": 2.6229983974868465,
+      "correlation": 0.6369809546778887,
+      "target_zero_rmse": 3.2392890892646045,
+      "n_scores": 256
+    },
+    "prelabel_kv": {
+      "rmse": 3.227027635368771,
+      "correlation": 0.16254090345686825,
+      "target_zero_rmse": 3.2392890892646045,
+      "n_scores": 256
+    },
+    "all_b_kv": {
+      "rmse": 0.6824171287072596,
+      "correlation": 0.9780863513194686,
+      "target_zero_rmse": 3.2392890892646045,
+      "n_scores": 256
+    }
+  },
+  "double_contrast_definition": "(z_mode aligned-z_mode conflict)-(z_shared aligned-z_shared conflict); target=mode far_label. Removes source-rule-independent alias shifts.",
+  "discovery_double_contrast": {
+    "answer_k": {
+      "rmse": 0.878256401298298,
+      "correlation": 0.9653330018891638,
+      "zero_rmse": 3.417827048327725
+    },
+    "answer_kv": {
+      "rmse": 0.7024579813818899,
+      "correlation": 0.9777416925975495,
+      "zero_rmse": 3.417827048327725
+    },
+    "answer_v": {
+      "rmse": 3.089894098941858,
+      "correlation": 0.4426687006341563,
+      "zero_rmse": 3.417827048327725
+    },
+    "prelabel_kv": {
+      "rmse": 3.3959485636879676,
+      "correlation": 0.17500738599014626,
+      "zero_rmse": 3.417827048327725
+    },
+    "all_b_kv": {
+      "rmse": 0.6844735065825739,
+      "correlation": 0.9790331595960537,
+      "zero_rmse": 3.417827048327725
+    }
+  }
+}

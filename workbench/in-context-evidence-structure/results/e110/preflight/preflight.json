@@ -1,0 +1,120 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e110/preflight",
+    "n": 16,
+    "seed": 110001,
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        6092
+      ],
+      [
+        20836
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    733,
+    559,
+    568,
+    594,
+    450,
+    764,
+    520,
+    619,
+    564,
+    558,
+    623,
+    670,
+    575,
+    668,
+    600,
+    728
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "valid_quartet_length_bins": 96,
+  "quartet_lengths": [
+    [
+      66,
+      35
+    ],
+    [
+      36,
+      18
+    ],
+    [
+      39,
+      17
+    ],
+    [
+      54,
+      25
+    ],
+    [
+      31,
+      18
+    ],
+    [
+      58,
+      40
+    ],
+    [
+      23,
+      34
+    ],
+    [
+      36,
+      56
+    ],
+    [
+      23,
+      30
+    ],
+    [
+      35,
+      29
+    ],
+    [
+      71,
+      17
+    ],
+    [
+      44,
+      56
+    ],
+    [
+      48,
+      29
+    ],
+    [
+      49,
+      44
+    ],
+    [
+      38,
+      35
+    ],
+    [
+      32,
+      51
+    ]
+  ],
+  "reversed_contexts": 7,
+  "patch_scope": "B answer messages at A label formation; only recomputed A label KV consumed by A-only query"
+}
