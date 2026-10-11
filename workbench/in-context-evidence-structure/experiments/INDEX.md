@@ -115,3 +115,8 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E105](E105-inferred-criterion-memory-use.md) | 来源分组推断前后的内部记忆能否与新Actor私人映射组合 | DONE-PILOT；16标准正确，608机制行；after有部分定向作用但EOS，转原生续写测同记忆 |
 | [E106](E106-inherited-rule-input-mediation.md) | 历史namespace对A标签证据的作用是否经过A输入编码 | DONE-CONFIRMATION；16→32新ctx，label KV减少rule幅度.429[.250,.632]，评论内容中介弱 |
 | [E107](E107-criterion-memory-native-continuation.md) | 同记忆交换后的原生推理是否能执行criterion×Owner私人映射 | DONE-PILOT；480交叉＋4self，0未知；Own p因果参与，after混合56.25%、增益CI触零，结束此接口扩展 |
+| [E108](E108-prelabel-packet-versus-label-context.md) | 完整prelabel与label形成路径竞争 | DONE-CONFIRMATION；16→32，label恢复.459[.287,.639]，完整packet恢复弱 |
+| [E109](E109-foreign-messages-at-label-formation.md) | 历史答案与输入/来源消息如何改变A label形成 | DONE-CONFIRMATION；答案K减少B-rule .561[.360,.772]；冻结逐query rule重建r=.969，结合E111/E112与独立校对C21有界L3 |
+| [E110](E110-learned-relation-fixed-label-stream.md) | 固定label stream的MHS关系反事实 | DONE-DISCOVERY；同类置换已大、关系差CI跨0，控制不足保留，不加n救故事 |
+| [E111](E111-polarity-relation-versus-namespace.md) | 明确情绪关联与命名在同任务的功能差异 | DONE-VALIDATION；32新词/句式，single100%，答案V传关联差.618[.446,.813]，C22 L2 |
+| [E112](E112-formation-mechanism-mistral-family.md) | 第二模型家族是否保持已冻结的形成路径 | DONE-CONFIRMATION；Mistral base16→32新ctx，答案K减弱.0611[.0284,.0986]，固定rule重建r=.966；独立校对通过 |

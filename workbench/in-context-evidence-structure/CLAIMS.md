@@ -202,12 +202,20 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 
 [E107](experiments/E107-criterion-memory-native-continuation.md)、results/e107/merged/{analysis,completeness_audit}.json：480＋extra controls4、0未知；192固定teacher tensor pairs精确同且Own KV不同，同向私人映射全保持。mixed51.56→56.25%，+4.69[0,9.375]pp；explicit60.94%，before/after没有可靠控制转换。自然续写修正EOS测量限制，BF16 full/split微差.787–1.289nats报告，匹配cached/self路径0。结束此Rec/consumer扩展，不推出全模型无criterion；C16/C20 L1不改。
 
-## C21：输出身份通过历史答案消息改变本Source的证据形成（L2，有界）
+## C21：输出命名通过历史答案消息改变本Source的证据形成（L3，有界）
 
 | ID | 主张 | 等级 | 证据 | 威胁/校对 |
 |---|---|---|---|---|
-| C21 | Qwen3-8B FP32、MHS受控私人规则中，A raw/label固定、整个query禁读B时，B输出namespace对A label证据的作用可通过**先前B答案K→A label形成**近似重建；不是只在最终query路由。32独立context，完整label接口减少B-rule幅度.553[.353,.761]nats，答案K形成边.561[.360,.772]，B prelabel KV仅.0097[−.0086,.0338]；冻结系数1的逐query rule双差分重建r=.969[.955,.979]、RMSE.810，零预测3.267 | L2 | [E108](experiments/E108-prelabel-packet-versus-label-context.md)、[E109](experiments/E109-foreign-messages-at-label-formation.md)；results/e109/qwen3_confirmation/{analysis,reconstruction_audit,run,completeness_audit,sample_overlap_audit}.json；完整12项混杂审计见E109 | 独立context而非disjoint评论；限定1模型/任务。实际donor激活的子图重建，不是无donor行为算法；答案载体含label身份，尚不证明完整外来源规则或抽象prototype。E110固定label stream的关系反事实未由该子图完整解释，结果保留。未独立校对，不进摘要级强泛化 |
+| C21 | Qwen3-8B与Mistral-7B-v0.3 FP32、MHS受控私人规则中，A raw/label固定、整个query禁读B时，B输出namespace对A label证据的作用可通过**先前B答案K→A label形成**近似重建。各32独立context：Qwen完整label接口减少B-rule幅度.553[.353,.761]nats、答案K .561[.360,.772]，Mistral相应为.0619[.0333,.0947]/.0611[.0284,.0986]。冻结系数1逐query rule双差分K重建r=.969/.966、RMSE.810/.265（零预测3.267/.865）；同一冻结namespace预测在Qwen新情绪材料亦保持K r=.907、KV r=.958 | L3 | [E109](experiments/E109-foreign-messages-at-label-formation.md)、[E111](experiments/E111-polarity-relation-versus-namespace.md)、[E112](experiments/E112-formation-mechanism-mistral-family.md)；results/e109/qwen3_confirmation、results/e111/qwen3_validation、results/e112/mistral_confirmation中的analysis/reconstruction/run/completeness审计；12项混杂审计与[独立校对](results/e109/independent_review_2026-10-11.md) | 实际验证3个model/task组合，并非完整2×2；MHS为新context而非disjoint评论。actual donor激活的充分近似子图重建，不是唯一/必要路径或无donor行为算法。K-only仅该边不直接替换V，后继状态自然演化；不称固定全部内容。E110限制与E111关系残差保留。独立318项复算通过；C16/C20和I04正式状态不跟随升级 |
 
 ### E110限制C21的功能内容解释（不撤回C21）
 
 [E110](experiments/E110-learned-relation-fixed-label-stream.md)、results/e110/qwen3_discovery/{analysis,run,completeness_audit}.json：16contexts，固定Source/label/位置，B答案第0层KV精确0差；跨类与同类文本置换效应差.0458[−.1358,.2108]nats，答案形成边差.0234[−.0207,.0682]；同类置换已大。该载体对固定label关系改变的完整A label重建r=.323，不能以namespace成功推断通用规则运输。当前需要更清楚的语义关系反事实，E111同任务同时检验namespace/关系；C16/C20 L1仍不改。
+
+## C22：固定输出身份时，历史答案消息传递学到的关联（L2，有界）
+
+| ID | 主张 | 等级 | 证据 | 威胁/校对 |
+|---|---|---|---|---|
+| C22 | Qwen3-8B、明确餐厅情绪/私人yes-no约定中，保持B标签词、Source与位置不变，跨情绪换配对相对同情绪置换对A label接口多影响1.465[.982,2.000]nats；只在A label形成时移植B答案消息，差.618[.446,.813]。V版本复现该边主要平均幅度（KV−V差−.0247[−.0907,.0381]，K版本显著更小）。A后续query完全禁读B，支持固定输出身份下的关联经历史答案载体部分进入本Source证据 | L2 | [E111](experiments/E111-polarity-relation-versus-namespace.md)；results/e111/qwen3_validation/{analysis,run,completeness_audit}.json；16探索→32新词/句式，评论交集0，single A两映射均100%，数值/缓存/静态B答案embedding控制0；审计见卡与[独立校对](results/e109/independent_review_2026-10-11.md) | 同类置换并非完美语义控制；单模型/明确情绪任务。完整关系作用仍有残差，逐query KV r=.783、RMSE2.407（零3.299），不称完整criterion/program。均值差CI跨0不证明V/KV等价或独立模块。宽泛QK/V归已有文献；独立复算通过但不自动升跨架构L3/完整机制L4 |
+
+C21的L3登记依据E109/E111/E112的三个已验证组合与独立校对，§4/5通过；不能当成全部ICL统一理论或论文已就绪。C22单模型范围保留；不要求残差完美覆盖才承认有界增量，也不因跨模型namespace确认把关联V一并泛化。

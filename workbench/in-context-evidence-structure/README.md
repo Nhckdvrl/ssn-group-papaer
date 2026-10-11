@@ -1,8 +1,10 @@
 # In-Context Evidence Structure（ICES）
 
+**2026-10-11当前认识：** 当前来源的证据会在形成时受到先前其它来源的关联影响；输出命名能够改变这个过程。只让query访问本来源位置，并不自动隔离它使用的规则信息。已得到有界的形成路径解释与独立反事实预测：[综合§30–31](RESEARCH_SYNTHESIS_2026-10-10.md#31-e112与独立校对完成当前解释的尺度与论文增量)、[核心图](results/figs/fig_evidence_formation.png)、[独立校对](results/e109/independent_review_2026-10-11.md)。
+
 ## 状态
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
-- **当前综合判断与下一步（2026-10-10）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)（§9起为后续人审计与聚焦机制探索）。原总结已上传；后续按人审计聚焦“多套规则共存时怎样选择相关证据”，不追求覆盖全部ICL，不把函数任务的控制变成主线门槛。
+- **当前综合判断（2026-10-11）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)前言与§30–31；中间各节保留探索转折。形成路径已完成跨家族确认和独立校对，围绕自然的多来源证据问题组织候选，不追求覆盖全部ICL。
 - **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
 - **E82/E83：** Label读取重放独立+7.8[3.9,11.7]点，末位可转移其主要收益；原生Source影响仍按C16经整个query。冻结旧native注意力拟合的关系reader在64新context增加Source contrast .376[.358,.393]nats，预算/位置模型无益；逐context预测相关仅.252，非完整解释。Source与code在自然query共线，E84只检验这个具体解释，不开新任务。
 - **E84/E85：** code代理更准确预测布局Label读取变化，但native两Cue都用；NameK交换独立确认使field反转/code保正，LabelKV改变两者。冻结联合干预四项均值预测误差.007–.036nats，形成有限依赖/组合解释，不称两个独立Source模块或完整算法。详见综合§11–12。
@@ -16,6 +18,7 @@
 - **E95–E97最新：** 匿名证据相同而来源分组决定标准；thinking criterion16/16、私人mixed19/32。自推criterion文字使Own-only mixed87.5%且保留私人偏好；E97带新review/yes-no的标准问题160/160。结束格式控制，见综合§19–21。
 - **E98/E99最新：** E98轨迹运输未过阳性，停止该接口；E99独立n8标准64/64、Own256/256(128unique)，native mixed83.6%[68.8,96.1]，原生也已较强。E100行为候选未运行；E101已完成512交换，511最终判断不变；E102字段交换主要重定位recipient B；E103整函数KV模型95.3%，未分出C/P通道；E104跨Actor只换Rec有部分criterion作用（opposite mixed65.6% vs50%），后续推断矩阵未运行。见综合§22–27。
 - **E105/E106/E107：** 标准推断16/16，但Rec after直接评分有EOS与有限criterion作用；E106独立32ctx确认，自己的label KV承载历史B-rule依赖（替换减少.429[.250,.632]nats），评论内容中介弱。E107完成480交叉＋4self，Own KV因果参与，mixed after56.25%、增益CI触零；结束此接口扩展。综合§28–29正面对齐近邻，不把局部接口或已有分工称最终novelty。
+- **当前机制进展（E108–E112）：** 历史B答案K→A label形成的namespace解释在Qwen/Mistral32新ctx各自确认，冻结逐query rule预测r=.969/.966；Qwen第二任务亦保持，C21有界L3。固定答案词的情绪配对在新词/句式确认，答案V传递部分关联（对照差.618[.446,.813]nats），C22仍单模型L2。独立318项复算通过；E110长评论控制不足与E111残差完整保留。研究对象回到来源特定证据怎样形成和使用，不继续字段/头搜索。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
@@ -34,7 +37,7 @@
 **测量工具：** exact 层级 Bayes oracle（联合推断变化率 λ 与噪声率 ε）在指定生成模型与先验下给出一个**方向相反**的预测——在后缀反例之前加零散噪声，该oracle应**更不**相信后缀；而正权重的可加汇总会**更**相信。配合成簇检验（同样数量的反例，连成一串 vs 零散）与新旧对调检验（A→B vs B→A）。它不是所有ICL prompt唯一合理的规范假设。
 
 **收敛后的问题：** 模型在什么情况下能追踪变化、在什么情况下把新旧证据混在一起——以及为什么。
-**当前机制问题：** 多套规则共存时，模型怎样决定哪些示例约束当前query？来源cue怎样改变读取程序与来源对比强度？Tag/prefix是区分解释的变量，不是问题本身。
+**当前机制问题：** 多套规则共存时，来源特定证据怎样形成并用于新输入？来源cue影响读取，同时输出命名与历史关联影响被读取的证据。Tag/prefix等变量服务于这个问题，不自行成为题目。
 
 ## 2. 核心 idea（I04）
 > **I04原始候选解释：In-context learner 按“输出”存放输入-输出证据。** 某个输出得到的支持，来自带这个输出的 demo 的、按输入相似度加权的汇总；这份汇总在时间与上下文上可交换。
@@ -54,11 +57,13 @@
 | 时间结构只在“偏向新输出”的成分上 | 不均衡翻转：条件成分噪声方向错 12/12（6 模型）；少数类 query 被拉错 | E28/E29 | L2 |
 | 证据按输出身份分开 | 分隔阶梯：不同输出词 0.00 ≪ 输入领域 0.36–0.49 < 上下文标签 0.51–0.91 < 时间（完全合并） | E24/E30/E31/E35 | L2 |
 | 泄漏 ∝ 标签语义相似度 | 14 套标签词，ρ=0.75–0.96（5 模型 × 2 任务） | E33 | L2 |
+| 输出命名作用于本Source证据形成 | 历史答案K冻结重建r=.969(Qwen)/.966(Mistral)，Qwen第二任务r=.907；独立校对通过 | E109/E111/E112，C21 | 有界L3 |
+| 固定输出词仍可传递关联 | 新情绪材料中，答案形成消息的cross−within差.618[.446,.813]nats；主要平均幅度经V复现、仅部分路径 | E111，C22 | L2 |
 | 建设性修复：新 regime 换新词 | concept drift 变得可追踪，11/12 格（含 1.7B/2B） | E32 | L2 |
 | 机制：读标签头 + 不可改写的锚点 | 逐头分解重建 r=0.9997；注意力：同类 ×2–69 ≫ 标注者 ×1.5–2.6 ≫ 位置 ≈0；因果修补：方向错误的噪声效应 = 晚层直接读噪声锚点 | E36/E37/E38 | L2 |
 | 为什么（训练统计） | toy：任务同质数据复现解离，易变数据推不动；LoRA 只得到近因 | E12/E18 | L1 |
 
-\*等级见 CLAIMS：凡已满足 L3 泛化条件（≥2 家族、≥2 任务）的主张，在独立校对前一律记为 L2。
+\*等级见 CLAIMS；旧主张在独立校对前不自动升级。**校对备注：** C21/C22另一个会话先从原始记录复算318项数字并审查采样/缓存，实现通过；C21只在实际3个model/task组合记L3，C22不随之泛化。K-only仅该边不直接替换V，后继状态自然演化；高重建不证明唯一/必要通路。
 
 关键图（`results/figs/`）：
 - `fig_marked_drift.png`：格式跟随变化、映射不跟（E22）
@@ -74,15 +79,15 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 **最危险的压缩：** “ICL = kNN + 标签偏置”——回应见 I04 §6。
 
 ## 6. 下一步（按信息量排序，非日程）
-1. 保留E59–E85因果结果，先解释多规则共存时模型怎样确定当前应采用的规则；把码位置、attention接口放回这个问题，不让它们成为选题本身。
-2. 先按综合§14完成以论文为中心的设计重构：自然方面响应可能由完整语义检索产生，不直接宣布输入过滤。候选区分Source证据地址与推断出的criterion含义；E66的失败不盲重做。E86仅pilot、E87未实施；不因近邻术语压缩已有证据。
+1. 以“多个来源共享输出时，来源特定证据怎样形成并被使用”为主问题，围绕C21/C22、E90/E91及原生Source读取证据组织论文候选；不把一般上下文化或QK/V改名成新发现。候选形态见PAPER_SHAPE当前段。
+2. 核心形成路径、新语义材料、第二模型家族及独立校对本轮已完成；下一科研决策看此解释能回答什么自然问题、哪些新情境让它产生有用预测，而不是补全每个残差。E87/E100未运行、E90早晚mask与E107 memory接口不重开；正式开关线/候选状态由人决定。
 3. **人要求的工作习惯：** 每完成一组相关实验，回到研究问题、原文和已有结果检查：实际回答了什么，是否跑偏，替代解释还剩什么，增量与novelty在哪里；据此改变下一动作。不是每个控制失败就压缩主张，也不靠多写卡片代替判断。
 
 ## 7. 目录
 | 路径 | 内容 |
 |---|---|
 | `ideas/` | I04（主 idea）、I01（早期版本） |
-| `experiments/` | E00–E87 实验卡（E80未运行；E86仅pilot；E87候选未实施；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
+| `experiments/` | E00–E112 实验卡（E80未运行；E86仅pilot；E87候选未实施；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
 | `CLAIMS.md` | 主张账本 C00–C20、混杂审计、作废记录 |
 | `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_OUTLINE.md` 为 10-05 旧版提纲（已被取代，保留作历史） |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
@@ -109,6 +114,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E86资产：** 仅seed86001的16-context pilot，小run/preflight/analysis、冻结旧参数预测与图入git；raw在上述NFS的`results/e86/qwen3_discovery/`。按E86卡、同conda/Qwen3-8B重建；seed186001确认未运行。
 - **E88/E89资产：** 小analysis/run/preflight、注明POST-HOC的内容审计、E88图入git；原始JSONL和生成token IDs留上述NFS的`results/e88/`、`results/e89/`。E88源hash522515d8…两阶段不变；E89版本/完整预算续完按各卡与run重建。Qwen3-8B/conda同上，实际合计约.466 GPU·时；没有新checkpoint。
 - **E90资产：** 三批主实验与两批single的JSONL留本地`results/e90/`；小analysis/run/preflight/rule_sensitivity、冻结forecast和图入git；按卡seed/源码hash748c497f…/同conda重建。实际约.1793 GPU·时，Source隔离无layer/head搜索，无新训练。
+- **E108–E112资产：** 原始contexts/behavior JSONL留本workbench绝对路径的`results/e108/`至`results/e112/`，大checkpoint不入git。Qwen3-8B在本机`/tmp/ices_models/Qwen3-8B`，Mistral base在fvcrc20 `/tmp/ices_models/Mistral-7B-v0.3`（revision caa1feb0…，3权重SHA核对见e112/model_identity_audit）。同conda、FP32/eager；各卡/run记录n/seed/脚本SHA。E111 validation用`--materials validation --n 32 --seed 111101`，E112确认`--n 32 --seed 112101`；复现写新out目录。小analysis/run/冻结预测/完整性及独立审计、核心图/绘图源码入git；无需下载新训练checkpoint。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。

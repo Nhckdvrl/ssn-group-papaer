@@ -1,0 +1,239 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e111/validation_preflight",
+    "n": 32,
+    "seed": 111101,
+    "materials": "validation",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        902
+      ],
+      [
+        9834
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    298,
+    295,
+    294,
+    294,
+    294,
+    295,
+    293,
+    292,
+    294,
+    293,
+    294,
+    293,
+    295,
+    295,
+    295,
+    296,
+    296,
+    294,
+    293,
+    292,
+    296,
+    292,
+    295,
+    296,
+    293,
+    296,
+    294,
+    293,
+    294,
+    298,
+    294,
+    293
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional",
+      "magnificent",
+      "incredible"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable",
+      "disastrous",
+      "displeasing"
+    ],
+    "templates": [
+      "The dish was {a}.",
+      "The dinner was {a}.",
+      "The lunch was really {a}.",
+      "The sandwich was simply {a}.",
+      "This salad was {a}.",
+      "Our breakfast was {a}.",
+      "The pizza was {a}.",
+      "The experience was {a}.",
+      "The dish tasted {a}.",
+      "The dinner tasted remarkably {a}."
+    ]
+  },
+  "valid_quartet_length_bins": 2,
+  "quartet_lengths": [
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ]
+  ],
+  "reversed_contexts": 16,
+  "patch_scope": "B answer messages at A label formation; only recomputed A label KV consumed by A-only query"
+}

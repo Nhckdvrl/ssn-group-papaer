@@ -1,0 +1,83 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e109/qwen3_confirmation",
+    "n": 32,
+    "seed": 109101,
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        6092
+      ],
+      [
+        20836
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    613,
+    730,
+    630,
+    663,
+    625,
+    659,
+    629,
+    596,
+    603,
+    532,
+    593,
+    517,
+    661,
+    652,
+    550,
+    543,
+    701,
+    724,
+    593,
+    611,
+    547,
+    468,
+    639,
+    590,
+    517,
+    629,
+    615,
+    549,
+    618,
+    622,
+    454,
+    667
+  ],
+  "current_source_changed_tokens": 0,
+  "foreign_source_label_counts": [
+    4,
+    4
+  ],
+  "reversed_contexts": 18,
+  "patch_scope": "far B messages only for A label attention receivers; only recomputed A label KV sent to pristine shared queries.",
+  "modes": [
+    "shared_native",
+    "far_native",
+    "shared_gate",
+    "far_gate",
+    "full_A",
+    "far_label",
+    "answer_kv",
+    "prelabel_kv",
+    "all_b_kv",
+    "answer_k",
+    "answer_v",
+    "instruction"
+  ]
+}

@@ -1,6 +1,18 @@
 # ICES论文形态：当前判断与历史版本
 
-**2026-10-11当前问题：** 多个来源怎样共享判断标准，同时保留各自的私人映射？E91保留历史内容形成的因果线索，E99确认标准推断/私人应用的功能链。最新三个内部实验：E102 Source-field主要重定位recipient证据；E103示例完整函数主要经KV使用，未见C/P跨memory分工；E104显式criterion的Rec-only跨Actor控制部分有效，opposite mixed65.6% vs50%，+15.6[6.25,25]点，尚非稳健原生标准状态。推断前/后的大矩阵未运行。问题仍值得探索，完整机制/novelty尚未完成；当前证据不能与旧标题强行对齐。见综合§22–27。
+**2026-10-11当前问题：** 多个来源共享输出空间时，来源特定证据怎样形成并被用于新输入？本轮已形成有界的计算解释：先前答案消息在本Source label形成时传入，输出命名的影响可经这项历史检索近似重建；固定答案词的关联反事实又表明，消息含有功能关联。Qwen/Mistral各32新context冻结rule重建K r=.969/.966，Qwen新情绪材料另有namespace和部分关联作用；318项独立复算通过，C21有界L3、C22单模型L2。实际覆盖3个model/task组合，非完整2×2。
+
+**候选工作标题：** *How Shared Outputs Shape Source-Specific Evidence in In-Context Learning*。
+
+**候选主旨：** Source-conditioned retrieval operates on evidence whose relational content has already been shaped by output-dependent contextualization. 它把E90/E91的历史功能依赖、E109/E112的形成路径与E111的关联内容接在一起；原生Source读取仍由E59/E64单独支撑。没有锁定最终标题或改变I04/ACTIVE状态，旧形态卡保留为历史。
+
+可组织的核心贡献为：
+
+1. **观察对象的升级：** 把“读取哪些来源位置”和“判断依赖哪个来源的关联”分别测量；准确率与Source位置选择均不能单独测到后者。
+2. **有预测力的形成解释：** 输出命名影响先前答案→本来源label的历史消息；冻结系数1、无头/层选择，近似重建新的context/第二家族的指定反事实。充分近似重建不等于唯一或必要中介，不是无donor行为算法。
+3. **载体的功能内容：** 固定词表/Source/位置和输入多重集，换语义配对相对同类置换的超额作用可经答案V部分传入；新词/句式确认。此项当前只在Qwen的明确情绪任务，完整关系仍有残差。
+
+Cho/Wang拥有label merge与语义去噪，CTA拥有跨示例功能上下文化，How Few-Shot Examples Add Up拥有QK/V权重分解；本项不争这些操作的首次发现。具体增量是**共享输出怎样影响来源特定证据的形成，以及来源位置上的隔离为何不能保证关联信息的隔离**，并用新的反事实效果检验。CoSToM的自然问题→内部干预→功能证据是尺度参照，无须复制训练涨分或完成全部网络逆向工程。详见综合§30–31、独立校对与核心图；本轮未宣布投稿就绪。
 
 ## 论文形态卡 — in-context-evidence-structure — 2026-10-06（agent 草稿，待人审）
 

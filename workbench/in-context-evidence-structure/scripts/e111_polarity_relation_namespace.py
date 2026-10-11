@@ -75,6 +75,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--n", type=int, default=16)
     ap.add_argument("--seed", type=int, default=111001)
+    ap.add_argument("--materials", choices=['discovery','validation'], default='discovery')
     ap.add_argument("--preflight-only", action="store_true")
     ap.add_argument("--analyze-only", action="store_true")
     args = ap.parse_args()
@@ -98,6 +99,12 @@ def main():
     templates=['The food was {a}.','The meal was {a}.','The food was absolutely {a}.',
        'The meal was truly {a}.','My dinner was {a}.','Our lunch was {a}.',
        'The soup was {a}.','The dessert was {a}.','The food tasted {a}.','The meal tasted absolutely {a}.']
+    if args.materials=='validation':
+        positive=['good','amazing','enjoyable','splendid','satisfying','impressive','outstanding','exceptional','magnificent','incredible']
+        negative=['abysmal','lousy','appalling','unsatisfactory','atrocious','unacceptable','pathetic','miserable','disastrous','displeasing']
+        templates=['The dish was {a}.','The dinner was {a}.','The lunch was really {a}.',
+            'The sandwich was simply {a}.','This salad was {a}.','Our breakfast was {a}.',
+            'The pizza was {a}.','The experience was {a}.','The dish tasted {a}.','The dinner tasted remarkably {a}.']
     pool=[[t.format(a=a) for t in templates for a in words] for words in [positive,negative]]
     bins=[defaultdict(list),defaultdict(list)]
     for kind,items in enumerate(pool):

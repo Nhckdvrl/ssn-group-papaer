@@ -1,0 +1,72 @@
+{
+  "fit": false,
+  "coefficient": 1,
+  "sources": [
+    {
+      "directory": "results/e109/qwen3_confirmation",
+      "predictor": "answer_kv",
+      "contrast": "rule_double_contrast",
+      "statistics": {
+        "rmse": 0.5622991067710287,
+        "rmse_ci95": [
+          0.49036409555999927,
+          0.6297913677790514
+        ],
+        "correlation": 0.9850662451603546,
+        "correlation_ci95": [
+          0.9778085986724151,
+          0.9896191989804723
+        ],
+        "zero_rmse": 3.267149839693357,
+        "n_contexts": 32,
+        "n_scores": 256
+      }
+    },
+    {
+      "directory": "results/e112/mistral_confirmation",
+      "predictor": "answer_kv",
+      "contrast": "rule_double_contrast",
+      "statistics": {
+        "rmse": 0.22542475780865948,
+        "rmse_ci95": [
+          0.17465113557068926,
+          0.2744058996621257
+        ],
+        "correlation": 0.9767450755261543,
+        "correlation_ci95": [
+          0.952333320159413,
+          0.9885072914859607
+        ],
+        "zero_rmse": 0.8649650533344887,
+        "n_contexts": 32,
+        "n_scores": 256
+      }
+    },
+    {
+      "analysis": "results/e111/qwen3_validation/analysis.json",
+      "contrasts": [
+        "label_cross_minus_label_within",
+        "answer_cross_kv_minus_answer_within_kv"
+      ],
+      "measurements": [
+        {
+          "mean": 1.4649001471698284,
+          "ci95": [
+            0.9823789128102363,
+            2.0001244249753656
+          ],
+          "n_contexts": 32
+        },
+        {
+          "mean": 0.6183552667498589,
+          "ci95": [
+            0.44571763407438997,
+            0.8130407903343438
+          ],
+          "n_contexts": 32
+        }
+      ]
+    }
+  ],
+  "caption": "All query positions cannot read B. Panels a/b compare the frozen coefficient-one reconstruction from B historical-answer KV during A-label formation against the full far-namespace own-label interface, after removing rule-independent shifts with an aligned-minus-conflict double contrast. Each point is one query within 32 contexts. Panel c uses fixed output words and token positions: cross-polarity pairing is contrasted with within-polarity text permutations on disjoint adjective/template materials. The historical answer edge transfers part of the complete own-label effect. These are donor-assisted causal reconstructions, not a donor-free behavior model or proof of a unique necessary pathway."
+}

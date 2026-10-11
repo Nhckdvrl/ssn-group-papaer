@@ -1,0 +1,83 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e112/mistral_confirmation",
+    "n": 32,
+    "seed": 112101,
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        5791
+      ],
+      [
+        19650
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    692,
+    702,
+    664,
+    648,
+    632,
+    665,
+    646,
+    624,
+    580,
+    685,
+    650,
+    764,
+    749,
+    655,
+    512,
+    853,
+    619,
+    615,
+    549,
+    672,
+    774,
+    724,
+    663,
+    601,
+    633,
+    664,
+    671,
+    641,
+    577,
+    582,
+    623,
+    821
+  ],
+  "current_source_changed_tokens": 0,
+  "foreign_source_label_counts": [
+    4,
+    4
+  ],
+  "reversed_contexts": 18,
+  "patch_scope": "far B messages only for A label attention receivers; only recomputed A label KV sent to pristine shared queries.",
+  "modes": [
+    "shared_native",
+    "far_native",
+    "shared_gate",
+    "far_gate",
+    "full_A",
+    "far_label",
+    "answer_kv",
+    "prelabel_kv",
+    "all_b_kv",
+    "answer_k",
+    "answer_v",
+    "instruction"
+  ]
+}

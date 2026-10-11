@@ -1,0 +1,4397 @@
+{
+  "review_date": "2026-10-11",
+  "reviewer": "independent_mechanism_review",
+  "blind_initial_calculation": true,
+  "bootstrap": {
+    "unit": "context, preserving paired worlds, conditions and all 8 queries",
+    "draws": 20000,
+    "seed": 20261011,
+    "ci": "percentile 95%"
+  },
+  "datasets": {
+    "results/e109/qwen3_confirmation": {
+      "completeness_and_sampling": {
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 24,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_recomputed_exact": true,
+        "contexts_sha256_matches_run": true,
+        "raw_sha256": {
+          "contexts.jsonl": "11e50eb7693e1cbf8b39f20fc941099b8e67fa45127f634dbfb384b34e7c153a",
+          "behavior.jsonl": "88de412d8af102ca211e46b706b44bcaed47dbabc852c993184b828b8f72d93f",
+          "run.json": "590759287536c09a40dbc42cb1040910894edef4be5f4b08c106b927d40d09d2",
+          "preflight.json": "e13af6158286f6be0855fa04beaf538672dd866b4e7a69982dc58823ed966b83"
+        },
+        "reverse_counts": {
+          "False": 14,
+          "True": 18
+        },
+        "within_context_demo_query_overlap": 0,
+        "within_context_duplicate_demo_text": 0,
+        "unique_demo_texts": 457,
+        "unique_query_texts": 245,
+        "demo_and_query_text_reuse_across_contexts": 59,
+        "discovery_overlap": {
+          "prior_contexts": 16,
+          "exact_contexts": 0,
+          "unique_query_text_intersection": 17,
+          "unique_all_text_intersection": 125
+        },
+        "all_layers_edge_counts_identical": true,
+        "edge_layers_and_counts": {
+          "n_layers": 36,
+          "each_layer": {
+            "answer_kv": 64,
+            "prelabel_kv": 64,
+            "all_b_kv": 64,
+            "answer_k": 64,
+            "answer_v": 64,
+            "self": 2
+          }
+        },
+        "script_sha256_matches_run": true
+      },
+      "run_controls": {
+        "numeric_max_error": 0.000202178955078125,
+        "elapsed_seconds": 362.1576826572418,
+        "gpu_hours": 0.10059935629367828,
+        "script_sha256": "1ee41052abd31d517a6ac93a5db065db9cf95a9cc004d106ea5e46a5f3ea0d10",
+        "contexts_sha256": "11e50eb7693e1cbf8b39f20fc941099b8e67fa45127f634dbfb384b34e7c153a",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "49336261aabcb50846458a086aae3d4660a8eb92",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "dtype": "float32",
+        "attention": "eager",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "query_source_gate_scope": "all query positions"
+      },
+      "metrics": {
+        "conflict_far_label": {
+          "accuracy": {
+            "mean": 0.6171875,
+            "ci95": [
+              0.5546875,
+              0.67578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6171875,
+            "ci95": [
+              0.5546875,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_v": {
+          "accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5703125,
+              0.67578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5703125,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_all_b_kv": {
+          "accuracy": {
+            "mean": 0.58984375,
+            "ci95": [
+              0.52734375,
+              0.65234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.58984375,
+            "ci95": [
+              0.52734375,
+              0.65234375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_k": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.53515625,
+              0.66015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.53515625,
+              0.66015625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_instruction": {
+          "accuracy": {
+            "mean": 0.6640625,
+            "ci95": [
+              0.609375,
+              0.71875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6640625,
+            "ci95": [
+              0.609375,
+              0.71875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_prelabel_kv": {
+          "accuracy": {
+            "mean": 0.59375,
+            "ci95": [
+              0.53515625,
+              0.65234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59375,
+            "ci95": [
+              0.53515625,
+              0.65234375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_v": {
+          "accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.5625,
+              0.6640625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.5625,
+              0.6640625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_kv": {
+          "accuracy": {
+            "mean": 0.59375,
+            "ci95": [
+              0.53125,
+              0.65625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59375,
+            "ci95": [
+              0.53125,
+              0.65625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_kv": {
+          "accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.51953125,
+              0.65234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.51953125,
+              0.65234375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_gate": {
+          "accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5625,
+              0.68359375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5625,
+              0.68359375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_prelabel_kv": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.546875,
+              0.65625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.54296875,
+              0.65234375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_label": {
+          "accuracy": {
+            "mean": 0.58203125,
+            "ci95": [
+              0.51171875,
+              0.65234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.58203125,
+            "ci95": [
+              0.51171875,
+              0.65234375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_far_gate": {
+          "accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.56640625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.56640625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_shared_gate": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.54296875,
+              0.65234375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.99609375,
+            "ci95": [
+              0.98828125,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59375,
+            "ci95": [
+              0.54296875,
+              0.6484375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_shared_native": {
+          "accuracy": {
+            "mean": 0.65625,
+            "ci95": [
+              0.61328125,
+              0.703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.65625,
+            "ci95": [
+              0.61328125,
+              0.703125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_full_A": {
+          "accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.56640625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.56640625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_all_b_kv": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.53515625,
+              0.65625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.53515625,
+              0.65625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_native": {
+          "accuracy": {
+            "mean": 0.6640625,
+            "ci95": [
+              0.60546875,
+              0.72265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.95703125,
+            "ci95": [
+              0.93359375,
+              0.98046875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.640625,
+            "ci95": [
+              0.58203125,
+              0.69921875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_k": {
+          "accuracy": {
+            "mean": 0.58203125,
+            "ci95": [
+              0.51953125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.58203125,
+            "ci95": [
+              0.51953125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_shared_gate": {
+          "accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.52734375,
+              0.640625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.52734375,
+              0.640625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_full_A": {
+          "accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5625,
+              0.68359375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.625,
+            "ci95": [
+              0.5625,
+              0.68359375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_far_native": {
+          "accuracy": {
+            "mean": 0.6328125,
+            "ci95": [
+              0.578125,
+              0.6875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.97265625,
+            "ci95": [
+              0.94921875,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.5625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_instruction": {
+          "accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.53515625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.53515625,
+              0.67578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_shared_native": {
+          "accuracy": {
+            "mean": 0.578125,
+            "ci95": [
+              0.5234375,
+              0.6328125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.578125,
+            "ci95": [
+              0.5234375,
+              0.6328125
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "rule_dependence": {
+        "all_b_kv": {
+          "signed": {
+            "mean": -0.04185817390680313,
+            "ci95": [
+              -0.15730173774063588,
+              0.0718754401430487
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.24244415014982224,
+            "ci95": [
+              0.16835162378847598,
+              0.32599814645946024
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.7369611486792564,
+            "ci95": [
+              0.6054260965436697,
+              0.8714563140645623
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.09375,
+            "ci95": [
+              0.0546875,
+              0.1328125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_k": {
+          "signed": {
+            "mean": -0.002701304852962494,
+            "ci95": [
+              -0.10982514061033725,
+              0.10507605150341982
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.22594814747571945,
+            "ci95": [
+              0.15793672427535058,
+              0.3031110523268579
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.7695315703749657,
+            "ci95": [
+              0.6332763344049454,
+              0.9125019729137419
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.1171875,
+            "ci95": [
+              0.07421875,
+              0.1640625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_kv": {
+          "signed": {
+            "mean": -0.04344133287668228,
+            "ci95": [
+              -0.15896406192332507,
+              0.07093395311385386
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.2430136278271675,
+            "ci95": [
+              0.1689964383840561,
+              0.3268724737688899
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.7408066615462303,
+            "ci95": [
+              0.6082492562010884,
+              0.87700998224318
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.09375,
+            "ci95": [
+              0.0546875,
+              0.1328125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_v": {
+          "signed": {
+            "mean": 0.2678798884153366,
+            "ci95": [
+              0.04409660492092371,
+              0.4963232589885592
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5458701401948929,
+            "ci95": [
+              0.396016388759017,
+              0.7049167485907669
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.7475205659866333,
+            "ci95": [
+              1.3565659083425998,
+              2.2080559743568298
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.19140625,
+            "ci95": [
+              0.12890625,
+              0.2578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_gate": {
+          "signed": {
+            "mean": 0.034697145223617554,
+            "ci95": [
+              -0.027570375613868235,
+              0.09726312793791275
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.15895409882068634,
+            "ci95": [
+              0.1274856485426426,
+              0.19348534066230058
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.4746999889612198,
+            "ci95": [
+              0.41568012684583666,
+              0.541526741348207
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.09765625,
+            "ci95": [
+              0.05859375,
+              0.140625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_label": {
+          "signed": {
+            "mean": -0.030653439462184906,
+            "ci95": [
+              -0.13572786264121534,
+              0.07099347505718465
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.23413225263357162,
+            "ci95": [
+              0.1727925680577755,
+              0.30382000263780357
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.7224671617150307,
+            "ci95": [
+              0.6106293994933367,
+              0.8399811336770653
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.11328125,
+            "ci95": [
+              0.07421875,
+              0.15625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_native": {
+          "signed": {
+            "mean": 0.083816759288311,
+            "ci95": [
+              -0.09007320161908865,
+              0.2551905579864978
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.4181313142180443,
+            "ci95": [
+              0.3243064986541867,
+              0.5180152717977761
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.7775954976677895,
+            "ci95": [
+              0.6922334838658571,
+              0.8628671873360872
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.0859375,
+            "ci95": [
+              0.0546875,
+              0.12109375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A": {
+          "signed": {
+            "mean": 0.034697145223617554,
+            "ci95": [
+              -0.027570375613868235,
+              0.09726312793791275
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.15895409882068634,
+            "ci95": [
+              0.1274856485426426,
+              0.19348534066230058
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.4746999889612198,
+            "ci95": [
+              0.41568012684583666,
+              0.541526741348207
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.09765625,
+            "ci95": [
+              0.05859375,
+              0.140625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "instruction": {
+          "signed": {
+            "mean": 0.8702229857444763,
+            "ci95": [
+              0.5221407426521182,
+              1.2562872702255845
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.0257188230752945,
+            "ci95": [
+              0.7487023694440722,
+              1.3694672165438528
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.684983417391777,
+            "ci95": [
+              1.445826214365661,
+              1.9839719843119377
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.15234375,
+            "ci95": [
+              0.1015625,
+              0.20703125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "prelabel_kv": {
+          "signed": {
+            "mean": 0.2251497209072113,
+            "ci95": [
+              -0.09753162823617458,
+              0.5470251942053432
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.777625635266304,
+            "ci95": [
+              0.5884598406031728,
+              0.973654588870704
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.2425582110881805,
+            "ci95": [
+              1.779004610143602,
+              2.779510631226003
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.21875,
+            "ci95": [
+              0.140625,
+              0.30078125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "shared_gate": {
+          "signed": {
+            "mean": 0.23041191697120667,
+            "ci95": [
+              -0.09880438167601824,
+              0.5589610304683446
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.7873194217681885,
+            "ci95": [
+              0.5925754567608237,
+              0.9915382852777838
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.253864675760269,
+            "ci95": [
+              1.7806253235787153,
+              2.8023377165198324
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.22265625,
+            "ci95": [
+              0.1484375,
+              0.3046875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "shared_native": {
+          "signed": {
+            "mean": 0.7266367971897125,
+            "ci95": [
+              0.49878901094198225,
+              0.9583721691742539
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.8044945299625397,
+            "ci95": [
+              0.6149158408865333,
+              1.0109246088191866
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.5395408123731613,
+            "ci95": [
+              1.3382860731333495,
+              1.7643820596858857
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.1953125,
+            "ci95": [
+              0.14453125,
+              0.25
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "paired_absolute_effect_differences": {
+        "shared_gate_minus_far_label": {
+          "mean": 0.5531871691346169,
+          "ci95": [
+            0.3518901774659753,
+            0.7608309501782059
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_far_gate": {
+          "mean": 0.6283653229475021,
+          "ci95": [
+            0.4315886076539755,
+            0.8351594055071473
+          ],
+          "n_contexts": 32
+        },
+        "answer_kv_minus_far_label": {
+          "mean": 0.008881375193595886,
+          "ci95": [
+            -0.02705842610448599,
+            0.04619129560887813
+          ],
+          "n_contexts": 32
+        },
+        "prelabel_kv_minus_far_label": {
+          "mean": 0.5434933826327324,
+          "ci95": [
+            0.346314305998385,
+            0.7454394659027457
+          ],
+          "n_contexts": 32
+        },
+        "all_b_kv_minus_far_label": {
+          "mean": 0.00831189751625061,
+          "ci95": [
+            -0.027316859923303127,
+            0.045291781425476074
+          ],
+          "n_contexts": 32
+        },
+        "answer_k_minus_far_label": {
+          "mean": -0.008184105157852173,
+          "ci95": [
+            -0.06474046614021063,
+            0.04489094149321312
+          ],
+          "n_contexts": 32
+        },
+        "answer_v_minus_far_label": {
+          "mean": 0.31173788756132126,
+          "ci95": [
+            0.16085817962884902,
+            0.4732022244483226
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_k": {
+          "mean": 0.561371274292469,
+          "ci95": [
+            0.3596997283399105,
+            0.7737158404663205
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_kv": {
+          "mean": 0.544305793941021,
+          "ci95": [
+            0.3423037713393569,
+            0.7545045629143713
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_prelabel_kv": {
+          "mean": 0.00969378650188446,
+          "ci95": [
+            -0.008596196956932544,
+            0.03415095489472151
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_v": {
+          "mean": 0.2414492815732956,
+          "ci95": [
+            0.07553738001734019,
+            0.41035160683095384
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_all_b_kv": {
+          "mean": 0.5448752716183662,
+          "ci95": [
+            0.3428330888971686,
+            0.7550581458956002
+          ],
+          "n_contexts": 32
+        }
+      },
+      "fixed_coefficient_namespace_prediction": {
+        "answer_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.5170630794215941,
+            "rmse_ci95": [
+              0.4529575970931851,
+              0.5807357748903273
+            ],
+            "correlation": 0.9851419854435495,
+            "correlation_ci95": [
+              0.9792342952314856,
+              0.9892894267022904
+            ],
+            "zero_rmse": 2.9583795791926097,
+            "rmse_over_zero": 0.17477915378347397,
+            "relative_mse_explained": 0.9694522474027327,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.5622991067710287,
+            "rmse_ci95": [
+              0.48864387350566163,
+              0.6320547170372762
+            ],
+            "correlation": 0.9850662451603539,
+            "correlation_ci95": [
+              0.9777304722835647,
+              0.9895846541935792
+            ],
+            "zero_rmse": 3.267149839693357,
+            "rmse_over_zero": 0.17210692326979532,
+            "relative_mse_explained": 0.9703792069626048,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "prelabel_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 2.932143912983052,
+            "rmse_ci95": [
+              2.5170772049355943,
+              3.3351211046404097
+            ],
+            "correlation": 0.20344812966712408,
+            "correlation_ci95": [
+              0.01411765046354837,
+              0.341847084970025
+            ],
+            "zero_rmse": 2.9583795791926097,
+            "rmse_over_zero": 0.9911317444204648,
+            "relative_mse_explained": 0.017657865202046485,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 3.2590321386656615,
+            "rmse_ci95": [
+              2.631892544797274,
+              3.8509017680375597
+            ],
+            "correlation": 0.07391979240934848,
+            "correlation_ci95": [
+              -0.18175784902224976,
+              0.2573762104937594
+            ],
+            "zero_rmse": 3.267149839693357,
+            "rmse_over_zero": 0.9975153569851399,
+            "relative_mse_explained": 0.0049631125788087704,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_b_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.5119270887379518,
+            "rmse_ci95": [
+              0.44959102695287906,
+              0.5745912054887846
+            ],
+            "correlation": 0.985293617183937,
+            "correlation_ci95": [
+              0.9793843763421061,
+              0.9894193180659357
+            ],
+            "zero_rmse": 2.9583795791926097,
+            "rmse_over_zero": 0.1730430713957487,
+            "relative_mse_explained": 0.9700560954419258,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.5575972650830276,
+            "rmse_ci95": [
+              0.4859518240611272,
+              0.626598329936948
+            ],
+            "correlation": 0.9853243015188003,
+            "correlation_ci95": [
+              0.9781902632480208,
+              0.9896773718639054
+            ],
+            "zero_rmse": 3.267149839693357,
+            "rmse_over_zero": 0.17066779683889913,
+            "relative_mse_explained": 0.9708725031221562,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "answer_k": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.705924491826981,
+            "rmse_ci95": [
+              0.6148385389497713,
+              0.7966997772213303
+            ],
+            "correlation": 0.9725289965278919,
+            "correlation_ci95": [
+              0.961870632157509,
+              0.9799529906757697
+            ],
+            "zero_rmse": 2.9583795791926097,
+            "rmse_over_zero": 0.23861863325180177,
+            "relative_mse_explained": 0.9430611478650421,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.8100056863140838,
+            "rmse_ci95": [
+              0.6621762854272427,
+              0.9575905004628449
+            ],
+            "correlation": 0.9690412827514776,
+            "correlation_ci95": [
+              0.9545921703215917,
+              0.979130221872961
+            ],
+            "zero_rmse": 3.267149839693357,
+            "rmse_over_zero": 0.2479242538781472,
+            "relative_mse_explained": 0.9385335643389641,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "answer_v": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 2.004775136429373,
+            "rmse_ci95": [
+              1.6926143067019297,
+              2.3142953554096337
+            ],
+            "correlation": 0.7419745628717238,
+            "correlation_ci95": [
+              0.6395312379882173,
+              0.8232694154909623
+            ],
+            "zero_rmse": 2.9583795791926097,
+            "rmse_over_zero": 0.6776598751998244,
+            "relative_mse_explained": 0.5407770935441584,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.5268505742870406,
+            "rmse_ci95": [
+              1.9780216400122663,
+              3.044730583369619
+            ],
+            "correlation": 0.6416769320077879,
+            "correlation_ci95": [
+              0.5163066261164326,
+              0.759134893483894
+            ],
+            "zero_rmse": 3.267149839693357,
+            "rmse_over_zero": 0.7734112906569972,
+            "relative_mse_explained": 0.4018349754842778,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "full_A_far_gate_max_score_error": 0.0,
+      "independent_token_geometry": {
+        "tokenizer_model_path": "/tmp/ices_models/Qwen3-8B",
+        "word_ids_exact": true,
+        "all_worlds_namespace_pairs_checked": 128,
+        "positions_roles_and_sender_scopes_exact": true,
+        "fixed_labels_when_only_B_content_changes": true,
+        "all_changed_tokens_confined_to_designated_B_content_or_label_anchors": true,
+        "own_A_token_changes": 0,
+        "answer_scope_token_counts": [
+          16
+        ],
+        "blockwise_encoding_differs_from_whole_string_contexts": 0,
+        "gold_and_names_and_source_balance_recomputed_exact": true
+      }
+    },
+    "results/e111/qwen3_validation": {
+      "completeness_and_sampling": {
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 24,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_recomputed_exact": true,
+        "contexts_sha256_matches_run": true,
+        "raw_sha256": {
+          "contexts.jsonl": "f4dddf7380f6fbbf531dd5e4a0cf40de1c90c3d653a1d6c4663ee252beffbee2",
+          "behavior.jsonl": "2f156c5ca50291f50cdc4a284e3d67b4ec99eebc93ba14ac816b5f9e0bae8cde",
+          "run.json": "d994dbb0fb5f6981b45402bf8cb4b2e029847acd64cb1e164b6f9773bd228a72",
+          "preflight.json": "8b25c359b7bb064883cab1ac3979c8c238f99cc20a1c02b6f3c9d55280be2689"
+        },
+        "reverse_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "within_context_demo_query_overlap": 0,
+        "within_context_duplicate_demo_text": 0,
+        "unique_demo_texts": 182,
+        "unique_query_texts": 143,
+        "demo_and_query_text_reuse_across_contexts": 134,
+        "B_input_multiset_cross_within_fixed": true,
+        "all_B_inputs_reassigned": true,
+        "discovery_overlap": {
+          "prior_contexts": 16,
+          "exact_contexts": 0,
+          "unique_query_text_intersection": 0,
+          "unique_all_text_intersection": 0
+        },
+        "all_layers_edge_counts_identical": true,
+        "edge_layers_and_counts": {
+          "n_layers": 36,
+          "each_layer": {
+            "answer_cross_kv": 32,
+            "answer_cross_k": 32,
+            "answer_cross_v": 32,
+            "answer_within_kv": 32,
+            "self": 1,
+            "ns_origin_answer_kv": 32,
+            "ns_origin_answer_k": 32,
+            "ns_origin_answer_v": 32,
+            "ns_cross_answer_kv": 32,
+            "ns_cross_answer_k": 32,
+            "ns_cross_answer_v": 32
+          }
+        },
+        "script_sha256_matches_run": true
+      },
+      "run_controls": {
+        "numeric_max_error": 0.0,
+        "elapsed_seconds": 196.04954195022583,
+        "gpu_hours": 0.05445820609728495,
+        "script_sha256": "058521d8a70ca61d109d8ba2c10205b5659fc8e7fdc51e9df7f89f3e3def21cf",
+        "contexts_sha256": "f4dddf7380f6fbbf531dd5e4a0cf40de1c90c3d653a1d6c4663ee252beffbee2",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "e59ec14beb2ca8d0ae2abc7aca931175cf229dcd",
+        "sender_layer0_KV_max_error": 0.0,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "dtype": "float32",
+        "attention": "eager",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "query_source_gate_scope": "all query positions"
+      },
+      "metrics": {
+        "ns_origin_answer_k": {
+          "accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_within_kv": {
+          "accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.84765625,
+              0.9375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.89453125,
+            "ci95": [
+              0.84765625,
+              0.9375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate": {
+          "accuracy": {
+            "mean": 0.90625,
+            "ci95": [
+              0.8671875,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90625,
+            "ci95": [
+              0.8671875,
+              0.9453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_v": {
+          "accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.88671875,
+              0.9609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.92578125,
+            "ci95": [
+              0.88671875,
+              0.9609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_origin_gate": {
+          "accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A_cross": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9921875,
+            "ci95": [
+              0.98046875,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_kv": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv": {
+          "accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87109375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.91015625,
+            "ci95": [
+              0.87109375,
+              0.9453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "accuracy": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_gate": {
+          "accuracy": {
+            "mean": 0.8984375,
+            "ci95": [
+              0.84765625,
+              0.9453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.8984375,
+            "ci95": [
+              0.84765625,
+              0.9453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate": {
+          "accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9453125,
+            "ci95": [
+              0.90234375,
+              0.9765625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_within": {
+          "accuracy": {
+            "mean": 0.875,
+            "ci95": [
+              0.82421875,
+              0.921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.875,
+            "ci95": [
+              0.82421875,
+              0.921875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_origin": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_cross_gate": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.96484375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross": {
+          "accuracy": {
+            "mean": 0.9140625,
+            "ci95": [
+              0.87109375,
+              0.953125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.9140625,
+            "ci95": [
+              0.87109375,
+              0.953125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_kv": {
+          "accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.9609375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98046875,
+            "ci95": [
+              0.9609375,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_k": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "accuracy": {
+            "mean": 0.859375,
+            "ci95": [
+              0.80078125,
+              0.91015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.859375,
+            "ci95": [
+              0.80078125,
+              0.91015625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_cross": {
+          "accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.984375,
+            "ci95": [
+              0.96875,
+              0.99609375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_v": {
+          "accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.94140625,
+              0.9921875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.96875,
+            "ci95": [
+              0.94140625,
+              0.9921875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_instruction": {
+          "accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8125,
+              0.92578125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.87109375,
+            "ci95": [
+              0.8125,
+              0.92578125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_v": {
+          "accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.98828125,
+            "ci95": [
+              0.97265625,
+              1.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_k": {
+          "accuracy": {
+            "mean": 0.90234375,
+            "ci95": [
+              0.859375,
+              0.94140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.90234375,
+            "ci95": [
+              0.859375,
+              0.94140625
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "effects": {
+        "ns_origin_answer_k": {
+          "signed": {
+            "mean": 0.8163091838359833,
+            "ci95": [
+              0.3864630525931716,
+              1.2122604409232733
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.1480850875377655,
+            "ci95": [
+              0.8654575910419225,
+              1.4656083872541785
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.8258029520511627,
+            "ci95": [
+              1.4730594232678413,
+              2.204691893048583
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_within_kv": {
+          "signed": {
+            "mean": 0.07109589129686356,
+            "ci95": [
+              0.025068975612521173,
+              0.12394824605435108
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.10714635998010635,
+            "ci95": [
+              0.0691723458468914,
+              0.15224854741245497
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.21290432661771774,
+            "ci95": [
+              0.1511281503364444,
+              0.2838753795251249
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_gate": {
+          "signed": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_v": {
+          "signed": {
+            "mean": 0.675614558160305,
+            "ci95": [
+              0.4531795842573047,
+              0.9159435477107762
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.750169463455677,
+            "ci95": [
+              0.5595255440101028,
+              0.9669799089431762
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.913012333214283,
+            "ci95": [
+              0.7119649542495609,
+              1.1378599049523472
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_origin_gate": {
+          "signed": {
+            "mean": 1.3991619944572449,
+            "ci95": [
+              0.7535322457551956,
+              1.9906960932537898
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.8600004762411118,
+            "ci95": [
+              1.4415362898260355,
+              2.314991623908281
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.4578402042388916,
+            "ci95": [
+              2.0379844976589085,
+              2.89842930100858
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A_cross": {
+          "signed": {
+            "mean": 2.7975642010569572,
+            "ci95": [
+              2.002343469299376,
+              3.6626081766560654
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.974405027925968,
+            "ci95": [
+              2.2667212069034575,
+              3.764163557067512
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.4583465680480003,
+            "ci95": [
+              2.8173513889312742,
+              4.165105690062046
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_instruction": {
+          "signed": {
+            "mean": 7.018626131117344,
+            "ci95": [
+              6.031982015445829,
+              7.988010924123223
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 7.018626131117344,
+            "ci95": [
+              6.031982015445829,
+              7.988010924123223
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 7.207253508269787,
+            "ci95": [
+              6.237378915026784,
+              8.162668902613222
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_kv": {
+          "signed": {
+            "mean": 0.9544059783220291,
+            "ci95": [
+              0.44150804113596676,
+              1.4040480595082039
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.3370335698127747,
+            "ci95": [
+              0.9978957613930106,
+              1.7162521392107006
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.003535106778145,
+            "ci95": [
+              1.628076628036797,
+              2.4035759534686805
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_kv": {
+          "signed": {
+            "mean": 0.6394888311624527,
+            "ci95": [
+              0.42435886450111865,
+              0.8657590636983505
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.7255016267299652,
+            "ci95": [
+              0.5480730816721916,
+              0.9216226119548078
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.9404505640268326,
+            "ci95": [
+              0.7441461279988288,
+              1.153918648511171
+            ],
+            "n_contexts": 32
+          }
+        },
+        "single_A": {
+          "signed": {
+            "mean": 3.7713275775313377,
+            "ci95": [
+              2.973365546390414,
+              4.537967268750071
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 3.9504864141345024,
+            "ci95": [
+              3.2877997282892464,
+              4.619809877686201
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 4.326711602509022,
+            "ci95": [
+              3.7817528981715443,
+              4.885683842934667
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_gate": {
+          "signed": {
+            "mean": 0.29080577194690704,
+            "ci95": [
+              -0.2482902919873595,
+              0.7291902080178257
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.9415736049413681,
+            "ci95": [
+              0.6180660111829639,
+              1.3614316206425428
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.6219623684883118,
+            "ci95": [
+              1.2506772588938475,
+              2.0443585127592088
+            ],
+            "n_contexts": 32
+          }
+        },
+        "cross_gate": {
+          "signed": {
+            "mean": 2.7975642010569572,
+            "ci95": [
+              2.002343469299376,
+              3.6626081766560654
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.974405027925968,
+            "ci95": [
+              2.2667212069034575,
+              3.764163557067512
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.4583465680480003,
+            "ci95": [
+              2.8173513889312742,
+              4.165105690062046
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_within": {
+          "signed": {
+            "mean": 0.0928199291229248,
+            "ci95": [
+              -0.20302897039800882,
+              0.34111172407865525
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.5256586670875549,
+            "ci95": [
+              0.34816342517733573,
+              0.7528386503458022
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.8773035407066345,
+            "ci95": [
+              0.6487135399132967,
+              1.1435014562681316
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_origin": {
+          "signed": {
+            "mean": 1.1403908655047417,
+            "ci95": [
+              0.5519167996942997,
+              1.673724498599767
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.5926844850182533,
+            "ci95": [
+              1.2080458011478186,
+              2.021266535855829
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.2406951263546944,
+            "ci95": [
+              1.8383848547935486,
+              2.6703574785962694
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_cross_gate": {
+          "signed": {
+            "mean": 2.0354054868221283,
+            "ci95": [
+              1.1761770172044634,
+              2.876773054338991
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.482544496655464,
+            "ci95": [
+              1.8356865664944053,
+              3.191805309802293
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.0723626613616943,
+            "ci95": [
+              2.492790678143501,
+              3.6980564551427957
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_cross": {
+          "signed": {
+            "mean": 1.9878234677016735,
+            "ci95": [
+              1.5130084467120468,
+              2.5018838473595677
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.9905588142573833,
+            "ci95": [
+              1.5173741457983851,
+              2.5038906970992683
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.5739676989614964,
+            "ci95": [
+              2.1047216802835464,
+              3.083416227810084
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_kv": {
+          "signed": {
+            "mean": 2.2385047897696495,
+            "ci95": [
+              1.4331293851137161,
+              2.9852243501693008
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.6442518159747124,
+            "ci95": [
+              2.070426392182708,
+              3.249936453253028
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.0603629872202873,
+            "ci95": [
+              2.57549809794873,
+              3.5721001114696262
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_k": {
+          "signed": {
+            "mean": 2.614167034626007,
+            "ci95": [
+              1.84267615377903,
+              3.3181239113211625
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.947713792324066,
+            "ci95": [
+              2.3871245868504047,
+              3.511173950321972
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.264802500605583,
+            "ci95": [
+              2.787604387663305,
+              3.7490716185420747
+            ],
+            "n_contexts": 32
+          }
+        },
+        "origin_instruction": {
+          "signed": {
+            "mean": -0.10494331270456314,
+            "ci95": [
+              -0.7889539612457156,
+              0.5585658712312574
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.4709020182490349,
+            "ci95": [
+              1.0525245871394873,
+              1.9350993482396002
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.5782871767878532,
+            "ci95": [
+              2.093349723890424,
+              3.0916492445394392
+            ],
+            "n_contexts": 32
+          }
+        },
+        "label_ns_cross": {
+          "signed": {
+            "mean": 1.8982617110013962,
+            "ci95": [
+              1.1060127347707749,
+              2.629576447792351
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.3604332357645035,
+            "ci95": [
+              1.7957458402961493,
+              2.9628542289137827
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.906476616859436,
+            "ci95": [
+              2.4341534500941635,
+              3.407395007461309
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_origin_answer_v": {
+          "signed": {
+            "mean": 0.15961941331624985,
+            "ci95": [
+              -0.38228499218821527,
+              0.6631519664078951
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.1180903539061546,
+            "ci95": [
+              0.7873850071802735,
+              1.5063392397016286
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 1.7681693509221077,
+            "ci95": [
+              1.3568412240594625,
+              2.228377876803278
+            ],
+            "n_contexts": 32
+          }
+        },
+        "within_instruction": {
+          "signed": {
+            "mean": 0.19972284883260727,
+            "ci95": [
+              -0.5095758082345128,
+              0.8783846529200664
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 1.6009317263960838,
+            "ci95": [
+              1.1781023209914565,
+              2.0553336944431044
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 2.918271519243717,
+            "ci95": [
+              2.4484841605648398,
+              3.3914779137820004
+            ],
+            "n_contexts": 32
+          }
+        },
+        "ns_cross_answer_v": {
+          "signed": {
+            "mean": 2.7259796634316444,
+            "ci95": [
+              1.9913318267092108,
+              3.4409471016377204
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 2.991102196276188,
+            "ci95": [
+              2.419729349389672,
+              3.5897773945704095
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 3.3158745244145393,
+            "ci95": [
+              2.8199431551620364,
+              3.835523308627307
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_cross_k": {
+          "signed": {
+            "mean": -0.0120931938290596,
+            "ci95": [
+              -0.07295375652611255,
+              0.04316189792007201
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.12038817256689072,
+            "ci95": [
+              0.08302622903138399,
+              0.1642946107313037
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.21445932239294052,
+            "ci95": [
+              0.16512694228440522,
+              0.26694294866174445
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "paired_absolute_effect_differences": {
+        "cross_gate_minus_within_gate": {
+          "mean": 2.0328314229846,
+          "ci95": [
+            1.1873119732365012,
+            2.913289063982665
+          ],
+          "n_contexts": 32
+        },
+        "label_cross_minus_label_within": {
+          "mean": 1.4649001471698284,
+          "ci95": [
+            0.9850469000637532,
+            1.9980158657766875
+          ],
+          "n_contexts": 32
+        },
+        "answer_cross_kv_minus_answer_within_kv": {
+          "mean": 0.6183552667498589,
+          "ci95": [
+            0.44931682143360374,
+            0.8064127529039977
+          ],
+          "n_contexts": 32
+        },
+        "label_cross_minus_answer_cross_kv": {
+          "mean": 1.2650571875274181,
+          "ci95": [
+            0.8899756491184234,
+            1.6706571303308004
+          ],
+          "n_contexts": 32
+        },
+        "answer_cross_kv_minus_answer_cross_k": {
+          "mean": 0.6051134541630745,
+          "ci95": [
+            0.42857046592980624,
+            0.7981122503057121
+          ],
+          "n_contexts": 32
+        },
+        "answer_cross_kv_minus_answer_cross_v": {
+          "mean": -0.024667836725711823,
+          "ci95": [
+            -0.0912933200597763,
+            0.03773596994578836
+          ],
+          "n_contexts": 32
+        }
+      },
+      "fixed_coefficient_relation_prediction": {
+        "answer_cross_kv": {
+          "rmse": 2.4069117082830327,
+          "rmse_ci95": [
+            1.92845679737181,
+            2.89729413238355
+          ],
+          "correlation": 0.783136748935437,
+          "correlation_ci95": [
+            0.6949909888646424,
+            0.8631201737239428
+          ],
+          "zero_rmse": 3.299481451437966,
+          "rmse_over_zero": 0.7294818121296188,
+          "relative_mse_explained": 0.4678562857720875,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "answer_cross_k": {
+          "rmse": 3.3211695961943954,
+          "rmse_ci95": [
+            2.714797760704427,
+            3.9059834843592363
+          ],
+          "correlation": -0.026104599836389263,
+          "correlation_ci95": [
+            -0.17539977527795886,
+            0.14724867385041163
+          ],
+          "zero_rmse": 3.299481451437966,
+          "rmse_over_zero": 1.006573197963267,
+          "relative_mse_explained": -0.013189602857998306,
+          "n_contexts": 32,
+          "n_scores": 256
+        },
+        "answer_cross_v": {
+          "rmse": 2.4507666558142125,
+          "rmse_ci95": [
+            1.9523908819094369,
+            2.959004995614706
+          ],
+          "correlation": 0.7628266193626435,
+          "correlation_ci95": [
+            0.6781433644830933,
+            0.8491262159616241
+          ],
+          "zero_rmse": 3.299481451437966,
+          "rmse_over_zero": 0.7427732787363087,
+          "relative_mse_explained": 0.4482878563953139,
+          "n_contexts": 32,
+          "n_scores": 256
+        }
+      },
+      "fixed_coefficient_namespace_prediction": {
+        "kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 1.1279902646375,
+            "rmse_ci95": [
+              0.8842828170080503,
+              1.3781560250797977
+            ],
+            "correlation": 0.9430002627452891,
+            "correlation_ci95": [
+              0.8965158112594194,
+              0.9686169993164624
+            ],
+            "zero_rmse": 3.405382313251661,
+            "rmse_over_zero": 0.3312374825722367,
+            "relative_mse_explained": 0.8902817301392072,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.0972968822853553,
+            "rmse_ci95": [
+              0.8856402140803495,
+              1.3289491730403433
+            ],
+            "correlation": 0.9579235958357829,
+            "correlation_ci95": [
+              0.9259203226367223,
+              0.9766597555243189
+            ],
+            "zero_rmse": 3.7307896099488165,
+            "rmse_over_zero": 0.29411920719389195,
+            "relative_mse_explained": 0.9134938919596365,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "k": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 1.531462844755299,
+            "rmse_ci95": [
+              1.2398778785017583,
+              1.8520511729140738
+            ],
+            "correlation": 0.8898868216321943,
+            "correlation_ci95": [
+              0.8213260902079709,
+              0.928216908852717
+            ],
+            "zero_rmse": 3.405382313251661,
+            "rmse_over_zero": 0.44971832936225226,
+            "relative_mse_explained": 0.7977534242356248,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 1.5990785368348646,
+            "rmse_ci95": [
+              1.369424230107461,
+              1.8333532410045168
+            ],
+            "correlation": 0.9068535721451315,
+            "correlation_ci95": [
+              0.8451438349992787,
+              0.9434260009971505
+            ],
+            "zero_rmse": 3.7307896099488165,
+            "rmse_over_zero": 0.42861664795319365,
+            "relative_mse_explained": 0.816287769097368,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "v": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 1.9618612575342012,
+            "rmse_ci95": [
+              1.6990249817875807,
+              2.2128081699417015
+            ],
+            "correlation": 0.8125926480539958,
+            "correlation_ci95": [
+              0.7017317102466094,
+              0.8762143340360715
+            ],
+            "zero_rmse": 3.405382313251661,
+            "rmse_over_zero": 0.5761060218994617,
+            "relative_mse_explained": 0.668101851531177,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 2.644982042328574,
+            "rmse_ci95": [
+              2.122084036479604,
+              3.125061217346347
+            ],
+            "correlation": 0.7069559047883297,
+            "correlation_ci95": [
+              0.5772908940775909,
+              0.8086676047945615
+            ],
+            "zero_rmse": 3.7307896099488165,
+            "rmse_over_zero": 0.7089603861003733,
+            "relative_mse_explained": 0.4973751709404096,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "single_A_by_polarity": {
+        "False": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 16
+        },
+        "True": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 16
+        }
+      },
+      "full_A_cross_gate_max_score_error": 0.0,
+      "independent_token_geometry": {
+        "tokenizer_model_path": "/tmp/ices_models/Qwen3-8B",
+        "word_ids_exact": true,
+        "all_worlds_namespace_pairs_checked": 192,
+        "positions_roles_and_sender_scopes_exact": true,
+        "fixed_labels_when_only_B_content_changes": true,
+        "all_changed_tokens_confined_to_designated_B_content_or_label_anchors": true,
+        "own_A_token_changes": 0,
+        "answer_scope_token_counts": [
+          16
+        ],
+        "blockwise_encoding_differs_from_whole_string_contexts": 0,
+        "gold_and_names_and_source_balance_recomputed_exact": true
+      }
+    },
+    "results/e112/mistral_confirmation": {
+      "completeness_and_sampling": {
+        "rows": 32,
+        "queries_each": 8,
+        "conditions_each": 24,
+        "sequential_context_ids": true,
+        "finite_scores": true,
+        "argmax_booleans_recomputed_exact": true,
+        "contexts_sha256_matches_run": true,
+        "script_sha256_matches_run": true,
+        "raw_sha256": {
+          "contexts.jsonl": "9102040cf03044a83c995ebc0d7900383a1b313429bfd207a576f657ca1b85ad",
+          "behavior.jsonl": "260698b36450a04fba50995101629314d43f8b76ea6f10d1d7a0f0b0cb78f307",
+          "run.json": "7d6a5934582606a2ad4b49f378f480ac6ba3063783df91ed2480691a13d726fc",
+          "preflight.json": "3af7f26e05490daae7b598aa66e0c40a85ebac95169d9b6a9aeebd2bddea2e4e"
+        },
+        "reverse_counts": {
+          "False": 14,
+          "True": 18
+        },
+        "within_context_demo_query_overlap": 0,
+        "within_context_duplicate_demo_text": 0,
+        "unique_demo_texts": 454,
+        "unique_query_texts": 240,
+        "discovery_overlap": {
+          "prior_contexts": 16,
+          "exact_contexts": 0,
+          "unique_query_text_intersection": 17,
+          "unique_all_text_intersection": 135
+        },
+        "all_layers_edge_counts_identical": true,
+        "edge_layers_and_counts": {
+          "n_layers": 32,
+          "each_layer": {
+            "answer_kv": 64,
+            "prelabel_kv": 64,
+            "all_b_kv": 64,
+            "answer_k": 64,
+            "answer_v": 64,
+            "self": 2
+          }
+        }
+      },
+      "run_controls": {
+        "numeric_max_error": 1.9073486328125e-06,
+        "elapsed_seconds": 504.7573621273041,
+        "gpu_hours": 0.14021037836869557,
+        "script_sha256": "b73612c9276baf0e0b2ebdf8f66c4623bb866977b90da25d0c2cd304648c6d1e",
+        "contexts_sha256": "9102040cf03044a83c995ebc0d7900383a1b313429bfd207a576f657ca1b85ad",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "e59ec14beb2ca8d0ae2abc7aca931175cf229dcd",
+        "model_revision": "unverified; local content identity in asset_manifest.json",
+        "model_type": "mistral",
+        "dtype": "float32",
+        "attention": "eager",
+        "training": false,
+        "patch_layers": "all",
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "query_source_gate_scope": "all query positions"
+      },
+      "metrics": {
+        "conflict_shared_native": {
+          "accuracy": {
+            "mean": 0.56640625,
+            "ci95": [
+              0.515625,
+              0.6171875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.56640625,
+            "ci95": [
+              0.515625,
+              0.6171875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_shared_gate": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.5546875,
+              0.640625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.5546875,
+              0.640625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_far_native": {
+          "accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.5546875,
+              0.65625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.90625,
+            "ci95": [
+              0.8515625,
+              0.953125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.5625,
+            "ci95": [
+              0.51171875,
+              0.61328125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_far_gate": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_full_A": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_far_label": {
+          "accuracy": {
+            "mean": 0.57421875,
+            "ci95": [
+              0.52734375,
+              0.62109375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.57421875,
+            "ci95": [
+              0.52734375,
+              0.62109375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_kv": {
+          "accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.5625,
+              0.6484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.5625,
+              0.6484375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_prelabel_kv": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.5625,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.5625,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_all_b_kv": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_k": {
+          "accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.5625,
+              0.6484375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.5625,
+              0.6484375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_answer_v": {
+          "accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.55078125,
+              0.625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.5859375,
+            "ci95": [
+              0.55078125,
+              0.625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "conflict_instruction": {
+          "accuracy": {
+            "mean": 0.5546875,
+            "ci95": [
+              0.5,
+              0.61328125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.5546875,
+            "ci95": [
+              0.5,
+              0.61328125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_shared_native": {
+          "accuracy": {
+            "mean": 0.64453125,
+            "ci95": [
+              0.578125,
+              0.70703125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.64453125,
+            "ci95": [
+              0.578125,
+              0.70703125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_shared_gate": {
+          "accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.56640625,
+              0.66015625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.56640625,
+              0.66015625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_native": {
+          "accuracy": {
+            "mean": 0.63671875,
+            "ci95": [
+              0.58203125,
+              0.69140625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 0.94140625,
+            "ci95": [
+              0.90625,
+              0.97265625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.60546875,
+            "ci95": [
+              0.55078125,
+              0.66015625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_gate": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.55078125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.55078125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_full_A": {
+          "accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.55078125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.59765625,
+            "ci95": [
+              0.55078125,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_far_label": {
+          "accuracy": {
+            "mean": 0.58984375,
+            "ci95": [
+              0.546875,
+              0.6328125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.58984375,
+            "ci95": [
+              0.546875,
+              0.6328125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_kv": {
+          "accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.5703125,
+              0.671875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.62109375,
+            "ci95": [
+              0.5703125,
+              0.671875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_prelabel_kv": {
+          "accuracy": {
+            "mean": 0.609375,
+            "ci95": [
+              0.5625,
+              0.65625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.609375,
+            "ci95": [
+              0.5625,
+              0.65625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_all_b_kv": {
+          "accuracy": {
+            "mean": 0.62890625,
+            "ci95": [
+              0.578125,
+              0.6796875
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.62890625,
+            "ci95": [
+              0.578125,
+              0.6796875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_k": {
+          "accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.56640625,
+              0.6640625
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.61328125,
+            "ci95": [
+              0.56640625,
+              0.6640625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_answer_v": {
+          "accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.6015625,
+            "ci95": [
+              0.55859375,
+              0.64453125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "aligned_instruction": {
+          "accuracy": {
+            "mean": 0.65234375,
+            "ci95": [
+              0.59375,
+              0.7109375
+            ],
+            "n_contexts": 32
+          },
+          "argmax_label_rate": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 32
+          },
+          "argmax_accuracy": {
+            "mean": 0.65234375,
+            "ci95": [
+              0.59375,
+              0.7109375
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "rule_dependence": {
+        "shared_native": {
+          "signed": {
+            "mean": 0.22662055864930153,
+            "ci95": [
+              0.16486910507082939,
+              0.2953789093531668
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.23792216554284096,
+            "ci95": [
+              0.18195836851373315,
+              0.3027083276771009
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.5408034734427929,
+            "ci95": [
+              0.4577936977148056,
+              0.6277974580414591
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.171875,
+            "ci95": [
+              0.125,
+              0.21875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "shared_gate": {
+          "signed": {
+            "mean": 0.02858038991689682,
+            "ci95": [
+              -0.020695009268820286,
+              0.07508131070062517
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.10521844774484634,
+            "ci95": [
+              0.07602475397288799,
+              0.1405213587917387
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.6275904178619385,
+            "ci95": [
+              0.4710484962910414,
+              0.8115727499127386
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.1484375,
+            "ci95": [
+              0.08984375,
+              0.22265625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_native": {
+          "signed": {
+            "mean": -0.020366638898849487,
+            "ci95": [
+              -0.04498210046440363,
+              0.005136411357671022
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.053229138255119324,
+            "ci95": [
+              0.03664462715387344,
+              0.07264613686129451
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.1919999197125435,
+            "ci95": [
+              0.1707921269349754,
+              0.21385463327169416
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.0703125,
+            "ci95": [
+              0.0390625,
+              0.10546875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_gate": {
+          "signed": {
+            "mean": -0.01009809598326683,
+            "ci95": [
+              -0.02314459178596735,
+              0.002853949088603254
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.029514748603105545,
+            "ci95": [
+              0.021270687226206064,
+              0.03875522566959261
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.1035824753344059,
+            "ci95": [
+              0.0872200489975512,
+              0.12298622224479912
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.04296875,
+            "ci95": [
+              0.01953125,
+              0.0703125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "full_A": {
+          "signed": {
+            "mean": -0.01009809598326683,
+            "ci95": [
+              -0.02314459178596735,
+              0.002853949088603254
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.029514748603105545,
+            "ci95": [
+              0.021270687226206064,
+              0.03875522566959261
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.1035824753344059,
+            "ci95": [
+              0.0872200489975512,
+              0.12298622224479912
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.04296875,
+            "ci95": [
+              0.01953125,
+              0.0703125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "far_label": {
+          "signed": {
+            "mean": -0.005571603775024414,
+            "ci95": [
+              -0.02456836812198162,
+              0.013357677590101924
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.04333661496639252,
+            "ci95": [
+              0.03216010313481092,
+              0.05522906472906469
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.14821333438158035,
+            "ci95": [
+              0.12261677430942655,
+              0.1752596667036414
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.0390625,
+            "ci95": [
+              0.01953125,
+              0.05859375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_kv": {
+          "signed": {
+            "mean": -0.004340413957834244,
+            "ci95": [
+              -0.024002834130078553,
+              0.015450887661427257
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.046986062079668045,
+            "ci95": [
+              0.036250817123800516,
+              0.05842884425073862
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.19858527556061745,
+            "ci95": [
+              0.163407551497221,
+              0.23582003600895404
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.0546875,
+            "ci95": [
+              0.02734375,
+              0.0859375
+            ],
+            "n_contexts": 32
+          }
+        },
+        "prelabel_kv": {
+          "signed": {
+            "mean": 0.0284823440015316,
+            "ci95": [
+              -0.020877765025943518,
+              0.07531073242425912
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.10506400838494301,
+            "ci95": [
+              0.0756568037904799,
+              0.14061098489910365
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.6317564584314823,
+            "ci95": [
+              0.47407522741705177,
+              0.8174585057422515
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.1484375,
+            "ci95": [
+              0.0859375,
+              0.22265625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "all_b_kv": {
+          "signed": {
+            "mean": -0.0042862668633461,
+            "ci95": [
+              -0.02416828731074929,
+              0.0158596266061067
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.04759317636489868,
+            "ci95": [
+              0.03675520084798336,
+              0.05923251863569021
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.19993852823972702,
+            "ci95": [
+              0.163525434024632,
+              0.23871385455131527
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.06640625,
+            "ci95": [
+              0.0390625,
+              0.09765625
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_k": {
+          "signed": {
+            "mean": -0.0028380341827869415,
+            "ci95": [
+              -0.021496931649744512,
+              0.015416966006159712
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.04410138353705406,
+            "ci95": [
+              0.03393385158851743,
+              0.0547924137674272
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.20595750585198402,
+            "ci95": [
+              0.16468280833214521,
+              0.2504186152480542
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.0546875,
+            "ci95": [
+              0.03125,
+              0.078125
+            ],
+            "n_contexts": 32
+          }
+        },
+        "answer_v": {
+          "signed": {
+            "mean": -0.014968838542699814,
+            "ci95": [
+              -0.0531964928843081,
+              0.018642164859920696
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.0670904703438282,
+            "ci95": [
+              0.04238772466778755,
+              0.09907549396157259
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.5499598421156406,
+            "ci95": [
+              0.4214449697174132,
+              0.707540455088019
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.1171875,
+            "ci95": [
+              0.0703125,
+              0.171875
+            ],
+            "n_contexts": 32
+          }
+        },
+        "instruction": {
+          "signed": {
+            "mean": 0.22480381280183792,
+            "ci95": [
+              0.1584403115324676,
+              0.2966014474630356
+            ],
+            "n_contexts": 32
+          },
+          "absolute_context_mean": {
+            "mean": 0.2446775808930397,
+            "ci95": [
+              0.18934759367257356,
+              0.30965817617252467
+            ],
+            "n_contexts": 32
+          },
+          "mean_absolute_query_effect": {
+            "mean": 0.5271975696086884,
+            "ci95": [
+              0.44106358420103786,
+              0.6150017048232256
+            ],
+            "n_contexts": 32
+          },
+          "flip_rate": {
+            "mean": 0.19921875,
+            "ci95": [
+              0.1484375,
+              0.25
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "paired_absolute_effect_differences": {
+        "shared_gate_minus_far_label": {
+          "mean": 0.06188183277845383,
+          "ci95": [
+            0.03379271384328604,
+            0.09507785784080625
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_far_gate": {
+          "mean": 0.0757036991417408,
+          "ci95": [
+            0.04649270661175251,
+            0.10987798497080802
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_k": {
+          "mean": 0.06111706420779228,
+          "ci95": [
+            0.028481680434197187,
+            0.09924984779208894
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_kv": {
+          "mean": 0.0582323856651783,
+          "ci95": [
+            0.02927488088607788,
+            0.09033931056037545
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_prelabel_kv": {
+          "mean": 0.00015443935990333557,
+          "ci95": [
+            -0.0012753032147884368,
+            0.0015869660302996603
+          ],
+          "n_contexts": 32
+        },
+        "answer_kv_minus_far_label": {
+          "mean": 0.003649447113275528,
+          "ci95": [
+            -0.006256132572889327,
+            0.013025434780865897
+          ],
+          "n_contexts": 32
+        },
+        "answer_k_minus_far_label": {
+          "mean": 0.0007647685706615448,
+          "ci95": [
+            -0.013448892068117857,
+            0.014433985110372303
+          ],
+          "n_contexts": 32
+        },
+        "answer_v_minus_far_label": {
+          "mean": 0.023753855377435684,
+          "ci95": [
+            -0.0031240095384418957,
+            0.05556468386203049
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_answer_v": {
+          "mean": 0.03812797740101814,
+          "ci95": [
+            0.0159331351518631,
+            0.0592064106836915
+          ],
+          "n_contexts": 32
+        },
+        "shared_gate_minus_all_b_kv": {
+          "mean": 0.05762527137994766,
+          "ci95": [
+            0.028560312930494547,
+            0.0899174869991839
+          ],
+          "n_contexts": 32
+        }
+      },
+      "fixed_coefficient_namespace_prediction": {
+        "answer_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.2006245998495731,
+            "rmse_ci95": [
+              0.1686297862380066,
+              0.23276383738455414
+            ],
+            "correlation": 0.9537152900048788,
+            "correlation_ci95": [
+              0.9344153546321131,
+              0.9660109364169989
+            ],
+            "zero_rmse": 0.6090868932446329,
+            "rmse_over_zero": 0.32938584309512386,
+            "relative_mse_explained": 0.8915049663685144,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.22542475780865948,
+            "rmse_ci95": [
+              0.17516495759046172,
+              0.27471623011459634
+            ],
+            "correlation": 0.9767450755261581,
+            "correlation_ci95": [
+              0.9522841734027307,
+              0.9886832849487281
+            ],
+            "zero_rmse": 0.8649650533344887,
+            "rmse_over_zero": 0.2606171855610055,
+            "relative_mse_explained": 0.9320786825902604,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "prelabel_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.6124072893052357,
+            "rmse_ci95": [
+              0.48520714678919236,
+              0.7423637446266178
+            ],
+            "correlation": -0.27108919675934856,
+            "correlation_ci95": [
+              -0.5335430514055337,
+              0.0422823905099321
+            ],
+            "zero_rmse": 0.6090868932446329,
+            "rmse_over_zero": 1.0054514324596855,
+            "relative_mse_explained": -0.010932583035233367,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.8707290674003612,
+            "rmse_ci95": [
+              0.6398902799635902,
+              1.1072955152467026
+            ],
+            "correlation": -0.30106129731513437,
+            "correlation_ci95": [
+              -0.6276050810750325,
+              0.17975082755098595
+            ],
+            "zero_rmse": 0.8649650533344887,
+            "rmse_over_zero": 1.0066638693016,
+            "relative_mse_explained": -0.013372145757268639,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "all_b_kv": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.19904555188785336,
+            "rmse_ci95": [
+              0.1666727485749228,
+              0.23190805087221952
+            ],
+            "correlation": 0.9545082340700068,
+            "correlation_ci95": [
+              0.9359343464231852,
+              0.9664259389005189
+            ],
+            "zero_rmse": 0.6090868932446329,
+            "rmse_over_zero": 0.32679335919958624,
+            "relative_mse_explained": 0.8932061003830501,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.22674577547510427,
+            "rmse_ci95": [
+              0.17616554521441552,
+              0.27610265056457295
+            ],
+            "correlation": 0.9769175598296146,
+            "correlation_ci95": [
+              0.9525321274561465,
+              0.9887109861605322
+            ],
+            "zero_rmse": 0.8649650533344887,
+            "rmse_over_zero": 0.26214443531676407,
+            "relative_mse_explained": 0.9312802950324549,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "answer_k": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.2488046163550295,
+            "rmse_ci95": [
+              0.21165786112565158,
+              0.2895763808853807
+            ],
+            "correlation": 0.9147797448093822,
+            "correlation_ci95": [
+              0.8748862876674761,
+              0.9408100369822602
+            ],
+            "zero_rmse": 0.6090868932446329,
+            "rmse_over_zero": 0.40848788426497945,
+            "relative_mse_explained": 0.8331376484087207,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.2648807415237292,
+            "rmse_ci95": [
+              0.21091939685248973,
+              0.31468355915264523
+            ],
+            "correlation": 0.966321299482429,
+            "correlation_ci95": [
+              0.9347324191388002,
+              0.9815312472055984
+            ],
+            "zero_rmse": 0.8649650533344887,
+            "rmse_over_zero": 0.3062328824761175,
+            "relative_mse_explained": 0.9062214216903683,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        },
+        "answer_v": {
+          "coefficient": 1,
+          "fit": false,
+          "raw_namespace": {
+            "rmse": 0.5332801472430141,
+            "rmse_ci95": [
+              0.42432980625323297,
+              0.6489991878676206
+            ],
+            "correlation": 0.55215199254064,
+            "correlation_ci95": [
+              0.4259921064975466,
+              0.6523427450739608
+            ],
+            "zero_rmse": 0.6090868932446329,
+            "rmse_over_zero": 0.8755403426959446,
+            "relative_mse_explained": 0.23342910831186792,
+            "n_contexts": 32,
+            "n_scores": 512
+          },
+          "rule_double_contrast": {
+            "rmse": 0.7535989770912047,
+            "rmse_ci95": [
+              0.550877873488606,
+              0.9618289631367376
+            ],
+            "correlation": 0.50798178305659,
+            "correlation_ci95": [
+              0.33323550826117687,
+              0.6476315340143591
+            ],
+            "zero_rmse": 0.8649650533344887,
+            "rmse_over_zero": 0.871247889363898,
+            "relative_mse_explained": 0.24092711527895294,
+            "n_contexts": 32,
+            "n_scores": 256
+          }
+        }
+      },
+      "full_A_far_gate_max_score_error": 0.0
+    }
+  },
+  "e112_pending_at_initial_freeze": true,
+  "author_comparison_after_independent_freeze": {
+    "results/e109/qwen3_confirmation": {
+      "number_of_mean_and_reconstruction_checks": 102,
+      "maximum_absolute_difference": 1.8596235662471372e-15
+    },
+    "results/e111/qwen3_validation": {
+      "number_of_mean_and_reconstruction_checks": 114,
+      "maximum_absolute_difference": 0.0
+    },
+    "results/e112/mistral_confirmation": {
+      "number_of_mean_and_reconstruction_checks": 102,
+      "maximum_absolute_difference": 7.216449660063518e-15,
+      "author_reconstruction_file_available": true,
+      "author_reconstruction_read_only_after_independent_e112_values_frozen": true
+    }
+  },
+  "e112_complete_before_reading_raw": true,
+  "calculation_sha256_before_token_geometry_append": "5fe451405af44d578cb878845fcdd94576f2381a1b2af1ab259460d551d05dc9",
+  "notes": [
+    "E109/E111 were calculated from complete raw files before CLAIMS, synthesis, experiment result paragraphs or author analysis were read. E112 was read only after run.json and both complete 32-row raw files existed, and calculated before its author analysis/reconstruction summaries were read.",
+    "Same fixed intervention targets and coefficient 1 are used; independent bootstrap seed and draw count differ from author, so percentile endpoints can differ without a mismatch.",
+    "E111 relation prediction relative-MSE scores and polarity-by-effect examination are reviewer POST-HOC diagnostics; they do not replace registered readouts.",
+    "No GPU was started. Local Qwen tokenizer geometry was independently checked on CPU; Mistral tokenizer geometry is script/preflight-audited, not independently re-tokenized because that asset is remote."
+  ]
+}
