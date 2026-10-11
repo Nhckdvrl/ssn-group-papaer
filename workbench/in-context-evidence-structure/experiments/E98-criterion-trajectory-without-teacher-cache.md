@@ -1,6 +1,6 @@
 # E98：没有teacher证据地址时，内部状态传递标准还是完整私人函数？
 
-- **状态：** RUNNING；运行前提交 `867351c2`，本机GPU0/1执行112行阳性；固定接口pilot。
+- **状态：** DONE-PILOT；112行接口阳性未通过，384行主运输按冻结决策未运行。
 - **对应：** I04 / C16 / C20 / P17。
 - **研究问题：** 从多人私人示例推断的共同criterion，能否作为内部功能信息与接收者自己的偏好组合？
 
@@ -48,3 +48,11 @@ Hong的type-corrected interchange要求recipient输出关系解释donor内容；
 
 - 源码：`scripts/e98_criterion_trajectory.py`（待实现）。
 - 资产：`results/e98/qwen35_positive/`、`results/e98/qwen35_transfer/`。
+
+## 完整结果与决定
+
+`results/e98/qwen35_positive/{analysis,run,completeness_audit}.json`：文字criterion mixed14/16（87.5%）、concordant16/16；内部运输mixed16/32（50%），其中p_D≠p_R仅8/16，未达到冻结12/16接口分支，concordant仍16/16。c翻转答案改变0，两个world同时正确0；有向响应.00346[−.01110,.01803]nats，文字对照2.96078。n2仅探索。
+
+112唯一键、float32 self-copy最大误差0、非载体修改0、源码SHA886f61b8…一致；.16550 GPU·时。独立agent逐行核对gold/参数/读数。POST-HOC辅助检查64运输答案均与Own基线相同，但平均绝对logit改变量.15131、最大.70229nats，说明干预影响计算，却没有传递所注册的标准功能；辅助统计不替代预定读数。
+
+**决定：** 不启动prepared/RawFull 384行、不扫层/alpha。这个接口不能把文字标准的作用转移过去；尚未回答prepared信息的内容，也不证明criterion不存在、只存地址或所有内部运输失败。它没有给中心机制带来新的正解释，应诚实视为未建立的测量接口，而不是包装成新机制发现。E99独立确认按原计划继续。
