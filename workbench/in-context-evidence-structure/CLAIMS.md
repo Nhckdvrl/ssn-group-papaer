@@ -187,3 +187,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 ### E103：示例私人函数主要依赖KV，未发现预设的C/P跨memory分工
 
 [E103](experiments/E103-inferred-rule-memory-crossing.md)、`results/e103/qwen35_discovery/{analysis,run,numeric_audit,carry_audit,completeness_audit}.json`：256/128unique，native98.44%，KV whole-function模型95.31%[90.63,100]，C/P模型无完整四query profile。all-donor/self-copy数值0，48linear真实消费恢复state；split/unsplit微差完整保存。限定direct B完全可识别任务与这个hybrid模型，不称KV存独立抽象程序、不称Rec零作用，无C16/C20升级。
+
+### E104：criterion的部分内部控制，不是已确认原生程序
+
+[E104](experiments/E104-criterion-policy-state-interface.md)、`results/e104/qwen35_positive/{analysis,paired_contrasts,run,completeness_audit}.json`：352、0未知；cross-Actor仅Rec从显式cue搬运，opposite mixed65.63% vs50%，+15.63[6.25,25]pp，concordantOwner p32/32保持、完整profile6/16。存在部分criterion信息作用，actor地址/整teacher函数不够解释；但未达到稳健接口，标准推断Goal矩阵未运行，不能叫native shared criterion program。正式主张不升级。

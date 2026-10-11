@@ -533,3 +533,11 @@ E91的历史表示形成因果结果、E85的独立均值预测与E99的成功�
 这是高信息量的机制选择结果，但所支持的宽模式符合已有hybrid memory/ICL检索解释。既不贬低这个定位，也不把它当最终new theory；先不追加层分解。
 
 **回到问题：** 规则来自KV这件事，仍未回答从多人样例推断的共同criterion怎样成为可与另一套私人证据组合的计算条件。E99给出文字链可靠，E101/E102说明局部规则词/Source字段不是功能状态的充分代理。下一步应问主动标准推断前/后是否改变这项信息的可用形态，先有真实内部运输阳性再作before/after比较，而不是继续扩模型或只复述可报告≠可部署的宽认识。这个候选尚未证明；近邻DAS/JIT/TaskVectors/Hybrid memory的既有所有权明确保留。
+
+## 27. E104：出现部分criterion控制，尚不能据此展开Goal-state大矩阵
+
+完整指令Caller/Owner分别93.75/96.88%，只换recurrence并保留Owner KV后84.38%。真正需要不同criterion的opposite private p、mixed inputs中65.63%对baseline50%，+15.63[6.25,25]pp；同向输入的Owner私人映射32/32保持，完整四输入criterion只有6/16组。操作与实际state消费均验证通过。
+
+这支持可与Owner私人证据组合的有限criterion信息，但没有稳定完成内部接口，更不能证明标准Goal原生已经制造了可复用程序。因此条件性的source标准推断前/后和report/commit矩阵没有启动。不把84%总体准确率遮住baseline75%，不按零/满成功经验CI外推。
+
+**阶段性认识：** E102排除了Source-field阳性等于donor程序运输；E103不支持示例c/p天然分属两个memory、整函数主要KV；E104显示显式criterion确可部分通过recurrence约束另一Actor私人KV。这些都是机制层证据，仍未说明source-derived criterion怎样形成和被使用。现有ICL检索/Task representation/Hybrid memory框架已解释其宽结构，不能仅将组合结果命名成新理论。下一项应从E91的内容形成链及这些功能约束出发，提出具体竞争预测；不继续Source字段或cache层的局部矩阵。

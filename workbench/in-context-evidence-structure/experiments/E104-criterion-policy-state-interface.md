@@ -1,6 +1,6 @@
 # E104：标准信息能否作为控制状态，与新的私人证据组合？（2026-10-11）
 
-- **状态：** PLANNED；只启动显式控制的内部接口阳性，不预先运行标准推断矩阵。
+- **状态：** DONE-PILOT；352/352，criterion运输部分有效；尚未达到预设稳健接口，标准推断矩阵未启动。
 - **类型：** PILOT，criterion-only functional transport。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** E103示例私人函数主要经KV使用；一个输入前标准指令的recurrent状态，能否只控制criterion，同时让新接收者从自己的KV证据决定私人映射？
@@ -51,3 +51,17 @@ recipient没有criterion指令，只保留Dana自己的原生KV。分别把**全
 ### GPU前静态核对
 
 352记录、4新context、所有prefix token与future suffix一致性通过。每次未来Source Dana字段在swap之后才出现，不继承sender当前查询身份。统计唯一输入分别用真实KV tensor与Rec/conv tensor的SHA加实际future token IDs，不用原cache全hash伪增加unique。主阳性含p_T相反于p_R，不挑same p成功项；推断前/后阶段尚未启动。
+
+## 结果：criterion有功能作用，但内部接口还不稳健
+
+352/352、352真实state-query输入、0未知、.08740 GPU·时。完整Cue Sender93.75%[89.06,98.44]、Owner96.88%[90.63,100]；same-owner只换cued Rec为84.38%[78.13,90.63]，跨Actor也84.38%[81.25,88.28]。sender整函数仅51.56%；同private p85.94%、opposite82.81%。opposite的完整criterion profile6/16，而非所有新输入都可靠执行。
+
+关键区分：opposite p且两方面相反输入，criterion目标21/32＝65.63%，Own baseline50%，配对+15.63个百分点[6.25,25]；同向输入32/32保留Owner私人映射。整体+7.81点，不能只报82.8%遮住总体baseline已75%。所有private关系/输入类别和完整quad见`analysis.json`与`paired_contrasts.json`。
+
+同源cache-copy logits0，KV精确保留，cache指纹未变，48linear层各356次消费恢复state。第一context16cued query split/full argmax全同，词表max差.01234nats、label margin.00143，原数值门槛通过；完整读取方法未失败。
+
+**更新：** 无future Input、Teacher Actor不在Owner KV、私人p可相反，仍有定向criterion功能影响，故不能将所有recurrent标准控制效果解释成Actor地址或复制Teacher私人函数。这里的criterion也可能是改变Input/检索metric的信息，而不是完整abstract程序。当前是显式指令形成的构造性状态，不是多来源标准推断的原生解释。
+
+但是84.4%总体略低于约85%资源heuristic，关键mixed仅65.6%，opposite完整profile仅6/16。不能宣布稳定阳性已完成，然后用之后的failure反推learned标准不存在。决定保留部分阳性、暂不铺report/commit/before/after矩阵；不提高gain数字、不改Goal或扫层。再推进应优先把这次有限机制结果与E91/E99及最强近邻对齐，选择真正能解释共享criterion形成的新切口。阈值不是自动科学判死，此接口的有限功能也不撤回。
+
+`results/e104/qwen35_positive/{analysis,paired_contrasts,completeness_audit,numeric_audit,carry_audit,run}.json`；raw/memory本地。root逐行代数、hash、分母审计，未取得独立L3确认；C16/C20与I04/ACTIVE不改。
