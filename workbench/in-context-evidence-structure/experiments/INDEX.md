@@ -107,4 +107,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E97](E97-criterion-inference-input-and-answer-code.md) | 标准推断与私人判断的差别是否来自测试输入或答案形式 | DONE-PILOT；160/160标准问题正确，私人偏好无影响；停止格式控制，转内部criterion/私人函数运输 |
 | [E98](E98-criterion-trajectory-without-teacher-cache.md) | 内部载体运输共同标准还是donor私人函数，teacher地址缺席时能否组合 | DONE-PILOT；文字14/16、轨迹相反偏好8/16，c翻转0；接口未通过，后384行不运行 |
 | [E99](E99-independent-factor-interface-confirmation.md) | 标准推断与私人判断功能链能否在未选择的新材料成立 | DONE；n8 criterion64/64、Own256/256(128unique)，native mixed83.6%；功能链确认，旧普遍弱表现未确认 |
-| [E100](E100-auxiliary-preference-alignment.md) | 固定共同标准/A函数，只翻C私人偏好检验来源关系的使用 | PLANNED；全n8，两条件fresh640请求，区分标准抽取、匿名标准与foreign映射渗入 |
+| [E100](E100-auxiliary-preference-alignment.md) | 固定共同标准/A函数，只翻C私人偏好检验来源关系的使用 | PLANNED未运行候选；代码完成，当前优先原生内部因果实验，不启动行为扩展 |
+| [E101](E101-native-criterion-commitment-interchange.md) | 原生A判据形成时，内部更新携带criterion、函数、属性还是答案 | RUNNING；32事件/64pair已校验，四固定层×mixer/residual，512次内部交换 |
