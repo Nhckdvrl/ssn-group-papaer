@@ -135,3 +135,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E123](E123-natural-source-function-policy.md) | 真实SST source函数政策与output namespace竞争 | DONE-CONFIRMATION；四模型16→32、shared平均+7.32/+5.37/+9.47/+7.42pp，两Actor均正；far完整输出代价/先验与headroom保留，独立22824项封版 |
 
 | [E124](E124-source-identity-coordination.md) | 私人监督独立时公共身份信息在形成/读取期的作用 | DONE-CONFIRMATION；Qwen形成身份特异+4.59pp、Mistral负/Llama不明，私人监督隔离；6批11742项独立复算，整体意义继续评估 |
+
+| [E125](E125-public-output-schema-coordination.md) | 公开Source词空间关系能否协调独立私人规则的使用 | PLANNED；63接口×8q，真实/无关/交换关系表×F/R，6项CPU/独立pre-score已过，首评分前封源 |
