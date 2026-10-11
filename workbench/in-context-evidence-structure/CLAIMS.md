@@ -316,3 +316,9 @@ E126在public事实/private监督/词集/global位置全部相同时，共同ord
 
 
 E126 **POST-HOC辅助解释**（不改冻结primary/正式等级）：只在两private约定相反的origin，逐argmax另一Source词与其gold核对；coherent−mixed另一规则相容输出Q/M/L −23.73[−27.44,−20.02]/−10.06[−12.79,−7.42]/−4.88[−6.64,−3.22]pp，符合requested code换词的变化远小。Q/L own-space错误code同时增加2.54[.68,4.88]/.68[.10,1.27]pp，非所有错误一起减少，也非both-world primary的中介份额。此读数只测输出与规则相容，单纯词空间竞争仍可能选中另一已学函数，不识别called rule/ID。来源[实验卡](experiments/E126-equivalent-schema-cache-composition.md)、[独立POST-HOC校对](results/e126/posthoc_independent_review_2026-10-12.md)、[诊断](results/e126/posthoc_selected_code.json)。
+
+### E127：共享输出下共同形成背景约束规则使用（C23补充）
+
+四固定checkpoint16→32全部完成；shared/opposite primary共同背景收益Q8/M7/L8/Q14 +8.89[6.64,11.13]/+5.86[4.10,7.71]/+.78[.10,1.56]/+9.38[7.32,11.52]pp，Source特异margin均CI正。与E126一起排除仅选择不同词集作为完整解释，补充同词私人映射在联合使用时的背景依赖；S是已有gold margin投影，不是额外独立机制证据，不推断新ID。L individual/private不普遍正、own0设计恒等、coherent冲突joint仅53–65%全部保留。依据[卡E127](experiments/E127-shared-output-rule-cache-composition.md)、results/e127/*_confirmation/{analysis,run,preflight}.json、[独立35528项复算](results/e127/independent_raw_review_2026-10-12.md)。C21–23有界L3/C24L2和人负责的formal状态不改，不另凑C25。E128会检验food/service输入标准，不把新资格附加到旧形成主张。
+
+**辅助条件说明更正：** E124–127存储instruction同时阻断跨Source私人形成，不能冒称相对native的纯prompt效果；数值与primary维持，附录B披露。E128首评分前修正，E122/123纯prompt控制不受影响。

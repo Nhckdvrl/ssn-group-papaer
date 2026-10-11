@@ -1,6 +1,6 @@
 # E127：共同形成背景影响的是输出空间绑定，还是推断出的私人规则选择？（2026-10-12）
 
-- **状态：** RUNNING；4b8ee609首评分前冻结，八个固定discovery/confirmation进程启动。
+- **状态：** DONE；4b8ee609首评分前冻结，四checkpoint固定16→32八批均完整封版。
 - **类型：** PILOT / CLAIM。
 - **对应：** C23、I04、P17。
 - **问题（一句话）：** E126缓存兼容效应是否也决定共享同一标签词时该采用哪套私人映射，还是仅影响不同输出词集合的使用？
@@ -30,3 +30,13 @@
 
 
 **执行记录：** 独立8/8 CPU真token/config/源核对通过后首评分前4b8ee609冻结cef7952…；fvcrc21 GPU0/1探索Q8/L8、2/3确认，fvcrc20 GPU0/1 M7，fvcrc10 GPU0/1 Q14。确认预加载同一冻结module，仅等待pilot第一context已有数值断言全部通过后执行固定32/127101/validation，不按科学方向选。FP32/eager/单卡独立、无新训练；完整结果与逐context层消费待回齐。
+
+**运行异常保留：** Q14确认在pilot-floor等待期间，fvcrc10 GPU1被外部并发任务占用，FP32 checkpoint加载第7分片OOM，科学评分0；失败日志`results/e127/qwen14_confirmation/failed_loading_run.log`/loading_failure.json保留。不会终止外部作业；换刚核对空卡原seed/材料/FP32/冻结源重启，不构成阴性种子作废或改科学设计。
+
+**算力迁移（非科学改设计）：** 40c069官方8权重SHA及config与E119pin逐项相同，缓存暂存21 NVMe。Q14改在21 GPU1/3继续固定16→32；A100探索截至10完整context的全部raw/contexts/preflight/log保存在a100_partial_*，不读其科学方向选运行，不改变源码/材料/precision。全16从相同种子重跑，随后逐匹配context核硬件差。启动只用1GiB占位避免空卡等待期间被误占，核checkpoint/handoff后释放，未进入任何科学forward或训练。0-score加载失败仍保留。
+
+**辅助control语义校正（不改冻结科学源/primary）：** 存储的instruction条件同时增加一句提示与完全阻断private跨Source形成，属于复合条件，不能将其相对native差称为纯一句指令恢复。该条件不参与主cache-coherence比较；数值保留，附录B统一披露。E128在0-score阶段将其改为只改变一句提示。
+
+**完整结果（冻结后8/8）：** 四checkpoint16→32均完成；192ctx/132096scores、完整run计时1.950864GPU·时。primary shared/opposite joint coherent−mixed Q8/M7/L8/Q14 +8.89[6.64,11.13]/+5.86[4.10,7.71]/+.78[.10,1.56]/+9.38[7.32,11.52]pp；Source特异margin +.634[.534,.742]/+.134[.110,.158]/+.0275[.0245,.0307]/+.499[.437,.559]nats。全部固定探索/确认方向保留，L Actor/private非普遍CI正。coherent冲突joint仅53–65%，source-only实际函数仍强；非lossless组合。请求无关单一偏移不足解释Source差，但不识别binding ID/完整criterion。
+
+[summary](../results/e127/summary.json)/[全部读数](../results/e127/report.md)/[8批独立raw](../results/e127/independent_raw_review_2026-10-12.md)：35528数值max1.78e−15、实际每层mask/gold/组合与10ctx跨GPU迁移完整核。计时不含旧partial、0-score加载失败/占位/暂存；原始重复不加n。主文§6.5重组同一自然问题，附录I/J保留全部。下一项E128在同code且不同food/service标准下检验同一兼容作用，先CPU/source后前评分freeze，不加head/layer矩阵。

@@ -1,0 +1,18 @@
+{
+  "status": "OPERATIONAL MIGRATION, retain all partial scores",
+  "old_node": "fvcrc10",
+  "old_gpu": 0,
+  "new_node": "fvcrc21",
+  "new_gpu": 1,
+  "partial_n": 10,
+  "partial_behavior_sha256": "ae1db23d67307f17f2a2c6f21709ea8fcad9ec175fd4976c3a17894f947c2321",
+  "reason": "A100 FP32 latency and independent confirmation load contention; use verified NVMe checkpoint on empty97GB RTX",
+  "engine_unchanged": true,
+  "science_sha256": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "model_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "n": 16,
+  "seed": 127001,
+  "materials": "discovery",
+  "outcome_based_selection": false,
+  "action": "rerun full same16; compare all matching partial contexts z/logits/argmax after complete"
+}

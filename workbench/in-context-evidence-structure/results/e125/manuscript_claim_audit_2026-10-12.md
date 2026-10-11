@@ -41,3 +41,7 @@
 没有要求新增决定性实验。本报告完成的是当前文稿的数字/必要范围/近邻所有权适配，整体来源规则如何可靠组合仍是开放研究问题；不能用有限矩阵结束自动宣布完整逆向已完成，也不能据非SOTA/非完整程序关闭线。保持已授权E126冻结执行和其独立raw校对即可。
 
 未改science/card/claims/论文/状态，未GPU评分，未commit/push；E115–124封版保持。只同步E125独立报告的作者report SHA与最终文稿校对链接，其raw runs/geometry对象hash未变。详见[独立raw审计](independent_review_2026-10-12.md)、[JSON](independent_review_2026-10-12.json)与[E126评分前审计](../e126/independent_review_2026-10-12.md)。
+
+## instruction辅助条件语义补记（2026-10-12）
+
+E124–127的instruction条件同时加入一句Source指令与跨Source私人形成隔离，属于复合辅助条件，不能相对native解释为纯一句指令恢复。E124/125已有无指令independent参照，可比较同一隔离图内prompt差；E126/127没有该无表匹配参照，不能分解两项效应。E122/123 instruction使用normal形成，仍是纯prompt控制。核心coherence/identity contrasts与所有已封数值不变；此前审计对instruction标签说明不完整，本条更正范围，不改科学源、不重跑或改状态。 主文/附录引用这些辅助条件时必须加formation isolation限定；这不要求重跑冻结批，也不改变已核核心数值。

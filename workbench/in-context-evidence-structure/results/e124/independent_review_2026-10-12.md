@@ -348,3 +348,9 @@ F/R改变可达图、attention mass与后继活状态，形成/读取边数和�
 主张更新应以全部A/B、same/opposite、private False/True和full/candidate结果为限，不用平均吞掉反向；本审计不自动改等级、研究状态或投稿决定。未GPU重跑；GPU run hook/数值控制是作者执行记录与源码的独立审查，并非第二次GPU实验。shutdown ResourceTracker噪声若进程exit0与全部raw完整，不作科学阴性。
 
 [JSON](independent_review_2026-10-12.json)在完整raw到达后保留全部47条件、所有phase/冻结contrast、A/B/world/private方向、full词归属/margin和额外独立bootstrap；原始behavior与contexts不写进本JSON。旧E115–123封版保持。
+
+## instruction辅助条件语义更正（2026-10-12）
+
+E124–127的instruction条件同时加入一句Source指令与跨Source私人形成隔离，属于复合辅助条件，不能相对native解释为纯一句指令恢复。E124/125已有无指令independent参照，可比较同一隔离图内prompt差；E126/127没有该无表匹配参照，不能分解两项效应。E122/123 instruction使用normal形成，仍是纯prompt控制。核心coherence/identity contrasts与所有已封数值不变；此前审计对instruction标签说明不完整，本条更正范围，不改科学源、不重跑或改状态。
+
+原runs/geometry/totals保持，摘要 `eace2ff91e5db0ee9d88f0c4a1202f0f28a5404a1ebc8d5ea0a237c8f2e72adb`。

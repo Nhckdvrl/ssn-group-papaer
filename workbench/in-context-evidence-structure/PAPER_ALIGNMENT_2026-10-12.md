@@ -121,3 +121,13 @@ E126在public事实/private监督/词集/global位置全部相同时，共同ord
 
 
 E126完整后POST-HOC实际argmax显示，错Source词多数与另一Source私人gold相容；不是requested code只换表面词的主要情形。共同背景降低此类输出，但Q/L own-space错误略增，保留局部成本。这个诊断不排除已有两函数经共同mass竞争选择；因此E127在首次评分前引入shared/opposite世界和Source特异/共同输出投影，两词集合相同才使“仅另一词集选择”产生不同预测。四固定模型16→32已在8张空卡执行，未以科学方向筛确认或拓展head/layer。
+
+## 12. E127后回到研究问题：局部函数正确，为什么不能任意共同使用？
+
+四checkpoint的shared/opposite确认共同背景收益Q8/M7/L8/Q14 +8.89[6.64,11.13]/+5.86[4.10,7.71]/+.78[.10,1.56]/+9.38[7.32,11.52]pp，Source条件响应也改变。它排除了“E126只在四个不同词之间选词空间”作为完整解释，并说明**私人监督形成隔离＋单函数正确不自动保证联合Source使用**。该对象在能答对的强模型中仍存在：解释形成背景怎样使多套关系共同可用，而非维持失败率。公共表相同事实没有私有gold/criterion，effect发生在无历史私有交换、query不直读表的cache组合接口。
+
+已有CTA拥有上下文化、Feng/Dai/Mixing拥有binding/ordering/多检索策略、PCW/CacheBlend拥有独立KV上下文依赖，Li/TRTL拥有预训练任务＋新标签映射。具体增量须由整个证据链表达：output-dependent私人关系形成→实际native操作→选择性保留共享作用→公共形成结构下的联合Source函数。E127不是首次binding组件；S是两Actor margin等价投影，但请求无关共同shift本身不能改变它。L小效应、private/Actor区间、joint仅53–65%和public-order差均留。
+
+本轮已将E126动机与E127主检验合并进主文§6.5，避免按实验号堆主张。58批1392ctx/696960scores、9.659890完整run GPU·时、128706项独立数值；计时不含保留迁移partial/OOM0分数/暂存，科学量不替代意义。E128只进行一次功能对象升级：两个标准food/service共词共code时，冲突评论的来源选择是否也依赖共同形成背景。若只code有效而criterion弱，应据函数阳性更新范围；不是无论方向都宣布更多支持。先完成八CPU/source/实际truth独立核、commit冻结后用空卡跑固定四checkpoint16→32。
+
+控制说明修正：E124–127的instruction均含完整private形成隔离，不称纯一句指令恢复；E122/123原生形成的纯prompt控制仍有效。E128在0-score阶段修正，数值与核心旧coherence不撤回。

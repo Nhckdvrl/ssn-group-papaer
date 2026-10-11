@@ -1,6 +1,6 @@
 # E128：共同形成背景是否影响判断标准选择，而不仅是标签约定？（2026-10-12）
 
-- **状态：** PRE_SCORE_FROZEN，0科学评分；E127八批完整封版，E128八批实际CPU/source独立通过，提交后执行固定四checkpoint16→32。
+- **状态：** RUNNING；5e9549ed首评分前冻结，E127八批完整封版、E128八批CPU/source独立通过，固定四checkpoint16→32全部启动。
 - **类型：** PILOT / CLAIM；不新开研究线、不改formal状态。
 - **对应：** C23/C24、I04、P17。
 - **问题：** 多Source从示例推断“评价食物”或“评价服务”时，信息等价公共背景下的私人缓存组合，是否改变新输入应受哪项判断标准约束？
@@ -31,3 +31,5 @@
 **0-score实现核对修正：** native与一句指令条件均保留原生private形成，只改变提示句。此前从E127继承的`independent=policy!=native`会把instruction与完全形成隔离混在一起，首评分前改为两者`independent=False`；所有实际token/primary/85条件/21prefix数量不变，CPU材料无需改选。独立审核末版源SHA `f0a0146708e193e017eb33a1caf955d8e4d4bf22d91d73abb403b500be92265a`后freeze。E126/127冻结instruction仅作为“指令＋形成隔离”辅助条件保留，不能称纯一句指令恢复。核心缓存比较不受该条件影响。
 
 **前评分独立seal：** 192ctx/4032实际prefix图/6144query owner-scope/6144Source合成/12288demo truth均过；origin各discord4、四world固定B labelstream/输入多重集与truth、Global位置与no公共relay、实际tokenizer、末版native/instruction原生形成均核。Gram8I、T等于discordant两Actor margin平均明确，不当独立第二机制证据。参见results/e128/independent_review_2026-10-12.{json,md}；模型四权重与六metadata在20暂存SHA全相同。freeze后首GPU评分，不按科学方向挑确认。
+
+**执行：** 5e9549ed/f0a014…前评分freeze。21 GPU1/2 Q8探索/确认、GPU3 Q14顺序16→32；20 GPU0/1 Mistral、2/3 Llama探索/确认。确认仅等待首context写入（冻结源已assert数值/组合/graph），不依科学方向。七卡实际空闲复查后启用，21 GPU0外部作业不动；Q14顺序避免额外模型暂存，Llama20四权重/六metadata逐SHA核。操作helper不改science，phase/seed全定，run与所有异常日志保留。

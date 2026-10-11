@@ -132,3 +132,18 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 E125同portable入口`--experiment e125`，科学源`e125_public_output_schema_coordination.py`；n16/125001→n32/125101(确认validation)，63×8/context，Source→词集合的真实/无关/交换公共表×F/R。公开表提供关系监督，未提供私人评论–标签配对。科学SHA75f7566582cbaf7cf80dd130b409b32436df281a262884d8db381991437612b9首评分前a0a79918冻结。全部6批完整后`report_e125_schema_coordination.py`重建汇总/图并检查21prefix/63whole-query各层消费；同revision/FP32/eager，无训练或层/head搜索。
 
 E126复现入口同样支持 `--experiment e126`，模型参数/seed126001→126101、materials discovery→validation保持冻结源；Llama32确认用已下载pin rebuild cache的上下文byte-identical，见 `results/e126/portable_reproduction_audit.json`。运行时Source缓存组合、全query schema遮罩与全部43条件由科学脚本固定。
+
+
+## E127：共享输出与私人规则缓存组合
+
+科学入口`e127_shared_output_cache_composition.py`，首评分前4b8ee609/cef7952…冻结。四固定checkpoint各16/127001 discovery→32/127101 validation；shared与far同评论/private class-index/query/global几何，每context86接口×8query。主读数shared/opposite joint coherent−mixed full argmax；2/4标签logits分来源特异与共同输出，条件与训练均不增加。E127已8/8完整确认，报告入口`report_e127_shared_cache_composition.py`，独立raw/同词功能与全部控制见results/e127。
+
+```bash
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/reproduce_sst.py --cache-dir /tmp/ices-sst-rebuild --experiment e127 --model /tmp/ices_models/Llama-3.1-8B --out results/rebuild_e127_llama --n 32 --seed 127101 --materials validation
+```
+
+公共SST重建后的Llama32 CPU contexts byte-identical，审计`results/e127/portable_reproduction_audit.json`。全八批完成后`report_e127_shared_cache_composition.py`汇总全部条件/功能代价与图，不改冻结科学源；shared词不能由字面辨Source，other-source-word零不解释成无混合。原始JSONL留NFS，run/analysis/图与独立审计入git。
+
+## E128：不同输入标准的联合缓存使用
+
+科学入口`e128_criterion_cache_composition.py`，四固定checkpoint16/128001 discovery→32/128101 validation，85接口×8query；共享no/yes、4criterion×code世界，primary origin不同Food/Service标准但相同code，4discordant query×2Source。末版f0a014…在0-score阶段修正instruction为纯prompt；先独立八CPU truth/token/source核对、commit冻结后评分。复用已冻结E118/E119材料构造与E122 truth，无下载新自然数据；wholecache/图/floor与原接口一致，不搜head/layer。

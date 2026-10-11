@@ -63,6 +63,8 @@ The actual serialized token stream is part of the method. Blocks, answer words, 
 
 Effects use 10,000 context-bootstrap resamples, seed 910; reconstruction intervals follow the frozen E109 analysis. Queries within a context are not treated as independent observations. Raw logits, full-vocabulary argmax, binary candidate-label accuracy, all conditions, and failed controls are retained. Confirmation uses new word/template pools; discovery-to-confirmation text overlap is zero for E113 and the Qwen E114 batches, but vocabulary/templates recur across contexts within a pool.
 
+Instruction controls differ between experiment engines. E122/E123 add one sentence to native formation. In E124–E127, the stored `instruction` condition adds that sentence while also blocking private cross-source formation; it is a composite control, and its difference from native cannot be attributed solely to prompting. E124/E125 additionally include an instruction-free independent-formation reference. The primary formation, schema, and cache-composition contrasts do not use this instruction condition.
+
 Self interchanges produce zero error. Cached versus full-token native query scoring differs by at most 4.96e−5 in Qwen and 7.63e−6 in Mistral confirmation. Cache fingerprints, layer consumption, and matched token geometry are checked. An independent session reconstructs the token layouts and recomputes 559 numerical checks from raw records before reading author summaries, with maximum discrepancy 4.77e−15. Separate bootstrap resampling confirms the signed interactions; it is not represented as an independent GPU rerun.
 
 The earlier E113/E114 package comprises five runs and 36,736 scores. The completed E115–E119 expansion comprises 24 discovery/confirmation runs, 576 contexts, 181,632 scores, and 2.393 recorded GPU-hours. Independent raw reviews recompute 36,750 numerical quantities (maximum discrepancy 1.13e−14), reconstruct actual token layouts, and check recorded all-layer consumption. This is independent analysis, not an independent GPU rerun. The E120/E121 native-operation and real-text additions comprise 16 runs, 384 contexts, 164,352 scores, and 2.540 recorded GPU-hours. Their independent raw audits recompute 18,064 scalars (maximum discrepancy 5.00e−15), reconstruct 2,112 actual token streams, and verify the recorded masks and reachable edges. No weights are trained. All model/seed/channel results remain available. Cards specify revisions, script hashes, and rebuilding commands; small summaries, figures, code, and audits are versioned, while raw JSONL and models remain at the [documented asset paths](README.md).
@@ -268,3 +270,49 @@ After the complete E126 confirmation, we classify actual argmax outputs in the o
 | Llama-3.1-8B | −4.88 [−6.64, −3.22] | −0.59 [−1.17, −0.10] |
 
 These categories use the task’s canonical code indices rather than the words’ natural semantic equivalence. They show compatibility of an observed output with a demonstrated mapping, without claiming to observe an internal called rule. The predominant change is in outputs compatible with the other source’s convention. Own-space wrong-code outputs also increase in Qwen by 2.54 [0.68, 4.88] points and Llama by 0.68 [0.10, 1.27], so this is not a uniform reduction of every error type. These opposite-world categories are not a mediated fraction of the both-world primary. Full pair-specific rates and discovery results are in [the post-hoc report](results/e126/posthoc_selected_code.md) and [raw recomputation](scripts/posthoc_e126_selected_code.py).
+
+
+## J. Shared-output cache compatibility and source-conditioned mapping use
+
+E127 holds the original comments, source identities, class-index conventions, and global private positions fixed across shared and separate namespaces. Two orders of the same correct public facts form whole source-owned K/V caches. Every private cross-source formation edge is blocked; every query position is denied schema access. The 00/11 pair uses one common ordering and 01/10 mixes orderings. Each cache is scored under joint and requested-source-only reading. Both private directions, sources, and all predefined worlds remain included.
+
+The preregistered primary is **shared outputs, opposite private conventions, joint coherent-minus-mixed full-vocabulary accuracy**. Other worlds and separate word sets are secondary. Shared words cannot identify which source an answer came from: the stored `other_source_word=False` is unidentifiability, not zero leakage. Full argmax, candidate choice, and raw label logits are retained. Neither the source-average primary nor the local functions measure both answers being simultaneously correct.
+
+| Model / phase | Primary, pp [95% CI] | Shared/all worlds, pp | Separate/all worlds, pp |
+|---|---:|---:|---:|
+| Qwen3-8B / discovery | 6.84 [4.10, 9.77] | 3.61 [2.25, 5.08] | 17.09 [14.26, 19.63] |
+| Mistral-7B-v0.3 / discovery | 5.47 [3.71, 7.81] | 2.64 [1.76, 3.81] | 12.60 [8.50, 16.99] |
+| Llama-3.1-8B / discovery | 0.78 [0.00, 1.76] | 0.39 [0.00, 0.88] | 5.47 [2.83, 8.01] |
+| Qwen3-14B / discovery | 2.54 [0.98, 4.10] | 1.46 [0.59, 2.25] | 20.51 [16.89, 24.71] |
+| Qwen3-8B / confirmation | 8.89 [6.64, 11.13] | 4.64 [3.52, 5.71] | 23.49 [21.29, 25.73] |
+| Mistral-7B-v0.3 / confirmation | 5.86 [4.10, 7.71] | 2.98 [2.10, 3.91] | 9.13 [6.84, 11.43] |
+| Llama-3.1-8B / confirmation | 0.78 [0.10, 1.56] | 0.39 [0.05, 0.78] | 6.49 [4.93, 8.06] |
+| Qwen3-14B / confirmation | 9.38 [7.32, 11.52] | 4.64 [3.56, 5.76] | 21.44 [18.75, 24.02] |
+
+### J.1 Functional request differences and common shifts
+
+For shared outputs in the opposite-convention world, define \(S=\frac12\mathbb E_q[g_A(q)(z_A(q)-z_B(q))]\) and \(C=\frac12\mathbb E_q[g_A(q)(z_A(q)+z_B(q))]\). Absolute common magnitude averages the absolute value per query before averaging. S is also the mean correct margin over both requested sources, because their gold labels are opposite. Its change excludes a single request-independent logit offset as the complete explanation; it does not identify a hidden binding representation or a unique retrieval algorithm. Separate outputs instead use the logsumexp difference between word sets, so their functional units must not be treated as the same shared-word measure.
+
+| Confirmation model | Shared S coherence, nats | Signed common coherence | Absolute common coherence |
+|---|---:|---:|---:|
+| Qwen3-8B | 0.63 [0.53, 0.74] | 0.00 [-0.06, 0.06] | -0.05 [-0.10, -0.01] |
+| Mistral-7B-v0.3 | 0.13 [0.11, 0.16] | 0.04 [0.01, 0.07] | 0.00 [-0.02, 0.02] |
+| Llama-3.1-8B | 0.03 [0.02, 0.03] | 0.00 [-0.00, 0.01] | 0.00 [-0.00, 0.01] |
+| Qwen3-14B | 0.50 [0.44, 0.56] | -0.00 [-0.07, 0.07] | -0.02 [-0.07, 0.03] |
+
+### J.2 Local functions and incomplete joint use
+
+| Confirmation model | Shared/opposite joint00 / 11, % | Shared/opposite own-only00 / 11, % | Joint order11−00, pp |
+|---|---:|---:|---:|
+| Qwen3-8B | 63.87 / 64.84 | 90.82 / 91.41 | 0.98 [-2.34, 4.10] |
+| Mistral-7B-v0.3 | 59.18 / 56.25 | 96.88 / 96.09 | -2.93 [-5.08, -0.78] |
+| Llama-3.1-8B | 53.52 / 52.93 | 98.05 / 97.85 | -0.59 [-2.34, 1.17] |
+| Qwen3-14B | 63.09 / 60.55 | 97.46 / 97.85 | -2.54 [-5.47, 0.20] |
+
+Strong private functions coexist with incomplete joint selection. Llama's primary is small, its B-specific interval spans zero, and the positive effect is not uniform across private directions. Mistral's two coherent orders differ. The balanced own-only linear coherence contrast is zero by construction, whereas absolute-common observers may have nonzero contrasts because of their nonlinear definition. None of these identities demonstrates a separate latent module. All sources, worlds, private directions, single functions, native and instruction-plus-isolation controls, candidate/full scores, B-code response, and raw common shifts appear in [the complete report](results/e127/report.md).
+
+![All cache pairs and private controls](results/figs/fig_shared_output_cache_composition.png)
+
+Eight fixed runs contain 192 contexts and 132,096 scientific scores. The completed-run timers total 1.950864 GPU hours; they exclude preserved partial-run computation, the zero-score load failure, startup reservations, and model transfer. Scientific source `cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de` was frozen before scoring at commit4b8ee609. The independent CPU record covers all 192 contexts and actual tokenizer/configuration layouts; [the complete raw audit](results/e127/independent_raw_review_2026-10-12.md) reports numerical recomputation, golds, masks, and actual per-layer consumption. These are independent analyses, not independent GPU reruns.
+
+Qwen3-14B's first confirmation load failed before any scientific score after an external job occupied its GPU. The pinned checkpoint was then verified on another empty node. The initial discovery run's ten complete contexts and raw records remain preserved separately. Identical contexts were rerun in the full fixed discovery batch, without seed or outcome selection: all 6,880 matching argmax decisions and candidate signs agree across hardware; maximum absolute logit-difference and individual label-logit deviations are .001028 and .002842. These hardware comparisons are separate from the same-run FP32 controls and are not additional samples. [Checkpoint identity](results/e127/model_identity_qwen14_nvme.json) and the operational records preserve the migration. Portable reconstruction reproduces the 32 Llama confirmation contexts byte-for-byte from the pinned public SST5 files.

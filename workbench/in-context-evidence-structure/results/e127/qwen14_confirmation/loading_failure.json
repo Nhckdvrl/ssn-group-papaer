@@ -1,0 +1,9 @@
+{
+  "status": "LOAD_FAILURE, zero scientific scores",
+  "cause": "GPU1 acquired concurrent external workloads while confirmation wrapper waited for pilot floor; pretrained FP32 loading OOM before score stream opened",
+  "node": "fvcrc10",
+  "gpu": 1,
+  "precision": "float32 eager unchanged",
+  "science_sha256": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "action": "preserve failed_loading_run.log; repeat fixed32/127101/validation on newly verified empty GPU; do not stop any external process"
+}

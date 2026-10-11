@@ -1,0 +1,131 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-14B",
+    "out": "results/e127/qwen14_discovery",
+    "n": 16,
+    "seed": 127001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "conditions": 86,
+  "queries": 8,
+  "source_names": [
+    "Alex",
+    "Sam"
+  ],
+  "word_ids_by_namespace": {
+    "shared": [
+      [
+        902,
+        9834
+      ],
+      [
+        902,
+        9834
+      ]
+    ],
+    "far": [
+      [
+        902,
+        9834
+      ],
+      [
+        1494,
+        5181
+      ]
+    ]
+  },
+  "label_logit_ids_by_namespace": {
+    "shared": [
+      902,
+      9834
+    ],
+    "far": [
+      902,
+      9834,
+      1494,
+      5181
+    ]
+  },
+  "auxiliary_readout": "source-specific difference and source-common signed/absolute components; far both-world set mass, shared opposite-world gold-directed code",
+  "same_public_facts": true,
+  "matched_schema_token_count": true,
+  "original_global_positions": true,
+  "cross_source_private_formation": false,
+  "formation_access_public_schema": true,
+  "whole_query_public_schema_access": false,
+  "cache_pairs": [
+    "00",
+    "11",
+    "01",
+    "10"
+  ],
+  "query_scopes": [
+    "joint",
+    "own"
+  ],
+  "namespaces": [
+    "shared",
+    "far"
+  ],
+  "source_word_identity_only_far": true,
+  "source_ownership_roles": {
+    "public_HEAD": -1,
+    "schema": -2,
+    "A": 0,
+    "B": 1
+  },
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 0,
+    "query_split": "validation",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 43,
+    "demo_pool_sizes": [
+      639,
+      511
+    ],
+    "query_pool_sizes": [
+      165,
+      137
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "material_builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "prefix_lengths": [
+    657,
+    604,
+    705,
+    716,
+    569,
+    776,
+    818,
+    746,
+    674,
+    734,
+    659,
+    741,
+    636,
+    639,
+    533,
+    535
+  ],
+  "scope": "whole-source cache composition under equivalent schema orders; not identification of binding IDs"
+}

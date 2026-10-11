@@ -338,3 +338,9 @@ coherent full00/11 Qwen83.98/79.88%、Mistral64.45/59.18%、Llama60.35/61.82%；
 [JSON](independent_review_2026-10-12.json)保留全部接口、私人方向、world/Actor、官方材料与原始文件SHA、mask数、独立bootstrap与作者比较。
 
 作者summary/report追加核对：summary分析与4总量12,466项max0；报告120行/516统计格/1548数字呈现逐项一致。图代码使用同一00/01/10/11×joint/own的mean/CI，未挑条件；这是已复算证据的重复呈现，不是新样本。报告script SHA `1a464b7b46fc8fcad125a048212069ddb10526cc092763a7cbb65d0969897588`，report SHA `385f1bdaa4aaff94c164df97850914cdb6d2ef3edf9b2bbb549b5363e52085f8`。原runs/geometry seal保持。
+
+## instruction辅助条件语义更正（2026-10-12）
+
+E124–127的instruction条件同时加入一句Source指令与跨Source私人形成隔离，属于复合辅助条件，不能相对native解释为纯一句指令恢复。E124/125已有无指令independent参照，可比较同一隔离图内prompt差；E126/127没有该无表匹配参照，不能分解两项效应。E122/123 instruction使用normal形成，仍是纯prompt控制。核心coherence/identity contrasts与所有已封数值不变；此前审计对instruction标签说明不完整，本条更正范围，不改科学源、不重跑或改状态。
+
+原runs/geometry/totals保持，摘要 `8ae458a97d6745884a19ea5a1c2e3dbcd5b96b706486e60b62bd92ee41558c8c`。

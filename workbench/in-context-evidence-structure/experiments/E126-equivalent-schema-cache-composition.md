@@ -40,3 +40,5 @@
 ### POST-HOC：选错Source词时与哪套规则相容
 
 完整确认后新增既有argmax诊断，未加GPU/改primary，单独文件 `results/e126/posthoc_selected_code.{json,md}` 与 `scripts/posthoc_e126_selected_code.py`。仅origin反向private约定可区分两映射；所有contexts保留。coherent−mixed的“另一来源词且符合该来源私人gold” Q/M/L −23.73[−27.44,−20.02]/−10.06[−12.79,−7.42]/−4.88[−6.64,−3.22]pp。多数other-word错误与另一Source规则相容，不是请求code简单换词输出；输出相容仍不识别内部是否调用该规则。shared输出下能否约束规则选择留给首次评分前冻结E127检验。
+
+**辅助control语义校正（不改冻结科学源/primary）：** 存储的instruction条件同时增加一句提示与完全阻断private跨Source形成，属于复合条件，不能将其相对native差称为纯一句指令恢复。该条件不参与主cache-coherence比较；数值保留，附录B统一披露。E128在0-score阶段将其改为只改变一句提示。

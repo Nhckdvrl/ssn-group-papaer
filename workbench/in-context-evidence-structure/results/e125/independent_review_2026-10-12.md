@@ -438,3 +438,9 @@ Public schema在query可成为已有TR/TL式显式空间选择cue；F-only阳性
 作者summary与report另用独立seal检查：summary分析及4个总量18,130项max0；report240行/870统计格/2610个数值呈现一致。这是已复算证据的重复呈现，不加作新实验样本。报告与图代码覆盖三表四phase的full/candidate值，source不变；图使用相同独立已核mean/CI。最终report已将私人监督互不可达明确限定历史形成，且注明joint query仍读取两缓存；范围修正通过。
 
 [JSON](independent_review_2026-10-12.json)含全部63接口、phase/冻结contrast、full/candidate/词归属/margin、全部private/A/B/world分解、独立bootstrap、几何/消费/计数误差及作者报告比对。当前主文§6.3/6.4及附录G/H的184个数值呈现、12表行与9元数据项另已逐项一致；整篇论证与近邻范围见[paper-critical审阅](manuscript_claim_audit_2026-10-12.md)。
+
+## instruction辅助条件语义更正（2026-10-12）
+
+E124–127的instruction条件同时加入一句Source指令与跨Source私人形成隔离，属于复合辅助条件，不能相对native解释为纯一句指令恢复。E124/125已有无指令independent参照，可比较同一隔离图内prompt差；E126/127没有该无表匹配参照，不能分解两项效应。E122/123 instruction使用normal形成，仍是纯prompt控制。核心coherence/identity contrasts与所有已封数值不变；此前审计对instruction标签说明不完整，本条更正范围，不改科学源、不重跑或改状态。
+
+原runs/geometry/totals保持，摘要 `75efa11a1a646a2ffd3a3a322d013c2752df08f168db351c4617dcea4e89bfd3`。
