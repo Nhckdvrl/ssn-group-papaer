@@ -1,0 +1,4729 @@
+{
+  "status": "CPU_PRE_SCORE_ONLY",
+  "date": "2026-10-12",
+  "experiment": "E127",
+  "claims": [
+    "C23",
+    "I04",
+    "P17"
+  ],
+  "scientific_source_sha256_at_geometry_review": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "material_builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "truth_source_sha256": "95a574892e7609a25146f730f7843d176fe27487353f2ad7c9fa7fd01971e9a5",
+  "independent_GPU_rerun": false,
+  "scientific_scores_reviewed": 0,
+  "actual_GPU_mask_consumption_verified": false,
+  "geometry_freeze_recommendation": "Final cef7952 source and all eight actual token/mask geometries pass. PRE-RESULT 2/4-logit observer shape, meaning and all eight added metadata fields independently verified; contexts and all base preflight fields byte-exact unchanged. Can freeze and execute, no new scientific qualification.",
+  "totals": {
+    "preflight_runs": 8,
+    "contexts": 192,
+    "CPU_actual_prefix_streams": 4224,
+    "CPU_prefix_mask_sets": 4224,
+    "CPU_query_scope_owner_sets": 6144,
+    "synthetic_full_source_storage_selections": 6144
+  },
+  "geometry": {
+    "dataset": {
+      "train": {
+        "sha256": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+        "unique_extreme_texts": 2377
+      },
+      "validation": {
+        "sha256": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+        "unique_extreme_texts": 304
+      },
+      "test": {
+        "sha256": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf",
+        "unique_extreme_texts": 678
+      }
+    },
+    "runs": {
+      "llama_confirmation_preflight": {
+        "n_contexts": 32,
+        "contexts_sha256": "a77353961220721d8c1ac2086ef5b3fd157d7ba36a81b35f7ad41cca8746008a",
+        "preflight_sha256": "1f2be05589dd8c918879a997b5867b4209eeb828818a6d07c37256a5f82bf665",
+        "source_aliases": [
+          "Robin",
+          "Jordan"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              912,
+              10035
+            ],
+            [
+              912,
+              10035
+            ]
+          ],
+          "far": [
+            [
+              912,
+              10035
+            ],
+            [
+              1522,
+              5292
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 704,
+        "CPU_prefix_mask_sets": 704,
+        "CPU_query_scope_owner_sets": 1024,
+        "synthetic_full_source_storage_selections": 1024,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "owner_assignment_counts": {
+          "('Robin', 'Jordan')": 22,
+          "('Jordan', 'Robin')": 10
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          498,
+          799
+        ],
+        "model_layers": 32,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: pass, flag.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: pass, flag.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: no, yes.\nRobin: pass, flag.\n\n",
+              "Output words:\nRobin: pass, flag.\nJordan: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 557,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 249,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 69720,
+            "B_answer_positions": [
+              147,
+              193,
+              279,
+              321,
+              345,
+              463,
+              509,
+              555
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 597,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 80928,
+            "B_answer_positions": [
+              87,
+              130,
+              244,
+              355,
+              417,
+              460,
+              552,
+              595
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 611,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 279,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 84816,
+            "B_answer_positions": [
+              46,
+              102,
+              122,
+              201,
+              415,
+              471,
+              491,
+              547
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 572,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 272,
+            "B_private_tokens": 272,
+            "cross_source_removed_past_edges": 73984,
+            "B_answer_positions": [
+              70,
+              94,
+              214,
+              302,
+              326,
+              375,
+              461,
+              545
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 612,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 268,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 84688,
+            "B_answer_positions": [
+              88,
+              122,
+              184,
+              246,
+              388,
+              441,
+              540,
+              610
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 799,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 291,
+            "B_private_tokens": 480,
+            "cross_source_removed_past_edges": 139680,
+            "B_answer_positions": [
+              88,
+              182,
+              296,
+              439,
+              501,
+              606,
+              739,
+              797
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 641,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 241,
+            "B_private_tokens": 372,
+            "cross_source_removed_past_edges": 89652,
+            "B_answer_positions": [
+              127,
+              268,
+              356,
+              396,
+              457,
+              510,
+              563,
+              616
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 646,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 294,
+            "B_private_tokens": 324,
+            "cross_source_removed_past_edges": 95256,
+            "B_answer_positions": [
+              69,
+              139,
+              264,
+              307,
+              381,
+              489,
+              606,
+              644
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 663,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 223,
+            "B_private_tokens": 412,
+            "cross_source_removed_past_edges": 91876,
+            "B_answer_positions": [
+              117,
+              166,
+              267,
+              316,
+              401,
+              506,
+              583,
+              661
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 681,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 249,
+            "B_private_tokens": 404,
+            "cross_source_removed_past_edges": 100596,
+            "B_answer_positions": [
+              67,
+              193,
+              253,
+              348,
+              389,
+              486,
+              617,
+              679
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 738,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 294,
+            "B_private_tokens": 416,
+            "cross_source_removed_past_edges": 122304,
+            "B_answer_positions": [
+              145,
+              230,
+              286,
+              342,
+              552,
+              600,
+              648,
+              736
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 524,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 240,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 61440,
+            "B_answer_positions": [
+              78,
+              151,
+              198,
+              215,
+              267,
+              331,
+              371,
+              495
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 545,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 257,
+            "B_private_tokens": 260,
+            "cross_source_removed_past_edges": 66820,
+            "B_answer_positions": [
+              94,
+              127,
+              159,
+              192,
+              258,
+              290,
+              341,
+              373
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 592,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 356,
+            "B_private_tokens": 208,
+            "cross_source_removed_past_edges": 74048,
+            "B_answer_positions": [
+              110,
+              134,
+              162,
+              284,
+              308,
+              336,
+              403,
+              590
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 639,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 327,
+            "B_private_tokens": 284,
+            "cross_source_removed_past_edges": 92868,
+            "B_answer_positions": [
+              87,
+              176,
+              222,
+              247,
+              397,
+              443,
+              489,
+              637
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 547,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 283,
+            "B_private_tokens": 236,
+            "cross_source_removed_past_edges": 66788,
+            "B_answer_positions": [
+              73,
+              169,
+              187,
+              337,
+              418,
+              486,
+              504,
+              545
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 527,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 303,
+            "B_private_tokens": 196,
+            "cross_source_removed_past_edges": 59388,
+            "B_answer_positions": [
+              44,
+              96,
+              201,
+              267,
+              337,
+              476,
+              507,
+              525
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 637,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 293,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 92588,
+            "B_answer_positions": [
+              76,
+              164,
+              214,
+              333,
+              418,
+              538,
+              567,
+              635
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 597,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 273,
+            "B_private_tokens": 296,
+            "cross_source_removed_past_edges": 80808,
+            "B_answer_positions": [
+              50,
+              208,
+              311,
+              335,
+              426,
+              476,
+              545,
+              595
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 498,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 278,
+            "B_private_tokens": 192,
+            "cross_source_removed_past_edges": 53376,
+            "B_answer_positions": [
+              78,
+              128,
+              155,
+              218,
+              337,
+              358,
+              385,
+              412
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 621,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 312,
+            "cross_source_removed_past_edges": 87672,
+            "B_answer_positions": [
+              116,
+              183,
+              258,
+              338,
+              399,
+              449,
+              587,
+              619
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 693,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 337,
+            "B_private_tokens": 328,
+            "cross_source_removed_past_edges": 110536,
+            "B_answer_positions": [
+              110,
+              252,
+              300,
+              348,
+              419,
+              511,
+              589,
+              691
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 550,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 278,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 67832,
+            "B_answer_positions": [
+              50,
+              142,
+              260,
+              284,
+              308,
+              418,
+              484,
+              508
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 584,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 268,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 77184,
+            "B_answer_positions": [
+              73,
+              120,
+              295,
+              364,
+              389,
+              483,
+              508,
+              582
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 623,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 315,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 88200,
+            "B_answer_positions": [
+              280,
+              338,
+              380,
+              422,
+              523,
+              551,
+              579,
+              621
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 578,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 75456,
+            "B_answer_positions": [
+              131,
+              152,
+              173,
+              194,
+              266,
+              287,
+              459,
+              576
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 554,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 264,
+            "cross_source_removed_past_edges": 69168,
+            "B_answer_positions": [
+              57,
+              198,
+              233,
+              268,
+              455,
+              486,
+              517,
+              552
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 688,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 344,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 108704,
+            "B_answer_positions": [
+              160,
+              192,
+              224,
+              297,
+              385,
+              470,
+              517,
+              640
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 300,
+            "B_private_tokens": 388,
+            "cross_source_removed_past_edges": 116400,
+            "B_answer_positions": [
+              73,
+              123,
+              173,
+              376,
+              426,
+              526,
+              576,
+              623
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 708,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 244,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 106384,
+            "B_answer_positions": [
+              105,
+              161,
+              273,
+              370,
+              484,
+              569,
+              622,
+              706
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 707,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 243,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 105948,
+            "B_answer_positions": [
+              86,
+              135,
+              184,
+              233,
+              306,
+              403,
+              463,
+              556
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 566,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 72192,
+            "B_answer_positions": [
+              87,
+              115,
+              274,
+              310,
+              338,
+              391,
+              446,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              912,
+              10035
+            ],
+            "far": [
+              912,
+              10035,
+              1522,
+              5292
+            ]
+          },
+          "new_preflight_sha256": "3955d4ff0d8be24852560715d50dc9c2a1da5ab696eeeec2dfe8149cae62baa1",
+          "old_preflight_sha256": "1f2be05589dd8c918879a997b5867b4209eeb828818a6d07c37256a5f82bf665"
+        }
+      },
+      "llama_discovery_preflight": {
+        "n_contexts": 16,
+        "contexts_sha256": "6d1814e846d1838b104cdd1184352ff955425895352fffbe74dc72a192b31cbc",
+        "preflight_sha256": "9cb36dfe88789770a78864afd525274c5a9cfa0b761dd6d556d6904ef9bee161",
+        "source_aliases": [
+          "Alex",
+          "Sam"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              912,
+              10035
+            ],
+            [
+              912,
+              10035
+            ]
+          ],
+          "far": [
+            [
+              912,
+              10035
+            ],
+            [
+              1522,
+              5292
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 352,
+        "CPU_prefix_mask_sets": 352,
+        "CPU_query_scope_owner_sets": 512,
+        "synthetic_full_source_storage_selections": 512,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 8,
+          "True": 8
+        },
+        "owner_assignment_counts": {
+          "('Alex', 'Sam')": 9,
+          "('Sam', 'Alex')": 7
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          516,
+          778
+        ],
+        "model_layers": 32,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 609,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 249,
+            "B_private_tokens": 332,
+            "cross_source_removed_past_edges": 82668,
+            "B_answer_positions": [
+              56,
+              163,
+              193,
+              245,
+              358,
+              388,
+              441,
+              607
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 604,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 82160,
+            "B_answer_positions": [
+              148,
+              290,
+              320,
+              369,
+              436,
+              485,
+              515,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 677,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 257,
+            "B_private_tokens": 392,
+            "cross_source_removed_past_edges": 100744,
+            "B_answer_positions": [
+              201,
+              255,
+              338,
+              414,
+              513,
+              567,
+              611,
+              655
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 630,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 298,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 90592,
+            "B_answer_positions": [
+              62,
+              102,
+              196,
+              293,
+              374,
+              414,
+              563,
+              628
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 567,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 295,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 71980,
+            "B_answer_positions": [
+              130,
+              241,
+              275,
+              411,
+              438,
+              465,
+              531,
+              565
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 776,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 488,
+            "cross_source_removed_past_edges": 126880,
+            "B_answer_positions": [
+              93,
+              160,
+              249,
+              316,
+              561,
+              616,
+              692,
+              774
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 778,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 266,
+            "B_private_tokens": 484,
+            "cross_source_removed_past_edges": 128744,
+            "B_answer_positions": [
+              93,
+              302,
+              369,
+              509,
+              563,
+              630,
+              697,
+              751
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 757,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 301,
+            "B_private_tokens": 428,
+            "cross_source_removed_past_edges": 128828,
+            "B_answer_positions": [
+              269,
+              363,
+              415,
+              470,
+              525,
+              577,
+              700,
+              755
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 657,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 348,
+            "cross_source_removed_past_edges": 97788,
+            "B_answer_positions": [
+              136,
+              227,
+              280,
+              359,
+              393,
+              427,
+              480,
+              514
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 753,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 309,
+            "B_private_tokens": 416,
+            "cross_source_removed_past_edges": 128544,
+            "B_answer_positions": [
+              80,
+              269,
+              392,
+              442,
+              534,
+              628,
+              682,
+              751
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 662,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 294,
+            "B_private_tokens": 340,
+            "cross_source_removed_past_edges": 99960,
+            "B_answer_positions": [
+              150,
+              222,
+              267,
+              332,
+              415,
+              455,
+              620,
+              660
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 650,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 254,
+            "B_private_tokens": 368,
+            "cross_source_removed_past_edges": 93472,
+            "B_answer_positions": [
+              82,
+              138,
+              221,
+              278,
+              369,
+              435,
+              471,
+              648
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 725,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 301,
+            "B_private_tokens": 396,
+            "cross_source_removed_past_edges": 119196,
+            "B_answer_positions": [
+              133,
+              273,
+              392,
+              446,
+              500,
+              545,
+              678,
+              723
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 642,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 246,
+            "B_private_tokens": 368,
+            "cross_source_removed_past_edges": 90528,
+            "B_answer_positions": [
+              74,
+              122,
+              206,
+              392,
+              460,
+              504,
+              552,
+              596
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 516,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 284,
+            "B_private_tokens": 204,
+            "cross_source_removed_past_edges": 57936,
+            "B_answer_positions": [
+              54,
+              82,
+              136,
+              221,
+              283,
+              425,
+              453,
+              481
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 535,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 283,
+            "B_private_tokens": 224,
+            "cross_source_removed_past_edges": 63392,
+            "B_answer_positions": [
+              106,
+              236,
+              270,
+              292,
+              314,
+              348,
+              370,
+              392
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              912,
+              10035
+            ],
+            "far": [
+              912,
+              10035,
+              1522,
+              5292
+            ]
+          },
+          "new_preflight_sha256": "035d577e1283922c5c2c701861fd1e25771e18a4f21bab604d86837552152b6b",
+          "old_preflight_sha256": "9cb36dfe88789770a78864afd525274c5a9cfa0b761dd6d556d6904ef9bee161"
+        }
+      },
+      "mistral_confirmation_preflight": {
+        "n_contexts": 32,
+        "contexts_sha256": "5cec3afa54c29c7ce6520fcdae5337a61609db28855ae78216e7d9176a037357",
+        "preflight_sha256": "0dc19085016d5d03be13c1cced9e7510132db706b0b84c75fea4c9973832deee",
+        "source_aliases": [
+          "Robin",
+          "Jordan"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              1476,
+              5849
+            ],
+            [
+              1476,
+              5849
+            ]
+          ],
+          "far": [
+            [
+              1476,
+              5849
+            ],
+            [
+              2223,
+              7441
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 704,
+        "CPU_prefix_mask_sets": 704,
+        "CPU_query_scope_owner_sets": 1024,
+        "synthetic_full_source_storage_selections": 1024,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "owner_assignment_counts": {
+          "('Robin', 'Jordan')": 19,
+          "('Jordan', 'Robin')": 13
+        },
+        "schema_token_counts": [
+          22
+        ],
+        "prefix_lengths_range": [
+          498,
+          950
+        ],
+        "model_layers": 32,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: pass, flag.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: pass, flag.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: no, yes.\nRobin: pass, flag.\n\n",
+              "Output words:\nRobin: pass, flag.\nJordan: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 675,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 309,
+            "B_private_tokens": 328,
+            "cross_source_removed_past_edges": 101352,
+            "B_answer_positions": [
+              172,
+              226,
+              313,
+              362,
+              390,
+              563,
+              617,
+              671
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 691,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 313,
+            "B_private_tokens": 340,
+            "cross_source_removed_past_edges": 106420,
+            "B_answer_positions": [
+              106,
+              157,
+              272,
+              429,
+              501,
+              552,
+              636,
+              687
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 673,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 279,
+            "B_private_tokens": 356,
+            "cross_source_removed_past_edges": 99324,
+            "B_answer_positions": [
+              58,
+              123,
+              147,
+              238,
+              487,
+              552,
+              576,
+              641
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 688,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 330,
+            "B_private_tokens": 320,
+            "cross_source_removed_past_edges": 105600,
+            "B_answer_positions": [
+              86,
+              114,
+              238,
+              341,
+              369,
+              449,
+              541,
+              655
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 703,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 297,
+            "B_private_tokens": 368,
+            "cross_source_removed_past_edges": 109296,
+            "B_answer_positions": [
+              54,
+              199,
+              219,
+              415,
+              477,
+              576,
+              627,
+              699
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 950,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 348,
+            "B_private_tokens": 564,
+            "cross_source_removed_past_edges": 196272,
+            "B_answer_positions": [
+              106,
+              226,
+              329,
+              398,
+              551,
+              642,
+              828,
+              897
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 761,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 287,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 125132,
+            "B_answer_positions": [
+              155,
+              319,
+              426,
+              473,
+              544,
+              606,
+              668,
+              730
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 721,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 307,
+            "B_private_tokens": 376,
+            "cross_source_removed_past_edges": 115432,
+            "B_answer_positions": [
+              84,
+              167,
+              287,
+              337,
+              410,
+              546,
+              673,
+              717
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 822,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 304,
+            "B_private_tokens": 480,
+            "cross_source_removed_past_edges": 145920,
+            "B_answer_positions": [
+              91,
+              173,
+              268,
+              430,
+              493,
+              593,
+              674,
+              788
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 630,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 308,
+            "B_private_tokens": 284,
+            "cross_source_removed_past_edges": 87472,
+            "B_answer_positions": [
+              76,
+              185,
+              251,
+              293,
+              413,
+              508,
+              537,
+              579
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 853,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 331,
+            "B_private_tokens": 484,
+            "cross_source_removed_past_edges": 160204,
+            "B_answer_positions": [
+              196,
+              294,
+              434,
+              492,
+              614,
+              677,
+              760,
+              849
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 671,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 293,
+            "B_private_tokens": 340,
+            "cross_source_removed_past_edges": 99620,
+            "B_answer_positions": [
+              68,
+              102,
+              177,
+              211,
+              289,
+              369,
+              558,
+              642
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 654,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 328,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 94464,
+            "B_answer_positions": [
+              110,
+              148,
+              186,
+              224,
+              283,
+              317,
+              393,
+              650
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 681,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 403,
+            "B_private_tokens": 240,
+            "cross_source_removed_past_edges": 96720,
+            "B_answer_positions": [
+              128,
+              156,
+              188,
+              328,
+              356,
+              388,
+              464,
+              677
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 342,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 114912,
+            "B_answer_positions": [
+              107,
+              164,
+              218,
+              248,
+              454,
+              508,
+              562,
+              712
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 656,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 342,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 94392,
+            "B_answer_positions": [
+              88,
+              201,
+              222,
+              415,
+              505,
+              583,
+              604,
+              652
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 611,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 345,
+            "B_private_tokens": 228,
+            "cross_source_removed_past_edges": 78660,
+            "B_answer_positions": [
+              55,
+              124,
+              248,
+              319,
+              390,
+              550,
+              586,
+              607
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 743,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 337,
+            "B_private_tokens": 368,
+            "cross_source_removed_past_edges": 124016,
+            "B_answer_positions": [
+              92,
+              175,
+              233,
+              372,
+              472,
+              630,
+              664,
+              739
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 665,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 279,
+            "B_private_tokens": 348,
+            "cross_source_removed_past_edges": 97092,
+            "B_answer_positions": [
+              62,
+              261,
+              342,
+              370,
+              462,
+              521,
+              602,
+              661
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 583,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 317,
+            "B_private_tokens": 228,
+            "cross_source_removed_past_edges": 72276,
+            "B_answer_positions": [
+              95,
+              172,
+              204,
+              279,
+              407,
+              432,
+              464,
+              496
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 314,
+            "B_private_tokens": 364,
+            "cross_source_removed_past_edges": 114296,
+            "B_answer_positions": [
+              125,
+              193,
+              281,
+              375,
+              464,
+              545,
+              675,
+              712
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 766,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 348,
+            "B_private_tokens": 380,
+            "cross_source_removed_past_edges": 132240,
+            "B_answer_positions": [
+              133,
+              266,
+              322,
+              378,
+              471,
+              555,
+              642,
+              762
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 690,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 364,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 104832,
+            "B_answer_positions": [
+              62,
+              192,
+              326,
+              354,
+              382,
+              537,
+              614,
+              642
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 705,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 331,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 111216,
+            "B_answer_positions": [
+              89,
+              144,
+              346,
+              444,
+              473,
+              586,
+              615,
+              701
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 712,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 342,
+            "B_private_tokens": 332,
+            "cross_source_removed_past_edges": 113544,
+            "B_answer_positions": [
+              309,
+              376,
+              426,
+              476,
+              592,
+              625,
+              658,
+              708
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 696,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 322,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 108192,
+            "B_answer_positions": [
+              189,
+              214,
+              239,
+              264,
+              347,
+              372,
+              561,
+              692
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 635,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 285,
+            "B_private_tokens": 312,
+            "cross_source_removed_past_edges": 88920,
+            "B_answer_positions": [
+              71,
+              225,
+              266,
+              307,
+              516,
+              553,
+              590,
+              631
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 696,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 286,
+            "B_private_tokens": 372,
+            "cross_source_removed_past_edges": 106392,
+            "B_answer_positions": [
+              189,
+              226,
+              263,
+              348,
+              435,
+              524,
+              580,
+              668
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 748,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 254,
+            "B_private_tokens": 456,
+            "cross_source_removed_past_edges": 115824,
+            "B_answer_positions": [
+              89,
+              148,
+              207,
+              411,
+              470,
+              555,
+              614,
+              669
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 859,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 317,
+            "B_private_tokens": 504,
+            "cross_source_removed_past_edges": 159768,
+            "B_answer_positions": [
+              126,
+              235,
+              390,
+              454,
+              569,
+              655,
+              717,
+              811
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 498,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 240,
+            "B_private_tokens": 220,
+            "cross_source_removed_past_edges": 52800,
+            "B_answer_positions": [
+              63,
+              92,
+              121,
+              147,
+              220,
+              246,
+              401,
+              463
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 655,
+            "schema_tokens": 22,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 325,
+            "B_private_tokens": 292,
+            "cross_source_removed_past_edges": 94900,
+            "B_answer_positions": [
+              181,
+              285,
+              362,
+              442,
+              485,
+              565,
+              608,
+              651
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              1476,
+              5849
+            ],
+            "far": [
+              1476,
+              5849,
+              2223,
+              7441
+            ]
+          },
+          "new_preflight_sha256": "01c6e5212aa417034a07fb06bf1e1aab6d86e0ce70f7639169fab2620238a48e",
+          "old_preflight_sha256": "0dc19085016d5d03be13c1cced9e7510132db706b0b84c75fea4c9973832deee"
+        }
+      },
+      "mistral_discovery_preflight": {
+        "n_contexts": 16,
+        "contexts_sha256": "038221b2d060d08fcde04f6360d46f011ef252fcd692304c7b18fc5ae39848c5",
+        "preflight_sha256": "70eb8f678327e211ce709d226bd729ead1c5094d9001215a306e2548a9cdc336",
+        "source_aliases": [
+          "Alex",
+          "Sam"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              1476,
+              5849
+            ],
+            [
+              1476,
+              5849
+            ]
+          ],
+          "far": [
+            [
+              1476,
+              5849
+            ],
+            [
+              2223,
+              7441
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 352,
+        "CPU_prefix_mask_sets": 352,
+        "CPU_query_scope_owner_sets": 512,
+        "synthetic_full_source_storage_selections": 512,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 8,
+          "True": 8
+        },
+        "owner_assignment_counts": {
+          "('Alex', 'Sam')": 10,
+          "('Sam', 'Alex')": 6
+        },
+        "schema_token_counts": [
+          19
+        ],
+        "prefix_lengths_range": [
+          613,
+          836
+        ],
+        "model_layers": 32,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 752,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 353,
+            "B_private_tokens": 364,
+            "cross_source_removed_past_edges": 128492,
+            "B_answer_positions": [
+              64,
+              208,
+              266,
+              299,
+              396,
+              560,
+              593,
+              651
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 678,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 295,
+            "B_private_tokens": 348,
+            "cross_source_removed_past_edges": 102660,
+            "B_answer_positions": [
+              175,
+              333,
+              367,
+              420,
+              494,
+              552,
+              586,
+              639
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 810,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 343,
+            "B_private_tokens": 432,
+            "cross_source_removed_past_edges": 148176,
+            "B_answer_positions": [
+              224,
+              284,
+              386,
+              501,
+              626,
+              686,
+              734,
+              782
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 695,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 324,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 108864,
+            "B_answer_positions": [
+              71,
+              115,
+              246,
+              342,
+              416,
+              460,
+              617,
+              691
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 625,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 314,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 86664,
+            "B_answer_positions": [
+              152,
+              262,
+              300,
+              459,
+              490,
+              521,
+              583,
+              621
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 804,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 257,
+            "B_private_tokens": 512,
+            "cross_source_removed_past_edges": 131584,
+            "B_answer_positions": [
+              98,
+              165,
+              268,
+              335,
+              541,
+              602,
+              694,
+              755
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 832,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 289,
+            "B_private_tokens": 508,
+            "cross_source_removed_past_edges": 146812,
+            "B_answer_positions": [
+              98,
+              292,
+              507,
+              567,
+              634,
+              701,
+              768,
+              828
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 836,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 329,
+            "B_private_tokens": 472,
+            "cross_source_removed_past_edges": 155288,
+            "B_answer_positions": [
+              296,
+              407,
+              464,
+              525,
+              586,
+              643,
+              771,
+              832
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 723,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 304,
+            "B_private_tokens": 384,
+            "cross_source_removed_past_edges": 116736,
+            "B_answer_positions": [
+              114,
+              237,
+              295,
+              333,
+              440,
+              519,
+              577,
+              615
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 823,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 332,
+            "B_private_tokens": 456,
+            "cross_source_removed_past_edges": 151392,
+            "B_answer_positions": [
+              91,
+              283,
+              398,
+              452,
+              554,
+              657,
+              717,
+              819
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 692,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 281,
+            "B_private_tokens": 376,
+            "cross_source_removed_past_edges": 105656,
+            "B_answer_positions": [
+              158,
+              237,
+              287,
+              381,
+              455,
+              499,
+              644,
+              688
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 777,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 330,
+            "B_private_tokens": 412,
+            "cross_source_removed_past_edges": 135960,
+            "B_answer_positions": [
+              94,
+              134,
+              307,
+              380,
+              443,
+              483,
+              710,
+              773
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 753,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 342,
+            "B_private_tokens": 376,
+            "cross_source_removed_past_edges": 128592,
+            "B_answer_positions": [
+              198,
+              348,
+              392,
+              436,
+              480,
+              524,
+              667,
+              717
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 715,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 276,
+            "B_private_tokens": 404,
+            "cross_source_removed_past_edges": 111504,
+            "B_answer_positions": [
+              83,
+              135,
+              231,
+              420,
+              497,
+              546,
+              598,
+              647
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 613,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 342,
+            "B_private_tokens": 236,
+            "cross_source_removed_past_edges": 80712,
+            "B_answer_positions": [
+              63,
+              95,
+              175,
+              274,
+              340,
+              509,
+              541,
+              573
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 642,
+            "schema_tokens": 19,
+            "HEAD_tokens": 16,
+            "A_private_tokens": 359,
+            "B_private_tokens": 248,
+            "cross_source_removed_past_edges": 89032,
+            "B_answer_positions": [
+              119,
+              270,
+              307,
+              332,
+              357,
+              394,
+              419,
+              444
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              1476,
+              5849
+            ],
+            "far": [
+              1476,
+              5849,
+              2223,
+              7441
+            ]
+          },
+          "new_preflight_sha256": "c2af1f5ba4ad04dac88c79e53281934ca9cb7d83f00f9ca98f199a7ed8f46f0f",
+          "old_preflight_sha256": "70eb8f678327e211ce709d226bd729ead1c5094d9001215a306e2548a9cdc336"
+        }
+      },
+      "qwen14_confirmation_preflight": {
+        "n_contexts": 32,
+        "contexts_sha256": "151670828d2a1c8c2a176d608afc1431c9a01a2746d7d7e3a66e05d2c4c239fa",
+        "preflight_sha256": "3282c38c0c785120570f18ece803bcb24ffffa4bae31aa41f80e844bc0befb9f",
+        "source_aliases": [
+          "Robin",
+          "Jordan"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              902,
+              9834
+            ],
+            [
+              902,
+              9834
+            ]
+          ],
+          "far": [
+            [
+              902,
+              9834
+            ],
+            [
+              1494,
+              5181
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 704,
+        "CPU_prefix_mask_sets": 704,
+        "CPU_query_scope_owner_sets": 1024,
+        "synthetic_full_source_storage_selections": 1024,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "owner_assignment_counts": {
+          "('Robin', 'Jordan')": 17,
+          "('Jordan', 'Robin')": 15
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          519,
+          818
+        ],
+        "model_layers": 40,
+        "Qwen14_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: pass, flag.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: pass, flag.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: no, yes.\nRobin: pass, flag.\n\n",
+              "Output words:\nRobin: pass, flag.\nJordan: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 565,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 257,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 71960,
+            "B_answer_positions": [
+              155,
+              201,
+              287,
+              329,
+              353,
+              471,
+              517,
+              563
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 597,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 80928,
+            "B_answer_positions": [
+              87,
+              130,
+              244,
+              355,
+              417,
+              460,
+              552,
+              595
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 611,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 279,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 84816,
+            "B_answer_positions": [
+              46,
+              102,
+              122,
+              201,
+              415,
+              471,
+              491,
+              547
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 602,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 302,
+            "B_private_tokens": 272,
+            "cross_source_removed_past_edges": 82144,
+            "B_answer_positions": [
+              70,
+              94,
+              222,
+              310,
+              334,
+              405,
+              491,
+              575
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 649,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 324,
+            "cross_source_removed_past_edges": 96228,
+            "B_answer_positions": [
+              43,
+              190,
+              310,
+              356,
+              458,
+              519,
+              583,
+              647
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 818,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 302,
+            "B_private_tokens": 488,
+            "cross_source_removed_past_edges": 147376,
+            "B_answer_positions": [
+              126,
+              190,
+              380,
+              438,
+              533,
+              624,
+              682,
+              740
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 642,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 258,
+            "B_private_tokens": 356,
+            "cross_source_removed_past_edges": 91848,
+            "B_answer_positions": [
+              104,
+              145,
+              186,
+              348,
+              396,
+              444,
+              485,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 573,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 293,
+            "B_private_tokens": 252,
+            "cross_source_removed_past_edges": 73836,
+            "B_answer_positions": [
+              58,
+              140,
+              224,
+              255,
+              394,
+              426,
+              539,
+              571
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 600,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 296,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 81696,
+            "B_answer_positions": [
+              64,
+              95,
+              154,
+              297,
+              421,
+              459,
+              490,
+              566
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 562,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 242,
+            "B_private_tokens": 292,
+            "cross_source_removed_past_edges": 70664,
+            "B_answer_positions": [
+              66,
+              106,
+              240,
+              333,
+              393,
+              457,
+              490,
+              530
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 594,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 298,
+            "B_private_tokens": 268,
+            "cross_source_removed_past_edges": 79864,
+            "B_answer_positions": [
+              62,
+              127,
+              158,
+              260,
+              296,
+              327,
+              452,
+              592
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 728,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 252,
+            "B_private_tokens": 448,
+            "cross_source_removed_past_edges": 112896,
+            "B_answer_positions": [
+              143,
+              257,
+              330,
+              382,
+              477,
+              529,
+              581,
+              641
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 630,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 340,
+            "cross_source_removed_past_edges": 89080,
+            "B_answer_positions": [
+              57,
+              111,
+              165,
+              242,
+              273,
+              304,
+              422,
+              476
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 708,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 316,
+            "B_private_tokens": 364,
+            "cross_source_removed_past_edges": 115024,
+            "B_answer_positions": [
+              113,
+              201,
+              356,
+              448,
+              496,
+              620,
+              663,
+              706
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 541,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 301,
+            "B_private_tokens": 212,
+            "cross_source_removed_past_edges": 63812,
+            "B_answer_positions": [
+              62,
+              98,
+              115,
+              132,
+              192,
+              294,
+              386,
+              463
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 519,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 227,
+            "B_private_tokens": 264,
+            "cross_source_removed_past_edges": 59928,
+            "B_answer_positions": [
+              105,
+              153,
+              200,
+              261,
+              379,
+              453,
+              472,
+              517
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 673,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 341,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 103664,
+            "B_answer_positions": [
+              228,
+              297,
+              399,
+              430,
+              461,
+              561,
+              640,
+              671
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 606,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 296,
+            "cross_source_removed_past_edges": 83472,
+            "B_answer_positions": [
+              99,
+              139,
+              173,
+              207,
+              273,
+              365,
+              496,
+              557
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 613,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 329,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 84224,
+            "B_answer_positions": [
+              156,
+              233,
+              296,
+              325,
+              354,
+              449,
+              484,
+              611
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 613,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 309,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 85284,
+            "B_answer_positions": [
+              47,
+              140,
+              230,
+              323,
+              365,
+              386,
+              484,
+              611
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 578,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 290,
+            "B_private_tokens": 260,
+            "cross_source_removed_past_edges": 75400,
+            "B_answer_positions": [
+              110,
+              243,
+              272,
+              345,
+              381,
+              410,
+              490,
+              519
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 693,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 337,
+            "B_private_tokens": 328,
+            "cross_source_removed_past_edges": 110536,
+            "B_answer_positions": [
+              110,
+              252,
+              300,
+              348,
+              419,
+              511,
+              589,
+              691
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 550,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 278,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 67832,
+            "B_answer_positions": [
+              50,
+              142,
+              260,
+              284,
+              308,
+              418,
+              484,
+              508
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 584,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 268,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 77184,
+            "B_answer_positions": [
+              73,
+              120,
+              295,
+              364,
+              389,
+              483,
+              508,
+              582
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 617,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 309,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 86520,
+            "B_answer_positions": [
+              274,
+              332,
+              374,
+              416,
+              517,
+              545,
+              573,
+              615
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 569,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 253,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 72864,
+            "B_answer_positions": [
+              114,
+              135,
+              156,
+              177,
+              249,
+              270,
+              450,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 554,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 264,
+            "cross_source_removed_past_edges": 69168,
+            "B_answer_positions": [
+              57,
+              198,
+              233,
+              268,
+              455,
+              486,
+              517,
+              552
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 715,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 371,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 117236,
+            "B_answer_positions": [
+              160,
+              192,
+              224,
+              297,
+              385,
+              470,
+              517,
+              640
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 300,
+            "B_private_tokens": 388,
+            "cross_source_removed_past_edges": 116400,
+            "B_answer_positions": [
+              73,
+              123,
+              173,
+              376,
+              426,
+              526,
+              576,
+              623
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 708,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 244,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 106384,
+            "B_answer_positions": [
+              105,
+              161,
+              273,
+              370,
+              484,
+              569,
+              622,
+              706
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 707,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 243,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 105948,
+            "B_answer_positions": [
+              86,
+              135,
+              184,
+              233,
+              306,
+              403,
+              463,
+              556
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 566,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 72192,
+            "B_answer_positions": [
+              87,
+              115,
+              274,
+              310,
+              338,
+              391,
+              446,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              902,
+              9834
+            ],
+            "far": [
+              902,
+              9834,
+              1494,
+              5181
+            ]
+          },
+          "new_preflight_sha256": "0a9c833155131807b87e848cc9d417f6aded26e2c0627a3d452e2fd28ea36af8",
+          "old_preflight_sha256": "3282c38c0c785120570f18ece803bcb24ffffa4bae31aa41f80e844bc0befb9f"
+        }
+      },
+      "qwen14_discovery_preflight": {
+        "n_contexts": 16,
+        "contexts_sha256": "aa737d5780702aa7534392674e0882c7603fd68fadfae1e7ffa90616ab0e18a2",
+        "preflight_sha256": "a0c2d120edd31ac8eaff28f6b5cd3fcdb062aa57e9ac6e1f744859df27a43608",
+        "source_aliases": [
+          "Alex",
+          "Sam"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              902,
+              9834
+            ],
+            [
+              902,
+              9834
+            ]
+          ],
+          "far": [
+            [
+              902,
+              9834
+            ],
+            [
+              1494,
+              5181
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 352,
+        "CPU_prefix_mask_sets": 352,
+        "CPU_query_scope_owner_sets": 512,
+        "synthetic_full_source_storage_selections": 512,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 8,
+          "True": 8
+        },
+        "owner_assignment_counts": {
+          "('Alex', 'Sam')": 10,
+          "('Sam', 'Alex')": 6
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          533,
+          818
+        ],
+        "model_layers": 40,
+        "Qwen14_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 657,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 293,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 98448,
+            "B_answer_positions": [
+              56,
+              182,
+              236,
+              266,
+              352,
+              469,
+              499,
+              553
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 604,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 82160,
+            "B_answer_positions": [
+              148,
+              290,
+              320,
+              369,
+              436,
+              485,
+              515,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 705,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 396,
+            "cross_source_removed_past_edges": 111276,
+            "B_answer_positions": [
+              81,
+              246,
+              354,
+              494,
+              549,
+              593,
+              637,
+              703
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 264,
+            "B_private_tokens": 424,
+            "cross_source_removed_past_edges": 111936,
+            "B_answer_positions": [
+              84,
+              202,
+              250,
+              331,
+              389,
+              534,
+              592,
+              640
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 569,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 72468,
+            "B_answer_positions": [
+              131,
+              242,
+              276,
+              413,
+              440,
+              467,
+              533,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 776,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 272,
+            "B_private_tokens": 476,
+            "cross_source_removed_past_edges": 129472,
+            "B_answer_positions": [
+              89,
+              152,
+              248,
+              311,
+              519,
+              575,
+              664,
+              720
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 818,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 318,
+            "B_private_tokens": 472,
+            "cross_source_removed_past_edges": 150096,
+            "B_answer_positions": [
+              89,
+              265,
+              328,
+              541,
+              596,
+              659,
+              714,
+              816
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 746,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 122952,
+            "B_answer_positions": [
+              244,
+              340,
+              393,
+              449,
+              505,
+              558,
+              611,
+              744
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 674,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 294,
+            "B_private_tokens": 352,
+            "cross_source_removed_past_edges": 103488,
+            "B_answer_positions": [
+              113,
+              224,
+              278,
+              312,
+              409,
+              484,
+              538,
+              572
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 734,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 424,
+            "cross_source_removed_past_edges": 119568,
+            "B_answer_positions": [
+              81,
+              235,
+              359,
+              410,
+              509,
+              603,
+              681,
+              732
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 659,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 287,
+            "B_private_tokens": 344,
+            "cross_source_removed_past_edges": 98728,
+            "B_answer_positions": [
+              151,
+              239,
+              285,
+              350,
+              434,
+              474,
+              617,
+              657
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 741,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 341,
+            "B_private_tokens": 372,
+            "cross_source_removed_past_edges": 126852,
+            "B_answer_positions": [
+              83,
+              119,
+              268,
+              332,
+              414,
+              450,
+              682,
+              739
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 636,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 348,
+            "cross_source_removed_past_edges": 90480,
+            "B_answer_positions": [
+              145,
+              262,
+              302,
+              342,
+              382,
+              422,
+              553,
+              600
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 639,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 235,
+            "B_private_tokens": 376,
+            "cross_source_removed_past_edges": 88360,
+            "B_answer_positions": [
+              75,
+              124,
+              211,
+              385,
+              454,
+              499,
+              548,
+              593
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 533,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 208,
+            "cross_source_removed_past_edges": 61776,
+            "B_answer_positions": [
+              55,
+              84,
+              138,
+              230,
+              298,
+              440,
+              469,
+              498
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 535,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 283,
+            "B_private_tokens": 224,
+            "cross_source_removed_past_edges": 63392,
+            "B_answer_positions": [
+              106,
+              236,
+              270,
+              292,
+              314,
+              348,
+              370,
+              392
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              902,
+              9834
+            ],
+            "far": [
+              902,
+              9834,
+              1494,
+              5181
+            ]
+          },
+          "new_preflight_sha256": "644731a362531503231b663429377cff6c78af6b6c89150f2892476561d9d0c1",
+          "old_preflight_sha256": "a0c2d120edd31ac8eaff28f6b5cd3fcdb062aa57e9ac6e1f744859df27a43608"
+        }
+      },
+      "qwen3_confirmation_preflight": {
+        "n_contexts": 32,
+        "contexts_sha256": "151670828d2a1c8c2a176d608afc1431c9a01a2746d7d7e3a66e05d2c4c239fa",
+        "preflight_sha256": "13a734df48602c71f26bf14dd56e5b6313a882e60b1bd1308b1caf615c8439d1",
+        "source_aliases": [
+          "Robin",
+          "Jordan"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              902,
+              9834
+            ],
+            [
+              902,
+              9834
+            ]
+          ],
+          "far": [
+            [
+              902,
+              9834
+            ],
+            [
+              1494,
+              5181
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 704,
+        "CPU_prefix_mask_sets": 704,
+        "CPU_query_scope_owner_sets": 1024,
+        "synthetic_full_source_storage_selections": 1024,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 16,
+          "True": 16
+        },
+        "owner_assignment_counts": {
+          "('Robin', 'Jordan')": 17,
+          "('Jordan', 'Robin')": 15
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          519,
+          818
+        ],
+        "model_layers": 36,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: pass, flag.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: pass, flag.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nJordan: no, yes.\nRobin: no, yes.\n\n",
+              "Output words:\nRobin: no, yes.\nJordan: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nJordan: no, yes.\nRobin: pass, flag.\n\n",
+              "Output words:\nRobin: pass, flag.\nJordan: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 565,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 257,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 71960,
+            "B_answer_positions": [
+              155,
+              201,
+              287,
+              329,
+              353,
+              471,
+              517,
+              563
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 597,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 80928,
+            "B_answer_positions": [
+              87,
+              130,
+              244,
+              355,
+              417,
+              460,
+              552,
+              595
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 611,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 279,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 84816,
+            "B_answer_positions": [
+              46,
+              102,
+              122,
+              201,
+              415,
+              471,
+              491,
+              547
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 602,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 302,
+            "B_private_tokens": 272,
+            "cross_source_removed_past_edges": 82144,
+            "B_answer_positions": [
+              70,
+              94,
+              222,
+              310,
+              334,
+              405,
+              491,
+              575
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 649,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 324,
+            "cross_source_removed_past_edges": 96228,
+            "B_answer_positions": [
+              43,
+              190,
+              310,
+              356,
+              458,
+              519,
+              583,
+              647
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 818,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 302,
+            "B_private_tokens": 488,
+            "cross_source_removed_past_edges": 147376,
+            "B_answer_positions": [
+              126,
+              190,
+              380,
+              438,
+              533,
+              624,
+              682,
+              740
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 642,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 258,
+            "B_private_tokens": 356,
+            "cross_source_removed_past_edges": 91848,
+            "B_answer_positions": [
+              104,
+              145,
+              186,
+              348,
+              396,
+              444,
+              485,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 573,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 293,
+            "B_private_tokens": 252,
+            "cross_source_removed_past_edges": 73836,
+            "B_answer_positions": [
+              58,
+              140,
+              224,
+              255,
+              394,
+              426,
+              539,
+              571
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 600,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 296,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 81696,
+            "B_answer_positions": [
+              64,
+              95,
+              154,
+              297,
+              421,
+              459,
+              490,
+              566
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 562,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 242,
+            "B_private_tokens": 292,
+            "cross_source_removed_past_edges": 70664,
+            "B_answer_positions": [
+              66,
+              106,
+              240,
+              333,
+              393,
+              457,
+              490,
+              530
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 594,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 298,
+            "B_private_tokens": 268,
+            "cross_source_removed_past_edges": 79864,
+            "B_answer_positions": [
+              62,
+              127,
+              158,
+              260,
+              296,
+              327,
+              452,
+              592
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 728,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 252,
+            "B_private_tokens": 448,
+            "cross_source_removed_past_edges": 112896,
+            "B_answer_positions": [
+              143,
+              257,
+              330,
+              382,
+              477,
+              529,
+              581,
+              641
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 630,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 340,
+            "cross_source_removed_past_edges": 89080,
+            "B_answer_positions": [
+              57,
+              111,
+              165,
+              242,
+              273,
+              304,
+              422,
+              476
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 708,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 316,
+            "B_private_tokens": 364,
+            "cross_source_removed_past_edges": 115024,
+            "B_answer_positions": [
+              113,
+              201,
+              356,
+              448,
+              496,
+              620,
+              663,
+              706
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 541,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 301,
+            "B_private_tokens": 212,
+            "cross_source_removed_past_edges": 63812,
+            "B_answer_positions": [
+              62,
+              98,
+              115,
+              132,
+              192,
+              294,
+              386,
+              463
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 519,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 227,
+            "B_private_tokens": 264,
+            "cross_source_removed_past_edges": 59928,
+            "B_answer_positions": [
+              105,
+              153,
+              200,
+              261,
+              379,
+              453,
+              472,
+              517
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 673,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 341,
+            "B_private_tokens": 304,
+            "cross_source_removed_past_edges": 103664,
+            "B_answer_positions": [
+              228,
+              297,
+              399,
+              430,
+              461,
+              561,
+              640,
+              671
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 606,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 296,
+            "cross_source_removed_past_edges": 83472,
+            "B_answer_positions": [
+              99,
+              139,
+              173,
+              207,
+              273,
+              365,
+              496,
+              557
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 613,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 329,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 84224,
+            "B_answer_positions": [
+              156,
+              233,
+              296,
+              325,
+              354,
+              449,
+              484,
+              611
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 613,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 309,
+            "B_private_tokens": 276,
+            "cross_source_removed_past_edges": 85284,
+            "B_answer_positions": [
+              47,
+              140,
+              230,
+              323,
+              365,
+              386,
+              484,
+              611
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 578,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 290,
+            "B_private_tokens": 260,
+            "cross_source_removed_past_edges": 75400,
+            "B_answer_positions": [
+              110,
+              243,
+              272,
+              345,
+              381,
+              410,
+              490,
+              519
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 693,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 337,
+            "B_private_tokens": 328,
+            "cross_source_removed_past_edges": 110536,
+            "B_answer_positions": [
+              110,
+              252,
+              300,
+              348,
+              419,
+              511,
+              589,
+              691
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 550,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 278,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 67832,
+            "B_answer_positions": [
+              50,
+              142,
+              260,
+              284,
+              308,
+              418,
+              484,
+              508
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 584,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 268,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 77184,
+            "B_answer_positions": [
+              73,
+              120,
+              295,
+              364,
+              389,
+              483,
+              508,
+              582
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 617,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 309,
+            "B_private_tokens": 280,
+            "cross_source_removed_past_edges": 86520,
+            "B_answer_positions": [
+              274,
+              332,
+              374,
+              416,
+              517,
+              545,
+              573,
+              615
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 569,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 253,
+            "B_private_tokens": 288,
+            "cross_source_removed_past_edges": 72864,
+            "B_answer_positions": [
+              114,
+              135,
+              156,
+              177,
+              249,
+              270,
+              450,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 554,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 262,
+            "B_private_tokens": 264,
+            "cross_source_removed_past_edges": 69168,
+            "B_answer_positions": [
+              57,
+              198,
+              233,
+              268,
+              455,
+              486,
+              517,
+              552
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 715,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 371,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 117236,
+            "B_answer_positions": [
+              160,
+              192,
+              224,
+              297,
+              385,
+              470,
+              517,
+              640
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 300,
+            "B_private_tokens": 388,
+            "cross_source_removed_past_edges": 116400,
+            "B_answer_positions": [
+              73,
+              123,
+              173,
+              376,
+              426,
+              526,
+              576,
+              623
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 708,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 244,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 106384,
+            "B_answer_positions": [
+              105,
+              161,
+              273,
+              370,
+              484,
+              569,
+              622,
+              706
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 707,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 243,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 105948,
+            "B_answer_positions": [
+              86,
+              135,
+              184,
+              233,
+              306,
+              403,
+              463,
+              556
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 566,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 256,
+            "cross_source_removed_past_edges": 72192,
+            "B_answer_positions": [
+              87,
+              115,
+              274,
+              310,
+              338,
+              391,
+              446,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              902,
+              9834
+            ],
+            "far": [
+              902,
+              9834,
+              1494,
+              5181
+            ]
+          },
+          "new_preflight_sha256": "7a8c0efbda7d88506af2ac8a672aae3ac9e1b3f0eed97d00f6196f66780d37b5",
+          "old_preflight_sha256": "13a734df48602c71f26bf14dd56e5b6313a882e60b1bd1308b1caf615c8439d1"
+        }
+      },
+      "qwen3_discovery_preflight": {
+        "n_contexts": 16,
+        "contexts_sha256": "aa737d5780702aa7534392674e0882c7603fd68fadfae1e7ffa90616ab0e18a2",
+        "preflight_sha256": "92087f984bf69a755bfbdc0031551be78848215ed4e226203b24e8234d1b25d9",
+        "source_aliases": [
+          "Alex",
+          "Sam"
+        ],
+        "word_ids_by_namespace": {
+          "shared": [
+            [
+              902,
+              9834
+            ],
+            [
+              902,
+              9834
+            ]
+          ],
+          "far": [
+            [
+              902,
+              9834
+            ],
+            [
+              1494,
+              5181
+            ]
+          ]
+        },
+        "shared_unique_word_IDs": 2,
+        "far_unique_word_IDs": 4,
+        "shared_other_word_surface_provenance_identifiable": false,
+        "shared_other_word_zero_does_not_prove_isolation": true,
+        "CPU_actual_prefix_streams": 352,
+        "CPU_prefix_mask_sets": 352,
+        "CPU_query_scope_owner_sets": 512,
+        "synthetic_full_source_storage_selections": 512,
+        "schema_fact_equality_within_namespace_pass": true,
+        "shared_far_comment_pair_private_gold_and_global_geometry_equal_pass": true,
+        "cross_namespace_token_changes_confined_to_schema_and_B_answer_IDs_pass": true,
+        "source_private_isolation_and_no_public_query_relay_pass": true,
+        "whole_query_scope_masks_pass": true,
+        "namespace_closure_and_cache_reset_static_pass": true,
+        "own_coherent_minus_mixed_is_math_identity": true,
+        "private_context_counts": {
+          "False": 8,
+          "True": 8
+        },
+        "owner_assignment_counts": {
+          "('Alex', 'Sam')": 10,
+          "('Sam', 'Alex')": 6
+        },
+        "schema_token_counts": [
+          15
+        ],
+        "prefix_lengths_range": [
+          533,
+          818
+        ],
+        "model_layers": 36,
+        "Qwen14_revision": null,
+        "schema_texts_first_two_contexts": [
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          },
+          {
+            "shared": [
+              "Output words:\nAlex: no, yes.\nSam: no, yes.\n\n",
+              "Output words:\nSam: no, yes.\nAlex: no, yes.\n\n"
+            ],
+            "far": [
+              "Output words:\nAlex: no, yes.\nSam: pass, flag.\n\n",
+              "Output words:\nSam: pass, flag.\nAlex: no, yes.\n\n"
+            ]
+          }
+        ],
+        "prefix_counts": [
+          {
+            "prefix_length": 657,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 293,
+            "B_private_tokens": 336,
+            "cross_source_removed_past_edges": 98448,
+            "B_answer_positions": [
+              56,
+              182,
+              236,
+              266,
+              352,
+              469,
+              499,
+              553
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 604,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 316,
+            "cross_source_removed_past_edges": 82160,
+            "B_answer_positions": [
+              148,
+              290,
+              320,
+              369,
+              436,
+              485,
+              515,
+              564
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 705,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 281,
+            "B_private_tokens": 396,
+            "cross_source_removed_past_edges": 111276,
+            "B_answer_positions": [
+              81,
+              246,
+              354,
+              494,
+              549,
+              593,
+              637,
+              703
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 716,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 264,
+            "B_private_tokens": 424,
+            "cross_source_removed_past_edges": 111936,
+            "B_answer_positions": [
+              84,
+              202,
+              250,
+              331,
+              389,
+              534,
+              592,
+              640
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 569,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 244,
+            "cross_source_removed_past_edges": 72468,
+            "B_answer_positions": [
+              131,
+              242,
+              276,
+              413,
+              440,
+              467,
+              533,
+              567
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 776,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 272,
+            "B_private_tokens": 476,
+            "cross_source_removed_past_edges": 129472,
+            "B_answer_positions": [
+              89,
+              152,
+              248,
+              311,
+              519,
+              575,
+              664,
+              720
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 818,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 318,
+            "B_private_tokens": 472,
+            "cross_source_removed_past_edges": 150096,
+            "B_answer_positions": [
+              89,
+              265,
+              328,
+              541,
+              596,
+              659,
+              714,
+              816
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 746,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 436,
+            "cross_source_removed_past_edges": 122952,
+            "B_answer_positions": [
+              244,
+              340,
+              393,
+              449,
+              505,
+              558,
+              611,
+              744
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 674,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 294,
+            "B_private_tokens": 352,
+            "cross_source_removed_past_edges": 103488,
+            "B_answer_positions": [
+              113,
+              224,
+              278,
+              312,
+              409,
+              484,
+              538,
+              572
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 734,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 282,
+            "B_private_tokens": 424,
+            "cross_source_removed_past_edges": 119568,
+            "B_answer_positions": [
+              81,
+              235,
+              359,
+              410,
+              509,
+              603,
+              681,
+              732
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 659,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 287,
+            "B_private_tokens": 344,
+            "cross_source_removed_past_edges": 98728,
+            "B_answer_positions": [
+              151,
+              239,
+              285,
+              350,
+              434,
+              474,
+              617,
+              657
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 741,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 341,
+            "B_private_tokens": 372,
+            "cross_source_removed_past_edges": 126852,
+            "B_answer_positions": [
+              83,
+              119,
+              268,
+              332,
+              414,
+              450,
+              682,
+              739
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 636,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 260,
+            "B_private_tokens": 348,
+            "cross_source_removed_past_edges": 90480,
+            "B_answer_positions": [
+              145,
+              262,
+              302,
+              342,
+              382,
+              422,
+              553,
+              600
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 639,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 235,
+            "B_private_tokens": 376,
+            "cross_source_removed_past_edges": 88360,
+            "B_answer_positions": [
+              75,
+              124,
+              211,
+              385,
+              454,
+              499,
+              548,
+              593
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 533,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 297,
+            "B_private_tokens": 208,
+            "cross_source_removed_past_edges": 61776,
+            "B_answer_positions": [
+              55,
+              84,
+              138,
+              230,
+              298,
+              440,
+              469,
+              498
+            ],
+            "all_namespace_private_positions_equal": true
+          },
+          {
+            "prefix_length": 535,
+            "schema_tokens": 15,
+            "HEAD_tokens": 13,
+            "A_private_tokens": 283,
+            "B_private_tokens": 224,
+            "cross_source_removed_past_edges": 63392,
+            "B_answer_positions": [
+              106,
+              236,
+              270,
+              292,
+              314,
+              348,
+              370,
+              392
+            ],
+            "all_namespace_private_positions_equal": true
+          }
+        ],
+        "PRE_RESULT_observer_metadata_check": {
+          "contexts_unchanged_byte_exact": true,
+          "base_preflight_without_aux_fields_SHA_unchanged": true,
+          "label_logit_ids_by_namespace": {
+            "shared": [
+              902,
+              9834
+            ],
+            "far": [
+              902,
+              9834,
+              1494,
+              5181
+            ]
+          },
+          "new_preflight_sha256": "8abf5ce6ffe16d670b7f3d219cf5e202fc8478c3e41de9329f2e764386e37466",
+          "old_preflight_sha256": "92087f984bf69a755bfbdc0031551be78848215ed4e226203b24e8234d1b25d9"
+        }
+      }
+    },
+    "cross_run_assets": {
+      "qwen3": {
+        "discovery_confirmation_text_overlap": 0
+      },
+      "mistral": {
+        "discovery_confirmation_text_overlap": 0
+      },
+      "llama": {
+        "discovery_confirmation_text_overlap": 0
+      },
+      "qwen14": {
+        "discovery_confirmation_text_overlap": 0
+      }
+    }
+  },
+  "static_checks": {
+    "shared_only_two_unique_word_ids": true,
+    "far_four_unique_word_ids": true,
+    "shared_surface_words_do_not_identify_source": true,
+    "namespace_closed_synchronous_score_and_query": true,
+    "a_reference_reset_per_namespace": true,
+    "donors_from_current_namespace_and_world_only": true,
+    "prefill_graph_interfaces": 22,
+    "whole_query_interfaces": 86,
+    "query_batch_size": 8,
+    "scores_per_context": 688,
+    "primary_shared_origin_opposite_world_two_actor_mean": true,
+    "baseline_gold_uses_current_word_ids_same_private_class_index": true,
+    "Qwen14_tokenizer_config_pin": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "Qwen14_expected_layers": 40,
+    "whole_query_all_layer_hook_defined": true
+  },
+  "boundaries": [
+    "No actual scientific result or GPU hook validation yet.",
+    "Shared other_word=False accompanies source_from_word_identifiable=False; zero cannot mean provenance isolation.",
+    "Source-only balanced coherence zero is an algebraic control, not an empirical double dissociation.",
+    "Shared primary can reject solely choosing another disjoint surface vocabulary as a sufficient explanation, not existing binding/position/calibration/competitive reading mechanisms.",
+    "Namespaces also change words, output-space discriminability and priors; paired shared-minus-far is not pure lexical-identity specificity.",
+    "New 2/4 logits are observables of already planned forwards; pending static definition does not replace frozen primary or introduce new conditions."
+  ],
+  "scientific_source_sha256": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "original_geometry_source_sha256": "38c36f41aea52dff32b524ac678354834a8df52565c964e9bc152df926122972",
+  "PRE_RESULT_observer": {
+    "metadata_check": {
+      "llama_confirmation_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            912,
+            10035
+          ],
+          "far": [
+            912,
+            10035,
+            1522,
+            5292
+          ]
+        },
+        "new_preflight_sha256": "3955d4ff0d8be24852560715d50dc9c2a1da5ab696eeeec2dfe8149cae62baa1",
+        "old_preflight_sha256": "1f2be05589dd8c918879a997b5867b4209eeb828818a6d07c37256a5f82bf665"
+      },
+      "llama_discovery_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            912,
+            10035
+          ],
+          "far": [
+            912,
+            10035,
+            1522,
+            5292
+          ]
+        },
+        "new_preflight_sha256": "035d577e1283922c5c2c701861fd1e25771e18a4f21bab604d86837552152b6b",
+        "old_preflight_sha256": "9cb36dfe88789770a78864afd525274c5a9cfa0b761dd6d556d6904ef9bee161"
+      },
+      "mistral_confirmation_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            1476,
+            5849
+          ],
+          "far": [
+            1476,
+            5849,
+            2223,
+            7441
+          ]
+        },
+        "new_preflight_sha256": "01c6e5212aa417034a07fb06bf1e1aab6d86e0ce70f7639169fab2620238a48e",
+        "old_preflight_sha256": "0dc19085016d5d03be13c1cced9e7510132db706b0b84c75fea4c9973832deee"
+      },
+      "mistral_discovery_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            1476,
+            5849
+          ],
+          "far": [
+            1476,
+            5849,
+            2223,
+            7441
+          ]
+        },
+        "new_preflight_sha256": "c2af1f5ba4ad04dac88c79e53281934ca9cb7d83f00f9ca98f199a7ed8f46f0f",
+        "old_preflight_sha256": "70eb8f678327e211ce709d226bd729ead1c5094d9001215a306e2548a9cdc336"
+      },
+      "qwen14_confirmation_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            902,
+            9834
+          ],
+          "far": [
+            902,
+            9834,
+            1494,
+            5181
+          ]
+        },
+        "new_preflight_sha256": "0a9c833155131807b87e848cc9d417f6aded26e2c0627a3d452e2fd28ea36af8",
+        "old_preflight_sha256": "3282c38c0c785120570f18ece803bcb24ffffa4bae31aa41f80e844bc0befb9f"
+      },
+      "qwen14_discovery_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            902,
+            9834
+          ],
+          "far": [
+            902,
+            9834,
+            1494,
+            5181
+          ]
+        },
+        "new_preflight_sha256": "644731a362531503231b663429377cff6c78af6b6c89150f2892476561d9d0c1",
+        "old_preflight_sha256": "a0c2d120edd31ac8eaff28f6b5cd3fcdb062aa57e9ac6e1f744859df27a43608"
+      },
+      "qwen3_confirmation_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            902,
+            9834
+          ],
+          "far": [
+            902,
+            9834,
+            1494,
+            5181
+          ]
+        },
+        "new_preflight_sha256": "7a8c0efbda7d88506af2ac8a672aae3ac9e1b3f0eed97d00f6196f66780d37b5",
+        "old_preflight_sha256": "13a734df48602c71f26bf14dd56e5b6313a882e60b1bd1308b1caf615c8439d1"
+      },
+      "qwen3_discovery_preflight": {
+        "contexts_unchanged_byte_exact": true,
+        "base_preflight_without_aux_fields_SHA_unchanged": true,
+        "label_logit_ids_by_namespace": {
+          "shared": [
+            902,
+            9834
+          ],
+          "far": [
+            902,
+            9834,
+            1494,
+            5181
+          ]
+        },
+        "new_preflight_sha256": "8abf5ce6ffe16d670b7f3d219cf5e202fc8478c3e41de9329f2e764386e37466",
+        "old_preflight_sha256": "92087f984bf69a755bfbdc0031551be78848215ed4e226203b24e8234d1b25d9"
+      }
+    },
+    "far_shape": "context x 2 worlds x 2 Actors x 8 queries x 4 IDs [A0,A1,B0,B1]",
+    "shared_shape": "context x 2 worlds x 2 Actors x 8 queries x 2 IDs [no,yes]",
+    "far_mass": "logsumexp(A0,A1)-logsumexp(B0,B1)",
+    "far_specific_common": "0.5*(M(qA)-M(qB)), 0.5*(M(qA)+M(qB)); common_absolute averages per-query abs",
+    "shared_opposite_specific_common": "goldA*0.5*(zA-zB), goldA*0.5*(zA+zB); common_absolute averages per-query abs",
+    "no_new_forward_or_conditions": true,
+    "old_primary_unchanged": true,
+    "shared_specific_equivalent_to_opposite_Actor_mean_correct_margin": true,
+    "own_only_common_absolute_need_not_have_zero_balanced_contrast": true
+  }
+}

@@ -308,3 +308,11 @@ query-only与targeted优劣依模型/任务而变；same约定不保证受益。
 ### E125公共关系的形成作用，C23构造性补充
 
 E125公共Source–输出词关系三模型16→32已完成：形成期特异+26.66/+7.71/+8.30pp，直接query期三项未定；错误对应表也有益，不能以字面表路由解释。私人监督历史形成隔离、joint query仍读两缓存，Qwen候选功能代价与M/L来源非对称保留。下一项E126以信息完全等价的表行顺序做私人缓存组合，检验共同上下文兼容性；不是新头/层或prompt优化。 95%CI Q[23.05,30.47]/M[5.08,10.45]/L[6.05,10.84]；正确比交换形成+11.72/+4.39/+5.47pp，但交换表自身全家族收益，不证明照表选择。三家族/all-seed/all-direction与single/instruction/floor/inert/actual层mask保留；[E125](experiments/E125-public-output-schema-coordination.md)、[raw audit](results/e125/independent_review_2026-10-12.md)、各确认analysis/run.json。6批.735239 GPU·时，独立18126数值max0、100800prefix/302400query层调用，9216完整argmax零确认；无独立GPU rerun。
+
+
+### E126：相同事实下的联合缓存兼容依赖（C23补充）
+
+E126在public事实/private监督/词集/global位置全部相同时，共同order形成的Source缓存联合使用优于混合：Q/M/L +23.49[20.80,26.07]/+10.40[7.96,13.04]/+5.42[4.00,6.79]pp，private source-only仍强；主要词空间使用，candidate效应小。它补充公共关系形成如何支持独立规则部署，但不识别ID或latent非加性。Q/M两个coherent order有差、margin点负CI0、M A joint低全部保留。 [E126](experiments/E126-equivalent-schema-cache-composition.md)/[完整raw审计](results/e126/independent_review_2026-10-12.md)；6批.627887GPU时、12462数值max0、actual每层图/gold全部过。C21–23 L3/C24L2与formal状态不变。
+
+
+E126 **POST-HOC辅助解释**（不改冻结primary/正式等级）：只在两private约定相反的origin，逐argmax另一Source词与其gold核对；coherent−mixed另一规则相容输出Q/M/L −23.73[−27.44,−20.02]/−10.06[−12.79,−7.42]/−4.88[−6.64,−3.22]pp，符合requested code换词的变化远小。Q/L own-space错误code同时增加2.54[.68,4.88]/.68[.10,1.27]pp，非所有错误一起减少，也非both-world primary的中介份额。此读数只测输出与规则相容，单纯词空间竞争仍可能选中另一已学函数，不识别called rule/ID。来源[实验卡](experiments/E126-equivalent-schema-cache-composition.md)、[独立POST-HOC校对](results/e126/posthoc_independent_review_2026-10-12.md)、[诊断](results/e126/posthoc_selected_code.json)。

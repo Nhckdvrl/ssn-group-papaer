@@ -229,3 +229,42 @@ The primary difference-in-differences compares true and unrelated formation-only
 A correct schema helps more than its swapped counterpart, but the swapped schema also improves actual full-output accuracy and reduces other-source outputs in every model. Therefore a positive true−swapped contrast does not establish active wrong-space routing. Qwen’s true formation operation costs 3.81 [1.86, 5.66] candidate-accuracy points; Mistral and Llama have uncertain A-specific identity gains. All private directions, A/B/world readouts, single functions, instructions, signed/absolute B-convention effects, and F×R interactions are retained in the [complete report](results/e125/report.md) and per-run analysis files. A shared schema is not a lossless or universally sufficient composition method.
 
 The frozen scientific source is `75f7566582cbaf7cf80dd130b409b32436df281a262884d8db381991437612b9` (preregistered commit a0a79918). Six runs include 144 contexts and 72,576 scores, recording 0.735239 GPU hours. The [independent audit](results/e125/independent_review_2026-10-12.md) reconstructs 18,126 raw numerical entries with maximum error zero, actual tokenizer geometry, golds, 100,800 prefix and 302,400 query layer-mask calls, and 9,216 inert-table full-output comparisons. This is independent analysis rather than an independent GPU rerun. Fresh confirmation contexts and names do not constitute an entirely new benchmark.
+
+
+## I. Equivalent-context cache composition
+
+E126 changes only the order of two correct public source–word-set rows. Private examples, all public facts, source names, token lengths, and private global positions are unchanged. Private cross-source formation remains blocked at every layer, while every query position is denied direct schema access. Coherent pairs 00/11 combine whole source-owned K/V from one ordering; mixed pairs 01/10 combine one source from each ordering. Generic HEAD and unreadable schema cache states come from order0. Coherent11 is verified against the pristine order1 computation under the same query mask.
+
+The primary is full-vocabulary accuracy, with equal weights over worlds, sources, and queries within a context. The paired coherent−mixed contrast is .5[(00+11)−(01+10)]. It cancels additive single-cache quality effects but can still reflect nonlinear output scoring, attention competition, or binding. It does not by itself identify nonlinear latent representations. Requested-source-only reading makes the balanced contrast zero by the combination design; individual function scores must be reported separately.
+
+| Model / phase | Joint coherence, pp | Candidate coherence, pp | Joint order11−00, pp | Coherence A / B, pp |
+|---|---:|---:|---:|---:|
+| Qwen3-8B / discovery | 19.43 [15.82, 23.24] | 1.07 [0.00, 2.15] | 0.20 [-5.27, 5.47] | 20.12 [13.28, 27.73] / 18.75 [14.26, 23.83] |
+| Mistral-7B-v0.3 / discovery | 15.33 [11.33, 19.53] | 0.29 [0.00, 0.59] | 4.88 [-2.73, 12.89] | 25.39 [18.55, 33.20] / 5.27 [2.54, 8.20] |
+| Llama-3.1-8B / discovery | 7.91 [5.08, 10.84] | 0.10 [-0.49, 0.68] | -0.98 [-4.88, 2.34] | 9.18 [4.49, 14.65] / 6.64 [3.32, 10.16] |
+| Qwen3-8B / confirmation | 23.49 [20.80, 26.07] | 1.12 [0.24, 2.05] | -4.10 [-7.62, -0.59] | 21.19 [17.58, 24.90] / 25.78 [21.09, 30.47] |
+| Mistral-7B-v0.3 / confirmation | 10.40 [7.96, 13.04] | 0.63 [0.29, 0.98] | -5.27 [-10.25, -0.49] | 17.48 [13.18, 22.07] / 3.32 [1.46, 5.37] |
+| Llama-3.1-8B / confirmation | 5.42 [4.00, 6.79] | 0.20 [-0.24, 0.63] | 1.46 [-0.98, 3.91] | 6.05 [4.20, 8.11] / 4.79 [2.73, 6.74] |
+
+| Model, confirmation n32 | Own-only00 / 11, % | Own-only01 / 10, % | Joint other-word coherence, pp |
+|---|---:|---:|---:|
+| Qwen3-8B | 92.09 / 93.36 | 91.99 / 93.46 | -25.88 [-28.66, -22.90] |
+| Mistral-7B-v0.3 | 96.68 / 96.78 | 96.39 / 97.07 | -10.64 [-13.33, -8.11] |
+| Llama-3.1-8B | 93.16 / 92.58 | 92.77 / 92.97 | -5.76 [-7.18, -4.30] |
+
+Both public orders have strong source-only function scores, but they are not functionally identical. Joint order11−00 is negative in Qwen and Mistral. Their primary correct-margin point estimates are also negative with intervals spanning zero; improved full-output use is not a uniform positive shift in every score. Mistral’s A-specific joint full accuracy is only 42.58% in00 and 33.40% in11, despite strong requested-source-only scores. All actor, world, private direction, margin, convention-response, single-function, and one-instruction results are retained in the [complete report](results/e126/report.md).
+
+Six runs comprise144contexts/49536scores and0.627887GPU hours. Source `ad2c6f7af7ab81966ea1253a80e7006747f3485b182fddd1453ffbb1ceb45975` was frozen at377de6c4 before scoring. The [independent audit](results/e126/independent_review_2026-10-12.md) reconstructs12462 numerical entries with maximum error0,1584 actual token/mask layouts,49536 golds,52800 prefix and206400 query layer-mask calls,9216 mixed-own argmax controls, and4608 A own-world comparisons. No independent GPU rerun is claimed. The [portable audit](results/e126/portable_reproduction_audit.json) confirms Llama32 material bytes from the pinned public dataset.
+
+
+### I.5 Post-hoc selected-output compatibility
+
+After the complete E126 confirmation, we classify actual argmax outputs in the opposite-convention world against both sources’ private gold. The same-convention world cannot distinguish the two mappings and is excluded from this diagnostic. Every context and both requested sources remain included; the unit is still context. This is an additional observation, not a change to the frozen primary or a new model run.
+
+| Confirmation model | Coherent-minus-mixed other-source rule-compatible outputs, pp [95% CI] | Other-source outputs matching requested canonical code, pp [95% CI] |
+|---|---:|---:|
+| Qwen3-8B | −23.73 [−27.44, −20.02] | −1.37 [−2.25, −0.59] |
+| Mistral-7B-v0.3 | −10.06 [−12.79, −7.42] | −0.39 [−1.07, 0.20] |
+| Llama-3.1-8B | −4.88 [−6.64, −3.22] | −0.59 [−1.17, −0.10] |
+
+These categories use the task’s canonical code indices rather than the words’ natural semantic equivalence. They show compatibility of an observed output with a demonstrated mapping, without claiming to observe an internal called rule. The predominant change is in outputs compatible with the other source’s convention. Own-space wrong-code outputs also increase in Qwen by 2.54 [0.68, 4.88] points and Llama by 0.68 [0.10, 1.27], so this is not a uniform reduction of every error type. These opposite-world categories are not a mediated fraction of the both-world primary. Full pair-specific rates and discovery results are in [the post-hoc report](results/e126/posthoc_selected_code.md) and [raw recomputation](scripts/posthoc_e126_selected_code.py).

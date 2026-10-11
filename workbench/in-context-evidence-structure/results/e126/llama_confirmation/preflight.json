@@ -1,0 +1,117 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Llama-3.1-8B",
+    "out": "results/e126/llama_confirmation",
+    "n": 32,
+    "seed": 126101,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "conditions": 43,
+  "queries": 8,
+  "source_names": [
+    "Robin",
+    "Jordan"
+  ],
+  "word_ids": [
+    [
+      912,
+      10035
+    ],
+    [
+      1522,
+      5292
+    ]
+  ],
+  "same_public_facts": true,
+  "matched_schema_token_count": true,
+  "original_global_positions": true,
+  "cross_source_private_formation": false,
+  "formation_access_public_schema": true,
+  "whole_query_public_schema_access": false,
+  "cache_pairs": [
+    "00",
+    "11",
+    "01",
+    "10"
+  ],
+  "query_scopes": [
+    "joint",
+    "own"
+  ],
+  "source_ownership_roles": {
+    "public_HEAD": -1,
+    "schema": -2,
+    "A": 0,
+    "B": 1
+  },
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 1,
+    "query_split": "test",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 42,
+    "demo_pool_sizes": [
+      624,
+      560
+    ],
+    "query_pool_sizes": [
+      396,
+      276
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "material_builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "prefix_lengths": [
+    707,
+    544,
+    658,
+    574,
+    613,
+    787,
+    620,
+    552,
+    562,
+    604,
+    659,
+    547,
+    716,
+    601,
+    685,
+    625,
+    640,
+    491,
+    688,
+    656,
+    664,
+    732,
+    649,
+    540,
+    654,
+    559,
+    581,
+    743,
+    596,
+    617,
+    713,
+    611
+  ],
+  "scope": "whole-source cache composition under equivalent schema orders; not identification of binding IDs"
+}

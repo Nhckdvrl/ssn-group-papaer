@@ -1,0 +1,4321 @@
+{
+  "expected_author": {
+    "status": "POST-HOC, after E126 full confirmation",
+    "unit": "context; origin-only, equal actors and queries",
+    "scope": "Compatibility of observed output with private gold; does not identify an internal called rule.",
+    "runs": {
+      "qwen3_discovery": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.19921875,
+              "ci95": [
+                0.12890625,
+                0.2734375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.19140625,
+              "ci95": [
+                0.12109375,
+                0.265625
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0078125,
+                0.05859375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.21484375,
+              "ci95": [
+                0.1484375,
+                0.28125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.21484375,
+              "ci95": [
+                0.1484375,
+                0.28125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.00390625,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.41796875,
+              "ci95": [
+                0.37890625,
+                0.45703125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.41796875,
+              "ci95": [
+                0.37890625,
+                0.45703125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.42578125,
+              "ci95": [
+                0.390625,
+                0.4609375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.4140625,
+              "ci95": [
+                0.375,
+                0.44921875
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.03125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.21484375,
+            "ci95": [
+              -0.265625,
+              -0.1640625
+            ],
+            "n_contexts": 16
+          },
+          "other_rule": {
+            "mean": -0.212890625,
+            "ci95": [
+              -0.263671875,
+              -0.162109375
+            ],
+            "n_contexts": 16
+          },
+          "other_requested_index": {
+            "mean": -0.001953125,
+            "ci95": [
+              -0.005859375,
+              0.0
+            ],
+            "n_contexts": 16
+          },
+          "own_bad_code": {
+            "mean": 0.017578125,
+            "ci95": [
+              0.005859375,
+              0.03125
+            ],
+            "n_contexts": 16
+          },
+          "outside": {
+            "mean": 0.00390625,
+            "ci95": [
+              0.0,
+              0.01171875
+            ],
+            "n_contexts": 16
+          }
+        }
+      },
+      "mistral_discovery": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.33203125,
+              "ci95": [
+                0.2578125,
+                0.40234375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.328125,
+              "ci95": [
+                0.25390625,
+                0.3984375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.03515625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.2421875,
+              "ci95": [
+                0.1875,
+                0.3046875
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.23828125,
+              "ci95": [
+                0.1875,
+                0.30078125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0078125,
+                0.04296875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.47265625,
+              "ci95": [
+                0.4375,
+                0.5
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.46875,
+              "ci95": [
+                0.43359375,
+                0.49609375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.00390625,
+                0.03125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.4375,
+              "ci95": [
+                0.39453125,
+                0.47265625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.43359375,
+              "ci95": [
+                0.38671875,
+                0.47265625
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.03515625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.16796875,
+            "ci95": [
+              -0.22465820312499996,
+              -0.11328125
+            ],
+            "n_contexts": 16
+          },
+          "other_rule": {
+            "mean": -0.16796875,
+            "ci95": [
+              -0.224609375,
+              -0.11328125
+            ],
+            "n_contexts": 16
+          },
+          "other_requested_index": {
+            "mean": 0.0,
+            "ci95": [
+              -0.005859375,
+              0.005859375
+            ],
+            "n_contexts": 16
+          },
+          "own_bad_code": {
+            "mean": 0.00390625,
+            "ci95": [
+              0.0,
+              0.009765625
+            ],
+            "n_contexts": 16
+          },
+          "outside": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 16
+          }
+        }
+      },
+      "llama_discovery": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.31640625,
+              "ci95": [
+                0.25,
+                0.37890625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.29296875,
+              "ci95": [
+                0.23828125,
+                0.34375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.00390625,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.00390625,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.31640625,
+              "ci95": [
+                0.26953125,
+                0.36328125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.31640625,
+              "ci95": [
+                0.26953125,
+                0.36328125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.01171875,
+                0.05859375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.40625,
+              "ci95": [
+                0.3671875,
+                0.4453125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.39453125,
+              "ci95": [
+                0.35546875,
+                0.43359375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.00390625,
+                0.03125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.41015625,
+              "ci95": [
+                0.3671875,
+                0.44921875
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.38671875,
+              "ci95": [
+                0.3515625,
+                0.421875
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.00390625,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.01171875,
+                0.0546875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.091796875,
+            "ci95": [
+              -0.1328125,
+              -0.05859375
+            ],
+            "n_contexts": 16
+          },
+          "other_rule": {
+            "mean": -0.0859375,
+            "ci95": [
+              -0.12890625,
+              -0.048828125
+            ],
+            "n_contexts": 16
+          },
+          "other_requested_index": {
+            "mean": -0.005859375,
+            "ci95": [
+              -0.01171875,
+              0.0
+            ],
+            "n_contexts": 16
+          },
+          "own_bad_code": {
+            "mean": 0.00390625,
+            "ci95": [
+              -0.00390625,
+              0.013671875
+            ],
+            "n_contexts": 16
+          },
+          "outside": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 16
+          }
+        }
+      },
+      "qwen3_confirmation": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.09375,
+              "ci95": [
+                0.06640625,
+                0.123046875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.09375,
+              "ci95": [
+                0.06640625,
+                0.123046875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.068359375,
+              "ci95": [
+                0.041015625,
+                0.09965820312499929
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.001953125,
+              "ci95": [
+                0.0,
+                0.005859375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.12109375,
+              "ci95": [
+                0.080078125,
+                0.166015625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.1171875,
+              "ci95": [
+                0.076171875,
+                0.162109375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.009765625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0390625,
+                0.08984375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.001953125,
+              "ci95": [
+                0.0,
+                0.005859375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.353515625,
+              "ci95": [
+                0.310546875,
+                0.396484375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.33203125,
+              "ci95": [
+                0.287109375,
+                0.376953125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.021484375,
+              "ci95": [
+                0.009765625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.04296875,
+              "ci95": [
+                0.0234375,
+                0.064453125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.001953125,
+              "ci95": [
+                0.0,
+                0.005859375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.36328125,
+              "ci95": [
+                0.3203125,
+                0.404296875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.353515625,
+              "ci95": [
+                0.310546875,
+                0.39453125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.009765625,
+              "ci95": [
+                0.001953125,
+                0.017578125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.037109375,
+              "ci95": [
+                0.0234375,
+                0.05078125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.2509765625,
+            "ci95": [
+              -0.2880859375,
+              -0.212890625
+            ],
+            "n_contexts": 32
+          },
+          "other_rule": {
+            "mean": -0.2373046875,
+            "ci95": [
+              -0.2744384765625,
+              -0.2001953125
+            ],
+            "n_contexts": 32
+          },
+          "other_requested_index": {
+            "mean": -0.013671875,
+            "ci95": [
+              -0.0224609375,
+              -0.005859375
+            ],
+            "n_contexts": 32
+          },
+          "own_bad_code": {
+            "mean": 0.025390625,
+            "ci95": [
+              0.0068359375,
+              0.048828125
+            ],
+            "n_contexts": 32
+          },
+          "outside": {
+            "mean": 0.0009765625,
+            "ci95": [
+              0.0,
+              0.0029296875
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "mistral_confirmation": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.33984375,
+              "ci95": [
+                0.291015625,
+                0.38671875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.330078125,
+              "ci95": [
+                0.28125,
+                0.375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.009765625,
+              "ci95": [
+                0.001953125,
+                0.017578125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.021484375,
+              "ci95": [
+                0.0078125,
+                0.037109375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.412109375,
+              "ci95": [
+                0.380859375,
+                0.44140625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.400390625,
+              "ci95": [
+                0.369140625,
+                0.4296875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.00390625,
+                0.021484375
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.017578125,
+              "ci95": [
+                0.0078125,
+                0.029296875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.484375,
+              "ci95": [
+                0.46875,
+                0.5
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.470703125,
+              "ci95": [
+                0.453125,
+                0.48828125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.013671875,
+              "ci95": [
+                0.005859375,
+                0.0234375
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.013671875,
+              "ci95": [
+                0.005859375,
+                0.0234375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.4765625,
+              "ci95": [
+                0.462890625,
+                0.48828125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.4609375,
+              "ci95": [
+                0.447265625,
+                0.474609375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0078125,
+                0.025390625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.013671875,
+              "ci95": [
+                0.005859375,
+                0.0234375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.1044921875,
+            "ci95": [
+              -0.13479003906249998,
+              -0.076171875
+            ],
+            "n_contexts": 32
+          },
+          "other_rule": {
+            "mean": -0.1005859375,
+            "ci95": [
+              -0.1279296875,
+              -0.07421875
+            ],
+            "n_contexts": 32
+          },
+          "other_requested_index": {
+            "mean": -0.00390625,
+            "ci95": [
+              -0.0107421875,
+              0.001953125
+            ],
+            "n_contexts": 32
+          },
+          "own_bad_code": {
+            "mean": 0.005859375,
+            "ci95": [
+              -0.0009765625,
+              0.0146484375
+            ],
+            "n_contexts": 32
+          },
+          "outside": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          }
+        }
+      },
+      "llama_confirmation": {
+        "pair_rates": {
+          "00": {
+            "other": {
+              "mean": 0.37890625,
+              "ci95": [
+                0.34565429687500004,
+                0.41015625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.369140625,
+              "ci95": [
+                0.333984375,
+                0.400390625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.009765625,
+              "ci95": [
+                0.001953125,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.04296875,
+              "ci95": [
+                0.025390625,
+                0.0625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "11": {
+            "other": {
+              "mean": 0.369140625,
+              "ci95": [
+                0.333984375,
+                0.40234375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.361328125,
+              "ci95": [
+                0.326171875,
+                0.39453125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.001953125,
+                0.015625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.033203125,
+              "ci95": [
+                0.01953125,
+                0.048828125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "01": {
+            "other": {
+              "mean": 0.42578125,
+              "ci95": [
+                0.40234375,
+                0.447265625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.41015625,
+              "ci95": [
+                0.384765625,
+                0.43359375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0078125,
+                0.025390625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.017578125,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "10": {
+            "other": {
+              "mean": 0.431640625,
+              "ci95": [
+                0.408203125,
+                0.455078125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.41796875,
+              "ci95": [
+                0.392578125,
+                0.443359375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.013671875,
+              "ci95": [
+                0.005859375,
+                0.0234375
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.015625,
+                0.048828125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "coherent_minus_mixed": {
+          "other": {
+            "mean": -0.0546875,
+            "ci95": [
+              -0.0732421875,
+              -0.037084960937500355
+            ],
+            "n_contexts": 32
+          },
+          "other_rule": {
+            "mean": -0.048828125,
+            "ci95": [
+              -0.06640625,
+              -0.0322265625
+            ],
+            "n_contexts": 32
+          },
+          "other_requested_index": {
+            "mean": -0.005859375,
+            "ci95": [
+              -0.01171875,
+              -0.0009765625
+            ],
+            "n_contexts": 32
+          },
+          "own_bad_code": {
+            "mean": 0.0068359375,
+            "ci95": [
+              0.0009765625,
+              0.0126953125
+            ],
+            "n_contexts": 32
+          },
+          "outside": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_contexts": 32
+          }
+        }
+      }
+    }
+  },
+  "raw_diagnostics": {
+    "qwen3_discovery": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 256,
+          "other": 51,
+          "other_rule": 49,
+          "other_requested_index": 2,
+          "own_bad_code": 8,
+          "outside": 2,
+          "own_good_code": 195
+        },
+        "11": {
+          "query_requests": 256,
+          "other": 55,
+          "other_rule": 55,
+          "other_requested_index": 0,
+          "own_bad_code": 6,
+          "outside": 0,
+          "own_good_code": 195
+        },
+        "01": {
+          "query_requests": 256,
+          "other": 107,
+          "other_rule": 107,
+          "other_requested_index": 0,
+          "own_bad_code": 2,
+          "outside": 0,
+          "own_good_code": 147
+        },
+        "10": {
+          "query_requests": 256,
+          "other": 109,
+          "other_rule": 106,
+          "other_requested_index": 3,
+          "own_bad_code": 3,
+          "outside": 0,
+          "own_good_code": 144
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.1640625,
+              "ci95": [
+                0.0703125,
+                0.28125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.1484375,
+              "ci95": [
+                0.0546875,
+                0.2578125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.0390625
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.8203125,
+              "ci95": [
+                0.6953125,
+                0.921875
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.234375,
+              "ci95": [
+                0.140625,
+                0.328125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.234375,
+              "ci95": [
+                0.140625,
+                0.328125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0546875,
+              "ci95": [
+                0.0078125,
+                0.1171875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.703125,
+              "ci95": [
+                0.5859375,
+                0.8203125
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.1953125,
+              "ci95": [
+                0.09375,
+                0.3125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.1953125,
+              "ci95": [
+                0.09375,
+                0.3125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.796875,
+              "ci95": [
+                0.671875,
+                0.90625
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.234375,
+              "ci95": [
+                0.1171875,
+                0.359375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.234375,
+              "ci95": [
+                0.1171875,
+                0.359375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0390625,
+              "ci95": [
+                0.0078125,
+                0.078125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.7265625,
+              "ci95": [
+                0.59375,
+                0.8515625
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.3671875,
+              "ci95": [
+                0.234375,
+                0.5078125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.3671875,
+              "ci95": [
+                0.234375,
+                0.5078125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.6328125,
+              "ci95": [
+                0.4921875,
+                0.765625
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.46875,
+              "ci95": [
+                0.3515625,
+                0.59375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.46875,
+              "ci95": [
+                0.3515625,
+                0.59375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.515625,
+              "ci95": [
+                0.3828125,
+                0.640625
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.390625,
+              "ci95": [
+                0.25,
+                0.5390625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.375,
+              "ci95": [
+                0.234375,
+                0.5234375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.0390625
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.609375,
+              "ci95": [
+                0.4609375,
+                0.75
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4609375,
+              "ci95": [
+                0.3359375,
+                0.5859375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.453125,
+              "ci95": [
+                0.3359375,
+                0.578125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0,
+                0.0625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.515625,
+              "ci95": [
+                0.390625,
+                0.640625
+              ],
+              "n_contexts": 16
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 49,
+          "other_word_denominator": 51,
+          "fraction": 0.9607843137254902,
+          "ci95": [
+            0.9,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 55,
+          "other_word_denominator": 55,
+          "fraction": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 107,
+          "other_word_denominator": 107,
+          "fraction": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 106,
+          "other_word_denominator": 109,
+          "fraction": 0.9724770642201835,
+          "ci95": [
+            0.9423076923076923,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        }
+      }
+    },
+    "mistral_discovery": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 256,
+          "other": 85,
+          "other_rule": 84,
+          "other_requested_index": 1,
+          "own_bad_code": 4,
+          "outside": 0,
+          "own_good_code": 167
+        },
+        "11": {
+          "query_requests": 256,
+          "other": 62,
+          "other_rule": 61,
+          "other_requested_index": 1,
+          "own_bad_code": 6,
+          "outside": 0,
+          "own_good_code": 188
+        },
+        "01": {
+          "query_requests": 256,
+          "other": 121,
+          "other_rule": 120,
+          "other_requested_index": 1,
+          "own_bad_code": 4,
+          "outside": 0,
+          "own_good_code": 131
+        },
+        "10": {
+          "query_requests": 256,
+          "other": 112,
+          "other_rule": 111,
+          "other_requested_index": 1,
+          "own_bad_code": 4,
+          "outside": 0,
+          "own_good_code": 140
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.5546875,
+              "ci95": [
+                0.3671875,
+                0.7421875
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.546875,
+              "ci95": [
+                0.359375,
+                0.734375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.4453125,
+              "ci95": [
+                0.2578125,
+                0.6328125
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.109375,
+              "ci95": [
+                0.03125,
+                0.203125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.109375,
+              "ci95": [
+                0.03125,
+                0.203125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.0703125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.859375,
+              "ci95": [
+                0.7734375,
+                0.9375
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.421875,
+              "ci95": [
+                0.296875,
+                0.5625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.4140625,
+              "ci95": [
+                0.296875,
+                0.5546875
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.5703125,
+              "ci95": [
+                0.4296875,
+                0.6953125
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0234375,
+                0.109375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0234375,
+                0.109375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0390625,
+              "ci95": [
+                0.0078125,
+                0.078125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.8984375,
+              "ci95": [
+                0.84375,
+                0.9453125
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.78125,
+              "ci95": [
+                0.6640625,
+                0.890625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.7734375,
+              "ci95": [
+                0.65625,
+                0.890625
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.21875,
+              "ci95": [
+                0.109375,
+                0.3359375
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.1640625,
+              "ci95": [
+                0.0625,
+                0.2734375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.1640625,
+              "ci95": [
+                0.0625,
+                0.2734375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0078125,
+                0.0625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.8046875,
+              "ci95": [
+                0.6953125,
+                0.90625
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.7421875,
+              "ci95": [
+                0.640625,
+                0.84375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.734375,
+              "ci95": [
+                0.6328125,
+                0.8359375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.2578125,
+              "ci95": [
+                0.15625,
+                0.359375
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.1328125,
+              "ci95": [
+                0.0546875,
+                0.21875
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.1328125,
+              "ci95": [
+                0.0546875,
+                0.21875
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.0703125
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.8359375,
+              "ci95": [
+                0.7578125,
+                0.90625
+              ],
+              "n_contexts": 16
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 84,
+          "other_word_denominator": 85,
+          "fraction": 0.9882352941176471,
+          "ci95": [
+            0.9625,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 61,
+          "other_word_denominator": 62,
+          "fraction": 0.9838709677419355,
+          "ci95": [
+            0.9508196721311475,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 120,
+          "other_word_denominator": 121,
+          "fraction": 0.9917355371900827,
+          "ci95": [
+            0.9745762711864406,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 111,
+          "other_word_denominator": 112,
+          "fraction": 0.9910714285714286,
+          "ci95": [
+            0.9716981132075472,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        }
+      }
+    },
+    "llama_discovery": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 256,
+          "other": 81,
+          "other_rule": 75,
+          "other_requested_index": 6,
+          "own_bad_code": 6,
+          "outside": 0,
+          "own_good_code": 169
+        },
+        "11": {
+          "query_requests": 256,
+          "other": 81,
+          "other_rule": 81,
+          "other_requested_index": 0,
+          "own_bad_code": 8,
+          "outside": 0,
+          "own_good_code": 167
+        },
+        "01": {
+          "query_requests": 256,
+          "other": 104,
+          "other_rule": 101,
+          "other_requested_index": 3,
+          "own_bad_code": 4,
+          "outside": 0,
+          "own_good_code": 148
+        },
+        "10": {
+          "query_requests": 256,
+          "other": 105,
+          "other_rule": 99,
+          "other_requested_index": 6,
+          "own_bad_code": 8,
+          "outside": 0,
+          "own_good_code": 143
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.28125,
+              "ci95": [
+                0.1328125,
+                0.4453125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.234375,
+              "ci95": [
+                0.1015625,
+                0.3828125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.046875,
+              "ci95": [
+                0.0078125,
+                0.09375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.71875,
+              "ci95": [
+                0.5546875,
+                0.8671875
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.3515625,
+              "ci95": [
+                0.21875,
+                0.484375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.3515625,
+              "ci95": [
+                0.21875,
+                0.484375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.046875,
+              "ci95": [
+                0.0078125,
+                0.09375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.6015625,
+              "ci95": [
+                0.453125,
+                0.75
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.2421875,
+              "ci95": [
+                0.109375,
+                0.390625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.2421875,
+              "ci95": [
+                0.109375,
+                0.390625
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.0390625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.7421875,
+              "ci95": [
+                0.6013671875000002,
+                0.875
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.390625,
+              "ci95": [
+                0.2578125,
+                0.5234375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.390625,
+              "ci95": [
+                0.2578125,
+                0.5234375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.046875,
+              "ci95": [
+                0.015625,
+                0.0859375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.5625,
+              "ci95": [
+                0.4140625,
+                0.7109375
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.3515625,
+              "ci95": [
+                0.1953125,
+                0.515625
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.328125,
+              "ci95": [
+                0.171875,
+                0.5
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0,
+                0.046875
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.6484375,
+              "ci95": [
+                0.484375,
+                0.8046875
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4609375,
+              "ci95": [
+                0.3125,
+                0.609375
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.4609375,
+              "ci95": [
+                0.3125,
+                0.609375
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0078125,
+                0.0625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.5078125,
+              "ci95": [
+                0.3515625,
+                0.6640625
+              ],
+              "n_contexts": 16
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.3828125,
+              "ci95": [
+                0.21875,
+                0.5546875
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.3359375,
+              "ci95": [
+                0.171875,
+                0.515625
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.046875,
+              "ci95": [
+                0.0078125,
+                0.09375
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.0234375
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.609375,
+              "ci95": [
+                0.4375,
+                0.7734375
+              ],
+              "n_contexts": 16
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4375,
+              "ci95": [
+                0.296875,
+                0.5703125
+              ],
+              "n_contexts": 16
+            },
+            "other_rule": {
+              "mean": 0.4375,
+              "ci95": [
+                0.296875,
+                0.5703125
+              ],
+              "n_contexts": 16
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_bad_code": {
+              "mean": 0.0546875,
+              "ci95": [
+                0.015625,
+                0.1015625
+              ],
+              "n_contexts": 16
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 16
+            },
+            "own_good_code": {
+              "mean": 0.5078125,
+              "ci95": [
+                0.3515625,
+                0.6640625
+              ],
+              "n_contexts": 16
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 75,
+          "other_word_denominator": 81,
+          "fraction": 0.9259259259259259,
+          "ci95": [
+            0.8658536585365854,
+            0.9859154929577465
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 81,
+          "other_word_denominator": 81,
+          "fraction": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 101,
+          "other_word_denominator": 104,
+          "fraction": 0.9711538461538461,
+          "ci95": [
+            0.94,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 99,
+          "other_word_denominator": 105,
+          "fraction": 0.9428571428571428,
+          "ci95": [
+            0.8899082568807339,
+            0.9900990099009901
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 16
+        }
+      }
+    },
+    "qwen3_confirmation": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 512,
+          "other": 48,
+          "other_rule": 48,
+          "other_requested_index": 0,
+          "own_bad_code": 35,
+          "outside": 1,
+          "own_good_code": 428
+        },
+        "11": {
+          "query_requests": 512,
+          "other": 62,
+          "other_rule": 60,
+          "other_requested_index": 2,
+          "own_bad_code": 32,
+          "outside": 1,
+          "own_good_code": 417
+        },
+        "01": {
+          "query_requests": 512,
+          "other": 181,
+          "other_rule": 170,
+          "other_requested_index": 11,
+          "own_bad_code": 22,
+          "outside": 1,
+          "own_good_code": 308
+        },
+        "10": {
+          "query_requests": 512,
+          "other": 186,
+          "other_rule": 181,
+          "other_requested_index": 5,
+          "own_bad_code": 19,
+          "outside": 0,
+          "own_good_code": 307
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.1015625,
+              "ci95": [
+                0.05078125,
+                0.16015625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.1015625,
+              "ci95": [
+                0.05078125,
+                0.16015625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.05078125,
+              "ci95": [
+                0.01953125,
+                0.08984375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.84375,
+              "ci95": [
+                0.78125,
+                0.90234375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.0859375,
+              "ci95": [
+                0.05859375,
+                0.1171875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.0859375,
+              "ci95": [
+                0.05859375,
+                0.1171875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0859375,
+              "ci95": [
+                0.0546875,
+                0.12109375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.828125,
+              "ci95": [
+                0.78515625,
+                0.87109375
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.13671875,
+              "ci95": [
+                0.078125,
+                0.203125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.1328125,
+              "ci95": [
+                0.07421875,
+                0.19921875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.05078125,
+              "ci95": [
+                0.01953125,
+                0.08984375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.80859375,
+              "ci95": [
+                0.73828125,
+                0.875
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.10546875,
+              "ci95": [
+                0.05078125,
+                0.16796875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.1015625,
+              "ci95": [
+                0.05078125,
+                0.1640625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.07421875,
+              "ci95": [
+                0.04296875,
+                0.109375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.8203125,
+              "ci95": [
+                0.75390625,
+                0.8828125
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.33984375,
+              "ci95": [
+                0.2578125,
+                0.42578125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.31640625,
+              "ci95": [
+                0.234375,
+                0.3984375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0078125,
+                0.04296875
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.62890625,
+              "ci95": [
+                0.54296875,
+                0.71484375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.3671875,
+              "ci95": [
+                0.2890625,
+                0.44921875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.34765625,
+              "ci95": [
+                0.2734375,
+                0.42578125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.0390625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.05859375,
+              "ci95": [
+                0.03125,
+                0.08984375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.57421875,
+              "ci95": [
+                0.48828125,
+                0.65625
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.3203125,
+              "ci95": [
+                0.23828125,
+                0.40234375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.30859375,
+              "ci95": [
+                0.2265625,
+                0.390625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.02734375
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.66015625,
+              "ci95": [
+                0.57421875,
+                0.74609375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.40625,
+              "ci95": [
+                0.33984375,
+                0.4765625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.3984375,
+              "ci95": [
+                0.33203125,
+                0.46484375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0546875,
+              "ci95": [
+                0.03125,
+                0.078125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.5390625,
+              "ci95": [
+                0.46875,
+                0.6015625
+              ],
+              "n_contexts": 32
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 48,
+          "other_word_denominator": 48,
+          "fraction": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 60,
+          "other_word_denominator": 62,
+          "fraction": 0.967741935483871,
+          "ci95": [
+            0.9122807017543859,
+            1.0
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 170,
+          "other_word_denominator": 181,
+          "fraction": 0.9392265193370166,
+          "ci95": [
+            0.8994708994708994,
+            0.972972972972973
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 181,
+          "other_word_denominator": 186,
+          "fraction": 0.9731182795698925,
+          "ci95": [
+            0.949748743718593,
+            0.9940837104072398
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        }
+      }
+    },
+    "mistral_confirmation": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 512,
+          "other": 174,
+          "other_rule": 169,
+          "other_requested_index": 5,
+          "own_bad_code": 11,
+          "outside": 0,
+          "own_good_code": 327
+        },
+        "11": {
+          "query_requests": 512,
+          "other": 211,
+          "other_rule": 205,
+          "other_requested_index": 6,
+          "own_bad_code": 9,
+          "outside": 0,
+          "own_good_code": 292
+        },
+        "01": {
+          "query_requests": 512,
+          "other": 248,
+          "other_rule": 241,
+          "other_requested_index": 7,
+          "own_bad_code": 7,
+          "outside": 0,
+          "own_good_code": 257
+        },
+        "10": {
+          "query_requests": 512,
+          "other": 244,
+          "other_rule": 236,
+          "other_requested_index": 8,
+          "own_bad_code": 7,
+          "outside": 0,
+          "own_good_code": 261
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.578125,
+              "ci95": [
+                0.46875,
+                0.68359375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.55859375,
+              "ci95": [
+                0.453125,
+                0.66015625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.40625,
+              "ci95": [
+                0.30078125,
+                0.515625
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.1015625,
+              "ci95": [
+                0.046875,
+                0.16796875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.1015625,
+              "ci95": [
+                0.046875,
+                0.16796875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.87109375,
+              "ci95": [
+                0.80078125,
+                0.9296875
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.6796875,
+              "ci95": [
+                0.5703125,
+                0.78515625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.66015625,
+              "ci95": [
+                0.5546875,
+                0.76171875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.3125,
+              "ci95": [
+                0.2109375,
+                0.421875
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.14453125,
+              "ci95": [
+                0.078125,
+                0.21875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.140625,
+              "ci95": [
+                0.07421875,
+                0.21484375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.00390625,
+              "ci95": [
+                0.0,
+                0.01171875
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.828125,
+              "ci95": [
+                0.7578125,
+                0.890625
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.79296875,
+              "ci95": [
+                0.7186523437500001,
+                0.86328125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.765625,
+              "ci95": [
+                0.6875,
+                0.83984375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.20703125,
+              "ci95": [
+                0.13671875,
+                0.2813476562499986
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.17578125,
+              "ci95": [
+                0.109375,
+                0.25
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.17578125,
+              "ci95": [
+                0.109375,
+                0.25
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.796875,
+              "ci95": [
+                0.7265625,
+                0.86328125
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.83203125,
+              "ci95": [
+                0.765625,
+                0.89453125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.80078125,
+              "ci95": [
+                0.734375,
+                0.859375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.03125,
+              "ci95": [
+                0.015625,
+                0.05078125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.16796875,
+              "ci95": [
+                0.10546875,
+                0.234375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.12109375,
+              "ci95": [
+                0.0703125,
+                0.1796875
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.12109375,
+              "ci95": [
+                0.0703125,
+                0.1796875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.8515625,
+              "ci95": [
+                0.79296875,
+                0.90625
+              ],
+              "n_contexts": 32
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 169,
+          "other_word_denominator": 174,
+          "fraction": 0.9712643678160919,
+          "ci95": [
+            0.9473684210526315,
+            0.9936305732484076
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 205,
+          "other_word_denominator": 211,
+          "fraction": 0.9715639810426541,
+          "ci95": [
+            0.9499942922374429,
+            0.9905660377358491
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 241,
+          "other_word_denominator": 248,
+          "fraction": 0.9717741935483871,
+          "ci95": [
+            0.952,
+            0.9880478087649402
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 236,
+          "other_word_denominator": 244,
+          "fraction": 0.9672131147540983,
+          "ci95": [
+            0.9471544715447154,
+            0.9841912794497525
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        }
+      }
+    },
+    "llama_confirmation": {
+      "raw_counts_all_queries": {
+        "00": {
+          "query_requests": 512,
+          "other": 194,
+          "other_rule": 189,
+          "other_requested_index": 5,
+          "own_bad_code": 22,
+          "outside": 0,
+          "own_good_code": 296
+        },
+        "11": {
+          "query_requests": 512,
+          "other": 189,
+          "other_rule": 185,
+          "other_requested_index": 4,
+          "own_bad_code": 17,
+          "outside": 0,
+          "own_good_code": 306
+        },
+        "01": {
+          "query_requests": 512,
+          "other": 218,
+          "other_rule": 210,
+          "other_requested_index": 8,
+          "own_bad_code": 16,
+          "outside": 0,
+          "own_good_code": 278
+        },
+        "10": {
+          "query_requests": 512,
+          "other": 221,
+          "other_rule": 214,
+          "other_requested_index": 7,
+          "own_bad_code": 16,
+          "outside": 0,
+          "own_good_code": 275
+        }
+      },
+      "actor_pair_rates": {
+        "00": {
+          "0": {
+            "other": {
+              "mean": 0.34375,
+              "ci95": [
+                0.23828125,
+                0.45703125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.33203125,
+              "ci95": [
+                0.2265625,
+                0.4415039062499986
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.03125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.02734375,
+              "ci95": [
+                0.01171875,
+                0.046875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.62890625,
+              "ci95": [
+                0.515625,
+                0.734375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4140625,
+              "ci95": [
+                0.3046875,
+                0.5234375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.40625,
+              "ci95": [
+                0.3006835937500001,
+                0.515625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.05859375,
+              "ci95": [
+                0.03125,
+                0.08984375
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.52734375,
+              "ci95": [
+                0.421875,
+                0.63671875
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "11": {
+          "0": {
+            "other": {
+              "mean": 0.30859375,
+              "ci95": [
+                0.21484375,
+                0.40625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.30078125,
+              "ci95": [
+                0.2109375,
+                0.3984375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0078125,
+                0.04296875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.66796875,
+              "ci95": [
+                0.56640625,
+                0.76171875
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4296875,
+              "ci95": [
+                0.3203125,
+                0.5390625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.421875,
+              "ci95": [
+                0.31640625,
+                0.52734375
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.04296875,
+              "ci95": [
+                0.01953125,
+                0.06640625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.52734375,
+              "ci95": [
+                0.421875,
+                0.6328125
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "01": {
+          "0": {
+            "other": {
+              "mean": 0.39453125,
+              "ci95": [
+                0.296875,
+                0.5
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.375,
+              "ci95": [
+                0.27734375,
+                0.48046875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.5859375,
+              "ci95": [
+                0.48046875,
+                0.68359375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.45703125,
+              "ci95": [
+                0.34375,
+                0.5703125
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.4453125,
+              "ci95": [
+                0.3359375,
+                0.5546875
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01171875,
+              "ci95": [
+                0.0,
+                0.02734375
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.04296875,
+              "ci95": [
+                0.01953125,
+                0.06640625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.5,
+              "ci95": [
+                0.390625,
+                0.61328125
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "10": {
+          "0": {
+            "other": {
+              "mean": 0.37109375,
+              "ci95": [
+                0.26953125,
+                0.484375
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.36328125,
+              "ci95": [
+                0.26171875,
+                0.4765625
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.0078125,
+              "ci95": [
+                0.0,
+                0.01953125
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0234375,
+              "ci95": [
+                0.0078125,
+                0.04296875
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.60546875,
+              "ci95": [
+                0.4921875,
+                0.7109375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "1": {
+            "other": {
+              "mean": 0.4921875,
+              "ci95": [
+                0.375,
+                0.6015625
+              ],
+              "n_contexts": 32
+            },
+            "other_rule": {
+              "mean": 0.47265625,
+              "ci95": [
+                0.359375,
+                0.58203125
+              ],
+              "n_contexts": 32
+            },
+            "other_requested_index": {
+              "mean": 0.01953125,
+              "ci95": [
+                0.00390625,
+                0.03515625
+              ],
+              "n_contexts": 32
+            },
+            "own_bad_code": {
+              "mean": 0.0390625,
+              "ci95": [
+                0.01953125,
+                0.0625
+              ],
+              "n_contexts": 32
+            },
+            "outside": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "n_contexts": 32
+            },
+            "own_good_code": {
+              "mean": 0.46875,
+              "ci95": [
+                0.36328125,
+                0.58203125
+              ],
+              "n_contexts": 32
+            }
+          }
+        }
+      },
+      "selected_other_word_rule_agreement": {
+        "00": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 189,
+          "other_word_denominator": 194,
+          "fraction": 0.9742268041237113,
+          "ci95": [
+            0.9465194991522108,
+            0.9949748743718593
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "11": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 185,
+          "other_word_denominator": 189,
+          "fraction": 0.9788359788359788,
+          "ci95": [
+            0.9581151832460733,
+            0.9948717948717949
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "01": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 210,
+          "other_word_denominator": 218,
+          "fraction": 0.963302752293578,
+          "ci95": [
+            0.9398148148148148,
+            0.9826086956521739
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        },
+        "10": {
+          "estimand": "pooled proportion among selected other-source-word outputs; ratio of counts, context-bootstrap not unweighted mean of per-context ratios",
+          "other_rule_numerator": 214,
+          "other_word_denominator": 221,
+          "fraction": 0.9683257918552036,
+          "ci95": [
+            0.9464285714285714,
+            0.9866666666666667
+          ],
+          "bootstrap_zero_denominator_samples": 0,
+          "n_contexts": 32
+        }
+      }
+    }
+  },
+  "total_query_tag_checks": 9216,
+  "author_comparison": {
+    "numeric_items": 600,
+    "max_abs_error": 0,
+    "largest_error_path": "/runs/qwen3_discovery/pair_rates/11/own_bad_code/n_contexts",
+    "missing": [],
+    "errors_over_1e_10": []
+  },
+  "report_rows_checked": 24,
+  "report_numeric_presentations_checked": 360,
+  "posthoc_script_sha256": "6b2a858315af07a4140e543502540e99b5eb7270f0a691feda9436fde1a70ea3",
+  "author_json_sha256": "9870c1c1c74a3b2b992cc73cde116b34c6cf0da770ae49edf8e43329124be997",
+  "author_md_sha256": "6bb4d04db0255b3c0ad8557de8c3aa6fb24409292476dceba9c683f1ca91a522",
+  "status": "FINAL_POST_HOC_6_OF_6",
+  "independent_GPU_rerun": false,
+  "frozen_E126_primary_changed": false,
+  "science_source_changed": false,
+  "method": "Actual argmax tokens and canonical private class indices independently reconstructed from context gold tags previously independently checked against official SST. All raw-derived rates/counts/bootstrap sealed BEFORE author observer JSON/MD; no author truth or interval called.",
+  "scope_notes": [
+    "Origin/opposite only; cross/same private codes coincide and cannot distinguish called-rule-compatible outputs.",
+    "Author rates are unconditional percentages of all16 requests/context, not percentages conditional on selected other-source word. Conditional ratios in diagnostics use pooled counts with context-bootstrap.",
+    "Foreign words compatible with another demonstrated rule do not directly identify internal program execution or binding ID.",
+    "Observed code index is task convention, not words natural semantic equivalence.",
+    "Qwen/Llama own-bad-code costs positive; observer origin contrasts are not both-world primary-mediated fractions.",
+    "All post-hoc; no model/context/pair screening or original primary replacement."
+  ]
+}

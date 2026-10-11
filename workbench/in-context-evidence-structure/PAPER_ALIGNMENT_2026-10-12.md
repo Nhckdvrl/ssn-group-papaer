@@ -111,3 +111,13 @@ E124完整结果已改变候选解释：公共名字在Qwen形成期有独立+4.
 E125公共Source–输出词关系三模型16→32已完成：形成期特异+26.66/+7.71/+8.30pp，直接query期三项未定；错误对应表也有益，不能以字面表路由解释。私人监督历史形成隔离、joint query仍读两缓存，Qwen候选功能代价与M/L来源非对称保留。下一项E126以信息完全等价的表行顺序做私人缓存组合，检验共同上下文兼容性；不是新头/层或prompt优化。 95%CI Q[23.05,30.47]/M[5.08,10.45]/L[6.05,10.84]；正确比交换形成+11.72/+4.39/+5.47pp，但交换表自身全家族收益，不证明照表选择。三家族/all-seed/all-direction与single/instruction/floor/inert/actual层mask保留；[E125](experiments/E125-public-output-schema-coordination.md)、[raw audit](results/e125/independent_review_2026-10-12.md)、各确认analysis/run.json。6批.735239 GPU·时，独立18126数值max0、100800prefix/302400query层调用，9216完整argmax零确认；无独立GPU rerun。
 
 E120–125实际44批1056contexts/515328评分、7.081139 GPU·时、80716独立数值。工作量不是意义的替代指标；新认识是无需私人配对共享，公共关系可在形成期影响独立规则共同使用，而且字面对应不足解释。CTA已拥有跨示例f/Y上下文化、Feng/Mixing已拥有位置/词汇绑定、TRTL已拥有空间/空间内映射；我们的进一步竞争在信息等价情况下这些私人记忆是否自洽可组合。E126不能凭任何方向都写成支持共同ID；正、零、功能损坏各有不同解释，仍保留旧形成阳性。
+
+
+## 11. E126后的整体认识：上下文化不只传递私人监督
+
+E126在public事实/private监督/词集/global位置全部相同时，共同order形成的Source缓存联合使用优于混合：Q/M/L +23.49[20.80,26.07]/+10.40[7.96,13.04]/+5.42[4.00,6.79]pp，private source-only仍强；主要词空间使用，candidate效应小。它补充公共关系形成如何支持独立规则部署，但不识别ID或latent非加性。Q/M两个coherent order有差、margin点负CI0、M A joint低全部保留。 [E126](experiments/E126-equivalent-schema-cache-composition.md)/[完整raw审计](results/e126/independent_review_2026-10-12.md)；6批.627887GPU时、12462数值max0、actual每层图/gold全部过。C21–23 L3/C24L2与formal状态不变。
+
+现在可把旧形成干扰与新构造结果联系起来：完整历史既可能把另一Source的私人关系带入本Source（C21/22），又可能提供两套函数共同使用所需的公开结构（E125/126）。全部cross-source形成删除同时失去不同种类信息，因此它不是选择性保护关联的同义操作。一般binding与cache依赖已有所有权；具体知识增量来自private pairings禁止交换时公共relation经形成改变joint功能，以及信息等价背景下的配对组合对比。E126主要far词空间用法，不能直接泛称所有私人rule选择。E127让两Source完全共用输出词、private code相反，以shared/opposite primary区分仅空间绑定与推断规则使用；这是从实际证据推下一个有不同预测的切口，不是头/层资格门槛。E120–126共50批1200ctx/564864scores、7.709026GPU时、93178独立数值，量仍不替代意义。
+
+
+E126完整后POST-HOC实际argmax显示，错Source词多数与另一Source私人gold相容；不是requested code只换表面词的主要情形。共同背景降低此类输出，但Q/L own-space错误略增，保留局部成本。这个诊断不排除已有两函数经共同mass竞争选择；因此E127在首次评分前引入shared/opposite世界和Source特异/共同输出投影，两词集合相同才使“仅另一词集选择”产生不同预测。四固定模型16→32已在8张空卡执行，未以科学方向筛确认或拓展head/layer。

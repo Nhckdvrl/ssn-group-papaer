@@ -1,6 +1,6 @@
 # E126：等价公共关系下形成的私人规则记忆能否组合？（2026-10-12）
 
-- **状态：** RUNNING；377de6c4首评分前freeze，独立CPU全部通过。
+- **状态：** DONE-CONFIRMATION；3家族16→32完成，独立raw/actual消费审计已封。
 - **类型：** PILOT / CLAIM；不新增研究线、不改变formal状态。
 - **对应：** C23、I04、P17。
 - **问题：** 公共Source–输出关系的信息完全相同时，来源缓存是否仍依赖共同上下文下形成的兼容关系，还是可作为独立私人规则直接组合？
@@ -33,3 +33,10 @@
 **独立pre-score封源：** 科学源ad2c6f7af7ab81966ea1253a80e7006747f3485b182fddd1453ffbb1ceb45975。六批144ctx、1584实际prefix流/1584mask、2304query scope×owner与2304整Source K/V选择全部独立核对，无须修改真值/图；实验已有数值/actual hook待GPU实现验证。独立结论确认后才commit/执行，未用科学分数选条件。
 
 **执行更新：** discovery三家族启动；Qwen首ctx数值8.20e−5、Llama2.48e−5，composition/graph0；三confirmation进程先预加载相同冻结模块，仅等各自pilot第一行通过已有全部数值assert才执行固定seed/materials，未按科学方向选择。辅助/tmp预加载启动器仅解决NFS环境import延迟，不改科学源/参数/读数。
+
+**完整结果：** Q/M/L primary +23.49[20.80,26.07]/+10.40[7.96,13.04]/+5.42[4.00,6.79]pp，所有Actor/private/world均正；主要Source词空间使用，candidate仅+1.12/+.63/+.20pp。own实际约92–97%，平衡coherence0为恒等式。Q/M order11−00负、Q/M margin primary负点CI0与M A联合低全保留。6批144ctx/49536scores/.627887GPU时，12462项独立max0/1584token-mask/49536gold/实际52800prefix+206400query层消费，所有GPU exit0。未识别latent非加性/bindingID/无损规则组合。按决策表正向更新共同背景的joint功能依赖，仍需区分仅词空间使用与同词空间private rule选择；E127已设计0评分。C23补有界证据、等级不改。[报告](../results/e126/report.md)/[审计](../results/e126/independent_review_2026-10-12.md)。
+
+
+### POST-HOC：选错Source词时与哪套规则相容
+
+完整确认后新增既有argmax诊断，未加GPU/改primary，单独文件 `results/e126/posthoc_selected_code.{json,md}` 与 `scripts/posthoc_e126_selected_code.py`。仅origin反向private约定可区分两映射；所有contexts保留。coherent−mixed的“另一来源词且符合该来源私人gold” Q/M/L −23.73[−27.44,−20.02]/−10.06[−12.79,−7.42]/−4.88[−6.64,−3.22]pp。多数other-word错误与另一Source规则相容，不是请求code简单换词输出；输出相容仍不识别内部是否调用该规则。shared输出下能否约束规则选择留给首次评分前冻结E127检验。

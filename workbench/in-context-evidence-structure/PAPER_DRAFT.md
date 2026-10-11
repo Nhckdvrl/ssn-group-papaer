@@ -181,11 +181,33 @@ These improvements have costs and asymmetries. Qwen's true-table candidate accur
 
 *Figure 5. Public source–word-set access with private historical supervision isolated. Solid curves score the actual full-vocabulary output; dashed curves score within the requested source's candidates. Correct and swapped relations both help through formation, but their magnitudes differ.*
 
+### 6.5 Equivalent public facts do not make source caches interchangeable
+
+We next keep every public relation and private demonstration fixed, reversing only the two rows of the correct schema. Private cross-source formation remains blocked, and no query position can read the table. Each ordering therefore supplies the same facts but produces its own pair of source caches. We compose A and B caches formed under a common ordering (00 or 11), or under different orderings (01 or 10), by interchanging all private K/V states at unchanged global positions.
+
+| Model, confirmation n32 | Joint 00 / 11 full accuracy, % | Joint 01 / 10, % | Coherent-minus-mixed, pp [95% CI] |
+|---|---:|---:|---:|
+| Qwen3-8B | 83.98 / 79.88 | 58.50 / 58.40 | 23.49 [20.80, 26.07] |
+| Mistral-7B-v0.3 | 64.45 / 59.18 | 50.98 / 51.86 | 10.40 [7.96, 13.04] |
+| Llama-3.1-8B | 60.35 / 61.82 | 55.66 / 55.66 | 5.42 [4.00, 6.79] |
+
+The paired contrast averages 00 and 11 against 01 and 10, cancelling additive differences in individual-cache quality. Both sources and private directions have positive gains in all three checkpoints. The same caches retain strong source-only performance, although their order-specific scores differ. Their balanced source-only contrast is zero by construction, and serves as an implementation control. Candidate-space gains are much smaller: 1.12, 0.63, and 0.20 points. Thus the principal effect concerns using the requested output space in joint reading, rather than relearning sentiment polarity.
+
+A post-hoc diagnosis restricted to opposite private conventions shows that most wrong-source words agree with that other source’s demonstrated rule. Coherent composition reduces these outputs by 23.73 [20.02, 27.44], 10.06 [7.42, 12.79], and 4.88 [3.22, 6.64] points, respectively. Compatibility with an observed rule does not identify the internal computation, but the errors are poorly described as the requested code merely rendered in another word set.
+
+Shared semantic facts are insufficient to ensure interchangeable source caches at this interface. This is consistent with context-dependent binding and competitive reading; it does not identify binding IDs or nonadditive latent representations. Coherent caches remain imperfect, and ordering 11 performs worse than 00 in Qwen and Mistral. Appendix I reports all orders and controls. Whether the same dependence governs private-rule choice when both sources use identical output words is a separate question.
+
+![Composing equivalent-context source memories](results/figs/fig_equivalent_schema_cache_composition.png)
+
+*Figure 6. Source caches formed under the same public ordering versus a mixture of equivalent orderings. The full-output joint effect greatly exceeds the corresponding candidate-space effect. Source-only curves report actual function performance; their balanced coherence contrast is a design identity.*
+
 ## 7. Related work and positioning
 
 [Cho's ICL circuit](https://arxiv.org/html/2410.04468v3) connects input encoding, merging at labels, retrieval, and bypasses; [task-oriented information removal](https://arxiv.org/abs/2509.21012) establishes a complementary information-selection mechanism. [Contextualize-then-Aggregate](https://arxiv.org/html/2504.00132v2) shows the causal role of cross-demonstration contextualization. [How Few-Shot Examples Add Up](https://arxiv.org/html/2605.16591v2) relates contextualized QK routing and V updates to function-vector composition. We add a source-provenance measurement, output-dependent formation prediction, and prospective functional policies within these frameworks.
 
 [Local task vectors](https://aclanthology.org/2026.findings-acl.314/) and [just-in-time task representations](https://arxiv.org/html/2509.04466v3) establish heterogeneous and temporally localized task information. [Feng and Steinhardt](https://arxiv.org/html/2310.17191v2) identify factorizable binding IDs; [Mixing Mechanisms](https://arxiv.org/html/2510.06182v2) shows coexisting binding/retrieval mechanisms. [Test, then Route](https://arxiv.org/html/2608.04183v1) separates predicate testing from token-dependent routing in explicit rules. Our object is the formation and provenance of relationships inferred from several legitimate sources, rather than a first separation of representations or routing operations.
+
+[Parallel Context Windows](https://aclanthology.org/2023.acl-long.352/) already separates prefix computation and joins its reading, and [CacheBlend](https://arxiv.org/abs/2405.16444) establishes general context dependence of reusable KV states. Section 6.5 instead holds public facts and private global positions fixed, blocks private cross-source formation in every condition, and tests whether source functions formed under equivalent public orderings remain compatible during joint use. This counterfactual does not establish a new binding component or the first failure of independent-cache composition.
 
 [Task recognition/learning analysis](https://arxiv.org/html/2509.24164v2) distinguishes label-space alignment from mappings within it. [Demonstration Conflict](https://arxiv.org/html/2603.04464v1) studies minority corruption; [Jurisdiction](https://arxiv.org/html/2609.27603v1) studies whether contextual rules should override reality-grounded knowledge. Here both source rules are legitimate and share an output space. The distinction in task setup motivates, but does not by itself establish, the causal increment.
 

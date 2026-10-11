@@ -1,6 +1,6 @@
 # E127：共同形成背景影响的是输出空间绑定，还是推断出的私人规则选择？（2026-10-12）
 
-- **状态：** PLANNED，0科学评分；E126六批已完整独立核对，E127八批CPU预检通过，末版观测定义独立复核后冻结执行。
+- **状态：** RUNNING；4b8ee609首评分前冻结，八个固定discovery/confirmation进程启动。
 - **类型：** PILOT / CLAIM。
 - **对应：** C23、I04、P17。
 - **问题（一句话）：** E126缓存兼容效应是否也决定共享同一标签词时该采用哪套私人映射，还是仅影响不同输出词集合的使用？
@@ -27,3 +27,6 @@
 
 ## 结果
 0科学评分。E126全量确认/独立raw已完成。八批真实tokenizer/config CPU审计通过（192 contexts；4224 prefix图；6144 query scope-owner与6144合成选择），随后在首次评分前加入上述既有前向logit观测。末版源码SHA256 cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de，材料builder不变。预评分CPU几何及metadata独立复核后提交freeze，再执行全部四checkpoint固定16→32；不在看到shared结果后改primary。
+
+
+**执行记录：** 独立8/8 CPU真token/config/源核对通过后首评分前4b8ee609冻结cef7952…；fvcrc21 GPU0/1探索Q8/L8、2/3确认，fvcrc20 GPU0/1 M7，fvcrc10 GPU0/1 Q14。确认预加载同一冻结module，仅等待pilot第一context已有数值断言全部通过后执行固定32/127101/validation，不按科学方向选。FP32/eager/单卡独立、无新训练；完整结果与逐context层消费待回齐。

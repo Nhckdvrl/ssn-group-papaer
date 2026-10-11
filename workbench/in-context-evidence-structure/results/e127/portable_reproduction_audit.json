@@ -1,0 +1,42 @@
+{
+  "experiment": "E127",
+  "science_sha256": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "frozen_commit": "4b8ee609",
+  "model": "Llama-3.1-8B",
+  "n": 32,
+  "seed": 127101,
+  "materials": "validation",
+  "public_cache": "/tmp/ices-sst-e124-rebuild",
+  "rebuilt_contexts_sha256": "a77353961220721d8c1ac2086ef5b3fd157d7ba36a81b35f7ad41cca8746008a",
+  "original_contexts_sha256": "a77353961220721d8c1ac2086ef5b3fd157d7ba36a81b35f7ad41cca8746008a",
+  "contexts_byte_identical": true,
+  "scope": "CPU preflight only; public pinned SST rows/portable Arrow; no GPU scores or source edit",
+  "dataset_audit": {
+    "dataset": "SetFit/sst5",
+    "revision": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "splits": {
+      "train": {
+        "rows": 8544,
+        "source_url": "https://huggingface.co/datasets/SetFit/sst5/resolve/e51bdcd8cd3a30da231967c1a249ba59361279a3/train.jsonl",
+        "source_sha256": "46bde4fb5abc93ffbadfa9a9f67de17c08a2f535cfb5756c59188d070434f433",
+        "arrow_sha256": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+        "ordered_rows_match_pinned_source": true
+      },
+      "validation": {
+        "rows": 1101,
+        "source_url": "https://huggingface.co/datasets/SetFit/sst5/resolve/e51bdcd8cd3a30da231967c1a249ba59361279a3/dev.jsonl",
+        "source_sha256": "4369df4d4229e736fa734af49b342c7d6002c4d8514d9c206a5aa26edc620b79",
+        "arrow_sha256": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+        "ordered_rows_match_pinned_source": true
+      },
+      "test": {
+        "rows": 2210,
+        "source_url": "https://huggingface.co/datasets/SetFit/sst5/resolve/e51bdcd8cd3a30da231967c1a249ba59361279a3/test.jsonl",
+        "source_sha256": "1384216112a34f3d70b6fa210762f3399bb080410c0456ac6e54a5cb413f04b2",
+        "arrow_sha256": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf",
+        "ordered_rows_match_pinned_source": true
+      }
+    },
+    "scope": "Portable data cache only; scientific selection, scoring and seeds unchanged."
+  }
+}
