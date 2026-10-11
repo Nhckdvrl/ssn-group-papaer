@@ -1,6 +1,6 @@
 # E97：判断Goal与标准Goal的差别来自测试输入还是答案形式？（2026-10-11）
 
-- **状态：** RUNNING；运行前提交 `9c99f582`，160行三个固定分片已启动。
+- **状态：** DONE-PILOT；160行完整，无筛选/未解析；运行前提交 `9c99f582`。
 - **类型：** PILOT；一次最小Goal比较，不启动新层/头矩阵。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 同一来源的标准能被推断并用于新判断，为何直接私人判断仍弱？
@@ -42,6 +42,10 @@ Bool下降不自动归因output indexing：Goal形式、predicate计算、答案
 - **算力预算：** 三个单卡分片独立，完整原8行batch按索引分配，总≤1 GPU·时；不训练，全部结果保留。
 - **资产：** `scripts/e97_goal_comparison.py`；`results/e97/qwen35_part{0,1,2}`，raw本地，小run/audit/analysis入git。
 
-## 结果（以后追加）
+## 结果与决策
 
-三个固定分片正在运行；无模型结果，正式状态与主张等级不变。
+`results/e97/{analysis,completeness_audit}.json`：160/160正确，32 name+review、32 bool无review、64 bool+review、32 given-bool各全对。p_A/p_B翻转影响均0；c翻转与双世界都正确均100%。121初始截断全部续完，0仍截断/未知；总.778 GPU·时。n=2的context bootstrap为退化[100,100]，仅描述这批探索材料，不是总体能力置信界。
+
+按冻结决策走最后一行：停止Source范围、review出现与yes/no形式控制。现在应解释私人判断怎样调用标准推断，而非继续要求旧模型失败。与E95私人mixed19/32形成有界功能差别；E97的`Unlabelled new review:`与E95的`Review:`并非逐token相同，不能声称整个query prefix已固定。共同header+demos在Goal前相同，不同Goal不会逆向改变这些已形成状态。
+
+独立agent检查发现analyzer报告变量被子循环覆盖、JSON list与内存tuple比较报错；合并前修正这两项序列化/报告问题，科学引擎与读数未变。160唯一键、20原batch、gold/predicate/自推criterion均核对。主张仍L1；下一步只做一个无teacher缓存的内部功能运输接口。

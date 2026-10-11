@@ -475,3 +475,11 @@ E93 strong direct4context：B自身98.4%、明确A criterion oracle100%，A mixe
 把模型自己在E95推断的criterion放到demos之后、未来review之前，不给p_A，Full同材料mixed53.1%→93.75%[87.5,100]，配对+40.6[31.3,50.0]点。物理删除B/C后，Own+self与inverse对各自合法cue函数都87.5% mixed、93.75%整体，concordant私人偏好全部正确。Teacher的地址和当前query答案不存在，未来review也未用于标准提取；这是仅criterion内容能约束私人判断的功能接口，未证明默认latent已形成/已部署，也不是新text方法。
 
 现在更清楚的问题是：**模型能对同一来源推断评判标准，也能在标准明确时用自己的例子决定私人映射，为什么原判断Goal没有稳定把它们结合？** 新结果保留Goal/输入/输出格式三个候选因素，下一次以等价标准问题的格式和是否出现review来分叉；不是再扩大Scope提示或label/head矩阵。近邻已有representation/deployment和Goal范围的宽认识，具体增量还需落在这两个计算过程如何不同、如何组合的因果解释上。
+
+## 21. E97后：标准推断的功能阳性完整，转向内部可组合内容
+
+160/160标准问题正确，review有无、food/service命名或yes/no predicate均成功，私人偏好flip不改变回答；121初始截断全部续完，0未知，.778 GPU·时。按预先分支停止这些格式控制。这里只是原2ctx探索，不能用[100,100] bootstrap当总体能力界，也不把私人Goal称为默认已形成criterion却不用。
+
+现在有清楚的最小功能链：Source分组提供共同标准 → 模型可主动推断标准 → 标准文字可约束只有A自己的示例的新判断。E90/E91仍解释Source位置与历史信息来源为何不能混同；E95–E97将合法共享与私人映射区分开。下一项应检验内部运输究竟带来接收者偏好×donor标准、donor整套私人函数，还是上一答偏置。接收者必须从Own原文重算；Qwen3.5的linear recurrent/conv cache也含历史，不能仅删除attention KV便说teacher缺席。
+
+这不是把宽泛任务向量/表示部署重新命名成novelty。Hong的type-corrected interchange、JIT的跨位置迁移和Mixing的删解引用对象是已知方法依据；具体待解释对象是从私人示例推断的共同标准能否与另一套私人映射组合。先固定一个完整载体接口并做功能阳性，不挑最佳层/alpha；构造性成功之后才追原生形成与调用。

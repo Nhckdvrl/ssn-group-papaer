@@ -11,10 +11,11 @@ def main():
         q=p/f'qwen35_part{i}'; run=json.loads((q/'run.json').read_text()); runs.append(run)
         rr=[json.loads(s) for s in (q/'behavior.jsonl').read_text().splitlines()]
         assert len(rr)==run['n_rows']; rows+=rr; batches+=run['batch_indices']
-    lut={key(r):r for r in rows}; assert len(lut)==len(rows)==160
-    assert set(lut)==set(expected) and sorted(batches)==list(range(20))
-    for k,r in lut.items():
-        assert all(r[f]==expected[k][f] for f in ('gold','labels','kind','query','asked','self_criterion'))
+    all_lut={key(r):r for r in rows}; assert len(all_lut)==len(rows)==160
+    assert set(all_lut)==set(expected) and sorted(batches)==list(range(20))
+    for k,r in all_lut.items():
+        assert all(r[f]==expected[k][f] for f in ('gold','kind','query','asked','self_criterion'))
+        assert tuple(r['labels'])==tuple(expected[k]['labels'])
     order={k:i for i,k in enumerate(expected)}; rows.sort(key=lambda r:order[key(r)])
     (p/'behavior_merged.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
     analysis=analyze(rows)
@@ -34,7 +35,7 @@ def main():
         analysis['invariance'][kind]['criterion_flip']=estimate([v[0] for v in vals])
         analysis['invariance'][kind]['criterion_pair_both_correct']=estimate([v[1] for v in vals])
     (p/'analysis.json').write_text(json.dumps(analysis,indent=2)+'\n')
-    audit={'n_rows':len(rows),'unique_keys':len(lut),'all_frozen_records_retained':True,'all_batches_covered':True,
+    audit={'n_rows':len(rows),'unique_keys':len(all_lut),'all_frozen_records_retained':True,'all_batches_covered':True,
         'initial_censored':sum(r['score']['initial_censored'] for r in rows),'still_censored':sum(r['score']['still_censored'] for r in rows),
         'unresolved':sum(not r['score']['valid'] for r in rows),'gpu_hours':sum(r['gpu_hours'] for r in runs),
         'source_script_sha256':runs[0]['script_sha256'],'analyzer_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

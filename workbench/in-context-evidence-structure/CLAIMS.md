@@ -163,3 +163,9 @@ Source正确位置读取不蕴含Source信息的功能独立，准确率高也�
 [E91](experiments/E91-label-namespace-and-inherited-rule.md)、`results/e91/qwen3_{discovery,confirmation}/{analysis,run,preflight}.json`：24→48新contexts，同脚本SHA45d2f946…；A全部raw token与输出词表固定，只改B编码。query所有位置禁止读取B时，rule影响幅度shared .68334→far .19266，配对下降.49068[.34106,.64469]nats；只改A缓存K、固定全部cached V，下降.22772[.09473,.36098]；V-only下降.24758[.10033,.40605]。两单项均不能复现far；K/V全换精确复现far是数值对照，max误差1.72e−5。A-only B-rule翻转改变答案率22.4%→7.3%，accuracy差CI跨0。
 
 支持B的标签编码影响A历史K/V与后续读取；纯直接foreign词的Value投影不是完整充分解释。保留E48直接DLA、E85冻结预测。一般上下文化/QK-V区分已有文献，未定位完整criterion或唯一子空间；Key作用含access与活query状态，跨Source影响不自动视为不合理。当前一个family/受控rule/原test池，执行者自查不算独立科研校对；无L2/L3升级或开关线。
+
+### E95–E97：共享标准的功能链（探索，不升级C16/C20）
+
+[E95](experiments/E95-source-grouping-and-common-criterion.md)、[E96](experiments/E96-criterion-scope-and-functional-mediation.md)、[E97](experiments/E97-criterion-inference-input-and-answer-code.md)，对应results/e95、e96、e97的analysis/completeness_audit：原2ctxthinking标准16/16、A mixed19/32；仅传自推criterion，删除B/C后Own mixed87.5%且concordant私人偏好100%；新160个标准Goal全部正确，p_A/p_B影响0、c翻转100%。支持标准信息可在不同功能请求中推断、通过文字约束新私人判断；不支持默认私人过程已有同一latent或已识别独立原生criterion模块。
+
+n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只有16，bootstrap单位为context而非重复行。E95材料A块均在foreign之后；E97 review字段与私人Goal不同，不声称token相同的query机制比较。独立agent审计核对数字与边界；仍未做独立新材料的机制确认。
