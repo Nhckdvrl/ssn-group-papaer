@@ -1,0 +1,159 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e125/qwen3_discovery_preflight",
+    "n": 16,
+    "seed": 125001,
+    "materials": "discovery",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "conditions": 63,
+  "queries": 8,
+  "source_names": [
+    "Alex",
+    "Sam"
+  ],
+  "true_roster": [
+    "Alex",
+    "Sam"
+  ],
+  "unrelated_roster_by_context": [
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ],
+    [
+      "Kim",
+      "Lee"
+    ]
+  ],
+  "matched_roster_token_count": true,
+  "roster_contains_private_input_label_pairings": false,
+  "roster_contains_output_words": true,
+  "public_HEAD_precedes_roster": true,
+  "source_ownership_roles": {
+    "public_HEAD": -1,
+    "roster": -2,
+    "A": 0,
+    "B": 1
+  },
+  "word_ids": [
+    [
+      902,
+      9834
+    ],
+    [
+      1494,
+      5181
+    ]
+  ],
+  "material_builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 0,
+    "query_split": "validation",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 43,
+    "demo_pool_sizes": [
+      639,
+      511
+    ],
+    "query_pool_sizes": [
+      165,
+      137
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "prefix_lengths": [
+    606,
+    503,
+    650,
+    504,
+    576,
+    599,
+    464,
+    649,
+    620,
+    671,
+    544,
+    494,
+    640,
+    728,
+    635,
+    666
+  ],
+  "scope": "source-to-output schemas shared before private supervision; same criterion, private conventions, global original positions"
+}

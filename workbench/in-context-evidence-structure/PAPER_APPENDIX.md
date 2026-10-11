@@ -203,3 +203,29 @@ Qwen's formation identity gain is positive for A and B and both private directio
 ![Shared identities at formation and reading](results/figs/fig_source_identity_coordination.png)
 
 Three checkpoints each execute 16 discovery and 32 confirmation contexts, changing Alex/Sam to Robin/Jordan in confirmation. The 54,144 scores undergo [independent numerical, token and graph review](results/e124/independent_review_2026-10-12.md); 11,742 numerical comparisons match exactly. Whole-query mask consumption is checked in every layer. Independent review is not an independent GPU rerun. The names-only public context is not a full entity–attribute binding construction, and its partial/negative effects do not refute all binding mechanisms.
+
+
+## H. Public output schemas and private rule composition
+
+E125 keeps private cross-source demonstration access blocked at every layer. The public table precedes all supervision and specifies only source-to-word sets, not input–label pairs, criterion, or private polarity. F controls all demonstration access; R controls direct access by every query token. Generic HEAD tokens precede the table, preventing a later public relay. True, unrelated-name, and swapped-relation tables have matched lengths and unchanged private token positions. Query reading otherwise sees both source caches. This is explicit relational supervision, not fully unsupervised coordination.
+
+The primary difference-in-differences compares true and unrelated formation-only or reading-only gains. All three tables share identical relevant states and full-output argmax under F0R0. Below, confidence intervals are 10,000 context-bootstrap intervals; contexts, rather than individual queries, are the sampling units.
+
+| Model / phase | Formation true−unrelated, pp | Reading true−unrelated, pp | Formation true−swapped, pp | Swapped formation gain, pp |
+|---|---:|---:|---:|---:|
+| Qwen3-8B / discovery | 20.31 [16.99, 23.83] | 0.39 [-0.39, 1.17] | 10.16 [7.03, 12.89] | 9.96 [6.25, 13.87] |
+| Mistral-7B-v0.3 / discovery | 10.94 [6.25, 16.60] | 0.20 [-0.98, 1.37] | 6.05 [2.34, 10.16] | 6.64 [3.71, 10.35] |
+| Llama-3.1-8B / discovery | 8.98 [5.08, 12.70] | 0.00 [-0.59, 0.59] | 12.50 [8.79, 16.80] | 0.20 [-2.54, 2.54] |
+| Qwen3-8B / confirmation | 26.66 [23.05, 30.47] | 0.78 [-0.29, 1.95] | 11.72 [7.91, 15.72] | 16.99 [13.77, 20.31] |
+| Mistral-7B-v0.3 / confirmation | 7.71 [5.08, 10.45] | 0.10 [-0.29, 0.49] | 4.39 [2.15, 6.74] | 6.05 [4.10, 8.11] |
+| Llama-3.1-8B / confirmation | 8.30 [6.05, 10.84] | 0.29 [-0.20, 0.78] | 5.47 [2.44, 8.59] | 2.64 [0.10, 5.08] |
+
+| Model, confirmation n32 | True F0R0 full / candidates, % | True F1R0 full / candidates, % | Formation identity gain A / B, pp | Swapped other-word change, pp |
+|---|---:|---:|---:|---:|
+| Qwen3-8B | 51.27/95.12 | 79.98/91.31 | 29.88 [23.05, 36.72] / 23.44 [17.97, 29.69] | -18.75 [-21.78, -15.92] |
+| Mistral-7B-v0.3 | 50.00/91.02 | 60.45/95.70 | 4.49 [-0.20, 9.38] / 10.94 [7.42, 14.45] | -4.79 [-6.74, -2.93] |
+| Llama-3.1-8B | 53.22/94.24 | 61.33/95.12 | 0.20 [-5.27, 5.66] / 16.41 [10.35, 23.05] | -3.22 [-5.47, -0.98] |
+
+A correct schema helps more than its swapped counterpart, but the swapped schema also improves actual full-output accuracy and reduces other-source outputs in every model. Therefore a positive true−swapped contrast does not establish active wrong-space routing. Qwen’s true formation operation costs 3.81 [1.86, 5.66] candidate-accuracy points; Mistral and Llama have uncertain A-specific identity gains. All private directions, A/B/world readouts, single functions, instructions, signed/absolute B-convention effects, and F×R interactions are retained in the [complete report](results/e125/report.md) and per-run analysis files. A shared schema is not a lossless or universally sufficient composition method.
+
+The frozen scientific source is `75f7566582cbaf7cf80dd130b409b32436df281a262884d8db381991437612b9` (preregistered commit a0a79918). Six runs include 144 contexts and 72,576 scores, recording 0.735239 GPU hours. The [independent audit](results/e125/independent_review_2026-10-12.md) reconstructs 18,126 raw numerical entries with maximum error zero, actual tokenizer geometry, golds, 100,800 prefix and 302,400 query layer-mask calls, and 9,216 inert-table full-output comparisons. This is independent analysis rather than an independent GPU rerun. Fresh confirmation contexts and names do not constitute an entirely new benchmark.

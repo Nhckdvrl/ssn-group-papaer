@@ -127,3 +127,6 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 ```
 
 沿用上表模型revision/conda/FP32/eager，不更改冻结builder。全部6批完整后`report_e124_identity_coordination.py`重建小报告/图并检查完整行数、预检上下文byte相等、47query与17prefix全层实际mask消费。不对已有out重写，raw JSONL留共享资产路径，不进git。
+
+
+E125同portable入口`--experiment e125`，科学源`e125_public_output_schema_coordination.py`；n16/125001→n32/125101(确认validation)，63×8/context，Source→词集合的真实/无关/交换公共表×F/R。公开表提供关系监督，未提供私人评论–标签配对。科学SHA75f7566582cbaf7cf80dd130b409b32436df281a262884d8db381991437612b9首评分前a0a79918冻结。全部6批完整后`report_e125_schema_coordination.py`重建汇总/图并检查21prefix/63whole-query各层消费；同revision/FP32/eager，无训练或层/head搜索。

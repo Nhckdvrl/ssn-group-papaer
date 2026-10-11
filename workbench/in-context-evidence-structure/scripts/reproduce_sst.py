@@ -1,4 +1,4 @@
-"""Download the pinned SST rows and run E121/E123/E124 with a portable cache.
+"""Download the pinned SST rows and run E121/E123/E124/E125 with a portable cache.
 
 Frozen scientific modules remain unchanged. Cache bytes can differ with the
 Arrow writer version, but text/labels/order are checked against pinned JSONL.
@@ -56,7 +56,7 @@ def prepare(cache):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--cache-dir', type=Path, required=True)
-    ap.add_argument('--experiment', choices=['e121', 'e123', 'e124'])
+    ap.add_argument('--experiment', choices=['e121', 'e123', 'e124', 'e125'])
     args, remaining = ap.parse_known_args()
     cache = args.cache_dir.expanduser().resolve()
     result = prepare(cache)
@@ -68,7 +68,8 @@ def main():
     materials.CACHE = cache
     module = importlib.import_module({'e121': 'e121_natural_sentiment_mechanism',
                                       'e123': 'e123_natural_source_function_policy',
-                                      'e124': 'e124_source_identity_coordination'}[args.experiment])
+                                      'e124': 'e124_source_identity_coordination',
+                                      'e125': 'e125_public_output_schema_coordination'}[args.experiment])
     sys.argv = [module.__file__] + remaining
     module.main()
 

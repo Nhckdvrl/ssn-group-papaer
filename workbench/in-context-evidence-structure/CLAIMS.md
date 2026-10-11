@@ -303,3 +303,8 @@ query-only与targeted优劣依模型/任务而变；same约定不保证受益。
 ### 2026-10-12：E124身份共同上下文的形成/读取功能
 
 [C23补充E124](experiments/E124-source-identity-coordination.md)：私有监督完全互不可达、公共无标签名单F/R交叉。Qwen完整输出形成身份特异+4.59[2.73,6.64]pp，A/B与私人方向均正，candidate差+.10CI0；Mistral−1.07[−2.05,−.20]，Llama−.68[−1.95,.49]。提供不交换私人监督的部分形成期身份作用及家族边界，不推广统一修复或识别新binding ID。完整6批144ctx/54144scores，独立11742项max0/实际消费与可达图审计，证据results/e124/*_confirmation/{analysis,run,preflight}.json、[audit](results/e124/independent_review_2026-10-12.md)。C21–23有界L3、C24L2与formal状态不变；E125只检验共享Source词空间的更明确关系，不以它成功为原主张新资格。
+
+
+### E125公共关系的形成作用，C23构造性补充
+
+E125公共Source–输出词关系三模型16→32已完成：形成期特异+26.66/+7.71/+8.30pp，直接query期三项未定；错误对应表也有益，不能以字面表路由解释。私人监督历史形成隔离、joint query仍读两缓存，Qwen候选功能代价与M/L来源非对称保留。下一项E126以信息完全等价的表行顺序做私人缓存组合，检验共同上下文兼容性；不是新头/层或prompt优化。 95%CI Q[23.05,30.47]/M[5.08,10.45]/L[6.05,10.84]；正确比交换形成+11.72/+4.39/+5.47pp，但交换表自身全家族收益，不证明照表选择。三家族/all-seed/all-direction与single/instruction/floor/inert/actual层mask保留；[E125](experiments/E125-public-output-schema-coordination.md)、[raw audit](results/e125/independent_review_2026-10-12.md)、各确认analysis/run.json。6批.735239 GPU·时，独立18126数值max0、100800prefix/302400query层调用，9216完整argmax零确认；无独立GPU rerun。

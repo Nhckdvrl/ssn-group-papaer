@@ -3,7 +3,7 @@
 **2026-10-12当前认识：** Source条件读取作用于历史形成的证据；共享输出改变其它来源的关联如何进入本来源证据。冻结形成预测、原生操作、固定词关联与整体功能政策已接成证据链。E122双方面独立确认中，选择性答案形成政策四模型平均收益2.8–7.4点，全部来源形成隔离更差；query-only与一致/冲突情形有不同后果。见[当前综合](RESEARCH_SYNTHESIS_2026-10-10.md)、[机制概览](results/figs/fig_source_evidence_overview.png)、[英文主文](PAPER_DRAFT.md)、[技术附录](PAPER_APPENDIX.md)。
 ## 状态
 - **2026-10-12整篇对齐：** E120/E121/E122各四模型16→32完成；主文围绕三项认识重组，284数值呈现与原始证据独立核对。C21–23有界L3、C24有界L2；C22/23升级基于受控与真实SST直接实验、混杂审计和独立复算。E123四模型16→32完成，真实共享输出平均+7.32/+5.37/+9.47/+7.42点，两Actor均正；far完整输出错误、词先验和headroom保留，22,824项独立复算封版；[最终主文审阅](results/e123/manuscript_claim_audit_2026-10-12.md)核304个新数值呈现，未发现保留三项主张必须补实验的缺项。
-- **E124继续推进：** 公共无标签身份在私有监督独立时的阶段反事实三模型16→32完成；Qwen形成身份特异+4.59[2.73,6.64]pp，Mistral负/Llama未定。见[完整结果](results/e124/report.md)/[独立11742项复算](results/e124/independent_review_2026-10-12.md)。进一步回到“哪些信息应共享”的自然问题，E125准备Source–输出词空间共享，整体目标仍继续。
+- **E124继续推进：** 公共无标签身份在私有监督独立时的阶段反事实三模型16→32完成；Qwen形成身份特异+4.59[2.73,6.64]pp，Mistral负/Llama未定。见[完整结果](results/e124/report.md)/[独立11742项复算](results/e124/independent_review_2026-10-12.md)。进一步回到“哪些信息应共享”的自然问题；E125公共Source–输出词关系三模型16→32已完成：形成期特异+26.66/+7.71/+8.30pp，直接query期三项未定；错误对应表也有益，不能以字面表路由解释。私人监督历史形成隔离、joint query仍读两缓存，Qwen候选功能代价与M/L来源非对称保留。下一项E126以信息完全等价的表行顺序做私人缓存组合，检验共同上下文兼容性；不是新头/层或prompt优化。
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
 - **当前综合判断（2026-10-12）：** 先读[综合](RESEARCH_SYNTHESIS_2026-10-10.md)前言和§36–37、[整篇对齐](PAPER_ALIGNMENT_2026-10-12.md)、[主文证据审计](results/e122/manuscript_claim_audit_2026-10-12.md)。早期E115–119与本轮E120–122分别封版；标题可修改，正式candidate状态未改。历史摘要如下，不将当时下一步重复执行。
 - **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
@@ -136,3 +136,5 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 - **E120–E123资产与复现：** 四项共32批768contexts/388608评分，小run/preflight/analysis/audit、5组科学PNG/PDF和源码入git；raw JSONL在本workbench共享`results/e120/`至`e123/`。从[脚本说明](scripts/README.md)按冻结seed/revision重建，SST公共pinnedJSONL用`scripts/reproduce_sst.py --cache-dir <新路径>`下载/核SHA，原science不改；[portable审计](results/e123/portable_reproduction_audit.json)验证三Arrow和Llama32上下文byte-identical。conda/FP32/eager，无新训练checkpoint。
 
 - **E124资产：** 6批144contexts/54144scores，raw contexts/behavior JSONL在上述NFS `results/e124/`；小analysis/run/preflight、独立审计、科学源和PNG/PDF入git。首评分前f9b9b31c/ea65caf59…，固定seed124001/124101，3checkpoint同revision/conda；portable SST入口支持e124且Llama32新名字contexts byte-identical，详见[脚本说明](scripts/README.md)。
+
+- **E125资产：** 6批144ctx/72576scores，raw `results/e125/*/{contexts,behavior}.jsonl`只留NFS；小报告/metadata/独立审计与科学源码入git，75f756…/a0a79918首评分前freeze。复现入口支持e125且Llama32官方新别名contexts byte-identical。
