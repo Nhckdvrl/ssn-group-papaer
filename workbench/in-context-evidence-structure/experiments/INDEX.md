@@ -133,3 +133,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E121](E121-natural-sentiment-mechanism.md) | 真实SST文本有能力阳性的同一形成机制 | DONE-CONFIRMATION；四checkpoint各16→32、private两方向能力明确，KV rule r .931/.948/.930/.966；数据/raw审计封版 |
 | [E122](E122-source-preserving-formation.md) | 保留一般上下文化、两个Source各自规则共同使用 | DONE-CONFIRMATION；四checkpoint平均+2.93/+3.42/+7.37/+2.78pp，query模型差/一致gold成本与single能力完整保留；独立raw/稿件封版 |
 | [E123](E123-natural-source-function-policy.md) | 真实SST source函数政策与output namespace竞争 | DONE-CONFIRMATION；四模型16→32、shared平均+7.32/+5.37/+9.47/+7.42pp，两Actor均正；far完整输出代价/先验与headroom保留，独立22824项封版 |
+
+| [E124](E124-source-identity-coordination.md) | 私人监督独立时公共身份信息在形成/读取期的作用 | PLANNED；6项CPU通过，3模型16→32固定；F/R真实vs无关名单、完整词表primary，首评分前冻结 |
