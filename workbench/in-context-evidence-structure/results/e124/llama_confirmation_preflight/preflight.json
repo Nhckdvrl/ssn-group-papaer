@@ -1,0 +1,112 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Llama-3.1-8B",
+    "out": "results/e124/llama_confirmation_preflight",
+    "n": 32,
+    "seed": 124101,
+    "materials": "validation",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "conditions": 47,
+  "queries": 8,
+  "source_names": [
+    "Robin",
+    "Jordan"
+  ],
+  "true_roster": [
+    "Jordan",
+    "Robin"
+  ],
+  "unrelated_roster": [
+    "Kim",
+    "Lee"
+  ],
+  "matched_roster_token_count": true,
+  "roster_contains_supervision": false,
+  "public_HEAD_precedes_roster": true,
+  "source_ownership_roles": {
+    "public_HEAD": -1,
+    "roster": -2,
+    "A": 0,
+    "B": 1
+  },
+  "word_ids": [
+    [
+      912,
+      10035
+    ],
+    [
+      1522,
+      5292
+    ]
+  ],
+  "material_builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 1,
+    "query_split": "test",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 42,
+    "demo_pool_sizes": [
+      624,
+      560
+    ],
+    "query_pool_sizes": [
+      396,
+      276
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "prefix_lengths": [
+    571,
+    547,
+    589,
+    590,
+    595,
+    565,
+    571,
+    471,
+    625,
+    579,
+    684,
+    707,
+    632,
+    704,
+    680,
+    501,
+    508,
+    546,
+    614,
+    673,
+    520,
+    492,
+    530,
+    553,
+    691,
+    451,
+    657,
+    507,
+    625,
+    670,
+    696,
+    600
+  ],
+  "scope": "source identities shared before private supervision; same criterion, private conventions, global original positions"
+}

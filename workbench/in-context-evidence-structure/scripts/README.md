@@ -115,3 +115,15 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 ```
 
 将python/model路径换成自己的已安装环境/缓存；下载revision不变。不要写入既有正式`--out`。仅需CPU数据重建时省略`--experiment`。完整后运行`e120_e121_report.py`、`e122_wave_report.py`和`e123_wave_report.py`重建小报告/图；报告同时披露指定candidate词表和full-vocabulary argmax，不改primary。作图使用matplotlib，原始行为/contexts JSONL不进git，科学source与报告source分开。
+
+
+## E124：共享身份信息的形成/读取反事实
+
+科学入口`e124_source_identity_coordination.py`，3模型(Qwen8/Mistral/Llama)全部16/124001→32/124101，确认`--materials validation`且Source姓名改Robin/Jordan。47条件×8/context，完整词表primary、候选分数/私人方向均保存。所有private监督跨Source形成禁读，F/R只改变无标签名单可达阶段；原position不复用。首评分前科学SHA ea65caf59d2b69ef5c14803fd1edbd7b227ad3813d2b4fa261c001faaaaea727。
+
+```bash
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/reproduce_sst.py --cache-dir /tmp/ices-sst-rebuild --experiment e124 --model /tmp/ices_models/Llama-3.1-8B --out results/rebuild_e124_llama --n 32 --seed 124101 --materials validation --preflight-only
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/reproduce_sst.py --cache-dir /tmp/ices-sst-rebuild --experiment e124 --model /tmp/ices_models/Llama-3.1-8B --out results/rebuild_e124_llama_scored --n 32 --seed 124101 --materials validation
+```
+
+沿用上表模型revision/conda/FP32/eager，不更改冻结builder。全部6批完整后`report_e124_identity_coordination.py`重建小报告/图并检查完整行数、预检上下文byte相等、47query与17prefix全层实际mask消费。不对已有out重写，raw JSONL留共享资产路径，不进git。

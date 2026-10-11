@@ -184,3 +184,22 @@ The private positive/inverted halves, actual full-vocabulary controls, all one-s
 The observer is the absolute context mean of the A-gold-oriented half contrast between B conventions, computed in A’s fixed output space. It is not attention-based source ranking. Signed and matched within-class movement remain alongside it.
 
 E123 freezes the scientific source at91374879 before the first score. Four checkpoints each execute discovery16 and confirmation32, totaling192contexts/130560scores. Scientific inputs, masks, full-output tokens, and small report data are independently checked; see [E123](experiments/E123-natural-source-function-policy.md) and its [raw audit](results/e123/independent_review_2026-10-12.md). The pinned SST downloader reproduces all three Arrow files and the Llama32 confirmation contexts byte-for-byte in the recorded environment, without modifying the frozen scientific modules.
+
+
+## G. Shared identities and independent private supervision
+
+E124 isolates both sources' private demonstration histories at every layer, retains original global positions, and places a public names-only list after the generic header but before all supervision. F controls demonstration access to the list; R controls every query position's direct access. All generic public tokens precede the list, preventing an indirect public relay when F is off. No output words, criterion or private convention are provided. True and unrelated lists have equal token length; numerical cache and full-output no-ops establish their complete invisibility under F0R0.
+
+The primary is full-vocabulary accuracy, averaged uniformly over worlds, sources, and eight queries within each context. Identity-specific formation gain is [true F1R0−true F0R0]−[unrelated F1R0−unrelated F0R0]; reading gain substitutes F0R1. It is not a comparison to the shorter no-list prefix.
+
+| Model, n32 | Formation identity gain, pp | Reading identity gain, pp | true F0R0 full/candidate, % | true F1R0 full/candidate, % |
+|---|---:|---:|---:|---:|
+| Qwen3-8B | 4.59 [2.73, 6.64] | 0.29 [-0.78, 1.46] | 52.73/93.16 | 58.98/93.65 |
+| Mistral-7B-v0.3 | -1.07 [-2.05, -0.20] | 0.49 [0.10, 0.98] | 53.32/91.41 | 52.83/92.97 |
+| Llama-3.1-8B | -0.68 [-1.95, 0.49] | -0.20 [-0.88, 0.39] | 53.22/93.95 | 54.59/93.95 |
+
+Qwen's formation identity gain is positive for A and B and both private directions. Mistral's true formation-only operation has opposite effects on A and B; Llama's positive candidate identity contrast does not transfer to the full-output primary. Mistral's reading identity contrast is positive but small. All 47 conditions, instructions, single-source functions, private directions, signed/absolute B-convention responses, and F×R contrasts are retained in [the complete report](results/e124/report.md) and its summaries. There is no equivalence conclusion from a confidence interval crossing zero.
+
+![Shared identities at formation and reading](results/figs/fig_source_identity_coordination.png)
+
+Three checkpoints each execute 16 discovery and 32 confirmation contexts, changing Alex/Sam to Robin/Jordan in confirmation. The 54,144 scores undergo [independent numerical, token and graph review](results/e124/independent_review_2026-10-12.md); 11,742 numerical comparisons match exactly. Whole-query mask consumption is checked in every layer. Independent review is not an independent GPU rerun. The names-only public context is not a full entity–attribute binding construction, and its partial/negative effects do not refute all binding mechanisms.

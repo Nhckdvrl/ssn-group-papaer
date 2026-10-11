@@ -1,6 +1,6 @@
 # E124：私人规则独立形成时，共同身份上下文作用于形成还是读取？（2026-10-12）
 
-- **状态：** PLANNED；全部科学评分前。
+- **状态：** DONE-CONFIRMATION；三checkpoint全部16→32，完整raw独立校对。
 - **类型：** PILOT / CLAIM；由E123整体功能反例检验新的协调解释，不作为旧C21–23的必过门槛。
 - **对应：** C23、I04、P17。
 - **问题（一句话）：** 不共享任何私人监督、仅共享无标签的来源姓名列表，是否足以帮助两套独立形成的规则共同使用，且作用是在形成期还是query读取期？
@@ -28,3 +28,18 @@
 全部6项CPU材料预检通过（3checkpoint各16/32ctx）：token长度/角色/公共列表无监督/确认别名一致。首评分前科学源SHA256 `ea65caf59d2b69ef5c14803fd1edbd7b227ad3813d2b4fa261c001faaaaea727`；材料builder沿冻结 `f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec`。实际query全层mask消费hook在评分前加入，与原图/读数相同。预检退出均0；旧ResourceTracker退出stderr原样保留，不作为科学数值。
 
 GPU结果尚未生成。
+
+
+### 冻结确认与实际更新
+
+| 模型n32 | 形成-only身份特异full增益pp | 读取-only身份特异full增益pp | true F0R0→F1R0 full% |
+|---|---:|---:|---:|
+| Qwen3-8B | 4.59 [2.73, 6.64] | 0.29 [-0.78, 1.46] | 52.73→58.98 |
+| Mistral-7B-v0.3 | -1.07 [-2.05, -0.20] | 0.49 [0.10, 0.98] | 53.32→52.83 |
+| Llama-3.1-8B | -0.68 [-1.95, 0.49] | -0.20 [-0.88, 0.39] | 53.22→54.59 |
+
+Qwen形成期的身份特异收益A+3.71[.20,7.42]/B+5.47[2.73,8.59]pp，same/opposite和私人方向均确认；candidate特异差+.10CI跨零，Source词率与full同增。Mistral方向相反且true形成A−5.66/B+4.69pp；Llama candidate特异差+.78[.20,1.46]但full未改善。不是统一形成修复、也不是完全无身份作用。名字列表仅有界地帮助Qwen formation，不足以让三家族独立函数共同正确输出；该结果不否定完整binding机制、不影响旧C21–23等级。
+
+6批144contexts/54144scores，.564224 GPU·时。独立11742数值复算max0、1872实际token流/2448mask/54144gold，81600 prefix和225600 query层调用，4608 F0R0 argmax对比全同；floor≤1.53e−5，inert/graph0。未独立GPU重跑。全Actor/private方向/同反约定/47条件/halfresponse/图见[报告](../results/e124/report.md)、[summary](../results/e124/summary.json)、[独立审计](../results/e124/independent_review_2026-10-12.md)。首评分前commit f9b9b31c，scienceSHA未改。
+
+**下一步与问题连接：** 名字存在不等于Source–输出关系。有限E125进一步检验公开词空间绑定在形成/读取阶段的作用，不提供私人配对、不变层/头/strength；不为了把4.59推到80%追一串名单模板。

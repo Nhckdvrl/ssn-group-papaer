@@ -161,6 +161,12 @@ Mistral also loses 1.27 [0.20, 2.44] full-vocabulary points under selective form
 
 *Figure 4. All formation/query policies on independently confirmed real-text private functions. Colored circles score within the requested source’s two words; black crosses score the actual full-vocabulary output. The separate-word condition reveals failures hidden by candidate restriction.*
 
+### 6.3 Sharing identities while keeping supervision private
+
+The complete-separation result raises a constructive question: what information can be shared without exchanging either source's private supervision? We first supply an unlabeled list of the two source names before the demonstrations. Cross-source demonstration access remains blocked. Independently, we allow the list to be read during demonstration formation (F), directly by every query position (R), both, or neither. An equally long unrelated-name list controls general text exposure. Confirmation changes both the contexts and source aliases.
+
+For Qwen3-8B, the true-minus-unrelated formation-only gain in full-vocabulary accuracy is 4.59 [2.73, 6.64] points; the corresponding candidate-space contrast is 0.10 [−1.27, 1.37]. Both requested sources benefit, although full accuracy only rises from 52.73% to 58.98%. The reading-only identity contrast is uncertain. Mistral's formation contrast is negative (−1.07 [−2.05, −0.20]), and Llama's interval includes zero (−0.68 [−1.95, 0.49]). Thus shared identity text can affect source-specific output use through formed demonstration states, without private cross-source supervision, but the effect is partial and model dependent. This names-only intervention neither identifies nor rules out a general binding mechanism. Complete readouts are in Appendix G.
+
 ## 7. Related work and positioning
 
 [Cho's ICL circuit](https://arxiv.org/html/2410.04468v3) connects input encoding, merging at labels, retrieval, and bypasses; [task-oriented information removal](https://arxiv.org/abs/2509.21012) establishes a complementary information-selection mechanism. [Contextualize-then-Aggregate](https://arxiv.org/html/2504.00132v2) shows the causal role of cross-demonstration contextualization. [How Few-Shot Examples Add Up](https://arxiv.org/html/2605.16591v2) relates contextualized QK routing and V updates to function-vector composition. We add a source-provenance measurement, output-dependent formation prediction, and prospective functional policies within these frameworks.

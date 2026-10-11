@@ -298,3 +298,8 @@ C23新增[选择性形成/读取功能证据E122](experiments/E122-source-preser
 C21形成解释、C22部分关联内容、C23形成/读取共同作用不仅保留原界面预测，还产生整体功能政策的独立确认。E122双方面targeted平均+2.93/+3.42/+7.37/+2.78pp；[E123](experiments/E123-natural-source-function-policy.md)真实SST四checkpointshared平均+7.32[5.37,9.28]/+5.37[2.93,7.71]/+9.47[7.52,11.52]/+7.42[5.57,9.38]pp，两Actor收益CI均正，candidate/full primary逐query一致。四模型16→32、所有85条件完整，证据`results/e123/*_confirmation/{analysis,run,preflight,full_output_summary}.json`与[独立22824项复算](results/e123/independent_review_2026-10-12.md)。C21–23有界L3/C24单任务L2保留，不凑新C25。
 
 query-only与targeted优劣依模型/任务而变；same约定不保证受益。far native headroom/词先验不同，namespace gain差不能单独证明纯identity特异性。far/all-cross own-space正确率仍94–97%但full51–54%，other-word44.6–46.9%且Actor不对称，表明完整wordspace使用与candidate函数需要分开。Mistral far targeted full−1.27[−2.44,−.20]pp、candidate0，14B full+1.27[.29,2.25]；不得改写为普遍无损repair、Source识别新组件或bindingID独占解释。政策删除不等边数、状态活演化，结论是固定政策的整体功能后果。
+
+
+### 2026-10-12：E124身份共同上下文的形成/读取功能
+
+[C23补充E124](experiments/E124-source-identity-coordination.md)：私有监督完全互不可达、公共无标签名单F/R交叉。Qwen完整输出形成身份特异+4.59[2.73,6.64]pp，A/B与私人方向均正，candidate差+.10CI0；Mistral−1.07[−2.05,−.20]，Llama−.68[−1.95,.49]。提供不交换私人监督的部分形成期身份作用及家族边界，不推广统一修复或识别新binding ID。完整6批144ctx/54144scores，独立11742项max0/实际消费与可达图审计，证据results/e124/*_confirmation/{analysis,run,preflight}.json、[audit](results/e124/independent_review_2026-10-12.md)。C21–23有界L3、C24L2与formal状态不变；E125只检验共享Source词空间的更明确关系，不以它成功为原主张新资格。
