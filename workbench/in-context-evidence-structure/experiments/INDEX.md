@@ -137,3 +137,5 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E124](E124-source-identity-coordination.md) | 私人监督独立时公共身份信息在形成/读取期的作用 | DONE-CONFIRMATION；Qwen形成身份特异+4.59pp、Mistral负/Llama不明，私人监督隔离；6批11742项独立复算，整体意义继续评估 |
 
 | [E125](E125-public-output-schema-coordination.md) | 公开Source词空间关系能否协调独立私人规则的使用 | DONE-CONFIRMATION；3家族16→32，形成特异+26.66/+7.71/+8.30pp，读取CI0；交换表仍有益，private形成隔离；18126项独立max0 |
+
+| [E126](E126-equivalent-schema-cache-composition.md) | 信息等价公共关系下的私人规则缓存组合 | PLANNED；43接口×8q，6批CPU passed，独立pre-score进行中；0科学评分 |
