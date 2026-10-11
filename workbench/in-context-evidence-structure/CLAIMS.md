@@ -175,3 +175,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 [E98](experiments/E98-criterion-trajectory-without-teacher-cache.md)的112项阳性中，文字mixed14/16、相反私人偏好轨迹8/16，c翻转0；后384未运行。它不支持任何关于prepared donor有无criterion的结论。
 
 [E99](experiments/E99-independent-factor-interface-confirmation.md)、`results/e99/merged/{analysis,completeness_audit}.json`：8新context、criterion64/64，Own256/256但128 unique，native mixed107/128＝83.59%[68.75,96.09]、concordant128/128；39续写、0未知，独立审计通过。标准推断和文字组合链确认；原生本身较强，旧n2普遍弱表现未确认。不能从不同流程的分差证明默认已形成同一latent。全成功经验CI退化、位置与模板关联均保留；无L2升级。
+
+### E101：局部规则断言不是已验证的可迁移状态（无主张升级）
+
+[E101](experiments/E101-native-criterion-commitment-interchange.md)、`results/e101/merged/{analysis,completeness_audit,word_effect_posthoc}.json`：512/512、0未知，511/512最终判断不变。L63 residual首token64/64跟随donor，POST-HOC 20/64 aspect类别改变，但最终仅一例新错误。操作确实生效；此首次局部断言接口没有产生criterion/函数/属性/答案的完整运输profile。不能从已有78.125% event匹配声称运输，不能推广为标准不存在。条件性词语clamp不执行，C16/C20不升降，原结果保留。
