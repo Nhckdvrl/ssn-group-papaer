@@ -131,3 +131,10 @@ E126完整后POST-HOC实际argmax显示，错Source词多数与另一Source私�
 本轮已将E126动机与E127主检验合并进主文§6.5，避免按实验号堆主张。58批1392ctx/696960scores、9.659890完整run GPU·时、128706项独立数值；计时不含保留迁移partial/OOM0分数/暂存，科学量不替代意义。E128只进行一次功能对象升级：两个标准food/service共词共code时，冲突评论的来源选择是否也依赖共同形成背景。若只code有效而criterion弱，应据函数阳性更新范围；不是无论方向都宣布更多支持。先完成八CPU/source/实际truth独立核、commit冻结后用空卡跑固定四checkpoint16→32。
 
 控制说明修正：E124–127的instruction均含完整private形成隔离，不称纯一句指令恢复；E122/123原生形成的纯prompt控制仍有效。E128在0-score阶段修正，数值与核心旧coherence不撤回。
+
+
+## 2026-10-12：E128完整后回到规则选择计算
+
+E128四checkpoint16→32全部完成；同no/yes同private code而Food/Service标准不同，冲突query的coherence收益Q8/M7/L8/Q14 +1.56[−.59,3.52]/+.98[−1.37,3.32]/+.78[0,1.76]/+2.93[.59,5.47]pp。四家T小正，但joint约50–53%，原生与单函数能力按同冲突query范围核；不把code协调泛化为完整标准选择，也不撤回已封形成阳性。192ctx/130560评分、1.237902GPU时、38760独立raw数值max0。
+
+依据[卡E128](experiments/E128-criterion-frame-cache-composition.md)、[全矩阵报告](results/e128/report.md)、[38760项raw独立核](results/e128/independent_raw_review_2026-10-12.md)。C23形成兼容与C24功能分辨率获得有界补充，不将每个实验新增claim，不自动升降级。原C21–23三认识与最强近邻所有权保留。主文§6.5一段、附录K完整两phase及primary匹配primitive；函数弱/固定方面位置/公共关系与私人规则不等于新ID保留。下一项E129检验input-independent来源选择状态在同recipient图上的criterion×code功能，两co-primary为CueB本身与CueB−CueA的signed det；Hendel/JIT/Dong的一般task-state范围必须正面承认。

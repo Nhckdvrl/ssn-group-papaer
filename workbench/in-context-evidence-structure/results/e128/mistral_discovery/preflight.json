@@ -1,0 +1,380 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e128/mistral_discovery",
+    "n": 16,
+    "seed": 128001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "conditions": 85,
+  "queries": 8,
+  "source_names": [
+    "Alex",
+    "Sam"
+  ],
+  "word_ids_by_namespace": {
+    "shared": [
+      [
+        1476,
+        5849
+      ],
+      [
+        1476,
+        5849
+      ]
+    ]
+  },
+  "label_logit_ids_by_namespace": {
+    "shared": [
+      1476,
+      5849
+    ]
+  },
+  "auxiliary_readout": "criterion selectivity .5 mean[(zA-zB)(food-service)] in origin; complete per-condition food/service/bias/product and source-common responses",
+  "same_public_facts": true,
+  "matched_schema_token_count": true,
+  "original_global_positions": true,
+  "cross_source_private_formation": false,
+  "formation_access_public_schema": true,
+  "whole_query_public_schema_access": false,
+  "cache_pairs": [
+    "00",
+    "11",
+    "01",
+    "10"
+  ],
+  "query_scopes": [
+    "joint",
+    "own"
+  ],
+  "namespaces": [
+    "shared"
+  ],
+  "source_word_identity_only_far": false,
+  "source_ownership_roles": {
+    "public_HEAD": -1,
+    "schema": -2,
+    "A": 0,
+    "B": 1
+  },
+  "controlled_materials": {
+    "args": {
+      "model": "/tmp/ices_models/Mistral-7B-v0.3",
+      "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e128/mistral_discovery/materials",
+      "n": 16,
+      "seed": 128001,
+      "materials": "discovery",
+      "preflight_only": true,
+      "analyze_only": false
+    },
+    "word_ids": {
+      "shared": [
+        [
+          1476
+        ],
+        [
+          5849
+        ]
+      ],
+      "far": [
+        [
+          2223
+        ],
+        [
+          7441
+        ]
+      ]
+    },
+    "prefix_lengths": [
+      440,
+      444,
+      432,
+      452,
+      440,
+      440,
+      424,
+      436,
+      436,
+      440,
+      452,
+      432,
+      452,
+      424,
+      432,
+      448
+    ],
+    "label_source_positions_and_tokens_fixed": true,
+    "B_input_multiset_fixed": true,
+    "B_code_and_within_change_same_8_positions": true,
+    "only_B_comment_content_changes": true,
+    "B_criterion_and_private_convention_independently_crossed": true,
+    "synthetic_polarity_lexicon": {
+      "positive": [
+        "excellent",
+        "great",
+        "wonderful",
+        "superb",
+        "pleasant",
+        "fantastic",
+        "lovely",
+        "delightful"
+      ],
+      "negative": [
+        "terrible",
+        "poor",
+        "awful",
+        "horrible",
+        "unpleasant",
+        "dreadful",
+        "bad",
+        "disappointing"
+      ],
+      "templates": [
+        "The food was {f}, and the service was {s}.",
+        "The food was {f}; the service was {s}.",
+        "The food was {f}, while the service was {s}."
+      ]
+    },
+    "valid_quartet_length_bins": 6,
+    "quartet_lengths": [
+      [
+        22
+      ],
+      [
+        22
+      ],
+      [
+        23
+      ],
+      [
+        24
+      ],
+      [
+        22
+      ],
+      [
+        22
+      ],
+      [
+        21
+      ],
+      [
+        22
+      ],
+      [
+        22
+      ],
+      [
+        22
+      ],
+      [
+        24
+      ],
+      [
+        23
+      ],
+      [
+        24
+      ],
+      [
+        21
+      ],
+      [
+        23
+      ],
+      [
+        24
+      ]
+    ],
+    "reversed_contexts": 8,
+    "planned_conditions": 33,
+    "planned_scores_per_context": 264,
+    "patch_scope": "B criterion x private convention; A label caches and historical answer KV in fixed recipient"
+  },
+  "source_generator": "e118_mistral_materials.py",
+  "primary_query_mask": [
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  ],
+  "material_builder_sha256": "eea5590ce3168c7616ae41d215b902d5e93c8b4e0fe5cf8f1835d8818dafa73b",
+  "truth_source_sha256": "1f9455fb905f12b31c81158e8ab78c4f9eb6afa173555b91f0730181206d93c6",
+  "prefix_lengths": [
+    459,
+    463,
+    451,
+    471,
+    459,
+    459,
+    443,
+    455,
+    455,
+    459,
+    471,
+    451,
+    471,
+    443,
+    451,
+    467
+  ],
+  "scope": "criterion x convention source functions under equivalent schema orders; fixed aspect order; not identification of binding IDs"
+}

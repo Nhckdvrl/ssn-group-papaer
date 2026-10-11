@@ -322,3 +322,10 @@ E126 **POST-HOC辅助解释**（不改冻结primary/正式等级）：只在两p
 四固定checkpoint16→32全部完成；shared/opposite primary共同背景收益Q8/M7/L8/Q14 +8.89[6.64,11.13]/+5.86[4.10,7.71]/+.78[.10,1.56]/+9.38[7.32,11.52]pp，Source特异margin均CI正。与E126一起排除仅选择不同词集作为完整解释，补充同词私人映射在联合使用时的背景依赖；S是已有gold margin投影，不是额外独立机制证据，不推断新ID。L individual/private不普遍正、own0设计恒等、coherent冲突joint仅53–65%全部保留。依据[卡E127](experiments/E127-shared-output-rule-cache-composition.md)、results/e127/*_confirmation/{analysis,run,preflight}.json、[独立35528项复算](results/e127/independent_raw_review_2026-10-12.md)。C21–23有界L3/C24L2和人负责的formal状态不改，不另凑C25。E128会检验food/service输入标准，不把新资格附加到旧形成主张。
 
 **辅助条件说明更正：** E124–127存储instruction同时阻断跨Source私人形成，不能冒称相对native的纯prompt效果；数值与primary维持，附录B披露。E128首评分前修正，E122/123纯prompt控制不受影响。
+
+
+## 2026-10-12：E128完整后回到规则选择计算
+
+E128四checkpoint16→32全部完成；同no/yes同private code而Food/Service标准不同，冲突query的coherence收益Q8/M7/L8/Q14 +1.56[−.59,3.52]/+.98[−1.37,3.32]/+.78[0,1.76]/+2.93[.59,5.47]pp。四家T小正，但joint约50–53%，原生与单函数能力按同冲突query范围核；不把code协调泛化为完整标准选择，也不撤回已封形成阳性。192ctx/130560评分、1.237902GPU时、38760独立raw数值max0。
+
+依据[卡E128](experiments/E128-criterion-frame-cache-composition.md)、[全矩阵报告](results/e128/report.md)、[38760项raw独立核](results/e128/independent_raw_review_2026-10-12.md)。C23形成兼容与C24功能分辨率获得有界补充，不将每个实验新增claim，不自动升降级。原C21–23三认识与最强近邻所有权保留。主文§6.5一段、附录K完整两phase及primary匹配primitive；函数弱/固定方面位置/公共关系与私人规则不等于新ID保留。下一项E129检验input-independent来源选择状态在同recipient图上的criterion×code功能，两co-primary为CueB本身与CueB−CueA的signed det；Hendel/JIT/Dong的一般task-state范围必须正面承认。

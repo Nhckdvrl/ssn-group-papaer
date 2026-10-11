@@ -1,6 +1,6 @@
 # E128：共同形成背景是否影响判断标准选择，而不仅是标签约定？（2026-10-12）
 
-- **状态：** RUNNING；5e9549ed首评分前冻结，E127八批完整封版、E128八批CPU/source独立通过，固定四checkpoint16→32全部启动。
+- **状态：** DONE；固定四checkpoint16→32完成，八批raw/report独立封版。前评分5e9549ed与科学源f0a014…保持。
 - **类型：** PILOT / CLAIM；不新开研究线、不改formal状态。
 - **对应：** C23/C24、I04、P17。
 - **问题：** 多Source从示例推断“评价食物”或“评价服务”时，信息等价公共背景下的私人缓存组合，是否改变新输入应受哪项判断标准约束？
@@ -25,7 +25,7 @@
 
 - **算力：** 四checkpoint固定16→32、单卡独立；预计1–2完整run GPU·时。21/20已缓存Q8/Q14/M7，L8可一次暂存20复用；按空卡实际并行，Q14可同卡16→32顺序，最多12空卡授权不等于铺开后继矩阵。E127完整结果先回齐再首评分。
 
-## 结果
+## 首评分前记录（原文保留）
 0评分。该卡从E127已完成三个家族确认与全文阅读提出；四checkpoint已固定，完整E127（含14B）先封版，再独立CPU/source审核及前评分freeze。本项是从code约定走向标准选择的一次有限高信息量检验，不以任何结果都支持同一个故事，也不提前锁定ID解释。
 
 **0-score实现核对修正：** native与一句指令条件均保留原生private形成，只改变提示句。此前从E127继承的`independent=policy!=native`会把instruction与完全形成隔离混在一起，首评分前改为两者`independent=False`；所有实际token/primary/85条件/21prefix数量不变，CPU材料无需改选。独立审核末版源SHA `f0a0146708e193e017eb33a1caf955d8e4d4bf22d91d73abb403b500be92265a`后freeze。E126/127冻结instruction仅作为“指令＋形成隔离”辅助条件保留，不能称纯一句指令恢复。核心缓存比较不受该条件影响。
@@ -33,3 +33,11 @@
 **前评分独立seal：** 192ctx/4032实际prefix图/6144query owner-scope/6144Source合成/12288demo truth均过；origin各discord4、四world固定B labelstream/输入多重集与truth、Global位置与no公共relay、实际tokenizer、末版native/instruction原生形成均核。Gram8I、T等于discordant两Actor margin平均明确，不当独立第二机制证据。参见results/e128/independent_review_2026-10-12.{json,md}；模型四权重与六metadata在20暂存SHA全相同。freeze后首GPU评分，不按科学方向挑确认。
 
 **执行：** 5e9549ed/f0a014…前评分freeze。21 GPU1/2 Q8探索/确认、GPU3 Q14顺序16→32；20 GPU0/1 Mistral、2/3 Llama探索/确认。确认仅等待首context写入（冻结源已assert数值/组合/graph），不依科学方向。七卡实际空闲复查后启用，21 GPU0外部作业不动；Q14顺序避免额外模型暂存，Llama20四权重/六metadata逐SHA核。操作helper不改science，phase/seed全定，run与所有异常日志保留。
+
+## 完整结果与认识更新
+
+E128四checkpoint16→32全部完成；同no/yes同private code而Food/Service标准不同，冲突query的coherence收益Q8/M7/L8/Q14 +1.56[−.59,3.52]/+.98[−1.37,3.32]/+.78[0,1.76]/+2.93[.59,5.47]pp。四家T小正，但joint约50–53%，原生与单函数能力按同冲突query范围核；不把code协调泛化为完整标准选择，也不撤回已封形成阳性。192ctx/130560评分、1.237902GPU时、38760独立raw数值max0。
+
+功能T确认Q8 .04256[.03058,.05624]、M .00502[.00303,.00714]、L .00837[.00624,.01068]、Q14 .05037[.03974,.06198]nats。T等价于primary的two-Actor gold margin，不冒称第二独立机制证据。single all-query不足作为冲突域能力阳性；独立审计明确POST-HOC范围匹配，Q14 Food68.75/Service78.125%，Q8 Food46.88%、M Food57.81/Service53.13%限制阴性解释。
+
+依据[完整报告](../results/e128/report.md)、results/e128/*_confirmation/{analysis,run,preflight}.json、[独立raw/report seal](../results/e128/independent_raw_review_2026-10-12.md)。下一项回到原始Source地址vs任务信息问题，而非再调公共表/追分：来源字段处理后、测试输入之前的完整多层状态，在recipient名字/示例不变下可否运输criterion×code？E129四固定16→32/两家族，GPU前先source/token/图核对与commit。C21–23L3/C24L2与formal状态均不变。

@@ -1,6 +1,6 @@
 # E129：来源选择信号只是地址，还是在新输入之前携带任务信息？（2026-10-12）
 
-- **状态：** PLANNED，0科学评分；E128四checkpoint完整结果与独立审核先回齐。本项先设计/CPU准备，不追加公共表或head/layer分支。
+- **状态：** RUNNING；E128四checkpoint完整结果已独立封版，E129末版源码/四CPU独立核后57ca241a首评分前commit/push。两checkpoint固定16→32，不追加公共表或head/layer分支。
 - **类型：** PILOT / CLAIM。
 - **对应：** C24/C23、I04、P17。
 - **问题：** 同名来源从不同demos推断不同criterion时，模型处理新评论之前的Source选择块是否只标出recipient中的来源位置，还是能携带改变新评论功能响应的任务信息？
@@ -40,3 +40,5 @@
 **0-score真实实现计数：** 每context64×8=512评分接口、17prefix/8Cue/64body；两checkpoint各16/32合计96contexts。四CPU真实token全部通过，独立实际源码mask执行检查见PRE_SCORE_CPU_FINAL_4_OF_4 seal；源SHA `a177434cf425889df1fcc8b3607e6d5057a26080ad467e7999d002e6504b00bd`。矩阵observer synthetic对照不计科学评分，0 GPU尚未变。
 
 **前评分seal已完成：** [独立实际源码/CPU审计](../results/e129/independent_review_2026-10-12.md)核1632prefix图/768Cue图/6144query集合/1536整层合成/73728双gold槽；observer synthetic5145数值max3.55e−15。科学源a177434c…无科学评分；随后commit并用21已核空卡运行两checkpoint×固定16→32，确认仅等首context数值floor，不按效应方向。
+
+**实际执行：** 57ca241a/a177434c…已在首评分前push main；21 GPU0 Llama16、GPU1 Llama32等待首context数值floor，GPU3 Q14固定16→32。最后复查GPU2被外部任务占86GB，不使用/不杀作业。操作helper只固定phase与SHA，不改科学引擎，模型载入等待/异常与原raw保留。

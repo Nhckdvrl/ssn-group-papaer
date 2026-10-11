@@ -147,3 +147,15 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 ## E128：不同输入标准的联合缓存使用
 
 科学入口`e128_criterion_cache_composition.py`，四固定checkpoint16/128001 discovery→32/128101 validation，85接口×8query；共享no/yes、4criterion×code世界，primary origin不同Food/Service标准但相同code，4discordant query×2Source。末版f0a014…在0-score阶段修正instruction为纯prompt；先独立八CPU truth/token/source核对、commit冻结后评分。复用已冻结E118/E119材料构造与E122 truth，无下载新自然数据；wholecache/图/floor与原接口一致，不搜head/layer。
+
+
+## E128/E129：标准相关功能与前输入Source状态
+
+两项复用冻结E119材料builder与E122truth，四个criterion×private code世界、完整八query、预定seed，无外部新数据依赖。E128四checkpoint；E129固定Llama-3.1-8B/Qwen3-14B。科学评分前可加`--preflight-only`做实际token/几何核，结果不得覆盖原`--out`。E128公共背景组合；E129只交换pre-input来源准备块的全层KV，保留recipient全部private缓存。
+
+```bash
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e128_criterion_cache_composition.py --model /tmp/ices_models/Qwen3-14B --out results/rebuild_e128_qwen14 --n 32 --seed 128101 --materials validation
+CUDA_VISIBLE_DEVICES=1 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e129_source_cue_task_information.py --model /tmp/ices_models/Llama-3.1-8B --out results/rebuild_e129_llama --n 32 --seed 129101 --materials validation
+```
+
+E128报告来自`report_e128_criterion_cache_composition.py`；E129报告来自`report_e129_source_cue_task_information.py`，两者不模型评分。报告默认读正式固定run目录；重建要用新目录，不能把重跑与原实验混计n。源码SHA/frozen_design、每批run与独立审计是最终模型revision/数值/phase依据。

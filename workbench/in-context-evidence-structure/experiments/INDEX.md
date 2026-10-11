@@ -141,4 +141,6 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E126](E126-equivalent-schema-cache-composition.md) | 信息等价公共关系下的私人规则缓存组合 | DONE-CONFIRMATION；3家族16→32，coherence +23.49/+10.40/+5.42pp，词空间主效应/非lossless边界；12462项独立max0 |
 
 | [E127](E127-shared-output-rule-cache-composition.md) | 缓存共同背景影响同输出私人映射使用还是仅词空间绑定 | DONE；四checkpoint16→32、shared/opposite +8.89/+5.86/+.78/+9.38pp，35528独立数值/实际mask与迁移封版 |
-| [E128](E128-criterion-frame-cache-composition.md) | 同输出同code、不同food/service标准的共同背景兼容 | RUNNING；5e9549ed前评分freeze，192ctx八CPU/真图/truth独立过，四checkpoint16→32七空卡启动 |
+| [E128](E128-criterion-frame-cache-composition.md) | 同输出同code、不同food/service标准的共同背景兼容 | DONE；四checkpoint16→32，14B criterion primary+2.93pp，其余CI0；38760独立raw/report封版 |
+
+| [E129](E129-source-cue-task-information.md) | 新输入前Source选择状态传递地址还是criterion×code功能 | RUNNING；57ca241a/a177前评分freeze，四CPU/实际图独立核，21三空卡固定Llama/14B16→32 |

@@ -316,3 +316,40 @@ Strong private functions coexist with incomplete joint selection. Llama's primar
 Eight fixed runs contain 192 contexts and 132,096 scientific scores. The completed-run timers total 1.950864 GPU hours; they exclude preserved partial-run computation, the zero-score load failure, startup reservations, and model transfer. Scientific source `cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de` was frozen before scoring at commit4b8ee609. The independent CPU record covers all 192 contexts and actual tokenizer/configuration layouts; [the complete raw audit](results/e127/independent_raw_review_2026-10-12.md) reports numerical recomputation, golds, masks, and actual per-layer consumption. These are independent analyses, not independent GPU reruns.
 
 Qwen3-14B's first confirmation load failed before any scientific score after an external job occupied its GPU. The pinned checkpoint was then verified on another empty node. The initial discovery run's ten complete contexts and raw records remain preserved separately. Identical contexts were rerun in the full fixed discovery batch, without seed or outcome selection: all 6,880 matching argmax decisions and candidate signs agree across hardware; maximum absolute logit-difference and individual label-logit deviations are .001028 and .002842. These hardware comparisons are separate from the same-run FP32 controls and are not additional samples. [Checkpoint identity](results/e127/model_identity_qwen14_nvme.json) and the operational records preserve the migration. Portable reconstruction reproduces the 32 Llama confirmation contexts byte-for-byte from the pinned public SST5 files.
+
+
+## K. Compatibility when input criteria differ
+
+E128 uses controlled restaurant comments with two independently varied aspects and both private code directions. A follows Food; B has four criterion×code worlds. Both sources share no/yes, public facts and private global positions match across orders, private cross-source formation is blocked, and the whole query cannot read the public table. The frozen primary is the origin world (A Food/B Service, same code), the four aspect-conflicting queries, averaged over both requested sources. This differs from E127's convention primary and does not inherit its stronger private-function scores.
+
+| Model / phase | Primary coherence, pp [95% CI] | Criterion-oriented margin coherence T, nats [95% CI] |
+|---|---:|---:|
+| Qwen3-8B / discovery | 2.34 [0.39, 4.69] | 0.03660 [0.01877, 0.05657] |
+| Mistral-7B-v0.3 / discovery | -0.78 [-1.95, 0.00] | 0.00853 [0.00412, 0.01442] |
+| Llama-3.1-8B / discovery | 1.56 [0.00, 3.52] | 0.00767 [0.00501, 0.01085] |
+| Qwen3-14B / discovery | 0.00 [-1.95, 2.34] | 0.04048 [0.02804, 0.05418] |
+| Qwen3-8B / confirmation | 1.56 [-0.59, 3.52] | 0.04256 [0.03058, 0.05624] |
+| Mistral-7B-v0.3 / confirmation | 0.98 [-1.37, 3.32] | 0.00502 [0.00303, 0.00714] |
+| Llama-3.1-8B / confirmation | 0.78 [0.00, 1.76] | 0.00837 [0.00624, 0.01068] |
+| Qwen3-14B / confirmation | 2.93 [0.59, 5.47] | 0.05037 [0.03974, 0.06198] |
+
+For origin, let f and s denote the Food and Service signs oriented by A's private code. We report T=½ E[(zA−zB)(f−s)] over all eight balanced queries. This equals the average correct margin of the two sources on the four conflicting queries: it is an equivalent output projection, not an independent probe or evidence of input filtering. The complete Food/Service/bias/product basis and common shifts remain available.
+
+### K.1 Actual function scores on the primary domain
+
+| Confirmation model | Joint00 / 11, % [95% CI] | Own-only00 / 11, % [95% CI] | Single Food / Service on conflicting queries, % [95% CI] |
+|---|---:|---:|---:|
+| Qwen3-8B | 50.78 [48.05, 53.91] / 52.73 [49.61, 55.86] | 56.25 [51.95, 60.55] / 58.20 [53.91, 62.89] | 46.88 [40.62, 52.34] / 69.53 [62.50, 77.34] |
+| Mistral-7B-v0.3 | 50.39 [48.05, 52.73] / 50.00 [48.05, 51.95] | 54.69 [51.95, 57.81] / 55.47 [51.95, 59.38] | 57.81 [53.12, 64.06] / 53.12 [49.22, 57.81] |
+| Llama-3.1-8B | 51.17 [50.00, 52.73] / 51.95 [50.39, 53.52] | 70.70 [64.84, 76.95] / 70.31 [64.45, 76.56] | 67.19 [60.16, 74.22] / 71.09 [63.28, 78.91] |
+| Qwen3-14B | 52.34 [48.83, 55.86] / 51.95 [49.61, 54.30] | 75.00 [71.09, 78.91] / 73.05 [69.14, 76.95] | 68.75 [61.72, 75.80] / 78.12 [70.31, 85.94] |
+
+The single-function conflicting-query values are an explicitly **post-hoc descriptive scope audit** of already predefined controls, recorded by the independent reviewer. They neither change the primary nor add model runs. All-query controls in the full report have a different domain and cannot establish capability on the primary conflict cases. Qwen3-8B's Food is weak; Mistral's Food score is modest and its Service interval includes chance; Qwen3-14B's matched Food/Service functions are above chance. Its small positive compatibility effect therefore coexists with a substantial private-to-joint gap. This prevents interpreting the weaker effects as absence of criterion information, or the positive margin as successful criterion composition.
+
+All 85 interfaces, four worlds, private directions, source-specific intervals, both coherent orders, native and **pure one-sentence instruction** conditions, full/candidate outputs, and fixed-word response bases are preserved in [the complete report](results/e128/report.md) and independent disclosure. Aspect order remains fixed, and whole-cache interchanges remain compatible with contextual binding, calibration, and criterion-conditioned retrieval.
+
+Eight runs comprise192contexts/130560scores and1.237902 recorded GPU hours. Scientific source `f0a0146708e193e017eb33a1caf955d8e4d4bf22d91d73abb403b500be92265a` was frozen at5e9549ed before scoring. The [independent raw audit](results/e128/independent_raw_review_2026-10-12.md) reconstructs38760 numerical entries with maximum error0 and checks actual masks, golds, full argmax, cache origin, and the margin identity. The author report check adds38764 numerical entries and352 table rows; these comparison counts overlap the same observations and do not add experimental sample size. No independent GPU rerun is claimed.
+
+![Criterion-conflict cache compatibility](results/figs/fig_criterion_cache_compatibility.png)
+
+*All four cache pairs on the frozen criterion-conflict domain, confirmation n32 per checkpoint. Scores average separate source requests; they do not measure simultaneous two-source success.*

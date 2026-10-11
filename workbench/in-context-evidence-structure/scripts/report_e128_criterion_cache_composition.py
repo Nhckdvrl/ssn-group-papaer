@@ -6,7 +6,9 @@ ROOT=Path(__file__).resolve().parents[1]
 FROZEN='f0a0146708e193e017eb33a1caf955d8e4d4bf22d91d73abb403b500be92265a'
 FAMILIES={'qwen3':'Qwen3-8B','mistral':'Mistral-7B-v0.3','llama':'Llama-3.1-8B','qwen14':'Qwen3-14B'}
 WORLDS=['origin','service_negative','food_positive','food_negative']
-def fmt(v,scale=100):return f"{scale*v['mean']:.2f} [{scale*v['ci95'][0]:.2f}, {scale*v['ci95'][1]:.2f}]"
+def fmt(v,scale=100):
+    precision=5 if scale==1 else 2
+    return f"{scale*v['mean']:.{precision}f} [{scale*v['ci95'][0]:.{precision}f}, {scale*v['ci95'][1]:.{precision}f}]"
 def main():
     assert hashlib.sha256((ROOT/'scripts/e128_criterion_cache_composition.py').read_bytes()).hexdigest()==FROZEN
     runs={}
