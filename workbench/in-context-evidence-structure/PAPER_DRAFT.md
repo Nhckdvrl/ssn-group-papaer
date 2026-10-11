@@ -175,7 +175,7 @@ On new confirmation contexts, true-minus-unrelated formation-only gains in full-
 
 The table's literal assignment is insufficient to explain the effect. Correct-table formation outperforms swapped-table formation by 11.72 [7.91, 15.72], 4.39 [2.15, 6.74], and 5.47 [2.44, 8.59] points. Yet swapped-table formation itself improves full accuracy and produces a net reduction in other-source outputs in every checkpoint. Following the table alone cannot explain these results; public source–output structure affects private evidence formation through additional computation. They leave open how this structure makes separately formed memories compatible at reading time.
 
-These improvements have costs and asymmetries. Qwen's true-table candidate accuracy decreases from 95.12% to 91.31%; both sources benefit in its primary contrast, while Mistral and Llama's A-specific intervals include zero. Neither independent private-function mastery nor a shared schema guarantees lossless composition. Appendix H reports both phases, all tables, sources, private directions, and output readouts.
+These improvements have costs and asymmetries. Qwen's true-table candidate accuracy decreases from 95.12% to 91.31%; both sources benefit in its primary contrast, while Mistral and Llama's A-specific intervals include zero. Neither strong single-source private-function performance nor a shared schema guarantees lossless composition. Appendix H reports both phases, all tables, sources, private directions, and output readouts.
 
 ![Public schemas during formation and reading](results/figs/fig_public_source_schema_coordination.png)
 

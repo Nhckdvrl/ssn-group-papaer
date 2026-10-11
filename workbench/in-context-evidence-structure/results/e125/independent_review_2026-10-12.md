@@ -435,6 +435,6 @@ Public schema在query可成为已有TR/TL式显式空间选择cue；F-only阳性
 
 本审计没有自动改C21–23/I04/ACTIVE/投稿决定，不追加head/layer/seed或任意修复门槛。所有数字由完整raw得出；未独立GPU重跑，run hook/数值控制来自作者执行记录的独立核对。原始behavior/contexts不重复写入JSON，未保存bootstrap draws；旧E115–124封版保持。
 
-作者summary与report另用独立seal检查：summary分析及4个总量18,130项max0；report240行/870统计格/2610个数值呈现一致。这是已复算证据的重复呈现，不加作新实验样本。报告与图代码覆盖三表四phase的full/candidate值，source不变；图使用相同独立已核mean/CI。report的“私人配对监督始终互不可达”应明确只在历史形成中，因为joint query仍读取两套缓存。
+作者summary与report另用独立seal检查：summary分析及4个总量18,130项max0；report240行/870统计格/2610个数值呈现一致。这是已复算证据的重复呈现，不加作新实验样本。报告与图代码覆盖三表四phase的full/candidate值，source不变；图使用相同独立已核mean/CI。最终report已将私人监督互不可达明确限定历史形成，且注明joint query仍读取两缓存；范围修正通过。
 
-[JSON](independent_review_2026-10-12.json)含全部63接口、phase/冻结contrast、full/candidate/词归属/margin、全部private/A/B/world分解、独立bootstrap、几何/消费/计数误差及作者报告比对。新增主文数字另待成稿消息后核对。
+[JSON](independent_review_2026-10-12.json)含全部63接口、phase/冻结contrast、full/candidate/词归属/margin、全部private/A/B/world分解、独立bootstrap、几何/消费/计数误差及作者报告比对。当前主文§6.3/6.4及附录G/H的184个数值呈现、12表行与9元数据项另已逐项一致；整篇论证与近邻范围见[paper-critical审阅](manuscript_claim_audit_2026-10-12.md)。

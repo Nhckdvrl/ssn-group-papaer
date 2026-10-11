@@ -130,3 +130,5 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 
 
 E125同portable入口`--experiment e125`，科学源`e125_public_output_schema_coordination.py`；n16/125001→n32/125101(确认validation)，63×8/context，Source→词集合的真实/无关/交换公共表×F/R。公开表提供关系监督，未提供私人评论–标签配对。科学SHA75f7566582cbaf7cf80dd130b409b32436df281a262884d8db381991437612b9首评分前a0a79918冻结。全部6批完整后`report_e125_schema_coordination.py`重建汇总/图并检查21prefix/63whole-query各层消费；同revision/FP32/eager，无训练或层/head搜索。
+
+E126复现入口同样支持 `--experiment e126`，模型参数/seed126001→126101、materials discovery→validation保持冻结源；Llama32确认用已下载pin rebuild cache的上下文byte-identical，见 `results/e126/portable_reproduction_audit.json`。运行时Source缓存组合、全query schema遮罩与全部43条件由科学脚本固定。

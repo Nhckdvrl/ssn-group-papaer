@@ -1,6 +1,6 @@
 # E126：等价公共关系下形成的私人规则记忆能否组合？（2026-10-12）
 
-- **状态：** PLANNED，0科学评分；六批CPU及独立全量pre-score已通过，待首评分前commit。
+- **状态：** RUNNING；377de6c4首评分前freeze，独立CPU全部通过。
 - **类型：** PILOT / CLAIM；不新增研究线、不改变formal状态。
 - **对应：** C23、I04、P17。
 - **问题：** 公共Source–输出关系的信息完全相同时，来源缓存是否仍依赖共同上下文下形成的兼容关系，还是可作为独立私人规则直接组合？
@@ -31,3 +31,5 @@
 **评分前定位补充（0评分）：** CacheBlend§3.3/4已拥有一般独立KV块漏跨块上下文化的质量问题；SADA ACL26§3/4.4拥有训练的context→parameter内部对齐。新检索的Zellige作者技术报告（2026-04-24，未核投稿/代码）讨论cross-session chat-boundary结构与patch，不能由其模板涨分识别唯一机制，也不能忽视它已提出的普遍cache兼容对象。此项不声称首次缓存不可组合，仍检验public事实/私人监督完全相同、固定global positions的配对联合功能。nearest corpus词汇近邻多为multimodal composition/memory/SQL，未召回不作first依据。
 
 **独立pre-score封源：** 科学源ad2c6f7af7ab81966ea1253a80e7006747f3485b182fddd1453ffbb1ceb45975。六批144ctx、1584实际prefix流/1584mask、2304query scope×owner与2304整Source K/V选择全部独立核对，无须修改真值/图；实验已有数值/actual hook待GPU实现验证。独立结论确认后才commit/执行，未用科学分数选条件。
+
+**执行更新：** discovery三家族启动；Qwen首ctx数值8.20e−5、Llama2.48e−5，composition/graph0；三confirmation进程先预加载相同冻结模块，仅等各自pilot第一行通过已有全部数值assert才执行固定seed/materials，未按科学方向选择。辅助/tmp预加载启动器仅解决NFS环境import延迟，不改科学源/参数/读数。
