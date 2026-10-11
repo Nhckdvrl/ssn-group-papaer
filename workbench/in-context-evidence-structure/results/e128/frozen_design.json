@@ -1,0 +1,39 @@
+{
+  "status": "PRE_SCORE_FROZEN_CPU_REVIEW_PASSED",
+  "scientific_script": "scripts/e128_criterion_cache_composition.py",
+  "script_sha256": "f0a0146708e193e017eb33a1caf955d8e4d4bf22d91d73abb403b500be92265a",
+  "primary": "origin different food/service criteria, same convention, discordant queries; joint coherent-minus-mixed full-vocabulary accuracy",
+  "checkpoints": [
+    "Qwen3-8B",
+    "Mistral-7B-v0.3",
+    "Llama-3.1-8B",
+    "Qwen3-14B"
+  ],
+  "phases": {
+    "discovery": {
+      "n": 16,
+      "seed": 128001,
+      "materials": "discovery"
+    },
+    "confirmation": {
+      "n": 32,
+      "seed": 128101,
+      "materials": "validation"
+    }
+  },
+  "conditions": 85,
+  "queries": 8,
+  "prefill_interfaces": 21,
+  "query_interfaces": 85,
+  "instruction_control": "native formation, one added sentence; corrected before first score",
+  "precondition": "E127 complete8/8 independently sealed; E128 independent actual CPU/source review before frozen commit and GPU",
+  "independent_CPU_review": "results/e128/independent_review_2026-10-12.json",
+  "independent_CPU_review_sha256": "de81f0c0523a0709b9a2f81371f3383c935ccf19f90c183b592affef63728fe4",
+  "pre_score_counts": {
+    "contexts": 192,
+    "prefix_graphs": 4032,
+    "query_scope_owner": 6144,
+    "source_compositions": 6144,
+    "demo_truths": 12288
+  }
+}
