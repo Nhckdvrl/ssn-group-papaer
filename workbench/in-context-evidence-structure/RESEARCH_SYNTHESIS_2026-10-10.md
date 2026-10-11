@@ -525,3 +525,11 @@ E91的历史表示形成因果结果、E85的独立均值预测与E99的成功�
 **这个结果改变了什么：** E94的98.4%私人函数切换，现在更明确是切换recipient的来源证据，不能把整个Source-field阳性称为学到的规则运输。E101局部词改动和E102Source地址阳性都不能代替规则内容机制；该字段矩阵结束，不追加控制。近邻拥有router/slot、pointer/answer与JIT宽认识，本pilot只澄清多来源ICL中的实际功能对象，不单独成为最终novelty。
 
 我们没有失去研究问题：E91证明历史来源会改变自己证据的可访问表示，E99证明共同标准和私人映射可以组合。接下来应该研究这些内容怎样通过原生记忆参与新输入的判断；strong hybrid模型提供attention KV与recurrent/conv状态的实际分叉，可以让两个记忆来自不同函数world，预先区分保留recipient、执行donor、仅换criterion、仅换私人映射。还未运行或取得分工结论，必须有完整cache运输/原生续写阳性、缓存数值与future-input排除后才解释。
+
+## 26. E103：从示例推断的函数主要经KV使用，不支持预设C/P记忆分工
+
+新4context全部256记录/128 unique、0未知；native B98.44%，全donor/self-copy/repeat路径logits差0，48linear层恢复state实际消费通过。整函数跟KV的反事实模型95.31%[90.63,100]，两个C/P互补模型没有完整四输入profile。当前不能说criterion取某通道、私人p取另一个，Rec也不是严格无作用。split与unsplit max词表差.01332/label margin.00111、argmax0分歧完整报告。
+
+这是高信息量的机制选择结果，但所支持的宽模式符合已有hybrid memory/ICL检索解释。既不贬低这个定位，也不把它当最终new theory；先不追加层分解。
+
+**回到问题：** 规则来自KV这件事，仍未回答从多人样例推断的共同criterion怎样成为可与另一套私人证据组合的计算条件。E99给出文字链可靠，E101/E102说明局部规则词/Source字段不是功能状态的充分代理。下一步应问主动标准推断前/后是否改变这项信息的可用形态，先有真实内部运输阳性再作before/after比较，而不是继续扩模型或只复述可报告≠可部署的宽认识。这个候选尚未证明；近邻DAS/JIT/TaskVectors/Hybrid memory的既有所有权明确保留。

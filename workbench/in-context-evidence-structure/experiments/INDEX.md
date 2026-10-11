@@ -110,3 +110,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E100](E100-auxiliary-preference-alignment.md) | 固定共同标准/A函数，只翻C私人偏好检验来源关系的使用 | PLANNED未运行候选；代码完成，当前优先原生内部因果实验，不启动行为扩展 |
 | [E101](E101-native-criterion-commitment-interchange.md) | 原生A判据形成时，内部更新携带criterion、函数、属性还是答案 | DONE-PILOT；512次内部交换、0未知；即时词受影响，511/512最终判断不变，未形成规则运输 |
 | [E102](E102-source-pointer-versus-program.md) | 有效来源字段交换携带donor规则，还是指向recipient证据 | DONE-PILOT；448行，recipient B63/64、15/16完整profile；donor规则变化0答案flip，字段主要是地址 |
+| [E103](E103-inferred-rule-memory-crossing.md) | 推断的criterion/private映射经哪种原生历史记忆参与新输入 | DONE-PILOT；256记录/128 unique、0未知；KV整函数模型95.3%，未发现C/P双通道分工 |

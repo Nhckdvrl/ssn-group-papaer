@@ -1,6 +1,6 @@
 # E103：从示例推断的规则，经哪种原生记忆约束新输入？（2026-10-11）
 
-- **状态：** PLANNED；先写卡/验证cache，再做256行pilot。
+- **状态：** DONE-PILOT；256记录/128 unique、0未解析，函数主要跟KV；未发现C/P分属两记忆。
 - **类型：** PILOT，内部memory counterfactual；不扫层、head、alpha，不训练修复。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 来源地址有效之后，选择输入方面的criterion c与私人输出映射p，是由同一历史记忆提供，还是有可区分的功能依赖？
@@ -53,3 +53,21 @@ E93生成器，4未用于E94/E102的context，seed103001；两来源，同一cri
 - **算力：** 原27B revision/openslime+vendor、float32/eager单节点两GPU，≤2 GPU·时。独立确认/SourceA thinking只在结果后另冻协议，不先启动。
 - **资产：** `results/e103/qwen35_discovery/`；raw token/prompt/cache仅本地；小preflight/analysis/run/数值审计、源代码入git。
 - **正式状态：** 无开关线、I04/ACTIVE不改，C16/C20仍L1。
+
+### GPU前实现校验
+
+新seed103001四context，strict prefix/suffix token边界与world间future后缀相同全部通过；实际16KV/48linear。合成C/P双通道模型能被analyzer正确识别，256记录/128唯一状态输入的分母一致；这是读数校验，不是模型证据。实际缓存必须同时验证conv/recurrent、pristine不变、48层future chunk消费非空initial_state，以及all-donor复现native D。代码/卡提交后才启动模型。
+
+## 结果与科学更新
+
+全部256记录、128 unique memory-query输入、0未解析，.12035 GPU·时；64 cross unique，重复对照不算额外独立样本。4个新context全部保留。Native B63/64＝98.44%[95.31,100]，阳性成立。all-donor全词表精确复现native D、self-copy与重复输入最大误差0，原cache指纹不变、未换通道精确保留，48linear层各260次实际消费恢复的initial_state。
+
+第一context全部16query的split/unsplit原生输出argmax相同；全词表max差.01332nats、yes/no margin max差.00111，小于预设.01 margin界。报告不同执行路径的roundoff，不把全词表差默写为0。真正的state-swap/self-copy路径比较均0。
+
+KV-donor61/64符合donor整函数、14/16完整quartet；Rec-donor61/64符合recipient整函数、14/16完整quartet。两方向合读的“整函数取KV”模型95.31%[90.63,100]（128记录/64 cross unique），Rec整函数51.56%，KV-c/Rec-p4.69%，KV-p/Rec-c48.44%。两种C/P分工模型没有任何完整四输入profile；个别cross仍有不同于KV native的答案，不声称Rec严格无作用。
+
+**更新：** 这里从examples推断的私人分类函数，其criterion与输出极性没有显出对两种memory的互补依赖；主要功能内容经KV被使用。这个结果符合已知attention retrieval框架，不强行包装为新memory分工，也不能证明KV存完整abstract程序而不是示例关系。我们不追加cache层扫描。B完全可识别是定位材料，尚未证明A共享criterion的机制。
+
+下一步回到核心：**模型在推断共同标准后，得到的只是可报告的知识，还是能与新的私人证据组合的内部状态？** 前者与后者在文本行为上都可由E99达到，内部功能尚未成立。借用已验证的state-swap，先验证显式criterion控制可经内部状态运输，再比较标准推断前/后的真实历史状态；不同结果必须分别支持“已有可用信息”“推断改变功能形态”或“未得到该接口”，不将每个结果写成compile理论。主张仍L1，正式状态不变。
+
+结果：`results/e103/qwen35_discovery/{analysis,run,numeric_audit,carry_audit,completeness_audit}.json`；原始token/cache/behavior不进git。root完成逐行代数/分母/hash审计，不冒称独立L3校对。

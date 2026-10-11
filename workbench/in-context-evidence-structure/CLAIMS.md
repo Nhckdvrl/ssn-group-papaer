@@ -183,3 +183,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 ### E102：来源字段私人函数切换主要重定位recipient证据（有界探索）
 
 [E102](experiments/E102-source-pointer-versus-program.md)、`results/e102/qwen35_discovery/{analysis,run,completeness_audit}.json`：448/448、0未解析；主分叉recipient B63/64、15/16完整profile，donor函数0/16完整；四donor c/p世界在64receiver上0答案flip，微小margin变化保留。数值self-copy/字段外/matched-prefix差0；失败数值运行保留。限制是layer16、输入前整个字段、4原开发context；支持地址型功能作用，不证明全网络无规则表示。无C16/C20升级，旧E94结果澄清而非撤回。
+
+### E103：示例私人函数主要依赖KV，未发现预设的C/P跨memory分工
+
+[E103](experiments/E103-inferred-rule-memory-crossing.md)、`results/e103/qwen35_discovery/{analysis,run,numeric_audit,carry_audit,completeness_audit}.json`：256/128unique，native98.44%，KV whole-function模型95.31%[90.63,100]，C/P模型无完整四query profile。all-donor/self-copy数值0，48linear真实消费恢复state；split/unsplit微差完整保存。限定direct B完全可识别任务与这个hybrid模型，不称KV存独立抽象程序、不称Rec零作用，无C16/C20升级。
