@@ -1,6 +1,6 @@
 # E107：交换后的共同标准记忆，能否经原生推理约束私人判断？（2026-10-11）
 
-- **状态：** RUNNING
+- **状态：** DONE-PILOT
 - **类型：** PILOT / 内部memory interchange的自由续写
 - **对应：** I04、C16/C20、P17。
 - **问题：** E105直接结束thinking并读取Answer logits的接口，是否漏掉了后续计算对criterion信息的使用？
@@ -48,7 +48,15 @@ BF16/SDPA原生生成，同checkpoint/openslime+vendor，greedy，1024 token；�
 
 ## 结果（运行后追加）
 
-待运行。
+主要480/480＋extra self controls4，0未知，8分片正常结束，共4.48472 GPU·时。16完整Teacher标准轨迹全部保留。完整Owner cue64/64；rec before mixed33/64=51.56%[50,54.69]，after36/64=56.25%[51.56,60.94]，explicit39/64=60.94%[50,71.88]。after−before +4.69[0,9.375]pp，explicit−before +9.375[−3.125,21.875]pp。same/opposite与完整profile全部见analysis；opposite after−before仍0[−9.375,9.375]pp。
+
+三种Rec条件同向输入均64/64保留Own私人映射。固定teacher、翻Own p的192对tensor检查全部通过：Teacher Rec逐字节同，Own KV不同；两p均正确率before68.75%、after70.31%、explicit73.44%（含同向输入），答案翻转率约84–86%。Own证据确实参与，不能只用复制Teacher C解释全部输出；但这不构成独立criterion子空间，也不排除校准/选择teacher整个函数。
+
+生成consumer的cached manual与generate首step精确一致、自copy整轨迹和logits0；48linear恢复状态消费检查通过、pristine caches不变。BF16 full/split首step词表差.787–1.289nats、首argmax相同，数值限制完整报告；这里只比较匹配cached路径，不与FP32 E105当同一路径数值等价。Private p两world跨同GPU重复Teacher缓存hash精确一致。
+
+更新：自由推理消除了E105的EOS，但仍没有可靠criterion执行；主动标准报告没有形成显著的before/after转换。保留有限正作用与私人映射证据，按照决策表结束此consumer/Rec运输扩展，不扫更多site或Goal。这个阴性限制接口，不证明全模型不存在规则信息或不能共享。C16/C20与I04正式状态不变。
+
+results/e107/merged/{analysis,completeness_audit}.json；每part/same的numeric_audit/carry_audit/run保留，小文件入git、原始CoT/JSONL本地。
 
 ### 解读结果前的配置补充：私人偏好必须独立于teacher状态
 

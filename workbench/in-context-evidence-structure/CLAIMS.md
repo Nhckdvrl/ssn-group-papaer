@@ -197,3 +197,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 [E105](experiments/E105-inferred-criterion-memory-use.md)、results/e105/qwen35_discovery/{analysis,profile_audit,completeness_audit}.json：608/608，标准16/16；opposite mixed37.5→56.25%、+18.75[3.125,40.625]pp，criterion margin+.442[.402,.482]。after13/128、explicit25/128 EOS，不能称稳定criterion程序。E107同材料/同交换的原生自由续写正在运行，原读数不改。
 
 [E106](experiments/E106-inherited-rule-input-mediation.md)、results/e106/qwen3_confirmation/{analysis,run,completeness_audit}.json：32未选择新context、4608评分。label KV替换使B-rule幅度减少.429[.250,.632]nats，评论内容中介仅.0059[−.0251,.0447]，mirror−.0020[−.0127,.0089]；完整A缓存重建精确，36层干预消费与self路径校对通过。限定评论内容而非所有pre-label位置，不宣称无输入端路由或已有完整prototype算法。正式主张暂不升级，没有独立L3校对。
+
+### E107：私人KV因果参与，标准运输仍不稳定（不升级）
+
+[E107](experiments/E107-criterion-memory-native-continuation.md)、results/e107/merged/{analysis,completeness_audit}.json：480＋extra controls4、0未知；192固定teacher tensor pairs精确同且Own KV不同，同向私人映射全保持。mixed51.56→56.25%，+4.69[0,9.375]pp；explicit60.94%，before/after没有可靠控制转换。自然续写修正EOS测量限制，BF16 full/split微差.787–1.289nats报告，匹配cached/self路径0。结束此Rec/consumer扩展，不推出全模型无criterion；C16/C20 L1不改。

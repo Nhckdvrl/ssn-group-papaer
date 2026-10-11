@@ -1,0 +1,29 @@
+{
+  "args": {
+    "part": 0,
+    "out": "results/e107/part0",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "teachers": "results/e105/generation/teachers.jsonl",
+    "preflight_only": false,
+    "merge": null
+  },
+  "n_rows": 72,
+  "precision": "bf16",
+  "attention": "sdpa",
+  "training": false,
+  "source_sha256": "99b4f9c50901a7d86ad4a232bc7d8244671c24bf8c3afcaf27a91e75b51177de",
+  "teacher_sha256": "95529b1f564ba2edc97857ba8d7144ed0cb6bac1851acc76dac9d28533567de9",
+  "torch": "2.9.1+cu129",
+  "transformers": "5.12.1",
+  "python": "3.12.12",
+  "pristine_caches_exact": true,
+  "errors": {
+    "self_copy_max_vocab_nats": 0.0,
+    "generate_manual_firststep_max_vocab_nats": 0.0,
+    "full_split_firststep_max_vocab_nats": 0.9375,
+    "full_split_firststep_argmax_same": true
+  },
+  "elapsed_seconds": 2148.6933839321136,
+  "gpu_hours": 0.5968592735793855,
+  "git_head": "eb4acd0c3cb8aa91030e2c22e04637c606025548"
+}

@@ -114,4 +114,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E104](E104-criterion-policy-state-interface.md) | 标准控制状态能否与新Actor的私人证据组合 | DONE-PILOT；352行，opposite mixed65.6% vs50%，私人映射保留；部分内部运输，后续推断矩阵未启动 |
 | [E105](E105-inferred-criterion-memory-use.md) | 来源分组推断前后的内部记忆能否与新Actor私人映射组合 | DONE-PILOT；16标准正确，608机制行；after有部分定向作用但EOS，转原生续写测同记忆 |
 | [E106](E106-inherited-rule-input-mediation.md) | 历史namespace对A标签证据的作用是否经过A输入编码 | DONE-CONFIRMATION；16→32新ctx，label KV减少rule幅度.429[.250,.632]，评论内容中介弱 |
-| [E107](E107-criterion-memory-native-continuation.md) | 同记忆交换后的原生推理是否能执行criterion×Owner私人映射 | RUNNING；4独立固定context分片，288自由续写，所有EOS/截断保留 |
+| [E107](E107-criterion-memory-native-continuation.md) | 同记忆交换后的原生推理是否能执行criterion×Owner私人映射 | DONE-PILOT；480交叉＋4self，0未知；Own p因果参与，after混合56.25%、增益CI触零，结束此接口扩展 |
