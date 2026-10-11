@@ -27,3 +27,9 @@ Cho2025 §3.1/§4.1的forerunner编码在当前label前已经含上下文，E106
 ## 结果（运行后追加）
 
 待运行。原始JSONL/context本地，analysis/run/preflight/audit入git。
+
+### Discovery完成与确认冻结
+
+16新context全部2816评分：shared gate B-rule幅度.798[.536,1.071]；far label .238[.135,.360]，减弱.560[.287,.831]。评论中介减弱.0019[−.0313,.0390]；完整packet中介减弱−.177[−.408,.057]，mirror−.0264[−.1119,.0645]。完整packet并未补出预期的恢复路径。它不能被写成“Source位置没作用”，但完整pre-label路径目前不足以解释标签namespace效应。
+
+36层干预各130次、self cache精确、原cache指纹不变，max数值差7.63e−6；.0458 GPU·时。源SHA 8e8c6c3c0397b3f5c5f92d9db4e3da0ca83524738a2a1c5346199d6a5bd90099冻结，32未选择新contexts seed108101同配置确认。无token/head/alpha扩展。
