@@ -1,0 +1,73 @@
+{
+  "experiment": "E48",
+  "fields_sha256": "2e0a8d2b3cf24ec13ad21b5394e9208440f1fd94cde136bc5ba7f28cfe746450",
+  "material_dir": "/data1/xiangding/work/incremental-interpretation-revision/E48-material-preparation-v2",
+  "preflight": [
+    {
+      "fact": "name",
+      "target": "name",
+      "variants": 2304,
+      "pairs": 1152,
+      "data_sha256": "840bdc1cf8364097eb5fb7e28f3b6b524b32a01fa342ceee24929fe340bba1a0"
+    },
+    {
+      "fact": "name",
+      "target": "description",
+      "variants": 2304,
+      "pairs": 1152,
+      "data_sha256": "329db7628f86ec6593a0a841598447c3e0f885c26d1481a11e0c6b145ade9343"
+    },
+    {
+      "fact": "description",
+      "target": "name",
+      "variants": 2304,
+      "pairs": 1152,
+      "data_sha256": "f1ccb058faca519bfdd1f1a33de1a97e36aa56c4c14a88653d016fed7440254e"
+    },
+    {
+      "fact": "description",
+      "target": "description",
+      "variants": 2304,
+      "pairs": 1152,
+      "data_sha256": "18690b1d5bb269abbe06b5e3bfeef96af979404a4fa315d0c913319a08e07d65"
+    }
+  ],
+  "audits": {
+    "probability": {
+      "variants": 9216,
+      "candidate_sha256": "6902f99bfe537965d55d8aeb6394aab6164a6bdb54eb9d8f699fceb02d2b98de",
+      "review_sha256": [
+        "57b0311b9aa77ea337c0b0aa7653b2d0c416fe9c36e41dfbd87dc4831fb989c8",
+        "51297f1fddb24fff346b7e61a218fea4a76c04b69d870edfc64d5ef40464481d",
+        "d3fddc93d46cb87789fdda52efdd8c6fdfd88eaac04770bc4427d288b1fd373b"
+      ],
+      "eligible": 9216,
+      "grammar": {
+        "acceptable": 9045,
+        "marginal": 171
+      },
+      "audited_sha256": "45e3631773c0527a1a36c1c8df0df10e2415565e480444a8822c8c22a7b4c683"
+    },
+    "question": {
+      "variants": 864,
+      "candidate_sha256": "5b26a73445f31e908cb6fcbc540d00de452c3d1a9d73e1f00cedcc3ad0cf0461",
+      "review_sha256": [
+        "57b0311b9aa77ea337c0b0aa7653b2d0c416fe9c36e41dfbd87dc4831fb989c8",
+        "51297f1fddb24fff346b7e61a218fea4a76c04b69d870edfc64d5ef40464481d",
+        "d3fddc93d46cb87789fdda52efdd8c6fdfd88eaac04770bc4427d288b1fd373b"
+      ],
+      "eligible": 864,
+      "grammar": {
+        "acceptable": 864
+      },
+      "proposed_agreement": 864,
+      "audited_sha256": "aa2278974e25edc8ff1644cb1dff50221e74acbd16231be24ea27111856c6b82"
+    }
+  },
+  "invalidated_audit": {
+    "path": "/data1/xiangding/work/incremental-interpretation-revision/E48-material-preparation-v2/review-1-full.json",
+    "sha256": "21dcb4e5516fd6538a1be3d2821b39d2ec5428b4858478368879b3154525135d",
+    "reason": "fact_form_equivalent misread as oldfact versus readoutpatient, not samepatient Name/Description fact equivalence; auditor reread all3216 into immutablev2 before inference"
+  },
+  "no_inference_yet": true
+}

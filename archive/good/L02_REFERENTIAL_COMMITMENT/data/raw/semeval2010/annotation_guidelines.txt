@@ -1,0 +1,344 @@
+Annotation guidelines used for Semeval task 10 -
+  “Linking Events and Their Participants in
+                  Discourse ”
+                             Josef Ruppenhofer
+                              January 22, 2010
+
+
+1     Coreference annotations
+1.1    The purpose of coreference annotations
+Our coreference annotations are intended only as a tool for evaluating NI linking.
+We allow NIs to be linked to any mention of the relevant referent rather than
+only to the most recent one, or to the most prominent one in the proximal prior
+context. In fact, an NI could be linked to a mention later in the discourse as
+long as that mention has the correct referent.
+
+1.2    Protocol
+We generally follow the format used in the MUC-7 shared task (http://www.
+itl.nist.gov/iad/894.02/related_projects/muc/proceedings/co_task.html).
+We do, however, deviate from MUC-7 in some respects.
+    • One major difference is that in some cases we use non-nominal XPs as
+      antecedents. For instance, when the demonstrative pronoun ”that” co-
+      refers with a prior sentence, as in ”I didn’t know that!”, we label co-
+      reference between ’that’ and the relevant sentence.
+    • Another more minor difference is that we only annotate whole phrases
+      while MUC annotates minimal and maximal annotation spans for the
+      head and the maximal NP that denote the referent. [By whole phrases we
+      refer to whole phrases according to human understanding. The nodes we
+      label don’t need to cover complete, single phrases in the imperfect syntax
+      trees that we use.]
+    • MUC also marks all NPs of certain morphosyntactic types as ’markables’
+      even if later they do not participate in a coreference chain. We don’t mark
+      any NPs or other phrases that are not part of a coreference chain.
+
+
+
+                                        1
+It should be pointed out that MUC coreference is extensionsally oriented. As
+an example consider that in MUC, two markables should be recorded as coref-
+erential if the text asserts them to be coreferential at ANY TIME. Thus,
+(1)         Henry Higgins, who was formerly sales director for Sudsy Soaps, be-
+            came president of Dreamy Detergents
+      should be annotated as
+(2)         <COREF ID="1" MIN="Henry Higgins">Henry Higgins, who was
+            formerly <COREF ID="2" MIN="director" REF="1" TYPE="IDENT">
+            sales director for Sudsy Soaps,</COREF></COREF> became
+            <COREF ID="3" MIN="president" REF="1" TYPE="IDENT">
+            president of Dreamy Detergents$<$/COREF$>$
+In our data, we have some cases where the true identities of some characters are
+revealed later in the story, e.g. the character of Henderson is revealed to really
+be Murillo, The Tiger of San Pedro. In this case, we formed one big coreference
+chain, even though intensionally these are different referents.
+
+
+2       Frame semantic annotations
+2.1      Frame inventory
+Our frame semantic annotations reflect the state of FrameNet in release 1.4
+alpha, which is a special release for use by Semeval task-10 participants. It will
+be available either (or both) from the main Semeval page or from the Task-10
+home page.
+
+2.2      Annotation style
+We generally follow FrameNet’s annotation policies and style. However, the
+format of our frame semantic annotations is somewhat different from those
+produced by FrameNet. The reason for this is that our annotation tool, Salto,
+doesn’t use layers as FrameNet’s Desktop does. As a result:
+      • We treat relativization as a separate frame that is evoked by the relativizer.
+        Note that for frames inside the relative clauses we only mark the relativizer
+        as a frame element but not the antecedent. (FrameNet marks the relative
+        word and the antecedent phrase on the so-called Other layer that comes
+        with the annotation set of the target of which the relativizer is a syntactic
+        argument.)
+      • We let Support verbs and prepositions evoke a Support frame in which
+        only one FE occurs for the ”Supported” XP. (In FrameNet annotations,
+        Support is labeled on the so-called part-of-speech specific layer of targets.)
+      • There also is no way of annotating frame elements on a second FE-layer,
+        which FrameNet does on some occasions.
+
+
+                                           2
+3       Null instantiation annotation
+We are interested in accounting for how core Frame Elements that are not
+expressed overtly have to be understood. The idea of null instantiation that we
+use is the same as the one that is used in FrameNet. We assume that the two
+main dimensions for understanding null instantiations are
+      • the kind of linguistic entity that enables (”licenses”) the omission and
+      • the kind of interpretation that the unexpressed argument receives
+Along the first dimension we distinguish between omissions licensed by lexical
+items (that is, by specific word senses) and omissions licensed by syntactic con-
+structions. Along the second dimension, we distinguish between omissions that
+required a definite (anaphoric or deictic) interpretation and ones that allow an
+indefinite (existential) interpretation. (More on this distinction follows below)
+
+3.1      Licensors
+As pointed out, one type of omission is licensed by specific word senses. For
+instance, pass can omit its object under definite interpretation when it is used
+in the sense of succeeding at an exam but not when it expresses transfer of
+physical possession:
+
+(3)           I barely passed ∅. [my exam]
+(4)           #He passed me ∅ for the soup. [the salt]
+
+   The other type of omissions is licensed by specific constructions. Since no
+exhaustive list of NI-licensing constructions is available, annotators have to be
+ready to discover and judge novel cases. However, there are some relatively
+well-known constructions that license null-instantiation and we give a list of
+them below, specifying the argument whose omission they enable and the inter-
+pretation type of that argument.
+   In deciding whether a particular omission is licensed by a lexical item or a
+construction one can use the following criteria:
+
+      • If one can replace the predicate that is missing an argument with others
+        that are semantically unrelated, then the omission is most likely construc-
+        tional. An example are the missing subjects of imperatives.
+
+        (5)          ∅ {Steal/find/buy/return/destroy} the watch by tomorrow!
+
+      • If the omissibility disappears when you change use the predicate in differ-
+        ent syntactic constructions, then the omission is probably constructionally
+        licensed. If it is preserved, the omission is most likely lexically licensed.
+           – Constructional licensor passive
+               (6)       My car was stolen ∅ last night.
+
+
+                                             3
+               (7)         #∅ stole my car last night.
+          – Lexical licensor know
+               (8)         Did he know ∅? (Question)
+               (9)         I did not know ∅. (Statement)
+               (10)        So I think in order to know ∅, you must go there and see if
+                           it’s a good or bad country. (Non-finite purpose clause)
+
+3.1.1     List of some well-known NI-licensing constructions
+The list below is incomplete but it contains the most well-known cases of null
+instantiation licensed by constructions.
+
+   • Agent of Passives : existential
+        (11)          My uncle was robbed ∅ on that street last night.
+   • Addressee (intended Agent) of an Imperative : anaphoric
+        (12)          ∅ Please take the trash out.
+
+   • Object omission of Instructional imperatives (e.g. in recipes) : deic-
+     tic/anaphoric
+        (13)          Season ∅ to taste and serve ∅
+   • Subjects of product label statements : deictic/anaphoric
+
+        (14)          ∅ Contains alcohol [e.g. on a bottle of medicine]
+   • Various kinds of roles and grammatical functions in telegraphic style (as
+     used e.g. in news headlines)
+        (15)          Dravid says ∅ has nothing to prove after ODI recall
+
+   • Objects in speech reporting clauses expressing Judgment : anaphoric
+        (16)          ”Stop being melodramatic. Its only one of my fifth year stu-
+                      dents,” she scolded ∅, settling herself in her comfortable, if rather
+                      mucky chair.
+
+   • Objects of experiential perfects : existential
+        (17)          Have you ever stolen ∅ before? If so what? Do you think stealing
+                      is a serious crime?
+   • Objects of generic/habitual clauses : existential
+
+        (18)          Lions kill ∅ at night.
+
+   • Objects of verbs appearing in the away-construction : existential
+
+
+                                               4
+      (19)      Do you seriously think that there has been any election in this
+                century where both political machines have not been defrauding
+                ∅ away as hard as possible?
+   • Objects of the Verb one’s way-construction : existential
+      (20)      This is the story of Major Benson Winifred Payne, a Marine
+                Corp Force Reconnaissance officer who has killed ∅ his way out
+                of a job.
+
+3.2    Interpretation type
+While our annotations also include a classification of an NI instance according to
+the type of licensor, lexical or constructional, the main piece of information we
+need for Semeval is the interpretation type. We assume that a binary distinc-
+tion between anaphoric/deictic intepretation on the one hand and existential
+interpretation on the other hand is all that we need.
+    The two kinds of null instantiation involve different processes of recovering
+the unrealized argument. In cases of indefinite/existential omission, there need
+not be any overt mention of an indefinite NP in the linguistic context nor does
+there have to be a referent of the kind denoted by the omitted argument in
+the physical discourse setting. However, it seems to be a requirement for cases
+of definite (anaphoric or deictic) omissions that either a specic entity has been
+mentioned or it is inferable from prior discourse context or that one is present
+in the physical discourse setting. These properties correlate with the differential
+felicitousness of the two types of omission in various discourse contexts.
+
+   • With indefinite null instantiation, both speaker and hearer can claim ig-
+     norance of the exact identity of the referent; not so in the case of definite
+     null instantiation.
+      (21)      #Kim donated $20 ∅ but I wonder who she gave it to. (DNI)
+      (22)      Kim was reading ∅ but I don’t know what he was reading. (INI)
+   • In contexts of definite omission, a definite pronoun can usually substitute
+     for the omission but not in the case of indefinite omission. Complemen-
+     tarily, in contexts of indefinite omission, an indefinite pronoun can usually
+     substitute for the omission but not in the case of definite omission.
+      (23)      Did the Red Cross call you about a donation?-Yes, and I con-
+                tributed $20 to them/#somebody. (DNI)
+      (24)      Are you hungry?-No, I’ve already eaten #it/something. (INI)
+   • When an INI-verb heads a negated clause, existence of a referent for the
+     null instantiated argument is not entailed. By contrast, in the case of DNI
+     verbs, the null-instantiated argument is entailed to have a referent.
+      (25)      I’m not cooking ∅. Do you see any food around here? (INI)
+
+
+                                        5
+      (26)     I did’t know ∅. #Is there anything to know? (DNI)
+   • A DNI omission cannot normally occur at the beginning of a discourse,
+     unless speaker and hearer are physically in the context of the referent (28),
+     or unless they have enough common ground to be able to pick up on an
+     earlier conversation (29).
+      (27)     Hello Sir, may I ask you something? #Did Mrs Clinton get
+               revenge? [asked of an unfamiliar person in the street] (DNI)
+      (28)     Please come in ∅! [the apartment where the speaker is receiving
+               the hearer] (DNI)
+      (29)     So did you find out? [the answer to the question we discussed
+               earlier] (DNI)
+      For INI omissions, it is not a problem to occur at the beginning of a
+      discourse.
+
+        – I’ve been mugged ∅! Please, sir, call the police. [walking up to
+          stranger in the street] (INI)
+        – John can’t come to the phone now, he’s busy reading ∅. [reply to
+          caller inquiring for fellow resident of speaker] (INI)
+
+3.3    How to tell that something is missing
+In FrameNet’s frames, the core Frame elements also can have certain relations
+to each other, so that they are not completely independent. This also affects
+the need for NI resolution. There are 3 types of relations:
+
+   • CoreSet: the relation between a set of FEs of which either one or more
+     must be expressed overtly, or of which one must be annotated as NI. The
+     idea is that the FEs in the group are pragmatically equivalent and at least
+     one of them is needed to form a felicitous utterance. For instance, in the
+     Attempt suasion frame, the FEs Speaker and Medium form a CoreSet.
+
+      (30)     [Dennis Rodman Speaker] encourages moderation in all things.
+      (31)     [This book Medium] encourages moderation in all things.
+      (32)     [In is book Medium], [Dennis Rodman Speaker] encourages
+               moderation in all things.
+      If none of the elements in a CoreSet is expressed overtly, then the FE that
+      makes most sense in the context ought to be annotated. For instance, in
+      (33), one should annotate Medium as INI rather than Speaker since only
+      the article is mentioned in the context.
+
+      (33)     Did you read this article? People are strongly encouraged to
+               save more even though that will worsen the recession!
+
+
+                                        6
+   • Excludes: a symmetric relation between two elements that says that
+     they cannot be co-present. For instance, in the Similarity frame, the
+     FE Entities excludes the FE Entity 1 and Entity 2. Conversely, each of
+     Entity 1 and Entity 2 also excludes Entities.
+
+       (34)     [My car Entity 1] is similar [to his Entity 2].
+       (35)     [The two cars Entities] are similar.
+
+       Now, when Entities is overtly instantiated, there is no need to provide a
+       NI annotation for Entity 1 and Entity 2. And conversely, when one or
+       both of Entity 1 and Entity 2 is instantiated, then there is no need to
+       provide an NI-annotation for Entities.
+   • Requires: if element A requires element B and if A is present, then
+     element B must be either realized overtly or annotated as NI. The converse
+     is not true unless also explicitly stated: element B may occur without
+     element A.
+       As an example, consider the Personal relationship frame’s elements Partner 1
+       and Partner 2 . Both of them stand in an Excludes relationship to Part-
+       ners. But additionally, they stand in a Requires relationship to each other.
+       So in a sentence like 36, Partner 1 would be annotated directly on the tar-
+       get word and Partner 2 would be marked as DNI.
+
+       (36)     You should meet the husband!
+
+Note that these relations are specified in the frame relations file (frRelation.xml)
+of the FN distribution. Technically, they are treated as part of a frame-to-frame
+relation as e.g. in the case of Inheritance. In the case of CoreSet, Requires, and
+Excludes, the parent and child frames of the relation just happen to be the same
+frame.
+    Finally, some lexical units are said to incorporate core Frame Elements.
+For instance, the Placing frame contains verbs like box and archive, which, unlike
+put or place, provide some idea of what kind of place the Goal location is.
+(37)      Mike, think about it - this will be the last digest you’ll need to archive!
+   If the Goal location of a verb like box is unexpressed, there is no need
+to annotate INI. The information that a particular lexical unit incorporates
+a particular FE is specified in the lu-annotation files (to be found under the
+luXML directory).
+
+3.4     How the annotation is carried out
+The null instantiation annotation consists of two steps: the omissions are clas-
+sified in terms of their properties and they are linked to their antecedents, if
+that is possible.
+     The classification of the omissions is carried out by setting so-called flags on
+frame elements. The meanings of the main flags are:
+
+                                         7
+DNI The FE is not realized as an overt syntactic dependent of the predicate
+    evoking its frame instance. The referent is understood anaphorically or
+    deictically.
+INI The FE is not realized as an overt syntactic dependent of the predicate
+    evoking its frame instance. The referent is understood existentially.
+Lexical licensor The omission of the FE is made possible by the idiosyncratic
+     meaning of the frame evoking element.
+Constructioal licensor The omission of the FE is made possible by the syn-
+    tactic constructions in the context or by the genre of the text.
+
+    Additionally, there are uncertainty flags that allow the annotators to note
+that they are not sure about the particular value they chose for the interpre-
+tation (DNI v. INI) or the licensor (lexical v. constructional) annotation.
+Additionally, in those cases where a DNI could be linked to an overt antecedent
+but the annotator is unsure that the antecedent is right, they can also set an
+“Uncertain antecedent” flag.
+Annotators can get some help in figuring out if their frame and NI annotations
+are complete and consistent. After having annotated the overt FEs, they can
+run a checker script that reports, for instance, whether the constraints about
+CoreSets, Excludes, Requires relations between FEs have been observed or not.
+E.g. if none of the elements of a CoreSet are overtly realized, they are reminded
+that they need to annotate at least one of them as NI. The checker script also
+outputs all the coreference chains in the text to give the annotators a better
+overview of which mentions they have linked together in a chain.
+Finally, multiple annotators carry out the annotation of both training (2) and
+test data (3). The final versions of both data sets are produced by merging and
+adjudicating the individual annotations.
+
+3.5    Comparison to NI annotations in FrameNet
+Note that our and the FrameNet NI annotations are not completely comparable
+because FrameNet collapses one of the two distinctions. In particular, we retain
+the distinction between definite/anaphoric and indefinite/existential interpreta-
+tion type also for those null instantiations that are enabled by particular syntac-
+tic constructions, while FrameNet simply labels all null instantiations licensed by
+a syntactic constructions as CNI (”constructional null instantiation”), regard-
+less of what the interpretation type is. Accordingly, the FrameNet data does
+not reveal that the constructionally omitted agent of a passive is existentially
+interpreted, while the intended Agent of an imperative has an anaphoric/deictic
+interpretation.
+
+
+
+
+                                        8
+

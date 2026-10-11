@@ -1,0 +1,24 @@
+S_i1_c4_o1_w1000|-|-|--init 1 --corpus c4 --order 1 --warm 1000 --save-branch-states
+S_i2_c4_o2_w1000|-|-|--init 2 --corpus c4 --order 2 --warm 1000 --save-branch-states
+S_i1_c4_o1_b100_eps1_w1000|S_i1_c4_o1_w1000|100|--init 1 --corpus c4 --order 1 --warm 1000 --branch 100 --eps 1
+S_i1_c4_o1_b250_eps1_w1000|S_i1_c4_o1_w1000|250|--init 1 --corpus c4 --order 1 --warm 1000 --branch 250 --eps 1
+S_i1_c4_o1_b500_eps1_w1000|S_i1_c4_o1_w1000|500|--init 1 --corpus c4 --order 1 --warm 1000 --branch 500 --eps 1
+S_i1_c4_o1_b1000_eps1_w1000|S_i1_c4_o1_w1000|1000|--init 1 --corpus c4 --order 1 --warm 1000 --branch 1000 --eps 1
+S_i1_c4_o1_b2000_eps1_w1000|S_i1_c4_o1_w1000|2000|--init 1 --corpus c4 --order 1 --warm 1000 --branch 2000 --eps 1
+S_i1_c4_o1_b250_tocode_too1250_w1000|S_i1_c4_o1_w1000|250|--init 1 --corpus c4 --order 1 --warm 1000 --branch 250 --to-corpus code --to-order 1250
+S_i1_c4_o1_b1000_tocode_too2000_w1000|S_i1_c4_o1_w1000|1000|--init 1 --corpus c4 --order 1 --warm 1000 --branch 1000 --to-corpus code --to-order 2000
+S_i1_c4_o1_b250_eps1_ro|S_i1_c4_o1|250|--init 1 --corpus c4 --order 1 --branch 250 --eps 1 --reset-opt
+S_i1_c4_o1_b500_eps1_ro|S_i1_c4_o1|500|--init 1 --corpus c4 --order 1 --branch 500 --eps 1 --reset-opt
+S_i1_c4_o1_b1000_eps1_ro|S_i1_c4_o1|1000|--init 1 --corpus c4 --order 1 --branch 1000 --eps 1 --reset-opt
+S_i2_c4_o2_b100_eps1_w1000|S_i2_c4_o2_w1000|100|--init 2 --corpus c4 --order 2 --warm 1000 --branch 100 --eps 1
+S_i2_c4_o2_b250_eps1_w1000|S_i2_c4_o2_w1000|250|--init 2 --corpus c4 --order 2 --warm 1000 --branch 250 --eps 1
+S_i2_c4_o2_b500_eps1_w1000|S_i2_c4_o2_w1000|500|--init 2 --corpus c4 --order 2 --warm 1000 --branch 500 --eps 1
+S_i2_c4_o2_b1000_eps1_w1000|S_i2_c4_o2_w1000|1000|--init 2 --corpus c4 --order 2 --warm 1000 --branch 1000 --eps 1
+S_i2_c4_o2_b2000_eps1_w1000|S_i2_c4_o2_w1000|2000|--init 2 --corpus c4 --order 2 --warm 1000 --branch 2000 --eps 1
+S_i2_c4_o2_b250_tocode_too2250_w1000|S_i2_c4_o2_w1000|250|--init 2 --corpus c4 --order 2 --warm 1000 --branch 250 --to-corpus code --to-order 2250
+S_i2_c4_o2_b1000_tocode_too3000_w1000|S_i2_c4_o2_w1000|1000|--init 2 --corpus c4 --order 2 --warm 1000 --branch 1000 --to-corpus code --to-order 3000
+S_i2_c4_o2_b250_eps1_ro|S_i2_c4_o2|250|--init 2 --corpus c4 --order 2 --branch 250 --eps 1 --reset-opt
+S_i2_c4_o2_b500_eps1_ro|S_i2_c4_o2|500|--init 2 --corpus c4 --order 2 --branch 500 --eps 1 --reset-opt
+S_i2_c4_o2_b1000_eps1_ro|S_i2_c4_o2|1000|--init 2 --corpus c4 --order 2 --branch 1000 --eps 1 --reset-opt
+S_i1_c4_o1_b2000_w1000|S_i1_c4_o1_w1000|2000|--init 1 --corpus c4 --order 1 --warm 1000 --branch 2000
+S_i2_c4_o2_b2000_w1000|S_i2_c4_o2_w1000|2000|--init 2 --corpus c4 --order 2 --warm 1000 --branch 2000

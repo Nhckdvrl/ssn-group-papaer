@@ -1,0 +1,19 @@
+{
+  "query": "\"Published Erratum\"[Publication Type] AND \"pubmed pmc\"[sb]",
+  "sample_size": 500,
+  "seed": 20260908,
+  "review_seed": 20260909,
+  "review_quotas": {
+    "exact_replacement_candidate": 45,
+    "location_plus_new_candidate": 4,
+    "numeric_or_symbolic_candidate": 50,
+    "metadata_or_nonpropositional": 30,
+    "semantic_not_alignable": 3,
+    "unusable_or_ambiguous": 30
+  },
+  "pubmed_batch_size": 100,
+  "pmc_batch_size": 20,
+  "request_interval_seconds": 0.36,
+  "tool": "l07-official-correction-audit",
+  "email": ""
+}

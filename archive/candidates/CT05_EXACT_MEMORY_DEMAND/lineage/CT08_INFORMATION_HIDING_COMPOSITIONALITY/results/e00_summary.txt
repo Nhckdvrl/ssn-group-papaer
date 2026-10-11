@@ -1,0 +1,20 @@
+{'A': 400, 'B': 400, 'C': 400} A∩B: 400
+  arm A: mean score 0.274, errors 28, median sec 99
+  arm B: mean score 0.346, errors 25, median sec 129
+  arm C: mean score 0.515, errors 0, median sec 123
+
+[gate 1] A - B = -7.2 points, 95% CI [-12.8, -1.7]  -> pass: False
+   by dataset: agnews: A 0.38 / B 0.44 / C 0.40, app_reviews: A 0.29 / B 0.33 / C 0.53, formality: A 0.32 / B 0.40 / C 0.61, imdb: A 0.25 / B 0.43 / C 0.63, metaphors: A 0.32 / B 0.36 / C 0.56, multinli: A 0.20 / B 0.36 / C 0.60, negation: A 0.30 / B 0.24 / C 0.66, spam: A 0.27 / B 0.38 / C 0.58, trec_coarse: A 0.19 / B 0.30 / C 0.25, yahoo: A 0.24 / B 0.23 / C 0.33
+   by context_len: 16384: A 0.27 / B 0.32 / C 0.53, 32768: A 0.28 / B 0.37 / C 0.50
+   by task_group: counting: A 0.22 / B 0.27 / C 0.33, timeline: A 0.26 / B 0.29 / C 0.55, user: A 0.35 / B 0.47 / C 0.68
+
+[gate 2] cross-domain skeleton distance over 27 cells: A 0.762, B 0.737, A-B 0.026 [-0.002, 0.056]  -> pass: False
+   skeleton length median: A 103.5, B 37.5
+
+[leakage] arm A: payload chars shown to root, median 6894; share of shown text that is payload, mean 0.47; share of context shown, mean 0.21
+   iterations median 2.0, hit-max 0.01; sub-calls median 0.0, zero-sub-call share 0.75
+
+[leakage] arm B: payload chars shown to root, median 19741; share of shown text that is payload, mean 0.66; share of context shown, mean 0.25
+   iterations median 7.5, hit-max 0.44; sub-calls median 0.0, zero-sub-call share 0.69
+
+VERDICT (frozen): KILL

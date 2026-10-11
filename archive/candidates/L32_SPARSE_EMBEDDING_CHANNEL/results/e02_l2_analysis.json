@@ -1,0 +1,1870 @@
+{
+  "cells": [
+    "ca_P1_explicit_s0",
+    "ca_P1_explicit_s1",
+    "ca_P2_render_s0",
+    "ca_P2_render_s1",
+    "ca_P3_produce_s0",
+    "ca_P3_produce_s1",
+    "es_P1_explicit_s0",
+    "es_P1_explicit_s1",
+    "es_P2_render_s0",
+    "es_P2_render_s1",
+    "es_P3_produce_s0",
+    "es_P3_produce_s1",
+    "ro_P1_explicit_s0",
+    "ro_P1_explicit_s1",
+    "ro_P2_render_s0",
+    "ro_P2_render_s1",
+    "ro_P3_produce_s0",
+    "ro_P3_produce_s1"
+  ],
+  "arms": {
+    "seed_ceiling": {
+      "n_pairs": 9,
+      "k12": 11.666666666666666,
+      "k15": 14.555555555555555,
+      "k18": 17.444444444444443,
+      "k100": 93.22222222222223,
+      "spearman_full_vocab": 0.967334081595815
+    },
+    "prompt_clean": {
+      "n_pairs": 18,
+      "k12": 4.777777777777778,
+      "k15": 6.111111111111111,
+      "k18": 8.555555555555555,
+      "k100": 77.38888888888889,
+      "spearman_full_vocab": 0.9871268387690486
+    },
+    "language_confounded": {
+      "n_pairs": 18,
+      "k12": 7.166666666666667,
+      "k15": 9.777777777777779,
+      "k18": 11.61111111111111,
+      "k100": 26.22222222222222,
+      "spearman_full_vocab": 0.6784933866922791
+    }
+  },
+  "frequency_control": {
+    "ca_P1_explicit_s0": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 15,
+      "median_template_rank": 10.0,
+      "median_matched_control_rank": 314.0,
+      "wilcoxon_p": 6.103515625e-05,
+      "beta_log_count": 0.5562476644200302,
+      "beta_is_template": 0.34494686109911676
+    },
+    "ca_P1_explicit_s1": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 15,
+      "median_template_rank": 10.0,
+      "median_matched_control_rank": 315.0,
+      "wilcoxon_p": 6.103515625e-05,
+      "beta_log_count": 0.5530925191775452,
+      "beta_is_template": 0.3400158612717177
+    },
+    "ca_P2_render_s0": {
+      "n_template_tokens_seen": 15,
+      "n_matched": 14,
+      "median_template_rank": 8.5,
+      "median_matched_control_rank": 197.0,
+      "wilcoxon_p": 0.0001220703125,
+      "beta_log_count": 0.5523719626966833,
+      "beta_is_template": 0.32066115087878017
+    },
+    "ca_P2_render_s1": {
+      "n_template_tokens_seen": 15,
+      "n_matched": 14,
+      "median_template_rank": 8.5,
+      "median_matched_control_rank": 188.5,
+      "wilcoxon_p": 0.0001220703125,
+      "beta_log_count": 0.5489858448367162,
+      "beta_is_template": 0.31617333581680923
+    },
+    "ca_P3_produce_s0": {
+      "n_template_tokens_seen": 18,
+      "n_matched": 17,
+      "median_template_rank": 9.0,
+      "median_matched_control_rank": 249.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.5465359788344585,
+      "beta_is_template": 0.351966833929447
+    },
+    "ca_P3_produce_s1": {
+      "n_template_tokens_seen": 18,
+      "n_matched": 17,
+      "median_template_rank": 11.0,
+      "median_matched_control_rank": 233.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.5446351090446673,
+      "beta_is_template": 0.34599054459637946
+    },
+    "es_P1_explicit_s0": {
+      "n_template_tokens_seen": 16,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 372.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.555972073914381,
+      "beta_is_template": 0.37577874838360553
+    },
+    "es_P1_explicit_s1": {
+      "n_template_tokens_seen": 16,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 309.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.5547163961118904,
+      "beta_is_template": 0.37670955376711573
+    },
+    "es_P2_render_s0": {
+      "n_template_tokens_seen": 14,
+      "n_matched": 14,
+      "median_template_rank": 7.0,
+      "median_matched_control_rank": 84.0,
+      "wilcoxon_p": 0.000978706525317055,
+      "beta_log_count": 0.5602131712746783,
+      "beta_is_template": 0.3784481535821284
+    },
+    "es_P2_render_s1": {
+      "n_template_tokens_seen": 14,
+      "n_matched": 14,
+      "median_template_rank": 7.0,
+      "median_matched_control_rank": 93.0,
+      "wilcoxon_p": 0.0001220703125,
+      "beta_log_count": 0.5576258358119873,
+      "beta_is_template": 0.3788672645795415
+    },
+    "es_P3_produce_s0": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 245.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.539844034949469,
+      "beta_is_template": 0.43819976671841526
+    },
+    "es_P3_produce_s1": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 194.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.5364738955199506,
+      "beta_is_template": 0.4390719642844008
+    },
+    "ro_P1_explicit_s0": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 233.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.555823020386916,
+      "beta_is_template": 0.3834894948870817
+    },
+    "ro_P1_explicit_s1": {
+      "n_template_tokens_seen": 17,
+      "n_matched": 16,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 232.0,
+      "wilcoxon_p": 3.0517578125e-05,
+      "beta_log_count": 0.5598004581595125,
+      "beta_is_template": 0.382069352346924
+    },
+    "ro_P2_render_s0": {
+      "n_template_tokens_seen": 15,
+      "n_matched": 14,
+      "median_template_rank": 7.5,
+      "median_matched_control_rank": 187.0,
+      "wilcoxon_p": 0.0001220703125,
+      "beta_log_count": 0.5674892924545799,
+      "beta_is_template": 0.3181659289813528
+    },
+    "ro_P2_render_s1": {
+      "n_template_tokens_seen": 15,
+      "n_matched": 14,
+      "median_template_rank": 9.0,
+      "median_matched_control_rank": 163.0,
+      "wilcoxon_p": 0.000978706525317055,
+      "beta_log_count": 0.5697352535431985,
+      "beta_is_template": 0.3220668872154962
+    },
+    "ro_P3_produce_s0": {
+      "n_template_tokens_seen": 18,
+      "n_matched": 17,
+      "median_template_rank": 8.0,
+      "median_matched_control_rank": 131.0,
+      "wilcoxon_p": 0.00029247830381213256,
+      "beta_log_count": 0.5701800379796464,
+      "beta_is_template": 0.3648561647891994
+    },
+    "ro_P3_produce_s1": {
+      "n_template_tokens_seen": 18,
+      "n_matched": 17,
+      "median_template_rank": 8.0,
+      "median_matched_control_rank": 127.0,
+      "wilcoxon_p": 0.00029247830381213256,
+      "beta_log_count": 0.570859578258745,
+      "beta_is_template": 0.3648588486739532
+    }
+  },
+  "tickets": {
+    "ca_P1_explicit_s0": [
+      [
+        2075,
+        "atal",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        29907,
+        "C",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        1273,
+        "%",
+        false
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ],
+      [
+        4223,
+        "English",
+        true
+      ]
+    ],
+    "ca_P1_explicit_s1": [
+      [
+        2075,
+        "atal",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        29907,
+        "C",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        1273,
+        "%",
+        false
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ]
+    ],
+    "ca_P2_render_s0": [
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        11732,
+        "Catal",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        29995,
+        "%",
+        false
+      ]
+    ],
+    "ca_P2_render_s1": [
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        11732,
+        "Catal",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        29995,
+        "%",
+        false
+      ]
+    ],
+    "ca_P3_produce_s0": [
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        263,
+        "a",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ]
+    ],
+    "ca_P3_produce_s1": [
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        29915,
+        "'",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        273,
+        "an",
+        true
+      ],
+      [
+        30064,
+        "·",
+        false
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        263,
+        "a",
+        true
+      ],
+      [
+        2703,
+        "om",
+        false
+      ]
+    ],
+    "es_P1_explicit_s0": [
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        728,
+        "ish",
+        true
+      ],
+      [
+        15495,
+        "Span",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        304,
+        "to",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29897,
+        ")",
+        false
+      ],
+      [
+        313,
+        "(",
+        false
+      ]
+    ],
+    "es_P1_explicit_s1": [
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        728,
+        "ish",
+        true
+      ],
+      [
+        15495,
+        "Span",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        304,
+        "to",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29897,
+        ")",
+        false
+      ],
+      [
+        313,
+        "(",
+        false
+      ]
+    ],
+    "es_P2_render_s0": [
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        8667,
+        "Target",
+        true
+      ],
+      [
+        29897,
+        ")",
+        false
+      ],
+      [
+        319,
+        "A",
+        false
+      ],
+      [
+        856,
+        "...",
+        false
+      ],
+      [
+        1939,
+        "No",
+        false
+      ]
+    ],
+    "es_P2_render_s1": [
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        8667,
+        "Target",
+        true
+      ],
+      [
+        319,
+        "A",
+        false
+      ],
+      [
+        29897,
+        ")",
+        false
+      ],
+      [
+        856,
+        "...",
+        false
+      ],
+      [
+        10208,
+        "rela",
+        false
+      ]
+    ],
+    "es_P3_produce_s0": [
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        7138,
+        "Produ",
+        true
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        263,
+        "a",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        29897,
+        ")",
+        false
+      ]
+    ],
+    "es_P3_produce_s1": [
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        7138,
+        "Produ",
+        true
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        10432,
+        "Spanish",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        263,
+        "a",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        1,
+        "<s>",
+        false
+      ],
+      [
+        29897,
+        ")",
+        false
+      ]
+    ],
+    "ro_P1_explicit_s0": [
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        2480,
+        "oman",
+        true
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29934,
+        "R",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ],
+      [
+        26036,
+        "Original",
+        false
+      ],
+      [
+        15950,
+        "Having",
+        false
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        2404,
+        "bum",
+        false
+      ]
+    ],
+    "ro_P1_explicit_s1": [
+      [
+        4103,
+        "Trans",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        24636,
+        "English",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        9632,
+        "late",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        2480,
+        "oman",
+        true
+      ],
+      [
+        1494,
+        "following",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29934,
+        "R",
+        true
+      ],
+      [
+        515,
+        "from",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ],
+      [
+        15950,
+        "Having",
+        false
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        29889,
+        ".",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        7605,
+        "Select",
+        false
+      ]
+    ],
+    "ro_P2_render_s0": [
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        7605,
+        "Select",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        2404,
+        "bum",
+        false
+      ],
+      [
+        22326,
+        "mp",
+        false
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ],
+      [
+        8667,
+        "Target",
+        true
+      ],
+      [
+        26036,
+        "Original",
+        false
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        278,
+        "the",
+        true
+      ]
+    ],
+    "ro_P2_render_s1": [
+      [
+        2446,
+        "next",
+        true
+      ],
+      [
+        4050,
+        "render",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        964,
+        "into",
+        true
+      ],
+      [
+        3529,
+        "Please",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        29896,
+        "1",
+        false
+      ],
+      [
+        7605,
+        "Select",
+        false
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        22326,
+        "mp",
+        false
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        4435,
+        "Source",
+        true
+      ],
+      [
+        8667,
+        "Target",
+        true
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ],
+      [
+        2404,
+        "bum",
+        false
+      ],
+      [
+        278,
+        "the",
+        true
+      ],
+      [
+        29889,
+        ".",
+        true
+      ]
+    ],
+    "ro_P3_produce_s0": [
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        15950,
+        "Having",
+        false
+      ],
+      [
+        2404,
+        "bum",
+        false
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        7138,
+        "Produ",
+        true
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ],
+      [
+        263,
+        "a",
+        true
+      ]
+    ],
+    "ro_P3_produce_s1": [
+      [
+        6466,
+        "Output",
+        true
+      ],
+      [
+        4290,
+        "Input",
+        true
+      ],
+      [
+        1873,
+        "version",
+        true
+      ],
+      [
+        29901,
+        ":",
+        true
+      ],
+      [
+        10541,
+        "sentence",
+        true
+      ],
+      [
+        29871,
+        "",
+        true
+      ],
+      [
+        13866,
+        "Below",
+        true
+      ],
+      [
+        4223,
+        "English",
+        true
+      ],
+      [
+        338,
+        "is",
+        true
+      ],
+      [
+        13,
+        "\n",
+        true
+      ],
+      [
+        15950,
+        "Having",
+        false
+      ],
+      [
+        967,
+        "its",
+        true
+      ],
+      [
+        2404,
+        "bum",
+        false
+      ],
+      [
+        297,
+        "in",
+        true
+      ],
+      [
+        7138,
+        "Produ",
+        true
+      ],
+      [
+        346,
+        "ce",
+        true
+      ],
+      [
+        5283,
+        "icol",
+        false
+      ],
+      [
+        6017,
+        "rom",
+        false
+      ]
+    ]
+  }
+}

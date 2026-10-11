@@ -1,0 +1,262 @@
+{
+  "experiment": "E17",
+  "scope": "engineering preflight; no trained heads or closed-loop results",
+  "source_sha256": "0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa",
+  "component_controls": {
+    "gpu_used": false,
+    "sources": [
+      {
+        "task": "tworoom",
+        "pairs": 47450,
+        "frames": 9295,
+        "episodes": 100,
+        "encoding_error": 0.02153325080871582,
+        "native_cost_error": 0.0,
+        "prefix": {
+          "max_abs_error": 1.1920928955078125e-06,
+          "prefix_cost_max_abs_error": 0.0,
+          "primitive_steps": 5,
+          "unused_tail_invariant": true
+        },
+        "losses": {
+          "REAL": 0.17191654443740845,
+          "MIX": 0.1710587739944458
+        },
+        "provenance": {
+          "original_feature_sha256": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+          "row_mapping_sha256": "9df689ac8abd8093a4e3e0890ef01fcb3752fd1ff08b3da9bfe6d4942031b0ec",
+          "geometry_sha256": "060bd5cb180b9cc04b4ffa0c2735565949819325911cac410bb03f7814e2e390"
+        }
+      },
+      {
+        "task": "pusht",
+        "pairs": 91069,
+        "frames": 13279,
+        "episodes": 100,
+        "encoding_error": 0.0017347410321235657,
+        "native_cost_error": 3.0517578125e-05,
+        "prefix": {
+          "max_abs_error": 7.152557373046875e-07,
+          "prefix_cost_max_abs_error": 2.384185791015625e-07,
+          "primitive_steps": 5,
+          "unused_tail_invariant": true
+        },
+        "losses": {
+          "REAL": 0.24226897954940796,
+          "MIX": 0.2440463751554489
+        },
+        "provenance": {
+          "original_feature_sha256": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+          "row_mapping_sha256": "9a89187cfe6bf114bee4a9c320807616db7bd368bdd40bebba88f26a75dde30c",
+          "geometry_sha256": "c86ef1ec76b7bb2c4bdde837b1ef788b1e2065b381eb229f841a13ee25ecdd64"
+        }
+      }
+    ],
+    "harness_sha256": "0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa",
+    "loss_weights": {
+      "REAL": [
+        0.5,
+        0.5
+      ],
+      "MIX": [
+        0.25,
+        0.25,
+        0.5
+      ]
+    },
+    "cem_calls": 30,
+    "summary_cells": 24,
+    "summary_rows": 384,
+    "components_passed": true,
+    "passed": false,
+    "cache_encoding_match": "CPU original tolerance failed; strict CUDA cache preflight pending",
+    "original_component_result": "/tmp/task_factor_cpu_components_original_result.json",
+    "scope": "CPU math/CEM/source/geometry controls passed; cache numeric integrity is a separate pending gate",
+    "current_harness_sha256": "0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa"
+  },
+  "same_original_cuda_path_controls": {
+    "passed": true,
+    "no_head_training": true,
+    "no_episodes": true,
+    "records": [
+      {
+        "task": "tworoom",
+        "passed_original_tolerance_cuda": true,
+        "atol": 0.0002,
+        "rtol": 0.0002,
+        "indexmap": [
+          {
+            "cache_index": 0,
+            "episode": 6,
+            "local_frame": 0,
+            "source_chunk_row": 501,
+            "chunk_start": 0,
+            "within_chunk": 0,
+            "count": 101
+          },
+          {
+            "cache_index": 4647,
+            "episode": 5498,
+            "local_frame": 6,
+            "source_chunk_row": 505961,
+            "chunk_start": 0,
+            "within_chunk": 6,
+            "count": 101
+          },
+          {
+            "cache_index": 9294,
+            "episode": 9984,
+            "local_frame": 100,
+            "source_chunk_row": 919272,
+            "chunk_start": 0,
+            "within_chunk": 100,
+            "count": 101
+          }
+        ],
+        "pixel_tensor_sha256": [
+          "c93d61062f211d724841546c130e04164491940a73fea65285342de6be5759d5",
+          "454e32357610f75beb6f8d1d2f5283209c47a4d23e1f009a0f0de96a16638cac",
+          "bc85213f070b61fd6315f4c41a1fd80af429dbaf939a80cd5f6c96fd2260d7c6"
+        ],
+        "cache_dtype": "torch.float32",
+        "cpu_dtype": "torch.float32",
+        "cuda_dtype": "torch.float32",
+        "model_dtype": "torch.float32",
+        "checkpoint_sha256": "0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119",
+        "original_feature_sha256": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+        "image_tensor_ast_sha256": "43e522601e02503688a5cedf7ca1b195f8e2fda8ce81de3d3ce5aa8faba789ca",
+        "encode_ast_sha256": "387ef433b7b1c011a94e8b8f9ecf9dc367b8894d5a9125ce2ea628f973bba2d8",
+        "cpu_cache_perframe_maxabs": [
+          0.018116354942321777,
+          0.01846301555633545,
+          0.02153325080871582
+        ],
+        "cpu_cache_perframe_mse": [
+          4.4767821236746386e-05,
+          3.0066288672969677e-05,
+          3.504568667267449e-05
+        ],
+        "cuda_cache_perframe_maxabs": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cuda_cache_perframe_mse": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cuda_cpu_perframe_maxabs": [
+          0.018116354942321777,
+          0.01846301555633545,
+          0.02153325080871582
+        ],
+        "cuda_cpu_perframe_mse": [
+          4.4767821236746386e-05,
+          3.0066288672969677e-05,
+          3.504568667267449e-05
+        ],
+        "matmul_precision": "highest",
+        "tf32_matmul": false,
+        "tf32_cudnn": true,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch_version": "2.7.1+cu128"
+      },
+      {
+        "task": "pusht",
+        "passed_original_tolerance_cuda": true,
+        "atol": 0.0002,
+        "rtol": 0.0002,
+        "indexmap": [
+          {
+            "cache_index": 0,
+            "episode": 72,
+            "local_frame": 0,
+            "source_chunk_row": 7848,
+            "chunk_start": 0,
+            "within_chunk": 0,
+            "count": 109
+          },
+          {
+            "cache_index": 6639,
+            "episode": 10883,
+            "local_frame": 56,
+            "source_chunk_row": 1346802,
+            "chunk_start": 0,
+            "within_chunk": 56,
+            "count": 128
+          },
+          {
+            "cache_index": 13278,
+            "episode": 18191,
+            "local_frame": 101,
+            "source_chunk_row": 2288267,
+            "chunk_start": 0,
+            "within_chunk": 101,
+            "count": 102
+          }
+        ],
+        "pixel_tensor_sha256": [
+          "eeb1d015996a194c05083f7085d593196631fe63e64f717887ea900729d93c03",
+          "17c46f12913cc360e1d955835e5f4a94f7b19d48a7e5f2d67d588921100ce95e",
+          "3aedde9eb07e56fc5d8401ea172198728ab073d77b8a4100d364272739ab1949"
+        ],
+        "cache_dtype": "torch.float32",
+        "cpu_dtype": "torch.float32",
+        "cuda_dtype": "torch.float32",
+        "model_dtype": "torch.float32",
+        "checkpoint_sha256": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+        "original_feature_sha256": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+        "image_tensor_ast_sha256": "43e522601e02503688a5cedf7ca1b195f8e2fda8ce81de3d3ce5aa8faba789ca",
+        "encode_ast_sha256": "387ef433b7b1c011a94e8b8f9ecf9dc367b8894d5a9125ce2ea628f973bba2d8",
+        "cpu_cache_perframe_maxabs": [
+          0.0017345994710922241,
+          0.0009916424751281738,
+          0.0009059924632310867
+        ],
+        "cpu_cache_perframe_mse": [
+          2.2527707699282473e-07,
+          7.543165025936105e-08,
+          8.528422767994925e-08
+        ],
+        "cuda_cache_perframe_maxabs": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cuda_cache_perframe_mse": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cuda_cpu_perframe_maxabs": [
+          0.0017345994710922241,
+          0.0009916424751281738,
+          0.0009059924632310867
+        ],
+        "cuda_cpu_perframe_mse": [
+          2.2527707699282473e-07,
+          7.543165025936105e-08,
+          8.528422767994925e-08
+        ],
+        "matmul_precision": "highest",
+        "tf32_matmul": false,
+        "tf32_cudnn": true,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch_version": "2.7.1+cu128"
+      }
+    ]
+  },
+  "passed_for_cuda_run": true,
+  "unchanged_original_tolerance": true,
+  "cpu_encoding_failure_retained": true,
+  "artifact": "/home/xiang/.cache/latent-wm-results/20261003-E17-task-factor-cost-preflight",
+  "artifact_sha256": {
+    "task_factor_cpu_preflight.json": "cbd5658c94321275e885a3598697987056a990b1efc9f6019ca4cdf5827f9514",
+    "task_factor_cpu_encoding_original_failure.json": "95d7374aaabf7b7c0f62bb9f825d5b47b3fe22889b2953329cd9662cb6ebb2d1",
+    "task_factor_cache_cuda_preflight.json": "c7f3200a18e80bca37f441639429b1cc3821c559fbb3fcf67a98e2586b61181f",
+    "task_factor_cache_cuda_preflight.py": "b8bd6c049782ed4e3948e2a1a4e432a0fd504a91ca1c50bba4b898a97997ecff",
+    "task_factor_cache_cuda_preflight_started_version.py": "8bf52a3832c6e10b268f769afd2a5b4c95b743b9f1d31b3edfcb3db581ac9814",
+    "task_factor_cpu_components_original_result.json": "b4826a570a2600211f95b78cbc22ef4d5f762cfdcbdb3a243818373efd5ef47d"
+  }
+}

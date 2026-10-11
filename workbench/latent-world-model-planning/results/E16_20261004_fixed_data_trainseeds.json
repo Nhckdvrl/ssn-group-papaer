@@ -1,0 +1,1554 @@
+{
+  "experiment": "E16 fixed data independent train seeds",
+  "seed0_reference": "E16_20261003_data_compute.json BASE100_u5650",
+  "successes": [
+    38,
+    19,
+    36
+  ],
+  "n": 48,
+  "records": [
+    {
+      "config": {
+        "mode": "train",
+        "cache": "/tmp/latent-wm-data/E16-base100-trainseed-cache",
+        "seed": 1,
+        "source_run": null,
+        "dataset": null,
+        "seed0_initial": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s1",
+        "output": "/tmp/latent-wm-runs/20261004-E16-fixed-data-trainseed-RTX-s1",
+        "durable": "/home/xiang/.cache/latent-wm-results/20261004-E16-fixed-data-trainseed-RTX-s1",
+        "train_seed": 1,
+        "eval_seed": 0,
+        "shuffle_seed": 33001,
+        "updates": 5650,
+        "batch_size": 128,
+        "objective": "all 3 shifted MSE + .09 SIGReg(17,1024); no target detach",
+        "precision": "bf16",
+        "gradient_clip": 1.0,
+        "lr": 5e-05,
+        "weight_decay": 0.001,
+        "optimizer": "fresh AdamW",
+        "scheduler": "constant LR pilot",
+        "architecture": {
+          "_target_": "stable_worldmodel.wm.lewm.LeWM",
+          "encoder": {
+            "_target_": "stable_pretraining.backbone.utils.vit_hf",
+            "size": "tiny",
+            "patch_size": 14,
+            "image_size": 224,
+            "pretrained": false,
+            "use_mask_token": false
+          },
+          "predictor": {
+            "_target_": "stable_worldmodel.wm.lewm.module.Predictor",
+            "num_frames": 3,
+            "input_dim": 192,
+            "hidden_dim": 192,
+            "output_dim": 192,
+            "depth": 6,
+            "heads": 16,
+            "mlp_dim": 2048,
+            "dim_head": 64,
+            "dropout": 0.1,
+            "emb_dropout": 0.0
+          },
+          "action_encoder": {
+            "_target_": "stable_worldmodel.wm.lewm.module.Embedder",
+            "input_dim": 10,
+            "emb_dim": 192
+          },
+          "projector": {
+            "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+            "input_dim": 192,
+            "output_dim": 192,
+            "hidden_dim": 2048,
+            "norm_fn": {
+              "_target_": "torch.nn.BatchNorm1d",
+              "_partial_": true
+            }
+          },
+          "pred_proj": {
+            "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+            "input_dim": 192,
+            "output_dim": 192,
+            "hidden_dim": 2048,
+            "norm_fn": {
+              "_target_": "torch.nn.BatchNorm1d",
+              "_partial_": true
+            }
+          }
+        },
+        "cache_manifest_sha256": "b753f627db1d56a873aa59be9e7d78156b66794d19dd384efa653c56bdf87246",
+        "initial_sha256": "cdb7c05eccdab4c3bf3645810144c14c5700a1baef9ffd22b6632d5cb98f6c62",
+        "initial_tensor_sha256": "31b4d8cc6305597307164866475388078248118f750275583d578d170e75ff78",
+        "source": {
+          "source_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-data-compute-RTX-s0",
+          "source_config_sha256": "e22ffe8dd106184bf9b2a1b56efd5ff8ce6fc998b8ca0b60be61bb6fec89e2a9",
+          "source_manifest_sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+          "eval_anchors_sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+          "dataset_sha256_reference": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623",
+          "dataset_rehashed_during_export": false,
+          "layout": [
+            {
+              "episode": 6,
+              "source_row": 501,
+              "cache_row": 0,
+              "frames": 101
+            },
+            {
+              "episode": 25,
+              "source_row": 2228,
+              "cache_row": 101,
+              "frames": 89
+            },
+            {
+              "episode": 53,
+              "source_row": 4759,
+              "cache_row": 190,
+              "frames": 101
+            },
+            {
+              "episode": 128,
+              "source_row": 11697,
+              "cache_row": 291,
+              "frames": 101
+            },
+            {
+              "episode": 234,
+              "source_row": 21425,
+              "cache_row": 392,
+              "frames": 79
+            },
+            {
+              "episode": 291,
+              "source_row": 26664,
+              "cache_row": 471,
+              "frames": 101
+            },
+            {
+              "episode": 303,
+              "source_row": 27800,
+              "cache_row": 572,
+              "frames": 71
+            },
+            {
+              "episode": 330,
+              "source_row": 30293,
+              "cache_row": 643,
+              "frames": 94
+            },
+            {
+              "episode": 391,
+              "source_row": 35713,
+              "cache_row": 737,
+              "frames": 101
+            },
+            {
+              "episode": 514,
+              "source_row": 47108,
+              "cache_row": 838,
+              "frames": 80
+            },
+            {
+              "episode": 628,
+              "source_row": 57448,
+              "cache_row": 918,
+              "frames": 101
+            },
+            {
+              "episode": 917,
+              "source_row": 83611,
+              "cache_row": 1019,
+              "frames": 95
+            },
+            {
+              "episode": 1275,
+              "source_row": 117005,
+              "cache_row": 1114,
+              "frames": 101
+            },
+            {
+              "episode": 1287,
+              "source_row": 118038,
+              "cache_row": 1215,
+              "frames": 101
+            },
+            {
+              "episode": 1499,
+              "source_row": 137278,
+              "cache_row": 1316,
+              "frames": 101
+            },
+            {
+              "episode": 1559,
+              "source_row": 143030,
+              "cache_row": 1417,
+              "frames": 101
+            },
+            {
+              "episode": 1620,
+              "source_row": 148553,
+              "cache_row": 1518,
+              "frames": 92
+            },
+            {
+              "episode": 1623,
+              "source_row": 148801,
+              "cache_row": 1610,
+              "frames": 88
+            },
+            {
+              "episode": 1750,
+              "source_row": 160662,
+              "cache_row": 1698,
+              "frames": 88
+            },
+            {
+              "episode": 1906,
+              "source_row": 174974,
+              "cache_row": 1786,
+              "frames": 101
+            },
+            {
+              "episode": 2103,
+              "source_row": 193097,
+              "cache_row": 1887,
+              "frames": 91
+            },
+            {
+              "episode": 2237,
+              "source_row": 205363,
+              "cache_row": 1978,
+              "frames": 101
+            },
+            {
+              "episode": 2266,
+              "source_row": 208091,
+              "cache_row": 2079,
+              "frames": 56
+            },
+            {
+              "episode": 2305,
+              "source_row": 211577,
+              "cache_row": 2135,
+              "frames": 101
+            },
+            {
+              "episode": 2503,
+              "source_row": 229697,
+              "cache_row": 2236,
+              "frames": 101
+            },
+            {
+              "episode": 2593,
+              "source_row": 238034,
+              "cache_row": 2337,
+              "frames": 101
+            },
+            {
+              "episode": 2723,
+              "source_row": 250376,
+              "cache_row": 2438,
+              "frames": 71
+            },
+            {
+              "episode": 2770,
+              "source_row": 254718,
+              "cache_row": 2509,
+              "frames": 101
+            },
+            {
+              "episode": 2773,
+              "source_row": 254961,
+              "cache_row": 2610,
+              "frames": 101
+            },
+            {
+              "episode": 2797,
+              "source_row": 257264,
+              "cache_row": 2711,
+              "frames": 101
+            },
+            {
+              "episode": 2801,
+              "source_row": 257601,
+              "cache_row": 2812,
+              "frames": 79
+            },
+            {
+              "episode": 3106,
+              "source_row": 285668,
+              "cache_row": 2891,
+              "frames": 79
+            },
+            {
+              "episode": 3544,
+              "source_row": 325453,
+              "cache_row": 2970,
+              "frames": 101
+            },
+            {
+              "episode": 3568,
+              "source_row": 327697,
+              "cache_row": 3071,
+              "frames": 101
+            },
+            {
+              "episode": 3584,
+              "source_row": 329218,
+              "cache_row": 3172,
+              "frames": 101
+            },
+            {
+              "episode": 3595,
+              "source_row": 330234,
+              "cache_row": 3273,
+              "frames": 101
+            },
+            {
+              "episode": 3755,
+              "source_row": 345002,
+              "cache_row": 3374,
+              "frames": 69
+            },
+            {
+              "episode": 4008,
+              "source_row": 368490,
+              "cache_row": 3443,
+              "frames": 101
+            },
+            {
+              "episode": 4272,
+              "source_row": 392819,
+              "cache_row": 3544,
+              "frames": 97
+            },
+            {
+              "episode": 4283,
+              "source_row": 393802,
+              "cache_row": 3641,
+              "frames": 76
+            },
+            {
+              "episode": 4305,
+              "source_row": 395773,
+              "cache_row": 3717,
+              "frames": 101
+            },
+            {
+              "episode": 4370,
+              "source_row": 401687,
+              "cache_row": 3818,
+              "frames": 60
+            },
+            {
+              "episode": 4600,
+              "source_row": 422796,
+              "cache_row": 3878,
+              "frames": 101
+            },
+            {
+              "episode": 4636,
+              "source_row": 426040,
+              "cache_row": 3979,
+              "frames": 101
+            },
+            {
+              "episode": 4750,
+              "source_row": 436719,
+              "cache_row": 4080,
+              "frames": 85
+            },
+            {
+              "episode": 4990,
+              "source_row": 458665,
+              "cache_row": 4165,
+              "frames": 91
+            },
+            {
+              "episode": 5152,
+              "source_row": 473829,
+              "cache_row": 4256,
+              "frames": 101
+            },
+            {
+              "episode": 5218,
+              "source_row": 479956,
+              "cache_row": 4357,
+              "frames": 101
+            },
+            {
+              "episode": 5273,
+              "source_row": 485013,
+              "cache_row": 4458,
+              "frames": 101
+            },
+            {
+              "episode": 5461,
+              "source_row": 502488,
+              "cache_row": 4559,
+              "frames": 82
+            },
+            {
+              "episode": 5498,
+              "source_row": 505961,
+              "cache_row": 4641,
+              "frames": 101
+            },
+            {
+              "episode": 5613,
+              "source_row": 516261,
+              "cache_row": 4742,
+              "frames": 101
+            },
+            {
+              "episode": 5639,
+              "source_row": 518720,
+              "cache_row": 4843,
+              "frames": 101
+            },
+            {
+              "episode": 5654,
+              "source_row": 520132,
+              "cache_row": 4944,
+              "frames": 61
+            },
+            {
+              "episode": 5839,
+              "source_row": 537139,
+              "cache_row": 5005,
+              "frames": 101
+            },
+            {
+              "episode": 5992,
+              "source_row": 551369,
+              "cache_row": 5106,
+              "frames": 82
+            },
+            {
+              "episode": 6168,
+              "source_row": 567750,
+              "cache_row": 5188,
+              "frames": 79
+            },
+            {
+              "episode": 6184,
+              "source_row": 569220,
+              "cache_row": 5267,
+              "frames": 101
+            },
+            {
+              "episode": 6189,
+              "source_row": 569683,
+              "cache_row": 5368,
+              "frames": 101
+            },
+            {
+              "episode": 6206,
+              "source_row": 571170,
+              "cache_row": 5469,
+              "frames": 101
+            },
+            {
+              "episode": 6215,
+              "source_row": 572005,
+              "cache_row": 5570,
+              "frames": 101
+            },
+            {
+              "episode": 6245,
+              "source_row": 574892,
+              "cache_row": 5671,
+              "frames": 101
+            },
+            {
+              "episode": 6424,
+              "source_row": 591001,
+              "cache_row": 5772,
+              "frames": 101
+            },
+            {
+              "episode": 6508,
+              "source_row": 598792,
+              "cache_row": 5873,
+              "frames": 101
+            },
+            {
+              "episode": 6542,
+              "source_row": 601824,
+              "cache_row": 5974,
+              "frames": 96
+            },
+            {
+              "episode": 6582,
+              "source_row": 605634,
+              "cache_row": 6070,
+              "frames": 76
+            },
+            {
+              "episode": 6784,
+              "source_row": 623880,
+              "cache_row": 6146,
+              "frames": 56
+            },
+            {
+              "episode": 6803,
+              "source_row": 625496,
+              "cache_row": 6202,
+              "frames": 101
+            },
+            {
+              "episode": 6827,
+              "source_row": 627692,
+              "cache_row": 6303,
+              "frames": 101
+            },
+            {
+              "episode": 6916,
+              "source_row": 635813,
+              "cache_row": 6404,
+              "frames": 73
+            },
+            {
+              "episode": 6926,
+              "source_row": 636719,
+              "cache_row": 6477,
+              "frames": 101
+            },
+            {
+              "episode": 7024,
+              "source_row": 645666,
+              "cache_row": 6578,
+              "frames": 101
+            },
+            {
+              "episode": 7134,
+              "source_row": 655930,
+              "cache_row": 6679,
+              "frames": 101
+            },
+            {
+              "episode": 7500,
+              "source_row": 689621,
+              "cache_row": 6780,
+              "frames": 87
+            },
+            {
+              "episode": 7540,
+              "source_row": 693142,
+              "cache_row": 6867,
+              "frames": 91
+            },
+            {
+              "episode": 7602,
+              "source_row": 698891,
+              "cache_row": 6958,
+              "frames": 62
+            },
+            {
+              "episode": 7637,
+              "source_row": 702101,
+              "cache_row": 7020,
+              "frames": 101
+            },
+            {
+              "episode": 7729,
+              "source_row": 710860,
+              "cache_row": 7121,
+              "frames": 101
+            },
+            {
+              "episode": 7772,
+              "source_row": 714762,
+              "cache_row": 7222,
+              "frames": 82
+            },
+            {
+              "episode": 7776,
+              "source_row": 715103,
+              "cache_row": 7304,
+              "frames": 101
+            },
+            {
+              "episode": 7891,
+              "source_row": 725674,
+              "cache_row": 7405,
+              "frames": 101
+            },
+            {
+              "episode": 7970,
+              "source_row": 733153,
+              "cache_row": 7506,
+              "frames": 99
+            },
+            {
+              "episode": 8011,
+              "source_row": 736791,
+              "cache_row": 7605,
+              "frames": 101
+            },
+            {
+              "episode": 8168,
+              "source_row": 751115,
+              "cache_row": 7706,
+              "frames": 82
+            },
+            {
+              "episode": 8283,
+              "source_row": 761905,
+              "cache_row": 7788,
+              "frames": 65
+            },
+            {
+              "episode": 8376,
+              "source_row": 770385,
+              "cache_row": 7853,
+              "frames": 101
+            },
+            {
+              "episode": 8417,
+              "source_row": 774139,
+              "cache_row": 7954,
+              "frames": 101
+            },
+            {
+              "episode": 8419,
+              "source_row": 774341,
+              "cache_row": 8055,
+              "frames": 101
+            },
+            {
+              "episode": 8656,
+              "source_row": 795829,
+              "cache_row": 8156,
+              "frames": 101
+            },
+            {
+              "episode": 8802,
+              "source_row": 809253,
+              "cache_row": 8257,
+              "frames": 96
+            },
+            {
+              "episode": 8883,
+              "source_row": 816885,
+              "cache_row": 8353,
+              "frames": 101
+            },
+            {
+              "episode": 8927,
+              "source_row": 820699,
+              "cache_row": 8454,
+              "frames": 78
+            },
+            {
+              "episode": 8934,
+              "source_row": 821362,
+              "cache_row": 8532,
+              "frames": 75
+            },
+            {
+              "episode": 8969,
+              "source_row": 824614,
+              "cache_row": 8607,
+              "frames": 94
+            },
+            {
+              "episode": 9029,
+              "source_row": 830348,
+              "cache_row": 8701,
+              "frames": 101
+            },
+            {
+              "episode": 9313,
+              "source_row": 856894,
+              "cache_row": 8802,
+              "frames": 101
+            },
+            {
+              "episode": 9501,
+              "source_row": 874369,
+              "cache_row": 8903,
+              "frames": 89
+            },
+            {
+              "episode": 9693,
+              "source_row": 892271,
+              "cache_row": 8992,
+              "frames": 101
+            },
+            {
+              "episode": 9839,
+              "source_row": 905856,
+              "cache_row": 9093,
+              "frames": 101
+            },
+            {
+              "episode": 9984,
+              "source_row": 919272,
+              "cache_row": 9194,
+              "frames": 101
+            }
+          ],
+          "clip_policy": "sorted whole episodes; range(n-20); no padding",
+          "export_seconds": 3.680237576365471,
+          "pixels_dtype": "uint8",
+          "pixels_shape": [
+            9295,
+            224,
+            224,
+            3
+          ],
+          "nonfinite_action_rows_preserved": 100,
+          "all_legal_clip_actions_finite": true,
+          "files": {
+            "pixels.npy": {
+              "sha256": "849a099d871b3a0d4c710f3db67c4bed3eff6dc9faf8d6afe463d35fc49b7fea",
+              "bytes": 1399157888
+            },
+            "controls.npy": {
+              "sha256": "a01a1943225bdbf75d9e9e1224d9aecafd33427d5d6133f5b0092173e04d8456",
+              "bytes": 74488
+            },
+            "starts.npy": {
+              "sha256": "d2a1fd10cbb1a22adad38ccb04dfb9c5d6961a11bb821825fff7a27288b623c0",
+              "bytes": 58488
+            },
+            "rows.npy": {
+              "sha256": "35b410ab1860c1765d7e0796e7917dedc061656aa03c82b02ac86de39a02d4ad",
+              "bytes": 74488
+            },
+            "data_manifest.json": {
+              "sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+              "bytes": 2126
+            },
+            "eval_anchors.npz": {
+              "sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+              "bytes": 864610
+            },
+            "architecture.json": {
+              "sha256": "2564086e961e7b5c7c04dffc451091115b389a590645ff19653c64fd0bc16e09",
+              "bytes": 1313
+            }
+          }
+        },
+        "eval_protocol": "original eval48, seed0; train RNG snapshot/restored; terminal-only evaluation",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch_version": "2.7.1+cu128",
+        "script_sha256": "b17bb1efe80a1fff1816bd0a66681f41dd39b01d9533c5cb1f9970258bf0d747",
+        "helpers": {
+          "lewm_pilot.py": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+          "build_lewm.py": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+        },
+        "vendor": {
+          "jepa.py": "41bad7fd21e0f14aea4c9c3d39a9c87037e787746d953ab62cdc0677e938ce96",
+          "module.py": "0b258a9e8dc24c29fcb1e8c50a09ec78b8ea85aeb79e21dd8adf712396646620"
+        }
+      },
+      "summary": {
+        "condition": "BASE100",
+        "train_seed": 1,
+        "updates": 5650,
+        "epoch_fraction": 100.89285714285714,
+        "train_seconds": 1417.2535087168217,
+        "training_peak_vram_gib": 12.478867053985596,
+        "evaluation_seconds": 118.18609058856964,
+        "successes": 19,
+        "n": 48,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s1/BASE100_u5650.ckpt",
+        "checkpoint_sha256": "e4cd6ba7ee5da1c02be6750f692a70c7623a4caeeb845afa182b6cb88c52d352",
+        "training_rng_sha256": "333be152aab2e539583461166cf617ed884b2aae0f4bc72ebe3d23f16e98fa96"
+      },
+      "complete": {
+        "completed": true,
+        "updates": 5650,
+        "n": 48,
+        "seed": 1
+      },
+      "artifact": "~/.cache/latent-wm-results/20261004-E16-fixed-data-trainseed-RTX-s1",
+      "provenance_sha256": {
+        "config.json": "66e6ab130b190dafad1ab87d4f18b3eb69de091dcd2ed090b1d77b49f20f1263",
+        "data_manifest.json": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+        "training.json": "c5b18c778df2cef943ebd63f50332df833422953f5038d97d8bc57e4dda54a34",
+        "u5650_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "u5650_evaluation.json": "518dccf3d8131c6e37e8014b145f7d63844423cf58f44a8047095bacc285d2c2",
+        "summary.json": "aebeb4fdd8e875cf87c89bd78aa5b481ec8939f4e1a2cc415727916bf26760db",
+        "complete.json": "bbe750e0cfcac97b7596b89cca2e3dabd360d1a821f90f8f448ec3f5e3dfb5e0"
+      }
+    },
+    {
+      "config": {
+        "mode": "train",
+        "cache": "/tmp/latent-wm-data/E16-base100-trainseed-cache",
+        "seed": 2,
+        "source_run": null,
+        "dataset": null,
+        "seed0_initial": null,
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s2",
+        "output": "/tmp/latent-wm-runs/20261004-E16-fixed-data-trainseed-RTX-s2",
+        "durable": "/home/xiang/.cache/latent-wm-results/20261004-E16-fixed-data-trainseed-RTX-s2",
+        "train_seed": 2,
+        "eval_seed": 0,
+        "shuffle_seed": 33002,
+        "updates": 5650,
+        "batch_size": 128,
+        "objective": "all 3 shifted MSE + .09 SIGReg(17,1024); no target detach",
+        "precision": "bf16",
+        "gradient_clip": 1.0,
+        "lr": 5e-05,
+        "weight_decay": 0.001,
+        "optimizer": "fresh AdamW",
+        "scheduler": "constant LR pilot",
+        "architecture": {
+          "_target_": "stable_worldmodel.wm.lewm.LeWM",
+          "encoder": {
+            "_target_": "stable_pretraining.backbone.utils.vit_hf",
+            "size": "tiny",
+            "patch_size": 14,
+            "image_size": 224,
+            "pretrained": false,
+            "use_mask_token": false
+          },
+          "predictor": {
+            "_target_": "stable_worldmodel.wm.lewm.module.Predictor",
+            "num_frames": 3,
+            "input_dim": 192,
+            "hidden_dim": 192,
+            "output_dim": 192,
+            "depth": 6,
+            "heads": 16,
+            "mlp_dim": 2048,
+            "dim_head": 64,
+            "dropout": 0.1,
+            "emb_dropout": 0.0
+          },
+          "action_encoder": {
+            "_target_": "stable_worldmodel.wm.lewm.module.Embedder",
+            "input_dim": 10,
+            "emb_dim": 192
+          },
+          "projector": {
+            "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+            "input_dim": 192,
+            "output_dim": 192,
+            "hidden_dim": 2048,
+            "norm_fn": {
+              "_target_": "torch.nn.BatchNorm1d",
+              "_partial_": true
+            }
+          },
+          "pred_proj": {
+            "_target_": "stable_worldmodel.wm.lewm.module.MLP",
+            "input_dim": 192,
+            "output_dim": 192,
+            "hidden_dim": 2048,
+            "norm_fn": {
+              "_target_": "torch.nn.BatchNorm1d",
+              "_partial_": true
+            }
+          }
+        },
+        "cache_manifest_sha256": "b753f627db1d56a873aa59be9e7d78156b66794d19dd384efa653c56bdf87246",
+        "initial_sha256": "e1c070e1e48d44b185c4011872ed71fc440547ceabf78282295b8352efbd7cee",
+        "initial_tensor_sha256": "3b3223e0fa2289babdeee309b7decb6f6da852ef25946bea35adf2482d7e3da3",
+        "source": {
+          "source_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-data-compute-RTX-s0",
+          "source_config_sha256": "e22ffe8dd106184bf9b2a1b56efd5ff8ce6fc998b8ca0b60be61bb6fec89e2a9",
+          "source_manifest_sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+          "eval_anchors_sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+          "dataset_sha256_reference": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623",
+          "dataset_rehashed_during_export": false,
+          "layout": [
+            {
+              "episode": 6,
+              "source_row": 501,
+              "cache_row": 0,
+              "frames": 101
+            },
+            {
+              "episode": 25,
+              "source_row": 2228,
+              "cache_row": 101,
+              "frames": 89
+            },
+            {
+              "episode": 53,
+              "source_row": 4759,
+              "cache_row": 190,
+              "frames": 101
+            },
+            {
+              "episode": 128,
+              "source_row": 11697,
+              "cache_row": 291,
+              "frames": 101
+            },
+            {
+              "episode": 234,
+              "source_row": 21425,
+              "cache_row": 392,
+              "frames": 79
+            },
+            {
+              "episode": 291,
+              "source_row": 26664,
+              "cache_row": 471,
+              "frames": 101
+            },
+            {
+              "episode": 303,
+              "source_row": 27800,
+              "cache_row": 572,
+              "frames": 71
+            },
+            {
+              "episode": 330,
+              "source_row": 30293,
+              "cache_row": 643,
+              "frames": 94
+            },
+            {
+              "episode": 391,
+              "source_row": 35713,
+              "cache_row": 737,
+              "frames": 101
+            },
+            {
+              "episode": 514,
+              "source_row": 47108,
+              "cache_row": 838,
+              "frames": 80
+            },
+            {
+              "episode": 628,
+              "source_row": 57448,
+              "cache_row": 918,
+              "frames": 101
+            },
+            {
+              "episode": 917,
+              "source_row": 83611,
+              "cache_row": 1019,
+              "frames": 95
+            },
+            {
+              "episode": 1275,
+              "source_row": 117005,
+              "cache_row": 1114,
+              "frames": 101
+            },
+            {
+              "episode": 1287,
+              "source_row": 118038,
+              "cache_row": 1215,
+              "frames": 101
+            },
+            {
+              "episode": 1499,
+              "source_row": 137278,
+              "cache_row": 1316,
+              "frames": 101
+            },
+            {
+              "episode": 1559,
+              "source_row": 143030,
+              "cache_row": 1417,
+              "frames": 101
+            },
+            {
+              "episode": 1620,
+              "source_row": 148553,
+              "cache_row": 1518,
+              "frames": 92
+            },
+            {
+              "episode": 1623,
+              "source_row": 148801,
+              "cache_row": 1610,
+              "frames": 88
+            },
+            {
+              "episode": 1750,
+              "source_row": 160662,
+              "cache_row": 1698,
+              "frames": 88
+            },
+            {
+              "episode": 1906,
+              "source_row": 174974,
+              "cache_row": 1786,
+              "frames": 101
+            },
+            {
+              "episode": 2103,
+              "source_row": 193097,
+              "cache_row": 1887,
+              "frames": 91
+            },
+            {
+              "episode": 2237,
+              "source_row": 205363,
+              "cache_row": 1978,
+              "frames": 101
+            },
+            {
+              "episode": 2266,
+              "source_row": 208091,
+              "cache_row": 2079,
+              "frames": 56
+            },
+            {
+              "episode": 2305,
+              "source_row": 211577,
+              "cache_row": 2135,
+              "frames": 101
+            },
+            {
+              "episode": 2503,
+              "source_row": 229697,
+              "cache_row": 2236,
+              "frames": 101
+            },
+            {
+              "episode": 2593,
+              "source_row": 238034,
+              "cache_row": 2337,
+              "frames": 101
+            },
+            {
+              "episode": 2723,
+              "source_row": 250376,
+              "cache_row": 2438,
+              "frames": 71
+            },
+            {
+              "episode": 2770,
+              "source_row": 254718,
+              "cache_row": 2509,
+              "frames": 101
+            },
+            {
+              "episode": 2773,
+              "source_row": 254961,
+              "cache_row": 2610,
+              "frames": 101
+            },
+            {
+              "episode": 2797,
+              "source_row": 257264,
+              "cache_row": 2711,
+              "frames": 101
+            },
+            {
+              "episode": 2801,
+              "source_row": 257601,
+              "cache_row": 2812,
+              "frames": 79
+            },
+            {
+              "episode": 3106,
+              "source_row": 285668,
+              "cache_row": 2891,
+              "frames": 79
+            },
+            {
+              "episode": 3544,
+              "source_row": 325453,
+              "cache_row": 2970,
+              "frames": 101
+            },
+            {
+              "episode": 3568,
+              "source_row": 327697,
+              "cache_row": 3071,
+              "frames": 101
+            },
+            {
+              "episode": 3584,
+              "source_row": 329218,
+              "cache_row": 3172,
+              "frames": 101
+            },
+            {
+              "episode": 3595,
+              "source_row": 330234,
+              "cache_row": 3273,
+              "frames": 101
+            },
+            {
+              "episode": 3755,
+              "source_row": 345002,
+              "cache_row": 3374,
+              "frames": 69
+            },
+            {
+              "episode": 4008,
+              "source_row": 368490,
+              "cache_row": 3443,
+              "frames": 101
+            },
+            {
+              "episode": 4272,
+              "source_row": 392819,
+              "cache_row": 3544,
+              "frames": 97
+            },
+            {
+              "episode": 4283,
+              "source_row": 393802,
+              "cache_row": 3641,
+              "frames": 76
+            },
+            {
+              "episode": 4305,
+              "source_row": 395773,
+              "cache_row": 3717,
+              "frames": 101
+            },
+            {
+              "episode": 4370,
+              "source_row": 401687,
+              "cache_row": 3818,
+              "frames": 60
+            },
+            {
+              "episode": 4600,
+              "source_row": 422796,
+              "cache_row": 3878,
+              "frames": 101
+            },
+            {
+              "episode": 4636,
+              "source_row": 426040,
+              "cache_row": 3979,
+              "frames": 101
+            },
+            {
+              "episode": 4750,
+              "source_row": 436719,
+              "cache_row": 4080,
+              "frames": 85
+            },
+            {
+              "episode": 4990,
+              "source_row": 458665,
+              "cache_row": 4165,
+              "frames": 91
+            },
+            {
+              "episode": 5152,
+              "source_row": 473829,
+              "cache_row": 4256,
+              "frames": 101
+            },
+            {
+              "episode": 5218,
+              "source_row": 479956,
+              "cache_row": 4357,
+              "frames": 101
+            },
+            {
+              "episode": 5273,
+              "source_row": 485013,
+              "cache_row": 4458,
+              "frames": 101
+            },
+            {
+              "episode": 5461,
+              "source_row": 502488,
+              "cache_row": 4559,
+              "frames": 82
+            },
+            {
+              "episode": 5498,
+              "source_row": 505961,
+              "cache_row": 4641,
+              "frames": 101
+            },
+            {
+              "episode": 5613,
+              "source_row": 516261,
+              "cache_row": 4742,
+              "frames": 101
+            },
+            {
+              "episode": 5639,
+              "source_row": 518720,
+              "cache_row": 4843,
+              "frames": 101
+            },
+            {
+              "episode": 5654,
+              "source_row": 520132,
+              "cache_row": 4944,
+              "frames": 61
+            },
+            {
+              "episode": 5839,
+              "source_row": 537139,
+              "cache_row": 5005,
+              "frames": 101
+            },
+            {
+              "episode": 5992,
+              "source_row": 551369,
+              "cache_row": 5106,
+              "frames": 82
+            },
+            {
+              "episode": 6168,
+              "source_row": 567750,
+              "cache_row": 5188,
+              "frames": 79
+            },
+            {
+              "episode": 6184,
+              "source_row": 569220,
+              "cache_row": 5267,
+              "frames": 101
+            },
+            {
+              "episode": 6189,
+              "source_row": 569683,
+              "cache_row": 5368,
+              "frames": 101
+            },
+            {
+              "episode": 6206,
+              "source_row": 571170,
+              "cache_row": 5469,
+              "frames": 101
+            },
+            {
+              "episode": 6215,
+              "source_row": 572005,
+              "cache_row": 5570,
+              "frames": 101
+            },
+            {
+              "episode": 6245,
+              "source_row": 574892,
+              "cache_row": 5671,
+              "frames": 101
+            },
+            {
+              "episode": 6424,
+              "source_row": 591001,
+              "cache_row": 5772,
+              "frames": 101
+            },
+            {
+              "episode": 6508,
+              "source_row": 598792,
+              "cache_row": 5873,
+              "frames": 101
+            },
+            {
+              "episode": 6542,
+              "source_row": 601824,
+              "cache_row": 5974,
+              "frames": 96
+            },
+            {
+              "episode": 6582,
+              "source_row": 605634,
+              "cache_row": 6070,
+              "frames": 76
+            },
+            {
+              "episode": 6784,
+              "source_row": 623880,
+              "cache_row": 6146,
+              "frames": 56
+            },
+            {
+              "episode": 6803,
+              "source_row": 625496,
+              "cache_row": 6202,
+              "frames": 101
+            },
+            {
+              "episode": 6827,
+              "source_row": 627692,
+              "cache_row": 6303,
+              "frames": 101
+            },
+            {
+              "episode": 6916,
+              "source_row": 635813,
+              "cache_row": 6404,
+              "frames": 73
+            },
+            {
+              "episode": 6926,
+              "source_row": 636719,
+              "cache_row": 6477,
+              "frames": 101
+            },
+            {
+              "episode": 7024,
+              "source_row": 645666,
+              "cache_row": 6578,
+              "frames": 101
+            },
+            {
+              "episode": 7134,
+              "source_row": 655930,
+              "cache_row": 6679,
+              "frames": 101
+            },
+            {
+              "episode": 7500,
+              "source_row": 689621,
+              "cache_row": 6780,
+              "frames": 87
+            },
+            {
+              "episode": 7540,
+              "source_row": 693142,
+              "cache_row": 6867,
+              "frames": 91
+            },
+            {
+              "episode": 7602,
+              "source_row": 698891,
+              "cache_row": 6958,
+              "frames": 62
+            },
+            {
+              "episode": 7637,
+              "source_row": 702101,
+              "cache_row": 7020,
+              "frames": 101
+            },
+            {
+              "episode": 7729,
+              "source_row": 710860,
+              "cache_row": 7121,
+              "frames": 101
+            },
+            {
+              "episode": 7772,
+              "source_row": 714762,
+              "cache_row": 7222,
+              "frames": 82
+            },
+            {
+              "episode": 7776,
+              "source_row": 715103,
+              "cache_row": 7304,
+              "frames": 101
+            },
+            {
+              "episode": 7891,
+              "source_row": 725674,
+              "cache_row": 7405,
+              "frames": 101
+            },
+            {
+              "episode": 7970,
+              "source_row": 733153,
+              "cache_row": 7506,
+              "frames": 99
+            },
+            {
+              "episode": 8011,
+              "source_row": 736791,
+              "cache_row": 7605,
+              "frames": 101
+            },
+            {
+              "episode": 8168,
+              "source_row": 751115,
+              "cache_row": 7706,
+              "frames": 82
+            },
+            {
+              "episode": 8283,
+              "source_row": 761905,
+              "cache_row": 7788,
+              "frames": 65
+            },
+            {
+              "episode": 8376,
+              "source_row": 770385,
+              "cache_row": 7853,
+              "frames": 101
+            },
+            {
+              "episode": 8417,
+              "source_row": 774139,
+              "cache_row": 7954,
+              "frames": 101
+            },
+            {
+              "episode": 8419,
+              "source_row": 774341,
+              "cache_row": 8055,
+              "frames": 101
+            },
+            {
+              "episode": 8656,
+              "source_row": 795829,
+              "cache_row": 8156,
+              "frames": 101
+            },
+            {
+              "episode": 8802,
+              "source_row": 809253,
+              "cache_row": 8257,
+              "frames": 96
+            },
+            {
+              "episode": 8883,
+              "source_row": 816885,
+              "cache_row": 8353,
+              "frames": 101
+            },
+            {
+              "episode": 8927,
+              "source_row": 820699,
+              "cache_row": 8454,
+              "frames": 78
+            },
+            {
+              "episode": 8934,
+              "source_row": 821362,
+              "cache_row": 8532,
+              "frames": 75
+            },
+            {
+              "episode": 8969,
+              "source_row": 824614,
+              "cache_row": 8607,
+              "frames": 94
+            },
+            {
+              "episode": 9029,
+              "source_row": 830348,
+              "cache_row": 8701,
+              "frames": 101
+            },
+            {
+              "episode": 9313,
+              "source_row": 856894,
+              "cache_row": 8802,
+              "frames": 101
+            },
+            {
+              "episode": 9501,
+              "source_row": 874369,
+              "cache_row": 8903,
+              "frames": 89
+            },
+            {
+              "episode": 9693,
+              "source_row": 892271,
+              "cache_row": 8992,
+              "frames": 101
+            },
+            {
+              "episode": 9839,
+              "source_row": 905856,
+              "cache_row": 9093,
+              "frames": 101
+            },
+            {
+              "episode": 9984,
+              "source_row": 919272,
+              "cache_row": 9194,
+              "frames": 101
+            }
+          ],
+          "clip_policy": "sorted whole episodes; range(n-20); no padding",
+          "export_seconds": 3.680237576365471,
+          "pixels_dtype": "uint8",
+          "pixels_shape": [
+            9295,
+            224,
+            224,
+            3
+          ],
+          "nonfinite_action_rows_preserved": 100,
+          "all_legal_clip_actions_finite": true,
+          "files": {
+            "pixels.npy": {
+              "sha256": "849a099d871b3a0d4c710f3db67c4bed3eff6dc9faf8d6afe463d35fc49b7fea",
+              "bytes": 1399157888
+            },
+            "controls.npy": {
+              "sha256": "a01a1943225bdbf75d9e9e1224d9aecafd33427d5d6133f5b0092173e04d8456",
+              "bytes": 74488
+            },
+            "starts.npy": {
+              "sha256": "d2a1fd10cbb1a22adad38ccb04dfb9c5d6961a11bb821825fff7a27288b623c0",
+              "bytes": 58488
+            },
+            "rows.npy": {
+              "sha256": "35b410ab1860c1765d7e0796e7917dedc061656aa03c82b02ac86de39a02d4ad",
+              "bytes": 74488
+            },
+            "data_manifest.json": {
+              "sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+              "bytes": 2126
+            },
+            "eval_anchors.npz": {
+              "sha256": "654130d034d858e86e0f186f4816a232313fcf227e46e40f4ab6b9ddb619d496",
+              "bytes": 864610
+            },
+            "architecture.json": {
+              "sha256": "2564086e961e7b5c7c04dffc451091115b389a590645ff19653c64fd0bc16e09",
+              "bytes": 1313
+            }
+          }
+        },
+        "eval_protocol": "original eval48, seed0; train RNG snapshot/restored; terminal-only evaluation",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "torch_version": "2.7.1+cu128",
+        "script_sha256": "b17bb1efe80a1fff1816bd0a66681f41dd39b01d9533c5cb1f9970258bf0d747",
+        "helpers": {
+          "lewm_pilot.py": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+          "build_lewm.py": "dc17dfb08e859f686921216dca8bfabe08b6d4e3a83b9c4d288b0e96502b3d74"
+        },
+        "vendor": {
+          "jepa.py": "41bad7fd21e0f14aea4c9c3d39a9c87037e787746d953ab62cdc0677e938ce96",
+          "module.py": "0b258a9e8dc24c29fcb1e8c50a09ec78b8ea85aeb79e21dd8adf712396646620"
+        }
+      },
+      "summary": {
+        "condition": "BASE100",
+        "train_seed": 2,
+        "updates": 5650,
+        "epoch_fraction": 100.89285714285714,
+        "train_seconds": 1204.625058427453,
+        "training_peak_vram_gib": 12.478867053985596,
+        "evaluation_seconds": 96.03045637533069,
+        "successes": 36,
+        "n": 48,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s2/BASE100_u5650.ckpt",
+        "checkpoint_sha256": "a8fbac7309caffc9acc41d2d4f2c51734bfc201cd50693abd9f9f61c7cf26519",
+        "training_rng_sha256": "10061fbeb5ce33fe3cfc3f0ff1f441a83a22e1105be16433bb4048709a7d742b"
+      },
+      "complete": {
+        "completed": true,
+        "updates": 5650,
+        "n": 48,
+        "seed": 2
+      },
+      "artifact": "~/.cache/latent-wm-results/20261004-E16-fixed-data-trainseed-RTX-s2",
+      "provenance_sha256": {
+        "config.json": "f913f23f3a2ee85cb245689a44f6bf5e011ee7cd9bd045ad33301888123df9a6",
+        "data_manifest.json": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+        "training.json": "06f7975c5b697c3195238af2bb452741f0898a90fd272d2c7443e117b7839a77",
+        "u5650_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+        "u5650_evaluation.json": "58c0c6601aa9efa7e8fa7f25442aeef33570a9a7e9ac411a938bb8b28acd8890",
+        "summary.json": "32a7931e0da46e319d9e623846fa4b73309d5c68e146c452fa9961cdc719670e",
+        "complete.json": "5f810bf919cbb796b38513e3604cd0ca0e4b99933b3e5e9a6504351da121c591"
+      }
+    }
+  ],
+  "audit": "complete/no-failure/48row success counts/eval anchors checked; full independent optimizer+RNG trace audit pending",
+  "scope": "Same data/norm/eval/update budget; independent initialization/training randomness; development eval set, not confirmation. Source seed1 retained; no scientific upgrade."
+}

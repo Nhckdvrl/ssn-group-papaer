@@ -1,0 +1,9 @@
+# Spaulding等：语义proto-role知识与真正role输出（ACL2025 Findings）
+
+1. **来源/范围：** [正式论文](https://aclanthology.org/2025.findings-acl.623/)，Colorado Boulder CLEAR/Accenture。主文§1–6 pp1–9完整，p10 limitations/ethics完整；AppA/B pp13–15、prompt Fig5–7 pp16–18完整。参考文献与剩余附录表/具体代码未逐项核对。PDF22p外置，SHA9d6bf0319fe4ec61e52ceab0d29cb5d5784320f542522134bf1b0f7938e3239d。
+2. **压力与idea来源（RECONSTRUCTED）：** 既有GPT小样本event标注失败，无法区分role语义知识、边界/格式和复杂调用→用Dowty可分解proto属性与verb-specific PropBank role的对应→给属性context/共同产生属性，看是否帮助分类及错误是否一致。新对象是可解读属性与role的关系，不是首次指出LLM错role。相对Bonn/Ettinger，规模与细分属性/用途距离更大；相对Stengel-Eskin2022，扩大一般自然predicate/argument而非控制结构单域。
+3. **数据/任务：** 成熟SPR1 test1054 predicate-argument与Ontonotes44609 core arguments；SPR1 16/SPR2 14属性，1–3→False/4–5→True，n/a→False与跳过两种评价分开。8小模型族配置＋GPT4o2024-05-13，多步Pipeline、oracle Pipeline、all-args(JSON)、one-arg(单role)、atomic true/false SPRL。除原Pipeline外提供gold predicate/sense/argument spans及roleset，role不是未经提示自发事件理解。SPR1 human单标注/部分属性已知idiosyncrasy，不能把gold当不可争议世界真理。
+4. **完整main关键结果：** GPT4o Ontonotes SRL one-arg87.93/all-args93.55/oraclePipeline94.16%；加SPRL大多损伤，例如all-args vol/state89.00（−4.55pp）。小模型异质，Llama3.1 SPR1 51.23→57.31(+6.08)但Qwen61.01→54.93(−6.08)。SPRL去n/a的指标跃升包含评价集合改变，不能直接叫能力提升；Qwen单属性F1低可能含格式/短输出协议，作者未证明没有属性知识。
+5. **知道/用途不是新发现：** GPT SRL100错例，仅56伴任何SPRL错，44可属性对但role错；90.5%预测instigation True共现预测ARG0是同次输出相关，不是latent神经层级或因果。37%错例PP/adverb，missed ARG1有50%原句subject，说明语法主语≠agent；break不及物变体与reflexive dresses例子有实际语义参照，可帮助P15避免主动形态误判。
+6. **作者自承的重要替代解释：** 原Pipeline<25% exact主要span识别严格边界，Ontonotes26% argument span准确，其他74%根本没进入role判断；不能用这个结果认证普遍复杂语义不能。作者提议fewshot/改tag/改prompt仍开放，不以它关闭我们空间。Fig5 caption称One-arg silver，而main/AppA3称gold，未独立核对代码，记录歧义。default generation参数且小模型输出token限短，未报告所有format失败细目/跨seed稳定性。
+7. **对本线的动作与距离：** 先把边界/实体identity/verb-specific意义/下游消费分开，优先成熟自然标注原样测；需要新增标注再Step。E76/E71没有稳健共同修复，不能把普通structured草稿/属性对而角色错叫novel；我们的增量仍需来自GP真正解释更新如何改变另一关系、能预测新用途且可恢复的具体规律。此工作没有测GP修订或控制Source消费，局部相邻不能自动判撞车/关线。

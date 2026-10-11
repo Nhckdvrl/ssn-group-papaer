@@ -1,0 +1,117 @@
+{
+  "config": "configs/cpc18_competition_preregistered.json",
+  "result_dir": "results/cpc18_competition_seed137",
+  "n_frozen_base_decisions": 44,
+  "behavior": {
+    "olmo_instruct_sft": {
+      "rows": 1056,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9895833333333334
+    },
+    "olmo_think_sft": {
+      "rows": 1056,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8854166666666666
+    },
+    "qwen_thinking": {
+      "rows": 1056,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8892045454545454
+    },
+    "qwen_non_thinking": {
+      "rows": 1056,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 1.0
+    }
+  },
+  "control": {
+    "olmo_instruct_sft": {
+      "rows": 1216,
+      "trace_units": 304,
+      "base_decisions": 44,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "olmo_think_sft": {
+      "rows": 1216,
+      "trace_units": 304,
+      "base_decisions": 44,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "qwen_thinking": {
+      "rows": 2120,
+      "trace_units": 530,
+      "base_decisions": 43,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "qwen_non_thinking": {
+      "rows": 2120,
+      "trace_units": 530,
+      "base_decisions": 43,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    }
+  },
+  "manifest": {
+    "results/cpc18_competition_seed137/raw/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/control/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/control/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/control/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_seed137/raw/control/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

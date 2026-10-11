@@ -1,0 +1,36 @@
+[
+  {
+    "name": "init_source_only_fresh_s29",
+    "source_node": "fvcrc12",
+    "source": "/var/tmp/xiang-data-rsi/e14/train_runs/init_source_only_fresh_s29/model",
+    "target_node": "fvcrc10",
+    "target": "/var/tmp/xiang-data-rsi/e14/copied_models/init_source_only_fresh_s29",
+    "all_files_same_sha256": true,
+    "bytes": 14131147048,
+    "copy_and_hash_wall_seconds": 188.47504981979728,
+    "command": [
+      "rsync",
+      "-a",
+      "--partial",
+      "fvcrc12:/var/tmp/xiang-data-rsi/e14/train_runs/init_source_only_fresh_s29/model/",
+      "/var/tmp/xiang-data-rsi/e14/copied_models/init_source_only_fresh_s29/"
+    ]
+  },
+  {
+    "name": "used_source_only_fresh_s29",
+    "source_node": "fvcrc12",
+    "source": "/var/tmp/xiang-data-rsi/e14/train_runs/used_source_only_fresh_s29/model",
+    "target_node": "fvcrc10",
+    "target": "/var/tmp/xiang-data-rsi/e14/copied_models/used_source_only_fresh_s29",
+    "all_files_same_sha256": true,
+    "bytes": 14131147048,
+    "copy_and_hash_wall_seconds": 187.35536768846214,
+    "command": [
+      "rsync",
+      "-a",
+      "--partial",
+      "fvcrc12:/var/tmp/xiang-data-rsi/e14/train_runs/used_source_only_fresh_s29/model/",
+      "/var/tmp/xiang-data-rsi/e14/copied_models/used_source_only_fresh_s29/"
+    ]
+  }
+]

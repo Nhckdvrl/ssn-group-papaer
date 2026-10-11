@@ -1,0 +1,111 @@
+{
+  "scope": "MATH train-derived dev; one student and 120 training items; item bootstrap is not seed CI",
+  "source_file_sha256": {
+    "base": "dd532d306c1a9d05f61c08e5ff557f57ded1a43db9136e06f7f0733dc37b4575",
+    "static_seed17": "9abc1b92c2c55445879e24be906cd207f1c65139c3070551a7f45739c9b844c9",
+    "static_seed29": "420cb4971cfc33d117c08fc7901bde3cc77f7ee1c20fa20cd8d6eebab9429cdd",
+    "static_seed43": "e8bd5a5b58517db5c4acad826acf8fc46397b0ff49c14e1cc28116ad6899212c"
+  },
+  "subsets": {
+    "dev352": {
+      "n": 352,
+      "scores": {
+        "base": {
+          "correct": 24,
+          "accuracy": 0.06818181818181818
+        },
+        "static_seed17": {
+          "correct": 58,
+          "accuracy": 0.16477272727272727
+        },
+        "static_seed29": {
+          "correct": 53,
+          "accuracy": 0.15056818181818182
+        },
+        "static_seed43": {
+          "correct": 52,
+          "accuracy": 0.14772727272727273
+        }
+      },
+      "differences": {
+        "static_seed17_minus_base": {
+          "delta_accuracy": 0.09659090909090909,
+          "item_bootstrap_95_ci": [
+            0.05397727272727273,
+            0.13920454545454544
+          ],
+          "improved_items": 49,
+          "worsened_items": 15
+        },
+        "static_seed29_minus_base": {
+          "delta_accuracy": 0.08238636363636363,
+          "item_bootstrap_95_ci": [
+            0.04261363636363636,
+            0.125
+          ],
+          "improved_items": 44,
+          "worsened_items": 15
+        },
+        "static_seed43_minus_base": {
+          "delta_accuracy": 0.07954545454545454,
+          "item_bootstrap_95_ci": [
+            0.036931818181818184,
+            0.12215909090909091
+          ],
+          "improved_items": 42,
+          "worsened_items": 14
+        }
+      }
+    },
+    "heldout280": {
+      "n": 280,
+      "scores": {
+        "base": {
+          "correct": 19,
+          "accuracy": 0.06785714285714285
+        },
+        "static_seed17": {
+          "correct": 44,
+          "accuracy": 0.15714285714285714
+        },
+        "static_seed29": {
+          "correct": 45,
+          "accuracy": 0.16071428571428573
+        },
+        "static_seed43": {
+          "correct": 43,
+          "accuracy": 0.15357142857142858
+        }
+      },
+      "differences": {
+        "static_seed17_minus_base": {
+          "delta_accuracy": 0.08928571428571429,
+          "item_bootstrap_95_ci": [
+            0.04285714285714286,
+            0.1392857142857143
+          ],
+          "improved_items": 37,
+          "worsened_items": 12
+        },
+        "static_seed29_minus_base": {
+          "delta_accuracy": 0.09285714285714286,
+          "item_bootstrap_95_ci": [
+            0.04642857142857143,
+            0.1392857142857143
+          ],
+          "improved_items": 37,
+          "worsened_items": 11
+        },
+        "static_seed43_minus_base": {
+          "delta_accuracy": 0.08571428571428572,
+          "item_bootstrap_95_ci": [
+            0.039285714285714285,
+            0.1357142857142857
+          ],
+          "improved_items": 34,
+          "worsened_items": 10
+        }
+      }
+    }
+  }
+}

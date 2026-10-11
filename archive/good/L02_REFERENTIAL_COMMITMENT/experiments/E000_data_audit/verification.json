@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_all_released_graph_references_resolve (test_corpus.ReleasedCorpusTests.test_all_released_graph_references_resolve) ... ok\ntest_cycle_is_rejected (test_corpus.ReleasedCorpusTests.test_cycle_is_rejected) ... ok\ntest_dni_without_link_remains_dni (test_corpus.ReleasedCorpusTests.test_dni_without_link_remains_dni) ... ok\ntest_ini_does_not_become_unanswerable (test_corpus.ReleasedCorpusTests.test_ini_does_not_become_unanswerable) ... ok\ntest_invalid_node_cannot_become_empty_gold (test_corpus.ReleasedCorpusTests.test_invalid_node_cannot_become_empty_gold) ... ok\ntest_published_ni_counts_exclude_auxiliary_frames (test_corpus.ReleasedCorpusTests.test_published_ni_counts_exclude_auxiliary_frames) ... ok\ntest_splitword_parts_preserve_parent_and_surface_order (test_corpus.ReleasedCorpusTests.test_splitword_parts_preserve_parent_and_surface_order) ... ok\ntest_uncertainty_is_retained (test_corpus.ReleasedCorpusTests.test_uncertainty_is_retained) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.664s\n\nOK\n"
+    },
+    {
+      "command": [
+        "scripts/extract_training.py",
+        "--verify-existing"
+      ],
+      "exit_code": 0,
+      "output": "Verified 6 members; original bytes preserved\n"
+    },
+    {
+      "command": [
+        "scripts/build_review_packet.py"
+      ],
+      "exit_code": 0,
+      "output": "Verified source-grounded packet: 11 records\n"
+    }
+  ],
+  "reproduction_command": [
+    "scripts/run_data_audit.py",
+    "--run-id",
+    "E000_20260908_replay"
+  ],
+  "original_artifact_hashes_valid": true,
+  "replayed_artifacts_identical": {
+    "corpus.py": true,
+    "documents.jsonl": true,
+    "frame_role_counts.json": true,
+    "observations.jsonl": true,
+    "prior_diagnostic.json": true,
+    "protocol.json": true,
+    "report.json": true,
+    "review_queue.jsonl": true,
+    "run_data_audit.py": true
+  },
+  "raw_source_hashes_checked": [
+    "data/raw/semeval2010/train.zip",
+    "data/raw/recovery/test_download.html",
+    "data/raw/dkpro_sample/semeval1010-en-sample.xml",
+    "data/raw/dkpro_sample/NOTICE.txt",
+    "data/raw/recovery/task9_cdx.json",
+    "data/raw/recovery/binaries_cdx.json",
+    "data/raw/recovery/training_download.html",
+    "data/raw/semeval2010/test_exact_response.bin",
+    "data/raw/semeval2010/test_candidate.zip",
+    "literature/papers/S10-1008.pdf",
+    "literature/papers/W19-3313.pdf",
+    "literature/papers/2024.acl-long.863.pdf",
+    "literature/papers/2024.emnlp-main.673.pdf",
+    "literature/papers/2025.findings-emnlp.649.pdf",
+    "literature/papers/2025.naacl-long.130.pdf",
+    "literature/papers/2025.emnlp-main.486.pdf",
+    "data/raw/official_docs/download.html",
+    "data/raw/official_docs/infoparticipants.html",
+    "data/raw/official_docs/Semeval2010.Task10.TrainingData.FN.readme",
+    "data/raw/official_docs/legacy_data_portal.html"
+  ],
+  "model_calls": 0,
+  "note": "No semantic-gold validation is implied by passing software checks."
+}

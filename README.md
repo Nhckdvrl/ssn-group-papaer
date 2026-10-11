@@ -1,429 +1,77 @@
-# SSN Group Paper — NAACL Main Research Question Repository
+# SSN Group Paper — Research Repository
 
-**Primary target:** NAACL Main  
-**Calibration:** ACL / EMNLP / NAACL Main, especially Best / Outstanding / Best Theme papers.
+**流程版本：v4（2026-09-30）。** 目标：ICML / ICLR / NeurIPS / CVPR / ICCV / ACL / EMNLP / NAACL 主会（不投 Findings，不参考 EACL）。
+为什么改：[`search/PROCESS_DIAGNOSIS_2026-09-30.md`](search/PROCESS_DIAGNOSIS_2026-09-30.md)（25 天、1,420 次提交、约 255 个被杀题目、14 个 workbench、0 个 candidate 的原因分析与顶会校准数据）。
+**AI agent 先读 [`AGENTS.md`](AGENTS.md)。**
 
-> **Current state: CLEAN SLATE**
->
-> **Approved mainline: NONE**
->
-> **Active good candidates: NONE**
->
-> **Rule: KILL BEFORE COMPUTE if any hard gate is clearly NO.**
-
-This repository is not a benchmark collection or an idea dump. It is a **research-question selection ledger**.
-
-The goal is to find:
-
-> **A natural, durable NLP/language problem; one genuinely new scientific axis inside it; trustworthy simple data and independent gold; a parent-level novel question with multiple informative outcomes; and a small decisive experiment that can naturally grow into a Main paper.**
-
-Short form:
-
-> **Real object. New axis. Good data. New parent question. Decisive paper.**
-
-Search principle:
-
-> **Search locally, judge globally.**
-
-Recent Sasano-lab work tells us where natural questions may live. ACL / EMNLP / NAACL Main determine whether a question is strong enough.
-
----
-
-# 1. Repository structure
+## 全流程（按状态和证据推进，不排日程）
 
 ```
-.
-├── README.md
-├── CANDIDATE_CARD.md
-├── failed/
-│   ├── README.md
-│   ├── TEMPLATE.md
-│   └── <one file per killed topic>.md
-└── good/
-    ├── README.md
-    └── TEMPLATE.md
+找题 SEARCH ──► 驻留 WORKBENCH ──────────────────────────► 候选 CANDIDATE ──► 投稿 PAPER
+选领域          建设 + 系统测量（交付 D1–D6）                 模拟审稿 + 写作       投—改—再投
+                ┌──── 探索 idea ────────────┐
+                │ 痛点 / 测量异常 → 研究动作 │
+                │ → idea 卡 → 决定性 pilot   │
+                └────────────┬──────────────┘
+                             ▼
+                ┌──── 执行 ─────────────────┐
+                │ 实验卡 → 运行 → 主张账本   │
+                │ L0 → L5，混杂审计，校对    │
+                └───────────────────────────┘
 ```
 
-## `failed/`
-
-Every topic that is seriously considered and then rejected must be recorded here.
-
-A failure record must state **why it died**, not merely that it died.
-
-Allowed primary failure types:
-
-- **NOVELTY_PARENT_COLLISION** — closest prior work already owns the parent scientific question / decisive prediction / conclusion.
-- **DATA_GOLD_FAILURE** — data cannot be made natural/credible enough, or gold is not independently defensible.
-- **NO_NEW_AXIS** — question is mainly a competence test, benchmark cell, or textbook distinction without pre-result scientific tension.
-- **REAL_OBJECT_FAILURE** — object is too artificial, method-first, model-specific, or not durably important.
-- **DECISIVENESS_FAILURE** — only one quirky positive outcome is interesting; null/reverse outcomes teach little.
-- **WORKLOAD_PATH_FAILURE** — too much infrastructure/data construction is required before the RQ itself is secured.
-- **PAPER_SCALE_FAILURE** — cannot naturally grow into C1 → C2 → C3 without padding.
-- **CROWDED_PARENT** — exact collision may be absent, but reviewer compression places the topic inside an already saturated scientific parent.
-- **OTHER** — must be explained precisely.
-
-A topic may have several failure types, but one **primary kill reason** must be named.
-
-## `good/`
-
-Only candidates that pass **all five hard gates** may enter `good/`.
-
-A file in `good/` does **not** mean “accepted paper mainline.” It means:
-
-> **The question is strong enough to justify a minimum decisive pilot.**
-
-Promotion to a paper mainline requires surviving the pilot and another novelty / interpretation audit.
-
----
-
-# 2. Hard Gate 1 — REAL OBJECT
-
-Start from a real NLP/language object, not from a method or fashionable model category.
-
-High-prior objects include:
-
-- lexical semantics;
-- semantic access;
-- compositional / implicit meaning;
-- factual / parametric knowledge;
-- linguistic inference;
-- ambiguity / syntax / discourse;
-- established linguistic phenomena;
-- structured semantic/NLP relations;
-- established NLP tasks whose evaluation or measurement unit may be wrong;
-- representation/generation processes only when tied to a concrete language question.
-
-Do **not** start from:
-
-- SAE;
-- activation patching;
-- agent;
-- RAG;
-- diffusion LM;
-- a cognitive bias;
-- a new benchmark;
-- “Old Problem / New Method” as a slogan.
-
-Two mandatory tests:
-
-> **If “LLM”, model names, and dataset names disappear, is the question still important?**
-
-> **Would an ACL/EMNLP/NAACL reviewer understand why this matters before seeing our result?**
-
-If importance requires explaining a concept we invented, risk is high.
-
-Durability matters: the question should survive model/API turnover.
-
----
-
-# 3. Hard Gate 2 — NEW AXIS
-
-We do not need a new field. We need a **new scientific relation inside a real object**.
-
-Preferred shapes:
-
-1. **Two factors previously conflated**
-   - e.g. fact possession ≠ access through a particular surface form.
-
-2. **Wrong measurement/unit**
-   - e.g. hard sense count vs contextual diversity;
-   - whole NLI hypothesis vs atomic inference units.
-
-3. **Competing theories predict differently**
-   - e.g. compositional semantics predicts X while a plausible heuristic predicts Y.
-
-4. **An old result depended on an assumption that modern model classes change**
-   - not “old task + LLM”;
-   - must identify the load-bearing assumption and the changed prediction/measurement/method.
-
-Before compute, write:
-
-> **Account A predicts X.**
-
-> **Account B predicts Y.**
-
-Both accounts must be plausible **before** results exist.
-
-Default warning signs:
-
-- “theoretically X and Y differ; does the model know that?”;
-- “probe A and probe B disagree”;
-- “language output and numeric output differ”;
-- “correct answer = X, failure = Y.”
-
-Those are usually competence/evaluation observations unless attached to a genuinely important new proposition.
-
----
-
-# 4. Hard Gate 3 — GOOD DATA
-
-Data is a selection criterion, not an implementation detail.
-
-Priority:
-
-### Best
-Existing natural dataset / corpus / resource already containing the needed variation.
-
-### Also strong
-Existing published human or linguistic experimental materials.
-
-### Acceptable
-Small controlled stimuli grounded in established theory/formal rules with independently defensible gold.
-
-Default high-risk:
-
-- large template-generated datasets;
-- bespoke synthetic worlds;
-- author-created ontology;
-- unnatural stories written only to isolate a contrast;
-- LLM-generated main data;
-- LLM-generated questions plus LLM judge;
-- author intuition as the decisive label source.
-
-Mandatory questions:
-
-> **Did the scientific object exist before our hypothesis?**
-
-> **Can the gold be justified without the same class of LLM being evaluated?**
-
-Preferred gold sources:
-
-- existing annotations/resources;
-- human judgments;
-- published linguistic analysis;
-- formal derivation;
-- deterministic algorithms;
-- independent corpus evidence.
-
-If data validity is unclear:
-
-> **KILL BEFORE COMPUTE.**
-
----
-
-# 5. Hard Gate 4 — NEW PARENT
-
-Novelty is judged at the **parent scientific question**, not at title/dataset wording level.
-
-For every candidate, search for ownership of:
-
-- parent RQ;
-- decisive prediction;
-- core scientific conclusion;
-- measurement rewrite;
-- causal estimand;
-- old-assumption rewrite.
-
-Mandatory reviewer attack:
-
-> **This is just ______.**
-
-The rebuttal must be:
-
-> **No. The scientific quantity / prediction / relation / measurement / conclusion is different.**
-
-The following are not enough:
-
-- another dataset;
-- another model;
-- another language;
-- cleaner controls;
-- larger scale;
-- more prompts;
-- mechanism added later.
-
-Minimum pre-pilot novelty calibration:
-
-- several strong same-identity ACL/EMNLP/NAACL papers;
-- nearest direct collisions;
-- older theoretical/task parent when relevant.
-
-Local lab fit never overrides a close parent collision.
-
----
-
-# 6. Hard Gate 5 — DECISIVE PAPER
-
-A Main paper does not need a huge engineering stack.
-
-A good question should naturally support:
-
-### C1 — Core finding
-What did we actually establish about the new axis?
-
-### C2 — Why / boundary
-Why does it happen, or where does the relation hold/fail?
-
-### C3 — Consequence
-What changes in theory, evaluation, measurement, interpretation, method, or practical decision?
-
-This is **claim architecture**, not experiment count.
-
-Do not pad weak questions with:
-
-- many models;
-- many prompts;
-- extra languages;
-- extra benchmarks;
-- activation patching;
-- mechanism work unrelated to the claim.
-
-## Outcome robustness
-
-Before pilot, map multiple outcomes:
-
-- Account A wins;
-- Account B wins;
-- heterogeneous principled boundary;
-- reversal;
-- null that rules out a plausible theory.
-
-Danger:
-
-> **Only a surprising model failure produces a paper.**
-
-That is phenomenon gambling.
-
-## Evidence depth
-
-Use the simplest evidence strong enough for the claim:
-
-- behavioral / measurement claim → strong controls, decomposition, robustness;
-- causal / mechanistic claim → causal interventions;
-- classical law → test law and assumptions;
-- evaluation claim → prove the new measurement changes interpretation/conclusions.
-
-Mechanism is an escalation path, not a rescue device.
-
----
-
-# 7. The five mandatory YES answers
-
-A candidate reaches a pilot only when all are clearly YES:
-
-1. **REAL OBJECT** — natural, important, durable?
-2. **NEW AXIS** — genuine non-obvious relation with ≥2 plausible accounts?
-3. **GOOD DATA** — simple credible data + independent gold?
-4. **NEW PARENT** — parent-level novelty survives “This is just X”?
-5. **DECISIVE PAPER** — multiple outcomes informative; C1→C2→C3 natural and manageable?
-
-If any core answer is clearly NO:
-
-# **KILL**
-
-Not “run a little and see.”
-
----
-
-# 8. Immediate kill signals
-
-Default KILL / strong negative prior when:
-
-- the object is invented for the experiment;
-- RQ is essentially “does the model know X ≠ Y?”;
-- only a quirky failure is interesting;
-- bespoke synthetic data is necessary;
-- gold relies on LLM-as-judge or author intuition;
-- closest parent already owns the proposition;
-- novelty is only dataset/model/language/prompt/scale;
-- mechanism is being added to make a weak question look deep;
-- huge infrastructure is required before a decisive answer exists;
-- the topic is a fast-moving agent/RL/prompt/API race without a durable scientific axis;
-- reviewer compression places the work in an already crowded generic category.
-
----
-
-# 9. Preferred search region
-
-Highest priority:
-
-- lexical semantics / semantic access;
-- compositional / implicit meaning;
-- factual / parametric knowledge;
-- linguistic inference;
-- established linguistic phenomena;
-- structured semantic/NLP relations;
-- evaluation / measurement units inside stable NLP tasks.
-
-Conditional:
-
-- causal interpretability;
-- diffusion/generation dynamics;
-- efficiency/compression;
-- Japanese-specific phenomena.
-
-Low priority by default:
-
-- generic agents;
-- generic RAG;
-- prompt optimization;
-- LLM-as-judge / LLM-as-annotator;
-- broad cognitive-bias transplantation;
-- behavioral-economics phenomenon hunting;
-- typology/documentation policy;
-- bespoke synthetic worlds;
-- mechanism-first feature hunting.
-
----
-
-# 10. Main / Outstanding paper shape we imitate
-
-We imitate **paper shape**, not topic:
-
-> **A concrete object already worth caring about + one overlooked scientific axis + credible/simple identification + a conclusion that changes how the object is understood.**
-
-Reference shapes include:
-
-- ACL 2026 Best — imperfective paradox: compositional semantics vs teleological heuristic;
-- ACL 2026 Outstanding — grammaticality ≠ constructional meaning;
-- ACL 2026 RedirectQA — fact possession ≠ surface-form access;
-- EMNLP 2025 Outstanding — classical generative/discriminative result revisited under a changed model class;
-- EMNLP 2025 Outstanding filler-gap — causal internal evidence used to test a concrete syntactic theory;
-- NAACL 2025 Outstanding NLI — evaluation unit changed to atomic inference;
-- ACL 2025 Outstanding Zipf — “meaning” operationalized through contextual diversity.
-
-Common denominator:
-
-> **Concrete object. Hard axis. Credible measurement. Changed understanding.**
-
----
-
-# 11. Mandatory Candidate Card before GPU
-
-Every candidate must fit on one page using [CANDIDATE_CARD.md](CANDIDATE_CARD.md):
-
-- one-sentence RQ;
-- why ACL/NLP cares;
-- Account A vs Account B;
-- exact data + independent gold;
-- closest parent;
-- reviewer compression: “This is just ____”;
-- why that compression is false;
-- outcome map;
-- C1 / C2 / C3;
-- minimum decisive pilot;
-- five-gate verdict.
-
-If the card is complicated, the topic is probably too complicated.
-
----
-
-# 12. Governing principles
-
-> **The object should exist before us.**
-
-> **The question should be understandable before the method.**
-
-> **The data should be trustworthy before the experiment.**
-
-> **The tension should exist before the result.**
-
-> **The new axis should change understanding, not merely add another benchmark dimension.**
-
-> **Novelty belongs to the parent scientific question, not the dataset or wording.**
-
-> **Use the simplest evidence strong enough for the claim.**
-
-> **Search locally, judge globally.**
-
-> **The question should look important to ACL / EMNLP / NAACL before it looks clever to us.**
+agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流程里没有“第几周做什么”：**交付物齐了就进入下一步，决策点到了就人审**；截稿日只是外部约束——到截稿时主张够投就投，不够就投下一个会。
+
+| 阶段 | 输入 → 输出 | 关口（人签字） | 文档 |
+|---|---|---|---|
+| **找题** | 组内偏好 + 题材库 + 顶会语料 + 最新 arXiv → territory 卡（热度 / 谱系 / 形态 / 立足点 / 压力清单） | 选 1 主线 + 最多 1 探索线；放弃领域只有三种理由 | [`search/README.md`](search/README.md) |
+| **驻留** | territory 卡 → D1–D6：强基线复现、资产、痛点日志、系统测量、定位表、形态卡 + idea 组合 | D1–D6 交付后：继续 / 同领域转向 / 暂停 | [`workbench/README.md`](workbench/README.md) |
+| **探索 idea** | 痛点、测量异常、强基线的成功、近邻分歧 → idea 卡 → 决定性 pilot → 排序（不判死） | 人审时选前 1–2 个 | [`workbench/IDEA_EXPLORATION.md`](workbench/IDEA_EXPLORATION.md) |
+| **执行** | 实验卡（跑前写决策表）→ 结果 → 主张账本（证据等级 L0–L5） | 主张升 L3 前独立校对 | [`workbench/EXECUTION.md`](workbench/EXECUTION.md) |
+| **候选** | 主旨 ≥ L3、贡献各 ≥ L2、机制 ≥ L4 → 候选包、校准过的模拟审稿、按步骤写作 | 进入候选；投稿 | [`candidates/README.md`](candidates/README.md) |
+| **投稿** | 投稿 → rebuttal → 结果 → 按转投路线再投 | 转投选择 | [`candidates/README.md`](candidates/README.md) |
+
+## 五条核心原则
+1. **选题选的是要住进去建设的领域，不是要去验证的现象。** 旧的“猜现象 → 赌博 → 实验”已被证伪。
+2. **新颖性 = 可陈述的增量，不是无人触碰的空白。** 近邻是常态；撞车 = 同一 claim + 同一证据类型 + 同一设定，而且先改增量。用真实的顶会接收 / 拒稿数据校准（`tools/venue_corpus/`）。
+3. **论文从建设中长出来。** idea 来自痛点和测量，用研究动作推出来、用决定性 pilot 筛；方法从驻留一开始就允许，只要针对真实出现的痛点。
+4. **每次运行都推动一条主张。** 先写实验卡和决策表；主张按证据等级爬升；每次人审只问“哪条主张升了级、为什么”。
+5. **不根据未经验证的桌面判断自动关线。** 继续、暂停与关闭由人结合证据、可行性和科学价值决定；已终止项目不自动恢复。
+
+## 触发与分工（事件触发，不按周期）
+
+| 触发 | 做什么 | agent | 人 |
+|---|---|---|---|
+| 每次会话 | 实验卡 → 运行 → 更新账本 → `logs/` 一条 | 执行 | — |
+| 决策点：D1–D6 交付、pilot 要选分支、主张升 L2/L3 或被降级、漂移信号、开关线 / 转向 / 进候选 / 投稿之前 | 人审（`tools/process/review.py` 生成骨架：自上次人审以来的实验、主张变化、idea 状态、漂移信号） | 准备骨架与数字 | 注入品味、做决定 |
+| 主旨改变、主张升到 L2、进入候选前、投稿前 | 新近邻扫描，更新定位表（只调整增量，不判死） | 执行 | 看增量是否要调整 |
+| 开线 / 恢复一条线、新会议结果公布 | territory 健康检查、更新顶会语料 | 起草 | 确认 |
+| 截稿日到来 | 主张够投就投，不够就改投下一个会（不关闭） | 准备候选包 | 决定 |
+
+## 目录
+
+| 路径 | 作用 |
+|---|---|
+| `AGENTS.md` | AI agent 的工作规则（硬规则、会话开始流程、汇报格式） |
+| `search/` | 找题：流程、诊断、两个品味通道（`our-taste/`、`sasano-taste/`）、territory 扫描 |
+| `workbench/` | 驻留、idea 探索、执行；登记表（README §9）；同时最多 1 主线 + 1 探索线 |
+| `candidates/` | 已成形的论文候选与投稿流程；当前 **0** |
+| `templates/` | 全流程卡片模板（territory、论文卡、idea、实验、主张账本、定位表、人审、形态卡、关闭记录、候选、模拟审稿） |
+| `tools/` | `venue_corpus/`（顶会接收 + 拒稿语料：热度 / 形态 / 近邻）；`process/`（生成卡片、检查流程、人审骨架） |
+| `library/` | 按**题材**组织的知识库：谱系、论文卡、开源资产、awesome 列表、热度数据 |
+| `failed/` | 跨项目的失败记录；桌面新颖性 kill 在 v3 起可带增量重开 |
+| `archive/` | 只读历史 |
+
+## 当前状态（2026-10-11；正式登记以 workbench 表为准）
+- **ACTIVE-MAIN：空缺。** 原实时世界模型主线已按人类决定从当前树删除。
+- **ACTIVE-EXPLORE：** [`in-context-evidence-structure`](workbench/in-context-evidence-structure/README.md)，保持现有登记。
+- **PROPOSED：** [`latent-world-model-planning`](workbench/latent-world-model-planning/README.md)、[`data-centric-rsi`](workbench/data-centric-rsi/README.md)、[`incremental-interpretation-revision`](workbench/incremental-interpretation-revision/README.md)，不擅自提升为主线。
+- **PAUSED：** [NPC persona](workbench/npc-persona-behavior-grounding/README.md) 与 [NPC deception](workbench/npc-deception-investigability/README.md) 两个项目，维持已有状态。
+- **CLOSED / TERMINATED：** [`mechanism-population-dynamics`](workbench/mechanism-population-dynamics/README.md)：2026-10-11 人决定终止并收尾；已积累大量实验和论文修订，但进一步的科学价值和意义有限。**保留全部论文、脚本和结果，不自动继续研究。**
+- **五个已从 HEAD 删除的工作台：** real-time causalization、scoped context、cross-lingual acquisition、multi-LLM collaboration、video temporal interfaces。无 archive 复制；旧 Git 历史保留。
+- 当前共 **7 个 workbench**，详见 [当前登记表](workbench/README.md) §9 与 [清理记录](workbench/WORKBENCH_CLEANUP_2026-10-11.md)。
+
+## 仓库规则
+- 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
+- 候选编号只在 candidate 阶段出现；观察结果留在产生它的 workbench。
+- 当前状态以本 README、`workbench/README.md` §9 登记表与各阶段 README 为准。

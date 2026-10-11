@@ -1,0 +1,24 @@
+items 400
+cond           mean Δ             95% CI    acc
+FULL_NAT       16.366 [ 16.172, 16.558]  1.000
+FULL_SWAP      16.363 [ 16.169, 16.555]  1.000
+POST            1.793 [  1.727,  1.859]  0.470
+POST_NAT        1.836 [  1.768,  1.902]  0.480
+PRE             0.000 [  0.000,  0.000]  0.000
+RECONLY         0.045 [  0.036,  0.055]  0.022
+RECENT          0.017 [  0.000,  0.034]  0.022
+NOREAD          0.029 [  0.023,  0.035]  0.015
+E_FULL_SWAP    15.883 [ 15.699, 16.062]  1.000
+E_POST          0.655 [  0.602,  0.711]  0.200
+PRE max |Δ| 0.0
+H (primary)            0.1080 [0.1039, 0.1120]
+H_nat POST_NAT/FULL_NAT 0.1122 [0.1081, 0.1162]
+RECENT/FULL_SWAP        0.0010 [0.0000, 0.0021]
+POST/RECENT             104.9366 [40.2417, 707.9931]
+early E_POST/E_FULL_SWAP 0.0413 [0.0379, 0.0448]
+RECONLY/FULL_NAT        0.0028 [0.0022, 0.0033]
+target index [0,13) n=132 H=0.0978
+target index [13,26) n=131 H=0.1090
+target index [26,40) n=137 H=0.1174
+validity: FULL_SWAP True  RECENT readable False  PRE exact-zero True
+VERDICT: KILL (instrument invalid)

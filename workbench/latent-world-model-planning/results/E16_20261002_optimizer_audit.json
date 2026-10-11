@@ -1,0 +1,87 @@
+{
+  "experiment_card": "E16_equal_budget_data_value",
+  "scope": "CPU implementation audit; not an environment or training-effect experiment",
+  "device": "cpu",
+  "cuda_operations": 0,
+  "torch_version": "2.7.1+cu128",
+  "script_sha256": "088a89b28640b62eeed82aa4833fb0846906c5945b5119e86e2eb1021dbb1690",
+  "torch_optimizer_source_sha256": "2381e51f3e02b018a6f29bf811656d93cc980bbb387ba868706a16519ea2d906",
+  "legacy_no_copy": [
+    {
+      "method": 0,
+      "begin_step": 1.0,
+      "source_begin_step": 1.0,
+      "step_aliases_source": true,
+      "end_step": 3.0,
+      "source_end_step": 3.0
+    },
+    {
+      "method": 1,
+      "begin_step": 3.0,
+      "source_begin_step": 3.0,
+      "step_aliases_source": true,
+      "end_step": 5.0,
+      "source_end_step": 5.0
+    },
+    {
+      "method": 2,
+      "begin_step": 5.0,
+      "source_begin_step": 5.0,
+      "step_aliases_source": true,
+      "end_step": 7.0,
+      "source_end_step": 7.0
+    }
+  ],
+  "fixed_deepcopy": [
+    {
+      "method": 0,
+      "begin_step": 1.0,
+      "source_begin_step": 1.0,
+      "step_aliases_source": false,
+      "end_step": 3.0,
+      "source_end_step": 1.0
+    },
+    {
+      "method": 1,
+      "begin_step": 1.0,
+      "source_begin_step": 1.0,
+      "step_aliases_source": false,
+      "end_step": 3.0,
+      "source_end_step": 1.0
+    },
+    {
+      "method": 2,
+      "begin_step": 1.0,
+      "source_begin_step": 1.0,
+      "step_aliases_source": false,
+      "end_step": 3.0,
+      "source_end_step": 1.0
+    }
+  ],
+  "interpretation": "Noncapturable/nonfused AdamW load retains the source CPU step tensor; sequential methods mutate the common checkpoint step unless the entire optimizer state is copied.",
+  "cpu_scope_note": "Other CPU optimizer tensors can also alias. This audit isolates the reported step observation; it does not claim CUDA moment tensors alias or quantify the original training effect.",
+  "affected_runs": [
+    "/home/xiang/.cache/latent-wm-results/20261002-E16-methods-A100-s0",
+    "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s1/methods",
+    "/home/xiang/.cache/latent-wm-results/20261002-E16-independent-s2/methods",
+    "/tmp/latent-wm-runs/20261002-E16-objective-matrix-RTX-s0"
+  ],
+  "affected_code": [
+    "acquisition_pilot.py: sequential train_one calls sharing base_state",
+    "objective_matrix.py: six methods sharing one loaded state"
+  ],
+  "comparison_status": "Original results retained; equal-optimizer data/objective attribution downgraded. Original objective matrix stopped incomplete and invalidated as a fair comparison. Complete controlled reruns are required.",
+  "not_affected_by_this_bug": [
+    "E13 frozen-model planning comparisons",
+    "E18 per-fork fresh AdamW adaptation",
+    "E16 base training without sequential method reloads",
+    "sealed acquisition selections and recorded environment branches",
+    "recorded success/outcome counts as descriptive outputs of the actual trained checkpoints"
+  ],
+  "fixed_code_sha256": {
+    "acquisition_pilot.py": "c07404b408c8ed6a04e03592d01d01f2e6298066b8418298ce234ebafd150c4a",
+    "objective_matrix.py": "91fa8f3cc1bc6c31c054cf49b2650f930f4c0f3007add1dec6bb5bbb496a3268"
+  },
+  "artifact_directory": "/tmp/latent-wm-runs/20261002-optimizer-isolation-audit",
+  "passed": true
+}

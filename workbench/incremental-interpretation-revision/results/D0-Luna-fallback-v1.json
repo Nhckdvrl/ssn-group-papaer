@@ -1,0 +1,36 @@
+{
+  "model": "gpt-6-luna",
+  "source": "User-authorized independent audit subagent",
+  "selection": "First six opencode process-timeout variants ordered by construction/source index/condition/extension. Chosen by audit failure, no inference scores supplied. Proposed gold removed to avoid anchoring.",
+  "packets_sha256": "ca142a6f3688182d951cc18f7770bb87f2ddba660cd97f9e56d50fd0e5556209",
+  "reviews_sha256": "431c76d39c60bfeffc0b546925931d1d2f635a76a74c0edfae988875e91fcfac",
+  "cache": "/data1/xiangding/work/incremental-interpretation-revision/luna-preaudit-E01-fallback-v1",
+  "variants": 6,
+  "questions": 30,
+  "input_hash_and_id_coverage_verified": true,
+  "completed_at_wrapper": true,
+  "provider_raw_finish_events_available": false,
+  "semantic_gold_adopted": 0,
+  "answer_counts": {
+    "No": 10,
+    "Yes": 18,
+    "None": 2
+  },
+  "certainty_counts": {
+    "clear": 28,
+    "interpretation_dependent": 2
+  },
+  "grammar_counts": {
+    "acceptable": 4,
+    "marginal": 2
+  },
+  "variant_ids": [
+    "MVRR:1:gp:0",
+    "MVRR:1:gp:1",
+    "MVRR:4:blocked:0",
+    "MVRR:5:blocked:0",
+    "MVRR:5:blocked:1",
+    "MVRR:5:gp:1"
+  ],
+  "scope": "Independent per-variant/question annotation, not human gold. Existing experiment gold/scores unchanged; ambiguous answers retained null."
+}

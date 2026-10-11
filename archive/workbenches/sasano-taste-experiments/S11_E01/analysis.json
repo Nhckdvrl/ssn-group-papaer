@@ -1,0 +1,141 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "n": 700,
+  "invalid": 0,
+  "cells": {
+    "value": {
+      "math": {
+        "n": 100,
+        "correct": 100,
+        "invalid": 0,
+        "by_expected": {
+          "A": {
+            "n": 50,
+            "correct": 50
+          },
+          "B": {
+            "n": 50,
+            "correct": 50
+          }
+        },
+        "by_direction": {}
+      }
+    },
+    "measurement": {
+      "explicit": {
+        "n": 200,
+        "correct": 58,
+        "invalid": 0,
+        "by_expected": {
+          "A": {
+            "n": 100,
+            "correct": 51
+          },
+          "B": {
+            "n": 100,
+            "correct": 7
+          }
+        },
+        "by_direction": {
+          "greater": {
+            "n": 100,
+            "correct": 50
+          },
+          "less": {
+            "n": 100,
+            "correct": 8
+          }
+        },
+        "coarse": {
+          "n": 100,
+          "correct": 7
+        },
+        "fine": {
+          "n": 100,
+          "correct": 51
+        }
+      },
+      "natural": {
+        "n": 200,
+        "correct": 100,
+        "invalid": 0,
+        "by_expected": {
+          "A": {
+            "n": 100,
+            "correct": 50
+          },
+          "B": {
+            "n": 100,
+            "correct": 50
+          }
+        },
+        "by_direction": {
+          "greater": {
+            "n": 100,
+            "correct": 50
+          },
+          "less": {
+            "n": 100,
+            "correct": 50
+          }
+        },
+        "coarse": {
+          "n": 100,
+          "correct": 50
+        },
+        "fine": {
+          "n": 100,
+          "correct": 50
+        }
+      }
+    },
+    "notation": {
+      "explicit": {
+        "n": 100,
+        "correct": 98,
+        "invalid": 0,
+        "by_expected": {
+          "A": {
+            "n": 50,
+            "correct": 48
+          },
+          "B": {
+            "n": 50,
+            "correct": 50
+          }
+        },
+        "by_direction": {}
+      },
+      "natural": {
+        "n": 100,
+        "correct": 100,
+        "invalid": 0,
+        "by_expected": {
+          "A": {
+            "n": 50,
+            "correct": 50
+          },
+          "B": {
+            "n": 50,
+            "correct": 50
+          }
+        },
+        "by_direction": {}
+      }
+    }
+  },
+  "measurement_pairs": {
+    "explicit": {
+      "n": 100,
+      "normatively_differentiated": 0,
+      "same_answer": 58,
+      "reversed": 42
+    },
+    "natural": {
+      "n": 100,
+      "normatively_differentiated": 0,
+      "same_answer": 100,
+      "reversed": 0
+    }
+  }
+}

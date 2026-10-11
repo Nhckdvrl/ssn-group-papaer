@@ -1,0 +1,1599 @@
+{
+  "analysis_script_sha256": "d47649592809ecdd3b051124cc8083ad543110a5fbbe0352729e298cc12ee5b1",
+  "runs": [
+    {
+      "run": "E001b_qwen32b_v1",
+      "model": "qwen32b",
+      "metrics": {
+        "sentence": {
+          "n": 42,
+          "correct": 20,
+          "invalid": 0,
+          "pair_n": 21,
+          "complete_pairs_correct": 2,
+          "confusion_gold_to_pred": {
+            "DNI->DNI": 18,
+            "INI->DNI": 19,
+            "INI->INI": 2,
+            "DNI->INI": 3
+          }
+        },
+        "full": {
+          "n": 42,
+          "correct": 20,
+          "invalid": 0,
+          "pair_n": 21,
+          "complete_pairs_correct": 0,
+          "confusion_gold_to_pred": {
+            "DNI->DNI": 20,
+            "INI->DNI": 21,
+            "DNI->INI": 1
+          }
+        }
+      },
+      "sentence_to_full_correctness": {
+        "True->True": 17,
+        "False->False": 19,
+        "False->True": 3,
+        "True->False": 3
+      },
+      "source_prediction_sha256": "9759427a11bc34567f95a1d810f45263b80748bcf33b8a11c6966bbf029199ae",
+      "decisions": [
+        {
+          "sample_id": "s195_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s414_f1229595864.20553_e1",
+          "condition": "sentence",
+          "pair_id": "Killing/Victim",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s368_f2_e3",
+          "condition": "sentence",
+          "pair_id": "Attempt/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s25_f3_e1",
+          "condition": "sentence",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s365_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Getting/Recipient",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s380_f4_e2",
+          "condition": "sentence",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s343_f1229595861.56888_e2",
+          "condition": "sentence",
+          "pair_id": "Getting/Recipient",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s295_f1229595860.03735_e2",
+          "condition": "sentence",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s142_f5_e2",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s293_f1229595860.00011_e3",
+          "condition": "sentence",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s350_f3_e3",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s21_f3_e3",
+          "condition": "sentence",
+          "pair_id": "Measure_duration/Process",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s187_f1229595856.64559_e2",
+          "condition": "sentence",
+          "pair_id": "Attempt/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s142_f5_e3",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s272_f4_e1",
+          "condition": "sentence",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s12_f6_e3",
+          "condition": "sentence",
+          "pair_id": "Measure_duration/Process",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s119_f1229595854.16561_e2",
+          "condition": "sentence",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s248_f1229595858.79221_e3",
+          "condition": "sentence",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s249_f1229595858.81561_e3",
+          "condition": "sentence",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s274_f1229595859.48139_e2",
+          "condition": "sentence",
+          "pair_id": "Killing/Victim",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s328_f1229595861.00966_e2",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s135_f1229595855.17535_e2",
+          "condition": "sentence",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s236_f1229595858.43785_e2",
+          "condition": "sentence",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s133_f1229595855.0573_e2",
+          "condition": "sentence",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s420_f1229595864.53863_e3",
+          "condition": "sentence",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s188_f1229595856.73394_e1",
+          "condition": "sentence",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s330_f1229595861.08152_e2",
+          "condition": "sentence",
+          "pair_id": "Leadership/Governed",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s399_f1229595863.72906_e1",
+          "condition": "sentence",
+          "pair_id": "Statement/Speaker",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s388_f2_e2",
+          "condition": "sentence",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s324_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Leadership/Governed",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s392_f1229595863.45999_e2",
+          "condition": "sentence",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s373_f1229595862.59841_e4",
+          "condition": "sentence",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s130_f9_e1",
+          "condition": "sentence",
+          "pair_id": "Statement/Speaker",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s335_f1229595861.27062_e4",
+          "condition": "sentence",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s103_f1229595853.5704_e3",
+          "condition": "sentence",
+          "pair_id": "Cotheme/Goal",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s109_f1229595853.7987_e2",
+          "condition": "sentence",
+          "pair_id": "Questioning/Addressee",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s313_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s49_f1229595852.33958_e3",
+          "condition": "sentence",
+          "pair_id": "Questioning/Addressee",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s347_f1229595861.68328_e2",
+          "condition": "sentence",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s411_f1229595864.1023_e3",
+          "condition": "sentence",
+          "pair_id": "Cotheme/Goal",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s247_f3_e1",
+          "condition": "sentence",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s279_f1229595859.63866_e2",
+          "condition": "sentence",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s195_f1_e2",
+          "condition": "full",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s380_f4_e2",
+          "condition": "full",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s274_f1229595859.48139_e2",
+          "condition": "full",
+          "pair_id": "Killing/Victim",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s414_f1229595864.20553_e1",
+          "condition": "full",
+          "pair_id": "Killing/Victim",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s343_f1229595861.56888_e2",
+          "condition": "full",
+          "pair_id": "Getting/Recipient",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s365_f1_e2",
+          "condition": "full",
+          "pair_id": "Getting/Recipient",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s187_f1229595856.64559_e2",
+          "condition": "full",
+          "pair_id": "Attempt/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s368_f2_e3",
+          "condition": "full",
+          "pair_id": "Attempt/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s25_f3_e1",
+          "condition": "full",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s295_f1229595860.03735_e2",
+          "condition": "full",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s328_f1229595861.00966_e2",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s142_f5_e2",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s119_f1229595854.16561_e2",
+          "condition": "full",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s272_f4_e1",
+          "condition": "full",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s142_f5_e3",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s350_f3_e3",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s293_f1229595860.00011_e3",
+          "condition": "full",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s135_f1229595855.17535_e2",
+          "condition": "full",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s21_f3_e3",
+          "condition": "full",
+          "pair_id": "Measure_duration/Process",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s12_f6_e3",
+          "condition": "full",
+          "pair_id": "Measure_duration/Process",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s248_f1229595858.79221_e3",
+          "condition": "full",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s420_f1229595864.53863_e3",
+          "condition": "full",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s236_f1229595858.43785_e2",
+          "condition": "full",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s249_f1229595858.81561_e3",
+          "condition": "full",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s388_f2_e2",
+          "condition": "full",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s188_f1229595856.73394_e1",
+          "condition": "full",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s392_f1229595863.45999_e2",
+          "condition": "full",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s133_f1229595855.0573_e2",
+          "condition": "full",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s324_f1_e2",
+          "condition": "full",
+          "pair_id": "Leadership/Governed",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s330_f1229595861.08152_e2",
+          "condition": "full",
+          "pair_id": "Leadership/Governed",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s130_f9_e1",
+          "condition": "full",
+          "pair_id": "Statement/Speaker",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s399_f1229595863.72906_e1",
+          "condition": "full",
+          "pair_id": "Statement/Speaker",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s335_f1229595861.27062_e4",
+          "condition": "full",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s373_f1229595862.59841_e4",
+          "condition": "full",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s49_f1229595852.33958_e3",
+          "condition": "full",
+          "pair_id": "Questioning/Addressee",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s109_f1229595853.7987_e2",
+          "condition": "full",
+          "pair_id": "Questioning/Addressee",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s103_f1229595853.5704_e3",
+          "condition": "full",
+          "pair_id": "Cotheme/Goal",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s411_f1229595864.1023_e3",
+          "condition": "full",
+          "pair_id": "Cotheme/Goal",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s247_f3_e1",
+          "condition": "full",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s313_f1_e2",
+          "condition": "full",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s347_f1229595861.68328_e2",
+          "condition": "full",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s279_f1229595859.63866_e2",
+          "condition": "full",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        }
+      ],
+      "scope": "Exploratory output-format validation on the same 42 development samples; not support/hallucination or method efficacy."
+    },
+    {
+      "run": "E001b_mistral24b_v1",
+      "model": "mistral24b",
+      "metrics": {
+        "sentence": {
+          "n": 42,
+          "correct": 24,
+          "invalid": 0,
+          "pair_n": 21,
+          "complete_pairs_correct": 3,
+          "confusion_gold_to_pred": {
+            "DNI->INI": 11,
+            "INI->INI": 14,
+            "INI->DNI": 7,
+            "DNI->DNI": 10
+          }
+        },
+        "full": {
+          "n": 42,
+          "correct": 20,
+          "invalid": 0,
+          "pair_n": 21,
+          "complete_pairs_correct": 0,
+          "confusion_gold_to_pred": {
+            "DNI->DNI": 20,
+            "INI->DNI": 21,
+            "DNI->INI": 1
+          }
+        }
+      },
+      "sentence_to_full_correctness": {
+        "True->True": 10,
+        "True->False": 14,
+        "False->False": 8,
+        "False->True": 10
+      },
+      "source_prediction_sha256": "d51264a6ea06c210574cdeb0e4de080fb5f181fcff7c70a8459e25a7377831e0",
+      "decisions": [
+        {
+          "sample_id": "s195_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s414_f1229595864.20553_e1",
+          "condition": "sentence",
+          "pair_id": "Killing/Victim",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s368_f2_e3",
+          "condition": "sentence",
+          "pair_id": "Attempt/Agent",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s25_f3_e1",
+          "condition": "sentence",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s365_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Getting/Recipient",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s380_f4_e2",
+          "condition": "sentence",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s343_f1229595861.56888_e2",
+          "condition": "sentence",
+          "pair_id": "Getting/Recipient",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s295_f1229595860.03735_e2",
+          "condition": "sentence",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s142_f5_e2",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s293_f1229595860.00011_e3",
+          "condition": "sentence",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s350_f3_e3",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s21_f3_e3",
+          "condition": "sentence",
+          "pair_id": "Measure_duration/Process",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s187_f1229595856.64559_e2",
+          "condition": "sentence",
+          "pair_id": "Attempt/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s142_f5_e3",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s272_f4_e1",
+          "condition": "sentence",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s12_f6_e3",
+          "condition": "sentence",
+          "pair_id": "Measure_duration/Process",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s119_f1229595854.16561_e2",
+          "condition": "sentence",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s248_f1229595858.79221_e3",
+          "condition": "sentence",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s249_f1229595858.81561_e3",
+          "condition": "sentence",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s274_f1229595859.48139_e2",
+          "condition": "sentence",
+          "pair_id": "Killing/Victim",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s328_f1229595861.00966_e2",
+          "condition": "sentence",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s135_f1229595855.17535_e2",
+          "condition": "sentence",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s236_f1229595858.43785_e2",
+          "condition": "sentence",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s133_f1229595855.0573_e2",
+          "condition": "sentence",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s420_f1229595864.53863_e3",
+          "condition": "sentence",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s188_f1229595856.73394_e1",
+          "condition": "sentence",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s330_f1229595861.08152_e2",
+          "condition": "sentence",
+          "pair_id": "Leadership/Governed",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s399_f1229595863.72906_e1",
+          "condition": "sentence",
+          "pair_id": "Statement/Speaker",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s388_f2_e2",
+          "condition": "sentence",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s324_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Leadership/Governed",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s392_f1229595863.45999_e2",
+          "condition": "sentence",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s373_f1229595862.59841_e4",
+          "condition": "sentence",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s130_f9_e1",
+          "condition": "sentence",
+          "pair_id": "Statement/Speaker",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s335_f1229595861.27062_e4",
+          "condition": "sentence",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s103_f1229595853.5704_e3",
+          "condition": "sentence",
+          "pair_id": "Cotheme/Goal",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s109_f1229595853.7987_e2",
+          "condition": "sentence",
+          "pair_id": "Questioning/Addressee",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s313_f1_e2",
+          "condition": "sentence",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s49_f1229595852.33958_e3",
+          "condition": "sentence",
+          "pair_id": "Questioning/Addressee",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s347_f1229595861.68328_e2",
+          "condition": "sentence",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s411_f1229595864.1023_e3",
+          "condition": "sentence",
+          "pair_id": "Cotheme/Goal",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s247_f3_e1",
+          "condition": "sentence",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s279_f1229595859.63866_e2",
+          "condition": "sentence",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "INI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": true
+        },
+        {
+          "sample_id": "s195_f1_e2",
+          "condition": "full",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s380_f4_e2",
+          "condition": "full",
+          "pair_id": "Intentionally_act/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s274_f1229595859.48139_e2",
+          "condition": "full",
+          "pair_id": "Killing/Victim",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s414_f1229595864.20553_e1",
+          "condition": "full",
+          "pair_id": "Killing/Victim",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s343_f1229595861.56888_e2",
+          "condition": "full",
+          "pair_id": "Getting/Recipient",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s365_f1_e2",
+          "condition": "full",
+          "pair_id": "Getting/Recipient",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s187_f1229595856.64559_e2",
+          "condition": "full",
+          "pair_id": "Attempt/Agent",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s368_f2_e3",
+          "condition": "full",
+          "pair_id": "Attempt/Agent",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s25_f3_e1",
+          "condition": "full",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s295_f1229595860.03735_e2",
+          "condition": "full",
+          "pair_id": "Observable_bodyparts/Possessor",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s328_f1229595861.00966_e2",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s142_f5_e2",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Affected_party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s119_f1229595854.16561_e2",
+          "condition": "full",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s272_f4_e1",
+          "condition": "full",
+          "pair_id": "Calendric_unit/Whole",
+          "gold": "DNI",
+          "prediction": "INI",
+          "raw_response": "INI",
+          "correct": false
+        },
+        {
+          "sample_id": "s142_f5_e3",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s350_f3_e3",
+          "condition": "full",
+          "pair_id": "Social_interaction_evaluation/Judge",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s293_f1229595860.00011_e3",
+          "condition": "full",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s135_f1229595855.17535_e2",
+          "condition": "full",
+          "pair_id": "Hostile_encounter/Side_2",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s21_f3_e3",
+          "condition": "full",
+          "pair_id": "Measure_duration/Process",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s12_f6_e3",
+          "condition": "full",
+          "pair_id": "Measure_duration/Process",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s248_f1229595858.79221_e3",
+          "condition": "full",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s420_f1229595864.53863_e3",
+          "condition": "full",
+          "pair_id": "Collaboration/Undertaking",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s236_f1229595858.43785_e2",
+          "condition": "full",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s249_f1229595858.81561_e3",
+          "condition": "full",
+          "pair_id": "Expectation/Cognizer",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s388_f2_e2",
+          "condition": "full",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s188_f1229595856.73394_e1",
+          "condition": "full",
+          "pair_id": "Criminal_investigation/Incident",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s392_f1229595863.45999_e2",
+          "condition": "full",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s133_f1229595855.0573_e2",
+          "condition": "full",
+          "pair_id": "Perception_experience/Perceiver_passive",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s324_f1_e2",
+          "condition": "full",
+          "pair_id": "Leadership/Governed",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s330_f1229595861.08152_e2",
+          "condition": "full",
+          "pair_id": "Leadership/Governed",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s130_f9_e1",
+          "condition": "full",
+          "pair_id": "Statement/Speaker",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s399_f1229595863.72906_e1",
+          "condition": "full",
+          "pair_id": "Statement/Speaker",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s335_f1229595861.27062_e4",
+          "condition": "full",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s373_f1229595862.59841_e4",
+          "condition": "full",
+          "pair_id": "Revenge/Injured_Party",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s49_f1229595852.33958_e3",
+          "condition": "full",
+          "pair_id": "Questioning/Addressee",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s109_f1229595853.7987_e2",
+          "condition": "full",
+          "pair_id": "Questioning/Addressee",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s103_f1229595853.5704_e3",
+          "condition": "full",
+          "pair_id": "Cotheme/Goal",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s411_f1229595864.1023_e3",
+          "condition": "full",
+          "pair_id": "Cotheme/Goal",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s247_f3_e1",
+          "condition": "full",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        },
+        {
+          "sample_id": "s313_f1_e2",
+          "condition": "full",
+          "pair_id": "Experiencer_focus/Content",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s347_f1229595861.68328_e2",
+          "condition": "full",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "DNI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": true
+        },
+        {
+          "sample_id": "s279_f1229595859.63866_e2",
+          "condition": "full",
+          "pair_id": "Emotion_directed/Stimulus",
+          "gold": "INI",
+          "prediction": "DNI",
+          "raw_response": "DNI",
+          "correct": false
+        }
+      ],
+      "scope": "Exploratory output-format validation on the same 42 development samples; not support/hallucination or method efficacy."
+    }
+  ]
+}

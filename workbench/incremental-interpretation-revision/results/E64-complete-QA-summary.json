@@ -1,0 +1,4366 @@
+{
+  "full_path": "/data1/xiangding/work/incremental-interpretation-revision/E64/complete-QA-map-v1.json",
+  "full_sha256": "feb9039767b81fdd0149c165921e394d208d130287c60efc25842da24b752655",
+  "data_sha256": "ac680197e3f4ed9672bf25707441b12566f024cdba17f4134417272d01fe22b5",
+  "runs": [
+    {
+      "path": "/data1/xiangding/work/incremental-interpretation-revision/E64/runs-v1/Qwen3-8B",
+      "qa_predictions_sha256": "9ac7621e95468ad9e5e050a4d3e5901c0e690726ffc2684c8a558fb4c812b59f",
+      "reference_config_sha256": "2503e12cf77ca9e80b2843ae68d4abdea9356346bf5e594d905c32ccb8813b45",
+      "tasks": 3776
+    },
+    {
+      "path": "/data1/xiangding/work/incremental-interpretation-revision/E64/runs-v1/gemma-3-12b-it",
+      "qa_predictions_sha256": "2c3b82f2343cd49ed56dd7683fde77878e0596d74f8d109641a1d9d4d3c7ba23",
+      "reference_config_sha256": "707e9dd50a8c6be1f07a6d1aaf5603ea8f68f2cf9810d9a23315aff38a3a6d9d",
+      "tasks": 3776
+    },
+    {
+      "path": "/data1/xiangding/work/incremental-interpretation-revision/E64/runs-v1/Meta-Llama-3.1-8B-Instruct",
+      "qa_predictions_sha256": "005428395769fd7696d7a987597e64d9769141ab2af6323200ec8d9b836dc35a",
+      "reference_config_sha256": "8dc3f2b9447e19afe1facea6f9dac41727fc6a6502f190c676a4d339924106fa",
+      "tasks": 3776
+    }
+  ],
+  "reports": {
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.26666666666666666,
+      "ci95": [
+        0.06666666666666667,
+        0.5333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.7,
+      "ci95": [
+        0.4666666666666667,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.1,
+        0.7333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6333333333333333,
+      "ci95": [
+        0.4,
+        0.8333333333333334
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.36666666666666664,
+      "ci95": [
+        0.06666666666666667,
+        0.6333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.2,
+      "ci95": [
+        0.03333333333333333,
+        0.4
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.06666666666666667,
+      "ci95": [
+        -0.16666666666666666,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.5833333333333334,
+      "ci95": [
+        0.35,
+        0.8
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.6666666666666666,
+      "ci95": [
+        0.4666666666666667,
+        0.8666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.08333333333333333,
+      "ci95": [
+        -0.03333333333333333,
+        0.25
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6666666666666666,
+      "ci95": [
+        0.4666666666666667,
+        0.8666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.08333333333333333,
+      "ci95": [
+        -0.03333333333333333,
+        0.25
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.65,
+      "ci95": [
+        0.45,
+        0.8333333333333334
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.06666666666666667,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        -0.05,
+        0.1
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.8666666666666667,
+      "ci95": [
+        0.6666666666666666,
+        1.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.43333333333333335,
+      "ci95": [
+        -0.7333333333333333,
+        -0.13333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.5,
+      "ci95": [
+        0.26666666666666666,
+        0.7333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.36666666666666664,
+      "ci95": [
+        -0.6666666666666666,
+        -0.06666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.8666666666666667,
+      "ci95": [
+        0.6666666666666666,
+        1.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.36666666666666664,
+      "ci95": [
+        -0.6666666666666666,
+        -0.06666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.8,
+      "ci95": [
+        0.6,
+        0.9666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.7333333333333333,
+      "ci95": [
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.06666666666666667,
+      "ci95": [
+        -0.2,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.7666666666666667,
+      "ci95": [
+        0.5666666666666667,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.03333333333333333,
+      "ci95": [
+        -0.1,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.8,
+      "ci95": [
+        0.6,
+        0.9666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.03333333333333333,
+      "ci95": [
+        -0.1,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.1111111111111111,
+      "ci95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.3333333333333333,
+      "ci95": [
+        0.0,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.3333333333333333,
+      "ci95": [
+        0.0,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.1111111111111111,
+      "ci95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.9444444444444444,
+      "ci95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.05555555555555555,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.05555555555555555,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.9444444444444444,
+      "ci95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        -0.16666666666666666,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.05555555555555555,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.7777777777777778,
+      "ci95": [
+        0.5555555555555556,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.4444444444444444,
+      "ci95": [
+        0.1111111111111111,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.3333333333333333,
+      "ci95": [
+        -0.6111111111111112,
+        -0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.5,
+      "ci95": [
+        0.2222222222222222,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.2777777777777778,
+      "ci95": [
+        -0.5,
+        -0.05555555555555555
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.6666666666666666,
+      "ci95": [
+        0.3888888888888889,
+        0.8888888888888888
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.1111111111111111,
+      "ci95": [
+        -0.2777777777777778,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.16666666666666666,
+      "ci95": [
+        -0.4444444444444444,
+        0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.09090909090909091,
+      "ci95": [
+        0.0,
+        0.22727272727272727
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.045454545454545456,
+      "ci95": [
+        -0.13636363636363635,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.06818181818181818,
+      "ci95": [
+        0.0,
+        0.18181818181818182
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.06818181818181818,
+      "ci95": [
+        0.0,
+        0.18181818181818182
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.022727272727272728,
+      "ci95": [
+        0.0,
+        0.06818181818181818
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.045454545454545456,
+      "ci95": [
+        -0.13636363636363635,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.09090909090909091,
+      "ci95": [
+        0.0,
+        0.20454545454545456
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.022727272727272728,
+      "ci95": [
+        0.0,
+        0.06818181818181818
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.06818181818181818,
+      "ci95": [
+        -0.18181818181818182,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Qwen3-8B/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.5,
+      "ci95": [
+        0.3,
+        0.7
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.75,
+      "ci95": [
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.25,
+      "ci95": [
+        -0.06666666666666667,
+        0.5333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6277777777777779,
+      "ci95": [
+        0.43333333333333335,
+        0.8055555555555555
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.12777777777777777,
+      "ci95": [
+        -0.11111111111111112,
+        0.34444444444444444
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.06666666666666667,
+      "ci95": [
+        -0.26666666666666666,
+        0.1
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.19444444444444445,
+      "ci95": [
+        0.0,
+        0.3888888888888889
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.5166666666666667,
+      "ci95": [
+        0.3,
+        0.7166666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.08333333333333333,
+      "ci95": [
+        0.0,
+        0.18333333333333332
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.48333333333333334,
+      "ci95": [
+        0.26666666666666666,
+        0.7
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.05,
+      "ci95": [
+        0.0,
+        0.13333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.4666666666666667,
+      "ci95": [
+        0.23333333333333334,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.03333333333333333,
+      "ci95": [
+        -0.06666666666666667,
+        0.13333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        -0.1,
+        0.13333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.5222222222222223,
+      "ci95": [
+        0.3,
+        0.7444444444444444
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.4777777777777778,
+      "ci95": [
+        -0.7,
+        -0.25555555555555554
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.5388888888888889,
+      "ci95": [
+        0.33333333333333326,
+        0.7555555555555554
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.46111111111111114,
+      "ci95": [
+        -0.6666666666666666,
+        -0.24444444444444444
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.46111111111111114,
+      "ci95": [
+        -0.6666666666666666,
+        -0.24444444444444444
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.8333333333333334,
+      "ci95": [
+        0.6666666666666666,
+        0.9666666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.7166666666666667,
+      "ci95": [
+        0.5333333333333333,
+        0.8833333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.11666666666666667,
+      "ci95": [
+        -0.26666666666666666,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.8,
+      "ci95": [
+        0.6333333333333333,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.03333333333333333,
+      "ci95": [
+        -0.1,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.8,
+      "ci95": [
+        0.6333333333333333,
+        0.9333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.03333333333333333,
+      "ci95": [
+        -0.1,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        -0.1,
+        0.1
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.4444444444444444,
+      "ci95": [
+        0.1111111111111111,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.3333333333333333,
+      "ci95": [
+        0.0,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.1111111111111111,
+      "ci95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.2222222222222222,
+      "ci95": [
+        0.0,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        -0.3333333333333333,
+        0.3333333333333333
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.1111111111111111,
+      "ci95": [
+        -0.2222222222222222,
+        0.4444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.9444444444444444,
+      "ci95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.9444444444444444,
+      "ci95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.9444444444444444,
+      "ci95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.05555555555555555,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.05555555555555555,
+      "ci95": [
+        -0.16666666666666666,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.7222222222222222,
+      "ci95": [
+        0.4444444444444444,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.3888888888888889,
+      "ci95": [
+        0.1111111111111111,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.3333333333333333,
+      "ci95": [
+        -0.6111111111111112,
+        -0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.3333333333333333,
+      "ci95": [
+        0.1111111111111111,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.3888888888888889,
+      "ci95": [
+        -0.6666666666666666,
+        -0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.5555555555555556,
+      "ci95": [
+        0.2222222222222222,
+        0.8888888888888888
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.16666666666666666,
+      "ci95": [
+        -0.3888888888888889,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.2222222222222222,
+      "ci95": [
+        -0.5555555555555556,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.045454545454545456,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.22727272727272727,
+      "ci95": [
+        0.06818181818181818,
+        0.4090909090909091
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.13636363636363635,
+      "ci95": [
+        0.0,
+        0.2727272727272727
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.09090909090909091,
+      "ci95": [
+        -0.20454545454545456,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.13636363636363635,
+      "ci95": [
+        0.0,
+        0.2727272727272727
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.09090909090909091,
+      "ci95": [
+        -0.20454545454545456,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.22727272727272727,
+      "ci95": [
+        0.09090909090909091,
+        0.4090909090909091
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        -0.06818181818181818,
+        0.06818181818181818
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.09090909090909091,
+      "ci95": [
+        -0.22727272727272727,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "gemma-3-12b-it/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.4111111111111111,
+      "ci95": [
+        0.2330555555555558,
+        0.611111111111111
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.6611111111111112,
+      "ci95": [
+        0.5,
+        0.8111111111111111
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.25,
+      "ci95": [
+        0.1,
+        0.4166666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.5944444444444446,
+      "ci95": [
+        0.4,
+        0.7777777777777778
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.18333333333333332,
+      "ci95": [
+        0.05,
+        0.35
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.4111111111111111,
+      "ci95": [
+        0.2330555555555558,
+        0.611111111111111
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.18333333333333332,
+      "ci95": [
+        0.05,
+        0.35
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.43333333333333335,
+      "ci95": [
+        0.2,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.48333333333333334,
+      "ci95": [
+        0.25,
+        0.7166666666666667
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.05,
+      "ci95": [
+        0.0,
+        0.13333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.4666666666666667,
+      "ci95": [
+        0.2662500000000004,
+        0.6833333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.03333333333333333,
+      "ci95": [
+        0.0,
+        0.08333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.45,
+      "ci95": [
+        0.23333333333333334,
+        0.6666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        0.0,
+        0.05
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        0.0,
+        0.05
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.8944444444444444,
+      "ci95": [
+        0.7944444444444444,
+        0.9777777777777777
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.6444444444444445,
+      "ci95": [
+        0.4666666666666667,
+        0.8111111111111111
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.25,
+      "ci95": [
+        -0.4666666666666667,
+        -0.05
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6777777777777778,
+      "ci95": [
+        0.5,
+        0.8444444444444444
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.21666666666666667,
+      "ci95": [
+        -0.43333333333333335,
+        -0.016666666666666666
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.9277777777777777,
+      "ci95": [
+        0.8444444444444444,
+        1.0
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.03333333333333333,
+      "ci95": [
+        0.0,
+        0.1
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.25,
+      "ci95": [
+        -0.45,
+        -0.08333333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 46,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.7,
+      "ci95": [
+        0.4666666666666667,
+        0.9
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.7166666666666667,
+      "ci95": [
+        0.5,
+        0.9
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        -0.05,
+        0.1
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.7,
+      "ci95": [
+        0.4666666666666667,
+        0.9
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.6833333333333333,
+      "ci95": [
+        0.4666666666666667,
+        0.8833333333333333
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.016666666666666666,
+      "ci95": [
+        -0.05,
+        0.0
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/MVRR/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.016666666666666666,
+      "ci95": [
+        0.0,
+        0.05
+      ],
+      "n_clusters": 15,
+      "n_records": 42,
+      "n_missing": 0,
+      "n_source_units": 15,
+      "n_sentences": 15
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.3888888888888889,
+      "ci95": [
+        0.1111111111111111,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.75,
+      "ci95": [
+        0.5555555555555556,
+        0.9444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.3611111111111111,
+      "ci95": [
+        0.16666666666666666,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.7222222222222222,
+      "ci95": [
+        0.5,
+        0.9444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.3333333333333333,
+      "ci95": [
+        0.1111111111111111,
+        0.5555555555555556
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.4444444444444444,
+      "ci95": [
+        0.1111111111111111,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.05555555555555555,
+      "ci95": [
+        0.0,
+        0.16666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.2777777777777778,
+      "ci95": [
+        0.05555555555555555,
+        0.5
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.3055555555555556,
+      "ci95": [
+        0.1111111111111111,
+        0.5
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.5,
+      "ci95": [
+        0.2777777777777778,
+        0.7222222222222222
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.19444444444444445,
+      "ci95": [
+        0.0,
+        0.4444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.4444444444444444,
+      "ci95": [
+        0.2222222222222222,
+        0.6666666666666666
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.1388888888888889,
+      "ci95": [
+        0.0,
+        0.3611111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.2777777777777778,
+      "ci95": [
+        0.1111111111111111,
+        0.4444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.027777777777777776,
+      "ci95": [
+        -0.08333333333333333,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.16666666666666666,
+      "ci95": [
+        0.0,
+        0.3888888888888889
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.7777777777777778,
+      "ci95": [
+        0.5555555555555556,
+        0.9444444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.4444444444444444,
+      "ci95": [
+        0.1111111111111111,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.3333333333333333,
+      "ci95": [
+        -0.6111111111111112,
+        -0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.4722222222222222,
+      "ci95": [
+        0.16666666666666666,
+        0.7777777777777778
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.3055555555555556,
+      "ci95": [
+        -0.5833333333333334,
+        -0.05555555555555555
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.8055555555555556,
+      "ci95": [
+        0.5555555555555556,
+        0.9722222222222222
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.027777777777777776,
+      "ci95": [
+        0.0,
+        0.08333333333333333
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.3333333333333333,
+      "ci95": [
+        -0.6111111111111112,
+        -0.1111111111111111
+      ],
+      "n_clusters": 9,
+      "n_records": 24,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.6944444444444444,
+      "ci95": [
+        0.4722222222222222,
+        0.8611111111111112
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.5277777777777778,
+      "ci95": [
+        0.3611111111111111,
+        0.6944444444444444
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.16666666666666666,
+      "ci95": [
+        -0.2777777777777778,
+        -0.05555555555555555
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.5555555555555556,
+      "ci95": [
+        0.3888888888888889,
+        0.7222222222222222
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.1388888888888889,
+      "ci95": [
+        -0.25,
+        -0.027777777777777776
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.6388888888888888,
+      "ci95": [
+        0.4166666666666667,
+        0.8333333333333334
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": -0.05555555555555555,
+      "ci95": [
+        -0.1388888888888889,
+        0.0
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPZ/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.08333333333333333,
+      "ci95": [
+        -0.2222222222222222,
+        0.05555555555555555
+      ],
+      "n_clusters": 9,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 9,
+      "n_sentences": 9
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.5909090909090909,
+      "ci95": [
+        0.4090909090909091,
+        0.7727272727272727
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.6590909090909091,
+      "ci95": [
+        0.4772727272727273,
+        0.8409090909090909
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.06818181818181818,
+      "ci95": [
+        0.0,
+        0.13636363636363635
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6590909090909091,
+      "ci95": [
+        0.45454545454545453,
+        0.8409090909090909
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.06818181818181818,
+      "ci95": [
+        0.0,
+        0.18181818181818182
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.5909090909090909,
+      "ci95": [
+        0.38636363636363635,
+        0.7954545454545454
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        -0.06818181818181818,
+        0.06818181818181818
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.06818181818181818,
+      "ci95": [
+        0.0,
+        0.18181818181818182
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.2857142857142857,
+      "ci95": [
+        0.07142857142857142,
+        0.5
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.2857142857142857,
+      "ci95": [
+        0.07142857142857142,
+        0.5
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.2857142857142857,
+      "ci95": [
+        0.07142857142857142,
+        0.5
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.2857142857142857,
+      "ci95": [
+        0.07142857142857142,
+        0.5
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.8181818181818182,
+      "ci95": [
+        0.6363636363636364,
+        0.9545454545454546
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.7272727272727273,
+      "ci95": [
+        0.5454545454545454,
+        0.8863636363636364
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.09090909090909091,
+      "ci95": [
+        -0.20454545454545456,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.6818181818181818,
+      "ci95": [
+        0.5,
+        0.8409090909090909
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": -0.13636363636363635,
+      "ci95": [
+        -0.25,
+        -0.045454545454545456
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.8181818181818182,
+      "ci95": [
+        0.6363636363636364,
+        0.9545454545454546
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": -0.13636363636363635,
+      "ci95": [
+        -0.25,
+        -0.045454545454545456
+      ],
+      "n_clusters": 22,
+      "n_records": 44,
+      "n_missing": 0,
+      "n_source_units": 22,
+      "n_sentences": 22
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": 0.42857142857142855,
+      "ci95": [
+        0.17857142857142858,
+        0.6785714285714286
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": 0.39285714285714285,
+      "ci95": [
+        0.14285714285714285,
+        0.6428571428571429
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": -0.03571428571428571,
+      "ci95": [
+        -0.10714285714285714,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": 0.42857142857142855,
+      "ci95": [
+        0.17857142857142858,
+        0.6785714285714286
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": 0.42857142857142855,
+      "ci95": [
+        0.17857142857142858,
+        0.6785714285714286
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPS/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_clusters": 14,
+      "n_records": 28,
+      "n_missing": 0,
+      "n_source_units": 14,
+      "n_sentences": 14
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/gp/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/initial/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/FULL_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/CONTEXT_BANK-BASE_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    },
+    "Meta-Llama-3.1-8B-Instruct/NPVP/control/final/words/same_goldTrue/correct/TARGET_BANK-CONTEXT_BANK": {
+      "estimate": null,
+      "ci95": null,
+      "n_clusters": 0,
+      "n_records": 0,
+      "n_missing": 0,
+      "n_source_units": 0,
+      "n_sentences": 0
+    }
+  },
+  "full_QA_reproduction": {
+    "Qwen3-8B": {
+      "LP_max_delta": 0.000400543212890625,
+      "hard_flips": 0,
+      "tasks": 1888
+    },
+    "gemma-3-12b-it": {
+      "LP_max_delta": 0.0005774497985839844,
+      "hard_flips": 0,
+      "tasks": 1888
+    },
+    "Meta-Llama-3.1-8B-Instruct": {
+      "LP_max_delta": 8.0108642578125e-05,
+      "hard_flips": 0,
+      "tasks": 1888
+    }
+  },
+  "scope": "Complete fixed E64 QA panel only. Free-role outputs and joint repair are pending and are not interpreted.",
+  "limitations": "MVRR initial 15 clusters, NPZ9; NPS cue weak; NPVP absent. Complete role audit pending. Whole-vector positional mediation does not establish relation-specific representation or original correct parse."
+}

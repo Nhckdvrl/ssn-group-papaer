@@ -1,0 +1,193 @@
+# CLAIMS — In-Context Evidence Structure
+
+**2026-10-06 整理（agent）。** 主旨（I04）：In-context learners index evidence by output — they track drift that changes which outputs are used, not drift that reassigns outputs to inputs.
+
+**等级说明：** 按 `workbench/EXECUTION.md` §3。升 L3 需独立校对（§5），本线尚未做——因此凡已满足 L3 泛化条件（≥2 个模型家族且 ≥2 个任务）的主张，标为 **L2** 并在“待补”中注明。
+
+| ID | 主张（含适用范围） | 等级 | 证据（实验卡 / 结果文件） | 待补 / 升级条件 |
+|---|---|---|---|---|
+| C00 | 程序化 nonce 规则任务支持真实 in-context 任务学习（未饱和、换字典稳定） | L1 | E00；`results/e00_debug` | 用审计后的词库（`data/lexicon.json`）重跑确认版 |
+| C01 | 测量工具有效：exact 层级 Bayes oracle（λ×ε，28 个单测；K 类置换版另有穷举单测）+ 成簇 / 前缀噪声方向 / A→B vs B→A 检验；阳性对照（标签流）13/13 模型测到规范方向 | L2 | E01、E05、E06、E16；`scripts/ices/oracle.py`、`oracle_perm.py` | 泛化条件已满足，待独立校对后升 L3 |
+| C02 | **条件结构被可交换汇总**：类别→标签映射的变化（nonce 规则、SST、奇偶、大小、类别条件变换、K=4/6 置换、任务切换）下，成簇≈零散、前缀噪声方向与 oracle 相反、A→B≈B→A；指令、可见 CoT、thinking（2 万 token）、T=64、时间戳都不改变；13 模型 0.6B–32B、4 个家族 | L2 | E02a、E03、E07、E08、E09、E16、E23、E25、E27；`results/confirm_v1`、`results/night_core` | 泛化条件已满足，待独立校对后升 L3 |
+| C03 | **输出侧变化被规范追踪**：标签流（含无关输入/独特 id/自然词）13/13 模型方向规范；全局变换（大小写↔反转、±1/±3/±10）多数模型规范、随规模增强（32B）；词汇/字符串函数多数只有近因 | L2 | E05、E06、E11、E16、E19、E20；`results/conf_rel` | 泛化条件已满足（标签流），待独立校对 |
+| C04 | 隐式先验：标签流 λ≈0.02–0.05、ε≈0.05–0.1；分类 λ=0、ε=0.3 | L1 | E10b（Qwen3-8B） | 多模型拟合 |
+| C05 | 看最近邻、不看最近期：预测跟随 query 像哪一半 demo，与新旧无关（两种顺序对称，到 32B） | L2 | E04、E21；`results/local_nat` | 待独立校对 |
+| C06 | 为什么（训练统计）：任务同质的从零训练复现解离；易变分类数据（toy、LoRA）只带来近因，不产生条件层面的变化推断 | L1 | E12（toy v1–v3）、E18（2 种子 + 4× 剂量） | 更大训练预算；预训练语料统计 |
+| C07 | **同一答案内的解离**：新 regime 用大写标在输出上时，格式通道规范（16/16 模型×任务），映射通道平坦或弱近因（8B）；32B 开始按大写分组（SST）；删除影响：格式通道旧 demo 支持度为负 8/8 且与输入内容无关，映射通道为正 16/16 且同类主导 | L2 | E22、E26；`results/marked`、`results/reset` | 待独立校对 |
+| C08 | **时间结构只在“偏向新输出”的成分上**：不均衡翻转时，条件成分噪声方向错 12/12（6 模型、到 32B）；少数类 query 被拉向错误答案；关系型输出（±2）同样成立 | L2 | E28、E29；`results/imbal`、`results/imbal_ca` | 偏置成分的“规范性”在弱信号下部分来自注意力竞争（E37），措辞需与此一致 |
+| C09 | **证据按输出身份分开**：分隔阶梯——不同输出词 0.00（10/10）≪ 输入领域 0.36–0.49 < 显式上下文标签 0.51–0.91 < 时间（完全合并）；上下文交互的溢出 > 主效应溢出（14/14，7 模型） | L2 | E24、E30、E31、E34、E35；`results/ctxeffect`、`results/vocabsep`、`results/domain` | 待独立校对 |
+| C10 | **泄漏 ∝ 标签语义相似度**：14 套标签词，溢出比与 bge / 模型内部锚点相似度 ρ=0.75–0.96（5 模型 × 2 任务） | L2 | E33；`results/vocabgrad/summary.csv` | 待独立校对 |
+| C11 | **建设性修复**：新 regime 换成新输出词后，concept drift 被规范追踪（映射通道噪声方向 11/12，含 1.7B/2B） | L2 | E32；`results/relabel` | 待独立校对 |
+| C12 | **机制**：一族晚层读标签头按内容相似度（强）、上下文标签（弱）、不按位置读取 demo 标签锚点（逐头 DLA 重建 r=0.9997）；旧锚点因因果掩码不可改写，新锚点不携带变化信号；方向错误的噪声效应 = 晚层直接读取噪声锚点（因果修补，阳性对照精确） | L2 | E36、E37、E38；`results/mech/`（不进 git） | L4 需：读标签头消融按预测改变映射与泄漏；非 Qwen 模型复现 |
+
+**混杂审计（C02 等升 L2 时完成）：** 1 噪声地板：bf16 batch 噪声 ~0.1 nats/条、无方向，200–300 base 平均后 ≈0.007 — 已控制。2 工具有效性：标签流阳性对照 13/13 — 已控制。3 选窗：配对设计，所有条件共享输入/名字/query — 无关。4 自校准：同一读数（exact 序列 log-odds），跨任务用归一化指数（CSIn/NDIn）— 已控制。5 提示词默认值：E03（指令）、E09（CoT/thinking）— 已控制（不能恢复）。6 输入一致性：同一 tokenizer/同一 prompt 字节 — 已控制。7 幸存种子：全部 base 报告 — 已控制。8 算力匹配：不适用。9 数据重叠：pilot 与确认版种子分离（≥500000）— 已控制。10 事后切片：多次修正如实记录（见下）；确认版与 E24 之后的实验预测均跑前写定 — 已控制。11 饱和：分类 accA 0.79–0.99；标签流 |logit| 大，用归一化指数 — 已注明。12 系统特有：13 模型 4 族 — 已控制。机制实验另有健全性检查（旧锚点逐位相同）与阳性对照（全位置修补精确复原）。
+
+**作废 / 修正记录**
+- 2026-10-10：E70首轮bf16 common key写回的fixed-Q组内logit spread max0.06986>预定0.02，32-context运行VOID，原始JSONL与control_failure.json保留；未读取科学条件结果。改float32同seed重跑，阈值不变；both直接取blind donor以精确实现数学同一性，不能把数值误差解释为地址变化。
+- 2026-10-10：E66首轮bf16分段cache实验完成24contexts，但与整段native max差1.625nats>预定0.10；标VOID，保留`results/e66/qwen3_discovery_invalid_chunking_bf16/`。仅检查控制、不使用其它条件解释机制；同seed改float32复核，阈值保持。
+- 2026-10-10：E63首轮SDPA消息分解的最大相对重建RMS=0.0723，超过跑前0.02阈值，synthetic/real两次运行标VOID（保留`results/e63/*_invalid_reconstruction/`）。no-op与all-attention冻结误差0不能替代组件数值校验。改为原生eager attention weights/V重跑同一种子，不使用首轮结果解释机制。
+- 2026-10-10：E59首个real发现运行将E56的toxic=1误作label_index=1(safe)，demo/query同步反向而与E56预定极性不一致；完整汇总前停止，保留`results/e59/qwen3_real_discovery_polarity_mismatch/`，不纳入证据。同seed59002按1−toxic重跑，synthetic不受影响。
+- 2026-10-10：E55的“同一标签”回归项实际是该demo的二元label identity，非与query的正确输出相同；系数0.92不能解释为gold-label匹配程度。其prototype probe在CV前全数据标准化；E58/E59改为固定训练集预处理。暂保留原数值与L1范围，不把probe可读出当作天然部署/原因定位。
+- 2026-10-10：E56c跨数据集同时更换词表，只证明给定模块的迁移有限；撤回“证明不存在通用来源方向”及“只因词表”的确定措辞。E58/E59检出可跨标签迁移的来源差分，仍不等于全部来源表示可因子化。
+- 2026-10-10：10-09复盘中“来源信息在，默认路由不用”与“绑定文献只研究单键”不是成立结论。E59直接测到native来源影响的name-key中介；ACL 2026 CBR已研究entity×relation绑定。旧结果保留，新定位见10-10复盘；C12/C13的有界现象证据不因此作废。
+- 2026-10-06：E30 中“主效应能按上下文绑定 = 一条可条件化的独立先验通路”在机制层不成立（经 Sam 锚点的泄漏比与交互相同，差别来自 query 自己标注者锚点的反证，E37）。
+- 2026-10-06：“两条通路 = 两组头”（E36）、“新锚点是运行滤波器”（E37）、“‘Label:’ 预测位置存放运行估计”（E38b）被否定；E37 初版数字因 1/rms 缩放作废。
+- 2026-10-06：“主效应来自相邻 token 统计”被 E34 否定；“E10 游程头 = 边缘通道”被 E28b 否定。
+- 2026-10-06：“任务识别是时间性的、任务学习是可交换的”被 E27 否定。
+- 2026-10-06：C02–C07 原标 L3，因未做独立校对改为 L2（泛化条件已满足）。
+- 2026-10-05 晚：“全局规则→时间敏感”修正为“输出标签流→结构推断；多数函数切换→仅近因”；“表层规律型 regime → 结构推断”被 E20 证伪。
+- 2026-10-05：“表层 vs 潜在”被 E11b 证伪；“单条 demo 可识别 regime”被 E13 证伪；E12 toy v1 不可判读；E10 游程头不是通用时间整合电路。
+| C13 | 多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（两个真实数据集：Measuring Hate Speech、GoEmotions；8 个模型、4 个家族、7–32B，基础与指令）；交互型视角（谁对哪类内容严）保留 27–48%（E47）；明确指令的作用因模型而异（Qwen2.5-7B-Instruct 1.14、Qwen3-8B 在 GoEmotions 0.98，其余 0.37–0.86）；每人独立的输出标签词在同词表单人基线下恢复到 0.80–1.27（10 个模型 × 数据集中 9 个；gemma 0.52 / 0.70）；机制（Qwen3-8B、Qwen2.5-7B、Mistral-7B）：读标签头把另一人的标签锚点读入答案（= 自己贡献的 73–82%），换词后注意力仍在（81–88%）但贡献降到 3–12%（读出层面的分隔） | L2（待独立校对） | E46、E46b、E47、E48、E49；`results/e46*/analysis.json`、`results/e47/analysis.json`、`results/e48/Qwen3-8B_analysis.json`、`results/e49/analysis.json` | **实际代价未建立（E50、E51、E52）：E52 两套真实标注规范冲突（Davidson 推文）时，混合在边界样本上仍保留 0.59–0.98 的规范准确率，指令常能完全恢复；MovieLens 共享账号的交互情形中，8 个样例只带来 +3–6 点个人准确率，混合无可观察的大代价（Mistral 保留 ~0.8，其余不可判定）；在 GoEmotions 主效应情形下，同词混合仍保留 86–98% 的个人标签预测收益（区分损失发生在 logit 层面，决策远离边界）**；机制在 2 家族 3 模型；2026-10-09 修正了换词比例的词表偏移混杂（E46b） | 2026-10-09 | 未校对 |
+
+## 2026-10-10 新测量（均待独立校对，不作L3/完整机制理论）
+
+| ID | 主张（含适用范围） | 等级 | 证据（实验卡 / 结果文件） | 待补 / 升级条件 |
+|---|---|---|---|---|
+| C14 | 固定Alex/Sam、平衡二元来源×标签任务中，标签锚点存在可跨标签迁移的来源**双胞胎差分**：Qwen3/Mistral合成检索层残差约0.98–1.00；独立真实评论池Qwen残差0.992–1.000。pre-RoPE K/V跨标签更弱且方向不对称（real某K层0.724），因此只支持common source component，非完整独立编码/天然可用绑定 | L1 | E58、E59；`results/e58/{qwen3_discovery,qwen3_confirmation,mistral_discovery}/analysis.json`、`results/e59/qwen3_real_confirmation/probe_analysis.json` | 新名字与来源抽象角色、去掉双胞胎配对的native解码、相关检索子空间中的因果交换；不得用差分probe饱和声明部署能力 |
+| C15 | 在此before-label格式中，native来源交换影响主要经来源名字K中介（Qwen synthetic0.92/0.94，real0.97/0.88，Mistral0.82）；同位置换label的作用很小，label-anchor KV主要承担mapping-flip。source-K与label-KV联合交换有明显非加性交互，纯label-V版本不足以恢复；支持分布于不同位置的协作，未定位精确串行电路 | L1 | E59、E61；`results/e59/*/mediation_analysis.json`、`results/e61/*/analysis.json`；真实与独立合成确认已完成 | 中介比例依赖反事实与hybrid操作；尚需消息/path干预及强模型边界，不能推出新计算构件或一般composition能力缺失 |
+| C16 | 对来源名字K交换的native来源影响，**答案末位**label消息不是完整中介：Qwen独立合成确认冻结末位仍余0.471[0.438,0.508]，冻结整个query仅余0.061[0.027,0.094]；受控来源规则的独立真实评论池余0.527[0.476,0.581]→0.054[0.001,0.102]。Mistral同词表复现末位已仅余0.127[0.089,0.165]、全query余0.078[0.040,0.113]，显示时序有模型差异。两scope base/sourceK逐位相同、原生消息重建RMS/no-op误差0。支持query内部、答案前位置参与来源条件化的label消息传递，不支持“默认完全不用source”，也未证明这些计算已足以稳定完成任务 | L1 | E63、E64；`results/e64/qwen3_{synthetic,real}_confirmation_{final,all}/analysis.json` | 独立校对；按query字段的path定位；与Cho shortcut/FV/conditional-rule文献正面对照；前沿推理模型边界。比例是指定干预的平均logit效应比，不是互斥可加份额 |
+
+### C16的E65扩展（L1，2026-10-10）
+- sender-edge反事实验证query→末位接力：Qwen独立synthetic冻结Label marker剩余0.226[0.172,0.285]、all-relay0.021[0.004,0.042]；real确认marker0.065[-0.016,0.138]。Mistral同synthetic发现集marker0.947[0.930,0.963]，source字段0.051[0.033,0.068]，sender有模型边界。证据：E65，`results/e65/*/analysis.json`；原生重建/no-op/full冻结全0。
+- direct-label删除**不构成稳定修复**：Qwen synthetic发现accuracy−0.086、确认+0.035，real确认−0.023（CI跨0）；Mistral−0.117且margin也下降。平均交互增强不足以推出更好source选择。POST-HOC四项分解还检出偏置与变异扩大，详见`factorial_posthoc.json`，非独立能力/校准验证。
+- 继续区分metadata-selected function与input-dependent answer，不因模板token relay或瞬时task state而宣称novelty（Bai2401.11323、Li2509.04466、Cho已有强参照）。
+
+### C16的E66压力测试（不升级，2026-10-10）
+输入前source-clause全层KV未部署规则（确认full−null margin−0.109[-0.202,−0.010]nats，single也失败）；已见input的query缓存保留rule相关logit（+1.109[0.861,1.369]nats、rule donor1.919[1.521,2.287]），accuracy仅+0.039，低于预定MIE。证据：E66、`results/e66/qwen3_confirmation/analysis.json`。不能从single/mixed接口共同失败推出独有组合瓶颈，不能从after-input成功证明function transfer；有效推断float32，bf16 chunk首轮VOID。
+
+## 2026-10-10：E67–E70（全部L1、尚非完整计算理论）
+
+| ID | 主张与范围 | 等级 | 实验卡 / 结果 | 限制与升级条件 |
+|---|---|---|---|---|
+| C17 | 在平衡2-source分类与匹配token多重集下，将相同source code从Tag字段移至答案prefix、不改变最终class词，Qwen独立确认accuracy+0.074[0.047,0.105]、source排序+0.109[0.055,0.172]；label-only K/V不能充分移植收益 | L1 | E67；`results/e67/qwen3_confirmation/analysis.json` | 只限最终class词相同：完整输出语法/namespace仍不同；TF prefix不等同全词表端到端生成。Mistral matched+0.031 CI跨0，非普遍规律；仍需独立schema与强模型边界 |
+| C18 | demo prefix K在指定native接口依赖历史上下文化，但不要求历史label内容：E68 isolated-K确认损害Source排序0.063；E69全label列禁读、非label KV逐位不随label-flip变化的K仍保留accuracy/排序，blind−isolated排序+0.102[0.031,0.172] | L1 | E68/E69；`results/e68/qwen3_confirmation/analysis.json`、`results/e69/qwen3_confirmation/analysis.json` | 其它native缓存/labels保留，不能说整模型无标签学习或所有V同等可部署；KV/V/joint的排序等效界更弱。历史必要≠先前task判决，需共偏移/角色/信息内容分解 |
+| C19 | float32下，来自不同发现context的冻结label-blind公共prefix-key偏移，在新词库/标签词上恢复blind−isolated margin效应0.527[0.274,0.760]、accuracy+0.059[0.023,0.094]；固定Q组内相对logits近不变（spread<4e-6），支持group visibility/prior可介导预测恢复 | L1 | E70；`results/e70/qwen3_confirmation/analysis.json`、`frozen_frame/frame_metadata.json` | shared Source排序0.828，低于native0.938，预测恢复≠binding恢复。仅固定两名字/marker/布局、36层高容量偏移，保留原生其它缓存，非函数向量独立足够、非整个contextualization规律；进一步预测新schema/名字/模型与native路径 |
+
+E70 common/centered/both的Source排序交互为事后分析（`interaction_posthoc.json`），需要新材料预定确认才升级为合作机制解释。所有新主张不改C09/C13旧有界结果，也不自动定义新head。与Cho shortcut、Few-Shot Examples Add Up（特别附录K）及TVS等强近邻的差异尚需预测与因果路径补足。
+
+
+### E71对C17/C19的预定压力测试（2026-10-10，仍L1）
+- C17：保持扩展namespace、token频率/位置相同，code与source一一对应时prefix收益大、与source/class正交时小。独立新材料relation×layout accuracy+0.109[0.070,0.152]、margin+0.514[0.427,0.597]；来源排序交互CI跨0。Source字段仍真实/充分，故单纯答案空间扩展不足以解释该有界收益；尚非新binding电路。证据 E71、results/e71/qwen3_confirmation/analysis.json。
+- C19：**旧冻结frame的新身份/新码迁移未达到预设MIE**：fraction0.350[0.231,0.477]、accuracy+0.031[0.008,0.055]、来源排序−0.008[-0.063,0.047]。发现的0.720/accuracy+0.125幅度不复现。原C19的固定Alex/Sam范围保留；不升级“通用frame”，不按seed或词表重估旧frame后算确认。
+- 同context的own common仍恢复0.695[0.550,0.858]margin、accuracy+0.063[0.027,0.098]；完整blind与common/centered的来源排序交互+0.086[0.023,0.156]，是E70 POST-HOC之后新预定材料的有界支持。发现交互0、确认accuracy/margin交互CI跨0，不能升为普遍合作理论。
+- 新名字/码词/词库/label同时更换，只能说明联合泛化有边界，不能单独定位哪种身份导致。native chat/reasoning尚待E72，raw一句Source指令边界不得替代该测试。
+
+### E72/E73对能力叙事的限制（2026-10-10，无升级）
+- 证据：E72、E73，`results/e72/*/analysis.json`、`results/e73/qwen3_discovery/analysis.json`、`prefix_audit.json`。direct96的single/entity也截断；48次实际短/长采样前缀完全一致，orthogonal thinking同轨迹2048→4096 accuracy .1875→.8125。不能拿未完成回复当来源绑定失败。
+- Qwen3.8-27B 8context thinking2048：source_only/linked/entity/single accuracy1.00，orthogonal .4375但56.25%截断。前四项只支持有有效行为程序，orthogonal低分不能证明程序不存在；不从同开发者模型推广frontier边界。
+- E73严格direct单来源.750，未过跑前.80控制，因此不触发原能力确认。观察Markdown遗漏后的装饰parser为POST-HOC：8B默认chat长预算source_only .8125、single .9375；不替换strict结果、不把事后阳性当原门槛通过。Source指令下真实错误仍存在，但只有4contexts、未确认。
+- 所有这些结果收窄“默认不使用来源”“reasoning无法恢复”的适用范围，未否定原E02/E46的指定任务现象；也未建立稳定新计算规律。C17/C19仍L1，完整因果算法与贡献门槛仍未跨过。
+
+### E74尚未鉴别正向支持与约束补全（不新增主张）
+E74、`results/e74/qwen3_discovery/{analysis,run}.json`：36contexts full/seen近100%，held bijection目标accuracy .319–.361；Source指令同步signed响应−.516[−1.178,.105]、owner响应也CI跨0。held independent Unknown决策accuracy0，说明即时输出未可靠执行声明函数空间，不能把微弱负号称已识别positive-support算法。原门槛均未达到，不跑72-context确认；先E75 native有效性。word读取来源≠rule证据来源仍是候选问题，不据此降级E48真实贡献测量或提升新机制主张。
+
+### E75–E77：函数解释边界与进一步降级（不升级）
+- E75、`results/e75/qwen3_native_gate/analysis.json`：18新seed contexts full/held bijection均1.00，independent .6667并有.3333截断；所有闭合Unknown正确，不筛闭合后宣称全可靠。允许有效native推理可以补全Source约束，raw低分不是Source能力缺失；完整三条件gate尚未过。
+
+- E76、`results/e76/qwen3_operator_confirmation/analysis.json`：Source方向响应3.648[3.403,3.883]确认，但accuracy .7344[.6719,.7969]未过.80。**query恒为demo中点，Source均值即gold；x+b又是加性，不证明真正Input×Source函数**。撤回阳性的完整组合解释，保留实际数字与方向。两位数whole label值未见不等于每个子token在own source未见。pair分解为POST-HOC，Source排序1.00也不能证明函数完整。
+- E77、`results/e77/qwen3_function/analysis.json`：相同Source label边缘下，direct-rule全0..9 query1.00；single complement插值1.00/外推.8828，而single identity .5625/.6719也未过.80，mixed更弱。不能从Single−Mixed差称独有Source组合缺陷。错误多是另一合法function，接下来function识别/应用、指令先后与信息位置仍是竞争解释，不提前宣称“表示在却不用”。
+
+### E78：函数偏好依赖定义顺序，识别→部署主张未建立（不升级）
+E78、`results/e78/qwen3_bridge/analysis.json`：32新context/四Source独立规则，mixed direct插值subtract在两定义顺序下.9609→.2500，copy .7734→.9609；word/频率不变。copy-minus-subtract偏好变化+.8984[.7284,1.0821]，single同样+.3672[.2812,.4467]。因此E77的identity劣势不是已经证明的稳定函数或Source组合结构。两order mixed Rule-ID .8516，copy/subtract .8750/.8281，未过两函数.90；single gold-copy外推.8945亦未过执行阳性。auto−empty插值+.1895[.1016,.2637]、外推+.2441[.1680,.3125]是真差值，但一般self-inferred instruction交回执行已有Liu/Neubig/Andreas2024强近邻，不能当新机制。所有材料保留，无C##升级；physical label来源→rule evidence来源仍待有界检验，而非已有新结论。
+
+### E79：共享词典的执行阳性不足，不作规则来源归因（不升级）
+[E79](experiments/E79-parameter-evidence-versus-codebook-evidence.md)、`results/e79/qwen3_codebook/{analysis,run,preflight,error_signature_posthoc}.json`：16新context、两定义顺序全部保留。词典lookup .9531–.9875、seen .9844–1.00，但提供真实规则的direct subtract插值 .2188[.0625,.3889]、外推 .1563[.0667,.2639]，未通过复合执行阳性；同context numeric原子未测，不能声称原子均可靠而组合失败。Mixed own-source signed响应约1.5–2.1nats且CI为正，仍不等于完整函数执行；lexical及foreign_D读数CI宽，不能当已区分机制或等效零影响。事后direct subtract错误中151/256输出g(x)、48正确、57其它，是行为签名而非内部计算时序证据。分析bool相减修正不改评分引擎/读数/样本，无新C##。
+
+### 本次综合：保持证据等级，收束投入与措辞
+见[`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)。E59–E71的来源因果路径、whole-query范围、关系×位置与公共载体偏移为优先解释链条；E74–E79不作为其成立的额外门槛。E71冻结frame新身份恢复.350[.231,.477]、accuracy+.031[.008,.055]是正的部分迁移，未达到原MIE不等于无迁移。公共key偏移作用于**整个demo prefix-code载体组**，不是两个Source各自的组偏移；固定Q组内相对logits不变只支持该局部不变性。保留所有原阈值与解释降级，不提升L1或改变I04/ACTIVE，不宣称已有统一ICL理论。
+
+## E81：来源码分配与更广的query读取（L1，有界因果解释）
+
+| ID | 主张（含适用范围） | 等级 | 证据 | 边界 |
+|---|---|---|---|---|
+| C20 | Qwen3-8B float32、E71 linked分类schema中，固定actual code-carrier每层/head/query的m及kind边缘、翻Source分配，独立64contexts的Prefix margin−.8489[−1.0027,−.7122]、accuracy−11.3[−15.2,−7.8]点；其分配有因果作用。但只移植该carrier的m/pi不能转移位置收益；同recipient Tag与相同码carrier m/pi下，角色对齐whole-query读取比carrier-only accuracy+13.3[9.4,17.2]点、margin+.9181[.7352,1.1107]，指向carrier之外读取的参与 | L1 | [E81](experiments/E81-carrier-mass-versus-source-allocation.md)、`results/e81/qwen3_confirmation/{analysis,run}.json`；32新context pilot→64新seed确认，源码冻结 | native demo缓存/V保留，query内V/状态活反馈；概率donor可能已有答案相关信息，不证明抽象策略或完整电路。单模型/同schema、未经独立科研校对；不能将head平均或output排名当整个证据选择 |
+
+**测量解释修正：** `output_geometry_posthoc.json`证明ranking仅测s>0，accuracy还依赖s与共享bias b的大小。Tag full-attention的Source contrast .583→1.371，|b|均值2.020→2.093；不能把prediction/ranking分离直接升级为“access与binding两个模块修复不同”。E70/71旧数值不作废；C19只保留指定key预算变化与输出效果的有界因果事实。一般校准/label prior已有强近邻，非新的ICES理论。
+
+### C20的E82扩展：Label读取收益与原生Source-effect不是同一反事实
+
+[E82](experiments/E82-label-reading-versus-query-relay.md)、`results/e82/qwen3_confirmation/{analysis,run}.json`：固定码carrier分布、原生Tag组外读取重放baseline下，替换Label列条件log权重使accuracy+7.8[3.9,11.7]点、margin+.4610[.3813,.5438]；只替换query内部列accuracy+.8[−.8,2.3]点、margin+.0472[.0261,.0679]。Label全query相对只在末位替换，margin差+.0140[.0069,.0229]，无大的额外收益。32-context pilot→64新seed确认，源码冻结，数值控制通过。
+
+这是指定布局收益的转移，不是原生Source-effect纯中介；与C16整query原生中介不矛盾。组外log权重拼接会重新归一化其它组，native/活反馈的baseline也不同；不报组件贡献百分比、不命名新独立模块。C20仍L1，同模型/schema，abstract Source策略尚未证明。后续E83用不含query gold的固定关系模型预测Label变化，避免以完整donor取代解释。
+
+### C20的E83预测原型（仍L1）
+
+[E83](experiments/E83-predictive-label-reader.md)、`results/e83/qwen3_prediction/{analysis,run}.json`：只拟合E82 discovery native Label权重变化、不拟合gold输出的冻结关系reader，在64全新contexts将Tag correct margin提高+.3760[.3583,.3933]；预算/位置reader无增益（−.0285[−.0344,−.0226]）。Source/input交互项再+.0667[.0645,.0690]；Label身份项改善统计拟合但无额外margin收益（−.0050[−.0095,−.0005]）。Source匹配翻号损害margin .6320[.5978,.6660]。
+
+这是多个层/head的固定显式关系模型（最大单模型9216系数、kind使用合成语义元数据），不是部署方法或原生模块定位。R与实际Label donor重放作用的逐context相关仅.252/RMSE .273nats，完整预测不足；native条件下Source-match与code-match共线，不能说已证明抽象Source寻址。最大模型不选winner、不重拟合新context，C20不升L2。下一步E84冻结同系数检验该具体共线解释。
+
+### E84对C20预测器的身份解释（仍L1）
+
+[E84](experiments/E84-source-field-versus-code-prediction.md)、`results/e84/qwen3_confirmation/{analysis,run}.json`：Source字段与query code交叉时，冻结同系数的code-match预测比Source-field-match的加权allocation MSE低1.5386[1.5041,1.5714]、输出作用MSE低.1651[.0711,.2750]；原自然query的两预测严格相同。native field/code两输出分量均为正（Prefix .594/.583），不能说code取代Source字段。
+
+code predictor平均field/code分量接近指定Label donor重放，但逐query效果RMSE .620、相关.116，简单B预算模型RMSE .527更低；不升级完整机制模型。cue冲突及TF prefix改变条件语义，结果只诊断身份影响、不作能力负结论。当前候选解释是布局改变涉及code关系驱动的Label读取，同时NameK来源路径仍存在；E85回native路径检验二者依赖，未经该实验不宣布两个独立Source模块。
+
+### E85：cue-specific原生依赖与有限组合预测（C20仍L1）
+
+[E85](experiments/E85-cue-specific-source-paths.md)、`results/e85/qwen3_confirmation/{analysis,run,gate_validation}.json`：64新contexts，Prefix field/code原生分量.566/.496；NameK交换后−.337/.321；LabelKV交换后−.497/−.460；joint +.319/−.309，各分量CI均不跨0。Tag符号同样重现。NameK使code减弱但未反转，不作无影响或独立模块结论。
+
+pilot之后明确POST-HOC提出、commit decabf63冻结的均值组合模型`n*m/b`，未用确认数据重拟合；四项joint均值绝对残差.007–.036nats，固定预测MSE .0232 [.0190,.0280]nats²，优于additive的1.2189。Tag code残差+.022 [.002,.041]仍存在。它只支持此身份/映射接口下的平均作用组合，不是新乘法原理、完整逐query算法或两个Source ID的证明。泛用多机制/绑定与QK/V耦合已有所有权；具体来源cue依赖及预测是这里的候选增量。Source-name K与LabelKV含上下文化信息，hybrid不等于full NM；仍同模型/schema、未经独立科研校对。
+
+### E86：冻结外推失败，保留E85自身的证据范围
+
+[E86](experiments/E86-source-equivalent-code-aliases.md)、`results/e86/qwen3_discovery/{analysis,run}.json`：16新contexts，明确同Source两码可互换；segregated−balanced的未知Item matched/crossed margin gap，Tag14.463 [13.055,15.826]、Prefix15.892 [14.548,17.156]nats；冻结E85均值外推仅.395/.928。两预测模型均严重失准，不因cue相对MSE较小称预测成功。规则输出响应仍为正；这不证明来源信息消失或唯一按码分组的native算法。C20仍L1，E85联合干预的独立确认不撤回。64-context确认未启动，当前不将alias局部控制扩展为主问题。
+
+### E88：来源字段状态的功能范围（C16/C20仍L1）
+
+[E88](experiments/E88-preinput-criterion-transfer.md)、`results/e88/qwen3_confirmation/{analysis,availability_comparison,run}.json`：24 pilot→32新措辞contexts；保留recipient示例，在input前query来源字段上换同姓名donor K/V。隐式criterion T=−.00084[−.01307,.01154]nats；另一姓名T=.17472[.02833,.32209]；显式criterion T=.18225[.14904,.21662]。显式−隐式=.18309[.15328,.21541]，相对native均值比的差也为正。源码冻结、数值误差≤1.34e−5，不筛contexts。
+
+这项分离限制了该Source-field状态的功能解释，不证明pure address、完整criterion不存在或新独立模块。raw默认discordant accuracy约50.8%，不能先假定完整标准已经可靠学会。JIT/Local Task Vectors已提供时间/分布式表示的强解释；显式标准阳性不替代从多Source demo推断规则的中心。E85有效均值预测保留；独立科研校对未完成，不升L2/3。
+
+### E89初版的能力解释作废／接口校对
+
+[E89](experiments/E89-native-criterion-recognition-and-use.md)、`results/e89/qwen3_discovery/wrong_answer_type_posthoc.json`：共享system列两种回答类型，评论请求只用Label:结尾。explicit条件256条评论请求中181个首token为food/service变体。第一token/合法标签域的低准确率不能支持“标准应用失败”；初版只保留为请求歧义诊断，没有主张据此升级。修订明确每次问题，并完整生成，原始数据/源码revision保留。这个校对不自动作废E88的preregistered logit反事实。
+
+### E89完整解码后的解释边界（仍不升级）
+
+`results/e89/qwen3_completed_answers/{run,final_answer_audit_posthoc}.json`：所有178截断样本延长，原前缀178/178保持；最后两条仍未完成。最终内容parser的138项修正已逐项核对末行，标POST-HOC并保留原统计。相反情绪评论base56.25%[52.34,60.94]，explicit52.34%[48.44,56.25]；标准识别在明确请求中分别50.0%和53.12%，初版explicit96.9%没有跨请求保持。没有形成“标准已可靠学会但无法使用”的证据，不据此给C16/C20或能力缺失升级。
+
+**E56代码核对（不是新结果）：** `scripts/e56_query_adapter.py`的qhook只在最后位置加delta，且prefill时state.on=False；示例缓存确实来自未修改模型。不能为了减弱E56而假设该adapter重编码了示例。其成功仍支持baseline表示加额外训练计算的构造性可用性；不等于原生程序或一个八维独立开关已存在。
+
+E88功能校对：explicit patch后的recipient向selectivity仍+.04938[−.01601,.11380]；正的donor向T可以来自Source效应减弱。双向T排除常数label bias，没有排除一般Source-cue扰动，故不将+.182nats直接称为执行donor criterion。用原已注册读数保留这个解释，不开新控制矩阵。
+
+### E90：来源位置选择与rule信息依赖（C16/C20仍L1）
+
+[E90](experiments/E90-source-isolation-before-and-after.md)、`results/e90/qwen3_{discovery,confirmation,heterogeneity}/{analysis,run,rule_sensitivity}.json`：24→48原signed正方向没有确认；POST-HOC发现异质性后，在第三批32新contexts运行前冻结rule contrast幅度。query所有位置只允许读A、其原始证据不变时，B改rule仍使A答案改变17.58%[12.11,23.83]，幅度.73394[.47362,1.08336]nats，16正/16负；两阶段隔离为数值零。不是用绝对值替换原预测，也不称平均性能损失。
+
+`results/e90/qwen3_single_adapter_confirmation/{analysis,run}.json`：现有E56模块在完全没有另一Source的48新contexts仍使61.72%→89.32%，+27.60[21.35,33.85]点；native复测完全一致。这明确排除“收益仅仅来自排除另一Source”的充分解释；模块仍是额外监督计算，不能据此定位完整原生criterion。
+
+Source正确位置读取不蕴含Source信息的功能独立，准确率高也不蕴含独立。宽泛上下文化/attention归因限制已有文献；具体关系信息的计算模型和novelty仍待建立，不自动升级或关闭I04。保留E48/E56/E85，C16/C20仍L1。
+
+### E91：输出namespace对来源内形成/检索的作用（C16/C20仍L1）
+
+[E91](experiments/E91-label-namespace-and-inherited-rule.md)、`results/e91/qwen3_{discovery,confirmation}/{analysis,run,preflight}.json`：24→48新contexts，同脚本SHA45d2f946…；A全部raw token与输出词表固定，只改B编码。query所有位置禁止读取B时，rule影响幅度shared .68334→far .19266，配对下降.49068[.34106,.64469]nats；只改A缓存K、固定全部cached V，下降.22772[.09473,.36098]；V-only下降.24758[.10033,.40605]。两单项均不能复现far；K/V全换精确复现far是数值对照，max误差1.72e−5。A-only B-rule翻转改变答案率22.4%→7.3%，accuracy差CI跨0。
+
+支持B的标签编码影响A历史K/V与后续读取；纯直接foreign词的Value投影不是完整充分解释。保留E48直接DLA、E85冻结预测。一般上下文化/QK-V区分已有文献，未定位完整criterion或唯一子空间；Key作用含access与活query状态，跨Source影响不自动视为不合理。当前一个family/受控rule/原test池，执行者自查不算独立科研校对；无L2/L3升级或开关线。
+
+### E95–E97：共享标准的功能链（探索，不升级C16/C20）
+
+[E95](experiments/E95-source-grouping-and-common-criterion.md)、[E96](experiments/E96-criterion-scope-and-functional-mediation.md)、[E97](experiments/E97-criterion-inference-input-and-answer-code.md)，对应results/e95、e96、e97的analysis/completeness_audit：原2ctxthinking标准16/16、A mixed19/32；仅传自推criterion，删除B/C后Own mixed87.5%且concordant私人偏好100%；新160个标准Goal全部正确，p_A/p_B影响0、c翻转100%。支持标准信息可在不同功能请求中推断、通过文字约束新私人判断；不支持默认私人过程已有同一latent或已识别独立原生criterion模块。
+
+n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只有16，bootstrap单位为context而非重复行。E95材料A块均在foreign之后；E97 review字段与私人Goal不同，不声称token相同的query机制比较。独立agent审计核对数字与边界；仍未做独立新材料的机制确认。
+
+### E98–E99：内部接口未成立，功能链在新材料确认（C16/C20仍L1）
+
+[E98](experiments/E98-criterion-trajectory-without-teacher-cache.md)的112项阳性中，文字mixed14/16、相反私人偏好轨迹8/16，c翻转0；后384未运行。它不支持任何关于prepared donor有无criterion的结论。
+
+[E99](experiments/E99-independent-factor-interface-confirmation.md)、`results/e99/merged/{analysis,completeness_audit}.json`：8新context、criterion64/64，Own256/256但128 unique，native mixed107/128＝83.59%[68.75,96.09]、concordant128/128；39续写、0未知，独立审计通过。标准推断和文字组合链确认；原生本身较强，旧n2普遍弱表现未确认。不能从不同流程的分差证明默认已形成同一latent。全成功经验CI退化、位置与模板关联均保留；无L2升级。
+
+### E101：局部规则断言不是已验证的可迁移状态（无主张升级）
+
+[E101](experiments/E101-native-criterion-commitment-interchange.md)、`results/e101/merged/{analysis,completeness_audit,word_effect_posthoc}.json`：512/512、0未知，511/512最终判断不变。L63 residual首token64/64跟随donor，POST-HOC 20/64 aspect类别改变，但最终仅一例新错误。操作确实生效；此首次局部断言接口没有产生criterion/函数/属性/答案的完整运输profile。不能从已有78.125% event匹配声称运输，不能推广为标准不存在。条件性词语clamp不执行，C16/C20不升降，原结果保留。
+
+### E102：来源字段私人函数切换主要重定位recipient证据（有界探索）
+
+[E102](experiments/E102-source-pointer-versus-program.md)、`results/e102/qwen35_discovery/{analysis,run,completeness_audit}.json`：448/448、0未解析；主分叉recipient B63/64、15/16完整profile，donor函数0/16完整；四donor c/p世界在64receiver上0答案flip，微小margin变化保留。数值self-copy/字段外/matched-prefix差0；失败数值运行保留。限制是layer16、输入前整个字段、4原开发context；支持地址型功能作用，不证明全网络无规则表示。无C16/C20升级，旧E94结果澄清而非撤回。
+
+### E103：示例私人函数主要依赖KV，未发现预设的C/P跨memory分工
+
+[E103](experiments/E103-inferred-rule-memory-crossing.md)、`results/e103/qwen35_discovery/{analysis,run,numeric_audit,carry_audit,completeness_audit}.json`：256/128unique，native98.44%，KV whole-function模型95.31%[90.63,100]，C/P模型无完整四query profile。all-donor/self-copy数值0，48linear真实消费恢复state；split/unsplit微差完整保存。限定direct B完全可识别任务与这个hybrid模型，不称KV存独立抽象程序、不称Rec零作用，无C16/C20升级。
+
+### E104：criterion的部分内部控制，不是已确认原生程序
+
+[E104](experiments/E104-criterion-policy-state-interface.md)、`results/e104/qwen35_positive/{analysis,paired_contrasts,run,completeness_audit}.json`：352、0未知；cross-Actor仅Rec从显式cue搬运，opposite mixed65.63% vs50%，+15.63[6.25,25]pp，concordantOwner p32/32保持、完整profile6/16。存在部分criterion信息作用，actor地址/整teacher函数不够解释；但未达到稳健接口，标准推断Goal矩阵未运行，不能叫native shared criterion program。正式主张不升级。

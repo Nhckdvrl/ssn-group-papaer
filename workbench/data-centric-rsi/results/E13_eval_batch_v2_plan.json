@@ -1,0 +1,38 @@
+{
+  "experiment": "E13",
+  "revision": "eval_batch_v2",
+  "status": "prepared for root review; not launched; existing fvcrc10 PID320801 remains untouched",
+  "script": "workbench/data-centric-rsi/scripts/e13_eval_batch_v2.py",
+  "script_sha256": "04bb287c9d59241f6acf49d39698e83a87a69ff08bf589205c6a6689d03c15f2",
+  "frozen_original_script": "workbench/data-centric-rsi/scripts/e13_eval_batch.py",
+  "frozen_original_sha256": "404c6f44d5f938b116cb0e9cee55cbc3f3db19688525c93d5bfd86075c930620",
+  "launch_node": "fvcrc10",
+  "student_gpu": 1,
+  "coordinator_command": [
+    "python3",
+    "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e13_eval_batch_v2.py",
+    "--run-batch"
+  ],
+  "state_path": "/var/tmp/xiang-data-rsi/e13/eval_batch_v2/state.json",
+  "legacy_state_path_preserved": "/var/tmp/xiang-data-rsi/e13/eval_batch/state.json",
+  "all_six_training_and_four_completed_queues_required": true,
+  "judge_build_required": "0.23.0+cu129",
+  "judge_base_version": "0.23.0",
+  "judge_recipe": "Exactly inherited E12/E13 model revision, command, GPU1, no-thinking, memory0.78, context4096, sequences16, native sampler; no environment edits or packages installed",
+  "training_budget_cost_source": "Sum all six terminal queue_wrapper_wall_seconds, including CPU preflight/import/model/train/I-O; original completion.wall_seconds sum also retained",
+  "retained_original_cost_field": "successful_train_wrapper_seconds",
+  "added_cost_fields": [
+    "train_queue_wrapper_seconds",
+    "train_preflight_and_outer_wrapper_seconds",
+    "A100_budget_training_cost_source",
+    "training_queue_entries"
+  ],
+  "A100_train_eval_cap_seconds": 64800,
+  "Blackwell_judge_residency_cap_seconds": 43200,
+  "probe_result": "workbench/data-centric-rsi/results/E13_eval_v2_readonly_probes.json",
+  "eval_on_fvcrc13_available": false,
+  "eval_on_fvcrc13_reason": "Existing /var/tmp/xiang-data-rsi/e12/vlmeval_venv/bin/python and all eight E12 LMUData TSV files are absent",
+  "route_decision": "Retain original fvcrc10 evaluation route; no third environment, full-pool data copy, GPU smoke, or other-process interruption",
+  "switch_owner": "root must review and safely replace only its currently waiting fvcrc10 coordinator; this subagent has not launched or stopped anything",
+  "verification": "AST parse and exact original-to-v2 diff only; read-only actual package and asset probes saved with raw output"
+}

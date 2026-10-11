@@ -1,0 +1,58 @@
+{
+ "jobs": [
+  {
+   "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "full",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/llama31_8b_instruct/mmlu_rank__full.jsonl"
+  },
+  {
+   "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "first",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/llama31_8b_instruct/mmlu_rank__first.jsonl"
+  },
+  {
+   "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "last",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/llama31_8b_instruct/mmlu_rank__last.jsonl"
+  },
+  {
+   "model": "Qwen/Qwen2.5-7B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "full",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/qwen25_7b_instruct/mmlu_rank__full.jsonl"
+  },
+  {
+   "model": "Qwen/Qwen2.5-7B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "first",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/qwen25_7b_instruct/mmlu_rank__first.jsonl"
+  },
+  {
+   "model": "Qwen/Qwen2.5-7B-Instruct",
+   "cell": "mmlu_rank",
+   "mask": "last",
+   "mask_seed": 0,
+   "n": 1000,
+   "bs": 8,
+   "out": "results/e01/qwen25_7b_instruct/mmlu_rank__last.jsonl"
+  }
+ ]
+}

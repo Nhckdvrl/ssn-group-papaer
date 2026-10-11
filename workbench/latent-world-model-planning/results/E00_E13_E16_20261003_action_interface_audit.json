@@ -1,0 +1,318 @@
+{
+  "experiment": "E00/E13/E16 action-interface semantics and coverage independent CPU audit",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261003-action-interface-audit",
+  "summary": {
+    "created_utc": "2026-10-02T15:53:27.616425+00:00",
+    "audit_source_sha256": "ed40a32907516b3f4e050f6487a2836efa277b391b2bccc77de5928be824c02b",
+    "numpy_version": "1.26.4",
+    "procedure": "Read saved normalized actions, denormalize using own source stats, test physical abs>1; do not test normalized abs>1.",
+    "scope": "Command coverage and exact implementation semantics only. No success/ranking causal inference, no new GPU run, no model load, no new bank simulation.",
+    "a5_snapshot": {
+      "path": "/tmp/latent-wm-runs/20261003-E13-commitment-cadence-RTX-s0",
+      "complete_marker_exists_at_read": true,
+      "all_task_plan_files_at_read": 256,
+      "first_quantification_snapshot": {
+        "all_task_plan_files": 208,
+        "complete_marker_exists": false
+      },
+      "tworoom_files": 128,
+      "tworoom_all_locked_32_anchors_x4_methods_present": true,
+      "normalization": {
+        "mean": [
+          0.003093412611633539,
+          -0.05298233404755592
+        ],
+        "std": [
+          0.8674758076667786,
+          0.8677655458450317
+        ]
+      },
+      "normalization_source": {
+        "path": "/tmp/latent-wm-runs/20261003-E13-commitment-cadence-RTX-s0/tworoom_inputs.json",
+        "sha256": "653b0ebfaf41ee9f85337ff40685df600fe6ef66e1652a1c4072e81099a54c86",
+        "lines": null,
+        "meaning": "Frozen Fast own action stats"
+      },
+      "methods": {
+        "EXEC25-COLD": {
+          "files": 32,
+          "saved_plan_count": 74,
+          "saved_plans_with_any_out_of_bound_coordinate": 74,
+          "full_planned_commands": {
+            "coordinate_count": 3700,
+            "out_of_bound_coordinates": 1323,
+            "primitive_command_count": 1850,
+            "out_of_bound_primitive_commands": 1011,
+            "out_of_bound_coordinate_fraction": 0.3575675675675676,
+            "out_of_bound_primitive_command_fraction": 0.5464864864864865,
+            "max_abs_physical_coordinate": 20.42031300857684
+          },
+          "actually_issued_commands_before_env_clip": {
+            "coordinate_count": 3226,
+            "out_of_bound_coordinates": 1266,
+            "primitive_command_count": 1613,
+            "out_of_bound_primitive_commands": 959,
+            "out_of_bound_coordinate_fraction": 0.39243645381277126,
+            "out_of_bound_primitive_command_fraction": 0.5945443273403596,
+            "max_abs_physical_coordinate": 20.420312881469727
+          },
+          "issued_commands_match_recorded_prefixes": true
+        },
+        "EXEC10-COLD": {
+          "files": 32,
+          "saved_plan_count": 244,
+          "saved_plans_with_any_out_of_bound_coordinate": 244,
+          "full_planned_commands": {
+            "coordinate_count": 12200,
+            "out_of_bound_coordinates": 3225,
+            "primitive_command_count": 6100,
+            "out_of_bound_primitive_commands": 2653,
+            "out_of_bound_coordinate_fraction": 0.26434426229508196,
+            "out_of_bound_primitive_command_fraction": 0.43491803278688523,
+            "max_abs_physical_coordinate": 15.271108105491294
+          },
+          "actually_issued_commands_before_env_clip": {
+            "coordinate_count": 4706,
+            "out_of_bound_coordinates": 1146,
+            "primitive_command_count": 2353,
+            "out_of_bound_primitive_commands": 965,
+            "out_of_bound_coordinate_fraction": 0.24351891202719933,
+            "out_of_bound_primitive_command_fraction": 0.41011474713132173,
+            "max_abs_physical_coordinate": 11.045042037963867
+          },
+          "issued_commands_match_recorded_prefixes": true
+        },
+        "EXEC5-COLD": {
+          "files": 32,
+          "saved_plan_count": 450,
+          "saved_plans_with_any_out_of_bound_coordinate": 450,
+          "full_planned_commands": {
+            "coordinate_count": 22500,
+            "out_of_bound_coordinates": 5978,
+            "primitive_command_count": 11250,
+            "out_of_bound_primitive_commands": 4900,
+            "out_of_bound_coordinate_fraction": 0.26568888888888886,
+            "out_of_bound_primitive_command_fraction": 0.43555555555555553,
+            "max_abs_physical_coordinate": 14.256678053595351
+          },
+          "actually_issued_commands_before_env_clip": {
+            "coordinate_count": 4432,
+            "out_of_bound_coordinates": 1080,
+            "primitive_command_count": 2216,
+            "out_of_bound_primitive_commands": 913,
+            "out_of_bound_coordinate_fraction": 0.24368231046931407,
+            "out_of_bound_primitive_command_fraction": 0.4120036101083033,
+            "max_abs_physical_coordinate": 14.256677627563477
+          },
+          "issued_commands_match_recorded_prefixes": true
+        },
+        "EXEC5-SHIFT-WARM": {
+          "files": 32,
+          "saved_plan_count": 325,
+          "saved_plans_with_any_out_of_bound_coordinate": 325,
+          "full_planned_commands": {
+            "coordinate_count": 16250,
+            "out_of_bound_coordinates": 6109,
+            "primitive_command_count": 8125,
+            "out_of_bound_primitive_commands": 4604,
+            "out_of_bound_coordinate_fraction": 0.37593846153846155,
+            "out_of_bound_primitive_command_fraction": 0.5666461538461538,
+            "max_abs_physical_coordinate": 19.356179516068323
+          },
+          "actually_issued_commands_before_env_clip": {
+            "coordinate_count": 3156,
+            "out_of_bound_coordinates": 1599,
+            "primitive_command_count": 1578,
+            "out_of_bound_primitive_commands": 1148,
+            "out_of_bound_coordinate_fraction": 0.5066539923954373,
+            "out_of_bound_primitive_command_fraction": 0.7275031685678074,
+            "max_abs_physical_coordinate": 19.35618019104004
+          },
+          "issued_commands_match_recorded_prefixes": true
+        }
+      }
+    },
+    "e16_bank": {
+      "path": "/home/xiang/.cache/latent-wm-results/20261002-E16-decision-audit-s0",
+      "manifest": {
+        "path": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30/data_manifest.json",
+        "sha256": "2ee042c17e3f43ae7378bbcb5d16eaf3124771cd152e9e20dee38642ecfaa296",
+        "lines": null,
+        "meaning": "Own base100 physical action normalization"
+      },
+      "files": 48,
+      "shape": [
+        48,
+        64,
+        25,
+        2
+      ],
+      "candidate_plan_count": 3072,
+      "candidate_plans_with_any_out_of_bound_coordinate": 3072,
+      "anchors_with_any_out_of_bound_coordinate": 48,
+      "physical_commands": {
+        "coordinate_count": 153600,
+        "out_of_bound_coordinates": 39225,
+        "primitive_command_count": 76800,
+        "out_of_bound_primitive_commands": 34442,
+        "out_of_bound_coordinate_fraction": 0.25537109375,
+        "out_of_bound_primitive_command_fraction": 0.4484635416666667,
+        "max_abs_physical_coordinate": 7.607908168182405
+      },
+      "mean_abs_clamp_change_per_coordinate": 0.15210244548250626,
+      "normalized_physical_lower": [
+        -1.175802108217028,
+        -1.071619016630146
+      ],
+      "normalized_physical_upper": [
+        1.1350345458882904,
+        1.2315256681943891
+      ],
+      "scope": "Sealed old real candidate bank; command coverage audit remains valid; old trained-method causal comparison downgraded by optimizer alias audit."
+    },
+    "interface_findings": {
+      "tworoom": "Substantive mismatch: native unbounded normalized CEM commands are scored raw but denormalized physical commands are clamped by env.step to [-1,1].",
+      "pusht": "No environment clip in installed relative PushT-v1; Box[-1,1] is declared but not enforced by unwrapped step. Out-of-Box commands are passed to relative target plus PD controller. Bounds would change control protocol, not repair this specific clipping mismatch.",
+      "minimal_transform": "T(z) = (clip(z*std+mean, -1, 1)-mean)/std, per physical primitive coordinate; reshape packed actions to [...,2] first.",
+      "minimum_strong_control": "TwoRoom same frozen model, starts/goals, native sampler/seeds, candidate and iteration budget: compare original native L2 versus L2 on T(z) in every CEM iteration; keep elite-update semantics explicit and execute the exact transformed final plan.",
+      "elite_mean_caveat": "T(mean(raw elite)) is generally unequal to mean(T(raw elite)); cost-only transform and projecting candidates before CEM mean/std updates are distinct controls.",
+      "novelty": "Classic execution-matched bounded scoring, not a novelty claim.",
+      "current_parent_plan": "Parent reports continuation-cost matrix includes TwoRoom NATIVE-L2 plus five executed-transform methods, primary against EXEC-L2; PushT five native methods. This audit does not execute or verify that future matrix."
+    },
+    "sources": [
+      {
+        "path": "/home/xiang/ssn-group-papaer/workbench/latent-world-model-planning/scripts/recovery_forks.py",
+        "sha256": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+        "lines": "15-25",
+        "meaning": "Fast MacroCost directly feeds normalized candidate action blocks to action encoder; no clip"
+      },
+      {
+        "path": "/home/xiang/ssn-group-papaer/workbench/latent-world-model-planning/scripts/lewm_pilot.py",
+        "sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+        "lines": "106-122",
+        "meaning": "LeWM NativeCost directly feeds normalized candidate actions; no clip"
+      },
+      {
+        "path": "/home/xiang/.venvs/latent-wm/lib/python3.10/site-packages/stable_worldmodel/solver/cem.py",
+        "sha256": "d88c86dcd1bd1e6d89221ac22079a3efe296cc7566532de0d36605e2f1536050",
+        "lines": "49-54,140-160,167-181,194",
+        "meaning": "Box used for dimensions; unbounded Gaussian candidates; raw candidate elite mean/std; no bound enforcement"
+      },
+      {
+        "path": "/home/xiang/.venvs/latent-wm/lib/python3.10/site-packages/stable_worldmodel/envs/two_room/env.py",
+        "sha256": "5e1d392de5b02472062dbe872aded67fd465fcc8f7eaa1c02a753b2fc31c61f0",
+        "lines": "262-267",
+        "meaning": "Physical commands are clamped to [-1,1] before transition"
+      },
+      {
+        "path": "/home/xiang/.venvs/latent-wm/lib/python3.10/site-packages/stable_worldmodel/envs/pusht/env.py",
+        "sha256": "d8d0de35aaab5b846db4e79b0fbfd6b17375178cce40a25df5301c8030ca6d68",
+        "lines": "310-328",
+        "meaning": "Relative physical commands converted to target; clip line318 commented; PD physics receives out-of-Box commands"
+      },
+      {
+        "path": "/tmp/latent-wm-runs/20261003-E13-commitment-cadence-RTX-s0/commitment_cadence_used.py",
+        "sha256": "01cc296f1d8ed22a416e3bb8220feb9d6a5d516904e1e3353f33b0bcfb797704",
+        "lines": "109,124-128",
+        "meaning": "Direct denormalization to unwrapped env; saved full plans, actually used prefixes, issued commands"
+      },
+      {
+        "path": "/home/xiang/.cache/latent-wm-results/20261002-E16-decision-audit-s0/decision_audit_used.py",
+        "sha256": "b3389d5e708c45ace168daab33193b7dc811b2b41df7df25b3aa7f162f328239",
+        "lines": "55,60-68",
+        "meaning": "Sealed64 per-anchor raw candidates denormalized for real bank execution"
+      }
+    ],
+    "cpu_semantics_smoke": {
+      "source": {
+        "path": "/tmp/latent-wm-runs/20261003-action-interface-audit/cpu_semantics_smoke.py",
+        "sha256": "16c291b9f2be743580c0061d4a534a3bd83887bd8923d9968913cbcff46d733b",
+        "lines": null,
+        "meaning": "Four private simulator steps, physical raw versus clipped commands"
+      },
+      "results": {
+        "no_gpu": true,
+        "private_env_instances": true,
+        "total_env_steps": 4,
+        "rows": [
+          {
+            "env": "swm/TwoRoom-v1",
+            "reset_seed": 78000,
+            "steps": 2,
+            "raw_command": [
+              2.0,
+              0.0
+            ],
+            "clipped_command": [
+              1.0,
+              0.0
+            ],
+            "state_raw": [
+              172.1405487060547,
+              101.14625549316406
+            ],
+            "state_clipped": [
+              172.1405487060547,
+              101.14625549316406
+            ],
+            "state_fields": "position xy",
+            "max_abs_state_difference": 0.0
+          },
+          {
+            "env": "swm/PushT-v1",
+            "reset_seed": 78000,
+            "steps": 2,
+            "raw_command": [
+              2.0,
+              0.0
+            ],
+            "clipped_command": [
+              1.0,
+              0.0
+            ],
+            "state_raw": [
+              465.653166713924,
+              216.55980612745657,
+              177.2684336846055,
+              328.3070017309681,
+              4.976913578347459,
+              748.2953116641576,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "state_clipped": [
+              436.08598812258,
+              216.55980612745657,
+              177.2684336846055,
+              328.3070017309681,
+              4.976913578347459,
+              374.1476558320786,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "state_fields": "agent xy,block xy/angle,agent velocity xy,block velocity xy/angular",
+            "max_abs_state_difference": 374.14765583207895
+          }
+        ]
+      },
+      "results_sha256": "a07f8719e5cf554622bd8a82beb88a5a150f57ab4ae6b41393e63bac6ca0124f"
+    },
+    "prior_art": {
+      "url": "https://arxiv.org/html/2609.35138v1",
+      "section": "E.2",
+      "verified": "Official arXiv HTML states TwoRoom original-command scoring vs executable clipping mismatch and evaluates raw-coordinate clipped/renormalized scoring at fixed search settings. It does not establish causal effect in our checkpoints."
+    }
+  },
+  "artifact_sha256": {
+    "audit.py": "ed40a32907516b3f4e050f6487a2836efa277b391b2bccc77de5928be824c02b",
+    "summary.json": "e9c02597160fe59186eacf0f9c152a790a2aa7b1e11425c06aaedac38dc61008",
+    "complete.json": "a2fe01543d21d39bd5b2457eafc72a269e92f36e2e600e8bd32299c744f9d8d6",
+    "cpu_semantics_smoke.py": "16c291b9f2be743580c0061d4a534a3bd83887bd8923d9968913cbcff46d733b",
+    "cpu_semantics_smoke.json": "a07f8719e5cf554622bd8a82beb88a5a150f57ab4ae6b41393e63bac6ca0124f"
+  },
+  "interpretation": "Physical-command clipping mismatch confirmed only for TwoRoom. Coverage counts and CPU semantics do not establish success/ranking causality. New E17 EXEC-L2 control locked before GPU to assess classical repair; sampler/elite raw mean remain unchanged. PushT physical commands are not clipped by environment; imposing bounds there would change protocol."
+}

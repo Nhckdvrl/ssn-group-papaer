@@ -1,0 +1,535 @@
+{
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "output": "/tmp/latent-wm-runs/20261002-E18-recovery-forks-s0-retry1"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "methods": [
+      "HOLD",
+      "PREDICTED-REPLAN",
+      "FEEDBACK",
+      "EXTRA-REPLAN"
+    ],
+    "gains": [
+      1.0,
+      0.7
+    ],
+    "shift_onset_primitive_step": 10,
+    "count_per_task": 32,
+    "seed": 77000,
+    "harness_sha256": "86e6201a8ba99d55bd63d87c9054c4293cd6641ad4991ce9930776bdd9ffa97b",
+    "hardware": "NVIDIA A100 80GB PCIe",
+    "timing_scope": "ambient GPU occupancy must be audited; model-call counts recorded",
+    "scope": "one released checkpoint/task; no router trained; feedback and replan are separate from parameter adaptation"
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.22933887309454212,
+        0.5474559264692255
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 13,
+      "success_wilson_ci95": [
+        0.2551963484266544,
+        0.5773997512461713
+      ],
+      "helped": 3,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 2.5764085054397583,
+      "paired_distance_ci95": [
+        -5.468186824023723,
+        12.92996507287025
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 16,
+      "success_wilson_ci95": [
+        0.33630882869327483,
+        0.6636911713067252
+      ],
+      "helped": 4,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.125,
+      "paired_success_ci95": [
+        0.03125,
+        0.25
+      ],
+      "paired_native_distance_utility_gain": 4.014079302549362,
+      "paired_distance_ci95": [
+        0.8836350396275521,
+        7.407255888730288
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 15,
+      "success_wilson_ci95": [
+        0.30869387108068835,
+        0.6355048288102536
+      ],
+      "helped": 5,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.09375,
+      "paired_success_ci95": [
+        -0.0625,
+        0.25
+      ],
+      "paired_native_distance_utility_gain": 12.297031551599503,
+      "paired_distance_ci95": [
+        3.800702662020922,
+        25.351014146208747
+      ],
+      "additional_candidate_evaluations": 837000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": -0.5894874036312103,
+      "paired_distance_ci95": [
+        -8.586206250637769,
+        9.57752381637692
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        0.0,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": -2.319525867700577,
+      "paired_distance_ci95": [
+        -8.625135895609855,
+        4.451639983803029
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        0.0,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": 4.130686789751053,
+      "paired_distance_ci95": [
+        0.009305749088525776,
+        8.666621865332127
+      ],
+      "additional_candidate_evaluations": 837000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.04970134387480073,
+        0.2806830548165022
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 2,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0625,
+      "paired_success_ci95": [
+        0.0,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 17.16753619994104,
+      "paired_distance_ci95": [
+        -62.5790597130043,
+        115.54642465718676
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 3,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.09375,
+      "paired_success_ci95": [
+        0.0,
+        0.21875
+      ],
+      "paired_native_distance_utility_gain": 49.17633295401419,
+      "paired_distance_ci95": [
+        -60.18877270625863,
+        174.19546196055947
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.15564580497742764,
+        0.45374509425916565
+      ],
+      "helped": 5,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.15625,
+      "paired_success_ci95": [
+        0.03125,
+        0.28125
+      ],
+      "paired_native_distance_utility_gain": 33.077619122045775,
+      "paired_distance_ci95": [
+        -60.934358645133834,
+        130.16090323958556
+      ],
+      "additional_candidate_evaluations": 864000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 1,
+      "success_wilson_ci95": [
+        0.005537860164003122,
+        0.15744263820012558
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 1,
+      "success_wilson_ci95": [
+        0.005537860164003122,
+        0.15744263820012558
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 22.855894366576592,
+      "paired_distance_ci95": [
+        -31.836669744739346,
+        91.65149836938012
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": -0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 30.686819114147525,
+      "paired_distance_ci95": [
+        -55.436982125355264,
+        126.69731404505296
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": -0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 15.389574911731522,
+      "paired_distance_ci95": [
+        -52.74246192261916,
+        79.66861194464555
+      ],
+      "additional_candidate_evaluations": 864000,
+      "absorbed_before_fork": 0
+    }
+  ],
+  "complete": {
+    "completed": true,
+    "physical_env_steps": 40696,
+    "fork_state_replay_max_abs": 0.0,
+    "fork_pixel_replay_max_abs": 0.0
+  },
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E18-recovery-forks-s0-retry1",
+  "rows_sha256": "79c80cc1d6f9203713c975983f5a27b3ea9aefd47d71414b4ef891a977d9935f",
+  "native_controls": {
+    "tworoom": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.0001220703125
+      }
+    ],
+    "pusht": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 6.103515625e-05
+      }
+    ]
+  },
+  "interpretation": [
+    "Feedback+replan helps some nominal goals but is not a new feedback method.",
+    "Unknown action gain is not corrected by merely re-encoding current state; intervention family may be inadequate.",
+    "Predicted replan isolates some search change; feedback difference should be compared at the same N.",
+    "No router trained; no deployment feature uses gain, hidden state or future return.",
+    "Native PushT task distance includes velocity components; native success is reported separately.",
+    "One released checkpoint and one planner seed; uncertainty intervals are episode conditional."
+  ]
+}

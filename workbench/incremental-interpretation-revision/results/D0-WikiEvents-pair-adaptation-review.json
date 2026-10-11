@@ -1,0 +1,702 @@
+{
+  "source_file_sha256": "a00df71e75ddd6b606d818370130891863dd3127cd4694bc54072b7a4524c4b2",
+  "review_sha256": "0a009d62ecd00f65d983e5ed70d858c0a47f138d679b28ebe7b8fd5c1bf9e832",
+  "review_model": "gpt-6-luna",
+  "local_full_review": "/data1/xiangding/work/incremental-interpretation-revision/WikiEvents-role-pairs-preparation-v1/natural-role-pair-review-v1.json",
+  "candidate_pairs": 14,
+  "distinct_event_counts": {
+    "None": 6,
+    "True": 7,
+    "False": 1
+  },
+  "status": "Bounded adaptation review finished before user pause; no inference; not a certified event-pair Gold set",
+  "raw_source_text_in_git": false,
+  "reviews": [
+    {
+      "pair_id": "wiki_mass_car_bombings_1_news_8:E1:E6",
+      "document_id": "wiki_mass_car_bombings_1_news_8",
+      "first_event_id": "wiki_mass_car_bombings_1_news_8-E1",
+      "second_event_id": "wiki_mass_car_bombings_1_news_8-E6",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "同一 Maidan Wardak compound assault 的报道背景与 campus gunmen shooting 相邻且提及同一爆炸；前者概括 Taliban 杀害大量安全部队，后者说两名 gunmen 朝士兵开枪。它们可能是同一次袭击中的不同动作，也可能杀伤人群重叠，文本不足以确定严格事件实例是否相同。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "The Taliban 是组织级归因，后文是 two gunmen；可能属于 Taliban 行动者，但没有把这两名 gunmen 明确识别为 Taliban。"
+      },
+      "same_patient": {
+        "value": null,
+        "reason": "members of Afghan security forces 与 Afghan soldiers 可能是同一组/有重叠子集，但不能从描述确认集合完全相同。"
+      },
+      "pair_notes": "第一句归因于 senior defense official；第二句是叙述性新闻句。shot at many soldiers 并不断言这些士兵被打死。",
+      "first_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E1",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T1",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T2",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E6",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T34",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T37",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_mass_car_bombings_1_news_8:E6:E24",
+      "document_id": "wiki_mass_car_bombings_1_news_8",
+      "first_event_id": "wiki_mass_car_bombings_1_news_8-E6",
+      "second_event_id": "wiki_mass_car_bombings_1_news_8-E24",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "两处文字都指向 Maidan Shahr 对 NDS 的同一次 compound assault；gunmen 对 soldiers 开枪与引语中的 enemies 杀/伤 sons 可能是同一袭击的子事件或重叠受害者，不能确认分开的现实事件实例。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "gunmen 是两个个体；quote 中 They 的近 antecedent 是 enemies of the country（攻击 NDS 的更宽群体），可能包含这两人但没有明确同指。"
+      },
+      "same_patient": {
+        "value": null,
+        "reason": "soldiers 和 NDS personnel / “our ... sons” 可能指重叠群体，文本不支持断言相同或不同。"
+      },
+      "pair_notes": "引语前一分句明确说 enemies carried out an attack against NDS personnel；They 的照应自然，role语法明确。第一句是 shot at，不等于伤/杀。",
+      "first_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E6",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T34",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T37",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E24",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "quoted",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T123",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T126",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_mass_car_bombings_1_news_8:E25:E20",
+      "document_id": "wiki_mass_car_bombings_1_news_8",
+      "first_event_id": "wiki_mass_car_bombings_1_news_8-E25",
+      "second_event_id": "wiki_mass_car_bombings_1_news_8-E20",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "前者是 Maidan Shahr NDS 袭击中引语报告的伤亡；后者明说 last week、Kabul，并描述 Taliban fighters 在 fortified compound 外另设炸弹，属于不同地点/时间的另一次爆炸。"
+      },
+      "same_actor": {
+        "value": true,
+        "reason": "引语的 They 由紧邻的 “enemies of the country” 引入，语境指 Taliban 敌对方；另一事件明确是 Taliban fighters。可在组织层面视为同一方，未证明同一批具体人员。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "Maidan Shahr 的 NDS “sons”与 Kabul 另一次爆炸造成的 people 是不同地点/事件中的受害描述。"
+      },
+      "pair_notes": "引语报告 killed and wounded 同一组 “sons”；另一个复合爆炸事件也带有 killing/wounding 结果，行动者是 fighters。",
+      "first_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E25",
+        "event_type": "Life.Injure.Unspecified",
+        "assertion_status": "quoted",
+        "actor_annotation": {
+          "role": "Injurer",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T123",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T126",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_mass_car_bombings_1_news_8-E20",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T183",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_mass_car_bombings_1_news_8-T186",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "53_VOA_EN_NW_2015.06.24.2835606:E8:E11",
+      "document_id": "53_VOA_EN_NW_2015.06.24.2835606",
+      "first_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E8",
+      "second_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E11",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "第一事件为 2013 Boston Marathon bombing 中 reported injury count；第二事件被明确称为三天后的 fatal shooting，发生在兄弟逃跑时，属另一次射击。"
+      },
+      "same_actor": {
+        "value": true,
+        "reason": "两句均明确以 Tsarnaev 为被判罪/开枪者；前后语境和先前 Dzhokhar Tsarnaev 名称支持同一人。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "264 是 bombing 中受伤人数的集合计数；第二目标是 MIT police officer，描述的是不同个体/目标。"
+      },
+      "pair_notes": "两个事件都以 found guilty 报告法律认定。264 和 officer 都在各自触发词之后引出；在 trigger-prefix 内没有对应患者的先行专名/描述。",
+      "first_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E8",
+        "event_type": "Life.Injure.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Injurer",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T150",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T72",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E11",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T105",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T174",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "53_VOA_EN_NW_2015.06.24.2835606:E11:E19",
+      "document_id": "53_VOA_EN_NW_2015.06.24.2835606",
+      "first_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E11",
+      "second_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E19",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "fatal shooting of the MIT officer 是逃跑期间的另一事件；McWatters “lost a leg in the attack”指向较早的 Boston Marathon bombing/attack，事件类型与时间不同。"
+      },
+      "same_actor": {
+        "value": true,
+        "reason": "两个事件角色都指 Tsarnaev；同文先前反复提及 Tsarnaev/Dzhokhar Tsarnaev，person coreference 清楚。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "MIT officer 与受伤的 Karen Rand McWatters 是两个不同人物；后者在 event trigger attack 前以全名出现，who 回指明确。"
+      },
+      "pair_notes": "第二 event 是关系从句里的既成 injury report，不是 hypothetical；attack 本身是对 Boston bombing 的简称。患者全名在同句、trigger 前出现。",
+      "first_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E11",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T105",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T174",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E19",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T52",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T49",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "53_VOA_EN_NW_2015.06.24.2835606:E19:E21",
+      "document_id": "53_VOA_EN_NW_2015.06.24.2835606",
+      "first_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E19",
+      "second_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E21",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "第二个 killing 处于 “urged ... to show remorse to discourage ... from killing” 的目的/拟防止语境，并没有断言真实发生的第二事件。无法将它与第一事件作现实事件的 distinctness 判定。"
+      },
+      "same_actor": {
+        "value": false,
+        "reason": "first actor 是 Tsarnaev；second actor 是 other jihadis，“other”在此把这些人区分于被劝诫的 Tsarnaev。且 second role 是假设/期望行为。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "first patient who 指 Karen Rand McWatters；second 是泛指 people，谈论另一组潜在受害者。"
+      },
+      "pair_notes": "第一事件是 Karen 在 attack 中失去一条腿的报道。第二个杀人行为在目的补语中，显然是需要阻止的可能行为，不应当作实际发生的 event gold。",
+      "first_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E19",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T52",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T49",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E21",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "hypothetical",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T11",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T40",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "53_VOA_EN_NW_2015.06.24.2835606:E22:E26",
+      "document_id": "53_VOA_EN_NW_2015.06.24.2835606",
+      "first_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E22",
+      "second_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E26",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "第一个 trigger attacks 是 “similar attacks” 中的泛指名词，且句子在 urge/discourage 的目的语境中；没有实际攻击事件可与后者作现实 distinctness 比较。"
+      },
+      "same_actor": {
+        "value": false,
+        "reason": "first role arguments jihadis/people 实际属于 “killing people” 的目的补语；second actor 是 Tsarnaev。other jihadis 明确与 Tsarnaev 区分。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "first annotation 的 people 来自目的补语中的泛指受害人；second annotation 是 American citizens。它们并非同一指称实体。"
+      },
+      "pair_notes": "该pair存在严重argument-trigger错配：E22把“similar attacks”这个处所/事件名词配上了上一个 killing 的 jihadis/people；语法上不能据此将攻击事件的施事/受事确认出来。E26则是 victims 对 Tsarnaev 行为的控诉式报道。",
+      "first_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E22",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "hypothetical",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T11",
+          "role_confirmation_clear": false
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T40",
+          "role_confirmation_clear": false
+        }
+      },
+      "second_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E26",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T142",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T145",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "53_VOA_EN_NW_2015.06.24.2835606:E26:E27",
+      "document_id": "53_VOA_EN_NW_2015.06.24.2835606",
+      "first_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E26",
+      "second_event_id": "53_VOA_EN_NW_2015.06.24.2835606-E27",
+      "distinct_real_world_events": {
+        "value": false,
+        "reason": "E26 描述 Tsarnaev attacking American citizens；E27 明确说 Martin 是在 the bombing 中被杀的人。文本把两者放在同一个 Boston bombing 事件中，后者是前者事件中一个死亡结果。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "前者明确以 Tsarnaev 为攻击者；E27 的被动 killed 从句没有明示施事。其事件属于 bombing，但不能仅凭紧邻的主句 “Tsarnaev said” 把他当作被动杀害事件的句内施事。"
+      },
+      "same_patient": {
+        "value": null,
+        "reason": "E26 是 American citizens 的泛化复数目标，E27 是 Martin 这一具体 child/person；Martin 可能属于该群体，但不是同一指称实体。"
+      },
+      "pair_notes": "E27 的 patient “person”由 son, Martin 的同句先行内容明确识别。E27 actor annotation 为 Tsarnaev 超出该被动从句的句面证据；新闻全文可能支持但本审计只按周围原句确认。",
+      "first_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E26",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T142",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T145",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "53_VOA_EN_NW_2015.06.24.2835606-E27",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T18",
+          "role_confirmation_clear": null
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "53_VOA_EN_NW_2015.06.24.2835606-T17",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_ied_bombings_10:E14:E6",
+      "document_id": "wiki_ied_bombings_10",
+      "first_event_id": "wiki_ied_bombings_10-E14",
+      "second_event_id": "wiki_ied_bombings_10-E6",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "Edward Heath 的 assassination attempt 在 1974-12-22；另一事件明确在 Caterham Arms bombing 的 next day，IRA unit 在 Oxford Street 爆炸另一枚炸弹。日期、地点、目标均不同。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "前者 actor 只称 attackers，前文说 IRA active service unit / Balcombe Street Gang 之前实施攻击，但没有直接核心指称到此处 attackers；后者是明确的 IRA unit。可能同一IRA团体，无法确认同一具体actor集合。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "前者 intended target 是不在家的 Edward Heath；后者目标/地点为 Oxford Street。"
+      },
+      "pair_notes": "第一次句子明确称其为 assassination attempt 且 Heath 不在场：Heath 是意图目标而非现场受伤对象。Heath 的全名在 throw trigger 前同句出现。第二次的 Oxford Street 在 exploded 后才出现，没有 trigger-prefix 先行别名。",
+      "first_event": {
+        "event_id": "wiki_ied_bombings_10-E14",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_ied_bombings_10-T34",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_ied_bombings_10-T32",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_ied_bombings_10-E6",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_ied_bombings_10-T62",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_ied_bombings_10-T65",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_ied_bombings_10:E6:E9",
+      "document_id": "wiki_ied_bombings_10",
+      "first_event_id": "wiki_ied_bombings_10-E6",
+      "second_event_id": "wiki_ied_bombings_10-E9",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "第一是 next-day Oxford Street explosion；第二是整个 campaign 的累计 deaths “nearly 20 people”。这类累计结果可能包含 Oxford Street 爆炸的伤亡，文本未拆出每一事件的死亡清单。"
+      },
+      "same_actor": {
+        "value": true,
+        "reason": "“The unit”在后句承接 IRA unit / Balcombe Street Gang 的组织实体；事件层级都将行动归给同一campaign组织。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "第一注释的 Target 是 Oxford Street 地点；第二 patient 是 campaign 期间近20名 people 的累计群体，不是同一个实体。"
+      },
+      "pair_notes": "死亡句是已报告的累积总数，不是明确的新一场单独 attack；角色施事/患者短语在语法上明确，但event granularity很粗。",
+      "first_event": {
+        "event_id": "wiki_ied_bombings_10-E6",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_ied_bombings_10-T62",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_ied_bombings_10-T65",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_ied_bombings_10-E9",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "wiki_ied_bombings_10-T77",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_ied_bombings_10-T82",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "38_VOA_EN_NW_2013.04.24.1647602:E1:E4",
+      "document_id": "38_VOA_EN_NW_2013.04.24.1647602",
+      "first_event_id": "38_VOA_EN_NW_2013.04.24.1647602-E1",
+      "second_event_id": "38_VOA_EN_NW_2013.04.24.1647602-E4",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "E1 是 Tamerlan 在 police shootout 后死亡；E4 是 Tsarnaev brothers 对 Sean Collier 的 fatal shooting。两句对应不同死者和不同施事动作，虽同属逃亡/追捕的一段连续过程。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "E1 注释把 police 设为 Killer，但句面只说他 died after a shootout with police，表示时间/关联，不明说警察造成死亡。不能可靠将该施事与第二事件 brothers 比较。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "第一 patient 是 Tamerlan Tsarnaev，第二是 Sean Collier，两人明确不同。"
+      },
+      "pair_notes": "E1 的 patient 和死亡明确，但 Killer=police 未被 after a shootout 结构蕴含；这是事件角色标注问题。第二句 authorities say 引述/归因 brothers shot Sean Collier to death，role明确。",
+      "first_event": {
+        "event_id": "38_VOA_EN_NW_2013.04.24.1647602-E1",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T74",
+          "role_confirmation_clear": false
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T73",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "38_VOA_EN_NW_2013.04.24.1647602-E4",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T9",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T11",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "38_VOA_EN_NW_2013.04.24.1647602:E4:E6",
+      "document_id": "38_VOA_EN_NW_2013.04.24.1647602",
+      "first_event_id": "38_VOA_EN_NW_2013.04.24.1647602-E4",
+      "second_event_id": "38_VOA_EN_NW_2013.04.24.1647602-E6",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "Sean Collier 的 shot-to-death 事件在 Boston bombing 三天后；set-off bombs 是早先 Boston Marathon bombing，作为后续射击的时间锚明确是另一场事件。"
+      },
+      "same_actor": {
+        "value": true,
+        "reason": "“Tsarnaev brothers”与下文“The brothers”是直接的同一双人群体指称。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "Sean Collier 与 Boston Marathon course 不同；course 更像炸弹旁边的位置，而不是句面明确的受事。"
+      },
+      "pair_notes": "E4 patient Sean Collier 在 trigger shot 之前同句全名出现。E6 actor明确，但 patient role可疑：句子说两枚炸弹 alongside course；course是地点/邻近位置，不是明确的受攻击患者。set-off 明确带 allegedly。",
+      "first_event": {
+        "event_id": "38_VOA_EN_NW_2013.04.24.1647602-E4",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T9",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T11",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "38_VOA_EN_NW_2013.04.24.1647602-E6",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "reported_alleged",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T16",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "38_VOA_EN_NW_2013.04.24.1647602-T18",
+          "role_confirmation_clear": null
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_mass_car_bombings_7_news_2:E2:E10",
+      "document_id": "wiki_mass_car_bombings_7_news_2",
+      "first_event_id": "wiki_mass_car_bombings_7_news_2-E2",
+      "second_event_id": "wiki_mass_car_bombings_7_news_2-E10",
+      "distinct_real_world_events": {
+        "value": null,
+        "reason": "前句把周一 Iraq 多城市的 attacks 汇总为 killed 107 people；后句说 insurgents also launched attacks on a base，同一新闻中的总攻击波及其中一个具体base事件的可能性很高，文本不说明该base伤亡是否计入107。"
+      },
+      "same_actor": {
+        "value": null,
+        "reason": "E2注释的 al-Qaida 来自后面的 warned it would mount new attacks，并非 killed 107 people 的句法施事；实际主语是 a wave of attacks。无法与 Insurgents 做可靠实体同指比较。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "E2为107 people的人群伤亡，E10标注的是 military base 这个设施地点/目标，指称不同。"
+      },
+      "pair_notes": "E2有严重actor错配：句子的主语/致死原因是 “A wave of attacks”；al-Qaida仅是随后 warned 的施事。E10 actor、on a military base target 结构清晰，后句归因给 security officials。",
+      "first_event": {
+        "event_id": "wiki_mass_car_bombings_7_news_2-E2",
+        "event_type": "Life.Die.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Killer",
+          "entity_id": "wiki_mass_car_bombings_7_news_2-T4",
+          "role_confirmation_clear": false
+        },
+        "patient_annotation": {
+          "role": "Victim",
+          "entity_id": "wiki_mass_car_bombings_7_news_2-T2",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_mass_car_bombings_7_news_2-E10",
+        "event_type": "Conflict.Attack.Unspecified",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_mass_car_bombings_7_news_2-T104",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_mass_car_bombings_7_news_2-T106",
+          "role_confirmation_clear": true
+        }
+      }
+    },
+    {
+      "pair_id": "wiki_ied_bombings_5_news_3:E1:E23",
+      "document_id": "wiki_ied_bombings_5_news_3",
+      "first_event_id": "wiki_ied_bombings_5_news_3-E1",
+      "second_event_id": "wiki_ied_bombings_5_news_3-E23",
+      "distinct_real_world_events": {
+        "value": true,
+        "reason": "第一是 Birmingham pub bombings；第二句明确 McDade 在 pub bombings 一周前于 Coventry Telephone exchange 尝试安放炸弹时自爆。时间和地点清楚区分两次事件。"
+      },
+      "same_actor": {
+        "value": false,
+        "reason": "第一个actor是IRA/terror group（组织级承担责任），第二actor是个体McDade；他是IRA成员，但不是同一指称实体。"
+      },
+      "same_patient": {
+        "value": false,
+        "reason": "pub 与 Coventry Telephone exchange 是不同地点。且exchange是计划安放炸弹的地点，不是句面实际爆炸的patient。"
+      },
+      "pair_notes": "E1是 IRA former officer 承认该组织对 Birmingham pub bombings 负责的reported claim；actor/group和pub对象清楚。E23句面主事件是 McDade blew himself up，patient是himself；telephone exchange位于 while trying to plant a bomb at... 的未完成计划中，不能当作已发生自爆事件的患者。",
+      "first_event": {
+        "event_id": "wiki_ied_bombings_5_news_3-E1",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "reported",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_ied_bombings_5_news_3-T8",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_ied_bombings_5_news_3-T10",
+          "role_confirmation_clear": true
+        }
+      },
+      "second_event": {
+        "event_id": "wiki_ied_bombings_5_news_3-E23",
+        "event_type": "Conflict.Attack.DetonateExplode",
+        "assertion_status": "asserted",
+        "actor_annotation": {
+          "role": "Attacker",
+          "entity_id": "wiki_ied_bombings_5_news_3-T133",
+          "role_confirmation_clear": true
+        },
+        "patient_annotation": {
+          "role": "Target",
+          "entity_id": "wiki_ied_bombings_5_news_3-T139",
+          "role_confirmation_clear": false
+        }
+      }
+    }
+  ]
+}

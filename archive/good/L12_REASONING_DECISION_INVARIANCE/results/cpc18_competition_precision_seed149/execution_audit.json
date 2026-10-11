@@ -1,0 +1,70 @@
+{
+  "config": "configs/cpc18_competition_precision.json",
+  "result_dir": "results/cpc18_competition_precision_seed149",
+  "n_frozen_base_decisions": 44,
+  "behavior": {
+    "olmo_instruct_sft": {
+      "rows": 7040,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 160,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9487215909090909
+    },
+    "olmo_think_sft": {
+      "rows": 7040,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 160,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8910511363636363
+    },
+    "qwen_thinking": {
+      "rows": 7040,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 160,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8865056818181818
+    },
+    "qwen_non_thinking": {
+      "rows": 7040,
+      "base_decisions": 44,
+      "expected_rows_per_base_decision": 160,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9992897727272727
+    }
+  },
+  "control": {},
+  "manifest": {
+    "results/cpc18_competition_precision_seed149/raw/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_precision_seed149/raw/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_precision_seed149/raw/olmo_think_sft.shard0of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_precision_seed149/raw/olmo_think_sft.shard1of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_precision_seed149/raw/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_competition_precision_seed149/raw/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

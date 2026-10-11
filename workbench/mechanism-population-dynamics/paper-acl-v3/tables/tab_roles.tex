@@ -1,0 +1,17 @@
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{3}{c}{which head within the layer} & which layer \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-5}
+Role & \makecell{same init.\\diff.\ corpus} & \makecell{diff.\ init.\\same corpus} & \makecell{both\\differ} & \makecell{same init.\ /\\both differ} \\
+\midrule
+Induction & 0.33 & -0.02 & 0.00 & 0.49 / 0.41 \\
+Previous token & 0.42 & -0.01 & -0.00 & 0.46 / 0.38 \\
+Attention sink & 0.18 & -0.01 & -0.00 & 0.64 / 0.58 \\
+Knowledge retrieval & 0.31 & -0.00 & 0.00 & 0.60 / 0.54 \\
+Duplicate token & 0.36 & -0.02 & -0.01 & 0.62 / 0.57 \\
+Current token & 0.32 & -0.02 & -0.00 & 0.61 / 0.59 \\
+Two tokens back & 0.43 & -0.00 & 0.01 & 0.62 / 0.58 \\
+Delimiter & 0.22 & -0.01 & 0.00 & 0.57 / 0.50 \\
+OV copying (weights only) & 0.25 & -0.01 & -0.01 & 0.68 / 0.64 \\
+\bottomrule
+\end{tabular}

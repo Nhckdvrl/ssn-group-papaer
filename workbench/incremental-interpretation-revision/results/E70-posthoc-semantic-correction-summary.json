@@ -1,0 +1,3285 @@
+{
+  "audit_summary": {
+    "model": "step-5-preview",
+    "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+    "proxy_used": false,
+    "max_batch": 5,
+    "workers": 2,
+    "data_sha256": "e8f47c9b3fa26d258d43d6e8fd264199dae3ac7e3982873579389f51b47ffe3e",
+    "items": 8,
+    "complete_both": 8,
+    "disagreements": 2,
+    "adjudications": 2,
+    "agreement": 0.75,
+    "unresolved": 0,
+    "annotated_sha256": "5ab5c619368a6a4d4bd59d4322e087958f0603ceff1965b23ada1dffe8451943"
+  },
+  "scope": "Eight anomaly-targeted source/P checks, not population audit. Old data/maps preserved; current posthoc statistics carry corrections.",
+  "http_response_files": 10,
+  "new_gpu_hours": 0,
+  "new_model_outputs": 0,
+  "E70": {
+    "full_map": "/data1/xiangding/work/incremental-interpretation-revision/E70/posthoc-semantic-overlay-map-v1.json",
+    "full_map_sha256": "aab006222ac7aaefac6cc7e949df6e72510627a0aa62a697c9a2420e7468ae36",
+    "scopes": 2790,
+    "changed_rows": null,
+    "core_summary": {
+      "Meta-Llama-3.1-8B-Instruct/MVRR/gp/initial/sourceGoldYes/entailed/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.9,
+        "ci95": [
+          0.7,
+          1.0
+        ],
+        "n_clusters": 10,
+        "n_records": 11,
+        "n_missing": 0,
+        "n_source_units": 10,
+        "n_sentences": 10
+      },
+      "Meta-Llama-3.1-8B-Instruct/MVRR/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_clusters": 8,
+        "n_records": 8,
+        "n_missing": 0,
+        "n_source_units": 8,
+        "n_sentences": 8
+      },
+      "Meta-Llama-3.1-8B-Instruct/NPZ/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.5,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n_clusters": 4,
+        "n_records": 4,
+        "n_missing": 0,
+        "n_source_units": 4,
+        "n_sentences": 4
+      },
+      "Qwen3-8B/MVRR/gp/initial/sourceGoldYes/entailed/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.4,
+        "ci95": [
+          0.1,
+          0.7
+        ],
+        "n_clusters": 10,
+        "n_records": 11,
+        "n_missing": 0,
+        "n_source_units": 10,
+        "n_sentences": 10
+      },
+      "Qwen3-8B/MVRR/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ],
+        "n_clusters": 8,
+        "n_records": 8,
+        "n_missing": 0,
+        "n_source_units": 8,
+        "n_sentences": 8
+      },
+      "Qwen3-8B/NPZ/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.5,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n_clusters": 4,
+        "n_records": 4,
+        "n_missing": 0,
+        "n_source_units": 4,
+        "n_sentences": 4
+      },
+      "gemma-3-12b-it/MVRR/gp/initial/sourceGoldYes/entailed/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.6,
+        "ci95": [
+          0.3,
+          0.9
+        ],
+        "n_clusters": 10,
+        "n_records": 11,
+        "n_missing": 0,
+        "n_source_units": 10,
+        "n_sentences": 10
+      },
+      "gemma-3-12b-it/MVRR/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.25,
+        "ci95": [
+          0.0,
+          0.625
+        ],
+        "n_clusters": 8,
+        "n_records": 8,
+        "n_missing": 0,
+        "n_source_units": 8,
+        "n_sentences": 8
+      },
+      "gemma-3-12b-it/NPZ/gp/positive_assertions/both/TARGET_BANK-BASE_BANK": {
+        "estimate": 0.25,
+        "ci95": [
+          0.0,
+          0.75
+        ],
+        "n_clusters": 4,
+        "n_records": 4,
+        "n_missing": 0,
+        "n_source_units": 4,
+        "n_sentences": 4
+      }
+    }
+  },
+  "E91": {
+    "full_map": "/data1/xiangding/work/incremental-interpretation-revision/E91/posthoc-semantic-overlay-map-v1.json",
+    "full_map_sha256": "7adb8e8369f928fe22b82a375306f42889d260452b32677ff8a2b2d5234b1015",
+    "scopes": 72,
+    "changed_rows": 8,
+    "core_summary": [
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.75,
+            "CI95": [
+              0.46875,
+              1.0416666666666665
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.4375,
+              0.4375
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 1.172670471110905,
+            "CI95": [
+              -4.421062478498606,
+              7.707998511157164
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 6,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.36249999999999993,
+            "CI95": [
+              0.175,
+              0.5625
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.15,
+            "CI95": [
+              -0.05,
+              0.35
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.4189380173193058,
+            "CI95": [
+              -3.5161297867348185,
+              2.914231546884147
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 12,
+            "opposes": 6,
+            "semantic_changed": 18
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2596899224806201,
+            "CI95": [
+              -0.3992248062015503,
+              -0.13565891472868216
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.06976744186046512,
+            "CI95": [
+              -0.09302325581395349,
+              0.23255813953488372
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.7187759668097917,
+            "CI95": [
+              -3.4329022105618754,
+              -0.19265853149524015
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 5,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.4166666666666667,
+            "CI95": [
+              0.07291666666666666,
+              0.78125
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.25,
+            "CI95": [
+              -0.5625,
+              0.0625
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.5770885397432721,
+            "CI95": [
+              -3.1295310012430493,
+              2.464292801974261
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 6,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2666666666666667,
+            "CI95": [
+              0.0875,
+              0.4541666666666666
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.175,
+              0.175
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.49896648949070366,
+            "CI95": [
+              -2.2621992310185304,
+              1.2510969064708473
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 7,
+            "semantic_changed": 14
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.22868217054263562,
+            "CI95": [
+              -0.37984496124031003,
+              -0.09302325581395347
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.18604651162790697,
+            "CI95": [
+              0.046511627906976744,
+              0.3488372093023256
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.0070262216231216,
+            "CI95": [
+              -1.9303938334379065,
+              -0.10843153632583379
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 2,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.5520833333333333,
+            "CI95": [
+              0.14583333333333337,
+              0.9585937499999964
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.3125,
+              0.3125
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 1.8570524633250898,
+            "CI95": [
+              -2.4926584850956717,
+              6.573610688565713
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 4,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2958333333333333,
+            "CI95": [
+              0.10833333333333332,
+              0.5001041666666651
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.125,
+            "CI95": [
+              -0.05,
+              0.3
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.6607912648225465,
+            "CI95": [
+              -1.2131254776845253,
+              2.728381143044325
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 9,
+            "opposes": 4,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2441860465116279,
+            "CI95": [
+              -0.37984496124031003,
+              -0.11240310077519379
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.23255813953488372,
+            "CI95": [
+              0.06976744186046512,
+              0.3953488372093023
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.1659319120524234,
+            "CI95": [
+              -2.7763223595133453,
+              0.4177487496160739
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 13,
+            "opposes": 3,
+            "semantic_changed": 16
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.75,
+            "CI95": [
+              0.46875,
+              1.0416666666666665
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.375,
+            "CI95": [
+              -0.75,
+              0.0
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -12.086612529456715,
+            "CI95": [
+              -26.163634709406306,
+              2.2027307745523514
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 9,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.36249999999999993,
+            "CI95": [
+              0.175,
+              0.5625
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.05,
+            "CI95": [
+              -0.25,
+              0.15
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -7.109800477722092,
+            "CI95": [
+              -14.77587958253013,
+              0.3308055716971267
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 10,
+            "semantic_changed": 18
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2596899224806201,
+            "CI95": [
+              -0.3992248062015503,
+              -0.13565891472868216
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.06976744186046512,
+            "CI95": [
+              -0.09302325581395349,
+              0.23255813953488372
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -3.5219989715353943,
+            "CI95": [
+              -8.502830743774828,
+              1.5385048208024428
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 5,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.4166666666666667,
+            "CI95": [
+              0.07291666666666666,
+              0.78125
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.25,
+            "CI95": [
+              -0.5625,
+              0.0625
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -5.658761697679438,
+            "CI95": [
+              -13.962591430870702,
+              3.3413571783092437
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 6,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2666666666666667,
+            "CI95": [
+              0.0875,
+              0.4541666666666666
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.1,
+            "CI95": [
+              -0.275,
+              0.075
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -7.093316144407891,
+            "CI95": [
+              -14.20092007983361,
+              -0.7709578056536229
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 9,
+            "semantic_changed": 14
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.22868217054263562,
+            "CI95": [
+              -0.37984496124031003,
+              -0.09302325581395347
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.18604651162790697,
+            "CI95": [
+              0.046511627906976744,
+              0.3488372093023256
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -2.9878260102711023,
+            "CI95": [
+              -6.799323707141369,
+              0.8401327766340867
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 2,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.5520833333333333,
+            "CI95": [
+              0.14583333333333337,
+              0.9585937499999964
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.125,
+            "CI95": [
+              -0.4375,
+              0.1875
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 2.041644756763503,
+            "CI95": [
+              -11.092225822331557,
+              15.901037886642607
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 5,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2958333333333333,
+            "CI95": [
+              0.10833333333333332,
+              0.5001041666666651
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.075,
+            "CI95": [
+              -0.1,
+              0.25
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.9669210757070232,
+            "CI95": [
+              -4.987122628098857,
+              7.190730292312981
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 5,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2441860465116279,
+            "CI95": [
+              -0.37984496124031003,
+              -0.11240310077519379
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.09302325581395349,
+            "CI95": [
+              -0.09302325581395349,
+              0.2558139534883721
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -8.375534907808667,
+            "CI95": [
+              -13.979690366877719,
+              -2.84593274668368
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 6,
+            "semantic_changed": 16
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.75,
+            "CI95": [
+              0.46875,
+              1.0416666666666665
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.125,
+            "CI95": [
+              -0.5625,
+              0.3125
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 1.0544928205381439,
+            "CI95": [
+              -2.4276968057594788,
+              5.325138881936435
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 7,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.36249999999999993,
+            "CI95": [
+              0.175,
+              0.5625
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.1,
+            "CI95": [
+              -0.1,
+              0.3
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.2349852656625444,
+            "CI95": [
+              -1.741330668027513,
+              2.3937715102041315
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 11,
+            "opposes": 7,
+            "semantic_changed": 18
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2596899224806201,
+            "CI95": [
+              -0.3992248062015503,
+              -0.13565891472868216
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.023255813953488372,
+            "CI95": [
+              -0.13953488372093023,
+              0.18604651162790697
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.2563794486517044,
+            "CI95": [
+              -2.7049352083094607,
+              0.03544859194794298
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 6,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.4166666666666667,
+            "CI95": [
+              0.07291666666666666,
+              0.78125
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.125,
+            "CI95": [
+              -0.4375,
+              0.1875
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.6231359549201443,
+            "CI95": [
+              -2.01310119446498,
+              1.2071260583377796
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 5,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2666666666666667,
+            "CI95": [
+              0.0875,
+              0.4541666666666666
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.175,
+              0.175
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.7412096465286595,
+            "CI95": [
+              -2.1889003511359078,
+              0.5277780348899795
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 7,
+            "semantic_changed": 14
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.22868217054263562,
+            "CI95": [
+              -0.37984496124031003,
+              -0.09302325581395347
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.23255813953488372,
+            "CI95": [
+              0.09302325581395349,
+              0.37209302325581395
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.0406335607116235,
+            "CI95": [
+              -1.9218967566995606,
+              -0.1428895658309177
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 11,
+            "opposes": 1,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.5520833333333333,
+            "CI95": [
+              0.14583333333333337,
+              0.9585937499999964
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.125,
+            "CI95": [
+              -0.4375,
+              0.1875
+            ],
+            "clusters": 16,
+            "sources": 16
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.714194452335505,
+            "CI95": [
+              -2.298506876738338,
+              3.841201865848143
+            ],
+            "clusters": 16,
+            "sources": 16
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 5,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2958333333333333,
+            "CI95": [
+              0.10833333333333332,
+              0.5001041666666651
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": -0.025,
+            "CI95": [
+              -0.2,
+              0.15
+            ],
+            "clusters": 40,
+            "sources": 40
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.5565243235694652,
+            "CI95": [
+              -0.7159124803060695,
+              1.878777863990035
+            ],
+            "clusters": 40,
+            "sources": 40
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 7,
+            "semantic_changed": 13
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2441860465116279,
+            "CI95": [
+              -0.37984496124031003,
+              -0.11240310077519379
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_alignment_semantic_fidelity": {
+            "value": 0.23255813953488372,
+            "CI95": [
+              0.06976744186046512,
+              0.3953488372093023
+            ],
+            "clusters": 43,
+            "sources": 43
+          },
+          "reward_sum_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.200365274356743,
+            "CI95": [
+              -2.5037168028413825,
+              0.11680957037964967
+            ],
+            "clusters": 43,
+            "sources": 43
+          }
+        },
+        "counts": {
+          "reward_sum_semantic_fidelity": {
+            "agrees": 13,
+            "opposes": 3,
+            "semantic_changed": 16
+          }
+        }
+      }
+    ]
+  },
+  "E92": {
+    "full_map": "/data1/xiangding/work/incremental-interpretation-revision/E92/posthoc-semantic-overlay-map-v1.json",
+    "full_map_sha256": "3acba7497e4f6c0ef0ef01864f29e9f0bbdae62ca950914f29bf8cd71d05506f",
+    "scopes": 72,
+    "changed_rows": 2,
+    "core_summary": [
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.7692307692307693,
+            "CI95": [
+              0.47435897435897423,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.46153846153846156,
+              0.46153846153846156
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.010467086906759878,
+            "CI95": [
+              -0.4057637043108562,
+              0.3902136203526379
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.0,
+              0.8461538461538461
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.19086683905559673,
+            "CI95": [
+              -0.015555414575717921,
+              0.4144252704112215
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.0,
+              0.9230769230769231
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 5,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 2,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3472222222222222,
+            "CI95": [
+              0.1388888888888889,
+              0.5601851851851851
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              -0.05555555555555555,
+              0.3888888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.11800004979743885,
+            "CI95": [
+              -0.35962832867048466,
+              0.10371995243215074
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.3333333333333333,
+            "CI95": [
+              0.1388888888888889,
+              0.5277777777777778
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.027885720321091205,
+            "CI95": [
+              -0.2489731676675667,
+              0.1530904116821116
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.0,
+              0.3888888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 11,
+            "opposes": 5,
+            "semantic_changed": 16
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 14,
+            "opposes": 2,
+            "semantic_changed": 16
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2222222222222222,
+            "CI95": [
+              -0.3888888888888889,
+              -0.08796296296296297
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.08333333333333333,
+            "CI95": [
+              -0.08333333333333333,
+              0.25
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.102084423990449,
+            "CI95": [
+              -0.22071938234151015,
+              0.003659838978772789
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.027777777777777776,
+            "CI95": [
+              -0.1388888888888889,
+              0.19444444444444445
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.009010548464316724,
+            "CI95": [
+              -0.10499507520118362,
+              0.12382091915433639
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.05555555555555555,
+            "CI95": [
+              -0.16666666666666666,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 3,
+            "semantic_changed": 9
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 4,
+            "semantic_changed": 9
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.47435897435897434,
+            "CI95": [
+              0.16666666666666666,
+              0.8205128205128206
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.15384615384615385,
+            "CI95": [
+              -0.5384615384615384,
+              0.23076923076923078
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.01759582886354783,
+            "CI95": [
+              -0.25992414095048716,
+              0.382900547338501
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.23076923076923078,
+              0.6923076923076923
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.17007035251378289,
+            "CI95": [
+              -0.010449736483572706,
+              0.401551240015168
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.6153846153846154,
+            "CI95": [
+              0.15384615384615385,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 4,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 0,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2824074074074074,
+            "CI95": [
+              0.1111111111111111,
+              0.46759259259259256
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.05555555555555555,
+            "CI95": [
+              -0.1388888888888889,
+              0.25
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.004662206515157758,
+            "CI95": [
+              -0.15854902383561148,
+              0.16920556192249137
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.3333333333333333,
+            "CI95": [
+              0.19444444444444445,
+              0.5
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.051732736409984964,
+            "CI95": [
+              -0.08103437710079231,
+              0.1823219030896309
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.2777777777777778,
+            "CI95": [
+              0.05555555555555555,
+              0.5
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 5,
+            "semantic_changed": 12
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 12,
+            "opposes": 0,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.20833333333333334,
+            "CI95": [
+              -0.39814814814814814,
+              -0.037037037037037035
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.027777777777777776,
+              0.3055555555555556
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.0728904868089773,
+            "CI95": [
+              -0.1327128265095544,
+              -0.02205321240756477
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": -0.05555555555555555,
+            "CI95": [
+              -0.2222222222222222,
+              0.08333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.01323699972887946,
+            "CI95": [
+              -0.0510188372793878,
+              0.07021930757523943
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.2222222222222222,
+            "CI95": [
+              -0.4444444444444444,
+              -0.05555555555555555
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 1,
+            "semantic_changed": 8
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 5,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.6410256410256411,
+            "CI95": [
+              0.24358974358974358,
+              1.0644230769230725
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.15384615384615385,
+            "CI95": [
+              -0.23076923076923078,
+              0.5384615384615384
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.15563654711876423,
+            "CI95": [
+              -0.13339286972582315,
+              0.5194493643740248
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.23076923076923078,
+              0.7692307692307693
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.2893458806671345,
+            "CI95": [
+              0.039156133229272166,
+              0.5756659356555293
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.3076923076923077,
+            "CI95": [
+              0.0,
+              0.7692307692307693
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 2,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 0,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3009259259259259,
+            "CI95": [
+              0.12037037037037036,
+              0.5092592592592592
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.0,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.054620528340069974,
+            "CI95": [
+              -0.07263380514961605,
+              0.20846674029653944
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.0,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.13947907334322773,
+            "CI95": [
+              0.02543591195616827,
+              0.2657439421570613
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.2222222222222222,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 2,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 2,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "Qwen3.8-27B",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2361111111111111,
+            "CI95": [
+              -0.4166666666666667,
+              -0.06944444444444445
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.19444444444444445,
+            "CI95": [
+              0.027777777777777776,
+              0.3611111111111111
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.042203012419888455,
+            "CI95": [
+              -0.13940509866972556,
+              0.05868922853960291
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.027777777777777776,
+            "CI95": [
+              -0.1388888888888889,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.06462114594503073,
+            "CI95": [
+              -0.01818532518463842,
+              0.16687819420664546
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.16666666666666666,
+            "CI95": [
+              -0.3888888888888889,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 9,
+            "opposes": 2,
+            "semantic_changed": 11
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 5,
+            "semantic_changed": 11
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.7692307692307693,
+            "CI95": [
+              0.47435897435897423,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.46153846153846156,
+            "CI95": [
+              -0.8461538461538461,
+              0.0
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -1.1556100930857685,
+            "CI95": [
+              -2.286044497958092,
+              -0.11599076150013313
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": -0.15384615384615385,
+            "CI95": [
+              -0.6153846153846154,
+              0.3076923076923077
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.09041777255055734,
+            "CI95": [
+              -0.7497449748851993,
+              0.9832780767642656
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.3076923076923077,
+            "CI95": [
+              0.0,
+              0.7692307692307693
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 8,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 6,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3472222222222222,
+            "CI95": [
+              0.1388888888888889,
+              0.5601851851851851
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.05555555555555555,
+            "CI95": [
+              -0.2777777777777778,
+              0.16666666666666666
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.6648858178268418,
+            "CI95": [
+              -1.2941557799501755,
+              -0.08438466550700294
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.1111111111111111,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.24097807261174362,
+            "CI95": [
+              -0.9334053016531226,
+              0.41718506878305917
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.0,
+              0.3888888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 9,
+            "semantic_changed": 16
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 6,
+            "semantic_changed": 16
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2222222222222222,
+            "CI95": [
+              -0.3888888888888889,
+              -0.08796296296296297
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.08333333333333333,
+            "CI95": [
+              -0.08333333333333333,
+              0.25
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.2476885339006975,
+            "CI95": [
+              -0.6153579914939283,
+              0.12070120441537442
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": -0.1388888888888889,
+            "CI95": [
+              -0.3055555555555556,
+              0.027777777777777776
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.0036122741255733126,
+            "CI95": [
+              -0.4259055400734384,
+              0.4347786353137171
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.2222222222222222,
+            "CI95": [
+              -0.4444444444444444,
+              -0.05555555555555555
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 3,
+            "semantic_changed": 9
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 7,
+            "semantic_changed": 9
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.47435897435897434,
+            "CI95": [
+              0.16666666666666666,
+              0.8205128205128206
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.3076923076923077,
+            "CI95": [
+              -0.6153846153846154,
+              0.0
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.18421108166679298,
+            "CI95": [
+              -1.025951522114862,
+              0.8243267431183665
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.3076923076923077,
+            "CI95": [
+              0.0,
+              0.6153846153846154
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.5383341073211245,
+            "CI95": [
+              -0.27144128802160233,
+              1.6204139917125027
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.6153846153846154,
+            "CI95": [
+              0.15384615384615385,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 1,
+            "opposes": 5,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 1,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2824074074074074,
+            "CI95": [
+              0.1111111111111111,
+              0.46759259259259256
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.1111111111111111,
+            "CI95": [
+              -0.3055555555555556,
+              0.08333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.45922093512548656,
+            "CI95": [
+              -1.0520571761782453,
+              0.10189522020117711
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.08333333333333333,
+              0.27847222222221213
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.06364734672052591,
+            "CI95": [
+              -0.6235385755701559,
+              0.48674281632551736
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.2222222222222222,
+            "CI95": [
+              0.05555555555555555,
+              0.4444444444444444
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 8,
+            "semantic_changed": 12
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 4,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.20833333333333334,
+            "CI95": [
+              -0.39814814814814814,
+              -0.037037037037037035
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.027777777777777776,
+              0.3055555555555556
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.2039379681016271,
+            "CI95": [
+              -0.4381241653865821,
+              0.02487771846977832
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.05555555555555555,
+            "CI95": [
+              -0.08333333333333333,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.017371899339660164,
+            "CI95": [
+              -0.2032297534899636,
+              0.2184449729164941
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.1111111111111111,
+            "CI95": [
+              -0.2777777777777778,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 1,
+            "semantic_changed": 8
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 3,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.6410256410256411,
+            "CI95": [
+              0.24358974358974358,
+              1.0644230769230725
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.38461538461538464,
+              0.38461538461538464
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.2918566096769907,
+            "CI95": [
+              -0.6306454077884863,
+              1.2918827648152582
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.15384615384615385,
+            "CI95": [
+              -0.23076923076923078,
+              0.5384615384615384
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.6850172115909524,
+            "CI95": [
+              -0.31674175081225053,
+              1.8096334283653168
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.15384615384615385,
+            "CI95": [
+              -0.3076923076923077,
+              0.6153846153846154
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 3,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 2,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3009259259259259,
+            "CI95": [
+              0.12037037037037036,
+              0.5092592592592592
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.05555555555555555,
+              0.2777777777777778
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.06574038634105245,
+            "CI95": [
+              -0.40475669218921434,
+              0.5550196610006917
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.05555555555555555,
+              0.2777777777777778
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.24144075527402264,
+            "CI95": [
+              -0.3579566238455622,
+              0.8946543611109832
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.2222222222222222,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 3,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 3,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "gemma-4-31B-it",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2361111111111111,
+            "CI95": [
+              -0.4166666666666667,
+              -0.06944444444444445
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.1388888888888889,
+            "CI95": [
+              -0.027777777777777776,
+              0.3055555555555556
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.7242074799491169,
+            "CI95": [
+              -1.2113178589947966,
+              -0.27497279092336835
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.027777777777777776,
+            "CI95": [
+              -0.1388888888888889,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.14340250159994739,
+            "CI95": [
+              -0.18629459613663435,
+              0.47503429119840856
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.1111111111111111,
+            "CI95": [
+              -0.3888888888888889,
+              0.16666666666666666
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 3,
+            "semantic_changed": 11
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 5,
+            "semantic_changed": 11
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.7692307692307693,
+            "CI95": [
+              0.47435897435897423,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.15384615384615385,
+            "CI95": [
+              -0.6153846153846154,
+              0.3076923076923077
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.02461822904239474,
+            "CI95": [
+              -0.2320272330826119,
+              0.19866196885062984
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.3076923076923077,
+            "CI95": [
+              -0.15384615384615385,
+              0.6923076923076923
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.1621298323077238,
+            "CI95": [
+              -0.007442219948265197,
+              0.3394643877293109
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              -0.15384615384615385,
+              1.0769230769230769
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 6,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 3,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3472222222222222,
+            "CI95": [
+              0.1388888888888889,
+              0.5601851851851851
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.1111111111111111,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.04593171027454445,
+            "CI95": [
+              -0.19127172327228686,
+              0.09068521608321546
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.2777777777777778,
+            "CI95": [
+              0.08333333333333333,
+              0.4722222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.0078002859364530875,
+            "CI95": [
+              -0.16223996839841331,
+              0.15100549707017832
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              -0.05555555555555555,
+              0.3888888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 6,
+            "semantic_changed": 16
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 13,
+            "opposes": 3,
+            "semantic_changed": 16
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Meta-Llama-3.1-8B-Instruct",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2222222222222222,
+            "CI95": [
+              -0.3888888888888889,
+              -0.08796296296296297
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.027777777777777776,
+            "CI95": [
+              -0.19444444444444445,
+              0.1388888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.06493623190947027,
+            "CI95": [
+              -0.16351401896942624,
+              0.023144369931542546
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": -0.08333333333333333,
+            "CI95": [
+              -0.25,
+              0.08333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.017802127489668196,
+            "CI95": [
+              -0.09343819906737907,
+              0.12615275909798623
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.05555555555555555,
+            "CI95": [
+              -0.16666666666666666,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 5,
+            "semantic_changed": 9
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 6,
+            "semantic_changed": 9
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.47435897435897434,
+            "CI95": [
+              0.16666666666666666,
+              0.8205128205128206
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": -0.15384615384615385,
+            "CI95": [
+              -0.5384615384615384,
+              0.23076923076923078
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.013063831596670529,
+            "CI95": [
+              -0.17144328023219269,
+              0.2161539256957112
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.3076923076923077,
+            "CI95": [
+              0.0,
+              0.6153846153846154
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.17077843253198505,
+            "CI95": [
+              -0.012493696776950978,
+              0.41265256319310223
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.0,
+              0.9230769230769231
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 2,
+            "opposes": 4,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 5,
+            "opposes": 1,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.2824074074074074,
+            "CI95": [
+              0.1111111111111111,
+              0.46759259259259256
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.19444444444444445,
+              0.19444444444444445
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.0318901328148338,
+            "CI95": [
+              -0.14423959610052367,
+              0.08765379890242099
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.2222222222222222,
+            "CI95": [
+              0.05555555555555555,
+              0.3888888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.0305759291397498,
+            "CI95": [
+              -0.08015548543012627,
+              0.1482040022134436
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.2222222222222222,
+            "CI95": [
+              0.05555555555555555,
+              0.4444444444444444
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 6,
+            "semantic_changed": 12
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 2,
+            "semantic_changed": 12
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "Qwen3-8B",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.20833333333333334,
+            "CI95": [
+              -0.39814814814814814,
+              -0.037037037037037035
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.027777777777777776,
+              0.3055555555555556
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.07915004625280614,
+            "CI95": [
+              -0.1350997866090132,
+              -0.03180416425273332
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.1388888888888889,
+              0.1388888888888889
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.018236954105206402,
+            "CI95": [
+              -0.07291764141286301,
+              0.01792904340926739
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.16666666666666666,
+            "CI95": [
+              -0.3888888888888889,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 1,
+            "semantic_changed": 8
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 4,
+            "opposes": 4,
+            "semantic_changed": 8
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "MVRR",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.6410256410256411,
+            "CI95": [
+              0.24358974358974358,
+              1.0644230769230725
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.0,
+            "CI95": [
+              -0.38461538461538464,
+              0.38461538461538464
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.08171640980596132,
+            "CI95": [
+              -0.1437332383904619,
+              0.3626931781647436
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.23076923076923078,
+              0.7692307692307693
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.2868871163132848,
+            "CI95": [
+              0.059590188590090305,
+              0.5467031462879911
+            ],
+            "clusters": 13,
+            "sources": 13
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.46153846153846156,
+            "CI95": [
+              0.0,
+              0.9230769230769231
+            ],
+            "clusters": 13,
+            "sources": 13
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 3,
+            "opposes": 3,
+            "semantic_changed": 6
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 0,
+            "semantic_changed": 6
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "gp",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": 0.3009259259259259,
+            "CI95": [
+              0.12037037037037036,
+              0.5092592592592592
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.05555555555555555,
+            "CI95": [
+              -0.1111111111111111,
+              0.2222222222222222
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.05530793489349972,
+            "CI95": [
+              -0.03253035305460727,
+              0.16511645416350967
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.16666666666666666,
+            "CI95": [
+              0.0,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.12243932028098614,
+            "CI95": [
+              0.01974105684796335,
+              0.24144453237135377
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": 0.1111111111111111,
+            "CI95": [
+              -0.1111111111111111,
+              0.3333333333333333
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 6,
+            "opposes": 4,
+            "semantic_changed": 10
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 8,
+            "opposes": 2,
+            "semantic_changed": 10
+          }
+        }
+      },
+      {
+        "grader": "Ministral-3-14B-Instruct-2512",
+        "generator": "gemma-3-12b-it",
+        "construction": "ALL",
+        "condition": "control",
+        "metrics": {
+          "delta_semantic_fidelity": {
+            "value": -0.2361111111111111,
+            "CI95": [
+              -0.4166666666666667,
+              -0.06944444444444445
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_alignment_semantic_fidelity": {
+            "value": 0.25,
+            "CI95": [
+              0.08333333333333333,
+              0.4166666666666667
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "original_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": -0.04882549347491022,
+            "CI95": [
+              -0.12742278260692064,
+              0.0290677929112289
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_alignment_semantic_fidelity": {
+            "value": 0.08333333333333333,
+            "CI95": [
+              -0.08333333333333333,
+              0.25
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alternate_reward_same_semantic_cohort_semantic_fidelity": {
+            "value": 0.0565810975565607,
+            "CI95": [
+              -0.021824774930789076,
+              0.15127344327409448
+            ],
+            "clusters": 36,
+            "sources": 36
+          },
+          "alignment_change_semantic_fidelity": {
+            "value": -0.16666666666666666,
+            "CI95": [
+              -0.3333333333333333,
+              0.0
+            ],
+            "clusters": 36,
+            "sources": 36
+          }
+        },
+        "counts": {
+          "original_semantic_fidelity": {
+            "agrees": 10,
+            "opposes": 1,
+            "semantic_changed": 11
+          },
+          "alternate_semantic_fidelity": {
+            "agrees": 7,
+            "opposes": 4,
+            "semantic_changed": 11
+          }
+        }
+      }
+    ]
+  }
+}

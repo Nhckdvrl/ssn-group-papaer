@@ -1,0 +1,103 @@
+{
+  "experiment": "E14",
+  "name": "used_source_only_fresh_s29",
+  "launch": {
+    "started_utc": "2026-10-04T13:47:40.667314+00:00",
+    "command": [
+      "/home/xiang/.venvs/data-centric-rsi/bin/python",
+      "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+      "--model",
+      "/var/tmp/xiang-data-rsi/e14/copied_models/used_source_only_fresh_s29",
+      "--eval-data",
+      "/var/tmp/xiang-data-rsi/e12/LMUData",
+      "--judge-url",
+      "http://fvcrc20:8034/v1/chat/completions",
+      "--gpu",
+      "3",
+      "--out",
+      "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval"
+    ],
+    "gpu": 3,
+    "token": "8e92e1e113694f0cb99a5a3b778fd27d",
+    "cap_seconds": 10654,
+    "owner_pid": 522585,
+    "owner_ticks": "1497707251",
+    "source_sha256": "31e0b450ede89afb6cd0b14ea40b5eef6b2b3a48abca5fa2a48b787aa2ae4891",
+    "source_git_sha": "2753beae6f6406f43d76a4e331af5b2f1409445e",
+    "pid": 522603,
+    "start_ticks": "1497708518",
+    "guard_pid": 522604,
+    "guard_ticks": "1497708519"
+  },
+  "status": "completed",
+  "scores": {
+    "model_key": "llava-1.5-7b-hf",
+    "benchmarks": {
+      "HallusionBench": {
+        "raw": 27.164952765324745,
+        "max": 100.0,
+        "normalized": 0.27164952765324746,
+        "field": "Overall mean(aAcc,fAcc,qAcc)"
+      },
+      "LLaVABench": {
+        "raw": 39.7,
+        "max": 100.0,
+        "normalized": 0.397,
+        "field": "overall Relative Score (main)"
+      },
+      "MMBench": {
+        "raw": 52.92096219931272,
+        "max": 100.0,
+        "normalized": 0.5292096219931272,
+        "field": "dev Overall \u00d7 100"
+      },
+      "MMMU_DEV_VAL": {
+        "raw": 35.333333333333336,
+        "max": 100.0,
+        "normalized": 0.35333333333333333,
+        "field": "validation Overall \u00d7 100"
+      },
+      "MMStar": {
+        "raw": 31.6,
+        "max": 100.0,
+        "normalized": 0.316,
+        "field": "none Overall \u00d7 100"
+      },
+      "MMVet": {
+        "raw": 28.256880733944968,
+        "max": 100.0,
+        "normalized": 0.28256880733944967,
+        "field": "Overall acc"
+      },
+      "MathVista_MINI": {
+        "raw": 23.3,
+        "max": 100.0,
+        "normalized": 0.233,
+        "field": "Overall acc"
+      },
+      "OCRBench": {
+        "raw": 297.0,
+        "max": 1000.0,
+        "normalized": 0.297,
+        "field": "Final Score"
+      }
+    },
+    "accuracy_0_to_1": 0.3349701612898947,
+    "accuracy_percent": 33.49701612898947,
+    "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval/results/results.json"
+  },
+  "completion": {
+    "status": "completed",
+    "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval/results",
+    "error": null,
+    "wall_seconds": 1351.9
+  },
+  "cleanup": {
+    "utc": "2026-10-04T14:10:14.636668+00:00",
+    "before": [],
+    "remaining": []
+  },
+  "finished_utc": "2026-10-04T14:10:14.656338+00:00",
+  "eval_wrapper_seconds": 1353.9356006924063,
+  "returncode": 0
+}

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "L03-E000",
+  "version": 1,
+  "kind": "data-feasibility audit; no model inference",
+  "release": "2023 ACS 5-year",
+  "geography": "county:*",
+  "documentation_url": "https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html",
+  "sources": [
+    {"dataset": "2023/acs/acs5", "group": "B01001", "estimates": ["B01001_003E", "B01001_004E", "B01001_027E", "B01001_028E"]},
+    {"dataset": "2023/acs/acs5", "group": "B19013", "estimates": ["B19013_001E"]},
+    {"dataset": "2023/acs/acs5", "group": "B19013D", "estimates": ["B19013D_001E"]},
+    {"dataset": "2023/acs/acs5/subject", "group": "S0101", "estimates": ["S0101_C02_031E", "S0101_C01_001E"]}
+  ],
+  "minimum_cells_per_required_stratum": 50,
+  "minimum_counties_per_required_stratum": 20,
+  "required_strata": ["VALUE_NONZERO", "VALUE_ZERO", "NOT_COMPUTABLE", "NOT_APPLICABLE_OR_NOT_AVAILABLE"],
+  "selection_rationale": "Fixed feasibility frame: age counts for numeric/zero controls, overall and Asian-alone median income for non-computability/interval qualifications, and an age/sex subject table for structural non-applicability. Purposive selection, not ACS prevalence estimation. Fixed after two access probes returned no data; before any observation inspection.",
+  "exclusions": "Margins of error, comparison significance, unrecognized or inconsistent estimate/annotation pairs. No silent exclusion: unknown pairs block readiness.",
+  "readiness_scope": "Thresholds justify only preparing a pilot, not statistical power or paper promotion. Natural rendering, manual parser audit, and a model protocol remain required."
+}

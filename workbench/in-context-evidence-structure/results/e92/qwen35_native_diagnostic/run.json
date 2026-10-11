@@ -1,0 +1,33 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "source": "results/e92/qwen3_discovery/contexts.jsonl",
+    "out": "results/e92/qwen35_native_diagnostic",
+    "n": 4,
+    "batch_size": 8,
+    "tokens": 1024,
+    "continuation_tokens": 2048
+  },
+  "script_sha256": "e1555c13ba8f3008af1cfc6976c25f440381dc5cfe2029bf842e9afcb93fedc1",
+  "source_contexts_sha256": "1e45a71a71ed0b4f12aab5cf6326a1830b7b251ba54dc4df39708630a4fea273",
+  "n_records": 128,
+  "source_context_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "actual_model_type": "qwen3_5_text",
+  "dtype": "bfloat16",
+  "attention": "sdpa",
+  "training": false,
+  "cache_or_activation_interventions": false,
+  "direct_noop_max": 0.0,
+  "continued_all_initially_censored": 20,
+  "elapsed_seconds": 1211.4238731861115,
+  "gpu_hours": 0.3365066314405865,
+  "python": "3.12.12",
+  "torch": "2.9.1+cu129",
+  "transformers": "5.12.1",
+  "git_head": "9e77b1514f898c670f793e7bc3c0decdc7b2ca0e"
+}

@@ -1,0 +1,103 @@
+{
+  "experiment": "E13",
+  "name": "used_fresh_law_s29",
+  "launch": {
+    "started_utc": "2026-10-04T13:39:06.138887+00:00",
+    "command": [
+      "/home/xiang/.venvs/data-centric-rsi/bin/python",
+      "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+      "--model",
+      "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_law_s29/model",
+      "--eval-data",
+      "/var/tmp/xiang-data-rsi/e12/LMUData",
+      "--judge-url",
+      "http://fvcrc20:8034/v1/chat/completions",
+      "--gpu",
+      "0",
+      "--out",
+      "/var/tmp/xiang-data-rsi/closeout/attempt1/used_fresh_law_s29/eval"
+    ],
+    "gpu": 0,
+    "token": "cca21289f71b44b480f6f6e86ca86e39",
+    "cap_seconds": 5444,
+    "owner_pid": 3596186,
+    "owner_ticks": "1834569099",
+    "source_sha256": "31e0b450ede89afb6cd0b14ea40b5eef6b2b3a48abca5fa2a48b787aa2ae4891",
+    "source_git_sha": "882a4f89b3116b999a8042075a2a55a640983ca0",
+    "pid": 3596206,
+    "start_ticks": "1834570245",
+    "guard_pid": 3596207,
+    "guard_ticks": "1834570246"
+  },
+  "status": "completed",
+  "scores": {
+    "model_key": "llava-1.5-7b-hf",
+    "benchmarks": {
+      "HallusionBench": {
+        "raw": 28.00749637441164,
+        "max": 100.0,
+        "normalized": 0.2800749637441164,
+        "field": "Overall mean(aAcc,fAcc,qAcc)"
+      },
+      "LLaVABench": {
+        "raw": 39.0,
+        "max": 100.0,
+        "normalized": 0.39,
+        "field": "overall Relative Score (main)"
+      },
+      "MMBench": {
+        "raw": 54.03780068728522,
+        "max": 100.0,
+        "normalized": 0.5403780068728522,
+        "field": "dev Overall \u00d7 100"
+      },
+      "MMMU_DEV_VAL": {
+        "raw": 33.22222222222222,
+        "max": 100.0,
+        "normalized": 0.3322222222222222,
+        "field": "validation Overall \u00d7 100"
+      },
+      "MMStar": {
+        "raw": 32.0,
+        "max": 100.0,
+        "normalized": 0.32,
+        "field": "none Overall \u00d7 100"
+      },
+      "MMVet": {
+        "raw": 29.67889908256881,
+        "max": 100.0,
+        "normalized": 0.2967889908256881,
+        "field": "Overall acc"
+      },
+      "MathVista_MINI": {
+        "raw": 24.3,
+        "max": 100.0,
+        "normalized": 0.243,
+        "field": "Overall acc"
+      },
+      "OCRBench": {
+        "raw": 284.0,
+        "max": 1000.0,
+        "normalized": 0.284,
+        "field": "Final Score"
+      }
+    },
+    "accuracy_0_to_1": 0.33580802295810985,
+    "accuracy_percent": 33.58080229581098,
+    "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_fresh_law_s29/eval/results/results.json"
+  },
+  "completion": {
+    "status": "completed",
+    "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_fresh_law_s29/eval/results",
+    "error": null,
+    "wall_seconds": 1430.1
+  },
+  "cleanup": {
+    "utc": "2026-10-04T14:02:57.117295+00:00",
+    "before": [],
+    "remaining": []
+  },
+  "finished_utc": "2026-10-04T14:02:57.140322+00:00",
+  "eval_wrapper_seconds": 1430.966342639178,
+  "returncode": 0
+}

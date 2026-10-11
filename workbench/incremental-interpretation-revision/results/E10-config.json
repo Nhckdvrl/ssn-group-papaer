@@ -1,0 +1,776 @@
+{
+  "experiment": "E10",
+  "task_count": 2304,
+  "new_inference_tasks": 1152,
+  "reused_E09_tasks": 1152,
+  "inference_subruns": [
+    {
+      "experiment": "E09",
+      "model": "/data1/xiangding/work/incremental-interpretation-revision/models/Qwen3-8B",
+      "model_manifest": {
+        "model": "Qwen/Qwen3-8B",
+        "download_origin": "https://modelscope.cn/Qwen/Qwen3-8B",
+        "mirror_revision": "26028140be3ee69b82b1d1450179ab71bb1121b9",
+        "hf_reference_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "hf_byte_identity": "verified all model/tokenizer/config/LICENSE bytes against pinned HF git/LFS manifest via hf-mirror.com",
+        "proxy_used": false,
+        "license": "Apache-2.0",
+        "files": [
+          {
+            "CommitMessage": "Create LICENSE",
+            "CommittedDate": 1753546347,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "LICENSE",
+            "Path": "LICENSE",
+            "Revision": "26028140be3ee69b82b1d1450179ab71bb1121b9",
+            "Sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+            "Size": 11343,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Update README.md",
+            "CommittedDate": 1747845277,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "README.md",
+            "Path": "README.md",
+            "Revision": "7a760cb9412aceb31030659c473628312c656aae",
+            "Sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6",
+            "Size": 16660,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "config.json",
+            "Path": "config.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+            "Size": 728,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "configuration.json",
+            "Path": "configuration.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f888421726665e8a84b738eed42a64875aed79de8be7daade851ac8bf4c0cef9",
+            "Size": 73,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "generation_config.json",
+            "Path": "generation_config.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+            "Size": 239,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "merges.txt",
+            "Path": "merges.txt",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "Size": 1671853,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00001-of-00005.safetensors",
+            "Path": "model-00001-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "Size": 3996250744,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00002-of-00005.safetensors",
+            "Path": "model-00002-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "Size": 3993160032,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00003-of-00005.safetensors",
+            "Path": "model-00003-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "Size": 3959604768,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00004-of-00005.safetensors",
+            "Path": "model-00004-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "Size": 3187841392,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00005-of-00005.safetensors",
+            "Path": "model-00005-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "Size": 1244659840,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "model.safetensors.index.json",
+            "Path": "model.safetensors.index.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+            "Size": 32878,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "tokenizer.json",
+            "Path": "tokenizer.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "Size": 11422654,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "update tokenizer_config.json",
+            "CommittedDate": 1747671005,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "tokenizer_config.json",
+            "Path": "tokenizer_config.json",
+            "Revision": "9a8d25579640d91ddc45ce1b991ef2df939d441f",
+            "Sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+            "Size": 9732,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "vocab.json",
+            "Path": "vocab.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+            "Size": 2776833,
+            "Type": "blob"
+          }
+        ],
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "hf_metadata_origin": "https://hf-mirror.com",
+        "hf_checks": {
+          "LICENSE": {
+            "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+            "hf_expected": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab",
+            "verified_by": "git blob SHA1",
+            "bytes": 11343
+          },
+          "README.md": {
+            "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6",
+            "hf_expected": "ecc3ebd0849aa08d9484bd911dddfd5261b10d30",
+            "verified_by": "git blob SHA1",
+            "bytes": 16660
+          },
+          "config.json": {
+            "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+            "hf_expected": "d46195ac87f837ad233d02b2f80f148bf7c005e0",
+            "verified_by": "git blob SHA1",
+            "bytes": 728
+          },
+          "generation_config.json": {
+            "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+            "hf_expected": "20a8a9156fc8c3f25295ca067f61fdf120d517c5",
+            "verified_by": "git blob SHA1",
+            "bytes": 239
+          },
+          "merges.txt": {
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "hf_expected": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+            "verified_by": "git blob SHA1",
+            "bytes": 1671853
+          },
+          "model-00001-of-00005.safetensors": {
+            "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "hf_expected": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "verified_by": "LFS SHA256",
+            "bytes": 3996250744
+          },
+          "model-00002-of-00005.safetensors": {
+            "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "hf_expected": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "verified_by": "LFS SHA256",
+            "bytes": 3993160032
+          },
+          "model-00003-of-00005.safetensors": {
+            "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "hf_expected": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "verified_by": "LFS SHA256",
+            "bytes": 3959604768
+          },
+          "model-00004-of-00005.safetensors": {
+            "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "hf_expected": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "verified_by": "LFS SHA256",
+            "bytes": 3187841392
+          },
+          "model-00005-of-00005.safetensors": {
+            "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "hf_expected": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "verified_by": "LFS SHA256",
+            "bytes": 1244659840
+          },
+          "model.safetensors.index.json": {
+            "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+            "hf_expected": "2b85c00f1b118961cd7a477e2bba0fe197a4ce1a",
+            "verified_by": "git blob SHA1",
+            "bytes": 32878
+          },
+          "tokenizer.json": {
+            "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "hf_expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "verified_by": "LFS SHA256",
+            "bytes": 11422654
+          },
+          "tokenizer_config.json": {
+            "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+            "hf_expected": "417d038a63fa3de29cfde265caedae14d1a58d92",
+            "verified_by": "git blob SHA1",
+            "bytes": 9732
+          },
+          "vocab.json": {
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+            "hf_expected": "4783fe10ac3adce15ac8f358ef5462739852c569",
+            "verified_by": "git blob SHA1",
+            "bytes": 2776833
+          }
+        }
+      },
+      "torch": "2.7.1+cu126",
+      "transformers": "4.51.3",
+      "cuda": "12.6",
+      "gpu": "NVIDIA H20",
+      "dtype": "float32",
+      "softmax": "float32",
+      "attention": "sdpa",
+      "frozen": true,
+      "thinking": false,
+      "batch_size": 32,
+      "seed": 0,
+      "choice_token_ids": {
+        "Yes": [
+          9834,
+          9693,
+          7414,
+          14004,
+          14080,
+          9454
+        ],
+        "No": [
+          5664,
+          902,
+          2152,
+          72104,
+          2753,
+          8996,
+          2308
+        ],
+        "A": [
+          362,
+          32
+        ],
+        "B": [
+          425,
+          33
+        ]
+      },
+      "task_count": 1152,
+      "system_frame": "both",
+      "families": null,
+      "git_commit": "810aef47068c5c493585a050d7698d92e9239165",
+      "code_sha256": {
+        "download_model.py": "1f1d752d65494b7a61b7bd5a1789a0ec17c44b0deb9dbebb4127439b5b97ab60",
+        "verify_hf_mirror.py": "91ca9988aad184aec6d1e4abdf16475d67bcedb0c49fb1d1e9855db6a8e152b7",
+        "order_audit.py": "ca373935365a5a42de1c82cd28d07f60b517bbf283c06949b0555f762af8e95b",
+        "audit_with_opencode.py": "26f901304d25a8a37cf0721862f88f52c5f91abbc8473a0b4ea8d00ddb6f741c",
+        "download_hf.py": "b57330e82ef969d21dda0b97710c1568567088878f9e31759a3a4cab2489f31f",
+        "plot_order.py": "a2aad62e16248b5ce974e273cc56fab41c9bbd451cabd96241deea5131d0a248",
+        "response_audit.py": "805968d98e570a7df3ed5b9024b41dbda1dfa046cd46b970dab049d1229efdac",
+        "attachment_audit.py": "4dd08e9db85477982442124187c60eb6478178f1354ede0b083a61404bf16900",
+        "data.py": "14713fd8549ac26a087f6aeeb1562c0be4c7c8589180d0673bfb9c5f23289c92",
+        "infer.py": "c2e28d37249b9c0db76e61a58279a7016f664401955b21fba086ca0ebab15ff1",
+        "stimuli.py": "6969ef8435437e1d4791ed8ade80f56bb464efc919c019db20f0134f4e96bad4",
+        "step_audit.py": "13db5376b138d0d4dd68c3662be619e9ccc56c281ad4dbcd33d91153153daadf",
+        "adopt_step_audit.py": "e202b5d9945ebbcc934be1ae9bcb861834f284ca23f151b1695d826f06679caf",
+        "preaudit_variants.py": "7f43c225e122742bf3ac4eff4a6e583e9627c7e10566f0ac75ab5a9c409eb3f2",
+        "analyze.py": "fb17b399519390a1cdad2e71a69bb442f08ea832bfa838b9930b74313f68e3b6",
+        "focus_audit.py": "f3231919fbdd47d86292ea926d8cbe1a9a9adf771fdfc4036d221fcd18fff8a8",
+        "native_audit.py": "cf8067edfe7fe807cdbcf0c267a145229d569b81a6893ecbe2a7a61afc10d279",
+        "revision_map.py": "c5b512fd06fb4f8b6fe9a91e646563754dfc8e48d6864d8a6b4e0a946cac5e34",
+        "snapshot_preaudit.py": "a0b81bbf052c3cf0760e892e35c4ca1efba67daa16de24011fddcf8bbc6e3297",
+        "sap.py": "66443e702b424873a52cbc7ed527d0b0c0982ed26e940c3ebb25157bb94b6637"
+      },
+      "data_sha256": "ca8553197b3c50847ccc8bf1e5951743ee288c08e1662af49ee5582520bb0efe",
+      "wall_seconds": 70.03270936012268,
+      "gpu_hours": 0.01945353044403924,
+      "peak_gpu_bytes": 34445841408,
+      "predictions_sha256": "16b04a23952f32abb4a15eed7bce4ff936c750c3f9f445fd3de93de85b6d1db9"
+    },
+    {
+      "experiment": "E10",
+      "model": "/data1/xiangding/work/incremental-interpretation-revision/models/Qwen3-8B",
+      "model_manifest": {
+        "model": "Qwen/Qwen3-8B",
+        "download_origin": "https://modelscope.cn/Qwen/Qwen3-8B",
+        "mirror_revision": "26028140be3ee69b82b1d1450179ab71bb1121b9",
+        "hf_reference_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "hf_byte_identity": "verified all model/tokenizer/config/LICENSE bytes against pinned HF git/LFS manifest via hf-mirror.com",
+        "proxy_used": false,
+        "license": "Apache-2.0",
+        "files": [
+          {
+            "CommitMessage": "Create LICENSE",
+            "CommittedDate": 1753546347,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "LICENSE",
+            "Path": "LICENSE",
+            "Revision": "26028140be3ee69b82b1d1450179ab71bb1121b9",
+            "Sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+            "Size": 11343,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Update README.md",
+            "CommittedDate": 1747845277,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "README.md",
+            "Path": "README.md",
+            "Revision": "7a760cb9412aceb31030659c473628312c656aae",
+            "Sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6",
+            "Size": 16660,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "config.json",
+            "Path": "config.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+            "Size": 728,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "configuration.json",
+            "Path": "configuration.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f888421726665e8a84b738eed42a64875aed79de8be7daade851ac8bf4c0cef9",
+            "Size": 73,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "generation_config.json",
+            "Path": "generation_config.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+            "Size": 239,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "merges.txt",
+            "Path": "merges.txt",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "Size": 1671853,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00001-of-00005.safetensors",
+            "Path": "model-00001-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "Size": 3996250744,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00002-of-00005.safetensors",
+            "Path": "model-00002-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "Size": 3993160032,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00003-of-00005.safetensors",
+            "Path": "model-00003-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "Size": 3959604768,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00004-of-00005.safetensors",
+            "Path": "model-00004-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "Size": 3187841392,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834938,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "model-00005-of-00005.safetensors",
+            "Path": "model-00005-of-00005.safetensors",
+            "Revision": "7c9709d23bd2136dac1d6ea1fe30f4107d681cd6",
+            "Sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "Size": 1244659840,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "model.safetensors.index.json",
+            "Path": "model.safetensors.index.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+            "Size": 32878,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": true,
+            "Mode": "33188",
+            "Name": "tokenizer.json",
+            "Path": "tokenizer.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "Size": 11422654,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "update tokenizer_config.json",
+            "CommittedDate": 1747671005,
+            "CommitterName": "ai-modelscope",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "tokenizer_config.json",
+            "Path": "tokenizer_config.json",
+            "Revision": "9a8d25579640d91ddc45ce1b991ef2df939d441f",
+            "Sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+            "Size": 9732,
+            "Type": "blob"
+          },
+          {
+            "CommitMessage": "Upload folder using ModelScope SDK",
+            "CommittedDate": 1745834937,
+            "CommitterName": "Cherrytest",
+            "InCheck": false,
+            "IsLFS": false,
+            "Mode": "33188",
+            "Name": "vocab.json",
+            "Path": "vocab.json",
+            "Revision": "8188480f040c5f1606a1bb3556abf14b31975155",
+            "Sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+            "Size": 2776833,
+            "Type": "blob"
+          }
+        ],
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "hf_metadata_origin": "https://hf-mirror.com",
+        "hf_checks": {
+          "LICENSE": {
+            "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+            "hf_expected": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab",
+            "verified_by": "git blob SHA1",
+            "bytes": 11343
+          },
+          "README.md": {
+            "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6",
+            "hf_expected": "ecc3ebd0849aa08d9484bd911dddfd5261b10d30",
+            "verified_by": "git blob SHA1",
+            "bytes": 16660
+          },
+          "config.json": {
+            "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+            "hf_expected": "d46195ac87f837ad233d02b2f80f148bf7c005e0",
+            "verified_by": "git blob SHA1",
+            "bytes": 728
+          },
+          "generation_config.json": {
+            "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+            "hf_expected": "20a8a9156fc8c3f25295ca067f61fdf120d517c5",
+            "verified_by": "git blob SHA1",
+            "bytes": 239
+          },
+          "merges.txt": {
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "hf_expected": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+            "verified_by": "git blob SHA1",
+            "bytes": 1671853
+          },
+          "model-00001-of-00005.safetensors": {
+            "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "hf_expected": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+            "verified_by": "LFS SHA256",
+            "bytes": 3996250744
+          },
+          "model-00002-of-00005.safetensors": {
+            "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "hf_expected": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+            "verified_by": "LFS SHA256",
+            "bytes": 3993160032
+          },
+          "model-00003-of-00005.safetensors": {
+            "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "hf_expected": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+            "verified_by": "LFS SHA256",
+            "bytes": 3959604768
+          },
+          "model-00004-of-00005.safetensors": {
+            "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "hf_expected": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+            "verified_by": "LFS SHA256",
+            "bytes": 3187841392
+          },
+          "model-00005-of-00005.safetensors": {
+            "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "hf_expected": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+            "verified_by": "LFS SHA256",
+            "bytes": 1244659840
+          },
+          "model.safetensors.index.json": {
+            "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+            "hf_expected": "2b85c00f1b118961cd7a477e2bba0fe197a4ce1a",
+            "verified_by": "git blob SHA1",
+            "bytes": 32878
+          },
+          "tokenizer.json": {
+            "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "hf_expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "verified_by": "LFS SHA256",
+            "bytes": 11422654
+          },
+          "tokenizer_config.json": {
+            "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+            "hf_expected": "417d038a63fa3de29cfde265caedae14d1a58d92",
+            "verified_by": "git blob SHA1",
+            "bytes": 9732
+          },
+          "vocab.json": {
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+            "hf_expected": "4783fe10ac3adce15ac8f358ef5462739852c569",
+            "verified_by": "git blob SHA1",
+            "bytes": 2776833
+          }
+        }
+      },
+      "torch": "2.7.1+cu126",
+      "transformers": "4.51.3",
+      "cuda": "12.6",
+      "gpu": "NVIDIA H20",
+      "dtype": "float32",
+      "softmax": "float32",
+      "attention": "sdpa",
+      "frozen": true,
+      "thinking": false,
+      "batch_size": 32,
+      "seed": 0,
+      "choice_token_ids": {
+        "Yes": [
+          9693,
+          9454,
+          9834,
+          14080,
+          14004,
+          7414
+        ],
+        "No": [
+          8996,
+          5664,
+          2753,
+          72104,
+          902,
+          2152,
+          2308
+        ],
+        "A": [
+          32,
+          362
+        ],
+        "B": [
+          425,
+          33
+        ]
+      },
+      "task_count": 1152,
+      "system_frame": "both",
+      "families": null,
+      "git_commit": "255b43078f78d0879566344814e62be0270dc618",
+      "code_sha256": {
+        "download_model.py": "1f1d752d65494b7a61b7bd5a1789a0ec17c44b0deb9dbebb4127439b5b97ab60",
+        "verify_hf_mirror.py": "91ca9988aad184aec6d1e4abdf16475d67bcedb0c49fb1d1e9855db6a8e152b7",
+        "order_audit.py": "ca373935365a5a42de1c82cd28d07f60b517bbf283c06949b0555f762af8e95b",
+        "audit_with_opencode.py": "26f901304d25a8a37cf0721862f88f52c5f91abbc8473a0b4ea8d00ddb6f741c",
+        "download_hf.py": "b57330e82ef969d21dda0b97710c1568567088878f9e31759a3a4cab2489f31f",
+        "plot_order.py": "a2aad62e16248b5ce974e273cc56fab41c9bbd451cabd96241deea5131d0a248",
+        "response_audit.py": "805968d98e570a7df3ed5b9024b41dbda1dfa046cd46b970dab049d1229efdac",
+        "attachment_audit.py": "4dd08e9db85477982442124187c60eb6478178f1354ede0b083a61404bf16900",
+        "data.py": "14713fd8549ac26a087f6aeeb1562c0be4c7c8589180d0673bfb9c5f23289c92",
+        "infer.py": "f74ed7c792b5b954d65831a0e8219216630c6ef2e9cefe336165e8cfa29015f3",
+        "stimuli.py": "6969ef8435437e1d4791ed8ade80f56bb464efc919c019db20f0134f4e96bad4",
+        "step_audit.py": "13db5376b138d0d4dd68c3662be619e9ccc56c281ad4dbcd33d91153153daadf",
+        "adopt_step_audit.py": "e202b5d9945ebbcc934be1ae9bcb861834f284ca23f151b1695d826f06679caf",
+        "preaudit_variants.py": "7f43c225e122742bf3ac4eff4a6e583e9627c7e10566f0ac75ab5a9c409eb3f2",
+        "analyze.py": "549d8211ce42a18858cc5d118fdd82bfa1f312bdf98e18d25fd38b392345f677",
+        "focus_audit.py": "f3231919fbdd47d86292ea926d8cbe1a9a9adf771fdfc4036d221fcd18fff8a8",
+        "native_audit.py": "cf8067edfe7fe807cdbcf0c267a145229d569b81a6893ecbe2a7a61afc10d279",
+        "revision_map.py": "c5b512fd06fb4f8b6fe9a91e646563754dfc8e48d6864d8a6b4e0a946cac5e34",
+        "snapshot_preaudit.py": "a0b81bbf052c3cf0760e892e35c4ca1efba67daa16de24011fddcf8bbc6e3297",
+        "sap.py": "66443e702b424873a52cbc7ed527d0b0c0982ed26e940c3ebb25157bb94b6637",
+        "option_access.py": "8ba6c645a10748bac21cf3f604ef8d7205e7af9677ae2409c96199456bc8f666"
+      },
+      "data_sha256": "ca8553197b3c50847ccc8bf1e5951743ee288c08e1662af49ee5582520bb0efe",
+      "wall_seconds": 70.25825929641724,
+      "gpu_hours": 0.01951618320412106,
+      "peak_gpu_bytes": 34445841408,
+      "predictions_sha256": "806fbdfadb8775ec7faf15115b710ba2b9d44f4d8d3ea55ecc512f860f1f762e"
+    }
+  ],
+  "predictions_sha256": "15b282273e2c2ec6c23882142df0f7720fab33155c407e17f21b43520d54bd0a",
+  "merge_code_sha256": "8ba6c645a10748bac21cf3f604ef8d7205e7af9677ae2409c96199456bc8f666",
+  "reuse": "E09 endpoints verified byte-identical before new inference; no values invented"
+}

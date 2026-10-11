@@ -1,0 +1,79 @@
+{
+  "gate": "A",
+  "built_utc": "2026-09-14T08:30:43Z",
+  "definition": "u = d_edit(y_wmt, y_ar) / ((|y_wmt| + |y_ar|) / 2)  [ACL 2022 eq. 1, n=2]",
+  "primary_unit": "character",
+  "n_segments": 1997,
+  "inputs": {
+    "wmt19_test.tgz": {
+      "url": "https://data.statmt.org/wmt19/translation-task/test.tgz",
+      "sha256": "5ef66d76e183ed40450086ad6fa7beccda1fbb290c5556b93273d515fd6683fb"
+    },
+    "wmt18_test.tgz": {
+      "url": "https://data.statmt.org/wmt18/translation-task/test.tgz",
+      "sha256": "d4094eb9949571e90b162a690d8bb064fa10986d8f2afb9ae709809ca6bd92ff"
+    },
+    "wmt19-ende-ar.ref": {
+      "url": "https://raw.githubusercontent.com/google/wmt19-paraphrased-references/master/wmt19/ende/wmt19-ende-ar.ref",
+      "sha256": "e0e519af4409eef57ec3c235481ab0c21bb041abf72636834a9b40192d3c8300"
+    }
+  },
+  "derived": {
+    "newstest2019.en": "3a62f94f5c42a395d4452ec890ca45afc75866b5b4b1d493429433cfe8469fe9",
+    "newstest2019.wmtref.de": "ba6b9c811a564c7747bdc92de2b31513bc608fd9c7c24df85b654e38b83bca81",
+    "newstest2019.arref.de": "e0e519af4409eef57ec3c235481ab0c21bb041abf72636834a9b40192d3c8300",
+    "newstest2018.en": "721b207ca2b4e4689f978e17ee5edb0988d7c901acd651fd666bcd9c1950233b",
+    "newstest2018.ref.de": "c53059fc440b3771aef2a83b15fddd8d2b3490c55b552dcae245f9a2df126c9c",
+    "uncertainty.jsonl": "0f6baeeecc6f95b3d3d34c5e1729058adc8520a83e658a30b902562a403c725c"
+  },
+  "u_char": {
+    "mean": 0.4271335264924804,
+    "median": 0.4276315789473684,
+    "min": 0.0,
+    "max": 1.8333333333333333
+  },
+  "u_word": {
+    "mean": 0.6074318783733469,
+    "median": 0.6122448979591837
+  },
+  "quartile_cuts_u_char": {
+    "q25": 0.3031674208144796,
+    "q50": 0.4276315789473684,
+    "q75": 0.5480769230769231
+  },
+  "stratum_sizes": {
+    "Q1": 500,
+    "Q2": 499,
+    "Q3": 499,
+    "Q4": 499
+  },
+  "length_profile": {
+    "[0,10]": {
+      "n": 327,
+      "u_char": 0.38112496394724094,
+      "u_word": 0.5627043195553905
+    },
+    "(10,20]": {
+      "n": 730,
+      "u_char": 0.4267106510086699,
+      "u_word": 0.6058925264878362
+    },
+    "(20,30]": {
+      "n": 578,
+      "u_char": 0.43873591179084415,
+      "u_word": 0.6175401996173779
+    },
+    "(30,)": {
+      "n": 362,
+      "u_char": 0.451021151777068,
+      "u_word": 0.6347993616077239
+    }
+  },
+  "gate_A3_unit_agreement": {
+    "spearman_rho": 0.9039533908479737,
+    "same_quartile_frac": 0.6915373059589384,
+    "threshold_rho": 0.9,
+    "threshold_same_quartile": 0.8,
+    "pass": false
+  }
+}

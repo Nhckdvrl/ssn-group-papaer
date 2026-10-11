@@ -1,0 +1,499 @@
+{
+  "experiment": "E13 A3",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E13-horizon-breadth-RTX-s0",
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "output": "/tmp/latent-wm-runs/20261002-E13-horizon-breadth-RTX-s0"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "seed": 66000,
+    "count": 32,
+    "methods": {
+      "H25-N300": [
+        1,
+        300
+      ],
+      "H25-N900": [
+        1,
+        900
+      ],
+      "H75-N300": [
+        3,
+        300
+      ]
+    },
+    "goal_offsets": [
+      25,
+      75
+    ],
+    "receding_primitive_steps": 25,
+    "env_budget_multiple": 2,
+    "cem": {
+      "K": 30,
+      "iterations": 30,
+      "consistency_weight": 0
+    },
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "harness_sha256": "34142077e52fde30f4749fd578c4cdc33c856b617426ffa9ebc315560bf12796",
+    "recovery_helper_sha256": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    },
+    "scope": "zero training, one released model per task; transition counts are not wall-clock speedups"
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "H25-N300",
+      "n": 32,
+      "successes": 28,
+      "success_wilson_ci95": [
+        0.7193169451834978,
+        0.9502986561251991
+      ],
+      "paired_gain_vs_H25N300": 0.0,
+      "paired_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "total_env_steps": 618,
+      "predicted_macro_transitions": 333000,
+      "planning_seconds_mean": 0.3623557379720984
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "H25-N900",
+      "n": 32,
+      "successes": 31,
+      "success_wilson_ci95": [
+        0.8425573617998744,
+        0.9944621398359969
+      ],
+      "paired_gain_vs_H25N300": 0.09375,
+      "paired_gain_ci95": [
+        0.0,
+        0.21875
+      ],
+      "helped": 3,
+      "harmed": 0,
+      "total_env_steps": 550,
+      "predicted_macro_transitions": 972000,
+      "planning_seconds_mean": 0.36943723344140583
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "H75-N300",
+      "n": 32,
+      "successes": 17,
+      "success_wilson_ci95": [
+        0.3644951711897464,
+        0.6913061289193116
+      ],
+      "paired_gain_vs_H25N300": -0.34375,
+      "paired_gain_ci95": [
+        -0.5,
+        -0.1875
+      ],
+      "helped": 0,
+      "harmed": 11,
+      "total_env_steps": 1029,
+      "predicted_macro_transitions": 1458000,
+      "planning_seconds_mean": 0.9921101133028666
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "H25-N300",
+      "n": 32,
+      "successes": 19,
+      "success_wilson_ci95": [
+        0.42260024875382873,
+        0.7448036515733456
+      ],
+      "paired_gain_vs_H25N300": 0.0,
+      "paired_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "total_env_steps": 2945,
+      "predicted_macro_transitions": 1107000,
+      "planning_seconds_mean": 0.35401146752926393
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "H25-N900",
+      "n": 32,
+      "successes": 25,
+      "success_wilson_ci95": [
+        0.6124500635075647,
+        0.8897616374739581
+      ],
+      "paired_gain_vs_H25N300": 0.1875,
+      "paired_gain_ci95": [
+        0.03125,
+        0.34375
+      ],
+      "helped": 7,
+      "harmed": 1,
+      "total_env_steps": 1914,
+      "predicted_macro_transitions": 2241000,
+      "planning_seconds_mean": 0.35390397991581135
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "H75-N300",
+      "n": 32,
+      "successes": 8,
+      "success_wilson_ci95": [
+        0.1325240091850904,
+        0.4210655899424448
+      ],
+      "paired_gain_vs_H25N300": -0.34375,
+      "paired_gain_ci95": [
+        -0.53125,
+        -0.15625
+      ],
+      "helped": 2,
+      "harmed": 13,
+      "total_env_steps": 4218,
+      "predicted_macro_transitions": 4644000,
+      "planning_seconds_mean": 0.9706364811809604
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "H25-N300",
+      "n": 32,
+      "successes": 31,
+      "success_wilson_ci95": [
+        0.8425573617998744,
+        0.9944621398359969
+      ],
+      "paired_gain_vs_H25N300": 0.0,
+      "paired_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "total_env_steps": 810,
+      "predicted_macro_transitions": 315000,
+      "planning_seconds_mean": 0.35170045654688564
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "H25-N900",
+      "n": 32,
+      "successes": 31,
+      "success_wilson_ci95": [
+        0.8425573617998744,
+        0.9944621398359969
+      ],
+      "paired_gain_vs_H25N300": 0.0,
+      "paired_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "total_env_steps": 807,
+      "predicted_macro_transitions": 945000,
+      "planning_seconds_mean": 0.3531471132167748
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "H75-N300",
+      "n": 32,
+      "successes": 5,
+      "success_wilson_ci95": [
+        0.0686442028250571,
+        0.3175414959753039
+      ],
+      "paired_gain_vs_H25N300": -0.8125,
+      "paired_gain_ci95": [
+        -0.9375,
+        -0.65625
+      ],
+      "helped": 0,
+      "harmed": 26,
+      "total_env_steps": 1473,
+      "predicted_macro_transitions": 1674000,
+      "planning_seconds_mean": 0.9655268877864845
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "H25-N300",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "paired_gain_vs_H25N300": 0.0,
+      "paired_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "total_env_steps": 4104,
+      "predicted_macro_transitions": 1494000,
+      "planning_seconds_mean": 0.3542600140110197
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "H25-N900",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "paired_gain_vs_H25N300": 0.03125,
+      "paired_gain_ci95": [
+        0.0,
+        0.09375
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "total_env_steps": 4024,
+      "predicted_macro_transitions": 4374000,
+      "planning_seconds_mean": 0.35468164348491915
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "H75-N300",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "paired_gain_vs_H25N300": -0.1875,
+      "paired_gain_ci95": [
+        -0.34375,
+        -0.0625
+      ],
+      "helped": 0,
+      "harmed": 6,
+      "total_env_steps": 4800,
+      "predicted_macro_transitions": 5184000,
+      "planning_seconds_mean": 0.9700859466684051
+    }
+  ],
+  "complete": {
+    "completed": true,
+    "episodes": 384
+  },
+  "controls": {
+    "tworoom": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.00018310546875
+      }
+    ],
+    "pusht": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 0.000152587890625
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.0001220703125
+      }
+    ]
+  },
+  "artifact_sha256": {
+    "config.json": "13bd974f1e48b511dc673a4037e61e8a54f3bc944b1cde7fc7dcc7aaf496a59e",
+    "horizon_breadth_used.py": "34142077e52fde30f4749fd578c4cdc33c856b617426ffa9ebc315560bf12796",
+    "recovery_forks_used.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "gpu_start.json": "3e18a909a206663e4b3bde080d6cb72d5667aa6d8949a0ccbc3cdf3776b8be2f",
+    "tworoom_native_control.json": "c76707f804b3913f3a866dd132393e99f04ae653d406fb63725fbd9292a27190",
+    "rows.json": "18d11bb52dd07451bd1625cb80aca28f43ba3fd9328ed3fdd8b921b1c6b99656",
+    "gpu_after_tworoom_25.json": "aff503dfc3676984ea05a8854183332e5ebdb0fc4499cd0def5c2709b3e1afa2",
+    "gpu_after_tworoom_75.json": "9da6fad2651bfa824a8a16f23c4fccff764bbaec52e2367288725b12eab2a694",
+    "pusht_native_control.json": "e2d35e30051679e4ec41e67634431937a33b7ba6482c611076bd00d6e2a52803",
+    "gpu_after_pusht_25.json": "2b491f0d0cd671975fbd171717d1185c73b22981e5b8bfe939e3478be26047c6",
+    "gpu_after_pusht_75.json": "d136a1e6a208b20595cda386a75b621c21c41df5e3c81bd83b7ef6d8d3c8a922",
+    "summary.json": "f2a9148caf1899752d7a31de7c531e3b0e6e109384cafba8fa718cfcfe3f2896",
+    "complete.json": "1395761f060a4d8db56557b7b28bbdb47aa2fb28cb2c492f032db79d8bb617da"
+  },
+  "interpretation": "Recursive H75 on these released direct-prefix models reduces success. Prediction error/terminal-cost geometry/action-dimension search difficulty remain competing explanations; candidate-transition match is not wall-clock match. Zero train unaffected by optimizer alias. Frozen released WM episode provenance unknown; query/calibration split only."
+}

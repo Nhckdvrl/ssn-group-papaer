@@ -1,0 +1,19 @@
+{
+  "model": {
+    "id": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+  },
+  "source_decisions": "data/controlled_decisions_v1.jsonl",
+  "modes": ["thinking", "non_thinking"],
+  "frames": ["gain", "loss"],
+  "orders": ["ab", "ba"],
+  "samples_per_cell": 4,
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "seed": 83,
+  "thinking_max_tokens": 1024,
+  "non_thinking_max_tokens": 64,
+  "bootstrap_samples": 5000,
+  "result_dir": "results/qwen_mode_seed83"
+}

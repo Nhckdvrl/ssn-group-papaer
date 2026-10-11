@@ -1,0 +1,57 @@
+{
+  "experiment": "E13",
+  "root_review_authorized": true,
+  "cutover_started_utc": "2026-10-02T17:42:00.471164+00:00",
+  "old_pid": 320801,
+  "old_captured_start_ticks": "1481353504",
+  "old_exact_command": [
+    "python3",
+    "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e13_eval_batch.py",
+    "--run-batch"
+  ],
+  "old_recorded_launch_utc": "2026-10-02T16:21:50.695778+00:00",
+  "old_state_before_term": {
+    "started_utc": "2026-10-02T16:21:50.695778+00:00",
+    "runs": [],
+    "copies": [],
+    "status": "waiting_training"
+  },
+  "ownership_limitation": "Original launch provenance lacked start_ticks; root accepted saved launch UTC same second plus exact command/path, current captured ticks and untouched waiting state. Current ticks/command/state rechecked immediately before TERM.",
+  "old_state_and_logs_preserved": true,
+  "training_processes_untouched": true,
+  "judge_started_by_cutover": false,
+  "new_script_sha256": "04bb287c9d59241f6acf49d39698e83a87a69ff08bf589205c6a6689d03c15f2",
+  "repository_commit": "635a88dc13e654a7e71e6dad858f5e840426ecde",
+  "old_term_exit_confirmed_utc": "2026-10-02T17:42:00.789182+00:00",
+  "new_pid": 330492,
+  "new_start_ticks": "1481834526",
+  "new_command": [
+    "python3",
+    "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e13_eval_batch_v2.py",
+    "--run-batch"
+  ],
+  "new_process_group": 330492,
+  "new_launched_utc": "2026-10-02T17:42:00.790253+00:00",
+  "stdout_path": "/var/tmp/xiang-data-rsi/e13/eval_batch_v2.stdout",
+  "stderr_path": "/var/tmp/xiang-data-rsi/e13/eval_batch_v2.stderr",
+  "state_path": "/var/tmp/xiang-data-rsi/e13/eval_batch_v2/state.json",
+  "postlaunch_health": {
+    "pid": 330492,
+    "start_ticks": "1481834526",
+    "status": "waiting_training",
+    "runs": [],
+    "copies": [],
+    "training_status_exists": true,
+    "training_completions": 4,
+    "queue_statuses": [
+      "completed",
+      "completed",
+      "not_completed",
+      "not_completed"
+    ],
+    "stderr_only_ssh_known_host_warnings": true,
+    "traceback_present": false,
+    "legacy_state_preserved": true,
+    "probe_initial_assertion_correction": "An initial health probe incorrectly required empty stderr; actual stderr contained only SSH known-host warnings. Repeated probe checked identity/waiting state/no Traceback and passed. No process was restarted."
+  }
+}

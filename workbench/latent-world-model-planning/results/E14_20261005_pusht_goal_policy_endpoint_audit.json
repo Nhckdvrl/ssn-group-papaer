@@ -1,0 +1,59 @@
+{
+  "completed": true,
+  "training_runs": 3,
+  "records": [
+    {
+      "seed": 0,
+      "geometry": "RELEASED",
+      "arm": "GC-IDM",
+      "checkpoint_sha256": "0b5eea0c93ad51c20ddde301ea89ba955b6469540ed4125dec628f090bccb3b2",
+      "head_initial_sha256": "cd703efb22307ed1d500bf5b5e68d69acef55eeef9f23f316d7a1dc4448dd8a2",
+      "updates": 400,
+      "training_examples": 409600,
+      "optimizer_states": 22,
+      "finite_weights_moments": true,
+      "full50_epoch_goal_and_shuffle_rng_replayed": true,
+      "original_raw_action_dataset": true,
+      "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+      "train_seconds": 6.37304375320673,
+      "peak_vram_gib": 0.07338476181030273
+    },
+    {
+      "seed": 0,
+      "geometry": "RELEASED",
+      "arm": "GCBC-MATCHED",
+      "checkpoint_sha256": "eadcc1f9ff3338acc07685ffcbc5faaf22fd16703afa486b4b5c83e6185ea356",
+      "head_initial_sha256": "cd703efb22307ed1d500bf5b5e68d69acef55eeef9f23f316d7a1dc4448dd8a2",
+      "updates": 400,
+      "training_examples": 409600,
+      "optimizer_states": 22,
+      "finite_weights_moments": true,
+      "full50_epoch_goal_and_shuffle_rng_replayed": true,
+      "original_raw_action_dataset": true,
+      "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+      "train_seconds": 6.327981889247894,
+      "peak_vram_gib": 0.07338476181030273
+    },
+    {
+      "seed": 0,
+      "geometry": "RELEASED",
+      "arm": "PAIRWISE",
+      "checkpoint_sha256": "decfad8cbe23d7596e37d25c58fe6fad046d04d49af3d093a3d5c5c973a163aa",
+      "head_initial_sha256": "cd703efb22307ed1d500bf5b5e68d69acef55eeef9f23f316d7a1dc4448dd8a2",
+      "updates": 400,
+      "training_examples": 409600,
+      "optimizer_states": 22,
+      "finite_weights_moments": true,
+      "full50_epoch_goal_and_shuffle_rng_replayed": true,
+      "original_raw_action_dataset": true,
+      "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+      "train_seconds": 6.305482644587755,
+      "peak_vram_gib": 0.07338476181030273
+    }
+  ],
+  "all_independent_source_heads_retained": true,
+  "within_source_geometry_arm_initializations_common": true,
+  "gcidm_gcbc_goal_samples_common": true,
+  "scope": "One PushT head-training seed, frozen published encoder pretraining overlap unknown. First86 fact episodes exclude fresh48 source episodes. Source adapter and cached feature metadata recorded; no native-paper numerical replication. Raw physical single-step action regression; published GC-IDM component reused, no novelty or complete paper reproduction. Validation split shares episodes, only optimization diagnostic. No control result inferred.",
+  "script_sha256": "aec003bf34d127a37817d0190770b63fe82224fc9964f8bf29ee3d1f6c6949e2"
+}

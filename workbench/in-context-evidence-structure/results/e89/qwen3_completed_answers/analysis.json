@@ -1,0 +1,206 @@
+{
+  "conditions": {
+    "base": {
+      "recognition_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.4296875,
+          0.56640625
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.3828125,
+        "ci95": [
+          0.328125,
+          0.4375
+        ],
+        "n_contexts": 16
+      },
+      "parse_fraction": {
+        "mean": 0.7734375,
+        "ci95": [
+          0.68359375,
+          0.8515625
+        ],
+        "n_contexts": 16
+      },
+      "truncated_fraction": {
+        "mean": 0.00390625,
+        "ci95": [
+          0.0,
+          0.01171875
+        ],
+        "n_contexts": 16
+      }
+    },
+    "flip": {
+      "recognition_accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.40625,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.4765625,
+        "ci95": [
+          0.38671875,
+          0.5625
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.3046875,
+          0.4453125
+        ],
+        "n_contexts": 16
+      },
+      "parse_fraction": {
+        "mean": 0.71875,
+        "ci95": [
+          0.5859375,
+          0.83984375
+        ],
+        "n_contexts": 16
+      },
+      "truncated_fraction": {
+        "mean": 0.00390625,
+        "ci95": [
+          0.0,
+          0.01171875
+        ],
+        "n_contexts": 16
+      }
+    },
+    "explicit": {
+      "recognition_accuracy": {
+        "mean": 0.53125,
+        "ci95": [
+          0.5,
+          0.59375
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.640625,
+        "ci95": [
+          0.59375,
+          0.6875
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.46875,
+          0.53125
+        ],
+        "n_contexts": 16
+      },
+      "parse_fraction": {
+        "mean": 0.9765625,
+        "ci95": [
+          0.93359375,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    },
+    "explicit_flip": {
+      "recognition_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.5,
+          0.6875
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.66796875,
+        "ci95": [
+          0.62890625,
+          0.703125
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.5,
+          0.5234375
+        ],
+        "n_contexts": 16
+      },
+      "parse_fraction": {
+        "mean": 0.984375,
+        "ci95": [
+          0.9609375,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    }
+  },
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "source": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e89/qwen3_clear_request",
+      "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e89/qwen3_completed_answers"
+    },
+    "source_run": {
+      "args": {
+        "model": "/tmp/ices_models/Qwen3-8B",
+        "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e89/qwen3_clear_request",
+        "n": 16,
+        "seed": 89001,
+        "clear_request": true,
+        "generate": true
+      },
+      "seconds": 342.82889556884766,
+      "numeric_max_error": 9.34600830078125e-05,
+      "script_sha256": "1a33d3e48ddcb2ded83e19dcf0d42fdbcf70ebee33df30d3ae813bcd807e615c",
+      "data_engine_sha256": "522515d8679de5a7947400ba149616993d7d25df7e22aff04eef39e1d8b57b80",
+      "git_commit": "f72492d1c65a84f38aa4e40383297333ac2b4f19",
+      "torch": "2.8.0+cu128",
+      "transformers": "4.57.6",
+      "host": "fvcrc21",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+    },
+    "seconds": 769.7212402820587,
+    "censored_before": 178,
+    "prefixes_checked": 178,
+    "n_contexts": 16,
+    "script_sha256": "27da745d24abf8017800ca68464dbf50ffdd17db8d99a547f25d7e9881d4c271",
+    "git_commit": "2f5789e3f986833a679f746690fc5183e7190cfb",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6"
+  }
+}

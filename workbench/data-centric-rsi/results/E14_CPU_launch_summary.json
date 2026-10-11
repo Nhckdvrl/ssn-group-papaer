@@ -1,0 +1,36 @@
+{
+  "experiment": "E14",
+  "kind": "CPU launch dryrun; no forward/optimizer/GPU training",
+  "node": "fvcrc12",
+  "action": "source_only_fresh",
+  "expected_rows": 10000,
+  "expected_steps": 625,
+  "expected_supervised_tokens": 1078803,
+  "selection_manifest_sha256": "b649fa16fd8954caa1e90884407b257dc47b5b1ebf1ff08b1867412cb626664d",
+  "launcher_sha256": "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e",
+  "reused_e13_observer_sha256": "2217d7741525303de2a03ba9a097bbb1907b2824603662ea276333a0e2ce7550",
+  "versions": {
+    "transformers": "4.57.6",
+    "liger-kernel": "0.7.0",
+    "accelerate": "1.13.0",
+    "torch": "2.8.0"
+  },
+  "normalization": "Unchanged sum CE / this action's actual 16-row label denominator",
+  "processor_sentinel_rows": 11,
+  "sampler_model_rng_independent": true,
+  "sampler_permutation_sha256": "9556c771b60ef10057be7fe8797b7b501f541bbde4859bb962f05bd573a7a7fa",
+  "windows": 625,
+  "window_label_sum": 1078803,
+  "first_window_n": 1553,
+  "min_window_n": 601,
+  "max_window_n": 4011,
+  "parent_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+  "source_raw_path": "/var/tmp/xiang-data-rsi/e14/CPU_launch_dryrun.json",
+  "raw_sha256": "c3ad85594f8213f1063665d5f1f7d6d2dcb447ee28afc64de98028b9598d777b",
+  "GPU_started": false,
+  "limitations": [
+    "Sampler is CPU expectation, not completed runtime windows",
+    "Used branch will separately require full frozen parent file hashes",
+    "No terminal utility or training variance"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e91/qwen3_confirmation",
+    "n": 48,
+    "seed": 191001,
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        6092
+      ],
+      [
+        20836
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    464,
+    530,
+    550,
+    553,
+    629,
+    599,
+    647,
+    553,
+    749,
+    699,
+    608,
+    611,
+    544,
+    571,
+    682,
+    665,
+    647,
+    628,
+    570,
+    566,
+    665,
+    594,
+    570,
+    645,
+    567,
+    661,
+    535,
+    556,
+    613,
+    662,
+    616,
+    501,
+    489,
+    501,
+    582,
+    523,
+    730,
+    531,
+    641,
+    620,
+    593,
+    549,
+    601,
+    576,
+    608,
+    559,
+    600,
+    592
+  ],
+  "current_source_changed_tokens": 0,
+  "foreign_source_label_counts": [
+    4,
+    4
+  ],
+  "reversed_contexts": 20,
+  "patch_scope": "All and only target-source A cache positions, at every layer; whole query respects Source mask.",
+  "modes": [
+    "shared_native",
+    "far_native",
+    "shared_gate",
+    "far_gate",
+    "key_patch",
+    "value_patch",
+    "kv_patch",
+    "instruction"
+  ]
+}

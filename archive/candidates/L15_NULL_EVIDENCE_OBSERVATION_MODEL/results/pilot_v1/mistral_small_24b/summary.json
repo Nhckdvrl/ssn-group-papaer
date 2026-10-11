@@ -1,0 +1,169 @@
+{
+  "tag": "pilot_v1",
+  "model": "mistral_small_24b",
+  "n_cells": 2982,
+  "modes": [
+    {
+      "mode": "direct",
+      "coverage": {
+        "P0_PRIOR": 1.0,
+        "P1_NULL": 1.0,
+        "P2_ARITH": 1.0,
+        "P2_HANDED": 1.0,
+        "P2_NULL": 1.0,
+        "P2_POS": 1.0,
+        "P3_DECIDE": 1.0
+      },
+      "mae": {
+        "P0_PRIOR": 0.0,
+        "P1_NULL": 0.0,
+        "P2_ARITH": 0.2063,
+        "P2_HANDED": 0.2882,
+        "P2_NULL": 0.2557,
+        "P2_POS": 0.1863
+      },
+      "n": {
+        "P0_PRIOR": 36,
+        "P1_NULL": 360,
+        "P2_ARITH": 15,
+        "P2_HANDED": 180,
+        "P2_NULL": 360,
+        "P2_POS": 180,
+        "P3_DECIDE": 360
+      },
+      "detectability": {
+        "n_curves": 72,
+        "mean_spearman_vs_gold": -0.1934,
+        "spearman_ci95_scenario_bootstrap": [
+          -0.3147,
+          -0.081
+        ],
+        "mean_observed_range": -0.0162,
+        "mean_compression_ratio": -0.153,
+        "compression_ci95_scenario_bootstrap": [
+          -0.2918,
+          -0.0209
+        ],
+        "adjacent_monotonicity_violations": "88/288"
+      },
+      "kni": {
+        "n_paired": 360,
+        "obs_known_rate": 1.0,
+        "kni_rate": 0.6778,
+        "kni_ci95_scenario_bootstrap": [
+          0.6278,
+          0.7306
+        ],
+        "mean_err_obs": 0.0,
+        "mean_err_post": 0.2557
+      },
+      "p2_mae_by_frame": {
+        "access": 0.2629,
+        "diagnostic": 0.2746,
+        "monitoring": 0.2429,
+        "search": 0.2424
+      },
+      "kni_rate_by_frame": {
+        "access": 0.6778,
+        "diagnostic": 0.7,
+        "monitoring": 0.6778,
+        "search": 0.6556
+      },
+      "controls": {
+        "arith_mae": 0.2063,
+        "framed_mae_same_cells": 0.2557,
+        "framed_minus_arith": 0.0494,
+        "handed_mae": 0.2882,
+        "null_mae": 0.2557,
+        "positive_control_mae": 0.1863,
+        "prior_only_mae": 0.0
+      },
+      "decision": {
+        "n": 360,
+        "accuracy_vs_gold": 0.55,
+        "consistency_with_own_posterior": 0.7417
+      }
+    },
+    {
+      "mode": "cot",
+      "coverage": {
+        "P0_PRIOR": 1.0,
+        "P1_NULL": 1.0,
+        "P2_ARITH": 1.0,
+        "P2_HANDED": 0.9833,
+        "P2_NULL": 1.0,
+        "P2_POS": 0.9944,
+        "P3_DECIDE": 1.0
+      },
+      "mae": {
+        "P0_PRIOR": 0.0,
+        "P1_NULL": 0.0,
+        "P2_ARITH": 0.0018,
+        "P2_HANDED": 0.058,
+        "P2_NULL": 0.0074,
+        "P2_POS": 0.0
+      },
+      "n": {
+        "P0_PRIOR": 36,
+        "P1_NULL": 360,
+        "P2_ARITH": 15,
+        "P2_HANDED": 180,
+        "P2_NULL": 360,
+        "P2_POS": 180,
+        "P3_DECIDE": 360
+      },
+      "detectability": {
+        "n_curves": 72,
+        "mean_spearman_vs_gold": 0.9448,
+        "spearman_ci95_scenario_bootstrap": [
+          0.8675,
+          1.0
+        ],
+        "mean_observed_range": 0.385,
+        "mean_compression_ratio": 0.9292,
+        "compression_ci95_scenario_bootstrap": [
+          0.832,
+          0.9985
+        ],
+        "adjacent_monotonicity_violations": "5/288"
+      },
+      "kni": {
+        "n_paired": 360,
+        "obs_known_rate": 1.0,
+        "kni_rate": 0.0139,
+        "kni_ci95_scenario_bootstrap": [
+          0.0,
+          0.0333
+        ],
+        "mean_err_obs": 0.0,
+        "mean_err_post": 0.0074
+      },
+      "p2_mae_by_frame": {
+        "access": 0.0155,
+        "diagnostic": 0.0018,
+        "monitoring": 0.0106,
+        "search": 0.0018
+      },
+      "kni_rate_by_frame": {
+        "access": 0.0333,
+        "diagnostic": 0.0,
+        "monitoring": 0.0222,
+        "search": 0.0
+      },
+      "controls": {
+        "arith_mae": 0.0018,
+        "framed_mae_same_cells": 0.0074,
+        "framed_minus_arith": 0.0056,
+        "handed_mae": 0.058,
+        "null_mae": 0.0074,
+        "positive_control_mae": 0.0,
+        "prior_only_mae": 0.0
+      },
+      "decision": {
+        "n": 360,
+        "accuracy_vs_gold": 0.8583,
+        "consistency_with_own_posterior": 0.8556
+      }
+    }
+  ]
+}

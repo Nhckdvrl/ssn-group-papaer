@@ -1,0 +1,51 @@
+# E63：同一源状态是否共同改变问答与自由角色表达？（2026-10-07）
+
+- **状态：** DONE（完整三族生成、双遍及第三遍裁决、自审完成）；先卡后代码/科学运行，生成器E431运行前改为E63，菜单E61/E62保留。
+- **类型：** PILOT。
+- **对应：** I03/I04、C06–C09、P13/P14；不是I05继续扫窗口。
+- **与修订的关系：** 晚消歧后的GP解释必须能用于不同任务，不能仅改变一个No答案。E55已给自然cue源替换的因果入口；E60的早切断改善伴随严重正确关系损失，不支持选择性修订。E63问一个具体的新问题：同一任务未知源前缀、同一源donor向量，能否同时修好原QA与无Yes/No选项的角色表达？
+- **来源：** E55的预定前1/4层歧义区跨三族MVRR正效应；选择这个入口发生在E55之后，明确POST-HOC实验来源，E63跨用途结果前瞻登记。粗残差含句式/形态等多因素，不预称关系特异机制。
+- **读数：** 原QA硬正确率/正确概率；自由复述CORRECT_ROLES、GP_MISREADING、OTHER，由独立双遍Step5、分歧第三遍判定。按已有连通词汇cluster先平均重复Q/mapping/源，再10k bootstrap95%CI；每族/构式/任务/GP与cue均报告，两种QA输出与顺序保留。T4不使用自动词共现判角色，不筛baseline错误/成功cue。
+- **阳性对照：** 清晰cue源BASE；PAIR双向交换，反向cue→错误不是同方向干预保持性；同方向GP patch对原正确QA/角色的损伤必须报告。复述的“一句能否恢复”已有E53 R8全族完整生成、仍在双盲审计，不从部分结果引述。全量SELF不新增科学条件，但仪器固定输入验同源替换不改变评分/逐步生成。
+- **噪声地板：** 本地FP32/eager、greedy/cap256；BASE候选评分与独立2D校验差<.001；SELF逐位置abs<.001或relative L2<1e-5且LP差<.001。source-only截断cache与任务全prefix源状态一致；不同QA/复述的源token-prefix必须逐字一致。固定4源的16步BASE/SELF greedy必须相同；全族统一每步完整prefix重算、无KV-cache，避免缓存路径差异。仪器失败先修，不读科学结果。
+- **决策表（跑之前写）：** QA改善且GP角色正确增加/误角色下降→共同功能入口，随后独立关系变量及输入保持性定位；QA改善但角色不改善→用途特定组装/输出代理，不能称统一修订；GP角色变化伴随大量OTHER/原正确损失→干预损伤，不能称修复；两任务皆null或cue弱→任务frame/资格限制，回到E53完整角色地图，不推出内部parse不存在。任何情况都不自动认定合格idea。
+
+## 数据与操作
+
+仅用E55的原公开S、Q、原gold/T1/T2/T3与自然cue配对，不新造句、不扰动旧24模板、不重新审计可信源。任务前固定源前缀：原生user chat中`Read this sentence carefully.\nSentence:\n<S>\n\nTask:\n`，QA或复述指令只在此后出现；源token末允许尾随空白，不能含Task非空白。对每个S缓存截至源末的状态，严格证明所有QA/复述用途共享它。不是把E55的另一个frame向量直接移植过来，也不把新frame的BASE当作E53/E55原BASE。
+
+QA在源后附G2源支持规则、原Question、两选项顺序×words/letters；复述在源后附Amouyal的两句忠实角色指令，无示例、无答案、无问答gold。两科学操作BASE、PAIR；PAIR仅在floor(.25*(L−1)) block后替换已有T2歧义区的同词对齐状态。三个预定模型Qwen3-8B/Gemma3-12B-it/Llama3.1-8B全部运行；词token数资格完全由输入决定，整对排除，记录每族cohort与交集，不以效果挑样本。复述按源/对应donor/已有词跨度去重，不把同句多个问答当独立源；来源别名与连通cluster保留。
+
+源prefix donor不得包含Task非空白、QA、复述指令、答案。完整prefix与单源缓存一致、SELF、完整prefix生成一致等先通过，冻结代码后才全量。所有原始predictions/cache、code/config/model/data SHA和失败保留外置E63，git只代码/卡/摘要。新生成文本审计用Step Plan step-5-preview、batch2≤5、共享总并发≤8，原E53的完全相同source/output标签可复用，失败不算通过。
+
+## 规模、预算与解释边界
+
+输入上限322QA/161pairs/72独立GP源，预计机械token资格约E55的220QA/52源，不把15clusters当大规模机制证明。这里是检验跨用途的决定性pilot；若成功，再用成熟语料更大独立源做关系特异验证，数量对齐相关GP文献而非十几例定题。三卡独立单卡，每族预算≤3GPU·h，最大256生成token；与E53同时是两个pilot。HF只镜像，已缓存模型离线，不触碰已有服务。这个操作检验功能迁移，既不证明原GP内已有正确parse，也不把whole-vector操纵称细粒度语义中介。
+
+## 结果
+
+完整结果见[摘要](../results/E63-shared-source-cross-use-summary.json)，其SHA引用外置完整4518格地图。495/495双遍完成，74分歧第三遍裁决（初始一致率85.05%），0 unresolved。
+
+MVRR GP角色正确收益（19源clusters）：Qwen+31.58pp [5.26,57.89]，Gemma+15.79 [−15.79,47.37]，Llama+5.26 [−31.58,36.84]；原initial QA收益（15clusters，words/samegold）：+43.33 [13.33,73.33]/+25.00 [−6.67,53.33]/+25.00 [10.00,41.67]。共同修复仅13.33/10.00/6.67pp（区间都含零）；不支持三族共同解释修复。反向cue角色−63.16/−52.63/−31.58pp，反向交换损伤不当作同向保持性。NPZ角色Qwen+66.67 [33.33,100]、Gemma0 [−33.33,33.33]、Llama+22.22 [0,55.56]，仅9源；NPS源对照较弱、收益不稳定，完整保留；NPVP没有输入资格，不填零。OTHER/cap/missing、所有两任务目标与读出、原正确损失详见完整地图。
+
+自审：共同修复预测未获跨族支持，但不能由有限样本null推统一表征不存在。下一步E64分解任务读取的歧义词/其他源位置中介，不再换层扫窗口；并继续检验任务条件是否能形成跨用途解释。C06–C09 L0，无合格idea，未请求状态/候选决定。
+
+### 科学运行前仪器修正
+
+首版任务缺native format字段，三族在评分前停止；补字段后CPU全族输入预检一致（236QA/108源units，43pairs输入排除）。Qwen/Llama原KV-cache校验通过；Gemma默认HybridCache仅分配prefix长导致下一token越界，显式预留后仍与完整prefix重算有29.94最大LP差，仪器拒绝，未运行科学输出。所有失败代码/log保留。改用全三族统一每步完整prefix重算的manual greedy、固定原EOS/cap；每步重施同一源patch，源因果prefix不变，16步SELF必须一致。没有改数据、cohort、干预层、读数或按科学效果调门槛；原缓存要求由这次前瞻修正替代。
+
+- v5三族共同输入资格：236QA/118同题pairs、108源units（每方向54），1888 QA评分+216复述/族。MVRR/NPS/NPZ分层全部保留，不从效果筛源。源prefix同一、QA独立/SELF LP、源向量abs/relative与16步SELF greedy均通过；hierarchical统计和完整三族合成fixture通过，不作为科学结果。
+
+- 分析细化（完整T4/效果读取之前）：另报同一源QA×角色正确的四格表、QA错误但角色正确的配对cluster估计，与co-repair一起解释共同与用途特定变化；unknown独立显示、不计语义错误。所有原定主读数不改，不能把角色BASE已正确的QA修复误叫“两用途都修复”。
+
+- 全体生成完成：三族各1888QA/216复述，共5664评分/648输出，GPU·h .133059/.245587/.134714，合计.513360；54GP源/51连通词汇cluster，MVRR19/NPS26/NPZ9 GP源。495独立source/output包进入Step Plan双盲（不重复审计源），完整统计须等全部审核；不解读部分T4类别比例。
+
+### POST-HOC 标注规则纠正（v1保留）
+
+已完成裁决的固定顺序抽查发现：department was merged→department merged 被仅凭主动句式判为施事变化；merge可作inchoative，语法主语不等于施事。原CORRECT_ROLES/GP_MISREADING/OTHER意图未变，但判定规则需澄清。原v1结果与74裁决全部保留；MVRR角色数字及共同修复结论暂待v2复核，QA分数不受影响。按输入construction=MVRR完整重审E63/E64全部相关输出，不按旧标签/收益挑条；使用新双遍/第三遍、Step Plan batch2，非MVRR已审完全相同packet复用。新结果另存v2、比较所有更改。
+
+### v2完整纠正与自审（2026-10-07）
+
+P15复核已闭合，原v1保留。完整共同审核656包（1944assignments）：287有效非MVRR复用、369新/重审双遍，49分歧全裁决、一致86.72%、0 unresolved。E63 v2共享地图SHA24d8942c8b8d211c526f584f37601a5f20e18dd22c7920c6ebcaf96e2796fa48；审核SHA aaf64c2d4c86f04fd6b7b5fd3916ce825f82b5864d5d5aebea0e79c8c73959e0，原模型/QA/资格未变。MVRR GP角色PAIR−BASE Q/G/L +36.84 [10.53,63.16]/+10.53 [−21.05,42.11]/+10.53 [−26.32,47.37]pp，19clusters；反向cue −52.63/−47.37/−52.63且三族CI负。NPZ GP +66.67/0/+22.22（后两CI含0），9源；NPS弱cue/NPVP缺失保留。完整738格核心×E63/E64五图由[E64纠正摘要](../results/E64-corrected-cross-use-summary.json)引用，不以局部正结果宣称共享parse。
+
+自审：纠正有必要，也没有使三族正向共同恢复成立；反向歧义状态能损坏明确cue角色。固定输入顺序例子有局部V1正确、V2仍错/缺失，因此联合null不能称所有关系毫无变化。下一E70原Q原子脚印，一个BASE/TARGET对比，无GPU重跑；E71区分源约束传播与正确局部表达的后续消费，不再源位置grid。C06–08 L0/C09限定L1不变，无合格idea、无人需作状态决定。

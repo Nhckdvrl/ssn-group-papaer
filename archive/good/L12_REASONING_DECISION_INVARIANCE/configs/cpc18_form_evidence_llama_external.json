@@ -1,0 +1,34 @@
+{
+  "extends": "configs/cpc18_form_evidence_preregistered.json",
+  "version": "cpc18_form_evidence_llama_external_v1",
+  "frozen_at": "2026-09-10T12:25:48+09:00",
+  "purpose": "External-family breadth for selective form/evidence sensitivity; not a matched training attribution.",
+  "seed": 179,
+  "primary_hypothesis": "DeepSeek-R1-Distill-Llama minus Llama-Instruct selective_sensitivity is positive with a base-decision bootstrap 95% interval excluding zero.",
+  "causal_followup_gate": "Only if the behavioral primary interval excludes zero, run the frozen evidence prompt-by-trajectory factorial using DeepSeek natural stripped trajectories as donors.",
+  "causal_followup_hypothesis": "DeepSeek minus Llama Delta_R-minus-Delta_P is positive separately for raw and summary forms.",
+  "identification_boundary": "The models share a Llama-3.1 8B base ecosystem but differ in data, post-training pipeline, tokenizer/configuration, and serving identity; this is external replication, never one-step training attribution.",
+  "result_dir": "results/cpc18_form_evidence_llama_seed179",
+  "regimes": [
+    {
+      "name": "llama_instruct",
+      "pair": "llama_external",
+      "role": "standard",
+      "id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+      "revision": "d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+      "scientific_identity": "meta-llama/Llama-3.1-8B-Instruct",
+      "official_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "max_tokens": 1024,
+      "requires_closed_think": false
+    },
+    {
+      "name": "deepseek_r1",
+      "pair": "llama_external",
+      "role": "reasoning",
+      "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+      "revision": "6a6f4aa4197940add57724a7707d069478df56b1",
+      "max_tokens": 3072,
+      "requires_closed_think": true
+    }
+  ]
+}

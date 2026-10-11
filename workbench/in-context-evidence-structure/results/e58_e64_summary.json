@@ -1,0 +1,296 @@
+{
+  "scope": "Fixed model/checkpoint and context-bootstrap intervals; not uncertainty over model or training seeds.",
+  "source_rule": "Synthetic opposite rules over real comments, not actual individual annotator ground truth.",
+  "e64": {
+    "qwen3_synthetic_discovery": {
+      "label": "Qwen3 / synthetic discovery",
+      "source_effect_nats": {
+        "mean": 1.962890625,
+        "ci95": [
+          1.740673828125,
+          2.1880615234375
+        ],
+        "n_contexts": 64
+      },
+      "final_label_remaining": {
+        "mean": 0.6696517412935323,
+        "ci95": [
+          0.6340358854682492,
+          0.7074481720269603
+        ]
+      },
+      "all_query_label_remaining": {
+        "mean": 0.055970149253731345,
+        "ci95": [
+          0.02186819820098697,
+          0.08773660393338652
+        ]
+      },
+      "paired_scope_difference": {
+        "mean": 0.613681592039801,
+        "ci95": [
+          0.574143077030949,
+          0.6593697468282156
+        ]
+      },
+      "final_name_remaining": {
+        "mean": 1.0069651741293533,
+        "ci95": [
+          0.9875396933970086,
+          1.0262895197043407
+        ]
+      },
+      "all_query_name_remaining": {
+        "mean": 0.009701492537313432,
+        "ci95": [
+          -0.010470739334375697,
+          0.029382141858076104
+        ]
+      },
+      "sources": [
+        "results/e64/qwen3_synthetic_discovery_final/analysis.json",
+        "results/e64/qwen3_synthetic_discovery_all/analysis.json"
+      ]
+    },
+    "qwen3_synthetic_confirmation": {
+      "label": "Qwen3 / synthetic confirmation",
+      "source_effect_nats": {
+        "mean": 2.03955078125,
+        "ci95": [
+          1.73043212890625,
+          2.3501464843749997
+        ],
+        "n_contexts": 64
+      },
+      "final_label_remaining": {
+        "mean": 0.4711515441704573,
+        "ci95": [
+          0.43796782938873824,
+          0.5077327750078627
+        ]
+      },
+      "all_query_label_remaining": {
+        "mean": 0.06080919320086186,
+        "ci95": [
+          0.026827102878893627,
+          0.09369253620574243
+        ]
+      },
+      "paired_scope_difference": {
+        "mean": 0.4103423509695954,
+        "ci95": [
+          0.3729116868734809,
+          0.45018286174086436
+        ]
+      },
+      "final_name_remaining": {
+        "mean": 1.0210677519751017,
+        "ci95": [
+          1.0046952177991402,
+          1.0364525300238019
+        ]
+      },
+      "all_query_name_remaining": {
+        "mean": 0.0,
+        "ci95": [
+          -0.016965656591739507,
+          0.01629242703428277
+        ]
+      },
+      "sources": [
+        "results/e64/qwen3_synthetic_confirmation_final/analysis.json",
+        "results/e64/qwen3_synthetic_confirmation_all/analysis.json"
+      ]
+    },
+    "qwen3_real_discovery": {
+      "label": "Qwen3 / real-text discovery",
+      "source_effect_nats": {
+        "mean": 0.5548502604166666,
+        "ci95": [
+          0.43765462239583336,
+          0.68050537109375
+        ],
+        "n_contexts": 48
+      },
+      "final_label_remaining": {
+        "mean": 0.5139337048987973,
+        "ci95": [
+          0.43214890320081356,
+          0.596888076594283
+        ]
+      },
+      "all_query_label_remaining": {
+        "mean": 0.017013787034320917,
+        "ci95": [
+          -0.032727915522655956,
+          0.059853443024209224
+        ]
+      },
+      "paired_scope_difference": {
+        "mean": 0.49691991786447637,
+        "ci95": [
+          0.42484787142501523,
+          0.5721854472106618
+        ]
+      },
+      "final_name_remaining": {
+        "mean": 0.9715459078908771,
+        "ci95": [
+          0.9296962165457013,
+          1.0168198595953015
+        ]
+      },
+      "all_query_name_remaining": {
+        "mean": 0.010560281607509533,
+        "ci95": [
+          -0.03401896788174918,
+          0.05670884194754115
+        ]
+      },
+      "sources": [
+        "results/e64/qwen3_real_discovery_final/analysis.json",
+        "results/e64/qwen3_real_discovery_all/analysis.json"
+      ]
+    },
+    "qwen3_real_confirmation": {
+      "label": "Qwen3 / real-text confirmation",
+      "source_effect_nats": {
+        "mean": 0.5686848958333334,
+        "ci95": [
+          0.43325195312500003,
+          0.7177897135416665
+        ],
+        "n_contexts": 48
+      },
+      "final_label_remaining": {
+        "mean": 0.526903262736119,
+        "ci95": [
+          0.47629802546842187,
+          0.581094037815481
+        ]
+      },
+      "all_query_label_remaining": {
+        "mean": 0.05437893531768746,
+        "ci95": [
+          0.001129382846481162,
+          0.10159806887043839
+        ]
+      },
+      "paired_scope_difference": {
+        "mean": 0.4725243274184316,
+        "ci95": [
+          0.42634034248300173,
+          0.5253191322789537
+        ]
+      },
+      "final_name_remaining": {
+        "mean": 0.9899828277046364,
+        "ci95": [
+          0.9498326418202129,
+          1.0281179257710436
+        ]
+      },
+      "all_query_name_remaining": {
+        "mean": -0.01345163136805953,
+        "ci95": [
+          -0.06398598194808751,
+          0.03175414995975275
+        ]
+      },
+      "sources": [
+        "results/e64/qwen3_real_confirmation_final/analysis.json",
+        "results/e64/qwen3_real_confirmation_all/analysis.json"
+      ]
+    },
+    "mistral_synthetic_discovery": {
+      "label": "Mistral / synthetic replication",
+      "source_effect_nats": {
+        "mean": 0.44091796875,
+        "ci95": [
+          0.367919921875,
+          0.5158752441406249
+        ],
+        "n_contexts": 64
+      },
+      "final_label_remaining": {
+        "mean": 0.12679955703211518,
+        "ci95": [
+          0.08879426013566036,
+          0.1646157565604796
+        ]
+      },
+      "all_query_label_remaining": {
+        "mean": 0.07807308970099668,
+        "ci95": [
+          0.040475906577012125,
+          0.1125407870227347
+        ]
+      },
+      "paired_scope_difference": {
+        "mean": 0.048726467331118496,
+        "ci95": [
+          0.03347839642094259,
+          0.06469693251023328
+        ]
+      },
+      "final_name_remaining": {
+        "mean": 1.0016611295681064,
+        "ci95": [
+          0.9854046909676831,
+          1.0193756760933397
+        ]
+      },
+      "all_query_name_remaining": {
+        "mean": -0.005537098560354375,
+        "ci95": [
+          -0.023450135517439213,
+          0.011939358463900625
+        ]
+      },
+      "sources": [
+        "results/e64/mistral_synthetic_discovery_final/analysis.json",
+        "results/e64/mistral_synthetic_discovery_all/analysis.json"
+      ]
+    }
+  },
+  "runtime": {
+    "e58": {
+      "successful_process_wall_gpu_hours": 0.05016492631700304,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 3
+    },
+    "e59": {
+      "successful_process_wall_gpu_hours": 0.2815407760275735,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 5
+    },
+    "e60": {
+      "successful_process_wall_gpu_hours": 0.0884352649582757,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 4
+    },
+    "e61": {
+      "successful_process_wall_gpu_hours": 0.053962127301428055,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 4
+    },
+    "e62": {
+      "successful_process_wall_gpu_hours": 0.21865408963627286,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 4
+    },
+    "e63": {
+      "successful_process_wall_gpu_hours": 0.052782573368814256,
+      "invalid_process_wall_gpu_hours": 0.026889870961507162,
+      "completed_runs": 4
+    },
+    "e64": {
+      "successful_process_wall_gpu_hours": 0.15830827097098032,
+      "invalid_process_wall_gpu_hours": 0.0,
+      "completed_runs": 10
+    },
+    "total_successful_process_wall_gpu_hours": 0.9038480285803477,
+    "total_invalid_process_wall_gpu_hours": 0.026889870961507162,
+    "definition": "Sum of single-GPU process timers, including model load/data prep; excluding model staging, startup failures without run.json, and CPU analysis. Not integrated GPU utilization."
+  }
+}

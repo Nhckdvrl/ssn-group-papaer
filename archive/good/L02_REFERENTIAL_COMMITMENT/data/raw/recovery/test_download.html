@@ -1,0 +1,211 @@
+
+
+<link rel="stylesheet" type="text/css" href="default.css" />
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <meta name="Generator" content="iWeb 2.0.4" />
+    <meta name="iWeb-Build" content="local-build-20080912" />
+    <meta name="viewport" content="width=740" />
+    <title>SemEval-2 Evaluation Exercises on Semantic Evaluation - ACL SigLex event</title>
+    <link rel="stylesheet" type="text/css" media="screen,print" href="Semeval2_files/Semeval2.css" />
+    <!--[if IE]><link rel='stylesheet' type='text/css' media='screen,print' href='Semeval2_files/Semeval2IE.css'/><![endif]-->
+    <script type="text/javascript" src="Scripts/iWebSite.js"></script>
+    <script type="text/javascript" src="Scripts/Widgets/SharedResources/WidgetCommon.js"></script>
+    <script type="text/javascript" src="Scripts/Widgets/Navbar/navbar.js"></script>
+    <script type="text/javascript" src="Scripts/iWebImage.js"></script>
+    <script type="text/javascript" src="Semeval2_files/Semeval2.js"></script>
+  </head>
+  <body style="background: #515151; margin: 0pt; " onload="onPageLoad();" onunload="onPageUnload();">
+    <table border=0><td valign=top><br><br><br><br><br><br>
+    <script>
+function CETclock(wherediv) {
+	var date=new Date(); 
+	var CETtime = date.getTime() + (date.getTimezoneOffset() * 60 * 1000) +3600000*2; 
+	var CETtimenow= new Date(CETtime);
+	
+	var month =(CETtimenow.getMonth()+1) ;
+	if (month < 10) {
+		month = "0" + month;
+	}
+	var day = CETtimenow.getDate();
+	if (day < 10) {
+		day = "0" + day;
+	}
+	var minutes = CETtimenow.getMinutes();
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	var seconds = CETtimenow.getSeconds();
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}	
+	var time = CETtimenow.getFullYear()+"-"+ month+"-"+ day +" "+CETtimenow.getHours() +":"+minutes+":"+seconds;
+	
+	document.getElementById(wherediv).innerHTML="<center><font class=BODY><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color=ciano>SemEval-2 time: <br><b>" +time+"</b> CET</font></font></center>";
+
+	window.setTimeout("CETclock('"+wherediv+"')",1000)
+
+}
+</script>
+
+<table cellspacing=0 cellpadding=0 bgcolor=#515151 width=175><td nowrap>
+<hr>
+<!-- <a title="HOME" style="display: block; font-style: italic" class="sublevel" href="./" id="active_menu">&nbsp; HOME  </a> -->
+
+<a title="HOME" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=">HOME &nbsp;</a>
+<a title="CALL FOR TASKS" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=call">CALL FOR TASKS</a>
+<a title="CALL FOR INTEREST" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=interest">CALL FOR INTEREST</a>
+<a title="Workshop Submission" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=WS_submission">Workshop Submission</a>
+<a title="Workshop PROGRAM" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=SemEval2010-Program">Workshop PROGRAM</a>
+<a title="NEWS" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=lastnews">NEWS &nbsp;</a>
+<a title="REGISTRATION" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=login_user">REGISTRATION</a>
+<a title="TASKS-SHORT" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=tasks-short">TASKS (short list) </a>
+<a title="TASKS" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=tasks">TASKS (with rankings)</a>
+<a title="DATA" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=data">DATA &nbsp;
+<font color=gray>[<font color="ciano"><b>41</b> available</font>]</font></a>
+<!-- <a title="UPLOAD RESULTS" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=login_user">UPLOAD RESULTS </a> -->
+<br><a title="LRE special issue" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=lre-special-issue"><font color=red>LRE special issue</font> &nbsp;</a>
+<br><a title="CONTACTS" style="display: block;" class="sublevel" href="http://semeval2.fbk.eu/semeval2.php?location=contacts">CONTACTS &nbsp;</a>
+
+<hr>
+<!-- <div id="cetclockdiv"></div>
+<font class=body><font color=gray>(Central European Time = GMT+2h)</font></font>
+<script>CETclock('cetclockdiv');</script> -->
+</td>
+</table>
+
+           	</td>
+           	<td width=100%>
+           	<div style="text-align: center; ">
+   
+     
+           	<div style="margin-bottom: 10px; margin-left: 2px; margin-right: auto; margin-top: 10px; overflow: hidden; position: relative; word-wrap: break-word;  background: #ffffff; text-align: left; width: 80%; " id="body_content">
+        <div style="margin-left: 0px; position: relative; width: 700px; z-index: 0; " id="nav_layer">
+          <div style="height: 0px; line-height: 0px; " class="bumper"> </div>
+          <div class="com-apple-iweb-widget-navbar flowDefining" id="widget0" style="margin-left: 21px; margin-top: 0px; position: relative; width: 75px; z-index: 1; ">
+    
+            <div id="widget0-navbar" class="navbar">
+
+      
+              <div id="widget0-bg" class="navbar-bg">
+
+        
+                <ul id="widget0-navbar-list" class="navbar-list">
+ <li></li> 
+</ul>
+                
+      
+</div>
+              
+    
+</div>
+          </div>
+          <script type="text/javascript"><!--//--><![CDATA[//><!--
+new NavBar('widget0', 'Scripts/Widgets/Navbar', 'Scripts/Widgets/SharedResources', '.', {"path-to-root": "", "current-page-GUID": "EB48139C-0A26-4C5D-B149-B1E28EDEE098", "isCollectionPage": "NO", "navbar-css": ".navbar {\n\tfont-family: 'Helvetica Neue', Arial, sans-serif;\n\tfont-size: .8em;\n\tcolor: #666666;\n\tline-height: 30px;\n\tborder-bottom: 3px solid #ccc;\n}\n\n.navbar-bg {\n\ttext-align: right;}\n\n.navbar-bg ul {\n\tlist-style: none;\n\tmargin: 0px;\n\tpadding: 0px;\n}\n\n\nli {\n\tlist-style-type: none;\n\tdisplay: inline;\n\tpadding: 0px 5px 0px 0px;\n}\n\n\nli a {\n\ttext-decoration: none;\n\tpadding: 10px;\n\tcolor: #666666;\n\tfont-weight: bold;\n}\n\nli a:visited {\n\ttext-decoration: none;\n\tpadding: 10px;\n\tcolor: #666666;\n\tfont-weight: bold;\n}\n\nli a:hover\r{\r\n \tcolor: #999999;\n\ttext-decoration: none;\r}\n\n\nli.current-page a\r{\r\t color: #66ABC5;\n\ttext-decoration: none;\r}"});
+//--><!]]></script>
+          <div id="id1" style="height: 63px; left: 12px; position: absolute; top: -33px; width: 89px; z-index: 1; " class="style_SkipStroke">
+            <div class="text-content graphic_shape_layout_style_default_External_89_63" style="padding: 0px; ">
+              <div class="graphic_shape_layout_style_default"></div>
+            </div>
+          </div>
+          <div style="clear: both; height: 0px; line-height: 0px; " class="spacer"> </div>
+          
+        </div>
+        <div style="height: 75px; margin-left: 0px; position: relative; width: 700px; z-index: 10; " id="header_layer">
+          <div style="height: 0px; line-height: 0px; " class="bumper"> </div>
+          <div id="id2" style="height: 65px; left: 20px; position: absolute; top: 0px; width: 515px; z-index: 1; " class="style_SkipStroke_1">
+            <div class="text-content style_External_515_65" style="padding: 0px; ">
+              <div class="style">
+                <p style="padding-top: 0pt; " class="Header"><span class="style_1">SemEval-2</span><br /></p>
+                <p style="padding-bottom: 0pt; " class="paragraph_style">Evaluation Exercises on Semantic Evaluation - ACL <a href="http://www.clres.com/siglex.html">SigLex</a> event</p>
+              </div>
+              
+            </div>
+            
+          </div>
+
+          
+
+          <div id="id3" style="height: 43px; left: 535px; position: absolute; top: 17px; width: 145px; z-index: 1; " class="style_SkipStroke_2">
+            <div class="text-content style_External_145_43" style="padding: 0px; ">
+              <div class="style_2">
+                <p style="padding-bottom: 0pt; padding-top: 0pt; " class="Heading_1">2010</p>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+
+<div style="margin-left: 0px; position: relative; width: 700px; z-index: 5; " id="body_layer">
+
+        <!-- end template header -->
+
+        
+          <script>
+function send(form,action) {
+    form.go.value = action;
+    form.submit();
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="default.css" />
+
+<BODY Onload="javascript:focus();">
+
+
+<center><table cellspacing=8 bgcolor=#999999><td bgcolor=white><p style="text-align: center; padding-left: 10pt; padding-right: 10pt; padding-bottom: 2pt; padding-top: 2pt; " class="Title"> DATA DOWNLOAD </p></td></table></center><br>
+<hr>
+<table align=center width=80% cellspacing=0 cellpadding=0 bgcolor=#ffffff border=0><TR height=1>
+<TD bgcolor=#000000 colspan=3><img src="images/no.gif" width=1 height=1></td></TR><TR></TR><TR><TD bgcolor=#ededed colspan=3><img src="images/no.gif" width=1 height=1></td></TR><TR><td width=1 bgcolor=#000000><img src="images/no.gif" width=1 height=1></td><td colspan=0 bgcolor=#ededed>	<table width=100%>	<tr><td><!-- contenuto della scheda --><br><center><h3><img src="images/download.gif" border=0 width=30> <a href="get.php?id=0&time=2015-09-19 10:53:11"><font color=blue>Download now</font></a></h3></center><table><tr><td valign=top class=paragraph_style_1 nowrap> task id. <b>#10</b>:</td><td><b>Linking Events and their Participants in Discourse</b></td></tr><tr><td valign=top class=paragraph_style_1 nowrap> data type: </td><td><b>test</b></td></tr></table><br><br><center> --- <font class=warning>IMPORTANT DEADLINE</font> --- <br>Task deadline: <b>2010-04-02 23:59:59 CET</b></center><br>	 </td></tr>        </table>   </td>   <td width=1 bgcolor=#000000><img src="images/no.gif" width=1 height=1></td>  </tr>
+  <tr height=1><td bgcolor=#000000 colspan=8><img src="images/no.gif" width=1 height=1></td></tr><tr><td colspan= 8 align=right nowrap></td></tr></table><br>
+</body>
+ 		 <!-- start template footer -->
+
+          </div>    
+
+
+          <div id="id5" style="height: 100px; left: 300px; position: absolute; top: 214px; width: 100px; z-index: 1; " class="style_SkipStroke_2">
+            <div class="text-content graphic_textbox_layout_style_default_External_100_100" style="padding: 0px; ">
+              <div class="graphic_textbox_layout_style_default"></div>
+            </div>
+          </div>
+          
+
+
+          <div id="id7" style="height: 100px; left: 310px; position: absolute; top: 224px; width: 100px; z-index: 1; " class="style_SkipStroke_2">
+            <div class="text-content graphic_textbox_layout_style_default_External_100_100" style="padding: 0px; ">
+              <div class="graphic_textbox_layout_style_default">
+                <div class="paragraph Free_Form" style="padding-bottom: 0pt; padding-top: 0pt; "><div id="id6" style="height: 92px; position: relative; width: 92px; " class="style_SkipStroke_2 inline-block"><div class="text-content graphic_textbox_layout_style_default_External_92_92" style="padding: 0px; "><div class="graphic_textbox_layout_style_default"></div></div></div></div>
+              </div>
+              <div style="clear: both; height: 0px; line-height: 0px; " class="tinyText"></div>
+            </div>
+          </div>
+          
+
+
+          <div id="id8" style="height: 100px; left: 320px; position: absolute; top: 234px; width: 100px; z-index: 1; " class="style_SkipStroke_2">
+            <div class="text-content graphic_textbox_layout_style_default_External_100_100" style="padding: 0px; ">
+              <div class="graphic_textbox_layout_style_default"></div>
+            </div>
+          </div>
+          <div style="height: 0px; line-height: 0px; " class="spacer"></div>
+        </div>
+        <div style="height: 75px; margin-left: 0px; position: relative; width: 700px; z-index: 15; " id="footer_layer">
+          <div style="height: 0px; line-height: 0px; " class="bumper"> </div>
+        </div>
+      </div>   
+    </div>
+    
+
+
+
+<div align=left class=paragraph_style_1><font color=gray>&copy; 2008 <a href="http://www.fbk.eu/"><font color=lightgrey>FBK-irst</font></a>  &nbsp;| &nbsp;<a href="http://semeval2.fbk.eu//dbphp/internalarea.php"><font color=lightgrey>internal area</font></a></font></div>
+
+    
+</html>

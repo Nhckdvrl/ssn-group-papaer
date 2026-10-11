@@ -1,0 +1,5481 @@
+{
+  "completed": true,
+  "models": 18,
+  "queries_per_model": 484,
+  "total_queries": 8712,
+  "counts": [
+    {
+      "seed": 0,
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 424,
+      "leave_goal_out_successes": 184,
+      "mean_trajectory_endpoint_regret": 13.371196719550868,
+      "mean_leave_goal_out_regret": 24.686336355448887,
+      "zero_prefix_mse": [
+        0.015565549954771996,
+        0.024583345279097557,
+        0.035995181649923325,
+        0.046404801309108734,
+        0.0554741770029068
+      ],
+      "factual_prefix_mse": [
+        0.014032869599759579,
+        0.018063675612211227,
+        0.025793563574552536,
+        0.02139553800225258,
+        0.03012370876967907
+      ],
+      "counterfactual_prefix_mse": [
+        0.026128122583031654,
+        0.1068311333656311,
+        0.2248777449131012,
+        0.30920153856277466,
+        0.3416295349597931
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.034517090767621994,
+        0.12590879201889038,
+        0.27278605103492737,
+        0.3852863311767578,
+        0.43406230211257935
+      ]
+    },
+    {
+      "seed": 0,
+      "geometry": "PRED",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 461,
+      "leave_goal_out_successes": 181,
+      "mean_trajectory_endpoint_regret": 3.293750324300238,
+      "mean_leave_goal_out_regret": 26.463744386999966,
+      "zero_prefix_mse": [
+        0.008362333290278912,
+        0.016101500019431114,
+        0.023917095735669136,
+        0.03337184339761734,
+        0.045427680015563965
+      ],
+      "factual_prefix_mse": [
+        0.0037541044875979424,
+        0.007032298017293215,
+        0.010613685473799706,
+        0.013054957613348961,
+        0.017772799357771873
+      ],
+      "counterfactual_prefix_mse": [
+        0.021876445040106773,
+        0.04978495463728905,
+        0.08771418035030365,
+        0.1359543651342392,
+        0.1872546523809433
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.02882925234735012,
+        0.059886764734983444,
+        0.10783559828996658,
+        0.16951636970043182,
+        0.24063992500305176
+      ]
+    },
+    {
+      "seed": 0,
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 455,
+      "leave_goal_out_successes": 188,
+      "mean_trajectory_endpoint_regret": 4.805688056588532,
+      "mean_leave_goal_out_regret": 24.472738694531756,
+      "zero_prefix_mse": [
+        0.02376636676490307,
+        0.04842940345406532,
+        0.07435071468353271,
+        0.10214128345251083,
+        0.13234275579452515
+      ],
+      "factual_prefix_mse": [
+        0.01992865651845932,
+        0.020442023873329163,
+        0.030773432925343513,
+        0.03623674809932709,
+        0.03363625705242157
+      ],
+      "counterfactual_prefix_mse": [
+        0.04625323787331581,
+        0.08683616667985916,
+        0.12749505043029785,
+        0.18186263740062714,
+        0.2437112182378769
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.06054563447833061,
+        0.10280611366033554,
+        0.15486663579940796,
+        0.22737541794776917,
+        0.31364861130714417
+      ]
+    },
+    {
+      "seed": 0,
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 304,
+      "leave_goal_out_successes": 154,
+      "mean_trajectory_endpoint_regret": 19.15359218182599,
+      "mean_leave_goal_out_regret": 8.428423082794938,
+      "zero_prefix_mse": [
+        0.0015617184108123183,
+        0.0021093531977385283,
+        0.002402612706646323,
+        0.005198643077164888,
+        0.005742980632930994
+      ],
+      "factual_prefix_mse": [
+        0.002788734855130315,
+        0.003314577741548419,
+        0.003923706244677305,
+        0.008632488548755646,
+        0.008784410543739796
+      ],
+      "counterfactual_prefix_mse": [
+        0.00421089818701148,
+        0.011317452415823936,
+        0.03755182772874832,
+        0.054825276136398315,
+        0.0634656548500061
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.24032685160636902,
+        0.2851693332195282,
+        0.6618950366973877,
+        0.7841635942459106,
+        0.8046770095825195
+      ]
+    },
+    {
+      "seed": 0,
+      "geometry": "VALUE",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 176,
+      "leave_goal_out_successes": 75,
+      "mean_trajectory_endpoint_regret": 36.319577264585,
+      "mean_leave_goal_out_regret": 24.36323677860543,
+      "zero_prefix_mse": [
+        0.004615848883986473,
+        0.009319867007434368,
+        0.011762071400880814,
+        0.01602529175579548,
+        0.01901032030582428
+      ],
+      "factual_prefix_mse": [
+        0.007052653003484011,
+        0.012499245814979076,
+        0.016703970730304718,
+        0.024297762662172318,
+        0.0308647733181715
+      ],
+      "counterfactual_prefix_mse": [
+        0.009314509108662605,
+        0.022648917511105537,
+        0.03459102287888527,
+        0.04651075601577759,
+        0.055007826536893845
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.5990644693374634,
+        0.5745797157287598,
+        0.5797048211097717,
+        0.6092787981033325,
+        0.6484860181808472
+      ]
+    },
+    {
+      "seed": 0,
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 161,
+      "leave_goal_out_successes": 56,
+      "mean_trajectory_endpoint_regret": 40.89781886746934,
+      "mean_leave_goal_out_regret": 26.824266795949573,
+      "zero_prefix_mse": [
+        0.03733367100358009,
+        0.03709136322140694,
+        0.03211598843336105,
+        0.03152426704764366,
+        0.03511786460876465
+      ],
+      "factual_prefix_mse": [
+        0.04359009489417076,
+        0.03971400484442711,
+        0.044748228043317795,
+        0.057960089296102524,
+        0.07800084352493286
+      ],
+      "counterfactual_prefix_mse": [
+        0.043539877980947495,
+        0.05161309242248535,
+        0.05815846845507622,
+        0.06881680339574814,
+        0.0785578265786171
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.7756715416908264,
+        0.6702818274497986,
+        0.6725854277610779,
+        0.7040565013885498,
+        0.7517154216766357
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 427,
+      "leave_goal_out_successes": 190,
+      "mean_trajectory_endpoint_regret": 12.620346114644963,
+      "mean_leave_goal_out_regret": 19.307084614755738,
+      "zero_prefix_mse": [
+        0.013933426700532436,
+        0.024568717926740646,
+        0.032835446298122406,
+        0.04094753414392471,
+        0.05232195928692818
+      ],
+      "factual_prefix_mse": [
+        0.01223655417561531,
+        0.01376243494451046,
+        0.020652443170547485,
+        0.01567823998630047,
+        0.02133333496749401
+      ],
+      "counterfactual_prefix_mse": [
+        0.024171985685825348,
+        0.09855398535728455,
+        0.2406177818775177,
+        0.3690990209579468,
+        0.41977939009666443
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.031158551573753357,
+        0.09916625916957855,
+        0.23134306073188782,
+        0.3425550162792206,
+        0.4032876193523407
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "PRED",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 461,
+      "leave_goal_out_successes": 192,
+      "mean_trajectory_endpoint_regret": 3.6016212491057527,
+      "mean_leave_goal_out_regret": 25.695067857616536,
+      "zero_prefix_mse": [
+        0.0076230051927268505,
+        0.01540446374565363,
+        0.024275189265608788,
+        0.035003289580345154,
+        0.047691963613033295
+      ],
+      "factual_prefix_mse": [
+        0.004402988124638796,
+        0.0067829955369234085,
+        0.011211865581572056,
+        0.01364366989582777,
+        0.017209168523550034
+      ],
+      "counterfactual_prefix_mse": [
+        0.021068163216114044,
+        0.055498648434877396,
+        0.09982658922672272,
+        0.15904158353805542,
+        0.2164059728384018
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.02769755944609642,
+        0.058147527277469635,
+        0.09752099215984344,
+        0.15024332702159882,
+        0.21407532691955566
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 461,
+      "leave_goal_out_successes": 192,
+      "mean_trajectory_endpoint_regret": 3.4957327385189534,
+      "mean_leave_goal_out_regret": 23.411537567631868,
+      "zero_prefix_mse": [
+        0.01734357886016369,
+        0.03640139847993851,
+        0.058362413197755814,
+        0.08356965333223343,
+        0.11148087680339813
+      ],
+      "factual_prefix_mse": [
+        0.02015792578458786,
+        0.021492915228009224,
+        0.030907051637768745,
+        0.030723445117473602,
+        0.032651349902153015
+      ],
+      "counterfactual_prefix_mse": [
+        0.04195207357406616,
+        0.08503522723913193,
+        0.14076949656009674,
+        0.21521225571632385,
+        0.2795380651950836
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.0556107759475708,
+        0.08797655254602432,
+        0.13620655238628387,
+        0.20100592076778412,
+        0.27107521891593933
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 363,
+      "leave_goal_out_successes": 158,
+      "mean_trajectory_endpoint_regret": 10.631563023892468,
+      "mean_leave_goal_out_regret": 6.338161266692777,
+      "zero_prefix_mse": [
+        0.010791624896228313,
+        0.012176048010587692,
+        0.009214983321726322,
+        0.01027761586010456,
+        0.01175355352461338
+      ],
+      "factual_prefix_mse": [
+        0.012662812136113644,
+        0.013981365598738194,
+        0.013679269701242447,
+        0.01942405104637146,
+        0.01846226677298546
+      ],
+      "counterfactual_prefix_mse": [
+        0.017257601022720337,
+        0.03600744903087616,
+        0.04466402903199196,
+        0.05912509933114052,
+        0.08131983131170273
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.22041267156600952,
+        0.2935287058353424,
+        0.26104021072387695,
+        0.2847198247909546,
+        0.35744616389274597
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "VALUE",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 86,
+      "leave_goal_out_successes": 27,
+      "mean_trajectory_endpoint_regret": 60.39687822920218,
+      "mean_leave_goal_out_regret": 41.51935363821336,
+      "zero_prefix_mse": [
+        0.03662056103348732,
+        0.06613229960203171,
+        0.1482570469379425,
+        0.22149227559566498,
+        0.3286950886249542
+      ],
+      "factual_prefix_mse": [
+        0.03631607070565224,
+        0.07153003662824631,
+        0.13806986808776855,
+        0.20295585691928864,
+        0.2680482566356659
+      ],
+      "counterfactual_prefix_mse": [
+        0.04666993021965027,
+        0.10159488022327423,
+        0.20024655759334564,
+        0.29012206196784973,
+        0.39021071791648865
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.8308864235877991,
+        0.6150606870651245,
+        0.648003101348877,
+        0.678824782371521,
+        0.7493240237236023
+      ]
+    },
+    {
+      "seed": 1,
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 119,
+      "leave_goal_out_successes": 55,
+      "mean_trajectory_endpoint_regret": 55.678658472713444,
+      "mean_leave_goal_out_regret": 38.29043753852059,
+      "zero_prefix_mse": [
+        0.1778172105550766,
+        0.1350582242012024,
+        0.11806663870811462,
+        0.1297638863325119,
+        0.1368575245141983
+      ],
+      "factual_prefix_mse": [
+        0.17207950353622437,
+        0.13246899843215942,
+        0.13017351925373077,
+        0.15789808332920074,
+        0.18654365837574005
+      ],
+      "counterfactual_prefix_mse": [
+        0.19723181426525116,
+        0.19736836850643158,
+        0.2196311205625534,
+        0.2618483603000641,
+        0.28812387585639954
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        1.0015937089920044,
+        0.9231472611427307,
+        0.8979479074478149,
+        0.9061372876167297,
+        0.9278649091720581
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 417,
+      "leave_goal_out_successes": 189,
+      "mean_trajectory_endpoint_regret": 13.263352407480214,
+      "mean_leave_goal_out_regret": 17.7366736044665,
+      "zero_prefix_mse": [
+        0.012620711699128151,
+        0.021802274510264397,
+        0.0332932211458683,
+        0.04340343549847603,
+        0.0551847368478775
+      ],
+      "factual_prefix_mse": [
+        0.01825992576777935,
+        0.026028871536254883,
+        0.023698503151535988,
+        0.02412489801645279,
+        0.02455817349255085
+      ],
+      "counterfactual_prefix_mse": [
+        0.027648383751511574,
+        0.09704191982746124,
+        0.26229313015937805,
+        0.43564218282699585,
+        0.49721187353134155
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.03159087151288986,
+        0.0907367467880249,
+        0.233760267496109,
+        0.3882902264595032,
+        0.4515385925769806
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "PRED",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 464,
+      "leave_goal_out_successes": 186,
+      "mean_trajectory_endpoint_regret": 2.6999879940556983,
+      "mean_leave_goal_out_regret": 20.54361774621916,
+      "zero_prefix_mse": [
+        0.00840336550027132,
+        0.0190995205193758,
+        0.03138180822134018,
+        0.04562004655599594,
+        0.06219774857163429
+      ],
+      "factual_prefix_mse": [
+        0.0041489205323159695,
+        0.007097793743014336,
+        0.011080584488809109,
+        0.01820741966366768,
+        0.02042623609304428
+      ],
+      "counterfactual_prefix_mse": [
+        0.024204449728131294,
+        0.05653891712427139,
+        0.10786304622888565,
+        0.18153983354568481,
+        0.2551841139793396
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.027211254462599754,
+        0.0526200532913208,
+        0.09581555426120758,
+        0.1627591997385025,
+        0.23292233049869537
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 459,
+      "leave_goal_out_successes": 189,
+      "mean_trajectory_endpoint_regret": 3.4536822558563145,
+      "mean_leave_goal_out_regret": 20.369106299295737,
+      "zero_prefix_mse": [
+        0.0191501472145319,
+        0.042304281145334244,
+        0.0694747269153595,
+        0.09986310452222824,
+        0.13375620543956757
+      ],
+      "factual_prefix_mse": [
+        0.021753529086709023,
+        0.020270101726055145,
+        0.03324724733829498,
+        0.03473096713423729,
+        0.038134630769491196
+      ],
+      "counterfactual_prefix_mse": [
+        0.04526376724243164,
+        0.08977671712636948,
+        0.1490633189678192,
+        0.22545652091503143,
+        0.30278944969177246
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.05038071051239967,
+        0.08219307661056519,
+        0.13026899099349976,
+        0.2009209394454956,
+        0.2797437608242035
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 284,
+      "leave_goal_out_successes": 136,
+      "mean_trajectory_endpoint_regret": 23.47767585067952,
+      "mean_leave_goal_out_regret": 14.16625538203474,
+      "zero_prefix_mse": [
+        0.011336904019117355,
+        0.011478405445814133,
+        0.011207464151084423,
+        0.011822212487459183,
+        0.01166048925369978
+      ],
+      "factual_prefix_mse": [
+        0.013348961248993874,
+        0.014185342006385326,
+        0.014498225413262844,
+        0.013842906802892685,
+        0.014199717901647091
+      ],
+      "counterfactual_prefix_mse": [
+        0.014130129478871822,
+        0.020775923505425453,
+        0.031669605523347855,
+        0.053897589445114136,
+        0.06787537038326263
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.25871843099594116,
+        0.2755553126335144,
+        0.49360084533691406,
+        0.48266056180000305,
+        0.5596810579299927
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "VALUE",
+      "arm": "LOCAL",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 248,
+      "leave_goal_out_successes": 122,
+      "mean_trajectory_endpoint_regret": 26.439464532741564,
+      "mean_leave_goal_out_regret": 14.147400967745988,
+      "zero_prefix_mse": [
+        0.004358520731329918,
+        0.007640786003321409,
+        0.010669468902051449,
+        0.022951096296310425,
+        0.02482961304485798
+      ],
+      "factual_prefix_mse": [
+        0.007333447225391865,
+        0.018183430656790733,
+        0.02208574488759041,
+        0.029520956799387932,
+        0.03393836319446564
+      ],
+      "counterfactual_prefix_mse": [
+        0.008458768017590046,
+        0.02018904872238636,
+        0.032911885529756546,
+        0.051631033420562744,
+        0.06307447701692581
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        0.5747556090354919,
+        0.517229437828064,
+        0.5115389227867126,
+        0.5997252464294434,
+        0.6600408554077148
+      ]
+    },
+    {
+      "seed": 2,
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "queries": 484,
+      "states": 44,
+      "native_successes": 95,
+      "leave_goal_out_successes": 25,
+      "mean_trajectory_endpoint_regret": 60.91530573881561,
+      "mean_leave_goal_out_regret": 48.091226316564594,
+      "zero_prefix_mse": [
+        0.38907554745674133,
+        0.2163461297750473,
+        0.25000229477882385,
+        0.26521429419517517,
+        0.3111363351345062
+      ],
+      "factual_prefix_mse": [
+        0.34384095668792725,
+        0.2600160837173462,
+        0.23697997629642487,
+        0.28135302662849426,
+        0.2876259982585907
+      ],
+      "counterfactual_prefix_mse": [
+        0.32304835319519043,
+        0.2153027504682541,
+        0.2541384696960449,
+        0.26708516478538513,
+        0.30140355229377747
+      ],
+      "factual_branch_id": 2,
+      "zero_branch_id": 0,
+      "producer_annotation_correction": "Producer summary incorrectly labels branch0 ZERO as factual; this reader uses actual branch2 FACTUAL. Predictions, choices and all rows unchanged.",
+      "zero_effect_variation_states_per_prefix": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effect_error_sum_over_variation_sum": [
+        9.255901336669922,
+        3.2528629302978516,
+        2.4166243076324463,
+        2.0756871700286865,
+        2.073248863220215
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.08126721763085398,
+      "source_deltas": [
+        -0.0764462809917355,
+        -0.07024793388429748,
+        -0.09710743801652887
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.1108815426997245,
+        -0.050964187327823686
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": -0.07859848484848485,
+      "source_deltas": [
+        -0.07954545454545453,
+        -0.056818181818181795,
+        -0.09943181818181812
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.11742424242424239,
+        -0.038825757575757576
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": -0.08838383838383837,
+      "source_deltas": [
+        -0.06818181818181816,
+        -0.10606060606060604,
+        -0.0909090909090909
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.1338383838383838,
+        -0.04545454545454545
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": 9.886511891404787,
+      "source_deltas": [
+        10.077446395250629,
+        9.01872486553921,
+        10.563364413424516
+      ],
+      "paired_source_state_bootstrap_95": [
+        7.028393538928452,
+        12.758129255286205
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": 10.020642730485555,
+      "source_deltas": [
+        11.139360500521263,
+        7.020326822498666,
+        11.902240868436737
+      ],
+      "paired_source_state_bootstrap_95": [
+        5.805910810880038,
+        13.982756255456641
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": 9.528829653856064,
+      "source_deltas": [
+        7.245675447862271,
+        14.347786313647338,
+        6.993027200058591
+      ],
+      "paired_source_state_bootstrap_95": [
+        4.232284949090754,
+        15.747484802264232
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.00275482093663912,
+      "source_deltas": [
+        0.006198347107438018,
+        -0.004132231404958675,
+        0.006198347107438018
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.01101928374655647,
+        0.01584022038567493
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0028409090909090906,
+      "source_deltas": [
+        0.008522727272727272,
+        -0.00852272727272727,
+        0.008522727272727272
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.01420454545454545,
+        0.019886363636363633
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0025252525252525294,
+      "source_deltas": [
+        4.625929269271485e-18,
+        0.007575757575757579,
+        4.625929269271485e-18
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.02272727272727272,
+        0.030303030303030293
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": -3.6574451387215148,
+      "source_deltas": [
+        -1.777408031551088,
+        -6.387983242860797,
+        -2.8069441417526573
+      ],
+      "paired_source_state_bootstrap_95": [
+        -7.217979028029734,
+        -0.48397527708045224
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": -4.088926976487027,
+      "source_deltas": [
+        -1.7121919418580502,
+        -6.997398970361602,
+        -3.5571900172414277
+      ],
+      "paired_source_state_bootstrap_95": [
+        -8.11935252332705,
+        -0.4345179386413193
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": -2.506826904680147,
+      "source_deltas": [
+        -1.9513176040658557,
+        -4.7628746361919845,
+        -0.8062884737826018
+      ],
+      "paired_source_state_bootstrap_95": [
+        -7.45156349666355,
+        2.396273428018796
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.07369146005509641,
+      "source_deltas": [
+        -0.06404958677685947,
+        -0.07024793388429748,
+        -0.08677685950413219
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.10261707988980716,
+        -0.04338842975206612
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": -0.07291666666666667,
+      "source_deltas": [
+        -0.06534090909090907,
+        -0.06249999999999997,
+        -0.09090909090909087
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.10795454545454541,
+        -0.03503787878787879
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": -0.07575757575757575,
+      "source_deltas": [
+        -0.0606060606060606,
+        -0.0909090909090909,
+        -0.07575757575757576
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.12626262626262624,
+        -0.0303030303030303
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": 9.166597396904082,
+      "source_deltas": [
+        8.565508662962332,
+        9.124613376126012,
+        9.809670151623902
+      ],
+      "paired_source_state_bootstrap_95": [
+        6.51452122693576,
+        11.835372020438953
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": 9.548414868202926,
+      "source_deltas": [
+        9.761526104041788,
+        7.389435585886378,
+        11.494282914680609
+      ],
+      "paired_source_state_bootstrap_95": [
+        5.863114908461404,
+        13.132187331537379
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": 8.1484174734405,
+      "source_deltas": [
+        5.376128820083783,
+        13.751754150098371,
+        5.317369450139344
+      ],
+      "paired_source_state_bootstrap_95": [
+        2.387015453726827,
+        15.053540179976112
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": -0.004132231404958677,
+      "source_deltas": [
+        -0.008264462809917354,
+        -0.004132231404958678,
+        1.261617073437678e-18
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.01652892561983471,
+        0.008264462809917356
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": -0.0037878787878787867,
+      "source_deltas": [
+        -0.011363636363636362,
+        -0.005681818181818182,
+        0.005681818181818182
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.019886363636363633,
+        0.01420454545454545
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": -0.005050505050505049,
+      "source_deltas": [
+        0.0,
+        0.0,
+        -0.015151515151515147
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.02525252525252525,
+        0.017676767676767673
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": -2.174429328929413,
+      "source_deltas": [
+        0.21359766091712656,
+        -4.104452952876129,
+        -2.632432694829235
+      ],
+      "paired_source_state_bootstrap_95": [
+        -5.493212084168271,
+        0.7963579770243618
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": -2.7190146490770815,
+      "source_deltas": [
+        0.1211103615468177,
+        -4.970119014023898,
+        -3.308035294754164
+      ],
+      "paired_source_state_bootstrap_95": [
+        -6.70326852473416,
+        0.7314270985181383
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": -0.7222018085356283,
+      "source_deltas": [
+        0.4602304592379502,
+        -1.7960101231487438,
+        -0.8308257616960911
+      ],
+      "paired_source_state_bootstrap_95": [
+        -5.275805151575645,
+        3.5811937087010386
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.0075757575757575725,
+      "source_deltas": [
+        -0.01239669421487603,
+        0.0,
+        -0.010330578512396688
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.02134986225895316,
+        0.006887052341597797
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": -0.00568181818181818,
+      "source_deltas": [
+        -0.014204545454545452,
+        0.00568181818181818,
+        -0.008522727272727269
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.02272727272727273,
+        0.012310606060606062
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": -0.012626262626262617,
+      "source_deltas": [
+        -0.007575757575757569,
+        -0.015151515151515147,
+        -0.015151515151515138
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.03282828282828281,
+        0.005050505050505061
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": 0.7199144945007036,
+      "source_deltas": [
+        1.5119377322882939,
+        -0.10588851058679985,
+        0.7536942618006165
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.7269053513456358,
+        1.9922656174465565
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.47222786228262964,
+      "source_deltas": [
+        1.3778343964794708,
+        -0.3691087633877121,
+        0.4079579537561301
+      ],
+      "paired_source_state_bootstrap_95": [
+        -1.2386629357845484,
+        1.9385802008436226
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": 1.3804121804155673,
+      "source_deltas": [
+        1.8695466277784887,
+        0.5960321635489659,
+        1.6756577499192467
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.3169983313250826,
+        3.3432045874838066
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.006887052341597796,
+      "source_deltas": [
+        0.014462809917355374,
+        2.523234146875356e-18,
+        0.006198347107438016
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.004820936639118456,
+        0.018595041322314047
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.006628787878787879,
+      "source_deltas": [
+        0.01988636363636364,
+        -0.0028409090909090884,
+        0.00284090909090909
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.008522727272727272,
+        0.02367424242424242
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.007575757575757579,
+      "source_deltas": [
+        4.625929269271485e-18,
+        0.007575757575757579,
+        0.015151515151515152
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.012626262626262623,
+        0.025252525252525262
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": -1.483015809792102,
+      "source_deltas": [
+        -1.991005692468214,
+        -2.2835302899846677,
+        -0.17451144692342285
+      ],
+      "paired_source_state_bootstrap_95": [
+        -3.580231185768977,
+        0.7185785716634484
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": -1.3699123274099454,
+      "source_deltas": [
+        -1.8333023034048677,
+        -2.0272799563377033,
+        -0.24915472248726483
+      ],
+      "paired_source_state_bootstrap_95": [
+        -3.5262872717332594,
+        0.8383182776314283
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": -1.784625096144519,
+      "source_deltas": [
+        -2.411548063303806,
+        -2.9668645130432405,
+        0.024537287913489008
+      ],
+      "paired_source_state_bootstrap_95": [
+        -6.375917751626538,
+        2.6976766202048506
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "PRED",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": 0.30371900826446285,
+      "source_deltas": [
+        0.26446280991735543,
+        0.5723140495867769,
+        0.0743801652892562
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0847107438016529,
+        0.5578512396694214
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": 0.28787878787878785,
+      "source_deltas": [
+        0.24999999999999992,
+        0.559659090909091,
+        0.05397727272727274
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0653409090909091,
+        0.5454545454545454
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": 0.34595959595959597,
+      "source_deltas": [
+        0.30303030303030304,
+        0.6060606060606061,
+        0.12878787878787878
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.12878787878787878,
+        0.5833333333333335
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": -23.297696323376915,
+      "source_deltas": [
+        -17.165985082759025,
+        -49.76531520530969,
+        -2.96178868206204
+      ],
+      "paired_source_state_bootstrap_95": [
+        -48.373947539791324,
+        -3.7366036321629257
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": -22.86898215805768,
+      "source_deltas": [
+        -16.73678601502482,
+        -49.71266774195551,
+        -2.157492717192712
+      ],
+      "paired_source_state_bootstrap_95": [
+        -48.28657194477385,
+        -2.995150707084957
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": -24.440934097561552,
+      "source_deltas": [
+        -18.310515930050233,
+        -49.90570844092084,
+        -5.106577921713583
+      ],
+      "paired_source_state_bootstrap_95": [
+        -47.59491995633315,
+        -5.723888720977518
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.15426997245179064,
+      "source_deltas": [
+        0.1632231404958677,
+        0.2706611570247933,
+        0.028925619834710727
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.035123966942148754,
+        0.2644628099173554
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.14393939393939392,
+      "source_deltas": [
+        0.15056818181818177,
+        0.2585227272727271,
+        0.02272727272727272
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0284090909090909,
+        0.252840909090909
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.1818181818181818,
+      "source_deltas": [
+        0.19696969696969693,
+        0.303030303030303,
+        0.04545454545454545
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.04292929292929293,
+        0.3157196969696961
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": -17.03238388434744,
+      "source_deltas": [
+        -15.934813695810488,
+        -35.181192371520574,
+        0.018854414288754985
+      ],
+      "paired_source_state_bootstrap_95": [
+        -34.04523559724144,
+        -0.5592687558372184
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": -16.39580875931999,
+      "source_deltas": [
+        -14.731572233589082,
+        -34.89408980261683,
+        0.4382357582459583
+      ],
+      "paired_source_state_bootstrap_95": [
+        -33.546380999271996,
+        -0.1472568858103444
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": -18.729917551087304,
+      "source_deltas": [
+        -19.143457595067577,
+        -35.946799221930554,
+        -1.0994958362637872
+      ],
+      "paired_source_state_bootstrap_95": [
+        -36.0600651017695,
+        -2.0213708834528736
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": 0.396694214876033,
+      "source_deltas": [
+        0.2954545454545454,
+        0.5041322314049587,
+        0.39049586776859524
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.29201101928374656,
+        0.5
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": 0.377840909090909,
+      "source_deltas": [
+        0.28124999999999994,
+        0.4744318181818181,
+        0.3778409090909092
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.27178030303030304,
+        0.4763494318181815
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": 0.44696969696969696,
+      "source_deltas": [
+        0.3333333333333333,
+        0.5833333333333335,
+        0.42424242424242414
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.3106060606060606,
+        0.5883838383838385
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": -34.74298400753347,
+      "source_deltas": [
+        -21.74422668564336,
+        -45.04709544882099,
+        -37.43762988813608
+      ],
+      "paired_source_state_bootstrap_95": [
+        -45.420320219376926,
+        -22.5743831116464
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": -33.214547629692525,
+      "source_deltas": [
+        -20.632172774617906,
+        -41.61935593936847,
+        -37.392114175091194
+      ],
+      "paired_source_state_bootstrap_95": [
+        -43.238669584151886,
+        -21.17335416322258
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": -38.818814348442686,
+      "source_deltas": [
+        -24.709703781711227,
+        -54.1877341406944,
+        -37.55900512292245
+      ],
+      "paired_source_state_bootstrap_95": [
+        -54.7138315090035,
+        -23.53942655596911
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": 0.21487603305785127,
+      "source_deltas": [
+        0.20247933884297514,
+        0.21280991735537186,
+        0.2293388429752065
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.17699724517906334,
+        0.25413223140495866
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.20170454545454541,
+      "source_deltas": [
+        0.20170454545454536,
+        0.18749999999999992,
+        0.2159090909090908
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.1590909090909091,
+        0.2462121212121212
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.25,
+      "source_deltas": [
+        0.20454545454545456,
+        0.28030303030303033,
+        0.2651515151515151
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.16666666666666663,
+        0.32828282828282823
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": -28.091030306504102,
+      "source_deltas": [
+        -18.395843713154637,
+        -31.952276271827813,
+        -33.92497093452985
+      ],
+      "paired_source_state_bootstrap_95": [
+        -35.98228366617097,
+        -18.911444925891512
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": -26.568047049820418,
+      "source_deltas": [
+        -18.292533768486052,
+        -28.57289084826676,
+        -32.838716532708446
+      ],
+      "paired_source_state_bootstrap_95": [
+        -33.9984447041171,
+        -18.2027615147696
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": -32.15231899099391,
+      "source_deltas": [
+        -18.671336898937536,
+        -40.963970734657295,
+        -36.8216493393869
+      ],
+      "paired_source_state_bootstrap_95": [
+        -46.11701284717174,
+        -18.588798879503088
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "DIRECT",
+      "reference": "OPEN",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "all",
+      "mean_delta": -0.09297520661157023,
+      "source_deltas": [
+        -0.03099173553719008,
+        0.06818181818181815,
+        -0.31611570247933884
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.3037190082644628,
+        0.06611570247933884
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_source32",
+      "mean_delta": -0.0899621212121212,
+      "source_deltas": [
+        -0.03125,
+        0.08522727272727271,
+        -0.3238636363636363
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.3068181818181818,
+        0.08146306818181784
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "success",
+      "stratum": "old_query12",
+      "mean_delta": -0.10101010101010102,
+      "source_deltas": [
+        -0.030303030303030287,
+        0.022727272727272724,
+        -0.29545454545454547
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.28535353535353525,
+        0.07323232323232323
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "all",
+      "mean_delta": 11.445287684156558,
+      "source_deltas": [
+        4.5782416028843365,
+        -4.718219756488712,
+        34.475841206074044
+      ],
+      "paired_source_state_bootstrap_95": [
+        -4.582205102220303,
+        32.89201842630888
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_source32",
+      "mean_delta": 10.345565471634837,
+      "source_deltas": [
+        3.89538675959309,
+        -8.093311802587065,
+        35.23462145789849
+      ],
+      "paired_source_state_bootstrap_95": [
+        -7.604200204584145,
+        33.80999171727939
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "regret",
+      "stratum": "old_query12",
+      "mean_delta": 14.377880250881141,
+      "source_deltas": [
+        6.399187851660994,
+        4.282025699773561,
+        32.45242720120887
+      ],
+      "paired_source_state_bootstrap_95": [
+        -1.929649119638844,
+        32.39880153299968
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "all",
+      "mean_delta": -0.060606060606060594,
+      "source_deltas": [
+        -0.039256198347107446,
+        0.057851239669421475,
+        -0.20041322314049578
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.1921487603305785,
+        0.052341597796143245
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_source32",
+      "mean_delta": -0.05776515151515151,
+      "source_deltas": [
+        -0.05113636363636363,
+        0.07102272727272727,
+        -0.19318181818181812
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.18560606060606058,
+        0.06249999999999999
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_success",
+      "stratum": "old_query12",
+      "mean_delta": -0.06818181818181818,
+      "source_deltas": [
+        -0.007575757575757576,
+        0.022727272727272724,
+        -0.2196969696969697
+      ],
+      "paired_source_state_bootstrap_95": [
+        -0.20454545454545453,
+        0.05808080808080808
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "all",
+      "mean_delta": 11.058646422156663,
+      "source_deltas": [
+        2.4610300173441457,
+        -3.228916099692765,
+        33.943825348818606
+      ],
+      "paired_source_state_bootstrap_95": [
+        -3.6863282110703244,
+        32.83194959100544
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_source32",
+      "mean_delta": 10.17223829050043,
+      "source_deltas": [
+        3.5609615348969643,
+        -6.321198954350084,
+        33.27695229095441
+      ],
+      "paired_source_state_bootstrap_95": [
+        -5.926224330021774,
+        31.56120101865763
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_regret",
+      "stratum": "old_query12",
+      "mean_delta": 13.42240143990661,
+      "source_deltas": [
+        -0.4721206961300384,
+        5.0171715127267476,
+        35.72215350312312
+      ],
+      "paired_source_state_bootstrap_95": [
+        -3.3228191711323407,
+        34.28357193976919
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_success",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "all",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_source32",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    },
+    {
+      "geometry": "VALUE",
+      "arm": "OPEN",
+      "reference": "LOCAL",
+      "metric": "leave_out_oracle_regret",
+      "stratum": "old_query12",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_source_state_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "shared_states": 44,
+      "train_sources": 3
+    }
+  ],
+  "groups": [
+    {
+      "config": {
+        "geometry": "PRED",
+        "seed": 0,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "388f8bdbb8e82a18df87f055bedddec853e658719fb7bd07eac02de0fa326ace",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "06707ff7a75556a8a01c7a3529961e238a95f5bc9e6a6731750e9b2d0a13ded8",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-PRED-s0-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-DIRECT-A100-s0/u2825.ckpt",
+            "checkpoint_sha256": "0628dd83712ec988f19d9a667fc233d1b71283b716cab24079eeac7150695655",
+            "training_run": "20261005-E13-object-PRED-DIRECT-A100-s0",
+            "training_config_sha256": "dd32caf94239eb0718d4f47635580503f44530c20dcad5f0551348a00ab45bf2"
+          },
+          "rows_sha256": "0aef9e78950300058fa5bdb03aee46b78602a6c4ae84a1bfb3463fa4a01101c4"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-LOCAL-A100-s0/u2825.ckpt",
+            "checkpoint_sha256": "66de8534d8e3a09013b24b749f3df8c7c4d36b56dbab875dfa93cf2d49bed630",
+            "training_run": "20261005-E13-object-PRED-LOCAL-A100-s0",
+            "training_config_sha256": "8b0afc3c4a6da28ecc8bbcac4d12bc5833ea975cbb9b0a3e60e1ad94efbc3203"
+          },
+          "rows_sha256": "8302abebbf4b4b2e814d31dfb4a3b42f6dbf382d991d14094b033a785ceaadb8"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-PRED-s0-A100/u2825.ckpt",
+            "checkpoint_sha256": "a82ad60ff0a480f7c3db46f9f6bf88ab12cdca9a959ce69f33991a61b78f9a74",
+            "training_run": "20261005-E13-rollout-PRED-s0-A100",
+            "training_config_sha256": "2f3e120f96c8c35838bfbbc2adf0e9965b97bb0595ced5e869d3597a64f717db"
+          },
+          "rows_sha256": "19f23b26ba4b060af498bae67eccc4f2877154510d13c03a7fc6e4e378d1b576"
+        }
+      ]
+    },
+    {
+      "config": {
+        "geometry": "VALUE",
+        "seed": 0,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "7c61d772456fe001609c74e2583d99ae5baec3c1c6b98bba621e5daf9c1bec43",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "c5f4819af2b5c48965d4b9115dc143c85256b86365e7a29653f1ef754a4e4a03",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-VALUE-s0-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-DIRECT-A100-s0/u2825.ckpt",
+            "checkpoint_sha256": "84106bef2a0fe75b8ab1f04bc5a776e561949d88eec0fa4946eca47d3d0ab1dc",
+            "training_run": "20261005-E13-object-VALUE-DIRECT-A100-s0",
+            "training_config_sha256": "f1ab4dff7c51b2f3e533971c64c97a583e746bd47bc4a86007362e0fad850d6a"
+          },
+          "rows_sha256": "4f2b1c5bc92fd1c4966eeeaa1f19bab9df04f19e7b166ea580060ba1ac53ef67"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-LOCAL-A100-s0/u2825.ckpt",
+            "checkpoint_sha256": "cc92624c1eda220e2e62d05f9c03937eeda73897209748175d13f6b484d7790f",
+            "training_run": "20261005-E13-object-VALUE-LOCAL-A100-s0",
+            "training_config_sha256": "5908ee46e92944e01c3a9bde8ad7ec76d7c3919e46e5f6a3be089b3985d30bd0"
+          },
+          "rows_sha256": "d96a3f83515ad20d3925767c175ad753dda5a6fd602b0ac926dcd75696bb21b2"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-VALUE-s0-A100/u2825.ckpt",
+            "checkpoint_sha256": "12c41e23df42b4d340acec58f57c7a826f2cef8ba9db900ec709fc85f58e5400",
+            "training_run": "20261005-E13-rollout-VALUE-s0-A100",
+            "training_config_sha256": "e11f8a228e928e3e26c3fc10155148c2c8e50ca53037d3db9b54089db48b3299"
+          },
+          "rows_sha256": "c867469637ae63b77b43a907909842692eeb269cc7fa9d8d6a767375a29aea4e"
+        }
+      ]
+    },
+    {
+      "config": {
+        "geometry": "PRED",
+        "seed": 1,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "1788b033df544ea0c732eb12239abd4f5367cbaf040dcbab7f8e703c538641dc",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "387e031a4913b57acb5c0deaac73374b01a6cd0bbe5b48b753f6a17e32278ee9",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-PRED-s1-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-DIRECT-A100-s1/u2825.ckpt",
+            "checkpoint_sha256": "31b5fc77c59426275b8007be1bd447b14af481bb61ea85403a2f0aa675e0bac6",
+            "training_run": "20261005-E13-object-PRED-DIRECT-A100-s1",
+            "training_config_sha256": "d9c7a8d5bfc2317cfc92b4e49974272415c7fe93bb22fa672aa8e31a1fc072e0"
+          },
+          "rows_sha256": "1d98ca024ae928ddabda06237b1df24672cf490c141b10706fc733478b4a1b58"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-LOCAL-A100-s1/u2825.ckpt",
+            "checkpoint_sha256": "c2c672aba7c6463000634692a2c6b0866b16a2bbff1088b1b30510cb4c4cc7b1",
+            "training_run": "20261005-E13-object-PRED-LOCAL-A100-s1",
+            "training_config_sha256": "d1c1d39b59b80a1e2c6ca96b82ca2c941c64641623eef43c68397acf6b133671"
+          },
+          "rows_sha256": "6d5c1d0d351c05fea81da7c9e27fa7fe6cf57c4b121ccfae3684ab2f0ff00c37"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-PRED-s1-A100/u2825.ckpt",
+            "checkpoint_sha256": "46ff642fa6d17a2b07ab881c75a4c917f85056d8c2221d8f63291710258c1c9a",
+            "training_run": "20261005-E13-rollout-PRED-s1-A100",
+            "training_config_sha256": "d47350d8f403a00e00c1732ef181965d302768f088bac343aa094c6cef31a0f9"
+          },
+          "rows_sha256": "0b434e453cfd3fcd5850d2976f0dbb75545b12212684055b34d70ee482f1e368"
+        }
+      ]
+    },
+    {
+      "config": {
+        "geometry": "VALUE",
+        "seed": 1,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "2fc07c64c4792bb4688b7d671c74749362724f176dd3052598bae64de8e2b634",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "d3763fac89c78782f12d2f84c432bf002d13949fa9d25b0befc0b2985ad2e5e4",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-VALUE-s1-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-DIRECT-A100-s1/u2825.ckpt",
+            "checkpoint_sha256": "af0f7f987aaa97e7a8f0aba40cb4e818394508058a353141ce4c8436f24cae6c",
+            "training_run": "20261005-E13-object-VALUE-DIRECT-A100-s1",
+            "training_config_sha256": "3b621929b964f9eae70682439d52c65af1d6b98915cc0b7902e1faa282e60066"
+          },
+          "rows_sha256": "89b550b6ee4f56b3b280f6eb3fd6ce0ea476006e427ed57fa27cee10394cc8d3"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-LOCAL-A100-s1/u2825.ckpt",
+            "checkpoint_sha256": "05b2376270804650d6fb46afacf7bfef53be8e03d4a5f63789a3aa5bd761ccb4",
+            "training_run": "20261005-E13-object-VALUE-LOCAL-A100-s1",
+            "training_config_sha256": "0dcb7d65d93568570d73e561f630f4ab0cbf6c5918b34c7e1db133d836b93b5d"
+          },
+          "rows_sha256": "15565335f57635951b89f7ade67425f55f89e34623242fe6bf8acddc9f688574"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-VALUE-s1-A100/u2825.ckpt",
+            "checkpoint_sha256": "d7f001e4704496b10204658be9fc703bb2bb584cc7bc390970625e611fa03433",
+            "training_run": "20261005-E13-rollout-VALUE-s1-A100",
+            "training_config_sha256": "d52f60cb3b507ca5df7fe9fa1b697c239dc73d54e15c9fdeee7e9e48810911b3"
+          },
+          "rows_sha256": "90b470325cb90aaee15850c78299457c4fc45c0c958f64da4f1cf1fb70e704aa"
+        }
+      ]
+    },
+    {
+      "config": {
+        "geometry": "PRED",
+        "seed": 2,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "37b1ee0f3a12242690d7835b59d458cf6f989c17eedfbad9214cd3fee0ce6368",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "70309c29afe51966e096a6732c622eae4218c7aad4215db985c2da60ea5d2b35",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-PRED-s2-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-DIRECT-A100-s2/u2825.ckpt",
+            "checkpoint_sha256": "b542178fce80f45e97665e67e7c6cb80bd721b7c992d3b842c639cb43831a6cc",
+            "training_run": "20261005-E13-object-PRED-DIRECT-A100-s2",
+            "training_config_sha256": "f3ac483518fec16d0eaf53f140e4507733d3f40a8f502e742ef8e17a36b6aec0"
+          },
+          "rows_sha256": "12d058dcfa35493940516d5e2b55dd543a2d80e22d615f41b0d9db45016485a1"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-PRED-LOCAL-A100-s2/u2825.ckpt",
+            "checkpoint_sha256": "77e6e1de2687895de61093211a25a825f35a39e1efd787923c65fcf4bfc05b9d",
+            "training_run": "20261005-E13-object-PRED-LOCAL-A100-s2",
+            "training_config_sha256": "1ae55d410177789e50d3c9fb8db2537d870f96a34e7f95252c077759c8b69a76"
+          },
+          "rows_sha256": "2c19b07cf38f6241c6cb3c64f7d2979a99d7300f29b9fe6e3a56c9438be3718b"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-PRED-s2-A100/u2825.ckpt",
+            "checkpoint_sha256": "4884730d6e3e8ea6ff5aa016480ac30a0e9d4eb0f7cb5b3b8d8ef033665e2938",
+            "training_run": "20261005-E13-rollout-PRED-s2-A100",
+            "training_config_sha256": "fc4d2ddf3b2f55b6f658d9c47a2090e29a6876334c35e3516af0b216be6fe192"
+          },
+          "rows_sha256": "96fd52f408a884c1f69c440a35d82832445a0561342b1e9b01f7e9e54fede9b4"
+        }
+      ]
+    },
+    {
+      "config": {
+        "geometry": "VALUE",
+        "seed": 2,
+        "branches": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "bank_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "bank_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "bank_config": {
+          "seed": 104200,
+          "preflight": false,
+          "anchors_per_task": 44,
+          "sources": {
+            "tworoom": {
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "native_config_sha256": "f192a8c6460e3a20c1c9a94b3794d11d3d20ce694de180ac5a4d815e3f6d1f4e",
+              "training_manifest_sha256": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+              "selected_training_episodes": [
+                6542,
+                3544,
+                1275,
+                7024,
+                7772,
+                6508,
+                2801,
+                7891,
+                7540,
+                2723,
+                6926,
+                2266,
+                8419,
+                5273,
+                330,
+                8969,
+                4600,
+                6168,
+                9839,
+                5992,
+                291,
+                5218,
+                4636,
+                8656,
+                3755,
+                3106,
+                4370,
+                5654,
+                8417,
+                3568,
+                8927,
+                6582,
+                6184,
+                1499,
+                1620,
+                2503,
+                4990,
+                391,
+                4283,
+                9984,
+                2305,
+                2103,
+                514,
+                3595
+              ],
+              "excluded_evaluation_episodes": [
+                115,
+                165,
+                226,
+                267,
+                409,
+                706,
+                752,
+                915,
+                948,
+                1076,
+                1106,
+                1726,
+                1752,
+                2026,
+                2328,
+                2560,
+                2695,
+                2713,
+                3076,
+                3280,
+                3586,
+                4278,
+                4344,
+                4469,
+                4648,
+                5106,
+                5261,
+                5437,
+                5744,
+                6016,
+                6363,
+                6493,
+                7117,
+                7364,
+                7557,
+                7606,
+                8131,
+                8285,
+                8496,
+                8847,
+                9127,
+                9871,
+                9891,
+                9937
+              ],
+              "dataset_rehashed": false
+            },
+            "pusht": {
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "native_config_sha256": "0e578a5b94f8b5ad00d216c19ce1d5f627f0d161a6ba6cfc13a0b6cb043f489c",
+              "training_manifest_sha256": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+              "selected_training_episodes": [
+                733,
+                10128,
+                11575,
+                18107,
+                14565,
+                5854,
+                520,
+                10282,
+                9118,
+                16118,
+                1678,
+                17415,
+                12091,
+                6950,
+                17922,
+                4366,
+                10883,
+                17230,
+                13649,
+                8611,
+                15175,
+                16284,
+                8040,
+                12841,
+                10933,
+                13409,
+                693,
+                12119,
+                6779,
+                16241,
+                193,
+                4886,
+                2365,
+                16435,
+                11744,
+                1200,
+                14446,
+                13239,
+                14487,
+                16538,
+                12808,
+                16668,
+                6615,
+                16900
+              ],
+              "excluded_evaluation_episodes": [
+                69,
+                135,
+                269,
+                308,
+                524,
+                743,
+                757,
+                765,
+                894,
+                952,
+                1033,
+                1184,
+                1325,
+                1398,
+                1405,
+                1449,
+                1472,
+                1621,
+                1736,
+                1771,
+                1814,
+                2064,
+                2082,
+                2204,
+                2253,
+                2338,
+                2528,
+                2647,
+                2763,
+                2940,
+                3032,
+                3274,
+                3578,
+                3680,
+                3748,
+                3953,
+                4222,
+                4389,
+                4452,
+                4511,
+                4772,
+                4857,
+                4926,
+                4962,
+                5017,
+                5038,
+                5226,
+                5234,
+                5240,
+                5290,
+                5455,
+                5499,
+                5701,
+                5748,
+                5749,
+                6267,
+                6325,
+                6335,
+                6423,
+                6781,
+                6838,
+                7328,
+                7465,
+                7555,
+                7639,
+                7659,
+                8039,
+                8149,
+                8167,
+                8268,
+                8303,
+                8349,
+                8405,
+                8429,
+                8490,
+                8633,
+                8705,
+                8857,
+                8868,
+                8880,
+                8914,
+                9311,
+                9545,
+                9551,
+                10272,
+                10360,
+                10583,
+                10706,
+                11192,
+                11238,
+                11409,
+                11519,
+                11739,
+                11802,
+                11875,
+                11895,
+                11958,
+                12027,
+                12133,
+                12487,
+                12510,
+                12688,
+                12745,
+                12760,
+                12820,
+                13013,
+                13235,
+                13290,
+                13453,
+                13531,
+                13712,
+                14049,
+                14087,
+                14132,
+                14534,
+                14612,
+                14975,
+                15007,
+                15094,
+                15194,
+                15510,
+                15631,
+                15775,
+                15784,
+                15884,
+                16291,
+                16614,
+                16628,
+                16741,
+                16973,
+                17054,
+                17069,
+                17100,
+                17125,
+                17171,
+                17364,
+                17558,
+                18129,
+                18576,
+                18633
+              ],
+              "dataset_rehashed": false
+            }
+          },
+          "script_sha256": "b44d9a387d5700a560d205a8b450a5180dbc1b38f41412fb2d0985686ab5a659",
+          "branches": 12,
+          "horizon": 25,
+          "warmup": 10,
+          "history_offsets": [
+            -10,
+            -5,
+            0
+          ],
+          "duplicate_branch": 1,
+          "supervision": "pixels+actual actions; physical quantities diagnostic only",
+          "scope": "common fresh reset then identical legal warm rollout; original dataset full-state identity not asserted"
+        },
+        "source_episodes": [
+          6542,
+          3544,
+          1275,
+          7024,
+          7772,
+          6508,
+          2801,
+          7891,
+          7540,
+          2723,
+          6926,
+          2266,
+          8419,
+          5273,
+          330,
+          8969,
+          4600,
+          6168,
+          9839,
+          5992,
+          291,
+          5218,
+          4636,
+          8656,
+          3755,
+          3106,
+          4370,
+          5654,
+          8417,
+          3568,
+          8927,
+          6582,
+          6184,
+          1499,
+          1620,
+          2503,
+          4990,
+          391,
+          4283,
+          9984,
+          2305,
+          2103,
+          514,
+          3595
+        ],
+        "frozen_phi_sha256": "22a15318a89baaa05427925ad415b365f957611a0d6c3b7868d924cd5af9bbb1",
+        "script_sha256": "0a6d3802274fbf18a5595683c9b2daa8a3db813b58136d952415a016e21a7eda",
+        "data_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+        "array_sha256": {
+          "features": "7ed97c0a0a7af0fa3a6e239826a73d151eb92e1a27f899b2a1fe77cef7c1e2ba",
+          "physical_endpoints": "4a85222442678226351cef5b954f3f2cb22c361ff9c6fd2fa4bf1bbbbe7d0f5d",
+          "actions": "5ef2485656c78cd3d0215fcc2f6fff6e9b146c0fab8c8de5d191ceade929cbf9"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "encoding_precision": "FP32, matmul and cuDNN TF32 disabled; offline evaluation differs from earlier default-cuDNN CEM numerics",
+        "scope": "Same factual-train source states, all counterfactual futures held from fact-only heads. 44 shared states, not484 independent tasks. Old32/12 branch-sampling strata are not train/test for these models. Offline25step trajectory regret, not first-action regret or closed-loop success. Cross-geometry raw MSE not comparable. No new method/causal sufficiency/speedup claim."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-VALUE-s2-RTX",
+      "models": [
+        {
+          "arm": "DIRECT",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-DIRECT-A100-s2/u2825.ckpt",
+            "checkpoint_sha256": "fe314611fc1e482487aa9034f872b989325773f7862a6b8a9f5a7e84018db800",
+            "training_run": "20261005-E13-object-VALUE-DIRECT-A100-s2",
+            "training_config_sha256": "c527f598563a549247c2a73ff88e332cdb48646c31321a06b0f13a58cd25ca1c"
+          },
+          "rows_sha256": "b025050f9412cf22e8c05f0fddf2593563f56a1cfa1485766ca33566b676b6d0"
+        },
+        {
+          "arm": "LOCAL",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-object-VALUE-LOCAL-A100-s2/u2825.ckpt",
+            "checkpoint_sha256": "7a7fe030d883dbc750cf296baa69cd392be2aa499a7d5f7a9d08b9f7a7595771",
+            "training_run": "20261005-E13-object-VALUE-LOCAL-A100-s2",
+            "training_config_sha256": "abbe1d3f59218b00bb77eda1f5093770bb3959c8e1748f0f5903c8eb81890a51"
+          },
+          "rows_sha256": "e55207fea2fcf503697193f7daff486511b824a9dad328aed97aede2b67825d4"
+        },
+        {
+          "arm": "OPEN",
+          "source": {
+            "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261005-E13-rollout-VALUE-s2-A100/u2825.ckpt",
+            "checkpoint_sha256": "d7a3b7a8b21b239954f2df3619e638aef759f48259d074578dec69f1e114a7db",
+            "training_run": "20261005-E13-rollout-VALUE-s2-A100",
+            "training_config_sha256": "a3833b68132cd630f01599f6a8840d9b74258477bc9206c7ae788c1264ec2e13"
+          },
+          "rows_sha256": "716d91a9b44a38b5ef91a8cf9b2df1276f3a84f4b2750e2bda6c50032e348f58"
+        }
+      ]
+    }
+  ],
+  "script_sha256": "30aef1a5605ff70c724a089ba39a51fadd3c4966564c88ba2e64839e9223e956",
+  "scope": "Same44 factual-source states and11 executed unique branches; all18 fixed models, all484goals per model. Queries cluster within44states, repeated across3sources. Pure FP32 offline encoder disables cuDNN TF32; earlier closed-loop native numerics differ. Goal-generating branch included and leave-goal-out both retained, true-latent oracle is evaluation-only. Regret is25step trajectory endpoint regret, not first-action regret or closed-loop utility. Old32/12 strata do not mean these fact-only heads trained on intervention futures. No novel method/Markov causality/independent task/speedup claim.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E13-branch-matrix-v3-audit/result.json"
+}

@@ -1,0 +1,38 @@
+{
+  "completed_utc": "2026-09-08T15:17:46.257826+00:00",
+  "model_key": "mistral-small-24b",
+  "model_name": "mistralai/Mistral-Small-24B-Instruct-2501",
+  "n_items": 10,
+  "n_predictions": 120,
+  "condition_accuracy": {
+    "original_only": 0.8,
+    "correction_only": 0.7,
+    "original_then_correction": 0.65,
+    "correction_then_original": 0.65,
+    "explicit_update": 0.7,
+    "unrelated_correction": 0.65
+  },
+  "condition_order_accuracy": {
+    "original_only/old_first": 1.0,
+    "original_only/new_first": 0.6,
+    "correction_only/old_first": 0.5,
+    "correction_only/new_first": 0.9,
+    "original_then_correction/old_first": 0.4,
+    "original_then_correction/new_first": 0.9,
+    "correction_then_original/old_first": 0.4,
+    "correction_then_original/new_first": 0.9,
+    "explicit_update/old_first": 0.5,
+    "explicit_update/new_first": 0.9,
+    "unrelated_correction/old_first": 1.0,
+    "unrelated_correction/new_first": 0.3
+  },
+  "choice_counts": {
+    "A": 89,
+    "B": 31
+  },
+  "semantic_counts": {
+    "OLD": 55,
+    "NEW": 65
+  },
+  "torch": "2.13.0+cu130"
+}

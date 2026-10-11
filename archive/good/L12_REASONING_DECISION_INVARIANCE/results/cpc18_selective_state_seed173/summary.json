@@ -1,0 +1,182 @@
+{
+  "design": "L12-E21 selective pre-answer state mediation",
+  "n_base_decisions": 32,
+  "layer_profile": [
+    {
+      "layer": 0,
+      "n_base_decisions": 32,
+      "donor_evidence_effect": {
+        "mean": 0.0002620809431164448,
+        "base_decision_bootstrap_ci95": [
+          -0.0010478218089331902,
+          0.00165939897005386
+        ],
+        "positive_base_decision_fraction": 0.5
+      },
+      "donor_form_sensitivity": {
+        "mean": 0.004389211756460994,
+        "base_decision_bootstrap_ci95": [
+          0.003003386560101276,
+          0.005833580750790166
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "state_selectivity": {
+        "mean": -0.004127130813344549,
+        "base_decision_bootstrap_ci95": [
+          -0.006265592843314471,
+          -0.002335598405440409
+        ],
+        "positive_base_decision_fraction": 0.09375
+      }
+    },
+    {
+      "layer": 8,
+      "n_base_decisions": 32,
+      "donor_evidence_effect": {
+        "mean": -0.0011455356383861964,
+        "base_decision_bootstrap_ci95": [
+          -0.006200275234482357,
+          0.003110095087126359
+        ],
+        "positive_base_decision_fraction": 0.53125
+      },
+      "donor_form_sensitivity": {
+        "mean": 0.011946278554034951,
+        "base_decision_bootstrap_ci95": [
+          0.008914407330998141,
+          0.015313463727296925
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "state_selectivity": {
+        "mean": -0.013091814192421149,
+        "base_decision_bootstrap_ci95": [
+          -0.019622313724028034,
+          -0.007474626461481529
+        ],
+        "positive_base_decision_fraction": 0.1875
+      }
+    },
+    {
+      "layer": 16,
+      "n_base_decisions": 32,
+      "donor_evidence_effect": {
+        "mean": 0.08651843668462789,
+        "base_decision_bootstrap_ci95": [
+          0.06845055628462121,
+          0.10536102376438092
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "donor_form_sensitivity": {
+        "mean": 0.06350204487659997,
+        "base_decision_bootstrap_ci95": [
+          0.05024534252635253,
+          0.0772566539657675
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "state_selectivity": {
+        "mean": 0.02301639180802793,
+        "base_decision_bootstrap_ci95": [
+          0.008617073448255038,
+          0.037213916244175485
+        ],
+        "positive_base_decision_fraction": 0.71875
+      }
+    },
+    {
+      "layer": 24,
+      "n_base_decisions": 32,
+      "donor_evidence_effect": {
+        "mean": 0.7481413784905158,
+        "base_decision_bootstrap_ci95": [
+          0.6806327531876832,
+          0.8115054333241332
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "donor_form_sensitivity": {
+        "mean": 0.17065974844848603,
+        "base_decision_bootstrap_ci95": [
+          0.12311070810014683,
+          0.22224463622452792
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "state_selectivity": {
+        "mean": 0.5774816300420298,
+        "base_decision_bootstrap_ci95": [
+          0.4661551711147753,
+          0.6797882888448612
+        ],
+        "positive_base_decision_fraction": 0.9375
+      }
+    },
+    {
+      "layer": 31,
+      "n_base_decisions": 32,
+      "donor_evidence_effect": {
+        "mean": 0.7632903205960703,
+        "base_decision_bootstrap_ci95": [
+          0.693670733353372,
+          0.82842489143427
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "donor_form_sensitivity": {
+        "mean": 0.17355021140724614,
+        "base_decision_bootstrap_ci95": [
+          0.12367526918885133,
+          0.22738979518545088
+        ],
+        "positive_base_decision_fraction": 1.0
+      },
+      "state_selectivity": {
+        "mean": 0.5897401091888241,
+        "base_decision_bootstrap_ci95": [
+          0.4756373876632322,
+          0.7036642137257559
+        ],
+        "positive_base_decision_fraction": 0.9375
+      }
+    }
+  ],
+  "primary_final_layer": {
+    "layer": 31,
+    "n_base_decisions": 32,
+    "donor_evidence_effect": {
+      "mean": 0.7632903205960703,
+      "base_decision_bootstrap_ci95": [
+        0.693670733353372,
+        0.82842489143427
+      ],
+      "positive_base_decision_fraction": 1.0
+    },
+    "donor_form_sensitivity": {
+      "mean": 0.17355021140724614,
+      "base_decision_bootstrap_ci95": [
+        0.12367526918885133,
+        0.22738979518545088
+      ],
+      "positive_base_decision_fraction": 1.0
+    },
+    "state_selectivity": {
+      "mean": 0.5897401091888241,
+      "base_decision_bootstrap_ci95": [
+        0.4756373876632322,
+        0.7036642137257559
+      ],
+      "positive_base_decision_fraction": 0.9375
+    }
+  },
+  "identification_boundary": "within OLMo Think, last-token residual states from natural stripped trajectories are substituted without donor text; this identifies state content mediation, not a unique neuron or training-step effect",
+  "raw_artifact": {
+    "path": "results/cpc18_selective_state_seed173/raw.jsonl",
+    "bytes": 799100,
+    "rows": 2560,
+    "sha256": "e3a0b2218342d26d87089a8153336f306e440c209be61e2878ffaca61757db90",
+    "git_policy": "ignored regenerable intervention output"
+  }
+}

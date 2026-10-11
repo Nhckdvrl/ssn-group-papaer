@@ -1,0 +1,515 @@
+{
+  "design": "L12-E08 pre-answer decision-state causal substitution",
+  "n_rows": 1472,
+  "n_trace_pairs": 46,
+  "n_layers_scanned": 32,
+  "baseline_target_margin": 2.5448369565217392,
+  "baseline_target_accuracy": 0.8043478260869565,
+  "donor_prefix_accuracy": 0.8043478260869565,
+  "first_mean_margin_reversal_layer": 17,
+  "decision_marker_audit": {
+    "target_remaining_marker_rate": 0.0,
+    "donor_remaining_marker_rate": 0.0
+  },
+  "peak_layer": {
+    "layer": 31,
+    "mean_donor_shift": 5.0896739130434785,
+    "prospect_bootstrap_ci95": [
+      3.765625,
+      5.9765625
+    ],
+    "mean_patched_target_margin": -2.5448369565217392,
+    "flip_to_donor_rate": 0.8043478260869565,
+    "per_prospect_donor_shift": {
+      "p1": 5.589285714285714,
+      "p2": 3.765625,
+      "p3": 5.9765625
+    }
+  },
+  "layer_profile": [
+    {
+      "layer": 0,
+      "mean_donor_shift": -0.025815217391304348,
+      "prospect_bootstrap_ci95": [
+        -0.044642857142857144,
+        -0.00390625
+      ],
+      "mean_patched_target_margin": 2.5706521739130435,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.044642857142857144,
+        "p2": -0.03125,
+        "p3": -0.00390625
+      }
+    },
+    {
+      "layer": 1,
+      "mean_donor_shift": -0.014945652173913044,
+      "prospect_bootstrap_ci95": [
+        -0.026785714285714284,
+        -0.0078125
+      ],
+      "mean_patched_target_margin": 2.5597826086956523,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.026785714285714284,
+        "p2": -0.0078125,
+        "p3": -0.01171875
+      }
+    },
+    {
+      "layer": 2,
+      "mean_donor_shift": -0.004076086956521739,
+      "prospect_bootstrap_ci95": [
+        -0.015625,
+        0.00390625
+      ],
+      "mean_patched_target_margin": 2.5489130434782608,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": 0.0,
+        "p2": -0.015625,
+        "p3": 0.00390625
+      }
+    },
+    {
+      "layer": 3,
+      "mean_donor_shift": -0.004076086956521739,
+      "prospect_bootstrap_ci95": [
+        -0.017857142857142856,
+        0.015625
+      ],
+      "mean_patched_target_margin": 2.5489130434782608,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.017857142857142856,
+        "p2": 0.015625,
+        "p3": -0.01171875
+      }
+    },
+    {
+      "layer": 4,
+      "mean_donor_shift": 0.001358695652173913,
+      "prospect_bootstrap_ci95": [
+        -0.017857142857142856,
+        0.0234375
+      ],
+      "mean_patched_target_margin": 2.5434782608695654,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.017857142857142856,
+        "p2": 0.0234375,
+        "p3": -0.00390625
+      }
+    },
+    {
+      "layer": 5,
+      "mean_donor_shift": -0.004076086956521739,
+      "prospect_bootstrap_ci95": [
+        -0.05357142857142857,
+        0.0546875
+      ],
+      "mean_patched_target_margin": 2.5489130434782608,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.05357142857142857,
+        "p2": 0.0546875,
+        "p3": -0.01953125
+      }
+    },
+    {
+      "layer": 6,
+      "mean_donor_shift": -0.012228260869565218,
+      "prospect_bootstrap_ci95": [
+        -0.03571428571428571,
+        0.0234375
+      ],
+      "mean_patched_target_margin": 2.557065217391304,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": -0.03571428571428571,
+        "p2": 0.0234375,
+        "p3": -0.02734375
+      }
+    },
+    {
+      "layer": 7,
+      "mean_donor_shift": 0.006793478260869565,
+      "prospect_bootstrap_ci95": [
+        -0.008928571428571428,
+        0.03125
+      ],
+      "mean_patched_target_margin": 2.5380434782608696,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": -0.008928571428571428,
+        "p2": 0.03125,
+        "p3": -0.00390625
+      }
+    },
+    {
+      "layer": 8,
+      "mean_donor_shift": 0.04483695652173913,
+      "prospect_bootstrap_ci95": [
+        0.0,
+        0.08203125
+      ],
+      "mean_patched_target_margin": 2.5,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.05357142857142857,
+        "p2": 0.0,
+        "p3": 0.08203125
+      }
+    },
+    {
+      "layer": 9,
+      "mean_donor_shift": 0.058423913043478264,
+      "prospect_bootstrap_ci95": [
+        0.0078125,
+        0.12109375
+      ],
+      "mean_patched_target_margin": 2.4864130434782608,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.044642857142857144,
+        "p2": 0.0078125,
+        "p3": 0.12109375
+      }
+    },
+    {
+      "layer": 10,
+      "mean_donor_shift": 0.058423913043478264,
+      "prospect_bootstrap_ci95": [
+        -0.0078125,
+        0.12109375
+      ],
+      "mean_patched_target_margin": 2.4864130434782608,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.0625,
+        "p2": -0.0078125,
+        "p3": 0.12109375
+      }
+    },
+    {
+      "layer": 11,
+      "mean_donor_shift": 0.04755434782608696,
+      "prospect_bootstrap_ci95": [
+        -0.03125,
+        0.11328125
+      ],
+      "mean_patched_target_margin": 2.4972826086956523,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.0625,
+        "p2": -0.03125,
+        "p3": 0.11328125
+      }
+    },
+    {
+      "layer": 12,
+      "mean_donor_shift": 0.04483695652173913,
+      "prospect_bootstrap_ci95": [
+        -0.0859375,
+        0.12109375
+      ],
+      "mean_patched_target_margin": 2.5,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.10714285714285714,
+        "p2": -0.0859375,
+        "p3": 0.12109375
+      }
+    },
+    {
+      "layer": 13,
+      "mean_donor_shift": 0.08559782608695653,
+      "prospect_bootstrap_ci95": [
+        -0.03125,
+        0.17578125
+      ],
+      "mean_patched_target_margin": 2.4592391304347827,
+      "flip_to_donor_rate": 0.17391304347826086,
+      "per_prospect_donor_shift": {
+        "p1": 0.11607142857142858,
+        "p2": -0.03125,
+        "p3": 0.17578125
+      }
+    },
+    {
+      "layer": 14,
+      "mean_donor_shift": 0.27309782608695654,
+      "prospect_bootstrap_ci95": [
+        0.0546875,
+        0.41796875
+      ],
+      "mean_patched_target_margin": 2.2717391304347827,
+      "flip_to_donor_rate": 0.1956521739130435,
+      "per_prospect_donor_shift": {
+        "p1": 0.35714285714285715,
+        "p2": 0.0546875,
+        "p3": 0.41796875
+      }
+    },
+    {
+      "layer": 15,
+      "mean_donor_shift": 0.4796195652173913,
+      "prospect_bootstrap_ci95": [
+        0.1875,
+        0.65234375
+      ],
+      "mean_patched_target_margin": 2.0652173913043477,
+      "flip_to_donor_rate": 0.21739130434782608,
+      "per_prospect_donor_shift": {
+        "p1": 0.6160714285714286,
+        "p2": 0.1875,
+        "p3": 0.65234375
+      }
+    },
+    {
+      "layer": 16,
+      "mean_donor_shift": 0.686141304347826,
+      "prospect_bootstrap_ci95": [
+        0.296875,
+        0.94921875
+      ],
+      "mean_patched_target_margin": 1.858695652173913,
+      "flip_to_donor_rate": 0.2608695652173913,
+      "per_prospect_donor_shift": {
+        "p1": 0.8303571428571429,
+        "p2": 0.296875,
+        "p3": 0.94921875
+      }
+    },
+    {
+      "layer": 17,
+      "mean_donor_shift": 2.6127717391304346,
+      "prospect_bootstrap_ci95": [
+        1.8515625,
+        3.07421875
+      ],
+      "mean_patched_target_margin": -0.06793478260869565,
+      "flip_to_donor_rate": 0.5652173913043478,
+      "per_prospect_donor_shift": {
+        "p1": 2.955357142857143,
+        "p2": 1.8515625,
+        "p3": 3.07421875
+      }
+    },
+    {
+      "layer": 18,
+      "mean_donor_shift": 4.327445652173913,
+      "prospect_bootstrap_ci95": [
+        3.3515625,
+        4.89453125
+      ],
+      "mean_patched_target_margin": -1.7826086956521738,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 4.794642857142857,
+        "p2": 3.3515625,
+        "p3": 4.89453125
+      }
+    },
+    {
+      "layer": 19,
+      "mean_donor_shift": 4.479619565217392,
+      "prospect_bootstrap_ci95": [
+        3.5234375,
+        5.07421875
+      ],
+      "mean_patched_target_margin": -1.934782608695652,
+      "flip_to_donor_rate": 0.7608695652173914,
+      "per_prospect_donor_shift": {
+        "p1": 4.892857142857143,
+        "p2": 3.5234375,
+        "p3": 5.07421875
+      }
+    },
+    {
+      "layer": 20,
+      "mean_donor_shift": 4.474184782608695,
+      "prospect_bootstrap_ci95": [
+        3.5546875,
+        5.08203125
+      ],
+      "mean_patched_target_margin": -1.9293478260869565,
+      "flip_to_donor_rate": 0.7608695652173914,
+      "per_prospect_donor_shift": {
+        "p1": 4.830357142857143,
+        "p2": 3.5546875,
+        "p3": 5.08203125
+      }
+    },
+    {
+      "layer": 21,
+      "mean_donor_shift": 4.601902173913044,
+      "prospect_bootstrap_ci95": [
+        3.59375,
+        5.41015625
+      ],
+      "mean_patched_target_margin": -2.057065217391304,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 4.830357142857143,
+        "p2": 3.59375,
+        "p3": 5.41015625
+      }
+    },
+    {
+      "layer": 22,
+      "mean_donor_shift": 4.591032608695652,
+      "prospect_bootstrap_ci95": [
+        3.5,
+        5.46484375
+      ],
+      "mean_patched_target_margin": -2.046195652173913,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 4.839285714285714,
+        "p2": 3.5,
+        "p3": 5.46484375
+      }
+    },
+    {
+      "layer": 23,
+      "mean_donor_shift": 4.732336956521739,
+      "prospect_bootstrap_ci95": [
+        3.5390625,
+        5.62109375
+      ],
+      "mean_patched_target_margin": -2.1875,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.080357142857143,
+        "p2": 3.5390625,
+        "p3": 5.62109375
+      }
+    },
+    {
+      "layer": 24,
+      "mean_donor_shift": 4.78125,
+      "prospect_bootstrap_ci95": [
+        3.6015625,
+        5.62890625
+      ],
+      "mean_patched_target_margin": -2.2364130434782608,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.160714285714286,
+        "p2": 3.6015625,
+        "p3": 5.62890625
+      }
+    },
+    {
+      "layer": 25,
+      "mean_donor_shift": 4.783967391304348,
+      "prospect_bootstrap_ci95": [
+        3.5703125,
+        5.66015625
+      ],
+      "mean_patched_target_margin": -2.239130434782609,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.169642857142857,
+        "p2": 3.5703125,
+        "p3": 5.66015625
+      }
+    },
+    {
+      "layer": 26,
+      "mean_donor_shift": 4.819293478260869,
+      "prospect_bootstrap_ci95": [
+        3.546875,
+        5.70703125
+      ],
+      "mean_patched_target_margin": -2.2744565217391304,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.258928571428571,
+        "p2": 3.546875,
+        "p3": 5.70703125
+      }
+    },
+    {
+      "layer": 27,
+      "mean_donor_shift": 4.876358695652174,
+      "prospect_bootstrap_ci95": [
+        3.6015625,
+        5.72265625
+      ],
+      "mean_patched_target_margin": -2.3315217391304346,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.366071428571429,
+        "p2": 3.6015625,
+        "p3": 5.72265625
+      }
+    },
+    {
+      "layer": 28,
+      "mean_donor_shift": 4.887228260869565,
+      "prospect_bootstrap_ci95": [
+        3.609375,
+        5.73046875
+      ],
+      "mean_patched_target_margin": -2.342391304347826,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.383928571428571,
+        "p2": 3.609375,
+        "p3": 5.73046875
+      }
+    },
+    {
+      "layer": 29,
+      "mean_donor_shift": 4.900815217391305,
+      "prospect_bootstrap_ci95": [
+        3.6015625,
+        5.76171875
+      ],
+      "mean_patched_target_margin": -2.3559782608695654,
+      "flip_to_donor_rate": 0.782608695652174,
+      "per_prospect_donor_shift": {
+        "p1": 5.401785714285714,
+        "p2": 3.6015625,
+        "p3": 5.76171875
+      }
+    },
+    {
+      "layer": 30,
+      "mean_donor_shift": 5.063858695652174,
+      "prospect_bootstrap_ci95": [
+        3.734375,
+        5.94140625
+      ],
+      "mean_patched_target_margin": -2.5190217391304346,
+      "flip_to_donor_rate": 0.8043478260869565,
+      "per_prospect_donor_shift": {
+        "p1": 5.580357142857143,
+        "p2": 3.734375,
+        "p3": 5.94140625
+      }
+    },
+    {
+      "layer": 31,
+      "mean_donor_shift": 5.0896739130434785,
+      "prospect_bootstrap_ci95": [
+        3.765625,
+        5.9765625
+      ],
+      "mean_patched_target_margin": -2.5448369565217392,
+      "flip_to_donor_rate": 0.8043478260869565,
+      "per_prospect_donor_shift": {
+        "p1": 5.589285714285714,
+        "p2": 3.765625,
+        "p3": 5.9765625
+      }
+    }
+  ],
+  "interpretation": {
+    "positive_signature": "a coherent set of layers shows positive donor_shift and increased flips toward the matched opposite-frame donor decision",
+    "claim": "the stripped natural reasoning trajectory constructs an internal pre-answer state that causally carries decision control"
+  }
+}

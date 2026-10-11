@@ -1,0 +1,1701 @@
+{
+  "completed": true,
+  "model_endpoints": 11,
+  "controller_groups": 22,
+  "episodes": 1056,
+  "counts": [
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "physical",
+      "near": 17,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 2962
+    },
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "native",
+      "near": 21,
+      "far": 9,
+      "n_per_tier": 24,
+      "new_env_steps": 2560
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 0,
+      "interface": "physical",
+      "near": 7,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4229
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 0,
+      "interface": "native",
+      "near": 7,
+      "far": 1,
+      "n_per_tier": 24,
+      "new_env_steps": 4274
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 0,
+      "interface": "physical",
+      "near": 16,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 3415
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 0,
+      "interface": "native",
+      "near": 18,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 3172
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "physical",
+      "near": 14,
+      "far": 4,
+      "n_per_tier": 24,
+      "new_env_steps": 3474
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "native",
+      "near": 17,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 2965
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 1,
+      "interface": "physical",
+      "near": 13,
+      "far": 4,
+      "n_per_tier": 24,
+      "new_env_steps": 3619
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 1,
+      "interface": "native",
+      "near": 16,
+      "far": 4,
+      "n_per_tier": 24,
+      "new_env_steps": 3456
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 1,
+      "interface": "physical",
+      "near": 14,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3231
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 1,
+      "interface": "native",
+      "near": 15,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3209
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "physical",
+      "near": 18,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 3112
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "native",
+      "near": 19,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 2923
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 2,
+      "interface": "physical",
+      "near": 11,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3666
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 2,
+      "interface": "native",
+      "near": 14,
+      "far": 6,
+      "n_per_tier": 24,
+      "new_env_steps": 3637
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 2,
+      "interface": "physical",
+      "near": 15,
+      "far": 8,
+      "n_per_tier": 24,
+      "new_env_steps": 3354
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 2,
+      "interface": "native",
+      "near": 19,
+      "far": 9,
+      "n_per_tier": 24,
+      "new_env_steps": 3259
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "physical",
+      "near": 8,
+      "far": 9,
+      "n_per_tier": 24,
+      "new_env_steps": 3425
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "native",
+      "near": 10,
+      "far": 7,
+      "n_per_tier": 24,
+      "new_env_steps": 3427
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "physical",
+      "near": 16,
+      "far": 17,
+      "n_per_tier": 24,
+      "new_env_steps": 2441
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "native",
+      "near": 19,
+      "far": 13,
+      "n_per_tier": 24,
+      "new_env_steps": 2582
+    }
+  ],
+  "effects": [
+    {
+      "interface": "physical",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.1736111111111111,
+      "source_deltas": [
+        -0.3333333333333333,
+        -0.020833333333333332,
+        -0.16666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.3541666666666667,
+        0.0
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.25,
+      "source_deltas": [
+        -0.4166666666666667,
+        -0.041666666666666664,
+        -0.2916666666666667
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.5,
+        -0.013888888888888888
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": -0.09722222222222222,
+      "source_deltas": [
+        -0.25,
+        0.0,
+        -0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2916666666666667,
+        0.08333333333333333
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.006944444444444444,
+      "source_deltas": [
+        -0.020833333333333332,
+        0.020833333333333332,
+        -0.020833333333333332
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.125,
+        0.10434027777777526
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.05555555555555555,
+      "source_deltas": [
+        -0.041666666666666664,
+        0.0,
+        -0.125
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2222222222222222,
+        0.1111111111111111
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "source_deltas": [
+        0.0,
+        0.041666666666666664,
+        0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.1388888888888889,
+        0.2222222222222222
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "all",
+      "mean_delta": 0.16666666666666666,
+      "source_deltas": [
+        0.3125,
+        0.041666666666666664,
+        0.14583333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.0,
+        0.3472222222222222
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "near",
+      "mean_delta": 0.19444444444444445,
+      "source_deltas": [
+        0.375,
+        0.041666666666666664,
+        0.16666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.4444444444444444
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "far",
+      "mean_delta": 0.1388888888888889,
+      "source_deltas": [
+        0.25,
+        0.041666666666666664,
+        0.125
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.0,
+        0.3333333333333333
+      ]
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.14583333333333334,
+      "paired_episode_bootstrap_95": [
+        -0.3333333333333333,
+        0.041666666666666664
+      ],
+      "train_seed_count": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": 0.1875,
+      "paired_episode_bootstrap_95": [
+        0.020833333333333332,
+        0.3541666666666667
+      ],
+      "train_seed_count": 1
+    },
+    {
+      "interface": "physical",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "all",
+      "mean_delta": 0.3333333333333333,
+      "paired_episode_bootstrap_95": [
+        0.14583333333333334,
+        0.5208333333333334
+      ],
+      "train_seed_count": 1
+    },
+    {
+      "interface": "native",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.2013888888888889,
+      "source_deltas": [
+        -0.4583333333333333,
+        -0.0625,
+        -0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.4375,
+        0.0
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.2777777777777778,
+      "source_deltas": [
+        -0.5833333333333334,
+        -0.041666666666666664,
+        -0.20833333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.5833333333333334,
+        0.0
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "RESIDUAL",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": -0.125,
+      "source_deltas": [
+        -0.3333333333333333,
+        -0.08333333333333333,
+        0.041666666666666664
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.375,
+        0.06944444444444445
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.034722222222222224,
+      "source_deltas": [
+        -0.125,
+        -0.0625,
+        0.08333333333333333
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.1875,
+        0.1111111111111111
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "near",
+      "mean_delta": -0.06944444444444445,
+      "source_deltas": [
+        -0.125,
+        -0.08333333333333333,
+        0.0
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.2361111111111111,
+        0.08333333333333333
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "ABS",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "source_deltas": [
+        -0.125,
+        -0.041666666666666664,
+        0.16666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.20833333333333334
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "all",
+      "mean_delta": 0.16666666666666666,
+      "source_deltas": [
+        0.3333333333333333,
+        0.0,
+        0.16666666666666666
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.013888888888888888,
+        0.3541666666666667
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "near",
+      "mean_delta": 0.20833333333333334,
+      "source_deltas": [
+        0.4583333333333333,
+        -0.041666666666666664,
+        0.20833333333333334
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.5
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "FULL-AD",
+      "reference": "RESIDUAL",
+      "tier": "far",
+      "mean_delta": 0.125,
+      "source_deltas": [
+        0.20833333333333334,
+        0.041666666666666664,
+        0.125
+      ],
+      "paired_source_anchor_bootstrap_95": [
+        0.0,
+        0.2916666666666667
+      ]
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-JOINT",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": -0.2708333333333333,
+      "paired_episode_bootstrap_95": [
+        -0.4166666666666667,
+        -0.125
+      ],
+      "train_seed_count": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "ABS",
+      "tier": "all",
+      "mean_delta": 0.041666666666666664,
+      "paired_episode_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_seed_count": 1
+    },
+    {
+      "interface": "native",
+      "arm": "VGIQL-SEPARATE",
+      "reference": "VGIQL-JOINT",
+      "tier": "all",
+      "mean_delta": 0.3125,
+      "paired_episode_bootstrap_95": [
+        0.14583333333333334,
+        0.4791666666666667
+      ],
+      "train_seed_count": 1
+    }
+  ],
+  "groups": [
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6de92d12a9835a262a077503b16afff65e8d010394dd6f4fd560af6d0d364cb5",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s0",
+        "train_checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 960
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 2002
+        }
+      ]
+    },
+    {
+      "arm": "ABS",
+      "seed": 0,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6de92d12a9835a262a077503b16afff65e8d010394dd6f4fd560af6d0d364cb5",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s0",
+        "train_checkpoint_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 21,
+          "new_env_steps": 801
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 1759
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 0,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "e0a4f0c6e5cefa8855b874f3fa8aeafef658be56d36e959ce557f72efa5b7d9b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "0c73a7e0af55514e7d6489cae462c24acec9ef0a2556037d9918e7f511cd7b0d",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s0",
+        "train_checkpoint_sha256": "e0a4f0c6e5cefa8855b874f3fa8aeafef658be56d36e959ce557f72efa5b7d9b",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 1853
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 1,
+          "new_env_steps": 2376
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 0,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "e0a4f0c6e5cefa8855b874f3fa8aeafef658be56d36e959ce557f72efa5b7d9b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "0c73a7e0af55514e7d6489cae462c24acec9ef0a2556037d9918e7f511cd7b0d",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s0",
+        "train_checkpoint_sha256": "e0a4f0c6e5cefa8855b874f3fa8aeafef658be56d36e959ce557f72efa5b7d9b",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 1902
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 1,
+          "new_env_steps": 2372
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 0,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "3ee577e62ee881dad42d017c27b5f6d8038991c1e0cb65556c254ac1846818ab",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "9b9f2f97d83ea9e81c03dbf3577e0b9038aa2532a94583ca5f7406963b414610",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s0",
+        "train_checkpoint_sha256": "3ee577e62ee881dad42d017c27b5f6d8038991c1e0cb65556c254ac1846818ab",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1261
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 2154
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 0,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "3ee577e62ee881dad42d017c27b5f6d8038991c1e0cb65556c254ac1846818ab",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "9b9f2f97d83ea9e81c03dbf3577e0b9038aa2532a94583ca5f7406963b414610",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 0,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s0",
+        "train_checkpoint_sha256": "3ee577e62ee881dad42d017c27b5f6d8038991c1e0cb65556c254ac1846818ab",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 18,
+          "new_env_steps": 998
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 2174
+        }
+      ]
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a373aab4791a87b0872c21be03f20696d6c07a9dd72c591d30e1a9fa193210be",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s1",
+        "train_checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 14,
+          "new_env_steps": 1205
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 4,
+          "new_env_steps": 2269
+        }
+      ]
+    },
+    {
+      "arm": "ABS",
+      "seed": 1,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "a373aab4791a87b0872c21be03f20696d6c07a9dd72c591d30e1a9fa193210be",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s1",
+        "train_checkpoint_sha256": "a40d1b80b8ebf22f6e109f5258880c76c94d1989e1235a114d0191249e01b17b",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 999
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 1966
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 1,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "6f248b3a3b75b365d50b4a9e564e54e4ee62675503f3386b8423538dcd94dafc",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "852f5fe23670a3421bc3b460e94f60636ab9d61e9a687468eb78bac8d360e38b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s1",
+        "train_checkpoint_sha256": "6f248b3a3b75b365d50b4a9e564e54e4ee62675503f3386b8423538dcd94dafc",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 13,
+          "new_env_steps": 1353
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 4,
+          "new_env_steps": 2266
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 1,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "6f248b3a3b75b365d50b4a9e564e54e4ee62675503f3386b8423538dcd94dafc",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "852f5fe23670a3421bc3b460e94f60636ab9d61e9a687468eb78bac8d360e38b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s1",
+        "train_checkpoint_sha256": "6f248b3a3b75b365d50b4a9e564e54e4ee62675503f3386b8423538dcd94dafc",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1211
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 4,
+          "new_env_steps": 2245
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 1,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s1-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s1/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "ffc92b38bc9b8f02ca9f7d0c5bc80b1a89c1359134f13cbc74c88343cb71132a",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "198c764ff13d86b51b2cbcf897091db76c394b31a472b48e1cdc97a011169cc8",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s1",
+        "train_checkpoint_sha256": "ffc92b38bc9b8f02ca9f7d0c5bc80b1a89c1359134f13cbc74c88343cb71132a",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s1-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 14,
+          "new_env_steps": 1220
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2011
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 1,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s1-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s1/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "ffc92b38bc9b8f02ca9f7d0c5bc80b1a89c1359134f13cbc74c88343cb71132a",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "198c764ff13d86b51b2cbcf897091db76c394b31a472b48e1cdc97a011169cc8",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 1,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s1",
+        "train_checkpoint_sha256": "ffc92b38bc9b8f02ca9f7d0c5bc80b1a89c1359134f13cbc74c88343cb71132a",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s1-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 15,
+          "new_env_steps": 1180
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2029
+        }
+      ]
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "34e83379a567c734eb06bf73cf1ea616632f758086c3654fafccabac95fa076e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s2",
+        "train_checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 18,
+          "new_env_steps": 927
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 2185
+        }
+      ]
+    },
+    {
+      "arm": "ABS",
+      "seed": 2,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-ABS-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-ABS-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "34e83379a567c734eb06bf73cf1ea616632f758086c3654fafccabac95fa076e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "ABS",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-ABS-A100-s2",
+        "train_checkpoint_sha256": "63997b8274b4d15e203339d7ad07e4629aa99d490c963ea76f067bef902259ba",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-ABS-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 864
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2059
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 2,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "ae23ba31e75b14917ff7b18a5c9890b85fa9423987e91e61511e515b49c282bd",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "4a881f1b6c258aa563123e555ae1427a553df70e1ca15e5c2ed59e81df1985c2",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s2",
+        "train_checkpoint_sha256": "ae23ba31e75b14917ff7b18a5c9890b85fa9423987e91e61511e515b49c282bd",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 11,
+          "new_env_steps": 1555
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 5,
+          "new_env_steps": 2111
+        }
+      ]
+    },
+    {
+      "arm": "RESIDUAL",
+      "seed": 2,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-RESIDUAL-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-RESIDUAL-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "ae23ba31e75b14917ff7b18a5c9890b85fa9423987e91e61511e515b49c282bd",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "4a881f1b6c258aa563123e555ae1427a553df70e1ca15e5c2ed59e81df1985c2",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "RESIDUAL",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-RESIDUAL-A100-s2",
+        "train_checkpoint_sha256": "ae23ba31e75b14917ff7b18a5c9890b85fa9423987e91e61511e515b49c282bd",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-RESIDUAL-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 14,
+          "new_env_steps": 1504
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 6,
+          "new_env_steps": 2133
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 2,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s2-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s2/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "e86f52d11dfa2c2f303caf3034cc0dc7af2bf2f26db2dad319aa86b9a052adf4",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "8821dc9e6573abdf9f14fb1b9268f758e9d7fca0e8fcbd124cbab43bad0a8f9a",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s2",
+        "train_checkpoint_sha256": "e86f52d11dfa2c2f303caf3034cc0dc7af2bf2f26db2dad319aa86b9a052adf4",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s2-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 15,
+          "new_env_steps": 1294
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 8,
+          "new_env_steps": 2060
+        }
+      ]
+    },
+    {
+      "arm": "FULL-AD",
+      "seed": 2,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-FULL-AD-s2-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E01-matched-FULL-AD-A100-s2/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "e86f52d11dfa2c2f303caf3034cc0dc7af2bf2f26db2dad319aa86b9a052adf4",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "8821dc9e6573abdf9f14fb1b9268f758e9d7fca0e8fcbd124cbab43bad0a8f9a",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "FULL-AD",
+        "seed": 2,
+        "source_training_run": "20261004-E01-matched-FULL-AD-A100-s2",
+        "train_checkpoint_sha256": "e86f52d11dfa2c2f303caf3034cc0dc7af2bf2f26db2dad319aa86b9a052adf4",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-FULL-AD-s2-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 1198
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 2061
+        }
+      ]
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-JOINT-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6d962c2cef2c69f2050c6706e05a01a83b5a37be5f8c8dddb1f494b325eafd9b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "VGIQL-JOINT",
+        "seed": 0,
+        "source_training_run": "20261004-E14-VGIQL-JOINT-A100-s0",
+        "train_checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-JOINT-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 8,
+          "new_env_steps": 1653
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 1772
+        }
+      ]
+    },
+    {
+      "arm": "VGIQL-JOINT",
+      "seed": 0,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-JOINT-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-JOINT-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "6d962c2cef2c69f2050c6706e05a01a83b5a37be5f8c8dddb1f494b325eafd9b",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "VGIQL-JOINT",
+        "seed": 0,
+        "source_training_run": "20261004-E14-VGIQL-JOINT-A100-s0",
+        "train_checkpoint_sha256": "172ca6a756bf00cdc557b752678cd27a33b85908797140069078869390be0b36",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-JOINT-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 10,
+          "new_env_steps": 1582
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 7,
+          "new_env_steps": 1845
+        }
+      ]
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-SEPARATE-s0-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s0/u5650.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "af19798560b54cdc76e800a6b604a8227e4b9693142afc736920292ebc5605d6",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "VGIQL-SEPARATE",
+        "seed": 0,
+        "source_training_run": "20261004-E14-VGIQL-SEPARATE-A100-s0",
+        "train_checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-SEPARATE-s0-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 16,
+          "new_env_steps": 1153
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 17,
+          "new_env_steps": 1288
+        }
+      ]
+    },
+    {
+      "arm": "VGIQL-SEPARATE",
+      "seed": 0,
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261004-matched-control-VGIQL-SEPARATE-s0-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/20261004-E14-VGIQL-SEPARATE-A100-s0/u5650.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "af19798560b54cdc76e800a6b604a8227e4b9693142afc736920292ebc5605d6",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 5650,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "loader": {
+        "arm": "VGIQL-SEPARATE",
+        "seed": 0,
+        "source_training_run": "20261004-E14-VGIQL-SEPARATE-A100-s0",
+        "train_checkpoint_sha256": "0a15fca2215b0ff5ca150ccac1bec1536fcc7f3ef7b1b25b79588ca9dc3392e7",
+        "loader_sha256": "26536dca72c7545311f20a0233cdba1731eaa2c6dcc8a647f0311bb2cf535131",
+        "namespace": "official AD-WM; strict checkpoint load with complete residual/inverse/MI schema",
+        "scope": "matched constant-LR development; value pilots single seed; not original-paper numeric reproduction"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-matched-control-VGIQL-SEPARATE-s0-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 19,
+          "new_env_steps": 958
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 13,
+          "new_env_steps": 1624
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "all_locked_48_retained": true,
+    "all_trace_hashes_and_physical_success_recomputed": true,
+    "same_hardware_ledger_and_budget": true,
+    "all_train_eval_checkpoints_and_explicit_loaders_match": true
+  },
+  "scope": "Matched local constant-LR development, not original-paper numeric reproduction. ABS/RES/FULL share3 train sources and48 tasks; paired source+anchor CIs are exploratory, not144 independent tasks. Value arms only one train source and separate-phase exposure differs. Physical/native jointly differ in initialization coordinate/scale and bounds. No second-task or novelty confirmation.",
+  "portable_scope": "Only audited summaries/configs/source hashes/CIs/artifact paths are tracked. Full per-episode rows, planned actions and trajectories remain in durable audit result.json and referenced run directories.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E01-E14-matched-control-audit/result.json"
+}

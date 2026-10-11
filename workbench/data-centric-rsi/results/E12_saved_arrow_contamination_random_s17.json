@@ -1,0 +1,111 @@
+{
+  "status": "clean",
+  "submission_path": "/var/tmp/xiang-data-rsi/e12/subsets/random_s17",
+  "submission_qa_pair_count": 51279,
+  "benchmarks_checked": [
+    "HallusionBench",
+    "LLaVABench",
+    "MMBench",
+    "MMMU_DEV_VAL",
+    "MMStar",
+    "MMVet",
+    "MathVista_MINI",
+    "OCRBench"
+  ],
+  "skipped_benchmarks": {},
+  "hash_exact": {
+    "HallusionBench": {
+      "total_eval_pairs": 1129,
+      "exact_matches": 0
+    },
+    "LLaVABench": {
+      "total_eval_pairs": 60,
+      "exact_matches": 0
+    },
+    "MMBench": {
+      "total_eval_pairs": 10995,
+      "exact_matches": 0
+    },
+    "MMMU_DEV_VAL": {
+      "total_eval_pairs": 1050,
+      "exact_matches": 0
+    },
+    "MMStar": {
+      "total_eval_pairs": 1500,
+      "exact_matches": 0
+    },
+    "MMVet": {
+      "total_eval_pairs": 218,
+      "exact_matches": 2
+    },
+    "MathVista_MINI": {
+      "total_eval_pairs": 1000,
+      "exact_matches": 0
+    },
+    "OCRBench": {
+      "total_eval_pairs": 1000,
+      "exact_matches": 13
+    }
+  },
+  "ngram_near": {
+    "HallusionBench": {
+      "total_eval_pairs": 1129,
+      "near_matches": 0,
+      "matches": []
+    },
+    "LLaVABench": {
+      "total_eval_pairs": 60,
+      "near_matches": 0,
+      "matches": []
+    },
+    "MMBench": {
+      "total_eval_pairs": 10995,
+      "near_matches": 0,
+      "matches": []
+    },
+    "MMMU_DEV_VAL": {
+      "total_eval_pairs": 1050,
+      "near_matches": 0,
+      "matches": []
+    },
+    "MMStar": {
+      "total_eval_pairs": 1500,
+      "near_matches": 3,
+      "matches": [
+        {
+          "submission_text": "Q: how many dogs can be seen in the image\nA: there are three dogs visible in the image",
+          "similarity": 0.8
+        },
+        {
+          "submission_text": "Q: what is the position of the dog in the image\nA: the dog is sitting next to a large red pole or column which is situated in a patch of grass",
+          "similarity": 0.8333
+        },
+        {
+          "submission_text": "Q: what type of room is shown in the image\nA: the image displays a living room",
+          "similarity": 0.8
+        }
+      ]
+    },
+    "MMVet": {
+      "total_eval_pairs": 218,
+      "near_matches": 0,
+      "matches": []
+    },
+    "MathVista_MINI": {
+      "total_eval_pairs": 1000,
+      "near_matches": 0,
+      "matches": []
+    },
+    "OCRBench": {
+      "total_eval_pairs": 1000,
+      "near_matches": 0,
+      "matches": []
+    }
+  },
+  "ngram_params": {
+    "n": 8,
+    "threshold": 0.8,
+    "min_tokens_for_near": 12
+  },
+  "recommendation": "No contamination detected."
+}

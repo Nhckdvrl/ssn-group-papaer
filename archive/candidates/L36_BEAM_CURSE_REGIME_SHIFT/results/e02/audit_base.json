@@ -1,0 +1,63 @@
+{
+  "tag": "base",
+  "model": "Qwen/Qwen2.5-3B",
+  "n": 200,
+  "n_gen": 100,
+  "end_id": 151650,
+  "formats": {
+    "A": {
+      "n_scored": 200,
+      "target_nll": 1.1005627742409707,
+      "target_top1_acc": 0.7483069084584713,
+      "p_end_at_true_end": 1.3883540685372468e-11,
+      "p_end_max_before_end": 8.754160365533059e-10,
+      "hazard_profile": [
+        3.2121989858592153e-10,
+        7.348394569784114e-11,
+        4.831391575347848e-11,
+        4.526304658813158e-11,
+        4.5901586019308886e-11,
+        8.737724559240475e-11,
+        5.394593144079741e-11,
+        7.134582032030483e-11,
+        4.3639590338550303e-11,
+        2.7502856647972724e-11
+      ],
+      "bleu_full": 2.808333360180286,
+      "bleu_first_line": 3.531913793375266,
+      "bleu_trunc_to_ref_len": 3.1976343071041717,
+      "len_ratio_full": 3.703821656050956,
+      "sample_full": [
+        "1. Identify the main components of the sentence: subject, verb, and object.\n- Subject: Welsh AMs\n- Verb: worried\n- Object: 'looking like muppets'\n\n2. Translate the subject, verb, and object into German.\n- Subject: Welsh AMs -> Welsh Abgeordnete\n- Verb: worried -> besorgt\n- Object: 'looking like muppets' -> 'wie Muppets aussehen'\n\n3. Combine the translated components into a coherent sentence in German.\n- Welsh AMs -> Welsh Abgeordnete\n- worried -> besorgt\n- 'looking like",
+        "1. Identify the key components of the sentence: \"There is consternation\", \"among some AMs\", \"a suggestion\", \"their title should change\", \"to MWPs (Member of the Welsh Parliament)\".\n2. Translate each component into German:\n   - \"There is consternation\" -> \"Es gibt Verwirrung\"\n   - \"among some AMs\" -> \"unter einigen AMs\"\n   - \"a suggestion\" -> \"eine Vorschlag\"\n   - \"their title should change\" -> \"soll ihre Bezeichnung \u00e4ndern\"\n   - \"to MWPs ("
+      ]
+    },
+    "B": {
+      "n_scored": 200,
+      "target_nll": 1.1254121147096157,
+      "target_top1_acc": 0.7227868723869324,
+      "p_end_at_true_end": 1.0424372298527274e-10,
+      "p_end_max_before_end": 2.1237046812783156e-09,
+      "hazard_profile": [
+        9.406566712891814e-10,
+        2.9835789627263404e-10,
+        2.1742470363583685e-10,
+        2.128279546253276e-10,
+        2.0832366854312574e-10,
+        2.349832781484113e-10,
+        1.8870751375420097e-10,
+        1.482682759861286e-10,
+        1.3531161551246393e-10,
+        6.670509157462512e-11
+      ],
+      "bleu_full": 4.511181936645314,
+      "bleu_first_line": 16.032267273835608,
+      "bleu_trunc_to_ref_len": 15.080935933511906,
+      "len_ratio_full": 3.3503184713375798,
+      "sample_full": [
+        "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "source": "tonyhong/CSK",
+  "upstream_url": "https://huggingface.co/datasets/tonyhong/CSK",
+  "revision": "d035c8d85d19e64be96acdaf2ca18b8f73f2bf10",
+  "license": "Apache-2.0; HF metadata and pinned card, not assumed from companion code",
+  "download_endpoint": "hf-mirror.com",
+  "proxy_used": false,
+  "local_asset_root": "/data1/xiangding/work/incremental-interpretation-revision/upstream/causal-script-audit",
+  "rows": 63,
+  "stories": 21,
+  "conditions": {
+    "control": 21,
+    "target": 21,
+    "failure": 21
+  },
+  "words": {
+    "before B": {
+      "min": 91,
+      "max": 146,
+      "mean": 120.11111111111111
+    },
+    "B": {
+      "min": 3,
+      "max": 9,
+      "mean": 5.571428571428571
+    },
+    "after B": {
+      "min": 17,
+      "max": 53,
+      "mean": 28.952380952380953
+    }
+  },
+  "B_identical_within_story": true,
+  "empty_export_column_all_empty": false,
+  "zero_width_rows": 43,
+  "source_bytes_preserved": true,
+  "files": {
+    "CSK_stories.csv": {
+      "bytes": 54681,
+      "sha256": "1feb5c12b71547e74d3c44d3963a56ba1b744bcd24fa8271ced8116327c7c35f"
+    },
+    "hf-README.md": {
+      "bytes": 7223,
+      "sha256": "84973cfb2e8740ab45e7f3b064f00b04a8d4e1b51a824e464702aca6b9688eb1"
+    },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "README.md": {
+      "bytes": 5649,
+      "sha256": "8ec2a0cc898f5cb86a9b0a36bd03791570ba1be8d600dadb3165c3047183220f"
+    },
+    "eval_surprisal.py": {
+      "bytes": 2649,
+      "sha256": "8ff175de676849d1bdf20ecd251419419247acf1b987e755c6ef9e250b6ef46a"
+    }
+  },
+  "companion_code_revision": "ee9486bb7964bf01b5d9e13d02bc4b5abe0c55b8",
+  "semantic_audit": "Not yet independently audited for any proposed transformation or QA; no inference on this asset. Original author conditions are not entailment certificates."
+}

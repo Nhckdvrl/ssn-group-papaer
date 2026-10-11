@@ -1,0 +1,303 @@
+{
+ "args": {
+  "pool": "dev2",
+  "n_props": 16,
+  "assign": null,
+  "cells": "Ap,An",
+  "n_docs": 8,
+  "epochs": 1,
+  "lr": 1e-05,
+  "warmup": 0.1,
+  "bs": 8,
+  "seed": 0,
+  "fewshot": 0,
+  "max_len": 96,
+  "before": null,
+  "out": "results/e01a/smoke.json"
+ },
+ "model": "Qwen/Qwen3-8B-Base",
+ "revision": "49e3418fbbbca6ecbdf9608b4d22e5a407081db4",
+ "assign": {
+  "dd7a32c189ef": "Ap",
+  "38e5b3cc20b6": "An",
+  "2751844e8326": "Ap",
+  "c0308d2f1a72": "An",
+  "bf4ca8063369": "Ap",
+  "0ff9303aaa7f": "An",
+  "b7c6138d70dc": "Ap",
+  "ed4c914e2d32": "An",
+  "5a6eb6c8b3c1": "Ap",
+  "d01d60cedd19": "An",
+  "362fd2ba26fb": "Ap",
+  "f8a75d85cce3": "An",
+  "437092c658f4": "Ap",
+  "2f37cca14a50": "An",
+  "ef28acd99dca": "Ap",
+  "55f3be84b81b": "An"
+ },
+ "n_docs_total": 128,
+ "generic_nll_before": 2.1720226629632164,
+ "generic_nll_after": 2.2341040247178485,
+ "B_before": {
+  "dd7a32c189ef": [
+   0.0,
+   -0.25,
+   0.25,
+   -0.125
+  ],
+  "38e5b3cc20b6": [
+   -0.375,
+   -0.25,
+   -0.5,
+   -0.125
+  ],
+  "2751844e8326": [
+   0.25,
+   0.375,
+   0.25,
+   0.375
+  ],
+  "c0308d2f1a72": [
+   0.0,
+   -0.375,
+   0.25,
+   0.125
+  ],
+  "bf4ca8063369": [
+   0.5,
+   -0.125,
+   0.25,
+   0.0
+  ],
+  "0ff9303aaa7f": [
+   0.5,
+   0.5,
+   0.25,
+   0.0
+  ],
+  "b7c6138d70dc": [
+   0.0,
+   -0.375,
+   0.0,
+   0.125
+  ],
+  "ed4c914e2d32": [
+   0.25,
+   0.75,
+   0.0,
+   -0.375
+  ],
+  "5a6eb6c8b3c1": [
+   0.5,
+   -0.25,
+   0.0,
+   0.0
+  ],
+  "d01d60cedd19": [
+   -0.25,
+   -0.125,
+   0.0,
+   -0.25
+  ],
+  "362fd2ba26fb": [
+   0.25,
+   0.25,
+   0.25,
+   0.625
+  ],
+  "f8a75d85cce3": [
+   -0.25,
+   0.25,
+   0.0,
+   0.0
+  ],
+  "437092c658f4": [
+   0.25,
+   0.5,
+   0.25,
+   0.125
+  ],
+  "2f37cca14a50": [
+   0.0,
+   -0.125,
+   -0.25,
+   -0.75
+  ],
+  "ef28acd99dca": [
+   0.0,
+   -0.25,
+   0.0,
+   0.0
+  ],
+  "55f3be84b81b": [
+   -0.3749997615814209,
+   -0.375,
+   0.0,
+   -0.125
+  ]
+ },
+ "B_after": {
+  "dd7a32c189ef": [
+   -1.5,
+   -1.750000238418579,
+   -0.75,
+   -1.75
+  ],
+  "38e5b3cc20b6": [
+   -2.5,
+   -1.875,
+   -1.75,
+   -1.5000001192092896
+  ],
+  "2751844e8326": [
+   -0.5,
+   -0.75,
+   -0.5,
+   -1.0
+  ],
+  "c0308d2f1a72": [
+   -1.0,
+   -1.75,
+   -0.75,
+   -1.5
+  ],
+  "bf4ca8063369": [
+   -1.0,
+   -2.249999761581421,
+   -0.75,
+   -1.5
+  ],
+  "0ff9303aaa7f": [
+   -0.75,
+   -0.875,
+   -0.75,
+   -1.25
+  ],
+  "b7c6138d70dc": [
+   -1.25,
+   -2.125,
+   -1.25,
+   -1.25
+  ],
+  "ed4c914e2d32": [
+   -1.2499998807907104,
+   0.0,
+   -0.75,
+   -1.25
+  ],
+  "5a6eb6c8b3c1": [
+   -0.75,
+   -1.25,
+   -0.25,
+   -1.25
+  ],
+  "d01d60cedd19": [
+   -1.0,
+   -1.749999761581421,
+   -0.5,
+   -1.5
+  ],
+  "362fd2ba26fb": [
+   -0.5,
+   -0.75,
+   -0.5,
+   -0.75
+  ],
+  "f8a75d85cce3": [
+   -1.0,
+   -0.75,
+   -0.75,
+   -1.0
+  ],
+  "437092c658f4": [
+   -0.75,
+   -1.125,
+   -0.5,
+   -1.0
+  ],
+  "2f37cca14a50": [
+   -1.5000001192092896,
+   -1.375,
+   -1.2499998807907104,
+   -1.75
+  ],
+  "ef28acd99dca": [
+   -1.0,
+   -1.374999761581421,
+   -1.0,
+   -1.25
+  ],
+  "55f3be84b81b": [
+   -1.625,
+   -1.75,
+   -0.7500001192092896,
+   -1.375
+  ]
+ },
+ "props": {
+  "dd7a32c189ef": {
+   "agent": "Naldon",
+   "complement": "activate Beacon 20"
+  },
+  "38e5b3cc20b6": {
+   "agent": "Tulon",
+   "complement": "cross Bridge 21"
+  },
+  "2751844e8326": {
+   "agent": "Grumi",
+   "complement": "descend to Level 64"
+  },
+  "c0308d2f1a72": {
+   "agent": "Reirka",
+   "complement": "enter Chamber 96"
+  },
+  "bf4ca8063369": {
+   "agent": "Tiani",
+   "complement": "secure Locker 47"
+  },
+  "0ff9303aaa7f": {
+   "agent": "Grosen",
+   "complement": "descend to Level 28"
+  },
+  "b7c6138d70dc": {
+   "agent": "Kralen",
+   "complement": "repair Relay 92"
+  },
+  "ed4c914e2d32": {
+   "agent": "Panin",
+   "complement": "locate Marker 56"
+  },
+  "5a6eb6c8b3c1": {
+   "agent": "Deisus",
+   "complement": "enter Chamber 65"
+  },
+  "d01d60cedd19": {
+   "agent": "Veste",
+   "complement": "open Archive 94"
+  },
+  "362fd2ba26fb": {
+   "agent": "Mathan",
+   "complement": "descend to Level 25"
+  },
+  "f8a75d85cce3": {
+   "agent": "Metho",
+   "complement": "descend to Level 95"
+  },
+  "437092c658f4": {
+   "agent": "Saevi",
+   "complement": "restart Pump 91"
+  },
+  "2f37cca14a50": {
+   "agent": "Phumar",
+   "complement": "recover Module 59"
+  },
+  "ef28acd99dca": {
+   "agent": "Saeldan",
+   "complement": "repair Relay 16"
+  },
+  "55f3be84b81b": {
+   "agent": "Briari",
+   "complement": "open Archive 19"
+  }
+ }
+}

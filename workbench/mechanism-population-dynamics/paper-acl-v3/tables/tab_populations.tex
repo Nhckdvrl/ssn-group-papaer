@@ -1,0 +1,13 @@
+\begin{tabular}{llll}
+\toprule
+Population & Models & Relation varied & Used in \\
+\midrule
+DataDecide-1B & \makecell[l]{25 corpora $\times$ 3 init.;\\69 with verified init.} & \makecell[l]{corpus, init.} & \S\ref{sec:roles}, \S\ref{sec:carriers}, \S\ref{sec:lineage} \\
+DataDecide sizes & 4M--750M, 10--23 corpora & corpus, init., scale & \S\ref{sec:roles} \\
+Pythia & \makecell[l]{70M--12B, standard\\and deduplicated} & data (same init.) & \S\ref{sec:roles}, \S\ref{sec:carriers} \\
+Pythia checkpoints & \makecell[l]{160M, 410M pairs,\\15 steps each} & training time & \S\ref{sec:lineage} \\
+PolyPythias & 410M, seed 1 & init.\ and data order & \S\ref{sec:carriers} \\
+OLMo-2-1B & \makecell[l]{pretraining end, 3 mid-\\training runs, SFT, DPO,\\Instruct} & continued training & \S\ref{sec:lineage} \\
+Controlled & \makecell[l]{4- and 12-layer, C4,\\2--3 init.} & \makecell[l]{perturbations, data\\masking} & \S\ref{sec:roles}, \S\ref{sec:masking} \\
+\bottomrule
+\end{tabular}

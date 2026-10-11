@@ -1,0 +1,48 @@
+{
+ "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+ "mask": "last",
+ "keep_frac": 0.5,
+ "mask_id": "b7882f010721",
+ "n_prompts_per_cell": 96,
+ "max_pos_per_prompt": 24,
+ "cells": {
+  "gsm8k_gen_cot": {
+   "fit": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.3430656702940898,
+    "mean_pairwise_cosine": 0.3390647768974304,
+    "std_pairwise_cosine": 0.21298810839653015,
+    "rms_perturbation": 560.3418004903223,
+    "rms_fixed": 328.2023240316779
+   },
+   "held_out": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.3487091510978731,
+    "mean_pairwise_cosine": 0.3520359694957733,
+    "std_pairwise_cosine": 0.21786735951900482,
+    "rms_perturbation": 559.5139660948673,
+    "rms_fixed": 330.40195149631427
+   },
+   "b_bar_cross_split_cosine": 0.9995577013317325
+  },
+  "mmlu_gen_letter": {
+   "fit": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.25629710650571547,
+    "mean_pairwise_cosine": 0.2750284969806671,
+    "std_pairwise_cosine": 0.1963755488395691,
+    "rms_perturbation": 549.4176707294025,
+    "rms_fixed": 278.14706072943244
+   },
+   "held_out": {
+    "n_positions": 2304,
+    "fixed_energy_fraction": 0.2806840104126397,
+    "mean_pairwise_cosine": 0.30131828784942627,
+    "std_pairwise_cosine": 0.1880812793970108,
+    "rms_perturbation": 550.2606303241421,
+    "rms_fixed": 291.52598933414225
+   },
+   "b_bar_cross_split_cosine": 0.956305689696629
+  }
+ }
+}

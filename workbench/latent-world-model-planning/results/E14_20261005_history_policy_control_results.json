@@ -1,0 +1,909 @@
+{
+  "completed": true,
+  "stage": "history",
+  "controller_groups": 8,
+  "episodes": 384,
+  "counts": [
+    {
+      "task": "nav",
+      "label": "TRUE-HISTORY",
+      "interface": "native",
+      "seed": 0,
+      "near": 24,
+      "far": 20,
+      "n_per_tier": 24,
+      "new_env_steps": 1680,
+      "initial_successes": 1
+    },
+    {
+      "task": "nav",
+      "label": "TRUE-HISTORY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 24,
+      "far": 20,
+      "n_per_tier": 24,
+      "new_env_steps": 1680,
+      "initial_successes": 1
+    },
+    {
+      "task": "nav",
+      "label": "CURRENT-COPY",
+      "interface": "native",
+      "seed": 0,
+      "near": 24,
+      "far": 21,
+      "n_per_tier": 24,
+      "new_env_steps": 1387,
+      "initial_successes": 1
+    },
+    {
+      "task": "nav",
+      "label": "CURRENT-COPY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 24,
+      "far": 21,
+      "n_per_tier": 24,
+      "new_env_steps": 1387,
+      "initial_successes": 1
+    },
+    {
+      "task": "nav",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "native",
+      "seed": 0,
+      "near": 23,
+      "far": 20,
+      "n_per_tier": 24,
+      "new_env_steps": 1560,
+      "initial_successes": 1
+    },
+    {
+      "task": "nav",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 23,
+      "far": 20,
+      "n_per_tier": 24,
+      "new_env_steps": 1560,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "TRUE-HISTORY",
+      "interface": "native",
+      "seed": 0,
+      "near": 3,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4542,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "TRUE-HISTORY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 3,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4542,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "CURRENT-COPY",
+      "interface": "native",
+      "seed": 0,
+      "near": 2,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4614,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "label": "CURRENT-COPY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 2,
+      "far": 0,
+      "n_per_tier": 24,
+      "new_env_steps": 4614,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "native",
+      "seed": 0,
+      "near": 19,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3159,
+      "initial_successes": 1
+    },
+    {
+      "task": "pusht",
+      "reference": "PRIOR-CAPABILITY",
+      "interface": "physical",
+      "seed": 0,
+      "near": 16,
+      "far": 5,
+      "n_per_tier": 24,
+      "new_env_steps": 3251,
+      "initial_successes": 1
+    }
+  ],
+  "effects": [
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "all",
+      "mean_delta": -0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "far",
+      "mean_delta": -0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "all",
+      "mean_delta": -0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "near",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "far",
+      "mean_delta": -0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "nav",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.4375,
+      "paired_anchor_bootstrap_95": [
+        -0.5625,
+        -0.3125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.6666666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.8333333333333334,
+        -0.4583333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.4583333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5833333333333334,
+        -0.3333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.7083333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.875,
+        -0.5416666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "all",
+      "mean_delta": 0.020833333333333332,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "near",
+      "mean_delta": 0.041666666666666664,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "CURRENT-COPY",
+      "tier": "far",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.375,
+      "paired_anchor_bootstrap_95": [
+        -0.5,
+        -0.25
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.5416666666666666,
+      "paired_anchor_bootstrap_95": [
+        -0.75,
+        -0.3333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "TRUE-HISTORY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "all",
+      "mean_delta": -0.3958333333333333,
+      "paired_anchor_bootstrap_95": [
+        -0.5208333333333334,
+        -0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "near",
+      "mean_delta": -0.5833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.7916666666666666,
+        -0.375
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "arm": "CURRENT-COPY",
+      "reference": "PRIOR-CAPABILITY",
+      "tier": "far",
+      "mean_delta": -0.20833333333333334,
+      "paired_anchor_bootstrap_95": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    }
+  ],
+  "groups": [
+    {
+      "config": {
+        "task": "nav",
+        "arm": "TRUE-HISTORY",
+        "interface": "native",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-nav-TRUE-HISTORY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "ce272fc57b3dcfb403a11b65a3d57603521f992216444b586a2a2a5584a8d406",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-nav-TRUE-HISTORY-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "nav",
+        "arm": "TRUE-HISTORY",
+        "interface": "physical",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-nav-TRUE-HISTORY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "ce272fc57b3dcfb403a11b65a3d57603521f992216444b586a2a2a5584a8d406",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-nav-TRUE-HISTORY-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "nav",
+        "arm": "CURRENT-COPY",
+        "interface": "native",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-nav-CURRENT-COPY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "fb9510fb724cc848c7e97c0643b2cc97cd61134516f5df50cc3a769c0d490569",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-nav-CURRENT-COPY-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "nav",
+        "arm": "CURRENT-COPY",
+        "interface": "physical",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-nav-CURRENT-COPY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "fb9510fb724cc848c7e97c0643b2cc97cd61134516f5df50cc3a769c0d490569",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-nav-CURRENT-COPY-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "arm": "TRUE-HISTORY",
+        "interface": "native",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-pusht-TRUE-HISTORY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "69ff62c3ce353d1a6dc52018d3c89fbc8942c7fa1ab6d69da164b75182f3ecc1",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-pusht-TRUE-HISTORY-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "arm": "TRUE-HISTORY",
+        "interface": "physical",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-pusht-TRUE-HISTORY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "69ff62c3ce353d1a6dc52018d3c89fbc8942c7fa1ab6d69da164b75182f3ecc1",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-pusht-TRUE-HISTORY-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "arm": "CURRENT-COPY",
+        "interface": "native",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-pusht-CURRENT-COPY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "47c68f09a5cd00a0c12bd39e3e899240d320837cf878fcab42ed957359b33ed1",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-pusht-CURRENT-COPY-native-RTX-s0"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "arm": "CURRENT-COPY",
+        "interface": "physical",
+        "train_seed": 0,
+        "budget": 100,
+        "history": 3,
+        "history_lags": [
+          -10,
+          -5,
+          0
+        ],
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-history-pusht-CURRENT-COPY-RTX-s0/epoch50.ckpt",
+        "checkpoint_sha256": "47c68f09a5cd00a0c12bd39e3e899240d320837cf878fcab42ed957359b33ed1",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "2d63e9a07f0b6b86adb85b5d54448bbe5ca6006bc923463c8cb8c0d1e2cab030",
+        "trainer_sha256": "d62e8b5d44e92264550e0b58e8777b3961da0627da00aedc1f4ed71c08ac7f47",
+        "geometry_source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Matched capacity, goals, starts and same raw primitive-action targets; true past observation inputs versus current copies. One head seed, shared48development, known memory baseline; no novel method or dynamics-only causality."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-v2-control-pusht-CURRENT-COPY-physical-RTX-s0"
+    }
+  ],
+  "reference_groups": [
+    {
+      "config": {
+        "geometry": "PRED",
+        "arm": "GCBC-MATCHED",
+        "train_seed": 0,
+        "interface": "native",
+        "history": 1,
+        "budget": 100,
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-goalpolicy-PRED-GCBC-MATCHED-A100-s0/epoch50.ckpt",
+        "checkpoint_sha256": "f4fb5eb77ab46a72a6ed4f771d5e3439dd84a2e85e6efb64e6f2967af0c54d00",
+        "source_training_run": "PRED-GCBC-MATCHED",
+        "training_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-goalpolicy-PRED-GCBC-MATCHED-A100-s0",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "trainer_sha256": "6c173feeb3435aff85f05a2126c0edad896165f339923541402bb1584436339a",
+        "vendor_model_sha256": "68dbfdd4b28cb6caf10824678b2a8d62865ba17a4070c5c7816dedcfdbcade40",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "action_coordinates": "raw physical; no inverse normalization; output clip only in physical interface",
+        "scope": "Known goal policy component, same100 fact/six priors; real feedback each step differs from CEM25commitment, so not single-factor CEM comparison. Shared48 development goals, no novel method confirmation."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-goalpolicy-control-PRED-GCBC-MATCHED-native-RTX-s0"
+    },
+    {
+      "config": {
+        "geometry": "PRED",
+        "arm": "GCBC-MATCHED",
+        "train_seed": 0,
+        "interface": "physical",
+        "history": 1,
+        "budget": 100,
+        "executed_steps_per_decision": 1,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/20261005-E14-goalpolicy-PRED-GCBC-MATCHED-A100-s0/epoch50.ckpt",
+        "checkpoint_sha256": "f4fb5eb77ab46a72a6ed4f771d5e3439dd84a2e85e6efb64e6f2967af0c54d00",
+        "source_training_run": "PRED-GCBC-MATCHED",
+        "training_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-goalpolicy-PRED-GCBC-MATCHED-A100-s0",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "script_sha256": "9c412b0c39973664267efe659cf4e0f50a6092f8230428c7fc81281c269c87b2",
+        "trainer_sha256": "6c173feeb3435aff85f05a2126c0edad896165f339923541402bb1584436339a",
+        "vendor_model_sha256": "68dbfdd4b28cb6caf10824678b2a8d62865ba17a4070c5c7816dedcfdbcade40",
+        "geometry_source_sha256": "98034cb83ca194f72587a490e8a2fb84f4a233fb65bdb02d2f421e06efccca19",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "action_coordinates": "raw physical; no inverse normalization; output clip only in physical interface",
+        "scope": "Known goal policy component, same100 fact/six priors; real feedback each step differs from CEM25commitment, so not single-factor CEM comparison. Shared48 development goals, no novel method confirmation."
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-goalpolicy-control-PRED-GCBC-MATCHED-physical-RTX-s0"
+    },
+    {
+      "config": {
+        "method": "RELEASED",
+        "interface": "native",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "controller_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "action_mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "action_std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ],
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "same 48 actual-continuation tasks; one transfer trainseed; AD published training unmatched; native may issue out-of-Box actions; not paper numeric replication"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-pusht-control-RELEASED-native-RTX-s0"
+    },
+    {
+      "config": {
+        "method": "RELEASED",
+        "interface": "physical",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-derived/lewm-pusht-object.ckpt",
+        "checkpoint_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "script_sha256": "3cd9c3099b56aee1c41c40cb816c6effa09124ed27cb1f94017f79b1b9be70f9",
+        "controller_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "action_mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "action_std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ],
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "same 48 actual-continuation tasks; one transfer trainseed; AD published training unmatched; native may issue out-of-Box actions; not paper numeric replication"
+      },
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E20-pusht-control-RELEASED-physical-RTX-s0"
+    }
+  ],
+  "script_sha256": "84ba16c9864f75cd80f0f1b1ccf1525a0d13c27050378796a8960c20904860b5",
+  "scope": "Full preregistered matrix, all48/shared development task anchors and weak methods retained. One training seed per condition; paired anchor CI excludes training variation. Known baseline/design tests, frozen phi and published Push pretraining unknown. PRIOR-CAPABILITY differs in capacity, training starts or control feedback; it is context, not one-factor causal evidence. No novel method or manuscript-critical claim.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-history-control-audit/result.json"
+}

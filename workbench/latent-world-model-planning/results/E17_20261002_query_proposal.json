@@ -1,0 +1,1320 @@
+{
+  "experiment": "E17 query-in-proposal exploratory seed0",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E17-query-proposal-RTX-s0",
+  "files": {
+    "config.json": {
+      "args": {
+        "sources": [
+          "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+          "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+        ],
+        "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+        "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+        "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_query_proposal_RTX_s0",
+        "output": "/tmp/latent-wm-runs/20261002-E17-query-proposal-RTX-s0",
+        "seed": 68000,
+        "updates": 2000,
+        "count": 16
+      },
+      "sources": [
+        {
+          "task": "tworoom",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+          "dataset": "/tmp/latent-wm-data/tworoom.h5",
+          "generated": false,
+          "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+          "anchors": 12,
+          "calibration_anchors": 4,
+          "candidates": 300,
+          "elites": 30,
+          "iterations": 30,
+          "seed": 0,
+          "train_steps": 20,
+          "batch_size": 16,
+          "packages": {
+            "torch": "2.7.1+cu128",
+            "torchvision": "0.22.1+cu128",
+            "numpy": "1.26.4",
+            "transformers": "5.3.0",
+            "stable-worldmodel": "0.0.6"
+          },
+          "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+          "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+        },
+        {
+          "task": "pusht",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+          "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+          "generated": false,
+          "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+          "anchors": 12,
+          "calibration_anchors": 4,
+          "candidates": 300,
+          "elites": 30,
+          "iterations": 30,
+          "seed": 0,
+          "train_steps": 20,
+          "batch_size": 16,
+          "packages": {
+            "torch": "2.7.1+cu128",
+            "torchvision": "0.22.1+cu128",
+            "numpy": "1.26.4",
+            "transformers": "5.3.0",
+            "stable-worldmodel": "0.0.6"
+          },
+          "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+          "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+        }
+      ],
+      "harness_sha256": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+      "cem_source_sha256": "d88c86dcd1bd1e6d89221ac22079a3efe296cc7566532de0d36605e2f1536050",
+      "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "helper_sha256": {
+        "first_wave.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "recovery_forks.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1"
+      },
+      "prepared_manifest": {
+        "seed": 61000,
+        "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+        "sources": {
+          "tworoom": {
+            "config": {
+              "task": "tworoom",
+              "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+              "dataset": "/tmp/latent-wm-data/tworoom.h5",
+              "generated": false,
+              "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+              "anchors": 12,
+              "calibration_anchors": 4,
+              "candidates": 300,
+              "elites": 30,
+              "iterations": 30,
+              "seed": 0,
+              "train_steps": 20,
+              "batch_size": 16,
+              "packages": {
+                "torch": "2.7.1+cu128",
+                "torchvision": "0.22.1+cu128",
+                "numpy": "1.26.4",
+                "transformers": "5.3.0",
+                "stable-worldmodel": "0.0.6"
+              },
+              "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+              "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+              "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+            },
+            "data": {
+              "source": "official_hdf5",
+              "file": "tworoom.h5",
+              "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+            }
+          },
+          "pusht": {
+            "config": {
+              "task": "pusht",
+              "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+              "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+              "generated": false,
+              "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+              "anchors": 12,
+              "calibration_anchors": 4,
+              "candidates": 300,
+              "elites": 30,
+              "iterations": 30,
+              "seed": 0,
+              "train_steps": 20,
+              "batch_size": 16,
+              "packages": {
+                "torch": "2.7.1+cu128",
+                "torchvision": "0.22.1+cu128",
+                "numpy": "1.26.4",
+                "transformers": "5.3.0",
+                "stable-worldmodel": "0.0.6"
+              },
+              "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+              "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+              "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+            },
+            "data": {
+              "source": "official_hdf5",
+              "file": "pusht_expert_train.h5",
+              "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+            }
+          }
+        },
+        "files": {
+          "tworoom_g25.npz": {
+            "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+            "bytes": 288269,
+            "selection_seed": 61025
+          },
+          "tworoom_g75.npz": {
+            "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+            "bytes": 290315,
+            "selection_seed": 61075
+          },
+          "pusht_g25.npz": {
+            "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+            "bytes": 679100,
+            "selection_seed": 62025
+          },
+          "pusht_g75.npz": {
+            "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+            "bytes": 652662,
+            "selection_seed": 62075
+          }
+        }
+      },
+      "normalization": "source full-dataset stats used by released Fast/native baseline; all methods identical",
+      "query_reuse": "whole episodes held out from proposal training; g25/g75 goal relabel range25..75; no deadline input",
+      "limitations": "released WM may have seen evaluation data; no unseen task-family claim; one proposal training seed"
+    },
+    "complete.json": {
+      "completed": true,
+      "episodes": 320,
+      "physical_env_steps": 19951
+    },
+    "tworoom_summary.json": [
+      {
+        "task": "tworoom",
+        "goal_offset": 25,
+        "method": "ZERO300",
+        "n": 16,
+        "successes": 13,
+        "wilson95": [
+          0.5699111903802586,
+          0.9340840092857187
+        ],
+        "paired_gain_vs_ZERO900": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.125,
+        "paired_ci95_vs_GCBC": [
+          -0.1875,
+          0.4375
+        ],
+        "helped_vs_GCBC": 4,
+        "harmed_vs_GCBC": 2
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 25,
+        "method": "ZERO900",
+        "n": 16,
+        "successes": 15,
+        "wilson95": [
+          0.7167126242970107,
+          0.9888806552353576
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.25,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.5
+        ],
+        "helped_vs_GCBC": 5,
+        "harmed_vs_GCBC": 1
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 25,
+        "method": "PROPOSAL300",
+        "n": 16,
+        "successes": 16,
+        "wilson95": [
+          0.8063923194655637,
+          1.0000000000000002
+        ],
+        "paired_gain_vs_ZERO900": 0.0625,
+        "paired_ci95": [
+          0.0,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.3125,
+        "paired_ci95_vs_GCBC": [
+          0.125,
+          0.5625
+        ],
+        "helped_vs_GCBC": 5,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 25,
+        "method": "GOAL-SHUFFLED300",
+        "n": 16,
+        "successes": 15,
+        "wilson95": [
+          0.7167126242970107,
+          0.9888806552353576
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          -0.1875,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 1,
+        "paired_gain_vs_GCBC": 0.25,
+        "paired_ci95_vs_GCBC": [
+          0.0625,
+          0.4375
+        ],
+        "helped_vs_GCBC": 4,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 25,
+        "method": "GCBC-direct",
+        "n": 16,
+        "successes": 11,
+        "wilson95": [
+          0.44404355834740666,
+          0.8583535614521796
+        ],
+        "paired_gain_vs_ZERO900": -0.25,
+        "paired_ci95": [
+          -0.5,
+          0.0
+        ],
+        "helped": 1,
+        "harmed": 5,
+        "paired_gain_vs_GCBC": 0.0,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.0
+        ],
+        "helped_vs_GCBC": 0,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 75,
+        "method": "ZERO300",
+        "n": 16,
+        "successes": 10,
+        "wilson95": [
+          0.38641040545502714,
+          0.8151876744113636
+        ],
+        "paired_gain_vs_ZERO900": -0.25,
+        "paired_ci95": [
+          -0.5,
+          -0.0625
+        ],
+        "helped": 0,
+        "harmed": 4,
+        "paired_gain_vs_GCBC": -0.125,
+        "paired_ci95_vs_GCBC": [
+          -0.4390624999999999,
+          0.25
+        ],
+        "helped_vs_GCBC": 3,
+        "harmed_vs_GCBC": 5
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 75,
+        "method": "ZERO900",
+        "n": 16,
+        "successes": 14,
+        "wilson95": [
+          0.639771727342413,
+          0.9650225122567595
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.125,
+        "paired_ci95_vs_GCBC": [
+          -0.1875,
+          0.4375
+        ],
+        "helped_vs_GCBC": 4,
+        "harmed_vs_GCBC": 2
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 75,
+        "method": "PROPOSAL300",
+        "n": 16,
+        "successes": 15,
+        "wilson95": [
+          0.7167126242970107,
+          0.9888806552353576
+        ],
+        "paired_gain_vs_ZERO900": 0.0625,
+        "paired_ci95": [
+          0.0,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.1875,
+        "paired_ci95_vs_GCBC": [
+          -0.0625,
+          0.4375
+        ],
+        "helped_vs_GCBC": 4,
+        "harmed_vs_GCBC": 1
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 75,
+        "method": "GOAL-SHUFFLED300",
+        "n": 16,
+        "successes": 14,
+        "wilson95": [
+          0.639771727342413,
+          0.9650225122567595
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          -0.25,
+          0.25
+        ],
+        "helped": 2,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.125,
+        "paired_ci95_vs_GCBC": [
+          -0.125,
+          0.375
+        ],
+        "helped_vs_GCBC": 3,
+        "harmed_vs_GCBC": 1
+      },
+      {
+        "task": "tworoom",
+        "goal_offset": 75,
+        "method": "GCBC-direct",
+        "n": 16,
+        "successes": 12,
+        "wilson95": [
+          0.5050168346449122,
+          0.8981793250878696
+        ],
+        "paired_gain_vs_ZERO900": -0.125,
+        "paired_ci95": [
+          -0.4375,
+          0.1875
+        ],
+        "helped": 2,
+        "harmed": 4,
+        "paired_gain_vs_GCBC": 0.0,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.0
+        ],
+        "helped_vs_GCBC": 0,
+        "harmed_vs_GCBC": 0
+      }
+    ],
+    "tworoom_train.json": {
+      "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_query_proposal_RTX_s0/tworoom_query_proposal_s68000.pt",
+      "sha256": "bcc3c53737bfbd95b77eaae370a1c38f4984290724b6fe1193771268c62ec8ed",
+      "pair_count": 47450,
+      "base_episodes": [
+        5639,
+        4283,
+        8376,
+        5218,
+        6784,
+        8883,
+        7637,
+        7500,
+        1620,
+        7772,
+        8927,
+        7540,
+        628,
+        9839,
+        8656,
+        6,
+        7891,
+        3755,
+        1559,
+        291,
+        6582,
+        6916,
+        6245,
+        2103,
+        4272,
+        8934,
+        330,
+        5992,
+        9984,
+        3584,
+        8969,
+        3544,
+        4008,
+        1906,
+        5654,
+        6424,
+        6168,
+        2773,
+        303,
+        917,
+        8011,
+        1499,
+        3106,
+        9501,
+        4636,
+        7602,
+        9029,
+        5461,
+        6206,
+        25,
+        7970,
+        391,
+        1750,
+        9313,
+        2593,
+        6542,
+        128,
+        9693,
+        1287,
+        6184,
+        234,
+        6926,
+        7134,
+        5498,
+        5613,
+        4750,
+        2797,
+        6827,
+        4600,
+        1623,
+        2237,
+        3595,
+        5152,
+        2801,
+        5839,
+        6189,
+        7776,
+        7024,
+        2723,
+        1275,
+        8168,
+        53,
+        2503,
+        4370,
+        3568,
+        5273,
+        514,
+        8419,
+        4305,
+        8283,
+        6508,
+        8802,
+        6803,
+        7729,
+        6215,
+        8417,
+        2770,
+        2266,
+        2305,
+        4990
+      ],
+      "excluded_episodes": [
+        115,
+        165,
+        226,
+        267,
+        409,
+        706,
+        752,
+        915,
+        948,
+        1076,
+        1106,
+        1726,
+        1752,
+        2026,
+        2328,
+        2560,
+        2695,
+        2713,
+        3076,
+        3280,
+        3586,
+        4278,
+        4344,
+        4469,
+        4648,
+        5106,
+        5261,
+        5437,
+        5744,
+        6016,
+        6363,
+        6493,
+        7117,
+        7364,
+        7557,
+        7606,
+        8131,
+        8285,
+        8496,
+        8847,
+        9127,
+        9871,
+        9891,
+        9937
+      ],
+      "selection_seed": "E16 inherited",
+      "updates": 2000,
+      "batch_size": 128,
+      "parameters": 177202,
+      "train_seconds": 10.356924179941416,
+      "total_prepare_train_seconds": 33.089870512485504,
+      "encoded_frames": 9295,
+      "encoder_calls": 100,
+      "label": "all same-episode future offsets25:5:75; next25 normalized actions; no padding",
+      "query_input": "current192+goal192 frozen latent only; no goal offset/deadline/oracle distance",
+      "loss_diagnostics": {
+        "count": 2000,
+        "first": 1.000678539276123,
+        "last": 0.8809738159179688,
+        "last100_mean": 0.8741912865638732,
+        "raw_trace": "tworoom_train.json in artifact_path"
+      }
+    },
+    "tworoom_inputs.json": {
+      "wm_sha256": "0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119",
+      "normalization": {
+        "mean": [
+          0.003093412611633539,
+          -0.05298233404755592
+        ],
+        "std": [
+          0.8674758076667786,
+          0.8677655458450317
+        ]
+      },
+      "anchors_sha256": {
+        "25": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+        "75": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7"
+      },
+      "locked_evaluation_episodes": {
+        "25": [
+          3586,
+          706,
+          948,
+          2026,
+          9871,
+          5437,
+          8847,
+          1106,
+          7117,
+          4469,
+          5261,
+          9937,
+          8285,
+          1726,
+          1076,
+          115
+        ],
+        "75": [
+          915,
+          7364,
+          226,
+          4278,
+          6016,
+          2560,
+          2328,
+          4648,
+          9891,
+          3280,
+          7606,
+          4344,
+          7557,
+          5744,
+          267,
+          2713
+        ]
+      },
+      "shuffled_goal_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        0
+      ]
+    },
+    "tworoom_native_control.json": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.00018310546875
+      }
+    ],
+    "pusht_summary.json": [
+      {
+        "task": "pusht",
+        "goal_offset": 25,
+        "method": "ZERO300",
+        "n": 16,
+        "successes": 14,
+        "wilson95": [
+          0.639771727342413,
+          0.9650225122567595
+        ],
+        "paired_gain_vs_ZERO900": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.5,
+        "paired_ci95_vs_GCBC": [
+          0.1875,
+          0.75
+        ],
+        "helped_vs_GCBC": 9,
+        "harmed_vs_GCBC": 1
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 25,
+        "method": "ZERO900",
+        "n": 16,
+        "successes": 16,
+        "wilson95": [
+          0.8063923194655637,
+          1.0000000000000002
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.625,
+        "paired_ci95_vs_GCBC": [
+          0.375,
+          0.875
+        ],
+        "helped_vs_GCBC": 10,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 25,
+        "method": "PROPOSAL300",
+        "n": 16,
+        "successes": 14,
+        "wilson95": [
+          0.639771727342413,
+          0.9650225122567595
+        ],
+        "paired_gain_vs_ZERO900": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.5,
+        "paired_ci95_vs_GCBC": [
+          0.25,
+          0.75
+        ],
+        "helped_vs_GCBC": 8,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 25,
+        "method": "GOAL-SHUFFLED300",
+        "n": 16,
+        "successes": 14,
+        "wilson95": [
+          0.639771727342413,
+          0.9650225122567595
+        ],
+        "paired_gain_vs_ZERO900": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.5,
+        "paired_ci95_vs_GCBC": [
+          0.25,
+          0.75
+        ],
+        "helped_vs_GCBC": 8,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 25,
+        "method": "GCBC-direct",
+        "n": 16,
+        "successes": 6,
+        "wilson95": [
+          0.18481232558863633,
+          0.6135895945449727
+        ],
+        "paired_gain_vs_ZERO900": -0.625,
+        "paired_ci95": [
+          -0.875,
+          -0.375
+        ],
+        "helped": 0,
+        "harmed": 10,
+        "paired_gain_vs_GCBC": 0.0,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.0
+        ],
+        "helped_vs_GCBC": 0,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 75,
+        "method": "ZERO300",
+        "n": 16,
+        "successes": 3,
+        "wilson95": [
+          0.06591599071428142,
+          0.4300888096197414
+        ],
+        "paired_gain_vs_ZERO900": -0.0625,
+        "paired_ci95": [
+          -0.1875,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 1,
+        "paired_gain_vs_GCBC": 0.1875,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.375
+        ],
+        "helped_vs_GCBC": 3,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 75,
+        "method": "ZERO900",
+        "n": 16,
+        "successes": 4,
+        "wilson95": [
+          0.10182067491213048,
+          0.49498316535508774
+        ],
+        "paired_gain_vs_ZERO900": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0,
+        "paired_gain_vs_GCBC": 0.25,
+        "paired_ci95_vs_GCBC": [
+          0.0625,
+          0.4375
+        ],
+        "helped_vs_GCBC": 4,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 75,
+        "method": "PROPOSAL300",
+        "n": 16,
+        "successes": 6,
+        "wilson95": [
+          0.18481232558863633,
+          0.6135895945449727
+        ],
+        "paired_gain_vs_ZERO900": 0.125,
+        "paired_ci95": [
+          -0.1875,
+          0.4375
+        ],
+        "helped": 4,
+        "harmed": 2,
+        "paired_gain_vs_GCBC": 0.375,
+        "paired_ci95_vs_GCBC": [
+          0.125,
+          0.625
+        ],
+        "helped_vs_GCBC": 6,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 75,
+        "method": "GOAL-SHUFFLED300",
+        "n": 16,
+        "successes": 5,
+        "wilson95": [
+          0.14164643854782039,
+          0.5559564416525933
+        ],
+        "paired_gain_vs_ZERO900": 0.0625,
+        "paired_ci95": [
+          -0.125,
+          0.25
+        ],
+        "helped": 2,
+        "harmed": 1,
+        "paired_gain_vs_GCBC": 0.3125,
+        "paired_ci95_vs_GCBC": [
+          0.125,
+          0.5625
+        ],
+        "helped_vs_GCBC": 5,
+        "harmed_vs_GCBC": 0
+      },
+      {
+        "task": "pusht",
+        "goal_offset": 75,
+        "method": "GCBC-direct",
+        "n": 16,
+        "successes": 0,
+        "wilson95": [
+          0.0,
+          0.1936076805344365
+        ],
+        "paired_gain_vs_ZERO900": -0.25,
+        "paired_ci95": [
+          -0.4375,
+          -0.0625
+        ],
+        "helped": 0,
+        "harmed": 4,
+        "paired_gain_vs_GCBC": 0.0,
+        "paired_ci95_vs_GCBC": [
+          0.0,
+          0.0
+        ],
+        "helped_vs_GCBC": 0,
+        "harmed_vs_GCBC": 0
+      }
+    ],
+    "pusht_train.json": {
+      "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_query_proposal_RTX_s0/pusht_query_proposal_s68000.pt",
+      "sha256": "7f3a244f7dd0269d37365ae06a80b598786c87df49f470c3688c09be52931ae1",
+      "pair_count": 91069,
+      "base_episodes": [
+        13592,
+        8015,
+        10645,
+        10298,
+        7033,
+        13409,
+        9118,
+        17399,
+        12566,
+        14487,
+        16118,
+        72,
+        8448,
+        3123,
+        7986,
+        14409,
+        8040,
+        14107,
+        4951,
+        16538,
+        15764,
+        14446,
+        1204,
+        3015,
+        17230,
+        16284,
+        3791,
+        1200,
+        5810,
+        12808,
+        5411,
+        193,
+        17767,
+        14565,
+        1701,
+        3563,
+        11575,
+        8007,
+        14385,
+        18107,
+        10128,
+        12091,
+        13649,
+        10933,
+        368,
+        8184,
+        17922,
+        10969,
+        13715,
+        285,
+        7977,
+        5863,
+        520,
+        13999,
+        6779,
+        2797,
+        3283,
+        11942,
+        6950,
+        14994,
+        17432,
+        16435,
+        18045,
+        9549,
+        1678,
+        16668,
+        4462,
+        2755,
+        11925,
+        6036,
+        16241,
+        6615,
+        13239,
+        10282,
+        15175,
+        10095,
+        15089,
+        10883,
+        733,
+        10936,
+        12119,
+        16900,
+        10415,
+        8611,
+        18191,
+        13588,
+        5099,
+        16500,
+        17415,
+        4886,
+        4366,
+        7206,
+        5854,
+        12584,
+        12841,
+        2365,
+        11744,
+        693,
+        16062,
+        18133
+      ],
+      "excluded_episodes": [
+        69,
+        135,
+        269,
+        308,
+        524,
+        743,
+        757,
+        765,
+        894,
+        952,
+        1033,
+        1184,
+        1325,
+        1398,
+        1405,
+        1449,
+        1472,
+        1621,
+        1736,
+        1771,
+        1814,
+        2064,
+        2082,
+        2204,
+        2253,
+        2338,
+        2528,
+        2647,
+        2763,
+        2940,
+        3032,
+        3274,
+        3578,
+        3680,
+        3748,
+        3953,
+        4222,
+        4389,
+        4452,
+        4511,
+        4772,
+        4857,
+        4926,
+        4962,
+        5017,
+        5038,
+        5226,
+        5234,
+        5240,
+        5290,
+        5455,
+        5499,
+        5701,
+        5748,
+        5749,
+        6267,
+        6325,
+        6335,
+        6423,
+        6781,
+        6838,
+        7328,
+        7465,
+        7555,
+        7639,
+        7659,
+        8039,
+        8149,
+        8167,
+        8268,
+        8303,
+        8349,
+        8405,
+        8429,
+        8490,
+        8633,
+        8705,
+        8857,
+        8868,
+        8880,
+        8914,
+        9311,
+        9545,
+        9551,
+        10272,
+        10360,
+        10583,
+        10706,
+        11192,
+        11238,
+        11409,
+        11519,
+        11739,
+        11802,
+        11875,
+        11895,
+        11958,
+        12027,
+        12133,
+        12487,
+        12510,
+        12688,
+        12745,
+        12760,
+        12820,
+        13013,
+        13235,
+        13290,
+        13453,
+        13531,
+        13712,
+        14049,
+        14087,
+        14132,
+        14534,
+        14612,
+        14975,
+        15007,
+        15094,
+        15194,
+        15510,
+        15631,
+        15775,
+        15784,
+        15884,
+        16291,
+        16614,
+        16628,
+        16741,
+        16973,
+        17054,
+        17069,
+        17100,
+        17125,
+        17171,
+        17364,
+        17558,
+        18129,
+        18576,
+        18633
+      ],
+      "selection_seed": 68000,
+      "updates": 2000,
+      "batch_size": 128,
+      "parameters": 177202,
+      "train_seconds": 9.469591993838549,
+      "total_prepare_train_seconds": 41.55551690235734,
+      "encoded_frames": 13279,
+      "encoder_calls": 150,
+      "label": "all same-episode future offsets25:5:75; next25 normalized actions; no padding",
+      "query_input": "current192+goal192 frozen latent only; no goal offset/deadline/oracle distance",
+      "loss_diagnostics": {
+        "count": 2000,
+        "first": 1.0829753875732422,
+        "last": 0.3583735227584839,
+        "last100_mean": 0.3183515352010727,
+        "raw_trace": "pusht_train.json in artifact_path"
+      }
+    },
+    "pusht_inputs.json": {
+      "wm_sha256": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+      "normalization": {
+        "mean": [
+          -0.007812755182385445,
+          0.006860560737550259
+        ],
+        "std": [
+          0.20824117958545685,
+          0.20649127662181854
+        ]
+      },
+      "anchors_sha256": {
+        "25": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+        "75": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230"
+      },
+      "locked_evaluation_episodes": {
+        "25": [
+          11519,
+          8490,
+          13235,
+          5748,
+          13712,
+          6838,
+          5701,
+          12487,
+          16614,
+          16973,
+          7639,
+          5290,
+          5455,
+          17100,
+          18633,
+          5240
+        ],
+        "75": [
+          16741,
+          14049,
+          8303,
+          757,
+          15007,
+          13013,
+          69,
+          17558,
+          13453,
+          11802,
+          9311,
+          894,
+          7328,
+          15784,
+          2338,
+          17069
+        ]
+      },
+      "shuffled_goal_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        0
+      ]
+    },
+    "pusht_native_control.json": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 0.000152587890625
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.0001220703125
+      }
+    ]
+  },
+  "artifact_sha256": {
+    "config.json": "be585d92f86f817c21a053c49e01cc6e50fbbd0acb7c308a52bcbe5a783d6704",
+    "query_proposal_used.py": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+    "first_wave_used.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+    "recovery_forks_used.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "tworoom_inputs.json": "bbe0d7db7f46c05efd97c1a44c9b34c9f515db92b2b75bd8b9ebe1f5de5d9d93",
+    "tworoom_frozen_features.pt": "bf23da17507a4ecd20db349cf1a10b5fafc58362e911ef5c1ea27513b2a83717",
+    "tworoom_train.json": "cffafc4f25a9bb817db988c03144cdbfa6f4a44ee5527d3bae62bd146898b42c",
+    "tworoom_native_control.json": "c76707f804b3913f3a866dd132393e99f04ae653d406fb63725fbd9292a27190",
+    "tworoom_rows.json": "6d7390ae75287b7be6862600d2dea3f6d3d38b0370217e51a9cf4556e7005f47",
+    "tworoom_summary.json": "f8cf9550701d4db3e66f3950c3bb2180806d09375af45f186de02242274b4e09",
+    "pusht_inputs.json": "fb13ce0869ae45be34732be674a3013ae1f22a39bf59009bbd0439f87d0bc87e",
+    "pusht_frozen_features.pt": "9d07874f4f4d9911ab5fc4f7454e8ccb9b1118aa16ed14d09a73fdc8e0dae64d",
+    "pusht_train.json": "a03f4073d2c1e3e30601579c8279045e115a0d0d4039632144920b463b33d749",
+    "pusht_native_control.json": "e2d35e30051679e4ec41e67634431937a33b7ba6482c611076bd00d6e2a52803",
+    "pusht_rows.json": "0225b66c773d04314d41d7ed406d9fdeff7df36e9bb03af0071e3142f4d36dd0",
+    "pusht_summary.json": "ee1145d4f7f20fcfeed3fabccaa761ad3fff8fdec20d24a4c680cbcd806bb536",
+    "complete.json": "963597ca0bdce329542745caf44ca17691b1c93d127df03aaaa1c66ddffd6d1b"
+  },
+  "interpretation": "Goal-conditioned proposal gives small conditional improvements over search but goal-shuffled proposal nearly matches; cannot infer query effect or novelty. GCBC-direct is weak, especially PushT long goals; do not call this a strong imitation baseline replication. One head train seed,16 prelocked episodes/task/range; released WM pretraining episode split unknown."
+}

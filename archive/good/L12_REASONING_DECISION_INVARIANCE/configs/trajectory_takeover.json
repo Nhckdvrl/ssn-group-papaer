@@ -1,0 +1,20 @@
+{
+  "model": {
+    "id": "allenai/Olmo-3-7B-Think-SFT",
+    "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+    "max_new_tokens": 1024
+  },
+  "seed": 43,
+  "traces_per_cell": 4,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "bootstrap_samples": 5000,
+  "prospects": [
+    {"id": "p1", "loss_a": 100, "prob_a": 0.33, "loss_b": 96, "prob_b": 0.34},
+    {"id": "p2", "loss_a": 5000, "prob_a": 0.80, "loss_b": 3500, "prob_b": 1.00},
+    {"id": "p3", "loss_a": 7, "prob_a": 0.10, "loss_b": 4, "prob_b": 0.20}
+  ],
+  "frames": ["gain", "loss"],
+  "orders": ["ab", "ba"],
+  "result_dir": "results/trajectory_takeover_seed43"
+}

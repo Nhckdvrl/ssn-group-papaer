@@ -1,0 +1,5171 @@
+{
+  "data_sha256": "52412e9222a885eb0b115bdd301767758dc64e837983a62dd824303630037c6a",
+  "runs": [
+    {
+      "model": "Qwen3-8B",
+      "shard": 0,
+      "gpu_hours": 0.009394318392539087,
+      "config_sha256": "83e4b79e70470806e392da042e1eaf0e3d7434c47be1bb94abe796af9282b74b",
+      "predictions_sha256": "cd92cce48045c8404cd68c3e3f1e4893a70b273b84f05d9f41b260309ad1ba62",
+      "native_LP_max_delta": 4.57763671875e-05
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 1,
+      "gpu_hours": 0.01073505137639586,
+      "config_sha256": "8c4f6f4caa5c3162bc65fb50e6255e90345f3a72fd821b2a3aa878ffec8afddc",
+      "predictions_sha256": "ceab836d653291e676713334787721541e2a9fb79b4e680f3022e7fa57a00482",
+      "native_LP_max_delta": 9.1552734375e-05
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 2,
+      "gpu_hours": 0.01157491507112152,
+      "config_sha256": "db0cea221155a696ba1a2ce10ab5cd3f69a2bd5f034ade6ea3c93c9de984e09a",
+      "predictions_sha256": "155af32dc1130e3ee7afee97b40592e88743574bc6533b773b3c090f11638e3d",
+      "native_LP_max_delta": 4.1961669921875e-05
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 0,
+      "gpu_hours": 0.023140299988315544,
+      "config_sha256": "e5165f69cc31bd794b3022bb77d39ca2fdf451a121bbc8a0a60679d648bc6e46",
+      "predictions_sha256": "56fa7c9cc4a4f34a45278627d64c8c6cac57e025200ca83d632f2142663cff5e",
+      "native_LP_max_delta": 3.0517578125e-05
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 1,
+      "gpu_hours": 0.018299709949965794,
+      "config_sha256": "e865a2c28abfc84fdeca2689ac9e99e2bd2f3cfc3591de1cfcbae5f6e972e239",
+      "predictions_sha256": "7610ecdf9a22e162a24ac52c451ea73c96ee796a46c9b46209085083125ec1d3",
+      "native_LP_max_delta": 4.5299530029296875e-05
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 0,
+      "gpu_hours": 0.010284467015299014,
+      "config_sha256": "77e82fe403fbbf245bbdca42aaae3d1cbd27ba66290e8f42e574a1c594b7f0f8",
+      "predictions_sha256": "bc90cf62d8198e93997c590edee6f5af2558d67d5767c9587e8779b8600e3f79",
+      "native_LP_max_delta": 2.3603439331054688e-05
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 1,
+      "gpu_hours": 0.012303532436360709,
+      "config_sha256": "d0038556c41c1cdc9aab398d4c1d9d527c003952c5f0783b018e28e3dca97746",
+      "predictions_sha256": "8a80766c3cf36cb3163bb37e742b2f9d43ac0fe14f9e59038b1f9834ba88368d",
+      "native_LP_max_delta": 9.5367431640625e-06
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 2,
+      "gpu_hours": 0.012785480842770388,
+      "config_sha256": "5afb2894722491307b1571729e2ec2235291fe78d44218ebd77158ac5e69d677",
+      "predictions_sha256": "19e474a10ff545a196c8fa3e6e95a807f6ee376ddf0003aab0706662005f352a",
+      "native_LP_max_delta": 8.225440979003906e-06
+    }
+  ],
+  "baseline_runs": [
+    {
+      "model": "Qwen3-8B",
+      "shard": 0,
+      "config_sha256": "15df4016f36cbd281161599fd8c9bab79903be06d0319a513e5b289ce23521eb",
+      "predictions_sha256": "e697d32d5e6b0663d5e9fe249f8481d30a4e90deb26747a89a87d668dd3dda60"
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 1,
+      "config_sha256": "7618162b43786635bbd68aa19158b66f896efe2a089985d044a0d912af41f077",
+      "predictions_sha256": "d27061571da5928e2e0984cc5625ac229cc8b511255d9f0e81a6b54387bbadeb"
+    },
+    {
+      "model": "Qwen3-8B",
+      "shard": 2,
+      "config_sha256": "8c0300ce0388d0e72012695edd1baa7ff7957f70989986e5d6cbaa9c0193cfd0",
+      "predictions_sha256": "afdfd5e9fda77b6a139fb56ca6a56a317b0b07648760968946e2930e2c6f6b15"
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 0,
+      "config_sha256": "9c2a1a8ba8331beaa5607f0bc0802e893fb8a32a89704936622457ba5609686c",
+      "predictions_sha256": "e36481cee3fd63acbbd8f4a085882b938c4aa528c8691fc21ac58147f5714a48"
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "shard": 1,
+      "config_sha256": "db34b79f2adc200371faf1ad7970de6695c2d09e8dff026b35b185031f6f6b12",
+      "predictions_sha256": "4d58153102bfce09c8a2a77892bc01b702b6cf3f32a4d3b10c83571263011064"
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 0,
+      "config_sha256": "9e2792da03989834004ba7b087549c517832c27dd92164117a259fae46c9d095",
+      "predictions_sha256": "769735aecb38610757d66cd7d8ca2a68e50d59feb383ce7cf49466e95fd41064"
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 1,
+      "config_sha256": "9761abc755a41488957a1c8cceadff88bce77ae417184665e2b6d0265dd5b3ae",
+      "predictions_sha256": "f432ba19bdbebdc0b04f0d3f460f453c917670ae1da4a95f8b20e73b0a18119a"
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "shard": 2,
+      "config_sha256": "febb4f6d773b8a98988e2cdd20c8b87b0168be71b49502ef9a68df2a3a1f8b9e",
+      "predictions_sha256": "f395cb6495a84ce2d67f5655736fa7aaa192a335e71f842888a4a3eb200eb7a9"
+    }
+  ],
+  "statistics": "Lexical cluster paired bootstrap10000 seed74.",
+  "limits": "Original paired versions, source-support QA. Joint context not latent parse certification; order effect may be general recency.",
+  "complete": {
+    "all_models_complete": true,
+    "shards": 8,
+    "panels": 1680,
+    "map_sha256": "a2a1f6156cd5e82ce73b6216874c7a3b5805583986bd0c84dc413d95a4fb67dc",
+    "gpu_hours": 0.10851777507276791
+  },
+  "panels": [
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.25,
+      "CI95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.6666666666666666,
+        0.9583333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.7083333333333334,
+      "CI95": [
+        0.5,
+        0.875
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.5833333333333334,
+      "CI95": [
+        0.375,
+        0.7916666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.25,
+      "CI95": [
+        -0.4166666666666667,
+        -0.08333333333333333
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.125,
+      "CI95": [
+        -0.2916666666666667,
+        0.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.125,
+      "CI95": [
+        -0.2916666666666667,
+        0.041666666666666664
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.2852255688357501,
+      "CI95": [
+        0.12663380368529592,
+        0.4624113135990414
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.8255530256340796,
+      "CI95": [
+        0.6734649871762348,
+        0.9581589903144337
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7024801795860469,
+      "CI95": [
+        0.5222726353874939,
+        0.8611533900511367
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.5849033215587168,
+      "CI95": [
+        0.4019965076206778,
+        0.7627246725605099
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.24064970407536287,
+      "CI95": [
+        -0.40446054866203074,
+        -0.09042150680628022
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1230728460480327,
+      "CI95": [
+        -0.27350693403034376,
+        0.0002604025197358813
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.11757685802733016,
+      "CI95": [
+        -0.26278558676817065,
+        0.012567688227759199
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.6666666666666666,
+      "CI95": [
+        0.4583333333333333,
+        0.8333333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.9583333333333334,
+      "CI95": [
+        0.875,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.9166666666666666,
+      "CI95": [
+        0.7916666666666666,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.041666666666666664,
+      "CI95": [
+        0.0,
+        0.125
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.041666666666666664,
+      "CI95": [
+        -0.20833333333333334,
+        0.08333333333333333
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.6436022050007008,
+      "CI95": [
+        0.4684967409188342,
+        0.8105456039975375
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.9584568307022551,
+      "CI95": [
+        0.8758591749074763,
+        0.9999940125918121
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.909264992867269,
+      "CI95": [
+        0.8030335770331537,
+        0.990698647313376
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.9999995001867465,
+      "CI95": [
+        0.9999988597811122,
+        0.9999999422962796
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.04154266948449142,
+      "CI95": [
+        5.738750069129647e-06,
+        0.1241400701123998
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.049191837834986187,
+      "CI95": [
+        -0.17258874613006717,
+        0.06715598272572817
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.09073450731947759,
+      "CI95": [
+        0.00930110484606533,
+        0.19696623789404777
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.24719101123595505,
+      "CI95": [
+        0.15730337078651685,
+        0.33707865168539325
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.5617977528089888,
+      "CI95": [
+        0.4606741573033708,
+        0.6629213483146067
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.4606741573033708,
+      "CI95": [
+        0.3595505617977528,
+        0.5617977528089888
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.47191011235955055,
+      "CI95": [
+        0.3707865168539326,
+        0.5730337078651685
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.0898876404494382,
+      "CI95": [
+        -0.15730337078651685,
+        -0.02247191011235955
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.10112359550561797,
+      "CI95": [
+        -0.20224719101123595,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.011235955056179775,
+      "CI95": [
+        -0.07865168539325842,
+        0.09016853932583861
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.2759370760885926,
+      "CI95": [
+        0.19581207750492982,
+        0.3607169154182573
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.5669706125659216,
+      "CI95": [
+        0.46822331020612,
+        0.6641501285172586
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.4665537389259318,
+      "CI95": [
+        0.36804081371282815,
+        0.561940207724615
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.4644639216073623,
+      "CI95": [
+        0.36442100987095355,
+        0.5635559109167864
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.10250669095855931,
+      "CI95": [
+        -0.1639369841194385,
+        -0.047885234715241386
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1004168736399897,
+      "CI95": [
+        -0.2022698364374117,
+        8.406576979320341e-05
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.0020898173185695933,
+      "CI95": [
+        -0.08431507419729527,
+        0.07896652797488905
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.8539325842696629,
+      "CI95": [
+        0.7752808988764045,
+        0.9213483146067416
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.8489971588280925,
+      "CI95": [
+        0.7828927435558382,
+        0.9089768902659889
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.9999964727717029,
+      "CI95": [
+        0.9999894271967539,
+        0.9999999980282351
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.99991138781221,
+      "CI95": [
+        0.9997948865829953,
+        0.999991433654542
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.9999962876492979,
+      "CI95": [
+        0.999991561420577,
+        0.9999993931916379
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -1.8512240499586404e-07,
+      "CI95": [
+        -3.360155846930808e-06,
+        4.1894344698432896e-06
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -8.508495949288583e-05,
+      "CI95": [
+        -0.00020123400523055913,
+        -8.436521802145223e-06
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 8.489983708788997e-05,
+      "CI95": [
+        6.766852134186307e-06,
+        0.0002010304650733562
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.19444444444444445,
+      "CI95": [
+        0.08333333333333333,
+        0.3333333333333333
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.2222222222222222,
+      "CI95": [
+        0.08333333333333333,
+        0.3611111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.2777777777777778,
+      "CI95": [
+        0.1388888888888889,
+        0.4166666666666667
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.2222222222222222,
+      "CI95": [
+        0.08333333333333333,
+        0.3611111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.1111111111111111,
+        0.1111111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.05555555555555555,
+      "CI95": [
+        -0.05555555555555555,
+        0.16666666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.05555555555555555,
+      "CI95": [
+        -0.16666666666666666,
+        0.05555555555555555
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.18955766859568376,
+      "CI95": [
+        0.078819418250543,
+        0.31441461468684195
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.2281886081705587,
+      "CI95": [
+        0.10028532372848273,
+        0.3671475516189864
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.3196230221530432,
+      "CI95": [
+        0.18348769914317117,
+        0.4652301302203697
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.20453834518095634,
+      "CI95": [
+        0.0917914389164816,
+        0.33040327858619545
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.023650262989602343,
+      "CI95": [
+        -0.12084754888183785,
+        0.07113929495520059
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.09143441398248456,
+      "CI95": [
+        0.0045591555793648405,
+        0.19671115789037547
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.1150846769720869,
+      "CI95": [
+        -0.20493363310578946,
+        -0.04035497159044427
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.75,
+      "CI95": [
+        0.6111111111111112,
+        0.8888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.75,
+      "CI95": [
+        0.6111111111111112,
+        0.8888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.8055555555555556,
+      "CI95": [
+        0.6666666666666666,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.7777777777777778,
+      "CI95": [
+        0.6388888888888888,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.027777777777777776,
+      "CI95": [
+        -0.05555555555555555,
+        0.1388888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.05555555555555555,
+      "CI95": [
+        -0.05555555555555555,
+        0.16666666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.027777777777777776,
+      "CI95": [
+        -0.1388888888888889,
+        0.05555555555555555
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.7436950034789387,
+      "CI95": [
+        0.5994241583585583,
+        0.8804891979825942
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.7366326655193229,
+      "CI95": [
+        0.5860127647011731,
+        0.8750596342678347
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.805275854203083,
+      "CI95": [
+        0.6702670004225595,
+        0.9181325901596228
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.7721567314705985,
+      "CI95": [
+        0.6333917461665005,
+        0.9028346055963591
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.03552406595127548,
+      "CI95": [
+        -0.04968653800055863,
+        0.12456069340177828
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.06864318868376001,
+      "CI95": [
+        -0.028032142806637225,
+        0.18075766473014696
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.033119122732484525,
+      "CI95": [
+        -0.12836490668260786,
+        0.03824684337558048
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.5769230769230769,
+      "CI95": [
+        0.38461538461538464,
+        0.7692307692307693
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.7692307692307693,
+      "CI95": [
+        0.6153846153846154,
+        0.9230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.7307692307692307,
+      "CI95": [
+        0.5384615384615384,
+        0.8846153846153846
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.7692307692307693,
+      "CI95": [
+        0.6153846153846154,
+        0.9230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.19230769230769232,
+        0.19230769230769232
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.038461538461538464,
+      "CI95": [
+        -0.19230769230769232,
+        0.11538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.038461538461538464,
+      "CI95": [
+        -0.11538461538461539,
+        0.19230769230769232
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.533011209442318,
+      "CI95": [
+        0.358610615288003,
+        0.7056774878194075
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.7499687638609678,
+      "CI95": [
+        0.5889682123880218,
+        0.892112526382237
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7409658128110793,
+      "CI95": [
+        0.5851564326133469,
+        0.8802857406818628
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.7648472628560098,
+      "CI95": [
+        0.611466870497603,
+        0.8999122546673519
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.014878498995042008,
+      "CI95": [
+        -0.11878968446436729,
+        0.1524466583619793
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.009002951049888387,
+      "CI95": [
+        -0.14586337186169557,
+        0.1262424591778996
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.023881450044930377,
+      "CI95": [
+        -0.12320826369631992,
+        0.17017518513748325
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.34615384615384615,
+      "CI95": [
+        0.19230769230769232,
+        0.5384615384615384
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.7692307692307693,
+      "CI95": [
+        0.6153846153846154,
+        0.9230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.4230769230769231,
+      "CI95": [
+        0.23076923076923078,
+        0.6153846153846154
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.6538461538461539,
+      "CI95": [
+        0.46153846153846156,
+        0.8461538461538461
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.11538461538461539,
+      "CI95": [
+        -0.23076923076923078,
+        0.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.34615384615384615,
+      "CI95": [
+        -0.5384615384615384,
+        -0.15384615384615385
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.23076923076923078,
+      "CI95": [
+        0.038461538461538464,
+        0.4230769230769231
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.35989920295105926,
+      "CI95": [
+        0.19481193873469835,
+        0.5461439180398832
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.7640805201363748,
+      "CI95": [
+        0.602037604805332,
+        0.9095445040977884
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.4354476993830312,
+      "CI95": [
+        0.2663973887649071,
+        0.6159079330761427
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.6557220017315005,
+      "CI95": [
+        0.48765434355636533,
+        0.8142836962052766
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.10835851840487426,
+      "CI95": [
+        -0.22436290775608558,
+        -0.0102867112707513
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.32863282075334366,
+      "CI95": [
+        -0.5304619737765981,
+        -0.12594845998502274
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Qwen3-8B",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.22027430234846937,
+      "CI95": [
+        0.04267786919387363,
+        0.40586810311020555
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.3333333333333333,
+      "CI95": [
+        0.16666666666666666,
+        0.5416666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.9166666666666666,
+      "CI95": [
+        0.7916666666666666,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.75,
+      "CI95": [
+        0.5833333333333334,
+        0.9166666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.6666666666666666,
+        0.9583333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.25,
+        0.08333333333333333
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.16666666666666666,
+      "CI95": [
+        -0.375,
+        0.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        -0.08333333333333333,
+        0.25
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.34965031677585884,
+      "CI95": [
+        0.17713345074719203,
+        0.5358894203270274
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.9095591927006286,
+      "CI95": [
+        0.789245638228432,
+        0.9990093617506859
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7504857857543851,
+      "CI95": [
+        0.5827439444194832,
+        0.9150392971388588
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.8486488331913166,
+      "CI95": [
+        0.6979802693892901,
+        0.9728065903600368
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.06091035950931204,
+      "CI95": [
+        -0.21455670747151426,
+        0.08003687148061238
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.15907340694624342,
+      "CI95": [
+        -0.3474145949370226,
+        0.005264691019944505
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.09816304743693138,
+      "CI95": [
+        -0.03579666865490184,
+        0.2480305212387278
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.5833333333333334,
+      "CI95": [
+        0.375,
+        0.7916666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.9166666666666666,
+      "CI95": [
+        0.7916666666666666,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.75,
+      "CI95": [
+        0.5833333333333334,
+        0.9166666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.16666666666666666,
+      "CI95": [
+        -0.3333333333333333,
+        -0.041666666666666664
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.25,
+      "CI95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.5832141746992187,
+      "CI95": [
+        0.37496154656245073,
+        0.7913183387773848
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.916391023887265,
+      "CI95": [
+        0.7914954705436353,
+        0.9999940713431706
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7587633072240845,
+      "CI95": [
+        0.5881906129725447,
+        0.9120393175688208
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.9982515008441687,
+      "CI95": [
+        0.9947595550485543,
+        0.9999991980273609
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0818604769569037,
+      "CI95": [
+        5.058797130249454e-06,
+        0.20466832547438987
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1576277166631805,
+      "CI95": [
+        -0.3065956722027279,
+        -0.04148111590158689
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.2394881936200842,
+      "CI95": [
+        0.08694399640084856,
+        0.40866922992884425
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.2696629213483146,
+      "CI95": [
+        0.1797752808988764,
+        0.3707865168539326
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.6741573033707865,
+      "CI95": [
+        0.5730337078651685,
+        0.7752808988764045
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.2808988764044944,
+      "CI95": [
+        0.19101123595505617,
+        0.3707865168539326
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.4943820224719101,
+      "CI95": [
+        0.39325842696629215,
+        0.5955056179775281
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.1797752808988764,
+      "CI95": [
+        -0.2696629213483146,
+        -0.10112359550561797
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.39325842696629215,
+      "CI95": [
+        -0.4943820224719101,
+        -0.29213483146067415
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.21348314606741572,
+      "CI95": [
+        0.12359550561797752,
+        0.3146067415730337
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.2694079249944075,
+      "CI95": [
+        0.18335917729837442,
+        0.3619716783944395
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.6837208005097736,
+      "CI95": [
+        0.5854489189404886,
+        0.777087455653332
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.28484202928922575,
+      "CI95": [
+        0.19750817262273007,
+        0.3779081073127834
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.49222952226748323,
+      "CI95": [
+        0.3909900130701217,
+        0.5934818258113654
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.1914912782422903,
+      "CI95": [
+        -0.2782051458310976,
+        -0.10997947835280235
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.39887877122054766,
+      "CI95": [
+        -0.49913612532240237,
+        -0.29922238603314255
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.2073874929782574,
+      "CI95": [
+        0.1155949730009552,
+        0.3042444581903051
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.9325842696629213,
+      "CI95": [
+        0.8764044943820225,
+        0.9775280898876404
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.0,
+      "CI95": [
+        0.0,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.9171136246471664,
+      "CI95": [
+        0.8603024043633758,
+        0.9648949181077032
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.9999991839295075,
+      "CI95": [
+        0.9999986021613086,
+        0.9999996394884048
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.999905267569021,
+      "CI95": [
+        0.9998551948819253,
+        0.9999445930062882
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.9999975403312685,
+      "CI95": [
+        0.9999958289205191,
+        0.9999987934178846
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -1.6435982390013943e-06,
+      "CI95": [
+        -3.3374823084499617e-06,
+        -3.659047031332751e-07
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -9.391636048658852e-05,
+      "CI95": [
+        -0.0001437942396099376,
+        -5.4606877017442276e-05
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 9.227276224758713e-05,
+      "CI95": [
+        5.3663584171306256e-05,
+        0.00014108677976961393
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.1111111111111111,
+      "CI95": [
+        0.027777777777777776,
+        0.2222222222222222
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.25,
+      "CI95": [
+        0.1111111111111111,
+        0.3888888888888889
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.1388888888888889,
+      "CI95": [
+        0.027777777777777776,
+        0.25
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.16666666666666666,
+      "CI95": [
+        0.05555555555555555,
+        0.3055555555555556
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.19444444444444445,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1111111111111111,
+      "CI95": [
+        -0.2222222222222222,
+        -0.027777777777777776
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.027777777777777776,
+      "CI95": [
+        0.0,
+        0.08333333333333333
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.10193724214557362,
+      "CI95": [
+        0.01925227060633244,
+        0.20314959306813554
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.2539247138406385,
+      "CI95": [
+        0.12610628452728145,
+        0.39806139148731134
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.13898879315897833,
+      "CI95": [
+        0.027916294329557778,
+        0.2501337839492921
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.16311839795857372,
+      "CI95": [
+        0.055630833946321796,
+        0.2980083068565976
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.09080631588206484,
+      "CI95": [
+        -0.18096844831298356,
+        -0.01951115268534007
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.11493592068166018,
+      "CI95": [
+        -0.21991843487123924,
+        -0.031586511534319114
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.02412960479959534,
+      "CI95": [
+        -6.555372080177916e-05,
+        0.072282881817136
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.7777777777777778,
+      "CI95": [
+        0.6388888888888888,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.7777777777777778,
+      "CI95": [
+        0.6388888888888888,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.75,
+      "CI95": [
+        0.6111111111111112,
+        0.8888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.75,
+      "CI95": [
+        0.6111111111111112,
+        0.8888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.027777777777777776,
+      "CI95": [
+        -0.08333333333333333,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.027777777777777776,
+      "CI95": [
+        -0.08333333333333333,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.08333333333333333,
+        0.08333333333333333
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.7750618246226185,
+      "CI95": [
+        0.6360807117970115,
+        0.9116201448598621
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.7777578289769063,
+      "CI95": [
+        0.6388690141772096,
+        0.9166242442694542
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7444985613534074,
+      "CI95": [
+        0.600359335611175,
+        0.8832095552834626
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.7484715498459941,
+      "CI95": [
+        0.6080894255846554,
+        0.8872085956365215
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.029286279130912293,
+      "CI95": [
+        -0.08615833020528921,
+        -5.105504871101061e-05
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.03325926762349891,
+      "CI95": [
+        -0.09412158364905637,
+        6.641260894500403e-05
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.003972988492586608,
+      "CI95": [
+        -0.07909323913319416,
+        0.08321387481432069
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.3076923076923077,
+      "CI95": [
+        0.15384615384615385,
+        0.5
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.8461538461538461,
+      "CI95": [
+        0.6923076923076923,
+        0.9615384615384616
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.4230769230769231,
+      "CI95": [
+        0.23076923076923078,
+        0.6153846153846154
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.6153846153846154,
+      "CI95": [
+        0.4230769230769231,
+        0.8076923076923077
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.23076923076923078,
+      "CI95": [
+        -0.4230769230769231,
+        -0.07692307692307693
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.4230769230769231,
+      "CI95": [
+        -0.6153846153846154,
+        -0.23076923076923078
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.19230769230769232,
+      "CI95": [
+        0.0,
+        0.38461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.313383106606827,
+      "CI95": [
+        0.15693921517994205,
+        0.5027996082206646
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.8452901831945145,
+      "CI95": [
+        0.7037829357245249,
+        0.9586890941195504
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.416455651502429,
+      "CI95": [
+        0.23407908818999443,
+        0.6074659025948654
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.6124848019917346,
+      "CI95": [
+        0.43191492247659347,
+        0.7939511823729365
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.23280538120277977,
+      "CI95": [
+        -0.3930810922204358,
+        -0.09151260704542392
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.4288345316920853,
+      "CI95": [
+        -0.6097384031410061,
+        -0.2516150320941659
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.19602915048930564,
+      "CI95": [
+        0.03127727522215086,
+        0.3739729763437361
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.5384615384615384,
+      "CI95": [
+        0.34615384615384615,
+        0.7307692307692307
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.7307692307692307,
+      "CI95": [
+        0.5384615384615384,
+        0.8846153846153846
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.7307692307692307,
+      "CI95": [
+        0.5384615384615384,
+        0.8846153846153846
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.6923076923076923,
+      "CI95": [
+        0.5,
+        0.8461538461538461
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.038461538461538464,
+      "CI95": [
+        -0.23076923076923078,
+        0.15384615384615385
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.23076923076923078,
+        0.19230769230769232
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.038461538461538464,
+      "CI95": [
+        -0.19230769230769232,
+        0.11538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.5466819736718106,
+      "CI95": [
+        0.3627065803557079,
+        0.7333157084358751
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.709541215294463,
+      "CI95": [
+        0.5376797841887213,
+        0.86305995063748
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.729444979764798,
+      "CI95": [
+        0.5570236220710154,
+        0.8813766522494968
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.6782830555426863,
+      "CI95": [
+        0.510539250620241,
+        0.8352770824590304
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.03125815975177662,
+      "CI95": [
+        -0.20013962546867956,
+        0.13677028299748292
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.01990376447033499,
+      "CI95": [
+        -0.179874847199598,
+        0.2201208229678639
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "gemma-3-12b-it",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.05116192422211164,
+      "CI95": [
+        -0.209118474954867,
+        0.10487573472353821
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.25,
+      "CI95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.5833333333333334,
+      "CI95": [
+        0.375,
+        0.7916666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.5,
+      "CI95": [
+        0.2916666666666667,
+        0.7083333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.4166666666666667,
+      "CI95": [
+        0.20833333333333334,
+        0.625
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.16666666666666666,
+      "CI95": [
+        -0.3333333333333333,
+        -0.041666666666666664
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.25,
+        0.08333333333333333
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.08333333333333333,
+      "CI95": [
+        -0.20833333333333334,
+        0.0
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.2991193526071149,
+      "CI95": [
+        0.16105732332049366,
+        0.45049562123687525
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.5929325963913029,
+      "CI95": [
+        0.4365345626458688,
+        0.748373787047407
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.45309411319472903,
+      "CI95": [
+        0.3007667872665524,
+        0.6062376517780299
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.41434406888233144,
+      "CI95": [
+        0.2490176022126943,
+        0.5849761735769029
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.17858852750897136,
+      "CI95": [
+        -0.2946643024924946,
+        -0.08233466152998406
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1398384831965738,
+      "CI95": [
+        -0.23574883526956014,
+        -0.06096512656077419
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.038750044312397605,
+      "CI95": [
+        -0.10082661748021883,
+        0.014523272528799286
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.625,
+      "CI95": [
+        0.4166666666666667,
+        0.7916666666666666
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.6666666666666666,
+        0.9583333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.6666666666666666,
+        0.9583333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.8333333333333334,
+      "CI95": [
+        0.6666666666666666,
+        0.9583333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.20833333333333334,
+        0.20833333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.20833333333333334,
+        0.20833333333333334
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.0,
+      "CI95": [
+        -0.125,
+        0.125
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.5643611045469822,
+      "CI95": [
+        0.41970978337488446,
+        0.7019748498339032
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.8156098516049063,
+      "CI95": [
+        0.7240228096145511,
+        0.8988572321916553
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7624968836218519,
+      "CI95": [
+        0.6647398465290408,
+        0.8507672809316686
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.7937409410928772,
+      "CI95": [
+        0.6845095153185108,
+        0.8884646113347172
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.02186891051202894,
+      "CI95": [
+        -0.12069655341581209,
+        0.07946901157873908
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.05311296798305421,
+      "CI95": [
+        -0.14094073376703625,
+        0.03811668385051439
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "MVRR",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.031244057471025283,
+      "CI95": [
+        -0.0221185053295924,
+        0.0841466706734074
+      ],
+      "clusters": 24,
+      "sources": 24
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.48314606741573035,
+      "CI95": [
+        0.38202247191011235,
+        0.5842696629213483
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.7191011235955056,
+      "CI95": [
+        0.6292134831460674,
+        0.8089887640449438
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.5393258426966292,
+      "CI95": [
+        0.43820224719101125,
+        0.6404494382022472
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.6067415730337079,
+      "CI95": [
+        0.5056179775280899,
+        0.7078651685393258
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.11235955056179775,
+      "CI95": [
+        -0.21348314606741572,
+        -0.011235955056179775
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1797752808988764,
+      "CI95": [
+        -0.29213483146067415,
+        -0.07865168539325842
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.06741573033707865,
+      "CI95": [
+        -0.033707865168539325,
+        0.1797752808988764
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.4804442910718898,
+      "CI95": [
+        0.40122084354552606,
+        0.5593605869389396
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.719450215696916,
+      "CI95": [
+        0.642798053240621,
+        0.792424627189484
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.5606741766134246,
+      "CI95": [
+        0.4806099124932597,
+        0.6385838389432005
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.6510056120494072,
+      "CI95": [
+        0.5768297750280525,
+        0.7216760182538942
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.06844460364750903,
+      "CI95": [
+        -0.12330255021933986,
+        -0.013279159687535045
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.1587760390834915,
+      "CI95": [
+        -0.22435816764545125,
+        -0.09707739895890488
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.09033143543598249,
+      "CI95": [
+        0.036564988063807785,
+        0.14431705721514207
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.6067415730337079,
+      "CI95": [
+        0.5056179775280899,
+        0.7078651685393258
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.9662921348314607,
+      "CI95": [
+        0.9213483146067416,
+        1.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.9438202247191011,
+      "CI95": [
+        0.8876404494382022,
+        0.9887640449438202
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.9325842696629213,
+      "CI95": [
+        0.8764044943820225,
+        0.9775280898876404
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.033707865168539325,
+      "CI95": [
+        -0.0898876404494382,
+        0.02247191011235955
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.02247191011235955,
+      "CI95": [
+        -0.07865168539325842,
+        0.033707865168539325
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.011235955056179775,
+      "CI95": [
+        -0.033707865168539325,
+        0.0
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.6067181742336881,
+      "CI95": [
+        0.531234428588259,
+        0.6795865719423618
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.9163011344274615,
+      "CI95": [
+        0.8779628881626547,
+        0.9494606151886308
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.8853032351962843,
+      "CI95": [
+        0.8469848181815386,
+        0.9197021751034873
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.8770622104238079,
+      "CI95": [
+        0.8419456112361476,
+        0.9089989798543965
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.03923892400365354,
+      "CI95": [
+        -0.07360508102140824,
+        -0.0008994018270219143
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.030997899231177288,
+      "CI95": [
+        -0.06358478493905398,
+        0.002607404260861335
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPZ",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.008241024772476242,
+      "CI95": [
+        -0.025583761932870774,
+        0.00961996364726433
+      ],
+      "clusters": 89,
+      "sources": 89
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.6944444444444444,
+      "CI95": [
+        0.5277777777777778,
+        0.8333333333333334
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.6666666666666666,
+      "CI95": [
+        0.5,
+        0.8055555555555556
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.9166666666666666,
+      "CI95": [
+        0.8333333333333334,
+        1.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.8055555555555556,
+      "CI95": [
+        0.6666666666666666,
+        0.9166666666666666
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.1388888888888889,
+      "CI95": [
+        0.0,
+        0.2777777777777778
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.25,
+      "CI95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.1111111111111111,
+      "CI95": [
+        -0.25,
+        0.0
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.6456936604419984,
+      "CI95": [
+        0.544662964876698,
+        0.7415113673263695
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.6905672975170902,
+      "CI95": [
+        0.5966411733522823,
+        0.7801273188196581
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.8329668700043515,
+      "CI95": [
+        0.771515855731549,
+        0.8843891454100583
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.7305767911014406,
+      "CI95": [
+        0.6567890294935697,
+        0.8005235457107583
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.04000949358435042,
+      "CI95": [
+        -0.022405806841815194,
+        0.10444553745078637
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.14239957248726137,
+      "CI95": [
+        0.06434012160604903,
+        0.22597086248829043
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": -0.10239007890291095,
+      "CI95": [
+        -0.163332192551514,
+        -0.043346857894052696
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.5833333333333334,
+      "CI95": [
+        0.4166666666666667,
+        0.75
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.75,
+      "CI95": [
+        0.6111111111111112,
+        0.8888888888888888
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.4444444444444444,
+      "CI95": [
+        0.2777777777777778,
+        0.6111111111111112
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.5277777777777778,
+      "CI95": [
+        0.3611111111111111,
+        0.6944444444444444
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.2222222222222222,
+      "CI95": [
+        -0.4166666666666667,
+        -0.027777777777777776
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.3055555555555556,
+      "CI95": [
+        -0.5,
+        -0.1111111111111111
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.08333333333333333,
+      "CI95": [
+        -0.027777777777777776,
+        0.19444444444444445
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.5332006500226006,
+      "CI95": [
+        0.43252332723743364,
+        0.6307444569924708
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.6273404639400921,
+      "CI95": [
+        0.53249606401877,
+        0.7161098805070761
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.4772697483203198,
+      "CI95": [
+        0.3869233128655433,
+        0.5671163516672001
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.5235378665579872,
+      "CI95": [
+        0.4250046638595663,
+        0.6169326055956259
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.10380259738210475,
+      "CI95": [
+        -0.19753801688087996,
+        -0.00448104757355272
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.15007071561977214,
+      "CI95": [
+        -0.24562582030241864,
+        -0.050457309598439866
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPS",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.046268118237667445,
+      "CI95": [
+        0.01583256367539369,
+        0.07967406533798518
+      ],
+      "clusters": 36,
+      "sources": 36
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.9230769230769231,
+      "CI95": [
+        0.8076923076923077,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.8846153846153846,
+      "CI95": [
+        0.7692307692307693,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.9230769230769231,
+      "CI95": [
+        0.8076923076923077,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 1.0,
+      "CI95": [
+        1.0,
+        1.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.11538461538461539,
+      "CI95": [
+        0.0,
+        0.23076923076923078
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": 0.038461538461538464,
+      "CI95": [
+        0.0,
+        0.11538461538461539
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.07692307692307693,
+      "CI95": [
+        0.0,
+        0.19230769230769232
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.8098044388599148,
+      "CI95": [
+        0.7244064752762136,
+        0.883615544106593
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.8451907949223973,
+      "CI95": [
+        0.7726790142933571,
+        0.9114509041178807
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.7709129067866116,
+      "CI95": [
+        0.7072051350333762,
+        0.8335366331729683
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.8639020284723073,
+      "CI95": [
+        0.817245971285518,
+        0.9071821966640226
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": 0.018711233549910014,
+      "CI95": [
+        -0.02658781140623172,
+        0.07147484086630035
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.07427788813578576,
+      "CI95": [
+        -0.11904314277112679,
+        -0.03406848846804835
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "initial",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.09298912168569579,
+      "CI95": [
+        0.04945964727138328,
+        0.1428103379213377
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP",
+      "value": 0.38461538461538464,
+      "CI95": [
+        0.19230769230769232,
+        0.5769230769230769
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE",
+      "value": 0.38461538461538464,
+      "CI95": [
+        0.19230769230769232,
+        0.5769230769230769
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE",
+      "value": 0.23076923076923078,
+      "CI95": [
+        0.07692307692307693,
+        0.38461538461538464
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP",
+      "value": 0.3076923076923077,
+      "CI95": [
+        0.15384615384615385,
+        0.5
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.07692307692307693,
+      "CI95": [
+        -0.23076923076923078,
+        0.07692307692307693
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.15384615384615385,
+      "CI95": [
+        -0.34615384615384615,
+        0.0
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.07692307692307693,
+      "CI95": [
+        -0.07692307692307693,
+        0.23076923076923078
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP",
+      "value": 0.3460729439625617,
+      "CI95": [
+        0.22790107494223266,
+        0.47033063602545394
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE",
+      "value": 0.4436901465163645,
+      "CI95": [
+        0.3340386841564285,
+        0.5614991656493948
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE",
+      "value": 0.373964452834243,
+      "CI95": [
+        0.29070227142769045,
+        0.45846043164142125
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP",
+      "value": 0.38950143542749305,
+      "CI95": [
+        0.3041732395720845,
+        0.4778055257787902
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-CUE",
+      "value": -0.05418871108887156,
+      "CI95": [
+        -0.13733043186834032,
+        0.01400732886925041
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "GP_CUE-minus-CUE",
+      "value": -0.06972569368212163,
+      "CI95": [
+        -0.15755887313275033,
+        0.010633708723264145
+      ],
+      "clusters": 26,
+      "sources": 26
+    },
+    {
+      "model": "Meta-Llama-3.1-8B-Instruct",
+      "construction": "NPVP",
+      "pattern": "all",
+      "target": "final",
+      "metric": "p_correct",
+      "operation": "CUE_GP-minus-GP_CUE",
+      "value": 0.015536982593250072,
+      "CI95": [
+        -0.039425488968945294,
+        0.064891350128738
+      ],
+      "clusters": 26,
+      "sources": 26
+    }
+  ],
+  "full_map_path": "/data1/xiangding/work/incremental-interpretation-revision/E74/cue-interpretation-retention-map-v1.json"
+}

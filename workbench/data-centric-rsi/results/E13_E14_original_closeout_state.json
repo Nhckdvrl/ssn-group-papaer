@@ -1,0 +1,622 @@
+{
+  "started_utc": "2026-10-04T12:48:28.940276+00:00",
+  "status": "failed",
+  "runs": [
+    {
+      "experiment": "E13",
+      "name": "init_replay_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:11:24.712966+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29/model",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "0",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/init_replay_s29/eval"
+        ],
+        "gpu": 0,
+        "token": "907cfc0b819b4d81bef3f0fffd573880",
+        "cap_seconds": 5444,
+        "owner_pid": 3579809,
+        "owner_ticks": "1834398390",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "5cfea2a8f82e662c85570528f83d388d8fd4613a",
+        "pid": 3580239,
+        "start_ticks": "1834404108",
+        "guard_pid": 3580240,
+        "guard_ticks": "1834404113"
+      },
+      "status": "failed",
+      "error": "AssertionError()",
+      "cleanup": {
+        "utc": "2026-10-04T13:35:13.075105+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T13:35:13.102342+00:00",
+      "eval_wrapper_seconds": 1428.2541002370417,
+      "returncode": 0,
+      "ssh_returncode": 1
+    },
+    {
+      "experiment": "E13",
+      "name": "used_replay_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:11:25.656727+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e13/train_runs/used_replay_s29/model",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "1",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval"
+        ],
+        "gpu": 1,
+        "token": "bb28b6190c654c0686ac0b28816d02dd",
+        "cap_seconds": 5444,
+        "owner_pid": 3579810,
+        "owner_ticks": "1834398390",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "5cfea2a8f82e662c85570528f83d388d8fd4613a",
+        "pid": 3580245,
+        "start_ticks": "1834404194",
+        "guard_pid": 3580246,
+        "guard_ticks": "1834404194"
+      },
+      "status": "completed",
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 28.82925484282133,
+            "max": 100.0,
+            "normalized": 0.28829254842821334,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 38.5,
+            "max": 100.0,
+            "normalized": 0.385,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 52.749140893470795,
+            "max": 100.0,
+            "normalized": 0.5274914089347079,
+            "field": "dev Overall \u00d7 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 33.77777777777778,
+            "max": 100.0,
+            "normalized": 0.3377777777777778,
+            "field": "validation Overall \u00d7 100"
+          },
+          "MMStar": {
+            "raw": 31.266666666666666,
+            "max": 100.0,
+            "normalized": 0.31266666666666665,
+            "field": "none Overall \u00d7 100"
+          },
+          "MMVet": {
+            "raw": 29.724770642201843,
+            "max": 100.0,
+            "normalized": 0.2972477064220184,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 23.400000000000002,
+            "max": 100.0,
+            "normalized": 0.234,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 298.0,
+            "max": 1000.0,
+            "normalized": 0.298,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.335059513528673,
+        "accuracy_percent": 33.5059513528673,
+        "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval/results/results.json"
+      },
+      "completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_replay_s29/eval/results",
+        "error": null,
+        "wall_seconds": 1424.7
+      },
+      "cleanup": {
+        "utc": "2026-10-04T13:35:14.083837+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T13:35:14.111233+00:00",
+      "eval_wrapper_seconds": 1428.4498789273202,
+      "returncode": 0,
+      "ssh_returncode": 0
+    },
+    {
+      "experiment": "E13",
+      "name": "used_fresh_law_s29",
+      "status": "failed_before_result",
+      "error": "CalledProcessError(1, ['ssh', '-o', 'ConnectTimeout=15', 'fvcrc13', 'python3 /home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e13_e14_closeout_parallel.py result --directory /var/tmp/xiang-data-rsi/closeout/attempt1/used_fresh_law_s29'])",
+      "ssh_returncode": 1
+    },
+    {
+      "experiment": "E13",
+      "name": "init_fresh_selected_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:19:58.646659+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_selected_s29/model",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "2",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/init_fresh_selected_s29/eval"
+        ],
+        "gpu": 2,
+        "token": "789244f7d3ea46308fee12db806f7b9c",
+        "cap_seconds": 5444,
+        "owner_pid": 3584377,
+        "owner_ticks": "1834449793",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "fa181467438e41c8d1f9eef308fa21662ada3b91",
+        "pid": 3584833,
+        "start_ticks": "1834455498",
+        "guard_pid": 3584834,
+        "guard_ticks": "1834455498"
+      },
+      "status": "failed",
+      "error": "AssertionError()",
+      "cleanup": {
+        "utc": "2026-10-04T13:43:22.126985+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T13:43:22.155349+00:00",
+      "eval_wrapper_seconds": 1403.456688541919,
+      "returncode": 0,
+      "ssh_returncode": 1
+    },
+    {
+      "experiment": "E13",
+      "name": "used_fresh_selected_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:19:59.954855+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e13/train_runs/used_fresh_selected_s29/model",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "3",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/used_fresh_selected_s29/eval"
+        ],
+        "gpu": 3,
+        "token": "9b40c831d49a47e1bf5c4110680251d8",
+        "cap_seconds": 5444,
+        "owner_pid": 3584367,
+        "owner_ticks": "1834449780",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "fa181467438e41c8d1f9eef308fa21662ada3b91",
+        "pid": 3584841,
+        "start_ticks": "1834455626",
+        "guard_pid": 3584842,
+        "guard_ticks": "1834455626"
+      },
+      "status": "failed",
+      "error": "AssertionError()",
+      "cleanup": {
+        "utc": "2026-10-04T13:43:47.846655+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T13:43:47.870645+00:00",
+      "eval_wrapper_seconds": 1427.88768267259,
+      "returncode": 0,
+      "ssh_returncode": 1
+    },
+    {
+      "experiment": "E14",
+      "name": "init_source_only_fresh_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:21:48.233460+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e14/copied_models/init_source_only_fresh_s29",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "3",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/init_source_only_fresh_s29/eval"
+        ],
+        "gpu": 3,
+        "token": "593d7f8781044cda97e366449a367a90",
+        "cap_seconds": 10654,
+        "owner_pid": 513388,
+        "owner_ticks": "1497551828",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "d58a7da1ab457e2d61ce3475d0d9d3584b9204b8",
+        "pid": 513457,
+        "start_ticks": "1497553278",
+        "guard_pid": 513458,
+        "guard_ticks": "1497553278"
+      },
+      "status": "completed",
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 29.656006322551423,
+            "max": 100.0,
+            "normalized": 0.29656006322551426,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 37.4,
+            "max": 100.0,
+            "normalized": 0.374,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 49.48453608247423,
+            "max": 100.0,
+            "normalized": 0.4948453608247423,
+            "field": "dev Overall \u00d7 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 34.77777777777778,
+            "max": 100.0,
+            "normalized": 0.3477777777777778,
+            "field": "validation Overall \u00d7 100"
+          },
+          "MMStar": {
+            "raw": 32.0,
+            "max": 100.0,
+            "normalized": 0.32,
+            "field": "none Overall \u00d7 100"
+          },
+          "MMVet": {
+            "raw": 26.055045871559646,
+            "max": 100.0,
+            "normalized": 0.26055045871559646,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 24.5,
+            "max": 100.0,
+            "normalized": 0.245,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 284.0,
+            "max": 1000.0,
+            "normalized": 0.284,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.32784170756795383,
+        "accuracy_percent": 32.78417075679538,
+        "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/init_source_only_fresh_s29/eval/results/results.json"
+      },
+      "completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/init_source_only_fresh_s29/eval/results",
+        "error": null,
+        "wall_seconds": 1480.7
+      },
+      "cleanup": {
+        "utc": "2026-10-04T13:46:30.574879+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T13:46:30.594550+00:00",
+      "eval_wrapper_seconds": 1482.2788489796221,
+      "returncode": 0,
+      "ssh_returncode": 0
+    },
+    {
+      "experiment": "E13",
+      "name": "init_fresh_law_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:36:20.071861+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e13/train_runs/init_fresh_law_s29/model",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "1",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/init_fresh_law_s29/eval"
+        ],
+        "gpu": 1,
+        "token": "f165db984adf40dcaea7a436488b1513",
+        "cap_seconds": 5444,
+        "owner_pid": 3594066,
+        "owner_ticks": "1834548489",
+        "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+        "source_git_sha": "882a4f89b3116b999a8042075a2a55a640983ca0",
+        "pid": 3594608,
+        "start_ticks": "1834553643",
+        "guard_pid": 3594609,
+        "guard_ticks": "1834553643"
+      },
+      "status": "completed",
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 30.731933914224538,
+            "max": 100.0,
+            "normalized": 0.30731933914224535,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 37.8,
+            "max": 100.0,
+            "normalized": 0.37799999999999995,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 51.20274914089347,
+            "max": 100.0,
+            "normalized": 0.5120274914089347,
+            "field": "dev Overall \u00d7 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 34.22222222222222,
+            "max": 100.0,
+            "normalized": 0.3422222222222222,
+            "field": "validation Overall \u00d7 100"
+          },
+          "MMStar": {
+            "raw": 31.666666666666664,
+            "max": 100.0,
+            "normalized": 0.31666666666666665,
+            "field": "none Overall \u00d7 100"
+          },
+          "MMVet": {
+            "raw": 27.52293577981653,
+            "max": 100.0,
+            "normalized": 0.2752293577981653,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 23.0,
+            "max": 100.0,
+            "normalized": 0.23,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 288.0,
+            "max": 1000.0,
+            "normalized": 0.288,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.3311831346547793,
+        "accuracy_percent": 33.118313465477925,
+        "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/init_fresh_law_s29/eval/results/results.json"
+      },
+      "completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/init_fresh_law_s29/eval/results",
+        "error": null,
+        "wall_seconds": 1519.2
+      },
+      "cleanup": {
+        "utc": "2026-10-04T14:01:41.808891+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T14:01:41.832304+00:00",
+      "eval_wrapper_seconds": 1521.68241642043,
+      "returncode": 0,
+      "ssh_returncode": 0
+    },
+    {
+      "experiment": "E14",
+      "name": "used_source_only_fresh_s29",
+      "launch": {
+        "started_utc": "2026-10-04T13:47:40.667314+00:00",
+        "command": [
+          "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+          "--model",
+          "/var/tmp/xiang-data-rsi/e14/copied_models/used_source_only_fresh_s29",
+          "--eval-data",
+          "/var/tmp/xiang-data-rsi/e12/LMUData",
+          "--judge-url",
+          "http://fvcrc20:8034/v1/chat/completions",
+          "--gpu",
+          "3",
+          "--out",
+          "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval"
+        ],
+        "gpu": 3,
+        "token": "8e92e1e113694f0cb99a5a3b778fd27d",
+        "cap_seconds": 10654,
+        "owner_pid": 522585,
+        "owner_ticks": "1497707251",
+        "source_sha256": "31e0b450ede89afb6cd0b14ea40b5eef6b2b3a48abca5fa2a48b787aa2ae4891",
+        "source_git_sha": "2753beae6f6406f43d76a4e331af5b2f1409445e",
+        "pid": 522603,
+        "start_ticks": "1497708518",
+        "guard_pid": 522604,
+        "guard_ticks": "1497708519"
+      },
+      "status": "completed",
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 27.164952765324745,
+            "max": 100.0,
+            "normalized": 0.27164952765324746,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 39.7,
+            "max": 100.0,
+            "normalized": 0.397,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 52.92096219931272,
+            "max": 100.0,
+            "normalized": 0.5292096219931272,
+            "field": "dev Overall \u00d7 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 35.333333333333336,
+            "max": 100.0,
+            "normalized": 0.35333333333333333,
+            "field": "validation Overall \u00d7 100"
+          },
+          "MMStar": {
+            "raw": 31.6,
+            "max": 100.0,
+            "normalized": 0.316,
+            "field": "none Overall \u00d7 100"
+          },
+          "MMVet": {
+            "raw": 28.256880733944968,
+            "max": 100.0,
+            "normalized": 0.28256880733944967,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 23.3,
+            "max": 100.0,
+            "normalized": 0.233,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 297.0,
+            "max": 1000.0,
+            "normalized": 0.297,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.3349701612898947,
+        "accuracy_percent": 33.49701612898947,
+        "source_results": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval/results/results.json"
+      },
+      "completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/closeout/attempt1/used_source_only_fresh_s29/eval/results",
+        "error": null,
+        "wall_seconds": 1351.9
+      },
+      "cleanup": {
+        "utc": "2026-10-04T14:10:14.636668+00:00",
+        "before": [],
+        "remaining": []
+      },
+      "finished_utc": "2026-10-04T14:10:14.656338+00:00",
+      "eval_wrapper_seconds": 1353.9356006924063,
+      "returncode": 0,
+      "ssh_returncode": 0
+    }
+  ],
+  "active": [],
+  "scope": "eight existing terminal models only, parallel independent single-A100 evaluations",
+  "prior_failure_audit": "E14_judge_startup_failure_audit.json",
+  "judge_recovery_cap_seconds": 28800,
+  "API_paid_requests": 0,
+  "driver_pid": 3438298,
+  "driver_ticks": "2777341477",
+  "verified_judge_manifest_sha256": "010e1924c40be5b3972bb4f2f6ea908be50bcddc6c54942732f3473a0bff85f0",
+  "judge": {
+    "started_utc": "2026-10-04T12:48:31.571996+00:00",
+    "command": [
+      "/home/xiang/.venvs/vllm023-cu128/bin/python",
+      "-m",
+      "vllm.entrypoints.openai.api_server",
+      "--model",
+      "/var/tmp/xiang-data-rsi/closeout/model",
+      "--served-model-name",
+      "Qwen3.5-27B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8034",
+      "--dtype",
+      "bfloat16",
+      "--tensor-parallel-size",
+      "1",
+      "--max-model-len",
+      "4096",
+      "--max-num-seqs",
+      "16",
+      "--gpu-memory-utilization",
+      "0.78",
+      "--default-chat-template-kwargs",
+      "{\"enable_thinking\":false}"
+    ],
+    "gpu": 0,
+    "token": "6ae6121fe0f3447f9b055ffcb0951f94",
+    "cap_seconds": 28800,
+    "owner_pid": 3438298,
+    "owner_ticks": "2777341477",
+    "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+    "source_git_sha": "c2f9308dec1641d264402bb0493e135521156aac",
+    "pid": 3438337,
+    "start_ticks": "2777342050",
+    "guard_pid": 3438338,
+    "guard_ticks": "2777342050"
+  },
+  "error": "AssertionError('One or more terminal evaluations failed; preserve all attempts')",
+  "judge_cleanup": {
+    "utc": "2026-10-04T14:10:43.247155+00:00",
+    "before": [
+      {
+        "pid": 3438337,
+        "start_ticks": "2777342050"
+      },
+      {
+        "pid": 3441935,
+        "start_ticks": "2777379444"
+      }
+    ],
+    "remaining": []
+  },
+  "judge_launch_to_cleanup_seconds": 4931.756124,
+  "finished_utc": "2026-10-04T14:10:43.328166+00:00"
+}

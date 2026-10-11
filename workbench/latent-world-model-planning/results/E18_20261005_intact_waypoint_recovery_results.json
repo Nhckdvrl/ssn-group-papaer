@@ -1,0 +1,1764 @@
+{
+  "completed": true,
+  "new_continuations": 576,
+  "matched_fork_reference_sha256": "d73b67c5ccbc1d1fe392c38ceaaecf7ee406fed96bebeb047e3a5e383e0dfe8c",
+  "groups": [
+    {
+      "config": {
+        "task": "tworoom",
+        "methods": [
+          "WAYPOINT-FEEDBACK",
+          "WAYPOINT-OPEN"
+        ],
+        "conditions": [
+          "nominal",
+          "gain0.7",
+          "physics"
+        ],
+        "budget": 100,
+        "fork_step": 10,
+        "response_end_step": 25,
+        "source": {
+          "checkpoint": {
+            "task": "tworoom",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/tworoom.pt",
+            "sha256": "93ed1ef36e59075f39fb5d2ea9f4e25ded824ee2d57496b39bbdb372bad0392a",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "807717731c2789e67f6411738681c90f997f58a17f3744f336a96d3b88e366f9",
+          "normalizer_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "script_sha256": "a32ec6abc1efc6b62e29e05cf74871fc7c52eaf814d79223895fb8235c1040c2",
+        "helper_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "fork_helper_sha256": "236f3bc817a121e13a93ca04c45fe8a11f4c0a491c8a61c193a8295546a51aac",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "base_config_sha256": "95c43e78607cc2d86fe181115f8023df07d138efe2df01667f5851a8f37cfbfc",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Frozen full joint source0/local inverse mean; same matched 15step window and EX25 suffix. References are imagined, no privileged or true future input. One trainseed/development goals; not original RWM or new adaptive tracking claim."
+      },
+      "rows_sha256": "1a7bf6f9012b02d41d060701cd4f22f48886f09048e161705c2ed9eb839964ea",
+      "preflight_sha256": "a98cacdeedb0730011c5c812a7372f8dac3c34d7a3c5043df58e261b9efe1344",
+      "independent_cpu_queries": 626,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E18-intact-waypoints-tworoom"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "methods": [
+          "WAYPOINT-FEEDBACK",
+          "WAYPOINT-OPEN"
+        ],
+        "conditions": [
+          "nominal",
+          "gain0.7",
+          "physics"
+        ],
+        "budget": 100,
+        "fork_step": 10,
+        "response_end_step": 25,
+        "source": {
+          "checkpoint": {
+            "task": "pusht",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/pusht.pt",
+            "sha256": "80312771c15e50ba4b3eb3eb9a910fe6dc0a3bd140f7df1396eea306bf89d012",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "04d4c15b9f8dff4e8638d2dd402009b9a795c0f8935e798fc38eaf72460af8b0",
+          "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "script_sha256": "a32ec6abc1efc6b62e29e05cf74871fc7c52eaf814d79223895fb8235c1040c2",
+        "helper_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "fork_helper_sha256": "236f3bc817a121e13a93ca04c45fe8a11f4c0a491c8a61c193a8295546a51aac",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "base_config_sha256": "fbe4e67bdcc4a001df51162c35228a3003a6d29575714adc90a2839355b0c73e",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Frozen full joint source0/local inverse mean; same matched 15step window and EX25 suffix. References are imagined, no privileged or true future input. One trainseed/development goals; not original RWM or new adaptive tracking claim."
+      },
+      "rows_sha256": "c52dee1fb8479f30c2f97812d678b3e558243a74de9640d748f14fc6869eb190",
+      "preflight_sha256": "85cb3b4927d9fac4eff0ae59d0b17f5ab6228370c0017b0725d2c9fac93a0067",
+      "independent_cpu_queries": 815,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E18-intact-waypoints-pusht"
+    }
+  ],
+  "counts": [
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 37,
+      "near_successes": 22,
+      "far_successes": 15,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 9,
+      "env_steps": 1899,
+      "response_inverse_calls": 105,
+      "suffix_full_plan_calls": 45,
+      "solver_seconds": 12.786960363388062
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 37,
+      "near_successes": 22,
+      "far_successes": 15,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 9,
+      "env_steps": 1765,
+      "response_inverse_calls": 93,
+      "suffix_full_plan_calls": 41,
+      "solver_seconds": 7.907374601811171
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 35,
+      "near_successes": 22,
+      "far_successes": 13,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 7,
+      "env_steps": 2240,
+      "response_inverse_calls": 112,
+      "suffix_full_plan_calls": 61,
+      "solver_seconds": 15.990511905401945
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 33,
+      "near_successes": 21,
+      "far_successes": 12,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 7,
+      "env_steps": 2328,
+      "response_inverse_calls": 111,
+      "suffix_full_plan_calls": 65,
+      "solver_seconds": 12.316980045288801
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 37,
+      "near_successes": 23,
+      "far_successes": 14,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 9,
+      "env_steps": 2030,
+      "response_inverse_calls": 104,
+      "suffix_full_plan_calls": 54,
+      "solver_seconds": 14.370307203382254
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 35,
+      "near_successes": 21,
+      "far_successes": 14,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 9,
+      "env_steps": 2091,
+      "response_inverse_calls": 101,
+      "suffix_full_plan_calls": 55,
+      "solver_seconds": 10.484154433012009
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 28,
+      "near_successes": 22,
+      "far_successes": 6,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 2917,
+      "response_inverse_calls": 133,
+      "suffix_full_plan_calls": 81,
+      "solver_seconds": 21.50062483921647
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 26,
+      "near_successes": 21,
+      "far_successes": 5,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 2975,
+      "response_inverse_calls": 136,
+      "suffix_full_plan_calls": 80,
+      "solver_seconds": 15.679536238312721
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 23,
+      "near_successes": 20,
+      "far_successes": 3,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 3276,
+      "response_inverse_calls": 138,
+      "suffix_full_plan_calls": 100,
+      "solver_seconds": 25.79926573857665
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 15,
+      "near_successes": 14,
+      "far_successes": 1,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 3815,
+      "response_inverse_calls": 138,
+      "suffix_full_plan_calls": 115,
+      "solver_seconds": 22.12361689284444
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "n": 48,
+      "successes": 20,
+      "near_successes": 15,
+      "far_successes": 5,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 3479,
+      "response_inverse_calls": 134,
+      "suffix_full_plan_calls": 101,
+      "solver_seconds": 25.19892691075802
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "n": 48,
+      "successes": 19,
+      "near_successes": 15,
+      "far_successes": 4,
+      "initial_successes": 1,
+      "absorbed_common_prefix": 2,
+      "env_steps": 3435,
+      "response_inverse_calls": 136,
+      "suffix_full_plan_calls": 98,
+      "solver_seconds": 19.00728701427579
+    }
+  ],
+  "effects": [
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0625,
+      "helped": 3,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.14583333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.020833333333333332,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0625,
+      "helped": 3,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.14583333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.08333333333333333,
+      "helped": 4,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.020833333333333332,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.020833333333333332,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0625
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 3,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "tworoom",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0625,
+      "helped": 4,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.020833333333333332,
+        0.14583333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.125,
+      "helped": 3,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.25
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 2,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.020833333333333332,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": -0.041666666666666664,
+      "helped": 1,
+      "harmed": 3,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.08333333333333333,
+      "helped": 0,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 3,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "nominal",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.14583333333333334,
+      "helped": 8,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        0.041666666666666664,
+        0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.25,
+      "helped": 6,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.041666666666666664,
+      "helped": 3,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": -0.020833333333333332,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": -0.125,
+      "helped": 0,
+      "harmed": 6,
+      "paired_anchor_bootstrap_95": [
+        -0.22916666666666666,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.16666666666666666,
+      "helped": 0,
+      "harmed": 4,
+      "paired_anchor_bootstrap_95": [
+        -0.3333333333333333,
+        -0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": -0.08333333333333333,
+      "helped": 0,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.16666666666666666,
+      "helped": 8,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0625,
+        0.2708333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.25,
+      "helped": 6,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.08333333333333333,
+        0.4166666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "gain0.7",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 2,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.16666666666666666
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.020833333333333332,
+      "helped": 3,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.0625,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 1,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.16666666666666666,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.08333333333333333,
+      "helped": 2,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": -0.020833333333333332,
+      "helped": 1,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.041666666666666664
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 0,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "HOLD",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 1,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.125,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.0,
+      "helped": 2,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": -0.041666666666666664,
+      "helped": 1,
+      "harmed": 2,
+      "paired_anchor_bootstrap_95": [
+        -0.20833333333333334,
+        0.08333333333333333
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-OPEN",
+      "reference": "REFRESH5",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 1,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.125
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "all",
+      "n": 48,
+      "mean_delta": 0.020833333333333332,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.041666666666666664,
+        0.10416666666666667
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "near",
+      "n": 24,
+      "mean_delta": 0.0,
+      "helped": 0,
+      "harmed": 0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "train_sources": 1
+    },
+    {
+      "task": "pusht",
+      "condition": "physics",
+      "method": "WAYPOINT-FEEDBACK",
+      "reference": "WAYPOINT-OPEN",
+      "tier": "far",
+      "n": 24,
+      "mean_delta": 0.041666666666666664,
+      "helped": 2,
+      "harmed": 1,
+      "paired_anchor_bootstrap_95": [
+        -0.08333333333333333,
+        0.20833333333333334
+      ],
+      "train_sources": 1
+    }
+  ],
+  "script_sha256": "3aa75cf20fe67c27d736ac252c4e9110217bb10f9b0eca901df38baf2eff7849",
+  "scope": "One frozen joint source0, all48 development goals/3conditions per task; imagined5step waypoints, original local inverse head with real-current vs predicted-current. Every issued/native/shift trace and typed query audited; CPU readout independently rerun on saved input embeddings. Real-current encoder is guarded in producer/preflight, not independently re-encoded every response. References and future suffix protocol identical to auditedF1; one seed, no novelty/confirmation or optimized speed claim.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E18-intact-waypoint-audit/result.json"
+}

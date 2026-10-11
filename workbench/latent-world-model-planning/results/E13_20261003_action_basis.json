@@ -1,0 +1,851 @@
+{
+  "experiment": "E13 A4 classic action-trajectory parameterization exploratory",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261003-E13-action-basis-RTX-s0",
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "output": "/tmp/latent-wm-runs/20261003-E13-action-basis-RTX-s0",
+      "cpu_controls": false
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "methods": {
+      "ZERO25-N300": [
+        25,
+        300
+      ],
+      "ZERO25-N900": [
+        25,
+        900
+      ],
+      "LINEAR5-N300": [
+        5,
+        300
+      ],
+      "CONSTANT1-N300": [
+        1,
+        300
+      ]
+    },
+    "seed": 68000,
+    "goal_offsets": [
+      25,
+      75
+    ],
+    "count": 16,
+    "env_budgets": [
+      50,
+      150
+    ],
+    "execute_steps": 25,
+    "cem": {
+      "horizon": 1,
+      "K": 30,
+      "iterations": 30,
+      "initial_mean": 0,
+      "initial_std": 1
+    },
+    "transform": "normalized coordinates; linear interpolate align_corners=True; constant repeat; k25 identity",
+    "scope": "classic baseline/diagnostic, no training, no novelty or equal-exploration-variance/equal-wallclock claim; released WM training overlap unknown",
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "harness_sha256": "00ad0f52ddd51518103edf2bcd09a9fdfa87b979cd0bcd254e0f5a88ed7a853c",
+    "source_assets": {
+      "tworoom": {
+        "wm_sha256": "0822f1e3bc0f8822e68dd19ea92d82053f2f31a2e0f976051572dcb7605a8119",
+        "normalization_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d"
+      },
+      "pusht": {
+        "wm_sha256": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+        "normalization_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f"
+      }
+    },
+    "cem_sha256": "d88c86dcd1bd1e6d89221ac22079a3efe296cc7566532de0d36605e2f1536050",
+    "helpers": {
+      "first_wave.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+      "recovery_forks.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1"
+    },
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    }
+  },
+  "complete": {
+    "completed": true,
+    "episodes": 256,
+    "physical_env_steps": 16539
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "ZERO25-N300",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 13,
+      "wilson95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "total_env_steps": 384,
+      "candidate_evaluations": 180000,
+      "planning_seconds_total": 8.481873944401741,
+      "ZERO25-N900": {
+        "paired_gain": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "ZERO25-N900",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "total_env_steps": 330,
+      "candidate_evaluations": 459000,
+      "planning_seconds_total": 7.1811216697096825,
+      "ZERO25-N900": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.125,
+        "paired_ci95": [
+          0.0,
+          0.3125
+        ],
+        "helped": 2,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "LINEAR5-N300",
+      "parameter_dim": 10,
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "total_env_steps": 353,
+      "candidate_evaluations": 180000,
+      "planning_seconds_total": 8.64749176055193,
+      "ZERO25-N900": {
+        "paired_gain": -0.0625,
+        "paired_ci95": [
+          -0.1875,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 1
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0625,
+        "paired_ci95": [
+          0.0,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "CONSTANT1-N300",
+      "parameter_dim": 2,
+      "n": 16,
+      "successes": 8,
+      "wilson95": [
+        0.27999563610326017,
+        0.7200043638967398
+      ],
+      "total_env_steps": 582,
+      "candidate_evaluations": 234000,
+      "planning_seconds_total": 11.356260299682617,
+      "ZERO25-N900": {
+        "paired_gain": -0.4375,
+        "paired_ci95": [
+          -0.6875,
+          -0.1875
+        ],
+        "helped": 0,
+        "harmed": 7
+      },
+      "ZERO25-N300": {
+        "paired_gain": -0.3125,
+        "paired_ci95": [
+          -0.625,
+          0.0
+        ],
+        "helped": 1,
+        "harmed": 6
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "ZERO25-N300",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 10,
+      "wilson95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "total_env_steps": 1334,
+      "candidate_evaluations": 522000,
+      "planning_seconds_total": 24.8802638836205,
+      "ZERO25-N900": {
+        "paired_gain": -0.25,
+        "paired_ci95": [
+          -0.5,
+          -0.0625
+        ],
+        "helped": 0,
+        "harmed": 4
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "ZERO25-N900",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "total_env_steps": 830,
+      "candidate_evaluations": 972000,
+      "planning_seconds_total": 15.384125996381044,
+      "ZERO25-N900": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.25,
+        "paired_ci95": [
+          0.0625,
+          0.5
+        ],
+        "helped": 4,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "LINEAR5-N300",
+      "parameter_dim": 10,
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "total_env_steps": 824,
+      "candidate_evaluations": 324000,
+      "planning_seconds_total": 15.639008816331625,
+      "ZERO25-N900": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          -0.25,
+          0.25
+        ],
+        "helped": 2,
+        "harmed": 2
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.25,
+        "paired_ci95": [
+          -0.0015624999999999112,
+          0.5
+        ],
+        "helped": 5,
+        "harmed": 1
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "CONSTANT1-N300",
+      "parameter_dim": 2,
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "total_env_steps": 1426,
+      "candidate_evaluations": 531000,
+      "planning_seconds_total": 25.53256779164076,
+      "ZERO25-N900": {
+        "paired_gain": -0.3125,
+        "paired_ci95": [
+          -0.5625,
+          -0.0625
+        ],
+        "helped": 1,
+        "harmed": 6
+      },
+      "ZERO25-N300": {
+        "paired_gain": -0.0625,
+        "paired_ci95": [
+          -0.3125,
+          0.1875
+        ],
+        "helped": 2,
+        "harmed": 3
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "ZERO25-N300",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "total_env_steps": 419,
+      "candidate_evaluations": 162000,
+      "planning_seconds_total": 7.960676960647106,
+      "ZERO25-N900": {
+        "paired_gain": -0.125,
+        "paired_ci95": [
+          -0.3125,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 2
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "ZERO25-N900",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 16,
+      "wilson95": [
+        0.8063923194655637,
+        1.0000000000000002
+      ],
+      "total_env_steps": 357,
+      "candidate_evaluations": 432000,
+      "planning_seconds_total": 7.100680146366358,
+      "ZERO25-N900": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.125,
+        "paired_ci95": [
+          0.0,
+          0.3125
+        ],
+        "helped": 2,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "LINEAR5-N300",
+      "parameter_dim": 10,
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "total_env_steps": 447,
+      "candidate_evaluations": 171000,
+      "planning_seconds_total": 8.510246641933918,
+      "ZERO25-N900": {
+        "paired_gain": -0.0625,
+        "paired_ci95": [
+          -0.1875,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 1
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0625,
+        "paired_ci95": [
+          0.0,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "CONSTANT1-N300",
+      "parameter_dim": 2,
+      "n": 16,
+      "successes": 7,
+      "wilson95": [
+        0.23098652405492354,
+        0.6682144360118811
+      ],
+      "total_env_steps": 659,
+      "candidate_evaluations": 252000,
+      "planning_seconds_total": 12.440263904631138,
+      "ZERO25-N900": {
+        "paired_gain": -0.5625,
+        "paired_ci95": [
+          -0.8125,
+          -0.3125
+        ],
+        "helped": 0,
+        "harmed": 9
+      },
+      "ZERO25-N300": {
+        "paired_gain": -0.4375,
+        "paired_ci95": [
+          -0.6875,
+          -0.1875
+        ],
+        "helped": 0,
+        "harmed": 7
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "ZERO25-N300",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 3,
+      "wilson95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "total_env_steps": 2073,
+      "candidate_evaluations": 747000,
+      "planning_seconds_total": 37.31499283760786,
+      "ZERO25-N900": {
+        "paired_gain": -0.0625,
+        "paired_ci95": [
+          -0.1875,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 1
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "ZERO25-N900",
+      "parameter_dim": 50,
+      "n": 16,
+      "successes": 4,
+      "wilson95": [
+        0.10182067491213048,
+        0.49498316535508774
+      ],
+      "total_env_steps": 2023,
+      "candidate_evaluations": 2187000,
+      "planning_seconds_total": 36.631461791694164,
+      "ZERO25-N900": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          0.0,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 0
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0625,
+        "paired_ci95": [
+          0.0,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 0
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "LINEAR5-N300",
+      "parameter_dim": 10,
+      "n": 16,
+      "successes": 3,
+      "wilson95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "total_env_steps": 2098,
+      "candidate_evaluations": 756000,
+      "planning_seconds_total": 38.32938316464424,
+      "ZERO25-N900": {
+        "paired_gain": -0.0625,
+        "paired_ci95": [
+          -0.25,
+          0.125
+        ],
+        "helped": 1,
+        "harmed": 2
+      },
+      "ZERO25-N300": {
+        "paired_gain": 0.0,
+        "paired_ci95": [
+          -0.1875,
+          0.1875
+        ],
+        "helped": 1,
+        "harmed": 1
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "CONSTANT1-N300",
+      "parameter_dim": 2,
+      "n": 16,
+      "successes": 0,
+      "wilson95": [
+        0.0,
+        0.1936076805344365
+      ],
+      "total_env_steps": 2400,
+      "candidate_evaluations": 864000,
+      "planning_seconds_total": 43.46588196232915,
+      "ZERO25-N900": {
+        "paired_gain": -0.25,
+        "paired_ci95": [
+          -0.4375,
+          -0.0625
+        ],
+        "helped": 0,
+        "harmed": 4
+      },
+      "ZERO25-N300": {
+        "paired_gain": -0.1875,
+        "paired_ci95": [
+          -0.375,
+          0.0
+        ],
+        "helped": 0,
+        "harmed": 3
+      }
+    }
+  ],
+  "controls": {
+    "cpu_controls.json": [
+      {
+        "knots": 25,
+        "parameter_dim": 50,
+        "return_shape": [
+          1,
+          1,
+          50
+        ],
+        "model_candidate_shape": [
+          1,
+          300,
+          1,
+          50
+        ],
+        "calls": 30,
+        "passed": true
+      },
+      {
+        "knots": 5,
+        "parameter_dim": 10,
+        "return_shape": [
+          1,
+          1,
+          10
+        ],
+        "model_candidate_shape": [
+          1,
+          300,
+          1,
+          50
+        ],
+        "calls": 30,
+        "passed": true
+      },
+      {
+        "knots": 1,
+        "parameter_dim": 2,
+        "return_shape": [
+          1,
+          1,
+          2
+        ],
+        "model_candidate_shape": [
+          1,
+          300,
+          1,
+          50
+        ],
+        "calls": 30,
+        "passed": true
+      }
+    ],
+    "tworoom_native_control.json": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.00018310546875
+      }
+    ],
+    "pusht_native_control.json": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 0.000152587890625
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.0001220703125
+      }
+    ]
+  },
+  "artifact_sha256": {
+    "action_basis_used.py": "00ad0f52ddd51518103edf2bcd09a9fdfa87b979cd0bcd254e0f5a88ed7a853c",
+    "complete.json": "16fb60e5fa8ce07bc69b4c75e279e47d9df3f654c306d0bfb69983ea742c20c3",
+    "config.json": "8bed8091704cfd31471639d76019bf20502ce0f69d8138618925058d80e6b0d9",
+    "cpu_controls.json": "7ff1d67349a7dd21fd869bf366cd3cbb532f1eb33c774cc7cc0208b9168ef9db",
+    "first_wave_used.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+    "pusht_native_control.json": "e2d35e30051679e4ec41e67634431937a33b7ba6482c611076bd00d6e2a52803",
+    "recovery_forks_used.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "rows.json": "7708db79d8e857164009be161d14728d185ae87e6e19efd1f21363f9b76952b0",
+    "summary.json": "b90c23f406c3d799d141aaa70cdeb014d78ba48d2203afb520bb9c14867ecce7",
+    "tworoom_native_control.json": "c76707f804b3913f3a866dd132393e99f04ae653d406fb63725fbd9292a27190"
+  },
+  "interpretation": "Linear5 improves navigation-long vs ZERO300 by 4/16, paired episode CI approximately [-0.0015625,0.5]; equal count to ZERO900 is not equivalence (helped2/harmed2, CI[-0.25,0.25]). No benefit on PushT-long (3/16 vs3/16). Constant1 harms most strata. Classic trajectory-support/exploration-covariance change, not new method or equal prediction compute/wall-clock; no novelty/strong-neighbor/WM unseen-episode claim. One released WM per task and one planner seed. Timings are descriptive, occupancy not instrumented throughout; no speedup claim."
+}

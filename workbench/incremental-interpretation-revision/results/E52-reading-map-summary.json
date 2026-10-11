@@ -1,0 +1,1572 @@
+{
+  "data_sha256": "f6970dd7e80df56b202f14cc616ce9053b7eb72b8550312914b28ee9e7c03458",
+  "models": [
+    "Qwen3-1.7B",
+    "Qwen3-4B",
+    "Qwen3-8B",
+    "Qwen3-14B",
+    "Qwen3-32B",
+    "gemma-3-4b-it",
+    "gemma-3-12b-it",
+    "gemma-3-27b-it",
+    "Meta-Llama-3.1-8B-Instruct",
+    "Mistral-Small-24B-Instruct-2501",
+    "OLMo-2-1124-13B",
+    "OLMo-2-1124-13B-Instruct",
+    "Qwen3-4B-Base",
+    "gemma-3-4b-pt"
+  ],
+  "run_count": 38,
+  "paths": {
+    "full_map": "/data1/xiangding/work/incremental-interpretation-revision/E52/full-bf16-final-map-v2.json",
+    "finite_panel_macro": "/data1/xiangding/work/incremental-interpretation-revision/E52/full-bf16-final-macro-v1.json",
+    "native_fp32": "/data1/xiangding/work/incremental-interpretation-revision/E52/native-fp32-final-map-v1.json",
+    "public_reuse": "/data1/xiangding/work/incremental-interpretation-revision/E52/published-all-models-map-v1.json"
+  },
+  "no_convention_macro": {
+    "B/NEITHER/correct/gap/R0": {
+      "estimate": 0.24030801317686565,
+      "ci95": [
+        0.2160361105131246,
+        0.26560473437338883
+      ],
+      "n_clusters": 226,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 0,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 61,
+        "Qwen3-1.7B/NPS": 39,
+        "Qwen3-1.7B/NPVP": 35,
+        "Qwen3-1.7B/NPZ": 99,
+        "Qwen3-4B/MVRR": 61,
+        "Qwen3-4B/NPS": 39,
+        "Qwen3-4B/NPVP": 35,
+        "Qwen3-4B/NPZ": 99,
+        "Qwen3-8B/MVRR": 61,
+        "Qwen3-8B/NPS": 39,
+        "Qwen3-8B/NPVP": 35,
+        "Qwen3-8B/NPZ": 99,
+        "Qwen3-14B/MVRR": 61,
+        "Qwen3-14B/NPS": 39,
+        "Qwen3-14B/NPVP": 35,
+        "Qwen3-14B/NPZ": 99,
+        "Qwen3-32B/MVRR": 61,
+        "Qwen3-32B/NPS": 39,
+        "Qwen3-32B/NPVP": 35,
+        "Qwen3-32B/NPZ": 99,
+        "gemma-3-4b-it/MVRR": 61,
+        "gemma-3-4b-it/NPS": 39,
+        "gemma-3-4b-it/NPVP": 35,
+        "gemma-3-4b-it/NPZ": 99,
+        "gemma-3-12b-it/MVRR": 61,
+        "gemma-3-12b-it/NPS": 39,
+        "gemma-3-12b-it/NPVP": 35,
+        "gemma-3-12b-it/NPZ": 99,
+        "gemma-3-27b-it/MVRR": 61,
+        "gemma-3-27b-it/NPS": 39,
+        "gemma-3-27b-it/NPVP": 35,
+        "gemma-3-27b-it/NPZ": 99,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 61,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 39,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 35,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 99,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 61,
+        "Mistral-Small-24B-Instruct-2501/NPS": 39,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 35,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 99,
+        "OLMo-2-1124-13B/MVRR": 61,
+        "OLMo-2-1124-13B/NPS": 39,
+        "OLMo-2-1124-13B/NPVP": 35,
+        "OLMo-2-1124-13B/NPZ": 99,
+        "OLMo-2-1124-13B-Instruct/MVRR": 61,
+        "OLMo-2-1124-13B-Instruct/NPS": 39,
+        "OLMo-2-1124-13B-Instruct/NPVP": 35,
+        "OLMo-2-1124-13B-Instruct/NPZ": 99,
+        "Qwen3-4B-Base/MVRR": 61,
+        "Qwen3-4B-Base/NPS": 39,
+        "Qwen3-4B-Base/NPVP": 35,
+        "Qwen3-4B-Base/NPZ": 99,
+        "gemma-3-4b-pt/MVRR": 61,
+        "gemma-3-4b-pt/NPS": 39,
+        "gemma-3-4b-pt/NPVP": 35,
+        "gemma-3-4b-pt/NPZ": 99
+      },
+      "breadth_present": true
+    },
+    "B/NEITHER/correct/reduction/R1": {
+      "estimate": -0.012184873414381611,
+      "ci95": [
+        -0.027609317789441968,
+        0.0038824986870891237
+      ],
+      "n_clusters": 226,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 0,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 61,
+        "Qwen3-1.7B/NPS": 39,
+        "Qwen3-1.7B/NPVP": 35,
+        "Qwen3-1.7B/NPZ": 99,
+        "Qwen3-4B/MVRR": 61,
+        "Qwen3-4B/NPS": 39,
+        "Qwen3-4B/NPVP": 35,
+        "Qwen3-4B/NPZ": 99,
+        "Qwen3-8B/MVRR": 61,
+        "Qwen3-8B/NPS": 39,
+        "Qwen3-8B/NPVP": 35,
+        "Qwen3-8B/NPZ": 99,
+        "Qwen3-14B/MVRR": 61,
+        "Qwen3-14B/NPS": 39,
+        "Qwen3-14B/NPVP": 35,
+        "Qwen3-14B/NPZ": 99,
+        "Qwen3-32B/MVRR": 61,
+        "Qwen3-32B/NPS": 39,
+        "Qwen3-32B/NPVP": 35,
+        "Qwen3-32B/NPZ": 99,
+        "gemma-3-4b-it/MVRR": 61,
+        "gemma-3-4b-it/NPS": 39,
+        "gemma-3-4b-it/NPVP": 35,
+        "gemma-3-4b-it/NPZ": 99,
+        "gemma-3-12b-it/MVRR": 61,
+        "gemma-3-12b-it/NPS": 39,
+        "gemma-3-12b-it/NPVP": 35,
+        "gemma-3-12b-it/NPZ": 99,
+        "gemma-3-27b-it/MVRR": 61,
+        "gemma-3-27b-it/NPS": 39,
+        "gemma-3-27b-it/NPVP": 35,
+        "gemma-3-27b-it/NPZ": 99,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 61,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 39,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 35,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 99,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 61,
+        "Mistral-Small-24B-Instruct-2501/NPS": 39,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 35,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 99,
+        "OLMo-2-1124-13B/MVRR": 61,
+        "OLMo-2-1124-13B/NPS": 39,
+        "OLMo-2-1124-13B/NPVP": 35,
+        "OLMo-2-1124-13B/NPZ": 99,
+        "OLMo-2-1124-13B-Instruct/MVRR": 61,
+        "OLMo-2-1124-13B-Instruct/NPS": 39,
+        "OLMo-2-1124-13B-Instruct/NPVP": 35,
+        "OLMo-2-1124-13B-Instruct/NPZ": 99,
+        "Qwen3-4B-Base/MVRR": 61,
+        "Qwen3-4B-Base/NPS": 39,
+        "Qwen3-4B-Base/NPVP": 35,
+        "Qwen3-4B-Base/NPZ": 99,
+        "gemma-3-4b-pt/MVRR": 61,
+        "gemma-3-4b-pt/NPS": 39,
+        "gemma-3-4b-pt/NPVP": 35,
+        "gemma-3-4b-pt/NPZ": 99
+      },
+      "breadth_present": true
+    },
+    "B/NEITHER/correct/gain/R1/gp": {
+      "estimate": -0.02385475332196644,
+      "ci95": [
+        -0.03514178053978558,
+        -0.012260491621344304
+      ],
+      "n_clusters": 226,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 0,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 61,
+        "Qwen3-1.7B/NPS": 39,
+        "Qwen3-1.7B/NPVP": 35,
+        "Qwen3-1.7B/NPZ": 99,
+        "Qwen3-4B/MVRR": 61,
+        "Qwen3-4B/NPS": 39,
+        "Qwen3-4B/NPVP": 35,
+        "Qwen3-4B/NPZ": 99,
+        "Qwen3-8B/MVRR": 61,
+        "Qwen3-8B/NPS": 39,
+        "Qwen3-8B/NPVP": 35,
+        "Qwen3-8B/NPZ": 99,
+        "Qwen3-14B/MVRR": 61,
+        "Qwen3-14B/NPS": 39,
+        "Qwen3-14B/NPVP": 35,
+        "Qwen3-14B/NPZ": 99,
+        "Qwen3-32B/MVRR": 61,
+        "Qwen3-32B/NPS": 39,
+        "Qwen3-32B/NPVP": 35,
+        "Qwen3-32B/NPZ": 99,
+        "gemma-3-4b-it/MVRR": 61,
+        "gemma-3-4b-it/NPS": 39,
+        "gemma-3-4b-it/NPVP": 35,
+        "gemma-3-4b-it/NPZ": 99,
+        "gemma-3-12b-it/MVRR": 61,
+        "gemma-3-12b-it/NPS": 39,
+        "gemma-3-12b-it/NPVP": 35,
+        "gemma-3-12b-it/NPZ": 99,
+        "gemma-3-27b-it/MVRR": 61,
+        "gemma-3-27b-it/NPS": 39,
+        "gemma-3-27b-it/NPVP": 35,
+        "gemma-3-27b-it/NPZ": 99,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 61,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 39,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 35,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 99,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 61,
+        "Mistral-Small-24B-Instruct-2501/NPS": 39,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 35,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 99,
+        "OLMo-2-1124-13B/MVRR": 61,
+        "OLMo-2-1124-13B/NPS": 39,
+        "OLMo-2-1124-13B/NPVP": 35,
+        "OLMo-2-1124-13B/NPZ": 99,
+        "OLMo-2-1124-13B-Instruct/MVRR": 61,
+        "OLMo-2-1124-13B-Instruct/NPS": 39,
+        "OLMo-2-1124-13B-Instruct/NPVP": 35,
+        "OLMo-2-1124-13B-Instruct/NPZ": 99,
+        "Qwen3-4B-Base/MVRR": 61,
+        "Qwen3-4B-Base/NPS": 39,
+        "Qwen3-4B-Base/NPVP": 35,
+        "Qwen3-4B-Base/NPZ": 99,
+        "gemma-3-4b-pt/MVRR": 61,
+        "gemma-3-4b-pt/NPS": 39,
+        "gemma-3-4b-pt/NPVP": 35,
+        "gemma-3-4b-pt/NPZ": 99
+      },
+      "breadth_present": true
+    },
+    "B/NEITHER/correct/gain/R1/control": {
+      "estimate": -0.011669879907584823,
+      "ci95": [
+        -0.02377628608732768,
+        0.0006145492283079846
+      ],
+      "n_clusters": 226,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 0,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 61,
+        "Qwen3-1.7B/NPS": 39,
+        "Qwen3-1.7B/NPVP": 35,
+        "Qwen3-1.7B/NPZ": 99,
+        "Qwen3-4B/MVRR": 61,
+        "Qwen3-4B/NPS": 39,
+        "Qwen3-4B/NPVP": 35,
+        "Qwen3-4B/NPZ": 99,
+        "Qwen3-8B/MVRR": 61,
+        "Qwen3-8B/NPS": 39,
+        "Qwen3-8B/NPVP": 35,
+        "Qwen3-8B/NPZ": 99,
+        "Qwen3-14B/MVRR": 61,
+        "Qwen3-14B/NPS": 39,
+        "Qwen3-14B/NPVP": 35,
+        "Qwen3-14B/NPZ": 99,
+        "Qwen3-32B/MVRR": 61,
+        "Qwen3-32B/NPS": 39,
+        "Qwen3-32B/NPVP": 35,
+        "Qwen3-32B/NPZ": 99,
+        "gemma-3-4b-it/MVRR": 61,
+        "gemma-3-4b-it/NPS": 39,
+        "gemma-3-4b-it/NPVP": 35,
+        "gemma-3-4b-it/NPZ": 99,
+        "gemma-3-12b-it/MVRR": 61,
+        "gemma-3-12b-it/NPS": 39,
+        "gemma-3-12b-it/NPVP": 35,
+        "gemma-3-12b-it/NPZ": 99,
+        "gemma-3-27b-it/MVRR": 61,
+        "gemma-3-27b-it/NPS": 39,
+        "gemma-3-27b-it/NPVP": 35,
+        "gemma-3-27b-it/NPZ": 99,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 61,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 39,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 35,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 99,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 61,
+        "Mistral-Small-24B-Instruct-2501/NPS": 39,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 35,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 99,
+        "OLMo-2-1124-13B/MVRR": 61,
+        "OLMo-2-1124-13B/NPS": 39,
+        "OLMo-2-1124-13B/NPVP": 35,
+        "OLMo-2-1124-13B/NPZ": 99,
+        "OLMo-2-1124-13B-Instruct/MVRR": 61,
+        "OLMo-2-1124-13B-Instruct/NPS": 39,
+        "OLMo-2-1124-13B-Instruct/NPVP": 35,
+        "OLMo-2-1124-13B-Instruct/NPZ": 99,
+        "Qwen3-4B-Base/MVRR": 61,
+        "Qwen3-4B-Base/NPS": 39,
+        "Qwen3-4B-Base/NPVP": 35,
+        "Qwen3-4B-Base/NPZ": 99,
+        "gemma-3-4b-pt/MVRR": 61,
+        "gemma-3-4b-pt/NPS": 39,
+        "gemma-3-4b-pt/NPVP": 35,
+        "gemma-3-4b-pt/NPZ": 99
+      },
+      "breadth_present": true
+    },
+    "B/NEITHER/correct/R1_vs/R2": {
+      "estimate": 0.0012019230769230768,
+      "ci95": [
+        -0.019598768195290366,
+        0.02212097659162029
+      ],
+      "n_clusters": 74,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 3637,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 30,
+        "Qwen3-1.7B/NPS": 17,
+        "Qwen3-1.7B/NPVP": 1,
+        "Qwen3-1.7B/NPZ": 26,
+        "Qwen3-4B/MVRR": 30,
+        "Qwen3-4B/NPS": 17,
+        "Qwen3-4B/NPVP": 1,
+        "Qwen3-4B/NPZ": 26,
+        "Qwen3-8B/MVRR": 30,
+        "Qwen3-8B/NPS": 17,
+        "Qwen3-8B/NPVP": 1,
+        "Qwen3-8B/NPZ": 26,
+        "Qwen3-14B/MVRR": 30,
+        "Qwen3-14B/NPS": 17,
+        "Qwen3-14B/NPVP": 1,
+        "Qwen3-14B/NPZ": 26,
+        "Qwen3-32B/MVRR": 30,
+        "Qwen3-32B/NPS": 17,
+        "Qwen3-32B/NPVP": 1,
+        "Qwen3-32B/NPZ": 26,
+        "gemma-3-4b-it/MVRR": 30,
+        "gemma-3-4b-it/NPS": 17,
+        "gemma-3-4b-it/NPVP": 1,
+        "gemma-3-4b-it/NPZ": 26,
+        "gemma-3-12b-it/MVRR": 30,
+        "gemma-3-12b-it/NPS": 17,
+        "gemma-3-12b-it/NPVP": 1,
+        "gemma-3-12b-it/NPZ": 26,
+        "gemma-3-27b-it/MVRR": 30,
+        "gemma-3-27b-it/NPS": 17,
+        "gemma-3-27b-it/NPVP": 1,
+        "gemma-3-27b-it/NPZ": 26,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 30,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 17,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 1,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 26,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 30,
+        "Mistral-Small-24B-Instruct-2501/NPS": 17,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 1,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 26,
+        "OLMo-2-1124-13B/MVRR": 30,
+        "OLMo-2-1124-13B/NPS": 17,
+        "OLMo-2-1124-13B/NPVP": 1,
+        "OLMo-2-1124-13B/NPZ": 26,
+        "OLMo-2-1124-13B-Instruct/MVRR": 30,
+        "OLMo-2-1124-13B-Instruct/NPS": 17,
+        "OLMo-2-1124-13B-Instruct/NPVP": 1,
+        "OLMo-2-1124-13B-Instruct/NPZ": 26,
+        "Qwen3-4B-Base/MVRR": 30,
+        "Qwen3-4B-Base/NPS": 17,
+        "Qwen3-4B-Base/NPVP": 1,
+        "Qwen3-4B-Base/NPZ": 26,
+        "gemma-3-4b-pt/MVRR": 30,
+        "gemma-3-4b-pt/NPS": 17,
+        "gemma-3-4b-pt/NPVP": 1,
+        "gemma-3-4b-pt/NPZ": 26
+      },
+      "breadth_present": true
+    },
+    "B/NEITHER/correct/R1_vs/R3": {
+      "estimate": -0.06369287577685295,
+      "ci95": [
+        -0.08696178363635476,
+        -0.04027020853843003
+      ],
+      "n_clusters": 225,
+      "families": [
+        "Gemma",
+        "Llama",
+        "Mistral",
+        "OLMo",
+        "Qwen"
+      ],
+      "constructions": [
+        "MVRR",
+        "NPS",
+        "NPVP",
+        "NPZ"
+      ],
+      "models": [
+        "Meta-Llama-3.1-8B-Instruct",
+        "Mistral-Small-24B-Instruct-2501",
+        "OLMo-2-1124-13B",
+        "OLMo-2-1124-13B-Instruct",
+        "Qwen3-1.7B",
+        "Qwen3-14B",
+        "Qwen3-32B",
+        "Qwen3-4B",
+        "Qwen3-4B-Base",
+        "Qwen3-8B",
+        "gemma-3-12b-it",
+        "gemma-3-27b-it",
+        "gemma-3-4b-it",
+        "gemma-3-4b-pt"
+      ],
+      "non_estimable_bootstrap_draws": 0,
+      "cells": {
+        "Qwen3-1.7B/MVRR": 60,
+        "Qwen3-1.7B/NPS": 39,
+        "Qwen3-1.7B/NPVP": 35,
+        "Qwen3-1.7B/NPZ": 97,
+        "Qwen3-4B/MVRR": 60,
+        "Qwen3-4B/NPS": 39,
+        "Qwen3-4B/NPVP": 35,
+        "Qwen3-4B/NPZ": 97,
+        "Qwen3-8B/MVRR": 60,
+        "Qwen3-8B/NPS": 39,
+        "Qwen3-8B/NPVP": 35,
+        "Qwen3-8B/NPZ": 97,
+        "Qwen3-14B/MVRR": 60,
+        "Qwen3-14B/NPS": 39,
+        "Qwen3-14B/NPVP": 35,
+        "Qwen3-14B/NPZ": 97,
+        "Qwen3-32B/MVRR": 60,
+        "Qwen3-32B/NPS": 39,
+        "Qwen3-32B/NPVP": 35,
+        "Qwen3-32B/NPZ": 97,
+        "gemma-3-4b-it/MVRR": 61,
+        "gemma-3-4b-it/NPS": 39,
+        "gemma-3-4b-it/NPVP": 35,
+        "gemma-3-4b-it/NPZ": 98,
+        "gemma-3-12b-it/MVRR": 61,
+        "gemma-3-12b-it/NPS": 39,
+        "gemma-3-12b-it/NPVP": 35,
+        "gemma-3-12b-it/NPZ": 98,
+        "gemma-3-27b-it/MVRR": 61,
+        "gemma-3-27b-it/NPS": 39,
+        "gemma-3-27b-it/NPVP": 35,
+        "gemma-3-27b-it/NPZ": 98,
+        "Meta-Llama-3.1-8B-Instruct/MVRR": 60,
+        "Meta-Llama-3.1-8B-Instruct/NPS": 39,
+        "Meta-Llama-3.1-8B-Instruct/NPVP": 35,
+        "Meta-Llama-3.1-8B-Instruct/NPZ": 97,
+        "Mistral-Small-24B-Instruct-2501/MVRR": 60,
+        "Mistral-Small-24B-Instruct-2501/NPS": 37,
+        "Mistral-Small-24B-Instruct-2501/NPVP": 35,
+        "Mistral-Small-24B-Instruct-2501/NPZ": 97,
+        "OLMo-2-1124-13B/MVRR": 60,
+        "OLMo-2-1124-13B/NPS": 39,
+        "OLMo-2-1124-13B/NPVP": 35,
+        "OLMo-2-1124-13B/NPZ": 97,
+        "OLMo-2-1124-13B-Instruct/MVRR": 60,
+        "OLMo-2-1124-13B-Instruct/NPS": 39,
+        "OLMo-2-1124-13B-Instruct/NPVP": 35,
+        "OLMo-2-1124-13B-Instruct/NPZ": 97,
+        "Qwen3-4B-Base/MVRR": 60,
+        "Qwen3-4B-Base/NPS": 39,
+        "Qwen3-4B-Base/NPVP": 35,
+        "Qwen3-4B-Base/NPZ": 97,
+        "gemma-3-4b-pt/MVRR": 61,
+        "gemma-3-4b-pt/NPS": 39,
+        "gemma-3-4b-pt/NPVP": 35,
+        "gemma-3-4b-pt/NPZ": 98
+      },
+      "breadth_present": true
+    }
+  },
+  "native_fp32_MVRR": {
+    "Qwen3-8B": {
+      "cells": {
+        "R0/gp": {
+          "estimate": 0.27459016393442626,
+          "ci95": [
+            0.1762295081967213,
+            0.3770491803278688
+          ],
+          "n_clusters": 61
+        },
+        "R0/control": {
+          "estimate": 0.7950819672131147,
+          "ci95": [
+            0.6885245901639344,
+            0.8934426229508197
+          ],
+          "n_clusters": 61
+        },
+        "R4/control": {
+          "estimate": 0.7950819672131147,
+          "ci95": [
+            0.6885245901639344,
+            0.8934426229508197
+          ],
+          "n_clusters": 61
+        },
+        "R5/gp": {
+          "estimate": 0.14344262295081966,
+          "ci95": [
+            0.06967213114754098,
+            0.22540983606557377
+          ],
+          "n_clusters": 61
+        },
+        "R3/gp": {
+          "estimate": 0.3625,
+          "ci95": [
+            0.25,
+            0.4791666666666667
+          ],
+          "n_clusters": 60
+        },
+        "R1/gp": {
+          "estimate": 0.28688524590163933,
+          "ci95": [
+            0.18432377049180337,
+            0.3975409836065574
+          ],
+          "n_clusters": 61
+        },
+        "R5/control": {
+          "estimate": 0.7868852459016393,
+          "ci95": [
+            0.6885245901639344,
+            0.8770491803278688
+          ],
+          "n_clusters": 61
+        },
+        "R1/control": {
+          "estimate": 0.8729508196721312,
+          "ci95": [
+            0.7909836065573771,
+            0.9467213114754098
+          ],
+          "n_clusters": 61
+        },
+        "R3/control": {
+          "estimate": 0.7625,
+          "ci95": [
+            0.6583333333333333,
+            0.8583333333333333
+          ],
+          "n_clusters": 60
+        },
+        "R2/gp": {
+          "estimate": 0.18333333333333332,
+          "ci95": [
+            0.06666666666666667,
+            0.3333333333333333
+          ],
+          "n_clusters": 30
+        },
+        "R2/control": {
+          "estimate": 0.7666666666666667,
+          "ci95": [
+            0.6,
+            0.9
+          ],
+          "n_clusters": 30
+        }
+      },
+      "gaps": {
+        "R0": {
+          "estimate": 0.5204918032786885,
+          "ci95": [
+            0.4057377049180328,
+            0.6311475409836066
+          ],
+          "n_clusters": 61
+        },
+        "R1": {
+          "estimate": 0.5860655737704918,
+          "ci95": [
+            0.4713114754098361,
+            0.6967213114754098
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": 0.5833333333333334,
+          "ci95": [
+            0.4,
+            0.75
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.4,
+          "ci95": [
+            0.2875,
+            0.5166666666666667
+          ],
+          "n_clusters": 60
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": 0.6434426229508197,
+          "ci95": [
+            0.5327868852459017,
+            0.75
+          ],
+          "n_clusters": 61
+        }
+      },
+      "reductions": {
+        "R1": {
+          "estimate": -0.06557377049180328,
+          "ci95": [
+            -0.1598360655737705,
+            0.028688524590163935
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": -0.03333333333333333,
+          "ci95": [
+            -0.2,
+            0.13333333333333333
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.12916666666666668,
+          "ci95": [
+            0.008333333333333333,
+            0.25
+          ],
+          "n_clusters": 60
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": -0.12295081967213115,
+          "ci95": [
+            -0.25,
+            0.004098360655737705
+          ],
+          "n_clusters": 61
+        }
+      },
+      "raw_gains": {
+        "R1": {
+          "gp": {
+            "estimate": 0.012295081967213115,
+            "ci95": [
+              -0.05737704918032787,
+              0.09016393442622951
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": 0.0778688524590164,
+            "ci95": [
+              0.00819672131147541,
+              0.1557377049180328
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R2": {
+          "gp": {
+            "estimate": 0.0,
+            "ci95": [
+              -0.13333333333333333,
+              0.13333333333333333
+            ],
+            "n_clusters": 30
+          },
+          "control": {
+            "estimate": 0.03333333333333333,
+            "ci95": [
+              -0.06666666666666667,
+              0.13333333333333333
+            ],
+            "n_clusters": 30
+          }
+        },
+        "R3": {
+          "gp": {
+            "estimate": 0.08333333333333333,
+            "ci95": [
+              -0.020833333333333332,
+              0.1875
+            ],
+            "n_clusters": 60
+          },
+          "control": {
+            "estimate": -0.04583333333333333,
+            "ci95": [
+              -0.13333333333333333,
+              0.0375
+            ],
+            "n_clusters": 60
+          }
+        },
+        "R4": {
+          "gp": {
+            "estimate": null,
+            "ci95": null,
+            "n_clusters": 0
+          },
+          "control": {
+            "estimate": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R5": {
+          "gp": {
+            "estimate": -0.13114754098360656,
+            "ci95": [
+              -0.22950819672131148,
+              -0.03278688524590164
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": -0.00819672131147541,
+            "ci95": [
+              -0.10245901639344263,
+              0.0860655737704918
+            ],
+            "n_clusters": 61
+          }
+        }
+      },
+      "R1_vs_controls": {
+        "R2": {
+          "estimate": -0.06666666666666667,
+          "ci95": [
+            -0.2,
+            0.05
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": -0.19583333333333333,
+          "ci95": [
+            -0.32916666666666666,
+            -0.0625
+          ],
+          "n_clusters": 60
+        }
+      },
+      "instruction_recovery": {
+        "gp": {
+          "estimate": 0.13524590163934427,
+          "ci95": [
+            0.07377049180327869,
+            0.20491803278688525
+          ],
+          "n_clusters": 61
+        },
+        "control": {
+          "estimate": 0.040983606557377046,
+          "ci95": [
+            0.0,
+            0.09016393442622951
+          ],
+          "n_clusters": 61
+        },
+        "selective_gain": {
+          "estimate": 0.0942622950819672,
+          "ci95": [
+            0.028688524590163935,
+            0.16393442622950818
+          ],
+          "n_clusters": 61
+        }
+      },
+      "thinking_vs_matched_generation": {
+        "gap_reduction": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        }
+      }
+    },
+    "gemma-3-12b-it": {
+      "cells": {
+        "R0/gp": {
+          "estimate": 0.4139344262295082,
+          "ci95": [
+            0.29918032786885246,
+            0.5327868852459017
+          ],
+          "n_clusters": 61
+        },
+        "R0/control": {
+          "estimate": 0.9180327868852459,
+          "ci95": [
+            0.8524590163934426,
+            0.9754098360655737
+          ],
+          "n_clusters": 61
+        },
+        "R4/control": {
+          "estimate": 0.9180327868852459,
+          "ci95": [
+            0.8524590163934426,
+            0.9754098360655737
+          ],
+          "n_clusters": 61
+        },
+        "R5/gp": {
+          "estimate": 0.2459016393442623,
+          "ci95": [
+            0.1557377049180328,
+            0.3401639344262295
+          ],
+          "n_clusters": 61
+        },
+        "R3/gp": {
+          "estimate": 0.35655737704918034,
+          "ci95": [
+            0.25,
+            0.4672131147540984
+          ],
+          "n_clusters": 61
+        },
+        "R1/gp": {
+          "estimate": 0.4016393442622951,
+          "ci95": [
+            0.28688524590163933,
+            0.5204918032786885
+          ],
+          "n_clusters": 61
+        },
+        "R5/control": {
+          "estimate": 0.9918032786885246,
+          "ci95": [
+            0.9754098360655737,
+            1.0
+          ],
+          "n_clusters": 61
+        },
+        "R1/control": {
+          "estimate": 0.9672131147540983,
+          "ci95": [
+            0.9262295081967213,
+            1.0
+          ],
+          "n_clusters": 61
+        },
+        "R3/control": {
+          "estimate": 0.8114754098360656,
+          "ci95": [
+            0.7131147540983607,
+            0.8934426229508197
+          ],
+          "n_clusters": 61
+        },
+        "R2/gp": {
+          "estimate": 0.25,
+          "ci95": [
+            0.11666666666666667,
+            0.4
+          ],
+          "n_clusters": 30
+        },
+        "R2/control": {
+          "estimate": 0.95,
+          "ci95": [
+            0.9,
+            1.0
+          ],
+          "n_clusters": 30
+        }
+      },
+      "gaps": {
+        "R0": {
+          "estimate": 0.5040983606557377,
+          "ci95": [
+            0.38114754098360654,
+            0.6229508196721312
+          ],
+          "n_clusters": 61
+        },
+        "R1": {
+          "estimate": 0.5655737704918032,
+          "ci95": [
+            0.44672131147540983,
+            0.680327868852459
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": 0.7,
+          "ci95": [
+            0.55,
+            0.8333333333333334
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.45491803278688525,
+          "ci95": [
+            0.3360655737704918,
+            0.569672131147541
+          ],
+          "n_clusters": 61
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": 0.7459016393442623,
+          "ci95": [
+            0.6516393442622951,
+            0.8360655737704918
+          ],
+          "n_clusters": 61
+        }
+      },
+      "reductions": {
+        "R1": {
+          "estimate": -0.06147540983606557,
+          "ci95": [
+            -0.13114754098360656,
+            0.0
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": -0.11666666666666667,
+          "ci95": [
+            -0.25,
+            0.016666666666666666
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.04918032786885246,
+          "ci95": [
+            -0.06147540983606557,
+            0.1598360655737705
+          ],
+          "n_clusters": 61
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": -0.24180327868852458,
+          "ci95": [
+            -0.36065573770491804,
+            -0.12704918032786885
+          ],
+          "n_clusters": 61
+        }
+      },
+      "raw_gains": {
+        "R1": {
+          "gp": {
+            "estimate": -0.012295081967213115,
+            "ci95": [
+              -0.05737704918032787,
+              0.03278688524590164
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": 0.04918032786885246,
+            "ci95": [
+              0.00819672131147541,
+              0.10655737704918032
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R2": {
+          "gp": {
+            "estimate": -0.08333333333333333,
+            "ci95": [
+              -0.2,
+              0.016666666666666666
+            ],
+            "n_clusters": 30
+          },
+          "control": {
+            "estimate": 0.03333333333333333,
+            "ci95": [
+              -0.03333333333333333,
+              0.11666666666666667
+            ],
+            "n_clusters": 30
+          }
+        },
+        "R3": {
+          "gp": {
+            "estimate": -0.05737704918032787,
+            "ci95": [
+              -0.13934426229508196,
+              0.012295081967213115
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": -0.10655737704918032,
+            "ci95": [
+              -0.18032786885245902,
+              -0.040983606557377046
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R4": {
+          "gp": {
+            "estimate": null,
+            "ci95": null,
+            "n_clusters": 0
+          },
+          "control": {
+            "estimate": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R5": {
+          "gp": {
+            "estimate": -0.1680327868852459,
+            "ci95": [
+              -0.2827868852459016,
+              -0.05737704918032787
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": 0.07377049180327869,
+            "ci95": [
+              0.01639344262295082,
+              0.14754098360655737
+            ],
+            "n_clusters": 61
+          }
+        }
+      },
+      "R1_vs_controls": {
+        "R2": {
+          "estimate": 0.016666666666666666,
+          "ci95": [
+            -0.08333333333333333,
+            0.13333333333333333
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": -0.11065573770491803,
+          "ci95": [
+            -0.23770491803278687,
+            0.016495901639342773
+          ],
+          "n_clusters": 61
+        }
+      },
+      "instruction_recovery": {
+        "gp": {
+          "estimate": 0.020491803278688523,
+          "ci95": [
+            -0.01639344262295082,
+            0.06147540983606557
+          ],
+          "n_clusters": 61
+        },
+        "control": {
+          "estimate": 0.03278688524590164,
+          "ci95": [
+            0.00819672131147541,
+            0.06557377049180328
+          ],
+          "n_clusters": 61
+        },
+        "selective_gain": {
+          "estimate": -0.012295081967213115,
+          "ci95": [
+            -0.06557377049180328,
+            0.036885245901639344
+          ],
+          "n_clusters": 61
+        }
+      },
+      "thinking_vs_matched_generation": {
+        "gap_reduction": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        }
+      }
+    },
+    "Meta-Llama-3.1-8B-Instruct": {
+      "cells": {
+        "R0/gp": {
+          "estimate": 0.48360655737704916,
+          "ci95": [
+            0.45901639344262296,
+            0.5
+          ],
+          "n_clusters": 61
+        },
+        "R0/control": {
+          "estimate": 0.6434426229508197,
+          "ci95": [
+            0.5901639344262295,
+            0.7008196721311475
+          ],
+          "n_clusters": 61
+        },
+        "R4/control": {
+          "estimate": 0.6434426229508197,
+          "ci95": [
+            0.5901639344262295,
+            0.7008196721311475
+          ],
+          "n_clusters": 61
+        },
+        "R5/gp": {
+          "estimate": 0.5450819672131147,
+          "ci95": [
+            0.5122950819672131,
+            0.5819672131147541
+          ],
+          "n_clusters": 61
+        },
+        "R3/gp": {
+          "estimate": 0.5208333333333334,
+          "ci95": [
+            0.49166666666666664,
+            0.5541666666666667
+          ],
+          "n_clusters": 60
+        },
+        "R1/gp": {
+          "estimate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_clusters": 61
+        },
+        "R5/control": {
+          "estimate": 0.639344262295082,
+          "ci95": [
+            0.5860655737704918,
+            0.6967213114754098
+          ],
+          "n_clusters": 61
+        },
+        "R1/control": {
+          "estimate": 0.5245901639344263,
+          "ci95": [
+            0.5040983606557377,
+            0.5491803278688525
+          ],
+          "n_clusters": 61
+        },
+        "R3/control": {
+          "estimate": 0.6833333333333333,
+          "ci95": [
+            0.625,
+            0.7458333333333333
+          ],
+          "n_clusters": 60
+        },
+        "R2/gp": {
+          "estimate": 0.38333333333333336,
+          "ci95": [
+            0.3,
+            0.45
+          ],
+          "n_clusters": 30
+        },
+        "R2/control": {
+          "estimate": 0.5916666666666667,
+          "ci95": [
+            0.5166666666666667,
+            0.675
+          ],
+          "n_clusters": 30
+        }
+      },
+      "gaps": {
+        "R0": {
+          "estimate": 0.1598360655737705,
+          "ci95": [
+            0.10245901639344263,
+            0.21721311475409835
+          ],
+          "n_clusters": 61
+        },
+        "R1": {
+          "estimate": 0.02459016393442623,
+          "ci95": [
+            0.004098360655737705,
+            0.04918032786885246
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": 0.20833333333333334,
+          "ci95": [
+            0.10833333333333334,
+            0.325
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.1625,
+          "ci95": [
+            0.1,
+            0.225
+          ],
+          "n_clusters": 60
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": 0.0942622950819672,
+          "ci95": [
+            0.04918032786885246,
+            0.14344262295081966
+          ],
+          "n_clusters": 61
+        }
+      },
+      "reductions": {
+        "R1": {
+          "estimate": 0.13524590163934427,
+          "ci95": [
+            0.08196721311475409,
+            0.19262295081967212
+          ],
+          "n_clusters": 61
+        },
+        "R2": {
+          "estimate": -0.041666666666666664,
+          "ci95": [
+            -0.15,
+            0.058333333333333334
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.0,
+          "ci95": [
+            -0.06666666666666667,
+            0.0625
+          ],
+          "n_clusters": 60
+        },
+        "R4": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        },
+        "R5": {
+          "estimate": 0.06557377049180328,
+          "ci95": [
+            0.00819672131147541,
+            0.12295081967213115
+          ],
+          "n_clusters": 61
+        }
+      },
+      "raw_gains": {
+        "R1": {
+          "gp": {
+            "estimate": 0.01639344262295082,
+            "ci95": [
+              0.0,
+              0.040983606557377046
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": -0.11885245901639344,
+            "ci95": [
+              -0.1721311475409836,
+              -0.06967213114754098
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R2": {
+          "gp": {
+            "estimate": -0.08333333333333333,
+            "ci95": [
+              -0.15,
+              -0.016666666666666666
+            ],
+            "n_clusters": 30
+          },
+          "control": {
+            "estimate": -0.041666666666666664,
+            "ci95": [
+              -0.11666666666666667,
+              0.03333333333333333
+            ],
+            "n_clusters": 30
+          }
+        },
+        "R3": {
+          "gp": {
+            "estimate": 0.0375,
+            "ci95": [
+              0.008333333333333333,
+              0.07083333333333333
+            ],
+            "n_clusters": 60
+          },
+          "control": {
+            "estimate": 0.0375,
+            "ci95": [
+              -0.016666666666666666,
+              0.09583333333333334
+            ],
+            "n_clusters": 60
+          }
+        },
+        "R4": {
+          "gp": {
+            "estimate": null,
+            "ci95": null,
+            "n_clusters": 0
+          },
+          "control": {
+            "estimate": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_clusters": 61
+          }
+        },
+        "R5": {
+          "gp": {
+            "estimate": 0.06147540983606557,
+            "ci95": [
+              0.02459016393442623,
+              0.10655737704918032
+            ],
+            "n_clusters": 61
+          },
+          "control": {
+            "estimate": -0.004098360655737705,
+            "ci95": [
+              -0.06147540983606557,
+              0.05327868852459016
+            ],
+            "n_clusters": 61
+          }
+        }
+      },
+      "R1_vs_controls": {
+        "R2": {
+          "estimate": 0.19166666666666668,
+          "ci95": [
+            0.09166666666666666,
+            0.30833333333333335
+          ],
+          "n_clusters": 30
+        },
+        "R3": {
+          "estimate": 0.1375,
+          "ci95": [
+            0.075,
+            0.2
+          ],
+          "n_clusters": 60
+        }
+      },
+      "instruction_recovery": {
+        "gp": {
+          "estimate": 0.012295081967213115,
+          "ci95": [
+            0.0,
+            0.03278688524590164
+          ],
+          "n_clusters": 61
+        },
+        "control": {
+          "estimate": -0.036885245901639344,
+          "ci95": [
+            -0.07377049180327869,
+            -0.004098360655737705
+          ],
+          "n_clusters": 61
+        },
+        "selective_gain": {
+          "estimate": 0.04918032786885246,
+          "ci95": [
+            0.01639344262295082,
+            0.0860655737704918
+          ],
+          "n_clusters": 61
+        }
+      },
+      "thinking_vs_matched_generation": {
+        "gap_reduction": {
+          "estimate": null,
+          "ci95": null,
+          "n_clusters": 0
+        }
+      }
+    }
+  },
+  "primary_literal_C_qualification": {
+    "NPS_pairs": 2,
+    "other_constructions": 0,
+    "breadth_sufficient": false
+  },
+  "interpretation": "NEITHER values are agreement with the published non-entailment No convention, not world-semantic accuracy. Weak-control models remain descriptive. A gap reduction driven by control decline is not repair. R1 versus R2 macro has 36.37% undefined resamples due sparse construct cells; no strong interpretation. Genuine mixed model has only two lexical clusters. No capacity/mechanism claim upgraded."
+}

@@ -1,0 +1,3286 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e71/qwen3_confirmation",
+      "stage": "confirmation",
+      "frame_source": "results/e70/frozen_frame/frame.npy",
+      "n": 64,
+      "seed": 171001
+    },
+    "seconds": 388.4328067302704,
+    "sanity_max_error": 0.0,
+    "nonlabel_flip_feature_error_max": 0.0,
+    "forbidden_attention_mass_max": 0.0,
+    "fixedQ_shared_relative_logit_spread_max": 2.86102294921875e-06,
+    "untouched_cache_error_max": 0.0,
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "host": "fvcrc21",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "frame_sha256": "bcec93a6282d781665716699083885caad6c636414beb65ec5da7b19f8b0f3d9",
+    "script_sha256": "56730367121195cb886f25d160d90abf21c54fa53cd77f8c028ee6a97c5d17b9",
+    "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+    "git_commit": "4655f04fb32d63435f4a35b55af59719a6bf7a9b"
+  },
+  "conditions": {
+    "linked.D0": {
+      "margin": {
+        "mean": 0.5732862129807472,
+        "ci95": [
+          0.48566419035196307,
+          0.6748436769470572
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.51953125,
+        "ci95": [
+          0.50390625,
+          0.5390625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.8984375,
+        "ci95": [
+          0.84375,
+          0.9453125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1": {
+      "margin": {
+        "mean": 1.0919966027140617,
+        "ci95": [
+          0.9749442489817739,
+          1.2203200792893767
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.64453125,
+        "ci95": [
+          0.60546875,
+          0.6875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8984375,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.isolated": {
+      "margin": {
+        "mean": 0.6579134911298752,
+        "ci95": [
+          0.5675688406452537,
+          0.7625830272212625
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.54296875,
+        "ci95": [
+          0.51953125,
+          0.57421875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.859375,
+        "ci95": [
+          0.8046875,
+          0.9140625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.blind": {
+      "margin": {
+        "mean": 1.3057200238108635,
+        "ci95": [
+          1.1639941152185203,
+          1.4555407918989658
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.65625,
+        "ci95": [
+          0.6171875,
+          0.69921875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8984375,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.common": {
+      "margin": {
+        "mean": 1.108062006533146,
+        "ci95": [
+          0.9672086622565985,
+          1.2548427667468782
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.60546875,
+        "ci95": [
+          0.57421875,
+          0.640625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.8828125,
+        "ci95": [
+          0.8203125,
+          0.9375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.centered": {
+      "margin": {
+        "mean": 0.8258923292160034,
+        "ci95": [
+          0.7183134062215686,
+          0.9390691958367824
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.609375,
+        "ci95": [
+          0.57802734375,
+          0.64453125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.828125,
+        "ci95": [
+          0.765625,
+          0.8828125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.norm": {
+      "margin": {
+        "mean": 0.6595858111977577,
+        "ci95": [
+          0.5741608584299683,
+          0.7573658853769303
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.53515625,
+        "ci95": [
+          0.515625,
+          0.55859375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.8671875,
+        "ci95": [
+          0.8125,
+          0.921875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.negative_common": {
+      "margin": {
+        "mean": 0.3736998662352562,
+        "ci95": [
+          0.2959865789860487,
+          0.4551782442256808
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.52734375,
+        "ci95": [
+          0.5,
+          0.5546875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.640625,
+        "ci95": [
+          0.5703125,
+          0.7109375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.shared_frame": {
+      "margin": {
+        "mean": 0.8847842589020729,
+        "ci95": [
+          0.7716543352231383,
+          1.0061865774914622
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.57421875,
+        "ci95": [
+          0.546875,
+          0.6015625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.8515625,
+        "ci95": [
+          0.796875,
+          0.90625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D0.instruction": {
+      "margin": {
+        "mean": 0.7241952493786812,
+        "ci95": [
+          0.6287807056680321,
+          0.8304769780486821
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.5234375,
+        "ci95": [
+          0.5078125,
+          0.54296875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9453125,
+        "ci95": [
+          0.90625,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D0.single": {
+      "margin": {
+        "mean": 1.9592511504888535,
+        "ci95": [
+          1.8147691946476698,
+          2.121985344775021
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.7265625,
+        "ci95": [
+          0.68359375,
+          0.76953125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8984375,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1.instruction": {
+      "margin": {
+        "mean": 1.1419371664524078,
+        "ci95": [
+          1.0263945451006293,
+          1.2725025724619627
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.6484375,
+        "ci95": [
+          0.61328125,
+          0.6875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9609375,
+        "ci95": [
+          0.9296875,
+          0.9921875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1.single": {
+      "margin": {
+        "mean": 1.4550630152225494,
+        "ci95": [
+          1.3304927699267863,
+          1.5897260054945945
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.68359375,
+        "ci95": [
+          0.640625,
+          0.73046875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8984375,
+          0.9765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0": {
+      "margin": {
+        "mean": 0.13129475712776184,
+        "ci95": [
+          0.09127386007457972,
+          0.17297585625201461
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.6640625,
+        "ci95": [
+          0.5859375,
+          0.734375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1": {
+      "margin": {
+        "mean": 0.13592318445444107,
+        "ci95": [
+          0.09781028162688017,
+          0.17499736826866863
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.50390625,
+          0.53125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.640625,
+        "ci95": [
+          0.5703125,
+          0.7109375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.isolated": {
+      "margin": {
+        "mean": 0.11121096462011337,
+        "ci95": [
+          0.07086320668458938,
+          0.15223773065954446
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.5,
+          0.53515625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.640625,
+        "ci95": [
+          0.5703125,
+          0.7109375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.blind": {
+      "margin": {
+        "mean": 0.13880494236946106,
+        "ci95": [
+          0.09662779010832309,
+          0.18137017916887996
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.4921875,
+          0.5234375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.671875,
+        "ci95": [
+          0.6015625,
+          0.734375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.common": {
+      "margin": {
+        "mean": 0.12094590812921524,
+        "ci95": [
+          0.06895022336393594,
+          0.173193790204823
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.51171875,
+        "ci95": [
+          0.49609375,
+          0.53125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.609375,
+        "ci95": [
+          0.5390625,
+          0.6796875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.centered": {
+      "margin": {
+        "mean": 0.12152519822120667,
+        "ci95": [
+          0.08519404958933592,
+          0.1579109728336334
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.49609375,
+          0.5390625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.640625,
+        "ci95": [
+          0.578125,
+          0.703125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.norm": {
+      "margin": {
+        "mean": 0.10103002190589905,
+        "ci95": [
+          0.06734232679009437,
+          0.13745909240096807
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.5,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.6484375,
+        "ci95": [
+          0.5859375,
+          0.7111328124999989
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.negative_common": {
+      "margin": {
+        "mean": 0.07194006443023682,
+        "ci95": [
+          0.04040224645286799,
+          0.10150828845798969
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.5078125,
+        "ci95": [
+          0.4921875,
+          0.5234375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.6015625,
+        "ci95": [
+          0.546875,
+          0.6564453124999989
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.shared_frame": {
+      "margin": {
+        "mean": 0.10016938298940659,
+        "ci95": [
+          0.0523170430213213,
+          0.14698387160897255
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.50390625,
+          0.53125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.625,
+        "ci95": [
+          0.5546875,
+          0.6953125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.instruction": {
+      "margin": {
+        "mean": 0.15879715979099274,
+        "ci95": [
+          0.11339858081191778,
+          0.20888424441218373
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.5,
+          0.51171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.671875,
+        "ci95": [
+          0.6015625,
+          0.734375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.single": {
+      "margin": {
+        "mean": 0.8655883222818375,
+        "ci95": [
+          0.7602771051228047,
+          0.9771418016403913
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.546875,
+        "ci95": [
+          0.5234375,
+          0.5703125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.875,
+        "ci95": [
+          0.8203125,
+          0.9296875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.instruction": {
+      "margin": {
+        "mean": 0.14954543113708496,
+        "ci95": [
+          0.11135337874293327,
+          0.1903212515637278
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.51171875,
+        "ci95": [
+          0.49609375,
+          0.52734375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.6484375,
+        "ci95": [
+          0.578125,
+          0.71875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.single": {
+      "margin": {
+        "mean": 0.8536260575056076,
+        "ci95": [
+          0.7551801035180687,
+          0.9554988214746117
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.58984375,
+        "ci95": [
+          0.55849609375,
+          0.625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.875,
+        "ci95": [
+          0.8203125,
+          0.921875
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "contrasts": {
+    "linked.layout": {
+      "margin": {
+        "mean": 0.5187103897333145,
+        "ci95": [
+          0.41895037665963175,
+          0.6132597437128423
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.125,
+        "ci95": [
+          0.0859375,
+          0.16796875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0390625,
+        "ci95": [
+          -0.0078125,
+          0.09375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D0.instruction": {
+      "margin": {
+        "mean": 0.15090903639793396,
+        "ci95": [
+          0.11379737574607134,
+          0.1870018461719155
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.00390625,
+        "ci95": [
+          0.0,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.046875,
+        "ci95": [
+          0.0078125,
+          0.09375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D0.single": {
+      "margin": {
+        "mean": 1.3859649375081062,
+        "ci95": [
+          1.2459904983639718,
+          1.5329095557332038
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.20703125,
+        "ci95": [
+          0.1640625,
+          0.25
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0390625,
+        "ci95": [
+          -0.01582031249999999,
+          0.09375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1.instruction": {
+      "margin": {
+        "mean": 0.0499405637383461,
+        "ci95": [
+          0.010316596738994122,
+          0.09060901682823895
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.00390625,
+        "ci95": [
+          -0.01953125,
+          0.02734375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0234375,
+        "ci95": [
+          0.0,
+          0.0546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1.single": {
+      "margin": {
+        "mean": 0.3630664125084877,
+        "ci95": [
+          0.22156407330185174,
+          0.5200404109433292
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0390625,
+        "ci95": [
+          -0.015722656249999994,
+          0.09765625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0,
+        "ci95": [
+          -0.046875,
+          0.046875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.blind.minus_native": {
+      "margin": {
+        "mean": 0.21372342109680176,
+        "ci95": [
+          0.15828868225216866,
+          0.2730407249182462
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.01171875,
+        "ci95": [
+          -0.01953125,
+          0.04296875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0,
+        "ci95": [
+          -0.03125,
+          0.03125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.common.minus_native": {
+      "margin": {
+        "mean": 0.016065403819084167,
+        "ci95": [
+          -0.09084170963615179,
+          0.1224479811266064
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0390625,
+        "ci95": [
+          -0.0703125,
+          -0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0546875,
+        "ci95": [
+          -0.109375,
+          -0.0078125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.centered.minus_native": {
+      "margin": {
+        "mean": -0.2661042734980583,
+        "ci95": [
+          -0.3360860215499997,
+          -0.1971218068152668
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.03515625,
+        "ci95": [
+          -0.0703125,
+          0.00390625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.109375,
+        "ci95": [
+          -0.1642578125,
+          -0.0546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.norm.minus_native": {
+      "margin": {
+        "mean": -0.432410791516304,
+        "ci95": [
+          -0.5174936529248952,
+          -0.34916480965912344
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.109375,
+        "ci95": [
+          -0.1484375,
+          -0.07421875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0703125,
+        "ci95": [
+          -0.125,
+          -0.015625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.negative_common.minus_native": {
+      "margin": {
+        "mean": -0.7182967364788055,
+        "ci95": [
+          -0.8380875136703253,
+          -0.6029148234054447
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.1171875,
+        "ci95": [
+          -0.15625,
+          -0.078125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.296875,
+        "ci95": [
+          -0.3671875,
+          -0.21875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.shared_frame.minus_native": {
+      "margin": {
+        "mean": -0.20721234381198883,
+        "ci95": [
+          -0.30037733651697635,
+          -0.1162862271070481
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0703125,
+        "ci95": [
+          -0.10546875,
+          -0.03515625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0859375,
+        "ci95": [
+          -0.1484375,
+          -0.03125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.layout": {
+      "margin": {
+        "mean": 0.00462842732667923,
+        "ci95": [
+          -0.03897535912692547,
+          0.04886902216821908
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.015625,
+        "ci95": [
+          0.00390625,
+          0.03125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0234375,
+        "ci95": [
+          -0.109375,
+          0.06269531249999893
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.instruction": {
+      "margin": {
+        "mean": 0.027502402663230896,
+        "ci95": [
+          0.00631005484610796,
+          0.049234569817781446
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.00390625,
+        "ci95": [
+          0.0,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.0546875,
+          0.0703125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.single": {
+      "margin": {
+        "mean": 0.7342935651540756,
+        "ci95": [
+          0.6435025921091437,
+          0.8378620469942689
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.046875,
+        "ci95": [
+          0.0234375,
+          0.0703125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.2109375,
+        "ci95": [
+          0.1328125,
+          0.296875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.instruction": {
+      "margin": {
+        "mean": 0.01362224668264389,
+        "ci95": [
+          -0.0031699726358056066,
+          0.03000872395932673
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.00390625,
+        "ci95": [
+          -0.01953125,
+          0.0078125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.046875,
+          0.0625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.single": {
+      "margin": {
+        "mean": 0.7177028730511665,
+        "ci95": [
+          0.632516567222774,
+          0.8116281734779476
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.07421875,
+        "ci95": [
+          0.0390625,
+          0.11328125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.234375,
+        "ci95": [
+          0.1484375,
+          0.3203125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.blind.minus_native": {
+      "margin": {
+        "mean": 0.002881757915019989,
+        "ci95": [
+          -0.014843360148370266,
+          0.019376307167112822
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.01953125,
+          0.0
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.03125,
+        "ci95": [
+          -0.0078125,
+          0.0703125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.common.minus_native": {
+      "margin": {
+        "mean": -0.01497727632522583,
+        "ci95": [
+          -0.06079725082963705,
+          0.028657098300754993
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.00390625,
+        "ci95": [
+          -0.0234375,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.03125,
+        "ci95": [
+          -0.0859375,
+          0.03125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.centered.minus_native": {
+      "margin": {
+        "mean": -0.014397986233234406,
+        "ci95": [
+          -0.05252028312534094,
+          0.018929670006036754
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.01953125,
+          0.01953125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0,
+        "ci95": [
+          -0.0625,
+          0.0625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.norm.minus_native": {
+      "margin": {
+        "mean": -0.03489316254854202,
+        "ci95": [
+          -0.07746558506041765,
+          0.007558378763496874
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.01171875,
+        "ci95": [
+          -0.02734375,
+          0.00390625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.0703125,
+          0.0859375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.negative_common.minus_native": {
+      "margin": {
+        "mean": -0.06398312002420425,
+        "ci95": [
+          -0.10837864056229592,
+          -0.020834939740598222
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.02734375,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0390625,
+        "ci95": [
+          -0.125,
+          0.0390625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.shared_frame.minus_native": {
+      "margin": {
+        "mean": -0.035753801465034485,
+        "ci95": [
+          -0.0775268642231822,
+          0.005164892040193073
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.015625,
+          0.015625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.015625,
+        "ci95": [
+          -0.0859375,
+          0.0546875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "relation_x_layout": {
+      "margin": {
+        "mean": 0.5140819624066353,
+        "ci95": [
+          0.427262538485229,
+          0.5965037900954484
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.109375,
+        "ci95": [
+          0.0703125,
+          0.15234375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0625,
+        "ci95": [
+          -0.0390625,
+          0.1640625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "D0.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.4419914558529854,
+        "ci95": [
+          0.362209590151906,
+          0.5275436807423829
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.01953125,
+        "ci95": [
+          0.00390625,
+          0.0390625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.234375,
+        "ci95": [
+          0.1484375,
+          0.3203125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "D1.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.9560734182596207,
+        "ci95": [
+          0.8440045822411776,
+          1.082728961482644
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.12890625,
+        "ci95": [
+          0.09375,
+          0.16796875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.296875,
+        "ci95": [
+          0.2265625,
+          0.375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "isolated.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.5467025265097618,
+        "ci95": [
+          0.4550090156495571,
+          0.6448940997943282
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.02734375,
+        "ci95": [
+          0.0,
+          0.05859375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.21875,
+        "ci95": [
+          0.1328125,
+          0.3125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "blind.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 1.1669150814414024,
+        "ci95": [
+          1.0297907151281833,
+          1.3163835609331727
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.1484375,
+        "ci95": [
+          0.10546875,
+          0.1953125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.265625,
+        "ci95": [
+          0.1875,
+          0.3515625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "common.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.9871160984039307,
+        "ci95": [
+          0.8471396856009961,
+          1.1309438435360786
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.09375,
+        "ci95": [
+          0.0546875,
+          0.1328125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.2734375,
+        "ci95": [
+          0.1875,
+          0.3671875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "centered.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.7043671309947968,
+        "ci95": [
+          0.5973195936530828,
+          0.8146139131858944
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.09375,
+        "ci95": [
+          0.05078125,
+          0.13671875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.1875,
+        "ci95": [
+          0.109375,
+          0.265625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "shared_frame.linked_minus_orthogonal": {
+      "margin": {
+        "mean": 0.7846148759126663,
+        "ci95": [
+          0.6625870874151587,
+          0.9070216128602623
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.05859375,
+        "ci95": [
+          0.03125,
+          0.0859375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.2265625,
+        "ci95": [
+          0.140625,
+          0.3203125
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "transfer": {
+    "linked.blind": {
+      "margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.11328125,
+        "ci95": [
+          0.0703125,
+          0.16015625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.078125,
+        "ci95": [
+          0.0234375,
+          0.1328125
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "linked.common": {
+      "margin": {
+        "mean": 0.4501485154032707,
+        "ci95": [
+          0.35482606422156093,
+          0.5444157818332315
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.02734375,
+          0.09765625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0234375,
+        "ci95": [
+          -0.0390625,
+          0.078125
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": 0.694881099053297,
+        "ci95": [
+          0.5501455655483681,
+          0.857903030242402
+        ]
+      }
+    },
+    "linked.centered": {
+      "margin": {
+        "mean": 0.16797883808612823,
+        "ci95": [
+          0.09903545826673507,
+          0.24577031806111332
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.06640625,
+        "ci95": [
+          0.02734375,
+          0.109375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.03125,
+        "ci95": [
+          -0.09375,
+          0.03125
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": 0.2593040199686428,
+        "ci95": [
+          0.15567842967038562,
+          0.35679484678586765
+        ]
+      }
+    },
+    "linked.norm": {
+      "margin": {
+        "mean": 0.0016723200678825378,
+        "ci95": [
+          -0.07112301904708147,
+          0.07274871673434972
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.02734375,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.046875,
+          0.0625
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": 0.002581511583345008,
+        "ci95": [
+          -0.11001739944647435,
+          0.10818233702053932
+        ]
+      }
+    },
+    "linked.negative_common": {
+      "margin": {
+        "mean": -0.284213624894619,
+        "ci95": [
+          -0.3828811448067427,
+          -0.1911131208762527
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.015625,
+        "ci95": [
+          -0.046875,
+          0.011816406249999467
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.21875,
+        "ci95": [
+          -0.296875,
+          -0.140625
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": -0.4387322611866585,
+        "ci95": [
+          -0.6108171178799386,
+          -0.28932940532837176
+        ]
+      }
+    },
+    "linked.shared_frame": {
+      "margin": {
+        "mean": 0.22687076777219772,
+        "ci95": [
+          0.148467805236578,
+          0.30816146936267613
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.03125,
+        "ci95": [
+          0.0078125,
+          0.0546875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.0625,
+          0.046875
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.6478065326809883,
+        "ci95": [
+          0.5574759500101208,
+          0.7452252075076102
+        ],
+        "n_contexts": 64
+      },
+      "fraction_of_blind_effect": {
+        "mean": 0.3502137695853092,
+        "ci95": [
+          0.23082561079750058,
+          0.4772210726720587
+        ]
+      }
+    },
+    "orthogonal.blind": {
+      "margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.03515625,
+          0.015625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.03125,
+        "ci95": [
+          -0.0546875,
+          0.109375
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.common": {
+      "margin": {
+        "mean": 0.009734943509101868,
+        "ci95": [
+          -0.026826244965195655,
+          0.04668826144188642
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.00390625,
+        "ci95": [
+          -0.02734375,
+          0.015625
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.03125,
+        "ci95": [
+          -0.1171875,
+          0.047070312499998934
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.centered": {
+      "margin": {
+        "mean": 0.010314233601093292,
+        "ci95": [
+          -0.023365323431789875,
+          0.04271437115967273
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.03515625,
+          0.03125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0,
+        "ci95": [
+          -0.078125,
+          0.078125
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.norm": {
+      "margin": {
+        "mean": -0.010180942714214325,
+        "ci95": [
+          -0.047567140124738214,
+          0.02705658115446564
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.01171875,
+        "ci95": [
+          -0.031347656249999994,
+          0.0078125
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0078125,
+        "ci95": [
+          -0.0546875,
+          0.0703125
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.negative_common": {
+      "margin": {
+        "mean": -0.039270900189876556,
+        "ci95": [
+          -0.08370979782193899,
+          0.004685194604098751
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.0078125,
+        "ci95": [
+          -0.03125,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.0390625,
+        "ci95": [
+          -0.125,
+          0.0390625
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.shared_frame": {
+      "margin": {
+        "mean": -0.011041581630706787,
+        "ci95": [
+          -0.042355876229703424,
+          0.02022223807871337
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          -0.01171875,
+          0.01171875
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": -0.015625,
+        "ci95": [
+          -0.09375,
+          0.0625
+        ],
+        "n_contexts": 64
+      },
+      "blind_minus_isolated_margin": {
+        "mean": 0.027593977749347687,
+        "ci95": [
+          -0.013094189204275608,
+          0.06888355538249012
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "cue_diagnostics": {
+    "linked.D0": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.48179440200328827,
+        "ci95": [
+          0.39667458459734917,
+          0.5754982963204384
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.D1": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.0213800743222237,
+        "ci95": [
+          0.891678217984736,
+          1.1646752782166003
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.isolated": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.528221420943737,
+        "ci95": [
+          0.4284562025219202,
+          0.6417142771184443
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.blind": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.2445291802287102,
+        "ci95": [
+          1.091836590319872,
+          1.4124584874138235
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.common": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.0078373849391937,
+        "ci95": [
+          0.8394639074802399,
+          1.1987601028755304
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.centered": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.7897726148366928,
+        "ci95": [
+          0.6683548405766487,
+          0.9150136621668934
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.norm": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.5435838177800179,
+        "ci95": [
+          0.45585502628237007,
+          0.6417856505140662
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.negative_common": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.1322111412882805,
+        "ci95": [
+          0.05045364107936621,
+          0.2155792670324444
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.shared_frame": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.8002297133207321,
+        "ci95": [
+          0.6635423123836517,
+          0.9564200293272733
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.D0.instruction": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.6823243573307991,
+        "ci95": [
+          0.5799178721383214,
+          0.7960132868960499
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.D0.single": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.35591059923172,
+        "ci95": [
+          1.249590741097927,
+          1.4744547601789233
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.D1.instruction": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.0403713509440422,
+        "ci95": [
+          0.9132326751947403,
+          1.1808641986921429
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "linked.D1.single": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 1.077278457581997,
+        "ci95": [
+          0.9697906186804175,
+          1.1910537546500561
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy."
+    },
+    "orthogonal.D0": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.01787932962179184,
+        "ci95": [
+          -0.028903982415795327,
+          0.06730487886816262
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.04142937809228897,
+        "ci95": [
+          -0.012612346187233925,
+          0.09521638397127387
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.501953125,
+          0.53125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.isolated": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.03836778551340103,
+        "ci95": [
+          -0.027058498561382295,
+          0.1043415237218141
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.509765625,
+        "ci95": [
+          0.501953125,
+          0.521484375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.blind": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.027597256004810333,
+        "ci95": [
+          -0.036865080893039706,
+          0.08974342010915275
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.513671875,
+        "ci95": [
+          0.5,
+          0.52734375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.common": {
+      "natural_minus_flipped_code_margin": {
+        "mean": -0.0012153014540672302,
+        "ci95": [
+          -0.08690371457487345,
+          0.08684231452643869
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.505859375,
+        "ci95": [
+          0.49609375,
+          0.515625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.centered": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.033120572566986084,
+        "ci95": [
+          -0.02863580361008644,
+          0.09574108496308326
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.515625,
+        "ci95": [
+          0.5,
+          0.533203125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.norm": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.035051681101322174,
+        "ci95": [
+          -0.011977510340511798,
+          0.08106368500739332
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.501953125,
+        "ci95": [
+          0.49609375,
+          0.509765625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.negative_common": {
+      "natural_minus_flipped_code_margin": {
+        "mean": -0.013503439724445343,
+        "ci95": [
+          -0.05623189266771078,
+          0.02820137944072481
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.50390625,
+        "ci95": [
+          0.494140625,
+          0.515625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.shared_frame": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.00032483041286468506,
+        "ci95": [
+          -0.06953985299915075,
+          0.07182296253740786
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.509765625,
+        "ci95": [
+          0.501953125,
+          0.51953125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.instruction": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.005905121564865112,
+        "ci95": [
+          -0.04901765957474709,
+          0.06450669169425964
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.505859375,
+        "ci95": [
+          0.5,
+          0.515625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0.single": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.02689337730407715,
+        "ci95": [
+          -0.03577063996344805,
+          0.09294160902500147
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.548828125,
+        "ci95": [
+          0.53125,
+          0.5703125
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.instruction": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.048913151025772095,
+        "ci95": [
+          -0.00949479378759861,
+          0.1083235977217555
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.513671875,
+        "ci95": [
+          0.5,
+          0.529296875
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1.single": {
+      "natural_minus_flipped_code_margin": {
+        "mean": 0.03187774866819382,
+        "ci95": [
+          -0.021654586493968963,
+          0.07810549437999725
+        ],
+        "n_contexts": 64
+      },
+      "interpretation": "Linked: conflicting keys have no unique default gold; this measures cue influence, not accuracy.",
+      "both_code_values_accuracy": {
+        "mean": 0.60546875,
+        "ci95": [
+          0.574169921875,
+          0.6406738281249997
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "cooperation": {
+    "linked": {
+      "margin": {
+        "mean": 0.029679179191589355,
+        "ci95": [
+          -0.08781360704451799,
+          0.13663596194237457
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.015625,
+        "ci95": [
+          -0.0625,
+          0.027441406249999467
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0859375,
+        "ci95": [
+          0.0234375,
+          0.15625
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal": {
+      "margin": {
+        "mean": 0.007544800639152527,
+        "ci95": [
+          -0.03635009545832872,
+          0.049123515002429445
+        ],
+        "n_contexts": 64
+      },
+      "accuracy": {
+        "mean": -0.00390625,
+        "ci95": [
+          -0.03515625,
+          0.02734375
+        ],
+        "n_contexts": 64
+      },
+      "paired_source_ranking": {
+        "mean": 0.0625,
+        "ci95": [
+          -0.0390625,
+          0.15625
+        ],
+        "n_contexts": 64
+      }
+    }
+  },
+  "attention": {
+    "linked.D0": {
+      "prefix.mass": {
+        "mean": 0.015101293953699094,
+        "ci95": [
+          0.014879158502385002,
+          0.015315931537956354
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5482542557389631,
+        "ci95": [
+          0.5459834878148992,
+          0.5506071256957915
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5482542557389631,
+        "ci95": [
+          0.5459834878148992,
+          0.5506071256957915
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.03099781373177595,
+        "ci95": [
+          0.03059948580614799,
+          0.031394086741758864
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5466084965462668,
+        "ci95": [
+          0.5443284760673931,
+          0.5490530849262641
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5466084965462668,
+        "ci95": [
+          0.5443284760673931,
+          0.5490530849262641
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.D1": {
+      "prefix.mass": {
+        "mean": 0.020946568333733415,
+        "ci95": [
+          0.02061240384207142,
+          0.0212911081464199
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.6015802595356945,
+        "ci95": [
+          0.599164373445213,
+          0.6038972222513418
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.6015802595356945,
+        "ci95": [
+          0.599164373445213,
+          0.6038972222513418
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.029896864828919612,
+        "ci95": [
+          0.029432540511932833,
+          0.030380782919246486
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5683229225299632,
+        "ci95": [
+          0.5656358853660802,
+          0.5709831744441342
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5683229225299632,
+        "ci95": [
+          0.5656358853660802,
+          0.5709831744441342
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.isolated": {
+      "prefix.mass": {
+        "mean": 0.028409535901219998,
+        "ci95": [
+          0.02801916749191757,
+          0.028804267720978615
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.519780519544535,
+        "ci95": [
+          0.5187966502221065,
+          0.5208110491016366
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.519780519544535,
+        "ci95": [
+          0.5187966502221065,
+          0.5208110491016366
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.031413685057032126,
+        "ci95": [
+          0.030840968640195063,
+          0.03200209310297926
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5560378177291972,
+        "ci95": [
+          0.5539295416018527,
+          0.5581993058475039
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5560378177291972,
+        "ci95": [
+          0.5539295416018527,
+          0.5581993058475039
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.blind": {
+      "prefix.mass": {
+        "mean": 0.026151575452584237,
+        "ci95": [
+          0.025845175237634525,
+          0.02647429764536911
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.583811681505823,
+        "ci95": [
+          0.5816827372969581,
+          0.5858429263988606
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.583811681505823,
+        "ci95": [
+          0.5816827372969581,
+          0.5858429263988606
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.030204754249603463,
+        "ci95": [
+          0.029711682514996736,
+          0.030749522029675014
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5686600727219936,
+        "ci95": [
+          0.5658396185418193,
+          0.5714717219908684
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5686600727219936,
+        "ci95": [
+          0.5658396185418193,
+          0.5714717219908684
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.common": {
+      "prefix.mass": {
+        "mean": 0.01873020827734864,
+        "ci95": [
+          0.018550378608814654,
+          0.01889776749006589
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5209227476233436,
+        "ci95": [
+          0.5197109350705028,
+          0.5221987724471546
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5209227476233436,
+        "ci95": [
+          0.5197109350705028,
+          0.5221987724471546
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.030837961615563673,
+        "ci95": [
+          0.03028245937585628,
+          0.03142169570196782
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5663976580399321,
+        "ci95": [
+          0.5635466664199258,
+          0.5693764818373892
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5663976580399321,
+        "ci95": [
+          0.5635466664199258,
+          0.5693764818373892
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.centered": {
+      "prefix.mass": {
+        "mean": 0.05299886192440479,
+        "ci95": [
+          0.05203659852490495,
+          0.053978177937998834
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5386932746575137,
+        "ci95": [
+          0.5372929719178097,
+          0.539965022802749
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5386932746575137,
+        "ci95": [
+          0.5372929719178097,
+          0.539965022802749
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.030517320887560748,
+        "ci95": [
+          0.03008641166462161,
+          0.03093664332211069
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5616990803925244,
+        "ci95": [
+          0.5598028165087776,
+          0.5636233007827993
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5616990803925244,
+        "ci95": [
+          0.5598028165087776,
+          0.5636233007827993
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.norm": {
+      "prefix.mass": {
+        "mean": 0.04180834604469258,
+        "ci95": [
+          0.04120730402072089,
+          0.04243575891855218
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5190799076016346,
+        "ci95": [
+          0.5179860265061303,
+          0.5201883491139597
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5190799076016346,
+        "ci95": [
+          0.5179860265061303,
+          0.5201883491139597
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.02905039152372208,
+        "ci95": [
+          0.028506492108870893,
+          0.02959452701506583
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5588627971560022,
+        "ci95": [
+          0.5566290480966725,
+          0.5611841932845387
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5588627971560022,
+        "ci95": [
+          0.5566290480966725,
+          0.5611841932845387
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.negative_common": {
+      "prefix.mass": {
+        "mean": 0.08653931694475936,
+        "ci95": [
+          0.08508658250241043,
+          0.08792830704591223
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5115477905977361,
+        "ci95": [
+          0.5106960576374453,
+          0.5124030960013948
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5115477905977361,
+        "ci95": [
+          0.5106960576374453,
+          0.5124030960013948
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.022467994686444902,
+        "ci95": [
+          0.022168386531676434,
+          0.022775562278066746
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5545361981979415,
+        "ci95": [
+          0.5530240268127979,
+          0.5560518059274828
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5545361981979415,
+        "ci95": [
+          0.5530240268127979,
+          0.5560518059274828
+        ],
+        "n_contexts": 64
+      }
+    },
+    "linked.shared_frame": {
+      "prefix.mass": {
+        "mean": 0.01812241703722369,
+        "ci95": [
+          0.017945446461415788,
+          0.01831264311321724
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5228392016514489,
+        "ci95": [
+          0.5217322930510919,
+          0.5240356899124082
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5228392016514489,
+        "ci95": [
+          0.5217322930510919,
+          0.5240356899124082
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.03088239912808098,
+        "ci95": [
+          0.03033496905696262,
+          0.031459531172590184
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5580198949432492,
+        "ci95": [
+          0.555368798822787,
+          0.5606903727931543
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5580198949432492,
+        "ci95": [
+          0.555368798822787,
+          0.5606903727931543
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D0": {
+      "prefix.mass": {
+        "mean": 0.015029414795662888,
+        "ci95": [
+          0.014819271689580343,
+          0.01524111444179981
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5223450407987305,
+        "ci95": [
+          0.5203462258569844,
+          0.5244823347759343
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5269871937004307,
+        "ci95": [
+          0.5251146154510934,
+          0.5288243512692133
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.03051898046932264,
+        "ci95": [
+          0.030124811625367127,
+          0.03091959952373726
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5304447039880971,
+        "ci95": [
+          0.5286364381685822,
+          0.5323111901119976
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5171942740303672,
+        "ci95": [
+          0.515425353555919,
+          0.5190226818831838
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.D1": {
+      "prefix.mass": {
+        "mean": 0.02163665207460023,
+        "ci95": [
+          0.02130800036109501,
+          0.02196174497115761
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5358715266031342,
+        "ci95": [
+          0.5336192510998646,
+          0.538190649691953
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.529006701269989,
+        "ci95": [
+          0.52727104536421,
+          0.5307253149705099
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.029811512039638426,
+        "ci95": [
+          0.02937501265358328,
+          0.030238095372806126
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.527443473068868,
+        "ci95": [
+          0.5254690911413896,
+          0.5294081839910277
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5220750845748827,
+        "ci95": [
+          0.5200876097860601,
+          0.5239414431483762
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.isolated": {
+      "prefix.mass": {
+        "mean": 0.028435727607352926,
+        "ci95": [
+          0.02801171660963367,
+          0.028900786033947648
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5023724497215072,
+        "ci95": [
+          0.5017894139542073,
+          0.5029789352782649
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.515306080093271,
+        "ci95": [
+          0.5142588519732979,
+          0.5163484169425727
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.03087306255909223,
+        "ci95": [
+          0.03032147467405366,
+          0.03142301331146326
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5207869555112363,
+        "ci95": [
+          0.5190147710649602,
+          0.5225287941702037
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5214616710355686,
+        "ci95": [
+          0.5198898016427443,
+          0.5230249227993126
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.blind": {
+      "prefix.mass": {
+        "mean": 0.028390401156280453,
+        "ci95": [
+          0.02808653004469003,
+          0.02870355293939105
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.534895650659261,
+        "ci95": [
+          0.5326635766281268,
+          0.5372132877153489
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5191639942867268,
+        "ci95": [
+          0.5174117096532832,
+          0.520933290857728
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.029503030512286286,
+        "ci95": [
+          0.029041354963817413,
+          0.029981245590225726
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5258136498434598,
+        "ci95": [
+          0.5236648527148646,
+          0.5278235050758263
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5224784145975718,
+        "ci95": [
+          0.520571759600878,
+          0.5243888758714295
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.common": {
+      "prefix.mass": {
+        "mean": 0.020946418621810556,
+        "ci95": [
+          0.020739192175496,
+          0.021135684607737758
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5033891835175583,
+        "ci95": [
+          0.5025411449734546,
+          0.5042436896750182
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5156132236103682,
+        "ci95": [
+          0.5144565068469092,
+          0.5167165402309668
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.029909140400630148,
+        "ci95": [
+          0.029421471242361955,
+          0.030440129809435095
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5235251864182322,
+        "ci95": [
+          0.5214377138844105,
+          0.5256740903830683
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5244490398003512,
+        "ci95": [
+          0.5225442377504805,
+          0.5263612766413038
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.centered": {
+      "prefix.mass": {
+        "mean": 0.04900264854333929,
+        "ci95": [
+          0.04811418162080119,
+          0.049885663674588916
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5145267255122437,
+        "ci95": [
+          0.5132582257616781,
+          0.5157351477142583
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5133936757984985,
+        "ci95": [
+          0.512113561590013,
+          0.5147032062512557
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.03057093326060567,
+        "ci95": [
+          0.030130182771855134,
+          0.031010351566746724
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5243106951691313,
+        "ci95": [
+          0.522642617710153,
+          0.5259027371892444
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5214060944902789,
+        "ci95": [
+          0.5197088964866352,
+          0.5231581227758498
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.norm": {
+      "prefix.mass": {
+        "mean": 0.041031545293157654,
+        "ci95": [
+          0.04044042728264432,
+          0.04164995941490209
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5028353654181248,
+        "ci95": [
+          0.5022412332915943,
+          0.5034196408450547
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5132100058835931,
+        "ci95": [
+          0.5120317984658564,
+          0.5144122782346433
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.02894803731356256,
+        "ci95": [
+          0.02836757290580181,
+          0.029536531903928184
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.522030232634279,
+        "ci95": [
+          0.5203623281570293,
+          0.5236028074797406
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5217621826385666,
+        "ci95": [
+          0.5200408359474143,
+          0.5234047995200348
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.negative_common": {
+      "prefix.mass": {
+        "mean": 0.07823398178576704,
+        "ci95": [
+          0.07705407545036501,
+          0.07942468346317734
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5019261809114445,
+        "ci95": [
+          0.5015315951131925,
+          0.5023146542788809
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5089538909346124,
+        "ci95": [
+          0.5080890316156,
+          0.5097405287449671
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.023790548628363065,
+        "ci95": [
+          0.023496611599075044,
+          0.02410637597295388
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.522241659837568,
+        "ci95": [
+          0.5208194221449148,
+          0.5235905869692943
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5191746452862087,
+        "ci95": [
+          0.5176969081613708,
+          0.520668364492263
+        ],
+        "n_contexts": 64
+      }
+    },
+    "orthogonal.shared_frame": {
+      "prefix.mass": {
+        "mean": 0.018165908518413845,
+        "ci95": [
+          0.017988716639743215,
+          0.018344327744608157
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_source": {
+        "mean": 0.5034760490331488,
+        "ci95": [
+          0.5026544875895423,
+          0.5043294809639822
+        ],
+        "n_contexts": 64
+      },
+      "prefix.within_code": {
+        "mean": 0.5179961351095699,
+        "ci95": [
+          0.5169260010259878,
+          0.5190090168204834
+        ],
+        "n_contexts": 64
+      },
+      "label.mass": {
+        "mean": 0.030315363148424188,
+        "ci95": [
+          0.029808456675161528,
+          0.03083797871402491
+        ],
+        "n_contexts": 64
+      },
+      "label.within_source": {
+        "mean": 0.5213581776398415,
+        "ci95": [
+          0.5193740745196314,
+          0.5233252806243803
+        ],
+        "n_contexts": 64
+      },
+      "label.within_code": {
+        "mean": 0.5207838942021934,
+        "ci95": [
+          0.5189715594494676,
+          0.5225792860797002
+        ],
+        "n_contexts": 64
+      }
+    }
+  }
+}

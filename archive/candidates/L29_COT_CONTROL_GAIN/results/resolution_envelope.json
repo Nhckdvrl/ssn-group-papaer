@@ -1,0 +1,48 @@
+{
+  "status": "DESIGN_CALCULATION_NOT_MODEL_RESULT",
+  "assumption": "Single state per question and independent arm/checkpoint Monte Carlo, p=0.5; ignores state/question heterogeneity and pairing covariance; not an empirical power estimate",
+  "rows": [
+    {
+      "questions": 12,
+      "rollouts_per_arm_state": 4,
+      "worst_case_independent_MC_only_se": 0.14433756729740643,
+      "normal95_halfwidth": 0.2829016319029166,
+      "approx80power_two_sided_MDE": 0.404145188432738
+    },
+    {
+      "questions": 12,
+      "rollouts_per_arm_state": 8,
+      "worst_case_independent_MC_only_se": 0.10206207261596575,
+      "normal95_halfwidth": 0.20004166232729287,
+      "approx80power_two_sided_MDE": 0.2857738033247041
+    },
+    {
+      "questions": 12,
+      "rollouts_per_arm_state": 16,
+      "worst_case_independent_MC_only_se": 0.07216878364870322,
+      "normal95_halfwidth": 0.1414508159514583,
+      "approx80power_two_sided_MDE": 0.202072594216369
+    },
+    {
+      "questions": 63,
+      "rollouts_per_arm_state": 4,
+      "worst_case_independent_MC_only_se": 0.06299407883487121,
+      "normal95_halfwidth": 0.12346839451634757,
+      "approx80power_two_sided_MDE": 0.17638342073763938
+    },
+    {
+      "questions": 63,
+      "rollouts_per_arm_state": 8,
+      "worst_case_independent_MC_only_se": 0.0445435403187374,
+      "normal95_halfwidth": 0.0873053390247253,
+      "approx80power_two_sided_MDE": 0.1247219128924647
+    },
+    {
+      "questions": 63,
+      "rollouts_per_arm_state": 16,
+      "worst_case_independent_MC_only_se": 0.031497039417435604,
+      "normal95_halfwidth": 0.061734197258173786,
+      "approx80power_two_sided_MDE": 0.08819171036881969
+    }
+  ]
+}

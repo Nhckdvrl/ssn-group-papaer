@@ -1,0 +1,416 @@
+{
+  "date": "2026-10-06",
+  "card_count": 51,
+  "unissued_id": "E02",
+  "user_requested_pause": true,
+  "experiments": [
+    {
+      "id": "E00",
+      "title": "# E00：公开 Garden-Path 行为基线复现（2026-10-05）",
+      "card": "experiments/E00-baseline-reproduction.md",
+      "status_at_pause": "DONE",
+      "bytes": 6065,
+      "sha256": "73262069dae9782cffcc9a3c4593f31c5c817a721f56ece2abc01175942b81e2"
+    },
+    {
+      "id": "E01",
+      "title": "# E01：跨构式 revision structure 系统测量（2026-10-05）",
+      "card": "experiments/E01-component-revision-map.md",
+      "status_at_pause": "RUNNING",
+      "bytes": 14427,
+      "sha256": "cd5d6193c96570e5eb537d10031f38b0ddd9b4900b8399395961b7291834f65b"
+    },
+    {
+      "id": "E03",
+      "title": "# E03：E00 顺序反转与断言标准审计（2026-10-05）",
+      "card": "experiments/E03-e00-order-and-assertion-audit.md",
+      "status_at_pause": "DONE",
+      "bytes": 5412,
+      "sha256": "9b7ef8daaebb152f0154f67e6dfe283ae64abb06736687f0d7b4ccc1a06db9f2"
+    },
+    {
+      "id": "E04",
+      "title": "# E04：已知阳性模型的独立本地校准（2026-10-05）",
+      "card": "experiments/E04-known-positive-control.md",
+      "status_at_pause": "DONE",
+      "bytes": 4504,
+      "sha256": "2a25fe9e96e63b70ae25711ee0979e6740669da445f9d19219768963a798c3a9"
+    },
+    {
+      "id": "E05",
+      "title": "# E05：响应标签与 No 的语义校准（2026-10-05）",
+      "card": "experiments/E05-response-meaning-calibration.md",
+      "status_at_pause": "DONE",
+      "bytes": 5585,
+      "sha256": "b883f6aa3d262023d3968adef03909c45b7fd0bb7288cd60a45c68ae134051eb"
+    },
+    {
+      "id": "E06",
+      "title": "# E06：自然原句上的 attachment 与 event readout（2026-10-05）",
+      "card": "experiments/E06-attachment-versus-event.md",
+      "status_at_pause": "DONE",
+      "bytes": 6086,
+      "sha256": "748807584d7bb6774c9206e9242d815c784934f99f8ac01ca967e628f06e9a61"
+    },
+    {
+      "id": "E07",
+      "title": "# E07：发布问答在原生回答边界下的迁移（2026-10-05）",
+      "card": "experiments/E07-native-readout-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 3669,
+      "sha256": "4b2cc1f22f1f2ca6448ec83ba401f98ddae84dcc9def0f4d978f9b9c864bca71"
+    },
+    {
+      "id": "E08",
+      "title": "# E08：提前的阅读关注问题与固定最终问答（2026-10-05）",
+      "card": "experiments/E08-reading-focus-versus-final-query.md",
+      "status_at_pause": "DONE",
+      "bytes": 4920,
+      "sha256": "dece78d4df49d4207c2f3a46d19f9097d1297c43f98a135861fed25a5a32b5e2"
+    },
+    {
+      "id": "E09",
+      "title": "# E09：原始人类理解题中的cue与任务顺序（2026-10-05）",
+      "card": "experiments/E09-published-comprehension-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 4731,
+      "sha256": "b39bf3f948da8f02335629e0907c21193e95407b6ba10eef5fef328d85d263d2"
+    },
+    {
+      "id": "E10",
+      "title": "# E10：拆问题与选项的位置（2026-10-05）",
+      "card": "experiments/E10-question-versus-option-access.md",
+      "status_at_pause": "DONE",
+      "bytes": 4241,
+      "sha256": "31b2124995e65be844d0c6e1e86625fbc3ef16ee4f0402c1c6364b7cdb2f727f"
+    },
+    {
+      "id": "E11",
+      "title": "# E11：加长主语后的角色读数，是引用方式还是修订失败？（2026-10-05）",
+      "card": "experiments/E11-extension-role-reference-audit.md",
+      "status_at_pause": "RUNNING",
+      "bytes": 7914,
+      "sha256": "9a9f334dcdd9003cec4e4d5aa8f68158b2dc30300f6b13c5cdef5963a44f880f"
+    },
+    {
+      "id": "E12",
+      "title": "# E12：原始句子概率与最终答案访问分开测（2026-10-05）",
+      "card": "experiments/E12-input-probability-versus-answer-access.md",
+      "status_at_pause": "DONE",
+      "bytes": 8251,
+      "sha256": "10abe5b38b05e24083af6d890bc847711073daba6e9899eb428615a850ae69c0"
+    },
+    {
+      "id": "E13",
+      "title": "# E13：没有诊断问句的自然后文，是否仍受初始解释影响？（2026-10-05）",
+      "card": "experiments/E13-natural-followup-without-diagnostic-question.md",
+      "status_at_pause": "DONE",
+      "bytes": 8300,
+      "sha256": "9844d99aaf09efa1c19bc800e7b6ef9696f21a3028f53e58798b667209a7001c"
+    },
+    {
+      "id": "E14",
+      "title": "# E14：事件回指是否改变GP历史对后文患者选择的影响？（2026-10-05）",
+      "card": "experiments/E14-event-identity-versus-extra-event.md",
+      "status_at_pause": "DONE",
+      "bytes": 6921,
+      "sha256": "b5470d1e3eb9a14bf533f70e4b69d014ecb40332456d5f25869ec5a716683228"
+    },
+    {
+      "id": "E15",
+      "title": "# E15：固定 continued 拆分活动指向与先前活动预设（2026-10-05）",
+      "card": "experiments/E15-fixed-aspect-event-reference.md",
+      "status_at_pause": "DONE",
+      "bytes": 4993,
+      "sha256": "a3459184998e1284bbcd805e4de3314e1537f5173b7aa4a535e1434463c2ff3f"
+    },
+    {
+      "id": "E16",
+      "title": "# E16：患者特异续写还是一般 self/reciprocal 偏好（2026-10-05）",
+      "card": "experiments/E16-patient-specific-crossover.md",
+      "status_at_pause": "DONE",
+      "bytes": 5095,
+      "sha256": "21425478ba5c48ea3ecf8f3a33704cd585db6a05920c84ec3c44daba55700ea2"
+    },
+    {
+      "id": "E17",
+      "title": "# E17：原事件依赖与中性实体感知（2026-10-05）",
+      "card": "experiments/E17-relation-versus-entity-accessibility.md",
+      "status_at_pause": "DONE",
+      "bytes": 5065,
+      "sha256": "c546f35927ed0d5b8bed1ba40f5870ca741f94d9ccd6791b7bf76a3a329f4d19"
+    },
+    {
+      "id": "E18",
+      "title": "# E18：换谓词表达后，原患者偏好是否转移？（2026-10-05）",
+      "card": "experiments/E18-predicate-paraphrase-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 5234,
+      "sha256": "957d2831b89443d8ca6c31b812e9fa5ec714b58370a6cad9a726c3c9c49c513f"
+    },
+    {
+      "id": "E19",
+      "title": "# E19：明确活动内角色证据能否覆盖旧关联？（2026-10-05）",
+      "card": "experiments/E19-late-exclusive-role-evidence.md",
+      "status_at_pause": "DONE",
+      "bytes": 6145,
+      "sha256": "4f321bf8ad326a2897b07f9edbb7449e7bfd27eedadae9467c36b85b45e95d50"
+    },
+    {
+      "id": "E20",
+      "title": "# E20：同事实换对象顺序，区分否定对象最近提及与旧关系影响（2026-10-05）",
+      "card": "experiments/E20-exclusive-fact-versus-last-mention.md",
+      "status_at_pause": "DONE",
+      "bytes": 4986,
+      "sha256": "86abcee9d59b5fc0383e4692094e650465ba1c567fce9c89c8de494cd773ea27"
+    },
+    {
+      "id": "E21",
+      "title": "# E21：点名排除、泛指排除与最简排他句（2026-10-05）",
+      "card": "experiments/E21-named-versus-generic-exclusion.md",
+      "status_at_pause": "DONE",
+      "bytes": 5600,
+      "sha256": "5a28c7e9581d51b2810ea2aab305861b8ebd56ee9ab8d11e264d9ca82a4ef17a"
+    },
+    {
+      "id": "E22",
+      "title": "# E22：纠正后的实体可及性与活动关系利用（2026-10-05）",
+      "card": "experiments/E22-post-correction-entity-versus-role-use.md",
+      "status_at_pause": "DONE",
+      "bytes": 4798,
+      "sha256": "dbde4ab64c9c88498fda562d5018f0a066dc18dbbe364fd065d8e47b73249f82"
+    },
+    {
+      "id": "E23",
+      "title": "# E23：角色事实是否约束实际续写，以及一句指令能否恢复（2026-10-05）",
+      "card": "experiments/E23-functional-role-continuation.md",
+      "status_at_pause": "DONE",
+      "bytes": 5774,
+      "sha256": "714892f387afabb4d00fe623ef4568798b94bdf2cb2f8f443ad9d4d9c6ea66e5"
+    },
+    {
+      "id": "E24",
+      "title": "# E24：独立来源检验纠正后关系利用的history交互（2026-10-05）",
+      "card": "experiments/E24-independent-correction-use-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 5793,
+      "sha256": "c2fc63270f80a109265f9bbc5caddf38065753d3f3374b3b2550404a58ae3f29"
+    },
+    {
+      "id": "E25",
+      "title": "# E25：纠正影响原事件、同人物新事件，还是另一人物的新事件？（2026-10-05）",
+      "card": "experiments/E25-event-versus-actor-correction-scope.md",
+      "status_at_pause": "DONE",
+      "bytes": 5467,
+      "sha256": "a67bbd5236ad07ac5e7390134729ca1cd7bfa718b85564058e0777cb33ced6c1"
+    },
+    {
+      "id": "E26",
+      "title": "# E26：事件约束能正确访问时，可迁移的关系预测痕迹意味着什么？（2026-10-05）",
+      "card": "experiments/E26-scoped-constraint-access-versus-portable-trace.md",
+      "status_at_pause": "DONE",
+      "bytes": 6381,
+      "sha256": "627ea96a166ea97629d25f3f7d1696342c008810df5358a19a115291f852f77d"
+    },
+    {
+      "id": "E27",
+      "title": "# E27：只添加明确允许患者的匹配关系比较阳性控制（2026-10-05）",
+      "card": "experiments/E27-allowed-fact-relation-positive-control.md",
+      "status_at_pause": "DONE",
+      "bytes": 4205,
+      "sha256": "0fcb917c07115fca762a3f5525fc95c3eed2c092af27d1dc263268fecf8d68d9"
+    },
+    {
+      "id": "E28",
+      "title": "# E28：supported / contradicted / undetermined的事件状态（2026-10-05）",
+      "card": "experiments/E28-three-way-event-constraint-state.md",
+      "status_at_pause": "DONE",
+      "bytes": 6912,
+      "sha256": "b861e6bca17d4b97a44e1eb5cbc28c2236b1536deab2a3dddac6fa06684b07be"
+    },
+    {
+      "id": "E29",
+      "title": "# E29：移除完整源句，区分source记忆与纠正句自身迁移（2026-10-05）",
+      "card": "experiments/E29-source-ablation-dual-readout.md",
+      "status_at_pause": "DONE",
+      "bytes": 8275,
+      "sha256": "9c3f694e8f5a3dfce5de976d4455bced72eb45532a9cd6cb7986a13acdc6452a"
+    },
+    {
+      "id": "E30",
+      "title": "# E30：新事件的患者反向预测来自边界身份，还是separate的对比意味？（2026-10-05）",
+      "card": "experiments/E30-event-boundary-versus-participant-contrast.md",
+      "status_at_pause": "DONE",
+      "bytes": 7379,
+      "sha256": "c709a8268031cbb5dce21c226e69f07f14a0eab9fef3ba36fc534472268be7d9"
+    },
+    {
+      "id": "E31",
+      "title": "# E31：谓词关联，还是新事件的一般参与者对比？（2026-10-05）",
+      "card": "experiments/E31-predicate-match-versus-narrative-contrast.md",
+      "status_at_pause": "DONE",
+      "bytes": 9359,
+      "sha256": "2047d650e4c570147d2b63fb6b0c69ba2a73b07f1305042e7f7d11fed18b90b7"
+    },
+    {
+      "id": "E32",
+      "title": "# E32：反向患者预测跟随角色事实，还是跟随否定对象的位置？（2026-10-05）",
+      "card": "experiments/E32-fact-order-versus-predicate-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 6454,
+      "sha256": "6a2a1fcc9248e3c461f29eff878e108e8767290b72f25b4f18e0709c670d732e"
+    },
+    {
+      "id": "E33",
+      "title": "# E33：新事件关系预测跟随原词，还是跟随动作意义？（2026-10-05）",
+      "card": "experiments/E33-same-action-paraphrase-transfer.md",
+      "status_at_pause": "DONE",
+      "bytes": 7901,
+      "sha256": "d3560b257f99fe3d28ba62007cf9fa02b8f8a015806c20044982ead05e7b3ddf"
+    },
+    {
+      "id": "E34",
+      "title": "# E34：被撤回的角色解释，还是仅被提到的关系？（2026-10-06）",
+      "card": "experiments/E34-retracted-report-versus-hypothetical-history.md",
+      "status_at_pause": "DONE",
+      "bytes": 8009,
+      "sha256": "9a187f0db39f969f8a47ccf7b13d95264d30c2df7b1ad12a61e741404f69c123"
+    },
+    {
+      "id": "E35",
+      "title": "# E35：当前事实优先级的一句恢复（2026-10-06）",
+      "card": "experiments/E35-current-world-priority-recovery.md",
+      "status_at_pause": "DONE",
+      "bytes": 4100,
+      "sha256": "35368696f0b93cd6f3907245bcbd15c293443e09482a7ba66601eb726d73af95"
+    },
+    {
+      "id": "E36",
+      "title": "# E36：肯定式角色证据，还是显式否定备选项？（2026-10-06）",
+      "card": "experiments/E36-affirmative-role-versus-negated-alternative.md",
+      "status_at_pause": "DONE",
+      "bytes": 5661,
+      "sha256": "df2c3052ce407ca7a480cdb81c58aa4f490d4d98e82391e1036e8ce04beca698"
+    },
+    {
+      "id": "E37",
+      "title": "# E37：直接回答旧/当前/新事件的角色，无字母标签（2026-10-06）",
+      "card": "experiments/E37-time-indexed-role-answer-without-letter-labels.md",
+      "status_at_pause": "DONE",
+      "bytes": 5305,
+      "sha256": "6d82fda995b594f2868324885a319b7679615adea4e222218399fca552b5b664"
+    },
+    {
+      "id": "E38",
+      "title": "# E38：未公布的新事件选择，还是普通叙事对比？（2026-10-06）",
+      "card": "experiments/E38-independent-target-selection-versus-narrative-contrast.md",
+      "status_at_pause": "DONE",
+      "bytes": 7486,
+      "sha256": "ff767ed1cf4b2302e47846b1d4ccb26bfd35fa0caeba499242dc7fc2f63fc6bd"
+    },
+    {
+      "id": "E39",
+      "title": "# E39：两个具名患者，移除self/reciprocal结构混杂（2026-10-06）",
+      "card": "experiments/E39-two-named-patients-without-reflexive-contrast.md",
+      "status_at_pause": "DONE",
+      "bytes": 4686,
+      "sha256": "50d343a907a9655bb2359516fdcf2a0ebb2686e36d6d542acaf9698f42b67893"
+    },
+    {
+      "id": "E40",
+      "title": "# E40：普通角色事实还是排他焦点？（2026-10-06）",
+      "card": "experiments/E40-plain-role-versus-exhaustive-focus.md",
+      "status_at_pause": "DONE",
+      "bytes": 4855,
+      "sha256": "9156e1017b6a47c221946ce75c7b524c7f47ec85618af4c83bb22fc73b99a135"
+    },
+    {
+      "id": "E41",
+      "title": "# E41：对象占用／状态后果，还是跨事件关系反重复？（2026-10-06）",
+      "card": "experiments/E41-event-completion-versus-participant-availability.md",
+      "status_at_pause": "DONE",
+      "bytes": 6050,
+      "sha256": "12a66759430ea49e0ea90e1e2c29530242906b21c2de2035b9856a1fd339dd09"
+    },
+    {
+      "id": "E42",
+      "title": "# E42：角色反向作用能否进入原生续写？（2026-10-06）",
+      "card": "experiments/E42-native-continuation-versus-raw-text.md",
+      "status_at_pause": "DONE",
+      "bytes": 4033,
+      "sha256": "e6dbfa67cab844bffed3e3993ff3598b98026b21849fc4cd6ed686b8e2e444a0"
+    },
+    {
+      "id": "E43",
+      "title": "# E43：最小普通事件事实，移除候选／报告脚手架（2026-10-06）",
+      "card": "experiments/E43-minimal-event-facts-without-candidate-scaffold.md",
+      "status_at_pause": "DONE",
+      "bytes": 5074,
+      "sha256": "6f093ebf27911917b05cca2fd2746e066946de6b89385bcb0d0f05a3a8902769"
+    },
+    {
+      "id": "E44",
+      "title": "# E44：普通场景中的平衡实体曝光与角色迁移（2026-10-06）",
+      "card": "experiments/E44-balanced-natural-scene-versus-entity-exposure.md",
+      "status_at_pause": "DONE",
+      "bytes": 4647,
+      "sha256": "8da442295d5a749f67521b4700dd49e12940345e4508b1743a7c628406f51588"
+    },
+    {
+      "id": "E45",
+      "title": "# E45：固定报告框架，仅将描述NP换成名字（2026-10-06）",
+      "card": "experiments/E45-scaffold-preserving-proper-name-substitution.md",
+      "status_at_pause": "DONE",
+      "bytes": 4186,
+      "sha256": "cfb6fdbc9147a61bc5fb3774f2f9ed73728eb165958028c19ccaedde2c2e51f2"
+    },
+    {
+      "id": "E46",
+      "title": "# E46：三个语篇成分的匹配析因检验（2026-10-06）",
+      "card": "experiments/E46-factorized-discourse-scaffold.md",
+      "status_at_pause": "DONE",
+      "bytes": 4762,
+      "sha256": "c143cbd5df8e16b5e4cfbfbbd22af32842e33c4953590a4aae6b82c77ba52d91"
+    },
+    {
+      "id": "E47",
+      "title": "# E47：身份断言、未核实引用与名称清单（2026-10-06）",
+      "card": "experiments/E47-identity-assertion-versus-mention-list.md",
+      "status_at_pause": "DONE",
+      "bytes": 5672,
+      "sha256": "19d12a4aa29b4b26ff30cb600c379c60e3f1b269404e97177b4752a9346db3cb"
+    },
+    {
+      "id": "E48",
+      "title": "# E48：同一指称实体的事实表达×后续表达交叉（2026-10-06）",
+      "card": "experiments/E48-referent-preserving-form-crossover.md",
+      "status_at_pause": "DONE",
+      "bytes": 6644,
+      "sha256": "c47983afbf8f5d2d7e144f2492fbe630eb7d2649a06202a916ad8c01426ea133"
+    },
+    {
+      "id": "E49",
+      "title": "# E49：第二事件角色已有明确证据时的实际使用（2026-10-06）",
+      "card": "experiments/E49-role-use-with-observed-second-event.md",
+      "status_at_pause": "DONE",
+      "bytes": 6683,
+      "sha256": "c67f43b88a095bc2ebb69dec512815bc15598629e69c25200b0768ea67ad91e0"
+    },
+    {
+      "id": "E50",
+      "title": "# E50：两事件联合角色使用与复述格式（2026-10-06）",
+      "card": "experiments/E50-joint-role-use-versus-recap-format.md",
+      "status_at_pause": "DONE",
+      "bytes": 5728,
+      "sha256": "ddfce3777f5b71accb48f2e5dc0daf3f62e380df40ad45aad3386128e20d0ac1"
+    },
+    {
+      "id": "E51",
+      "title": "# E51：role-occurrences-versus-referent-cardinality（2026-10-06）",
+      "card": "experiments/E51-role-occurrences-versus-referent-cardinality.md",
+      "status_at_pause": "RUNNING（未结项；推断完成，审计PARTIAL；2026-10-06用户明确暂停，无后台任务）",
+      "bytes": 7426,
+      "sha256": "3f5aa04cbdbbaa2d7f398b05c3686be8f463762e579992246194fa92a4e85e54"
+    }
+  ]
+}

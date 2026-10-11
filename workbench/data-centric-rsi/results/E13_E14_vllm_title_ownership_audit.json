@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-04T13:32:43.144982+00:00",
+  "scope": "Read-only audit during original terminal evaluation, no extra GPU experiment",
+  "launch_root": {
+    "pid": 3438337,
+    "start_ticks": "2777342050"
+  },
+  "token_only_discovery": [
+    {
+      "pid": 3438337,
+      "start_ticks": "2777342050"
+    },
+    {
+      "pid": 3441935,
+      "start_ticks": "2777379444"
+    }
+  ],
+  "registered_live_processes": [
+    {
+      "pid": 3438337,
+      "start_ticks": "2777342050",
+      "ppid": 3438298,
+      "token_visible": true,
+      "registered_by_live_ancestry": true,
+      "comm": "python"
+    },
+    {
+      "pid": 3441935,
+      "start_ticks": "2777379444",
+      "ppid": 3438337,
+      "token_visible": true,
+      "registered_by_live_ancestry": true,
+      "comm": "python"
+    },
+    {
+      "pid": 3441936,
+      "start_ticks": "2777379445",
+      "ppid": 3438337,
+      "token_visible": false,
+      "registered_by_live_ancestry": true,
+      "comm": "VLLM::EngineCor"
+    }
+  ],
+  "supplemental_guard_sha256": "9a8ccb771ac167efbd76e0aff1f418c5896f485ddd4a4e74023f786fac4e698b",
+  "finding": "Final release checks the descendant registry; token visibility can change with process-title rewriting. Linux comm truncates long process titles."
+}

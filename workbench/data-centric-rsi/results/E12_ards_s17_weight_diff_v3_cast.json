@@ -1,0 +1,51 @@
+{
+  "parent": "/var/tmp/xiang-data-rsi/e12/llava_init",
+  "student": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17/model",
+  "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+  "tensors": {
+    "language_model.model.layers.0.self_attn.q_proj.weight": {
+      "shape": [
+        4096,
+        4096
+      ],
+      "parent_dtype": "torch.float16",
+      "student_dtype": "torch.bfloat16",
+      "exact_equal": false,
+      "equal_after_parent_cast": false,
+      "changed_elements": 5319029,
+      "max_abs_delta": 0.00148773193359375,
+      "mean_abs_delta": 4.255488238413818e-05,
+      "raw_changed_elements_before_parent_cast": 15344676
+    },
+    "multi_modal_projector.linear_1.weight": {
+      "shape": [
+        4096,
+        1024
+      ],
+      "parent_dtype": "torch.float16",
+      "student_dtype": "torch.bfloat16",
+      "exact_equal": false,
+      "equal_after_parent_cast": false,
+      "changed_elements": 535241,
+      "max_abs_delta": 0.0019550323486328125,
+      "mean_abs_delta": 3.015631591551937e-05,
+      "raw_changed_elements_before_parent_cast": 535241
+    },
+    "vision_tower.vision_model.embeddings.patch_embedding.weight": {
+      "shape": [
+        1024,
+        3,
+        14,
+        14
+      ],
+      "parent_dtype": "torch.float16",
+      "student_dtype": "torch.bfloat16",
+      "exact_equal": false,
+      "equal_after_parent_cast": true,
+      "changed_elements": 0,
+      "max_abs_delta": 0.0,
+      "mean_abs_delta": 0.0,
+      "raw_changed_elements_before_parent_cast": 525606
+    }
+  }
+}

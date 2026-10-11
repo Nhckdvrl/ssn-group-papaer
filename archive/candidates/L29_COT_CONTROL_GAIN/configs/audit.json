@@ -1,0 +1,47 @@
+{
+  "status": "NO_CLAIM_DESIGN_SUPPORT_NOISE_AUDIT",
+  "model_steps": [
+    "step_0100",
+    "step_1400",
+    "step_2800"
+  ],
+  "families": [
+    "suppression"
+  ],
+  "failed_instrument_families": [
+    "lowercase",
+    "uppercase"
+  ],
+  "split": "audit",
+  "questions": 12,
+  "natural_rollouts_per_question_family": 1,
+  "natural_max_tokens": 128,
+  "fork_min_tokens": 8,
+  "fork_max_tokens": 128,
+  "fork_rule": "latest true newline/sentence boundary at least 8 tokens into the natural trajectory and no more than 32 tokens before its first completed forbidden-word occurrence; prior prefix legal, at least 20 alphabetic characters, and no answer marker",
+  "risk_enrichment_horizon": 32,
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 0,
+  "rollouts_per_fork_arm": 4,
+  "horizons": [
+    8,
+    32
+  ],
+  "support_reference": "checkpoint-and-family-specific natural prefix NLL distribution at the exact token length of each candidate, all length-eligible rollouts irrespective of legality",
+  "support_quantile": 0.95,
+  "support_statistics": [
+    "mean_nll",
+    "max_window16_nll"
+  ],
+  "support_sensitivity_quantiles": [
+    0.9,
+    1.0
+  ],
+  "support_caveat": "Audit reference sample is small; a typical likelihood is necessary but does not guarantee semantic reachability",
+  "independent_unit": "question",
+  "bootstrap_seed": 290913,
+  "gpu_hour_cap": 3,
+  "max_concurrent_gpus": 3,
+  "scope_stop": "no transition beyond E01; no substantive pilot before audit validity review"
+}

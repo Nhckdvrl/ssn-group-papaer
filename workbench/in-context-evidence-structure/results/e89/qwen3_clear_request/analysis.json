@@ -1,0 +1,565 @@
+{
+  "conditions": {
+    "base": {
+      "recognition_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_unrestricted_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.6171875,
+        "ci95": [
+          0.56640625,
+          0.66796875
+        ],
+        "n_contexts": 16
+      },
+      "application_unrestricted_accuracy": {
+        "mean": 0.49609375,
+        "ci95": [
+          0.42578125,
+          0.5625
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_minus_discordant_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      },
+      "application_label_argmax_fraction": {
+        "mean": 0.76953125,
+        "ci95": [
+          0.6796875,
+          0.84765625
+        ],
+        "n_contexts": 16
+      },
+      "recognition_label_argmax_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_accuracy": {
+        "mean": 0.49609375,
+        "ci95": [
+          0.42578125,
+          0.5625
+        ],
+        "n_contexts": 16
+      },
+      "generated_discordant_accuracy": {
+        "mean": 0.3828125,
+        "ci95": [
+          0.328125,
+          0.4375
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_parse_fraction": {
+        "mean": 0.76953125,
+        "ci95": [
+          0.6796875,
+          0.84765625
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_parse_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "application_truncated_fraction": {
+        "mean": 0.23046875,
+        "ci95": [
+          0.15234375,
+          0.3203125
+        ],
+        "n_contexts": 16
+      },
+      "recognition_truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    },
+    "flip": {
+      "recognition_accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.40625,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_unrestricted_accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.40625,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.6640625,
+        "ci95": [
+          0.625,
+          0.69921875
+        ],
+        "n_contexts": 16
+      },
+      "application_unrestricted_accuracy": {
+        "mean": 0.47265625,
+        "ci95": [
+          0.3828125,
+          0.5546875
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_minus_discordant_accuracy": {
+        "mean": -0.03125,
+        "ci95": [
+          -0.09375,
+          0.0
+        ],
+        "n_contexts": 16
+      },
+      "application_label_argmax_fraction": {
+        "mean": 0.71484375,
+        "ci95": [
+          0.58203125,
+          0.8359375
+        ],
+        "n_contexts": 16
+      },
+      "recognition_label_argmax_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.40625,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_accuracy": {
+        "mean": 0.47265625,
+        "ci95": [
+          0.3828125,
+          0.5546875
+        ],
+        "n_contexts": 16
+      },
+      "generated_discordant_accuracy": {
+        "mean": 0.375,
+        "ci95": [
+          0.3046875,
+          0.4453125
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_parse_fraction": {
+        "mean": 0.71484375,
+        "ci95": [
+          0.58203125,
+          0.8359375
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_parse_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "application_truncated_fraction": {
+        "mean": 0.28515625,
+        "ci95": [
+          0.1640625,
+          0.41796875
+        ],
+        "n_contexts": 16
+      },
+      "recognition_truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    },
+    "explicit": {
+      "recognition_accuracy": {
+        "mean": 0.53125,
+        "ci95": [
+          0.5,
+          0.59375
+        ],
+        "n_contexts": 16
+      },
+      "recognition_unrestricted_accuracy": {
+        "mean": 0.53125,
+        "ci95": [
+          0.5,
+          0.59375
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.62109375,
+        "ci95": [
+          0.578125,
+          0.6640625
+        ],
+        "n_contexts": 16
+      },
+      "application_unrestricted_accuracy": {
+        "mean": 0.58203125,
+        "ci95": [
+          0.52734375,
+          0.6328125
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.4921875,
+        "ci95": [
+          0.4765625,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_minus_discordant_accuracy": {
+        "mean": 0.0390625,
+        "ci95": [
+          0.0,
+          0.109375
+        ],
+        "n_contexts": 16
+      },
+      "application_label_argmax_fraction": {
+        "mean": 0.91796875,
+        "ci95": [
+          0.8475585937500001,
+          0.97265625
+        ],
+        "n_contexts": 16
+      },
+      "recognition_label_argmax_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_accuracy": {
+        "mean": 0.53125,
+        "ci95": [
+          0.5,
+          0.59375
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_accuracy": {
+        "mean": 0.58203125,
+        "ci95": [
+          0.52734375,
+          0.6328125
+        ],
+        "n_contexts": 16
+      },
+      "generated_discordant_accuracy": {
+        "mean": 0.4765625,
+        "ci95": [
+          0.4375,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_parse_fraction": {
+        "mean": 0.91796875,
+        "ci95": [
+          0.8475585937500001,
+          0.97265625
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_parse_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "application_truncated_fraction": {
+        "mean": 0.08203125,
+        "ci95": [
+          0.02734375,
+          0.15244140624999858
+        ],
+        "n_contexts": 16
+      },
+      "recognition_truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    },
+    "explicit_flip": {
+      "recognition_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.5,
+          0.6875
+        ],
+        "n_contexts": 16
+      },
+      "recognition_unrestricted_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.5,
+          0.6875
+        ],
+        "n_contexts": 16
+      },
+      "application_accuracy": {
+        "mean": 0.640625,
+        "ci95": [
+          0.609375,
+          0.67578125
+        ],
+        "n_contexts": 16
+      },
+      "application_unrestricted_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.515625,
+          0.65234375
+        ],
+        "n_contexts": 16
+      },
+      "discordant_accuracy": {
+        "mean": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "recognition_minus_discordant_accuracy": {
+        "mean": 0.09375,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_contexts": 16
+      },
+      "application_label_argmax_fraction": {
+        "mean": 0.90234375,
+        "ci95": [
+          0.79296875,
+          0.97265625
+        ],
+        "n_contexts": 16
+      },
+      "recognition_label_argmax_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.5,
+          0.6875
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_accuracy": {
+        "mean": 0.59375,
+        "ci95": [
+          0.515625,
+          0.65234375
+        ],
+        "n_contexts": 16
+      },
+      "generated_discordant_accuracy": {
+        "mean": 0.4765625,
+        "ci95": [
+          0.4296875,
+          0.5
+        ],
+        "n_contexts": 16
+      },
+      "generated_application_parse_fraction": {
+        "mean": 0.90234375,
+        "ci95": [
+          0.79296875,
+          0.97265625
+        ],
+        "n_contexts": 16
+      },
+      "generated_recognition_parse_fraction": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 16
+      },
+      "application_truncated_fraction": {
+        "mean": 0.09765625,
+        "ci95": [
+          0.02734375,
+          0.20703125
+        ],
+        "n_contexts": 16
+      },
+      "recognition_truncated_fraction": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 16
+      }
+    }
+  },
+  "contrasts": {
+    "flip_minus_base": {
+      "donor_directed_effect": {
+        "mean": 0.6173950284719467,
+        "ci95": [
+          0.2859021697193384,
+          1.0096924256533384
+        ],
+        "n_contexts": 16
+      },
+      "donor_sign_-1": {
+        "mean": 0.610083669424057,
+        "ci95": [
+          -0.8297739401459694,
+          2.315727370977401
+        ],
+        "n_contexts": 16
+      },
+      "donor_sign_1": {
+        "mean": 0.6247063875198364,
+        "ci95": [
+          -1.0056904286146162,
+          2.08933787047863
+        ],
+        "n_contexts": 16
+      }
+    },
+    "explicit_flip_minus_explicit": {
+      "donor_directed_effect": {
+        "mean": 1.0743007957935333,
+        "ci95": [
+          0.692163722217083,
+          1.4453550294041633
+        ],
+        "n_contexts": 16
+      },
+      "donor_sign_-1": {
+        "mean": 1.0461845099925995,
+        "ci95": [
+          0.01788402348756791,
+          2.105848862975835
+        ],
+        "n_contexts": 16
+      },
+      "donor_sign_1": {
+        "mean": 1.1024170815944672,
+        "ci95": [
+          0.0741755083203316,
+          2.134683378785849
+        ],
+        "n_contexts": 16
+      }
+    }
+  },
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e89/qwen3_clear_request",
+      "n": 16,
+      "seed": 89001,
+      "clear_request": true,
+      "generate": true
+    },
+    "seconds": 342.82889556884766,
+    "numeric_max_error": 9.34600830078125e-05,
+    "script_sha256": "1a33d3e48ddcb2ded83e19dcf0d42fdbcf70ebee33df30d3ae813bcd807e615c",
+    "data_engine_sha256": "522515d8679de5a7947400ba149616993d7d25df7e22aff04eef39e1d8b57b80",
+    "git_commit": "f72492d1c65a84f38aa4e40383297333ac2b4f19",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "host": "fvcrc21",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  }
+}

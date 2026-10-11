@@ -1,0 +1,373 @@
+{
+  "completed": true,
+  "new_continuations": 2904,
+  "groups": [
+    {
+      "config": {
+        "task": "tworoom",
+        "model_seed": 0,
+        "source": {
+          "checkpoint": {
+            "task": "tworoom",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/tworoom.pt",
+            "sha256": "93ed1ef36e59075f39fb5d2ea9f4e25ded824ee2d57496b39bbdb372bad0392a",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "807717731c2789e67f6411738681c90f997f58a17f3744f336a96d3b88e366f9",
+          "normalizer_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "methods": [
+          "OPEN25",
+          "GOAL5",
+          "REFERENCE5"
+        ],
+        "goals": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "anchors": 44,
+        "budget": 25,
+        "source_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "source_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "source_bank": "/home/xiang/.cache/latent-wm-results/20261004-E20-legal-effect-bank44",
+        "script_sha256": "afbdf7278fb6e8e99b9da1740741d6528900dda13676cbb9ab4c4e7c32f16c82",
+        "actor_helper_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "fork_helper_sha256": "236f3bc817a121e13a93ca04c45fe8a11f4c0a491c8a61c193a8295546a51aac",
+        "waypoint_helper_sha256": "a32ec6abc1efc6b62e29e05cf74871fc7c52eaf814d79223895fb8235c1040c2",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "supervision": "Observed pixels and issued commands; native physical states evaluator/restore only. Imagined references supplied by frozen model. Given subgoal images from recorded experience; no true future trajectory or shifted physics in controller input.",
+        "scope": "Development44 anchors/11 nonduplicate branch goals, one published model source, fixed25-step controllers. Feedback changes executed actions: controller-induced outcome data, not primitive-action causal comparison or new skill method. Train/held anchors must be separated before outcome-model learning; pretraining overlap unknown."
+      },
+      "rows_sha256": "531ae1634b337860f90204b2480f23835c6ff214dde665b5a2c5e4c294fda621",
+      "preflight_sha256": "0d503acbce4c18d523b31240d189f117bf017ed8dd72ea48cb87404dfb549f0f",
+      "independent_visual_queries": 3303,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-consequence-tworoom"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "model_seed": 0,
+        "source": {
+          "checkpoint": {
+            "task": "pusht",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/pusht.pt",
+            "sha256": "80312771c15e50ba4b3eb3eb9a910fe6dc0a3bd140f7df1396eea306bf89d012",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "04d4c15b9f8dff4e8638d2dd402009b9a795c0f8935e798fc38eaf72460af8b0",
+          "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "methods": [
+          "OPEN25",
+          "GOAL5",
+          "REFERENCE5"
+        ],
+        "goals": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "anchors": 44,
+        "budget": 25,
+        "source_ledger_sha256": "bb78a928d8046df24069813e77589a97c9fccd1a4a961eff58f38ee095d5245e",
+        "source_rows_sha256": "5a9cc9ff1da150156a204d34e3adba458da681ba72e3fb9ff6ecceb9e293f51e",
+        "source_bank": "/home/xiang/.cache/latent-wm-results/20261004-E20-legal-effect-bank44",
+        "script_sha256": "afbdf7278fb6e8e99b9da1740741d6528900dda13676cbb9ab4c4e7c32f16c82",
+        "actor_helper_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "fork_helper_sha256": "236f3bc817a121e13a93ca04c45fe8a11f4c0a491c8a61c193a8295546a51aac",
+        "waypoint_helper_sha256": "a32ec6abc1efc6b62e29e05cf74871fc7c52eaf814d79223895fb8235c1040c2",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "supervision": "Observed pixels and issued commands; native physical states evaluator/restore only. Imagined references supplied by frozen model. Given subgoal images from recorded experience; no true future trajectory or shifted physics in controller input.",
+        "scope": "Development44 anchors/11 nonduplicate branch goals, one published model source, fixed25-step controllers. Feedback changes executed actions: controller-induced outcome data, not primitive-action causal comparison or new skill method. Train/held anchors must be separated before outcome-model learning; pretraining overlap unknown."
+      },
+      "rows_sha256": "05d84d5af5ef05544d2593b570cbff2299db46877f4401b3a853db563ea67a6f",
+      "preflight_sha256": "070d716e8cf7b693628e60939db7e80fa69599648f08092d7e7d84f47fa0ba95",
+      "independent_visual_queries": 4730,
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-consequence-pusht"
+    }
+  ],
+  "counts": [
+    {
+      "task": "tworoom",
+      "method": "OPEN25",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 225,
+      "initial_successes": 118,
+      "env_steps": 7359,
+      "decisions": 366
+    },
+    {
+      "task": "tworoom",
+      "method": "GOAL5",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 287,
+      "initial_successes": 118,
+      "env_steps": 6832,
+      "decisions": 1432
+    },
+    {
+      "task": "tworoom",
+      "method": "REFERENCE5",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 241,
+      "initial_successes": 118,
+      "env_steps": 7292,
+      "decisions": 1505
+    },
+    {
+      "task": "pusht",
+      "method": "OPEN25",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 95,
+      "initial_successes": 44,
+      "env_steps": 10662,
+      "decisions": 440
+    },
+    {
+      "task": "pusht",
+      "method": "GOAL5",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 101,
+      "initial_successes": 44,
+      "env_steps": 10616,
+      "decisions": 2139
+    },
+    {
+      "task": "pusht",
+      "method": "REFERENCE5",
+      "n_queries": 484,
+      "unique_anchors": 44,
+      "source_models": 1,
+      "successes": 88,
+      "initial_successes": 44,
+      "env_steps": 10690,
+      "decisions": 2151
+    }
+  ],
+  "effects": [
+    {
+      "task": "tworoom",
+      "method": "GOAL5",
+      "reference": "OPEN25",
+      "mean_delta": 0.128099173553719,
+      "helped": 71,
+      "harmed": 9,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        0.09090909090909091,
+        0.16942148760330578
+      ],
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "method": "REFERENCE5",
+      "reference": "OPEN25",
+      "mean_delta": 0.03305785123966942,
+      "helped": 24,
+      "harmed": 8,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        0.006198347107438017,
+        0.06198347107438017
+      ],
+      "source_models": 1
+    },
+    {
+      "task": "tworoom",
+      "method": "REFERENCE5",
+      "reference": "GOAL5",
+      "mean_delta": -0.09504132231404959,
+      "helped": 7,
+      "harmed": 53,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        -0.12603305785123967,
+        -0.0640495867768595
+      ],
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "method": "GOAL5",
+      "reference": "OPEN25",
+      "mean_delta": 0.012396694214876033,
+      "helped": 9,
+      "harmed": 3,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.024793388429752067
+      ],
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "method": "REFERENCE5",
+      "reference": "OPEN25",
+      "mean_delta": -0.014462809917355372,
+      "helped": 4,
+      "harmed": 11,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        -0.026859504132231406,
+        -0.004132231404958678
+      ],
+      "source_models": 1
+    },
+    {
+      "task": "pusht",
+      "method": "REFERENCE5",
+      "reference": "GOAL5",
+      "mean_delta": -0.026859504132231406,
+      "helped": 0,
+      "harmed": 13,
+      "unique_anchors": 44,
+      "queries_per_anchor": 11,
+      "paired_anchor_bootstrap_95": [
+        -0.04132231404958678,
+        -0.014462809917355372
+      ],
+      "source_models": 1
+    }
+  ],
+  "coverage": [
+    {
+      "task": "tworoom",
+      "method": "OPEN25",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 206,
+      "terminal_leave_self_goal_oracle": 190,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    },
+    {
+      "task": "tworoom",
+      "method": "GOAL5",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 239,
+      "terminal_leave_self_goal_oracle": 222,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    },
+    {
+      "task": "tworoom",
+      "method": "REFERENCE5",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 208,
+      "terminal_leave_self_goal_oracle": 201,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    },
+    {
+      "task": "pusht",
+      "method": "OPEN25",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 62,
+      "terminal_leave_self_goal_oracle": 15,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    },
+    {
+      "task": "pusht",
+      "method": "GOAL5",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 66,
+      "terminal_leave_self_goal_oracle": 17,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    },
+    {
+      "task": "pusht",
+      "method": "REFERENCE5",
+      "n_final_goals": 484,
+      "anytime_leave_self_goal_oracle": 66,
+      "terminal_leave_self_goal_oracle": 19,
+      "scope": "Offline union over alternative subgoal controllers; not deployable selection, primitive bank comparison or independent 484-state estimate."
+    }
+  ],
+  "script_sha256": "04410a10d3e3bcb228db32fd65ea83a26889d159946be9081b68e18ac8384cc0",
+  "scope": "Development44/task, one frozen source0, 11 supplied experience subgoals/3fixed controllers/25budget. Every physical trace and query observation replayed; every visual encoding, global plan and local query independently recomputed on same-hardware CUDA with explicit actor grammar and world recursion. Not a trained option-outcome method or paper-scale demonstration; candidate-oracle labels offline only.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E14-controller-consequence-audit/result.json"
+}

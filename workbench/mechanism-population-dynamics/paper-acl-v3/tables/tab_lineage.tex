@@ -1,0 +1,15 @@
+\begin{tabular}{lccccc}
+\toprule
+& \makecell{attention\\role} & \makecell{ablation\\map} & \makecell{top-3\\carriers} & transfer & \makecell{main\\carrier} \\
+\midrule
+Pretraining end $\to$ midtraining, 5B tokens & 0.96 & 0.85 & 2/3 & 0.93 & 14.4 \\
+Pretraining end $\to$ midtraining mix 1, 51B & 0.96 & 0.84 & 2/3 & 0.94 & 14.4 \\
+Pretraining end $\to$ midtraining mix 2, 51B & 0.96 & 0.85 & 2/3 & 0.95 & 14.4 \\
+Pretraining end $\to$ midtraining mix 3, 51B & 0.96 & 0.88 & 2/3 & 0.94 & 14.4 \\
+SFT $\to$ DPO & 0.99 & 1.00 & 3/3 & 1.00 & 14.4 \\
+DPO $\to$ Instruct & 1.00 & 1.00 & 3/3 & 1.00 & 14.4 \\
+Pythia-410M step 66k $\to$ 143k & 0.92 & 0.78 & 3/3 & 0.99 & 11.4 \\
+\midrule
+Pythia-410M vs.\ its deduplicated sibling & 0.47 & 0.15 & 0/3 & 0.09 & 12.12 \\
+\bottomrule
+\end{tabular}

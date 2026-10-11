@@ -1,0 +1,287 @@
+{
+  "completed": true,
+  "episodes": 192,
+  "groups": [
+    {
+      "config": {
+        "task": "tworoom",
+        "interface": "native",
+        "source": {
+          "checkpoint": {
+            "task": "tworoom",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/tworoom.pt",
+            "sha256": "93ed1ef36e59075f39fb5d2ea9f4e25ded824ee2d57496b39bbdb372bad0392a",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "807717731c2789e67f6411738681c90f997f58a17f3744f336a96d3b88e366f9",
+          "normalizer_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "train_seed": 0,
+        "script_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "budget": 100,
+        "history_frames": 1,
+        "planning_primitive_steps": 25,
+        "execution_primitive_steps": 25,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Complete published E5 joint model, causal last5 actual primitive action history, official paper grammar with get_action horizon5. Same48 development states; published pretraining unknown/unmatched, not numerical paper replication or training causality. Native vs output clip; all initial successes retained."
+      },
+      "rows_sha256": "5e1e8f4a69e11ad87a5d6056034b476bda2117930b606deb91559548a09077ff",
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E01-intact-v3-tworoom-native-control"
+    },
+    {
+      "config": {
+        "task": "tworoom",
+        "interface": "physical",
+        "source": {
+          "checkpoint": {
+            "task": "tworoom",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/tworoom.pt",
+            "sha256": "93ed1ef36e59075f39fb5d2ea9f4e25ded824ee2d57496b39bbdb372bad0392a",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "807717731c2789e67f6411738681c90f997f58a17f3744f336a96d3b88e366f9",
+          "normalizer_sha256": "b4ca4bd285be9b8ec2b1e1614f5bd3ee8b34a8ac871a0212f47fb7cfa019b98d",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "train_seed": 0,
+        "script_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "budget": 100,
+        "history_frames": 1,
+        "planning_primitive_steps": 25,
+        "execution_primitive_steps": 25,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Complete published E5 joint model, causal last5 actual primitive action history, official paper grammar with get_action horizon5. Same48 development states; published pretraining unknown/unmatched, not numerical paper replication or training causality. Native vs output clip; all initial successes retained."
+      },
+      "rows_sha256": "fc6a4d56a70e6261b7e9dc8bbd69cf9781776805acf28db5e777345a6147daf3",
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E01-intact-v3-tworoom-physical-control"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "interface": "native",
+        "source": {
+          "checkpoint": {
+            "task": "pusht",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/pusht.pt",
+            "sha256": "80312771c15e50ba4b3eb3eb9a910fe6dc0a3bd140f7df1396eea306bf89d012",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "04d4c15b9f8dff4e8638d2dd402009b9a795c0f8935e798fc38eaf72460af8b0",
+          "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "train_seed": 0,
+        "script_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "budget": 100,
+        "history_frames": 1,
+        "planning_primitive_steps": 25,
+        "execution_primitive_steps": 25,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Complete published E5 joint model, causal last5 actual primitive action history, official paper grammar with get_action horizon5. Same48 development states; published pretraining unknown/unmatched, not numerical paper replication or training causality. Native vs output clip; all initial successes retained."
+      },
+      "rows_sha256": "7761e6a1d8664f404a96992c6291e97ef260f5266b53c361a52a20d64e15eb48",
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E01-intact-v3-pusht-native-control"
+    },
+    {
+      "config": {
+        "task": "pusht",
+        "interface": "physical",
+        "source": {
+          "checkpoint": {
+            "task": "pusht",
+            "path": "/home/xiang/.cache/huggingface/latent-wm-derived/intact-e5-goal-seed0/pusht.pt",
+            "sha256": "80312771c15e50ba4b3eb3eb9a910fe6dc0a3bd140f7df1396eea306bf89d012",
+            "bytes": 84734848
+          },
+          "software_versions": {
+            "torch": "2.7.1+cu128",
+            "transformers": "5.9.0",
+            "numpy": "1.26.4",
+            "stable-worldmodel": "0.0.6",
+            "scikit-learn": "1.7.2",
+            "pymunk": "7.2.0"
+          },
+          "model_config_sha256": "5e46a485b314c2124c55ade2c0415a5ee22910efb9113e8736af45dbdb0a9d85",
+          "metadata_sha256": "04d4c15b9f8dff4e8638d2dd402009b9a795c0f8935e798fc38eaf72460af8b0",
+          "normalizer_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f",
+          "shared_encoder_sha256": "05c6b2f030c11698038134789e02ad00bc6d01e50aebb56910de05dfaf2d5178",
+          "vit_constructor_sha256": "9cd714770a6c0fd34d02e7b193cf3b504c34646aeee666fc35f1d92dad26833a",
+          "vit_constructor_manifest": {
+            "wheel_sha256": "60fc8fc3c9490e9a059aa7e038ab62cbe0505841e78c4165c18a99d8f599ec65",
+            "module_sha256": "b5c22e2a9679c9a68e5c4c2fb72aead993647dc0a72bd7d64625a0250dbaa3e7",
+            "constructor_sha256": "2db2b3e21baf2043a172b1b82bbd51bf8c7fce73d092a270773de982d69d5843",
+            "installed": false
+          },
+          "runtime_sha256": {
+            "jepa.py": "e793e10a2db061492a4b824c0a7bc5493281e419c3eed706ad49fa97bfd1f18a",
+            "module.py": "748ff665314216cd18d70202c587ce25587a3ae4ff149df5b6776cbebd6a055f",
+            "prior_only_solver.py": "857580156e2fbc9f1be7e4b237496f7f1a893611284c96592a58fbaad64824e5",
+            "sitecustomize.py": "b3bc20f02c12a36649ac0485f3fa8889db002edfcc9f200ea219ea401a143126"
+          },
+          "history_policy_sha256": "30d2a1042c04b6e93d825b36d10532763b14ed53d1f18623983210dccf892e4e",
+          "model_state_keys": 317,
+          "parameters": 21144386,
+          "revision": "0430df6fcda1b0516d5747ded58acb72ceb1e6e7"
+        },
+        "train_seed": 0,
+        "script_sha256": "89d6968e2afbfd738b741af81574a1000d55589aa6d6a17f6e74973e2b8eae9b",
+        "bank_ledger_sha256": "bf628b4d6a08d2bcfb83c5ce2ab9fbe8f8ad0fc96dcf83aba417be1aab9f35ea",
+        "budget": 100,
+        "history_frames": 1,
+        "planning_primitive_steps": 25,
+        "execution_primitive_steps": 25,
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "scope": "Complete published E5 joint model, causal last5 actual primitive action history, official paper grammar with get_action horizon5. Same48 development states; published pretraining unknown/unmatched, not numerical paper replication or training causality. Native vs output clip; all initial successes retained."
+      },
+      "rows_sha256": "7761e6a1d8664f404a96992c6291e97ef260f5266b53c361a52a20d64e15eb48",
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E01-intact-v3-pusht-physical-control"
+    }
+  ],
+  "counts": [
+    {
+      "task": "tworoom",
+      "interface": "native",
+      "n": 48,
+      "successes": 37,
+      "initial_successes": 1,
+      "near_successes": 22,
+      "far_successes": 15,
+      "executed_env_steps": 1750
+    },
+    {
+      "task": "tworoom",
+      "interface": "physical",
+      "n": 48,
+      "successes": 37,
+      "initial_successes": 1,
+      "near_successes": 22,
+      "far_successes": 15,
+      "executed_env_steps": 1750
+    },
+    {
+      "task": "pusht",
+      "interface": "native",
+      "n": 48,
+      "successes": 25,
+      "initial_successes": 1,
+      "near_successes": 22,
+      "far_successes": 3,
+      "executed_env_steps": 3030
+    },
+    {
+      "task": "pusht",
+      "interface": "physical",
+      "n": 48,
+      "successes": 25,
+      "initial_successes": 1,
+      "near_successes": 22,
+      "far_successes": 3,
+      "executed_env_steps": 3030
+    }
+  ],
+  "effects": [
+    {
+      "task": "tworoom",
+      "comparison": "output-clip minus native",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "task": "pusht",
+      "comparison": "output-clip minus native",
+      "mean_delta": 0.0,
+      "paired_anchor_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "script_sha256": "4105e1fda945c4973088396145f36fb0c33bcbe605797317498ae46aa15e6e6b",
+  "scope": "Full published joint E5 source0, all48 per task, original native position/angle, every previous action from actual warm/execution. H1 native paper model; local100 budget differs official50, dataset/encoder pretraining unknown/unmatched. No numerical paper replication, training-only causality, novelty, or training-seed confidence.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E01-intact-v3-control-audit/result.json"
+}

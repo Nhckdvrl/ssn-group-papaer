@@ -1,0 +1,179 @@
+{
+  "config": "configs/cpc18.json",
+  "result_dir": "results/cpc18_calibration_seed121",
+  "n_frozen_base_decisions": 151,
+  "behavior": {
+    "olmo_instruct_sft": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9577814569536424
+    },
+    "olmo_think_sft": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8791390728476821
+    },
+    "qwen_thinking": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9097682119205298
+    },
+    "qwen_non_thinking": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.9991721854304636
+    },
+    "llama_instruct": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 1.0
+    },
+    "deepseek_r1": {
+      "rows": 3624,
+      "base_decisions": 151,
+      "expected_rows_per_base_decision": 24,
+      "duplicate_keys": 0,
+      "valid_rate": 0.8413355408388521
+    }
+  },
+  "control": {
+    "olmo_instruct_sft": {
+      "rows": 3668,
+      "trace_units": 917,
+      "base_decisions": 147,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "olmo_think_sft": {
+      "rows": 3668,
+      "trace_units": 917,
+      "base_decisions": 147,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "qwen_thinking": {
+      "rows": 7724,
+      "trace_units": 1931,
+      "base_decisions": 145,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "qwen_non_thinking": {
+      "rows": 7724,
+      "trace_units": 1931,
+      "base_decisions": 145,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "llama_instruct": {
+      "rows": 7680,
+      "trace_units": 1920,
+      "base_decisions": 151,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    },
+    "deepseek_r1": {
+      "rows": 7680,
+      "trace_units": 1920,
+      "base_decisions": 151,
+      "cells_per_trace": [
+        4
+      ],
+      "duplicate_cells": 0
+    }
+  },
+  "manifest": {
+    "results/cpc18_calibration_seed121/raw/deepseek_r1.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/llama_instruct.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/olmo_think_sft.shard0of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/olmo_think_sft.shard1of2.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/deepseek_r1.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/llama_instruct.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/olmo_instruct_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/olmo_think_sft.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/qwen_non_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    },
+    "results/cpc18_calibration_seed121/raw/control/qwen_thinking.jsonl": {
+      "bytes_match": true,
+      "rows_match": true,
+      "sha256_match": true
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

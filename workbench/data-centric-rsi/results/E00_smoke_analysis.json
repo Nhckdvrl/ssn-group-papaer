@@ -1,0 +1,72 @@
+{
+  "scope": "E00 smoke; one train seed and 72 dev items; item bootstrap does not measure train-seed variation",
+  "conditions": {
+    "base_smoke": {
+      "n": 72,
+      "correct": 6,
+      "boxed": 17,
+      "expected_prefix": 16,
+      "raw_sha256": "11b0cb4384722f4638aa04b1944b2627478f82d3a7b6f98a3ec942f9a9cfe72b"
+    },
+    "static_seed17_smoke": {
+      "n": 72,
+      "correct": 21,
+      "boxed": 60,
+      "expected_prefix": 60,
+      "raw_sha256": "3c308b564477e2995820b3f1eccac08545f5010507cfcb5910488d01f057afbf"
+    },
+    "base_format_smoke": {
+      "n": 72,
+      "correct": 12,
+      "boxed": 33,
+      "expected_prefix": 42,
+      "raw_sha256": "dcac46a2a3923fef3c741d58ab0087d9d2bc7e477d1ecd9738712806cabb5744"
+    },
+    "static_seed17_format_smoke": {
+      "n": 72,
+      "correct": 19,
+      "boxed": 61,
+      "expected_prefix": 60,
+      "raw_sha256": "3eec966d77ca34780377d878015338a520f927eb08a3b9984d4a467abe73c70f"
+    }
+  },
+  "comparisons": {
+    "static_minus_base_original": {
+      "delta_accuracy": 0.20833333333333334,
+      "item_bootstrap_95_ci": [
+        0.09722222222222222,
+        0.3194444444444444
+      ],
+      "improved_items": 17,
+      "worsened_items": 2
+    },
+    "static_minus_base_format": {
+      "delta_accuracy": 0.09722222222222222,
+      "item_bootstrap_95_ci": [
+        0.0,
+        0.19444444444444445
+      ],
+      "improved_items": 10,
+      "worsened_items": 3
+    },
+    "base_format_minus_original": {
+      "delta_accuracy": 0.08333333333333333,
+      "item_bootstrap_95_ci": [
+        0.027777777777777776,
+        0.1527777777777778
+      ],
+      "improved_items": 6,
+      "worsened_items": 0
+    },
+    "static_format_minus_original": {
+      "delta_accuracy": -0.027777777777777776,
+      "item_bootstrap_95_ci": [
+        -0.09722222222222222,
+        0.027777777777777776
+      ],
+      "improved_items": 2,
+      "worsened_items": 4
+    }
+  },
+  "raw_dir": "/home/xiang/.cache/research/data-centric-rsi/runs/e00"
+}

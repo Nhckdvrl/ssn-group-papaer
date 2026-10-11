@@ -1,0 +1,65 @@
+{
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-factual-controls-s0",
+  "config": {
+    "args": {
+      "e16_base": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "output": "/tmp/latent-wm-runs/20261002-factual-controls-s0"
+    },
+    "harness_sha256": "751dcad53f41609a0866c392bf5e5f26bebf258d6784d81fa33927622e70b228",
+    "policy": "all locked anchors; controls do not change main evaluation inclusion",
+    "success": "any native success during factual suffix; run complete suffix for error audit",
+    "limitation": "public setter consistency, not complete physics-memory restoration"
+  },
+  "summary": [
+    {
+      "stratum": "E13-pusht-g25",
+      "n": 64,
+      "factual_successes": 64,
+      "max_position_error_pixels": 3.8585715386009554,
+      "max_initial_pixel_mae_0_255": 0.7020421449829932,
+      "max_wrapped_angle_error_radians": 0.0746895204335985
+    },
+    {
+      "stratum": "E13-pusht-g75",
+      "n": 64,
+      "factual_successes": 63,
+      "max_position_error_pixels": 92.47550921060878,
+      "max_initial_pixel_mae_0_255": 0.7474356930272109,
+      "max_wrapped_angle_error_radians": 1.0786441979681012
+    },
+    {
+      "stratum": "E13-tworoom-g25",
+      "n": 64,
+      "factual_successes": 64,
+      "max_position_error_pixels": 0.0,
+      "max_initial_pixel_mae_0_255": 0.0,
+      "max_wrapped_angle_error_radians": 0
+    },
+    {
+      "stratum": "E13-tworoom-g75",
+      "n": 64,
+      "factual_successes": 64,
+      "max_position_error_pixels": 0.0,
+      "max_initial_pixel_mae_0_255": 0.0,
+      "max_wrapped_angle_error_radians": 0
+    },
+    {
+      "stratum": "E16-seed0-eval48",
+      "n": 48,
+      "factual_successes": 48,
+      "max_position_error_pixels": 0.0,
+      "max_initial_pixel_mae_0_255": 0.0,
+      "max_wrapped_angle_error_radians": 0
+    }
+  ],
+  "complete": {
+    "completed": true,
+    "anchors": 304
+  },
+  "rows_sha256": "81e471185ab62029ddc905d6efbb845d32ace831707db6c80e423af213eb7919"
+}

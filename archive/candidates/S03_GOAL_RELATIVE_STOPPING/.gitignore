@@ -1,0 +1,7 @@
+# large regenerable artifacts stay out of git
+data/
+results/e02/*/model/
+__pycache__/
+# LR-sweep weights are regenerable and exist only to pick a learning rate;
+# the selection evidence (history.jsonl / config.json) is kept.
+results/e02/lrsweep/*/readout.pt

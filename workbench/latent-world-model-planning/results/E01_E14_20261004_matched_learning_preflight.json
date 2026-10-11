@@ -1,0 +1,319 @@
+{
+  "CPU": {
+    "passed": true,
+    "device": "cpu",
+    "records": [
+      {
+        "arm": "ABS",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 0.3046875,
+          "pred_loss": 0.1708984375,
+          "sigreg_loss": 1.5,
+          "inverse_loss": 0.0,
+          "mi_loss": 0.0
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": null
+      },
+      {
+        "arm": "RESIDUAL",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 0.34765625,
+          "pred_loss": 0.212890625,
+          "sigreg_loss": 1.5,
+          "inverse_loss": 0.0,
+          "mi_loss": 0.0
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": null
+      },
+      {
+        "arm": "FULL-AD",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": 106100
+        },
+        "losses": {
+          "loss": 3.2236626148223877,
+          "pred_loss": 0.212890625,
+          "sigreg_loss": 1.5,
+          "inverse_loss": 0.16631338000297546,
+          "mi_loss": 286.0
+        },
+        "keys": 321,
+        "parameters": 19220654,
+        "optimizer_states": 309,
+        "native_parity": null
+      },
+      {
+        "arm": "VGIQL-JOINT",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 1.2889649868011475,
+          "pred_loss": 0.1708984375,
+          "sigreg_loss": 1.5,
+          "value_loss": 0.9842774271965027
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": null
+      },
+      {
+        "arm": "VGIQL-SEPARATE",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 0.9842774271965027,
+          "pred_loss": 0.07861328125,
+          "sigreg_loss": 1.4921875,
+          "value_loss": 0.9842774271965027
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 93,
+        "native_parity": null
+      },
+      {
+        "seed_initial_control": 1,
+        "init": {
+          "common_initial_tensor_sha256": "31b4d8cc6305597307164866475388078248118f750275583d578d170e75ff78",
+          "initial_source_sha256": "cdb7c05eccdab4c3bf3645810144c14c5700a1baef9ffd22b6632d5cb98f6c62",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s1/initial_cpu.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        }
+      },
+      {
+        "seed_initial_control": 2,
+        "init": {
+          "common_initial_tensor_sha256": "3b3223e0fa2289babdeee309b7decb6f6da852ef25946bea35adf2482d7e3da3",
+          "initial_source_sha256": "e1c070e1e48d44b185c4011872ed71fc440547ceabf78282295b8352efbd7cee",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s2/initial_cpu.pt",
+          "constructor_mismatching_tensors": 0,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        }
+      }
+    ],
+    "sg_recovery_target": true,
+    "bellman_toy_manual": true,
+    "identity_value_exact_zero": true,
+    "absorbing_goal_target_exact_zero": true,
+    "exact_pixel_identity_including_duplicate_rows": true,
+    "separate_two_phase_fresh_optimizer": true,
+    "common_backbone_initial_equal": true,
+    "source_sha256": "0400260fc47d21629414582d266eb39bca47693905f118b6e1782cdff666d077",
+    "official_train_sha256": "021e2e6dfd4ea111623120f4d1d54acdf1e33fc943cb517ddfc0d5344bcf90b2",
+    "cache_manifest_sha256": "b753f627db1d56a873aa59be9e7d78156b66794d19dd384efa653c56bdf87246"
+  },
+  "CUDA": {
+    "passed": true,
+    "device": "cuda",
+    "records": [
+      {
+        "arm": "ABS",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 74,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 0.3144491910934448,
+          "pred_loss": 0.18066011369228363,
+          "sigreg_loss": 1.484375,
+          "inverse_loss": 0.0,
+          "mi_loss": 0.0
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "arm": "RESIDUAL",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 74,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 0.3545980453491211,
+          "pred_loss": 0.2208089977502823,
+          "sigreg_loss": 1.484375,
+          "inverse_loss": 0.0,
+          "mi_loss": 0.0
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "arm": "FULL-AD",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 74,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": 106100
+        },
+        "losses": {
+          "loss": 3.2349655628204346,
+          "pred_loss": 0.2208089977502823,
+          "sigreg_loss": 1.4765625,
+          "inverse_loss": 0.16728468239307404,
+          "mi_loss": 286.4615783691406
+        },
+        "keys": 321,
+        "parameters": 19220654,
+        "optimizer_states": 309,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "arm": "VGIQL-JOINT",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 74,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 1.5015500783920288,
+          "pred_loss": 0.18066011369228363,
+          "sigreg_loss": 1.484375,
+          "value_loss": 1.187100887298584
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 297,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "arm": "VGIQL-SEPARATE",
+        "init": {
+          "common_initial_tensor_sha256": "12d8b19f7c45f494f7f77d8c5fe340b26f9ab573296f56e455c25788ffc2c6db",
+          "initial_source_sha256": "8251bc6ed4ee058c7b6a1215d864e13179a72ebe19151de6108a5089db40900a",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_compute_s0/common_cpu_initial.pt",
+          "constructor_mismatching_tensors": 74,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        },
+        "losses": {
+          "loss": 1.187100887298584,
+          "pred_loss": 0.08319621533155441,
+          "sigreg_loss": 1.4765625,
+          "value_loss": 1.187100887298584
+        },
+        "keys": 303,
+        "parameters": 18034478,
+        "optimizer_states": 93,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "seed_initial_control": 1,
+        "init": {
+          "common_initial_tensor_sha256": "31b4d8cc6305597307164866475388078248118f750275583d578d170e75ff78",
+          "initial_source_sha256": "cdb7c05eccdab4c3bf3645810144c14c5700a1baef9ffd22b6632d5cb98f6c62",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s1/initial_cpu.pt",
+          "constructor_mismatching_tensors": 75,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        }
+      },
+      {
+        "seed_initial_control": 2,
+        "init": {
+          "common_initial_tensor_sha256": "3b3223e0fa2289babdeee309b7decb6f6da852ef25946bea35adf2482d7e3da3",
+          "initial_source_sha256": "e1c070e1e48d44b185c4011872ed71fc440547ceabf78282295b8352efbd7cee",
+          "initial_source": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_fixed_data_trainseed_RTX_s2/initial_cpu.pt",
+          "constructor_mismatching_tensors": 75,
+          "saved_initial_explicit_strict_copy": true,
+          "head_seed": null
+        }
+      }
+    ],
+    "sg_recovery_target": true,
+    "bellman_toy_manual": true,
+    "identity_value_exact_zero": true,
+    "absorbing_goal_target_exact_zero": true,
+    "exact_pixel_identity_including_duplicate_rows": true,
+    "separate_two_phase_fresh_optimizer": true,
+    "common_backbone_initial_equal": true,
+    "source_sha256": "0400260fc47d21629414582d266eb39bca47693905f118b6e1782cdff666d077",
+    "official_train_sha256": "021e2e6dfd4ea111623120f4d1d54acdf1e33fc943cb517ddfc0d5344bcf90b2",
+    "cache_manifest_sha256": "b753f627db1d56a873aa59be9e7d78156b66794d19dd384efa653c56bdf87246"
+  }
+}

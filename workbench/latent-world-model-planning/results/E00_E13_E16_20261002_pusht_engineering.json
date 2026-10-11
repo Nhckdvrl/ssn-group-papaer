@@ -1,0 +1,2190 @@
+{
+  "config": {
+    "task": "pusht",
+    "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+    "dataset": null,
+    "generated": true,
+    "output": "/tmp/latent-wm-runs/20261002-pusht-engineering-s0-r1",
+    "anchors": 12,
+    "calibration_anchors": 4,
+    "candidates": 300,
+    "elites": 30,
+    "iterations": 30,
+    "seed": 0,
+    "train_steps": 20,
+    "batch_size": 16,
+    "packages": {
+      "torch": "2.7.1+cu128",
+      "torchvision": "0.22.1+cu128",
+      "numpy": "1.26.4",
+      "transformers": "5.3.0",
+      "stable-worldmodel": "0.0.6"
+    },
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "harness_sha256": "13a4905f0a438d46cccfc409989e14cc40da5aab68372f7aceec844407074762",
+    "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+  },
+  "data_source": {
+    "source": "simulator_generated_engineering",
+    "steps": 600,
+    "limitation": "different dataset and action normalization; not published-protocol reproduction"
+  },
+  "e00_summary": {
+    "task": "pusht",
+    "checkpoint": {
+      "seconds": 13.500458478927612,
+      "sha256": "7d2af06261610f0407283c5e812f2806d880448e2f680ede6ec62473393c0eca",
+      "bytes": 71897531,
+      "parameters": 17913184,
+      "state_dict_keys": 349,
+      "missing_unexpected_keys": "object checkpoint, no independent weights reference supplied",
+      "parameter_finiteness": true
+    },
+    "source": {
+      "source": "simulator_generated_engineering",
+      "steps": 600,
+      "limitation": "different dataset and action normalization; not published-protocol reproduction"
+    },
+    "restore_pixel_mae": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "planner_seconds": [
+      3.068168893456459,
+      1.7384139634668827,
+      1.76111476495862,
+      1.7723195143043995,
+      1.7209774442017078,
+      1.7782377041876316,
+      1.740319699048996,
+      1.7441078536212444,
+      1.73262432590127,
+      1.7449278943240643,
+      1.7578018009662628,
+      1.7950202524662018
+    ],
+    "first_episode": {
+      "env_steps": 50,
+      "success_at_any_step": false,
+      "success_final_step": false,
+      "seconds": 3.6381029337644577,
+      "planning_seconds": [
+        1.8304148763418198,
+        1.7651193849742413
+      ],
+      "ci": "one episode, no performance CI"
+    },
+    "inference_peak_vram_gib": 0.09404563903808594,
+    "bank_count": 360,
+    "candidate_count": 300,
+    "calibration_episodes": 4,
+    "audit_episodes": 8
+  },
+  "e00_train": {
+    "batch_size": 16,
+    "warmup": 5,
+    "measured_steps": 20,
+    "step_seconds_median": 0.12308594211935997,
+    "load_seconds_median": 0.1719737034291029,
+    "all_step_seconds": [
+      1.383286077529192,
+      0.123112753033638,
+      0.12312643229961395,
+      0.11975986883044243,
+      0.12075518444180489,
+      0.12038979679346085,
+      0.12135608121752739,
+      0.12028276175260544,
+      0.1219569519162178,
+      0.11962912976741791,
+      0.12250493094325066,
+      0.12216655164957047,
+      0.12073463574051857,
+      0.12072736769914627,
+      0.12366695329546928,
+      0.1256050243973732,
+      0.12044445052742958,
+      0.12429561465978622,
+      0.12461263686418533,
+      0.13008835911750793,
+      0.13139582052826881,
+      0.13025014847517014,
+      0.12981654703617096,
+      0.13386011496186256,
+      0.13123087212443352
+    ],
+    "all_load_seconds": [
+      0.1989150121808052,
+      0.1713249683380127,
+      0.1685359664261341,
+      0.16752924025058746,
+      0.1714591532945633,
+      0.16970177367329597,
+      0.17187410593032837,
+      0.16574815660715103,
+      0.16814631968736649,
+      0.1701723411679268,
+      0.16818617284297943,
+      0.16799107939004898,
+      0.17207330092787743,
+      0.16949838027358055,
+      0.16953714564442635,
+      0.1704123504459858,
+      0.1753384806215763,
+      0.17625146731734276,
+      0.17730195820331573,
+      0.17339738085865974,
+      0.1732105277478695,
+      0.1774241179227829,
+      0.18723567202687263,
+      0.19020411744713783,
+      0.17943163216114044
+    ],
+    "losses": [
+      0.8361325860023499,
+      0.6776244640350342,
+      0.7008981704711914,
+      0.5948259234428406,
+      0.3631400167942047,
+      0.5595347881317139,
+      0.37411391735076904,
+      0.2848425805568695,
+      0.3177483081817627,
+      0.29861658811569214,
+      0.26163971424102783,
+      0.280058890581131,
+      0.2752242088317871,
+      0.20854052901268005,
+      0.2058461308479309,
+      0.27300387620925903,
+      0.2882491946220398,
+      0.17947156727313995,
+      0.28710517287254333,
+      0.21202827990055084,
+      0.28472447395324707,
+      0.21630088984966278,
+      0.20772917568683624,
+      0.18586522340774536,
+      0.22805574536323547
+    ],
+    "peak_vram_gib": 2.6848559379577637,
+    "initial_disk_read_seconds": 27.114299971610308,
+    "load_timing_scope": "in-memory batch preparation and H2D, excludes initial disk read",
+    "training_source": "E16 acquired native simulator branches; throughput only, not reproduction"
+  },
+  "e13_summary": [
+    {
+      "mode": "CHEAP-ALL",
+      "requested_fraction": null,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00027608852833509444,
+        "elite_recall": 0.8186111111111113,
+        "refined_fraction": 0.0,
+        "selected_candidate_agreement": 0.48333333333333334,
+        "full_score_candidate_regret": 0.989965112010638,
+        "full_score_elite_regret": 0.4723578612009684,
+        "cem_mean_l2": 0.4981060550190565,
+        "cem_action_agreement": 0.041666666666666664,
+        "cem_std_l2": 0.33844037239958163,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002688124698276321,
+          0.0002872715715784579
+        ],
+        "elite_recall": [
+          0.7420833333333332,
+          0.8868055555555554
+        ],
+        "refined_fraction": [
+          0.0,
+          0.0
+        ],
+        "selected_candidate_agreement": [
+          0.36666666666666664,
+          0.6333333333333333
+        ],
+        "full_score_candidate_regret": [
+          0.2149648736665646,
+          2.274393504858017
+        ],
+        "full_score_elite_regret": [
+          0.09491102332870166,
+          1.0650865678985915
+        ],
+        "cem_mean_l2": [
+          0.32035033776595223,
+          0.791991401515866
+        ],
+        "cem_action_agreement": [
+          0.020833333333333332,
+          0.0625
+        ],
+        "cem_std_l2": [
+          0.2265978921443954,
+          0.5234022992526755
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "FULL-REFINE",
+      "requested_fraction": null,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.000279857637360692,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00027686245933485526,
+          0.00028377752013814943
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "LOWER-BOUND",
+      "requested_fraction": null,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0006852991413325071,
+        "elite_recall": 1.0,
+        "refined_fraction": 0.27472222222222226,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0005122367653530092,
+          0.0009099189944875737
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          0.185371875,
+          0.38920312500000004
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "RANDOM-M",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0005083929126461346,
+        "elite_recall": 0.7770833333333333,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 0.3958333333333333,
+        "full_score_candidate_regret": 1.1909575909376144,
+        "full_score_elite_regret": 0.5273018658161164,
+        "cem_mean_l2": 0.5295139366843754,
+        "cem_action_agreement": 0.03333333333333333,
+        "cem_std_l2": 0.3652768032994737,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0005000170789814243,
+          0.0005177724237243335
+        ],
+        "elite_recall": [
+          0.6965277777777776,
+          0.8459722222222222
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          0.2833333333333333,
+          0.5333333333333334
+        ],
+        "full_score_candidate_regret": [
+          0.263888226300478,
+          2.8177873416493333
+        ],
+        "full_score_elite_regret": [
+          0.1268326744933923,
+          1.165769644007086
+        ],
+        "cem_mean_l2": [
+          0.34580044065519816,
+          0.8404252439560057
+        ],
+        "cem_action_agreement": [
+          0.016666666666666666,
+          0.05
+        ],
+        "cem_std_l2": [
+          0.2547799177547426,
+          0.5537882651766344
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "RANDOM-M",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00045686024241149427,
+        "elite_recall": 0.7559722222222224,
+        "refined_fraction": 0.20000000000000004,
+        "selected_candidate_agreement": 0.43333333333333335,
+        "full_score_candidate_regret": 1.038738977909088,
+        "full_score_elite_regret": 0.5261939972639084,
+        "cem_mean_l2": 0.5313808097212166,
+        "cem_action_agreement": 0.03333333333333333,
+        "cem_std_l2": 0.3616421771255201,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0004532363463658839,
+          0.00046042966889217493
+        ],
+        "elite_recall": [
+          0.67621875,
+          0.8275069444444444
+        ],
+        "refined_fraction": [
+          0.20000000000000007,
+          0.20000000000000007
+        ],
+        "selected_candidate_agreement": [
+          0.3375,
+          0.55
+        ],
+        "full_score_candidate_regret": [
+          0.2674232816696167,
+          2.3429295301437376
+        ],
+        "full_score_elite_regret": [
+          0.13295867887636026,
+          1.1608793121079604
+        ],
+        "cem_mean_l2": [
+          0.3601702203592049,
+          0.8335536162717859
+        ],
+        "cem_action_agreement": [
+          0.016666666666666666,
+          0.05
+        ],
+        "cem_std_l2": [
+          0.2619701165557598,
+          0.5306157434406966
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "RANDOM-M",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00045192671629289783,
+        "elite_recall": 0.7418055555555557,
+        "refined_fraction": 0.29999999999999993,
+        "selected_candidate_agreement": 0.42083333333333334,
+        "full_score_candidate_regret": 0.6667341242233912,
+        "full_score_elite_regret": 0.5318923115730285,
+        "cem_mean_l2": 0.5342475348900501,
+        "cem_action_agreement": 0.041666666666666664,
+        "cem_std_l2": 0.3567784998772863,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0004453504648214827,
+          0.0004578669532202184
+        ],
+        "elite_recall": [
+          0.6713888888888889,
+          0.8115520833333333
+        ],
+        "refined_fraction": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "selected_candidate_agreement": [
+          0.35,
+          0.5125
+        ],
+        "full_score_candidate_regret": [
+          0.2762452848255634,
+          1.2192394381761544
+        ],
+        "full_score_elite_regret": [
+          0.14380094423890113,
+          1.1742634117603301
+        ],
+        "cem_mean_l2": [
+          0.3683677218150864,
+          0.8183185740377811
+        ],
+        "cem_action_agreement": [
+          0.016666666666666666,
+          0.075
+        ],
+        "cem_std_l2": [
+          0.26790195414377094,
+          0.5063855985987824
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "RANDOM-M",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0004538161059220632,
+        "elite_recall": 0.7525000000000001,
+        "refined_fraction": 0.5,
+        "selected_candidate_agreement": 0.5041666666666667,
+        "full_score_candidate_regret": 0.6175744553407033,
+        "full_score_elite_regret": 0.5211636394262313,
+        "cem_mean_l2": 0.4974482546250452,
+        "cem_action_agreement": 0.05,
+        "cem_std_l2": 0.3358769022470051,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0004490114259533584,
+          0.000458180345594883
+        ],
+        "elite_recall": [
+          0.6956909722222221,
+          0.8141701388888889
+        ],
+        "refined_fraction": [
+          0.5,
+          0.5
+        ],
+        "selected_candidate_agreement": [
+          0.42499999999999993,
+          0.5791666666666666
+        ],
+        "full_score_candidate_regret": [
+          0.284112411091725,
+          1.016942766408125
+        ],
+        "full_score_elite_regret": [
+          0.12424931995570661,
+          1.179312029853463
+        ],
+        "cem_mean_l2": [
+          0.35399011059374313,
+          0.7367331700870722
+        ],
+        "cem_action_agreement": [
+          0.029166666666666667,
+          0.07083333333333333
+        ],
+        "cem_std_l2": [
+          0.25659503786072685,
+          0.4669915033300366
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "RANDOM-M",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0004549589784195026,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0004470549853673826,
+          0.0004642286027471224
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00024691081295410793,
+        "elite_recall": 0.8055555555555557,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 0.9208333333333333,
+        "full_score_candidate_regret": 0.3007977883021037,
+        "full_score_elite_regret": 0.535549008846283,
+        "cem_mean_l2": 0.4392798489138576,
+        "cem_action_agreement": 0.05416666666666667,
+        "cem_std_l2": 0.31862002901180975,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002393025594453017,
+          0.000256947388794894
+        ],
+        "elite_recall": [
+          0.7129131944444443,
+          0.8900243055555553
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          0.8041666666666667,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.8602978626887003
+        ],
+        "full_score_elite_regret": [
+          0.0750916539132595,
+          1.3085907094180584
+        ],
+        "cem_mean_l2": [
+          0.28975063825037994,
+          0.6841222646111093
+        ],
+        "cem_action_agreement": [
+          0.025,
+          0.08333333333333334
+        ],
+        "cem_std_l2": [
+          0.20945132454158738,
+          0.4877621373459867
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00023578895876804988,
+        "elite_recall": 0.9065277777777777,
+        "refined_fraction": 0.20000000000000004,
+        "selected_candidate_agreement": 0.95,
+        "full_score_candidate_regret": 0.2643458565076192,
+        "full_score_elite_regret": 0.34005601207415265,
+        "cem_mean_l2": 0.13703681100159884,
+        "cem_action_agreement": 0.7625,
+        "cem_std_l2": 0.08983344677835703,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00023173225151064495,
+          0.00024065928106817107
+        ],
+        "elite_recall": [
+          0.8002777777777779,
+          0.9979270833333331
+        ],
+        "refined_fraction": [
+          0.20000000000000007,
+          0.20000000000000007
+        ],
+        "selected_candidate_agreement": [
+          0.8583333333333334,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.7842064102490744
+        ],
+        "full_score_elite_regret": [
+          0.0022461295624574035,
+          0.9502973794937133
+        ],
+        "cem_mean_l2": [
+          0.004134065355174244,
+          0.3240043892975275
+        ],
+        "cem_action_agreement": [
+          0.5333333333333333,
+          0.9792708333333329
+        ],
+        "cem_std_l2": [
+          0.0031482320806632447,
+          0.20635970973720152
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002340487204492092,
+        "elite_recall": 0.9448611111111112,
+        "refined_fraction": 0.29999999999999993,
+        "selected_candidate_agreement": 0.9625,
+        "full_score_candidate_regret": 0.148478897412618,
+        "full_score_elite_regret": 0.23742765188217163,
+        "cem_mean_l2": 0.06426649233326316,
+        "cem_action_agreement": 0.8541666666666666,
+        "cem_std_l2": 0.04436969345745941,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002293934285019835,
+          0.00023889904841780662
+        ],
+        "elite_recall": [
+          0.8581840277777778,
+          1.0
+        ],
+        "refined_fraction": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "selected_candidate_agreement": [
+          0.8875,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.445436692237854
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.6895710363984107
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.15012952283102393
+        ],
+        "cem_action_agreement": [
+          0.6958333333333333,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.10347920407851537
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002384402013073365,
+        "elite_recall": 0.9701388888888889,
+        "refined_fraction": 0.5,
+        "selected_candidate_agreement": 0.9708333333333333,
+        "full_score_candidate_regret": 0.2377490202585856,
+        "full_score_elite_regret": 0.20689929326375325,
+        "cem_mean_l2": 0.015803958227237066,
+        "cem_action_agreement": 0.9541666666666667,
+        "cem_std_l2": 0.011153433099389076,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002324154127078752,
+          0.0002456114739955713
+        ],
+        "elite_recall": [
+          0.9109722222222222,
+          1.0
+        ],
+        "refined_fraction": [
+          0.5,
+          0.5
+        ],
+        "selected_candidate_agreement": [
+          0.9125,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.7132470607757568
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.6206858634948731
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.041748204827308656
+        ],
+        "cem_action_agreement": [
+          0.8791666666666667,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.028911421075463295
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00024526456060508886,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00024159391294233503,
+          0.0002492087477973352
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-SCREEN",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00023411537210146587,
+        "elite_recall": 0.8186111111111113,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.4723577896753947,
+        "cem_mean_l2": 0.49810603133713205,
+        "cem_action_agreement": 0.041666666666666664,
+        "cem_std_l2": 0.3384403666481376,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002311425299073259,
+          0.00023716673332576952
+        ],
+        "elite_recall": [
+          0.7420833333333332,
+          0.8868055555555554
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.09491096675395966,
+          1.0650862846275169
+        ],
+        "cem_mean_l2": [
+          0.3203503328266864,
+          0.791991356080398
+        ],
+        "cem_action_agreement": [
+          0.020833333333333332,
+          0.0625
+        ],
+        "cem_std_l2": [
+          0.2265978801366873,
+          0.5234023013377251
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-SCREEN",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002500883458803097,
+        "elite_recall": 0.9755555555555555,
+        "refined_fraction": 0.20000000000000004,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.007396568854649861,
+        "cem_mean_l2": 0.08886208192755779,
+        "cem_action_agreement": 0.8375,
+        "cem_std_l2": 0.05698443300401171,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00024189422527949012,
+          0.00026305535847010716
+        ],
+        "elite_recall": [
+          0.9426284722222221,
+          0.9991666666666666
+        ],
+        "refined_fraction": [
+          0.20000000000000007,
+          0.20000000000000007
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.00018072128295898438,
+          0.016540655096371967
+        ],
+        "cem_mean_l2": [
+          0.0017344410220781962,
+          0.24603407268101973
+        ],
+        "cem_action_agreement": [
+          0.6541666666666667,
+          0.9833333333333334
+        ],
+        "cem_std_l2": [
+          0.0013532537966966629,
+          0.1549657585720221
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-SCREEN",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00024541295133531096,
+        "elite_recall": 0.9945833333333333,
+        "refined_fraction": 0.29999999999999993,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0005679607391357421,
+        "cem_mean_l2": 0.03518675022448103,
+        "cem_action_agreement": 0.9208333333333333,
+        "cem_std_l2": 0.02411066566904386,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00024262596271000804,
+          0.0002480842925918599
+        ],
+        "elite_recall": [
+          0.9851388888888888,
+          1.0
+        ],
+        "refined_fraction": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0013477961222330644
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.10295702147608002
+        ],
+        "cem_action_agreement": [
+          0.7958333333333334,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.07042759209871292
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-SCREEN",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002579168106118838,
+        "elite_recall": 0.9997222222222223,
+        "refined_fraction": 0.5,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 6.008148193359375e-06,
+        "cem_mean_l2": 0.002831834927201271,
+        "cem_action_agreement": 0.9916666666666667,
+        "cem_std_l2": 0.0022744391113519668,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00025483489579831563,
+          0.0002614917132693032
+        ],
+        "elite_recall": [
+          0.9991666666666668,
+          1.0
+        ],
+        "refined_fraction": [
+          0.5,
+          0.5
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          1.8024444580078124e-05
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.008495504781603814
+        ],
+        "cem_action_agreement": [
+          0.9750000000000001,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0068233173340559
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-SCREEN",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002609665971249342,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002568879715787868,
+          0.0002651369769591838
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-MIXED",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002536665027340253,
+        "elite_recall": 0.6647222222222222,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 0.7625,
+        "full_score_candidate_regret": 0.5184943715731303,
+        "full_score_elite_regret": 0.7772073060274124,
+        "cem_mean_l2": 0.5967425948029467,
+        "cem_action_agreement": 0.025,
+        "cem_std_l2": 0.41713273040258286,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002510134293697774,
+          0.0002565069900204738
+        ],
+        "elite_recall": [
+          0.57678125,
+          0.7508402777777777
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          0.6000000000000001,
+          0.9083333333333333
+        ],
+        "full_score_candidate_regret": [
+          0.094792068451643,
+          1.1491710236668582
+        ],
+        "full_score_elite_regret": [
+          0.21663367316126825,
+          1.636325113972028
+        ],
+        "cem_mean_l2": [
+          0.41936579947059704,
+          0.9052821121163043
+        ],
+        "cem_action_agreement": [
+          0.008333333333333333,
+          0.04583333333333334
+        ],
+        "cem_std_l2": [
+          0.3088964591723346,
+          0.5968116190905371
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-MIXED",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00026264692035814127,
+        "elite_recall": 0.7840277777777778,
+        "refined_fraction": 0.20000000000000004,
+        "selected_candidate_agreement": 0.8541666666666666,
+        "full_score_candidate_regret": 0.3779935479164124,
+        "full_score_elite_regret": 0.5388403048117956,
+        "cem_mean_l2": 0.3365858432836831,
+        "cem_action_agreement": 0.5875,
+        "cem_std_l2": 0.20342980213463308,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002577469168075671,
+          0.0002678613170670966
+        ],
+        "elite_recall": [
+          0.6242812500000001,
+          0.9240277777777777
+        ],
+        "refined_fraction": [
+          0.20000000000000007,
+          0.20000000000000007
+        ],
+        "selected_candidate_agreement": [
+          0.7123958333333332,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.9771270235379537
+        ],
+        "full_score_elite_regret": [
+          0.07542723481853802,
+          1.2561191435158252
+        ],
+        "cem_mean_l2": [
+          0.06564296500834947,
+          0.7852838031606127
+        ],
+        "cem_action_agreement": [
+          0.3833333333333333,
+          0.7875
+        ],
+        "cem_std_l2": [
+          0.04731672478762145,
+          0.44917146720302575
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-MIXED",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.000258144224062562,
+        "elite_recall": 0.8470833333333334,
+        "refined_fraction": 0.29999999999999993,
+        "selected_candidate_agreement": 0.8791666666666667,
+        "full_score_candidate_regret": 0.294090469678243,
+        "full_score_elite_regret": 0.3835669239362081,
+        "cem_mean_l2": 0.24349510340640942,
+        "cem_action_agreement": 0.7791666666666667,
+        "cem_std_l2": 0.13969434769824146,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002529968305801352,
+          0.00026312462325828764
+        ],
+        "elite_recall": [
+          0.6977673611111112,
+          0.993079861111111
+        ],
+        "refined_fraction": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "selected_candidate_agreement": [
+          0.7541666666666667,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.7603753805160522
+        ],
+        "full_score_elite_regret": [
+          0.01020519196987152,
+          0.9365464448928833
+        ],
+        "cem_mean_l2": [
+          0.012244434381524727,
+          0.6347958332548538
+        ],
+        "cem_action_agreement": [
+          0.5873958333333332,
+          0.9417708333333328
+        ],
+        "cem_std_l2": [
+          0.008504949576066187,
+          0.35037560534353057
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-MIXED",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002718579644958178,
+        "elite_recall": 0.8986111111111111,
+        "refined_fraction": 0.5,
+        "selected_candidate_agreement": 0.9125,
+        "full_score_candidate_regret": 0.2905524492263794,
+        "full_score_elite_regret": 0.29596731265385945,
+        "cem_mean_l2": 0.19452718384563922,
+        "cem_action_agreement": 0.8666666666666667,
+        "cem_std_l2": 0.1001435149461031,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002621194017895808,
+          0.00028745959939745566
+        ],
+        "elite_recall": [
+          0.7705555555555555,
+          1.0
+        ],
+        "refined_fraction": [
+          0.5,
+          0.5
+        ],
+        "selected_candidate_agreement": [
+          0.7914583333333333,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.8216139554977417
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.7865884748101222
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.5497551600138346
+        ],
+        "cem_action_agreement": [
+          0.7124999999999999,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.27551303754250206
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "TOP-M-MIXED",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00026040665494898955,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00025263658453089497,
+          0.00027245495778818924
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "ELITE-BAND",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002916946231077115,
+        "elite_recall": 0.800138888888889,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 0.37916666666666665,
+        "full_score_candidate_regret": 1.068767386674881,
+        "full_score_elite_regret": 0.39148698349793754,
+        "cem_mean_l2": 0.37540017536420245,
+        "cem_action_agreement": 0.22083333333333333,
+        "cem_std_l2": 0.2597823984186825,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002826460990278671,
+          0.0003018928742191444
+        ],
+        "elite_recall": [
+          0.7242916666666667,
+          0.8806979166666666
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          0.22916666666666669,
+          0.5625
+        ],
+        "full_score_candidate_regret": [
+          0.310413452287515,
+          2.3386109217007953
+        ],
+        "full_score_elite_regret": [
+          0.0739665395518144,
+          0.9337388508766884
+        ],
+        "cem_mean_l2": [
+          0.20172007066168235,
+          0.6373096159183886
+        ],
+        "cem_action_agreement": [
+          0.12083333333333333,
+          0.32916666666666666
+        ],
+        "cem_std_l2": [
+          0.15225295205555361,
+          0.41461857038397776
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "ELITE-BAND",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.000277346558868885,
+        "elite_recall": 0.9008333333333334,
+        "refined_fraction": 0.20000000000000004,
+        "selected_candidate_agreement": 0.5,
+        "full_score_candidate_regret": 0.9188756833473841,
+        "full_score_elite_regret": 0.3000708113114039,
+        "cem_mean_l2": 0.16247124210024064,
+        "cem_action_agreement": 0.6125,
+        "cem_std_l2": 0.11211786567663415,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002718865250547727,
+          0.0002830621941636006
+        ],
+        "elite_recall": [
+          0.8086111111111112,
+          0.9740277777777777
+        ],
+        "refined_fraction": [
+          0.20000000000000007,
+          0.20000000000000007
+        ],
+        "selected_candidate_agreement": [
+          0.4041666666666667,
+          0.5916666666666667
+        ],
+        "full_score_candidate_regret": [
+          0.209028574898839,
+          2.09769425407052
+        ],
+        "full_score_elite_regret": [
+          0.01602706181506316,
+          0.8281656256069738
+        ],
+        "cem_mean_l2": [
+          0.038923865682630523,
+          0.35296059851818473
+        ],
+        "cem_action_agreement": [
+          0.42072916666666665,
+          0.8
+        ],
+        "cem_std_l2": [
+          0.02836943784459627,
+          0.23733580905158466
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "ELITE-BAND",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002730526030063629,
+        "elite_recall": 0.9408333333333334,
+        "refined_fraction": 0.29999999999999993,
+        "selected_candidate_agreement": 0.8666666666666667,
+        "full_score_candidate_regret": 0.6344713270664215,
+        "full_score_elite_regret": 0.2393264611562093,
+        "cem_mean_l2": 0.08528296966621698,
+        "cem_action_agreement": 0.8291666666666667,
+        "cem_std_l2": 0.059960211819539484,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002671686575437585,
+          0.0002794605419815828
+        ],
+        "elite_recall": [
+          0.8538645833333334,
+          1.0
+        ],
+        "refined_fraction": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "selected_candidate_agreement": [
+          0.7415625,
+          0.9708333333333334
+        ],
+        "full_score_candidate_regret": [
+          0.014727004369099933,
+          1.8079385973513122
+        ],
+        "full_score_elite_regret": [
+          -3.973642985026042e-09,
+          0.6944977434476216
+        ],
+        "cem_mean_l2": [
+          1.0209423090638362e-08,
+          0.20465997672197178
+        ],
+        "cem_action_agreement": [
+          0.6415624999999999,
+          1.0
+        ],
+        "cem_std_l2": [
+          5.45698471410283e-09,
+          0.14309042983710948
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "ELITE-BAND",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002848716297497352,
+        "elite_recall": 0.96875,
+        "refined_fraction": 0.5,
+        "selected_candidate_agreement": 0.9583333333333334,
+        "full_score_candidate_regret": 0.6500909010569255,
+        "full_score_elite_regret": 0.2111265977223714,
+        "cem_mean_l2": 0.029396360035625926,
+        "cem_action_agreement": 0.9208333333333333,
+        "cem_std_l2": 0.021143858763410368,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002726398676168173,
+          0.00030356995489758755
+        ],
+        "elite_recall": [
+          0.9093055555555556,
+          1.0
+        ],
+        "refined_fraction": [
+          0.5,
+          0.5
+        ],
+        "selected_candidate_agreement": [
+          0.8916666666666666,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          1.919834534327189
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.6323902289072673
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.07128445017253067
+        ],
+        "cem_action_agreement": [
+          0.8125,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.049571068200166685
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "ELITE-BAND",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00028694006614387034,
+        "elite_recall": 1.0,
+        "refined_fraction": 1.0,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0,
+        "cem_mean_l2": 0.0,
+        "cem_action_agreement": 1.0,
+        "cem_std_l2": 0.0,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.00028200527769513424,
+          0.00029230243526399133
+        ],
+        "elite_recall": [
+          1.0,
+          1.0
+        ],
+        "refined_fraction": [
+          1.0,
+          1.0
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          0.0,
+          0.0
+        ],
+        "cem_mean_l2": [
+          0.0,
+          0.0
+        ],
+        "cem_action_agreement": [
+          1.0,
+          1.0
+        ],
+        "cem_std_l2": [
+          0.0,
+          0.0
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "INTERVAL",
+      "requested_fraction": 0.1,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0002395865817864736,
+        "elite_recall": 0.8055555555555557,
+        "refined_fraction": 0.10000000000000002,
+        "selected_candidate_agreement": 0.9208333333333333,
+        "full_score_candidate_regret": 0.3007977883021037,
+        "full_score_elite_regret": 0.535549008846283,
+        "cem_mean_l2": 0.4392798489138576,
+        "cem_action_agreement": 0.05416666666666667,
+        "cem_std_l2": 0.31862002901180975,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0002318568166811019,
+          0.00024955073992411294
+        ],
+        "elite_recall": [
+          0.7129131944444443,
+          0.8900243055555553
+        ],
+        "refined_fraction": [
+          0.10000000000000003,
+          0.10000000000000003
+        ],
+        "selected_candidate_agreement": [
+          0.8041666666666667,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.8602978626887003
+        ],
+        "full_score_elite_regret": [
+          0.0750916539132595,
+          1.3085907094180584
+        ],
+        "cem_mean_l2": [
+          0.28975063825037994,
+          0.6841222646111093
+        ],
+        "cem_action_agreement": [
+          0.025,
+          0.08333333333333334
+        ],
+        "cem_std_l2": [
+          0.20945132454158738,
+          0.4877621373459867
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "INTERVAL",
+      "requested_fraction": 0.2,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00038920616110165915,
+        "elite_recall": 0.8956944444444445,
+        "refined_fraction": 0.1586388888888889,
+        "selected_candidate_agreement": 0.95,
+        "full_score_candidate_regret": 0.30270181894302367,
+        "full_score_elite_regret": 0.3429973284403483,
+        "cem_mean_l2": 0.1666341012964646,
+        "cem_action_agreement": 0.6291666666666667,
+        "cem_std_l2": 0.11263547831525406,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0003528638498391956,
+          0.0004235822858754546
+        ],
+        "elite_recall": [
+          0.7901319444444443,
+          0.974722222222222
+        ],
+        "refined_fraction": [
+          0.13872222222222225,
+          0.1773899305555556
+        ],
+        "selected_candidate_agreement": [
+          0.8583333333333334,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.8992742975552878
+        ],
+        "full_score_elite_regret": [
+          0.0037993468344211575,
+          0.9573162128527958
+        ],
+        "cem_mean_l2": [
+          0.04344333477706338,
+          0.34830371439844915
+        ],
+        "cem_action_agreement": [
+          0.44156249999999997,
+          0.825
+        ],
+        "cem_std_l2": [
+          0.03012790556376179,
+          0.23273425262498976
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "INTERVAL",
+      "requested_fraction": 0.3,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.00041301071954270206,
+        "elite_recall": 0.9341666666666666,
+        "refined_fraction": 0.18206944444444445,
+        "selected_candidate_agreement": 0.9625,
+        "full_score_candidate_regret": 0.148478897412618,
+        "full_score_elite_regret": 0.23842882513999938,
+        "cem_mean_l2": 0.09205418561274807,
+        "cem_action_agreement": 0.7208333333333333,
+        "cem_std_l2": 0.06479591079987586,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0003461396073301633,
+          0.00048366948030889036
+        ],
+        "elite_recall": [
+          0.8494444444444444,
+          0.9868055555555555
+        ],
+        "refined_fraction": [
+          0.14516597222222222,
+          0.2205402777777776
+        ],
+        "selected_candidate_agreement": [
+          0.8875,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.445436692237854
+        ],
+        "full_score_elite_regret": [
+          0.003349971771240234,
+          0.6905578076839447
+        ],
+        "cem_mean_l2": [
+          0.026093938512106736,
+          0.17436726596982527
+        ],
+        "cem_action_agreement": [
+          0.5708333333333333,
+          0.8834374999999994
+        ],
+        "cem_std_l2": [
+          0.018577761924049505,
+          0.12129962994134981
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "INTERVAL",
+      "requested_fraction": 0.5,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0004506577116747697,
+        "elite_recall": 0.9593055555555556,
+        "refined_fraction": 0.21041666666666667,
+        "selected_candidate_agreement": 0.9708333333333333,
+        "full_score_candidate_regret": 0.2377490202585856,
+        "full_score_elite_regret": 0.20791566173235576,
+        "cem_mean_l2": 0.0450982461993893,
+        "cem_action_agreement": 0.8166666666666667,
+        "cem_std_l2": 0.03273178289333979,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0003485341447715958,
+          0.0005654430463134001
+        ],
+        "elite_recall": [
+          0.8976284722222222,
+          0.9965277777777777
+        ],
+        "refined_fraction": [
+          0.15158125,
+          0.2768333333333333
+        ],
+        "selected_candidate_agreement": [
+          0.9125,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.7132470607757568
+        ],
+        "full_score_elite_regret": [
+          0.000295106569925944,
+          0.6219539068142574
+        ],
+        "cem_mean_l2": [
+          0.015002419169371327,
+          0.07896325057372451
+        ],
+        "cem_action_agreement": [
+          0.675,
+          0.9458333333333333
+        ],
+        "cem_std_l2": [
+          0.010319836825753251,
+          0.05607520055957136
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    },
+    {
+      "mode": "INTERVAL",
+      "requested_fraction": 1.0,
+      "banks": 240,
+      "episodes": 8,
+      "mean": {
+        "selector_cpu_seconds": 0.0004729947696129481,
+        "elite_recall": 0.9891666666666666,
+        "refined_fraction": 0.22977777777777778,
+        "selected_candidate_agreement": 1.0,
+        "full_score_candidate_regret": 0.0,
+        "full_score_elite_regret": 0.0010163684686024983,
+        "cem_mean_l2": 0.029294287972152232,
+        "cem_action_agreement": 0.8625,
+        "cem_std_l2": 0.021578349793950718,
+        "calibration_coverage": 0.7265555555555555
+      },
+      "episode_bootstrap_ci95": {
+        "selector_cpu_seconds": [
+          0.0003442117936598758,
+          0.0006250749765119201
+        ],
+        "elite_recall": [
+          0.9752777777777777,
+          0.9994444444444445
+        ],
+        "refined_fraction": [
+          0.15326770833333334,
+          0.31814305555555555
+        ],
+        "selected_candidate_agreement": [
+          1.0,
+          1.0
+        ],
+        "full_score_candidate_regret": [
+          0.0,
+          0.0
+        ],
+        "full_score_elite_regret": [
+          2.9071172078450522e-05,
+          0.0024007499217987057
+        ],
+        "cem_mean_l2": [
+          0.004633373860269787,
+          0.06121225977937381
+        ],
+        "cem_action_agreement": [
+          0.7166666666666667,
+          0.9833333333333334
+        ],
+        "cem_std_l2": [
+          0.003916445852567755,
+          0.044668509749074777
+        ],
+        "calibration_coverage": [
+          0.5666090277777777,
+          0.8700493055555556
+        ]
+      }
+    }
+  ],
+  "e16_summary": {
+    "total_env_steps": 2200,
+    "total_restore_prefix_steps": 440,
+    "branch_count": 64,
+    "total_resets": 88,
+    "hidden_file_sha256": "f90052e230131b3ed4f55275aede6f6495281c3a748d5d2265d8750b5b22df54",
+    "stage": "restore/replay instrumentation only; no acquisition-effect claim",
+    "max_replay_state_error": 0.0,
+    "max_replay_pixel_mae": 0.0
+  },
+  "raw_artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-pusht-engineering-s0-r1",
+  "science_claims": 0,
+  "artifact_sha256": {
+    "config.json": "b8e3b5e959da4b312eed5c62e7939be061377535f764412d76960c1b9e045b6a",
+    "checkpoint_load.json": "773240a6d8e49e7d377c93c99987194c22626ca028ae12639bb76d0fc376618f",
+    "data_source.json": "ee4c0c90ff83dc3d81c03c62357d4297f1c7d649ffac7fc859f907f1486a3697",
+    "e13_rows.json": "6d8147f0584647269813ad981cd838ee31687bfe29ca26661768671bcb1d6647",
+    "e13_summary.json": "0cfd6f4aeb7af42dd47381af24675d6aca144dfbd01ef44ca1552691da3b834c",
+    "e16_summary.json": "20f882351d9d30dcb9d8118a7fcb89b5308597fa6e7a030e11c2d4d6b0a4b67b",
+    "e00_summary.json": "2a6d76855e36024fc0ec8628ab2019d5dc24e2f420309af460d15114e469c343",
+    "e00_train.json": "b0485b05b8dd482a193ca3aef98ff5adc80c42598b781abe17791039e91d0696",
+    "complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0"
+  }
+}

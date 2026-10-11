@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-06",
+  "status": "RUNNING; annotation and mirror transfers ongoing; no scientific map result",
+  "data": {
+    "rows": 1732,
+    "pairs": 413,
+    "clusters": 365,
+    "sources": {
+      "amouyal": 1204,
+      "sap": 144,
+      "cehakova2025": 384
+    },
+    "constructions": {
+      "NPZ": 516,
+      "NPS": 208,
+      "NPVP": 160,
+      "MVRR": 400,
+      "DEPTH": 160,
+      "DOUBLE": 240,
+      "INTERFERENCE": 48
+    },
+    "gp_pairs": 309,
+    "annotation_scope": "New T1/T2/T3 required only for controlled GP materials; general natural corpora are not re-audited.",
+    "data_sha256": "3e7599c325f5a9ff50090be2cc08040f7c4af10a131d20946689b42d49f58dcb"
+  },
+  "precision_smoke": {
+    "n": 56,
+    "flips": 0,
+    "max_p_delta": 0.2847897363282751
+  },
+  "public_replication_smoke": {
+    "matched": 224,
+    "flips": 2,
+    "max_probability_delta": 0.20132738928434513,
+    "mean_probability_delta": 0.057291868493153784
+  },
+  "claims": "C06–C09 remain L0",
+  "assets": "/data1/xiangding/work/incremental-interpretation-revision/E52",
+  "limitations": [
+    "Public probability mismatch remains under calibration; 224 decisions are only an instrument smoke.",
+    "BF16/FP32 have zero decision flips in 56 tasks but large probability delta; use no capability claim from this sample.",
+    "No completed D0-v2 or E52 map; partial annotation labels are not accepted as the final dataset."
+  ]
+}

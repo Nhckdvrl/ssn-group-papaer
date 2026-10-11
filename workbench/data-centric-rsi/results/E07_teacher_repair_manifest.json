@@ -1,0 +1,36 @@
+{
+  "teacher": "Qwen/Qwen2.5-32B-Instruct",
+  "revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "repair_prompt": true,
+  "max_tokens": 1024,
+  "start": 0,
+  "count_per_arm": 20,
+  "source_template_sha256": "757bbe3dea023dd45bbbd5614c7ee475fdac4b1b6e9af56d99c9dca182ef7e22",
+  "pool_sha256": "73d48edff350169563df2a5dd68f77dcab9d28753f08860f76119ce8e3f6fe5c",
+  "feedback_sha256": "2a632f946f489142c8d27081e0d0af9d1dfbb76eb3cdc7d3f978b5eb26b34152",
+  "dev_sha256": "33999c27214e4727c13686a3f47f3ed5ec9ec57aa529f0e2dfd9c0229268d8dc",
+  "test_hashes_sha256": "abf39a90286cfa7a468ec197fba8839c1671bc9b2744c7c43f8a5067d8d69557",
+  "prompt_sha256": "cd213be910fdba04fbb3941780ac1a31f084a30b3b4c093a47cc151085224a11",
+  "raw_sha256": "42baecd04ab886f8db91c4088cebc0f85f8d0dfd8a08a85dea8ca3b67ae2fd77",
+  "prompt_count": 40,
+  "valid_per_arm": {
+    "no_state": 18,
+    "with_state": 20
+  },
+  "invalid_reasons": [
+    {
+      "arm": "no_state",
+      "index": 3,
+      "reason": "Duplicate problem within arm"
+    },
+    {
+      "arm": "no_state",
+      "index": 14,
+      "reason": "Unterminated string starting at: line 4 column 25 (char 214)"
+    }
+  ],
+  "prompt_tokens": 29812,
+  "generated_tokens": 13357,
+  "wall_seconds": 249.4767127558589,
+  "cuda_visible_devices": "3"
+}

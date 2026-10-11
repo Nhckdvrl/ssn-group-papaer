@@ -1,0 +1,5866 @@
+{
+  "e72/qwen3_discovery": {
+    "run": {
+      "args": {
+        "model": "/tmp/ices_models/Qwen3-8B",
+        "out": "results/e72/qwen3_discovery",
+        "stage": "discovery",
+        "n": 8,
+        "seed": 72001,
+        "batch_size": 4
+      },
+      "seconds": 1598.1871180534363,
+      "sanity_max_error": 0.0,
+      "token_sum_error_max": 0.0,
+      "torch": "2.8.0+cu128",
+      "transformers": "4.57.6",
+      "host": "fvcrc21",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "model_class": "Qwen3ForCausalLM",
+      "script_sha256": "1d257cda4b46d2c3674a80064b91d9e1299718590fad83a31378a1cbb2a54268",
+      "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+      "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "git_commit": "2a9ddbb1a73e45431f9aee2edb4682db851e0e29"
+    },
+    "original_conditions": {
+      "source_only.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.96875,
+          "ci95": [
+            0.90625,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 95.5625,
+          "ci95": [
+            94.6875,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "source_only.chat_instruction": {
+        "accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.125,
+            0.4375
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.6875,
+          "ci95": [
+            0.375,
+            0.90625
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.28125,
+          "ci95": [
+            0.09375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 32.46875,
+          "ci95": [
+            12.625,
+            60.114843749999885
+          ],
+          "n_contexts": 8
+        }
+      },
+      "source_only.thinking_instruction": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 1146.0,
+          "ci95": [
+            927.09375,
+            1365.1828125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.03125,
+          "ci95": [
+            0.0,
+            0.09375
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.78125,
+            0.96875
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 91.71875,
+          "ci95": [
+            86.0,
+            95.3125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.thinking_instruction": {
+        "accuracy": {
+          "mean": 0.6875,
+          "ci95": [
+            0.5,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.6875,
+          "ci95": [
+            0.5,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.3125,
+          "ci95": [
+            0.125,
+            0.5
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 1571.6875,
+          "ci95": [
+            1424.1421875,
+            1715.84375
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.03125,
+          "ci95": [
+            0.0,
+            0.09375
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 94.15625,
+          "ci95": [
+            90.46875,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.84375,
+          "ci95": [
+            0.71875,
+            0.9375
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 95.28125,
+          "ci95": [
+            94.46875,
+            95.875
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.thinking_instruction": {
+        "accuracy": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.84375,
+          "ci95": [
+            0.71875,
+            0.9375
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 1988.40625,
+          "ci95": [
+            1939.77578125,
+            2025.5625
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.thinking_instruction": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 1215.46875,
+          "ci95": [
+            1100.4375,
+            1318.9375
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.chat": {
+        "accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.3125
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.3125
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.6875,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 93.75,
+          "ci95": [
+            90.87421875,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.chat_instruction": {
+        "accuracy": {
+          "mean": 0.46875,
+          "ci95": [
+            0.28125,
+            0.625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.71875,
+          "ci95": [
+            0.53125,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.28125,
+          "ci95": [
+            0.125,
+            0.46875
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 29.875,
+          "ci95": [
+            15.5,
+            47.125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.thinking_instruction": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 774.8125,
+          "ci95": [
+            654.76328125,
+            890.6335937499999
+          ],
+          "n_contexts": 8
+        }
+      }
+    },
+    "format_audit_conditions": {
+      "entity_binding.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "entity_binding.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "entity_binding.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 30,
+          "thinking_not_closed": 2
+        }
+      },
+      "linked_prefix.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "linked_prefix.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.03125,
+          "ci95": [
+            0.0,
+            0.09375
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.78125,
+            0.96875
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 28,
+          "noncandidate_final_answer": 3,
+          "valid_decorated": 1
+        }
+      },
+      "linked_prefix.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 0.6875,
+          "ci95": [
+            0.5,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.6875,
+          "ci95": [
+            0.5,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.6875,
+          "ci95": [
+            0.5,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.3125,
+          "ci95": [
+            0.125,
+            0.5
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 10,
+          "valid_decorated": 22
+        }
+      },
+      "orthogonal_prefix.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.03125,
+          "ci95": [
+            0.0,
+            0.09375
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 30,
+          "noncandidate_final_answer": 1,
+          "valid_decorated": 1
+        }
+      },
+      "orthogonal_prefix.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.84375,
+          "ci95": [
+            0.71875,
+            0.9375
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 27,
+          "valid_decorated": 5
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.15625,
+          "ci95": [
+            0.0625,
+            0.28125
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.84375,
+          "ci95": [
+            0.71875,
+            0.9375
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 27,
+          "valid_decorated": 5
+        }
+      },
+      "single_source.chat.original": {
+        "accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.3125
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.3125
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.3125
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.6875,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 28,
+          "valid_decorated": 4
+        }
+      },
+      "single_source.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.46875,
+          "ci95": [
+            0.28125,
+            0.625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.71875,
+          "ci95": [
+            0.53125,
+            0.875
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.46875,
+          "ci95": [
+            0.28125,
+            0.625
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.28125,
+          "ci95": [
+            0.125,
+            0.46875
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 23,
+          "no_explicit_answer_line": 9
+        }
+      },
+      "single_source.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 32
+        }
+      },
+      "source_only.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.96875,
+          "ci95": [
+            0.90625,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 31,
+          "noncandidate_final_answer": 1
+        }
+      },
+      "source_only.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.125,
+            0.4375
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.6875,
+          "ci95": [
+            0.375,
+            0.90625
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.125,
+            0.4375
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.28125,
+          "ci95": [
+            0.09375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 22,
+          "noncandidate_final_answer": 1,
+          "no_explicit_answer_line": 9
+        }
+      },
+      "source_only.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.84375,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.15625
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 30,
+          "thinking_not_closed": 2
+        }
+      }
+    }
+  },
+  "e72/qwen38_discovery": {
+    "run": {
+      "args": {
+        "model": "/tmp/ices_models/Qwen3.8-27B",
+        "out": "results/e72/qwen38_discovery",
+        "stage": "discovery",
+        "n": 8,
+        "seed": 72001,
+        "batch_size": 4
+      },
+      "seconds": 2574.858477115631,
+      "sanity_max_error": 0.0,
+      "token_sum_error_max": 0.0,
+      "torch": "2.9.1+cu129",
+      "transformers": "5.12.1",
+      "host": "fvcrc21",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "model_class": "Qwen3_5ForCausalLM",
+      "script_sha256": "1d257cda4b46d2c3674a80064b91d9e1299718590fad83a31378a1cbb2a54268",
+      "config_sha256": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+      "chat_template_sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+      "git_commit": "2a9ddbb1a73e45431f9aee2edb4682db851e0e29"
+    },
+    "original_conditions": {
+      "source_only.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "source_only.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "source_only.thinking_instruction": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 451.25,
+          "ci95": [
+            426.18671875,
+            477.28125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "linked_prefix.thinking_instruction": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 566.59375,
+          "ci95": [
+            531.5,
+            595.25078125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "orthogonal_prefix.thinking_instruction": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.34375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.4375,
+          "ci95": [
+            0.34375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.5625,
+          "ci95": [
+            0.4375,
+            0.65625
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 1750.3125,
+          "ci95": [
+            1629.2125,
+            1878.23828125
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "entity_binding.thinking_instruction": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 263.90625,
+          "ci95": [
+            247.6875,
+            282.19062499999995
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.chat": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.chat_instruction": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 8
+        }
+      },
+      "single_source.thinking_instruction": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "tokens": {
+          "mean": 213.78125,
+          "ci95": [
+            211.03125,
+            216.56328125
+          ],
+          "n_contexts": 8
+        }
+      }
+    },
+    "format_audit_conditions": {
+      "entity_binding.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "entity_binding.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "entity_binding.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 32
+        }
+      },
+      "linked_prefix.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "linked_prefix.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "linked_prefix.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 32
+        }
+      },
+      "orthogonal_prefix.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "orthogonal_prefix.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.34375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.4375,
+          "ci95": [
+            0.34375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.34375,
+            0.5625
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.5625,
+          "ci95": [
+            0.4375,
+            0.65625
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 18,
+          "valid_decorated": 14
+        }
+      },
+      "single_source.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "single_source.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "single_source.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 32
+        }
+      },
+      "source_only.chat.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "source_only.chat_instruction.original": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 32
+        }
+      },
+      "source_only.thinking_instruction.original": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 8
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 8
+        },
+        "parser_status_counts": {
+          "valid_decorated": 32
+        }
+      }
+    }
+  },
+  "e73/qwen3_discovery": {
+    "run": {
+      "args": {
+        "model": "/tmp/ices_models/Qwen3-8B",
+        "out": "results/e73/qwen3_discovery",
+        "stage": "discovery",
+        "n": 4,
+        "seed": 72001,
+        "batch_size": 4
+      },
+      "seconds": 924.2468914985657,
+      "prefix_audits": 48,
+      "prefix_mismatches": 0,
+      "torch": "2.8.0+cu128",
+      "transformers": "4.57.6",
+      "model_class": "Qwen3ForCausalLM",
+      "host": "fvcrc21",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "script_sha256": "7c3e2a55ecbe8ecfaa7d5ce0d0438e01e4004a1ddba86929e225bdc4db6c5745",
+      "dependency_sha256": {
+        "e72_native.py": "1d257cda4b46d2c3674a80064b91d9e1299718590fad83a31378a1cbb2a54268",
+        "e71_relational.py": "56730367121195cb886f25d160d90abf21c54fa53cd77f8c028ee6a97c5d17b9",
+        "e58_factorization.py": "0714e82c44c3191b07dae21d79931e7d5e4b7bb38f161cee72c14270caf9c5b3",
+        "e67_prefix.py": "42b8f205cbe02d913867391ac30171d10bd9a8083eeedd959f61e6a19bfc3256"
+      },
+      "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+      "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "git_commit": "2a9ddbb1a73e45431f9aee2edb4682db851e0e29"
+    },
+    "original_conditions": {
+      "source_only.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.chat.2048": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 267.875,
+          "ci95": [
+            219.25,
+            326.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.chat.4096": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 267.875,
+          "ci95": [
+            219.25,
+            326.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.625,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 15.5,
+          "ci95": [
+            4.0,
+            38.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 36.9375,
+          "ci95": [
+            4.0,
+            102.8125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 36.9375,
+          "ci95": [
+            4.0,
+            102.8125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 1091.75,
+          "ci95": [
+            874.1875,
+            1260.1875
+          ],
+          "n_contexts": 4
+        }
+      },
+      "source_only.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 1091.75,
+          "ci95": [
+            874.1875,
+            1260.1875
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 93.9375,
+          "ci95": [
+            89.8125,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat.2048": {
+        "accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.375,
+          "ci95": [
+            0.25,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 325.8125,
+          "ci95": [
+            271.875,
+            367.9375
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat.4096": {
+        "accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.375,
+          "ci95": [
+            0.25,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 325.8125,
+          "ci95": [
+            271.875,
+            367.9375
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 93.3125,
+          "ci95": [
+            87.9375,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 209.9375,
+          "ci95": [
+            173.5625,
+            249.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 209.9375,
+          "ci95": [
+            173.5625,
+            249.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 2017.625,
+          "ci95": [
+            1997.0,
+            2038.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 2789.375,
+          "ci95": [
+            2412.375,
+            3272.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat.2048": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.3125,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.625,
+          "ci95": [
+            0.5,
+            0.75
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 246.4375,
+          "ci95": [
+            219.75,
+            273.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat.4096": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.3125,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.625,
+          "ci95": [
+            0.5,
+            0.75
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 246.4375,
+          "ci95": [
+            219.75,
+            273.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 95.875,
+          "ci95": [
+            95.625,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 199.0,
+          "ci95": [
+            158.625,
+            251.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 199.0,
+          "ci95": [
+            158.625,
+            251.125
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 1301.5625,
+          "ci95": [
+            1142.9375,
+            1430.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "entity_binding.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 1334.0625,
+          "ci95": [
+            1163.25,
+            1495.5
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat.96": {
+        "accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.625,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 90.0,
+          "ci95": [
+            78.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat.2048": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 151.625,
+          "ci95": [
+            118.625,
+            172.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat.4096": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 151.625,
+          "ci95": [
+            118.625,
+            172.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.75,
+          "ci95": [
+            0.4375,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.25,
+          "ci95": [
+            0.0,
+            0.5625
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 27.0,
+          "ci95": [
+            4.0,
+            55.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 37.625,
+          "ci95": [
+            4.0,
+            73.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 37.625,
+          "ci95": [
+            4.0,
+            73.75
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 96.0,
+          "ci95": [
+            96.0,
+            96.0
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 649.0625,
+          "ci95": [
+            555.25,
+            742.875
+          ],
+          "n_contexts": 4
+        }
+      },
+      "single_source.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "tokens": {
+          "mean": 649.0625,
+          "ci95": [
+            555.25,
+            742.875
+          ],
+          "n_contexts": 4
+        }
+      }
+    },
+    "format_audit_conditions": {
+      "entity_binding.chat.2048": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.3125,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.375,
+          "ci95": [
+            0.25,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "entity_binding.chat.4096": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.3125,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.375,
+          "ci95": [
+            0.25,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "entity_binding.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 16
+        }
+      },
+      "entity_binding.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "entity_binding.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "entity_binding.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 15,
+          "valid_decorated": 1
+        }
+      },
+      "entity_binding.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 14,
+          "thinking_not_closed": 2
+        }
+      },
+      "entity_binding.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "entity_binding.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 16
+        }
+      },
+      "orthogonal_prefix.chat.2048": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.625,
+          "ci95": [
+            0.5,
+            0.75
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 10,
+          "noncandidate_final_answer": 6
+        }
+      },
+      "orthogonal_prefix.chat.4096": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.625,
+          "ci95": [
+            0.5,
+            0.75
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 10,
+          "noncandidate_final_answer": 6
+        }
+      },
+      "orthogonal_prefix.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 15,
+          "noncandidate_final_answer": 1
+        }
+      },
+      "orthogonal_prefix.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "noncandidate_final_answer": 3,
+          "valid_decorated": 13
+        }
+      },
+      "orthogonal_prefix.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.375,
+          "ci95": [
+            0.125,
+            0.625
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "noncandidate_final_answer": 3,
+          "valid_decorated": 13
+        }
+      },
+      "orthogonal_prefix.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 15,
+          "valid_decorated": 1
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0625,
+            0.25
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 13,
+          "valid_decorated": 3
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0625,
+          "ci95": [
+            0.0,
+            0.1875
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 15,
+          "thinking_not_closed": 1
+        }
+      },
+      "orthogonal_prefix.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 16
+        }
+      },
+      "single_source.chat.2048": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 15,
+          "noncandidate_final_answer": 1
+        }
+      },
+      "single_source.chat.4096": {
+        "accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.9375,
+          "ci95": [
+            0.8125,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 15,
+          "noncandidate_final_answer": 1
+        }
+      },
+      "single_source.chat.96": {
+        "accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.875,
+          "ci95": [
+            0.625,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 14,
+          "valid_decorated": 2
+        }
+      },
+      "single_source.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "single_source.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.75,
+          "ci95": [
+            0.5625,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "single_source.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.75,
+          "ci95": [
+            0.4375,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.25,
+          "ci95": [
+            0.0,
+            0.5625
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 12,
+          "no_explicit_answer_line": 4
+        }
+      },
+      "single_source.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "single_source.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "single_source.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 16
+        }
+      },
+      "source_only.chat.2048": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 14,
+          "noncandidate_final_answer": 2
+        }
+      },
+      "source_only.chat.4096": {
+        "accuracy": {
+          "mean": 0.8125,
+          "ci95": [
+            0.75,
+            0.9375
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.75,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.3125,
+          "ci95": [
+            0.25,
+            0.4375
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 14,
+          "noncandidate_final_answer": 2
+        }
+      },
+      "source_only.chat.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "no_explicit_answer_line": 16
+        }
+      },
+      "source_only.chat_instruction.2048": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "source_only.chat_instruction.4096": {
+        "accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.5,
+          "ci95": [
+            0.3125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "source_only.chat_instruction.96": {
+        "accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.875,
+          "ci95": [
+            0.625,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.4375,
+          "ci95": [
+            0.125,
+            0.6875
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.125,
+          "ci95": [
+            0.0,
+            0.375
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 14,
+          "no_explicit_answer_line": 2
+        }
+      },
+      "source_only.thinking_instruction.2048": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "source_only.thinking_instruction.4096": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "valid_decorated": 16
+        }
+      },
+      "source_only.thinking_instruction.96": {
+        "accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "valid_format": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "strict_accuracy": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "truncated": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 4
+        },
+        "recovered_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "lost_strict_correct": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 4
+        },
+        "parser_status_counts": {
+          "thinking_not_closed": 16
+        }
+      }
+    }
+  }
+}

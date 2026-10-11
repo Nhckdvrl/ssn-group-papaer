@@ -1,0 +1,1806 @@
+{
+  "experiment": "20261003-E17-task-factor-cost-RTX-s0",
+  "artifact": "~/.cache/latent-wm-results/20261003-E17-task-factor-cost-RTX-s0",
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "e17_run": "/home/xiang/.cache/latent-wm-results/20261002-E17-query-proposal-RTX-s0",
+      "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E17_task_factor_cost_RTX_s0",
+      "output": "/tmp/latent-wm-runs/20261003-E17-task-factor-cost-RTX-s0"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "seed": 78000,
+    "methods": [
+      "NATIVE25",
+      "PREFIX5",
+      "REAL-GEO",
+      "MIX-GEO",
+      "REAL-JOINT",
+      "MIX-JOINT"
+    ],
+    "harness_sha256": "0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa",
+    "helper_sha256": {
+      "first_wave.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+      "recovery_forks.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+      "query_proposal.py": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+      "latent_observer.py": "0f4de4fe64390cc2dc286a05dc4cde3d070a30ece215e0e430647af1257b96cf",
+      "commitment_cadence.py": "01cc296f1d8ed22a416e3bb8220feb9d6a5d516904e1e3353f33b0bcfb797704",
+      "action_basis.py": "00ad0f52ddd51518103edf2bcd09a9fdfa87b979cd0bcd254e0f5a88ed7a853c",
+      "closed_loop.py": "03e3acfd07cc3fae351649270aec539541832685b5040a86345155abd104a960",
+      "continuous_adaptation.py": "fb89615cefdee476babc36ece8c3d5a0ff1a232a6b3084bd3ec54fc507f33079"
+    },
+    "cem_sha256": "d88c86dcd1bd1e6d89221ac22079a3efe296cc7566532de0d36605e2f1536050",
+    "extent": {
+      "tworoom": 224.0,
+      "pusht": 512.0
+    },
+    "protocol": "EX5 shifted warm/native EX25 cold; common initial native25 solve; raw action scoring shared known TwoRoom clipping limitation; REAL .5 realendpoint+.5 realgoal; MIX .25 realendpoint+.25 imaginedendpoint+.5 realgoal; extra task geometry labels; joint +latentL2/192; no deployment physical states",
+    "training": {
+      "head": "192-256-256-2/6/ReLU",
+      "endpoint": 5,
+      "updates": 2000,
+      "batch_size": 128,
+      "optimizer": "AdamW",
+      "lr": 0.0003,
+      "weight_decay": 0.001,
+      "clip": 1.0,
+      "equal_total_information": false,
+      "wm_pretrain_episode_overlap": "unknown"
+    },
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    }
+  },
+  "complete": {
+    "completed": true,
+    "episodes": 384,
+    "physical_env_steps": 24005,
+    "actual_solver_calls": 3886,
+    "actual_candidate_evaluations": 34974000,
+    "shared_initial_solves": 64
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "NATIVE25",
+      "n": 16,
+      "successes": 13,
+      "wilson95": [
+        0.5699111903802586,
+        0.9340840092857187
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": -8.427998125553131,
+          "distance_ci95": [
+            -20.08478901684284,
+            -0.13843140155077122
+          ],
+          "helped": 0,
+          "harmed": 2
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "PREFIX5",
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            0.0,
+            0.3125
+          ],
+          "distance_gain": 8.427998125553131,
+          "distance_ci95": [
+            0.13843140155076983,
+            20.084789016842837
+          ],
+          "helped": 2,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "REAL-GEO",
+      "n": 16,
+      "successes": 16,
+      "wilson95": [
+        0.8063923194655637,
+        1.0000000000000002
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.1875,
+          "success_ci95": [
+            0.0,
+            0.375
+          ],
+          "distance_gain": 11.88902747631073,
+          "distance_ci95": [
+            0.6407551303505897,
+            24.650782980024793
+          ],
+          "helped": 3,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.0625,
+          "success_ci95": [
+            0.0,
+            0.1875
+          ],
+          "distance_gain": 3.461029350757599,
+          "distance_ci95": [
+            -0.9104740336537361,
+            11.380540736019611
+          ],
+          "helped": 1,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "MIX-GEO",
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            0.0,
+            0.3125
+          ],
+          "distance_gain": 11.940476477146149,
+          "distance_ci95": [
+            1.0333230629563332,
+            24.58878041952847
+          ],
+          "helped": 2,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            -0.1875,
+            0.1875
+          ],
+          "distance_gain": 3.5124783515930176,
+          "distance_ci95": [
+            -0.9630293816328048,
+            11.350291140377518
+          ],
+          "helped": 1,
+          "harmed": 1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "REAL-JOINT",
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            -0.125,
+            0.375
+          ],
+          "distance_gain": 9.757590174674988,
+          "distance_ci95": [
+            -1.0013047009706497,
+            22.674907152354706
+          ],
+          "helped": 3,
+          "harmed": 1
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            -0.1875,
+            0.1875
+          ],
+          "distance_gain": 1.3295920491218567,
+          "distance_ci95": [
+            -4.930192823708057,
+            9.660799753665922
+          ],
+          "helped": 1,
+          "harmed": 1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "MIX-JOINT",
+      "n": 16,
+      "successes": 15,
+      "wilson95": [
+        0.7167126242970107,
+        0.9888806552353576
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            -0.125,
+            0.375
+          ],
+          "distance_gain": 9.392417669296265,
+          "distance_ci95": [
+            -1.8346226915717125,
+            22.782148864865302
+          ],
+          "helped": 3,
+          "harmed": 1
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            -0.1875,
+            0.1875
+          ],
+          "distance_gain": 0.9644195437431335,
+          "distance_ci95": [
+            -6.459199140965938,
+            9.84850362539291
+          ],
+          "helped": 1,
+          "harmed": 1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "NATIVE25",
+      "n": 16,
+      "successes": 10,
+      "wilson95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.1875,
+          "success_ci95": [
+            -0.0625,
+            0.4375
+          ],
+          "distance_gain": 6.916995644569397,
+          "distance_ci95": [
+            -8.633734714984893,
+            21.01810524612665
+          ],
+          "helped": 4,
+          "harmed": 1
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "PREFIX5",
+      "n": 16,
+      "successes": 7,
+      "wilson95": [
+        0.23098652405492354,
+        0.6682144360118811
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.1875,
+          "success_ci95": [
+            -0.4375,
+            0.0625
+          ],
+          "distance_gain": -6.916995644569397,
+          "distance_ci95": [
+            -21.01810524612665,
+            8.633734714984882
+          ],
+          "helped": 1,
+          "harmed": 4
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "REAL-GEO",
+      "n": 16,
+      "successes": 11,
+      "wilson95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0625,
+          "success_ci95": [
+            -0.1875,
+            0.3125
+          ],
+          "distance_gain": 27.370411098003387,
+          "distance_ci95": [
+            2.8159603238105775,
+            54.65607825964689
+          ],
+          "helped": 3,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.25,
+          "success_ci95": [
+            0.0625,
+            0.5
+          ],
+          "distance_gain": 34.287406742572784,
+          "distance_ci95": [
+            13.589967899024487,
+            60.739674583077424
+          ],
+          "helped": 4,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "MIX-GEO",
+      "n": 16,
+      "successes": 11,
+      "wilson95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0625,
+          "success_ci95": [
+            -0.1875,
+            0.3125
+          ],
+          "distance_gain": 27.43387347459793,
+          "distance_ci95": [
+            2.66531780064106,
+            54.567486733198166
+          ],
+          "helped": 3,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.25,
+          "success_ci95": [
+            0.0625,
+            0.5
+          ],
+          "distance_gain": 34.35086911916733,
+          "distance_ci95": [
+            13.728201983869075,
+            60.76118921786545
+          ],
+          "helped": 4,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "REAL-JOINT",
+      "n": 16,
+      "successes": 12,
+      "wilson95": [
+        0.5050168346449122,
+        0.8981793250878696
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            -0.1875,
+            0.4375
+          ],
+          "distance_gain": 30.13068264722824,
+          "distance_ci95": [
+            3.3332089781761174,
+            61.68485802561042
+          ],
+          "helped": 4,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.3125,
+          "success_ci95": [
+            0.125,
+            0.5625
+          ],
+          "distance_gain": 37.04767829179764,
+          "distance_ci95": [
+            13.798805157840253,
+            65.9584458172321
+          ],
+          "helped": 5,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "MIX-JOINT",
+      "n": 16,
+      "successes": 12,
+      "wilson95": [
+        0.5050168346449122,
+        0.8981793250878696
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            -0.1875,
+            0.4375
+          ],
+          "distance_gain": 30.551236987113953,
+          "distance_ci95": [
+            3.815733413398266,
+            61.694583125412436
+          ],
+          "helped": 4,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.3125,
+          "success_ci95": [
+            0.125,
+            0.5625
+          ],
+          "distance_gain": 37.46823263168335,
+          "distance_ci95": [
+            14.588002234697342,
+            66.08067192137236
+          ],
+          "helped": 5,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "NATIVE25",
+      "n": 16,
+      "successes": 14,
+      "wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.1875,
+          "success_ci95": [
+            -0.0625,
+            0.4375
+          ],
+          "distance_gain": 112.69375438739968,
+          "distance_ci95": [
+            55.35562630653611,
+            187.89136699038914
+          ],
+          "helped": 4,
+          "harmed": 1
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "PREFIX5",
+      "n": 16,
+      "successes": 11,
+      "wilson95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.1875,
+          "success_ci95": [
+            -0.4375,
+            0.0625
+          ],
+          "distance_gain": -112.69375438739968,
+          "distance_ci95": [
+            -187.8913669903892,
+            -55.35562630653613
+          ],
+          "helped": 1,
+          "harmed": 4
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "REAL-GEO",
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.3125,
+          "success_ci95": [
+            -0.5625,
+            -0.125
+          ],
+          "distance_gain": -227.99199491328864,
+          "distance_ci95": [
+            -383.61649394478223,
+            -106.65157960904621
+          ],
+          "helped": 0,
+          "harmed": 5
+        },
+        "PREFIX5": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.375,
+            0.125
+          ],
+          "distance_gain": -115.29824052588896,
+          "distance_ci95": [
+            -287.0281110158237,
+            20.108299438386716
+          ],
+          "helped": 1,
+          "harmed": 3
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "MIX-GEO",
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.3125,
+          "success_ci95": [
+            -0.5625,
+            -0.125
+          ],
+          "distance_gain": -193.39098893296108,
+          "distance_ci95": [
+            -282.28032283817106,
+            -109.26398366871408
+          ],
+          "helped": 0,
+          "harmed": 5
+        },
+        "PREFIX5": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.375,
+            0.125
+          ],
+          "distance_gain": -80.6972345455614,
+          "distance_ci95": [
+            -182.24352547685288,
+            17.14361845525579
+          ],
+          "helped": 1,
+          "harmed": 3
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "REAL-JOINT",
+      "n": 16,
+      "successes": 10,
+      "wilson95": [
+        0.38641040545502714,
+        0.8151876744113636
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.25,
+          "success_ci95": [
+            -0.5,
+            -0.0625
+          ],
+          "distance_gain": -247.05605630405594,
+          "distance_ci95": [
+            -468.36210782364026,
+            -93.70207527279166
+          ],
+          "helped": 0,
+          "harmed": 4
+        },
+        "PREFIX5": {
+          "success_gain": -0.0625,
+          "success_ci95": [
+            -0.25,
+            0.125
+          ],
+          "distance_gain": -134.36230191665626,
+          "distance_ci95": [
+            -370.4815183613291,
+            32.782180897563514
+          ],
+          "helped": 1,
+          "harmed": 2
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "MIX-JOINT",
+      "n": 16,
+      "successes": 9,
+      "wilson95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.3125,
+          "success_ci95": [
+            -0.5625,
+            -0.125
+          ],
+          "distance_gain": -212.27344370172568,
+          "distance_ci95": [
+            -369.42394980647634,
+            -85.00313713720782
+          ],
+          "helped": 0,
+          "harmed": 5
+        },
+        "PREFIX5": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.375,
+            0.125
+          ],
+          "distance_gain": -99.57968931432603,
+          "distance_ci95": [
+            -255.2088198056384,
+            25.48592217576908
+          ],
+          "helped": 1,
+          "harmed": 3
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "NATIVE25",
+      "n": 16,
+      "successes": 3,
+      "wilson95": [
+        0.06591599071428142,
+        0.4300888096197414
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        },
+        "PREFIX5": {
+          "success_gain": 0.125,
+          "success_ci95": [
+            0.0,
+            0.3125
+          ],
+          "distance_gain": -176.2940497849483,
+          "distance_ci95": [
+            -994.4571678429332,
+            498.35523126532235
+          ],
+          "helped": 2,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "PREFIX5",
+      "n": 16,
+      "successes": 1,
+      "wilson95": [
+        0.01111934476464252,
+        0.28328737570298945
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": 176.2940497849483,
+          "distance_ci95": [
+            -498.3552312653224,
+            994.4571678429318
+          ],
+          "helped": 0,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": 0.0,
+          "distance_ci95": [
+            0.0,
+            0.0
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "REAL-GEO",
+      "n": 16,
+      "successes": 1,
+      "wilson95": [
+        0.01111934476464252,
+        0.28328737570298945
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": -1152.7366561825895,
+          "distance_ci95": [
+            -2298.406868365284,
+            -272.7682237343804
+          ],
+          "helped": 0,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": -1329.0307059675379,
+          "distance_ci95": [
+            -2396.294049784951,
+            -498.62265789278666
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "MIX-GEO",
+      "n": 16,
+      "successes": 1,
+      "wilson95": [
+        0.01111934476464252,
+        0.28328737570298945
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": -889.5215180441778,
+          "distance_ci95": [
+            -1781.7609861688097,
+            -72.915104737012
+          ],
+          "helped": 0,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": -1065.815567829126,
+          "distance_ci95": [
+            -2012.229963131431,
+            -186.0413713444397
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "REAL-JOINT",
+      "n": 16,
+      "successes": 1,
+      "wilson95": [
+        0.01111934476464252,
+        0.28328737570298945
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": -1160.9320024291878,
+          "distance_ci95": [
+            -2327.560652645839,
+            -195.3343987868939
+          ],
+          "helped": 0,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": -1337.226052214136,
+          "distance_ci95": [
+            -2417.64832504691,
+            -397.7517290621195
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "MIX-JOINT",
+      "n": 16,
+      "successes": 1,
+      "wilson95": [
+        0.01111934476464252,
+        0.28328737570298945
+      ],
+      "paired": {
+        "NATIVE25": {
+          "success_gain": -0.125,
+          "success_ci95": [
+            -0.3125,
+            0.0
+          ],
+          "distance_gain": -952.2192048230775,
+          "distance_ci95": [
+            -2142.7364245003164,
+            -90.41359458742511
+          ],
+          "helped": 0,
+          "harmed": 2
+        },
+        "PREFIX5": {
+          "success_gain": 0.0,
+          "success_ci95": [
+            0.0,
+            0.0
+          ],
+          "distance_gain": -1128.5132546080258,
+          "distance_ci95": [
+            -2229.7140058783343,
+            -268.4897593284991
+          ],
+          "helped": 0,
+          "harmed": 0
+        }
+      }
+    }
+  ],
+  "baseline_reproduction": {
+    "tworoom_baseline_reproduction.json": [
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 15,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 15,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 15,
+        "passed": true
+      }
+    ],
+    "pusht_baseline_reproduction.json": [
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 25,
+        "anchor": 15,
+        "passed": true
+      },
+      {
+        "method": "PREFIX5",
+        "goal_offset": 25,
+        "anchor": 15,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 0,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 1,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 2,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 3,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 4,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 5,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 6,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 7,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 8,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 9,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 10,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 11,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 12,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 13,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 14,
+        "passed": true
+      },
+      {
+        "method": "NATIVE25",
+        "goal_offset": 75,
+        "anchor": 15,
+        "passed": true
+      }
+    ]
+  },
+  "upload_audit": {
+    "complete_and_no_failure": true,
+    "rows": 384,
+    "all_groups_16": true,
+    "env_steps_recomputed": true,
+    "raw_durable_identical_files": 404,
+    "summary_success_counts_recomputed": true,
+    "full_independent_trajectory_and_statistics_audit": "pending; do not upgrade scientific claims"
+  },
+  "provenance_sha256": {
+    "config.json": "dea590f25874286e584a3ace4dcd0f31c81853c45b642a8036c33fb5c26e144e",
+    "task_factor_cost_used.py": "0c4dcbc1d7c7b107f7f607fd2aa2c83e8c72b4d995e0467547d338cb825987aa",
+    "first_wave_used.py": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+    "recovery_forks_used.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "query_proposal_used.py": "491cf963ffc97acec66637f8f406856e74faa905c7ddd7bf6061726a5fcd2571",
+    "latent_observer_used.py": "0f4de4fe64390cc2dc286a05dc4cde3d070a30ece215e0e430647af1257b96cf",
+    "commitment_cadence_used.py": "01cc296f1d8ed22a416e3bb8220feb9d6a5d516904e1e3353f33b0bcfb797704",
+    "action_basis_used.py": "00ad0f52ddd51518103edf2bcd09a9fdfa87b979cd0bcd254e0f5a88ed7a853c",
+    "closed_loop_used.py": "03e3acfd07cc3fae351649270aec539541832685b5040a86345155abd104a960",
+    "continuous_adaptation_used.py": "fb89615cefdee476babc36ece8c3d5a0ff1a232a6b3084bd3ec54fc507f33079",
+    "tworoom_training.json": "71ae63f4d3cd8937dfece30d6c96de43a1ae444593c54736ad93ec82801f95b2",
+    "tworoom_controls.json": "18a8555efe8d1c5c0be5d57a0685ec9df28986f4de9e9ef8d7dc268c9ba74330",
+    "tworoom_rows.json": "efede000d98653686efd42ec6a9d19b71165f2d8a170d4ba4452a0c5555dc5de",
+    "pusht_training.json": "ac0acb8756742365e0efc742093b59c5121afb61e29a61a40f9cdcd0d9503361",
+    "tworoom_baseline_reproduction.json": "88802f1a28126512d5ed1d5ddb3dfa175b6a2ed503fdb0548ce877c0a03559ac",
+    "pusht_controls.json": "72a0d7c4a2aee3d4728d74c695ffe179dbfc8560599bdd8c2e3fbb8bd57b00c5",
+    "pusht_rows.json": "e5516155b5690a0cfe6a238c2821d744fed6c0894351fa7030454ee43597ed05",
+    "summary.json": "ecd178af73295d4b697c34e0535990feceb71074d7f2a386a48972d278a71cb0",
+    "complete.json": "7ec4f29198187d58119cf5f26c8ac189bf9bbff440f300ebd79eb7a78c0bab72",
+    "pusht_baseline_reproduction.json": "88802f1a28126512d5ed1d5ddb3dfa175b6a2ed503fdb0548ce877c0a03559ac"
+  },
+  "limitations": "Single exploratory seed; episode CIs do not cover train-seed variance. A7 compares argmin candidates, not CEM elite-mean controllers; far-goal 25-step outcomes are limited. E17 uses extra task geometry labels and a shared initial native plan; MIX has extra head forwards. No novel method or manuscript-critical claim established."
+}

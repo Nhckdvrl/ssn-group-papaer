@@ -1,0 +1,94 @@
+
+==================== q35_9b: 182 checkpoints, 2292 events, 79 trajectories ====================
+full target NLL/token by src: {'swe': 0.288, 'tau': 0.018}
+
+[A] window eviction: mean dNLL (nats/target) keep system+task+last k events
+  swe {'KVWIN0': 100.76, 'KVWIN1': 87.15, 'KVWIN2': 58.78, 'KVWIN4': 52.2, 'KVWIN8': 48.21, 'TEXTWIN2': 59.67, 'TEXTWIN4': 52.25, 'rho2': 0.01, 'rho4': 0.0}
+  tau {'KVWIN0': 42.56, 'KVWIN1': 34.5, 'KVWIN2': 22.86, 'KVWIN4': 13.36, 'KVWIN8': 2.44, 'TEXTWIN2': 22.02, 'TEXTWIN4': 12.88, 'rho2': -0.04, 'rho4': -0.04}
+  all {'KVWIN0': 63.98, 'KVWIN1': 53.88, 'KVWIN2': 36.08, 'KVWIN4': 27.66, 'KVWIN8': 19.29, 'TEXTWIN2': 35.88, 'TEXTWIN4': 27.37, 'rho2': -0.01, 'rho4': -0.01}
+  per-event recurrence carry (dBOTH - dKV): all mean 0.556 median 0.001; important(dTEXT>1, n=601) mean 2.295 median 1.170, frac>0.1 0.78
+  carry mean 95% traj-bootstrap CI [0.469, 0.645]
+  share of important events' TEXT effect: KV-hide 0.86, BOTH 0.99, REC-only 0.07
+
+[B] structure of single-event exactness demand dKV
+  |dKV|<0.05: 0.41  dKV>0.5: 0.21  dKV<-0.5: 0.07  top-10% share of positive mass: 0.92
+  important events (dTEXT>1): n=601; KV not needed (dKV<0.2): 0.26; exact-dominant (dKV>0.5*dTEXT): 0.53
+  by role (mean dKV / mean dTEXT / n):
+                  dKV   dTEXT    n  pKV05
+src ev                                   
+swe assistant   2.749   3.772  372  0.331
+    obs         9.500  10.179  365  0.186
+    system     -0.053  -0.013   67  0.015
+    task        7.765   8.536   67  0.418
+    user        0.045   0.739    7  0.143
+tau assistant  -0.066   0.149  323  0.006
+    call        0.175   0.141  264  0.083
+    obs         5.660   5.577  269  0.257
+    system     16.649  16.197  115  0.948
+    task        0.881   0.961  115  0.096
+    think       0.117   0.550    5  0.200
+    user        2.058   3.579  323  0.130
+
+[C] within-checkpoint Spearman(signal, block dNLL), mean over checkpoints
+   {'recency': 0.028, 'attn_future': 0.246, 'attn_deploy': 0.164, 'surprisal': -0.003, 'random': -0.021, 'drift': 0.06}
+  event-level Spearman pooled within checkpoint:
+   {'age': -0.059, 'attn_future': 0.398, 'attn_deploy': 0.267, 'surpr': 0.17, 'len': 0.212, 'drift': nan}
+
+  budgeted block eviction: mean dNLL (lower = better); recovery = (random-x)/(random-oracle)
+   swe @0.25: oracle 14.06 (1.0), attn_future 20.94 (0.84), attn_deploy 52.62 (0.08), recency 54.80 (0.02), drift 51.60 (0.1), surprisal 87.51 (-0.76), random 55.83 (0.0)
+   swe @0.5: oracle 1.47 (1.0), attn_future 7.54 (0.81), attn_deploy 39.16 (-0.21), recency 41.53 (-0.29), drift 33.86 (-0.04), surprisal 60.39 (-0.89), random 32.59 (0.0)
+   tau @0.25: oracle 6.96 (1.0), attn_future 3.34 (1.1), attn_deploy 23.67 (0.55), recency 23.64 (0.55), drift 40.77 (0.08), surprisal 56.27 (-0.34), random 43.82 (0.0)
+   tau @0.5: oracle 1.34 (1.0), attn_future 0.39 (1.05), attn_deploy 7.58 (0.66), recency 11.51 (0.45), drift 18.35 (0.09), surprisal 27.18 (-0.39), random 19.96 (0.0)
+   all @0.25: oracle 9.58 (1.0), attn_future 9.82 (0.99), attn_deploy 34.33 (0.36), recency 35.11 (0.34), drift 44.76 (0.09), surprisal 67.77 (-0.51), random 48.24 (0.0)
+   all @0.5: oracle 1.39 (1.0), attn_future 3.02 (0.93), attn_deploy 19.21 (0.23), recency 22.56 (0.09), drift 24.06 (0.02), surprisal 39.41 (-0.64), random 24.61 (0.0)
+
+==================== q3_8b: 188 checkpoints, 2450 events, 79 trajectories ====================
+full target NLL/token by src: {'swe': 0.589, 'tau': 0.086}
+
+[A] window eviction: mean dNLL (nats/target) keep system+task+last k events
+  swe {'KVWIN0': 146.43, 'KVWIN1': 131.69, 'KVWIN2': 95.59, 'KVWIN4': 86.29, 'KVWIN8': 77.25, 'TEXTWIN2': 103.93, 'TEXTWIN4': 90.85, 'rho2': 0.08, 'rho4': 0.05}
+  tau {'KVWIN0': 66.3, 'KVWIN1': 43.22, 'KVWIN2': 30.97, 'KVWIN4': 19.07, 'KVWIN8': 2.92, 'TEXTWIN2': 27.96, 'TEXTWIN4': 16.56, 'rho2': -0.11, 'rho4': -0.15}
+  all {'KVWIN0': 96.99, 'KVWIN1': 77.1, 'KVWIN2': 55.72, 'KVWIN4': 44.81, 'KVWIN8': 31.39, 'TEXTWIN2': 57.06, 'TEXTWIN4': 45.01, 'rho2': 0.02, 'rho4': 0.0}
+
+[B] structure of single-event exactness demand dKV
+  |dKV|<0.05: 0.40  dKV>0.5: 0.30  dKV<-0.5: 0.13  top-10% share of positive mass: 0.88
+  important events (dTEXT>1): n=782; KV not needed (dKV<0.2): 0.22; exact-dominant (dKV>0.5*dTEXT): 0.54
+  by role (mean dKV / mean dTEXT / n):
+                  dKV   dTEXT    n  pKV05
+src ev                                   
+swe assistant   5.235   6.557  436  0.450
+    obs        14.594  17.174  427  0.351
+    system     -0.209  -2.313   72  0.194
+    task       16.169  25.221   72  0.681
+    user       -1.894  -0.417    9  0.000
+tau assistant  -0.101  -0.157  327  0.070
+    call        0.489   0.358  267  0.187
+    obs         6.411   5.925  274  0.277
+    system     28.930  43.990  116  0.871
+    task        0.728   0.822  116  0.086
+    think       1.221   1.105    7  0.429
+    user        3.653   3.136  327  0.226
+
+[C] within-checkpoint Spearman(signal, block dNLL), mean over checkpoints
+   {'recency': 0.058, 'attn_future': 0.15, 'attn_deploy': 0.034, 'surprisal': -0.022, 'random': -0.006}
+  event-level Spearman pooled within checkpoint:
+   {'age': -0.114, 'attn_future': 0.322, 'attn_deploy': 0.245, 'surpr': -0.222, 'len': 0.273}
+
+  budgeted block eviction: mean dNLL (lower = better); recovery = (random-x)/(random-oracle)
+   swe @0.25: oracle 25.46 (1.0), attn_future 53.75 (0.69), attn_deploy 98.59 (0.19), recency 98.77 (0.19), surprisal 84.38 (0.35), random 115.63 (0.0)
+   swe @0.5: oracle -1.59 (1.0), attn_future 23.39 (0.65), attn_deploy 60.90 (0.11), recency 70.73 (-0.02), surprisal 46.99 (0.31), random 68.99 (0.0)
+   tau @0.25: oracle 11.85 (1.0), attn_future 26.33 (0.72), attn_deploy 50.31 (0.25), recency 39.20 (0.47), surprisal 74.05 (-0.21), random 63.27 (0.0)
+   tau @0.5: oracle 3.85 (1.0), attn_future 1.95 (1.07), attn_deploy 22.24 (0.33), recency 12.81 (0.67), surprisal 24.50 (0.25), random 31.31 (0.0)
+   all @0.25: oracle 17.06 (1.0), attn_future 36.83 (0.7), attn_deploy 68.80 (0.22), recency 62.02 (0.32), surprisal 78.01 (0.08), random 83.32 (0.0)
+   all @0.5: oracle 1.77 (1.0), attn_future 10.16 (0.81), attn_deploy 37.05 (0.2), recency 34.99 (0.24), surprisal 33.11 (0.29), random 45.74 (0.0)
+
+[A-final] recurrence retention rho on 182 common checkpoints (traj-bootstrap 95% CI)
+   rho2 q35_9b: -0.005 [-0.034, 0.024]
+   rho2 q3_8b: 0.025 [-0.036, 0.069]
+   hybrid-specific leverage rho2_H - rho2_T: -0.031 [-0.072  0.031]
+   rho4 q35_9b: -0.010 [-0.047, 0.013]
+   rho4 q3_8b: 0.008 [-0.103, 0.037]
+   hybrid-specific leverage rho4_H - rho4_T: -0.018 [-0.056  0.076]
+
+[X] cross-model per-event agreement (n=2292): Spearman dKV 0.364, dTEXT 0.467
+    hybrid vs transformer KV-hide share of TEXT effect (events dTEXT>1 in both): H 0.90, T 0.82

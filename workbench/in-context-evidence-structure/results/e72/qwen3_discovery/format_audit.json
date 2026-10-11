@@ -1,0 +1,822 @@
+{
+  "status": "POST-HOC",
+  "parser_rule": null,
+  "script_sha256": "510061f4b531198280fff06e3902ff3ba4114f2a3c8e5dba629b1f7b46eca758",
+  "conditions": {
+    "entity_binding.chat.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 32
+      }
+    },
+    "entity_binding.chat_instruction.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 32
+      }
+    },
+    "entity_binding.thinking_instruction.original": {
+      "accuracy": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.15625
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "valid_decorated": 30,
+        "thinking_not_closed": 2
+      }
+    },
+    "linked_prefix.chat.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 32
+      }
+    },
+    "linked_prefix.chat_instruction.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.03125,
+        "ci95": [
+          0.0,
+          0.09375
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.875,
+        "ci95": [
+          0.78125,
+          0.96875
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 28,
+        "noncandidate_final_answer": 3,
+        "valid_decorated": 1
+      }
+    },
+    "linked_prefix.thinking_instruction.original": {
+      "accuracy": {
+        "mean": 0.6875,
+        "ci95": [
+          0.5,
+          0.875
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.6875,
+        "ci95": [
+          0.5,
+          0.875
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.6875,
+        "ci95": [
+          0.5,
+          0.875
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.3125,
+        "ci95": [
+          0.125,
+          0.5
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "thinking_not_closed": 10,
+        "valid_decorated": 22
+      }
+    },
+    "orthogonal_prefix.chat.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.03125,
+        "ci95": [
+          0.0,
+          0.09375
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.9375,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 30,
+        "noncandidate_final_answer": 1,
+        "valid_decorated": 1
+      }
+    },
+    "orthogonal_prefix.chat_instruction.original": {
+      "accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.15625
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.15625,
+        "ci95": [
+          0.0625,
+          0.28125
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.15625
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.84375,
+        "ci95": [
+          0.71875,
+          0.9375
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 27,
+        "valid_decorated": 5
+      }
+    },
+    "orthogonal_prefix.thinking_instruction.original": {
+      "accuracy": {
+        "mean": 0.15625,
+        "ci95": [
+          0.0625,
+          0.28125
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.15625,
+        "ci95": [
+          0.0625,
+          0.28125
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.15625,
+        "ci95": [
+          0.0625,
+          0.28125
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.84375,
+        "ci95": [
+          0.71875,
+          0.9375
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "thinking_not_closed": 27,
+        "valid_decorated": 5
+      }
+    },
+    "single_source.chat.original": {
+      "accuracy": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.3125
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.3125
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.125,
+        "ci95": [
+          0.0,
+          0.3125
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.875,
+        "ci95": [
+          0.6875,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 28,
+        "valid_decorated": 4
+      }
+    },
+    "single_source.chat_instruction.original": {
+      "accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.28125,
+          0.625
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.71875,
+        "ci95": [
+          0.53125,
+          0.875
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.46875,
+        "ci95": [
+          0.28125,
+          0.625
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.28125,
+        "ci95": [
+          0.125,
+          0.46875
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "valid_decorated": 23,
+        "no_explicit_answer_line": 9
+      }
+    },
+    "single_source.thinking_instruction.original": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "valid_decorated": 32
+      }
+    },
+    "source_only.chat.original": {
+      "accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.96875,
+        "ci95": [
+          0.90625,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "no_explicit_answer_line": 31,
+        "noncandidate_final_answer": 1
+      }
+    },
+    "source_only.chat_instruction.original": {
+      "accuracy": {
+        "mean": 0.3125,
+        "ci95": [
+          0.125,
+          0.4375
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.6875,
+        "ci95": [
+          0.375,
+          0.90625
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.3125,
+        "ci95": [
+          0.125,
+          0.4375
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.28125,
+        "ci95": [
+          0.09375,
+          0.5625
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "valid_decorated": 22,
+        "noncandidate_final_answer": 1,
+        "no_explicit_answer_line": 9
+      }
+    },
+    "source_only.thinking_instruction.original": {
+      "accuracy": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "valid_format": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "strict_accuracy": {
+        "mean": 0.9375,
+        "ci95": [
+          0.84375,
+          1.0
+        ],
+        "n_contexts": 8
+      },
+      "truncated": {
+        "mean": 0.0625,
+        "ci95": [
+          0.0,
+          0.15625
+        ],
+        "n_contexts": 8
+      },
+      "recovered_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "lost_strict_correct": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 8
+      },
+      "parser_status_counts": {
+        "valid_decorated": 30,
+        "thinking_not_closed": 2
+      }
+    }
+  },
+  "limitations": [
+    "Observed Markdown misses motivated this audit.",
+    "Strict original results remain authoritative for their registered readout.",
+    "Semantic parser must be fixed before independent confirmation; this audit is not confirmation.",
+    "No prose inference, composite-code stripping, gold-dependent selection, or survivor filtering."
+  ]
+}

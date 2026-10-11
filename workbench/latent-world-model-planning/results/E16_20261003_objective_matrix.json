@@ -1,0 +1,634 @@
+{
+  "experiment": "E16 data by prediction training object, repaired optimizer matrix",
+  "status": "DONE",
+  "raw_artifact": "/home/xiang/.cache/latent-wm-results/20261002-E16-objective-matrix-RTX-s0-retry1",
+  "science_claims_upgraded": 0,
+  "config": {
+    "dataset": "/tmp/latent-wm-data/tworoom.h5",
+    "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_lewm_base100_seed0_e30.ckpt",
+    "bank": "/home/xiang/.cache/latent-wm-results/20261002-E16-acquisition-bank-s0",
+    "base_run": "/home/xiang/.cache/latent-wm-results/20261002-E16-base100-s0-e30",
+    "model_cache": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1",
+    "output": "/tmp/latent-wm-runs/20261002-E16-objective-matrix-RTX-s0-retry1",
+    "steps": 600,
+    "seed": 0,
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "torch": "2.7.1+cu128",
+    "harness_sha256": "91fa8f3cc1bc6c31c054cf49b2650f930f4c0f3007add1dec6bb5bbb496a3268",
+    "helper_sha256": "11d7c00910bfc9113ab2812bbdfb12c9435486de873225deb96579a33d02b209",
+    "base_checkpoint_sha256": "8c67528b8b9ad9290a6e04c9d42b15b6daf10787265c8f71abe0b928482c1996",
+    "selection_ledger_sha256": "c2f932ad015a97e83a3cc92a5b0f0b79c4bf0ca0d8ff600fa51f5b098a2b51b8",
+    "hidden_branch_sha256": "18106a5f144ead2378827499021bb60e02d366b49b412c4f31486446dcc231a8",
+    "base_manifest": {
+      "dataset_file": "tworoom.h5",
+      "dataset_sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623",
+      "base_episodes": [
+        5639,
+        4283,
+        8376,
+        5218,
+        6784,
+        8883,
+        7637,
+        7500,
+        1620,
+        7772,
+        8927,
+        7540,
+        628,
+        9839,
+        8656,
+        6,
+        7891,
+        3755,
+        1559,
+        291,
+        6582,
+        6916,
+        6245,
+        2103,
+        4272,
+        8934,
+        330,
+        5992,
+        9984,
+        3584,
+        8969,
+        3544,
+        4008,
+        1906,
+        5654,
+        6424,
+        6168,
+        2773,
+        303,
+        917,
+        8011,
+        1499,
+        3106,
+        9501,
+        4636,
+        7602,
+        9029,
+        5461,
+        6206,
+        25,
+        7970,
+        391,
+        1750,
+        9313,
+        2593,
+        6542,
+        128,
+        9693,
+        1287,
+        6184,
+        234,
+        6926,
+        7134,
+        5498,
+        5613,
+        4750,
+        2797,
+        6827,
+        4600,
+        1623,
+        2237,
+        3595,
+        5152,
+        2801,
+        5839,
+        6189,
+        7776,
+        7024,
+        2723,
+        1275,
+        8168,
+        53,
+        2503,
+        4370,
+        3568,
+        5273,
+        514,
+        8419,
+        4305,
+        8283,
+        6508,
+        8802,
+        6803,
+        7729,
+        6215,
+        8417,
+        2770,
+        2266,
+        2305,
+        4990
+      ],
+      "evaluation_episodes": [
+        1152,
+        1847,
+        3820,
+        6227,
+        2596,
+        5721,
+        2417,
+        3953,
+        8840,
+        6656,
+        5669,
+        9030,
+        9022,
+        6170,
+        4813,
+        9607,
+        7896,
+        9394,
+        4105,
+        6188,
+        9295,
+        4171,
+        8229,
+        5199,
+        3278,
+        2931,
+        2535,
+        6347,
+        5104,
+        7433,
+        149,
+        3901,
+        6767,
+        5623,
+        9365,
+        3512,
+        1373,
+        8955,
+        5831,
+        2794,
+        1294,
+        2050,
+        9285,
+        8900,
+        5527,
+        1227,
+        6585,
+        9434
+      ],
+      "excluded_previous_episodes": [
+        8496,
+        165,
+        5106,
+        6363,
+        3076,
+        1752,
+        2695,
+        409,
+        6493,
+        8131,
+        9127,
+        752
+      ],
+      "seed": 0,
+      "base_episode_count": 100,
+      "base_rows": 9295,
+      "base_valid_clips": 7295,
+      "action_mean": [
+        0.017641905695199966,
+        -0.06942970305681229
+      ],
+      "action_std": [
+        0.8654873967170715,
+        0.8683779239654541
+      ],
+      "split_unit": "whole episode",
+      "selection_seeds": [
+        20000,
+        31000,
+        32000
+      ]
+    },
+    "rcaux_commit": "cbdf3786b149df8145d6c7314f32f460d43c9695",
+    "rcaux_jepa_sha256": "ed1763793f982ebdf93474416e1f8f2edbc3cb33f70aef630313f6848d4af35e",
+    "data_policies": [
+      "NO-ADD",
+      "UNIFORM"
+    ],
+    "objectives": [
+      "ONE-STEP",
+      "TF-LONG",
+      "OPEN-LONG"
+    ],
+    "batch_size": 128,
+    "branch_samples_per_uniform_batch": 13,
+    "base_complete_clips": 6795,
+    "logical_new_env_steps": {
+      "NO-ADD": 0,
+      "UNIFORM": 2000
+    },
+    "reused_bank_no_new_interaction": true,
+    "frames": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25
+    ],
+    "actual_action_steps": 25,
+    "optimizer": "common-state AdamW, constant LR5e-5, WD1e-3, clip1, bf16",
+    "long_objective": "native all3 anchor MSE + .5*linear-weighted 3-future MSE + .09 six-frame SIGReg",
+    "one_step_objective": "native all3 anchor MSE + .09 first-four-frame SIGReg",
+    "scope": "single exploratory seed; gradient steps matched, not wall-clock; no reachability head",
+    "initial_hdf5_read_seconds": 4.200830653309822,
+    "optimizer_source_step_counts": {
+      "1680": 297
+    }
+  },
+  "summary": [
+    {
+      "policy": "NO-ADD",
+      "objective": "ONE-STEP",
+      "successes": 21,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 441.3401251286268,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_NO-ADD_ONE-STEP_seed0.pt",
+        "sha256": "9d8c38c8e7995c5eb3abfc3fe17915c9425cecaa3e0e3340c3cccc5945ebf912",
+        "predictor_calls_per_train_step": 1,
+        "peak_vram_gib": 18.756659507751465,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    },
+    {
+      "policy": "NO-ADD",
+      "objective": "TF-LONG",
+      "successes": 14,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 347.41065407171845,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_NO-ADD_TF-LONG_seed0.pt",
+        "sha256": "72c76152c811ae56da6b332dff25538ba8ca54aa4fa4f12f420cd71c18587666",
+        "predictor_calls_per_train_step": 4,
+        "peak_vram_gib": 18.894110679626465,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    },
+    {
+      "policy": "NO-ADD",
+      "objective": "OPEN-LONG",
+      "successes": 16,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 306.30578825995326,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_NO-ADD_OPEN-LONG_seed0.pt",
+        "sha256": "e67839eced4d95513bb362776fbbfd1cdd172aae609b0da1a356fc860b3fade6",
+        "predictor_calls_per_train_step": 4,
+        "peak_vram_gib": 18.894279956817627,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    },
+    {
+      "policy": "UNIFORM",
+      "objective": "ONE-STEP",
+      "successes": 11,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 296.29629024863243,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_UNIFORM_ONE-STEP_seed0.pt",
+        "sha256": "0388e88c6d9e5aa830e8d6200e2525c9d3957023647c3b53a79486ef05fdd472",
+        "predictor_calls_per_train_step": 1,
+        "peak_vram_gib": 18.962242126464844,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    },
+    {
+      "policy": "UNIFORM",
+      "objective": "TF-LONG",
+      "successes": 24,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 324.0543998628855,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_UNIFORM_TF-LONG_seed0.pt",
+        "sha256": "abda1a59d3e4c611715c0f6cf3be7dd1654bbcc91fae43a93bf5df140ad43455",
+        "predictor_calls_per_train_step": 4,
+        "peak_vram_gib": 19.10187339782715,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    },
+    {
+      "policy": "UNIFORM",
+      "objective": "OPEN-LONG",
+      "successes": 19,
+      "n": 48,
+      "training": {
+        "steps": 600,
+        "seconds": 274.4270713105798,
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_objective_matrix_RTX_s0_retry1/E16_UNIFORM_OPEN-LONG_seed0.pt",
+        "sha256": "67ed2f86a4f3edd8ca90fff65bd74546a3ee836a81d2b6f82dd7b8f0ddb4ec7b",
+        "predictor_calls_per_train_step": 4,
+        "peak_vram_gib": 19.03147840499878,
+        "optimizer_step_counts": {
+          "source": {
+            "1680": 297
+          },
+          "begin": {
+            "1680": 297
+          },
+          "parameter_states": 297,
+          "end": {
+            "2280": 297
+          },
+          "actual_updates": 600,
+          "source_unchanged": true
+        }
+      }
+    }
+  ],
+  "contrasts": {
+    "UNIFORM-minus-NOADD_ONE-STEP": {
+      "paired_mean": -0.20833333333333334,
+      "episode_bootstrap95CI": [
+        -0.375,
+        -0.041666666666666664
+      ],
+      "helped": 4,
+      "harmed": 14
+    },
+    "UNIFORM-minus-NOADD_TF-LONG": {
+      "paired_mean": 0.20833333333333334,
+      "episode_bootstrap95CI": [
+        0.0625,
+        0.3541666666666667
+      ],
+      "helped": 13,
+      "harmed": 3
+    },
+    "UNIFORM-minus-NOADD_OPEN-LONG": {
+      "paired_mean": 0.0625,
+      "episode_bootstrap95CI": [
+        -0.10416666666666667,
+        0.22916666666666666
+      ],
+      "helped": 10,
+      "harmed": 7
+    },
+    "NO-ADD_OPEN-minus-TF": {
+      "paired_mean": 0.041666666666666664,
+      "episode_bootstrap95CI": [
+        -0.125,
+        0.20833333333333334
+      ],
+      "helped": 9,
+      "harmed": 7
+    },
+    "UNIFORM_OPEN-minus-TF": {
+      "paired_mean": -0.10416666666666667,
+      "episode_bootstrap95CI": [
+        -0.25,
+        0.0625
+      ],
+      "helped": 6,
+      "harmed": 11
+    },
+    "TF-vs-ONE_data_difference_in_differences": {
+      "paired_mean": 0.4166666666666667,
+      "episode_bootstrap95CI": [
+        0.1875,
+        0.6666666666666666
+      ],
+      "helped": 19,
+      "harmed": 4
+    }
+  },
+  "ci_protocol": {
+    "repeats": 2000,
+    "python_random_seed": 20261003,
+    "unit": "paired source episode",
+    "scope": "post-run interval computation for preregistered success readout; exploratory interaction not a registered claim"
+  },
+  "controls": {
+    "NO-ADD_ONE-STEP": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "NO-ADD_TF-LONG": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "NO-ADD_OPEN-LONG": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "UNIFORM_ONE-STEP": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "UNIFORM_TF-LONG": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "UNIFORM_OPEN-LONG": {
+      "rc_vs_manual_max_abs": 0.0,
+      "tf_vs_open_first_step_max_abs": 0.0,
+      "future_target_frames": [
+        15,
+        20,
+        25
+      ],
+      "action_blocks": 5
+    },
+    "NO-ADD_ONE-STEP/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    },
+    "NO-ADD_TF-LONG/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    },
+    "NO-ADD_OPEN-LONG/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    },
+    "UNIFORM_ONE-STEP/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    },
+    "UNIFORM_TF-LONG/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    },
+    "UNIFORM_OPEN-LONG/evaluation_native_control.json": {
+      "max_cost_abs_error": 0.0,
+      "history_frames": 3,
+      "future_macro_states": 5,
+      "native_total_emb_frames": 8
+    }
+  },
+  "artifact_json_sha256": {
+    "config.json": "e97efce1ae89161269d89add8dc3fa7712bf592474dc5bfd3180937c4d9d2812",
+    "summary.json": "75a213a314a936a2f8e6879469e641c7430e6df84df38a3f01a9629cffc01a6b",
+    "complete.json": "2af7228353f2028d8d2c7b8bb32581a6ebd20f5a4e5a3c32f4d3354d235da39c",
+    "NO-ADD_ONE-STEP/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "NO-ADD_ONE-STEP/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "NO-ADD_ONE-STEP/training.json": "fa56bcb696dfee0775a1543546b48386ee078ceb07995cbf8533cca4ae172be4",
+    "NO-ADD_ONE-STEP/train_summary.json": "ec60b764afe99bec68218ca721c86846270aabfd4936a8eb55dad6b1a487f6ea",
+    "NO-ADD_ONE-STEP/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "NO-ADD_ONE-STEP/evaluation_evaluation.json": "8eae0a4bca702bae8200a0f57b4bfbf70407ff21080b41ad59378e03f9535935",
+    "NO-ADD_ONE-STEP/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0",
+    "NO-ADD_TF-LONG/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "NO-ADD_TF-LONG/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "NO-ADD_TF-LONG/training.json": "3a457f22fa68ec84e06eeb0d60bda543d491fcd0f0099e1ad4a85569fa14f150",
+    "NO-ADD_TF-LONG/train_summary.json": "4b60bccf8e9ddcbcda6529b82ca30dfd07aae8c5a12eea0324d447991f911ee8",
+    "NO-ADD_TF-LONG/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "NO-ADD_TF-LONG/evaluation_evaluation.json": "d58b1082b89ad302fcb6acb999ff0e2679811a531d1825182b63d776238b1527",
+    "NO-ADD_TF-LONG/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0",
+    "NO-ADD_OPEN-LONG/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "NO-ADD_OPEN-LONG/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "NO-ADD_OPEN-LONG/training.json": "c27f9a229f3b3b988933329db752e9be3ef266695e6c2bb64939e1561cfa07f1",
+    "NO-ADD_OPEN-LONG/train_summary.json": "ab9c6e549997da457687c74b3da775c1beaf0d47d2cf2371f4d2d321eff9fa16",
+    "NO-ADD_OPEN-LONG/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "NO-ADD_OPEN-LONG/evaluation_evaluation.json": "56a090d29e0d8fb04b85c561cab272aa105363908166dc1d4eaf01739954e922",
+    "NO-ADD_OPEN-LONG/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0",
+    "UNIFORM_ONE-STEP/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "UNIFORM_ONE-STEP/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "UNIFORM_ONE-STEP/training.json": "64aa825911b72870515a65d3d278044fac980b2669adad20cd38d54a1aa2473a",
+    "UNIFORM_ONE-STEP/train_summary.json": "297715d71e3cc5f559b52695749f447c68c633398388b0885809f9193bb24820",
+    "UNIFORM_ONE-STEP/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "UNIFORM_ONE-STEP/evaluation_evaluation.json": "7f2cee6e5acf34b1737a0449cc7ce6e9157d9b4e085f4f50b2c0e78687ee3cf8",
+    "UNIFORM_ONE-STEP/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0",
+    "UNIFORM_TF-LONG/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "UNIFORM_TF-LONG/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "UNIFORM_TF-LONG/training.json": "c0885e526408432a16b0051c1a564d796304457c87aef38b46394dc503b6cc4d",
+    "UNIFORM_TF-LONG/train_summary.json": "9866ee5f29eca834aa8b5419d22205179522c2679ce23ac756ad4527960931a7",
+    "UNIFORM_TF-LONG/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "UNIFORM_TF-LONG/evaluation_evaluation.json": "f9552e13674d774e8813f15fba97a9237a4a51d18af54adc0555e5e3aac89078",
+    "UNIFORM_TF-LONG/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0",
+    "UNIFORM_OPEN-LONG/rollout_control.json": "a8d737991bcec6af82301173d7b3756243dcc97d13451b58d7c2df8602a37748",
+    "UNIFORM_OPEN-LONG/optimizer_steps.json": "0ebdefeaae3a0712901ea3ef0e34dfe6291c959ec3bbabc0b1c9a56b2646f37f",
+    "UNIFORM_OPEN-LONG/training.json": "257f4745a6fda7d616570a27686fb7baac69109000f9d335e06b45d03f6c41d7",
+    "UNIFORM_OPEN-LONG/train_summary.json": "57b77386d7d7df4963cf8b2a6b33db38755fd1536e34cc887b7d51d1ba55d1e1",
+    "UNIFORM_OPEN-LONG/evaluation_native_control.json": "f6856af8ccc0db8feb4be1ad9804b41d4047df6d90474997e1ae8fe238376668",
+    "UNIFORM_OPEN-LONG/evaluation_evaluation.json": "ad8dc7e9d6201695982749a2fbdfcf1739e5241e5334a856d3aeaffe158ad44a",
+    "UNIFORM_OPEN-LONG/complete.json": "93b2b5d505d88d67c54bd0e60b27a21e3acb019e8dda704a715863e2701771f0"
+  },
+  "limitations": [
+    "single pipeline seed and a weak source WM; every method below independently sufficiently trained BASE10038/48",
+    "ONE vs LONG also changes available target frames and SIGReg frames; not a clean horizon-only comparison",
+    "TF and OPEN match targets and regularizer; recursion differs, no robust OPEN advantage",
+    "future frames15/20/25 from context0/5/10: maximum open-loop forecast15, not full deployment25 from current",
+    "equal600 gradient updates, predictor calls1 vs4 and training FLOPs differ",
+    "original alias-contaminated partial matrix invalidated and retained; this complete retry uses immutable optimizer steps"
+  ],
+  "interpretation": "Data effect changes sign across these training designs in one pipeline. Do not conclude a general data-loss interaction or a superior open-loop method without adequate baseline and independent seeds.",
+  "paired_episode_ids_verified": true
+}

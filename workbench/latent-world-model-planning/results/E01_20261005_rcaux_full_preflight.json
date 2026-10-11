@@ -1,0 +1,188 @@
+{
+  "cpu": {
+    "passed": true,
+    "device": "cpu",
+    "script_sha256": "21016c3a0a96284500057dc7fc207eb722856f7a61db7b46f1938dafa1b67b2f",
+    "checkpoint_sha256": "56979b8791dc76bab066c8c7a5aaa1c2947be8911b7a50202b69be46ab866099",
+    "vendor_sha256": {
+      "jepa.py": "ed1763793f982ebdf93474416e1f8f2edbc3cb33f70aef630313f6848d4af35e",
+      "module.py": "f53445282c9fb2ba62a9a3473f64bd1ba67a94d66b087c161e72d3b900934a07",
+      "eval.py": "5489e0d677394238b61d61ba4359e14d62f3463f524ef1653c4474e8112a748a"
+    },
+    "model_keys": 312,
+    "records": [
+      {
+        "history": 1,
+        "weight": 0.85,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 5,
+        "criterion_horizon": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 1,
+        "weight": 0.0,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 5,
+        "criterion_horizon": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 3,
+        "weight": 0.85,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 7,
+        "criterion_horizon": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 3,
+        "weight": 0.0,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 7,
+        "criterion_horizon": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      }
+    ],
+    "statistics": {
+      "dataset": "/tmp/latent-wm-data/tworoom.h5",
+      "finite_rows": 910809,
+      "action_mean": [
+        0.0030934159554243212,
+        -0.05298253984909538
+      ],
+      "action_std": [
+        0.867547357428919,
+        0.8686383074906906
+      ],
+      "normalization": "official eval.py StandardScaler full finite-action dataset; no own100 norm",
+      "eval_source_sha256": "5489e0d677394238b61d61ba4359e14d62f3463f524ef1653c4474e8112a748a"
+    },
+    "all_weights_buffers_unchanged": true
+  },
+  "cuda": {
+    "passed": true,
+    "device": "cuda",
+    "script_sha256": "21016c3a0a96284500057dc7fc207eb722856f7a61db7b46f1938dafa1b67b2f",
+    "checkpoint_sha256": "56979b8791dc76bab066c8c7a5aaa1c2947be8911b7a50202b69be46ab866099",
+    "vendor_sha256": {
+      "jepa.py": "ed1763793f982ebdf93474416e1f8f2edbc3cb33f70aef630313f6848d4af35e",
+      "module.py": "f53445282c9fb2ba62a9a3473f64bd1ba67a94d66b087c161e72d3b900934a07",
+      "eval.py": "5489e0d677394238b61d61ba4359e14d62f3463f524ef1653c4474e8112a748a"
+    },
+    "model_keys": 312,
+    "records": [
+      {
+        "history": 1,
+        "weight": 0.85,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 5,
+        "criterion_horizon": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 1,
+        "weight": 0.0,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 5,
+        "criterion_horizon": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 3,
+        "weight": 0.85,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 7,
+        "criterion_horizon": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      },
+      {
+        "history": 3,
+        "weight": 0.0,
+        "max_native_cost_error": 0.0,
+        "manual_full_head_exact": true,
+        "criterion_source_frames": 7,
+        "criterion_horizon": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "head_max_horizon": 5
+      }
+    ],
+    "statistics": {
+      "dataset": "/tmp/latent-wm-data/tworoom.h5",
+      "finite_rows": 910809,
+      "action_mean": [
+        0.0030934159554243212,
+        -0.05298253984909538
+      ],
+      "action_std": [
+        0.867547357428919,
+        0.8686383074906906
+      ],
+      "normalization": "official eval.py StandardScaler full finite-action dataset; no own100 norm",
+      "eval_source_sha256": "5489e0d677394238b61d61ba4359e14d62f3463f524ef1653c4474e8112a748a"
+    },
+    "all_weights_buffers_unchanged": true
+  }
+}

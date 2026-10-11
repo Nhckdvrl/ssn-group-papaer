@@ -1,0 +1,496 @@
+# L12 Experiment Registry
+
+**Updated:** 2026-09-10
+
+## L12-E01: Parent Data and Stimulus Audit
+
+- **Linked claim:** feasibility and provenance for L12-C1
+- **Source:** Ge et al. (2026) paper appendix and commit-pinned `Yongyan-Zhang/mind-the-dh-gap` repository.
+- **Unit:** matched prospect x frame x option order x prompt style.
+- **Primary axis:** explicit gain/loss framing with no explanation; order is crossed as a control.
+- **Analysis:** paired frame-consistency and order-consistency with matched bootstrap confidence intervals using the public aggregate counts.
+- **Important limitation:** the repository publishes aggregated choices, not raw prompts/generations. Exact templates and three base prospects come from Appendix B.3-B.4; the public CSV validates the factorial cells and counts.
+- **Raw/source pointers:** `data/upstream/`; provenance manifest written by `scripts/fetch_parent_data.sh`.
+- **Status:** completed. Public aggregate branch contrast reproduced; see `results/parent_audit/summary.json`.
+
+Implementation audit: a common-raw first attempt on Instruct-SFT yielded 237/240 invalid choices (mostly immediate EOS), confirming that native SFT chat wrapping is required for generated behavior. The invalid run is retained at `results/pilot_seed29/instruct_sft_common_raw/`. Behavioral reproduction uses each released SFT checkpoint's native chat template; the base has no native chat template and is reported as a common-raw diagnostic, not treated as a directly comparable instruction-following agent. Hidden-state frame recovery is estimated within checkpoint, so the constant system wrapper cannot predict frame labels, but cross-checkpoint activation levels remain descriptive.
+
+## L12-E02: Shared-Base Behavioral Branch Comparison
+
+- **Linked claim:** L12-C1
+- **Models:** `allenai/Olmo-3-1025-7B`, `allenai/Olmo-3-7B-Instruct-SFT`, `allenai/Olmo-3-7B-Think-SFT`, exact revisions in config/results.
+- **Conditions:** 3 explicit prospects x gain/loss x both option orders, no-explanation direct choice.
+- **Repeated sampling:** 20 generations per cell, seed 29, temperature 0.7, top-p 0.95.
+- **Primary metric:** paired frame consistency after correcting the option identity under loss framing; secondary order consistency, EV-maximizing rate, invalid response rate.
+- **Uncertainty/test:** matched prospect bootstrap CI; paired permutation test of the difference-in-change `(Think-SFT - base) - (Instruct-SFT - base)`.
+- **Exclusion:** no post-hoc prompt or cell exclusion; invalid responses are reported and counted as missing only for choice metrics.
+- **Kill/reconstruct:** no clean branch contrast after prompt/template fidelity checks blocks internal mechanism work on this substrate.
+- **Config:** `configs/pilot.json`
+- **Command:** `scripts/run_behavior.sh`
+- **Status:** completed. Think-SFT used a corrected 1,024-token cap and strict post-`</think>` parsing. The common base failed semantic instruction adherence, so generated base deltas are not identifiable.
+
+## L12-E03: First Internal Diagnostic
+
+- **Linked claim:** L12-C2
+- **Question:** At matched token positions and layers, is gain/loss frame identity linearly recoverable after accounting for prospect identity and order?
+- **Representation:** residual stream at the final prompt token; all layers, generation-free teacher-forced prompt pass.
+- **Validation:** leave-one-prospect-out cross-validation; label-shuffle permutation baseline; report balanced accuracy with bootstrap CI.
+- **Interpretation:** decodability only routes L12-E04. It cannot establish canonicalization, use, or suppression.
+- **Status:** completed as a routing diagnostic. Frame labels are recoverable through most layers, but there are only 12 conditions and the lexical sign cue is present in the prompt.
+
+## L12-E04: Deliberation-Mode Intervention
+
+- **Linked account:** inference-time deliberation (C).
+- **Intervention:** same Think-SFT weights and native template, but immediately close the template-opened `<think>` block before generation; compare with normal native reasoning mode.
+- **Primary outcome:** change in frame consistency; secondary order consistency and invalid rate.
+- **Interpretation:** a loss of invariance strengthens a deliberation-mediated account. No change weakens a pure deliberation account but does not distinguish canonicalization from policy override.
+- **Status:** executed and invalidated. With an injected `</think>` and a 32-token cap, 0/240 continuations were strict direct answers; all continued explanatory generation. A loose parser incorrectly read option letters inside those explanations. The run is archived at `results/pilot_seed29/think_sft_no_think_len32_invalid_parser/` and is excluded from all behavioral results. This failure matches the fresh warning in *`</think>` Doesn't Stop Reasoning* (2026).
+
+## L12-E05: Matched Reasoning-Prefix Readout Intervention
+
+- **Linked claim:** precursor evidence for L12-C1.
+- **Question:** Does the content of the generated calculation trace causally determine the final A/B readout?
+- **Unit:** completed Think-SFT trace; first four completed traces in each of 12 prospect x frame x order cells (48 traces).
+- **Conditions:** own trace, empty trace, or a trace from the matched opposite frame inserted after the same target prompt. Score A/B logits at the answer position without further generation.
+- **Primary metric:** correct-option logit margin. Secondary metric: argmax EV-consistent rate.
+- **Uncertainty:** paired cluster bootstrap over the 12 stimulus cells, sampling one trace within each resampled cell, 5,000 draws.
+- **Interpretation boundary:** establishes trace-content-to-readout causality. It does not establish that prompt frame information was erased, nor that an injected end token stops inference-time reasoning.
+- **Raw/summary:** `results/pilot_seed29/reasoning_prefix_intervention/`.
+- **Status:** completed. Own trace strongly raises the correct margin; opposite-frame trace reverses it.
+
+## L12-E06: Answer-Leakage-Controlled Calculation Intervention
+
+- **Linked claim:** mechanism constraint for L12-C1.
+- **Question:** Is E05 driven only by an explicit answer mention, or does calculation content without A/B labels control the readout?
+- **Unit:** 12 prospect x frame x order stimulus cells.
+- **Conditions:** a correct pair of expected magnitudes, the same two magnitudes swapped, or the decision rule without computed values. All prefixes omit A/B answer labels and final-choice language.
+- **Primary metric:** correct-option logit margin; secondary argmax accuracy.
+- **Uncertainty:** paired prospect-cluster bootstrap, 5,000 draws.
+- **Interpretation:** correct-over-swapped supports arithmetic-content mediation. It does not by itself distinguish where in the residual stream the computation is represented.
+- **Status:** completed unchanged. Correct calculation did not reliably outperform rule-only or swapped calculation; both prospect-cluster intervals include zero. This weakens an arithmetic-snippet account and limits E05 to complete-trajectory causality.
+
+## L12-E07: Conclusion-Stripped Trajectory Takeover
+
+- **Linked claim:** L12-C1.
+- **Question:** Does the long natural reasoning trajectory retain strong causal control over the final answer after its terminal explicit choice/conclusion is removed?
+- **Model:** `allenai/Olmo-3-7B-Think-SFT`, frozen revision in `configs/trajectory_takeover.json`.
+- **Stimuli:** the same three audited parent prospects x gain/loss x both option orders.
+- **Natural traces:** 4 sampled trajectories per cell.
+- **Conditions:** own full trace; own terminal-conclusion-stripped trace; matched opposite-frame stripped trace; empty trace.
+- **Primary metric:** target-directed A/B logit margin under forced readout.
+- **Primary contrasts:** own-stripped minus empty; own-stripped minus opposite-stripped.
+- **Secondary quantity:** own-full minus own-stripped, interpreted as the incremental contribution of the terminal commitment.
+- **Trace surgery:** deterministically remove trailing decision/conclusion sentences and record every removed span plus whether decision markers remain.
+- **Outcome logic:** if stripped natural reasoning retains strong target-directed control, proceed to E08; if the effect collapses, reconstruct around late self-commitment rather than adding rescue controls.
+- **Config:** `configs/trajectory_takeover.json`
+- **Command:** `scripts/run_trajectory_takeover.sh`
+- **Status:** completed. 48 traces were generated, 47 were valid, and 46 had a matched opposite-frame trace. All valid stripped traces had a conclusion removed, none retained a decision marker, and none became empty. Own-stripped minus empty margin = **+2.624 [2.008, 2.988]**; own-stripped minus opposite-stripped = **+4.863 [3.469, 5.773]**. The terminal portion adds **+7.047 [6.746, 7.402]**. This supports distributed trajectory control with strong terminal amplification.
+
+## L12-E08: Pre-Answer Decision-State Causal Substitution
+
+- **Linked claim:** L12-C2.
+- **Prerequisite:** E07 shows non-trivial trajectory-level control beyond the terminal explicit conclusion.
+- **Question:** Has the stripped natural reasoning trajectory constructed a causal pre-answer decision state that carries final-answer control?
+- **Design:** for each matched target/opposite-frame trace pair, capture the donor final-token hidden state at every decoder layer and substitute it into the target forward pass one layer at a time.
+- **Important property:** donor text is never appended to the target; only the internal pre-answer state is transferred.
+- **Primary metric:** donor-consistent shift in the target A/B logit margin.
+- **Secondary metric:** fraction of patched target readouts that flip to the donor decision.
+- **Interpretation:** a coherent donor-consistent layer profile supports a trajectory-built causal decision state. The layer number itself is not the claim.
+- **Config:** `configs/state_substitution.json`
+- **Command:** `scripts/run_state_substitution.sh`
+- **Status:** completed after E07 passed its gate. The donor-directed shift is negligible through layer 13, ramps at 14-16, reverses the mean target margin at layer 17, and stays strong afterward. At layer 31 the shift is **+5.090 [3.766, 5.977]**, with a **0.804** donor-choice flip rate. This is a coherent trajectory-built decision-state profile, not a claim about a privileged layer.
+
+## L12-E09: Matched Causal-Control Reorganization
+
+- **Linked question:** does the invariance transition align with a branch-level shift from prompt control toward trajectory control?
+- **Design:** cross prompt frame (gain/loss) and conclusion-stripped trajectory frame (gain/loss) for the same prospect, order, and sampled trace pair. Score the probability of the fixed gain-optimal displayed choice.
+- **Models:** exact sibling Instruct-SFT and Think-SFT checkpoints, with identical donor trajectory text and each checkpoint's native answer transition.
+- **Primary within-branch quantities:** trajectory-control effect and prompt-control effect from the 2 x 2 factorial.
+- **Primary bridge:** Think-minus-Instruct difference in `trajectory_control - prompt_control`, with prospect-cluster bootstrap uncertainty.
+- **Identification boundary:** this is a matched released-branch comparison, not one-variable training causality; native answer-transition formats differ by construction.
+- **Gate:** a paper-level bridge requires stronger trajectory-relative control in Think-SFT with consistent prospect direction, not merely a nonzero trace effect in either model.
+- **Config/command:** `configs/control_reorganization.json`; `scripts/run_control_reorganization.sh`.
+- **Status:** completed. Think-SFT trajectory control = **+0.586 [0.278, 0.857]**; Instruct-SFT = **+0.012 [-0.324, 0.393]**. Think-minus-Instruct trajectory control = **+0.575 [0.037, 1.055]**. The primary branch difference in trajectory-minus-prompt control is **+0.569 [0.026, 1.062]**. All three prospects agree in direction for Think-SFT; Instruct-SFT is heterogeneous. This supports the mechanism-phenomenon bridge but remains a three-prospect sibling-branch pilot.
+
+## L12-E10: Independent-Decision Breadth and Control Bridge
+
+- **Linked claim:** L12-C3.
+- **Question:** do the behavioral transition and trajectory-relative control reorganization generalize beyond the three discovery prospects?
+- **Unit:** at least 30 independently parameterized, gold-verifiable base decisions; frames, orders, and trace samples are repeated observations within unit.
+- **Design:** preregistered simple two-option lotteries, crossed gain/loss frame and order. Run sibling behavior first; generate matched Think-SFT trajectories; then apply the E09 prompt-by-trajectory factorial to both branches.
+- **Primary behavioral metric:** base-decision-level frame consistency difference, Think-SFT minus Instruct-SFT.
+- **Primary mechanism metric:** base-decision-level difference in `(trajectory control - prompt control)`, Think-SFT minus Instruct-SFT.
+- **Uncertainty:** base-decision cluster bootstrap; report stratum-level heterogeneity rather than treating traces as independent.
+- **Exclusions:** frozen before model scoring; invalid or unpaired traces are reported, never silently replaced after inspecting model outcomes.
+- **Secondary exploratory bridge (frozen before causal scoring):** Spearman association across base decisions between the sibling frame-consistency change and sibling trajectory-minus-prompt control change. This is not required for C3 because ceiling effects can attenuate it.
+- **Status:** completed. The 36-unit audit passes all balance/uniqueness checks. Order-conditional Instruct-SFT frame consistency = **0.674 [0.618, 0.729]**; Think-SFT = **0.977 [0.960, 0.993]** on 35 analyzable decisions; difference = **+0.299 [0.239, 0.357]**. One Think cell had no valid completion; assigning its unit the worst/best possible consistency gives mean-difference bounds **[0.277, 0.304]**. Think-minus-Instruct trajectory-minus-prompt control = **+0.399 [0.337, 0.464]**, positive on **36/36** base decisions. The corrected exploratory item association is null (rho = -0.001, p = 0.997) and is not promoted to a claim.
+
+## L12-E11: Stratified Decision-State Replication
+
+- **Linked claim:** breadth of L12-C2.
+- **Question:** does the trajectory-built pre-answer decision state replicate beyond the three discovery prospects?
+- **Unit:** 18 independently parameterized base decisions, one from each payoff-scale x EV-gap x probability-gap cell.
+- **Selection:** frozen in `configs/breadth_state_substitution.json`; alternate gain-optimal A/B in lexicographic stratum order. Use order AB and the lowest-index valid matched gain/loss trace, without reference to behavioral or control-effect size.
+- **Intervention:** repeat E08 layer-wise opposite-decision final-token state substitution in both frame directions.
+- **Primary signature:** coherent late-layer donor-directed shift with a base-decision bootstrap interval excluding zero and direction consistency across units.
+- **Secondary:** first layer where the mean target margin reverses and donor-choice flip rate; no privileged-layer claim.
+- **Status:** completed. The mean target margin first reverses at layer 17, matching the discovery pilot. At layer 31 the donor-directed shift is **+4.868 [4.056, 5.813]**, positive on **18/18** base decisions, with donor-choice flip rate **0.750**.
+
+## L12-E12: DPO-Lineage Checkpoint Validation
+
+- **Linked claim:** checkpoint breadth for L12-C3.
+- **Question:** does the reasoning-vs-instruction causal-control contrast persist after the documented DPO continuation of each SFT sibling branch?
+- **Lineage:** Instruct-SFT -> Instruct-DPO and Think-SFT -> Think-DPO, as declared by the official checkpoint metadata.
+- **Design:** score the exact E10 stripped trajectories in the same prompt-by-trajectory factorial on the two DPO checkpoints. SFT results are frozen comparators.
+- **Primary signature:** Think-DPO minus Instruct-DPO trajectory-minus-prompt control is positive with a base-decision bootstrap interval excluding zero and consistent direction across decisions.
+- **Secondary:** DPO-minus-SFT change within each branch is descriptive. DPO is not treated as the origin of the branch difference.
+- **Attribution boundary:** this tests persistence over a documented checkpoint axis, not an additional model family and not one-variable attribution of the original SFT divergence.
+- **Result:** Think-DPO minus Instruct-DPO trajectory-minus-prompt control = **+0.472 [0.401, 0.555]**, positive on **36/36** decisions. The corresponding branch effects are **+0.565 [0.518, 0.611]** and **+0.093 [0.023, 0.158]**. Relative to the frozen SFT branch difference, the DPO contrast is larger by a secondary **+0.073 [0.016, 0.133]**.
+- **Status:** completed. This supports persistence and modest amplification over the documented continuation axis; it does not attribute the original branch difference to DPO.
+
+## L12-E13: Qwen3 Same-Weight Mode Validation
+
+- **Linked claim:** cross-family and same-weight mode breadth for L12-C3.
+- **Question:** with weights fixed, does Qwen3's official hard thinking switch jointly change presentation invariance and trajectory-relative causal control?
+- **Model:** `Qwen/Qwen3-8B`, revision `b968826d9c46dd6066d109eabc6255188de91218`.
+- **Identification:** compare `enable_thinking=True` and `False` using the same checkpoint, 36 E10 decisions, prompt text, sampling count, and decoding distribution. Only the official chat-template switch changes.
+- **Behavior phase:** 36 decisions x gain/loss x both orders x 4 generations. Primary metric is thinking-minus-non-thinking frame consistency with a base-decision bootstrap.
+- **Gate:** run the causal-control phase only if behavior shows a stable mode contrast or a scientifically meaningful heterogeneous boundary.
+- **Control-phase constraint:** use natural thinking-mode stripped trajectories, but freeze a placement/readout construction that does not silently turn the non-thinking condition back into a thinking prefix. Report any unavoidable positional/template asymmetry.
+- **Behavior result:** completed. Thinking frame consistency = **1.000 [1.000, 1.000]** on 35 analyzable decisions; non-thinking = **0.160 [0.087, 0.240]** on all 36; difference = **+0.836 [0.757, 0.911]**, positive on **35/35** analyzable units. Thinking/non-thinking EV consistency = **1.000/0.531**. Missing-unit worst/best mean-difference bounds are **[0.813, 0.840]**.
+- **Trajectory audit:** 483/576 thinking generations produced valid closed traces; all 483 had terminal conclusions removed, none retained a decision marker, and 203 matched gain/loss pairs cover all 36 decisions.
+- **Frozen control construction:** in the thinking route, stripped text occupies the native `<think>...</think>` channel; in the non-thinking route, the official template first emits an empty closed think block and the identical stripped text then occupies the answer channel. This preserves the official mode routes but necessarily changes channel/position. The comparison identifies route-dependent integration, not a persistent hidden mode variable.
+- **Control result:** thinking-route trajectory-minus-prompt control = **+0.671 [0.613, 0.727]**; non-thinking route = **+0.066 [0.021, 0.111]**. The same-weight route difference is **+0.604 [0.550, 0.661]**, positive on **36/36** decisions.
+- **Status:** completed. The behavioral and causal-control changes align under fixed weights, but the claim remains route-dependent integration because channel/position are inseparable from the official hard switch.
+
+## L12-E14: Llama-Ecosystem External Replication
+
+- **Question:** does the prompt-to-trajectory control contrast replicate between standard instruction and reasoning-specialized models in a separate Llama ecosystem?
+- **Models:** official DeepSeek revision `6a6f4aa4197940add57724a7707d069478df56b1`; Meta scientific identity at official revision `0e9e39f249a16976918f6564b8830bc894c89659`, loaded through the audited `NousResearch` mirror revision `d10aef7999a2b5ba950ab3974312feeedbfe0b77` because official gated access returned 403. Core config/index/tokenizer vocabulary and all four weight-pointer Git objects match the official public tree; tokenizer-template metadata provenance remains the mirror.
+- **Role:** external replication only. Differences in post-training data, pipeline, tokenizer, and configuration prevent training attribution.
+- **Funnel:** 36-unit behavior and E09-style control first; state substitution on 12-18 units only if the causal-control pattern passes.
+- **Behavior parser audit:** the generic post-think parser incorrectly selected the first option mention when DeepSeek repeated analysis after `</think>`. E14 now uses an audited terminal-answer parser (direct, boxed, answer-field, decision-field, choice-verb, terminal-relation, terminal-label); 540/576 generations are valid. All behavior statistics below were regenerated from raw continuations.
+- **Behavior result:** Llama-Instruct frame consistency = **0.000 [0.000, 0.000]** under its displayed-A policy; DeepSeek = **0.947 [0.916, 0.975]**; DeepSeek-minus-Llama = **+0.947 [0.913, 0.976]**. EV consistency is **0.500/0.967**.
+- **Control result:** DeepSeek trajectory-minus-prompt control = **+0.095 [0.067, 0.125]**; Llama-Instruct = **+0.028 [0.019, 0.036]**; external difference = **+0.067 [0.037, 0.099]**, positive on 27/36 decisions.
+- **Status:** completed. After terminal-answer parser correction and order-conditional metric validation, the behavioral and causal-control transitions align in the external ecosystem. This supports cross-family replication, not one-variable training attribution.
+
+## L12-E15: DeepSeek External Decision-State Mediation
+
+- **Question:** is DeepSeek's stronger text-level trajectory control carried by a pre-answer internal decision state, or is E14 only a surface prefix/readout phenomenon?
+- **Model:** exact official `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` revision from E14.
+- **Units:** the preregistered 18-decision factorial subset already used in E11; order `ab`; lowest valid matched gain/loss sample per decision; both target directions.
+- **Intervention:** substitute the donor's final-prefix residual state into the target at every second decoder layer plus the final layer. Donor and target share decision/order and differ in frame and gold direction; no donor text enters the target.
+- **Primary outcome:** donor-directed final-layer margin shift with a base-decision bootstrap and direction fraction. Layer profile is localization evidence, not an independent claim.
+- **Gate:** a stable donor-directed late-layer effect supports external state mediation. Null or incoherent results retain E14 as text-route breadth but block a cross-family internal-mechanism claim.
+- **Result:** early-layer shifts are near zero; the interval first excludes zero at layer 14 and remains positive through the final layer. Layer 31 donor shift = **+1.222 [0.299, 2.181]**, positive on **11/18** decisions, donor flip rate **0.556**, and mean patched target margin **-0.611**.
+- **Validity:** none of the 18 selected donor keys belongs to the nine E14 traces for which the terminal-stripping heuristic removed no segment.
+- **Status:** completed. External decision-state mediation is supported, but its unit consistency is weaker than OLMo and no shared layer-location claim is made.
+
+## L12-E16: CPC18 Calibration Audit and Corpus Freeze
+
+- **Question:** can an external risky-choice corpus support a broad, gold-verifiable description/history intervention without synthetic histories or pseudo-replicated scientific units?
+- **Sources:** official 210-problem bird's-eye workbook and Zenodo calibration raw data. Both files are checksum-pinned in `configs/cpc18.json`; the 47 MB raw file remains outside Git.
+- **Frozen inclusion:** known probabilities (`Amb=0`), independent option outcomes (`Corr=0`), exact probability sums, non-tied exact EV, at most 10 outcomes per option, and at least three distinct 20-trial full-feedback histories. Support dominance is retained as a preregistered stratum, not filtered after outcomes.
+- **History rule:** sample three distinct real participant histories uniformly without replacement using the frozen seed. Selection never uses empirical payoff direction, participant choice, model output, or final answer direction; normalized Wasserstein distance is recorded only as a post-selection audit and participant identifiers are not exported.
+- **Unit:** base decision. Histories, orders, and generations are nested nuisance variation.
+- **Gate:** at least 150 eligible independent calibration problems.
+- **Result:** **151/210** problems pass. The flow is 182 known-risk, 171 also independent, 152 after exact-EV ties, and 151 after the three-history requirement. Game 29 is the sole final exclusion because it has only one distinct realized history. The official aggregate block rates reproduce from raw choices to maximum absolute error `4.96e-10`.
+- **Raw/source pointers:** external cache documented by source URL/checksum; committed frozen PII-free corpus `data/cpc18_calibration_v1.jsonl`; audit `data/cpc18_calibration_v1.audit.json`.
+- **Status:** **completed; GO for CPC18 primary breadth.**
+
+## L12-E17: Description/History Causal-Control Generalization
+
+- **Linked claim:** breadth or boundary for L12-C3.
+- **Question:** does the prompt-to-trajectory reallocation found for gain/loss framing generalize to explicit distributions versus experienced payoff histories?
+- **Behavior design:** all 151 E16 decisions, three real histories, two displayed orders, and repeated generations across the frozen OLMo sibling, Qwen same-weight-mode, and Llama/DeepSeek comparisons.
+- **Factorial design:** cross explicit/history prompt presentation with explicit/history-derived conclusion-stripped natural trajectories. Use reasoning-side trajectories as fixed donors within each matched comparison.
+- **Primary estimands:** `Delta_P`, `Delta_R`, and `Delta_R - Delta_P` as frozen in `CAUSAL_FRAMEWORK.md`. Margins are oriented toward the exact-EV option; explicit minus history fixes the contrast direction.
+- **Statistics:** base-decision cluster bootstrap is primary. History, order, and generation remain nested. A mixed-effects model with base-decision random intercept and presentation slope is confirmatory.
+- **Boundary logic:** generalization supports presentation-level causal reorganization; a null or reversed description/history result supports a boundary between value framing and representation uncertainty rather than killing C1-C3.
+- **Behavior result:** complete on all 151 calibration decisions (21,744 total
+  generations). OLMo Think-SFT minus Instruct-SFT presentation consistency is
+  **+0.225 [0.177, 0.271]**; Qwen thinking minus non-thinking is **+0.276
+  [0.223, 0.327]**. Both remain positive under worst/best invalid-output
+  assignment: `[0.042, 0.287]` and `[0.154, 0.315]`, respectively.
+- **Observed boundary:** the unmatched DeepSeek-minus-Llama comparison is
+  **-0.225 [-0.264, -0.188]**. Llama-Instruct is highly presentation-consistent
+  (0.970) while choosing the exact-EV option at chance (0.502 explicit, 0.499
+  history). This separates behavioral invariance from EV-guided decision
+  formation and prevents treating consistency itself as rationality.
+- **Causal result:** complete. OLMo Think-SFT has `Delta_R - Delta_P =
+  +0.201 [0.161, 0.243]`, versus Instruct-SFT -0.001 [-0.040, 0.040];
+  branch difference **+0.202 [0.162, 0.244]**. Qwen thinking is +0.191
+  [0.151, 0.229], versus non-thinking +0.028 [0.012, 0.043]; same-weight
+  route difference **+0.163 [0.121, 0.205]**. Their prompt-control branch
+  differences are +0.003 [-0.010, 0.016] and -0.007 [-0.017, 0.004].
+- **External boundary:** DeepSeek minus Llama is +0.019 [-0.005, 0.043],
+  with its interval crossing zero. The earlier gain/loss external replication
+  therefore does not license a presentation-general cross-family claim.
+- **Confirmatory-model audit:** the specified random-intercept/random-slope
+  MixedLM failed to converge for all three pairs. Coefficients remain recorded
+  but are not interpreted; the preregistered base-decision cluster bootstrap is
+  primary.
+- **Status:** **completed; advanced to and confirmed by E18, with E19 mediation.**
+
+## L12-E18: Untouched CPC18 Competition Confirmation
+
+- **Prerequisite:** freeze E17 templates, parser, history construction, terminal stripping, exclusions, estimands, and statistics before accessing the 60 competition problems.
+- **Design:** one confirmatory run under the frozen E17 contract. No tuning or filtering on competition outcomes. The exact contract is committed in
+  `configs/cpc18_competition_preregistered.json` before source access.
+- **Primary axes:** OLMo SFT siblings and Qwen same-weight modes. They are the
+  two calibration axes with controlled identification and a positive
+  trajectory-relative branch contrast whose clustered interval excludes zero.
+  The unmatched Llama/DeepSeek axis remains a calibration heterogeneity result
+  and is not promoted into the confirmatory set.
+- **Gate:** at least 40 of 60 competition problems pass the unchanged E16
+  inclusion and three-distinct-history criteria.
+- **Decision rule:** claim heldout cross-axis generalization only if both OLMo
+  and Qwen reasoning-minus-standard `Delta_R - Delta_P` contrasts are positive
+  with separate base-decision bootstrap 95% intervals excluding zero.
+- **Data audit:** after preregistration commit `9e4a532`, 44/60 competition
+  problems pass the unchanged contract (gate 40). Compact-lottery reconstruction
+  was validated against all 420 calibration option distributions with maximum
+  absolute cell error `3.75e-8`; selected histories have no payoff-support
+  violations.
+- **Behavior result:** OLMo Think-SFT minus Instruct-SFT presentation
+  consistency is **-0.013 [-0.095, 0.065]** and its invalid-assignment bounds
+  are `[-0.155, 0.034]`; the supporting OLMo behavioral hypothesis does not
+  replicate. Qwen thinking minus non-thinking is **+0.163 [0.051, 0.268]**
+  with invalid-assignment bounds `[0.042, 0.217]`; the Qwen behavioral
+  hypothesis replicates.
+- **Primary causal result:** OLMo Think-SFT minus Instruct-SFT
+  `Delta_R - Delta_P` is **+0.097 [0.002, 0.180]** over 44 base decisions.
+  Qwen thinking minus non-thinking is **+0.219 [0.152, 0.288]** over 43 base
+  decisions. Prompt-control differences include zero for both axes; the
+  positive differences arise from trajectory control: OLMo **+0.104 [0.024,
+  0.182]**, Qwen **+0.215 [0.150, 0.281]**.
+- **Statistical sensitivity:** both heldout MixedLM fits returned convergence,
+  but boundary/singular-Hessian warnings make them sensitivity checks only.
+  The preregistered base-decision bootstrap remains primary.
+- **Execution validity:** every behavior row, factorial cell, summary count,
+  byte count, and raw SHA-256 passes `scripts/validate_cpc18_execution.py`;
+  see `results/cpc18_competition_seed137/execution_audit.json`.
+- **Status:** **completed; preregistered primary cross-axis gate passed.** The
+  route result confirms on both controlled axes, while behavioral invariance
+  confirms only for Qwen.
+
+## L12-E19: Broad Description/History State Mediation
+
+- **Linked claim:** L12-C2 under the E17 presentation manipulation.
+- **Prerequisite:** a nontrivial calibration E17 trajectory-control effect.
+- **Design:** OLMo Think-SFT last-token residual-state substitution between
+  matched strict explicit/history trajectories that naturally produced opposite
+  choices. Patch both directions without exposing donor text to the target.
+- **Frozen units:** 48 independent base decisions, sampled with seed 131 as 16
+  from each candidate-relative-EV-gap rank tertile. Within a selected problem,
+  one qualifying history/order/sample key is chosen uniformly. The two patch
+  directions ensure equal target-A and target-B interventions.
+- **Primary estimand:** donor-directed margin shift by layer, averaged over both
+  directions within base decision; base-decision bootstrap uncertainty.
+- **Selection boundary:** opposite natural choices are required to define a
+  direction-specific donor state. No state, margin, patch, or layer result enters
+  selection. None of the 65 qualifying problems is support-dominant, so E19 does
+  not identify mediation in that stratum.
+- **Result:** early-layer shifts are near zero, rise progressively through the
+  middle/late stack, and first reverse mean target margin at layer 18. Final
+  donor shift is **+7.094 [5.914, 8.276]**, positive on 45/48 base decisions;
+  donor-choice flip rate is 0.823 across the 96 directional interventions.
+- **Status:** **completed; supports C2 on natural description/history units.**
+
+## L12-E18P: Heldout Behavioral Precision Replication
+
+- **Role:** measurement audit, not a new headline claim and not a replacement for
+  the preregistered E18 result.
+- **Design:** repeat all 44 E18 problems, the same three histories, both displayed
+  orders, all four controlled regimes, and the unchanged prompt/parser/metric.
+  Increase only independent generations per cell from 3 to 20; seed 149 is new.
+- **Primary report:** order-conditional presentation-consistency difference for
+  OLMo and Qwen, base-decision bootstrap intervals, validity, and worst/best
+  invalid-output assignment bounds. Report both axes regardless of direction.
+- **Purpose:** determine whether E18's coarse four-level empirical probabilities
+  materially distorted the behavioral estimate. No significance-based filtering,
+  prompt revision, parser revision, or problem exclusion is permitted.
+- **Frozen config:** `configs/cpc18_competition_precision.json`.
+- **Result:** OLMo remains null at **-0.011 [-0.089, 0.067]** and Qwen remains
+  positive at **+0.121 [0.026, 0.215]**. Reasoning-regime valid rates are 0.891
+  (OLMo) and 0.887 (Qwen); sharp invalid-assignment bounds are reported in the
+  summary. Every regime has 7,040 rows (44 base decisions x 160 rows), with no
+  duplicate condition keys and exact raw hashes.
+- **Conclusion:** E18's OLMo behavioral null is not an artifact of using only
+  three generations per cell. The Qwen effect is smaller but remains positive
+  under the higher-precision replication. This audit strengthens the need to
+  decompose form from finite-sample evidence rather than average them together.
+- **Pointers:** `results/cpc18_competition_precision_seed149/behavior_summary.json`,
+  `behavior_unit_metrics.jsonl`, `execution_audit.json`, and `raw_manifest.json`.
+- **Status:** **completed; execution audit PASS.**
+
+## L12-E20: Form x Evidence Decomposition
+
+- **Question:** does reasoning suppress sensitivity to representational form while
+  preserving sensitivity to decision-relevant evidence?
+- **Hypothesis origin:** a post-hoc audit of the completed 195 CPC18 problems.
+  The audit is explicitly exploratory and cannot support E20's claim.
+- **Prospective data:** previously unscored real CPC18 histories only. Each problem
+  must supply one history whose empirical mean favors A and another favoring B.
+  Both histories must have normalized empirical gap at least 0.02; their strength
+  ratio must not exceed 1.5. No model result enters selection.
+- **Form contrast:** the same 20 observations appear either as an ordered raw table
+  or as their exact marginal payoff counts. Decision-relevant empirical evidence
+  is identical; only sequential versus frequency-summary representation changes.
+- **Evidence contrast:** within a base problem and fixed form, compare the matched
+  empirical-A and empirical-B histories.
+- **Primary metric:** `evidence_sensitivity - form_sensitivity`, computed per base
+  decision. Primary tests are reasoning-minus-standard pair differences under the
+  OLMo sibling and Qwen same-weight axes, each with a base-decision bootstrap CI.
+- **Component interpretation:** form down/evidence preserved or up supports
+  selective sensitivity; both down supports broad canonicalization; only evidence
+  up supports stronger integration without form invariance; neither changing
+  disconnects route reorganization from behavioral robustness.
+- **Invalid outputs:** report conditional estimates and sharp mean bounds. Do not
+  revise prompts/parser or filter problems after outcomes.
+- **Frozen config:** `configs/cpc18_form_evidence_preregistered.json`.
+- **Data gate:** 137 base decisions pass before model scoring: 104 calibration
+  and 33 competition problems. Median matched evidence-strength ratio is 1.012
+  and the maximum is 1.5. The exported corpus contains no participant identifier.
+- **Behavioral result:** both controlled axes show the preregistered selective
+  shift. OLMo Think-minus-Instruct changes form sensitivity by **-0.341
+  [-0.364, -0.317]**, evidence sensitivity by **+0.888 [0.865, 0.911]**, and
+  selective sensitivity by **+1.229 [1.195, 1.262]**. Qwen thinking-minus-
+  non-thinking changes the same quantities by **-0.266 [-0.291, -0.241]**,
+  **+0.443 [0.397, 0.491]**, and **+0.709 [0.638, 0.778]**.
+- **Validity boundary:** Qwen's component directions survive sharp invalid-output
+  assignment. OLMo Think has a lower valid rate (0.704); its selective pair
+  difference remains positive even under sharp assignment (**[+0.269,
+  +1.289]**), while the form component alone does not. The central OLMo result
+  is therefore the joint selective contrast, not an unconditional form-only
+  estimate.
+- **Status:** **behavioral gate passed on both axes; E20-C activated.** Execution
+  audit passes for 43,840 generations with 137/137 base decisions per regime.
+
+### E20-C causal bridge (conditionally activated)
+
+If either controlled behavioral axis passes the preregistered selective-sensitivity
+test, choose strict terminal-stripped reasoning trajectories that naturally follow
+each evidence direction. Within raw and summary forms separately, cross prompt
+evidence A/B with trajectory evidence A/B. Estimate evidence `Delta_P`, `Delta_R`,
+and `Delta_R - Delta_P`; the scientific unit remains the base decision. The
+bridge supports the story only if the reasoning regime gives evidence-bearing
+trajectories greater relative control under both forms. This rule and donor
+selection are frozen before E20 behavior is inspected.
+
+The activation gate passed on both axes. Strict donor construction retains all
+137 base decisions: 542 OLMo and 546 Qwen form/order trace units. Trajectory-
+relative evidence control rises in both forms and axes: OLMo **+0.459 [0.401,
+0.518]** for raw and **+0.584 [0.532, 0.638]** for summary; Qwen **+0.563
+[0.506, 0.621]** for raw and **+0.749 [0.689, 0.808]** for summary. The branch/
+mode differences in prompt evidence control are only +0.014/+0.008 (OLMo) and
++0.012/+0.004 (Qwen). Thus the selective behavioral shift is tied to evidence-
+bearing trajectory control rather than a generic increase in prompt sensitivity.
+All 8,704 factorial rows pass exact cell and raw-hash validation.
+
+## L12-E21: Selective Pre-Answer State Mediation
+
+- **Question:** does the pre-answer state carry decision evidence while becoming
+  comparatively insensitive to whether that evidence arrived as a raw sequence
+  or frequency summary?
+- **Design:** within OLMo Think-SFT, construct four natural terminal-stripped
+  prefixes per problem (`raw/summary x empirical A/B`). For every target prefix,
+  substitute each donor's last-token residual state without exposing donor text.
+  The donor-state factorial therefore changes evidence and form independently.
+- **Frozen units:** 32 base decisions sampled as eight from each model-independent
+  evidence-strength quartile. All 137 E20 problems were eligible; selection uses
+  trace validity/evidence-following only, never margins, states, layers, or E21
+  results.
+- **Layers:** 0, 8, 16, 24, and 31, fixed from the prior full E19 profile. E21
+  tests carrier content rather than searching again for a privileged layer.
+- **Primary metric:** final-layer donor evidence effect minus donor form
+  sensitivity, with base-decision bootstrap uncertainty. The evidence component
+  must also have a 95% interval above zero; every component and layer is reported.
+- **Frozen config:** `configs/cpc18_selective_state.json`.
+- **Execution correction:** the first runner version summarized displayed-label
+  A rather than underlying option A under reversed display order. That output is
+  invalid and excluded. The coordinate transform and an explicit `ba` unit test
+  were committed before rerun; units, layers, hypotheses, and decision rule are
+  unchanged.
+- **Result:** at the final layer, changing donor evidence moves underlying-A
+  probability by **+0.763 [0.694, 0.828]**, positive on 32/32 decisions. Donor
+  form sensitivity is **0.174 [0.124, 0.227]**; the preregistered state-
+  selectivity difference is **+0.590 [0.476, 0.704]**, positive on 30/32.
+  Evidence sensitivity is near zero at layers 0/8, becomes positive at layer 16,
+  and reaches +0.748/+0.763 at layers 24/31.
+- **Interpretation:** the trajectory-built state does not erase form completely,
+  but it carries evidence direction far more strongly than the raw-versus-summary
+  distinction. E20's selective sensitivity is therefore mediated by the same
+  late pre-answer causal state established in C2, rather than being a disconnected
+  behavioral regularity.
+- **Pointers:** `results/cpc18_selective_state_seed173/summary.json`,
+  `unit_metrics.jsonl`, and `execution_audit.json`; the 2,560 raw intervention
+  rows remain local and are represented by their SHA-256.
+- **Status:** **completed; corrected execution audit PASS.**
+
+## L12-E22: External-Family Selective Sensitivity
+
+- **Question:** does the form-to-evidence sensitivity relocation extend beyond
+  the controlled OLMo and Qwen axes?
+- **Design:** repeat the frozen 137-decision E20 behavior decomposition with
+  Llama-3.1-8B-Instruct and DeepSeek-R1-Distill-Llama-8B. If and only if the
+  behavioral selective-sensitivity difference is positive with a clustered 95%
+  interval above zero, run the same evidence prompt-by-trajectory factorial
+  using DeepSeek's natural stripped trajectories.
+- **Identification boundary:** this pair changes training data, post-training
+  pipeline, and tokenizer/config details. It is external-family replication,
+  never attribution to one reasoning-training operation.
+- **Why it is load-bearing:** E20's headline otherwise rests on one sibling
+  family and one same-weight route. E22 asks whether the selective computation
+  is a broader reasoning-model pattern, while a failure would define meaningful
+  heterogeneity rather than trigger rescue experiments.
+- **Frozen config:** `configs/cpc18_form_evidence_llama_external.json`.
+- **Behavior result:** DeepSeek-R1-Distill relative to Llama-Instruct changes
+  form sensitivity by **-0.139 [-0.159, -0.119]**, evidence sensitivity by
+  **+0.857 [0.839, 0.876]**, and the preregistered selective-sensitivity
+  contrast by **+0.996 [0.962, 1.031]**. The selective difference is positive
+  on **137/137** base decisions and remains positive under sharp invalid-output
+  assignment (**[+0.621, +1.076]**). DeepSeek and Llama valid rates are 0.877
+  and 0.999.
+- **Execution validity:** both regimes contain exactly 10,960 rows over all 137
+  decisions, with no duplicate condition keys; row counts and raw SHA-256 hashes
+  pass the frozen execution audit.
+- **Status:** **behavioral gate passed; external evidence prompt-by-trajectory
+  factorial activated and completed.** In the causal factorial, DeepSeek-minus-
+  Llama trajectory-relative evidence control is **+0.175 [0.131, 0.221]** in
+  raw-history form and **+0.143 [0.106, 0.180]** in summary form. The corresponding
+  prompt-control differences are only +0.0046 and +0.0021 (the summary interval
+  includes zero); the external contrast is driven by trajectory control. Every
+  problem supplies both forms and all four prompt-by-trajectory cells, and the
+  full execution audit passes. The result provides external-family breadth, not
+  training attribution.
+
+## L12-E18L: Paired 20/100 History-Length Diagnosis
+
+- **Role:** supporting finite-sample diagnosis, not a headline claim.
+- **Design:** on the unchanged 44 E18 distributions, draw four independent
+  100-trial histories from the exact generating process; each 20-trial history
+  is the prefix of its matched 100-trial history. Cross both lengths with order
+  and all four controlled regimes, using 10 generations per cell.
+- **Report:** description/history consistency by length, reasoning-minus-standard
+  difference, 100-minus-20 change, empirical-EV agreement, validity, and invalid
+  bounds. All regimes and signs are retained.
+- **Interpretation:** recovery with longer histories supports finite-sample
+  evidence as the E18 discrepancy; it cannot establish E20's form/evidence claim.
+- **Frozen config:** `configs/cpc18_history_length_diagnostic.json`.
+- **Data result:** empirical-history EV direction agrees with the generating
+  distribution on 0.750 of 20-trial histories and 0.847 of their matched
+  100-trial continuations.
+- **Behavior result:** on base decisions with finite paired conditional estimates,
+  the OLMo reasoning-minus-standard change from 20 to 100 trials is **+0.271
+  [0.176, 0.367]** (`n=21/44`), whereas Qwen is **-0.004 [-0.089, 0.083]**
+  (`n=18/44`).
+- **Validity boundary:** 100-trial raw tables induce pervasive length truncation:
+  reasoning-regime valid rates within the 100-trial history cells are 0.332
+  (OLMo) and 0.343 (Qwen). The 100-trial reasoning-minus-standard sharp bounds
+  are `[-0.350, +0.392]` and `[-0.450, +0.326]`; neither axis is identified
+  without conditional-on-valid assumptions. Every requested row and raw hash
+  nevertheless passes execution audit.
+- **Status:** **completed; supporting diagnosis inconclusive.** The result does
+  not become a claim and is not rescued with a post-outcome token-budget change.
+  E20, not E18L, carries the form/evidence conclusion.

@@ -1,0 +1,1042 @@
+{
+  "status": "POST-HOC word audit; not faithful-circuit evidence",
+  "components": {
+    "mixer_L15": {
+      "n": 64,
+      "first_token_changed": 1,
+      "first_token_matches_donor": 21,
+      "first_word_changed": 1,
+      "aspect_category_changed": 0,
+      "unmapped_first_word": 1,
+      "changed_word_examples": [
+        {
+          "pair_id": 16,
+          "old": "service",
+          "new": "one",
+          "after": " one aspect. Let me check:\n- If Evan judges spiciness and prefers mild: mild \u2192 yes, spicy \u2192 no. Let's check:\n  - Quick + Spicy \u2192 no (spicy, so no) \u2713\n ",
+          "final_changed": false
+        }
+      ]
+    },
+    "mixer_L31": {
+      "n": 64,
+      "first_token_changed": 0,
+      "first_token_matches_donor": 21,
+      "first_word_changed": 0,
+      "aspect_category_changed": 0,
+      "unmapped_first_word": 0,
+      "changed_word_examples": []
+    },
+    "mixer_L47": {
+      "n": 64,
+      "first_token_changed": 2,
+      "first_token_matches_donor": 21,
+      "first_word_changed": 2,
+      "aspect_category_changed": 2,
+      "unmapped_first_word": 0,
+      "changed_word_examples": [
+        {
+          "pair_id": 16,
+          "old": "service",
+          "new": "food",
+          "after": " food spiciness and prefers mild. Let me verify:\n- Quick + Spicy \u2192 no (spicy \u2260 mild) \u2713\n- Leisurely + Mild \u2192 yes (mild = mild) \u2713\n- Mild + Leisurely \u2192 y",
+          "final_changed": false
+        },
+        {
+          "pair_id": 20,
+          "old": "service",
+          "new": "food",
+          "after": " food spiciness and prefers mild. Let me verify:\n- Quick + Spicy \u2192 no (spicy \u2260 mild) \u2713\n- Leisurely + Mild \u2192 yes (mild = mild) \u2713\n- Mild + Leisurely \u2192 y",
+          "final_changed": false
+        }
+      ]
+    },
+    "mixer_L63": {
+      "n": 64,
+      "first_token_changed": 0,
+      "first_token_matches_donor": 21,
+      "first_word_changed": 0,
+      "aspect_category_changed": 0,
+      "unmapped_first_word": 0,
+      "changed_word_examples": []
+    },
+    "residual_L15": {
+      "n": 64,
+      "first_token_changed": 30,
+      "first_token_matches_donor": 30,
+      "first_word_changed": 30,
+      "aspect_category_changed": 0,
+      "unmapped_first_word": 0,
+      "changed_word_examples": [
+        {
+          "pair_id": 3,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy: All spicy \u2192 yes, all mild \u2192 no. \u2713\n\n**Fiona's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 no\n3. Spicy + Leis",
+          "final_changed": false
+        },
+        {
+          "pair_id": 7,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes when spicy, no when mild) \u2713\n\n**Fiona's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 no\n3. Spicy + Leisur",
+          "final_changed": false
+        },
+        {
+          "pair_id": 11,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes when spicy, no when mild) \u2713\n\n**Dana's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 yes\n3. Spicy + Leisur",
+          "final_changed": false
+        },
+        {
+          "pair_id": 15,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes when spicy, no when mild) \u2713\n\n**Dana's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 yes\n3. Spicy + Leisur",
+          "final_changed": false
+        },
+        {
+          "pair_id": 17,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Fiona: \n  - Leisurely, Spicy \u2192 yes\n  - Leisurely, Mild \u2192 no\n  - Spicy, Leisurely \u2192 yes\n  - Mild, Quick \u2192 no\n  - Quick, Spi",
+          "final_changed": false
+        },
+        {
+          "pair_id": 18,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consi",
+          "final_changed": false
+        },
+        {
+          "pair_id": 19,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 21,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Fiona: Let me check.\n  - Leisurely, Spicy \u2192 yes\n  - Leisurely, Mild \u2192 no\n  - Spicy, Leisurely \u2192 yes\n  - Mild, Quick \u2192 no\n ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 22,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consi",
+          "final_changed": false
+        },
+        {
+          "pair_id": 23,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 25,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 26,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. S",
+          "final_changed": false
+        },
+        {
+          "pair_id": 29,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 30,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. S",
+          "final_changed": false
+        },
+        {
+          "pair_id": 32,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy foo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 33,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 34,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nMild food ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 35,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nMild f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 36,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy foo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 37,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 38,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nMild food ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 39,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nMild f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 40,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nIf Ivan judges service pace (prefers quick):\n1. leisurely \u2192 no \u2713\n2. leisurely \u2192 no \u2713\n3. quick \u2192 yes \u2713\n4. quick \u2192 yes \u2713\n5. quick \u2192 yes \u2713\n6. qu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 41,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 42,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nIvan judge",
+          "final_changed": false
+        },
+        {
+          "pair_id": 43,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nIvan j",
+          "final_changed": false
+        },
+        {
+          "pair_id": 44,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " **spicy**.\n\nNow the final review for Ivan:\n\"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 45,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 46,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nIvan judge",
+          "final_changed": false
+        },
+        {
+          "pair_id": 47,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nIvan j",
+          "final_changed": false
+        }
+      ]
+    },
+    "residual_L31": {
+      "n": 64,
+      "first_token_changed": 30,
+      "first_token_matches_donor": 30,
+      "first_word_changed": 30,
+      "aspect_category_changed": 0,
+      "unmapped_first_word": 0,
+      "changed_word_examples": [
+        {
+          "pair_id": 3,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes for spicy, no for mild) \u2713\n- Fiona: \n  - Leisurely + Spicy \u2192 yes\n  - Leisurely + Mild \u2192 no\n  - Spicy + Leisurely \u2192 yes\n ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 7,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes for spicy, no for mild) \u2713\n- Fiona: \n  1. Leisurely + Spicy \u2192 yes\n  2. Leisurely + Mild \u2192 no\n  3. Spicy + Leisurely \u2192 ye",
+          "final_changed": false
+        },
+        {
+          "pair_id": 11,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes for spicy, no for mild) \u2713\n- Dana: Let me check Dana's reviews:\n  1. Leisurely + Spicy \u2192 yes\n  2. Leisurely + Mild \u2192 yes",
+          "final_changed": false
+        },
+        {
+          "pair_id": 15,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness, prefers spicy (yes for spicy, no for mild) \u2713\n- Dana: Let me check Dana's reviews:\n  1. Leisurely + Spicy \u2192 yes\n  2. Leisurely + Mild \u2192 yes",
+          "final_changed": false
+        },
+        {
+          "pair_id": 17,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Fiona: \n  1. Leisurely, Spicy \u2192 yes\n  2. Leisurely, Mild \u2192 no\n  3. Spicy, Leisurely \u2192 yes\n  4. Mild, Quick \u2192 no\n  5. Quick",
+          "final_changed": false
+        },
+        {
+          "pair_id": 18,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consi",
+          "final_changed": false
+        },
+        {
+          "pair_id": 19,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 21,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness, prefers mild.\n- Fiona: \n  1. Leisurely, Spicy \u2192 yes\n  2. Leisurely, Mild \u2192 no\n  3. Spicy, Leisurely \u2192 yes\n  4. Mild, Quick \u2192 no\n  5. Quick",
+          "final_changed": false
+        },
+        {
+          "pair_id": 22,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consi",
+          "final_changed": false
+        },
+        {
+          "pair_id": 23,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness and prefers mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 25,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 26,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3",
+          "final_changed": false
+        },
+        {
+          "pair_id": 29,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 30,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness and prefers mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3",
+          "final_changed": false
+        },
+        {
+          "pair_id": 32,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy foo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 33,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 34,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nMild food ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 35,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nMild f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 36,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy foo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 37,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nSpicy",
+          "final_changed": false
+        },
+        {
+          "pair_id": 38,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nMild food ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 39,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nMild f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 40,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nIf Ivan judges service pace (prefers quick):\n1. leisurely \u2192 no \u2713\n2. leisurely \u2192 no \u2713\n3. quick \u2192 yes \u2713\n4. quick \u2192 yes \u2713\n5. quick \u2192 yes \u2713\n6. qu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 41,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\n",
+          "final_changed": false
+        },
+        {
+          "pair_id": 42,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nIvan ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 43,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nI",
+          "final_changed": false
+        },
+        {
+          "pair_id": 44,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " **spicy** food.\n\nNow the final review for Ivan:\n\"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSp",
+          "final_changed": false
+        },
+        {
+          "pair_id": 45,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\n",
+          "final_changed": false
+        },
+        {
+          "pair_id": 46,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick tempo.\"\n\nIvan ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 47,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy food.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisurely tempo.\"\n\nI",
+          "final_changed": false
+        }
+      ]
+    },
+    "residual_L47": {
+      "n": 64,
+      "first_token_changed": 32,
+      "first_token_matches_donor": 37,
+      "first_word_changed": 31,
+      "aspect_category_changed": 2,
+      "unmapped_first_word": 0,
+      "changed_word_examples": [
+        {
+          "pair_id": 3,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n- Fiona: \n  - Leisurely + Spicy \u2192 yes\n  - Leisurely + Mild \u2192 no\n  - Spicy + Leisurely \u2192 yes\n  - Mild + Quick \u2192 n",
+          "final_changed": false
+        },
+        {
+          "pair_id": 7,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n- Fiona: \n  - Leisurely + Spicy \u2192 yes\n  - Leisurely + Mild \u2192 no\n  - Spicy + Leisurely \u2192 yes\n  - Mild + Quick \u2192 n",
+          "final_changed": false
+        },
+        {
+          "pair_id": 11,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n\n**Dana's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 yes\n3. Spicy + Leisurely \u2192 yes\n4. Leisurel",
+          "final_changed": false
+        },
+        {
+          "pair_id": 15,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n\n**Dana's reviews:**\n1. Leisurely + Spicy \u2192 yes\n2. Leisurely + Mild \u2192 yes\n3. Spicy + Leisurely \u2192 yes\n4. Leisurel",
+          "final_changed": false
+        },
+        {
+          "pair_id": 16,
+          "old": "service",
+          "new": "food",
+          "after": " food spiciness and prefers mild. Let me verify:\n- Quick + Spicy \u2192 no (spicy \u2260 mild) \u2713\n- Leisurely + Mild \u2192 yes (mild = mild) \u2713\n- Mild + Leisurely \u2192 y",
+          "final_changed": false
+        },
+        {
+          "pair_id": 17,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Fiona: Let me check Fiona's reviews:\n  1. Leisurely service, Spicy food \u2192 yes\n  2. Leisurely service, Mild food \u2192 no\n  3. Spicy f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 18,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 19,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent",
+          "final_changed": false
+        },
+        {
+          "pair_id": 20,
+          "old": "service",
+          "new": "food",
+          "after": " food spiciness and prefers mild. Let me verify:\n- Quick + Spicy \u2192 no (spicy \u2260 mild) \u2713\n- Leisurely + Mild \u2192 yes (mild = mild) \u2713\n- Mild + Leisurely \u2192 y",
+          "final_changed": false
+        },
+        {
+          "pair_id": 21,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Fiona: Let me check Fiona's reviews:\n  1. Leisurely service, Spicy food \u2192 yes\n  2. Leisurely service, Mild food \u2192 no\n  3. Spicy f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 22,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 23,
+          "old": "mild",
+          "new": "food",
+          "after": " food spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent",
+          "final_changed": false
+        },
+        {
+          "pair_id": 25,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace = leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent",
+          "final_changed": false
+        },
+        {
+          "pair_id": 26,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. Spicy fo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 29,
+          "old": "leisurely",
+          "new": "service",
+          "after": " service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes (reviews 2, 3, 6, 8)\nThis is also ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 30,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. Spicy fo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 32,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 33,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisur",
+          "final_changed": false
+        },
+        {
+          "pair_id": 34,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick t",
+          "final_changed": false
+        },
+        {
+          "pair_id": 35,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisure",
+          "final_changed": false
+        },
+        {
+          "pair_id": 36,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a quick tempo.\"\n\nSpicy foo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 37,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurely tempo.\"\n\nIvan ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 38,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a qu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 39,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a le",
+          "final_changed": false
+        },
+        {
+          "pair_id": 41,
+          "old": "spiciness",
+          "new": "spicy",
+          "after": " spicy (prefers spicy).\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leisurel",
+          "final_changed": false
+        },
+        {
+          "pair_id": 42,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick",
+          "final_changed": false
+        },
+        {
+          "pair_id": 43,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 44,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " **mild** food \u2192 no \u2713\n2. mild \u2192 no \u2713\n3. spicy \u2192 yes \u2713\n4. spicy \u2192 yes \u2713\n5. spicy \u2192 yes \u2713\n6. spicy \u2192 yes \u2713\n7. mild \u2192 no \u2713\n8. mild \u2192 no \u2713\n\nIvan judges **",
+          "final_changed": false
+        },
+        {
+          "pair_id": 45,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a l",
+          "final_changed": false
+        },
+        {
+          "pair_id": 46,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a qu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 47,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisu",
+          "final_changed": false
+        }
+      ]
+    },
+    "residual_L63": {
+      "n": 64,
+      "first_token_changed": 43,
+      "first_token_matches_donor": 64,
+      "first_word_changed": 43,
+      "aspect_category_changed": 20,
+      "unmapped_first_word": 0,
+      "changed_word_examples": [
+        {
+          "pair_id": 0,
+          "old": "spiciness",
+          "new": "service",
+          "after": " service pace... wait, let me re-check.\n\nIf Evan judges spiciness (prefers spicy):\n- All spicy reviews \u2192 yes \u2713\n- All mild reviews \u2192 no \u2713\n\nThat works p",
+          "final_changed": false
+        },
+        {
+          "pair_id": 1,
+          "old": "spiciness",
+          "new": "service",
+          "after": " service pace... wait, let me re-check.\n\nIf Evan judges spiciness (prefers spicy):\n- All spicy reviews \u2192 yes \u2713\n- All mild reviews \u2192 no \u2713\n\nThat works p",
+          "final_changed": false
+        },
+        {
+          "pair_id": 2,
+          "old": "spiciness",
+          "new": "service",
+          "after": " service pace... wait, let me re-check.\n\nIf Evan judges spiciness (prefers spicy):\n- All spicy reviews \u2192 yes \u2713\n- All mild reviews \u2192 no \u2713\n\nThat works p",
+          "final_changed": false
+        },
+        {
+          "pair_id": 3,
+          "old": "spicy",
+          "new": "service",
+          "after": " service pace... wait, no. They all judge the same aspect.\n\nLet me re-read: \"Each reviewer decides yes or no based on exactly one aspect: food spicine",
+          "final_changed": false
+        },
+        {
+          "pair_id": 7,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n- Fiona: \n  - Leisurely + Spicy \u2192 yes\n  - Leisurely + Mild \u2192 no\n  - Spicy + Leisurely \u2192 yes\n  - Mild + Quick \u2192 n",
+          "final_changed": false
+        },
+        {
+          "pair_id": 8,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness? Wait, no. Dana and Fiona both judge service pace. Let me re-check.\n\nDana:\n- Leisurely + Spicy \u2192 yes\n- Leisurely + Mild \u2192 yes\n- Spicy + Lei",
+          "final_changed": false
+        },
+        {
+          "pair_id": 11,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n- Dana: Let me check Dana's reviews:\n  1. Leisurely + Spicy \u2192 yes\n  2. Leisurely + Mild \u2192 yes\n  3. Spicy + Leisu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 12,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness? Wait, no. Dana and Fiona both judge service pace. Let me re-check.\n\nDana:\n- Leisurely + Spicy \u2192 yes\n- Leisurely + Mild \u2192 yes\n- Spicy + Lei",
+          "final_changed": false
+        },
+        {
+          "pair_id": 15,
+          "old": "spicy",
+          "new": "spiciness",
+          "after": " spiciness (spicy \u2192 yes, mild \u2192 no) \u2713\n- Dana: Let me check Dana's reviews:\n  1. Leisurely + Spicy \u2192 yes\n  2. Leisurely + Mild \u2192 yes\n  3. Spicy + Leisu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 16,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness (mild vs spicy) and prefers mild. OR Evan judges service pace (quick vs leisurely) and prefers leisurely.\n\nLet me check: In all \"yes\" cases",
+          "final_changed": false
+        },
+        {
+          "pair_id": 17,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Fiona: Let me check Fiona's reviews:\n  1. Leisurely service, Spicy food \u2192 yes\n  2. Leisurely service, Mild food \u2192 no\n  3. Spicy f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 18,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 19,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 20,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness (mild vs spicy) and prefers mild. OR Evan judges service pace (quick vs leisurely) and prefers leisurely.\n\nLet me check: In all \"yes\" cases",
+          "final_changed": false
+        },
+        {
+          "pair_id": 21,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Fiona: Let me check Fiona's reviews:\n  1. Leisurely service, Spicy food \u2192 yes\n  2. Leisurely service, Mild food \u2192 no\n  3. Spicy f",
+          "final_changed": false
+        },
+        {
+          "pair_id": 22,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 23,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n\nIf Evan judges service pace:\n- Quick \u2192 no (reviews 1, 4, 5, 7)\n- Leisurely \u2192 yes (reviews 2, 3, 6, 8)\nThis is also consistent! Eva",
+          "final_changed": false
+        },
+        {
+          "pair_id": 24,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness... wait, no. Let me re-read: \"All three reviewers judge the same aspect.\"\n\nWait, but Dana judges service pace (prefers leisurely) and Fiona",
+          "final_changed": false
+        },
+        {
+          "pair_id": 25,
+          "old": "leisurely",
+          "new": "spiciness",
+          "after": " spiciness... wait, no. Evan judges service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes",
+          "final_changed": false
+        },
+        {
+          "pair_id": 26,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. Spicy fo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 27,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness... wait, let me re-check.\n\nActually, let me check if Evan judges food spiciness:\n- If Evan judges spiciness: mild \u2192 yes, spicy \u2192 no\n  - Rev",
+          "final_changed": false
+        },
+        {
+          "pair_id": 28,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness... wait, no. Let me re-read: \"All three reviewers judge the same aspect.\"\n\nWait, but Dana judges service pace (prefers leisurely) and Fiona",
+          "final_changed": false
+        },
+        {
+          "pair_id": 29,
+          "old": "leisurely",
+          "new": "spiciness",
+          "after": " spiciness... wait, no. Evan judges service pace and prefers leisurely.\n\nIf Evan judges food spiciness:\n- Spicy \u2192 no (reviews 1, 4, 5, 7)\n- Mild \u2192 yes",
+          "final_changed": false
+        },
+        {
+          "pair_id": 30,
+          "old": "mild",
+          "new": "spiciness",
+          "after": " spiciness = mild.\n- Dana: Let me check Dana's reviews:\n  1. Leisurely service, spicy food \u2192 yes\n  2. Leisurely service, mild food \u2192 yes\n  3. Spicy fo",
+          "final_changed": false
+        },
+        {
+          "pair_id": 31,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness... wait, let me re-check.\n\nActually, let me check if Evan judges food spiciness:\n- If Evan judges spiciness: mild \u2192 yes, spicy \u2192 no\n  - Rev",
+          "final_changed": false
+        },
+        {
+          "pair_id": 32,
+          "old": "spiciness",
+          "new": "leisurely",
+          "after": " leisurely pace... wait, no. Ivan judges spiciness and prefers spicy.\n\nWait, but the problem says \"All three reviewers judge the same aspect.\" Let me ",
+          "final_changed": false
+        },
+        {
+          "pair_id": 33,
+          "old": "spiciness",
+          "new": "leisurely",
+          "after": " leisurely... wait, no. Ivan judges spiciness and prefers spicy.\n\nWait, but the problem says \"All three reviewers judge the same aspect.\" Let me re-re",
+          "final_changed": false
+        },
+        {
+          "pair_id": 34,
+          "old": "spiciness",
+          "new": "leisurely",
+          "after": " leisurely pace and prefers quick.\n\nWait, let me re-check. Ivan:\n- Quick pace \u2192 yes (reviews 3, 4, 5, 6)\n- Leisurely pace \u2192 no (reviews 1, 2, 7, 8)\n\nS",
+          "final_changed": true
+        },
+        {
+          "pair_id": 35,
+          "old": "spiciness",
+          "new": "leisurely",
+          "after": " leisurely pace and prefers quick.\n\nWait, let me re-check. Ivan:\n- Spicy, quick \u2192 yes\n- Mild, leisurely \u2192 no\n\nSo Ivan prefers spicy food. He judges sp",
+          "final_changed": false
+        },
+        {
+          "pair_id": 36,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a q",
+          "final_changed": false
+        },
+        {
+          "pair_id": 37,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a l",
+          "final_changed": false
+        },
+        {
+          "pair_id": 38,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a qu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 39,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the question: Ivan's review: \"The dish we sampled had a mild taste. The service during our visit proceeded at a le",
+          "final_changed": false
+        },
+        {
+          "pair_id": 40,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy** and prefers **spicy**.\n\nNow the final review for Ivan:\n\"The dish we sampled had a spicy taste. The service during our visit proceeded at",
+          "final_changed": false
+        },
+        {
+          "pair_id": 41,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leis",
+          "final_changed": false
+        },
+        {
+          "pair_id": 42,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick",
+          "final_changed": false
+        },
+        {
+          "pair_id": 43,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 44,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy** and prefers **spicy**.\n\nNow the final review for Ivan:\n\"The dish we sampled had a spicy taste. The service during our visit proceeded at",
+          "final_changed": false
+        },
+        {
+          "pair_id": 45,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a spicy taste. The service during our visit proceeded at a leis",
+          "final_changed": false
+        },
+        {
+          "pair_id": 46,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a quick",
+          "final_changed": false
+        },
+        {
+          "pair_id": 47,
+          "old": "spiciness",
+          "new": "mild",
+          "after": " mild/spicy and prefers spicy.\n\nNow the final question:\nIvan: \"The dish we sampled had a mild taste. The service during our visit proceeded at a leisu",
+          "final_changed": false
+        },
+        {
+          "pair_id": 57,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness? Wait, no - the problem says \"All three reviewers judge the same aspect.\" So they all judge the same aspect.\n\nWait, let me re-read: \"Each r",
+          "final_changed": false
+        },
+        {
+          "pair_id": 61,
+          "old": "service",
+          "new": "spiciness",
+          "after": " spiciness? Wait, no - the problem says \"All three reviewers judge the same aspect.\" So they all judge the same aspect.\n\nWait, let me re-read: \"Each r",
+          "final_changed": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,158 @@
+# Sasano Taste Search
+
+> **本轮入口（2026-10-03）：** [领域比较与推荐](TERRITORY_SHORTLIST_2026-10-03.md) · [近期顶会扫描与覆盖边界](RECENT_CONFERENCE_SCAN_2026-10-03.md) · [Sasano 原始意见复核](SASANO_EVIDENCE_2026-10-03.md)。最新人类要求：**先按 Sasano taste 找自然、值得知道的问题，再在其中选择用户可能喜欢的题材**；不因游戏/视频兴趣把它们排前，不默认传统语言学，也允许表征、理解、可解释性等。视频暂非首推；不据本轮搜索自动开线或改状态。
+
+> **v3 说明（2026-09-30）：** Sasano 品味（自然、清楚、结果本身值得知道、一个 RQ 对一个 finding、避免“そうだよね”、先验证对象存在）继续作为 **ACL 系论文的叙事与判断标准**。变化在于它**不再是题目生成器**：
+> - 不再用概念二分（“A 和 B 理论上不同，问模型会不会区分”）或 “X ≠ Y” 测量模板直接生成题目——这是 K061–K161 大批桌面阵亡的来源（诊断 §2）。
+> - 题目应在 workbench 驻留中从稳定的观察里出现，再用本页标准判断与打磨叙事。
+> - §9 的“顶会天花板”在驻留中用证据回答；“近邻存在”按 [`../README.md`](../README.md) §3 处理为定位问题，而不是 kill。
+> - 选 ACL 系还是 ML 会，先看 `tools/venue_corpus` 的切片数据：同一题材在两类会议的接收情况可能相反（例：多语言迁移在 ACL/EMNLP 持续被接收、在 ICLR 很难）。
+
+**Role:** identify a problem territory worth exploring **according to Sasano's own research taste**.
+
+This lane prioritizes Sasano's standards for natural questions, informative findings, and credible evidence. Within that constraint, respect the user's interests and resource fit; agents, representation analysis, and interpretability are eligible subjects, not automatic endorsements or exclusions. Do not substitute a trend or a benchmark gain for the research question.
+
+Primary calibration sources:
+1. Sasano's actual meeting comments and Slack judgments;
+2. concrete papers / projects he explicitly finds interesting or uninteresting;
+3. strong ACL / EMNLP / NAACL / TACL work only as secondary calibration.
+
+Historical Sasano-search material is under `../../archive/search/sasano-taste/`.
+
+## 1. The central shape
+
+The strongest recurring Sasano pattern is:
+
+> **a simple, real, natural question → an answer that is not merely obvious → a clear finding an average reviewer can understand**
+
+He repeatedly distinguishes between:
+- a topic that sounds potentially interesting;
+- and a result that collapses to “そうだよね / of course”.
+
+“there is an effect”, “language A differs a little from language B”, or “the model is somewhat worse here” is usually not enough.
+
+The desired question should be understandable before the mechanism/method exists.
+
+## 2. Avoid races where the research object expires faster than we can study it
+
+Sasano is not categorically anti-hot-topic. The concern is **research half-life and opponent strength**.
+
+Be especially cautious when:
+- the field changes month by month;
+- new frontier models can erase the phenomenon;
+- the natural contribution is “improve current AI capability / benchmark score”;
+- the decisive experiments require company-scale models, data, or repeated frontier retraining;
+- Meta/Google/OpenAI/etc. and very experienced groups are attacking essentially the same engineering target.
+
+For a Master's project that may take months, this is a structural risk, not a moral objection to trendy work.
+
+Prefer objects whose scientific question would still be meaningful if a stronger model appears six months later.
+
+## 3. “A little unusual, but obviously worth asking once you hear it”
+
+A good Sasano-style topic is often somewhat specific or unusual, yet has an immediate human hook:
+
+> “I would not have thought of that first, but now that you say it, that is genuinely interesting.”
+
+Examples from his own discussions include language-specific / cross-lingual phenomena, special task structures, and naturally occurring semantic or behavioral contrasts.
+
+This does **not** mean “pick an obscure niche”. The unusual setting needs to expose a broader or intrinsically interesting question.
+
+## 4. Natural contrast beats expected confirmation
+
+When two conditions differ, ask whether the answer is already obvious.
+
+Bad endpoint:
+> same-form / same-meaning items share behavior more than unrelated items.
+
+That may simply be expected.
+
+Potentially more interesting:
+> the same surface form carries conflicting meanings across languages and this shared form systematically causes interference under otherwise controlled conditions.
+
+The point is not that this exact example must be studied. The lesson is:
+
+> **prefer a contrast where either outcome teaches us something nontrivial, and where the interesting possibility is not just the default expectation.**
+
+## 5. Verify the object before theorizing about it
+
+Before building an RQ around a linguistic/model distinction, check that the distinction exists operationally.
+
+Examples:
+- are supposedly shared characters actually the same code/token representation?
+- does the model have the prerequisite capability?
+- does the dataset contain the needed contrasts?
+- is the baseline behavior real under a strong model?
+
+Sasano repeatedly asks these basic object-validity questions before discussing mechanism.
+
+## 6. Data / feasibility matter early
+
+A fascinating question with no usable data or credible construction path is often not a practical Master's topic.
+
+Existing natural data is especially valuable. Automatic expansion may help later, but “we can generate a dataset” is not itself the contribution.
+
+Search should identify a plausible data/object path before sending the territory to workbench.
+
+## 7. Generality without forcing artificial breadth
+
+A Japanese/Chinese phenomenon can be valid, but if the scientific question naturally extends to more languages / settings, that is preferable.
+
+Do not force multilingual breadth for appearance. Ask instead:
+
+> is this really about Japanese/Chinese, or about a more general structural relation that happens to be especially visible there?
+
+## 8. RQ and finding must stay crisp
+
+Sasano's later paper feedback repeatedly emphasizes:
+- one clear RQ ↔ one clear finding;
+- average reviewers should immediately see what is interesting;
+- an Introduction must make both **納得できる** and **面白い**;
+- a finding that is not surprising enough should not be forced into the headline;
+- merely changing model / dataset / evaluation setting does not automatically create novelty.
+
+## 9. Top-conference-scale ceiling（v4：在驻留中用证据回答）
+
+Sasano-style simplicity must **not** be confused with smallness.
+
+A simple natural question is valuable only if its answer can plausibly support a main-track paper-scale scientific conclusion. Ask the following **at the residency review (once D1–D6 are delivered) and at the candidate gate, with evidence in hand**, not as a desk gate before handoff:
+
+- if the strongest interesting outcome is true, does it change a broader understanding rather than only describe one linguistic/game/model niche?
+- can the first natural object serve as a clean window onto a more general phenomenon?
+- would an average ACL/EMNLP/NAACL reviewer see the consequence without us inflating the Introduction?
+- can the result survive the sentence “this is just X on one more language/construction/dataset/model”?
+- is there enough independent evidence runway to distinguish a robust phenomenon from one elegant contrast?
+
+A narrow linguistic phenomenon can absolutely pass this gate when it exposes a broad property of language/model behavior. A broad-sounding topic can fail when the actual evidence supports only a tiny local claim.
+
+A natural, clean question is a good starting point, not yet a paper: the ceiling is established during residency. If the evidence stays local, re-scope within the territory before anyone considers closing the line (a human decision).
+
+## 10. Search output for this lane
+
+The output is a territory card (`../../templates/territory_card.md`). In this lane it should also contain:
+
+- **Natural question area:** one sentence, understandable outside the narrow subfield.
+- **Why it matters:** no benchmark-only justification.
+- **Why it should survive time:** why a stronger model / next release does not instantly obsolete the question.
+- **Why the answer is genuinely unknown:** not a disguised expected result.
+- **Existing natural data/object:** what we can actually study.
+- **Strong parent/baseline:** where workbench should start.
+- **Several plausible outcomes:** without choosing the desired one.
+- **Nearest-prior risk:** what could compress it into “already known”.
+- **Why Sasano might care:** tied to actual taste evidence, not our imitation of his vocabulary.
+
+Then hand the territory to `../../workbench/`.
+
+Do **not** create an Sxx ID here.
+
+## 11. Immediate warning signs
+
+- “We can raise a small model's reasoning benchmark by X points.”
+- “This agent/RAG/RL trick is hot right now.”
+- “The latest model has not been tested on this dataset.”
+- “A and B are theoretically different, so let's see whether the LLM distinguishes them.”
+- “There is probably an effect; let's design a synthetic setup that makes it measurable.”
+- “The result may be ordinary, but the experiment is very clean.”
+- “If it fails, we can add more controls / models / prompts until a story appears.”
+
+These are not automatically bad research in general. They are poor defaults for **this lane**.

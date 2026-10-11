@@ -1,0 +1,110 @@
+{
+  "reviewed_records": 162,
+  "manual_label_counts": {
+    "T1": 33,
+    "T2_PENDING": 13,
+    "T3_VISUAL": 28,
+    "NONPROP": 48,
+    "SEMANTIC_UNALIGNED": 2,
+    "UNUSABLE": 38
+  },
+  "t1_class_counts_in_review": {
+    "numeric_or_result": 8,
+    "method_or_scientific_entity": 8,
+    "qualifier_or_prose_claim": 8,
+    "table_figure_text_or_unit": 9
+  },
+  "confirmed_t1_yield": {
+    "proportion": 0.12808,
+    "estimated_count_in_500": 64.04,
+    "normal_95_ci": [
+      0.0948849859765725,
+      0.1612750140234275
+    ],
+    "strata": {
+      "exact_replacement_candidate": {
+        "population": 70,
+        "reviewed": 45,
+        "positives": 27,
+        "proportion": 0.6
+      },
+      "location_plus_new_candidate": {
+        "population": 6,
+        "reviewed": 4,
+        "positives": 0,
+        "proportion": 0.0
+      },
+      "metadata_or_nonpropositional": {
+        "population": 153,
+        "reviewed": 30,
+        "positives": 2,
+        "proportion": 0.06666666666666667
+      },
+      "numeric_or_symbolic_candidate": {
+        "population": 148,
+        "reviewed": 50,
+        "positives": 4,
+        "proportion": 0.08
+      },
+      "semantic_not_alignable": {
+        "population": 6,
+        "reviewed": 3,
+        "positives": 0,
+        "proportion": 0.0
+      },
+      "unusable_or_ambiguous": {
+        "population": 117,
+        "reviewed": 30,
+        "positives": 0,
+        "proportion": 0.0
+      }
+    }
+  },
+  "t1_plus_unverified_t2_ceiling": {
+    "proportion": 0.19099555555555556,
+    "estimated_count_in_500": 95.49777777777778,
+    "normal_95_ci": [
+      0.15130104522332483,
+      0.2306900658877863
+    ],
+    "strata": {
+      "exact_replacement_candidate": {
+        "population": 70,
+        "reviewed": 45,
+        "positives": 32,
+        "proportion": 0.7111111111111111
+      },
+      "location_plus_new_candidate": {
+        "population": 6,
+        "reviewed": 4,
+        "positives": 0,
+        "proportion": 0.0
+      },
+      "metadata_or_nonpropositional": {
+        "population": 153,
+        "reviewed": 30,
+        "positives": 2,
+        "proportion": 0.06666666666666667
+      },
+      "numeric_or_symbolic_candidate": {
+        "population": 148,
+        "reviewed": 50,
+        "positives": 12,
+        "proportion": 0.24
+      },
+      "semantic_not_alignable": {
+        "population": 6,
+        "reviewed": 3,
+        "positives": 0,
+        "proportion": 0.0
+      },
+      "unusable_or_ambiguous": {
+        "population": 117,
+        "reviewed": 30,
+        "positives": 0,
+        "proportion": 0.0
+      }
+    }
+  },
+  "interpretation_warning": "T2_PENDING is an upper-bound component, not confirmed gold. The 95% interval is a stratified normal design-based interval, not a simple-random Wilson interval."
+}

@@ -1,0 +1,64 @@
+{
+  "review_date": "2026-10-03",
+  "scope": "仅官方代码关键接口：当前学生反馈、旧新数据入口、记忆/重放、选样输出；未运行模型或GPU。",
+  "adapt_infinity": {
+    "official_code": "https://github.com/adymaharana/adapt-inf",
+    "commit": "d1b1b25946379b61113a231693452d961d44de48",
+    "cache": "/home/xiang/.cache/research/data-centric-rsi/adapt_inf_code",
+    "read_files": [
+      "llava/eval/model_data_scores_batched.py",
+      "llava/eval/model_data_scores.py",
+      "llava/grad_utils.py",
+      "data_selection/adapt-inf.py",
+      "llava/train/train.py"
+    ],
+    "interfaces": [
+      {
+        "file": "llava/eval/model_data_scores_batched.py",
+        "line": 104,
+        "finding": "显式model_path/model_base加载指定学生checkpoint，data_path提供待求分JSON；SequentialSampler保留记录顺序。"
+      },
+      {
+        "file": "llava/eval/model_data_scores_batched.py",
+        "line": 149,
+        "finding": "grads/reps开关产出候选梯度/表征/metrics缓存；Adam模式另读checkpoint目录optimizer_state.pt。"
+      },
+      {
+        "file": "llava/grad_utils.py",
+        "line": 493,
+        "finding": "普通模式对当前候选forward/backward后提取梯度、zero_grad并存缓存；这条求分路径没有optimizer.step，不是候选训练后终端效用oracle。"
+      },
+      {
+        "file": "data_selection/adapt-inf.py",
+        "line": 177,
+        "finding": "data_file逗号分隔多个JSON并按输入顺序拼接，旧/新池可由外部传入；不自动识别旧记录是否已训练。"
+      },
+      {
+        "file": "data_selection/adapt-inf.py",
+        "line": 64,
+        "finding": "每簇选score分布entropy最高的信号(MWP)；聚类预算、SemDeDup和CCS随后产生固定所选JSON。"
+      },
+      {
+        "file": "llava/train/train.py",
+        "line": 667,
+        "finding": "后续训练读单一data_path JSON。已读接口未见自动管理episodic memory或seek-stream→select→train完整控制器，README仍标Selection and Training instructions coming soon。"
+      }
+    ],
+    "e13_implication": "动态学生信号、旧新池合并、重选既有近邻；E13只比较冻结发布池资格与source/n部分补货的有后果差异，不拥有首次状态依赖/重放/自适应选择。"
+  },
+  "oasis": {
+    "official_code": "https://github.com/snumprlab/oasis",
+    "official_code_status": "GitHub页面This repository is empty；git clone同报empty，git ls-remote无refs。未能审读官方执行代码。",
+    "cache": "/home/xiang/.cache/research/data-centric-rsi/oasis_code",
+    "paper": "https://aclanthology.org/2026.acl-long.158/",
+    "paper_cache": "/home/xiang/.cache/research/data-centric-rsi/oasis/paper.txt",
+    "paper_contract_only": [
+      "A.2假定infinite episodic memory，所有遇到记录存入记忆，训练batch仅从记忆检索；并非训练只看当前新pool。",
+      "当前学生最后层梯度/Fisher近似作为informativeness；维护lagged EMA/EMV（β=.9），用sigmoid与随机阈值采样；SIREN再处理候选冗余。",
+      "论文称Bernoulli采样但公式单写batch阈值r；无代码不能核定逐例独立r或共享r，也不能将实现细节补成已核事实。"
+    ],
+    "e13_implication": "在线概率律、学生依赖和记忆重放已有方法契约。官方资产为空限制直接复现，不削弱其论文claim ownership、不构成我们增量。"
+  },
+  "gpu_runs_started": 0,
+  "claims_upgraded": []
+}

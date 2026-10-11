@@ -1,0 +1,10 @@
+# Regenerable local artifacts: run logs, shard manifests, and binary tensors.
+results/_logs/
+results/_shards/
+results/_*.log
+results/e03/*.pt
+# Invalid runs: the README explaining why they are excluded is tracked, the raw
+# generations behind them are not.
+results/_invalid/**/*.jsonl
+__pycache__/
+*.pyc

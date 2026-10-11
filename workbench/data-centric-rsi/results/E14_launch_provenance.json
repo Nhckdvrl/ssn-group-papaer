@@ -1,0 +1,52 @@
+{
+  "experiment": "E14",
+  "node": "fvcrc12",
+  "utc": "2026-10-02T17:25:17.172581+00:00",
+  "git_sha_at_bootstrap": "89bb50798a1261b327c7d031bfd5b8fcf1d117e5",
+  "frozen_training_contract_commit": "89bb507",
+  "launcher_sha256": "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e",
+  "queue_sha256": "ba7a41f87614611e28a8292cd9975572ae0a868daa54373f5618bcee9e0d3c2f",
+  "children": [
+    {
+      "role": "gpu0_driver",
+      "pid": 1454787,
+      "start_ticks": "1819196162",
+      "command": [
+        "/home/xiang/.venvs/data-centric-rsi/bin/python",
+        "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e14_train_queue.py",
+        "--gpu",
+        "0",
+        "--launcher-sha",
+        "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e"
+      ],
+      "process_group": 1454787
+    },
+    {
+      "role": "gpu1_driver",
+      "pid": 1454789,
+      "start_ticks": "1819196166",
+      "command": [
+        "/home/xiang/.venvs/data-centric-rsi/bin/python",
+        "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e14_train_queue.py",
+        "--gpu",
+        "1",
+        "--launcher-sha",
+        "cf6456e11b2518af38214480ea80731de8118e2262be684fad389a2daf63ab1e"
+      ],
+      "process_group": 1454789
+    },
+    {
+      "role": "budget_watch",
+      "pid": 1454790,
+      "start_ticks": "1819196166",
+      "command": [
+        "/home/xiang/.venvs/data-centric-rsi/bin/python",
+        "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e14_train_queue.py",
+        "--watch"
+      ],
+      "process_group": 1454790
+    }
+  ],
+  "GPU_started": false,
+  "note": "Queue launch only; runtime GPU/window success recorded separately"
+}

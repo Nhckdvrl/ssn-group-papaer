@@ -1,0 +1,201 @@
+"""Evaluate frozen attention predictors on fresh contexts, without output fitting."""
+import argparse
+from collections import Counter
+import copy
+import hashlib
+import json
+from pathlib import Path
+import platform
+import subprocess
+import time
+
+import numpy as np
+import torch
+import transformers
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers.models.qwen3 import modeling_qwen3 as qm
+from e71_relational import contexts, encode, fields, queries
+from e83_reader_features import MODELS, features, predict, prediction_error
+
+
+def hashes():
+    names = ['e83_predictive_reader.py', 'e83_reader_features.py', 'e71_relational.py',
+             'e58_factorization.py', 'e67_prefix.py']
+    return {n: hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in names}
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--model', required=True)
+    ap.add_argument('--reader', required=True)
+    ap.add_argument('--out', required=True)
+    ap.add_argument('--n', type=int, default=64)
+    ap.add_argument('--seed', type=int, default=183001)
+    ap.add_argument('--preflight-only', action='store_true')
+    a = ap.parse_args()
+    t0 = time.time()
+    torch.set_num_threads(6)
+    source_hashes = hashes()
+    dest, rd = Path(a.out), Path(a.reader)
+    dest.mkdir(parents=True, exist_ok=True)
+    metadata = json.loads((rd/'metadata.json').read_text())
+    coeff_hash = hashlib.sha256((rd/'coefficients.npz').read_bytes()).hexdigest()
+    assert coeff_hash == metadata['coefficient_sha256']
+    assert source_hashes['e83_reader_features.py'] == metadata['source_hashes']['e83_reader_features.py']
+    coefficients = dict(np.load(rd/'coefficients.npz'))
+    assert set(coefficients) == set(MODELS)
+    ctxs = contexts('confirmation', a.n, a.seed)
+    for c in ctxs:
+        c['queries'] = c['queries'][:4]
+    assert a.seed not in [82001, 182001, 81001, 181001]
+    labels = ['toxic', 'safe']
+    tok = AutoTokenizer.from_pretrained(a.model, local_files_only=True)
+    label_ids = [tok.encode(' '+x, add_special_tokens=False)[0] for x in labels]
+    for word in ctxs[0]['names']+ctxs[0]['codes']+labels+['Mark']:
+        assert len(tok.encode(' '+word, add_special_tokens=False)) == 1
+    for c in ctxs:
+        seq = [encode(tok,c,labels,'linked',layout) for layout in (0,1)]
+        assert seq[0][1:] == seq[1][1:] and Counter(seq[0][0]) == Counter(seq[1][0])
+        for q in c['queries']:
+            x,y = [fields(tok,q,c,'linked',layout) for layout in (0,1)]
+            assert len(x[0]) == len(y[0]) and Counter(x[0]) == Counter(y[0]) and x[1] == y[1]
+        alternative = copy.deepcopy(c)
+        alternative['orientation'] ^= 1
+        for q in alternative['queries']:
+            q['label'] ^= 1
+        assert np.array_equal(features(c),features(alternative)), 'Query-gold leakage'
+    preflight = dict(args=vars(a), source_hashes=source_hashes, coefficient_sha256=coeff_hash,
+                     layout_checks='passed', query_gold_independence='passed', n_contexts=len(ctxs))
+    (dest/'preflight.json').write_text(json.dumps(preflight,indent=2))
+    if a.preflight_only:
+        print(json.dumps(preflight),flush=True)
+        return
+    torch.manual_seed(0)
+    model = AutoModelForCausalLM.from_pretrained(a.model,local_files_only=True,dtype=torch.float32,
+                                                 device_map='cuda',attn_implementation='eager').eval()
+    assert len(model.model.layers) == metadata['n_layers']
+    original = qm.eager_attention_forward
+    state = dict(active=False)
+    errors = dict(self_margin=0.,full_forward=0.,row_sum=0.,carrier_probability=0.,masked_mass=0.)
+
+    def error(name,value):
+        errors[name] = max(errors[name],float(value))
+
+    def interface(module,query,key,value,attention_mask,scaling,dropout=0.,**kw):
+        out,p = original(module,query,key,value,attention_mask,scaling,dropout,**kw)
+        if not state['active']:
+            return out,p
+        li,group,mode = module.layer_idx,state['group'],state['mode']
+        valid = state['valid'][:,None,:,None]
+        if mode == 'native':
+            ks = qm.repeat_kv(key,module.num_key_value_groups)
+            logits = torch.matmul(query,ks.transpose(2,3))*scaling
+            if attention_mask is not None:
+                logits += attention_mask[:,:,:,:ks.shape[-2]]
+            logits[...,group] = -torch.inf
+            state['capture'][li] = dict(attention=p.clone(),log_r=logits.log_softmax(-1).clone())
+        else:
+            own = state['own'][li]
+            target = own['attention'].clone()
+            if mode != 'self':
+                lr = own['log_r'][...,-1,:].clone()
+                lr[...,state['sites']['label']] += state['delta'][li]
+                code = own['attention'][...,-1,group]
+                fin = (1-code.sum(-1,keepdim=True))*lr.softmax(-1)
+                fin[...,group] = code
+                target[...,-1,:] = fin
+            pnew = torch.where(valid,target,p)
+            error('row_sum',((pnew.sum(-1)-1)*valid[...,0]).abs().max())
+            error('carrier_probability',((pnew[...,group]-own['attention'][...,group])*valid).abs().max())
+            if attention_mask is not None:
+                forbidden = attention_mask[:,:,:,:p.shape[-1]] < -1e10
+                error('masked_mass',(pnew*forbidden*valid).sum(-1).max())
+            p = pnew
+            vs = qm.repeat_kv(value,module.num_key_value_groups)
+            out = torch.matmul(p,vs).transpose(1,2).contiguous()
+        lp = p[:,:,-1,state['sites']['label']]
+        total = lp.sum((1,2))
+        stats = dict(label_mass=lp.sum(-1).mean(1).cpu().tolist())
+        for factor in ['source','kind','source_kind']:
+            stats['within_'+factor] = ((lp*state[factor+'_match'][:,None,:]).sum((1,2))/total.clamp_min(1e-30)).cpu().tolist()
+        state['stats'][li] = stats
+        return out,p
+
+    qm.eager_attention_forward = interface
+
+    def prefix(c,layout,instruction=False):
+        state['active'] = False
+        ids,sites,_ = encode(tok,c,labels,'linked',layout,instruction)
+        out = model(input_ids=torch.tensor([ids],device='cuda'),use_cache=True,logits_to_keep=1)
+        return out.past_key_values,sites,len(ids),ids
+
+    def score(cache,c,layout,sites,plen,mode='native',own=None,delta=None):
+        ids,mask,pos = queries(tok,c,'linked',layout,plen)
+        cp = copy.deepcopy(cache)
+        cp.batch_repeat_interleave(4)
+        state.update(active=True,mode=mode,valid=mask[:,plen:].bool(),sites=sites,
+                     group=sites['tag' if layout==0 else 'prefix'],own=own,delta=delta,capture={},stats={})
+        for factor in ['source','kind']:
+            state[factor+'_match'] = torch.tensor([[q[factor]==d[factor] for d in c['demos']]
+                                                   for q in c['queries']],device='cuda')
+        state['source_kind_match'] = state['source_match'] & state['kind_match']
+        out = model(input_ids=ids,attention_mask=mask,position_ids=pos,past_key_values=cp,
+                    use_cache=True,logits_to_keep=1).logits[:,-1].float()
+        state['active'] = False
+        return (out[:,label_ids[1]]-out[:,label_ids[0]]).cpu().numpy(),state['capture'],state['stats']
+
+    (dest/'contexts.jsonl').write_text(''.join(json.dumps(c)+'\n' for c in ctxs))
+    with (dest/'behavior.jsonl').open('w') as stream,torch.inference_mode():
+        for ci,c in enumerate(ctxs):
+            caches,sites,lengths,seqs,cap = {},{},{},{},{}
+            scores,stats = {},{}
+            for layout in (0,1):
+                caches[layout],sites[layout],lengths[layout],seqs[layout] = prefix(c,layout)
+                k = f'D{layout}.native'
+                scores[k],cap[layout],stats[k] = score(caches[layout],c,layout,sites[layout],lengths[layout])
+                if ci < 4:
+                    for qi,q in enumerate(c['queries']):
+                        seq = seqs[layout]+fields(tok,q,c,'linked',layout)[0]
+                        state['active'] = False
+                        full = model(input_ids=torch.tensor([seq],device='cuda'),logits_to_keep=1).logits[0,-1].float()
+                        error('full_forward',abs(float(full[label_ids[1]]-full[label_ids[0]])-scores[k][qi]))
+            assert sites[0] == sites[1] and lengths[0] == lengths[1]
+            label_r = [torch.stack([cap[layout][li]['log_r'][...,-1,sites[layout]['label']].cpu()
+                                   for li in range(len(model.model.layers))]).numpy().transpose(0,2,1,3)
+                       for layout in (0,1)]
+            actual = label_r[1]-label_r[0]
+            deltas = {name:predict(beta,c) for name,beta in coefficients.items()}
+            predictive_errors = {name:prediction_error(actual,pred,label_r[0]) for name,pred in deltas.items()}
+            deltas.update(oracle_label=actual,RJ_source_flip=predict(coefficients['RJ'],c,True),
+                          self=np.zeros_like(actual))
+            for mode,delta in deltas.items():
+                td = torch.tensor(delta.transpose(0,2,1,3),device='cuda',dtype=torch.float32)
+                k = 'D0.'+mode
+                scores[k],_,stats[k] = score(caches[0],c,0,sites[0],lengths[0],mode,cap[0],td)
+                if mode == 'self':
+                    error('self_margin',abs(scores[k]-scores['D0.native']).max())
+            cache,st,pl,_ = prefix(c,0,True)
+            scores['D0.instruction'],_,stats['D0.instruction'] = score(cache,c,0,st,pl)
+            assert max(errors.values()) <= .01,errors
+            assert errors['row_sum'] <= 2e-5 and errors['carrier_probability'] <= 2e-5 and errors['masked_mass'] <= 1e-7
+            stream.write(json.dumps(dict(context=ci,signs=[2*q['label']-1 for q in c['queries']],
+                                         scores={k:list(map(float,v)) for k,v in scores.items()},
+                                         attention=stats,predictive_errors=predictive_errors))+'\n')
+            stream.flush()
+            if ci%8 == 0:
+                print(json.dumps(dict(context=ci,elapsed_s=round(time.time()-t0,1),control=errors)),flush=True)
+    qm.eager_attention_forward = original
+    assert hashes() == source_hashes
+    assert hashlib.sha256((rd/'coefficients.npz').read_bytes()).hexdigest() == coeff_hash
+    run = dict(args=vars(a),seconds=time.time()-t0,control=errors,source_hashes=source_hashes,
+               coefficient_sha256=coeff_hash,reader_metadata_sha256=hashlib.sha256((rd/'metadata.json').read_bytes()).hexdigest(),
+               config_sha256=hashlib.sha256((Path(a.model)/'config.json').read_bytes()).hexdigest(),
+               git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+               torch=torch.__version__,transformers=transformers.__version__,host=platform.node(),
+               gpu=torch.cuda.get_device_name(),n_layers=len(model.model.layers))
+    (dest/'run.json').write_text(json.dumps(run,indent=2))
+    print(json.dumps(run),flush=True)
+
+
+if __name__ == '__main__':
+    main()

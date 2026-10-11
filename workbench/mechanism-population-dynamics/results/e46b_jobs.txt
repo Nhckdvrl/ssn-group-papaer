@@ -1,0 +1,9 @@
+--size L --init 1 --corpus c4 --order 1 --save-branch-states
+--size L --init 1 --corpus code --order 1
+--size L --init 2 --corpus c4 --order 2
+--size L --init 2 --corpus code --order 2
+--size L --init 3 --corpus c4 --order 3
+--size L --init 3 --corpus code --order 3
+--size L --init 1 --corpus c4 --order 1 --branch 100 --to-corpus code --to-order 300
+--size L --init 1 --corpus c4 --order 1 --branch 1000 --to-corpus code --to-order 1200
+--size L --init 1 --corpus c4 --order 1 --branch 100 --eps 0.1

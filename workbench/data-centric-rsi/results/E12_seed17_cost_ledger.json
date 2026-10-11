@@ -1,0 +1,281 @@
+{
+  "experiment": "E12",
+  "date_local": "2026-10-03",
+  "successful_train": {
+    "wall_seconds": 16479.8,
+    "A100_allocation_hours": 4.577722222222222,
+    "per_arm": {
+      "random": {
+        "returncode": 0,
+        "wall_seconds": 3696.5,
+        "model_saved": true,
+        "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17"
+      },
+      "balanced": {
+        "returncode": 0,
+        "wall_seconds": 4383.4,
+        "model_saved": true,
+        "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17"
+      },
+      "icons_exact": {
+        "returncode": 0,
+        "wall_seconds": 4273.1,
+        "model_saved": true,
+        "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17"
+      },
+      "ards": {
+        "returncode": 0,
+        "wall_seconds": 4126.8,
+        "model_saved": true,
+        "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17"
+      }
+    }
+  },
+  "successful_eval": {
+    "wall_seconds": 10026.6,
+    "A100_allocation_hours": 2.7851666666666666,
+    "includes": "base, four frozen seed17 arms and one prewritten random checkpoint repeat",
+    "per_arm": {
+      "base": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/base_init_v3/results",
+        "error": null,
+        "wall_seconds": 2617.7
+      },
+      "random": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/random_s17_v2/results",
+        "error": null,
+        "wall_seconds": 1345.9
+      },
+      "balanced": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/balanced_s17/results",
+        "error": null,
+        "wall_seconds": 2059.3
+      },
+      "icons_exact": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/icons_exact_s17/results",
+        "error": null,
+        "wall_seconds": 1238.4
+      },
+      "ards": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/ards_s17/results",
+        "error": null,
+        "wall_seconds": 1332.9
+      }
+    },
+    "random_repeat": {
+      "status": "completed",
+      "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/random_s17_repeat/results",
+      "error": null,
+      "wall_seconds": 1432.4
+    }
+  },
+  "A100_measurement_scope": "Successful single-GPU wrapper wall includes loading, saving and CPU/I/O/remote-judge wait, not active GPU kernel time; jobs overlap across nodes so these sums are not end-to-end elapsed wall. Failed/setup/transfer costs are below, not silently included.",
+  "judge_final_fixed_service": {
+    "snapshot_utc": "2026-10-02T15:23:32.877281+00:00",
+    "server_pid": 975959,
+    "server_command": "/home/xiang/.venvs/vllm023-cu128/bin/python -m vllm.entrypoints.openai.api_server --model /home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654 --served-model-name Qwen3.5-27B --host 0.0.0.0 --port 8032 --dtype bfloat16 --max-model-len 4096 --max-num-seqs 16 --gpu-memory-utilization 0.78 --default-chat-template-kwargs {\"enable_thinking\":false} ",
+    "server_process_elapsed_seconds": 10917,
+    "server_process_start_local": "Fri Oct  2 21:21:35 2026",
+    "gpu_type": "NVIDIA RTX PRO 6000 Blackwell",
+    "gpu": 1,
+    "judge_checkpoint_path": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "judge_checkpoint_bytes": 55586167982,
+    "owned_child_pids": [
+      988541,
+      988543
+    ],
+    "gpu_snapshot_before_stop": [
+      "0, NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 892 MiB, 11 %",
+      "1, NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 77344 MiB, 0 %",
+      "2, NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 84728 MiB, 0 %",
+      "3, NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 14807 MiB, 0 %"
+    ],
+    "metrics": {
+      "vllm:num_requests_running{engine=\"0\",model_name=\"Qwen3.5-27B\"}": 0.0,
+      "vllm:num_requests_waiting{engine=\"0\",model_name=\"Qwen3.5-27B\"}": 0.0,
+      "vllm:prompt_tokens_total{engine=\"0\",model_name=\"Qwen3.5-27B\"}": 4335188.0,
+      "vllm:generation_tokens_total{engine=\"0\",model_name=\"Qwen3.5-27B\"}": 92167.0,
+      "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen3.5-27B\"}": 7443.0,
+      "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen3.5-27B\"}": 1388.0,
+      "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen3.5-27B\"}": 0.0,
+      "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen3.5-27B\"}": 0.0,
+      "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen3.5-27B\"}": 0.0
+    },
+    "metrics_path": "/var/tmp/xiang-data-rsi/e12/judge/metrics_final_20261003.prom",
+    "server_log": "/var/tmp/xiang-data-rsi/e12/judge/server_gpu1_native_sampler.log",
+    "scope": "Cumulative counts for the final fixed E12 judge service, including benchmark calls and endpoint smokes. Process elapsed includes initialization/wait/idle; active GPU time is unmeasured, and Blackwell time is not converted to A100.",
+    "shutdown_pending_requests_verified_zero": true,
+    "shutdown_verified_utc": "2026-10-02T15:26:59+00:00",
+    "server_and_owned_child_pids_absent": true,
+    "endpoint_connection_refused": true,
+    "gpu1_memory_after_shutdown_mib": 18,
+    "server_lifetime_upper_bound_seconds": 11124,
+    "actual_gpu_active_seconds": null
+  },
+  "download_manifests": {
+    "llava_arrow_download.json": {
+      "asset": "llava_arrow",
+      "repo": "Ethlake/llava-665k",
+      "repo_type": "dataset",
+      "revision": "235a8adf266bb6dc02a099dc0221d28dec058f54",
+      "path": "/var/tmp/xiang-data-rsi/e12/llava_arrow",
+      "files": 58,
+      "bytes": 93424292235,
+      "wall_seconds": 222.6,
+      "download_attempts": 1
+    },
+    "llava_init_download.json": {
+      "asset": "llava_init",
+      "repo": "anonneuripsmail/llava-1.5-7b-init",
+      "repo_type": "model",
+      "revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+      "path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+      "files": 15,
+      "bytes": 14131142000,
+      "wall_seconds": 3509.6,
+      "download_attempts": 3
+    },
+    "llava_json_download.json": {
+      "asset": "llava_json",
+      "repo": "liuhaotian/LLaVA-Instruct-150K",
+      "repo_type": "dataset",
+      "revision": "9d451dc7629cfe0469f6ae4432b765cd603d5fcb",
+      "path": "/var/tmp/xiang-data-rsi/e12/llava_json",
+      "files": 1,
+      "bytes": 1029887963,
+      "wall_seconds": 33.9
+    },
+    "icons_json_download.json": {
+      "asset": "icons_json",
+      "repo": "xindiw/LLAVA-ICONS-133K",
+      "repo_type": "dataset",
+      "revision": "c9b3bf7be76871575b739f28bed1cdc872db8e75",
+      "path": "/var/tmp/xiang-data-rsi/e12/icons_json",
+      "files": 3,
+      "bytes": 211751075,
+      "wall_seconds": 43.8
+    },
+    "ards_selected.manifest.json": {
+      "source": "gdrive://1rgzC3-aO-AgX08452HrlyxHWnldrjm4o",
+      "source_code": "/home/xiang/.cache/research/data-centric-rsi/CurationBench/baselines/scripts/download_llava665k.py",
+      "path": "/var/tmp/xiang-data-rsi/e12/ards_selected.json",
+      "bytes": 314477017,
+      "sha256": "deca6ddfc94b9e6a138fc2425f2b86294bbba8038850497f4f91057fc215f9fc",
+      "rows": 199586,
+      "unique_global_ids": 199586
+    },
+    "LMUData/e12_eval_download.json": {
+      "HallusionBench": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/HallusionBench.tsv",
+        "bytes": 94170019,
+        "md5": "0c23ac0dc9ef46832d7a24504f2a0c7c"
+      },
+      "LLaVABench": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/LLaVABench.tsv",
+        "bytes": 19691334,
+        "md5": "d382a093f749a697820d3dadd61c8428"
+      },
+      "MMBench": {
+        "url": "https://opencompass.openxlab.space/utils/benchmarks/MMBench/MMBench.tsv",
+        "bytes": 90568121,
+        "md5": "4115aea3383f3dd0083be6a633e0f820"
+      },
+      "MMMU_DEV_VAL": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/MMMU_DEV_VAL.tsv",
+        "bytes": 80999563,
+        "md5": "585e8ad75e73f75dcad265dfd0417d64"
+      },
+      "MMStar": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/MMStar.tsv",
+        "bytes": 59552082,
+        "md5": "e1ecd2140806c1b1bbf54b43372efb9e"
+      },
+      "MMVet": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/MMVet.tsv",
+        "bytes": 42861244,
+        "md5": "748aa6d4aa9d4de798306a63718455e3"
+      },
+      "MathVista_MINI": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/MathVista_MINI.tsv",
+        "bytes": 55136266,
+        "md5": "f199b98e178e5a2a20e7048f5dcb0464"
+      },
+      "OCRBench": {
+        "url": "https://opencompass.openxlab.space/utils/VLMEval/OCRBench.tsv",
+        "bytes": 113986299,
+        "md5": "e953d98a987cc6e26ef717b61260b778"
+      },
+      "wall_seconds": 783.0
+    }
+  },
+  "download_measurement_scope": "Recorded successful/resumed invocations. Arrow manifest 222.6s is the last successful resume, not cold transfer of all 93.4GB. Init 3509.6s records 3 attempts within that invocation; earlier whole-session failure time is not reconstructed. ARDS and judge-weight download wall unmeasured/not retained.",
+  "transfers": [
+    {
+      "asset": "random trained checkpoint fvcrc10 to fvcrc12",
+      "files": 15,
+      "bytes": 14131147048,
+      "verification": "rsync -anic content identical",
+      "wall_seconds": null
+    },
+    {
+      "asset": "ARDS subset fvcrc10 to fvcrc12",
+      "bytes": 1699714321,
+      "verification": "three Arrow shards and selection manifest SHA256 4/4 identical",
+      "wall_seconds": null
+    }
+  ],
+  "failed_eval_records": {
+    "base_init/completion.json": {
+      "status": "failed",
+      "error": "VLMEvalKit exited with code 1",
+      "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/base_init/results",
+      "wall_seconds": 10.5
+    },
+    "random_s17/completion.json": {
+      "status": "failed",
+      "error": "uv is required for benchmark-owned train/eval tools but was not found. Install the `uv` package or ensure the `uv` executable is on PATH.",
+      "wall_seconds": 0.0
+    }
+  },
+  "other_failure_costs": {
+    "first_random_train_physical_GPU_mapping": {
+      "optimizer_steps": 0,
+      "wall_seconds": null,
+      "retained_directory": "fvcrc10:/var/tmp/xiang-data-rsi/e12/train_runs/random_s17"
+    },
+    "base_SHA_gate_pre_directory": {
+      "benchmark_scores": 0,
+      "wall_seconds": null
+    },
+    "balanced_shell_redirect_missing_parent": {
+      "python_launched": false,
+      "benchmark_scores": 0,
+      "wall_seconds": null
+    },
+    "judge_second_failed_start_measured_segments": {
+      "weight_loading_seconds": 671.6,
+      "torch_compile_seconds": 227.4,
+      "warmup_seconds": 195.0,
+      "complete_failed_service_wall_seconds": null,
+      "source": "E12 card and retained fvcrc20 judge/server_gpu1.log"
+    },
+    "other_download_and_judge_start_smoke_failures": {
+      "complete_wall_seconds": null,
+      "logs_retained": true
+    }
+  },
+  "unmeasured": [
+    "active GPU kernel seconds for training/evaluation/judge",
+    "CPU and I/O separately within wrappers",
+    "full download-from-empty-cache and all prior failed/resume attempts",
+    "transfer wall, including initial parent/other-subset staging",
+    "complete overhead of all failed starts and CPU/preflight preparation"
+  ],
+  "external_paid_API_calls": 0,
+  "external_API_charge_usd": 0
+}

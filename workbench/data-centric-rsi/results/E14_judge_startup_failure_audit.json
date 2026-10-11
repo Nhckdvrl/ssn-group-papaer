@@ -1,0 +1,139 @@
+{
+  "captured_utc": "2026-10-03T08:41:51.917469+00:00",
+  "host_date": "2026-10-03T17:41:51+09:00",
+  "launch": {
+    "owner_token": "397e6d2482224e058a143c20cf9252ea",
+    "started_utc": "2026-10-02T18:37:00.541307+00:00",
+    "pid": 1322374,
+    "start_ticks": "2762152947",
+    "process_group": 1322374,
+    "command": [
+      "/home/xiang/.venvs/vllm023-cu128/bin/python",
+      "-m",
+      "vllm.entrypoints.openai.api_server",
+      "--model",
+      "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+      "--served-model-name",
+      "Qwen3.5-27B",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8033",
+      "--dtype",
+      "bfloat16",
+      "--tensor-parallel-size",
+      "1",
+      "--max-model-len",
+      "4096",
+      "--max-num-seqs",
+      "16",
+      "--gpu-memory-utilization",
+      "0.78",
+      "--default-chat-template-kwargs",
+      "{\"enable_thinking\":false}"
+    ],
+    "environment": {
+      "CUDA_VISIBLE_DEVICES": "3",
+      "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+      "VLLM_USE_FLASHINFER_SAMPLER": "0"
+    },
+    "gpu_type": "Blackwell",
+    "gpu": 3,
+    "residency_cap_seconds": 14400,
+    "active_gpu_time": "unmeasured",
+    "watch_pid": 1322375,
+    "watch_start_ticks": "2762152947"
+  },
+  "original_cost_snapshot": {
+    "utc": "2026-10-02T19:07:28.879235+00:00",
+    "owner_token": "397e6d2482224e058a143c20cf9252ea",
+    "launch_manifest": {
+      "owner_token": "397e6d2482224e058a143c20cf9252ea",
+      "started_utc": "2026-10-02T18:37:00.541307+00:00",
+      "pid": 1322374,
+      "start_ticks": "2762152947",
+      "process_group": 1322374,
+      "command": [
+        "/home/xiang/.venvs/vllm023-cu128/bin/python",
+        "-m",
+        "vllm.entrypoints.openai.api_server",
+        "--model",
+        "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "--served-model-name",
+        "Qwen3.5-27B",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8033",
+        "--dtype",
+        "bfloat16",
+        "--tensor-parallel-size",
+        "1",
+        "--max-model-len",
+        "4096",
+        "--max-num-seqs",
+        "16",
+        "--gpu-memory-utilization",
+        "0.78",
+        "--default-chat-template-kwargs",
+        "{\"enable_thinking\":false}"
+      ],
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "3",
+        "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0"
+      },
+      "gpu_type": "Blackwell",
+      "gpu": 3,
+      "residency_cap_seconds": 14400,
+      "active_gpu_time": "unmeasured",
+      "watch_pid": 1322375,
+      "watch_start_ticks": "2762152947"
+    },
+    "metrics": {},
+    "pending_requests": null,
+    "metrics_error": "<urlopen error [Errno 111] Connection refused>",
+    "failure_cleanup": true,
+    "owned_processes": [
+      {
+        "pid": 1322374,
+        "start_ticks": "2762152947"
+      },
+      {
+        "pid": 1328237,
+        "start_ticks": "2762215964"
+      }
+    ],
+    "active_gpu_time": "unmeasured",
+    "not_A100_converted": true,
+    "API_paid_requests": 0,
+    "stopped_utc": "2026-10-02T19:07:50.137523+00:00",
+    "remaining_owned_processes": [],
+    "server_residency_seconds_upper_bound": 1849.64314,
+    "endpoint_port_closed": true,
+    "cleanup_complete": true,
+    "judge_allocated_Blackwell_hours_upper_bound": 0.5137897611111111
+  },
+  "server_log_sha256": "7b0b53e15daf93e9e86404b45dbd1d3b3fab990be54d0952aae50da9134227ab",
+  "relevant_log_lines": [
+    "(EngineCore pid=1328239) INFO 10-03 04:38:58 [core.py:306] init engine (profile, create kv cache, warmup model) took 501.43 s (compilation: 185.01 s)",
+    "(EngineCore pid=1328239) INFO 10-03 16:07:04 [core.py:1178] [shutdown] EngineCore: trigger received signal=SIGTERM",
+    "(EngineCore pid=1328239) INFO 10-03 16:07:04 [core.py:1191] [shutdown] EngineCore: exiting busy loop"
+  ],
+  "old_processes_present": {
+    "1322374": false,
+    "1328239": false,
+    "1322375": false
+  },
+  "correction": {
+    "original_cleanup_complete_is_invalid": true,
+    "cause": "PGID filtering excluded the authenticated-token EngineCore child after its process-group change. The watchdog trusted that incomplete cleanup flag.",
+    "original_0_51379_hours_is_not_total_residency": true,
+    "engine_shutdown_log_utc": "2026-10-03T07:07:04+00:00",
+    "launch_to_engine_shutdown_log_seconds": 45003.458693,
+    "accounting_scope": "Conservative launch-to-shutdown-log wall span, including CPU loading; final resource-teardown completion timestamp and GPU-kernel-active time were not measured. Do not describe this as an exact GPU-active duration or a proved allocation upper bound.",
+    "original_4h_cap_enforcement_failed": true,
+    "terminal_evaluations_completed": 0,
+    "scientific_results": null
+  }
+}

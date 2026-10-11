@@ -1,0 +1,424 @@
+{
+  "scope": "E09 original strict gate retained; object parsing is POST-HOC diagnostic, not protocol success",
+  "raw_sha256": "9a232e1e7c61d6d7c26fd757339b23e538f0eaeba26eed222e52e4355a7df06d",
+  "strict_manifest_sha256": "dd99df21319f7d11a1cee2179e35705334b5464003de423ab167e4b48ade2e40",
+  "strict_valid_per_arm": {
+    "no_state": 1,
+    "with_state": 0
+  },
+  "diagnostic_parse_valid_per_arm": {
+    "no_state": 8,
+    "with_state": 8
+  },
+  "finish_reasons": {
+    "stop": 17,
+    "length": 3
+  },
+  "math_review_counts": {
+    "correct": 13,
+    "math_correct_unparseable": 1,
+    "not_available_after_truncation": 3,
+    "wrong_final": 2,
+    "wrong_reasoning": 1
+  },
+  "independent_calculations": {
+    "no_state:0": 1900,
+    "no_state:2": 140,
+    "with_state:2": 105,
+    "no_state:4": 15,
+    "with_state:4": [
+      "1/8",
+      "8"
+    ],
+    "no_state:5": "Union({0}, Interval(1, 7))",
+    "with_state:5": 497,
+    "no_state:6": 51,
+    "with_state:6": 240,
+    "no_state:8": {
+      "min": "-45/11",
+      "hessian_determinant": "44"
+    },
+    "with_state:8": "5*sqrt(2)",
+    "no_state:9": "8/3",
+    "with_state:9": "7/3"
+  },
+  "records": [
+    {
+      "arm": "no_state",
+      "index": 0,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1587,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "2a629b9bc8cdffbff1e7552729a364877c3f7ea26019357c516834b9663abe29",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Find the smallest positive integer $ n $ such that the sum of its digits is 10 and $ n $ is divisible by 100.",
+      "final_answer": "1900",
+      "math_review": "correct",
+      "math_review_reason": "Enumerate multiples of 100: first digit sum 10 is 1900."
+    },
+    {
+      "arm": "with_state",
+      "index": 0,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1187,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "c3360d9919878af022b6025923294131dcc6f9eb762750b6bb1b6469df60af94",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Solve the equation $3^{2x} - 10 \\cdot 3^x + 9 = 0$ and find the sum of all real solutions.",
+      "final_answer": "2",
+      "math_review": "correct",
+      "math_review_reason": "y=3^x has roots 1 and 9, hence x=0 and 2."
+    },
+    {
+      "arm": "no_state",
+      "index": 1,
+      "strict_valid": true,
+      "finish_reason": "stop",
+      "generated_tokens": 2762,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "2296f575a95edb99fa88cc4ac5a4fe1f3acccdfd94e88e758b0413476ac838af",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Solve for $x$ in the equation $2^x + 2^x + 2^x = 192$.",
+      "final_answer": "6",
+      "math_review": "correct",
+      "math_review_reason": "3*2^x=192 implies x=6."
+    },
+    {
+      "arm": "with_state",
+      "index": 1,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 845,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "0d38d08ae0918cea79e08691a4def499ddfd4447dc46deec37058551d88f9782",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Solve for $x$ in the equation $2^{x+1} + 2^x = 24$.",
+      "final_answer": "\\boxed{3}",
+      "math_review": "correct",
+      "math_review_reason": "3*2^x=24 implies x=3."
+    },
+    {
+      "arm": "no_state",
+      "index": 2,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 810,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "e4432f767b31183d69b47e137ef453d70e0bb8700770e4976f86111eb292627a",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "A sequence is defined such that the first term is 5, and each subsequent term is the sum of the previous term and an increment that increases by 3 each time (i.e., the second term is 5 + 3, the third term is 8 + 6, the fourth term is 14 + 9, etc.). What is the 10th term of this sequence?",
+      "final_answer": "140",
+      "math_review": "correct",
+      "math_review_reason": "5+3*sum(1..9)=140."
+    },
+    {
+      "arm": "with_state",
+      "index": 2,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1551,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "2a905811000b0de20e5dadf1a1cbf8c9f857e858a8ff96c5ff50255cc6cca088",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "A very large number $ x $ is equal to $ 2^2 \\cdot 3^3 \\cdot 4^4 \\cdot 5^5 \\cdot 6^6 \\cdot 7^7 \\cdot 8^8 \\cdot 9^9 $. What is the smallest positive integer that, when multiplied with $ x $, produces a product that is a perfect square?",
+      "final_answer": "105",
+      "math_review": "correct",
+      "math_review_reason": "Prime exponent parities are 2:even, 3/5/7:odd; multiplier 105."
+    },
+    {
+      "arm": "no_state",
+      "index": 3,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1316,
+      "diagnostic_parse_valid": false,
+      "diagnostic_parse_error": "Invalid \\escape: line 2 column 50 (char 51)",
+      "math_review": "math_correct_unparseable",
+      "math_review_reason": "Sine rule gives BC=8*sin(30)/sin(45)=4*sqrt(2); raw JSON contains illegal \\circ escapes."
+    },
+    {
+      "arm": "with_state",
+      "index": 3,
+      "strict_valid": false,
+      "finish_reason": "length",
+      "generated_tokens": 3072,
+      "diagnostic_parse_valid": false,
+      "diagnostic_parse_error": "unclosed thinking block",
+      "math_review": "not_available_after_truncation"
+    },
+    {
+      "arm": "no_state",
+      "index": 4,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2313,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "fab95a57a3297dbb6242b58d317fc731d6c6f2d8c5c11d77424af574e2149327",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Let $ f(x) $ be a quadratic function such that $ f(1) = 3 $, $ f(2) = 5 $, and $ f(3) = 9 $. Find $ f(4) $.",
+      "final_answer": "15",
+      "math_review": "correct",
+      "math_review_reason": "Quadratic interpolation f(1..3) gives f(4)=15."
+    },
+    {
+      "arm": "with_state",
+      "index": 4,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 996,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "a58e7036c910164385ef48eacac2c7ab82e7e109a4a8597b9a7612dbeffa393f",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "What is the largest value of $ x $ such that the expression $\\dfrac{x+1}{8x^2 - 65x + 8}$ is not defined?",
+      "final_answer": "8",
+      "math_review": "correct",
+      "math_review_reason": "Denominator roots are 1/8 and 8."
+    },
+    {
+      "arm": "no_state",
+      "index": 5,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1868,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "d669e1666b3227d7996ef0e2cc4024445a784a1f324323e14c47be57d41e9339",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Find all real numbers $ x $ that satisfy $ |x^2 - 4x| \\leq 3x $.",
+      "final_answer": "[0, 7]",
+      "math_review": "wrong_final",
+      "math_review_reason": "Solution is {0} union [1,7], not [0,7]; x=1/2 is a counterexample."
+    },
+    {
+      "arm": "with_state",
+      "index": 5,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2714,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "f9f4d1f7bc3efaec252d204e6f554c7bed50a6e15a7e26ec3fe6647f9e24a771",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "What is the smallest three-digit positive integer divisible by 7 whose digits add up to 20?",
+      "final_answer": "497",
+      "math_review": "correct",
+      "math_review_reason": "Exhaustive three-digit multiples of seven: first digit sum 20 is 497."
+    },
+    {
+      "arm": "no_state",
+      "index": 6,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2475,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "ad2aca7291d47dc1ecdc31eb24b605b95156812a1cbeb6889d9208d7d3d47e1d",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Find the smallest positive integer $ n $ divisible by 3 such that $ n^2 - 1 $ is divisible by 100.",
+      "final_answer": "99",
+      "math_review": "wrong_final",
+      "math_review_reason": "n=51 is divisible by 3 and 51^2-1=2600; exhaustive minimum is 51, not 99."
+    },
+    {
+      "arm": "with_state",
+      "index": 6,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1115,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "93159d2f3c96b39045ad0e88e91661c0b905d3102e600836e226e4317a572506",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Find the smallest positive integer that is divisible by 3, 4, and 5, and when divided by 7 leaves a remainder of 2.",
+      "final_answer": "240",
+      "math_review": "correct",
+      "math_review_reason": "LCM=60; least positive 60k congruent 2 modulo 7 is 240."
+    },
+    {
+      "arm": "no_state",
+      "index": 7,
+      "strict_valid": false,
+      "finish_reason": "length",
+      "generated_tokens": 3072,
+      "diagnostic_parse_valid": false,
+      "diagnostic_parse_error": "unclosed thinking block",
+      "math_review": "not_available_after_truncation"
+    },
+    {
+      "arm": "with_state",
+      "index": 7,
+      "strict_valid": false,
+      "finish_reason": "length",
+      "generated_tokens": 3072,
+      "diagnostic_parse_valid": false,
+      "diagnostic_parse_error": "unclosed thinking block",
+      "math_review": "not_available_after_truncation"
+    },
+    {
+      "arm": "no_state",
+      "index": 8,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2402,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "58c22893b817b65cb70b2cbc18f80b4399cb1c992baf79b17313515058152f83",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "Find the minimum value of $3x^2 + 4xy + 5y^2 - 6x - 8y$ over all real numbers $x$ and $y$.",
+      "final_answer": "-\\frac{45}{11}",
+      "math_review": "wrong_reasoning",
+      "math_review_reason": "Final minimum -45/11 is right, but stated Hessian determinant 11 is false; actual det([[6,4],[4,10]])=44."
+    },
+    {
+      "arm": "with_state",
+      "index": 8,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2133,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "8e82cef1582df0907b50c31c97cc03098036fb9c3d408da122055623d1db858f",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "A rectangular box has dimensions 3 units, 4 units, and 5 units. What is the length of the space diagonal of the box?",
+      "final_answer": "\\boxed{5\\sqrt{2}}",
+      "math_review": "correct",
+      "math_review_reason": "sqrt(3^2+4^2+5^2)=5*sqrt(2)."
+    },
+    {
+      "arm": "no_state",
+      "index": 9,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 2500,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "c21fc05a017c9debf98ca9d131b578be8c0aeae646d77c49c1608343ab29fd54",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "A rectangle has vertices at $(0, 0)$, $(4, 0)$, $(0, 3)$, and $(4, 3)$. A line from $(0, 0)$ to a point on the top side of the rectangle divides the rectangle into two regions with areas in the ratio $1:2$. Find the $x$-coordinate of the point where the line intersects the top side.",
+      "final_answer": "\\frac{8}{3}",
+      "math_review": "correct",
+      "math_review_reason": "Triangle area 3x/2 is one-third of rectangle area 12, giving x=8/3."
+    },
+    {
+      "arm": "with_state",
+      "index": 9,
+      "strict_valid": false,
+      "finish_reason": "stop",
+      "generated_tokens": 1608,
+      "diagnostic_parse_valid": true,
+      "problem_hash": "2984544818431462ed701af5cfb926387f78327c1126fbc83a63170235cb6606",
+      "flags": {
+        "input_copy": false,
+        "pool_exact": false,
+        "dev_exact": false,
+        "test_exact": false,
+        "same_arm_duplicate": false,
+        "cross_arm_duplicate": false
+      },
+      "problem": "If $x$ and $y$ are real numbers such that $x^3 - y^3 = 3$ and $x - y = 1$, find $x^2 + y^2$.",
+      "final_answer": "\\frac{7}{3}",
+      "math_review": "correct",
+      "math_review_reason": "x^2+xy+y^2=3 and x^2-2xy+y^2=1 imply xy=2/3 and x^2+y^2=7/3."
+    }
+  ]
+}

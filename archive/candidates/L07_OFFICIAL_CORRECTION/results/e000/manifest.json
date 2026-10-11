@@ -1,0 +1,277 @@
+{
+  "completed_utc": "2026-09-08T15:25:35.976001+00:00",
+  "config": {
+    "query": "\"Published Erratum\"[Publication Type] AND \"pubmed pmc\"[sb]",
+    "sample_size": 500,
+    "seed": 20260908,
+    "review_seed": 20260909,
+    "review_quotas": {
+      "exact_replacement_candidate": 45,
+      "location_plus_new_candidate": 4,
+      "numeric_or_symbolic_candidate": 50,
+      "metadata_or_nonpropositional": 30,
+      "semantic_not_alignable": 3,
+      "unusable_or_ambiguous": 30
+    },
+    "pubmed_batch_size": 100,
+    "pmc_batch_size": 20,
+    "request_interval_seconds": 0.36,
+    "tool": "l07-official-correction-audit",
+    "email": ""
+  },
+  "frame_count": 121396,
+  "requested_sample": 500,
+  "valid_linked_fulltext_records": 500,
+  "missing_after_metadata_validation": [],
+  "pmc_documents_parsed": 500,
+  "correction_notice_documents_matched": 500,
+  "parse_errors": [],
+  "parser_category_counts": {
+    "exact_replacement_candidate": 70,
+    "location_plus_new_candidate": 6,
+    "metadata_or_nonpropositional": 153,
+    "numeric_or_symbolic_candidate": 148,
+    "semantic_not_alignable": 6,
+    "unusable_or_ambiguous": 117
+  },
+  "year_range": [
+    1919,
+    2026
+  ],
+  "unique_journals": 329,
+  "top_journals": [
+    [
+      "PloS one",
+      36
+    ],
+    [
+      "Scientific reports",
+      31
+    ],
+    [
+      "Nature communications",
+      9
+    ],
+    [
+      "Proceedings of the National Academy of Sciences of the United States of America",
+      7
+    ],
+    [
+      "JAMA network open",
+      6
+    ],
+    [
+      "Medicine",
+      5
+    ],
+    [
+      "Frontiers in microbiology",
+      5
+    ],
+    [
+      "Frontiers in oncology",
+      4
+    ],
+    [
+      "PLoS genetics",
+      4
+    ],
+    [
+      "International journal of molecular sciences",
+      4
+    ],
+    [
+      "BioMed research international",
+      3
+    ],
+    [
+      "Frontiers in medicine",
+      3
+    ],
+    [
+      "RSC advances",
+      3
+    ],
+    [
+      "Oncology reports",
+      3
+    ],
+    [
+      "Frontiers in psychology",
+      3
+    ],
+    [
+      "Archives of dermatological research",
+      3
+    ],
+    [
+      "Frontiers in pharmacology",
+      3
+    ],
+    [
+      "PLoS computational biology",
+      3
+    ],
+    [
+      "Frontiers in plant science",
+      3
+    ],
+    [
+      "Stem cell research & therapy",
+      3
+    ]
+  ],
+  "year_counts": {
+    "1919": 1,
+    "2011": 2,
+    "2013": 1,
+    "2014": 2,
+    "2015": 25,
+    "2016": 33,
+    "2017": 33,
+    "2018": 37,
+    "2019": 35,
+    "2020": 36,
+    "2021": 55,
+    "2022": 44,
+    "2023": 56,
+    "2024": 46,
+    "2025": 52,
+    "2026": 42
+  },
+  "artifacts": {
+    "data/raw/e000/sampling_frame.json": {
+      "bytes": 1359623,
+      "sha256": "e360b5f31138c8130c3ba5d905e66c4169a1faa0a5a9339659403b91ce103b65"
+    },
+    "data/raw/e000/pubmed_000.xml": {
+      "bytes": 489102,
+      "sha256": "8042809f8c4cb9dfc873578d82b1cccd25bf53d12415ec41badc9bbbd5b66ffb"
+    },
+    "data/raw/e000/pubmed_001.xml": {
+      "bytes": 494965,
+      "sha256": "4d08f4aa9aec8f4ae0c1de83627cde31093fb2ed27f4ab537bd4c63ef037be86"
+    },
+    "data/raw/e000/pubmed_002.xml": {
+      "bytes": 449092,
+      "sha256": "dbcf73db5c4303a2fda8a4e004b0373475b15e91fa33aa3410c8a47a3aee32fb"
+    },
+    "data/raw/e000/pubmed_003.xml": {
+      "bytes": 425923,
+      "sha256": "a56a2da79a784ed437936101051a0cfde4ca5724079454197d42beb8af1ec021"
+    },
+    "data/raw/e000/pubmed_004.xml": {
+      "bytes": 489417,
+      "sha256": "3026aad453a55113421cdc9189438f7d7c81b222d4a7bb29c66d50dd72c5f016"
+    },
+    "data/raw/e000/pmc_000.xml": {
+      "bytes": 195805,
+      "sha256": "5ceb6db9b5cea1d8ddbe8b010c889d8766ff6cc8edc13d7abc86b95a791bc246"
+    },
+    "data/raw/e000/pmc_001.xml": {
+      "bytes": 195059,
+      "sha256": "10adfaaba535006e1f6ea451a8140fa6f90db335a5e3879ce40633592247147a"
+    },
+    "data/raw/e000/pmc_002.xml": {
+      "bytes": 310444,
+      "sha256": "c5b2de86cbb743ed3d40da8d580c90e73b11e630837bf42c317aabe41b5ed683"
+    },
+    "data/raw/e000/pmc_003.xml": {
+      "bytes": 236498,
+      "sha256": "6184fe1a24e455fe682e627601ce2d0826e800af5e1345b90837723e93fa5c6d"
+    },
+    "data/raw/e000/pmc_004.xml": {
+      "bytes": 220726,
+      "sha256": "b33b04728812b5f5eafbc32fba14c2fb108a27d9f72a88a8e55948e3981556bb"
+    },
+    "data/raw/e000/pmc_005.xml": {
+      "bytes": 191578,
+      "sha256": "3e19bb4aea86388b5a0335f253f51f9efcd67b75594ed6052df563c53366dcbe"
+    },
+    "data/raw/e000/pmc_006.xml": {
+      "bytes": 239962,
+      "sha256": "25fa3438838587e066cd4b5709a1fd0f81cffcc155219982d066d399ead64396"
+    },
+    "data/raw/e000/pmc_007.xml": {
+      "bytes": 255236,
+      "sha256": "877f8c18e02ed4bb9331da14ea7cf0fd3aac285f7ff770f55dafe4310b68e8a3"
+    },
+    "data/raw/e000/pmc_008.xml": {
+      "bytes": 196743,
+      "sha256": "b46f42c937a56cea439f4c72e79e70e36ab063acf7a0b840015ff53a661c6994"
+    },
+    "data/raw/e000/pmc_009.xml": {
+      "bytes": 216539,
+      "sha256": "9f9d58e831dcad67f1d337df5179873c33cbddc61b8f5d13a3d6e7e78cea2130"
+    },
+    "data/raw/e000/pmc_010.xml": {
+      "bytes": 178934,
+      "sha256": "8b05becdb2682d6fcdaa9024c4cbf153e1a1d9cd8ddc9868e8651143e747317c"
+    },
+    "data/raw/e000/pmc_011.xml": {
+      "bytes": 180615,
+      "sha256": "4cef8ab6fe807b7212a7b299ecec2db84893898b5ea0becfd7ac85c1d61a1cae"
+    },
+    "data/raw/e000/pmc_012.xml": {
+      "bytes": 203977,
+      "sha256": "39c1b5d1aa3702cbf0275b84e7cd2bbdd91de0bb75a22d39e174eb5d1500f7c1"
+    },
+    "data/raw/e000/pmc_013.xml": {
+      "bytes": 271616,
+      "sha256": "aa6de05b39bb01cbcc14f5841b2e0550ed7f06c2759790f7ca403dbf7f0814c8"
+    },
+    "data/raw/e000/pmc_014.xml": {
+      "bytes": 188270,
+      "sha256": "1b116ccf9614f441c32bad36f72ac35b818bfeb83feb4fbb62cc7c9bd057b057"
+    },
+    "data/raw/e000/pmc_015.xml": {
+      "bytes": 225916,
+      "sha256": "153124b591f2eeaac9122a3cc6590f2480741b71fa40367f7d6f8a34e6d99edb"
+    },
+    "data/raw/e000/pmc_016.xml": {
+      "bytes": 193263,
+      "sha256": "fc2f53cdc6c5b4d50676197f90e5d9fdd22f747d62525febb8d1241a420ecbc2"
+    },
+    "data/raw/e000/pmc_017.xml": {
+      "bytes": 187246,
+      "sha256": "dddd028a70b254a8748ee1a0ecf1efbce258586179cf171c3a38eb7d54cee275"
+    },
+    "data/raw/e000/pmc_018.xml": {
+      "bytes": 210186,
+      "sha256": "df0d7bcf0853c0b56d7737869d547f7d4a57b66e8fba83fcfb159bc055e13452"
+    },
+    "data/raw/e000/pmc_019.xml": {
+      "bytes": 207993,
+      "sha256": "003bea681d7c7c6ef89a20c35dac508f7f1eebd39ee10a1d56cc90a8e8c9cb2c"
+    },
+    "data/raw/e000/pmc_020.xml": {
+      "bytes": 191633,
+      "sha256": "1e7adca2062f7432c24667388923d9393aa0285d0ac63f5b1a46a75b9552ddc1"
+    },
+    "data/raw/e000/pmc_021.xml": {
+      "bytes": 279838,
+      "sha256": "16cc0613622af0ada2f532f2bca960f0281f5399b2792f61e060fe560cf9b73e"
+    },
+    "data/raw/e000/pmc_022.xml": {
+      "bytes": 198746,
+      "sha256": "7d2f5c22ab8e9c9b3b8d7dc2b7a25e9720aa0796f13044c7f6fc58eac21aeb6d"
+    },
+    "data/raw/e000/pmc_023.xml": {
+      "bytes": 195308,
+      "sha256": "6245c408ec834cec1c6541d230caf67d97d67d8455df24194bcd6fde4d938e83"
+    },
+    "data/raw/e000/pmc_024.xml": {
+      "bytes": 201234,
+      "sha256": "1912cd80b958780adc9890ea7f120123fd7c345ecdd91be8c1571106bae774d0"
+    },
+    "data/processed/e000/notices.jsonl": {
+      "bytes": 880140,
+      "sha256": "f86980fa9c9d0f3d683170667be157dcd7f573677ea6627496492d68cb4014b3"
+    },
+    "data/processed/e000/review_sheet.csv": {
+      "bytes": 645719,
+      "sha256": "a1aba5fbf7642b173e7b87cc2c441f352aa8b491844e12e479c2b7cf672f7e16"
+    }
+  },
+  "warning": "Parser categories are triage labels, not gold tiers."
+}

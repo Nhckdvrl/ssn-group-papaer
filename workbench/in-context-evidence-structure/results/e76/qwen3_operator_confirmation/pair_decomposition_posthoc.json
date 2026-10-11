@@ -1,0 +1,91 @@
+{
+  "status": "POST-HOC",
+  "reason": "Confirmation accuracy below .80 despite replicated signed response; inspect all Source pairs before new diagnostics.",
+  "definitions": "LA=logp_A(tA)-logp_A(tB); LB analogous. c=(LA+LB)/2, s=(LA-LB)/2. Pair ranking s>0; both legal decisions correct iff s>|c|. Four-way out-of-family choices separate.",
+  "metrics": {
+    "0": {
+      "absolute_common_preference": {
+        "mean": 0.983517300686799,
+        "ci95": [
+          0.8352341673744377,
+          1.1371421606469085
+        ],
+        "n_contexts": 64
+      },
+      "source_separation": {
+        "mean": 0.7893437627935782,
+        "ci95": [
+          0.7083852054594899,
+          0.8735333327917033
+        ],
+        "n_contexts": 64
+      },
+      "source_ranking": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 64
+      },
+      "outside_function_family": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 64
+      },
+      "same_side_source_pair": {
+        "mean": 0.625,
+        "ci95": [
+          0.5,
+          0.734375
+        ],
+        "n_contexts": 64
+      }
+    },
+    "1": {
+      "absolute_common_preference": {
+        "mean": 0.9335330137400888,
+        "ci95": [
+          0.7980384716633125,
+          1.0705974849770428
+        ],
+        "n_contexts": 64
+      },
+      "source_separation": {
+        "mean": 0.8755508751492016,
+        "ci95": [
+          0.7856600729530328,
+          0.9686083133914509
+        ],
+        "n_contexts": 64
+      },
+      "source_ranking": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n_contexts": 64
+      },
+      "outside_function_family": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 64
+      },
+      "same_side_source_pair": {
+        "mean": 0.53125,
+        "ci95": [
+          0.40625,
+          0.65625
+        ],
+        "n_contexts": 64
+      }
+    }
+  }
+}

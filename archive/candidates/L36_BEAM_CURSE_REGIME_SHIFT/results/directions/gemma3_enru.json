@@ -1,0 +1,33 @@
+{
+  "model": "google/gemma-3-12b-it",
+  "kind": "dec_only",
+  "direction": "enru",
+  "tag": "gemma3",
+  "n": 400,
+  "stop_set_size": 2,
+  "margin_mean": 38.01578712463379,
+  "log_p_stop_mean": -38.09447438240051,
+  "rank_median": 626.0,
+  "b_star": 313,
+  "frac_rank_le_128": 0.005,
+  "beam": {
+    "4": {
+      "bleu": 28.276331013718305,
+      "chrf2": 55.453014368628445,
+      "empty_rate": 0.0,
+      "len_ratio": 0.9476842791911284
+    },
+    "16": {
+      "bleu": 28.164546881727713,
+      "chrf2": 55.35203229603442,
+      "empty_rate": 0.0,
+      "len_ratio": 0.944553163731246
+    },
+    "64": {
+      "bleu": 28.3964557669597,
+      "chrf2": 55.468473816817855,
+      "empty_rate": 0.0,
+      "len_ratio": 0.9469015003261577
+    }
+  }
+}

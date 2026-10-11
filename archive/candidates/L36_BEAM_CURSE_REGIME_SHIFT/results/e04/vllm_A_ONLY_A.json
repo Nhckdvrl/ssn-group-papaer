@@ -1,0 +1,35 @@
+{
+ "model": "results/e02/weights/A_ONLY",
+ "tag": "A_ONLY",
+ "fmt": "A",
+ "impl": "vllm",
+ "end_token": "<|quad_start|>",
+ "end_id": 151650,
+ "n": 200,
+ "beam": {
+  "1": {
+   "bleu_multi": 35.52821944280484,
+   "chrf2": 58.69439319195085,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9791356184798808
+  },
+  "4": {
+   "bleu_multi": 39.12837000470414,
+   "chrf2": 60.58311931319621,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9716840536512668
+  },
+  "16": {
+   "bleu_multi": 40.16207428321302,
+   "chrf2": 60.97284226458188,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9615002483854943
+  },
+  "64": {
+   "bleu_multi": 39.17658632571752,
+   "chrf2": 59.80758657137436,
+   "empty_rate": 0.0,
+   "len_ratio": 0.9540486835568802
+  }
+ }
+}

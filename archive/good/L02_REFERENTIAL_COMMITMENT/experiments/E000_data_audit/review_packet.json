@@ -1,0 +1,1045 @@
+[
+  {
+    "observation": {
+      "id": "s49_f1229595852.33958_e3",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s49",
+      "sentence_index": 48,
+      "frame_id": "s49_f1229595852.33958",
+      "frame": "Questioning",
+      "role": "Addressee",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s47_0"
+      ],
+      "target_node_ids": [
+        "s49_1"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "Telegraphic inquiries had been already made which showed that Marx knew nothing of his customer save that he was a good payer .",
+      "target": {
+        "node_ids": [
+          "s49_1"
+        ],
+        "leaf_ids": [
+          "s49_1"
+        ],
+        "text": "inquiries",
+        "sentence_ids": [
+          "s49"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s47_0"
+        ],
+        "leaf_ids": [
+          "s47_0"
+        ],
+        "text": "A",
+        "sentence_ids": [
+          "s47"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        -2
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s49_f1229595852.33958_e3",
+      "review_category": "POTENTIAL_SOURCE_LINK_ERROR",
+      "note": "Addressee links to the isolated determiner A in s47. It does not identify an addressee. Do not repair it to Marx by intuition or count it as a valid counterexample.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s47",
+        "text": "A good deal of clothing with the stamp of Marx and Co ."
+      },
+      {
+        "id": "s48",
+        "text": ", High Holborn , had been left behind ."
+      },
+      {
+        "id": "s49",
+        "text": "Telegraphic inquiries had been already made which showed that Marx knew nothing of his customer save that he was a good payer ."
+      },
+      {
+        "id": "s50",
+        "text": "Odds and ends , some pipes , a few novels , two of them in Spanish , and old-fashioned pinfire revolver , and a guitar were among the personal property ."
+      },
+      {
+        "id": "s51",
+        "text": "&quot; Nothing in all this , &quot; said Baynes , stalking , candle in hand , from room to room ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s49_f1229595852.33958_e3\" name=\"Addressee\">\n\t\t\t\t\t\t\t<fenode idref=\"s47_0\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s185_f2_e1",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s185",
+      "sentence_index": 184,
+      "frame_id": "s185_f2",
+      "frame": "Committing_crime",
+      "role": "Perpetrator",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s185_0"
+      ],
+      "target_node_ids": [
+        "s185_10"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "They were A L L confederates in the same unknown crime .",
+      "target": {
+        "node_ids": [
+          "s185_10"
+        ],
+        "leaf_ids": [
+          "s185_10"
+        ],
+        "text": "crime",
+        "sentence_ids": [
+          "s185"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s185_0"
+        ],
+        "leaf_ids": [
+          "s185_0"
+        ],
+        "text": "They",
+        "sentence_ids": [
+          "s185"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s185_f2_e1",
+      "review_category": "CONTEXTUAL_LINK_REQUIRES_SCOPE_REVIEW",
+      "note": "The source links Perpetrator to They; the sentence calls them confederates in a crime. Exact participation versus co-perpetration requires semantic review. Keep the INI flag and link separate.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s183",
+        "text": "So far it seems to me that we are on safe ground ."
+      },
+      {
+        "id": "s184",
+        "text": "&quot; We can now see a reason for the disappearance of Garcia 's household ."
+      },
+      {
+        "id": "s185",
+        "text": "They were A L L confederates in the same unknown crime ."
+      },
+      {
+        "id": "s186",
+        "text": "If it came off when Garcia returned , any possible suspicion would be warded off by the Englishman 's evidence , and all would be well ."
+      },
+      {
+        "id": "s187",
+        "text": "But the attempt was a dangerous one , and if Garcia did N O T return by a certain hour it was probable that his own life had been sacrificed ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s185_f2_e1\" name=\"Perpetrator\">\n\t\t\t\t\t\t\t<fenode idref=\"s185_0\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s224_f1_e4",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s224",
+      "sentence_index": 223,
+      "frame_id": "s224_f1",
+      "frame": "Firing",
+      "role": "Position",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s224_13"
+      ],
+      "target_node_ids": [
+        "s224_18"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "It was my system which enabled me to find John Warner , late gardener of High Gable , sacked in a moment of temper by his imperious employer .",
+      "target": {
+        "node_ids": [
+          "s224_18"
+        ],
+        "leaf_ids": [
+          "s224_18"
+        ],
+        "text": "sacked",
+        "sentence_ids": [
+          "s224"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s224_13"
+        ],
+        "leaf_ids": [
+          "s224_13"
+        ],
+        "text": "gardener",
+        "sentence_ids": [
+          "s224"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s224_f1_e4",
+      "review_category": "ROLE_TYPE_DESCRIPTION",
+      "note": "The sacked Position points to gardener in the same sentence. A job description is not a named individual; treating every non-null description as specific-entity hallucination would be a category error.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s222",
+        "text": "I call it luck , but it would not have come my way had I not been looking out for it ."
+      },
+      {
+        "id": "s223",
+        "text": "As Baynes remarks , we all have our systems ."
+      },
+      {
+        "id": "s224",
+        "text": "It was my system which enabled me to find John Warner , late gardener of High Gable , sacked in a moment of temper by his imperious employer ."
+      },
+      {
+        "id": "s225",
+        "text": "He in turn had friends among the indoor servants who unite in their fear and dislike of their master ."
+      },
+      {
+        "id": "s226",
+        "text": "So I had my key to the secrets of the establishment ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s224_f1_e4\" name=\"Position\">\n\t\t\t\t\t\t\t<fenode idref=\"s224_13\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s224_f3_e3",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s224",
+      "sentence_index": 223,
+      "frame_id": "s224_f3",
+      "frame": "Employing",
+      "role": "Task",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s224_13"
+      ],
+      "target_node_ids": [
+        "s224_27"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "It was my system which enabled me to find John Warner , late gardener of High Gable , sacked in a moment of temper by his imperious employer .",
+      "target": {
+        "node_ids": [
+          "s224_27"
+        ],
+        "leaf_ids": [
+          "s224_27"
+        ],
+        "text": "employer",
+        "sentence_ids": [
+          "s224"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s224_13"
+        ],
+        "leaf_ids": [
+          "s224_13"
+        ],
+        "text": "gardener",
+        "sentence_ids": [
+          "s224"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s224_f3_e3",
+      "review_category": "ROLE_TYPE_DESCRIPTION",
+      "note": "Employing Task also points to gardener. Role type, task description and token-reference recovery should be distinguished, rather than declaring any filler specific.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s222",
+        "text": "I call it luck , but it would not have come my way had I not been looking out for it ."
+      },
+      {
+        "id": "s223",
+        "text": "As Baynes remarks , we all have our systems ."
+      },
+      {
+        "id": "s224",
+        "text": "It was my system which enabled me to find John Warner , late gardener of High Gable , sacked in a moment of temper by his imperious employer ."
+      },
+      {
+        "id": "s225",
+        "text": "He in turn had friends among the indoor servants who unite in their fear and dislike of their master ."
+      },
+      {
+        "id": "s226",
+        "text": "So I had my key to the secrets of the establishment ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s224_f3_e3\" name=\"Task\">\n\t\t\t\t\t\t\t<fenode idref=\"s224_13\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s236_f5_e2",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s236",
+      "sentence_index": 235,
+      "frame_id": "s236_f5",
+      "frame": "Exchange",
+      "role": "Exchanger_2",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s236_501"
+      ],
+      "target_node_ids": [
+        "s236_7"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "'Sold his soul to the devil in exchange for money , ' says Warner , 'and expects his creditor to come up and claim his own . '",
+      "target": {
+        "node_ids": [
+          "s236_7"
+        ],
+        "leaf_ids": [
+          "s236_7"
+        ],
+        "text": "exchange",
+        "sentence_ids": [
+          "s236"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s236_501"
+        ],
+        "leaf_ids": [
+          "s236_4",
+          "s236_5"
+        ],
+        "text": "the devil",
+        "sentence_ids": [
+          "s236"
+        ],
+        "heads_as_released": [
+          "devil"
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s236_f5_e2",
+      "review_category": "QUOTED_FIGURATIVE_EVENT",
+      "note": "The exchange participant is linked to the devil in quoted figurative speech. The contextual relation must retain attribution and figurative scope; it is not evidence for a real-world devil transaction.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s234",
+        "text": "His dark secretary is like his shadow ."
+      },
+      {
+        "id": "s235",
+        "text": "The gossip among the servants is that their master is terribly afraid of something ."
+      },
+      {
+        "id": "s236",
+        "text": "'Sold his soul to the devil in exchange for money , ' says Warner , 'and expects his creditor to come up and claim his own . '"
+      },
+      {
+        "id": "s237",
+        "text": "Where they came from , or who they are , nobody has an idea ."
+      },
+      {
+        "id": "s238",
+        "text": "They are very violent ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s236_f5_e2\" name=\"Exchanger_2\">\n\t\t\t\t\t\t\t<fenode idref=\"s236_501\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s286_f1229595859.77616_e1",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s286",
+      "sentence_index": 285,
+      "frame_id": "s286_f1229595859.77616",
+      "frame": "Catastrophe",
+      "role": "Undergoer",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor",
+        "Uncertain_Interpretation"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s286_0"
+      ],
+      "target_node_ids": [
+        "s286_13"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "She bore upon her aquiline and emaciated face the traces of some recent tragedy .",
+      "target": {
+        "node_ids": [
+          "s286_13"
+        ],
+        "leaf_ids": [
+          "s286_13"
+        ],
+        "text": "tragedy",
+        "sentence_ids": [
+          "s286"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s286_0"
+        ],
+        "leaf_ids": [
+          "s286_0"
+        ],
+        "text": "She",
+        "sentence_ids": [
+          "s286"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK",
+        "Uncertain_Interpretation"
+      ]
+    },
+    "review": {
+      "id": "s286_f1229595859.77616_e1",
+      "review_category": "SOURCE_INTERPRETATION_UNCERTAIN",
+      "note": "Undergoer points to She and the original annotation flags Uncertain_Interpretation. Do not treat this as an unambiguous DNI/INI test item.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s284",
+        "text": "&quot; Watson , the gaps are closing rapidly . &quot;"
+      },
+      {
+        "id": "s285",
+        "text": "In the cab was a woman , half-collapsed from nervous exhaustion ."
+      },
+      {
+        "id": "s286",
+        "text": "She bore upon her aquiline and emaciated face the traces of some recent tragedy ."
+      },
+      {
+        "id": "s287",
+        "text": "Her head hung listlessly upon her breast , but as she raised it and turned her dull eyes upon us I saw that her pupils were dark dots in the centre of the broad gray iris ."
+      },
+      {
+        "id": "s288",
+        "text": "She was drugged with opium ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s286_f1229595859.77616_e1\" name=\"Undergoer\">\n\t\t\t\t\t\t\t<fenode idref=\"s286_0\" />\n\t\t\t\t\t\t\t<flag name=\"Uncertain_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s380_f4_e2",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s380",
+      "sentence_index": 379,
+      "frame_id": "s380_f4",
+      "frame": "Intentionally_act",
+      "role": "Agent",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s380_12"
+      ],
+      "target_node_ids": [
+        "s380_22"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "Then and there they would have plunged their knives into me could they have seen how to escape the consequences of the deed .",
+      "target": {
+        "node_ids": [
+          "s380_22"
+        ],
+        "leaf_ids": [
+          "s380_22"
+        ],
+        "text": "deed",
+        "sentence_ids": [
+          "s380"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s380_12"
+        ],
+        "leaf_ids": [
+          "s380_12"
+        ],
+        "text": "they",
+        "sentence_ids": [
+          "s380"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s380_f4_e2",
+      "review_category": "HYPOTHETICAL_EVENT",
+      "note": "Agent of the deed points to they in a would-have conditional. A supported participant in a hypothetical event does not assert that the deed occurred.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s378",
+        "text": "He crept up behind me and sprang upon me just as I had finished the note ."
+      },
+      {
+        "id": "s379",
+        "text": "He and his master dragged me to my room and held judgment upon me as a convicted traitress ."
+      },
+      {
+        "id": "s380",
+        "text": "Then and there they would have plunged their knives into me could they have seen how to escape the consequences of the deed ."
+      },
+      {
+        "id": "s381",
+        "text": "Finally , after much debate , they concluded that my murder was too dangerous ."
+      },
+      {
+        "id": "s382",
+        "text": "But they determined to get rid forever of Garcia ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s380_f4_e2\" name=\"Agent\">\n\t\t\t\t\t\t\t<fenode idref=\"s380_12\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s381_f1229595862.88902_e2",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s381",
+      "sentence_index": 380,
+      "frame_id": "s381_f1229595862.88902",
+      "frame": "Killing",
+      "role": "Killer",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s381_6"
+      ],
+      "target_node_ids": [
+        "s381_10"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "Finally , after much debate , they concluded that my murder was too dangerous .",
+      "target": {
+        "node_ids": [
+          "s381_10"
+        ],
+        "leaf_ids": [
+          "s381_10"
+        ],
+        "text": "murder",
+        "sentence_ids": [
+          "s381"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s381_6"
+        ],
+        "leaf_ids": [
+          "s381_6"
+        ],
+        "text": "they",
+        "sentence_ids": [
+          "s381"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s381_f1229595862.88902_e2",
+      "review_category": "PLANNED_EVENT",
+      "note": "Killer of my murder points to they; context describes contemplated killing deemed too dangerous. Event factuality and argument licensing are distinct.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s379",
+        "text": "He and his master dragged me to my room and held judgment upon me as a convicted traitress ."
+      },
+      {
+        "id": "s380",
+        "text": "Then and there they would have plunged their knives into me could they have seen how to escape the consequences of the deed ."
+      },
+      {
+        "id": "s381",
+        "text": "Finally , after much debate , they concluded that my murder was too dangerous ."
+      },
+      {
+        "id": "s382",
+        "text": "But they determined to get rid forever of Garcia ."
+      },
+      {
+        "id": "s383",
+        "text": "They had gagged me , and Murillo twisted my arm round until I gave him the address ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s381_f1229595862.88902_e2\" name=\"Killer\">\n\t\t\t\t\t\t\t<fenode idref=\"s381_6\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s392_f1229595863.46041_e1",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s392",
+      "sentence_index": 391,
+      "frame_id": "s392_f1229595863.46041",
+      "frame": "Commitment",
+      "role": "Speaker",
+      "flags": [
+        "Constructional_licensor",
+        "Indefinite_Interpretation",
+        "Uncertain_Interpretation"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s390_18"
+      ],
+      "target_node_ids": [
+        "s392_12"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "I was confined to my room , terrorized by the most horrible threats , cruelly ill-used to break my spirit - see this stab on my shoulder and the bruises from end to end of my arms - and a gag was thrust into my mouth on the one occasion when I tried to call from the window .",
+      "target": {
+        "node_ids": [
+          "s392_12"
+        ],
+        "leaf_ids": [
+          "s392_12"
+        ],
+        "text": "threats",
+        "sentence_ids": [
+          "s392"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s390_18"
+        ],
+        "leaf_ids": [
+          "s390_18"
+        ],
+        "text": "they",
+        "sentence_ids": [
+          "s390"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        -2
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK",
+        "Uncertain_Interpretation"
+      ]
+    },
+    "review": {
+      "id": "s392_f1229595863.46041_e1",
+      "review_category": "SOURCE_INTERPRETATION_UNCERTAIN",
+      "note": "Speaker of threats points to they in s390; original Uncertain_Interpretation is retained. Cross-sentence resolution requires the surrounding narrative.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s390",
+        "text": "&quot; All would now have been well for them had it not been for my knowledge of what they had done ."
+      },
+      {
+        "id": "s391",
+        "text": "I have no doubt that there were times when my life hung in the balance ."
+      },
+      {
+        "id": "s392",
+        "text": "I was confined to my room , terrorized by the most horrible threats , cruelly ill-used to break my spirit - see this stab on my shoulder and the bruises from end to end of my arms - and a gag was thrust into my mouth on the one occasion when I tried to call from the window ."
+      },
+      {
+        "id": "s393",
+        "text": "For five days this cruel imprisonment continued , with hardly enough food to hold body and soul together ."
+      },
+      {
+        "id": "s394",
+        "text": "This afternoon a good lunch was brought me , but the moment after I took it I knew that I had been drugged ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s392_f1229595863.46041_e1\" name=\"Speaker\">\n\t\t\t\t\t\t\t<fenode idref=\"s390_18\" />\n\t\t\t\t\t\t\t<flag name=\"Uncertain_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Constructional_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s393_f3_e2",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s393",
+      "sentence_index": 392,
+      "frame_id": "s393_f3",
+      "frame": "Imprisonment",
+      "role": "Prison",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s392_5",
+        "s392_4"
+      ],
+      "target_node_ids": [
+        "s393_5"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "For five days this cruel imprisonment continued , with hardly enough food to hold body and soul together .",
+      "target": {
+        "node_ids": [
+          "s393_5"
+        ],
+        "leaf_ids": [
+          "s393_5"
+        ],
+        "text": "imprisonment",
+        "sentence_ids": [
+          "s393"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s392_5",
+          "s392_4"
+        ],
+        "leaf_ids": [
+          "s392_4",
+          "s392_5"
+        ],
+        "text": "my room",
+        "sentence_ids": [
+          "s392"
+        ],
+        "heads_as_released": [
+          null,
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        -1
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s393_f3_e2",
+      "review_category": "CROSS_SENTENCE_POSITIVE_LINK",
+      "note": "Prison of this cruel imprisonment points to my room in s392. The FE references two nodes in reverse XML order; surface order reconstructs my room. The natural passage identifies a location despite INI.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s391",
+        "text": "I have no doubt that there were times when my life hung in the balance ."
+      },
+      {
+        "id": "s392",
+        "text": "I was confined to my room , terrorized by the most horrible threats , cruelly ill-used to break my spirit - see this stab on my shoulder and the bruises from end to end of my arms - and a gag was thrust into my mouth on the one occasion when I tried to call from the window ."
+      },
+      {
+        "id": "s393",
+        "text": "For five days this cruel imprisonment continued , with hardly enough food to hold body and soul together ."
+      },
+      {
+        "id": "s394",
+        "text": "This afternoon a good lunch was brought me , but the moment after I took it I knew that I had been drugged ."
+      },
+      {
+        "id": "s395",
+        "text": "In a sort of dream I remember being half-led , halfcarried to the carriage ; in the same state I was conveyed to the train ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s393_f3_e2\" name=\"Prison\">\n\t\t\t\t\t\t\t<fenode idref=\"s392_5\" />\n\t\t\t\t\t\t\t<fenode idref=\"s392_4\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t\t"
+  },
+  {
+    "observation": {
+      "id": "s405_f2_e2",
+      "document_id": "TigerOfSanPedro",
+      "source_split": "train",
+      "source_sha256": "e192a7e9c65e1ce695157b8f68745d2d7afda03e5ef0b03e149c8f70d6d42826",
+      "sentence_id": "s405",
+      "sentence_index": 404,
+      "frame_id": "s405_f2",
+      "frame": "Committing_crime",
+      "role": "Perpetrator",
+      "flags": [
+        "Indefinite_Interpretation",
+        "Lexical_licensor"
+      ],
+      "interpretation": "INI",
+      "source_link_present": true,
+      "source_link_node_ids": [
+        "s405_18"
+      ],
+      "target_node_ids": [
+        "s405_5"
+      ],
+      "specific_filler_licensed": null,
+      "specific_filler_licensed_note": "Not derived from interpretation or missing links",
+      "sentence_text_tokenized": "There may be a hundred crimes in the background , but it is only on this one that they can be tried . &quot;",
+      "target": {
+        "node_ids": [
+          "s405_5"
+        ],
+        "leaf_ids": [
+          "s405_5"
+        ],
+        "text": "crimes",
+        "sentence_ids": [
+          "s405"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "source_link": {
+        "node_ids": [
+          "s405_18"
+        ],
+        "leaf_ids": [
+          "s405_18"
+        ],
+        "text": "they",
+        "sentence_ids": [
+          "s405"
+        ],
+        "heads_as_released": [
+          null
+        ]
+      },
+      "link_sentence_offsets": [
+        0
+      ],
+      "integrity": "OK",
+      "audit_flags": [
+        "INI_WITH_SOURCE_LINK"
+      ]
+    },
+    "review": {
+      "id": "s405_f2_e2",
+      "review_category": "MODAL_EVENT_SET",
+      "note": "Perpetrator of crimes points to they in a may-be sentence. Scope includes possible crimes, not a factual assertion of one hundred completed crimes.",
+      "independent_semantic_adjudication": "pending"
+    },
+    "source_context": [
+      {
+        "id": "s403",
+        "text": "&quot; Exactly , &quot; said I ."
+      },
+      {
+        "id": "s404",
+        "text": "&quot; A plausible lawyer could make it out as an act of self-defence ."
+      },
+      {
+        "id": "s405",
+        "text": "There may be a hundred crimes in the background , but it is only on this one that they can be tried . &quot;"
+      },
+      {
+        "id": "s406",
+        "text": "&quot; Come , come , &quot; said Baynes cheerily , &quot; I think better of the law than that ."
+      },
+      {
+        "id": "s407",
+        "text": "Self-defence is one thing ."
+      }
+    ],
+    "source_fe_xml": "<fe id=\"s405_f2_e2\" name=\"Perpetrator\">\n\t\t\t\t\t\t\t<fenode idref=\"s405_18\" />\n\t\t\t\t\t\t\t<flag name=\"Lexical_licensor\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t\t<flag name=\"Indefinite_Interpretation\">\n\t\t\t\t\t\t\t</flag>\n\t\t\t\t\t\t</fe>\n\t\t\t"
+  }
+]

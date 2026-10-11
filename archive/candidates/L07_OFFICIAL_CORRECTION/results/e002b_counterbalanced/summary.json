@@ -1,0 +1,106 @@
+{
+  "run_id": "e002b_counterbalanced",
+  "models": {
+    "gemma-3-12b": {
+      "n_predictions": 120,
+      "condition_accuracy": {
+        "original_only": 1.0,
+        "correction_only": 0.85,
+        "original_then_correction": 0.6,
+        "correction_then_original": 0.65,
+        "explicit_update": 0.75,
+        "unrelated_correction": 0.95
+      },
+      "position_robust_accuracy": {
+        "original_only": 1.0,
+        "correction_only": 0.8,
+        "original_then_correction": 0.4,
+        "correction_then_original": 0.6,
+        "explicit_update": 0.6,
+        "unrelated_correction": 0.9
+      },
+      "position_semantic_disagreement_rate": {
+        "original_only": 0.0,
+        "correction_only": 0.1,
+        "original_then_correction": 0.4,
+        "correction_then_original": 0.1,
+        "explicit_update": 0.3,
+        "unrelated_correction": 0.1
+      },
+      "flat_accuracy_mean_orders": 0.625,
+      "flat_position_robust_mean_orders": 0.5,
+      "explicit_minus_flat_accuracy": 0.125,
+      "unrelated_false_override_rate": 0.050000000000000044
+    },
+    "mistral-small-24b": {
+      "n_predictions": 120,
+      "condition_accuracy": {
+        "original_only": 0.8,
+        "correction_only": 0.7,
+        "original_then_correction": 0.65,
+        "correction_then_original": 0.65,
+        "explicit_update": 0.7,
+        "unrelated_correction": 0.65
+      },
+      "position_robust_accuracy": {
+        "original_only": 0.6,
+        "correction_only": 0.5,
+        "original_then_correction": 0.4,
+        "correction_then_original": 0.4,
+        "explicit_update": 0.5,
+        "unrelated_correction": 0.3
+      },
+      "position_semantic_disagreement_rate": {
+        "original_only": 0.4,
+        "correction_only": 0.4,
+        "original_then_correction": 0.5,
+        "correction_then_original": 0.5,
+        "explicit_update": 0.4,
+        "unrelated_correction": 0.7
+      },
+      "flat_accuracy_mean_orders": 0.65,
+      "flat_position_robust_mean_orders": 0.4,
+      "explicit_minus_flat_accuracy": 0.04999999999999993,
+      "unrelated_false_override_rate": 0.35
+    },
+    "qwen2.5-32b": {
+      "n_predictions": 120,
+      "condition_accuracy": {
+        "original_only": 0.95,
+        "correction_only": 0.85,
+        "original_then_correction": 0.85,
+        "correction_then_original": 0.8,
+        "explicit_update": 0.85,
+        "unrelated_correction": 0.95
+      },
+      "position_robust_accuracy": {
+        "original_only": 0.9,
+        "correction_only": 0.8,
+        "original_then_correction": 0.8,
+        "correction_then_original": 0.8,
+        "explicit_update": 0.8,
+        "unrelated_correction": 0.9
+      },
+      "position_semantic_disagreement_rate": {
+        "original_only": 0.1,
+        "correction_only": 0.1,
+        "original_then_correction": 0.1,
+        "correction_then_original": 0.0,
+        "explicit_update": 0.1,
+        "unrelated_correction": 0.1
+      },
+      "flat_accuracy_mean_orders": 0.825,
+      "flat_position_robust_mean_orders": 0.8,
+      "explicit_minus_flat_accuracy": 0.025000000000000022,
+      "unrelated_false_override_rate": 0.050000000000000044
+    }
+  },
+  "macro_across_models": {
+    "flat_accuracy_mean_orders": 0.7000000000000001,
+    "flat_position_robust_mean_orders": 0.5666666666666668,
+    "explicit_update_accuracy": 0.7666666666666666,
+    "correction_only_accuracy": 0.7999999999999999,
+    "original_only_accuracy": 0.9166666666666666,
+    "unrelated_correction_accuracy": 0.85
+  }
+}

@@ -1,0 +1,16 @@
+
+IFEval strict prompt-level accuracy, epoch 2 (541 prompts, seeds [0, 1, 2]):
+
+  P         21.93  [18.42, 25.57]   seeds: 23.48, 21.26, 21.07
+  S          9.06  [ 6.28, 12.01]   seeds: 7.02, 9.43, 10.72
+  D_mask    19.59  [16.14, 23.41]   seeds: 19.04, 21.81, 17.93
+  D_rt      19.53  [16.20, 23.11]   seeds: 18.85, 21.26, 18.48
+
+  contrasts (percentage points, prompt-clustered + seed-resampled):
+   * Delta_corr      P - S              +12.88  [ +8.56, +17.31]   same-marginal value of correct vs wrong correspondence
+     Delta_pair      P - D_mask          +2.34  [ -1.60,  +6.10]   correct correspondence vs no correspondence
+   * Delta_wrong     D_mask - S         +10.54  [ +6.41, +14.85]   wrong correspondence vs no correspondence
+     Delta_pair_rt   P - D_rt            +2.40  [ -1.23,  +5.98]   correct correspondence vs Response Tuning
+   * Delta_wrong_rt  D_rt - S           +10.47  [ +6.53, +14.60]   wrong correspondence vs Response Tuning
+     construct_D     D_mask - D_rt       +0.06  [ -2.77,  +3.14]   construct check: budget-matched vs RT
+

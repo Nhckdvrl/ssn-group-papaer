@@ -1,0 +1,48 @@
+{
+ "seq_len": 156,
+ "n_scored": 131,
+ "m_candidates": 16,
+ "layers": [
+  1,
+  4,
+  7,
+  10,
+  13,
+  15
+ ],
+ "shared_fwd_bwd_s": 1.5967648170888424,
+ "shared_amortised_per_token_layer_s": 0.00203150740087639,
+ "local_expert_fwd_s_per_candidate": 0.0002070629969239235,
+ "per_layer": {
+  "1": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.6255611989618046,
+   "speedup": 117.04732006572002
+  },
+  "4": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.49491706855769735,
+   "speedup": 92.60279669774995
+  },
+  "7": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.36734887938655447,
+   "speedup": 68.73380563356669
+  },
+  "10": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.2377083214232698,
+   "speedup": 44.47705840146478
+  },
+  "13": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.10755225410684943,
+   "speedup": 20.123855397563897
+  },
+  "15": {
+   "proxy_s_per_token_layer": 0.005344515351659166,
+   "exact_s_per_token_layer": 0.02209502882033121,
+   "speedup": 4.13415012709655
+  }
+ }
+}

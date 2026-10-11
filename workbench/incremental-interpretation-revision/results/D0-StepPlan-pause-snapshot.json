@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-06",
+  "user_requested_pause": true,
+  "no_new_requests": true,
+  "maximum_concurrency": 8,
+  "audits": [
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/E01-Step5-full-v1",
+      "summary_sha256": "b284e89e3cdbc4dd684e87f10fc2453c3005affc23f4d9d1b7bae1252862c8a1",
+      "requests": 626,
+      "status_counts": {
+        "complete": 565,
+        "incomplete": 61
+      },
+      "error_counts": {
+        "incomplete output: max_tokens": 59,
+        "JSONDecodeError: Expecting value: line 1 column 1 (char 0)": 2
+      },
+      "completed_answers": 2405,
+      "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+      "model": "step-5-preview",
+      "proxy_used": false,
+      "all_finished": true
+    },
+    {
+      "directory": "/data1/xiangding/work/incremental-interpretation-revision/E51-StepPlan-full-answer-audit-v1",
+      "summary_sha256": "05c3cafcbc1a2b4eb12b93b06a98ee6f1d78e4eb65bcf8aa6c3b3a0897a77a82",
+      "requests": 192,
+      "status_counts": {
+        "incomplete": 153,
+        "complete": 39
+      },
+      "error_counts": {
+        "AssertionError: incomplete max_tokens": 108,
+        "KeyError: 'passage_sha256'": 29,
+        "AssertionError: ": 12,
+        "KeyError: 'item_id'": 4
+      },
+      "completed_answers": 936,
+      "endpoint": "https://api.stepfun.com/step_plan/v1/messages",
+      "model": "step-5-preview",
+      "proxy_used": false,
+      "all_finished": true
+    }
+  ],
+  "interpretation": "Partial external audits, not full semantic gold or scientific validation. No automatic retry after pause."
+}

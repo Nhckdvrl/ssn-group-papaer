@@ -1,0 +1,152 @@
+{
+  "completed": true,
+  "episodes": 96,
+  "groups": [
+    {
+      "interface": "native",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E16-BASE1000-fresh-native-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_exposure_resume_s0/BASE1000_u56500.ckpt",
+        "interface": "native",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "97b9080f34f341bd408ec17d37997b645324fb0587a90b75ed36b2520ae10f0a",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "be55804d9bb613b447247debbe91b612e433a5e4b6bf881e59df4a59c8037c45",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 56500,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "summary": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 22
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 11
+        }
+      ],
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E16-BASE1000-fresh-native-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 22,
+          "new_env_steps": 559
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 11,
+          "new_env_steps": 1682
+        }
+      ]
+    },
+    {
+      "interface": "physical",
+      "config": {
+        "bank": "/tmp/latent-wm-runs/20261004-E20-fresh-control-bank48",
+        "output": "/tmp/latent-wm-runs/20261005-E16-BASE1000-fresh-physical-RTX",
+        "checkpoint": "/home/xiang/.cache/huggingface/latent-wm-trained/E16_data_exposure_resume_s0/BASE1000_u56500.ckpt",
+        "interface": "physical",
+        "bank_ledger_sha256": "cd9e31a54ead9d6346311d5a74cdac8c782490ca7b46f30da4038eb5a3d76ff7",
+        "checkpoint_sha256": "97b9080f34f341bd408ec17d37997b645324fb0587a90b75ed36b2520ae10f0a",
+        "action_mean": [
+          0.017641905695199966,
+          -0.06942970305681229
+        ],
+        "action_std": [
+          0.8654873967170715,
+          0.8683779239654541
+        ],
+        "script_sha256": "2271de3de2ecd483ec51fa9dbfd5cc8d242f0ab81ff6d1afa883fc4520b63e6a",
+        "model_tensor_sha256": "be55804d9bb613b447247debbe91b612e433a5e4b6bf881e59df4a59c8037c45",
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "model_training_updates": 56500,
+        "source_scope": "own trained split disjoint",
+        "scope": "new episode development; joint method components, not full SMWM/AD-WM reproduction"
+      },
+      "summary": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9
+        }
+      ],
+      "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261005-E16-BASE1000-fresh-physical-RTX",
+      "summary_from_audited_rows": [
+        {
+          "goal_span": 25,
+          "n": 24,
+          "successes": 20,
+          "new_env_steps": 680
+        },
+        {
+          "goal_span": 75,
+          "n": 24,
+          "successes": 9,
+          "new_env_steps": 1759
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "interface": "native",
+      "reference": "BASE-s0",
+      "mean_delta": 0.0625,
+      "paired_episode_bootstrap_95": [
+        -0.08333333333333333,
+        0.20833333333333334
+      ]
+    },
+    {
+      "interface": "native",
+      "reference": "PLAIN-s0",
+      "mean_delta": 0.14583333333333334,
+      "paired_episode_bootstrap_95": [
+        0.0,
+        0.2916666666666667
+      ]
+    },
+    {
+      "interface": "physical",
+      "reference": "BASE-s0",
+      "mean_delta": 0.20833333333333334,
+      "paired_episode_bootstrap_95": [
+        0.041666666666666664,
+        0.375
+      ]
+    },
+    {
+      "interface": "physical",
+      "reference": "PLAIN-s0",
+      "mean_delta": 0.1875,
+      "paired_episode_bootstrap_95": [
+        0.020833333333333332,
+        0.3541666666666667
+      ]
+    }
+  ],
+  "all_trace_hash_initial_states_and_success_recomputed": true,
+  "scope": "Fresh48 development, one large-data training source. 1000 episodes/56500 updates versus100/5650; data and compute jointly change. Interfaces also differ in initialization coordinates/scale and bounds. Not data-only causal gain or independent training confirmation.",
+  "portable_scope": "Only audited summaries/configs/source hashes/CIs/artifact paths are tracked. Full per-episode rows, planned actions and trajectories remain in durable audit result.json and referenced run directories.",
+  "full_audit_artifact": "/home/xiang/.cache/latent-wm-results/20261005-E16-fresh-exposure-audit/result.json"
+}

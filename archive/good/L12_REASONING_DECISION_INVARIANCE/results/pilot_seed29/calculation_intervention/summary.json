@@ -1,0 +1,39 @@
+{
+  "model": {
+    "id": "allenai/Olmo-3-7B-Think-SFT",
+    "revision": "6ff857587e040d6d523a3d5f3a56e918f5401d66",
+    "branch": "think_sft",
+    "protocol": "native_chat",
+    "max_new_tokens": 1024
+  },
+  "n_stimuli": 12,
+  "answer_labels_absent_from_traces": true,
+  "modes": {
+    "correct_calculation": {
+      "mean_correct_margin": 0.3541666666666667,
+      "argmax_correct_rate": 0.5833333333333334
+    },
+    "rule_only": {
+      "mean_correct_margin": 0.036458333333333336,
+      "argmax_correct_rate": 0.5
+    },
+    "swapped_calculation": {
+      "mean_correct_margin": -0.03125,
+      "argmax_correct_rate": 0.5833333333333334
+    }
+  },
+  "correct_calculation_minus_rule_only": {
+    "mean_margin_difference": 0.3177083333333333,
+    "prospect_cluster_bootstrap_ci95": [
+      -3.9166666666666665,
+      4.333333333333333
+    ]
+  },
+  "correct_calculation_minus_swapped_calculation": {
+    "mean_margin_difference": 0.3854166666666667,
+    "prospect_cluster_bootstrap_ci95": [
+      -0.125,
+      0.9583333333333334
+    ]
+  }
+}

@@ -1,0 +1,1040 @@
+{
+  "experiment": "E18",
+  "phase": "same-state response set plus short parameter updates",
+  "status": "complete",
+  "artifact_path": "/home/xiang/.cache/latent-wm-results/20261002-E18-short-updates-RTX-s0",
+  "config": {
+    "args": {
+      "sources": [
+        "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+        "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+      ],
+      "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+      "output": "/tmp/latent-wm-runs/20261002-E18-short-updates-RTX-s0",
+      "short_updates": true,
+      "reference": "/home/xiang/.cache/latent-wm-results/20261002-E18-recovery-forks-s0-retry1"
+    },
+    "sources": [
+      {
+        "task": "tworoom",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/tworoom.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      },
+      {
+        "task": "pusht",
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+        "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+        "generated": false,
+        "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+        "anchors": 12,
+        "calibration_anchors": 4,
+        "candidates": 300,
+        "elites": 30,
+        "iterations": 30,
+        "seed": 0,
+        "train_steps": 20,
+        "batch_size": 16,
+        "packages": {
+          "torch": "2.7.1+cu128",
+          "torchvision": "0.22.1+cu128",
+          "numpy": "1.26.4",
+          "transformers": "5.3.0",
+          "stable-worldmodel": "0.0.6"
+        },
+        "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+        "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+      }
+    ],
+    "methods": [
+      "HOLD",
+      "PREDICTED-REPLAN",
+      "FEEDBACK",
+      "EXTRA-REPLAN",
+      "SHORT-HEAD",
+      "SHORT-DYNAMICS"
+    ],
+    "gains": [
+      1.0,
+      0.7
+    ],
+    "shift_onset_primitive_step": 10,
+    "count_per_task": 32,
+    "seed": 77000,
+    "harness_sha256": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1",
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "timing_scope": "ambient GPU occupancy must be audited; model-call counts recorded",
+    "scope": "one released checkpoint/task; no router trained; feedback and replan are separate from parameter adaptation"
+  },
+  "complete": {
+    "completed": true,
+    "physical_env_steps": 59459,
+    "fork_state_replay_max_abs": 0.0,
+    "fork_pixel_replay_max_abs": 0.0
+  },
+  "summary": [
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.22933887309454212,
+        0.5474559264692255
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 13,
+      "success_wilson_ci95": [
+        0.2551963484266544,
+        0.5773997512461713
+      ],
+      "helped": 3,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 2.0573677122592926,
+      "paired_distance_ci95": [
+        -6.1068552941083905,
+        12.258038760721664
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 16,
+      "success_wilson_ci95": [
+        0.33630882869327483,
+        0.6636911713067252
+      ],
+      "helped": 4,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.125,
+      "paired_success_ci95": [
+        0.03125,
+        0.25
+      ],
+      "paired_native_distance_utility_gain": 4.096080899238586,
+      "paired_distance_ci95": [
+        0.9443165838718415,
+        7.511266169697046
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 15,
+      "success_wilson_ci95": [
+        0.30869387108068835,
+        0.6355048288102536
+      ],
+      "helped": 5,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.09375,
+      "paired_success_ci95": [
+        -0.0625,
+        0.25
+      ],
+      "paired_native_distance_utility_gain": 12.36265453696251,
+      "paired_distance_ci95": [
+        3.8664933800697328,
+        25.416636199504122
+      ],
+      "additional_candidate_evaluations": 837000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.22933887309454212,
+        0.5474559264692255
+      ],
+      "helped": 3,
+      "harmed": 3,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        -0.15625,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 2.9263752698898315,
+      "paired_distance_ci95": [
+        -5.024353179335594,
+        11.326423768699163
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "successes": 12,
+      "success_wilson_ci95": [
+        0.22933887309454212,
+        0.5474559264692255
+      ],
+      "helped": 3,
+      "harmed": 3,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        -0.15625,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 7.592463344335556,
+      "paired_distance_ci95": [
+        -3.010949559509754,
+        21.906563759595148
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": -1.7724871933460236,
+      "paired_distance_ci95": [
+        -9.897554825246335,
+        8.294252718985069
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        0.0,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": -2.186419188976288,
+      "paired_distance_ci95": [
+        -8.593318209052086,
+        4.603705693036311
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.03125,
+      "paired_success_ci95": [
+        0.0,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": 3.6510238647460938,
+      "paired_distance_ci95": [
+        -0.3800217717885971,
+        8.211106970161197
+      ],
+      "additional_candidate_evaluations": 837000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.15564580497742764,
+        0.45374509425916565
+      ],
+      "helped": 3,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.09375,
+      "paired_success_ci95": [
+        0.0,
+        0.21875
+      ],
+      "paired_native_distance_utility_gain": -1.210524708032608,
+      "paired_distance_ci95": [
+        -9.769540397822857,
+        6.7687274932861285
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 1,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        -0.09375,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": -0.9166084229946136,
+      "paired_distance_ci95": [
+        -7.658525624126196,
+        5.774528073519468
+      ],
+      "additional_candidate_evaluations": 279000,
+      "absorbed_before_fork": 1
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.04970134387480073,
+        0.2806830548165022
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 2,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0625,
+      "paired_success_ci95": [
+        0.0,
+        0.15625
+      ],
+      "paired_native_distance_utility_gain": 17.167536385437764,
+      "paired_distance_ci95": [
+        -62.57905932704925,
+        115.5464248178256
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 7,
+      "success_wilson_ci95": [
+        0.11023836252604186,
+        0.3875499364924353
+      ],
+      "helped": 3,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.09375,
+      "paired_success_ci95": [
+        0.0,
+        0.21875
+      ],
+      "paired_native_distance_utility_gain": 49.216046868411205,
+      "paired_distance_ci95": [
+        -60.18777756455216,
+        174.27588100719439
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.15564580497742764,
+        0.45374509425916565
+      ],
+      "helped": 5,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.15625,
+      "paired_success_ci95": [
+        0.03125,
+        0.28125
+      ],
+      "paired_native_distance_utility_gain": 33.077617491672086,
+      "paired_distance_ci95": [
+        -60.93436286387369,
+        130.1609029859808
+      ],
+      "additional_candidate_evaluations": 864000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "successes": 6,
+      "success_wilson_ci95": [
+        0.08889544689565954,
+        0.3530915520137596
+      ],
+      "helped": 4,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.0625,
+      "paired_success_ci95": [
+        -0.09375,
+        0.21875
+      ],
+      "paired_native_distance_utility_gain": -29.500466257309945,
+      "paired_distance_ci95": [
+        -196.68198806896496,
+        108.57723220525669
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "successes": 4,
+      "success_wilson_ci95": [
+        0.04970134387480073,
+        0.2806830548165022
+      ],
+      "helped": 2,
+      "harmed": 2,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        -0.125,
+        0.125
+      ],
+      "paired_native_distance_utility_gain": 34.71336726057771,
+      "paired_distance_ci95": [
+        -89.90988627240037,
+        175.1382052275148
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "HOLD",
+      "n": 32,
+      "successes": 1,
+      "success_wilson_ci95": [
+        0.005537860164003122,
+        0.15744263820012558
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 0.0,
+      "paired_distance_ci95": [
+        0.0,
+        0.0
+      ],
+      "additional_candidate_evaluations": 0,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "PREDICTED-REPLAN",
+      "n": 32,
+      "successes": 1,
+      "success_wilson_ci95": [
+        0.005537860164003122,
+        0.15744263820012558
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        0.0,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 22.855894422509735,
+      "paired_distance_ci95": [
+        -31.83666978804043,
+        91.65149832100347
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "FEEDBACK",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": -0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 30.748571239698993,
+      "paired_distance_ci95": [
+        -55.39840984546749,
+        126.88257042170736
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "EXTRA-REPLAN",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": -0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 15.389574911147722,
+      "paired_distance_ci95": [
+        -52.742461809084546,
+        79.66861162556319
+      ],
+      "additional_candidate_evaluations": 864000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "successes": 1,
+      "success_wilson_ci95": [
+        0.005537860164003122,
+        0.15744263820012558
+      ],
+      "helped": 1,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": 0.0,
+      "paired_success_ci95": [
+        -0.09375,
+        0.09375
+      ],
+      "paired_native_distance_utility_gain": -20.371438916712982,
+      "paired_distance_ci95": [
+        -129.47949939307534,
+        92.66619986886205
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "successes": 0,
+      "success_wilson_ci95": [
+        0.0,
+        0.1071791982550706
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "paired_success_gain_vs_hold": -0.03125,
+      "paired_success_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "paired_native_distance_utility_gain": 47.58211025311366,
+      "paired_distance_ci95": [
+        -72.47161077975109,
+        160.36403210859095
+      ],
+      "additional_candidate_evaluations": 288000,
+      "absorbed_before_fork": 0
+    }
+  ],
+  "paired_updates_vs_feedback": [
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": -0.125,
+      "success_gain_ci95": [
+        -0.25,
+        -0.03125
+      ],
+      "helped": 0,
+      "harmed": 4,
+      "native_distance_gain": -1.1697056293487549,
+      "native_distance_ci95": [
+        -10.06660841703415,
+        7.58711839318273
+      ]
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": -0.125,
+      "success_gain_ci95": [
+        -0.25,
+        -0.03125
+      ],
+      "helped": 0,
+      "harmed": 4,
+      "native_distance_gain": 3.4963824450969696,
+      "native_distance_ci95": [
+        -7.576959409564734,
+        18.206852322816847
+      ]
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": 0.0625,
+      "success_gain_ci95": [
+        0.0,
+        0.15625
+      ],
+      "helped": 2,
+      "harmed": 0,
+      "native_distance_gain": 0.9758944809436798,
+      "native_distance_ci95": [
+        -5.347392879426479,
+        7.1909363389015075
+      ]
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": -0.03125,
+      "success_gain_ci95": [
+        -0.09375,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 1,
+      "native_distance_gain": 1.2698107659816742,
+      "native_distance_ci95": [
+        -5.046622812747955,
+        7.241868681460619
+      ]
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": -0.03125,
+      "success_gain_ci95": [
+        -0.15625,
+        0.0625
+      ],
+      "helped": 1,
+      "harmed": 2,
+      "native_distance_gain": -78.71651312572115,
+      "native_distance_ci95": [
+        -248.5215980402049,
+        37.550260244654304
+      ]
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": -0.09375,
+      "success_gain_ci95": [
+        -0.21875,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 3,
+      "native_distance_gain": -14.502679607833478,
+      "native_distance_ci95": [
+        -146.2474182760758,
+        120.51812963340319
+      ]
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": 0.03125,
+      "success_gain_ci95": [
+        0.0,
+        0.09375
+      ],
+      "helped": 1,
+      "harmed": 0,
+      "native_distance_gain": -51.12001015641197,
+      "native_distance_ci95": [
+        -134.18853513575309,
+        7.448611903048582
+      ]
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "n": 32,
+      "reference": "FEEDBACK",
+      "success_gain": 0.0,
+      "success_gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "helped": 0,
+      "harmed": 0,
+      "native_distance_gain": 16.83353901341468,
+      "native_distance_ci95": [
+        -52.180694547999465,
+        104.69904753019298
+      ]
+    }
+  ],
+  "adaptation_training_diagnostics": [
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "adapted_forks": 31,
+      "updated_parameters": [
+        1802848
+      ],
+      "total_gradient_steps": 496,
+      "prefork_training_loss_initial_median": 0.027730686590075493,
+      "prefork_training_loss_final_median": 0.0053292810916900635,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "tworoom",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "adapted_forks": 31,
+      "updated_parameters": [
+        10826272
+      ],
+      "total_gradient_steps": 496,
+      "prefork_training_loss_initial_median": 0.027730686590075493,
+      "prefork_training_loss_final_median": 0.0038182251155376434,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "adapted_forks": 31,
+      "updated_parameters": [
+        1802848
+      ],
+      "total_gradient_steps": 496,
+      "prefork_training_loss_initial_median": 0.06331012398004532,
+      "prefork_training_loss_final_median": 0.005035268608480692,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "tworoom",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "adapted_forks": 31,
+      "updated_parameters": [
+        10826272
+      ],
+      "total_gradient_steps": 496,
+      "prefork_training_loss_initial_median": 0.06331012398004532,
+      "prefork_training_loss_final_median": 0.004742930177599192,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-HEAD",
+      "adapted_forks": 32,
+      "updated_parameters": [
+        1802848
+      ],
+      "total_gradient_steps": 512,
+      "prefork_training_loss_initial_median": 0.007590567227452993,
+      "prefork_training_loss_final_median": 0.0029061223613098264,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "pusht",
+      "gain": 1.0,
+      "method": "SHORT-DYNAMICS",
+      "adapted_forks": 32,
+      "updated_parameters": [
+        10826272
+      ],
+      "total_gradient_steps": 512,
+      "prefork_training_loss_initial_median": 0.007590567227452993,
+      "prefork_training_loss_final_median": 0.002356061479076743,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-HEAD",
+      "adapted_forks": 32,
+      "updated_parameters": [
+        1802848
+      ],
+      "total_gradient_steps": 512,
+      "prefork_training_loss_initial_median": 0.01773600559681654,
+      "prefork_training_loss_final_median": 0.0028164585819467902,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    },
+    {
+      "task": "pusht",
+      "gain": 0.7,
+      "method": "SHORT-DYNAMICS",
+      "adapted_forks": 32,
+      "updated_parameters": [
+        10826272
+      ],
+      "total_gradient_steps": 512,
+      "prefork_training_loss_initial_median": 0.01773600559681654,
+      "prefork_training_loss_final_median": 0.0021914581302553415,
+      "scope": "losses fit the same three prefork samples; not held-out prediction or task improvement"
+    }
+  ],
+  "baseline_reference_control": {
+    "n": 512,
+    "successes_all_identical": true,
+    "steps_all_identical": false,
+    "max_native_distance_abs_difference": 15.386474609375,
+    "max_prefork_feature_abs_difference": 0.59344482421875,
+    "reference_path": "/home/xiang/.cache/latent-wm-results/20261002-E18-recovery-forks-s0-retry1",
+    "timing": "A100 and RTX timing kept separate; reference initial-search timing reused, not RTX measurement",
+    "per_method": {
+      "HOLD": {
+        "n": 128,
+        "step_mismatches": 0,
+        "max_native_distance_abs_difference": 2.2737367544323206e-13
+      },
+      "PREDICTED-REPLAN": {
+        "n": 128,
+        "step_mismatches": 1,
+        "max_native_distance_abs_difference": 15.386474609375
+      },
+      "FEEDBACK": {
+        "n": 128,
+        "step_mismatches": 3,
+        "max_native_distance_abs_difference": 3.0589637756347656
+      },
+      "EXTRA-REPLAN": {
+        "n": 128,
+        "step_mismatches": 0,
+        "max_native_distance_abs_difference": 8.80831527709961
+      }
+    },
+    "interpretation": "Success reproduction only; replanned actions, trajectory distance and latent features are not bit-exact across hardware. New effects are paired against the current RTX baselines."
+  },
+  "native_controls": {
+    "tworoom": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 0.0001220703125
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 0.0001220703125
+      }
+    ],
+    "pusht": [
+      {
+        "horizon_macro": 1,
+        "forecast_primitive_steps": 25,
+        "max_cost_abs_error": 6.103515625e-05
+      },
+      {
+        "horizon_macro": 2,
+        "forecast_primitive_steps": 50,
+        "max_cost_abs_error": 9.1552734375e-05
+      },
+      {
+        "horizon_macro": 3,
+        "forecast_primitive_steps": 75,
+        "max_cost_abs_error": 9.1552734375e-05
+      }
+    ]
+  },
+  "raw_sha256": {
+    "config.json": "0b7de27b004dbe0af0c4befc2e5374095043b2981c067e2ac367a71e01b66de2",
+    "rows.json": "d6d7f68c14b92b52ed67dad5bdba8ba857f8eb8b6082e27bfbb91b6ca9cd4781",
+    "summary.json": "2cb2895e53700417fb14451e18f607f7b75a12f18da548df7f585a6ee7575537",
+    "recovery_forks_used.py": "5b025a19cf8a0b4784e8a045318b1ead503e651dfe93a98e4ba996c327440da1"
+  },
+  "limitations": [
+    "one released checkpoint and 32 prelocked goals per task; all goals retained",
+    "gain0.7 is one artificial dynamics shift; not broad recovery evidence",
+    "HOLD is open-loop suffix, other methods replan once; feedback versus hold combines information and replanning",
+    "updates use only 3 pre-fork samples and 16 gradients; no data/step sweep or trained router",
+    "base PushT dataset restore lacks complete physics memory; generated prefix fork replay is exact",
+    "future outcomes only offline labels; no privileged gain/state in adaptation inputs"
+  ],
+  "science_claims_upgraded": []
+}

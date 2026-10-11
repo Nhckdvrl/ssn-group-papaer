@@ -1,0 +1,128 @@
+"""Frozen Qwen inference, preserving upstream raw-continuation protocol for E00."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import time
+import torch
+import transformers
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from data import CACHE, amouyal, verified_root, sha
+
+REPAIR='Read the whole sentence and revise any initial interpretation before answering.'
+
+def clean_word(word):
+    word=word.replace(' ','').lower().strip()
+    if word and not word[0].isascii():word=word[1:]
+    return word
+
+def tasks_e00(cache,tokenizer):
+    root=verified_root(cache,'amouyal');rows=amouyal(cache)
+    tasks=[]
+    for order,file in [('reg','prefixes.json'),('rev','prefixes_rev.json')]:
+        prefixes=json.loads((root/'prefixes'/file).read_text());assert len(prefixes)==8
+        for pi,pref in enumerate(prefixes):
+            for r in rows:
+                q=pref['question'].replace('SENTENCE',r['sentence']).replace('QUESTION',r['question'])
+                raw=pref['system']+'\n\n'+q+'\n\n'+pref['suffix']
+                tasks.append((r,f'raw_{order}_{pi}',raw))
+                if pi==0:
+                    for repair in (False,True):
+                        system=pref['system']+('\n\n'+REPAIR if repair else '')
+                        chat=tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':q}],
+                            tokenize=False,add_generation_prompt=True,enable_thinking=False)+pref['suffix']
+                        tasks.append((r,f'chat_{order}'+('_repair' if repair else ''),chat))
+    # Identical first raw prefix evaluated a second time; no prompt selection.
+    tasks += [(r,'raw_reg_0_repeat',prompt) for r,pid,prompt in tasks if pid=='raw_reg_0']
+    return tasks
+
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--cache',type=Path,default=CACHE)
+    ap.add_argument('--model',type=Path,default=CACHE/'models/Qwen3-8B')
+    ap.add_argument('--experiment',choices=['E00','E01','E02','E03','E04','E05','E06','E07','E08','E09','E10','E11','E26','E27'],default='E00')
+    ap.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16')
+    ap.add_argument('--data',type=Path);ap.add_argument('--batch-size',type=int,default=32)
+    ap.add_argument('--system-frame',choices=['both','neutral','upstream'],default='both')
+    ap.add_argument('--recovery-mode',choices=['both','base','repair'],default='both')
+    ap.add_argument('--families',nargs='+',choices=['NPZ','NPS','MVRR'])
+    ap.add_argument('--out',type=Path,required=True);args=ap.parse_args()
+    args.out.mkdir(parents=True,exist_ok=True)
+    assert not (args.out/'predictions.jsonl').exists(),'Do not silently overwrite a run'
+    torch.manual_seed(0);torch.set_num_threads(8)
+    torch.backends.cuda.matmul.allow_tf32=False
+    torch.backends.cudnn.allow_tf32=False
+    tokenizer=AutoTokenizer.from_pretrained(args.model,local_files_only=True,padding_side='left')
+    if tokenizer.pad_token_id is None:tokenizer.pad_token=tokenizer.eos_token
+    start=time.time()
+    model=AutoModelForCausalLM.from_pretrained(args.model,local_files_only=True,torch_dtype=getattr(torch,args.dtype),attn_implementation='sdpa').to('cuda').eval()
+    for parameter in model.parameters():parameter.requires_grad_(False)
+    if args.experiment in ('E00','E04'):tasks=tasks_e00(args.cache,tokenizer)
+    elif args.experiment=='E03':
+        from order_audit import tasks_order
+        tasks=tasks_order(args.cache,tokenizer)
+    elif args.experiment=='E05':
+        from response_audit import tasks_response
+        tasks=tasks_response(args.cache,tokenizer)
+    elif args.experiment=='E06':
+        from attachment_audit import tasks_attachment
+        tasks=tasks_attachment(args.cache,tokenizer)
+    elif args.experiment=='E07':
+        from native_audit import tasks_native
+        tasks=tasks_native(args.cache,tokenizer,args.system_frame)
+    elif args.experiment=='E08':
+        from focus_audit import tasks_focus
+        tasks=tasks_focus(args.cache,tokenizer)
+    elif args.experiment=='E09':
+        from sap import tasks_sap
+        tasks=tasks_sap(args.cache,tokenizer)
+    elif args.experiment=='E10':
+        from option_access import tasks_access
+        tasks=tasks_access(args.cache,tokenizer)
+    elif args.experiment in ('E26','E27'):
+        from scoped_access import tasks_scope
+        assert args.data is not None
+        tasks=tasks_scope(args.data,tokenizer,args.recovery_mode)
+    else:
+        from stimuli import tasks_jurayj
+        assert args.data is not None
+        tasks=tasks_jurayj(args.data,tokenizer,args.experiment,args.system_frame,args.families)
+    tokens={choice:[idx for word,idx in tokenizer.get_vocab().items() if clean_word(word)==choice.lower()] for choice in ('Yes','No')}
+    for choice in ('A','B'):
+        tokens[choice]=[idx for word,idx in tokenizer.get_vocab().items() if word.replace('Ġ','').replace('▁','').strip()==choice]
+    assert all(tokens.values())
+    config=dict(experiment=args.experiment,model=str(args.model),model_manifest=json.loads((args.model/'manifest.json').read_text()),
+                torch=torch.__version__,transformers=transformers.__version__,cuda=torch.version.cuda,
+                gpu=torch.cuda.get_device_name(),dtype=args.dtype,softmax='float32',attention='sdpa',
+                tf32=False,
+                frozen=True,thinking=False,batch_size=args.batch_size,seed=0,choice_token_ids=tokens,
+                task_count=len(tasks),system_frame=args.system_frame,families=args.families,git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+                recovery_mode=args.recovery_mode,
+                code_sha256={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},
+                data_sha256=sha(args.data) if args.data else sha(args.cache/'normalized'/('sap.jsonl' if args.experiment in ('E09','E10') else 'amouyal.jsonl')))
+    if args.experiment in ('E26','E27'):config['independent_audit_sha256']=sha(args.data.with_suffix('.audit.json'))
+    (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
+    with (args.out/'predictions.jsonl').open('w') as f, torch.inference_mode():
+        for offset in range(0,len(tasks),args.batch_size):
+            batch=tasks[offset:offset+args.batch_size]
+            inputs=tokenizer([x[2] for x in batch],return_tensors='pt',padding=True).to('cuda')
+            logits=model(**inputs,logits_to_keep=1).logits[:,-1,:].float()
+            probs=logits.softmax(-1)
+            for j,(r,pid,prompt) in enumerate(batch):
+                yes=probs[j,tokens[r.get('yes_label','Yes')]].sum();no=probs[j,tokens[r.get('no_label','No')]].sum()
+                py=float((yes/(yes+no)).item());mass=float((yes+no).item())
+                item={k:v for k,v in r.items() if k not in ('sentence','question','initial_parse_claim','final_parse_claim')}
+                item.update(prompt_id=pid,prompt_sha256=hashlib.sha256(prompt.encode()).hexdigest(),
+                    input_tokens=int(inputs['attention_mask'][j].sum()),p_yes=py,choice_mass=mass,
+                    p_correct=None if r['gold'] is None else py if r['gold']=='Yes' else 1-py,
+                    correct=None if r['gold'] is None else int((py>0.5)==(r['gold']=='Yes')),
+                    greedy_token=tokenizer.decode([int(logits[j].argmax())]))
+                f.write(json.dumps(item)+'\n')
+            f.flush()
+            if offset%(args.batch_size*10)==0:print(f'{offset+len(batch)}/{len(tasks)} elapsed={time.time()-start:.1f}s',flush=True)
+    config.update(wall_seconds=time.time()-start,gpu_hours=(time.time()-start)/3600,
+                  peak_gpu_bytes=torch.cuda.max_memory_allocated(),predictions_sha256=sha(args.out/'predictions.jsonl'))
+    (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
+    print('DONE',config['wall_seconds'],flush=True)
+
+if __name__=='__main__':main()

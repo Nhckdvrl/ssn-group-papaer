@@ -1,0 +1,54 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e88/qwen3_discovery",
+    "n": 24,
+    "seed": 88001,
+    "stage": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "label_ids": [
+    [
+      8225
+    ],
+    [
+      6785
+    ]
+  ],
+  "source_ids": [
+    [
+      3608,
+      25,
+      29405,
+      198
+    ],
+    [
+      3608,
+      25,
+      14261,
+      198
+    ]
+  ],
+  "conditions": [
+    "base",
+    "flip",
+    "instruction",
+    "explicit",
+    "explicit_flip",
+    "criterion_patch",
+    "name_patch",
+    "explicit_criterion_patch"
+  ],
+  "example_recipient": "Below are restaurant reviews and judgments from two reviewers.\n\nSource: Alice\nReview: The dishes tasted wonderful. The waiters were unhelpful.\nLabel: negative\n\nSource: Bob\nReview: The dishes tasted wonderful. The waiters were friendly.\nLabel: positive\n\nSource: Alice\nReview: The dishes tasted wonderful. The waiters were friendly.\nLabel: positive\n\nSource: Alice\nReview: The food was disappointing. The waiters were unhelpful.\nLabel: negative\n\nSource: Bob\nReview: The dishes tasted wonderful. The waiters were unhelpful.\nLabel: positive\n\nSource: Bob\nReview: The food was disappointing. The waiters were friendly.\nLabel: negative\n\nSource: Alice\nReview: The food was disappointing. The waiters were friendly.\nLabel: positive\n\nSource: Bob\nReview: The food was disappointing. The waiters were unhelpful.\nLabel: negative\n\n",
+  "example_donor": "Below are restaurant reviews and judgments from two reviewers.\n\nSource: Alice\nReview: The dishes tasted wonderful. The waiters were unhelpful.\nLabel: positive\n\nSource: Bob\nReview: The dishes tasted wonderful. The waiters were friendly.\nLabel: positive\n\nSource: Alice\nReview: The dishes tasted wonderful. The waiters were friendly.\nLabel: positive\n\nSource: Alice\nReview: The food was disappointing. The waiters were unhelpful.\nLabel: negative\n\nSource: Bob\nReview: The dishes tasted wonderful. The waiters were unhelpful.\nLabel: negative\n\nSource: Bob\nReview: The food was disappointing. The waiters were friendly.\nLabel: positive\n\nSource: Alice\nReview: The food was disappointing. The waiters were friendly.\nLabel: negative\n\nSource: Bob\nReview: The food was disappointing. The waiters were unhelpful.\nLabel: negative\n\n",
+  "example_query": {
+    "source": 0,
+    "food": -1,
+    "service": -1,
+    "template": 0,
+    "text": "The cooking disgusted me. The servers neglected us.",
+    "recipient_gold": -1,
+    "donor_gold": -1
+  }
+}

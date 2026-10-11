@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>SemEval 2010 Shared Task on Linking Events and their Participants in Discourse</title>
+
+<link href="http://www.coli.uni-saarland.de/coli-ns.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td align="right" bgcolor="#efefef" valign="top" width="150"> <a href="http://www.coli.uni-saarland.de/" border="0"> <img src="http://www.coli.uni-saarland.de/images/header-l.gif" alt="Computational Linguistics &amp; Phonetics" border="0" height="110" width="150"> </a> </td>
+<td align="left" valign="top"> <img src="http://www.coli.uni-saarland.de/images/header-r.gif" alt="Computational Linguistics &amp; Phonetics" usemap="#links" border="0" height="110" width="570"> <map name="links"><area shape="rect" coords="205,75,420,90" href="http://www.coli.uni-saarland.de/" alt="Fachrichtung 4.7"><area shape="rect" coords="420,75,565,90" href="http://www.uni-saarland.de/" alt="Universität des Saarlandes"></map>
+</td>
+</tr>
+<tr>
+<!--- Navigation --> <td align="left" bgcolor="#efefef" valign="top" width="150">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td height="40" width="7"></td>
+<td class="navbar-item"><a href="http://semeval2.fbk.eu/Semeval2.html">SemEval 2010</a></td>
+</tr>
+<tr>
+<td height="40" width="7"></td>
+<td class="navbar-item"><a href="http://coli.uni-saarland.de/projects/semeval2010_FG/index.html">Task
+10 Home</a></td>
+</tr>
+<tr>
+<td height="40" width="7"></td>
+<td class="navbar-item"><a href="http://www.coli.uni-saarland.de/projects/semeval2010_FG/download.html">Downloads</a></td>
+</tr>
+<tr>
+<td height="40" width="7"></td>
+<td class="navbar-item"><a href="http://www.coli.uni-saarland.de/projects/semeval2010_FG/infoparticipants.html">Info
+for participants</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+<!--- Main -->
+<td align="left" valign="top">
+<div class="main">
+<h1>SemEval 2010 Task 10 </h1>
+<h1>Info for participants</h1>
+
+<p>The data sets are available in two different formats:
+<ul>
+<li> <a href="#FN">with FrameNet-style annotations in SalsaTiger-XML format</a>
+<li> <a href="#PB">with PropBank-style annotations in a CoNLL-like format</a>
+</ul>
+
+Below, we provide some information about the two different formats. For more information (including the README files for the two data distributions) see the <a href="download.html">download page</a>.
+<br>
+<br>
+
+
+<h2><a id="FN">FrameNet-style Annotation</a></h2>
+
+<p>The data sets were originally annotated in the <a href="http://framenet.icsi.berkeley.edu/">FrameNet</a> framework and then semi-automatically converted to a <a href="http://verbs.colorado.edu/~mpalmer/projects/ace.html">PropBank</a>-style annotation. The FrameNet annotations are released in SalsaTiger-XML. More information about this XML format can be found in the following paper:
+</p>
+
+<blockquote>
+Katrin Erk and Sebastian Padó:
+<a href="http://www.nlpado.de/~sebastian/pub/papers/lrec04_erk.pdf">A powerful and versatile XML Format for representing role-semantic annotation.</a>
+<em>Proceedings of LREC-2004</em>, Lisbon. 
+</blockquote>
+
+<p>
+Data files in SalsaTiger-XML format can be viewed with the SALTO annotation tool (see the <a href="http://www.coli.uni-saarland.de/projects/salsa/salto/doc/html/">SALTO documentation</a> and <a href="http://www.coli.uni-saarland.de/projects/salsa/salto/request">download</a> pages). An example of how our annotation looks when displayed by SALTO can be found <a href="#screen">here</a>. An example of the SalsaTiger-XML format can be found <a href="#salsaxml">here</a>.
+</p>
+
+<p>
+Further information on SALTO can be found in the following paper:
+
+<blockquote>
+A. Burchardt, K. Erk, A. Frank, A. Kowalski and S. Padó
+<a href="http://www.coli.uni-saarland.de/projects/salsa/papers/lrec06-tool.pdf">SALTO -- A Versatile Multi-Level Annotation Tool.</a>
+<em>Proceedings of LREC 2006</em>, Genoa, Italy. 
+</blockquote>
+</p>
+<!-- <a href="#screen">Screen shots of the annotation</a><br>
+<a href="#fn">SalsaTiger-XML format for FrameNet
+version of the task</a> -->
+
+<h3><a id="screen">SALTO Screenshot of FrameNet-style annotation</a></h3>
+
+Below are two <a name="screen">screenshots</a>
+of our
+annotation tool. Note that these are two consecutive sentences from a
+sample text, which exemplify the density of the annotation and the
+cross-sentence links that are present.<br>
+<br>
+<img src="NIexample_1b.png" alt="Sentence_1" border="1" vspace="10"><img src="NIexample_1a.png" alt="Sentence_2" border="1" vspace="10"></div>
+<!-- <h3><a name="fn">FrameNet format</a></h3>-->
+
+<h3><a id="salsaxml">SalsaTiger-XML Format</a></h3>
+
+Below is an example of what the sentence in the first of the above two
+screenshots looks like
+in our
+SalsaTIGER-xml format for the FN version of the task.
+<pre><code><br>&lt;s id="tiger_7"&gt;<br>&lt;graph root="tiger_7_517"&gt;<br>&lt;terminals&gt;<br>&lt;t id="tiger_7_0" word="Through" pos="IN" lemma="through"/&gt;<br>&lt;t id="tiger_7_1" word="the" pos="DT" lemma="the"/&gt;<br>&lt;t id="tiger_7_2" word="fogged" pos="JJ" lemma="fogged"/&gt;<br>&lt;t id="tiger_7_3" word="glass" pos="NN" lemma="glass"/&gt;<br>&lt;t id="tiger_7_4" word="I" pos="PRP" lemma="I"/&gt;<br>&lt;t id="tiger_7_5" word="dimly" pos="RB" lemma="dimly"/&gt;<br>&lt;t id="tiger_7_6" word="saw" pos="VBD" lemma="see"/&gt;<br>&lt;t id="tiger_7_7" word="a" pos="DT" lemma="a"/&gt;<br>&lt;t id="tiger_7_8" word="man" pos="NN" lemma="man"/&gt;<br>&lt;t id="tiger_7_9" word="spring" pos="VB" lemma="spring"/&gt;<br>&lt;t id="tiger_7_10" word="up" pos="RP" lemma="up"/&gt;<br>&lt;t id="tiger_7_11" word="from" pos="IN" lemma="from"/&gt;<br>&lt;t id="tiger_7_12" word="a" pos="DT" lemma="a"/&gt;<br>&lt;t id="tiger_7_13" word="chair" pos="NN" lemma="chair"/&gt;<br>&lt;t id="tiger_7_14" word="beside" pos="IN" lemma="beside"/&gt;<br>&lt;t id="tiger_7_15" word="the" pos="DT" lemma="the"/&gt;<br>&lt;t id="tiger_7_16" word="fire" pos="NN" lemma="fire"/&gt;<br>&lt;t id="tiger_7_17" word="," pos="PUNC," lemma=","/&gt;<br>&lt;t id="tiger_7_18" word="and" pos="CC" lemma="and"/&gt;<br>&lt;t id="tiger_7_19" word="heard" pos="VBD" lemma="hear"/&gt;<br>&lt;t id="tiger_7_20" word="a" pos="DT" lemma="a"/&gt;<br>&lt;t id="tiger_7_21" word="sharp" pos="JJ" lemma="sharp"/&gt;<br>&lt;t id="tiger_7_22" word="cry" pos="NN" lemma="cry"/&gt;<br>&lt;t id="tiger_7_23" word="from" pos="IN" lemma="from"/&gt;<br>&lt;t id="tiger_7_24" word="within" pos="IN" lemma="within"/&gt;<br>&lt;t id="tiger_7_25" word="the" pos="DT" lemma="the"/&gt;<br>&lt;t id="tiger_7_26" word="room" pos="NN" lemma="room"/&gt;<br>&lt;t id="tiger_7_27" word="." pos="PUNC." lemma="."/&gt;<br>&lt;/terminals&gt;<br>&lt;nonterminals&gt;<br>&lt;nt id="tiger_7_505" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_15"/&gt;<br>&lt;edge label="-" idref="tiger_7_16"/&gt;<br>&lt;edge label="-" idref="tiger_7_17"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_506" cat="PP"&gt;<br>&lt;edge label="-" idref="tiger_7_14"/&gt;<br>&lt;edge label="-" idref="tiger_7_505"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_503" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_12"/&gt;<br>&lt;edge label="-" idref="tiger_7_13"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_504" cat="PP"&gt;<br>&lt;edge label="-" idref="tiger_7_11"/&gt;<br>&lt;edge label="-" idref="tiger_7_503"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_507" cat="VP"&gt;<br>&lt;edge label="-" idref="tiger_7_9"/&gt;<br>&lt;edge label="-" idref="tiger_7_10"/&gt;<br>&lt;edge label="-" idref="tiger_7_506"/&gt;<br>&lt;edge label="-" idref="tiger_7_504"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_502" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_7"/&gt;<br>&lt;edge label="-" idref="tiger_7_8"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_508" cat="S"&gt;<br>&lt;edge label="-" idref="tiger_7_507"/&gt;<br>&lt;edge label="-" idref="tiger_7_502"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_509" cat="VP"&gt;<br>&lt;edge label="-" idref="tiger_7_5"/&gt;<br>&lt;edge label="-" idref="tiger_7_6"/&gt;<br>&lt;edge label="-" idref="tiger_7_508"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_510" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_20"/&gt;<br>&lt;edge label="-" idref="tiger_7_21"/&gt;<br>&lt;edge label="-" idref="tiger_7_22"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_511" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_25"/&gt;<br>&lt;edge label="-" idref="tiger_7_26"/&gt;<br>&lt;edge label="-" idref="tiger_7_27"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_512" cat="PP"&gt;<br>&lt;edge label="-" idref="tiger_7_24"/&gt;<br>&lt;edge label="-" idref="tiger_7_511"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_513" cat="PP"&gt;<br>&lt;edge label="-" idref="tiger_7_23"/&gt;<br>&lt;edge label="-" idref="tiger_7_512"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_514" cat="NP"&gt;<br>&lt;edge label="-" idref="tiger_7_510"/&gt;<br>&lt;edge label="-" idref="tiger_7_513"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_515" cat="VP"&gt;<br>&lt;edge label="-" idref="tiger_7_19"/&gt;<br>&lt;edge label="-" idref="tiger_7_514"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_516" cat="VP"&gt;<br>&lt;edge label="-" idref="tiger_7_18"/&gt;<br>&lt;edge label="-" idref="tiger_7_509"/&gt;<br>&lt;edge label="-" idref="tiger_7_515"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_500" cat="NPB"&gt;<br>&lt;edge label="-" idref="tiger_7_1"/&gt;<br>&lt;edge label="-" idref="tiger_7_2"/&gt;<br>&lt;edge label="-" idref="tiger_7_3"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_501" cat="PP"&gt;<br>&lt;edge label="-" idref="tiger_7_0"/&gt;<br>&lt;edge label="-" idref="tiger_7_500"/&gt;<br>&lt;/nt&gt;<br>&lt;nt id="tiger_7_517" cat="S"&gt;<br>&lt;edge label="-" idref="tiger_7_4"/&gt;<br>&lt;edge label="-" idref="tiger_7_516"/&gt;<br>&lt;edge label="-" idref="tiger_7_501"/&gt;<br>&lt;/nt&gt;<br>&lt;/nonterminals&gt;<br>&lt;/graph&gt;<br>&lt;matches&gt;<br>&lt;/matches&gt;<br>&lt;sem&gt;<br>&lt;globals&gt;<br>&lt;/globals&gt;<br>&lt;frames&gt;<br>&lt;frame name="Perception_experience" id="tiger_7_f1229595851.0867"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_19"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Perceiver_passive" id="tiger_7_f1229595851.0867_e1"&gt;<br>&lt;fenode idref="tiger_7_4"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Phenomenon" id="tiger_7_f1229595851.0867_e2"&gt;<br>&lt;fenode idref="tiger_7_510"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Ground" id="tiger_7_f1229595851.0867_e3"&gt;<br>&lt;fenode idref="tiger_7_513"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="People" id="tiger_7_f1229595851.08691"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_8"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Person" id="tiger_7_f1229595851.08691_e1"&gt;<br>&lt;fenode idref="tiger_7_8"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="Building_subparts" id="tiger_7_f1229595851.08711"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_26"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Building_part" id="tiger_7_f1229595851.08711_e1"&gt;<br>&lt;fenode idref="tiger_7_26"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="Perception_experience" id="tiger_7_f1229595851.08732"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_6"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Perceiver_passive" id="tiger_7_f1229595851.08732_e1"&gt;<br>&lt;fenode idref="tiger_7_4"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Phenomenon" id="tiger_7_f1229595851.08732_e2"&gt;<br>&lt;fenode idref="tiger_7_502"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Direction" id="tiger_7_f1229595851.08732_e3"&gt;<br>&lt;fenode idref="tiger_7_501"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Phenomenon" id="tiger_7_f1229595851.08732_e4"&gt;<br>&lt;fenode idref="tiger_7_507"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="Self_motion" id="tiger_7_f1229595851.08774"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_9"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Self_mover" id="tiger_7_f1229595851.08774_e1"&gt;<br>&lt;fenode idref="tiger_7_502"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Source" id="tiger_7_f1229595851.08774_e2"&gt;<br>&lt;fenode idref="tiger_7_504"/&gt;<br>&lt;fenode idref="tiger_7_506"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="Vocalizations" id="tiger_7_f1"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_22"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Location_of_sound_source" id="tiger_7_f1_e1"&gt;<br>&lt;fenode idref="tiger_7_513"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Degree" id="tiger_7_f1_e2"&gt;<br>&lt;fenode idref="tiger_7_21"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;frame name="Coreference" id="tiger_7_f2"&gt;<br>&lt;target&gt;<br>&lt;fenode idref="tiger_7_3"/&gt;<br>&lt;/target&gt;<br>&lt;fe name="Coreferent" id="tiger_7_f2_e1"&gt;<br>&lt;fenode idref="tiger_6_505"/&gt;<br>&lt;/fe&gt;<br>&lt;fe name="Current" id="tiger_7_f2_e2"&gt;<br>&lt;fenode idref="tiger_7_500"/&gt;<br>&lt;/fe&gt;<br>&lt;/frame&gt;<br>&lt;/frames&gt;<br>&lt;usp&gt;<br>&lt;uspframes&gt;<br>&lt;/uspframes&gt;<br>&lt;uspfes&gt;<br>&lt;/uspfes&gt;<br>&lt;/usp&gt;<br>&lt;wordtags&gt;<br>&lt;/wordtags&gt;<br>&lt;/sem&gt;<br>&lt;/s&gt;<br></code><br></pre>
+
+
+<h2><a id="PB">PropBank-style Annotation</a></h2>
+
+The PropBank-style annotation was semi-automatically derived from the FrameNet-style annotation. It is distributed in a modified CoNLL format. An example can be found <a href="example.pb.connl.txt">here</a>. The <a href="Semeval2010.Task10.TrainingData.PB.readme">README</a> for the PropBank-style annotation provides more details regarding the format.
+<br>
+<br>
+
+<h2>Community &amp; support</h2>
+We have created a <a href="http://groups.google.com/group/semeval2010-task10">Google
+group</a> for the participants of Task-10.<br><br>
+The organizers are also on the list and will follow the discussion
+there. If you want to contact us about something off the list, you can
+write
+to us directly. For now, the main contact will be:
+<img src="contact2.png" alt="contactaddress" border="0" height="14" vspace="2" width="100">@coli.uni-sb.de<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+</body></html>

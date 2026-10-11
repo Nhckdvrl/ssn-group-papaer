@@ -1,0 +1,42 @@
+{
+  "experiment": "E13",
+  "name": "init_replay_s29",
+  "launch": {
+    "started_utc": "2026-10-04T13:11:24.712966+00:00",
+    "command": [
+      "/home/xiang/.venvs/data-centric-rsi/bin/python",
+      "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/scripts/e12_run_eval.py",
+      "--model",
+      "/var/tmp/xiang-data-rsi/e13/train_runs/init_replay_s29/model",
+      "--eval-data",
+      "/var/tmp/xiang-data-rsi/e12/LMUData",
+      "--judge-url",
+      "http://fvcrc20:8034/v1/chat/completions",
+      "--gpu",
+      "0",
+      "--out",
+      "/var/tmp/xiang-data-rsi/closeout/attempt1/init_replay_s29/eval"
+    ],
+    "gpu": 0,
+    "token": "907cfc0b819b4d81bef3f0fffd573880",
+    "cap_seconds": 5444,
+    "owner_pid": 3579809,
+    "owner_ticks": "1834398390",
+    "source_sha256": "0f93a1133e1ca016f8fc44315d3d6a02f8da0ae77ddd22bdfc958386a72f4ab2",
+    "source_git_sha": "5cfea2a8f82e662c85570528f83d388d8fd4613a",
+    "pid": 3580239,
+    "start_ticks": "1834404108",
+    "guard_pid": 3580240,
+    "guard_ticks": "1834404113"
+  },
+  "status": "failed",
+  "error": "AssertionError()",
+  "cleanup": {
+    "utc": "2026-10-04T13:35:13.075105+00:00",
+    "before": [],
+    "remaining": []
+  },
+  "finished_utc": "2026-10-04T13:35:13.102342+00:00",
+  "eval_wrapper_seconds": 1428.2541002370417,
+  "returncode": 0
+}

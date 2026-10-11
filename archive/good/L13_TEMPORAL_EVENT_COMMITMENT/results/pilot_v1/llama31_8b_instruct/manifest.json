@@ -1,0 +1,19 @@
+{
+  "config": "configs/pilot_v1.json",
+  "tag": "pilot_v1",
+  "model_id": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+  "family": "llama3",
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "seed": 13,
+  "n_items": 200,
+  "task_orders": [
+    "fact_first",
+    "timeline_first",
+    "paraphrase_first"
+  ],
+  "n_permutations": 6,
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "elapsed_s": 93.5
+}

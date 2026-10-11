@@ -1,0 +1,117 @@
+{
+  "experiment": "E04",
+  "model": "/data1/xiangding/work/incremental-interpretation-revision/models/Qwen3-1.7B",
+  "model_manifest": {
+    "model": "Qwen/Qwen3-1.7B",
+    "hf_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "download_origin": "https://hf-mirror.com",
+    "hf_byte_identity": "all model/tokenizer/config/LICENSE files verified against fixed HF git/LFS manifest",
+    "proxy_used": false,
+    "license": "Apache-2.0",
+    "hf_checks": {
+      "LICENSE": {
+        "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "bytes": 11343,
+        "hf_expected": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab"
+      },
+      "README.md": {
+        "sha256": "257e52c419dac2258852643f18af6c974f21f8c6c1b6f371b6cca6201cf29091",
+        "bytes": 13963,
+        "hf_expected": "88aaef81cfe31bcdfe47203649a69ff12042826a"
+      },
+      "config.json": {
+        "sha256": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197",
+        "bytes": 726,
+        "hf_expected": "044a86ecf7cb32238f3fae4184e55d354787edec"
+      },
+      "generation_config.json": {
+        "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+        "bytes": 239,
+        "hf_expected": "20a8a9156fc8c3f25295ca067f61fdf120d517c5"
+      },
+      "merges.txt": {
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "bytes": 1671853,
+        "hf_expected": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7"
+      },
+      "model-00001-of-00002.safetensors": {
+        "sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5",
+        "bytes": 3441185608,
+        "hf_expected": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5"
+      },
+      "model-00002-of-00002.safetensors": {
+        "sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9",
+        "bytes": 622329984,
+        "hf_expected": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9"
+      },
+      "model.safetensors.index.json": {
+        "sha256": "0d660e94b165eb912669a5249dff44b83188c4777a07ddb9611fb78d91b0578d",
+        "bytes": 25605,
+        "hf_expected": "986d7db875b47d21f68530f6baac038f1b297b39"
+      },
+      "tokenizer.json": {
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "bytes": 11422654,
+        "hf_expected": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+      },
+      "tokenizer_config.json": {
+        "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+        "bytes": 9732,
+        "hf_expected": "417d038a63fa3de29cfde265caedae14d1a58d92"
+      },
+      "vocab.json": {
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "bytes": 2776833,
+        "hf_expected": "4783fe10ac3adce15ac8f358ef5462739852c569"
+      }
+    }
+  },
+  "torch": "2.7.1+cu126",
+  "transformers": "4.51.3",
+  "cuda": "12.6",
+  "gpu": "NVIDIA H20",
+  "dtype": "float32",
+  "softmax": "float32",
+  "attention": "sdpa",
+  "frozen": true,
+  "thinking": false,
+  "batch_size": 32,
+  "seed": 0,
+  "choice_token_ids": {
+    "Yes": [
+      14004,
+      7414,
+      9693,
+      14080,
+      9834,
+      9454
+    ],
+    "No": [
+      8996,
+      2152,
+      2753,
+      902,
+      72104,
+      2308,
+      5664
+    ]
+  },
+  "task_count": 5796,
+  "git_commit": "fdab845981ccc33eb1870c09616da23fa8f9fc20",
+  "code_sha256": {
+    "analyze.py": "9ddc117cf7d27f358f87da1034bc44574249ae2016be0a50d9bad94cf7f044a8",
+    "data.py": "72915f3dfc93b1a81555a6ed7d2270aad92a34da67ebcdc8ab17cd4953ab819f",
+    "download_model.py": "1f1d752d65494b7a61b7bd5a1789a0ec17c44b0deb9dbebb4127439b5b97ab60",
+    "infer.py": "a0320e64d85e0bda3c64fd01184937bf204a77e011d7ee3f61353d457026ad99",
+    "verify_hf_mirror.py": "91ca9988aad184aec6d1e4abdf16475d67bcedb0c49fb1d1e9855db6a8e152b7",
+    "stimuli.py": "a319adfb6b0a71d992b796a4d446a788e12198e652243da9b5a495f8ccb162df",
+    "order_audit.py": "ca373935365a5a42de1c82cd28d07f60b517bbf283c06949b0555f762af8e95b",
+    "audit_with_opencode.py": "11f12ec3daca09fd9ebcff54542e560edeac39b2bcbfb0b94ffaf9f8c6be153c",
+    "download_hf.py": "b57330e82ef969d21dda0b97710c1568567088878f9e31759a3a4cab2489f31f"
+  },
+  "data_sha256": "c9caa38952d3d8b039c87c2c1d5be79ebb2e42133e1b236ebf79fc7e387a3d99",
+  "wall_seconds": 155.182124376297,
+  "gpu_hours": 0.043106145792537263,
+  "peak_gpu_bytes": 9652734976,
+  "predictions_sha256": "6e0fb1b7b756235cc8ec5ed3313a8d60481e19906b5d3871e28973a465ba0406"
+}

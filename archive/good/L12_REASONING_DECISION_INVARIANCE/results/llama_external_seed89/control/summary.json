@@ -1,0 +1,78 @@
+{
+  "design": "L12-E14 Llama-ecosystem external causal-control replication",
+  "n_valid_trace_pairs": 252,
+  "n_base_decisions": 36,
+  "deepseek_r1": {
+    "trajectory_control": {
+      "mean_probability_effect": 0.09654798222666344,
+      "base_decision_bootstrap_ci95": [
+        0.06893988173158573,
+        0.12602510473168785
+      ],
+      "positive_base_decision_fraction": 0.8888888888888888
+    },
+    "prompt_control": {
+      "mean_probability_effect": 0.0010951328452426167,
+      "base_decision_bootstrap_ci95": [
+        -0.002625572702860698,
+        0.004653441331474751
+      ],
+      "positive_base_decision_fraction": 0.5833333333333334
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.09545284938142082,
+      "base_decision_bootstrap_ci95": [
+        0.06747922228482507,
+        0.1253866357649985
+      ],
+      "positive_base_decision_fraction": 0.8888888888888888
+    }
+  },
+  "llama_instruct": {
+    "trajectory_control": {
+      "mean_probability_effect": 0.02807655094186079,
+      "base_decision_bootstrap_ci95": [
+        0.01821969446324368,
+        0.03713473798721226
+      ],
+      "positive_base_decision_fraction": 0.8611111111111112
+    },
+    "prompt_control": {
+      "mean_probability_effect": 0.00012579420153181387,
+      "base_decision_bootstrap_ci95": [
+        -0.0009077055672978843,
+        0.0011828546951133667
+      ],
+      "positive_base_decision_fraction": 0.4722222222222222
+    },
+    "trajectory_minus_prompt": {
+      "mean_probability_effect": 0.02795075674032898,
+      "base_decision_bootstrap_ci95": [
+        0.01861419968168325,
+        0.036517670299454894
+      ],
+      "positive_base_decision_fraction": 0.8888888888888888
+    }
+  },
+  "deepseek_minus_llama": {
+    "mean_probability_effect": 0.06750209264109183,
+    "base_decision_bootstrap_ci95": [
+      0.037346888637763406,
+      0.09953071463421834
+    ],
+    "positive_base_decision_fraction": 0.75
+  },
+  "strict_terminal_removed_sensitivity": {
+    "excluded_trace_pairs": 9,
+    "retained_trace_pairs": 243,
+    "deepseek_minus_llama": {
+      "mean_probability_effect": 0.057563127734355936,
+      "base_decision_bootstrap_ci95": [
+        0.027075790074401872,
+        0.0886054337615322
+      ],
+      "positive_base_decision_fraction": 0.7222222222222222
+    }
+  },
+  "attribution_boundary": "external replication across unmatched post-training pipelines and native templates; not one-variable training attribution"
+}

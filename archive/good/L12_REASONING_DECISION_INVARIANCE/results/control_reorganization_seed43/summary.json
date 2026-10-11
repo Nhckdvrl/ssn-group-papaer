@@ -1,0 +1,101 @@
+{
+  "models": {
+    "instruct_sft": {
+      "trajectory_control": {
+        "mean_probability_effect": 0.011580568029666725,
+        "prospect_cluster_bootstrap_ci95": [
+          -0.3236153262356917,
+          0.3925181198981588
+        ],
+        "per_prospect": {
+          "p1": 0.22182340201522624,
+          "p2": -0.19006149214692414,
+          "p3": 0.02926014846889302
+        }
+      },
+      "prompt_control": {
+        "mean_probability_effect": 0.007177743392632059,
+        "prospect_cluster_bootstrap_ci95": [
+          -0.10753496612111728,
+          0.10251783183775826
+        ],
+        "per_prospect": {
+          "p1": 0.014208243627633368,
+          "p2": 0.0398571181576699,
+          "p3": -0.03165331907803193
+        }
+      },
+      "trajectory_minus_prompt": {
+        "mean_probability_effect": 0.004402824637034665,
+        "prospect_cluster_bootstrap_ci95": [
+          -0.3381647914648056,
+          0.38731951117515506
+        ],
+        "per_prospect": {
+          "p1": 0.20761515838759287,
+          "p2": -0.22991861030459404,
+          "p3": 0.06091346754692495
+        }
+      }
+    },
+    "think_sft": {
+      "trajectory_control": {
+        "mean_probability_effect": 0.5863574263032364,
+        "prospect_cluster_bootstrap_ci95": [
+          0.2776222924391429,
+          0.8574131828111907
+        ],
+        "per_prospect": {
+          "p1": 0.5717243898127761,
+          "p2": 0.5270304409787059,
+          "p3": 0.6584883185569197
+        }
+      },
+      "prompt_control": {
+        "mean_probability_effect": 0.012834125907038864,
+        "prospect_cluster_bootstrap_ci95": [
+          -0.024332096179326374,
+          0.053784066888814167
+        ],
+        "per_prospect": {
+          "p1": 0.0023880255009446827,
+          "p2": 0.02383911656215787,
+          "p3": 0.01096947310725227
+        }
+      },
+      "trajectory_minus_prompt": {
+        "mean_probability_effect": 0.5735233003961975,
+        "prospect_cluster_bootstrap_ci95": [
+          0.27285848061243695,
+          0.8489667568355799
+        ],
+        "per_prospect": {
+          "p1": 0.5693363643118313,
+          "p2": 0.503191324416548,
+          "p3": 0.6475188454496674
+        }
+      }
+    }
+  },
+  "think_minus_instruct": {
+    "trajectory_control_difference": {
+      "mean_probability_effect": 0.5747768582735696,
+      "prospect_cluster_bootstrap_ci95": [
+        0.03687694249674678,
+        1.0550438408584644
+      ]
+    },
+    "control_reorganization_difference": {
+      "mean_probability_effect": 0.5691204757591628,
+      "prospect_cluster_bootstrap_ci95": [
+        0.026099225506186485,
+        1.0620591677725315
+      ]
+    }
+  },
+  "design": "L12-E09 matched prompt-by-trajectory causal-control factorial",
+  "n_trace_pairs": 23,
+  "n_scored_prefixes": 184,
+  "probability_reference": "displayed choice optimal in the gain frame",
+  "template_scope": "each sibling checkpoint's native answer transition"
+}

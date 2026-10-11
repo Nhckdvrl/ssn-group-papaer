@@ -1,0 +1,27 @@
+{
+  "arm": "S",
+  "family": "olmo3-7b",
+  "lr": 5e-05,
+  "steps": 120,
+  "bs": 4,
+  "accum": 4,
+  "grad_ckpt": false,
+  "opt8bit": true,
+  "max_len": 768,
+  "n_train": 12000,
+  "n_val": 400,
+  "seed": 0,
+  "tag": "lrsweep/S_lr5e-5",
+  "data": "data/tulu_subset.jsonl",
+  "out": null,
+  "eval_after": false,
+  "save_model": false,
+  "stimuli": [
+    "stimuli/e01_pairs.jsonl",
+    "stimuli/e01_pairs_d.jsonl"
+  ],
+  "stop_ids": [
+    100257
+  ],
+  "n_trainable": 7298011136
+}

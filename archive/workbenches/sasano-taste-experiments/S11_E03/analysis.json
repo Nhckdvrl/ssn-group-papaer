@@ -1,0 +1,89 @@
+{
+  "n": 320,
+  "invalid": 0,
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "revisions": [
+    "a09a35458c702b33eeacc393d103063234e8bc28"
+  ],
+  "runtimes": [
+    [
+      16,
+      2
+    ]
+  ],
+  "table": {
+    "rounded_report": {
+      "greater": {
+        "coarse": {
+          "n": 40,
+          "correct": 0,
+          "invalid": 0
+        },
+        "fine": {
+          "n": 40,
+          "correct": 40,
+          "invalid": 0
+        }
+      },
+      "less": {
+        "coarse": {
+          "n": 40,
+          "correct": 4,
+          "invalid": 0
+        },
+        "fine": {
+          "n": 40,
+          "correct": 2,
+          "invalid": 0
+        }
+      }
+    },
+    "explicit_interval": {
+      "greater": {
+        "coarse": {
+          "n": 40,
+          "correct": 16,
+          "invalid": 0
+        },
+        "fine": {
+          "n": 40,
+          "correct": 40,
+          "invalid": 0
+        }
+      },
+      "less": {
+        "coarse": {
+          "n": 40,
+          "correct": 40,
+          "invalid": 0
+        },
+        "fine": {
+          "n": 40,
+          "correct": 40,
+          "invalid": 0
+        }
+      }
+    }
+  },
+  "pair_patterns": {
+    "rounded_report": {
+      "greater": {
+        "A/A": 40
+      },
+      "less": {
+        "A/B": 34,
+        "B/B": 4,
+        "A/A": 2
+      }
+    },
+    "explicit_interval": {
+      "greater": {
+        "A/A": 24,
+        "B/A": 16
+      },
+      "less": {
+        "B/A": 40
+      }
+    }
+  }
+}

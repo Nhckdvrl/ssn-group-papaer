@@ -1,0 +1,265 @@
+{
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261002-E13-fidelity-value-s0",
+  "config": {
+    "sources": [
+      "/home/xiang/.cache/latent-wm-results/20261002-tworoom-native-s0",
+      "/home/xiang/.cache/latent-wm-results/20261002-pusht-native-s0"
+    ],
+    "seed": 61000,
+    "episodes_per_stratum": 64,
+    "goal_offsets": [
+      25,
+      75
+    ],
+    "methods": [
+      "FULL-300",
+      "CHEAP-900"
+    ],
+    "harness_sha256": "9f423368d35f6377020bc5765f721b147a577319ed89b78b15ebb4b2e791bc38",
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "sampling_unit": "whole episode; excluded prior anchors",
+    "prepared": "/home/xiang/.cache/latent-wm-results/E13-A2-input",
+    "prepared_manifest": {
+      "seed": 61000,
+      "selection": "whole source episodes; old anchors excluded; mutually disjoint goal strata",
+      "sources": {
+        "tworoom": {
+          "config": {
+            "task": "tworoom",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_tworoom_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/tworoom.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-tworoom-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "tworoom.h5",
+            "sha256": "129a36aa93ea0de488d2bcc876e396de9e3907bf66c6aae6394e542ef6a6d623"
+          }
+        },
+        "pusht": {
+          "config": {
+            "task": "pusht",
+            "checkpoint": "/home/xiang/.cache/huggingface/hub/models--naiverer--fast-leworldmodel/snapshots/f95379fe193c8bfc6a59c9d8437d5052bd72ff71/Fast-lewm_pusht_object.ckpt",
+            "dataset": "/tmp/latent-wm-data/pusht_expert_train.h5",
+            "generated": false,
+            "output": "/tmp/latent-wm-runs/20261002-pusht-native-s0",
+            "anchors": 12,
+            "calibration_anchors": 4,
+            "candidates": 300,
+            "elites": 30,
+            "iterations": 30,
+            "seed": 0,
+            "train_steps": 20,
+            "batch_size": 16,
+            "packages": {
+              "torch": "2.7.1+cu128",
+              "torchvision": "0.22.1+cu128",
+              "numpy": "1.26.4",
+              "transformers": "5.3.0",
+              "stable-worldmodel": "0.0.6"
+            },
+            "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+            "harness_sha256": "638b4b876f7c3dbc3d71ee4ca89ec8d0a784f8dcc3db873d91539f1334dcf827",
+            "fast_lewm_commit": "de3e9dac539f5bbe6ff1656a2fb00938d62a3c7d"
+          },
+          "data": {
+            "source": "official_hdf5",
+            "file": "pusht_expert_train.h5",
+            "sha256": "b6ebd9ac94bbe9e383f6e7a9cd92d74e9aa665ea57b758ed3717b0ee7df8d4fb"
+          }
+        }
+      },
+      "files": {
+        "tworoom_g25.npz": {
+          "sha256": "38cb07b88c3cf738b824002163908a02e37c8f571eca5e2f013f7aee8c93eeee",
+          "bytes": 288269,
+          "selection_seed": 61025
+        },
+        "tworoom_g75.npz": {
+          "sha256": "61293ce72e9b6740bb45cd37cb7eef9cfdeab102e9b5eb52195f3a212181f1e7",
+          "bytes": 290315,
+          "selection_seed": 61075
+        },
+        "pusht_g25.npz": {
+          "sha256": "4d1a3cb7d329e1dd4d34178c2f0866e8c6a3e26b88fd3278dad68342a3719813",
+          "bytes": 679100,
+          "selection_seed": 62025
+        },
+        "pusht_g75.npz": {
+          "sha256": "323f5443370f10ca1ce3f2aa57ad26fd973f2a75c4473af843acc5b33c402230",
+          "bytes": 652662,
+          "selection_seed": 62075
+        }
+      }
+    },
+    "limitation": "one released checkpoint per task; fresh per-decision native CEM distributions"
+  },
+  "summary": [
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "FULL-300",
+      "n": 64,
+      "successes": 58,
+      "success_wilson_ci95": [
+        0.810171204003544,
+        0.9563217474148016
+      ],
+      "paired_success_delta_vs_full": 0.0,
+      "paired_delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "planning_seconds_mean": 1.140234318975773
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 25,
+      "method": "CHEAP-900",
+      "n": 64,
+      "successes": 61,
+      "success_wilson_ci95": [
+        0.8710034625990631,
+        0.983930983213707
+      ],
+      "paired_success_delta_vs_full": 0.046875,
+      "paired_delta_ci95": [
+        -0.015625,
+        0.125
+      ],
+      "planning_seconds_mean": 0.4528701602332834
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "FULL-300",
+      "n": 64,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.0757857255603086,
+        0.24616281741577023
+      ],
+      "paired_success_delta_vs_full": 0.0,
+      "paired_delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "planning_seconds_mean": 1.1233916834489197
+    },
+    {
+      "task": "pusht",
+      "goal_offset": 75,
+      "method": "CHEAP-900",
+      "n": 64,
+      "successes": 9,
+      "success_wilson_ci95": [
+        0.0757857255603086,
+        0.24616281741577023
+      ],
+      "paired_success_delta_vs_full": 0.0,
+      "paired_delta_ci95": [
+        -0.046875,
+        0.046875
+      ],
+      "planning_seconds_mean": 0.4239100907972559
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "FULL-300",
+      "n": 64,
+      "successes": 58,
+      "success_wilson_ci95": [
+        0.810171204003544,
+        0.9563217474148016
+      ],
+      "paired_success_delta_vs_full": 0.0,
+      "paired_delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "planning_seconds_mean": 1.2652501856357279
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 25,
+      "method": "CHEAP-900",
+      "n": 64,
+      "successes": 63,
+      "success_wilson_ci95": [
+        0.9166589839990573,
+        0.9972364580766624
+      ],
+      "paired_success_delta_vs_full": 0.078125,
+      "paired_delta_ci95": [
+        0.015625,
+        0.15625
+      ],
+      "planning_seconds_mean": 0.4534750459310801
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "FULL-300",
+      "n": 64,
+      "successes": 27,
+      "success_wilson_ci95": [
+        0.30869782474345486,
+        0.5438996845991709
+      ],
+      "paired_success_delta_vs_full": 0.0,
+      "paired_delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "planning_seconds_mean": 1.1038172704478104
+    },
+    {
+      "task": "tworoom",
+      "goal_offset": 75,
+      "method": "CHEAP-900",
+      "n": 64,
+      "successes": 47,
+      "success_wilson_ci95": [
+        0.6151712627143486,
+        0.8270362092577739
+      ],
+      "paired_success_delta_vs_full": 0.3125,
+      "paired_delta_ci95": [
+        0.203125,
+        0.421875
+      ],
+      "planning_seconds_mean": 0.42764723318487563
+    }
+  ],
+  "complete": {
+    "completed": true
+  },
+  "rows_sha256": "50b174f97eb975286ea56c6c262492e95ffdac8d31be9699f5d7d62e297c06dc",
+  "timing_scope": "NOT ISOLATED: GPU started empty, later shared with other processes; no speedup inference from these times",
+  "interpretation": [
+    "Full beta=1 direct/decomposed self-consistency did not outperform stronger cheap search in any of the four strata.",
+    "The long PushT range remains poor for both; do not infer equivalence from equal aggregate successes.",
+    "TwoRoom factual controls are exact; PushT75 factual replay has material physical residuals, retained rather than filtered.",
+    "One released checkpoint per task; train overlap unverified; stronger future baselines need independent seeds."
+  ]
+}

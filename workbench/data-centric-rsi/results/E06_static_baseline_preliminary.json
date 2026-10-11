@@ -1,0 +1,61 @@
+{
+  "scope": "MATH train-derived dev; feedback smoke excluded; paired item CI is not seed CI",
+  "dev_sha256": "33999c27214e4727c13686a3f47f3ed5ec9ec57aa529f0e2dfd9c0229268d8dc",
+  "smoke_sha256": "6f7e6d3f1329ff2625b240a9d7d36d6ee22b143ddc9f1de1f4d44fb47eb0ec7f",
+  "run_sha256": {
+    "base": "f245b320f75b325d21e29e00bf54673c97d30f1bf990e4c8a39579fa9e433e8b",
+    "static_seed17": "ae82f28f4af7371446aec865d1ec8cd3e242dc7bce205085100e2083c5bca159"
+  },
+  "subsets": {
+    "heldout1668": {
+      "n": 1668,
+      "scores": {
+        "base": {
+          "correct": 317,
+          "n": 1668
+        },
+        "static_seed17": {
+          "correct": 388,
+          "n": 1668
+        }
+      },
+      "comparisons": {
+        "static_seed17_minus_base": {
+          "delta_correct": 71,
+          "delta_accuracy": 0.042565947242206234,
+          "paired_item_bootstrap_95_ci": [
+            0.02038369304556355,
+            0.06414868105515588
+          ],
+          "improved_items": 205,
+          "worsened_items": 134
+        }
+      }
+    },
+    "heldout280": {
+      "n": 280,
+      "scores": {
+        "base": {
+          "correct": 51,
+          "n": 280
+        },
+        "static_seed17": {
+          "correct": 54,
+          "n": 280
+        }
+      },
+      "comparisons": {
+        "static_seed17_minus_base": {
+          "delta_correct": 3,
+          "delta_accuracy": 0.010714285714285714,
+          "paired_item_bootstrap_95_ci": [
+            -0.04285714285714286,
+            0.06428571428571428
+          ],
+          "improved_items": 29,
+          "worsened_items": 26
+        }
+      }
+    }
+  }
+}

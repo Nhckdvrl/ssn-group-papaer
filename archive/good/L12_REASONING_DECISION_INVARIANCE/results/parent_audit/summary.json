@@ -1,0 +1,81 @@
+{
+  "source": "/home/xiang/ssn-group-papaer/good/L12_REASONING_DECISION_INVARIANCE/data/upstream/mind-the-dh-gap/data/open_explicit.csv",
+  "models": {
+    "allenai/Olmo-3-7B-Instruct-SFT": {
+      "rows": 18,
+      "valid_trials": 333,
+      "prompt_styles": [
+        "math_reasoning_one",
+        "no_explanation",
+        "one_sentence_reasoning"
+      ],
+      "audit": {
+        "n_matched_cells": 9,
+        "frame_consistency": 0.8425705467372134,
+        "ci95": [
+          0.7512345679012346,
+          0.9128973765432098
+        ],
+        "cell_values": [
+          0.9,
+          0.9928571428571429,
+          0.8055555555555556,
+          0.8777777777777778,
+          0.9,
+          0.9652777777777778,
+          0.7958333333333334,
+          0.8111111111111111,
+          0.5347222222222222
+        ]
+      }
+    },
+    "allenai/Olmo-3-7B-Think-SFT": {
+      "rows": 18,
+      "valid_trials": 281,
+      "prompt_styles": [
+        "math_reasoning_one",
+        "no_explanation",
+        "one_sentence_reasoning"
+      ],
+      "audit": {
+        "n_matched_cells": 9,
+        "frame_consistency": 0.9652777777777778,
+        "ci95": [
+          0.9375,
+          0.9907407407407409
+        ],
+        "cell_values": [
+          0.9375,
+          1.0,
+          1.0,
+          1.0,
+          0.8888888888888888,
+          0.9166666666666667,
+          0.9444444444444444,
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "schema": [
+    "Model",
+    "frame",
+    "Prompt_Style",
+    "Sample_Size",
+    "ev_a",
+    "p_a",
+    "ev_b",
+    "p_b",
+    "y_a",
+    "y_b",
+    "x_a",
+    "x_b",
+    "ratio_a_False",
+    "ratio_a_True",
+    "n_valid_False",
+    "n_valid_True",
+    "average_first_option_rate",
+    "n_valid_total"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "unique_mode_uid_count": 256,
+  "n_independent_contexts": 4,
+  "counts": {
+    "direct_native": {
+      "n": 64,
+      "correct": 48,
+      "valid": 64
+    },
+    "direct_oracle": {
+      "n": 32,
+      "correct": 31,
+      "valid": 32
+    },
+    "direct_probe": {
+      "n": 32,
+      "correct": 26,
+      "valid": 32
+    },
+    "thinking_native": {
+      "n": 64,
+      "correct": 63,
+      "valid": 63
+    },
+    "thinking_oracle": {
+      "n": 32,
+      "correct": 32,
+      "valid": 32
+    },
+    "thinking_probe": {
+      "n": 32,
+      "correct": 32,
+      "valid": 32
+    }
+  },
+  "all_20_initial_censored_continued": true,
+  "remaining_censored": 0,
+  "predefined_parser_unresolved": [
+    "3.native.different.flip.1"
+  ],
+  "posthoc_content_inspection": {
+    "uid": "3.native.different.flip.1",
+    "final_word": "positive",
+    "gold": 1,
+    "interpretation": "correct content, explanatory final response; retained unresolved by frozen parser"
+  },
+  "engine_sha256": "e1555c13ba8f3008af1cfc6976c25f440381dc5cfe2029bf842e9afcb93fedc1",
+  "rows_sha256": "a5250cdba876279a333cf6cc3e161561c3456ea7dee1d795fa74b60f4192a8b1",
+  "audit_type": "executing-agent completeness/recomputation; not independent scientific review"
+}

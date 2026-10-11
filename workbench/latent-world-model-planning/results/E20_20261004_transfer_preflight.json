@@ -1,0 +1,91 @@
+{
+  "artifact_directory": "/home/xiang/.cache/latent-wm-results/20261004-E20-transfer-preflight",
+  "controls": {
+    "passed": true,
+    "records": [
+      {
+        "method": "PLAIN",
+        "joint_bf16_step": true,
+        "all_parameters_finite_grad": true,
+        "fresh_optimizer_all_step1": true,
+        "initial_queries_identical": true,
+        "held12_full_candidate_eval": true,
+        "eval_model_unchanged": true,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "method": "GLOBAL-SG",
+        "joint_bf16_step": true,
+        "all_parameters_finite_grad": true,
+        "fresh_optimizer_all_step1": true,
+        "initial_queries_identical": true,
+        "held12_full_candidate_eval": true,
+        "eval_model_unchanged": true,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "method": "CENTER",
+        "joint_bf16_step": true,
+        "all_parameters_finite_grad": true,
+        "fresh_optimizer_all_step1": true,
+        "initial_queries_identical": true,
+        "held12_full_candidate_eval": true,
+        "eval_model_unchanged": true,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "method": "DET-INVERSE",
+        "joint_bf16_step": true,
+        "all_parameters_finite_grad": true,
+        "fresh_optimizer_all_step1": true,
+        "initial_queries_identical": true,
+        "held12_full_candidate_eval": true,
+        "eval_model_unchanged": true,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      },
+      {
+        "method": "PROB-INVERSE",
+        "joint_bf16_step": true,
+        "all_parameters_finite_grad": true,
+        "fresh_optimizer_all_step1": true,
+        "initial_queries_identical": true,
+        "held12_full_candidate_eval": true,
+        "eval_model_unchanged": true,
+        "native_parity": {
+          "max_cost_abs_error": 0.0,
+          "history_frames": 3,
+          "future_macro_states": 5,
+          "native_total_emb_frames": 8
+        }
+      }
+    ],
+    "native_success_contract_checks": 144,
+    "all_same_source_initial_tensor_sha256": "9bf085d399062fd0b026e9f36dfd90169bfb476957a41aea2271418c4d235b2a",
+    "source_sha256": "0c095fc4a26856678f67bf299f261506b45f1a25fbdb4cbb8828b4a8281dc048",
+    "script_sha256": "42285bb9e33d0cf96dbfc33d5d8bf17b1080038646d3d7bb1de6fed8d1a0e2f4",
+    "loss_helper_sha256": "e8b2dee8f8aaa660022c9492c5e03f99c3ff9cca65f6f0c370e2466da550b26e",
+    "norm_sha256": "28a928c169645a16d91af8eef8f1c2f87cc8dee7b399812efadfd10bee5ab35f",
+    "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "scope": "actual source load/joint gradients/native Push outcome criterion and rollout controls only, not method efficacy"
+  }
+}

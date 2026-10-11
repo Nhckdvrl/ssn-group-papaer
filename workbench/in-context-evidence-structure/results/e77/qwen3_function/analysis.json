@@ -1,0 +1,2518 @@
+{
+  "run": {
+    "args": {
+      "model": "/tmp/ices_models/Qwen3-8B",
+      "out": "results/e77/qwen3_function",
+      "n": 32,
+      "seed": 77001
+    },
+    "seconds": 179.39315676689148,
+    "sanity_max_error": 0.0,
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "host": "fvcrc21",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "script_sha256": "e5c1060245425b265657ca0ef4cb0f08c2009c3deb6605198a0553878e8da95a",
+    "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+    "git_commit": "68cc23accfb4b4fff1c6b2745b0a99a588559c43"
+  },
+  "conditions": {
+    "mixed.base": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.9453125,
+          "ci95": [
+            0.90625,
+            0.9765625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.402651599817659,
+          "ci95": [
+            2.693783862851754,
+            4.1392721707709
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.875,
+            0.984375
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.953125,
+          "ci95": [
+            0.90625,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.6328125,
+          "ci95": [
+            0.5625,
+            0.7109375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.4409075542498613,
+          "ci95": [
+            0.6777408453104726,
+            2.3037979181499395
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.07421875,
+          "ci95": [
+            0.0234375,
+            0.1328125
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.421875,
+          "ci95": [
+            0.2734375,
+            0.578125
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.84375,
+          "ci95": [
+            0.734375,
+            0.9453125
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.53515625,
+          "ci95": [
+            0.48046875,
+            0.59375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.03848632278823061,
+          "ci95": [
+            -0.45888972290049423,
+            0.5999573956120007
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.171875,
+          "ci95": [
+            0.12109375,
+            0.22265625
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.4140625,
+          "ci95": [
+            0.3046875,
+            0.5234375
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.65625,
+          "ci95": [
+            0.6015625,
+            0.703125
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed.owned_a": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.807225521325748,
+          "ci95": [
+            3.7233441852979525,
+            6.016782932342271
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.65234375,
+          "ci95": [
+            0.51953125,
+            0.7774414062500004
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.6348040339435101,
+          "ci95": [
+            0.2787795763384566,
+            3.0126911593335537
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0703125,
+          "ci95": [
+            0.015625,
+            0.140625
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.5078125,
+          "ci95": [
+            0.421875,
+            0.58984375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.19262208018517413,
+          "ci95": [
+            -0.6394362653883945,
+            1.0758221005682571
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.1875,
+          "ci95": [
+            0.10546875,
+            0.28125
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed.owned_b": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 5.154085620478824,
+          "ci95": [
+            4.229228205984425,
+            6.121453938025184
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.76171875,
+          "ci95": [
+            0.6484375,
+            0.8671875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.012562606963911,
+          "ci95": [
+            1.7660148724504325,
+            4.2883041487841185
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.03515625,
+          "ci95": [
+            0.0078125,
+            0.0703125
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.55078125,
+          "ci95": [
+            0.44921875,
+            0.6485351562500004
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.0679401528677772,
+          "ci95": [
+            0.18989725717601688,
+            1.9798205880689694
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.1953125,
+          "ci95": [
+            0.12109375,
+            0.27734375
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed.foreign_swap": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.9296875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.4136453045008466,
+          "ci95": [
+            2.7270833252238473,
+            4.16847409262455
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.859375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.55859375,
+          "ci95": [
+            0.48037109375000003,
+            0.640625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.9459389256880968,
+          "ci95": [
+            0.13288565764160012,
+            1.8202115796219005
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.078125,
+          "ci95": [
+            0.02734375,
+            0.13671875
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.296875,
+          "ci95": [
+            0.171875,
+            0.4296875
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.8203125,
+          "ci95": [
+            0.6953125,
+            0.9296875
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.46484375,
+          "ci95": [
+            0.41796875,
+            0.515625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": -0.35037921604271105,
+          "ci95": [
+            -0.827629434985738,
+            0.15583993647283048
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.1640625,
+          "ci95": [
+            0.11708984375000003,
+            0.21484375
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.28125,
+          "ci95": [
+            0.1953125,
+            0.3671875
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.6484375,
+          "ci95": [
+            0.59375,
+            0.703125
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed_instruction.base": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.9609375,
+          "ci95": [
+            0.9296875,
+            0.9921875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.121739194372765,
+          "ci95": [
+            3.371494538995802,
+            4.916813330481274
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.953125,
+          "ci95": [
+            0.890625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.921875,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.5859375,
+          "ci95": [
+            0.53515625,
+            0.640625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.1879501985422394,
+          "ci95": [
+            0.5879022547580461,
+            1.837384262195792
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.01171875,
+          "ci95": [
+            0.0,
+            0.02734375
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.1875,
+          "ci95": [
+            0.0859375,
+            0.3046875
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.52734375,
+          "ci95": [
+            0.49609375,
+            0.55859375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": -0.02062007886797801,
+          "ci95": [
+            -0.318721445805204,
+            0.31895471191221564
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.07421875,
+          "ci95": [
+            0.0390625,
+            0.11328125
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.34375,
+          "ci95": [
+            0.2890625,
+            0.3984375
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.7109375,
+          "ci95": [
+            0.6796875,
+            0.7421875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed_instruction.owned_a": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 5.443041824198026,
+          "ci95": [
+            4.420698791856522,
+            6.556803535783364
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.53125,
+          "ci95": [
+            0.37109375,
+            0.6836914062500004
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.2000770866034145,
+          "ci95": [
+            -0.6303010043968242,
+            3.021613985132308
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0234375,
+          "ci95": [
+            0.0,
+            0.05859375
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.5390625,
+          "ci95": [
+            0.45703125,
+            0.6171875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.2204226153980926,
+          "ci95": [
+            -0.7844112745664461,
+            1.2686130198984302
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.08203125,
+          "ci95": [
+            0.03125,
+            0.14453125
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed_instruction.owned_b": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 5.899634182452681,
+          "ci95": [
+            5.001894523620303,
+            6.8383448670215365
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.59375,
+          "ci95": [
+            0.4375,
+            0.75
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.31086650664588,
+          "ci95": [
+            0.5912402616059638,
+            4.068773946238372
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.015625,
+          "ci95": [
+            0.0,
+            0.03515625
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.54296875,
+          "ci95": [
+            0.4609375,
+            0.62890625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.791370474316409,
+          "ci95": [
+            -0.21015121502736064,
+            1.8768094277911362
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0625,
+          "ci95": [
+            0.02734375,
+            0.1015625
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "mixed_instruction.foreign_swap": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.9296875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.13298488325421,
+          "ci95": [
+            3.425523566595433,
+            4.884690840842808
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.9375,
+          "ci95": [
+            0.859375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.5625,
+          "ci95": [
+            0.51171875,
+            0.62109375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.9424585358356126,
+          "ci95": [
+            0.3015702721606431,
+            1.6816414676127351
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.00390625,
+          "ci95": [
+            0.0,
+            0.01171875
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.1484375,
+          "ci95": [
+            0.046875,
+            0.265625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.9765625,
+          "ci95": [
+            0.9375,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.5078125,
+          "ci95": [
+            0.48046875,
+            0.53515625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": -0.23703535244021623,
+          "ci95": [
+            -0.5128994567716972,
+            0.06575699979146074
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.078125,
+          "ci95": [
+            0.046875,
+            0.109375
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.296875,
+          "ci95": [
+            0.25,
+            0.3515625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.71875,
+          "ci95": [
+            0.6875,
+            0.7421875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single.base": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.7838292619708227,
+          "ci95": [
+            3.6469144182789024,
+            3.924927093059523
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.921875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.78125,
+          "ci95": [
+            0.70703125,
+            0.85546875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.0678494119856623,
+          "ci95": [
+            2.8375676427627696,
+            3.298153119262861
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.5625,
+          "ci95": [
+            0.4140625,
+            0.7109375
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.77734375,
+          "ci95": [
+            0.73828125,
+            0.81640625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.2473036440860596,
+          "ci95": [
+            2.0130415461976554,
+            2.4874592755571032
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.671875,
+          "ci95": [
+            0.625,
+            0.7265625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.8828125,
+          "ci95": [
+            0.8359375,
+            0.9296875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single.owned_a": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.8184301627625246,
+          "ci95": [
+            3.300229204796415,
+            4.339391726125905
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.80859375,
+          "ci95": [
+            0.73046875,
+            0.8828125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.0644064781881752,
+          "ci95": [
+            2.1240949794959305,
+            4.0023583637734195
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.796875,
+          "ci95": [
+            0.75,
+            0.83984375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.3245877668123285,
+          "ci95": [
+            1.6787304662524547,
+            2.9589202775588093
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single.owned_b": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.7835956374328816,
+          "ci95": [
+            3.2940767535816122,
+            4.291010821836972
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.78125,
+          "ci95": [
+            0.69921875,
+            0.859375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.162686039278924,
+          "ci95": [
+            2.193165783517361,
+            4.1415703623317315
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.78515625,
+          "ci95": [
+            0.73828125,
+            0.83203125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.293625664395222,
+          "ci95": [
+            1.6497996419902847,
+            2.9507798031037966
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single.foreign_swap": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.9609375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.7838292619708227,
+          "ci95": [
+            3.6469144182789024,
+            3.924927093059523
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.921875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.78125,
+          "ci95": [
+            0.70703125,
+            0.85546875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.0678494119856623,
+          "ci95": [
+            2.8375676427627696,
+            3.298153119262861
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.5625,
+          "ci95": [
+            0.4140625,
+            0.7109375
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.77734375,
+          "ci95": [
+            0.73828125,
+            0.81640625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.2473036440860596,
+          "ci95": [
+            2.0130415461976554,
+            2.4874592755571032
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.671875,
+          "ci95": [
+            0.625,
+            0.7265625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.8828125,
+          "ci95": [
+            0.8359375,
+            0.9296875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single_instruction.base": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.9765625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.260514502075239,
+          "ci95": [
+            4.1197191998727245,
+            4.405459628591961
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.953125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.69140625,
+          "ci95": [
+            0.63671875,
+            0.74609375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.024772675948043,
+          "ci95": [
+            2.850247763451807,
+            3.203722158086748
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.3828125,
+          "ci95": [
+            0.2734375,
+            0.4921875
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.72265625,
+          "ci95": [
+            0.6796875,
+            0.765625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.1901199774438282,
+          "ci95": [
+            1.9844479767068606,
+            2.398061225211086
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.5625,
+          "ci95": [
+            0.5,
+            0.625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.8828125,
+          "ci95": [
+            0.8359375,
+            0.9296875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single_instruction.owned_a": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.96875,
+          "ci95": [
+            0.9375,
+            0.9921875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.242030733497813,
+          "ci95": [
+            3.5568249698221734,
+            4.943266157556536
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.69921875,
+          "ci95": [
+            0.58203125,
+            0.80859375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.988939412738546,
+          "ci95": [
+            1.8844604877709572,
+            4.065930088424648
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.74609375,
+          "ci95": [
+            0.68359375,
+            0.80859375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.2432915126400985,
+          "ci95": [
+            1.506511833880404,
+            2.9669406191194185
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single_instruction.owned_b": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.9765625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.248851118183666,
+          "ci95": [
+            3.5563156418911603,
+            4.957994880311344
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.71484375,
+          "ci95": [
+            0.609375,
+            0.8203125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.131901928623847,
+          "ci95": [
+            2.052707351380195,
+            4.228090975782471
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.71875,
+          "ci95": [
+            0.65234375,
+            0.78515625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.2183972239981813,
+          "ci95": [
+            1.4508329300551395,
+            2.987138978288681
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "single_instruction.foreign_swap": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.9765625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 4.260514502075239,
+          "ci95": [
+            4.1197191998727245,
+            4.405459628591961
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.984375,
+          "ci95": [
+            0.953125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.69140625,
+          "ci95": [
+            0.63671875,
+            0.74609375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 3.024772675948043,
+          "ci95": [
+            2.850247763451807,
+            3.203722158086748
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.3828125,
+          "ci95": [
+            0.2734375,
+            0.4921875
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.72265625,
+          "ci95": [
+            0.6796875,
+            0.765625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.1901199774438282,
+          "ci95": [
+            1.9844479767068606,
+            2.398061225211086
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 0.5625,
+          "ci95": [
+            0.5,
+            0.625
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 0.8828125,
+          "ci95": [
+            0.8359375,
+            0.9296875
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "direct.base": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.88936384839959,
+          "ci95": [
+            14.273630093676598,
+            15.499821796248899
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.118190742035942,
+          "ci95": [
+            13.584220712049301,
+            14.595243640322657
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 13.203376767942004,
+          "ci95": [
+            12.799283789313458,
+            13.576802950187988
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "direct.owned_a": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.243455594161635,
+          "ci95": [
+            13.5628820861394,
+            14.89878405622254
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 12.750017744784117,
+          "ci95": [
+            11.572694212289168,
+            13.822107992228474
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.98828125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 11.787044795175962,
+          "ci95": [
+            10.73589488295691,
+            12.763807476859958
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "direct.owned_b": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.10646184377337,
+          "ci95": [
+            13.403634623956489,
+            14.821194497175325
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 12.430446601472774,
+          "ci95": [
+            11.33549006713806,
+            13.47267730279443
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.98046875,
+          "ci95": [
+            0.9609375,
+            0.99609375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 11.095617173375445,
+          "ci95": [
+            10.0502927859168,
+            12.097176107736711
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0078125,
+          "ci95": [
+            0.0,
+            0.0234375
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "direct.foreign_swap": {
+      "seen": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.82444337770825,
+          "ci95": [
+            14.079517547306496,
+            15.517281615072145
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 14.331045261760327,
+          "ci95": [
+            13.749474075345475,
+            14.906104882602593
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 13.176685288464416,
+          "ci95": [
+            12.672224599952122,
+            13.654498564766879
+          ],
+          "n_contexts": 32
+        },
+        "demo_word_choice": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "identity_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "complement_accuracy": {
+          "mean": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "single_minus_mixed": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.0390625,
+          "ci95": [
+            0.0,
+            0.078125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.3811776621531635,
+          "ci95": [
+            -0.36443973586600575,
+            1.0942394546419396
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.1484375,
+          "ci95": [
+            0.01953125,
+            0.26953125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 1.626941857735801,
+          "ci95": [
+            0.7027253982994808,
+            2.4105888790125394
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.2421875,
+          "ci95": [
+            0.171875,
+            0.3125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 2.208817321297829,
+          "ci95": [
+            1.5925409198592206,
+            2.7417620652338885
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "instruction": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.015625,
+          "ci95": [
+            -0.015625,
+            0.046875
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 0.7190875945551056,
+          "ci95": [
+            0.494976125257142,
+            0.961545786396772
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": -0.046875,
+          "ci95": [
+            -0.1015625,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": -0.2529573557076219,
+          "ci95": [
+            -0.8036265441262912,
+            0.22509411102691962
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": -0.0078125,
+          "ci95": [
+            -0.05859375,
+            0.0390625
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": -0.05910640165620862,
+          "ci95": [
+            -0.3457765010876301,
+            0.1757841427983067
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "direct_minus_mixed": {
+      "seen": {
+        "accuracy": {
+          "mean": 0.0546875,
+          "ci95": [
+            0.0234375,
+            0.09375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 11.48671224858193,
+          "ci95": [
+            10.662273597149953,
+            12.25861719518146
+          ],
+          "n_contexts": 32
+        }
+      },
+      "interpolation": {
+        "accuracy": {
+          "mean": 0.3671875,
+          "ci95": [
+            0.2890625,
+            0.4375
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 12.677283187786081,
+          "ci95": [
+            11.802978988079552,
+            13.494704075644199
+          ],
+          "n_contexts": 32
+        }
+      },
+      "extrapolation": {
+        "accuracy": {
+          "mean": 0.46484375,
+          "ci95": [
+            0.40625,
+            0.51953125
+          ],
+          "n_contexts": 32
+        },
+        "margin": {
+          "mean": 13.164890445153773,
+          "ci95": [
+            12.55273390231859,
+            13.708874628522768
+          ],
+          "n_contexts": 32
+        }
+      }
+    }
+  },
+  "source_responses": {
+    "mixed.seen.owned_a": {
+      "mean": 8.187228386397749,
+      "ci95": [
+        6.709718852897447,
+        9.802685719637015
+      ],
+      "n_contexts": 32
+    },
+    "mixed.seen.owned_b": {
+      "mean": 8.673275718468886,
+      "ci95": [
+        7.45833734230838,
+        9.89194332703889
+      ],
+      "n_contexts": 32
+    },
+    "mixed.interpolation.owned_a": {
+      "mean": 5.889318730754894,
+      "ci95": [
+        4.385318187946541,
+        7.496257108553255
+      ],
+      "n_contexts": 32
+    },
+    "mixed.interpolation.owned_b": {
+      "mean": 4.90844691892562,
+      "ci95": [
+        3.705133820028641,
+        6.154114189121174
+      ],
+      "n_contexts": 32
+    },
+    "mixed.extrapolation.owned_a": {
+      "mean": 3.7779259818198625,
+      "ci95": [
+        2.901339043455664,
+        4.750080207584324
+      ],
+      "n_contexts": 32
+    },
+    "mixed.extrapolation.owned_b": {
+      "mean": 3.4826028133684304,
+      "ci95": [
+        2.7702944546705113,
+        4.228704144989025
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.seen.owned_a": {
+      "mean": 9.384996530337276,
+      "ci95": [
+        7.858720057121024,
+        11.068303160297088
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.seen.owned_b": {
+      "mean": 10.391962903568658,
+      "ci95": [
+        9.08241384848304,
+        11.70455015178284
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.interpolation.owned_a": {
+      "mean": 4.23027605416064,
+      "ci95": [
+        3.1381789383688554,
+        5.479022488313421
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.interpolation.owned_b": {
+      "mean": 3.9809291390956787,
+      "ci95": [
+        2.9305133924121947,
+        5.125257154527935
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.extrapolation.owned_a": {
+      "mean": 2.7004551354439172,
+      "ci95": [
+        2.1470634325462017,
+        3.2783102990840236
+      ],
+      "n_contexts": 32
+    },
+    "mixed_instruction.extrapolation.owned_b": {
+      "mean": 2.956977784164337,
+      "ci95": [
+        2.274019460969112,
+        3.6373472536645295
+      ],
+      "n_contexts": 32
+    },
+    "single.seen.owned_a": {
+      "mean": 8.274873157875845,
+      "ci95": [
+        7.871792715775518,
+        8.709534268459539
+      ],
+      "n_contexts": 32
+    },
+    "single.seen.owned_b": {
+      "mean": 7.933931626088452,
+      "ci95": [
+        7.620805972271773,
+        8.231278881021717
+      ],
+      "n_contexts": 32
+    },
+    "single.interpolation.owned_a": {
+      "mean": 6.400390982889803,
+      "ci95": [
+        5.9766171676710655,
+        6.838831289234077
+      ],
+      "n_contexts": 32
+    },
+    "single.interpolation.owned_b": {
+      "mean": 7.55727314442629,
+      "ci95": [
+        7.168427261651959,
+        7.963493637424108
+      ],
+      "n_contexts": 32
+    },
+    "single.extrapolation.owned_a": {
+      "mean": 5.796475949748128,
+      "ci95": [
+        5.451614326356866,
+        6.17603247094903
+      ],
+      "n_contexts": 32
+    },
+    "single.extrapolation.owned_b": {
+      "mean": 6.0159326330176555,
+      "ci95": [
+        5.614813499726734,
+        6.452748328930466
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.seen.owned_a": {
+      "mean": 9.78068672632071,
+      "ci95": [
+        9.316486823636842,
+        10.269426066014057
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.seen.owned_b": {
+      "mean": 9.458283946005395,
+      "ci95": [
+        9.132278672638131,
+        9.819433345504512
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.interpolation.owned_a": {
+      "mean": 6.440993334937957,
+      "ci95": [
+        6.036852565254231,
+        6.901111634044355
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.interpolation.owned_b": {
+      "mean": 7.673215211136267,
+      "ci95": [
+        7.232590867222461,
+        8.125974329905148
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.extrapolation.owned_a": {
+      "mean": 5.501930513701154,
+      "ci95": [
+        5.242125916732038,
+        5.805608066346531
+      ],
+      "n_contexts": 32
+    },
+    "single_instruction.extrapolation.owned_b": {
+      "mean": 5.869790456345072,
+      "ci95": [
+        5.561141040936036,
+        6.206210571552219
+      ],
+      "n_contexts": 32
+    },
+    "direct.seen.owned_a": {
+      "mean": 32.88603121710451,
+      "ci95": [
+        31.759523557666117,
+        34.00748890679505
+      ],
+      "n_contexts": 32
+    },
+    "direct.seen.owned_b": {
+      "mean": 31.72564927852187,
+      "ci95": [
+        30.58166734322916,
+        32.94232289178608
+      ],
+      "n_contexts": 32
+    },
+    "direct.interpolation.owned_a": {
+      "mean": 30.039062991026633,
+      "ci95": [
+        28.924497940861144,
+        31.05654475623171
+      ],
+      "n_contexts": 32
+    },
+    "direct.interpolation.owned_b": {
+      "mean": 29.573999919600844,
+      "ci95": [
+        28.11046848635031,
+        30.93190382042041
+      ],
+      "n_contexts": 32
+    },
+    "direct.extrapolation.owned_a": {
+      "mean": 28.916281934158476,
+      "ci95": [
+        27.906999366625865,
+        29.840652261950098
+      ],
+      "n_contexts": 32
+    },
+    "direct.extrapolation.owned_b": {
+      "mean": 28.21715582407971,
+      "ci95": [
+        26.96501264877992,
+        29.45260091358907
+      ],
+      "n_contexts": 32
+    }
+  },
+  "limitations": [
+    "Familiar operator recognition, not arbitrary function learning.",
+    "Candidate choices, not native free-generation accuracy.",
+    "Single context has shorter length; direct rules add information."
+  ]
+}

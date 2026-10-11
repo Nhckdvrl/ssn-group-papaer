@@ -1,0 +1,61 @@
+{
+  "completed": true,
+  "mode": "pusht",
+  "training_runs": 2,
+  "records": [
+    {
+      "geometry": null,
+      "arm": "DYNAMICS-ONLY",
+      "checkpoint_sha256": "7ef4ec9d50a446df4458299f846f458ba617d78f3d2d72dc36ccdf8a7bac6dc6",
+      "optimizer_states": 93,
+      "updates": 2000,
+      "frozen_parameters_and_buffers_bit_exact": true,
+      "first_batch_and_endpoint_rng_exact": true,
+      "all_weights_moments_finite": true,
+      "accounting": {
+        "branch_items": 64000,
+        "optimizer_states": 93,
+        "frozen_sha256": "f0738855d7a5f99f3f48e741d0f5143826172a25fee36637ab52dbae6b8a3aa5",
+        "train_seconds": 158.86900430172682,
+        "peak_vram_gib": 0.7952032089233398,
+        "final_sampler_rng": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 104430968066362087645891860635145688243,
+            "inc": 114135046024386669579996819108803910369
+          },
+          "has_uint32": 0,
+          "uinteger": 144467215
+        }
+      }
+    },
+    {
+      "geometry": null,
+      "arm": "GEOMETRY-ONLY",
+      "checkpoint_sha256": "b2986248c3c05778ed162b3d8b39ab8c84a5183cc404f6741dc9386071dc474f",
+      "optimizer_states": 204,
+      "updates": 2000,
+      "frozen_parameters_and_buffers_bit_exact": true,
+      "first_batch_and_endpoint_rng_exact": true,
+      "all_weights_moments_finite": true,
+      "accounting": {
+        "branch_items": 64000,
+        "optimizer_states": 204,
+        "frozen_sha256": "c97dcdedb125af9f09cc5802f0a2179ea7e7be415114bb4d70115b7fcf23680f",
+        "train_seconds": 259.393272459507,
+        "peak_vram_gib": 6.3425397872924805,
+        "final_sampler_rng": {
+          "bit_generator": "PCG64",
+          "state": {
+            "state": 104430968066362087645891860635145688243,
+            "inc": 114135046024386669579996819108803910369
+          },
+          "has_uint32": 0,
+          "uinteger": 144467215
+        }
+      }
+    }
+  ],
+  "scope": "Independent checkpoint, source, frozen parameter/buffer, optimizer, sampler and exposure accounting. Not a scientific efficacy or novelty claim.",
+  "script_sha256": "1bf825595e3d779336f201c706f3e2edd9bd2dca9f519da87b3ac174e860d8b8"
+}

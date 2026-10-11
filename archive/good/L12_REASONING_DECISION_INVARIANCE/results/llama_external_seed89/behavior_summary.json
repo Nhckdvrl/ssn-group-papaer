@@ -1,0 +1,52 @@
+{
+  "design": "L12-E14 Llama-ecosystem behavior gate",
+  "llama_instruct": {
+    "n_generations": 576,
+    "n_analyzable_base_decisions": 36,
+    "valid_rate": 1.0,
+    "frame_consistency": {
+      "mean": 0.0,
+      "base_decision_bootstrap_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 0.5,
+      "base_decision_bootstrap_ci95": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "deepseek_r1": {
+    "n_generations": 576,
+    "n_analyzable_base_decisions": 36,
+    "valid_rate": 0.9375,
+    "frame_consistency": {
+      "mean": 0.9467592592592591,
+      "base_decision_bootstrap_ci95": [
+        0.9155092592592591,
+        0.9745370370370369
+      ]
+    },
+    "ev_consistent_rate": {
+      "mean": 0.9668281949531949,
+      "base_decision_bootstrap_ci95": [
+        0.9496983745421245,
+        0.9816964285714287
+      ]
+    }
+  },
+  "deepseek_minus_llama": {
+    "frame_consistency": {
+      "n_analyzable_base_decisions": 36,
+      "mean": 0.9467592592592591,
+      "base_decision_bootstrap_ci95": [
+        0.9131944444444444,
+        0.9756944444444444
+      ],
+      "positive_base_decision_fraction": 1.0
+    }
+  }
+}

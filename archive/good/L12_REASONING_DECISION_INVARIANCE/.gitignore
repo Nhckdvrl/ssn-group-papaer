@@ -1,0 +1,17 @@
+# Regenerable hidden-state arrays are kept local.
+results/**/*.npz
+
+# Full E10 Think trajectories are a regenerable local artifact (~4 MB).
+results/breadth_seed71/think_sft/raw.jsonl
+results/qwen_mode_seed83/thinking.jsonl
+results/llama_external_seed89/deepseek_r1.jsonl
+scripts/__pycache__/
+
+# Public source corpora are checksummed and cached outside Git.
+data/external/
+results/cpc18_*/raw/
+results/cpc18_*/logs/
+results/cpc18_state_*/raw.jsonl
+results/cpc18_*/raw*.jsonl
+results/cpc18_*/*.shard*.model.json
+results/cpc18_*/scan.shard*.json

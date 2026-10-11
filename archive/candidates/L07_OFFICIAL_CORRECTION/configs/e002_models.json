@@ -1,0 +1,19 @@
+{
+  "models": {
+    "qwen2.5-32b": "Qwen/Qwen2.5-32B-Instruct",
+    "mistral-small-24b": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "gemma-3-12b": "google/gemma-3-12b-it"
+  },
+  "conditions": [
+    "original_only",
+    "correction_only",
+    "original_then_correction",
+    "correction_then_original",
+    "explicit_update",
+    "unrelated_correction"
+  ],
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 8
+  }
+}

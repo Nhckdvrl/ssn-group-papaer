@@ -1,0 +1,1268 @@
+{
+  "experiment": "E12",
+  "seed": 17,
+  "evidence_scope": "Four prewritten static 10k-row policies from the same paper init; one training seed per policy.",
+  "independent_result_recompute": "All five primary and the one repeat raw eight-task results exactly match saved validated scores.",
+  "eval_dependencies_equal": true,
+  "eval_pip_freeze_sha256": "8ef6b4ec11c6d563e990ad7a2a3eebb9ac67d3c735792a769bcf86c450da9f40",
+  "arms": {
+    "base": {
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 26.884183934201257,
+            "max": 100.0,
+            "normalized": 0.26884183934201256,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 25.9,
+            "max": 100.0,
+            "normalized": 0.259,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 45.53264604810997,
+            "max": 100.0,
+            "normalized": 0.45532646048109965,
+            "field": "dev Overall × 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 31.444444444444446,
+            "max": 100.0,
+            "normalized": 0.31444444444444447,
+            "field": "validation Overall × 100"
+          },
+          "MMStar": {
+            "raw": 33.733333333333334,
+            "max": 100.0,
+            "normalized": 0.3373333333333333,
+            "field": "none Overall × 100"
+          },
+          "MMVet": {
+            "raw": 18.853211009174338,
+            "max": 100.0,
+            "normalized": 0.18853211009174337,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 25.900000000000002,
+            "max": 100.0,
+            "normalized": 0.259,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 234.0,
+            "max": 1000.0,
+            "normalized": 0.234,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.2895597734615792,
+        "accuracy_percent": 28.95597734615792
+      },
+      "eval_completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/base_init_v3/results",
+        "error": null,
+        "wall_seconds": 2617.7
+      },
+      "eval_manifest": {
+        "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+        "model_path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+        "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+        "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+        "judge_model": "Qwen3.5-27B",
+        "benchmarks": [
+          "HallusionBench",
+          "LLaVABench",
+          "MMBench",
+          "MMMU_DEV_VAL",
+          "MMStar",
+          "MMVet",
+          "MathVista_MINI",
+          "OCRBench"
+        ],
+        "use_vllm": true,
+        "mode": "all",
+        "api_nproc": 4,
+        "gpu": 0,
+        "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+        "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+      },
+      "source_prefix": "E12_base_init_v3",
+      "prediction_and_scoring_assets": {
+        "node": "fvcrc12",
+        "directory": "/var/tmp/xiang-data-rsi/e12/eval_runs/base_init_v3/results/llava-1.5-7b-hf",
+        "files": "Per-benchmark xlsx predictions, score csv/json and judge result xlsx/pkl; original logs in the parent eval directory."
+      },
+      "normalized_benchmark_percent": {
+        "HallusionBench": 26.884183934201257,
+        "LLaVABench": 25.900000000000002,
+        "MMBench": 45.53264604810997,
+        "MMMU_DEV_VAL": 31.444444444444446,
+        "MMStar": 33.733333333333334,
+        "MMVet": 18.853211009174338,
+        "MathVista_MINI": 25.900000000000002,
+        "OCRBench": 23.400000000000002
+      }
+    },
+    "random": {
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 29.282621651105085,
+            "max": 100.0,
+            "normalized": 0.29282621651105084,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 37.8,
+            "max": 100.0,
+            "normalized": 0.37799999999999995,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 49.140893470790374,
+            "max": 100.0,
+            "normalized": 0.49140893470790376,
+            "field": "dev Overall × 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 29.444444444444446,
+            "max": 100.0,
+            "normalized": 0.29444444444444445,
+            "field": "validation Overall × 100"
+          },
+          "MMStar": {
+            "raw": 32.06666666666666,
+            "max": 100.0,
+            "normalized": 0.32066666666666666,
+            "field": "none Overall × 100"
+          },
+          "MMVet": {
+            "raw": 27.660550458715615,
+            "max": 100.0,
+            "normalized": 0.27660550458715616,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 24.3,
+            "max": 100.0,
+            "normalized": 0.243,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 287.0,
+            "max": 1000.0,
+            "normalized": 0.287,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.3229939708646527,
+        "accuracy_percent": 32.29939708646527
+      },
+      "eval_completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/random_s17_v2/results",
+        "error": null,
+        "wall_seconds": 1345.9
+      },
+      "eval_manifest": {
+        "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+        "model_path": "/var/tmp/xiang-data-rsi/e12/copied_random_model_s17",
+        "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+        "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+        "judge_model": "Qwen3.5-27B",
+        "benchmarks": [
+          "HallusionBench",
+          "LLaVABench",
+          "MMBench",
+          "MMMU_DEV_VAL",
+          "MMStar",
+          "MMVet",
+          "MathVista_MINI",
+          "OCRBench"
+        ],
+        "use_vllm": true,
+        "mode": "all",
+        "api_nproc": 4,
+        "gpu": 0,
+        "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+        "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+      },
+      "source_prefix": "E12_random_s17_v2",
+      "train": {
+        "completion": {
+          "returncode": 0,
+          "wall_seconds": 3696.5,
+          "model_saved": true,
+          "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17"
+        },
+        "launch_manifest": {
+          "command": [
+            "/home/xiang/.venvs/data-centric-rsi/bin/python",
+            "-m",
+            "accelerate.commands.launch",
+            "--num_processes",
+            "1",
+            "--gpu_ids",
+            "1",
+            "/home/xiang/.cache/research/data-centric-rsi/CurationBench/vendor/curation-train/src/curation_train/train_llava15.py",
+            "--config_json",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17/train_config.json",
+            "--output_dir",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17/model",
+            "--num_train_epochs",
+            "1",
+            "--per_device_train_batch_size",
+            "1",
+            "--gradient_accumulation_steps",
+            "16",
+            "--learning_rate",
+            "2e-5",
+            "--weight_decay",
+            "0.0",
+            "--warmup_ratio",
+            "0.03",
+            "--lr_scheduler_type",
+            "cosine",
+            "--bf16",
+            "--optim",
+            "adamw_torch_fused",
+            "--gradient_checkpointing",
+            "--dataloader_num_workers",
+            "2",
+            "--remove_unused_columns",
+            "False",
+            "--save_strategy",
+            "no",
+            "--report_to",
+            "none",
+            "--logging_steps",
+            "1",
+            "--seed",
+            "17",
+            "--data_seed",
+            "17"
+          ],
+          "policy": "random",
+          "seed": 17,
+          "gpu": 1,
+          "device_mapping": "Accelerate --gpu_ids and outer CUDA_VISIBLE_DEVICES both name the same physical GPU; the child uses its logical device 0.",
+          "parent_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+          "parent_path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+          "selection_manifest_sha256": "063a51aa2ce64be6602212a23068ff9f457f0d43f6220c421ea8b19739847324",
+          "full_audit_sha256": "2708f7451d9eedee1fc077b9dde69caf993c6cadb8e6a37c10a0f02148a008b1",
+          "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+          "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+          "python": "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "difference_from_released_runner": "Explicit seed and data_seed; released runner silently uses TrainingArguments default 42 for every dataset seed."
+        },
+        "node": "fvcrc10"
+      },
+      "selected_rows": 10000,
+      "optimizer_steps": 625,
+      "supervised_tokens": 1303803,
+      "input_tokens": 8475593,
+      "weight_sentinel": {
+        "parent": "/var/tmp/xiang-data-rsi/e12/llava_init",
+        "student": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17/model",
+        "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+        "tensors": {
+          "language_model.model.layers.0.self_attn.q_proj.weight": {
+            "shape": [
+              4096,
+              4096
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 5263362,
+            "max_abs_delta": 0.0014314651489257812,
+            "mean_abs_delta": 3.9498827391071245e-05,
+            "raw_changed_elements_before_parent_cast": 15337153
+          },
+          "multi_modal_projector.linear_1.weight": {
+            "shape": [
+              4096,
+              1024
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 532233,
+            "max_abs_delta": 0.00252532958984375,
+            "mean_abs_delta": 3.678666689665988e-05,
+            "raw_changed_elements_before_parent_cast": 532233
+          },
+          "vision_tower.vision_model.embeddings.patch_embedding.weight": {
+            "shape": [
+              1024,
+              3,
+              14,
+              14
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": true,
+            "changed_elements": 0,
+            "max_abs_delta": 0.0,
+            "mean_abs_delta": 0.0,
+            "raw_changed_elements_before_parent_cast": 525606
+          }
+        }
+      },
+      "normalized_benchmark_percent": {
+        "HallusionBench": 29.282621651105085,
+        "LLaVABench": 37.8,
+        "MMBench": 49.140893470790374,
+        "MMMU_DEV_VAL": 29.444444444444446,
+        "MMStar": 32.06666666666666,
+        "MMVet": 27.660550458715615,
+        "MathVista_MINI": 24.3,
+        "OCRBench": 28.7
+      },
+      "benchmark_delta_random_points": {
+        "HallusionBench": 0.0,
+        "LLaVABench": 0.0,
+        "MMBench": 0.0,
+        "MMMU_DEV_VAL": 0.0,
+        "MMStar": 0.0,
+        "MMVet": 0.0,
+        "MathVista_MINI": 0.0,
+        "OCRBench": 0.0
+      },
+      "delta_base_points": 3.3434197403073505,
+      "delta_random_points": 0.0,
+      "prediction_and_scoring_assets": {
+        "node": "fvcrc12",
+        "directory": "/var/tmp/xiang-data-rsi/e12/eval_runs/random_s17_v2/results/llava-1.5-7b-hf",
+        "files": "Per-benchmark xlsx predictions, score csv/json and judge result xlsx/pkl; original logs in the parent eval directory."
+      }
+    },
+    "balanced": {
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 29.4618987215767,
+            "max": 100.0,
+            "normalized": 0.29461898721576696,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 39.7,
+            "max": 100.0,
+            "normalized": 0.397,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 49.22680412371135,
+            "max": 100.0,
+            "normalized": 0.4922680412371135,
+            "field": "dev Overall × 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 34.77777777777778,
+            "max": 100.0,
+            "normalized": 0.3477777777777778,
+            "field": "validation Overall × 100"
+          },
+          "MMStar": {
+            "raw": 33.46666666666667,
+            "max": 100.0,
+            "normalized": 0.33466666666666667,
+            "field": "none Overall × 100"
+          },
+          "MMVet": {
+            "raw": 29.311926605504606,
+            "max": 100.0,
+            "normalized": 0.29311926605504607,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 22.8,
+            "max": 100.0,
+            "normalized": 0.228,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 288.0,
+            "max": 1000.0,
+            "normalized": 0.288,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.33443134236904637,
+        "accuracy_percent": 33.44313423690464
+      },
+      "eval_completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/balanced_s17/results",
+        "error": null,
+        "wall_seconds": 2059.3
+      },
+      "eval_manifest": {
+        "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+        "model_path": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17/model",
+        "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+        "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+        "judge_model": "Qwen3.5-27B",
+        "benchmarks": [
+          "HallusionBench",
+          "LLaVABench",
+          "MMBench",
+          "MMMU_DEV_VAL",
+          "MMStar",
+          "MMVet",
+          "MathVista_MINI",
+          "OCRBench"
+        ],
+        "use_vllm": true,
+        "mode": "all",
+        "api_nproc": 4,
+        "gpu": 1,
+        "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+        "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+      },
+      "source_prefix": "E12_balanced_s17",
+      "train": {
+        "completion": {
+          "returncode": 0,
+          "wall_seconds": 4383.4,
+          "model_saved": true,
+          "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17"
+        },
+        "launch_manifest": {
+          "command": [
+            "/home/xiang/.venvs/data-centric-rsi/bin/python",
+            "-m",
+            "accelerate.commands.launch",
+            "--num_processes",
+            "1",
+            "--gpu_ids",
+            "1",
+            "/home/xiang/.cache/research/data-centric-rsi/CurationBench/vendor/curation-train/src/curation_train/train_llava15.py",
+            "--config_json",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17/train_config.json",
+            "--output_dir",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17/model",
+            "--num_train_epochs",
+            "1",
+            "--per_device_train_batch_size",
+            "1",
+            "--gradient_accumulation_steps",
+            "16",
+            "--learning_rate",
+            "2e-5",
+            "--weight_decay",
+            "0.0",
+            "--warmup_ratio",
+            "0.03",
+            "--lr_scheduler_type",
+            "cosine",
+            "--bf16",
+            "--optim",
+            "adamw_torch_fused",
+            "--gradient_checkpointing",
+            "--dataloader_num_workers",
+            "2",
+            "--remove_unused_columns",
+            "False",
+            "--save_strategy",
+            "no",
+            "--report_to",
+            "none",
+            "--logging_steps",
+            "1",
+            "--seed",
+            "17",
+            "--data_seed",
+            "17"
+          ],
+          "policy": "balanced",
+          "seed": 17,
+          "gpu": 1,
+          "device_mapping": "Accelerate --gpu_ids and outer CUDA_VISIBLE_DEVICES both name the same physical GPU; the child uses its logical device 0.",
+          "parent_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+          "parent_path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+          "selection_manifest_sha256": "6f5ab2866c7097de88290fa663b5aa5a6706df37ef05b66cab26ae6465e346ae",
+          "full_audit_sha256": "2708f7451d9eedee1fc077b9dde69caf993c6cadb8e6a37c10a0f02148a008b1",
+          "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+          "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+          "python": "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "difference_from_released_runner": "Explicit seed and data_seed; released runner silently uses TrainingArguments default 42 for every dataset seed."
+        },
+        "node": "fvcrc10"
+      },
+      "selected_rows": 10000,
+      "optimizer_steps": 625,
+      "supervised_tokens": 698865,
+      "input_tokens": 8169751,
+      "weight_sentinel": {
+        "parent": "/var/tmp/xiang-data-rsi/e12/llava_init",
+        "student": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/balanced_s17/model",
+        "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+        "tensors": {
+          "language_model.model.layers.0.self_attn.q_proj.weight": {
+            "shape": [
+              4096,
+              4096
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 5256720,
+            "max_abs_delta": 0.00145721435546875,
+            "mean_abs_delta": 4.104027902940288e-05,
+            "raw_changed_elements_before_parent_cast": 15336856
+          },
+          "multi_modal_projector.linear_1.weight": {
+            "shape": [
+              4096,
+              1024
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 539121,
+            "max_abs_delta": 0.0022335052490234375,
+            "mean_abs_delta": 3.0439869078691117e-05,
+            "raw_changed_elements_before_parent_cast": 539121
+          },
+          "vision_tower.vision_model.embeddings.patch_embedding.weight": {
+            "shape": [
+              1024,
+              3,
+              14,
+              14
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": true,
+            "changed_elements": 0,
+            "max_abs_delta": 0.0,
+            "mean_abs_delta": 0.0,
+            "raw_changed_elements_before_parent_cast": 525606
+          }
+        }
+      },
+      "normalized_benchmark_percent": {
+        "HallusionBench": 29.461898721576695,
+        "LLaVABench": 39.7,
+        "MMBench": 49.22680412371135,
+        "MMMU_DEV_VAL": 34.77777777777778,
+        "MMStar": 33.46666666666667,
+        "MMVet": 29.311926605504606,
+        "MathVista_MINI": 22.8,
+        "OCRBench": 28.799999999999997
+      },
+      "benchmark_delta_random_points": {
+        "HallusionBench": 0.1792770704716118,
+        "LLaVABench": 1.9000000000000072,
+        "MMBench": 0.085910652920973,
+        "MMMU_DEV_VAL": 5.333333333333334,
+        "MMStar": 1.4000000000000012,
+        "MMVet": 1.651376146788991,
+        "MathVista_MINI": -1.4999999999999987,
+        "OCRBench": 0.10000000000000009
+      },
+      "delta_base_points": 4.487156890746721,
+      "delta_random_points": 1.143737150439371,
+      "prediction_and_scoring_assets": {
+        "node": "fvcrc10",
+        "directory": "/var/tmp/xiang-data-rsi/e12/eval_runs/balanced_s17/results/llava-1.5-7b-hf",
+        "files": "Per-benchmark xlsx predictions, score csv/json and judge result xlsx/pkl; original logs in the parent eval directory."
+      }
+    },
+    "icons_exact": {
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 28.990243278275955,
+            "max": 100.0,
+            "normalized": 0.28990243278275957,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 34.8,
+            "max": 100.0,
+            "normalized": 0.348,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 52.749140893470795,
+            "max": 100.0,
+            "normalized": 0.5274914089347079,
+            "field": "dev Overall × 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 34.44444444444444,
+            "max": 100.0,
+            "normalized": 0.34444444444444444,
+            "field": "validation Overall × 100"
+          },
+          "MMStar": {
+            "raw": 31.6,
+            "max": 100.0,
+            "normalized": 0.316,
+            "field": "none Overall × 100"
+          },
+          "MMVet": {
+            "raw": 28.532110091743128,
+            "max": 100.0,
+            "normalized": 0.2853211009174313,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 22.5,
+            "max": 100.0,
+            "normalized": 0.225,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 289.0,
+            "max": 1000.0,
+            "normalized": 0.289,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.3281449233849179,
+        "accuracy_percent": 32.81449233849179
+      },
+      "eval_completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/icons_exact_s17/results",
+        "error": null,
+        "wall_seconds": 1238.4
+      },
+      "eval_manifest": {
+        "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+        "model_path": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17/model",
+        "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+        "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+        "judge_model": "Qwen3.5-27B",
+        "benchmarks": [
+          "HallusionBench",
+          "LLaVABench",
+          "MMBench",
+          "MMMU_DEV_VAL",
+          "MMStar",
+          "MMVet",
+          "MathVista_MINI",
+          "OCRBench"
+        ],
+        "use_vllm": true,
+        "mode": "all",
+        "api_nproc": 4,
+        "gpu": 0,
+        "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+        "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+      },
+      "source_prefix": "E12_icons_exact_s17",
+      "train": {
+        "completion": {
+          "returncode": 0,
+          "wall_seconds": 4273.1,
+          "model_saved": true,
+          "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17"
+        },
+        "launch_manifest": {
+          "command": [
+            "/home/xiang/.venvs/data-centric-rsi/bin/python",
+            "-m",
+            "accelerate.commands.launch",
+            "--num_processes",
+            "1",
+            "--gpu_ids",
+            "1",
+            "/home/xiang/.cache/research/data-centric-rsi/CurationBench/vendor/curation-train/src/curation_train/train_llava15.py",
+            "--config_json",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17/train_config.json",
+            "--output_dir",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17/model",
+            "--num_train_epochs",
+            "1",
+            "--per_device_train_batch_size",
+            "1",
+            "--gradient_accumulation_steps",
+            "16",
+            "--learning_rate",
+            "2e-5",
+            "--weight_decay",
+            "0.0",
+            "--warmup_ratio",
+            "0.03",
+            "--lr_scheduler_type",
+            "cosine",
+            "--bf16",
+            "--optim",
+            "adamw_torch_fused",
+            "--gradient_checkpointing",
+            "--dataloader_num_workers",
+            "2",
+            "--remove_unused_columns",
+            "False",
+            "--save_strategy",
+            "no",
+            "--report_to",
+            "none",
+            "--logging_steps",
+            "1",
+            "--seed",
+            "17",
+            "--data_seed",
+            "17"
+          ],
+          "policy": "icons_exact",
+          "seed": 17,
+          "gpu": 1,
+          "device_mapping": "Accelerate --gpu_ids and outer CUDA_VISIBLE_DEVICES both name the same physical GPU; the child uses its logical device 0.",
+          "parent_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+          "parent_path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+          "selection_manifest_sha256": "b37ff86ee7f9c1923cf3f162a594cb1f47afbb57ec8d9457737db09840b7b045",
+          "full_audit_sha256": "2708f7451d9eedee1fc077b9dde69caf993c6cadb8e6a37c10a0f02148a008b1",
+          "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+          "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+          "python": "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "difference_from_released_runner": "Explicit seed and data_seed; released runner silently uses TrainingArguments default 42 for every dataset seed."
+        },
+        "node": "fvcrc12"
+      },
+      "selected_rows": 10000,
+      "optimizer_steps": 625,
+      "supervised_tokens": 549353,
+      "input_tokens": 7587690,
+      "weight_sentinel": {
+        "parent": "/var/tmp/xiang-data-rsi/e12/llava_init",
+        "student": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/icons_exact_s17/model",
+        "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+        "tensors": {
+          "language_model.model.layers.0.self_attn.q_proj.weight": {
+            "shape": [
+              4096,
+              4096
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 5096091,
+            "max_abs_delta": 0.001445770263671875,
+            "mean_abs_delta": 3.837466283584945e-05,
+            "raw_changed_elements_before_parent_cast": 15316743
+          },
+          "multi_modal_projector.linear_1.weight": {
+            "shape": [
+              4096,
+              1024
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 535632,
+            "max_abs_delta": 0.002079010009765625,
+            "mean_abs_delta": 2.9365408408921212e-05,
+            "raw_changed_elements_before_parent_cast": 535632
+          },
+          "vision_tower.vision_model.embeddings.patch_embedding.weight": {
+            "shape": [
+              1024,
+              3,
+              14,
+              14
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": true,
+            "changed_elements": 0,
+            "max_abs_delta": 0.0,
+            "mean_abs_delta": 0.0,
+            "raw_changed_elements_before_parent_cast": 525606
+          }
+        }
+      },
+      "normalized_benchmark_percent": {
+        "HallusionBench": 28.99024327827596,
+        "LLaVABench": 34.8,
+        "MMBench": 52.749140893470795,
+        "MMMU_DEV_VAL": 34.44444444444444,
+        "MMStar": 31.6,
+        "MMVet": 28.532110091743128,
+        "MathVista_MINI": 22.5,
+        "OCRBench": 28.9
+      },
+      "benchmark_delta_random_points": {
+        "HallusionBench": -0.2923783728291274,
+        "LLaVABench": -2.9999999999999973,
+        "MMBench": 3.6082474226804164,
+        "MMMU_DEV_VAL": 4.999999999999999,
+        "MMStar": -0.46666666666666523,
+        "MMVet": 0.8715596330275133,
+        "MathVista_MINI": -1.799999999999999,
+        "OCRBench": 0.20000000000000018
+      },
+      "delta_base_points": 3.8585149923338697,
+      "delta_random_points": 0.5150952520265193,
+      "prediction_and_scoring_assets": {
+        "node": "fvcrc12",
+        "directory": "/var/tmp/xiang-data-rsi/e12/eval_runs/icons_exact_s17/results/llava-1.5-7b-hf",
+        "files": "Per-benchmark xlsx predictions, score csv/json and judge result xlsx/pkl; original logs in the parent eval directory."
+      }
+    },
+    "ards": {
+      "scores": {
+        "model_key": "llava-1.5-7b-hf",
+        "benchmarks": {
+          "HallusionBench": {
+            "raw": 31.573048149697005,
+            "max": 100.0,
+            "normalized": 0.31573048149697003,
+            "field": "Overall mean(aAcc,fAcc,qAcc)"
+          },
+          "LLaVABench": {
+            "raw": 34.1,
+            "max": 100.0,
+            "normalized": 0.341,
+            "field": "overall Relative Score (main)"
+          },
+          "MMBench": {
+            "raw": 51.71821305841925,
+            "max": 100.0,
+            "normalized": 0.5171821305841925,
+            "field": "dev Overall × 100"
+          },
+          "MMMU_DEV_VAL": {
+            "raw": 35.44444444444444,
+            "max": 100.0,
+            "normalized": 0.35444444444444445,
+            "field": "validation Overall × 100"
+          },
+          "MMStar": {
+            "raw": 33.0,
+            "max": 100.0,
+            "normalized": 0.33,
+            "field": "none Overall × 100"
+          },
+          "MMVet": {
+            "raw": 26.376146788990834,
+            "max": 100.0,
+            "normalized": 0.26376146788990834,
+            "field": "Overall acc"
+          },
+          "MathVista_MINI": {
+            "raw": 23.799999999999997,
+            "max": 100.0,
+            "normalized": 0.23799999999999996,
+            "field": "Overall acc"
+          },
+          "OCRBench": {
+            "raw": 276.0,
+            "max": 1000.0,
+            "normalized": 0.276,
+            "field": "Final Score"
+          }
+        },
+        "accuracy_0_to_1": 0.3295148155519394,
+        "accuracy_percent": 32.951481555193936
+      },
+      "eval_completion": {
+        "status": "completed",
+        "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/ards_s17/results",
+        "error": null,
+        "wall_seconds": 1332.9
+      },
+      "eval_manifest": {
+        "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+        "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+        "model_path": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17/model",
+        "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+        "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+        "judge_model": "Qwen3.5-27B",
+        "benchmarks": [
+          "HallusionBench",
+          "LLaVABench",
+          "MMBench",
+          "MMMU_DEV_VAL",
+          "MMStar",
+          "MMVet",
+          "MathVista_MINI",
+          "OCRBench"
+        ],
+        "use_vllm": true,
+        "mode": "all",
+        "api_nproc": 4,
+        "gpu": 0,
+        "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+        "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+      },
+      "source_prefix": "E12_ards_s17",
+      "train": {
+        "completion": {
+          "returncode": 0,
+          "wall_seconds": 4126.8,
+          "model_saved": true,
+          "run_dir": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17"
+        },
+        "launch_manifest": {
+          "command": [
+            "/home/xiang/.venvs/data-centric-rsi/bin/python",
+            "-m",
+            "accelerate.commands.launch",
+            "--num_processes",
+            "1",
+            "--gpu_ids",
+            "1",
+            "/home/xiang/.cache/research/data-centric-rsi/CurationBench/vendor/curation-train/src/curation_train/train_llava15.py",
+            "--config_json",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17/train_config.json",
+            "--output_dir",
+            "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17/model",
+            "--num_train_epochs",
+            "1",
+            "--per_device_train_batch_size",
+            "1",
+            "--gradient_accumulation_steps",
+            "16",
+            "--learning_rate",
+            "2e-5",
+            "--weight_decay",
+            "0.0",
+            "--warmup_ratio",
+            "0.03",
+            "--lr_scheduler_type",
+            "cosine",
+            "--bf16",
+            "--optim",
+            "adamw_torch_fused",
+            "--gradient_checkpointing",
+            "--dataloader_num_workers",
+            "2",
+            "--remove_unused_columns",
+            "False",
+            "--save_strategy",
+            "no",
+            "--report_to",
+            "none",
+            "--logging_steps",
+            "1",
+            "--seed",
+            "17",
+            "--data_seed",
+            "17"
+          ],
+          "policy": "ards",
+          "seed": 17,
+          "gpu": 1,
+          "device_mapping": "Accelerate --gpu_ids and outer CUDA_VISIBLE_DEVICES both name the same physical GPU; the child uses its logical device 0.",
+          "parent_revision": "5736a39125fce6ca4d4eb20033ca7c46895878ab",
+          "parent_path": "/var/tmp/xiang-data-rsi/e12/llava_init",
+          "selection_manifest_sha256": "7619f681c664200e8098a04a7cd65357bb1c634c95e5dce07d2084eadfb5f989",
+          "full_audit_sha256": "2708f7451d9eedee1fc077b9dde69caf993c6cadb8e6a37c10a0f02148a008b1",
+          "vendor_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+          "train_script_sha256": "91a87f5cbc27e00448b4ba6e0768ebb36dfc567995cc6fe4ed258d0628a8057e",
+          "python": "/home/xiang/.venvs/data-centric-rsi/bin/python",
+          "difference_from_released_runner": "Explicit seed and data_seed; released runner silently uses TrainingArguments default 42 for every dataset seed."
+        },
+        "node": "fvcrc12"
+      },
+      "selected_rows": 10000,
+      "optimizer_steps": 625,
+      "supervised_tokens": 671987,
+      "input_tokens": 8074399,
+      "weight_sentinel": {
+        "parent": "/var/tmp/xiang-data-rsi/e12/llava_init",
+        "student": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/ards_s17/model",
+        "delta_reference": "Parent cast to student dtype before subtraction; raw dtype-conversion differences are reported separately.",
+        "tensors": {
+          "language_model.model.layers.0.self_attn.q_proj.weight": {
+            "shape": [
+              4096,
+              4096
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 5319029,
+            "max_abs_delta": 0.00148773193359375,
+            "mean_abs_delta": 4.255488238413818e-05,
+            "raw_changed_elements_before_parent_cast": 15344676
+          },
+          "multi_modal_projector.linear_1.weight": {
+            "shape": [
+              4096,
+              1024
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": false,
+            "changed_elements": 535241,
+            "max_abs_delta": 0.0019550323486328125,
+            "mean_abs_delta": 3.015631591551937e-05,
+            "raw_changed_elements_before_parent_cast": 535241
+          },
+          "vision_tower.vision_model.embeddings.patch_embedding.weight": {
+            "shape": [
+              1024,
+              3,
+              14,
+              14
+            ],
+            "parent_dtype": "torch.float16",
+            "student_dtype": "torch.bfloat16",
+            "exact_equal": false,
+            "equal_after_parent_cast": true,
+            "changed_elements": 0,
+            "max_abs_delta": 0.0,
+            "mean_abs_delta": 0.0,
+            "raw_changed_elements_before_parent_cast": 525606
+          }
+        }
+      },
+      "normalized_benchmark_percent": {
+        "HallusionBench": 31.573048149697,
+        "LLaVABench": 34.1,
+        "MMBench": 51.71821305841925,
+        "MMMU_DEV_VAL": 35.44444444444444,
+        "MMStar": 33.0,
+        "MMVet": 26.376146788990834,
+        "MathVista_MINI": 23.799999999999997,
+        "OCRBench": 27.6
+      },
+      "benchmark_delta_random_points": {
+        "HallusionBench": 2.290426498591919,
+        "LLaVABench": -3.699999999999992,
+        "MMBench": 2.5773195876288737,
+        "MMMU_DEV_VAL": 6.0,
+        "MMStar": 0.933333333333336,
+        "MMVet": -1.2844036697247818,
+        "MathVista_MINI": -0.5000000000000032,
+        "OCRBench": -1.0999999999999954
+      },
+      "delta_base_points": 3.9955042090360173,
+      "delta_random_points": 0.6520844687286669,
+      "prediction_and_scoring_assets": {
+        "node": "fvcrc12",
+        "directory": "/var/tmp/xiang-data-rsi/e12/eval_runs/ards_s17/results/llava-1.5-7b-hf",
+        "files": "Per-benchmark xlsx predictions, score csv/json and judge result xlsx/pkl; original logs in the parent eval directory."
+      }
+    }
+  },
+  "policy_pairwise_delta_points": {
+    "balanced_minus_random": {
+      "aggregate_points": 1.143737150439371,
+      "benchmark_points": {
+        "HallusionBench": 0.1792770704716118,
+        "LLaVABench": 1.9000000000000072,
+        "MMBench": 0.085910652920973,
+        "MMMU_DEV_VAL": 5.333333333333334,
+        "MMStar": 1.4000000000000012,
+        "MMVet": 1.651376146788991,
+        "MathVista_MINI": -1.4999999999999987,
+        "OCRBench": 0.10000000000000009
+      }
+    },
+    "icons_exact_minus_random": {
+      "aggregate_points": 0.5150952520265193,
+      "benchmark_points": {
+        "HallusionBench": -0.2923783728291274,
+        "LLaVABench": -2.9999999999999973,
+        "MMBench": 3.6082474226804164,
+        "MMMU_DEV_VAL": 4.999999999999999,
+        "MMStar": -0.46666666666666523,
+        "MMVet": 0.8715596330275133,
+        "MathVista_MINI": -1.799999999999999,
+        "OCRBench": 0.20000000000000018
+      }
+    },
+    "ards_minus_random": {
+      "aggregate_points": 0.6520844687286669,
+      "benchmark_points": {
+        "HallusionBench": 2.290426498591919,
+        "LLaVABench": -3.699999999999992,
+        "MMBench": 2.5773195876288737,
+        "MMMU_DEV_VAL": 6.0,
+        "MMStar": 0.933333333333336,
+        "MMVet": -1.2844036697247818,
+        "MathVista_MINI": -0.5000000000000032,
+        "OCRBench": -1.0999999999999954
+      }
+    },
+    "balanced_minus_icons_exact": {
+      "aggregate_points": 0.6286418984128517,
+      "benchmark_points": {
+        "HallusionBench": 0.47165544330073916,
+        "LLaVABench": 4.900000000000004,
+        "MMBench": -3.522336769759443,
+        "MMMU_DEV_VAL": 0.3333333333333355,
+        "MMStar": 1.8666666666666665,
+        "MMVet": 0.7798165137614776,
+        "MathVista_MINI": 0.30000000000000027,
+        "OCRBench": -0.10000000000000009
+      }
+    },
+    "balanced_minus_ards": {
+      "aggregate_points": 0.4916526817107041,
+      "benchmark_points": {
+        "HallusionBench": -2.111149428120307,
+        "LLaVABench": 5.6,
+        "MMBench": -2.4914089347079003,
+        "MMMU_DEV_VAL": -0.6666666666666654,
+        "MMStar": 0.46666666666666523,
+        "MMVet": 2.9357798165137727,
+        "MathVista_MINI": -0.9999999999999953,
+        "OCRBench": 1.1999999999999955
+      }
+    },
+    "ards_minus_icons_exact": {
+      "aggregate_points": 0.1369892167021476,
+      "benchmark_points": {
+        "HallusionBench": 2.582804871421046,
+        "LLaVABench": -0.6999999999999951,
+        "MMBench": -1.0309278350515427,
+        "MMMU_DEV_VAL": 1.0000000000000009,
+        "MMStar": 1.4000000000000012,
+        "MMVet": -2.155963302752295,
+        "MathVista_MINI": 1.2999999999999956,
+        "OCRBench": -1.2999999999999956
+      }
+    }
+  },
+  "random_checkpoint_evaluation_repeat": {
+    "scores": {
+      "model_key": "llava-1.5-7b-hf",
+      "benchmarks": {
+        "HallusionBench": {
+          "raw": 29.40203980520532,
+          "max": 100.0,
+          "normalized": 0.2940203980520532,
+          "field": "Overall mean(aAcc,fAcc,qAcc)"
+        },
+        "LLaVABench": {
+          "raw": 37.6,
+          "max": 100.0,
+          "normalized": 0.376,
+          "field": "overall Relative Score (main)"
+        },
+        "MMBench": {
+          "raw": 49.140893470790374,
+          "max": 100.0,
+          "normalized": 0.49140893470790376,
+          "field": "dev Overall × 100"
+        },
+        "MMMU_DEV_VAL": {
+          "raw": 29.555555555555557,
+          "max": 100.0,
+          "normalized": 0.29555555555555557,
+          "field": "validation Overall × 100"
+        },
+        "MMStar": {
+          "raw": 32.06666666666666,
+          "max": 100.0,
+          "normalized": 0.32066666666666666,
+          "field": "none Overall × 100"
+        },
+        "MMVet": {
+          "raw": 27.614678899082584,
+          "max": 100.0,
+          "normalized": 0.27614678899082584,
+          "field": "Overall acc"
+        },
+        "MathVista_MINI": {
+          "raw": 24.2,
+          "max": 100.0,
+          "normalized": 0.242,
+          "field": "Overall acc"
+        },
+        "OCRBench": {
+          "raw": 284.0,
+          "max": 1000.0,
+          "normalized": 0.284,
+          "field": "Final Score"
+        }
+      },
+      "accuracy_0_to_1": 0.3224747929966256,
+      "accuracy_percent": 32.247479299662565
+    },
+    "eval_completion": {
+      "status": "completed",
+      "results_dir": "/var/tmp/xiang-data-rsi/e12/eval_runs/random_s17_repeat/results",
+      "error": null,
+      "wall_seconds": 1432.4
+    },
+    "eval_manifest": {
+      "source_git_sha": "24eea1526492c00cee421f5db0793789e00aabb2",
+      "task_yaml_sha256": "df20fa6f3146ddf6b80c81b651ca0506aa11c65ae9e12cb3a19a240c8bc69590",
+      "model_path": "/var/tmp/xiang-data-rsi/e12/train_runs_v2/random_s17/model",
+      "eval_data_path": "/var/tmp/xiang-data-rsi/e12/LMUData",
+      "judge_url": "http://fvcrc20:8032/v1/chat/completions",
+      "judge_model": "Qwen3.5-27B",
+      "benchmarks": [
+        "HallusionBench",
+        "LLaVABench",
+        "MMBench",
+        "MMMU_DEV_VAL",
+        "MMStar",
+        "MMVet",
+        "MathVista_MINI",
+        "OCRBench"
+      ],
+      "use_vllm": true,
+      "mode": "all",
+      "api_nproc": 4,
+      "gpu": 1,
+      "vlmeval_venv": "/var/tmp/xiang-data-rsi/e12/vlmeval_venv",
+      "import_shim": "/home/xiang/ssn-group-papaer/workbench/data-centric-rsi/compat/sitecustomize.py"
+    },
+    "source_prefix": "E12_random_s17_repeat",
+    "delta_first_eval_points": -0.05191778680270431,
+    "benchmark_delta_points": {
+      "HallusionBench": 0.11941815410023704,
+      "LLaVABench": -0.19999999999999463,
+      "MMBench": 0.0,
+      "MMMU_DEV_VAL": 0.11111111111111183,
+      "MMStar": 0.0,
+      "MMVet": -0.04587155963303169,
+      "MathVista_MINI": -0.10000000000000009,
+      "OCRBench": -0.30000000000000027
+    },
+    "scope": "One prewritten independent fresh-output evaluation of the exact same random checkpoint: original weights on fvcrc10/A100 GPU1 versus content-verified copied weights first evaluated on fvcrc12/A100 GPU0. Combined judge/vLLM/node execution variation; no best-result selection, no training variance estimate."
+  },
+  "successful_train_wrapper_wall_seconds": 16479.8,
+  "successful_eval_wrapper_wall_seconds": 10026.6,
+  "cost_measurement_scope": "Single-A100 allocation wrapper wall, including loading, save and CPU/I/O waits; not active kernel time. Failed-launch overhead, data transfer, judge service and CPU/I/O time are not included in these successful-run sums.",
+  "training_variance_and_ci": null,
+  "training_variance_and_ci_reason": "Only seed17 has trained; seed29/43 are unrun. One same-checkpoint evaluation repeat gives a variation reference, not a training variance estimate.",
+  "unrun": [
+    "seed29",
+    "seed43",
+    "icons_released_map diagnostic"
+  ],
+  "scientific_claim_upgrades": [],
+  "loss_normalization": "Actual installed source implies supervised-token mean per 16-row GA window; no saved runtime trace of internal kwargs, Accelerator.GA or window N.",
+  "known_failures": [
+    "First random train physical GPU mapping error, stopped before optimizer step; original directory retained.",
+    "Base eval startup SHA-path/import-helper failures before benchmark scores; originals retained.",
+    "Random first eval missing uv PATH: wall_seconds=0, no benchmark scores; new unique v2 directory.",
+    "Balanced initial shell redirect to missing parent directory failed before Python launched; parent created before formal evaluator start.",
+    "Judge first/second launch and initial request failures retained; final fixed native-sampler service shared by all five evaluations."
+  ]
+}
