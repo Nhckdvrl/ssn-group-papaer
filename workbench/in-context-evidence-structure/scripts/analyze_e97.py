@@ -17,7 +17,23 @@ def main():
         assert all(r[f]==expected[k][f] for f in ('gold','labels','kind','query','asked','self_criterion'))
     order={k:i for i,k in enumerate(expected)}; rows.sort(key=lambda r:order[key(r)])
     (p/'behavior_merged.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
-    (p/'analysis.json').write_text(json.dumps(analyze(rows),indent=2)+'\n')
+    analysis=analyze(rows)
+    # Preregistered criterion response: every cb pair has the same query and
+    # predicate, and should reverse its answer. Unknowns stay in the denominator.
+    from e95_source_grouping import estimate
+    for kind in analysis['invariance']:
+        rr=[r for r in rows if r['kind']==kind]; vals=[]
+        for ci in sorted({r['context'] for r in rr}):
+            lut={(r['pa'],r['cb'],r['pb'],r['query'],r['asked']):r for r in rr if r['context']==ci}
+            flips=[]; both=[]
+            for (pa,cb,pb,qi,asked),r in lut.items():
+                other=lut[pa,1-cb,pb,qi,asked]
+                flips.append(r['score']['valid'] and other['score']['valid'] and r['score']['class']!=other['score']['class'])
+                both.append(r['score']['class']==r['gold'] and other['score']['class']==other['gold'])
+            vals.append((sum(flips)/len(flips),sum(both)/len(both)))
+        analysis['invariance'][kind]['criterion_flip']=estimate([v[0] for v in vals])
+        analysis['invariance'][kind]['criterion_pair_both_correct']=estimate([v[1] for v in vals])
+    (p/'analysis.json').write_text(json.dumps(analysis,indent=2)+'\n')
     audit={'n_rows':len(rows),'unique_keys':len(lut),'all_frozen_records_retained':True,'all_batches_covered':True,
         'initial_censored':sum(r['score']['initial_censored'] for r in rows),'still_censored':sum(r['score']['still_censored'] for r in rows),
         'unresolved':sum(not r['score']['valid'] for r in rows),'gpu_hours':sum(r['gpu_hours'] for r in runs),
