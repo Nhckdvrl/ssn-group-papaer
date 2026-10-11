@@ -11,7 +11,7 @@
 
 ## 2. 硬规则（违反即停，回到本文件）
 - **R1 不在桌面上判死。** 不能以“有人做过 / 已成 program / 一小块被碰过 / 天花板不够 / 审稿人会说你不就是 ___”为理由关闭 territory、workbench 或 idea。你能做的是：写定位表（近邻 + 增量）、调整增量、把 idea 标为 PARKED 并写重开条件。撞车的定义与处理见 `search/README.md` §3。
-- **R2 开线、关线、暂停、改状态只由人决定。** 你可以用 `templates/close_record.md` 提议。证据类别：A（实验）、C（可行性），以及 **H（Human scientific-yield judgment）**。H 只能在 baseline 跑通、已有系统 measurement、positioning 与论文形态卡之后由人签字使用；agent 不能用 H 在桌面上判“天花板不够”。
+- **R2 开线、关线、暂停、改状态只由人决定。** 已标记 `CLOSED` 的工作台是历史成果，不得因过时的“下一步”说明重新执行；恢复须用户明确同意。 你可以用 `templates/close_record.md` 提议。证据类别：A（实验）、C（可行性），以及 **H（Human scientific-yield judgment）**。H 只能在 baseline 跑通、已有系统 measurement、positioning 与论文形态卡之后由人签字使用；agent 不能用 H 在桌面上判“天花板不够”。
 - **R3 先写实验卡再运行**（`python3 tools/process/new.py experiment <workbench> <slug>`）：对应的主张 / idea / 痛点、读数、阳性对照、噪声地板、决策表、算力。事后补写的标 POST-HOC。
 - **R4 主张升级必须引用实验卡和结果文件**；证据等级按 `workbench/EXECUTION.md` §3；升到 L2 前过混杂审计（§4），升到 L3 前做独立校对（§5）。
 - **R5 不筛幸存种子，不在看到结果后改读数**；作废和降级写进 `CLAIMS.md` 的作废记录，和正结果一样汇报。

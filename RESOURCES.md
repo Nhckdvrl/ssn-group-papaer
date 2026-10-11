@@ -22,8 +22,4 @@
 ## 与流程关系
 卡多不意味着同时开很多互不相关的线；`workbench/README.md` 的 ACTIVE 容量不变。一个 workbench 内可以共享资产并行多个有解释力的实验。
 
-当前应用：
-- `workbench/real-time-causalization-capability-preservation/`：ACTIVE-MAIN，优先公开 stage checkpoints + 横向 measurement；
-- `workbench/latent-world-model-planning/`：PROPOSED。
-
-两者都必须遵守弱互联 / 弱 I/O 边界。
+2026-10-11 当前：`ACTIVE-MAIN` 空缺；`in-context-evidence-structure/` 是唯一 `ACTIVE-EXPLORE`。其他研究按 [最新登记表](workbench/README.md) 排程；已删除的实时世界模型主线不再占用科研资源。

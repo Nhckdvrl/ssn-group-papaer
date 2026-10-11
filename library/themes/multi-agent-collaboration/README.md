@@ -57,5 +57,5 @@
 - 通用入口：`../../sources/AWESOME_LISTS.md`
 
 ## 7. 本仓库相关
-- 建议的新探索线：`workbench/multi-llm-collaboration/`（见 `workbench/README.md` §9）
+- **历史 workbench（2026-10-11 已删除）：** `workbench/multi-llm-collaboration/` 已退出当前 HEAD；题材资料继续保留，但不代表仍有该工作台或排程。
 - 历史：`archive/candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`（路由 = 模型分工的一种；教训：好的诊断信号 ≠ 可部署的动作）

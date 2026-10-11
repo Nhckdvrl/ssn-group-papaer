@@ -36,7 +36,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 2. **新颖性 = 可陈述的增量，不是无人触碰的空白。** 近邻是常态；撞车 = 同一 claim + 同一证据类型 + 同一设定，而且先改增量。用真实的顶会接收 / 拒稿数据校准（`tools/venue_corpus/`）。
 3. **论文从建设中长出来。** idea 来自痛点和测量，用研究动作推出来、用决定性 pilot 筛；方法从驻留一开始就允许，只要针对真实出现的痛点。
 4. **每次运行都推动一条主张。** 先写实验卡和决策表；主张按证据等级爬升；每次人审只问“哪条主张升了级、为什么”。
-5. **没被证据否定的东西只搁置、不杀死。** 关闭只由人决定，且只能基于实验证据或可行性。
+5. **不根据未经验证的桌面判断自动关线。** 继续、暂停与关闭由人结合证据、可行性和科学价值决定；已终止项目不自动恢复。
 
 ## 触发与分工（事件触发，不按周期）
 
@@ -62,15 +62,15 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 | `failed/` | 跨项目的失败记录；桌面新颖性 kill 在 v3 起可带增量重开 |
 | `archive/` | 只读历史 |
 
-## 当前状态（2026-10-09；正式名额与科学推进分开记录）
-- **主线**：`workbench/real-time-causalization-capability-preservation/`（CVPR 2027 / ICML 2027）。研究对象不是某一个 seam bug，而是视频 foundation / bidirectional model 转成 causal、few-step、real-time world model 时，**哪些 world-model capability 被选择性损失、在哪个转换阶段发生、哪些设计能保住它们**。
-- **探索线（正式 ACTIVE-EXPLORE 登记）**：[`workbench/in-context-evidence-structure/`](workbench/in-context-evidence-structure/README.md)，10 月 8 日恢复推进，持续机制和真实标注者实验。
-- **PROPOSED**：`workbench/latent-world-model-planning/`，保持候选，不占 ACTIVE 名额。
-- **PROPOSED（新增）**：[`workbench/data-centric-rsi/`](workbench/data-centric-rsi/README.md)，数据策略的可复用性、训练干预型数据研究与多时域学习效用；已有本地GPU闭环与E12强静态基线评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审，主张均L0；实时证据见该工作台状态页，不改变现有ACTIVE调度。
-- **已降级**：`workbench/video-world-model-temporal-interfaces/` → PAUSED（H 类 scientific-yield 决定）。块首接缝失聪仍是可靠诊断资产，但不再作为独立 MAIN paper story；只在新主线需要区分 causalization / distillation / rollout 损失时复用。
-- **研究持续进行（2026-10-09 最新人决定）**：[`workbench/mechanism-population-dynamics/`](workbench/mechanism-population-dynamics/README.md)，旧“停止投入”判断不再有效；论文与实验资产完整保留。当前登记为 `PROPOSED` 只是为了不擅自调整已有 ACTIVE-EXPLORE 排程，不意味着停做。
-- **已关闭工作台已移出当前树**：旧语音 / Hybrid / 语用 / MoE 方向的有效结论已压缩进知识库；历史大规模转储从 `archive/` 清除（见 [清理报告](archive/PRUNING_2026-10-09.md)）。
-- 完整登记表：[`workbench/README.md`](workbench/README.md) §9；[2026-10-09 整理清单](workbench/WORKBENCH_AUDIT_2026-10-09.md)；[知识库总索引](library/README.md)；检查：`python3 tools/process/check.py`。
+## 当前状态（2026-10-11；正式登记以 workbench 表为准）
+- **ACTIVE-MAIN：空缺。** 原实时世界模型主线已按人类决定从当前树删除。
+- **ACTIVE-EXPLORE：** [`in-context-evidence-structure`](workbench/in-context-evidence-structure/README.md)，保持现有登记。
+- **PROPOSED：** [`latent-world-model-planning`](workbench/latent-world-model-planning/README.md)、[`data-centric-rsi`](workbench/data-centric-rsi/README.md)、[`incremental-interpretation-revision`](workbench/incremental-interpretation-revision/README.md)，不擅自提升为主线。
+- **PAUSED：** [NPC persona](workbench/npc-persona-behavior-grounding/README.md) 与 [NPC deception](workbench/npc-deception-investigability/README.md) 两个项目，维持已有状态。
+- **CLOSED / TERMINATED：** [`mechanism-population-dynamics`](workbench/mechanism-population-dynamics/README.md)：2026-10-11 人决定终止并收尾；已积累大量实验和论文修订，但进一步的科学价值和意义有限。**保留全部论文、脚本和结果，不自动继续研究。**
+- **五个已从 HEAD 删除的工作台：** real-time causalization、scoped context、cross-lingual acquisition、multi-LLM collaboration、video temporal interfaces。无 archive 复制；旧 Git 历史保留。
+- 当前共 **7 个 workbench**，详见 [当前登记表](workbench/README.md) §9 与 [清理记录](workbench/WORKBENCH_CLEANUP_2026-10-11.md)。
+
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
 - 候选编号只在 candidate 阶段出现；观察结果留在产生它的 workbench。

@@ -58,7 +58,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ## 4. 论文形态卡（每次人审更新，模板 `templates/paper_shape.md`）
 
-参考范例：[`video-world-model-temporal-interfaces/CVPR_ASSESSMENT.md`](video-world-model-temporal-interfaces/CVPR_ASSESSMENT.md)。
+参考范例：[`in-context-evidence-structure/PAPER_SHAPE.md`](in-context-evidence-structure/PAPER_SHAPE.md)（文件含历史形态卡，使用时请查看最新状态）。
 
 ```markdown
 ## 论文形态卡 — <workbench> — <日期>
@@ -112,33 +112,23 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 ---
 
-## 整理结果与科学状态（2026-10-09，用户最新要求）
+## 当前决定与整理（2026-10-11）
 
-本次**直接从当前仓库树删除**三个未有实验资产的旧工作台：`ai4quant`、`hybrid-adaptation`、`model-diffing-measurement`；后者的可复用研究设计先整理进入 [模型差分测量知识卡](../library/themes/interpretability-representation/MODEL_DIFFING_MEASUREMENT.md)。两个 NPC workbench **原样保留**，不归档。详细清单：[2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)。Git 历史天然仍可追溯，删除不是历史擦除。
+- **用户明确要求直接删除** `real-time-causalization-capability-preservation`、`scoped-context-state`、`cross-lingual-acquisition-regimes`、`multi-llm-collaboration`、`video-world-model-temporal-interfaces` 这五个 workbench 的当前 Git 树文件。历史 Git 提交仍可追溯，不另建 archive 副本，不擅自触及外部服务器缓存。
+- **`mechanism-population-dynamics`：CLOSED / TERMINATED / 已收尾。** 用户认为该项目投入大量研究工作后，进一步的科学价值、意义有限，决定终止。论文 v0–v3、结果、代码、实验与日志全部保留在原目录，不启动新的实验或论文工作。10 月 9 日“继续”的历史决定已由 10 月 11 日决定覆盖。
+- **没有 ACTIVE-MAIN。** `in-context-evidence-structure` 保持唯一 ACTIVE-EXPLORE；其它剩余工作台状态不变。
+- 变更详情：[2026-10-11 清理记录](WORKBENCH_CLEANUP_2026-10-11.md)；[2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)仅为历史快照；知识库 `library/` 继续保留题材资料。
 
-**`mechanism-population-dynamics` 研究继续。** 用户 2026-10-09 明确否决先前停止投入的结论；实验/论文代码和结果完全保留。登记表的 `PROPOSED` 只表示没有擅自重新分配唯一 ACTIVE-EXPLORE 行政槽位，不是研究停止。
-
-## 第二轮精简（2026-10-09）
-
-按用户“没有继续价值就删除”的新指示，6 个已 CLOSED 的旧工作台已退出工作区：原始结果和实验不再随当前 HEAD 分发，唯一可复用的科学发现已整理进对应 [知识库](../library/README.md)，保留旧 Git commit 供必要时查证。当前工作台只容纳正在开展、曾实测但仍有明确再使用价值、或用户指定保留的方向；历史测量的完整原始输出不在 `workbench/` 继续堆放。详细大小和删除对象见 [清理报告](../archive/PRUNING_2026-10-09.md)。
-
-**严格保护**：`mechanism-population-dynamics` 仍在继续；两个 NPC workbench 依用户意见保留；`video-world-model-temporal-interfaces` 的时序评测工具仍供实时世界模型主线使用；其它尚未 CLOSED 的实验研究资产未批量删除。
-
-## 9. 登记表（2026-10-09 二次精简；`tools/process/check.py` 读取本表）
+## 9. 登记表（2026-10-11；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `video-world-model-temporal-interfaces` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | **H 类 scientific-yield 暂停**：接缝失聪现象成立，但当前 story 过窄、下游后果有限，且 ActionSplice 已占据 chunk/action responsiveness 的宽叙事；资产转为新主线的 diagnostic，不再执行旧 CVPR 扩系统/修 seam 计划 |
-| `real-time-causalization-capability-preservation` | ACTIVE-MAIN | CVPR 2027 / ICML 2027 | 2026-11-16 | `CLAIMS.md` | 2026-10-02 | **人已确认换轨**：研究 bidirectional/foundation → causal AR → few-step/distilled real-time 转换中 world-model capability 的选择性损失/保留；入口只做公开 stage checkpoints 的 matched measurement，不从零训 foundation model；ForgeWM stage-wise ablation 是近邻而非 novelty |
-| `multi-llm-collaboration` | PAUSED | ICML 2027（约 1 月下旬） | — | `CLAIMS.md` | 2026-10-01 | **可行性暂停（C）**：第一轮有解释力的 cross-play 需要至少两个充分训练 team；原始强 baseline 的完整 RL 成本过高，不适合作为当前探索线。保留全部 territory / cards，未来有廉价充分训练 substrate 时可重开 |
-| `cross-lingual-acquisition-regimes` | PAUSED | — | — | `CLAIMS.md` | 2026-10-02 | 已有八轮 52 次完成运行；人审撤回 acquisition 领先叙事，停止局部冻结探针，明确授权有界 MONOWEB 英语学习→德语迁移 baseline 修复；持续 ACTIVE 调度归属待人统一确认，不自行改其他线 |
-| `scoped-context-state` | PAUSED | — | — | — | — | 已生成数据，未完成 P1；恢复前补形态卡 |
-| `mechanism-population-dynamics` | PROPOSED | ICML / ICLR / ACL / EMNLP；具体届次待定 | — | `CLAIMS.md` | 2026-10-09 | **研究继续（2026-10-09 用户最新明确决定）**：之前“停止投入”的记录已被推翻；E75/E76 对具体解释和子线的否定不等于结束整个研究。所有论文草稿、实验代码、数据与日志完整保留，不清理、不归档。`PROPOSED` 仅表示暂未重排唯一 ACTIVE-EXPLORE 名额，**不表示没有在做**。 |
+| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-11 | **TERMINATED / 已收尾（用户明确决定）**：已完成大量实验和论文修订，但继续投入的价值和意义有限。保留论文、脚本、结果与日志；不再运行或自动恢复。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
-| `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | **人 2026-10-08：作为候补恢复准备（mechpop 停止后占用 ACTIVE-EXPLORE）**；原为主推候选储备（2026-10-06）：主 idea I04——ICL 按输出存放证据：看得见“用哪些输出”的变化，看不见把输出重新分配给输入的变化（concept drift / 因人而异的映射），泄漏随标签语义相似度增加；13 模型 0.6B–32B、换词修复、读标签头机制（2 模型因果修补）；主张多为 L2（泛化条件已满足，待独立校对）；暂停推进，之后作为主推 candidate 恢复 |
+| `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `npc-persona-behavior-grounding` | PAUSED | — | — | — | — | v2 桌面降级（零脚本），可重开（先填 territory 卡） |
 | `npc-deception-investigability` | PAUSED | — | — | — | — | 同上 |
