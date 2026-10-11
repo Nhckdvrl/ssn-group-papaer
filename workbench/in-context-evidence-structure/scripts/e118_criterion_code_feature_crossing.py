@@ -128,9 +128,14 @@ def main():
     assert valid
     cs=[]
     for ci in range(args.n):
-        key=valid[int(rng.integers(len(valid)))];sig,template=key;v=bins[key]
-        pairs=[(i,j) for i in range(len(v)) for j in range(i+1,len(v)) if not set(v[i].values()).intersection(v[j].values())]
-        assert pairs
+        # Some length bins have >=4 lexical variants but share a concordant
+        # string and cannot instantiate the preregistered eight unique B texts.
+        # Reject only that CPU-unconstructible bin, before drawing any context
+        # or observing model outputs; retain the exact stream when feasible.
+        while True:
+            key=valid[int(rng.integers(len(valid)))];sig,template=key;v=bins[key]
+            pairs=[(i,j) for i in range(len(v)) for j in range(i+1,len(v)) if not set(v[i].values()).intersection(v[j].values())]
+            if pairs:break
         chosen=pairs[int(rng.integers(len(pairs)))];bvars=[v[j] for j in chosen]
         used=set(t for cells in bvars for t in cells.values());rest=[]
         for j in rng.permutation(len(all_by_template[template])):
