@@ -26,3 +26,11 @@
 
 ## 结果（运行后追加）
 待预检/运行；模型identity及原始脚本差异在结果中记录。
+
+### 存储执行校正（无科学评分）
+
+fvcrc10复制后根盘余量过低；只把本任务复制的Qwen3-14B移动到空余131GiB的/dev/shm/ices_models/Qwen3-14B，释放本任务约27.5GiB占用，不碰其它资产/进程。采用RAM模型缓存、独立80GB GPU，源码/权重/指标不变，实际--model覆盖该路径。模型仍官方post-trained revision40c069824f4251a91eefaf281ebe4c544efd3e18。
+
+### 功能方向观测（首个E119评分前冻结）
+
+E118独立校对指出平均J可被两个task不同幅度的同一方向产生。E119额外保存每个context的2×2 causal-code-response matrix（行Food/Service标准，列Food/Service输入响应）；共同方向＋任意行增益的受限解释预测determinant=0。报告signed determinant与signed normalized rotation的context CI、完整matrix；任一行norm≤.001nats时rotation定义0并记录count，全部contexts保留。det≠0可反驳这种受限功能gain解释，但不排除非线性latent等价、不证明独立criterion program。此是现有完整响应的功能区分，未扩条件或GPU实验，observer SHA e453f4b97c9f50cb2d567bbb4f80c3e8e9f9cac2f0eba0ec96ea048b50197407。不能把旧E118 post-hoc方向解释冒充本prospective验证。
