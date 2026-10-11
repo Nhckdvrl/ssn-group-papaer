@@ -515,3 +515,13 @@ POST-HOC residual L63首token64/64跟随donor，43例首词改变、20例aspect�
 **回到问题：** 我们仍在问来源身份怎样和示例推断的规则结合，不能把一次措辞更新失败当作答案，也不应转回更多行为条件。E94的完整来源字段交换有98.4%的私人函数切换阳性，但同context的B示例仍在，地址与程序两解释未区分。下一步在这个冻结接口让donor私人函数与recipient同名B的函数不同，给出完整四输入预测；先检验内容，不先训练出符合想法的读出。DAS/Boundless DAS提示可以用因果目标找分布式对齐，但成功仍须防止只是词身份数据结构或新计算，不能凭方法名称升级贡献。
 
 E91的历史表示形成因果结果、E85的独立均值预测与E99的成功功能链保留；这次接口阴性不撤回它们。C16/C20仍L1，正式状态不变。
+
+## 25. E102：有效来源字段主要是证据地址，内容问题仍需研究
+
+448/448、0未解析、.268 GPU·时，主分叉recipient B63/64[95.31,100]、15/16完整四输入profile；donor函数51.56%、0/16完整，criterion×recipient p48.44%、0/16完整。四个donor c/p世界对相同64receiver没有一次改变最终答案。margin仍有.0017/.0032nats的微小变化，不能叫严格零信息；全成功/零flip经验CI不代表总体确定。
+
+数值修正保留失败运行：原prefix/full几何不一致在48baseline、0interchange处停止；同layout masked-future方法对同parent字段差/self-copy/字段外差均0，活跃ID严格为原prefix，未来词不进入embedding，长度布局信息保留为方法限制。旧E94同世界argmax64/64复现，margin微差完整报告。
+
+**这个结果改变了什么：** E94的98.4%私人函数切换，现在更明确是切换recipient的来源证据，不能把整个Source-field阳性称为学到的规则运输。E101局部词改动和E102Source地址阳性都不能代替规则内容机制；该字段矩阵结束，不追加控制。近邻拥有router/slot、pointer/answer与JIT宽认识，本pilot只澄清多来源ICL中的实际功能对象，不单独成为最终novelty。
+
+我们没有失去研究问题：E91证明历史来源会改变自己证据的可访问表示，E99证明共同标准和私人映射可以组合。接下来应该研究这些内容怎样通过原生记忆参与新输入的判断；strong hybrid模型提供attention KV与recurrent/conv状态的实际分叉，可以让两个记忆来自不同函数world，预先区分保留recipient、执行donor、仅换criterion、仅换私人映射。还未运行或取得分工结论，必须有完整cache运输/原生续写阳性、缓存数值与future-input排除后才解释。

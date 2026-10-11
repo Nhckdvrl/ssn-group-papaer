@@ -1,0 +1,790 @@
+{
+  "n_rows": 448,
+  "n_contexts": 4,
+  "native": {
+    "A": {
+      "n": 64,
+      "argmax_accuracy": {
+        "mean": 0.71875,
+        "ci95": [
+          0.6875,
+          0.75
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.75,
+          0.6875,
+          0.75,
+          0.6875
+        ]
+      }
+    },
+    "B": {
+      "n": 128,
+      "argmax_accuracy": {
+        "mean": 0.984375,
+        "ci95": [
+          0.96875,
+          1.0
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.96875,
+          1.0,
+          1.0,
+          0.96875
+        ]
+      }
+    }
+  },
+  "interchange": {
+    "criterion_flip0_preference_flip0": {
+      "n": 64,
+      "invalid": 0,
+      "profile_predictions_all_distinct": false,
+      "models": {
+        "recipient_A": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "donor_criterion": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "donor_function": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "actual_recipient_A": {
+          "matches": 17,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.265625,
+            "ci95": [
+              0.25,
+              0.296875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.25,
+              0.3125,
+              0.25,
+              0.25
+            ]
+          }
+        },
+        "actual_recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "actual_donor_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        }
+      },
+      "complete_profiles": {
+        "recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "donor_criterion": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "donor_function": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "actual_recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "actual_donor_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        }
+      }
+    },
+    "criterion_flip0_preference_flip1": {
+      "n": 64,
+      "invalid": 0,
+      "profile_predictions_all_distinct": false,
+      "models": {
+        "recipient_A": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "donor_criterion": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "donor_function": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "actual_recipient_A": {
+          "matches": 17,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.265625,
+            "ci95": [
+              0.25,
+              0.296875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.25,
+              0.3125,
+              0.25,
+              0.25
+            ]
+          }
+        },
+        "actual_recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "actual_donor_B": {
+          "matches": 3,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.046875,
+            "ci95": [
+              0.0,
+              0.09375
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0625,
+              0.0,
+              0.0,
+              0.125
+            ]
+          }
+        }
+      },
+      "complete_profiles": {
+        "recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "donor_criterion": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "donor_function": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "actual_donor_B": {
+          "all_four_match": 0,
+          "denominator": 16
+        }
+      }
+    },
+    "criterion_flip1_preference_flip0": {
+      "n": 64,
+      "invalid": 0,
+      "profile_predictions_all_distinct": true,
+      "models": {
+        "recipient_A": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "donor_criterion": {
+          "matches": 31,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.484375,
+            "ci95": [
+              0.453125,
+              0.5
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.5,
+              0.5,
+              0.5,
+              0.4375
+            ]
+          }
+        },
+        "donor_function": {
+          "matches": 33,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.515625,
+            "ci95": [
+              0.5,
+              0.546875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.5,
+              0.5,
+              0.5,
+              0.5625
+            ]
+          }
+        },
+        "actual_recipient_A": {
+          "matches": 17,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.265625,
+            "ci95": [
+              0.25,
+              0.296875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.25,
+              0.3125,
+              0.25,
+              0.25
+            ]
+          }
+        },
+        "actual_recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "actual_donor_B": {
+          "matches": 33,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.515625,
+            "ci95": [
+              0.5,
+              0.546875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.5,
+              0.5,
+              0.5,
+              0.5625
+            ]
+          }
+        }
+      },
+      "complete_profiles": {
+        "recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "donor_criterion": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "donor_function": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "actual_donor_B": {
+          "all_four_match": 0,
+          "denominator": 16
+        }
+      }
+    },
+    "criterion_flip1_preference_flip1": {
+      "n": 64,
+      "invalid": 0,
+      "profile_predictions_all_distinct": false,
+      "models": {
+        "recipient_A": {
+          "matches": 1,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.015625,
+            "ci95": [
+              0.0,
+              0.046875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.0,
+              0.0,
+              0.0,
+              0.0625
+            ]
+          }
+        },
+        "recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "donor_criterion": {
+          "matches": 31,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.484375,
+            "ci95": [
+              0.453125,
+              0.5
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.5,
+              0.5,
+              0.5,
+              0.4375
+            ]
+          }
+        },
+        "donor_function": {
+          "matches": 31,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.484375,
+            "ci95": [
+              0.453125,
+              0.5
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.5,
+              0.5,
+              0.5,
+              0.4375
+            ]
+          }
+        },
+        "actual_recipient_A": {
+          "matches": 17,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.265625,
+            "ci95": [
+              0.25,
+              0.296875
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.25,
+              0.3125,
+              0.25,
+              0.25
+            ]
+          }
+        },
+        "actual_recipient_B": {
+          "matches": 63,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.984375,
+            "ci95": [
+              0.953125,
+              1.0
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              1.0,
+              1.0,
+              1.0,
+              0.9375
+            ]
+          }
+        },
+        "actual_donor_B": {
+          "matches": 29,
+          "denominator": 64,
+          "rate": {
+            "mean": 0.453125,
+            "ci95": [
+              0.40625,
+              0.5
+            ],
+            "n_contexts": 4,
+            "per_context": [
+              0.4375,
+              0.5,
+              0.5,
+              0.375
+            ]
+          }
+        }
+      },
+      "complete_profiles": {
+        "recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "donor_criterion": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "donor_function": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_A": {
+          "all_four_match": 0,
+          "denominator": 16
+        },
+        "actual_recipient_B": {
+          "all_four_match": 15,
+          "denominator": 16
+        },
+        "actual_donor_B": {
+          "all_four_match": 0,
+          "denominator": 16
+        }
+      }
+    }
+  },
+  "donor_rule_dependence": {
+    "criterion": {
+      "answer_flip": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "absolute_margin_change": {
+        "mean": 0.0016578510403633118,
+        "ci95": [
+          0.000628247857093811,
+          0.002840675413608551
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.00047260522842407227,
+          0.0035262703895568848,
+          0.0007838904857635498,
+          0.0018486380577087402
+        ]
+      },
+      "donor_directed_margin_change": {
+        "mean": -0.00030450522899627686,
+        "ci95": [
+          -0.0005659908056259155,
+          -0.00010147690773010254
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          -0.00021010637283325195,
+          -0.00028198957443237305,
+          -4.13060188293457e-05,
+          -0.0006846189498901367
+        ]
+      }
+    },
+    "preference": {
+      "answer_flip": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "absolute_margin_change": {
+        "mean": 0.0031786486506462097,
+        "ci95": [
+          0.0007333904504776001,
+          0.005623906850814819
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          0.0005196928977966309,
+          0.004490196704864502,
+          0.0009470880031585693,
+          0.006757616996765137
+        ]
+      },
+      "donor_directed_margin_change": {
+        "mean": -0.0004597976803779602,
+        "ci95": [
+          -0.000788271427154541,
+          -0.0001313239336013794
+        ],
+        "n_contexts": 4,
+        "per_context": [
+          -0.0002027750015258789,
+          -0.0009753704071044922,
+          -5.987286567687988e-05,
+          -0.0006011724472045898
+        ]
+      }
+    }
+  },
+  "e94_replay": {
+    "n": 64,
+    "max_margin_diff_nats": 0.001495361328125,
+    "mean_margin_diff_nats": 0.00035312771797180176,
+    "same_argmax": 64
+  }
+}

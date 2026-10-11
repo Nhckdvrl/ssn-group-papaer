@@ -1,6 +1,6 @@
 # E102：来源字段交换是在重定位证据，还是携带学到的规则？（2026-10-11）
 
-- **状态：** RUNNING；静态448行、token与四profile核对通过；源码/设计已提交0c8d7a25后启动。
+- **状态：** DONE-PILOT；448/448、0未解析；有效字段交换跟随recipient B，不运输donor规则。
 - **类型：** PILOT；已有功能接口的机制分叉，不继续扩大行为任务。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 输入前的来源条件信号使模型改用B函数时，函数来自被移植状态，还是recipient中B的示例？
@@ -64,3 +64,15 @@ donor：名字、所有review、A labels、位置均与recipient相同；仅改�
 prefix批次无leading padding、full四query批次有不同leading padding且chunk长度不同，两路径几何不一致。尚未仅凭代码检查把误差具体归因为某个kernel。修正为保留full batch的tensor长度和leading padding，在模型接收之前将字段后全部token ID替为pad且mask=0；所有active IDs严格等于截断prefix，未来word从未进入embedding。donor按同一四query的长度/位置布局计算，携带长度元数据，不携带输入词或答案；这项方法限制明确保留。来源/规则变量、层、精度与所有预测不变。
 
 同parent masked-future字段与full字段仍须≤.001、self-copy≤.001；若不过，继续诊断相同实现，不放宽门槛。旧E94的同世界margin差照常报告，不能默默当数值一致。此执行修正在任何主干预结果前冻结。
+
+## 完整结果与回到主问题
+
+448/448、4固定context、0未解析，.26757 GPU·时；纠正源码SHA506c49b1…与运行一致。self-copy、字段外修改、matched-geometry prefix/full字段差全部0。旧E94同世界交换64/64 argmax相同，最大margin差.001495、平均.000353nats；不将这项跨不同原padding路径的微差隐瞒为精确logit复现。
+
+Native B128行准确率98.44%[96.88,100]；native A64行71.88%[68.75,75]，含混合/同向输入，不将不同分母混为原E94其它子集。主c-flip/p-unchanged交换：recipient B函数63/64＝98.44%[95.31,100]，完整15/16 quartet；donor完整函数33/64＝51.56%、0/16完整，donor criterion×recipient p为31/64、0/16完整。所有四个donor世界对同一64receiver，**64/64最终答案不随donor规则变化**；同世界B函数阳性仍为63/64。
+
+改变donor c的mean absolute margin变化（除2）.001658[.000628,.002841]nats，私人p为.003179[.000733,.005624]；不是严格logit无效应，也未形成函数运输。n4 bootstrap仅探索，0次flip的经验CI退化不证明总体概率0。详细全部条件/四预测与actual native B参照见`analysis.json`，完整分母/gold/源码校验见`completeness_audit.json`。
+
+**认识更新：** 这个已验证的来源接口主要决定读取recipient哪组证据；成功复制整个字段不足以证明复制了学到的函数。它允许B源私人映射的强切换，却不携带可跨证据world执行的donor criterion或private function。这里只限制固定layer16/输入前字段，不能说完整网络没有规则信息、也不能说所有task vectors都是地址。方法与“pointer≠answer”的宽认识有已有所有权；本结果的作用是清理既有机制阳性的具体解释。
+
+按跑前分支不再加此字段的层/alpha/词表控制。下一步回到**规则内容在多源历史中如何形成、如何被读取**；E91已经有A缓存历史依赖，而本强hybrid模型同时有显式attention KV与压缩recurrent记忆，可用有区分力的完整函数反事实检验它们是否提供不同信息。先查最强方法和numerical cache接口，先写卡，不把结构命名预设为两种信息的分工。C16/C20保持L1，无正式状态变更；root审计不充当独立L3确认。

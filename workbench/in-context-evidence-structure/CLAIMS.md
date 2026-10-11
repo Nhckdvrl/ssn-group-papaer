@@ -179,3 +179,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 ### E101：局部规则断言不是已验证的可迁移状态（无主张升级）
 
 [E101](experiments/E101-native-criterion-commitment-interchange.md)、`results/e101/merged/{analysis,completeness_audit,word_effect_posthoc}.json`：512/512、0未知，511/512最终判断不变。L63 residual首token64/64跟随donor，POST-HOC 20/64 aspect类别改变，但最终仅一例新错误。操作确实生效；此首次局部断言接口没有产生criterion/函数/属性/答案的完整运输profile。不能从已有78.125% event匹配声称运输，不能推广为标准不存在。条件性词语clamp不执行，C16/C20不升降，原结果保留。
+
+### E102：来源字段私人函数切换主要重定位recipient证据（有界探索）
+
+[E102](experiments/E102-source-pointer-versus-program.md)、`results/e102/qwen35_discovery/{analysis,run,completeness_audit}.json`：448/448、0未解析；主分叉recipient B63/64、15/16完整profile，donor函数0/16完整；四donor c/p世界在64receiver上0答案flip，微小margin变化保留。数值self-copy/字段外/matched-prefix差0；失败数值运行保留。限制是layer16、输入前整个字段、4原开发context；支持地址型功能作用，不证明全网络无规则表示。无C16/C20升级，旧E94结果澄清而非撤回。
