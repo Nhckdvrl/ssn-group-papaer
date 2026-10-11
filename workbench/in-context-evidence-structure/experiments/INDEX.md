@@ -106,4 +106,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E96](E96-criterion-scope-and-functional-mediation.md) | 标准推断的Source范围与仅criterion的功能传递 | DONE-PILOT；A/B/all标准各16/16；Full+self mixed53.1→93.75%，Own+self/inverse按cue87.5%，偏好保留；不用Scope单独解释 |
 | [E97](E97-criterion-inference-input-and-answer-code.md) | 标准推断与私人判断的差别是否来自测试输入或答案形式 | DONE-PILOT；160/160标准问题正确，私人偏好无影响；停止格式控制，转内部criterion/私人函数运输 |
 | [E98](E98-criterion-trajectory-without-teacher-cache.md) | 内部载体运输共同标准还是donor私人函数，teacher地址缺席时能否组合 | RUNNING；固定64层单位置轨迹的112行阳性，未启动后续运输 |
-| [E99](E99-independent-factor-interface-confirmation.md) | 标准推断与私人判断功能链能否在未选择的新材料成立 | PLANNED；n8布局平衡，576行独立确认，与E98成败无依赖 |
+| [E99](E99-independent-factor-interface-confirmation.md) | 标准推断与私人判断功能链能否在未选择的新材料成立 | RUNNING；n8布局平衡，576行固定四分片，已启动两片，其余待资产就绪 |

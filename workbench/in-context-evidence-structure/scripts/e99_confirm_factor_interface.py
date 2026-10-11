@@ -409,7 +409,9 @@ def main():
     model.requires_grad_(False)
     assert not loading.get('missing_keys'), loading
     assert all(any(k in x for k in ('visual.', 'vision_', 'mtp.')) for x in loading.get('unexpected_keys', [])), loading
-    write_json(out/'loading_info.json', loading)
+    # Transformers may return sets in diagnostic metadata. This conversion is
+    # confined to the loader report; scientific records retain strict JSON types.
+    write_json(out/'loading_info.json', json.loads(json.dumps(loading, default=str)))
     print('Loaded', flush=True)
     rows, batch_manifest = [], []
     continued = 0
