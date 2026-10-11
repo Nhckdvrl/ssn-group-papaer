@@ -112,5 +112,6 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E102](E102-source-pointer-versus-program.md) | 有效来源字段交换携带donor规则，还是指向recipient证据 | DONE-PILOT；448行，recipient B63/64、15/16完整profile；donor规则变化0答案flip，字段主要是地址 |
 | [E103](E103-inferred-rule-memory-crossing.md) | 推断的criterion/private映射经哪种原生历史记忆参与新输入 | DONE-PILOT；256记录/128 unique、0未知；KV整函数模型95.3%，未发现C/P双通道分工 |
 | [E104](E104-criterion-policy-state-interface.md) | 标准控制状态能否与新Actor的私人证据组合 | DONE-PILOT；352行，opposite mixed65.6% vs50%，私人映射保留；部分内部运输，后续推断矩阵未启动 |
-| [E105](E105-inferred-criterion-memory-use.md) | 来源分组推断前后的内部记忆能否与新Actor私人映射组合 | RUNNING；冻结n4、16标准轨迹、608机制行，无层/Goal搜索 |
-| [E106](E106-inherited-rule-input-mediation.md) | 历史namespace对A标签证据的作用是否经过A输入编码 | RUNNING；16新ctx、固定全评论轨迹与仅label消息路径，镜像中介干预 |
+| [E105](E105-inferred-criterion-memory-use.md) | 来源分组推断前后的内部记忆能否与新Actor私人映射组合 | DONE-PILOT；16标准正确，608机制行；after有部分定向作用但EOS，转原生续写测同记忆 |
+| [E106](E106-inherited-rule-input-mediation.md) | 历史namespace对A标签证据的作用是否经过A输入编码 | DONE-CONFIRMATION；16→32新ctx，label KV减少rule幅度.429[.250,.632]，评论内容中介弱 |
+| [E107](E107-criterion-memory-native-continuation.md) | 同记忆交换后的原生推理是否能执行criterion×Owner私人映射 | RUNNING；4独立固定context分片，288自由续写，所有EOS/截断保留 |

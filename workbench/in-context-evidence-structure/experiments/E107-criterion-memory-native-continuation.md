@@ -1,6 +1,6 @@
 # E107：交换后的共同标准记忆，能否经原生推理约束私人判断？（2026-10-11）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** PILOT / 内部memory interchange的自由续写
 - **对应：** I04、C16/C20、P17。
 - **问题：** E105直接结束thinking并读取Answer logits的接口，是否漏掉了后续计算对criterion信息的使用？
@@ -49,3 +49,13 @@ BF16/SDPA原生生成，同checkpoint/openslime+vendor，greedy，1024 token；�
 ## 结果（运行后追加）
 
 待运行。
+
+### 解读结果前的配置补充：私人偏好必须独立于teacher状态
+
+原opposite-p设计有明确替代解释：teacher三人中C的完整函数为−p_T*x[c_T]，它恰好等于所有opposite Owner的目标。两个p方向不能排除复制C整体函数，故原卡“排除整teacher函数”的措辞不足。当前仅看运行进度/unknown，未查看Rec正确率或选择world。原288结果保留。
+
+补充全部same-p condition：在每个固定teacher c_T/p_T/阶段，另用p_R=p_T的Own KV，与原p_R=−p_T比较。teacher Rec+conv的真实tensor hash必须跨两次运行相同，Own KV必须不同。所有ctx/四输入不筛；新same-p三阶段共192请求，另每part一条self-copy校对（额外4，不进主要分母）。合起来主要480＝原288＋same192，teacher p与Own p完整2×2，额外self controls4。
+
+在原GPU同checkpoint/软件/precision上顺序跑supplement以避免硬件与private关系共线，比较原/补的teacher tensor指纹。若固定teacher而Own p翻转，完整函数也按Own p翻转，才支持Own证据真实参与；仍可能通过选择/校准teacher整函数组合，不称独立criterion子空间。预先补读数：每ctx/teacher c,pT下Own p两world都正确、四query函数均正确，以及混合输入c两world都正确；全部unknown保留。
+
+代码scripts/e107_same_private.py另冻结，原正在运行代码不变。same补充后必须整体评价，不只用opposite成功作新主张。总预算增至≤6GPU·时；不增加Goal、layer、cue、alpha。此补充服务于原问题中“保留自己的私人映射”，不是完美机制的新关卡。

@@ -191,3 +191,9 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 ### E104：criterion的部分内部控制，不是已确认原生程序
 
 [E104](experiments/E104-criterion-policy-state-interface.md)、`results/e104/qwen35_positive/{analysis,paired_contrasts,run,completeness_audit}.json`：352、0未知；cross-Actor仅Rec从显式cue搬运，opposite mixed65.63% vs50%，+15.63[6.25,25]pp，concordantOwner p32/32保持、完整profile6/16。存在部分criterion信息作用，actor地址/整teacher函数不够解释；但未达到稳健接口，标准推断Goal矩阵未运行，不能叫native shared criterion program。正式主张不升级。
+
+### E105 / E106：有限标准信息与已确认的历史label证据作用（C16/C20仍L1）
+
+[E105](experiments/E105-inferred-criterion-memory-use.md)、results/e105/qwen35_discovery/{analysis,profile_audit,completeness_audit}.json：608/608，标准16/16；opposite mixed37.5→56.25%、+18.75[3.125,40.625]pp，criterion margin+.442[.402,.482]。after13/128、explicit25/128 EOS，不能称稳定criterion程序。E107同材料/同交换的原生自由续写正在运行，原读数不改。
+
+[E106](experiments/E106-inherited-rule-input-mediation.md)、results/e106/qwen3_confirmation/{analysis,run,completeness_audit}.json：32未选择新context、4608评分。label KV替换使B-rule幅度减少.429[.250,.632]nats，评论内容中介仅.0059[−.0251,.0447]，mirror−.0020[−.0127,.0089]；完整A缓存重建精确，36层干预消费与self路径校对通过。限定评论内容而非所有pre-label位置，不宣称无输入端路由或已有完整prototype算法。正式主张暂不升级，没有独立L3校对。

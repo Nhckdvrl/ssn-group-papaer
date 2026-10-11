@@ -541,3 +541,30 @@ E91的历史表示形成因果结果、E85的独立均值预测与E99的成功�
 这支持可与Owner私人证据组合的有限criterion信息，但没有稳定完成内部接口，更不能证明标准Goal原生已经制造了可复用程序。因此条件性的source标准推断前/后和report/commit矩阵没有启动。不把84%总体准确率遮住baseline75%，不按零/满成功经验CI外推。
 
 **阶段性认识：** E102排除了Source-field阳性等于donor程序运输；E103不支持示例c/p天然分属两个memory、整函数主要KV；E104显示显式criterion确可部分通过recurrence约束另一Actor私人KV。这些都是机制层证据，仍未说明source-derived criterion怎样形成和被使用。现有ICL检索/Task representation/Hybrid memory框架已解释其宽结构，不能仅将组合结果命名成新理论。下一项应从E91的内容形成链及这些功能约束出发，提出具体竞争预测；不继续Source字段或cache层的局部矩阵。
+
+## 28. E105–E107：回到信息的形成与使用，不再把接口阳性当规则本体
+
+**新确认的结论：** query全程不读B时，自己的A标签仍含显著的B规则依赖。E106在16探索→32新context确认中，仅将far namespace下的A label K/V移入shared，B-rule幅度从.606降到.177，减少.429[.250,.632]nats；完整A缓存重建为.132。把far世界的A评论内容层轨迹移入shared、仅将重算后的A label消息送给query，减少仅.0059[−.0251,.0447]；mirror亦接近零。它明确区分了一个功能形成路径，而非多画attention图。
+
+但不要超过证据：Comment之后的Annotator/forerunner还可能形成输入—来源联合信息；评论内容中介弱不是所有输入端计算无效。正/负B作用都保留、primary是预先定义的context rule幅度；不是“B一律拉向错误函数”，也不是应用涨分。E91源信息历史继承、E85有限均值预测、E99强模型功能链均保留，不以新实验重新贬低它们。
+
+**内部共同标准目前仍有限：** E105完整4新context、16原生标准推断16/16，608机制输入全保留。after的opposite-p mixed56.25%（before37.5%，+18.75[3.125,40.625]点）有定向margin+.442[.402,.482]nats，但after13/128、explicit25/128直接EOS。平衡有效Own baseline是50%，不得将低before作唯一参照而宣布稳定程序。完整Owner cue100%只说明全内容消费成功，未证明Rec transport完整。
+
+这促成一个有限的方法更新：E107保持同prefix、同Rec/conv交换、同teacher轨迹和Own KV，只移除人为关闭thinking/Answer注入，让模型自由完成原生推理。4固定context分片/288请求全部opposite p，全部截断按实际混合cache续写，不能从纯Owner raw历史重放而抹掉干预。它是内部干预后的算法观察，不是换prompt找更高分，也不是要求强模型继续错。现正运行，未有最终结论。
+
+### 主问题与现有解释的关系
+
+自然问题仍是：**多来源示例如何形成、选择并约束当前来源的判断？其中哪些信息可以共享，哪些必须保留私人映射？** 它在强模型答对后仍成立。不要把它缩成“某一Rec/字段能否搬运一个词”，也不预设一个无检索的abstract program。
+
+| 已有认识 / ownership | ICES已确定的具体增量与未决点 |
+|---|---|
+| Wang/Cho：input-label merge、label anchors、语义去噪 | E91/E106检验的是其它Source学习到的规则怎样改变A自己可被读取的证据，A原文/输出词不变、B query访问为0；不是首次发现label存输入信息 |
+| CTA / How Few-Shot Examples Add Up：历史上下文化、QK/V分工、context权重 | Broad framework可容纳继承，但不能仅凭它说source条件化后的Task状态只代表本Source；我们确认并定位了output namespace对历史rule依赖的作用，尚未得到更完整的prototype/关系编码算法 |
+| Feng / Mixing / mental spaces：binding ID、地址/指针/答案、router/slot | E102确立的Source-field阳性主要是recipient地址；从此接口不能推出新规则可复用。来源识别与规则内容的来源仍是两个对象 |
+| JIT / Lepori / DAS：可报告、可读出与功能任务状态不同 | E105/E107不是首次区分这些概念；其具体对象是从相反私人label的来源分组推断共同criterion，与新Actor Own-p的组合，成功仍可能是criterion-conditioned retrieval或带私人函数的校准 |
+| Afendulev：hybrid fact/control memory、state-swap | 方法和宽分工已被占据；E103没有c/p分通道，E105不能称首次发现Rec程序。是否主动推断改变任务信息的可用角色仍待E107及新材料回答 |
+| Yang/Cho LTV：label-space依赖、任务向量组合与OV消费者 | 不能把E56c词表失败或一次完整函数切换称新理论；当前要检验的是原生来自demonstrations的共享信息及其实际消费，不训练出新任务后反称模型原本完整会做 |
+
+**当前的计算解释骨架（有界）：** Source身份可以改变原生检索地址，但该地址访问的是已经由整个上下文形成的Task证据。输出编码改变的不只是直接复制哪个词，还改变自己标签处继承多少其它Source规则。与此同时，共同标准与私人映射的合法组合不能从Source地址或可报告criterion直接推出，必须用新Input、独立私人p与内部反事实测它实际约束了什么。
+
+这比旧“所有证据按输出存放/默认完全不用Source”更准确，有独立因果增量；尚不是一个能逐项预测新规则、布局与模型的最终计算理论。Novelty应落在**形成与来源条件化如何协作、有效共享的功能内容**，而不是重新命名已有组件。E107回来后先把这两个过程综合，决定最小的新预测；不要默认继续字段或memory scope搜索。

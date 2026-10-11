@@ -1,6 +1,6 @@
 # E106：别人规则改变自己的证据，是经输入解释还是标签端上下文化？（2026-10-11）
 
-- **状态：** RUNNING
+- **状态：** DONE-CONFIRMATION
 - **类型：** PILOT / 历史形成的因果中介
 - **对应：** I04、C16/C20、P17。
 - **问题：** E91已确认标签namespace会改变A自己的证据；这一效应是否主要经过A评论的上下文编码，再进入A标签位置？
@@ -61,3 +61,11 @@ shared gate的B-rule幅度.809[.541,1.107]nats，far gate .097[.067,.129]；仅�
 更新：当前评论内容编码中介不能解释label namespace效应，label端或其它非评论形成路径是强解释。它不等于“所有输入侧计算无影响”，尤其forerunner/Source/格式位置未被该评论内容干预覆盖。不追加位置/头矩阵。
 
 **有限独立确认：** 同源脚本SHA668a455d…，全部原条件/读数不变；32未选择新context、seed106101、每类4 query。确认的是label evidence的历史依赖与评论内容中介弱的相对区别，不要求完美归零或追更高准确率。下一轮若确认，就把这一结果与E105的共享标准内容一起综合，不能默认再扩scope。结果目录results/e106/qwen3_confirmation/。预算总≤1GPU·时。
+
+### 独立确认结果：标签证据的历史依赖确认，评论中介仍弱
+
+32新context、4608评分（每类4query），全部父条件保留，无scope/参数改变；脚本SHA相同。shared gate .606[.448,.793]nats，far gate .132[.095,.177]。只换A label KV为.177[.120,.245]，独立减少.429[.250,.632]。评论内容中介后.600，减少.0059[−.0251,.0447]；镜像差−.0020[−.0127,.0089]。完整A缓存阳性精确重建far gate，36层各130次真实轨迹干预，self cache精确同，numeric max0。.07123 GPU·时，探索＋确认共.10792。
+
+研究更新：在query已完全不读B时，A标签位置仍承担很大一部分B规则作用，换A评论内容编码不能重建该作用。更强解释落在标签形成或非评论中介；当前Comment→Annotator→Label的结构中Source/forerunner晚于评论，故不能将结论夸大为所有pre-label计算无效。保留该明确边界，不追加细字段/head/位置控制。自己的token来源不能替代规则信息来源，这个问题继续成立；尚没有完整label-conditioned prototype算法。C16/C20仍L1，未取得独立L3校对。
+
+results/e106/qwen3_confirmation/{analysis,run,completeness_audit}.json。raw/contexts本地。

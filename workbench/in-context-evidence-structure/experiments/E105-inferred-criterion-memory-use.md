@@ -1,6 +1,6 @@
 # E105：共同标准推断前后，内部信息能否约束另一人的私人判断？（2026-10-11）
 
-- **状态：** RUNNING
+- **状态：** DONE-PILOT
 - **类型：** PILOT / 原生内部状态的功能反事实
 - **对应：** I04、C16/C20（仍L1）、P17。
 - **问题：** 从带相反私人标签的来源分组中主动推断共同criterion，是否使内部记忆获得可与另一个Actor私人证据组合的功能？
@@ -52,4 +52,10 @@ before/after是完整主动推断历史的功能比较，新增问题、CoT、�
 
 ## 结果（跑后追加）
 
-待运行。
+608/608、608独立state-query输入；另16标准推断全正确、9截断全部续完。FP32机制.28037 GPU·时，BF16教师生成耗时见generation_run。全Owner cue64/64；full teacher before62/64，after52/64且12次EOS。Rec before87/128、after99/128、explicit93/128，unknown分别17/13/25，均为EOS token248046，不是大小写/空格parser问题。
+
+关键opposite mixed：before12/32=37.5%，after18/32=56.25%，配对+18.75[3.125,40.625]pp；criterion-directed margin+0.442[0.402,0.482]nats。after仅比可输出label的平衡Own基线50%高6.25点，不能只报before→after增益。explicit14/32=43.75%，主要接口阳性不稳定。self-copy0，首context16Owner cue split/full差完整见numeric_audit，48linear层消费恢复state均通过，source cache/KV不变。
+
+更新：主动标准推断历史有有限定向功能作用，尚未成为稳定标准程序。before/after含Goal/CoT/最终词/长度同时改变；不把正margin叫独立abstract representation。直接关闭thinking后多次EOS说明消费者读数受限制，因此不把它用于否定原生后续推理。E107在同4context、相同memory交换上允许自由thinking续写，只跑最有分叉的opposite-p；不再拓Goal/层/身份矩阵。E105原score和全部unknown保留，C16/C20仍L1。
+
+结果：results/e105/qwen35_discovery/{analysis,profile_audit,completeness_audit,numeric_audit,carry_audit,run}.json；教师generation_analysis/run亦保留，raw tokens本地。

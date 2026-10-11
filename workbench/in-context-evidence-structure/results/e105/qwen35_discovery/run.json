@@ -1,0 +1,32 @@
+{
+  "args": {
+    "phase": "mechanics",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "out": "results/e105/qwen35_discovery",
+    "n": 4,
+    "seed": 105001,
+    "teachers": "results/e105/generation/teachers.jsonl",
+    "preflight_only": false
+  },
+  "n_rows": 608,
+  "source_sha256": "ef128641e3100b5dc7915f03745cc7257f877d2437a7dda8cbe3d57e4e7c4df0",
+  "teacher_file_sha256": "95529b1f564ba2edc97857ba8d7144ed0cb6bac1851acc76dac9d28533567de9",
+  "precision": "float32",
+  "attention": "eager",
+  "training": false,
+  "torch": "2.9.1+cu129",
+  "transformers": "5.12.1",
+  "python": "3.12.12",
+  "errors": {
+    "self_copy_max_vocab_nats": 0.0,
+    "split_full_max_vocab_nats": 0.012394905090332031,
+    "split_full_max_margin_nats": 0.003977775573730469,
+    "split_full_argmax_disagreement": 0,
+    "split_full_checked": 16,
+    "untouched_KV_exact": true,
+    "pristine_cache_exact": true
+  },
+  "elapsed_seconds": 504.6655604839325,
+  "gpu_hours": 0.28036975622177124,
+  "git_head": "ecae75f92b7ba99cf003c5117f2456ea5be3531c"
+}

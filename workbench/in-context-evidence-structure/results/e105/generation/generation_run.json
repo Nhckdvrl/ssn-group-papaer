@@ -1,0 +1,18 @@
+{
+  "args": {
+    "phase": "generate",
+    "model": "/tmp/ices_models/Qwen3.8-27B",
+    "out": "results/e105/generation",
+    "n": 4,
+    "seed": 105001,
+    "teachers": "results/e105/generation/teachers.jsonl",
+    "preflight_only": false
+  },
+  "precision": "bf16",
+  "attention": "sdpa",
+  "elapsed_seconds": 347.1567623615265,
+  "gpu_hours": 0.09643243418799506,
+  "torch": "2.9.1+cu129",
+  "transformers": "5.12.1",
+  "source_sha256": "ef128641e3100b5dc7915f03745cc7257f877d2437a7dda8cbe3d57e4e7c4df0"
+}
