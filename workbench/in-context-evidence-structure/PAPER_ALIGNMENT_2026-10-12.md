@@ -87,3 +87,6 @@ C22/C23依据SST真实benchmark＋controlled餐馆、两家族以上n32/§4/§5�
 与Cho/CTA/CoSToM学习的链已经具体落到：自然问题→错误推断的反事实测量→冻结形成子图预测→原生操作/受限恢复→固定词关联→正常使用→双方面及真实文本的构造性政策预测。英文主文三认识、完整技术附录、四checkpoint/新材料确认、50,848项独立复算均具备，量不是主张升级或novelty的自动判据。核心增量是合法多Source监督的功能来源与output-dependent形成，而非只定位某个token、首次上下文化或完美修复。当前未识别整个模型唯一算法；这不应自动成为发表具体机制认识的新门槛。
 
 最近全文回看：Feng§3–5/G、Mixing§3反事实接口，已补对应定位与论文卡。最新nearest corpus得到TROVE/SelectiveInduction/检索记忆等词汇近邻，web精确关键词主要召回不相关provenance/旧induction，不以未召回证明first。最强机制近邻继续以实际正文CTA/Cho/AddUp/Feng/Mixing/TRTL为参照。正式候选状态由人判断；本轮最后的独立整篇审阅专门检查新主文三认识与已有证据是否对齐，不自动派生新实验矩阵。
+
+
+**最后整篇核对已完成：** [E123 paper-critical审阅](results/e123/manuscript_claim_audit_2026-10-12.md)核原三认识及新增304项数字、最强近邻所有权，当前有界措辞与证据适配，无必须追加GPU实验的实质缺项；两处namespace总述/均值排序语言已修。主文SHA3d2cbd06…/附录f8aa1d89…与审阅snapshot一致。该结论是证据适配，不是接收预测、唯一机制或所有未来文献无重叠的保证。
