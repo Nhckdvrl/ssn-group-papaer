@@ -20,7 +20,7 @@
 | [VIScore](https://arxiv.org/abs/2608.11174), Wu et al. | 2026-08 arXiv，B | 将 encoder/predictor/planner 的诊断相结合，比纯表示指标更关联成功率 | 中高：想主张一个新诊断量，须先对齐其强测量 |
 | [Latent Geometry Beyond Search](https://arxiv.org/abs/2605.08732), Nguyen et al. | 2026-05 arXiv，B | Frozen LeWM latent 上 GC-IDM，七/八设置追平或超过 CEM，单步算力大幅下降 | 中：同 latent 的 strong controller 很好，但不能代表同一 metric 有效 |
 | [Surprising Difficulty of Search in MBRL](https://proceedings.mlr.press/v306/chang26a.html), Chang et al. | **ICML 2026**，B | 准确模型下搜索仍可能伤害性能；价值高估比单纯预测误差更关键 | 中：CEM 失败不可一律归咎于 latent，强竞争解释 |
-| [Perception for Action / Predictive but Not Plannable](https://arxiv.org/abs/2605.07278) | 2026 arXiv / 工作台已有定位，B | 增加动作/可达性相关目标，检验表征与决策适配 | 中：方法基线/行动相关误差 |
+| [Predictive but Not Plannable / RC-aux](https://arxiv.org/abs/2605.07278) | 2026 arXiv / 工作台已有定位，B | 以多时域预测、预算条件的可达性辅助目标检验表征与规划适配 | 中：方法基线/行动相关误差 |
 | [Imperfect World Models are Exploitable](https://arxiv.org/abs/2605.15960), Bhamidipaty et al. | 2026 arXiv，B | 分析错误世界模型引发的策略排序逆转及安全规划边界 | 中：为 action-ranking 可靠性提供理论定位 |
 
 ## 1. CTWM（最强直接邻近，A）
@@ -111,7 +111,7 @@
 
 ### 其他机制/边界参照
 
-- [Perception for Action / Predictive but Not Plannable](https://arxiv.org/abs/2605.07278)：action-sensitive / reachability 的损失塑形。
+- [Predictive but Not Plannable / RC-aux](https://arxiv.org/abs/2605.07278)：action-sensitive / reachability 的损失塑形。
 - [Imperfect World Models are Exploitable](https://arxiv.org/abs/2605.15960)：理论上候选政策之间的预测选择偏好可能被真环境翻转；I16 的候选排序分解更接近此处的决策视角。
 - [Impact of Connectivity on Laplacian Representations in RL](https://proceedings.mlr.press/v306/giorgi26a.html)（ICML 2026）：图连通性影响谱表征和价值近似。慢特征恢复长程目标的结果应对数据连通结构保持谨慎。
 - [The Evaluation Protocol Determines the Result](https://arxiv.org/abs/2608.10145)：独立 LeWM 复现说明评测约定大幅影响成功率，必须审计 action chunks / normalization / goal selection。

@@ -69,7 +69,7 @@ I16 也已有 latent dim 截断失败的干预，这意味着单独锁定 D 与�
 - 算这些 lag-pairs 的 full latent L2 **中位数**；
 - 把最后一个可用 lag 的中位数当 plateau，然后定义第一个达到它 90% 的 lag 为 mh。
 
-问题：由于每个 lag 的可抽样 episode 群随 h 变化，长轨迹可能只来自特殊策略/布局/速度。所谓 plateau 是**最长可测 lag 的数值**，而不是独立 iid/random-pair 远距统计或数学极限。在不同 task、训练 seed、trajectory length distribution 下，它可能同时受样本构成和固定 lag 网格影响。mh=10 对 TwentyRoom 之类场景只是经验诊断值，不是“L2 在 10 步以后毫无排序信息”的定理。
+问题：由于每个 lag 的可抽样 episode 群随 h 变化，长轨迹可能只来自特殊策略/布局/速度。所谓 plateau 是**最长可测 lag 的数值**，而不是独立 iid/random-pair 远距统计或数学极限。在不同 task、训练 seed、trajectory length distribution 下，它可能同时受样本构成和固定 lag 网格影响。mh=10 对 TwoRoom 之类场景只是经验诊断值，不是“L2 在 10 步以后毫无排序信息”的定理。
 
 [OPEN] 首先用**同一批足够长的 trajectory**在所有 lag 上做 matched curve；提供 median + conditional Spearman/Kendall vs true task progress，并把 “last lag plateau” 和 independent-pair reference 分开。若 matched curve 改变结论，过去的机制说明要降级。
 
@@ -116,11 +116,24 @@ Weyl 计数或拉普拉斯谱有严格的假设（空间域、边界条件、特
 - 未证 C：决策相关谱权重或排序裕量是怎样的真实中介。
 没有 C 就不要称“机制闭环”。
 
-### 3.3 R²~0.89 极可能放大了对 D_eff 的解释力度
+### 3.3 D_eff 的相关性**比纯训练集内拟合更强一些，但仍不是因果**（2026-10-11 新的离线重算）
 
-[deff_collapse.py](../scaling/deff_collapse.py) 汇总 26 个 TwoRoom run，基于同一系列 encoder width + λ 配方，对 success ~ log10(D_eff) 拟合一条**训练样本内**直线；off50 R² = .886，Spearman −.94。这个相关性强且值得解释，但 26 个 model checkpoint 不是 26 个独立环境/数据集/架构家族；同源数据和相邻 λ/size 形成簇。
+[deff_collapse.py](../scaling/deff_collapse.py) 汇总 26 个 TwoRoom run，基于同一系列 encoder width + λ 配方，对 success ~ log10(D_eff) 拟合直线。原报告 off50 R² = .886，Spearman −.94。源码先排除 λ<.005 的坍缩 run，故统计结论对 non-collapsed 系列成立。
 
-代码还把 λ < .005 的坍缩 run 在回归前排除。这个排除有明确表示非正常理由，但也让曲线适用范围局限于特定 non-collapsed family。当前 R² 不是一个可部署的、跨任务的预测准确率。应做 **leave-one-size-out、leave-one-lambda-out** 以及 **held-out regulator/model-family** 验证，再考虑诊断贡献。
+本次**独立读取已提交的** [E23_deff_collapse.json](../results/E23_deff_collapse.json)，没有重新跑 GPU，按如下方法重新分析：每次将一个 size（或一个 λ 值）的**所有 run** 完整留出，只在其余组拟合带截距的一元 OLS success = a+b·log10(D_eff)，对留出组每个 run 预测；拼接所有 out-of-fold predictions，按全部 26 个 run 的共同均值计算 1−SSE/SST 的 pooled out-of-fold R²。没有用测试组估计系数，也没有在每组内选样本。
+
+| Goal offset | 原 in-sample R² | 留出整个模型尺寸 R² | 留出整个 λ 组 R² |
+|---|---:|---:|---:|
+| 25 | 0.832 | **0.783** | **0.668** |
+| 50 | 0.886 | **0.805** | **0.766** |
+| 75 | 0.850 | **0.763** | **0.668** |
+
+**新的判断**：这个 D_eff 线性关系在所研究训练家族内并非完全由训练集内拟合形成；即使留出单个完整 size/λ，它仍有实质的预测力。**不能**轻率当作“相关性不足”而丢弃此线索。
+
+**仍未回答的关键问题**：全体训练/测试仍来自同一个 TwoRoom 任务、同一种 SIGReg-based 模型家族，而且同一独立 episode 分布、多数规格的 seed 不多；训练后的 D_eff 可以是“造成坏排序的中介”，也可以仅是“SIGReg optimization 的可见 proxy”，二者在此数据里不可区分。此 CV 没有重训 model、没有新任务、新 regularizer、不跨部署域；它不是因果检验，也不是为 R² 计算的置信区间。
+
+下一个高信息量动作不应是继续提升 R²，而是问：**当 D_eff 变化但真实候选动作的任务相关 cost ranking 不变时，成功是否也不变？当 ranking 已改变却不依赖 D_eff 时，究竟谁解释行动效果？** 这直接指向 [下一步 D1](NEXT_DECISIONS_2026-10-11.md)。
+
 
 ## 4. 统计与评测审计：目前的 CI 不够支持“论文级斜率”
 

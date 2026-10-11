@@ -26,6 +26,10 @@
 
 **暂停时未完成：** TwoRoom L 种子 2（53.5k 步）；E24 VICReg 推广检验（[卡](experiments/E24-vicreg-generality.md)，刚启动无结果）。恢复步骤见 [日志 22:30 节](logs/2026-10-07.md)。大文件（检查点、数据）在 `/tmp/latent-wm-runs/scaling/`（fvcrc20）与 `/home/xiang/.cache/latent-wm-results/scaling/`（共享盘）。
 
+## 2026-10-11：I16 科学复核与文献知识库（只读，不恢复实验）
+
+本次 I16 复核新增 [workbench 内知识库](knowledge/README.md)，包括 [强相关论文及 novelty 定位](knowledge/PAPER_NOTES_2026-10-11.md)、[代码、测量、统计与理论审计](knowledge/I16_SCIENTIFIC_AUDIT_2026-10-11.md)、[后续可区分竞争解释的实验决策](knowledge/NEXT_DECISIONS_2026-10-11.md)。原 I16 状态、实验暂停决定、CLAIMS 科学主张等级均未改动；**下一步仍须人决定**。
+
 ## 入口
 
 | 要做什么 | 去哪里 |
