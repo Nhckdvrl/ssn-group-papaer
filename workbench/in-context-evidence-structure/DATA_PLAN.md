@@ -15,9 +15,13 @@
 | 明确单方面餐厅情绪，私人yes/no | 固定输出身份时关联内容传递、namespace形成、native读取 | E111/E113/E114/E115/E119；Qwen/Mistral/Llama，含14B同族确认；新词与句式确认 |
 | Measuring Hate Speech race/gender真实评论 | 相同形成接口在真实文本的局部因果margin作用 | E109/E112/E116；私有Source规则受控构造，single私有能力弱；新context而非disjoint文本 |
 | 食物×服务四组合合成评论 | 具体方面关联与共同情绪/强度的机制竞争 | E117/E118三家族确认；E11914B正交功能与prospective方向确认，完整正负保留 |
+| SST5原始真实评论、受控新私人约定 | E121正常形成预测与固定word关联，四checkpoint各16→32 | single每方向88.3–99.2%或更高；official train SHA奇偶两池，discovery validation-query/confirmation test-query，字节不相交、未看输出筛材料 |
+| 双方面、两名来源共用同一prefix | E122选择性形成政策的整体预测 | 同一四criterion×私人code框架，两个Actor均请求/评分，非只A跨来源margin；正在运行 |
 | 真实个人标注预测与强模型 | 机制现象何时有实际后果、能力成功是否仍需解释 | E46–E52、E99既有；不给受控Source冒充真实个人偏好 |
 
 材料服务于不同解释对象，不以更多benchmark或模型数量替代核心机制。自然评论的语义偏好会影响margin；各实验保留single/instruction以及实际条件，需按配对改变解释功能来源。E117/E118查询八个独立字符串、全Food×Service组合，不与本context demos重合；探索与validation词/模板分开。同pool可在context之间共享词句，bootstrap单位为context。E118 Mistral确认原词池token长度无法构造八条unique，评分前仅补新词nasty，几何与字节无重合已核；CPU失败保留。双方面模板Food始终在Service前，功能差异不能外推为位置无关抽象criterion。该材料不是公认真实ABSA benchmark；真实个人规则证据另由E46–52承担。
+
+**E121数据资产与来源核验：** SetFit/sst5缓存`~/.cache/huggingface/datasets/SetFit___sst5/default/0.0.0/e51bdcd8cd3a30da231967c1a249ba59361279a3/`，官方原JSONL pinned revision逐条/顺序与Arrow一致，见[独立data审计](results/e121/independent_review_2026-10-12.md)。只用原label0/4、5–64 tokenizer tokens；所有条件原文保留。原split SHA256见各preflight，受控源不是实际标注者私人偏好。构造及评分分别由`scripts/e121_sst_materials.py`/`e121_natural_sentiment_mechanism.py`复现，原始JSONL不进git。
 
 ## 0. Principle
 **Build exact-gold procedural episodes first.** Public ICL datasets are calibration sources, not the core dataset.

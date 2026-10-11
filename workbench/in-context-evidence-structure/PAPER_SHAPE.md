@@ -2,11 +2,13 @@
 
 **2026-10-12当前问题：** 多个来源共享输出空间时，来源特定证据怎样形成并被用于新输入？Source身份进入读取，但所读证据已经由完整历史形成。研究解释这一形成过程、私人关联的功能来源，以及具体标准如何在新输入上产生作用。
 
-**当前完成：** E115 Llama、E116三家族真实MHS文本、E117三家族双方面机制、E118独立criterion×私人约定、E11914B两块确认均完成。24批576contexts/181632评分，36750项独立数值复算和实际token几何通过。已有C21有界L3、C22/C23有界L2；新C24有界L2只陈述不同缓存接口的功能差异。正式I04/ACTIVE状态不改，未宣布投稿就绪。
+**上轮完成（历史范围）：** E115 Llama、E116三家族真实MHS文本、E117三家族双方面机制、E118独立criterion×私人约定、E11914B两块确认均完成。24批576contexts/181632评分，36750项独立数值复算和实际token几何通过。已有C21有界L3、C22/C23有界L2；新C24有界L2只陈述不同缓存接口的功能差异。正式I04/ACTIVE状态不改，未宣布投稿就绪。
 
 **工作标题（可修改）：** *How Shared Outputs Shape Source-Specific Evidence in In-Context Learning*。
 
 **主旨：** Source-conditioned retrieval acts on evidence jointly formed from the contextual history. Shared output identities shape which source's learned associations enter that evidence. A causal formation pathway predicts namespace counterfactuals, while criterion–convention interventions show that transferred associations and full criterion-related functional responses require distinct measurements.
+
+**本轮更新：** E120/E121四checkpoint各16→32全完成，原生形成操作的条件贡献与功能阳性的自然SST文本接上三条主文认识；18,064项raw数值/实际token/图独立校对完成。E122首评分前freeze，两个Actor共用同一prefix的构造性预测正在执行，不预先记阳性。见[整篇对齐](PAPER_ALIGNMENT_2026-10-12.md)。
 
 核心解释与证据：
 
@@ -39,7 +41,9 @@
 | 历史形成路径及冻结预测 | E108/E109/E111/E112 | 两家族/3模型任务组合，有独立校对 |
 | 固定输出的关联内容 | E111/E113/E114/E115/E119 | 三家族＋更大Qwen，部分而非完整运输 |
 | 形成过程进入正常多Source判断 | E114/E115/E119 | 4模型均有背景条件作用，signed方向完整保留 |
-| 真实文本中的native形成作用 | E116 | 三家族；受控私人规则single弱，不称真实人的标准部署 |
+| 原生形成操作贡献和受限恢复 | E120 | 四checkpoint新材料，恢复方向依读取环境；不只是donor构造路径 |
+| 真实文本中的native形成作用与private功能 | E116/E121 | MHS局部margin/single弱；SST5独立test query/private两方向能力明确，同一冻结预测有效 |
+| 两来源共享prefix的整体使用预测 | E122 | 对称形成干预vs query-only Source隔离，四world×两Actor；正在执行 |
 | 联合方面与私人约定的功能测量 | E117/E118/E119 | 完整matrix/bias/FS；14B方向observerprospective，固定方面词序 |
 | 数字/实现可信 | 三轮新raw独立审计 | E115–119共24批，全部条件与种子保留；非独立GPU复跑 |
 
@@ -54,7 +58,7 @@
 | 这份内容是否规定具体判断标准？ | [三家族完整功能图](results/figs/fig_criterion_code_responses.png)、[14B方向图](results/figs/fig_stronger_model_functional_responses.png) | 关联幅度不等于完整criterion功能，接口响应可分开验证 |
 | 哪些结果不能外推？ | E116single、固定词序、E50–52、E99、E110与预测残差 | 真实标准/应用后果/独立抽象程序范围 |
 
-[英文论证草稿](PAPER_DRAFT.md)已整合全部本轮结果。下一项研究动作由尚未回答的具体科学问题决定，不由剩余误差或卡数决定；不自动追加微观标准，也不因已有理论能容纳现象而撤回实测形成解释。是否正式转candidate由人判断，本次已完成授权范围内的实验、独立校对与论证整理。
+[英文论证草稿](PAPER_DRAFT.md)已整合全部本轮结果。下一项研究动作由尚未回答的具体科学问题决定，不由剩余误差或卡数决定；不自动追加微观标准，也不因已有理论能容纳现象而撤回实测形成解释。是否正式转candidate由人判断，已完成的部分与正在执行的E122分开；持续完成用户已授权的整篇科研执行与main同步。
 
 ## 论文形态卡 — in-context-evidence-structure — 2026-10-06（agent 草稿，待人审）
 

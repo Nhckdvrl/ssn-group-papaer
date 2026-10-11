@@ -1,10 +1,10 @@
 # How Shared Outputs Shape Source-Specific Evidence in In-Context Learning
 
-Provisional manuscript draft, 2026-10-12. This version incorporates completed E115–E119 confirmation, including Llama, real-text formation tests, criterion–convention counterfactuals, and Qwen3-14B. Experiment IDs link to reproducible records. The title remains provisional; formal candidate status has not changed.
+Provisional manuscript draft, 2026-10-12. This version incorporates E115–E121 confirmation, including native operation tests, reliable private functions on real sentiment text, Llama, criterion–convention counterfactuals, and Qwen3-14B. The preregistered joint source-function test E122 is running and is not yet counted as evidence. Experiment IDs link to reproducible records. The title remains provisional; formal candidate status has not changed.
 
 ## Abstract
 
-When several sources provide demonstrations using the same output vocabulary, how does a language model form and use evidence specific to the requested source? We distinguish the source positions accessed by a query from the functional origin of the relations used in its prediction. Restricting a query to one source's positions does not ensure that its predictions depend only on that source's associations: earlier demonstrations can already have altered the evidence stored at those positions. Causal interventions identify an output-dependent formation pathway from historical answer regions to the requested source's label states. A frozen, coefficient-one reconstruction predicts namespace counterfactuals in new contexts, multiple model families, and a larger same-family model. Counterfactuals preserving output words and positions show that historical messages also transfer part of a learned input–label association. Full-source prediction remains sensitive to this formation history, with interactions between the two sources' contextualized caches. Finally, crossing another source's inferred criterion with its private output convention reveals that association transfer and criterion-related functional responses require different measurements: the label-formation pathway only partially reconstructs criterion counterfactuals at the actual label interface. These results explain how shared outputs couple the formation of source-specific evidence and clarify the functional information that its subsequent use can expose.
+When several sources provide demonstrations using the same output vocabulary, how does a language model form and use evidence specific to the requested source? We distinguish the source positions accessed by a query from the functional origin of the relations used in its prediction. Restricting a query to one source's positions does not ensure that its predictions depend only on that source's associations: earlier demonstrations can already have altered the evidence stored at those positions. Causal interventions identify an output-dependent formation pathway from historical answer regions to the requested source's label states. A frozen, coefficient-one reconstruction predicts namespace counterfactuals in new contexts, multiple model families, and a larger same-family model. Removing the native historical answer-to-label operation reduces cross-source relational influence across checkpoints; restricted restoration has different effects under source-only and full-source reading. Counterfactuals preserving output words and positions show that historical messages also transfer part of a learned input–label association. Full-source prediction remains sensitive to this formation history, with interactions between the two sources' contextualized caches. The frozen formation reconstruction and fixed-output association effects also hold on real sentiment text with reliable private-rule controls. Finally, crossing another source's inferred criterion with its private output convention reveals that association transfer and criterion-related functional responses require different measurements: the label-formation pathway only partially reconstructs criterion counterfactuals at the actual label interface. These results explain how shared outputs couple the formation of source-specific evidence and clarify the functional information that its subsequent use can expose.
 
 ## 1. Introduction
 
@@ -51,11 +51,32 @@ In 32 new contexts for each of Qwen3-8B and Mistral-7B-v0.3, answer-key intercha
 | Answer V: correlation / RMSE | .642 / 2.527 | .508 / .754 | .707 / 2.645 |
 | Zero-prediction RMSE | 3.267 | .865 | 3.731 |
 
-The observed combinations are three model–task pairs, rather than a full factorial grid. MHS contexts are independently sampled but can reuse comments. All predefined predictors, including weak controls, remain in the results. K-only interchange does not directly replace V on the intervened edge; subsequent recipient states still evolve. Approximate reconstruction establishes a sufficient partial pathway for the measured effect, not its unique or necessary mediator.
+The observed combinations are three model–task pairs, rather than a full factorial grid. MHS contexts are independently sampled but can reuse comments. All predefined predictors, including weak controls, remain in the results. K-only interchange does not directly replace V on the intervened edge; subsequent recipient states still evolve. Approximate reconstruction identifies a sufficient partial pathway for the measured interface effect. The next experiment tests the corresponding native operation directly.
 
 ![Formation-path reconstruction and association evidence](results/figs/fig_evidence_formation.png)
 
 *Figure 1. Completed confirmation results for output-dependent evidence formation. Prediction uses the frozen causal intervention, without a fitted regression line. The accompanying data and scripts retain all channels and controls.*
+
+### 3.3 Does the operation contribute to native evidence formation?
+
+A successful donor reconstruction can use a pathway that is available without establishing its contribution during the native computation. We therefore remove historical B-answer-region attention to A-label receivers during native prefix processing, using a fixed mask at every layer (E120). No donor state is supplied. The source evidence and all later states evolve under the modified graph. Controls remove within-A answer access or all B-to-A prefix access. A restricted restoration reopens only historical B-answer-to-A-label access in the otherwise B-to-A-blocked graph.
+
+We define the signed B-rule response as the mean correct-label-oriented logit change between the B-convention worlds. With shared output words, targeted removal reduces this response in all four checkpoints, including when the query reads both sources. Reopening the pathway increases the response under an A-only query. Its effect under a full-source query varies in sign:
+
+| Model, 32 new contexts | Full-source targeted removal | A-only restricted restoration | Full-source restricted restoration |
+|---|---:|---:|---:|
+| Qwen3-8B | 1.649 [1.108, 2.250] | 1.455 [0.999, 1.945] | -0.806 [-1.365, -0.266] |
+| Mistral-7B-v0.3 | 1.054 [0.886, 1.227] | 0.647 [0.463, 0.835] | 0.140 [0.053, 0.231] |
+| Llama-3.1-8B | 0.808 [0.517, 1.109] | 0.958 [0.635, 1.276] | -0.233 [-0.336, -0.122] |
+| Qwen3-14B | 1.329 [0.967, 1.717] | 1.120 [0.673, 1.646] | 0.039 [-0.217, 0.287] |
+
+All entries are paired signed-response differences in nats, with context-bootstrap 95% intervals. The restricted restoration is measured relative to the all-B-to-A-blocked prefix, rather than relative to the original native model. These results connect the frozen reconstruction to a conditionally contributing native operation, while showing that its functional effect depends on the evidence available during subsequent reading.
+
+The masks renormalize attention; they do not isolate a fixed numerical message. The within-source control has a substantial private-function cost in Mistral (single-source accuracy .973 to .656), and Qwen's cross-versus-within specificity contrast includes zero. Thus the effect supports a native formation operation rather than a dedicated source-confusion component. With separate B output words, targeted removal is weak or reversed, consistent with an output-dependent contribution. Complete controls and both signed and magnitude readouts remain available.
+
+![Native operation removal and restricted restoration](results/figs/fig_native_operation_necessity.png)
+
+*Native operation test. The same restored path has different functional consequences under A-only and full-source reading. Private-function controls distinguish contribution to general historical learning from source-specific effects.*
 
 ## 4. Does the pathway carry associations when output identities stay fixed?
 
@@ -107,6 +128,23 @@ The fixed-label relation contrast persists under full-source reading, at .241 [.
 ![Association transfer across model families and interfaces](results/figs/fig_relation_transfer_interfaces.png)
 
 *Figure 3. Partial fixed-label association transfer in both families, under gated and full-source query interfaces. These bars summarize independently sampled runs and do not isolate the gate as a single changed variable.*
+
+### 5.3 Formation and association content in real text with reliable private-function controls
+
+A local causal margin on real text does not establish that the model can execute the constructed private rule. Our earlier Measuring Hate Speech texts have weak single-source controls. We therefore apply the same frozen 43-condition engine to original SST5 review text with extreme positive or negative gold sentiment (E121). Each context assigns a new, balanced private `no/yes` convention. Training texts form disjoint discovery and confirmation demonstration pools; queries come from the official validation and test splits, respectively. Material construction uses gold and token geometry, never model correctness.
+
+| Model, confirmation n=32 | Single-source positive / inverted convention, % | Native A-formation magnitude, nats [95% CI] | Label-interface KV rule r / RMSE / zero RMSE | Fixed-word KV excess magnitude, nats [95% CI] |
+|---|---:|---:|---:|---:|
+| Qwen3-8B | 98.4 / 88.3 | 2.151 [1.487, 2.895] | 0.931 / 1.363 / 3.658 | 0.493 [0.280, 0.764] |
+| Mistral-7B-v0.3 | 99.2 / 96.9 | 1.091 [0.925, 1.258] | 0.948 / 0.336 / 1.048 | 0.128 [0.056, 0.213] |
+| Llama-3.1-8B | 97.7 / 99.2 | 0.689 [0.488, 0.901] | 0.930 / 0.309 / 0.840 | 0.183 [0.135, 0.239] |
+| Qwen3-14B | 99.2 / 93.8 | 1.678 [1.340, 2.052] | 0.966 / 0.519 / 1.949 | 0.211 [0.120, 0.311] |
+
+Each single-source direction has 16 contexts. Both directions have clear private-function performance, with Qwen3-8B weaker on the inverted mapping (.883 [.805, .953]) than on the positive mapping (.984 [.961, 1.000]). The namespace counterfactual remains predictable without refitting, and fixed-output association changes have an excess message effect in each family. Llama's corresponding signed association contrast is negative (−.109 [−.194, −.024]); a positive magnitude contrast therefore does not imply a uniform improvement in the requested rule. These tests establish functionally usable private relations in natural-language material, rather than actual human-specific conventions.
+
+![Real-text private functions and frozen formation prediction](results/figs/fig_natural_text_formation.png)
+
+*SST5 confirmation uses official test queries and an independent demonstration partition. All K, KV, and V predictions and both private directions are retained.*
 
 ## 6. What functional information is transferred?
 
@@ -175,6 +213,8 @@ Historical answer KV only partially predicts the actual criterion-label counterf
 
 [Yu and Ananiadou](https://aclanthology.org/2024.emnlp-main.192/) connect demonstration features to QK similarity and label words to OV output contributions. [Crosbie and Shutova](https://aclanthology.org/2025.findings-naacl.283/) distinguish induction-head participation from specific pattern-matching operations. These motivate testing a formation operation and its functional content, rather than renaming a participating head. [Lepori et al.](https://aclanthology.org/2026.acl-long.676/) separate in-context representation formation from subsequent deployment; our interventions address native historical evidence formation, not the first observation that readable information may be hard to use.
 
+[Racing Thoughts](https://aclanthology.org/2025.naacl-long.155/) tests dependencies between contextualizing an entity and using it in a downstream question, including frozen backpatching controls. It already establishes that later availability of a contextual representation need not ensure its use. Our formation-versus-reading tests concern the provenance of source-specific learned relations, rather than a first demonstration of that general distinction.
+
 [CoSToM](https://aclanthology.org/2026.acl-long.421/) connects an internal activation interface to downstream use after supervised steering. It provides a research-design example of moving from internal information to functional deployment. Here the models remain frozen, and the functional connection is tested through cache/message interchanges rather than a trained repair. Entity-binding and task-representation accounts also remain relevant alternatives for other portions of source-conditioned computation.
 
 ## 8. Methods and reproducibility
@@ -187,11 +227,11 @@ Effects use 10,000 context-bootstrap resamples, seed 910; reconstruction interva
 
 Self interchanges produce zero error. Cached versus full-token native query scoring differs by at most 4.96e−5 in Qwen and 7.63e−6 in Mistral confirmation. Cache fingerprints, layer consumption, and matched token geometry are checked. An independent session reconstructs the token layouts and recomputes 559 numerical checks from raw records before reading author summaries, with maximum discrepancy 4.77e−15. Separate bootstrap resampling confirms the signed interactions; it is not represented as an independent GPU rerun.
 
-The earlier E113/E114 package comprises five runs and 36,736 scores. The completed E115–E119 expansion comprises 24 discovery/confirmation runs, 576 contexts, 181,632 scores, and 2.393 recorded GPU-hours. Independent raw reviews recompute 36,750 numerical quantities (maximum discrepancy 1.13e−14), reconstruct actual token layouts, and check recorded all-layer consumption. This is independent analysis, not an independent GPU rerun. No weights are trained. All model/seed/channel results remain available. Cards specify revisions, script hashes, and rebuilding commands; small summaries, figures, code, and audits are versioned, while raw JSONL and models remain at the [documented asset paths](README.md).
+The earlier E113/E114 package comprises five runs and 36,736 scores. The completed E115–E119 expansion comprises 24 discovery/confirmation runs, 576 contexts, 181,632 scores, and 2.393 recorded GPU-hours. Independent raw reviews recompute 36,750 numerical quantities (maximum discrepancy 1.13e−14), reconstruct actual token layouts, and check recorded all-layer consumption. This is independent analysis, not an independent GPU rerun. The E120/E121 native-operation and real-text additions comprise 16 runs, 384 contexts, 164,352 scores, and 2.540 recorded GPU-hours. Their independent raw audits recompute 18,064 scalars (maximum discrepancy 5.00e−15), reconstruct 2,112 actual token streams, and verify the recorded masks and reachable edges. No weights are trained. All model/seed/channel results remain available. Cards specify revisions, script hashes, and rebuilding commands; small summaries, figures, code, and audits are versioned, while raw JSONL and models remain at the [documented asset paths](README.md).
 
 ## 9. Scope and implications
 
-The source-evidence formation and native sentiment tests cover three families and a larger Qwen checkpoint. Real MHS texts also show local native formation effects (E116): shared-background magnitudes are .344 [.179, .525], .0645 [.0357, .0928], and .112 [.075, .155] nats for Qwen, Mistral, and Llama. Their single-source controlled private rules remain weak (roughly 52–63%), and the rules are constructed rather than recovered from real individual annotators. This extends the causal-margin measurement to real text, not reliable deployment of human-specific criteria.
+The source-evidence formation and native sentiment tests cover three families and a larger Qwen checkpoint. Real MHS texts also show local native formation effects (E116): shared-background magnitudes are .344 [.179, .525], .0645 [.0357, .0928], and .112 [.075, .155] nats for Qwen, Mistral, and Llama. Their single-source controlled private rules remain weak (roughly 52–63%), and the rules are constructed rather than recovered from real individual annotators. This extends the causal-margin measurement to real text. The separate SST5 test in Section 5.3 supplies reliable single-source private-rule controls while retaining real held-out reviews; neither dataset constitutes deployment of actual individual human criteria.
 
 The functional criterion analysis uses controlled dual-aspect comments and fixed aspect order. Native histories, label interchanges, and message interchanges change different cache interfaces; their functional differences do not establish independent hidden modules, a unique pathway, or a complete abstract program. The coefficient-one predictions use actual donor activations. They explain selected causal counterfactuals and retain residuals rather than constitute a donor-free behavioral algorithm. Per-interface intervals are not corrected for multiple comparisons.
 
@@ -206,6 +246,8 @@ The practical scientific implication is a change in measurement: evaluating sour
 | Positional access does not isolate relation dependence | [E90](experiments/E90-source-isolation-before-and-after.md), [E91](experiments/E91-label-namespace-and-inherited-rule.md) |
 | Output-dependent formation reconstruction, C21 | [E109](experiments/E109-foreign-messages-at-label-formation.md), [E111](experiments/E111-polarity-relation-versus-namespace.md), [E112](experiments/E112-formation-mechanism-mistral-family.md), [first independent audit](results/e109/independent_review_2026-10-11.md) |
 | Fixed-label partial association content, C22 | [E111](experiments/E111-polarity-relation-versus-namespace.md), [E113](experiments/E113-relation-content-mistral.md), [E114](experiments/E114-native-formation-reading-crossing.md) |
+| Native operation contribution and restricted restoration | [E120](experiments/E120-operation-necessity.md), [independent operation audit](results/e120/independent_review_2026-10-12.md) |
+| Reliable private functions and formation on natural text | [E121](experiments/E121-natural-sentiment-mechanism.md), [independent data and mechanism audit](results/e121/independent_review_2026-10-12.md) |
 | Native conditional effects and interaction, C23 | [E114](experiments/E114-native-formation-reading-crossing.md), [new independent audit](results/e114/independent_review_2026-10-11.md) |
 | Functional criterion response and its formation-interface boundary, C24 | [E117](experiments/E117-criterion-feature-formation.md), [E118](experiments/E118-criterion-code-feature-crossing.md), [E119](experiments/E119-stronger-model-formation-criterion.md), [E118 audit](results/e118/independent_review_2026-10-11.md), [E119 audit](results/e119/independent_review_2026-10-11.md) |
 | Llama, larger checkpoint, and real-text coverage | [E115](experiments/E115-llama-frozen-native-mechanism.md), [E116](experiments/E116-native-mhs-formation-reading.md), E119; [wave audit](results/e117/independent_review_2026-10-11.md) |

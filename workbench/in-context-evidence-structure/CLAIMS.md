@@ -251,3 +251,27 @@ E118三家族与E11914B的criterion×private-code响应显示，关联幅度/两
 | C24 | 固定方面顺序的双方面评论任务、请求A且A raw/B输出stream固定时，B criterion×私人约定反事实在不同缓存干预接口产生不同A功能响应。Qwen3-14B32新材料native下，B代码反转对匹配方面相对另一面更强：Food选择性.282[.199,.371]、Service .404[.294,.528]nats；signed rotation .410[.330,.493]。query全程禁读B位置、A仍由完整历史形成的gated条件rotation .190[.073,.310]。A-label交换J为−.0238[−.0478,−.0025]，历史答案KV对actual label干预只部分重建（r .668/RMSE .646 vszero .746）。因此关联消息传入的证据不能直接替代整个criterion相关功能的验证 | L2 | [E118](experiments/E118-criterion-code-feature-crossing.md)、[E119](experiments/E119-stronger-model-formation-criterion.md)；results/e118/*_confirmation、results/e119/criterion_{discovery,confirmation}/{analysis,response_rotation,run,completeness_audit}.json；[E118独立校对](results/e118/independent_review_2026-10-11.md)、[E119独立校对](results/e119/independent_review_2026-10-11.md)及独立主张措辞核对 | n16→n32独立材料，方向observer首E119评分前冻结；各CI未多重比较校正。native改变完整历史、label/edge保留recipient其它缓存，故不能由接口差异推断独立隐藏模块/算法。B code影响A不是成功Source隔离或B自己的任务正确率；固定方面词序尚未排除位置选择。label负det、gated label小正rotation、edge小正det和残差保留，未称label完全共同gain、无criterion信息或独立完整程序。actual donor重建非无donor算法 |
 
 C24把C22“关联可进入本来源证据”与其具体功能尺度分开，补充而不撤回C21–C23。由人判断最终论文意义与形态；C16/C20等级与I04/ACTIVE排程未改。E115–E119完整24批、576contexts/181632评分，三份独立审计36750项数值核过（max1.13e−14）；独立token几何/消费校验完成，未独立GPU重跑。
+
+
+### 2026-10-12：E120/E121把形成预测接到原生操作与自然功能
+
+C21–C23新增直接证据，不把旧重建冒称独占必要路径。| 模型，确认n32 | full-source阻断 | A-only阻断 | full-source有限图恢复 | A-only有限图恢复 |
+|---|---:|---:|---:|---:|
+| Qwen3-8B | 1.649 [1.108, 2.250] | 1.104 [0.543, 1.770] | -0.806 [-1.365, -0.266] | 1.455 [0.999, 1.945] |
+| Mistral-7B-v0.3 | 1.054 [0.886, 1.227] | 1.039 [0.804, 1.289] | 0.140 [0.053, 0.231] | 0.647 [0.463, 0.835] |
+| Llama-3.1-8B | 0.808 [0.517, 1.109] | 1.108 [0.834, 1.386] | -0.233 [-0.336, -0.122] | 0.958 [0.635, 1.276] |
+| Qwen3-14B | 1.329 [0.967, 1.717] | 1.126 [0.669, 1.637] | 0.039 [-0.217, 0.287] | 1.120 [0.673, 1.646] |
+
+- **C21：** E120四模型原生操作阻断支持历史答案访问的条件贡献；只恢复答案→label在A-only读取为正，在native可为负。output-namespace重建L3范围保留；native操作不是纯原始message数值贡献或唯一电路，不自动升级L4。
+- **C22：** E121固定output/multiset的自然情绪配对内容作用确认，四checkpoint KV绝对超额依次.493/.128/.183/0.211nats，signed逐项保留，Llama为−.109。仍是部分关联，不由absolute效应推断正确标准隔离。
+- **C23：** E121真实文本private能力有效，同一native形成×读取与namespace预测在新query成立；不同缓存背景仍活演化，signed方向按模型/材料核。功能自然范围从MHS弱任务拓展到SST明确私人约定，不把这称真实人标准部署。
+- **C24：** E120/E121为单方面，不能自动扩展双方面criterion结论。整体双Actor/criterion×code使用预测在E122跑前冻结，目前未完成，不作结果升级。
+
+| 模型，确认n32 | single正约定（n16） | single反约定（n16） | native形成幅度nats | KV label rule r / RMSE / zero | 固定词关联KV abs超额nats |
+|---|---:|---:|---:|---:|---:|---:|
+| Qwen3-8B | 98.4% [96.1, 100.0] | 88.3% [80.5, 95.3] | 2.151 [1.487, 2.895] | 0.931 / 1.363 / 3.658 | 0.493 [0.280, 0.764] |
+| Mistral-7B-v0.3 | 99.2% [97.7, 100.0] | 96.9% [93.0, 100.0] | 1.091 [0.925, 1.258] | 0.948 / 0.336 / 1.048 | 0.128 [0.056, 0.213] |
+| Llama-3.1-8B | 97.7% [95.3, 100.0] | 99.2% [97.7, 100.0] | 0.689 [0.488, 0.901] | 0.930 / 0.309 / 0.840 | 0.183 [0.135, 0.239] |
+| Qwen3-14B | 99.2% [97.7, 100.0] | 93.8% [87.5, 99.2] | 1.678 [1.340, 2.052] | 0.966 / 0.519 / 1.949 | 0.211 [0.120, 0.311] |
+
+实验卡[E120](experiments/E120-operation-necessity.md)/[E121](experiments/E121-natural-sentiment-mechanism.md)与results/e120、e121每批analysis/run/behavior可复核。E120独立9736项/完整token和图校验通过，E121完整8328项审计已封版；不将复算称独立GPU复跑。single within-answer-off的Mistral损伤/Qwencross-within CI跨零均保留，范围不夸成来源专用构件。未改变I04与ACTIVE正式状态。

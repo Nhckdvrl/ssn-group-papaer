@@ -1,0 +1,241 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e120/mistral_confirmation/materials",
+    "n": 32,
+    "seed": 120101,
+    "materials": "validation",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        1476
+      ],
+      [
+        5849
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    351,
+    364,
+    360,
+    368,
+    366,
+    357,
+    353,
+    360,
+    370,
+    355,
+    366,
+    357,
+    373,
+    367,
+    363,
+    354,
+    352,
+    357,
+    352,
+    357,
+    350,
+    366,
+    362,
+    346,
+    358,
+    366,
+    362,
+    355,
+    364,
+    368,
+    368,
+    355
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional",
+      "magnificent",
+      "incredible"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable",
+      "disastrous",
+      "displeasing"
+    ],
+    "templates": [
+      "The dish was {a}.",
+      "The dinner was {a}.",
+      "The lunch was really {a}.",
+      "The sandwich was simply {a}.",
+      "This salad was {a}.",
+      "Our breakfast was {a}.",
+      "The pizza was {a}.",
+      "The experience was {a}.",
+      "The dish tasted {a}.",
+      "The dinner tasted remarkably {a}."
+    ]
+  },
+  "valid_quartet_length_bins": 4,
+  "quartet_lengths": [
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      19,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      19,
+      17
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      18
+    ],
+    [
+      16,
+      18
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

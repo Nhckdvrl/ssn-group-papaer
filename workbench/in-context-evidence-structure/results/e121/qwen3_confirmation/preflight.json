@@ -1,0 +1,235 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e121/qwen3_confirmation",
+    "n": 32,
+    "seed": 121101,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        902
+      ],
+      [
+        9834
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    426,
+    708,
+    553,
+    543,
+    701,
+    710,
+    621,
+    487,
+    766,
+    753,
+    723,
+    634,
+    541,
+    552,
+    667,
+    483,
+    640,
+    516,
+    575,
+    656,
+    533,
+    454,
+    560,
+    688,
+    521,
+    530,
+    471,
+    551,
+    556,
+    468,
+    568,
+    729
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 1,
+    "query_split": "test",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 42,
+    "demo_pool_sizes": [
+      624,
+      560
+    ],
+    "query_pool_sizes": [
+      396,
+      276
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "valid_quartet_length_bins": 42,
+  "quartet_lengths": [
+    [
+      20,
+      21
+    ],
+    [
+      43,
+      52
+    ],
+    [
+      31,
+      34
+    ],
+    [
+      25,
+      32
+    ],
+    [
+      62,
+      45
+    ],
+    [
+      50,
+      56
+    ],
+    [
+      30,
+      46
+    ],
+    [
+      20,
+      15
+    ],
+    [
+      36,
+      62
+    ],
+    [
+      44,
+      56
+    ],
+    [
+      40,
+      56
+    ],
+    [
+      58,
+      29
+    ],
+    [
+      22,
+      38
+    ],
+    [
+      19,
+      44
+    ],
+    [
+      34,
+      54
+    ],
+    [
+      15,
+      37
+    ],
+    [
+      39,
+      56
+    ],
+    [
+      27,
+      30
+    ],
+    [
+      43,
+      23
+    ],
+    [
+      62,
+      30
+    ],
+    [
+      32,
+      33
+    ],
+    [
+      31,
+      23
+    ],
+    [
+      22,
+      29
+    ],
+    [
+      30,
+      54
+    ],
+    [
+      17,
+      28
+    ],
+    [
+      31,
+      21
+    ],
+    [
+      23,
+      16
+    ],
+    [
+      39,
+      19
+    ],
+    [
+      29,
+      40
+    ],
+    [
+      18,
+      23
+    ],
+    [
+      16,
+      51
+    ],
+    [
+      50,
+      51
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

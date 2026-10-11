@@ -128,3 +128,7 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E117](E117-criterion-feature-formation.md) | 历史关联影响哪个输入方面 | DONE-CONFIRMATION；三家族各16→32新材料，label使Food/Service同增，历史边家族差异保留 |
 | [E118](E118-criterion-code-feature-crossing.md) | criterion与B私人约定的正交功能反事实 | DONE-CONFIRMATION；三家族各16→32，完整响应矩阵/全部接口；Mistral0-score CPU材料失败与nasty修正保留 |
 | [E119](E119-stronger-model-formation-criterion.md) | 14B形成解释及prospective功能方向 | DONE-CONFIRMATION；两块各16→32，namespace KV r .934/.927、signed交互负；native rotation .410[.330,.493]，接口差异与残差保留 |
+
+| [E120](E120-operation-necessity.md) | 原生形成操作贡献与受限图恢复 | DONE-CONFIRMATION；四checkpoint各16→32、native阻断均正，恢复方向依query环境；独立raw/图封版 |
+| [E121](E121-natural-sentiment-mechanism.md) | 真实SST文本有能力阳性的同一形成机制 | DONE-CONFIRMATION；四checkpoint各16→32、private两方向能力明确，KV rule r .931/.948/.930/.966；数据/raw审计封版 |
+| [E122](E122-source-preserving-formation.md) | 保留一般上下文化、两个Source各自规则共同使用 | RUNNING；四模型16→32全执行，对称answer形成vs全cross形成vs query隔离；两个Actor共享cache，未记阳性 |
