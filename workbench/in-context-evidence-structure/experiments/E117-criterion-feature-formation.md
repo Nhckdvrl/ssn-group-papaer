@@ -30,3 +30,7 @@
 待CPU预检/GPU运行。源码SHA256：e53cd8e011518b027e0753d3a2898034c74778e4dc2a9128ec07d9313f989ccf。
 
 CPU预检校正（无GPU数据）：两个B四组合可共享concordant字符串，dict.values不是带重复的多重集；按每条demo应用mapping核对multiplicity，保持原seed/全部context，未筛样。A/query采用不同的词对，8query全unique且不与demos重合；不是重复评分。
+
+### PRE-RESULT观测补记（探索已启动，尚未读取任何E117科学结果）
+
+原food/service平均对比保留不变。2×2 query已经完整采样，平均service效应可能因food的两种条件作用相反而抵消；这是纯代数的识别问题。另存POST-HOC-DESIGN的完整四点分解（共同bias、food、service、food×service）与food±下条件service效应，**不修改正在运行的引擎或原primary读数**，不只挑更显著的新量。确认n32之前冻结该观测；新增项在新材料才作确认，用于避免以平均0宣称完全不使用service。科学场景/52条件/样本均不扩展，不是新能力门槛。
