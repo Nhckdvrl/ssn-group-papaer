@@ -1,45 +1,60 @@
 # ICES论文形态：当前判断与历史版本
 
-**2026-10-11当前问题：** 多个来源共享输出空间时，来源特定证据怎样形成并被用于新输入？本轮完成了叙事所需的有限实验矩阵：历史答案K近似重建输出命名对本来源证据形成的影响；固定答案词的关联变化通过历史答案V部分传入；这些形成效应在正常允许query读取全部来源时仍存在，并受读取环境调节。E109/E112形成路径跨家族确认，E111/E113关联内容跨家族确认，E114将二者接回原生判断。C21有界L3，C22/C23有界L2；两轮独立校对分别318/559项通过。
+**2026-10-12当前问题：** 多个来源共享输出空间时，来源特定证据怎样形成并被用于新输入？Source身份进入读取，但所读证据已经由完整历史形成。研究解释这一形成过程、私人关联的功能来源，以及具体标准如何在新输入上产生作用。
 
-**候选工作标题：** *How Shared Outputs Shape Source-Specific Evidence in In-Context Learning*。
+**当前完成：** E115 Llama、E116三家族真实MHS文本、E117三家族双方面机制、E118独立criterion×私人约定、E11914B两块确认均完成。24批576contexts/181632评分，36750项独立数值复算和实际token几何通过。已有C21有界L3、C22/C23有界L2；新C24有界L2只陈述不同缓存接口的功能差异。正式I04/ACTIVE状态不改，未宣布投稿就绪。
 
-**候选主旨：** Source-conditioned retrieval operates on evidence whose relational content has already been shaped by output-dependent contextualization. Shared outputs affect both the formation of source-specific evidence and its subsequent use; the two cached-state factors interact in native prediction. 研究对象是来源特定证据的功能来源，而非持续证明弱模型做错。题目与正式I04/ACTIVE状态未改变。[英文论证草稿](PAPER_DRAFT.md)组织完成后的核心证据，历史卡保留。
+**工作标题（可修改）：** *How Shared Outputs Shape Source-Specific Evidence in In-Context Learning*。
 
-核心贡献为：
+**主旨：** Source-conditioned retrieval acts on evidence jointly formed from the contextual history. Shared output identities shape which source's learned associations enter that evidence. A causal formation pathway predicts namespace counterfactuals, while criterion–convention interventions show that transferred associations and full criterion-related functional responses require distinct measurements.
 
-1. **测量：** 区分“读取哪些来源位置”与“判断依赖哪个来源的关联”。E90/E91证明只访问自己的位置仍可有foreign规则作用；来源位置选择与准确率不能单独测到功能来源。
-2. **形成解释与预测：** 输出命名影响历史答案→本来源label的消息。冻结系数1、无头/层选择的因果子图，在新contexts、第二家族和另一任务中近似重建指定反事实；不是无donor行为算法或唯一必要路径。
-3. **功能内容：** 固定词表/Source/位置与输入多重集，跨情绪配对相对同类置换的超额作用经答案消息部分传入；Qwen/Mistral新词句各32context，A-only query下KV差.618/.404nats，原生全Source读取下.241/.263。V比K更强；V/KV不等价，完整关系作用仍有残差。
-4. **接回原生计算：** 在完整query可读全部来源的E114中，A缓存形成历史的条件作用为2.098[1.344,2.892]/1.238[1.037,1.464]nats（B shared背景）；换B缓存背景后仍有.759/.684。signed交互.775[.113,1.440]/.321[.187,.454]，不支持简单相加解释。历史答案KV预测原生A-label反事实r=.899/.930与.959/.968（两个B背景）。
+核心解释与证据：
 
-Cho/Wang拥有label merge与语义去噪，CTA拥有跨示例功能上下文化，How Few-Shot Examples Add Up拥有QK/V权重分解。具体增量是**共享输出怎样改变来源特定证据的功能形成，以及为何来源位置隔离不能保证规则信息隔离**，并检验这项形成解释怎样进入原生多来源判断。它与既有上下文化框架相容，不靠宣称新组件或推翻整个ICL理论建立价值。CoSToM的自然问题→内部干预→实际使用证据是研究尺度参照。
+1. **测量对象：** 区分来源位置访问与关系信息的功能来源。E90/E91确认query禁读B、A raw固定时，B私人规则仍影响A；分开B输出减弱这种历史依赖。
+2. **形成过程：** 历史B答案K→A label近似重建输出命名的因果作用；系数1、无head/layer选择，在独立contexts、第二家族/另一任务中验证。C21不是第一次发现label anchor或上下文化，而是解释共享输出如何改变Source特定证据形成。
+3. **所传内容：** 固定B输出stream/位置/Source/输入多重集，跨关联配对相对同类置换的超额作用经历史答案V/KV部分传入。Qwen/Mistral/Llama和14B均有直接证据；signed与absolute分开，不冒称完整程序。
+4. **正常使用：** 正常query读取全部来源时，形成效应仍保持，且A/B缓存背景非加性。14B形成作用3.059[2.557,3.571]nats、KV label rule预测r .934/.927；signed交互−.686，与三个8B级模型正方向不同，因此解释背景依赖，不预设统一正向电路。
+5. **功能分辨率：** E118独立交叉B criterion与私人代码；E119评分前冻结完整响应矩阵det/normalized rotation。14B native两方面匹配选择性均正，rotation .410[.330,.493]；query禁读B仍.190[.073,.310]。local label/答案形成边的响应结构与whole历史不同、重建有残差；保留负det与小正效果。接口差异不自动识别独立隐藏程序，也不将所有标签信息缩成共同gain。
 
-### 本轮整体实验的有限补齐范围（跑前冻结，结果已完成）
+### 相关工作定位：解释的具体距离
 
-| 论文要回答的内容 | 证据 | 完成情况 |
+| 最强已有解释 | 其拥有的认识 | 本文实际增加的对象 |
 |---|---|---|
-| 输出身份与多来源判断的关系可靠 | E30–E35、E46–E54 | 已有；真实准确率损失有限保留，不扩大行为地图 |
-| 来源身份原生参与读取 | E59–E64、E85 | 已有有界因果结果；不重新搜索字段/头 |
-| Source位置选择不能测到关联信息来源 | E90/E91 | 已确认，是形成问题的入口 |
-| 命名影响来源特定证据形成，有预测力 | E108/E109/E111(namespace)/E112 | 跨家族＋Qwen第二任务＋独立318项校对完成 |
-| 载体含关联内容，跨家族范围 | E111/E113 | E113同接口16探索→32新词句确认，KV差.404[.313,.499]；两家族/同一情绪任务 |
-| 形成解释接回正常多来源判断 | E114 native缓存2×2＋历史形成边 | Qwen16探索→32确认、Mistral32冻结接口确认；条件形成/读取作用与signed交互均报告 |
-| 主线数字与实现可信 | 原始复算与代码/token审计 | 新确认559项一致，最大差4.77e−15；两家族实际token流独立CPU重建；全部条件/种子保留 |
+| Cho circuit / information removal | 输入信息汇入label、读取与旁路、task-oriented选择/去噪 | 共享输出下Source历史关系怎样进入本来源证据，并影响正常读取 |
+| Contextualize-then-Aggregate | 跨示例上下文化必要性及功能交换 | Source位置归属与关系来源的区别，output-dependent形成子图预测 |
+| How Few-Shot Examples Add Up | QK/V对FV聚合的作用、上下文化权重变化 | 历史答案→本Source label的形成操作与具体criterion功能内容 |
+| LTV / JIT / Mixing Mechanisms | 局部/时序任务表示、多机制绑定与读取 | 不预设一个Source字段完整存储标准；分别验证关联与方面响应 |
+| Test, then Route | 显式规则predicate与token-bound routing | 从多Source demos形成的关系证据；显式/隐式差别本身不自动算novelty |
+| CoSToM / Lepori / Yu / Crosbie | 信息重建与部署、QK/OV、组件参与与操作的区别 | 冻结native形成干预→反事实预测→具体功能使用的实验链 |
 
-本轮E113/E114共5批、36,736个评分、.353 GPU·时；独立单卡任务并行，不为使用12张卡创造多余配置。跑前确定的核心实验块均已完成，包括部分结果和未完全重建的残差。没有E115或新必需门槛；E107程序接口、E110长评论与强模型成功如实作为边界。全Source原生验证目前为两家族/一个受控情绪任务，不冒充完整跨任务native理论。F/R是上下文化的位置缓存因子，B亦可能含A信息；query自然演化，不是两个独立模块或固定reader。
+与这些框架相容，并不要求找完全空白问题。若只写上下文化或QK/V，compression risk很高；主文必须呈现Source功能来源、形成预测与criterion关系的实际证据。定位表和全文阅读范围见综合§31/33–35及library论文卡，不隐藏直接近邻。
 
-### 完整论证与图表安排
+### 已完成的论文实验覆盖
 
-| 主文中的问题 | 主要证据 / 图 | 对读者认识的增量 |
+| 内容 | 记录 | 状态与有效范围 |
 |---|---|---|
-| 为什么仅看来源选择不够？ | 输出命名现象＋E90/E91，简明概念图 | 从位置归属转向关系的功能来源 |
-| 共享输出在哪个过程改变证据？ | E108/E109/E112，[形成预测图](results/figs/fig_evidence_formation.png)左/中 | 在label形成时定位指定历史消息的效果，并冻结预测 |
-| 传入的是标签偏好还是学到的关联？ | E111/E113，[关联图](results/figs/fig_relation_transfer_interfaces.png) | 固定输出词/位置，配对与同类置换竞争；部分关联可传递 |
-| 受控接口能否解释正常判断？ | E114，[原生计算图](results/figs/fig_native_evidence_use.png) | 形成与读取缓存条件作用/交互，原生label效果重建 |
-| 解释适用到哪里？ | E50–E52、E99、E110与所有重建残差 | 应用后果有限、强模型可成功、不是完整规则程序 |
+| 可靠的输出身份现象与真实个人分歧 | E30–E35、E46–E54 | 已有，E50–E52实际准确率后果有限 |
+| 来源身份原生参与读取 | E59–E64、E85 | 已有有界因果证据，E85均值预测保留 |
+| 位置选择与功能来源分开 | E90/E91 | 独立确认，形成问题入口 |
+| 历史形成路径及冻结预测 | E108/E109/E111/E112 | 两家族/3模型任务组合，有独立校对 |
+| 固定输出的关联内容 | E111/E113/E114/E115/E119 | 三家族＋更大Qwen，部分而非完整运输 |
+| 形成过程进入正常多Source判断 | E114/E115/E119 | 4模型均有背景条件作用，signed方向完整保留 |
+| 真实文本中的native形成作用 | E116 | 三家族；受控私人规则single弱，不称真实人的标准部署 |
+| 联合方面与私人约定的功能测量 | E117/E118/E119 | 完整matrix/bias/FS；14B方向observerprospective，固定方面词序 |
+| 数字/实现可信 | 三轮新raw独立审计 | E115–119共24批，全部条件与种子保留；非独立GPU复跑 |
 
-目前已有完整核心实验包和英文论证草稿；未宣布投稿就绪或顶会接受。是否正式进入candidate由人判断；论文整理可以继续，已授权执行不等待标题审批。实际序列化、统计分母、公开代码与原始资产位置在README/实验卡/草稿方法中明示。
+### 主文的论证与图表链
+
+| 读者的问题 | 主证据 / 图 | 它解释什么 |
+|---|---|---|
+| 为什么Source位置读取不足以描述规则来源？ | E90/E91与自然两人规则例子 | 当前证据有历史功能依赖 |
+| output身份在什么计算过程中起作用？ | [形成预测图](results/figs/fig_evidence_formation.png) | 固定系数1历史答案→label子图重建 |
+| 是static label还是learned association？ | [关联图](results/figs/fig_relation_transfer_interfaces.png)，E115/E119 | 输出词固定的关系反事实有额外作用 |
+| 它在正常读取时还起作用吗？ | [原生计算图](results/figs/fig_native_evidence_use.png)及四模型表 | 形成与读取缓存条件作用、不同交互方向 |
+| 这份内容是否规定具体判断标准？ | [三家族完整功能图](results/figs/fig_criterion_code_responses.png)、[14B方向图](results/figs/fig_stronger_model_functional_responses.png) | 关联幅度不等于完整criterion功能，接口响应可分开验证 |
+| 哪些结果不能外推？ | E116single、固定词序、E50–52、E99、E110与预测残差 | 真实标准/应用后果/独立抽象程序范围 |
+
+[英文论证草稿](PAPER_DRAFT.md)已整合全部本轮结果。下一项研究动作由尚未回答的具体科学问题决定，不由剩余误差或卡数决定；不自动追加微观标准，也不因已有理论能容纳现象而撤回实测形成解释。是否正式转candidate由人判断，本次已完成授权范围内的实验、独立校对与论证整理。
 
 ## 论文形态卡 — in-context-evidence-structure — 2026-10-06（agent 草稿，待人审）
 

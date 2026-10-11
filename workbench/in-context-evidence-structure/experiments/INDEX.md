@@ -122,3 +122,9 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E112](E112-formation-mechanism-mistral-family.md) | 第二模型家族是否保持已冻结的形成路径 | DONE-CONFIRMATION；Mistral base16→32新ctx，答案K减弱.0611[.0284,.0986]，固定rule重建r=.966；独立校对通过 |
 | [E113](E113-relation-content-mistral.md) | 固定标签的关联传递是否保持于另一家族 | DONE-CONFIRMATION；Mistral16→32新词句，答案KV cross−within .404[.313,.499]；C22两家族L2，原始复算通过 |
 | [E114](E114-native-formation-reading-crossing.md) | 形成路径怎样参与正常多来源判断 | DONE-CONFIRMATION；Qwen16→32、Mistral32；形成条件作用2.098/1.238，signed交互.775/.321；原生关联亦保持，C23有界L2；559项独立校对通过 |
+
+| [E115](E115-llama-frozen-native-mechanism.md) | Llama冻结native形成/关联路径 | DONE-CONFIRMATION；16→32新材料，形成.947[.740,1.158]、label KV rule r .838/.881；权重与raw独立核验 |
+| [E116](E116-native-mhs-formation-reading.md) | 三家族真实MHS文本native形成作用 | DONE-CONFIRMATION；各16→32，局部形成margin确认，single私人能力弱；不冒称真实个人规则 |
+| [E117](E117-criterion-feature-formation.md) | 历史关联影响哪个输入方面 | DONE-CONFIRMATION；三家族各16→32新材料，label使Food/Service同增，历史边家族差异保留 |
+| [E118](E118-criterion-code-feature-crossing.md) | criterion与B私人约定的正交功能反事实 | DONE-CONFIRMATION；三家族各16→32，完整响应矩阵/全部接口；Mistral0-score CPU材料失败与nasty修正保留 |
+| [E119](E119-stronger-model-formation-criterion.md) | 14B形成解释及prospective功能方向 | DONE-CONFIRMATION；两块各16→32，namespace KV r .934/.927、signed交互负；native rotation .410[.330,.493]，接口差异与残差保留 |

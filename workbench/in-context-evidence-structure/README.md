@@ -1,10 +1,9 @@
 # In-Context Evidence Structure（ICES）
 
-**2026-10-11当前认识：** 当前来源的证据会在形成时受到先前其它来源的关联影响；输出命名能够改变这个过程。只让query访问本来源位置，并不自动隔离它使用的规则信息。形成路径、关联内容与原生全Source判断已接成有限机制证据链：[综合§32](RESEARCH_SYNTHESIS_2026-10-10.md#32-e113e114完成从形成子图到正常多来源判断)、[原生计算图](results/figs/fig_native_evidence_use.png)、[英文草稿](PAPER_DRAFT.md)、[独立校对](results/e114/independent_review_2026-10-11.md)。
-
+**2026-10-12当前认识：** Source条件读取作用于已经由完整历史形成的证据。共享输出改变其它Source关联如何进入本Source的label证据；这条形成路径能预测原生反事实，但其关联运输与完整criterion功能响应需分别验证。Llama、真实文本、三家族双方面机制与14B确认均完成，见[当前综合](RESEARCH_SYNTHESIS_2026-10-10.md)、[完整功能图](results/figs/fig_stronger_model_functional_responses.png)、[英文草稿](PAPER_DRAFT.md)、[独立校对](results/e119/independent_review_2026-10-11.md)。
 ## 状态
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
-- **当前综合判断（2026-10-11）：** 先读 [`RESEARCH_SYNTHESIS_2026-10-10.md`](RESEARCH_SYNTHESIS_2026-10-10.md)前言与§32；中间各节保留探索转折。跑前有限核心实验矩阵已完成，形成/关联/原生判断均有跨家族确认与独立校对，整理整体论证，不追求覆盖全部ICL。
+- **当前综合判断（2026-10-12）：** 先读[综合](RESEARCH_SYNTHESIS_2026-10-10.md)前言和§34–35。E115–E119跑前有限矩阵与确认均完成：24批/576contexts，三份raw审计封版。C21有界L3，C22/C23/C24有界L2；标题是可修改草稿，未改candidate状态。历史摘要如下，不将当时下一步重复执行。
 - **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
 - **E82/E83：** Label读取重放独立+7.8[3.9,11.7]点，末位可转移其主要收益；原生Source影响仍按C16经整个query。冻结旧native注意力拟合的关系reader在64新context增加Source contrast .376[.358,.393]nats，预算/位置模型无益；逐context预测相关仅.252，非完整解释。Source与code在自然query共线，E84只检验这个具体解释，不开新任务。
 - **E84/E85：** code代理更准确预测布局Label读取变化，但native两Cue都用；NameK交换独立确认使field反转/code保正，LabelKV改变两者。冻结联合干预四项均值预测误差.007–.036nats，形成有限依赖/组合解释，不称两个独立Source模块或完整算法。详见综合§11–12。
@@ -20,6 +19,7 @@
 - **E105/E106/E107：** 标准推断16/16，但Rec after直接评分有EOS与有限criterion作用；E106独立32ctx确认，自己的label KV承载历史B-rule依赖（替换减少.429[.250,.632]nats），评论内容中介弱。E107完成480交叉＋4self，Own KV因果参与，mixed after56.25%、增益CI触零；结束此接口扩展。综合§28–29正面对齐近邻，不把局部接口或已有分工称最终novelty。
 - **当前机制进展（E108–E112）：** 历史B答案K→A label形成的namespace解释在Qwen/Mistral32新ctx各自确认，冻结逐query rule预测r=.969/.966；Qwen第二任务亦保持，C21有界L3。固定答案词的情绪配对在新词/句式确认，答案V传递部分关联（对照差.618[.446,.813]nats），此为当时C22单模型L2范围；E113随后直接确认家族扩展。独立318项复算通过；E110长评论控制不足与E111残差完整保留。研究对象回到来源特定证据怎样形成和使用，不继续字段/头搜索。
 - **最新完整机制链（E113/E114）：** 固定label关联传递在Mistral32新词句确认.404[.313,.499]nats，C22两家族L2。全Source原生判断中形成条件作用Qwen2.098/Mistral1.238nats，signed缓存交互.775[.113,1.440]/.321[.187,.454]；历史答案KV近似预测原生label反事实r=.899/.930、.959/.968。C23有界L2；559项独立复算与两家族token流重建通过。本轮5批/36,736评分/.353 GPU·时，有限核心实验已完成；native两家族/单任务，保留残差和真实应用有限后果。
+- **E115–E119确认：** Llama native形成.947[.740,1.158]nats；E116三家族MHS真实文本局部作用确认、single私人能力仍弱。E118独立criterion×code全响应；14B native匹配方面选择性均正/rotation .410[.330,.493]，query全程禁读B仍.190[.073,.310]。local label/历史答案边仅解释部分，负/小正方向完整保留；E119 namespace预测r .934/.927、signed交互负。见综合§33–35，三家族/更大同族不靠模型数自动敲定novelty。
 - **2026-10-08/09 进展：** 真实数据上的后果与机制（C13，E46–E49）：多人带名字的样例混在同一上下文时，LLM 只保留每人标注倾向的 35–58%（2 个真实数据集、8 模型、4 家族）；每人独立的标签词恢复到单人水平；读标签头把另一人的标签读进答案，换词后在读出层面分隔（E48）。顺序 / 格式敏感线（E40–E45）已止损关闭。见 `PAPER_SHAPE.md` 末节。
 - **2026-10-10 继续探索（人授权）：** E58–E64完成，复盘见 [`REVIEW_2026-10-10.md`](REVIEW_2026-10-10.md)。来源影响有native因果路径；Qwen的label读取很大部分发生在答案前query位置，Mistral主要在末位，不能再写“默认完全不用来源”。C14–C16均L1，尚无完整机制选择理论。10-09整理保留为历史记录。
 - **E65/E66更新：** query接力有模型边界（Qwen的Label标记／Mistral的来源字段）；删direct-label无稳定accuracy修复。input前source缓存对single/mixed均失败，已见input的缓存保留logit但准确率收益有限，不能包装成新组合瓶颈。各卡与复盘已记负结果，C16仍L1。
@@ -89,7 +89,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 |---|---|
 | `ideas/` | I04（主 idea）、I01（早期版本） |
 | `experiments/` | E00–E114 实验卡（E80未运行；E86仅pilot；E87候选未实施；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
-| `CLAIMS.md` | 主张账本 C00–C23、混杂审计、作废记录 |
+| `CLAIMS.md` | 主张账本 C00–C24、混杂审计、作废记录 |
 | `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_DRAFT.md` 为当前英文论证；`PAPER_OUTLINE.md` 为 10-05 旧版历史提纲 |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
 | `PAIN_LOG.md` | 痛点与工程坑 |
@@ -119,6 +119,8 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 
 - **E99/E101资产：** E99 raw生成、prompt与token IDs留本地`results/e99/qwen35_part*/`；E101标注输入`results/e101/annotations/`与原始32轨迹在上述E99目录，脚本保存原token前缀，不重新编码CoT。小标注/设计审计与后续run/analysis入git，高维activation与raw续写留`results/e101/`；同本地27B revision、openslime/vendor环境可复现。
 - **E113/E114资产：** 原始contexts/behavior JSONL在上述NFS的`results/e113/`与`results/e114/`，小analysis/run/preflight/completeness、独立559项复算和两个PNG/PDF/数据及绘图源码入git。E113 seed113001/113101；E114 seed114001/114101/114201，确认`--materials validation`，按卡用同conda、FP32/eager、原model revision重建至新out。Mistral实际分块token流含固定额外空格，答案区域word＋3实际分隔token（B32senders；Qwen16）；不等于字面整串编码。没有新训练checkpoint。
+
+- **E115–E119资产（2026-10-12）：** raw `results/e115/`至`e119/`的`contexts.jsonl/behavior.jsonl`留在`/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/`共享资产路径，small analysis/run/rotation/audit与图入git；实验卡固定seed/revision/source hash可重建。Llama官方匹配分片审计在`results/e115/model_identity_audit.json`；14B official revision40c069824f4251a91eefaf281ebe4c544efd3e18及身份见`results/e119/model_identity.json`，远端缓存`/dev/shm/ices_models/Qwen3-14B`为易失副本，可从HF snapshot重建。使用conda verl-clean，实际Qwen3-8B/14B为post-trained（历史Base称呼纠正），无新训练。
 
 ## 9. 决策记录
 - **2026-10-05：** 注册为 PROPOSED（ownership audit 后选定 evidence-structure inference）。

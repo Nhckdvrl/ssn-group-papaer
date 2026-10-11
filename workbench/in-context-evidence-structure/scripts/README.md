@@ -59,3 +59,38 @@ cd scripts && $P build_ctxeffect.py                                   # -> data/
 bash launch.sh fvcrc13 0 Qwen/Qwen3-8B $PWD/../data/ctxeffect/rows.jsonl $PWD/../results/ctxeffect/Qwen3-8B.s0.jsonl
 $P analyze_ctxeffect.py ../results/ctxeffect/Qwen3-8B.s0.jsonl
 ```
+
+## E115–E119：完成的形成与功能机制复现（2026-10-12）
+
+以下从workbench根目录运行，采用conda `verl-clean`、冻结FP32/eager；每个模型一个空GPU，设置`CUDA_VISIBLE_DEVICES`。写到新`--out`，不覆盖原始结果。正式卡/`run.json`是seed、model revision与源码SHA的依据。
+
+| 卡 | 科学入口 | discovery → validation确认 |
+|---|---|---|
+| E115 Llama | `e115_llama_native_mechanism.py` | 16/115001 → 32/115101 |
+| E116真实MHS | `e116_native_mhs_formation.py`，model参数选择家族 | 各16/116001 → 32/116101 |
+| E117双方面 | `e117_criterion_feature_formation.py` | 各16/117001 → 32/117101 |
+| E118正交criterion/code | `e118_criterion_code_feature_crossing.py`；Mistral确认`e118_mistral_materials.py` | 各16/118001 → 32/118101 |
+| E11914B native | `e119_native_scale.py` | 16/119001 → 32/119101 |
+| E11914B criterion | `e119_criterion_scale.py` | 16/119201 → 32/119301 |
+
+Mistral E118确认独立入口只补可构造的新负词nasty/有限CPU guard；无评分CPU失败保留。原E118 discovery源码在41c22ffa，Llama确认CPU retry版本在a5321874，最终Mistral入口在7249439a；原hash均见卡。E119科学脚本与prospective方向observer在be96cd03、首评分前冻结。重建不选择contexts或改指标。
+
+```bash
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e115_llama_native_mechanism.py --model /tmp/ices_models/Llama-3.1-8B --n 32 --seed 115101 --materials validation --out results/rebuild_e115_llama
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e119_criterion_scale.py --model /dev/shm/ices_models/Qwen3-14B --n 32 --seed 119301 --materials validation --out results/rebuild_e119_criterion
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e119_response_rotation.py --out results/rebuild_e119_criterion
+```
+
+最后一例在fvcrc10 RAM模型缓存存在时使用；易失缓存从官方HF snapshot revision40c069…重建。Qwen3-8B/14B是post-trained模型，本接口不生成thinking，不能称Base或完整reasoning测试。
+
+完成原始批后，用以下报告脚本重建小汇总/图。它们核对完整行数和全部条件，不改变科学评分：
+
+```bash
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e117_wave_summary.py --plot
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e118_wave_summary.py
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e119_response_rotation.py --out results/e119/criterion_discovery
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e119_response_rotation.py --out results/e119/criterion_confirmation
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e119_wave_summary.py
+```
+
+E117完整四点profile由`e117_complete_feature_profile.py`生成；探索标POST-HOC-DESIGN/PRE-RESULT，确认评分前冻结，不冒称两个阶段都是original primary。独立raw审计在`results/e117/`、`e118/`、`e119/`，读raw后才对作者汇总；无独立GPU复跑。JSONL/高维模型资产不进git。

@@ -1,10 +1,10 @@
 # E118：判断方面与私人输出约定的正交反事实（2026-10-11）
 
-- **状态：** PLANNED（跑前）
+- **状态：** DONE-CONFIRMATION（2026-10-12；三家族各16→32新材料，独立校对完成）
 - **类型：** CLAIM / 机制功能区分；不是格式/头细化。
 - **对应：** C21/C22、I04、P17；未新增完整criterion主张。
 - **问题（一句话）：** 历史另一来源改变A证据时，传入的是那个来源的具体方面→标签关联，还是共同情绪信号/置信强度？
-- **为什么现在做：** E117两个家族确认label缓存影响Food和Service，却没有确认答案KV边的方面选择；原生与label干预方向不同，且single A已有Service响应。此前A/B共用全局p，不能区分共同语义增益与独立私人关联。这是解释功能对象的缺口，不是修正阴性结果。
+- **为什么现在做：** E117确认label缓存影响Food和Service，答案KV边的方面作用只在Llama部分确认，尚无三家族一致性；原生与label干预方向不同，且single A已有Service响应。此前A/B共用全局p，不能区分共同语义增益与独立私人关联。这是解释功能对象的缺口，不是修正阴性结果。
 - **设置：** 保留E117自然双方面评论、A按food评价、8条A/8条B/8个未见新评论，FP32/eager/frozen。独立交叉B criterion(food/service)×B private convention(same/opposite A)四世界，A原文/标签/名字和query始终固定。A整体正反约定平衡。仅B评论四组合的双射重配实现四规则，B输出word/stream/位置/Source和评论多重集全部一致，没有直接给B标准。8条B都unique，CPU从词长匹配pool按seed选择，不看输出。词汇同类within对照交换8个B位置、保持原service rule，用于判断普通措辞置换量级。
 - **干预：** 4真实world各native/A-only；三个非origin world的A-label KV移入相同recipient（其他缓存固定），native/A-only各测；历史B答案KV仅在A label形成时消费，其他A形成后再移入同recipient，native/A-only各测。另4个far输出形成的A-label donor进入相同shared recipient，测output命名在形成端的作用。所有层/实际answer+separator区域，沿用E114/E117数值实现；不扫head/layer/alpha，不新增训练。
 - **读数：** z=yes−no；Food/Service gold按A私人p编码，完整四点bias/F/S/F×S同报。每种接口和B criterion的私人代码反转：Delta_task,feature=mean[z_same−z_opposite]*feature_gold/2。主量J=(Delta_food,F−Delta_food,S+Delta_service,S−Delta_service,F)/2：两个独立criterion是否使代码反转作用跟随对应输入方面。J>0支持task-specific association影响，J≈0而两方面同增支持共同情绪/强度解释；不从边际Service非零推断泄漏。所有Food/Service方向、bias/interaction同时保存，不能挑最好模型/方向。Far-label同J与Shared-label配对报；actual-donor答案KV效果对真实label缓存效果作冻结系数1预测、raw r/RMSE/zero，不拟合新系数。
@@ -28,16 +28,42 @@
 - **论文定位/设计来源：** Cho information removal把共同语义与task-specific功能区分；AddUp Appendix K提醒错误映射仍可产生相近QK对齐，因此不能用广义访问解释具体criterion；Yu/Ananiadou用私人映射反转区分QK/OV。E118的增量候选是独立来源的criterion×code如何影响A已形成证据、并由具体历史消息预测；宽task selection/QK-V/上下文化所有权归已有论文，不自动声称首次。
 
 ## 结果（运行后追加）
-待CPU/GPU；读数与决策表跑前冻结，源码SHA256：0fa0de9de30171a0815b01206314095864567dc735868a2ed0bd43b2db426c4c。
+CPU预检、全部GPU探索/确认与独立校对完成；读数与决策表跑前冻结，原源码SHA256：0fa0de9de30171a0815b01206314095864567dc735868a2ed0bd43b2db426c4c。
 
-### 执行校正（不改变科学干预/读数）
+### 执行校正（保留所有失败；科学条件与读数不变）
 
-Qwen16/32、Mistral16、Llama16在原源码0fa0de9…完整；Mistral32 CPU遇到有≥4词对但没有两组完全不交叠四组合的长度bin，不能满足跑前八条B unique要求，尚无评分。按原要求仅跳过CPU不可构造bin、保留原seed118101/n32，不按模型输出筛样；可构造的Qwen/Llama流保持原次序。科学消息/指标/条件没有改变，新源码SHA256：9a3984b357738357ca3161fc1fadf832812fd7f68a6915187816347cea43b482。另一Llama32在加载模型时外部GPU1进程占满卡，OOM，0科学评分，换空GPU2原seed重跑。失败目录和results/e118/execution_failures.json保留，未杀其它作业。模型数值有效后的确认包含所有正负，不因J大小选家族。
+| 运行 | 实际科学源码 | 材料/执行校正 |
+|---|---|---|
+| Qwen16/32、Mistral16、Llama16 | 原冻结0fa0de9… | 原词池与采样逻辑，均完整 |
+| Llama32 | 9a3984b… | 按原八条B unique要求跳过不可构造长度bin，seed/n/生成次序不变；最初GPU1加载OOM、0评分，移至空GPU2重跑 |
+| Mistral32 | 独立入口eea5590… | 原validation全部六个bin无法提供两组无交叠四组合；仅增全新负词nasty，加有限pool可行性guard；其余词/模板与科学引擎不变 |
 
-Mistral确认第二次CPU诊断表明原validation六个长度bin**全部**无法组成8 unique文本，while重试不适用；0评分CPU进程已停止。使用独立Mistral材料执行入口，不触碰同时运行的Llama源文件；只在确认词池加入nice、nasty、bad并先断言全pool至少一组可行pair。bad曾在discovery词表出现，确认句式/完整评论仍全新，因此不声称Mistral完全disjoint词表。此是CPU构造可行性修正，未看任何Mistral确认输出，也未改4world/干预/指标；若CPU仍不通过不加载GPU。原失败与实现版本保留。
+Mistral原CPU assert、无可行bin的while重试、nice-only候选guard均无评分；nice/bad/poor是未评分材料草稿，**最终不使用**。只停止自己的CPU重试进程，没有杀外部占卡作业。失败原始目录、CPU穷举诊断、Llama OOM与版本身份见`results/e118/execution_failures.json`及`preflight_*`。最终Mistral确认评论与探索完整字节交集0；不称完全未经修改的原validation词池。
 
-解释补记：J是平均criterion×feature交互，不能独自排除“同一功能方向、两task不同增益”；只有完整两个task的F/S响应能评价这种解释。审计保留两task选择性及共同gain替代，不改跑前J或挑指标，也不从J>0宣布完整标准程序。
+J为平均criterion×feature交互，不独自排除两个task不同幅度的同一功能方向；独立校对完整保留每task的Food/Service/bias/交互与选择性。这是解释补记，不更改跑前J/条件或筛选context。
 
-Mistral材料最终预检候选同时补入poor（与bad均为旧词，完整新评论/模板无交集）；此前nice-only版本CPU可行性guard明确失败，无评分。完整原validation六个bin可行pair数均0已由另一会话独立枚举，while重试CPU被终止，作为工具失败保留。最终材料版本先通过32context全部几何再开GPU；不能称旧validation原词表的确认。
+### 确认结果（全部接口；context-bootstrap 95% CI）
 
-最终采用的Mistral确认材料修正以此为准：独立token检查表明原pool只有一个单token负词miserable，而正词有多个；**只增入全新负词nasty**即可形成两组完全不同的四组合。nice/bad/poor是未评分的CPU候选，最终不使用，无discovery词复用。保持原八个正词/原八个负词及三套validation模板，其它生成与科学干预不变。有限global guard先验证非空，跳过不能构造的bin；新入口SHA256 eea5590ce3168c7616ae41d215b902d5e93c8b4e0fe5cf8f1835d8818dafa73b。
+| J（nats） | Qwen3-8B | Mistral-7B-v0.3 | Llama-3.1-8B |
+|---|---:|---:|---:|
+| native | 0.1373 [0.1031, 0.1733] | 0.0684 [0.0441, 0.0949] | 0.3206 [0.2739, 0.3727] |
+| gate | -0.0236 [-0.0630, 0.0124] | 0.0143 [0.0068, 0.0226] | 0.0725 [0.0511, 0.0965] |
+| label | -0.0050 [-0.0144, 0.0045] | 0.0066 [0.0023, 0.0117] | -0.0044 [-0.0261, 0.0165] |
+| label_gate | 0.0062 [-0.0088, 0.0220] | 0.0121 [0.0068, 0.0182] | 0.0707 [0.0498, 0.0938] |
+| edge | 0.0036 [0.0003, 0.0074] | 0.0020 [0.0006, 0.0038] | 0.0071 [0.0027, 0.0121] |
+| edge_gate | 0.0065 [0.0017, 0.0114] | 0.0035 [0.0014, 0.0060] | 0.0173 [0.0112, 0.0236] |
+| far_label | -0.0040 [-0.0091, 0.0013] | -0.0000 [-0.0048, 0.0055] | -0.0007 [-0.0116, 0.0113] |
+
+完整native的J均正，但不能据此说每家族的两个criterion都同样可选择：Qwen主要为Service选择性；Mistral与Llama native两task均正。A-label交换有明显共同两方面作用，Llama的Food选择性正、Service反而负；gated label也不等于两个criterion均可靠运输。完整2×2响应图与所有区间见`results/e118/wave_summary.json`、独立报告，不只展示J。
+
+远离输出namespace降低两方面的代码响应，尤其Llama：Food-rule的Food/Service各−.267/−.243nats，Service-rule各−.110/−.079，区间均负。far−shared J可能近零；这不意味着output命名没有形成作用，而是它不必只改变平均方面选择性。
+
+历史答案KV对真实A-label接口的raw预测（native/A-only）：Qwen r .596/.390、RMSE .369/.572（zero .449/.597）；Mistral .704/.730、RMSE .199/.274（zero .255/.361）；Llama .594/.620、RMSE .510/.640（zero .620/.808）。关联内容作用成立，但不能将namespace高精度解释推广成完整criterion程序。
+
+**完整性：** 6批、144contexts、38016评分、.442206记录GPU·时；所有33条件和探索/确认正负保留。数值、self、layer0与pristine cache通过，实际token流已独立重建。原始复算5838项最大差5.88e−15，未独立GPU重跑。
+
+**认识更新：** 同一输出身份下的历史关联会进入本来源证据，但『有关系作用』不是『所传内容独立规定完整判断标准』。功能响应必须同时看两个方面与私人代码；形成路径与最终使用应分别测量。既有C21/C22不撤回，不因新功能问题自动提高所有旧结果的要求。
+
+**范围：** 模板Food始终先于Service，当前方面函数也可由位置选择实现；不声称位置无关抽象criterion。raw/private能力、instruction和所有阳性另报，不能把响应矩阵当成成功隔离A。正式I04/ACTIVE不改。
+
+**结果文件：** `results/e118/{qwen3,mistral,llama}_{discovery,confirmation}/{analysis,run,preflight,completeness_audit}.json`；[独立校对](../results/e118/independent_review_2026-10-11.md)、`wave_summary.json`、[完整功能图](../results/figs/fig_criterion_code_responses.png)。raw JSONL留在README资产路径，不进git。

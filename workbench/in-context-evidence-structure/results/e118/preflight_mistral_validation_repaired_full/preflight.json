@@ -1,0 +1,201 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e118/preflight_mistral_validation_repaired_full",
+    "n": 32,
+    "seed": 118101,
+    "materials": "validation",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        1476
+      ],
+      [
+        5849
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    480,
+    472,
+    468,
+    476,
+    484,
+    444,
+    480,
+    476,
+    464,
+    444,
+    460,
+    460,
+    476,
+    480,
+    448,
+    448,
+    468,
+    480,
+    464,
+    472,
+    472,
+    464,
+    440,
+    484,
+    440,
+    440,
+    452,
+    468,
+    448,
+    456,
+    444,
+    448
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "B_code_and_within_change_same_8_positions": true,
+  "only_B_comment_content_changes": true,
+  "B_criterion_and_private_convention_independently_crossed": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional",
+      "nice"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable",
+      "nasty",
+      "bad"
+    ],
+    "templates": [
+      "The food seemed {f}, and the service seemed {s}.",
+      "The food was really {f}; the service was really {s}.",
+      "Overall, the food was {f}, whereas the service was {s}."
+    ]
+  },
+  "valid_quartet_length_bins": 6,
+  "quartet_lengths": [
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      23
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      23
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 33,
+  "planned_scores_per_context": 264,
+  "patch_scope": "B criterion x private convention; A label caches and historical answer KV in fixed recipient"
+}

@@ -212,7 +212,7 @@ n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只�
 
 [E110](experiments/E110-learned-relation-fixed-label-stream.md)、results/e110/qwen3_discovery/{analysis,run,completeness_audit}.json：16contexts，固定Source/label/位置，B答案第0层KV精确0差；跨类与同类文本置换效应差.0458[−.1358,.2108]nats，答案形成边差.0234[−.0207,.0682]；同类置换已大。该载体对固定label关系改变的完整A label重建r=.323，不能以namespace成功推断通用规则运输。当前需要更清楚的语义关系反事实，E111同任务同时检验namespace/关系；C16/C20 L1仍不改。
 
-## C22：固定输出身份时，历史答案区域消息传递学到的关联（L2，有界、两家族）
+## C22：固定输出身份时，历史答案区域消息传递学到的关联（L2，有界、三家族）
 
 | ID | 主张 | 等级 | 证据 | 威胁/校对 |
 |---|---|---|---|---|
@@ -229,3 +229,25 @@ C21的L3登记依据E109/E111/E112的三个已验证组合与独立校对，§4/
 | C23 | Qwen3-8B/Mistral-7B-v0.3受控情绪/私人yes-no任务中，query允许读取全部来源，固定B位置缓存时改变A位置缓存的namespace形成历史，仍改变对B配对的rule响应：B shared环境下幅度减弱2.098[1.344,2.892]/1.238[1.037,1.464]nats；B far时为.759[.269,1.269]/.684[.461,.896]。A/B缓存交叉的signed rule交互.775[.113,1.440]/.321[.187,.454]。历史答案区域K/KV形成反事实仍可预测原生A label接口的部分namespace作用，两个读取背景均保持（KV r：Qwen .899/.930、Mistral .959/.968） | L2 | [E114](experiments/E114-native-formation-reading-crossing.md)；results/e114/{qwen3_confirmation,mistral_confirmation}/{analysis,run,preflight,completeness_audit}.json；[独立校对](results/e114/independent_review_2026-10-11.md)、independent_recalculation_2026-10-11.json；完整§4审计见卡 | 两模型/一个明确任务，尚无native跨任务覆盖。F/R是位置缓存因子；B缓存也已上下文化且可含A信息，query/attention继续演化，不是固定reader/两个纯Source模块。混合corner为诊断，完整native两端阳性另核；actual donor的近似/部分重建，非唯一必要路径或无donor行为模型。signed交互直接支持本设计的非加性，不以absolute交互单独推断。Mistral分块序列化范围明确；raw比值不作中介份额 |
 
 C23把Source-gated形成接口接回原生多来源判断，补齐当前叙事的功能联系；不要求解释全部ICL或完美覆盖关系残差才记成果。C16/C20、I04及ACTIVE状态不变，没有自动进入candidate或新增实验关卡。
+
+### 2026-10-11：E115–E117扩大已测范围并区分新的功能问题
+
+- [E115](experiments/E115-llama-frozen-native-mechanism.md)：Llama-3.1-8B base，32新词句single两私人方向100%。C22固定label关联KV绝对超额.157[.103,.215]nats，signed −.081[−.172,.011]；C23形成条件作用(B shared/far).947[.740,1.158]/.337[.088,.592]，signed交互.221[.026,.417]。冻结KV原生label效果r .838/.881、RMSE .559/.720（zero1.015/1.411）。C22/C23的明确情绪范围扩至第三家族，仍L2；grade不机械随模型数上调。证据results/e115/llama_confirmation/{analysis,run,completeness_audit}.json，权重身份results/e115/model_identity_audit.json。
+- [E116](experiments/E116-native-mhs-formation-reading.md)：三家族真实MHS文本的局部native形成效应已确认，Qwen/Mistral/Llama B shared幅度.344[.179,.525]/.0645[.0357,.0928]/.112[.075,.155]；完整数值见卡与results/e116/*_confirmation。single规则能力仍弱，因此扩的是C21/C23的因果margin任务范围，不写成可靠人类私人规则部署或应用修复。MHS探索与确认评论交集124，保留新context表述。
+- [E117](experiments/E117-criterion-feature-formation.md)：固定A与B输出stream的paired criterion反事实，经A-label缓存改变新输入的Food/Service功能响应；三家族确认两方面同增。当前历史答案KV的Service作用没有跨三家族一致保持（Llama部分作用确认，Qwen/MistralCI跨0），不能由C21 namespace路径或C22情绪关联推断完整criterion运输。原阳性机制不撤回，新的功能分叉由E118检验；未新增L3/摘要标准程序主张。
+
+三实验原始复算、实际token流、all-layer消费与取样校对：[第三轮独立审计](results/e117/independent_review_2026-10-11.md)。C16/C20、I04/ACTIVE状态不变；新增完整四点observer的探索POST-HOC-DESIGN与确认冻结已分开记录。
+
+### 2026-10-12：E118/E119功能校对与已有主张的能力范围
+
+E11914B正常全Source确认：namespace形成幅度3.059[2.557,3.571]nats，固定答案KV关联abs .318[.226,.421]/signed .249[.115,.390]；冻结KV对label rule反事实r .934/.927、RMSE1.047/1.818（zero2.610/3.949）。C21形成解释与C22/C23在更大同族模型上有直接支持，不以参数数自动升级。**C23 signed交互14B为−.686[−1.133,−.237]，8B级家族正方向不能写成普遍规律。** 14B plain continuation不是完整reasoning压力测试。
+
+E118三家族与E11914B的criterion×private-code响应显示，关联幅度/两task平均J与具体功能方向必须分别解释。far形成同时降低两方面代码响应，即使J差近零；native label负det、gated label正normalized rotation、edge小正det都保留。不能从CI跨0宣称形成端rank1，也不能从namespace高r推广完整criterion程序。Food始终先Service，固定模板范围明示。
+
+## C24：关联形成与标准相关功能响应需要不同的反事实测量（L2，有界）
+
+| ID | 主张 | 等级 | 证据 | 边界 |
+|---|---|---|---|---|
+| C24 | 固定方面顺序的双方面评论任务、请求A且A raw/B输出stream固定时，B criterion×私人约定反事实在不同缓存干预接口产生不同A功能响应。Qwen3-14B32新材料native下，B代码反转对匹配方面相对另一面更强：Food选择性.282[.199,.371]、Service .404[.294,.528]nats；signed rotation .410[.330,.493]。query全程禁读B位置、A仍由完整历史形成的gated条件rotation .190[.073,.310]。A-label交换J为−.0238[−.0478,−.0025]，历史答案KV对actual label干预只部分重建（r .668/RMSE .646 vszero .746）。因此关联消息传入的证据不能直接替代整个criterion相关功能的验证 | L2 | [E118](experiments/E118-criterion-code-feature-crossing.md)、[E119](experiments/E119-stronger-model-formation-criterion.md)；results/e118/*_confirmation、results/e119/criterion_{discovery,confirmation}/{analysis,response_rotation,run,completeness_audit}.json；[E118独立校对](results/e118/independent_review_2026-10-11.md)、[E119独立校对](results/e119/independent_review_2026-10-11.md)及独立主张措辞核对 | n16→n32独立材料，方向observer首E119评分前冻结；各CI未多重比较校正。native改变完整历史、label/edge保留recipient其它缓存，故不能由接口差异推断独立隐藏模块/算法。B code影响A不是成功Source隔离或B自己的任务正确率；固定方面词序尚未排除位置选择。label负det、gated label小正rotation、edge小正det和残差保留，未称label完全共同gain、无criterion信息或独立完整程序。actual donor重建非无donor算法 |
+
+C24把C22“关联可进入本来源证据”与其具体功能尺度分开，补充而不撤回C21–C23。由人判断最终论文意义与形态；C16/C20等级与I04/ACTIVE排程未改。E115–E119完整24批、576contexts/181632评分，三份独立审计36750项数值核过（max1.13e−14）；独立token几何/消费校验完成，未独立GPU重跑。

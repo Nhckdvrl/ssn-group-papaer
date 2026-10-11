@@ -15,3 +15,7 @@
 原文2×2在两种V背景都测QK条件作用，反向亦然。学习点是背景依赖必须实际测，而不是先假定贡献可加；不是仅复制一个factorial术语。E114相应交叉A位置的形成缓存与B位置上下文化环境，report signed交互而非只对absolute差值作解释；固定B缓存并非固定live query。两模型新词句signed交互.775/.321、历史答案KV预测原生label效果保持，为Source功能来源问题补齐native联系。它不是原论文的FV-QK/V变量，不能写首次分解路由/内容或一般非加性。
 
 本次venue corpus nearest（关键词in-context learning label contextualization function vectors）返回本论文为最强直接accepted近邻；arXiv新检索未提供精确撞车证据，但不能将检索阴性当首次证明。最强对齐依据仍是指定全文的实际实验对象/接口与claim范围，而非摘要匹配。
+
+### E117→E118：由附录K的弱task identity解释逼出功能竞争
+
+再次核正文Appendix K（映射改变、Q patch、FV注入准确率）：相近QK对齐未必说明相同input→output task。E117已确认A-label反事实令Food/Service同增，不能由此挑一个方面命名criterion运输；single A本已有Service偏好。E118正交B criterion与其private code，在固定B输出stream与内容多重集时测代码反转是否跟随指定方面，并在相同recipient比较形成后的label/历史答案边。这个实验既允许task-specific关系，也允许共同语义增益胜出；一般semantic manifold/QK解释归原文，新的实测对象是Source历史关系的功能来源。
