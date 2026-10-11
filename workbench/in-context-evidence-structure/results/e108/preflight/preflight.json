@@ -1,0 +1,66 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-8B",
+    "out": "results/e108/preflight",
+    "n": 16,
+    "seed": 108001,
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        6092
+      ],
+      [
+        20836
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    640,
+    530,
+    554,
+    632,
+    620,
+    789,
+    619,
+    633,
+    577,
+    565,
+    658,
+    450,
+    565,
+    661,
+    533,
+    536
+  ],
+  "current_source_changed_tokens": 0,
+  "foreign_source_label_counts": [
+    4,
+    4
+  ],
+  "reversed_contexts": 10,
+  "patch_scope": "A complete prelabel packets and content trajectories separately mediate recomputed A label KV; nonlabel query sources remain pristine shared.",
+  "modes": [
+    "shared_native",
+    "far_native",
+    "shared_gate",
+    "far_gate",
+    "full_A",
+    "far_label",
+    "input_mediated_label",
+    "held_shared_input_far_label",
+    "packet_mediated_label",
+    "held_shared_packet_far_label",
+    "instruction"
+  ]
+}
