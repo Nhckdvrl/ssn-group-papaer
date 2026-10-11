@@ -82,4 +82,4 @@ Use existing expensive interventions and public trajectories before training any
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/cross-lingual-acquisition-regimes/`
+- **历史 workbench（2026-10-11 已删除）：** `workbench/cross-lingual-acquisition-regimes/`，相关实验只能从旧 Git 提交查阅，文献资料继续保留。

@@ -1,7 +1,7 @@
 # 视频生成与世界模型（Video / world models）
 
 **范围：** 可交互视频世界模型、real-time causalization / distillation、控制与响应、长程记忆 / persistent state、world-model evaluation、紧凑 latent world model 与规划。  
-**更新：** 2026-10-02（seam-specific 主线降级；新主线切到 real-time conversion capability preservation）。
+**更新：** 2026-10-11（实时转换主线和 seam workbench 已被用户删除；本页作为领域文献知识库保留）。
 
 ## Problem map
 
@@ -16,12 +16,10 @@
 
 **校准：problem-driven 完全可以是顶会工作，但 problem 必须对应 world model 的 load-bearing capability。** 实现级 anomaly 只有在能解释/损伤这些能力时才有 paper scale。
 
-## 当前 territories
-- **ACTIVE-MAIN：[`real-time-causalization-capability-preservation`](../../../workbench/real-time-causalization-capability-preservation/)**  
-  完整调查：[`REALTIME_CAUSALIZATION_SURVEY.md`](REALTIME_CAUSALIZATION_SURVEY.md)
-- **PROPOSED：[`latent-world-model-planning`](../../../workbench/latent-world-model-planning/)**  
-  保留原调查：[`LATENT_PLANNING_SURVEY.md`](LATENT_PLANNING_SURVEY.md)
-- **PAUSED diagnostic asset：[`video-world-model-temporal-interfaces`](../../../workbench/video-world-model-temporal-interfaces/)**
+## 当前工作台与历史
+
+- **PROPOSED：** [`latent-world-model-planning`](../../../workbench/latent-world-model-planning/)，对应 [`LATENT_PLANNING_SURVEY.md`](LATENT_PLANNING_SURVEY.md)。
+- **已删除（2026-10-11 用户决定）：** `real-time-causalization-capability-preservation` 与 `video-world-model-temporal-interfaces` 两个 workbench。不再有本领域 ACTIVE-MAIN。[`REALTIME_CAUSALIZATION_SURVEY.md`](REALTIME_CAUSALIZATION_SURVEY.md) 为历史文献资料，不能当成当前研究计划；旧 workbench 可在 Git 历史查看。
 
 ## Method / ownership map
 - **Vid2World (ICLR 2026)**：video diffusion causalization 的宽故事。
@@ -33,7 +31,7 @@
 - **ActionSplice (2609.08230)**：chunk sampling 中途 action retargeting。
 - **WBench / PlayWorld / R2M-Bench**：evaluation 向 interaction adherence、persistent state、closed-loop objective、relative-memory controls 发展。
 
-因此新主线不能只是“causalization 会掉点”“stage 分数不同”或“chunk action responsiveness 有问题”；必须进一步做到 capability-specific、factorized attribution、cross-lineage / counterexample-aware。
+**历史研究判断（非当前主线）：** 若未来重新进入实时转换方向，仅“causalization 会掉点”“stage 分数不同”或“chunk action responsiveness 有问题”并不足以形成新科学贡献，仍需区分能力、阶段与 lineage。
 
 ## Evaluation map
 - **视觉**：quality / temporal artifact / consistency

@@ -1,10 +1,17 @@
 # Mechanism Population Dynamics
 
-**Scientific state: ONGOING / DO NOT ARCHIVE** — 2026-10-09 用户最新明确决定继续本项目；2026-10-08 的停止投入记录已不再是当前有效决定。  
-**Registry scheduling label: PROPOSED**（不自动替换 ICES 占用的 ACTIVE-EXPLORE 名额；不是停止研究）。原 ACTIVE-EXPLORE（2026-10-01）  
-**Lane:** our-taste / mechanistic interpretability / model science  
-**Target:** ICML 2027 / NeurIPS 2027  
+**Scientific state: TERMINATED / 2026-10-11 已终止并完成收尾（用户决定）。**  
+**Registry status: CLOSED。** 不占 ACTIVE-MAIN / ACTIVE-EXPLORE 名额，不再自动继续实验、研究叙事或投稿准备。  
+**Lane（历史）:** our-taste / mechanistic interpretability / model science  
+**Target（历史）:** ICML / NeurIPS / ACL；不再登记后续截稿日。  
 **Territory card:** [`../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md`](../../search/our-taste/TERRITORY_MECHANISM_POPULATION_2026-10-01.md)
+
+## 终止与成果保留（2026-10-11）
+
+- 用户决定：这条研究线已做了大量实验、分析和几轮论文写作，**进一步研究价值和意义有限，现正式终止并收尾**。
+- **整个 workbench 保留**（论文各版本、代码、结果、图表、审计和日志均不清理）。既有研究发现和负结果维持原始证据边界；不因终止升级科学主张。
+- **以下从 §0 开始全部是终止前的历史叙事/进度**，其中“进行中”“建议下一步”等均不是可自动执行的任务；不继续 E87/E88，也不自动启动任何新实验。
+- 2026-10-09 “继续研究”的历史决定已被本次明确终止决定覆盖。科学方向未来若要重启须再次取得用户明确许可。
 
 ## 0. Registered object
 
@@ -88,7 +95,9 @@ R0 产物审计 → E01 复现已知机制（induction）→ E02 群体扫描（
 - **2026-10-03：** 人：校对免了，按同题材成熟顶会论文的标准补工作量、补实验，叙事按好论文的方式包装、对齐顶会尺度（→ A02、E42–E51）。
 
 - **2026-10-08（历史记录，已被后续决定覆盖）：** 曾记为停止投入并准备候补（ICES 已恢复）。
-- **2026-10-09（当前有效的人类决定）：** 明确继续 `mechanism-population-dynamics`。不删、不归档、不暂停研究；对 E75/E76 的科学否定按原始记录保留，后续研究方向仍可继续调整。此次整理只修订状态说明，不改论文、实验、脚本或结果。
+- **2026-10-09（历史决定，已被 2026-10-11 覆盖）：** 明确继续 `mechanism-population-dynamics`。不删、不归档、不暂停研究；对 E75/E76 的科学否定按原始记录保留，后续研究方向仍可继续调整。此次整理只修订状态说明，不改论文、实验、脚本或结果。
+
+- **2026-10-11（当前最终决定）：** 用户决定本 workbench **TERMINATED / CLOSED / 已收尾**，整体科学收益与进一步意义不足以继续投入；保留全部论文与实验资产，不再自动启动研究、修稿或实验任务。
 
 ## 12. Assets
 - claims `CLAIMS.md` · pain log `PAIN_LOG.md` · 实验卡 / 脚本 `experiments/`、`scripts/` · 日志 `logs/`

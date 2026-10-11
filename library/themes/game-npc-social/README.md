@@ -87,5 +87,4 @@ Prefer public substrates where the NPC actually interacts with a game loop: CPDC
 
 ## 7. 本仓库相关 workbench / 历史
 
-- `workbench/npc-persona-behavior-grounding/`
-- `workbench/npc-deception-investigability/`
+- **历史工作台（2026-10-11 已按用户决定从 HEAD 删除）**：`workbench/npc-persona-behavior-grounding/`、`workbench/npc-deception-investigability/`。保留本领域阅读与开源底座信息，不代表这两个研究项目继续运行；原提案可从 Git 历史查阅。
