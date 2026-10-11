@@ -32,3 +32,10 @@
 删除前主分支提交 [`b7be63751eac0342679819cc1fac0da264e39c89`](https://github.com/Nhckdvrl/ssn-group-papaer/tree/b7be63751eac0342679819cc1fac0da264e39c89/workbench)；需要查看或恢复旧目录时可使用该历史版本。删除只影响新 Git 树，不清除 Git 历史、外部主机文件或独立设备缓存。
 
 所有当前状态以 [workbench 登记表](README.md) 为准；[2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md) 仅是历史快照。
+
+## 2026-10-11 后续人类决定：NPC 两项目一并删除
+
+- 已直接从当前 HEAD 删除 `workbench/npc-persona-behavior-grounding/` 与 `workbench/npc-deception-investigability/`。这两个目录原先各只有一个 README，均无已提交的实验结果；不另建 archive 副本。
+- `library/themes/game-npc-social/` 是通用文献知识库，保留；删除 workbench 不代表从 Git 历史抹除旧方案。
+- 当前由 7 个缩至 **5 个 workbench**，`mechanism-population-dynamics` 保持 CLOSED，不恢复研究。
+- 同一决定还要求整理 mechpop：以最终论文 / 结项索引为先，剔除明确缓存文件；实验测量与历史复现包保留。

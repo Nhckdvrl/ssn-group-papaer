@@ -66,10 +66,10 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **ACTIVE-MAIN：空缺。** 原实时世界模型主线已按人类决定从当前树删除。
 - **ACTIVE-EXPLORE：** [`in-context-evidence-structure`](workbench/in-context-evidence-structure/README.md)，保持现有登记。
 - **PROPOSED：** [`latent-world-model-planning`](workbench/latent-world-model-planning/README.md)、[`data-centric-rsi`](workbench/data-centric-rsi/README.md)、[`incremental-interpretation-revision`](workbench/incremental-interpretation-revision/README.md)，不擅自提升为主线。
-- **PAUSED：** [NPC persona](workbench/npc-persona-behavior-grounding/README.md) 与 [NPC deception](workbench/npc-deception-investigability/README.md) 两个项目，维持已有状态。
+- **已删除的两个 NPC workbench（2026-10-11）：** `npc-persona-behavior-grounding` 与 `npc-deception-investigability` 已从当前 Git 树移除；领域文献仍在 `library/themes/game-npc-social/`，不再列入研究排程。
 - **CLOSED / TERMINATED：** [`mechanism-population-dynamics`](workbench/mechanism-population-dynamics/README.md)：2026-10-11 人决定终止并收尾；已积累大量实验和论文修订，但进一步的科学价值和意义有限。**保留全部论文、脚本和结果，不自动继续研究。**
 - **五个已从 HEAD 删除的工作台：** real-time causalization、scoped context、cross-lingual acquisition、multi-LLM collaboration、video temporal interfaces。无 archive 复制；旧 Git 历史保留。
-- 当前共 **7 个 workbench**，详见 [当前登记表](workbench/README.md) §9 与 [清理记录](workbench/WORKBENCH_CLEANUP_2026-10-11.md)。
+- 当前共 **5 个 workbench**；其中 mechpop 已终止但保留科研资产。详见 [当前登记表](workbench/README.md) §9 与 [清理记录](workbench/WORKBENCH_CLEANUP_2026-10-11.md)。
 
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
