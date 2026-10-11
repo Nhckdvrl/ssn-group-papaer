@@ -8,9 +8,9 @@
 
 **定位与主张：** Cho/CTA/AddUp拥有宽label/上下文化/信息选择解释。具体增量是将Source位置访问与历史关系的功能来源分开，解释输出命名怎样改变来源证据形成，并以冻结形成子图预测原生反事实、检验其具体功能分辨率。C21有界L3；C22/C23在E121的第二benchmark/独立raw审计后达到有界L3，C24有界L2，I04/ACTIVE状态未改。C24明确限定缓存接口而非不同隐藏程序。最强已有解释及compression risk公开列出，不靠“完全空白”或持续弱模型失败定位。
 
-**最新证据与当前工作：** E120原生operation与E121可靠private真实SST文本共16批384contexts/164352评分完成，18,064项raw独立复算和图/实际token校验通过。四checkpoint原生targeted阻断减少B-rule，有限图恢复方向依读取环境；自然namespace KV r .931/.948/.930/.966。由此在5b166d73首评分前冻结E122对称形成政策与query隔离，两Actor/四criterion×code整体预测已完成四checkpoint确认：均值+2.93/+3.42/+7.37/+2.78pp，同时保留成本；其自然文本/namespace预测E123正在执行。上轮Llama/真实MHS/双方面机制/14B确认也均完成。[英文草稿](PAPER_DRAFT.md)、[论文形态](PAPER_SHAPE.md)、[数据覆盖](DATA_PLAN.md)同步到这些结果。探索的正负、部分重建、真实预测后果有限、固定方面顺序、强模型成功仍保留。原MHS任务的single能力弱，不能把它冒称真实个人标准部署。没有因残差自动追加头/层/字段关卡，也没有宣布投稿就绪。
+**最新证据与当前工作：** E120原生operation与E121可靠private真实SST文本共16批384contexts/164352评分完成，18,064项raw独立复算和图/实际token校验通过。四checkpoint原生targeted阻断减少B-rule，有限图恢复方向依读取环境；自然namespace KV r .931/.948/.930/.966。由此在5b166d73首评分前冻结E122对称形成政策与query隔离，两Actor/四criterion×code整体预测已完成四checkpoint确认：均值+2.93/+3.42/+7.37/+2.78pp，同时保留成本；其自然文本/namespace预测E123亦完成确认：shared平均+7.32/+5.37/+9.47/+7.42pp，两Actor均正；完整output功能代价与近邻范围保留。上轮Llama/真实MHS/双方面机制/14B确认也均完成。[英文草稿](PAPER_DRAFT.md)、[论文形态](PAPER_SHAPE.md)、[数据覆盖](DATA_PLAN.md)同步到这些结果。探索的正负、部分重建、真实预测后果有限、固定方面顺序、强模型成功仍保留。原MHS任务的single能力弱，不能把它冒称真实个人标准部署。没有因残差自动追加头/层/字段关卡，也没有宣布投稿就绪。
 
-§1–8保留截至E79的初次综合；§9–37保留后续转折与验证。当前结论以前言与§34–37为准；[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
+§1–8保留截至E79的初次综合；§9–38保留后续转折与验证。当前结论以前言与§36–38为准；[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
 
 ## 1. 我之前哪里做偏了
 
@@ -875,3 +875,23 @@ E120/E121共384contexts/164352评分/2.540记录GPU·时。E120/E121全部独立
 独立9960项raw复算/实际token和mask通过；主文284数字与旧E90点检通过，[主文](PAPER_DRAFT.md)重组为约3200词三认识，细节移[技术附录](PAPER_APPENDIX.md)，不隐藏近邻CTA/Cho/AddUp/Jurisdiction/Conflict/TRTL。当前已补齐上一整篇审计的native必要贡献和自然功能阳性缺环，不为残差再增head/layer矩阵。
 
 C22/C23经另一会话按§3/4/5核两个材料benchmark与至少两家族后记有界L3（不是模型数自动上升）；C21L3/C24L2保留。E123则明确扩大整体功能预测：真实SST两Source共同使用/strong private controls、shared/far namespace竞争，在91374879首评分前冻结85条件、四模型16→32。它不是承认E122的必过新门槛，真实结果可以使功能范围不同；正在八空卡执行。
+
+
+## 38. 自然文本的两来源规则使用与完整输出（E123，2026-10-12）
+
+**这一轮真正增加的认识：** 历史形成不仅有局部margin作用；同样政策在双方面任务与可靠private真实SST中产生预测到的功能差异。选择性限制跨Source答案形成可保留私人关系，又保留其它共享访问；全来源形成隔离与query-only并不等价。来源位置不等于关系的来源，指定label-space内正确也不等于完整使用当前来源的约定。
+
+| 模型，确认n32 | shared选择性−native平均pp | A | B | query-only−native pp | shared−far选择性收益差pp |
+|---|---:|---:|---:|---:|---:|
+| Qwen3-8B | 7.32 [5.37, 9.28] | 4.49 [1.56, 7.03] | 10.16 [6.05, 14.26] | -0.39 [-3.12, 2.44] | 7.23 [5.08, 9.47] |
+| Mistral-7B-v0.3 | 5.37 [2.93, 7.71] | 4.49 [0.98, 8.20] | 6.25 [3.32, 9.38] | 5.96 [3.22, 8.59] | 5.37 [2.73, 7.81] |
+| Llama-3.1-8B | 9.47 [7.52, 11.52] | 7.42 [4.69, 10.16] | 11.52 [8.20, 14.65] | 16.70 [14.36, 19.04] | 8.89 [6.84, 10.94] |
+| Qwen3-14B | 7.42 [5.57, 9.38] | 4.88 [2.15, 8.20] | 9.96 [6.05, 14.06] | 3.81 [1.27, 6.25] | 6.05 [4.30, 7.91] |
+
+全部shared primary candidate/full输出一致，opposite约定收益大，两ActorCI均正；same小负/跨零。query-only模型/任务依赖：14B双方面更适合query-only，这项自然任务则selective更强；不由模型大小推出同一最佳policy。shared/far收益差虽确认，但far原生near-ceiling且word priors不同，不冒称纯身份对照。独立margin observer在A固定词下shared B-convention响应减少；full输出在far/all-cross损失巨大而own-space仍94–97%，其它词表输出44.6–46.9%，A/B差异全部报。Mistral far selective full−1.27pp确认，不隐藏在candidate0后。
+
+这不是首次发现binding/label-space识别。再次读Feng binding ID的双向抵消/位置干预与Mixing pointer-vs-answer反事实，现有理论可容纳部分功能差异；本项没有识别ID，也不为微观ID资格再开NameK矩阵。真实增量是**output-dependent关系来源的因果形成解释→原生条件贡献→固定词关联→可前瞻检验的整体Source规则使用政策**。这一解释对正确模型仍可测量，不以最新模型必须失败为前提。
+
+32批E120–123共768contexts/388608评分、5.781676记录GPU·时；18,064＋9,960＋22,824＝50,848项独立数值比较通过。全部科学source评分前冻结、条件/seed无结果筛选；独立复算不冒称独立GPU。三组新科学图/两组前轮图已对实际结果视觉核对，主文与技术附录对应同完整raw/controls。当前C21–23有界L3、C24有界L2，formal状态不改；最后整篇独立主张审计将复核新主文，不以固定claim数或实验量自动保证接收。
+
+科研意义已从“多标注者失误”推进到“形成与使用怎样共同组织合法多Source证据”：这是一项可检验的具体计算解释，不声称整个ICL唯一算法。早期负结果、真实多人应用有限后果、MHS single弱、强模型成功与所有恢复/功能负向仍保留；没有因新近邻名字相似就压缩旧阳性，也没有为沉没算力继续追加micro分解。

@@ -132,4 +132,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E120](E120-operation-necessity.md) | 原生形成操作贡献与受限图恢复 | DONE-CONFIRMATION；四checkpoint各16→32、native阻断均正，恢复方向依query环境；独立raw/图封版 |
 | [E121](E121-natural-sentiment-mechanism.md) | 真实SST文本有能力阳性的同一形成机制 | DONE-CONFIRMATION；四checkpoint各16→32、private两方向能力明确，KV rule r .931/.948/.930/.966；数据/raw审计封版 |
 | [E122](E122-source-preserving-formation.md) | 保留一般上下文化、两个Source各自规则共同使用 | DONE-CONFIRMATION；四checkpoint平均+2.93/+3.42/+7.37/+2.78pp，query模型差/一致gold成本与single能力完整保留；独立raw/稿件封版 |
-| [E123](E123-natural-source-function-policy.md) | 真实SST source函数政策与output namespace竞争 | RUNNING；四模型16→32、85条件、首评分前91374879冻结，不按探索筛模型 |
+| [E123](E123-natural-source-function-policy.md) | 真实SST source函数政策与output namespace竞争 | DONE-CONFIRMATION；四模型16→32、shared平均+7.32/+5.37/+9.47/+7.42pp，两Actor均正；far完整输出代价/先验与headroom保留，独立22824项封版 |

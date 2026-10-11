@@ -291,3 +291,10 @@ C23新增[选择性形成/读取功能证据E122](experiments/E122-source-preser
 **登记升级：C22 L2→有界L3、C23 L2→有界L3。** 依据不是模型数增加，而是controlled restaurant与独立公认SST5 Movie benchmark的实际n32 paired确认、至少Qwen/Mistral两家族、§4审计及§5独立raw校对。C22 SST固定word内容KV abs .493/.128，两方向/private与signed全部核；C23 SST形成条件作用和signed交互在两家族确认，不将14B其它材料的负交互抹掉。主行范围同步，旧“仍L2”均为当时历史登记。C21有界L3保留，C24固定双方面单任务仍L2，不把其它主张自动上调。
 
 证据追加[E121](experiments/E121-natural-sentiment-mechanism.md)与`results/e121/{qwen3,mistral,llama,qwen14}_confirmation/{analysis,run,preflight,completeness_audit}.json`；[独立自然数据/机制审计](results/e121/independent_review_2026-10-12.md)8328项max5e−15，[E122原始审计](results/e122/independent_review_2026-10-12.md)9960项max0和[独立整篇/覆盖判断](results/e122/manuscript_claim_audit_2026-10-12.md)。Source函数正确性、priors、图归一化、多重比较、实际token构造范围明列；无独立GPU复跑。未改I04/ACTIVE、未自动转candidate或使用H判决。
+
+
+### 2026-10-12：E122/E123整体功能预测与三项主文认识
+
+C21形成解释、C22部分关联内容、C23形成/读取共同作用不仅保留原界面预测，还产生整体功能政策的独立确认。E122双方面targeted平均+2.93/+3.42/+7.37/+2.78pp；[E123](experiments/E123-natural-source-function-policy.md)真实SST四checkpointshared平均+7.32[5.37,9.28]/+5.37[2.93,7.71]/+9.47[7.52,11.52]/+7.42[5.57,9.38]pp，两Actor收益CI均正，candidate/full primary逐query一致。四模型16→32、所有85条件完整，证据`results/e123/*_confirmation/{analysis,run,preflight,full_output_summary}.json`与[独立22824项复算](results/e123/independent_review_2026-10-12.md)。C21–23有界L3/C24单任务L2保留，不凑新C25。
+
+query-only与targeted优劣依模型/任务而变；same约定不保证受益。far native headroom/词先验不同，namespace gain差不能单独证明纯identity特异性。far/all-cross own-space正确率仍94–97%但full51–54%，other-word44.6–46.9%且Actor不对称，表明完整wordspace使用与candidate函数需要分开。Mistral far targeted full−1.27[−2.44,−.20]pp、candidate0，14B full+1.27[.29,2.25]；不得改写为普遍无损repair、Source识别新组件或bindingID独占解释。政策删除不等边数、状态活演化，结论是固定政策的整体功能后果。

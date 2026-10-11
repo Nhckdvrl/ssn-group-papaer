@@ -135,3 +135,52 @@ Each SST private direction has n16contexts; natural-text pool/split/source prove
 | Llama, larger checkpoint, and real-text coverage | [E115](experiments/E115-llama-frozen-native-mechanism.md), [E116](experiments/E116-native-mhs-formation-reading.md), E119; [wave audit](results/e117/independent_review_2026-10-11.md) |
 | Limits and failed functional interfaces | E50–E52, E99, E107, [E110](experiments/E110-learned-relation-fixed-label-stream.md); full ledger in [CLAIMS](CLAIMS.md) |
 | Joint source-function formation and query policies | [E122](experiments/E122-source-preserving-formation.md), [independent raw audit](results/e122/independent_review_2026-10-12.md) |
+
+
+## F. Real-text function policies and complete output readouts
+
+Primary accuracy averages origin/cross worlds, two requested sources, and eight queries within each context. Within-class movement is reported separately. The original primary is candidate accuracy; full-vocabulary output and word-space diagnostics are separate secondary readouts. Shared-word candidate/full-vocabulary aggregates coincide in all six confirmation policies. Private polarity is balanced across contexts; source-specific conventions are inferred from examples, not provided as explicit rules.
+
+| Model / output words, n=32 | Native candidate / full, % | Selective candidate / full | All formation off candidate / full | Query-only candidate / full | Answer + query candidate / full | All formation + query candidate / full |
+|---|---:|---:|---:|---:|---:|---:|
+| Qwen3-8B / shared | 84.86 / 84.86 | 92.19 / 92.19 | 75.00 / 75.00 | 84.47 / 84.47 | 93.85 / 93.85 | 94.34 / 94.34 |
+| Qwen3-8B / far | 94.24 / 92.09 | 94.34 / 92.09 | 94.34 / 51.46 | 94.34 / 94.34 | 94.63 / 94.63 | 93.16 / 93.16 |
+| Mistral-7B-v0.3 / shared | 88.77 / 88.77 | 94.14 / 94.14 | 73.54 / 73.54 | 94.73 / 94.73 | 96.39 / 96.39 | 93.16 / 93.16 |
+| Mistral-7B-v0.3 / far | 98.05 / 96.00 | 98.05 / 94.73 | 95.21 / 53.71 | 97.27 / 97.27 | 97.46 / 97.46 | 95.61 / 95.61 |
+| Llama-3.1-8B / shared | 81.25 / 81.25 | 90.72 / 90.72 | 75.20 / 75.20 | 97.95 / 97.95 | 99.12 / 99.12 | 99.12 / 99.12 |
+| Llama-3.1-8B / far | 97.95 / 95.41 | 98.54 / 95.12 | 94.82 / 53.81 | 96.58 / 96.58 | 96.97 / 96.97 | 95.31 / 95.31 |
+| Qwen3-14B / shared | 89.94 / 89.94 | 97.36 / 97.36 | 75.00 / 75.00 | 93.75 / 93.75 | 97.27 / 97.27 | 98.05 / 98.05 |
+| Qwen3-14B / far | 95.90 / 95.80 | 97.27 / 97.07 | 96.68 / 52.83 | 92.97 / 92.97 | 94.63 / 94.63 | 96.68 / 96.68 |
+
+| Model | Selective shared gain A, pp | B, pp | Opposite conventions, pp | Same conventions, pp | Shared-minus-separate gain, pp |
+|---|---:|---:|---:|---:|---:|
+| Qwen3-8B | 4.49 [1.56, 7.03] | 10.16 [6.05, 14.26] | 15.23 [11.91, 18.75] | -0.59 [-2.15, 0.98] | 7.23 [5.08, 9.47] |
+| Mistral-7B-v0.3 | 4.49 [0.98, 8.20] | 6.25 [3.32, 9.38] | 12.11 [8.20, 16.21] | -1.37 [-3.71, 0.20] | 5.37 [2.73, 7.81] |
+| Llama-3.1-8B | 7.42 [4.69, 10.16] | 11.52 [8.20, 14.65] | 19.14 [15.04, 23.24] | -0.20 [-0.59, 0.00] | 8.89 [6.84, 10.94] |
+| Qwen3-14B | 4.88 [2.15, 8.20] | 9.96 [6.05, 14.06] | 15.23 [11.52, 19.14] | -0.39 [-1.37, 0.59] | 6.05 [4.30, 7.91] |
+
+These are paired context-bootstrap95%CI. The namespace contrast is not headroom matched; word meanings/priors also differ. No layer, head, intervention strength or context is selected to improve these results.
+
+| Model | Far/all-formation-off full accuracy A, % | B, % | Other-source word output A, % | B, % |
+|---|---:|---:|---:|---:|
+| Qwen3-8B | 48.24 [40.43, 56.05] | 54.69 [45.70, 63.48] | 51.17 [43.36, 58.98] | 42.58 [33.40, 51.76] |
+| Mistral-7B-v0.3 | 30.86 [21.68, 40.62] | 76.56 [68.75, 83.98] | 66.99 [56.84, 76.76] | 22.27 [14.84, 30.08] |
+| Llama-3.1-8B | 64.65 [58.01, 71.29] | 42.97 [34.96, 50.98] | 34.96 [28.32, 41.60] | 55.27 [47.46, 63.28] |
+| Qwen3-14B | 46.09 [39.65, 52.34] | 59.57 [53.52, 66.02] | 53.71 [47.46, 60.16] | 38.48 [32.03, 44.73] |
+
+This classification uses the actual argmax token and the other source’s two word IDs. The average other-source-word rates are 44.6–46.9%, but their A/B composition differs. In the shared-word case, surface words cannot identify their source: recording zero identifiable other-space words is not evidence of provenance isolation.
+
+| Model | Single A, % | B opposite shared | B same shared | B opposite far | B same far |
+|---|---:|---:|---:|---:|---:|
+| Qwen3-8B | 95.31 [92.58, 97.66] | 94.14 [90.62, 97.27] | 97.27 [94.92, 99.22] | 92.97 [88.28, 96.88] | 94.14 [90.23, 97.66] |
+| Mistral-7B-v0.3 | 98.83 [97.27, 100.00] | 98.05 [94.92, 100.00] | 98.44 [96.88, 99.61] | 98.83 [97.66, 100.00] | 98.05 [96.48, 99.61] |
+| Llama-3.1-8B | 98.44 [96.88, 99.61] | 99.22 [98.05, 100.00] | 99.61 [98.83, 100.00] | 94.14 [89.84, 97.66] | 89.06 [83.58, 94.14] |
+| Qwen3-14B | 98.05 [96.48, 99.61] | 96.88 [93.75, 99.22] | 98.44 [96.48, 100.00] | 95.70 [93.75, 97.66] | 96.48 [92.97, 99.22] |
+
+The private positive/inverted halves, actual full-vocabulary controls, all one-sentence instructions, complete A convention-response/signed/within movement readouts, and all 85 condition statistics remain in the experiment summaries and independent audit. Aggregate private functions are usable but not uniformly perfect; the distinct words also have asymmetric direction priors. Formation masks remove unequal sets of edges, renormalize attention, and allow states to evolve. Consequently the result identifies functional consequences of fixed policies, not isolated representation components or a tuned performance method.
+
+![B convention response on fixed A words](results/figs/fig_natural_source_provenance.png)
+
+The observer is the absolute context mean of the A-gold-oriented half contrast between B conventions, computed in A’s fixed output space. It is not attention-based source ranking. Signed and matched within-class movement remain alongside it.
+
+E123 freezes the scientific source at91374879 before the first score. Four checkpoints each execute discovery16 and confirmation32, totaling192contexts/130560scores. Scientific inputs, masks, full-output tokens, and small report data are independently checked; see [E123](experiments/E123-natural-source-function-policy.md) and its [raw audit](results/e123/independent_review_2026-10-12.md). The pinned SST downloader reproduces all three Arrow files and the Llama32 confirmation contexts byte-for-byte in the recorded environment, without modifying the frozen scientific modules.

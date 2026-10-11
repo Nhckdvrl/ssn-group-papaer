@@ -94,3 +94,24 @@ CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts
 ```
 
 E117完整四点profile由`e117_complete_feature_profile.py`生成；探索标POST-HOC-DESIGN/PRE-RESULT，确认评分前冻结，不冒称两个阶段都是original primary。独立raw审计在`results/e117/`、`e118/`、`e119/`，读raw后才对作者汇总；无独立GPU复跑。JSONL/高维模型资产不进git。
+
+## E120–E123：原生操作与整体功能复现
+
+| 卡 | 科学入口 | discovery → confirmation | 每context评分 |
+|---|---|---|---:|
+| E120原生操作/有限恢复 | `e120_operation_necessity.py` | 16/120001 → 32/120101，`--materials validation` | 512 |
+| E121真实SST形成/固定词关联 | `e121_natural_sentiment_mechanism.py` | 16/121001 → 32/121101，`--materials validation` | 344 |
+| E122两个来源整体政策 | `e122_source_preserving_formation.py` | 16/122001 → 32/122101，`--materials validation` | 488 |
+| E123真实文本政策×namespace | `e123_natural_source_function_policy.py` | 16/123001 → 32/123101，`--materials validation` | 680 |
+
+每项四模型均固定执行两批；参数、revision、源码SHA见各`run.json`，运行在conda `verl-clean`（Python3.12/torch2.8.0+cu128/transformers4.57.6）。`--preflight-only`只验证材料/token几何，不加载主模型；`--analyze-only`重建既有raw汇总。E120–123全部完成；每项完整run与独立审计提供实际证据。
+
+SST数据可在任意路径复现，不要求原作者HOME缓存。以下helper从pinned official JSONL下载，验证三个文件SHA、行数、顺序，然后仅在内存中指定冻结builder的CACHE。它不改材料选择或评分。相同Arrow writer环境下三个Arrow SHA亦与原运行完全一致。
+
+```bash
+/home/xiang/miniconda3/envs/verl-clean/bin/python scripts/reproduce_sst.py --cache-dir /tmp/ices-sst-rebuild --experiment e123 --model /tmp/ices_models/Llama-3.1-8B --out results/rebuild_e123_llama --n 32 --seed 123101 --materials validation --preflight-only
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/reproduce_sst.py --cache-dir /tmp/ices-sst-rebuild --experiment e121 --model /tmp/ices_models/Qwen3-8B --out results/rebuild_e121_qwen --n 32 --seed 121101 --materials validation
+CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python scripts/e122_source_preserving_formation.py --model /tmp/ices_models/Mistral-7B-v0.3 --out results/rebuild_e122_mistral --n 32 --seed 122101 --materials validation
+```
+
+将python/model路径换成自己的已安装环境/缓存；下载revision不变。不要写入既有正式`--out`。仅需CPU数据重建时省略`--experiment`。完整后运行`e120_e121_report.py`、`e122_wave_report.py`和`e123_wave_report.py`重建小报告/图；报告同时披露指定candidate词表和full-vocabulary argmax，不改primary。作图使用matplotlib，原始行为/contexts JSONL不进git，科学source与报告source分开。

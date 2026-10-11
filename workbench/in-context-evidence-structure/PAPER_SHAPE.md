@@ -8,7 +8,7 @@
 
 **主旨：** Source-conditioned retrieval acts on evidence jointly formed from the contextual history. Shared output identities shape which source's learned associations enter that evidence. A causal formation pathway predicts namespace counterfactuals, while criterion–convention interventions show that transferred associations and full criterion-related functional responses require distinct measurements.
 
-**本轮更新：** E120/E121/E122四checkpoint各16→32全完成。原生操作、功能阳性的自然SST与两来源整体政策已接上三条主文认识；独立raw审计与284主文数值核对完成。C21–23有界L3（两benchmark直接实验与§4/5独立审计）、C24单方面框架有界L2。E123真实SST政策×namespace已冻结并执行，尚待14B确认封版。见[整篇对齐](PAPER_ALIGNMENT_2026-10-12.md)和[独立主文审计](results/e122/manuscript_claim_audit_2026-10-12.md)。
+**本轮更新：** E120/E121/E122四checkpoint各16→32全完成。原生操作、功能阳性的自然SST与两来源整体政策已接上三条主文认识；独立raw审计与284主文数值核对完成。C21–23有界L3（两benchmark直接实验与§4/5独立审计）、C24单方面框架有界L2。E123真实SST政策×namespace四checkpoint均完成：shared平均+5.4–9.5点、两Actor均正，同时揭露candidate/full输出功能分离；独立raw封版。见[整篇对齐](PAPER_ALIGNMENT_2026-10-12.md)和[独立主文审计](results/e122/manuscript_claim_audit_2026-10-12.md)。
 
 核心解释与证据：
 
@@ -45,7 +45,7 @@
 | 原生形成操作贡献和受限恢复 | E120 | 四checkpoint新材料，恢复方向依读取环境；不只是donor构造路径 |
 | 真实文本中的native形成作用与private功能 | E116/E121 | MHS局部margin/single弱；SST5独立test query/private两方向能力明确，同一冻结预测有效 |
 | 两来源共享prefix的整体使用预测 | E122 | 四world×两Actor、4模型16→32全部完成；政策收益、Actor/一致代价与query-only差异保留 |
-| 自然文本整体政策与输出namespace | E123 | 真实SST原文、两个私人约定、shared/far×形成/query；已冻结执行，待完整封版 |
+| 自然文本整体政策与输出namespace | E123 | 真实SST原文、两个私人约定、shared/far×形成/query；四模型全部完成，22,824项独立复核，完整输出损失公开 |
 | 联合方面与私人约定的功能测量 | E117/E118/E119 | 完整matrix/bias/FS；14B方向observerprospective，固定方面词序 |
 | 数字/实现可信 | 三轮新raw独立审计 | E115–119共24批，全部条件与种子保留；非独立GPU复跑 |
 
@@ -57,11 +57,11 @@
 | output身份在什么计算过程中起作用？ | [形成预测图](results/figs/fig_evidence_formation.png) | 固定系数1历史答案→label子图重建 |
 | 是static label还是learned association？ | [关联图](results/figs/fig_relation_transfer_interfaces.png)，E115/E119 | 输出词固定的关系反事实有额外作用 |
 | 它在正常读取时还起作用吗？ | [原生计算图](results/figs/fig_native_evidence_use.png)及四模型表 | 形成与读取缓存条件作用、不同交互方向 |
-| 对整体规则使用有什么可预测后果？ | [政策功能图](results/figs/fig_source_function_tradeoffs.png)，E122；E123自然检验运行中 | 不同形成/读取政策保留或破坏哪些功能，所有方向与代价共同解释 |
+| 对整体规则使用有什么可预测后果？ | [政策功能图](results/figs/fig_source_function_tradeoffs.png)，E122；E123自然检验封版 | 不同形成/读取政策保留或破坏哪些功能，所有方向与代价共同解释 |
 | 这份内容是否规定具体判断标准？ | [三家族完整功能图](results/figs/fig_criterion_code_responses.png)、[14B方向图](results/figs/fig_stronger_model_functional_responses.png) | 关联幅度不等于完整criterion功能，接口响应可分开验证 |
 | 哪些结果不能外推？ | E116single、固定词序、E50–52、E99、E110与预测残差 | 真实标准/应用后果/独立抽象程序范围 |
 
-[英文主文](PAPER_DRAFT.md)与[附录](PAPER_APPENDIX.md)已整合E120–122结果，E123待完整确认/校对后加入。下一项研究动作由尚未回答的具体科学问题决定，不由剩余误差或卡数决定；不自动追加微观标准，也不因已有理论能容纳现象而撤回实测形成解释。是否正式转candidate由人判断；持续完成用户已授权的整篇科研执行与main同步。
+[英文主文](PAPER_DRAFT.md)与[附录](PAPER_APPENDIX.md)已整合E120–122结果，E123也已加入§6.2/附录F，完整政策/输出词表与每Actor结果保留。下一项研究动作由尚未回答的具体科学问题决定，不由剩余误差或卡数决定；不自动追加微观标准，也不因已有理论能容纳现象而撤回实测形成解释。是否正式转candidate由人判断；持续完成用户已授权的整篇科研执行与main同步。
 
 ## 论文形态卡 — in-context-evidence-structure — 2026-10-06（agent 草稿，待人审）
 
