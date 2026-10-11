@@ -1,6 +1,8 @@
 # 主张账本（CLAIMS）
 
-证据等级见 `../EXECUTION.md`。当前没有成立的 scientific claim；baseline reproduction 不自动升级为 claim。
+**2026-10-11 结项声明：CLOSED / TERMINATED。** 本表保留历史 C01/C02/C03/C05 的 L1/L2 局部证据、限制和撤回；这些等级并不等于独立确认的最终机制论文主张。项目不再新增实验或升级主张。见 [结项综述](CLOSEOUT.md)。
+
+证据等级见 `../EXECUTION.md`；baseline reproduction 不自动升级为 claim。
 
 | ID | 主张（一句话，可证伪） | 等级 | 证据（实验卡 E##、结果文件） | 已知威胁 / 未控制混杂 | 最近更新 | 校对 |
 |---|---|---|---|---|---|---|
