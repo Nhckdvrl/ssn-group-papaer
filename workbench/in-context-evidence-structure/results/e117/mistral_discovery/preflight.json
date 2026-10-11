@@ -1,0 +1,134 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e117/mistral_discovery",
+    "n": 16,
+    "seed": 117001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        1476
+      ],
+      [
+        5849
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    448,
+    428,
+    452,
+    452,
+    436,
+    420,
+    440,
+    416,
+    432,
+    440,
+    432,
+    420,
+    452,
+    452,
+    436,
+    440
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "same_4_discordant_B_positions_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "excellent",
+      "great",
+      "wonderful",
+      "superb",
+      "pleasant",
+      "fantastic",
+      "lovely",
+      "delightful"
+    ],
+    "negative": [
+      "terrible",
+      "poor",
+      "awful",
+      "horrible",
+      "unpleasant",
+      "dreadful",
+      "bad",
+      "disappointing"
+    ],
+    "templates": [
+      "The food was {f}, and the service was {s}.",
+      "The food was {f}; the service was {s}.",
+      "The food was {f}, while the service was {s}."
+    ]
+  },
+  "valid_quartet_length_bins": 6,
+  "quartet_lengths": [
+    [
+      24
+    ],
+    [
+      21
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      21
+    ],
+    [
+      22
+    ],
+    [
+      21
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      21
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ]
+  ],
+  "reversed_contexts": 8,
+  "planned_conditions": 52,
+  "planned_scores_per_context": 416,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

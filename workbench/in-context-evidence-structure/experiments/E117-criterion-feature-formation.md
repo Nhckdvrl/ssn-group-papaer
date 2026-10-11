@@ -1,6 +1,6 @@
 # E117：来源证据形成会传入另一种判断标准吗？（2026-10-11）
 
-- **状态：** PLANNED（跑前）
+- **状态：** DONE-CONFIRMATION（跑前字段保留）
 - **类型：** CLAIM / 新功能对象的机制区分，不锁定论文主线。
 - **对应：** C21/C22、I04、P17；新增criterion主张仅在实测支持后登记。
 - **问题（一句话）：** 共享输出影响本来源证据时，它只是改变现有判断的强度，还是能把另一来源关注的输入方面传入本来源的标签证据？
@@ -34,3 +34,17 @@ CPU预检校正（无GPU数据）：两个B四组合可共享concordant字符串
 ### PRE-RESULT观测补记（探索已启动，尚未读取任何E117科学结果）
 
 原food/service平均对比保留不变。2×2 query已经完整采样，平均service效应可能因food的两种条件作用相反而抵消；这是纯代数的识别问题。另存POST-HOC-DESIGN的完整四点分解（共同bias、food、service、food×service）与food±下条件service效应，**不修改正在运行的引擎或原primary读数**，不只挑更显著的新量。确认n32之前冻结该观测；新增项在新材料才作确认，用于避免以平均0宣称完全不使用service。科学场景/52条件/样本均不扩展，不是新能力门槛。
+
+### 三家族新词/句式确认：形成后的label功能与答案子图不同
+
+| n32 | single A正/反 | single B正/反 | 原生label cross−within Food / Service（nats） | 历史答案KV cross−within Food / Service（nats） |
+|---|---|---|---|---|
+| Qwen | 0.727[0.695,0.758]/0.750[0.703,0.797] | 0.820[0.766,0.875]/0.867[0.820,0.914] | 0.041[0.010,0.072]/0.061[0.025,0.096] | 0.001[-0.007,0.010]/0.005[-0.004,0.014] |
+| Mistral | 0.836[0.789,0.883]/0.727[0.672,0.773] | 0.750[0.711,0.789]/0.688[0.641,0.734] | 0.037[0.012,0.062]/0.040[0.014,0.067] | 0.012[0.002,0.021]/0.007[-0.003,0.018] |
+| Llama | 0.930[0.883,0.977]/0.797[0.766,0.836] | 0.898[0.852,0.945]/0.859[0.820,0.906] | 0.135[0.086,0.186]/0.153[0.107,0.201] | 0.034[0.019,0.048]/0.021[0.009,0.034] |
+
+三家族的A-label paired Food/Service作用同向增加，说明B反事实确实改变A已形成证据的功能；不是从边际Service存在推断cross-source泄漏。native全Source响应在Qwen一增一减，局部label双增，与最终criterion选择不同。Qwen/Mistral答案KV的Service与conditional Service确认CI跨0；Llama native Service +.0214[.0086,.0336]、A-only +.0326[.0167,.0482]，支持这个家族的部分形成作用，但Food也同增，未识别criterion特异选择；原namespace机制成功不直接预测此功能对象的全部形成。探索中Qwen gated Service的−.031没有确认，原结果保留；不新增层/头救该子图。
+
+Qwen explicit A/B准确率100%/98.44%，Mistral56.25%/58.98%；Llama见全accuracy表。from-demo criterion选择未达到普遍可靠，不能宣布原子能力均已完整掌握。single A本已有Service响应：其存在与大小并非foreign标准运输证据；paired形成变化才是实证对象，也仍兼容共同情绪增益。原A/B私人p为同时翻转，并未独立cross，故E118用两个有效criterion×独立B convention让相反解释真正竞争，不修改本批读数。
+
+6批59904评分；所有52条件/seed保存，探索与validation材料无评论交集。B concordant字符串可重复，Counter多重集严格核对，不以set或dict.values冒充带重复样本；A/Q八个独立字符串。两方面/共同bias/交互的完整四点observer在读结果前定义，探索仍标POST-HOC-DESIGN，确认前冻结（440350d9）；原primary不变。独立复算见results/e117/independent_review_2026-10-11.md，图见results/figs/fig_criterion_feature_formation.png。

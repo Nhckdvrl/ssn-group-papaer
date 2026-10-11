@@ -1,0 +1,321 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Llama-3.1-8B",
+    "out": "results/e116/llama_discovery",
+    "n": 16,
+    "seed": 116001,
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "numeric_max_error": 7.62939453125e-06,
+  "elapsed_seconds": 190.19074964523315,
+  "gpu_hours": 0.052830763790342544,
+  "script_sha256": "b7c25ccfe0285f68d3cf9b83f7fd0e663e486a7ff649d3751a6e003eb806b281",
+  "contexts_sha256": "b9e1a931ce679f5516196aec7d5a3cb91c3e2c07754a965bf20563d75e66443b",
+  "python": "3.12.0",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "git_head": "ac3cc08685f4f882a2303bc80859598889dc4cff",
+  "sender_layer0_KV_check": "not applicable: MHS rule contrast changes B output tokens",
+  "model_revision": "1f47e50cdbe801ad8a5174156ec3a0655108fb9f",
+  "dtype": "float32",
+  "attention": "eager",
+  "model_type": "llama",
+  "training": false,
+  "patch_layers": "all",
+  "edge_calls": {
+    "0": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "1": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "2": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "3": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "4": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "5": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "6": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "7": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "8": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "9": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "10": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "11": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "12": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "13": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "14": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "15": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "16": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "17": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "18": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "19": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "20": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "21": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "22": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "23": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "24": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "25": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "26": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "27": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "28": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "29": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "30": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    },
+    "31": {
+      "origin_namespace_edge_k": 16,
+      "origin_namespace_edge_kv": 16,
+      "origin_namespace_edge_v": 16,
+      "cross_namespace_edge_k": 16,
+      "cross_namespace_edge_kv": 16,
+      "cross_namespace_edge_v": 16,
+      "self": 1
+    }
+  },
+  "edge_self_max_error": 0.0,
+  "self_edge_cache_checked": true,
+  "pristine_source_cache_exact": true,
+  "primary_query_scope": "native all prefix positions; gated controls at all query positions",
+  "native_crossing": "A cached evidence formation x B cached reading environment"
+}

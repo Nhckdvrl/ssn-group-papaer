@@ -1,6 +1,6 @@
 # E115：Llama上的冻结形成解释与原生计算（2026-10-11）
 
-- **状态：** PLANNED（跑前）
+- **状态：** DONE-CONFIRMATION（跑前字段保留）
 - **类型：** REPRO / C21–C23的家族迁移检验。
 - **对应：** C21/C22/C23、I04、P17。
 - **问题（一句话）：** 已有形成→新输入判断的因果解释能否在Llama原样成立，还是Qwen/Mistral的特定实现？
@@ -21,7 +21,7 @@
 | single/private阳性弱 | 此接口不足以解释能力或机制阴性，保存全记录；不以模型弱/论文价值低直接关线 |
 | 数值/几何失败 | 无科学结论，修实现而非机制；失败目录与版本保存，不挑contexts |
 
-- **算力预算：** 独立单卡≤.4 GPU·时（下载不占GPU）；计划fvcrc21 GPU0，其他独立阅读/资产核对继续。总12卡可用，但此依赖实验不铺配置。实际待run.json记录。
+- **算力预算：** 独立单卡≤.4 GPU·时（下载不占GPU）；计划fvcrc21空GPU（启动前实查，原GPU0已被其它任务占用），其他独立阅读/资产核对继续。总12卡可用，但此依赖实验不铺配置。实际待run.json记录。
 - **命令：** `CUDA_VISIBLE_DEVICES=0 /home/xiang/miniconda3/envs/verl-clean/bin/python -u scripts/e115_llama_native_mechanism.py --model /tmp/ices_models/Llama-3.1-8B --out results/e115/llama_discovery --n 16 --seed 115001 --materials discovery`；确认改out为llama_confirmation、n32/seed115101/materials validation。另同设置preflight-only。
 - **定位：** 这不是新idea/novelty声称；沿用CTA功能路径与AddUp背景条件比较，检验当前C21–C23解释的直接模型范围。ACL/EMNLP/NAACL全文阅读继续审视自然问题/实验链，不因增加Llama自动敲定论文。
 
@@ -29,3 +29,16 @@
 待运行。源码SHA256：ff749f370b443385e76dca8b424a13e43e81db5c445f2dc67c3aa3034d3097fe；原E114 SHA为2ae995abf40944e5018814cd42c0e0a28b71dfaf90206ec44e3df9890e703499。
 
 跑前实现校正：补全run的Llama revision字典，防止在保存元数据时KeyError；无GPU科学记录，干预/分析/条件不变。discovery与validation CPU预检已过：全部配对几何一致、A原文不变。
+
+### 实测：16探索→32新词/句式确认
+
+Llama single A两个私人方向均100%（候选margin）；这是本接口的能力阳性，不由redistributor名称定义新模型。32新材料中形成作用(B shared/far)为0.947[0.740,1.158]/0.337[0.088,0.592] nats；signed交互0.221[0.026,0.417]。固定label关联的答案KV绝对cross−within超额0.157[0.103,0.215]，signed-0.081[-0.172,0.011]，两个量不混用。
+
+| 冻结KV label效果rule双差分 | r | RMSE | zero RMSE |
+|---|---|---|---|
+| B背景0 | 0.838 | 0.559 | 1.015 |
+| B背景1 | 0.881 | 0.720 | 1.411 |
+
+支持部分形成路径迁移，精度与Qwen/Mistral不同；完整通道、两个背景与accuracy均保留。数值max1.53e−5、self0、layer0固定label KV0、所有32层真实消费、source pristine；16+32共16512评分、.107042 GPU时。实际在fvcrc21 GPU2执行，卡命令的GPU0只是跑前示例；未占其它作业。实际B答案word+separator为16个sender位置，Mistral旧实验32位置，不宣称tokenizer一致。四权重SHA/大小与官方metadata相同的审计见results/e115/model_identity_audit.json；原始JSONL本地保留。独立raw复算见results/e117/independent_review_2026-10-11.md（最终版纳入后续批次）。
+
+科学更新：C22的明确情绪关联与C23的native条件作用可扩大到第三家族，不据三模型自动升级普遍机制或宣布收官。KV/V native signed差异CI低于0，不能称两通道等价。

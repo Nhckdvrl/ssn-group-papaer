@@ -1,0 +1,198 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Mistral-7B-v0.3",
+    "out": "results/e117/mistral_confirmation",
+    "n": 32,
+    "seed": 117101,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        1476
+      ],
+      [
+        5849
+      ]
+    ],
+    "far": [
+      [
+        2223
+      ],
+      [
+        7441
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    468,
+    444,
+    484,
+    512,
+    492,
+    496,
+    476,
+    508,
+    460,
+    508,
+    508,
+    492,
+    444,
+    472,
+    464,
+    468,
+    484,
+    476,
+    480,
+    484,
+    504,
+    448,
+    476,
+    444,
+    508,
+    512,
+    480,
+    444,
+    476,
+    476,
+    460,
+    460
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "same_4_discordant_B_positions_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable"
+    ],
+    "templates": [
+      "The food seemed {f}, and the service seemed {s}.",
+      "The food was really {f}; the service was really {s}.",
+      "Overall, the food was {f}, whereas the service was {s}."
+    ]
+  },
+  "valid_quartet_length_bins": 6,
+  "quartet_lengths": [
+    [
+      26
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      28
+    ],
+    [
+      27
+    ],
+    [
+      27
+    ],
+    [
+      26
+    ],
+    [
+      28
+    ],
+    [
+      23
+    ],
+    [
+      28
+    ],
+    [
+      28
+    ],
+    [
+      27
+    ],
+    [
+      22
+    ],
+    [
+      26
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      24
+    ],
+    [
+      28
+    ],
+    [
+      22
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      28
+    ],
+    [
+      28
+    ],
+    [
+      24
+    ],
+    [
+      22
+    ],
+    [
+      26
+    ],
+    [
+      26
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 52,
+  "planned_scores_per_context": 416,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

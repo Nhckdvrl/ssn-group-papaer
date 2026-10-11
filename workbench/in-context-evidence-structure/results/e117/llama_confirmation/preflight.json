@@ -1,0 +1,198 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Llama-3.1-8B",
+    "out": "results/e117/llama_confirmation",
+    "n": 32,
+    "seed": 117101,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        912
+      ],
+      [
+        10035
+      ]
+    ],
+    "far": [
+      [
+        1522
+      ],
+      [
+        5292
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    381,
+    385,
+    417,
+    425,
+    405,
+    409,
+    385,
+    417,
+    409,
+    413,
+    421,
+    405,
+    389,
+    381,
+    409,
+    405,
+    425,
+    417,
+    417,
+    425,
+    421,
+    393,
+    421,
+    389,
+    421,
+    425,
+    425,
+    381,
+    389,
+    397,
+    405,
+    409
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "same_4_discordant_B_positions_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable"
+    ],
+    "templates": [
+      "The food seemed {f}, and the service seemed {s}.",
+      "The food was really {f}; the service was really {s}.",
+      "Overall, the food was {f}, whereas the service was {s}."
+    ]
+  },
+  "valid_quartet_length_bins": 3,
+  "quartet_lengths": [
+    [
+      21
+    ],
+    [
+      21
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      21
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      22
+    ],
+    [
+      21
+    ],
+    [
+      21
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      21
+    ],
+    [
+      23
+    ],
+    [
+      21
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      23
+    ],
+    [
+      21
+    ],
+    [
+      21
+    ],
+    [
+      21
+    ],
+    [
+      22
+    ],
+    [
+      22
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 52,
+  "planned_scores_per_context": 416,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}
