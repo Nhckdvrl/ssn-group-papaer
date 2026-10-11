@@ -109,3 +109,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E99](E99-independent-factor-interface-confirmation.md) | 标准推断与私人判断功能链能否在未选择的新材料成立 | DONE；n8 criterion64/64、Own256/256(128unique)，native mixed83.6%；功能链确认，旧普遍弱表现未确认 |
 | [E100](E100-auxiliary-preference-alignment.md) | 固定共同标准/A函数，只翻C私人偏好检验来源关系的使用 | PLANNED未运行候选；代码完成，当前优先原生内部因果实验，不启动行为扩展 |
 | [E101](E101-native-criterion-commitment-interchange.md) | 原生A判据形成时，内部更新携带criterion、函数、属性还是答案 | DONE-PILOT；512次内部交换、0未知；即时词受影响，511/512最终判断不变，未形成规则运输 |
+| [E102](E102-source-pointer-versus-program.md) | 有效来源字段交换携带donor规则，还是指向recipient证据 | PLANNED；固定E94 layer16接口，donor规则×recipient证据分离，448行已设计 |
