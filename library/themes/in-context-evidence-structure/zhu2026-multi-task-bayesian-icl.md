@@ -1,13 +1,25 @@
-# Multi-Task Bayesian In-Context Learning（ICML2026，arXiv记录）[主文§1–7]
+# Multi-Task Bayesian In-Context Learning（ICML 2026，arXiv Comments；报告类别/分数未核对）`[证据级别：全文主文]`
 
-[v1正文](https://arxiv.org/html/2606.20538v1)，Zhu / Oermann / **Kyunghyun Cho**（不是Hakaze Cho）。2026-10-10读主文§1–7、特别§5.2.2；附录/代码未读全，内部电路未建立。
+Qingyang Zhu / Eric Karl Oermann / **Kyunghyun Cho**；不是 Hakaze Cho。
+[v1 正文](https://arxiv.org/html/2606.20538v1) · [记录页](https://arxiv.org/abs/2606.20538)
+2026-10-10 读主文 §1–7；2026-10-11 重读 §4、§5.1–5.2.2、§6。附录与代码未读全。
 
-1. **形态：** 训练型分层Bayes预测器与先验适应。
-2. **压力：** 标准PFN把训练prior放在weights里；测试时仅给target数据，不能灵活改变prior。
-3. **改变前提：** 其它任务的数据不必是target的额外样例，可以提供关于task prior的信息。
-4. **idea来源：** RECONSTRUCTED；prior不可变→用多组related datasets表达prior→比较先验适应与错误pooling。
-5. **距离：** PFN/Neural Processes、latent-conditioning和多任务ICL；新接口在data空间表达prior，不是首次hierarchical Bayes或跨任务共享。
-6. **实验：** 从头训练小GPT-2/RoPE，raw数值token+概率输出head；d8、20 prior tasks×50数据点。线性/logistic、heavy-tail/flow prior、ERA5。oracle与hierarchical MCMC/SVI明确区分信息权限。§5.2.2固定target和query、只改prefix，并比较把全部样本视作同latent的pool-MCMC与正确prior oracle。
-7. **边界：** “mechanism match”是预测分布对不同算法的匹配，不是native neural circuit定位；需要指定生成模型/共享prior；meta训练小网络不能自动解释自然LLM的Source条件化。
-8. **动作：** 同一组外任务数据可以通过不同统计层次起作用；先构造有不同预测的pooling与prior inference，不能只看“外数据改变了预测”。
-9. **对ICES：** 不应把foreign influence都定义成错误。候选问题是Source关系怎样决定哪些信息可共享、这种标准相关信息在demo上下文化还是query阶段进入计算。宽版本已被该文/多任务学习覆盖；潜在增量须落在原生Source规则推断的功能与因果证据，不能靠改名或Source-specific格式。
+1. **论文形态：** 层次 Bayesian 预测器的方法与受控实验。
+
+2. **背景与压力：** PFN 的训练先验隐含在权重中；只有目标数据的接口不便在测试时指定新先验。
+
+3. **改变的前提：** 其他任务的数据可以描述共享先验，而非充当目标任务的额外样本。
+
+4. **idea 来源：** DOCUMENTED：§1、§4 明确提出用数据集表达先验。RECONSTRUCTED：外任务影响预测并不充分，须让“更新先验”和“混合目标证据”产生不同预测；这不是作者真实发现时间线。
+
+5. **与最近邻的距离（按该文 §6 的定位，未逐篇复核）：** Müller et al. 2022 PFN 的隐式先验；Chang et al. 2025 的显式潜变量分布接口；Ashman et al. 2024 的相关数据集条件化。本文以数据集提供先验，并直接对照 Bayesian 预测分布。
+
+6. **方法与关键实验：** 基于 nanoGPT 从头专训小 GPT-2/RoPE；输入原始数值，输出分布参数。受控主设置为 8 维输入、20 个 prior tasks、各 50 点，使用层次生成过程。不是预训练语言模型的原生机制研究。
+
+   §5.2.2 / Fig.4 固定目标函数、目标上下文和 query，只更换来自不同先验的辅助数据集；图中目标上下文长为 5。对照包括正确先验的 MCMC-oracle，以及误设所有数据由一个任务 latent 生成的 MCMC-hier_pool。预测更接近前者：外数据的作用不能由该 pooling 假设解释。
+
+7. **证据强度与短板：** oracle 知道真实先验；层次基线只知道生成模型并从数据推断先验，信息权限不同。这里的 mechanism match 是行为分布匹配，没有定位神经电路，也不排除其他产生相似分布的算法。公开评审未核对。
+
+8. **可迁移的研究动作（我们的设计学习）：** 固定真正关心的目标，只改变外部证据的统计角色；比较明确算法的预测，而非把“foreign 有影响”当作错误或机制结论。若模型更像 pooled baseline，应改写解释，不能仍写成先验适应。
+
+9. **对 ICES 的定位（我们的判断）：** “共享结构迁移不同于混合私人函数”的宽问题已有基础。C 私人偏好翻转候选更具体：固定 A 的函数和共同 criterion，只改变匿名 foreign 证据能否暴露 criterion；比较 criterion Goal 与 A 私人预测，并按 pA/pB 同异分开。潜在增量在预训练模型对来源关系的实际使用，而非首次提出层次共享。两种 Goal 若有不同反应，才值得进一步解释相应原生计算；若无差异，削弱抵消假设，不据此自动关闭 ICES。

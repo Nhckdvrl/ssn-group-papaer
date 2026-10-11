@@ -169,3 +169,9 @@ Source正确位置读取不蕴含Source信息的功能独立，准确率高也�
 [E95](experiments/E95-source-grouping-and-common-criterion.md)、[E96](experiments/E96-criterion-scope-and-functional-mediation.md)、[E97](experiments/E97-criterion-inference-input-and-answer-code.md)，对应results/e95、e96、e97的analysis/completeness_audit：原2ctxthinking标准16/16、A mixed19/32；仅传自推criterion，删除B/C后Own mixed87.5%且concordant私人偏好100%；新160个标准Goal全部正确，p_A/p_B影响0、c翻转100%。支持标准信息可在不同功能请求中推断、通过文字约束新私人判断；不支持默认私人过程已有同一latent或已识别独立原生criterion模块。
 
 n2仅探索；E96 Own+self/inverse各64行只有32 unique prompts，Own+none只有16，bootstrap单位为context而非重复行。E95材料A块均在foreign之后；E97 review字段与私人Goal不同，不声称token相同的query机制比较。独立agent审计核对数字与边界；仍未做独立新材料的机制确认。
+
+### E98–E99：内部接口未成立，功能链在新材料确认（C16/C20仍L1）
+
+[E98](experiments/E98-criterion-trajectory-without-teacher-cache.md)的112项阳性中，文字mixed14/16、相反私人偏好轨迹8/16，c翻转0；后384未运行。它不支持任何关于prepared donor有无criterion的结论。
+
+[E99](experiments/E99-independent-factor-interface-confirmation.md)、`results/e99/merged/{analysis,completeness_audit}.json`：8新context、criterion64/64，Own256/256但128 unique，native mixed107/128＝83.59%[68.75,96.09]、concordant128/128；39续写、0未知，独立审计通过。标准推断和文字组合链确认；原生本身较强，旧n2普遍弱表现未确认。不能从不同流程的分差证明默认已形成同一latent。全成功经验CI退化、位置与模板关联均保留；无L2升级。

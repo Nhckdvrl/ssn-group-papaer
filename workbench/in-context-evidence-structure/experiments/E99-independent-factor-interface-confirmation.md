@@ -1,6 +1,6 @@
 # E99：共享标准功能链的独立材料确认
 
-- **状态：** RUNNING；运行前提交 `4508ed0b`，E98完成后释放本机GPU0/1，part2/3随即启动；四片均运行，避免等待远端I/O。独立于E98接口成败。
+- **状态：** DONE；576条完整，独立结果审计通过。运行前提交 `4508ed0b`，loader元数据修复 `b39293bb`；独立于E98接口成败。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** E95–E97的共同标准推断与私人判断区别，能否越出原n2、A-last发现材料？
 - **类型：** 固定功能预测确认；不添加模型/格式/层矩阵，不以失败持续存在为成功标准。
@@ -18,6 +18,8 @@ Qwen3.5-27B既有revision，bf16/SDPA、openslime/vendor tf5.12.1，medium greed
 - query service：The pace of our table service was {s}. / The service during our visit proceeded at a {s} tempo. / Our table was served at a {s} pace. / The service we received was {s}.
 
 query模板按context%4，每context四格只改变属性值，属性句序固定RNG。不用真实数据/新任务泛化包装；这是未参与挑选的合成材料、姓名、布局组合。
+
+**运行中独立设计审计：** query模板与A-first/last按同一context奇偶分配，二者没有独立交叉。本次主要检验整体功能链是否在新材料成立，不能把位置分层差异解读为位置的因果作用；保留冻结设计及全部材料。
 
 ## 三项冻结请求及读数
 
@@ -45,3 +47,25 @@ query模板按context%4，每context四格只改变属性值，属性句序固�
 JIT/Cho/representation-deployment研究已有宽区分；当前只验证多个私人来源推断共同标准再与自有偏好组合的具体功能事实，不宣称新任务向量/新prompt方法。E98另行检验内部运输。
 
 四个独立单卡分片，同一节点本地权重，避免反复读共享盘；预计≤3 GPU·时，不训练、不扰动已有服务。脚本`e99_confirm_factor_interface.py`；原文/生成tokens本地，分片run/analysis与合并audit入git。
+
+## 完整结果与按预设更新
+
+| 读数 | 结果 |
+|---|---|
+| criterion | 64/64 |
+| native mixed | 107/128＝83.59% [68.75,96.09] |
+| native concordant | 128/128 |
+| native整体 | 235/256＝91.80% [84.38,98.05] |
+| Own+self mixed / concordant | 128/128 / 128/128 |
+| native c两世界均正确 | 45/64＝70.31% [43.75,93.75] |
+| native p_B翻转改变回答 | 7/128对＝5.47% [1.56,10.16] |
+
+576唯一键、64parent全部保留；39初始截断全部续完，0未知，四片no-op误差0。Own256行实际128个unique prompt，保留重复但不计成256个独立材料；CI为n8整context bootstrap。全成功项经验区间[1,1]退化，不代表总体无不确定性。实际.83824 GPU·时，另有两次打开科学输出前的loader元数据报错，未产生科学行；原日志保留。
+
+**科学更新：** 标准推断与“标准＋自有偏好”功能链在新材料成立；原生私人判断本身也已较强，旧n2的59.4% mixed不能作为稳定普遍弱表现。既保留成功计算，也保留21个错误。Native thinking与Own direct差异不是只添加cue的因果效应，不据此宣布内部标准已经存在或发现新电路。C16/C20仍L1，I04/ACTIVE不变。
+
+**POST-HOC描述：** 21个native错误全在A-last四context，mixed43/64；A-first为64/64。位置与query模板关联已在读结果前记录，不能把此差异直接归因于位置，亦不扩顺序矩阵。
+
+下一步是E100有限干预：保持A目标与共同标准，只翻转C私人偏好，比较标准推断和私人应用是否跟随匿名标签一致性。保留E99全8context及所有成功项；不挑错误材料。
+
+**结果/复核：** `results/e99/merged/{analysis,completeness_audit}.json`，四片`run.json`；独立agent逐行重算gold、parent、prompt/body hash、分母与区间，未发现影响结论的问题。原始生成tokens/text与JSONL留NFS，不进git。
