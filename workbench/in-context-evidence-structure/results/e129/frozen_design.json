@@ -1,0 +1,67 @@
+{
+  "status": "PRE_SCORE_FROZEN_CPU_SOURCE_FINAL",
+  "scientific_source_sha256": "a177434cf425889df1fcc8b3607e6d5057a26080ad467e7999d002e6504b00bd",
+  "conditions_per_context": 64,
+  "queries_per_condition": 8,
+  "prefix_interfaces_per_context": 17,
+  "cue_preparations_per_context": 8,
+  "training": false,
+  "dtype": "float32",
+  "attention": "eager",
+  "recipients": [
+    "origin",
+    "food_positive"
+  ],
+  "donor_worlds": [
+    "origin",
+    "service_negative",
+    "food_positive",
+    "food_negative"
+  ],
+  "donor_cue_actors": [
+    0,
+    1
+  ],
+  "body_scopes": [
+    "own",
+    "joint"
+  ],
+  "co_primary": "per-context mean of two recipient signed determinants of CueB and CueB-minus-CueA; own body",
+  "instruction": "pure prompt; native formation",
+  "phase_selection": "all fixed16 discovery\u219232 validation; numeric floor only, no effect screening",
+  "runs": {
+    "llama_discovery": {
+      "n": 16,
+      "seed": 129001,
+      "materials": "discovery",
+      "contexts_sha256": "cccfefe453be61ef21075c6b5c7b026d096694d2eb3e7e0c80a9cd961f5f9e2f",
+      "preflight_sha256": "91411f7ead660e6a7093e1db05efe02b19814034d77c1894426b0ee9128bea27"
+    },
+    "llama_confirmation": {
+      "n": 32,
+      "seed": 129101,
+      "materials": "validation",
+      "contexts_sha256": "edc2b59c8923f94412e29268e7a50d63a6a238d4d8d5c4967a1482bcf296909c",
+      "preflight_sha256": "0cd7d20d8d9dc425e135935dcfc3f33221cf2c751572d247ada87b2b951d4c80"
+    },
+    "qwen14_discovery": {
+      "n": 16,
+      "seed": 129001,
+      "materials": "discovery",
+      "contexts_sha256": "cccfefe453be61ef21075c6b5c7b026d096694d2eb3e7e0c80a9cd961f5f9e2f",
+      "preflight_sha256": "14085651e5d6307bf76b94b7cae8d03bd67669761ee057eb0fb6f38320735c21"
+    },
+    "qwen14_confirmation": {
+      "n": 32,
+      "seed": 129101,
+      "materials": "validation",
+      "contexts_sha256": "edc2b59c8923f94412e29268e7a50d63a6a238d4d8d5c4967a1482bcf296909c",
+      "preflight_sha256": "eef4a9e35fe481ffa578db3a2f80c7e1edb858f3eeb62adbc35f776e45dce3c9"
+    }
+  },
+  "independent_review_sha256": "27c8c6b61f8c1490a42e0541ceb751ad4c60ed97c53f7acccee7e2c66a8563ca",
+  "model_revisions": {
+    "llama": "1f47e50cdbe801ad8a5174156ec3a0655108fb9f",
+    "qwen14": "40c069824f4251a91eefaf281ebe4c544efd3e18"
+  }
+}

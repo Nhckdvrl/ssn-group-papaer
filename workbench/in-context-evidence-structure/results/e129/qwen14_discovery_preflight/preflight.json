@@ -1,0 +1,140 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Qwen3-14B",
+    "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e129/qwen14_discovery_preflight",
+    "n": 16,
+    "seed": 129001,
+    "materials": "discovery",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "conditions": 64,
+  "queries": 8,
+  "prefix_interfaces": 17,
+  "cue_interfaces": 8,
+  "names": [
+    "Alex",
+    "Sam"
+  ],
+  "words": [
+    "no",
+    "yes"
+  ],
+  "word_ids": [
+    902,
+    9834
+  ],
+  "recipients": [
+    "origin",
+    "food_positive"
+  ],
+  "donor_worlds": [
+    "origin",
+    "service_negative",
+    "food_positive",
+    "food_negative"
+  ],
+  "donor_cue_actors": [
+    0,
+    1
+  ],
+  "body_scopes": [
+    "own",
+    "joint"
+  ],
+  "receiving_actor": 1,
+  "source_cue_before_all_query_content": true,
+  "cue_reads_all_private_sources": true,
+  "primary_private_formation": "independent",
+  "primary_body_scope": "own",
+  "source_cue_is_full_KV_block": true,
+  "prefix_lengths": [
+    381,
+    365,
+    381,
+    365,
+    381,
+    365,
+    365,
+    365,
+    381,
+    381,
+    381,
+    365,
+    381,
+    381,
+    365,
+    365
+  ],
+  "cue_lengths": [
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "primary": "context mean of per-recipient det(M_CueB) and det(M_CueB-M_CueA), own body",
+  "material_builder_sha256": "bb65c208f6a3d74f8903c1897e2d8f5c6bb215ab668420be292405ddb0e2dc1c",
+  "truth_source_sha256": "1f9455fb905f12b31c81158e8ab78c4f9eb6afa173555b91f0730181206d93c6",
+  "field_semantics": "complete Annotator/name/Comment-header block; no query comment or answer, no oracle source selection in cue",
+  "instruction_control": "one sentence with native formation"
+}
