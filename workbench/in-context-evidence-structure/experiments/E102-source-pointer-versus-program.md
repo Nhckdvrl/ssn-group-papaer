@@ -1,6 +1,6 @@
 # E102：来源字段交换是在重定位证据，还是携带学到的规则？（2026-10-11）
 
-- **状态：** PLANNED；在GPU科学行产生前冻结设计与源码。
+- **状态：** RUNNING；静态448行、token与四profile核对通过；源码/设计已提交0c8d7a25后启动。
 - **类型：** PILOT；已有功能接口的机制分叉，不继续扩大行为任务。
 - **对应：** I04 / C16 / C20 / P17。
 - **问题：** 输入前的来源条件信号使模型改用B函数时，函数来自被移植状态，还是recipient中B的示例？
@@ -56,3 +56,11 @@ donor：名字、所有review、A labels、位置均与recipient相同；仅改�
 **运行前最近邻补核：** Steele等《One mechanism for many mental spaces》(arXiv2607.10248)正文§4.2/4.6/4.7已读：shared router/value slot、报告与规则使用可分离由其直接研究；与E101词/判断区别近，不能叫首次发现。其颜色属性由文本断言、sorting rule明确给出；本实验固定的是从多来源示例推断的函数。这个设置差异不是自动novelty，结果若仅确认地址，价值在为后续规则内容形成解释提供可用的机制约束，不独立宣称新理论。
 
 **GPU前分母校正：** 为覆盖全部donor私人偏好世界，native B从16扩为32，加native A16，每context48 native+64interchange=112；总448。主分叉仍64行/16quartet。此纠正在任何科学结果之前，不删重复/困难world。CPU合成地址模型验证analyzer四profile判别通过。
+
+### 首次执行的数值门槛与运行前修正
+
+原版本在第一context的48条native后、0条interchange时触发prefix-vs-full字段误差>.001断言。原代码没有先保存具体误差幅度，这是执行记录不足，现补成assert前保存；原日志/48行完整留`results/e102/prefix_geometry_failed/`，不读为科学阴性。原版本为git0c8d7a25。
+
+prefix批次无leading padding、full四query批次有不同leading padding且chunk长度不同，两路径几何不一致。尚未仅凭代码检查把误差具体归因为某个kernel。修正为保留full batch的tensor长度和leading padding，在模型接收之前将字段后全部token ID替为pad且mask=0；所有active IDs严格等于截断prefix，未来word从未进入embedding。donor按同一四query的长度/位置布局计算，携带长度元数据，不携带输入词或答案；这项方法限制明确保留。来源/规则变量、层、精度与所有预测不变。
+
+同parent masked-future字段与full字段仍须≤.001、self-copy≤.001；若不过，继续诊断相同实现，不放宽门槛。旧E94的同世界margin差照常报告，不能默默当数值一致。此执行修正在任何主干预结果前冻结。

@@ -206,14 +206,28 @@ def main():
     (p/'loading_info.json').write_text(json.dumps(loading, default=str, indent=2)+'\n')
     print('Loaded', model.hf_device_map, flush=True)
     errs = {'self_copy_max_nats': 0., 'non_field_max': 0., 'prefix_vs_full_field_max': 0.}
-    rows = []; captured = {}
+    rows = []
 
     def forward(rr, prefix=False, vectors=None, collect=False):
-        xx = tok([r['prefix'] if prefix else r['prompt'] for r in rr],
+        # Same tensor geometry as the full receiver forward. For a donor the
+        # future region is overwritten with masked pad IDs BEFORE model input;
+        # no future word embedding is evaluated. This avoids changing left-pad
+        # offsets and chunk geometry between the donor and receiver paths.
+        xx = tok([r['prompt'] for r in rr],
                  return_tensors='pt', padding=True, add_special_tokens=False).to('cuda:0')
         pos = (xx.attention_mask.cumsum(-1)-1).clamp_min(0)
         starts = [xx.input_ids.shape[1]-int(xx.attention_mask[i].sum())+r['goal_start']
                   for i, r in enumerate(rr)]
+        if prefix:
+            for i, (r, st) in enumerate(zip(rr, starts)):
+                cut = st+r['goal_length']
+                leading = st-r['goal_start']
+                assert xx.input_ids[i, leading:cut].tolist() == r['prefix_ids']
+                xx.input_ids[i, cut:] = tok.pad_token_id
+                xx.attention_mask[i, cut:] = 0
+                assert int(xx.attention_mask[i].sum()) == len(r['prefix_ids'])
+                assert bool((xx.input_ids[i, cut:] == tok.pad_token_id).all())
+            pos = (xx.attention_mask.cumsum(-1)-1).clamp_min(0)
         cap = []
         def hook(module, inp, out):
             assert isinstance(out, torch.Tensor)
@@ -254,10 +268,11 @@ def main():
                 for r, v in zip(rb, lo):
                     d = metrics(r, v); d['kind'] = 'native'; save(d)
                     lut[r['pa'], r['cr'], r['pb'], r['role'], r['query']] = d
-            dr = list(ds.values()); dvec = {}
-            for st in range(0, len(dr), 4):
-                rb = dr[st:st+4]; _, cap = forward(rb, prefix=True, collect=True)
-                for r, v in zip(rb, cap): dvec[r['pa'], r['cr'], r['pb']] = v
+            dvec = {}
+            for pa, cd, pd in ds:
+                rb = [record(c, pa, cd, pd, 1, qi) for qi in range(4)]
+                _, cap = forward(rb, prefix=True, collect=True)
+                dvec[pa, cd, pd] = cap
             # Self-copy uses the exact same forward path; separately check causality.
             rb = nr[:4]; ref, cap = forward(rb, collect=True)
             noop, _ = forward(rb, vectors=cap)
@@ -266,13 +281,14 @@ def main():
             _, pc = forward(rb, prefix=True, collect=True)
             errs['prefix_vs_full_field_max'] = max(errs['prefix_vs_full_field_max'],
                 max(float((v-w).abs().max()) for v, w in zip(pc, cap)))
+            (p/'numeric_audit.json').write_text(json.dumps(errs, indent=2)+'\n')
             assert errs['prefix_vs_full_field_max'] <= .001
             for pa, cr in itertools.product((1, -1), (0, 1)):
                 rb = [r for r in nr if r['role'] == 0 and r['pa'] == pa and r['cr'] == cr]
                 assert len(rb) == 4 and [r['query'] for r in rb] == list(range(4))
                 for dc, dp in itertools.product((0, 1), (0, 1)):
                     cd = cr ^ dc; pd = pa if dp else -pa
-                    lo, _ = forward(rb, vectors=[dvec[pa, cd, pd]]*4)
+                    lo, _ = forward(rb, vectors=dvec[pa, cd, pd])
                     for r, v in zip(rb, lo):
                         d = metrics(r, v); qi = r['query']; x = r['x']
                         d.update(kind='interchange', cd=cd, pd=pd,
