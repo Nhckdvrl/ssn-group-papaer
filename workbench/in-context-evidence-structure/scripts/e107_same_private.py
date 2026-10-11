@@ -36,14 +36,6 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--part',type=int,choices=range(4));ap.add_argument('--out',required=True)
     ap.add_argument('--model',default='/tmp/ices_models/Qwen3.8-27B');ap.add_argument('--teachers',default='results/e105/generation/teachers.jsonl')
     ap.add_argument('--preflight-only',action='store_true');ap.add_argument('--merge',nargs='*');a=ap.parse_args();dest=Path(a.out);dest.mkdir(parents=True,exist_ok=True)
-    if a.merge:
-        rows=sum([load(Path(p)/'behavior.jsonl') for p in a.merge],[]);assert len(rows)==288 and {r['context'] for r in rows}==set(range(4))
-        keys={(r['context'],r['condition'],r['pr'],r['ct'],r['query']) for r in rows};assert len(keys)==288
-        for ci in range(4):assert sum(r['context']==ci for r in rows)==72
-        write(dest/'analysis.json',analyze([r for r in rows if r['condition'].startswith('rec_')]));write(dest/'completeness_audit.json',{'rows':288,'unique_keys':288,'all_four_parts':True,
-            'all_parents_kept':True,'opposite_private_p_all':all(r['pt']==-r['pr'] for r in rows if r['condition'].startswith('rec_')),
-            'part_paths':a.merge,'gpu_hours':sum(json.load(open(Path(p)/'run.json'))['gpu_hours'] for p in a.merge)})
-        (dest/'behavior.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows));print('Merged',len(rows),flush=True);return
     assert a.part is not None
     cs=contexts(4,105001);teachers=load(Path(a.teachers));assert len(teachers)==16
     from transformers import AutoTokenizer
