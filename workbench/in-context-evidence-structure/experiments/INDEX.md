@@ -104,3 +104,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E94](E94-criterion-coordinate-transfer.md) | input前标准信息是否需要私人输出坐标校准才能跨Source迁移 | DONE-PILOT；1216行，16层整字段可转B私人函数98.4%，384条标准运输0答案改变；结束此字段矩阵 |
 | [E95](E95-source-grouping-and-common-criterion.md) | 匿名input-label完全相同，来源分组如何决定共同标准及私人判断 | DONE-PILOT；688请求全保留；thinking criterion16/16，A mixed19/32；65续写、2 probe仍未解析，不声称默认已部署criterion |
 | [E96](E96-criterion-scope-and-functional-mediation.md) | 标准推断的Source范围与仅criterion的功能传递 | DONE-PILOT；A/B/all标准各16/16；Full+self mixed53.1→93.75%，Own+self/inverse按cue87.5%，偏好保留；不用Scope单独解释 |
+| [E97](E97-criterion-inference-input-and-answer-code.md) | 标准推断与私人判断的差别是否来自测试输入或答案形式 | RUNNING；160行固定三分片，不扩展字段/层矩阵 |
