@@ -69,7 +69,7 @@ I16 也已有 latent dim 截断失败的干预，这意味着单独锁定 D 与�
 - 算这些 lag-pairs 的 full latent L2 **中位数**；
 - 把最后一个可用 lag 的中位数当 plateau，然后定义第一个达到它 90% 的 lag 为 mh。
 
-问题：由于每个 lag 的可抽样 episode 群随 h 变化，长轨迹可能只来自特殊策略/布局/速度。所谓 plateau 是**最长可测 lag 的数值**，而不是独立 iid/random-pair 远距统计或数学极限。在不同 task、训练 seed、trajectory length distribution 下，它可能同时受样本构成和固定 lag 网格影响。mh=10 对 TwentyRoom 之类场景只是经验诊断值，不是“L2 在 10 步以后毫无排序信息”的定理。
+问题：由于每个 lag 的可抽样 episode 群随 h 变化，长轨迹可能只来自特殊策略/布局/速度。所谓 plateau 是**最长可测 lag 的数值**，而不是独立 iid/random-pair 远距统计或数学极限。在不同 task、训练 seed、trajectory length distribution 下，它可能同时受样本构成和固定 lag 网格影响。mh=10 对 TwoRoom 之类场景只是经验诊断值，不是“L2 在 10 步以后毫无排序信息”的定理。
 
 [OPEN] 首先用**同一批足够长的 trajectory**在所有 lag 上做 matched curve；提供 median + conditional Spearman/Kendall vs true task progress，并把 “last lag plateau” 和 independent-pair reference 分开。若 matched curve 改变结论，过去的机制说明要降级。
 
