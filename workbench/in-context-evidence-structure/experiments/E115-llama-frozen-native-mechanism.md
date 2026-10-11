@@ -4,7 +4,7 @@
 - **类型：** REPRO / C21–C23的家族迁移检验。
 - **对应：** C21/C22/C23、I04、P17。
 - **问题（一句话）：** 已有形成→新输入判断的因果解释能否在Llama原样成立，还是Qwen/Mistral的特定实现？
-- **设置：** Llama-3.1-8B base，NousResearch/Meta-Llama-3.1-8B revision 1f47e50cdbe801ad8a5174156ec3a0655108fb9f；四个safetensors的LFS SHA/大小与Meta官方revision d04e592bb4f6aa9cfee91e2e20afa771667e1d4b完全一致，下载后逐文件本地hash核对。不是蒸馏/量化版。conda verl-clean，FP32/eager，全层、全部43条件沿用E114；脚本仅增加modeling_llama路由与默认路径/描述，其余科学引擎与分析完全相同。
+- **设置：** Llama-3.1-8B base，NousResearch/Meta-Llama-3.1-8B revision 1f47e50cdbe801ad8a5174156ec3a0655108fb9f；四个safetensors的LFS SHA/大小与Meta官方revision d04e592bb4f6aa9cfee91e2e20afa771667e1d4b完全一致，下载后逐文件本地hash核对。不是蒸馏/量化版。conda verl-clean，FP32/eager，全层、全部43条件沿用E114；脚本仅增加modeling_llama路由、Llama revision记录与默认路径/描述，其余科学引擎与分析完全相同。
 - **配置：** discovery n16 seed115001旧词句；数值/阳性通过后confirmation n32 seed115101 validation新词句，两个私人方向平衡；5504/11008评分。不给Llama重选层/头/标签/BOS/格式以追正结果。实际分块token流保留，sender区域按真实word+separator长度；query全Source读取，whole-query gated与single/instruction原对照一并保留。
 - **读数：** E114原D=mean_q gold*(z_cross−z_origin)，A/B缓存条件作用signed/absolute、signed交互、namespace K/KV/V系数1原生label/full-A重建r/RMSE/zero、固定label跨类−同类关联超额作用。context-bootstrap10000 seed910；原有所有读数同时保存，不由Llama结果再选择主指标。
 - **阳性对照：** single A两私人映射；shared/far两个native端点与cache crossing一致；第一context全部8query full/split误差≤.001；self edge≤.001；sender layer0固定label配对不变；source-cache指纹、全32层真实消费；token边界/Source/A原文/label身份控制和确认文本交集0。
@@ -26,4 +26,6 @@
 - **定位：** 这不是新idea/novelty声称；沿用CTA功能路径与AddUp背景条件比较，检验当前C21–C23解释的直接模型范围。ACL/EMNLP/NAACL全文阅读继续审视自然问题/实验链，不因增加Llama自动敲定论文。
 
 ## 结果（运行后追加，跑前字段保留）
-待运行。源码SHA256：78f12ec5009964183a1dadf89565fa95ab4905b40bf6d5b01d1b8d3b6c96bd00；原E114 SHA为2ae995abf40944e5018814cd42c0e0a28b71dfaf90206ec44e3df9890e703499。
+待运行。源码SHA256：ff749f370b443385e76dca8b424a13e43e81db5c445f2dc67c3aa3034d3097fe；原E114 SHA为2ae995abf40944e5018814cd42c0e0a28b71dfaf90206ec44e3df9890e703499。
+
+跑前实现校正：补全run的Llama revision字典，防止在保存元数据时KeyError；无GPU科学记录，干预/分析/条件不变。discovery与validation CPU预检已过：全部配对几何一致、A原文不变。

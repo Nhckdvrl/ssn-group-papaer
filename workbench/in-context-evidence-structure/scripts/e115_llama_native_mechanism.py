@@ -376,7 +376,7 @@ def main():
            "contexts_sha256":hashlib.sha256((dest/"contexts.jsonl").read_bytes()).hexdigest(),
            "python":platform.python_version(),"torch":torch.__version__,"transformers":transformers.__version__,
            "git_head":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
-           "sender_layer0_KV_max_error":max(layer0_errors),"model_revision":({"qwen3":"b968826d9c46dd6066d109eabc6255188de91218","mistral":"caa1feb0e54d415e2df31207e5f4e273e33509b1"}[model.config.model_type]),"dtype":"float32","attention":"eager",
+           "sender_layer0_KV_max_error":max(layer0_errors),"model_revision":({"qwen3":"b968826d9c46dd6066d109eabc6255188de91218","mistral":"caa1feb0e54d415e2df31207e5f4e273e33509b1","llama":"1f47e50cdbe801ad8a5174156ec3a0655108fb9f"}[model.config.model_type]),"dtype":"float32","attention":"eager",
            "model_type":model.config.model_type,"training":False,"patch_layers":"all","edge_calls":covered,"edge_self_max_error":max(self_errors),"self_edge_cache_checked":True,"pristine_source_cache_exact":True,"primary_query_scope":"native all prefix positions; gated controls at all query positions","native_crossing":"A cached evidence formation x B cached reading environment"}
     (dest/"run.json").write_text(json.dumps(run,indent=2)+"\n")
     analyze(dest)
