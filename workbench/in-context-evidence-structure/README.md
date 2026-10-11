@@ -2,6 +2,7 @@
 
 **2026-10-12当前认识：** Source条件读取作用于已经由完整历史形成的证据。共享输出改变其它Source关联如何进入本Source的label证据；这条形成路径能预测原生反事实，但其关联运输与完整criterion功能响应需分别验证。Llama、真实文本、三家族双方面机制与14B确认均完成，见[当前综合](RESEARCH_SYNTHESIS_2026-10-10.md)、[完整功能图](results/figs/fig_stronger_model_functional_responses.png)、[英文草稿](PAPER_DRAFT.md)、[独立校对](results/e119/independent_review_2026-10-11.md)。
 ## 状态
+- **2026-10-12整篇对齐继续：** 上轮矩阵完成不等于整篇完成。[论文链对齐](PAPER_ALIGNMENT_2026-10-12.md)与[独立摘要审计](results/e119/manuscript_claim_audit_2026-10-12.md)指出原生操作必要性/有限恢复、功能阳性的自然材料两项缺口；E120/E121已跑前冻结，正在执行。C21–24旧阳性和等级保留，不把新结果前的计划当证据。
 - **状态：** ACTIVE-EXPLORE（2026-10-08 人决定恢复，E39–E48 已开展；此前 2026-10-06 PAUSED 为历史记录）。这是正式研究排程；不意味着别的研究方向停止。
 - **当前综合判断（2026-10-12）：** 先读[综合](RESEARCH_SYNTHESIS_2026-10-10.md)前言和§34–35。E115–E119跑前有限矩阵与确认均完成：24批/576contexts，三份raw审计封版。C21有界L3，C22/C23/C24有界L2；标题是可修改草稿，未改candidate状态。历史摘要如下，不将当时下一步重复执行。
 - **E81确认：** 64新contexts，同实际码carrier m/pi下，改变其它token的whole-query读取使Tag准确率+13.3[9.4,17.2]点；固定m/kind翻Source分配使Prefix−11.3[−15.2,−7.8]点。C20 L1。旧Source ranking仅测输出contrast符号，不能直接当内部选择；公共偏移也可减少平均mass。下一步是解释已有因果区别，不扫新配置。
