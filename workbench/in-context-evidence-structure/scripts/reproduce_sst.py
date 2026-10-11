@@ -56,7 +56,7 @@ def prepare(cache):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--cache-dir', type=Path, required=True)
-    ap.add_argument('--experiment', choices=['e121', 'e123', 'e124', 'e125', 'e126'])
+    ap.add_argument('--experiment', choices=['e121', 'e123', 'e124', 'e125', 'e126', 'e127'])
     args, remaining = ap.parse_known_args()
     cache = args.cache_dir.expanduser().resolve()
     result = prepare(cache)
@@ -70,7 +70,8 @@ def main():
                                       'e123': 'e123_natural_source_function_policy',
                                       'e124': 'e124_source_identity_coordination',
                                       'e125': 'e125_public_output_schema_coordination',
-                                      'e126': 'e126_equivalent_schema_cache_composition'}[args.experiment])
+                                      'e126': 'e126_equivalent_schema_cache_composition',
+                                      'e127': 'e127_shared_output_cache_composition'}[args.experiment])
     sys.argv = [module.__file__] + remaining
     module.main()
 

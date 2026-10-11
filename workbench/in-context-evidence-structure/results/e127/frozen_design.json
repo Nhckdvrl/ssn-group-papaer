@@ -1,0 +1,86 @@
+{
+  "status": "PRE-SCORE; zero GPU scientific scores at freeze",
+  "science_sha256": "cef7952d4ef556abad45c9c2e6d6f351e3b0a1b3fffa9232b9eb728806c943de",
+  "builder_sha256": "f02104a87b9e67dec413c9c642c107a0f90a7d1046421306e8c4202c59da94ec",
+  "primary": "shared/opposite-private-convention, joint coherent-minus-mixed full-vocabulary accuracy; context unit",
+  "discovery": {
+    "n": 16,
+    "seed": 127001,
+    "materials": "discovery"
+  },
+  "confirmation": {
+    "n": 32,
+    "seed": 127101,
+    "materials": "validation"
+  },
+  "fixed_checkpoints": [
+    "Qwen3-8B",
+    "Mistral-7B-v0.3",
+    "Llama-3.1-8B",
+    "Qwen3-14B"
+  ],
+  "conditions": 86,
+  "queries": 8,
+  "prefix_graphs": 22,
+  "query_graphs": 86,
+  "auxiliary": "source-specific versus source-common signed/absolute output responses; defined before first score; no additional forward",
+  "independent_pre_score_review": "all eight true tokenizer/config geometries and graphs approved; final source cef7952 reviewed independently before this commit; report sealing follows",
+  "preflights": {
+    "llama_confirmation_preflight": {
+      "contexts_sha256": "a77353961220721d8c1ac2086ef5b3fd157d7ba36a81b35f7ad41cca8746008a",
+      "preflight_sha256": "3955d4ff0d8be24852560715d50dc9c2a1da5ab696eeeec2dfe8149cae62baa1",
+      "n": 32,
+      "seed": 127101,
+      "model": "/tmp/ices_models/Llama-3.1-8B"
+    },
+    "llama_discovery_preflight": {
+      "contexts_sha256": "6d1814e846d1838b104cdd1184352ff955425895352fffbe74dc72a192b31cbc",
+      "preflight_sha256": "035d577e1283922c5c2c701861fd1e25771e18a4f21bab604d86837552152b6b",
+      "n": 16,
+      "seed": 127001,
+      "model": "/tmp/ices_models/Llama-3.1-8B"
+    },
+    "mistral_confirmation_preflight": {
+      "contexts_sha256": "5cec3afa54c29c7ce6520fcdae5337a61609db28855ae78216e7d9176a037357",
+      "preflight_sha256": "01c6e5212aa417034a07fb06bf1e1aab6d86e0ce70f7639169fab2620238a48e",
+      "n": 32,
+      "seed": 127101,
+      "model": "/tmp/ices_models/Mistral-7B-v0.3"
+    },
+    "mistral_discovery_preflight": {
+      "contexts_sha256": "038221b2d060d08fcde04f6360d46f011ef252fcd692304c7b18fc5ae39848c5",
+      "preflight_sha256": "c2af1f5ba4ad04dac88c79e53281934ca9cb7d83f00f9ca98f199a7ed8f46f0f",
+      "n": 16,
+      "seed": 127001,
+      "model": "/tmp/ices_models/Mistral-7B-v0.3"
+    },
+    "qwen14_confirmation_preflight": {
+      "contexts_sha256": "151670828d2a1c8c2a176d608afc1431c9a01a2746d7d7e3a66e05d2c4c239fa",
+      "preflight_sha256": "0a9c833155131807b87e848cc9d417f6aded26e2c0627a3d452e2fd28ea36af8",
+      "n": 32,
+      "seed": 127101,
+      "model": "/dev/shm/ices_models/Qwen3-14B"
+    },
+    "qwen14_discovery_preflight": {
+      "contexts_sha256": "aa737d5780702aa7534392674e0882c7603fd68fadfae1e7ffa90616ab0e18a2",
+      "preflight_sha256": "644731a362531503231b663429377cff6c78af6b6c89150f2892476561d9d0c1",
+      "n": 16,
+      "seed": 127001,
+      "model": "/dev/shm/ices_models/Qwen3-14B"
+    },
+    "qwen3_confirmation_preflight": {
+      "contexts_sha256": "151670828d2a1c8c2a176d608afc1431c9a01a2746d7d7e3a66e05d2c4c239fa",
+      "preflight_sha256": "7a8c0efbda7d88506af2ac8a672aae3ac9e1b3f0eed97d00f6196f66780d37b5",
+      "n": 32,
+      "seed": 127101,
+      "model": "/tmp/ices_models/Qwen3-8B"
+    },
+    "qwen3_discovery_preflight": {
+      "contexts_sha256": "aa737d5780702aa7534392674e0882c7603fd68fadfae1e7ffa90616ab0e18a2",
+      "preflight_sha256": "8abf5ce6ffe16d670b7f3d219cf5e202fc8478c3e41de9329f2e764386e37466",
+      "n": 16,
+      "seed": 127001,
+      "model": "/tmp/ices_models/Qwen3-8B"
+    }
+  }
+}
