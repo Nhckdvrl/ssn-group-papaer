@@ -59,7 +59,6 @@ def analyze(dest):
     out['single_source_by_polarity']={str(p):interval(((z['single_A'][np.array([c['reverse']==p for c in cs])]>0)==(gold[np.array([c['reverse']==p for c in cs])]>0)).mean(1)) for p in [False,True]}
     (dest/'analysis.json').write_text(json.dumps(out,indent=2)+'\n')
     for k,v in out['contrasts'].items():print(k,v['absolute_rule_effect'],flush=True)
-    for k in ['full_native','label_native','answer_native']:print('relation',k,out['relation'][k],flush=True)
 
 
 def main():
