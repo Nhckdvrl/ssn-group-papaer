@@ -33,3 +33,11 @@
 ### 执行校正（不改变科学干预/读数）
 
 Qwen16/32、Mistral16、Llama16在原源码0fa0de9…完整；Mistral32 CPU遇到有≥4词对但没有两组完全不交叠四组合的长度bin，不能满足跑前八条B unique要求，尚无评分。按原要求仅跳过CPU不可构造bin、保留原seed118101/n32，不按模型输出筛样；可构造的Qwen/Llama流保持原次序。科学消息/指标/条件没有改变，新源码SHA256：9a3984b357738357ca3161fc1fadf832812fd7f68a6915187816347cea43b482。另一Llama32在加载模型时外部GPU1进程占满卡，OOM，0科学评分，换空GPU2原seed重跑。失败目录和results/e118/execution_failures.json保留，未杀其它作业。模型数值有效后的确认包含所有正负，不因J大小选家族。
+
+Mistral确认第二次CPU诊断表明原validation六个长度bin**全部**无法组成8 unique文本，while重试不适用；0评分CPU进程已停止。使用独立Mistral材料执行入口，不触碰同时运行的Llama源文件；只在确认词池加入nice、nasty、bad并先断言全pool至少一组可行pair。bad曾在discovery词表出现，确认句式/完整评论仍全新，因此不声称Mistral完全disjoint词表。此是CPU构造可行性修正，未看任何Mistral确认输出，也未改4world/干预/指标；若CPU仍不通过不加载GPU。原失败与实现版本保留。
+
+解释补记：J是平均criterion×feature交互，不能独自排除“同一功能方向、两task不同增益”；只有完整两个task的F/S响应能评价这种解释。审计保留两task选择性及共同gain替代，不改跑前J或挑指标，也不从J>0宣布完整标准程序。
+
+Mistral材料最终预检候选同时补入poor（与bad均为旧词，完整新评论/模板无交集）；此前nice-only版本CPU可行性guard明确失败，无评分。完整原validation六个bin可行pair数均0已由另一会话独立枚举，while重试CPU被终止，作为工具失败保留。最终材料版本先通过32context全部几何再开GPU；不能称旧validation原词表的确认。
+
+最终采用的Mistral确认材料修正以此为准：独立token检查表明原pool只有一个单token负词miserable，而正词有多个；**只增入全新负词nasty**即可形成两组完全不同的四组合。nice/bad/poor是未评分的CPU候选，最终不使用，无discovery词复用。保持原八个正词/原八个负词及三套validation模板，其它生成与科学干预不变。有限global guard先验证非空，跳过不能构造的bin；新入口SHA256 eea5590ce3168c7616ae41d215b902d5e93c8b4e0fe5cf8f1835d8818dafa73b。
