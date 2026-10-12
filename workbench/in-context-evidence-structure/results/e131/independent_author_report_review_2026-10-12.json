@@ -1,9 +1,9 @@
 {
-  "status": "AUTHOR_REPORT_16_OF_18_PARTIAL_VERIFIED_INCREMENTAL",
+  "status": "AUTHOR_REPORT_18_OF_18_COMPLETE_VERIFIED_INCREMENTAL",
   "date": "2026-10-12",
   "report_script_sha256": "fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5",
-  "report_md_sha256": "2294563c85760e4da1dd36b7ed16ded5da316dfe2c96d2c63988ca9f605b7692",
-  "summary_json_sha256": "6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865",
+  "report_md_sha256": "f4880135a706512826f1100a47b5adae9c709b92821bc4ce776f9146fc30b678",
+  "summary_json_sha256": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
   "full_output_script_sha256": "9e5cf06cca0e308da75dab598bc9323be2dc2f0cb180b342181c5d8a5c4cee64",
   "sealed_raw_digests_preserved": {
     "llama_confirmation_mechanism": "e9cf31b72796c8491029dce4f3a074e5ab694d126b3a6692cb3103e1ed87a886",
@@ -21,7 +21,9 @@
     "llama70_discovery_mechanism": "3366c6e729c8e58faeeee1748818ad9064c238d68c6e4107bcae49551e7f5d8c",
     "llama70_discovery_native": "a4d051b3d37cea896b4dfac8fc05e56f0e073196bcd0e0c738774dc5041352c7",
     "llama70_discovery_function": "fa666b5ece4ace6092ea309e6fba961d4000b4aa166808086c4aa4f46b0d438d",
-    "llama70_confirmation_mechanism": "003410c56ac126f715d12c8d20572a1cf3777db8ec5b54bd58552e443bf88d36"
+    "llama70_confirmation_mechanism": "003410c56ac126f715d12c8d20572a1cf3777db8ec5b54bd58552e443bf88d36",
+    "llama70_confirmation_native": "d3eb9adf263e03c6cdbc862077acb3b3f32d8ad60b9a6e2c1f3a1a4427a2d3c0",
+    "llama70_confirmation_function": "606419ce82827c5ad1ca621342b16c9c87c951989b6f77610782b6ef048581d0"
   },
   "runs": [
     "qwen3_confirmation_mechanism",
@@ -39,33 +41,42 @@
     "llama70_discovery_mechanism",
     "llama70_discovery_native",
     "llama70_discovery_function",
-    "llama70_confirmation_mechanism"
+    "llama70_confirmation_mechanism",
+    "llama70_confirmation_native",
+    "llama70_confirmation_function"
   ],
   "totals": {
-    "completed_stages": 16,
+    "completed_stages": 18,
     "planned_stages": 18,
-    "scores": 207616,
-    "contexts_by_stage": 416,
-    "stage_device_hours": 38.18359124965138,
-    "worker_resident_device_hours_so_far": 38.305144665373696
+    "scores": 245760,
+    "contexts_by_stage": 480,
+    "stage_device_hours": 63.99923660106129,
+    "worker_resident_device_hours_so_far": 64.23898173901769
   },
-  "new_stage_only_checked": "llama70_confirmation_mechanism",
+  "new_stage_only_checked": "llama70_confirmation_function",
   "new_stage_numeric_comparison": {
-    "numeric_items": 1041,
-    "max_abs_error": 6.994405055138486e-15,
-    "largest_error_path": "/reconstruction/label_interface_B0_kv/raw/correlation",
+    "numeric_items": 1893,
+    "max_abs_error": 0,
+    "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
     "missing": [],
     "matched_nonfinite_items": [],
     "author_analysis_sha256": null
   },
-  "new_full_output_numeric_comparison": null,
+  "new_full_output_numeric_comparison": {
+    "numeric_items": 960,
+    "max_abs_error": 0,
+    "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+    "missing": [],
+    "matched_nonfinite_items": [],
+    "author_analysis_sha256": null
+  },
   "new_markdown_rows_checked": 1,
   "new_markdown_metric_cells_checked": 5,
   "new_markdown_numeric_presentations_checked": 21,
   "prior_14_stage_audit_unchanged_sha256": "94d94c11d3f7f033931ad56221c0c514819356588833704c6d2852289c87a077",
   "prior_author_report_audit_sha256": "7ab653de5f6cb8a726206cdbe0e9aa8180d412cccaef23c7813145e24b2a1d43",
   "prior_14_stage_science_recomputed": false,
-  "paired_confirmation_count": 4,
+  "paired_confirmation_count": 6,
   "paired_confirmation_unchanged": false,
   "root_read_order_exception": "Parent reports tailing run.log for progress at completion and seeing last three relation summaries before independent raw seal. Root is not fully blind for this stage. No claim that every participant remained blind.",
   "new_stage_root_read_order": "Root reports no author main results read before this independent new-stage raw seal; earlier stage13 stdout exception remains recorded separately.",
@@ -74,8 +85,8 @@
   "independent_GPU_forward_or_rerun": false,
   "helper_sha256": "3d02b38bce59fcaea47a49930bd30a962962d1fd9c046092efe5a7359eff0d45",
   "complete_summary_display_incremental_check": {
-    "all_15_previous_run_summary_objects_byte_semantics_identical": true,
-    "previous_rows_preserved": 55,
+    "all_17_previous_run_summary_objects_byte_semantics_identical": true,
+    "previous_rows_preserved": 75,
     "all_previous_rows_preserved_exactly": true,
     "all_three_previous_Qwen_paired_objects_identical": true,
     "new_Llama_pair_sealed_before_author": true,
@@ -84,22 +95,19 @@
   "core_chain_plot_review": {
     "status": "PLOT_DATA_9_OF_12_VERIFIED",
     "date": "2026-10-12",
-    "source_summary_sha256": "6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865",
-    "CSV_sha256": "33c7893f8d869a961b24c8d38276d25a4dbd5eca946d6db8b1e63809aa27824e",
-    "manifest_sha256": "d40c8d05afad9bb3f8cade81a725bbebed5c8df082a88e9e17bcb9a1c62bab90",
-    "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+    "source_summary_sha256": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
+    "CSV_sha256": "677038b59a7b2e036050e19eb2957155077adb6335356b3223a23c9a2763e90a",
+    "manifest_sha256": "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f",
+    "script_sha256": "330c6fa38caac7537ca9e249670389c7e494278698ce5dc0ae84d14e17bfef94",
     "figures": {
-      "png": "3685dab8d49671adf6ecbb8ec417d361c0a634548bf123ca35da4998d60f46d5",
-      "pdf": "e9e3649a4f11369601e833a8ce5cafcec090421e0237bfeea0279c9da2a1bbc8"
+      "png": "4b60ace1b0a37546873c7b8bb6f31236cc5e8b71210deb17146f997bee179fd2",
+      "pdf": "76991f528d67bd0dbbcd9cb59840ff161479a15b37b56087055ca365c931bb2b"
     },
-    "complete_points": 10,
+    "complete_points": 12,
     "planned_points": 12,
-    "checked_mean_CI_values": 30,
+    "checked_mean_CI_values": 36,
     "max_abs_error": 0.0,
-    "pending": [
-      "llama70_confirmation_native",
-      "llama70_confirmation_function"
-    ],
+    "pending": [],
     "point_checks": {
       "qwen3_confirmation_mechanism": {
         "status": "COMPLETE",
@@ -186,9 +194,16 @@
         "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
       },
       "llama70_confirmation_native": {
-        "status": "PENDING",
-        "numeric_fields_empty_not_zero": true,
-        "stage_material_scope": "controlled restaurant sentiment; seed131101"
+        "status": "COMPLETE",
+        "numeric_fields_empty_not_zero": false,
+        "stage_material_scope": "controlled restaurant sentiment; seed131101",
+        "expected_mean_ci": [
+          1.8371662870049477,
+          1.491942092590034,
+          2.184207128547132
+        ],
+        "raw_behavior_sha256": "86f8e3ad7d77cab2ca9d6bb357b8cf2e83cfff47a478e510691ef473235ce8a9",
+        "raw_and_pair_sealed_before_author": true
       },
       "qwen3_confirmation_function": {
         "status": "COMPLETE",
@@ -227,17 +242,24 @@
         "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
       },
       "llama70_confirmation_function": {
-        "status": "PENDING",
-        "numeric_fields_empty_not_zero": true,
-        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        "status": "COMPLETE",
+        "numeric_fields_empty_not_zero": false,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+        "expected_mean_ci": [
+          10.44921875,
+          7.91015625,
+          13.0859375
+        ],
+        "raw_behavior_sha256": "92d9aeb932f98329032a4187cf22b595d5b13527a3b00d47be3bd218d3724807",
+        "raw_and_pair_sealed_before_author": true
       }
     },
     "visual_inspection": {
       "current_PNG_viewed": true,
       "figure": "results/figs/fig_cross_size_core_chain.png",
-      "complete_points_visible": 10,
-      "two_pending_labels_visible_and_no_zero_markers": true,
-      "axes_units": "formation/native nats;function pp;alln32context-bootstrap",
+      "complete_points_visible": 11,
+      "one_pending_label_visible_without_zero_marker": true,
+      "axes_units": "formation/native nats;functionpp;n32context-bootstrap",
       "model_names_and_CIs_readable": true,
       "old_visual_records_in_plot_history_preserved": true
     },
@@ -245,17 +267,30 @@
     "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
     "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
     "independent_GPU_forward_or_rerun": false,
-    "helper_sha256": "7d86979817081ad08d3b94a3729ea8f694443f9effb001e68e9d41842214e104",
+    "helper_sha256": "1176b5fa07005c93d29a38f4583376c191c97c859fc9a71c8fbc1d3f6624cf4a",
     "source_rebinding_only": false,
-    "new_confirmation_point": "llama70_confirmation_mechanism",
-    "new_point_pre_author_raw_seal_sha256": "b55d3e98a6c465ff39a06b0a6a73f59c11bc5096d3ed11fa32687edcbf174668",
-    "new_point_pre_author_pair_seal_sha256": "0d2b53ef83821b5760aeb5a217cfc259fffd6f4681267323f8e84d8dc47d5c7b",
+    "new_confirmation_point": "llama70_confirmation_function",
+    "new_point_pre_author_raw_seal_sha256": "c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e",
+    "new_point_pre_author_pair_seal_sha256": "2a9cd015444ce7817645df3ed49425c4da52020a24438aba91554a5ce081f1f1",
     "incremental_presentation": {
-      "current_summary_completed_stages": 16,
-      "all_previous9_point_values_unchanged": true,
+      "current_summary_completed_stages": 18,
+      "all_previous11_point_values_unchanged": true,
       "new_confirmation_point_count": 1,
       "scientific_stage_or_CI_recomputed": false,
-      "previous_plot_review_sha256": "f439cee7fee7910d25479df451f28eff834d835d0c62278831d32a1fd9d4218a"
+      "previous_plot_review_sha256": "ea59e47a33c0921ad59df11f00473c486326ddf8ab99910cd45923fe3c896da0",
+      "layout_only_changes": "6.3x2.65 inches, 8pt labels, short axes, completion footer removed when complete; CSV now LF. get_stat AST exactly unchanged."
+    },
+    "compiled_pdf_visual_review": {
+      "status": "PASS_ACTUAL_PDF_WIDTH",
+      "PDF_sha256": "070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4",
+      "manifest_sha256": "9d7087aeb761b08aae6856634395db0daae3855c74c6748368bd89b647319b88",
+      "PAPER_DRAFT_sha256": "11c7cbe89e9b3f6336e2aa8440880413961ea5ffce05876292be79d3122874ba",
+      "PAPER_APPENDIX_sha256": "09359666a8b39bef8e8640516f9a7904a3a34b7cc3cb15f62e047c328d3e454b",
+      "figure_page": 33,
+      "compiled_caption": "Figure17: all12 fixed n32 model-stage points, full-vocabulary mean requested-source gains",
+      "actual_embedding": "main.tex includes fig_cross_size_core_chain.pdf; image and caption present on PDF P33",
+      "layout": "6.3x2.65inch source rendered at full ACL text width. Four names, panel titles, mean points,CI bars and unit axes readable. No clipping. Completed status footer removed, n32/CI/matching scope retained.",
+      "reviewer_no_GPU": true
     }
   },
   "plot_reviews": {
@@ -1208,39 +1243,423 @@
         "scientific_stage_or_CI_recomputed": false,
         "previous_plot_review_sha256": "f439cee7fee7910d25479df451f28eff834d835d0c62278831d32a1fd9d4218a"
       }
+    },
+    "4fea5756259e16957ab374422691cd86ac6939ed4fb16fa72fa781b4edfed15f": {
+      "status": "PLOT_DATA_9_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "e7120e26691547a899a8b900aa0cf34736fcbf2558ed8ce5b1e327aa24abcac1",
+      "CSV_sha256": "8338eb57f919365b6ec43842912b0402b143be6b714920e18a2fe38dc4233793",
+      "manifest_sha256": "4fea5756259e16957ab374422691cd86ac6939ed4fb16fa72fa781b4edfed15f",
+      "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+      "figures": {
+        "png": "4033ccbbc50f14a825683eff66657a5e972d65d7b352a5275923e7c7c18cb48b",
+        "pdf": "b79e03620987c8e8d9f5423555ac25839d4fd29b468fc54110d280692bec4bbd"
+      },
+      "complete_points": 11,
+      "planned_points": 12,
+      "checked_mean_CI_values": 33,
+      "max_abs_error": 0.0,
+      "pending": [
+        "llama70_confirmation_function"
+      ],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "numeric_fields_empty_not_zero": false,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "expected_mean_ci": [
+            0.9567897096276283,
+            0.678856891952455,
+            1.260651504807174
+          ],
+          "raw_behavior_sha256": "dcbfda7c31c7dcb22b0abc3ec39690ed3b521501a5225a62f8201cbf3c05dfe8",
+          "raw_and_pair_sealed_before_author": true
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "COMPLETE",
+          "numeric_fields_empty_not_zero": false,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "expected_mean_ci": [
+            1.8371662870049477,
+            1.491942092590034,
+            2.184207128547132
+          ],
+          "raw_behavior_sha256": "86f8e3ad7d77cab2ca9d6bb357b8cf2e83cfff47a478e510691ef473235ce8a9",
+          "raw_and_pair_sealed_before_author": true
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.71484375,
+            5.76171875,
+            9.5703125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        }
+      },
+      "visual_inspection": {
+        "current_PNG_viewed": true,
+        "figure": "results/figs/fig_cross_size_core_chain.png",
+        "complete_points_visible": 11,
+        "one_pending_label_visible_without_zero_marker": true,
+        "axes_units": "formation/native nats;functionpp;n32context-bootstrap",
+        "model_names_and_CIs_readable": true,
+        "old_visual_records_in_plot_history_preserved": true
+      },
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "57b2974f2878683a59429d9eee85af908fa211464b2b5c662169e0a23c10575f",
+      "source_rebinding_only": false,
+      "new_confirmation_point": "llama70_confirmation_native",
+      "new_point_pre_author_raw_seal_sha256": "f7d029fcc423dec1c8b5aa7dfa5678512583e26e13bf3ac6b418dd47f76d8c6e",
+      "new_point_pre_author_pair_seal_sha256": "b68f0eef284d959c3e7149224c733c8b0b7c8d4f6a49891e9ca771888ea711ea",
+      "incremental_presentation": {
+        "current_summary_completed_stages": 17,
+        "all_previous10_point_values_unchanged": true,
+        "new_confirmation_point_count": 1,
+        "scientific_stage_or_CI_recomputed": false,
+        "previous_plot_review_sha256": "7c8fddf282909973d94541c2f801881c15a943cd78374dc4756aac7fe6bf6832"
+      }
+    },
+    "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f": {
+      "status": "PLOT_DATA_9_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
+      "CSV_sha256": "677038b59a7b2e036050e19eb2957155077adb6335356b3223a23c9a2763e90a",
+      "manifest_sha256": "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f",
+      "script_sha256": "330c6fa38caac7537ca9e249670389c7e494278698ce5dc0ae84d14e17bfef94",
+      "figures": {
+        "png": "4b60ace1b0a37546873c7b8bb6f31236cc5e8b71210deb17146f997bee179fd2",
+        "pdf": "76991f528d67bd0dbbcd9cb59840ff161479a15b37b56087055ca365c931bb2b"
+      },
+      "complete_points": 12,
+      "planned_points": 12,
+      "checked_mean_CI_values": 36,
+      "max_abs_error": 0.0,
+      "pending": [],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "numeric_fields_empty_not_zero": false,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "expected_mean_ci": [
+            0.9567897096276283,
+            0.678856891952455,
+            1.260651504807174
+          ],
+          "raw_behavior_sha256": "dcbfda7c31c7dcb22b0abc3ec39690ed3b521501a5225a62f8201cbf3c05dfe8",
+          "raw_and_pair_sealed_before_author": true
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "COMPLETE",
+          "numeric_fields_empty_not_zero": false,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "expected_mean_ci": [
+            1.8371662870049477,
+            1.491942092590034,
+            2.184207128547132
+          ],
+          "raw_behavior_sha256": "86f8e3ad7d77cab2ca9d6bb357b8cf2e83cfff47a478e510691ef473235ce8a9",
+          "raw_and_pair_sealed_before_author": true
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.71484375,
+            5.76171875,
+            9.5703125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "COMPLETE",
+          "numeric_fields_empty_not_zero": false,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "expected_mean_ci": [
+            10.44921875,
+            7.91015625,
+            13.0859375
+          ],
+          "raw_behavior_sha256": "92d9aeb932f98329032a4187cf22b595d5b13527a3b00d47be3bd218d3724807",
+          "raw_and_pair_sealed_before_author": true
+        }
+      },
+      "visual_inspection": {
+        "current_PNG_viewed": true,
+        "figure": "results/figs/fig_cross_size_core_chain.png",
+        "complete_points_visible": 11,
+        "one_pending_label_visible_without_zero_marker": true,
+        "axes_units": "formation/native nats;functionpp;n32context-bootstrap",
+        "model_names_and_CIs_readable": true,
+        "old_visual_records_in_plot_history_preserved": true
+      },
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "1176b5fa07005c93d29a38f4583376c191c97c859fc9a71c8fbc1d3f6624cf4a",
+      "source_rebinding_only": false,
+      "new_confirmation_point": "llama70_confirmation_function",
+      "new_point_pre_author_raw_seal_sha256": "c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e",
+      "new_point_pre_author_pair_seal_sha256": "2a9cd015444ce7817645df3ed49425c4da52020a24438aba91554a5ce081f1f1",
+      "incremental_presentation": {
+        "current_summary_completed_stages": 18,
+        "all_previous11_point_values_unchanged": true,
+        "new_confirmation_point_count": 1,
+        "scientific_stage_or_CI_recomputed": false,
+        "previous_plot_review_sha256": "ea59e47a33c0921ad59df11f00473c486326ddf8ab99910cd45923fe3c896da0",
+        "layout_only_changes": "6.3x2.65 inches, 8pt labels, short axes, completion footer removed when complete; CSV now LF. get_stat AST exactly unchanged."
+      },
+      "compiled_pdf_visual_review": {
+        "status": "PASS_ACTUAL_PDF_WIDTH",
+        "PDF_sha256": "070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4",
+        "manifest_sha256": "9d7087aeb761b08aae6856634395db0daae3855c74c6748368bd89b647319b88",
+        "PAPER_DRAFT_sha256": "11c7cbe89e9b3f6336e2aa8440880413961ea5ffce05876292be79d3122874ba",
+        "PAPER_APPENDIX_sha256": "09359666a8b39bef8e8640516f9a7904a3a34b7cc3cb15f62e047c328d3e454b",
+        "figure_page": 33,
+        "compiled_caption": "Figure17: all12 fixed n32 model-stage points, full-vocabulary mean requested-source gains",
+        "actual_embedding": "main.tex includes fig_cross_size_core_chain.pdf; image and caption present on PDF P33",
+        "layout": "6.3x2.65inch source rendered at full ACL text width. Four names, panel titles, mean points,CI bars and unit axes readable. No clipping. Completed status footer removed, n32/CI/matching scope retained.",
+        "reviewer_no_GPU": true
+      }
     }
   },
-  "completed_stages": 16,
-  "sealed_raw_audit_sha256": "b37d78a6283a2370950d34a1e3bf85b71cc0ffd1bbfdffdb92bbd6086d524930",
+  "completed_stages": 18,
+  "sealed_raw_audit_sha256": "82313514be532ffd4c107dd7513fed3dd77efd1cd39ef7956a67261e876c9b33",
   "new_stage_analysis_comparison": {
-    "numeric_items": 1041,
-    "max_abs_error": 6.994405055138486e-15,
-    "largest_error_path": "/reconstruction/label_interface_B0_kv/raw/correlation",
+    "numeric_items": 1893,
+    "max_abs_error": 0,
+    "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
     "missing": [],
     "matched_nonfinite_items": [],
     "author_analysis_sha256": null
   },
   "new_pair_all_scalar_comparison": {
-    "numeric_items": 184,
+    "numeric_items": 288,
     "max_abs_error": 0,
     "largest_error_path": "/qwen32_native/native_restricted_restore_signed/n_contexts",
     "missing": [],
     "matched_nonfinite_items": [],
     "author_analysis_sha256": null
   },
-  "new_stage_only": "llama70_confirmation_mechanism",
+  "new_stage_only": "llama70_confirmation_function",
   "old15_run_objects_unchanged": true,
   "old15_table_rows_unchanged": 55,
   "old_three_Qwen_pairs_unchanged": true,
   "new_Llama_mechanism_pair_readouts": 10,
   "new_complete_count": {
-    "complete_stages_audited": 16,
+    "complete_stages_audited": 18,
     "planned_stages": 18,
-    "contexts": 416,
-    "scores": 207616,
-    "stage_gpu_hours": 38.18359124965138
+    "contexts": 480,
+    "scores": 245760,
+    "stage_gpu_hours": 63.99923660106129
   },
-  "new_stage_display_row_cells": 8,
+  "new_stage_display_row_cells": 5,
   "prior_15_stage_author_audit_sha256": "dd407123d602c0e8fd6a40473252c35a14efe81bdb79b4b63e9f4fa249b2140f",
   "resident_records_at_display_review": {
     "worker_llama70_confirmation.json": {
@@ -1249,16 +1668,35 @@
         "host": "fvcrc10",
         "model": "/tmp/ices_models/Llama-3.1-70B",
         "started_at": 1791784627.8403986,
-        "last_observed_at": 1791798061.407087,
+        "last_observed_at": 1791807342.1551735,
         "num_devices": 4,
-        "resident_device_hours_so_far": 14.926185209486219,
+        "resident_device_hours_so_far": 25.238127527766757,
         "scope": "continuous residency from first model loading through completed or failed stage, including material generation, analysis, interstage and floor waiting; excludes pre-load imports",
-        "last_stage": "llama70_confirmation_mechanism",
+        "last_stage": "llama70_confirmation_native",
         "worker_complete": false,
         "failed": false,
         "error": null
       },
-      "source_sha256": "246786bbfa2ac6c9ce2a15e6adc289da01ab8d36ea66776f0a4b2387aa0d9aa3"
+      "source_sha256": "c18ddf70b4124c8b5fb06422cfb2a1a5921d16751e08cc2771de177435299766"
+    },
+    "worker_llama70_confirmation_function_parallel.json": {
+      "record": {
+        "family": "llama70",
+        "host": "fvcrc13",
+        "model": "/tmp/ices_models/Llama-3.1-70B",
+        "started_at": 1791795653.9228303,
+        "last_observed_at": 1791809713.6281102,
+        "num_devices": 4,
+        "resident_device_hours_so_far": 15.621894755363464,
+        "scope": "Continuous residency of independently scheduled fixed function stage, including loading and analysis.",
+        "last_stage": "llama70_confirmation_function",
+        "worker_complete": true,
+        "failed": false,
+        "error": null,
+        "schedule_helper_sha256": "802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798",
+        "isolated_execution_root": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e131/function_parallel_execution"
+      },
+      "source_sha256": "29ef222fd257057210a399ad31e1c18b27768afde0a345b7cce10bb1e970d747"
     },
     "worker_llama70_discovery.json": {
       "record": {
@@ -1329,6 +1767,15 @@
       "source_sha256": "da09581a37480bc9d2efb9580e33898859650aec0103ce3bad6de649c4e52876"
     }
   },
-  "incremental_only_helper_sha256": "00c89c92518745fa54ea0e681aee0eaafd461be0c7c900b3d354cd6bfebe485a",
-  "all_function_full_outputs_preserved": true
+  "incremental_only_helper_sha256": "b4af2f74efd4eb98b8f8d1721a34ef8eb9f9b06a946303b8a52149cad414a03c",
+  "all_function_full_outputs_preserved": true,
+  "old16_run_objects_unchanged": true,
+  "old16_table_rows_unchanged": 66,
+  "new_Llama_native_pair_readouts": 8,
+  "prior_16_stage_author_audit_sha256": "9a8c138e5a6da637f7d7bd24856a6ea5e5557bb36ebeda428aaa9bf310cd0fed",
+  "old17_run_objects_unchanged": true,
+  "old17_table_rows_unchanged": 75,
+  "new_Llama_function_pair_readouts": 18,
+  "new_auxiliary_full_output_pre_author_seal_sha256": "e537f9726b2fc086ce1493d8e9a1fe4aa5b51232341e7ca5929512bb34876475",
+  "prior_17_stage_author_audit_sha256": "a03f65b3abaacd2470b8178833e13a4702fb44573e361461c31f5e90509078b1"
 }

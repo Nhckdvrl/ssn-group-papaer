@@ -1,22 +1,19 @@
 {
   "status": "PLOT_DATA_9_OF_12_VERIFIED",
   "date": "2026-10-12",
-  "source_summary_sha256": "6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865",
-  "CSV_sha256": "33c7893f8d869a961b24c8d38276d25a4dbd5eca946d6db8b1e63809aa27824e",
-  "manifest_sha256": "d40c8d05afad9bb3f8cade81a725bbebed5c8df082a88e9e17bcb9a1c62bab90",
-  "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+  "source_summary_sha256": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
+  "CSV_sha256": "677038b59a7b2e036050e19eb2957155077adb6335356b3223a23c9a2763e90a",
+  "manifest_sha256": "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f",
+  "script_sha256": "330c6fa38caac7537ca9e249670389c7e494278698ce5dc0ae84d14e17bfef94",
   "figures": {
-    "png": "3685dab8d49671adf6ecbb8ec417d361c0a634548bf123ca35da4998d60f46d5",
-    "pdf": "e9e3649a4f11369601e833a8ce5cafcec090421e0237bfeea0279c9da2a1bbc8"
+    "png": "4b60ace1b0a37546873c7b8bb6f31236cc5e8b71210deb17146f997bee179fd2",
+    "pdf": "76991f528d67bd0dbbcd9cb59840ff161479a15b37b56087055ca365c931bb2b"
   },
-  "complete_points": 10,
+  "complete_points": 12,
   "planned_points": 12,
-  "checked_mean_CI_values": 30,
+  "checked_mean_CI_values": 36,
   "max_abs_error": 0.0,
-  "pending": [
-    "llama70_confirmation_native",
-    "llama70_confirmation_function"
-  ],
+  "pending": [],
   "point_checks": {
     "qwen3_confirmation_mechanism": {
       "status": "COMPLETE",
@@ -103,9 +100,16 @@
       "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
     },
     "llama70_confirmation_native": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "controlled restaurant sentiment; seed131101"
+      "status": "COMPLETE",
+      "numeric_fields_empty_not_zero": false,
+      "stage_material_scope": "controlled restaurant sentiment; seed131101",
+      "expected_mean_ci": [
+        1.8371662870049477,
+        1.491942092590034,
+        2.184207128547132
+      ],
+      "raw_behavior_sha256": "86f8e3ad7d77cab2ca9d6bb357b8cf2e83cfff47a478e510691ef473235ce8a9",
+      "raw_and_pair_sealed_before_author": true
     },
     "qwen3_confirmation_function": {
       "status": "COMPLETE",
@@ -144,17 +148,24 @@
       "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
     },
     "llama70_confirmation_function": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+      "status": "COMPLETE",
+      "numeric_fields_empty_not_zero": false,
+      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+      "expected_mean_ci": [
+        10.44921875,
+        7.91015625,
+        13.0859375
+      ],
+      "raw_behavior_sha256": "92d9aeb932f98329032a4187cf22b595d5b13527a3b00d47be3bd218d3724807",
+      "raw_and_pair_sealed_before_author": true
     }
   },
   "visual_inspection": {
     "current_PNG_viewed": true,
     "figure": "results/figs/fig_cross_size_core_chain.png",
-    "complete_points_visible": 10,
-    "two_pending_labels_visible_and_no_zero_markers": true,
-    "axes_units": "formation/native nats;function pp;alln32context-bootstrap",
+    "complete_points_visible": 11,
+    "one_pending_label_visible_without_zero_marker": true,
+    "axes_units": "formation/native nats;functionpp;n32context-bootstrap",
     "model_names_and_CIs_readable": true,
     "old_visual_records_in_plot_history_preserved": true
   },
@@ -162,16 +173,29 @@
   "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
   "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
   "independent_GPU_forward_or_rerun": false,
-  "helper_sha256": "7d86979817081ad08d3b94a3729ea8f694443f9effb001e68e9d41842214e104",
+  "helper_sha256": "1176b5fa07005c93d29a38f4583376c191c97c859fc9a71c8fbc1d3f6624cf4a",
   "source_rebinding_only": false,
-  "new_confirmation_point": "llama70_confirmation_mechanism",
-  "new_point_pre_author_raw_seal_sha256": "b55d3e98a6c465ff39a06b0a6a73f59c11bc5096d3ed11fa32687edcbf174668",
-  "new_point_pre_author_pair_seal_sha256": "0d2b53ef83821b5760aeb5a217cfc259fffd6f4681267323f8e84d8dc47d5c7b",
+  "new_confirmation_point": "llama70_confirmation_function",
+  "new_point_pre_author_raw_seal_sha256": "c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e",
+  "new_point_pre_author_pair_seal_sha256": "2a9cd015444ce7817645df3ed49425c4da52020a24438aba91554a5ce081f1f1",
   "incremental_presentation": {
-    "current_summary_completed_stages": 16,
-    "all_previous9_point_values_unchanged": true,
+    "current_summary_completed_stages": 18,
+    "all_previous11_point_values_unchanged": true,
     "new_confirmation_point_count": 1,
     "scientific_stage_or_CI_recomputed": false,
-    "previous_plot_review_sha256": "f439cee7fee7910d25479df451f28eff834d835d0c62278831d32a1fd9d4218a"
+    "previous_plot_review_sha256": "ea59e47a33c0921ad59df11f00473c486326ddf8ab99910cd45923fe3c896da0",
+    "layout_only_changes": "6.3x2.65 inches, 8pt labels, short axes, completion footer removed when complete; CSV now LF. get_stat AST exactly unchanged."
+  },
+  "compiled_pdf_visual_review": {
+    "status": "PASS_ACTUAL_PDF_WIDTH",
+    "PDF_sha256": "070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4",
+    "manifest_sha256": "9d7087aeb761b08aae6856634395db0daae3855c74c6748368bd89b647319b88",
+    "PAPER_DRAFT_sha256": "11c7cbe89e9b3f6336e2aa8440880413961ea5ffce05876292be79d3122874ba",
+    "PAPER_APPENDIX_sha256": "09359666a8b39bef8e8640516f9a7904a3a34b7cc3cb15f62e047c328d3e454b",
+    "figure_page": 33,
+    "compiled_caption": "Figure17: all12 fixed n32 model-stage points, full-vocabulary mean requested-source gains",
+    "actual_embedding": "main.tex includes fig_cross_size_core_chain.pdf; image and caption present on PDF P33",
+    "layout": "6.3x2.65inch source rendered at full ACL text width. Four names, panel titles, mean points,CI bars and unit axes readable. No clipping. Completed status footer removed, n32/CI/matching scope retained.",
+    "reviewer_no_GPU": true
   }
 }

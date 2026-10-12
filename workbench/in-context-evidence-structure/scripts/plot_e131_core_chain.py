@@ -33,12 +33,12 @@ def main():
     audit = json.loads((ROOT / "results/e131/independent_author_report_review_2026-10-12.json").read_text())
     assert audit["summary_json_sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
     rows = []
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9,
+    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8,
                          "axes.spines.top": False, "axes.spines.right": False})
-    fig, axes = plt.subplots(1, 3, figsize=(10.2, 3.35), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(6.3, 2.65), sharey=True)
     titles = ["Evidence formation", "Native operation", "Real-text source use"]
-    labels = ["Formation effect (nats)", "Answer-path removal effect (nats)",
-              "Selective − native accuracy (pp)"]
+    labels = ["Formation effect (nats)", "Path removal effect (nats)",
+              "Selective − native (pp)"]
     colors = ["#245B88", "#245B88", "#A75A22", "#A75A22"]
     for column, stage in enumerate(STAGES):
         ax = axes[column]
@@ -71,11 +71,11 @@ def main():
         ax.margins(x=.14)
     axes[0].set_yticks(range(4), [label for _, label in reversed(MODELS)])
     complete = sum(row["status"] == "COMPLETE" for row in rows)
-    fig.text(.5, .015,
-             f"Matched within each family and stage (n=32); 95% context-bootstrap intervals. "
-             f"{complete}/12 model-stage confirmations complete.",
-             ha="center", color="#555555", fontsize=8)
-    fig.tight_layout(rect=(0, .065, 1, 1))
+    footer = "Within-family and stage matched contexts (n=32); 95% context-bootstrap intervals."
+    if complete < 12:
+        footer += f"\n{complete}/12 model-stage confirmations complete."
+    fig.text(.5, .025, footer, ha="center", color="#555555", fontsize=7)
+    fig.tight_layout(rect=(0, .11, 1, 1))
     dest = ROOT / "results/figs"
     dest.mkdir(exist_ok=True)
     base = dest / "fig_cross_size_core_chain"
@@ -83,7 +83,7 @@ def main():
         fig.savefig(base.with_suffix("." + ext), dpi=220, bbox_inches="tight")
     data = ROOT / "results/e131/core_chain_figure_values.csv"
     with data.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     (ROOT / "results/e131/core_chain_figure_manifest.json").write_text(json.dumps({

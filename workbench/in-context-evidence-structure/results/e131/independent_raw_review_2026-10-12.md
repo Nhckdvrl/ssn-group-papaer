@@ -1,7 +1,7 @@
 # E131 独立 raw 校对（滚动封存）
 
 这是 EXECUTION §5 的 raw-first 数值/实际运行校对，不改主张等级、研究状态或冻结科学读数。
-当前完整审计 16/18 stage，416 contexts、207616 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
+当前完整审计 18/18 stage，480 contexts、245760 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
 
 三个科学源见 JSON；dispatch `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`。
 每批全部 raw 推导先写入独立 seal，再打开该批 author analysis。CPU/pre-score/精度修复审计保持原文件。
@@ -1038,3 +1038,241 @@ summary `a4900acc76f6044c18696e0455fec30ad7885d000288e0c3fec0826ce74a93b3`；rep
 ## 第16批确认图：10/12点
 
 新增L70confirmation mechanism使用已先封raw与同新32材料配对；10点/30均值及CI端点与当前summary、sealedraw和CSV逐项相等。旧9点原值不变，两个L70native/function仍空值pending，不是零。没有重算stage或bootstrapCI；SST机制/function分别采样，native为controlledrestaurant，配对限定同family/stage。manifest `d40c8d05afad9bb3f8cade81a725bbebed5c8df082a88e9e17bcb9a1c62bab90`，摘要 `6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865`。
+
+## 第17批：llama70_confirmation_native完整raw-first封存
+
+32contexts×64条件×8queries=16384评分；80层/4GPU/FP32/eager/TF32=False。cached/full 1.71661377e-05，native self 0、graph-zero 0；实际全层prefix调用76800。CPUcontexts/preflight与冻结5源码、pins、gold及alias/真实图均通过。
+新增raw seal f7d029fcc423dec1c8b5aa7dfa5678512583e26e13bf3ac6b418dd47f76d8c6e；新pair seal b68f0eef284d959c3e7149224c733c8b0b7c8d4f6a49891e9ca771888ea711ea。之后比author analysis 1217项/max 0。此前16批和全部已封配对另存且不重算。
+
+| 全固定读数 | 均值 [95%context CI] |
+|---|---|
+| shared/native/cross_answer_removal/rule_signed | 1.83717 [1.49194, 2.18421] |
+| shared/native/cross_answer_removal/rule_absolute | 1.83717 [1.49194, 2.18421] |
+| shared/native/within_answer_removal/rule_signed | -0.713149 [-1.02251, -0.413516] |
+| shared/native/within_answer_removal/rule_absolute | -0.713149 [-1.02251, -0.413516] |
+| shared/native/cross_vs_within_removal/rule_signed | 2.55032 [2.04346, 3.04325] |
+| shared/native/cross_vs_within_removal/rule_absolute | 2.55032 [2.04346, 3.04325] |
+| shared/native/all_cross_removal/rule_signed | -1.27402 [-1.79156, -0.77306] |
+| shared/native/all_cross_removal/rule_absolute | -1.27402 [-1.79156, -0.77306] |
+| shared/native/answer_path_restoration/rule_signed | -0.504456 [-0.808036, -0.216789] |
+| shared/native/answer_path_restoration/rule_absolute | -0.504456 [-0.808036, -0.216789] |
+| shared/native/restoration_residual/rule_signed | -0.769565 [-1.09065, -0.455665] |
+| shared/native/restoration_residual/rule_absolute | -0.769565 [-1.09065, -0.455665] |
+| shared/gate/cross_answer_removal/rule_signed | 1.18476 [0.938148, 1.45487] |
+| shared/gate/cross_answer_removal/rule_absolute | 1.15755 [0.899399, 1.43232] |
+| shared/gate/within_answer_removal/rule_signed | -0.948181 [-1.24071, -0.651581] |
+| shared/gate/within_answer_removal/rule_absolute | -0.970976 [-1.24643, -0.701508] |
+| shared/gate/cross_vs_within_removal/rule_signed | 2.13294 [1.69257, 2.57893] |
+| shared/gate/cross_vs_within_removal/rule_absolute | 2.12853 [1.70448, 2.56041] |
+| shared/gate/all_cross_removal/rule_signed | 1.95599 [1.60717, 2.30433] |
+| shared/gate/all_cross_removal/rule_absolute | 1.95599 [1.60717, 2.30433] |
+| shared/gate/answer_path_restoration/rule_signed | 0.806071 [0.502654, 1.16543] |
+| shared/gate/answer_path_restoration/rule_absolute | 0.839734 [0.547074, 1.19132] |
+| shared/gate/restoration_residual/rule_signed | 1.14992 [0.774331, 1.51735] |
+| shared/gate/restoration_residual/rule_absolute | 1.11625 [0.740833, 1.4804] |
+| far/native/cross_answer_removal/rule_signed | -0.0254509 [-0.0911155, 0.0378298] |
+| far/native/cross_answer_removal/rule_absolute | -0.0672261 [-0.130983, -0.00891918] |
+| far/native/within_answer_removal/rule_signed | 0.132086 [-0.145819, 0.405368] |
+| far/native/within_answer_removal/rule_absolute | -0.358984 [-0.575513, -0.151065] |
+| far/native/cross_vs_within_removal/rule_signed | -0.157537 [-0.423111, 0.103509] |
+| far/native/cross_vs_within_removal/rule_absolute | 0.291758 [0.0734226, 0.517876] |
+| far/native/all_cross_removal/rule_signed | -0.0374866 [-0.251228, 0.177481] |
+| far/native/all_cross_removal/rule_absolute | -0.145399 [-0.345277, 0.0547632] |
+| far/native/answer_path_restoration/rule_signed | -0.100432 [-0.218975, 0.00976744] |
+| far/native/answer_path_restoration/rule_absolute | -0.0334504 [-0.152324, 0.087265] |
+| far/native/restoration_residual/rule_signed | 0.0629452 [-0.145706, 0.281035] |
+| far/native/restoration_residual/rule_absolute | -0.111948 [-0.314217, 0.0966267] |
+| far/gate/cross_answer_removal/rule_signed | -0.0260849 [-0.0740978, 0.0293922] |
+| far/gate/cross_answer_removal/rule_absolute | -0.0392433 [-0.0933476, 0.00564394] |
+| far/gate/within_answer_removal/rule_signed | 0.0711613 [-0.201971, 0.346981] |
+| far/gate/within_answer_removal/rule_absolute | -0.446277 [-0.662369, -0.24757] |
+| far/gate/cross_vs_within_removal/rule_signed | -0.0972462 [-0.364679, 0.163572] |
+| far/gate/cross_vs_within_removal/rule_absolute | 0.407034 [0.206419, 0.620745] |
+| far/gate/all_cross_removal/rule_signed | -0.121907 [-0.234303, -0.00744803] |
+| far/gate/all_cross_removal/rule_absolute | 0.278135 [0.206422, 0.353844] |
+| far/gate/answer_path_restoration/rule_signed | 0.0175186 [-0.0327772, 0.0719792] |
+| far/gate/answer_path_restoration/rule_absolute | 0.105094 [0.0694096, 0.147036] |
+| far/gate/restoration_residual/rule_signed | -0.139426 [-0.263404, -0.0118979] |
+| far/gate/restoration_residual/rule_absolute | 0.173041 [0.0834275, 0.263893] |
+
+恢复是全B→A形成阻断下只开放B答案→A-label边，没有donor；within只严格过去不动self。removed/restored/net边数均按真实图核对。全部private/single/instruction/full/candidate保留JSON，正负都是功能事实。
+
+| 新L70−L8 n32同材料配对 | 均值 [95%paired context CI] |
+|---|---|
+| native_answer_removal_signed | 0.978171 [0.679369, 1.28056] |
+| native_answer_removal_absolute | 0.978171 [0.679369, 1.28056] |
+| native_restricted_restore_signed | -0.229025 [-0.544004, 0.0684149] |
+| native_restricted_restore_absolute | -0.229025 [-0.544004, 0.0684149] |
+| gate_answer_removal_signed | 0.154757 [-0.131837, 0.445632] |
+| gate_answer_removal_absolute | 0.21565 [-0.055301, 0.486097] |
+| gate_restricted_restore_signed | -0.180601 [-0.454866, 0.102449] |
+| gate_restricted_restore_absolute | -0.208878 [-0.463553, 0.0547586] |
+
+当前17/18，448contexts/224000评分；pending=['llama70_confirmation_function']。没有GPU重跑、配置/方向筛选、science修改或claim等级自动变更。
+
+资源竞争缓解后20迁移等待队列在0GPU/0science时取消；record/SHA与restartclaim、新20journal均不存在已核。第17批始终在原10完成，不存在跨GPUpartial重跑或该对照要求；helper静态seal仅执行准备。旧10随后functionfence guard退出是交接记录，不能把已完成native算失败。
+
+## 第17批新增展示核对
+
+仅核新增L70confirmation native32和首次同材料L70−L8配对；analysis 1217项、max error 0；配对全部统计项与独立raw seal一致。新表3cell/各CI一致，8条原冻结配对读数逐行通过。旧16run、66行展示与三Qwen配对保留，不重算旧science、不给discoveryn16错误大小配对。当前17/18、448ctx/224000scores；驻留仍是last-observed累计快照。summary `e7120e26691547a899a8b900aa0cf34736fcbf2558ed8ce5b1e327aa24abcac1`；report `9ff9aaf5e784a33b9d265b943551e385741b4f8ec1a28598e410ae2652c97c5f`。
+
+## 第17批确认图：11/12点
+
+新增L70confirmation native使用已先封raw与同新32材料配对；11点/33均值及CI端点与当前summary、sealedraw和CSV逐项相等。旧10点原值不变，最后L70function仍空值pending，不是零。没有重算stage或bootstrapCI；SST机制/function分别采样，native为controlledrestaurant，配对限定同family/stage。manifest `4fea5756259e16957ab374422691cd86ac6939ed4fb16fa72fa781b4edfed15f`，摘要 `e7120e26691547a899a8b900aa0cf34736fcbf2558ed8ce5b1e327aa24abcac1`。
+
+## 第18批：llama70_confirmation_function完整raw-first封存
+
+32contexts×85条件×8queries=21760评分；80层/4GPU/FP32/eager/TF32=False。cached/full 9.53674316e-06，native self 0、graph-zero 0；实际全层prefix调用46080。CPUcontexts/preflight与冻结5源码、pins、gold及alias/真实图均通过。
+新增raw seal c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e；新pair seal 2a9cd015444ce7817645df3ed49425c4da52020a24438aba91554a5ce081f1f1。之后比author analysis 1893项/max 0。此前17批和全部已封配对另存且不重算。
+
+| 全固定读数 | 均值 [95%context CI] |
+|---|---|
+| shared_normal_native candidate/full/joint | 0.884766 [0.857422, 0.911133] / 0.884766 [0.857422, 0.911133] / 0.771484 [0.716797, 0.824219] |
+| shared_normal_gate candidate/full/joint | 0.958008 [0.94043, 0.974609] / 0.958008 [0.94043, 0.974609] / 0.917969 [0.882812, 0.949219] |
+| shared_answer_cross_off_native candidate/full/joint | 0.989258 [0.978516, 0.99707] / 0.989258 [0.978516, 0.99707] / 0.980469 [0.960938, 0.994141] |
+| shared_answer_cross_off_gate candidate/full/joint | 0.991211 [0.982422, 0.998047] / 0.991211 [0.982422, 0.998047] / 0.984375 [0.96875, 0.996094] |
+| shared_all_cross_off_native candidate/full/joint | 0.758789 [0.751953, 0.766602] / 0.758789 [0.751953, 0.766602] / 0.525391 [0.513672, 0.539062] |
+| shared_all_cross_off_gate candidate/full/joint | 0.992188 [0.983398, 0.999023] / 0.992188 [0.983398, 0.999023] / 0.986328 [0.972656, 0.998047] |
+| shared_answer_cross_off_minus_normal_native/both full paired gain | 0.104492 [0.0791016, 0.130859] |
+| shared_answer_cross_off_minus_normal_native/A full paired gain | 0.0957031 [0.0585938, 0.138672] |
+| shared_answer_cross_off_minus_normal_native/B full paired gain | 0.113281 [0.0683594, 0.164062] |
+| shared_answer_cross_off_minus_normal_native/opposite_convention full paired gain | 0.208984 [0.158203, 0.261719] |
+| shared_answer_cross_off_minus_normal_native/same_convention full paired gain | 0 [0, 0] |
+| shared_all_cross_off_minus_normal_native/both full paired gain | -0.125977 [-0.152344, -0.0996094] |
+| shared_all_cross_off_minus_normal_native/A full paired gain | -0.132812 [-0.195312, -0.0683594] |
+| shared_all_cross_off_minus_normal_native/B full paired gain | -0.119141 [-0.175781, -0.0605469] |
+| shared_all_cross_off_minus_normal_native/opposite_convention full paired gain | -0.251953 [-0.304688, -0.199219] |
+| shared_all_cross_off_minus_normal_native/same_convention full paired gain | 0 [0, 0] |
+| shared_answer_minus_all_native/both full paired gain | 0.230469 [0.217773, 0.242188] |
+| shared_answer_minus_all_native/A full paired gain | 0.228516 [0.169922, 0.287109] |
+| shared_answer_minus_all_native/B full paired gain | 0.232422 [0.177734, 0.287109] |
+| shared_answer_minus_all_native/opposite_convention full paired gain | 0.460938 [0.435547, 0.484375] |
+| shared_answer_minus_all_native/same_convention full paired gain | 0 [0, 0] |
+| shared_answer_cross_off_minus_normal_gate/both full paired gain | 0.0332031 [0.0175781, 0.0498047] |
+| shared_answer_cross_off_minus_normal_gate/A full paired gain | 0.0214844 [0.0078125, 0.0390625] |
+| shared_answer_cross_off_minus_normal_gate/B full paired gain | 0.0449219 [0.015625, 0.0800781] |
+| shared_answer_cross_off_minus_normal_gate/opposite_convention full paired gain | 0.0683594 [0.0371094, 0.101562] |
+| shared_answer_cross_off_minus_normal_gate/same_convention full paired gain | -0.00195312 [-0.00585938, 0] |
+| shared_all_cross_off_minus_normal_gate/both full paired gain | 0.0341797 [0.0195312, 0.0507812] |
+| shared_all_cross_off_minus_normal_gate/A full paired gain | 0.0214844 [0.0078125, 0.0371094] |
+| shared_all_cross_off_minus_normal_gate/B full paired gain | 0.046875 [0.0175781, 0.0820312] |
+| shared_all_cross_off_minus_normal_gate/opposite_convention full paired gain | 0.0742188 [0.0429688, 0.107422] |
+| shared_all_cross_off_minus_normal_gate/same_convention full paired gain | -0.00585938 [-0.0136719, 0] |
+| shared_answer_minus_all_gate/both full paired gain | -0.000976562 [-0.00585938, 0.00390625] |
+| shared_answer_minus_all_gate/A full paired gain | 0 [-0.0078125, 0.00976562] |
+| shared_answer_minus_all_gate/B full paired gain | -0.00195312 [-0.00585938, 0] |
+| shared_answer_minus_all_gate/opposite_convention full paired gain | -0.00585938 [-0.0175781, 0.00195312] |
+| shared_answer_minus_all_gate/same_convention full paired gain | 0.00390625 [0, 0.00976562] |
+| shared_query_isolation_normal/both full paired gain | 0.0732422 [0.0380859, 0.108423] |
+| shared_query_isolation_normal/A full paired gain | 0.0703125 [0.0253906, 0.119141] |
+| shared_query_isolation_normal/B full paired gain | 0.0761719 [0.0136719, 0.140625] |
+| shared_query_isolation_normal/opposite_convention full paired gain | 0.146484 [0.0761719, 0.216846] |
+| shared_query_isolation_normal/same_convention full paired gain | 0 [0, 0] |
+| shared_query_isolation_answer_cross_off/both full paired gain | 0.00195312 [-0.0078125, 0.0126953] |
+| shared_query_isolation_answer_cross_off/A full paired gain | -0.00390625 [-0.0175781, 0.00585938] |
+| shared_query_isolation_answer_cross_off/B full paired gain | 0.0078125 [-0.00585938, 0.0273438] |
+| shared_query_isolation_answer_cross_off/opposite_convention full paired gain | 0.00585938 [-0.0136719, 0.0273438] |
+| shared_query_isolation_answer_cross_off/same_convention full paired gain | -0.00195312 [-0.00585938, 0] |
+| shared_query_isolation_all_cross_off/both full paired gain | 0.233398 [0.222656, 0.243164] |
+| shared_query_isolation_all_cross_off/A full paired gain | 0.224609 [0.166016, 0.283203] |
+| shared_query_isolation_all_cross_off/B full paired gain | 0.242188 [0.183594, 0.298828] |
+| shared_query_isolation_all_cross_off/opposite_convention full paired gain | 0.472656 [0.453125, 0.490234] |
+| shared_query_isolation_all_cross_off/same_convention full paired gain | -0.00585938 [-0.0136719, 0] |
+| shared_answer_by_query_interaction/both full paired gain | -0.0712891 [-0.106445, -0.0361328] |
+| shared_answer_by_query_interaction/A full paired gain | -0.0742188 [-0.121094, -0.03125] |
+| shared_answer_by_query_interaction/B full paired gain | -0.0683594 [-0.134766, -0.00585938] |
+| shared_answer_by_query_interaction/opposite_convention full paired gain | -0.140625 [-0.208984, -0.0722656] |
+| shared_answer_by_query_interaction/same_convention full paired gain | -0.00195312 [-0.00585938, 0] |
+| far_normal_native candidate/full/joint | 0.990234 [0.982422, 0.99707] / 0.988281 [0.980469, 0.995117] / 0.978516 [0.962891, 0.990234] |
+| far_normal_gate candidate/full/joint | 0.970703 [0.953125, 0.986328] / 0.970703 [0.953125, 0.986328] / 0.943359 [0.908203, 0.972656] |
+| far_answer_cross_off_native candidate/full/joint | 0.995117 [0.989258, 0.999023] / 0.993164 [0.987305, 0.998047] / 0.988281 [0.978516, 0.996094] |
+| far_answer_cross_off_gate candidate/full/joint | 0.985352 [0.975586, 0.993164] / 0.985352 [0.975586, 0.993164] / 0.972656 [0.955078, 0.988281] |
+| far_all_cross_off_native candidate/full/joint | 0.991211 [0.985352, 0.996094] / 0.542969 [0.52146, 0.568359] / 0.0996094 [0.0546875, 0.150391] |
+| far_all_cross_off_gate candidate/full/joint | 0.986328 [0.975586, 0.995117] / 0.986328 [0.975586, 0.995117] / 0.974609 [0.955078, 0.990234] |
+| far_answer_cross_off_minus_normal_native/both full paired gain | 0.00488281 [-0.000976562, 0.0126953] |
+| far_answer_cross_off_minus_normal_native/A full paired gain | -0.00195312 [-0.00585938, 0] |
+| far_answer_cross_off_minus_normal_native/B full paired gain | 0.0117188 [0.00195312, 0.0253906] |
+| far_answer_cross_off_minus_normal_native/opposite_convention full paired gain | 0.00976562 [0.00195312, 0.0195312] |
+| far_answer_cross_off_minus_normal_native/same_convention full paired gain | 0 [-0.00585938, 0.00585938] |
+| far_all_cross_off_minus_normal_native/both full paired gain | -0.445312 [-0.46875, -0.418945] |
+| far_all_cross_off_minus_normal_native/A full paired gain | -0.324219 [-0.435547, -0.220703] |
+| far_all_cross_off_minus_normal_native/B full paired gain | -0.566406 [-0.6875, -0.443359] |
+| far_all_cross_off_minus_normal_native/opposite_convention full paired gain | -0.427734 [-0.457031, -0.396484] |
+| far_all_cross_off_minus_normal_native/same_convention full paired gain | -0.462891 [-0.490234, -0.433594] |
+| far_answer_minus_all_native/both full paired gain | 0.450195 [0.423828, 0.473633] |
+| far_answer_minus_all_native/A full paired gain | 0.322266 [0.21875, 0.435547] |
+| far_answer_minus_all_native/B full paired gain | 0.578125 [0.457031, 0.697266] |
+| far_answer_minus_all_native/opposite_convention full paired gain | 0.4375 [0.40625, 0.464844] |
+| far_answer_minus_all_native/same_convention full paired gain | 0.462891 [0.433594, 0.488281] |
+| far_answer_cross_off_minus_normal_gate/both full paired gain | 0.0146484 [0.00488281, 0.0263672] |
+| far_answer_cross_off_minus_normal_gate/A full paired gain | 0.00390625 [0, 0.0117188] |
+| far_answer_cross_off_minus_normal_gate/B full paired gain | 0.0253906 [0.00585938, 0.0488281] |
+| far_answer_cross_off_minus_normal_gate/opposite_convention full paired gain | 0.0234375 [0.00585938, 0.0429688] |
+| far_answer_cross_off_minus_normal_gate/same_convention full paired gain | 0.00585938 [0, 0.0136719] |
+| far_all_cross_off_minus_normal_gate/both full paired gain | 0.015625 [-0.000976562, 0.0351562] |
+| far_all_cross_off_minus_normal_gate/A full paired gain | 0 [-0.00976562, 0.0078125] |
+| far_all_cross_off_minus_normal_gate/B full paired gain | 0.03125 [0, 0.0683594] |
+| far_all_cross_off_minus_normal_gate/opposite_convention full paired gain | 0.0292969 [0.0078125, 0.0527344] |
+| far_all_cross_off_minus_normal_gate/same_convention full paired gain | 0.00195312 [-0.0195312, 0.0253906] |
+| far_answer_minus_all_gate/both full paired gain | -0.000976562 [-0.0117188, 0.00976562] |
+| far_answer_minus_all_gate/A full paired gain | 0.00390625 [-0.00390625, 0.0136719] |
+| far_answer_minus_all_gate/B full paired gain | -0.00585938 [-0.0253906, 0.0136719] |
+| far_answer_minus_all_gate/opposite_convention full paired gain | -0.00585938 [-0.015625, 0.00390625] |
+| far_answer_minus_all_gate/same_convention full paired gain | 0.00390625 [-0.015625, 0.0234375] |
+| far_query_isolation_normal/both full paired gain | -0.0175781 [-0.0322266, -0.00585938] |
+| far_query_isolation_normal/A full paired gain | -0.00585938 [-0.015625, 0] |
+| far_query_isolation_normal/B full paired gain | -0.0292969 [-0.0585938, -0.0078125] |
+| far_query_isolation_normal/opposite_convention full paired gain | -0.0234375 [-0.0429688, -0.00585938] |
+| far_query_isolation_normal/same_convention full paired gain | -0.0117188 [-0.03125, 0.00195312] |
+| far_query_isolation_answer_cross_off/both full paired gain | -0.0078125 [-0.015625, -0.000976562] |
+| far_query_isolation_answer_cross_off/A full paired gain | 0 [-0.00585938, 0.00585938] |
+| far_query_isolation_answer_cross_off/B full paired gain | -0.015625 [-0.03125, -0.00390625] |
+| far_query_isolation_answer_cross_off/opposite_convention full paired gain | -0.00976562 [-0.0195312, 0] |
+| far_query_isolation_answer_cross_off/same_convention full paired gain | -0.00585938 [-0.0214844, 0.00585938] |
+| far_query_isolation_all_cross_off/both full paired gain | 0.443359 [0.416016, 0.466797] |
+| far_query_isolation_all_cross_off/A full paired gain | 0.318359 [0.214844, 0.431641] |
+| far_query_isolation_all_cross_off/B full paired gain | 0.568359 [0.443359, 0.693359] |
+| far_query_isolation_all_cross_off/opposite_convention full paired gain | 0.433594 [0.400391, 0.462891] |
+| far_query_isolation_all_cross_off/same_convention full paired gain | 0.453125 [0.421875, 0.480469] |
+| far_answer_by_query_interaction/both full paired gain | 0.00976562 [0.000976562, 0.0205078] |
+| far_answer_by_query_interaction/A full paired gain | 0.00585938 [0, 0.015625] |
+| far_answer_by_query_interaction/B full paired gain | 0.0136719 [-0.00195312, 0.0332031] |
+| far_answer_by_query_interaction/opposite_convention full paired gain | 0.0136719 [-0.00195312, 0.0332031] |
+| far_answer_by_query_interaction/same_convention full paired gain | 0.00585938 [0, 0.0136719] |
+
+Accuracy/变化表单位为0–1，乘100为%/pp；margins与code response为nats。origin/cross均权为primary，within单列；双Actor均值≠joint。shared词不能辨other-source来源，far词空间/other-word A/B各报，不宣称新ID或完整criterion。actualargs.out保持真实staging路径，连续fence/旧worker交接exit非科学结果。
+
+| 新L70−L8 n32同材料配对 | 均值 [95%paired context CI] |
+|---|---|
+| candidate_normal_native_both | 0.0878906 [0.0566406, 0.118164] |
+| candidate_normal_gate_both | -0.0205078 [-0.0410156, 0] |
+| candidate_answer_cross_off_native_both | 0.103516 [0.0820312, 0.125977] |
+| candidate_answer_cross_off_gate_both | 0.0078125 [-0.00195312, 0.0195312] |
+| candidate_all_cross_off_native_both | 0.00683594 [-0.00390625, 0.0185547] |
+| candidate_all_cross_off_gate_both | 0.0214844 [0.00585938, 0.0410156] |
+| candidate_targeted_gain | 0.015625 [-0.015625, 0.0488281] |
+| candidate_targeted_minus_all | 0.0966797 [0.0742188, 0.120117] |
+| candidate_query_isolation | -0.108398 [-0.149414, -0.0693115] |
+| full_normal_native_both | 0.0878906 [0.0566406, 0.118164] |
+| full_normal_gate_both | -0.0205078 [-0.0410156, 0] |
+| full_answer_cross_off_native_both | 0.103516 [0.0820312, 0.125977] |
+| full_answer_cross_off_gate_both | 0.0078125 [-0.00195312, 0.0195312] |
+| full_all_cross_off_native_both | 0.00683594 [-0.00390625, 0.0185547] |
+| full_all_cross_off_gate_both | 0.0214844 [0.00585938, 0.0410156] |
+| full_targeted_gain | 0.015625 [-0.015625, 0.0488281] |
+| full_targeted_minus_all | 0.0966797 [0.0742188, 0.120117] |
+| full_query_isolation | -0.108398 [-0.149414, -0.0693115] |
+
+当前18/18，480contexts/245760评分；pending=[]。没有GPU重跑、配置/方向筛选、science修改或claim等级自动变更。
+
+## 第18批新增展示核对
+
+仅核新增L70confirmation function32和首次同材料L70−L8配对；analysis 1893项、max error 0；配对全部统计项与独立raw seal一致。新表5cell/21数值/各CI与完整输出一致，18条原冻结配对读数逐行通过。旧17run、75行展示与三Qwen配对保留，不重算旧science、不给discoveryn16错误大小配对。当前18/18、480ctx/245760scores；驻留仍是last-observed累计快照。summary `06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6`；report `f4880135a706512826f1100a47b5adae9c709b92821bc4ce776f9146fc30b678`。
+
+## 最终18批确认图：12/12点
+
+新增L70 function点使用第18批raw与同family/stage新32材料配对的pre-author封签。12点/36个均值及CI端点逐项等于sealed raw、当前summary与CSV；旧11点原值不变，没有pending或零占位。仅重排印刷尺寸/字样与LF换行，原get_stat AST公式不变，未重算旧stage或bootstrap。SST形成/function分别采样，native是controlled restaurant；full function是两Actor均值，不是joint。
+
+manifest `fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f`，summary `06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6`；PDF实际嵌入与可读性另记最终稿审计。
+
+最终印刷视检：Figure17在最终PDF P33实际嵌入。四模型名字、三panel的均值点/CI与单位轴标签在ACL整页宽可读，无裁切；不把不同stage/family当一个dataset。PDF 070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4。

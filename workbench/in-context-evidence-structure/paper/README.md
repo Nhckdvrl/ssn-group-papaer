@@ -1,6 +1,6 @@
 # 可重建的论文排版
 
-科学正文以 [PAPER_DRAFT.md](../PAPER_DRAFT.md) 与 [PAPER_APPENDIX.md](../PAPER_APPENDIX.md) 为准。构建脚本转换引用、图表和公式，不修改主张、数字或科学段落。当前是研究稿；E131跨规模实验完成后继续整合结果。
+科学正文以 [PAPER_DRAFT.md](../PAPER_DRAFT.md) 与 [PAPER_APPENDIX.md](../PAPER_APPENDIX.md) 为准。构建脚本转换引用、图表和公式，不修改主张、数字或科学段落。E131固定18阶段的全部发现与独立确认已整合，正文8页、Limitations第9页开头、参考文献后双栏附录。正式候选状态保持。
 
 `acl.sty`、`acl_natbib.bst` 原样来自官方 [acl-style-files](https://github.com/acl-org/acl-style-files/tree/d5adc823ff0f80f98c80405ca0ab66c68e684409)，未改变字体、页边距或行距。`references.bib` 的24项来源与原始BibTeX校验值见 `bibliography_sources.json`；包括已在正文引用的ACL 2025 Sun等工作。
 
