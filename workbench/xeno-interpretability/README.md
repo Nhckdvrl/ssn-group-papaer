@@ -1,17 +1,17 @@
-# Xeno-Interpretability · 模型原生表征及语义解释的边界
+# Xeno-Interpretability · 模型原生表征与观察者的解释边界
 
-**PROPOSED · 2026-10-12**（用户批准独立 workbench；不占用其它 ACTIVE 研究线）。源论文：[Pierucci et al. 2026](https://arxiv.org/abs/2609.20408)，概念研究纲领，**尚未提供 Xeno 存在的实验证据**。
-**问题**：有没有一些在自然计算中稳定、可因果检验、可建立关系定律的模型内部区分，其意义却不能被现有的人类概念体系充分翻译？即使找到此类候选，如何排除「我们的解释方法太弱」？
+**PROPOSED**（用户已批准独立 workbench，尚未批准改变 ACTIVE 资源分配）；原始启发：[Pierucci et al. 2026](https://arxiv.org/abs/2609.20408)。
+**科学中心**：已有可解释性发现了大量人类能命名的概念。这究竟反映了模型天然的组织，还是**发现程序本来就在选择人类熟悉的变量**？若先不命名，而研究内部对象的稳定关系和自然计算作用，能否找到更充分、可预测的解释？
 
 ## 入口
-- [knowledge/README.md](knowledge/README.md) — 精简知识库说明与最新认识；
-- [knowledge/papers/PIERUCCI_2026_XENO.md](knowledge/papers/PIERUCCI_2026_XENO.md) — **重读原论文 v2 全文的独立研究判断**；
-- [knowledge/papers/CORE_READS.md](knowledge/papers/CORE_READS.md) — **15+ 篇主要综述、实验与理论的深读/证据边界**；
-- [knowledge/LITERATURE_MAP.md](knowledge/LITERATURE_MAP.md) — 主张的独特性、强近邻分界、竞争解释和探索方向；
-- [knowledge/READING_QUEUE.md](knowledge/READING_QUEUE.md) — 已完成范围、获取障碍和未来新论文入口。
+- [knowledge/README.md](knowledge/README.md) · 本项目知识库与阅读深度说明。
+- [knowledge/LITERATURE_MAP.md](knowledge/LITERATURE_MAP.md) · 领域谱系、最近邻的 claim ownership、科学假设与初步方向选择。
+- [knowledge/papers/CORE_READS.md](knowledge/papers/CORE_READS.md) · 先前 17 篇研究卡 + 这轮新增的强论文、idea 来源重建和证据边界。
+- [knowledge/papers/PIERUCCI_2026_XENO.md](knowledge/papers/PIERUCCI_2026_XENO.md) · Xeno 45 页原论文重读。
+- [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) · **给本地研究 agent 的初步实验入口**（问题、竞争解释、决定性实验与反馈原则）。
+- [knowledge/READING_QUEUE.md](knowledge/READING_QUEUE.md) · 全文/部分/摘要与确实无法获取的来源分开。
 
-## 科研原则
-新概念不等于新研究问题；有近邻也不等于没有解释空白。先理解问题发生的自然场景、强已知解释及真正未回答的部分，再设计能区分竞争假设的实验。每篇要分析 parent→pressure→变动的前提→方法形成逻辑（未有作者自述时标 RECONSTRUCTED）→实验能排除什么→我们的真实增量；优先 NeurIPS 2026 和其他高水平当年会议的实际全文、不是标题。可以改变问题、删除无用支线，**禁止为维护初始猜想局部优化**。
+## 状态与纪律
+当前只有研究空间和可检验的初始假设；**无复现、无实际 GPU 结果、无 L1+ 主张、无选定论文标题**。任何测量必须先按 [EXECUTION](../EXECUTION.md) 创建 E## 实验卡；不能以复杂图形、难命名标签或普通 prompt 反例直接宣布发现 Xeno。强 baselines、负对照、同预算比较、置信区间及独立校对不可省略。
 
-**实验 / 声称：** 尚无 GPU 运行或 baseline 复现；[CLAIMS.md](CLAIMS.md) 保持 L0；[PAIN_LOG.md](PAIN_LOG.md) 仅记录真实复现痛点。暂不锁定论文形态、具体方法或会议；实验须依既有规范先填 E## 卡。
-**决策：** 2026-10-12 用户批准建立内部 knowledge；同日决定持续精读，特别反复重读 Xeno，不以关键词近邻判死。
+**本次方向选择：** 保持 Xeno 的大问题，优先探索**概念先验的发现偏差与无标签计算结构的解释增量**，而非选定 SAE、latent MAS、某个应用模型或新控制算法作为研究目标。每轮根据观察继续阅读文献、调整科学问题，允许彻底推翻现在的初步实验入口。状态和资源调整仍由用户决定。

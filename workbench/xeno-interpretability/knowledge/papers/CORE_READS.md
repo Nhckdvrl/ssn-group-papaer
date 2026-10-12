@@ -153,3 +153,30 @@
 **Parent/pressure**：ViT 传统 saliency 回答“在哪里”，而基于 SAE 的视觉概念解释面对**输入概念覆盖不足**、命名依赖主观摘要和跨层计算关系不清的压力。作者将视觉神经科学四层抽象（primitive/intermediate/object/scene）作为数据收集原则，构建约 **64K 图像、16,050 人类视觉概念**，CLIP + Soft-WPMI 自动给 SAE 的 top-activated 特征读语义，再用上游 SAE feature ablation 和下游 activation variation 连接 causal concept graph，提供诊断与 steering。
 **方法与实验**：在 CLIP ViT-B/32 CLS/image-token 多层上比较 ReLU/Gated/JumpReLU/BatchTopK/Matryoshka SAE，最终用 **8× expansion、L0=128 的 BatchTopK**。表4 top-30 concept interpretation accuracy：使用 ImageNet/自建概念集 **50.7%**，MSCOCO/自建集 **51.2%**，自建图像+词表 **54.1%**；对照 LAION15K 和 Google20K 等明显较低。WaterBirds 表7 削弱 background concepts 后 worst-group **50.3→98.5%（+48.2点）**，增强方向使其降到 **5.3%**；表8 在相同 SAE 设置下由 ImageNet 探针训练的最差组为 **63.9%**，MSCOCO 为 **95.4%**，自建探针为 **98.5%**。
 **RECONSTRUCTED idea 来路**：不是再发明 SAE，而是原来“只看像素/单个图层”缺少层间因果链 → 用视觉层级建设强概念覆盖的系统测量 → 定位反直觉的背景捷径 → 设计**反向增强/抑制**和数据源消融获得可信下游动作。**Xeno 的真实差异**：ViSAE 目标从头到尾是丰富 **人类视觉概念集合** 并赋义，验证其有用性。它使“词表不够好导致无法解释”成为 Xeno 必须认真排除的强零假设，但不等于证明模型没有概念集合之外的可复现关系结构。**局限**：强结果主要在单个 ViT 家族/WaterBirds，intervention 可改变后验决策却未自动证明 SAE 概念是原网络天然唯一分解，外推至跨域 xeno 不充分。
+
+
+---
+
+## 18. Gur-Arieh et al. — Enhancing Automated Interpretability with Output-Centric Feature Descriptions（ACL 2025 Main）
+[原文/正式身份](https://aclanthology.org/2025.acl-long.288/) · **阅读范围：正式摘要、作者项目说明；细表待核**。
+**Parent→pressure**：SAE/activation feature 的语言解释多从 top-activating input 得到。即使非常准确地预测该 feature 何时触发，也未必描述它**触发之后对输出做了什么**。作者用 steering 检验发现 input-centric 标签对输出作用描述不足，利用刺激特征后上升的 logit tokens、feature unembedding 生成 output-centric 标签；两侧结合效果最好，还找到了此前以为 dead 的 features。**RECONSTRUCTED 来源**：把同一“解释”分成 input causes 和 output consequences，先测不一致，再最小修正解释生成方式。**Xeno 距离**：改善已有人类词语解释；并未研究语义盲结构是否存在人类概念外的关系，但为强对照提供了最低要求。未读全文，不能报告主表数字。
+
+## 19. Koromilas et al. — PolySAE: Modeling Feature Interactions via Polynomial Decoding（ICML 2026 Main）
+[PMLR 正式](https://proceedings.mlr.press/v306/koromilas26a.html) · [arXiv v2](https://arxiv.org/abs/2602.01322) · **阅读：主文摘要/方法纲要/作者实验总体，未核全部图表**。
+**Parent→pressure**：传统 SAE decoder 的线性加和使“Starbucks”究竟是“star+coffee”组合还是共同出现难区分，模型可能不得不为复合项单独编码 atom。方法：保留线性 encoder，增加 low-rank pairwise/triple polynomial decoder，约 +3% GPT2 参数；四种 LMs、三个 SAE 变体，摘要报告约 +8% probe F1、类似 reconstruction、相对 cooccurrence 统计的交互权重相关 r=.06（SAE feature covariance r=.82），并展示交互 steering。**RECONSTRUCTED**：先发现线性 decoder 的隐含 *additivity assumption*，再通过结构化非线性项区别真正交互与单纯共同出现。**科学边界**：表现和可操纵性不自动证明学到唯一真实组合本体；Xeno 不能把“特征之间有关系”当原创。
+
+## 20. Gröger et al. — Revisiting Platonic: An Aristotelian View（ICML 2026 Main）
+[全文 HTML v2](https://arxiv.org/html/2602.14486) · [代码](https://github.com/mlbio-epfl/Aristotelian) · **阅读：§1–7、关键公式与实验/补充统计验证**。
+**重大研究动作**：Huh et al. ICML24 的 global similarity 随规模变高，通常被解作不同模态趋于共同世界结构。作者先在理论/合成 null 下问：如果输入完全不相关，CKA 随维度/样本比仍会抬高吗？如果在所有层对上挑最高分，深模型是不是天然占优？用**null-calibrated score + aggregation-aware permutation**修复两种偏差，不是仅仅替换 CKA。用 Huh 协议 **1024 image-text pairs、204 model-pairs，d/n 0.19–8** 复核；校准后 global/spectral convergence 证据大幅减弱，local kNN neighborhood 关系仍显著，但 local metric distance 不必一致。另在合成下证明 type-I 错误控制、power 未严重受损。**RECONSTRUCTED genesis**：大叙事“越来越像”→ 先测方法的 null behavior → 一个具体 confound 足以改变整体科学结论 → 从全局表示趋同重新归因到局部关系一致。**Xeno 约束**：任何称“陌生结构跨模型普遍存在”的结果都必须用等维/抽样与 layer-max calibrated null，不能用一张 CKA 热图。
+
+## 21. Hoang et al. — Feature-Effect Geometry Analysis / Concepts and Functions（2026 arXiv，未确认顶会）
+[原文](https://arxiv.org/abs/2607.24645) · [含全文的作者上传稿](https://www.researchgate.net/publication/410887183_Sparse_Autoencoders_Encode_Both_Concepts_and_Functions_The_Downstream_Geometry_of_Feature_Effects) · [官方代码](https://github.com/UKPLab/FEGA) · **阅读：主方法 §3–6、主要表格与 §8 limitation；未复现**。
+**真正的动机**：same SAE latent 被赋一个“固定语义”，但 causal intervention 在不同输入上产生不同 logit 效应。定义同一输入的两条 baseline path `phi(D(z))` 和 `phi(D(z-z_j e_j))`，只差 feature j 而**不混入 SAE 重建误差**；跨上下文收集 downstream logit-effect cloud，再用 ray/axis/mixture/low-rank/diffuse 统计检验。作者只用 **Gemma-2-2B、post-layer12、65K SAE、3 decoder variants**，RAVEL attribute/value 与 copying/rule/prompt-local pointer tasks，匹配激活频次的 random ablation 对照。Pointer-like 特征即使有强因果效果，其输出 effect cloud 仍多为 diffuse，而固定方向较少；value-like 具有较多低秩结构。**重要边界**：pointer 分布是作者先指定结构化任务识别的，**不能外推为自然任务的“陌生语义”**；每 feature 最多 64 contexts，许多归类为 insufficient/undefined，分析在终端 logits 上混入后续传播。**RECONSTRUCTED genesis**：发现 feature 是否激活/是否有用不足以解释其作用 → 改为每个 context 的被干预**结果分布** → 用几何的差异区分静态值与条件性操作。**Xeno 新探索不能再只报“不同上下文 effect direction 不一致”——FEGA 已占据。**
+
+## 22. Nava & Wyart — Hierarchical Concept Geometry Emerges from Word Co-occurrence（NeurIPS 2026；预印本 2605.23821）
+[原文摘要/形式化概述](https://arxiv.org/abs/2605.23821) · [NeurIPS 官方目录](https://neurips.cc/Downloads/2026) · **阅读：摘要/原文元数据，34 页全文未逐页核**。
+**改变前提**：Gemma-2B unembedding 的 word hypernym hierarchies 很容易被讲成模型特有高级概念组织；作者从“WordNet 相近者共现更频繁”出发，分析 cooccurrence Gram matrix 的谱：在正性/衰减条件下， leading eigenvectors 会先分开 broad tree branches 再分 fine branches；word2vec subtree 与 Gemma2B unembedding 出现对应结构。**RECONSTRUCTED**：出现层级几何→问无需复杂模型、纯词分布能否产生→先给出简单统计解释及可计算预测，再核更大的语言模型。**不能凭摘要断言 LLM 内所有层级都是语料伪影**；但它是对“几何很陌生 = 模型原生新语义”的直接反例源。
+
+## 23. 神经科学借用的**实验动作**（不是一条新应用线）
+- [Golan, Schütt & Kriegeskorte, Nature Reviews Neuroscience 2026](https://www.nature.com/articles/s41583-026-01070-0)（**综述摘要/图注**）：复杂神经网络在普通自然样本上可以同样解释已有记录，真正区分两个理论需**主动选择其预测分歧最大的自然可行刺激**，结合 OOD 检验；把 Bayesian optimal experimental design 移植到 LLM 内部解释竞争。**RECONSTRUCTED**：若所有模型都能拟合常规数据，再画拟合表无益；让解释承担不同反事实预测才是推进机制科学的方法。
+- [Representation Biases: Variance Is Not Always a Good Proxy for Importance, eNeuro 2026](https://www.eneuro.org/content/13/3/ENEURO.0461-25.2026)（**摘要及综述网页**）：高方差/线性易读特征可能被优先编码，重要非线性功能信息却低方差；不能仅用 top PCA / top-activated SAE features 筛候选后宣称穷尽模型计算。
