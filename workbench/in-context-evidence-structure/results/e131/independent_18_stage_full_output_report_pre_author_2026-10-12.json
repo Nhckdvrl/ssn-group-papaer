@@ -1,0 +1,1995 @@
+{
+  "new_stage": "llama70_confirmation_function",
+  "full_output": {
+    "policy_accuracy": {
+      "shared_normal_native": {
+        "both": {
+          "mean": 0.884765625,
+          "ci95": [
+            0.857421875,
+            0.9111328125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.896484375,
+          "ci95": [
+            0.8515625,
+            0.935546875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.873046875,
+          "ci95": [
+            0.8203125,
+            0.919921875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.7734375,
+          "ci95": [
+            0.71875,
+            0.826171875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.98828125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_normal_gate": {
+        "both": {
+          "mean": 0.9580078125,
+          "ci95": [
+            0.9404296875,
+            0.974609375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.966796875,
+          "ci95": [
+            0.943359375,
+            0.986328125
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.94921875,
+          "ci95": [
+            0.9140625,
+            0.978515625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.919921875,
+          "ci95": [
+            0.886669921875,
+            0.951171875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.98828125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_answer_cross_off_native": {
+        "both": {
+          "mean": 0.9892578125,
+          "ci95": [
+            0.978515625,
+            0.9970703125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.982421875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.986328125,
+          "ci95": [
+            0.966796875,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.982421875,
+          "ci95": [
+            0.962890625,
+            0.99609375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.98828125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_answer_cross_off_gate": {
+        "both": {
+          "mean": 0.9912109375,
+          "ci95": [
+            0.982421875,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.97265625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.994140625,
+          "ci95": [
+            0.986328125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.974609375,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.994140625,
+          "ci95": [
+            0.984375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_all_cross_off_native": {
+        "both": {
+          "mean": 0.7587890625,
+          "ci95": [
+            0.751953125,
+            0.7666015625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.763671875,
+          "ci95": [
+            0.70703125,
+            0.8203125
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.75390625,
+          "ci95": [
+            0.6953125,
+            0.8125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.521484375,
+          "ci95": [
+            0.505859375,
+            0.537109375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.98828125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_all_cross_off_gate": {
+        "both": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.9833984375,
+            0.9990234375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.97265625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.990234375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.994140625,
+          "ci95": [
+            0.986328125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.990234375,
+          "ci95": [
+            0.978515625,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_normal_native": {
+        "both": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.98046875,
+            0.9951171875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.994140625,
+          "ci95": [
+            0.986328125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.982421875,
+          "ci95": [
+            0.966796875,
+            0.994140625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.986328125,
+          "ci95": [
+            0.974609375,
+            0.99609375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.990234375,
+          "ci95": [
+            0.98046875,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.001953125,
+          "ci95": [
+            0.0,
+            0.0048828125
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.001953125,
+          "ci95": [
+            0.0,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.001953125,
+          "ci95": [
+            0.0,
+            0.005859375
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_normal_gate": {
+        "both": {
+          "mean": 0.970703125,
+          "ci95": [
+            0.953125,
+            0.986328125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.97265625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.953125,
+          "ci95": [
+            0.919921875,
+            0.98046875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.962890625,
+          "ci95": [
+            0.939453125,
+            0.982421875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.978515625,
+          "ci95": [
+            0.958984375,
+            0.994140625
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_cross_off_native": {
+        "both": {
+          "mean": 0.9931640625,
+          "ci95": [
+            0.9873046875,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.984375,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.994140625,
+          "ci95": [
+            0.986328125,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.99609375,
+          "ci95": [
+            0.990234375,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.990234375,
+          "ci95": [
+            0.978515625,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.001953125,
+          "ci95": [
+            0.0,
+            0.0048828125
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.00390625,
+          "ci95": [
+            0.0,
+            0.009765625
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_cross_off_gate": {
+        "both": {
+          "mean": 0.9853515625,
+          "ci95": [
+            0.9755859375,
+            0.9931640625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.982421875,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.978515625,
+          "ci95": [
+            0.962890625,
+            0.9921875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.986328125,
+          "ci95": [
+            0.9765625,
+            0.994140625
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.984375,
+          "ci95": [
+            0.96875,
+            0.99609375
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_all_cross_off_native": {
+        "both": {
+          "mean": 0.54296875,
+          "ci95": [
+            0.5214599609375,
+            0.568359375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.669921875,
+          "ci95": [
+            0.556640625,
+            0.775390625
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.416015625,
+          "ci95": [
+            0.296875,
+            0.537109375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.55859375,
+          "ci95": [
+            0.53125,
+            0.58984375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.52734375,
+          "ci95": [
+            0.501953125,
+            0.5546875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.453125,
+          "ci95": [
+            0.42578125,
+            0.4755859375
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.326171875,
+          "ci95": [
+            0.22265625,
+            0.439453125
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.580078125,
+          "ci95": [
+            0.45703125,
+            0.701171875
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_all_cross_off_gate": {
+        "both": {
+          "mean": 0.986328125,
+          "ci95": [
+            0.9755859375,
+            0.9951171875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.98828125,
+          "ci95": [
+            0.97265625,
+            1.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.984375,
+          "ci95": [
+            0.96875,
+            0.99609375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.9921875,
+          "ci95": [
+            0.984375,
+            0.998046875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.98046875,
+          "ci95": [
+            0.962890625,
+            0.994140625
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "contrasts": {
+      "shared_answer_cross_off_minus_normal_native": {
+        "both": {
+          "mean": 0.1044921875,
+          "ci95": [
+            0.0791015625,
+            0.130859375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.095703125,
+          "ci95": [
+            0.05859375,
+            0.138671875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.11328125,
+          "ci95": [
+            0.068359375,
+            0.1640625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.208984375,
+          "ci95": [
+            0.158203125,
+            0.26171875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_all_cross_off_minus_normal_native": {
+        "both": {
+          "mean": -0.1259765625,
+          "ci95": [
+            -0.15234375,
+            -0.099609375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": -0.1328125,
+          "ci95": [
+            -0.1953125,
+            -0.068359375
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.119140625,
+          "ci95": [
+            -0.17578125,
+            -0.060546875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.251953125,
+          "ci95": [
+            -0.3046875,
+            -0.19921875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_answer_minus_all_native": {
+        "both": {
+          "mean": 0.23046875,
+          "ci95": [
+            0.2177734375,
+            0.2421875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.228515625,
+          "ci95": [
+            0.169921875,
+            0.287109375
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.232421875,
+          "ci95": [
+            0.177734375,
+            0.287109375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.4609375,
+          "ci95": [
+            0.435546875,
+            0.484375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_answer_cross_off_minus_normal_gate": {
+        "both": {
+          "mean": 0.033203125,
+          "ci95": [
+            0.017578125,
+            0.0498046875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.021484375,
+          "ci95": [
+            0.0078125,
+            0.0390625
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.044921875,
+          "ci95": [
+            0.015625,
+            0.080078125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.068359375,
+          "ci95": [
+            0.037109375,
+            0.1015625
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_all_cross_off_minus_normal_gate": {
+        "both": {
+          "mean": 0.0341796875,
+          "ci95": [
+            0.01953125,
+            0.05078125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.021484375,
+          "ci95": [
+            0.0078125,
+            0.037109375
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.046875,
+          "ci95": [
+            0.017578125,
+            0.08203125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.07421875,
+          "ci95": [
+            0.04296875,
+            0.107421875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.013671875,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_answer_minus_all_gate": {
+        "both": {
+          "mean": -0.0009765625,
+          "ci95": [
+            -0.005859375,
+            0.00390625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.0,
+          "ci95": [
+            -0.0078125,
+            0.009765625
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.017578125,
+            0.001953125
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.00390625,
+          "ci95": [
+            0.0,
+            0.009765625
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_query_isolation_normal": {
+        "both": {
+          "mean": 0.0732421875,
+          "ci95": [
+            0.0380859375,
+            0.10842285156249964
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.0703125,
+          "ci95": [
+            0.025390625,
+            0.119140625
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.076171875,
+          "ci95": [
+            0.013671875,
+            0.140625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.146484375,
+          "ci95": [
+            0.076171875,
+            0.2168457031249993
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_query_isolation_answer_cross_off": {
+        "both": {
+          "mean": 0.001953125,
+          "ci95": [
+            -0.0078125,
+            0.0126953125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": -0.00390625,
+          "ci95": [
+            -0.017578125,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.0078125,
+          "ci95": [
+            -0.005859375,
+            0.02734375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.005859375,
+          "ci95": [
+            -0.013671875,
+            0.02734375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "shared_query_isolation_all_cross_off": {
+        "both": {
+          "mean": 0.2333984375,
+          "ci95": [
+            0.22265625,
+            0.2431640625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.224609375,
+          "ci95": [
+            0.166015625,
+            0.283203125
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.2421875,
+          "ci95": [
+            0.18359375,
+            0.298828125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.47265625,
+          "ci95": [
+            0.453125,
+            0.490234375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.013671875,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_cross_off_minus_normal_native": {
+        "both": {
+          "mean": 0.0048828125,
+          "ci95": [
+            -0.0009765625,
+            0.0126953125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.01171875,
+          "ci95": [
+            0.001953125,
+            0.025390625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.009765625,
+          "ci95": [
+            0.001953125,
+            0.01953125
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.0,
+          "ci95": [
+            -0.005859375,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            -0.0029296875,
+            0.0029296875
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.001953125,
+          "ci95": [
+            0.0,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_all_cross_off_minus_normal_native": {
+        "both": {
+          "mean": -0.4453125,
+          "ci95": [
+            -0.46875,
+            -0.4189453125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": -0.32421875,
+          "ci95": [
+            -0.435546875,
+            -0.220703125
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.56640625,
+          "ci95": [
+            -0.6875,
+            -0.443359375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.427734375,
+          "ci95": [
+            -0.45703125,
+            -0.396484375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.462890625,
+          "ci95": [
+            -0.490234375,
+            -0.43359375
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.451171875,
+          "ci95": [
+            0.4248046875,
+            0.4736328125
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.32421875,
+          "ci95": [
+            0.220703125,
+            0.4375
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.578125,
+          "ci95": [
+            0.455078125,
+            0.6973144531249993
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_minus_all_native": {
+        "both": {
+          "mean": 0.4501953125,
+          "ci95": [
+            0.423828125,
+            0.4736328125
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.322265625,
+          "ci95": [
+            0.21875,
+            0.435546875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.578125,
+          "ci95": [
+            0.45703125,
+            0.697265625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.4375,
+          "ci95": [
+            0.40625,
+            0.46484375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.462890625,
+          "ci95": [
+            0.43359375,
+            0.48828125
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": -0.451171875,
+          "ci95": [
+            -0.4736328125,
+            -0.42478027343750036
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": -0.322265625,
+          "ci95": [
+            -0.435546875,
+            -0.216796875
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": -0.580078125,
+          "ci95": [
+            -0.701171875,
+            -0.45703125
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_cross_off_minus_normal_gate": {
+        "both": {
+          "mean": 0.0146484375,
+          "ci95": [
+            0.0048828125,
+            0.0263671875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.00390625,
+          "ci95": [
+            0.0,
+            0.01171875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.025390625,
+          "ci95": [
+            0.005859375,
+            0.048828125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.0234375,
+          "ci95": [
+            0.005859375,
+            0.04296875
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.005859375,
+          "ci95": [
+            0.0,
+            0.013671875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_all_cross_off_minus_normal_gate": {
+        "both": {
+          "mean": 0.015625,
+          "ci95": [
+            -0.0009765625,
+            0.03515625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.0,
+          "ci95": [
+            -0.009765625,
+            0.0078125
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.03125,
+          "ci95": [
+            0.0,
+            0.068359375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.029296875,
+          "ci95": [
+            0.0078125,
+            0.052734375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.001953125,
+          "ci95": [
+            -0.01953125,
+            0.025390625
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_answer_minus_all_gate": {
+        "both": {
+          "mean": -0.0009765625,
+          "ci95": [
+            -0.01171875,
+            0.009765625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.00390625,
+          "ci95": [
+            -0.00390625,
+            0.013671875
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.025390625,
+            0.013671875
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.015625,
+            0.00390625
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.00390625,
+          "ci95": [
+            -0.015625,
+            0.0234375
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_query_isolation_normal": {
+        "both": {
+          "mean": -0.017578125,
+          "ci95": [
+            -0.0322265625,
+            -0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.015625,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.029296875,
+          "ci95": [
+            -0.05859375,
+            -0.0078125
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.0234375,
+          "ci95": [
+            -0.04296875,
+            -0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.01171875,
+          "ci95": [
+            -0.03125,
+            0.001953125
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.0048828125,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.005859375,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_query_isolation_answer_cross_off": {
+        "both": {
+          "mean": -0.0078125,
+          "ci95": [
+            -0.015625,
+            -0.0009765625
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.0,
+          "ci95": [
+            -0.005859375,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": -0.015625,
+          "ci95": [
+            -0.03125,
+            -0.00390625
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": -0.009765625,
+          "ci95": [
+            -0.01953125,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": -0.005859375,
+          "ci95": [
+            -0.021484375,
+            0.005859375
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": -0.001953125,
+          "ci95": [
+            -0.0048828125,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": -0.00390625,
+          "ci95": [
+            -0.009765625,
+            0.0
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n_contexts": 32
+        }
+      },
+      "far_query_isolation_all_cross_off": {
+        "both": {
+          "mean": 0.443359375,
+          "ci95": [
+            0.416015625,
+            0.466796875
+          ],
+          "n_contexts": 32
+        },
+        "A": {
+          "mean": 0.318359375,
+          "ci95": [
+            0.21484375,
+            0.431640625
+          ],
+          "n_contexts": 32
+        },
+        "B": {
+          "mean": 0.568359375,
+          "ci95": [
+            0.443359375,
+            0.693359375
+          ],
+          "n_contexts": 32
+        },
+        "opposite_convention": {
+          "mean": 0.43359375,
+          "ci95": [
+            0.400390625,
+            0.462890625
+          ],
+          "n_contexts": 32
+        },
+        "same_convention": {
+          "mean": 0.453125,
+          "ci95": [
+            0.421875,
+            0.48046875
+          ],
+          "n_contexts": 32
+        },
+        "other_source_word": {
+          "mean": -0.453125,
+          "ci95": [
+            -0.4755859375,
+            -0.42578125
+          ],
+          "n_contexts": 32
+        },
+        "A_other_source_word": {
+          "mean": -0.326171875,
+          "ci95": [
+            -0.439453125,
+            -0.22265625
+          ],
+          "n_contexts": 32
+        },
+        "B_other_source_word": {
+          "mean": -0.580078125,
+          "ci95": [
+            -0.701171875,
+            -0.45703125
+          ],
+          "n_contexts": 32
+        }
+      }
+    },
+    "scope": "Secondary full-vocabulary and other-source-word readouts; original primary unchanged."
+  },
+  "existing_full_accuracy_CIs_reused_from_stage18_raw_seal": true,
+  "only_missing_other_word_contrast_CIs_newly_derived": true,
+  "new_stage_raw_pre_author_seal_sha256": "c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e",
+  "author_new_full_output_report_read_before_this_seal": false,
+  "helper_sha256": "b4af2f74efd4eb98b8f8d1721a34ef8eb9f9b06a946303b8a52149cad414a03c"
+}

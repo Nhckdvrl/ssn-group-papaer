@@ -1,0 +1,429 @@
+% Appendix of main.tex. Tables in tables/app_*.tex are written by ../scripts/paper_figures_v2.py.
+
+\section{Models and computation}
+\label{app:models}
+
+Table~\ref{tab:models} lists the checkpoints.
+The Qwen3 models are the released post-trained hybrid checkpoints and the Mistral and Llama models are base models. All are used as plain continuation models, without chat templates or generated reasoning.
+All computations use FP32 weights and activations with TF32 disabled, the eager (exact) attention implementation of Transformers, no quantization, and no gradient updates.
+Qwen3-32B is split over two GPUs and Llama-3.1-70B over four GPUs of one node by contiguous layers.
+Every intervention applies to all layers and all heads, and no layer or head is selected.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}ll@{}}
+\toprule
+Checkpoint & Revision \\
+\midrule
+Qwen/Qwen3-8B & \texttt{b968826d} \\
+Qwen/Qwen3-14B & \texttt{40c06982} \\
+Qwen/Qwen3-32B & \texttt{9216db57} \\
+mistralai/Mistral-7B-v0.3 & \texttt{caa1feb0} \\
+NousResearch/Meta-Llama-3.1-8B & \texttt{1f47e50c} \\
+meta-llama/Llama-3.1-70B & \texttt{349b2ddb}$^\dagger$ \\
+\bottomrule
+\end{tabular}}
+\caption{Model checkpoints (Hugging Face revisions, first eight characters).
+$^\dagger$Loaded from the public mirror \texttt{NousResearch/Meta-Llama-3.1-70B}, whose 30 weight shards are byte-identical to this official revision.}
+\label{tab:models}
+\end{table}
+
+Before scoring, we check for each model that every label word, with its leading space, is a single token; that scoring a query from the cached prompt agrees with scoring the full token sequence (maximum difference below $10^{-4}$ nats); that patching a run with its own states changes nothing; and that every attention mask is applied at every layer.
+The experiments used about 80 GPU-hours on A100 and RTX PRO 6000 GPUs, most of them for the 32B and 70B models.
+
+\section{Materials and prompt format}
+\label{app:materials}
+
+\paragraph{Prompt format.}
+Every prompt starts with the header \texttt{Below are comments and the labels that individual annotators gave them.} followed by a blank line.
+Each demonstration has three lines, \texttt{Comment:}, \texttt{Annotator:} and \texttt{Label:}, followed by a blank line, and each query ends after \texttt{Label:}.
+The header, each demonstration up to the colon after \texttt{Label}, the label word and the separator are tokenized separately and concatenated, so that token boundaries are identical across all conditions that are compared.
+The \emph{label position} of a demonstration is the first token of its label word, and its \emph{answer tokens} are the label word and the following separator tokens.
+A source owns every token of its demonstrations, and the header belongs to neither source.
+Each prompt has eight demonstrations per source in random order and eight queries, four positive and four negative.
+Source names, the order of demonstrations and the direction of A's convention vary across prompts and are balanced.
+Queries are scored in a batch from a copy of the processed prompt, with left padding and explicit position indices.
+
+\paragraph{SST-5.}
+We use the original classes 0 (very negative) and 4 (very positive) of SST-5 \citep{socher-etal-2013-recursive}, remove duplicate texts within each split, and keep reviews of 5 to 64 tokens.
+Demonstrations for development and confirmation prompts come from the two halves of the training split defined by the parity of a hash of the text.
+Queries come from the validation split for development and from the test split for confirmation, excluding any text that also appears in the training or validation split.
+In the main experiments both sources judge sentiment and differ only in convention.
+
+\paragraph{Controlled reviews.}
+Single-aspect reviews are generated from templates (\textit{The pizza was outstanding.}).
+They allow B's rule to be reversed without changing B's label sequence or comment set: for B's eight demonstrations we sample two quartets matched in length, each with two positive and two negative comments, and exchange the comments across classes (reversing the association) or within classes (the control).
+Two-aspect reviews mention food and then service with independently chosen sentiment (\textit{The pasta was delicious, but the waiter was rude.}). A always judges food, and B judges food or service under the same or the opposite convention, giving four worlds.
+
+\paragraph{Measuring Hate Speech.}
+We group the corpus \citep{sachdeva-etal-2022-measuring} by comment, average the annotations, keep comments of at most 50 words with a mean hate-speech score of at least 1, and separate comments targeting race (race score at least 0.75, gender at most 0.1) from comments targeting gender (the reverse).
+The two sources map the two target categories to \lw{safe}/\lw{toxic} with opposite conventions.
+These rules are constructed and are not the rules of the original annotators.
+
+\section{Interventions}
+\label{app:interventions}
+
+\paragraph{Edge removal.}
+To remove the attention from a set of receiving tokens to a set of sending tokens, we set the corresponding pre-softmax attention scores to $-\infty$ at every layer and head.
+Each token always keeps its attention to itself, and the remaining attention is renormalized.
+\emph{Removing the answer-to-label path} blocks the attention from A's label positions to all earlier answer tokens of B.
+The own-answer control blocks the attention from A's label positions to A's earlier answer tokens.
+\emph{Restoring only the path} starts from a prompt in which no token of A attends to any token of B, and reopens the attention from A's label positions to B's earlier answer tokens.
+\emph{Selective blocking} applies the answer-to-label removal in both directions (B's answers to A's label positions and A's answers to B's label positions) and \emph{complete isolation} removes all attention between the tokens of the two sources; in both cases the header remains visible to everyone.
+\emph{Restricted reading} removes the attention from every query token to all tokens of the unrequested source.
+
+\paragraph{Patching the answer-to-label path.}
+For the predictions in \S\ref{sec:path}, a donor prompt differs from the recipient in B's label words (or, in \S\ref{sec:path}.3, in B's comment assignment).
+At each layer, A's label positions in the recipient compute their attention with the recipient's queries and the full causal mask, but with keys, values or both at B's answer tokens taken from the donor's cache at that layer, including its positional encoding.
+Only the outputs of these receiving positions change, and all later layers and positions are recomputed.
+The effect to be predicted transplants the complete cached states of A's label positions from the donor into the processed recipient prompt and keeps all other positions.
+Both are evaluated with the query reading both sources and are compared through the difference between B's two conventions, with a coefficient of one.
+
+\section{Statistics}
+\label{app:stats}
+
+For each prompt we average over its eight queries, and all intervals resample prompts (10{,}000 percentile bootstrap draws), keeping all queries, worlds, requested sources and conditions of a prompt together.
+Differences between conditions are computed within each prompt before resampling.
+Correlations for the reconstruction are computed over all query-level points and resampled by prompt.
+For each experiment, conditions and analyses were fixed on 16 development prompts and then run once on 32 new prompts with new material and new random seeds.
+All numbers in the paper come from these confirmation prompts, and every condition that was run is reported here or in the main text.
+
+\section{Additional results for Section~\ref{sec:observation}}
+\label{app:observation}
+
+Table~\ref{tab:app-leak} gives the values of Figure~\ref{fig:leak} with intervals, together with the control that exchanges B's comments within each class.
+Table~\ref{tab:app-leak-matched} repeats the measurement for Qwen3-8B and Llama-3.1-8B on exactly the prompts used for Qwen3-32B and Llama-3.1-70B.
+The accuracy differences in \S\ref{sec:observation} compare, for requests to A under A-only reading, prompts in which B's convention conflicts with A's and prompts in which it agrees. We computed this breakdown from the confirmation runs after they were completed.
+The differences are 7.4 (3.5--11.7), 1.2 ($-3.1$--5.5), 7.4 (2.7--12.9), 7.4 (2.3--13.3), 2.3 (0.4--5.1) and 5.9 (2.0--10.5) points for Qwen3-8B, 14B, 32B, Mistral-7B, Llama-3.1-8B and 70B with shared words, and between $-1.2$ and 1.6 points with separate words.
+When the query reads both sources, the differences with shared words are 10.5 to 30.9 points.
+On Measuring Hate Speech comments with \lw{safe}/\lw{toxic} as shared label words and A-only reading, reversing B's convention changes 17.6\% (12.1--23.8) of Qwen3-8B's answers for A, with a mean absolute effect on A's margin of 0.73 nats.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{Shared label words} & Separate words & Control \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-5}\cmidrule(l){6-6}
+ & Full reading & A-only reading & A-only, path blocked & A-only reading & within-class exchange \\
+\midrule
+\rows{tables/app_leak.tex}
+\bottomrule
+\end{tabular}}
+\caption{Pull of B's convention on A's predictions ($\Delta$ in nats, SST-5) with 95\% intervals.
+Control: B's comments are exchanged within each class, which leaves B's association unchanged (A-only reading, shared words).}
+\label{tab:app-leak}
+\end{table*}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.5pt}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccc@{}}
+\toprule
+ & Full & A-only & A-only, blocked \\
+\midrule
+\rows{tables/app_leak_matched.tex}
+\bottomrule
+\end{tabular}}
+\caption{$\Delta$ (nats) on identical prompts within each family.}
+\label{tab:app-leak-matched}
+\end{table}
+
+\section{Additional results for Section~\ref{sec:path}}
+
+\subsection{Reconstruction}
+\label{app:reconstruction}
+
+Table~\ref{tab:app-recon} reports the reconstruction for each channel.
+Patching keys alone predicts the effect nearly as well as patching keys and values, and patching values alone predicts it less well in every model.
+The last column uses B states formed with separate label words as the reading background, which also gives high correlations.
+Without taking the difference between B's two conventions, the KV correlations are 0.92, 0.95, 0.88, 0.86, 0.79 and 0.62 in the order of the table.
+On Measuring Hate Speech comments the KV correlations of the convention difference are 0.985 for Qwen3-8B and 0.977 for Mistral-7B, with key-only correlations of 0.969 and 0.966.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.4pt}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccccccc@{}}
+\toprule
+ & K & V & KV & KV interval & RMSE & Zero & Sep. \\
+\midrule
+\rows{tables/app_reconstruction.tex}
+\bottomrule
+\end{tabular}}
+\caption{Correlation between predicted and actual effects of B's label words on A's label states (difference between B's conventions, SST-5).
+RMSE: error of the KV prediction (nats); Zero: error of predicting no effect; Sep.: KV correlation with B's separate-word states as reading background.}
+\label{tab:app-recon}
+\end{table}
+
+\subsection{Native operation}
+\label{app:operation}
+
+Table~\ref{tab:app-op-gate} gives the values of Table~\ref{tab:operation} with intervals and adds the own-answer control.
+Removing the attention from A's label positions to A's own earlier answers increases the effect of B's rule in every model, which shows that the reduction from removing the cross-source path is not a general consequence of disturbing the label positions.
+Table~\ref{tab:app-op-full} gives the same quantities when the query reads both sources.
+Removing the cross-source path still reduces B's effect in all models.
+Restoring only the path, however, changes B's effect by different amounts and in different directions, because the query then also reads B's own states, and the path changes how A's states combine with them.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & Effect & Reduction, cross-source path removed & Reduction, own-answer path removed & Effect with only the path \\
+\midrule
+\rows{tables/app_operation_gate.tex}
+\bottomrule
+\end{tabular}}
+\caption{Native operation with A-only reading (controlled reviews, shared words; nats, 95\% intervals). A negative reduction is an increase.}
+\label{tab:app-op-gate}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & Effect & Reduction, cross-source path removed & Reduction, own-answer path removed & Change when only the path is restored \\
+\midrule
+\rows{tables/app_operation_full.tex}
+\bottomrule
+\end{tabular}}
+\caption{Native operation when the query reads both sources. Last column: effect with only the path minus effect with all attention from A to B blocked.}
+\label{tab:app-op-full}
+\end{table*}
+
+\subsection{Association content}
+\label{app:association}
+
+Table~\ref{tab:app-assoc} reports how much more a reversal of B's association changes A's predictions than a matched exchange within classes.
+In the full native prompt the excess is large, as expected, since the query also reads B's demonstrations.
+Patching only A's label states, or only the answer messages they receive, transfers a smaller but reliable part of it in every model.
+The signed effect of the answer messages differs in sign between families.
+On controlled reviews with A-only reading, the excess for answer messages is 0.62 (0.45--0.81) nats for Qwen3-8B and 0.40 (0.31--0.50) for Mistral-7B, and values alone carry a substantial part of it.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & Full prompt & A's label states patched & Answer messages patched & Answer messages, signed \\
+\midrule
+\rows{tables/app_association.tex}
+\bottomrule
+\end{tabular}}
+\caption{Excess effect (nats) of reversing B's association over exchanging comments within classes, with B's label words and positions fixed (SST-5).
+The first three columns compare absolute effects; the last column compares signed effects oriented by A's correct answer.}
+\label{tab:app-assoc}
+\end{table*}
+
+\section{Additional results for Section~\ref{sec:consequences}}
+\label{app:policies}
+
+\paragraph{SST-5.}
+Tables~\ref{tab:app-pol-acc}--\ref{tab:app-pol-other} report all six combinations of formation and reading for shared label words, the per-source and per-world changes under selective blocking, and the breakdown of complete isolation.
+Table~\ref{tab:app-sep} reports separate label words.
+For shared words, scoring the full vocabulary and scoring only the two label words give identical accuracies.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & & & & \multicolumn{3}{c}{A-only reading combined with} \\
+\cmidrule(l){5-7}
+ & Native & Selective blocking & Complete isolation & -- & Selective blocking & Complete isolation \\
+\midrule
+\rows{tables/app_policy_acc.tex}
+\bottomrule
+\end{tabular}}
+\caption{Accuracy (\%) on SST-5 with shared label words for all combinations of formation and reading.}
+\label{tab:app-pol-acc}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & Both sources & Source A & Source B & Opposite conventions & Same convention \\
+\midrule
+\rows{tables/app_policy_delta.tex}
+\bottomrule
+\end{tabular}}
+\caption{Change in accuracy (points) from selective blocking, by requested source and by convention world.}
+\label{tab:app-pol-delta}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Change vs.\ native (points)} & \multicolumn{2}{c}{Complete isolation (\%)} & Selective blocking (\%) \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-6}
+ & Complete isolation & A-only reading & Opposite & Same & Opposite \\
+\midrule
+\rows{tables/app_policy_other.tex}
+\bottomrule
+\end{tabular}}
+\caption{Complete isolation and A-only reading on SST-5 with shared label words.}
+\label{tab:app-pol-other}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Native} & \multicolumn{3}{c}{Complete isolation} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-6}
+ & Own two words & Full vocabulary & Own two words & Full vocabulary & Other source's words \\
+\midrule
+\rows{tables/app_separate.tex}
+\bottomrule
+\end{tabular}}
+\caption{Separate label words on SST-5 (\%). Other source's words: share of queries answered with one of the other source's label words.}
+\label{tab:app-sep}
+\end{table*}
+
+\paragraph{Instruction.}
+The instruction condition adds the sentence \textit{Use only the examples of the requested annotator to infer and apply that annotator's labeling rule.} after the header and leaves formation and reading unchanged.
+Its accuracy was recorded for every condition before analysis, and the aggregate over sources and worlds and its paired intervals were computed afterwards.
+Relative to the native prompt it changes accuracy by 2.3 (0.8--3.9), 1.7 (0.4--3.0), 5.7 (4.1--7.4), 1.0 ($-0.4$--2.4), 1.2 (0.2--2.3) and 6.2 (4.0--8.6) points, and selective blocking exceeds it by 5.0 (2.6--7.4), 5.8 (4.0--7.4), 2.1 ($-0.2$--4.1), 4.4 (2.2--6.5), 8.3 (6.2--10.4) and 4.3 (2.4--6.2) points, in the order Qwen3-8B, 14B, 32B, Mistral-7B, Llama-3.1-8B and 70B.
+
+\paragraph{Two-aspect reviews.}
+Table~\ref{tab:app-dual} reports the same policies on the controlled two-aspect reviews, averaged over B's four criterion--convention worlds.
+Selective blocking improves accuracy in all four models, mainly on queries for which the two sources' correct labels disagree, and reduces it slightly on queries where they agree.
+It outperforms complete isolation in every model.
+
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & & & & \multicolumn{3}{c}{Selective blocking, change (points)} \\
+\cmidrule(l){5-7}
+ & Native (\%) & Selective (\%) & Complete (\%) & Labels agree & Labels disagree & vs.\ complete \\
+\midrule
+Qwen3-8B & 71.6\ci{69.4}{73.4} & 74.5\ci{72.7}{76.2} & 62.6\ci{61.6}{63.7} & $-$2.3\ci{$-$4.0}{$-$0.8} & 8.2\ci{5.9}{10.5} & 11.9\ci{10.3}{13.5} \\
+Mistral-7B & 69.1\ci{67.6}{70.7} & 72.6\ci{70.3}{74.9} & 62.7\ci{61.0}{64.6} & $-$2.0\ci{$-$5.0}{0.9} & 8.8\ci{6.2}{11.6} & 9.8\ci{6.7}{13.0} \\
+Llama-3.1-8B & 73.8\ci{72.2}{75.4} & 81.2\ci{79.1}{83.3} & 68.6\ci{66.8}{70.3} & $-$1.9\ci{$-$4.3}{0.4} & 16.6\ci{13.9}{19.4} & 12.7\ci{10.4}{15.0} \\
+Qwen3-14B & 78.1\ci{75.7}{80.8} & 80.9\ci{78.9}{82.9} & 67.6\ci{66.0}{69.2} & $-$3.6\ci{$-$5.9}{$-$1.6} & 9.2\ci{6.2}{12.3} & 13.3\ci{11.3}{15.4} \\
+\bottomrule
+\end{tabular}}
+\caption{Controlled two-aspect reviews (shared words, both sources read by the query). With A-only reading added, accuracies are 73.8, 72.0, 86.8 and 83.3\% for selective blocking and 70.5, 70.9, 85.9 and 84.2\% for A-only reading alone.}
+\label{tab:app-dual}
+\end{table*}
+
+\section{Shared information before private demonstrations}
+\label{app:shared}
+
+All experiments in this section block attention between the two sources' demonstrations at every layer, so the sources share only what is placed before both.
+Public material is inserted between the header and the first demonstration, and the header precedes it, so that no other token can relay it when the demonstrations are blocked from reading it.
+Accuracy is scored on the full vocabulary, with separate label words unless stated otherwise.
+
+\paragraph{Source names.}
+A public list of the two names, without label words, helps only Qwen3-8B when demonstrations can read it (4.6 points over a list of unrelated names, interval 2.7--6.6), changes Mistral-7B's accuracy by $-1.1$ ($-2.1$ to $-0.2$) and Llama-3.1-8B's by $-0.7$ ($-2.0$ to $0.5$).
+Read only by the query, the list changes accuracy by less than half a point.
+
+\paragraph{Word-set table.}
+Table~\ref{tab:app-schema} gives the results of Figure~\ref{fig:separate}b with intervals.
+A table that assigns each source the other's word set also improves accuracy when demonstrations read it and reduces answers in the other source's words, by 18.8, 4.8 and 3.2 points in the three models, but less than the correct table.
+The correct table improves accuracy for B in all three models and for A in Qwen3-8B (29.9 points), while the gains for A in Mistral-7B (4.5, $-0.2$ to $9.4$) and Llama-3.1-8B (0.2, $-5.3$ to $5.7$) are uncertain.
+In Qwen3-8B the table slightly lowers accuracy restricted to each source's own words (by 3.8 points), so the gain in full-vocabulary accuracy comes with a small cost within the label space.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & Correct table, formation & Correct table, query & Swapped table, formation & Correct minus swapped, formation \\
+\midrule
+\rows{tables/app_schema.tex}
+\bottomrule
+\end{tabular}}
+\caption{Gains in full-vocabulary accuracy (points) from a public word-set table, relative to a table with unrelated names (first three columns), with 95\% intervals. Formation: only demonstrations can read the table; query: only the query can read it.}
+\label{tab:app-schema}
+\end{table*}
+
+\paragraph{Common background.}
+We encode the prompt twice, with the two rows of the correct table in either order, so that both encodings contain the same public facts and the same private demonstrations at the same positions.
+We then combine A's and B's cached states from the same encoding (orders 00 and 11) or from different encodings (01 and 10), and compare the average of the coherent combinations with the average of the mixed ones, which cancels any difference in the quality of the individual caches.
+The query cannot read the table.
+Table~\ref{tab:app-coherent} reports the results.
+With separate words, coherent combinations improve full-vocabulary accuracy by 23.5, 10.4 and 5.4 points in Qwen3-8B, Mistral-7B and Llama-3.1-8B, almost entirely by reducing answers in the other source's words, while accuracy within each source's own words changes by about one point or less.
+With shared words and opposite conventions, where the words cannot identify a source, coherent combinations still help (Table~\ref{tab:app-coherent}), and they increase the margin between the answers for the two requested sources by 0.63, 0.13, 0.03 and 0.50 nats, while a shift common to both requests stays near zero.
+Joint accuracy nevertheless remains far below each source's accuracy when read alone (Table~\ref{tab:app-joint}).
+When B differs from A in the aspect it judges rather than in its convention, coherent combinations help less: 2.9 points (0.6--5.5) for Qwen3-14B and intervals that include or touch zero for the other three models.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.5pt}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccc@{}}
+\toprule
+ & Shared, opposite & Shared, all & Separate, all \\
+\midrule
+Qwen3-8B & 8.9\ci{6.6}{11.1} & 4.6\ci{3.5}{5.7} & 23.5\ci{21.3}{25.7} \\
+Mistral-7B & 5.9\ci{4.1}{7.7} & 3.0\ci{2.1}{3.9} & 9.1\ci{6.8}{11.4} \\
+Llama-3.1-8B & 0.8\ci{0.1}{1.6} & 0.4\ci{0.1}{0.8} & 6.5\ci{4.9}{8.1} \\
+Qwen3-14B & 9.4\ci{7.3}{11.5} & 4.6\ci{3.6}{5.8} & 21.4\ci{18.8}{24.0} \\
+\bottomrule
+\end{tabular}}
+\caption{Coherent minus mixed combinations of independently encoded caches (points). Shared, opposite: shared words with conflicting conventions; all: both convention worlds.}
+\label{tab:app-coherent}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lcc@{}}
+\toprule
+ & Both sources read & Own source only \\
+\midrule
+Qwen3-8B & 63.9 / 64.8 & 90.8 / 91.4 \\
+Mistral-7B & 59.2 / 56.3 & 96.9 / 96.1 \\
+Llama-3.1-8B & 53.5 / 52.9 & 98.1 / 97.9 \\
+Qwen3-14B & 63.1 / 60.6 & 97.5 / 97.9 \\
+\bottomrule
+\end{tabular}}
+\caption{Accuracy (\%) of the coherent combinations 00 / 11 with shared words and conflicting conventions.}
+\label{tab:app-joint}
+\end{table}
+
+\section{Criteria versus conventions}
+\label{app:criterion}
+
+The two-aspect reviews let a source differ from another in the aspect it judges (its criterion) as well as in its convention.
+We ask whether B's criterion reaches A's predictions as a criterion, that is, whether B's food and service criteria change A's response to the two aspects of a query in different ways.
+For each of B's criteria $t$ we measure the response $\delta_t(q)$ of A's margin to reversing B's convention, and project it on the food and service sentiment of the query, $f_q,s_q\in\{-1,+1\}$:
+\begin{equation*}
+M=\begin{pmatrix}
+\mathbb E_q[\delta_{\text{food}}f_q] & \mathbb E_q[\delta_{\text{food}}s_q]\\
+\mathbb E_q[\delta_{\text{serv}}f_q] & \mathbb E_q[\delta_{\text{serv}}s_q]
+\end{pmatrix}.
+\end{equation*}
+If the two criteria only scaled a common response, the rows of $M$ would be parallel and its determinant zero.
+We compute the determinant and its version normalized by the row norms within each prompt and average over prompts.
+
+For Qwen3-14B (Table~\ref{tab:app-crit}), the normalized determinant is 0.41 in the native prompt and 0.19 with A-only reading, so B's criterion shapes how A's predictions respond to the two aspects, not only how strongly.
+Transplanting A's label states or the answer messages alone yields much smaller determinants, and the answer-message patch predicts the actual criterion effect at A's label states only partly ($r=0.67$).
+The answer-to-label path thus carries B's association but not the full criterion-dependent response, which also depends on other parts of the prompt.
+In Qwen3-8B, Mistral-7B and Llama-3.1-8B, B's criterion changes A's responses to both aspects, and in Llama-3.1-8B separating B's label words reduces all four responses without changing their selectivity.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccc@{}}
+\toprule
+Qwen3-14B & Mean interaction & Determinant (nats$^2$) & Normalized determinant \\
+\midrule
+Native prompt & .343\ci{.265}{.433} & .568\ci{.408}{.751} & .410\ci{.330}{.493} \\
+Native prompt, A-only reading & .058\ci{.029}{.089} & .0289\ci{.0032}{.0553} & .190\ci{.073}{.310} \\
+A's label states transplanted & $-$.0238\ci{$-$.0478}{$-$.0025} & $-$.0201\ci{$-$.0374}{$-$.0052} & .006\ci{$-$.121}{.140} \\
+A's label states transplanted, A-only reading & .038\ci{.012}{.068} & .0074\ci{$-$.0106}{.0271} & .124\ci{.017}{.242} \\
+Answer messages patched & .0060\ci{.0029}{.0093} & .00068\ci{.00012}{.00130} & .085\ci{$-$.042}{.214} \\
+Answer messages patched, A-only reading & .0126\ci{.0076}{.0188} & .00194\ci{.00031}{.00474} & .072\ci{$-$.040}{.190} \\
+\bottomrule
+\end{tabular}}
+\caption{Criterion-specific responses of A's predictions to B's convention in Qwen3-14B (two-aspect reviews). Mean interaction: average difference in aspect selectivity between B's two criteria.}
+\label{tab:app-crit}
+\end{table*}
+
+\section{Source cues before the query input}
+\label{app:cue}
+
+We also tested whether the tokens that name the requested source before the query comment (\texttt{Annotator: name} followed by \texttt{Comment:}) carry a source-specific criterion.
+With the two sources' demonstrations encoded without cross-source attention, we transplanted only the cached states of this cue from prompts in which B's criterion and convention differed, keeping all demonstration states fixed.
+In Llama-3.1-8B and Qwen3-14B the transplanted cue did not reproduce B's criterion-specific response (the intervals of both determinants include zero), and preparing the donor cue under native, selectively blocked or completely isolated encoding did not change this.
+Qwen3-14B's cue retains small aspect-selective responses, so the cue is not empty, but the source-specific rule is not prepared there before the query comment is read.

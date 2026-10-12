@@ -1,23 +1,19 @@
 {
   "status": "PLOT_DATA_9_OF_12_VERIFIED",
   "date": "2026-10-12",
-  "source_summary_sha256": "d706568667acbcf715e51a63b623971bc8c4057b185886e2928d68f63a8bd8cd",
-  "CSV_sha256": "2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a",
-  "manifest_sha256": "a62fe953d5cdfe69bf22eca7997834820f7a52f3723f918dc31a2b77806846cb",
-  "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+  "source_summary_sha256": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
+  "CSV_sha256": "677038b59a7b2e036050e19eb2957155077adb6335356b3223a23c9a2763e90a",
+  "manifest_sha256": "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f",
+  "script_sha256": "330c6fa38caac7537ca9e249670389c7e494278698ce5dc0ae84d14e17bfef94",
   "figures": {
-    "png": "d373b3cb1c328ba0a48e92a504e5e7c5725e0ff83eed8d8f4a7503082495fe3a",
-    "pdf": "508a50218b23e62de7ddf065f1d9a109b755f361ef8d09a182f08bc292c0a335"
+    "png": "4b60ace1b0a37546873c7b8bb6f31236cc5e8b71210deb17146f997bee179fd2",
+    "pdf": "76991f528d67bd0dbbcd9cb59840ff161479a15b37b56087055ca365c931bb2b"
   },
-  "complete_points": 9,
+  "complete_points": 12,
   "planned_points": 12,
-  "checked_mean_CI_values": 27,
+  "checked_mean_CI_values": 36,
   "max_abs_error": 0.0,
-  "pending": [
-    "llama70_confirmation_mechanism",
-    "llama70_confirmation_native",
-    "llama70_confirmation_function"
-  ],
+  "pending": [],
   "point_checks": {
     "qwen3_confirmation_mechanism": {
       "status": "COMPLETE",
@@ -56,9 +52,16 @@
       "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
     },
     "llama70_confirmation_mechanism": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+      "status": "COMPLETE",
+      "numeric_fields_empty_not_zero": false,
+      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+      "expected_mean_ci": [
+        0.9567897096276283,
+        0.678856891952455,
+        1.260651504807174
+      ],
+      "raw_behavior_sha256": "dcbfda7c31c7dcb22b0abc3ec39690ed3b521501a5225a62f8201cbf3c05dfe8",
+      "raw_and_pair_sealed_before_author": true
     },
     "qwen3_confirmation_native": {
       "status": "COMPLETE",
@@ -97,9 +100,16 @@
       "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
     },
     "llama70_confirmation_native": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "controlled restaurant sentiment; seed131101"
+      "status": "COMPLETE",
+      "numeric_fields_empty_not_zero": false,
+      "stage_material_scope": "controlled restaurant sentiment; seed131101",
+      "expected_mean_ci": [
+        1.8371662870049477,
+        1.491942092590034,
+        2.184207128547132
+      ],
+      "raw_behavior_sha256": "86f8e3ad7d77cab2ca9d6bb357b8cf2e83cfff47a478e510691ef473235ce8a9",
+      "raw_and_pair_sealed_before_author": true
     },
     "qwen3_confirmation_function": {
       "status": "COMPLETE",
@@ -138,25 +148,54 @@
       "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
     },
     "llama70_confirmation_function": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+      "status": "COMPLETE",
+      "numeric_fields_empty_not_zero": false,
+      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+      "expected_mean_ci": [
+        10.44921875,
+        7.91015625,
+        13.0859375
+      ],
+      "raw_behavior_sha256": "92d9aeb932f98329032a4187cf22b595d5b13527a3b00d47be3bd218d3724807",
+      "raw_and_pair_sealed_before_author": true
     }
   },
-  "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
+  "visual_inspection": {
+    "current_PNG_viewed": true,
+    "figure": "results/figs/fig_cross_size_core_chain.png",
+    "complete_points_visible": 11,
+    "one_pending_label_visible_without_zero_marker": true,
+    "axes_units": "formation/native nats;functionpp;n32context-bootstrap",
+    "model_names_and_CIs_readable": true,
+    "old_visual_records_in_plot_history_preserved": true
+  },
   "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
   "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
   "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
   "independent_GPU_forward_or_rerun": false,
-  "helper_sha256": "5eff8b0453bcd576a963bb10e45365b6a9f15a2a86c714cb592c6c037914fe0e",
-  "source_rebinding_only": {
-    "previous_13_stage_summary_sha256": "66aeae626722594c7eb3ee78d7bf14237b8efa385b512bb6f4927e2bf8bde409",
-    "previous_manifest_sha256": "eebe1e21421bac46d3d5f6e193b4837388c5754b8aa9ccc8a921491f64382193",
-    "previous_plot_review_sha256": "79c58f49c8a51e345c22a9bf1a9d68048e1cce0dd792d7fab0b1ed3b4548763c",
-    "current_summary_completed_stages": 14,
-    "all_27_CSV_values_unchanged": true,
-    "all_9_sealed_confirmation_point_values_unchanged": true,
+  "helper_sha256": "1176b5fa07005c93d29a38f4583376c191c97c859fc9a71c8fbc1d3f6624cf4a",
+  "source_rebinding_only": false,
+  "new_confirmation_point": "llama70_confirmation_function",
+  "new_point_pre_author_raw_seal_sha256": "c23a707644319e0368dd829fd6db4348245419be3a7f9969d86c18bb99c06e9e",
+  "new_point_pre_author_pair_seal_sha256": "2a9cd015444ce7817645df3ed49425c4da52020a24438aba91554a5ce081f1f1",
+  "incremental_presentation": {
+    "current_summary_completed_stages": 18,
+    "all_previous11_point_values_unchanged": true,
+    "new_confirmation_point_count": 1,
     "scientific_stage_or_CI_recomputed": false,
-    "new_70B_discovery_not_added_to_confirmation_plot": true
+    "previous_plot_review_sha256": "ea59e47a33c0921ad59df11f00473c486326ddf8ab99910cd45923fe3c896da0",
+    "layout_only_changes": "6.3x2.65 inches, 8pt labels, short axes, completion footer removed when complete; CSV now LF. get_stat AST exactly unchanged."
+  },
+  "compiled_pdf_visual_review": {
+    "status": "PASS_ACTUAL_PDF_WIDTH",
+    "PDF_sha256": "070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4",
+    "manifest_sha256": "9d7087aeb761b08aae6856634395db0daae3855c74c6748368bd89b647319b88",
+    "PAPER_DRAFT_sha256": "11c7cbe89e9b3f6336e2aa8440880413961ea5ffce05876292be79d3122874ba",
+    "PAPER_APPENDIX_sha256": "09359666a8b39bef8e8640516f9a7904a3a34b7cc3cb15f62e047c328d3e454b",
+    "figure_page": 33,
+    "compiled_caption": "Figure17: all12 fixed n32 model-stage points, full-vocabulary mean requested-source gains",
+    "actual_embedding": "main.tex includes fig_cross_size_core_chain.pdf; image and caption present on PDF P33",
+    "layout": "6.3x2.65inch source rendered at full ACL text width. Four names, panel titles, mean points,CI bars and unit axes readable. No clipping. Completed status footer removed, n32/CI/matching scope retained.",
+    "reviewer_no_GPU": true
   }
 }

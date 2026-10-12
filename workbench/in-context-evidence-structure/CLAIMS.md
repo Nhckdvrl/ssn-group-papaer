@@ -367,3 +367,24 @@ E131第13完整批Llama3.1-70B n16独立raw-first审计：A形成+.993[.612,1.37
 ### 2026-10-12：E131 70B三环发现已接成链
 
 第15批n16函数独立raw-first复算1893数值误差0：shared/full两Source平均86.72→98.44%，selective gain11.72[8.01,15.43]pp，targeted−all23.44[21.88,25]；A/B各5.86/17.58点、opposite23.44/same0。query-only10.55[5.66,15.04]；far all-cross candidate99.02/full51.17/joint3.91%，全部85条件与来源非对称保留。single A98.44/100%、B各方向95.31–100%，不是任务不可用条件下的机制归因。支持原C21–23形成/使用解释的当前大容量补充，未从n16发现提升等级或新增claim；剩原三批新32确认，C21–23 L3/C24 L2及formal状态不变。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)与llama70_discovery_function/{run,analysis,full_output_summary}.json。
+
+
+### 2026-10-12：E131 70B形成新32确认
+
+第16批独立raw-first与同新32 L70/L8配对：A形成+.957[.679,1.261]nats，A两私人方向single均99.22%；固定word关联abs+.144[.088,.206]而signed−.169[−.300,−.053]，全12通道/背景保留。label KV rawr .619/.909，RMSE .644/.564 vszero .751/1.323；shared K在本背景劣于zero，未写为所有通道完整中介。既有形成解释得到当前70B新材料确认；尺度差异不另凑claim或改变C21–23 L3/C24 L2。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw/配对](results/e131/independent_raw_review_2026-10-12.md)、llama70_confirmation_mechanism/{run,analysis}.json。仍有native/function两确认待完成，不能将16/18写为整链已确认。
+
+
+### E131第17批：70B原生新32确认
+
+L70 n32 full-source历史答案路径移除+1.837 [1.492, 2.184]nats；受限恢复A-only+0.806 [0.503, 1.165]，full-source-0.504 [-0.808, -0.217]。A单Source两个私人方向100%；与L8逐字同新32材料的移除差+0.978 [0.679, 1.281]。这接回已确认的形成/读取解释，不新开细粒度分支或容量定律。
+
+17/18、448run-stagecontexts/224000scores、48.378565科学stage设备时。80层/四卡FP32/TF32False，numeric1.716614e−5/self/graph0、76800实际mask调用；独立先raw与新配对封后核1217项作者数值误差0。原10已完成native，后继function因连续canonical fence退出是正常交接，科学结果有效；20迁移未执行/0新科学评分。最后函数在13继续，未读partial效应。C21–23 L3/C24 L2与formal状态不变。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)、本批run/analysis。
+
+
+### E131全18批与整篇稿件完成
+
+E131固定18/18批已完整独立核验：480 run-stagecontexts、245760评分、63.999237科学stage设备时；Qwen3-8B/32B与Llama3.1-8B/70B的新32材料同family/stage逐字配对，形成→原生操作→真实文本函数三环全部完成。70B形成+.957[.679,1.261]nats、原生移除+1.837[1.492,2.184]；真实SST共享词full88.48→98.93%，选择性形成gain10.45[7.91,13.09]pp，两Source分别+9.57/+11.33。全面形成隔离保留99.12% far候选准确率但full54.30%，与选择性保护具有不同后果。
+
+同一形成操作在更大模型中仍可测，A单函数99.22–100%与历史关系影响并存；形成和读取贡献的变化分开测量。L70相对L8的原生移除差+.978[.679,1.281]nats、选择性收益差+1.56CI含0、query-only收益差−10.84[−14.94,−6.93]pp，不要求每个贡献随容量同向增加。旧三项主文认识及C21–23L3/C24L2保持。
+
+证据：[卡E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)、各阶段run/analysis及最终图CSV。18/18 raw-first、6组同新32配对，原分析数值与完整输出独立复算一致；所有科学配置/种子保留。主文§7四模型表与附录M已整合，PDF正文8页/Limitations9页页首/共33页，3主图/3主表、14附图/27附表，编译warning/undefined/Overfull均0。正式candidate/ACTIVE与等级不改；当前无待运行的论文必需实验。下一步为最终整篇审阅与上传main，是否进入候选/投稿由人决定。

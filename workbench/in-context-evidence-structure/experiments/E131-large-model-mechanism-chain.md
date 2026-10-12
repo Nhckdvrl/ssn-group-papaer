@@ -1,6 +1,6 @@
 # E131：大小模型上的同一证据形成解释
 
-- **状态：** RUNNING；451238d5首评分前启动的TF32实现数值失败已完整保留，0科学row；完整FP32精度补核后同协议复跑，当前14/18批已完成并独立核验；L70两套四卡执行剩余四批。
+- **状态：** DONE；固定18/18发现/确认全部完成并独立核验。首轮TF32实现未过数值floor、0科学row的失败与设备时完整保留；有效全FP32实现沿原科学协议完成。
 - **类型：** CLAIM / 跨尺度核心机制检验。
 - **对应：** C21–C24、I04、P17。
 - **问题：** 能力更强时，关系证据的历史形成、随后读取与Source条件使用发生什么变化？已有answer→label形成解释能否在更大模型上用相同干预与读数成立，而非仅保留小模型结论？
@@ -103,3 +103,37 @@ L70 n16真实SST shared/full两Actor平均86.7188[83.2031,90.2344]→98.4375[96.
 
 
 **2026-10-12T09:00:29.414644+00:00实际并行交接：** 新helper先核四空卡/pinned镜像与旧10 owned父子PID，10短暂停后建立连续empty behavior fence并立即恢复；首13入口因NFS负缓存尚未看到该文件而0-GPU初始化退出。旧PID/空fence/无staging核验后，明确resume同reservation，补cwd为repo与可见性等待，最新helper802f85c7…独立静态通过；没有修改五科学源、材料、种子或数值floor。13隔离ROOT运行同function n32/seed131103，完成再逐文件发布且run最后；10原机制/native继续，未来function guard退出留作交接。首attempt与失败stderr保留、0科学rows/0GPU设备时；不把调度初始化失败当负结果。原raw连续fence从未删除，所有驻留分开记录。当前仍15/18独立核，partial不作判断。
+
+
+### E131第16批：70B新32形成确认与主问题
+
+L70 n32 A形成+.9568[.6789,1.2607]、B读取signed+3.3586[2.8818,3.8240]nats，A单Source两个私人方向均99.2188[97.6563,100]% full。固定word答案关联abs+.1442[.0880,.2065]、signed−.1687[−.3003,−.0526]。固定系数1 label KV在shared/far B-cache背景的rawr .6186/.9086，RMSE .6444/.5641 vszero .7510/1.3232；全12通道保留，shared K RMSE .8382劣于zero。相同Source历史形成贡献在70B新材料确认；不同通道与读取背景的精度各自报告，不把局部重建写成完整中介。
+
+首次L70/L8逐字同32材料配对：A形成large−small+.1563，CI含0；label接口signed作用差−.3677[−.6326,−.0975]、关系signed差−.1223[−.2435,−.0074]。这是同操作跨容量验证，贡献幅度允许变化；无需由这些差异新开细粒度分支。C21–23 L3/C24 L2与formal状态保持。16/18、416run-stagectx/207616scores/38.183591科学stage设备时；native/function确认仍运行，未读partial效应。
+
+独立先raw+新大小配对封存（b55d3e98…/0d2b53ef…），再核1041作者analysis数值最大误差6.99e−15；10/12确认图30数独立绑定、两个pending为空，旧15批/原三Qwen配对保持。80层4GPU FP32/TF32False、实际edge调用25680/past-availability122880、numeric7.6294e−6/self0，五冻结科学源不变。证据[卡E131](../experiments/E131-large-model-mechanism-chain.md)、[完整报告](../results/e131/report.md)、[raw-first](../results/e131/independent_raw_review_2026-10-12.md)与llama70_confirmation_mechanism/{run,analysis}.json。
+
+
+## 资源竞争后的同协议迁移（评分前执行补充）
+
+2026-10-12 UTC11:00后，fvcrc10在我方2715055外新增四个外部compute进程，各约6GB、四GPU98–100%利用；当前native确认仍继续，未读取partial科学效应。fvcrc20四RTX PRO6000 Blackwell卡空闲；原Q32同确认native32为1550秒，选择它承接受竞争的native32确认。I/O先从已逐SHA核验的fvcrc11复制同30权重至20的/dev/shm（NVMe仅41GB、SHM余171GiB），外部SSH地址配置修复了节点别名解析；第一次0GPU/0scores失败日志保留。函数确认仍在13运行。
+
+新执行helper独立核、提交后才运行；先核同pin、原五科学SHA、空卡与CUDA，再精确终止我方legacy writer并保留全部partial和原journal快照。没有外部进程操作。若旧32行或run已完成，不中断它。新20从原seed131101的同32材料完整执行原64条件、8query、FP32/TF32False及原分析；旧partial不混入完成批，也不按效应选择运行。完成后独立核上下文逐字相同及与旧partial重叠的数值/实际输出差值。中断驻留更新到cutoff，20记独立journal，科学完整stage时间与旧尝试分列。原生/函数两个问题、18stage矩阵及MC1–MC3均不变。
+
+**UTC11:35更新：** 外部四个compute进程已退出，10只剩原我方worker，native已18/32且恢复吞吐。继续原批比准备20后重跑更快，已精确取消20等待队列（尚无restart claim、0GPU/0science），原writer没有被停止，原输出没有归档或改写。执行准备与静态封签保留；20资产复制继续但不启动新科学运行。最终仍从原10/13完整两批确认核对，不引入跨GPU重跑验证。取消记录见results/e131/native_migration_not_needed_2026-10-12.json。
+
+
+### E131第17批：70B原生新32确认
+
+L70 n32 full-source历史答案路径移除+1.837 [1.492, 2.184]nats；受限恢复A-only+0.806 [0.503, 1.165]，full-source-0.504 [-0.808, -0.217]。A单Source两个私人方向100%；与L8逐字同新32材料的移除差+0.978 [0.679, 1.281]。这接回已确认的形成/读取解释，不新开细粒度分支或容量定律。
+
+17/18、448run-stagecontexts/224000scores、48.378565科学stage设备时。80层/四卡FP32/TF32False，numeric1.716614e−5/self/graph0、76800实际mask调用；独立先raw与新配对封后核1217项作者数值误差0。原10已完成native，后继function因连续canonical fence退出是正常交接，科学结果有效；20迁移未执行/0新科学评分。最后函数在13继续，未读partial效应。C21–23 L3/C24 L2与formal状态不变。证据[E131](../experiments/E131-large-model-mechanism-chain.md)、[完整报告](../results/e131/report.md)、[独立raw](../results/e131/independent_raw_review_2026-10-12.md)、本批run/analysis。
+
+
+## 完整矩阵与认识更新
+
+E131固定18/18批已完整独立核验：480 run-stagecontexts、245760评分、63.999237科学stage设备时；Qwen3-8B/32B与Llama3.1-8B/70B的新32材料同family/stage逐字配对，形成→原生操作→真实文本函数三环全部完成。70B形成+.957[.679,1.261]nats、原生移除+1.837[1.492,2.184]；真实SST共享词full88.48→98.93%，选择性形成gain10.45[7.91,13.09]pp，两Source分别+9.57/+11.33。全面形成隔离保留99.12% far候选准确率但full54.30%，与选择性保护具有不同后果。
+
+同一形成操作在更大模型中仍可测，A单函数99.22–100%与历史关系影响并存；形成和读取贡献的变化分开测量。L70相对L8的原生移除差+.978[.679,1.281]nats、选择性收益差+1.56CI含0、query-only收益差−10.84[−14.94,−6.93]pp，不要求每个贡献随容量同向增加。旧三项主文认识及C21–23L3/C24L2保持。
+
+证据：[完整报告](../results/e131/report.md)、[独立raw-first](../results/e131/independent_raw_review_2026-10-12.md)、[作者报告核对](../results/e131/independent_author_report_review_2026-10-12.md)、[12确认点图](../results/figs/fig_cross_size_core_chain.pdf)。独立raw在作者报告前封存；最终三环的全部条件、负向与零向、私人方向/阳性/词空间保留，五冻结科学源与分析不变。最后函数由13完成32context并原子发布、run最后，原10未重跑native，20迁移取消/0科学评分。无新增实验或未完成科学批，正式candidate/ACTIVE状态仍由人决定。

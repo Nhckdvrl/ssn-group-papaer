@@ -1,0 +1,72 @@
+{
+  "status": "PASS_STATIC_RUNTIME_GUARDS_REQUIRED",
+  "date": "2026-10-12",
+  "kind": "Independent operational migration/peer-copy static review;not scientific GPU evaluation",
+  "native_restart_helper_sha256": "ee17a493d65932cb31d825420864d130e6966fcf6aa0fe97395ff720f32d42b7",
+  "peer_helper_sha256": "5c75b637594bfd95b96d8c7337b79314d422b0d242e3432c426a00ef6e8032d9",
+  "scientific_five_sources_sha256": {
+    "e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+    "e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+    "e131_mechanism.py": "75290f9f3d354e981955b7482f09122c60d80f664d0bd8639f2b4ef0aec78961",
+    "e131_native.py": "a4285fe0eba3818f6cd8e6cc677dca0fac2c5be2e05bbb3fbc8c3b5b17a90f80",
+    "e131_function.py": "b145f6278e9217930f07640535dcd782daec89157caed3c8c808e05f408fb428"
+  },
+  "protocol_native_settings_exact": {
+    "conditions": 64,
+    "discovery_seed": 120001,
+    "confirmation_seed": 131101
+  },
+  "fixed_scope": {
+    "model": "NousResearch/Meta-Llama-3.1-70B",
+    "actual_pin": "beb678ba5bd7eb1aafeffa01e2a2b3b5e93d1dd3",
+    "old_host": "fvcrc10",
+    "new_host": "fvcrc20",
+    "n": 32,
+    "seed": 131101,
+    "conditions": 64,
+    "queries_per_condition": 8,
+    "FP32_TF32False": "Original dispatch byte-identical;runtime floor unchanged.",
+    "scientific_scores_not_selected": true,
+    "function_not_migrated": "fvcrc13 staged fixedfunction continues;canonical continuousfence untouched."
+  },
+  "peer_checks": [
+    "Source fvcrc11 identity has verifiedall30 official-equivalent shards;currentidentity bytes checked.",
+    "Requested destination /dev/shm with available-space guard;MODEL symlink must resolve exact destination.",
+    "Each file verifies size andSHA256 against source record, using4 rsync workers;only verified partial files replace final filenames.",
+    "All30 weight shards plus source metadata verified before host20 modelidentity publication.",
+    "ICES_E131_PEER_ADDRESS validatesIP;HostKeyAlias retains authenticated original host;raw private IP not recorded in public source.",
+    "Copy errors fail before any model scoring;first alias-resolutionfailure remains operational0GPU/0science attempt."
+  ],
+  "handoff_checks": [
+    "fvcrc20 host,helper committedbytes and frozenfive committed/sourceSHA checked before stoppinglegacy.",
+    "Staticseal/self+peer SHA,actual modelrepo/pin/identity/target,4empty GPUs and CUDA allocation/synchronization checked before stop.",
+    "O_EXCL independentrestart claim prevents concurrenthelper launch.",
+    "SSH stop targets only exactoriginalPythonargv,repo launchqueue parentPID and parent-childownership;SIGSTOP is bounded withfinallySIGCONT on uncompletedhandoff.",
+    "Stoppedwriter rechecksrun.json/32 newline records;ALREADY_FINISHING path restoresoriginal instead of migration.",
+    "Incompletewriter receivesTERMthenCONT;only absence/zombie allows archive.",
+    "Entireoldnativedirectory moved;raw fileSHA before/after matches;canonicalfresh directory getsoperationalrestart;existingfunctiondirectory/fence untouched.",
+    "Oldjournal snapshot archived;afterdeath oldcontinuousresident-device-hours updates to cutoff;operationalreschedulingclass distinctfromscientificfailure.",
+    "Crosshost NFS visibility guard waits60s forrestartmarker/nooldbehavior.",
+    "Newworker retainsonly originalnativeSTAGES settings andcalls originalprotocol/main;allotherengines/pins/readoutbytes unchanged.",
+    "Newhost writesunique worker_llama70_confirmation_native_restarted.json journal;original10journal is preserved."
+  ],
+  "static_limits": [
+    "No execution ofSSH stop/migrationhelper/GPU/NVIDIA commands byreviewer.",
+    "This pass depends on runtimeguards actuallysucceeding:all30assetverification,4cardavailability and exactoldwriterownership.",
+    "Original cached/full/self/graph tolerance.001 and real80layer/4device mask/cache checks remainruntime requirements;floorfailure is implementationfailure ratherthanscientificnegative.",
+    "Importeddriver/CUDAallocations before firstmodel loading are outside inherited modelresidency timer;helperclaim UTC recordspreparation span.",
+    "Stopped incompletefile cancontain an unfinishedtrailing JSONrecord;allbytes are retained,complete records mustbe explicitlycounted duringlatercomparison.",
+    "No promise offloating-byte identity across A100/Blackwell hardware;later rawreview mustcompare matchingcontexts, allcompletepartial z/argmax/gold and actualhardwaremetadata, preserving anydifference."
+  ],
+  "required_later_raw_checks": [
+    "Canonicalrerun32 full records and protocolfinalized run.json before analysis.",
+    "AllCPU contexts byte-identical originalseed;match alloldcompletepartialcontexts.",
+    "Independentlyderive all64/private/readout/restoration/specificity statistics and newL70/L8 freshn32 pair before authoranalysis.",
+    "Compare all matchingoldpartial conditions/outputs without selectingwhichversion byeffect.",
+    "Archive/interruption/legacyexit/actualnewhost/device/precision and bothworker residencyrecords retained."
+  ],
+  "reviewer_GPU_run": false,
+  "scientific_sources_modified": false,
+  "new_scientific_requirements": null,
+  "source_identity_fvcrc11_sha256": "0b5a9ca1f9dfc4335d45bb8a9104566dffe42fa58647ef0e734aea53c072a748"
+}

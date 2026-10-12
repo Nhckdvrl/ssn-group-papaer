@@ -1,0 +1,690 @@
+{
+  "experiment": "E131",
+  "date": "2026-10-12",
+  "status": "PASS_FINAL_18_STAGE_PRESENTATION_AND_BOUNDED_CLAIMS",
+  "scope": "Incremental audit of final Abstract/Introduction/Setup/section7, AppendixM, 12-point display and compiled PDF. Previously sealed science and old744cells were not recomputed.",
+  "claims": "C21-C23 core three findings preserved; C24 bounded criterion evidence unchanged; no status/grade edit.",
+  "reading_order": "All18 raw stages and all6 fresh context pairs sealed before respective author comparisons. Root batch13 stdout exception remains disclosed in existing raw audit; independent session raw-first preserved.",
+  "sources": {
+    "PAPER_DRAFT.md": "11c7cbe89e9b3f6336e2aa8440880413961ea5ffce05876292be79d3122874ba",
+    "PAPER_APPENDIX.md": "09359666a8b39bef8e8640516f9a7904a3a34b7cc3cb15f62e047c328d3e454b",
+    "results/e131/summary.json": "06a2b0bdb61baf6b91889e13ae877d0168a4a7c456c7df878ed3cc2d1688a0b6",
+    "results/e131/independent_raw_review_2026-10-12.json": "2ff790b252e4de4bac049cafce426f7e1f7b5fd3c1ff786b11483a6dafa0a5a2",
+    "results/e131/independent_author_report_review_2026-10-12.json": "00c3dfb9464c2c8bb32f064d5d02f112fdee0aefef448649290707b6304bd3a2",
+    "results/e131/independent_plot_review_2026-10-12.json": "9ba0562168521bc52623239ab8e79c72b21cbdc6f1550c72fbf113637dde4786",
+    "results/paper/manifest.json": "9d7087aeb761b08aae6856634395db0daae3855c74c6748368bd89b647319b88",
+    "results/paper/main.pdf": "070026c97c4da05892ced9810e0dcc8559a50aca582f19bff9bc4d82ee1fe5e4",
+    "results/paper/main.tex": "20c70187ca7e8002a3d15a62dfb4f4e4713ac6e8799ea2556fc86cbd6522f455",
+    "paper/references.bib": "0d19e6fc44b2acce0ae00a5ed61aa0e12c0206af2920fff7250aae3919d6d0fe",
+    "scripts/plot_e131_core_chain.py": "330c6fa38caac7537ca9e249670389c7e494278698ce5dc0ae84d14e17bfef94",
+    "results/e131/core_chain_figure_values.csv": "677038b59a7b2e036050e19eb2957155077adb6335356b3223a23c9a2763e90a",
+    "results/e131/core_chain_figure_manifest.json": "fbf5772c45246fad544fe5cc473ded3a758e00583c2942691691c981896a592f",
+    "results/figs/fig_cross_size_core_chain.png": "4b60ace1b0a37546873c7b8bb6f31236cc5e8b71210deb17146f997bee179fd2",
+    "results/figs/fig_cross_size_core_chain.pdf": "76991f528d67bd0dbbcd9cb59840ff161479a15b37b56087055ca365c931bb2b"
+  },
+  "numeric_checks": [
+    {
+      "label": "main table qwen3 col1",
+      "printed": [
+        2.351,
+        1.857,
+        2.837
+      ],
+      "sealed_full_precision": [
+        2.3511242270469666,
+        1.8570944694802165,
+        2.8365239467471834
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table qwen3 col2",
+      "printed": [
+        1.762,
+        1.264,
+        2.294
+      ],
+      "sealed_full_precision": [
+        1.7617849111557007,
+        1.263872789591551,
+        2.2943729752674695
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table qwen3 col3",
+      "printed": [
+        7.62,
+        5.18,
+        9.96
+      ],
+      "sealed_full_precision": [
+        7.6171875,
+        5.17578125,
+        9.9609375
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table qwen3 col4",
+      "printed": [
+        -2.54,
+        -6.54,
+        1.46
+      ],
+      "sealed_full_precision": [
+        -2.5390625,
+        -6.54296875,
+        1.46484375
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table qwen32 col1",
+      "printed": [
+        2.676,
+        2.266,
+        3.096
+      ],
+      "sealed_full_precision": [
+        2.675637912005186,
+        2.2657885698601605,
+        3.0956140012480318
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table qwen32 col2",
+      "printed": [
+        1.972,
+        1.467,
+        2.5
+      ],
+      "sealed_full_precision": [
+        1.9720237106084824,
+        1.4670670829713344,
+        2.4996021826751518
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table qwen32 col3",
+      "printed": [
+        7.71,
+        5.76,
+        9.57
+      ],
+      "sealed_full_precision": [
+        7.71484375,
+        5.76171875,
+        9.5703125
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table qwen32 col4",
+      "printed": [
+        5.86,
+        4.2,
+        7.52
+      ],
+      "sealed_full_precision": [
+        5.859375,
+        4.19921875,
+        7.51953125
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table llama col1",
+      "printed": [
+        0.801,
+        0.633,
+        0.977
+      ],
+      "sealed_full_precision": [
+        0.8005339950323105,
+        0.6327964514493942,
+        0.9767816854640842
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table llama col2",
+      "printed": [
+        0.859,
+        0.663,
+        1.085
+      ],
+      "sealed_full_precision": [
+        0.8589948490262032,
+        0.6633279098197817,
+        1.084605898708105
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table llama col3",
+      "printed": [
+        8.89,
+        6.54,
+        11.13
+      ],
+      "sealed_full_precision": [
+        8.88671875,
+        6.54296875,
+        11.1328125
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table llama col4",
+      "printed": [
+        18.16,
+        16.21,
+        20.02
+      ],
+      "sealed_full_precision": [
+        18.1640625,
+        16.2109375,
+        20.01953125
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table llama70 col1",
+      "printed": [
+        0.957,
+        0.679,
+        1.261
+      ],
+      "sealed_full_precision": [
+        0.9567897096276283,
+        0.678856891952455,
+        1.260651504807174
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table llama70 col2",
+      "printed": [
+        1.837,
+        1.492,
+        2.184
+      ],
+      "sealed_full_precision": [
+        1.8371662870049477,
+        1.491942092590034,
+        2.184207128547132
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "main table llama70 col3",
+      "printed": [
+        10.45,
+        7.91,
+        13.09
+      ],
+      "sealed_full_precision": [
+        10.44921875,
+        7.91015625,
+        13.0859375
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main table llama70 col4",
+      "printed": [
+        7.32,
+        3.81,
+        10.84
+      ],
+      "sealed_full_precision": [
+        7.32421875,
+        3.80859375,
+        10.842285156249964
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen3 col1",
+      "printed": [
+        1.762,
+        1.264,
+        2.294
+      ],
+      "sealed_full_precision": [
+        1.7617849111557007,
+        1.263872789591551,
+        2.2943729752674695
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen3 col2",
+      "printed": [
+        2.143,
+        1.426,
+        2.893
+      ],
+      "sealed_full_precision": [
+        2.1433431655168533,
+        1.4258647615090012,
+        2.8925778808072207
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen3 col3",
+      "printed": [
+        -0.65,
+        -1.269,
+        -0.08
+      ],
+      "sealed_full_precision": [
+        -0.6499202847480774,
+        -1.269471973925829,
+        -0.08025652281939998
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen32 col1",
+      "printed": [
+        1.972,
+        1.467,
+        2.5
+      ],
+      "sealed_full_precision": [
+        1.9720237106084824,
+        1.4670670829713344,
+        2.4996021826751518
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen32 col2",
+      "printed": [
+        0.775,
+        0.321,
+        1.284
+      ],
+      "sealed_full_precision": [
+        0.7751273363828659,
+        0.3212634302675724,
+        1.2838719191029666
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table qwen32 col3",
+      "printed": [
+        -0.544,
+        -0.833,
+        -0.276
+      ],
+      "sealed_full_precision": [
+        -0.5444826632738113,
+        -0.8326955704018474,
+        -0.27605421803891667
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama col1",
+      "printed": [
+        0.859,
+        0.663,
+        1.085
+      ],
+      "sealed_full_precision": [
+        0.8589948490262032,
+        0.6633279098197817,
+        1.084605898708105
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama col2",
+      "printed": [
+        0.987,
+        0.679,
+        1.303
+      ],
+      "sealed_full_precision": [
+        0.9866715706884861,
+        0.6792127972468733,
+        1.3029724646359682
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama col3",
+      "printed": [
+        -0.275,
+        -0.393,
+        -0.155
+      ],
+      "sealed_full_precision": [
+        -0.2754305601119995,
+        -0.39327712170779705,
+        -0.15512075405567888
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama70 col1",
+      "printed": [
+        1.837,
+        1.492,
+        2.184
+      ],
+      "sealed_full_precision": [
+        1.8371662870049477,
+        1.491942092590034,
+        2.184207128547132
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama70 col2",
+      "printed": [
+        0.806,
+        0.503,
+        1.165
+      ],
+      "sealed_full_precision": [
+        0.8060710653662682,
+        0.5026541139930487,
+        1.1654299069195984
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "appendix native table llama70 col3",
+      "printed": [
+        -0.504,
+        -0.808,
+        -0.217
+      ],
+      "sealed_full_precision": [
+        -0.5044557750225067,
+        -0.8080363780260086,
+        -0.21678938847035217
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    },
+    {
+      "label": "new 70B confirmation function paragraph",
+      "printed": [
+        88.48,
+        85.74,
+        91.11,
+        98.93,
+        97.85,
+        99.71,
+        10.45,
+        7.91,
+        13.09,
+        9.57,
+        5.86,
+        13.87,
+        11.33,
+        6.84,
+        16.41,
+        20.9,
+        15.82,
+        26.17,
+        0.0,
+        0.0,
+        0.0,
+        23.05,
+        21.78,
+        24.22,
+        7.32,
+        3.81,
+        10.84,
+        99.12,
+        98.54,
+        99.61,
+        54.3,
+        52.15,
+        56.84,
+        45.31,
+        42.58,
+        47.56,
+        1.56,
+        -1.56,
+        4.88,
+        -10.84,
+        -14.94,
+        -6.93,
+        -1.76,
+        -3.22,
+        -0.59,
+        98.05,
+        9.96,
+        96.88
+      ],
+      "sealed_full_precision": [
+        88.4765625,
+        85.7421875,
+        91.11328125,
+        98.92578125,
+        97.8515625,
+        99.70703125,
+        10.44921875,
+        7.91015625,
+        13.0859375,
+        9.5703125,
+        5.859375,
+        13.8671875,
+        11.328125,
+        6.8359375,
+        16.40625,
+        20.8984375,
+        15.8203125,
+        26.171875,
+        0.0,
+        0.0,
+        0.0,
+        23.046875,
+        21.77734375,
+        24.21875,
+        7.32421875,
+        3.80859375,
+        10.842285156249964,
+        99.12109375,
+        98.53515625,
+        99.609375,
+        54.296875,
+        52.14599609375,
+        56.8359375,
+        45.3125,
+        42.578125,
+        47.55859375,
+        1.5625,
+        -1.5625,
+        4.8828125,
+        -10.83984375,
+        -14.94140625,
+        -6.9311523437500355,
+        -1.7578125,
+        -3.22265625,
+        -0.5859375,
+        98.046875,
+        9.9609375,
+        96.875
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main shared function prose",
+      "printed": [
+        87.99,
+        95.7,
+        88.48,
+        98.93,
+        20.41,
+        18.16,
+        22.36,
+        23.05,
+        21.78,
+        24.22
+      ],
+      "sealed_full_precision": [
+        87.98828125,
+        95.703125,
+        88.4765625,
+        98.92578125,
+        20.41015625,
+        18.1640625,
+        22.36328125,
+        23.046875,
+        21.77734375,
+        24.21875
+      ],
+      "direct_rounding_digits": 2,
+      "match": true
+    },
+    {
+      "label": "main A-only primitive scope and reconstruction raw r",
+      "match": true,
+      "single_source_owners": [
+        "A"
+      ],
+      "raw_r": [
+        0.8828342812082126,
+        0.6185710949856716,
+        0.9085732149995299
+      ]
+    },
+    {
+      "label": "Qwen-only paired restoration prose",
+      "printed": [
+        -1.368,
+        -2.299,
+        -0.474
+      ],
+      "sealed_full_precision": [
+        -1.3682158291339874,
+        -2.2990314797498286,
+        -0.4740695708431304
+      ],
+      "direct_rounding_digits": 3,
+      "match": true
+    }
+  ],
+  "printed_scalar_count": 145,
+  "stage_count": {
+    "complete_stages_audited": 18,
+    "planned_stages": 18,
+    "contexts": 480,
+    "scores": 245760,
+    "stage_gpu_hours": 63.99923660106129
+  },
+  "paired_family_stage_count": 6,
+  "science_sources_sha256": {
+    "mechanism": "75290f9f3d354e981955b7482f09122c60d80f664d0bd8639f2b4ef0aec78961",
+    "native": "a4285fe0eba3818f6cd8e6cc677dca0fac2c5be2e05bbb3fbc8c3b5b17a90f80",
+    "function": "b145f6278e9217930f07640535dcd782daec89157caed3c8c808e05f408fb428",
+    "dispatch": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+    "protocol": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f"
+  },
+  "plot": {
+    "points": 12,
+    "mean_CI_values": 36,
+    "all_previous11_values_unchanged": true,
+    "pending": [],
+    "get_stat_AST_unchanged": true,
+    "mean_full_output_not_joint": true,
+    "CSV_change": "CRLF to LF only, numerical values unchanged",
+    "newly_embedded": "AppendixM, compiled Figure17 on page33; earlier asset-only snapshots were not an actual paper embedding"
+  },
+  "semantic_checks": {
+    "original_three_MC_retained": true,
+    "old_sections_2_2_through_6_and_relatedwork_discussion_limitations_unchanged": true,
+    "A_single_primitive_owner_explicit": true,
+    "shared_separate_reconstruction_backgrounds_both_full_source_query": true,
+    "signed_and_absolute_not_conflated": true,
+    "mean_not_joint": true,
+    "candidate_not_actual_full_output": true,
+    "far_zero_negative_policy_and_pair_CI_zero_retained": true,
+    "no_universal_repair_or_uniform_source_gains_claim": true,
+    "different_models_and_training_recipes_not_causal_size_law": true,
+    "criterion_findings_not_expanded_to_complete_program": true,
+    "within_family_stage_matching_not_pooled_dataset": true,
+    "no_unique_latent_algorithm_or_independent_module_inference": true
+  },
+  "pagination": {
+    "main_content_pages": 8,
+    "limitations_start_page": 9,
+    "total_pages": 33,
+    "appendix_format": "official ACL two-column, after references"
+  },
+  "final_latex_checks": {
+    "warning_count": 0,
+    "undefined_count": 0,
+    "overfull_count": 0,
+    "line_numbers_converged": true,
+    "independent_last_stdout_warning_count": 0,
+    "independent_last_stdout_undefined_count": 0,
+    "independent_last_stdout_overfull_count": 0,
+    "underfull_notices": 81,
+    "scope": "Final pass only; earlier reference/lineno warnings converge. Underfull notices remain in log, inspected selected pages show no clipping."
+  },
+  "visual_review": {
+    "status": "INSPECTED",
+    "pages": [
+      1,
+      7,
+      8,
+      9,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "findings": "Abstract and four-model Table3 readable; Discussion endsP8, Limitations startsP9; AppendixM text and Figure17 labels/errorbars/caption readable at compiled width, no clipping. AppendixM discovery/confirmation text, function continuation and Table30 (P32) were also visually inspected and readable."
+  },
+  "scope_limits": [
+    "No GPU or independent inference rerun.",
+    "No new experiments or additional scientific qualification.",
+    "All-stage science support relies on prior sealed raw and math audit; current report audits incremental presentation and scope.",
+    "No submission/acceptance/scientific-completeness judgment."
+  ],
+  "unresolved_substantive_findings": [],
+  "helper_sha256": "1f67b4ee8bad014c126f09079b7369cc93aff4b102982f66a14cbb2dac253692"
+}

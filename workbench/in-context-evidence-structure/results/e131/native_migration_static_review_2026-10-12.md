@@ -1,0 +1,13 @@
+# L70 native确认资源迁移与peer复制独立静态审计
+
+结论：`PASS_STATIC_RUNTIME_GUARDS_REQUIRED`，当前两个helper的核心交接静态通过。绑定nativehelper `ee17a493d65932cb31d825420864d130e6966fcf6aa0fe97395ff720f32d42b7`、peerhelper `5c75b637594bfd95b96d8c7337b79314d422b0d242e3432c426a00ef6e8032d9`；JSON列出原五科学源码hash，与当前文件逐字一致。没有执行stop/helper/GPU，也没有改变科学主张、配置或观察读数。
+
+20在停10前检查committedhelper/五source、review绑定、同Nous70/bebpin身份、四卡空闲和CUDA可用。独立O_EXCL claim后只短停有精确argv、repo queueparent和parent-child关系的原writer；若已32行或有run，恢复原任务不迁移。否则TERM→CONT，并等待进程消失/僵尸，之后才归档整个partial、核rawSHA不变、创建新canonical目录；function空fence完全不触碰。NFS60s可见性守卫保持。
+
+旧worker journal的前快照入archive，停止后将连续驻留更新到cutoff；标operationalrescheduling，不能算科学阴性。20用独立journal，只保留冻结native64/n32/131101设置调用原protocol，重新跑完整32材料而非挑旧partial效应。旧10预期functionfence guard退出或本次TERM中断都保留执行记录。
+
+peer从已核官方等价30shards的11源复制；每个partial必须size/SHA通过才原子替换final，全30与元数据通过才写20identity。SHM空间与MODELsymlink目标守卫存在；外部IPenv经过ipaddress验证并保持HostKeyAlias原名。初次DNS失败是0GPU/0scores，不是实验结果。
+
+这不是GPU可行性/数值结论。运行后仍用原`.001` cached/full/self/graphfloor，核80层/4设备/FP32/TF32False。完整raw先独立推导全部64条件及新L70/L8配对，再读作者analysis；旧partial全字节保留，若有无换行尾记录要明报。共同contexts逐字与全部oldcomplete条件z/argmax/gold需比较；不同GPU硬件不要求浮点字节恒等，任何差异保留不择优。CUDA探测/SSH准备早于原firstloading驻留计时，claim UTC记录该操作准备范围；科学stage时间与总worker驻留不能混算。
+
+只产出静态审计，不改helper/科学源，不新增科学矩阵或等级门槛。
