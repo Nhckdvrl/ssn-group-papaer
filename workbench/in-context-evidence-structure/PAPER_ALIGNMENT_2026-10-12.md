@@ -145,3 +145,19 @@ E128四checkpoint16→32全部完成；同no/yes同private code而Food/Service�
 E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。
 
 证据[卡E129](experiments/E129-source-cue-task-information.md)、[完整报告](results/e129/report.md)、[独立raw](results/e129/independent_raw_review_2026-10-12.md)，主文Discussion两句/附录L完整范围。未确认两个标准方向不等于信息完全不存在；native与F0形成图不混同，Q14纯指令实际输出代价保留。旧三认识/最强近邻所有权保留，不新凑claim/自动升级或缩掉已封阳性。当前候选问题是不同历史共享政策如何形成Source条件信号，与C23形成/部署链连接；独立高层审阅和论文核对后再写新卡，未运行。
+
+
+## 2026-10-12：大小模型怎样支持同一计算解释
+
+用户指出先前将版式和局部Cue范围置于大小模型理论之前，优先级不对。正文/附录此轮没有裁剪；E129/130测试的输入前Cue接口不作为C21–23历史形成解释的新资格条件。现在直接复验原来的三环节，而非用更大模型继续搜失败样例。
+
+| 已读正式工作 / 实际范围 | 大小模型验证的对象 | 对ICES执行的约束 |
+|---|---|---|
+| [Sun ACL2025](https://aclanthology.org/2025.acl-long.196.pdf) §3–6、附录D/Table5 | 主体Mistral7B；Llama3-8B/70B、Qwen2-72B同样检验input–label阻断、语义PC、label swapping与解码。关键层/头数可变，不只报告大模型准确率 | 大模型检验相同操作和功能预测，不能要求同一层编号，也不能准确率已好就停止分析形成过程 |
+| [Racing Thoughts NAACL2025](https://aclanthology.org/2025.naacl-long.155.pdf) §2/4及G/H | 主体Gemma2-9B-IT，Llama2-13B-chat因果复验，Gemma2-2B-IT在Polysemous复验主结果；读取窗口随深度变化。50%能力slice和层扫描如实报告 | 一个共同解释可以跨容量/架构保持相同依赖预测而组件位置不同；选slice不能冒充未筛选跨模型验证 |
+| [Yu/Ananiadou EMNLP2024](https://aclanthology.org/2024.emnlp-main.192.pdf) 正文与模型实验 | Llama7B/GPT-J6B，共同QK/OV计算框架，贡献量和相关头不同；没有70B机制证据 | 中小模型可建立有意义机制，但这不代替ICES自己更大容量的实际检验 |
+| [CoSToM ACL2026](https://aclanthology.org/2026.acl-long.421.pdf) §3–4/A.2/E/F | 解释和steering对象Llama3-8B-Instruct/Qwen2.5-7B-Instruct，两对话域；70B作为judge | 两架构完整功能链可有贡献，不能将大judge列为大目标模型机制验证，也不以它为本项缩主张借口 |
+
+因此没有“顶会机制论文必须全做70B”或“只做小模型就够”的统一规则。需要的是所提出解释接受与主问题相称的验证。ICES当前有容量是否改变Source证据计算的明确问题，E131固定Qwen3-32B/Llama3.1-70B及同家族8B新材料配对：E121形成/固定系数反事实，E120原生操作/有限恢复，E123真实文本两来源功能。科学分析函数与父协议相同，不重选头/层/强度，所有正/负/正确输出同报。更大模型若答对仍检验置信度、形成关系与读取补偿；若操作差异成立，解释计算差异，再决定其科学含义，不预先退成小模型缺陷。
+
+本项卡[E131](experiments/E131-large-model-mechanism-chain.md)。首评分前18批真实token/图材料已经产生，Q32全部权重校验完成，L70两个单节点副本下载中。下载和CPU准备不是GPU科学结果。

@@ -13,3 +13,7 @@
 9. **对ICES：** 已有时序上下文化宽解释不能重命名。E120不扫描层，直接native形成operation→有限图恢复，两种query环境给不同方向；E122把它变成双来源整体使用预测。形成阶段隔离/读取阶段隔离可不同，但不得因此声称ICES首次发现正确形成≠正确使用或新“race”算法。具体增量仍是output-dependent Source关系形成及其功能来源。实验模式可学习，不据此增开layer timing矩阵。
 
 **定位记录：** venue corpus nearest“source evidence formation contextualization in context learning”返回该NAACL Main；检索结果还含大量词汇不相关项目，不能将其它近邻未召回当无人研究证据。2026-10-12 web检索核官方PDF，而非依赖alphaXiv/ResearchGate的二次解释。
+
+## 大小模型同一解释的实际验证（2026-10-12再读G/H）
+
+主体Gemma2-9B-IT；附录G是Llama2-13B-chat因果复验，H是Gemma2-2B-IT在Polysemous条件重复主结果，而非所有任务/所有尺度全部实验。Gemma小模型的读取集中约L10，9B约L20，相对深度的依赖时序解释保持；作者按能力改变难度以取约50% slice。关键是同一时序预测与干预，不是同层或同效应量。ICES需检验同一形成/读取操作的跨容量预测；不能拿该文只有中小模型当免做大模型的依据，也不应要求解释所有模型全部任务才承认已有结果。
