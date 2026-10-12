@@ -81,3 +81,7 @@ Q32新32确认的真实SST shared/full两Actor平均87.9883→95.7031%，targete
 完整12/18stage、336run-stage ctx/172032scores、6.835413科学stage GPUh；新function1893数值max0、actual36864层mask调用、全批numeric最大6.68e−5/self/graph0。三组36同材料配对/144数值、9/12确认图点独立核；余L70不算0或证据。报告/全部85条件见[完整报告](../results/e131/report.md)与[raw审计](../results/e131/independent_raw_review_2026-10-12.md)。70双副本全30SHA完成，11的两卡外部占用后只移动资源：D13四空卡执行，C11/13fallback原子claim避免双启动，科学source/materials/analysis不改。
 
 **05:31资源接入更新：** fvcrc10四卡空出，11 pinned L70副本进行peer复制至10可写本地大盘（统一/tmp模型入口symlink）。全部30预定SHA核验后同confirmation一次启动；与11/13原队列共享atomic claim，无重复科学writer。固定FP32/四卡单节点/材料/读数/全phase执行不变；分发helper与日志在results/e131/，未将传输或partial计为新科学结果。
+
+**70B形成发现完整独立核（13/18）：** n16/5504scores、80层四卡FP32/eager，A形成+.99314[.61212,1.37253]nats，单源两个私人方向100%；label B0 KV rawr.54212/RMSE.63233 vszero.70481，B1r.85433/RMSE.82462 vszero1.47212。冻结通道/目标/背景全部保留，K在B0的RMSE略差zero、V优于KV，本批不支持统一KV最佳或随容量重建增强。固定词answer关系abs+.23662[.11647,.36828]、signed−.22883[−.38226,−.08503]完整报告。private能力与历史关系形成共存，机制贡献跨容量仍可测；通道贡献和阅读背景差异据预定同确认继续检验，不另开head/层/强度。独立1041数值差6.66e−15，旧12stage和配对对象直接字节/数值保持；本批n16不与新L8 n32配对。来源/运行/报告与read-order例外见raw-first审计，五70B批仍待完成。
+
+**05:54:56并行启动：** fvcrc10第三副本全30 pinned SHA通过、官方mirror匹配；21.45分钟peer传输后confirmation获得共享atomic claim，10/13各四卡执行C/D。11/13旧fallback保留为互斥等待，不新增科学writer；实际最多八卡，精度/模型/全部阶段执行保持冻结。
