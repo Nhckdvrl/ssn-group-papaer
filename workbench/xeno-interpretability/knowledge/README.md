@@ -1,14 +1,12 @@
-# Xeno · 项目内部知识库
+# Xeno 内部知识库 · 研究上下文
 
-**2026-10-12 修订。只维护这几个入口，不堆重复纸面流程或空 idea。**
+**仅维护四个稳定文献入口**（2026-10-12 更新）；初步实验设计另见 [../EXPLORATION_ENTRY.md](../EXPLORATION_ENTRY.md)，不把实验过程堆进知识库。
 
-| 入口 | 记录 |
-|---|---|
-| [PIERUCCI_2026_XENO.md](papers/PIERUCCI_2026_XENO.md) | 45 页 v2 原文：概念独特性、论证漏洞、必须区分的问题 |
-| [CORE_READS.md](papers/CORE_READS.md) | 主要论文的 parent/压力/方法/数据/强对照/结果/最重要的证据边界；已有条目继续在原处扩充 |
-| [LITERATURE_MAP.md](LITERATURE_MAP.md) | Xeno 与竞争谱系的区别、能检验的科学问题和交叉实验思路 |
-| [READING_QUEUE.md](READING_QUEUE.md) | 本轮已读范围、无法获取的原文及待核查的新近邻 |
+- [LITERATURE_MAP.md](LITERATURE_MAP.md)：谱系、解释空白、竞争假设、方向选择和强 ownership 边界。
+- [papers/CORE_READS.md](papers/CORE_READS.md)：逐篇读数、关键实验、parent→pressure→改变前提、idea genesis（DOCUMENTED/RECONSTRUCTED）、近邻距离。
+- [papers/PIERUCCI_2026_XENO.md](papers/PIERUCCI_2026_XENO.md)：原论文问题定义、理论边界与开放问题。
+- [READING_QUEUE.md](READING_QUEUE.md)：阅读深度和真正的文件获取障碍。
 
-**阅读标签：** `FULL` = 原论文整体论证及关键实验/方法/结论审查（不等于复现）；`MAIN` = 主方法和主结果，非全附录；`PARTIAL` = 指定章节；`ABSTRACT` / `TITLE` = 不能据此写实证细节；`REPRODUCED` = 重新运行并验证数字。本次**未进行 REPRODUCED**。
+**必须区别**：`FULL`（已核整体论证与关键图表，未独立复现）、`MAIN`（方法/主结果）、`PARTIAL`、`ABSTRACT`、`TITLE`、`REPRODUCED`。现无 REPRODUCED。作者声称、我们重建其 idea 的合理过程、我们自己的猜想分别标记；不能用“无法命名”代替研究发现。
 
-**知识可信性：** 把论文结论、作者自述、我们的 RECONSTRUCTED idea 来源、我们的候选假说分开。有关「模型内部空间有多少陌生语义」「怎样度量不可翻译」均为开放命题；发现相关高质量论文先回头修订知识，而非草率冻结主题。会议主会 / position / workshop 不混用；NeurIPS Downloads 中出现标题本身不能确认论文所属 track。
+**本次更新的核心原则：** 同时审问解释器、发现程序、表示单位和自然计算；跨论文方法迁移重在**怎样设计否证实验**，不是追论文名字与优化指标；不得把 Xeno 偷偷换成任意新技术应用方向。
