@@ -1,47 +1,51 @@
-# 研究画像：从“可读”到“解释真的成立”
+# 反复回到 Xeno：真正独立的科学问题（2026-10-12）
 
-**基于 [本次精读](papers/CORE_READS.md)；2026-10-12；方向定位而非既有科学发现。**
+基于 [45 页原论文重新精读](papers/PIERUCCI_2026_XENO.md) + [核心论文精读](papers/CORE_READS.md)。**地图不是自动选题，也不构成已验证假说。**
 
-## 1. 一个现象，四个不等价的问题
-- **可描述性**：能否用自然语言/组合规则准确描述特征在哪些输入上响应？（Feldhus & Kopf survey；Ma et al. NeurIPS 2025）
-- **构念有效性**：该特征是否代表声称的高层行为，而非更简单的词元/数据混杂？（Ma et al. ICML 2026）
-- **计算/干预有效性**：某方向识别了概念，是否同向改变行为、是否反映自然计算？（Torop et al. NeurIPS 2026；MIB）
-- **本体完整性**：现有人类监督概念是否遗漏任务相关因素？是否能在不先知道遗漏者是什么的情况下独立识别？（Parisini et al. 2026；CBM survey）
+## 1. 先准确理解“新在哪里”
+Xeno 问的不只是“缺了一条人工概念标签”。作者把**表征形式**（direction / manifold / circuit）、**跨模型共性**（universality）与**语义可达性**（human concept translation）分离，并提出 **designation → model-native geometry/relation → causal relevance → semantic interpretation 最后尝试** 的研究顺序。成功结果不必须是漂亮的 human-readable label；也可能是一套可复现的、能作预测的模型原生关系定律。**这是值得探索的研究纲领，但尚未证明对应对象真实存在。**
 
-**Xeno 的中心风险：** 把“描述失败”直接叫“外星概念”，是没有证据的推论。尤其“可定位”与“具有独特语义本体”距离非常远。
+## 2. 不是零人做过；要认真区分“重叠”究竟在哪
 
-## 2. 已被明确占据的研究地盘（不要用新名词重新宣称首创）
-
-| 已有问题 / 强近邻 | 原文做到了什么 | 仍不能推出什么 |
+| 谱系与有力证据 | 确已做过 | 尚未等价于 Xeno 哪一部分 |
 |---|---|---|
-| [Ma et al. NeurIPS 2025](papers/CORE_READS.md#3-ma-等-neurips-2025) | 相似但不激活的 hard negatives、可迭代修正的结构化解释，提高模拟的预测力 | 解释得分高就证明特征承担特定因果功能 |
-| [Ma et al. ICML 2026](papers/CORE_READS.md#4-ma-等-icml-2026) | 在 22 组配置逐步否证“单个推理 SAE 特征”：词元注入、真/假语义反例、简单稀疏性理论 | 所有推理都没有内部表征 |
-| [Torop et al. NeurIPS 2026](papers/CORE_READS.md#5-torop-等-neurips-2026) | 强分类方向可能反向 steering；下游表示响应可不靠生成预测符号 | 已证明存在神秘不可命名表征；所有 steering 框架皆如此 |
-| [Parisini et al. 2026](papers/CORE_READS.md#6-parisini-等-2026-预印本) | “已有概念不完整”已经能被 Fisher 任务几何和已知漏项对照量化 | 对任意未知自然 LLM 能自主发现原则上不可翻译概念 |
-| [Song et al. ACL 2026](papers/CORE_READS.md#7-song-等-acl-2026) | SAE 字典跨次训练一致性可定量评价、通过方法改善 | 某稳定 SAE 特征必然是模型天然计算的基本单元 |
-| [Sheng & Fu, 2026](READING_QUEUE.md) | 不同电路对象/比较粒度改变 overlap 结论（仅摘要核对） | 低 overlap 就说明模型实际机制改变了 |
-| [Sutter et al. NeurIPS 2025](READING_QUEUE.md) | 非线性对齐过于灵活可出现“伪完美”因果抽象（官方摘要） | 任意因果抽象皆无效 |
+| Goyal et al. NeurIPS2025 Spotlight | 无人工概念标签地学 **causal differentiating concepts**，合成与 refusal 有严格对照 | 目标仍是找到可解释的人类因子；并未研究语义不可充分翻译时怎样形成可预测的模型原生科学 |
+| Gurnee et al. Transformer Circuits2026 | J-space 可测 **verbal reportability**，干预/跨任务证明其功能 | verbalize 失败不能证明语义不为人类概念可表达；其对象不是 J-space 之外真正 model-native semantic structure |
+| Parisini et al. 2026 | 任务 Fisher 几何探测**已有概念集缺漏** | 真实任务 C3 是事先知道而刻意隐藏；不是未知模型本体的直接发现 |
+| Ma et al. NeurIPS2025 / ICML2026 | 强解释反例、词面混杂能推翻错误 concept claim | 测量解释可靠性，不能证明 model-native 语义不存在或已被穷尽 |
+| Causal Abstraction / MIB / SAEBench | 对预先规定的高层变量/任务测因果抽象与实用性 | 通常默认高层描述已被人类指定；发现和语义可达性没有同时被独立测试 |
+| Paulo&Belrose ICLR2026；Sheng&Fu 2026 | feature seed instability、比较粒度改变“机制相似”结论 | 结构稳定性与语义可翻译性不是一回事 |
+| Sutter et al. NeurIPS2025 | 灵活因果对齐会产生**伪解释**，随机网络也可能有高分 | 负对照标准，不是证明所有新的内在结构都不存在 |
+| Williams et al. Philosophy Position 2025 | 表征本体/解释/内容的理论问题已有讨论 | 没有完成 Xeno 所要求的真实系统开放式发现和模型原生规律构建 |
+| ViSAE ICML2026 | 原文表4/7/8：视觉大词表明显改变解释覆盖和背景 steering（50.3→98.5% worst group） | 人类词表越大，不能直接推出陌生关系维度完全不存在 |
 
-**相关基础标准：** MIB（因果变量与电路定位）、SAEBench（重建/稀疏等代理指标不等于下游可解释效用）、causal abstraction；见 [待读清单](READING_QUEUE.md)。这些是真正的强 baseline，不应从头发明一个只有自创指标的评测。
+**不能以“概念缺失”“unsupervised feature discovery”“steering”作为 Xeno 论文的独立新颖贡献。也不能因为这些近邻就将它的实质命题判为已解。**
 
-## 3. 四条竞争解释：按哪种观察更新信念？
+## 3. 同一可观察异象有四种竞争解释
+- **E1 表达力差**：单词标签失败，但组合逻辑、程序或长描述能充分预测 holdout 激活与干预；
+- **E2 分析器幻觉**：SAE seed、数据、特征抽样、坐标或 off-manifold 干预制造了对象；
+- **E3 普通的计算中间量**：稳定重要，却可以归于捷径、低级统计、已知机制组合，而非未知语义；
+- **E4 人类概念不足（相对给定表达集合）**：即使 E1–E3 的强对照全部通过，仍存在稳定、跨任务、可干预、提供额外可预测关系的 ξ。**不能夸大为原则上永远无法被人类理解。**
 
-| 假设 | 它预测什么 | 最便宜但有杀伤力的对照 |
-|---|---|---|
-| H1 **语言描述能力不够** | 增加 hard negatives、组合逻辑、描述长度/程序形式后，残差显著缩小 | 匹配复杂度的多种解释器在 held-out 与 OOD 上独立预测 |
-| H2 **实验仪器创造了对象** | SAE seed、词元切片、特征筛选阈值、坐标/干预改变后所谓结构不复现 | 同模型多字典、多方法、随机/未训模型、全流程重做；报告 selection bias |
-| H3 **真实但普通的计算结构** | 确实能预测/控制行为，但可以由任务捷径、多个已知机制组合或非语义中间变量解释 | lexical/style counterexamples + 信息等价 baseline + 分层条件化介入 |
-| H4 **当前概念本体有遗漏** | 在更强 H1–H3 的对照之后，残留可复现、任务相关、独立预测且可干预的结构；补足后能解释原来相互矛盾的关系 | **blind discovery → held-out discrimination → causal/behavioral validation**，不可人为先选好隐藏概念再“找回” |
+## 4. 三个值得保持开放的“探索空间”，都不是固定论文 idea
 
-有限实验无法支持“原则上不可被人类概念表达”的形而上强命题；只能对指定解释语言与证据水平提出经验性的、不充分解释的结论。
+**A · 不依赖翻译的内部表征科学。** 能否在不知道概念词义的情况下，对跨上下文 ξ 建立独立预测关系（什么同时变化/什么不变/如何影响自然计算），且相较等预算的人类语言、程序/组合概念解释提供可检验增量？强基线 Goyal 无标签发现、J-space、Ma2025 hard negatives、MIB；反事实：如果复杂的人类解释已能同样准确预测，Xeno 的经验余量可能消失。
 
-## 4. 值得继续读的研究压力（不是既定 idea）
-1. **解释有效性与模型功能的差距**：很强的语言解释和自然干预之间能否建立可复现的关系？Ma2025 的目标是 activation simulation；Torop2026 说明检测→控制甚至能反号。这是**问题谱系**，不是尚无人做。
-2. **“未知概念”能否在不知道答案时提出**：Parisini2026 的真实例子中 C3 由研究者预先给出。自然系统如何避免“已知答案故意隐去”的设计泄漏，同时避免伪发现？这才是后续论证压力。
-3. **发现与解释采用的基本单位是否正确**：SAE、回路与几何对象的稳定性可能随方法和描述粒度而变；更高层功能等价类是否更可靠？应先补 NeurIPS2026 电路粒度论文、ICLR2026 SAE instability 全文。
-4. **跨领域自然问题**：若研究真正涉及非语言模态，先读视觉 concept-based discovery / prototype literature 再定对象；不要把“图像概念难命名”当作自然 xeno 证据。
+**B · 找到哪一层“对象”是自然的。** SAE features、联通边、可逆坐标、跨层群关系、因果等价类，哪一个在更换工具、随机种子、变换坐标与 model family 后稳定预测行为？强基线 Paulo/Belrose、Sheng/Fu、Sutter；核心不是换个方法提高 overlap，而是确定何种**模型原生关系规律**免疫分析器选择。
 
-## 5. 方法论与最低证据合同（后续正式 E## 前）
-从**真实的、已有强基线上的问题**出发；不因一条论文 future work 就成立项目。每篇重要论文做 Paper Rewind：parent/压力 → **RECONSTRUCTED** 区分假说 → 实验判别预测 → 对照作者结果。新实验必须写明：改变哪一个认识、阳性/阴性对照、noise floor、 held-out 预测、影响的抽象层级、负结果会怎样改写理解。估计执行资源为单节点可承担开源模型；目前**未运行 GPU**。
+**C · Collective xeno 与 agent 消息的功能语义。** 共同训练的多 agent 是否形成稳定 sender-state / message / receiver-state 因果关系，而人类基于消息文本的意图、奖励和上下文解释对接收方后续选择仍不足？需要 receiver swap、同消息不同 receiver、训练前后与改写消息对照，排除简单暗号/压缩协议/普通 latent state。此线应先读 emergent communication 和表征共适应强文献，不能直接猜效果。
 
-**仍欠缺：** 更大范围（NeurIPS2026/ICLR/ICML/ACL/CVPR）的系统定位表与全文精读；原版 Xeno 正文逐章核验；候选定量 baseline 复现。尚未选论文唯一 RQ。
+## 5. 好的研究动作：先让各种解释分别承担风险
+- 从**自然发生的任务/模型行为或已报道现象**而非随意造“外星向量”出发。
+- 先找强 baseline。预注册真正区分 E1–E4 的读数、近似误差和随机/错误模型对照；做 blind discovery 与 held-out intervention 而非“事先隐藏已知 C3”。
+- 至少两种不同证据：统计预测/结构稳定 + 自然分布的因果预测；可跨不同模型或训练配置时再升级结论。
+- 允许自然语言、逻辑表达、数学规律解释 ξ；对“语义不可充分表达”只给**明确限定的操作性结论**，不能以无法命名的主观感受做成功标准。
+- 有**实验异常→竞争解释→反证→更一般理解**的链才算进入 idea；不把阅读笔记扩写成十个臆测题目。暂时不排时间、不启动 GPU。
+
+## 6. 本次精读留下的可核查缺口
+- Tang et al. NeurIPS2026 **Position** 《Concept-Based MI Needs a Concrete Evaluation Paradigm》Zenodo PDF 下载超时：可以确认存在与问题，不可冒充全文读过；
+- Delisle & Tan 《Bypassing PC1...》NeurIPS2026 作者确认收录但未发现可核全文；
+- NeurIPS2026 Downloads 另一篇不同标题的 circuit description level 论文作者/全文尚未核验；**不能偷换成已读 Sheng&Fu**；
+- Song et al. ACL2026 的正式 PDF 过大/入口受限，只核到摘要和早期版本片段；
+- ViSAE 已由 alphaXiv 提供可核的 19 页原始论文，完成主要方法/图表/强消融阅读；
+- 新近邻随 2026 正式 proceedings 发布仍应更新。上述为**确实无法完成的获取问题**，不伪称全量完成。
