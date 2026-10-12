@@ -1,6 +1,6 @@
 # ICES 当前进展与下一步：从证据混合到来源条件化的计算（2026-10-10）
 
-**当前（2026-10-12，跨容量核心检验）：** 原生关系形成、固定输出关联与Source函数使用的三项主文认识保持。E131按原43/64/85条件将同一形成反事实、原生操作、真实文本函数政策推进到8B/32B/70B；已完成独立校对9/18 stage。两个8B在新32材料完成三环节确认；Qwen3-32B三环节pilot完成，SST shared平均full86.91→95.90%，收益8.98[5.86,12.50]pp，单Source双私人方向本批100%且形成作用仍在。Q32同材料独立确认正在跑；Llama70固定权重断点传输并等待完整SHA核验接入。当前大模型pilot支持原计算解释，尚未完成跨容量确认；不以组件位置/通道比例不同就拆成狭窄新claim。ACL25 Sun的大模型关键因果链、NAACL25 Racing Thoughts的深度相关窗口、EMNLP24/CoSToM实际目标模型已核原文，比较尺度见[PAPER_ALIGNMENT](PAPER_ALIGNMENT_2026-10-12.md)。最新全矩阵见[E131报告](results/e131/report.md)与[独立raw审计](results/e131/independent_raw_review_2026-10-12.md)。
+**当前（2026-10-12，跨容量核心检验）：** 原生关系形成、固定输出关联与Source函数使用的三项主文认识保持。E131按原43/64/85条件将同一形成反事实、原生操作、真实文本函数政策推进到8B/32B/70B；已完成独立校对10/18 stage。两个8B在新32材料完成三环节确认；Qwen3-32B三环节pilot完成，SST shared平均full86.91→95.90%，收益8.98[5.86,12.50]pp，单Source双私人方向本批100%且形成作用仍在。Q32同材料形成确认已完成（2.676[2.266,3.096]nats、系数1 KV r=.883），其原生操作和函数确认继续；Llama70固定权重断点传输并等待完整SHA核验接入。当前大模型pilot支持原计算解释，尚未完成跨容量确认；不以组件位置/通道比例不同就拆成狭窄新claim。ACL25 Sun的大模型关键因果链、NAACL25 Racing Thoughts的深度相关窗口、EMNLP24/CoSToM实际目标模型已核原文，比较尺度见[PAPER_ALIGNMENT](PAPER_ALIGNMENT_2026-10-12.md)。最新全矩阵见[E131报告](results/e131/report.md)与[独立raw审计](results/e131/independent_raw_review_2026-10-12.md)。
 
 **上一轮Cue接口记录（E124–129完整）：** E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。 已封形成/关联/整体使用的三项认识保留。下一步回到形成如何支持Source条件计算：当前Cue来自全部私人隔离的F0，而native与选择性历史有不同功能；是否影响Source信号准备是有限的机制候选，先全结果/近邻审阅，不扫head/字段。
 
@@ -948,3 +948,9 @@ E130固定Llama8B/Qwen14B各16→32、native/targeted/independent三历史policy
 Q32三个D stage均独立raw-first封存，9/18批240context/122880评分。真实SST shared词表、两Actor平均full/candidate：native86.9141%、targeted95.8984%，gain8.9844[5.8594,12.5000]pp；targeted−all21.0938[19.3359,22.6563]pp，query-only−native8.7891[5.4688,12.1094]pp。两私人方向single本批100%，targeted在相反规则+18.75[12.50,25.78]pp、同规则−.78125[−2.34375,0]，全85条件保留。准确率平均不冒充joint。
 
 **整体解释更新：** 同一形成操作、原生贡献与实际函数政策在32B首轮连起来，支持当前主问题是Source证据怎样形成并使用，而不只是一项小模型能力缺陷。单规则已正确仍有关系形成效应；不同读取环境的恢复方向和不同规则是否冲突的政策作用可由同一形成/读取解释分别理解。保留原C21–23与三个主文认识，不把pilot写成所有容量已统一，也不要求每个checkpoint的通道比例与restore数字相等。Q32新32材料三stage正在运行，70固定权重传输后执行同一链；大小配对只纳入新确认，当前D不与不同材料的8B配对。
+
+### E131：同新32材料的形成确认已完成
+
+Q32新确认n32的A形成signed/absolute2.67564[2.26579,3.09561]nats；label-interface B0固定系数1 KV raw r=.882834、RMSE=.864484/zero1.856570，rule双差r=.922132。完整12 K/KV/V×目标×读取背景保留；single两个私人方向本批full100%。B读取signed3.48458[2.59559,4.34803]；stage signed交互CI0而absolute+.95308[.16203,1.74936]，不将平均符号抵消当形成操作没有作用。
+
+与Q8逐字相同的32context配对：A形成abs large−small+.48496[.02565,.94531]，signed+.32451[−.14989,.81070]。这不是受控scaling law，但直接支持相同形成解释继续适用于32B；相同理论允许幅度与通道比例变化，不由partial Cue或单个signed交互收缩C21–23。新32原生操作/函数stage与70同链继续完成。滚动独立审计10/18 stage、272ctx/133888scores，本批1041数值差1.89e−15；[全报告](results/e131/report.md)。

@@ -1,7 +1,7 @@
 # E131 独立 raw 校对（滚动封存）
 
 这是 EXECUTION §5 的 raw-first 数值/实际运行校对，不改主张等级、研究状态或冻结科学读数。
-当前完整审计 9/18 stage，240 contexts、122880 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
+当前完整审计 10/18 stage，272 contexts、133888 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
 
 三个科学源见 JSON；dispatch `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`。
 每批全部 raw 推导先写入独立 seal，再打开该批 author analysis。CPU/pre-score/精度修复审计保持原文件。
@@ -420,6 +420,52 @@ primary 中 both 是两 Actor accuracy 的均值，不是 joint；JSON 单列 jo
 
 primary 中 both 是两 Actor accuracy 的均值，不是 joint；JSON 单列 joint 与完整输出/other-source word，并保留全部85接口/双私有方向。
 
+## qwen32_confirmation_mechanism
+
+完整 32 contexts ×43接口×8 query = 11008 评分；64 层、2 实际 GPU；float32/eager、TF32=False，model revision `9216db5781bf21249d130ec9da846c4624c16137`。
+CPU context 字节一致，实际 edge hook 全层 11 模式计数符合冻结条件；cached/full 最大误差 2.86102295e-05，self 0，layer0 sender K/V 固定为0。没有独立 GPU 重跑。
+作者 analysis 比较 1041 个有限数值，最大误差 1.887379141862766e-15。
+
+| 读数 | 均值 [95% context bootstrap CI] |
+|---|---|
+| A_formation_B_shared signed | 2.67564 [2.26579, 3.09561] |
+| A_formation_B_shared absolute | 2.67564 [2.26579, 3.09561] |
+| B_reading_A_shared signed | 3.48458 [2.59559, 4.34803] |
+| B_reading_A_shared absolute | 3.44877 [2.57556, 4.28449] |
+| stage_interaction signed | -0.0366461 [-0.524953, 0.462008] |
+| stage_interaction absolute | 0.953078 [0.162029, 1.74936] |
+| label_effect_B_shared signed | 1.82901 [1.45682, 2.20981] |
+| label_effect_B_shared absolute | 1.82901 [1.45682, 2.20981] |
+| edge_K_B_shared signed | 1.72437 [1.30378, 2.14575] |
+| edge_K_B_shared absolute | 1.72437 [1.30378, 2.14575] |
+| full_native relation signed | 6.44775 [5.96564, 6.91385] |
+| full_native relation absolute | 5.55102 [5.0034, 6.08222] |
+| label_native relation signed | 0.0802578 [-0.328562, 0.462212] |
+| label_native relation absolute | 0.427176 [0.18772, 0.690232] |
+| answer_native relation signed | 0.115059 [-0.016557, 0.249384] |
+| answer_native relation absolute | 0.183865 [0.0974458, 0.283014] |
+| single_A private=False candidate | 1 [1, 1] |
+| single_A private=False full argmax | 1 [1, 1] |
+| single_A private=True candidate | 1 [1, 1] |
+| single_A private=True full argmax | 1 [1, 1] |
+
+| 重建目标 / 历史消息通道 | raw r / RMSE / zero RMSE |
+|---|---|
+| label_interface_B0_k | 0.770968 / 1.18922 / 1.85657 |
+| label_interface_B0_kv | 0.882834 / 0.864484 / 1.85657 |
+| label_interface_B0_v | 0.50517 / 1.59436 / 1.85657 |
+| all_A_formation_B0_k | 0.765872 / 1.35054 / 2.10069 |
+| all_A_formation_B0_kv | 0.852074 / 1.11474 / 2.10069 |
+| all_A_formation_B0_v | 0.481149 / 1.84546 / 2.10069 |
+| label_interface_B1_k | 0.783501 / 1.24793 / 1.99896 |
+| label_interface_B1_kv | 0.876483 / 0.961205 / 1.99896 |
+| label_interface_B1_v | 0.272753 / 1.94327 / 1.99896 |
+| all_A_formation_B1_k | 0.733195 / 1.47417 / 2.16558 |
+| all_A_formation_B1_kv | 0.828571 / 1.21255 / 2.16558 |
+| all_A_formation_B1_v | 0.29324 / 2.07494 / 2.16558 |
+
+JSON 保留全部43接口的均值/CI、full/candidate/label rate、双私人方向与 margin；12重建目标的 raw/rule双差、r/RMSE/zero及bootstrap、全部关系响应和逐层原生注意统计。完整性不由阳性方向筛选。
+
 ## 首次32B探索与配对锚点的范围
 
 Q32 n16 已在原冻结接口上得到 A形成与 B读取背景的正功能作用；signed/absolute interaction 的 CI 均跨0，保留该边界而不把形成效应作废。固定系数历史答案 KV 对实际 A-label 干预有预测改善和残差，不能改述为完整中介或全部必要性解释。
@@ -457,3 +503,30 @@ summary9批嵌入的analysis/run/raw hash与已封独立结果一致；自然fun
 科学stage小时与worker驻留快照计数一致，每worker只计一次；运行中job的快照只覆盖last_observed_at，不代表报告生成时刻所有新增驻留。mean Actor accuracy不等同joint；shared表面other-source-word零不能识别provenance。新版自然功能表标题已明确shared/两Actor平均，resource_scope已明确last_observed快照；数值未改。
 
 报告script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`；summary `d93259aa09baebbea8d0bb5c9d4d45243e314e39cc5b351855608373e3beec1b`；report `3fb1534b6c6f360e6ab75595bcb0ac8f29ee96fc32c975113a198cce2299395c`。继承bootstrap910/reconstruction109910的卡说明是澄清，不是科学CI变更；没有新理论资格或GPU重跑。
+
+## 大小模型新32确认材料的独立配对
+
+当前1个同family/stage的C32 pair已经独立封存；实际运行contexts逐字一致。使用原核心vector的逐context large−small后bootstrap910。发现n16与C32不配对，不称因果scaling law。
+
+| Pair | 固定读数 | Large−small [95% paired CI] |
+|---|---|---|
+| qwen32_mechanism | A_formation_signed | 0.324514 [-0.149895, 0.810698] |
+| qwen32_mechanism | A_formation_absolute | 0.484959 [0.0256545, 0.945314] |
+| qwen32_mechanism | B_reading_signed | -0.502511 [-1.16083, 0.160483] |
+| qwen32_mechanism | B_reading_absolute | -0.154925 [-0.751622, 0.455646] |
+| qwen32_mechanism | label_interface_signed | 0.120315 [-0.470635, 0.732267] |
+| qwen32_mechanism | label_interface_absolute | 0.184197 [-0.385392, 0.784987] |
+| qwen32_mechanism | answer_K_signed | -0.219378 [-0.753467, 0.319236] |
+| qwen32_mechanism | answer_K_absolute | -0.219378 [-0.753467, 0.319236] |
+| qwen32_mechanism | answer_relation_signed | -0.106343 [-0.300782, 0.0673443] |
+| qwen32_mechanism | answer_relation_absolute | -0.149144 [-0.311523, 0.0013804] |
+
+双private方向的差值为secondary分层，同样全保留，不用于模型筛选或更改理论资格。全43/64/85接口与instruction/全部K/KV/V系数1重建仍见各stage独立raw结果。
+
+## 当前作者 10/18 PARTIAL 报告独立复核
+
+summary10批嵌入的analysis/run/raw hash与已封独立结果一致；自然function的全部12 policy/18 contrast full-output字段按原origin/cross×A/B×8query权重独立重算。10完整表行、66统计单元、196数值呈现逐项一致。pairs函数逐context公式及stat回归原冻结读数；目前1个实际大小confirmation pair、10个配对表行已核对；D16不与小C32配对。
+
+科学stage小时与worker驻留快照计数一致，每worker只计一次；运行中job的快照只覆盖last_observed_at，不代表报告生成时刻所有新增驻留。mean Actor accuracy不等同joint；shared表面other-source-word零不能识别provenance。新版自然功能表标题已明确shared/两Actor平均，resource_scope已明确last_observed快照；数值未改。
+
+报告script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`；summary `8520b20ffb264e6476a49858ebbf9a7e0c769719dd3ea1b85ae65a47f40a61e4`；report `8eeef2e73dedc958e72c25e935a98eeee8c35da6caed2907053d835c2616c4cf`。继承bootstrap910/reconstruction109910的卡说明是澄清，不是科学CI变更；没有新理论资格或GPU重跑。

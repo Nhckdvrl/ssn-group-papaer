@@ -1,9 +1,8 @@
 {
   "status": "PARTIAL",
   "planned_stages": 18,
-  "completed_stages": 9,
+  "completed_stages": 10,
   "missing_stages": [
-    "qwen32_confirmation_mechanism",
     "qwen32_confirmation_native",
     "qwen32_confirmation_function",
     "llama70_discovery_mechanism",
@@ -13,13 +12,96 @@
     "llama70_confirmation_native",
     "llama70_confirmation_function"
   ],
-  "scores": 122880,
-  "contexts_by_stage": 240,
-  "stage_device_hours": 2.9682083484861583,
-  "worker_resident_device_hours_so_far": 3.0089937632613712,
+  "scores": 133888,
+  "contexts_by_stage": 272,
+  "stage_device_hours": 4.21192657775349,
+  "worker_resident_device_hours_so_far": 4.257146635585361,
   "resource_scope": "worker cumulative snapshots at each last_observed_at, counted once per worker; currently running stages add residency at their next write; failed TF32 attempts remain separate",
   "paired_scope": "fresh confirmation contexts only, large minus small, paired context bootstrap 910; recipes differ, not a causal scaling law",
-  "paired_confirmation": {},
+  "paired_confirmation": {
+    "qwen32_mechanism": {
+      "A_formation_signed": {
+        "mean": 0.32451368495821953,
+        "ci95": [
+          -0.14989476036280394,
+          0.8106984298676252
+        ],
+        "n_contexts": 32
+      },
+      "A_formation_absolute": {
+        "mean": 0.48495885357260704,
+        "ci95": [
+          0.025654481351375588,
+          0.9453139601275323
+        ],
+        "n_contexts": 32
+      },
+      "B_reading_signed": {
+        "mean": -0.502510666847229,
+        "ci95": [
+          -1.1608287359587848,
+          0.16048326957970838
+        ],
+        "n_contexts": 32
+      },
+      "B_reading_absolute": {
+        "mean": -0.15492549538612366,
+        "ci95": [
+          -0.7516224900260567,
+          0.45564577253535377
+        ],
+        "n_contexts": 32
+      },
+      "label_interface_signed": {
+        "mean": 0.12031488493084908,
+        "ci95": [
+          -0.47063481351360675,
+          0.7322668678127227
+        ],
+        "n_contexts": 32
+      },
+      "label_interface_absolute": {
+        "mean": 0.1841970570385456,
+        "ci95": [
+          -0.38539211526513095,
+          0.7849865579977631
+        ],
+        "n_contexts": 32
+      },
+      "answer_K_signed": {
+        "mean": -0.2193782441318035,
+        "ci95": [
+          -0.7534667325206101,
+          0.319236441515386
+        ],
+        "n_contexts": 32
+      },
+      "answer_K_absolute": {
+        "mean": -0.2193782441318035,
+        "ci95": [
+          -0.7534667325206101,
+          0.319236441515386
+        ],
+        "n_contexts": 32
+      },
+      "answer_relation_signed": {
+        "mean": -0.1063433587551117,
+        "ci95": [
+          -0.3007824245840311,
+          0.06734425034373996
+        ],
+        "n_contexts": 32
+      },
+      "answer_relation_absolute": {
+        "mean": -0.14914381504058838,
+        "ci95": [
+          -0.31152349840849636,
+          0.0013804046437144277
+        ],
+        "n_contexts": 32
+      }
+    }
+  },
   "runs": {
     "qwen3_confirmation_mechanism": {
       "run": {
@@ -28681,6 +28763,3163 @@
         },
         "scope": "Secondary full-vocabulary and other-source-word readouts; original primary unchanged."
       }
+    },
+    "qwen32_confirmation_mechanism": {
+      "run": {
+        "args": {
+          "model": "/dev/shm/ices_models/Qwen3-32B",
+          "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e131/qwen32_confirmation_mechanism",
+          "n": 32,
+          "seed": 131102,
+          "materials": "validation",
+          "preflight_only": false,
+          "analyze_only": false
+        },
+        "numeric_max_error": 2.86102294921875e-05,
+        "elapsed_seconds": 2238.692812681198,
+        "gpu_hours": 1.2437182292673323,
+        "script_sha256": "75290f9f3d354e981955b7482f09122c60d80f664d0bd8639f2b4ef0aec78961",
+        "contexts_sha256": "36b8a38c0ad0ac41bce766eb31fade51372eb6e3813eed4553dc21790144a416",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "transformers": "4.57.6",
+        "git_head": "4362a7dd7021639499bb12b146a7930fb8e06c21",
+        "sender_layer0_KV_max_error": 0.0,
+        "model_revision": "9216db5781bf21249d130ec9da846c4624c16137",
+        "dtype": "float32",
+        "attention": "eager",
+        "model_type": "qwen3",
+        "training": false,
+        "patch_layers": "all",
+        "edge_calls": {
+          "0": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "1": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "2": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "3": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "4": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "5": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "6": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "7": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "8": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "9": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "10": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "11": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "12": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "13": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "14": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "15": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "16": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "17": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "18": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "19": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "20": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "21": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "22": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "23": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "24": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "25": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "26": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "27": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "28": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "29": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "30": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "31": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "32": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "33": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "34": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "35": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "36": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "37": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "38": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "39": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "40": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "41": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "42": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "43": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "44": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "45": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "46": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "47": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "48": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "49": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "50": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "51": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "52": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "53": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "54": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "55": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "56": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "57": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "58": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "59": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "60": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "61": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "62": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          },
+          "63": {
+            "origin_namespace_edge_k": 32,
+            "origin_namespace_edge_kv": 32,
+            "origin_namespace_edge_v": 32,
+            "cross_namespace_edge_k": 32,
+            "cross_namespace_edge_kv": 32,
+            "cross_namespace_edge_v": 32,
+            "relation_answer_cross_kv_native": 32,
+            "relation_answer_cross_k_native": 32,
+            "relation_answer_cross_v_native": 32,
+            "relation_answer_within_kv_native": 32,
+            "self": 1
+          }
+        },
+        "edge_self_max_error": 0.0,
+        "self_edge_cache_checked": true,
+        "pristine_source_cache_exact": true,
+        "primary_query_scope": "native all prefix positions; gated controls at all query positions",
+        "native_crossing": "A cached evidence formation x B cached reading environment",
+        "stage": "mechanism",
+        "experiment": "E131",
+        "parent_engine": "e121_natural_sentiment_mechanism.py",
+        "parent_engine_sha256": "5f96952a6cae82d97406f1726c4e06e1edad28a4d81bd1b91cad26404705b93c",
+        "dispatch_sha256": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+        "protocol_sha256": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+        "num_layers": 64,
+        "model_device_map": {
+          "model.embed_tokens": 0,
+          "model.layers.0": 0,
+          "model.layers.1": 0,
+          "model.layers.2": 0,
+          "model.layers.3": 0,
+          "model.layers.4": 0,
+          "model.layers.5": 0,
+          "model.layers.6": 0,
+          "model.layers.7": 0,
+          "model.layers.8": 0,
+          "model.layers.9": 0,
+          "model.layers.10": 0,
+          "model.layers.11": 0,
+          "model.layers.12": 0,
+          "model.layers.13": 0,
+          "model.layers.14": 0,
+          "model.layers.15": 0,
+          "model.layers.16": 0,
+          "model.layers.17": 0,
+          "model.layers.18": 0,
+          "model.layers.19": 0,
+          "model.layers.20": 0,
+          "model.layers.21": 0,
+          "model.layers.22": 0,
+          "model.layers.23": 0,
+          "model.layers.24": 0,
+          "model.layers.25": 0,
+          "model.layers.26": 0,
+          "model.layers.27": 0,
+          "model.layers.28": 0,
+          "model.layers.29": 0,
+          "model.layers.30": 0,
+          "model.layers.31": 1,
+          "model.layers.32": 1,
+          "model.layers.33": 1,
+          "model.layers.34": 1,
+          "model.layers.35": 1,
+          "model.layers.36": 1,
+          "model.layers.37": 1,
+          "model.layers.38": 1,
+          "model.layers.39": 1,
+          "model.layers.40": 1,
+          "model.layers.41": 1,
+          "model.layers.42": 1,
+          "model.layers.43": 1,
+          "model.layers.44": 1,
+          "model.layers.45": 1,
+          "model.layers.46": 1,
+          "model.layers.47": 1,
+          "model.layers.48": 1,
+          "model.layers.49": 1,
+          "model.layers.50": 1,
+          "model.layers.51": 1,
+          "model.layers.52": 1,
+          "model.layers.53": 1,
+          "model.layers.54": 1,
+          "model.layers.55": 1,
+          "model.layers.56": 1,
+          "model.layers.57": 1,
+          "model.layers.58": 1,
+          "model.layers.59": 1,
+          "model.layers.60": 1,
+          "model.layers.61": 1,
+          "model.layers.62": 1,
+          "model.layers.63": 1,
+          "model.norm": 1,
+          "model.rotary_emb": 1,
+          "lm_head": 1
+        },
+        "model_reused": true,
+        "num_GPU_devices": 2,
+        "matmul_allow_tf32": false,
+        "gpu_hours_scope": "scientific stage wall timer multiplied by actual distinct GPUs; includes model load only when first used, excludes protocol imports/floor wait/interstage gaps",
+        "model_run_wall_hours": 0.6218591146336662
+      },
+      "analysis": {
+        "n_contexts": 32,
+        "metrics": {
+          "origin_f0r0": {
+            "accuracy": {
+              "mean": 0.8046875,
+              "ci95": [
+                0.75390625,
+                0.85546875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.8046875,
+              "ci95": [
+                0.75390625,
+                0.85546875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_f0r1": {
+            "accuracy": {
+              "mean": 0.9140625,
+              "ci95": [
+                0.8671875,
+                0.95703125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.89453125,
+              "ci95": [
+                0.84765625,
+                0.9375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_f1r0": {
+            "accuracy": {
+              "mean": 0.87890625,
+              "ci95": [
+                0.83203125,
+                0.91796875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.87890625,
+              "ci95": [
+                0.83203125,
+                0.91796875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_f1r1": {
+            "accuracy": {
+              "mean": 0.9609375,
+              "ci95": [
+                0.93359375,
+                0.984375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.9609375,
+              "ci95": [
+                0.93359375,
+                0.984375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_label_r0": {
+            "accuracy": {
+              "mean": 0.8046875,
+              "ci95": [
+                0.7421875,
+                0.859375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.8046875,
+              "ci95": [
+                0.7421875,
+                0.859375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_label_r1": {
+            "accuracy": {
+              "mean": 0.95703125,
+              "ci95": [
+                0.92578125,
+                0.98046875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.953125,
+              "ci95": [
+                0.921875,
+                0.98046875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.99609375,
+              "ci95": [
+                0.98828125,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_gate_shared": {
+            "accuracy": {
+              "mean": 0.921875,
+              "ci95": [
+                0.87109375,
+                0.96484375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.921875,
+              "ci95": [
+                0.87109375,
+                0.96484375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_gate_label": {
+            "accuracy": {
+              "mean": 0.97265625,
+              "ci95": [
+                0.953125,
+                0.98828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.97265625,
+              "ci95": [
+                0.953125,
+                0.98828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_k_r0": {
+            "accuracy": {
+              "mean": 0.90625,
+              "ci95": [
+                0.87109375,
+                0.94140625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.90625,
+              "ci95": [
+                0.87109375,
+                0.94140625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_k_r1": {
+            "accuracy": {
+              "mean": 0.92578125,
+              "ci95": [
+                0.875,
+                0.96875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.9140625,
+              "ci95": [
+                0.86328125,
+                0.95703125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.98828125,
+              "ci95": [
+                0.97265625,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_gate_edge_k": {
+            "accuracy": {
+              "mean": 0.92578125,
+              "ci95": [
+                0.87890625,
+                0.96484375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.92578125,
+              "ci95": [
+                0.87890625,
+                0.96484375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_kv_r0": {
+            "accuracy": {
+              "mean": 0.91015625,
+              "ci95": [
+                0.87109375,
+                0.9453125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.91015625,
+              "ci95": [
+                0.87109375,
+                0.9453125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_kv_r1": {
+            "accuracy": {
+              "mean": 0.953125,
+              "ci95": [
+                0.921875,
+                0.98046875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.94140625,
+              "ci95": [
+                0.91015625,
+                0.96875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.98828125,
+              "ci95": [
+                0.97265625,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_v_r0": {
+            "accuracy": {
+              "mean": 0.81640625,
+              "ci95": [
+                0.76171875,
+                0.87109375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.81640625,
+              "ci95": [
+                0.76171875,
+                0.87109375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_edge_v_r1": {
+            "accuracy": {
+              "mean": 0.90625,
+              "ci95": [
+                0.86328125,
+                0.9453125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.89453125,
+              "ci95": [
+                0.8515625,
+                0.93359375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.98828125,
+              "ci95": [
+                0.97265625,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_f0r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_f0r1": {
+            "accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.9609375,
+              "ci95": [
+                0.9375,
+                0.98046875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96875,
+                0.99609375
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_f1r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_f1r1": {
+            "accuracy": {
+              "mean": 0.96484375,
+              "ci95": [
+                0.93359375,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.96484375,
+              "ci95": [
+                0.93359375,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_label_r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_label_r1": {
+            "accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_gate_shared": {
+            "accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_gate_label": {
+            "accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_k_r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_k_r1": {
+            "accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_gate_edge_k": {
+            "accuracy": {
+              "mean": 0.96484375,
+              "ci95": [
+                0.9375,
+                0.98828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.96484375,
+              "ci95": [
+                0.9375,
+                0.98828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_kv_r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_kv_r1": {
+            "accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.98046875,
+              "ci95": [
+                0.95703125,
+                0.99609375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_v_r0": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_edge_v_r1": {
+            "accuracy": {
+              "mean": 0.9765625,
+              "ci95": [
+                0.953125,
+                0.9921875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.96484375,
+              "ci95": [
+                0.94140625,
+                0.984375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 0.98828125,
+              "ci95": [
+                0.97265625,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "within_native": {
+            "accuracy": {
+              "mean": 0.7734375,
+              "ci95": [
+                0.71484375,
+                0.828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.7734375,
+              "ci95": [
+                0.71484375,
+                0.828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_label_cross_native": {
+            "accuracy": {
+              "mean": 0.66015625,
+              "ci95": [
+                0.578125,
+                0.73828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.66015625,
+              "ci95": [
+                0.578125,
+                0.73828125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_label_within_native": {
+            "accuracy": {
+              "mean": 0.76953125,
+              "ci95": [
+                0.71875,
+                0.8203125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.76953125,
+              "ci95": [
+                0.71875,
+                0.8203125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_f0r1": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_f1r0": {
+            "accuracy": {
+              "mean": 0.72265625,
+              "ci95": [
+                0.64453125,
+                0.796875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.72265625,
+              "ci95": [
+                0.64453125,
+                0.796875
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_kv_native": {
+            "accuracy": {
+              "mean": 0.78515625,
+              "ci95": [
+                0.72265625,
+                0.84765625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.78515625,
+              "ci95": [
+                0.72265625,
+                0.84765625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_k_native": {
+            "accuracy": {
+              "mean": 0.7734375,
+              "ci95": [
+                0.71484375,
+                0.83203125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.7734375,
+              "ci95": [
+                0.71484375,
+                0.83203125
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_v_native": {
+            "accuracy": {
+              "mean": 0.82421875,
+              "ci95": [
+                0.76953125,
+                0.87890625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.82421875,
+              "ci95": [
+                0.76953125,
+                0.87890625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_within_kv_native": {
+            "accuracy": {
+              "mean": 0.80859375,
+              "ci95": [
+                0.7578125,
+                0.859375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.80859375,
+              "ci95": [
+                0.7578125,
+                0.859375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "single_A": {
+            "accuracy": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "origin_instruction": {
+            "accuracy": {
+              "mean": 0.90234375,
+              "ci95": [
+                0.859375,
+                0.94140625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.90234375,
+              "ci95": [
+                0.859375,
+                0.94140625
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_instruction": {
+            "accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.984375,
+              "ci95": [
+                0.96484375,
+                1.0
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          },
+          "within_instruction": {
+            "accuracy": {
+              "mean": 0.90625,
+              "ci95": [
+                0.87109375,
+                0.9375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_accuracy": {
+              "mean": 0.90625,
+              "ci95": [
+                0.87109375,
+                0.9375
+              ],
+              "n_contexts": 32
+            },
+            "argmax_label_rate": {
+              "mean": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "rule_dependence": {
+          "f0r0": {
+            "signed": {
+              "mean": 6.201563198119402,
+              "ci95": [
+                5.706024241168052,
+                6.677148042339831
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 6.201563198119402,
+              "ci95": [
+                5.706024241168052,
+                6.677148042339831
+              ],
+              "n_contexts": 32
+            }
+          },
+          "f0r1": {
+            "signed": {
+              "mean": 2.7169867902994156,
+              "ci95": [
+                2.0105844913981854,
+                3.4677950385957956
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 2.752795845270157,
+              "ci95": [
+                2.069111322797835,
+                3.488517635129392
+              ],
+              "n_contexts": 32
+            }
+          },
+          "f1r0": {
+            "signed": {
+              "mean": 3.525925286114216,
+              "ci95": [
+                3.071627219393849,
+                3.9542241355404255
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 3.525925286114216,
+              "ci95": [
+                3.071627219393849,
+                3.9542241355404255
+              ],
+              "n_contexts": 32
+            }
+          },
+          "f1r1": {
+            "signed": {
+              "mean": 0.004702746868133545,
+              "ci95": [
+                -0.4119802929461002,
+                0.44352760817855585
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 1.030235916376114,
+              "ci95": [
+                0.7908394865691661,
+                1.2800057779997587
+              ],
+              "n_contexts": 32
+            }
+          },
+          "label_r0": {
+            "signed": {
+              "mean": 4.3725486025214195,
+              "ci95": [
+                3.9123066993430258,
+                4.8032996954396365
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 4.3725486025214195,
+              "ci95": [
+                3.9123066993430258,
+                4.8032996954396365
+              ],
+              "n_contexts": 32
+            }
+          },
+          "label_r1": {
+            "signed": {
+              "mean": 0.25358422845602036,
+              "ci95": [
+                -0.19805963505059482,
+                0.7045912932604549
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 1.1207288578152657,
+              "ci95": [
+                0.8728549472987652,
+                1.3774268709123132
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_k_r0": {
+            "signed": {
+              "mean": 4.477191001176834,
+              "ci95": [
+                3.931019748002291,
+                4.976179969497025
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 4.477191001176834,
+              "ci95": [
+                3.931019748002291,
+                4.976179969497025
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_k_r1": {
+            "signed": {
+              "mean": 1.22079636156559,
+              "ci95": [
+                0.602973660454154,
+                1.873606972582638
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 1.7398290187120438,
+              "ci95": [
+                1.287440867908299,
+                2.2405987447127695
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_kv_r0": {
+            "signed": {
+              "mean": 4.383695960044861,
+              "ci95": [
+                3.920427911169827,
+                4.810053518973291
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 4.383695960044861,
+              "ci95": [
+                3.920427911169827,
+                4.810053518973291
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_kv_r1": {
+            "signed": {
+              "mean": 1.0199476182460785,
+              "ci95": [
+                0.4854174580425024,
+                1.587535920552909
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 1.4843619614839554,
+              "ci95": [
+                1.088337474502623,
+                1.9170178389176726
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_v_r0": {
+            "signed": {
+              "mean": 5.888698074966669,
+              "ci95": [
+                5.420417365897447,
+                6.335060396697372
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 5.888698074966669,
+              "ci95": [
+                5.420417365897447,
+                6.335060396697372
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_v_r1": {
+            "signed": {
+              "mean": 2.5450911298394203,
+              "ci95": [
+                1.9093212805688382,
+                3.2050050815567372
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 2.6014183536171913,
+              "ci95": [
+                1.994913512468338,
+                3.2388317925855516
+              ],
+              "n_contexts": 32
+            }
+          },
+          "gate_shared": {
+            "signed": {
+              "mean": 2.833864461630583,
+              "ci95": [
+                2.2769947962835433,
+                3.403428363986313
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 2.833864461630583,
+              "ci95": [
+                2.2769947962835433,
+                3.403428363986313
+              ],
+              "n_contexts": 32
+            }
+          },
+          "gate_label": {
+            "signed": {
+              "mean": 0.39514170587062836,
+              "ci95": [
+                0.11203555054962636,
+                0.6733536249026655
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 0.7267793565988541,
+              "ci95": [
+                0.5472418688237667,
+                0.9223243538290261
+              ],
+              "n_contexts": 32
+            }
+          },
+          "gate_edge_k": {
+            "signed": {
+              "mean": 1.5486492589116096,
+              "ci95": [
+                1.1224822910502552,
+                1.98466591630131
+              ],
+              "n_contexts": 32
+            },
+            "absolute": {
+              "mean": 1.636272393167019,
+              "ci95": [
+                1.2556466972455382,
+                2.033845323882997
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "contrasts": {
+          "A_formation_B_shared": {
+            "absolute_rule_effect": {
+              "mean": 2.675637912005186,
+              "ci95": [
+                2.2657885698601605,
+                3.0956140012480318
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 2.675637912005186,
+              "ci95": [
+                2.2657885698601605,
+                3.0956140012480318
+              ],
+              "n_contexts": 32
+            }
+          },
+          "A_formation_B_far": {
+            "absolute_rule_effect": {
+              "mean": 1.722559928894043,
+              "ci95": [
+                1.0558012468740343,
+                2.404836938902735
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 2.712284043431282,
+              "ci95": [
+                2.28339968463406,
+                3.1617126288823783
+              ],
+              "n_contexts": 32
+            }
+          },
+          "B_reading_A_shared": {
+            "absolute_rule_effect": {
+              "mean": 3.448767352849245,
+              "ci95": [
+                2.5755570302717388,
+                4.284488963615149
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 3.4845764078199863,
+              "ci95": [
+                2.5955919570289554,
+                4.348028999008238
+              ],
+              "n_contexts": 32
+            }
+          },
+          "B_reading_A_far": {
+            "absolute_rule_effect": {
+              "mean": 2.495689369738102,
+              "ci95": [
+                1.9615630289539694,
+                3.015715463645756
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 3.5212225392460823,
+              "ci95": [
+                2.922416952997446,
+                4.100552800111473
+              ],
+              "n_contexts": 32
+            }
+          },
+          "total_namespace": {
+            "absolute_rule_effect": {
+              "mean": 5.171327281743288,
+              "ci95": [
+                4.626624472439289,
+                5.717490616999567
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 6.196860451251268,
+              "ci95": [
+                5.483658504858613,
+                6.891553406976163
+              ],
+              "n_contexts": 32
+            }
+          },
+          "label_effect_B_shared": {
+            "absolute_rule_effect": {
+              "mean": 1.8290145955979824,
+              "ci95": [
+                1.4568192282691599,
+                2.209808293916285
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 1.8290145955979824,
+              "ci95": [
+                1.4568192282691599,
+                2.209808293916285
+              ],
+              "n_contexts": 32
+            }
+          },
+          "label_effect_B_far": {
+            "absolute_rule_effect": {
+              "mean": 1.6320669874548912,
+              "ci95": [
+                1.0047371200285853,
+                2.2735738402232526
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 2.4634025618433952,
+              "ci95": [
+                2.0218663225881754,
+                2.933842698764056
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_K_B_shared": {
+            "absolute_rule_effect": {
+              "mean": 1.7243721969425678,
+              "ci95": [
+                1.303784537035972,
+                2.1457524014636875
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 1.7243721969425678,
+              "ci95": [
+                1.303784537035972,
+                2.1457524014636875
+              ],
+              "n_contexts": 32
+            }
+          },
+          "edge_K_B_far": {
+            "absolute_rule_effect": {
+              "mean": 1.012966826558113,
+              "ci95": [
+                0.6042375852353871,
+                1.4659979895688593
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": 1.4961904287338257,
+              "ci95": [
+                1.0387254802510142,
+                1.9961168320849538
+              ],
+              "n_contexts": 32
+            }
+          },
+          "stage_interaction": {
+            "absolute_rule_effect": {
+              "mean": 0.9530779831111431,
+              "ci95": [
+                0.16202862150967123,
+                1.7493612069636584
+              ],
+              "n_contexts": 32
+            },
+            "signed_rule_effect": {
+              "mean": -0.03664613142609596,
+              "ci95": [
+                -0.5249526710249484,
+                0.46200813241302957
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "reconstruction": {
+          "label_interface_B0_k": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.1892248305080582,
+              "rmse_ci95": [
+                1.0201022514345957,
+                1.3501127904806323
+              ],
+              "correlation": 0.7709684340773159,
+              "correlation_ci95": [
+                0.6813158406132637,
+                0.8374064800506386
+              ],
+              "zero_rmse": 1.856570346091635,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.4826386963436717,
+              "rmse_ci95": [
+                1.2140171206850305,
+                1.7422450670929537
+              ],
+              "correlation": 0.858867800602272,
+              "correlation_ci95": [
+                0.7803056689988559,
+                0.911253981625071
+              ],
+              "zero_rmse": 2.8268799925653663,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "label_interface_B0_kv": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 0.8644837853229906,
+              "rmse_ci95": [
+                0.7296297033340962,
+                0.9945854717547522
+              ],
+              "correlation": 0.8828342812082126,
+              "correlation_ci95": [
+                0.8328608166701511,
+                0.918472987266011
+              ],
+              "zero_rmse": 1.856570346091635,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.102892783989872,
+              "rmse_ci95": [
+                0.9078622782748814,
+                1.287910234826684
+              ],
+              "correlation": 0.9221318269259354,
+              "correlation_ci95": [
+                0.8784850676509484,
+                0.9509713022560852
+              ],
+              "zero_rmse": 2.8268799925653663,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "label_interface_B0_v": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.5943550381145377,
+              "rmse_ci95": [
+                1.3854859925894236,
+                1.8036175207243
+              ],
+              "correlation": 0.5051697674884914,
+              "correlation_ci95": [
+                0.35521875058924146,
+                0.6208304123003204
+              ],
+              "zero_rmse": 1.856570346091635,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 2.4209360973531426,
+              "rmse_ci95": [
+                2.0185758348581215,
+                2.802682026587547
+              ],
+              "correlation": 0.5225463641708508,
+              "correlation_ci95": [
+                0.39086439062120293,
+                0.6337507729403941
+              ],
+              "zero_rmse": 2.8268799925653663,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B0_k": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.350543367503029,
+              "rmse_ci95": [
+                1.1613011136040519,
+                1.529568330303935
+              ],
+              "correlation": 0.7658715142179514,
+              "correlation_ci95": [
+                0.6816641297396222,
+                0.8336673375182165
+              ],
+              "zero_rmse": 2.1006888374653143,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.7887437748579267,
+              "rmse_ci95": [
+                1.4896756866919103,
+                2.0679124381441074
+              ],
+              "correlation": 0.8522292027935503,
+              "correlation_ci95": [
+                0.7772886401452759,
+                0.9085902008603918
+              ],
+              "zero_rmse": 3.4067142697054287,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B0_kv": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.1147366324928432,
+              "rmse_ci95": [
+                0.9785469629441226,
+                1.2519496195665956
+              ],
+              "correlation": 0.8520743013150807,
+              "correlation_ci95": [
+                0.8090785347120331,
+                0.8869086644661414
+              ],
+              "zero_rmse": 2.1006888374653143,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.5168991133239715,
+              "rmse_ci95": [
+                1.3161570286413358,
+                1.704386011953944
+              ],
+              "correlation": 0.9011421286971527,
+              "correlation_ci95": [
+                0.859926506473182,
+                0.9330166229060111
+              ],
+              "zero_rmse": 3.4067142697054287,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B0_v": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.8454551275751294,
+              "rmse_ci95": [
+                1.6302217399743448,
+                2.0589522018421764
+              ],
+              "correlation": 0.48114948635245736,
+              "correlation_ci95": [
+                0.3428696498921992,
+                0.5890827903088346
+              ],
+              "zero_rmse": 2.1006888374653143,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 3.007710337276146,
+              "rmse_ci95": [
+                2.6148418786822694,
+                3.3807538729025612
+              ],
+              "correlation": 0.4976551035122042,
+              "correlation_ci95": [
+                0.36268054441285913,
+                0.614484661990065
+              ],
+              "zero_rmse": 3.4067142697054287,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "label_interface_B1_k": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.2479298394168246,
+              "rmse_ci95": [
+                1.0851893560766017,
+                1.413336807523647
+              ],
+              "correlation": 0.7835006419504981,
+              "correlation_ci95": [
+                0.706596184749618,
+                0.8471823320215692
+              ],
+              "zero_rmse": 1.9989594658709362,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.599931259265209,
+              "rmse_ci95": [
+                1.2895851718892037,
+                1.9302675241506357
+              ],
+              "correlation": 0.8669890182862454,
+              "correlation_ci95": [
+                0.8081784282538609,
+                0.9161050481235555
+              ],
+              "zero_rmse": 3.1306683758383707,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "label_interface_B1_kv": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 0.9612053739407761,
+              "rmse_ci95": [
+                0.8186770651171486,
+                1.1071738563807834
+              ],
+              "correlation": 0.8764829898373173,
+              "correlation_ci95": [
+                0.8270785344372039,
+                0.9168550540466545
+              ],
+              "zero_rmse": 1.9989594658709362,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.2945590169507986,
+              "rmse_ci95": [
+                1.0291818673805524,
+                1.5746109985080545
+              ],
+              "correlation": 0.9229709994836436,
+              "correlation_ci95": [
+                0.8880325053783362,
+                0.952620609880169
+              ],
+              "zero_rmse": 3.1306683758383707,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "label_interface_B1_v": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.9432690463748623,
+              "rmse_ci95": [
+                1.7121984509130856,
+                2.170598022430355
+              ],
+              "correlation": 0.2727525403701597,
+              "correlation_ci95": [
+                0.10521691883946979,
+                0.4239695984622639
+              ],
+              "zero_rmse": 1.9989594658709362,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 2.8932333451274395,
+              "rmse_ci95": [
+                2.47775410478716,
+                3.281904830949475
+              ],
+              "correlation": 0.38596710940398415,
+              "correlation_ci95": [
+                0.13265726505183792,
+                0.6109795754885897
+              ],
+              "zero_rmse": 3.1306683758383707,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B1_k": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.474169561018036,
+              "rmse_ci95": [
+                1.2809602409866438,
+                1.6674730629282564
+              ],
+              "correlation": 0.7331947233096865,
+              "correlation_ci95": [
+                0.6441674127691335,
+                0.8106220721996624
+              ],
+              "zero_rmse": 2.16557751637285,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.9017180558557674,
+              "rmse_ci95": [
+                1.5800139793875467,
+                2.2549535790093533
+              ],
+              "correlation": 0.830833794023895,
+              "correlation_ci95": [
+                0.7649607553515195,
+                0.8882882514203727
+              ],
+              "zero_rmse": 3.346598836503605,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B1_kv": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 1.21254751562028,
+              "rmse_ci95": [
+                1.053205395630699,
+                1.3834285227035188
+              ],
+              "correlation": 0.8285712978573712,
+              "correlation_ci95": [
+                0.7683785649427628,
+                0.8800679782316236
+              ],
+              "zero_rmse": 2.16557751637285,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 1.630482761947814,
+              "rmse_ci95": [
+                1.3708393059199286,
+                1.9166219539128493
+              ],
+              "correlation": 0.8876528873657273,
+              "correlation_ci95": [
+                0.8479360126581643,
+                0.922198743151335
+              ],
+              "zero_rmse": 3.346598836503605,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          },
+          "all_A_formation_B1_v": {
+            "coefficient": 1,
+            "fit": false,
+            "raw": {
+              "rmse": 2.0749390891012367,
+              "rmse_ci95": [
+                1.8313943672957445,
+                2.318733791858143
+              ],
+              "correlation": 0.2932403438557268,
+              "correlation_ci95": [
+                0.11614557788038969,
+                0.4489871593963457
+              ],
+              "zero_rmse": 2.16557751637285,
+              "n_contexts": 32,
+              "n_scores": 512
+            },
+            "rule_double_contrast": {
+              "rmse": 3.1319079178382663,
+              "rmse_ci95": [
+                2.704324801128316,
+                3.5307567807387366
+              ],
+              "correlation": 0.3579134155570524,
+              "correlation_ci95": [
+                0.06666542055742099,
+                0.6104841196275588
+              ],
+              "zero_rmse": 3.346598836503605,
+              "n_contexts": 32,
+              "n_scores": 256
+            }
+          }
+        },
+        "relation": {
+          "full_native": {
+            "absolute_effect": {
+              "mean": 5.551019255071878,
+              "ci95": [
+                5.003396017011255,
+                6.082223217375576
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 6.447748202830553,
+              "ci95": [
+                5.965641769766807,
+                6.9138465385884045
+              ],
+              "n_contexts": 32
+            }
+          },
+          "label_native": {
+            "absolute_effect": {
+              "mean": 0.42717618495225906,
+              "ci95": [
+                0.18772006127983332,
+                0.6902318794280291
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.0802578255534172,
+              "ci95": [
+                -0.3285615859553218,
+                0.4622119655832648
+              ],
+              "n_contexts": 32
+            }
+          },
+          "answer_native": {
+            "absolute_effect": {
+              "mean": 0.18386507034301758,
+              "ci95": [
+                0.09744577351957559,
+                0.28301381319761276
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.1150587797164917,
+              "ci95": [
+                -0.016556955873966217,
+                0.24938442949205633
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_KV_minus_K": {
+            "absolute_effect": {
+              "mean": 0.1636723056435585,
+              "ci95": [
+                0.08084450233727694,
+                0.2602241350337863
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.1769249513745308,
+              "ci95": [
+                0.06848286110907793,
+                0.29598470553755757
+              ],
+              "n_contexts": 32
+            }
+          },
+          "cross_KV_minus_V": {
+            "absolute_effect": {
+              "mean": -0.010050304234027863,
+              "ci95": [
+                -0.07408367823809385,
+                0.05986556913703679
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": -0.1706615909934044,
+              "ci95": [
+                -0.2183041164651513,
+                -0.12851235624402763
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_f0r1": {
+            "absolute_effect": {
+              "mean": 3.603148028254509,
+              "ci95": [
+                3.1324887903407217,
+                4.058778349682688
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 3.603148028254509,
+              "ci95": [
+                3.1324887903407217,
+                4.058778349682688
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_f1r0": {
+            "absolute_effect": {
+              "mean": 0.8263871148228645,
+              "ci95": [
+                0.6053876610472798,
+                1.0675962923094628
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.370524026453495,
+              "ci95": [
+                0.023339717648923397,
+                0.7147502310574054
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_label_cross_native": {
+            "absolute_effect": {
+              "mean": 0.7923483848571777,
+              "ci95": [
+                0.5883178336545825,
+                1.0314677933230996
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": -0.053411126136779785,
+              "ci95": [
+                -0.40672754477709533,
+                0.28933646734803914
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_kv_native": {
+            "absolute_effect": {
+              "mean": 0.28956635296344757,
+              "ci95": [
+                0.20455183759331702,
+                0.3873962603509426
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.07504859566688538,
+              "ci95": [
+                -0.05633186437189579,
+                0.2081921514123678
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_k_native": {
+            "absolute_effect": {
+              "mean": 0.12589404731988907,
+              "ci95": [
+                0.09204130806028843,
+                0.16491810549050567
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": -0.10187635570764542,
+              "ci95": [
+                -0.1472965706139803,
+                -0.058336918056011225
+              ],
+              "n_contexts": 32
+            }
+          },
+          "relation_answer_cross_v_native": {
+            "absolute_effect": {
+              "mean": 0.29961665719747543,
+              "ci95": [
+                0.1991946365684271,
+                0.4109565334394573
+              ],
+              "n_contexts": 32
+            },
+            "signed_effect": {
+              "mean": 0.24571018666028976,
+              "ci95": [
+                0.12771303709596396,
+                0.3717514567077159
+              ],
+              "n_contexts": 32
+            }
+          }
+        },
+        "single_source_by_polarity": {
+          "False": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 16
+          },
+          "True": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_contexts": 16
+          }
+        }
+      },
+      "raw_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68",
+      "scores": 11008
     },
     "llama_confirmation_mechanism": {
       "run": {
