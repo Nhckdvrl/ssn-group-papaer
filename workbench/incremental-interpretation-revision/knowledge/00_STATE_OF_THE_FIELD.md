@@ -24,6 +24,8 @@
 | 从可解码表征转向因果与跨用途 | probe 有信息意味着模型会用它 | [Hanna & Mueller 2025](https://aclanthology.org/2025.naacl-long.164/) 预测、特征干预、后续QA；[Mueller等](https://arxiv.org/abs/2408.01416) 讨论中介的颗粒度 | 哪种最小内容变量在自然输入与独立用途之间真正有因果效力？ |
 | 从纠错输出转向选择与目标 | 更高分的候选就是更真、更能支撑使用 | [Hu & Levy 2023](https://aclanthology.org/2023.emnlp-main.306/) 测量有效性；[Belief-R 2024](https://aclanthology.org/2024.emnlp-main.586/) 更新/保持；[ABBEL v2](https://arxiv.org/html/2512.20111v2) 分离belief/action并诊断遗漏 | 评分能否在同源自然候选中选择完整且可用的依赖？候选本身没有怎么办？ |
 
+**奠基补丁（2026-10-12 原文正式PDF）**：Christianson2001原文既承认“猎鹿”有语用推断的可能，也设计了两个方向问句、无GP语序与逗号控制，以及反身RAT动词。故“负题不蕴含世界里的not R”是必要的gold审计，却**不能**用它宣布2001论文完全没发现这个混杂；[详读](christianson2001-thematic-roles-linger.md)。其后 [van Gompel2006](vangompel2006-structural-priming.md)用后继结构启动、[Patson2009](patson2009-paraphrase.md)用复述改变读数，证明测量争论本身就有深厚旧研究积累（这两篇本轮仅核正式摘要）。
+
 **这些论文不支持一条单向的“旧记忆抑制失败”总理论。** 这正是解释空间所在。特别是Slattery的完整新结构证据与Huang、Ceháková的混合/局部分析形成重要张力；不以“前人已经解决”或“证明不可能”消掉其中任一方。
 
 ## 三个层次的相似性：讨论 nearest work 必须逐项对齐

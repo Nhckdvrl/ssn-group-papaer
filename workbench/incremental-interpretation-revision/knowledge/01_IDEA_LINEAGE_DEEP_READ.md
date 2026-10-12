@@ -2,6 +2,12 @@
 
 **本轮实读范围（2026-10-12）**：Ceháková & Chromý 2023 PLOS正式全文的引言、材料、Exp1–5及总讨论；Maina-Kilaas & Levy arXiv2603.23624v1 HTML §1–Conclusion；Amouyal et al. 2026 作者HTML v1 的引言、§2–4、结果表与附录选段，正式ACL PDF已读取表1/前部但图片截图接口失败，正式版方法差异尚未逐页核完；Hanna & Mueller v1 HTML §4–6、附录前部（原知识库还有正式版部分核对）；ABBEL v2 HTML 主文、方法/对照段落（原卡已记录更广附录/代码范围）。Slattery 2013 的期刊网页实验设置/结论并同历史主文卡交叉读，**不冒充今次完整逐页重读期刊PDF**。本文不把迁来的其他80余篇计入本轮新精读。
 
+**补充原始经典主文**：本轮已取到并读取[Christianson 2001正式40页PDF](christianson2001-thematic-roles-linger.md)的动机、5项实验设计/关键表/讨论；6年后van Gompel的priming及Patson2009的paraphrasing仍只读正式摘要，不冒充全文。
+
+## 奠基链补全：Christianson(2001) → van Gompel(2006) → Patson(2009)
+
+最初的“旧误解在读完后残留”并非只凭一句随便问出来的Yes/No：2001原文对语用推论自有承认，也做了GP/noGP、head位置、主句/从句两个正负问题、RAT反身动词与逗号/语序控制。其真正残余不确定性是语义内容是否完整、输出题型是否诱导旧读法、旧解析是否跨任务产生功能后果；因而2006 priming和2009 paraphrase在**更改测量仪器**上有知识增量。详见[2001主文深读](christianson2001-thematic-roles-linger.md)、[2006 priming](vangompel2006-structural-priming.md)、[2009 paraphrase](patson2009-paraphrase.md)。这条旧谱系必须用于校准我们的创新距离：仅用多问句/复述来发现残留，不是新idea。
+
 以下的 IDEA SOURCE 分 AUTHOR-STATED（作者明确写）和 RECONSTRUCTED（我们对实验设计来源的反向推理），后者不是作者自述。
 
 ## A. Slattery et al. 2013：同一种错误可以来自两种完全不同的失败
