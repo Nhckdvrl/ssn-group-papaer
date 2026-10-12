@@ -16,10 +16,11 @@
 | H-C10 E93 forward run | “确定性重复可推断任务正确工作” | 原preflight未核是否有final答案、是否截断/模型是否正常CoT；既有Direct全cap unknown，25.70556 GPU小时缺有效输出 | 旧工程运行不能混入模型科学结论，新的双模式preflight仅是将来运行门槛 |
 | H-C11 粗patch | “whole residual有作用=语法因子经源传播；不管用=无syntax状态” | [Hanna](hanna-2024-gp-mechanisms.md)把特定feature的预测功能、QA跨用途与语义对象分层；我们的E55/E64/E70混合源有影响但不识别纯关系 | 因果效应大小只归属于实际替换对象 |
 | H-C12 阅读索引 | “迁入149就是精读149篇、旧86篇都重新核真” | 149是原资产总文件数，144旧paper/topic卡+5索引；后来补3新卡并合并3重复得144规范卡；旧MAIN为历史自报 | 自称全文已读只在台账准确所述范围成立，不凭新目录数量算读书量 |
+| H-C13 本次深读数值错列 | Christianson2001实验1a/b先前把GP-implausible的20.2/43.7与11.1/31.4分别误标为non-GP control | [原始论文表2、表3](christianson2001-thematic-roles-linger.md)真control分别为21.4/31.0及10.7/16.3；Exp1a implausible对control整体F1不显著 | 任何“非GP也高达43.7%”或条件对比应重新按六列修正；说明我们本次新增精读本身也必须接受第二轮原文反核 |
 
 **待再次核实的边界**：
 - 历史外置原始逐token/标注与原计算代码仍在旧机器/data1路径；只有Github归档/小摘要可查。无法在此声称对所有历史效应与质量标签作逐题重新独立验证。
-- 人类Huang/Ferreira2021、Ceháková2025、Patson2009与van Gompel2006主文仍有未完全核验的范围（本轮后两篇为正式摘要与有限intro/方法片段）；具体数值和实现差异在未读之前不能升级证据级别。
+- Huang/Ferreira2021与van Gompel2006正式主文仍有未核完的范围；**Ceháková2025**和**Patson2009**已有2026-10-12后续提交补读作者完整正文与主要实验，并分别记录未核的附录与原始数据，不再列为“仅摘要”。旧原机/data1的全部结果尚未本轮独立重算。
 - GitHub card阅读范围可能互相重叠且自报版本复杂，特别旧86 MAIN或索引的时间戳；保留历史自报，**本轮仅对少量原文进行了新核验**。
 
 改变一条核心观点时，不只改此表：同步更新[总图](00_STATE_OF_THE_FIELD.md)、[专题](topics/05_HOW_IDEAS_GROW.md)、相关[原卡](PAPER_ATLAS.md)，以及[本workbench对证据的判定](03_EVIDENCE_GRAPH.md)。
