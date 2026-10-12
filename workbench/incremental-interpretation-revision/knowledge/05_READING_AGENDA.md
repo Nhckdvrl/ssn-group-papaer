@@ -24,7 +24,7 @@
 ## 当前知识库的真实缺口（不被旧MAIN计数遮住）
 
 **P0：会直接改变科学解释的**
-1. [Christianson et al. 2001](https://doi.org/10.1006/cogp.2001.0752)：原始五实验的哪组否定题有源蕴含 vs 世界事实的歧义？问句顺序/信心是否制造残留？正式全文/各实验表应完整核；目前只确认正文入口及部分方法，不能引用精确错误率。
+1. **已补读核心主文** [Christianson et al. 2001](christianson2001-thematic-roles-linger.md)：本轮取得作者实验室正式40页PDF，核五实验方法/关键结果/讨论；其原文**已意识到语用推断并设计GP对照、反身RAT动词控制**。新的未完成项是逐素材/原始统计复核，而非‘只读摘要’。
 2. [Huang & Ferreira 2021](https://doi.org/10.1016/j.jml.2021.104288)：如何条件化 RT 于正确/错误问答、哪个层次的语法“正确”却整体解释缺失？需要实读完整实验表与统计；目前作者摘要和二手比较不能解决与Slattery的张力。
 3. [Ceháková et al. 2025](https://doi.org/10.1080/0163853X.2025.2513210) 与 [Sturt 2007](sturt2007-semantic-persistence.md)：是否已经解释“局部正确、全局遗漏、残留旧语义”之间的边界？先取得正文再比较，不从摘要替作者定结论。
 4. [Amouyal 2026](https://aclanthology.org/2026.acl-long.1040/) 的逐题数据、human vs LM设置以及更严格的 3-valued gold 重标；这是“问答是否测到修订”的核心压力。
@@ -44,3 +44,8 @@
 每条写：canonical DOI/venue/日期与实读版本；精确阅读范围；作者科学问题（自己说的）；被默认接受的前提；两到三种竞争解释；每个实验之前仍缺什么、为何选该实验、预期正反结果；材料/样本单位/基线/指标/统计/成本；实际反证/局限/发布资产；距离最邻近工作的增量；我们的可迁移动作与**不该迁移的东西**；剩余阅读债务。将 AUTHOR-STATED、RECONSTRUCTED、OUR-HYPOTHESIS 显式分离。
 
 深读不以“读了几篇”优化。若某研究问题重要且解释开放，可以沿经典论文、之后反驳、最新改进深挖；若最近邻已经解决特定问题，替换问题而不是靠重命名求创新。
+## 新增经典谱系补记（本轮）
+- [2001 原始五实验精读](christianson2001-thematic-roles-linger.md)：正式PDF主文；文献里最强的语用竞争解释排除动作。
+- [2006 结构启动](vangompel2006-structural-priming.md)、[2009 复述](patson2009-paraphrase.md)：**目前只有正式摘要**，不能写精读完成；这两篇是旧问句诱发效应争论的必要后续入口。
+- [Ceháková 2023 本轮补完](cehakova2023-diverse-reanalyses.md)：正式PLOS HTML Exp1–5、关键数值与错误类别，历史只读E1–3片段已补；OSF数据与R代码仍是欠账。
+- [Maina-Kilaas 2026 修正](mainakilaas2026-digging-in.md)：Exp2是36项而不是历史误记24项；记录对照正交性与RT选择。
