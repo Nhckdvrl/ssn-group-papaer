@@ -1,0 +1,27 @@
+{
+  "source_sha256": "7ef59b3f853e1437dbffd11319ae1c1fe937ffa21723ac2b89bfe971e5a72973",
+  "independent_CPU_seal_sha256": "dccadb2534e6f4ae337214469910b9ee8abb98bd35bb353d6797d70f96761c66",
+  "scientific_scores_before_freeze": 0,
+  "conditions": 136,
+  "queries": 8,
+  "scores_per_context": 1088,
+  "prefix_interfaces": 21,
+  "cue_interfaces": 24,
+  "families": [
+    "llama",
+    "qwen14"
+  ],
+  "phases": {
+    "discovery": {
+      "n": 16,
+      "seed": 130001,
+      "materials": "discovery"
+    },
+    "confirmation": {
+      "n": 32,
+      "seed": 130101,
+      "materials": "validation"
+    }
+  },
+  "selection": "Fixed all4; confirmation waits only numeric floor, never effect/correctness"
+}
