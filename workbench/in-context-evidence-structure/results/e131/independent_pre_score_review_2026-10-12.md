@@ -1,3 +1,5 @@
+**当前末版精度修正（首有效评分前）：** dispatcher SHA `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`、三engine/18CPU材料不变。仅TF32 True→False，恢复原full-FP32 GEMM；0科学row失败与原f704…seal均保留于failed_tf32。以下原CPU检查仍适用，文中的TF32方案为被撤回的数值实现候选，不是当前设置。
+
 # E131首评分前独立校对
 
 18批实际CPU全部通过；未发现科学干预、真值或observer blocker。可冻结最终protocol/dispatch/三engine，启动Q32与两8B新配对；L70待各实际节点完整权重校验后按同固定协议运行。当前0科学评分，runtime多卡图/缓存/数值尚未验证。本次围绕大小模型的同一Source证据形成解释，不因E129/E130有限Cue接口给旧机制附资格，也不改变三项核心认识/等级/研究状态。
@@ -31,3 +33,5 @@ TF32是授权的数值实现变化，权重/cache仍FP32。图和函数相同不
 范围：C21–23的Source关系形成/内容/使用三环节与实际Source功能跨尺度得到同协议检验；参数量与训练配方一起变化，不是纯scaling-law因果实验。本项没有新Food/Service双criterion交叉，不能因此自动外推原C24全部任务。原attention mass是head求和，不能不校正头数拿绝对mass大小作跨模型机制强弱证据。保留强近邻CTA/Cho/AddUp/Sun已有计算所有权，是否新增知识要看同关系操作与后继Source使用的实际预测，而非只比错误比例。无需增head/layer/alpha/格式门槛。
 
 阅读范围：完整E131卡、protocol/dispatch/三engine与冻结父源及依赖，18CPU、真正tokenizer/config、官方SST arrow、installed eager/DynamicCache、字面CPU cache/edge。外部理论论文依既有定位和root读文记录，本次未独立复现外部机制；无科学raw或author summary存在。CPU helper正常exit0后ResourceTracker destructor有stderr噪声，未影响实际assert/结果，不作科学失败。
+
+精度补核：独立AST证明确实仅一处allow_tf32常量True→False（注释不执行），所有其它dispatch/protocol/三engine源码、18CPU input SHA均不变，无需重跑CPU。Q8/L8/Q32 cached/full最大误差分别.039123535/.005498886/.003240585，均>.001且behavior.jsonl空；三失败worker驻留计时独立重算合计.075811325GPU·时，不能算科学阴性或用于种子筛选。原f704…JSON/MD及三个失败目录/日志完整保留，原地板/读数/同材料种子不改。当前full-FP32可冻结同18协议重启，真实多卡runtime仍需通过既有floor/mask/cache检查；不收缩C21–23/核心三认识，不新增模型/控制/层头格式矩阵。详见[精度补核JSON](independent_precision_fix_review_2026-10-12.json)。

@@ -1,0 +1,235 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/Llama-3.1-8B",
+    "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e131/llama_confirmation_mechanism",
+    "n": 32,
+    "seed": 131102,
+    "materials": "validation",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        912
+      ],
+      [
+        10035
+      ]
+    ],
+    "far": [
+      [
+        1522
+      ],
+      [
+        5292
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    580,
+    691,
+    678,
+    571,
+    548,
+    523,
+    590,
+    721,
+    538,
+    656,
+    681,
+    483,
+    791,
+    565,
+    633,
+    592,
+    542,
+    618,
+    529,
+    569,
+    613,
+    731,
+    704,
+    601,
+    601,
+    628,
+    549,
+    417,
+    515,
+    643,
+    610,
+    603
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 1,
+    "query_split": "test",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 42,
+    "demo_pool_sizes": [
+      624,
+      560
+    ],
+    "query_pool_sizes": [
+      396,
+      276
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "valid_quartet_length_bins": 42,
+  "quartet_lengths": [
+    [
+      41,
+      39
+    ],
+    [
+      41,
+      44
+    ],
+    [
+      41,
+      46
+    ],
+    [
+      18,
+      46
+    ],
+    [
+      37,
+      20
+    ],
+    [
+      24,
+      27
+    ],
+    [
+      49,
+      21
+    ],
+    [
+      58,
+      50
+    ],
+    [
+      32,
+      16
+    ],
+    [
+      54,
+      21
+    ],
+    [
+      39,
+      45
+    ],
+    [
+      22,
+      26
+    ],
+    [
+      60,
+      54
+    ],
+    [
+      58,
+      15
+    ],
+    [
+      40,
+      35
+    ],
+    [
+      49,
+      19
+    ],
+    [
+      17,
+      38
+    ],
+    [
+      26,
+      52
+    ],
+    [
+      36,
+      27
+    ],
+    [
+      32,
+      42
+    ],
+    [
+      36,
+      28
+    ],
+    [
+      49,
+      51
+    ],
+    [
+      52,
+      43
+    ],
+    [
+      48,
+      18
+    ],
+    [
+      40,
+      34
+    ],
+    [
+      40,
+      36
+    ],
+    [
+      38,
+      22
+    ],
+    [
+      23,
+      17
+    ],
+    [
+      26,
+      32
+    ],
+    [
+      52,
+      17
+    ],
+    [
+      19,
+      49
+    ],
+    [
+      25,
+      49
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

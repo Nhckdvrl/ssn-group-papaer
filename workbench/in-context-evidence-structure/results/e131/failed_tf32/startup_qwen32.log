@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/scripts/e131_protocol.py", line 99, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/scripts/e131_protocol.py", line 79, in main
+    try:modules[stage].main()
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/scripts/e131_mechanism.py", line 311, in main
+    assert max(errors)<=.001,errors
+           ^^^^^^^^^^^^^^^^^
+AssertionError: [0.0, 0.0, 0.0001373291015625, 3.4332275390625e-05, 0.0023097991943359375, 0.0021514892578125, 0.0032405853271484375, 0.0009918212890625, 5.7220458984375e-06, 0.0002899169921875]
+Exception ignored in: <function ResourceTracker.__del__ at 0xc500a9a1300>
+Traceback (most recent call last):
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 80, in __del__
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 89, in _stop
+  File "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/multiprocess/resource_tracker.py", line 102, in _stop_locked
+AttributeError: '_thread.RLock' object has no attribute '_recursion_count'

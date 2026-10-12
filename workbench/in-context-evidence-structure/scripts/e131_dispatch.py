@@ -16,9 +16,9 @@ def load_scale_model(path):
     import torch
     from transformers import AutoModelForCausalLM
     name=Path(path).name;scale_revision(path)
-    # FP32 weights/caches; TF32 GEMMs accelerate the same fixed operations.
+    # Full FP32 weights/caches/GEMMs, matching the parent scientific protocols.
     # Every engine keeps the inherited full-token/cached and self .001 floor.
-    torch.backends.cuda.matmul.allow_tf32=True
+    torch.backends.cuda.matmul.allow_tf32=False
     n=torch.cuda.device_count();expected=4 if '70B' in name else 2 if '32B' in name else 1
     assert n==expected,(name,n,expected)
     if path not in _MODELS:

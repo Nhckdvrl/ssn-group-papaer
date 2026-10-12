@@ -1,0 +1,60 @@
+{
+  "status": "PRE_SCORE_PRECISION_FIX_REVIEWED",
+  "date": "2026-10-12",
+  "old_pre_score_seal_preserved_at": "results/e131/failed_tf32/independent_pre_score_review_2026-10-12.json",
+  "old_pre_score_sha256": "f704da0132cfe0a6565ce3a2bb47e6874be6bdd9cfe21adf3cb1f6b5df142098",
+  "old_freeze_commit": "451238d5",
+  "final_dispatch_sha256": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+  "protocol_sha256_unchanged": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+  "literal_AST_change": "Only allow_tf32=True becomes False; comments are non-executing. Entire remaining dispatch AST identical. Three engine/protocol and all18 actualCPU bytes unchanged.",
+  "failed_workers": {
+    "qwen3_confirmation_mechanism": {
+      "scientific_rows": 0,
+      "cached_full_max_error": 0.03912353515625,
+      "num_devices": 1,
+      "recorded_failed_resident_device_hours": 0.0032222733232710097,
+      "failure_files_sha256": {
+        "results/e131/failed_tf32/qwen3_confirmation_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "results/e131/failed_tf32/qwen3_confirmation_mechanism/contexts.jsonl": "36b8a38c0ad0ac41bce766eb31fade51372eb6e3813eed4553dc21790144a416",
+        "results/e131/failed_tf32/qwen3_confirmation_mechanism/operational_launch.json": "dbbe7afda00a7939365dd32fa64c5ed06a7b78a2b7cf639b6b9dcd05abf9a825",
+        "results/e131/failed_tf32/qwen3_confirmation_mechanism/preflight.json": "6ed7f5c3d78ce2df31f10ed9d9e1b4bf09cf562611db925a05e896be809abe08",
+        "results/e131/failed_tf32/qwen3_confirmation_mechanism/run.log": "bccdc755821a8a281cac8615e127d27de824297b5df9765725db87f434e703b0"
+      }
+    },
+    "llama_confirmation_mechanism": {
+      "scientific_rows": 0,
+      "cached_full_max_error": 0.0054988861083984375,
+      "num_devices": 1,
+      "recorded_failed_resident_device_hours": 0.005107982423570421,
+      "failure_files_sha256": {
+        "results/e131/failed_tf32/llama_confirmation_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "results/e131/failed_tf32/llama_confirmation_mechanism/contexts.jsonl": "05c30141f8ef76f9e5be32765960d13646f60cc05537b2cc2e4be07b77ff4023",
+        "results/e131/failed_tf32/llama_confirmation_mechanism/operational_launch.json": "545568fd4263e58ef5a19583e993fd5446a1b9c6edfa83d600be68a700ab3a02",
+        "results/e131/failed_tf32/llama_confirmation_mechanism/preflight.json": "c44422b0525750ef7fc49dbbaf324682a760c0d8daa3c6afe879f8b5ecb61229",
+        "results/e131/failed_tf32/llama_confirmation_mechanism/run.log": "e4f0fa2cf1ee93352b284b561ec303eb50a2808f0fe956fa6f42fbf8be5bd2dd"
+      }
+    },
+    "qwen32_discovery_mechanism": {
+      "scientific_rows": 0,
+      "cached_full_max_error": 0.0032405853271484375,
+      "num_devices": 2,
+      "recorded_failed_resident_device_hours": 0.06748106956481933,
+      "failure_files_sha256": {
+        "results/e131/failed_tf32/qwen32_discovery_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "results/e131/failed_tf32/qwen32_discovery_mechanism/contexts.jsonl": "6ffe6a505bfeefa06229043b1b3e7f946ab4ac0bbba1a335f999850a1261d2aa",
+        "results/e131/failed_tf32/qwen32_discovery_mechanism/operational_launch.json": "e08931f4f7fccc28ebe0f7b9b8b6db03da464b91020f173552e9f8b061b5a581",
+        "results/e131/failed_tf32/qwen32_discovery_mechanism/preflight.json": "85d904ca98b7cc6088e9ae24938118733221c99e8ae101ecd00eef07e160df0c",
+        "results/e131/failed_tf32/qwen32_discovery_mechanism/run.log": "8ecf8be553d7e972b93534b65c47183e7062af97a050e292db368fdae8f9126e"
+      }
+    }
+  },
+  "failure_record_sha256": "da1d3d0898966e9b793b57f9dec6d5f27cc9f4403abd99b3ff8916b5360f555a",
+  "failed_resident_device_hours_total": 0.07581132531166077,
+  "scientific_scores_used_from_failed_workers": 0,
+  "same_design_restart": true,
+  "CPU_preflight_regeneration_required": false,
+  "new_experiment_or_metric": false,
+  "runtime_floor": ".001 cached/full/self unchanged; real model FP32 forwards still pending.",
+  "independent_GPU_rerun": false,
+  "decision": "Full-FP32 numeric implementation matches original parent setting. No pre-score source/geometry blocker; freeze final single-line correction and restart same fixed18 protocols. L70 per-node completeweight gate still applies. No scientific negative or claim shrink from TF32 failures."
+}

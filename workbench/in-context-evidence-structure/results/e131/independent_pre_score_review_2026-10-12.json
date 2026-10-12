@@ -10,13 +10,13 @@
     "I04",
     "P17"
   ],
-  "decision": "No scientific implementation/truth/AST blocker found. Final protocol/dispatch/engine bytes may be frozen and Q32 plus two8B paired protocols run; L70 additionally requires completed per-node weight identity gate already in protocol. Actual multicard forward and .001 floor remain runtime checks.",
+  "decision": "No pre-score source/geometry blocker. Original TF32 CPU seal retained under failed_tf32; now freeze full-FP32 dispatch5abd… with unchanged protocol5508900…/threeengines/18material and restart same fixed protocols. Real multicard forward/cache/mask/.001 remain runtime checks.",
   "blockers": [],
   "scientific_scores_examined": 0,
   "independent_GPU_forward_or_rerun": false,
   "source_files_sha256": {
     "scripts/e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
-    "scripts/e131_dispatch.py": "2e6d2d2ab1f38937408c0a60ce09c141f4ddb6abd303857311a263c1638508bd",
+    "scripts/e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
     "scripts/e120_operation_necessity.py": "b4b155bfea8f83cde60e70cf1351189bd5066cf973b9cf0610cda011d89c18ad",
     "scripts/e131_native.py": "a4285fe0eba3818f6cd8e6cc677dca0fac2c5be2e05bbb3fbc8c3b5b17a90f80",
     "scripts/e121_natural_sentiment_mechanism.py": "5f96952a6cae82d97406f1726c4e06e1edad28a4d81bd1b91cad26404705b93c",
@@ -111,7 +111,8 @@
     "eager_restored_success_and_exception_weight_reuse_no_history_cache_reuse": true,
     "stage_device_hours_multiplier_actual_device_map": true,
     "worker_residency_hours_includes_interstage_analysis_and_failed_load_floor": true,
-    "TF32_flag_recorded_and_same_.001_floor_unrelaxed": true
+    "TF32_flag_recorded_and_same_.001_floor_unrelaxed": true,
+    "full_FP32_matmul_reinstated_after_zero_score_TF32_failures": true
   },
   "AST_review": {
     "stages": {
@@ -158,7 +159,7 @@
         "analyze_AST_sha256": "8e510c2caa11d715d9385badec887730bb06195eb41b0a5f90acc6a89ca0330d"
       }
     },
-    "dispatch_sha256": "2e6d2d2ab1f38937408c0a60ce09c141f4ddb6abd303857311a263c1638508bd",
+    "dispatch_sha256": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
     "protocol_sha256": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
     "installed_library_checks": {
       "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py": {
@@ -8281,12 +8282,13 @@
     "/tmp/ices_e131_geometry.py": "95b98ed0091291d409dda7305fe518367c6def1ae5445f3762a5c12677416bf6",
     "/tmp/ices_e131_AST_check.py": "ac17a10844cb53aeb39f2967472c403ffc7d5b9e8a6e4d7c3856df451a67997a",
     "/tmp/ices_e131_cache_check.py": "f177449b0d738847b3e5b2eae84987a4ad1a77e7a73167619cac344e0b00217f",
-    "/tmp/ices_e131_write_pre_score.py": "098eda9de229cd261ac1454e7d5fdd754986cc0638f8efb2fa60b620577612e1"
+    "/tmp/ices_e131_write_pre_score.py": "098eda9de229cd261ac1454e7d5fdd754986cc0638f8efb2fa60b620577612e1",
+    "/tmp/ices_e131_precision_fix.py": "865fe18b8cf5ebb513c7a143e87fe8b7ec75e500aa1c7b27eedd5168eb84f8d5"
   },
   "reading_scope": "E131 entire card/protocol/dispatch/3engines and frozen parents;18 actualCPU/tokenizer/config/SST arrows; installed eager attention and DynamicCache device-handling source; CPU toy literal patch/edge only. No science behaviors or author summaries existed. Nearest literature ownership/theory motives reused existing positioning and root cited reading, not independently re-reproduced external mechanisms here.",
   "limits": [
     "No independent model forward/GPU, multicard load/cache-residency map, actual runtime all-layer consumption or split/full/self floor tested; runtime must preserve SHA/context bytes and honor .001.",
-    "Same graph/observer does not imply bitwise-identical numeric computation: FP32 weights/cache with TF32 GEMM is explicitly changed numeric implementation. Cached/full .001 checks internal equivalence, not agreement with original non-TF32 full-FP32 scores; new big/small anchors all share this setting.",
+    "The original TF32 candidate failed inherited cached/full .001 before any scientific row. Current dispatcher disables TF32 and restores original full-FP32 numerical setting; no floor relaxation. The original seal/failedlogs/hours are retained, not hidden.",
     "Dataset/movie text benchmark may be in pretraining; private convention counterfactuals and original official gold are controlled, not evidence of unseen-language-data generalization.",
     "Same checkpoint families differ in size/training recipes as well; capacity-spanning checkpoint evidence, not controlled scaling-law causality.",
     "All3coreSource-evidence stages tested, including Source-private code and actual deployment; this does not newly test dualFood/Service criterion of original C24 or add a new benchmark.",
@@ -8295,5 +8297,72 @@
     "Stage-hours and continuous worker device-hours are different fields; continuous resident increments overlap across stages and must not be summed as independent durations, only final per-worker total. The12-card concurrency cap remains orchestration responsibility, not proven by CPU engine tests.",
     "ResourceTracker destructor stderr occurred after a successful CPU helper exit0; original protocol groups exit0 recorded by root. Not scientific failure.",
     "No claim/grade/status change or new head/layer/format/alpha qualification proposed."
-  ]
+  ],
+  "precision_fix_review": {
+    "status": "PRE_SCORE_PRECISION_FIX_REVIEWED",
+    "date": "2026-10-12",
+    "old_pre_score_seal_preserved_at": "results/e131/failed_tf32/independent_pre_score_review_2026-10-12.json",
+    "old_pre_score_sha256": "f704da0132cfe0a6565ce3a2bb47e6874be6bdd9cfe21adf3cb1f6b5df142098",
+    "old_freeze_commit": "451238d5",
+    "final_dispatch_sha256": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+    "protocol_sha256_unchanged": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+    "literal_AST_change": "Only allow_tf32=True becomes False; comments are non-executing. Entire remaining dispatch AST identical. Three engine/protocol and all18 actualCPU bytes unchanged.",
+    "failed_workers": {
+      "qwen3_confirmation_mechanism": {
+        "scientific_rows": 0,
+        "cached_full_max_error": 0.03912353515625,
+        "num_devices": 1,
+        "recorded_failed_resident_device_hours": 0.0032222733232710097,
+        "failure_files_sha256": {
+          "results/e131/failed_tf32/qwen3_confirmation_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "results/e131/failed_tf32/qwen3_confirmation_mechanism/contexts.jsonl": "36b8a38c0ad0ac41bce766eb31fade51372eb6e3813eed4553dc21790144a416",
+          "results/e131/failed_tf32/qwen3_confirmation_mechanism/operational_launch.json": "dbbe7afda00a7939365dd32fa64c5ed06a7b78a2b7cf639b6b9dcd05abf9a825",
+          "results/e131/failed_tf32/qwen3_confirmation_mechanism/preflight.json": "6ed7f5c3d78ce2df31f10ed9d9e1b4bf09cf562611db925a05e896be809abe08",
+          "results/e131/failed_tf32/qwen3_confirmation_mechanism/run.log": "bccdc755821a8a281cac8615e127d27de824297b5df9765725db87f434e703b0"
+        }
+      },
+      "llama_confirmation_mechanism": {
+        "scientific_rows": 0,
+        "cached_full_max_error": 0.0054988861083984375,
+        "num_devices": 1,
+        "recorded_failed_resident_device_hours": 0.005107982423570421,
+        "failure_files_sha256": {
+          "results/e131/failed_tf32/llama_confirmation_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "results/e131/failed_tf32/llama_confirmation_mechanism/contexts.jsonl": "05c30141f8ef76f9e5be32765960d13646f60cc05537b2cc2e4be07b77ff4023",
+          "results/e131/failed_tf32/llama_confirmation_mechanism/operational_launch.json": "545568fd4263e58ef5a19583e993fd5446a1b9c6edfa83d600be68a700ab3a02",
+          "results/e131/failed_tf32/llama_confirmation_mechanism/preflight.json": "c44422b0525750ef7fc49dbbaf324682a760c0d8daa3c6afe879f8b5ecb61229",
+          "results/e131/failed_tf32/llama_confirmation_mechanism/run.log": "e4f0fa2cf1ee93352b284b561ec303eb50a2808f0fe956fa6f42fbf8be5bd2dd"
+        }
+      },
+      "qwen32_discovery_mechanism": {
+        "scientific_rows": 0,
+        "cached_full_max_error": 0.0032405853271484375,
+        "num_devices": 2,
+        "recorded_failed_resident_device_hours": 0.06748106956481933,
+        "failure_files_sha256": {
+          "results/e131/failed_tf32/qwen32_discovery_mechanism/behavior.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "results/e131/failed_tf32/qwen32_discovery_mechanism/contexts.jsonl": "6ffe6a505bfeefa06229043b1b3e7f946ab4ac0bbba1a335f999850a1261d2aa",
+          "results/e131/failed_tf32/qwen32_discovery_mechanism/operational_launch.json": "e08931f4f7fccc28ebe0f7b9b8b6db03da464b91020f173552e9f8b061b5a581",
+          "results/e131/failed_tf32/qwen32_discovery_mechanism/preflight.json": "85d904ca98b7cc6088e9ae24938118733221c99e8ae101ecd00eef07e160df0c",
+          "results/e131/failed_tf32/qwen32_discovery_mechanism/run.log": "8ecf8be553d7e972b93534b65c47183e7062af97a050e292db368fdae8f9126e"
+        }
+      }
+    },
+    "failure_record_sha256": "da1d3d0898966e9b793b57f9dec6d5f27cc9f4403abd99b3ff8916b5360f555a",
+    "failed_resident_device_hours_total": 0.07581132531166077,
+    "scientific_scores_used_from_failed_workers": 0,
+    "same_design_restart": true,
+    "CPU_preflight_regeneration_required": false,
+    "new_experiment_or_metric": false,
+    "runtime_floor": ".001 cached/full/self unchanged; real model FP32 forwards still pending.",
+    "independent_GPU_rerun": false,
+    "decision": "Full-FP32 numeric implementation matches original parent setting. No pre-score source/geometry blocker; freeze final single-line correction and restart same fixed18 protocols. L70 per-node completeweight gate still applies. No scientific negative or claim shrink from TF32 failures."
+  },
+  "final_numeric_implementation": {
+    "weight_dtype": "float32",
+    "KV_dtype": "float32",
+    "matmul_allow_tf32": false,
+    "attention": "eager",
+    "inherited_floor": 0.001
+  }
 }
