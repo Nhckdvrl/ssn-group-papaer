@@ -1,27 +1,18 @@
-# Xeno Workbench · 内部可检索研究知识库
+# Knowledge · Xeno-Interpretability
 
-**作用：** 不是公共 `/library/` 的替代索引，也不是候选 idea 清单。这里保存 **xeno-interpretability 工作台专属** 的、随阅读/实验证据不断修订的认知资产，作为之后本地 Agent 的可信研究上下文。
+**范围：** 本工作台专属的、可追溯的读论文与实验推理资产；不是“Xeno 已经存在”的证据目录。**更新：2026-10-12。**
 
-## 导航
-1. [LITERATURE_MAP.md](LITERATURE_MAP.md) — 学术谱系、范畴和问题边界。
-2. [READING_QUEUE.md](READING_QUEUE.md) — 按 venue 与重要性排队；精读前不得称“已读”。
-3. [papers/PIERUCCI_2026_XENO.md](papers/PIERUCCI_2026_XENO.md) — 初始论文卡，关键批评与灵感边界。
-4. [RESEARCH_CRAFT.md](RESEARCH_CRAFT.md) — Paper rewind / idea 来源与距离分析规范。
-5. [EXPERIMENT_DESIGN.md](EXPERIMENT_DESIGN.md) — 竞争解释与反事实、对照、候选实验构思。
+| 阅读入口 | 内容 |
+|---|---|
+| [papers/CORE_READS.md](papers/CORE_READS.md) | **7 篇核心综述/实证的详细研究笔记**：parent、实验、数字、缺陷、可迁移的研究动作 |
+| [LITERATURE_MAP.md](LITERATURE_MAP.md) | 用精读得到的研究版图、邻域 ownership、竞争假设和决定性实验条件 |
+| [READING_QUEUE.md](READING_QUEUE.md) | 下一批必须核对的 NeurIPS 2026 与其他顶会近邻；真实阅读状态 |
+| [papers/PIERUCCI_2026_XENO.md](papers/PIERUCCI_2026_XENO.md) | 起点概念论文（只验证摘要与用户提供首页；不假装已读完整正文） |
 
-## 所有论文都要维护的 metadata
-- 唯一出处、作者、年份、venue 与 **main / workshop / position / preprint** 的准确状态、源码与实验资产链接。
-- 阅读证据级别：`TITLE_ONLY` / `ABSTRACT` / `SECTIONS` / `FULL_TEXT` / `REPRODUCED`，带核查日期。
-- 核心 RQ、parent belief、pressure、changed premise、idea 来源（`DOCUMENTED` / `RECONSTRUCTED`）。
-- 方法、数据、模型、基线、指标、统计、主要图表以及失败/局限，**只有读过全文才能写确定细节**。
-- 相对最接近 3–5 篇论文在「问题、证据、设定」上的距离；compression risk。
-- 实验设计逆向训练：隐藏作者新方法与结果，自己给出竞争假设与区分预测，再揭晓作者结果。
-- 可迁移的工具或研究动作、复现实验条件、我们的疑问与下次核查项。
+**状态定义：** `TITLE`（标题）/ `ABSTRACT` / `SECTIONS`（所列章/图）/ `MAIN+METHODS`（主方法与主要结果核对，部分附录待核）/ `REPRODUCED`（实测）。**不能把 SECTIONS 写成精读全文，也不能把原文作者未说过的“idea 起源”冒充史实。**
 
-## 信任与更新
-- 论文原文结论、作者自述、我们的重建与猜想四者必须分开；有矛盾直接标 UNKNOWN。
-- 会议质量不是免检通行证；强校强组用于定位，不是代替复现；最新预印本只能作为前沿指示。
-- 每次主题变化或实验结果出现，先回读地图与近邻，防止“局部优化自嗨”和叙事先行。
-- 知识只在本 workbench 内更新；如未来有跨项目通用内容，再由用户决定是否沉淀到公共 `library/`。
+**论文卡只记必要事实：** 真正研究问题；与最强 parent 的关系；为什么需要新设计；实验/数据/对照/主图或关键数字；证据边界与替代解释；对我们可迁移的一步；链接与阅读深度。所有假说保持可反驳。
 
-**状态：** 首轮资源索引已建立，但全面综述、2026 全场接收论文扫描、FULL_TEXT 深读和实验复现均**尚未完成**。
+**更新方式：** 同一领域的论文只追加到 `CORE_READS.md` 或其经过确认的主题后继；过时判断直接修订，历史在 Git 中；领域地图存**理解和分歧**而不是复制论文摘要。保持这四个核心入口，不因每条 idea 增生新 Markdown。
+
+**现状：** 已精读 2 篇综述、4 篇实证论文主要方法/结果，另有一篇摘要与相关版核对；NeurIPS 2026 全量近邻扫描、全部 appendices 核验、复现实验均未完成。

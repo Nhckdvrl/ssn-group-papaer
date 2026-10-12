@@ -1,63 +1,47 @@
-# 初步领域地图：表征与解释之间究竟隔着什么？
+# 研究画像：从“可读”到“解释真的成立”
 
-**状态：FIRST-PASS MAP（2026-10-12）**。这是选定阅读谱系的起点，不是基于全面精读做出的缺口定论。
+**基于 [本次精读](papers/CORE_READS.md)；2026-10-12；方向定位而非既有科学发现。**
 
-## 起点与范畴
-Xeno 原论文问：神经网络可能使用当前人类概念本体无法充分覆盖的内部区别吗？回答前必须拆开四种不同尺度：
-1. **识别/解码**：从激活统计预测某个人类标签；
-2. **描述/覆盖**：解释（自然语言、组合程序、结构约束）能跨数据预测该内部结构的激活条件；
-3. **因果/机制**：实验控制的内部变量是否解释真实模型行为，干预及替代抽象在 holdout 上成立；
-4. **模型本体/认识论**：若解释失败，究竟由于人类概念不完备，还是实验仪器、描述语言、数据与统计不足？
+## 1. 一个现象，四个不等价的问题
+- **可描述性**：能否用自然语言/组合规则准确描述特征在哪些输入上响应？（Feldhus & Kopf survey；Ma et al. NeurIPS 2025）
+- **构念有效性**：该特征是否代表声称的高层行为，而非更简单的词元/数据混杂？（Ma et al. ICML 2026）
+- **计算/干预有效性**：某方向识别了概念，是否同向改变行为、是否反映自然计算？（Torop et al. NeurIPS 2026；MIB）
+- **本体完整性**：现有人类监督概念是否遗漏任务相关因素？是否能在不先知道遗漏者是什么的情况下独立识别？（Parisini et al. 2026；CBM survey）
 
-不能将“解释器失败”升格为“模型具有超人类语义”，也不能把离线聚类与天然计算变量直接等同。
+**Xeno 的中心风险：** 把“描述失败”直接叫“外星概念”，是没有证据的推论。尤其“可定位”与“具有独特语义本体”距离非常远。
 
-## 五条并行且需要相互对照的邻域
-### A. 语言描述的可靠性
-- Parent: 给 neuron / SAE feature 做 language labeling；从激活样本生成解释。
-- Pressure: 自然语言解释可能过宽、未在相似负样本和 out-of-distribution 分布下经受考验；语言流畅不等于功能准确。
-- 关键文献：Feldhus & Kopf 2025 综述；Ma et al. NeurIPS 2025。
-- 开放问题：组合/程序描述能在多大程度上消除看似 xeno 的残差？如何避免因为“描述的词汇受限”人为制造 gap？
+## 2. 已被明确占据的研究地盘（不要用新名词重新宣称首创）
 
-### B. 分解是否唯一、可复现、跨训练成立
-- Parent: SAE/其他稀疏分解把激活空间转换为特征字典。
-- Pressure: seed/字典大小/重建权衡改变发现，模型空间的对称性让某种坐标分解不是天然本体。
-- 邻域：ICLR 2026 SAE trained on same data...；ACL 2026 feature consistency；NeurIPS 2026 Bypassing PC1...（**只核对标题/作者信息**）。
-- 开放问题：一个 candidate 是真实跨方法计算对象还是字典构造伪影？允许何种等价类？
+| 已有问题 / 强近邻 | 原文做到了什么 | 仍不能推出什么 |
+|---|---|---|
+| [Ma et al. NeurIPS 2025](papers/CORE_READS.md#3-ma-等-neurips-2025) | 相似但不激活的 hard negatives、可迭代修正的结构化解释，提高模拟的预测力 | 解释得分高就证明特征承担特定因果功能 |
+| [Ma et al. ICML 2026](papers/CORE_READS.md#4-ma-等-icml-2026) | 在 22 组配置逐步否证“单个推理 SAE 特征”：词元注入、真/假语义反例、简单稀疏性理论 | 所有推理都没有内部表征 |
+| [Torop et al. NeurIPS 2026](papers/CORE_READS.md#5-torop-等-neurips-2026) | 强分类方向可能反向 steering；下游表示响应可不靠生成预测符号 | 已证明存在神秘不可命名表征；所有 steering 框架皆如此 |
+| [Parisini et al. 2026](papers/CORE_READS.md#6-parisini-等-2026-预印本) | “已有概念不完整”已经能被 Fisher 任务几何和已知漏项对照量化 | 对任意未知自然 LLM 能自主发现原则上不可翻译概念 |
+| [Song et al. ACL 2026](papers/CORE_READS.md#7-song-等-acl-2026) | SAE 字典跨次训练一致性可定量评价、通过方法改善 | 某稳定 SAE 特征必然是模型天然计算的基本单元 |
+| [Sheng & Fu, 2026](READING_QUEUE.md) | 不同电路对象/比较粒度改变 overlap 结论（仅摘要核对） | 低 overlap 就说明模型实际机制改变了 |
+| [Sutter et al. NeurIPS 2025](READING_QUEUE.md) | 非线性对齐过于灵活可出现“伪完美”因果抽象（官方摘要） | 任意因果抽象皆无效 |
 
-### C. 干预的真实性与解释有效性
-- Parent: causal abstraction, MIB, activation patching / steering / DAS。
-- Pressure: flexible alignment 能人为拟合解释，干预可能 off-manifold；因果控制不等于自然机制。
-- 邻域：JMLR 2025 Causal Abstraction；NeurIPS 2025 Non-Linear Representation Dilemma；ICML 2025 MIB / SAEBench。
-- 开放问题：在哪种干预族内，“这种解释足够好了”才具有可证伪性？怎样与便宜行为/logit baselines 比较？
+**相关基础标准：** MIB（因果变量与电路定位）、SAEBench（重建/稀疏等代理指标不等于下游可解释效用）、causal abstraction；见 [待读清单](READING_QUEUE.md)。这些是真正的强 baseline，不应从头发明一个只有自创指标的评测。
 
-### D. 概念本体本身是否不完整
-- Parent: concept bottlenecks / supervised interpretable concepts。
-- Pressure: 少一个潜变量可能使已知概念关系发生不一致。
-- 邻域：Parisini et al. 2026 `Concept frustration`（公开摘要已有形式化与实证，**不能宣称没人做过**）；Concept-Based MI Needs a Concrete Evaluation Paradigm（全文待读）；NeurIPS 2026 level-of-description 工作（标题待全文）。
-- 开放问题：什么具体的实验结果可以区别 ontology incomplete、concept classifier weak、task geometry distorted 与 causal mechanism mismatch？
+## 3. 四条竞争解释：按哪种观察更新信念？
 
-### E. 多模型、多智能体的迁移与通信（非必需分支）
-- Parent: representation alignment / learned communication。
-- Pressure: 协作训练的内部状态和消息可能逐渐共同适配而失去人类词汇可读性。
-- 开放问题：如何区别隐藏信息、压缩协议、纯训练捷径，与新的任务相关的内部功能区分？优先先看真实通信文献，而不是从概念论文直接脑补集体 xeno。
+| 假设 | 它预测什么 | 最便宜但有杀伤力的对照 |
+|---|---|---|
+| H1 **语言描述能力不够** | 增加 hard negatives、组合逻辑、描述长度/程序形式后，残差显著缩小 | 匹配复杂度的多种解释器在 held-out 与 OOD 上独立预测 |
+| H2 **实验仪器创造了对象** | SAE seed、词元切片、特征筛选阈值、坐标/干预改变后所谓结构不复现 | 同模型多字典、多方法、随机/未训模型、全流程重做；报告 selection bias |
+| H3 **真实但普通的计算结构** | 确实能预测/控制行为，但可以由任务捷径、多个已知机制组合或非语义中间变量解释 | lexical/style counterexamples + 信息等价 baseline + 分层条件化介入 |
+| H4 **当前概念本体有遗漏** | 在更强 H1–H3 的对照之后，残留可复现、任务相关、独立预测且可干预的结构；补足后能解释原来相互矛盾的关系 | **blind discovery → held-out discrimination → causal/behavioral validation**，不可人为先选好隐藏概念再“找回” |
 
-## 三种以上竞争解释（不要预设 H3 成立）
-- **H1 描述不足：** 扩大解释语言（组合规则、描述长度、程序）与训练数据，拟合缺口消失。
-- **H2 仪器伪影：** 误差来自 SAE/probe/geometry 的不稳定、不同坐标或采样与 off-manifold 干预。
-- **H3 真实但普通的计算对象：** 存在稳定因果结构，不过它是多种已知机制组合、任务压缩或计算 shortcut。
-- **H4 更强的本体缺失：** 在合理的描述类、强对照及跨分布因果检验后仍有显著、稳定、可泛化的功能区分无法被当前概念体系充分覆盖。
+有限实验无法支持“原则上不可被人类概念表达”的形而上强命题；只能对指定解释语言与证据水平提出经验性的、不充分解释的结论。
 
-H4 只能是逐步升级的经验假设；任何有限实验证据都不能证明“原则上永不可描述”。
+## 4. 值得继续读的研究压力（不是既定 idea）
+1. **解释有效性与模型功能的差距**：很强的语言解释和自然干预之间能否建立可复现的关系？Ma2025 的目标是 activation simulation；Torop2026 说明检测→控制甚至能反号。这是**问题谱系**，不是尚无人做。
+2. **“未知概念”能否在不知道答案时提出**：Parisini2026 的真实例子中 C3 由研究者预先给出。自然系统如何避免“已知答案故意隐去”的设计泄漏，同时避免伪发现？这才是后续论证压力。
+3. **发现与解释采用的基本单位是否正确**：SAE、回路与几何对象的稳定性可能随方法和描述粒度而变；更高层功能等价类是否更可靠？应先补 NeurIPS2026 电路粒度论文、ICLR2026 SAE instability 全文。
+4. **跨领域自然问题**：若研究真正涉及非语言模态，先读视觉 concept-based discovery / prototype literature 再定对象；不要把“图像概念难命名”当作自然 xeno 证据。
 
-## 先弄清楚的重叠与 ownership risk
-- `Concept frustration` 已经研究缺失概念与 task-aligned geometry；
-- feature description falsification 已是实证 program；
-- non-canonical SAE / cross-method explanations 已形成拥挤近邻；
-- NeurIPS 2026 公开名单出现直接同邻域工作（见 [READING_QUEUE.md](READING_QUEUE.md)）。
-因此真正可挖的是**他们在哪种假设和证据层级尚未达成一致**，而不是声称“以前没人考虑模型原生概念”。
+## 5. 方法论与最低证据合同（后续正式 E## 前）
+从**真实的、已有强基线上的问题**出发；不因一条论文 future work 就成立项目。每篇重要论文做 Paper Rewind：parent/压力 → **RECONSTRUCTED** 区分假说 → 实验判别预测 → 对照作者结果。新实验必须写明：改变哪一个认识、阳性/阴性对照、noise floor、 held-out 预测、影响的抽象层级、负结果会怎样改写理解。估计执行资源为单节点可承担开源模型；目前**未运行 GPU**。
 
-## 当前欠账
-- 综述和最近邻尚未逐篇 FULL_TEXT 核验；
-- NeurIPS 2026 没完成 systematic scan，也没正式给每篇验 Track；
-- 未从开源模型复现标准基线；未有可报告的异常/证据；
-- 尚未选择论文唯一中心 RQ。
+**仍欠缺：** 更大范围（NeurIPS2026/ICLR/ICML/ACL/CVPR）的系统定位表与全文精读；原版 Xeno 正文逐章核验；候选定量 baseline 复现。尚未选论文唯一 RQ。
