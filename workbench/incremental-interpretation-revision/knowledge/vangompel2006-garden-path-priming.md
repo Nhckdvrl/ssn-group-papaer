@@ -8,3 +8,7 @@
 - **可迁移动作：** 问一个残留信号意味着哪类表示持续，用后续任务区分；但不能仅发现后续priming就宣布原解释未修订，也不能将人类结果复制到8B包装novelty。
 
 仅摘要证据；未核对完整材料与统计，不填写模型/算力/公开评审。
+
+## 2026-10-12 重复卡归并后补充（本轮仅正式摘要）
+
+[正式期刊DOI](https://doi.org/10.1016/j.jml.2006.06.004) / [作者机构记录](https://www.research.ed.ac.uk/en/publications/the-activation-of-inappropriate-analyses-in-garden-path-sentences/)。作者原始反问：旧解释在特定问句中被召唤，还是真存在可影响**下一句结构生成**的活动？三个priming实验观察到歧义GP后比逗号cue句后更多transitive后继产出。**RECONSTRUCTED**：从直接Yes/No换一种更隐蔽的功能测量，是改变可替代解释集；但该结果仍兼容旧痕迹与不完整重分析，不能确证有两个完整事件图。具体统计/全部刺激未实读，继续标摘要范围。[另一读数的后续](patson2009-paraphrase.md)。
