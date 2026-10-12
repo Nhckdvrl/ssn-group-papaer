@@ -1,0 +1,1478 @@
+{
+  "status": "FINAL_CHANGED_PRESENTATION_VERIFIED",
+  "date": "2026-10-12",
+  "experiment": "E131 existing ICES chain; presentation audit only",
+  "claims_scope": [
+    "C21",
+    "C22",
+    "C23",
+    "C24"
+  ],
+  "files_sha256": {
+    "PAPER_DRAFT.md": "70799115a741f7df451419fedfd75cab36c9502290492e2dc12af16c5c0b4d6d",
+    "PAPER_APPENDIX.md": "2d6c867c4ea8a29d8b0e487ffae399c5ac74ee5830026b41e3840f6ea0a81d43",
+    "results/paper/main.pdf": "adeb070e098f9f20d6a09b27472088879bea7894a6519d6944cfeb785d63b741",
+    "results/paper/main.tex": "84d7291903653cd3151e184d9bf2ce0aa62b79bd65f8527fb1fca10f85cc5af7",
+    "results/paper/manifest.json": "21c770aa0dda485bb2cee8f209d60c2caea4db620f04835817af55ba9671c357",
+    "results/paper/build.log": "501e9324b2fc8a7ac407743d2c338fbcb7c72871e2967dfcb7ab60bacb176296",
+    "scripts/build_paper.py": "e063a4ef228b3960a955c2b741883435eb483b58abac8c42a236f784b46997a2",
+    "scripts/paper_causal_overview.py": "81378f9dbe80f429e8139d85570a6939205f3ced74add3b85ef189ae1c92ce0c",
+    "scripts/paper_function_summary.py": "3eb1fb85f3548a38b85fae98ed21103c42f7dba1cf373443d09a860137b26549",
+    "scripts/paper_schema_plot.py": "42da58c5cef2b254c13e485104ee00b663dacfaa0b12bd61ba5fe60d65346370",
+    "paper/references.bib": "e7a6b6af769acfcf33321c6666a4db7b7464d0b76503194d5d3999e9380450c0",
+    "results/e123/wave_summary.json": "3700b60bcf0f6a0ace860f5b2151d816653212c47cfa988d9ea71fbadb201c08",
+    "results/e123/independent_review_2026-10-12.json": "0de34e937d09c88fbc1ce347b1deedd9af1e4b66e78aafc677e2533f7631e0d6",
+    "results/e123/main_figure_values.csv": "90b03d407ced7c8ff656f75a5cff5dad849741fac381e4c1565a57e27998f917",
+    "results/e123/main_figure_manifest.json": "072ba5573446dc76e2522d7b48e526ccdeec0c4568bd294d968a594af2b74eaa",
+    "results/e125/summary.json": "270f1a28a91c414bb56d987586496013f45b7cc234f349aa86bd1a9c98d17a25",
+    "results/e125/independent_review_2026-10-12.json": "bb862fae845c29d98e8593ddb132c3ec2df8291e25ba24ab6bf9034937b58125",
+    "results/e125/main_figure_values.csv": "19a9fc36292eac75045b90f7de9e49168400afdd4017e01f064467c06585667c",
+    "results/e125/main_figure_manifest.json": "13e3d72c83833e7c34b98bc1b977ad45d59d494fd8b294a6a990ff163549d214",
+    "results/e131/independent_raw_review_2026-10-12.json": "b6c2068179bb0c5accf9c655b6380a4cd8aea2ddfbcbb32b29f29a1b38bac626",
+    "results/e131/independent_raw_pre_author_15_stage_2026-10-12.json": "84dca94bed62dc88d3ee436e980c39d40b4720c145fe5704d85f557eda70171f",
+    "results/figs/fig_source_evidence_overview.png": "79251e5e5857c6cd42fe436473d8564530de0c80ec1e6f88a05c96a3352a9d5c",
+    "results/figs/fig_source_evidence_overview.pdf": "23b14ca7fd1eae6bfcf58d34bd26c58a3d65f402acf052c786688775e7675724",
+    "results/figs/fig_natural_source_function_summary.png": "8eaabeb5cc7ece0e45e1454cd9836beefcccdfe12f1410792e7c5170f6896506",
+    "results/figs/fig_natural_source_function_summary.pdf": "8f268f443d544d6b7a07d9f1073bc83dca234e3580a4715b9b6787456e01ecbd",
+    "results/figs/fig_public_source_schema_summary.png": "b2b1858a8f549f1664f172f1e6b348e6770e717208115bd4a34f502dcdadc743",
+    "results/figs/fig_public_source_schema_summary.pdf": "861a6f42d3d713a0bfa7b3b38912d828caa4a2f21acdd976f2f50e82cc5efe2c",
+    "results/figs/fig_natural_source_function_policies.png": "6e81e4de1ea889b24e92e72369fbeb676b1e537c2d5564a54116c18e52c0e78b",
+    "results/figs/fig_natural_source_function_policies.pdf": "464a2fc0be71118b74b54fd70119ebb5fc399fa0182a974670e19326c8dcb83f"
+  },
+  "reviewed_baseline_commit": "3d0c6c3b",
+  "figure2": {
+    "points": 20,
+    "means_and_CI_bounds": 60,
+    "largest_error": 0,
+    "checks": [
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "namespace": "shared",
+          "policy": "normal",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "84.86328125",
+          "ci_low": "82.6171875",
+          "ci_high": "87.01171875"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "namespace": "shared",
+          "policy": "answer_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "92.1875",
+          "ci_low": "90.0390625",
+          "ci_high": "94.140625"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "namespace": "shared",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "75.0",
+          "ci_low": "74.0234375",
+          "ci_high": "76.07421875"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "candidate",
+          "mean": "94.3359375",
+          "ci_low": "92.08984375",
+          "ci_high": "96.484375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "51.46484375",
+          "ci_low": "49.90234375",
+          "ci_high": "53.125"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed full-output comparison,960 values exact"
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "namespace": "shared",
+          "policy": "normal",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "88.76953125",
+          "ci_low": "86.328125",
+          "ci_high": "91.2109375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "namespace": "shared",
+          "policy": "answer_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "94.140625",
+          "ci_low": "91.89453125",
+          "ci_high": "96.19140625"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "namespace": "shared",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "73.53515625",
+          "ci_low": "71.58203125",
+          "ci_high": "75.29296875"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "candidate",
+          "mean": "95.21484375",
+          "ci_low": "92.87109375",
+          "ci_high": "97.265625"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "53.7109375",
+          "ci_low": "52.1484375",
+          "ci_high": "55.37109375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed full-output comparison,960 values exact"
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "namespace": "shared",
+          "policy": "normal",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "81.25",
+          "ci_low": "79.00390625",
+          "ci_high": "83.59375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "namespace": "shared",
+          "policy": "answer_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "90.72265625",
+          "ci_low": "88.4765625",
+          "ci_high": "92.87109375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "namespace": "shared",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "75.1953125",
+          "ci_low": "74.70703125",
+          "ci_high": "75.68359375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "candidate",
+          "mean": "94.82421875",
+          "ci_low": "92.96875",
+          "ci_high": "96.484375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "53.80859375",
+          "ci_low": "52.24609375",
+          "ci_high": "55.56640625"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed full-output comparison,960 values exact"
+      },
+      {
+        "row": {
+          "model": "Qwen3-14B",
+          "namespace": "shared",
+          "policy": "normal",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "89.94140625",
+          "ci_low": "87.98828125",
+          "ci_high": "91.89453125"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-14B",
+          "namespace": "shared",
+          "policy": "answer_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "97.36328125",
+          "ci_low": "96.09375",
+          "ci_high": "98.4375"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-14B",
+          "namespace": "shared",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "75.0",
+          "ci_low": "73.828125",
+          "ci_high": "76.171875"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-14B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "candidate",
+          "mean": "96.6796875",
+          "ci_low": "95.01953125",
+          "ci_high": "98.14453125"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed candidate/shared stats"
+      },
+      {
+        "row": {
+          "model": "Qwen3-14B",
+          "namespace": "separate",
+          "policy": "all_cross_off",
+          "query_scope": "full-source",
+          "readout": "full_vocabulary",
+          "mean": "52.83203125",
+          "ci_low": "50.390625",
+          "ci_high": "55.56640625"
+        },
+        "error": 0,
+        "independent_numeric_proof": "sealed full-output comparison,960 values exact"
+      }
+    ],
+    "manifest": {
+      "source_sha256": "3700b60bcf0f6a0ace860f5b2151d816653212c47cfa988d9ea71fbadb201c08",
+      "script_sha256": "3eb1fb85f3548a38b85fae98ed21103c42f7dba1cf373443d09a860137b26549",
+      "csv_sha256": "90b03d407ced7c8ff656f75a5cff5dad849741fac381e4c1565a57e27998f917",
+      "points": 20,
+      "scope": "Presentation of existing E123 confirmed estimates, n32; full-source reading, both-source context averages. Panel a: three shared-word formation policies. Panel b: all-cross restriction with separate words, candidate vs full output. All six policies and both namespaces retained in Appendix F.",
+      "new_scientific_inference": false
+    }
+  },
+  "figure3": {
+    "points": 72,
+    "means_and_CI_bounds": 216,
+    "largest_error": 0,
+    "checks": [
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "51.26953125",
+          "ci_low": "49.4140625",
+          "ci_high": "53.125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "79.98046875",
+          "ci_low": "76.5625",
+          "ci_high": "83.49609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "51.26953125",
+          "ci_low": "49.21875",
+          "ci_high": "53.41796875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "82.12890625",
+          "ci_low": "78.90625",
+          "ci_high": "85.3515625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.1171875",
+          "ci_low": "93.1640625",
+          "ci_high": "96.875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "91.30859375",
+          "ci_low": "88.76953125",
+          "ci_high": "93.65234375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.53125",
+          "ci_low": "92.3828125",
+          "ci_high": "96.38671875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "90.8203125",
+          "ci_low": "87.98828125",
+          "ci_high": "93.359375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "51.26953125",
+          "ci_low": "49.4140625",
+          "ci_high": "53.125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "53.3203125",
+          "ci_low": "51.07421875",
+          "ci_high": "55.6640625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "50.48828125",
+          "ci_low": "48.33984375",
+          "ci_high": "52.63671875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "52.83203125",
+          "ci_low": "50.87890625",
+          "ci_high": "54.98046875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.1171875",
+          "ci_low": "93.1640625",
+          "ci_high": "96.875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "92.67578125",
+          "ci_low": "90.234375",
+          "ci_high": "94.82421875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.62890625",
+          "ci_low": "92.578125",
+          "ci_high": "96.484375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "93.06640625",
+          "ci_low": "90.52734375",
+          "ci_high": "95.3125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "51.26953125",
+          "ci_low": "49.4140625",
+          "ci_high": "53.125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "68.26171875",
+          "ci_low": "64.94140625",
+          "ci_high": "71.484375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "50.9765625",
+          "ci_low": "48.73046875",
+          "ci_high": "53.22265625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "67.96875",
+          "ci_low": "64.6484375",
+          "ci_high": "71.484375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.1171875",
+          "ci_low": "93.1640625",
+          "ci_high": "96.875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "92.28515625",
+          "ci_low": "89.6484375",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.43359375",
+          "ci_low": "92.28515625",
+          "ci_high": "96.38671875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Qwen3-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "90.625",
+          "ci_low": "87.79296875",
+          "ci_high": "93.1640625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "50.0",
+          "ci_low": "47.8515625",
+          "ci_high": "52.24609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "60.44921875",
+          "ci_low": "57.12890625",
+          "ci_high": "64.16015625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "50.390625",
+          "ci_low": "48.14453125",
+          "ci_high": "52.63671875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "64.94140625",
+          "ci_low": "61.03515625",
+          "ci_high": "69.140625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.703125",
+          "ci_low": "92.87109375",
+          "ci_high": "97.8515625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "96.19140625",
+          "ci_low": "93.75",
+          "ci_high": "98.046875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "50.0",
+          "ci_low": "47.8515625",
+          "ci_high": "52.24609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "52.734375",
+          "ci_low": "50.87890625",
+          "ci_high": "54.78515625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "50.29296875",
+          "ci_low": "48.14453125",
+          "ci_high": "52.5390625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "52.83203125",
+          "ci_low": "51.171875",
+          "ci_high": "54.78515625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.921875",
+          "ci_low": "92.28515625",
+          "ci_high": "97.16796875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "95.21484375",
+          "ci_low": "92.578125",
+          "ci_high": "97.36328125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "50.0",
+          "ci_low": "47.8515625",
+          "ci_high": "52.24609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "56.0546875",
+          "ci_low": "53.80859375",
+          "ci_high": "58.49609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "50.1953125",
+          "ci_low": "48.046875",
+          "ci_high": "52.44140625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "57.32421875",
+          "ci_low": "54.98046875",
+          "ci_high": "59.86328125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.5078125",
+          "ci_low": "92.96875",
+          "ci_high": "97.36328125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "91.015625",
+          "ci_low": "86.81640625",
+          "ci_high": "94.53125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Mistral-7B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "95.3125",
+          "ci_low": "92.1875",
+          "ci_high": "97.65625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "53.22265625",
+          "ci_low": "51.5625",
+          "ci_high": "54.8828125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "61.328125",
+          "ci_low": "58.3984375",
+          "ci_high": "64.35546875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "52.5390625",
+          "ci_low": "50.9765625",
+          "ci_high": "54.1015625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "62.01171875",
+          "ci_low": "58.984375",
+          "ci_high": "65.04150390624997"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.23828125",
+          "ci_low": "92.08984375",
+          "ci_high": "96.19140625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "95.1171875",
+          "ci_low": "93.359375",
+          "ci_high": "96.77734375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.140625",
+          "ci_low": "91.9921875",
+          "ci_high": "96.09375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "true",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "93.9453125",
+          "ci_low": "91.69921875",
+          "ci_high": "95.99609375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "53.22265625",
+          "ci_low": "51.5625",
+          "ci_high": "54.8828125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "53.02734375",
+          "ci_low": "50.9765625",
+          "ci_high": "55.078125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "52.24609375",
+          "ci_low": "50.68359375",
+          "ci_high": "53.80859375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "52.9296875",
+          "ci_low": "50.87890625",
+          "ci_high": "54.98046875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.23828125",
+          "ci_low": "92.08984375",
+          "ci_high": "96.19140625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.53125",
+          "ci_low": "92.48046875",
+          "ci_high": "96.2890625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "93.84765625",
+          "ci_low": "91.69921875",
+          "ci_high": "95.80078125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "unrelated",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "92.96875",
+          "ci_low": "90.72265625",
+          "ci_high": "95.01953125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "both",
+          "mean": "53.22265625",
+          "ci_low": "51.5625",
+          "ci_high": "54.8828125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "both",
+          "mean": "55.859375",
+          "ci_low": "53.515625",
+          "ci_high": "58.30078125"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "both",
+          "mean": "53.125",
+          "ci_low": "51.3671875",
+          "ci_high": "54.98046875"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "both",
+          "mean": "54.98046875",
+          "ci_low": "52.83203125",
+          "ci_high": "57.2265625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.23828125",
+          "ci_low": "92.08984375",
+          "ci_high": "96.19140625"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "0",
+          "readout": "candidate",
+          "mean": "94.53125",
+          "ci_low": "92.28515625",
+          "ci_high": "96.484375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "0",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.140625",
+          "ci_low": "91.9921875",
+          "ci_high": "96.09375"
+        },
+        "error": 0
+      },
+      {
+        "row": {
+          "model": "Llama-3.1-8B",
+          "roster": "swapped",
+          "formation": "1",
+          "reading": "1",
+          "readout": "candidate",
+          "mean": "94.23828125",
+          "ci_low": "92.1875",
+          "ci_high": "96.09375"
+        },
+        "error": 0
+      }
+    ],
+    "manifest": {
+      "source_sha256": "270f1a28a91c414bb56d987586496013f45b7cc234f349aa86bd1a9c98d17a25",
+      "script_sha256": "42da58c5cef2b254c13e485104ee00b663dacfaa0b12bd61ba5fe60d65346370",
+      "csv_sha256": "19a9fc36292eac75045b90f7de9e49168400afdd4017e01f064467c06585667c",
+      "points": 72,
+      "scope": "All E125 confirmation phase cells, three models/rosters, four F/R access conditions, candidate and full output; full-output error bars show existing 95% context-bootstrap intervals; candidate curves retain existing means. Original wide rendering remains in results/figs; all phase cells shown here are also tabulated in Appendix H.",
+      "new_scientific_inference": false
+    }
+  },
+  "appendix_M_new_discovery_function": {
+    "checks": [
+      {
+        "stat": "shared_normal_native/mean",
+        "printed": "86.72",
+        "original": 0.8671875
+      },
+      {
+        "stat": "shared_normal_native/lo",
+        "printed": "83.20",
+        "original": 0.83203125
+      },
+      {
+        "stat": "shared_normal_native/hi",
+        "printed": "90.23",
+        "original": 0.90234375
+      },
+      {
+        "stat": "shared_answer_cross_off_native/mean",
+        "printed": "98.44",
+        "original": 0.984375
+      },
+      {
+        "stat": "shared_answer_cross_off_native/lo",
+        "printed": "96.48",
+        "original": 0.96484375
+      },
+      {
+        "stat": "shared_answer_cross_off_native/hi",
+        "printed": "100.00",
+        "original": 1.0
+      },
+      {
+        "stat": "shared_answer_cross_off_minus_normal_native/mean",
+        "printed": "11.72",
+        "original": 0.1171875
+      },
+      {
+        "stat": "shared_answer_cross_off_minus_normal_native/lo",
+        "printed": "8.01",
+        "original": 0.080078125
+      },
+      {
+        "stat": "shared_answer_cross_off_minus_normal_native/hi",
+        "printed": "15.43",
+        "original": 0.154296875
+      },
+      {
+        "stat": "shared_answer_minus_all_native/mean",
+        "printed": "23.44",
+        "original": 0.234375
+      },
+      {
+        "stat": "shared_answer_minus_all_native/lo",
+        "printed": "21.88",
+        "original": 0.21875
+      },
+      {
+        "stat": "shared_answer_minus_all_native/hi",
+        "printed": "25.00",
+        "original": 0.25
+      },
+      {
+        "stat": "shared_query_isolation_normal/mean",
+        "printed": "10.55",
+        "original": 0.10546875
+      },
+      {
+        "stat": "shared_query_isolation_normal/lo",
+        "printed": "5.66",
+        "original": 0.056640625
+      },
+      {
+        "stat": "shared_query_isolation_normal/hi",
+        "printed": "15.04",
+        "original": 0.150390625
+      },
+      {
+        "stat": "A",
+        "printed": "5.86",
+        "original": 0.05859375
+      },
+      {
+        "stat": "B",
+        "printed": "17.58",
+        "original": 0.17578125
+      },
+      {
+        "stat": "opposite_convention",
+        "printed": "23.44",
+        "original": 0.234375
+      },
+      {
+        "stat": "same_convention",
+        "printed": "0.00",
+        "original": 0.0
+      },
+      {
+        "stat": "shared_answer_cross_off_native/joint_both_correct",
+        "printed": "97.27",
+        "original": 0.97265625
+      },
+      {
+        "stat": "far_all_cross_off_native/mean_actor_accuracy",
+        "printed": "51.17",
+        "original": 0.51171875
+      },
+      {
+        "stat": "far_all_cross_off_native/joint_both_correct",
+        "printed": "3.91",
+        "original": 0.0390625
+      },
+      {
+        "stat": "far_all/candidate",
+        "original": 0.990234375
+      },
+      {
+        "stat": "far_all/other_source_word",
+        "original": 0.482421875
+      },
+      {
+        "stat": "single_source_private_range",
+        "original": [
+          0.953125,
+          1.0
+        ]
+      }
+    ],
+    "num_values": 25,
+    "numeric_max_error": 0,
+    "source": "independent raw15 already sealed; no rederive",
+    "scope": "n16 discovery;three n32 confirmation pending;mean versusjoint/candidate versusfull kept"
+  },
+  "semantic_checks": {
+    "existing_main_numeric_table_rows_byte_retained": 16,
+    "abstract_byte_unchanged": true,
+    "related_work_byte_unchanged": true,
+    "all_22_primary_work_URLs_retained": true,
+    "bibliography_unique_keys": 24,
+    "intro_dedup_scope": "Three method-overview paragraphs shortened. Fixed-A/query pairing, fixed coefficient/new-context interface prediction, fixed-word association contrasts/full-source real text, distinct policy effects, public formation relation and equivalent backgrounds, and independent32B three-stage confirmation all retained. No complete criterion program, universal optimal policy, or causal scaling law added.",
+    "three_core_findings_retained": true,
+    "all_large_checkpoint_statements_within_complete_stages": true,
+    "pending_L70_confirmation": "All three remain incomplete at this snapshot; canonical empty function fence is operational reservation, not data.",
+    "full_six_policy_figure_restored": "Appendix F Markdown/TeX include old full E123 figure; float printed on PDFp24. Full policy tables also retained.",
+    "caption_scope": "Figure2 both-source/context means on origin/cross under full-source query reading; shared/full-output gains and far candidate/full discrepancy. Figure3 all12phase cells percheckpoint, two readouts; codes formation/reading0blocked1open; not rule-transport rank or standalone table sufficiency."
+  },
+  "print_inspection": {
+    "pages_rendered_viewed": [
+      3,
+      6,
+      7,
+      8,
+      9,
+      18,
+      24,
+      29
+    ],
+    "figure1": "Enlarged labels readable; diagrams show tested interfaces, not exhaustive independent modules.",
+    "figure2": "Both panels, model names, errorbars, axes and legends readable at printed width.",
+    "figure3": "All72points present; code labels/legend/full-output CI readable. Own-candidate curves keep means; CSV stores originalCIs.",
+    "full_legacy_F_figure": "Dense eight-panel original retains fine text; full values also tabulated. Present, no clipping; main focused figure readable.",
+    "appendixM": "New15th stage paragraph legible; separates discovery/confirmation, actor mean/joint, candidate/full and asymmetric other-source rates.",
+    "main_layout": "Discussion terminatesp8; Limitations begins topofp9;32totalpages;main3fig3table/app13fig27table."
+  },
+  "compilation": {
+    "warning_count": 0,
+    "undefined_count": 0,
+    "overfull_count": 0,
+    "line_numbers_converged": true
+  },
+  "pagination": {
+    "main_content_pages": 8,
+    "limitations_start_page": 9,
+    "total_pages": 32,
+    "appendix_format": "official ACL two-column, after references"
+  },
+  "warnings_scope": "Final LaTeX warnings/undefined/Overfull are0. Build log still contains Underfull box notices; no clipping observed on inspected pages.",
+  "resolved_findings": [
+    {
+      "issue": "Old complete E123six-policy figure absent from initial AppendixFsource",
+      "resolution": "Author restored source and currentPDFp24 verified."
+    },
+    {
+      "issue": "Initial diskPDF was prior successful build while newFigure3 caused paginationassert",
+      "resolution": "Currentmanifest,prose,TeX/PDFhashes match final successful32pagebuild."
+    }
+  ],
+  "reading_scope": "Only changed prose/figures, sealedE123/E125confirmationstatistics and previously sealedE131stage15 readouts. No historical raw/bootstrap recomputation, GPU execution or source/claim/status edits. Prior paper audits remain separate snapshots.",
+  "new_experimental_requirements": null
+}

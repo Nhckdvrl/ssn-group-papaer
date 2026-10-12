@@ -1,8 +1,8 @@
 {
-  "status": "STATIC_HANDOFF_CORE_VERIFIED_RUNTIME_GUARDS_REQUIRED",
+  "status": "STATIC_HANDOFF_AND_EXPLICIT_RESUME_VERIFIED_RUNTIME_GUARDS_REQUIRED",
   "date": "2026-10-12",
   "kind": "OPERATIONAL_SCHEDULING_STATIC_AUDIT_NO_NEW_SCIENCE",
-  "helper_sha256": "136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d",
+  "helper_sha256": "802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798",
   "five_frozen_sources_sha256": {
     "e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
     "e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
@@ -39,9 +39,24 @@
   "asset_and_device_guards": "Exact llama70/Nous mirror/beb678 revision,host,target,all-weight-hash and official30 equality flags required; all four fvcrc13 physical cards must have <128MiB and0 utilization before launcher proceeds. Static review does not replace those runtime checks.",
   "residency_journal": "Distinct worker_llama70_confirmation_function_parallel.json, with same wall×4 residency accounting; original worker journal retained. Legacy guard exit is an operational handoff, not a scientific negative.",
   "remaining_blockers": [],
-  "optional_nonblocking_operational_logging": "Wrap post-claim SSH reserve/directory preparation in claim try/finally too, so pre-GPU failures get finished_at/error fields. Existing stderr and fence/claim still preserve failed preparation; this is not a writer-safety or scientific issue.",
+  "optional_nonblocking_operational_logging": null,
   "no_GPU_or_helper_execution": true,
   "no_scientific_source_or_PDF_changes": true,
   "no_grade_status_or_new_experimental_requirement": true,
-  "review_helper_sha256": "4ab97ebef3df2705f4c16967bc16ca97dc05c24aca312054afad9e5fe9c400a5"
+  "review_helper_sha256": "741404876e27d386734d078195173fa364ce803898be3eb3de1af3706735e4ed",
+  "v2_previous_passed_review": {
+    "json": "function_queue_static_review_2026-10-12_v2_historical.json",
+    "json_sha256": "824eca5a1b23ccccb085b9faf4aa5418984764c567d496d2df18e9f0f2e9b486",
+    "md": "function_queue_static_review_2026-10-12_v2_historical.md",
+    "md_sha256": "1ae6bba94f01bdda196f3fc1c6d30d5e7eaa1144373bb492ff5ce8dc45a65c97",
+    "helper_sha256": "136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d"
+  },
+  "incremental_review_scope": [
+    "NFS continuous-fence visibility waits at most60 seconds before isolated stage creation.",
+    "Explicit resume verifies prior local13 worker dead, same empty canonical fence, absent staging root and matching legacy worker in handoff; it archives failed attempt and does not repeat remote SIGSTOP or remove fence.",
+    "ROOT cwd set before execution, including engine final git rev-parse, without modifying frozen sources.",
+    "Main exception handler records initialization failure only for the current owned claim PID."
+  ],
+  "first_initialization_failure": "Parent reports canonical empty fence installed and old10 resumed; first13 helper exited on delayed NFS visibility before staging/model loading,0scientific rows/0GPU. It remains an operational failed attempt, not a scientific negative.",
+  "resume_launch_scope": "One explicitly requested resume launcher for this same reservation; original atomic staging creation and permanent canonical fence still prevent concurrent canonical science writing."
 }

@@ -1,6 +1,6 @@
 # E131 独立function调度：修正版静态核对
 
-**核心交接静态通过，可在代码的runtime断言满足后启动。** 当前helper SHA `136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d`；五个冻结protocol/dispatch/engine源保持原字节。只调度原function confirmation，85条件、n32、seed131103、validation材料、原gold/分析/全层FP32读数不变。此次没有执行helper或GPU。
+**核心交接静态通过，可在代码的runtime断言满足后启动。** 当前helper SHA `802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798`；五个冻结protocol/dispatch/engine源保持原字节。只调度原function confirmation，85条件、n32、seed131103、validation材料、原gold/分析/全层FP32读数不变。此次没有执行helper或GPU。
 
 旧6ea2版本的O_EXCL仅约束新queue而不约束旧10worker，存在check-then-write风险，已弃用；原风险JSON/MD逐字保存为v1_historical，不删除或改写成通过。
 
@@ -10,6 +10,14 @@
 
 驻留日志使用独立文件名，不覆盖旧10。旧guard退出/错误要作为操作交接保留，不能当科学失败。没有剩余阻止启动的静态问题；runtime的PID/暂停状态/文件状态、同pin资产和四空卡检查必须实际通过。
 
-唯一非阻挡建议：claim创建后的SSH reserve和目录准备目前在main try/finally外；若这些0GPU准备失败，claim没有finish/error字段，可扩外层finally补记。此差异不引入双writer或科学变化。
+v2当时的非阻挡建议是为SSH reserve/目录准备的0GPU失败补finished/error字段；当前v3已用顶层handler修复，见下节。
 
 此次沿用原18批科学设计，不新增控制、模型、head/layer/格式或claim资格；已封论文和15th raw科学审计不变。
+
+## 同一reservation的显式恢复增量校对
+
+最新helper `802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798` 静态通过，可在原runtime断言满足后进行本次明确的一次resume。原136f通过报告逐字保存到v2_historical；6ea2风险报告仍独立保留。首13 attempt的失败发生于NFS negative-cache使已创建空fence暂不可见：未创建staging、未载GPU模型、0科学row。不得将它列作科学阴性。
+
+新增60秒可见性等候，不删除连续fence。resume核原13 PID已退出、同empty fence、staging不存在和原handoffworker一致，归档旧失败claim后恢复；不再次暂停10。`os.chdir(ROOT)`保证原引擎最终git调用在repo，科学源不变。顶层错误handler只更新本进程拥有的claim，并记录初始化error/finished。原隔离执行、run最后发布、精确资产/四空卡、独立journal等核心保证保持。
+
+原15-stage science/论文审计不受影响。本轮仅静态检查，未执行helper、SSH信号、GPU或重算既有实验；没有剩余启动blocker。

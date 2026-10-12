@@ -2,6 +2,7 @@
 import argparse, datetime, hashlib, json, os, signal, subprocess, sys, time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+os.chdir(ROOT)
 BASE=ROOT/'results/e131'
 DEST=BASE/'llama70_confirmation_function'
 FENCE=DEST/'behavior.jsonl'
@@ -29,7 +30,7 @@ def reserve(parent, worker):
   (DEST/'operational_handoff.json').write_text(json.dumps({'created_at_utc':utc(),'legacy_host':'fvcrc10','legacy_parent_pid':parent,'legacy_worker_pid':worker,'fence':str(FENCE),'fence_scientific_rows':0,'new_execution_root':str(BASE/'function_parallel_execution'),'scope':'Scheduling only; continuous canonical fence blocks legacy function guard.'},indent=2)+'\n')
  finally: os.kill(worker,signal.SIGCONT)
  print('Owned worker resumed; continuous canonical fence installed',flush=True)
-def launch(parent,worker):
+def launch(parent,worker,resume=False):
  host=os.uname().nodename; assert host=='fvcrc13'
  info=json.loads((BASE/f'model_identity_llama70_{host}.json').read_text())
  assert info['family']=='llama70' and info['repo']=='NousResearch/Meta-Llama-3.1-70B'
@@ -38,12 +39,26 @@ def launch(parent,worker):
  assert info['all_weights_sha256_passed'] and info['official_mirror_all30_match']
  rows=subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.used,utilization.gpu','--format=csv,noheader,nounits'],text=True).splitlines()
  assert len(rows)==4 and all(float(r.split(',')[1])<128 and float(r.split(',')[2])==0 for r in rows)
- assert not FENCE.exists()
- fd=os.open(CLAIM,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+ if resume:
+  old=json.loads(CLAIM.read_text())
+  assert old['host']==host and not Path(f"/proc/{old['pid']}").exists()
+  assert FENCE.exists() and FENCE.stat().st_size==0
+  assert not (BASE/'function_parallel_execution').exists()
+  assert json.loads((DEST/'operational_handoff.json').read_text())['legacy_worker_pid']==worker
+  old.update(worker_exit_code=1,error='0-GPU initialization failure: remote fence had not yet become visible through NFS negative caching',finished_at_utc=utc(),scientific_rows=0)
+  (BASE/'function_queue_attempt_1_2026-10-12.json').write_text(json.dumps(old,indent=2)+'\n')
+ else:
+  assert not FENCE.exists()
+ fd=os.open(CLAIM,os.O_CREAT|os.O_WRONLY|(os.O_TRUNC if resume else os.O_EXCL),0o600)
  record={'host':host,'pid':os.getpid(),'stage':'function','phase':'confirmation','seed':131103,'n':32,'conditions':85,'started_at_utc':utc(),'helper_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'scientific_protocol_changed':False,'isolated_output_publication':True}
  with os.fdopen(fd,'w') as f: json.dump(record,f,indent=2);f.write('\n')
- subprocess.run(['ssh','-o','LogLevel=ERROR','-o','IdentityAgent=none','-o','ProxyCommand=none','-o','BatchMode=yes','-o','ConnectTimeout=7','fvcrc10',f'cd {ROOT} && python3 scripts/e131_function_queue.py --reserve --legacy-parent {parent} --legacy-worker {worker}'],check=True)
- assert FENCE.exists() and FENCE.stat().st_size==0
+ if not resume:
+  subprocess.run(['ssh','-o','LogLevel=ERROR','-o','IdentityAgent=none','-o','ProxyCommand=none','-o','BatchMode=yes','-o','ConnectTimeout=7','fvcrc10',f'cd {ROOT} && python3 scripts/e131_function_queue.py --reserve --legacy-parent {parent} --legacy-worker {worker}'],check=True)
+ deadline=time.monotonic()+60
+ while not FENCE.exists():
+  assert time.monotonic()<deadline
+  time.sleep(.5)
+ assert FENCE.stat().st_size==0
  stage_root=BASE/'function_parallel_execution'; stage_base=stage_root/'results/e131'
  stage_base.mkdir(parents=True,exist_ok=False)
  (stage_root/'scripts').symlink_to(ROOT/'scripts',target_is_directory=True)
@@ -75,5 +90,14 @@ def launch(parent,worker):
  finally:
   record['finished_at_utc']=utc();CLAIM.write_text(json.dumps(record,indent=2)+'\n')
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('--reserve',action='store_true');ap.add_argument('--legacy-parent',type=int,required=True);ap.add_argument('--legacy-worker',type=int,required=True);a=ap.parse_args()
- (reserve if a.reserve else launch)(a.legacy_parent,a.legacy_worker)
+ ap=argparse.ArgumentParser();ap.add_argument('--reserve',action='store_true');ap.add_argument('--resume-reservation',action='store_true');ap.add_argument('--legacy-parent',type=int,required=True);ap.add_argument('--legacy-worker',type=int,required=True);a=ap.parse_args()
+ try:
+  if a.reserve: reserve(a.legacy_parent,a.legacy_worker)
+  else: launch(a.legacy_parent,a.legacy_worker,a.resume_reservation)
+ except BaseException as exc:
+  if not a.reserve and CLAIM.exists():
+   record=json.loads(CLAIM.read_text())
+   if record.get('pid')==os.getpid():
+    record.update(worker_exit_code=1,error=repr(exc),finished_at_utc=utc())
+    CLAIM.write_text(json.dumps(record,indent=2)+'\n')
+  raise

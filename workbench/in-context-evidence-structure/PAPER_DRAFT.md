@@ -14,11 +14,11 @@ A review can praise a restaurant's food while criticizing its service. Two annot
 
 This distinction motivates our question: **how do shared output identities affect the formation and use of source-specific evidence?** Output words participate in the representations formed during demonstration processing. When different sources share them, changing one source's rule may change the evidence available at another source's positions. At the same time, surrounding context can supply information that helps several rules work together. An account of source-conditioned ICL should explain both the relations entering that evidence and the effects of sharing or separating them.
 
-We study this process by changing one source's demonstrated relation while holding the other source and the query fixed. Whole-query access restrictions and message interchanges distinguish positional access from causal dependence on a source's rule. A historical answer-to-label pathway predicts output-namespace counterfactuals at these interfaces in new contexts with a fixed coefficient. Removing the corresponding operation during ordinary processing then tests whether it contributes to native predictions. These experiments establish output-dependent evidence formation, the first part of our account.
+We change one source's demonstrated relation while holding the other source and the query fixed. Whole-query access restrictions and message interchanges distinguish positional access from causal dependence on a rule. A historical answer-to-label pathway predicts output-namespace counterfactuals at these interfaces in new contexts with a fixed coefficient; removing the operation tests its contribution to native predictions.
 
-We next keep output words, positions, and input multisets fixed while changing input–label associations. These counterfactuals identify relational content carried through the pathway. The effects persist under full-source reading and on real sentiment text. The formation account then yields a functional prediction: selectively limiting other-source answer formation, isolating complete source histories, and restricting query access should have different consequences. We test these policies for both requested sources and retain their gains and tradeoffs.
+We then fix output words, positions, and input multisets while changing input–label associations. These counterfactuals identify relational content carried through the pathway under full-source reading and on real sentiment text. Formation yields different functional predictions for selective answer restriction, complete private-history isolation, and query-only restriction, which we test for both requested sources.
 
-Finally, we examine what can support joint rule use when private supervision forms independently. Public source–output relations can help through formation, and information-equivalent public backgrounds change how well independently formed source evidence works together. The same formation, native-operation, and real-text function tests are independently confirmed in Qwen3-32B. Together, the experiments connect three findings: output identities affect historical formation, the historical messages carry learned associations, and formation and reading impose different functional constraints. This account explains source-conditioned computation through the provenance and use of learned relations, including when the model answers correctly.
+Finally, public source–output relations can help independently formed rules through formation, and information-equivalent public backgrounds yield different joint usability. Independent Qwen3-32B confirmation connects formation, native operation, and real-text function. Together, the experiments establish three findings: output identities affect historical formation, messages carry learned associations, and formation and reading impose different functional constraints. Source-conditioned computation depends on the provenance and use of learned relations, including when the model answers correctly.
 
 ![Tested formation and reading interfaces](results/figs/fig_source_evidence_overview.png)
 
@@ -120,9 +120,9 @@ Selective formation improves the shared-word primary in all four checkpoints, wi
 
 Separate words expose a further distinction. Complete cross-source formation isolation retains about 94–97% own-word candidate accuracy, yet full-vocabulary accuracy falls to about 51–54%: the model frequently outputs the other source's word. Thus learning within a label space and using that convention jointly require separate measurements. Native separate-word candidate accuracy is already high, so its smaller selective gains also reflect headroom and word priors. Mistral loses 1.27 [0.20, 2.44] full-output points under selective formation despite unchanged candidate accuracy. Appendix F preserves every namespace, private direction, source, actual output, and instruction control.
 
-![Real-text policies and output-space use](results/figs/fig_natural_source_function_policies.png)
+![Real-text policies and output-space use](results/figs/fig_natural_source_function_summary.png)
 
-*Figure 2. All formation/query policies on independently confirmed real-text private functions. Colored circles score within the requested source’s two words; black crosses score the actual full-vocabulary output. The separate-word condition reveals failures hidden by candidate restriction.*
+*Figure 2. Independently confirmed real-text private functions, n=32 with 95% context-bootstrap intervals. (a) Selective answer restriction improves shared-word accuracy; complete cross-source restriction removes other useful formation paths. (b) With separate words, complete formation restriction preserves own-word candidate accuracy but impairs full-vocabulary output. Both panels allow full-source query access; Appendix F reports all six policies.*
 
 ### 5.4 Association influence and criterion-related function
 
@@ -146,9 +146,9 @@ True-minus-unrelated formation-only gains in full-vocabulary accuracy are 26.66 
 
 Literal table routing is insufficient: correct tables outperform swapped tables, but swapped tables themselves improve full accuracy and reduce other-source outputs in every checkpoint. Qwen's candidate accuracy also falls, and some source-specific gains remain uncertain (Appendix H). The result identifies useful shared formation structure, with costs; the next test asks whether information-equivalent structures form equally compatible evidence.
 
-![Public schemas during formation and reading](results/figs/fig_public_source_schema_coordination.png)
+![Public schemas during formation and reading](results/figs/fig_public_source_schema_summary.png)
 
-*Figure 3. Public source–word-set access with private historical supervision isolated. Solid curves score the actual full-vocabulary output; dashed curves score within the requested source's candidates. Correct and swapped relations both help through formation, but their magnitudes differ.*
+*Figure 3. Public source–word-set access with private historical supervision isolated, n=32. Codes give formation/query access to the schema (1=open, 0=blocked). Solid curves show full-vocabulary accuracy with 95% context-bootstrap intervals; dashed curves show own-word candidate accuracy. Correct and swapped relations both help through formation, with different magnitudes.*
 
 ### 6.3 Common formation backgrounds constrain joint rule use
 

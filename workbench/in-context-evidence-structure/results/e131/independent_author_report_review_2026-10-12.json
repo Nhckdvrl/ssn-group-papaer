@@ -1,9 +1,9 @@
 {
-  "status": "AUTHOR_REPORT_14_OF_18_PARTIAL_VERIFIED_INCREMENTAL",
+  "status": "AUTHOR_REPORT_15_OF_18_PARTIAL_VERIFIED_INCREMENTAL",
   "date": "2026-10-12",
   "report_script_sha256": "fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5",
-  "report_md_sha256": "22a945a69c4d4a2269142e242b777474767c7b502e979c038b481743239e3976",
-  "summary_json_sha256": "d706568667acbcf715e51a63b623971bc8c4057b185886e2928d68f63a8bd8cd",
+  "report_md_sha256": "0cfcf1b01fed5df8e1347ea3d01084accd7fcf73454127a66de7a7ec29d9790e",
+  "summary_json_sha256": "a4900acc76f6044c18696e0455fec30ad7885d000288e0c3fec0826ce74a93b3",
   "full_output_script_sha256": "9e5cf06cca0e308da75dab598bc9323be2dc2f0cb180b342181c5d8a5c4cee64",
   "sealed_raw_digests_preserved": {
     "llama_confirmation_mechanism": "e9cf31b72796c8491029dce4f3a074e5ab694d126b3a6692cb3103e1ed87a886",
@@ -19,7 +19,8 @@
     "qwen32_confirmation_native": "ad93547e4fa34a9aeab138bffb10b39a06b0562b494473d3d6ba12a18cd4042f",
     "qwen32_confirmation_function": "bea6cc6dcd8866a39ea8ecfa80d881b942e1166d4f534a1015e7cd405dee238e",
     "llama70_discovery_mechanism": "3366c6e729c8e58faeeee1748818ad9064c238d68c6e4107bcae49551e7f5d8c",
-    "llama70_discovery_native": "a4d051b3d37cea896b4dfac8fc05e56f0e073196bcd0e0c738774dc5041352c7"
+    "llama70_discovery_native": "a4d051b3d37cea896b4dfac8fc05e56f0e073196bcd0e0c738774dc5041352c7",
+    "llama70_discovery_function": "fa666b5ece4ace6092ea309e6fba961d4000b4aa166808086c4aa4f46b0d438d"
   },
   "runs": {
     "qwen3_confirmation_mechanism": {
@@ -1437,43 +1438,76 @@
       "new_markdown_numeric_presentations": 9,
       "new_paired_vector": false,
       "scope": "Fixed n16 discovery; all 64 conditions, shared/far, native/gate, signed/absolute/excess/within/private/pure-instruction controls remain in sealed raw/analysis. No new confirmation pair."
+    },
+    "llama70_discovery_function": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1893,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "full_output_numeric_comparison": {
+        "numeric_items": 960,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "full_output_raw_auxiliary_pre_author_seal_sha256": "1fd3845ced0ef00eb9ecd05580869be09d3203c2e84a088200a982f4a132f339",
+      "raw_sha256": "1f98d5c776bcc799a6f52a194939a7d1a99868bfd3ab029981ce4a5fc0910736",
+      "run_sha256": "86ed46a097354802c4df3f294293fba60ec2f3c12b75c5c6bdfc1f68adac1609",
+      "new_markdown_row_fields": 5,
+      "new_markdown_numeric_presentations": 21,
+      "new_paired_vector": false,
+      "scope": "Fixed n16 discovery; full85 interfaces and all functional/private/ns/readout controls retained. Shared function primary is two-Actor mean, not joint correctness; no L70 n32 pair yet."
     }
   },
   "totals": {
-    "completed_stages": 14,
+    "completed_stages": 15,
     "planned_stages": 18,
-    "scores": 185728,
-    "contexts_by_stage": 368,
-    "stage_device_hours": 14.977381626367569,
-    "worker_resident_device_hours_so_far": 15.095117890967263
+    "scores": 196608,
+    "contexts_by_stage": 384,
+    "stage_device_hours": 23.259151076608234,
+    "worker_resident_device_hours_so_far": 23.378959455887475
   },
-  "new_stage_only_checked": "llama70_discovery_native",
+  "new_stage_only_checked": "llama70_discovery_function",
   "new_stage_numeric_comparison": {
-    "numeric_items": 1217,
+    "numeric_items": 1893,
     "max_abs_error": 0,
-    "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+    "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+    "missing": [],
+    "matched_nonfinite_items": [],
+    "author_analysis_sha256": null
+  },
+  "new_full_output_numeric_comparison": {
+    "numeric_items": 960,
+    "max_abs_error": 0,
+    "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
     "missing": [],
     "matched_nonfinite_items": [],
     "author_analysis_sha256": null
   },
   "new_markdown_rows_checked": 1,
-  "new_markdown_metric_cells_checked": 3,
-  "new_markdown_numeric_presentations_checked": 9,
-  "prior_13_stage_audit_unchanged_sha256": "59e57961cd592f8951c30e760ebac820b6ebfe13fe54f73e82862be600a3398b",
-  "prior_author_report_audit_sha256": "ff096078d7f52aa0170baa6e0dcb416cdeaf9674adc264583bc3ba1aec59db1e",
-  "prior_13_stage_science_recomputed": false,
+  "new_markdown_metric_cells_checked": 5,
+  "new_markdown_numeric_presentations_checked": 21,
+  "prior_14_stage_audit_unchanged_sha256": "94d94c11d3f7f033931ad56221c0c514819356588833704c6d2852289c87a077",
+  "prior_author_report_audit_sha256": "7ab653de5f6cb8a726206cdbe0e9aa8180d412cccaef23c7813145e24b2a1d43",
+  "prior_14_stage_science_recomputed": false,
   "paired_confirmation_count": 3,
   "paired_confirmation_unchanged": true,
   "root_read_order_exception": "Parent reports tailing run.log for progress at completion and seeing last three relation summaries before independent raw seal. Root is not fully blind for this stage. No claim that every participant remained blind.",
-  "new_stage_root_read_order": "Root reports reading only row count and existence of run.json, not author stdout/analysis for this stage. Earlier stage13 root stdout exception remains preserved separately.",
-  "pairing_scope": "Three existing Qwen n32 pairs retained. L70 n16 discovery is not paired against L8 n32.",
-  "resident_accounting_scope": "Last-observed worker snapshots, counted once per worker; incomplete-stage future residence is not included.",
+  "new_stage_root_read_order": "Root reports no author main results read before this independent new-stage raw seal; earlier stage13 stdout exception remains recorded separately.",
+  "pairing_scope": "Three Qwen n32 pairs retained; L70 n16 pilot not paired with L8 n32.",
+  "resident_accounting_scope": "Last-observed worker snapshots counted once each; running future residence excluded.",
   "independent_GPU_forward_or_rerun": false,
-  "helper_sha256": "b3fb4891bb48842191e956218b2fc7c8e19de262296f579445359a1234505024",
+  "helper_sha256": "3d02b38bce59fcaea47a49930bd30a962962d1fd9c046092efe5a7359eff0d45",
   "complete_summary_display_incremental_check": {
-    "baseline_13_report_commit": "9232d43d5a8a41326ea0f6f9ad5466079e639444",
-    "all_13_previous_run_summary_objects_byte_semantics_identical": true,
-    "previous_rows_preserved": 53,
+    "baseline_14_report_commit": "3d0c6c3bbd65c6455aa730f164dbe3103e466c0a",
+    "all_14_previous_run_summary_objects_byte_semantics_identical": true,
+    "previous_rows_preserved": 54,
     "all_previous_rows_preserved_exactly": true,
     "all_three_previous_paired_objects_identical": true,
     "old_science_recomputed": false
