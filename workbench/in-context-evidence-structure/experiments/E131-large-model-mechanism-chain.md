@@ -63,3 +63,10 @@ Q32三个D stage均独立raw-first封存，9/18批240context/122880评分。真�
 Q32新确认n32的A形成signed/absolute2.67564[2.26579,3.09561]nats；label-interface B0固定系数1 KV raw r=.882834、RMSE=.864484/zero1.856570，rule双差r=.922132。完整12 K/KV/V×目标×读取背景保留；single两个私人方向本批full100%。B读取signed3.48458[2.59559,4.34803]；stage signed交互CI0而absolute+.95308[.16203,1.74936]，不将平均符号抵消当形成操作没有作用。
 
 与Q8逐字相同的32context配对：A形成abs large−small+.48496[.02565,.94531]，signed+.32451[−.14989,.81070]。这不是受控scaling law，但直接支持相同形成解释继续适用于32B；相同理论允许幅度与通道比例变化，不由partial Cue或单个signed交互收缩C21–23。新32原生操作/函数stage与70同链继续完成。滚动独立审计10/18 stage、272ctx/133888scores，本批1041数值差1.89e−15；[全报告](../results/e131/report.md)。
+
+
+### E131：原生操作的新32确认与完整读取环境
+
+Qwen3-32B与8B逐字相同的新32材料中，Full-source历史跨来源答案→本来源标签移除效应1.97202[1.46707,2.49960]nats；受限恢复在A-only为+.77513[.32126,1.28387]、Full-source为−.54448[−.83270,−.27605]。两个私人single方向本批100%，cached/full最大误差1.14e−5，self与graph-zero为0。全部64接口、within扰动、私人方向与指令对照保留；A-only恢复的absolute1.03131不是signed均值，不混用读数。
+
+**对原问题的更新：** 同一操作在32B仍有原生因果贡献，且读取环境改变恢复作用，与新8B确认的功能方向一致。大小配对的移除和Full-source恢复差CI含0，A-only恢复large−small−1.36822[−2.29903,−.47407]；允许贡献幅度不同，不由此拆成细小新理论或收缩三条核心认识。研究对象仍是关系证据的形成与使用，非要求强模型持续答错。11/18完整stage、304ctx/150272评分；本批1217数值max0、18个同材料配对读数独立raw-first校对。完整[报告](../results/e131/report.md)/[独立校对](../results/e131/independent_raw_review_2026-10-12.md)，无独立GPU重跑。Q32函数确认与L70完整同链继续。C21–23 L3/C24 L2及formal状态保持。

@@ -147,4 +147,4 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 
 | E130 | [历史形成→Source条件Cue](E130-formation-to-source-cue.md) | DONE | C23/C24、I04/P17；四批104448scores完整，native两co-primary CI0，部分criterion响应保留，独立raw/report已核 |
 
-| [E131](E131-large-model-mechanism-chain.md) | 大小模型同一形成/读取/两来源功能链（C21–C24、I04/P17） | RUNNING；451238d5首评分freeze、0a50bbb1完整FP32纠正；10/18stage独立核，Q32三环节pilot/形成新确认与两个8B新确认完成，Q32原生/函数确认和70资产接入继续 |
+| [E131](E131-large-model-mechanism-chain.md) | 大小模型同一形成/读取/两来源功能链（C21–C24、I04/P17） | RUNNING；451238d5首评分freeze、0a50bbb1完整FP32纠正；11/18stage独立核，Q32三环节pilot/形成与原生新确认、两个8B新确认完成，Q32函数确认和70资产接入继续 |

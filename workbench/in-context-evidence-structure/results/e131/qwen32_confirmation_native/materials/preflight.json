@@ -1,0 +1,241 @@
+{
+  "args": {
+    "model": "/dev/shm/ices_models/Qwen3-32B",
+    "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e131/qwen32_confirmation_native/materials",
+    "n": 32,
+    "seed": 131101,
+    "materials": "validation",
+    "preflight_only": true,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        902
+      ],
+      [
+        9834
+      ]
+    ],
+    "far": [
+      [
+        1494
+      ],
+      [
+        5181
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    295,
+    293,
+    296,
+    297,
+    295,
+    293,
+    293,
+    291,
+    292,
+    294,
+    295,
+    292,
+    296,
+    291,
+    294,
+    296,
+    297,
+    294,
+    291,
+    293,
+    292,
+    294,
+    297,
+    292,
+    292,
+    298,
+    293,
+    294,
+    301,
+    290,
+    293,
+    295
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "synthetic_polarity_lexicon": {
+    "positive": [
+      "good",
+      "amazing",
+      "enjoyable",
+      "splendid",
+      "satisfying",
+      "impressive",
+      "outstanding",
+      "exceptional",
+      "magnificent",
+      "incredible"
+    ],
+    "negative": [
+      "abysmal",
+      "lousy",
+      "appalling",
+      "unsatisfactory",
+      "atrocious",
+      "unacceptable",
+      "pathetic",
+      "miserable",
+      "disastrous",
+      "displeasing"
+    ],
+    "templates": [
+      "The dish was {a}.",
+      "The dinner was {a}.",
+      "The lunch was really {a}.",
+      "The sandwich was simply {a}.",
+      "This salad was {a}.",
+      "Our breakfast was {a}.",
+      "The pizza was {a}.",
+      "The experience was {a}.",
+      "The dish tasted {a}.",
+      "The dinner tasted remarkably {a}."
+    ]
+  },
+  "valid_quartet_length_bins": 2,
+  "quartet_lengths": [
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      15
+    ]
+  ],
+  "reversed_contexts": 16,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}

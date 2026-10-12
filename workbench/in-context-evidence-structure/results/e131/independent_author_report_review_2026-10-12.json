@@ -1,9 +1,9 @@
 {
-  "status": "AUTHOR_REPORT_10_OF_18_PARTIAL_VERIFIED",
+  "status": "AUTHOR_REPORT_11_OF_18_PARTIAL_VERIFIED",
   "date": "2026-10-12",
   "report_script_sha256": "fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5",
-  "report_md_sha256": "8eeef2e73dedc958e72c25e935a98eeee8c35da6caed2907053d835c2616c4cf",
-  "summary_json_sha256": "8520b20ffb264e6476a49858ebbf9a7e0c769719dd3ea1b85ae65a47f40a61e4",
+  "report_md_sha256": "1662000dc2fae78b35b1538b8eae2d8ba946bd05ec0da71ccbbf3ca684b7b1fc",
+  "summary_json_sha256": "95d864ca21136ebb20a3e32a916fbad775e7f132b0e397cd36b922a53336fcef",
   "full_output_script_sha256": "9e5cf06cca0e308da75dab598bc9323be2dc2f0cb180b342181c5d8a5c4cee64",
   "sealed_raw_digests_preserved": {
     "llama_confirmation_mechanism": "e9cf31b72796c8491029dce4f3a074e5ab694d126b3a6692cb3103e1ed87a886",
@@ -15,7 +15,8 @@
     "llama_confirmation_function": "c5b78a2e172cba07390a9d0235d6d287fb4828efdfe78132cfa026a063a5dfa2",
     "qwen32_discovery_native": "4b93c2345671064db6bb1efa74407e56a80bf5c56a8ca3fbc3ce63eaef66b3c9",
     "qwen32_discovery_function": "0786878e82517e20e35dd1e163b68f06a5fe08f45671688e43c1f4206b491f17",
-    "qwen32_confirmation_mechanism": "77599c9aa596fee5714722d2da22ff0f1576530a7f908e352c5e0c576f9a5898"
+    "qwen32_confirmation_mechanism": "77599c9aa596fee5714722d2da22ff0f1576530a7f908e352c5e0c576f9a5898",
+    "qwen32_confirmation_native": "ad93547e4fa34a9aeab138bffb10b39a06b0562b494473d3d6ba12a18cd4042f"
   },
   "runs": {
     "qwen3_confirmation_mechanism": {
@@ -807,6 +808,87 @@
       "raw_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68",
       "run_sha256": "0f4bdb28ee23dfd46aeea70e2891a0c53f3d22c5e9c2670b55691d7a31abd50d"
     },
+    "qwen32_confirmation_native": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1217,
+        "max_abs_error": 0,
+        "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "49ffd6eef33f29ecbb6124a4d21ea6b398d2639f978309c05ee86c52244d9cf5"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 256,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "native_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041",
+      "run_sha256": "b4fe94a4b251ee95f4bb358f1d3b51a8c1b80f3260f00786e8378bc553c9cda0"
+    },
     "llama_confirmation_mechanism": {
       "analysis_numeric_comparison": {
         "numeric_items": 1041,
@@ -1155,26 +1237,26 @@
     }
   },
   "totals": {
-    "completed_stages": 10,
+    "completed_stages": 11,
     "planned_stages": 18,
-    "scores": 133888,
-    "contexts_by_stage": 272,
-    "stage_device_hours": 4.21192657775349,
-    "worker_resident_device_hours_so_far": 4.257146635585361
+    "scores": 150272,
+    "contexts_by_stage": 304,
+    "stage_device_hours": 5.073132032818265,
+    "worker_resident_device_hours_so_far": 5.152555113368565
   },
-  "markdown_complete_rows_checked": 10,
-  "markdown_metric_cells_checked": 66,
-  "markdown_numeric_presentations_checked": 196,
-  "paired_confirmation_count": 1,
+  "markdown_complete_rows_checked": 11,
+  "markdown_metric_cells_checked": 77,
+  "markdown_numeric_presentations_checked": 229,
+  "paired_confirmation_count": 2,
   "paired_confirmation_numeric_comparison": {
-    "numeric_items": 40,
+    "numeric_items": 72,
     "max_abs_error": 0,
-    "largest_error_path": "/qwen32_mechanism/label_interface_signed/n_contexts",
+    "largest_error_path": "/qwen32_native/native_restricted_restore_signed/n_contexts",
     "missing": [],
     "matched_nonfinite_items": [],
     "author_analysis_sha256": null
   },
-  "markdown_paired_rows_checked": 10,
+  "markdown_paired_rows_checked": 18,
   "pairing_scope": "C32 byte-identical context files only; large-small per-context vector then bootstrap910. Existing D16 checked only for formula consistency, never paired against small C32. Different recipes do not identify a causal parameter-scaling law.",
   "full_output_scope": "Secondary output metrics exactly preserve origin/cross \u00d7A/B\u00d7query equal weighting, mean not joint; shared other-source-word zeros are surface-unidentifiable, not provenance success.",
   "resident_accounting_scope": "Worker totals match recorded last_observed_at snapshots; running jobs accrue beyond these timestamps until the next completed/failed stage update. Historical TF32 failed residency is separate.",

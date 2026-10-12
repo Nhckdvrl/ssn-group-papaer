@@ -1,7 +1,7 @@
 # E131 独立 raw 校对（滚动封存）
 
 这是 EXECUTION §5 的 raw-first 数值/实际运行校对，不改主张等级、研究状态或冻结科学读数。
-当前完整审计 10/18 stage，272 contexts、133888 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
+当前完整审计 11/18 stage，304 contexts、150272 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
 
 三个科学源见 JSON；dispatch `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`。
 每批全部 raw 推导先写入独立 seal，再打开该批 author analysis。CPU/pre-score/精度修复审计保持原文件。
@@ -466,6 +466,64 @@ CPU context 字节一致，实际 edge hook 全层 11 模式计数符合冻结�
 
 JSON 保留全部43接口的均值/CI、full/candidate/label rate、双私人方向与 margin；12重建目标的 raw/rule双差、r/RMSE/zero及bootstrap、全部关系响应和逐层原生注意统计。完整性不由阳性方向筛选。
 
+## qwen32_confirmation_native
+
+完整 32 contexts ×64接口×8 query = 16384 评分；64 层、2 GPU，FP32/eager/TF32=False。CPU材料字节一致，全部实际层消费与几何边计数通过，cached/full 1.14440918e-05、native self 0、graph-zero 0。
+作者数值比较 1217 项、最大误差 0。
+
+| 固定读数 | 均值 [95% context bootstrap CI] |
+|---|---|
+| shared/native/cross_answer_removal/rule_signed | 1.97202 [1.46707, 2.4996] |
+| shared/native/cross_answer_removal/rule_absolute | 1.97202 [1.46707, 2.4996] |
+| shared/native/within_answer_removal/rule_signed | -0.387405 [-0.725429, -0.0637983] |
+| shared/native/within_answer_removal/rule_absolute | -0.387405 [-0.725429, -0.0637983] |
+| shared/native/cross_vs_within_removal/rule_signed | 2.35943 [1.89179, 2.81866] |
+| shared/native/cross_vs_within_removal/rule_absolute | 2.35943 [1.89179, 2.81866] |
+| shared/native/all_cross_removal/rule_signed | 0.16323 [-0.402849, 0.70094] |
+| shared/native/all_cross_removal/rule_absolute | 0.16323 [-0.402849, 0.70094] |
+| shared/native/answer_path_restoration/rule_signed | -0.544483 [-0.832696, -0.276054] |
+| shared/native/answer_path_restoration/rule_absolute | -0.544483 [-0.832696, -0.276054] |
+| shared/native/restoration_residual/rule_signed | 0.707713 [0.165118, 1.24932] |
+| shared/native/restoration_residual/rule_absolute | 0.707713 [0.165118, 1.24932] |
+| shared/gate/cross_answer_removal/rule_signed | 1.7718 [1.27392, 2.30858] |
+| shared/gate/cross_answer_removal/rule_absolute | 1.6892 [1.22048, 2.20604] |
+| shared/gate/within_answer_removal/rule_signed | -1.1613 [-1.70314, -0.605209] |
+| shared/gate/within_answer_removal/rule_absolute | -1.0494 [-1.54812, -0.521671] |
+| shared/gate/cross_vs_within_removal/rule_signed | 2.93309 [2.30546, 3.52867] |
+| shared/gate/cross_vs_within_removal/rule_absolute | 2.7386 [2.12048, 3.30643] |
+| shared/gate/all_cross_removal/rule_signed | 3.41163 [2.67696, 4.13863] |
+| shared/gate/all_cross_removal/rule_absolute | 3.56159 [2.93932, 4.20878] |
+| shared/gate/answer_path_restoration/rule_signed | 0.775127 [0.321263, 1.28387] |
+| shared/gate/answer_path_restoration/rule_absolute | 1.03131 [0.64626, 1.4868] |
+| shared/gate/restoration_residual/rule_signed | 2.6365 [2.01506, 3.24987] |
+| shared/gate/restoration_residual/rule_absolute | 2.53028 [2.01983, 3.06513] |
+| far/native/cross_answer_removal/rule_signed | 0.0924159 [-0.178395, 0.364986] |
+| far/native/cross_answer_removal/rule_absolute | -0.149233 [-0.365384, 0.0467532] |
+| far/native/within_answer_removal/rule_signed | -0.449371 [-1.58228, 0.651616] |
+| far/native/within_answer_removal/rule_absolute | -2.14012 [-2.9556, -1.37036] |
+| far/native/cross_vs_within_removal/rule_signed | 0.541787 [-0.554589, 1.66717] |
+| far/native/cross_vs_within_removal/rule_absolute | 1.99089 [1.18537, 2.82689] |
+| far/native/all_cross_removal/rule_signed | -0.646548 [-1.10179, -0.188389] |
+| far/native/all_cross_removal/rule_absolute | -0.138818 [-0.543267, 0.248568] |
+| far/native/answer_path_restoration/rule_signed | -0.131987 [-0.337453, 0.0918421] |
+| far/native/answer_path_restoration/rule_absolute | -0.210694 [-0.406317, -0.00856851] |
+| far/native/restoration_residual/rule_signed | -0.514562 [-0.90243, -0.138514] |
+| far/native/restoration_residual/rule_absolute | 0.0718768 [-0.269555, 0.394289] |
+| far/gate/cross_answer_removal/rule_signed | 0.127585 [-0.0978303, 0.36264] |
+| far/gate/cross_answer_removal/rule_absolute | -0.0377642 [-0.254492, 0.180404] |
+| far/gate/within_answer_removal/rule_signed | 0.696882 [-0.258625, 1.62981] |
+| far/gate/within_answer_removal/rule_absolute | -1.5471 [-2.26952, -0.892491] |
+| far/gate/cross_vs_within_removal/rule_signed | -0.569297 [-1.5703, 0.471813] |
+| far/gate/cross_vs_within_removal/rule_absolute | 1.50934 [0.805345, 2.31632] |
+| far/gate/all_cross_removal/rule_signed | 0.00399248 [-0.38235, 0.440554] |
+| far/gate/all_cross_removal/rule_absolute | 0.911266 [0.672838, 1.20513] |
+| far/gate/answer_path_restoration/rule_signed | 0.102983 [-0.0208952, 0.228098] |
+| far/gate/answer_path_restoration/rule_absolute | 0.32042 [0.252254, 0.389494] |
+| far/gate/restoration_residual/rule_signed | -0.0989907 [-0.496269, 0.337551] |
+| far/gate/restoration_residual/rule_absolute | 0.590846 [0.345909, 0.883157] |
+
+恢复是在全部 B→A 形成阻断中开放 B答案→A-label 边；没有 donor。raw removed 计数是恢复前被删边数，net removed=removed−restored，与独立 CPU 最终图逐ctx一致。
+
 ## 首次32B探索与配对锚点的范围
 
 Q32 n16 已在原冻结接口上得到 A形成与 B读取背景的正功能作用；signed/absolute interaction 的 CI 均跨0，保留该边界而不把形成效应作废。固定系数历史答案 KV 对实际 A-label 干预有预测改善和残差，不能改述为完整中介或全部必要性解释。
@@ -506,7 +564,7 @@ summary9批嵌入的analysis/run/raw hash与已封独立结果一致；自然fun
 
 ## 大小模型新32确认材料的独立配对
 
-当前1个同family/stage的C32 pair已经独立封存；实际运行contexts逐字一致。使用原核心vector的逐context large−small后bootstrap910。发现n16与C32不配对，不称因果scaling law。
+当前2个同family/stage的C32 pair已独立封存；实际运行contexts逐字一致。本次新native逐context large−small的vector与bootstrap910在打开该批author analysis前写入seal，发现n16不与C32配对。不同checkpoint recipe不是因果scaling law。
 
 | Pair | 固定读数 | Large−small [95% paired CI] |
 |---|---|---|
@@ -520,8 +578,17 @@ summary9批嵌入的analysis/run/raw hash与已封独立结果一致；自然fun
 | qwen32_mechanism | answer_K_absolute | -0.219378 [-0.753467, 0.319236] |
 | qwen32_mechanism | answer_relation_signed | -0.106343 [-0.300782, 0.0673443] |
 | qwen32_mechanism | answer_relation_absolute | -0.149144 [-0.311523, 0.0013804] |
+| qwen32_native | native_answer_removal_signed | 0.210239 [-0.251162, 0.670078] |
+| qwen32_native | native_answer_removal_absolute | 0.38106 [-0.163706, 0.950705] |
+| qwen32_native | native_restricted_restore_signed | 0.105438 [-0.470388, 0.714444] |
+| qwen32_native | native_restricted_restore_absolute | 0.105438 [-0.470388, 0.714444] |
+| qwen32_native | gate_answer_removal_signed | 0.674644 [-0.0100294, 1.39626] |
+| qwen32_native | gate_answer_removal_absolute | 0.615668 [-0.0625128, 1.30595] |
+| qwen32_native | gate_restricted_restore_signed | -1.36822 [-2.29903, -0.47407] |
+| qwen32_native | gate_restricted_restore_absolute | -1.40708 [-2.18184, -0.655059] |
 
-双private方向的差值为secondary分层，同样全保留，不用于模型筛选或更改理论资格。全43/64/85接口与instruction/全部K/KV/V系数1重建仍见各stage独立raw结果。
+双private差值同报为secondary，不筛模型；完整stage仍保留全部43/64/85接口、instruction和K/KV/V固定系数1重建。没有独立GPU重跑。
+本次pre-author配对seal `79899f2586461ced44e438fc0b7abc5c46848151903810d088a112a25533d233` 已另存 independent_paired_raw_2026-10-12.json。
 
 ## 当前作者 10/18 PARTIAL 报告独立复核
 
@@ -530,3 +597,11 @@ summary10批嵌入的analysis/run/raw hash与已封独立结果一致；自然fu
 科学stage小时与worker驻留快照计数一致，每worker只计一次；运行中job的快照只覆盖last_observed_at，不代表报告生成时刻所有新增驻留。mean Actor accuracy不等同joint；shared表面other-source-word零不能识别provenance。新版自然功能表标题已明确shared/两Actor平均，resource_scope已明确last_observed快照；数值未改。
 
 报告script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`；summary `8520b20ffb264e6476a49858ebbf9a7e0c769719dd3ea1b85ae65a47f40a61e4`；report `8eeef2e73dedc958e72c25e935a98eeee8c35da6caed2907053d835c2616c4cf`。继承bootstrap910/reconstruction109910的卡说明是澄清，不是科学CI变更；没有新理论资格或GPU重跑。
+
+## 当前作者 11/18 PARTIAL 报告独立复核
+
+summary11批嵌入的analysis/run/raw hash与已封独立结果一致；自然function的全部12 policy/18 contrast full-output字段按原origin/cross×A/B×8query权重独立重算。11完整表行、77统计单元、229数值呈现逐项一致。pairs函数逐context公式及stat回归原冻结读数；目前2个实际大小confirmation pair、18个配对表行已核对；D16不与小C32配对。
+
+科学stage小时与worker驻留快照计数一致，每worker只计一次；运行中job的快照只覆盖last_observed_at，不代表报告生成时刻所有新增驻留。mean Actor accuracy不等同joint；shared表面other-source-word零不能识别provenance。新版自然功能表标题已明确shared/两Actor平均，resource_scope已明确last_observed快照；数值未改。
+
+报告script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`；summary `95d864ca21136ebb20a3e32a916fbad775e7f132b0e397cd36b922a53336fcef`；report `1662000dc2fae78b35b1538b8eae2d8ba946bd05ec0da71ccbbf3ca684b7b1fc`。继承bootstrap910/reconstruction109910的卡说明是澄清，不是科学CI变更；没有新理论资格或GPU重跑。

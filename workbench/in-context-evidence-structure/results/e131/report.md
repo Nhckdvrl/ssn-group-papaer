@@ -1,6 +1,6 @@
 # E131：大小模型上的同一形成、操作和Source功能链
 
-PARTIAL：10/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
+PARTIAL：11/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
 
 ## 形成与固定系数反事实
 
@@ -17,6 +17,7 @@ PARTIAL：10/18个预定stage完成。发现n16与新确认n32分别展示；大
 |---|---:|---:|---:|
 | qwen3_confirmation_native / 32 | 1.7618 [1.2639,2.2944] | -0.6499 [-1.2695,-0.0803] | 2.1433 [1.4259,2.8926] |
 | qwen32_discovery_native / 16 | 1.8158 [1.2704,2.4089] | -0.8221 [-1.2109,-0.4300] | 1.0852 [0.6022,1.6600] |
+| qwen32_confirmation_native / 32 | 1.9720 [1.4671,2.4996] | -0.5445 [-0.8327,-0.2761] | 0.7751 [0.3213,1.2839] |
 | llama_confirmation_native / 32 | 0.8590 [0.6633,1.0846] | -0.2754 [-0.3933,-0.1551] | 0.9867 [0.6792,1.3030] |
 
 ## 真实文本两Source函数：shared词表、两Actor平均candidate/full
@@ -41,6 +42,14 @@ PARTIAL：10/18个预定stage完成。发现n16与新确认n32分别展示；大
 | qwen32_mechanism | answer_K_absolute | -0.2194 [-0.7535,0.3192] |
 | qwen32_mechanism | answer_relation_signed | -0.1063 [-0.3008,0.0673] |
 | qwen32_mechanism | answer_relation_absolute | -0.1491 [-0.3115,0.0014] |
+| qwen32_native | native_answer_removal_signed | 0.2102 [-0.2512,0.6701] |
+| qwen32_native | native_answer_removal_absolute | 0.3811 [-0.1637,0.9507] |
+| qwen32_native | native_restricted_restore_signed | 0.1054 [-0.4704,0.7144] |
+| qwen32_native | native_restricted_restore_absolute | 0.1054 [-0.4704,0.7144] |
+| qwen32_native | gate_answer_removal_signed | 0.6746 [-0.0100,1.3963] |
+| qwen32_native | gate_answer_removal_absolute | 0.6157 [-0.0625,1.3060] |
+| qwen32_native | gate_restricted_restore_signed | -1.3682 [-2.2990,-0.4741] |
+| qwen32_native | gate_restricted_restore_absolute | -1.4071 [-2.1818,-0.6551] |
 
 ## 完整性与解释对象
 
