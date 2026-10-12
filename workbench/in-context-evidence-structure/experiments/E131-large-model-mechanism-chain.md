@@ -89,3 +89,5 @@ Q32新32确认的真实SST shared/full两Actor平均87.9883→95.7031%，targete
 **70B原生发现完整独立核（14/18）：** n16/8192scores、80层四卡FP32/eager，full-source答案路径移除signed+1.54209[1.09627,1.97003]nats；受限恢复A-only+1.01095[.63720,1.40072]、full-source−.43969[−.65350,−.20772]；cross-vswithin+2.55987[2.06511,3.05854]。A单源两私人方向candidate/full均100%，far词表signed及恢复零向结果全部保留。独立1217数值误差0，38400实际mask调用、cached/full9.54e−6/self/graph0。原13批未重算，368run-stagectx/185728scores/14.977382科学stage设备时；余D函数及C三批继续，等级与formal状态不变。
 
 **新资源准备：** 复查fvcrc21四张空卡（低占用/0util），/tmp本地NVMe容量充足且预定模型目录未占用。11 pinned副本向21独立peer复制，逐文件核验同30官方SHA；本次仅资产分发，不读部分分数、不改18批/种子/精度/条件，当前science仍10/13各四卡。后续如拆分独立阶段，需互斥科学writer并记录调度，不把数据复制当新实验。
+
+**独立stage调度（评分前，已纠正）：** 初版helper的stage claim不被旧10 worker读取，存在检查与写入之间的竞争；独立审查发现此问题，初版未运行。原审计保留，不以既有behavior断言声称自动互斥。修正版只在已结束D、四卡空闲的fvcrc13运行：核验10的owned父子PID与准确命令，短暂暂停旧worker，在确认其尚未完成native且未进入function后建立连续canonical空behavior交接fence，立即恢复旧worker；13在隔离输出ROOT执行原function，完成后逐文件发布，behavior始终存在、run.json最后发布。旧10继续完成机制/native，未来function guard必然看到fence，退出记录保留为调度交接。四卡FP32/85条件/n32/seed131103、材料、原五科学source与分析完全不变，独立驻留journal不覆写10。修正版需再次静态独立核，尚未启动；不读partial效果作排程或判断。
