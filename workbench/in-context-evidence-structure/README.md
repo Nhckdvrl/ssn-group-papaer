@@ -145,4 +145,4 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 
 - **E128/E129资产：** E128八批192ctx/130560scores，f0a014…/5e9549ed前评分freeze，独立38760数值max0；raw同NFS `results/e128/`，小report/summary/run/preflight/audit与图入git。E129 raw同`results/e129/`，四固定Llama/14B运行16/129001→32/129101，生成材料无需外部数据；完整多层pre-input Cue-only运输，所有raw/事故保留。复现入口见[脚本说明](scripts/README.md)，model pins和conda与E119/128相同。
 
-- **E130/E131资产：** E130四批96ctx/104448scores，7ef59…/fa41da09预评分freeze，raw同NFS results/e130/，小summary/完整报告/4run/独立校对入git；E131同核心三环节8/32/70B，源451238d5、完整FP32修正0a50bbb1，18CPU已封/运行中。70权重只存11/13本地，Q32在20 /dev/shm/ices_models/Qwen3-32B，不进git；pins/各shard SHA与空卡接入记录见results/e131。
+- **E130/E131资产：** E130四批96ctx/104448scores，7ef59…/fa41da09预评分freeze，raw同NFS results/e130/，小summary/完整报告/4run/独立校对入git；E131同核心三环节8/32/70B，源451238d5、完整FP32修正0a50bbb1，18CPU已封，9/18科学stage独立核（Q32三环节pilot＋8B新确认）；Q32独立确认运行。70权重只存11/13本地，Q32在20 /dev/shm/ices_models/Qwen3-32B，不进git；pins/各shard SHA与空卡接入记录见results/e131。

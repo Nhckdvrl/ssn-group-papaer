@@ -345,3 +345,5 @@ E130固定Llama8B/Qwen14B各16→32、native/targeted/independent三历史policy
 依据[卡E130](experiments/E130-formation-to-source-cue.md)、[完整136接口与全部政策/函数报告](results/e130/report.md)、[独立raw/report校对](results/e130/independent_raw_review_2026-10-12.md)。81188 raw数值max4.44e−16，28728展示数字全一致；.805577完整科学run GPUh，数值floor2.48e−5。读序例外公开，未独立GPU rerun。主文三认识/等级/formal状态保持，附录L补该follow-up。
 
 阅读ACL/EMNLP/NAACL实际跨模型证据后，E131直接检验同一核心链：Q32/L70形成反事实、原生操作、真实SST两来源功能，加同family8B新材料配对，18CPU完整首评分前451238d5冻结。初试TF32的三worker未通过原.001误差、0科学row，失败全部保留；0a50bbb1恢复原full-FP32并重启同种子/材料，8B已通过数值检查，32加载完成，70权重下载并依资产/空卡接入。既不缩主张，也不要求强模型持续犯错；待完整结果判断形成与读取怎样共同改变Source使用。
+
+E131首轮9/18独立校对完整：Q32三环节已支持同一形成/原生操作/Source函数解释，SST shared平均full86.9141→95.8984%，配对收益8.9844[5.8594,12.5000]pp；单规则两方向本批100%而形成仍有作用。原C21–23三级和C24二级不变；新32确认与70未完成，不借局部Cue结果撤销形成认识，不用D与不同材料的8B作配对scale。见E131卡与results/e131独立raw/report。
