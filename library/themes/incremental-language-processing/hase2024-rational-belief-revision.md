@@ -1,7 +1,7 @@
-# Fundamental Problems With Model Editing: How Should Rational Belief Revision Work in LLMs?（2024）
+# 文献资产已迁移（仅兼容导航）
 
-[primary摘要](https://arxiv.org/abs/2406.19354v1)，[HTML](https://arxiv.org/html/2406.19354v1)。摘要/定义问题已读；23页正文尚未全读，不能冒充全篇audit。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-提出12个model editing开放问题，涉及编辑的远端后果、概率性蕴含标签、agent simulators的belief、模型是否有可编辑belief等；semi-synthetic Wikidata/Bayesian-agent gold提供可比较标准。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
 
-对我们：续写概率不是直接belief oracle；“不assert”和“排除”必须区别，未约束的separate activity没有正误gold。I01若声称event-local correction，需要明确修改对象与允许的影响范围，不能拿任意probability shift当修订能力失败。本文研究parametric editing，与当前frozen自然文本行为不同；不因为广泛理论owner就判当前问题死刑。
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

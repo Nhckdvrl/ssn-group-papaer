@@ -1,13 +1,7 @@
-# Express Your Doubts — Probabilistic World Modeling Should Not Be Based on Token logprobs（ICML2026 Position）[证据级别：部分正文]
+# 文献资产已迁移（仅兼容导航）
 
-[primary proceedings](https://proceedings.mlr.press/v306/wagner26b.html)，Eitan Wagner、Omri Abend。无代理下载PDF到本地cache（1,141,217bytes，SHA256 a25927d095b9c127ea6f5bfc4392475d29f21f8ae267790098dcd5dc905a3096），用已有fitz读取；实际读§1–4及§5部分定义/推导，其他例子/附录未完整核对。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. 形态：position与形式化任务分析，不是新behavior benchmark。
-2. 压力：字符串分布、最优回答与真实事件概率经常被混用。
-3. 前提：pretraining估计语料分布，response prediction可能合理地偏向mode。
-4. 来源（DOCUMENTED）：由不同训练/推理任务对应不同目标分布提出。
-5. 距离：source/target估计及second-order概率表达，不能注册为我们新概念。
-6. 方法：分别分析训练阶段、inference格式与用户目标；举coin/reporting-bias例子。
-7. 边界：position不证明所有概率读取无用，也不对我们的角色干预给机制结论。
-8. 可迁移动作：先固定测的是字符串预期、grounded答案还是显式概率，再谈错与对。
-9. 对我们：E38即使公平选择下raw相对bits非0，也不能写模型不知道1/2；fair与unknown程序只校对角色影响的语境边界。具体event/action方向结构仍可研究，generic概率/QA差本身不新。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

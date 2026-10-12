@@ -1,0 +1,9 @@
+# Dukić等：SIFT把序列标注变成生成响应（作者最新v2）
+
+1. **范围/来源：** [作者稿2509.00921v2](https://arxiv.org/abs/2509.00921v2)，2025-10-20，Zagreb TakeLab/Würzburg。主文§1–7 pp1–10完整（全部主表/图caption）；AppA1–9 pp19–23完整，p20样例表未逐token抄验、AppB完整图未读。接受会议未独立核对，不冒充2026已接收顶会。PDF25p外置SHAf3ec02c932b85bc4f695dac719a7e633125421023111a30f325060593cc1336a。
+2. **idea生长（RECONSTRUCTED）：** 序列标注默认要双向，所以把decoder改encoder；但decoder强项生成没被充分用→在已有MetaICL/in-context tuning框架里改变真正监督的token→完整输入loss、仅最后response(SRC)、所有response(MRC)→正则约束span:class输出降低token与格式负担。增量是任务表示/监督接口的组合与系统验证，作者没有占有所有response-only训练或所有ICL+SFT；可借清晰方法题结构，不另开SL线。
+3. **规模/既有数据：** CoNLL03原14041/3250/3453，AAC-MW670/95/193，NLU++2152/309/619（原kfold改固定70/10/20），Ontonotes21244/5385/6000、27类（删train少于1000的role，3–50token/train-val去重等筛选，test6000/26355）。五模型base/instruct：Gemma7B/Mistral7B/Llama2/3/3.1，四seed，0/1/5/10shots，train5epoch，QLoRA q/v rank16 alpha16/drop.1 lr2e−4 BF16，1024max/有效batch32。只成熟标签，不需要bulk Step重审；其筛后SRL分布不是原全Ontonotes。
+4. **主结果及尺度：** ICL明显弱于SFT，base多数训练优于instruct（96/160）；MRC更能利用多shot，但SRL往往1-shot最好而不是越多越好。SRL test Gemma SRC SFT84.0→1shot84.4、10shot78.2，Mistral SRC SFT83.9→1shot83.9、10shot74.4；不是所有SIFT都大涨。相对CM classifier的SRL约27–32 vs生成约80–84差距更大，需结合baseline输入/verb条件/训练范围；LLM2Vec只训classifier，与SIFT QLoRA骨干更新不是同等适应。
+5. **实现与解释限制：** A6明确每query有n+1训练实例，MRC监督response token更多且同5epoch，未对齐总监督token/compute；vanilla有packing、SRC/MRC无，不能把胜出只归某神经机制。MRC“每response使用所有其他instances”的措辞过宽，因果模型实际仅先前context。A8温度.1/top-p.9而非greedy；FSM只保格式不保证role内容，greedy span对不上/异常整句O，仅取首行放弃后续overgeneration，全部是评价接口。SRL谓词条件具体位置匹配未独立审代码，不能只凭低classifier分认证因果掩码有害。
+6. **指令消融：** 不带instruction训练后加原/乱序/无关文本会扰动，SIFT多shot更稳；SRL去长27类instruction有时更好。作者“长context”是合理假说，不是只靠这些消融证明的长度定律。Conclusion“relying original instruction”与abstract“不必要”须按train/inference匹配条件解释，不能抽成矛盾常识。最终稿/代码待核对，不机械抄headline。
+7. **对GP探索：** 多项已有材料的任务形式可直接优化，因果decoder不必先改架构就能做完整span/role；但结构化响应与训练接口已有充足近邻，我们仍要从实际关系更新痛点长出机制/方法。E76无共同收益/E71正确P1并非共同干扰，不能把一般中间草稿或response loss改法叫新贡献；优先核心真实用途实验和现成原金标，新增文本角色归因时才Step检查。
