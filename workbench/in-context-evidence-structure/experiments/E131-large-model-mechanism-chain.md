@@ -10,7 +10,7 @@
 - **固定协议：** 原E121的43条件形成/关系内容/系数1重建；原E120的64条件无donor原生操作与受限恢复；原E123的85条件真实文本两来源功能政策。原脚本与分析不修改；E131仅生成设备分派兼容副本，必要device-local mask比较/模型revision/计时/TF32flag如实记录。逐stage保留全部条件、namespace、查询scope、方向、single与一句指令。两大模型每stage16→32；两小锚点每stage32确认，合计18个完整run。发现池使用各stage旧固定seed；确认native/mechanism/function分别使用131101/131102/131103，validation材料，新确认在大小同family/可匹配tokenizer逐字配对，无旧模型效果筛材料。
 - **读数：** 三环节的既有预定核心读数：E121原生A形成的B规则幅度差及label-interface系数1K/KV/V raw/rule-double-contrast误差（对照zero，所有通道/读取背景保留）；E120 full-source native cross-answer removal signed B-rule response及gate/native受限恢复、within/private controls；E123 shared两Source平均candidate/full准确率、selective/native/all-isolation/query-only配对CI及private/gold-conflict分层。新确认大小模型在相同context做配对差，用context bootstrap，不跨任务池假称相同样本。正确率无损不当机制消失；若大小读数不一致，先分形成与读取的原接口，不以换layer挽救主张。
 - **阳性对照：** 同token单Source正/反私人规则、一句指令native、same-run完整token/cached、实际每层mask消费、pristine cache与noalias/seq；答词/分隔符/label实际位置与既有定义一致。多卡数值可达图与单卡科学含义相同；模型每层cache在对应设备，禁止CPU/disk offload与低精度。原有self与graph-zero保留。
-- **噪声地板 + MIE：** 保留原.001nats cached/full与self floor（实际GPU误差必须通过，不临场放宽），固定10000 context-bootstrap910；两大模型固定16数值有效即32，不按方向选确认；所有零效应、负向、接近完美性能及不可靠primitive同报。阶段计时为model-run wall hours，多卡device-hours另按实际卡数计；另记从首次模型装载到最后stage的连续驻留device-hours，含生成/分析/阶段间等待，不能继续将单卡或stage计时字段直接当总作业GPU时。
+- **噪声地板 + MIE：** 保留原.001nats cached/full与self floor（实际GPU误差必须通过，不临场放宽），固定10000 context-bootstrap910，重建沿父summarize的109910（分析AST已预先冻结）；两大模型固定16数值有效即32，不按方向选确认；所有零效应、负向、接近完美性能及不可靠primitive同报。阶段计时为model-run wall hours，多卡device-hours另按实际卡数计；另记从首次模型装载到最后stage的连续驻留device-hours，含生成/分析/阶段间等待，不能继续将单卡或stage计时字段直接当总作业GPU时。
 - **混杂审计：** 模型训练配方/数据与参数量同时变化，不称受控scaling law；完整对照是同计算对象在这些capacity-spanning checkpoints上的跨模型检验。两个家族非每个尺度全部架构。设备dispatch只变数值实现，需明确误差；不拿失败load/不正确graph当科学负结果。无头/层/强度调优。primitive强而最终correct时，关系影响仍可能在confidence；不将没有accuracy损失包装成没有形成机制。
 - **决策表（跑之前写）：**
 
@@ -42,3 +42,12 @@
 独立精度补核已封：主pre-score seal更新`374a5ce4f50304fddf7bd8f02796c961aa0111d620c4e5dd48432e557cf6c899`；[单行修正审查](../results/e131/independent_precision_fix_review_2026-10-12.json)确认仅TF32 True→False及注释变化，protocol/三engine/18材料SHA全部不变，原f704 seal完整保留。全FP32 dispatch末SHA`5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；再次commit/push前仍0科学row，原floor不放宽。
 
 0a50bbb1已再次先push后复跑：同原空卡分派，实际Q8/L8/Q32第一context均通过完整FP32数值检查，max1.91e−5/7.63e−6/1.14e−5，self0；固定全部phase继续。fvcrc11/13的70D/C接入任务已等待各自完整资产与4空卡，C另外只等D首ctxnumeric，不看科学方向，当前下载中。
+
+
+## E131首轮大模型机制结果：回到原研究问题
+
+**事实（pilot，非新32确认）：** Qwen3-32B在真实SST两私人方向的single功能均100%，A形成条件作用2.8006[2.0147,3.6204]nats；实际label-interface、B共享读取背景的固定系数1 KV重建raw r=.86750、RMSE=.90072/zero1.73944，rule双差r=.93875。原生跨Source答案→A label阻断减少B规则作用1.8158[1.2704,2.4089]nats；受限路径恢复在A-only为1.0852[.6022,1.6600]、full-source为−.8221[−1.2109,−.4300]。同框架三通道、两个重建目标、正/反private与未确认stage交互均保留，不把单个交互CI0当其他形成效应失效。
+
+**解释更新：** 当前大模型支持原计算操作及其读取环境依赖，而非只有小模型性能异常；模型完全能够学单规则，仍需解释多来源时关系怎样进入Source证据。不同通道权重/幅度并不自动意味着不同理论，也不能将r当完整算法。Q8/L8新32 Source函数targeted收益分别7.6172[5.1758,9.9609]/8.8867[6.5429,11.1328]pp，复现对共享/隔离方式的功能预测。
+
+**下一判断：** 完成Q32同新32材料配对和70两phase三环节，再判断同形成过程与后继使用的关系；不以pilot与不同材料的8B作数值scale比较，不开新字段/层/更细控制。主问题、三认识、C21–23级别保持；当前[滚动raw审计](../results/e131/independent_raw_review_2026-10-12.md)8/18 stage，224ctx/112000评分、最大数值差8.55e−15。未完成部分不提前得结论。

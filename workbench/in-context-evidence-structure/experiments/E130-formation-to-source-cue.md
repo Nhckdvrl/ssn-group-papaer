@@ -47,4 +47,4 @@
 
 这项结果回答输入前Source运输接口在三历史政策下的功能，不重新收缩C21–23已确认的历史形成与使用解释。下一步[E131](E131-large-model-mechanism-chain.md)直接以大小模型同一核心链条检验形成、原生操作与两来源实际功能，已先核ACL/EMNLP/NAACL的跨模型理论验证方法。
 
-最终独立JSON seal `228aef779083d79dc58f178b5e068e52458052c0c8dafe8fc9b383c82685a03e`，原raw-runs/CPU seal不变，读序例外保留；正文三认识无改。
+原作者report seal `228aef779083d79dc58f178b5e068e52458052c0c8dafe8fc9b383c82685a03e`；追加附录展示核对后当前JSON seal `031dce4f44315d0de1f458f94ac0c8ef168f5f6fac4deb1360a40839af561258`，原raw-runs/CPU seal不变，读序例外保留；正文三认识无改。
