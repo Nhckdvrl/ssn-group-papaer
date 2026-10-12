@@ -97,6 +97,24 @@ Table~\ref{tab:app-leak-matched} repeats the measurement for Qwen3-8B and Llama-
 The accuracy differences in \S\ref{sec:observation} compare, for requests to A under A-only reading, prompts in which B's convention conflicts with A's and prompts in which it agrees. We computed this breakdown from the confirmation runs after they were completed.
 The differences are 7.4 (3.5--11.7), 1.2 ($-3.1$--5.5), 7.4 (2.7--12.9), 7.4 (2.3--13.3), 2.3 (0.4--5.1) and 5.9 (2.0--10.5) points for Qwen3-8B, 14B, 32B, Mistral-7B, Llama-3.1-8B and 70B with shared words, and between $-1.2$ and 1.6 points with separate words.
 When the query reads both sources, the differences with shared words are 10.5 to 30.9 points.
+Table~\ref{tab:app-flip}, also computed after the confirmation runs, reports how much A's margin changes per query between B's two conventions regardless of direction.
+With separate words this change is as small as the change caused by exchanging B's comments within class, so the effect of B's convention vanishes in magnitude as well as on average.
+Flip rates of A's answers are low throughout and are reported for completeness.
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lccccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{Per-query $|\Delta z|/2$ (nats)} & \multicolumn{3}{c}{A answers flipped (\%)} & Single source \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-8}
+ & Shared & Separate & Separate, within-class & Shared & Separate & Shared, within-class & accuracy (\%) \\
+\midrule
+\rows{tables/app_flip.tex}
+\bottomrule
+\end{tabular}}
+\caption{Magnitude of the effect of B's convention on A under A-only reading (SST-5): mean absolute half-difference of A's margin per query and the share of A's answers that change between B's two conventions, with the within-class exchange as control. Last column: accuracy of prompts that contain only the requested source's demonstrations (shared words).}
+\label{tab:app-flip}
+\end{table*}
 On Measuring Hate Speech comments with \lw{safe}/\lw{toxic} as shared label words and A-only reading, reversing B's convention changes 17.6\% (12.1--23.8) of Qwen3-8B's answers for A, with a mean absolute effect on A's margin of 0.73 nats.
 
 \begin{table*}[t]
@@ -134,7 +152,8 @@ Control: B's comments are exchanged within each class, which leaves B's associat
 \subsection{Reconstruction}
 \label{app:reconstruction}
 
-Table~\ref{tab:app-recon} reports the reconstruction for each channel.
+Table~\ref{tab:app-recon} reports the reconstruction for each channel and reading condition.
+The runs contained key patching and label-state transplants under A-only reading as conditions from the start; their reconstruction statistics in Figure~\ref{fig:reconstruction} were computed after the confirmation runs, with the same definitions as the full-reading statistics.
 Patching keys alone predicts the effect nearly as well as patching keys and values, and patching values alone predicts it less well in every model.
 The last column uses B states formed with separate label words as the reading background, which also gives high correlations.
 Without taking the difference between B's two conventions, the KV correlations are 0.92, 0.95, 0.88, 0.86, 0.79 and 0.62 in the order of the table.
@@ -143,14 +162,14 @@ On Measuring Hate Speech comments the KV correlations of the convention differen
 \begin{table}[!ht]
 \centering\small
 \setlength{\tabcolsep}{2.4pt}
-\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccccccc@{}}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lcccccccc@{}}
 \toprule
- & K & V & KV & KV interval & RMSE & Zero & Sep. \\
+ & A-only K & K & V & KV & KV interval & RMSE & Zero & Sep. \\
 \midrule
 \rows{tables/app_reconstruction.tex}
 \bottomrule
 \end{tabular}}
-\caption{Correlation between predicted and actual effects of B's label words on A's label states (difference between B's conventions, SST-5).
+\caption{Correlation between predicted and actual effects of B's label words on A's label states (difference between B's conventions, SST-5). A-only K: key patching with A-only reading (Figure~\ref{fig:reconstruction}); the other columns read both sources.
 RMSE: error of the KV prediction (nats); Zero: error of predicting no effect; Sep.: KV correlation with B's separate-word states as reading background.}
 \label{tab:app-recon}
 \end{table}
@@ -173,7 +192,7 @@ Restoring only the path, however, changes B's effect by different amounts and in
 \rows{tables/app_operation_gate.tex}
 \bottomrule
 \end{tabular}}
-\caption{Native operation with A-only reading (controlled reviews, shared words; nats, 95\% intervals). A negative reduction is an increase.}
+\caption{Native operation with A-only reading (controlled reviews, shared words; $\Delta$ in nats, 95\% intervals). A negative reduction is an increase.}
 \label{tab:app-op-gate}
 \end{table*}
 
@@ -321,7 +340,7 @@ Read only by the query, the list changes accuracy by less than half a point.
 
 \paragraph{Word-set table.}
 Table~\ref{tab:app-schema} gives the results of Figure~\ref{fig:separate}b with intervals.
-A table that assigns each source the other's word set also improves accuracy when demonstrations read it and reduces answers in the other source's words, by 18.8, 4.8 and 3.2 points in the three models, but less than the correct table.
+A table that assigns each source the other's word set also improves accuracy over the unrelated table when demonstrations read it, by 14.9 and 3.3 points in Qwen3-8B and Mistral-7B (2.8 in Llama-3.1-8B, interval including zero), and reduces answers in the other source's words, by 18.8, 4.8 and 3.2 points, but it helps less than the correct table.
 The correct table improves accuracy for B in all three models and for A in Qwen3-8B (29.9 points), while the gains for A in Mistral-7B (4.5, $-0.2$ to $9.4$) and Llama-3.1-8B (0.2, $-5.3$ to $5.7$) are uncertain.
 In Qwen3-8B the table slightly lowers accuracy restricted to each source's own words (by 3.8 points), so the gain in full-vocabulary accuracy comes with a small cost within the label space.
 
@@ -334,7 +353,7 @@ In Qwen3-8B the table slightly lowers accuracy restricted to each source's own w
 \rows{tables/app_schema.tex}
 \bottomrule
 \end{tabular}}
-\caption{Gains in full-vocabulary accuracy (points) from a public word-set table, relative to a table with unrelated names (first three columns), with 95\% intervals. Formation: only demonstrations can read the table; query: only the query can read it.}
+\caption{Gains in full-vocabulary accuracy (points) from a public word-set table, with 95\% intervals. The first three columns are relative to a table with unrelated names; the last compares the correct with the swapped table, so it equals the first minus the third column. Formation: only demonstrations can read the table; query: only the query can read it.}
 \label{tab:app-schema}
 \end{table*}
 
@@ -343,7 +362,7 @@ We encode the prompt twice, with the two rows of the correct table in either ord
 We then combine A's and B's cached states from the same encoding (orders 00 and 11) or from different encodings (01 and 10), and compare the average of the coherent combinations with the average of the mixed ones, which cancels any difference in the quality of the individual caches.
 The query cannot read the table.
 Table~\ref{tab:app-coherent} reports the results.
-With separate words, coherent combinations improve full-vocabulary accuracy by 23.5, 10.4 and 5.4 points in Qwen3-8B, Mistral-7B and Llama-3.1-8B, almost entirely by reducing answers in the other source's words, while accuracy within each source's own words changes by about one point or less.
+With separate words, coherent combinations improve full-vocabulary accuracy by 23.5, 9.1, 6.5 and 21.4 points in Qwen3-8B, Mistral-7B, Llama-3.1-8B and Qwen3-14B (Table~\ref{tab:app-coherent}). An earlier run with separate words only, on other prompts, gave 23.5, 10.4 and 5.4 points for the first three models and showed that the gain comes almost entirely from fewer answers in the other source's words, while accuracy within each source's own words changes by about one point or less.
 With shared words and opposite conventions, where the words cannot identify a source, coherent combinations still help (Table~\ref{tab:app-coherent}), and they increase the margin between the answers for the two requested sources by 0.63, 0.13, 0.03 and 0.50 nats, while a shift common to both requests stays near zero.
 Joint accuracy nevertheless remains far below each source's accuracy when read alone (Table~\ref{tab:app-joint}).
 When B differs from A in the aspect it judges rather than in its convention, coherent combinations help less: 2.9 points (0.6--5.5) for Qwen3-14B and intervals that include or touch zero for the other three models.
@@ -380,6 +399,78 @@ Qwen3-14B & 63.1 / 60.6 & 97.5 / 97.9 \\
 \end{tabular}}
 \caption{Accuracy (\%) of the coherent combinations 00 / 11 with shared words and conflicting conventions.}
 \label{tab:app-joint}
+\end{table}
+
+\section{Which cross-source edges separate the rules}
+\label{app:edges}
+
+This experiment uses new SST-5 prompts (development seed 132001, confirmation seed 132101) with the same token stream as the main SST-5 experiments.
+Each demonstration is divided into its comment (\texttt{Comment: ...}), its name (\texttt{Annotator: name}), the cue \texttt{Label:} and its answer tokens, using character offsets of the tokenized block.
+Starting from complete isolation, one type of the other source's tokens is made visible again to every token of a source during formation: its names, its comments or its answers.
+A further policy blocks only the other source's answers as senders for all tokens of a source.
+Qwen3-32B and Llama-3.1-70B were run on the 32 confirmation prompts only, with the shared and separate namespaces, the first six policies and the two convention worlds; their analyses were fixed on the development runs of the smaller models.
+The label-word role swap uses \lw{pass}/\lw{flag} for both sources, or \lw{pass}/\lw{flag} for A and \lw{no}/\lw{yes} for B.
+The layer-band analysis applies selective blocking only in one quarter of the layers.
+Attention mass is the attention weight, averaged over heads, that A's label positions place on each type of earlier token in the native prompt, summed over the tokens of that type and averaged over layers.
+
+E132_TEXT_PLACEHOLDER
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccccccccc@{}}
+\toprule
+ & \multicolumn{5}{c}{Shared words, conflicting conventions (\%)} & \multicolumn{5}{c}{Separate words, full vocabulary (\%)} \\
+\cmidrule(lr){2-6}\cmidrule(l){7-11}
+ & Native & Isolated & + names & + comments & + answers & Native & Isolated & + names & + comments & + answers \\
+\midrule
+\rows{tables/app_e132_edges.tex}
+\bottomrule
+\end{tabular}}
+\caption{Accuracy when complete isolation is relaxed for one type of the other source's tokens (SST-5, query reads both sources).}
+\label{tab:app-edges}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\adjustbox{max width=\textwidth}{\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{4}{c}{$\Delta$ with A-only reading (nats)} & \multicolumn{2}{c}{Per-query $|\Delta z|/2$} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+A / B words & no,yes / no,yes & no,yes / pass,flag & pass,flag / pass,flag & pass,flag / no,yes & pass,flag / pass,flag & pass,flag / no,yes \\
+\midrule
+\rows{tables/app_e132_swap.tex}
+\bottomrule
+\end{tabular}}
+\caption{The cross-source effect depends on whether the sources share label words, not on which words they share.}
+\label{tab:app-swap}
+\end{table*}
+
+\begin{table}[!ht]
+\centering\small
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & $\Delta$ & L1 & L2 & L3 & L4 \\
+\midrule
+\rows{tables/app_e132_bands.tex}
+\bottomrule
+\end{tabular}}
+\caption{Reduction of $\Delta$ (A-only reading, shared words) when the answer-to-label path is blocked in one quarter of the layers only (L1: first quarter).}
+\label{tab:app-bands}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{To B's answers} & To B's & To A's \\
+\cmidrule(lr){2-4}
+ & Shared & Separate & Difference & names & comments \\
+\midrule
+\rows{tables/app_e132_attention.tex}
+\bottomrule
+\end{tabular}}
+\caption{Attention mass (\%) from A's label positions in the native prompt, averaged over heads and layers.}
+\label{tab:app-attention}
 \end{table}
 
 \section{Criteria versus conventions}

@@ -276,7 +276,7 @@ def main():
     assert all(set(v) == set(range(len(model.model.layers))) and set(v.values()) == {args.n} for v in consumption.values())
     elapsed = time.time() - started
     revision = {'qwen3': '40c069824f4251a91eefaf281ebe4c544efd3e18' if model.config.num_hidden_layers == 40 else 'b968826d9c46dd6066d109eabc6255188de91218',
-        'mistral': 'caa1feb0e54d415e2df31207e5f4e273e33509b1', 'llama': '1f47e50cdbe801ad8a5174156ec3a0655108fb9f'}[model.config.model_type]
+        'mistral': 'caa1feb0e54d415e2df31207e5f4e273e33509b1', 'llama': '1f47e50cdbe801ad8a5174156ec3a0655108fb9f', 'gemma2': ('33c193028431c2fde6c6e51f29e6f17b60cbfac6' if model.config.num_hidden_layers == 42 else 'c5ebcd40d208330abc697524c919956e692655cf')}[model.config.model_type]
     (dest / 'run.json').write_text(json.dumps({'args': vars(args), 'model_revision': revision, 'model_type': model.config.model_type,
         'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'contexts_sha256': hashlib.sha256((dest / 'contexts.jsonl').read_bytes()).hexdigest(),
