@@ -4,6 +4,8 @@
 
 **上轮完成（历史范围）：** E115 Llama、E116三家族真实MHS文本、E117三家族双方面机制、E118独立criterion×私人约定、E11914B两块确认均完成。24批576contexts/181632评分，36750项独立数值复算和实际token几何通过。已有C21有界L3、C22/C23有界L2；新C24有界L2只陈述不同缓存接口的功能差异。正式I04/ACTIVE状态不改，未宣布投稿就绪。
 
+**本轮有限收束（2026-10-12）：** 三项主文认识的跨容量验证 E131 已完成12/18批：Qwen3-32B三环发现/确认、新8B两家族锚点完成，余70B三环各发现/确认。32B真实文本 selective gain +7.71 [5.76,9.57]pp；形成效应与native操作仍确认，读取贡献随checkpoint变化。完整数字见[报告](results/e131/report.md)与正文§6.6/附录M。剩余计算不增claim数；整篇组织去除同表/图和过程叙述重复，完整证据保留在现有附录。正式状态由人决定，授权执行继续。
+
 **工作标题（可修改）：** *How Shared Outputs Shape Source-Specific Evidence in In-Context Learning*。
 
 **主旨：** Source-conditioned retrieval acts on evidence jointly formed from the contextual history. Shared output identities shape which source's learned associations enter that evidence. A causal formation pathway predicts namespace counterfactuals, while criterion–convention interventions show that transferred associations and full criterion-related functional responses require distinct measurements.

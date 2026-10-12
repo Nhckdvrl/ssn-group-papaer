@@ -1,7 +1,7 @@
 # E131 独立 raw 校对（滚动封存）
 
 这是 EXECUTION §5 的 raw-first 数值/实际运行校对，不改主张等级、研究状态或冻结科学读数。
-当前完整审计 11/18 stage，304 contexts、150272 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
+当前完整审计 12/18 stage，336 contexts、172032 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
 
 三个科学源见 JSON；dispatch `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`。
 每批全部 raw 推导先写入独立 seal，再打开该批 author analysis。CPU/pre-score/精度修复审计保持原文件。
@@ -524,6 +524,40 @@ JSON 保留全部43接口的均值/CI、full/candidate/label rate、双私人方
 
 恢复是在全部 B→A 形成阻断中开放 B答案→A-label 边；没有 donor。raw removed 计数是恢复前被删边数，net removed=removed−restored，与独立 CPU 最终图逐ctx一致。
 
+## qwen32_confirmation_function
+
+完整 32 contexts ×85接口×8 query = 21760 评分；64 层、2 GPU，FP32/eager/TF32=False。CPU材料字节一致，全部实际层消费与几何边计数通过，cached/full 1.90734863e-05、native self 0、graph-zero 0。
+作者数值比较 1893 项、最大误差 0。
+
+| 固定读数 | 均值 [95% context bootstrap CI] |
+|---|---|
+| shared/native/answer_cross_off_minus_normal mean candidate gain | 0.0771484 [0.0576172, 0.0957031] |
+| shared/native/all_cross_off_minus_normal mean candidate gain | -0.126953 [-0.147461, -0.107397] |
+| shared/native/answer_minus_all mean candidate gain | 0.204102 [0.181641, 0.223633] |
+| shared/native/normal full mean / joint | 0.879883 [0.862305, 0.897461] / 0.767578 [0.734375, 0.800781] |
+| shared/native/answer_cross_off full mean / joint | 0.957031 [0.935547, 0.973633] / 0.921875 [0.888672, 0.951172] |
+| shared/native/all_cross_off full mean / joint | 0.75293 [0.741211, 0.762695] / 0.529297 [0.515625, 0.542969] |
+| shared/gate/answer_cross_off_minus_normal mean candidate gain | 0.0283203 [0.0146484, 0.0419922] |
+| shared/gate/all_cross_off_minus_normal mean candidate gain | 0.0410156 [0.0244141, 0.0576172] |
+| shared/gate/answer_minus_all mean candidate gain | -0.0126953 [-0.0302734, 0.00390625] |
+| shared/gate/normal full mean / joint | 0.938477 [0.922852, 0.954102] / 0.884766 [0.857422, 0.912109] |
+| shared/gate/answer_cross_off full mean / joint | 0.966797 [0.950195, 0.981445] / 0.939453 [0.910156, 0.964844] |
+| shared/gate/all_cross_off full mean / joint | 0.979492 [0.96875, 0.989258] / 0.962891 [0.945312, 0.980469] |
+| far/native/answer_cross_off_minus_normal mean candidate gain | 0.0205078 [0.00878906, 0.0322266] |
+| far/native/all_cross_off_minus_normal mean candidate gain | 0.0205078 [-0.00292969, 0.0439453] |
+| far/native/answer_minus_all mean candidate gain | 0 [-0.0234375, 0.0234375] |
+| far/native/normal full mean / joint | 0.932617 [0.910156, 0.952148] / 0.869141 [0.828125, 0.90625] |
+| far/native/answer_cross_off full mean / joint | 0.947266 [0.926758, 0.96582] / 0.898438 [0.859375, 0.933594] |
+| far/native/all_cross_off full mean / joint | 0.526367 [0.504883, 0.550781] / 0.0996094 [0.0664062, 0.140625] |
+| far/gate/answer_cross_off_minus_normal mean candidate gain | 0.0253906 [0.0107422, 0.0410156] |
+| far/gate/all_cross_off_minus_normal mean candidate gain | 0.0693359 [0.0419678, 0.0966797] |
+| far/gate/answer_minus_all mean candidate gain | -0.0439453 [-0.0693359, -0.0185547] |
+| far/gate/normal full mean / joint | 0.871094 [0.850586, 0.891602] / 0.751953 [0.712891, 0.791016] |
+| far/gate/answer_cross_off full mean / joint | 0.896484 [0.875, 0.916016] / 0.804688 [0.769531, 0.837891] |
+| far/gate/all_cross_off full mean / joint | 0.94043 [0.922852, 0.957031] / 0.886719 [0.853516, 0.919922] |
+
+primary 中 both 是两 Actor accuracy 的均值，不是 joint；JSON 单列 joint 与完整输出/other-source word，并保留全部85接口/双私有方向。
+
 ## 首次32B探索与配对锚点的范围
 
 Q32 n16 已在原冻结接口上得到 A形成与 B读取背景的正功能作用；signed/absolute interaction 的 CI 均跨0，保留该边界而不把形成效应作废。固定系数历史答案 KV 对实际 A-label 干预有预测改善和残差，不能改述为完整中介或全部必要性解释。
@@ -619,3 +653,31 @@ plot script `2818a0e340c9f41dc97bfabb03458b11fb8cacfb836c3d063e24095fd76f9164`�
 新版footnote已明确within each family and stage；manifest已明确mechanism/function分别采样SST、native为controlled restaurant，以及function为shared/full/two-Actor mean而非joint。PNG重新视检通过。CSV哈希不变，保留原24数字零误差校对，不重复raw。
 
 script `273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2`；manifest `a2968abb56b5f6c724e500e6bdf7614f4d3a51ecbe86a9810d6a11759a169841`；PNG `ea38e5cce4c29051a3b8a37100c7056242100ac37d2c16d63d685eecadb7e967`。旧图snapshot与全部raw digest保留。
+
+## 当前作者 12/18 PARTIAL 报告独立复核
+
+summary12批嵌入的analysis/run/raw hash与已封独立结果一致；自然function的全部12 policy/18 contrast full-output字段按原origin/cross×A/B×8query权重独立重算。12完整表行、100统计单元、304数值呈现逐项一致。pairs函数逐context公式及stat回归原冻结读数；目前3个实际大小confirmation pair、36个配对表行已核对；D16不与小C32配对。
+
+科学stage小时与worker驻留快照计数一致，每worker只计一次；运行中job的快照只覆盖last_observed_at，不代表报告生成时刻所有新增驻留。mean Actor accuracy不等同joint；shared表面other-source-word零不能识别provenance。新版自然功能表标题已明确shared/两Actor平均，resource_scope已明确last_observed快照；数值未改。
+
+报告script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`；summary `7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d`；report `9891e09a8128a032bacdb894a3b8ba38bd1d71ebe7739348d85b804352f03046`。继承bootstrap910/reconstruction109910的卡说明是澄清，不是科学CI变更；没有新理论资格或GPU重跑。
+
+## 第12批完整确认的读序与实际范围
+
+Qwen3-32B function confirmation 为32×85×8=21760评分；64层/2GPU、FP32/eager/TF32=False，CPU上下文字节一致。18套prefix图每层实际消费32次，共36864层调用；cache深复制ptr/seq-length保护沿用冻结实现。query图沿用同4D-mask接口并核graph-zero/numeric地板，没有把prefix hook计数冒称独立query-hook记录。cached/full1.9073486328125e−5，native cache self及graph-zero0；实际device map为层0–30在logical GPU0，31–63在logical GPU1，没有CPU/disk模型offload。
+
+先保存新增raw及全部三组Qwen confirmation配对，再打开新author analysis；1893数值最大误差0。pre-author raw快照路径及SHA、第三配对文件SHA见JSON twelfth_stage_pre_author_snapshot及独立12_stage_pre_author_seal文件。旧两组配对seal保留在11_stages文件。
+
+shared/full两Actor平均targeted−native +7.71484 [5.76172,9.57031]pp；targeted平均95.7031%，joint92.1875%。A+7.42188/B+8.00781pp、opposite+15.8203pp、same−.390625pp CI跨0。targeted−all +20.4102 [18.1641,22.3633]pp；query-only +5.85938 [4.19922,7.51953]pp。far/all-cross候选95.3125%但full52.6367%、joint9.96094%；全部接口/Actor/world/scope/private及other-word辅助保留。
+
+Q8/Q32 function同32材料逐字配对，SHA8ba72167d5b80fec9aca38bd4b6ad17cd50923a5147414ac3820e944bed9566b。每context先large−small再bootstrap910；targeted gain差+.0976563 [−3.22266,3.32031]pp，不宣称gain随规模增大；query-only差+8.39844 [3.80859,13.08594]pp。18个function配对原向量及双private分组均保存。
+
+当前Q32 discovery/confirmation三stage和两个8B新32锚点完整，12/18、336contexts、172032scores；剩余六stage为Llama70。以上是同链核心读数的扩规模实测，没有新资格、拟合或主张等级变化。
+
+## 三原核心读数图的展示校对
+
+CSV/manifest与已封summary/raw逐项一致：9/12完整confirmation点，27个mean/CI数字误差0。尚未完成的点为pending，CSV数字栏留空，图上只有灰文字，没有0位置的占位点。模型行、点/误差条和nats/pp单位随后视检核对。
+
+上下文只在同family、同stage内匹配；机制和自然function使用不同seed的SST材料，native使用controlled restaurant sentiment，不是所有panel/family共享一个dataset。function读数为shared、full vocabulary、两Actor及origin/cross等权平均gain，不是joint。图footnote及manifest已明确这些范围；这是展示说明，不改变指标或实验门槛。
+
+plot script `273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2`；CSV `2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a`；manifest `ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae`。不构建新scaling law或拟合，不运行GPU。

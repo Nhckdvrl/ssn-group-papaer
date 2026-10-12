@@ -347,3 +347,10 @@ E130固定Llama8B/Qwen14B各16→32、native/targeted/independent三历史policy
 阅读ACL/EMNLP/NAACL实际跨模型证据后，E131直接检验同一核心链：Q32/L70形成反事实、原生操作、真实SST两来源功能，加同family8B新材料配对，18CPU完整首评分前451238d5冻结。初试TF32的三worker未通过原.001误差、0科学row，失败全部保留；0a50bbb1恢复原full-FP32并重启同种子/材料，8B已通过数值检查，32加载完成，70权重下载并依资产/空卡接入。既不缩主张，也不要求强模型持续犯错；待完整结果判断形成与读取怎样共同改变Source使用。
 
 E131首轮9/18独立校对完整：Q32三环节已支持同一形成/原生操作/Source函数解释，SST shared平均full86.9141→95.8984%，配对收益8.9844[5.8594,12.5000]pp；单规则两方向本批100%而形成仍有作用。原C21–23三级和C24二级不变；新32确认与70未完成，不借局部Cue结果撤销形成认识，不用D与不同材料的8B作配对scale。见E131卡与results/e131独立raw/report。
+
+
+### E131：相同三环解释的32B确认（C21–C23补充）
+
+同family/stage新32材料配对：Qwen3-32B A形成signed2.676[2.266,3.096]nats，系数1 KV label raw r=.883、rule双差r=.922；原生答案路径移除1.972[1.467,2.500]、受限恢复A-only+.775[.321,1.284]/full-source−.544[−.833,−.276]。真实SST shared/full两Actor平均87.99→95.70%、gain7.71[5.76,9.57]pp，相对all-cross+20.41[18.16,22.36]；与Q8 gain差CI0、query-only差+8.40[3.81,13.09]，不把区间跨0当统计等价。说明同形成操作/原生贡献在32B仍成立，读取贡献可以变化；单函数强不能替代关系形成与使用的机制解释。
+
+依据[E131卡](experiments/E131-large-model-mechanism-chain.md)、results/e131/qwen32_confirmation_{mechanism,native,function}/{analysis,run}.json、function/full_output_summary.json与[12批raw-first审计](results/e131/independent_raw_review_2026-10-12.md)。12/18完整stage，全部43/64/85条件、私人方向、负结果与36大小配对保留；没有独立GPU rerun。C21–23 L3/C24 L2及formal状态不变，未额外新增claim。L70当前仅加载/执行未完整批，不先算70证据，不以Cue接口限制收缩已确认形成链。

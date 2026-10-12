@@ -56,7 +56,7 @@ Our contribution builds on existing contextualization mechanisms. The increment 
 
 The current sentiment and dual-aspect experiments contain eight demonstrations from each source and eight novel queries. In shared-word conditions both sources use \texttt{no/\allowbreak{}yes}, with private label polarity balanced across contexts; separate-word conditions keep A's words and give B \texttt{pass/\allowbreak{}flag}; earlier Measuring Hate Speech experiments use \texttt{safe/\allowbreak{}toxic}. A's raw examples and labels are held fixed; paired counterfactuals change B. A single-aspect sentiment task separates association from output naming. A dual-aspect task independently varies food and service sentiment, B's inferred criterion, and its private output convention. Original SST5 reviews supply a natural-text test with independently sampled demonstrations and official held-out queries.
 
-All models are frozen: Qwen3-8B and Qwen3-14B post-trained hybrid checkpoints, Mistral-7B-v0.3 base, and Llama-3.1-8B base. We score the serialized task as a continuation using FP32 eager attention. Confirmation uses new materials after discovery, without selecting models, contexts, or seeds by correctness. Model revisions, actual token streams, and complete split rules are recorded in the \href{PAPER_APPENDIX.md}{appendix}.
+All models are frozen: Qwen3-8B, Qwen3-14B, and Qwen3-32B post-trained hybrid checkpoints, Mistral-7B-v0.3 base, and Llama-3.1-8B base. We score the serialized task as a continuation using FP32 eager attention. Confirmation uses new materials after discovery, without selecting models, contexts, or seeds by correctness. Model revisions, actual token streams, and complete split rules are recorded in the \href{PAPER_APPENDIX.md}{appendix}.
 
 \subsection{Positional access and functional provenance}\label{positional-access-and-functional-provenance}
 
@@ -279,6 +279,27 @@ Together, these experiments show that usable source evidence depends on its form
 \caption{Coherent-minus-mixed cache effects on held-out contexts. Left: identical words and conflicting conventions, the frozen primary. Right: separate words and both convention worlds, a secondary reference. The panels use different world scopes.}
 \end{figure*}
 
+\subsection{The same formation and operation chain in a larger model}\label{the-same-formation-and-operation-chain-in-a-larger-model}
+
+We repeat the fixed formation, native-operation, and real-text function tests in Qwen3-32B, with a fresh Qwen3-8B confirmation anchor. The two sizes receive byte-identical contexts within each stage. All 43/64/85 conditions, K/KV/V channels, reading backgrounds, private directions, and instructions are retained. Discovery uses n16 and confirmation n32 without selecting by discovery effects. Full FP32 weights and eager attention are kept, with no fitted head, layer, intervention strength, or reconstruction coefficient.
+
+\begin{table*}[t]
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X}
+\toprule
+Qwen3, matched confirmation n32 & A-formation signed, nats & Native operation removal, nats & Selective-minus-native full, pp & Query-only-minus-native full, pp \\
+\midrule
+8B & 2.351 {[}1.857, 2.837{]} & 1.762 {[}1.264, 2.294{]} & 7.62 {[}5.18, 9.96{]} & −2.54 {[}−6.54, 1.46{]} \\
+32B & 2.676 {[}2.266, 3.096{]} & 1.972 {[}1.467, 2.500{]} & 7.71 {[}5.76, 9.57{]} & 5.86 {[}4.20, 7.52{]} \\
+\bottomrule
+\end{tabularx}
+\caption{The same formation, native-operation, and real-text function chain across model sizes. Within-family matched confirmation contexts, n32; full-output accuracy and signed native effects.}
+\end{table*}
+
+The 32B formation batch has 100\% single-source accuracy under both private directions, while the historical relation-formation effect remains. Coefficient-one label-interface KV reconstruction has raw r=.883 and rule-double-contrast r=.922, with raw RMSE .864 versus zero-prediction RMSE 1.857. Native restricted restoration is positive under A-only reading (+.775 {[}.321, 1.284{]} nats) and negative under full-source reading (−.544 {[}−.833, −.276{]}), as in the fresh 8B anchor. The same formation operation therefore contributes in the larger model, with its function depending on the subsequent reading environment.
+
+On real-text shared-word functions, 32B native full accuracy is 87.99\%, rising to 95.70\% with selective formation; its advantage over complete cross-source formation removal is 20.41 {[}18.16, 22.36{]} points. The paired selective-gain difference is .10 {[}−3.22, 3.32{]} points, while the query-only gain differs by 8.40 {[}3.81, 13.09{]}. Formation and reading contributions can thus vary separately across these checkpoints. Their training recipes also differ, so the paired comparison characterizes computation across sizes rather than estimating a parameter-count scaling law. Both requested-source gains, agreement tradeoffs, separate-word output failures, and all reconstruction targets are retained in Appendix M.
+
 \section{Related work and positioning}\label{related-work-and-positioning}
 
 Cho's ICL circuit \citep{cho2025revisitingincontextlearninginference} connects input encoding, merging at labels, retrieval, and bypasses; task-oriented information removal \citep{cho2026mechanismtaskorientedinformationremoval} establishes a complementary information-selection mechanism. Contextualize-then-Aggregate \citep{bakalova2025contextualizethenaggregatecircuitsincontextlearning} shows the causal role of cross-demonstration contextualization. How Few-Shot Examples Add Up \citep{wang2026fewshotexamplesaddup} relates contextualized QK routing and V updates to function-vector composition. We add a source-provenance measurement, output-dependent formation prediction, and prospective functional policies within these frameworks.
@@ -305,7 +326,7 @@ Controlled and real-text constructive tests sharpen this account: preserving oth
 
 A pre-input source-cue test further limits the task-state interpretation: with private histories formed independently, transporting the cue does not establish stable deployment of both criteria despite usable single-source controls (Appendix L). Small functional responses remain; this does not imply absence of task information elsewhere or in ordinary native formation.
 
-The experiments cover three families and a larger same-family checkpoint. Dual-aspect templates use a fixed food-before-service order; functional differences do not establish a position-independent abstract program. Cache interchanges and renormalized masks change specified interfaces and retain unmodeled paths. The reconstructions use actual donor activations, and intervals are not corrected for all comparisons. Earlier practical evaluations found limited accuracy consequences of source mixing. These findings delimit the account while preserving the demonstrated formation, relation-content, and functional-use results.
+The experiments cover three families, including 14B and 32B same-family checkpoints. Dual-aspect templates use a fixed food-before-service order; functional differences do not establish a position-independent abstract program. Cache interchanges and renormalized masks change specified interfaces and retain unmodeled paths. The reconstructions use actual donor activations, and intervals are not corrected for all comparisons. Earlier practical evaluations found limited accuracy consequences of source mixing. These findings delimit the account while preserving the demonstrated formation, relation-content, and functional-use results.
 
 See the \href{PAPER_APPENDIX.md}{technical appendix and evidence map} for complete results and the \href{CLAIMS.md}{claim ledger} for registered scope.
 
@@ -933,5 +954,32 @@ Qwen3-14B & −1.821e−4 {[}−6.037e−4,2.459e−4{]} & −3.650e−4 {[}−9
 All four intervals span zero. Qwen3-14B nevertheless retains a native CueB Food row selectivity of .02144 {[}.00972,.03348{]} nats; its Service selectivity is −.01465 {[}−.02661,−.00353{]} nats. The response therefore cannot be summarized as no criterion information, or as correct transfer of both criteria. Changing formation policy did not establish the complete pre-input function at this interface. The \href{results/e130/report.md}{full report} retains all 136 interfaces, policy contrasts, private directions and recipient/donor full-output functions. This follow-up tests the source-cue interface; the historical formation, relation-content and native-operation results remain separate evidence.
 
 The four fixed runs contain 96 contexts and 104448 scores, with .805577 recorded single-GPU run hours. Source 7ef59b3f\ldots{} was frozen at fa41da09 before scoring. The \href{results/e130/independent_raw_review_2026-10-12.md}{independent audit} verifies 81188 raw-derived numerical quantities and all actual prefix/cue/body mask calls; full-token/cached error is at most 2.48e−5 nats. The final report check verifies 28728 displayed numbers and retains the disclosed Llama discovery stdout reading-order exception. No independent GPU rerun is claimed.
+
+\section{Matched cross-size formation, operation, and source-function tests}\label{matched-cross-size-formation-operation-and-source-function-tests}
+
+E131 preserves the original E121 formation and reconstruction engine, E120 native-operation engine, and E123 real-text function-policy engine. The preregistered matrix contains Qwen3-32B and Llama-3.1-70B discovery n16→confirmation n32, and fresh same-family 8B n32 anchors for all three stages. At this snapshot, all six 8B stages and all six 32B stages are complete and independently checked; the six 70B stages await completed scientific batches. Uncompleted runs supply no scientific results here.
+
+Contexts are matched byte-for-byte \textbf{within each family and stage}. Formation and function use separately sampled SST5 contexts; native operation uses controlled restaurant contexts. Confirmation seeds are 131102/131101/131103 for these stages. Parent analyses and gold weighting remain unchanged, and comparisons do not pool different stages or treat a recipe change as an isolated capacity intervention. Each large model uses all its layers with frozen FP32 weights, eager attention, no CPU offload or quantization; Qwen3-32B uses two GPUs. Model pins, dataset revisions, actual consumed masks, and engine/parent AST checks are recorded in the E131 manifests.
+
+\begin{table*}[t]
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X}
+\toprule
+Qwen3, fresh confirmation n32 & Full-source answer removal, nats & A-only restricted restoration, nats & Full-source restricted restoration, nats \\
+\midrule
+8B & 1.762 {[}1.264, 2.294{]} & 2.143 {[}1.426, 2.893{]} & −.650 {[}−1.269, −.080{]} \\
+32B & 1.972 {[}1.467, 2.500{]} & .775 {[}.321, 1.284{]} & −.544 {[}−.833, −.276{]} \\
+\bottomrule
+\end{tabularx}
+\caption{Complete supplementary readouts; Qwen3, fresh confirmation n32.}
+\end{table*}
+
+These are signed B-rule contrasts, not absolute magnitudes. The restoration direction agrees across these checkpoints while the A-only restoration magnitude differs (large−small −1.368 {[}−2.299, −.474{]} nats). The 32B formation-stage signed interaction interval contains zero (−.037 {[}−.525, .462{]}), while the absolute interaction is positive (.953 {[}.162, 1.749{]}); cancellation of signed context effects does not remove the separately measured formation contribution. All twelve channel/target/background reconstructions remain reported, including partial residuals.
+
+The 32B real-text function primary averages both requested sources, origin/cross convention worlds, and queries at the context level. Full-vocabulary native accuracy is 87.99 {[}86.23, 89.75{]}\%, selective formation 95.70 {[}93.55, 97.36{]}\%, and complete cross-source formation removal 75.29 {[}74.12, 76.27{]}\%. The selective-minus-native gain is 7.71 {[}5.76, 9.57{]} points; A gains 7.42 and B 8.01 points. Opposite-convention gains are 15.82 points, whereas the same-convention contrast is −.39 with an interval containing zero. Selective mean accuracy is not joint correctness: the latter is 92.19\%. Query-only isolation improves the mean by 5.86 {[}4.20, 7.52{]} points.
+
+Separate-word complete isolation retains 95.31\% candidate accuracy but has 52.64\% full-output accuracy and 9.96\% joint correctness. Thus larger size does not make within-word-space accuracy a sufficient measure of using both source functions. All directions, private controls, instructions, other-source outputs, discovery results, and 36 fresh paired contrasts are linked in the \href{results/e131/report.md}{complete E131 report}, \href{results/e131/independent_raw_review_2026-10-12.md}{raw-first audit}, and each stage's analysis/full-output summary. No coefficients or conditions are chosen from the cross-size results.
+
+A first TF32-accelerated implementation failed the existing cached/full .001-nat tolerance before any scientific row; those empty failed attempts and their resource use remain archived. Restoring full FP32 GEMM preserved all materials, operators, and analyses. Valid completed stages have errors at most 6.68e−5 nats with self/graph checks zero. Independent analysis reproduces the original raw readouts and actual graph/gold layouts; it is not a second GPU execution.
 
 \end{document}

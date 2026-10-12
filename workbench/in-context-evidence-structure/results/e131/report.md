@@ -1,6 +1,6 @@
 # E131：大小模型上的同一形成、操作和Source功能链
 
-PARTIAL：11/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
+PARTIAL：12/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
 
 ## 形成与固定系数反事实
 
@@ -26,6 +26,7 @@ PARTIAL：11/18个预定stage完成。发现n16与新确认n32分别展示；大
 |---|---:|---:|---:|---:|---:|
 | qwen3_confirmation_function / 32 | 84.4727 [81.9336,87.0117] / 84.4727 [81.9336,87.0117] | 92.0898 [89.2578,94.5312] / 92.0898 [89.2578,94.5312] | 7.6172 [5.1758,9.9609] | 17.1875 [14.6484,19.5312] | -2.5391 [-6.5430,1.4648] |
 | qwen32_discovery_function / 16 | 86.9141 [83.7891,89.8438] / 86.9141 [83.7891,89.8438] | 95.8984 [93.5498,98.0469] / 95.8984 [93.5498,98.0469] | 8.9844 [5.8594,12.5000] | 21.0938 [19.3359,22.6562] | 8.7891 [5.4688,12.1094] |
+| qwen32_confirmation_function / 32 | 87.9883 [86.2305,89.7461] / 87.9883 [86.2305,89.7461] | 95.7031 [93.5547,97.3633] / 95.7031 [93.5547,97.3633] | 7.7148 [5.7617,9.5703] | 20.4102 [18.1641,22.3633] | 5.8594 [4.1992,7.5195] |
 | llama_confirmation_function / 32 | 79.6875 [77.9297,81.4453] / 79.6875 [77.9297,81.4453] | 88.5742 [86.0352,90.9180] / 88.5742 [86.0352,90.9180] | 8.8867 [6.5430,11.1328] | 13.3789 [10.9375,15.8203] | 18.1641 [16.2109,20.0195] |
 
 ## 新32材料的大小配对差
@@ -50,6 +51,24 @@ PARTIAL：11/18个预定stage完成。发现n16与新确认n32分别展示；大
 | qwen32_native | gate_answer_removal_absolute | 0.6157 [-0.0625,1.3060] |
 | qwen32_native | gate_restricted_restore_signed | -1.3682 [-2.2990,-0.4741] |
 | qwen32_native | gate_restricted_restore_absolute | -1.4071 [-2.1818,-0.6551] |
+| qwen32_function | candidate_normal_native_both | 3.5156 [0.9766,6.0547] |
+| qwen32_function | candidate_normal_gate_both | 11.9141 [8.6914,15.5273] |
+| qwen32_function | candidate_answer_cross_off_native_both | 3.6133 [0.6836,6.6406] |
+| qwen32_function | candidate_answer_cross_off_gate_both | 4.1992 [1.9531,6.6406] |
+| qwen32_function | candidate_all_cross_off_native_both | 0.3906 [-1.1719,2.0508] |
+| qwen32_function | candidate_all_cross_off_gate_both | 2.8320 [1.2695,4.4922] |
+| qwen32_function | candidate_targeted_gain | 0.0977 [-3.2227,3.3203] |
+| qwen32_function | candidate_targeted_minus_all | 3.2227 [0.0000,6.3477] |
+| qwen32_function | candidate_query_isolation | 8.3984 [3.8086,13.0859] |
+| qwen32_function | full_normal_native_both | 3.5156 [0.9766,6.0547] |
+| qwen32_function | full_normal_gate_both | 11.9141 [8.6914,15.5273] |
+| qwen32_function | full_answer_cross_off_native_both | 3.6133 [0.6836,6.6406] |
+| qwen32_function | full_answer_cross_off_gate_both | 4.1992 [1.9531,6.6406] |
+| qwen32_function | full_all_cross_off_native_both | 0.3906 [-1.1719,2.0508] |
+| qwen32_function | full_all_cross_off_gate_both | 2.8320 [1.2695,4.4922] |
+| qwen32_function | full_targeted_gain | 0.0977 [-3.2227,3.3203] |
+| qwen32_function | full_targeted_minus_all | 3.2227 [0.0000,6.3477] |
+| qwen32_function | full_query_isolation | 8.3984 [3.8086,13.0859] |
 
 ## 完整性与解释对象
 

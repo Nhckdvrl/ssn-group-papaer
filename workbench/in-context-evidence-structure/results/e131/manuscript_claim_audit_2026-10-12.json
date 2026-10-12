@@ -1,0 +1,571 @@
+{
+  "status": "NEW_E131_MANUSCRIPT_FINAL_VERIFIED",
+  "date": "2026-10-12",
+  "kind": "PAPER_CRITICAL_ADDED_PRESENTATION_AUDIT",
+  "reading_scope": [
+    "Current §6.6 and model/Discussion updates",
+    "Entire new Appendix M",
+    "Scoped git diff against HEAD; original Abstract and three Introduction findings unchanged",
+    "Already sealed 12-run raw, three confirmation pairs and author report; no old raw re-audit"
+  ],
+  "paper_hashes": {
+    "PAPER_DRAFT.md": "dd5c2548c197fd7c12eea9f08c77a006b83968ff99f81db1ccaaa43fd855ca2e",
+    "PAPER_APPENDIX.md": "f1c38746e34f6a524a66dbf05fe572729335e3493c7ca640a893bfc554af8ccc"
+  },
+  "sealed_inputs_sha256": {
+    "independent_raw_review_2026-10-12.json": "4534adea90607279decb35d23ad8475c2dee9cd679ae555e48d1126c0a3a8d14",
+    "independent_author_report_review_2026-10-12.json": "6026186dcacc2e6a54361f5dfada3e4e31240c57f82071c2f2bfd05653e06bfa",
+    "independent_paired_raw_2026-10-12.json": "59d3360bfa83680ff346162f629d67b443dc6e69515a54c637f2926fcf8fd711",
+    "summary.json": "7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d",
+    "report.md": "9891e09a8128a032bacdb894a3b8ba38bd1d71ebe7739348d85b804352f03046"
+  },
+  "complete_stages": 12,
+  "uncompleted_llama70_stages": 6,
+  "numeric_max_all12": 6.67572021484375e-05,
+  "checks": [
+    {
+      "label": "8B main table",
+      "location": "main §6.6 table",
+      "raw_value": {
+        "formation": {
+          "mean": 2.3511242270469666,
+          "ci95": [
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "n_contexts": 32
+        },
+        "removal": {
+          "mean": 1.7617849111557007,
+          "ci95": [
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "n_contexts": 32
+        },
+        "gain": {
+          "mean": 0.076171875,
+          "ci95": [
+            0.0517578125,
+            0.099609375
+          ],
+          "n_contexts": 32
+        },
+        "query": {
+          "mean": -0.025390625,
+          "ci95": [
+            -0.0654296875,
+            0.0146484375
+          ],
+          "n_contexts": 32
+        }
+      },
+      "exact_display_checked": "| 8B | 2.351 [1.857, 2.837] | 1.762 [1.264, 2.294] | 7.62 [5.18, 9.96] | -2.54 [-6.54, 1.46] |",
+      "matched": true
+    },
+    {
+      "label": "8B supplementary native table",
+      "location": "Appendix M table",
+      "raw_value": {
+        "removal": {
+          "mean": 1.7617849111557007,
+          "ci95": [
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "n_contexts": 32
+        },
+        "A_only_restoration": {
+          "mean": 2.1433431655168533,
+          "ci95": [
+            1.4258647615090012,
+            2.8925778808072207
+          ],
+          "n_contexts": 32
+        },
+        "full_restoration": {
+          "mean": -0.6499202847480774,
+          "ci95": [
+            -1.269471973925829,
+            -0.08025652281939998
+          ],
+          "n_contexts": 32
+        }
+      },
+      "exact_display_checked": "| 8B | 1.762 [1.264, 2.294] | 2.143 [1.426, 2.893] | -.650 [-1.269, -.080] |",
+      "matched": true
+    },
+    {
+      "label": "32B main table",
+      "location": "main §6.6 table",
+      "raw_value": {
+        "formation": {
+          "mean": 2.675637912005186,
+          "ci95": [
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "n_contexts": 32
+        },
+        "removal": {
+          "mean": 1.9720237106084824,
+          "ci95": [
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "n_contexts": 32
+        },
+        "gain": {
+          "mean": 0.0771484375,
+          "ci95": [
+            0.0576171875,
+            0.095703125
+          ],
+          "n_contexts": 32
+        },
+        "query": {
+          "mean": 0.05859375,
+          "ci95": [
+            0.0419921875,
+            0.0751953125
+          ],
+          "n_contexts": 32
+        }
+      },
+      "exact_display_checked": "| 32B | 2.676 [2.266, 3.096] | 1.972 [1.467, 2.500] | 7.71 [5.76, 9.57] | 5.86 [4.20, 7.52] |",
+      "matched": true
+    },
+    {
+      "label": "32B supplementary native table",
+      "location": "Appendix M table",
+      "raw_value": {
+        "removal": {
+          "mean": 1.9720237106084824,
+          "ci95": [
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "n_contexts": 32
+        },
+        "A_only_restoration": {
+          "mean": 0.7751273363828659,
+          "ci95": [
+            0.3212634302675724,
+            1.2838719191029666
+          ],
+          "n_contexts": 32
+        },
+        "full_restoration": {
+          "mean": -0.5444826632738113,
+          "ci95": [
+            -0.8326955704018474,
+            -0.27605421803891667
+          ],
+          "n_contexts": 32
+        }
+      },
+      "exact_display_checked": "| 32B | 1.972 [1.467, 2.500] | .775 [.321, 1.284] | -.544 [-.833, -.276] |",
+      "matched": true
+    },
+    {
+      "label": "raw_r",
+      "location": "main §6.6 reconstruction",
+      "raw_value": 0.8828342812082126,
+      "exact_display_checked": "r=.883",
+      "matched": true
+    },
+    {
+      "label": "double_contrast_r",
+      "location": "main §6.6 reconstruction",
+      "raw_value": 0.9221318269259355,
+      "exact_display_checked": "r=.922",
+      "matched": true
+    },
+    {
+      "label": "raw_RMSE",
+      "location": "main §6.6 reconstruction",
+      "raw_value": 0.8644837853229906,
+      "exact_display_checked": "RMSE .864",
+      "matched": true
+    },
+    {
+      "label": "zero_RMSE",
+      "location": "main §6.6 reconstruction",
+      "raw_value": 1.856570346091635,
+      "exact_display_checked": "RMSE 1.857",
+      "matched": true
+    },
+    {
+      "label": "single-source full/candidate both private directions",
+      "location": "main §6.6 local formation-batch function",
+      "raw_value": {
+        "False": 1,
+        "True": 1
+      },
+      "exact_display_checked": "100% single-source accuracy under both private directions",
+      "matched": true
+    },
+    {
+      "label": "full native",
+      "location": "Appendix M full accuracy",
+      "raw_value": {
+        "mean": 0.8798828125,
+        "ci95": [
+          0.8623046875,
+          0.8974609375
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "87.99 [86.23, 89.75]",
+      "matched": true
+    },
+    {
+      "label": "full selective",
+      "location": "Appendix M full accuracy",
+      "raw_value": {
+        "mean": 0.95703125,
+        "ci95": [
+          0.935546875,
+          0.9736328125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "95.70 [93.55, 97.36]",
+      "matched": true
+    },
+    {
+      "label": "full all_cross",
+      "location": "Appendix M full accuracy",
+      "raw_value": {
+        "mean": 0.7529296875,
+        "ci95": [
+          0.7412109375,
+          0.7626953125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "75.29 [74.12, 76.27]",
+      "matched": true
+    },
+    {
+      "label": "shared joint_both_correct",
+      "location": "Appendix M full/joint",
+      "raw_value": {
+        "mean": 0.921875,
+        "ci95": [
+          0.888671875,
+          0.951171875
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "92.19%",
+      "matched": true
+    },
+    {
+      "label": "far mean_actor_accuracy",
+      "location": "Appendix M full/joint",
+      "raw_value": {
+        "mean": 0.5263671875,
+        "ci95": [
+          0.5048828125,
+          0.55078125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "52.64%",
+      "matched": true
+    },
+    {
+      "label": "far joint_both_correct",
+      "location": "Appendix M full/joint",
+      "raw_value": {
+        "mean": 0.099609375,
+        "ci95": [
+          0.06640625,
+          0.140625
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "9.96%",
+      "matched": true
+    },
+    {
+      "label": "far candidate",
+      "location": "Appendix M candidate/full",
+      "raw_value": {
+        "mean": 0.953125,
+        "ci95": [
+          0.935546875,
+          0.9697265625
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "95.31% candidate",
+      "matched": true
+    },
+    {
+      "label": "targeted-minus-all full",
+      "location": "main §6.6 policy contrast",
+      "raw_value": {
+        "mean": 0.2041015625,
+        "ci95": [
+          0.181640625,
+          0.2236328125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "20.41 [18.16, 22.36]",
+      "matched": true
+    },
+    {
+      "label": "targeted gain full",
+      "location": "Appendix M policy contrast",
+      "raw_value": {
+        "mean": 0.0771484375,
+        "ci95": [
+          0.0576171875,
+          0.095703125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "7.71 [5.76, 9.57]",
+      "matched": true
+    },
+    {
+      "label": "query-only gain full",
+      "location": "Appendix M reading contrast",
+      "raw_value": {
+        "mean": 0.05859375,
+        "ci95": [
+          0.0419921875,
+          0.0751953125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "5.86 [4.20, 7.52]",
+      "matched": true
+    },
+    {
+      "label": "targeted gain A",
+      "location": "Appendix M subgroup",
+      "raw_value": {
+        "mean": 0.07421875,
+        "ci95": [
+          0.04296875,
+          0.107421875
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "7.42",
+      "matched": true
+    },
+    {
+      "label": "targeted gain B",
+      "location": "Appendix M subgroup",
+      "raw_value": {
+        "mean": 0.080078125,
+        "ci95": [
+          0.05078125,
+          0.109375
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "8.01",
+      "matched": true
+    },
+    {
+      "label": "targeted gain opposite_convention",
+      "location": "Appendix M subgroup",
+      "raw_value": {
+        "mean": 0.158203125,
+        "ci95": [
+          0.123046875,
+          0.193359375
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "15.82",
+      "matched": true
+    },
+    {
+      "label": "targeted gain same_convention",
+      "location": "Appendix M subgroup",
+      "raw_value": {
+        "mean": -0.00390625,
+        "ci95": [
+          -0.013671875,
+          0.00390625
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "-.39",
+      "matched": true
+    },
+    {
+      "label": "selective gain paired",
+      "location": "main §6.6 large-small pair",
+      "raw_value": {
+        "mean": 0.0009765625,
+        "ci95": [
+          -0.0322265625,
+          0.033203125
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": ".10 [-3.22, 3.32]",
+      "matched": true
+    },
+    {
+      "label": "query gain paired",
+      "location": "main §6.6 large-small pair",
+      "raw_value": {
+        "mean": 0.083984375,
+        "ci95": [
+          0.0380859375,
+          0.130859375
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "8.40 [3.81, 13.09]",
+      "matched": true
+    },
+    {
+      "label": "A-only restoration pair",
+      "location": "Appendix M large-small native pair",
+      "raw_value": {
+        "mean": -1.3682158291339874,
+        "ci95": [
+          -2.2990314797498286,
+          -0.4740695708431304
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "-1.368 [-2.299, -.474]",
+      "matched": true
+    },
+    {
+      "label": "signed_rule_effect",
+      "location": "Appendix M formation interaction",
+      "raw_value": {
+        "mean": -0.03664613142609596,
+        "ci95": [
+          -0.5249526710249484,
+          0.46200813241302957
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": "-.037 [-.525, .462]",
+      "matched": true
+    },
+    {
+      "label": "absolute_rule_effect",
+      "location": "Appendix M formation interaction",
+      "raw_value": {
+        "mean": 0.9530779831111431,
+        "ci95": [
+          0.16202862150967123,
+          1.7493612069636584
+        ],
+        "n_contexts": 32
+      },
+      "exact_display_checked": ".953 [.162, 1.749]",
+      "matched": true
+    },
+    {
+      "label": "all12 numeric floor max",
+      "location": "Appendix M numerical floor",
+      "raw_value": 6.67572021484375e-05,
+      "exact_display_checked": "6.68e−5",
+      "matched": true
+    }
+  ],
+  "all_number_mappings_match": true,
+  "all_original_three_findings_unchanged": true,
+  "all_pre_M_appendix_unchanged": true,
+  "function_scope": "Shared/full, Actor mean over origin/cross/query per context; joint separately reported; far candidate and full output remain different. No new criterion-program conclusion.",
+  "interpretation_scope": "Same frozen operation measured at 8B and 32B with different reading consequences; paired intervals do not identify a causal parameter-count scaling law or complete mediation/abstract criterion program. No original MC1–3 withdrawal.",
+  "wording_checks": {
+    "paired_gain_difference_avoids_equivalence_hint": true,
+    "70B_waiting_description_matches_weights_ready": true
+  },
+  "suggestions": [],
+  "independent_GPU_rerun": false,
+  "scientific_source_or_claim_changes": false,
+  "helper_sha256": "3386f9d1a71b8825b280b6f7c0a6d56b87b431b3bf1d6b8cde124cfb8068ba90",
+  "rounding_mismatches": [],
+  "previous_snapshots": [
+    {
+      "paper_hashes": {
+        "PAPER_DRAFT.md": "dd5c2548c197fd7c12eea9f08c77a006b83968ff99f81db1ccaaa43fd855ca2e",
+        "PAPER_APPENDIX.md": "c5c51f2a7aa9e55248f14ab1629fc57ad52d15cc50e1e6d31e30cdba7705230e"
+      },
+      "wording_checks": {
+        "paired_gain_difference_avoids_equivalence_hint": true,
+        "70B_waiting_description_matches_weights_ready": true
+      },
+      "suggestions": []
+    },
+    {
+      "paper_hashes": {
+        "PAPER_DRAFT.md": "dd5c2548c197fd7c12eea9f08c77a006b83968ff99f81db1ccaaa43fd855ca2e",
+        "PAPER_APPENDIX.md": "c5c51f2a7aa9e55248f14ab1629fc57ad52d15cc50e1e6d31e30cdba7705230e"
+      },
+      "wording_checks": {
+        "paired_gain_difference_avoids_equivalence_hint": true,
+        "70B_waiting_description_matches_weights_ready": true
+      },
+      "suggestions": []
+    },
+    {
+      "paper_hashes": {
+        "PAPER_DRAFT.md": "dd5c2548c197fd7c12eea9f08c77a006b83968ff99f81db1ccaaa43fd855ca2e",
+        "PAPER_APPENDIX.md": "c5c51f2a7aa9e55248f14ab1629fc57ad52d15cc50e1e6d31e30cdba7705230e"
+      },
+      "wording_checks": {
+        "paired_gain_difference_avoids_equivalence_hint": true,
+        "70B_waiting_description_matches_weights_ready": true
+      },
+      "suggestions": []
+    }
+  ],
+  "compiled_32B_snapshot_review": {
+    "status": "32_PAGE_ADDED_PRESENTATION_VERIFIED",
+    "directory": "/tmp/ices-paper-32b",
+    "artifact_hashes": {
+      "main.pdf": "bc6811c735a0ab423f8d9a6d321dde57d16458dd001e56f8be96fe38595500d0",
+      "main.tex": "451103c763028a8f223de730530bcb3d11d42d16262265c99e726cef3c3d4fa4",
+      "manifest.json": "0d7d58abc696c7fb16b39b1cf3cc5c3e273ec42d0d42ed15bbb26ba1345cfd99",
+      "main.log": "6b9a6d28690535ca8c4d49961e41dffa830cc68974cd83cd316974ab770c9266",
+      "build.log": "2652b3791f60acf5c5b10ef86b158768fc1262b96250b757ede79b2422c56b0f"
+    },
+    "source_hashes_match_current_MD_and_numeric_audit": true,
+    "builder_source_unchanged": "6fe763c8fee13332061ac8180138f622d657490ce9b55500d6a46e8bdf0a4671",
+    "official_style_and_bibliography_unchanged": true,
+    "pages": 32,
+    "main": {
+      "figures": 6,
+      "tables": 6
+    },
+    "appendix": {
+      "figures": 9,
+      "tables": 26
+    },
+    "warning_count": 0,
+    "undefined_count": 0,
+    "overfull_count": 0,
+    "underfull_box_messages": 79,
+    "visual_pages": [
+      9,
+      10,
+      28,
+      32
+    ],
+    "new_table6_and_appendixM_table_rows_match_sealed_numbers": true,
+    "Q8_restoration_CI_lower_raw": -1.269471973925829,
+    "Q8_restoration_CI_lower_three_decimals": "−1.269",
+    "three_original_findings_present_in_tex": true,
+    "new_scientific_experiments_or_GPU_execution": false,
+    "old_744_cell_audit_repeated": false,
+    "limits": "Visual check is limited to newly added text/tables and source/compile binding; 70B loading/partial rows remain execution progress, not complete scientific evidence."
+  }
+}

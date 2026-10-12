@@ -1,22 +1,21 @@
 {
-  "status": "PLOT_DATA_8_OF_12_VERIFIED",
+  "status": "PLOT_DATA_9_OF_12_VERIFIED",
   "date": "2026-10-12",
-  "source_summary_sha256": "95d864ca21136ebb20a3e32a916fbad775e7f132b0e397cd36b922a53336fcef",
-  "CSV_sha256": "8df221dff1dd949bf62f291e4344bcba072707e9b715a4e030d0413a7fc628e4",
-  "manifest_sha256": "a2968abb56b5f6c724e500e6bdf7614f4d3a51ecbe86a9810d6a11759a169841",
+  "source_summary_sha256": "7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d",
+  "CSV_sha256": "2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a",
+  "manifest_sha256": "ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae",
   "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
   "figures": {
-    "png": "ea38e5cce4c29051a3b8a37100c7056242100ac37d2c16d63d685eecadb7e967",
-    "pdf": "413c8f268b76e546896988278576d9e757188615fe12915127014fe76f6595e9"
+    "png": "d373b3cb1c328ba0a48e92a504e5e7c5725e0ff83eed8d8f4a7503082495fe3a",
+    "pdf": "69ff61de84cc1c847e990717f065f7bf3010cd4d0f2f74d88a9a9a5ff7630edc"
   },
-  "complete_points": 8,
+  "complete_points": 9,
   "planned_points": 12,
-  "checked_mean_CI_values": 24,
+  "checked_mean_CI_values": 27,
   "max_abs_error": 0.0,
   "pending": [
     "llama70_confirmation_mechanism",
     "llama70_confirmation_native",
-    "qwen32_confirmation_function",
     "llama70_confirmation_function"
   ],
   "point_checks": {
@@ -115,9 +114,16 @@
       "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
     },
     "qwen32_confirmation_function": {
-      "status": "PENDING",
-      "numeric_fields_empty_not_zero": true,
-      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+      "status": "COMPLETE",
+      "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+      "expected_mean_ci": [
+        7.71484375,
+        5.76171875,
+        9.5703125
+      ],
+      "CSV_max_abs_error": 0.0,
+      "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+      "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
     },
     "llama_confirmation_function": {
       "status": "COMPLETE",
@@ -137,15 +143,10 @@
       "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
     }
   },
-  "visual_inspection": "Updated PNG inspected; footnote corrected, same eight points and four pending text markers, no new numerical requirement.",
+  "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
   "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
-  "presentation_clarification": "IMPLEMENTED: figure footnote states matching within each family and stage; manifest explicitly states separately sampled SST versus controlled restaurant and shared/full/two-Actor mean, not joint.",
+  "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
   "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
   "independent_GPU_forward_or_rerun": false,
-  "helper_sha256": "7bb418ce21555771d2fe1927eadb854a155bab920432ed2709b7fbc004b8ce19",
-  "materials_scope": "Context matching is within each family and stage. Mechanism and function use separately sampled SST contexts; native uses controlled restaurant contexts. Families and stages are not one pooled dataset.",
-  "function_scope": "Shared words, full-vocabulary correctness, two-Actor mean targeted-minus-native accuracy; not joint correctness.",
-  "rebind_only": true,
-  "prior_plot_review_manifest_sha256": "9533b5852697452a40de4cc9bacad73b8bc2d1f0c14613e98362603f90cf821c",
-  "prior_numeric_checks_preserved": true
+  "helper_sha256": "e62f19a8e7a0ba8dcd9080923ea87647626a6105a37ab707fb2b228031b7cca0"
 }

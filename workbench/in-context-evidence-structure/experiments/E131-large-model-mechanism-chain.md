@@ -70,3 +70,12 @@ Q32新确认n32的A形成signed/absolute2.67564[2.26579,3.09561]nats；label-int
 Qwen3-32B与8B逐字相同的新32材料中，Full-source历史跨来源答案→本来源标签移除效应1.97202[1.46707,2.49960]nats；受限恢复在A-only为+.77513[.32126,1.28387]、Full-source为−.54448[−.83270,−.27605]。两个私人single方向本批100%，cached/full最大误差1.14e−5，self与graph-zero为0。全部64接口、within扰动、私人方向与指令对照保留；A-only恢复的absolute1.03131不是signed均值，不混用读数。
 
 **对原问题的更新：** 同一操作在32B仍有原生因果贡献，且读取环境改变恢复作用，与新8B确认的功能方向一致。大小配对的移除和Full-source恢复差CI含0，A-only恢复large−small−1.36822[−2.29903,−.47407]；允许贡献幅度不同，不由此拆成细小新理论或收缩三条核心认识。研究对象仍是关系证据的形成与使用，非要求强模型持续答错。11/18完整stage、304ctx/150272评分；本批1217数值max0、18个同材料配对读数独立raw-first校对。完整[报告](../results/e131/report.md)/[独立校对](../results/e131/independent_raw_review_2026-10-12.md)，无独立GPU重跑。Q32函数确认与L70完整同链继续。C21–23 L3/C24 L2及formal状态保持。
+
+
+### E131：32B完整三环确认改变了什么
+
+Q32新32确认的真实SST shared/full两Actor平均87.9883→95.7031%，targeted gain+7.71484[5.76172,9.57031]pp；相对all-cross+20.4102[18.1641,22.3633]。A/B各+7.42/+8.01，opposite+15.82而same−.39CI0；mean95.70不是joint92.19。far all-cross candidate95.31而full52.64%、joint9.96，所有私人方向/other-word均保留。Q32−Q8同32材料gain差+.09766[−3.22266,3.32031]，不据CI0宣布增益等价；query-only差+8.39844[3.80859,13.08594]。
+
+**全局解释：** 同一历史形成、原生路径贡献和Source功能政策已在32B首轮及新确认接成链，读阶段贡献能单独变化；这支持现有形成/读取解释跨当前容量，不要求同头/层/幅度或强模型持续失败。主文6.6/附录M已加入，与原三认识连续；C21–23 L3/C24 L2及formal状态保持，不由partial Cue收缩核心。第三环不是再增加一张性能表，而是形成预测的原生功能检验。
+
+完整12/18stage、336run-stage ctx/172032scores、6.835413科学stage GPUh；新function1893数值max0、actual36864层mask调用、全批numeric最大6.68e−5/self/graph0。三组36同材料配对/144数值、9/12确认图点独立核；余L70不算0或证据。报告/全部85条件见[完整报告](../results/e131/report.md)与[raw审计](../results/e131/independent_raw_review_2026-10-12.md)。70双副本全30SHA完成，11的两卡外部占用后只移动资源：D13四空卡执行，C11/13fallback原子claim避免双启动，科学source/materials/analysis不改。

@@ -32,7 +32,7 @@ Our contribution builds on existing contextualization mechanisms. The increment 
 
 The current sentiment and dual-aspect experiments contain eight demonstrations from each source and eight novel queries. In shared-word conditions both sources use `no/yes`, with private label polarity balanced across contexts; separate-word conditions keep A’s words and give B `pass/flag`; earlier Measuring Hate Speech experiments use `safe/toxic`. A's raw examples and labels are held fixed; paired counterfactuals change B. A single-aspect sentiment task separates association from output naming. A dual-aspect task independently varies food and service sentiment, B's inferred criterion, and its private output convention. Original SST5 reviews supply a natural-text test with independently sampled demonstrations and official held-out queries.
 
-All models are frozen: Qwen3-8B and Qwen3-14B post-trained hybrid checkpoints, Mistral-7B-v0.3 base, and Llama-3.1-8B base. We score the serialized task as a continuation using FP32 eager attention. Confirmation uses new materials after discovery, without selecting models, contexts, or seeds by correctness. Model revisions, actual token streams, and complete split rules are recorded in the [appendix](PAPER_APPENDIX.md).
+All models are frozen: Qwen3-8B, Qwen3-14B, and Qwen3-32B post-trained hybrid checkpoints, Mistral-7B-v0.3 base, and Llama-3.1-8B base. We score the serialized task as a continuation using FP32 eager attention. Confirmation uses new materials after discovery, without selecting models, contexts, or seeds by correctness. Model revisions, actual token streams, and complete split rules are recorded in the [appendix](PAPER_APPENDIX.md).
 
 ### 2.2 Positional access and functional provenance
 
@@ -208,6 +208,19 @@ Together, these experiments show that usable source evidence depends on its form
 
 *Figure 6. Coherent-minus-mixed cache effects on held-out contexts. Left: identical words and conflicting conventions, the frozen primary. Right: separate words and both convention worlds, a secondary reference. The panels use different world scopes.*
 
+### 6.6 The same formation and operation chain in a larger model
+
+We repeat the fixed formation, native-operation, and real-text function tests in Qwen3-32B, with a fresh Qwen3-8B confirmation anchor. The two sizes receive byte-identical contexts within each stage. All 43/64/85 conditions, K/KV/V channels, reading backgrounds, private directions, and instructions are retained. Discovery uses n16 and confirmation n32 without selecting by discovery effects. Full FP32 weights and eager attention are kept, with no fitted head, layer, intervention strength, or reconstruction coefficient.
+
+| Qwen3, matched confirmation n32 | A-formation signed, nats | Native operation removal, nats | Selective-minus-native full, pp | Query-only-minus-native full, pp |
+|---|---:|---:|---:|---:|
+| 8B | 2.351 [1.857, 2.837] | 1.762 [1.264, 2.294] | 7.62 [5.18, 9.96] | −2.54 [−6.54, 1.46] |
+| 32B | 2.676 [2.266, 3.096] | 1.972 [1.467, 2.500] | 7.71 [5.76, 9.57] | 5.86 [4.20, 7.52] |
+
+The 32B formation batch has 100% single-source accuracy under both private directions, while the historical relation-formation effect remains. Coefficient-one label-interface KV reconstruction has raw r=.883 and rule-double-contrast r=.922, with raw RMSE .864 versus zero-prediction RMSE 1.857. Native restricted restoration is positive under A-only reading (+.775 [.321, 1.284] nats) and negative under full-source reading (−.544 [−.833, −.276]), as in the fresh 8B anchor. The same formation operation therefore contributes in the larger model, with its function depending on the subsequent reading environment.
+
+On real-text shared-word functions, 32B native full accuracy is 87.99%, rising to 95.70% with selective formation; its advantage over complete cross-source formation removal is 20.41 [18.16, 22.36] points. The paired selective-gain difference is .10 [−3.22, 3.32] points, while the query-only gain differs by 8.40 [3.81, 13.09]. Formation and reading contributions can thus vary separately across these checkpoints. Their training recipes also differ, so the paired comparison characterizes computation across sizes rather than estimating a parameter-count scaling law. Both requested-source gains, agreement tradeoffs, separate-word output failures, and all reconstruction targets are retained in Appendix M.
+
 ## 7. Related work and positioning
 
 [Cho's ICL circuit](https://arxiv.org/html/2410.04468v3) connects input encoding, merging at labels, retrieval, and bypasses; [task-oriented information removal](https://arxiv.org/abs/2509.21012) establishes a complementary information-selection mechanism. [Contextualize-then-Aggregate](https://arxiv.org/html/2504.00132v2) shows the causal role of cross-demonstration contextualization. [How Few-Shot Examples Add Up](https://arxiv.org/html/2605.16591v2) relates contextualized QK routing and V updates to function-vector composition. We add a source-provenance measurement, output-dependent formation prediction, and prospective functional policies within these frameworks.
@@ -234,6 +247,6 @@ Controlled and real-text constructive tests sharpen this account: preserving oth
 
 A pre-input source-cue test further limits the task-state interpretation: with private histories formed independently, transporting the cue does not establish stable deployment of both criteria despite usable single-source controls (Appendix L). Small functional responses remain; this does not imply absence of task information elsewhere or in ordinary native formation.
 
-The experiments cover three families and a larger same-family checkpoint. Dual-aspect templates use a fixed food-before-service order; functional differences do not establish a position-independent abstract program. Cache interchanges and renormalized masks change specified interfaces and retain unmodeled paths. The reconstructions use actual donor activations, and intervals are not corrected for all comparisons. Earlier practical evaluations found limited accuracy consequences of source mixing. These findings delimit the account while preserving the demonstrated formation, relation-content, and functional-use results.
+The experiments cover three families, including 14B and 32B same-family checkpoints. Dual-aspect templates use a fixed food-before-service order; functional differences do not establish a position-independent abstract program. Cache interchanges and renormalized masks change specified interfaces and retain unmodeled paths. The reconstructions use actual donor activations, and intervals are not corrected for all comparisons. Earlier practical evaluations found limited accuracy consequences of source mixing. These findings delimit the account while preserving the demonstrated formation, relation-content, and functional-use results.
 
 See the [technical appendix and evidence map](PAPER_APPENDIX.md) for complete results and the [claim ledger](CLAIMS.md) for registered scope.
