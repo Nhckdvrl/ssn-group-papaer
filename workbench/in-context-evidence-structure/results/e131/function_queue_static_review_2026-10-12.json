@@ -1,8 +1,8 @@
 {
-  "status": "STATIC_SCOPE_CORRECT_NEEDS_WRITER_OWNERSHIP_FIX_BEFORE_LAUNCH",
+  "status": "STATIC_HANDOFF_CORE_VERIFIED_RUNTIME_GUARDS_REQUIRED",
   "date": "2026-10-12",
-  "kind": "OPERATIONAL_SCHEDULING_STATIC_REVIEW_NO_NEW_SCIENCE",
-  "helper_sha256": "6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c",
+  "kind": "OPERATIONAL_SCHEDULING_STATIC_AUDIT_NO_NEW_SCIENCE",
+  "helper_sha256": "136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d",
   "five_frozen_sources_sha256": {
     "e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
     "e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
@@ -23,16 +23,25 @@
     "protocol_analysis_materials_unchanged": true,
     "independent_journal": "worker_llama70_confirmation_function_parallel.json"
   },
-  "queue_claim_scope": "O_EXCL excludes the two new queue workers only; current original fvcrc10 protocol never reads this stage claim.",
-  "writer_risk": "Both old and new workers can pass non-atomic behavior.exists guards before any scoring file is created. They write operational_launch.json/run.log/contexts before scoring, and scientific behavior is later opened with mode w. An eventual existing-file guard does not prevent the concurrent check-then-write race or canonical metadata clobber.",
-  "asset_guard_gap": "Current helper checks all_weights_sha256_passed and target path, but not actual repo/revision/family/official30 equality. Current known fvcrc13 metadata are correct; future identity eligibility must be pinned explicitly.",
-  "safe_actions_without_five_source_changes": [
-    "Require the original fvcrc10 sequential worker to be fully stopped/exited before the queue can enter canonical protocol; if it completes function itself, queue must exit without rerun.",
-    "For accelerated handoff, terminate/replace the original scheduling owner before it enters this stage, preserve completed mechanism/native and all operational evidence, then let the new sole function owner run the same fixed canonical protocol.",
-    "If both schedulers must remain active, every actual writer must participate in one atomic stage-ownership guard before any canonical write. Changing only the new helper cannot impose that on the already-running old process.",
-    "Add exact Nous repo, beb678ba5bd7eb1aafeffa01e2a2b3b5e93d1dd3 revision, llama70 family and official30 equality checks to the helper asset guard."
-  ],
+  "v1_superseded_for_actual_TOCTOU_risk": true,
+  "v1_historical_snapshot": {
+    "json": "function_queue_static_review_2026-10-12_v1_historical.json",
+    "json_sha256": "d72ca99696374bf0bc2883fb0fad8f73e645678b6b21a352710080d94792185f",
+    "md": "function_queue_static_review_2026-10-12_v1_historical.md",
+    "md_sha256": "fd766022274917ca6dd9b88339d195c9f79bc906c058e2ed57425794a9311d80",
+    "helper_sha256": "6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c"
+  },
+  "legacy_guard_proof": "Owned child is SIGSTOPped and stopped-state confirmed, then native/run.json and function/operational_launch must both be absent. Frozen protocol cannot have advanced to function before writing native run. Continuous O_EXCL behavior fence is installed in that stopped window and child SIGCONT is in finally. Old function guard sees fence and cannot enter canonical writer.",
+  "owned_process_scope": "Exact child argv plus parent children relationship and existing parent queue_pid claim; no exact parent-argv check is claimed.",
+  "isolated_execution": "Only new fvcrc13 helper calls original protocol main with STAGES restricted to original function and ROOT rebound to an isolated directory inside the repository. Original scripts, preflight and identity/discovery inputs are symlinked; canonical output directory is not a symlink.",
+  "publication": "Canonical behavior fence stays continuously present until atomic os.replace swaps in complete32-row raw. All files are moved from isolated stage, with run.json last; completed-stage collector cannot observe a finalized run before publication is complete. No concurrent canonical legacy writer.",
+  "source_and_metadata_scope": "All five frozen source bytes, observer formulas, materials/seeds/gold,85 interfaces, FP32/eager/all layers are unchanged. run args.out honestly records isolated execution root; canonical placement and helper hash are separately traced in claim/handoff/journal.",
+  "asset_and_device_guards": "Exact llama70/Nous mirror/beb678 revision,host,target,all-weight-hash and official30 equality flags required; all four fvcrc13 physical cards must have <128MiB and0 utilization before launcher proceeds. Static review does not replace those runtime checks.",
+  "residency_journal": "Distinct worker_llama70_confirmation_function_parallel.json, with same wall×4 residency accounting; original worker journal retained. Legacy guard exit is an operational handoff, not a scientific negative.",
+  "remaining_blockers": [],
+  "optional_nonblocking_operational_logging": "Wrap post-claim SSH reserve/directory preparation in claim try/finally too, so pre-GPU failures get finished_at/error fields. Existing stderr and fence/claim still preserve failed preparation; this is not a writer-safety or scientific issue.",
   "no_GPU_or_helper_execution": true,
   "no_scientific_source_or_PDF_changes": true,
-  "no_grade_status_or_new_experimental_requirement": true
+  "no_grade_status_or_new_experimental_requirement": true,
+  "review_helper_sha256": "4ab97ebef3df2705f4c16967bc16ca97dc05c24aca312054afad9e5fe9c400a5"
 }

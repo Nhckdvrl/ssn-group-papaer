@@ -1,0 +1,38 @@
+{
+  "status": "STATIC_SCOPE_CORRECT_NEEDS_WRITER_OWNERSHIP_FIX_BEFORE_LAUNCH",
+  "date": "2026-10-12",
+  "kind": "OPERATIONAL_SCHEDULING_STATIC_REVIEW_NO_NEW_SCIENCE",
+  "helper_sha256": "6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c",
+  "five_frozen_sources_sha256": {
+    "e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+    "e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+    "e131_mechanism.py": "75290f9f3d354e981955b7482f09122c60d80f664d0bd8639f2b4ef0aec78961",
+    "e131_native.py": "a4285fe0eba3818f6cd8e6cc677dca0fac2c5be2e05bbb3fbc8c3b5b17a90f80",
+    "e131_function.py": "b145f6278e9217930f07640535dcd782daec89157caed3c8c808e05f408fb428"
+  },
+  "scientific_scope_preserved": {
+    "family": "llama70",
+    "phase": "confirmation",
+    "stage": "function",
+    "n": 32,
+    "seed": 131103,
+    "conditions": 85,
+    "materials": "validation",
+    "canonical_output": "results/e131/llama70_confirmation_function",
+    "model_path": "/tmp/ices_models/Llama-3.1-70B",
+    "protocol_analysis_materials_unchanged": true,
+    "independent_journal": "worker_llama70_confirmation_function_parallel.json"
+  },
+  "queue_claim_scope": "O_EXCL excludes the two new queue workers only; current original fvcrc10 protocol never reads this stage claim.",
+  "writer_risk": "Both old and new workers can pass non-atomic behavior.exists guards before any scoring file is created. They write operational_launch.json/run.log/contexts before scoring, and scientific behavior is later opened with mode w. An eventual existing-file guard does not prevent the concurrent check-then-write race or canonical metadata clobber.",
+  "asset_guard_gap": "Current helper checks all_weights_sha256_passed and target path, but not actual repo/revision/family/official30 equality. Current known fvcrc13 metadata are correct; future identity eligibility must be pinned explicitly.",
+  "safe_actions_without_five_source_changes": [
+    "Require the original fvcrc10 sequential worker to be fully stopped/exited before the queue can enter canonical protocol; if it completes function itself, queue must exit without rerun.",
+    "For accelerated handoff, terminate/replace the original scheduling owner before it enters this stage, preserve completed mechanism/native and all operational evidence, then let the new sole function owner run the same fixed canonical protocol.",
+    "If both schedulers must remain active, every actual writer must participate in one atomic stage-ownership guard before any canonical write. Changing only the new helper cannot impose that on the already-running old process.",
+    "Add exact Nous repo, beb678ba5bd7eb1aafeffa01e2a2b3b5e93d1dd3 revision, llama70 family and official30 equality checks to the helper asset guard."
+  ],
+  "no_GPU_or_helper_execution": true,
+  "no_scientific_source_or_PDF_changes": true,
+  "no_grade_status_or_new_experimental_requirement": true
+}

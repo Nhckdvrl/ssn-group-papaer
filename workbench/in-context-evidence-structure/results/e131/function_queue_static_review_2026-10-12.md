@@ -1,11 +1,15 @@
-# E131 单独 function 队列的独立静态核对
+# E131 独立function调度：修正版静态核对
 
-阶段过滤本身保持原function/confirmation、85条件、n32、seed131103、validation材料和canonical目录，五个冻结源SHA相同；独立worker journal不会覆盖原sequential日志。当前helper SHA为`6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c`。未执行helper/GPU。
+**核心交接静态通过，可在代码的runtime断言满足后启动。** 当前helper SHA `136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d`；五个冻结protocol/dispatch/engine源保持原字节。只调度原function confirmation，85条件、n32、seed131103、validation材料、原gold/分析/全层FP32读数不变。此次没有执行helper或GPU。
 
-**启动前必须解决writer所有权。** O_EXCL stage claim只由两个新queue worker读取，现有fvcrc10原protocol不参与。原protocol与engine都先检查behavior不存在，随后生成/覆盖canonical metadata和contexts，再加载模型，最后以`open('w')`建立behavior。两个worker可能在任何behavior创建之前都通过检查；后到者仍能截断raw，并且此前operational_launch/run.log/contexts已经可能被覆盖。不能把现有非原子断言当作并发互斥保证。
+旧6ea2版本的O_EXCL仅约束新queue而不约束旧10worker，存在check-then-write风险，已弃用；原风险JSON/MD逐字保存为v1_historical，不删除或改写成通过。
 
-不改五源的安全交接是确保原10worker已经停止/退出且不会再进入function，再允许新queue进入canonical协议；如果原worker自行完成function，新queue检查已有结果后退出。要加速，则明确在旧调度者进入该阶段前停止/替换其调度所有权，保存已完整机制/native及全部操作记录。若继续允许两调度者存在，则所有实际writer必须遵守同一个原子stage guard；只改新helper无法约束旧的已启动进程。
+新版先核owned child精确argv、父子关系和原parent queue claim，在SIGSTOP确认的暂停窗口检查native run未完成且function operational尚不存在。原冻结protocol必须先产生native run才能进入function，因此此时旧function guard尚未通过。随后O_EXCL安装canonical空behavior fence，finally恢复旧child。旧10可继续完成既有阶段，未来在function guard退出；无需改其冻结代码。注意parent用queue_pid+children核ownership，并未额外核parent精确argv，报告不扩大已核范围。
 
-另建议在helper资格判定中明确assert资产repo/revision/family及官方30-shard等价字段。当前已知13 metadata是真正Nous/beb678…，但现代码只核passed与target路径，不能证明未来读到的identity仍为同pin。
+新13 worker通过精确Nous/beb678身份与四卡空闲断言后，仅在隔离ROOT执行原protocol的function，scripts/preflight/identity/discovery输入都是原件链接，canonical目录不是symlink。生成完整32行后逐文件os.replace发布，behavior从空fence原子替换为完整raw，从不删除该fence；run.json最后发布。由此旧writer不能写canonical，collector也不会把部分发布当完成。隔离执行的args.out保留真实路径，handoff/claim/journal另记录canonical安排。
 
-这是调度/工具风险，不是实验阴性，也不影响已封14批、论文、原三认识或等级。完整固定scope/源SHA与可执行修正见同名JSON。
+驻留日志使用独立文件名，不覆盖旧10。旧guard退出/错误要作为操作交接保留，不能当科学失败。没有剩余阻止启动的静态问题；runtime的PID/暂停状态/文件状态、同pin资产和四空卡检查必须实际通过。
+
+唯一非阻挡建议：claim创建后的SSH reserve和目录准备目前在main try/finally外；若这些0GPU准备失败，claim没有finish/error字段，可扩外层finally补记。此差异不引入双writer或科学变化。
+
+此次沿用原18批科学设计，不新增控制、模型、head/layer/格式或claim资格；已封论文和15th raw科学审计不变。
