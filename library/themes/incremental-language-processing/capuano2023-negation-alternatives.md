@@ -1,8 +1,7 @@
-# Activation levels of plausible alternatives in conversational negation（Memory & Cognition2023；primary正文部分）
+# 文献资产已迁移（仅兼容导航）
 
-[primary publisher](https://link.springer.com/article/10.3758/s13421-023-01434-2)，Capuano et al.。已读intro、E1材料/程序/分析/结果、E2设计/结果、general discussion与data availability；全部附表/材料未逐项核对，无本地数据下载。PMC直读有challenge，publisher正文可读。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-- **形态/来源：** German lexical decision，肯定/否定×合理备选/相关但不合理备选/无关对象；原材料构造结合cloze和作者判断，检查备选goodness而非把semantic similarity等同可替代性。
-- **实测/边界：** 原主要交互未清晰，post-hoc goodness分析及后续实验增强备选条件解释；不能不加区分只引用结论“否定使备选更可及”。论文明确relative interaction不等于absolute facilitation。
-- **ownership与距离：** 否定/修正可作为contrastive focus、受context限制的备选激活，是已有人类工作。I01须补局部角色约束跨event/actor/action的具体作用结构，而非另造rebound名称。它提示真正修订历史与first-time role evidence必须区分，当前source-free C05未证明先前错误belief曾被纠正。
-- **可用资产入口：** publisher给OSF `p5g8u`，license/revision/hash未审计，不直接复制或推理；可用于后续自然备选校准。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

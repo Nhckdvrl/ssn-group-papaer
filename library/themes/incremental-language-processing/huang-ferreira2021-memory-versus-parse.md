@@ -1,5 +1,7 @@
-# What causes lingering misinterpretations…（JML 2021；摘要）
+# 文献资产已迁移（仅兼容导航）
 
-[publisher primary](https://www.sciencedirect.com/science/article/pii/S0749596X21000711)、[作者lab索引](https://ferreiralab.faculty.ucdavis.edu/publications/)。仅读publisher摘要/引言片段，全文方法与统计未核对。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-作者用两reading实验及offline comprehension，按回答正确/错误条件化读数，区分正确全局解释与局部合法结构。语法修复不等于正确解释，记忆与global parse不完整的竞争已是经典研究对象；不把此二分本身当我们新颖性。E23再次finite-clause/省略patient说明后续NP需要完整句的句法校对，不能由第一次出现NP判断新角色关系。当前不能引用本文具体刺激/数值或把其人类结果视作LLM机制证据。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

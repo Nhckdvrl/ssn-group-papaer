@@ -1,8 +1,7 @@
-# Don’t Think of the White Bear（arXiv 2025；正文部分）
+# 文献资产已迁移（仅兼容导航）
 
-[primary v1](https://arxiv.org/html/2511.12381v1)。实际读取§1–3方法/指标/主结果；图的全部原始值、完整附录与代码未核对，未下载其数据/模型。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-- **形态与idea来源：** 人类ironic-rebound迁移到否定指令与干扰负载；5000templated English prompts、9模型、单token forbidden target、neutral对照和token概率。
-- **已占贡献：** 不要提X后X更可及、语义干扰/重复区别及稀疏head分析。不能将“具名否定增加实体可及性”单独当新idea。
-- **读数压力：** 主surprisal差以最高5%负载作baseline，不能天然视作无指令反事实；文中另有matched-neutral suppression读数。须分清它们，不能由一个token更易预测推知被禁止关系已断言。
-- **与我们距离：** 它测词的出现禁令；E22普通提及被否定患者完全合法，只有在原活动中的角色才受限。关系/实体分开与先前parse交互是待检验增量，当前仍非paper主张。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

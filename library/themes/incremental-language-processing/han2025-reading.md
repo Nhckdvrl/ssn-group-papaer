@@ -1,13 +1,7 @@
-# Read Before You Think（arXiv 2504.09402v2，2025；接收与评审未核对）`[证据级别：正文 HTML §1–4]`
+# 文献资产已迁移（仅兼容导航）
 
-[正文](https://arxiv.org/html/2504.09402v2)；PDF已直连下载，hash见ledger。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. **形态：** 理解错误分析 → 分步读prompt → 注意力解释 → 后向依赖数据 → 修复。
-2. **压力：** 数学推理失败可能是误读条件；作者区分理解、计算、漏步。
-3. **改变前提：** 输入理解也需要过程，不能只改输出推理。
-4. **idea来源（DOCUMENTED）：** CoT错误分析；从计算分步迁移到阅读分步。
-5. **近邻：** RE2重复、EchoPrompt释义、RaR重问已有输入加工方法；本文声称增加显式逐句重语境化。
-6. **实验：** 两个GPT、三数学数据集、三次多数投票；额外注入1–3个修正条件，GPT4o合成并称人工核验1000项。
-7. **证据/短板：** attention总和变化不是独立因果机制证据；注入修正同时增加长度、条件数量及答案计算变化，单独的性能趋势不能唯一识别backward-dependency瓶颈。只改prompt增加分数也不足证明排除了其他解释。
-8. **迁移动作：** 从真实错误出发，干预错误所依赖的证据；更应保留不改旧条件的等长附加信息控制。
-9. **对我们：** 泛泛“后文修正前文难、重复/指令能改善”已有owner。当前GP语义/角色/继续使用的观察必须给出更具体、稳定且非显然的预测；不跟随本文做prompt优化。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

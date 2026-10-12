@@ -1,7 +1,7 @@
-# Structural priming in humans and large language models（JML2026；primary摘要/intro及methods snippets）
+# 文献资产已迁移（仅兼容导航）
 
-[作者机构primary](https://research.rug.nl/en/publications/structural-priming-in-humans-and-large-language-models/)，[publisher](https://www.sciencedirect.com/science/article/pii/S0749596X25001068)，DOI10.1016/j.jml.2025.104713。已读机构摘要/metadata、publisher intro及materials/analysis snippets；全文统计/41页PDF未读，未本地下载。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-- **形态/来源：** 将13 transformer LM的dative priming与人类EEG/自然阅读对应材料比较，并以形容词modifier打破完全word-order重叠。
-- **已报告/ownership：** 两系统都有不依赖exact word order的粗层priming，但LM和人类的item-level效应不普遍相关；不能仅凭群体平均趋势相似说模型在人类式加工。机构声明Published Aug2026，license Taverne，未转存原文/数据。
-- **对I01：** 词序/释义迁移可以限制某些surface account，不能自身证明human-like relational memory；当前没有本线人类响应数据。若未来做人的对应理解，需先明确用途与item-level读数，不能把人类memory论文的总体方向直接贴到C05。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

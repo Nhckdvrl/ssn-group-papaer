@@ -1,0 +1,11 @@
+# E131 单独 function 队列的独立静态核对
+
+阶段过滤本身保持原function/confirmation、85条件、n32、seed131103、validation材料和canonical目录，五个冻结源SHA相同；独立worker journal不会覆盖原sequential日志。当前helper SHA为`6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c`。未执行helper/GPU。
+
+**启动前必须解决writer所有权。** O_EXCL stage claim只由两个新queue worker读取，现有fvcrc10原protocol不参与。原protocol与engine都先检查behavior不存在，随后生成/覆盖canonical metadata和contexts，再加载模型，最后以`open('w')`建立behavior。两个worker可能在任何behavior创建之前都通过检查；后到者仍能截断raw，并且此前operational_launch/run.log/contexts已经可能被覆盖。不能把现有非原子断言当作并发互斥保证。
+
+不改五源的安全交接是确保原10worker已经停止/退出且不会再进入function，再允许新queue进入canonical协议；如果原worker自行完成function，新queue检查已有结果后退出。要加速，则明确在旧调度者进入该阶段前停止/替换其调度所有权，保存已完整机制/native及全部操作记录。若继续允许两调度者存在，则所有实际writer必须遵守同一个原子stage guard；只改新helper无法约束旧的已启动进程。
+
+另建议在helper资格判定中明确assert资产repo/revision/family及官方30-shard等价字段。当前已知13 metadata是真正Nous/beb678…，但现代码只核passed与target路径，不能证明未来读到的identity仍为同pin。
+
+这是调度/工具风险，不是实验阴性，也不影响已封14批、论文、原三认识或等级。完整固定scope/源SHA与可执行修正见同名JSON。

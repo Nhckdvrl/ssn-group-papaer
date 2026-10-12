@@ -1,13 +1,7 @@
-# Revisiting Real-Time Digging-In Effects（arXiv2603.23624v1，2026；接收未核对）`[证据级别：正文HTML Methods、两实验、Discussion/Limitations]`
+# 文献资产已迁移（仅兼容导航）
 
-[正文](https://arxiv.org/html/2603.23624v1)；本地PDF/hash见ledger。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. **形态：** 经典机制的边界复核；受控实验发现先前解释的测量混杂。
-2. **压力：** 延长歧义是否让承诺更难修订？动态自强化与概率预期给出不同预测。
-3. **改变前提：** 句末时长可能含wrap-up，不能全部解释为实时承诺。
-4. **idea来源（DOCUMENTED）：** Tabor/Hutchins经典材料的句末设计；复用构式并把finality显式因子化。
-5. **近邻：** Futrell已有模型reverse digging-in；Huang有GP surprisal低估；本工作在两个人类任务中检验相同语言操纵与finality。
-6. **实验：** Maze30项、SPR24项；GP/comma/object×短长，SPR再交叉句末/非句末；16LM的预测；两任务cue作用并不完全一致。
-7. **证据/短板：** 非句末没有明显正digging-in，句末呈正趋势；三因子交互仍不确定，不能将“没有显著证据”写成严格零效应。SPR仅保留答对题trial，RT分析不直接回答错误理解的过程。
-8. **可迁移动作：** 把一个熟悉解释所依赖的测量位置拆开；再看解释是否保留。独立任务复核也暴露comma的任务特异性。
-9. **对我们：** E01歧义延长不能自动命名digging-in/commitment；不同词汇modifier也可改变预期、NP引用和问答。需先看跨cue与非GP读数的结构，后续对照必须能区分这些解释。本文owner不关闭探索。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

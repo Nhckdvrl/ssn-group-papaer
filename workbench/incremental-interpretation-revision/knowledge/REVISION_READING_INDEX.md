@@ -1,0 +1,152 @@
+# 2026-10-07 修订研究精读卡索引
+
+86篇主文（5综述+2 position+79研究）；Knowing Without Saying仅摘要，不计入。字段按论文卡模板；全领域综合判断见[整体画像](REVISION_RESEARCH_SYNTHESIS.md)。
+
+- [When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs](kamoi2024-self-correction-survey.md)
+- [Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures](hu2026-reasoning-mechanisms-survey.md)
+- [Large Language Models Develop Belief State Geometry In-Context](balcells2026-belief-state-geometry.md)
+- [Hypothesis generation and updating in large language models](xiong2026-hypothesis-generation-updating.md)
+- [Rethinking State Tracking in Recurrent Models Through Error Control Dynamics](chung2026-state-tracking-error-control.md)
+- [Indications of Belief-Guided Agency and Meta-Cognitive Monitoring in Large Language Models](yalon2026-belief-guided-agency.md)
+- [Learning to Persuade Exposes How Easily LLMs Abandon Correct Beliefs](bozdag2026-learned-persuasion.md)
+- [When Should Models Change Their Minds? Contextual Belief Management in Large Language Models](xu2026-contextual-belief-management.md)
+- [SAGE: Mitigating Long-Horizon Reasoning Biases via Topological Guidance](zeng2026-sage.md)
+- [CoRe: Context-Robust Remasking for Diffusion Language Models](zhai2026-core-remasking.md)
+- [Sample Complexity and Representation Ability of Test-Time Scaling Paradigms](huang2026-test-time-scaling-theory.md)
+- [Think Visually, Reason Textually: Vision-Language Synergy in Abstract Reasoning](zhang2026-vision-language-synergy.md)
+- [Belief Revision: The Adaptability of Large Language Models Reasoning](wilie2024-belief-revision.md)
+- [Reason, Then Re-reason: Cross-view Revisiting Improves Spatial Reasoning](ma2026-cross-view-rereason.md)
+- [Beyond Single-shot Writing: Deep Research Agents are Unreliable at Multi-turn Report Revision](chen2026-report-revision-regression.md)
+- [When Attribution Patching Lies: Diagnosis and a Second-Order Correction](zhang2026-attribution-patching-curvature.md)
+- [Learn from Your Mistakes: Self-Correcting Masked Diffusion Models](schiff2026-proseco.md)
+- [The Quest for the Right Mediator](mueller2025-right-causal-mediator-survey.md)
+- [SelfElicit（ACL2025，arXiv v2主文）](liu2025-selfelicit-evidence.md)
+- [Attention Sinks and Compression Valleys（ICLR2026正式主文）](queipo2026-mix-compress-refine.md)
+
+[Anthropic2026 Global Workspace](gurnee2026-workspace-selected-sections.md)已读引言/方法开头、跨用途交换/选择性两节及limitations，另记SECTION_READ，不计入上述73篇。
+
+- [How do Language Models Bind Entities in Context?（ICLR2024正式主文）](feng2024-binding-ids.md)
+- [Mixing Mechanisms（ICLR2026，作者v2主文）](gur-arieh2026-mixed-binding-retrieval.md)
+
+- [PERK：写入与使用分离（ICLR2026，作者v3）](chen2026-perk-parametric-context.md)
+- [Lens：任务语义视角（arXiv2026）](liu2026-lens-semantic-perspective.md)
+
+- [Ask Twice, Look Twice：编码引导与问句读取（ECCV2026 workshop，v2）](abhinandan2026-question-first-echoing.md)
+
+- [Modality Order Consistency：定向TTT（arXiv2026）](gupta2026-modality-consistency-ttt.md)
+
+- [RILKE：局部表征控制与改写泛化（ACL2026正式主文）](liu2026-rilke-lifelong-representation-control.md)
+
+- [Surprisal存在性与理论视角（ACL2026正式主文）](yoshida2026-surprisal-existence.md)
+- [JitMem：策展时机与即时credit（2026年9月预印本）](zhou2026-jitmem-read-time-curation.md)
+- [Good-enough复述：直接近邻（KJELL2026正式主文）](lee2026-good-enough-paraphrase.md)
+
+- [增量CWE轨迹：变化不等于关系修复（2026年9月预印本）](storer2026-incremental-contextual-trajectories.md)
+
+- [Task-specific Knowledge：联合对象与因果子网（2026年6月预印本）](elhelo2026-task-specific-knowledge.md)
+- [Prefix Steering：改变控制时段（2026年10月4日预印本）](zhu2026-prefix-steering.md)
+
+- [Targeted noisy-channel reanalysis：重新确定修订对象（CoNLL2026 Outstanding）](clark2026-targeted-noisy-channel.md)
+
+- [Priors in Time：时间先验与功能充分性的距离（ICLR2026，作者v3）](lubana2026-priors-in-time.md)
+- [In-context deployment：有结构不等于可灵活使用（ACL2026正式主文）](lepori2026-in-context-deployment.md)
+
+- [Hop generalization：由错误操作到因果恢复与方法（ICLR2026作者v2）](li2026-hop-generalization.md)
+
+- [Context-sensitive事实错误与SSC-GRPO：诊断如何长出奖励（浙大7月预印本）](hu2026-context-sensitive-ssc-grpo.md)
+
+- [Task demands：从测量gap到资源交互（COLM2024作者v2）](hu-frank2024-task-demands.md)
+
+- [Who Says What：跨ID转换的特定失败与方法（NeurIPS2026作者v1）](jung2026-trimodal-binding.md)
+
+- [Correct Chains, Wrong Answers：正确可见链与错误声明（2026预印本）](rao2026-correct-chain-wrong-answer.md)
+- [iGRPO：训练接口改动怎样形成方法贡献（NVIDIA2026预印本）](hatamizadeh2026-igrpo.md)
+
+- [InT：失败轨迹如何形成局部纠正监督（ICLR2026正式/作者稿）](yang2026-intervention-training.md)
+- [SR²：形成状态与联合依赖修订（ICLR2026正式稿）](deng2026-selection-refinement.md)
+
+原知识库复读，不计新增：[结构建立与旧解释清理分离：人类直接机制祖先（JML2013）](slattery2013-competing-representations.md)
+
+- [自发撤回：当下belief与后续W/V机制（COLM2026作者v4；旧选段升级全文）](yangjia2025-spontaneous-retraction.md)
+
+- [Beliefs and Behavior：共同latent怎样跨行动预测（CMU/TSE9月预印本）](smolin2026-beliefs-behavior.md)
+
+- [Semantic Role Circuits：preposition角色与功能轨迹（ACL2026正式稿）](aljaafari2026-semantic-role-circuits.md)
+
+- [SEEM：原文追溯与事件/事实双粒度怎样变成方法（ACL2026正式稿）](lu2026-structured-episodic-event-memory.md)
+
+- [SRL综述：范式共同缺陷、预测syntax质量与真实用途（AIR作者v4）](chen2026-srl-survey.md)
+
+- [Spaulding ACL2025 proto-role](spaulding2025-proto-role-context.md)：主文完整；属性与role一致/不一致不独立证明latent语义机制，Pipeline大部分低分来自严格span边界，记录One-arg gold/silver歧义。
+
+- [Dukić SIFT作者v2](dukic2025-sift-generative-labeling.md)：主文完整/AppA明确scope；任务表示/监督接口贡献，不同baseline适应范围、监督token成本和SRL多shot阴性保留。
+
+- [Lee QK作者v1](lee2026-contrastive-qk.md)：主文全读/附录scope明确，Harvard工具贡献从未知scalar机制→可分解匹配；attention干预与实际答案恢复分开，接受未核对。
+
+- [Clark EMNLP2025 noisy-channel算法](clark2025-resource-rational-noisy-channel.md)：主文与算法附录完整；明确显式算法与native LLM不同，计算更多非单调拟人，词表/伪代码记法未代码核实。
+
+- [PoCO EMNLP2025](park2025-poco-overcorrection.md)：候选搜索与编辑保持分工，双目标监督；主文/AppA全读，CoNLL14相对Gold阴性、API版本与主文附录评分不一致保留。
+
+- [Min ACL2022 Channel Prompting](min2022-channel-prompting.md)：主文/AppB精读；逆向评分有明确owner，零样本和head tuning反证完整保留，未将Bayes推导当现代chat的同一joint证明。
+
+- [Wang ACL2026 grammaticality](wang2026-implicit-grammaticality.md)：MIT正式main精读/App范围明确，gram/prob/关系功能分开；base和监督probe边界、不普适Dutch读数保留。
+
+- [McGee Cognitive Science2026](mcgee2026-syntactic-encapsulation.md)：出版社主文全文；从syntax定位到可渗透性，attention证据与实际修订因果分开；Llama依赖数正文不一致保留，附录/代码未读。
+
+- [Uselis ICML2026 binding functions](uselis2026-binding-functions.md)：正式主文全文/指定附录/图表；从内部可读与跨用途失败的矛盾推进到函数共享泛化，test选择上包络与对象计数不一致保留。
+
+- [Sbrolli NeurIPS2026 Auto-Comp](sbrolli2026-compositional-binding.md)：主文完整/指定附录与表格；从交换错误走到重复元素绑定，候选集大小/实际回答接口与数据计数局限保留。
+
+- [Huang九月Testable Belief综述](huang2026-testable-belief-survey.md)：主文全部/App筛选与表格；借credit对象与test来源对齐，517篇是作者的综述语料，不能冒称我们全文读过。
+
+- [ABBEL作者v2](lidayan2026-abbel.md)：主文全部与训练/Algorithm4等；最新观察重建credit、两阶段belief/action，内存代理/多调用/版本与实现边界保留。
+
+- [Agent-BRACE作者v1](singh2026-agent-brace.md)：主文全读/关键reward与calibration附录；tracking包含新增信息缺失惩罚，WEP/Brier及不同reward相反用途的边界保留。
+
+- [ReBel作者v1](tang2026-rebel.md)：主文及A-F已精读；observability/pending credit与belief grouping不混成重建reward，模型/验证／理论及表格scope局限保留。
+
+- [MetaRAG作者v1](qi2026-metarag.md)：主文及A–N完整，搜索边界的同policy probe＋最终正确性gate；同名2024工作、额外检索成本及提示概率的构念边界分开。
+
+- [MemTrain作者v1](li2026-memtrain.md)：主文与全方法附录；随机未来历史实体用途的EM credit反馈给写memory，区别于整观察LP。
+
+- [MemoryRewardBench作者v2](tang2026-memory-reward-bench.md)：主文与构造／评测关键附录；已有process-memory judge对象，不把一般memory reward局限当新claim。
+
+- [CERL／state commitment作者v1](ding2026-state-commitment.md)：主文／AppA–K全，future-use sufficiency训练与观测重建不同；实现／hidden-cache／分支成本范围明确。
+
+- [R2PO NeurIPS2026初始名单／作者v1](abu-hara2026-r2po.md)：主文／指定机制与方法附录精读；compact policy search的轨迹呈现与修订偏差，单模型和关联机制范围保留。
+
+- [local predictive sufficiency作者v1](wang2026-predictive-sufficiency.md)：主文与指定理论／实现附录，recursiveclosure条件及各host算法区别明确。
+
+- [AttriMem作者v3](li2026-attrimem.md)：主文／方法附录／judgeprompt全读，counterfactual固定答案token归因、额外成本与跨answererscope保留。
+
+- [Believer ICML2023](wang2023-belief-representations.md)：正式主文／方法App精读；信息获取cost与state学习信号的功能后果，privilegedstate／toy域范围明确。
+
+- [Memory-R2 NeurIPS2026初始名单／作者v1](yan2026-memory-r2.md)：主文与方法App全文，同anchor局部rerollout／global组合；中间credit与标准全轨迹RL理论范围区分。
+
+- [Theory of Space ICLR2026](zhang2026-theory-of-space.md)：正式main与protocol/promptApp精读，acquisition/formation/maintain/revision/exploitation切分；显式mapproxy与latent机制界限。
+
+- [De-Presuppose *SEM2025](dipta2025-de-presuppose.md)：正式main与全部方法/结果附录；问题暗含假设污染验证已有ownership，I08需检验任务收益与同源明确误角色相反的具体增量。
+
+- [Query visibility作者v1](luo2026-query-visibility.md)：main全部／补表，matched-budget query作用量化；已有query-aware/reuse叙事，I08不靠相同泛概念自称novel。
+
+- [AVPO九月底作者v1](zhao2026-faithful-activation-verbalization.md)：main全/方法App和指定稳定性，query-agnostic文本readout与QA/anchor preference；已有语义recoverability与lexical区别，不冒充新方法。
+
+- [CTRL-RAG：可归因概率不自动等于忠实内容（arXiv2026，ANT Med-AQ，未核接收）](tan2026-ctrl-rag.md)：主文/指定App已精读，版本范围见卡。
+
+- [Self-CTRL：独立行为与说明之间的一致性训练（arXiv2026，MIT CSAIL）](pres2026-self-ctrl.md)：主文/指定App已精读，版本范围见卡。
+
+- [Position：以跨输入关系作为优化对象（ICML2026，作者组接收页核；所读为March5作者稿）](pres2026-consistency-position.md)：主文/指定App已精读，版本范围见卡。
+
+- [TRLM NeurIPS2024 spotlight，作者v2](yerram2024-time-reversal.md)：inverse scoring与reverse-trained反馈的贡献归属；v3存在未精读。
+
+- [IW-OPD作者v1](xie2026-position-bias-opd.md)：prefix compatibility加权训练，理论ratio与实用unsigned代理区别；v3未精读。
+
+- [Causal Quotient最新Oct4作者v1](li2026-causal-quotient-belief-state.md)：精确reward-null、recoverability/use/scale分离；合成流而非自然任务的范围。
+
+- [BeliefMem作者v2](liao2026-belief-memory.md)：多候选memory与非后验confidence merge，现成benchmark；接收未核。
+
+- [Dark Room作者v2](wang2026-dark-room-reward.md)：固定信号换传递通道与placebo归属，条件化的GRPO失败机制；独立研究者预印本，代码未独立复现。
+
+- [LEDOM最新July2026作者v4](yin2026-ledom-v4.md)：reverse model与inverse-feedback假设，理论/采样预算/图表范围分别核；只读取论文无模型下载。
+
+- [Meta-Factivity ACL2026 short position](liu2026-meta-factivity.md)：evaluation对象从事实标签到commitment reasoning/regulation；四文本probe与未实例化框架的边界明确。

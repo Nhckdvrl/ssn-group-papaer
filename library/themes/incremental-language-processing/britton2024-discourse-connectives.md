@@ -1,9 +1,7 @@
-# On the influence of discourse connectives on the predictions of humans and language models（Frontiers in Human Neuroscience 2024；primary摘要）
+# 文献资产已迁移（仅兼容导航）
 
-[出版社原文](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2024.1363120/full)。实际读primary摘要/metadata；后续抓正文methods超时，未核对完整材料和统计，不冒充全文。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-- **问题/idea来源（DOCUMENTED）：** 对比/让步连接词要求读者根据前文反转event expectations，检验人类与LM是否整合这种discourse信息。
-- **资产/动作：** 意大利语与中文故事，情境plausibility/coherence×connective，human judgments/RT与LM surprisal；摘要报告中文模型有词与plausibility敏感但难复现完整expectation reversal，意大利模型更不一致。
-- **ownership：** discourse cue改变/反转event prediction已有研究；不能把E30负方向或某边界word有用本身叫首次发现context contrast。
-- **本线精确距离：** 同一事件里的排他participant事实，跨event/actor/predicate的患者相对预测方向；matched neutral与native scope读数提供定位。其全文是否也有相关role干预尚未核对，不能宣称完全未覆盖。
-- **迁移的研究动作：** 把预测反转与原词/正常世界plausibility分开；不能把预测低概率直接当false belief。现只定位，不自动关线。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

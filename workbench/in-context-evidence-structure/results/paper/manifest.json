@@ -1,7 +1,7 @@
 {
   "scientific_prose_sources": {
-    "PAPER_DRAFT.md": "9aa5e6928e33b95bd426fd4e03bd6746d800a255ad8220dc9d3d31219f0ada18",
-    "PAPER_APPENDIX.md": "670e870c1e99fff3896ca8587d788236e2161bdf9ad2fcec74670e814438df5a"
+    "PAPER_DRAFT.md": "70799115a741f7df451419fedfd75cab36c9502290492e2dc12af16c5c0b4d6d",
+    "PAPER_APPENDIX.md": "2d6c867c4ea8a29d8b0e487ffae399c5ac74ee5830026b41e3840f6ea0a81d43"
   },
   "scientific_prose_changed": false,
   "main": {
@@ -9,15 +9,73 @@
     "tables": 3
   },
   "appendix": {
-    "figures": 12,
-    "tables": 26
+    "figures": 13,
+    "tables": 27
   },
   "official_acl_style_revision": "d5adc823ff0f80f98c80405ca0ab66c68e684409",
   "acl_style_sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
-  "bibliography_sha256": "126202f8bbf3884d37f93a723004ce0a8792270bd97e8c2ff85684f0f7970ed1",
-  "build_script_sha256": "40a08d5e06cd182dfccf438f8ef416bb3be8d744281931c611425c46ae1e1220",
+  "acl_bibliography_style_sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+  "preamble_sha256": "f4a7e9e6023dc409f99b4ee124c479018b30932f7fad6daf2aec5ef96d6fb838",
+  "table_captions_sha256": "c0468f12d8e9500c6b83d3e564ffa30a174870e058f0729cf6cec07a6ce06702",
+  "compilation_configuration": {
+    "reference_workbench": "workbench/mechanism-population-dynamics/paper-acl-v3",
+    "reference_files_sha256": {
+      "main.tex": "84cb6a2aa91424301995fe88239216c2d7ec5e4b3820ea7e74bba7ac4bcc92eb",
+      "build.sh": "110caa68ed44d4106a725ed3824d2a904deae9fd32b5ca510ffd226a137e9d22",
+      "acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+      "acl_natbib.bst": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e"
+    },
+    "document_class": "article",
+    "point_size": 11,
+    "acl_mode": "review",
+    "fonts": [
+      "Times",
+      "Inconsolata"
+    ],
+    "engine": "pdfLaTeX",
+    "bibliography_engine": "BibTeX",
+    "preferred_tex_bin": "~/.TinyTeX/bin/x86_64-linux",
+    "minimum_pass_sequence": [
+      "pdflatex",
+      "bibtex",
+      "pdflatex",
+      "pdflatex",
+      "pdflatex"
+    ],
+    "renderer_support_packages": [
+      "array",
+      "calc",
+      "tabularx"
+    ],
+    "changes_to_acl_style": false,
+    "compilation_difference": "Stop on compiler errors and add passes only if references or ACL line numbers need convergence."
+  },
+  "bibliography_sha256": "e7a6b6af769acfcf33321c6666a4db7b7464d0b76503194d5d3999e9380450c0",
+  "build_script_sha256": "e063a4ef228b3960a955c2b741883435eb483b58abac8c42a236f784b46997a2",
   "pandoc_version": "3.9",
   "status": "BUILT",
   "limits": "Formatting artifact; does not certify page limits, acceptance, or scientific completeness.",
-  "pdf_sha256": "5412196d4c1656dfff5a28804cd3cc5ed3f672d225257782afa2010d065579c3"
+  "compilers": {
+    "pdflatex": {
+      "path": "/home/xiang/.TinyTeX/bin/x86_64-linux/pdflatex",
+      "version": "pdfTeX 3.141592653-2.6-1.40.29 (TeX Live 2026)"
+    },
+    "bibtex": {
+      "path": "/home/xiang/.TinyTeX/bin/x86_64-linux/bibtex",
+      "version": "BibTeX 0.99e (TeX Live 2026)"
+    }
+  },
+  "final_latex_checks": {
+    "warning_count": 0,
+    "undefined_count": 0,
+    "overfull_count": 0,
+    "line_numbers_converged": true
+  },
+  "pagination": {
+    "main_content_pages": 8,
+    "limitations_start_page": 9,
+    "total_pages": 32,
+    "appendix_format": "official ACL two-column, after references"
+  },
+  "pdf_sha256": "adeb070e098f9f20d6a09b27472088879bea7894a6519d6944cfeb785d63b741"
 }

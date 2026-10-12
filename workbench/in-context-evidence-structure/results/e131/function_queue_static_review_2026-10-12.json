@@ -1,0 +1,62 @@
+{
+  "status": "STATIC_HANDOFF_AND_EXPLICIT_RESUME_VERIFIED_RUNTIME_GUARDS_REQUIRED",
+  "date": "2026-10-12",
+  "kind": "OPERATIONAL_SCHEDULING_STATIC_AUDIT_NO_NEW_SCIENCE",
+  "helper_sha256": "802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798",
+  "five_frozen_sources_sha256": {
+    "e131_protocol.py": "550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f",
+    "e131_dispatch.py": "5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9",
+    "e131_mechanism.py": "75290f9f3d354e981955b7482f09122c60d80f664d0bd8639f2b4ef0aec78961",
+    "e131_native.py": "a4285fe0eba3818f6cd8e6cc677dca0fac2c5be2e05bbb3fbc8c3b5b17a90f80",
+    "e131_function.py": "b145f6278e9217930f07640535dcd782daec89157caed3c8c808e05f408fb428"
+  },
+  "scientific_scope_preserved": {
+    "family": "llama70",
+    "phase": "confirmation",
+    "stage": "function",
+    "n": 32,
+    "seed": 131103,
+    "conditions": 85,
+    "materials": "validation",
+    "canonical_output": "results/e131/llama70_confirmation_function",
+    "model_path": "/tmp/ices_models/Llama-3.1-70B",
+    "protocol_analysis_materials_unchanged": true,
+    "independent_journal": "worker_llama70_confirmation_function_parallel.json"
+  },
+  "v1_superseded_for_actual_TOCTOU_risk": true,
+  "v1_historical_snapshot": {
+    "json": "function_queue_static_review_2026-10-12_v1_historical.json",
+    "json_sha256": "d72ca99696374bf0bc2883fb0fad8f73e645678b6b21a352710080d94792185f",
+    "md": "function_queue_static_review_2026-10-12_v1_historical.md",
+    "md_sha256": "fd766022274917ca6dd9b88339d195c9f79bc906c058e2ed57425794a9311d80",
+    "helper_sha256": "6ea2eb17b67e9615f1f892bd8c9daadf1778f452b0a1aaefda161cd8e84f7e1c"
+  },
+  "legacy_guard_proof": "Owned child is SIGSTOPped and stopped-state confirmed, then native/run.json and function/operational_launch must both be absent. Frozen protocol cannot have advanced to function before writing native run. Continuous O_EXCL behavior fence is installed in that stopped window and child SIGCONT is in finally. Old function guard sees fence and cannot enter canonical writer.",
+  "owned_process_scope": "Exact child argv plus parent children relationship and existing parent queue_pid claim; no exact parent-argv check is claimed.",
+  "isolated_execution": "Only new fvcrc13 helper calls original protocol main with STAGES restricted to original function and ROOT rebound to an isolated directory inside the repository. Original scripts, preflight and identity/discovery inputs are symlinked; canonical output directory is not a symlink.",
+  "publication": "Canonical behavior fence stays continuously present until atomic os.replace swaps in complete32-row raw. All files are moved from isolated stage, with run.json last; completed-stage collector cannot observe a finalized run before publication is complete. No concurrent canonical legacy writer.",
+  "source_and_metadata_scope": "All five frozen source bytes, observer formulas, materials/seeds/gold,85 interfaces, FP32/eager/all layers are unchanged. run args.out honestly records isolated execution root; canonical placement and helper hash are separately traced in claim/handoff/journal.",
+  "asset_and_device_guards": "Exact llama70/Nous mirror/beb678 revision,host,target,all-weight-hash and official30 equality flags required; all four fvcrc13 physical cards must have <128MiB and0 utilization before launcher proceeds. Static review does not replace those runtime checks.",
+  "residency_journal": "Distinct worker_llama70_confirmation_function_parallel.json, with same wall×4 residency accounting; original worker journal retained. Legacy guard exit is an operational handoff, not a scientific negative.",
+  "remaining_blockers": [],
+  "optional_nonblocking_operational_logging": null,
+  "no_GPU_or_helper_execution": true,
+  "no_scientific_source_or_PDF_changes": true,
+  "no_grade_status_or_new_experimental_requirement": true,
+  "review_helper_sha256": "741404876e27d386734d078195173fa364ce803898be3eb3de1af3706735e4ed",
+  "v2_previous_passed_review": {
+    "json": "function_queue_static_review_2026-10-12_v2_historical.json",
+    "json_sha256": "824eca5a1b23ccccb085b9faf4aa5418984764c567d496d2df18e9f0f2e9b486",
+    "md": "function_queue_static_review_2026-10-12_v2_historical.md",
+    "md_sha256": "1ae6bba94f01bdda196f3fc1c6d30d5e7eaa1144373bb492ff5ce8dc45a65c97",
+    "helper_sha256": "136f3441a5dcab5a62b269dae56adf65aa69cec0f44099918f2c5774b481514d"
+  },
+  "incremental_review_scope": [
+    "NFS continuous-fence visibility waits at most60 seconds before isolated stage creation.",
+    "Explicit resume verifies prior local13 worker dead, same empty canonical fence, absent staging root and matching legacy worker in handoff; it archives failed attempt and does not repeat remote SIGSTOP or remove fence.",
+    "ROOT cwd set before execution, including engine final git rev-parse, without modifying frozen sources.",
+    "Main exception handler records initialization failure only for the current owned claim PID."
+  ],
+  "first_initialization_failure": "Parent reports canonical empty fence installed and old10 resumed; first13 helper exited on delayed NFS visibility before staging/model loading,0scientific rows/0GPU. It remains an operational failed attempt, not a scientific negative.",
+  "resume_launch_scope": "One explicitly requested resume launcher for this same reservation; original atomic staging creation and permanent canonical fence still prevent concurrent canonical science writing."
+}

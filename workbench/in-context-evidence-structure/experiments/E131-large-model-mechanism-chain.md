@@ -1,6 +1,6 @@
 # E131：大小模型上的同一证据形成解释
 
-- **状态：** RUNNING；451238d5首评分前启动的TF32实现数值失败已完整保留，0科学row；完整FP32精度补核后同协议复跑，L70资产待齐。
+- **状态：** RUNNING；451238d5首评分前启动的TF32实现数值失败已完整保留，0科学row；完整FP32精度补核后同协议复跑，当前14/18批已完成并独立核验；L70两套四卡执行剩余四批。
 - **类型：** CLAIM / 跨尺度核心机制检验。
 - **对应：** C21–C24、I04、P17。
 - **问题：** 能力更强时，关系证据的历史形成、随后读取与Source条件使用发生什么变化？已有answer→label形成解释能否在更大模型上用相同干预与读数成立，而非仅保留小模型结论？
@@ -85,3 +85,21 @@ Q32新32确认的真实SST shared/full两Actor平均87.9883→95.7031%，targete
 **70B形成发现完整独立核（13/18）：** n16/5504scores、80层四卡FP32/eager，A形成+.99314[.61212,1.37253]nats，单源两个私人方向100%；label B0 KV rawr.54212/RMSE.63233 vszero.70481，B1r.85433/RMSE.82462 vszero1.47212。冻结通道/目标/背景全部保留，K在B0的RMSE略差zero、V优于KV，本批不支持统一KV最佳或随容量重建增强。固定词answer关系abs+.23662[.11647,.36828]、signed−.22883[−.38226,−.08503]完整报告。private能力与历史关系形成共存，机制贡献跨容量仍可测；通道贡献和阅读背景差异据预定同确认继续检验，不另开head/层/强度。独立1041数值差6.66e−15，旧12stage和配对对象直接字节/数值保持；本批n16不与新L8 n32配对。来源/运行/报告与read-order例外见raw-first审计，五70B批仍待完成。
 
 **05:54:56并行启动：** fvcrc10第三副本全30 pinned SHA通过、官方mirror匹配；21.45分钟peer传输后confirmation获得共享atomic claim，10/13各四卡执行C/D。11/13旧fallback保留为互斥等待，不新增科学writer；实际最多八卡，精度/模型/全部阶段执行保持冻结。
+
+**70B原生发现完整独立核（14/18）：** n16/8192scores、80层四卡FP32/eager，full-source答案路径移除signed+1.54209[1.09627,1.97003]nats；受限恢复A-only+1.01095[.63720,1.40072]、full-source−.43969[−.65350,−.20772]；cross-vswithin+2.55987[2.06511,3.05854]。A单源两私人方向candidate/full均100%，far词表signed及恢复零向结果全部保留。独立1217数值误差0，38400实际mask调用、cached/full9.54e−6/self/graph0。原13批未重算，368run-stagectx/185728scores/14.977382科学stage设备时；余D函数及C三批继续，等级与formal状态不变。
+
+**新资源准备：** 复查fvcrc21四张空卡（低占用/0util），/tmp本地NVMe容量充足且预定模型目录未占用。11 pinned副本向21独立peer复制，逐文件核验同30官方SHA；本次仅资产分发，不读部分分数、不改18批/种子/精度/条件，当前science仍10/13各四卡。后续如拆分独立阶段，需互斥科学writer并记录调度，不把数据复制当新实验。
+
+**独立stage调度（评分前，已纠正）：** 初版helper的stage claim不被旧10 worker读取，存在检查与写入之间的竞争；独立审查发现此问题，初版未运行。原审计保留，不以既有behavior断言声称自动互斥。修正版只在已结束D、四卡空闲的fvcrc13运行：核验10的owned父子PID与准确命令，短暂暂停旧worker，在确认其尚未完成native且未进入function后建立连续canonical空behavior交接fence，立即恢复旧worker；13在隔离输出ROOT执行原function，完成后逐文件发布，behavior始终存在、run.json最后发布。旧10继续完成机制/native，未来function guard必然看到fence，退出记录保留为调度交接。四卡FP32/85条件/n32/seed131103、材料、原五科学source与分析完全不变，独立驻留journal不覆写10。修正版需再次静态独立核，尚未启动；不读partial效果作排程或判断。
+
+
+### E131：70B发现全链完成，第15批独立核
+
+L70 n16真实SST shared/full两Actor平均86.7188[83.2031,90.2344]→98.4375[96.4844,100]%，gain11.7188[8.0078,15.4297]pp，A+5.8594/B+17.5781；opposite+23.4375、same0，targeted−all+23.4375[21.875,25]pp。query-only+10.5469[5.6641,15.0391]pp；targeted joint97.2656%与mean不同。far all-cross candidate99.0234/full51.1719/joint3.9063%，其它Source词48.2422%，来源非对称保留。single A98.4375/100%、B95.3125–100%。
+
+**认识更新：** 70B的同一形成操作、原生贡献与真实文本政策后果已在发现批接成链；高单函数能力与共享形成的影响并存。选择性限制和全面隔离具有不同后果，不将改善准确率等同完整criterion程序。新32确认仍按冻结三批执行，无新读数、种子或微观分支。C21–23 L3/C24 L2及formal状态保持。
+
+独立先raw后作者，1893数值差0、80层4卡FP32、23040prefix mask调用、floor2.28882e−5/self/graph0。15/18完成、384run-stagectx/196608scores/23.259151科学stage设备时；pre-author封签84dca94b…、rolling4bdafb69…，见[完整报告](../results/e131/report.md)、[独立raw](../results/e131/independent_raw_review_2026-10-12.md)与本批run/analysis。旧14批不重算，L70发现不与新L8材料配对。
+
+
+**2026-10-12T09:00:29.414644+00:00实际并行交接：** 新helper先核四空卡/pinned镜像与旧10 owned父子PID，10短暂停后建立连续empty behavior fence并立即恢复；首13入口因NFS负缓存尚未看到该文件而0-GPU初始化退出。旧PID/空fence/无staging核验后，明确resume同reservation，补cwd为repo与可见性等待，最新helper802f85c7…独立静态通过；没有修改五科学源、材料、种子或数值floor。13隔离ROOT运行同function n32/seed131103，完成再逐文件发布且run最后；10原机制/native继续，未来function guard退出留作交接。首attempt与失败stderr保留、0科学rows/0GPU设备时；不把调度初始化失败当负结果。原raw连续fence从未删除，所有驻留分开记录。当前仍15/18独立核，partial不作判断。

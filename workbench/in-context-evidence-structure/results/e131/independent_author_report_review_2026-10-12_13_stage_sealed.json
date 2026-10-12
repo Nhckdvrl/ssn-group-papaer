@@ -1,0 +1,2238 @@
+{
+  "status": "AUTHOR_REPORT_13_OF_18_PARTIAL_VERIFIED_INCREMENTAL",
+  "date": "2026-10-12",
+  "report_script_sha256": "fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5",
+  "report_md_sha256": "f52207579cd3310ed9f66bd255a8fd0120e7258cd6aa2dad45f6517095dae79f",
+  "summary_json_sha256": "66aeae626722594c7eb3ee78d7bf14237b8efa385b512bb6f4927e2bf8bde409",
+  "full_output_script_sha256": "9e5cf06cca0e308da75dab598bc9323be2dc2f0cb180b342181c5d8a5c4cee64",
+  "sealed_raw_digests_preserved": {
+    "llama_confirmation_mechanism": "e9cf31b72796c8491029dce4f3a074e5ab694d126b3a6692cb3103e1ed87a886",
+    "qwen3_confirmation_mechanism": "7a5e67834523f2339e9dfe9798287554512e7ffed0a3c41f49556834afdfad78",
+    "qwen32_discovery_mechanism": "e41b9cf8d17aeade1042ae888f08c514764978a81f761fec10821eb3b01ba05a",
+    "llama_confirmation_native": "8dc86ef02e0900619cfdf3cc3c40b8ad3f082db8458cbd6f9decaa0093439a3d",
+    "qwen3_confirmation_native": "9e71e1774ebbe10012666714bf2a9f645949c3af6707841c1b2839b8a8774326",
+    "qwen3_confirmation_function": "ae78f0e738f574da6582f9a4ced1975cc247580256c3065e0e8fe0de7274045b",
+    "llama_confirmation_function": "c5b78a2e172cba07390a9d0235d6d287fb4828efdfe78132cfa026a063a5dfa2",
+    "qwen32_discovery_native": "4b93c2345671064db6bb1efa74407e56a80bf5c56a8ca3fbc3ce63eaef66b3c9",
+    "qwen32_discovery_function": "0786878e82517e20e35dd1e163b68f06a5fe08f45671688e43c1f4206b491f17",
+    "qwen32_confirmation_mechanism": "77599c9aa596fee5714722d2da22ff0f1576530a7f908e352c5e0c576f9a5898",
+    "qwen32_confirmation_native": "ad93547e4fa34a9aeab138bffb10b39a06b0562b494473d3d6ba12a18cd4042f",
+    "qwen32_confirmation_function": "bea6cc6dcd8866a39ea8ecfa80d881b942e1166d4f534a1015e7cd405dee238e",
+    "llama70_discovery_mechanism": "3366c6e729c8e58faeeee1748818ad9064c238d68c6e4107bcae49551e7f5d8c"
+  },
+  "runs": {
+    "qwen3_confirmation_mechanism": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1041,
+        "max_abs_error": 1.5543122344752192e-15,
+        "largest_error_path": "/reconstruction/label_interface_B0_kv/rule_double_contrast/correlation",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "bedc3acb4cd7d3b34b1cd7518a9c85b281d3d48483cdc3a7d9e649353be6fbf7"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 320,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "A_formation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "A_formation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717",
+      "run_sha256": "621bebae930564797e7e2f030a1530e63b2f404330572e58baedbf67e63dc442"
+    },
+    "qwen3_confirmation_native": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1217,
+        "max_abs_error": 0,
+        "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "bd8f44d433c8011a2f09af6adf1684fcd3d419ed496b3f3de696361651b44ced"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 256,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "native_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8",
+      "run_sha256": "cc89524c0ac6593d9627e15d0c8c1882294cfecc4253cad8544a88494aa75fdc"
+    },
+    "qwen3_confirmation_function": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1893,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "793d4130ce6fb7236b9b6920c3806814414e37c60ef0d357533052a9860bffbb"
+      },
+      "full_output_numeric_comparison": {
+        "numeric_items": 960,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "pair_vector_items": 576,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "candidate_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591",
+      "run_sha256": "ee8ff5f7faa8454d5cc46df560fffa0bee99276b8396407aa29ff10d63c747c7"
+    },
+    "qwen32_discovery_mechanism": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1041,
+        "max_abs_error": 3.3306690738754696e-15,
+        "largest_error_path": "/reconstruction/all_A_formation_B0_k/rule_double_contrast/correlation",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "72857aff0f09962be5f5ce3686bb0c15bfc97af9980e313594d57f29251e7305"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 160,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "A_formation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "A_formation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "6e74364417dce2ed1c0ff5f316af0a6cfecafa8e5ac3aaceee9509109df2d010",
+      "run_sha256": "ad51ec73f37bcc4b91bc97de25d23029b45b149515ce828a36459eef4aa3c42e"
+    },
+    "qwen32_discovery_native": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1217,
+        "max_abs_error": 0,
+        "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "c2ebea18f864fc9a3ae2c839c70fd270849767e8d52774bca4a7c28e2c9230f4"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 128,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "native_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "66baed50d878b30923255c2f10cf5fe00d37576600345f69de6406060fd563fa",
+      "run_sha256": "23c579d31575cbb3331253ff13936a9656face8355b59b6999ef6cadf29f9ddb"
+    },
+    "qwen32_discovery_function": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1893,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "193bb047f2573fcc1d23eaec4a10569b21dee3700c09f1565c44ea8912c456fc"
+      },
+      "full_output_numeric_comparison": {
+        "numeric_items": 960,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "pair_vector_items": 288,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "candidate_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "1881a2076fcc6bd779314fb722e292dbe3055ae21a98b4a687fe4bed39d9ca44",
+      "run_sha256": "39b75d7a77431bf0f1226ffec330b487dff670f8615d7fee4365331af01b218a"
+    },
+    "qwen32_confirmation_mechanism": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1041,
+        "max_abs_error": 1.887379141862766e-15,
+        "largest_error_path": "/reconstruction/label_interface_B0_v/rule_double_contrast/correlation",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "6d44400ab24e52d17ba1280622f9cc1f9f76e3ff5ae6cdd66dba308131d3a048"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 320,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "A_formation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "A_formation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68",
+      "run_sha256": "0f4bdb28ee23dfd46aeea70e2891a0c53f3d22c5e9c2670b55691d7a31abd50d"
+    },
+    "qwen32_confirmation_native": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1217,
+        "max_abs_error": 0,
+        "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "49ffd6eef33f29ecbb6124a4d21ea6b398d2639f978309c05ee86c52244d9cf5"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 256,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "native_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041",
+      "run_sha256": "b4fe94a4b251ee95f4bb358f1d3b51a8c1b80f3260f00786e8378bc553c9cda0"
+    },
+    "qwen32_confirmation_function": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1893,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "5005742d5bfabacf7c349acdc68b1ab1ab4d385a7e33a6740422c87a8c3e6662"
+      },
+      "full_output_numeric_comparison": {
+        "numeric_items": 960,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "pair_vector_items": 576,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "candidate_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e",
+      "run_sha256": "da8cece2062b0362a1ccfc4f3b428eb70834794fdabed6bb6ef1d950de3ba854"
+    },
+    "llama_confirmation_mechanism": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1041,
+        "max_abs_error": 8.548717289613705e-15,
+        "largest_error_path": "/reconstruction/all_A_formation_B0_kv/rule_double_contrast/correlation",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "05d09141b900c9c7c785fd9bf7a9e887908c4baa757c954dd5db6596c89651c6"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 320,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "A_formation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "A_formation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "B_reading_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "label_interface_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_K_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "answer_relation_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13",
+      "run_sha256": "9a3c2f7767c8a5fe48c25eab3f37cd29f34f546aa419c0137908f10ebb37b910"
+    },
+    "llama_confirmation_native": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1217,
+        "max_abs_error": 0,
+        "largest_error_path": "/single_by_polarity/single_A_within_answer_off/True/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "70c9f2541a2091a1469ba0bf3babf016a0b045840127871fec330fc3ac0027f8"
+      },
+      "full_output_numeric_comparison": null,
+      "pair_vector_items": 256,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "native_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "native_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_answer_removal_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_signed": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "gate_restricted_restore_absolute": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8",
+      "run_sha256": "f6cd1ee95e9b3bc669961735703f352a591e9a33302732287d4bb38aa6e781a2"
+    },
+    "llama_confirmation_function": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1893,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": "29558a35788e02afb28d3a4fc2aab54d56ca8bf2c5d4dd3c0afc32c0c1cea264"
+      },
+      "full_output_numeric_comparison": {
+        "numeric_items": 960,
+        "max_abs_error": 0,
+        "largest_error_path": "/policy_accuracy/shared_normal_native/same_convention/n_contexts",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "pair_vector_items": 576,
+      "pair_vector_max_error": 0.0,
+      "pair_stat_matches_original_fixed_readouts": {
+        "candidate_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "candidate_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_normal_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_answer_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_native_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_all_cross_off_gate_both": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_gain": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_targeted_minus_all": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        },
+        "full_query_isolation": {
+          "numeric_items": 4,
+          "max_abs_error": 0,
+          "largest_error_path": "/n_contexts",
+          "missing": [],
+          "matched_nonfinite_items": [],
+          "author_analysis_sha256": null
+        }
+      },
+      "raw_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb",
+      "run_sha256": "fdd64d39ef9ce4a12a5e299d08fe62fc9b9b75962e9bff7fcebfed7d6de67c4a"
+    },
+    "llama70_discovery_mechanism": {
+      "analysis_numeric_comparison": {
+        "numeric_items": 1041,
+        "max_abs_error": 6.661338147750939e-15,
+        "largest_error_path": "/reconstruction/label_interface_B0_v/raw/correlation",
+        "missing": [],
+        "matched_nonfinite_items": [],
+        "author_analysis_sha256": null
+      },
+      "raw_sha256": "a085a29a2c24931a85a7cfcc5650ee3b2a30658abc5ae107b2ba82133360755e",
+      "run_sha256": "27f4394d22fc29f8c34934dbccadc1d661c4abe1a943e60eecb859620d9b5679",
+      "new_markdown_row_fields": 8,
+      "new_markdown_numeric_presentations": 19,
+      "new_paired_vector": false,
+      "scope": "Fixed n16 discovery; all 43 conditions and twelve reconstructions in sealed raw/analysis; no new confirmation pair or scientific interpretation grade."
+    }
+  },
+  "totals": {
+    "completed_stages": 13,
+    "planned_stages": 18,
+    "scores": 177536,
+    "contexts_by_stage": 352,
+    "stage_device_hours": 11.944097431633207,
+    "worker_resident_device_hours_so_far": 12.029427469703887
+  },
+  "new_stage_only_checked": "llama70_discovery_mechanism",
+  "new_stage_numeric_comparison": {
+    "numeric_items": 1041,
+    "max_abs_error": 6.661338147750939e-15,
+    "largest_error_path": "/reconstruction/label_interface_B0_v/raw/correlation",
+    "missing": [],
+    "matched_nonfinite_items": [],
+    "author_analysis_sha256": null
+  },
+  "new_markdown_rows_checked": 1,
+  "new_markdown_metric_cells_checked": 8,
+  "new_markdown_numeric_presentations_checked": 19,
+  "prior_12_stage_audit_unchanged_sha256": "4534adea90607279decb35d23ad8475c2dee9cd679ae555e48d1126c0a3a8d14",
+  "prior_author_report_audit_sha256": "6026186dcacc2e6a54361f5dfada3e4e31240c57f82071c2f2bfd05653e06bfa",
+  "prior_12_stage_science_recomputed": false,
+  "paired_confirmation_count": 3,
+  "paired_confirmation_unchanged": true,
+  "root_read_order_exception": "Parent reports tailing run.log for progress at completion and seeing last three relation summaries before independent raw seal. Root is not fully blind for this stage. No claim that every participant remained blind.",
+  "pairing_scope": "Three existing Qwen n32 pairs retained. L70 n16 discovery is not paired against L8 n32.",
+  "resident_accounting_scope": "Last-observed worker snapshots, counted once per worker; incomplete-stage future residence is not included.",
+  "independent_GPU_forward_or_rerun": false,
+  "helper_sha256": "4132b281c13fd0851b03de8767be6551c56def7d6763ca11b84cc7d227bd2c49",
+  "core_chain_plot_review": {
+    "status": "PLOT_DATA_9_OF_12_VERIFIED",
+    "date": "2026-10-12",
+    "source_summary_sha256": "66aeae626722594c7eb3ee78d7bf14237b8efa385b512bb6f4927e2bf8bde409",
+    "CSV_sha256": "2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a",
+    "manifest_sha256": "eebe1e21421bac46d3d5f6e193b4837388c5754b8aa9ccc8a921491f64382193",
+    "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+    "figures": {
+      "png": "d373b3cb1c328ba0a48e92a504e5e7c5725e0ff83eed8d8f4a7503082495fe3a",
+      "pdf": "b110323d3b73b6e1aaf0f557016945fa514641204ae009e23493a5f0bf6a9af4"
+    },
+    "complete_points": 9,
+    "planned_points": 12,
+    "checked_mean_CI_values": 27,
+    "max_abs_error": 0.0,
+    "pending": [
+      "llama70_confirmation_mechanism",
+      "llama70_confirmation_native",
+      "llama70_confirmation_function"
+    ],
+    "point_checks": {
+      "qwen3_confirmation_mechanism": {
+        "status": "COMPLETE",
+        "selection": "A formation shared signed B-code response difference",
+        "expected_mean_ci": [
+          2.3511242270469666,
+          1.8570944694802165,
+          2.8365239467471834
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+        "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+      },
+      "qwen32_confirmation_mechanism": {
+        "status": "COMPLETE",
+        "selection": "A formation shared signed B-code response difference",
+        "expected_mean_ci": [
+          2.675637912005186,
+          2.2657885698601605,
+          3.0956140012480318
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+        "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+      },
+      "llama_confirmation_mechanism": {
+        "status": "COMPLETE",
+        "selection": "A formation shared signed B-code response difference",
+        "expected_mean_ci": [
+          0.8005339950323105,
+          0.6327964514493942,
+          0.9767816854640842
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+        "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+      },
+      "llama70_confirmation_mechanism": {
+        "status": "PENDING",
+        "numeric_fields_empty_not_zero": true,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+      },
+      "qwen3_confirmation_native": {
+        "status": "COMPLETE",
+        "selection": "full-source native shared cross-answer removal signed B-code response difference",
+        "expected_mean_ci": [
+          1.7617849111557007,
+          1.263872789591551,
+          2.2943729752674695
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "controlled restaurant sentiment; seed131101",
+        "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+      },
+      "qwen32_confirmation_native": {
+        "status": "COMPLETE",
+        "selection": "full-source native shared cross-answer removal signed B-code response difference",
+        "expected_mean_ci": [
+          1.9720237106084824,
+          1.4670670829713344,
+          2.4996021826751518
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "controlled restaurant sentiment; seed131101",
+        "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+      },
+      "llama_confirmation_native": {
+        "status": "COMPLETE",
+        "selection": "full-source native shared cross-answer removal signed B-code response difference",
+        "expected_mean_ci": [
+          0.8589948490262032,
+          0.6633279098197817,
+          1.084605898708105
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "controlled restaurant sentiment; seed131101",
+        "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+      },
+      "llama70_confirmation_native": {
+        "status": "PENDING",
+        "numeric_fields_empty_not_zero": true,
+        "stage_material_scope": "controlled restaurant sentiment; seed131101"
+      },
+      "qwen3_confirmation_function": {
+        "status": "COMPLETE",
+        "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+        "expected_mean_ci": [
+          7.6171875,
+          5.17578125,
+          9.9609375
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+        "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+      },
+      "qwen32_confirmation_function": {
+        "status": "COMPLETE",
+        "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+        "expected_mean_ci": [
+          7.71484375,
+          5.76171875,
+          9.5703125
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+        "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
+      },
+      "llama_confirmation_function": {
+        "status": "COMPLETE",
+        "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+        "expected_mean_ci": [
+          8.88671875,
+          6.54296875,
+          11.1328125
+        ],
+        "CSV_max_abs_error": 0.0,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+        "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+      },
+      "llama70_confirmation_function": {
+        "status": "PENDING",
+        "numeric_fields_empty_not_zero": true,
+        "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+      }
+    },
+    "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
+    "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+    "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
+    "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+    "independent_GPU_forward_or_rerun": false,
+    "helper_sha256": "ad9ee4201eebbe8d9df85aa1b3755c8ba82a76ffd3bb470517aeb58d223a2aca",
+    "source_rebinding_only": {
+      "previous_12_stage_summary_sha256": "7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d",
+      "previous_manifest_sha256": "ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae",
+      "previous_plot_review_sha256": "edc9733322f2c01d4a18f27ee70b5deceae392af9a75fbb081045ca22b5736a4",
+      "current_summary_completed_stages": 13,
+      "all_27_CSV_values_unchanged": true,
+      "all_9_sealed_confirmation_point_values_unchanged": true,
+      "scientific_stage_or_CI_recomputed": false,
+      "new_70B_discovery_not_added_to_confirmation_plot": true
+    }
+  },
+  "plot_reviews": {
+    "9533b5852697452a40de4cc9bacad73b8bc2d1f0c14613e98362603f90cf821c": {
+      "status": "PLOT_DATA_8_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "95d864ca21136ebb20a3e32a916fbad775e7f132b0e397cd36b922a53336fcef",
+      "CSV_sha256": "8df221dff1dd949bf62f291e4344bcba072707e9b715a4e030d0413a7fc628e4",
+      "manifest_sha256": "9533b5852697452a40de4cc9bacad73b8bc2d1f0c14613e98362603f90cf821c",
+      "script_sha256": "2818a0e340c9f41dc97bfabb03458b11fb8cacfb836c3d063e24095fd76f9164",
+      "figures": {
+        "png": "1d4e333684892bd1e45d66f158cdef3e564634827592e10a746ee23010c57f1b",
+        "pdf": "ec4f562d076e80aeb753b471e6583c69821a6eb2da4f779d0420072a6cb66f93"
+      },
+      "complete_points": 8,
+      "planned_points": 12,
+      "checked_mean_CI_values": 24,
+      "max_abs_error": 0.0,
+      "pending": [
+        "llama70_confirmation_mechanism",
+        "llama70_confirmation_native",
+        "qwen32_confirmation_function",
+        "llama70_confirmation_function"
+      ],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101"
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        }
+      },
+      "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "Standalone caption currently omits within-stage matching and material distinction; function xlabel omits shared/full/two-Actor mean. State these scopes explicitly in caption/axis or manifest; values and geometry are correct.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "7bb418ce21555771d2fe1927eadb854a155bab920432ed2709b7fbc004b8ce19"
+    },
+    "a2968abb56b5f6c724e500e6bdf7614f4d3a51ecbe86a9810d6a11759a169841": {
+      "status": "PLOT_DATA_8_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "95d864ca21136ebb20a3e32a916fbad775e7f132b0e397cd36b922a53336fcef",
+      "CSV_sha256": "8df221dff1dd949bf62f291e4344bcba072707e9b715a4e030d0413a7fc628e4",
+      "manifest_sha256": "a2968abb56b5f6c724e500e6bdf7614f4d3a51ecbe86a9810d6a11759a169841",
+      "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+      "figures": {
+        "png": "ea38e5cce4c29051a3b8a37100c7056242100ac37d2c16d63d685eecadb7e967",
+        "pdf": "413c8f268b76e546896988278576d9e757188615fe12915127014fe76f6595e9"
+      },
+      "complete_points": 8,
+      "planned_points": 12,
+      "checked_mean_CI_values": 24,
+      "max_abs_error": 0.0,
+      "pending": [
+        "llama70_confirmation_mechanism",
+        "llama70_confirmation_native",
+        "qwen32_confirmation_function",
+        "llama70_confirmation_function"
+      ],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101"
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        }
+      },
+      "visual_inspection": "Updated PNG inspected; footnote corrected, same eight points and four pending text markers, no new numerical requirement.",
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "IMPLEMENTED: figure footnote states matching within each family and stage; manifest explicitly states separately sampled SST versus controlled restaurant and shared/full/two-Actor mean, not joint.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "7bb418ce21555771d2fe1927eadb854a155bab920432ed2709b7fbc004b8ce19",
+      "materials_scope": "Context matching is within each family and stage. Mechanism and function use separately sampled SST contexts; native uses controlled restaurant contexts. Families and stages are not one pooled dataset.",
+      "function_scope": "Shared words, full-vocabulary correctness, two-Actor mean targeted-minus-native accuracy; not joint correctness.",
+      "rebind_only": true,
+      "prior_plot_review_manifest_sha256": "9533b5852697452a40de4cc9bacad73b8bc2d1f0c14613e98362603f90cf821c",
+      "prior_numeric_checks_preserved": true
+    },
+    "ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae": {
+      "status": "PLOT_DATA_9_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d",
+      "CSV_sha256": "2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a",
+      "manifest_sha256": "ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae",
+      "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+      "figures": {
+        "png": "d373b3cb1c328ba0a48e92a504e5e7c5725e0ff83eed8d8f4a7503082495fe3a",
+        "pdf": "69ff61de84cc1c847e990717f065f7bf3010cd4d0f2f74d88a9a9a5ff7630edc"
+      },
+      "complete_points": 9,
+      "planned_points": 12,
+      "checked_mean_CI_values": 27,
+      "max_abs_error": 0.0,
+      "pending": [
+        "llama70_confirmation_mechanism",
+        "llama70_confirmation_native",
+        "llama70_confirmation_function"
+      ],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101"
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.71484375,
+            5.76171875,
+            9.5703125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        }
+      },
+      "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "e62f19a8e7a0ba8dcd9080923ea87647626a6105a37ab707fb2b228031b7cca0"
+    },
+    "eebe1e21421bac46d3d5f6e193b4837388c5754b8aa9ccc8a921491f64382193": {
+      "status": "PLOT_DATA_9_OF_12_VERIFIED",
+      "date": "2026-10-12",
+      "source_summary_sha256": "66aeae626722594c7eb3ee78d7bf14237b8efa385b512bb6f4927e2bf8bde409",
+      "CSV_sha256": "2fbfafa1481cb0ea52f6acde74358ba5e797b8c163b5eb823cc64c6dd9f26c6a",
+      "manifest_sha256": "eebe1e21421bac46d3d5f6e193b4837388c5754b8aa9ccc8a921491f64382193",
+      "script_sha256": "273f8535e13927b62fc7639ea489e0a6ba193a3a3fe989f6a763a8c03cc876b2",
+      "figures": {
+        "png": "d373b3cb1c328ba0a48e92a504e5e7c5725e0ff83eed8d8f4a7503082495fe3a",
+        "pdf": "b110323d3b73b6e1aaf0f557016945fa514641204ae009e23493a5f0bf6a9af4"
+      },
+      "complete_points": 9,
+      "planned_points": 12,
+      "checked_mean_CI_values": 27,
+      "max_abs_error": 0.0,
+      "pending": [
+        "llama70_confirmation_mechanism",
+        "llama70_confirmation_native",
+        "llama70_confirmation_function"
+      ],
+      "point_checks": {
+        "qwen3_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.3511242270469666,
+            1.8570944694802165,
+            2.8365239467471834
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "9376643f43bb879a6cc566be9a2784cf08ecc8cfef9c80cd723ab2968801b717"
+        },
+        "qwen32_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            2.675637912005186,
+            2.2657885698601605,
+            3.0956140012480318
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "56b6f6da5686695cc3c5eaaffa547023d41d8f77a8e2d0d658b9f777c9dcae68"
+        },
+        "llama_confirmation_mechanism": {
+          "status": "COMPLETE",
+          "selection": "A formation shared signed B-code response difference",
+          "expected_mean_ci": [
+            0.8005339950323105,
+            0.6327964514493942,
+            0.9767816854640842
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102",
+          "raw_behavior_sha256": "bdfeed9f601e3e88ab7a8071e9386ec3ebde857db996b431bb695ac48264ba13"
+        },
+        "llama70_confirmation_mechanism": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131102"
+        },
+        "qwen3_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.7617849111557007,
+            1.263872789591551,
+            2.2943729752674695
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "70bbd95d51f2d20f335794e218f836b027e0891f88ba70aa09c1fa0607ebcfa8"
+        },
+        "qwen32_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            1.9720237106084824,
+            1.4670670829713344,
+            2.4996021826751518
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "e6fcff2951e814e33185cdc421c2fc043a7cd1367eccc41c069e89070bb62041"
+        },
+        "llama_confirmation_native": {
+          "status": "COMPLETE",
+          "selection": "full-source native shared cross-answer removal signed B-code response difference",
+          "expected_mean_ci": [
+            0.8589948490262032,
+            0.6633279098197817,
+            1.084605898708105
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101",
+          "raw_behavior_sha256": "4387f1e9ec6e8039073e7faacf94019e2f69679ea18dd07c0e19ef52cc037df8"
+        },
+        "llama70_confirmation_native": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "controlled restaurant sentiment; seed131101"
+        },
+        "qwen3_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.6171875,
+            5.17578125,
+            9.9609375
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "f250b19a7a991acb11e53854b5a5490d60a53310f1108fc91e6697ae7c39c591"
+        },
+        "qwen32_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            7.71484375,
+            5.76171875,
+            9.5703125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "577f5b00094d2b2cc1b999adc7bc5313e37320390d5cae7516be964c33c4a67e"
+        },
+        "llama_confirmation_function": {
+          "status": "COMPLETE",
+          "selection": "shared full-vocabulary mean of Actor A/B and origin/cross equally weighted; selective minus native, pp",
+          "expected_mean_ci": [
+            8.88671875,
+            6.54296875,
+            11.1328125
+          ],
+          "CSV_max_abs_error": 0.0,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103",
+          "raw_behavior_sha256": "a19fc83365fa8a01ccb108a8b222d480a0aebbd4704b23bd218343e7f79fa0bb"
+        },
+        "llama70_confirmation_function": {
+          "status": "PENDING",
+          "numeric_fields_empty_not_zero": true,
+          "stage_material_scope": "official SST5 extreme-sentiment real movie text; seed131103"
+        }
+      },
+      "visual_inspection": "PNG inspected: points/CIs/units/model rows aligned; pending is text with no marker/errorbar at zero. Separate panel x-scales are used for nats versus pp; no cross-panel magnitude comparison inferred.",
+      "material_scope": "Exact matched contexts only within family and stage. Mechanism and function use real SST material at different seeds; native uses controlled restaurant sentiment. Different families/stages are not one common dataset.",
+      "presentation_clarification": "Standalone footnote states within-family and within-stage matching; manifest separately records materials_scope and shared/full/two-Actor mean function_scope.",
+      "selection_scope": "All fixed 4 checkpoints \u00d73 original core confirmation metrics. Missing is pending, not zero/negative. Other channels and backgrounds remain in full report. This plot is not a causal scaling law/new predictor/claim threshold.",
+      "independent_GPU_forward_or_rerun": false,
+      "helper_sha256": "ad9ee4201eebbe8d9df85aa1b3755c8ba82a76ffd3bb470517aeb58d223a2aca",
+      "source_rebinding_only": {
+        "previous_12_stage_summary_sha256": "7df5f43cd2e19d2c3894272541069a7ca5e4eff7dc952a1cbbbde5eecbebec7d",
+        "previous_manifest_sha256": "ed6dd09c2daed027237cd0466ca958614309cf86faec050d0505729def78f4ae",
+        "previous_plot_review_sha256": "edc9733322f2c01d4a18f27ee70b5deceae392af9a75fbb081045ca22b5736a4",
+        "current_summary_completed_stages": 13,
+        "all_27_CSV_values_unchanged": true,
+        "all_9_sealed_confirmation_point_values_unchanged": true,
+        "scientific_stage_or_CI_recomputed": false,
+        "new_70B_discovery_not_added_to_confirmation_plot": true
+      }
+    }
+  },
+  "complete_summary_display_incremental_check": {
+    "baseline_12_report_commit": "0d6fb6c8",
+    "all_12_previous_run_summary_objects_byte_semantics_identical": true,
+    "previous_rows_preserved": 48,
+    "all_previous_rows_preserved_exactly": true,
+    "all_three_previous_paired_objects_identical": true,
+    "old_science_recomputed": false
+  }
+}

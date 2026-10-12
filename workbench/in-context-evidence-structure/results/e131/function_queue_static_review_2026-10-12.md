@@ -1,0 +1,23 @@
+# E131 独立function调度：修正版静态核对
+
+**核心交接静态通过，可在代码的runtime断言满足后启动。** 当前helper SHA `802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798`；五个冻结protocol/dispatch/engine源保持原字节。只调度原function confirmation，85条件、n32、seed131103、validation材料、原gold/分析/全层FP32读数不变。此次没有执行helper或GPU。
+
+旧6ea2版本的O_EXCL仅约束新queue而不约束旧10worker，存在check-then-write风险，已弃用；原风险JSON/MD逐字保存为v1_historical，不删除或改写成通过。
+
+新版先核owned child精确argv、父子关系和原parent queue claim，在SIGSTOP确认的暂停窗口检查native run未完成且function operational尚不存在。原冻结protocol必须先产生native run才能进入function，因此此时旧function guard尚未通过。随后O_EXCL安装canonical空behavior fence，finally恢复旧child。旧10可继续完成既有阶段，未来在function guard退出；无需改其冻结代码。注意parent用queue_pid+children核ownership，并未额外核parent精确argv，报告不扩大已核范围。
+
+新13 worker通过精确Nous/beb678身份与四卡空闲断言后，仅在隔离ROOT执行原protocol的function，scripts/preflight/identity/discovery输入都是原件链接，canonical目录不是symlink。生成完整32行后逐文件os.replace发布，behavior从空fence原子替换为完整raw，从不删除该fence；run.json最后发布。由此旧writer不能写canonical，collector也不会把部分发布当完成。隔离执行的args.out保留真实路径，handoff/claim/journal另记录canonical安排。
+
+驻留日志使用独立文件名，不覆盖旧10。旧guard退出/错误要作为操作交接保留，不能当科学失败。没有剩余阻止启动的静态问题；runtime的PID/暂停状态/文件状态、同pin资产和四空卡检查必须实际通过。
+
+v2当时的非阻挡建议是为SSH reserve/目录准备的0GPU失败补finished/error字段；当前v3已用顶层handler修复，见下节。
+
+此次沿用原18批科学设计，不新增控制、模型、head/layer/格式或claim资格；已封论文和15th raw科学审计不变。
+
+## 同一reservation的显式恢复增量校对
+
+最新helper `802f85c7b78512de1920f3186c2441d7178811872842cdbea2cb6e8a755c3798` 静态通过，可在原runtime断言满足后进行本次明确的一次resume。原136f通过报告逐字保存到v2_historical；6ea2风险报告仍独立保留。首13 attempt的失败发生于NFS negative-cache使已创建空fence暂不可见：未创建staging、未载GPU模型、0科学row。不得将它列作科学阴性。
+
+新增60秒可见性等候，不删除连续fence。resume核原13 PID已退出、同empty fence、staging不存在和原handoffworker一致，归档旧失败claim后恢复；不再次暂停10。`os.chdir(ROOT)`保证原引擎最终git调用在repo，科学源不变。顶层错误handler只更新本进程拥有的claim，并记录初始化error/finished。原隔离执行、run最后发布、精确资产/四空卡、独立journal等核心保证保持。
+
+原15-stage science/论文审计不受影响。本轮仅静态检查，未执行helper、SSH信号、GPU或重算既有实验；没有剩余启动blocker。

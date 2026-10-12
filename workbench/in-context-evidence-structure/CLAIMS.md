@@ -358,3 +358,12 @@ E131首轮9/18独立校对完整：Q32三环节已支持同一形成/原生操�
 ### 2026-10-12：E131 70B形成发现（不升级等级）
 
 E131第13完整批Llama3.1-70B n16独立raw-first审计：A形成+.993[.612,1.373]nats，A单源两private方向100%；固定词answer关系excess abs+.237[.116,.368]而signed−.229[−.382,−.085]。12个固定重建都保留，shared/far B-cache背景下KV rawr.542/.854，均full-source query reading，残差/通道顺序不同；不声称规模使重建一律增强。支持C21/22现有形成与关系内容的跨当前容量补充，完整70B三环确认尚在执行，C21–23 L3/C24 L2及正式状态不变。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)、本批run/analysis；root stdout阅读例外如实记录，独立会话仍先raw封后作者比对。
+
+### 2026-10-12：E131 70B原生发现（不升级等级）
+
+第14完整批n16原生操作独立复算1217数值差0。full-source路径移除signed+1.542[1.096,1.970]nats；受限恢复A-only+1.011[.637,1.401]、full-source−.440[−.653,−.208]，cross-vswithin+2.560[2.065,3.059]。A单源两方向100%。支持既有形成操作在此大容量checkpoint参与native计算及其阅读环境依赖；确认与函数尚执行，不从发现批升级或新增claim。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)与本批run/analysis。C21–23 L3/C24 L2不变。
+
+
+### 2026-10-12：E131 70B三环发现已接成链
+
+第15批n16函数独立raw-first复算1893数值误差0：shared/full两Source平均86.72→98.44%，selective gain11.72[8.01,15.43]pp，targeted−all23.44[21.88,25]；A/B各5.86/17.58点、opposite23.44/same0。query-only10.55[5.66,15.04]；far all-cross candidate99.02/full51.17/joint3.91%，全部85条件与来源非对称保留。single A98.44/100%、B各方向95.31–100%，不是任务不可用条件下的机制归因。支持原C21–23形成/使用解释的当前大容量补充，未从n16发现提升等级或新增claim；剩原三批新32确认，C21–23 L3/C24 L2及formal状态不变。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)与llama70_discovery_function/{run,analysis,full_output_summary}.json。

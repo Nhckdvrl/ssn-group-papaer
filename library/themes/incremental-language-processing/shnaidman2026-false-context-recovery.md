@@ -1,13 +1,7 @@
-# Reset Is Not Recovery（Shnaidman，2026-09预印本）[证据级别：部分正文]
+# 文献资产已迁移（仅兼容导航）
 
-来源：[arXiv v1](https://arxiv.org/html/2609.33672v1)。实际阅读§1–5、§7–9及B模板、F语义/标签诊断；其他附录只定位，未复现、未下载资产，不声称已接收。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. 论文形态：失败模式、恢复干预与行为对照。
-2. 压力：错误对话撤回后，历史仍能改变答案分布。
-3. 前提：口头重置与删除上下文不是同一操作。
-4. idea来源（DOCUMENTED）：从错误用户施压后的恢复问题组织实验。
-5. 最近邻距离：作者比较错误知识、sycophancy与self-correction；不声称首次历史效应。
-6. 方法：七个开放模型、两事实问答集；成对clean历史、retraction、context删除/重建、trusted evidence；错误内容与字母映射分开。
-7. 边界：trusted evidence是oracle；严格恢复阈值属于该文诊断，不照搬为我们的科学gate。未核对全部统计附录。
-8. 可迁移动作：匹配错误内容的提及/引用控制，追有效信息而非单个accuracy。
-9. 对我们：泛称“纠正后错误仍影响”“semantic而非label残留”已被覆盖。E34的具体增量只能在角色作用的事件/动作依赖与方向结构上建立；这不是自动关线判决。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。
