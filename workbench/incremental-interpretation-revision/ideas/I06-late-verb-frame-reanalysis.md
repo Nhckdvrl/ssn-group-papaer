@@ -30,3 +30,7 @@
 ## E90后收窄，不继续源/Hint网格
 
 [E90](../experiments/E90-frame-information-through-source.md)G NPZ17正关系源bank0→5.9%（CI含0），没有携带E89 EARLY100%；Q/M仍0，主要GoldNo改善。MVRR G final正关系+29.2[12.5,45.9]pp及GP joint+13[1.9,27.8]，部分可迁移。whole-bank不覆盖完整KV/recurrent/hint通路，不能用null排除源表示。三步后的诚实判断：有值得挖的论元重建对象，尚无具体稳定规律；“frame已经编译成完整解释”预测被削弱。下一从实际缺失的关系内容选操作，不再给此Hint/Source程序做控制链。E87普通QA G NPZ cue94.1/GP0提示隐含反身理解有实际能力锚，strict任务仍是部分因素；Min控制弱单列。保持SEED，未关闭/认证候选。
+
+## 2026-10-12 独立审查意见（建议，不改状态）
+
+审查判断I06是最值得追的线，但对象要收紧为**替代依赖的建立**：E87分层显示Qwen/Gemma在MVRR替代依赖题（“Did someone send the file to the suspect?”）GP下0/12.5%、对照句81/91%；E89显式框架提示对Gemma充分（26/32）、对Qwen不充分（0/32）。NPZ反身题对Qwen/Min含词义成分（H-C15），Ministral strict读数作废（H-C14）。拟议下一动作见[独立审查§9](../INDEPENDENT_REVIEW.md)。

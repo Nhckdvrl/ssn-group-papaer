@@ -17,6 +17,10 @@
 | H-C11 粗patch | “whole residual有作用=语法因子经源传播；不管用=无syntax状态” | [Hanna](hanna-2024-gp-mechanisms.md)把特定feature的预测功能、QA跨用途与语义对象分层；我们的E55/E64/E70混合源有影响但不识别纯关系 | 因果效应大小只归属于实际替换对象 |
 | H-C12 阅读索引 | “迁入149就是精读149篇、旧86篇都重新核真” | 149是原资产总文件数，144旧paper/topic卡+5索引；后来补3新卡并合并3重复得144规范卡；旧MAIN为历史自报 | 自称全文已读只在台账准确所述范围成立，不凭新目录数量算读书量 |
 | H-C13 本次深读数值错列 | Christianson2001实验1a/b先前把GP-implausible的20.2/43.7与11.1/31.4分别误标为non-GP control | [原始论文表2、表3](christianson2001-thematic-roles-linger.md)真control分别为21.4/31.0及10.7/16.3；Exp1a implausible对control整体F1不显著 | 任何“非GP也高达43.7%”或条件对比应重新按六列修正；说明我们本次新增精读本身也必须接受第二轮原文反核 |
+| H-C14 Ministral strict读数 | “Ministral initial 84.55%正确、final 28.09%，说明撤回了旧关系但没建立新关系” | [独立审查§2.2/§4.3](../INDEPENDENT_REVIEW.md)：E87原始输出中strict规则下NPZ主句事实题（Gold Yes，176任务）Ministral只答24个Yes，PLAIN下100个；它在strict/RECOVER规则下是No偏置 | E82–E90、E96–E107中Ministral的strict/RECOVER读数不能当撤回/能力证据；三族叙事须重读为两族 |
+| H-C15 NPZ反身替代依赖题的词义成分 | “17个反身/互指初始关系三族几乎全错，是GP修订失败” | 对照句“While the protester hid, …”下Qwen只41%、Ministral 8.8%承认“hide himself”；只有Gemma（70.6%）对照高而GP为0 | NPZ反身题只对Gemma是干净GP效应；未来须先用对照句过滤模型接受的词义，或报告对照基线 |
+| H-C16 NPS两句复述格式污染 | “NPS自由复述里‘The chef remembered the recipe / The recipe required…’是初始误读” | Amouyal“rewrite as two shorter sentences”指令必然拆掉that补语；E107手读显示NPS候选被整体标INITIAL_MISREADING | E53/E67/E96/E103/E107中NPS的误读/初始标签需重标或改任务；NPS占E96–E107源的25/50 |
+| H-C17 替代依赖题被忽略 | “修订测验=initial题正确率” | D0资格表中grounded_gold=Yes的initial题（NPZ17、MVRR16）是唯一直接问替代依赖的题；E87分层：Qwen/Gemma MVRR GP 0/12.5% vs 对照81/91% | 主读数应是替代依赖断言，误读拒绝与后半句事实为辅读数；见[独立审查§0](../INDEPENDENT_REVIEW.md) |
 
 **待再次核实的边界**：
 - 历史外置原始逐token/标注与原计算代码仍在旧机器/data1路径；只有Github归档/小摘要可查。无法在此声称对所有历史效应与质量标签作逐题重新独立验证。

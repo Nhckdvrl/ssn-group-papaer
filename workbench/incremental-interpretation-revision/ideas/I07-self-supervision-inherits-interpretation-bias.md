@@ -29,3 +29,7 @@
 2026-10-08T06:38:57.045221+08:00 E104解释校正（原数字/SHA/条件完整保留）：原条件句唯一then是结构边界，未被认证为引发人类语用suppression的最早证据位置；alternative-cause等关键内容常在antecedent。因此其负结果只排除这次机械consequent-only迁移，不能作为“真正语义修订证据oracle在跨域失败”的反证，也不能声称否定通用prefix cancellation机制。当前跨域机制仍未核对/未建立；不继续扫描cut或事后挑语义位置。这是实验解释限制，不是Source数据错误或重标需求。
 
 **08:12完整实际候选/预算/自动规则后：** E103全三族的原角色正确选择suffix−whole仅Min CI正（+8.33[2.08,16.67]pp、NPS+16[4,32]）；Q+2.08/G+6.25均弱，MVRR同源8池无新增好候选。E105的whole预算gain Q+13.54[5.21,22.92]pp，不能讲更多搜索更坏；E106唯一无T2 positivegain没有稳定跨族修复，不调cutoff。三图SHA/自审见[最新重新对齐](../REASSESSMENT_2026-10-07_2355.md)。原T4角色类别不等于完整content binding；E107全1200匿名候选新增明确/隐式/未绑定依赖维度正在双遍高effort审计，implicit不预定坏，旧map不覆盖。I07仍探索SEED；值得追的增量必须是反修订credit的具体语义操作与真实选择后果，不是generic inverse scoring/token weighting（TRLM/IW-OPD已owner），也不是泛泛保留但不用（Causal Quotient已owner）。本局部reward块到E106收束，E107解释结果质量，不再扫描奖励公式。
+
+## 2026-10-12 独立审查意见（建议PARKED，不改状态）
+
+E107原始包手读：多数源三族8/8候选全是同一误读，候选池无正确解释时credit选择无定义；NPS候选标签受两句复述格式污染（H-C16）；Ministral行受No偏置影响（H-C14）；ABBEL/TRLM/LEDOM/IW-OPD已占inverse feedback与前后缀credit的一般形式。重开条件：在候选池确有正确解释的源上（需先解决提案问题），且在非GP的自然更新任务上复现前缀抵消。详见[独立审查§2.6/§5](../INDEPENDENT_REVIEW.md)。

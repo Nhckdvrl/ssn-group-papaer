@@ -5,3 +5,7 @@
 10月6日的旧路线、四假说预测表与当时资源安排是历史资产，可查[固定原版本](https://github.com/Nhckdvrl/ssn-group-papaer/blob/3d0c6c3bbd65c6455aa730f164dbe3103e466c0a/workbench/incremental-interpretation-revision/ROUTE.md)。其中“重复/放开mask就应修好”的预测不具机制专属性；不能把一次oracle弱效果当作对所有增量处理机制的否定。具体原因见科学审计。
 
 研究对象仍是新证据如何改变先前解释；形式状态与原结果不变。本次知识库和流程整理不构成GPU授权或新发现。
+
+## 2026-10-12 独立审查后的拟议主线（提案，正式状态由人决定）
+
+[独立审查](INDEPENDENT_REVIEW.md)判断：workbench值得继续，但主线应重构为**替代依赖的建立为何在撤回之后失败**（公开GP材料中带替代依赖问句的句子；读数为实际作答与对照句基线；操作为显式框架信息与对照句状态移植）。I07/I08建议PARKED，E108不执行；Ministral在strict规则下的读数作废（H-C14）。两个待批准的辨别实验见审查§9。本段不改变C/I登记状态。
