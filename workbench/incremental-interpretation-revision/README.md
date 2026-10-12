@@ -7,7 +7,7 @@
 | 要做什么 | 入口 |
 |---|---|
 | 理解两轮探索在哪里偏离、哪些代码/解释需纠正 | [科学审计](AUDIT_2026-10-12.md) |
-| 建立领域认知与查找完整论文笔记 | [本 workbench 专属知识库](knowledge/README.md) |
+| 建立整体科学认知、深读论文、检索全部文献与动态维护结论 | [认知中枢](knowledge/README.md) → [领域总图](knowledge/00_STATE_OF_THE_FIELD.md) → [七领域文献图谱](knowledge/PAPER_ATLAS.md) → [深层专题](knowledge/topics/05_HOW_IDEAS_GROW.md) |
 | 重新选择问题和高信息量实验，而非自动接着跑 E108 | [研究综合](knowledge/RESEARCH_SYNTHESIS_2026-10-12.md) |
 | 按新流程自主研究 | [执行说明](EXECUTION_BRIEF.md)、[本地 Agent 约定](AGENTS.md) |
 | 查全部103张现存实验卡的方向、结果、边界 | [探索记录](EXPLORATION_RECORD.md)、[原机器库存](results/EXPLORATION_INVENTORY_2026-10-08.json) |

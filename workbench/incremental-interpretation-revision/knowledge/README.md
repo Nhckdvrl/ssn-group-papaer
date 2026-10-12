@@ -11,6 +11,15 @@
 5. [**开放问题与分歧预测**](04_OPEN_PROBLEMS_AND_TESTS.md)：供自主选题，不是固定路线、静态实验菜单。
 6. [**阅读与未完成校验账**](05_READING_AGENDA.md)：本轮到底读了什么、哪些旧卡要重新核验及残余阅读债务。
 
+## 以科学问题为单位的深层专题（不是重复paper摘要）
+
+- [01 重分析理论冲突](topics/01_REANALYSIS_THEORY.md)：2001–2026经典实验怎样区分旧痕迹、局部结构、语用、回视与任务效应。
+- [02 LLM加工与测量有效性](topics/02_LM_PROCESSING_AND_VALIDITY.md)：从surprisal到自然新依赖，模型×任务×材料的识别界限。
+- [03 因果绑定与真正使用](topics/03_CAUSAL_BINDING_AND_USE.md)：Hanna与Gur的实验为什么会区分机制，回看E55–90哪里还不能归因。
+- [04 Belief更新与评分目标](topics/04_BELIEF_REVISION_CREDIT.md)：Belief-R、ABBEL和E91–107各自测什么，代数分解不等于神经记忆。
+- [05 从领域认识长出idea](topics/05_HOW_IDEAS_GROW.md)：逐个实验回到未知结果时刻，学习最邻近论文的科学推理动作。
+- [关键主张变更账](EPISTEMIC_CORRECTIONS.md)：发现过并纠正过的误记/过强推断；新反证必须更新这里。
+
 ## 所有论文怎样查？
 
 从[**全库论文图谱 PAPER_ATLAS**](PAPER_ATLAS.md)按七个问题族查（人类修订、LM加工、测量、因果绑定、belief状态、奖励选择、方法桥接）；[结构化PAPER_CATALOG](PAPER_CATALOG.json)登记144份规范卡与3份兼容别名及其阅读状态边界。主题卡可以互相引用，但同一论文只有一个规范内容，不因为两次阅读生成两份正文。

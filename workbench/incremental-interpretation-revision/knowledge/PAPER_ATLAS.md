@@ -2,6 +2,10 @@
 
 > **2026-10-12 结构性重编目**。覆盖迁移来的144篇/主题卡（含数个同论文重复版本）及本次3篇新增卡；去除3个重复内容后**144份规范主卡**。这里的数字是卡片数，**不是144篇实际独立精读论文**。历史86篇MAIN为历史自报，具体阅读范围仍须看原卡和[阅读账](READING_LEDGER.json)。本目录只对核心论文作选择性原文复核，不会把每篇都称重新独立验证。机器可检索的完整登记：[PAPER_CATALOG.json](PAPER_CATALOG.json)。
 
+## 先进入深层解释，而不是直接跳一百多篇卡
+
+[人类修订争论](topics/01_REANALYSIS_THEORY.md) → [LM测量与难题](topics/02_LM_PROCESSING_AND_VALIDITY.md) → [因果绑定与使用](topics/03_CAUSAL_BINDING_AND_USE.md) → [信念更新/评分](topics/04_BELIEF_REVISION_CREDIT.md)。[怎样根据论文真正长出好实验](topics/05_HOW_IDEAS_GROW.md)连接所有主题；[认识纠正流水账](EPISTEMIC_CORRECTIONS.md)记录哪些旧结论必须降权。
+
 ## 全领域问题如何相互扣住？
 
 | 需要回答的真实问题 | 直接证据/理论层 | 典型伪因果解释 | 桥接研究 |
