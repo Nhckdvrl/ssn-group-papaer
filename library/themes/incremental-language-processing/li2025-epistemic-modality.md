@@ -1,13 +1,7 @@
-# Representations of Fact, Fiction and Forecast（Li、Vrazitulis、Schlangen，2025 v1）[证据级别：正文主要实验]
+# 文献资产已迁移（仅兼容导航）
 
-来源：[arXiv v1](https://arxiv.org/html/2506.01512v1)。读§2–6、局限及表1–2；统计附录只查建模概述，未复现/获取数据。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. 论文形态：语言epistemic表达的受控行为测量。
-2. 压力：正确表达确定性需要语义知识，非仅confidence calibration。
-3. 前提：区分可能/必然、事实/人物信念及知晓强度。
-4. idea来源（DOCUMENTED）：语言类型学与儿童语义发展框架。
-5. 距离：以modal/attitude词选择补充一般ToM问答。
-6. 方法：八个instruction模型；150个modal故事、30个ToMi故事；三答题格式，paired/joint accuracy。
-7. 边界：未直接测人类；人类对照取自既有发展研究，不能当同材料实验。
-8. 可迁移动作：互补命题共同正确及不同answer formats，检查无知与否定的区别。
-9. 对我们：事实/假设来源的类别区分、uncertainty语义并非新概念；E34的来源交叉应解释具体后续角色影响，不能转成generic epistemic benchmark。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

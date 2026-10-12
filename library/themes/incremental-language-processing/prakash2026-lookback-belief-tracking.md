@@ -1,11 +1,7 @@
-# Language Models Use Lookbacks to Track Beliefs（ICLR 2026）`[证据级别：摘要 + 引言（arXiv 2505.14685v3）]`
+# 文献资产已迁移（仅兼容导航）
 
-1. **论文形态：** 机制发现（因果中介 + 因果抽象）。
-2. **背景与压力：** LLM 的 ToM 研究大多停在行为评估，不知道模型内部怎样表征"与现实不同的信念"。
-3. **改变的前提：** 用模板故事（CausalToM，两个人物各自改变两个物体的状态，并控制彼此能否看见）把信念追踪变成可以做因果分析的任务。
-4. **idea 来源（DOCUMENTED）：** Sally-Anne 测验；binding ID / ordering ID 一系列工作（Feng & Steinhardt、Dai 2024、Prakash 2024）。
-5. **与最近邻的距离：** 相对 binding ID 研究，增加了信念更新（visibility）；相对 ToM 行为研究，给出可干预的机制。
-6. **方法与数据：** Llama-3-70B/405B-Instruct、Qwen2.5-14B；合成故事数据集。
-7. **证据与短板：** 发现 lookback 机制，即需要时由后面的 token 回头从早期位置取回信息；"能否看见"这类更新信息通过 visibility ID 触发再次 lookback。数据是模板化的合成故事。
-8. **可迁移的研究动作：** 先把一个高层行为拆成"指针、地址、内容"三个部分，再逐一做因果验证。
-9. **对我们：** 与 Tang ICML'26 一起构成"推迟、需要时再取"的强先验。语言修订（GP、指代）如果也是需要时再取，那么残留错误就应该出现在"取的时候取到了旧内容"。这是 C1 机制阶段要检验的预测，不能直接照搬为结论。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
+
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

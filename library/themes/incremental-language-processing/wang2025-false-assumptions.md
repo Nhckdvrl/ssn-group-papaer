@@ -1,13 +1,7 @@
-# Identifying and Answering Questions with False Assumptions: An Interpretable Approach（EMNLP 2025）
+# 文献资产已迁移（仅兼容导航）
 
-**证据范围：** primary引言、§2、§3.2–3.3、§4主要结果/错误分析、§5与结论；§3.1及附录未完整核对。[原文](https://aclanthology.org/2025.emnlp-main.1228.pdf)。暂停前阅读的补记。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-1. 论文形态：诊断＋检索/atomic-assumption方法。
-2. 压力：fact verification不足覆盖问题暗含假设；常规回答可能事实正确而没处理错误前提。
-3. 改变前提：把问题拆atomic assumptions、逐个验证，再给可解释答案。
-4. 来源（DOCUMENTED）：QAQA/CREPE/FalseQA的question-vs-statement及外证据对照。
-5. 距离：跨三个现有corpora，retrieval与原子假设组合；不是仅新一套false-premise问题。
-6. 实验：五LLM及baseline，解释可读性、计算成本、错误类别；知道question有错误前提也未必给出正确解释。
-7. 短板：retrieval/生成假设仍有误，完整assumption recall难定义；标注错误和不自然修订问题被作者显式讨论。
-8. 动作：验证question assumptions与answer correctness分开；保持genuine问题，少量机械扰动不能替代数据质量。
-9. 对我们：generic“事实知道但问题诱导出错误”已有owner。E50/E51须明确增量与自然功能后果，不把指令恢复或count词语歧义本身叫好idea。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
+
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

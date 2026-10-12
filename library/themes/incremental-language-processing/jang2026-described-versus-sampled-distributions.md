@@ -1,9 +1,7 @@
-# Instruction-Tuned Language Models Cannot Sample from Distributions They Can Describe（2026 v2）[证据级别：primary摘要]
+# 文献资产已迁移（仅兼容导航）
 
-[arXiv v2](https://arxiv.org/abs/2607.25292)，Jang、Lee、Kim；primary comments标EMNLP Findings2026，仅用于claim ownership，不作为投稿目标。只核摘要、版本、metadata，未读正文/复现。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-形态：persona survey sampling与分布表达；摘要报告instruction后sampling集中化、显式描述分布更准确，称KNOWS/DOES。细节与generalization尚未核查，不引用为我们的role机制证据。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
 
-可迁移动作：区分生成样本分布与显式概率报告；不要从一次greedy输出推分布。与最近邻具体定位仍待正文阅读。
-
-对我们：把E38概率题正确、likelihood偏差改名成“知道却不会”会被压缩。我们的增量只能来自同一角色信息跨事件/动作的具体方向与语境条件，既有owner不自动杀线。
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

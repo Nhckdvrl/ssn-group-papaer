@@ -1,46 +1,40 @@
 # Incremental Interpretation & Revision
 
-## 状态与授权
+**更新：2026-10-12。当前工作是重新建立研究判断、审计证据和修复执行，不是把旧探索强行写成论文。**
 
-- **注册：** PROPOSED（人授权的 baseline residency；不改变 ACTIVE-MAIN / ACTIVE-EXPLORE 分配）。C06–08 L0，C09限定问答协议L1；尚未认证合格idea，未进入候选。
-- **2026-10-06 人决定：** 从暂停恢复，重置到[ROUTE](ROUTE.md)，放弃I01/C05；先广后深，允许白盒，使用同节点8张H20。
-- **执行模式：** 自主推进[EXECUTION_BRIEF](EXECUTION_BRIEF.md)，原人审节点自审后继续；仅§6.7真正卡住或人专属开关线/状态/候选决定时回来。
-- **2026-10-08当前任务：** 人要求整理workbench、清理一次性脚本、保留每次探索方向与结果、认真总结并上传GitHub main；本次仅CPU整理，没有实验或API队列，不自动执行历史“下一步”。未改变注册/idea/主张状态。
-- **数据/API：** 现成成熟数据优先直接用；需新标注/修改/定点审计时只用Step Plan `step-5-preview`、≤5项/批、全局并发≤8，禁止现金接口。HF仅国内镜像，推理离线。
-- **硬资源约束：** 2026-10-08 09:00北京时间前释放全部GPU。08:19已提前停用并删完剩余权重，09:01实际核验本用户GPU/本工作queue/模型权重均0；本用户目录约38GiB、项目约17GiB。科学数据与结果保留。见[资源释放](RESOURCE_RELEASE_2026-10-08.md)。
-- **territory：** [T15](../../search/our-taste/TERRITORY_INCREMENTAL_INTERPRETATION_2026-10-05.md)；ACL/EMNLP/NAACL按证据成熟度选周期，不投Findings，不参考EACL。
+## 当前入口
 
-## 当前研究问题
-
-强模型看到完整句后，旧关系的撤回与正确替代关系的建立为何可能分离？进一步问：当自监督内容奖励重建的观察本身必须改读，它是否把原表达的可预测性误当作正确修订的credit？这是[I06](ideas/I06-late-verb-frame-reanalysis.md)/[I07](ideas/I07-self-supervision-inherits-interpretation-bias.md)的探索切口，不能先假定一般机制成立。
-
-最初的归因区域仍是增量编码过时、作答选择、合理性组装、测量语义四方竞争。GP错答案、消歧surprisal、双向/重复阅读不能单独认证内部解析。原作者部分No表示not necessarily；源支持、明确矛盾与可能的额外事件分开，不能把所有GoldNo当世界虚假。
-
-**当前结论：没有合格idea。** 已有问答与自由关系表达的分离、撤回旧关系与建立新依赖的分离，以及两族有限候选中的重建credit竞争；尚未连成有足够解释力与重要后果的叙事。先读[探索总结](EXPLORATION_SUMMARY.md)与[103张卡的逐次方向/结果](EXPLORATION_RECORD.md)：两轮都重复了“局部正结果→收缩→补实验”，实验与精读数量不能代替科学推进。总结保留重要线索、反证、仪器失败和未执行项，不据此关闭领域。
-
-| 核心结果 | 完整证据与实际含义 |
+| 要做什么 | 入口 |
 |---|---|
-| [E52](experiments/E52-genuine-revision-reading-map.md)广面起点 | 1732公开QA/309 GP pair，14模型/5族；任务语义与能力证据分开；§1精读和“我的理解”已写日志 |
-| [E67](experiments/E67-reading-goal-to-free-relations.md)/[E99](experiments/E99-goal-qa-correct-with-explicit-misreading.md)旧三族Goal后果 | 同S QA正确＋明确误角色联合增17/12/30pp；完整自由角色3204输出已封版，非仅QA均值或唯一latent parse |
-| [E98](experiments/E98-query-guidance-versus-interpretation-fidelity.md)当前三族实际输出 | 1800actual；GP QA收益Q/G均CI含0、Min0；联合错角色仅Q明确+20.83[10.42,33.33]pp，不能讲当前共同Goal收益悖论 |
-| [E96](experiments/E96-modern-native-belief-credit.md)原生proposal/self-grader | 50发表pair/三族/300P/600LP；换消歧观察target使fidelity alignment三族+.444/.500/.500且CI正，主要MVRR；不等于完整理解完好 |
-| [E101](experiments/E101-disambiguation-region-reconstruction-credit.md)/[E102](experiments/E102-revision-evidence-credit-oracle.md) | 固定候选前缀credit三族偏旧解释、后段Q/Min偏修订；T2位置oracle改善选择10.42/8.33/21.88pp，G总体CI含0；原pool含cue来源 |
-| [E103](experiments/E103-native-pool-revision-credit-selection.md)同原S八候选 | 全50/三族1200assignment；原角色类别Min +8.33pp不能解释为完整意义修复，E107新依赖读数未显示稳健完整恢复；MVRR无新增good候选 |
-| [E105](experiments/E105-added-proposals-reconstruction-faithfulness.md)/[E106](experiments/E106-positive-observation-innovation-credit.md) | Q whole预算1→8改善13.54[5.21,22.92]pp，不支持更多搜索更错；唯一无T2 positivegain无稳健跨族修复，不调cutoff |
-| [E104](experiments/E104-belief-r-revision-evidence-credit.md)跨域原1744 | 机械then后缀使UPDATE Q/Min更差；then未认证语义revision证据位置，不能据此反驳真正跨域机制，也不扫描其它cut |
-| [E107](experiments/E107-critical-dependency-commitment-audit.md)完整依赖审计 | 243/243双遍、57裁决、0未解决；全50明确依赖suffix−whole Q+6.25[−2.08,16.67]/G0/Min+4.17[−4.17,12.5]pp。Q/Min条件候选14/50与13/50源有prefix反对、suffix支持正确依赖的credit竞争；仍非广泛修复或训练后果 |
+| 理解两轮探索在哪里偏离、哪些代码/解释需纠正 | [科学审计](AUDIT_2026-10-12.md) |
+| 建立领域认知与查找完整论文笔记 | [本 workbench 专属知识库](knowledge/README.md) |
+| 重新选择问题和高信息量实验，而非自动接着跑 E108 | [研究综合](knowledge/RESEARCH_SYNTHESIS_2026-10-12.md) |
+| 按新流程自主研究 | [执行说明](EXECUTION_BRIEF.md)、[本地 Agent 约定](AGENTS.md) |
+| 查全部103张现存实验卡的方向、结果、边界 | [探索记录](EXPLORATION_RECORD.md)、[原机器库存](results/EXPLORATION_INVENTORY_2026-10-08.json) |
+| 恢复原始统计、脚本版本和结果 | [结果说明](results/README.md)、[资产清单](results/ANALYSIS_ASSETS.json)、[脚本说明](scripts/README.md) |
 
-E93/E95/E97/E100的cap、unknown、Tie和整族仪器不可用全部保留，不记为0能力或“已懂仅评分错”。完整范围与失败版本见各实验卡；I07/I08仍SEED，不因近邻已做部分工作桌面判死。新故事须证明值得兴奋的具体关系更新机制或后果，不寻找完全空白。
+## 研究问题与证据状态
 
-## 知识库与资产
+我们关心后来证据如何改变先前解释，尤其是**撤回旧关系、建立替代依赖、在其他用途使用它**之间的联系。它们必须分别测量；这项区分本身并不是新的贡献。真正有价值的是解释在哪些条件下这些操作分离、为什么，以及能否预测未参与设计的错误与成功。
 
-- [领域地图](../../library/themes/incremental-language-processing/FIELD_MAP.md)、[86篇主文精读索引](../../library/themes/incremental-language-processing/REVISION_READING_INDEX.md)、[跨领域综合](../../library/themes/incremental-language-processing/REVISION_RESEARCH_SYNTHESIS.md)。5综述/2 position/79研究；所读版本/附录/接收/代码核对分开，摘要与下载不混计。
-- 最新近邻：ABBEL/ReBel/Agent-BRACE的belief内容信号、TRLM的inverse feedback、IW-OPD的prefix compatibility、Self-CTRL的一致性、Causal Quotient的表示/使用/尺度、BeliefMem的候选置信记忆、Dark Room的奖励传递机制。定位与increment写在论文卡，不自动输出关线判决。
-- 外置根目录：`/data1/xiangding/work/incremental-interpretation-revision/`；保留原数据、输入/配置、输出/LP、审核、map及complete标记；原始数据、模型、PDF不进git。[结果资产](results/README.md)与[清理清单](results/ANALYSIS_ASSETS.json)索引114份原样外置的大统计/CSV、141个历史脚本和固定Git恢复提交；科学失败/旧版不删除、不压缩。
-- E52主资格入口`E52/qualified-v3.jsonl`，原v2/双轮/裁决资产保留。E53旧T4-native-v2为6244/6247双遍、635裁决、3未解决，属于语态澄清前协议，不当当前role-v2能力证据；没有继续读partial效果。
-- [scripts/README](scripts/README.md)保留126个科学/分析/共享脚本；临时等待、补包、历史流程与画图入口退役，原代码可在固定Git提交恢复。当前tokenizer/config/revision/manifest可用、权重已释放；重新GPU/下载需人新增资源授权，模型只走国内镜像。
-- 历史入口：[E00–51总结](PROGRESS_SUMMARY_2026-10-06.md)、[旧路线诊断](DIAGNOSIS_AND_REDIRECTION_2026-10-06.md)、[FILE_INDEX](FILE_INDEX.md)、[DATA_PLAN](DATA_PLAN.md)、[CLAIMS](CLAIMS.md)、[PAIN_LOG](PAIN_LOG.md)。原事实与失败均保留在git历史/实验卡/日志。
+历史正式状态保持：PROPOSED baseline residency；I01 PARKED、I02 PILOT、I03–I08 SEED；C06–C08 L0、C09限定问答因果测量L1。尚无被认证为合格的论文 idea。本次维护没有代替人升降这些状态。
 
-## 人的决定记录
+已知最重要的边界：E29删除原GP源后效应仍在，E43/E44不支持普通场景的普遍角色反向；E98不支持当前三族共同的问答收益/意义损失悖论；E103的角色类别改善被E107收紧，不能叫完整新依赖恢复；E105反对“候选更多必然更错”。这些反证与正结果同等重要。
 
-2026-10-05选择territory并授权baseline residency；2026-10-06暂停归档E51后，接受诊断并恢复新路线；同日授权自主执行，覆盖普通流程中的停步gate。2026-10-07晚要求以高信息量实验找到值得追的idea，数据质量优先、无需今晚补齐完整训练论文；随后明确09:00释放GPU和模型空间。agent未作开关线、状态或候选决定。
+**新的审计补充：** E93预检只验证重复性，未验证有效最终答案，代码已加入不依赖Gold的双模式预检；E107的保守差值下界不等于两个边际下界相减，旧数字不应误改；前后缀likelihood分解不是神经机制证据。详见审计。
+
+## 知识库位置与阅读身份
+
+原外围主题目录的149份文献/索引资产已迁入本目录 **knowledge/**，原README留作 LEGACY_README。保留原文献卡、版本与局限，不把迁移计作重新精读。外围只留兼容导航。新独立原文复核、思想来源重建和未核范围记录在 [原文复核](knowledge/PRIMARY_SOURCE_REVIEW_2026-10-12.md)。
+
+## 资产、运行与权限
+
+历史完整数据/输出/逐token分数/标注原包位于原机器 `/data1/xiangding/work/incremental-interpretation-revision/`，本次未访问现场。大结果JSON中的 externalized 指针不是统计数组；恢复按原资产清单和固定提交 `859e48c87cfbecaf017c0fd8e286ef18f59a61cd`。
+
+2026-10-08的GPU释放与模型权重删除见 [资源交接](RESOURCE_RELEASE_2026-10-08.md)，不是当前可用资源证明。本次没有模型推理/训练/新标注调用，E108仍仅准备。恢复GPU与下载需新资源授权；现有知识库与代码不触发运行队列。
+
+## 审计覆盖与验证
+
+103是实际卡片数，不是独立发现数；原库存含96测量结束、4部分完成、2含不可用模型、1未运行。此次覆盖全库存/探索记录及关键结果的交叉审查；代码实读为5个完整文件和一个共享估计器的前65行，**不是全部126个科学脚本逐行审核，更不是103次原始数据独立复算**。
+
+CPU回归测试：`python -m unittest discover -s workbench/incremental-interpretation-revision/tests -v`。14项通过；[验证记录](audit/CPU_VERIFICATION_2026-10-12.json)含源代码校验和及范围。全部实验卡、原结果、idea卡和旧日志保留；[文件索引](FILE_INDEX.md)说明历史入口。

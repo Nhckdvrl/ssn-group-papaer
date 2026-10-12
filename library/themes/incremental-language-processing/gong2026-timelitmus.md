@@ -1,9 +1,7 @@
-# TimeLitmus（2026-09 v1预印本）[证据级别：摘要与Introduction]
+# 文献资产已迁移（仅兼容导航）
 
-[primary HTML](https://arxiv.org/html/2609.24677v1)。只读摘要、§1与framework comparison表1；未核对§4构造、结果、附录。HTML留有会议信息占位，不据此声称2018或已接收。
+此文件的正文已迁入 [incremental-interpretation-revision/workbench 专属知识库](../../../workbench/incremental-interpretation-revision/knowledge/README.md)，在该目录查找**相同文件名**即可；原主题 README 的历史正文另存为 `LEGACY_README.md`。
 
-形态：Finance/Traffic的文本事件＋数值时间序列预测，paired interventions与claim-linked explanation diagnostics。摘要称4,856条、10models，模型可识别scenario关系却独立预测使用不足；未对其数字作复现。
+2026-10-12 起，所有新的论文笔记、领域画像、思想来源分析与实验综合只维护在 `workbench/incremental-interpretation-revision/knowledge/`。本目录不再保存或更新第二套实质知识。
 
-idea来源（DOCUMENTED）：从accuracy/解释表面正确是否依赖预期输入关系的压力提出。行为干预/contrast sets与解释问题均已有近邻，不是所有controlled diagnostics的新开端。
-
-对我们：泛泛“识别关系却不应用”“准确率高但跨用途失效”已有owner。本线不转成time-series benchmark，需固定角色信息、event/action身份与影响方向。只有实际读过的范围被登记，不能借大benchmark抽象叙事替代I01实验。
+[完整迁移清单与固定来源](../../../workbench/incremental-interpretation-revision/knowledge/MIGRATION.json)。旧正文的原始版本和 Git blob 已保留；导航不代表论文被删除，也不代表重新阅读或重新核实。

@@ -11,6 +11,7 @@ from current_open_baseline import tokenizer
 from gpu_deadline import ensure_gpu_allowed
 from belief_r_credit import forward, reconstruction, parse_answer
 from run_reconstruction_reward import score
+from forward_preflight import require_valid_forward_smoke
 
 
 def generated(model, tok, task):
@@ -66,12 +67,25 @@ def run(a):
     ft = prepared[fixed['item_id']]['forward']['FORWARD_DIRECT']
     one = generated(model, tok, ft)
     assert generated(model, tok, ft)['output_tokens'] == one['output_tokens']
+    # 2026-10-12: repeatability alone admitted capped/UNKNOWN E93 output.
+    # Fixed IDs and both modes; never use correctness to select smoke samples.
+    smoke = {}
+    for mode in ['FORWARD_DIRECT', 'FORWARD_COT']:
+        smoke[mode] = []
+        for r in sorted(rows, key=lambda row: row['item_id'])[:3]:
+            ensure_gpu_allowed()
+            result = one if mode == 'FORWARD_DIRECT' and r['item_id'] == fixed['item_id'] else generated(model, tok, prepared[r['item_id']]['forward'][mode])
+            smoke[mode].append(dict(result, item_id=r['item_id']))
+    smoke_path = a.out/'forward-preflight-v2.json'
+    require_valid_forward_smoke(smoke, smoke_path)
     rt = prepared[fixed['item_id']]['rec']['a']
     lp = score(model, rt)
     assert score(model, rt) == lp
     config = dict(model=a.model.name, model_manifest_sha256=sha(a.model/'manifest.json'), data_sha256=sha(data),
                   code_sha256=sha(Path(__file__)), builder_sha256=sha(Path(__file__).with_name('belief_r_credit.py')),
                   score_helper_sha256=sha(Path(__file__).with_name('run_reconstruction_reward.py')),
+                  forward_preflight_sha256=sha(smoke_path),
+                  preflight_helper_sha256=sha(Path(__file__).with_name('forward_preflight.py')),
                   rows=len(rows), forward_outputs=len(rows)*2, reconstruction_scores=len(rows)*3,
                   gpu=a.gpu, shard=a.shard, shards=a.shards, seed=93, dtype='bfloat16',
                   transformers=transformers.__version__, torch=torch.__version__,
@@ -107,7 +121,7 @@ def run(a):
     assert completed == len(rows)
     config.update(predictions_sha256=sha(a.out/'predictions.jsonl'), gpu_hours=(time.monotonic()-start)/3600)
     (a.out/'config.json').write_text(json.dumps(config, indent=2)+'\n')
-    for name in ['run_belief_r_credit.py', 'belief_r_credit.py', 'run_reconstruction_reward.py']:
+    for name in ['run_belief_r_credit.py', 'belief_r_credit.py', 'run_reconstruction_reward.py', 'forward_preflight.py']:
         (a.out/name).write_bytes(Path(__file__).with_name(name).read_bytes())
     print('E93 DONE', a.model.name, a.shard, config['gpu_hours'], flush=True)
 
