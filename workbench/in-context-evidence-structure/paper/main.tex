@@ -167,6 +167,7 @@ A further variant has comments with independent food and service sentiment and s
 We use Qwen3-8B, 14B and 32B \citep{yang2025qwen3}, Mistral-7B-v0.3 \citep{jiang2023mistral}, and Llama-3.1-8B and 70B \citep{grattafiori2024llama}, without chat templates and with frozen weights, FP32 computation and exact attention (Appendix~\ref{app:models}).
 
 \paragraph{Formation and reading.}
+The \emph{label position} of a demonstration is the first token of its label word, and its \emph{answer tokens} are the label word and the line breaks after it.
 Under causal attention, the states at each demonstration token are computed from all earlier tokens.
 We call this computation the \emph{formation} of demonstration states, and the query's attention to them \emph{reading}.
 We intervene on either stage by removing attention edges: at every layer and head, the attention score from a receiving token to a set of earlier tokens is set to $-\infty$ before the softmax, the remaining attention is renormalized, and all later states are recomputed.
@@ -241,7 +242,6 @@ If B's convention reaches A's label states through what they read at B's answers
 We construct the effect to be predicted by running the prompt twice, once with shared and once with separate label words for B, and transplanting the states of A's label tokens from the second run into the first.
 The prediction keeps the shared-word prompt and changes only the keys and values that A's label tokens read at B's answer tokens, replacing them at every layer with those of the separate-word run, and all later states are recomputed.
 We compare the two as the difference between B's two conventions, which removes any shift that does not depend on B's rule, and use a coefficient of one, so the prediction has no free parameter \citep[cf.][]{zhang2024towards}.
-The test is demanding: the effect includes everything that separate label words change in A's label states, the prediction changes only one set of messages, and with no fitted scale a path with the right pattern but the wrong magnitude would fall off the identity line.
 
 The prediction matches the actual effect closely (Figure~\ref{fig:reconstruction}).
 Correlations are 0.93 for Qwen3-8B, 0.97 for Qwen3-14B, 0.92 for Qwen3-32B, 0.95 for Mistral-7B and 0.93 for Llama-3.1-8B, with points along the identity line, and the root-mean-square error is 27--39\% of that of predicting no effect (Appendix~\ref{app:reconstruction}).
@@ -273,10 +273,12 @@ All 95\% intervals exclude zero (Appendix~\ref{app:operation}).}
 \end{table}
 
 \subsection{The native computation depends on the path}
+\label{sec:native}
 
 A successful prediction shows that the path can carry the effect, not that the model's own computation uses it.
 We therefore intervene on the ordinary forward pass without any donor states (Table~\ref{tab:operation}).
 Removing the answer-to-label path while the prompt is processed reduces the effect of B's rule under A-only reading by 1.0 to 1.8 nats, between 35\% and 70\% of the total, in all six models.
+On SST-5, blocking the path in both directions removes 62--74\% of the effect under A-only reading (Figure~\ref{fig:leak}, green).
 Conversely, when we block all attention from A's demonstrations to B's and then reopen only this path, B's rule again affects A's predictions, by 0.65 to 1.45 nats, a quarter to two thirds of the full effect.
 The path is thus both a substantial part of the native route and sufficient on its own to transmit B's rule.
 The remainder of the effect travels through other cross-source edges, such as attention from A's comments to B's demonstrations.
@@ -286,6 +288,7 @@ When the query can also read B directly, the net contribution of the path differ
 A's evidence then competes with B's states that the query reads at the same time, and the path changes how the two combine rather than adding a fixed amount of B's rule.
 
 \subsection{The path carries the association, not only the words}
+\label{sec:assoc}
 
 Separating the label words changes both which words B uses and how B's answers relate to its comments, so the reconstruction alone does not show which of the two the path carries.
 To isolate the association, we keep B's label sequence, positions and comment set fixed and reverse its association by exchanging comments between B's positive and negative demonstrations.
@@ -392,7 +395,7 @@ This is consistent with the role of label words as anchors that collect the info
 With distinct words, B's answers are read differently and B's association does not reach A's predictions, but the model then needs other information to choose the right label space.
 
 \paragraph{Larger models mix more.}
-Within each family, the larger model shows the larger cross-source effect under A-only reading and the larger gain from selective blocking, which reaches 10.4 points in Llama-3.1-70B.
+Within each family, the larger model shows the larger cross-source effect under A-only reading and a gain from selective blocking at least as large, reaching 10.4 points in Llama-3.1-70B.
 Mixing during formation is not a weakness of small models that scale removes.
 In the larger models more of B's rule is present in A's states, and correspondingly more is gained by keeping it out.
 
@@ -424,7 +427,8 @@ Conflicting demonstrations \citep{jiao2026understandingdynamicsdemonstrationconf
 Models also struggle to use representations they learn in context \citep{lepori-etal-2026-language}, consistent with our finding that rules learned under complete isolation cannot be used jointly.
 
 \paragraph{Binding and retrieval in context.}
-Language models bind entities to attributes through binding IDs \citep{feng2024languagemodelsbindentities,dai-etal-2024-representational}, retrieve bound entities through several interacting mechanisms \citep{gurarieh2026mixingmechanismslanguagemodels}, and execute conditional rules by testing a condition and routing the answer \citep{thavarasa2026testroutelanguagemodels}, and late contextualization of entities causes errors \citep{lepori-etal-2025-racing}.
+Language models bind entities to attributes through binding IDs \citep{feng2024languagemodelsbindentities,dai-etal-2024-representational}, retrieve bound entities through several interacting mechanisms \citep{gurarieh2026mixingmechanismslanguagemodels}, and execute conditional rules by testing a condition and routing the answer \citep{thavarasa2026testroutelanguagemodels}.
+When entities are contextualized too late, models make errors \citep{lepori-etal-2025-racing}.
 Associating each rule with its source is a binding problem of this kind, and our results locate where it is solved: during formation, through interaction between the sources.
 
 \paragraph{Annotator disagreement.}

@@ -74,7 +74,7 @@ The own-answer control blocks the attention from A's label positions to A's earl
 \emph{Restricted reading} removes the attention from every query token to all tokens of the unrequested source.
 
 \paragraph{Patching the answer-to-label path.}
-For the predictions in \S\ref{sec:path}, a donor prompt differs from the recipient in B's label words (or, in \S\ref{sec:path}.3, in B's comment assignment).
+For the predictions in \S\ref{sec:path}, a donor prompt differs from the recipient in B's label words (or, in \S\ref{sec:assoc}, in B's comment assignment).
 At each layer, A's label positions in the recipient compute their attention with the recipient's queries and the full causal mask, but with keys, values or both at B's answer tokens taken from the donor's cache at that layer, including its positional encoding.
 Only the outputs of these receiving positions change, and all later layers and positions are recomputed.
 The effect to be predicted transplants the complete cached states of A's label positions from the donor into the processed recipient prompt and keeps all other positions.
