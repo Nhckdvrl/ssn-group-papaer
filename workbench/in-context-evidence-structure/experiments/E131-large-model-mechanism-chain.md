@@ -112,3 +112,10 @@ L70 n32 A形成+.9568[.6789,1.2607]、B读取signed+3.3586[2.8818,3.8240]nats，
 首次L70/L8逐字同32材料配对：A形成large−small+.1563，CI含0；label接口signed作用差−.3677[−.6326,−.0975]、关系signed差−.1223[−.2435,−.0074]。这是同操作跨容量验证，贡献幅度允许变化；无需由这些差异新开细粒度分支。C21–23 L3/C24 L2与formal状态保持。16/18、416run-stagectx/207616scores/38.183591科学stage设备时；native/function确认仍运行，未读partial效应。
 
 独立先raw+新大小配对封存（b55d3e98…/0d2b53ef…），再核1041作者analysis数值最大误差6.99e−15；10/12确认图30数独立绑定、两个pending为空，旧15批/原三Qwen配对保持。80层4GPU FP32/TF32False、实际edge调用25680/past-availability122880、numeric7.6294e−6/self0，五冻结科学源不变。证据[卡E131](../experiments/E131-large-model-mechanism-chain.md)、[完整报告](../results/e131/report.md)、[raw-first](../results/e131/independent_raw_review_2026-10-12.md)与llama70_confirmation_mechanism/{run,analysis}.json。
+
+
+## 资源竞争后的同协议迁移（评分前执行补充）
+
+2026-10-12 UTC11:00后，fvcrc10在我方2715055外新增四个外部compute进程，各约6GB、四GPU98–100%利用；当前native确认仍继续，未读取partial科学效应。fvcrc20四RTX PRO6000 Blackwell卡空闲；原Q32同确认native32为1550秒，选择它承接受竞争的native32确认。I/O先从已逐SHA核验的fvcrc11复制同30权重至20的/dev/shm（NVMe仅41GB、SHM余171GiB），外部SSH地址配置修复了节点别名解析；第一次0GPU/0scores失败日志保留。函数确认仍在13运行。
+
+新执行helper独立核、提交后才运行；先核同pin、原五科学SHA、空卡与CUDA，再精确终止我方legacy writer并保留全部partial和原journal快照。没有外部进程操作。若旧32行或run已完成，不中断它。新20从原seed131101的同32材料完整执行原64条件、8query、FP32/TF32False及原分析；旧partial不混入完成批，也不按效应选择运行。完成后独立核上下文逐字相同及与旧partial重叠的数值/实际输出差值。中断驻留更新到cutoff，20记独立journal，科学完整stage时间与旧尝试分列。原生/函数两个问题、18stage矩阵及MC1–MC3均不变。
