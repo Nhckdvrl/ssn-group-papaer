@@ -149,5 +149,7 @@
 **RECONSTRUCTED**：把“内部有信息却没说”变成**可测的输出准备度**，不止看是否在当前回答发声。**重要区分**：J-space 外≠“没有人类可理解的语义”；那里可能是普通句法/数值/格式特征。它是评估 *verbal reportability* 的强基线，但不是语义可达性的完备 oracle。Xeno 可探索二者系统性差异。
 
 ### 17. Li et al. — Inside the Visual Mind / ViSAE（ICML 2026）
-[正式 PMLR 论文页](https://proceedings.mlr.press/v306/li26s.html)、[代码](https://github.com/deep-real/ViSAE) · **ABSTRACT / 项目文档，原 PDF 访问不稳定，非全文精读**。
-**强近邻**：16K 视觉概念词汇、64K 图片，top-down concept reading + bottom-up circuit tracing；论文摘要报告 WaterBirds worst-group accuracy 改善 **48.2%**。这说明扩大人类概念词汇和视觉因果验证已是强工作，但**扩大人类概念覆盖≠证明模型全部语义可被翻译**。具体 dataset splits、图结构干预细节仍需原 PDF 复核。
+[19 页会议原论文](https://pdfs.assets.alphaxiv.org/2606.06664v1.pdf)、[PMLR](https://proceedings.mlr.press/v306/li26s.html)、[代码](https://github.com/deep-real/ViSAE) · **MAIN+METHODS：§1–4、图1–7、表4–8与主要附录定位**。
+**Parent/pressure**：ViT 传统 saliency 回答“在哪里”，而基于 SAE 的视觉概念解释面对**输入概念覆盖不足**、命名依赖主观摘要和跨层计算关系不清的压力。作者将视觉神经科学四层抽象（primitive/intermediate/object/scene）作为数据收集原则，构建约 **64K 图像、16,050 人类视觉概念**，CLIP + Soft-WPMI 自动给 SAE 的 top-activated 特征读语义，再用上游 SAE feature ablation 和下游 activation variation 连接 causal concept graph，提供诊断与 steering。
+**方法与实验**：在 CLIP ViT-B/32 CLS/image-token 多层上比较 ReLU/Gated/JumpReLU/BatchTopK/Matryoshka SAE，最终用 **8× expansion、L0=128 的 BatchTopK**。表4 top-30 concept interpretation accuracy：使用 ImageNet/自建概念集 **50.7%**，MSCOCO/自建集 **51.2%**，自建图像+词表 **54.1%**；对照 LAION15K 和 Google20K 等明显较低。WaterBirds 表7 削弱 background concepts 后 worst-group **50.3→98.5%（+48.2点）**，增强方向使其降到 **5.3%**；表8 在相同 SAE 设置下由 ImageNet 探针训练的最差组为 **63.9%**，MSCOCO 为 **95.4%**，自建探针为 **98.5%**。
+**RECONSTRUCTED idea 来路**：不是再发明 SAE，而是原来“只看像素/单个图层”缺少层间因果链 → 用视觉层级建设强概念覆盖的系统测量 → 定位反直觉的背景捷径 → 设计**反向增强/抑制**和数据源消融获得可信下游动作。**Xeno 的真实差异**：ViSAE 目标从头到尾是丰富 **人类视觉概念集合** 并赋义，验证其有用性。它使“词表不够好导致无法解释”成为 Xeno 必须认真排除的强零假设，但不等于证明模型没有概念集合之外的可复现关系结构。**局限**：强结果主要在单个 ViT 家族/WaterBirds，intervention 可改变后验决策却未自动证明 SAE 概念是原网络天然唯一分解，外推至跨域 xeno 不充分。

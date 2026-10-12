@@ -17,7 +17,7 @@ Xeno 问的不只是“缺了一条人工概念标签”。作者把**表征形�
 | Paulo&Belrose ICLR2026；Sheng&Fu 2026 | feature seed instability、比较粒度改变“机制相似”结论 | 结构稳定性与语义可翻译性不是一回事 |
 | Sutter et al. NeurIPS2025 | 灵活因果对齐会产生**伪解释**，随机网络也可能有高分 | 负对照标准，不是证明所有新的内在结构都不存在 |
 | Williams et al. Philosophy Position 2025 | 表征本体/解释/内容的理论问题已有讨论 | 没有完成 Xeno 所要求的真实系统开放式发现和模型原生规律构建 |
-| ViSAE ICML2026 | 视觉概念大词表＋回路＋steering | 人类词表越大，不能直接推出陌生关系维度完全不存在 |
+| ViSAE ICML2026 | 原文表4/7/8：视觉大词表明显改变解释覆盖和背景 steering（50.3→98.5% worst group） | 人类词表越大，不能直接推出陌生关系维度完全不存在 |
 
 **不能以“概念缺失”“unsupervised feature discovery”“steering”作为 Xeno 论文的独立新颖贡献。也不能因为这些近邻就将它的实质命题判为已解。**
 
@@ -47,5 +47,5 @@ Xeno 问的不只是“缺了一条人工概念标签”。作者把**表征形�
 - Delisle & Tan 《Bypassing PC1...》NeurIPS2026 作者确认收录但未发现可核全文；
 - NeurIPS2026 Downloads 另一篇不同标题的 circuit description level 论文作者/全文尚未核验；**不能偷换成已读 Sheng&Fu**；
 - Song et al. ACL2026 的正式 PDF 过大/入口受限，只核到摘要和早期版本片段；
-- ViSAE 正式 PDF 源站返回下载限制，已核 PMLR 摘要和代码；
+- ViSAE 已由 alphaXiv 提供可核的 19 页原始论文，完成主要方法/图表/强消融阅读；
 - 新近邻随 2026 正式 proceedings 发布仍应更新。上述为**确实无法完成的获取问题**，不伪称全量完成。
