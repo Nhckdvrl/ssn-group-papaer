@@ -1,6 +1,6 @@
 # E131：大小模型上的同一形成、操作和Source功能链
 
-PARTIAL：15/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
+PARTIAL：16/18个预定stage完成。发现n16与新确认n32分别展示；大小配对只用逐字相同的新32材料。未完成的stage不作结论。所有继承分析、条件与三通道保留，报告不拟合模型。
 
 ## 形成与固定系数反事实
 
@@ -11,6 +11,7 @@ PARTIAL：15/18个预定stage完成。发现n16与新确认n32分别展示；大
 | qwen32_confirmation_mechanism / 32 | 2.6756 [2.2658,3.0956] | 2.6756 [2.2658,3.0956] | 3.4846 [2.5956,4.3480] | -0.0366 [-0.5250,0.4620] | 0.88283 | 0.86448 / 1.85657 | 0.92213 | 0.1839 [0.0974,0.2830] |
 | llama_confirmation_mechanism / 32 | 0.8005 [0.6328,0.9768] | 0.8005 [0.6328,0.9768] | 3.0550 [2.7607,3.3462] | 0.5283 [0.3294,0.7339] | 0.82396 | 0.28136 / 0.48711 | 0.93973 | 0.1054 [0.0702,0.1419] |
 | llama70_discovery_mechanism / 16 | 0.9931 [0.6121,1.3725] | 0.9931 [0.6121,1.3725] | 2.8291 [1.9676,3.5542] | -0.3517 [-0.7559,0.0359] | 0.54212 | 0.63233 / 0.70481 | 0.64207 | 0.2366 [0.1165,0.3683] |
+| llama70_confirmation_mechanism / 32 | 0.9568 [0.6789,1.2607] | 0.9568 [0.6789,1.2607] | 3.3586 [2.8818,3.8240] | -0.0416 [-0.4453,0.3547] | 0.61857 | 0.64439 / 0.75105 | 0.71874 | 0.1442 [0.0880,0.2065] |
 
 ## 原生操作：相同路径在不同读取环境
 
@@ -72,6 +73,16 @@ PARTIAL：15/18个预定stage完成。发现n16与新确认n32分别展示；大
 | qwen32_function | full_targeted_gain | 0.0977 [-3.2227,3.3203] |
 | qwen32_function | full_targeted_minus_all | 3.2227 [0.0000,6.3477] |
 | qwen32_function | full_query_isolation | 8.3984 [3.8086,13.0859] |
+| llama70_mechanism | A_formation_signed | 0.1563 [-0.0874,0.4023] |
+| llama70_mechanism | A_formation_absolute | 0.1563 [-0.0874,0.4023] |
+| llama70_mechanism | B_reading_signed | 0.3037 [-0.0839,0.6782] |
+| llama70_mechanism | B_reading_absolute | 0.3038 [-0.1150,0.6927] |
+| llama70_mechanism | label_interface_signed | -0.3677 [-0.6326,-0.0975] |
+| llama70_mechanism | label_interface_absolute | -0.3677 [-0.6326,-0.0975] |
+| llama70_mechanism | answer_K_signed | 0.1652 [-0.0214,0.3548] |
+| llama70_mechanism | answer_K_absolute | 0.1652 [-0.0214,0.3548] |
+| llama70_mechanism | answer_relation_signed | -0.1223 [-0.2435,-0.0074] |
+| llama70_mechanism | answer_relation_absolute | 0.0389 [-0.0387,0.1202] |
 
 ## 完整性与解释对象
 

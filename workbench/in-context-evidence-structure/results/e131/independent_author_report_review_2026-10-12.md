@@ -21,3 +21,11 @@ report script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`
 本审计功能表的accuracy与accuracy差以0–1比例计，乘100得到%或pp；margin/code-response为nats。shared表面词不能分类Source，所记other-word0不是provenance成功。确认图仍9/12点，无L70新32结果。
 
 summary `a4900acc76f6044c18696e0455fec30ad7885d000288e0c3fec0826ce74a93b3`；report `0cfcf1b01fed5df8e1347ea3d01084accd7fcf73454127a66de7a7ec29d9790e`；auxiliary seal `1fd3845ced0ef00eb9ecd05580869be09d3203c2e84a088200a982f4a132f339`。
+
+## 第16批新增展示核对
+
+仅核新增L70confirmation mechanism32和首次同材料L70−L8配对；analysis 1041项、max error 6.99440506e-15；配对全部统计项与独立raw seal一致。新表8cell/各CI与重建r/RMSE一致，10条原冻结配对读数逐行通过。旧15run、55行展示与三Qwen配对保留，不重算旧science、不给discoveryn16错误大小配对。当前16/18、416ctx/207616scores；驻留仍是last-observed累计快照。summary `6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865`；report `2294563c85760e4da1dd36b7ed16ded5da316dfe2c96d2c63988ca9f605b7692`。
+
+## 第16批确认图：10/12点
+
+新增L70confirmation mechanism使用已先封raw与同新32材料配对；10点/30均值及CI端点与当前summary、sealedraw和CSV逐项相等。旧9点原值不变，两个L70native/function仍空值pending，不是零。没有重算stage或bootstrapCI；SST机制/function分别采样，native为controlledrestaurant，配对限定同family/stage。manifest `d40c8d05afad9bb3f8cade81a725bbebed5c8df082a88e9e17bcb9a1c62bab90`，摘要 `6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865`。

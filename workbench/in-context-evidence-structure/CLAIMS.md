@@ -367,3 +367,8 @@ E131第13完整批Llama3.1-70B n16独立raw-first审计：A形成+.993[.612,1.37
 ### 2026-10-12：E131 70B三环发现已接成链
 
 第15批n16函数独立raw-first复算1893数值误差0：shared/full两Source平均86.72→98.44%，selective gain11.72[8.01,15.43]pp，targeted−all23.44[21.88,25]；A/B各5.86/17.58点、opposite23.44/same0。query-only10.55[5.66,15.04]；far all-cross candidate99.02/full51.17/joint3.91%，全部85条件与来源非对称保留。single A98.44/100%、B各方向95.31–100%，不是任务不可用条件下的机制归因。支持原C21–23形成/使用解释的当前大容量补充，未从n16发现提升等级或新增claim；剩原三批新32确认，C21–23 L3/C24 L2及formal状态不变。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw](results/e131/independent_raw_review_2026-10-12.md)与llama70_discovery_function/{run,analysis,full_output_summary}.json。
+
+
+### 2026-10-12：E131 70B形成新32确认
+
+第16批独立raw-first与同新32 L70/L8配对：A形成+.957[.679,1.261]nats，A两私人方向single均99.22%；固定word关联abs+.144[.088,.206]而signed−.169[−.300,−.053]，全12通道/背景保留。label KV rawr .619/.909，RMSE .644/.564 vszero .751/1.323；shared K在本背景劣于zero，未写为所有通道完整中介。既有形成解释得到当前70B新材料确认；尺度差异不另凑claim或改变C21–23 L3/C24 L2。证据[E131](experiments/E131-large-model-mechanism-chain.md)、[完整报告](results/e131/report.md)、[独立raw/配对](results/e131/independent_raw_review_2026-10-12.md)、llama70_confirmation_mechanism/{run,analysis}.json。仍有native/function两确认待完成，不能将16/18写为整链已确认。

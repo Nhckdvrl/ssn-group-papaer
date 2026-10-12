@@ -103,3 +103,12 @@ L70 n16真实SST shared/full两Actor平均86.7188[83.2031,90.2344]→98.4375[96.
 
 
 **2026-10-12T09:00:29.414644+00:00实际并行交接：** 新helper先核四空卡/pinned镜像与旧10 owned父子PID，10短暂停后建立连续empty behavior fence并立即恢复；首13入口因NFS负缓存尚未看到该文件而0-GPU初始化退出。旧PID/空fence/无staging核验后，明确resume同reservation，补cwd为repo与可见性等待，最新helper802f85c7…独立静态通过；没有修改五科学源、材料、种子或数值floor。13隔离ROOT运行同function n32/seed131103，完成再逐文件发布且run最后；10原机制/native继续，未来function guard退出留作交接。首attempt与失败stderr保留、0科学rows/0GPU设备时；不把调度初始化失败当负结果。原raw连续fence从未删除，所有驻留分开记录。当前仍15/18独立核，partial不作判断。
+
+
+### E131第16批：70B新32形成确认与主问题
+
+L70 n32 A形成+.9568[.6789,1.2607]、B读取signed+3.3586[2.8818,3.8240]nats，A单Source两个私人方向均99.2188[97.6563,100]% full。固定word答案关联abs+.1442[.0880,.2065]、signed−.1687[−.3003,−.0526]。固定系数1 label KV在shared/far B-cache背景的rawr .6186/.9086，RMSE .6444/.5641 vszero .7510/1.3232；全12通道保留，shared K RMSE .8382劣于zero。相同Source历史形成贡献在70B新材料确认；不同通道与读取背景的精度各自报告，不把局部重建写成完整中介。
+
+首次L70/L8逐字同32材料配对：A形成large−small+.1563，CI含0；label接口signed作用差−.3677[−.6326,−.0975]、关系signed差−.1223[−.2435,−.0074]。这是同操作跨容量验证，贡献幅度允许变化；无需由这些差异新开细粒度分支。C21–23 L3/C24 L2与formal状态保持。16/18、416run-stagectx/207616scores/38.183591科学stage设备时；native/function确认仍运行，未读partial效应。
+
+独立先raw+新大小配对封存（b55d3e98…/0d2b53ef…），再核1041作者analysis数值最大误差6.99e−15；10/12确认图30数独立绑定、两个pending为空，旧15批/原三Qwen配对保持。80层4GPU FP32/TF32False、实际edge调用25680/past-availability122880、numeric7.6294e−6/self0，五冻结科学源不变。证据[卡E131](../experiments/E131-large-model-mechanism-chain.md)、[完整报告](../results/e131/report.md)、[raw-first](../results/e131/independent_raw_review_2026-10-12.md)与llama70_confirmation_mechanism/{run,analysis}.json。

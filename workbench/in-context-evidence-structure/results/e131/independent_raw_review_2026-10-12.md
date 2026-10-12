@@ -1,7 +1,7 @@
 # E131 独立 raw 校对（滚动封存）
 
 这是 EXECUTION §5 的 raw-first 数值/实际运行校对，不改主张等级、研究状态或冻结科学读数。
-当前完整审计 15/18 stage，384 contexts、196608 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
+当前完整审计 16/18 stage，416 contexts、207616 评分；三个 stage 按完整批滚动纳入，后续待完整批再增加。
 
 三个科学源见 JSON；dispatch `5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；protocol `550890014e6553290695f7fb6f35823a4b25ef06acca551649934a69d30b643f`。
 每批全部 raw 推导先写入独立 seal，再打开该批 author analysis。CPU/pre-score/精度修复审计保持原文件。
@@ -946,3 +946,95 @@ report script `fd55a52ba4ee42717ba4d385276369227eeae9d87fcef28ef373ee0564263df5`
 本审计功能表的accuracy与accuracy差以0–1比例计，乘100得到%或pp；margin/code-response为nats。shared表面词不能分类Source，所记other-word0不是provenance成功。确认图仍9/12点，无L70新32结果。
 
 summary `a4900acc76f6044c18696e0455fec30ad7885d000288e0c3fec0826ce74a93b3`；report `0cfcf1b01fed5df8e1347ea3d01084accd7fcf73454127a66de7a7ec29d9790e`；auxiliary seal `1fd3845ced0ef00eb9ecd05580869be09d3203c2e84a088200a982f4a132f339`。
+
+## 第16批：Llama-3.1-70B confirmation mechanism 完整 raw-first 封存
+
+32contexts×43条件×8query=11008评分；80层、4GPU、FP32/eager/TF32=False。实际全层edge调用25680；cached/full 7.62939453e-06、self 0；layer0 sender K/V固定0。CPU context/科学预检字节、model pin、冻结五源均一致。
+新增 raw pre-author seal b55d3e98a6c465ff39a06b0a6a73f59c11bc5096d3ed11fa32687edcbf174668；配对seal 0d2b53ef83821b5760aeb5a217cfc259fffd6f4681267323f8e84d8dc47d5c7b。此前15stage JSON/MD另存；旧raw与三Qwen配对不重算。之后author analysis比较1041项，最大误差6.99440506e-15。
+
+| 冻结读数 | 均值 [95% context CI] |
+|---|---|
+| A_formation_B_shared/signed_rule_effect | 0.95679 [0.678857, 1.26065] |
+| A_formation_B_shared/absolute_rule_effect | 0.95679 [0.678857, 1.26065] |
+| A_formation_B_far/signed_rule_effect | 0.998436 [0.64745, 1.37196] |
+| A_formation_B_far/absolute_rule_effect | 0.75099 [0.44924, 1.07422] |
+| B_reading_A_shared/signed_rule_effect | 3.35864 [2.88179, 3.824] |
+| B_reading_A_shared/absolute_rule_effect | 3.15636 [2.70289, 3.59771] |
+| B_reading_A_far/signed_rule_effect | 3.40028 [2.87362, 3.92429] |
+| B_reading_A_far/absolute_rule_effect | 2.95056 [2.46764, 3.41045] |
+| stage_interaction/signed_rule_effect | -0.0416462 [-0.445303, 0.354745] |
+| stage_interaction/absolute_rule_effect | 0.205799 [-0.128187, 0.543286] |
+| label_effect_B_shared/signed_rule_effect | 0.195665 [-0.0926982, 0.509779] |
+| label_effect_B_shared/absolute_rule_effect | 0.195665 [-0.0926982, 0.509779] |
+| label_effect_B_far/signed_rule_effect | 0.87307 [0.531079, 1.23488] |
+| label_effect_B_far/absolute_rule_effect | 0.740783 [0.433099, 1.0665] |
+| edge_K_B_shared/signed_rule_effect | 0.732268 [0.506241, 0.995972] |
+| edge_K_B_shared/absolute_rule_effect | 0.732268 [0.506241, 0.995972] |
+| edge_K_B_far/signed_rule_effect | 0.253707 [-0.0236873, 0.529311] |
+| edge_K_B_far/absolute_rule_effect | 0.258578 [-0.00955343, 0.526564] |
+| relation/full_native/absolute_effect | 4.08442 [3.74978, 4.40302] |
+| relation/full_native/signed_effect | 4.29173 [3.94217, 4.62279] |
+| relation/label_native/absolute_effect | 1.13775 [0.880427, 1.40465] |
+| relation/label_native/signed_effect | -1.32009 [-1.60206, -1.0483] |
+| relation/answer_native/absolute_effect | 0.14422 [0.0879849, 0.206493] |
+| relation/answer_native/signed_effect | -0.168707 [-0.300255, -0.0525966] |
+| relation/cross_KV_minus_K/absolute_effect | 0.185961 [0.124882, 0.254509] |
+| relation/cross_KV_minus_K/signed_effect | -0.103139 [-0.194879, -0.00757961] |
+| relation/cross_KV_minus_V/absolute_effect | 0.043001 [-0.023925, 0.112059] |
+| relation/cross_KV_minus_V/signed_effect | -0.217855 [-0.277961, -0.163475] |
+| relation/relation_f0r1/absolute_effect | 3.12999 [2.71302, 3.52059] |
+| relation/relation_f0r1/signed_effect | 3.12999 [2.71302, 3.52059] |
+| relation/relation_f1r0/absolute_effect | 1.2213 [1.00796, 1.44552] |
+| relation/relation_f1r0/signed_effect | -1.15863 [-1.41241, -0.900419] |
+| relation/relation_label_cross_native/absolute_effect | 1.35003 [1.11231, 1.60227] |
+| relation/relation_label_cross_native/signed_effect | -1.28367 [-1.56679, -0.997828] |
+| relation/relation_answer_cross_kv_native/absolute_effect | 0.263074 [0.200499, 0.333091] |
+| relation/relation_answer_cross_kv_native/signed_effect | -0.134652 [-0.234314, -0.0294164] |
+| relation/relation_answer_cross_k_native/absolute_effect | 0.0771133 [0.0575109, 0.0988314] |
+| relation/relation_answer_cross_k_native/signed_effect | -0.0315132 [-0.0629769, -0.000210372] |
+| relation/relation_answer_cross_v_native/absolute_effect | 0.220073 [0.158965, 0.294062] |
+| relation/relation_answer_cross_v_native/signed_effect | 0.0832031 [-0.0109778, 0.185349] |
+
+| 重建目标/通道 | raw r / RMSE / zero | rule双差 r / RMSE / zero |
+|---|---|---|
+| label_interface_B0_k | 0.466018 / 0.838151 / 0.751048 | 0.648182 / 0.910586 / 1.05903 |
+| label_interface_B0_kv | 0.618571 / 0.644387 / 0.751048 | 0.718736 / 0.764572 / 1.05903 |
+| label_interface_B0_v | 0.425496 / 0.677622 / 0.751048 | 0.466932 / 0.94189 / 1.05903 |
+| all_A_formation_B0_k | 0.747292 / 0.633774 / 0.916751 | 0.862343 / 0.745037 / 1.45087 |
+| all_A_formation_B0_kv | 0.838335 / 0.501861 / 0.916751 | 0.900553 / 0.723002 / 1.45087 |
+| all_A_formation_B0_v | 0.463318 / 0.81767 / 0.916751 | 0.507194 / 1.29529 / 1.45087 |
+| label_interface_B1_k | 0.858812 / 0.679205 / 1.32324 | 0.782449 / 0.972547 / 1.53147 |
+| label_interface_B1_kv | 0.908573 / 0.564066 / 1.32324 | 0.837396 / 0.875973 / 1.53147 |
+| label_interface_B1_v | 0.740565 / 0.90337 / 1.32324 | 0.555111 / 1.29121 / 1.53147 |
+| all_A_formation_B1_k | 0.792019 / 0.826528 / 1.34293 | 0.718104 / 1.16187 / 1.65138 |
+| all_A_formation_B1_kv | 0.845966 / 0.730166 / 1.34293 | 0.781105 / 1.06441 / 1.65138 |
+| all_A_formation_B1_v | 0.656977 / 1.01388 / 1.34293 | 0.510559 / 1.42972 / 1.65138 |
+
+| single_A/private | candidate / full / label rate |
+|---|---|
+| False | 0.992188 [0.976562, 1] / 0.992188 [0.976562, 1] / 1 [1, 1] |
+| True | 0.992188 [0.976562, 1] / 0.992188 [0.976562, 1] / 1 [1, 1] |
+
+| 新材料L70−L8配对（n32） | 均值 [95% paired context CI] |
+|---|---|
+| A_formation_signed | 0.156256 [-0.0873952, 0.402337] |
+| A_formation_absolute | 0.156256 [-0.0873952, 0.402337] |
+| B_reading_signed | 0.30365 [-0.0839259, 0.678152] |
+| B_reading_absolute | 0.303765 [-0.114989, 0.692656] |
+| label_interface_signed | -0.367655 [-0.632643, -0.0974534] |
+| label_interface_absolute | -0.367655 [-0.632643, -0.0974534] |
+| answer_K_signed | 0.165164 [-0.0213887, 0.354792] |
+| answer_K_absolute | 0.165164 [-0.0213887, 0.354792] |
+| answer_relation_signed | -0.122294 [-0.243531, -0.00741275] |
+| answer_relation_absolute | 0.0388599 [-0.0386905, 0.120213] |
+
+全部43接口、12重建、所有通道、fixed-word关系、双private/全文输出、实际80层注意与单方向控制均保留于JSON。signed/absolute与零/负同报；不把相关预测当完整中介、不作因果容量律。没有独立GPU重跑、科学源修改或主张等级变化。
+当前16/18、416contexts、207616scores，科学stage device-hours=38.1835912；两个未完成确认不提前取结果。
+
+## 第16批新增展示核对
+
+仅核新增L70confirmation mechanism32和首次同材料L70−L8配对；analysis 1041项、max error 6.99440506e-15；配对全部统计项与独立raw seal一致。新表8cell/各CI与重建r/RMSE一致，10条原冻结配对读数逐行通过。旧15run、55行展示与三Qwen配对保留，不重算旧science、不给discoveryn16错误大小配对。当前16/18、416ctx/207616scores；驻留仍是last-observed累计快照。summary `6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865`；report `2294563c85760e4da1dd36b7ed16ded5da316dfe2c96d2c63988ca9f605b7692`。
+
+## 第16批确认图：10/12点
+
+新增L70confirmation mechanism使用已先封raw与同新32材料配对；10点/30均值及CI端点与当前summary、sealedraw和CSV逐项相等。旧9点原值不变，两个L70native/function仍空值pending，不是零。没有重算stage或bootstrapCI；SST机制/function分别采样，native为controlledrestaurant，配对限定同family/stage。manifest `d40c8d05afad9bb3f8cade81a725bbebed5c8df082a88e9e17bcb9a1c62bab90`，摘要 `6c346e99b76cdeea232d3ce2b737b7bf1054158ed33836540f226a147ca3d865`。
