@@ -1,5 +1,7 @@
 # How Shared Outputs Shape Source-Specific Evidence in In-Context Learning
 
+**2026-10-12 起论文正本改为 [paper/main.tex](paper/main.tex)（LaTeX，见 [paper/README.md](paper/README.md)）；本文件保留为历史稿。**
+
 Manuscript draft, 2026-10-12. The linked appendix and experiment records contain complete conditions, controls, and reconstruction targets. This is a research manuscript; formal candidate status remains unchanged.
 
 ## Abstract

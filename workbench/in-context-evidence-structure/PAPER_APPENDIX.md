@@ -1,5 +1,7 @@
 # Technical appendix: source-evidence formation and use
 
+**2026-10-12 起附录正本改为 [paper/appendix.tex](paper/appendix.tex)；本文件保留为完整实验记录索引。**
+
 2026-10-12. This preserves the complete interfaces and functional readouts supporting the main manuscript. Primary definitions and experiment-card links remain unchanged.
 
 ## A. Experimental details and reproducibility
