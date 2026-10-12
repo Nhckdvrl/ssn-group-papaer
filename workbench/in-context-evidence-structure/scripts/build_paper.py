@@ -92,7 +92,7 @@ def render(text, references, appendix=False):
         n = len(rows[0])
         assert all(len(row) == n for row in data), rows
         spec = r">{\raggedright\arraybackslash}X" + r">{\raggedleft\arraybackslash}X" * (n - 1)
-        cells = [" & ".join(escape(cell.strip()) for cell in row) + r" \\" for row in data]
+        cells = [" & ".join(latex(cell.strip()).strip() for cell in row) + r" \\" for row in data]
         caption = ("Complete supplementary readouts; " + escape(rows[0][0].strip()) + ".") if appendix else CAPTIONS[counts["tables"] - 1]
         return "\n\\begin{table*}[t]\n\\small\n\\begin{tabularx}{\\textwidth}{" + spec + "}\n\\toprule\n" + cells[0] + "\n\\midrule\n" + "\n".join(cells[1:]) + "\n\\bottomrule\n\\end{tabularx}\n\\caption{" + caption + "}\n\\end{table*}\n"
 
@@ -158,6 +158,15 @@ def main():
         with (dest / "build.log").open("w") as log:
             for command in commands:
                 subprocess.run(command, cwd=dest, stdout=log, stderr=subprocess.STDOUT, check=True)
+            # Long two-column appendices can need additional passes for line numbers.
+            for _ in range(3):
+                status = (dest / "main.log").read_text()
+                needs_pass = "Line number reference failed" in status or "Label(s) may have changed" in status
+                if not needs_pass:
+                    break
+                subprocess.run(commands[-1], cwd=dest, stdout=log, stderr=subprocess.STDOUT, check=True)
+        final_log = (dest / "main.log").read_text()
+        assert "Line number reference failed" not in final_log and "Label(s) may have changed" not in final_log
         manifest["status"] = "BUILT"
         manifest["pdf_sha256"] = digest(dest / "main.pdf")
         (dest / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")

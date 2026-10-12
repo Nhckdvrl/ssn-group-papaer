@@ -1,0 +1,724 @@
+{
+  "kind": "PRESENTATION_ONLY",
+  "scope": "Source preservation, deterministic TeX rebuild, citations, unchanged official ACL assets, representative PDF pages; no new scientific or venue judgment",
+  "input_hashes": {
+    "PAPER_DRAFT.md": "a049e1af407026126cf294fd19643d40b197e84d6d2ec2e26ac06c2e5f38cb9d",
+    "PAPER_APPENDIX.md": "ddc6ba4a68621bfc6d14af279d9a9d6bde28c422fad34869529baf5983ca516b",
+    "scripts/build_paper.py": "6fe763c8fee13332061ac8180138f622d657490ce9b55500d6a46e8bdf0a4671",
+    "paper/acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+    "paper/acl_natbib.bst": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+    "paper/references.bib": "126202f8bbf3884d37f93a723004ce0a8792270bd97e8c2ff85684f0f7970ed1",
+    "paper/bibliography_sources.json": "e7ebaf31d8a9d3451f5e2a1abb564f24600104e932be108465d3ebca00a44b79"
+  },
+  "built_artifacts": {
+    "manifest.json": "a947ee9ae51174caf87dd64d59fb7f59ea8c8f6145008edbf716296aca7edf18",
+    "main.tex": "d241aa950f05931ace0f3f33d01cd1a39c8c5d8d6df165b471465482690083ed",
+    "main.pdf": "5e1d5a3db4f81c85597eb5b83f4f6db7b39e08b3f686ebc3fb9058ad97267918",
+    "main.log": "bdc7d03b9394f4771e09eb37abbabaf035e281fe9b9ddca41f7625ba6d4a56e4",
+    "main.bbl": "655d73f982bd6a1377d310330f06d4f7f3028148dea7362e61a956e9205ce669",
+    "build.log": "91f20c6ede514e765036c64035358231f9cb8778d7a4dd068a653696d754c1ff"
+  },
+  "prose_hashes_match_manifest": true,
+  "prose_unchanged_by_source_rebuild": true,
+  "deterministic_tex_rebuild": true,
+  "table_cells": {
+    "PAPER_DRAFT.md": {
+      "tables": 5,
+      "cells": 110,
+      "missing_cells_in_tex": []
+    },
+    "PAPER_APPENDIX.md": {
+      "tables": 25,
+      "cells": 634,
+      "missing_cells_in_tex": []
+    }
+  },
+  "figures": [
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Tested formation and reading interfaces",
+      "asset": "results/figs/fig_source_evidence_overview.png",
+      "pdf_sha256": "2835f04f14899488af15f458bf8802ec220a4a50c454b13404d346dc757c16d7",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Native operation and restricted restoration",
+      "asset": "results/figs/fig_native_operation_necessity.png",
+      "pdf_sha256": "0641ac2f9d1837f4bc8a96568364e8e4f5f4ef36842f06f9372776c59a928650",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Functional source-policy effects and tradeoffs",
+      "asset": "results/figs/fig_source_function_tradeoffs.png",
+      "pdf_sha256": "c2195337d77a2453df2cb86ac72296ff119a7f908d05de070d5e221ddf4159ca",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Real-text policies and output-space use",
+      "asset": "results/figs/fig_natural_source_function_policies.png",
+      "pdf_sha256": "464a2fc0be71118b74b54fd70119ebb5fc399fa0182a974670e19326c8dcb83f",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Public schemas during formation and reading",
+      "asset": "results/figs/fig_public_source_schema_coordination.png",
+      "pdf_sha256": "b8b9df1329e6fe27758f0f30efbe0d9964369e109d0f63beaaecdc23aea90842",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "caption": "Shared-word rule use and separate-word use",
+      "asset": "results/figs/fig_rule_and_wordspace_cache_compatibility.png",
+      "pdf_sha256": "648869dcdf78fb13f7646a3597583c60fcf379eca81a679ede3c3e13bf33ba45",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Full criterion response matrices across three families",
+      "asset": "results/figs/fig_criterion_code_responses.png",
+      "pdf_sha256": "fe24f383e5d8eb1765c05f48532c0714bc8d55eb43f68b9a3e2f6ae8f84f1bc7",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Stronger-model functional responses and all frozen observers",
+      "asset": "results/figs/fig_stronger_model_functional_responses.png",
+      "pdf_sha256": "2c0dbd8da5daa07b676395cfa6ebb1dcb00931677c96a020549850e9b3621803",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Complete policy accuracy",
+      "asset": "results/figs/fig_source_function_formation.png",
+      "pdf_sha256": "660e0c7560a01400706c271939694f0768acf8a8e6723a9d118ee8199db1f177",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Real-text formation and private functions",
+      "asset": "results/figs/fig_natural_text_formation.png",
+      "pdf_sha256": "d4400740d7983001e5e5babc5985fba3457af7a918e1229cc8104f9cabc48ba0",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "B convention response on fixed A words",
+      "asset": "results/figs/fig_natural_source_provenance.png",
+      "pdf_sha256": "e92698e0709f7b6b729a4ee41362e2d6ecc6a63114508a19cc47f8ddef71eebe",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Shared identities at formation and reading",
+      "asset": "results/figs/fig_source_identity_coordination.png",
+      "pdf_sha256": "2d7f205f9d6d728b012e9e3874ef203cc17fe9077c6da5e0a3457ade73a74b3b",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "All cache pairs and private controls",
+      "asset": "results/figs/fig_shared_output_cache_composition.png",
+      "pdf_sha256": "e694805971f2253948ce3d0983ba90e16d6c84e99680ec1f14456fd236568968",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Criterion-conflict cache compatibility",
+      "asset": "results/figs/fig_criterion_cache_compatibility.png",
+      "pdf_sha256": "9b94cd0dbe94539d16c62fb0716ea2e2df3e2f2881776dbcc7e315da5dcc6277",
+      "included_once_per_occurrence": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "caption": "Functional cue information",
+      "asset": "results/figs/fig_source_cue_functional_information.png",
+      "pdf_sha256": "73e522ba5c3681de44e1d839403cc827b4e8d7c55dc47b3e9f6308969f4ac2fb",
+      "included_once_per_occurrence": true
+    }
+  ],
+  "headings": [
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Abstract",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Introduction",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Measuring which source's relations influence a prediction",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Sources, rules, and materials",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Positional access and functional provenance",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "How output identities shape historical evidence",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "A frozen formation-path prediction",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Testing the native operation",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "The messages transmit relationships, not only label identity",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "A constructive test: preserve relations while retaining context",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Competing formation and reading policies",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Independent functional confirmation",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Association influence and criterion-related function",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Natural-text formation with usable private rules",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Mechanistic replication with reliable private conventions",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "A prospective test of real-text source-function use",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Sharing identities while keeping supervision private",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Sharing an output schema before private rule learning",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Common formation backgrounds constrain joint rule use",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Related work and positioning",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Reproducibility",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_DRAFT.md",
+      "heading": "Discussion and scope",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Complete criterion--convention functional response",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Separating criterion from private output convention",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Association magnitude and criterion selectivity give different answers",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "A prospective functional-direction test in Qwen3-14B",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Exact serialization, interchanges, and audit scope",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "All formation/query policies and functional controls",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Native operation and real-text completeness",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Registered evidence map",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Real-text function policies and complete output readouts",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Shared identities and independent private supervision",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Public output schemas and private rule composition",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Equivalent-context cache composition",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Post-hoc selected-output compatibility",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Shared-output cache compatibility and source-conditioned mapping use",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Functional request differences and common shifts",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Local functions and incomplete joint use",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Compatibility when input criteria differ",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Actual function scores on the primary domain",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "Does a pre-input source block deploy a source-specific criterion?",
+      "preserved": true
+    },
+    {
+      "source": "PAPER_APPENDIX.md",
+      "heading": "E130: Source-cue transfer under different formation policies",
+      "preserved": true
+    }
+  ],
+  "decimal_literals": {
+    "PAPER_DRAFT.md": {
+      "unique_literals": 253,
+      "occurrences": 288,
+      "missing_literal_occurrences": {}
+    },
+    "PAPER_APPENDIX.md": {
+      "unique_literals": 636,
+      "occurrences": 1205,
+      "missing_literal_occurrences": {}
+    }
+  },
+  "bibliography": {
+    "records": 22,
+    "unique_source_urls": 22,
+    "unique_keys": 22,
+    "bib_entries": 22,
+    "used_keys": 22,
+    "aux_keys": 22,
+    "bbl_keys": 22,
+    "key_sets_equal": true,
+    "source_checks": [
+      {
+        "citekey": "cho2025revisitingincontextlearninginference",
+        "source_url": "https://arxiv.org/html/2410.04468v3",
+        "cached_raw_available": true,
+        "raw_sha256": "daa6f17e3c073ed76762e6b6afd92e6ce64a8a7853f9628f1459cb12b2d2f559",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "cho2026mechanismtaskorientedinformationremoval",
+        "source_url": "https://arxiv.org/abs/2509.21012",
+        "cached_raw_available": true,
+        "raw_sha256": "c100d2fd6c91547c7a057c28c1431aa527159aa1c5d1be5a5f756522846ea1aa",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "bakalova2025contextualizethenaggregatecircuitsincontextlearning",
+        "source_url": "https://arxiv.org/html/2504.00132v2",
+        "cached_raw_available": true,
+        "raw_sha256": "395bddc9dc00613fd9aec5e71c70744c6face90ff6031ffdbfc1a9c15d30909b",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "wang2026fewshotexamplesaddup",
+        "source_url": "https://arxiv.org/html/2605.16591v2",
+        "cached_raw_available": true,
+        "raw_sha256": "bff3c6417a76a3ed8565962da97ce3f6bbfca734b15aeb533dc45734f60ee866",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "zheng-etal-2026-label",
+        "source_url": "https://aclanthology.org/2026.findings-acl.314/",
+        "cached_raw_available": true,
+        "raw_sha256": "51b3252ab5f76d9b510be98ed39b57ad5e2da9f6bb140004b428276860f39ad1",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "li2025justintimedistributedtaskrepresentations",
+        "source_url": "https://arxiv.org/html/2509.04466v3",
+        "cached_raw_available": true,
+        "raw_sha256": "7f81601931cd2fe0d72b5212f96e81fb7fda7cd19e762f8f027338ee86138805",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "feng2024languagemodelsbindentities",
+        "source_url": "https://arxiv.org/html/2310.17191v2",
+        "cached_raw_available": true,
+        "raw_sha256": "27f2920c5f48ec0e288ae8b93c452c94877165e25d5d9579a14f0d5e7a1ce94c",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "dai-etal-2024-representational",
+        "source_url": "https://aclanthology.org/2024.emnlp-main.967/",
+        "cached_raw_available": true,
+        "raw_sha256": "36bec4aea821e66bca888d5c0311c5404243373a3740b087f463314b67de8130",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "gurarieh2026mixingmechanismslanguagemodels",
+        "source_url": "https://arxiv.org/html/2510.06182v2",
+        "cached_raw_available": true,
+        "raw_sha256": "d46e55e05621b9f66cf65e45be2469b7d9d614ef3853369055d7a37ef3c2d6a8",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "thavarasa2026testroutelanguagemodels",
+        "source_url": "https://arxiv.org/html/2608.04183v1",
+        "cached_raw_available": true,
+        "raw_sha256": "f1ab61a4ea86d9699b1e2b26f03d2e127644374c18572a08dbb4e8acdc2b17f8",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "ratner-etal-2023-parallel",
+        "source_url": "https://aclanthology.org/2023.acl-long.352/",
+        "cached_raw_available": true,
+        "raw_sha256": "7265cc6a50b7027ea5143bf084f297dd9e3cbf46cd17f80e976821bd8afd2606",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "yao2025cacheblendfastlargelanguage",
+        "source_url": "https://arxiv.org/abs/2405.16444",
+        "cached_raw_available": true,
+        "raw_sha256": "c2e3bb4b699670c41772b192e6ba6a2122192a9c32281434e9da630e5cf5f83e",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "yang2026localizingtaskrecognitiontask",
+        "source_url": "https://arxiv.org/html/2509.24164v2",
+        "cached_raw_available": true,
+        "raw_sha256": "2dec1da9210f1c9a226fcd97755ffca739bf32863e33f443d20e561a825d623e",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "li-etal-2024-language",
+        "source_url": "https://aclanthology.org/2024.acl-long.669/",
+        "cached_raw_available": true,
+        "raw_sha256": "494425c130b1695473a11e1ad17ab1767ffabe284f941c853c320f313c2e9b70",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "jiao2026understandingdynamicsdemonstrationconflict",
+        "source_url": "https://arxiv.org/html/2603.04464v1",
+        "cached_raw_available": true,
+        "raw_sha256": "5b6326c056582d5ccb2d5339bab1d9826696d19291d4e3bad6b047b2a91c889e",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "li2026contextmisleadsincontextlearning",
+        "source_url": "https://arxiv.org/html/2609.27603v1",
+        "cached_raw_available": true,
+        "raw_sha256": "4ee76e7e808d3dcc23c7269133046ec61044dd2c83d820ab01c1fe4029ab598d",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "yu-ananiadou-2024-large",
+        "source_url": "https://aclanthology.org/2024.emnlp-main.192/",
+        "cached_raw_available": true,
+        "raw_sha256": "d658dfd125c2571c25a76ff68d69ca5ce18a4c7bcd4ef4e5b2821df52ceb437b",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "crosbie-shutova-2025-induction",
+        "source_url": "https://aclanthology.org/2025.findings-naacl.283/",
+        "cached_raw_available": true,
+        "raw_sha256": "b149dfb1f2a815ef24365510946f860db09be2177840fa27b570d8e095524d28",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "lepori-etal-2025-racing",
+        "source_url": "https://aclanthology.org/2025.naacl-long.155/",
+        "cached_raw_available": true,
+        "raw_sha256": "d82d3789610038a43cda11b40c037ca63be913c2bb6f335213a6c35780a0b101",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "lepori-etal-2026-language",
+        "source_url": "https://aclanthology.org/2026.acl-long.676/",
+        "cached_raw_available": true,
+        "raw_sha256": "983dbc07b1ddc01eace85d71b5db12ad81eff6afae714e3b35336443ac8319d9",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "li-etal-2026-costom",
+        "source_url": "https://aclanthology.org/2026.acl-long.421/",
+        "cached_raw_available": true,
+        "raw_sha256": "ba56bddb286c33de08e117ca79e326ea2a7f3a33f188709db0201eb4a7c2f286",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      },
+      {
+        "citekey": "sun-etal-2025-interpret",
+        "source_url": "https://aclanthology.org/2025.acl-long.196/",
+        "cached_raw_available": true,
+        "raw_sha256": "a843f19d9d82999ab65c850b01ad0ad49d82b67844bbf09d32dc0d90268ccaef",
+        "raw_sha_matches_record": true,
+        "bibliography_entry_equals_cached_raw": true
+      }
+    ]
+  },
+  "official_style": {
+    "revision": "d5adc823ff0f80f98c80405ca0ab66c68e684409",
+    "checks": {
+      "acl.sty": {
+        "official_sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+        "local_equals_pinned_official": true,
+        "build_copy_equals_local": true
+      },
+      "acl_natbib.bst": {
+        "official_sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+        "local_equals_pinned_official": true,
+        "build_copy_equals_local": true
+      }
+    }
+  },
+  "compile": {
+    "pages": 30,
+    "parent_main_and_references_pages": 13,
+    "undefined_count": 0,
+    "overfull_count": 0,
+    "underfull_count": 78,
+    "rerun_warnings": []
+  },
+  "scientific_preservation": {
+    "three_insights_paragraph_preserved": true,
+    "scientific_evidence_recomputed": false,
+    "core_claims_regraded": false
+  },
+  "status": "CURRENT_PRESENTATION_VERIFIED",
+  "audit_date": "2026-10-12",
+  "auditor": "Independent session under EXECUTION §5; no GPU execution or scientific-source edits",
+  "reading_scope": [
+    "Complete build_paper.py and asset manifests",
+    "All scientific source heading, figure and table structure; converted main.tex",
+    "Abstract and three findings plus math/interface preservation",
+    "All 22 raw bibliography records, source checksum metadata, citation/aux/bbl sets",
+    "Original PDF pages 1,4,10,12,22,26,30; converged independent PDF pages 22,26"
+  ],
+  "visual_review": {
+    "original_pages": [
+      1,
+      4,
+      10,
+      12,
+      22,
+      26,
+      30
+    ],
+    "converged_independent_pages": [
+      22,
+      26
+    ],
+    "scientific_content_missing": false,
+    "table_or_plot_clipping_observed": false,
+    "figures_readable": true,
+    "line_number_overlap_pages": [
+      10,
+      12,
+      22,
+      26
+    ],
+    "supplementary_index_table_literal_markdown_links": true,
+    "large_float_whitespace_present": true,
+    "large_float_whitespace_is_acceptance_or_page_limit_judgment": false,
+    "final_corrected_pages": [
+      12,
+      21,
+      22,
+      26
+    ],
+    "final_line_number_overlap_observed": false
+  },
+  "independent_rebuild": {
+    "python": "3.12.3",
+    "pandoc": "3.9",
+    "pdflatex": "pdfTeX 1.40.29 / TeX Live 2026",
+    "directory": "/tmp/ices-independent-paper-full",
+    "builder_exit_code": 0,
+    "source_only_main_tex_sha256": "dbac6fdd7e6fc356be260cdbd632ccf2e119a47349aa35b1b5f793ff8f1ab548",
+    "tex_exactly_equal_author_build": false,
+    "extra_pdflatex_passes_after_builder": 1,
+    "converged_pdf_sha256": "2c0a5fed3523f509588413e20589f9e3e457a4e825d8ba4caaf200f9f1e43035",
+    "converged_main_log_sha256": "3a1e6c0b2abd414d11835ad21cfa8bbdfbe3204af03e66ea5768f5cc8ba7fd35",
+    "converged_warning_count": 0,
+    "converged_pages": 30,
+    "pdf_bytes_reproducibility_claimed": false,
+    "source_hashes_unchanged_after_build": false
+  },
+  "pdf_caption_counts": {
+    "tables": 30,
+    "figures": 15
+  },
+  "required_rendering_correction": {
+    "problem": "Fixed three pdflatex passes leave lineno/label convergence warnings and some review line numbers overlap body text",
+    "minimal_action": "Run one further pdflatex pass, or compile until cross-reference/line-number rerun warnings clear; regenerate PDF hash/manifest afterward",
+    "independently_verified_effect": "One additional pass clears warnings and line-number overlap, preserving scientific TeX and 30 pages",
+    "affects_scientific_numbers_or_claims": false,
+    "status": "RESOLVED_BY_BOUNDED_CONVERGENCE_LOOP_AND_FINAL_ASSERT"
+  },
+  "optional_rendering_correction": {
+    "problem": "The supplementary evidence-map table escapes Markdown links as literal [label](path), creating long technical rows",
+    "minimal_action": "Render inline links in table cells or display their labels with linked targets; no source or number change required",
+    "status": "RESOLVED_BY_INLINE_MARKDOWN_CELL_CONVERSION"
+  },
+  "limits": [
+    "Does not recompute prior scientific experiments or assess new claim sufficiency",
+    "No GPU rerun, claim grade/status change or commit/push",
+    "No ACL acceptance or page-limit judgment",
+    "Visual review covers seven representative original pages and two converged pages, not every page at full resolution",
+    "Current PDF is a formatting artifact, not evidence that E131 pending stages or the whole research program are complete",
+    "Adjacent number/text spacing in some supplementary prose exists in the Markdown source; the builder preserves it"
+  ],
+  "presentation_versions": [
+    {
+      "status": "CONTENT_PRESERVATION_VERIFIED_RENDERING_CORRECTION_IDENTIFIED",
+      "input_hashes": {
+        "PAPER_DRAFT.md": "a049e1af407026126cf294fd19643d40b197e84d6d2ec2e26ac06c2e5f38cb9d",
+        "PAPER_APPENDIX.md": "ddc6ba4a68621bfc6d14af279d9a9d6bde28c422fad34869529baf5983ca516b",
+        "scripts/build_paper.py": "4e40aa899cdc04c99fd2fef6e45ec11447ca49f90d29a4ba853b7993adcdee34",
+        "paper/acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+        "paper/acl_natbib.bst": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e",
+        "paper/references.bib": "126202f8bbf3884d37f93a723004ce0a8792270bd97e8c2ff85684f0f7970ed1",
+        "paper/bibliography_sources.json": "e7ebaf31d8a9d3451f5e2a1abb564f24600104e932be108465d3ebca00a44b79"
+      },
+      "built_artifacts": {
+        "manifest.json": "24991f8af9f9cbff75b827e16d1682b179ddf50f58bc87b3a7cff871fa60ecc5",
+        "main.tex": "dbac6fdd7e6fc356be260cdbd632ccf2e119a47349aa35b1b5f793ff8f1ab548",
+        "main.pdf": "ecac1b192a7b9c4fdbc63e87cd435a286af2a750e7e8848d716aab3c5f05187d",
+        "main.log": "81c4f6834dc591be2c9a353b2405d193c3a472f71979be0def2934a1954d2f44",
+        "main.bbl": "655d73f982bd6a1377d310330f06d4f7f3028148dea7362e61a956e9205ce669",
+        "build.log": "040989ff0ecdbd3360c62806132b3454b9364265703005244f055fb33fc4df33"
+      },
+      "compile": {
+        "pages": 30,
+        "parent_main_and_references_pages": 13,
+        "undefined_count": 0,
+        "overfull_count": 0,
+        "underfull_count": 76,
+        "rerun_warnings": [
+          "Package lineno Warning: Line number reference failed, re-run to get it right.",
+          "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+        ]
+      }
+    }
+  ],
+  "final_revision_check": {
+    "new_script_sha256": "6fe763c8fee13332061ac8180138f622d657490ce9b55500d6a46e8bdf0a4671",
+    "new_pdf_sha256": "5e1d5a3db4f81c85597eb5b83f4f6db7b39e08b3f686ebc3fb9058ad97267918",
+    "scientific_source_hashes_unchanged": true,
+    "new_independent_source_only_directory": "/tmp/ices-independent-paper-source-v2",
+    "new_tex_byte_identical_independent_rebuild": true,
+    "all_non_table_tex_unchanged": true,
+    "all_30_table_decimal_literal_multisets_unchanged": true,
+    "all_table_link_targets_and_labels_retained": true,
+    "pages": 30,
+    "pdf_caption_counts": {
+      "tables": 30,
+      "figures": 15
+    },
+    "final_visual_pages": [
+      12,
+      21,
+      22,
+      26
+    ],
+    "line_number_overlap_observed": false,
+    "index_literal_markdown_links_observed": false,
+    "no_new_scientific_checks_required": true
+  }
+}
