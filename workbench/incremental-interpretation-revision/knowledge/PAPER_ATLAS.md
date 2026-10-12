@@ -259,4 +259,6 @@
 - P1 [abstract-only 2026 neighbors](abstract-only-2026-neighbors.md) · Emura & Sugawara ACL26、Oh & Demberg rebinding、Steele shared slot、Futrell 2019、Kim & Schuster 2023、CASTLE · ABSTRACT_ONLY
 - 中心卡补记：[amouyal2025](amouyal2025-garden-path-humans-llms.md)、[amouyal2026](amouyal-2026-processing-difficulties.md)、[li2024](li-2024-incremental-comprehension.md) 各追加 2026-10-12 独立精读节（材料、金标、数字、未问的替代依赖题）。
 
+- P1 [new 2026 neighbors second pass](new-2026-neighbors-second-pass.md) · Baitalik & Datta ACL26 SRW（因果/掩码 GP 恢复动态）、Barenholtz 2026（轨迹外推误差）、Yoshida 2026 ACL（surprisal 存在性证明） · ABSTRACT_ONLY
+
 **结构入口（新）**：[06 研究纲领](06_RESEARCH_PROGRAM_2026-10-12.md) → [07 实验地基](07_EXPERIMENT_FOUNDATION.md) → [08 idea 谱系](08_IDEA_LINEAGE_ATLAS.md)。

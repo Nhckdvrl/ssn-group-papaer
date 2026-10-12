@@ -61,3 +61,4 @@
 - Emura & Sugawara ACL 2026、Oh & Demberg 2026、Steele 2026、Futrell 2019、Kim & Schuster 2023：仅摘要，见 abstract-only 卡；前两篇应升级为主文。
 - Ceháková 2025：D0 只收了部分项且 Step-5 把若干双宾语/互指题标 NEITHER（见 results/REPLACEMENT_DEPENDENCY_COHORT_2026-10-12.json）；需对齐原材料与人类逐项数据。
 - NeurIPS 2026 / ICLR 2026 新一期：未系统扫描"incremental interpretation / reanalysis / belief update"主题，下一轮先做。
+- 第二轮（同日）：三篇 PDF 已下载但本机无文本提取库，Hanna/Emura/Oh & Demberg 主文仍未补；Huang & Ferreira 作者稿 403；新增 Baitalik & Datta SRW 2026、Barenholtz 2026、Yoshida 2026 摘要卡。NeurIPS/ICLR 2026 关键词检索未发现直接匹配的主会论文（2026-10-12）。

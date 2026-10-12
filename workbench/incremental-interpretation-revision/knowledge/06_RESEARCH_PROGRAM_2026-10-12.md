@@ -66,3 +66,9 @@ H-A 与 H-B/H-C 不互斥：H-C 可以是 H-A 的原因。目标不是证明一�
 - 动词位置移植与 QOCO 重复都无效、而双向模型也同样失败 → 不是架构/计算问题，回到词汇语义。
 - 替代依赖在自由复述里被稳定表达但问答里不 → H-B，改做读出研究。
 - 2026 年出现跨族替代依赖分层的论文 → 重新定位到机制/外推部分。
+
+## 8. 2026-10-12 用户授权后的决定（agent 负责）
+- 主线以 I09（[idea 卡](../ideas/I09-replacement-dependency-reconstruction.md)）登记为 SEED；I07/I08 建议 PARKED；I06 由 I09 吸收。正式状态仍由人在登记表改。
+- 首个实验 [E109](../experiments/E109-replacement-dependency-three-readouts.md)（X1）已写卡，PLANNED；X2 待 E109 结果后写卡。运行需 GPU 授权。
+- 第三族：保留 Ministral3-14B 但只用 PLAIN 规则并单列；不新下载模型。若未来有资源，优先补一个非 Qwen/Gemma 的 ≥20B 指令模型。
+- 文献债务见 05；不因债务推迟 E109 的 POST-HOC 三格复算（可立即用 E87/E89 输出完成）。

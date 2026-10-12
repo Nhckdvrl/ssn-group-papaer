@@ -31,6 +31,8 @@
 | B7 | [Lee & Shin 2026](lee2026-good-enough-paraphrase.md) | QA 偏置还是真的 partial | 复述任务迁移 | GPT-3.5/4、24 句 | 单族、无干预 |
 | B8 | [Asami 2024](asami2024-good-enough-lm.md)/[Emura 2026](abstract-only-2026-neighbors.md) | good-enough 来自什么资源约束 | 架构超参 / 双任务负荷 | BERT 族 / GPT-4o 等 | GP 修订 |
 | B9 | [Ok & Lee 2026](ok2026-lost-in-prompt-order.md) | 为什么顺序效应 | 三假说淘汰到因果掩码 | 21 模型、4 数据集 | 句内依赖 |
+| B11 | [Baitalik & Datta 2026](new-2026-neighbors-second-pass.md) | 架构是否改变恢复 | 因果 vs 掩码的消歧后动态 | 100 对 | 最终解释 |
+| B12 | [Yoshida 2026](new-2026-neighbors-second-pass.md) | surprisal 理论是否可救 | 在 GP 上微调使 surprisal 逼近人类 | — | 重建 |
 | B10 | 本 workbench E82–E90 + 审查 | 拒绝与重建是否分离 | 替代依赖题分层 + 对照 + 显式框架族差 | 3 族、33 题 | 机制；扩材料 |
 
 **谱系规律**：B3→B4 是"材料迁移+模型扩广"；B5 是"从行为到因果"；B9 是"从现象到架构解释"。真正改变认识的是 B5 与 B9 这种把**一个混合解释拆开并让其分叉**的工作，而不是 B4/B6 的广度。我们的 B10 应向 B5/B9 看齐。
