@@ -1,6 +1,6 @@
-# 关键论文连续精读：从“能命名”到“解释计算作用”
+# 核心论文精读 · 解释、因果结构与语义可达性
 
-**2026-10-12。** 7 篇有内容的研究卡合并在一处，避免每篇生成重复文件。**“起源重建”一律 RECONSTRUCTED**：是我们从原文论证反推研究设计的合理路径，不是作者关于历史灵感来源的证言。下列带数值的判断均来自原文对应章节/图表，未独立复现。
+**2026-10-12。** 核心研究卡集中维护，避免每篇生成重复文件。**“起源重建”一律 RECONSTRUCTED**：是我们从原文论证反推研究设计的合理路径，不是作者关于历史灵感来源的证言。带数值的判断来自论文实验图表，未独立复现；不同版本的数字须回查其链接。
 
 ## 1. Feldhus & Kopf — Concept Descriptions Survey（BlackboxNLP 2025）
 **原文：** [PDF](https://aclanthology.org/2025.blackboxnlp-1.8.pdf)；**阅读：主文 §1–6 + 关键评估段落。** 类别：综述，非新实证论文。
@@ -95,3 +95,59 @@
 - Song2026：把解释的**跨运行稳定性**当评价对象，先确认“工具制造的特征”是否重复。
 
 **跨论文新的问题意识**：描述器、测量器、干预器和概念本体可能各自引入误差。要提出更深解释，必须设计能区分这些来源的实验；不能把解释失败留给最夸张的“外星语义”假说。
+
+
+---
+
+## 本轮重读新增：与 Xeno 真正邻接的严肃工作
+
+### 8. Geiger et al. — Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability（JMLR 2025）
+[全文，64 页](https://www.jmlr.org/papers/volume26/23-0058/23-0058.pdf) · **FULL 理论与适用前提**。
+**parent/压力**：activation patching、DAS、circuit、steering 产生很多“因果”结果，但缺少统一标准解释低层神经计算与高层变量之间何时有一致的**干预保持映射**。作者用高级模型、低级模型、干预算子与抽象关系的严格条件处理这件事，区分精确与近似因果抽象。
+**RECONSTRUCTED idea 来源**：操作方法互相不兼容 → 共同对象不是“某个 SAE 特征”，而是两个因果系统及其干预交换图 → 能设计超越单个 probe 的验证。**对 Xeno 的边界**：它说明怎样验证已指定的高层解释，却没有给出生成不属于人类现有概念本体的新语义的准则。也是 Xeno 必须吸收的因果 validity 基准。
+
+### 9. Mueller et al. — MIB: A Mechanistic Interpretability Benchmark（ICML 2025）
+[全文与附录](https://pdfs.assets.alphaxiv.org/2504.13151v2.pdf)、[代码](https://github.com/aaronmueller/MIB) · **MAIN+METHODS，主要结果、设置和核心控制**。
+**parent/压力**：各派方法在不相同任务、指标上称为“更好的可解释性”，难比较。MIB 分为 **causal variable localization** 与 **circuit localization**，用 IOI / arithmetic carry / multiple-choice 等确定的因果目标，统一比较 DAS、probe、SAE、PCA、patching 等路线。强 **DAS supervised** 可很有竞争力；在所测设定中把 SAE/PCA 等中间变量代替原生组件未必优于基准。
+**RECONSTRUCTED**：研究的是工具所能复原的真实变量，而不是工具生成对象的漂亮程度。**局限**：测试问题和高层变量先由人规定，不能从它得出“未命名模型原生表征不存在”。
+
+### 10. Karvonen et al. — SAEBench（ICML 2025）
+[全文](https://pdfs.assets.alphaxiv.org/2503.09532v4.pdf)、[代码](https://github.com/adamkarvonen/SAEBench) · **MAIN+METHODS**。
+**parent/压力**：SAE 论文通常报告重构精度、激活稀疏和解释样例，但这些 proxy 不保证下游控制或因果效用。作者在 **200+ SAEs、8 种评价** 下对照概念检测、SCR/TPP 等实用任务，同时检查多种架构及稀疏性/重构的关系。
+**RECONSTRUCTED**：若字典真有科学价值，应当在独立评价任务上有信息增量，而不只是拟合激活。结果显示多种 proxy 与实际 utility 的相关性较弱，特定架构（如 Matryoshka）在某些指标上更强。**Xeno 距离**：测的是给定任务概念及可解释工具的效用，并不构成语义可达性边界的证明；可以直接拿来做强 baseline。
+
+### 11. Sutter et al. — The Non-Linear Representation Dilemma（NeurIPS 2025）
+[42 页完整论文](https://pdfs.assets.alphaxiv.org/2507.08802v2.pdf) · **FULL 理论/主要实验与附录关键论证**。
+**关键争议**：若允许不受限制、极灵活的非线性映射，一个训练或随机网络的隐藏状态都能被映射到貌似实现了某特定“算法”的高级变量。定理使用 countable inputs、内部层的 injectivity、输出结构匹配等假设；实验表明随机/不解决任务的网络也可能有很高的 IIA，对“找到了抽象”形成强反证。
+**RECONSTRUCTED**：不是再提升 IIA，而是问“如果错的系统也能拿到满分，这个指标到底证明了什么？”→ 构造 randomized/untrained negative → 研究对齐复杂度使得因果抽象失去可反驳性。**Xeno 启发**：越开放地挖模型未知内部结构，越需要随机模型、错任务模型、复杂度匹配、自然分布交叉验证；否则 Xeno 可能只是任意拟合。
+
+### 12. Paulo & Belrose — Sparse Autoencoders Trained on the Same Data Learn Different Features（ICLR 2026）
+[10 页原论文](https://pdfs.assets.alphaxiv.org/2501.16615v2.pdf) · **FULL**。
+**parent/问题**：“一个 SAE 字典就是模型唯一的特征分解”需要跨初始化稳定性才能令人信服。作者考虑字典 latent 的置换不变性，用 Hungarian bipartite matching 最大化 encoder/decoder cosine，再比较 shared vs orphan。**实测**：Llama 3 8B 的 131K-latent SAE，不同种子训练后匹配共享特征约 **30%**；跨三个模型、多层/数据/架构复验。部分不共享的特征仍有看似自然的解释，说明**能讲故事≠模型有唯一内部 feature 原子**。
+**RECONSTRUCTED**：拒绝拿无意义的 feature index 当对象 → 先对齐等价类，再问 seed 是否稳定 → 检验「解释漂亮」和「自然分解」是否同一回事。**Xeno 边界**：方法不稳定不是 xeno 证据；更粗的等价功能/关系可能跨随机种子稳定。
+
+### 13. Goyal et al. — Causal Differentiating Concepts（NeurIPS 2025 **Spotlight**）
+[29 页正式主会论文](https://proceedings.neurips.cc/paper_files/paper/2025/file/5faf0f518f39e4d6b2b595e3ca2fe0c4-Paper-Conference.pdf) · **FULL 主要实验/理论及附录关键定义**。
+**必须纠正 Xeno 新颖性的归属**：这篇**无需已有概念标签**就从激活和行为类别学潜在 causal concepts。它假设改变行为类别只需稀疏地改变底层潜变量，以 constrained contrastive objective 在给定假设下辨识解耦因子；行为类别由人工归并或 model-output clustering。合成中 DCI-D **>0.89**、MCC **>0.86**；semi-synthetic 与 Llama/Qwen refusal 场景验证。SAE 32K 虽然整体信息量约 **0.95±0.07**，概念解耦程度仅 **0.58±0.07**；取信息最强的 top2 反而更差。
+**RECONSTRUCTED**：SAE 稀疏表达多却不一定对应造成行为改变的独立因素 → 把“最少改哪几个中介概念使行为改变”转成学习约束 → 用合成真值和真实 refusal 检验。**Xeno 相对增量不能是“无标签因果特征发现”**；它更想要不以人类可命名标签为最终验收标准的 *semantic accessibility*，以及跨场景关系定律。也必须承认这篇发现的概念是可被人类理解的。
+
+### 14. Sheng & Fu — Circuit Claims Depend on What Is Extracted and How It Is Compared（2026 预印本）
+[26 页全文](https://pdfs.assets.alphaxiv.org/2607.18921v1.pdf) · **FULL 主要方法/对照/图表/附录**。
+**parent/压力**：“机制在 checkpoint 中是否一致”的结论可能依赖比较的是原始边、粗粒度路由对象，还是哪个训练损失预算下提取的图。通过密集 vs **75%** 权重稀疏 RL checkpoints、组合任务成功/near-miss、固定提取法，比较特征：routing-set Jaccard@10 **0.666/0.554**，而 exact-edge **0.163/0.142**；near-miss 的 exact-edge 与 random 没显著不同（**p=0.106**），但 coarse routing 远高于 random。对不同抽取对象与阈值进行控制。
+**RECONSTRUCTED**：先观察边级结果不复现 → 区分“实验分析尺度错”还是“自然计算换了” → 同条件在多个可比尺度重复。**不要把这些结果说成发现了 Xeno**；它说明合理模型原生研究单位可能是**因果等价类/关系结构**而非具体边。
+**名称警告**：NeurIPS2026 Downloads 的《Conclusions from Circuit Extraction Depend on the Level of Description: A Controlled Comparison》标题近似，但**没有取得作者或正式版本证据，不得断定就是本文**。
+
+### 15. Williams et al. — Mechanistic Interpretability Needs Philosophy（2025 预印本／Position）
+[全文](https://arxiv.org/pdf/2506.18852) · **FULL 主要哲学论证**。
+**中心**：MI 不应默认存在唯一“真正的”拆解；科学解释与高层因果/表征内容、解释单位的选择需要哲学澄清。分析多个研究问题，尤其需要区分 representation **vehicle** 和 **content**，以及什么样的操作对应合理的科学对象。
+**RECONSTRUCTED**：模型分析不断声称“这个 unit 就是某概念” → 发现归因、抽象单位和因果语义的理论假设并未证明 → 先建立合理的解释标准。
+**Xeno 边界**：对人类语义的局限、解释的多元性早有讨论；然而哲学批评并未完成“标记一个无法完整翻译的 ξ 并在独立干预中建立模型原生关系规律”的经验工作。
+
+### 16. Gurnee et al. — Verbalizable Representations Form a Global Workspace（Anthropic Transformer Circuits 2026）
+[作者完整技术报告](https://www.transformer-circuits.pub/2026/workspace/index.html)、[arXiv](https://arxiv.org/abs/2607.15495) · **MAIN+METHODS（实验与技术正文，部分在线附录未逐图复核）**。
+**Xeno 直接 parent**：过去靠模型实际生成的词推断“它心里有什么”；作者提出 Jacobian Lens（平均未来词元概率对中间激活的线性响应）定义 poised-to-verbalize 的 **J-space**，用 concept swap、任务内 silent reasoning、跨任务调用、workspace 容量/广播等实验验证。作者报告少量 verbalizable 内容能被下游灵活复用，某些自动解析或常规推断发生在 workspace 外部；不是每个模型内部变量都有相同语言报告通道。
+**RECONSTRUCTED**：把“内部有信息却没说”变成**可测的输出准备度**，不止看是否在当前回答发声。**重要区分**：J-space 外≠“没有人类可理解的语义”；那里可能是普通句法/数值/格式特征。它是评估 *verbal reportability* 的强基线，但不是语义可达性的完备 oracle。Xeno 可探索二者系统性差异。
+
+### 17. Li et al. — Inside the Visual Mind / ViSAE（ICML 2026）
+[正式 PMLR 论文页](https://proceedings.mlr.press/v306/li26s.html)、[代码](https://github.com/deep-real/ViSAE) · **ABSTRACT / 项目文档，原 PDF 访问不稳定，非全文精读**。
+**强近邻**：16K 视觉概念词汇、64K 图片，top-down concept reading + bottom-up circuit tracing；论文摘要报告 WaterBirds worst-group accuracy 改善 **48.2%**。这说明扩大人类概念词汇和视觉因果验证已是强工作，但**扩大人类概念覆盖≠证明模型全部语义可被翻译**。具体 dataset splits、图结构干预细节仍需原 PDF 复核。

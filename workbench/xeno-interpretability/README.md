@@ -1,26 +1,17 @@
-# Xeno-Interpretability — 解释的边界与模型原生表征
+# Xeno-Interpretability · 模型原生表征及语义解释的边界
 
-**状态：PROPOSED**（用户 2026-10-12 明确批准创建独立 workbench；不改变其他 ACTIVE 状态）
-**源论文：** [Pierucci et al., Xeno-Interpretability](https://arxiv.org/abs/2609.20408)，2026 arXiv 概念性论文。
-**科学兴趣：** 当一个表征可识别、可预测、可干预，却难以归入现有人类概念时，究竟是概念体系不充分、解释器不充分，还是实验对象根本不对？
-**论文主旨 / 目标会议：** 均未确定；**零个已验证实验结果**，`CLAIMS.md` 主张全部 L0。
+**PROPOSED · 2026-10-12**（用户批准独立 workbench；不占用其它 ACTIVE 研究线）。源论文：[Pierucci et al. 2026](https://arxiv.org/abs/2609.20408)，概念研究纲领，**尚未提供 Xeno 存在的实验证据**。
+**问题**：有没有一些在自然计算中稳定、可因果检验、可建立关系定律的模型内部区分，其意义却不能被现有的人类概念体系充分翻译？即使找到此类候选，如何排除「我们的解释方法太弱」？
 
-## 入口（所有本项目专属文献资产都在 knowledge/）
-- [知识库索引与规范](knowledge/README.md)（从这里开始读）
-- [精读笔记：谱系、方法、数值、反证、idea 来源](knowledge/papers/CORE_READS.md)（当前核心资产）
-- [领域地图与可检验的解释压力](knowledge/LITERATURE_MAP.md)
-- [精读进度与待读近邻](knowledge/READING_QUEUE.md)
-- [Xeno 源论文卡](knowledge/papers/PIERUCCI_2026_XENO.md)
+## 入口
+- [knowledge/README.md](knowledge/README.md) — 精简知识库说明与最新认识；
+- [knowledge/papers/PIERUCCI_2026_XENO.md](knowledge/papers/PIERUCCI_2026_XENO.md) — **重读原论文 v2 全文的独立研究判断**；
+- [knowledge/papers/CORE_READS.md](knowledge/papers/CORE_READS.md) — **15+ 篇主要综述、实验与理论的深读/证据边界**；
+- [knowledge/LITERATURE_MAP.md](knowledge/LITERATURE_MAP.md) — 主张的独特性、强近邻分界、竞争解释和探索方向；
+- [knowledge/READING_QUEUE.md](knowledge/READING_QUEUE.md) — 已完成范围、获取障碍和未来新论文入口。
 
-## 研究纪律
-1. **先综述、后顶会、再前沿预印本。** 最新 NeurIPS 2026 优先扫描，但会议身份、全文与版本须逐条核验。
-2. **不追零近邻。** 寻找重要、自然且仍有解释空白的问题；精读须重建 parent → 研究压力 → 思路来源（标记 RECONSTRUCTED / DOCUMENTED）→ 区分性实验 → 相对最近邻的实质增量。
-3. **不先指定最终 idea。** 强 baseline / 可复现测量 / 竞争假设 / 高信息量实验驱动方向；可以推翻早期猜想，不为保故事拼方法。
-4. **证据分层。** 好看的自然语言标签 ≠ 可靠预测；激活相关 ≠ 因果功能；成功 steering ≠ 自然模型实际使用该机制；描述失败 ≠ 原则上存在不可描述“外星语义”。
-5. **只维护紧凑的本地知识库。** 论文信息更新原卡，集中保存谱系、数字、错误与读数。不复制成长流程宣言或不断添加空目录。
+## 科研原则
+新概念不等于新研究问题；有近邻也不等于没有解释空白。先理解问题发生的自然场景、强已知解释及真正未回答的部分，再设计能区分竞争假设的实验。每篇要分析 parent→pressure→变动的前提→方法形成逻辑（未有作者自述时标 RECONSTRUCTED）→实验能排除什么→我们的真实增量；优先 NeurIPS 2026 和其他高水平当年会议的实际全文、不是标题。可以改变问题、删除无用支线，**禁止为维护初始猜想局部优化**。
 
-## 现有科研文件与决策
-- [CLAIMS.md](CLAIMS.md)：L0 假设；[PAIN_LOG.md](PAIN_LOG.md)：只有跑出真实 baseline 痛点才追加。
-- `experiments/`、`ideas/`、`results/`、`logs/`：执行资产，不与 literature 知识混写。
-- **2026-10-12**：用户决定建立独立 xeno workbench，知识库必须在工作台内部；继续深读并压缩重复材料。
-- 算力：尚未启动新实验、未占用 GPU。后续优先单卡 / 单节点可重复的强开放基线。
+**实验 / 声称：** 尚无 GPU 运行或 baseline 复现；[CLAIMS.md](CLAIMS.md) 保持 L0；[PAIN_LOG.md](PAIN_LOG.md) 仅记录真实复现痛点。暂不锁定论文形态、具体方法或会议；实验须依既有规范先填 E## 卡。
+**决策：** 2026-10-12 用户批准建立内部 knowledge；同日决定持续精读，特别反复重读 Xeno，不以关键词近邻判死。
