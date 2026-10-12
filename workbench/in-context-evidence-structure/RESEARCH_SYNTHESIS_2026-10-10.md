@@ -1,6 +1,8 @@
 # ICES 当前进展与下一步：从证据混合到来源条件化的计算（2026-10-10）
 
-**当前新增（E124–129完整）：** E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。 已封形成/关联/整体使用的三项认识保留。下一步回到形成如何支持Source条件计算：当前Cue来自全部私人隔离的F0，而native与选择性历史有不同功能；是否影响Source信号准备是有限的机制候选，先全结果/近邻审阅，不扫head/字段。
+**当前（2026-10-12，跨容量核心检验）：** 原生关系形成、固定输出关联与Source函数使用的三项主文认识保持。E131按原43/64/85条件将同一形成反事实、原生操作、真实文本函数政策推进到8B/32B/70B；已完成独立校对9/18 stage。两个8B在新32材料完成三环节确认；Qwen3-32B三环节pilot完成，SST shared平均full86.91→95.90%，收益8.98[5.86,12.50]pp，单Source双私人方向本批100%且形成作用仍在。Q32同材料独立确认正在跑；Llama70固定权重断点传输并等待完整SHA核验接入。当前大模型pilot支持原计算解释，尚未完成跨容量确认；不以组件位置/通道比例不同就拆成狭窄新claim。ACL25 Sun的大模型关键因果链、NAACL25 Racing Thoughts的深度相关窗口、EMNLP24/CoSToM实际目标模型已核原文，比较尺度见[PAPER_ALIGNMENT](PAPER_ALIGNMENT_2026-10-12.md)。最新全矩阵见[E131报告](results/e131/report.md)与[独立raw审计](results/e131/independent_raw_review_2026-10-12.md)。
+
+**上一轮Cue接口记录（E124–129完整）：** E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。 已封形成/关联/整体使用的三项认识保留。下一步回到形成如何支持Source条件计算：当前Cue来自全部私人隔离的F0，而native与选择性历史有不同功能；是否影响Source信号准备是有限的机制候选，先全结果/近邻审阅，不扫head/字段。
 
 **当前问题（2026-10-12）：多个来源共享输出空间时，来源特定证据怎样形成并被用于新输入？** 来源身份不只是query的检索条件；query读到的本来源证据已经由完整历史形成。这项形成过程允许哪些关系共享，又怎样影响私人判断，是当前解释对象。
 
@@ -12,7 +14,7 @@
 
 **最新证据与当前工作：** E120原生operation与E121可靠private真实SST文本共16批384contexts/164352评分完成，18,064项raw独立复算和图/实际token校验通过。四checkpoint原生targeted阻断减少B-rule，有限图恢复方向依读取环境；自然namespace KV r .931/.948/.930/.966。由此在5b166d73首评分前冻结E122对称形成政策与query隔离，两Actor/四criterion×code整体预测已完成四checkpoint确认：均值+2.93/+3.42/+7.37/+2.78pp，同时保留成本；其自然文本/namespace预测E123亦完成确认：shared平均+7.32/+5.37/+9.47/+7.42pp，两Actor均正；完整output功能代价与近邻范围保留。上轮Llama/真实MHS/双方面机制/14B确认也均完成。[英文草稿](PAPER_DRAFT.md)、[论文形态](PAPER_SHAPE.md)、[数据覆盖](DATA_PLAN.md)同步到这些结果。探索的正负、部分重建、真实预测后果有限、固定方面顺序、强模型成功仍保留。原MHS任务的single能力弱，不能把它冒称真实个人标准部署。没有因残差自动追加头/层/字段关卡，也没有宣布投稿就绪。
 
-§1–8保留截至E79的初次综合；§9–38保留后续转折与验证。当前结论以前言与§36–38为准；[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
+§1–8保留截至E79的初次综合；§9–38保留后续转折与验证。当前结论以前言、英文草稿和末尾的实验更新为准；历史段落不作为重复执行指令。[实验索引](experiments/INDEX.md)、[主张账本](CLAIMS.md)、独立审计[E117](results/e117/independent_review_2026-10-11.md)/[E118](results/e118/independent_review_2026-10-11.md)/[E119](results/e119/independent_review_2026-10-11.md)均可复核。区间为context-bootstrap 95% CI，探索/确认明确分开。
 
 ## 1. 我之前哪里做偏了
 
