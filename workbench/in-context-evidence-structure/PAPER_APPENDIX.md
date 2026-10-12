@@ -101,6 +101,10 @@ Bars show the source-average primary; black circle/triangle show A/B means. Thes
 | Llama-3.1-8B | 8.01 [4.79, 11.33] | 6.74 [4.49, 8.89] | -1.86 [-4.30, 0.39] | 16.60 [13.87, 19.43] | 12.65 [10.40, 15.04] |
 | Qwen3-14B | 2.83 [0.00, 5.47] | 2.73 [0.10, 5.37] | -3.61 [-5.86, -1.56] | 9.18 [6.15, 12.30] | 13.33 [11.33, 15.38] |
 
+![Functional source-policy effects and tradeoffs](results/figs/fig_source_function_tradeoffs.png)
+
+Independent confirmation: each source's accuracy change, agreement/conflict of the correct labels, and alternative policies. All combined formation/query conditions and full-vocabulary scores are reported in the appendix.
+
 ## D. Native operation and real-text completeness
 
 | Model, n=32 | Full-source operation removal | A-only restricted restoration | Full-source restricted restoration |
@@ -122,6 +126,10 @@ Paired signed B-rule-response differences in nats with95%CI. The operation acts 
 Each SST private direction has n16contexts; natural-text pool/split/source provenance is independently audited. The word-plus-separator sender regions differ by tokenizer. Llama fixed-word association signed effects are negative; all K/KV/V raw/rule reconstructions and zero predictions remain in the summaries.
 
 ![Real-text formation and private functions](results/figs/fig_natural_text_formation.png)
+
+![Native operation and restricted restoration](results/figs/fig_native_operation_necessity.png)
+
+Paired signed B-rule effects after operation removal and restricted restoration. The contrast in restoration direction shows why historical sharing cannot be described as uniformly harmful.
 
 ## E. Registered evidence map
 
@@ -317,6 +325,10 @@ Eight fixed runs contain 192 contexts and 132,096 scientific scores. The complet
 
 Qwen3-14B's first confirmation load failed before any scientific score after an external job occupied its GPU. The pinned checkpoint was then verified on another empty node. The initial discovery run's ten complete contexts and raw records remain preserved separately. Identical contexts were rerun in the full fixed discovery batch, without seed or outcome selection: all 6,880 matching argmax decisions and candidate signs agree across hardware; maximum absolute logit-difference and individual label-logit deviations are .001028 and .002842. These hardware comparisons are separate from the same-run FP32 controls and are not additional samples. [Checkpoint identity](results/e127/model_identity_qwen14_nvme.json) and the operational records preserve the migration. Portable reconstruction reproduces the 32 Llama confirmation contexts byte-for-byte from the pinned public SST5 files.
 
+
+![Shared-word rule use and separate-word use](results/figs/fig_rule_and_wordspace_cache_compatibility.png)
+
+Coherent-minus-mixed cache effects on held-out contexts. Left: identical words and conflicting conventions, the frozen primary. Right: separate words and both convention worlds, a secondary reference. The panels use different world scopes.
 
 ## K. Compatibility when input criteria differ
 

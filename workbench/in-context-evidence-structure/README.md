@@ -145,6 +145,6 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 
 - **E128/E129资产：** E128八批192ctx/130560scores，f0a014…/5e9549ed前评分freeze，独立38760数值max0；raw同NFS `results/e128/`，小report/summary/run/preflight/audit与图入git。E129 raw同`results/e129/`，四固定Llama/14B运行16/129001→32/129101，生成材料无需外部数据；完整多层pre-input Cue-only运输，所有raw/事故保留。复现入口见[脚本说明](scripts/README.md)，model pins和conda与E119/128相同。
 
-- **E130/E131资产：** E130四批96ctx/104448scores，7ef59…/fa41da09预评分freeze，raw同NFS results/e130/，小summary/完整报告/4run/独立校对入git；E131同核心三环节8/32/70B，源451238d5、完整FP32修正0a50bbb1，18CPU已封，12/18科学stage独立核（Q32六批与两个8B新确认三环全部完成）；L70固定发现移到13空四卡运行、确认等空quad/同机fallback。70权重只存11/13本地，Q32在20 /dev/shm/ices_models/Qwen3-32B，不进git；pins/各shard SHA与空卡接入记录见results/e131。
+- **E130/E131资产：** E130四批96ctx/104448scores，7ef59…/fa41da09预评分freeze，raw同NFS results/e130/，小summary/完整报告/4run/独立校对入git；E131同核心三环节8/32/70B，源451238d5、完整FP32修正0a50bbb1，18CPU已封，12/18科学stage独立核（Q32六批与两个8B新确认三环全部完成）；L70固定发现移到13空四卡运行、确认等空quad/同机fallback。70权重11/13本地已核验，10第三副本正在11→10 peer分发至 /local2/moonshot/ices_xiang_models_20261012/Llama-3.1-70B（/tmp入口symlink），全30 SHA过后接同确认原子队列；Q32在20 /dev/shm/ices_models/Qwen3-32B，均不进git；pins/各shard SHA与空卡接入记录见results/e131。
 
 - **可重建论文稿：** [完整PDF](results/paper/main.pdf)；科学正文/附录仍为PAPER_DRAFT.md/PAPER_APPENDIX.md，官方ACL样式原样，22项primary来源与构建命令见[paper/README](paper/README.md)。当前排版稿含全部旧证据，E131同链完成后继续整合；呈现审计不等于科学完成/接受判断。

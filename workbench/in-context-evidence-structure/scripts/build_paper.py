@@ -17,10 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "paper"
 CAPTIONS = [
     "Native operation removal and restricted restoration, n32 confirmation. Signed B-rule contrasts in nats with context-bootstrap 95\\% CIs.",
-    "Fixed formation and query policies on dual-aspect rules, n32 confirmation. Mean candidate accuracy in percent; complete CIs and source tradeoffs are in the appendix.",
-    "Real SST text: private functions, formation magnitudes, and coefficient-one reconstruction. Confirmation n32; each private direction has n16 contexts.",
     "Real-text private rules with shared words: policy consequences, confirmation n32. Percent accuracy and paired changes with context-bootstrap 95\\% CIs.",
-    "Information-equivalent backgrounds and joint cache use. Confirmation n32; paired coherence differences with context-bootstrap 95\\% CIs. The separate-word reference uses a different world scope.",
     "The same formation, native-operation, and real-text function chain across model sizes. Within-family matched confirmation contexts, n32; full-output accuracy and signed native effects.",
 ]
 

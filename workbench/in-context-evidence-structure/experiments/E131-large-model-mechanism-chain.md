@@ -79,3 +79,5 @@ Q32新32确认的真实SST shared/full两Actor平均87.9883→95.7031%，targete
 **全局解释：** 同一历史形成、原生路径贡献和Source功能政策已在32B首轮及新确认接成链，读阶段贡献能单独变化；这支持现有形成/读取解释跨当前容量，不要求同头/层/幅度或强模型持续失败。主文6.6/附录M已加入，与原三认识连续；C21–23 L3/C24 L2及formal状态保持，不由partial Cue收缩核心。第三环不是再增加一张性能表，而是形成预测的原生功能检验。
 
 完整12/18stage、336run-stage ctx/172032scores、6.835413科学stage GPUh；新function1893数值max0、actual36864层mask调用、全批numeric最大6.68e−5/self/graph0。三组36同材料配对/144数值、9/12确认图点独立核；余L70不算0或证据。报告/全部85条件见[完整报告](../results/e131/report.md)与[raw审计](../results/e131/independent_raw_review_2026-10-12.md)。70双副本全30SHA完成，11的两卡外部占用后只移动资源：D13四空卡执行，C11/13fallback原子claim避免双启动，科学source/materials/analysis不改。
+
+**05:31资源接入更新：** fvcrc10四卡空出，11 pinned L70副本进行peer复制至10可写本地大盘（统一/tmp模型入口symlink）。全部30预定SHA核验后同confirmation一次启动；与11/13原队列共享atomic claim，无重复科学writer。固定FP32/四卡单节点/材料/读数/全phase执行不变；分发helper与日志在results/e131/，未将传输或partial计为新科学结果。
