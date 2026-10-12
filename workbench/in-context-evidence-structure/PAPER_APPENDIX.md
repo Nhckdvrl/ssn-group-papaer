@@ -353,3 +353,36 @@ Eight runs comprise192contexts/130560scores and1.237902 recorded GPU hours. Scie
 ![Criterion-conflict cache compatibility](results/figs/fig_criterion_cache_compatibility.png)
 
 *All four cache pairs on the frozen criterion-conflict domain, confirmation n32 per checkpoint. Scores average separate source requests; they do not measure simultaneous two-source success.*
+
+
+## L. Does a pre-input source block deploy a source-specific criterion?
+
+E129 retains the controlled Food/Service material and crosses B's criterion with its private code while fixing names, B label streams, input multisets, and global positions. Private demonstration histories form independently, without a public schema. Before any test comment, the complete `Annotator: name / Comment:` block reads both private histories; the cue stage does not use an oracle source mask. We exchange only this entire multilayer cue K/V block, preserving every recipient demonstration cache. The primary body graph then reads recipient B, HEAD, and the cue; joint-body reading is secondary. Two same-code recipients, four donor worlds, and CueA/CueB controls remain fixed.
+
+Let δt=½(zcue(t,+)−zcue(t,−)). Its projections on private-code-oriented Food and Service signs form a two-row functional matrix M. The two co-primary quantities are det(MCueB) and det(MCueB−MCueA), calculated separately for every recipient/context before averaging the two recipients and bootstrapping contexts. A positive difference determinant alone can result from subtracting two rank-one matrices, so the first co-primary and correct row selectivities cannot be omitted. These are output functions, not measured latent dimensionalities.
+
+| Model / phase | CueB det, nats² [95% CI] | Source-specific det, nats² [95% CI] |
+|---|---:|---:|
+| Llama-3.1-8B / discovery | -5.914e-06 [-1.213e-05, 5.864e-07] | 6.157e-06 [2.463e-06, 1.080e-05] |
+| Qwen3-14B / discovery | -9.656e-06 [-1.251e-04, 8.155e-05] | 5.551e-06 [-1.524e-05, 2.613e-05] |
+| Llama-3.1-8B / confirmation | 2.492e-06 [-5.264e-06, 1.097e-05] | -1.259e-06 [-3.316e-06, 4.967e-07] |
+| Qwen3-14B / confirmation | 3.740e-05 [-1.643e-05, 1.014e-04] | -1.148e-05 [-4.553e-05, 1.924e-05] |
+
+Both confirmation co-primary intervals span zero. Llama's small positive Source-specific determinant in discovery does not confirm. Qwen3-14B retains small criterion-related responses, including a mean row-selectivity interaction of0.00160 [0.00024,0.00300]nats. This does not establish correct deployment of both criteria; it also prevents claiming that the cue contains no task information.
+
+| Confirmation model | Single Food early / late conflict accuracy, % [95% CI] | Single Service early / late conflict accuracy, % [95% CI] | Native B early / late origin conflict accuracy, % [95% CI] |
+|---|---:|---:|---:|
+| Llama-3.1-8B | 68.75 [60.94, 76.56] / 69.53 [62.50, 77.34] | 71.09 [64.84, 77.34] / 74.22 [67.97, 80.47] | 60.94 [51.56, 69.53] / 63.28 [55.47, 71.09] |
+| Qwen3-14B | 78.12 [70.31, 85.16] / 78.91 [71.88, 85.94] | 76.56 [68.75, 84.38] / 79.69 [71.88, 87.50] | 67.19 [60.94, 74.22] / 64.84 [56.25, 73.44] |
+
+The matched single functions are usable, while transplantation does not establish a complete criterion×code function. Every patch reports accuracy against both recipient and donor rules, so following the donor is not mistakenly judged only by recipient accuracy. The [full report](results/e129/report.md) preserves all64 conditions, two body graphs, source cues, recipients, worlds, private directions, four response bases, normalized rotations, actual output tokens, and function controls.
+
+Native early/late uses the same formation and reading graphs, changing only field order. Independent early prepares a cue with access to both histories and then uses an own-only body; independent late uses own-only reading throughout, so their difference also changes the graph. The pure one-sentence instruction retains native formation. In Qwen3-14B origin B it gives84.38% candidate accuracy but44.14% full accuracy, with55.08% of outputs in the label set; the actual-output cost is retained rather than described as recovery.
+
+This is a test of cues prepared from **independently formed private histories**, not a negative result about every native task state. It remains compatible with criterion-conditioned retrieval, task information in other positions, and information becoming deployable after query input. CueA/B differs in lexical identity; donor-world subtraction cancels only additive, world-invariant name effects. General task-state transfer is already established by [Hendel et al.](https://arxiv.org/abs/2310.15916), [just-in-time task representations](https://arxiv.org/html/2509.04466v3), and [representative task-vector analysis](https://proceedings.iclr.cc/paper_files/paper/2026/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf). This interface test neither claims a first task vector nor retracts the demonstrated historical formation mechanism.
+
+Four runs comprise96contexts/49152scores and0.413184 recorded GPU hours. Source `a177434cf425889df1fcc8b3607e6d5057a26080ad467e7999d002e6504b00bd` was frozen at57ca241a before scoring. The [independent raw audit](results/e129/independent_raw_review_2026-10-12.md) checks20580 numerical quantities, both gold definitions, actual masks and58752 prefix/27648 cue/221184 body layer-mask calls. Across all four runs, the maximum full-token/cached difference is5.5313e−5nats; graph-zero and self-interchange checks are0. These are independent analyses, not independent GPU reruns.
+
+![Functional cue information](results/figs/fig_source_cue_functional_information.png)
+
+*Complete confirmation functional matrices, own-body scope. F/S denote Food/Service; arrows label the donor criterion row and query feature projection. Intervals use contexts rather than individual queries.*

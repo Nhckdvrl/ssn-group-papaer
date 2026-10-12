@@ -8,6 +8,8 @@ FAMILIES={'llama':'Llama-3.1-8B','qwen14':'Qwen3-14B'}
 RECIPIENTS=['origin','food_positive']
 SCOPES=['own','joint']
 def fmt(v,scale=1):
+    if scale==1 and 0<max(abs(v['mean']),*(abs(x) for x in v['ci95']))<.0001:
+        return f"{v['mean']:.3e} [{v['ci95'][0]:.3e}, {v['ci95'][1]:.3e}]"
     precision=5 if scale==1 else 2
     return f"{scale*v['mean']:.{precision}f} [{scale*v['ci95'][0]:.{precision}f}, {scale*v['ci95'][1]:.{precision}f}]"
 def main():

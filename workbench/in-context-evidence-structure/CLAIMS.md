@@ -329,3 +329,10 @@ E126 **POST-HOC辅助解释**（不改冻结primary/正式等级）：只在两p
 E128四checkpoint16→32全部完成；同no/yes同private code而Food/Service标准不同，冲突query的coherence收益Q8/M7/L8/Q14 +1.56[−.59,3.52]/+.98[−1.37,3.32]/+.78[0,1.76]/+2.93[.59,5.47]pp。四家T小正，但joint约50–53%，原生与单函数能力按同冲突query范围核；不把code协调泛化为完整标准选择，也不撤回已封形成阳性。192ctx/130560评分、1.237902GPU时、38760独立raw数值max0。
 
 依据[卡E128](experiments/E128-criterion-frame-cache-composition.md)、[全矩阵报告](results/e128/report.md)、[38760项raw独立核](results/e128/independent_raw_review_2026-10-12.md)。C23形成兼容与C24功能分辨率获得有界补充，不将每个实验新增claim，不自动升降级。原C21–23三认识与最强近邻所有权保留。主文§6.5一段、附录K完整两phase及primary匹配primitive；函数弱/固定方面位置/公共关系与私人规则不等于新ID保留。下一项E129检验input-independent来源选择状态在同recipient图上的criterion×code功能，两co-primary为CueB本身与CueB−CueA的signed det；Hendel/JIT/Dong的一般task-state范围必须正面承认。
+
+
+## 2026-10-12：E129来源状态功能的完整结果
+
+E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。
+
+证据[卡E129](experiments/E129-source-cue-task-information.md)、[完整报告](results/e129/report.md)、[独立raw](results/e129/independent_raw_review_2026-10-12.md)，主文Discussion两句/附录L完整范围。未确认两个标准方向不等于信息完全不存在；native与F0形成图不混同，Q14纯指令实际输出代价保留。旧三认识/最强近邻所有权保留，不新凑claim/自动升级或缩掉已封阳性。当前候选问题是不同历史共享政策如何形成Source条件信号，与C23形成/部署链连接；独立高层审阅和论文核对后再写新卡，未运行。

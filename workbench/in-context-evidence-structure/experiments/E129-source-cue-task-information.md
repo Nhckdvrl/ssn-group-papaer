@@ -1,6 +1,6 @@
 # E129：来源选择信号只是地址，还是在新输入之前携带任务信息？（2026-10-12）
 
-- **状态：** RUNNING；E128四checkpoint完整结果已独立封版，E129末版源码/四CPU独立核后57ca241a首评分前commit/push。两checkpoint固定16→32，不追加公共表或head/layer分支。
+- **状态：** DONE；两checkpoint固定16→32完成，四raw独立复算有效；57ca241a/a177前评分freeze保持。
 - **类型：** PILOT / CLAIM。
 - **对应：** C24/C23、I04、P17。
 - **问题：** 同名来源从不同demos推断不同criterion时，模型处理新评论之前的Source选择块是否只标出recipient中的来源位置，还是能携带改变新评论功能响应的任务信息？
@@ -42,3 +42,11 @@
 **前评分seal已完成：** [独立实际源码/CPU审计](../results/e129/independent_review_2026-10-12.md)核1632prefix图/768Cue图/6144query集合/1536整层合成/73728双gold槽；observer synthetic5145数值max3.55e−15。科学源a177434c…无科学评分；随后commit并用21已核空卡运行两checkpoint×固定16→32，确认仅等首context数值floor，不按效应方向。
 
 **实际执行：** 57ca241a/a177434c…已在首评分前push main；21 GPU0 Llama16、GPU1 Llama32等待首context数值floor，GPU3 Q14固定16→32。最后复查GPU2被外部任务占86GB，不使用/不杀作业。操作helper只固定phase与SHA，不改科学引擎，模型载入等待/异常与原raw保留。
+
+## 完整结果与判断
+
+E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私人历史、保留recipient全部示例时，两模型两个co-primary功能det的确认CI均跨0；不是数值失败。Q14仍有小标准相关响应，不能称Cue没有任务信息。单函数冲突能力L约69–74%、14B约77–80%，故这项运输接口不足不能由任务全不会解释；也不外推模型没有criterion表示或默认原生Cue无效。96ctx/49152评分、.413184完整run GPU时、20580独立raw数值max3.33e−16。
+
+确认Llama CueB det +2.492e−6[−5.264e−6,1.097e−5]、Source-specific−1.259e−6[−3.316e−6,4.967e−7]；Q14 CueB +3.740e−5[−1.643e−5,1.014e−4]、Source-specific−1.148e−5[−4.553e−5,1.924e−5]nats²。所有mean-det先context再recipient，negative/两private方向全部留。Q14 J+.00160[.00024,.00300]nats是小响应，不是两标准成功运输；pure instruction origin B candidate84.38/full44.14/in-label55.08%，保留实际输出成本。
+
+依据[完整报告](../results/e129/report.md)、[raw独立seal](../results/e129/independent_raw_review_2026-10-12.md)与各analysis/run。all-run数值max5.5313e−5、graph/self0，不以失败格式隐藏结果。C21–23L3/C24L2和formal状态不改。下一步首先读当前结果与近邻：该Cue来自F0全私人隔离，不是默认原生Cue；有限候选是直接问native/选择性/全隔离历史怎样影响Source信号形成，而非加字段/层/强度寻找阳性，尚未启动。
