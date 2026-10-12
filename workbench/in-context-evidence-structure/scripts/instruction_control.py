@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRCS = [('Qwen3-8B', 'e123/qwen3_confirmation'), ('Qwen3-14B', 'e123/qwen14_confirmation'),
         ('Qwen3-32B', 'e131/qwen32_confirmation_function'), ('Mistral-7B', 'e123/mistral_confirmation'),
         ('Llama-3.1-8B', 'e123/llama_confirmation'), ('Llama-3.1-70B', 'e131/llama70_confirmation_function'),
-        ('Gemma-2-2B', 'e123/gemma2_confirmation')]
+        ('Gemma-2-2B', 'e123/gemma2_confirmation'), ('Gemma-2-9B', 'e123/gemma9_confirmation')]
 
 out = {}
 for m, s in SRCS:

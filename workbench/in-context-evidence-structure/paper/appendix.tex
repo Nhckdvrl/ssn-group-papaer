@@ -5,23 +5,27 @@
 
 Table~\ref{tab:models} lists the checkpoints.
 The Qwen3 models are the released post-trained hybrid checkpoints and the Mistral and Llama models are base models. All are used as plain continuation models, without chat templates or generated reasoning.
-All computations use FP32 weights and activations with TF32 disabled, the eager (exact) attention implementation of Transformers, no quantization, and no gradient updates.
+All computations use PyTorch 2.8.0 and Transformers 4.57.6 with FP32 weights and activations, TF32 disabled, the eager (exact) attention implementation, no quantization, and no gradient updates.
+Gemma-2 expects a beginning-of-sequence token, so for the Gemma models the prompt starts with it, and all other tokens are encoded as for the other models.
+We use the models under their released licenses (Apache 2.0 for Qwen3 and Mistral, the Llama 3.1 Community License, and the Gemma Terms of Use), SST-5 as distributed for research use, and the Measuring Hate Speech corpus under CC BY 4.0, all for research purposes consistent with their intended use.
 Qwen3-32B is split over two GPUs and Llama-3.1-70B over four GPUs of one node by contiguous layers.
 Every intervention applies to all layers and all heads, and no layer or head is selected.
 
 \begin{table}[!ht]
 \centering\small
 \setlength{\tabcolsep}{3pt}
-\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}ll@{}}
+\adjustbox{max width=\columnwidth}{\begin{tabular}{@{}lrl@{}}
 \toprule
-Checkpoint & Revision \\
+Checkpoint & Params & Revision \\
 \midrule
-Qwen/Qwen3-8B & \texttt{b968826d} \\
-Qwen/Qwen3-14B & \texttt{40c06982} \\
-Qwen/Qwen3-32B & \texttt{9216db57} \\
-mistralai/Mistral-7B-v0.3 & \texttt{caa1feb0} \\
-NousResearch/Meta-Llama-3.1-8B & \texttt{1f47e50c} \\
-meta-llama/Llama-3.1-70B & \texttt{349b2ddb}$^\dagger$ \\
+Qwen/Qwen3-8B & 8.2B & \texttt{b968826d} \\
+Qwen/Qwen3-14B & 14.8B & \texttt{40c06982} \\
+Qwen/Qwen3-32B & 32.8B & \texttt{9216db57} \\
+mistralai/Mistral-7B-v0.3 & 7.2B & \texttt{caa1feb0} \\
+NousResearch/Meta-Llama-3.1-8B & 8.0B & \texttt{1f47e50c} \\
+meta-llama/Llama-3.1-70B & 70.6B & \texttt{349b2ddb}$^\dagger$ \\
+google/gemma-2-2b & 2.6B & \texttt{c5ebcd40} \\
+google/gemma-2-9b & 9.2B & \texttt{33c19302} \\
 \bottomrule
 \end{tabular}}
 \caption{Model checkpoints (Hugging Face revisions, first eight characters).
@@ -30,7 +34,8 @@ $^\dagger$Loaded from the public mirror \texttt{NousResearch/Meta-Llama-3.1-70B}
 \end{table}
 
 Before scoring, we check for each model that every label word, with its leading space, is a single token; that scoring a query from the cached prompt agrees with scoring the full token sequence (maximum difference below $10^{-4}$ nats); that patching a run with its own states changes nothing; and that every attention mask is applied at every layer.
-The experiments used about 80 GPU-hours on A100 and RTX PRO 6000 GPUs, most of them for the 32B and 70B models.
+The experiments used about 115 GPU-hours on NVIDIA A100 (80GB) and RTX PRO 6000 (96GB) GPUs, most of them for the 32B and 70B models.
+No model is trained or fine-tuned, so there is no hyperparameter search: the experimental choices are the prompt format, the label words, eight demonstrations per source and the seeds for prompt construction (120001/120101, 121001/121101, 123001/123101 and 132001/132101 for the development and confirmation prompts of the four main experiments), all fixed before the confirmation runs. Predictions are the highest-scoring next token, without sampling.
 
 \section{Materials and prompt format}
 \label{app:materials}
@@ -56,10 +61,15 @@ Single-aspect reviews are generated from templates (\textit{The pizza was outsta
 They allow B's rule to be reversed without changing B's label sequence or comment set: for B's eight demonstrations we sample two quartets matched in length, each with two positive and two negative comments, and exchange the comments across classes (reversing the association) or within classes (the control).
 Two-aspect reviews mention food and then service with independently chosen sentiment (\textit{The pasta was delicious, but the waiter was rude.}). A always judges food, and B judges food or service under the same or the opposite convention, giving four worlds.
 
+\paragraph{Data statistics.}
+After filtering, the SST-5 demonstration pools contain 639 positive and 511 negative training reviews for development prompts and 624 and 560 for confirmation prompts, and the query pools contain 165 and 137 validation reviews and 396 and 276 test reviews.
+Each experiment draws 16 development and 32 confirmation prompts, each with 16 demonstrations and eight queries (four positive, four negative), and scores every query for both requested sources under every condition.
+All texts are in English: movie reviews (SST-5), comments from social media collected for hate-speech research (Measuring Hate Speech) and templated restaurant reviews.
+
 \paragraph{Measuring Hate Speech.}
 We group the corpus \citep{sachdeva-etal-2022-measuring} by comment, average the annotations, keep comments of at most 50 words with a mean hate-speech score of at least 1, and separate comments targeting race (race score at least 0.75, gender at most 0.1) from comments targeting gender (the reverse).
 The two sources map the two target categories to \lw{safe}/\lw{toxic} with opposite conventions.
-These rules are constructed and are not the rules of the original annotators.
+These rules are constructed and are not the rules of the original annotators. We use only the comment texts and aggregated scores, not annotator identifiers or demographics; the comments are public, contain offensive language by design, and are not shown in the paper.
 
 \section{Interventions}
 \label{app:interventions}
@@ -156,7 +166,7 @@ Table~\ref{tab:app-recon} reports the reconstruction for each channel and readin
 The runs contained key patching and label-state transplants under A-only reading as conditions from the start; their reconstruction statistics in Figure~\ref{fig:reconstruction} were computed after the confirmation runs, with the same definitions as the full-reading statistics.
 Patching keys alone predicts the effect nearly as well as patching keys and values, and patching values alone predicts it less well in every model.
 The last column uses B states formed with separate label words as the reading background, which also gives high correlations.
-Without taking the difference between B's two conventions, the KV correlations are 0.92, 0.95, 0.88, 0.86, 0.79 and 0.62 in the order of the table.
+Without taking the difference between B's two conventions, the KV correlations range from 0.79 to 0.96, except for Llama-3.1-70B (0.62).
 On Measuring Hate Speech comments the KV correlations of the convention difference are 0.985 for Qwen3-8B and 0.977 for Mistral-7B, with key-only correlations of 0.969 and 0.966.
 
 \begin{table}[!ht]
@@ -178,7 +188,7 @@ RMSE: error of the KV prediction (nats); Zero: error of predicting no effect; Se
 \label{app:operation}
 
 Table~\ref{tab:app-op-gate} gives the values of Table~\ref{tab:operation} with intervals and adds the own-answer control.
-Removing the attention from A's label positions to A's own earlier answers increases the effect of B's rule in every model, which shows that the reduction from removing the cross-source path is not a general consequence of disturbing the label positions.
+Removing the attention from A's label positions to A's own earlier answers does not reduce the effect of B's rule in any model and increases it in seven of the eight, which shows that the reduction from removing the cross-source path is not a general consequence of disturbing the label positions.
 Table~\ref{tab:app-op-full} gives the same quantities when the query reads both sources.
 Removing the cross-source path still reduces B's effect in all models.
 Restoring only the path, however, changes B's effect by different amounts and in different directions, because the query then also reads B's own states, and the path changes how A's states combine with them.
@@ -301,7 +311,7 @@ For shared words, scoring the full vocabulary and scoring only the two label wor
 \paragraph{Instruction.}
 The instruction condition adds the sentence \textit{Use only the examples of the requested annotator to infer and apply that annotator's labeling rule.} after the header and leaves formation and reading unchanged.
 Its accuracy was recorded for every condition before analysis, and the aggregate over sources and worlds and its paired intervals were computed afterwards.
-Relative to the native prompt it changes accuracy by 2.3 (0.8--3.9), 1.7 (0.4--3.0), 5.7 (4.1--7.4), 1.0 ($-0.4$--2.4), 1.2 (0.2--2.3) and 6.2 (4.0--8.6) points, and selective blocking exceeds it by 5.0 (2.6--7.4), 5.8 (4.0--7.4), 2.1 ($-0.2$--4.1), 4.4 (2.2--6.5), 8.3 (6.2--10.4) and 4.3 (2.4--6.2) points, in the order Qwen3-8B, 14B, 32B, Mistral-7B, Llama-3.1-8B and 70B.
+Relative to the native prompt it changes accuracy by $-0.6$ to 6.2 points, with intervals that include zero in Mistral-7B and both Gemma models, and selective blocking exceeds it by 2.1 to 8.3 points, with an interval that includes zero only in Qwen3-32B.
 
 \paragraph{Two-aspect reviews.}
 Table~\ref{tab:app-dual} reports the same policies on the controlled two-aspect reviews, averaged over B's four criterion--convention worlds.
@@ -339,7 +349,7 @@ A public list of the two names, without label words, helps only Qwen3-8B when de
 Read only by the query, the list changes accuracy by less than half a point.
 
 \paragraph{Word-set table.}
-Table~\ref{tab:app-schema} gives the results of Figure~\ref{fig:separate}b with intervals.
+Table~\ref{tab:app-schema} gives the results of Figure~\ref{fig:schema} with intervals.
 A table that assigns each source the other's word set also improves accuracy over the unrelated table when demonstrations read it, by 14.9 and 3.3 points in Qwen3-8B and Mistral-7B (2.8 in Llama-3.1-8B, interval including zero), and reduces answers in the other source's words, by 18.8, 4.8 and 3.2 points, but it helps less than the correct table.
 The correct table improves accuracy for B in all three models and for A in Qwen3-8B (29.9 points), while the gains for A in Mistral-7B (4.5, $-0.2$ to $9.4$) and Llama-3.1-8B (0.2, $-5.3$ to $5.7$) are uncertain.
 In Qwen3-8B the table slightly lowers accuracy restricted to each source's own words (by 3.8 points), so the gain in full-vocabulary accuracy comes with a small cost within the label space.
@@ -413,7 +423,12 @@ The label-word role swap uses \lw{pass}/\lw{flag} for both sources, or \lw{pass}
 The layer-band analysis applies selective blocking only in one quarter of the layers.
 Attention mass is the attention weight, averaged over heads, that A's label positions place on each type of earlier token in the native prompt, summed over the tokens of that type and averaged over layers.
 
-E132_TEXT_PLACEHOLDER
+Table~\ref{tab:app-edges} reports the edge types for all eight models.
+Reopening the other source's names restores most of the separation in every model, and reopening its comments or answers restores little.
+Blocking only the other source's answers as senders, which keeps attention to its names and comments, leaves accuracy under conflicting conventions at 68--92\% and full-vocabulary accuracy with separate words at 87--98\% in the six models where it was run.
+Table~\ref{tab:app-swap} shows that the cross-source effect follows whether the two sources share label words, whichever pair they share.
+Table~\ref{tab:app-bands} localizes the answer-to-label path: blocking it in the second quarter of the layers accounts for most of its effect, and blocking it in the last quarter has none.
+Table~\ref{tab:app-attention} shows that A's label positions place more attention on B's answers when the sources share label words, in every model.
 
 \begin{table*}[t]
 \centering\small
@@ -518,3 +533,7 @@ We also tested whether the tokens that name the requested source before the quer
 With the two sources' demonstrations encoded without cross-source attention, we transplanted only the cached states of this cue from prompts in which B's criterion and convention differed, keeping all demonstration states fixed.
 In Llama-3.1-8B and Qwen3-14B the transplanted cue did not reproduce B's criterion-specific response (the intervals of both determinants include zero), and preparing the donor cue under native, selectively blocked or completely isolated encoding did not change this.
 Qwen3-14B's cue retains small aspect-selective responses, so the cue is not empty, but the source-specific rule is not prepared there before the query comment is read.
+
+\section{Use of AI assistants}
+\label{app:ai}
+We used AI assistants to help write and debug experiment code and to edit the text of the paper. All experimental designs, analyses and claims were checked by the authors against the raw results, and all references were verified against their published versions.

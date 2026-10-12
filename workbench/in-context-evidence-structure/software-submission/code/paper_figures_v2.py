@@ -43,8 +43,16 @@ MODELS = [  # label, function source, operation source, reconstruction source
     ('Llama-3.1-70B', 'e131/llama70_confirmation_function', 'e131/llama70_confirmation_native',
      'e131/llama70_confirmation_mechanism'),
 ]
+GEMMA = ('Gemma-2-2B', 'e123/gemma2_confirmation', 'e120/gemma2_confirmation', 'e121/gemma2_confirmation')
+GEMMA9 = ('Gemma-2-9B', 'e123/gemma9_confirmation', 'e120/gemma9_confirmation', 'e121/gemma9_confirmation')
+for g in [GEMMA, GEMMA9]:
+    if all((RES / d / 'analysis.json').exists() for d in g[1:]) and (RES / g[1] / 'full_output_summary.json').exists():
+        MODELS.append(g)
 SHORT = {'Qwen3-8B': 'Qwen3\n8B', 'Qwen3-14B': 'Qwen3\n14B', 'Qwen3-32B': 'Qwen3\n32B',
-         'Mistral-7B': 'Mistral\n7B', 'Llama-3.1-8B': 'Llama\n8B', 'Llama-3.1-70B': 'Llama\n70B'}
+         'Mistral-7B': 'Mistral\n7B', 'Llama-3.1-8B': 'Llama\n8B', 'Llama-3.1-70B': 'Llama\n70B',
+         'Gemma-2-2B': 'Gemma-2\n2B'}
+SHORT['Gemma-2-2B'] = 'Gemma\n2B'
+SHORT['Gemma-2-9B'] = 'Gemma\n9B'
 
 
 def load(path, name='analysis.json'):
@@ -87,7 +95,7 @@ def fig_leak():
             out[m]['within_class_control_gate'] = stat(
                 load(fsrc)['A_B_code_response']['shared_normal_gate']['within_signed'])
     ax.axhline(0, color='black', lw=.5)
-    ax.set_xticks(x, [SHORT[m[0]] for m in MODELS])
+    ax.set_xticks(x, ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)])
     ax.tick_params(axis='x', length=0, pad=2)
     ax.set_ylabel("Pull of B's convention\non A's margin (nats)")
     ax.set_ylim(-.25, 3.2)
@@ -98,38 +106,52 @@ def fig_leak():
 
 
 # ---------------------------------------------------------------- Figure 3: reconstruction scatter
-def rule_double(dest, kind='kv', r=0):
+def rule_double(dest, target, pred, base):
     rows = [json.loads(x) for x in (RES / dest / 'behavior.jsonl').read_text().splitlines()]
     z = lambda k: np.array([row['conditions'][k]['z'] for row in rows])
-    target = (z(f'cross_label_r{r}') - z(f'cross_f0r{r}')) - (z(f'origin_label_r{r}') - z(f'origin_f0r{r}'))
-    pred = (z(f'cross_edge_{kind}_r{r}') - z(f'cross_f0r{r}')) - (z(f'origin_edge_{kind}_r{r}') - z(f'origin_f0r{r}'))
-    return target.ravel(), pred.ravel()
+    t = (z('cross_' + target) - z('cross_' + base)) - (z('origin_' + target) - z('origin_' + base))
+    p = (z('cross_' + pred) - z('cross_' + base)) - (z('origin_' + pred) - z('origin_' + base))
+    return t.ravel(), p.ravel()
 
 
 def fig_reconstruction():
-    fig, axes = plt.subplots(1, 6, figsize=(FULL_W, 1.32))
+    """Main figure: A-only reading (the setting of Sec. 3), key patching. Full-reading KV is kept for the appendix."""
+    import sys
+    sys.path.insert(0, str(ROOT / 'scripts'))
+    from e109_reconstruction_audit import summarize
+    fig, axes = plt.subplots(1, len(MODELS), figsize=(FULL_W, 1.32 if len(MODELS) == 6 else 1.18))
     out = {}
     for ax, (m, _, _, rsrc) in zip(axes, MODELS):
-        t, p = rule_double(rsrc)
+        t, p = rule_double(rsrc, 'gate_label', 'gate_edge_k', 'gate_shared')
         r = float(np.corrcoef(t, p)[0, 1])
+        rows = [json.loads(x) for x in (RES / rsrc / 'behavior.jsonl').read_text().splitlines()]
+        z = lambda k: np.array([row['conditions'][k]['z'] for row in rows])
+        tt = (z('cross_gate_label') - z('cross_gate_shared')) - (z('origin_gate_label') - z('origin_gate_shared'))
+        pp = (z('cross_gate_edge_k') - z('cross_gate_shared')) - (z('origin_gate_edge_k') - z('origin_gate_shared'))
+        s = summarize(tt, pp)
+        assert abs(s['correlation'] - r) < 1e-6
         stored = load(rsrc)['reconstruction']['label_interface_B0_kv']
-        assert abs(r - stored['rule_double_contrast']['correlation']) < 1e-6, (m, r)
-        rd = stored['rule_double_contrast']
-        out[m] = {'r': r, 'r_lo': rd['correlation_ci95'][0], 'r_hi': rd['correlation_ci95'][1],
-                  'rmse': rd['rmse'], 'zero_rmse': rd['zero_rmse'], 'n_points': int(t.size),
-                  'raw_r': stored['raw']['correlation']}
+        out[m] = {'A_only_K': {'r': r, 'r_lo': s['correlation_ci95'][0], 'r_hi': s['correlation_ci95'][1],
+                               'rmse': s['rmse'], 'zero_rmse': s['zero_rmse'], 'n_points': int(t.size)},
+                  'full_KV': {'r': stored['rule_double_contrast']['correlation'],
+                              'r_lo': stored['rule_double_contrast']['correlation_ci95'][0],
+                              'r_hi': stored['rule_double_contrast']['correlation_ci95'][1],
+                              'rmse': stored['rule_double_contrast']['rmse'],
+                              'zero_rmse': stored['rule_double_contrast']['zero_rmse'],
+                              'raw_r': stored['raw']['correlation']}}
         lim = np.percentile(np.abs(np.r_[t, p]), 99.5) * 1.08
         ax.plot([-lim, lim], [-lim, lim], color=GRAY, lw=.6, ls='--', zorder=1)
         ax.scatter(p, t, s=3.5, color=BLUE, alpha=.45, lw=0, zorder=2)
         ax.set_xlim(-lim, lim); ax.set_ylim(-lim, lim); ax.set_aspect('equal')
-        ax.set_title(m, pad=2)
-        ax.text(.04, .96, f'$r$ = {r:.2f}', transform=ax.transAxes, va='top', fontsize=7)
+        ax.set_title(m, pad=2, fontsize=6.6)
+        ax.text(.04, .96, f'$r$ = {r:.2f}', transform=ax.transAxes, va='top', fontsize=6.5)
         ax.locator_params(nbins=3)
-    axes[0].set_ylabel('Actual effect (nats)')
-    fig.supxlabel('Predicted by patching B-answer messages at A-label positions (nats)', fontsize=8, y=-.06)
-    fig.subplots_adjust(wspace=.45)
+        ax.tick_params(labelsize=6)
+    axes[0].set_ylabel('Actual (nats)')
+    fig.supxlabel("Predicted by patching the keys of B's answers read at A's label positions (nats)", fontsize=8, y=-.06)
+    fig.subplots_adjust(wspace=.55)
     save(fig, 'fig_reconstruction')
-    numbers['reconstruction_sst_kv'] = out
+    numbers['reconstruction_sst'] = out
 
 
 # ---------------------------------------------------------------- Table 1: native operation
@@ -139,15 +161,15 @@ def table_operation():
         a = load(osrc)
         R, C = a['responses'], a['contrasts']
         out[m] = {
-            'effect_full_reading': stat(R['shared_native_native']['rule_signed']),
-            'effect_A_only_reading': stat(R['shared_gate_native']['rule_signed']),
-            'removal_A_only_reading': stat(C['shared_gate_cross_answer_removal']['rule_signed']),
-            'removal_full_reading': stat(C['shared_native_cross_answer_removal']['rule_signed']),
-            'within_source_removal_full_reading': stat(C['shared_native_within_answer_removal']['rule_signed']),
-            'restoration_A_only_reading': stat(C['shared_gate_answer_path_restoration']['rule_signed']),
-            'restoration_full_reading': stat(C['shared_native_answer_path_restoration']['rule_signed']),
+            'effect_full_reading': stat(R['shared_native_native']['rule_signed'], .5),
+            'effect_A_only_reading': stat(R['shared_gate_native']['rule_signed'], .5),
+            'removal_A_only_reading': stat(C['shared_gate_cross_answer_removal']['rule_signed'], .5),
+            'removal_full_reading': stat(C['shared_native_cross_answer_removal']['rule_signed'], .5),
+            'within_source_removal_full_reading': stat(C['shared_native_within_answer_removal']['rule_signed'], .5),
+            'restoration_A_only_reading': stat(C['shared_gate_answer_path_restoration']['rule_signed'], .5),
+            'restoration_full_reading': stat(C['shared_native_answer_path_restoration']['rule_signed'], .5),
         }
-    numbers['native_operation_restaurant'] = out
+    numbers['native_operation_restaurant'] = out  # halved to the scale of Delta
 
 
 # ---------------------------------------------------------------- Table 2 + Figure 4a: policies
@@ -273,6 +295,7 @@ def appendix_tables():
     for m, _, _, rsrc in MODELS:
         rec = load(rsrc)['reconstruction']
         parts = []
+        parts.append(f"{numbers['reconstruction_sst'][m]['A_only_K']['r']:.2f}")
         for ch in ['k', 'v', 'kv']:
             rd = rec[f'label_interface_B0_{ch}']['rule_double_contrast']
             parts.append(f"{rd['correlation']:.2f}")
@@ -286,7 +309,7 @@ def appendix_tables():
     for m, *_ in MODELS:
         src = dict((x[0], x[2]) for x in MODELS)[m]
         C = load(src)['contrasts']
-        op[m]['within_source_removal_A_only'] = stat(C['shared_gate_within_answer_removal']['rule_signed'])
+        op[m]['within_source_removal_A_only'] = stat(C['shared_gate_within_answer_removal']['rule_signed'], .5)
     write_table('app_operation_gate', [f"{m} & {cell(v['effect_A_only_reading'])} & {cell(v['removal_A_only_reading'])} & "
                                        f"{cell(v['within_source_removal_A_only'])} & {cell(v['restoration_A_only_reading'])} \\\\"
                                        for m, v in op.items()])
@@ -322,8 +345,17 @@ def appendix_tables():
                                  f"{cell(v['sep_complete_candidate'],1)} & {cell(v['sep_complete_full'],1)} & {cell(v['sep_complete_other_word'],1)} \\\\"
                                  for m, v in pol.items()])
     sch = numbers['public_schema_sst']
-    write_table('app_schema', [f"{m} & {cell(v['formation'],1)} & {cell(v['reading'],1)} & {cell(v['swapped_formation_gain'],1)} & "
+    sw = json.loads((RES / 'e125' / 'swapped_minus_unrelated_2026-10-13.json').read_text())
+    for m, k in [('Qwen3-8B', 'qwen3'), ('Mistral-7B', 'mistral'), ('Llama-3.1-8B', 'llama')]:
+        sch[m]['swapped_minus_unrelated'] = stat(sw[k]['swapped_minus_unrelated'])
+    write_table('app_schema', [f"{m} & {cell(v['formation'],1)} & {cell(v['reading'],1)} & {cell(v['swapped_minus_unrelated'],1)} & "
                                f"{cell(v['formation_true_minus_swapped'],1)} \\\\" for m, v in sch.items()])
+    fl = json.loads((RES / 'e123' / 'flip_and_single_source_2026-10-13.json').read_text())
+    write_table('app_flip', [f"{m} & {cell(stat(fl[m]['shared']['query_abs']))} & {cell(stat(fl[m]['far']['query_abs']))} & "
+                             f"{cell(stat(fl[m]['far']['within_query_abs']))} & {cell(stat(fl[m]['shared']['flip']),1)} & "
+                             f"{cell(stat(fl[m]['far']['flip']),1)} & {cell(stat(fl[m]['shared']['within_flip']),1)} & {cell(stat(fl[m]['single_shared']),1)} \\\\"
+                             for m, *_ in MODELS])
+    numbers['flip_and_single_source_sst_posthoc'] = fl
 
 
 appendix_tables()
@@ -346,7 +378,7 @@ def fig_worlds():
                 ax.errorbar(xi, st['mean'], yerr=[[st['mean'] - st['lo']], [st['hi'] - st['mean']]], fmt=marker,
                             color=color, ms=3.2, mew=0, elinewidth=.6, capsize=0, label=label if i == 0 else None)
         ax.axhline(50, color=GRAY, lw=.5, ls=':')
-        ax.set_xticks(range(len(MODELS)), ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70'], fontsize=6.5)
+        ax.set_xticks(range(len(MODELS)), ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)], fontsize=6.5)
         ax.tick_params(axis='x', length=0, pad=1.5)
         ax.set_title(title, pad=2)
         ax.set_ylim(40, 101)
@@ -360,3 +392,153 @@ def fig_worlds():
 
 fig_worlds()
 (OUT / 'numbers.json').write_text(json.dumps(numbers, indent=1) + '\n')
+
+
+# ---------------------------------------------------------------- Figure 4 (combined): separation by policy and by edge type
+E132 = {'Qwen3-8B': 'e132/qwen3_confirmation', 'Qwen3-14B': 'e132/qwen14_confirmation', 'Qwen3-32B': 'e132/qwen32_confirmation',
+        'Mistral-7B': 'e132/mistral_confirmation', 'Llama-3.1-8B': 'e132/llama_confirmation',
+        'Llama-3.1-70B': 'e132/llama70_confirmation', 'Gemma-2-2B': 'e132/gemma2_confirmation',
+        'Gemma-2-9B': 'e132/gemma9_confirmation'}
+
+
+def e132_candidate(dest, ns, policy, scope='native'):
+    rows = [json.loads(x) for x in (RES / dest / 'behavior.jsonl').read_text().splitlines()]
+    vals = []
+    for r in rows:
+        cells = []
+        for w in ['origin', 'cross']:
+            for o in [0, 1]:
+                c = r['conditions'][f'{w}_{ns}_{policy}_{scope}_{o}']
+                cells.append(np.mean([(z > 0) == (g > 0) for z, g in zip(c['z'], c['gold'])]))
+        vals.append(np.mean(cells))
+    from e118_criterion_code_feature_crossing import interval as iv
+    return stat(iv(np.array(vals)), 100)
+
+
+def fig_separation():
+    import sys
+    sys.path.insert(0, str(ROOT / 'scripts'))
+    avail = {m: d for m, d in E132.items() if (RES / d / 'analysis.json').exists()}
+    fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 2.15), sharey=False, gridspec_kw={'width_ratios': [1, 1, 1]})
+    labels = ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)]
+    x = np.arange(len(MODELS))
+    out = {'policies': {}, 'edges': {}}
+
+    def dot(ax, i, j, nj, s, color, marker, label, hollow=False):
+        xi = i + (j - (nj - 1) / 2) * .16
+        ax.errorbar(xi, s['mean'], yerr=[[s['mean'] - s['lo']], [s['hi'] - s['mean']]], fmt=marker, ms=3.4,
+                    color=color, mfc='white' if hollow else color, mew=.8 if hollow else 0, elinewidth=.6, capsize=0,
+                    label=label)
+
+    pols = [('shared_normal_native', 'Native', GRAY, 'o'), ('shared_answer_cross_off_native', 'Selective blocking', GREEN, 'D'),
+            ('shared_all_cross_off_native', 'Complete isolation', RED, 'X'), ('shared_normal_gate', 'A-only reading', BLUE, 's')]
+    for j, (key, label, color, marker) in enumerate(pols):
+        for i, (m, fsrc, *_r) in enumerate(MODELS):
+            s = stat(load(fsrc, 'full_output_summary.json')['policy_accuracy'][key]['opposite_convention'], 100)
+            out['policies'].setdefault(m, {})[key] = s
+            dot(axes[0], i, j, len(pols), s, color, marker, label if i == 0 else None)
+    axes[0].set_title('(a) Separating the sources', loc='left', pad=3)
+    axes[0].set_ylabel('Accuracy (%)')
+    edges = [('all_cross_off', 'Isolated', RED, 'X'), ('iso_names', '+ names', ORANGE, 'o'),
+             ('iso_comments', '+ comments', '#8c6bb1', '^'), ('iso_answers', '+ answers', '#7f7f7f', 'v')]
+    for ax, ns, part, title in [(axes[1], 'shared', 'opposite', '(b) Shared words, one edge type'),
+                                (axes[2], 'far', 'both', '(c) Separate words, one edge type')]:
+        for j, (pol, label, color, marker) in enumerate(edges):
+            for i, (m, *_r) in enumerate(MODELS):
+                if m not in avail:
+                    continue
+                s = stat(load(avail[m])['accuracy'][f'{ns}_{pol}_native'][part], 100)
+                out['edges'].setdefault(m, {})[f'{ns}_{pol}_{part}'] = s
+                dot(ax, i, j, len(edges), s, color, marker, label if i == 0 else None)
+        if ns == 'far':
+            for i, (m, *_r) in enumerate(MODELS):
+                if m in avail:
+                    s = e132_candidate(avail[m], 'far', 'all_cross_off')
+                    out['edges'][m]['far_all_cross_off_own_words'] = s
+                    axes[2].plot(i - .24, s['mean'], marker='_', color=RED, ms=7, mew=1.2,
+                                 label='Isolated, own two words' if i == 0 else None)
+        ax.set_title(title, loc='left', pad=3)
+    for ax in axes:
+        ax.axhline(50, color=GRAY, lw=.5, ls=':')
+        ax.set_xticks(x, labels, fontsize=6.5)
+        ax.tick_params(axis='x', length=0, pad=1.5)
+        ax.set_ylim(40, 102)
+        ax.legend(loc='upper left', bbox_to_anchor=(-.03, -.13), ncol=2, frameon=False, handlelength=.9,
+                  columnspacing=.5, handletextpad=.25, borderaxespad=0, fontsize=6.2)
+    fig.subplots_adjust(wspace=.22)
+    save(fig, 'fig_separation')
+    numbers['separation_e132'] = out
+
+
+if (RES / 'e132' / 'qwen3_confirmation' / 'analysis.json').exists():
+    fig_separation()
+    (OUT / 'numbers.json').write_text(json.dumps(numbers, indent=1) + '\n')
+
+
+def e132_tables():
+    avail = {m: d for m, d in E132.items() if (RES / d / 'analysis.json').exists()}
+    edge_rows, swap_rows, band_rows, att_rows = [], [], [], []
+    summary = {}
+    for m, *_r in MODELS:
+        if m not in avail:
+            continue
+        a = load(avail[m])
+        A, D = a['accuracy'], a['delta']
+        g = lambda k, p: stat(A[k][p], 100)
+        cells = [cell(g(f'shared_{p}_native', 'opposite'), 1) for p in ['normal', 'all_cross_off', 'iso_names', 'iso_comments', 'iso_answers']]
+        cells += [cell(g(f'far_{p}_native', 'both'), 1) for p in ['normal', 'all_cross_off', 'iso_names', 'iso_comments', 'iso_answers']]
+        edge_rows.append(f"{m} & " + ' & '.join(cells) + ' \\\\')
+        summary[m] = {'acc': {k: g(k, p) for k, p in [(f'{ns}_{pol}_native', 'opposite' if ns == 'shared' else 'both')
+                       for ns in ['shared', 'far'] for pol in ['normal', 'answer_cross_off', 'all_cross_off', 'iso_names',
+                       'iso_comments', 'iso_answers', 'no_answer_senders'] if f'{ns}_{pol}_native' in A]}}
+        if 'shared_pf_normal_gate' in D:
+            sw = [cell(stat(D[f'{ns}_normal_gate']['signed'])) for ns in ['shared', 'far', 'shared_pf', 'far_swap']]
+            sw += [cell(stat(D[f'{ns}_normal_gate']['query_abs'])) for ns in ['shared_pf', 'far_swap']]
+            swap_rows.append(f"{m} & " + ' & '.join(sw) + ' \\\\')
+            summary[m]['delta_gate'] = {ns: stat(D[f'{ns}_normal_gate']['signed']) for ns in ['shared', 'far', 'shared_pf', 'far_swap']}
+            summary[m]['delta_gate_abs'] = {ns: stat(D[f'{ns}_normal_gate']['query_abs']) for ns in ['shared', 'far', 'shared_pf', 'far_swap']}
+            summary[m]['no_answer_senders'] = {ns: g(f'{ns}_no_answer_senders_native', 'opposite' if ns == 'shared' else 'both') for ns in ['shared', 'far']}
+        if a.get('bands'):
+            band_rows.append(f"{m} & {cell(stat(D['shared_normal_gate']['signed']))} & " +
+                             ' & '.join(cell(stat(a['bands'][str(k)]['reduction'])) for k in range(4)) + ' \\\\')
+            summary[m]['bands'] = {k: stat(a['bands'][str(k)]['reduction']) for k in range(4)}
+        at = a['attention']
+        att_rows.append(f"{m} & {100*(at['shared_B_answer_same']['all_layers']['mean'] + at['shared_B_answer_diff']['all_layers']['mean']):.2f} & "
+                        f"{100*(at['far_B_answer_same']['all_layers']['mean'] + at['far_B_answer_diff']['all_layers']['mean']):.2f} & "
+                        f"{cell(stat(at['B_answer_shared_minus_far'], 100))} & "
+                        f"{100*at['shared_B_name']['all_layers']['mean']:.2f} & {100*at['shared_A_comment']['all_layers']['mean']:.2f} \\\\")
+        summary[m]['attention'] = {'B_answer_shared_minus_far': stat(at['B_answer_shared_minus_far'], 100),
+                                   'same_minus_diff_per_token': stat(at['shared_B_answer_same_minus_diff_per_token'], 100)}
+    write_table('app_e132_edges', edge_rows)
+    write_table('app_e132_swap', swap_rows)
+    write_table('app_e132_bands', band_rows)
+    write_table('app_e132_attention', att_rows)
+    numbers['e132_summary'] = summary
+
+
+if (RES / 'e132' / 'qwen3_confirmation' / 'analysis.json').exists():
+    e132_tables()
+    (OUT / 'numbers.json').write_text(json.dumps(numbers, indent=1) + '\n')
+
+
+def fig_schema():
+    sch = numbers['public_schema_sst']
+    fig, ax = plt.subplots(figsize=(COL_W, 1.55))
+    names = ['Qwen3-8B', 'Mistral-7B', 'Llama-3.1-8B']
+    for j, (key, label, color) in enumerate([('formation', 'Demonstrations read the table', BLUE),
+                                             ('reading', 'Only the query reads it', ORANGE),
+                                             ('swapped_minus_unrelated', 'Swapped table, demonstrations', '#9ecae1')]):
+        for i, m in enumerate(names):
+            s = sch[m][key]; xi = i + (j - 1) * .26
+            ax.bar(xi, s['mean'], .24, color=color, lw=0, label=label if i == 0 else None)
+            ax.errorbar(xi, s['mean'], yerr=[[s['mean'] - s['lo']], [s['hi'] - s['mean']]], fmt='none',
+                        ecolor='black', elinewidth=.6, capsize=1.2, capthick=.6)
+    ax.axhline(0, color='black', lw=.5)
+    ax.set_xticks(range(3), ['Qwen3-8B', 'Mistral-7B', 'Llama-3.1-8B'])
+    ax.tick_params(axis='x', length=0, pad=2)
+    ax.set_ylabel('Gain over unrelated\ntable (points)')
+    ax.legend(loc='upper right', frameon=False, fontsize=6.4, handlelength=1, handletextpad=.35)
+    save(fig, 'fig_schema')
+
+
+fig_schema()

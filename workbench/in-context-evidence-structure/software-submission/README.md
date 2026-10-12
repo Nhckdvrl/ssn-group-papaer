@@ -3,7 +3,7 @@
 Anonymous submission. This archive contains the code for all experiments in the paper and the script that draws the
 main-text figures and appendix tables from their outputs.
 
-All experiments are forward passes over frozen public checkpoints (FP32, eager attention); no model is trained.
+All experiments are forward passes over frozen public checkpoints (Qwen3, Mistral, Llama-3.1, Gemma-2; FP32, eager attention); no model is trained.
 Each experiment script builds its prompts from public data, runs the attention interventions and writes
 `contexts.jsonl`, `behavior.jsonl` (per-query logits and argmax tokens for every condition) and `analysis.json`
 (prompt-level bootstrap intervals).
@@ -21,6 +21,10 @@ Each experiment script builds its prompts from public data, runs the attention i
 | `e127_shared_output_cache_composition.py` | §5 encodings formed together (Appendix H) |
 | `e122_source_preserving_formation.py` | two-aspect reviews (Appendix G) |
 | `e131_mechanism.py`, `e131_native.py`, `e131_function.py`, `e131_dispatch.py` | the same engines for Qwen3-32B and Llama-3.1-70B (multi-GPU) |
+| `e132_merge.py` | merges runs split over several GPUs (`--shard k/n`) and runs the analysis |
+| `run_gemma.py` | runs any engine on Gemma-2 with the beginning-of-sequence token prepended to the prompt |
+| `e123_wave_report.py`, `gemma_full_output.py` | full-vocabulary accuracy summaries of the policy runs |
+| `flip_single_source.py`, `instruction_control.py` | per-query magnitudes, flip rates, single-source accuracy and the instruction control |
 | `paper_figures_v2.py` | figures and appendix tables from the outputs |
 
 The remaining files are shared helpers (prompt header, bootstrap, reconstruction statistics).

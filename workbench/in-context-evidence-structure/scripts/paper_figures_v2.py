@@ -44,12 +44,15 @@ MODELS = [  # label, function source, operation source, reconstruction source
      'e131/llama70_confirmation_mechanism'),
 ]
 GEMMA = ('Gemma-2-2B', 'e123/gemma2_confirmation', 'e120/gemma2_confirmation', 'e121/gemma2_confirmation')
-if all((RES / d / 'analysis.json').exists() for d in GEMMA[1:]) and (RES / GEMMA[1] / 'full_output_summary.json').exists():
-    MODELS.append(GEMMA)
+GEMMA9 = ('Gemma-2-9B', 'e123/gemma9_confirmation', 'e120/gemma9_confirmation', 'e121/gemma9_confirmation')
+for g in [GEMMA, GEMMA9]:
+    if all((RES / d / 'analysis.json').exists() for d in g[1:]) and (RES / g[1] / 'full_output_summary.json').exists():
+        MODELS.append(g)
 SHORT = {'Qwen3-8B': 'Qwen3\n8B', 'Qwen3-14B': 'Qwen3\n14B', 'Qwen3-32B': 'Qwen3\n32B',
          'Mistral-7B': 'Mistral\n7B', 'Llama-3.1-8B': 'Llama\n8B', 'Llama-3.1-70B': 'Llama\n70B',
          'Gemma-2-2B': 'Gemma-2\n2B'}
 SHORT['Gemma-2-2B'] = 'Gemma\n2B'
+SHORT['Gemma-2-9B'] = 'Gemma\n9B'
 
 
 def load(path, name='analysis.json'):
@@ -92,7 +95,7 @@ def fig_leak():
             out[m]['within_class_control_gate'] = stat(
                 load(fsrc)['A_B_code_response']['shared_normal_gate']['within_signed'])
     ax.axhline(0, color='black', lw=.5)
-    ax.set_xticks(x, [SHORT[m[0]] for m in MODELS])
+    ax.set_xticks(x, ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)])
     ax.tick_params(axis='x', length=0, pad=2)
     ax.set_ylabel("Pull of B's convention\non A's margin (nats)")
     ax.set_ylim(-.25, 3.2)
@@ -375,7 +378,7 @@ def fig_worlds():
                 ax.errorbar(xi, st['mean'], yerr=[[st['mean'] - st['lo']], [st['hi'] - st['mean']]], fmt=marker,
                             color=color, ms=3.2, mew=0, elinewidth=.6, capsize=0, label=label if i == 0 else None)
         ax.axhline(50, color=GRAY, lw=.5, ls=':')
-        ax.set_xticks(range(len(MODELS)), ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2'][:len(MODELS)], fontsize=6.5)
+        ax.set_xticks(range(len(MODELS)), ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)], fontsize=6.5)
         ax.tick_params(axis='x', length=0, pad=1.5)
         ax.set_title(title, pad=2)
         ax.set_ylim(40, 101)
@@ -394,7 +397,8 @@ fig_worlds()
 # ---------------------------------------------------------------- Figure 4 (combined): separation by policy and by edge type
 E132 = {'Qwen3-8B': 'e132/qwen3_confirmation', 'Qwen3-14B': 'e132/qwen14_confirmation', 'Qwen3-32B': 'e132/qwen32_confirmation',
         'Mistral-7B': 'e132/mistral_confirmation', 'Llama-3.1-8B': 'e132/llama_confirmation',
-        'Llama-3.1-70B': 'e132/llama70_confirmation', 'Gemma-2-2B': 'e132/gemma2_confirmation'}
+        'Llama-3.1-70B': 'e132/llama70_confirmation', 'Gemma-2-2B': 'e132/gemma2_confirmation',
+        'Gemma-2-9B': 'e132/gemma9_confirmation'}
 
 
 def e132_candidate(dest, ns, policy, scope='native'):
@@ -416,7 +420,7 @@ def fig_separation():
     sys.path.insert(0, str(ROOT / 'scripts'))
     avail = {m: d for m, d in E132.items() if (RES / d / 'analysis.json').exists()}
     fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 2.15), sharey=False, gridspec_kw={'width_ratios': [1, 1, 1]})
-    labels = ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2'][:len(MODELS)]
+    labels = ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)]
     x = np.arange(len(MODELS))
     out = {'policies': {}, 'edges': {}}
 

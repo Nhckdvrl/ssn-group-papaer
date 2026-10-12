@@ -24,13 +24,14 @@
 \definecolor{srcA}{HTML}{2F6DB3}
 \definecolor{srcB}{HTML}{E08A2C}
 \definecolor{blk}{HTML}{C4473D}
+\definecolor{nameC}{HTML}{3C9A64}
 \newcommand{\ns}[1]{\textcolor{gray}{#1}}
 \newcommand{\lw}[1]{\textit{#1}}
-\newcommand{\nmodels}{seven}
+\newcommand{\nmodels}{eight}
 \makeatletter\newcommand{\rows}[1]{\@@input #1 }\makeatother
 \newcommand{\ci}[2]{{\scriptsize\,(#1, #2)}}
 
-\title{Whose Rule Is It? How Language Models Mix and Separate\\ Source-Specific Rules in In-Context Learning}
+\title{Whose Rule Is It Anyway? Shared Labels Mix and Names Separate\\ Source-Specific Rules in In-Context Learning}
 
 \author{Anonymous ACL submission}
 
@@ -51,62 +52,57 @@ Blocking only the answer-to-label path improves source-conditioned accuracy in e
 \begin{figure}[t]
 \centering
 \adjustbox{width=\columnwidth}{\begin{tikzpicture}[
-  ln/.style={font=\scriptsize\ttfamily, anchor=north west, inner sep=.6pt},
-  lab/.style={draw, rounded corners=1pt, inner sep=1pt, line width=.6pt, font=\scriptsize\ttfamily, anchor=west},
-  box/.style={rounded corners=2pt, inner sep=3pt, line width=.5pt},
+  chip/.style={rounded corners=1.5pt, inner sep=2pt, minimum height=11pt, font=\scriptsize\ttfamily, anchor=west, line width=.4pt},
+  cmt/.style={chip, draw=gray!45, fill=gray!8, text width=3.25cm, align=left},
+  nm/.style={chip, draw=nameC, fill=nameC!14, minimum width=.95cm, align=center},
+  ans/.style={chip, line width=.9pt, minimum width=.62cm, align=center},
   tag/.style={font=\scriptsize\bfseries, anchor=east},
-  flow/.style={-{Stealth[length=3.5pt]}, rounded corners=3pt}]
-\def\W{4.7}
-% source B
-\node[ln] (b1) at (0,0) {Comment: A gorgeous, witty film.};
-\node[ln, below=.5pt of b1.south west, anchor=north west] (b2) {Annotator: Sam};
-\node[ln, below=.5pt of b2.south west, anchor=north west] (b3) {Label:};
-\node[lab, draw=srcB, right=1.5pt of b3.east] (bans) {yes};
-% source A
-\node[ln] (a1) at (0,-1.08) {Comment: Dull and far too long.};
-\node[ln, below=.5pt of a1.south west, anchor=north west] (a2) {Annotator: Alex};
-\node[ln, below=.5pt of a2.south west, anchor=north west] (a3) {Label:};
-\node[lab, draw=srcA, right=1.5pt of a3.east] (alab) {yes};
-% query
-\node[ln] (q1) at (0,-2.42) {Comment: Charming and smart.};
-\node[ln, below=.5pt of q1.south west, anchor=north west] (q2) {Annotator: Alex};
-\node[ln, below=.5pt of q2.south west, anchor=north west] (q3) {Label: \textbf{?}};
-\node[font=\scriptsize] at (1.2,-2.12) {$\cdots$};
-\coordinate (bR) at ($(b1.north west)+(\W,0)$);
-\coordinate (aR) at ($(a1.north west)+(\W,0)$);
-\coordinate (qR) at ($(q1.north west)+(\W,0)$);
-\begin{scope}[on background layer]
-\node[box, draw=srcB, fill=srcB!9, fit=(b1)(b3)(bans)(bR)] (B) {};
-\node[box, draw=srcA, fill=srcA!9, fit=(a1)(a3)(alab)(aR)] (A) {};
-\node[box, draw=gray!70, fill=gray!7, fit=(q1)(q3)(qR)] (Q) {};
-\end{scope}
-\node[tag, text=srcB] at (B.west) {B};
-\node[tag, text=srcA] at (A.west) {A};
-\node[tag, text=gray] at (Q.west) {Q};
-\coordinate (x1) at (\W+.38,0);
-\coordinate (x2) at (\W+.78,0);
-\coordinate (x3) at (\W+1.18,0);
-% formation: B's answer is read by A's label position
-\draw[flow, srcB, line width=1pt] (bans.east) -- (bans.east -| x1) |- (alab.east);
-% reading: query reads A; reading B is blocked
-\coordinate (aOut) at ($(A.south east)+(0,.12)$);
-\coordinate (qIn1) at ($(Q.east)+(0,.12)$);
-\coordinate (bOut) at ($(B.north east)+(0,-.14)$);
-\coordinate (qIn2) at ($(Q.east)+(0,-.14)$);
-\draw[flow, srcA, line width=.8pt] (aOut) -- (aOut -| x2) |- (qIn1);
-\draw[flow, blk, line width=.8pt, dashed] (bOut) -- (bOut -| x3) |- (qIn2);
-\coordinate (cut) at ($(x3|-A.north)+(0,.05)$);
-\node[blk, font=\small\bfseries, fill=white, inner sep=0pt] at (cut) {$\times$};
+  flow/.style={-{Stealth[length=3.6pt]}, rounded corners=3pt},
+  note/.style={font=\scriptsize, align=left, inner sep=1pt}]
+% rows
+\foreach \y/\who/\c/\n/\a/\col in {0/B/A gorgeous{,} witty film./Sam/yes/srcB, -0.62/A/Dull and far too long./Alex/yes/srcA}{
+  \node[cmt] (c\who) at (0,\y) {\c};
+  \node[nm, right=2pt of c\who] (n\who) {\n};
+  \node[ans, draw=\col, fill=\col!12, right=2pt of n\who] (a\who) {\a};
+  \node[tag, text=\col] at ($(c\who.west)+(-.05,0)$) {\who};
+}
+\node[font=\scriptsize] at (1.6,-1.0) {$\cdots$};
+\node[cmt] (cQ) at (0,-1.38) {Charming and smart.};
+\node[nm, right=2pt of cQ] (nQ) {Alex};
+\node[ans, draw=gray!60, fill=white, right=2pt of nQ] (aQ) {\textbf{?}};
+\node[tag, text=gray] at ($(cQ.west)+(-.05,0)$) {Q};
+% column headers
+\node[font=\tiny, text=gray, above=0pt of cB] {comment};
+\node[font=\tiny, text=gray, above=0pt of nB] {annotator};
+\node[font=\tiny, text=gray, above=0pt of aB] {label};
+% mechanism 1: B's answer leaks into A's label position
+\draw[flow, srcB, line width=1.1pt] (aB.east) to[out=0, in=0, looseness=1.7] (aA.east);
+% mechanism 2: names tell the sources apart
+\draw[nameC, line width=1.1pt, {Stealth[length=3pt]}-{Stealth[length=3pt]}] (nB.south) -- (nA.north);
 % legend
-\begin{scope}[shift={(0,-3.55)}, font=\scriptsize]
-\draw[flow, srcB, line width=1pt] (0,0) -- (.45,0) node[right, text=black] {answer$\to$label path (formation)};
-\draw[flow, srcA, line width=.8pt] (0,-.32) -- (.45,-.32) node[right, text=black] {A-only reading};
-\draw[flow, blk, line width=.8pt, dashed] (2.45,-.32) -- (2.9,-.32) node[right, text=black] {blocked reading of B};
+\begin{scope}[shift={(-.3,-1.92)}, font=\scriptsize]
+\draw[flow, srcB, line width=1.1pt] (0,0) -- (.4,0) node[right, text=black] {answer$\to$label leak};
+\draw[nameC, line width=1.1pt, {Stealth[length=3pt]}-{Stealth[length=3pt]}] (2.75,0) -- (3.15,0) node[right, text=black] {names keep rules apart};
+\end{scope}
+% reading
+\draw[flow, srcA, line width=.8pt] ($(cA.west)+(.15,-.16)$) to[out=-130, in=130] ($(cQ.west)+(.15,.16)$);
+\node[note, text=srcA, anchor=east] at (-.32,-1.0) {A-only\\reading};
+% result strip
+\begin{scope}[shift={(0,-2.78)}]
+\node[font=\scriptsize, anchor=west] at (-.35,.3) {\textbf{Accuracy when the conventions conflict} (bars start at chance)};
+\foreach \x/\v/\lab/\col/\tc in {0/73/native/gray!60/black, 1.32/52/isolate sources/blk!80/black, 2.64/77/+ names only/nameC/white, 3.96/89/block the leak/srcA/white}{
+  \fill[gray!10] (\x,0) rectangle ++(1.1,-.5);
+  \fill[\col] (\x,-.5) rectangle ++({1.1*(\v-50)/50},.5);
+  \draw[gray!50, line width=.3pt] (\x+.0,-.5) rectangle ++(1.1,.5);
+  \node[font=\scriptsize\bfseries, text=\tc, anchor=west] at (\x+.04,-.25) {\v\%};
+  \node[font=\tiny, anchor=north, text width=1.2cm, align=center] at (\x+.55,-.52) {\lab};
+}
 \end{scope}
 \end{tikzpicture}}
-\caption{Two annotators label reviews with the same words but opposite conventions: Sam uses \lw{yes} for positive reviews, Alex for negative ones.
-The query asks for Alex's label.
-Restricting the query to Alex's demonstrations (A-only reading) does not remove Sam's rule from the prediction, because while the prompt is processed Alex's label positions attend to Sam's earlier answers and absorb Sam's association (\S\ref{sec:observation}--\S\ref{sec:path}).}
+\caption{Two annotators label reviews with the same words but opposite conventions: Sam uses \lw{yes} for positive reviews, Alex for negative ones, and the query asks for Alex's label.
+While the prompt is processed, Alex's label position reads Sam's earlier answer and absorbs Sam's rule, so restricting the query to Alex's demonstrations does not isolate Alex's rule (\S\ref{sec:observation}--\S\ref{sec:path}).
+Attention between the annotators' names is what lets the model keep the two rules apart (\S\ref{sec:consequences}).
+Bottom: SST-5 accuracy under conflicting conventions, averaged over our \nmodels{} models.}
 \label{fig:overview}
 \end{figure}
 
@@ -137,7 +133,7 @@ Our main experiments use reviews from SST-5 \citep{socher-etal-2013-recursive}, 
 Our findings fit together as follows.
 When the two sources share label words, the other source's convention shifts the model's predictions for the requested source even when the query cannot attend to the other source, whichever pair of words they share, while with separate label words the shift vanishes (\S\ref{sec:observation}).
 The shift travels mainly through one attention path in the first half of the network: the label positions of the requested source read the earlier \emph{answers} of the other source.
-Replacing only the keys of these answer messages reproduces how separate label words change the requested source's label states, with a coefficient of one ($r=$ R_RANGE), blocking them in the ordinary forward pass removes PCT_RANGE of the cross-source effect, and the messages carry the other source's input--label association rather than only its label words (\S\ref{sec:path}).
+Replacing only the keys of these answer messages reproduces how separate label words change the requested source's label states, with a coefficient of one ($r=$ 0.80--0.95), blocking them in the ordinary forward pass removes 35--94\% of the cross-source effect, and the messages carry the other source's input--label association rather than only its label words (\S\ref{sec:path}).
 Cross-source formation also does necessary work.
 Removing all of it leaves each source's rule intact but makes the model unable to tell the rules apart: with conflicting conventions its predictions fall to chance, and with separate label words it answers in the other source's vocabulary about half of the time.
 Attention to the other source's names, a few tokens per demonstration, restores most of the distinction, whereas the far more numerous comment tokens do not.
@@ -166,7 +162,7 @@ Controlled experiments use templated restaurant reviews, which let us keep B's l
 A further variant has comments with independent food and service sentiment and sources that differ in the aspect they judge, and we use comments from the Measuring Hate Speech corpus \citep{sachdeva-etal-2022-measuring} for replications (Appendix~\ref{app:materials}).
 
 \paragraph{Models.}
-We use Qwen3-8B, 14B and 32B \citep{yang2025qwen3}, Mistral-7B-v0.3 \citep{jiang2023mistral}, Llama-3.1-8B and 70B \citep{grattafiori2024llama} and GEMMA_MODELS \citep{gemma2024gemma2}, without chat templates and with frozen weights, FP32 computation and exact attention (Appendix~\ref{app:models}).
+We use Qwen3-8B, 14B and 32B \citep{yang2025qwen3}, Mistral-7B-v0.3 \citep{jiang2023mistral}, Llama-3.1-8B and 70B \citep{grattafiori2024llama} and Gemma-2-2B and 9B \citep{gemma2024gemma2}, without chat templates and with frozen weights, FP32 computation and exact attention (Appendix~\ref{app:models}).
 
 \paragraph{Formation and reading.}
 The \emph{label position} of a demonstration is the first token of its label word, and its \emph{answer tokens} are the label word and the line breaks after it.
@@ -202,21 +198,21 @@ Analyses added after the confirmation runs are marked in the appendix, and code 
 \caption{Pull of B's convention on predictions for A ($\Delta$, Eq.~\ref{eq:delta}) on SST-5 reviews.
 When the query can read only A's demonstrations, B's convention still shifts A's predictions if the two sources share label words (blue), and blocking the answer-to-label path during formation removes most of the remaining effect (green).
 With separate label words the effect vanishes (orange).
-Bars: means over 32 prompts; error bars: 95\% bootstrap intervals.}
+Q, M, L, G: Qwen3, Mistral, Llama-3.1, Gemma-2 with size in billions. Error bars: 95\% intervals over 32 prompts.}
 \label{fig:leak}
 \end{figure}
 
 Figure~\ref{fig:leak} shows how B's convention affects predictions for A.
-When the query reads both sources, the pull is large, between 1.4 and 2.9 nats, because the query sees B's demonstrations directly.
-A-only reading removes this direct access, yet B's convention still shifts A's predictions by 0.40 to 1.50 nats in all six models.
-In accuracy terms, A's answers under A-only reading are 7.4 points less accurate in Qwen3-8B, Qwen3-32B and Mistral-7B, 5.9 in Llama-3.1-70B and 2.3 in Llama-3.1-8B when B's convention conflicts with A's than when it agrees, although A's demonstrations and the queries are the same in both prompts. Only in Qwen3-14B is the difference (1.2 points) within noise.
+When the query reads both sources, the pull is large, between 1.0 and 2.9 nats, because the query sees B's demonstrations directly.
+A-only reading removes this direct access, yet B's convention still shifts A's predictions by 0.14 to 1.50 nats in all eight models.
+In five of them the shift changes answers: A's answers are 2.3 to 7.4 points less accurate when B's convention conflicts with A's than when it agrees, although A's demonstrations and the queries are the same in both prompts. In Qwen3-14B and the two Gemma models the shift in A's margin does not reach the accuracy.
 Changing B's demonstrations without changing B's association, by exchanging comments within the same class, produces no such shift (between $-0.21$ and $0.10$ nats, with intervals that include zero in every model), so the effect reflects B's rule and not a change in B's text.
 In the controlled reviews the same restriction leaves an effect of 0.74 to 1.71 nats (Table~\ref{tab:operation}), and in Measuring Hate Speech comments B's rule changes 17.6\% of Qwen3-8B's answers for A (Appendix~\ref{app:observation}).
 
 The effect depends on the label words.
 When B answers with \lw{pass}/\lw{flag}, the pull of B's convention on A's predictions under A-only reading vanishes ($-0.03$ to $0.04$ nats), although the query still reads the same A demonstrations and B's demonstrations still precede them.
-The change in A's margin per query, regardless of direction, then falls to 0.14--0.41 nats, the size produced by exchanging B's comments within class (0.10--0.32), whereas with shared words it is 0.42--1.58 nats (Appendix~\ref{app:observation}).
-What reaches the query through A's positions is tied to the words the two sources share.
+The change in A's margin per query, regardless of direction, then falls to 0.11--0.41 nats, the size produced by exchanging B's comments within class (0.09--0.32), whereas with shared words it is 0.17--1.58 nats (Appendix~\ref{app:observation}).
+What matters is whether the words are shared, not which words: when both sources answer with \lw{pass}/\lw{flag} the pull is 0.39--1.01 nats, and when A answers with \lw{pass}/\lw{flag} and B with \lw{no}/\lw{yes} it is 0.04--0.10 (Appendix~\ref{app:edges}).
 Within each family the pull is larger in the larger model, also when the 8B models are run on exactly the prompts used for Qwen3-32B and Llama-3.1-70B (from 0.65 to 1.50 and from 0.57 to 0.96 nats; Appendix~\ref{app:observation}).
 
 Since the query in this setting reads only A's tokens, B's rule must reach the prediction through the states at A's positions, which were formed while B's demonstrations were in context.
@@ -249,8 +245,8 @@ The \emph{prediction} keeps the shared-word prompt and replaces only the keys (o
 Both are read out at the query's prediction for A as the difference between B's two conventions, which removes any shift that does not depend on B's rule, and the prediction has a coefficient of one and no fitted parameter \citep[cf.][]{zhang2024towards}.
 
 Under A-only reading, the setting of \S\ref{sec:observation}, the prediction from keys alone matches the effect closely (Figure~\ref{fig:reconstruction}).
-Correlations are 0.95 for Qwen3-8B, Qwen3-14B and Mistral-7B, 0.94 for Llama-3.1-8B, 0.92 for Llama-3.1-70B and 0.82 for Qwen3-32B, with points along the identity line.
-When the query reads both sources, patching keys and values predicts the effect with $r=0.92$--$0.97$ in five models and $0.72$ in Llama-3.1-70B, whose A states then compete with B's directly readable states (Appendix~\ref{app:reconstruction}).
+Correlations are 0.92 to 0.95 in six models and 0.82 and 0.80 in Qwen3-32B and Gemma-2-2B, with points along the identity line.
+When the query reads both sources, patching keys and values predicts the effect with $r=0.92$--$0.99$ in seven models and $0.72$ in Llama-3.1-70B, whose A states then compete with B's directly readable states (Appendix~\ref{app:reconstruction}).
 Patching keys alone recovers most of the effect and patching values alone recovers less, so B's label words change where A's label positions attend among B's answers as well as what they receive.
 On Measuring Hate Speech comments the prediction reaches $r>0.97$ for Qwen3-8B and Mistral-7B.
 
@@ -267,6 +263,8 @@ Qwen3-32B     & 1.71 & 0.89 & 0.39 \\
 Mistral-7B    & 0.74 & 0.52 & 0.32 \\
 Llama-3.1-8B  & 0.94 & 0.55 & 0.48 \\
 Llama-3.1-70B & 0.98 & 0.59 & 0.40 \\
+Gemma-2-2B    & 0.20 & 0.19 & 0.12 \\
+Gemma-2-9B    & 0.79 & 0.50 & 0.30 \\
 \bottomrule
 \end{tabular}}
 \caption{The answer-to-label path in the native computation (controlled reviews, shared label words, A-only reading).
@@ -282,15 +280,14 @@ All 95\% intervals exclude zero (Appendix~\ref{app:operation}).}
 
 A successful prediction shows that the path can carry the effect, not that the model's own computation uses it.
 We therefore intervene on the ordinary forward pass without any donor states (Table~\ref{tab:operation}).
-Removing the answer-to-label path while the prompt is processed reduces the effect of B's rule under A-only reading by 0.52 to 0.89 nats, between 35\% and 70\% of the total, in all six models.
-On SST-5, blocking the path in both directions removes 62--74\% of the effect under A-only reading (Figure~\ref{fig:leak}, green).
-Conversely, when we block all attention from A's demonstrations to B's and then reopen only this path, B's rule again affects A's predictions, by 0.32 to 0.73 nats, a quarter to two thirds of the full effect.
+Removing the answer-to-label path while the prompt is processed reduces the effect of B's rule under A-only reading by 0.19 to 0.89 nats, between 35\% and 94\% of the total, in all eight models, and on SST-5 blocking it in both directions removes 62--93\% (Figure~\ref{fig:leak}, green).
+Conversely, when we block all attention from A's demonstrations to B's and then reopen only this path, B's rule again affects A's predictions, by 0.12 to 0.73 nats, a quarter to two thirds of the full effect.
+Blocking the path in one quarter of the layers at a time shows where it acts: most of the reduction comes from the second quarter of the layers and none from the last, in each of the six models where we measured it (Appendix~\ref{app:edges}).
 The path is thus both a substantial part of the native route and sufficient on its own to transmit B's rule.
 The remainder of the effect travels through other cross-source edges, such as attention from A's comments to B's demonstrations.
-The reduction is specific to B's answers: blocking A's label positions from A's \emph{own} earlier answers does not reduce the effect of B's rule in any model and increases it in all six, by 0.12 to 0.68 nats (Appendix~\ref{app:operation}).
+The reduction is specific to B's answers: blocking A's label positions from A's \emph{own} earlier answers does not reduce the effect of B's rule in any model and increases it in seven of the eight, by 0.12 to 0.68 nats (Appendix~\ref{app:operation}).
 
-When the query can also read B directly, the net contribution of the path differs between models and can be negative (Appendix~\ref{app:operation}).
-A's evidence then competes with B's states that the query reads at the same time, and the path changes how the two combine rather than adding a fixed amount of B's rule.
+When the query can also read B directly, A's evidence competes with B's own states, and the net contribution of the path differs in sign between models (Appendix~\ref{app:operation}).
 
 \subsection{The path carries the association, not only the words}
 \label{sec:assoc}
@@ -300,9 +297,9 @@ To isolate the association, we keep B's label sequence, positions and comment se
 As a control we exchange the same number of comments within each class, which moves text without changing the association.
 We patch only the answer messages that A's label positions receive from each modified prompt into the original prompt.
 
-Messages from the reversed association change A's predictions more than messages from the control, by 0.62 and 0.40 nats in Qwen3-8B and Mistral-7B on controlled reviews and by 0.13 to 0.49 nats in all six models on SST-5 (Appendix~\ref{app:association}).
-The answer messages therefore transmit B's input--label association while every label word stays in place.
-The sign of this change differs between models (positive in Qwen3-8B, Qwen3-14B and Mistral-7B, negative in both Llama models): the path delivers B's association to A's label states, and how these states combine it with A's own demonstrations depends on the model.
+Messages from the reversed association change A's predictions more than messages from the control, by 0.62 and 0.40 nats in Qwen3-8B and Mistral-7B on controlled reviews and by 0.03 to 0.49 nats in all eight models on SST-5 (Appendix~\ref{app:association}).
+The answer messages transmit B's input--label association even though every label word stays in place.
+The sign of this change differs between families (positive in the Qwen3, Mistral and Gemma models, negative in both Llama models): the path delivers B's association to A's label states, and how these states combine it with A's own demonstrations depends on the model.
 
 \section{Cross-source formation also separates the rules}
 \label{sec:consequences}
@@ -312,7 +309,6 @@ We compare three ways of separating the sources on SST-5 (Table~\ref{tab:policie
 \emph{Selective blocking} removes the answer-to-label path in both directions while the prompt is processed and keeps all other attention.
 \emph{Complete isolation} removes all attention between the two sources' demonstrations while the prompt is processed, so that each source is encoded as if it were alone.
 \emph{A-only reading} restricts the query, as in \S\ref{sec:observation}, and is applied for each requested source in turn, which requires knowing at query time which tokens belong to which source.
-Both requested sources are evaluated from the same processed prompt.
 
 \begin{table}[t]
 \centering\small
@@ -327,6 +323,8 @@ Qwen3-32B     & 88.0 & \textbf{+7.7}  & $-$12.7 & +5.9 & +5.7 \\
 Mistral-7B    & 88.8 & +5.4  & $-$15.2 & \textbf{+6.0} & \ns{+1.0} \\
 Llama-3.1-8B  & 81.3 & +9.5  & $-$6.1  & \textbf{+16.7} & +1.2 \\
 Llama-3.1-70B & 88.5 & \textbf{+10.4} & $-$12.6 & +7.3 & +6.2 \\
+Gemma-2-2B    & 85.3 & +2.5  & $-$10.6 & \textbf{+10.2} & \ns{$-$0.6} \\
+Gemma-2-9B    & 89.9 & +7.7  & $-$14.8 & \textbf{+8.7} & \ns{+1.0} \\
 \bottomrule
 \end{tabular}}
 \caption{Accuracy (\%) on SST-5 with shared label words, averaged over both requested sources and both convention worlds, and change in points under three ways of separating the sources and under a one-sentence instruction to use only the requested annotator's examples.
@@ -336,13 +334,13 @@ Gray: 95\% interval includes zero; all other changes exclude zero (Appendix~\ref
 \end{table}
 
 \paragraph{Selective blocking improves accuracy.}
-Blocking the answer-to-label path improves accuracy in every model, by 5.4 to 10.4 points, and improves it for each of the two requested sources separately.
-The gain comes from prompts in which the sources' conventions conflict, where accuracy rises by 12.1 to 20.9 points (for example from 77.3\% to 98.2\% in Llama-3.1-70B), while prompts with agreeing conventions, already near ceiling, are unaffected.
+Blocking the answer-to-label path improves accuracy in every model, by 2.5 to 10.4 points, and in seven of the eight it does so for each of the two requested sources separately.
+The gain comes from prompts in which the sources' conventions conflict, where accuracy rises by 5.9 to 20.9 points (for example from 77.3\% to 98.2\% in Llama-3.1-70B), while prompts with agreeing conventions, already near ceiling, are unaffected.
 On the controlled reviews with two aspects, where the sources can also differ in which aspect they judge, selective blocking improves accuracy by 2.8 to 7.4 points in the four models tested (Appendix~\ref{app:policies}).
 A-only reading helps some models more and others less: it adds 16.7 points for Llama-3.1-8B and nothing for Qwen3-8B.
 The two interventions act on different stages, and selective blocking needs no restriction of the query.
-An explicit instruction to use only the requested annotator's examples helps less than selective blocking in five of the six models.
-A prompt that contains only the requested source's demonstrations reaches 95.5--99.3\%, and selective blocking closes 54--96\% of the gap between the pooled prompt and this single-source prompt.
+An explicit instruction to use only the requested annotator's examples helps less than selective blocking in seven of the eight models.
+A prompt that contains only the requested source's demonstrations reaches 94.8--99.3\%, and selective blocking closes between a quarter (Gemma-2-2B) and nearly all (96\%, Llama-3.1-70B) of the gap between the pooled prompt and this single-source prompt.
 
 \begin{figure*}[t]
 \centering
@@ -351,7 +349,7 @@ A prompt that contains only the requested source's demonstrations reaches 95.5--
 (a) Complete isolation leaves the model at chance, while selective blocking raises accuracy above the native level.
 (b, c) Starting from complete isolation, letting each source see only the other source's \emph{names} restores most of the separation, with shared words (b) and with separate words (c, full-vocabulary accuracy over both convention worlds), whereas the far more numerous comment tokens or the answers do not.
 The dash in (c) marks accuracy under complete isolation when the answer is restricted to the requested source's own two words.
-Q, M and L denote Qwen3, Mistral and Llama-3.1, followed by the size in billions of parameters; error bars: 95\% bootstrap intervals.}
+Model labels as in Figure~\ref{fig:leak}; error bars: 95\% bootstrap intervals.}
 \label{fig:separation}
 \end{figure*}
 
@@ -361,24 +359,30 @@ The breakdown by world explains this number (Figure~\ref{fig:separation}a).
 With agreeing conventions accuracy stays at 94--100\%, and with conflicting conventions it falls to 51--53\%, which is chance.
 The rules themselves are intact: under complete isolation combined with A-only reading accuracy is 93--99\%.
 What complete isolation removes is the model's ability to use the source named in the query to choose between two rules that it has learned.
-Selective blocking keeps this ability, reaching 82--98\% with conflicting conventions.
+Selective blocking keeps this ability, reaching 79--98\% with conflicting conventions.
+
+
+
+\paragraph{Separate label words show what is lost.}
+With separate label words, complete isolation still leaves 94--99\% of answers correct when the decision is restricted to the requested source's two words, as accurate as the native model (Figure~\ref{fig:separation}c).
+The model's actual answers are correct only 52--56\% of the time, because in 42--47\% of queries it answers with the other source's words.
+Without cross-source formation the model knows each rule but not which label space belongs to the source it is asked about.
+Accuracy restricted to a source's own words, the usual way of scoring classification by in-context learning, would not reveal this failure.
+
+\paragraph{The other source's names do the separating.}
+Complete isolation removes three kinds of cross-source attention at once: to the other source's comments, to its names and to its answers.
+To find out which of them the model needs, we start from complete isolation and let every token of a source attend again to one kind of the other source's tokens, using new prompts (Figure~\ref{fig:separation}b, c; Appendix~\ref{app:edges}).
+Reopening the names, about five tokens per demonstration, raises accuracy under conflicting conventions from 49--53\% to 67--88\%, above the native prompt in five of the eight models, and with separate words it raises full-vocabulary accuracy from 50--56\% to 82--96\%.
+Reopening the comments, which contain several times more tokens, or the answers leaves accuracy at 52--62\%, so what complete isolation removes is not context in general.
+The model needs each source's demonstrations to be formed in view of the other source's identity, and the name in the query then selects between the two rules.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_schema}
 \caption{A public table listing each source's label words (e.g., \texttt{Alex: no, yes; Sam: pass, flag}) helps when the demonstrations can read it during formation and not when only the query can read it.
-Private cross-source attention is blocked throughout; gains are relative to a table with unrelated names, and error bars are 95\% bootstrap intervals.}
+Private cross-source attention is blocked throughout. Gains are relative to a table with unrelated names, and error bars are 95\% bootstrap intervals.}
 \label{fig:schema}
 \end{figure}
-
-\paragraph{Separate label words show what is lost.}
-With separate label words, complete isolation still leaves 94--99\% of answers correct when the decision is restricted to the requested source's two words, as accurate as the native model (Figure~\ref{fig:separation}c).
-The model's actual answers are correct only 51--54\% of the time, because in about 45\% of queries it answers with the other source's words.
-Without cross-source formation the model knows each rule but not which label space belongs to the source it is asked about.
-Accuracy restricted to a source's own words, the usual way of scoring classification by in-context learning, would not reveal this failure.
-
-\paragraph{The other source's names do the separating.}
-NAMES_PARAGRAPH
 
 \paragraph{Shared information helps through formation.}
 If cross-source formation supplies the link between sources and their rules, that link should be replaceable by explicit shared information, and it should matter when that information is available.
@@ -387,9 +391,7 @@ When only the demonstrations can read the table, full-vocabulary accuracy rises 
 When only the query can read it, the gain is at most 0.8 points, with intervals that include zero.
 The table helps by shaping how each source's demonstrations are encoded, not by being looked up at query time.
 A table with the two sources' word sets swapped also helps in Qwen3-8B and Mistral-7B (by 14.9 and 3.3 points over the unrelated table), though less than the correct table, so the demonstrations do not simply follow the table's assignment (Appendix~\ref{app:shared}).
-
-\paragraph{Evidence formed together is used together.}
-The shared background also has to be common to the two sources: when the sources are encoded separately twice with the same public facts and their states are recombined, states from the same encoding yield 8.9, 5.9, 0.8 and 9.4 points higher accuracy under conflicting conventions than mixed states in Qwen3-8B, Mistral-7B, Llama-3.1-8B and Qwen3-14B (Appendix~\ref{app:shared}).
+The encodings must also be common: states of the two sources taken from two separate encodings of the same facts are used less well than states from one encoding (Appendix~\ref{app:shared}).
 
 \section{Discussion}
 \label{sec:discussion}
@@ -398,7 +400,7 @@ The shared background also has to be common to the two sources: when the sources
 Three observations identify the label word as the link between the sources.
 The cross-source effect appears whenever the sources share label words, whether both use \lw{no}/\lw{yes} or both use \lw{pass}/\lw{flag}, and vanishes when their words differ in either assignment.
 Patching keys alone reproduces most of the effect of separating the words.
-And A's label positions place more attention on B's answers when the words are shared (ATT_RANGE percentage points of attention mass, Appendix~\ref{app:edges}).
+And A's label positions place more attention on B's answers when the words are shared (0.3 to 2.3 percentage points of attention mass, Appendix~\ref{app:edges}).
 A label position thus treats earlier answers that carry its own label words as further instances of its label and takes in the comments that go with them, whichever source gave them, which extends the role of label words as anchors \citep{wang-etal-2023-label,zheng-etal-2026-label} across sources.
 
 \paragraph{Two kinds of cross-source interaction.}
@@ -408,39 +410,25 @@ The two travel on different tokens and can be separated by intervention, as sele
 Methods that encode sources independently, such as parallel context windows, remove both, and methods that only restrict what the query reads remove neither.
 Both of our interventions use the token ownership that structured prompts provide.
 
-\paragraph{Attributing in-context behaviour.}
-Analyses of in-context learning often attribute a prediction to the demonstrations whose positions the query reads.
-In a prompt with several sources these positions also hold the associations of other sources, so such an attribution would credit A's demonstrations with part of B's rule. Coefficient-one patching of the messages a position received is one way to attribute through formation instead.
-
 \section{Related Work}
 \label{sec:related}
 
 \paragraph{Mechanisms of in-context learning.}
-Information about demonstrations is aggregated at label positions and read out by the query \citep{wang-etal-2023-label}, through circuits that encode inputs, merge them into label states and retrieve them \citep{cho2025revisitingincontextlearninginference} and that remove task-irrelevant information \citep{cho2026mechanismtaskorientedinformationremoval}.
-Demonstrations are contextualized by earlier ones before aggregation \citep{bakalova2025contextualizethenaggregatecircuitsincontextlearning}, and task information is carried by function and task vectors \citep{todd2024function,hendel-etal-2023-context,wang2026fewshotexamplesaddup}, by label words acting as local task vectors \citep{zheng-etal-2026-label} and by representations that become available just in time \citep{li2025justintimedistributedtaskrepresentations}.
-Input--label mappings have been traced to specific heads and steered \citep{sun-etal-2025-interpret,yu-ananiadou-2024-large}, and induction heads support pattern matching in in-context learning \citep{olsson2022context,crosbie-shutova-2025-induction}.
-These studies analyse one task per prompt. With several sources, a source's label positions also hold the rules of the other sources.
+Information about demonstrations is aggregated at label positions and read out by the query \citep{wang-etal-2023-label}, through circuits that encode inputs, merge them into label states and retrieve them \citep{cho2025revisitingincontextlearninginference,cho2026mechanismtaskorientedinformationremoval}.
+Demonstrations are contextualized by earlier ones before aggregation \citep{bakalova2025contextualizethenaggregatecircuitsincontextlearning}, and task information is carried by function and task vectors \citep{todd2024function,hendel-etal-2023-context,wang2026fewshotexamplesaddup}, label words \citep{zheng-etal-2026-label} and representations that appear just in time \citep{li2025justintimedistributedtaskrepresentations}.
+Input--label mappings have been traced to specific heads \citep{sun-etal-2025-interpret,yu-ananiadou-2024-large,olsson2022context,crosbie-shutova-2025-induction}.
+These studies analyse one task per prompt. We study prompts in which label positions also hold other sources' rules.
 
 \paragraph{Labels and rules in context.}
-Models use the input--label mapping of demonstrations to different degrees \citep{min-etal-2022-rethinking}, larger models can follow flipped or semantically unrelated labels \citep{wei2023larger}, and label words carry prior biases \citep{zhao2021calibrate}.
-Task recognition and task learning rely on different heads \citep{yang2026localizingtaskrecognitiontask}, and models compose tasks and remap labels in context \citep{li-etal-2024-language}.
-Conflicting demonstrations \citep{jiao2026understandingdynamicsdemonstrationconflict} and conflicts between context and prior knowledge \citep{li2026contextmisleadsincontextlearning} have been studied as sources of error, whereas in our setting both rules are legitimate and the model must keep them apart.
-In-context learning picks up label relationships without behaving like conventional learning \citep{kossen2024incontext}, and a model can run several in-context tasks in superposition from one prompt \citep{xiong2024everything}.
-Models also struggle to use representations they learn in context \citep{lepori-etal-2026-language}, consistent with our finding that rules learned under complete isolation cannot be used jointly.
+Models use the input--label mapping of demonstrations to different degrees \citep{min-etal-2022-rethinking,kossen2024incontext}, larger models can follow flipped labels \citep{wei2023larger}, label words carry prior biases \citep{zhao2021calibrate}, and several tasks can be run in superposition from one prompt \citep{xiong2024everything,li-etal-2024-language,yang2026localizingtaskrecognitiontask}.
+Conflicting demonstrations \citep{jiao2026understandingdynamicsdemonstrationconflict} and conflicts with prior knowledge \citep{li2026contextmisleadsincontextlearning} have been studied as errors, whereas our two rules are both legitimate.
+Models also struggle to use representations learned in context \citep{lepori-etal-2026-language}, in line with rules that complete isolation leaves learned but unusable.
 
-\paragraph{Binding and retrieval in context.}
-Language models bind entities to attributes through binding IDs \citep{feng2024languagemodelsbindentities,dai-etal-2024-representational}, retrieve bound entities through several interacting mechanisms \citep{gurarieh2026mixingmechanismslanguagemodels}, and execute conditional rules by testing a condition and routing the answer \citep{thavarasa2026testroutelanguagemodels}.
-When entities are contextualized too late, models make errors \citep{lepori-etal-2025-racing}.
-Associating each rule with its source is a binding problem of this kind, and our results locate where it is solved: during formation, through interaction between the sources.
-
-\paragraph{Annotator disagreement.}
-Disagreement between annotators carries information about legitimate differences in interpretation \citep{plank-2022-problem}, and models reflect the opinions of some groups more than others \citep{santurkar2023whose}, and modelling individual annotators instead of the majority label preserves it \citep{davani-etal-2022-dealing}. Corpora such as Measuring Hate Speech release annotator-level labels for this purpose \citep{sachdeva-etal-2022-measuring}.
-Pooling several annotators' examples in one prompt is a natural way to apply this view with in-context learning, and our results describe how a model separates and mixes their rules in that setting.
-
-\paragraph{Isolating parts of the context.}
-Parallel context windows and structured prompting encode separate groups of demonstrations without attention between them \citep{ratner-etal-2023-parallel,hao2022structured}, and KV-cache reuse recomputes part of the attention between independently encoded documents \citep{yao2025cacheblendfastlargelanguage}.
-Our results show what such isolation does to source-specific rules: it prevents rules from mixing but also removes what the model needs to assign them to their sources.
-Attention knockout and activation patching \citep{geva-etal-2023-dissecting,zhang2024towards} are the basis of our interventions.
+\paragraph{Binding, annotators and isolation.}
+Models bind entities to attributes through binding IDs \citep{feng2024languagemodelsbindentities,dai-etal-2024-representational}, retrieve them through several interacting mechanisms \citep{gurarieh2026mixingmechanismslanguagemodels,thavarasa2026testroutelanguagemodels} and err when entities are contextualized late \citep{lepori-etal-2025-racing}. Linking a rule to its source is a binding problem of this kind, and in our prompts it is solved during formation through the sources' names.
+Annotator disagreement carries information worth modelling \citep{plank-2022-problem,davani-etal-2022-dealing,santurkar2023whose}, and pooling annotators' examples in one prompt is a natural way to do so with in-context learning.
+Parallel context windows and structured prompting encode groups of demonstrations separately \citep{ratner-etal-2023-parallel,hao2022structured}, and KV-cache reuse recomputes part of the attention between independently encoded documents \citep{yao2025cacheblendfastlargelanguage}. Our results show that such isolation keeps rules from mixing but also removes what assigns them to their sources.
+Our interventions build on attention knockout and activation patching \citep{geva-etal-2023-dissecting,zhang2024towards}.
 
 \section{Conclusion}
 
@@ -451,16 +439,17 @@ Separating sources in a pooled prompt therefore means deciding which cross-sourc
 
 \section*{Limitations}
 
-The sources in our experiments follow conventions and aspect criteria that we assign over real and templated comments, which lets us change one rule while holding everything else fixed; the rules of real annotators can differ in several respects at once.
+The sources in our experiments follow conventions and aspect criteria that we assign over real and templated comments, which lets us change one rule while holding everything else fixed. The rules of real annotators can differ in several respects at once.
 All tasks are binary, with two sources and eight demonstrations each, and prompts with more sources or labels may show stronger or weaker interaction.
 Our interventions act on attention edges across all heads, so they identify paths and the layers that carry them rather than individual heads.
-The six models differ in training recipe as well as size, so comparisons across sizes describe these checkpoints.
+The eight models differ in training recipe as well as size, so comparisons across sizes describe these checkpoints.
 
 \section*{Ethical Considerations}
 
-We analyse publicly released models and datasets.
-The Measuring Hate Speech corpus contains offensive language; we use its comments only as model inputs and show none of them in the paper.
+We analyse publicly released models and datasets under their licenses (Appendix~\ref{app:models}).
+The Measuring Hate Speech corpus contains offensive language. We use its comments only as model inputs, without annotator information, and show none of them in the paper.
 The source-specific rules are synthetic and are not attributed to the original annotators.
+Our interventions require white-box access to a model and are tools for analysis. Insight into how sources mix could also be used to make a model follow one source's rule more closely, which is the intended use in settings such as modelling individual annotators.
 
 \bibliography{references}
 

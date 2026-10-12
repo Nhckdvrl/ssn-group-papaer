@@ -209,13 +209,15 @@ def main():
         from transformers.models.mistral import modeling_mistral as mq
     elif model.config.model_type == "llama":
         from transformers.models.llama import modeling_llama as mq
+    elif model.config.model_type == "gemma2":
+        from transformers.models.gemma2 import modeling_gemma2 as mq
     else:
         raise ValueError(model.config.model_type)
     native_eager=mq.eager_attention_forward
     active={'donor':None,'receivers':None,'senders':None,'kind':None,'mode':None,'stats':None,'ids':None}
     covered={i:{} for i in range(len(model.model.layers))};self_errors=[]
     def edge_eager(module,query,key,value,attention_mask,scaling,dropout=0.0,**kwargs):
-        out,weights=native_eager(module,query,key,value,attention_mask,scaling,dropout,**kwargs)
+        out,weights=native_eager(module,query,key,value,attention_mask,scaling=scaling,dropout=dropout,**kwargs)
         receivers=active['receivers']
         if active['stats'] is not None:
             aidx=receivers;bidx=active['senders'];ids=active['ids']
@@ -239,7 +241,7 @@ def main():
             vv=value.clone();vv[...,sender,:]=src.values[...,sender,:]
         # Keep native GEMM geometry. Computing only eight receiver rows caused
         # a measurable FP32 self-interchange drift after many layers.
-        alt,aw=native_eager(module,query,kk,vv,attention_mask,scaling,dropout,**kwargs)
+        alt,aw=native_eager(module,query,kk,vv,attention_mask,scaling=scaling,dropout=dropout,**kwargs)
         out=out.clone();out[:,receivers]=alt[:,receivers]
         weights=weights.clone();weights[:,:,receivers,:]=aw[:,:,receivers,:]
         d=covered[module.layer_idx];mode=active['mode'];d[mode]=d.get(mode,0)+1
@@ -376,7 +378,7 @@ def main():
            "contexts_sha256":hashlib.sha256((dest/"contexts.jsonl").read_bytes()).hexdigest(),
            "python":platform.python_version(),"torch":torch.__version__,"transformers":transformers.__version__,
            "git_head":None,
-           "sender_layer0_KV_max_error":max(layer0_errors),"model_revision":({"qwen3":"40c069824f4251a91eefaf281ebe4c544efd3e18","mistral":"caa1feb0e54d415e2df31207e5f4e273e33509b1","llama":"1f47e50cdbe801ad8a5174156ec3a0655108fb9f"}[model.config.model_type]),"dtype":"float32","attention":"eager",
+           "sender_layer0_KV_max_error":max(layer0_errors),"model_revision":({"qwen3":"40c069824f4251a91eefaf281ebe4c544efd3e18","mistral":"caa1feb0e54d415e2df31207e5f4e273e33509b1","llama":"1f47e50cdbe801ad8a5174156ec3a0655108fb9f","gemma2":("33c193028431c2fde6c6e51f29e6f17b60cbfac6" if model.config.num_hidden_layers==42 else "c5ebcd40d208330abc697524c919956e692655cf")}[model.config.model_type]),"dtype":"float32","attention":"eager",
            "model_type":model.config.model_type,"training":False,"patch_layers":"all","edge_calls":covered,"edge_self_max_error":max(self_errors),"self_edge_cache_checked":True,"pristine_source_cache_exact":True,"primary_query_scope":"native all prefix positions; gated controls at all query positions","native_crossing":"A cached evidence formation x B cached reading environment"}
     (dest/"run.json").write_text(json.dumps(run,indent=2)+"\n")
     analyze(dest)

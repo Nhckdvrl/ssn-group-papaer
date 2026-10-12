@@ -1,0 +1,42 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/gemma-2-2b",
+    "out": "results/e120/gemma2_discovery",
+    "n": 16,
+    "seed": 120001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "operations": [
+    "native",
+    "cross_answer_off",
+    "within_answer_off",
+    "all_B_off",
+    "answer_only_restore"
+  ],
+  "conditions": 64,
+  "scores_per_context": 512,
+  "source_generator": "e115_llama_native_mechanism.py, CPU-only",
+  "prefix_lengths": [
+    293,
+    293,
+    294,
+    294,
+    295,
+    293,
+    293,
+    293,
+    291,
+    294,
+    293,
+    293,
+    292,
+    295,
+    293,
+    292
+  ],
+  "matched_geometry": true,
+  "restoration": "allow only historical B answer -> A label among all B -> A edges",
+  "intervention": "prefix-only normalized attention knockout; no donor activations"
+}

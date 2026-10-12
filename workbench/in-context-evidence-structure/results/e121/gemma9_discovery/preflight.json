@@ -1,0 +1,155 @@
+{
+  "args": {
+    "model": "/tmp/ices_models/gemma-2-9b",
+    "out": "results/e121/gemma9_discovery",
+    "n": 16,
+    "seed": 121001,
+    "materials": "discovery",
+    "preflight_only": false,
+    "analyze_only": false
+  },
+  "word_ids": {
+    "shared": [
+      [
+        793
+      ],
+      [
+        7778
+      ]
+    ],
+    "far": [
+      [
+        2307
+      ],
+      [
+        8969
+      ]
+    ]
+  },
+  "prefix_lengths": [
+    651,
+    445,
+    538,
+    644,
+    584,
+    570,
+    518,
+    549,
+    678,
+    579,
+    619,
+    437,
+    545,
+    600,
+    587,
+    670
+  ],
+  "label_source_positions_and_tokens_fixed": true,
+  "B_input_multiset_fixed": true,
+  "all_8_B_inputs_reassigned": true,
+  "only_B_comment_content_changes": true,
+  "source_rule_changes_only_cross": true,
+  "natural_materials": {
+    "dataset": "SetFit/sst5",
+    "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "arrow_sha256": {
+      "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+      "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+      "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+    },
+    "original_labels": [
+      0,
+      4
+    ],
+    "demo_split": "train",
+    "demo_hash_parity": 0,
+    "query_split": "validation",
+    "comment_token_range": [
+      5,
+      64
+    ],
+    "valid_quartet_length_bins": 40,
+    "demo_pool_sizes": [
+      637,
+      511
+    ],
+    "query_pool_sizes": [
+      164,
+      137
+    ],
+    "selection_uses_model_outputs": false,
+    "original_text_retained": true,
+    "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+  },
+  "valid_quartet_length_bins": 40,
+  "quartet_lengths": [
+    [
+      32,
+      51
+    ],
+    [
+      20,
+      22
+    ],
+    [
+      39,
+      29
+    ],
+    [
+      54,
+      31
+    ],
+    [
+      44,
+      22
+    ],
+    [
+      53,
+      20
+    ],
+    [
+      50,
+      25
+    ],
+    [
+      39,
+      30
+    ],
+    [
+      40,
+      41
+    ],
+    [
+      26,
+      52
+    ],
+    [
+      44,
+      29
+    ],
+    [
+      21,
+      23
+    ],
+    [
+      36,
+      21
+    ],
+    [
+      43,
+      35
+    ],
+    [
+      35,
+      31
+    ],
+    [
+      49,
+      37
+    ]
+  ],
+  "reversed_contexts": 8,
+  "planned_conditions": 43,
+  "planned_scores_per_context": 344,
+  "patch_scope": "B answer messages at A label formation; native full-source query with independent A/B cached-state crossing"
+}
