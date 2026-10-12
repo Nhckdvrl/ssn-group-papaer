@@ -2,9 +2,82 @@
 
 2026-10-12. This preserves the complete interfaces and functional readouts supporting the main manuscript. Primary definitions and experiment-card links remain unchanged.
 
-## A. Complete criterion–convention functional response
+## A. Experimental details and reproducibility
 
-### A.1 Separating criterion from private output convention
+### A.1 Models and numerical execution
+
+Experiments use frozen Qwen3-8B and Qwen3-14B (both post-trained hybrid models), Mistral-7B-v0.3 base, and Llama-3.1-8B base, FP32 eager attention, PyTorch 2.8.0 and Transformers 4.57.6. The controlled sentiment task contains eight demonstrations from each source and eight new queries per context. Source names, private output direction, and demonstration order vary; the two private directions are balanced in confirmation. Shared outputs are `no/yes`; separate B outputs are `pass/flag`. A's outputs remain unchanged. Models process the serialized task as a continuation, without adding a chat template or generating reasoning. Qwen3-14B is a same-family size comparison; training data and recipes are not controlled between sizes. The two-aspect templates always mention food before service, so this experiment measures functional aspect distinctions under fixed order and does not separate semantic identity from position selection.
+
+The checkpoint identifiers and revisions are fixed before scoring. The 70B rows in Appendix M are discovery results until the prescribed confirmation completes; they are kept separate from the confirmed main-text chain.
+
+| Checkpoint | Training stage | Hugging Face revision |
+|---|---|---|
+| Qwen/Qwen3-8B | Post-trained hybrid | `b968826d9c46dd6066d109eabc6255188de91218` |
+| Qwen/Qwen3-14B | Post-trained hybrid | `40c069824f4251a91eefaf281ebe4c544efd3e18` |
+| Qwen/Qwen3-32B | Post-trained hybrid | `9216db5781bf21249d130ec9da846c4624c16137` |
+| mistralai/Mistral-7B-v0.3 | Base | `caa1feb0e54d415e2df31207e5f4e273e33509b1` |
+| NousResearch/Meta-Llama-3.1-8B | Base | `1f47e50cdbe801ad8a5174156ec3a0655108fb9f` |
+| NousResearch/Meta-Llama-3.1-70B | Base | `beb678ba5bd7eb1aafeffa01e2a2b3b5e93d1dd3` |
+
+All reported interventions use frozen weights, evaluation mode, and inference without gradient updates. The cross-size runs use FP32 weights, attention states and matrix products with TF32 disabled, eager attention, and no quantization or CPU offload. The 32B/70B models use contiguous layer placement over two/four GPUs on one node. Every layer receives the same prescribed intervention; no head or layer is selected. The official 70B checkpoint revision `349b2ddb53ce8f2849a6c168a81980ab25258dac` and the public Nous mirror revision `beb678ba5bd7eb1aafeffa01e2a2b3b5e93d1dd3` have identical hashes for all 30 weight shards.
+
+### A.2 Materials and serialization
+
+Controlled experiments include single-aspect sentiment templates and dual-aspect restaurant comments. The dual-aspect task crosses food and service polarity and the source-specific criterion. Each context contains eight demonstrations per source and eight novel comments. Source names and demonstration order vary; private output directions are balanced. The model infers the source's rule from examples. Shared outputs are `no/yes`; separate outputs retain A's words and replace B's with `pass/flag`. Label words including their leading space are checked to be single tokens in the tokenizer used for that run.
+
+Natural sentiment text comes from the [Stanford Sentiment Treebank](https://aclanthology.org/D13-1170/), distributed as `SetFit/sst5`, Arrow build `e51bdcd8cd3a30da231967c1a249ba59361279a3`. We keep only original classes 0 and 4, mapped to negative and positive, and deduplicate identical text within each split. Discovery and confirmation demonstrations are drawn from opposite SHA256 text-hash parities of training. Discovery queries use official validation; confirmation queries use official test, excluding text in training and, for confirmation, validation. The command-line mode named `validation` denotes confirmation and selects the SST5 test split. Comments contain 5–64 tokens under the tested tokenizer. Selection uses gold sentiment and token geometry, with no model-output screening.
+
+The earlier [Measuring Hate Speech](https://aclanthology.org/2022.nlperspectives-1.11/) task uses the public `ucberkeley-dlab/measuring-hate-speech` corpus. We group by comment ID, average hate-speech and target-category annotations, keep comments of at most 50 words with mean hate-speech score at least 1, and separate race-targeted texts (race score at least .75, gender at most .1) from gender-targeted texts (gender at least .75, race at most .1). A fixed shuffle seed 5600 gives a 70/30 demonstration/query partition. Sources adopt opposite category-to-label conventions, with both private directions evaluated. These constructed rules test source-specific supervision rather than reconstructing individual annotator preferences.
+
+For B's eight demonstrations we sample two length/offset-matched quartets, each containing two positive and two negative comments. Cross-class reassignment exchanges the positive and negative comments while retaining the label stream; within-class reassignment swaps within each polarity and moves the same number of comments. This preserves the input multiset, source names, label words, anchor positions, and all tokens outside comment content. A's eight comments and all eight queries stay fixed. Four query comments have each sentiment; the private reversal alternates across contexts. Paired-model materials are byte-identical within family and stage, while stage generators and query samples remain separate.
+
+The input is a task continuation, with no added chat template or generated reasoning. The common header is `Below are comments and the labels that individual annotators gave them.` followed by two newlines. Each demonstration has the following literal field order, followed by two newlines:
+
+```text
+Comment: <original comment>
+Annotator: <source name>
+Label: <one label word>
+```
+
+The query uses the same fields and ends immediately after `Label:`. The block ending at that colon, the leading-space label word, and the two-newline separator are encoded separately without special tokens. This segmentation is part of the protocol. The first answer-token position is the label anchor. The historical answer region includes that word and its separator tokens. Source ownership extends across every token of its demonstration; common header tokens have no source owner.
+
+The actual serialized token stream is part of the method. Blocks, answer words, and separators are encoded separately. For Mistral, this introduces fixed extra spaces relative to literal whole-string encoding: the first native confirmation context has 351 rather than 335 tokens. Its B answer-message region includes the answer word plus three separator tokens per demonstration, totaling 32 sender positions; Qwen uses 16. Paired token positions and boundaries remain identical across the relevant manipulations. Native controls validate the actual stream, not a claimed equivalent whole-string encoding. Source code and independent tokenizer reconstruction preserve this disclosure.
+
+### A.3 Causal interfaces and access graphs
+
+Formation and reading are manipulated separately. In a formation-message interchange, donor K, V, or KV at historical B-answer positions replace the corresponding inputs to attention only for A-label receivers at each layer. The implementation calls the model's native eager attention with the full original matrix geometry, retaining recipient queries and the causal mask; only selected receiver outputs are substituted. Other receiver outputs remain native, and subsequent states evolve normally. Donor keys are taken from the actual layer cache, with its positional transformation already applied. Cached-state interchanges instead replace selected A/B K/V positions in a deep copy of a completed prefix; they leave global positions and the other recipient cache positions unchanged.
+
+Native-operation tests have no donor. They set the specified historical attention edges to negative infinity before softmax. Targeted removal blocks earlier B-answer regions at A-label receivers; within-source removal blocks A-answer regions there. Complete B-to-A removal excludes all earlier B-owned positions from every A-owned receiver, and restricted restoration reopens only earlier B-answer-to-A-label edges in that graph. Symmetric functional policies apply the source-swapped rule to both groups in one prefix. Masks renormalize attention, remove unequal edge sets, and permit downstream state changes.
+
+Reading restrictions apply to every live query token, including source-name and comment tokens, across every layer. They exclude the unrequested source's complete prefix positions while retaining the common background, requested-source positions and causal query history. A-only reading therefore restricts direct access; it retains any earlier B influence already formed in the allowed evidence. The eight queries are batched with left padding and explicit positions starting after the prefix. Each scoring call uses a fresh deep copy of the pristine cache; padded tokens are masked and cache sequence length and storage independence are checked.
+
+Public-schema experiments block private cross-source formation, independently crossing access to the public source–word-set table during prefix formation and whole-query reading. The table has no comment–label pairs or private polarity. Equivalent-background experiments reverse its two rows, then cross A/B private caches from the two backgrounds at identical positions. Coherent compositions use 00/11 and mixed compositions use 01/10. The query cannot read the public table; these tests concern the joint usability of independently formed private evidence.
+
+### A.4 Scores, aggregation and uncertainty
+
+Let \(z_{cq}\) be the second-minus-first candidate-label logit difference and \(g_{cq}\in\{-1,+1\}\) the requested source's gold direction. For a B-rule intervention, the context response is \(D_c=Q^{-1}\sum_q g_{cq}(z^{cross}_{cq}-z^{origin}_{cq})\). Signed effects compare these context responses; absolute effects first take \(|D_c|\), then form the paired contrast. Likewise, the fixed-word relational excess compares the magnitudes of context-averaged cross-class and within-class effects, rather than averaging absolute per-query differences.
+
+Candidate accuracy restricts the decision to the requested source's two words. Full-output accuracy requires the highest-logit token in the entire vocabulary to equal the correct word. Joint correctness requires both source requests to be correct for the same input/world. Mean accuracy over sources is a different measure. Real-text function-policy primaries (E123/E131) give equal weight to origin/cross worlds, both sources and all queries within each context; the within-class world remains a separate control. Controlled criterion–convention policy tests (E122) average all four B criterion/convention worlds. Single-source and instruction controls are evaluated separately. Gold-agreement strata are determined by the two requested-source answers, with no filtering by observed correctness.
+
+Formation reconstruction compares the actual namespace-donor interface effect with the historical message-interchange effect using coefficient one. Raw predictions retain both rule worlds; rule-double contrasts subtract the origin effect from the cross effect. Pearson correlation and RMSE summarize those predefined targets, with the zero-prediction RMSE as reference. No slope, offset, channel weight or intervention strength is fitted.
+
+We use 10,000 percentile bootstrap resamples of whole contexts. Each draw preserves all queries, worlds, source requests and paired model conditions belonging to that context. Context-level contrast seeds are 910; reconstruction uses 109910. Correlations are computed from flattened targets with whole-context resampling, not an average of context-wise correlations. Main comparisons use fresh confirmation n32 after discovery n16. The original native/formation/function discovery seeds are 120001/121001/123001 and confirmation seeds are 120101/121101/123101. E131 retains the discovery seeds and uses new confirmation seeds 131101/131102/131103. These are finite checkpoint comparisons, with training recipes allowed to differ across sizes.
+
+### A.5 Implementation checks and complete records
+
+Effects use 10,000 context-bootstrap resamples, seed 910; reconstruction intervals follow the frozen E109 analysis. Queries within a context are not treated as independent observations. Raw logits, full-vocabulary argmax, binary candidate-label accuracy, all conditions, and failed controls are retained. Confirmation uses new word/template pools; discovery-to-confirmation text overlap is zero for E113 and the Qwen E114 batches, but vocabulary/templates recur across contexts within a pool.
+
+Instruction controls differ between experiment engines. E122/E123 add one sentence to native formation. In E124–E127, the stored `instruction` condition adds that sentence while also blocking private cross-source formation; it is a composite control, and its difference from native cannot be attributed solely to prompting. E124/E125 additionally include an instruction-free independent-formation reference. The primary formation, schema, and cache-composition contrasts do not use this instruction condition.
+
+Self interchanges produce zero error. Cached versus full-token native query scoring differs by at most 4.96e−5 in Qwen and 7.63e−6 in Mistral confirmation. Cache fingerprints, layer consumption, and matched token geometry are checked. An independent session reconstructs the token layouts and recomputes 559 numerical checks from raw records before reading author summaries, with maximum discrepancy 4.77e−15. Separate bootstrap resampling confirms the signed interactions; it is not represented as an independent GPU rerun.
+
+The earlier E113/E114 package comprises five runs and 36,736 scores. The completed E115–E119 expansion comprises 24 discovery/confirmation runs, 576 contexts, 181,632 scores, and 2.393 recorded GPU-hours. Independent raw reviews recompute 36,750 numerical quantities (maximum discrepancy 1.13e−14), reconstruct actual token layouts, and check recorded all-layer consumption. This is independent analysis, not an independent GPU rerun. The E120/E121 native-operation and real-text additions comprise 16 runs, 384 contexts, 164,352 scores, and 2.540 recorded GPU-hours. Their independent raw audits recompute 18,064 scalars (maximum discrepancy 5.00e−15), reconstruct 2,112 actual token streams, and verify the recorded masks and reachable edges. No weights are trained. All model/seed/channel results remain available. Cards specify revisions, script hashes, and rebuilding commands; small summaries, figures, code, and audits are versioned, while raw JSONL and models remain at the [documented asset paths](README.md).
+
+
+
+## B. Complete criterion–convention functional response
+
+### B.1 Separating criterion from private output convention
 
 A learned association can change a classifier's confidence without specifying a complete criterion for a new input. We test this distinction with comments containing independently balanced food and service sentiment. Source A's demonstrations establish a food criterion. Source B can evaluate either food or service, under an output convention agreeing with or opposite to A's. The criteria are inferred from demonstrations rather than stated in the multi-source prompt (E117/E118).
 
@@ -21,7 +94,7 @@ M_c=\begin{pmatrix}
 
 separates the two criteria's effects on the two aspects. Bias and food–service interaction are also retained. These are B-relation effects while A is requested, not B's own accuracy or a gain in correctly isolating A.
 
-### A.2 Association magnitude and criterion selectivity give different answers
+### B.2 Association magnitude and criterion selectivity give different answers
 
 Across three model families, E117 confirmation finds that changing B's pairing alters both food and service sensitivity through A-label caches. A positive service response alone therefore cannot establish transport of B's service criterion. E118 independently crosses criterion with B's convention and preserves the entire response matrix. Full native histories show more criterion selectivity than local label interchanges in several settings, with substantial family variation. The mean criterion–feature interaction is positive in all three families, but Qwen3-8B's interaction mainly reflects service selectivity; unequal gains along one common direction can also produce a positive mean interaction.
 
@@ -31,7 +104,7 @@ Across three model families, E117 confirmation finds that changing B's pairing a
 
 Separating B's output namespace during formation can lower both aspect responses without appreciably changing their mean selectivity contrast. In Llama, food-criterion responses decrease by .267/.243 nats on food/service, and service-criterion responses by .110/.079; all four paired intervals are negative. Namespace effects on evidence formation thus include a change in relational influence magnitude, not only which aspect dominates.
 
-### A.3 A prospective functional-direction test in Qwen3-14B
+### B.3 A prospective functional-direction test in Qwen3-14B
 
 Before any E119 scores, we freeze an additional observer: the determinant of each context's response matrix and its normalized determinant, \(\det(M_c)/(\|M_{c,food}\|\|M_{c,service}\|)\). If the two criteria merely rescale a common functional direction, each determinant is zero. These quantities are computed within context before averaging. A row norm of at most .001 nats sets the normalized statistic to zero while retaining the context; no confirmation context meets this threshold.
 
@@ -54,21 +127,6 @@ Historical answer KV only partially predicts the actual criterion-label counterf
 ![Stronger-model functional responses and all frozen observers](results/figs/fig_stronger_model_functional_responses.png)
 
 *Figure 5. Qwen3-14B confirmation. Matrix means summarize functional responses; determinant intervals use determinants computed separately within each context. All seven predefined interfaces, including reverse and weak effects, are retained. Different cache interfaces do not establish different hidden algorithms.*
-
-## B. Exact serialization, interchanges, and audit scope
-
-Experiments use frozen Qwen3-8B and Qwen3-14B (both post-trained hybrid models), Mistral-7B-v0.3 base, and Llama-3.1-8B base, FP32 eager attention, PyTorch 2.8.0 and Transformers 4.57.6. The controlled sentiment task contains eight demonstrations from each source and eight new queries per context. Source names, private output direction, and demonstration order vary; the two private directions are balanced in confirmation. Shared outputs are `no/yes`; separate B outputs are `pass/flag`. A's outputs remain unchanged. Models process the serialized task as a continuation, without adding a chat template or generating reasoning. Qwen3-14B is a same-family size comparison; training data and recipes are not controlled between sizes. The two-aspect templates always mention food before service, so this experiment measures functional aspect distinctions under fixed order and does not separate semantic identity from position selection.
-
-The actual serialized token stream is part of the method. Blocks, answer words, and separators are encoded separately. For Mistral, this introduces fixed extra spaces relative to literal whole-string encoding: the first native confirmation context has 351 rather than 335 tokens. Its B answer-message region includes the answer word plus three separator tokens per demonstration, totaling 32 sender positions; Qwen uses 16. Paired token positions and boundaries remain identical across the relevant manipulations. Native controls validate the actual stream, not a claimed equivalent whole-string encoding. Source code and independent tokenizer reconstruction preserve this disclosure.
-
-Effects use 10,000 context-bootstrap resamples, seed 910; reconstruction intervals follow the frozen E109 analysis. Queries within a context are not treated as independent observations. Raw logits, full-vocabulary argmax, binary candidate-label accuracy, all conditions, and failed controls are retained. Confirmation uses new word/template pools; discovery-to-confirmation text overlap is zero for E113 and the Qwen E114 batches, but vocabulary/templates recur across contexts within a pool.
-
-Instruction controls differ between experiment engines. E122/E123 add one sentence to native formation. In E124–E127, the stored `instruction` condition adds that sentence while also blocking private cross-source formation; it is a composite control, and its difference from native cannot be attributed solely to prompting. E124/E125 additionally include an instruction-free independent-formation reference. The primary formation, schema, and cache-composition contrasts do not use this instruction condition.
-
-Self interchanges produce zero error. Cached versus full-token native query scoring differs by at most 4.96e−5 in Qwen and 7.63e−6 in Mistral confirmation. Cache fingerprints, layer consumption, and matched token geometry are checked. An independent session reconstructs the token layouts and recomputes 559 numerical checks from raw records before reading author summaries, with maximum discrepancy 4.77e−15. Separate bootstrap resampling confirms the signed interactions; it is not represented as an independent GPU rerun.
-
-The earlier E113/E114 package comprises five runs and 36,736 scores. The completed E115–E119 expansion comprises 24 discovery/confirmation runs, 576 contexts, 181,632 scores, and 2.393 recorded GPU-hours. Independent raw reviews recompute 36,750 numerical quantities (maximum discrepancy 1.13e−14), reconstruct actual token layouts, and check recorded all-layer consumption. This is independent analysis, not an independent GPU rerun. The E120/E121 native-operation and real-text additions comprise 16 runs, 384 contexts, 164,352 scores, and 2.540 recorded GPU-hours. Their independent raw audits recompute 18,064 scalars (maximum discrepancy 5.00e−15), reconstruct 2,112 actual token streams, and verify the recorded masks and reachable edges. No weights are trained. All model/seed/channel results remain available. Cards specify revisions, script hashes, and rebuilding commands; small summaries, figures, code, and audits are versioned, while raw JSONL and models remain at the [documented asset paths](README.md).
-
 
 ## C. All formation/query policies and functional controls
 
@@ -267,7 +325,7 @@ Both public orders have strong source-only function scores, but they are not fun
 Six runs comprise144contexts/49536scores and0.627887GPU hours. Source `ad2c6f7af7ab81966ea1253a80e7006747f3485b182fddd1453ffbb1ceb45975` was frozen at377de6c4 before scoring. The [independent audit](results/e126/independent_review_2026-10-12.md) reconstructs12462 numerical entries with maximum error0,1584 actual token/mask layouts,49536 golds,52800 prefix and206400 query layer-mask calls,9216 mixed-own argmax controls, and4608 A own-world comparisons. No independent GPU rerun is claimed. The [portable audit](results/e126/portable_reproduction_audit.json) confirms Llama32 material bytes from the pinned public dataset.
 
 
-### I.5 Post-hoc selected-output compatibility
+### I.1 Post-hoc selected-output compatibility
 
 After the complete E126 confirmation, we classify actual argmax outputs in the opposite-convention world against both sources’ private gold. The same-convention world cannot distinguish the two mappings and is excluded from this diagnostic. Every context and both requested sources remain included; the unit is still context. This is an additional observation, not a change to the frozen primary or a new model run.
 
@@ -400,7 +458,7 @@ Four runs comprise96contexts/49152scores and0.413184 recorded GPU hours. Source 
 *Complete confirmation functional matrices, own-body scope. F/S denote Food/Service; arrows label the donor criterion row and query feature projection. Intervals use contexts rather than individual queries.*
 
 
-### E130: Source-cue transfer under different formation policies
+### L.1 Source-cue transfer under different formation policies
 
 E130 follows the E129 cue/body/readout design and holds the recipient history fixed within each newly sampled context, while preparing donors under three historical policies: native contextualization, selective removal of foreign-answer→own-label edges, and complete private-history isolation. All donors are transplanted into the same independently formed recipient caches. The two fixed co-primary determinants use native donors; every policy contrast and actual donor/recipient function is reported.
 
@@ -416,7 +474,7 @@ The four fixed runs contain 96 contexts and 104448 scores, with .805577 recorded
 
 ## M. Matched cross-size formation, operation, and source-function tests
 
-E131 preserves the original E121 formation and reconstruction engine, E120 native-operation engine, and E123 real-text function-policy engine. The preregistered matrix contains Qwen3-32B and Llama-3.1-70B discovery n16→confirmation n32, and fresh same-family 8B n32 anchors for all three stages. At this snapshot, all six 8B stages, all six 32B stages, and the 70B discovery formation stage are complete and independently checked. The five remaining 70B stages are still running or pending. Confirmation statements in the main text concern the completed 32B chain.
+E131 preserves the original E121 formation and reconstruction engine, E120 native-operation engine, and E123 real-text function-policy engine. The preregistered matrix contains Qwen3-32B and Llama-3.1-70B discovery n16→confirmation n32, and fresh same-family 8B n32 anchors for all three stages. At this snapshot, all six 8B stages, all six 32B stages, and the 70B discovery formation and native-operation stages are complete and independently checked. The four remaining 70B stages are still running or pending. Confirmation statements in the main text concern the completed 32B chain.
 
 Contexts are matched byte-for-byte **within each family and stage**. Formation and function use separately sampled SST5 contexts; native operation uses controlled restaurant contexts. Confirmation seeds are 131102/131101/131103 for these stages. Parent analyses and gold weighting remain unchanged, and comparisons do not pool different stages or treat a recipe change as an isolated capacity intervention. Each large model uses all its layers with frozen FP32 weights, eager attention, no CPU offload or quantization; Qwen3-32B uses two GPUs. Model pins, dataset revisions, actual consumed masks, and engine/parent AST checks are recorded in the E131 manifests.
 
@@ -434,3 +492,5 @@ Separate-word complete isolation retains 95.31% candidate accuracy but has 52.64
 The 70B discovery formation batch (n16) retains 100% A single-source full-output accuracy in both private directions while exhibiting a signed formation effect of .993 [.612, 1.373] nats. Its label-interface KV reconstruction has raw r=.542 with shared-word B-position caches and .854 with separate-word B-position caches; both permit full-source query reading. Raw RMSEs are .632/.825 versus zero-prediction RMSEs .705/1.472. All K/KV/V targets remain reported: V has lower RMSE than KV in the first background, and K slightly exceeds the zero baseline there. Fixed-word answer relational influence has excess magnitude .237 [.116, .368] nats and a negative signed contrast −.229 [−.382, −.085]. This discovery result identifies contributions under the fixed interfaces; the complete cross-size conclusion awaits the unchanged confirmation tests.
 
 A first TF32-accelerated implementation failed the existing cached/full .001-nat tolerance before any scientific row; those empty failed attempts and their resource use remain archived. Restoring full FP32 GEMM preserved all materials, operators, and analyses. Valid completed stages have errors at most 6.68e−5 nats with self/graph checks zero. Independent analysis reproduces the original raw readouts and actual graph/gold layouts; it is not a second GPU execution.
+
+The 70B discovery native-operation batch (n16) has a signed full-source answer-removal effect of 1.542 [1.096, 1.970] nats. Restricted restoration is positive under A-only reading (1.011 [.637, 1.401]) and negative under full-source reading (−.440 [−.653, −.208]). Cross-versus-within removal is 2.560 [2.065, 3.059] nats. A single-source full-output accuracy is 100% in both private directions. This adds a native-operation contribution in the large checkpoint, with the same reading-dependent restoration signs as the confirmed 32B chain; it remains a discovery result pending the fixed new-context confirmation.

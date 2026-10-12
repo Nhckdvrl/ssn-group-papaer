@@ -1,0 +1,20 @@
+{
+  "before_sha256": "9aa5e6928e33b95bd426fd4e03bd6746d800a255ad8220dc9d3d31219f0ada18",
+  "after_sha256": "f366a1d1f9ce848b2bc38aa00f586afd5ca5c0d9292c30f0ae3cf7fe92786e84",
+  "before_paragraphs": 66,
+  "after_paragraphs": 66,
+  "removed_or_reworded_paragraphs": [
+    "F_A and F_B denote prefix computations at the two source groups, and R denotes query computation under the specified access graph. For A's no/yes outputs, z is yes minus no. Relational provenance is measured as causal dependence on a source's demonstrated input–label association. We change B's pairing while fixing A and the query, then prevent every query position from accessing B positions. A remaining B-rule effect reaches the prediction through the available contextualized graph.",
+    "For a fixed common prompt background, let D_A and D_B denote the demonstrations owned by sources A and B. H_A and H_B denote their contextualized key/value states, grouped by positional ownership. We call these available demonstration states evidence. Formation is their computation during prefix processing, and reading is their subsequent use by query tokens. Let q denote the requested source and new input, and z the output-label logit difference. We write",
+    "Mechanistic work has traced how input information enters label states and is retrieved by a query [Cho et al.](https://arxiv.org/html/2410.04468v3). Cross-demonstration contextualization also shapes task information before aggregation [Bakalova et al.](https://arxiv.org/html/2504.00132v2). In a multi-source context, these processes create a distinction between a demonstration's positional owner and the history of relations represented there. Source A's tokens can contain information influenced by B's examples. The fact that a query reads A's positions leaves open how B's supervision shaped what it reads."
+  ],
+  "added_or_reworded_paragraphs": [
+    "For a fixed common prompt background, let \\(D_A\\) and \\(D_B\\) denote the demonstrations owned by sources A and B. \\(H_A\\) and \\(H_B\\) denote their contextualized key/value states, grouped by positional ownership. We call these available demonstration states evidence. Formation is their computation during prefix processing, and reading is their subsequent use by query tokens. Let \\(q\\) denote the requested source and new input, and \\(z\\) the output-label logit difference. We write",
+    "[Cho et al.](https://arxiv.org/html/2410.04468v3) traced how input information enters label states and is retrieved by a query. [Bakalova et al.](https://arxiv.org/html/2504.00132v2) showed that cross-demonstration contextualization shapes task information before aggregation. In a multi-source context, these processes create a distinction between a demonstration's positional owner and the history of relations represented there. Source A's tokens can contain information influenced by B's examples. The fact that a query reads A's positions leaves open how B's supervision shaped what it reads.",
+    "\\(F_A\\) and \\(F_B\\) denote prefix computations at the two source groups, and \\(R\\) denotes query computation under the specified access graph. For A's no/yes outputs, \\(z\\) is yes minus no. Relational provenance is measured as causal dependence on a source's demonstrated input–label association. We change B's pairing while fixing A and the query, then prevent every query position from accessing B positions. A remaining B-rule effect reaches the prediction through the available contextualized graph."
+  ],
+  "heading_changes": "Only regroup existing experiments by formation/content/function/coordination/capacity; reproducibility moves into design.",
+  "scientific_numeric_changes": false,
+  "new_experiments": false,
+  "claim_grade_changes": false
+}

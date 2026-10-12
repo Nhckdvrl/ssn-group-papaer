@@ -1,0 +1,33 @@
+{
+  "reference_workbench": "workbench/mechanism-population-dynamics/paper-acl-v3",
+  "reference_files_sha256": {
+    "main.tex": "84cb6a2aa91424301995fe88239216c2d7ec5e4b3820ea7e74bba7ac4bcc92eb",
+    "build.sh": "110caa68ed44d4106a725ed3824d2a904deae9fd32b5ca510ffd226a137e9d22",
+    "acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+    "acl_natbib.bst": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e"
+  },
+  "document_class": "article",
+  "point_size": 11,
+  "acl_mode": "review",
+  "fonts": [
+    "Times",
+    "Inconsolata"
+  ],
+  "engine": "pdfLaTeX",
+  "bibliography_engine": "BibTeX",
+  "preferred_tex_bin": "~/.TinyTeX/bin/x86_64-linux",
+  "minimum_pass_sequence": [
+    "pdflatex",
+    "bibtex",
+    "pdflatex",
+    "pdflatex",
+    "pdflatex"
+  ],
+  "renderer_support_packages": [
+    "array",
+    "calc",
+    "tabularx"
+  ],
+  "changes_to_acl_style": false,
+  "compilation_difference": "Stop on compiler errors and add passes only if references or ACL line numbers need convergence."
+}

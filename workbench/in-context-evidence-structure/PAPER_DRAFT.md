@@ -10,7 +10,7 @@ An in-context learner can receive demonstrations from sources that use the same 
 
 A review can praise a restaurant's food while criticizing its service. Two annotators may use the same binary labels but apply different judgment rules to that review. An in-context learner receives both annotators' examples and is asked to predict for one of them. It must infer the relevant input–output relation and use it on a new comment. Similar questions arise whenever demonstrations encode several tasks, conventions, or perspectives in one context. Understanding which evidence governs the answer requires understanding how those demonstrated relations become available to the model.
 
-Mechanistic work has traced how input information enters label states and is retrieved by a query [Cho et al.](https://arxiv.org/html/2410.04468v3). Cross-demonstration contextualization also shapes task information before aggregation [Bakalova et al.](https://arxiv.org/html/2504.00132v2). In a multi-source context, these processes create a distinction between a demonstration's positional owner and the history of relations represented there. Source A's tokens can contain information influenced by B's examples. The fact that a query reads A's positions leaves open how B's supervision shaped what it reads.
+[Cho et al.](https://arxiv.org/html/2410.04468v3) traced how input information enters label states and is retrieved by a query. [Bakalova et al.](https://arxiv.org/html/2504.00132v2) showed that cross-demonstration contextualization shapes task information before aggregation. In a multi-source context, these processes create a distinction between a demonstration's positional owner and the history of relations represented there. Source A's tokens can contain information influenced by B's examples. The fact that a query reads A's positions leaves open how B's supervision shaped what it reads.
 
 This distinction motivates our question: **how do shared output identities affect the formation and use of source-specific evidence?** Output words participate in the representations formed during demonstration processing. When different sources share them, changing one source's rule may change the evidence available at another source's positions. At the same time, surrounding context can supply information that helps several rules work together. An account of source-conditioned ICL should explain both the relations entering that evidence and the effects of sharing or separating them.
 
@@ -34,15 +34,19 @@ All models are frozen: Qwen3-8B, Qwen3-14B, and Qwen3-32B post-trained hybrid ch
 
 ### 2.2 Positional access and functional provenance
 
-For a fixed common prompt background, let D_A and D_B denote the demonstrations owned by sources A and B. H_A and H_B denote their contextualized key/value states, grouped by positional ownership. We call these available demonstration states evidence. Formation is their computation during prefix processing, and reading is their subsequent use by query tokens. Let q denote the requested source and new input, and z the output-label logit difference. We write
+For a fixed common prompt background, let \(D_A\) and \(D_B\) denote the demonstrations owned by sources A and B. \(H_A\) and \(H_B\) denote their contextualized key/value states, grouped by positional ownership. We call these available demonstration states evidence. Formation is their computation during prefix processing, and reading is their subsequent use by query tokens. Let \(q\) denote the requested source and new input, and \(z\) the output-label logit difference. We write
 
 \[
 H_A=F_A(D_A,D_B),\qquad H_B=F_B(D_A,D_B),\qquad z=R(q,H_A,H_B).
 \]
 
-F_A and F_B denote prefix computations at the two source groups, and R denotes query computation under the specified access graph. For A's no/yes outputs, z is yes minus no. Relational provenance is measured as causal dependence on a source's demonstrated input–label association. We change B's pairing while fixing A and the query, then prevent every query position from accessing B positions. A remaining B-rule effect reaches the prediction through the available contextualized graph.
+\(F_A\) and \(F_B\) denote prefix computations at the two source groups, and \(R\) denotes query computation under the specified access graph. For A's no/yes outputs, \(z\) is yes minus no. Relational provenance is measured as causal dependence on a source's demonstrated input–label association. We change B's pairing while fixing A and the query, then prevent every query position from accessing B positions. A remaining B-rule effect reaches the prediction through the available contextualized graph.
 
 Under this restriction, changing B's rule changes 17.6% [12.1, 23.8] of A's answers in 32 independent Qwen3-8B Measuring Hate Speech contexts (E90). Separating B's output vocabulary reduces the inherited effect even though A's raw demonstrations and labels are unchanged. Source identity also has native causal effects in earlier interventions. Thus the result concerns the provenance of contextualized evidence, rather than a model completely ignoring source names.
+
+### 2.3 Evaluation and reproducibility
+
+Intervals use 10,000 context-bootstrap samples, with contexts as the sampling units. We retain every predefined condition and check consumed tokens and masks, cached/full-token scores, self interventions, and graph zeros. Independent analyses reconstruct raw quantities and gold/access layouts before reading summaries. Appendix A specifies serialization, analysis, and reproducibility details.
 
 ## 3. How output identities shape historical evidence
 
@@ -66,10 +70,12 @@ Reconstruction alone does not establish native contribution. We therefore block 
 | Qwen3-14B | 1.329 [0.967, 1.717] | 1.120 [0.673, 1.646] | 0.039 [-0.217, 0.287] |
 
 
-For each context, the signed B-rule response is the query mean of A-correct-label-oriented margins, D = mean[g_A(q)(z_cross(q) − z_origin(q))]. Removal reports D_native − D_blocked; restricted restoration reports D_restore − D_all-B-off. The targeted native removal reduces B-rule influence in every checkpoint. Reopening the path in the restricted graph increases influence under A-only reading, but has negative, positive, or uncertain effects under full-source reading. Thus its function depends on the subsequent evidence environment. Masks renormalize attention and later states remain live; the experiment identifies the operation's conditional contribution rather than a fixed additive message fraction. In Mistral, removing its own answer history also impairs its private function, and Qwen's cross-versus-within specificity interval includes zero. Complete controls remain in the appendix.
+For each context, the signed B-rule response averages A-correct-label-oriented query margins, D = mean[g_A(q)(z_cross(q) − z_origin(q))]. Removal reports D_native − D_blocked; restoration reports D_restore − D_all-B-off. Targeted removal reduces B-rule influence in every checkpoint. Restoration increases it under A-only reading, with negative, positive, or uncertain full-source effects. The operation therefore has a reading-dependent contribution. Masks renormalize attention and later states remain live. Own-history removal also impairs Mistral's private function; Qwen's cross-versus-within specificity interval includes zero (Appendix D).
 
 
-## 4. The messages transmit relationships, not only label identity
+## 4. Historical messages carry learned associations
+
+### 4.1 Fixed-word relational counterfactuals
 
 Namespace changes might alter output-related signals without changing learned relational content. We therefore hold B's label stream, source names, positions, and input multiset fixed, and reassign comments across opposite sentiment classes. A matched within-class reassignment moves the same number of inputs without reversing the association. A's raw evidence and novel queries stay fixed; paired token geometry is matched before model scoring.
 
@@ -79,7 +85,13 @@ The relation effect also holds when queries can read both sources. Moreover, cro
 
 The answer-region pathway reproduces part of the relation effect. Full label interchanges have additional effects, and the signed relation contrasts vary by model. These distinctions motivate measuring complete functional behavior in the next experiment, rather than equating a message effect with a fully transferred rule.
 
-## 5. A constructive test: preserve relations while retaining context
+### 4.2 Reliable private conventions on natural text
+
+We repeat the frozen 43-condition engine on original extreme-polarity SST5 reviews. Demonstration pools are disjoint text-hash partitions of training; discovery and confirmation queries use official validation and test splits. Gold sentiment and token geometry determine construction, without screening model outputs. Positive and inverted private conventions have single-source accuracies of 88.3–99.2% across the four checkpoints (Appendix D).
+
+The same coefficient-one KV formation reconstruction gives rule correlations .931/.948/.930/.966 in Qwen3-8B, Mistral, Llama, and Qwen3-14B, respectively. Fixed-output association excess magnitudes are positive in every family. Llama's signed relation contrast is negative (−.109 [−.194, −.024] nats): transmitted content is not uniformly a correction of the requested rule. SST5 provides a functionally usable natural-text replication; these constructed conventions do not recover individual human preferences.
+
+## 5. How formation constrains source-conditioned rule use
 
 ### 5.1 Competing formation and reading policies
 
@@ -91,25 +103,9 @@ We fix three prefix policies—native, symmetric other-source answer removal at 
 
 Selective formation improves mean accuracy by 2.93 [1.42, 4.35], 3.42 [1.17, 5.76], 7.37 [5.37, 9.43], and 2.78 [0.49, 4.79] points in Qwen3-8B, Mistral, Llama, and Qwen3-14B. It outperforms complete cross-source formation removal in every checkpoint. Gains concentrate on conflicting correct labels; agreeing-label cases lose 2.34 [0.78, 4.00] points in Qwen3-8B and 3.61 [1.56, 5.86] in Qwen3-14B. Individual-source gains are not uniformly confirmed. Query-only isolation gives larger gains in Llama and Qwen3-14B, so selective formation is not a universally optimal policy.
 
-Formation isolation and query isolation control different routes: complete formation isolation can increase convention influence when the query reads both sources, whereas combining it with source-only reading gives the graph-required zero B-world effect on A. These are constructive policy tests with known source ownership. Masks remove unequal edge sets, renormalize attention, and leave subsequent states live; the comparison measures functional consequences rather than an equal-mass isolated component. Appendix C retains every policy, source, agreement tradeoff, and private-function control.
+Complete formation isolation can increase convention influence under full-source reading. Combining it with source-only reading gives the graph-required zero B-world effect on A. These policies use known source ownership and remove unequal edge sets; they test functional consequences. Appendix C retains all policies, source-specific scores, agreement tradeoffs, and private controls.
 
-### 5.3 Association influence and criterion-related function
-
-Source-conditioned use also depends on what a learned association does to a new input. To test this, we independently reverse B's private convention under food and service criteria, holding A fixed. Responses are projected onto food, service, bias, and their interaction. The resulting two-by-two criterion–feature matrix distinguishes changing the amount of influence from changing its functional direction.
-
-In Qwen3-14B, native food and service selectivity are .282 [.199, .371] and .404 [.294, .528] nats. A prospective within-context normalized determinant is .410 [.330, .493], rejecting a restricted account in which both criteria only rescale one common functional direction. With the query prohibited from reading B, it is still .190 [.073, .310]. Local label and answer-message interfaces yield different responses. Historical answer KV only partially reconstructs the **actual label-interface** criterion counterfactual (r=.668, RMSE=.646, zero RMSE=.746).
-
-Thus association transfer, full-history criterion dependence, and correct source-conditioned use are distinct measurable properties. The complete response matrices and negative effects are retained in the appendix; a positive aspect response alone is not sufficient evidence for a complete abstract criterion program.
-
-## 6. Natural-text formation with usable private rules
-
-### 6.1 Mechanistic replication with reliable private conventions
-
-We repeat the frozen 43-condition engine on original extreme-polarity SST5 reviews. Demonstration pools are disjoint text-hash partitions of training; discovery and confirmation queries use official validation and test splits. Gold sentiment and token geometry determine construction, without screening model outputs. Positive and inverted private conventions have single-source accuracies of 88.3–99.2% across the four checkpoints (Appendix D).
-
-The same coefficient-one KV formation reconstruction gives rule correlations .931/.948/.930/.966 in Qwen3-8B, Mistral, Llama, and Qwen3-14B, respectively. Fixed-output association excess magnitudes are positive in every family. Llama's signed relation contrast is negative (−.109 [−.194, −.024] nats): transmitted content is not uniformly a correction of the requested rule. SST5 provides a functionally usable natural-text replication; these constructed conventions do not recover individual human preferences.
-
-### 6.2 A prospective test of real-text source-function use
+### 5.3 A prospective test on real-text source functions
 
 We next test the functional policy prediction on new SST5 contexts. A and B infer the same sentiment criterion but can adopt opposite private conventions. Origin and cross-convention worlds receive equal primary weight; a within-class movement remains a separate control. The same three formation policies and two query scopes are evaluated for both sources from each common prefix. A keeps `no/yes`; B uses either those shared words or `pass/flag`. Single functions and one-sentence source instructions are retained in all 85 conditions.
 
@@ -128,11 +124,21 @@ Separate words expose a further distinction. Complete cross-source formation iso
 
 *Figure 2. All formation/query policies on independently confirmed real-text private functions. Colored circles score within the requested source’s two words; black crosses score the actual full-vocabulary output. The separate-word condition reveals failures hidden by candidate restriction.*
 
-### 6.3 Sharing identities while keeping supervision private
+### 5.4 Association influence and criterion-related function
+
+Source-conditioned use also depends on what a learned association does to a new input. To test this, we independently reverse B's private convention under food and service criteria, holding A fixed. Responses are projected onto food, service, bias, and their interaction. The resulting two-by-two criterion–feature matrix distinguishes changing the amount of influence from changing its functional direction.
+
+In Qwen3-14B, native food and service selectivity are .282 [.199, .371] and .404 [.294, .528] nats. A prospective within-context normalized determinant is .410 [.330, .493], rejecting a restricted account in which both criteria only rescale one common functional direction. With the query prohibited from reading B, it is still .190 [.073, .310]. Local label and answer-message interfaces yield different responses. Historical answer KV only partially reconstructs the **actual label-interface** criterion counterfactual (r=.668, RMSE=.646, zero RMSE=.746).
+
+Thus association transfer, full-history criterion dependence, and correct source-conditioned use are distinct measurable properties. The complete response matrices and negative effects are retained in the appendix; a positive aspect response alone is not sufficient evidence for a complete abstract criterion program.
+
+## 6. Coordinating independently learned source rules
+
+### 6.1 Sharing identities while keeping supervision private
 
 What can be shared without exchanging private supervision? With cross-source demonstration formation blocked, we cross access to an unlabeled source-name list during formation and whole-query reading, using unrelated names as control. Qwen3-8B has a formation-specific full-output gain of 4.59 [2.73, 6.64] points, with uncertain candidate gain; Mistral's effect is negative and Llama's uncertain (Appendix G). Names alone therefore provide a partial, model-dependent account of the missing shared information.
 
-### 6.4 Sharing an output schema before private rule learning
+### 6.2 Sharing an output schema before private rule learning
 
 We next share a source-to-word-set table before independent formation, for example Alex: no, yes; Sam: pass, flag. It specifies output spaces, without review–label pairs or private polarity. An unrelated-name table has the same words and structure; a swapped table reverses the real sources' word assignments. Formation and query access are crossed while all private cross-source formation remains blocked.
 
@@ -144,7 +150,7 @@ Literal table routing is insufficient: correct tables outperform swapped tables,
 
 *Figure 3. Public source–word-set access with private historical supervision isolated. Solid curves score the actual full-vocabulary output; dashed curves score within the requested source's candidates. Correct and swapped relations both help through formation, but their magnitudes differ.*
 
-### 6.5 Common formation backgrounds constrain joint rule use
+### 6.3 Common formation backgrounds constrain joint rule use
 
 We keep every public relation and private demonstration fixed, reversing only the two rows of the correct schema. Private cross-source formation remains blocked, and no query position can read the table. Each ordering supplies the same facts but forms its own pair of source caches. We combine A and B caches from one ordering (00 or 11), or from different orderings (01 or 10), interchanging all private K/V states at unchanged global positions.
 
@@ -158,11 +164,11 @@ The same dependence therefore extends beyond selecting a distinguishable word se
 
 The caches retain strong requested-source-only functions, yet coherent joint-reading mean accuracy under conflicting conventions is only 53–65%. The small Llama effect and nonuniform private-direction gains remain reported. With food/service criteria instead of opposing codes, coherent formation yields a smaller gain: Qwen3-14B improves by 2.93 [0.59, 5.47] points, while the other accuracy intervals touch or cross zero; joint-reading mean accuracy is about 50–53% (Appendix K).
 
-These comparisons show that local private-function accuracy does not determine joint usability. The shared-word result exceeds a word-set-only explanation, and the source-request margin excludes a single request-independent output shift. It remains compatible with contextual binding and competitive retrieval. The intervention tests whole-cache compatibility under controlled shared backgrounds. All cache pairs, common shifts, and private controls remain in Appendices I–K.
+Local private-function accuracy therefore does not determine joint usability. Shared-word effects exceed a word-set-only explanation; request margins exclude a common output shift. Whole-cache compatibility remains consistent with contextual binding and competitive retrieval (Appendices I–K).
 
-### 6.6 The same formation and operation chain in a larger model
+## 7. The same formation and operation chain in a larger model
 
-We repeat the fixed formation, native-operation, and real-text function tests in Qwen3-32B, with a fresh Qwen3-8B confirmation anchor. The two sizes receive byte-identical contexts within each stage. All 43/64/85 conditions, K/KV/V channels, reading backgrounds, private directions, and instructions are retained. Discovery uses n16 and confirmation n32 without selecting by discovery effects. Full FP32 weights and eager attention are kept, with no fitted head, layer, intervention strength, or reconstruction coefficient.
+We repeat the formation, native-operation, and real-text function tests in Qwen3-32B, with a fresh Qwen3-8B anchor and byte-identical contexts within each stage. All conditions, channels, reading backgrounds, private directions, and instructions are retained. Discovery n16 precedes confirmation n32. Models remain frozen with FP32 eager attention and fixed interventions.
 
 | Qwen3, matched confirmation n32 | A-formation signed, nats | Native operation removal, nats | Selective-minus-native full, pp | Query-only-minus-native full, pp |
 |---|---:|---:|---:|---:|
@@ -171,9 +177,9 @@ We repeat the fixed formation, native-operation, and real-text function tests in
 
 The 32B formation batch has 100% single-source accuracy under both private directions, while the historical relation-formation effect remains. Coefficient-one label-interface KV reconstruction has raw r=.883 and rule-double-contrast r=.922, with raw RMSE .864 versus zero-prediction RMSE 1.857. Native restricted restoration is positive under A-only reading (+.775 [.321, 1.284] nats) and negative under full-source reading (−.544 [−.833, −.276]), as in the fresh 8B anchor. The same formation operation therefore contributes in the larger model, with its function depending on the subsequent reading environment.
 
-On real-text shared-word functions, 32B native full accuracy is 87.99%, rising to 95.70% with selective formation; its advantage over complete cross-source formation removal is 20.41 [18.16, 22.36] points. The paired selective-gain difference is .10 [−3.22, 3.32] points, while the query-only gain differs by 8.40 [3.81, 13.09]. Formation and reading contributions can thus vary separately across these checkpoints. Their training recipes also differ, so the paired comparison characterizes computation across sizes rather than estimating a parameter-count scaling law. Both requested-source gains, agreement tradeoffs, separate-word output failures, and all reconstruction targets are retained in Appendix M.
+On real-text shared-word functions, 32B native full accuracy is 87.99%, rising to 95.70% with selective formation; its advantage over complete cross-source formation removal is 20.41 [18.16, 22.36] points. The paired selective-gain difference is .10 [−3.22, 3.32] points, while the query-only gain differs by 8.40 [3.81, 13.09]. Formation and reading contributions thus vary separately across sizes. Training recipes also differ, so these are comparisons of checkpoint computation. Appendix M retains all sources, tradeoffs, outputs, and reconstructions.
 
-## 7. Related work and positioning
+## 8. Related work and positioning
 
 [Cho's circuit](https://arxiv.org/html/2410.04468v3), [information removal](https://arxiv.org/abs/2509.21012), [Contextualize-then-Aggregate](https://arxiv.org/html/2504.00132v2), and [How Few-Shot Examples Add Up](https://arxiv.org/html/2605.16591v2) establish input merging, information selection, contextualization, and QK/V contributions. [Sun et al.](https://aclanthology.org/2025.acl-long.196/) trace input–label mappings, including 70B/72B checks. These explain important components of our setting. We add a measurement of whose learned relations enter evidence, an output-dependent formation prediction, and its native and functional consequences.
 
@@ -181,18 +187,14 @@ On real-text shared-word functions, 32B native full accuracy is 87.99%, rising t
 
 [Task recognition/learning](https://arxiv.org/html/2509.24164v2) separates label-space alignment from within-space mappings; [Li et al.](https://aclanthology.org/2024.acl-long.669/) test task composition and label remapping. [Demonstration Conflict](https://arxiv.org/html/2603.04464v1) studies corrupted demonstrations, and [Jurisdiction](https://arxiv.org/html/2609.27603v1) studies contextual authority over prior knowledge. Here both source rules are legitimate and must be inferred from demonstrations. [Yu and Ananiadou](https://aclanthology.org/2024.emnlp-main.192/), [Crosbie and Shutova](https://aclanthology.org/2025.findings-naacl.283/), and [Racing Thoughts](https://aclanthology.org/2025.naacl-long.155/) motivate operation-specific causal tests. [Lepori et al.](https://aclanthology.org/2026.acl-long.676/) and [CoSToM](https://aclanthology.org/2026.acl-long.421/) separate internal information from deployment; our frozen-model tests connect historical relation formation to source-conditioned function.
 
-## 8. Reproducibility
-
-Intervals use 10,000 context-bootstrap samples; queries within a context are not independent units. All predefined conditions, private directions, negative results, and reconstruction channels remain reported. We check actual token/mask consumption, full-token/cached scores, self interventions, graph-zero controls, and pristine caches. Independent sessions recompute raw quantities and graph/gold layouts before reading author summaries; these are independent analyses, not GPU reruns. Cards, script hashes, revisions, small summaries, figures, and audits are versioned. Raw JSONL and weights remain at the [documented asset paths](README.md); complete interfaces and serialization are in the appendix.
-
 ## 9. Discussion
 
-Source-conditioned ICL reads evidence whose relations were formed across a contextual history. Selecting the requested source's positions therefore does not establish the provenance of the supervision influencing its answer. Shared output identities shape this historical formation: the pathway transmits learned relations, predicts namespace counterfactuals, and contributes to ordinary predictions. Its functional contribution changes with subsequent reading, including in the larger checkpoint.
+Source-conditioned ICL is a problem of evidence provenance as well as evidence access. We identify how shared outputs mediate the historical formation of learned associations, reconstruct naming counterfactuals, and test this operation in native judgments and larger checkpoints.
 
-This account produces constructive predictions. Selectively limiting answer-level sharing can preserve private judgments, while removing all historical sharing can impair joint use. Public source–output relations help through formation even when private supervision cannot cross sources and the query cannot read the public table. Information-equivalent formation backgrounds also change compatibility under shared output words. Thus understanding relevant evidence requires explaining both the formation of private associations and their coordination during reading. The question remains meaningful when a model answers correctly.
+This account explains why separation policies have different consequences. Selective answer isolation can preserve private rules, while broader isolation can discard useful shared structure. Public source–output relations aid independently learned rules through formation, and equivalent formation backgrounds yield different joint usability. Which source a query reads and how its evidence was formed jointly shape source-conditioned behavior, including when its answer is correct.
 
 ## Limitations
 
-The experiments cover three families, including 14B and 32B same-family checkpoints. They do not isolate parameter count from training recipe. Dual-aspect templates fix food before service; their responses do not establish a position-independent criterion program. Pre-input source-cue transfer does not reliably deploy both criteria despite usable private functions (Appendix L); small responses and other native task-state routes remain possible.
+The checkpoint comparisons couple model capacity with training recipe. Their results describe the computation of the tested models. Dual-aspect comments always place food before service, so the criterion-dependent responses are tied to that serialization. Cache interchanges and renormalized masks test specified interfaces while allowing other paths and subsequent state changes. Policy masks remove unequal edge sets, and reconstructions use actual donor activations.
 
-Cache interchanges and renormalized masks test specified interfaces with unmodeled paths; policy masks remove unequal edge sets. Reconstructions use actual donor activations. Intervals are not corrected for all comparisons. Private conventions are constructed, and SST5 sentiment may occur in pretraining. Earlier practical evaluations found limited accuracy consequences of source mixing. These constraints preserve the demonstrated formation and use results while limiting applications and full-algorithm claims. The [technical appendix](PAPER_APPENDIX.md) retains all controls and the [claim ledger](CLAIMS.md) records registered scope.
+The source-specific conventions are constructed. They let us balance legitimate conflicting rules and measure their provenance, but do not estimate how frequently such conflicts occur in deployment or their practical error cost. SST5 text may have appeared in pretraining; novelty of the private convention does not imply novelty of each review. Intervals use context resampling and are not adjusted for every comparison. Complete conditions and methodological details accompany the reported effects in the appendix.
