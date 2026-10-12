@@ -1,6 +1,6 @@
 # E130：历史形成如何准备Source条件的任务信号？（2026-10-12）
 
-- **状态：** FROZEN；0科学评分。E129四批与独立raw/report全部完成后设计；不是新workbench/idea或投稿状态。
+- **状态：** DONE；四批GPU与独立raw/report完整；首评分前封源fa41da09，四批固定执行。E129四批与独立raw/report全部完成后设计；不是新workbench/idea或投稿状态。
 - **类型：** PILOT / CLAIM。
 - **对应：** C23/C24、I04、P17。
 - **问题：** 相同的Source前输入块，在完整、选择性答案共享和完全私人隔离的历史中形成时，会携带不同的、可用于新输入的criterion×code功能吗？
@@ -31,3 +31,20 @@
 ## 首评分前封源
 
 四批CPU全部exit0、独立96ctx/2016prefix/2304Cue/13056body图及targeted与E122一致性通过。136条件的既定observer补全在评分前完成，20,297项合成数字max4.26e−14不是科学效果。末源SHA `7ef59b3f853e1437dbffd11319ae1c1fe937ffa21723ac2b89bfe971e5a72973`；[独立CPU审计](../results/e130/independent_review_2026-10-12.md) seal `dccadb2534e6f4ae337214469910b9ee8abb98bd35bb353d6797d70f96761c66`。实际GPU floor仍待验证。
+
+2026-10-12空卡复核后启动21 GPU1/2（14B两phase）、20 GPU0/1（Llama两phase）；21GPU0外部占用未碰。confirmation仅等对应pilot第一ctx numeric/cache/graph/composition assert通过，不按效果/准确率选择。源7ef59…不改。
+
+## 完整结果（固定四批，2026-10-12）
+
+96 contexts、104448评分，四批已完成；原始逐query由独立审计复算81188项，max4.44e−16。实际prefix/Cue/body逐层消费、图零、split/full、两套gold与pristine cache全部核。GPU数值最大2.48e−5，完整科学run单卡计时.805577GPU时。两个模型确认primary如下（nats²）：
+
+| 模型 | native CueB det | native Source-specific det |
+|---|---:|---:|
+| Llama-3.1-8B | -0.00001751 [-0.00004604,0.00000357] | 0.00000294 [-0.00002280,0.00003356] |
+| Qwen3-14B | -0.00018214 [-0.00060371,0.00024593] | -0.00036502 [-0.00099327,0.00021095] |
+
+三形成policy均未建立预定的完整两个criterion×code方向；Q14 native CueB仍有Food方向selectivity+.02144[.00972,.03348]nats，而Service方向−.01465[−.02661,−.00353]nats，部分信息不能抹掉。全部policy对比、136接口recipient/donor实际函数与criterion-only读数在[完整报告](../results/e130/report.md)/[summary](../results/e130/summary.json)；[独立raw校对](../results/e130/independent_raw_review_2026-10-12.md)披露Llama探索stdout先见作者primary的读序例外，其独立代码与合成seal已先固定，其余三批raw先于analysis读取。无独立GPU重跑。作者report最终对照已过：1460表行/9576统计格/28728展示数字一致。
+
+这项结果回答输入前Source运输接口在三历史政策下的功能，不重新收缩C21–23已确认的历史形成与使用解释。下一步[E131](E131-large-model-mechanism-chain.md)直接以大小模型同一核心链条检验形成、原生操作与两来源实际功能，已先核ACL/EMNLP/NAACL的跨模型理论验证方法。
+
+最终独立JSON seal `228aef779083d79dc58f178b5e068e52458052c0c8dafe8fc9b383c82685a03e`，原raw-runs/CPU seal不变，读序例外保留；正文三认识无改。

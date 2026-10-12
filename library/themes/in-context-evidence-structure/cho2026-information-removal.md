@@ -17,3 +17,7 @@
 ### 从E117结果学习其实验逻辑（2026-10-11）
 
 本次重新核v4主旨与Appendix中factor-recall实验入口，未将此前v3本地文本冒称v4全部附录。可学习的主旨是：共同语义增强与task-specific信息选择需要让预测不同的任务条件；并非看到某输入feature响应就宣布filtering。E117 paired label使两方面同增而完整native可一增一减，遂以E118独立criterion×private code让“哪方面的关联被改变”与“整体情绪强度”竞争。没有照搬训练过滤器或把本模型的弱能力拿去硬证明相同机制；贡献应是解释功能形成与使用的关系。
+
+## 同一解释与模型大小（2026-10-12重读v4 §4.1/Table2/A Table5/I）
+
+主体Llama3.2-1B；Llama3-8B、Qwen2.5-3B/3B-Instruct/7B重复过滤、几何与DH因果链，另13B Instruct是elinas社区checkpoint、INT4且消融只SST2，不等同官方同族受控scale。Table2允许不同模型扫描层比例和效应量，unseen-label下降幅度不同，共同解释靠相同操作预测而非全部归零；没有70B机制结果。ICES学的是把构造性对象、原生动态与功能操作接起来；不能由某层组件不同撤回共同解释，也不能用其规模选择代替我们的32/70B验证。

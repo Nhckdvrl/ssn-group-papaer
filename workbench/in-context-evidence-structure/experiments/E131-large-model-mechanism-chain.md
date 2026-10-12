@@ -40,3 +40,5 @@
 首轮TF32三worker均在首context cached/full检查失败且raw空，Q8/L8/Q32最大误差.039123535/.005498886/.003240585nats，原阈值.001保持。累计驻留.075811325GPU·时单列，不算科学结果。全部失败raw/log/worker及原pre-score seal保留在results/e131/failed_tf32/。只将dispatch TF32 True→False，恢复与父协议一致的完整FP32 GEMM；三engine/分析、18材料/种子、所有条件和读数不变，不扩大控制或缩主张。独立补核、再次commit/push后重新跑同固定作业。
 
 独立精度补核已封：主pre-score seal更新`374a5ce4f50304fddf7bd8f02796c961aa0111d620c4e5dd48432e557cf6c899`；[单行修正审查](../results/e131/independent_precision_fix_review_2026-10-12.json)确认仅TF32 True→False及注释变化，protocol/三engine/18材料SHA全部不变，原f704 seal完整保留。全FP32 dispatch末SHA`5abd14f91ac0cd56f40e714413d83d066ff4173af5a24e0de1cd4788a5f0beb9`；再次commit/push前仍0科学row，原floor不放宽。
+
+0a50bbb1已再次先push后复跑：同原空卡分派，实际Q8/L8/Q32第一context均通过完整FP32数值检查，max1.91e−5/7.63e−6/1.14e−5，self0；固定全部phase继续。fvcrc11/13的70D/C接入任务已等待各自完整资产与4空卡，C另外只等D首ctxnumeric，不看科学方向，当前下载中。

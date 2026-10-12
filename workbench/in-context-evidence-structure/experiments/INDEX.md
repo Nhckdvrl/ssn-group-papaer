@@ -144,3 +144,7 @@ idea 卡：[`../ideas/I04-output-indexed-evidence.md`](../ideas/I04-output-index
 | [E128](E128-criterion-frame-cache-composition.md) | 同输出同code、不同food/service标准的共同背景兼容 | DONE；四checkpoint16→32，14B criterion primary+2.93pp，其余CI0；38760独立raw/report封版 |
 
 | [E129](E129-source-cue-task-information.md) | 新输入前Source选择状态传递地址还是criterion×code功能 | DONE；两checkpoint16→32，两个确认primary CI0，usable primitive与small响应保留；20580项独立raw有效 |
+
+| E130 | [历史形成→Source条件Cue](E130-formation-to-source-cue.md) | DONE | C23/C24、I04/P17；四批104448scores完整，native两co-primary CI0，部分criterion响应保留，独立raw/report已核 |
+
+| [E131](E131-large-model-mechanism-chain.md) | 大小模型同一形成/读取/两来源功能链 | C21–C24、I04、P17 | RUNNING；451238d5/f704da…预评分freeze，Q32/8B启动，70资产下载 |

@@ -922,3 +922,12 @@ E129两checkpoint固定16→32完成，pre-input Source Cue来自完全隔离私
 这批结果没有得到原来希望的“两标准独立可部署状态”。不能为了criterion叙事把小J或差矩阵正称完整任务转移，也不能因受限接口失败删掉已证明的Source关系形成机制。实际更新是：现有private函数强与Source前输入状态功能之间仍有区分；正确使用可能需要之后输入与历史证据的组合，也可能依赖普通完整历史形成Cue。E129只测F0 donor Cue，不能用它判默认模型完全不准备标准。
 
 下一项候选只比较native、选择性答案历史、全部隔离对同一个Cue运输函数的作用；它连接已有C23功能政策与Source条件计算，不引入新编码/层搜索。是否值得做需用已完成全部结果及Hendel/JIT/Cho/CTA的真实范围判断，不能默认每个阴性后都重试接口。C21–23有界L3/C24L2和formal状态不变。E120–129共70批/1680ctx/876672scores/11.310976记录GPU时/188046独立raw数值，计数不是科学意义。
+
+
+## 2026-10-12：E130完整结果与跨尺度核心检验
+
+E130固定Llama8B/Qwen14B各16→32、native/targeted/independent三历史policy与同F0 receiver，96ctx/104448scores完整。两个native确认co-primary的95%CI均含0：L CueB−.00001751[−.00004604,.00000357]、Source差+.00000294[−.00002280,.00003356]nats²；Q14相应−.00018214[−.00060371,.00024593]/−.00036502[−.00099327,.00021095]。Q14Food selectivity+.02144[.00972,.03348]nats而Service−.01465[−.02661,−.00353]，部分criterion响应保留。这个Source前输入接口的三政策没有建立完整两个方向，不能据此收缩C21–23的原生历史形成/关系/功能解释。
+
+依据[卡E130](experiments/E130-formation-to-source-cue.md)、[完整136接口与全部政策/函数报告](results/e130/report.md)、[独立raw/report校对](results/e130/independent_raw_review_2026-10-12.md)。81188 raw数值max4.44e−16，28728展示数字全一致；.805577完整科学run GPUh，数值floor2.48e−5。读序例外公开，未独立GPU rerun。主文三认识/等级/formal状态保持，附录L补该follow-up。
+
+阅读ACL/EMNLP/NAACL实际跨模型证据后，E131直接检验同一核心链：Q32/L70形成反事实、原生操作、真实SST两来源功能，加同family8B新材料配对，18CPU完整首评分前451238d5冻结。初试TF32的三worker未通过原.001误差、0科学row，失败全部保留；0a50bbb1恢复原full-FP32并重启同种子/材料，8B已通过数值检查，32加载完成，70权重下载并依资产/空卡接入。既不缩主张，也不要求强模型持续犯错；待完整结果判断形成与读取怎样共同改变Source使用。

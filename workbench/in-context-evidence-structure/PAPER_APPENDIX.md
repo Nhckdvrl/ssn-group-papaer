@@ -386,3 +386,17 @@ Four runs comprise96contexts/49152scores and0.413184 recorded GPU hours. Source 
 ![Functional cue information](results/figs/fig_source_cue_functional_information.png)
 
 *Complete confirmation functional matrices, own-body scope. F/S denote Food/Service; arrows label the donor criterion row and query feature projection. Intervals use contexts rather than individual queries.*
+
+
+### E130: Source-cue transfer under different formation policies
+
+E130 follows the E129 cue/body/readout design and holds the recipient history fixed within each newly sampled context, while preparing donors under three historical policies: native contextualization, selective removal of foreign-answer→own-label edges, and complete private-history isolation. All donors are transplanted into the same independently formed recipient caches. The two fixed co-primary determinants use native donors; every policy contrast and actual donor/recipient function is reported.
+
+| Confirmation model | Native CueB det, nats² [95% CI] | Native Source-specific det, nats² [95% CI] |
+|---|---:|---:|
+| Llama-3.1-8B | −1.751e−5 [−4.604e−5,3.566e−6] | 2.940e−6 [−2.280e−5,3.356e−5] |
+| Qwen3-14B | −1.821e−4 [−6.037e−4,2.459e−4] | −3.650e−4 [−9.933e−4,2.110e−4] |
+
+All four intervals span zero. Qwen3-14B nevertheless retains a native CueB Food row selectivity of .02144 [.00972,.03348] nats; its Service selectivity is −.01465 [−.02661,−.00353] nats. The response therefore cannot be summarized as no criterion information, or as correct transfer of both criteria. Changing formation policy did not establish the complete pre-input function at this interface. The [full report](results/e130/report.md) retains all 136 interfaces, policy contrasts, private directions and recipient/donor full-output functions. This follow-up tests the source-cue interface; the historical formation, relation-content and native-operation results remain separate evidence.
+
+The four fixed runs contain 96 contexts and 104448 scores, with .805577 recorded single-GPU run hours. Source 7ef59b3f… was frozen at fa41da09 before scoring. The [independent audit](results/e130/independent_raw_review_2026-10-12.md) verifies 81188 raw-derived numerical quantities and all actual prefix/cue/body mask calls; full-token/cached error is at most 2.48e−5 nats. The final report check verifies 28728 displayed numbers and retains the disclosed Llama discovery stdout reading-order exception. No independent GPU rerun is claimed.
