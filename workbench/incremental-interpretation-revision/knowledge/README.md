@@ -2,6 +2,14 @@
 
 **这不是搬运的论文文件夹，而是本 workbench 的认知中枢。** 文献源、实验历史、竞争理论与未来问题在此互相校验。它不服从 E108，也不要求保留I06/I07/I08旧故事。用户要求新增论文和研究认知**直接在 `workbench/incremental-interpretation-revision/knowledge/` 维护**，外围 `library/` 不再写第二套实质内容。
 
+## 2026-10-12 独立审查后的主入口（先读这三页）
+
+1. [**06 研究纲领**](06_RESEARCH_PROGRAM_2026-10-12.md)：撤回旧依赖 vs 重建替代依赖；六个竞争解释与分叉预测；合格解释必须回收的已知现象清单；贡献形态与放弃条件。
+2. [**07 实验地基**](07_EXPERIMENT_FOUNDATION.md)：三类题+对照句的操作化、现成数据位置、材料扩展顺序、协议规则、X1–X5 实验设计与预测表、陷阱清单。
+3. [**08 idea 谱系**](08_IDEA_LINEAGE_ATLAS.md)：人类侧 A1–A9、LLM 侧 B1–B10、显式状态更新线、评分线、方法范式；每步"前一步留下什么未知/最小判别动作/尺度/仍不能区分"。
+
+审查本身见 [../INDEPENDENT_REVIEW.md](../INDEPENDENT_REVIEW.md)；测量更正 H-C14–H-C17 见 [EPISTEMIC_CORRECTIONS](EPISTEMIC_CORRECTIONS.md)；新增论文卡见 [PAPER_ATLAS §2026-10-12](PAPER_ATLAS.md#review-2026-10-12)。
+
 ## 从知识而非文件开始
 
 1. [**领域的科学认识总图**](00_STATE_OF_THE_FIELD.md)：本研究到底有哪几个不同构念、经典→现代思想如何递进、哪些结论是反证。

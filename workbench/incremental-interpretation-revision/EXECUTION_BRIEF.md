@@ -2,6 +2,8 @@
 
 本文是当前操作入口，替代10月6日的固定地图和早期“三族/两构式/因果机制”门槛。旧完整协议仍可在[维护前固定版本](https://github.com/Nhckdvrl/ssn-group-papaer/blob/3d0c6c3bbd65c6455aa730f164dbe3103e466c0a/workbench/incremental-interpretation-revision/EXECUTION_BRIEF.md)查阅；既有实验解释必须按当时协议，不能追改预注册。
 
+**2026-10-12 重构：** 当前主线与实验地基以 [knowledge/06 研究纲领](knowledge/06_RESEARCH_PROGRAM_2026-10-12.md) 与 [07 实验地基](knowledge/07_EXPERIMENT_FOUNDATION.md) 为准；本文其余章节是通用执行规则。
+
 ## 1. 先明确问题，不把旧实验编号当研究路线
 
 读 [审计](AUDIT_2026-10-12.md)和 [研究综合](knowledge/RESEARCH_SYNTHESIS_2026-10-12.md)，说明重要未知、现有最好解释以及一个可能改变它的观察。保留原研究对象：随新证据出现的解释修订。可以改变切口，也可以发现其不值得优先追；不为保住旧方法而转成另一个领域的泛泛问题。

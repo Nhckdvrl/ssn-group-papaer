@@ -11,3 +11,8 @@
 7. 证据与短板：comma改善和部分parse-shift/spillover；不同任务最像人的模型不同。样本小，attention指标不是因果机制；将Yes/No当正确/错误解释时需保留未蕴含与逻辑假的区别。
 8. 可迁移动作：同刺激上的不同读数，定位证据到达前后发生的变化；但先检查final读数，不只观察No概率上升。
 9. 对我们：双解释、逐段变化、comma本身都有owner。E01是measurement，不能把这些现象写成new story；若读数分离，要追具体干预为何改变某一读数。
+
+## 2026-10-12 独立精读补记（作者v1 HTML；表1数字核对）
+
+24句Christianson材料分5块呈现；两类题：误读题“Did the man hunt the deer?”与正确读题“Did the deer run…?”，**预测试中所有模型都答对正确读题，故分析只看误读题**。无逗号时四模型在消歧块后“继续支持误读”；有逗号时LLaMA（p=.003）、GPT-2（p=.05）下降，只有LLaMA切换到正确语义。parse probe结构切换率：GPT-2无逗号到块5仅16.67%、有逗号50%；RoBERTa 45.83/62.50；人类35.4/73.4（Christianson）。注意力只有定性热图。
+**对我们**：他们的“正确读题”是主句事实（“deer ran”），不是替代依赖（“man hunted [himself/intransitively]”），所以“都答对”不与我们的0–12%矛盾；他们没有问替代依赖题。idea来源是Christianson+Patson的材料直接迁移到四个旧模型；尺度小（24句、4模型）。

@@ -8,4 +8,4 @@
 
 ## 2026-10-12 独立审查后的拟议主线（提案，正式状态由人决定）
 
-[独立审查](INDEPENDENT_REVIEW.md)判断：workbench值得继续，但主线应重构为**替代依赖的建立为何在撤回之后失败**（公开GP材料中带替代依赖问句的句子；读数为实际作答与对照句基线；操作为显式框架信息与对照句状态移植）。I07/I08建议PARKED，E108不执行；Ministral在strict规则下的读数作废（H-C14）。两个待批准的辨别实验见审查§9。本段不改变C/I登记状态。
+[独立审查](INDEPENDENT_REVIEW.md)判断：workbench值得继续，但主线应重构为**替代依赖的建立为何在撤回之后失败**（公开GP材料中带替代依赖问句的句子；读数为实际作答与对照句基线；操作为显式框架信息与对照句状态移植）。I07/I08建议PARKED，E108不执行；Ministral在strict规则下的读数作废（H-C14）。重构后的纲领、实验地基与 idea 谱系见 [knowledge/06](knowledge/06_RESEARCH_PROGRAM_2026-10-12.md)、[07](knowledge/07_EXPERIMENT_FOUNDATION.md)、[08](knowledge/08_IDEA_LINEAGE_ATLAS.md)；替代依赖题清单见 `results/REPLACEMENT_DEPENDENCY_COHORT_2026-10-12.json`。本段不改变C/I登记状态。

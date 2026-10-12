@@ -6,6 +6,7 @@
 
 | 要做什么 | 入口 |
 |---|---|
+| 重构后的主线、实验地基与 idea 谱系（本地 agent 先读） | [研究纲领](knowledge/06_RESEARCH_PROGRAM_2026-10-12.md) → [实验地基](knowledge/07_EXPERIMENT_FOUNDATION.md) → [idea 谱系](knowledge/08_IDEA_LINEAGE_ATLAS.md) |
 | 独立科学审查（2026-10-12）：实际得到什么、方向决定、重构建议 | [独立审查](INDEPENDENT_REVIEW.md) |
 | 理解两轮探索在哪里偏离、哪些代码/解释需纠正 | [科学审计](AUDIT_2026-10-12.md) |
 | 建立整体科学认知、深读论文、检索全部文献与动态维护结论 | [认知中枢](knowledge/README.md) → [领域总图](knowledge/00_STATE_OF_THE_FIELD.md) → [七领域文献图谱](knowledge/PAPER_ATLAS.md) → [深层专题](knowledge/topics/05_HOW_IDEAS_GROW.md) |

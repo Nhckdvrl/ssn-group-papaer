@@ -68,3 +68,11 @@
 - [纸卡总目录](PAPER_ATLAS.md)，[旧卡索引](REVISION_READING_INDEX.md)，[原阅读账](READING_LEDGER.json)
 
 规范：本页遇到反例要修改，而不是另开一个“总结 v2”保护旧观点；重大解释变动附新增/失效证据、最强反解释与日期。
+
+## 2026-10-12 独立审查后的认识更新（CURRENT）
+
+- **F6 撤回与重建在当前最强开放模型上分离，且瓶颈在重建**：E87 原始输出按 Gold 分层，Qwen3.8-27B/Gemma4-31B 在 MVRR 替代依赖题 GP 下 0/12.5%、对照 81/91%；误读拒绝 GP 下 58–82%。人类同材料替代依赖约 50%（Ceháková 2025）。这是本库目前最可靠、最有后果的现象；详见 [06](06_RESEARCH_PROGRAM_2026-10-12.md)。
+- **F7 显式结构信息对重建的作用是族差**：E89 框架提示 Gemma 26/32、Qwen 0/32。这把 Hanna 的"不复用"推进到"外给结构也不实例化"，并给出机制问题。
+- **F8 三个测量伪影必须先清**：Ministral strict No 偏置（H-C14）、NPZ 反身题词义成分（H-C15）、NP/S 两句复述拆 that（H-C16）。
+- **F4 更新**：I07 评分线降为 PARKED 建议；其一般形式已被 ABBEL/TRLM/LEDOM/Beyond Memory 占有，且候选池多数源没有正确解释。
+- 新近邻：Paape 2026（人类重分析成功率）、Zhou 2026（信念更新量）、Ok & Lee 2026（因果掩码顺序效应，H-C 的来源）、Emura & Sugawara ACL 2026、Oh & Demberg 2026。

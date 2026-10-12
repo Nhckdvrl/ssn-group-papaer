@@ -28,3 +28,6 @@
 **论证边界**：模型human难度相似不等于同一解析算法；作者关于GP需要抛弃旧解释/working memory的论点是 **CONJECTURE**。另须分开“文本不蕴含 `hunt(man,deer)`”与“文本明确蕴含 `not hunt(man,deer)`”，后者在普通世界语义上不成立。**但**这并非当年作者完全忽略的错：Christianson2001主文pp371–372已经承认这个务实推论，并用无GP对照及RAT反身动词检验GP额外效应；参见[2001精读](christianson2001-thematic-roles-linger.md)。2026数据的gold协议依旧可作为测量操作，不能因为No非逻辑否定就一概废弃整篇。
 
 **工作流启发**：跨大量模型/构式的稳健性可验证现象存在，但作为创新还需说清 *why one construction differs*、是什么导致错误回答、以及能否解释新关系生成与用途。E00校准必要，却不等于找到了自己的question。
+## 2026-10-12 独立精读补记（作者v1 HTML；表1/§3数字核对）
+
+七结构×40组（Subj/Obj沿用45组、干扰24组）；gold是拒绝误读的字面读（“Did the chef hire someone?”→No；depth charge “Can you ignore head injuries?”→Yes）。人类target平均28.3（Subj/Obj 13.3，RR 41.7）；GPT-5 GP 46.8 vs nonGP 93.7；thinking在GP上“更常降低表现”（Qwen-0.6B −25.7）。作者猜想“GP不压工作记忆，而需要丢弃误读；LLM工作记忆大所以非GP更好”，并明确标为待验证。**全文题目只问误读命题，不问替代依赖；无机制分析。** 这两点是我们增量的直接落点：若瓶颈在“丢弃”，拒绝率应低；我们E87显示拒绝率不低、断言率才低，与其猜想方向相反。

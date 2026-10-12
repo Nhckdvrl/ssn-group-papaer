@@ -1,0 +1,3451 @@
+{
+ "source_file": "/data1/xiangding/work/incremental-interpretation-revision/E52/qualified-v3.jsonl",
+ "source_sha256": "f6970dd7e80df56b202f14cc616ce9053b7eb72b8550312914b28ee9e7c03458",
+ "rows": 1732,
+ "E82_cohort_ids_available": true,
+ "pairs_with_replacement_question": 49,
+ "by_construction_source": {
+  "MVRR/cehakova2025": 24,
+  "MVRR/sap": 1,
+  "NPZ/cehakova2025": 24
+ },
+ "lexical_clusters_by_construction": {
+  "MVRR": 24,
+  "NPZ": 24
+ },
+ "all_role_counts": {
+  "DEPTH/control/OTHER": 80,
+  "DEPTH/gp/OTHER": 80,
+  "DOUBLE/control/OTHER": 160,
+  "DOUBLE/gp/OTHER": 80,
+  "INTERFERENCE/control/OTHER": 24,
+  "INTERFERENCE/gp/OTHER": 24,
+  "MVRR/control/MAIN_CLAUSE_FACT": 88,
+  "MVRR/control/MISREADING_REJECTION": 85,
+  "MVRR/control/OTHER": 2,
+  "MVRR/control/REPLACEMENT_DEPENDENCY": 25,
+  "MVRR/gp/MAIN_CLAUSE_FACT": 88,
+  "MVRR/gp/MISREADING_REJECTION": 85,
+  "MVRR/gp/OTHER": 2,
+  "MVRR/gp/REPLACEMENT_DEPENDENCY": 25,
+  "NPS/control/MAIN_CLAUSE_FACT": 40,
+  "NPS/control/MISREADING_REJECTION": 42,
+  "NPS/control/OTHER": 22,
+  "NPS/gp/MAIN_CLAUSE_FACT": 40,
+  "NPS/gp/MISREADING_REJECTION": 42,
+  "NPS/gp/OTHER": 22,
+  "NPVP/control/MAIN_CLAUSE_FACT": 40,
+  "NPVP/control/MISREADING_REJECTION": 40,
+  "NPVP/gp/MAIN_CLAUSE_FACT": 40,
+  "NPVP/gp/MISREADING_REJECTION": 40,
+  "NPZ/control/MAIN_CLAUSE_FACT": 117,
+  "NPZ/control/MISREADING_REJECTION": 100,
+  "NPZ/control/OTHER": 17,
+  "NPZ/control/REPLACEMENT_DEPENDENCY": 24,
+  "NPZ/gp/MAIN_CLAUSE_FACT": 117,
+  "NPZ/gp/MISREADING_REJECTION": 100,
+  "NPZ/gp/OTHER": 17,
+  "NPZ/gp/REPLACEMENT_DEPENDENCY": 24
+ },
+ "note": "CPU-only selection from frozen released items; grounded_gold comes from the completed D0 Step-5 audit, not new annotation. Replacement-dependency questions exist only for NPZ (Cehakova 2025 RAT reflexive/reciprocal) and MVRR (Cehakova 2025 ditransitive passive + 1 SAP). The MVRR final-target No questions ask about the misread object (e.g. did the file deserve investigation) and function as a second misreading probe.",
+ "replacement_literal_label_counts": {
+  "MVRR/ENTAILED": 20,
+  "NPZ/ENTAILED": 18,
+  "NPZ/NEITHER": 6,
+  "MVRR/NEITHER": 4,
+  "MVRR/None": 1
+ },
+ "cohort": [
+  {
+   "pair_id": "sap:MVRR:NPSNPZMVRR:MVRR:3",
+   "construction": "MVRR",
+   "source": "sap",
+   "cluster": "SAP:3",
+   "gp_replacement": [
+    {
+     "item_id": "sap:MVRR:3:gp",
+     "question": "Did the woman receive the mail?",
+     "sentence": "The woman brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [],
+   "gp_final": [],
+   "control_replacement": [
+    {
+     "item_id": "sap:MVRR:3:explicit_cue",
+     "question": "Did the woman receive the mail?",
+     "sentence": "The woman who was brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": []
+  },
+  {
+   "pair_id": "cehakova2025:item71",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item71",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:0",
+     "question": "Did the protester hide himself?",
+     "sentence": "While the protester hid the mother who was afraid sat on a couch.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:1",
+     "question": "Did the protester hide the mother?",
+     "sentence": "While the protester hid the mother who was afraid sat on a couch.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:2",
+     "question": "Did the mother sit on a couch?",
+     "sentence": "While the protester hid the mother who was afraid sat on a couch.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:3",
+     "question": "Did the protester sit on a couch?",
+     "sentence": "While the protester hid the mother who was afraid sat on a couch.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:4",
+     "question": "Did the protester hide himself?",
+     "sentence": "While the protester hid, the mother who was afraid sat on a couch.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:5",
+     "question": "Did the protester hide the mother?",
+     "sentence": "While the protester hid, the mother who was afraid sat on a couch.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item72",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item72",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:8",
+     "question": "Did the kidnapper hide himself?",
+     "sentence": "While the kidnapper hid the boy who was sleepy changed into his pajamas.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:9",
+     "question": "Did the kidnapper hide the boy?",
+     "sentence": "While the kidnapper hid the boy who was sleepy changed into his pajamas.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:10",
+     "question": "Did the boy change into his pajamas?",
+     "sentence": "While the kidnapper hid the boy who was sleepy changed into his pajamas.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:11",
+     "question": "Did the kidnapper change into his pajamas?",
+     "sentence": "While the kidnapper hid the boy who was sleepy changed into his pajamas.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:12",
+     "question": "Did the kidnapper hide himself?",
+     "sentence": "While the kidnapper hid, the boy who was sleepy changed into his pajamas.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:13",
+     "question": "Did the kidnapper hide the boy?",
+     "sentence": "While the kidnapper hid, the boy who was sleepy changed into his pajamas.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item73",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item73",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:16",
+     "question": "Did the friends embrace each other?",
+     "sentence": "Before the friends embraced the girl who was helpful tried to take pictures.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:17",
+     "question": "Did the friends embrace the girl?",
+     "sentence": "Before the friends embraced the girl who was helpful tried to take pictures.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:18",
+     "question": "Did the girl try to take pictures?",
+     "sentence": "Before the friends embraced the girl who was helpful tried to take pictures.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:19",
+     "question": "Did the friends try to take pictures?",
+     "sentence": "Before the friends embraced the girl who was helpful tried to take pictures.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:20",
+     "question": "Did the friends embrace each other?",
+     "sentence": "Before the friends embraced, the girl who was helpful tried to take pictures.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:21",
+     "question": "Did the friends embrace the girl?",
+     "sentence": "Before the friends embraced, the girl who was helpful tried to take pictures.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item74",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item74",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:24",
+     "question": "Did the parents embrace each other?",
+     "sentence": "After the parents embraced the daughter who was happy ordered an extra dessert.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:25",
+     "question": "Did the parents embrace the daughter?",
+     "sentence": "After the parents embraced the daughter who was happy ordered an extra dessert.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:26",
+     "question": "Did the daughter order extra dessert?",
+     "sentence": "After the parents embraced the daughter who was happy ordered an extra dessert.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:27",
+     "question": "Did the parents order extra dessert?",
+     "sentence": "After the parents embraced the daughter who was happy ordered an extra dessert.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:28",
+     "question": "Did the parents embrace each other?",
+     "sentence": "After the parents embraced, the daughter who was happy ordered an extra dessert.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:29",
+     "question": "Did the parents embrace the daughter?",
+     "sentence": "After the parents embraced, the daughter who was happy ordered an extra dessert.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item75",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item75",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:32",
+     "question": "Did the couple cuddle each other?",
+     "sentence": "As the couple cuddled their nephew who was sleepy watched a funny movie.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:33",
+     "question": "Did the couple cuddle the nephew?",
+     "sentence": "As the couple cuddled their nephew who was sleepy watched a funny movie.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:34",
+     "question": "Did the nephew watch a funny movie?",
+     "sentence": "As the couple cuddled their nephew who was sleepy watched a funny movie.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:35",
+     "question": "Did the couple watch a funny movie?",
+     "sentence": "As the couple cuddled their nephew who was sleepy watched a funny movie.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:36",
+     "question": "Did the couple cuddle each other?",
+     "sentence": "As the couple cuddled, their nephew who was sleepy watched a funny movie.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:37",
+     "question": "Did the couple cuddle the nephew?",
+     "sentence": "As the couple cuddled, their nephew who was sleepy watched a funny movie.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item76",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item76",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:40",
+     "question": "Did the babies cuddle each other?",
+     "sentence": "Before the babies cuddled the puppy that was cute crawled below the table.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:41",
+     "question": "Did the babies cuddle the puppy?",
+     "sentence": "Before the babies cuddled the puppy that was cute crawled below the table.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:42",
+     "question": "Did the puppy crawl below the table?",
+     "sentence": "Before the babies cuddled the puppy that was cute crawled below the table.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:43",
+     "question": "Did the babies crawl below the table?",
+     "sentence": "Before the babies cuddled the puppy that was cute crawled below the table.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:44",
+     "question": "Did the babies cuddle each other?",
+     "sentence": "Before the babies cuddled, the puppy that was cute crawled below the table.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:45",
+     "question": "Did the babies cuddle the puppy?",
+     "sentence": "Before the babies cuddled, the puppy that was cute crawled below the table.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item77",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item77",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:48",
+     "question": "Did the tailor dress himself?",
+     "sentence": "While the tailor dressed the model who was bored stood by the desk.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:49",
+     "question": "Did the tailor dress the model?",
+     "sentence": "While the tailor dressed the model who was bored stood by the desk.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:50",
+     "question": "Did the model stand by the desk?",
+     "sentence": "While the tailor dressed the model who was bored stood by the desk.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:51",
+     "question": "Did the tailor stand by the desk?",
+     "sentence": "While the tailor dressed the model who was bored stood by the desk.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:52",
+     "question": "Did the tailor dress himself?",
+     "sentence": "While the tailor dressed, the model who was bored stood by the desk.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:53",
+     "question": "Did the tailor dress the model?",
+     "sentence": "While the tailor dressed, the model who was bored stood by the desk.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item78",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item78",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:56",
+     "question": "Did the babysitter dress herself?",
+     "sentence": "After the babysitter dressed the toddler who was cute fell off the bed.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:57",
+     "question": "Did the babysitter dress the toddler?",
+     "sentence": "After the babysitter dressed the toddler who was cute fell off the bed.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:58",
+     "question": "Did the toddler fall off the bed?",
+     "sentence": "After the babysitter dressed the toddler who was cute fell off the bed.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:59",
+     "question": "Did the babysitter fall off the bed?",
+     "sentence": "After the babysitter dressed the toddler who was cute fell off the bed.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:60",
+     "question": "Did the babysitter dress herself?",
+     "sentence": "After the babysitter dressed, the toddler who was cute fell off the bed.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:61",
+     "question": "Did the babysitter dress the toddler?",
+     "sentence": "After the babysitter dressed, the toddler who was cute fell off the bed.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item79",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item79",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:64",
+     "question": "Did the coworkers meet each other?",
+     "sentence": "While the coworkers met the boss who was tired struggled with the computer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:65",
+     "question": "Did the coworkers meet the boss?",
+     "sentence": "While the coworkers met the boss who was tired struggled with the computer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:66",
+     "question": "Did the boss struggle with the computer?",
+     "sentence": "While the coworkers met the boss who was tired struggled with the computer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:67",
+     "question": "Did the coworkers struggle with the computer?",
+     "sentence": "While the coworkers met the boss who was tired struggled with the computer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:68",
+     "question": "Did the coworkers meet each other?",
+     "sentence": "While the coworkers met, the boss who was tired struggled with the computer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:69",
+     "question": "Did the coworkers meet the boss?",
+     "sentence": "While the coworkers met, the boss who was tired struggled with the computer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item80",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item80",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:72",
+     "question": "Did the family meet each other?",
+     "sentence": "While the family met the husband who was nervous waited for an interview.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:73",
+     "question": "Did the family meet the husband?",
+     "sentence": "While the family met the husband who was nervous waited for an interview.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:74",
+     "question": "Did the husband wait for an interview?",
+     "sentence": "While the family met the husband who was nervous waited for an interview.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:75",
+     "question": "Did the family wait for an interview?",
+     "sentence": "While the family met the husband who was nervous waited for an interview.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:76",
+     "question": "Did the family meet each other?",
+     "sentence": "While the family met, the husband who was nervous waited for an interview.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:77",
+     "question": "Did the family meet the husband?",
+     "sentence": "While the family met, the husband who was nervous waited for an interview.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item81",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item81",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:80",
+     "question": "Did the nurse disrobe herself?",
+     "sentence": "While the nurse disrobed the grandmother who was grumpy complained about the weather.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:81",
+     "question": "Did the nurse disrobe the grandmother?",
+     "sentence": "While the nurse disrobed the grandmother who was grumpy complained about the weather.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:82",
+     "question": "Did the grandma complain about the weather?",
+     "sentence": "While the nurse disrobed the grandmother who was grumpy complained about the weather.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:83",
+     "question": "Did the nurse complain about the weather?",
+     "sentence": "While the nurse disrobed the grandmother who was grumpy complained about the weather.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:84",
+     "question": "Did the nurse disrobe herself?",
+     "sentence": "While the nurse disrobed, the grandmother who was grumpy complained about the weather.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:85",
+     "question": "Did the nurse disrobe the grandmother?",
+     "sentence": "While the nurse disrobed, the grandmother who was grumpy complained about the weather.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item82",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item82",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:88",
+     "question": "Did the peasant disrobe herself?",
+     "sentence": "While the peasant disrobed the queen who was lively thought about the feast.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:89",
+     "question": "Did the peasant disrobe the queen?",
+     "sentence": "While the peasant disrobed the queen who was lively thought about the feast.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:90",
+     "question": "Did the queen think about the feast?",
+     "sentence": "While the peasant disrobed the queen who was lively thought about the feast.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:91",
+     "question": "Did the peasant think about the feast?",
+     "sentence": "While the peasant disrobed the queen who was lively thought about the feast.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:92",
+     "question": "Did the peasant disrobe herself?",
+     "sentence": "While the peasant disrobed, the queen who was lively thought about the feast.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:93",
+     "question": "Did the peasant disrobe the queen?",
+     "sentence": "While the peasant disrobed, the queen who was lively thought about the feast.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item83",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item83",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:96",
+     "question": "Did the assistant shave himself?",
+     "sentence": "While the assistant shaved the actor who was overworked watched the sports news.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:97",
+     "question": "Did the assistant shave the actor?",
+     "sentence": "While the assistant shaved the actor who was overworked watched the sports news.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:98",
+     "question": "Did the actor watch the sports news?",
+     "sentence": "While the assistant shaved the actor who was overworked watched the sports news.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:99",
+     "question": "Did the assistant watch the sports news?",
+     "sentence": "While the assistant shaved the actor who was overworked watched the sports news.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:100",
+     "question": "Did the assistant shave himself?",
+     "sentence": "While the assistant shaved, the actor who was overworked watched the sports news.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:101",
+     "question": "Did the assistant shave the actor?",
+     "sentence": "While the assistant shaved, the actor who was overworked watched the sports news.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item84",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item84",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:104",
+     "question": "Did the barber shave himself?",
+     "sentence": "After the barber shaved the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:105",
+     "question": "Did the barber shave the businessman?",
+     "sentence": "After the barber shaved the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:106",
+     "question": "Did the businessman cancel an appointment?",
+     "sentence": "After the barber shaved the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:107",
+     "question": "Did the barber cancel an appointment?",
+     "sentence": "After the barber shaved the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:108",
+     "question": "Did the barber shave himself?",
+     "sentence": "After the barber shaved, the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:109",
+     "question": "Did the barber shave the businessman?",
+     "sentence": "After the barber shaved, the businessman who was busy cancelled an upcoming appointment.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item85",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item85",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:112",
+     "question": "Did the father bathe himself?",
+     "sentence": "After the father bathed the son that was sweaty played basketball with friends.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:113",
+     "question": "Did the father bathe the son?",
+     "sentence": "After the father bathed the son that was sweaty played basketball with friends.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:114",
+     "question": "Did the son play basketball?",
+     "sentence": "After the father bathed the son that was sweaty played basketball with friends.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:115",
+     "question": "Did the father play basketball?",
+     "sentence": "After the father bathed the son that was sweaty played basketball with friends.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:116",
+     "question": "Did the father bathe himself?",
+     "sentence": "After the father bathed, the son that was sweaty played basketball with friends.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:117",
+     "question": "Did the father bathe the son?",
+     "sentence": "After the father bathed, the son that was sweaty played basketball with friends.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item86",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item86",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:120",
+     "question": "Did the nanny bathe herself?",
+     "sentence": "Before the nanny bathed the child who was energetic ran around the yard.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:121",
+     "question": "Did the nanny bathe the child?",
+     "sentence": "Before the nanny bathed the child who was energetic ran around the yard.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:122",
+     "question": "Did the child run around the yard?",
+     "sentence": "Before the nanny bathed the child who was energetic ran around the yard.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:123",
+     "question": "Did the nanny run around the yard?",
+     "sentence": "Before the nanny bathed the child who was energetic ran around the yard.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:124",
+     "question": "Did the nanny bathe herself?",
+     "sentence": "Before the nanny bathed, the child who was energetic ran around the yard.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:125",
+     "question": "Did the nanny bathe the child?",
+     "sentence": "Before the nanny bathed, the child who was energetic ran around the yard.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item87",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item87",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:128",
+     "question": "Did the siblings hug each other?",
+     "sentence": "While the siblings hugged the father who was overjoyed opened a birthday gift.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:129",
+     "question": "Did the siblings hug the father?",
+     "sentence": "While the siblings hugged the father who was overjoyed opened a birthday gift.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:130",
+     "question": "Did the father open a birthday gift?",
+     "sentence": "While the siblings hugged the father who was overjoyed opened a birthday gift.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:131",
+     "question": "Did the siblings open a birthday gift?",
+     "sentence": "While the siblings hugged the father who was overjoyed opened a birthday gift.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:132",
+     "question": "Did the siblings hug each other?",
+     "sentence": "While the siblings hugged, the father who was overjoyed opened a birthday gift.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:133",
+     "question": "Did the siblings hug the father?",
+     "sentence": "While the siblings hugged, the father who was overjoyed opened a birthday gift.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item88",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item88",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:136",
+     "question": "Did the kids hug each other?",
+     "sentence": "After the kids hugged the teacher who was friendly waved at the parents.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:137",
+     "question": "Did the kids hug the teacher?",
+     "sentence": "After the kids hugged the teacher who was friendly waved at the parents.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:138",
+     "question": "Did the teacher wave at the parents?",
+     "sentence": "After the kids hugged the teacher who was friendly waved at the parents.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:139",
+     "question": "Did the kids wave at the parents?",
+     "sentence": "After the kids hugged the teacher who was friendly waved at the parents.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:140",
+     "question": "Did the kids hug each other?",
+     "sentence": "After the kids hugged, the teacher who was friendly waved at the parents.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:141",
+     "question": "Did the kids hug the teacher?",
+     "sentence": "After the kids hugged, the teacher who was friendly waved at the parents.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item89",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item89",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:144",
+     "question": "Did the grandparents kiss each other?",
+     "sentence": "Before the grandparents kissed the girl who was chubby opened the cookie jar.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:145",
+     "question": "Did the grandparents kiss the girl?",
+     "sentence": "Before the grandparents kissed the girl who was chubby opened the cookie jar.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:146",
+     "question": "Did the girl open the cookie jar?",
+     "sentence": "Before the grandparents kissed the girl who was chubby opened the cookie jar.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:147",
+     "question": "Did the grandparents open the cookie jar?",
+     "sentence": "Before the grandparents kissed the girl who was chubby opened the cookie jar.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:148",
+     "question": "Did the grandparents kiss each other?",
+     "sentence": "Before the grandparents kissed, the girl who was chubby opened the cookie jar.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:149",
+     "question": "Did the grandparents kiss the girl?",
+     "sentence": "Before the grandparents kissed, the girl who was chubby opened the cookie jar.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item90",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item90",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:152",
+     "question": "Did the ladies kiss each other?",
+     "sentence": "After the ladies kissed the boy who was giggling ran up the stairs.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:153",
+     "question": "Did the ladies kiss the boy?",
+     "sentence": "After the ladies kissed the boy who was giggling ran up the stairs.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:154",
+     "question": "Did the boy run up the stairs?",
+     "sentence": "After the ladies kissed the boy who was giggling ran up the stairs.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:155",
+     "question": "Did the ladies run up the stairs?",
+     "sentence": "After the ladies kissed the boy who was giggling ran up the stairs.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:156",
+     "question": "Did the ladies kiss each other?",
+     "sentence": "After the ladies kissed, the boy who was giggling ran up the stairs.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:157",
+     "question": "Did the ladies kiss the boy?",
+     "sentence": "After the ladies kissed, the boy who was giggling ran up the stairs.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item91",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item91",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:160",
+     "question": "Did the boxers fight each other?",
+     "sentence": "While the boxers fought the man who was rude pushed through the crowd.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:161",
+     "question": "Did the boxers fight the man?",
+     "sentence": "While the boxers fought the man who was rude pushed through the crowd.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:162",
+     "question": "Did the man push through the crowd?",
+     "sentence": "While the boxers fought the man who was rude pushed through the crowd.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:163",
+     "question": "Did the boxers push through the crowd?",
+     "sentence": "While the boxers fought the man who was rude pushed through the crowd.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:164",
+     "question": "Did the boxers fight each other?",
+     "sentence": "While the boxers fought, the man who was rude pushed through the crowd.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:165",
+     "question": "Did the boxers fight the man?",
+     "sentence": "While the boxers fought, the man who was rude pushed through the crowd.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item92",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item92",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:168",
+     "question": "Did the classmates fight each other?",
+     "sentence": "As the classmates fought the woman who was angry called a police unit.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:169",
+     "question": "Did the classmates fight the woman?",
+     "sentence": "As the classmates fought the woman who was angry called a police unit.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:170",
+     "question": "Did the woman call a police unit?",
+     "sentence": "As the classmates fought the woman who was angry called a police unit.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:171",
+     "question": "Did the classmates call a police unit?",
+     "sentence": "As the classmates fought the woman who was angry called a police unit.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:172",
+     "question": "Did the classmates fight each other?",
+     "sentence": "As the classmates fought, the woman who was angry called a police unit.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:173",
+     "question": "Did the classmates fight the woman?",
+     "sentence": "As the classmates fought, the woman who was angry called a police unit.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item93",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item93",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:176",
+     "question": "Did the medic heal himself?",
+     "sentence": "While the medic healed the soldier that was bleeding used the tourniquet.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:177",
+     "question": "Did the medic heal the soldier?",
+     "sentence": "While the medic healed the soldier that was bleeding used the tourniquet.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:178",
+     "question": "Did the soldier use the tourniquet?",
+     "sentence": "While the medic healed the soldier that was bleeding used the tourniquet.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:179",
+     "question": "Did the medic use the tourniquet?",
+     "sentence": "While the medic healed the soldier that was bleeding used the tourniquet.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:180",
+     "question": "Did the medic heal himself?",
+     "sentence": "While the medic healed, the soldier that was bleeding used the tourniquet.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:181",
+     "question": "Did the medic heal the soldier?",
+     "sentence": "While the medic healed, the soldier that was bleeding used the tourniquet.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item94",
+   "construction": "NPZ",
+   "source": "cehakova2025",
+   "cluster": "cehakova2025:item94",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:184",
+     "question": "Did the doctor heal himself?",
+     "sentence": "After the doctor healed the uncle who got worse started taking new pills.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:185",
+     "question": "Did the doctor heal the uncle?",
+     "sentence": "After the doctor healed the uncle who got worse started taking new pills.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:186",
+     "question": "Did the uncle start taking new pills?",
+     "sentence": "After the doctor healed the uncle who got worse started taking new pills.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    },
+    {
+     "item_id": "cehakova2025:187",
+     "question": "Did the doctor start taking new pills?",
+     "sentence": "After the doctor healed the uncle who got worse started taking new pills.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:188",
+     "question": "Did the doctor heal himself?",
+     "sentence": "After the doctor healed, the uncle who got worse started taking new pills.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:189",
+     "question": "Did the doctor heal the uncle?",
+     "sentence": "After the doctor healed, the uncle who got worse started taking new pills.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "comma"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item95",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:1",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:193",
+     "question": "Did someone send the file to the suspect?",
+     "sentence": "The suspect sent the file deserved further investigation given the new evidence.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:192",
+     "question": "Did the suspect send the file?",
+     "sentence": "The suspect sent the file deserved further investigation given the new evidence.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:194",
+     "question": "Did the file deserve further investigation?",
+     "sentence": "The suspect sent the file deserved further investigation given the new evidence.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:195",
+     "question": "Did the suspect deserve further investigation?",
+     "sentence": "The suspect sent the file deserved further investigation given the new evidence.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:197",
+     "question": "Did someone send the file to the suspect?",
+     "sentence": "The suspect who was sent the file deserved further investigation given the new evidence.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:196",
+     "question": "Did the suspect send the file?",
+     "sentence": "The suspect who was sent the file deserved further investigation given the new evidence.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item96",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:13",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:201",
+     "question": "Did someone send the document to the mayor?",
+     "sentence": "The mayor sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:200",
+     "question": "Did the mayor send the document?",
+     "sentence": "The mayor sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:202",
+     "question": "Did the document provide sufficient evidence?",
+     "sentence": "The mayor sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:203",
+     "question": "Did the mayor provide sufficient evidence?",
+     "sentence": "The mayor sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:205",
+     "question": "Did someone send the document to the mayor?",
+     "sentence": "The mayor who was sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:204",
+     "question": "Did the mayor send the document?",
+     "sentence": "The mayor who was sent the document provided sufficient evidence that it was simply blackmail.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item97",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:14",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:209",
+     "question": "Did someone hand the contract to the player?",
+     "sentence": "The basketball player handed the contract created another controversy in the NBA.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:208",
+     "question": "Did the player hand the contract?",
+     "sentence": "The basketball player handed the contract created another controversy in the NBA.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:210",
+     "question": "Did the contract create another controversy?",
+     "sentence": "The basketball player handed the contract created another controversy in the NBA.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:211",
+     "question": "Did the player create another controversy?",
+     "sentence": "The basketball player handed the contract created another controversy in the NBA.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:213",
+     "question": "Did someone hand the contract to the player?",
+     "sentence": "The basketball player who was handed the contract created another controversy in the NBA.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:212",
+     "question": "Did the player hand the contract?",
+     "sentence": "The basketball player who was handed the contract created another controversy in the NBA.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item98",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:2",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:217",
+     "question": "Did someone hand the bill to the politician?",
+     "sentence": "The corrupt politician handed the bill received unwelcome attention from southern voters.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:216",
+     "question": "Did the politician hand the bill?",
+     "sentence": "The corrupt politician handed the bill received unwelcome attention from southern voters.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:218",
+     "question": "Did the bill receive unwelcome attention?",
+     "sentence": "The corrupt politician handed the bill received unwelcome attention from southern voters.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:219",
+     "question": "Did the politician receive unwelcome attention?",
+     "sentence": "The corrupt politician handed the bill received unwelcome attention from southern voters.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:221",
+     "question": "Did someone hand the bill to the politician?",
+     "sentence": "The corrupt politician who was handed the bill received unwelcome attention from southern voters.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:220",
+     "question": "Did the politician hand the bill?",
+     "sentence": "The corrupt politician who was handed the bill received unwelcome attention from southern voters.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item99",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:3",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:225",
+     "question": "Did someone bring to mail to the woman?",
+     "sentence": "The woman brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:224",
+     "question": "Did the woman bring the mail?",
+     "sentence": "The woman brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:226",
+     "question": "Did the mail disappear mysteriously?",
+     "sentence": "The woman brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:227",
+     "question": "Did the woman disappear mysteriously?",
+     "sentence": "The woman brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:229",
+     "question": "Did someone bring to mail to the woman?",
+     "sentence": "The woman who was brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:228",
+     "question": "Did the woman bring the mail?",
+     "sentence": "The woman who was brought the mail disappeared mysteriously after reading the bad news in it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item100",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:8",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:233",
+     "question": "Did someone bring the truck to the mechanic?",
+     "sentence": "The mechanic brought the truck needed several more hours to fully repair it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:232",
+     "question": "Did the mechanic bring the truck?",
+     "sentence": "The mechanic brought the truck needed several more hours to fully repair it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:234",
+     "question": "Did the truck need more hours for full repair?",
+     "sentence": "The mechanic brought the truck needed several more hours to fully repair it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:235",
+     "question": "Did the mechanic need more hours for full repair?",
+     "sentence": "The mechanic brought the truck needed several more hours to fully repair it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:237",
+     "question": "Did someone bring the truck to the mechanic?",
+     "sentence": "The mechanic who was brought the truck needed several more hours to fully repair it.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:236",
+     "question": "Did the mechanic bring the truck?",
+     "sentence": "The mechanic who was brought the truck needed several more hours to fully repair it.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item101",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:4",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:241",
+     "question": "Did someone feed the chicken to the boy?",
+     "sentence": "The boy fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:240",
+     "question": "Did the boy feed the chicken?",
+     "sentence": "The boy fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:242",
+     "question": "Did the chicken stay happy?",
+     "sentence": "The boy fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:243",
+     "question": "Did the boy stay happy?",
+     "sentence": "The boy fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:245",
+     "question": "Did someone feed the chicken to the boy?",
+     "sentence": "The boy who was fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:244",
+     "question": "Did the boy feed the chicken?",
+     "sentence": "The boy who was fed the chicken stayed surprisingly happy despite having a mild allergic reaction.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item102",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:16",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:249",
+     "question": "Did someone feed the lamb to the girl?",
+     "sentence": "The little girl fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:248",
+     "question": "Did the girl feed the lamb?",
+     "sentence": "The little girl fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:250",
+     "question": "Did the lamb remain calm?",
+     "sentence": "The little girl fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:251",
+     "question": "Did the girl remain calm?",
+     "sentence": "The little girl fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:253",
+     "question": "Did someone feed the lamb to the girl?",
+     "sentence": "The little girl who was fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:252",
+     "question": "Did the girl feed the lamb?",
+     "sentence": "The little girl who was fed the lamb remained relatively calm despite having asked for beef.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item103",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:5",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:257",
+     "question": "Did someone offer the operation to the doctor?",
+     "sentence": "The new doctor offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:256",
+     "question": "Did the doctor offer the operation?",
+     "sentence": "The new doctor offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:258",
+     "question": "Did the operation appear increasingly likely to succeed?",
+     "sentence": "The new doctor offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:259",
+     "question": "Did the doctor appear increasingly likely to succeed?",
+     "sentence": "The new doctor offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:261",
+     "question": "Did someone offer the operation to the doctor?",
+     "sentence": "The new doctor who was offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:260",
+     "question": "Did the doctor offer the operation?",
+     "sentence": "The new doctor who was offered the operation appeared increasingly likely to succeed in her career.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item104",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:11",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:265",
+     "question": "Did someone offer the job to the hire?",
+     "sentence": "The recent hire offered the job prepared many students for careers in media.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:264",
+     "question": "Did the hire offer the job?",
+     "sentence": "The recent hire offered the job prepared many students for careers in media.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:266",
+     "question": "Did the job prepare students for careers in media?",
+     "sentence": "The recent hire offered the job prepared many students for careers in media.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:267",
+     "question": "Did the hire prepare students for careers in media?",
+     "sentence": "The recent hire offered the job prepared many students for careers in media.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:269",
+     "question": "Did someone offer the job to the hire?",
+     "sentence": "The recent hire who was offered the job prepared many students for careers in media.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:268",
+     "question": "Did the hire offer the job?",
+     "sentence": "The recent hire who was offered the job prepared many students for careers in media.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item105",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:6",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:273",
+     "question": "Did someone award the grant to the professor?",
+     "sentence": "The professor awarded the grant gained more attention from marine biologists.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:272",
+     "question": "Did the professor award the grant?",
+     "sentence": "The professor awarded the grant gained more attention from marine biologists.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:274",
+     "question": "Did the grant gain more attention?",
+     "sentence": "The professor awarded the grant gained more attention from marine biologists.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:275",
+     "question": "Did the professor gain more attention?",
+     "sentence": "The professor awarded the grant gained more attention from marine biologists.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:277",
+     "question": "Did someone award the grant to the professor?",
+     "sentence": "The professor who was awarded the grant gained more attention from marine biologists.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:276",
+     "question": "Did the professor award the grant?",
+     "sentence": "The professor who was awarded the grant gained more attention from marine biologists.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item106",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:18",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:281",
+     "question": "Did someone award the contract to the governor?",
+     "sentence": "The governor awarded the contract received sweeping support across the entire state.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:280",
+     "question": "Did the governor award the contract?",
+     "sentence": "The governor awarded the contract received sweeping support across the entire state.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:282",
+     "question": "Did the contract receive support?",
+     "sentence": "The governor awarded the contract received sweeping support across the entire state.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:283",
+     "question": "Did the governor receive support?",
+     "sentence": "The governor awarded the contract received sweeping support across the entire state.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:285",
+     "question": "Did someone award the contract to the governor?",
+     "sentence": "The governor who was awarded the contract received sweeping support across the entire state.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:284",
+     "question": "Did the governor award the contract?",
+     "sentence": "The governor who was awarded the contract received sweeping support across the entire state.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item107",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:15",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:289",
+     "question": "Did someone bring the equipment to the engineer?",
+     "sentence": "The engineer brought the equipment required constant supervision from senior technicians.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:288",
+     "question": "Did the engineer bring the equipment?",
+     "sentence": "The engineer brought the equipment required constant supervision from senior technicians.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:290",
+     "question": "Did the equipment require constant supervision?",
+     "sentence": "The engineer brought the equipment required constant supervision from senior technicians.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:291",
+     "question": "Did the engineer require constant supervision?",
+     "sentence": "The engineer brought the equipment required constant supervision from senior technicians.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:293",
+     "question": "Did someone bring the equipment to the engineer?",
+     "sentence": "The engineer who was brought the equipment required constant supervision from senior technicians.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:292",
+     "question": "Did the engineer bring the equipment?",
+     "sentence": "The engineer who was brought the equipment required constant supervision from senior technicians.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item108",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:20",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:297",
+     "question": "Did someone bring the machine to the operator?",
+     "sentence": "The operator brought the machine started working efficiently with the added automation.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:296",
+     "question": "Did the operator bring the machine?",
+     "sentence": "The operator brought the machine started working efficiently with the added automation.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:298",
+     "question": "Did the machine start working efficiently?",
+     "sentence": "The operator brought the machine started working efficiently with the added automation.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:299",
+     "question": "Did the operator start working efficiently?",
+     "sentence": "The operator brought the machine started working efficiently with the added automation.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:301",
+     "question": "Did someone bring the machine to the operator?",
+     "sentence": "The operator who was brought the machine started working efficiently with the added automation.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:300",
+     "question": "Did the operator bring the machine?",
+     "sentence": "The operator who was brought the machine started working efficiently with the added automation.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item109",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:21",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:305",
+     "question": "Did someone assign the ballet to the dancer?",
+     "sentence": "The dancer assigned the ballet achieved incredible success for a new performer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:304",
+     "question": "Did the dancer assign the ballet?",
+     "sentence": "The dancer assigned the ballet achieved incredible success for a new performer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:306",
+     "question": "Did the ballet achieve success?",
+     "sentence": "The dancer assigned the ballet achieved incredible success for a new performer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:307",
+     "question": "Did the dancer achieve success?",
+     "sentence": "The dancer assigned the ballet achieved incredible success for a new performer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:309",
+     "question": "Did someone assign the ballet to the dancer?",
+     "sentence": "The dancer who was assigned the ballet achieved incredible success for a new performer.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:308",
+     "question": "Did the dancer assign the ballet?",
+     "sentence": "The dancer who was assigned the ballet achieved incredible success for a new performer.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item110",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:24",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:313",
+     "question": "Did someone assign the oven to the apprentice baker?",
+     "sentence": "The apprentice baker assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:312",
+     "question": "Did the apprentice baker assign the oven?",
+     "sentence": "The apprentice baker assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:314",
+     "question": "Did the oven produce smaller cakes?",
+     "sentence": "The apprentice baker assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:315",
+     "question": "Did the apprentice baker produce smaller cakes?",
+     "sentence": "The apprentice baker assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:317",
+     "question": "Did someone assign the oven to the apprentice baker?",
+     "sentence": "The apprentice baker who was assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:316",
+     "question": "Did the apprentice baker assign the oven?",
+     "sentence": "The apprentice baker who was assigned the oven produced smaller cakes because he lacked experience.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item111",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:9",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:321",
+     "question": "Did someone assign the song to the guitarist?",
+     "sentence": "The guitarist assigned the song failed dramatically because he never practiced enough.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:320",
+     "question": "Did the guitarist assign the song?",
+     "sentence": "The guitarist assigned the song failed dramatically because he never practiced enough.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:322",
+     "question": "Did the song fail dramatically?",
+     "sentence": "The guitarist assigned the song failed dramatically because he never practiced enough.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:323",
+     "question": "Did the guitarist fail dramatically?",
+     "sentence": "The guitarist assigned the song failed dramatically because he never practiced enough.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:325",
+     "question": "Did someone assign the song to the guitarist?",
+     "sentence": "The guitarist who was assigned the song failed dramatically because he never practiced enough.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:324",
+     "question": "Did the guitarist assign the song?",
+     "sentence": "The guitarist who was assigned the song failed dramatically because he never practiced enough.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item112",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:12",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:329",
+     "question": "Did someone assign the training to the assistant manager?",
+     "sentence": "The assistant manager assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:328",
+     "question": "Did the assistant manager assign the training?",
+     "sentence": "The assistant manager assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:330",
+     "question": "Did the training seem demanding?",
+     "sentence": "The assistant manager assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:331",
+     "question": "Did the assistant manager seem demanding?",
+     "sentence": "The assistant manager assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:333",
+     "question": "Did someone assign the training to the assistant manager?",
+     "sentence": "The assistant manager who was assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:332",
+     "question": "Did the assistant manager assign the training?",
+     "sentence": "The assistant manager who was assigned the training seemed unnecessarily demanding to new staff.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item113",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:23",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:337",
+     "question": "Did someone offer the restaurant to the chef?",
+     "sentence": "The new chef offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:336",
+     "question": "Did the chef offer the restaurant?",
+     "sentence": "The new chef offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:338",
+     "question": "Did the restaurant separate mediocre and gifted cooks?",
+     "sentence": "The new chef offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:339",
+     "question": "Did the chef separate mediocre and gifted cooks?",
+     "sentence": "The new chef offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:341",
+     "question": "Did someone offer the restaurant to the chef?",
+     "sentence": "The new chef who was offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:340",
+     "question": "Did the chef offer the restaurant?",
+     "sentence": "The new chef who was offered the restaurant separated mediocre cooks from gifted ones.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item114",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:17",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:345",
+     "question": "Did someone offer the position to the instructor?",
+     "sentence": "The yoga instructor offered the position demanded immense physical effort from everyone.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:344",
+     "question": "Did the instructor offer the position?",
+     "sentence": "The yoga instructor offered the position demanded immense physical effort from everyone.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:346",
+     "question": "Did the position demand physical effort?",
+     "sentence": "The yoga instructor offered the position demanded immense physical effort from everyone.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:347",
+     "question": "Did the instructor demand physical effort?",
+     "sentence": "The yoga instructor offered the position demanded immense physical effort from everyone.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:349",
+     "question": "Did someone offer the position to the instructor?",
+     "sentence": "The yoga instructor who was offered the position demanded immense physical effort from everyone.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:348",
+     "question": "Did the instructor offer the position?",
+     "sentence": "The yoga instructor who was offered the position demanded immense physical effort from everyone.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item115",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:22",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:353",
+     "question": "Did someone pay the money to the contestant?",
+     "sentence": "The contestant paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:352",
+     "question": "Did the contestant pay the money?",
+     "sentence": "The contestant paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:354",
+     "question": "Did the money become unavailable?",
+     "sentence": "The contestant paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:355",
+     "question": "Did the contestant become unavailable?",
+     "sentence": "The contestant paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:357",
+     "question": "Did someone pay the money to the contestant?",
+     "sentence": "The contestant who was paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:356",
+     "question": "Did the contestant pay the money?",
+     "sentence": "The contestant who was paid the money became unavailable and suddenly terminated his contract.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item116",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:10",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:361",
+     "question": "Did someone pay the bonus to the player?",
+     "sentence": "The player paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": null,
+     "in_E82_cohort": false,
+     "step5_status": "incomplete",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:360",
+     "question": "Did the player pay the bonus?",
+     "sentence": "The player paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:362",
+     "question": "Did the bonus remain the same?",
+     "sentence": "The player paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:363",
+     "question": "Did the player remain the same?",
+     "sentence": "The player paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": null,
+     "in_E82_cohort": false,
+     "step5_status": "incomplete",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:365",
+     "question": "Did someone pay the bonus to the player?",
+     "sentence": "The player who was paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:364",
+     "question": "Did the player pay the bonus?",
+     "sentence": "The player who was paid the bonus remained essentially the same despite his sudden fame and wealth.",
+     "literal": "NEITHER",
+     "in_E82_cohort": true,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item117",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:7",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:369",
+     "question": "Did someone refuse the service to the technician?",
+     "sentence": "The technician refused the service stopped working almost immediately after the argument.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:368",
+     "question": "Did the technician refuse the service?",
+     "sentence": "The technician refused the service stopped working almost immediately after the argument.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:370",
+     "question": "Did the service stop working?",
+     "sentence": "The technician refused the service stopped working almost immediately after the argument.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:371",
+     "question": "Did the technician stop working?",
+     "sentence": "The technician refused the service stopped working almost immediately after the argument.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:373",
+     "question": "Did someone refuse the service to the technician?",
+     "sentence": "The technician who was refused the service stopped working almost immediately after the argument.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:372",
+     "question": "Did the technician refuse the service?",
+     "sentence": "The technician who was refused the service stopped working almost immediately after the argument.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  },
+  {
+   "pair_id": "cehakova2025:item118",
+   "construction": "MVRR",
+   "source": "cehakova2025",
+   "cluster": "SAP:19",
+   "gp_replacement": [
+    {
+     "item_id": "cehakova2025:377",
+     "question": "Did someone refuse the treatment to the patient?",
+     "sentence": "The patient refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_misreading": [
+    {
+     "item_id": "cehakova2025:376",
+     "question": "Did the patient refuse the treatment?",
+     "sentence": "The patient refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "adjudicated",
+     "control_type": "unreduced"
+    }
+   ],
+   "gp_final": [
+    {
+     "item_id": "cehakova2025:378",
+     "question": "Did the treatment cause uncomfortable scenes?",
+     "sentence": "The patient refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    },
+    {
+     "item_id": "cehakova2025:379",
+     "question": "Did the patient cause uncomfortable scenes?",
+     "sentence": "The patient refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_replacement": [
+    {
+     "item_id": "cehakova2025:381",
+     "question": "Did someone refuse the treatment to the patient?",
+     "sentence": "The patient who was refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "ENTAILED",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ],
+   "control_misreading": [
+    {
+     "item_id": "cehakova2025:380",
+     "question": "Did the patient refuse the treatment?",
+     "sentence": "The patient who was refused the treatment continued causing uncomfortable scenes in the ER.",
+     "literal": "NEITHER",
+     "in_E82_cohort": false,
+     "step5_status": "agreed",
+     "control_type": "unreduced"
+    }
+   ]
+  }
+ ]
+}

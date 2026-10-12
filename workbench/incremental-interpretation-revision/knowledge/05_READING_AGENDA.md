@@ -54,3 +54,10 @@
 
 - [Christianson2001原卡](christianson2001-thematic-roles-linger.md)最初在表2/表3错误地把GP-implausible两列写成non-GP控制，已按原文改正；这改变对于“语用 vs GP超额”的可支持范围，不能只标TYP0。
 - 知识库内163份根层Markdown+5份专题的本workbench相对文件链接经Git树全路径校验；不会把没有直接在本仓库树里找到的跨仓库/外部链接声称为已核真。完整限度见[本次校验](../audit/KNOWLEDGE_QA_2026-10-12.json)。
+
+## 2026-10-12 审查后的阅读债务
+- Hanna & Mueller 2025：作者 HTML 本轮抓取失败，沿用旧卡的 NAACL 正式版阅读记录；需再核 Appendix C faithfulness 与 §6 QA 的具体数字。
+- Huang & Ferreira 2021：仍只有摘要；它是"全局解释是否完整"的关键人类证据，须取得主文。
+- Emura & Sugawara ACL 2026、Oh & Demberg 2026、Steele 2026、Futrell 2019、Kim & Schuster 2023：仅摘要，见 abstract-only 卡；前两篇应升级为主文。
+- Ceháková 2025：D0 只收了部分项且 Step-5 把若干双宾语/互指题标 NEITHER（见 results/REPLACEMENT_DEPENDENCY_COHORT_2026-10-12.json）；需对齐原材料与人类逐项数据。
+- NeurIPS 2026 / ICLR 2026 新一期：未系统扫描"incremental interpretation / reanalysis / belief update"主题，下一轮先做。

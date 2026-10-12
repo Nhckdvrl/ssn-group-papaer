@@ -247,3 +247,16 @@
 ## 研究边界
 
 这个图谱是在**认知上组织论文关联**，不是自动宣称“阅读全部论文”或“最近邻已穷尽”。任何一个问题的主张应去[证据图](03_EVIDENCE_GRAPH.md)检查旧实验反证、再去[概念测量](02_CONSTRUCT_AND_MEASUREMENT.md)确认读数。新增论文先决定它改变了**哪个竞争解释的预测**，再选择主分类；同一篇可被多个主题引用但只有一个规范论文卡。维护协议见[LITERATURE_MAINTENANCE.md](LITERATURE_MAINTENANCE.md)。
+
+## <a id="review-2026-10-12"></a>2026-10-12 独立审查新增（7 张卡，3 张中心卡补独立精读）
+
+- P0 [paape2026 surprisal not sufficient](paape2026-surprisal-not-sufficient.md) · 人类重分析成功率/代价的潜过程分离 · MAIN
+- P1 [zhou2026 syntactic belief update](zhou2026-syntactic-belief-update.md) · 困难=句法信念更新量 · MAIN
+- P0 [ok2026 lost in prompt order](ok2026-lost-in-prompt-order.md) · 因果掩码使先出现的表示不能被后文改写；三假说淘汰范式 · MAIN
+- P1 [asami2024 good-enough LM](asami2024-good-enough-lm.md) · 无歧义构式的 good-enough 与人类 No 题更差 · MAIN
+- P1 [cho2025 ICL inference circuit](cho2025-icl-inference-circuit.md) · 方法范式参照：拥挤问题里拆步骤、让解释分叉、回收旧清单 · MAIN
+- P2 [beyond-memory2026 belief trapping](beyond-memory2026-belief-trapping.md) · belief 更新审计已有在线组件（I07 PARKED 理由） · MAIN
+- P1 [abstract-only 2026 neighbors](abstract-only-2026-neighbors.md) · Emura & Sugawara ACL26、Oh & Demberg rebinding、Steele shared slot、Futrell 2019、Kim & Schuster 2023、CASTLE · ABSTRACT_ONLY
+- 中心卡补记：[amouyal2025](amouyal2025-garden-path-humans-llms.md)、[amouyal2026](amouyal-2026-processing-difficulties.md)、[li2024](li-2024-incremental-comprehension.md) 各追加 2026-10-12 独立精读节（材料、金标、数字、未问的替代依赖题）。
+
+**结构入口（新）**：[06 研究纲领](06_RESEARCH_PROGRAM_2026-10-12.md) → [07 实验地基](07_EXPERIMENT_FOUNDATION.md) → [08 idea 谱系](08_IDEA_LINEAGE_ATLAS.md)。
