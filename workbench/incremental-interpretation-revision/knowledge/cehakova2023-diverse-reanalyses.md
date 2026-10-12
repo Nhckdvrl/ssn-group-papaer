@@ -1,6 +1,6 @@
 # Garden-path sentences and the diversity of their (mis)representations（2023）
 
-[PLOS原文](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0288817)，[原材料OSF](https://osf.io/98g26/)。实际读Introduction/E4/E5 methods、coding、results与General Discussion；E1–3只读片段，材料未下载/审计，不宣称已完成复现。
+[PLOS原文](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0288817)，[原材料OSF](https://osf.io/98g26/)。阅读身份已更新：**2026-10-12正式PLOS HTML主文包含Exp1–5的材料、方法、结果与讨论均重新核对**；更早一版仅深读E4/5并略读E1–3是历史阅读状态，不再代表本卡现状。OSF逐行实验数据与R脚本未复算，不能宣称独立复现。
 
 1. **形态：** 人类最终理解的多种失败形式；不用单个No替代完整representation。
 2. **对象：** Czech dative/accusative暂时歧义，同verb的真实object和possessive关系，而非英NPZ逗号。

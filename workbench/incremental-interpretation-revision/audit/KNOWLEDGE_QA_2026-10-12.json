@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-12",
+  "scope": "workbench/incremental-interpretation-revision",
+  "baseline_tree_before_followup_updates": "6cc65c7e1a339f8f6748a491c2fbcc5377c434cc",
+  "method": "Connector-based fetch of 163 root-level knowledge Markdown and five topics plus selected workbench entrypoints, regular-expression extraction of Markdown inline relative targets, normalization of ../ against repository paths, comparison with Git tree recursive file paths; not a Markdown AST parser; parent root files checked separately.",
+  "counts": {
+    "knowledge_root_markdown": 163,
+    "knowledge_topic_markdown": 5,
+    "all_knowledge_markdown": 168,
+    "root_links_and_topic_links_checked": true,
+    "known_workbench_file_paths_in_tree": 756,
+    "missing_workbench_relative_file_targets_found": 0
+  },
+  "limits": [
+    "External http(s) URLs not checked exhaustively",
+    "Links targeting other repo-root folders or Git history outside this workbench not exhaustively validated",
+    "Inline Markdown link regex does not resolve anchor fragments or nested parentheses",
+    "Scientific claims, artifact identity and old /data1 data are not validated by link integrity",
+    "The baseline tree can be superseded by concurrent GitHub updates; this report records its scope, not a rolling CI guarantee"
+  ],
+  "concrete_primary_source_correction": "Christianson2001 Table2/3 in knowledge note had GP implausible column misidentified as nonGP; corrected in-place",
+  "cross_agent_reconciliation": "Repo main received six intervening commits, including independent later full reads of Patson2009 and Cehakova2025; upstream commits preserved, current knowledge index reconciled without rollback"
+}

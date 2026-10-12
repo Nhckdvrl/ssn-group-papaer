@@ -12,8 +12,8 @@
 
 | 实验 | 为什么前一个实验还不够 | 设计（原文） | 核心对照/观察 |
 |---|---|---|---|
-| Exp1a | 阅读难≠最终解释残留；若有残留，延长误解/世界合理性应否影响它？ | RSVP逐词、36人、42句材料；GP vs 无GP填先宾语；歧义短/长、最终事件plausible/implausible；`Did man hunt deer?`+conf 1–4 | GP短/长错误Yes 44.0/51.2%；无GP plausible短/长20.2/43.7%，说明问题本身有明显语用基线；比较交互而非把No当绝对truth |
-| Exp1b | Exp1a的逐词速呈与记忆负担可能制造错误 | 整句自定步速、另36人、其余刺激保留 | GP短/长错误Yes28.6/43.7%，无GP plausible11.1/31.4%；降低绝对错答，但差别保留 |
+| Exp1a | 阅读难≠最终解释残留；若有残留，延长误解/世界合理性应否影响它？ | RSVP逐词、36人、42句材料；GP vs 无GP填先宾语；歧义短/长、最终事件plausible/implausible；`Did man hunt deer?`+conf 1–4 | **Table 2 正确六列**：GP-plausible短/长44.0/51.2%，GP-implausible 20.2/43.7%，**non-GP control 21.4/31.0%**。此前错误地将GP-implausible的20.2/43.7列写成non-GP，已核原PDF表2。GP-implausible对non-GP的整体超额并不可靠（F1 p>.20，F2 p=.05），不可把所有条件说成同样有稳健GP效应 |
+| Exp1b | Exp1a的逐词速呈与记忆负担可能制造错误 | 整句自定步速、另36人、其余刺激保留 | **Table 3 正确六列**：GP-plausible短/长28.6/43.7%，GP-implausible11.1/31.4%，**non-GP control 10.7/16.3%**。原卡也错把GP-implausible列当control；全句阅读改变了绝对水平与交互结构，不可只比较两个被混淆的列 |
 | Exp2 | Exp1只能说子句旧对象仍被接受；也可能模型完全没有给主句找到主语。长度本身也混杂材料增加 | 24人、40items；问子句对象`Did man hunt deer?` vs 问主句`Did deer run?`；调换主/从句语序；ambiguous NP的head early/late | 子句问句错误率55.6%而主句9.4%。主句正确不意味旧子句错已撤回。语序对照使语用故事不能独占差别 |
 | Exp3a | 选用可自由带宾语的hunt可被语用“正在猎就是猎这只鹿”解释；能否找到无法如此推理的lexical control？ | 16人、24items（一半Reflexive Absolute Transitive：dress/bathe等，另一半可选及物动词）；GP vs 倒装序控制 | RAT的无宾语形式隐含自指，而不能默认指句中另一个新名词；GP比非GP仍多错误Yes |
 | Exp3b | Exp3a语序变动同时改变许多话语条件，可能是非GP控制太不同 | 新16人，同两类verb/24items，保持从句先行，只通过逗号制造无歧义控制 | RAT仍有明显GP额外错答。两个不同无GP控制收紧“只是一般世界推理”的解释 |
@@ -40,3 +40,9 @@
 E01短/长扩展在原研究里已有现成对照，但本项目的extension词面/问句和其他因素同变，不能仅凭同方向判定时间内生承诺。E29撤除自然GP后仍保留某角色效应，说明我们至少有一部分差异来自额外界面；Christianson使用**same information、不同GP path**的对照，值得比重复prompt寻找最好胜率。E103标签里的未绑定`something`更不能自动记为明确新依赖。研究应把“新主句能建立 + 原子旧绑定依旧受诱发 + 独立新用途能否用”放到同一来源的证据图中。
 
 **来源/可核对页**：PDF pp371–374理论与反推，pp376–380 Exp1表2/3与讨论，pp381–387 Exp2表4/5与讨论，pp388–394 Exp3 表6–8与讨论，pp394–398 general discussion；截至本次未对出版勘误或每项刺激逐字再次核真。
+
+## 2026-10-12 表2/表3原始列校准（对先前本日深读的更正）
+
+对照作者正式PDF pp376与pp378的表头，**每表6列顺序都是 GP plausible 短/长 → GP implausible 短/长 → non-GP 短/长**；上述两个“无GP plausible”标签是抄列错误，本段与上方直接改正，不沿用旧错。Exp1a GP implausible vs noGP的总体差异F1(1,35)=1.72,p>.20、F2(1,41)=3.90,p=.05，不能用“GP各条件显著超额”论证普适旧解析记忆。原卡最重要的理论区分应立在**对应条件的配对差/交互**而不是漂浮的单个Yes百分比。
+
+**可核对原文**：[正式PDF](https://ferreiralab.faculty.ucdavis.edu/wp-content/uploads/sites/222/2015/05/Christianson-et-al.-2001_LingeringInterpretationsGP_Cog-Psych.pdf)，实际校对Table2出版p376、Table3出版p378及紧接正文的控制条件比较。PDF网页截图服务失败，数值系作者PDF可提取的表格文字，尚未独立复算ANOVA。

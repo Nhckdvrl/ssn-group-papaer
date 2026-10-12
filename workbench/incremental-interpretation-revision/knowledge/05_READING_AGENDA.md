@@ -26,7 +26,7 @@
 **P0：会直接改变科学解释的**
 1. **已补读核心主文** [Christianson et al. 2001](christianson2001-thematic-roles-linger.md)：本轮取得作者实验室正式40页PDF，核五实验方法/关键结果/讨论；其原文**已意识到语用推断并设计GP对照、反身RAT动词控制**。新的未完成项是逐素材/原始统计复核，而非‘只读摘要’。
 2. [Huang & Ferreira 2021](https://doi.org/10.1016/j.jml.2021.104288)：如何条件化 RT 于正确/错误问答、哪个层次的语法“正确”却整体解释缺失？需要实读完整实验表与统计；目前作者摘要和二手比较不能解决与Slattery的张力。
-3. [Ceháková et al. 2025](https://doi.org/10.1080/0163853X.2025.2513210) 与 [Sturt 2007](sturt2007-semantic-persistence.md)：是否已经解释“局部正确、全局遗漏、残留旧语义”之间的边界？先取得正文再比较，不从摘要替作者定结论。
+3. [Ceháková et al. 2025](cehakova2025-disrupted-final-interpretations.md)：**2026-10-12已有后续阅读提交补足作者公开完整文章正文**，包括四种问句的语义、对照、回归量与各模型的替代解释；尚未运行Zenodo的stimuli/R脚本。与[Sturt 2007](sturt2007-semantic-persistence.md)的全文核对仍是阅读任务，不能混称两篇均已完成。
 4. [Amouyal 2026](https://aclanthology.org/2026.acl-long.1040/) 的逐题数据、human vs LM设置以及更严格的 3-valued gold 重标；这是“问答是否测到修订”的核心压力。
 5. [Hanna 2025](https://aclanthology.org/2025.naacl-long.164/) 最终版修订/repair操作细节和feature interventions的反向、无关因果控制；它比泛泛再读SAE综述紧迫。
 
@@ -46,6 +46,11 @@
 深读不以“读了几篇”优化。若某研究问题重要且解释开放，可以沿经典论文、之后反驳、最新改进深挖；若最近邻已经解决特定问题，替换问题而不是靠重命名求创新。
 ## 新增经典谱系补记（本轮）
 - [2001 原始五实验精读](christianson2001-thematic-roles-linger.md)：正式PDF主文；文献里最强的语用竞争解释排除动作。
-- [2006 结构启动](vangompel2006-structural-priming.md)、[2009 复述](patson2009-paraphrase.md)：**目前只有正式摘要**，不能写精读完成；这两篇是旧问句诱发效应争论的必要后续入口。
+- [2006 结构启动](vangompel2006-garden-path-priming.md)：本轮仅正式摘要/实验3相关节选，仍有主文实验数值欠账。[2009 复述](patson2009-paraphrase.md)：**后续独立阅读提交已经取得作者正式6页全文、完整Methods及Tables 1/2**，不再把它标为摘要-only；未复算原参与者数据。
 - [Ceháková 2023 本轮补完](cehakova2023-diverse-reanalyses.md)：正式PLOS HTML Exp1–5、关键数值与错误类别，历史只读E1–3片段已补；OSF数据与R代码仍是欠账。
 - [Maina-Kilaas 2026 修正](mainakilaas2026-digging-in.md)：Exp2是36项而不是历史误记24项；记录对照正交性与RT选择。
+
+## 2026-10-12 新增全库相互矛盾记录的纠错
+
+- [Christianson2001原卡](christianson2001-thematic-roles-linger.md)最初在表2/表3错误地把GP-implausible两列写成non-GP控制，已按原文改正；这改变对于“语用 vs GP超额”的可支持范围，不能只标TYP0。
+- 知识库内163份根层Markdown+5份专题的本workbench相对文件链接经Git树全路径校验；不会把没有直接在本仓库树里找到的跨仓库/外部链接声称为已核真。完整限度见[本次校验](../audit/KNOWLEDGE_QA_2026-10-12.json)。
