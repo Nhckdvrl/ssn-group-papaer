@@ -10,6 +10,9 @@ trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 cp -r "$here/main.tex" "$here/appendix.tex" "$here/references.bib" "$here/acl.sty" \
       "$here/acl_natbib.bst" "$here/figures" "$here/tables" "$tmp/"
 cd "$tmp"
+# Figure 1 is TikZ (figures/fig_overview.tex, data from ../scripts/fig_overview_data.py).
+(cd figures && pdflatex -interaction=nonstopmode -halt-on-error fig_overview.tex > /dev/null \
+  && cp fig_overview.pdf "$here/figures/fig_overview.pdf")
 pdflatex -interaction=nonstopmode -halt-on-error main.tex > build.log
 bibtex main >> build.log
 for i in 1 2 3; do pdflatex -interaction=nonstopmode -halt-on-error main.tex >> build.log; done
