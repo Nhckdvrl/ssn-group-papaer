@@ -1,29 +1,25 @@
 # 游戏NPC Agent专属知识库
 
-2026-10-13第三轮整理。当前优先级从竞赛/工具接口转回学术与游戏制作共同关心的问题；本目录是项目自己的理解资产，不是外围library的副本。
+2026-10-13第四轮：探索入口已经选定为**角色目标承诺与计划适应**。不再机械同时执行旧六方向列表，也不返回CPDC牵引的工具探针。
 
-## 第一层：整体认识与判断
+## 当前必须先读
 
-| 文件 | 用途 |
-|---|---|
-| [PROBLEM_GENEALOGY.md](PROBLEM_GENEALOGY.md) | 四条问题谱系、外部重要性证据、各自能成什么尺度的研究 |
-| [RESEARCH_CALIBRATION.md](RESEARCH_CALIBRATION.md) | 顶会研究动作、关键控制、资源与可继承/不可继承的结论 |
-| [INDUSTRY_EVIDENCE.md](INDUSTRY_EVIDENCE.md) | 开发者的一手制作压力，不把宣传当实验 |
-| [POSITIONING.md](POSITIONING.md) | 已有强认识、不能冒领的新意及下一轮核查依据 |
-| [LITERATURE_MAP.md](LITERATURE_MAP.md) | 学科/任务边界与原始来源导航 |
+1. [选定入口](../EXPLORATION_ENTRY.md)：问题、对象、配对分支、强基线、值得继续的结果。
+2. [目标控制研究谱系](GOAL_CONTROL_REVIEW.md)：研究动机、idea来源重建和最近邻限制；不能只读论文标题。
+3. [定向前沿复核](FRONTIER_CHECK.md)：NeurIPS2026及目标导向新近工作，阅读范围/track/无法取得全文分开。
+4. [定位表](POSITIONING.md)：什么已有人研究、什么才是可能的认识增量。
+5. [原生资产](../BASELINES.md)、[本地预算](../LOCAL_FIRST.md)、[E03](../experiments/E03-native-goal-entry.md)、[E04](../experiments/E04-goal-plan-interventions.md)：科学问题如何进入真实本地测量。
 
-## 第二层：论文资产与阅读债
+## 仍然保留的领域认知
 
-[PAPER_LEDGER.md](PAPER_LEDGER.md)区分本轮确认的核心来源、前轮逐篇阅读与历史初筛。旧[CORE_NOTES.md](CORE_NOTES.md)及[papers/](papers/)保留KNUDGE/CDT/NCP/PCSP/CPDC等阅读；它们记录过去的来源核查，不再决定当前执行优先级。CPDC仅历史/技术参照，不是当前选题中心。
+[PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md)记录四类重要问题；[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)记录此前顶会定向阅读；[INDUSTRY_EVIDENCE](INDUSTRY_EVIDENCE.md)保留开发者证据。它们是背景，不覆盖当前的明确选择。
 
-[READING_QUEUE.md](READING_QUEUE.md)写明尚未补完的正文、最新近邻和真实代码路径；不得把P0/P1索引自动升级为精读。NeurIPS2026的标题目录尚未逐篇完成track/来源核查。
+[PAPER_LEDGER](PAPER_LEDGER.md)、[CORE_NOTES](CORE_NOTES.md)、[papers/](papers/)保留历史索引与KNUDGE/CDT/NCP/PCSP/CPDC逐篇资产。旧列表里的“未选定”描述以本文及EXPLORATION_ENTRY为准。未经复核的历史会场身份不自动升为已确认；最新核查以FRONTIER_CHECK为准。
 
-## 第三层：进入真实研究
+[MEASUREMENT](MEASUREMENT.md)仍管数据与证据卫生。玩家体验、语义角色质量和引擎任务结果不同，不以方便打分的量替换研究构念。
 
-[EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[LOCAL_FIRST](../LOCAL_FIRST.md)、[BASELINES](../BASELINES.md)分别约束科学入口、本地完整成本和资产可用性。[MEASUREMENT](MEASUREMENT.md)继续用于数据与证据卫生；符号引擎不是所有NPC研究唯一资格，人类构念也不能随意改成规则断言。
+## 阅读与更新
 
-## 阅读标记不夸大
+P0标题来源；P1摘要；P2指定正文/附录或源码已读；P3正文/关键附录充分读并核对关键代码；P4实际复现/复算。每次写实际范围，不因页数或文档长升级。新GOAL_CONTROL_REVIEW并未宣称所有论文P3/P4。
 
-P0=仅发现题目/来源，会议身份另列核验状态；P1=官方摘要；P2=指定正文/附录或源码片段已读；P3=正文与关键附录充分阅读并核对关键代码路径；P4=实际复算/复现。只有README或某一方法段不标P3。本轮定向阅读具体范围见RESEARCH_CALIBRATION，不因为文档变长升级等级。
-
-每份研究卡区分作者明确说明与我们重建的idea来源；说明最强认识、实验的区分力、有效范围、竞争解释与可迁移研究动作。私有数据/权重不放公开知识库。历史初筛可纠正，不据旧列表把未验证状态重新写成事实。
+关键异常出现、准备做机制主张或声称novelty时，回到强近邻和最新论文重新核对；不是每次启动都强制读完整个领域。所有新认知和实验决策写在本workbench内部，不转移到外围library。

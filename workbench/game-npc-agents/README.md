@@ -1,43 +1,46 @@
-# Game NPC Agents｜从游戏角色的真实问题出发
+# Game NPC Agents｜目标可以坚持，计划必须能改
 
-**状态：PROPOSED；用户已授权持续研究，其他 ACTIVE 分配不变。**
-**2026-10-13 第三轮：按用户纠正重新整理。CPDC不再牵引选题；默认核心研究闭环零付费API、全链路本地。**
+**状态：PROPOSED；2026-10-13 用户要求完成选题准备并选定探索切口。已选择本工作台的探索优先级，不改变全局 ACTIVE 分配。**
 
-## 当前判断
+## 已选定的探索切口
 
-前轮过早从易于检查的竞赛工具接口，收敛到“角色信息是否干扰调用”，尚未充分证明它是值得深入的NPC研究问题。这一执行入口已撤回；[E02](experiments/E02-role-relevance.md)标为VOID/superseded，未运行、不是实验否定。既有论文笔记和[E01源码结果](results/E01_source_contracts.json)保留，不再拿它们支持该选题优先级。
+> **玩家改变游戏局势后，NPC 能否坚持自己的目标，同时放弃失效的手段，并在目标已经实现时停止旧行动？**
 
-现在以独立的学术与行业需求确定研究空间：**制作可控且有自身目标的角色；适应真实玩家的协同行为；共同经历产生的长期连贯；有用而及时的主动性。** 这不是四个已经找到的创新点。具体主张仍须从自然任务、强基线及有区分力的实验中形成。
+研究的是 **NPC 的目标承诺与计划适应是否真正分离**。不是人格提示/工具调用竞赛，不是再做一个通用记忆模块，也不是预先宣称存在“稳定性—灵活性权衡”。目前选定的是值得驻留的研究问题，不是已经验证的新发现或论文标题。
 
-**首先核查的研究底座：LIGHT/goal-driven角色任务。** 其身份、动机、对话和真实状态行动更接近NPC本体；不是因为旧/免费就选为论文数据。旧接口、短轨迹、数据/权重许可、当前模型能力均需确认。伙伴适应的MeltingPot/Overcooked谱系为备选，不自动转成泛用MARL项目。
+同一角色、同一动机、同一段实际经历，在游戏状态处建立配对分支：局势不变；玩家正常互动但不影响目标；旧路线失效而原目标仍可达；玩家已经实现该目标。看角色的真实后续行动，而非仅看它怎样解释自己。合法替代路径不罚，不把完成目标等同于照搬原示范。
 
-## 工作入口：先读这几份
+## 当前唯一执行入口
 
-| 入口 | 解决的问题 |
+| 文件 | 作用 |
 |---|---|
-| [领域问题谱系](knowledge/PROBLEM_GENEALOGY.md) | 重要性从哪里来，前人研究到哪，哪些还只是待调查判断 |
-| [顶会尺度与研究动作](knowledge/RESEARCH_CALIBRATION.md) | LIGHT/Dragon、ICML行为控制、NeurIPS GAMMA、ICLR Hypothetical Minds、ICML Proact-VL的具体校准 |
-| [游戏界一手证据](knowledge/INDUSTRY_EVIDENCE.md) | Ubisoft/KRAFTON的制作压力；研发说明与科学证据分开 |
-| [全链路本地规范](LOCAL_FIRST.md) | NPC、伙伴、教师、记忆、裁判都计成本；不暗含大批外部API |
-| [资产与代码核查](BASELINES.md) | 已读文件/版本、资源是否已发布、依赖和数据许可的债 |
-| [下一步探索入口](EXPLORATION_ENTRY.md) | 从真实角色任务进入，不预先冻结论文故事 |
-| [知识库索引](knowledge/README.md) / [文献账本](knowledge/PAPER_LEDGER.md) | 当前定向阅读与历史初筛分开，旧阅读卡继续可查 |
-| [定位表](knowledge/POSITIONING.md) | 不能重新冒领的认识及如何证明真正增量 |
-| [本地Agent指南](AGENTS.md) / [数据与测量](knowledge/MEASUREMENT.md) | 自主探索、负结果、构念效度和反漂移 |
-| [实验索引](experiments/README.md) / [主张](CLAIMS.md) / [痛点](PAIN_LOG.md) | 没有NPC模型发现；不把源码测试当科研结果 |
+| [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) | **选题决定、具体研究对象、竞争解释、什么结果值得继续** |
+| [knowledge/GOAL_CONTROL_REVIEW.md](knowledge/GOAL_CONTROL_REVIEW.md) | LIGHT/Dragon、行为控制、goal drift、goal-directedness、重规划与新近顶会的研究谱系 |
+| [knowledge/FRONTIER_CHECK.md](knowledge/FRONTIER_CHECK.md) | NeurIPS 2026 等定向补查；正文范围、track 与未获取来源明确分开 |
+| [BASELINES.md](BASELINES.md) / [LOCAL_FIRST.md](LOCAL_FIRST.md) | 固定上游代码、自然数据来源、完整本地实验链与成本 |
+| [experiments/E03-native-goal-entry.md](experiments/E03-native-goal-entry.md) | **PLANNED**：自然角色任务与最小强基线测量 |
+| [experiments/E04-goal-plan-interventions.md](experiments/E04-goal-plan-interventions.md) | **PLANNED**：在真实线索基础上区分目标、状态和旧计划的作用 |
+| [knowledge/README.md](knowledge/README.md) | 本工作台内部知识库；旧方向材料仍可追溯 |
+| [logs/2026-10-13-selection.md](logs/2026-10-13-selection.md) | 本轮做了什么、未做什么及证据边界 |
 
-## 哪些不再默认做
+## 为什么选这里
 
-不按CPDC竞赛目标定义科研价值；不从免费toy函数开始自行证明重要性；不将“NPC+记忆/RAG/ToM/行为树”当独创；不把所有问题约化为工具调用、personality judge或单一总分。
+角色拥有自己的动机而不只是服从玩家，是 LIGHT/Dragon 的原生研究对象；设计者控制行为而不只最大化任务奖励，是 Direct Behavior Specification 的问题。游戏开发中的 GOAP、Ubisoft Teammates 和 KRAFTON 又都要求角色面对新局势作适当选择。学术与行业依据及边界见新综述，不用产品宣传证明模型效果。
 
-不要求所有NPC论文都有符号引擎：叙事/人类体验可以是严肃问题，但必须有支持相应结论的证据。优先独立引擎是因为我们要降低执行反馈和API耦合，不是把其他研究一概排除。
+**已有工作很多，不能冒领：** Goal Drift 已研究工具性目标切换与模式延续；Everitt 等已区分任务能力与目标导向；Arghal 等已研究无用钥匙与内部地图/计划；Bayesian Partner Modelling 已研究推断正确却继续旧技能；经典 GOAP 更早已分离目标和计划。因此“NPC 会忘目标”“加状态表”“有时应该重规划”不构成新贡献。
 
-不以最新会议标签代替全文阅读。NeurIPS 2026标题目录已筛查，但未完成每篇track/正文/资产核实；尚未完成全领域综述或确定论文新颖性。
+我们要从实际 NPC 交互中寻找能解释、预测这些不同失误的条件；若只复现上述认识，或简单强对照已覆盖全部现象，不包装为新 idea。
 
-## 实际进度与资源
+## 首选底座与边界
 
-本轮完成定向原文阅读、行业需求核对、若干官方源码入口核查和研究文档重整。**新模型运行0、GPU使用0、新行为结论0。** E01的8/8为前轮CPU源码合约结果，不是NPC实验。没有接入用户服务器，也没有声称本轮跑通LIGHT或复现任何主表。
+首选 **LIGHT 引擎 + 原有自然角色动机/任务**，不是从头造世界。代码固定为 `71a06cae8573048b1af41507ac52fe33b650fab3`。经典短任务保留本来的长度，局势变化用合法玩家事件实现。先研究目标含义和完成条件足够明确的自然任务；无法无歧义形式化的角色动机不硬打成错误标签。
 
-研究室十余张A100、8张PRO6000，实习方16张H20；弱互联/弱I/O，单节点任务与独立实验优先。是否能跑由实际模型、KV cache、CPU与磁盘测量决定，不以总卡数估算。目标会议按真实贡献选择ICML/ICLR/NeurIPS或ACL/EMNLP/NAACL主会，不按周倒排。
+E03 必须验证数据、目标、事件与当前引擎确实对齐。官方 demo 只用于运行测试，不替代自然评测；`projects/quests` 也不等于 Dragon 完整复现包。若资产恢复成本不合理，换支持同一科学问题的公开底座，而非改回 CPDC 或另开通用多智能体提分项目。
 
-本轮依据见[整理日志](logs/2026-10-13-reorientation.md)。旧版本及被替换计划可从Git历史追溯；未改其他工作台、全局配额或已删除项目。
+## 资源与实际进度
+
+核心实验默认 **零付费推理 API**。NPC 为本地开放权重，世界与主要评分为引擎，玩家干预先用合法脚本事件；自然交互扩展才增加独立本地伙伴。教师、记忆、裁判都不得偷偷调用云端。多 GPU 用于独立场景、模型和确认种子，不跨节点同步训练。
+
+**本轮完成：** 定向论文/近邻核查、选题决定、固定代码与来源核验、自然数据方案、强对照与预算方案。**未完成：** LIGHT 原生安装与任务恢复、模型推理、论文成绩复现、玩家研究；尚无新的科学主张。数据归档下载在当前环境受阻，具体源与待验证状态见 BASELINES，不虚构数据已读或 GPU 已跑。
+
+CPDC 保持历史材料；E02 仍 VOID/superseded。旧 E01 的源码检查不是 NPC 行为证据。后续允许根据实测改变具体假设，但不机械展开旧的六方向列表。

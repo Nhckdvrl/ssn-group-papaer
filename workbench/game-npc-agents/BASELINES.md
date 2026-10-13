@@ -1,45 +1,60 @@
-# 本地研究资产与真实可用性｜2026-10-13 第三轮
+# 所选切口的资产、基线与可用性
 
-**没有完整模型 baseline 被本地复现。** 下表区分研究对象、公开资产和仍未解决的本地问题。CPDC已撤出优先入口；E01源码测试不构成模型/游戏复现。
+2026-10-13第四轮；执行优先级以[EXPLORATION_ENTRY](EXPLORATION_ENTRY.md)为准。**源码/来源已核查不等于游戏和模型已跑通。**
 
-## 1. 当前优先核查与备用入口
+## 1. 首选世界：LIGHT
 
-| 系统 | 对象与价值 | 本轮查到了什么 | 尚须核查，不能跳过 |
-|---|---|---|---|
-| [LIGHT](https://github.com/facebookresearch/LIGHT) / [quests项目](https://parl.ai/projects/light/) | 有身份/动机的角色、对话及真实游戏行动；优先原生NPC研究底座候选 | README、graph说明、play_map.py；OOGraph/GraphEvent/Soul，模型之外可有规则角色 | 旧依赖/模型迁移、数据和权重各自许可、真实quest能否载入当前引擎、现代本地代理；未安装 |
-| [Hypothetical Minds](https://github.com/locross93/Hypothetical-Minds) | 伙伴策略推断与协同/竞争；第二分支强LLM近邻 | 官方README有本地vLLM/Llama3路径，不只是API | 指定MeltingPot fork、实际客户端、模型规模/提示/调用成本；未运行，不按GPT默认命令启动 |
-| [GAMMA](https://github.com/lych1233/GAMMA-human-ai-collaboration) | 人类配合的强非LLM政策参照；不是剧情角色 | README有政策数据/检查点入口、训练与human-proxy流程 | checkpoint字节/许可/配置匹配未核查；安装说明承认有缺失依赖；全量训练成本高 |
-| [Collab-Overcooked](https://github.com/YusaeMeow/Collab-Overcooked) | 行动协作与过程测量，可作备用底座 | 前轮核查README与评估入口，支持本地服务 | 旧Python/MPI依赖、与原版Overcooked不同、参考轨迹评分的范围；本轮未重新安装 |
-| [Proact-VL](https://github.com/microsoft/AnthropomorphicIntelligence/tree/main/Proact-VL) | 实时解说/指导伙伴，主动性近邻，不是有行动身体的NPC | 当前README已链接权重/训练与测试数据、推理训练和评估脚本 | GPT质量/PAUC裁判、本地替代的效度、视频IO和Ego4D等数据许可；不默认完整重训 |
+固定仓库提交：`facebookresearch/LIGHT@71a06cae8573048b1af41507ac52fe33b650fab3`。代码为MIT；任务/模型许可必须分别确认。
 
-## 2. 保留的角色/叙事研究近邻，不冒充默认执行底座
+本轮直接检查的文件：
 
-[KNUDGE](https://github.com/nweir127/KNUDGE)：作者侧专业RPG对话图与知识使用。自然语料有价值，不意味着有完整在线世界。
-
-[CDT](https://github.com/KomeijiForce/Codified_Decision_Tree)：情境化人物规则与行动文本；构树、语义判断、评估的模型调用均入账，不能直接执行其默认外部API示例。
-
-[NCP](https://github.com/NLP2CT/NCP-Bench)：narrator长程承诺；世界更新/审核含LLM，原文有多种验证，不能误称纯规则世界或缺所有对照。
-
-[PCSP](https://github.com/yoosunghong/pcsp)：共享政策/真实动作的重要预印本近邻；作者已有独立行为probe审计，不是本项目发现。先核研究层，不默认装全套UE。
-
-TALES是玩家式agent；FAIRGAMER有专门评价目标；CPDC是本次撤出中心的竞赛。它们可提供局部知识，不决定整个NPC研究的目标函数。已有详细材料见[旧阅读入口](knowledge/CORE_NOTES.md)，当前优先级以本页及[问题谱系](knowledge/PROBLEM_GENEALOGY.md)为准。
-
-## 3. 本轮真实源码核验记录
-
-| 仓库文件 | 已读Git blob SHA | 实际结论 |
+| 文件 | Git blob | 确认了什么 |
 |---|---|---|
-| facebookresearch/LIGHT README.md | ecc5717608ada580fffc24ed2ac2c5fd375b7812 | 声明MIT代码、引擎与Soul接口；模型迁移/部署说明仍有TODO |
-| facebookresearch/LIGHT light/graph/README.md | 6fa39500950bf40083634ec8fb207bc9e4362150 | 图的状态、节点/边、GraphEvent与序列化；尚未跑测试 |
-| facebookresearch/LIGHT scripts/examples/play_map.py | 4dada31b28619d227dc4086341f02c7e6fb31e78 | Hydra配置、规则/模型Soul分支；并非已成功运行命令 |
-| locross93/Hypothetical-Minds README.md | c72e23ff68ee6414e745b432046a3bef3a1e8e00 | 指定MeltingPot fork、本地vLLM启动与llama3选择分支 |
-| lych1233/GAMMA-human-ai-collaboration README.md | c6a7bedef8a7b1f98e8cad5178d6ae48c88311eb | 有本地训练/模型入口，但环境依赖不完整承诺、checkpoint未下载验证 |
+| README.md | ecc5717608ada580fffc24ed2ac2c5fd375b7812 | OOGraph、GraphEvent、Soul分工；模型迁移/服务说明有TODO |
+| light/graph/README.md | 6fa39500950bf40083634ec8fb207bc9e4362150 | 可序列化世界、容器/邻接、节点删除和局部检索；不是语言模型写世界真值 |
+| scripts/examples/play_map.py | 4dada31b28619d227dc4086341f02c7e6fb31e78 | Hydra入口、规则Soul可用分支、遗留cluster路径；同时导入模型相关组件 |
+| setup.py | 5038e34f140bec89293f839ce51859b451b48e7f | Python>=3.8、light0.2、依赖ParlAI；不等于任意新Python兼容 |
+| requirements.txt | 3dc425de4c0bda41edf0e3d3a79d96578218c600 | 大量只有下限的依赖；需运行后产生真实lock |
+| projects/quests/README.md | b890d931f41c6ca96213caadd5c53bfe077d2b92 | 当前这里主要保留早期Predictive Machines入口，不保证Dragon完整包 |
 
-这些是**文件blob不是整个repo的commit pin**。正式运行必须另外固定每个上游commit、模型revision、数据hash，不能凭本表声称全依赖已冻结。
+官方 simple_world 已查看：含人物、容器、物品、事件条件与规则响应，可作原生engine smoke test。它是官方演示，不是我们的自然研究数据。
 
-LIGHT的README仍示例 --load-map，而本轮源码docstring使用Hydra的 builder.load_map=...；源码还残留 /checkpoint/... 默认路径。因此不复制旧README命令当一键复现说明。应在隔离环境核查入口及无模型依赖路径，不把该差异包装为科学发现。
+代码层已确认的示例命令是 `python scripts/examples/play_map.py builder.load_map=scripts/examples/complex_world.json`，不是旧README的`--load-map`。**此命令本轮没有执行**；先在隔离的Python环境中处理依赖与配置，不直接污染现有vLLM环境。
 
-## 4. 全链路本地化与复现身份
+## 2. 自然任务资产与获取状态
 
-执行规范见[LOCAL_FIRST.md](LOCAL_FIRST.md)。本地替换云端模型后的结果叫受控改造/新基线，不叫作者原成绩复现。代码MIT不意味着所有数据/模型都MIT；网页列出模型不意味着权重与脚本已逐字匹配。核心实验不依赖付费API，也不要求新造大型游戏引擎。
+正式[项目页](https://parl.ai/projects/light/)区分原LIGHT对话、WILD互动、Dragon quest与ATOMIC；不要混用规模和split。
 
-对动作/规则主张优先真实状态反馈；对叙事/心理/体验问题需要相应的人类或经验证测量，**独立符号引擎不是所有NPC论文的唯一资格**。本地优先是降低研究耦合和成本，不是把科学问题缩成最容易写断言的任务。
+- annotated quests官方链接：`https://parl.ai/downloads/light_project/quests/quest_stems.tar.gz`，跳转到`https://dl.fbaipublicfiles.com/parlai/light_project/quests/quest_stems.tar.gz`。
+- 原LIGHT任务入口：ParlAI `light_dialog`；WILD：`light_dialog_wild`。项目页说quest completions在WILD中，**不意味着整个WILD就是原2111示范及其split**。
+- 本轮查看ParlAI `parlai/tasks/light_dialog_wild/build.py`，blob `d3720506236c4e371e0467e2c90a98a49c32d681`：先下载manifest，再按其中hash下载dumps。该builder有过滤/选项，不能随便沿默认过滤后说恢复了论文数据。
+- manifest源码给定hash：`c708fe62692f239a2b35025d71722c7607f863ffa110aa118f2e1d0fa7db4730`。它是builder列出的资源hash，不是我们已下载后独立算出的hash。
+
+**本轮未取得归档字节。** 浏览器无法读取tar.gz，容器下载未成功；quest实际schema、归档内许可、哈希和当前引擎兼容性仍须在授权节点下载后验证。不得宣称已读64/240条数据。不存在以手造任务替代归档然后标为原版复现的回退。
+
+恢复步骤已明确：取得归档及terms→列文件和schema→恢复作者split→保留源ID与原始目标/时间线→验证原生世界→记录失败与筛选分母→再定义可观察且可达的分支。歧义目标独立标出，不用LLM强行投票变金标准。
+
+## 3. 本地模型选择与版本
+
+初始两家族参考：
+
+| 模型 | 初选版本依据 | 用途与限制 |
+|---|---|---|
+| [Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) | 官方commit列表当前短SHA `40c0698`；下载前解析并存完整SHA，不以main长期运行 | 原生指令/角色能力；thinking开关由真实chat template配置并记录，非只写一句no_think |
+| [Mistral-Small-3.1-24B-Instruct-2503](https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503) | 官方API返回 `68faf511d618ef198fef186659617cfd2eb8e33a` | 独立家族，固定模板/推理预算；文本任务不用视觉输入 |
+
+官方模型卡列Apache-2.0。这些是可复现和本地成本参照，不声称2026最强模型；先检查用户已有缓存，不重复下载。更强单节点模型用于确认基本能力与规模趋势，但不一开始全卡部署70B。KV cache、服务版本、量化、CPU和I/O必须实测；权重版本已知也不等于权重字节已经下载。
+
+## 4. 控制器基线与公平性
+
+B0全文目标/可见状态/事件历史；B1普通目标保持与计划可修改提示；B2每步重规划并匹配可用事实；B3目标/事实/计划分开保存；B4适用子集的规则/GOAP。均为强控制，不是注册的新方法。
+
+NPC只能看到同样的局部可见信息。全状态+形式化目标规划器为oracle，报告它覆盖哪些任务，不把信息特权当算法优势。合法动作列表在对比条件间保持一致；首次解析/长度/超时错误不删样本。
+
+原Dragon的固定伙伴、学习DM与离散候选检索不是当前现代生成基线；更换这些后称“受控任务适配”，不声称复现原论文数值。
+
+## 5. 备用资料，不再无界扩工程
+
+Hypothetical Minds/MeltingPot、GAMMA/Overcooked、Collab-Overcooked是行动/伙伴适应近邻，资源事实见前轮[RESEARCH_CALIBRATION](knowledge/RESEARCH_CALIBRATION.md)。alem是新近协调性测量参考；NARRA/NCP/CDT是叙事/角色参照；它们不成为同时执行的六个工程项目。
+
+若LIGHT任务恢复失败，优先寻找支持同一“自己的目标+合法玩家改变世界”问题的公共资产。不要为了保持LIGHT名字从零写游戏，也不要因为某备用环境易跑就改回泛用MARL排名。
