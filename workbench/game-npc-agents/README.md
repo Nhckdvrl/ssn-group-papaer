@@ -25,4 +25,7 @@
 旧的 `RESEARCH_TERRITORIES.md` 与过时 `configs/entry_manifest.json` 已从当前 HEAD 清除。未执行且因用户明确变更选题而失效的 E00/E02–E05 实验卡也移出当前树：可在[历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)和 git 中追溯，**不是实验否定/科研失败**。E01 实际 CPU 源码检查、全部深读论文卡及领域安全/经济知识库保留。新的 E06 只是**PLANNED，未运行**。
 
 ## 实验与资源现状
-至今未在用户 GPU 节点进行 NPC 模型/经济/攻防实测，新科学主张为 **0**。2026-10-14 仅完成选题背景/代码阅读与仓库整理；作者报告数字不能写成我们测出来的。研究室多 A100/PRO6000，服务器网络/I/O弱；零付费推理 API、单节点与独立卡实验优先。不可假设所有节点空闲，不得擅动实习方私有资产。执行继承[仓库 AGENTS](../../AGENTS.md)与[EXECUTION](../EXECUTION.md)。
+2026-10-14 已完成E07原生CPU控制8/8与Qwen3-32B单卡纯ReAct episode：20次NPC决策、11次合法执行、4次实际状态变化，无script fallback、无云调用；全部失败保留。E08作者梯度/独立特征测试通过，5套persona split全量审计。C01仅为L1基线可行性，**新科学增量仍0**；P02的位置/视角混杂正在E09做最小对照，不能预设人格gap。详细读数见[实测摘要](results/E07_local_episode.json)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[会话日志](logs/2026-10-14.md)。
+
+## 资产位置与重建
+模型复用HuggingFace缓存，完整rollout/LLM输入输出不进Git，位于本机 `/home/xiang/.cache/game-npc-research/runs/`；上游源码/paper分别在同缓存 `sources/` / `papers/`，commit与PDF hash见 `results/E08_sources.json`。用 `scripts/native_actioncastle.py` 和E07卡重跑；现有Conda fgvd配合隔离deps overlay，具体版本由每次manifest固定。用户已授权七节点全部GPU，07:00 Asia/Tokyo起本项目最多8卡，优先现有Conda/venv；零付费API与单节点优先见LOCAL_FIRST。

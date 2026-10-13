@@ -1,6 +1,8 @@
 # 矿区 A 的最近邻与 idea 来源分析（2026-10-14）
 
-读过：ICML 正式摘要/作者代码结构、NeurIPS2026 作者版摘要/开源代码局部、2026 arXiv 原始摘要、PCSP 代码/独立行为文档指定段。**不称本轮已 P3 精读全部正文和附录，模型复现为零。**
+下文保留初次阅读快照。**2026-10-14 已读指定正文方法/关键附录/表格并执行E07/E08**；4张新论文卡在 `../papers/`，PCSP全链与原生动作最新审计在 [SOURCE_AUDIT](SOURCE_AUDIT_2026-10-14.md)。仍未复现作者完整模型数字，不能把局部CPU核验升级为全文实证复现。
+
+最新必须补入的近邻：[ReflAct（EMNLP2025）](https://aclanthology.org/2025.emnlp-main.1697/)已研究goal-state reflection；[ReFract（2026-10-02）](https://arxiv.org/abs/2610.03356)已有role-calibrated intent/knowledge/capability与可执行Text World Model。前者对位置/goal grounding有直接ownership，后者角色权限与我们当前观测视角归属不同但构成强近邻；正文/附录继续审计中。P02不能靠“在NPC中发现位置没接上角色”自动成为idea。
 
 ## 1. The Personality Illusion — ICML 2026 正式主会
 [正式 PMLR](https://proceedings.mlr.press/v306/han26n.html) / [作者代码](https://github.com/psychology-of-AI/Personality-Illusion) / [arXiv](https://arxiv.org/abs/2509.03730)；本轮 P1 paper + P2 repo/data。

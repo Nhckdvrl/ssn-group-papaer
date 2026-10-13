@@ -1,0 +1,44 @@
+# 2026-10-14 源码、数据与执行审计
+
+范围：E07/E08；pin、PDF SHA和clone路径在 [`E08_sources.json`](../../results/E08_sources.json)。Fact / Interpretation / Alternative分开。作者结果仍属作者；本地CPU路径复算不等于论文模型复现。
+
+## PCSP：persona 到策略的真实路径
+
+**源代码事实**（`pcsp@5420f7b`，路径均相对research/）：
+
+- `src/models/film.py`：离线冻结Qwen3 embedding输入→1024→rank16→64的低秩线性投影并normalize；不是在语言模型本体上训练LoRA。投影供共享actor/critic使用；FiLM初始gamma=1/beta=0。
+- `src/training/pcsp_trainer.py`：`collect_rollout`用no_grad采样离散动作，保存numpy obs/action；InfoNCE用GRU编码保存轨迹，与共享persona projection做in-batch diagonal cross entropy。没有通过离散环境rollout直接反传到actor，可能通过共享projection间接影响后续策略。
+- PPO直接更新projection/actor/critic，diversity在同一批状态比较不同persona的action logits KL，直接更新projection/actor。两者都不直接更新trajectory encoder。
+- **作者自己的**`test_gradient_paths.py`已核这一拓扑；我们执行通过且数值见E08。作者还提供trained-checkpoint audit脚本；本轮没有重跑它，所以不能将小fixture范数写成训练期结论。
+- `src/env/mini_inzoi_v3.py`：needs补充/低need惩罚、preferred_action +.5、BigFive/action-style cosine ×.3、social bonus共同进reward。`build_personas_v3.py`把v1动作按C/E/O等级展开为v3偏好，300/300源码映射匹配，人物文本未改。
+- `src/env/mini_inzoi.py`的当前v1实现也有preferred_action +.5和按BigFive相容性的social bonus。**“没有v3 style term”不能写成“完全persona-agnostic reward”。** 最新论文§IV说v1/v2 base只有needs-driven/persona-agnostic social shaping；历史训练源码/reward版本与当前commit是否一致尚未排除，不据此宣判论文错误。
+
+**评价与独立性事实**：
+
+| 数据口径 | train/test | ID/完全相同文本交集 | 职业交集 | BigFive联合原型交集 | 解释范围 |
+|---|---:|---:|---:|---:|---|
+| 300 v3 unseen-occupation | 240/60 | 0/0 | 0 | 15 | 组合式新职业；人物原型都见过 |
+| 500 v3-large | 400/100 | 0/0 | 20 | 0（test5种） | 新联合特质原型；不是新职业 |
+| unseen-archetype | 240/60 | 0/0 | 20 | 0（test3种） | 另一个作者划分 |
+| unseen-combo | 240/60 | 0/0 | 18 | 15 | 两轴本身均已见，组合未见 |
+
+`run_independent_behavior_eval_v3_large.py`：政策训练400角色，独立probe用其中320拟合/80校准，最终100角色测试；同一probe在两policy混合训练，按persona簇bootstrap/randomization，3policy seed配对。445维动作统计/749维含state，独立feature模块不读学得的projection/trajectory encoder。作者报告full .482 vs no_consist .511，含state .556 vs .558，不能冒领其发现；0.33也不能无视未见联合原型的标签支持度当万能chance。
+
+**我们的解释**：InfoNCE内部可恢复性不是独立特质行为效度；但projection间接作用和MeltingPot/UE5证据不可删掉。最新论文已有三层stack、无consistency消融、自然语言共享政策扩展。只审v3奖励不足以关闭PCSP认识。
+
+**尚未排除的竞争解释/阅读债**：作者独立评估的BigFive构念、组合OOD与任务机会分布都影响probe；内部分类decoder共训练与真实策略改变可能并存。需原weights/trajectory重算或外部任务评价后才能论方法效果。UE5与MeltingPot未安装/未复现；我们不声称它们失败。
+
+## agent-sandbox：Action Castle 的原生执行范围
+
+**源代码事实**（`d7b872e`）：
+
+- `notebooks/hw1_llm/play.py`复用原Action Castle，给troll/guard/ghost附加作者目标；pure `make_react_behavior`没有script fallback。网页demo的`make_hybrid_behavior`则失败后可script兜底，两者不能混计。
+- `npc.py`：persona第一次写入agent后缓存；goals每turn重读；系统消息含persona/goals，用户观测来自`game.describe_for`+地点归因的recent history+heard+private memory。free-text默认128token/.7 temperature；工具路径与free-text路径均重新进parser。
+- `decide_and_route`首选失败后把真实失败原因附回base观测，默认1次retry；失败反思与可选周期Reflect是两件事。script fallback、memory retrieval、可选periodic reflection的贡献必须分别记。
+- `parsing.py`先解析action，再检查preconditions和apply_effects；world_state可读出物品/人物/退出阻挡/事件。导出为omniscient，仅用于审计，不作为NPC观测。
+- 原troll persona含临时事实“I am hungry”与未来承诺，作者目标为阻止intruders。guard怀疑陌生人并藏castle secrets；ghost被guard谋杀。不是我们把抽象人设贴成唯一gold。
+- `Give.apply_effects`收到食物的hungry recipient会自动Eat；Troll_Block由hungry/位置/生死/意识判定。CPU控制8/8通过：growl成功无material delta，club attack改变玩家state，无武器攻击失败，递鱼自动吃鱼解桥。
+
+**我们的解释**：人物设定、目标、局部信息、LLM原始选择和engine结果可拆；“NPC让玩家过桥”的世界读数可能完全由玩家give+engine决定。规则与脚本是正常工程设计，科学问题是归因/解释范围，不是代码有硬编码就创新。
+
+**尚未排除的竞争解释/阅读债**：角色goal与当前短期利益的合理优先级、多种等价战术、模板128token/合法动词和具体语法知识、state是否被观测表达、cache persona与memory对当前state一致性；需本地强模型轨迹，不能由CPU接口检查下人格科学结论。

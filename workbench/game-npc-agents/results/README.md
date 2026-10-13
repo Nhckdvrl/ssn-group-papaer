@@ -5,3 +5,5 @@
 **正式模型/GPU 输出仍为零，没有 NPC 性能数字或论文级科学发现。** E01 不重现官方论文分数，不意味着完整环境/模型基线已经跑通；历史 E00/E02–E05 均未运行，已移出当前 HEAD；新的 E06 当前仅为 PLANNED，没有模型结果。
 
 大权重和原始长轨迹保留在授权节点，Git 只存脚本、小结果、配置和 manifest；实习私有资产/凭证不进入公开仓库。
+
+- E07 CPU：[`E07_cpu_controls.json`](E07_cpu_controls.json)；原生阳阴控制8/8通过、两次一致，0模型/GPU。完整state/LLM轨迹在本地缓存 `/home/xiang/.cache/game-npc-research/runs/`，不入Git；按E07和scripts/native_actioncastle.py重建。

@@ -1,0 +1,267 @@
+{
+  "checks": 8,
+  "all_passed": true,
+  "deterministic_replay": true,
+  "model_calls": 0,
+  "gpu_hours": 0,
+  "cases": [
+    {
+      "repetition": 0,
+      "name": "expressive_growl",
+      "command": "growl The player",
+      "success": true,
+      "delta": []
+    },
+    {
+      "repetition": 0,
+      "name": "unowned_weapon",
+      "command": "attack The player with sword",
+      "success": false,
+      "delta": []
+    },
+    {
+      "repetition": 0,
+      "name": "club_attack",
+      "command": "attack The player with club",
+      "success": true,
+      "delta": [
+        {
+          "path": "/characters/The player/inventory/lamp",
+          "before": {
+            "name": "lamp",
+            "description": "a lamp",
+            "location": null,
+            "owner": "The player",
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "flammable",
+              "gettable"
+            ],
+            "properties": {},
+            "contents": []
+          },
+          "after": null
+        },
+        {
+          "path": "/characters/The player/properties/is_unconscious",
+          "before": null,
+          "after": true
+        },
+        {
+          "path": "/locations/Drawbridge/items/lamp",
+          "before": null,
+          "after": {
+            "name": "lamp",
+            "description": "a lamp",
+            "location": "Drawbridge",
+            "owner": null,
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "flammable",
+              "gettable"
+            ],
+            "properties": {},
+            "contents": []
+          }
+        }
+      ]
+    },
+    {
+      "repetition": 0,
+      "name": "native_feed_unblocks",
+      "command": "give fish to troll",
+      "success": true,
+      "delta": [
+        {
+          "path": "/characters/The player/inventory/fish",
+          "before": {
+            "name": "fish",
+            "description": "a dead fish",
+            "location": null,
+            "owner": "The player",
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "edible",
+              "gettable"
+            ],
+            "properties": {
+              "taste": "disgusting! It's raw! And definitely not sashimi-grade!"
+            },
+            "contents": []
+          },
+          "after": null
+        },
+        {
+          "path": "/characters/troll/properties/is_hungry",
+          "before": true,
+          "after": null
+        },
+        {
+          "path": "/locations/Drawbridge/exits",
+          "before": [
+            {
+              "direction": "east",
+              "to": "Courtyard",
+              "blocked": true,
+              "description": ""
+            },
+            {
+              "direction": "west",
+              "to": "Winding Path",
+              "blocked": false,
+              "description": ""
+            }
+          ],
+          "after": [
+            {
+              "direction": "east",
+              "to": "Courtyard",
+              "blocked": false,
+              "description": ""
+            },
+            {
+              "direction": "west",
+              "to": "Winding Path",
+              "blocked": false,
+              "description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repetition": 1,
+      "name": "expressive_growl",
+      "command": "growl The player",
+      "success": true,
+      "delta": []
+    },
+    {
+      "repetition": 1,
+      "name": "unowned_weapon",
+      "command": "attack The player with sword",
+      "success": false,
+      "delta": []
+    },
+    {
+      "repetition": 1,
+      "name": "club_attack",
+      "command": "attack The player with club",
+      "success": true,
+      "delta": [
+        {
+          "path": "/characters/The player/inventory/lamp",
+          "before": {
+            "name": "lamp",
+            "description": "a lamp",
+            "location": null,
+            "owner": "The player",
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "flammable",
+              "gettable"
+            ],
+            "properties": {},
+            "contents": []
+          },
+          "after": null
+        },
+        {
+          "path": "/characters/The player/properties/is_unconscious",
+          "before": null,
+          "after": true
+        },
+        {
+          "path": "/locations/Drawbridge/items/lamp",
+          "before": null,
+          "after": {
+            "name": "lamp",
+            "description": "a lamp",
+            "location": "Drawbridge",
+            "owner": null,
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "flammable",
+              "gettable"
+            ],
+            "properties": {},
+            "contents": []
+          }
+        }
+      ]
+    },
+    {
+      "repetition": 1,
+      "name": "native_feed_unblocks",
+      "command": "give fish to troll",
+      "success": true,
+      "delta": [
+        {
+          "path": "/characters/The player/inventory/fish",
+          "before": {
+            "name": "fish",
+            "description": "a dead fish",
+            "location": null,
+            "owner": "The player",
+            "container": null,
+            "quantity": 1,
+            "affordances": [
+              "edible",
+              "gettable"
+            ],
+            "properties": {
+              "taste": "disgusting! It's raw! And definitely not sashimi-grade!"
+            },
+            "contents": []
+          },
+          "after": null
+        },
+        {
+          "path": "/characters/troll/properties/is_hungry",
+          "before": true,
+          "after": null
+        },
+        {
+          "path": "/locations/Drawbridge/exits",
+          "before": [
+            {
+              "direction": "east",
+              "to": "Courtyard",
+              "blocked": true,
+              "description": ""
+            },
+            {
+              "direction": "west",
+              "to": "Winding Path",
+              "blocked": false,
+              "description": ""
+            }
+          ],
+          "after": [
+            {
+              "direction": "east",
+              "to": "Courtyard",
+              "blocked": false,
+              "description": ""
+            },
+            {
+              "direction": "west",
+              "to": "Winding Path",
+              "blocked": false,
+              "description": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 0.3057390149915591,
+  "raw_summary_sha256": "ae5052c2d561cf78f70c969991bae47b78db84095b38105059bcf8e2a3330e95",
+  "harness_sha256": "850e1de675dff4f451680cea226aca9c6b5f1f12bd99037e36c4a21ec914adce",
+  "source_sha": "d7b872e396df2ef05ff8391de53e0563ca698cf3"
+}

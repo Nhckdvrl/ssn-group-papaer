@@ -1,0 +1,590 @@
+{
+  "source_sha": "5420f7b4fa0fdb6110e131402af9f5386ce2d0cf",
+  "splits": {
+    "unseen_occupation_300_v3": {
+      "files": [
+        "train_240_v3.json",
+        "test_60_v3.json"
+      ],
+      "sizes": [
+        240,
+        60
+      ],
+      "id_intersection": [],
+      "exact_text_intersection_count": 0,
+      "occupation_support": [
+        16,
+        4
+      ],
+      "occupation_intersection": [],
+      "archetype_support": [
+        15,
+        15
+      ],
+      "archetype_intersection_count": 15,
+      "test_unseen_archetypes": [],
+      "label_counts": {
+        "E": {
+          "train": {
+            "high": 80,
+            "low": 80,
+            "mid": 80
+          },
+          "test": {
+            "high": 20,
+            "low": 20,
+            "mid": 20
+          }
+        },
+        "N": {
+          "train": {
+            "low": 112,
+            "mid": 64,
+            "high": 64
+          },
+          "test": {
+            "low": 28,
+            "mid": 16,
+            "high": 16
+          }
+        },
+        "A": {
+          "train": {
+            "mid": 128,
+            "low": 48,
+            "high": 64
+          },
+          "test": {
+            "mid": 32,
+            "low": 12,
+            "high": 16
+          }
+        },
+        "C": {
+          "train": {
+            "mid": 80,
+            "high": 128,
+            "low": 32
+          },
+          "test": {
+            "mid": 20,
+            "high": 32,
+            "low": 8
+          }
+        },
+        "O": {
+          "train": {
+            "high": 96,
+            "mid": 96,
+            "low": 48
+          },
+          "test": {
+            "high": 24,
+            "mid": 24,
+            "low": 12
+          }
+        }
+      },
+      "file_sha256": {
+        "train_240_v3.json": "edb8c61cd7f6e685ba9e425e4e2142e47df321aeb7c29511b7413ca0d57d124f",
+        "test_60_v3.json": "224120c72cb0dbd87ec8ea69c9bd5dbe3c9234452c354ad7f4379f68e98a5df3"
+      }
+    },
+    "v3_large_500": {
+      "files": [
+        "train_400_v3.json",
+        "test_100_v3.json"
+      ],
+      "sizes": [
+        400,
+        100
+      ],
+      "id_intersection": [],
+      "exact_text_intersection_count": 0,
+      "occupation_support": [
+        20,
+        20
+      ],
+      "occupation_intersection": [
+        "HR매니저",
+        "SW연구원",
+        "간호사",
+        "개인트레이너",
+        "건설감독",
+        "공무원",
+        "그래픽디자이너",
+        "기업임원",
+        "대학교수",
+        "대학원생",
+        "데이터과학자",
+        "마케터",
+        "번역가",
+        "영업사원",
+        "요리사",
+        "운동선수",
+        "작가",
+        "창업자",
+        "초등교사",
+        "회계사"
+      ],
+      "archetype_support": [
+        20,
+        5
+      ],
+      "archetype_intersection_count": 0,
+      "test_unseen_archetypes": [
+        [
+          "high",
+          "mid",
+          "mid",
+          "high",
+          "high"
+        ],
+        [
+          "low",
+          "high",
+          "high",
+          "mid",
+          "mid"
+        ],
+        [
+          "low",
+          "low",
+          "low",
+          "low",
+          "mid"
+        ],
+        [
+          "mid",
+          "low",
+          "mid",
+          "low",
+          "high"
+        ],
+        [
+          "mid",
+          "mid",
+          "low",
+          "low",
+          "low"
+        ]
+      ],
+      "label_counts": {
+        "E": {
+          "train": {
+            "high": 140,
+            "low": 140,
+            "mid": 120
+          },
+          "test": {
+            "mid": 40,
+            "low": 40,
+            "high": 20
+          }
+        },
+        "N": {
+          "train": {
+            "low": 160,
+            "mid": 120,
+            "high": 120
+          },
+          "test": {
+            "low": 40,
+            "high": 20,
+            "mid": 40
+          }
+        },
+        "A": {
+          "train": {
+            "mid": 160,
+            "low": 120,
+            "high": 120
+          },
+          "test": {
+            "mid": 40,
+            "high": 20,
+            "low": 40
+          }
+        },
+        "C": {
+          "train": {
+            "mid": 100,
+            "high": 240,
+            "low": 60
+          },
+          "test": {
+            "low": 60,
+            "mid": 20,
+            "high": 20
+          }
+        },
+        "O": {
+          "train": {
+            "high": 160,
+            "mid": 140,
+            "low": 100
+          },
+          "test": {
+            "high": 40,
+            "mid": 40,
+            "low": 20
+          }
+        }
+      },
+      "file_sha256": {
+        "train_400_v3.json": "7260902d8d68f608d07b00449f26d9d5ce385ebe77ae98df4085f2bae78d91bb",
+        "test_100_v3.json": "e8b3a62470decce4e81c8659a433f8f23472e8cdadc045e1e76d12f421cdc317"
+      }
+    },
+    "unseen_occupation": {
+      "files": [
+        "splits/unseen_occupation_v3_train.json",
+        "splits/unseen_occupation_v3_test.json"
+      ],
+      "sizes": [
+        240,
+        60
+      ],
+      "id_intersection": [],
+      "exact_text_intersection_count": 0,
+      "occupation_support": [
+        16,
+        4
+      ],
+      "occupation_intersection": [],
+      "archetype_support": [
+        15,
+        15
+      ],
+      "archetype_intersection_count": 15,
+      "test_unseen_archetypes": [],
+      "label_counts": {
+        "E": {
+          "train": {
+            "high": 80,
+            "low": 80,
+            "mid": 80
+          },
+          "test": {
+            "high": 20,
+            "low": 20,
+            "mid": 20
+          }
+        },
+        "N": {
+          "train": {
+            "low": 112,
+            "mid": 64,
+            "high": 64
+          },
+          "test": {
+            "low": 28,
+            "mid": 16,
+            "high": 16
+          }
+        },
+        "A": {
+          "train": {
+            "mid": 128,
+            "low": 48,
+            "high": 64
+          },
+          "test": {
+            "mid": 32,
+            "low": 12,
+            "high": 16
+          }
+        },
+        "C": {
+          "train": {
+            "mid": 80,
+            "high": 128,
+            "low": 32
+          },
+          "test": {
+            "mid": 20,
+            "high": 32,
+            "low": 8
+          }
+        },
+        "O": {
+          "train": {
+            "high": 96,
+            "mid": 96,
+            "low": 48
+          },
+          "test": {
+            "high": 24,
+            "mid": 24,
+            "low": 12
+          }
+        }
+      },
+      "file_sha256": {
+        "splits/unseen_occupation_v3_train.json": "edb8c61cd7f6e685ba9e425e4e2142e47df321aeb7c29511b7413ca0d57d124f",
+        "splits/unseen_occupation_v3_test.json": "224120c72cb0dbd87ec8ea69c9bd5dbe3c9234452c354ad7f4379f68e98a5df3"
+      }
+    },
+    "unseen_archetype": {
+      "files": [
+        "splits/unseen_archetype_v3_train.json",
+        "splits/unseen_archetype_v3_test.json"
+      ],
+      "sizes": [
+        240,
+        60
+      ],
+      "id_intersection": [],
+      "exact_text_intersection_count": 0,
+      "occupation_support": [
+        20,
+        20
+      ],
+      "occupation_intersection": [
+        "HR매니저",
+        "SW연구원",
+        "간호사",
+        "개인트레이너",
+        "건설감독",
+        "공무원",
+        "그래픽디자이너",
+        "기업임원",
+        "대학교수",
+        "대학원생",
+        "데이터과학자",
+        "마케터",
+        "번역가",
+        "영업사원",
+        "요리사",
+        "운동선수",
+        "작가",
+        "창업자",
+        "초등교사",
+        "회계사"
+      ],
+      "archetype_support": [
+        12,
+        3
+      ],
+      "archetype_intersection_count": 0,
+      "test_unseen_archetypes": [
+        [
+          "high",
+          "high",
+          "mid",
+          "low",
+          "high"
+        ],
+        [
+          "high",
+          "low",
+          "mid",
+          "high",
+          "low"
+        ],
+        [
+          "mid",
+          "high",
+          "high",
+          "mid",
+          "high"
+        ]
+      ],
+      "label_counts": {
+        "E": {
+          "train": {
+            "high": 60,
+            "low": 100,
+            "mid": 80
+          },
+          "test": {
+            "high": 40,
+            "mid": 20
+          }
+        },
+        "N": {
+          "train": {
+            "low": 120,
+            "mid": 80,
+            "high": 40
+          },
+          "test": {
+            "high": 40,
+            "low": 20
+          }
+        },
+        "A": {
+          "train": {
+            "mid": 120,
+            "low": 60,
+            "high": 60
+          },
+          "test": {
+            "mid": 40,
+            "high": 20
+          }
+        },
+        "C": {
+          "train": {
+            "mid": 80,
+            "high": 140,
+            "low": 20
+          },
+          "test": {
+            "low": 20,
+            "high": 20,
+            "mid": 20
+          }
+        },
+        "O": {
+          "train": {
+            "high": 80,
+            "mid": 120,
+            "low": 40
+          },
+          "test": {
+            "high": 40,
+            "low": 20
+          }
+        }
+      },
+      "file_sha256": {
+        "splits/unseen_archetype_v3_train.json": "958167fe87f2758f6fd3b7ff534e75e43c415c7af8d00a222af0e27c3d73a2bb",
+        "splits/unseen_archetype_v3_test.json": "b8bb0a724fb4f113ad088e210bca2ec758cec7fe5996ed149012543b274a3b3a"
+      }
+    },
+    "unseen_combo": {
+      "files": [
+        "splits/unseen_combo_v3_train.json",
+        "splits/unseen_combo_v3_test.json"
+      ],
+      "sizes": [
+        240,
+        60
+      ],
+      "id_intersection": [],
+      "exact_text_intersection_count": 0,
+      "occupation_support": [
+        20,
+        18
+      ],
+      "occupation_intersection": [
+        "HR매니저",
+        "SW연구원",
+        "간호사",
+        "개인트레이너",
+        "건설감독",
+        "공무원",
+        "그래픽디자이너",
+        "대학교수",
+        "대학원생",
+        "마케터",
+        "번역가",
+        "영업사원",
+        "요리사",
+        "운동선수",
+        "작가",
+        "창업자",
+        "초등교사",
+        "회계사"
+      ],
+      "archetype_support": [
+        15,
+        15
+      ],
+      "archetype_intersection_count": 15,
+      "test_unseen_archetypes": [],
+      "label_counts": {
+        "E": {
+          "train": {
+            "high": 79,
+            "low": 81,
+            "mid": 80
+          },
+          "test": {
+            "high": 21,
+            "low": 19,
+            "mid": 20
+          }
+        },
+        "N": {
+          "train": {
+            "low": 118,
+            "mid": 58,
+            "high": 64
+          },
+          "test": {
+            "mid": 22,
+            "high": 16,
+            "low": 22
+          }
+        },
+        "A": {
+          "train": {
+            "mid": 126,
+            "low": 49,
+            "high": 65
+          },
+          "test": {
+            "high": 15,
+            "mid": 34,
+            "low": 11
+          }
+        },
+        "C": {
+          "train": {
+            "mid": 77,
+            "high": 132,
+            "low": 31
+          },
+          "test": {
+            "mid": 23,
+            "high": 28,
+            "low": 9
+          }
+        },
+        "O": {
+          "train": {
+            "high": 99,
+            "mid": 93,
+            "low": 48
+          },
+          "test": {
+            "mid": 27,
+            "high": 21,
+            "low": 12
+          }
+        }
+      },
+      "file_sha256": {
+        "splits/unseen_combo_v3_train.json": "3b805b7d551b6e4b6665d7266a887c585579b6dfef123c1e9264633b6acb937e",
+        "splits/unseen_combo_v3_test.json": "2b3505db0aa44272732dfa092390d9ef4c01a278c1ec0ab1ac5f7da7d9e30c8e"
+      }
+    }
+  },
+  "v3_preferred_action_mapping": {
+    "checked": 300,
+    "exact_matches": 300,
+    "unchanged_texts": 300
+  },
+  "author_fixture_gradients": {
+    "consistency": {
+      "persona_projection": 93.09226248242662,
+      "actor": 0.0,
+      "critic": 0.0,
+      "trajectory_encoder": 8.595839336254171
+    },
+    "ppo": {
+      "persona_projection": 0.007648583216348633,
+      "actor": 3.6958557689988014,
+      "critic": 5.964525435947131,
+      "trajectory_encoder": 0.0
+    },
+    "diversity": {
+      "persona_projection": 0.0009068573269540395,
+      "actor": 0.0017581619431349747,
+      "critic": 0.0,
+      "trajectory_encoder": 0.0
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "intruder",
+  "player_turns": 6,
+  "actions": 26,
+  "parser_successes": 16,
+  "model_calls": 20,
+  "world_change_actions": 7,
+  "player_state": {
+    "character_type": "human",
+    "is_dead": false
+  },
+  "npc_action_counts": {
+    "The player": 6,
+    "troll": 5,
+    "guard": 6,
+    "ghost": 9
+  },
+  "fallback_script_calls": 0,
+  "final_location": "Drawbridge",
+  "prompt_tokens": 13403,
+  "completion_tokens": 734,
+  "wall_seconds": 173.54334613401443,
+  "npc_attempts": 20,
+  "npc_successes": 11,
+  "npc_material_changes": 4,
+  "manifest": {
+    "created_at_utc": "2026-10-13T18:09:01.513068+00:00",
+    "source_sha": "d7b872e396df2ef05ff8391de53e0563ca698cf3",
+    "harness_sha256": "d418f909b590a16b1f0df9bbf7991471231f89b6e013c391c6e235e4a4297eac",
+    "mode": "model",
+    "seed": 101,
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:20:58) [GCC 14.3.0]",
+    "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+    "cloud_calls": 0,
+    "cuda_visible_devices": "0",
+    "flashinfer_sampler": "0",
+    "dependencies": {
+      "prompty": "0.1.50",
+      "jinja2": "3.1.6",
+      "pyyaml": "6.0.3",
+      "torch": "2.11.0",
+      "vllm": "0.23.0",
+      "transformers": "5.12.1"
+    },
+    "model_config_sha256": "97e295b63283935788fac5e4f8860862a56d4089538cafc93f0431f2ebe483bb",
+    "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+  },
+  "trace_location": "/home/xiang/.cache/game-npc-research/runs/e07_qwen32_intruder_s101_r1",
+  "scope": "单角色组/单玩家策略/单seed；baseline可行性与发现性观察，不能声称普遍persona gap"
+}
