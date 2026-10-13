@@ -123,7 +123,8 @@ class LocalClient:
         from vllm import LLM
         self.llm = LLM(model=str(model), tensor_parallel_size=1, dtype="bfloat16",
                        gpu_memory_utilization=0.82, max_model_len=8192,
-                       enforce_eager=True, enable_prefix_caching=True, seed=seed)
+                       enforce_eager=True, enable_prefix_caching=True, seed=seed,
+                       language_model_only=True)
         self.tokenizer = self.llm.get_tokenizer()
         self.seed = seed
         self.calls = []

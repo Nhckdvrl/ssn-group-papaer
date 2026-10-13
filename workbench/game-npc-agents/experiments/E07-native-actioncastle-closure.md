@@ -1,6 +1,6 @@
 # E07：作者原生 Action Castle 的本地决策闭环（2026-10-14）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO（D1–D4，接口准入；不是论文全量复现）
 - **对应：** C01 / E06 矿区 A baseline gate。
 - **问题（一句话）：** 真实作者目标能否从人物资料进入本地模型，再经原生合法动作改变世界，且正确区分模型动作与脚手架贡献？
@@ -22,3 +22,5 @@ CPU阳阴性控制8/8通过，两次重放完全一致，0 GPUh、0模型调用�
 ### 首个本地模型episode（全部轨迹，无筛选）
 Qwen3-32B@9216db5，现有fgvd Conda，GPU0单卡。完整玩家6步episode，26次parser动作、16成功；其中NPC20次尝试、11合法，4次改变material state；7个总material变化包含3个玩家移动。20本地LLM调用，输入13,403token、输出734token；包含载入/warmup总173.54秒。无script fallback、无云调用。失败工程启动与成功episode分开，修复运行使用本地PyTorch sampler（VLLM_USE_FLASHINFER_SAMPLER=0），其它模型/场景/seed未改。
 模型有真实可执行行动（移动/威胁等），C01 L0→L1（基线可行性）；单seed不升级科学主张。返回原本驻地却先离开的样本列P02，至少四竞争解释，下一实验先分出位置/语法/观测/运行模式，不能现在宣称言行gap机制。
+
+预定3seed×2玩家策略全部完成：intruder NPC合法11/20、14/23、12/21；feed为23/45、21/47、15/48。全部无script fallback；source原规则/角色目标未改。按episode统计，不给逐动作假独立CI；汇总 `results/E07_six_native_episodes.json`。C01仍L1可行性。

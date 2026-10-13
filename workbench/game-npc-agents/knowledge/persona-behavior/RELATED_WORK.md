@@ -42,3 +42,6 @@
 
 ## 不能宣称新颖的五个句子
 “LLM报告的人格和行为不一致”；“人格prompt影响语言比行为明显”；“叙事模板比persona强”；“加入外部persona向量能调策略”；“PCSP内部contrastive指标和独立行为一致”。这五句话要么被近邻做过、要么最后一句不符合作者独立行为报告。矿区A只能从可信真实游戏任务、新解释/控制边界、新独立测量及有效方法推进。
+
+## 2026-10-14追加强近邻：FAccT2026
+[When Identity Overrides Incentives](https://arxiv.org/html/2601.10102)，已读方法/Appendix F/G/H/I，卡见../papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md。persona×payoff显式化交互、模型族差异，以及payoff优先/角色rename强prompt已被覆盖；不能给已知现象改名。我们当前原生NPC准入还不是新科学增量。

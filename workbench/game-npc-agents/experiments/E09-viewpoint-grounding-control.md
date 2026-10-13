@@ -1,6 +1,6 @@
 # E09：原生NPC视角归属与当前位置的最小决定性对照（2026-10-14）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** PILOT（P02竞争解释；无需事先认定新idea）
 - **对应：** P02 / C01，E07真实轨迹。
 - **问题（一句话）：** 在同一作者原生角色和状态，离开已有驻地的动作主要来自player-view narration、位置整合/叙事prior还是普通动作能力？
@@ -17,3 +17,10 @@
 
 ### 运行前补充（尚无E09模型结果）
 3个自然snapshot的原动作与state delta精确重放3/3通过。每model另加6次独立expression/intention影子测量（每角色各1），不写入action上下文。当前位置probe保留条件提醒；避免替换输出contract时误删one-sentence/neutral控制。主行动/位置读数仍按原90call设计，合计96call/model。
+
+### Qwen3-32B结果与测量审计（另一模型尚未结束）
+96次本地独立调用（主90+影子6），原版literal-location2/9→one-sentence6/9，viewer5/9、neutral3/9、no-history2/9；原版/one-sentence合法动作均5/9，viewer2/9、neutral6/9、no-history5/9。
+**POST-HOC格式审计**：原版3条literal失败其实含正确房名但加角色前缀；按“首行唯一房名、无go/move意图”的规则二级审计，original5/9、one-sentence6/9、viewer6/9、neutral3/9、no-history5/9。不覆盖/重标预注册literal读数；literal在这里测了任务/格式遵守，不能单独当位置知识准确率。原版与no-history的差异尚不足支持简单history因果解释。格式审计数据见 `results/E09_qwen_location_format_audit_POSTHOC.json`。
+Expression/Intention已在独立支线保存。Qwen32的额外E07三seed/两玩家策略均完成；E09+5个新episode总412.40秒含载入，所有失败保留。没有升L2。下一步补作者native闭集schema与更新强模型，而非提前做表征/训练。
+
+Gemma3-12B成功完成相同96call、168.23秒含启动。literal own-location原版9/9，single-sentence9/9、viewer9/9、neutral8/9、no-history9/9；动作合法原版3/9、提醒/来源/neutral各0/9、no-history2/9。raw trace显示多为攻击/haunt不在场对象；位置知道不等于动作目标/参数正确。两家族的结果不支持“统一的位置错误导致所有NPC行为失败”；P02须分位置/视角、角色目标、合法参数和输出contract。没有科学claim升级；D1强基线仍需作者per-action tool描述/完整nativeloop及thinking预算控制。

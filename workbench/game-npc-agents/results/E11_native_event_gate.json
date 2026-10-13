@@ -1,0 +1,183 @@
+{
+  "source_sha": "71a06cae8573048b1af41507ac52fe33b650fab3",
+  "archive_sha256": "743d9a9dc85e9fd7737c6cb51762deae684382de326bf724cde5b72bcf7c7c7d",
+  "model_calls": 0,
+  "gpu_hours": 0,
+  "scope": "native event host; not original RL/partner reproduction",
+  "cases": [
+    {
+      "file": "10000.json",
+      "seed": 701,
+      "actor": "deer",
+      "goal": "steal worm from bird",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "StealObjectEvent",
+      "executed": true,
+      "stochastic_failure": true,
+      "state_changed": false,
+      "messages": [
+        {
+          "viewer": "bird",
+          "event": "StealObjectEvent",
+          "text": "The deer tried to steal a worm from you, but they were caught in the act!"
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "StealObjectEvent",
+          "text": "The deer tried to steal a worm from the bird, but they were caught in the act!"
+        },
+        {
+          "viewer": "deer",
+          "event": "StealObjectEvent",
+          "text": "You tried to steal a worm from the bird, but they were caught in the act!"
+        }
+      ]
+    },
+    {
+      "file": "10000.json",
+      "seed": 702,
+      "actor": "deer",
+      "goal": "steal worm from bird",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "StealObjectEvent",
+      "executed": true,
+      "stochastic_failure": true,
+      "state_changed": false,
+      "messages": [
+        {
+          "viewer": "bird",
+          "event": "StealObjectEvent",
+          "text": "The deer tried to steal a worm from you, but they were caught in the act!"
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "StealObjectEvent",
+          "text": "The deer tried to steal a worm from the bird, but they were caught in the act!"
+        },
+        {
+          "viewer": "deer",
+          "event": "StealObjectEvent",
+          "text": "You tried to steal a worm from the bird, but they were caught in the act!"
+        }
+      ]
+    },
+    {
+      "file": "10001.json",
+      "seed": 701,
+      "actor": "deer",
+      "goal": "get fruit",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "GetObjectEvent",
+      "executed": true,
+      "stochastic_failure": false,
+      "state_changed": true,
+      "messages": [
+        {
+          "viewer": "bird",
+          "event": "GetObjectEvent",
+          "text": "The deer got a fruit."
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "GetObjectEvent",
+          "text": "The deer got a fruit."
+        },
+        {
+          "viewer": "deer",
+          "event": "GetObjectEvent",
+          "text": "You got a fruit."
+        }
+      ]
+    },
+    {
+      "file": "10001.json",
+      "seed": 702,
+      "actor": "deer",
+      "goal": "get fruit",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "GetObjectEvent",
+      "executed": true,
+      "stochastic_failure": false,
+      "state_changed": true,
+      "messages": [
+        {
+          "viewer": "bird",
+          "event": "GetObjectEvent",
+          "text": "The deer got a fruit."
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "GetObjectEvent",
+          "text": "The deer got a fruit."
+        },
+        {
+          "viewer": "deer",
+          "event": "GetObjectEvent",
+          "text": "You got a fruit."
+        }
+      ]
+    },
+    {
+      "file": "10002.json",
+      "seed": 701,
+      "actor": "deer",
+      "goal": "follow butterfly",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "FollowEvent",
+      "executed": true,
+      "stochastic_failure": false,
+      "state_changed": true,
+      "messages": [
+        {
+          "viewer": "deer",
+          "event": "FollowEvent",
+          "text": "You started following the butterfly."
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "FollowEvent",
+          "text": "The deer started following you."
+        }
+      ]
+    },
+    {
+      "file": "10002.json",
+      "seed": 702,
+      "actor": "deer",
+      "goal": "follow butterfly",
+      "graph_nodes": 9,
+      "invalid_rejected_without_change": true,
+      "legal": true,
+      "event_type": "FollowEvent",
+      "executed": true,
+      "stochastic_failure": false,
+      "state_changed": true,
+      "messages": [
+        {
+          "viewer": "deer",
+          "event": "FollowEvent",
+          "text": "You started following the butterfly."
+        },
+        {
+          "viewer": "butterfly_8_butterfly",
+          "event": "FollowEvent",
+          "text": "The deer started following you."
+        }
+      ]
+    }
+  ],
+  "graph_cases": 6,
+  "legal_goals": 6,
+  "executed_events": 6,
+  "material_changes": 4
+}

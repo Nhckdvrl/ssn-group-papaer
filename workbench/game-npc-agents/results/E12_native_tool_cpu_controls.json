@@ -1,0 +1,29 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "retry": false,
+      "calls": 1,
+      "parser_successes": [
+        true
+      ],
+      "tool_names": [
+        "attack",
+        "wait"
+      ]
+    },
+    {
+      "retry": true,
+      "calls": 2,
+      "parser_successes": [
+        false,
+        true
+      ],
+      "tool_names": [
+        "attack",
+        "wait"
+      ]
+    }
+  ],
+  "cloud_calls": 0
+}

@@ -42,3 +42,11 @@
 **我们的解释**：人物设定、目标、局部信息、LLM原始选择和engine结果可拆；“NPC让玩家过桥”的世界读数可能完全由玩家give+engine决定。规则与脚本是正常工程设计，科学问题是归因/解释范围，不是代码有硬编码就创新。
 
 **尚未排除的竞争解释/阅读债**：角色goal与当前短期利益的合理优先级、多种等价战术、模板128token/合法动词和具体语法知识、state是否被观测表达、cache persona与memory对当前state一致性；需本地强模型轨迹，不能由CPU接口检查下人格科学结论。
+
+## E12–E14执行后的补充范围
+**事实：** agent-sandbox首选call_tools→逐动作tools_for→同线程tool_result重试。原ActionCastle动作多数没有ARGUMENTS_SCHEMA，实际退回generic arguments字符串，因此有call_tools不等于获得合法target/direction闭集。parser逗号sequence递归导致raw记录多于模型root选择；E10/E12重建root 0missing，POST-HOC独立文件保留。普通强提示使E12首次合法48/133→92/135。
+**解释：** 原弱默认/接口错误不能作为人格机制证据；合法性改善不等于策略改善，低material也可为合理等待。
+**竞争解释：** 材料影响仍可能来自native feed/blocks；角色离岗有合理巡逻/输入视角/动作预算解释。
+
+**LIGHT事实：** 官方7486 quest中1787不同graph，1446相同graph具有多角色独立quest，共7034条；与2111human demos严格名字/同图join得到692条bot自身作者目标。E14固定源顺序前12不同graph不按model表现筛；初始goal合法10/12（另2有物品前置），原possible_actions707canonical中25无法经原parser重parse，多数是examine/point self。物理事件/概率/原WorldViewer未改；最小host未加载原学习Soul/OnEventSoul交易攻击脚本/DM，故只声称新的本地NPC任务绑定，不是官方partner完整复现。
+**解释与竞争解释：** private authored motivation可以分开NPC与player利益，不保证全部抽象动机存在可执行终点。候选菜单暴露scope和对手物品沿原协议，不能当完全无信息的观测；合法动作执行可能随机失败/无材料delta。首2条tell payload遗漏是我们的adapter错误，通信降级后修复并按原样本全量重跑。
