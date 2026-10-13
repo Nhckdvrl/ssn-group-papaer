@@ -1,6 +1,8 @@
 # 深读与基线审计的动态队列（2026-10-14；按认知缺口，不按日期/配额）
 
-**暂不锁定单一研究问题。** 持续读近期 NeurIPS/ICLR/ICML/ACL、KDD/CHI/AIIDE/CoG 中直接研究游戏NPC的论文，并区分近邻通用 agent / safety / market；一般 arXiv 需评估质量和源码。不能只是计数泛读。
+**2026-10-14 用户已选择矿区 A 先驻留；本页保留全域历史阅读队列，但 A 当前更高优先级以 [persona-behavior/RELATED_WORK.md](persona-behavior/RELATED_WORK.md) 和 [LOCAL_AGENT_START](../LOCAL_AGENT_START.md) 为准。其余安全/经济/具身不能认作关闭。**
+
+**不锁定永久论文结论。** 持续读近期 NeurIPS/ICLR/ICML/ACL、KDD/CHI/AIIDE/CoG 中直接研究游戏NPC的论文，并区分近邻通用 agent / safety / market；一般 arXiv 需评估质量和源码。不能只是计数泛读。
 
 ## 目前能推动重要认识的阅读路线
 **安全与实际世界后果：**

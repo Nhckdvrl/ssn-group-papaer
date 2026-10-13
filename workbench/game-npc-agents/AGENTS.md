@@ -2,8 +2,12 @@
 
 继承根 AGENTS、workbench/EXECUTION。**2026-10-14 用户再次纠正：NPC领域不仅是目标/旧计划，也不仅是训练可控政策；安全、人格漂移、游戏经济、多NPC攻击与社会效应必须正式纳入。** 不能用旧 README 或实验卡重新锁死领域。PROPOSED状态/ACTIVE名额仅由用户变动。
 
+## 2026-10-14 用户新决定：先进入矿区 A
+
+用户明确选择 **Persona 与游戏中的真实利益/战略行动** 为当前探索焦点。**先读 [LOCAL_AGENT_START.md](LOCAL_AGENT_START.md) → [knowledge/persona-behavior/RELATED_WORK.md](knowledge/persona-behavior/RELATED_WORK.md) → [CODE_AUDIT.md](knowledge/persona-behavior/CODE_AUDIT.md) → [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) → [E06](experiments/E06-persona-strategy-baseline.md)**，然后回到 [DOMAIN_ATLAS](knowledge/DOMAIN_ATLAS.md) 和相关领域。不得忽略 ICML2026 *Personality Illusion*、2026 *Rethinking Psychometric*、*Story Shapes the Agent*、PCSP 已有的研究。全域 NPC 安全/经济/记忆方向保留，A 的用户授权仅限当前科研探索，非永久缩小整个 workbench。
+
 ## 每次接手优先阅读
-README → [knowledge/DOMAIN_ATLAS.md](knowledge/DOMAIN_ATLAS.md) → [knowledge/NPC_SECURITY.md](knowledge/NPC_SECURITY.md) → [knowledge/GAME_ECONOMY.md](knowledge/GAME_ECONOMY.md) → [knowledge/PERSONA_DRIFT.md](knowledge/PERSONA_DRIFT.md) → [knowledge/SOURCES_AND_STATUS_2026-10-14.md](knowledge/SOURCES_AND_STATUS_2026-10-14.md) → [knowledge/POSITIONING.md](knowledge/POSITIONING.md) → BASELINES/LOCAL_FIRST/EXPLORATION_ENTRY → 最新日志与CLAIMS/PAIN_LOG。按需要回原论文正文、附录、原始代码。
+依照上面 A 的入口，结合 [knowledge/README.md](knowledge/README.md)、BASELINES、LOCAL_FIRST、最新 logs 与 CLAIMS/PAIN_LOG 阅读；原论文与源码优先于历史旧“current”说明。
 
 ## 最重要的是判断力，而不是执行清单
 - 你不只是做既定 E## 的执行者：持续跨方向读论文，维护领域画像，结合新工作与真实执行重新评价优先级；用户的研究空间不是我们上一次写的某个方法名字。
@@ -19,7 +23,7 @@ README → [knowledge/DOMAIN_ATLAS.md](knowledge/DOMAIN_ATLAS.md) → [knowledge
 - 优先现有自然游戏、真实角色/交易系统或游戏原生动作日志。若自构对照场景，先说明它弥补了哪个真实缺口；10-20条只做流程检查，不能证明普遍现象。
 - 记录 player vs NPC vs engine vs judge vs simulated partner、秘密/角色状态的作者许可、玩家可见观察；绝不让同一个自造评分器制造自己想要的阳性。
 - 高信息量不是配置多：先观察自然样例和准确读数，想清楚不同结果怎样改变研究判断，再做合法反事实/统计和未见确认。确保正常玩法任务能力、攻击成功率/防御误阻、玩家体验与经济系统结果分别报告。
-- 旧 E00/E02/E03/E04/E05 **从未完成游戏行为实测**；不因历史卡被留下而启动它们。新实验另写运行前卡，明确来源、正负控制、噪声/MIE、预算、决策表和数据。
+- 旧 E00/E02/E03/E04/E05 **从未完成游戏行为实测，已移出当前 HEAD，Git 历史可恢复**；不能再误启动。当前 E06 只是运行前设计，尚无实际结果；运行需按标准记录对应来源、正负控制、噪声/MIE、预算、决策表和数据。
 - 失败或负结果要保留；不能筛幸存seed、偷换scene/test、事后改变主指标、把“这个模型一时失败”叫科学机制。
 - 更强科学主张要在多个自然环境/角色/模型/独立审计下成立；没有测试玩家，就不能声称真实玩家信任、乐趣更好。
 

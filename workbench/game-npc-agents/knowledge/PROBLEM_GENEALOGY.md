@@ -1,4 +1,6 @@
-# NPC Agent：领域问题的来源、研究尺度与进入条件
+# NPC Agent：领域问题的来源、研究尺度与进入条件（历史第三轮）
+
+> 2026-10-14：**本文件属于旧领域地图的历史分析，其“优先LIGHT/首选”结论已经被用户更新**。当前全域见 [DOMAIN_ATLAS](DOMAIN_ATLAS.md)，用户选定的矿区 A 见 [persona-behavior/README](persona-behavior/README.md)。其余本文文献和观点保留为研究资产，不允许将旧建议作为执行命令。
 
 更新：2026-10-13，第三轮；由用户对竞赛中心化和 API 依赖的纠正触发。本页取代旧的“先找一个 persona/tool 微问题，再为它补重要性”的选题逻辑。
 

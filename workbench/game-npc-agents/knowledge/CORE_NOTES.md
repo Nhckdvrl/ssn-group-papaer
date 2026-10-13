@@ -1,6 +1,6 @@
 # 核心阅读导航与历史修正
 
-2026-10-13第三轮。**当前整体认识请先读[问题谱系](PROBLEM_GENEALOGY.md)与[顶会校准](RESEARCH_CALIBRATION.md)。** 本页保留前两轮逐篇资产，不再以CPDC或E02牵引执行。
+2026-10-14 历史知识说明：**当前用户优先的是[矿区A](persona-behavior/README.md)**；本页的[问题谱系](PROBLEM_GENEALOGY.md)与[顶会校准](RESEARCH_CALIBRATION.md)是以前各轮积累，不应恢复其旧优先级。 本页保留前两轮逐篇资产，不再以CPDC或E02牵引执行。
 
 ## 新补入的原生问题谱系
 
