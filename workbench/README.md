@@ -117,10 +117,10 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 - **用户明确要求直接删除** `real-time-causalization-capability-preservation`、`scoped-context-state`、`cross-lingual-acquisition-regimes`、`multi-llm-collaboration`、`video-world-model-temporal-interfaces` 这五个 workbench 的当前 Git 树文件。历史 Git 提交仍可追溯，不另建 archive 副本，不擅自触及外部服务器缓存。
 - **`mechanism-population-dynamics`：CLOSED / TERMINATED / 已收尾。** 用户认为该项目投入大量研究工作后，进一步的科学价值、意义有限，决定终止。论文 v0–v3、结果、代码、实验与日志全部保留在原目录，不启动新的实验或论文工作。10 月 9 日“继续”的历史决定已由 10 月 11 日决定覆盖。
 - **没有 ACTIVE-MAIN。** `in-context-evidence-structure` 保持唯一 ACTIVE-EXPLORE；其它剩余工作台状态不变。
-- 2026-10-11 **后续人类决定**：再从 HEAD 删除 `npc-persona-behavior-grounding` 和 `npc-deception-investigability`，仍保留知识库中的 NPC 文献；**10 月 11 日清理后剩余 5 个 workbench**。2026-10-12 新建 `xeno-interpretability` 后，**当前共 6 个**。详见 [清理记录](WORKBENCH_CLEANUP_2026-10-11.md)。
+- 2026-10-11 **后续人类决定**：再从 HEAD 删除 `npc-persona-behavior-grounding` 和 `npc-deception-investigability`，仍保留知识库中的 NPC 文献；**10 月 11 日清理后剩余 5 个 workbench**。2026-10-12 新建 `xeno-interpretability` 后，**截至 2026-10-12 共 6 个**；2026-10-13 新建 `game-npc-agents` 后共 7 个。详见 [清理记录](WORKBENCH_CLEANUP_2026-10-11.md)。
 - [2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)只是历史快照；相关领域的 `library/` 文献继续保留。
 
-## 9. 登记表（2026-10-12；`tools/process/check.py` 读取本表）
+## 9. 登记表（2026-10-13；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
@@ -132,3 +132,4 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `xeno-interpretability` | PROPOSED | —（探索阶段） | — | `CLAIMS.md` | — | **用户 2026-10-12 指定新建 workbench，专属知识库在 [`knowledge/`](xeno-interpretability/knowledge/) 内；初始文献核查与实验设计仍未构成实证发现；不调整 ACTIVE 分配。** |
+| `game-npc-agents` | PROPOSED | ICML / ICLR / NeurIPS；ACL / EMNLP / NAACL（取决于论文形态） | — | `CLAIMS.md` | — | **2026-10-13 用户明确授权新建游戏 NPC Agent 独立 workbench**；专属 [knowledge/](game-npc-agents/knowledge/README.md)，真实 NPC 事实/信念/行动/玩家交互为开放研究领域；本地实验未启动、不占 ACTIVE。 |
