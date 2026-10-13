@@ -1,27 +1,32 @@
-# 开源强基线与运行边界（核查日 2026-10-13）
+# 开源资产的真实对象与复现入口｜2026-10-13 第二轮
 
-**目前只核查公开项目 README/论文资料，尚未在用户服务器运行，不等于正式复现。**
+已从摘要/README 继续到指定正文/附录与代码。**没有任何完整模型 baseline 被本地复现。** E01 只检查两份源码的指标/声明契约；它不等于安装游戏、调用模型或达到论文数字。
 
-| 项目 | 研究对象/能直接测什么 | 代码 | 需要真实验证的障碍 |
+## 不用一个“可执行”标签混掉所有任务
+
+| 资产及官方入口 | 实际能支持什么 | 本轮核查后的边界 | 当前用途 |
 |---|---|---|---|
-| **KNUDGE**（EMNLP 2024） | 游戏支线任务 NPC 的本体知识、对话及任务结构 | https://github.com/nweir127/KNUDGE | 数据重建脚本、任务约束、许可；先查看 quest 真实样本 |
-| **CDT**（ACL 2026） | 情境→人物决策规则的可执行化 | https://github.com/KomeijiForce/Codified_Decision_Tree | 官方构树例用 GPT-4.1，检查 API/本地替换、数据许可 |
-| **NCP-Bench**（ICML 2026） | 叙事世界事实/承诺与玩家输入 | https://github.com/NLP2CT/NCP-Bench | **narrator 不是 NPC**；LLM judge/不同 judge 比较必须复核 |
-| **PCSP**（2026 arXiv） | persona 条件→游戏行动、低时延共享策略 | https://github.com/yoosunghong/pcsp | 含 Unreal 和 PPO，先独立验证行为 probe，不直接重训全部系统 |
-| **Collab-Overcooked**（EMNLP 2025） | 真正的行动协作、资源分工、通信 | https://github.com/YusaeMeow/Collab-Overcooked | README Python 3.8+mpi4py；支持本地 vLLM 但需要适配旧环境 |
-| **TALES**（NeurIPS 2026） | 游戏行动循环、合法行动和复杂度门槛 | https://github.com/microsoft/tale-suite | **player agent**；Python ≥3.12，部分游戏依赖 Java；只做环境参考 |
-| **FAIRGAMER**（ACL 2026） | NPC 交易/合作/竞争的角色敏感决策 | https://github.com/BingkangShi/FairGamer | 官方高并发 API、预设公平性指标需要仔细审计 |
+| [KNUDGE](https://github.com/nweir127/KNUDGE) / EMNLP 2024 | 真实 RPG 背景下的作者侧对话图与知识使用 | 抽取简化部分游戏状态条件；图结构合法不等于完整任务引擎；原文也评价文本游戏效果 | 自然语料/知识与任务对话测量，不冒充在线 world |
+| [CDT](https://github.com/KomeijiForce/Codified_Decision_Tree) / ACL 2026 | 情境化角色规则与行动文本预测，另有新情境多轮评价 | 条件依赖语义判断；树提供 grounding，动作未在该 benchmark 中改变独立世界状态 | 强角色逻辑方法/表示对照，构树/API 与本地推理分开记成本 |
+| [NCP-Bench](https://github.com/NLP2CT/NCP-Bench) / ICML 2026 | narrator 的长期事实/承诺/玩家输入审核 | 状态更新与审核含 LLM；原文已有同审核器 memory 对照和审计验证 | 长程测量近邻，不能替代独立 NPC execution ground truth |
+| [PCSP](https://github.com/yoosunghong/pcsp) / 2026 预印本 | persona 条件共享 RL、不同研究环境及 UE 接口 | 作者已做独立行为 probe；不能冒领其内外指标差异；未确认我们节点的完整复现 | 真实行为近邻，先核查研究层资产，不要求先装全 UE |
+| [CPDC 官方任务](https://www.aicrowd.com/challenges/commonsense-persona-grounded-dialogue-challenge-2025) / [公开参赛实现](https://github.com/MahammadNuriyev62/CPDC-challenge-2025-solution) | 人物/背景/工具 schema/参考调用，适合离线调用决策分析 | 指定公开 sell/equip 是 pass；sample executor 是 gold matching，不代表私有官方 evaluator | **当前优先审计的数据候选**，还不是最终研究数据或在线游戏 |
+| [Collab-Overcooked](https://github.com/YusaeMeow/Collab-Overcooked) / EMNLP 2025 | 必要协作、游戏动作与过程读数 | 料理伙伴与剧情 NPC 不等价；参考轨迹覆盖需审计；旧依赖尚未安装 | 后续真实协作底座候选，本轮未新增运行证据 |
+| [TALES](https://github.com/microsoft/tale-suite) | 多种文本游戏中的玩家 agent | 主体是玩家，不是世界内独立 NPC；部分环境有 Java/数据许可依赖 | 执行接口与能力门槛的可迁移近邻 |
+| [FAIRGAMER](https://github.com/BingkangShi/FairGamer) / ACL 2026 | 角色条件下的游戏决策评价 | 其指标与任务/角色影响的定义仍需深查 | 保留近邻，不能用初始 README 阅读假定已复现 |
 
-**不承诺一次复现全部。** 先判断哪种数据真正具备 NPC 角色、局部观察、合法行动、可复算的世界后果和可供对比的强方法。未经定位不大规模改造数据/引擎。
+逐篇证据：[CORE_NOTES](knowledge/CORE_NOTES.md)；实际文件/版本：[SOURCE_AUDIT](knowledge/SOURCE_AUDIT_2026-10-13.md)。
 
-## E00 环境门槛
-1. 检查 upstream SHA/requirements/许可证/数据格式/官方 baseline 和 evaluator 的执行入口。真实基线若依赖无法使用的私有 API，需要明确“本地改造 vs 原版复现”的边界。
-2. 选具有自然状态转移与正控制的 substrate；记录 reset→observe→act→step→reward/state。第一条轨迹必须证明世界引擎而非评测 LLM 决定事件发生与否。
-3. 核查官方结果的定义、seed/场景、判分器版本。先跑阳性/阴性控制及多次相同设置，查不稳定性。
-4. 对固定模型算力预算、吞吐、p50/p95、单回合 token、磁盘 I/O 和必要 CPU RAM 进行实测后再铺开多卡实验。
-5. KNUDGE/CDT 可能适合角色知识/行为；NCP 对剧情承诺，Collab 对真实合作；不为了方便而把不同任务拼成单指标。
+## 准入分层，而不是一律要求大型引擎
 
-## 硬件及数据纪律
-- 单 GPU 起步，能单节点 4卡再考虑本机并行；跨节点**各自独立**，不训练跨机巨模型。不假定 A100、PRO6000、H20 来自同一共享网络。
-- 模型和数据预缓存至授权节点本地；Git 只存轻量 manifest / 复现脚本 /可匿名化统计结果，大资产不进仓库。
-- 记录每个实验：上游 Git commit、模型 revision/checksum、数据 hash、程序 config、随机种子、节点类型、token 和 GPUh、失败条件。遵守实习单位保密及资产可转移许可。
+**离线决策研究：** 核对角色/任务信息、参考历史、可接受动作、标签歧义与数据切分；可以不建完整引擎，但结论只能及于给定历史条件下的决策。**在线能力研究：** 需要策略自己的动作改变状态、其错误传导到后续观测、独立执行反馈与可重放轨迹。两者均可有价值，不能混写。
+
+完整复现应固定上游 Git/模型/数据/评价版本，并先跑作者强 baseline；使用本地替代 API 需要明确是改造条件。CPDC 现成多专家方法、Talk Less/Deflanderization 等应进入近邻/基线考虑，不能给新方法不公平额外预算。
+
+E00 的数据、环境与成本门槛仍未全部通过。E01 证明两份指定源文件能按合约检查；E02 先做自然数据 census/lineage，再决定模型实验。数据不够支持问题就改变入口，不自动靠新引擎/全面合成补齐。
+
+## 单节点资源与资产纪律
+
+模型/数据先节点本地缓存；先实测显存、CPU RAM、输入输出长度、p50/p95 延迟、I/O、wall-time，再铺开独立场景/模型/种子。不把 A100、PRO6000、H20 当作统一高速集群，也不承诺未实测的 GPUh 或训练规模。
+
+大数据、权重及原始长轨迹不进 Git；仓库保留可复算的小结果、脚本与 manifest。每项记录 source SHA、模型 revision、数据 hash、配置、seed、硬件和失败。实习的权限、模型、数据和网络边界单独核实，不上传私有资产或凭证。

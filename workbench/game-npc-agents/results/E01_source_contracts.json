@@ -1,0 +1,97 @@
+{
+  "scope": "E01 CPU source-contract tests; NOT an NPC benchmark",
+  "session_date": "2026-10-13",
+  "python": "3.13.5",
+  "source_git_blobs": {
+    "metrics": "4ba08045919c9860a35d7b14c6f1244bea71c43f",
+    "actions": "a5eaf793635d1d7303d09997ea68540d12253aff"
+  },
+  "sources": {
+    "metrics": "https://github.com/NLP2CT/NCP-Bench/blob/main/src/ncpbench/metrics.py",
+    "actions": "https://github.com/MahammadNuriyev62/CPDC-challenge-2025-solution/blob/main/function_call_langchain/action_functions_0001.py"
+  },
+  "input_kind": "synthetic metric-contract records, not game episodes",
+  "upstream_package_imported": false,
+  "gpu_hours": 0,
+  "model_calls": 0,
+  "checks": [
+    {
+      "name": "duration_positive_control",
+      "observed": [
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "expected": [
+        1.0,
+        1.0,
+        0.5,
+        0.5,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "termination_label_does_not_change_curve",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stored_terminal_turn_counts_as_reached",
+      "observed": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "name": "empty_collection_rejected",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "negative_horizon_rejected",
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "zero_horizon",
+      "observed": [
+        1.0
+      ],
+      "expected": [
+        1.0
+      ],
+      "passed": true
+    },
+    {
+      "name": "specified_cpdc_actions_are_declaration_stubs",
+      "observed": [
+        "equip",
+        "sell"
+      ],
+      "expected": [
+        "equip",
+        "sell"
+      ],
+      "passed": true
+    },
+    {
+      "name": "specified_file_has_two_top_level_functions",
+      "observed": 2,
+      "expected": 2,
+      "passed": true
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "limitations": [
+    "No published scores or figure regenerated.",
+    "No conflict detection, action execution, NPC policy or human experience evaluated.",
+    "CPDC conclusion is limited to this public sample file, not the private official evaluator.",
+    "The NCP function correctly documents turn-threshold reach; test results are not a declaration of a bug."
+  ]
+}
