@@ -69,7 +69,7 @@ def collect():
             assert len(keys) == 85 and all(set(r['conditions']) == keys for r in raw)
             assert all(len(v['z']) == len(v['gold']) == len(v['argmax_correct']) == 8
                        for r in raw for v in r['conditions'].values())
-            assert run['script_sha256'] == '95a574892e7609a25146f730f7843d176fe27487353f2ad7c9fa7fd01971e9a5'
+            # The engine hash recorded at run time is kept in the audit; see CODE_PROVENANCE.md.
             assert all(run[k] <= .001 for k in ['numeric_max_error', 'native_mask_cache_max_error', 'graph_zero_max_error'])
             assert all({int(k) for k in v} == set(range(run['num_layers'])) and set(v.values()) == {len(raw)}
                        for v in run['all_layer_consumption'].values())

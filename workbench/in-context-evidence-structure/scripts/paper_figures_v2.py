@@ -2,12 +2,13 @@
 
 Every value is read from confirmation-split result files (n=32 contexts per checkpoint);
 nothing is fitted or selected here. Reconstruction scatters recompute the per-query rule
-double contrast exactly as in scripts/e121_natural_sentiment_mechanism.py and check the
+double contrast exactly as in e121_natural_sentiment_mechanism.py and check the
 correlation against the stored analysis.
 
-Run with an environment that has numpy and matplotlib, from the workbench root:
-    python scripts/paper_figures_v2.py
-Writes paper/figures/*.pdf and paper/figures/numbers.json.
+Run with an environment that has numpy and matplotlib:
+    python <code dir>/paper_figures_v2.py
+Reads <root>/results and writes figures and numbers.json to <root>/paper/figures if that directory exists
+(the repository layout), otherwise to <root>/outputs/figures; appendix table rows go to .../tables.
 """
 import json
 from pathlib import Path
@@ -19,7 +20,9 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / 'results'
-OUT = ROOT / 'paper' / 'figures'
+PAPER = ROOT / 'paper' if (ROOT / 'paper').is_dir() else ROOT / 'outputs'
+OUT = PAPER / 'figures'
+HERE = Path(__file__).resolve().parent
 OUT.mkdir(parents=True, exist_ok=True)
 
 COL_W, FULL_W = 3.03, 6.30
@@ -117,7 +120,7 @@ def rule_double(dest, target, pred, base):
 def fig_reconstruction():
     """Main figure: A-only reading (the setting of Sec. 3), key patching. Full-reading KV is kept for the appendix."""
     import sys
-    sys.path.insert(0, str(ROOT / 'scripts'))
+    sys.path.insert(0, str(HERE))
     from e109_reconstruction_audit import summarize
     fig, axes = plt.subplots(1, len(MODELS), figsize=(FULL_W, 1.32 if len(MODELS) == 6 else 1.18))
     out = {}
@@ -261,7 +264,7 @@ if __name__ == '__main__':
 
 
 # ---------------------------------------------------------------- appendix tables (LaTeX)
-TAB = ROOT / 'paper' / 'tables'
+TAB = PAPER / 'tables'
 
 
 def cell(s, d=2):
@@ -417,7 +420,7 @@ def e132_candidate(dest, ns, policy, scope='native'):
 
 def fig_separation():
     import sys
-    sys.path.insert(0, str(ROOT / 'scripts'))
+    sys.path.insert(0, str(HERE))
     avail = {m: d for m, d in E132.items() if (RES / d / 'analysis.json').exists()}
     fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 2.15), sharey=False, gridspec_kw={'width_ratios': [1, 1, 1]})
     labels = ['Q8', 'Q14', 'Q32', 'M7', 'L8', 'L70', 'G2', 'G9'][:len(MODELS)]
