@@ -1,23 +1,25 @@
-# 阅读深度债与优先任务（非固定周计划）
+# 还欠什么认识：按问题与决策推进，不按论文数量刷完成
 
-以下不是机械阅读 checklist；任务顺序随新证据/高信息量实验主动改变。已在 [PAPER_LEDGER](PAPER_LEDGER.md) 标 P0/P1/P2 的论文都**不能假装完成了完整精读**。
+2026-10-13第三轮。CPDC/E02不再优先。本轮已经读到的正文段/成本表/源码入口见[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)，下面是仍需完成的工作，不是假称已深读。
 
-## A 高度靠近 NPC 本体（优先深读和实码）
-- KNUDGE EMNLP2024：quest schema、NPC 已知/未知信息、角色图谱、评价和真实语料许可，完整原文/附录。
-- CDT ACL2026：tree 的 scene-action 数据、算法校验、泛化/角色/场景拆分、对比强基线，构树 API 成本及动作解释。
-- PCSP 2026 arXiv：InfoNCE 监督链、actor 接收梯度关系、独立 action/state Big-Five probe、语义行为量表有效性和异常审计。真实阅读代码的测试脚本；不可简单宣称重发现。
-- FAIRGAMER ACL2026：公平性是输出趋同吗？控制改变了什么？哪些选择属于角色影响哪些是不合理社会偏见？独立 ground truth。
-- NCP-Bench ICML2026：对 100 题做事实/剧情承诺、玩家输入冲突率的裁判机制与同 judge 对照；可替代剧情路径的合法性。
+## 原生角色与可控制行为
 
-## B 扩展近邻但不要挤占全部算力
-- Collab-Overcooked、CollabBench、Decrypto：玩家/NPC 动作、partner update 与真实协作必要性；最强 baseline/成本。
-- Generative Agents、SOTOPIA、RoleKE、动态 persona/ArcANE、ThinkPersona、AIIDE structured knowledge trees；防止声称早已存在的动态角色或博弈机制。
-- 游戏引擎/实际玩家体验的论文中，抽样验证“语言流畅≠游戏质量”最重要的客观/真人指标。
+先沿LIGHT → goal-driven speak/act → 设计者行为控制 → 当代角色逻辑/游戏NPC论文继续追踪。检查完整自然quest、角色目标、伙伴响应和真实事件；比较旧任务的限制与当代模型已有能力。补完整Dragon关键训练/数据附录和旧模型恢复，审查当前LIGHT GraphEvent/Soul具体执行路径、模型和数据许可。
 
-## C 最新 NeurIPS2026 定位
-- TALES：继续对照实验表、Simon Says 变量、自然 Jericho zero-shot vs budget，代码执行和失败案例。
-- Population-Aligned Persona Generation、How to Interpret Agent Behavior、Personalize-then-Store：逐一核实正式版本、接受 track、方法、数据和代码。
-- From [官方目录](https://neurips.cc/Downloads/2026) 扩展 Game/ToM/Memory/Narrative/Persona/Action 的可解释性和 eval 方向，不止检索关键词 NPC。特殊 tracks 绝不与主会论文混写。
-- 每轮补新近邻时写**被谁占了的主张**及**我们更新了哪个判断**，避免沉迷造一个无贡献的 PDF 摘要库。
+对CDT/KNUDGE/NCP不重读摘要凑数量：沿前轮已读卡缺口核对真正需要的代码和评价边界。不能将作者已有的人类、多轮或审核器对照再列作“我们的新想法”。
 
-阅读任何论文产生的具体知识卡、假设、反例、实码实验设计均写在这个 workbench 的 knowledge/ 内。
+## 真实玩家与伙伴适应
+
+HM补具体后端、提示/规划循环和完整配对设定；GAMMA补公开政策权重、human-proxy与真人评估差异；Collab-Overcooked补参考轨迹指标对等价解的范围。核查最新2026零样本协作/伙伴适应近邻，但不为追热点将本项目转成泛用MARL。
+
+## 长期连贯与主动性
+
+Dynamic Persona Coherence本轮只复核摘要/正式身份，不能称全文完成；继续查状态构念、数据、评价独立性与完整调用成本。Proact-VL发布情况已有更新：权重/数据/脚本入口已存在；补实际文件、数据容量/许可、非API指标的实现和本地judge替代效度。不沿用旧“未开源”判断，也不直接采用全量视频重训。
+
+## 最新顶会与行业材料
+
+继续筛ICML/ICLR/NeurIPS/ACL等正式main论文及相关游戏/HCI一手材料，搜索角色行为、authorability、believability、social interaction、player adaptation、initiative，不仅搜索NPC缩写。已查[NeurIPS 2026目录](https://neurips.cc/Downloads/2026)，但每个候选要核验track、正式原文与资产；仅出现标题的C3等项目不据此总结方法或认定主会。
+
+[AI for Games in the Foundation Model Era](https://arxiv.org/html/2609.16679)是2026预印本领域导航，本轮读NPC/运行期角色/体验/开放问题相关部分，不称已读完全文，也不把其综述转述当原研究实证。重要结论回到原论文和开发者材料。
+
+每次补阅读必须写“它改变了哪项认识/哪种实验选择”。没有更新判断的摘要堆积不能替代进展；发现更合适的问题或资产可改变队列。

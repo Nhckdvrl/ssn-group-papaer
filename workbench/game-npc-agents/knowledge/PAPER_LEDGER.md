@@ -1,53 +1,71 @@
-# 文献总账｜2026-10-13 首轮交叉领域扫描
+# 文献账本：当前问题锚点、逐篇资产、历史初筛
 
-**等级 P0**=只验证身份/来源；**P1**=官方摘要；**P2**=读部分正文或真实开源仓库说明/方法；**P3**=正文+主要附录和关键代码实际深审；**P4**=本地可复现。P1/P2 不写成“已精读”；网页摘要不等于全文。会场标记据正式会议/作者；arXiv 若未确认录用，保持 arXiv。
+2026-10-13第三轮。P0=题目/来源入口，P1=官方摘要，P2=指定正文/附录或源码已读，P3=充分正文/关键附录及代码核查，P4=实际复算。会议身份与阅读深度是两件事。**本地模型复现P4目前为零。** 以下没有把旧索引的36篇全部升级成精读。
 
-## 原生游戏/NPC、角色与交互主线
-| 文献（源） | 已知身份 | 此轮证据 | 核心接点 |
+## 1. 当前重要性与研究尺度锚点
+
+| 来源 | 身份核验 | 本轮实际范围 | 当前作用 |
 |---|---|---|---|
-| [Generative Agents](https://arxiv.org/abs/2304.03442) | UIST 2023 | P1 + 既有 library | 记忆/反思/社会模拟根节点 |
-| [KNUDGE](https://aclanthology.org/2024.emnlp-main.520/) · [code](https://github.com/nweir127/KNUDGE) | EMNLP 2024 main | P2 repo / P1 paper | 专业 RPG quest NPC 对话、本体约束 |
-| [SOTOPIA](https://proceedings.iclr.cc/paper_files/paper/2024/hash/b3075b88e583a0e98d8b24338a613060-Abstract-Conference.html) | ICLR 2024 | P1 | 目标驱动的社会角色互动 |
-| [SOTOPIA-π](https://aclanthology.org/2024.acl-long.698/) | ACL 2024 main | P1 | 社会 agent 反馈优化 |
-| [Collaborative Quest Completion with LLM-Driven NPCs in Minecraft](https://arxiv.org/abs/2407.03460) | 2024 arXiv | P0 + library | 人–NPC 共同完成真实 quest |
-| [Collab-Overcooked](https://aclanthology.org/2025.emnlp-main.249/) · [code](https://github.com/YusaeMeow/Collab-Overcooked) | EMNLP 2025 main | P2 repo / P1 paper | 合作必需性、过程指标、行动轨迹 |
-| [RoleKE / Character Knowledge Errors](https://aclanthology.org/2025.emnlp-main.1689/) | EMNLP 2025 main | P1 | 角色知识错误和发现能力 |
-| [R-CHAR](https://aclanthology.org/2025.emnlp-main.1372/) | EMNLP 2025 main | P0 | 社会角色推断，推理长度 |
-| [Interactive Drama, Immersion and Agency](https://aclanthology.org/2025.acl-long.546/) | ACL 2025 main | P1 | 互动故事/玩家能动性 |
-| [Dynamic Persona Coherence](https://aclanthology.org/2026.acl-long.1336/) | ACL 2026 main | P0 + library | 非静态角色心理状态 |
-| [Codified Decision Trees (CDT)](https://aclanthology.org/2026.acl-long.568/) · [code](https://github.com/KomeijiForce/Codified_Decision_Tree) | ACL 2026 main（repo 标注 Oral） | P2 repo / P1 paper | 由剧情归纳可执行角色决策规则 |
-| [FAIRGAMER](https://aclanthology.org/2026.acl-long.2015/) · [code](https://github.com/BingkangShi/FairGamer) | ACL 2026 main | P2 repo / P1 paper | NPC 决策、交易/合作/竞争与偏差 |
-| [ThinkPersona](https://aclanthology.org/2026.acl-long.449/) | ACL 2026 main | P0 | 证据支撑的人格图谱 |
-| [Trait Activation in Silicon](https://aclanthology.org/2026.acl-long.1792/) | ACL 2026 main | P0 | 情境激活的角色行为 |
-| [ArcANE](https://arxiv.org/abs/2606.05553) | 2026 arXiv/录用待核 | P0 + library | 不同剧情阶段是否适时保持角色 |
-| [NCP-Bench](https://proceedings.mlr.press/v306/ma26ap.html) · [code](https://github.com/NLP2CT/NCP-Bench) | ICML 2026 main | P2 repo / P1 paper | 100 剧情环境、事实/承诺/玩家冲突 |
-| [CollabBench](https://proceedings.mlr.press/v306/qian26c.html) | ICML 2026 main | P1 | 伙伴画像、多角色真实协作 |
-| [Decrypto Benchmark](https://proceedings.mlr.press/v306/lupu26a.html) | ICML 2026 main | P1 | 多人信息不对称博弈/ToM |
-| [CoopEval](https://proceedings.mlr.press/v306/tewolde26a.html) | ICML 2026 main | P0 | 合作博弈/社会选择机制 |
-| [PCSP One Policy, Infinite NPCs](https://arxiv.org/abs/2605.23652) · [code](https://github.com/yoosunghong/pcsp) | 2026 arXiv（**非核验主会**） | P2 repo / P1 paper | RL persona→action、独立行为 probe、UE |
-| [ReactiveGWM](https://arxiv.org/abs/2605.15256) | 2026 arXiv | P0 + library | 游戏世界模型中控制 NPC |
-| [WorldMind](https://arxiv.org/abs/2608.21439) | 2026 arXiv | P0 + library | 状态感知的 NPC 行为 |
-| [Lies We Can See](https://arxiv.org/abs/2608.30428) | 2026 arXiv | P0 + library | 言语/非言语欺骗在执行沙盒 |
-| [ClueGen](https://doi.org/10.1609/aiide.v12i2.12896) | AIIDE 2016 | P0 + library | 动态谎言/事件生成早期 owner |
-| [Structured Knowledge Trees for Detective Games](https://arxiv.org/abs/2609.23043) | AIIDE 2026/以原始论文核实 | P0 + library | 侦探 NPC 的叙事知识约束 |
+| [LIGHT](https://aclanthology.org/D19-1062/) / [项目](https://parl.ai/projects/light/) | EMNLP-IJCNLP2019 main | 项目数据/论文身份、引擎README/graph/play_map源码；P2 asset | 原生角色任务谱系，尚未安装 |
+| [How to Motivate Your Dragon](https://aclanthology.org/2021.naacl-main.64/) | NAACL2021 main | 正文任务/方法/数据、相关附录入口；P2 paper | 角色动机、语言与行动后果，不冒认长程已解决 |
+| [Direct Behavior Specification](https://proceedings.mlr.press/v162/roy22a.html) | ICML2022 main | 动机、§4–6及实验图/机构，P2 | 制作人员的行为控制问题及贡献尺度 |
+| [GAMMA](https://proceedings.neurips.cc/paper_files/paper/2024/hash/6e9f99809b6df59e8fe5c9ffe269bf40-Abstract-Conference.html) | NeurIPS2024 main | 方法概览、实现/成本/真人附录与README；P2 | 伙伴分布、人类迁移、非LLM参照 |
+| [Hypothetical Minds](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html) | ICLR2025 main | 方法结构、消融、局限与成本表、README；P2 | 伙伴策略的预测/修正；有本地分支仍须计成本 |
+| [Proact-VL](https://openreview.net/forum?id=k9PKgV0L4C) | ICML2026 main | v4任务/实现/评价与资源发布README；P2 | 主动视频伙伴；资源已发布但主裁判含API |
+| [Dynamic Persona Coherence](https://aclanthology.org/2026.acl-long.1336/) | ACL2026 main | 本轮官方摘要/身份P1，未假称全文 | 稳定身份与动态状态的已研究对象 |
+| [Interactive Drama](https://aclanthology.org/2025.acl-long.546/) | ACL2025 main | 正文引言/构念/评价入口P2 | 沉浸与能动性的证据要求 |
+| [AI for Games in the Foundation Model Era](https://arxiv.org/html/2609.16679) | 2026预印本 | NPC/运行期角色/体验/开放问题相关部分P2 | 领域导航，非原研究证据或main保证 |
 
-## NeurIPS 2026｜交叉前沿（通过正式标题表/作者身份核验，不等于全部精读）
-| 论文 | 来源 | 阅读 | 与 NPC 的关系 |
-|---|---|---|---|
-| [TALES](https://arxiv.org/html/2504.14128) · [code](https://github.com/microsoft/tale-suite) | [NeurIPS 2026 列表](https://neurips.cc/Downloads/2026)、作者主页 | P2 paper（HTML §1–4、实验/局限部分）+ P2 repo | 玩家 agent，可迁移 game-loop 和简单先决能力门槛 |
-| [Population-Aligned Persona Generation](https://arxiv.org/abs/2509.10127) | [NeurIPS2026 列表](https://neurips.cc/Downloads/2026)、[作者](https://zxia545.github.io/publications/) | P1 | 大规模 social simulation 人格集合构造 |
-| [How to Interpret Agent Behavior](https://arxiv.org/abs/2605.13625) | [作者主页](https://www.ziangxiao.com/) | P1 | 行为轨迹分类和解释的测量思路 |
-| [Personalize-then-Store](https://arxiv.org/abs/2605.25535) | [NeurIPS2026 列表](https://neurips.cc/Downloads/2026) | P0 | 个体化长期记忆、评测归因 |
-| [Perception, Not Reasoning, Limits Visual Theory of Mind](https://neurips.cc/Downloads/2026) | NeurIPS2026 标题表 | P0 | 提醒区分感知 vs 社会推理瓶颈 |
-| [Task Success Is Not Enough](https://neurips.cc/Downloads/2026) | NeurIPS2026 标题表 | P0 | 成功以外的行动副作用测量 |
+详见[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)；行业一手来源另见[INDUSTRY_EVIDENCE](INDUSTRY_EVIDENCE.md)。本轮新源码blob与尚未运行的边界见[BASELINES](../BASELINES.md)。
 
-## 背景与系统综述
-| 文献 | 地位 | 当前核查 |
+## 2. 前轮逐篇资产（完整保留，不等于当前优先题）
+
+| 文献 | 已有阅读位置 | 使用边界 |
 |---|---|---|
-| [LLM-Based NPCs in Video Games: A Systematic Mapping Study](https://doi.org/10.1109/TG.2026.3733302) | IEEE Transactions on Games 2026 in press | P1；377 文献筛到 42，长记忆/延迟与可复现性 |
-| [Narrative and Dialogue Generation for Video-games: A Systematic Mapping](https://doi.org/10.1016/j.engappai.2026.115041) | Engineering Applications of Artificial Intelligence 2026 | P1；55 项研究，评价偏主观问卷 |
-| [CharacterBench](https://ojs.aaai.org/index.php/AAAI/article/view/34806) | AAAI 2025 | P0 | 角色人类数据基准，但非游戏行动 |
-| [AMemGym](https://proceedings.iclr.cc/paper_files/paper/2026/hash/0856bc553d3e3b9827e5140d0ad3bf8d-Abstract-Conference.html) | ICLR 2026 | P0 | 动态记忆用户画像，可迁移 |
-| [lmgame-Bench](https://proceedings.iclr.cc/paper_files/paper/2026/hash/83a4ea71b13bc86308a2bd0b5e07fb61-Abstract-Conference.html) | ICLR 2026 | P0 | 玩家式游戏 Agent，非 NPC |
+| [KNUDGE / EMNLP2024](https://aclanthology.org/2024.emnlp-main.520/) | [卡](papers/KNUDGE_2024.md) | 前轮指定正文/关键附录；authoring，不是完整执行引擎 |
+| [CDT / ACL2026](https://aclanthology.org/2026.acl-long.568/) | [卡](papers/CDT_2026.md) | 前轮方法、D/E和源码；保留其多轮证据，不冒认原生游戏动作闭环 |
+| [NCP / ICML2026](https://proceedings.mlr.press/v306/ma26ap.html) | [卡](papers/NCP_2026.md) | 前轮正文/指定附录与指标源码；已有审计/人类控制，非本地模型复现 |
+| [PCSP / arXiv2026](https://arxiv.org/abs/2605.23652) | [卡](papers/PCSP_2026.md) | 方法部分与作者独立行为审计；未确认主会，不冒领结果 |
+| [CPDC 2025](papers/CPDC_2025.md) | 官方任务、技术报告、公开sample的前轮卡 | **仅历史技术参考；用户已否定其作为当前科研入口** |
 
-**排除误认**：某些公开下载清单可能覆盖不同 track；未核实的如 MafiaPersona 不在 NeurIPS 主会清单宣称之列。文献索引是首轮入口，不是已完成 30+ 篇深读。
+## 3. 继承的初筛索引：供发现近邻，不是本轮已核主会/全文清单
+
+以下保存初始链接与对象，不重复保证每个会场/版本。需要用于实际研究时，返回原文核验；未查到的不能编补。其更早标记与数值在Git历史可追溯。
+
+| 文献来源 | 初筛对象/当前用途 |
+|---|---|
+| [Generative Agents](https://arxiv.org/abs/2304.03442) | 社会记忆/反思谱系 |
+| [SOTOPIA](https://proceedings.iclr.cc/paper_files/paper/2024/hash/b3075b88e583a0e98d8b24338a613060-Abstract-Conference.html) | 社会角色与目标互动 |
+| [SOTOPIA-π](https://aclanthology.org/2024.acl-long.698/) | 社会互动后训练 |
+| [Collaborative Quest Completion in Minecraft](https://arxiv.org/abs/2407.03460) | 人与NPC的游戏任务 |
+| [Collab-Overcooked](https://aclanthology.org/2025.emnlp-main.249/) | 必要协作，前轮README/部分阅读保留 |
+| [RoleKE](https://aclanthology.org/2025.emnlp-main.1689/) | 角色知识错误 |
+| [R-CHAR](https://aclanthology.org/2025.emnlp-main.1372/) | 社会角色推断 |
+| [FAIRGAMER](https://aclanthology.org/2026.acl-long.2015/) | 特定游戏决策/偏差评价 |
+| [ThinkPersona](https://aclanthology.org/2026.acl-long.449/) | 人物知识结构 |
+| [Trait Activation in Silicon](https://aclanthology.org/2026.acl-long.1792/) | 情境化人格 |
+| [ArcANE](https://arxiv.org/abs/2606.05553) | 角色剧情阶段 |
+| [CollabBench](https://proceedings.mlr.press/v306/qian26c.html) | 协作与伙伴 |
+| [Decrypto](https://proceedings.mlr.press/v306/lupu26a.html) | 信息不对称游戏 |
+| [CoopEval](https://proceedings.mlr.press/v306/tewolde26a.html) | 合作博弈 |
+| [ReactiveGWM](https://arxiv.org/abs/2605.15256) | 世界模型中NPC控制 |
+| [WorldMind](https://arxiv.org/abs/2608.21439) | 状态感知NPC/world model |
+| [Lies We Can See](https://arxiv.org/abs/2608.30428) | 言语/非言语社会行为 |
+| [ClueGen](https://doi.org/10.1609/aiide.v12i2.12896) | 侦探游戏/可追踪事件的旧谱系 |
+| [Structured Knowledge Trees](https://arxiv.org/abs/2609.23043) | 侦探NPC知识结构 |
+| [Talk Less, Call Right](https://arxiv.org/html/2509.00482v1) | 特定角色/工具切片；非当前中心 |
+| [Deflanderization](https://arxiv.org/html/2510.13586v1) | 人物表现与任务对话；非当前中心 |
+| [Do Role-Playing Agents Practice What They Preach?](https://arxiv.org/html/2507.02197v1) | 自报信念/Trust Game行为 |
+| [TALES](https://arxiv.org/html/2504.14128) | 玩家游戏底座，非NPC等价物 |
+| [Population-Aligned Persona Generation](https://arxiv.org/abs/2509.10127) | 人口层面人物设定 |
+| [How to Interpret Agent Behavior](https://arxiv.org/abs/2605.13625) | 行为解释 |
+| [Personalize-then-Store](https://arxiv.org/abs/2605.25535) | 个性化长期记忆 |
+| [Perception, Not Reasoning, Limits Visual Theory of Mind](https://neurips.cc/Downloads/2026) | 仅标题入口，track/正文待核 |
+| [Task Success Is Not Enough](https://neurips.cc/Downloads/2026) | 仅标题入口，track/正文待核 |
+| [LLM-Based NPCs in Video Games: Mapping Study](https://doi.org/10.1109/TG.2026.3733302) | 初筛综述，本轮未重新核验全部元数据 |
+| [Narrative and Dialogue Generation: Mapping](https://doi.org/10.1016/j.engappai.2026.115041) | 初筛综述，本轮未重新核验全部元数据 |
+| [CharacterBench](https://ojs.aaai.org/index.php/AAAI/article/view/34806) | 人物对话，不代表动作执行 |
+| [AMemGym](https://proceedings.iclr.cc/paper_files/paper/2026/hash/0856bc553d3e3b9827e5140d0ad3bf8d-Abstract-Conference.html) | 记忆近邻；本轮未补全文 |
+| [lmgame-Bench](https://proceedings.iclr.cc/paper_files/paper/2026/hash/83a4ea71b13bc86308a2bd0b5e07fb61-Abstract-Conference.html) | 游戏玩家代理；本轮未补全文 |
+
+NeurIPS2026下载目录可能包含不同track；本轮没有逐篇完成确认，不能从以上历史归类声称它们全是主会接收。重要性、近邻新颖性与本地可复现性分别核验，未完成项见[READING_QUEUE](READING_QUEUE.md)。

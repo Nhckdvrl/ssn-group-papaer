@@ -1,33 +1,27 @@
-# 核心阅读入口与认识修正｜2026-10-13 第二轮
+# 核心阅读导航与历史修正
 
-这里替代初始化时的摘要/README 卡作为**当前阅读入口**。旧版可在 Git 历史提交 `1faacaa76d10fb0fe9139bbe7d868fe8f485cbeb` 找到；不是偷偷把旧阅读范围改称精读。全部资产继续放在本 workbench 的 knowledge/ 内。
+2026-10-13第三轮。**当前整体认识请先读[问题谱系](PROBLEM_GENEALOGY.md)与[顶会校准](RESEARCH_CALIBRATION.md)。** 本页保留前两轮逐篇资产，不再以CPDC或E02牵引执行。
 
-## 逐篇研究卡
+## 新补入的原生问题谱系
 
-| 论文 | 本轮实际阅读/检查 | 要学的研究动作与重要边界 |
+[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)记录LIGHT/goal-driven speak-and-act、ICML行为控制、NeurIPS GAMMA、ICLR Hypothetical Minds、ICML Proact-VL及角色/体验近邻的实际阅读范围、方法来源重建与资源边界。这些是定向阅读，不夸称全部源码/附录深审或模型复现。
+
+## 前轮逐篇研究卡：保留真实阅读，不继承已撤回的优先级
+
+| 论文 | 前轮实际阅读/检查 | 当前用途 |
 |---|---|---|
-| [KNUDGE](papers/KNUDGE_2024.md) | 正文方法/数据/主实验、指定关键附录与图表 | 用专业任务重定义对话生成；作者侧图结构/效果评价不等于完整世界引擎 |
-| [CDT](papers/CDT_2026.md) | 正文方法/主要实验、附录 D/E、两份源码指定范围 | 从 profile 到条件化决策；分开语义条件、规则与行动生成；不能漏其多轮证据 |
-| [NCP](papers/NCP_2026.md) | 正文与附录 E、指标全文和审核代码部分；纯函数 CPU 检查 | 将长程一致性转成承诺审核；公平对待作者已做的同 judge/自然输入等控制 |
-| [PCSP](papers/PCSP_2026.md) | 方法/环境部分、作者完整独立行为评价说明 | 内部可辨识与外部行为的桥梁已被作者复核；没有本地 probe 复现 |
-| [CPDC](papers/CPDC_2025.md) | 官方任务定义、技术报告主体、公开样例的调用/执行代码 | 将工具与人物任务并置；公开 sample 的调用匹配不能当任意动作世界 |
+| [KNUDGE](papers/KNUDGE_2024.md) | 正文方法/数据/主实验、指定关键附录与图表 | 作者侧专业任务、知识和自然数据来源 |
+| [CDT](papers/CDT_2026.md) | 正文方法/主要实验、附录D/E、两份源码指定范围 | 情境化角色逻辑；不能忽略其多轮/人类证据 |
+| [NCP](papers/NCP_2026.md) | 正文与附录E、指标全文和部分审核代码 | narrator长程一致性的评价近邻，不是独立NPC引擎 |
+| [PCSP](papers/PCSP_2026.md) | 方法/环境部分、作者独立行为评价说明 | 实际动作与测量效度近邻；未本地复算probe |
+| [CPDC](papers/CPDC_2025.md) | 官方任务、技术报告主体及公开sample代码 | **仅历史技术参考；不再是选题/数据优先入口** |
 
-逐篇卡均区分 DOCUMENTED 与 RECONSTRUCTED，说明 data/method/controls、原研究已占主张、反解释、下一动作。**没有把所有附录/源码都读完，未复制整篇论文，也没有完整模型复现。** 原始 PAPER_LEDGER 是首轮扫描快照，不等于本轮五篇全部达到统一的“全文逐格审计”等级。
+旧“下一步做E02”已被用户纠正覆盖：E02为VOID/superseded，未运行、非实验否定。前版入口可由Git历史追溯，不把旧计划继续列成当前建议。
 
-## 必须覆盖初稿的三项修正
+## 必须保留的来源纠错
 
-1. NCP 正文已有同一审核器下的 HiAgent 对照、多审核器/人工核查、自然玩家输入实验。此前仅从 README 留下的疑问不能当成作者缺失；复现仍须保持相同评价条件。
-2. CDT 虽主要以行动文本预测评价角色逻辑，附录已有新情境多轮/人类偏好实验。不能简化成完全没有交互证据；其执行结构也不能自动理解为游戏状态转移引擎。
-3. KNUDGE 是 authoring 任务并简化了部分游戏状态条件，但它并非完全忽略游戏效果。离线/作者侧研究有独立价值，问题是不能用其结果支持未测过的闭环主张。
+NCP已有同审核器HiAgent、多审核器/人工和自然玩家输入对照；CDT已有新情境多轮及人类偏好证据；KNUDGE虽是authoring且简化部分状态条件，并非完全忽略游戏效果。不得重新将已存在的实验当成我们的新意。
 
-## 初始近邻仍然保留，不虚增阅读深度
+TALES和Collab-Overcooked仍保留初筛与指定部分阅读的范围；前者主要是player agent，后者是必要协作任务。Talk Less、Deflanderization和Trust Game自报/行为工作只是某个切片的相关研究，不能凭它们重新证明E02应该启动。
 
-[TALES](https://arxiv.org/abs/2504.14128) 与 [Collab-Overcooked](https://aclanthology.org/2025.emnlp-main.249/) 保持首轮记录的阅读范围，本轮没有新跑实验或声称完整源码复现。前者提供玩家游戏与先决能力门槛，后者提供必要协作与过程测量；它们不能因为方便运行就替代所有 NPC 问题。
-
-补入的 Talk Less、Deflanderization、信念自报/Trust Game 工作为定向近邻阅读，详见 [POSITIONING](POSITIONING.md)。还要继续读完整实验及其边界，准备 novelty 时不得只用这一张定位表。
-
-## 本轮产生的实际研究入口
-
-[EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)：角色信息的适当决策影响与无关干扰能否被自然数据分开检验。没有预定必须发现反常，也不冻结为唯一论文故事；新数据/强近邻可改变入口。
-
-[源码审计](SOURCE_AUDIT_2026-10-13.md) 与 [E01](../experiments/E01-source-contracts.md) 只改变了我们对测量范围的理解，不产生 NPC 行为主张。当前下一步是 E02 的数据资格审计，而不是拿这八个单元检查写一篇“评价失效”的论文。
+[源码审计](SOURCE_AUDIT_2026-10-13.md)与[E01](../experiments/E01-source-contracts.md)是历史实现事实，不是NPC科学发现。新实验从[当前探索入口](../EXPLORATION_ENTRY.md)与[完整本地资源规范](../LOCAL_FIRST.md)出发。

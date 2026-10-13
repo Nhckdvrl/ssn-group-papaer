@@ -1,18 +1,29 @@
-# 专属知识库｜Game NPC Agents
+# 游戏NPC Agent专属知识库
 
-该知识库位于**workbench/game-npc-agents/knowledge**，不是外部 library 的简单复制。可追溯关联全局历史材料：[game-npc-social](../../../library/themes/game-npc-social/README.md)，但**本 workbench 的科学理解、实验决策、深入阅读笔记必须在这里独立持续更新**。
+2026-10-13第三轮整理。当前优先级从竞赛/工具接口转回学术与游戏制作共同关心的问题；本目录是项目自己的理解资产，不是外围library的副本。
 
-## 阅读入口
-- [LITERATURE_MAP.md](LITERATURE_MAP.md)：从旧问题、已占主张到当代顶会 pressure 的关系图。
-- [PAPER_LEDGER.md](PAPER_LEDGER.md)：30 余项公开论文与代码，会议/版本及阅读深度。
-- [CORE_NOTES.md](CORE_NOTES.md)：最强近邻研究思路重建、真实实验逻辑、可疑推断桥梁。
-- [MEASUREMENT.md](MEASUREMENT.md)：如何设计有检验力的真实游戏轨迹、分层读数和数据。
-- [READING_QUEUE.md](READING_QUEUE.md)：不掩盖未读正文、附录、未核验代码和会议身份。
+## 第一层：整体认识与判断
 
-## 真实的阅读等级
-**P0 标题/会议与链接已确认**；**P1 官方摘要**；**P2 检查原文部分正文或官方源码/README**；**P3 论文全文正文+关键附录/方法/完整主实验、关键代码路径实际检查**；**P4 本地跑过可复现代码并复算数字**。多个资料来源分别标记，如 P1 paper / P2 repo；**P2 不叫精读，P3 才叫充分精读**。
+| 文件 | 用途 |
+|---|---|
+| [PROBLEM_GENEALOGY.md](PROBLEM_GENEALOGY.md) | 四条问题谱系、外部重要性证据、各自能成什么尺度的研究 |
+| [RESEARCH_CALIBRATION.md](RESEARCH_CALIBRATION.md) | 顶会研究动作、关键控制、资源与可继承/不可继承的结论 |
+| [INDUSTRY_EVIDENCE.md](INDUSTRY_EVIDENCE.md) | 开发者的一手制作压力，不把宣传当实验 |
+| [POSITIONING.md](POSITIONING.md) | 已有强认识、不能冒领的新意及下一轮核查依据 |
+| [LITERATURE_MAP.md](LITERATURE_MAP.md) | 学科/任务边界与原始来源导航 |
 
-## 研究卡必须包括
-(1) 前人研究的压力和原来的强认识，(2) idea 实际 documented 动机与我们 reconstructed 的研究转折，(3) 方法与使用的数据、评价、规模，(4) 每个关键实验辨别了什么假设、结果可推导何结论，(5) 哪个推断可能不成立及混杂，(6) 最近邻的 claim ownership 和新增尺度，(7) 对我们带来的可迁移研究动作（**不是照搬一个组件**）。
+## 第二层：论文资产与阅读债
 
-阅读中随时回原文、正式会议与真实仓库；媒体 AI 摘要仅用于发现入口。每次更改将来源、具体查验深度、认识变化写入 logs 或对应纸面卡；允许修正甚至推翻此前自己的分类。
+[PAPER_LEDGER.md](PAPER_LEDGER.md)区分本轮确认的核心来源、前轮逐篇阅读与历史初筛。旧[CORE_NOTES.md](CORE_NOTES.md)及[papers/](papers/)保留KNUDGE/CDT/NCP/PCSP/CPDC等阅读；它们记录过去的来源核查，不再决定当前执行优先级。CPDC仅历史/技术参照，不是当前选题中心。
+
+[READING_QUEUE.md](READING_QUEUE.md)写明尚未补完的正文、最新近邻和真实代码路径；不得把P0/P1索引自动升级为精读。NeurIPS2026的标题目录尚未逐篇完成track/来源核查。
+
+## 第三层：进入真实研究
+
+[EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[LOCAL_FIRST](../LOCAL_FIRST.md)、[BASELINES](../BASELINES.md)分别约束科学入口、本地完整成本和资产可用性。[MEASUREMENT](MEASUREMENT.md)继续用于数据与证据卫生；符号引擎不是所有NPC研究唯一资格，人类构念也不能随意改成规则断言。
+
+## 阅读标记不夸大
+
+P0=仅发现题目/来源，会议身份另列核验状态；P1=官方摘要；P2=指定正文/附录或源码片段已读；P3=正文与关键附录充分阅读并核对关键代码路径；P4=实际复算/复现。只有README或某一方法段不标P3。本轮定向阅读具体范围见RESEARCH_CALIBRATION，不因为文档变长升级等级。
+
+每份研究卡区分作者明确说明与我们重建的idea来源；说明最强认识、实验的区分力、有效范围、竞争解释与可迁移研究动作。私有数据/权重不放公开知识库。历史初筛可纠正，不据旧列表把未验证状态重新写成事实。

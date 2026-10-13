@@ -1,51 +1,43 @@
-# Game NPC Agents｜游戏世界中的交互式角色智能体
+# Game NPC Agents｜从游戏角色的真实问题出发
 
-**状态：PROPOSED。** 用户已批准创建并继续研究；现有 ACTIVE 分配不变。
-**最新更新：2026-10-13 第二轮，已进入正文/源码核查与 CPU 测量合约检查；尚无模型行为发现。**
+**状态：PROPOSED；用户已授权持续研究，其他 ACTIVE 分配不变。**
+**2026-10-13 第三轮：按用户纠正重新整理。CPDC不再牵引选题；默认核心研究闭环零付费API、全链路本地。**
 
-## 当前科学问题与优先级
+## 当前判断
 
-长期领域中心仍是：NPC 怎样依据自己的经历、知识、角色目标行动，并与玩家及游戏世界发生可信的交互？六个开放方向见 [RESEARCH_TERRITORIES](RESEARCH_TERRITORIES.md)。
+前轮过早从易于检查的竞赛工具接口，收敛到“角色信息是否干扰调用”，尚未充分证明它是值得深入的NPC研究问题。这一执行入口已撤回；[E02](experiments/E02-role-relevance.md)标为VOID/superseded，未运行、不是实验否定。既有论文笔记和[E01源码结果](results/E01_source_contracts.json)保留，不再拿它们支持该选题优先级。
 
-本轮更具体的**优先测量问题**：**角色信息何时应该改变 NPC 的选择，何时不应干扰本来明确的任务行动？** 不是预定“persona 越强越好”或“删 persona 就好”，也没有宣称这是一片无人研究的空间。
+现在以独立的学术与行业需求确定研究空间：**制作可控且有自身目标的角色；适应真实玩家的协同行为；共同经历产生的长期连贯；有用而及时的主动性。** 这不是四个已经找到的创新点。具体主张仍须从自然任务、强基线及有区分力的实验中形成。
 
-[EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) 解释为何现在问、自然数据需要什么、哪些结果会改变判断；[POSITIONING](knowledge/POSITIONING.md) 列出已有工作占据的认识。当前优先做 CPDC 等自然角色工具任务的数据/许可/lineage 审计，再决定是否进行单节点冻结模型的配对诊断。
+**首先核查的研究底座：LIGHT/goal-driven角色任务。** 其身份、动机、对话和真实状态行动更接近NPC本体；不是因为旧/免费就选为论文数据。旧接口、短轨迹、数据/权重许可、当前模型能力均需确认。伙伴适应的MeltingPot/Overcooked谱系为备选，不自动转成泛用MARL项目。
 
-## 这次实际推进了什么
+## 工作入口：先读这几份
 
-- 新增 KNUDGE、CDT、NCP、PCSP、CPDC 五份逐篇研究笔记，记录方法/数据/对照、idea 起源重建和阅读范围；不是把 36 条初始索引全部称为精读。
-- 修正底座分类：KNUDGE 是作者侧图生成；CDT 的语义条件树主要支持行动文本预测，但也有多轮交互实验；NCP 的 narrator 审核不等于独立游戏引擎；CPDC 指定公开 sample 有动作 schema/gold replay，不是完整交易世界。
-- 修正对 NCP 的遗漏：原文已有匹配审核器的 HiAgent 对照、多审核器/人审和自然玩家输入实验，不能当成我们的新想法。
-- **E01 实际执行：8/8 源码合约检查通过，0 模型调用，0 GPU·时。** 检查的是纯指标函数与动作声明，不是 NPC 能力；没有重算原论文主表/图。
-
-## 研究与复现入口
-
-| 文件 | 用途 |
+| 入口 | 解决的问题 |
 |---|---|
-| [knowledge/CORE_NOTES.md](knowledge/CORE_NOTES.md) | 最新逐篇深读入口及初稿修正 |
-| [knowledge/README.md](knowledge/README.md)、[领域地图](knowledge/LITERATURE_MAP.md)、[初始文献总账](knowledge/PAPER_LEDGER.md) | 本 workbench 内部知识库；初始扫描与本轮阅读范围分开 |
-| [knowledge/POSITIONING.md](knowledge/POSITIONING.md) | 最近邻已占主张与我们的认识债 |
-| [knowledge/SOURCE_AUDIT_2026-10-13.md](knowledge/SOURCE_AUDIT_2026-10-13.md) | 核查代码路径、版本 blob 与证据范围 |
-| [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) | 当前问题、竞争解释和自适应实验入口 |
-| [BASELINES.md](BASELINES.md) | 修正后的资产分类与资源边界 |
-| [knowledge/MEASUREMENT.md](knowledge/MEASUREMENT.md) | 数据、行动轨迹、对照和统计原则 |
-| [AGENTS.md](AGENTS.md) | 本地 agent 自主研究与反漂移规范 |
-| [E00](experiments/E00-baseline-feasibility.md) / [E01](experiments/E01-source-contracts.md) / [E02](experiments/E02-role-relevance.md) | E00 完整准入未完成；E01 CPU 检查 DONE；E02 数据/行为探索 PLANNED |
-| [审计脚本](scripts/audit_source_contracts.py)、[实际结果](results/E01_source_contracts.json) | 可复算的源码合约，不是模型 benchmark |
-| [CLAIMS.md](CLAIMS.md)、[PAIN_LOG.md](PAIN_LOG.md)、[本轮日志](logs/2026-10-13-deep-read.md) | 无本地 NPC 科学主张；明确哪些做了/没做 |
+| [领域问题谱系](knowledge/PROBLEM_GENEALOGY.md) | 重要性从哪里来，前人研究到哪，哪些还只是待调查判断 |
+| [顶会尺度与研究动作](knowledge/RESEARCH_CALIBRATION.md) | LIGHT/Dragon、ICML行为控制、NeurIPS GAMMA、ICLR Hypothetical Minds、ICML Proact-VL的具体校准 |
+| [游戏界一手证据](knowledge/INDUSTRY_EVIDENCE.md) | Ubisoft/KRAFTON的制作压力；研发说明与科学证据分开 |
+| [全链路本地规范](LOCAL_FIRST.md) | NPC、伙伴、教师、记忆、裁判都计成本；不暗含大批外部API |
+| [资产与代码核查](BASELINES.md) | 已读文件/版本、资源是否已发布、依赖和数据许可的债 |
+| [下一步探索入口](EXPLORATION_ENTRY.md) | 从真实角色任务进入，不预先冻结论文故事 |
+| [知识库索引](knowledge/README.md) / [文献账本](knowledge/PAPER_LEDGER.md) | 当前定向阅读与历史初筛分开，旧阅读卡继续可查 |
+| [定位表](knowledge/POSITIONING.md) | 不能重新冒领的认识及如何证明真正增量 |
+| [本地Agent指南](AGENTS.md) / [数据与测量](knowledge/MEASUREMENT.md) | 自主探索、负结果、构念效度和反漂移 |
+| [实验索引](experiments/README.md) / [主张](CLAIMS.md) / [痛点](PAIN_LOG.md) | 没有NPC模型发现；不把源码测试当科研结果 |
 
-## 范围与科研尺度
+## 哪些不再默认做
 
-不把 roleplay chatbot、玩家 agent、narrator、NPC policy 混为同一任务。**离线角色决策/作者侧生成本身可以有研究价值**；只是不能用它们的结果直接支持未测过的游戏内闭环能力或玩家体验。
+不按CPDC竞赛目标定义科研价值；不从免费toy函数开始自行证明重要性；不将“NPC+记忆/RAG/ToM/行为树”当独创；不把所有问题约化为工具调用、personality judge或单一总分。
 
-不预定方法名、训练配方或贡献数量。不凭源码常识宣布论文级发现，不把“内外指标不同”“角色妨碍工具调用”等已有认识冒领为 novelty。若自然数据支持不了当前问题，可以主动重新选问题/资产，而不是全面合成来制造现象。
+不要求所有NPC论文都有符号引擎：叙事/人类体验可以是严肃问题，但必须有支持相应结论的证据。优先独立引擎是因为我们要降低执行反馈和API耦合，不是把其他研究一概排除。
 
-## 资源与实际状态
+不以最新会议标签代替全文阅读。NeurIPS 2026标题目录已筛查，但未完成每篇track/正文/资产核实；尚未完成全领域综述或确定论文新颖性。
 
-研究室十余张 A100、8 张 RTX PRO 6000；实习方 16 张 H20。网络/I/O/互联弱，单卡/单节点起步，多 GPU 用于真正独立的实验；不默认所有卡同时可用或跨机构资产可共享。
+## 实际进度与资源
 
-**正式 baseline 复现 0；自然 NPC 模型 episode 0；L1+ 科学主张 0；模型调用/GPU 0。** E01 仅在当前工作容器运行，未接入用户服务器。没有完整新数据集或模型权重下载；没有运行全仓库 process checker。
+本轮完成定向原文阅读、行业需求核对、若干官方源码入口核查和研究文档重整。**新模型运行0、GPU使用0、新行为结论0。** E01的8/8为前轮CPU源码合约结果，不是NPC实验。没有接入用户服务器，也没有声称本轮跑通LIGHT或复现任何主表。
 
-目标会议随最终贡献形态考虑 ICML/ICLR/NeurIPS 或 ACL/EMNLP/NAACL 主会；不填推测截止日、不按周倒排。只更新本 workbench，不恢复已删除的旧 NPC 工作台。
+研究室十余张A100、8张PRO6000，实习方16张H20；弱互联/弱I/O，单节点任务与独立实验优先。是否能跑由实际模型、KV cache、CPU与磁盘测量决定，不以总卡数估算。目标会议按真实贡献选择ICML/ICLR/NeurIPS或ACL/EMNLP/NAACL主会，不按周倒排。
 
-规则：[根 AGENTS](../../AGENTS.md)、[EXECUTION](../EXECUTION.md)、[IDEA_EXPLORATION](../IDEA_EXPLORATION.md)。初始授权与历史状态见 [初始化日志](logs/2026-10-13.md)；当前以本页及第二轮日志为准。
+本轮依据见[整理日志](logs/2026-10-13-reorientation.md)。旧版本及被替换计划可从Git历史追溯；未改其他工作台、全局配额或已删除项目。
