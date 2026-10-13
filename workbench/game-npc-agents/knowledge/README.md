@@ -1,28 +1,15 @@
-# Game NPC Agents · 独立科学知识库
+# Game NPC Agents · 内部可追溯知识库
 
-**这是 workbench 内的活知识库，不是全局 `library/` 的复制品。2026-10-14 用户明确要求纠正连续两次过窄收缩。** 历史角色训练/目标控制笔记继续保留，但不是本项目唯一目标。
+**长期总领域保持开放，当前用户选定矿区 A 作为驻留焦点**。不要将这个选择误写成永久关闭其它方向，也不要将旧“目标/旧计划”或“共享 PPO”再当成项目总纲。
 
-## 必须首先建立的领域整体认知
-| 内容 | 文件 |
-|---|---|
-| 全景（8 个板块，不冻结新题） | [DOMAIN_ATLAS.md](DOMAIN_ATLAS.md) |
-| 游戏 NPC 被攻击、信任边界与安全效度 | [NPC_SECURITY.md](NPC_SECURITY.md) |
-| 游戏多 Agent 经济、市场攻击、机构与激励 | [GAME_ECONOMY.md](GAME_ECONOMY.md) |
-| 正常人格成长 vs 失控漂移/攻击 | [PERSONA_DRIFT.md](PERSONA_DRIFT.md) |
-| 最新文献身份与**本轮实际阅读等级** | [SOURCES_AND_STATUS_2026-10-14.md](SOURCES_AND_STATUS_2026-10-14.md) |
-| 过去已核实论文主张与不能冒领的增量 | [POSITIONING.md](POSITIONING.md) |
-| 下一批应深读/核代码的资产，按重要认知缺口优先 | [READING_QUEUE.md](READING_QUEUE.md) |
-| 现有 2026 原生训练线文献 / 训练想法 | [NATIVE_GAME_NPC_FRONTIER.md](NATIVE_GAME_NPC_FRONTIER.md)、[METHOD_TERRITORIES.md](METHOD_TERRITORIES.md) |
-| 历史目标控制/角色逻辑/训练研究及旧初筛 | [GOAL_CONTROL_REVIEW.md](GOAL_CONTROL_REVIEW.md)、[CORE_NOTES.md](CORE_NOTES.md)、[PAPER_LEDGER.md](PAPER_LEDGER.md)、[papers/](papers/) |
-| 数据与测量原则 | [MEASUREMENT.md](MEASUREMENT.md) |
+## 当前从哪里读
+1. **[矿区 A Persona–Behavior](persona-behavior/README.md)**：本轮科研入口；[近邻和论文Idea来源](persona-behavior/RELATED_WORK.md)、[已有源码级事实](persona-behavior/CODE_AUDIT.md)。
+2. [DOMAIN_ATLAS](DOMAIN_ATLAS.md)：长期全领域地图，涵盖训练、社会交互、长期人格、[NPC安全](NPC_SECURITY.md)、[NPC经济](GAME_ECONOMY.md)、游戏体验、具身/实时；没有被删除。
+3. [PAPER_LEDGER](PAPER_LEDGER.md) 与 [SOURCES_AND_STATUS_2026-10-14](SOURCES_AND_STATUS_2026-10-14.md)：源论文身份、阅读深度与未完成债务；本轮新增2026 ICML论文须看persona-behavior/RELATED_WORK。
+4. [papers/](papers/)：五份历史纸面/源码阅读；[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)、[PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md)、[LITERATURE_MAP](LITERATURE_MAP.md)、[NATIVE_GAME_NPC_FRONTIER](NATIVE_GAME_NPC_FRONTIER.md)、[METHOD_TERRITORIES](METHOD_TERRITORIES.md)、[CORE_NOTES](CORE_NOTES.md)、[GOAL_CONTROL_REVIEW](GOAL_CONTROL_REVIEW.md) 保留真实认知，但其中旧的“当前优先”措辞不再指导执行。
+5. [MEASUREMENT](MEASUREMENT.md)：世界事件、NPC行动、统计、因果干预；[POSITIONING](POSITIONING.md) 全域最强近邻。最新局部 ownership 另见矿区 A。
+6. [READING_QUEUE](READING_QUEUE.md)：跨领域积累，A 的当前优先由 [LOCAL_AGENT_START](../LOCAL_AGENT_START.md) 决定。
 
-## 四种不同的认识，不许混
-- **已核实的文献事实**：带会议/版本/数据/代码来源和真实阅读范围。
-- **作者已有的贡献/推断**：只能说作者报告，不能变成我们的 claim。
-- **我们的推测/质疑**：写成可证伪 hypothesis，明确最强替代解释。
-- **我们的新观察**：只有有完整代码版本、运行输入、结果文件、统计与独立审计的 E## 才能支撑。
-
-阅读等级 P0标题/来源；P1摘要；P2特定原文段/源码；P3正文和关键附录/实码系统精读；P4本地可复算。更新 source 时写阅读时间和实码范围，不因笔记写了几千字自升级 P3。原先的历史初筛不等于本轮完成全部 P3。
-
-## 防止过窄与肤浅
-不能再把“目标/旧计划”、“共享PPO”、“Prompt注入导致拒绝”、“Sybil攻击”先选为固定 story，再通过搜论文给自己壮胆。先研究各领域重要已有论证、哪些正常游戏行为不应该被归为攻击、哪些量真正预测自然世界后果，再把高信息量问题交给实验。允许只完成部分分支深入，但全局地图应维持。
+## 避免重复堆积
+不新建独立 `kb/`、`exp_engine/`、`hypotheses/`；Git 仓库原本已有 knowledge/、experiments/、ideas/、logs/ 和 results/。旧用户撤销的实验卡已在Git历史保留，当前实验只有E01源码事实/E06待执行。
+P0仅索引、P1摘要、P2部分正文/代码、P3正文/关键附录与代码系统精读、P4本地复算。写分清 **文献事实 / 解释与混杂 / 猜想与需检验的研究动作**；一句idea来源重建不是作者真实科研回忆。

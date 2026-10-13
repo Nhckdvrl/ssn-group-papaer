@@ -1,14 +1,8 @@
-# 实验账本：2026-10-14 用户要求把 Game NPC 范围全面打开
+# 当前实验索引｜2026-10-14 仓库清理
 
-| ID | 状态 | 内容与科学边界 |
-|---|---|---|
-| E00 | **VOID / superseded**（未运行） | 旧 LIGHT 单底座进入方案；用户已否决它成为全领域默认 |
-| E01 | DONE（历史CPU源码测试） | 8/8 为指定源码函数性质检查，**0模型/0游戏NPC行为发现** |
-| E02 | VOID / superseded | 旧CPDC角色/工具调用，未运行 |
-| E03 / E04 | VOID / superseded | 旧目标/计划狭窄切口，未运行 |
-| E05 | **VOID / superseded**（未运行） | 旧“行为可训练/PCSP为优先唯一底座”的强收缩，用户已否决 |
-| 后续实验 | **尚未注册** | 需要先依据各研究分支近期顶会/游戏真实问题、自然可用数据、证据与可运行性决定，不预先锁新的小题 |
+| ID | 类型与结果 |
+|---|---|
+| [E01-source-contracts](E01-source-contracts.md) | 已完成 CPU 上游源码合约测试：8/8，只说明指定程序性质，不是 NPC 行为实验 |
+| [E06-persona-strategy-baseline](E06-persona-strategy-baseline.md) | **PLANNED**：矿区 A，自报、意图、实际行动、世界后果的原生NPC强基线准入；未运行 |
 
-过去这些卡不算科学负结果；原文保留作溯源，没有必要删除历史。最新开放全景：[EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[knowledge/DOMAIN_ATLAS](../knowledge/DOMAIN_ATLAS.md)、[NPC_SECURITY](../knowledge/NPC_SECURITY.md)、[GAME_ECONOMY](../knowledge/GAME_ECONOMY.md)、[PERSONA_DRIFT](../knowledge/PERSONA_DRIFT.md)。
-
-**科研动作不等于必须立即跑一个 E##。** 若开始运行，则先按根工作流建立数据/代码/评测与正负控制、预算、决策表，并保证能改变认识；未接入用户GPU不编造任何结果。
+**历史未执行实验** E00/E02/E03/E04/E05 全部是旧用户方向变化前的探索草案，**已从当前树退出**，可在[Git历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)中找回。它们既不算实验否定，也不算已获认可的基线。新执行入口以 [LOCAL_AGENT_START](../LOCAL_AGENT_START.md) 与 [E06](E06-persona-strategy-baseline.md) 为准。是否开始新模型试验必须先完成必要的环境/任务审计、对照与成本计划，遵守[EXECUTION](../../EXECUTION.md)。
