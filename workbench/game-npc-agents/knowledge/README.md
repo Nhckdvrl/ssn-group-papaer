@@ -1,17 +1,28 @@
-# 游戏 NPC Agent 专属知识库｜2026-10-13 用户第二次领域校准
+# Game NPC Agents · 独立科学知识库
 
-**研究对象只有游戏世界中非玩家控制角色**，不是单独通关的 game-playing agents / 仅靠 prompt 模仿人物的聊天机器人。研究 game NPC 的训练、角色可控行动、多角色行为、与玩家互动和真正的部署成本；高级 LLM 可供训练/低频决策，快策略可由其它政策执行。
+**这是 workbench 内的活知识库，不是全局 `library/` 的复制品。2026-10-14 用户明确要求纠正连续两次过窄收缩。** 历史角色训练/目标控制笔记继续保留，但不是本项目唯一目标。
 
-## 当前读取入口
-1. **[NATIVE_GAME_NPC_FRONTIER.md](NATIVE_GAME_NPC_FRONTIER.md)**：EA、PCSP、UBCL、Human-Like tactical bots、MultiGAIL、KRAFTON、NeurIPS2026、世界模型 NPC 的论文/源码证据、会议身份与真正创新所有权。
-2. **[METHOD_TERRITORIES.md](METHOD_TERRITORIES.md)**：围绕 designer feedback、共享策略与行为修复、LLM→可执行政策学习、真实玩家适应的探索空间。
-3. [POSITIONING.md](POSITIONING.md)：强最近邻和不能再次主张 novelty 的项目。
-4. [EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[BASELINES](../BASELINES.md)、[LOCAL_FIRST](../LOCAL_FIRST.md)、[E05](../experiments/E05-native-npc-baseline-gate.md)：零API与本地研究执行。
-5. [PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md) / [RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md) / [INDUSTRY_EVIDENCE](INDUSTRY_EVIDENCE.md)：领域历史、转折研究动作、产品说明；仍可引用，但不能覆写当前游戏 NPC 定义。
+## 必须首先建立的领域整体认知
+| 内容 | 文件 |
+|---|---|
+| 全景（8 个板块，不冻结新题） | [DOMAIN_ATLAS.md](DOMAIN_ATLAS.md) |
+| 游戏 NPC 被攻击、信任边界与安全效度 | [NPC_SECURITY.md](NPC_SECURITY.md) |
+| 游戏多 Agent 经济、市场攻击、机构与激励 | [GAME_ECONOMY.md](GAME_ECONOMY.md) |
+| 正常人格成长 vs 失控漂移/攻击 | [PERSONA_DRIFT.md](PERSONA_DRIFT.md) |
+| 最新文献身份与**本轮实际阅读等级** | [SOURCES_AND_STATUS_2026-10-14.md](SOURCES_AND_STATUS_2026-10-14.md) |
+| 过去已核实论文主张与不能冒领的增量 | [POSITIONING.md](POSITIONING.md) |
+| 下一批应深读/核代码的资产，按重要认知缺口优先 | [READING_QUEUE.md](READING_QUEUE.md) |
+| 现有 2026 原生训练线文献 / 训练想法 | [NATIVE_GAME_NPC_FRONTIER.md](NATIVE_GAME_NPC_FRONTIER.md)、[METHOD_TERRITORIES.md](METHOD_TERRITORIES.md) |
+| 历史目标控制/角色逻辑/训练研究及旧初筛 | [GOAL_CONTROL_REVIEW.md](GOAL_CONTROL_REVIEW.md)、[CORE_NOTES.md](CORE_NOTES.md)、[PAPER_LEDGER.md](PAPER_LEDGER.md)、[papers/](papers/) |
+| 数据与测量原则 | [MEASUREMENT.md](MEASUREMENT.md) |
 
-## 旧路线保留但降级
-[GOAL_CONTROL_REVIEW](GOAL_CONTROL_REVIEW.md)、[FRONTIER_CHECK](FRONTIER_CHECK.md) 仍包含此前 goal-vs-plan、LLM narration、RPA / 竞争解释文献。它们是**潜在子问题/邻接研究**，用户明确拒绝将其独占 workbench；旧 E03/E04 从未运行，不是反证。CPDC 是历史源码/比赛，不再争夺科研主轴。
+## 四种不同的认识，不许混
+- **已核实的文献事实**：带会议/版本/数据/代码来源和真实阅读范围。
+- **作者已有的贡献/推断**：只能说作者报告，不能变成我们的 claim。
+- **我们的推测/质疑**：写成可证伪 hypothesis，明确最强替代解释。
+- **我们的新观察**：只有有完整代码版本、运行输入、结果文件、统计与独立审计的 E## 才能支撑。
 
-## 阅读等级与证据记录
-P0 只题名；P1 原文摘要；P2 指定正文/源码片段；P3 正文＋关键附录/代码重要路径系统审阅；P4 本地结果复现。新文件单篇逐项标实际读到的内容，不允许把论文库的条数当精读结果。
-论文正文中作者的主张/数字、可公开核验的代码、我们自己的解释/猜想，必须分别注明；“训练分数高”不能自动等于玩家认为自然；“游戏角色行为”不能简单由聊天 judge给真值。持续查近邻，不为了新的损失函数找动机。
+阅读等级 P0标题/来源；P1摘要；P2特定原文段/源码；P3正文和关键附录/实码系统精读；P4本地可复算。更新 source 时写阅读时间和实码范围，不因笔记写了几千字自升级 P3。原先的历史初筛不等于本轮完成全部 P3。
+
+## 防止过窄与肤浅
+不能再把“目标/旧计划”、“共享PPO”、“Prompt注入导致拒绝”、“Sybil攻击”先选为固定 story，再通过搜论文给自己壮胆。先研究各领域重要已有论证、哪些正常游戏行为不应该被归为攻击、哪些量真正预测自然世界后果，再把高信息量问题交给实验。允许只完成部分分支深入，但全局地图应维持。

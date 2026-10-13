@@ -1,69 +1,23 @@
-# 所选切口的资产、基线与可用性
+# 各 Game NPC 子领域的基线/数据与本地资产地图（2026-10-14）
 
-2026-10-13第四轮；执行优先级以[EXPLORATION_ENTRY](EXPLORATION_ENTRY.md)为准。**源码/来源已核查不等于游戏和模型已跑通。**
+本页替代旧“LIGHT为唯一首选”及后来“PCSP为唯一首选”。**选择substrate要由科学问题决定，而不是一个系统决定科研题目。** 当前仅核公开论文/README/指定源码、没有用户GPU、未宣称完整基线复现。
 
-## 1. 首选世界：LIGHT
+| 科学分支 | 最合适的原生/邻接资产 | 真正可观察的单位 | 已核验与未通过的 gate |
+|---|---|---|---|
+| NPC 安全/泄密/角色攻击 | [Gigax](https://github.com/GigaxGames/gigax)、[Shiomi ProvSec](https://arxiv.org/html/2508.19288v1)、[LIGHT](https://github.com/facebookresearch/LIGHT)、[agent-sandbox](https://github.com/ccb/agent-sandbox) | 角色秘密/剧情许可、对话和引擎动作、消息来源 | Gigax有本地GGUF模型与NPC stepper；Shiomi只有单NPC30次单轮示范，不是强长期基准；LIGHT迁移有依赖债，sandbox不等于顶会方法 |
+| 动态人格/社会记忆 | LIGHT/Dragon、[PCSP research](https://github.com/yoosunghong/pcsp/tree/main/research)、[MineAmongUs](https://github.com/JunseoKim0103/Lies-We-Can-See) | 行动/关系/剧情状态随时间变更，角色真实动机 | PCSP独立行为probe已开源；MineAmongUs Docker+游戏日志开源，但8agent回合/默认API及Minecraft server成本未测 |
+| NPC经济及群体攻防 | [KDD2025 MMOAgent代码归档](https://doi.org/10.5281/zenodo.15526912)、[AI-Bazaar](https://github.com/sethkarten/AI-Bazaar)、[BAZAAR](https://github.com/lechmazur/bazaar) | 商品/金币/库存/生产/交易/声誉/价格/群体福利 | KDD项目论文有Zenodo链接**归档未下载**且原实验GPT-3.5/GPT-4；AI-Bazaar GitHub README明确支持Ollama/vLLM但没有实际跑；BAZAAR是非游戏市场bench，只有机制可迁移 |
+| NPC行为训练 | PCSP、[EA2026 paper](https://arxiv.org/html/2606.20210v1)、UBCL/MultiGAIL | 动作policy/设计控制/分角色行为 | PCSP开源可试；EA商用引擎资产未开放不能称可复现 |
+| NPC玩家伙伴社会互动 | [ccb sandbox](https://github.com/ccb/agent-sandbox)、LIGHT、Collab-Overcooked、KRAFTON架构 | 玩家指令、角色互动、合法世界行动 | ccb README给本地兼容endpoint (LLM_BASE_URL)，实际启用逻辑需检查；Collab旧Python/MPI，本地规则和vLLM可替换 |
+| NPC多模态/具身安全 | [Lies We Can See](https://github.com/JunseoKim0103/Lies-We-Can-See)、[ReactiveGWM v2](https://github.com/INV-WZQ/ReactiveGWM) | 实体视觉/非语言行动、社交欺骗、视频环境 | MineAmongUs公开Docker/日志/标注，标注用LLM judge；ReactiveGWM 2026-09-29 v2开放权重和代码，默认8 GPU/20k优化步与视频IO不适合无规划全量复训 |
+| 通用 Agent 攻防对照 | [AgentDojo](https://github.com/ethz-spylab/agentdojo)、[ASB](https://github.com/agiresearch/ASB) | 信任边界、攻击接口、utility-security | NeurIPS2024/ICLR2025强近邻，**不是直接NPC游戏任务**；先研究其严谨控制再迁移 |
 
-固定仓库提交：`facebookresearch/LIGHT@71a06cae8573048b1af41507ac52fe33b650fab3`。代码为MIT；任务/模型许可必须分别确认。
+## 条件性 substrate 选择，而不是单线 roadmap
+- 如研究**秘密/人物安全**：需要作者设定披露规则与合法剧情任务，可先从开放文本/RPG场景确认攻击与权限，同时参考ProvSec已发布最小任务和AIIDE侦探工作；真实游戏引擎接入是关键资格之一。
+- 如研究**NPC经济/多Agent攻击**：先完整核KDD2025模拟器/资产和 AI-Bazaar 本地工具链接，确认 CPU 可结算账本、agent策略和角色来源；一个精简交易模拟可以用于测量校准，但最终不能只依赖新自造的小商品市场宣称MMO普遍规律。
+- 如研究**训练与长期人格**：PCSP、LIGHT和其它公开生活模拟各有能力边界；根据角色动作/记忆、伙伴信息与评估有效性选择，不人为统一各类NPC的指标。
+- 如研究**具身攻防或非语言欺骗**：MineAmongUs有开放视觉/动作环境，但自带非语言欺骗（游戏允许的胜利策略），要与真正违反世界作者规则的安全攻击明确分开；GPU/CPU/IO本地测速后才可开始大规模。
+- **NeurIPS2026/最新arXiv**：只有当单篇正式会场、论文版本、代码和研究对象都核验后才升级“强已发表baseline”，不能拿官方标题表当精读。
 
-本轮直接检查的文件：
-
-| 文件 | Git blob | 确认了什么 |
-|---|---|---|
-| README.md | ecc5717608ada580fffc24ed2ac2c5fd375b7812 | OOGraph、GraphEvent、Soul分工；模型迁移/服务说明有TODO |
-| light/graph/README.md | 6fa39500950bf40083634ec8fb207bc9e4362150 | 可序列化世界、容器/邻接、节点删除和局部检索；不是语言模型写世界真值 |
-| scripts/examples/play_map.py | 4dada31b28619d227dc4086341f02c7e6fb31e78 | Hydra入口、规则Soul可用分支、遗留cluster路径；同时导入模型相关组件 |
-| setup.py | 5038e34f140bec89293f839ce51859b451b48e7f | Python>=3.8、light0.2、依赖ParlAI；不等于任意新Python兼容 |
-| requirements.txt | 3dc425de4c0bda41edf0e3d3a79d96578218c600 | 大量只有下限的依赖；需运行后产生真实lock |
-| projects/quests/README.md | b890d931f41c6ca96213caadd5c53bfe077d2b92 | 当前这里主要保留早期Predictive Machines入口，不保证Dragon完整包 |
-
-官方 simple_world 已查看：含人物、容器、物品、事件条件与规则响应，可作原生engine smoke test。它是官方演示，不是我们的自然研究数据。
-
-代码层已确认的示例命令是 `python scripts/examples/play_map.py builder.load_map=scripts/examples/complex_world.json`，不是旧README的`--load-map`。**此命令本轮没有执行**；先在隔离的Python环境中处理依赖与配置，不直接污染现有vLLM环境。
-
-## 2. 自然任务资产与获取状态
-
-正式[项目页](https://parl.ai/projects/light/)区分原LIGHT对话、WILD互动、Dragon quest与ATOMIC；不要混用规模和split。
-
-- annotated quests官方链接：`https://parl.ai/downloads/light_project/quests/quest_stems.tar.gz`，跳转到`https://dl.fbaipublicfiles.com/parlai/light_project/quests/quest_stems.tar.gz`。
-- 原LIGHT任务入口：ParlAI `light_dialog`；WILD：`light_dialog_wild`。项目页说quest completions在WILD中，**不意味着整个WILD就是原2111示范及其split**。
-- 本轮查看ParlAI `parlai/tasks/light_dialog_wild/build.py`，blob `d3720506236c4e371e0467e2c90a98a49c32d681`：先下载manifest，再按其中hash下载dumps。该builder有过滤/选项，不能随便沿默认过滤后说恢复了论文数据。
-- manifest源码给定hash：`c708fe62692f239a2b35025d71722c7607f863ffa110aa118f2e1d0fa7db4730`。它是builder列出的资源hash，不是我们已下载后独立算出的hash。
-
-**本轮未取得归档字节。** 浏览器无法读取tar.gz，容器下载未成功；quest实际schema、归档内许可、哈希和当前引擎兼容性仍须在授权节点下载后验证。不得宣称已读64/240条数据。不存在以手造任务替代归档然后标为原版复现的回退。
-
-恢复步骤已明确：取得归档及terms→列文件和schema→恢复作者split→保留源ID与原始目标/时间线→验证原生世界→记录失败与筛选分母→再定义可观察且可达的分支。歧义目标独立标出，不用LLM强行投票变金标准。
-
-## 3. 本地模型选择与版本
-
-初始两家族参考：
-
-| 模型 | 初选版本依据 | 用途与限制 |
-|---|---|---|
-| [Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) | 官方commit列表当前短SHA `40c0698`；下载前解析并存完整SHA，不以main长期运行 | 原生指令/角色能力；thinking开关由真实chat template配置并记录，非只写一句no_think |
-| [Mistral-Small-3.1-24B-Instruct-2503](https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503) | 官方API返回 `68faf511d618ef198fef186659617cfd2eb8e33a` | 独立家族，固定模板/推理预算；文本任务不用视觉输入 |
-
-官方模型卡列Apache-2.0。这些是可复现和本地成本参照，不声称2026最强模型；先检查用户已有缓存，不重复下载。更强单节点模型用于确认基本能力与规模趋势，但不一开始全卡部署70B。KV cache、服务版本、量化、CPU和I/O必须实测；权重版本已知也不等于权重字节已经下载。
-
-## 4. 控制器基线与公平性
-
-B0全文目标/可见状态/事件历史；B1普通目标保持与计划可修改提示；B2每步重规划并匹配可用事实；B3目标/事实/计划分开保存；B4适用子集的规则/GOAP。均为强控制，不是注册的新方法。
-
-NPC只能看到同样的局部可见信息。全状态+形式化目标规划器为oracle，报告它覆盖哪些任务，不把信息特权当算法优势。合法动作列表在对比条件间保持一致；首次解析/长度/超时错误不删样本。
-
-原Dragon的固定伙伴、学习DM与离散候选检索不是当前现代生成基线；更换这些后称“受控任务适配”，不声称复现原论文数值。
-
-## 5. 备用资料，不再无界扩工程
-
-Hypothetical Minds/MeltingPot、GAMMA/Overcooked、Collab-Overcooked是行动/伙伴适应近邻，资源事实见前轮[RESEARCH_CALIBRATION](knowledge/RESEARCH_CALIBRATION.md)。alem是新近协调性测量参考；NARRA/NCP/CDT是叙事/角色参照；它们不成为同时执行的六个工程项目。
-
-若LIGHT任务恢复失败，优先寻找支持同一“自己的目标+合法玩家改变世界”问题的公共资产。不要为了保持LIGHT名字从零写游戏，也不要因为某备用环境易跑就改回泛用MARL排名。
-
-
-## 2026-10-13 更正：直接游戏 NPC 训练资产优先级（覆盖上文旧“LIGHT首先”）
-上文原来围绕 goal-plan 的优先级是历史记录；**当前首选审核 PCSP 的真正 NPC 行为训练系统**，而不是“训练玩家通关”或只做 RPG 对话。详情见 [NATIVE_GAME_NPC_FRONTIER](knowledge/NATIVE_GAME_NPC_FRONTIER.md) 与 [E05](experiments/E05-native-npc-baseline-gate.md)。
-- [PCSP research/](https://github.com/yoosunghong/pcsp/tree/main/research)：PettingZoo Mini-Inzoi v3 角色状态和20行为；PPO/条件化策略、原始人设 train/test JSON、独立行为测试及 UE5 辅助。MIT 源码，作者已有代码但本机未跑；为第一动作学习复现候选，不冒称已录用大顶会。
-- [ccb/agent-sandbox](https://github.com/ccb/agent-sandbox)：UPenn 2026 的游戏 NPC 世界状态引擎/ReAct 与合法动作/规则。当前 README 支持 LLM_BASE_URL 可指向本地 vLLM；注意默认 OpenAI/Anthropic API 和各阶段文档不一，是跨 RPG/LLM 高层的补充系统，**非顶会强算法基线**。
-- [EA Augmenting Game AI](https://arxiv.org/html/2606.20210v1)、[modl.ai/Riot shooter](https://arxiv.org/abs/2501.00078)、[PUBG Ally技术](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/) 是行业/发表研究的重要**性能和行为控制标准**，但引擎/训练人类轨迹非公开，不许宣称可直接本地复现。
-- [ReactiveGWM v2](https://github.com/INV-WZQ/ReactiveGWM) 实际有视频权重+数据+训练，预设8 GPU/20k steps，弱I/O 主线不可直接复制；[WorldMind](https://github.com/TeaWhiteBro/WorldMind) README 仍在准备开放代码权重。
-**任何系统正式运行前：** 固定最新 repo git sha/数据与模型revision；核对只有本地明确端点、不能回退云 API；测 CPU env-step，实际 VRAM/吞吐/模型高层调用频率；区分游戏状态、角色行动、聊天、自动judge和真人反馈，不允许 “Game Agent胜率上升”直接冒充游戏 NPC 玩家体验。
+## 统一 gate（执行前）
+上游git SHA/数据license/模型revision；是否可局部离线运行；NPC主体、玩家/伙伴、审计/标注、环境rule、世界owner；强baseline、自然场景、真实后果/合法胜利条件；API全链预检、本地单节点CPU/GPUh/IO/延迟；数据train/dev/test split与人工校验。**“源码能下载”≠“复现论文”≠“可以回答我们问题”。**

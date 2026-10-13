@@ -1,3 +1,5 @@
+> **2026-10-14 文档身份说明：** 本页是已读过的**训练/方法子领域**科研资产，不再代表整个游戏 NPC 领域的唯一优先级。请先读 [DOMAIN_ATLAS](DOMAIN_ATLAS.md)、[NPC_SECURITY](NPC_SECURITY.md)、[GAME_ECONOMY](GAME_ECONOMY.md) 和 [PERSONA_DRIFT](PERSONA_DRIFT.md)。本页旧阅读等级仍以原始来源核验范围为准。
+
 # 2025–2026 游戏 NPC 原生研究：论文与实际代码调查
 
 本页以**游戏内非玩家角色的学习、制作与行动**为边界。阅读截至2026-10-13。记号：F=论文 HTML 正文含方法/结果/局限读过；A=作者摘要；R=开源 repo README/目录/指定源码读过；X=本地可复现实测（**本轮 X=0**）。学术状态仅在正式会场/期刊页面核实时写已发表；arXiv 只写预印本。

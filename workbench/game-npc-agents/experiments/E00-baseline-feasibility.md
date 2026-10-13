@@ -2,7 +2,7 @@
 
 **第三轮运行前修订：** 用户要求撤出竞赛中心、依据领域重要问题并全链路本地。E00从未运行；本次是执行前的候选/约束更新，不是看到模型结果后修改读数。前版可从Git历史追溯。
 
-- **状态：** PLANNED。完整门槛未通过；未运行模型，实际GPUh=0。
+- **状态：** VOID / superseded（2026-10-14 用户要求取消此旧“LIGHT单一进入任务”入口的执行优先级；从未运行，非实验证伪）。
 - **类型：** REPRO / environment and measurement gate，不是新颖性实验。
 - **对应：** D1–D4驻留；[问题谱系](../knowledge/PROBLEM_GENEALOGY.md)与[当前探索入口](../EXPLORATION_ENTRY.md)，尚无C##/P##。
 - **问题：** 哪个已存在的自然角色任务，能在授权单节点上以本地NPC/伙伴/反馈形成可审计、具有研究意义的互动闭环？
@@ -17,3 +17,7 @@
 ## 结果
 
 没有本实验模型结果。E01的历史源码检查不等于E00通过，也不支持NPC行为假说。
+
+
+## 2026-10-14 后续决策
+该卡是此前用户授权下的具体运行前草案；用户现在明确否决其作为整个 Game NPC workbench 的默认主线。本实验**没有被执行**，不含真实GPU/模型结果，故归档为 VOID/superseded 而不是负结果。保留原问题、设计、决策表作为过程资产；下一研究入口在 [knowledge/DOMAIN_ATLAS](../knowledge/DOMAIN_ATLAS.md) 与 [EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)。

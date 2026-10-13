@@ -1,6 +1,6 @@
 # E05：游戏 NPC 行为学习基线与评价构念准入（2026-10-13）
 
-- **状态：** PLANNED；无实际模型推理/训练/游戏运行。
+- **状态：** VOID / superseded（2026-10-14 用户要求取消此旧“共享NPC行为训练”入口的执行优先级；从未运行，非实验证伪）。
 - **类型：** REPRO / MEASUREMENT 建设；不预设新方法或论文想要看到的失败。
 - **对应：** Trainable, Designer-Controllable Game NPCs territory；D1–D4。无新的 C##、P##，旧 E03/E04 已撤主优先级。
 - **问题：** 能否在开放的真实 NPC 行为任务中，在可负担的本地训练成本下，复现已发表系统的行动、角色行为和任务表现，并验证哪些行为评价能反映可执行后果而非内部训练指标？
@@ -15,3 +15,7 @@
 
 ## 当前结果
 无。已知 PCSP 作者自己报告独立 probe 不支持 InfoNCE 对外部行为的显著优势，这是**源论文/代码公开结果，不是我们复现**。E05 是接下来进行实际驻留的运行前计划。
+
+
+## 2026-10-14 后续决策
+该卡是此前用户授权下的具体运行前草案；用户现在明确否决其作为整个 Game NPC workbench 的默认主线。本实验**没有被执行**，不含真实GPU/模型结果，故归档为 VOID/superseded 而不是负结果。保留原问题、设计、决策表作为过程资产；下一研究入口在 [knowledge/DOMAIN_ATLAS](../knowledge/DOMAIN_ATLAS.md) 与 [EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)。

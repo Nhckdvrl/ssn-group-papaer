@@ -1,40 +1,49 @@
-# Game NPC Agents｜游戏内自主角色的学习、可控制行为与实际部署
+# Game NPC Agents｜游戏世界中的自主角色：能力、训练、安全与社会系统
 
-**PROPOSED；2026-10-13 用户再次明确限定为游戏 NPC Agent，撤回旧“目标保持 vs 旧计划”主切口。** 本次是用户驱动的科学入口修改，不改变其他 workbench 的 ACTIVE 状态。尚无新模型/环境训练结果。
+**状态：PROPOSED。2026-10-14 按用户要求恢复真正开放的 NPC Agent 科研空间。** 不再固定“目标 vs 旧计划”或“只研究可训练的行为控制”为唯一主线；安全、人格漂移、游戏经济/多智能体攻击是同等正当的研究板块。未改变其他工作台、全局 ACTIVE 分配。
 
-## 我们研究的是谁
-游戏世界中的 **非玩家控制角色（Non-Player Characters）**：RPG/开放世界居民、互动社会 NPC、队友、敌人、战斗与剧情角色。他们从游戏真实状态和有限感知得到信息，通过可执行动作/言语影响游戏；可以拥有身份/设计者给定意图/可学习策略，与真实或模拟玩家共处。
-- **不是：** 训练一个 agent 通关游戏/刷新游戏最高分，或单纯在聊天界面模仿动漫角色。
-- **可以借鉴：** Game-playing RL/模仿学习、角色扮演 LLM 的后训练和多智能体学习，但只有返回 **NPC 本身的行为控制、设计制作或真实互动**，才成为本工作台实验。
-- **不预设：** NPC 每帧必须用 LLM；底层行为树/小政策可与本地 LLM 的高层感知、对话、策略生成协作。
+## 科学对象
+研究**实际游戏中的 Non-Player Characters**：剧情/RPG 角色、生活模拟居民、玩家队友与敌对角色、虚拟世界中的商人/生产者/组织/群体。角色通过对话、感知、记忆、决策和实际行动影响玩家、其他 NPC 或游戏规则/经济。模型可以是 LLM/VLM、小策略网络、符号控制器或它们的组合。
+- 不是单独训练 AI 通关游戏（player agent），也不是没有可玩机制的角色聊天 benchmark；相关论文**可以提供迁移方法**，但须解释回游戏内 NPC 的科学意义。
+- 不规定每篇 NPC 研究都必须同时实现 3D、低级 motor action、符号世界或玩家实验。研究结论必须精确对应所检验的交互/世界/玩家后果。
+- **剧情授权的谎言 ≠ 安全违规；经历带来的合理角色成长 ≠ 人格被劫持；规则内博弈 ≠ 利用世界系统漏洞。** 这三条直接决定实验真值。
 
-## 2026-10-13 新领域锚点
-我们关心：**怎样以可负担的训练与设计成本，获得在真实游戏中可执行、可修改、可复用而且符合创作意图的 NPC 行为？**
-EA 的 [Augmenting Game AI with Deep RL](https://arxiv.org/html/2606.20210v1) 针对 FC25 守门员/Battlefield 6 兵种列七项生产要求（可信、可控、快速训练、模块化、易维护、可纠错、运行时约束），这属于直接 NPC 研究，不是游戏通关 benchmark。KRAFTON [PUBG Ally](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/) 展示本地小模型高层交互与实时行为树双层架构；它自称 CPC，是紧邻但不代表传统所有 NPC。
-**这些是问题的重要性锚点，不是证明我们的 idea 新颖或“游戏 NPC 只能 RL”。**
-
-## 研究空间（不是四个已经选定的论文方案）
-| 子方向 | 真正的科学压力 | 最直接的参照 |
+## 领域全景：八片可独立演化的矿区
+| 板块 | 自然、重要的问题 | 知识库 |
 |---|---|---|
-| **学习可控的角色行为**（优先驻留） | 从有限设计师反馈/示范/行为约束训练，既不只是获胜也不只是性格句子 | EA 2026、Direct Behavior Specification、PCSP、UBCL、MultiGAIL |
-| **快速修改与迁移已学 NPC** | 更新一个角色动作/游戏规则后不毁掉旧能力；多角色可复用而不每人从零训练 | EA 2026、continual RL、共享条件策略、NeurIPS2026 Event-triggered diversity |
-| **玩家/伙伴交互中的适应** | 面对不同真实玩家的策略、需求、合作关系执行有用的行动 | KRAFTON Ally、GAMMA、Hypothetical Minds（角色/玩家映射须明确） |
-| **LLM↔游戏策略↔引擎分工** | 语言理解/意图如何成为合法动作；什么必须快执行，怎样评估完整行动成本 | PUBG Ally、LIGHT/Dragon、ReactiveGWM（视频世界模型分支） |
+| A 角色决策和行为训练 | 如何学到可执行、多样、可编辑、创作者能控制的行动？ | [领域地图](knowledge/DOMAIN_ATLAS.md) / [训练前沿](knowledge/NATIVE_GAME_NPC_FRONTIER.md) |
+| B 游戏世界与 Agent 系统 | 高层理解怎样与事实、合法游戏动作、快速策略、玩家互动形成闭环？ | [领域地图](knowledge/DOMAIN_ATLAS.md) |
+| C NPC 交互与社会协作 | NPC 之间/与玩家怎样沟通、协作、背叛、改变关系和做出真实选择？ | [领域地图](knowledge/DOMAIN_ATLAS.md) |
+| D 长期记忆、身份与人格漂移 | 角色什么时候该稳定、应该成长，什么时候发生无依据/受攻击的偏离？ | [人格与记忆](knowledge/PERSONA_DRIFT.md) |
+| E **NPC 安全、攻击与防御** | 玩家/恶意 NPC 能否劫持角色、越过剧情权限、污染记忆、改变规则或滥用工具？ | [攻击面与证据](knowledge/NPC_SECURITY.md) |
+| F **多 NPC 经济、系统性攻击** | 有贸易/货币/信誉/供求的游戏社会中如何出现诈骗、价格波动、协同行为、制度失效？ | [游戏经济与制度](knowledge/GAME_ECONOMY.md) |
+| G 叙事、欺骗与玩家体验 | 可预期的故事承诺、合法侦查/谎言、玩家能动性、信任和有意义的后果如何共存？ | [领域地图](knowledge/DOMAIN_ATLAS.md) |
+| H 具身/视频/语音、实时部署 | 视觉世界、语音实时互动、多 NPC 扩展与端到端成本怎样限定能力？ | [系统/资产](BASELINES.md) |
 
-**优先调查的广义 territory：** Trainable and Designer-Controllable Game NPC Behavior。尚未冻结某个损失函数、benchmark、新 architecture 或论文故事。选“小问题”前先复现真实 NPC 行为学习底座，读透近邻方法与评估，再从实际现象形成 idea。此前 E03/E04 特定实验被用户否决为主线，仅保留历史。
+**八个方向不是八个预定实验，也不要求必须做全。** 不按旧“哪条方向最容易跑”的便利性强行选题；优先从顶会/游戏研究原问题、最新强近邻、可复现的自然游戏系统和信息量高的实验逐步收敛。安全与经济不会被强行归入训练分支。
 
-## 入口
-| 任务 | 文件 |
+## 最有分量的新阅读（原始出处）
+- [ProvSec 2025 NPC secret extraction](https://arxiv.org/abs/2508.19288)：游戏 NPC 遭受玩家对抗输入，正文仅单个角色/30 条单轮测试，值得延伸但**不能冒领发现“首次可泄密”**。
+- [KDD 2025 MMO economic simulation](https://arxiv.org/html/2506.04699v1)：网易伏羲/USTC 等在 MMO 经济里做生产、拍卖与 P2P 交易；正文含结构动作、30 agents×200 steps、代码归档入口。
+- [COLING 2025 RoleBreak](https://aclanthology.org/2025.coling-main.494/) 与 [ACL 2026 Dynamic Persona Coherence](https://aclanthology.org/2026.acl-long.1336/)：角色受攻击的失真、身份稳定与正常心理变化均有直接先验。
+- [CHI 2024 游戏里的欺骗与玩家信任](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)：作者观察到有意谎言与无意幻觉在玩家意义中不同。
+- [NeurIPS 2024 AgentDojo](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html)、[ICLR 2025 ASB](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5750f91d8fb9d5c02bd8ad2c3b44456b-Abstract-Conference.html)：通用 agent 攻防基线，**并非已验证的游戏 NPC 攻击实验**。
+
+## 现在的研究入口
+| 文件 | 为什么先读 |
 |---|---|
-| 最重要：原生游戏 NPC 论文、审稿尺度、竞争近邻 | [knowledge/NATIVE_GAME_NPC_FRONTIER.md](knowledge/NATIVE_GAME_NPC_FRONTIER.md) |
-| 领域问题与训练方案的探索地图 | [knowledge/METHOD_TERRITORIES.md](knowledge/METHOD_TERRITORIES.md) |
-| 开放研究入口、真实可证伪 pilot | [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) |
-| 公开代码和无需云 API 的可执行性 | [BASELINES.md](BASELINES.md)、[LOCAL_FIRST.md](LOCAL_FIRST.md) |
-| 原生基线的运行前准入与实测 | [experiments/E05-native-npc-baseline-gate.md](experiments/E05-native-npc-baseline-gate.md) |
-| 研究者自主行为与独立知识库 | [AGENTS.md](AGENTS.md)、[knowledge/README.md](knowledge/README.md) |
-| 历史：目标 vs 计划假说、LLM 对话/竞赛 | [knowledge/GOAL_CONTROL_REVIEW.md](knowledge/GOAL_CONTROL_REVIEW.md)、[experiments/README.md](experiments/README.md) |
+| [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) | 不预设 paper story 的多方向研究入口及高信息量测量 |
+| [knowledge/DOMAIN_ATLAS.md](knowledge/DOMAIN_ATLAS.md) | NPC 类型×科研构念×相关领域方法的整体地图 |
+| [knowledge/NPC_SECURITY.md](knowledge/NPC_SECURITY.md) | NPC 对抗交互、权限/秘密/记忆污染、攻击与剧情玩法的边界 |
+| [knowledge/GAME_ECONOMY.md](knowledge/GAME_ECONOMY.md) | **直接游戏经济**KDD2025 / AIIDE2008 vs 2026 agent 市场攻击的证据距离 |
+| [knowledge/PERSONA_DRIFT.md](knowledge/PERSONA_DRIFT.md) | 角色一致性、动态成长、操纵和受攻击漂移 |
+| [knowledge/SOURCES_AND_STATUS_2026-10-14.md](knowledge/SOURCES_AND_STATUS_2026-10-14.md) | 会议身份、读到原文哪部分、哪些只看摘要 |
+| [BASELINES.md](BASELINES.md) / [LOCAL_FIRST.md](LOCAL_FIRST.md) | 各板块的真实本地资源/零付费 API 闭环 |
+| [AGENTS.md](AGENTS.md) / [knowledge/README.md](knowledge/README.md) | 本地科研 agent 自主探索/更新与防止局部锁定 |
+| [experiments/README.md](experiments/README.md) | 旧未运行窄切口已撤执行优先级，**当前没有强行指定下一个实验** |
 
-## 执行/证据状态
-本轮**仅公开论文/代码核验和 workbench 研究方向重整**；未复现新模型、未跑游戏 episode、未投入 GPU；L1+ 科学主张数为 0。所有论文按已读原文/摘要/源码区分；arXiv≠ICML/NeurIPS 录用。核心闭环 **0 付费推理 API**；研究室十余张 A100、8 张 PRO6000、实习单位16张 H20，弱互联/弱I/O：单卡/单节点独立训练与多种子/多环境并行，先以实际 CPU 环境步速、磁盘和模型时延定预算。
-
-用户已否决上一轮切口优先级，但**没有否决“目标与计划”问题本身**；它现为众多可能行为失败之一，不再锁死工作台。旧结果 E01 仅 CPU 源码合约检查（不是 NPC 行为结论），E02/E03/E04 未有科学结果。
+## 本轮决策与证据边界
+- **2026-10-14 / 用户：** 显式否决上两轮的狭小框架，要求 NPC 领域保持开放，并正面纳入安全、人格漂移、游戏多 Agent 经济攻击。
+- **2026-10-14 / agent：** 整理开放研究领域；旧 E03/E04/E05 保留为未运行、被替换的实验卡；新知识库全部在本 workbench 内，不复制到外部 library；**不自动关闭或暂停此 workbench**。
+- **实证状态：** 没有新本地 NPC rollout/训练、没有实际攻防/经济试验或自己的 L1+ 科学发现。E01 仅旧 CPU 源码合约测试，非 NPC 科学结果。
+- 资源：研究室十余张 A100/8 张 RTX PRO 6000、实习单位 16 张 H20；跨节点通信/I/O 很差。研究默认 **全部本地、0 付费推理 API**，多卡用于独立实验而非强行大规模 DDP。来源、数据与实习资产授权彼此独立。研究纪律继承 [根 AGENTS](../../AGENTS.md)、[EXECUTION](../EXECUTION.md)。
