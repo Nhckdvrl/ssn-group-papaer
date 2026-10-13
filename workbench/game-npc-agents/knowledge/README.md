@@ -1,25 +1,17 @@
-# 游戏NPC Agent专属知识库
+# 游戏 NPC Agent 专属知识库｜2026-10-13 用户第二次领域校准
 
-2026-10-13第四轮：探索入口已经选定为**角色目标承诺与计划适应**。不再机械同时执行旧六方向列表，也不返回CPDC牵引的工具探针。
+**研究对象只有游戏世界中非玩家控制角色**，不是单独通关的 game-playing agents / 仅靠 prompt 模仿人物的聊天机器人。研究 game NPC 的训练、角色可控行动、多角色行为、与玩家互动和真正的部署成本；高级 LLM 可供训练/低频决策，快策略可由其它政策执行。
 
-## 当前必须先读
+## 当前读取入口
+1. **[NATIVE_GAME_NPC_FRONTIER.md](NATIVE_GAME_NPC_FRONTIER.md)**：EA、PCSP、UBCL、Human-Like tactical bots、MultiGAIL、KRAFTON、NeurIPS2026、世界模型 NPC 的论文/源码证据、会议身份与真正创新所有权。
+2. **[METHOD_TERRITORIES.md](METHOD_TERRITORIES.md)**：围绕 designer feedback、共享策略与行为修复、LLM→可执行政策学习、真实玩家适应的探索空间。
+3. [POSITIONING.md](POSITIONING.md)：强最近邻和不能再次主张 novelty 的项目。
+4. [EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[BASELINES](../BASELINES.md)、[LOCAL_FIRST](../LOCAL_FIRST.md)、[E05](../experiments/E05-native-npc-baseline-gate.md)：零API与本地研究执行。
+5. [PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md) / [RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md) / [INDUSTRY_EVIDENCE](INDUSTRY_EVIDENCE.md)：领域历史、转折研究动作、产品说明；仍可引用，但不能覆写当前游戏 NPC 定义。
 
-1. [选定入口](../EXPLORATION_ENTRY.md)：问题、对象、配对分支、强基线、值得继续的结果。
-2. [目标控制研究谱系](GOAL_CONTROL_REVIEW.md)：研究动机、idea来源重建和最近邻限制；不能只读论文标题。
-3. [定向前沿复核](FRONTIER_CHECK.md)：NeurIPS2026及目标导向新近工作，阅读范围/track/无法取得全文分开。
-4. [定位表](POSITIONING.md)：什么已有人研究、什么才是可能的认识增量。
-5. [原生资产](../BASELINES.md)、[本地预算](../LOCAL_FIRST.md)、[E03](../experiments/E03-native-goal-entry.md)、[E04](../experiments/E04-goal-plan-interventions.md)：科学问题如何进入真实本地测量。
+## 旧路线保留但降级
+[GOAL_CONTROL_REVIEW](GOAL_CONTROL_REVIEW.md)、[FRONTIER_CHECK](FRONTIER_CHECK.md) 仍包含此前 goal-vs-plan、LLM narration、RPA / 竞争解释文献。它们是**潜在子问题/邻接研究**，用户明确拒绝将其独占 workbench；旧 E03/E04 从未运行，不是反证。CPDC 是历史源码/比赛，不再争夺科研主轴。
 
-## 仍然保留的领域认知
-
-[PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md)记录四类重要问题；[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)记录此前顶会定向阅读；[INDUSTRY_EVIDENCE](INDUSTRY_EVIDENCE.md)保留开发者证据。它们是背景，不覆盖当前的明确选择。
-
-[PAPER_LEDGER](PAPER_LEDGER.md)、[CORE_NOTES](CORE_NOTES.md)、[papers/](papers/)保留历史索引与KNUDGE/CDT/NCP/PCSP/CPDC逐篇资产。旧列表里的“未选定”描述以本文及EXPLORATION_ENTRY为准。未经复核的历史会场身份不自动升为已确认；最新核查以FRONTIER_CHECK为准。
-
-[MEASUREMENT](MEASUREMENT.md)仍管数据与证据卫生。玩家体验、语义角色质量和引擎任务结果不同，不以方便打分的量替换研究构念。
-
-## 阅读与更新
-
-P0标题来源；P1摘要；P2指定正文/附录或源码已读；P3正文/关键附录充分读并核对关键代码；P4实际复现/复算。每次写实际范围，不因页数或文档长升级。新GOAL_CONTROL_REVIEW并未宣称所有论文P3/P4。
-
-关键异常出现、准备做机制主张或声称novelty时，回到强近邻和最新论文重新核对；不是每次启动都强制读完整个领域。所有新认知和实验决策写在本workbench内部，不转移到外围library。
+## 阅读等级与证据记录
+P0 只题名；P1 原文摘要；P2 指定正文/源码片段；P3 正文＋关键附录/代码重要路径系统审阅；P4 本地结果复现。新文件单篇逐项标实际读到的内容，不允许把论文库的条数当精读结果。
+论文正文中作者的主张/数字、可公开核验的代码、我们自己的解释/猜想，必须分别注明；“训练分数高”不能自动等于玩家认为自然；“游戏角色行为”不能简单由聊天 judge给真值。持续查近邻，不为了新的损失函数找动机。

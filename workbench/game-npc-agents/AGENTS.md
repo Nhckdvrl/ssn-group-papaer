@@ -2,6 +2,12 @@
 
 继承根目录AGENTS与workbench/EXECUTION。2026-10-13用户纠正优先于旧计划：**CPDC不再是科学入口；付费API不是核心实验依赖。** 其他工作台状态和配额不变。
 
+## 游戏 NPC 对象校正（2026-10-13，人类指令优先）
+
+禁止把整个科研迁移成“Game-playing Agent 单独通关游戏”或仅对话的 Roleplay Chatbot；当前主研究 territory 是 **Trainable, Designer-Controllable Game NPC Behavior**。每次阅读先 [knowledge/NATIVE_GAME_NPC_FRONTIER.md](knowledge/NATIVE_GAME_NPC_FRONTIER.md)、[knowledge/METHOD_TERRITORIES.md](knowledge/METHOD_TERRITORIES.md)，再评估传统游戏 AI/RL、LLM 高层控制和真实游戏动作如何结合。不能把 EA 战斗/守门员 RL 的玩家体验目标直接等同语言NPC的社会交互；必须明确 NPC 类型。
+
+旧“目标保持vs旧计划”只是自然失败之一，E03/E04已被用户撤主优先级、**未运行**。优先学习方法/训练和数据/行为可控条件的强近邻、真实 game engine 任务、同预算对照。无法从文献/开源原生行为场景证明重要性时，不为方便构造狭小题目并自行说服自己。
+
 ## 每次接手先读
 
 README → knowledge/PROBLEM_GENEALOGY → RESEARCH_CALIBRATION → INDUSTRY_EVIDENCE → LOCAL_FIRST → BASELINES → EXPLORATION_ENTRY → 最新logs、CLAIMS和实验。旧PAPER_LEDGER是入口资产，不是每篇论文已经深读或已核主会的证明。具体论文按对应阅读卡回到原文、附录、代码与过程材料。

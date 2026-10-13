@@ -58,3 +58,12 @@ NPC只能看到同样的局部可见信息。全状态+形式化目标规划器�
 Hypothetical Minds/MeltingPot、GAMMA/Overcooked、Collab-Overcooked是行动/伙伴适应近邻，资源事实见前轮[RESEARCH_CALIBRATION](knowledge/RESEARCH_CALIBRATION.md)。alem是新近协调性测量参考；NARRA/NCP/CDT是叙事/角色参照；它们不成为同时执行的六个工程项目。
 
 若LIGHT任务恢复失败，优先寻找支持同一“自己的目标+合法玩家改变世界”问题的公共资产。不要为了保持LIGHT名字从零写游戏，也不要因为某备用环境易跑就改回泛用MARL排名。
+
+
+## 2026-10-13 更正：直接游戏 NPC 训练资产优先级（覆盖上文旧“LIGHT首先”）
+上文原来围绕 goal-plan 的优先级是历史记录；**当前首选审核 PCSP 的真正 NPC 行为训练系统**，而不是“训练玩家通关”或只做 RPG 对话。详情见 [NATIVE_GAME_NPC_FRONTIER](knowledge/NATIVE_GAME_NPC_FRONTIER.md) 与 [E05](experiments/E05-native-npc-baseline-gate.md)。
+- [PCSP research/](https://github.com/yoosunghong/pcsp/tree/main/research)：PettingZoo Mini-Inzoi v3 角色状态和20行为；PPO/条件化策略、原始人设 train/test JSON、独立行为测试及 UE5 辅助。MIT 源码，作者已有代码但本机未跑；为第一动作学习复现候选，不冒称已录用大顶会。
+- [ccb/agent-sandbox](https://github.com/ccb/agent-sandbox)：UPenn 2026 的游戏 NPC 世界状态引擎/ReAct 与合法动作/规则。当前 README 支持 LLM_BASE_URL 可指向本地 vLLM；注意默认 OpenAI/Anthropic API 和各阶段文档不一，是跨 RPG/LLM 高层的补充系统，**非顶会强算法基线**。
+- [EA Augmenting Game AI](https://arxiv.org/html/2606.20210v1)、[modl.ai/Riot shooter](https://arxiv.org/abs/2501.00078)、[PUBG Ally技术](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/) 是行业/发表研究的重要**性能和行为控制标准**，但引擎/训练人类轨迹非公开，不许宣称可直接本地复现。
+- [ReactiveGWM v2](https://github.com/INV-WZQ/ReactiveGWM) 实际有视频权重+数据+训练，预设8 GPU/20k steps，弱I/O 主线不可直接复制；[WorldMind](https://github.com/TeaWhiteBro/WorldMind) README 仍在准备开放代码权重。
+**任何系统正式运行前：** 固定最新 repo git sha/数据与模型revision；核对只有本地明确端点、不能回退云 API；测 CPU env-step，实际 VRAM/吞吐/模型高层调用频率；区分游戏状态、角色行动、聊天、自动judge和真人反馈，不允许 “Game Agent胜率上升”直接冒充游戏 NPC 玩家体验。

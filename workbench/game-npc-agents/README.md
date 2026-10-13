@@ -1,46 +1,40 @@
-# Game NPC Agents｜目标可以坚持，计划必须能改
+# Game NPC Agents｜游戏内自主角色的学习、可控制行为与实际部署
 
-**状态：PROPOSED；2026-10-13 用户要求完成选题准备并选定探索切口。已选择本工作台的探索优先级，不改变全局 ACTIVE 分配。**
+**PROPOSED；2026-10-13 用户再次明确限定为游戏 NPC Agent，撤回旧“目标保持 vs 旧计划”主切口。** 本次是用户驱动的科学入口修改，不改变其他 workbench 的 ACTIVE 状态。尚无新模型/环境训练结果。
 
-## 已选定的探索切口
+## 我们研究的是谁
+游戏世界中的 **非玩家控制角色（Non-Player Characters）**：RPG/开放世界居民、互动社会 NPC、队友、敌人、战斗与剧情角色。他们从游戏真实状态和有限感知得到信息，通过可执行动作/言语影响游戏；可以拥有身份/设计者给定意图/可学习策略，与真实或模拟玩家共处。
+- **不是：** 训练一个 agent 通关游戏/刷新游戏最高分，或单纯在聊天界面模仿动漫角色。
+- **可以借鉴：** Game-playing RL/模仿学习、角色扮演 LLM 的后训练和多智能体学习，但只有返回 **NPC 本身的行为控制、设计制作或真实互动**，才成为本工作台实验。
+- **不预设：** NPC 每帧必须用 LLM；底层行为树/小政策可与本地 LLM 的高层感知、对话、策略生成协作。
 
-> **玩家改变游戏局势后，NPC 能否坚持自己的目标，同时放弃失效的手段，并在目标已经实现时停止旧行动？**
+## 2026-10-13 新领域锚点
+我们关心：**怎样以可负担的训练与设计成本，获得在真实游戏中可执行、可修改、可复用而且符合创作意图的 NPC 行为？**
+EA 的 [Augmenting Game AI with Deep RL](https://arxiv.org/html/2606.20210v1) 针对 FC25 守门员/Battlefield 6 兵种列七项生产要求（可信、可控、快速训练、模块化、易维护、可纠错、运行时约束），这属于直接 NPC 研究，不是游戏通关 benchmark。KRAFTON [PUBG Ally](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/) 展示本地小模型高层交互与实时行为树双层架构；它自称 CPC，是紧邻但不代表传统所有 NPC。
+**这些是问题的重要性锚点，不是证明我们的 idea 新颖或“游戏 NPC 只能 RL”。**
 
-研究的是 **NPC 的目标承诺与计划适应是否真正分离**。不是人格提示/工具调用竞赛，不是再做一个通用记忆模块，也不是预先宣称存在“稳定性—灵活性权衡”。目前选定的是值得驻留的研究问题，不是已经验证的新发现或论文标题。
+## 研究空间（不是四个已经选定的论文方案）
+| 子方向 | 真正的科学压力 | 最直接的参照 |
+|---|---|---|
+| **学习可控的角色行为**（优先驻留） | 从有限设计师反馈/示范/行为约束训练，既不只是获胜也不只是性格句子 | EA 2026、Direct Behavior Specification、PCSP、UBCL、MultiGAIL |
+| **快速修改与迁移已学 NPC** | 更新一个角色动作/游戏规则后不毁掉旧能力；多角色可复用而不每人从零训练 | EA 2026、continual RL、共享条件策略、NeurIPS2026 Event-triggered diversity |
+| **玩家/伙伴交互中的适应** | 面对不同真实玩家的策略、需求、合作关系执行有用的行动 | KRAFTON Ally、GAMMA、Hypothetical Minds（角色/玩家映射须明确） |
+| **LLM↔游戏策略↔引擎分工** | 语言理解/意图如何成为合法动作；什么必须快执行，怎样评估完整行动成本 | PUBG Ally、LIGHT/Dragon、ReactiveGWM（视频世界模型分支） |
 
-同一角色、同一动机、同一段实际经历，在游戏状态处建立配对分支：局势不变；玩家正常互动但不影响目标；旧路线失效而原目标仍可达；玩家已经实现该目标。看角色的真实后续行动，而非仅看它怎样解释自己。合法替代路径不罚，不把完成目标等同于照搬原示范。
+**优先调查的广义 territory：** Trainable and Designer-Controllable Game NPC Behavior。尚未冻结某个损失函数、benchmark、新 architecture 或论文故事。选“小问题”前先复现真实 NPC 行为学习底座，读透近邻方法与评估，再从实际现象形成 idea。此前 E03/E04 特定实验被用户否决为主线，仅保留历史。
 
-## 当前唯一执行入口
-
-| 文件 | 作用 |
+## 入口
+| 任务 | 文件 |
 |---|---|
-| [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) | **选题决定、具体研究对象、竞争解释、什么结果值得继续** |
-| [knowledge/GOAL_CONTROL_REVIEW.md](knowledge/GOAL_CONTROL_REVIEW.md) | LIGHT/Dragon、行为控制、goal drift、goal-directedness、重规划与新近顶会的研究谱系 |
-| [knowledge/FRONTIER_CHECK.md](knowledge/FRONTIER_CHECK.md) | NeurIPS 2026 等定向补查；正文范围、track 与未获取来源明确分开 |
-| [BASELINES.md](BASELINES.md) / [LOCAL_FIRST.md](LOCAL_FIRST.md) | 固定上游代码、自然数据来源、完整本地实验链与成本 |
-| [experiments/E03-native-goal-entry.md](experiments/E03-native-goal-entry.md) | **PLANNED**：自然角色任务与最小强基线测量 |
-| [experiments/E04-goal-plan-interventions.md](experiments/E04-goal-plan-interventions.md) | **PLANNED**：在真实线索基础上区分目标、状态和旧计划的作用 |
-| [knowledge/README.md](knowledge/README.md) | 本工作台内部知识库；旧方向材料仍可追溯 |
-| [logs/2026-10-13-selection.md](logs/2026-10-13-selection.md) | 本轮做了什么、未做什么及证据边界 |
+| 最重要：原生游戏 NPC 论文、审稿尺度、竞争近邻 | [knowledge/NATIVE_GAME_NPC_FRONTIER.md](knowledge/NATIVE_GAME_NPC_FRONTIER.md) |
+| 领域问题与训练方案的探索地图 | [knowledge/METHOD_TERRITORIES.md](knowledge/METHOD_TERRITORIES.md) |
+| 开放研究入口、真实可证伪 pilot | [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) |
+| 公开代码和无需云 API 的可执行性 | [BASELINES.md](BASELINES.md)、[LOCAL_FIRST.md](LOCAL_FIRST.md) |
+| 原生基线的运行前准入与实测 | [experiments/E05-native-npc-baseline-gate.md](experiments/E05-native-npc-baseline-gate.md) |
+| 研究者自主行为与独立知识库 | [AGENTS.md](AGENTS.md)、[knowledge/README.md](knowledge/README.md) |
+| 历史：目标 vs 计划假说、LLM 对话/竞赛 | [knowledge/GOAL_CONTROL_REVIEW.md](knowledge/GOAL_CONTROL_REVIEW.md)、[experiments/README.md](experiments/README.md) |
 
-## 为什么选这里
+## 执行/证据状态
+本轮**仅公开论文/代码核验和 workbench 研究方向重整**；未复现新模型、未跑游戏 episode、未投入 GPU；L1+ 科学主张数为 0。所有论文按已读原文/摘要/源码区分；arXiv≠ICML/NeurIPS 录用。核心闭环 **0 付费推理 API**；研究室十余张 A100、8 张 PRO6000、实习单位16张 H20，弱互联/弱I/O：单卡/单节点独立训练与多种子/多环境并行，先以实际 CPU 环境步速、磁盘和模型时延定预算。
 
-角色拥有自己的动机而不只是服从玩家，是 LIGHT/Dragon 的原生研究对象；设计者控制行为而不只最大化任务奖励，是 Direct Behavior Specification 的问题。游戏开发中的 GOAP、Ubisoft Teammates 和 KRAFTON 又都要求角色面对新局势作适当选择。学术与行业依据及边界见新综述，不用产品宣传证明模型效果。
-
-**已有工作很多，不能冒领：** Goal Drift 已研究工具性目标切换与模式延续；Everitt 等已区分任务能力与目标导向；Arghal 等已研究无用钥匙与内部地图/计划；Bayesian Partner Modelling 已研究推断正确却继续旧技能；经典 GOAP 更早已分离目标和计划。因此“NPC 会忘目标”“加状态表”“有时应该重规划”不构成新贡献。
-
-我们要从实际 NPC 交互中寻找能解释、预测这些不同失误的条件；若只复现上述认识，或简单强对照已覆盖全部现象，不包装为新 idea。
-
-## 首选底座与边界
-
-首选 **LIGHT 引擎 + 原有自然角色动机/任务**，不是从头造世界。代码固定为 `71a06cae8573048b1af41507ac52fe33b650fab3`。经典短任务保留本来的长度，局势变化用合法玩家事件实现。先研究目标含义和完成条件足够明确的自然任务；无法无歧义形式化的角色动机不硬打成错误标签。
-
-E03 必须验证数据、目标、事件与当前引擎确实对齐。官方 demo 只用于运行测试，不替代自然评测；`projects/quests` 也不等于 Dragon 完整复现包。若资产恢复成本不合理，换支持同一科学问题的公开底座，而非改回 CPDC 或另开通用多智能体提分项目。
-
-## 资源与实际进度
-
-核心实验默认 **零付费推理 API**。NPC 为本地开放权重，世界与主要评分为引擎，玩家干预先用合法脚本事件；自然交互扩展才增加独立本地伙伴。教师、记忆、裁判都不得偷偷调用云端。多 GPU 用于独立场景、模型和确认种子，不跨节点同步训练。
-
-**本轮完成：** 定向论文/近邻核查、选题决定、固定代码与来源核验、自然数据方案、强对照与预算方案。**未完成：** LIGHT 原生安装与任务恢复、模型推理、论文成绩复现、玩家研究；尚无新的科学主张。数据归档下载在当前环境受阻，具体源与待验证状态见 BASELINES，不虚构数据已读或 GPU 已跑。
-
-CPDC 保持历史材料；E02 仍 VOID/superseded。旧 E01 的源码检查不是 NPC 行为证据。后续允许根据实测改变具体假设，但不机械展开旧的六方向列表。
+用户已否决上一轮切口优先级，但**没有否决“目标与计划”问题本身**；它现为众多可能行为失败之一，不再锁死工作台。旧结果 E01 仅 CPU 源码合约检查（不是 NPC 行为结论），E02/E03/E04 未有科学结果。
