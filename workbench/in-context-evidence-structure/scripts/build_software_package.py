@@ -49,6 +49,8 @@ def sanitize(name, s):
     s = re.sub(r"/tmp/ices_models/", "models/", s)
     s = re.sub(r"subprocess\.check_output\(\[\s*['\"]git['\"],\s*['\"]rev-parse['\"],\s*['\"]HEAD['\"]\s*\],\s*text=True\)\.strip\(\)",
                "None", s)
+    s = re.sub(r",\s*['\"]git_head['\"]\s*:\s*None(?=\s*[}\)])", "", s)
+    s = re.sub(r"['\"]git_head['\"]\s*:\s*None\s*,\s*", "", s)
     s = s.replace("CACHE = Path('/home/xiang/.cache/huggingface/datasets/SetFit___sst5/default/0.0.0/e51bdcd8cd3a30da231967c1a249ba59361279a3')",
                   "CACHE = Path(os.environ.get('SST5_ARROW_DIR', Path.home() / '.cache/huggingface/datasets/SetFit___sst5/default/0.0.0/e51bdcd8cd3a30da231967c1a249ba59361279a3'))")
     if 'SST5_ARROW_DIR' in s and '\nimport os' not in s:

@@ -352,8 +352,7 @@ def main():
         'all_layer_consumption':consumption,'query_layer_consumption':query_consumption,
         'training':False,'dtype':'float32','attention':'eager','python':platform.python_version(),
         'torch':torch.__version__,'transformers':transformers.__version__,
-        'elapsed_seconds':elapsed,'gpu_hours':elapsed/3600,
-        'git_head':None}
+        'elapsed_seconds':elapsed,'gpu_hours':elapsed/3600}
     (dest/'run.json').write_text(json.dumps(run,indent=2)+'\n');analyze(dest)
 
 

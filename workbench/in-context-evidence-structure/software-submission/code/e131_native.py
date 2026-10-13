@@ -261,7 +261,6 @@ def main():
         'num_layers': len(model.model.layers), 'dtype': 'float32', 'attention': 'eager', 'training': False,
         'python': platform.python_version(), 'torch': torch.__version__, 'transformers': transformers.__version__,
         'elapsed_seconds': elapsed, 'gpu_hours': (elapsed / 3600) * scale_num_devices(model),
-        'git_head': None,
         'intervention': 'prefix normalized edge knockout and limited allowed-edge restoration, no donors'}
     (dest / 'run.json').write_text(json.dumps(run, indent=2) + '\n')
     analyze(dest)

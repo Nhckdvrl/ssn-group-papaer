@@ -284,8 +284,7 @@ def main():
         'all_layer_consumption': consumption, 'num_layers': len(model.model.layers), 'training': False,
         'dtype': 'float32', 'attention': 'eager', 'pristine_cache_scope': 'deepcopy data_ptr and sequence length checked',
         'python': platform.python_version(), 'torch': torch.__version__, 'transformers': transformers.__version__,
-        'elapsed_seconds': elapsed, 'gpu_hours': elapsed / 3600,
-        'git_head': None}, indent=2) + '\n')
+        'elapsed_seconds': elapsed, 'gpu_hours': elapsed / 3600}, indent=2) + '\n')
     analyze(dest)
 
 
