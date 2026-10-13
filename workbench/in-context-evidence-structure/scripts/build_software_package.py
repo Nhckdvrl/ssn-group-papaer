@@ -28,7 +28,16 @@ RESULTS = ['e123/*_confirmation/analysis.json', 'e123/*_confirmation/full_output
            'e120/*_confirmation/analysis.json', 'e121/*_confirmation/analysis.json', 'e121/*_confirmation/behavior.jsonl',
            'e125/summary.json', 'e125/*_confirmation/behavior.jsonl', 'e132/*_confirmation/analysis.json',
            'e132/*_confirmation/behavior.jsonl', 'e132/*_confirmation/preflight.json',
-           'e109/frozen_reconstruction_protocol.json']
+           ]
+
+
+def scrub(obj):
+    """Drop repository commit identifiers from result records."""
+    if isinstance(obj, dict):
+        return {k: scrub(v) for k, v in obj.items() if not k.startswith('git') and 'commit' not in k}
+    if isinstance(obj, list):
+        return [scrub(v) for v in obj]
+    return obj
 
 
 def model_name(path):
@@ -45,10 +54,17 @@ def sanitize(name, s):
     if 'SST5_ARROW_DIR' in s and '\nimport os' not in s:
         s = s.replace('import hashlib\n', 'import hashlib\nimport os\n', 1)
     if name == 'e56_query_adapter':
+        s = '"""Shared helpers: the prompt header, the Measuring Hate Speech comment pools and the context builder."""' + s[s.index('"""', 3) + 3:]
         # Only the prompt header, the Measuring Hate Speech pools and the context builder are used; the adapter
         # training entry point of this early exploratory script is not part of any experiment in the paper.
         s = s[:s.index('\ndef main():')] + '\n'
+    if name == 'e109_reconstruction_audit':
+        # Only summarize() is used by the engines and the figure script.
+        s = s[:s.index('\ndef main')] + '\n' if '\ndef main' in s else s
     if name == 'e123_wave_report':
+        # Only output_metrics() is used (by gemma_full_output.py, which applies to any E123 run); the original
+        # wave report also needed run records and plotting directories that are not part of this package.
+        s = s[:s.index('\ndef collect')] + '\n' if '\ndef collect' in s else s
         s = re.sub(r"\n\s*assert run\['script_sha256'\] == '[0-9a-f]+'\n",
                    "\n            # The engine hash recorded at run time is kept in the audit; see CODE_PROVENANCE.md.\n", s)
     return s
@@ -72,8 +88,9 @@ def main():
             dest = PKG / 'results' / Path(f).relative_to(ROOT / 'results')
             dest.parent.mkdir(parents=True, exist_ok=True)
             if f.endswith('.json'):
-                dest.write_text(re.sub(r'"model": "([^"]*)"', lambda m: '"model": "models/%s"' % model_name(m.group(1)),
-                                       Path(f).read_text()))
+                data = scrub(json.loads(Path(f).read_text()))
+                text = json.dumps(data, indent=1)
+                dest.write_text(re.sub(r'"model": "([^"]*)"', lambda m: '"model": "models/%s"' % model_name(m.group(1)), text) + '\n')
             else:
                 shutil.copy(f, dest)
             n += 1

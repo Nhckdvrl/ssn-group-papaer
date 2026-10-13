@@ -1,12 +1,4 @@
-"""E56: can a module that only changes WHERE the answer position reads (attention queries) make in-context evidence
-source-conditional?  Frozen model; trained low-rank modules; interaction-type perspectives on real comments.
-usage: e56_query_adapter.py --model Qwen/Qwen3-8B --mode query|resid|query_shuffled|none --out JSON
-  query          : delta added to q_proj output at the last position for every layer in [L1, L)  (reads only)
-  resid          : delta added to the residual stream at the last position after layer L1 (can write anything)
-  query_shuffled : as 'query', trained on contexts whose annotator names are shuffled per demo (no source info)
-  none           : evaluation only (default model; also single-source upper bound)
-Data: comments targeting race vs gender (Measuring Hate Speech), split into train / test pools.
-A: race -> toxic, gender -> safe; B: race -> safe, gender -> toxic.  Loss: CE on the source-correct label word."""
+"""Shared helpers: the prompt header, the Measuring Hate Speech comment pools and the context builder."""
 import argparse, copy, json
 from pathlib import Path
 import numpy as np, torch

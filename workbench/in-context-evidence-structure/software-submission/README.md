@@ -60,7 +60,7 @@ python code/run_gemma.py code/e123_natural_source_function_policy.py --model mod
 | `e122_source_preserving_formation.py` (with `e118_mistral_materials.py`, `e119_criterion_scale.py`) | two-aspect reviews (Appendix G) |
 | `e131_mechanism.py`, `e131_native.py`, `e131_function.py`, `e131_dispatch.py` | the same engines for Qwen3-32B and Llama-3.1-70B |
 | `run_gemma.py` | runs any engine on Gemma-2, with the beginning-of-sequence token prepended to the prompt |
-| `e123_wave_report.py`, `gemma_full_output.py` | full-vocabulary accuracy summaries of the policy runs |
+| `e123_wave_report.py`, `gemma_full_output.py` | full-vocabulary accuracy summary of any policy run: `python code/gemma_full_output.py results/e123/<run>` |
 | `flip_single_source.py`, `instruction_control.py` | analyses added after the confirmation runs (marked in the appendix) |
 | `paper_figures_v2.py` | all figures and appendix tables |
 
