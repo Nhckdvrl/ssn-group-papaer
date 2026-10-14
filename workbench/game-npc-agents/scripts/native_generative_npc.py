@@ -21,6 +21,7 @@ def main():
     ap.add_argument('--arms',nargs='+',choices=['seeded','control'],default=['seeded'])
     ap.add_argument('--steps',type=int,default=80)
     ap.add_argument('--max-calls',type=int,default=40)
+    ap.add_argument('--cognition',choices=['decide','local'],default='decide')
     args=ap.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     src_sha=subprocess.check_output(['git','-C',str(args.source),'rev-parse','HEAD'],text=True).strip()
     assert src_sha=='d7b872e396df2ef05ff8391de53e0563ca698cf3'
@@ -39,8 +40,11 @@ def main():
         'world_sha256':hashlib.sha256(Path(WORLD_DATA_BOIL).read_bytes()).hexdigest(),
         'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'model':str(args.model),'model_revision':args.model.name,'seeds':args.seeds,'arms':args.arms,
-        'steps':args.steps,'max_calls':args.max_calls,'planner':'original MockPlanner',
-        'reflector':None,'embedding':None,'importance_scoring':'not wired: per-action-only client',
+        'steps':args.steps,'max_calls':args.max_calls,'cognition':args.cognition,
+        'planner':'original LLMPlanner, local' if args.cognition=='local' else 'original MockPlanner',
+        'reflector':'original LLMReflector, local' if args.cognition=='local' else None,
+        'embedding':None,
+        'importance_scoring':'original score_memories, local' if args.cognition=='local' else 'not wired: per-action-only client',
         'decide':'original scoped per-verb tools, local model','source_schedule_commands_forced':False,
         'world_or_recipe_changed':False,'cloud_calls':0})
     start=time.monotonic()
@@ -58,7 +62,13 @@ def main():
             folder=args.out/f'{arm}_s{seed}';folder.mkdir()
             base.seed=seed;base.calls=[];base.trace_file=folder/'model_calls.jsonl'
             random.seed(seed);np.random.seed(seed)
-            brain=BoundedLocalBrain(base)
+            if args.cognition=='local':
+                from local_component_client import LocalComponentClient
+                brain=LocalComponentClient(base,args.max_calls,'decide')
+                planner_client=LocalComponentClient(base,args.max_calls,'plan')
+                reflector_client=LocalComponentClient(base,args.max_calls,'reflect')
+            else:
+                brain=BoundedLocalBrain(base);planner_client=reflector_client=None
             pw=build_penn_world(world_data=WORLD_DATA_BOIL)
             personas=_configure(pw.personas,seeded=arm=='seeded');name=personas[0]['name']
             captured={};records=[];depth=0;events=[];memories={};plans={};planner_sources={}
@@ -76,7 +86,8 @@ def main():
                     row={'command':command,'actor':getattr(actor,'name',None),'depth':current_depth,
                         'success':success,'material_delta':state_diff(before,after),'model_calls_before':before_calls,
                         'model_calls_after':len(base.calls),'brain_context':copy.deepcopy(brain.context),
-                        'failure':getattr(game.parser,'last_fail_message',None),'before':before,'after':after}
+                        'failure':None if success else getattr(game.parser,'last_fail_message',None),
+                        'before':before,'after':after}
                     records.append(row)
                     with (folder/'parser_calls.jsonl').open('a') as f:f.write(json.dumps(row,ensure_ascii=False)+'\n')
                     return success
@@ -86,7 +97,7 @@ def main():
             error=None;frames=[]
             try:
                 frames=simulate(pw.world_map,args.steps,personas=personas,build_world_fn=build_capture,
-                    llm_client=brain,embedding_client=None,planner_client=None,reflector_client=None,
+                    llm_client=brain,embedding_client=None,planner_client=planner_client,reflector_client=reflector_client,
                     extra_action_names=PENN_ACTION_VERBS,retrieval=_RETRIEVAL,
                     out_events=events,out_memories=memories,out_plans=plans,out_planner_sources=planner_sources,stop_when=stop)
             except Exception as exc:error=f'{type(exc).__name__}: {exc}'
@@ -99,9 +110,15 @@ def main():
                 'root_material_changes':sum(bool(r['material_delta']) for r in root),
                 'model_calls':len(base.calls),'prompt_tokens':sum(r['prompt_tokens'] for r in base.calls),
                 'completion_tokens':sum(r['completion_tokens'] for r in base.calls),
-                'frames':len(frames),'planner_sources':planner_sources,'cloud_calls':0,'scientific_increment':0}
+                'frames':len(frames),'planner_sources':planner_sources,
+                'calls_by_tool':{t:sum(r.get('tool',{}).get('name')==t for r in base.calls)
+                                for t in sorted({r.get('tool',{}).get('name') for r in base.calls if r.get('tool')})},
+                'cloud_calls':0,'scientific_increment':0}
             dump(folder/'frames.json',frames);dump(folder/'events.json',events);dump(folder/'memories.json',memories)
             dump(folder/'plans.json',plans);dump(folder/'summary.json',row)
+            dump(folder/'final_plans.json',{
+                n:c.agent.plan.to_primitive() for n,c in captured.get('chars',{}).items()
+                if getattr(getattr(c,'agent',None),'plan',None) is not None})
             summary.append(row);dump(args.out/'summary.json',summary);print(json.dumps(row,ensure_ascii=False),flush=True)
     dump(args.out/'runtime.json',{'wall_seconds':time.monotonic()-start,'cloud_calls':0})
 

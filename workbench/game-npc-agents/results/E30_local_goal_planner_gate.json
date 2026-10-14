@@ -1,0 +1,105 @@
+{
+  "seed": 3001,
+  "arm": "seeded",
+  "error": null,
+  "outcome": "boiled_then_drank",
+  "raw_drinks": false,
+  "safe_drinks": 1,
+  "root_parser_calls": 5,
+  "root_legal": 4,
+  "root_material_changes": 4,
+  "model_calls": 18,
+  "prompt_tokens": 11864,
+  "completion_tokens": 2148,
+  "frames": 5,
+  "planner_sources": {
+    "Nadia Okafor": "llm"
+  },
+  "calls_by_tool": {
+    "day_outline": 1,
+    "hourly_plan": 1,
+    "minute_plan": 2,
+    "record_insight": 3,
+    "salient_questions": 1,
+    "score_memories": 5
+  },
+  "cloud_calls": 0,
+  "scientific_increment": 0,
+  "runtime": {
+    "wall_seconds": 220.79611825500615,
+    "cloud_calls": 0
+  },
+  "manifest": {
+    "source_sha": "d7b872e396df2ef05ff8391de53e0563ca698cf3",
+    "world": "/home/xiang/.cache/game-npc-research/sources/agent-sandbox/godot-generative-agents/backend/penn/world_data_boil.yaml",
+    "world_sha256": "a4f4374869c9774a752c981b357028aba598f3d3c4f0a63dca0c3648d0bbd3c0",
+    "harness_sha256": "8157b2e4c80a120dc9e52c302be2f478fbfab1c85d306d1c155f9a7fa4cfa8f2",
+    "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "model_revision": "fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "seeds": [
+      3001
+    ],
+    "arms": [
+      "seeded"
+    ],
+    "steps": 80,
+    "max_calls": 80,
+    "cognition": "local",
+    "planner": "original LLMPlanner, local",
+    "reflector": "original LLMReflector, local",
+    "embedding": null,
+    "importance_scoring": "original score_memories, local",
+    "decide": "original scoped per-verb tools, local model",
+    "source_schedule_commands_forced": false,
+    "world_or_recipe_changed": false,
+    "cloud_calls": 0
+  },
+  "model_seconds": 97.62394404911902,
+  "initial_stops": {
+    "Nadia Okafor": [
+      {
+        "place": "Houston Hall",
+        "activity": "Arrive, settle at the meeting table, and monitor for signs of queasiness while waiting for the meeting to start.",
+        "emoji": "🪑",
+        "steps": 60,
+        "start_hour": 12
+      },
+      {
+        "place": "Houston Hall",
+        "activity": "Attend the scheduled meeting, staying hydrated only with the safe water from the sealed bottle.",
+        "emoji": "🗣️",
+        "steps": 60,
+        "start_hour": 13
+      }
+    ]
+  },
+  "final_stops": {
+    "Nadia Okafor": [
+      {
+        "place": "Houston Hall",
+        "activity": "Arrive, settle at the meeting table, and monitor for signs of queasiness while waiting for the meeting to start.",
+        "emoji": "🪑",
+        "steps": 60,
+        "start_hour": 12
+      },
+      {
+        "place": "Houston Hall",
+        "activity": "Arrive, settle at the meeting table, and monitor for signs of queasiness while waiting for the meeting to start.",
+        "emoji": "🪑",
+        "steps": 60,
+        "start_hour": 12
+      },
+      {
+        "place": "Houston Hall",
+        "activity": "Attend the scheduled meeting, staying hydrated only with the safe boiled water from the sealed bottle.",
+        "emoji": "💧",
+        "steps": 60,
+        "start_hour": 13
+      }
+    ]
+  },
+  "final_plan_revision": {
+    "Nadia Okafor": 1
+  },
+  "note": "Feasibility only; differing components and seed prevent causal comparison with E29. Original location validator removed unavailable places; original revision protects current stop."
+}

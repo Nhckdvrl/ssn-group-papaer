@@ -20,3 +20,6 @@
 Full删除biography三seed差+1.16/+2.58/+4.00，NoCons−14.55/−.37/+4.38，没有一致NoCons失稳结论；不筛seed。LIBERO-Para/GSR已有同义指令行动退化与重绑定强近邻，普通顺序敏感不是新科学增量。[public原生结果](../results/E26_public_semantic_utility.json)、[编码资格](../results/E26_semantic_encoding_gate.json)。E25正确训练分支待检查，0API。
 
 E25正确训练30iter分支DONE（64秒单CPU）：canonical NoCons84.997、Full83.850；reverse损失−11.344[−14.342,−8.400]、−8.447[−10.278,−6.701]；traits_only两者+4.179/+4.218。Full不显示独有顺序失稳，弱化I02该解释。两者reverse身体critical fraction也降低，但这是作者reward/健康指标不同，不能换primary给更好/更坏单一结论。[正确短pilot结果](../results/E26_corrected_pilot_semantic_utility.json)。新科学增量0。
+
+## POST-HOC：梯度路由与改写损失的交互（2026-10-14）
+已有正确编码seed42结果，配对Full−No的reward-change差：reverse +2.8976、persona簇95%[.4871,5.3894]；repeat+.1386[−.0330,.3427]；traits-only+.0390[−1.7543,1.7531]；action-cue+1.8282[−.1660,3.9416]。全部四项保留，不当预注册primary，也不把held-persona CI当训练seed方差。原总reward含作者style项：reverse时两policy critical-need fraction都下降，所以收益变化不是单纯生理损害。[事后结果](../results/E26_POST_HOC_route_interaction.json)。该正向线索引出E32的新预注册静态区分，不据此直接扩训练。

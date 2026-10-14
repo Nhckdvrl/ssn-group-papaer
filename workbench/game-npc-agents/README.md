@@ -25,10 +25,10 @@
 旧的 `RESEARCH_TERRITORIES.md` 与过时 `configs/entry_manifest.json` 已从当前 HEAD 清除。未执行且因用户明确变更选题而失效的 E00/E02–E05 实验卡也移出当前树：可在[历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)和 git 中追溯，**不是实验否定/科研失败**。E01 实际 CPU 源码检查、全部深读论文卡及领域安全/经济知识库保留。新的 E06 只是**PLANNED，未运行**。
 
 ## 实验与资源现状
-2026-10-14已跑通ActionCastle与LIGHT本地原生闭环。E14自然12图×3seed为266/273合法、36/36原作者目标event执行；E15意图差异被抽样噪声吸收。E20/E21各36双角色episodes完成，E22权限机制未获支持。PCSP E23/24确认公开编码批次混杂及原生utility影响，已有正确pool解决；E25正确编码三路30iter控制完成，η-only检索升但policy/utility同一。E26顺序敏感没有Full独有排序；E27支持真实code行为控制及环境信息并存；E28坐标机制pilot效应太小，负结果保留。E29同仓原生成式NPC本地完成boil多步骤物理目标（单episode、MockPlanner）。[结果与校对清单](results/README.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[日志](logs/2026-10-14.md)。**C01仍L1基线可行性，新科学增量仍0。**
+2026-10-14已跑通ActionCastle与LIGHT本地原生闭环。E14自然12图×3seed为266/273合法、36/36原作者目标event执行；E15意图差异被抽样噪声吸收。E20/E21各36双角色episodes完成，E22权限机制未获支持。PCSP E23/24确认公开编码批次混杂及原生utility影响，已有正确pool解决；E25正确编码三路30iter控制完成，η-only检索升但policy/utility同一。E26顺序敏感没有Full独有排序；E27支持真实code行为控制及环境信息并存；E28坐标机制pilot效应太小，负结果保留。E29/30同仓原生成式NPC完成boil物理目标；E30本地LLM规划/修订/评分/反思18calls，plan_source=llm（单episode）。[结果与校对清单](results/README.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[日志](logs/2026-10-14.md)。**C01仍L1基线可行性，新科学增量仍0。**
 
 ## 资产位置与重建
-模型复用HuggingFace缓存，完整rollout/LLM输入输出不进Git，位于本机 `/home/xiang/.cache/game-npc-research/runs/`；上游源码/paper分别在同缓存 `sources/` / `papers/`，commit与PDF hash见 `results/E08_sources.json`。用 `scripts/native_actioncastle.py` 和E07卡重跑；现有Conda fgvd配合隔离deps overlay，具体版本由每次manifest固定。用户已授权七节点全部GPU，07:00 Asia/Tokyo起本项目最多8卡，优先现有Conda/venv；零付费API与单节点优先见LOCAL_FIRST。
+模型复用HuggingFace缓存，完整rollout/LLM输入输出不进Git，位于本机 `/home/xiang/.cache/game-npc-research/runs/`；E32及新近邻资产另在 `/tmp/npc_*`，具体路径/hash见卡片；上游源码/paper分别在同缓存 `sources/` / `papers/`，commit与PDF hash见 `results/E08_sources.json`。用 `scripts/native_actioncastle.py` 和E07卡重跑；现有Conda fgvd配合隔离deps overlay，具体版本由每次manifest固定。用户已授权七节点全部GPU，07:00 Asia/Tokyo起本项目最多8卡，优先现有Conda/venv；零付费API与单节点优先见LOCAL_FIRST。
 
 ## 当前科学判断
 E09的literal-location与格式校对不能合并：Qwen32单句2/9→6/9经POST-HOC唯一房间审计仅5/9→6/9；Gemma原本9/9知自己位置但动作仍常非法。E10/E12的raw parser数包含递归，已独立重建root归因，不把子命令当新模型选择。E14首2条speech载荷遗漏是本地adapter错误，通信证据降级后全量重跑，不归因NPC失败。强近邻新加入ReflAct、ReFract、FAccT2026 Identity Overrides Incentives；不冒领goal-state reflection、role gate、Persona×payoff交互。没有建立新的策略/人格科学主张。

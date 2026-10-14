@@ -86,3 +86,9 @@
 **本地事实：** E29原CPU16/16；单Qwen27B episode原工具6calls/5合法，安全水首次饮用。初perform声称boiling但材料不变，缺锅make被拒，后get/activate/make/drink才产生真实后果。MockPlanner/无reflector/embedding/importance scorer；真实工具只有decide。原failure字段stale与adapter不记上游UsageLedger均注明。
 **解释：** 人物表达、活动描述、可执行计划和最终物理后果需要按各自来源判定；此episode说明原生闭环可行，并非“言行不一致”新证据。
 **未排除：** 没有还原LLMPlanner/对话outcome/reflector完整链，不能据此判断原完整系统角色目标控制。memory/boil、能力wish及异步deadline原作者已有实验；不重复制造相同结果。
+
+## E30–32后续校对：目标来源与正向角色控制
+**源代码事实：** 原planner已验证地点、过滤未知目的地，空计划才fallback；对话承诺写PLAN memory并修订未来日程。作者已有对话循环／承诺丢失修复，不冒领。LIGHT原RL action_seq得分、OOGraph successful event与长期自然动机分属不同层；StealObjectEvent即使失败也可以executed=True。
+**本地事实：** E30恢复local LLMPlanner、修订、评分和反思，18calls、4/5合法、首次饮水safe，plan_source=llm；未知Student Union被原校验过滤。E31全1343双方任务配对中156同物品，145有≤4步event见证、118三个固定seed均有；这不是长期动机满足率。E32固定1200states，Full等义改写JS .0417／No .0752，跨角色JS保留90.7%，选择性差−.479[−.638,−.316]。
+**解释：** Full并非只在整体忽略人物输入；其稳健性是应保留的正向证据。完整计划链可追踪，但一次成功不支持人格机制。新定位见PERSONA_ALGEBRA、NCP_BENCH、CITYSIM论文卡。
+**未排除：** E32只有一个短训练seed，跨角色同时改变多项属性；整套原型识别、身体相关性、语言压缩均能产生当前模式。C属性同时进入style和social reward，不能只计style或把高C等同唯一正确行动。C01仍L1。

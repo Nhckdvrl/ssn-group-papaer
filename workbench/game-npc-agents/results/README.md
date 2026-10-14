@@ -30,3 +30,9 @@
 | E29 | [原生成式NPC物理目标准入](E29_native_generative_npc_gate.json)，CPU16/16，单local episode安全饮用；6call、5/6合法，非人格机制证据 |
 
 E06是统领基线准入卡，实际执行由E07及后续卡记录；旧E00/E02–E05不恢复。每个结果需要使用对应作者场景、模型、接口与度量口径，不能把所有动作数混作独立样本。
+
+| E30 | [本地LLM规划与反思闭环](E30_local_goal_planner_gate.json)，plan_source=llm、18calls、4/5合法、首次safe drink；仅单episode来源准入 |
+
+| E31 | [原人类双目标顺序资格](E31_human_goal_order_qualification.json)，1343配对/156同物品；145有≤4步见证、118三seed都有，非共同利益gold |
+
+| E32 | [固定state语义选择性](E32_semantic_selectivity.json)，Full等义JS下降、保留90.7%不同角色响应；单训练seed，仅候选机制线索 |

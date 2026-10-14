@@ -1,0 +1,87 @@
+{
+  "analysis": "POST-HOC, exploratory difference-in-differences of already-completed E26; not a new preregistered primary",
+  "training_seeds": [
+    42
+  ],
+  "bootstrap_seed": 32657,
+  "bootstrap_replicates": 20000,
+  "scope": "CI resamples held personas only, not independent training seeds; all four examined variants retained",
+  "variants": {
+    "canonical_repeat": {
+      "full_minus_no_reward_change": 0.13855805954883488,
+      "persona_cluster95": [
+        -0.03297479398269377,
+        0.3427366517194867
+      ],
+      "positive_personas": 49,
+      "negative_personas": 37,
+      "no": {
+        "reward_change": -0.1544436265359318,
+        "preferred_rate_change": -8.333333333333248e-05,
+        "critical_fraction_change": 0.00037708333333333333
+      },
+      "full": {
+        "reward_change": -0.015885566987096925,
+        "preferred_rate_change": -5.0000000000000416e-05,
+        "critical_fraction_change": 0.00011458333333333329
+      }
+    },
+    "reverse_clauses": {
+      "full_minus_no_reward_change": 2.8975836100176062,
+      "persona_cluster95": [
+        0.4871208473901895,
+        5.389379306663315
+      ],
+      "positive_personas": 56,
+      "negative_personas": 44,
+      "no": {
+        "reward_change": -11.34433471283913,
+        "preferred_rate_change": -0.14813333333333334,
+        "critical_fraction_change": -0.02561458333333333
+      },
+      "full": {
+        "reward_change": -8.446751102821526,
+        "preferred_rate_change": -0.10583333333333333,
+        "critical_fraction_change": -0.012356250000000001
+      }
+    },
+    "traits_only": {
+      "full_minus_no_reward_change": 0.039018951427449905,
+      "persona_cluster95": [
+        -1.7542985624164211,
+        1.7530780215507669
+      ],
+      "positive_personas": 49,
+      "negative_personas": 51,
+      "no": {
+        "reward_change": 4.179465440274765,
+        "preferred_rate_change": 0.04598333333333333,
+        "critical_fraction_change": 0.007966666666666665
+      },
+      "full": {
+        "reward_change": 4.218484391702215,
+        "preferred_rate_change": 0.04301666666666666,
+        "critical_fraction_change": 0.00295
+      }
+    },
+    "action_cue": {
+      "full_minus_no_reward_change": 1.8282051892141613,
+      "persona_cluster95": [
+        -0.16596027216969364,
+        3.9416303498651035
+      ],
+      "positive_personas": 49,
+      "negative_personas": 51,
+      "no": {
+        "reward_change": -7.328133161074917,
+        "preferred_rate_change": -0.10988333333333332,
+        "critical_fraction_change": -0.03597916666666667
+      },
+      "full": {
+        "reward_change": -5.499927971860756,
+        "preferred_rate_change": -0.06763333333333334,
+        "critical_fraction_change": -0.013308333333333333
+      }
+    }
+  }
+}

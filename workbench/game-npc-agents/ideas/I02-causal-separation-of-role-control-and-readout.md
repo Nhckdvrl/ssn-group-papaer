@@ -22,3 +22,5 @@
 2026-10-14定位校对：进一步读PCSP PHASE5 §9–12，作者已有contrast-pool、persona-balanced sampling、各substrate8seed确认、projection几何及ID/OOD tradeoff。单纯检索恢复或投影几何敏感性不归我们。venue nearest与最新arXiv查询已执行，ECLIPTICA/CITA的instruction条件偏好/因果识别也是强邻居（尚未全文/代码核验）。E25只作原生形成路径诊断；是否存在独立utility/语义稳健性新知识仍不确定。
 
 E25–28后：η-only own200检索5%/Full8.667%，policy和utility与NoCons逐byte同一；Full utility差CI跨零。E26两政策都有顺序敏感，E27输入code确有行为作用且C的state信息有环境通道。E28真实co-step坐标补偿utility只有约.1且CI跨零、NoCons同样存在，坐标机制分支降级，不继续大训练。PPG、Holonomy、Multi-Way Alignment、LIBERO-Para/GSR/DAIL均强化已有ownership。I02仍SEED、无新claim；上述普通读出/语义资格/原生归因结果不足以称好的新增量。
+
+E32补充：E26事后交互显示Full改写损失较小；固定state诊断排除简单整体弱控制，选择性差−.479[−.638,−.316]且跨角色JS保留90.7%。保留真实正结果，不能讲一致性只有proxy收益。下一竞争解释是可编辑利益语义与整套原型识别；PERSONA（ICLR2026）已有组合向量／情景回答评价，PCSP已有语义投影／算术分析。若做单项利益编辑，须用原生完整reward、同body／伙伴及强输入控制；先小诊断、不增训练。I02仍SEED。
