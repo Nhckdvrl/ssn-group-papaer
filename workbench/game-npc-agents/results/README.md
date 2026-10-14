@@ -1,5 +1,7 @@
 # 结果清单
 
+当前总览先读 [进度报告](../PROGRESS_REPORT_2026-10-14.md)。按用户要求本轮收尾后暂停实验，旧条目的时间性说明按最新实验卡解释。强基线核心为E34/E38/E41/E42；自然角色当前证据为E35/E44–49。
+
 E33：[完整四格收益](E33_single_interest_control.json)、[静态图](E33_utility_four_cells.svg)。60原生episodes／CPU55.84秒；单项C编辑的相对利益选择性两route均5/5base为正，但9/10均值单元low输入同时胜两目标、1/10相反，无明确偏好交叉。不是新机制证据；不追加明确句矩阵。短训练／身体相关性尚未排除。
 
 已获得真实本地NPC模型与原生world结果；**C01保持L1，探索结果与基线证据分别记录**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
@@ -53,4 +55,6 @@ E38：[全部26次训练来源](E38_all_training_completed.json)、[全部360原
 
 E42：[全部240完整原生episodes](E42_all_240_native_episodes.json)，48000本地决策／0fallback，四格逐角色和world保留；不单凭DD解释人物偏好。E41：[所有四条件／种子／阶段](E41_complete_factorial_all_stages.json)，12次300轮／9216万transitions完成。E44：[完整事实对照](E44_natural_context_complete.json)，三分支全部1200帧，不是新的论文题目。
 
-E45：[三个自然case全部12格](E45_complete_persona_context_factorial.json)、[10个新后缀独立回放](E45_all_ten_new_branches_independent_replay.json)、[原输入重复变异POST-HOC](E45_fresh_native_nondeterminism_POSTHOC.json)。E46：[真实计划进度两格](E46_complete_grounded_progress.json)；E47：[较宽发言预算两格](E47_complete_dialogue_budget.json)。角色指令、承诺、agenda与实际行程分开，lecture/sketch文字不计物理任务完成。E48显式计划渠道控制正在运行。
+E45：[三个自然case全部12格](E45_complete_persona_context_factorial.json)、[10个新后缀独立回放](E45_all_ten_new_branches_independent_replay.json)、[原输入重复变异POST-HOC](E45_fresh_native_nondeterminism_POSTHOC.json)。E46：[真实计划进度两格](E46_complete_grounded_progress.json)；E47：[较宽发言预算两格](E47_complete_dialogue_budget.json)；E48：[显式计划渠道消融两格](E48_complete_plan_update_ablation.json)，128次本地调用／两独立1200帧回放。角色指令、承诺、agenda与实际行程分开，lecture/sketch文字不计物理任务完成。即时新任务受修订渠道影响，兼容原agenda的后续出行仍发生；单case不推完整中介比例。
+
+E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[24条独立回放](E49_all_24_independent_replay.json)，1173新本地调用、8852新后缀帧。三共享自然历史／两不同角色描述，不作为24独立自然样本；位置与活动文本分列。显式修订影响部分路线／时机，其他case的意图记忆仍进入动作；146/147后缀根级parser合法，129结构化解析失败全部保留。用户要求本轮收尾后暂停实验。PARTIAL文件只作历史快照，最终以complete结果为准。

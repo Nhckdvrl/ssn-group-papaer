@@ -2,6 +2,8 @@
 
 范围：E07/E08；pin、PDF SHA和clone路径在 [`E08_sources.json`](../../results/E08_sources.json)。Fact / Interpretation / Alternative分开。作者结果仍属作者；本地CPU路径复算不等于论文模型复现。
 
+**当前接手更新：** 上句是初始E07/E08范围，后续审计与执行已追加。E34六次300轮、E41十二次300轮、E38完整360局与PHASE5数值路径已完成；E35／E44–49自然角色闭环也有实际数据。原“未运行／未定位”只按各历史段和后面的纠正解释。最新全貌见 [进度报告](../../PROGRESS_REPORT_2026-10-14.md)。用户要求本轮分析后暂停，不从旧下一步自动启动。
+
 ## PCSP：persona 到策略的真实路径
 
 **源代码事实**（`pcsp@5420f7b`，路径均相对research/）：

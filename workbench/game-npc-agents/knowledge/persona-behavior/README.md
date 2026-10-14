@@ -6,6 +6,7 @@
 真正认识 Game NPC 中的 **Persona ↔ Intended Behavior ↔ Executed Strategic Action ↔ World Consequence**。不仅是比较两段不同语气。不同 NPC 的作者目标/任务利益、玩家关系、游戏状态不同；研究既允许发现显著断裂，也允许发现高质量上下文匹配或角色约束有效，并解释它们的边界。
 
 ## 当前入口
+- [本轮进度报告](../../PROGRESS_REPORT_2026-10-14.md)：已完成实验、正负结果、当前科学判断与暂停接手说明。
 - [RELATED_WORK](RELATED_WORK.md)：最接近本矿区的6篇重要近邻，特别是已占位的 ICML2026/2026 的测量与叙事先验成果。
 - [CODE_AUDIT](CODE_AUDIT.md)：PCSP、agent-sandbox、Generative Agents、Psychometric 两篇作者代码的已读事实；未跑不升级 P4。
 - [实验卡 E06](../../experiments/E06-persona-strategy-baseline.md)：最小自然任务/真实 action gate，正负控制、决策标准。
@@ -24,4 +25,5 @@
 
 ## 本地新增证据（2026-10-14）
 - [源码与split审计](SOURCE_AUDIT_2026-10-14.md)：E07原生CPU阳阴控制8/8，E08作者梯度/独立行为feature测试通过、5套官方角色split全量枚举。
-- 新增4篇方法/表格/关键附录论文卡在 `../papers/`，版本hash在 `../../results/E08_sources.json`。仅核CPU路径与来源，尚不冒称NPC新科学发现。
+- 用户点名五篇强近邻及补充方法论文的阅读卡在 `../papers/`，逐篇标已核范围；版本见E08及各manifest。PCSP全预算训练、MeltingPot独立环境与强本地LLM参考均已运行，不能继续概括为仅CPU阅读。
+- E35原三人自然episode、E44–49角色／状态／协议／显式计划渠道测量见 [结果索引](../../results/README.md)。人物可影响真实行动，作用随具体任务和处境变化；尚无独立验证的新顶会级idea。按用户要求收尾后暂停实验，不关闭矿区。

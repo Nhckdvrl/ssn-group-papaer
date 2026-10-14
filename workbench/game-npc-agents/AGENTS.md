@@ -7,6 +7,8 @@
 用户明确选择 **Persona 与游戏中的真实利益/战略行动** 为当前探索焦点。**先读 [LOCAL_AGENT_START.md](LOCAL_AGENT_START.md) → [knowledge/persona-behavior/RELATED_WORK.md](knowledge/persona-behavior/RELATED_WORK.md) → [CODE_AUDIT.md](knowledge/persona-behavior/CODE_AUDIT.md) → [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) → [E06](experiments/E06-persona-strategy-baseline.md)**，然后回到 [DOMAIN_ATLAS](knowledge/DOMAIN_ATLAS.md) 和相关领域。不得忽略 ICML2026 *Personality Illusion*、2026 *Rethinking Psychometric*、*Story Shapes the Agent*、PCSP 已有的研究。全域 NPC 安全/经济/记忆方向保留，A 的用户授权仅限当前科研探索，非永久缩小整个 workbench。
 
 ## 每次接手优先阅读
+
+**2026-10-14执行更新：** 用户要求本轮分析结束后暂停新增实验。先读 [进度报告](PROGRESS_REPORT_2026-10-14.md) 和最新结果；除本轮已启动任务的收尾／核对外，不自动启动实验，等待用户恢复指令。E07–E49已有真实本地执行，旧“当前尚未运行”不代表现状；E06仅统领设计，E43与E42额外对照未执行。暂停算力不等于关闭研究线，idea与全局状态不擅改。
 依照上面 A 的入口，结合 [knowledge/README.md](knowledge/README.md)、BASELINES、LOCAL_FIRST、最新 logs 与 CLAIMS/PAIN_LOG 阅读；原论文与源码优先于历史旧“current”说明。
 
 ## 最重要的是判断力，而不是执行清单
@@ -23,7 +25,7 @@
 - 优先现有自然游戏、真实角色/交易系统或游戏原生动作日志。若自构对照场景，先说明它弥补了哪个真实缺口；10-20条只做流程检查，不能证明普遍现象。
 - 记录 player vs NPC vs engine vs judge vs simulated partner、秘密/角色状态的作者许可、玩家可见观察；绝不让同一个自造评分器制造自己想要的阳性。
 - 高信息量不是配置多：先观察自然样例和准确读数，想清楚不同结果怎样改变研究判断，再做合法反事实/统计和未见确认。确保正常玩法任务能力、攻击成功率/防御误阻、玩家体验与经济系统结果分别报告。
-- 旧 E00/E02/E03/E04/E05 **从未完成游戏行为实测，已移出当前 HEAD，Git 历史可恢复**；不能再误启动。当前 E06 只是运行前设计，尚无实际结果；运行需按标准记录对应来源、正负控制、噪声/MIE、预算、决策表和数据。
+- 旧 E00/E02/E03/E04/E05 **从未完成游戏行为实测，已移出当前HEAD，Git历史可恢复**；不能再误启动。E06只是统领设计，具体已完成结果见后续E##；恢复后的新实验仍需先写来源、正负控制、噪声、预算、决策表和数据。流程heuristic不能当科学去留bar。
 - 失败或负结果要保留；不能筛幸存seed、偷换scene/test、事后改变主指标、把“这个模型一时失败”叫科学机制。
 - 更强科学主张要在多个自然环境/角色/模型/独立审计下成立；没有测试玩家，就不能声称真实玩家信任、乐趣更好。
 

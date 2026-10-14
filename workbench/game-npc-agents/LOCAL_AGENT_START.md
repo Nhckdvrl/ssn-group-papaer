@@ -3,14 +3,15 @@
 **2026-10-14 / 当前任务已由用户选择 A**。这里是执行引导，不是第二套科研总宪章。所有科研准则继续以[根AGENTS](../../AGENTS.md)、[本目录AGENTS](AGENTS.md)、[EXECUTION](../EXECUTION.md)为准。
 
 ## 不要被历史文件误导
-历史 E00/E02–E05、旧“必须跑LIGHT目标计划”的 LOCAL_AGENT_START、旧 RESEARCH_TERRITORIES 和过时 manifest 已退出当前HEAD；在 Git 旧提交可找回。当前**只有 E06 是PLANNED**，E01是早先CPU源码测试，不是NPC模型结果。不会从旧历史目标问题中“自动恢复”主线。安全、经济、人格漂移等领域全图保持开放，A 只是**本轮**优先探索。
+**用户最新要求：本轮分析收尾后暂停实验。** 先读 [进度报告](PROGRESS_REPORT_2026-10-14.md)、[结果索引](results/README.md) 与最新日志；接手时不要自动启动新实验，等待用户恢复指令。全局workbench和idea未关闭。
+历史 E00/E02–E05、旧“必须跑LIGHT目标计划”的 LOCAL_AGENT_START、旧 RESEARCH_TERRITORIES 和过时 manifest 已退出当前HEAD；在Git旧提交可找回。E06是统领设计，实际运行已记录在E07–E49；E43及E42额外规则知情对照未运行，不因有卡片自动启动。安全、经济、人格漂移等全域仍开放，A只是本轮优先探索。
 
 ## 接手即做
 **先评估真实近邻：** 读 [RELATED_WORK](knowledge/persona-behavior/RELATED_WORK.md) 以后，不相信笔记代替原文，优先打开 ICML2026 *The Personality Illusion* 的正文与关键附录、2026 *Rethinking Psychometric* 原文与代码、2026 *The Story Shapes the Agent*、*Persona Vectors in Games*，以及 PCSP 真实动作环境、训练和独立行为测量。记录作者已有的最强结论、其因果/样本/统计和你重新构造 idea 来路。**尤其别把“自报和行为不同”当新发现。**
 
 **再定位最适合探索的NPC对象：** PCSP Mini-Inzoi 的 persona/style reward 是硬编码目标之一，不能自动代表真实 RPG 玩家-NPC 策略利益。先审 PCSP (行为训练)、ccb/agent-sandbox (有合法行动的社会NPC)、LIGHT/Dragon (作者角色任务) 的**原始数据、实际用途、脚手架和成本**，建立一个从 NPC 人物设置→目标/局部状态→动作→真实世界结果的可回放链。任何一次 NPC“放弃自身利益”都要有合法游戏目标判据，不靠刻板性格推理。
 
-**行动优先于无限写笔记：** 检查 fvcrc10/11/12/13/15/20/21 已授权 SSH 节点的实际GPU占用，优先复用已有 conda/venv、本地模型缓存与vLLM/SGLang服务。探究同时最多使用 12 张**实际授权且空闲的** GPU，但不要为了用满而占卡；全链路禁止云 API 默认回退。先在一节点跑 CPU 引擎合法动作正负控制，再本地模型 1 条成功+失败可回放轨迹。若环境无法恢复，不沉没一周；写清具体错误后转向**仍能回答游戏NPC A问题**的另一个公开底座。
+**恢复后的资源纪律：** 用户授权fvcrc10/11/12/13/15/20/21，先核实际空闲，不干扰他人；白天上限8卡，本轮最高同时8卡，独立单卡／单节点优先。复用conda/venv和模型缓存，禁止云API默认回退。已有CPU引擎与完整本地原生episode资格，不必从头重复；新接口才核对应风险。暂停期间不占用新GPU。
 
 **研究设计：** 认真阅读 [E06](experiments/E06-persona-strategy-baseline.md)，不是机械跑完它的四条件矩阵。先用自然案例理解角色目标、行为机会和结构相同的条件是什么。选 1–2 个高信息量干预；普通强 Prompt、task-specific TPB、等语义/长度控制、叙事背景变化、动作词锚点都应考虑。模型词风/自报与真实动作分别记录；弱基线能做不到的动作别冒充persona失效。对任何可信观察写 Fact→Interpretation（至少两个替代解释）→Speculation（下一实验），然后检查与已知 claim owner 的距离。
 
