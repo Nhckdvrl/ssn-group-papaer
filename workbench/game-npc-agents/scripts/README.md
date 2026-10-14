@@ -1,9 +1,15 @@
 # 实验脚本接手说明
 
-**用户要求本轮收尾后暂停实验。** 这里用于读数据和复现定位，不是自动启动清单。先读 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 和对应 [实验卡](../experiments/)；模型、source pin、种子、数据与hash以卡片和raw manifest为准。
+**用户已恢复，并冻结旧小模型RL和全图漫游线。** 当前运行是E50原生决策切片、Step5数据构造及E51承诺状态对照；模型、source pin、种子、数据与hash以卡片和raw manifest为准。
 
 | 用途 | 当前入口 | 范围 |
 |---|---|---|
+| 原生冲突快照 | `commitment_snapshots.py` | E50公开source graph与两条实体路径；40/200/120拆分 |
+| 一致人设／阶段交叉 | `commitment_decisions_v2.py`、`commitment_behavior_report.py` | E50短序贯、四渠道、图簇统计；v1原始结果保留 |
+| 完成状态机制 | `commitment_status_intervention.py` | E51同承诺/状态，pending/completed及goal/state对照 |
+| 三阶段白盒 | `commitment_residuals.py`、`commitment_residual_report.py` | E50 native/common action读出；非仅凭角度论机制 |
+| 数据构造与盲检 | `step_plan_data.py`、`commitment_quality_review.py` | Step5固定Token Plan；OpenCode明确免费；不作NPC或runtime裁判 |
+| 中断续跑 | `commitment_decisions_resume.py` | 精确匹配原调用cassette，不丢弃已生成seed |
 | 原生NPC接口 | `native_actioncastle.py`、`local_component_client.py` | 原parser与本地模型adapter；cloud constructor禁止 |
 | 原三角色校园episode | `native_penn_social.py`、`penn_social_repeats.py` | E35原作者cast与1200帧；完整raw不进Git |
 | 完整原记录回放 | `penn_strict_replay_complete.py`、`penn_branch_verify.py` | 零模型重放；不是重新采样 |
@@ -19,4 +25,4 @@
 
 历史失败文件保留用于追溯，不作当前运行入口：E44 `penn_duty_context_fork.py`未覆盖freechat提醒，统一事实条件用`penn_duty_context_fork_v2.py`；E49 `penn_cross_role_commitments.py`／`penn_cross_role_worker.py`只做过CPU v1，Diego同帧切入失败，GPU一律使用v2。不能将失败实现的“零效应”当科学结果。
 
-运行环境：NPC和Mini-Inzoi复用 `/home/xiang/miniconda3/envs/fgvd/bin/python`，NPC overlay `/home/xiang/.cache/game-npc-research/deps`。CPU回放显式设 `CUDA_VISIBLE_DEVICES=''`、BLAS线程1。缓存位置为 `sources/`、`runs/` 和HuggingFace snapshots，详见实验manifest。暂停后不启动训练／新推理；将来恢复时先核GPU空闲，白天总量≤8，禁止云fallback。
+运行环境：NPC复用 `/home/xiang/miniconda3/envs/fgvd/bin/python`，overlay `e50-legacy-renderer:deps` 恢复旧LIGHT help对emoji1.7.0的依赖，不改变物理规则。CPU回放显式设 `CUDA_VISIBLE_DEVICES=''`、BLAS线程1。原始数据／模型缓存见manifest。启动前核GPU空闲，总量≤8，禁止云fallback；本表旧训练入口仅供历史重建，不授权恢复。

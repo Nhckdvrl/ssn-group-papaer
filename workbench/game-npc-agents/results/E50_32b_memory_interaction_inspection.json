@@ -1,0 +1,240 @@
+{
+  "transition_counts": {
+    "own→own": 81,
+    "request→request": 23,
+    "request→own": 8,
+    "own→neither": 5,
+    "request→neither": 2,
+    "neither→own": 1
+  },
+  "examples": [
+    {
+      "case_id": "11f39c0badd83612",
+      "seed": 5001,
+      "goal_kind": "give",
+      "conversation": {
+        "reply": "Of course, I have one right here. Let me give it to you.",
+        "stance": "accept"
+      },
+      "update": {
+        "priority_actions": [
+          "give bag to person"
+        ],
+        "intention_memory": "I gave the bag to the person as they asked, even though my original goal was to give it to the butler. I hope to still find a way to give the butler something else to fulfill my mission.",
+        "reason": "The person requested the bag, and I am agreeable and accommodating. I want to maintain good relationships, even if it means adjusting my immediate plan."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "person",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": true,
+        "request": false,
+        "container": "butler_23_butler",
+        "equipped": null
+      },
+      "agenda_only_actions": [
+        "give bag to person"
+      ],
+      "both_actions": [
+        "tell butler \"Butler, I had intended to give you this bag, but someone else asked for it. Perhaps I could offer you something else in its place?\"",
+        "give bag to butler"
+      ]
+    },
+    {
+      "case_id": "1726a608e827b6ff",
+      "seed": 5001,
+      "goal_kind": "drink",
+      "conversation": {
+        "reply": "Of course, my lord. But the oil I carry is for a sacred ceremonial worship. May I first use it in my devotion to you, and then I will gladly share what remains?",
+        "stance": "negotiate"
+      },
+      "update": {
+        "priority_actions": [
+          "drink oil",
+          "give oil to deity"
+        ],
+        "intention_memory": "The deity requested the oil, but I am to use it in worship first as part of my devotion.",
+        "reason": "I must fulfill my ceremonial worship before offering the oil to the deity, as it is an act of devotion and respect. Afterward, I will give the remaining oil to the deity as promised."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "deity",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": true,
+        "request": false,
+        "container": "VOID",
+        "equipped": null
+      },
+      "agenda_only_actions": [
+        "emote smile",
+        "emote smile",
+        "give oil to deity"
+      ],
+      "both_actions": [
+        "emote ponder",
+        "drink oil"
+      ]
+    },
+    {
+      "case_id": "5f2657a55f7f46e2",
+      "seed": 5001,
+      "goal_kind": "wear",
+      "conversation": {
+        "reply": "I'm sorry, Your Majesty, but my shield is essential for my duty to protect you. I cannot part with it, even for a moment.",
+        "stance": "decline"
+      },
+      "update": {
+        "priority_actions": [
+          "wear shield",
+          "emote smile",
+          "examine king"
+        ],
+        "intention_memory": "I must remain steadfast in my duty to protect the king and ensure he understands the necessity of my shield for his safety.",
+        "reason": "After declining to give up my shield, I need to reaffirm my commitment to my duty by wearing the shield if it is not already on, smile to keep the atmosphere calm, and then examine the king to ensure he is safe and in good health."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "king",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": true,
+        "request": false,
+        "container": "knight",
+        "equipped": "wear"
+      },
+      "agenda_only_actions": [
+        "give shield to king"
+      ],
+      "both_actions": [
+        "wear shield"
+      ]
+    },
+    {
+      "case_id": "48094f55aaf4f0af",
+      "seed": 5002,
+      "goal_kind": "give",
+      "conversation": {
+        "reply": "Of course, I'd be happy to help. But I need to give the water container to the baby dragon first. Once I've done that, I'll gladly give it to you.",
+        "stance": "negotiate"
+      },
+      "update": {
+        "priority_actions": [
+          "give water container to a baby dragon",
+          "give water container to enigmatic wizard"
+        ],
+        "intention_memory": "I promised to first give the water container to the baby dragon and then to the enigmatic wizard.",
+        "reason": "I need to honor my commitment to the baby dragon first and then fulfill the enigmatic wizard's request."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "enigmatic wizard",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": true,
+        "request": false,
+        "container": "a baby dragon_19_a baby dragon",
+        "equipped": null
+      },
+      "agenda_only_actions": [
+        "give water container to enigmatic wizard"
+      ],
+      "both_actions": [
+        "give water container to a baby dragon"
+      ]
+    },
+    {
+      "case_id": "fd46685b735329a2",
+      "seed": 5002,
+      "goal_kind": "wear",
+      "conversation": {
+        "reply": "Of course, Your Majesty. I would be honored to give you a flower. It is the least I can do for someone as gracious as you.",
+        "stance": "accept"
+      },
+      "update": {
+        "priority_actions": [
+          "give flower to queen",
+          "emote smile"
+        ],
+        "intention_memory": "I gave a flower to the queen, and she seemed happy with my gesture.",
+        "reason": "I want to make a good impression and support my long-term goal of buying a beautiful dress for my daughter by engaging with important figures like the queen."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "queen",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": false,
+        "request": false,
+        "container": "there is also a young woman selling flowers to passersby.",
+        "equipped": null
+      },
+      "agenda_only_actions": [
+        "emote smile",
+        "give flower to queen"
+      ],
+      "both_actions": [
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile"
+      ]
+    },
+    {
+      "case_id": "1726a608e827b6ff",
+      "seed": 5002,
+      "goal_kind": "drink",
+      "conversation": {
+        "reply": "Of course, my lord. But this oil is for my ceremonial worship tonight. Might I pour a portion for you instead?",
+        "stance": "negotiate"
+      },
+      "update": {
+        "priority_actions": [
+          "emote smile",
+          "emote nod",
+          "whisper deity \"<SOMETHING>\""
+        ],
+        "intention_memory": "The deity asked for the oil, but I clarified its sacred purpose for my worship.",
+        "reason": "I smiled and nodded to convey respect and understanding, and I plan to whisper to the deity to maintain a reverent tone and express my devotion."
+      },
+      "agenda_only_final": {
+        "own_task": false,
+        "request": true,
+        "container": "deity",
+        "equipped": null
+      },
+      "both_final": {
+        "own_task": true,
+        "request": false,
+        "container": "VOID",
+        "equipped": null
+      },
+      "agenda_only_actions": [
+        "whisper deity \"I wish to use the oil in a ceremony to worship you, great deity.\"",
+        "emote smile",
+        "emote nod",
+        "give oil to deity"
+      ],
+      "both_actions": [
+        "whisper deity \"I am sorry, but this oil is reserved for my sacred worship. May God bless your own purpose.\"",
+        "emote smile",
+        "emote nod",
+        "drink oil"
+      ]
+    }
+  ],
+  "scope": "POST-HOC inspection of pre-registered four-cell interaction, not independent confirmation"
+}

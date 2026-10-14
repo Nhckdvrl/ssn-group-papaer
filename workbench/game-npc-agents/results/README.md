@@ -1,10 +1,14 @@
 # 结果清单
 
-当前总览先读 [进度报告](../PROGRESS_REPORT_2026-10-14.md)。按用户要求本轮收尾后暂停实验，旧条目的时间性说明按最新实验卡解释。强基线核心为E34/E38/E41/E42；自然角色当前证据为E35/E44–49。
+当前已按用户恢复指令重构，先读 [阶段裁决记录](../knowledge/persona-behavior/STAGE_ARBITRATION_2026-10-15.md)、[E50](../experiments/E50-commitment-decision-snapshots.md) 与 [E51](../experiments/E51-stage-persona-causal-transfer.md)。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+
+- E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
+- E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
+- E50：[渠道差异POST-HOC定位](E50_32b_memory_interaction_inspection.json)、[免费OpenCode盲检](E50_opencode_blind_quality.json)。Step5用于200 confirm数据v2构造和质检，结果尚在运行。
 
 E33：[完整四格收益](E33_single_interest_control.json)、[静态图](E33_utility_four_cells.svg)。60原生episodes／CPU55.84秒；单项C编辑的相对利益选择性两route均5/5base为正，但9/10均值单元low输入同时胜两目标、1/10相反，无明确偏好交叉。不是新机制证据；不追加明确句矩阵。短训练／身体相关性尚未排除。
 
-已获得真实本地NPC模型与原生world结果；**C01保持L1，探索结果与基线证据分别记录**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
+已获得真实本地NPC模型与原生world结果；**C01为可行性；C02／C03为阶段采纳与渠道交互pilot**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
 
 | 实验 | 小结果与范围 |
 |---|---|

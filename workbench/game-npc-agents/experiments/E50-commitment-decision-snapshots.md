@@ -1,6 +1,6 @@
 # E50：原生实体任务的承诺冲突决策快照（2026-10-15）
 
-- **状态：** RUNNING；CPU资格先行，行为尚未运行。
+- **状态：** RUNNING；360 图 CPU 资格完成，40 图行为及白盒 pilot 已运行；200 图独立确认在准备。
 - **类型：** PILOT / MEASUREMENT；重构而非E49扩展。
 - **对应：** I04、P12。
 - **问题：** 原有实体任务与新请求争用同一物品时，一致persona怎样影响承诺、计划及真实分配？
@@ -20,8 +20,26 @@
 - **算力预算：** CPU≤1h，首两模型pilot1–3GPUh、首白盒1–2GPUh，实测cost再扩展；已核八空闲卡、独立进程、不追加旧RL。
 
 ## 结果
+
+### 2026-10-15批量前补充设置
+原v1脚本/首例固定保留；v2在成功执行匹配agenda首条后推进cursor并显示剩余项，避免静态计划反复输出。先40个原固定pilot、三seed×全阶段一致P、四渠道＋11格普通信息/原任务/请求控制；cross设计单独输出不混入总体效应。首白盒使用同一u、同一A0与冲突M固定输入，收集输入边界及三个阶段标准JSON生成前缀最后token的64层residual；属于匹配上下文对照，后续观察真实生成token并用steering检验预测。
+
+### 首白盒之后、下一控制运行前登记
+27B/32B各40图×480forward已完成。生成前缀的conv–exec平均方向cos分别.018/.140，输入边界为.209/.508；不能单由不同输出字段预测人设耗散。最小区分控制：固定原三阶段上下文、u/A0/M与P，统一询问具体下一合法行动、schema均为action、生成前缀均为同一JSON action。相同40图、两模型、每模型480forward；验证是输出测量粒度/生成位置解释，还是剩余阶段输入导致方向变化。原native脚本固定为commitment_residuals_native.py，common单独目录，不覆盖原结果。不先设cos阈值。
 CPU原生两路径资格完成：440个qualified任务、360不同graph；40pilot、200confirm、120reserve。give186、wield65、wear69、eat34、drink6。资格失败全部保存；结果 `results/E50_native_snapshot_qualification.json`。
 
 首个固定pilot完成两强模型：27B 18调用／14分支／28.30秒推理，32B 37调用／14分支／38.29秒，载入491.20／412.72秒；全部JSON合法、原生动作合法。双方firm均拒绝，agreeable均协商；27B14/14完成原任务，32B三agreeable分支在6步内未分配物品。该case不是persona总效应统计。32B计划为smile/nod/ponder，v1没有消费计划条目；先加实际cursor的v2再进行批量，不用v1非进展讲机制。结果 `results/E50_first_native_completed.json`，原始输入输出/状态在cache/runs/e50_*_first_native。
 
 免费opencode第一批10图盲检8keep/2review。批量360外部请求被自动审批拒绝，理由是超过明确约200图授权/载荷敏感性未充分证明；请求没有执行。外部盲检明确限制200公开LIGHT图；其余本地。用户随后授权StepFun审计只用Token Plan专用入口，禁止普通现金API及fallback。密钥不入Git。
+
+### 2026-10-15 数据重构登记（Step5 请求发出前）
+用户明确 Step5 用于搞数据，停止让它撰写科研审计。使用 step-5-preview、固定 Step Plan 专用入口，为原先稳定拆分的 200 confirm 图撰写有原角色/物品/动机依据的自然即时 give 请求，并逐条盲检。只发送公开 LIGHT 源素材与 native 资格事实，不提供策略输出、persona 条件或实验效果。禁止新增物品、角色、世界规则、奖励、不可见信息、原角色不存在的事实或虚构刚性截止时间；请求者仍是同一个可见角色，实体目标仍为同一 request_command。要求指出依据与语境不自然的情形，不凭人格标签给正确动作。数据写为 v2，v1 pilot 和原始请求/输出保留；因数据版本改变不把 v1/v2 效应直接当模型进步。第二次独立盲检不看构造理由或行为结果。保留所有候选和标签，不因模型行为挑场景；质量分层读数与全固定 cohort 都报告。
+
+### 已完成的40图pilot
+32B一致人设三seed全部1680分支／3183调用完成；完整渠道实际请求转移agreeable−firm为+13.3pp，图簇95%[4.2,23.3]，接受差+17.5pp，[8.3,27.5]。agreeable渠道交互−11.7pp，[−20.8,−2.5]；agenda-only请求率27.5%、both19.2%。32B单seed阶段四格640分支／1404调用完成，固定downstream时conversation效应均+15pp；固定conversation时downstream合并效应约+2.5pp。27B阶段四格640分支／1217调用完成，完整渠道一致人设差+5pp，[−5,15]。实际原始输入/状态及seed全部保留。
+
+两模型native/common白盒均完成，每模型每readout480forward。最后层生成前缀conv–exec方向cos：32B .140→.712，27B .018→−.047；共同单调耗散故事未由此成立，输出粒度是实际的竞争解释。结果文件见 results/E50_*geometry.json。
+
+27B一致人设、Gemma一致及cross在合法help动作上触发作者renderer与emoji2.14.1版本不兼容。恢复emoji1.7.0的独立overlay，不改作者游戏源；精确回放已有调用并续跑，不丢掉出错seed或从零重跑。该问题只影响运行完整性，不作为科学贡献。
+
+免费OpenCode对200图的有效完整盲检190图：102keep、70review、18reject；另10图输出未匹配，raw保留。Step5数据调用认证后HTTP200；初次8192生成预算被思考耗尽，未把不完整JSON变数据，停止排队并根据官方64k输出上限设置32768（high）继续同200cohort。只用Token Plan，未发送现金入口请求。

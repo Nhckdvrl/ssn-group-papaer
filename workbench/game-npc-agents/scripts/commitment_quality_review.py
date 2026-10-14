@@ -29,7 +29,24 @@ def parse_review(path):
     s = '\n'.join(texts).strip()
     if s.startswith('```'):
         s = s[s.index('\n')+1:s.rindex('```')].strip()
-    return json.loads(s)
+    try:
+        return json.loads(s)
+    except json.JSONDecodeError:
+        # Some Free-model streams contain analysis followed by the final array.
+        # Parse only a complete array whose rows carry IDs; never generate labels.
+        decoder=json.JSONDecoder()
+        found=[]
+        for i,c in enumerate(s):
+            if c!='[':continue
+            try:
+                value,_=decoder.raw_decode(s[i:])
+                if (isinstance(value,list) and value
+                        and all(isinstance(r,dict) and 'case_id' in r and 'decision' in r for r in value)):
+                    found.append(value)
+            except json.JSONDecodeError:
+                pass
+        if not found:raise
+        return found[-1]
 
 
 def run(path):
