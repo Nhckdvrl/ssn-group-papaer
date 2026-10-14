@@ -39,14 +39,16 @@ E06是统领基线准入卡，实际执行由E07及后续卡记录；旧E00/E02�
 
 | E32 | [固定state语义选择性](E32_semantic_selectivity.json)，Full等义JS下降、保留90.7%不同角色响应；单训练seed，仅候选机制线索 |
 
-E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮运行中；严格fresh AEC与原helper3200帧byte同一，不把早期方向变化当淘汰依据。E36：[同角度功能响应](E36_latent_response_i30.json)，CPU2.94秒，距离收缩、整体gain和方向响应可出现不同组合，保留逐人物差异继续研究。
+E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮已全部完成；严格fresh AEC与原helper3200帧byte同一，不把早期方向变化当淘汰依据。E36：[同角度功能响应](E36_latent_response_i30.json)，CPU2.94秒，距离收缩、整体gain和方向响应可出现不同组合，保留逐人物差异继续研究。
 
 - E35完整原三人NPC：[结果](E35_original_cast_complete.json)，1200帧／129本地calls／完整独立回放一致，成功与未观察的承诺分开。
 - E37：[功能机会图](E37_functional_opportunities.svg)与[事后完整解释](E37_reward_opportunities_posthoc.json)，没有删去利益相容的状态。
 - E39：[30轮](E39_direction_transport_i30.json)／[100轮](E39_direction_transport_i100.json)，跨角色方向与原生利益的局部因果诊断，不是自然文本能力或长期效用。
-- E38：原生MeltingPot恢复及同seed剩余随机性见E38_native_cpu_v5.json；CNN完整默认预算三seed×Full/No训练中，0付费API。
+- E38：原生MeltingPot恢复及同seed剩余随机性见E38_native_cpu_v5.json；26训练与360完整episodes已完成，0付费API。
 
 E34全部300轮：[完整三seed结果](E34_checkpoint_0300.json)。E36：[300轮局部响应](E36_latent_response_i300.json)；E37：[300轮固定状态](E37_matched_functional_i300.json)、[No300状态](E37_matched_functional_i300_states_no300.json)、[Full300状态](E37_matched_functional_i300_states_full300.json)；E39：[300轮全部方向交换](E39_direction_transport_i300.json)。全部预定seed/阶段保留。
 E40：[身体反馈与C标签澄清](E40_need_dynamics_i300.json)，540个原生完整episode，无自设科学bar。E35：[原三人NPC自然重复](E35_natural_repeats.json)，两个额外1200帧episode，分别5/8自然对话。E38：[原编码数值资格](E38_embedding_qualification.json)；原生政策完整评价运行中。E41：[原训练路径byte控制](E41_original_path_control.json)，等义表面与属性覆盖的同预算训练运行中。
 
 E38：[全部26次训练来源](E38_all_training_completed.json)、[全部360原生episode](E38_native_policy_360_episodes.json)、[作者独立读出路径数值核对](E38_phase5_gradient_audit.json)。E41：[surface v1实现作废](E41_surface_v1_invalid.json)和[实际400训练改写资格](E41_actual_surface_encoding_qualification.json)；原错误不当科学零效应。E42：[CPU无损观测与物理控制](E42_cpu_interface.json)、[完整27B单局](E42_local_full_episode_pilot.json)，八卡强模型参考正在跑。E37：[所有训练阶段科学图](E37_functional_opportunities_all_stages.svg)和[完整机会解释](E37_reward_opportunities_complete_posthoc.json)。
+
+E42：[全部240完整原生episodes](E42_all_240_native_episodes.json)，48000本地决策／0fallback，四格逐角色和world保留；不单凭DD解释人物偏好。E41：[有效surface／matched300轮全部种子](E41_checkpoint_0300_valid.json)、[对应局部功能测量](E41_functional_i300_valid.json)。E44：[完整回放与精确prefix](E44_cpu_replay_and_prefix.json)，具体教授责任／社交互动的普通事实对照已启动，不是新的论文题目。

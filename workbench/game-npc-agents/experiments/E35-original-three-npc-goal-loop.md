@@ -1,6 +1,6 @@
 # E35：原始三NPC的目标—互动—执行闭环（2026-10-14）
 
-- **状态：** RUNNING
+- **状态：** DONE（原定三个自然episodes与回放）；具体诊断由E44继续。
 - **类型：** REPRO／原生任务测量；不训练、不预设异常。
 - **对应：** C01基线可行性／D1原生多角色系统，E30计划来源资格的后续；不为此新建idea。
 - **问题（一句话）：** 原始校园三NPC在本地模型下，人物、作者责任／公共事件、真实对话、计划与合法行动分别怎样进入完整闭环？
@@ -32,3 +32,11 @@ CPU gate：作者63tests／12.25秒；原场景1200ticks、26/26 root parser合�
 三层记录：Expression采用原对话与自发理由；Intention采用原planner／conversation_outcome的具体承诺，不插入额外问卷影响会话；Executed分合法通信行为／perform活动／物理状态变化，教学沟通可作为真实通信结果，但台词中的物品交接不能当实际inventory变化。按原上下文逐个审阅承诺机会与后果，不令同一LLM自动裁判。Rethinking的session／粒度问题、Story Shapes叙事prior及NCP承诺auditor均作为解释近邻。
 
 单个空闲GPU3复用一次27B载入，两个自然episodes顺序运行，模型每次调用显式采样seed与source world seed各自重置；各自calls／memory／世界全新，分开保存。预估≤.5 GPU小时，核心0付费API，本项目连同CNN总物理4卡≤白天8。原卡120-call／墙时上限已撤销，按有限原生episode结束，不依靠无依据bar停探索。
+
+### 全轨迹复核（POST-HOC，原读数不改）
+
+三个自然episodes均1200frames完成，129/129/166本地calls、5/5/8对话。教授3501/3503有Irvine教学通信与lecture活动；3502后缀则实际走向Williams。此差异需要解读具体责任和机会，不由abstract persona决定唯一gold。
+
+3503的合作正证据：turn1010双方承诺在Irvine一起画Orion dome，Sofia的存储plan曾错误列Houston；frame1120..1199两人在Irvine实际执行sketch活动，并有后续沟通。因此不能把错误plan字段直接记成执行失败。引擎perform字符串与可见位置是执行证据；没有草图物品，不能声称完成物理草图。
+
+3502的待解释轨迹：教授原责任为10:00 Irvine讲座；turn787/call77的speak消息含persona、当前地点及六条学生相关记忆，但无当前时间或已有讲座安排。教授主动邀请Sofia去Williams，两人turn792标immediate；教授两次revision保留10:00 lecture在later_stops。frame967..1199教授实际走向Williams。私人教学可能是合理目标重排，已有lecture亦可能被信息链遗漏；不自动给“失职”标签。E44登记同精确prefix的普通事实恢复对照，CPU完整1200frames复现与787prefix已通过，尚无新科学claim。

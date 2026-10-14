@@ -31,3 +31,8 @@ E23原500资产500/500高余弦复现，right-padding情况下原脚本末列poo
 ## P10：角色数量、单属性覆盖与功能控制不是同一问题（2026-10-14）
 E34完整300轮后，Full三个seed的局部C利益方向均强于No，不能讲persona只有proxy；同时整体native return更低、等义相对敏感性更大。E37/39同状态同幅度控制与E40身体反馈／C标注对照提供三种分开的读数。源train400实际上是20种BF组合×20职业；20种非C背景与test5种完全不重叠，原500中没有精确单C配对。线性设计满秩6并未保证非线性条件policy的单属性组合能力。
 H1是训练目标／projection的形成路径，H2是单属性干预覆盖不足，H3是目标与身体相关及不同状态机会；不将任一个先判定为真。下一先用普通surface augmentation与C配置干预进行等预算训练，避免一看到差异就设计新loss。干预保持每episode C边际、原body与preferred_actions，评价沿原作者任务／固定读数。
+
+## P11：角色社会互动时，已有责任是否仍进入决策输入（2026-10-14）
+源代码事实：E35 seed3502 turn787/call77，教授的原speak消息有warm/precise人设、当前Irvine地点、六条学生相关chat/reflection/observation；没有当前时钟或本人10:00讲座责任。本人原schedule/t0计划已有该责任。对话主动邀请学生去Williams，双方outcome判immediate，revision保留10:00讲座到later；真实frame967起教授离开Irvine。原conversation输入的阶段差异是待解释事实，不自动是科学创新。
+
+我们的解释：角色规范“热情教学”与实际已有责任的关系，可能受组件所见信息影响；不能由友善台词或plan字段 alone 判断执行。竞争解释H1时钟不可见、H2责任检索／显著性、H3合理教学重排或原执行gate。E44在同原生prefix用普通时钟／本人责任一句事实作最小对照，不改规则／角色／gold；成功与负结果均保留。3503学生的错地点计划随后实际恢复共同Irvine活动是正证据，不能沿“gap”故事删去。

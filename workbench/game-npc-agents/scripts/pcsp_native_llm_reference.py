@@ -33,6 +33,7 @@ def main():
     ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--pilot',action='store_true')
     ap.add_argument('--cpu-control',action='store_true')
+    ap.add_argument('--weight-load-strategy',choices=['auto','eager','lazy'],default='auto')
     args=ap.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
     sys.path.insert(0,str(args.source/'research'))
@@ -95,6 +96,7 @@ def main():
     peer_codes=torch.from_numpy(codes[np.asarray(PEER_IDS)-1])
     manifest={'host':socket.gethostname(),'visible_gpu':os.environ.get('CUDA_VISIBLE_DEVICES'),
               'model':str(args.model),'prompt_mode':args.prompt_mode,'peer_route':args.peer_route,
+              'weight_load_strategy':args.weight_load_strategy,
               'peer_policy_sha256':hashlib.sha256(peer_path.read_bytes()).hexdigest(),
               'source_sha':'5420f7b4fa0fdb6110e131402af9f5386ce2d0cf',
               'world_seeds':WORLD_SEEDS,'base_ids':BASE_IDS,'peer_ids':PEER_IDS,
@@ -108,9 +110,10 @@ def main():
         assert args.model is not None
         from vllm import LLM,SamplingParams
         before=time.monotonic()
+        load_options={} if args.weight_load_strategy=='auto' else {'safetensors_load_strategy':args.weight_load_strategy}
         engine=LLM(model=str(args.model),tensor_parallel_size=1,dtype='bfloat16',
                    gpu_memory_utilization=.82,max_model_len=8192,enforce_eager=True,
-                   enable_prefix_caching=True,seed=42001,language_model_only=True)
+                   enable_prefix_caching=True,seed=42001,language_model_only=True,**load_options)
         tokenizer=engine.get_tokenizer();load_seconds=time.monotonic()-before
     total_calls=0;fallbacks=0;repeat_control=None
     cycles=2 if args.cpu_control else 200

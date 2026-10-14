@@ -31,3 +31,9 @@ none路径与E34相同初始policy及25600首轮obs/actions/reward逐byte相同�
 有效surface30结果跨seed不同；C干预30的canonical收益差+.787/+1.952/+2.459，但利益方向跨seed不同，不能从早期提升归因某种机制。增加unbound-code对照：使用与intervention完全相同的16 base IDs、C向量置换/独立augmentation RNG/每episode文本C边际，但环境persona的真实BF.C与原No全部保持；body/preferred/其他traits也不变。因此仅扩大输入属性组合覆盖，没有把该C输入绑定到对应利益配置。不是新环境reward或方法，而是普通“输入多样性/正则化”与“匹配属性—利益经验”的区分。
 
 三个预定seed42/43/44，NoInfoNCE、原全部PPO/div/300轮/30-100-300保存；原始No、有效surface、matched intervention都继续，不筛分支。先一轮控制：初始policy、obs/actions/reward与原No逐byte相同（FiLM初始persona调制中性），但实际变码导致首次PPO更新权重不同；C向量选择必须与matched intervention相同，环境C实际保持原值。记录文本C/环境C，不误写它们匹配。该配置故意打断训练绑定，不能拿其失败当自然NPC失败；任何混合/正向/负向结果均保留。三CPU单线程原300轮，白天八GPU继续原生强LLM实验，不为小MLP强占更慢的GPU。
+unbound评价补充（首次控制checkpoint评价前）：原/有效surface/matched intervention的primary三policy共同幅度比较保持v2协议；unbound与原No另做原生/等义/完整四格及E37两policy匹配，不回头改变primary幅度。跨四条件比较采用相同natural文本端点与原生收益；不同比较pool的matched数值不可直接拼成方法排序。全部30/100/300与三个seed保留，metadata明确旧no/full别名的真实条件。
+
+### 补齐目标分布竞争解释（启动前登记）
+matched比unbound好的结果也可能来自训练目标配置扩大，而不只是文字—利益绑定。因此补goal-only：和matched完全相同的实际C置换/边际/目标/身体/偏好/原sampler，却保持原canonical C输入。与原No、unbound、matched构成2×2（input是否置换×真实目标是否置换），surface另作普通表述控制。三个seed/300轮/30-100-300，全部原优化参数不变；分析canonical原生收益及natural文本C完整四格/功能响应的interaction，而不把不同比较pool的matched幅度混用。目标与输入刻意不匹配的诊断cell不作自然角色失败论据。
+
+先一轮正控制：goal-only与matched初始policy及25600obs/actions/reward必须逐byte相同（初始FiLM中性），实际输入仍original、environment C选择完全与matched同一、首次更新权重应不同。采用既有harness的冻结专用版本，不再修改其他进行中训练脚本。三单core CPU，已有八GPU用于强本地模型闭环，不新增环境/API/世界规则。该cell用于区分reward-config覆盖/输入覆盖/匹配经验，不能因结果不理想舍弃；所有四cell完整预算保留。
