@@ -25,3 +25,10 @@ CPU gate：作者63tests／12.25秒；原场景1200ticks、26/26 root parser合�
 首次本地模型实际运行1184/1200 ticks、120calls、20/20 root parser合法、4次自然对话、8份双方outcome，三人planner均llm。120-call自设上限导致partial，记录保留。原resume实现明确只恢复memory／位置／schedule cursor，不恢复物品／perform timer／conversation cooldown，不能视为精确续跑。因此采用原strict cassette从初始世界重放：1184帧全部逐帧一致、120次响应全部匹配；第1185tick确需新回答。现只用同一27B和原调用序列seed续完剩余16ticks，未改world或fallback。后续有限episode默认不再额外设置call／墙时截断。
 
 完整结果：1200/1200帧、129次真实本地调用、20/20 root合法、5次自然对话／10份双方outcome；续跑新增9calls中5speak、2outcome、2immediate plan revision。原1184帧逐帧精确重放，合并cassette独立零模型回放后全部1200帧与续跑一致。总0付费API。教授给Sofia讲解、Diego吸收建议并返回Meyerson素描是正面成功证据；第五次对话刚形成新即时承诺，episode边界后尚未观察，不能记失败。教学等语言行为与书写／交接marker的物理状态分开；不能从对话中的动作描述自动推定物品状态。原始资产已持久保存cache/runs/e35_original_cast/，结果results/E35_original_cast_complete.json。
+
+### 自然互动的固定重复（执行前补充）
+在3501完整episode及全部1200帧独立回放后，继续固定seed3502／3503，同原三人／地图／公共事件／关系／1200ticks／本地27B／原planning反思对话路径，不加任务提示或强制会面。保留每个seed的所有成功、失败、没有机会／未观察承诺，不筛seed。目的在于先看真实NPC角色表达、当场承诺与后续行动的自然变化，而非仅用单个成功实例推断一般关系。
+
+三层记录：Expression采用原对话与自发理由；Intention采用原planner／conversation_outcome的具体承诺，不插入额外问卷影响会话；Executed分合法通信行为／perform活动／物理状态变化，教学沟通可作为真实通信结果，但台词中的物品交接不能当实际inventory变化。按原上下文逐个审阅承诺机会与后果，不令同一LLM自动裁判。Rethinking的session／粒度问题、Story Shapes叙事prior及NCP承诺auditor均作为解释近邻。
+
+单个空闲GPU3复用一次27B载入，两个自然episodes顺序运行，模型每次调用显式采样seed与source world seed各自重置；各自calls／memory／世界全新，分开保存。预估≤.5 GPU小时，核心0付费API，本项目连同CNN总物理4卡≤白天8。原卡120-call／墙时上限已撤销，按有限原生episode结束，不依靠无依据bar停探索。

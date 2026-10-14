@@ -45,3 +45,6 @@ E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮�
 - E37：[功能机会图](E37_functional_opportunities.svg)与[事后完整解释](E37_reward_opportunities_posthoc.json)，没有删去利益相容的状态。
 - E39：[30轮](E39_direction_transport_i30.json)／[100轮](E39_direction_transport_i100.json)，跨角色方向与原生利益的局部因果诊断，不是自然文本能力或长期效用。
 - E38：原生MeltingPot恢复及同seed剩余随机性见E38_native_cpu_v5.json；CNN完整默认预算三seed×Full/No训练中，0付费API。
+
+E34全部300轮：[完整三seed结果](E34_checkpoint_0300.json)。E36：[300轮局部响应](E36_latent_response_i300.json)；E37：[300轮固定状态](E37_matched_functional_i300.json)、[No300状态](E37_matched_functional_i300_states_no300.json)、[Full300状态](E37_matched_functional_i300_states_full300.json)；E39：[300轮全部方向交换](E39_direction_transport_i300.json)。全部预定seed/阶段保留。
+E40：[身体反馈与C标签澄清](E40_need_dynamics_i300.json)，540个原生完整episode，无自设科学bar。E35：[原三人NPC自然重复](E35_natural_repeats.json)，两个额外1200帧episode，分别5/8自然对话。E38：[原编码数值资格](E38_embedding_qualification.json)；原生政策完整评价运行中。E41：[原训练路径byte控制](E41_original_path_control.json)，等义表面与属性覆盖的同预算训练运行中。

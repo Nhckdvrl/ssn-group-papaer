@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """E25 original trainer; consistency-target gradient route control only."""
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -19,6 +20,9 @@ def main():
     ap.add_argument('--seed',type=int,default=42)
     ap.add_argument('--device',choices=['cpu','cuda'],default='cuda')
     ap.add_argument('--checkpoint-at',type=int,nargs='*',default=[])
+    ap.add_argument('--augmentation',choices=['none','surface','intervention'],default='none')
+    ap.add_argument('--augmentation-codes',type=Path,default=Path('/home/xiang/.cache/game-npc-research/runs/e41_intervention_codes'))
+    ap.add_argument('--reverse-embeddings',type=Path,default=Path('/home/xiang/.cache/game-npc-research/runs/e26_semantic_codes/reverse_clauses.npy'))
     args=ap.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     sys.path.insert(0,str(args.source/'research'))
     import numpy as np
@@ -40,10 +44,51 @@ def main():
     train_emb=embeddings[[int(r['id'])-1 for r in records]]
     vectors=[torch.from_numpy(e).unsqueeze(0) for e in train_emb]
     rng=np.random.default_rng(args.seed)
+    aug_rng=np.random.default_rng(410000+args.seed)
+    assert args.augmentation=='none' or args.route=='no_consist', 'E41 first comparison is NoInfoNCE only'
+    variants=None;variant_vectors=None;reverse_vectors=None
+    augmentation_hashes={}
+    if args.augmentation=='intervention':
+        metadata=json.loads((args.augmentation_codes/'variants.json').read_text())
+        levels=metadata['levels'];variants=metadata['personas']
+        variant_array=np.load(args.augmentation_codes/'C_variants.npy').astype(np.float32)
+        assert variant_array.shape==(len(records),3,1024)
+        for i,row in enumerate(records):
+            assert np.array_equal(variant_array[i,levels.index(row['big_five']['C'])],train_emb[i])
+            for changed in variants[i]:
+                assert all(changed[k]==row[k] for k in ['decay_modifiers','preferred_actions','age','occupation'])
+                assert all(changed['big_five'][k]==row['big_five'][k] for k in ['E','N','A','O'])
+        variant_vectors=[[torch.from_numpy(e).unsqueeze(0) for e in group] for group in variant_array]
+        augmentation_hashes={'metadata':hashlib.sha256((args.augmentation_codes/'variants.json').read_bytes()).hexdigest(),
+            'codes':hashlib.sha256((args.augmentation_codes/'C_variants.npy').read_bytes()).hexdigest()}
+    elif args.augmentation=='surface':
+        reverse=np.load(args.reverse_embeddings).astype(np.float32)
+        reverse_vectors=[torch.from_numpy(reverse[int(row['id'])-1]).unsqueeze(0) for row in records]
+        augmentation_hashes={'reverse':hashlib.sha256(args.reverse_embeddings.read_bytes()).hexdigest()}
+    sampled_episodes=0
     def sampler():
+        nonlocal sampled_episodes
         chosen=rng.choice(len(records),N_AGENTS,replace=False)
-        return [PersonaConfig.from_dict(records[i]) for i in chosen], {
-            f'agent_{j}':{'e_llm':vectors[i]} for j,i in enumerate(chosen)}
+        data=[records[i] for i in chosen];inputs=[vectors[i] for i in chosen]
+        original_C=[row['big_five']['C'] for row in data];target_C=list(original_C);views=None
+        if args.augmentation=='intervention':
+            target_C=aug_rng.permutation(original_C).tolist()
+            assert sorted(target_C)==sorted(original_C)
+            data=[variants[i][levels.index(level)] for i,level in zip(chosen,target_C)]
+            inputs=[variant_vectors[i][levels.index(level)] for i,level in zip(chosen,target_C)]
+        elif args.augmentation=='surface':
+            views=aug_rng.integers(0,2,size=N_AGENTS).tolist()
+            inputs=[reverse_vectors[i] if view else vectors[i] for i,view in zip(chosen,views)]
+        if sampled_episodes<8 and args.augmentation!='none':
+            with (args.out/'augmentation_trace.jsonl').open('a') as trace:
+                trace.write(json.dumps({'episode':sampled_episodes,'base_ids':[records[i]['id'] for i in chosen],
+                    'original_C':original_C,'target_C':target_C,'reverse_view_flags':views,
+                    'C_marginal_preserved':sorted(original_C)==sorted(target_C),
+                    'body_and_preferred_actions_preserved':all(data[j]['decay_modifiers']==records[i]['decay_modifiers']
+                        and data[j]['preferred_actions']==records[i]['preferred_actions'] for j,i in enumerate(chosen))})+'\n')
+        sampled_episodes+=1
+        return [PersonaConfig.from_dict(row) for row in data], {
+            f'agent_{j}':{'e_llm':e} for j,e in enumerate(inputs)}
     def factory(personas):return MiniInzoiV3LargeEnv(personas=personas,max_steps=200)
 
     class RoutedTrainer(PCSPTrainer):
@@ -67,6 +112,10 @@ def main():
         'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'route':args.route,
         'iterations':args.iterations,'seed':args.seed,'device':args.device,'initial_policy_hash':initial,
         'checkpoint_at':args.checkpoint_at,
+        'augmentation':args.augmentation,'augmentation_seed':410000+args.seed,
+        'augmentation_hashes':augmentation_hashes,'diversity_reference_pool':'original 400 canonical codes',
+        'training_persona_C_intervened':args.augmentation=='intervention',
+        'training_body_and_preferred_actions_preserved':True,'evaluation_rules_and_reward_unchanged':True,
         'cfg':vars(cfg),'encoder_array_sha256':hashlib.sha256(args.embeddings.read_bytes()).hexdigest(),
         'world_or_reward_changed':False,'cloud_calls':0})
     start=time.monotonic();all_e=torch.from_numpy(train_emb).to(trainer.device)

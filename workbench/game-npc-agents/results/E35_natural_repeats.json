@@ -1,0 +1,89 @@
+{
+  "batch": {
+    "seeds": [
+      3502,
+      3503
+    ],
+    "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "load_seconds_once": 97.43775014800485,
+    "world_and_memory_reset_per_seed": true,
+    "new_calls_list_per_seed": true,
+    "sampling_seed_explicit_per_call": true,
+    "cloud_calls": 0,
+    "script_sha256": "6fb636f0c94b45b73272a4b68fd3851921d4e31931379666bc005edcb69d62c0"
+  },
+  "episodes": {
+    "3502": {
+      "backend": "local",
+      "seed": 3502,
+      "frames": 1200,
+      "stop_reason": "episode_complete",
+      "error": null,
+      "root_parser_calls": 19,
+      "root_legal": 19,
+      "model_calls": 129,
+      "calls_by_tool": {
+        "conversation_outcome": 10,
+        "day_outline": 3,
+        "hourly_plan": 3,
+        "immediate_plan_revision": 4,
+        "minute_plan": 10,
+        "record_insight": 24,
+        "salient_questions": 8,
+        "score_memories": 19,
+        "speak": 27
+      },
+      "planner_sources": {
+        "Diego Torres": "llm",
+        "Professor Tanaka": "llm",
+        "Sofia Ramirez": "llm"
+      },
+      "conversations": 5,
+      "prompt_tokens": 124859,
+      "completion_tokens": 12066,
+      "model_load_seconds": 0.0002536769607104361,
+      "run_seconds": 712.9650234929868,
+      "wall_seconds": 712.9652789209504,
+      "cloud_calls": 0,
+      "scientific_increment": 0,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e35_natural_repeats/seed3502",
+      "preflight_tools": []
+    },
+    "3503": {
+      "backend": "local",
+      "seed": 3503,
+      "frames": 1200,
+      "stop_reason": "episode_complete",
+      "error": null,
+      "root_parser_calls": 24,
+      "root_legal": 24,
+      "model_calls": 166,
+      "calls_by_tool": {
+        "conversation_outcome": 16,
+        "day_outline": 3,
+        "hourly_plan": 3,
+        "immediate_plan_revision": 2,
+        "minute_plan": 15,
+        "record_insight": 30,
+        "salient_questions": 10,
+        "score_memories": 24,
+        "speak": 39
+      },
+      "planner_sources": {
+        "Diego Torres": "llm",
+        "Professor Tanaka": "llm",
+        "Sofia Ramirez": "llm"
+      },
+      "conversations": 8,
+      "prompt_tokens": 152121,
+      "completion_tokens": 15599,
+      "model_load_seconds": 0.0013265510206110775,
+      "run_seconds": 835.1230571629712,
+      "wall_seconds": 835.1243851690087,
+      "cloud_calls": 0,
+      "scientific_increment": 0,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e35_natural_repeats/seed3503",
+      "preflight_tools": []
+    }
+  }
+}

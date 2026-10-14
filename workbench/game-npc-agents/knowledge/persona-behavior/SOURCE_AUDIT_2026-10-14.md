@@ -99,3 +99,13 @@
 ## 外部原生游戏恢复补充（E38，2026-10-14）
 源码事实：当前可执行clean CNN分支的personas_v0含10train／2held，action_prior存在于JSON但clean trainer不读取；默认环境reward不按persona赋值，collective_reward_alpha默认0。CNN特征、persona projection与trajectory encoder的共同梯度路径须与Mini-Inzoi分支区别。原wrapper seed参数未使用，builder.draws Python random seed；E38记录到两个环境build settings、env_seed与Lab2d.start seed相同而RGB／return不同。原因尚未核对，不称论文种子无效。
 本地事实：复用Conda lightwam＋隔离overlay恢复原DMLab2D1.0.0，完整CPU自然结束episodes已运行，NOOP与移动控制、苹果／zap等事件可记录。依赖TensorFlow2.18.1／chex.1.87与作者lock不同，记录在manifest；这些是引擎资格，尚未构成训练方法结果。PHASE5所述balanced／candidate-pool脚本尚在追踪作者指明分支，不以主分支暂未见作论文判断。
+
+## E38 最新源码纠正及三条路径的边界
+
+**源码事实：** 原clone启用了sparse checkout，根src/与scripts/在Git树中一直存在，但初始工作目录未materialize。隔离research/meltingpot分支4fbbffa现已补齐，run_phase5_balanced.py、src/training/cleanrl_ppo与build_persona_embeddings_qwen.py均可读。前文“未定位”的不确定性撤销；原因是本地检出范围。根PHASE5明确采用独立动作+reward GRU及64→1024 InfoNCE头，离散采样buffer阻断到actor的梯度，作者代码也明确解释这种设计。这种读出与政策的分离有作者ownership，不是我们的新贡献。
+
+**数值与本地执行事实：** E38公开12向量按原FP32生成脚本高精度复现（逐人cos≥.999999999995）。left padding配attention_mask.sum−1绝对索引使11/12取到错误token；正确last-real与单条编码max abs5.59e−7，原asset与正确pool cos.227–1。全部public强asset和正确pool五seed×Full/No、作者1M/alpha.1配置已完成，旧资产与所有负结果保留。详见E38卡和E38_embedding_qualification.json。这是工程资格修复，正确pool已有算法owner。
+
+**解释：** research/Mini-Inzoi的InfoNCE影响φ/η，research/clean CNN-FiLM又共享CNN特征，根PHASE5则独立读出；不能将一个分支的梯度或bug外推其他分支。根报告的平衡采样、pool修正、投影几何等均属强近邻已有结果。我们当前追问功能性属性编辑、实际利益和长程轨迹形成条件，而非重新发现读出分离。
+
+**尚未排除：** PHASE5参数梯度拓扑需数值复核，未完成其全部8seed本地再训练；native同seed不能byte复现的剩余随机性仍未知；CNN局部状态响应不保证长期目标或独立人格构念。完整原生评测预先登记，不能用partial-rollout训练日志替代完整收益，也不用工程错误制造科学gap。
