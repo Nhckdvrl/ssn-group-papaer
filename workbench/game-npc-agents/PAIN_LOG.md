@@ -1,5 +1,8 @@
 # 本地痛点与意外现象
 
+## P12 · 2026-10-14 · 用户科研审计：将工程数据流误当科学机制，独立场景不足
+用户明确冻结小模型RL、全图漫游和无实体flag的case研究。E45/E49的conversation局部改写保留为局部组件实验，撤销其作为完整persona干预的资格；E48只阻止agenda，不阻止memory，不能据此断言承诺总因果效应为零。当前要回答：同一NPC的原生任务与外来请求争用同一实体资源时，persona影响承诺采纳、计划选择、真实分配的哪一阶段？普通信息恢复、礼貌表达、任务能力与承诺采纳是竞争解释。I04/E50用原作者实体任务及未见图级样本辨别，不再加旧QA实验。
+
 ## P01 · 2026-10-14 · 本地依赖/运行路径恢复（工程痛点，不是科学增量）
 ActionCastle首次导入缺prompty/aiofiles：现有Conda fgvd加隔离依赖overlay后CPU闭环8/8通过。PCSP原测试在PettingZoo1.24.3因AgentSelector导入失败；改用1.25.0后重试，原失败日志保留。
 Qwen3-32B单GPU权重成功加载61.03 GiB，但vLLM0.23.0/flashinfer采样kernel warmup找不到PATH中的ninja，尚未发生模型推理。需完整Conda激活，或明确使用已有非flashinfer采样器。工程失败不能当“persona行为失败”。版本、log与资产见E07/E08。

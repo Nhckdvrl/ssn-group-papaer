@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：按用户要求，本轮分析收尾后暂停新增实验。** 最新入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)，涵盖入手方法、已运行实验、正负结果、限制和恢复入口。后续接手不自动启动E43或E42额外对照；暂停不等于关闭研究线。
+**执行：2026-10-14用户已明确恢复，并下达科研审计与冻结指令。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04承诺冲突裁决](ideas/I04-commitment-conflict-stage-arbitration.md) 与 [E50决策快照](experiments/E50-commitment-decision-snapshots.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
