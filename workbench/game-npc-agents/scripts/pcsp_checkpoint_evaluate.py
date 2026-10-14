@@ -56,7 +56,9 @@ def main():
                  'J_H_given_L': mean('low', 'J_high'), 'J_L_given_H': mean('high', 'J_low'),
                  'J_L_given_L': mean('low', 'J_low'), 'high_goal_effect': x, 'low_goal_effect': y,
                  'classification': 'low_input_dominates' if x < 0 and y < 0 else 'high_input_dominates' if x > 0 and y > 0
-                                   else 'preference_crossover' if x > 0 and y < 0 else 'reverse_crossover'})
+                                   else 'preference_crossover' if x > 0 and y < 0
+                                   else 'reverse_crossover' if x < 0 and y > 0
+                                   else 'exact_tie' if x == 0 and y == 0 else 'one_goal_exact_tie'})
     result = {'training_seed': args.seed, 'completed_iterations': args.iteration,
          'native': summaries['native'], 'semantic': summaries['semantic'], 'interest': summaries['interest'],
          'interest_four_cells': cells, 'wall_seconds': time.monotonic()-start,

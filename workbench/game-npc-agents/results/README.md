@@ -40,3 +40,8 @@ E06是统领基线准入卡，实际执行由E07及后续卡记录；旧E00/E02�
 | E32 | [固定state语义选择性](E32_semantic_selectivity.json)，Full等义JS下降、保留90.7%不同角色响应；单训练seed，仅候选机制线索 |
 
 E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮运行中；严格fresh AEC与原helper3200帧byte同一，不把早期方向变化当淘汰依据。E36：[同角度功能响应](E36_latent_response_i30.json)，CPU2.94秒，距离收缩、整体gain和方向响应可出现不同组合，保留逐人物差异继续研究。
+
+- E35完整原三人NPC：[结果](E35_original_cast_complete.json)，1200帧／129本地calls／完整独立回放一致，成功与未观察的承诺分开。
+- E37：[功能机会图](E37_functional_opportunities.svg)与[事后完整解释](E37_reward_opportunities_posthoc.json)，没有删去利益相容的状态。
+- E39：[30轮](E39_direction_transport_i30.json)／[100轮](E39_direction_transport_i100.json)，跨角色方向与原生利益的局部因果诊断，不是自然文本能力或长期效用。
+- E38：原生MeltingPot恢复及同seed剩余随机性见E38_native_cpu_v5.json；CNN完整默认预算三seed×Full/No训练中，0付费API。

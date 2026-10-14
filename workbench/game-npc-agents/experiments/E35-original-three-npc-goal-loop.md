@@ -23,3 +23,5 @@ CPU gate：作者63tests／12.25秒；原场景1200ticks、26/26 root parser合�
 适配记录：首local运行载入487.23秒后因descriptor缺provider失败，0模型calls／0frames；该记录保留/tmp/npc_e35_local。补provider=local-vllm（只作原native分支和manifest元数据，实际factory全部override且云guard），CPU preflight走过三个角色共9个原planning calls，.317秒无错误；preflight返回None触发static属于接入测试，不计模型能力。随后同seed3501原任务重跑，输出/tmp/npc_e35_local_v2，不换seed。
 
 首次本地模型实际运行1184/1200 ticks、120calls、20/20 root parser合法、4次自然对话、8份双方outcome，三人planner均llm。120-call自设上限导致partial，记录保留。原resume实现明确只恢复memory／位置／schedule cursor，不恢复物品／perform timer／conversation cooldown，不能视为精确续跑。因此采用原strict cassette从初始世界重放：1184帧全部逐帧一致、120次响应全部匹配；第1185tick确需新回答。现只用同一27B和原调用序列seed续完剩余16ticks，未改world或fallback。后续有限episode默认不再额外设置call／墙时截断。
+
+完整结果：1200/1200帧、129次真实本地调用、20/20 root合法、5次自然对话／10份双方outcome；续跑新增9calls中5speak、2outcome、2immediate plan revision。原1184帧逐帧精确重放，合并cassette独立零模型回放后全部1200帧与续跑一致。总0付费API。教授给Sofia讲解、Diego吸收建议并返回Meyerson素描是正面成功证据；第五次对话刚形成新即时承诺，episode边界后尚未观察，不能记失败。教学等语言行为与书写／交接marker的物理状态分开；不能从对话中的动作描述自动推定物品状态。原始资产已持久保存cache/runs/e35_original_cast/，结果results/E35_original_cast_complete.json。

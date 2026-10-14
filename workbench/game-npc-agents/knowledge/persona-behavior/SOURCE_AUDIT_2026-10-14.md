@@ -95,3 +95,7 @@
 
 ## 评估信息时序补充
 源训练collect_rollout与原_rollout_persona逐actor读取fresh obs；E25/E26部分mixed-native评估在cycle开头统一计算16人的动作，因此后面actor没有看见同cycle前面actor刚产生的变化。物理／奖励仍是原引擎，但不是相同信息协议。旧utility数字保留其任务绑定限定，不作与新fresh-AEC训练曲线的纯轮数对比。E33已逐actor取fresh obs；E34所有阶段统一fresh并做原helper3200frames byte replay。C01未受影响、仍L1。
+
+## 外部原生游戏恢复补充（E38，2026-10-14）
+源码事实：当前可执行clean CNN分支的personas_v0含10train／2held，action_prior存在于JSON但clean trainer不读取；默认环境reward不按persona赋值，collective_reward_alpha默认0。CNN特征、persona projection与trajectory encoder的共同梯度路径须与Mini-Inzoi分支区别。原wrapper seed参数未使用，builder.draws Python random seed；E38记录到两个环境build settings、env_seed与Lab2d.start seed相同而RGB／return不同。原因尚未核对，不称论文种子无效。
+本地事实：复用Conda lightwam＋隔离overlay恢复原DMLab2D1.0.0，完整CPU自然结束episodes已运行，NOOP与移动控制、苹果／zap等事件可记录。依赖TensorFlow2.18.1／chex.1.87与作者lock不同，记录在manifest；这些是引擎资格，尚未构成训练方法结果。PHASE5所述balanced／candidate-pool脚本尚在追踪作者指明分支，不以主分支暂未见作论文判断。

@@ -1,34 +1,26 @@
 # Game NPC Agents — 游戏中的自主非玩家角色
 
-**状态：PROPOSED，当前驻留矿区 A：Persona / Character Identity ↔ Strategic Behavior。** 这是用户于 2026-10-14 选定的**本轮探索优先级**，并不意味着已证明言行解耦，也**不覆盖整个领域**。全局 ACTIVE 名额与其他 workbench 不变。
+**状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-## 两个层次，严格分开
-- **领域整体：** 游戏内 RPG、社会角色、队友、敌人、商人等 NPC 的行动、人物、记忆、安全、经济、协作、训练、具身与玩家体验。[完整领域地图](knowledge/DOMAIN_ATLAS.md)是长期总入口，任何一个矿区都不能将其删除。
-- **当前矿区 A：** 人物设定/自述、与具体游戏决策相关的意图、实际策略选择和世界后果之间是什么关系？当 NPC 面临真实的玩家请求、利益约束与角色目标时，哪些控制信号真正影响其行动？优先**现象/测量/机制**，必要时发展训练/控制方法。只需证明游戏 NPC 中有意义的认识，不强制每个实验涉及3D或完整商业游戏。
+## 当前研究动作
 
-**禁止再次把“LLM自称人格却不行动”当新发现：** ICML2026 *The Personality Illusion* 已报告自述/行为不可靠；2026作者公开的 *Rethinking Psychometric Evaluation* 进一步指出人格测量粒度/会话上下文影响预测；2026 *The Story Shapes the Agent* 报告叙事背景强烈影响相同决策结构的 agent 策略；PCSP 自己的独立行为评估也有不同于内部指标的结果。具体贡献距离见 [矿区 A 文献图](knowledge/persona-behavior/RELATED_WORK.md)。
+追问同样的角色属性变化，何时改变利益取舍、何时只改变可替代的行为；以及这些控制路径怎样随训练形成。依据真实轨迹发展解释和方法，不先规定GRPO／steering／新损失，也不用自设MIE、通过比例或噪声倍数判科学价值。
 
-## 唯一当前执行入口
-| 层次 | 文件 |
-|---|---|
-| **直接交给本地 Agent** | [LOCAL_AGENT_START.md](LOCAL_AGENT_START.md) |
-| 当前研究问题/竞争解释 | [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) |
-| 矿区 A 的原始研究认知 | [knowledge/persona-behavior/README.md](knowledge/persona-behavior/README.md) |
-| 已有最强文献与不能冒领的点 | [knowledge/persona-behavior/RELATED_WORK.md](knowledge/persona-behavior/RELATED_WORK.md) |
-| 作者代码已核部分与待审路径 | [knowledge/persona-behavior/CODE_AUDIT.md](knowledge/persona-behavior/CODE_AUDIT.md) |
-| 自然数据、对照和初步可否决实验设计 | [experiments/E06-persona-strategy-baseline.md](experiments/E06-persona-strategy-baseline.md) |
-| 知识库全域导航 | [knowledge/README.md](knowledge/README.md) |
-| 运行资源/来源/观测纪律 | [LOCAL_FIRST.md](LOCAL_FIRST.md)、[BASELINES.md](BASELINES.md)、[knowledge/MEASUREMENT.md](knowledge/MEASUREMENT.md) |
-| 当前主张/痛点/结果 | [CLAIMS.md](CLAIMS.md)、[PAIN_LOG.md](PAIN_LOG.md)、[results/README.md](results/README.md) |
+- **原生NPC闭环：** ActionCastle／LIGHT已恢复。E35在agent-sandbox原三人校园世界完成1200帧、129次本地27B调用、20/20合法root动作、5次自然对话和10份双方outcome；完整cassette独立回放1200帧一致。教授帮助Sofia、Diego吸收建议后素描是正面对应实例；新增承诺超出episode边界的不记失败。
+- **PCSP完整预算：** E34正确编码、原作者300轮预算，三seed×Full／No从头训练中。30与100轮原生收益排序变化，所有阶段／seed保留。CPU对小MLP更快，GPU留给CNN和本地语言模型。
+- **功能测量：** E37同人物／状态／latent幅度，分开测等义变化、C属性编辑和作者原生收益方向；60000动作累计reward完全重建。E39跨人物交换方向并加入局部功能参考，拆表征方向与控制响应。当前继续查状态分布／人物利益结构等解释，尚不据此推一般能力结论。
+- **独立战略环境：** E38恢复原MeltingPot2.4.0／DMLab2D1.0.0，CPU完整原生episode可运行；可执行clean CNN分支三seed×Full／No、原默认500k transitions训练中。PHASE5报告的balanced脚本在已核对分支仍未定位，报告与本地可执行复现分开。
 
-## 目录简化
-旧的 `RESEARCH_TERRITORIES.md` 与过时 `configs/entry_manifest.json` 已从当前 HEAD 清除。未执行且因用户明确变更选题而失效的 E00/E02–E05 实验卡也移出当前树：可在[历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)和 git 中追溯，**不是实验否定/科研失败**。E01 实际 CPU 源码检查、全部深读论文卡及领域安全/经济知识库保留。新的 E06 只是**PLANNED，未运行**。
+[实验卡](experiments/) · [结果与校对](results/README.md) · [完整日志](logs/2026-10-14.md) · [I02形成机制](ideas/I02-causal-separation-of-role-control-and-readout.md) · [主张账本](CLAIMS.md)。C01仍为L1基线可行性；研究主张根据证据继续形成。
 
-## 实验与资源现状
-2026-10-14已跑通ActionCastle与LIGHT本地原生闭环。E14自然12图×3seed为266/273合法、36/36原作者目标event执行；E15意图差异被抽样噪声吸收。E20/E21各36双角色episodes完成，E22权限机制未获支持。PCSP E23/24确认公开编码批次混杂及原生utility影响，已有正确pool解决；E25正确编码三路30iter控制完成，η-only检索升但policy/utility同一。E26顺序敏感没有Full独有排序；E27支持真实code行为控制及环境信息并存；E28坐标机制pilot效应太小，负结果保留。E29/30同仓原生成式NPC完成boil物理目标；E30本地LLM规划/修订/评分/反思18calls，plan_source=llm（单episode）。[结果与校对清单](results/README.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[日志](logs/2026-10-14.md)。**C01仍L1；当前探索形成路径、语义控制及原生目标互动，证据见各实验卡。**
+## 阅读与执行入口
+
+[LOCAL_AGENT_START](LOCAL_AGENT_START.md) · [EXPLORATION_ENTRY](EXPLORATION_ENTRY.md) · [领域地图](knowledge/DOMAIN_ATLAS.md) · [人格—行为知识](knowledge/persona-behavior/) · [源代码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md) · [强近邻定位](knowledge/persona-behavior/RELATED_WORK.md)。源代码事实、我们的解释与未排除的竞争解释分别记录。
+
+不自动恢复已撤出的E00／E02–E05，不建立第二套工作台。优先原作者人物／目标／合法动作与实际后果；自述表达、特定场景意图和执行策略分开；抽象标签不对应唯一正确动作。
 
 ## 资产位置与重建
-模型复用HuggingFace缓存，完整rollout/LLM输入输出不进Git，位于本机 `/home/xiang/.cache/game-npc-research/runs/`；E32及新近邻资产另在 `/tmp/npc_*`，具体路径/hash见卡片；上游源码/paper分别在同缓存 `sources/` / `papers/`，commit与PDF hash见 `results/E08_sources.json`。用 `scripts/native_actioncastle.py` 和E07卡重跑；现有Conda fgvd配合隔离deps overlay，具体版本由每次manifest固定。用户已授权七节点全部GPU，07:00 Asia/Tokyo起本项目最多8卡，优先现有Conda/venv；零付费API与单节点优先见LOCAL_FIRST。
 
-## 当前科学判断
-E09的literal-location与格式校对不能合并：Qwen32单句2/9→6/9经POST-HOC唯一房间审计仅5/9→6/9；Gemma原本9/9知自己位置但动作仍常非法。E10/E12的raw parser数包含递归，已独立重建root归因，不把子命令当新模型选择。E14首2条speech载荷遗漏是本地adapter错误，通信证据降级后全量重跑，不归因NPC失败。强近邻新加入ReflAct、ReFract、FAccT2026 Identity Overrides Incentives；不冒领goal-state reflection、role gate、Persona×payoff交互。没有建立新的策略/人格科学主张。
+完整轨迹、checkpoint、模型输入输出保存在`/home/xiang/.cache/game-npc-research/runs/`，不进Git；E35完整三人轨迹在`e35_original_cast/`。模型复用HuggingFace缓存；上游源码在同缓存`sources/`，版本与hash见各结果manifest。原PCSP主pin5420f7b与MeltingPot隔离分支4fbbffa分别保留，不改运行中源码。
+
+环境优先现有Conda／venv：NPC／Mini-Inzoi用fgvd＋deps overlay，MeltingPot用lightwam＋项目隔离overlay。用户已授权七节点全部GPU；07:00 Asia/Tokyo起本项目最多8卡，不干扰其他任务。核心链路零付费API，不允许SDK云端fallback。依据实际计算特点使用GPU；先原生完整episode再扩大。

@@ -1,0 +1,93 @@
+{
+  "substrate": "commons_harvest__open",
+  "seed": 3801,
+  "source_sha": "5420f7b4fa0fdb6110e131402af9f5386ce2d0cf",
+  "upstream_setup_sha256": "8e7780d1ca9faea05984efafac27639c1d0634d9a5e0be44412754288ecb9a95",
+  "versions": {
+    "dmlab2d": "1.0.0",
+    "tensorflow-cpu": "2.18.1",
+    "numpy": "1.26.4",
+    "chex": "0.1.87",
+    "jax": "0.4.35",
+    "torch": "2.7.1+cu128"
+  },
+  "episodes": [
+    {
+      "repeat": 0,
+      "steps": 1199,
+      "agents": 7,
+      "legal_actions": 8393,
+      "n_actions": 8,
+      "rgb_shape": [
+        7,
+        88,
+        88,
+        3
+      ],
+      "native_return_per_agent": [
+        8.0,
+        65.0,
+        37.0,
+        13.0,
+        21.0,
+        29.0,
+        26.0
+      ],
+      "events": 264,
+      "rgb_changed_after_noop_window": false,
+      "rgb_changed_after_forward_window": true,
+      "seconds": 1.2885551449726336,
+      "engine_terminated": true
+    },
+    {
+      "repeat": 1,
+      "steps": 2199,
+      "agents": 7,
+      "legal_actions": 15393,
+      "n_actions": 8,
+      "rgb_shape": [
+        7,
+        88,
+        88,
+        3
+      ],
+      "native_return_per_agent": [
+        24.0,
+        45.0,
+        47.0,
+        10.0,
+        71.0,
+        60.0,
+        21.0
+      ],
+      "events": 429,
+      "rgb_changed_after_noop_window": false,
+      "rgb_changed_after_forward_window": true,
+      "seconds": 1.9417535809916444,
+      "engine_terminated": true
+    }
+  ],
+  "repeat_controls": {
+    "actions_byte_equal": false,
+    "reward_byte_equal": false,
+    "all_rgb_hashes_equal": false,
+    "all_events_equal": false
+  },
+  "cloud_calls": 0,
+  "gpu_used": false,
+  "scope": "Engine qualification with fixed legal action controls; no trained NPC or personality result.",
+  "seed_note": "Original wrapper ignores seed argument. Config lazy imports are warmed before Python random is seeded; actual native seeds/settings recorded.",
+  "engine_builds": [
+    {
+      "env_seed": "1026200207",
+      "settings_sha256": "eac3dfa10c6ed032b980658bec5b29e359807186b6b6ba79394b5a02f1ab85d4"
+    },
+    {
+      "env_seed": "1026200207",
+      "settings_sha256": "eac3dfa10c6ed032b980658bec5b29e359807186b6b6ba79394b5a02f1ab85d4"
+    }
+  ],
+  "world_or_reward_modified": false,
+  "wall_seconds": 3.261737435008399,
+  "script_sha256": "e37e83ee8a2892de21f7a5af82ad599d50a7636e9f67e09c9bc7050db8884d59"
+}

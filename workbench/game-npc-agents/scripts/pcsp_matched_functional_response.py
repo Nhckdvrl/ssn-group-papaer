@@ -16,6 +16,8 @@ def main():
     ap.add_argument('--source', type=Path, default=Path('/home/xiang/.cache/game-npc-research/sources/pcsp'))
     ap.add_argument('--runs', type=Path, default=Path('/home/xiang/.cache/game-npc-research/runs'))
     ap.add_argument('--iteration', type=int, choices=[30, 100, 300], required=True)
+    ap.add_argument('--state-directory', type=Path)
+    ap.add_argument('--state-route', choices=['no', 'full'], default='no')
     ap.add_argument('--out', type=Path, required=True)
     args = ap.parse_args(); args.out.mkdir(parents=True, exist_ok=False)
     sys.path.insert(0, str(args.source / 'research'))
@@ -28,9 +30,9 @@ def main():
     from pcsp_observation_rewards import reward_vector
     torch.set_num_threads(1); start = time.monotonic()
     root = args.runs
-    native = root / 'e34_eval_s42_i30/native'
+    native = args.state_directory or root / 'e34_eval_s42_i30/native'
     manifest = json.loads((native / 'manifest.json').read_text())
-    with np.load(native / 'no_native.npz') as d:
+    with np.load(native / f'{args.state_route}_native.npz') as d:
         observations = d['obs']; actions = d['actions']; total_rewards = d['rewards']
         native_ids = d['ids']; worlds = d['world_seeds']
     definitions = json.loads((args.source / 'research/data/personas/test_100_v3.json').read_text())
@@ -163,7 +165,7 @@ def main():
         'readouts': summaries, 'controls': controls, 'policy_hashes': hashes,
         'reward_reconstruction': {'native_transitions': len(actions)*actions.shape[1],
             'native_episodes': len(actions), 'maximum_total_reward_abs_error': max(native_errors), 'mean_total_reward_abs_error': float(np.mean(native_errors))},
-        'state_source': str(native), 'observation_timing': manifest['observation_timing'],
+        'state_source': str(native), 'state_route': args.state_route, 'observation_timing': manifest['observation_timing'],
         'interpretation': 'Immediate author-defined reward, not long-term utility or psychometric validity. Mid-C roles have two edits; they are not independent personas. All seeds retained; no scientific cutoff.',
         'wall_seconds': time.monotonic()-start, 'cloud_calls': 0,
         'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}

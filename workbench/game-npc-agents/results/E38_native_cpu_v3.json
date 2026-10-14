@@ -1,0 +1,83 @@
+{
+  "substrate": "commons_harvest__open",
+  "seed": 3801,
+  "source_sha": "5420f7b4fa0fdb6110e131402af9f5386ce2d0cf",
+  "upstream_setup_sha256": "8e7780d1ca9faea05984efafac27639c1d0634d9a5e0be44412754288ecb9a95",
+  "versions": {
+    "dmlab2d": "1.0.0",
+    "tensorflow-cpu": "2.18.1",
+    "numpy": "1.26.4",
+    "chex": "0.1.87",
+    "jax": "0.4.35",
+    "torch": "2.7.1+cu128"
+  },
+  "episodes": [
+    {
+      "repeat": 0,
+      "steps": 2599,
+      "agents": 7,
+      "legal_actions": 18193,
+      "n_actions": 8,
+      "rgb_shape": [
+        7,
+        88,
+        88,
+        3
+      ],
+      "native_return_per_agent": [
+        17.0,
+        103.0,
+        49.0,
+        34.0,
+        65.0,
+        12.0,
+        60.0
+      ],
+      "events": 525,
+      "rgb_changed_after_noop_window": false,
+      "rgb_changed_after_forward_window": true,
+      "seconds": 2.032433300977573,
+      "engine_terminated": true
+    },
+    {
+      "repeat": 1,
+      "steps": 1699,
+      "agents": 7,
+      "legal_actions": 11893,
+      "n_actions": 8,
+      "rgb_shape": [
+        7,
+        88,
+        88,
+        3
+      ],
+      "native_return_per_agent": [
+        9.0,
+        62.0,
+        72.0,
+        11.0,
+        11.0,
+        25.0,
+        24.0
+      ],
+      "events": 349,
+      "rgb_changed_after_noop_window": false,
+      "rgb_changed_after_forward_window": true,
+      "seconds": 1.0973538649850525,
+      "engine_terminated": true
+    }
+  ],
+  "repeat_controls": {
+    "actions_byte_equal": false,
+    "reward_byte_equal": false,
+    "all_rgb_hashes_equal": false,
+    "all_events_equal": false
+  },
+  "cloud_calls": 0,
+  "gpu_used": false,
+  "scope": "Engine qualification with fixed legal action controls; no trained NPC or personality result.",
+  "seed_note": "Original PCSP wrapper ignores seed argument. Python random is seeded before original builder draws env_seed.",
+  "world_or_reward_modified": false,
+  "wall_seconds": 3.2905534339952283,
+  "script_sha256": "07b3bdfa58f89905c70f1ba0bdf3b546fdef54c23aa53cf726c066106b313f36"
+}
