@@ -26,3 +26,7 @@
 ## 强近邻的定位意义
 
 Personality Illusion与Rethinking Psychometric测量粒度不同，Story Shapes已有多阶段叙事游戏，Persona Vectors已有策略向量干预。PASB正文还直接研究state-write、status promotion、attribution removal及scope broadening；PM-Bench研究延迟意图。它们提供现成解释与技术参考，不能当“已有所以不能碰”的墙，也不能把状态词实验单独换名为新发现。我们的增量要由跨原生游戏中的角色目标、社会取舍和实际后果，以及能预测矛盾对的内部因果证据产生。
+
+
+## 独立确认后的更新
+E55的200新世界已在32B/Gemma确认人物设定作用于实际交付（+13.7pp/+6.7pp），普通grounding后仍在。E56进一步发现，明确结束对话阶段解释了大部分原无动作；原状态holder与请求命令多数能独立答对。因而“人格丢失”不再用来解释这些无动作。E54自然文本中多数是拒绝/条件协商，少数出现尚未执行却说已交付；文本、可读取事实和真实决策分开。完整数值与仍未解决的差异见 [原生结果综合](NATIVE_ROLE_RESULTS_2026-10-15.md)。E57已沿原任务进行双角色互动，观察人物影响取得资源的手段、时间和不可逆消费，不锁定特定模块或公式。

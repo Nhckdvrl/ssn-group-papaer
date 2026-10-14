@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：用户已恢复，并要求2026-10-15继续按大问题探索。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[E54自然文本标注](experiments/E54-natural-dialogue-data-labels.md) 与 [E55独立原生确认](experiments/E55-independent-native-role-confirmation.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：用户已恢复，并要求2026-10-15继续按大问题探索。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[E54自然文本标注](experiments/E54-natural-dialogue-data-labels.md) 、[E55独立原生确认](experiments/E55-independent-native-role-confirmation.md) 与 [E57原任务互动](experiments/E57-native-private-goal-interaction.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
@@ -13,7 +13,8 @@
 - **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
 - **阶段与渠道：** 32B 的单 seed 2×2 阶段干预已完成；固定下游人设，conversation 人设的请求转移效应约 +15pp，固定 conversation 的下游合并效应约 +2.5pp。完整渠道低于 agenda-only；agreeable 渠道交互 −11.7pp，95%[−20.8,−2.5]。当前检查的是承诺如何传递及被重新裁决。
 - **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。E53的32B直接决策40图×三seed已完成：原人物差+11.7pp [4.2,20.0]，不同任务执行状态记录可放大或压平人物差；E54检查这些语义在自然文本中多常见，E55以普通一句事实指令为强对照。
-- **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，初轮151保留／40复核／9拒绝，动作对应字段歧义另澄清。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
+- **独立确认与解释：** 200新世界×三seed，32B/Gemma各5600完整分支；实际请求人物差+13.7pp [9.7,17.8]/+6.7pp [4.3,9.3]。E56阶段结束一句恢复大量原目标行动，接受普通指令范围解释；数值与下一步见 [综合结果](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。E57已启动39原世界的双私有目标/动态伙伴/不可逆消费，两强模型全部三seed。
+- **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，澄清盲检185保留／14复核／1拒绝，全部200为主表；[派生请求与QC](results/E55_natural_requests.jsonl)已公开。E54全部720文本盲标注完成。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
 
 以下是已封存的基线背景，历史过程见进度报告；不按旧“下一步”恢复执行。
 
@@ -23,7 +24,7 @@
 - **独立战略环境：** E38恢复原MeltingPot2.4.0／DMLab2D1.0.0；26次默认/强/正确编码训练与360完整原生episode均完成。正确码Full−No团队return−12.54、五seed簇95%[−38.52,13.43]，内部读取38.1%/6.9%，不同层次分别解释。PHASE5源码稀疏检出遗漏已纠正，作者独立读出路径完成数值审计。
 - **自然角色测量（历史）：** E45–49 完成并在2026-10-14暂停收尾。E49复用三条自然历史，不将24后缀当24独立场景；校园讲课／画图文字不作实体完成判定。用户随后已恢复并要求关键决策切片重构。
 
-[实验卡](experiments/) · [结果与校对](results/README.md) · [当前日志](logs/2026-10-15.md) · [I04阶段裁决](ideas/I04-commitment-conflict-stage-arbitration.md) · [主张账本](CLAIMS.md)。C02／C03 是有范围的 pilot 科学主张，下一步以独立 200 图与机制对照检验。
+[实验卡](experiments/) · [结果与校对](results/README.md) · [当前日志](logs/2026-10-15.md) · [I04阶段裁决](ideas/I04-commitment-conflict-stage-arbitration.md) · [主张账本](CLAIMS.md)。C02已由独立200图确认至L2；C03保持范围明确的pilot。依据动态伙伴、原生前置条件与实体后果继续研究角色选择，不预定失效故事。
 
 ## 阅读与执行入口
 

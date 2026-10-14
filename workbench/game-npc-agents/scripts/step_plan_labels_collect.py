@@ -10,7 +10,9 @@ from pathlib import Path
 def collect(root):
     public = {r['annotation_id']:r for r in json.loads((root/'public_data.json').read_text())}
     rows, batches = {}, []
-    for d in sorted(root.glob('labels_*')):
+    directories=sorted(list(root.glob('labels_*'))+list((root/'recovery_medium64k').glob('labels_*')))
+    for d in directories:
+        if not d.is_dir():continue
         response = d/'response.json'
         if not response.exists(): continue
         result = json.loads(response.read_text())
@@ -18,7 +20,10 @@ def collect(root):
         expected = {r['annotation_id'] for r in json.loads(json.loads((d/'request.json').read_text())['messages'][1]['content'])}
         try:
             x = json.loads(result['choices'][0]['message']['content'])
-        except (KeyError, json.JSONDecodeError): continue
+        except (KeyError, json.JSONDecodeError):
+            partial=d/'partial_closed_rows.json'
+            if not partial.exists():continue
+            x=json.loads(partial.read_text())
         x = x.get('cases',x) if isinstance(x,dict) else x
         notes = []
         if isinstance(x,dict):
@@ -59,9 +64,9 @@ def collect(root):
                 flags['reinterpretation'] = not quote or any(quote in public[aid][s] for s in ['speech','memory'])
             except (AssertionError,KeyError,TypeError): continue
             assert aid not in rows, 'duplicate annotation ID'
-            r['quote_validation'] = flags; r['batch'] = d.name
+            r['quote_validation'] = flags; r['batch'] = str(d.relative_to(root))
             rows[aid] = r; valid.append(r)
-        batches.append({'batch':d.name,'expected':len(expected),'linked_labels':len(valid),'format_notes':notes,
+        batches.append({'batch':str(d.relative_to(root)),'expected':len(expected),'linked_labels':len(valid),'format_notes':notes,
                         'response_sha256':hashlib.sha256(response.read_bytes()).hexdigest()})
         (d/'parsed_recovered.json').write_text(json.dumps(valid,ensure_ascii=False,indent=2)+'\n')
     return public, rows, batches

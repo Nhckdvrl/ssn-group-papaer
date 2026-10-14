@@ -75,11 +75,11 @@ def build(dataset, sources):
     return public, mapping, expected
 
 
-def call(index, rows, key, out):
+def call(index, rows, key, out, max_tokens=32768, effort='high'):
     dest = out/f'labels_{index:03d}'; dest.mkdir(exist_ok=False)
     payload = {'model': MODEL, 'messages': [{'role':'system','content':PROMPT},
                 {'role':'user','content':json.dumps(rows,ensure_ascii=False)}],
-                'max_tokens':32768, 'reasoning_effort':'high', 'response_format':{'type':'json_object'}}
+                'max_tokens':max_tokens, 'reasoning_effort':effort, 'response_format':{'type':'json_object'}}
     (dest/'request.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
     session = requests.Session(); session.trust_env = False; start = time.monotonic()
     meta = {'endpoint':PLAN_URL,'model':MODEL,'cash_endpoint_calls':0,'npc_cloud_calls':0,'complete':False}

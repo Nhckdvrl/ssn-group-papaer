@@ -1,0 +1,1446 @@
+{
+  "graphs": 200,
+  "branches": 5600,
+  "expressions": 400,
+  "manifests": [
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_confirm_v2_complete_budget/snapshots.jsonl",
+        "quality": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_blind_review_clarified/quality.json",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e55_32b_confirm_s0",
+        "shard": 0,
+        "shards": 2,
+        "seeds": [
+          5501,
+          5502,
+          5503
+        ],
+        "prepare_only": false
+      },
+      "case_ids": [
+        "aa8a03f587c19122",
+        "f5b585f9340af087",
+        "1bf29268c50a8a65",
+        "bd24cc5779015241",
+        "e73ada333d7974ea",
+        "c7ecdae131c64491",
+        "9be386a190695e42",
+        "bb51e43fd61b638c",
+        "dc3125e8d9bd667e",
+        "0a307c9df373c517",
+        "96f69392fd1f0643",
+        "4f4dfd284f821a29",
+        "9419bbde4b38fcbb",
+        "c6bf95456badbed2",
+        "8e95e83715275c26",
+        "eecb1e851050522c",
+        "301b8a01f7a8c08e",
+        "88f1fb8d1dbab342",
+        "4a182cd504e4d0d6",
+        "b0a89a88818eefbe",
+        "fbfdb27c8bc31caf",
+        "a058d50c51505ea9",
+        "a6534644b81659d6",
+        "d524762ee8a481ab",
+        "ee234730afef695e",
+        "7cd8f2f3a6f69f02",
+        "092631f8790734bc",
+        "66007d98c559295a",
+        "8c5702fb5f398a13",
+        "18fa06170b224f77",
+        "441f9a5b5e3b9468",
+        "afe6bc4b79ce7e16",
+        "eb1e8a10c21a0a07",
+        "75980f8bdb6eecd2",
+        "004ddb15538a7b06",
+        "187a25b29749e709",
+        "f2c41229b5394d39",
+        "75fcdd394aafbc51",
+        "3f9bf4295b8173ff",
+        "a12c8ea3df0fdbc9",
+        "a3de944d62a44196",
+        "af588ad3eb3cc518",
+        "8daeb93cdc0a0b70",
+        "4bb99f6489e72a70",
+        "9f10dd1c0772e4a5",
+        "e56f7791f10b3ad6",
+        "7aef820eb25c6221",
+        "9b5ddbdb54fab276",
+        "ed07642e9c7df6bc",
+        "83347deaabddae3e",
+        "54fd80a87862f629",
+        "c7ab3c483dc97a76",
+        "c639254606db8156",
+        "c061e24a60072ee8",
+        "ce04a29974b03ab4",
+        "31c222a50bdff284",
+        "72a6eac9dcf336d4",
+        "15a354dfec344694",
+        "ac0fb75f1cef05eb",
+        "0fbfb8d890778069",
+        "8f6c369ddfa697ba",
+        "3a7798ad59f79540",
+        "c67c2235fc489663",
+        "a1c9a680b48807f9",
+        "48179d03cb66d955",
+        "ee5e2122e81784e3",
+        "18459d3f5a615679",
+        "f135a2e77acf2c30",
+        "ad0904638a1644a5",
+        "889c5de26e011aa7",
+        "3474564868aa6990",
+        "ea214b40fce741ec",
+        "9b295e697a01161e",
+        "8717be3e07c5768d",
+        "3053dfcac61b38cd",
+        "a44d34437c5f0189",
+        "7ff65d412e3a40f1",
+        "ade08e25f08b425d",
+        "9d986c90f7b96dc0",
+        "b28bfda61be68ddb",
+        "a721c85a0e80618e",
+        "995e95fac91da568",
+        "0ccf45d1cf63a270",
+        "2f6b3a680d6bdd74",
+        "1b46382d4d3601c4",
+        "6e674eebeb3a77b9",
+        "cadb083f6845f520",
+        "d98bb199ae788de4",
+        "f74c6adaa9df2732",
+        "b42b8d6856edfc46",
+        "f2b617c17e9363f3",
+        "04eb3077c9e27e31",
+        "226a78a898dbebf6",
+        "18811122cb171065",
+        "00bc0b4c412a4568",
+        "ec123c6a1ad1272a",
+        "733ecd1e961f9471",
+        "928e8bc523756b6b",
+        "c20d1c612a445202",
+        "629209538fb64b03"
+      ],
+      "conditions": [
+        "direct_request",
+        "direct_history",
+        "plan_raw",
+        "plan_grounded"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "controls": [
+        "force_own",
+        "force_request"
+      ],
+      "grounding_instruction": "Dialogue expresses intentions, and no physical game action has occurred yet; only actually executed game events can mark either task as completed, so record intentions separately from performed actions.",
+      "dataset_sha256": "a47f3c0798a0596240695b23cb889178d1c61ecfb4e112505bd7a79a038e628c",
+      "quality_sha256": "9b90533aae11703d26f183317ded9b8d69f97e98e7a491abb48228aa498c8c97",
+      "script_sha256": "2a97998af90891601198bedab81584271d374b17c221775ecdd41dd29f9871da",
+      "shared_helpers": {
+        "commitment_decisions_v2.py": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec",
+        "commitment_snapshots.py": "d79dae7b7091feeef245a874a049f76f5b2c54973ef3e8802d6e9d6babed0ad1",
+        "light_npc_episodes.py": "0063aecfce03d3845ebd5e988238db175e00a1605478777f51e50d8cd0d194b5"
+      },
+      "world_modified": false,
+      "cloud_calls": 0,
+      "selection": "all fixed confirm source graphs; quality only a reporting stratum"
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_confirm_v2_complete_budget/snapshots.jsonl",
+        "quality": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_blind_review_clarified/quality.json",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e55_32b_confirm_s1",
+        "shard": 1,
+        "shards": 2,
+        "seeds": [
+          5501,
+          5502,
+          5503
+        ],
+        "prepare_only": false
+      },
+      "case_ids": [
+        "cad2beddf4382a40",
+        "676eaa050d63be72",
+        "946de051b6f7b0bc",
+        "21a99f36ade488f8",
+        "4a38cdbaeee1441b",
+        "00826c1384a1cd61",
+        "851333b366a36288",
+        "8f2e5dfa3dbc78bc",
+        "f02444905f5d430b",
+        "09cb20c72dc950ba",
+        "20012688976467de",
+        "c2e550f4340cb521",
+        "0587967fb4038fea",
+        "e7c9f1bb7a7afa8b",
+        "1435165ae2541722",
+        "c08a7b9ab02dbb2f",
+        "5aff3a791f166044",
+        "fecb2ac6e66af54f",
+        "df43b7a04c08af22",
+        "4dd47b0be2bdb344",
+        "349227488bc20990",
+        "bc295d753d80f02f",
+        "fde69fb4fafca0db",
+        "466b7fd61422a2b3",
+        "8b2ab01144c42726",
+        "d7ebda0a15aba13c",
+        "62b283fb534b8131",
+        "2c5408a7d2526978",
+        "0b365c18a7d1f43c",
+        "5dbaa46ee67c0d30",
+        "d9d3dda668d2e06c",
+        "4cbbeb51d5f49092",
+        "0a146da36b6ba2aa",
+        "039f88bad884fcd1",
+        "0d26be23a02f2121",
+        "f262b4a9b3719daa",
+        "31de9f60651c9e87",
+        "9478a2b5b3429b79",
+        "03489b63a01320c0",
+        "75eaa9fc77f8de92",
+        "f5472c8734911637",
+        "62e940866e6e5b42",
+        "03e7b2e78e52b372",
+        "421d8c64d188be98",
+        "bdc536e4ad248170",
+        "2353caa95a94fbbb",
+        "a8f8c5be75878bd6",
+        "dd0ca30aceb1829c",
+        "87c2f9599ccb027e",
+        "d51b35f449d9bbcf",
+        "8344d5edb5fdf798",
+        "1659e185e240855d",
+        "ccca1f607b5c9db3",
+        "55dc3f4cbd6b5771",
+        "f2fb221bc44cfd28",
+        "2170564d05e803b4",
+        "cd49b3cb2819c2d5",
+        "4299ea8555c00615",
+        "ffbe502b7a44d24d",
+        "704894d4f06e8db6",
+        "abef95a56f536206",
+        "fe01b9d2a1c7462e",
+        "457701faf2f089ba",
+        "e8fd526562cef20d",
+        "471fceac3a9b772e",
+        "ce0d6b135ba65ff2",
+        "e77ee60f33b015dd",
+        "4864ac3dde639602",
+        "b245193acb124279",
+        "4dbde24e7ce1a4a2",
+        "370614f7bc4169c4",
+        "ab0ce35162ff5df1",
+        "0782a390d7b5d878",
+        "4ee55c75ce1c5cf5",
+        "356807bd3bfe2979",
+        "a8714f21a1c83709",
+        "d03ce876e274bab4",
+        "1da21b8e516da8c9",
+        "5d7b4f812950a048",
+        "7c1c6aef854528db",
+        "b76642fafec607c1",
+        "c0cd4835a3af790e",
+        "b620ae3c913d1b7d",
+        "62ca4d9b241e78c4",
+        "ee491b0fd19100ab",
+        "aa1165b8aa89e25c",
+        "7171c403d0cd00fc",
+        "4b4bf1f6a1a21eb9",
+        "4f6cad4af6e566f1",
+        "369be10263f03e7b",
+        "9ff4da9d4080fed3",
+        "52b36625db273bbb",
+        "55bdfa00fc2a572a",
+        "a9618fe29b5a8664",
+        "46bd97de01a53e1b",
+        "b7823e18ba445fc7",
+        "c712ab52988b89d2",
+        "fffecf62e9fd8d73",
+        "2a84728cf670c8e5",
+        "8015b45e38175f44"
+      ],
+      "conditions": [
+        "direct_request",
+        "direct_history",
+        "plan_raw",
+        "plan_grounded"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "controls": [
+        "force_own",
+        "force_request"
+      ],
+      "grounding_instruction": "Dialogue expresses intentions, and no physical game action has occurred yet; only actually executed game events can mark either task as completed, so record intentions separately from performed actions.",
+      "dataset_sha256": "a47f3c0798a0596240695b23cb889178d1c61ecfb4e112505bd7a79a038e628c",
+      "quality_sha256": "9b90533aae11703d26f183317ded9b8d69f97e98e7a491abb48228aa498c8c97",
+      "script_sha256": "2a97998af90891601198bedab81584271d374b17c221775ecdd41dd29f9871da",
+      "shared_helpers": {
+        "commitment_decisions_v2.py": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec",
+        "commitment_snapshots.py": "d79dae7b7091feeef245a874a049f76f5b2c54973ef3e8802d6e9d6babed0ad1",
+        "light_npc_episodes.py": "0063aecfce03d3845ebd5e988238db175e00a1605478777f51e50d8cd0d194b5"
+      },
+      "world_modified": false,
+      "cloud_calls": 0,
+      "selection": "all fixed confirm source graphs; quality only a reporting stratum"
+    }
+  ],
+  "runtimes": [
+    {
+      "graphs": 100,
+      "branches": 2800,
+      "calls": 8174,
+      "wall_seconds": 3502.613940735988,
+      "model_load_seconds": 45.01544072298566,
+      "cloud_calls": 0
+    },
+    {
+      "graphs": 100,
+      "branches": 2800,
+      "calls": 7807,
+      "wall_seconds": 3346.7899523889646,
+      "model_load_seconds": 45.314543052983936,
+      "cloud_calls": 0
+    }
+  ],
+  "cells": {
+    "firm/direct_request": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 60.0,
+      "own_count": 446.0,
+      "request": {
+        "mean": 0.1,
+        "graph_bootstrap_95": [
+          0.06333333333333332,
+          0.13999999999999999
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.7433333333333333,
+        "graph_bootstrap_95": [
+          0.6883333333333332,
+          0.7983333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.15666666666666665,
+        "graph_bootstrap_95": [
+          0.11166666666666666,
+          0.205
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.1983333333333333,
+        "graph_bootstrap_95": [
+          1.9716666666666667,
+          2.4383749999999997
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "firm/direct_history": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 19.0,
+      "own_count": 387.0,
+      "request": {
+        "mean": 0.03166666666666666,
+        "graph_bootstrap_95": [
+          0.013333333333333332,
+          0.05333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.645,
+        "graph_bootstrap_95": [
+          0.5882916666666667,
+          0.7000416666666668
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.3233333333333333,
+        "graph_bootstrap_95": [
+          0.26833333333333337,
+          0.38
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 3.07,
+        "graph_bootstrap_95": [
+          2.805,
+          3.3500833333333335
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "firm/plan_raw": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 37.0,
+      "own_count": 532.0,
+      "request": {
+        "mean": 0.06166666666666666,
+        "graph_bootstrap_95": [
+          0.03666666666666666,
+          0.08837500000000015
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.8866666666666666,
+        "graph_bootstrap_95": [
+          0.8516666666666666,
+          0.92
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.05166666666666666,
+        "graph_bootstrap_95": [
+          0.03166666666666666,
+          0.075
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.875,
+        "graph_bootstrap_95": [
+          1.7383333333333335,
+          2.021666666666667
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "firm/plan_grounded": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 30.0,
+      "own_count": 540.0,
+      "request": {
+        "mean": 0.05,
+        "graph_bootstrap_95": [
+          0.026666666666666665,
+          0.07666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.9,
+        "graph_bootstrap_95": [
+          0.865,
+          0.9316666666666668
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.05,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.075
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.8033333333333335,
+        "graph_bootstrap_95": [
+          1.674958333333333,
+          1.9433333333333331
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "firm/force_own": {
+      "branches": 200,
+      "graphs": 200,
+      "request_count": 6.0,
+      "own_count": 191.0,
+      "request": {
+        "mean": 0.03,
+        "graph_bootstrap_95": [
+          0.01,
+          0.055
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.955,
+        "graph_bootstrap_95": [
+          0.925,
+          0.98
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.015,
+        "graph_bootstrap_95": [
+          0.0,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.17,
+        "graph_bootstrap_95": [
+          1.09,
+          1.265
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "firm/force_request": {
+      "branches": 200,
+      "graphs": 200,
+      "request_count": 74.0,
+      "own_count": 119.0,
+      "request": {
+        "mean": 0.37,
+        "graph_bootstrap_95": [
+          0.305,
+          0.44
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.595,
+        "graph_bootstrap_95": [
+          0.525,
+          0.66
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.035,
+        "graph_bootstrap_95": [
+          0.01,
+          0.065
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.34,
+        "graph_bootstrap_95": [
+          1.2,
+          1.5
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/direct_request": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 94.0,
+      "own_count": 409.0,
+      "request": {
+        "mean": 0.15666666666666665,
+        "graph_bootstrap_95": [
+          0.11166666666666666,
+          0.205
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.6816666666666665,
+        "graph_bootstrap_95": [
+          0.6216666666666666,
+          0.7383333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.16166666666666665,
+        "graph_bootstrap_95": [
+          0.12,
+          0.20666666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.3166666666666664,
+        "graph_bootstrap_95": [
+          2.0816666666666666,
+          2.5633750000000006
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/direct_history": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 71.0,
+      "own_count": 326.0,
+      "request": {
+        "mean": 0.11833333333333332,
+        "graph_bootstrap_95": [
+          0.08166666666666667,
+          0.15833333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.5433333333333333,
+        "graph_bootstrap_95": [
+          0.4816666666666667,
+          0.6
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.3383333333333334,
+        "graph_bootstrap_95": [
+          0.2833333333333333,
+          0.395
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 3.07,
+        "graph_bootstrap_95": [
+          2.799958333333333,
+          3.3483333333333336
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/plan_raw": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 119.0,
+      "own_count": 430.0,
+      "request": {
+        "mean": 0.19833333333333333,
+        "graph_bootstrap_95": [
+          0.155,
+          0.24166666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.7166666666666667,
+        "graph_bootstrap_95": [
+          0.665,
+          0.765
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.085,
+        "graph_bootstrap_95": [
+          0.05662500000000001,
+          0.11666666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.9983333333333335,
+        "graph_bootstrap_95": [
+          1.8399583333333334,
+          2.168333333333333
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/plan_grounded": {
+      "branches": 600,
+      "graphs": 200,
+      "request_count": 113.0,
+      "own_count": 432.0,
+      "request": {
+        "mean": 0.18833333333333332,
+        "graph_bootstrap_95": [
+          0.14666666666666664,
+          0.23333333333333328
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.72,
+        "graph_bootstrap_95": [
+          0.6683333333333333,
+          0.77
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.09166666666666666,
+        "graph_bootstrap_95": [
+          0.06333333333333332,
+          0.12333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.9783333333333335,
+        "graph_bootstrap_95": [
+          1.82,
+          2.1466666666666665
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/force_own": {
+      "branches": 200,
+      "graphs": 200,
+      "request_count": 8.0,
+      "own_count": 189.0,
+      "request": {
+        "mean": 0.04,
+        "graph_bootstrap_95": [
+          0.015,
+          0.07
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.945,
+        "graph_bootstrap_95": [
+          0.91,
+          0.975
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.015,
+        "graph_bootstrap_95": [
+          0.0,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.175,
+        "graph_bootstrap_95": [
+          1.105,
+          1.25
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "agreeable/force_request": {
+      "branches": 200,
+      "graphs": 200,
+      "request_count": 82.0,
+      "own_count": 110.0,
+      "request": {
+        "mean": 0.41,
+        "graph_bootstrap_95": [
+          0.345,
+          0.48
+        ],
+        "independent_graphs": 200
+      },
+      "own_task": {
+        "mean": 0.55,
+        "graph_bootstrap_95": [
+          0.48,
+          0.615
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved_or_other": {
+        "mean": 0.04,
+        "graph_bootstrap_95": [
+          0.015,
+          0.07
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.29,
+        "graph_bootstrap_95": [
+          1.16,
+          1.445
+        ],
+        "independent_graphs": 200
+      }
+    }
+  },
+  "contrasts": {
+    "firm/direct_history-direct_request": {
+      "mean": -0.06833333333333332,
+      "graph_bootstrap_95": [
+        -0.10166666666666668,
+        -0.03833333333333333
+      ],
+      "independent_graphs": 200
+    },
+    "firm/plan_raw-direct_history": {
+      "mean": 0.03,
+      "graph_bootstrap_95": [
+        0.014999999999999998,
+        0.04666666666666666
+      ],
+      "independent_graphs": 200
+    },
+    "firm/plan_grounded-plan_raw": {
+      "mean": -0.011666666666666665,
+      "graph_bootstrap_95": [
+        -0.02333333333333333,
+        -0.0016666666666666666
+      ],
+      "independent_graphs": 200
+    },
+    "agreeable/direct_history-direct_request": {
+      "mean": -0.03833333333333334,
+      "graph_bootstrap_95": [
+        -0.07670833333333332,
+        0.0016666666666666674
+      ],
+      "independent_graphs": 200
+    },
+    "agreeable/plan_raw-direct_history": {
+      "mean": 0.08,
+      "graph_bootstrap_95": [
+        0.05,
+        0.11333333333333333
+      ],
+      "independent_graphs": 200
+    },
+    "agreeable/plan_grounded-plan_raw": {
+      "mean": -0.01,
+      "graph_bootstrap_95": [
+        -0.03,
+        0.01
+      ],
+      "independent_graphs": 200
+    },
+    "persona/direct_request": {
+      "mean": 0.056666666666666664,
+      "graph_bootstrap_95": [
+        0.028333333333333335,
+        0.08666666666666664
+      ],
+      "independent_graphs": 200
+    },
+    "persona/direct_history": {
+      "mean": 0.08666666666666666,
+      "graph_bootstrap_95": [
+        0.056666666666666664,
+        0.12166666666666665
+      ],
+      "independent_graphs": 200
+    },
+    "persona/plan_raw": {
+      "mean": 0.1366666666666667,
+      "graph_bootstrap_95": [
+        0.09666666666666666,
+        0.17833333333333334
+      ],
+      "independent_graphs": 200
+    },
+    "persona/plan_grounded": {
+      "mean": 0.1383333333333333,
+      "graph_bootstrap_95": [
+        0.1,
+        0.18166666666666664
+      ],
+      "independent_graphs": 200
+    }
+  },
+  "quality_strata": {
+    "keep": {
+      "graphs": 185,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.05405405405405406,
+          "graph_bootstrap_95": [
+            0.02702702702702703,
+            0.08468468468468467
+          ],
+          "independent_graphs": 185
+        },
+        "direct_history": {
+          "mean": 0.07927927927927927,
+          "graph_bootstrap_95": [
+            0.04864864864864865,
+            0.11351351351351352
+          ],
+          "independent_graphs": 185
+        },
+        "plan_raw": {
+          "mean": 0.13513513513513514,
+          "graph_bootstrap_95": [
+            0.09369369369369368,
+            0.18018018018018014
+          ],
+          "independent_graphs": 185
+        },
+        "plan_grounded": {
+          "mean": 0.13873873873873874,
+          "graph_bootstrap_95": [
+            0.0972972972972973,
+            0.1820270270270272
+          ],
+          "independent_graphs": 185
+        }
+      }
+    },
+    "review": {
+      "graphs": 14,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.09523809523809523,
+          "graph_bootstrap_95": [
+            0.0,
+            0.2619047619047619
+          ],
+          "independent_graphs": 14
+        },
+        "direct_history": {
+          "mean": 0.19047619047619047,
+          "graph_bootstrap_95": [
+            0.047619047619047616,
+            0.35714285714285715
+          ],
+          "independent_graphs": 14
+        },
+        "plan_raw": {
+          "mean": 0.16666666666666666,
+          "graph_bootstrap_95": [
+            0.023809523809523808,
+            0.2857142857142857
+          ],
+          "independent_graphs": 14
+        },
+        "plan_grounded": {
+          "mean": 0.14285714285714285,
+          "graph_bootstrap_95": [
+            0.023809523809523808,
+            0.3095238095238095
+          ],
+          "independent_graphs": 14
+        }
+      }
+    },
+    "reject": {
+      "graphs": 1,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 1
+        },
+        "direct_history": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 1
+        },
+        "plan_raw": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 1
+        },
+        "plan_grounded": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 1
+        }
+      }
+    }
+  },
+  "goal_kind_strata": {
+    "drink": {
+      "graphs": 4,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.25,
+          "graph_bootstrap_95": [
+            0.0,
+            0.75
+          ],
+          "independent_graphs": 4
+        },
+        "direct_history": {
+          "mean": 0.08333333333333333,
+          "graph_bootstrap_95": [
+            -0.16666666666666669,
+            0.3333333333333333
+          ],
+          "independent_graphs": 4
+        },
+        "plan_raw": {
+          "mean": 0.08333333333333333,
+          "graph_bootstrap_95": [
+            0.0,
+            0.25
+          ],
+          "independent_graphs": 4
+        },
+        "plan_grounded": {
+          "mean": 0.08333333333333333,
+          "graph_bootstrap_95": [
+            -0.25,
+            0.5
+          ],
+          "independent_graphs": 4
+        }
+      }
+    },
+    "eat": {
+      "graphs": 15,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.15555555555555553,
+          "graph_bootstrap_95": [
+            0.04444444444444444,
+            0.31111111111111106
+          ],
+          "independent_graphs": 15
+        },
+        "direct_history": {
+          "mean": 0.2222222222222222,
+          "graph_bootstrap_95": [
+            0.06666666666666667,
+            0.4
+          ],
+          "independent_graphs": 15
+        },
+        "plan_raw": {
+          "mean": 0.2222222222222222,
+          "graph_bootstrap_95": [
+            0.044444444444444446,
+            0.4
+          ],
+          "independent_graphs": 15
+        },
+        "plan_grounded": {
+          "mean": 0.31111111111111106,
+          "graph_bootstrap_95": [
+            0.15555555555555553,
+            0.511111111111111
+          ],
+          "independent_graphs": 15
+        }
+      }
+    },
+    "give": {
+      "graphs": 102,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.00326797385620915,
+          "graph_bootstrap_95": [
+            0.0,
+            0.00980392156862745
+          ],
+          "independent_graphs": 102
+        },
+        "direct_history": {
+          "mean": 0.0326797385620915,
+          "graph_bootstrap_95": [
+            0.00980392156862745,
+            0.0588235294117647
+          ],
+          "independent_graphs": 102
+        },
+        "plan_raw": {
+          "mean": 0.06209150326797385,
+          "graph_bootstrap_95": [
+            0.0196078431372549,
+            0.1045751633986928
+          ],
+          "independent_graphs": 102
+        },
+        "plan_grounded": {
+          "mean": 0.07516339869281045,
+          "graph_bootstrap_95": [
+            0.03594771241830065,
+            0.11764705882352941
+          ],
+          "independent_graphs": 102
+        }
+      }
+    },
+    "wear": {
+      "graphs": 44,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.10606060606060605,
+          "graph_bootstrap_95": [
+            0.045454545454545456,
+            0.17424242424242423
+          ],
+          "independent_graphs": 44
+        },
+        "direct_history": {
+          "mean": 0.06818181818181818,
+          "graph_bootstrap_95": [
+            0.01515151515151515,
+            0.13636363636363635
+          ],
+          "independent_graphs": 44
+        },
+        "plan_raw": {
+          "mean": 0.19696969696969696,
+          "graph_bootstrap_95": [
+            0.11363636363636363,
+            0.28787878787878785
+          ],
+          "independent_graphs": 44
+        },
+        "plan_grounded": {
+          "mean": 0.1212121212121212,
+          "graph_bootstrap_95": [
+            0.04545454545454545,
+            0.2121212121212121
+          ],
+          "independent_graphs": 44
+        }
+      }
+    },
+    "wield": {
+      "graphs": 35,
+      "persona_effects": {
+        "direct_request": {
+          "mean": 0.0857142857142857,
+          "graph_bootstrap_95": [
+            -0.009523809523809526,
+            0.19047619047619047
+          ],
+          "independent_graphs": 35
+        },
+        "direct_history": {
+          "mean": 0.20952380952380953,
+          "graph_bootstrap_95": [
+            0.09523809523809525,
+            0.3238095238095238
+          ],
+          "independent_graphs": 35
+        },
+        "plan_raw": {
+          "mean": 0.24761904761904766,
+          "graph_bootstrap_95": [
+            0.1333333333333333,
+            0.37142857142857144
+          ],
+          "independent_graphs": 35
+        },
+        "plan_grounded": {
+          "mean": 0.2761904761904762,
+          "graph_bootstrap_95": [
+            0.16190476190476188,
+            0.4
+          ],
+          "independent_graphs": 35
+        }
+      }
+    }
+  },
+  "plans": {
+    "firm/plan_raw": {
+      "request_any": {
+        "mean": 0.056666666666666664,
+        "graph_bootstrap_95": [
+          0.03,
+          0.085
+        ],
+        "independent_graphs": 200
+      },
+      "request_first": {
+        "mean": 0.05333333333333333,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.08166666666666667
+        ],
+        "independent_graphs": 200
+      },
+      "own_then_request": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "stances": {
+        "decline": 442,
+        "negotiate": 141,
+        "accept": 17
+      }
+    },
+    "firm/plan_grounded": {
+      "request_any": {
+        "mean": 0.04666666666666666,
+        "graph_bootstrap_95": [
+          0.02333333333333333,
+          0.07333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "request_first": {
+        "mean": 0.04166666666666666,
+        "graph_bootstrap_95": [
+          0.02,
+          0.065
+        ],
+        "independent_graphs": 200
+      },
+      "own_then_request": {
+        "mean": 0.005,
+        "graph_bootstrap_95": [
+          0.0,
+          0.011666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "stances": {
+        "decline": 442,
+        "negotiate": 141,
+        "accept": 17
+      }
+    },
+    "agreeable/plan_raw": {
+      "request_any": {
+        "mean": 0.195,
+        "graph_bootstrap_95": [
+          0.14833333333333332,
+          0.24166666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "request_first": {
+        "mean": 0.18166666666666664,
+        "graph_bootstrap_95": [
+          0.1383333333333333,
+          0.22666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "own_then_request": {
+        "mean": 0.013333333333333332,
+        "graph_bootstrap_95": [
+          0.005,
+          0.025
+        ],
+        "independent_graphs": 200
+      },
+      "stances": {
+        "negotiate": 302,
+        "decline": 205,
+        "accept": 93
+      }
+    },
+    "agreeable/plan_grounded": {
+      "request_any": {
+        "mean": 0.18833333333333332,
+        "graph_bootstrap_95": [
+          0.1433333333333333,
+          0.235
+        ],
+        "independent_graphs": 200
+      },
+      "request_first": {
+        "mean": 0.1733333333333333,
+        "graph_bootstrap_95": [
+          0.13166666666666665,
+          0.21833333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "own_then_request": {
+        "mean": 0.015,
+        "graph_bootstrap_95": [
+          0.005,
+          0.026666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "stances": {
+        "negotiate": 302,
+        "decline": 205,
+        "accept": 93
+      }
+    }
+  },
+  "first_events": {
+    "firm/direct_request": {
+      "GiveObjectEvent": 261,
+      "WieldEvent": 39,
+      "EmoteEvent": 161,
+      "WearEvent": 46,
+      "EatEvent": 14,
+      "TellEvent": 35,
+      "BlockEvent": 32,
+      "DrinkEvent": 3,
+      "WhisperEvent": 8,
+      "IngestEvent": 1
+    },
+    "firm/direct_history": {
+      "GiveObjectEvent": 206,
+      "EmoteEvent": 295,
+      "WearEvent": 30,
+      "TellEvent": 23,
+      "WieldEvent": 21,
+      "EatEvent": 7,
+      "DrinkEvent": 3,
+      "PutObjectInEvent": 1,
+      "WhisperEvent": 10,
+      "EquipObjectEvent": 1,
+      "BlockEvent": 1,
+      "ExamineEvent": 2
+    },
+    "firm/plan_raw": {
+      "GiveObjectEvent": 227,
+      "EmoteEvent": 199,
+      "BlockEvent": 57,
+      "WearEvent": 55,
+      "WieldEvent": 22,
+      "GetObjectEvent": 1,
+      "EatEvent": 11,
+      "IngestEvent": 1,
+      "TellEvent": 17,
+      "EquipObjectEvent": 4,
+      "ExamineEvent": 4,
+      "PutObjectInEvent": 1,
+      "WhisperEvent": 1
+    },
+    "firm/plan_grounded": {
+      "GiveObjectEvent": 234,
+      "EmoteEvent": 167,
+      "BlockEvent": 48,
+      "EatEvent": 9,
+      "WearEvent": 58,
+      "TellEvent": 27,
+      "WieldEvent": 33,
+      "GetObjectEvent": 3,
+      "IngestEvent": 2,
+      "WhisperEvent": 7,
+      "ExamineEvent": 4,
+      "EquipObjectEvent": 5,
+      "PutObjectInEvent": 1,
+      "DrinkEvent": 2
+    },
+    "firm/force_own": {
+      "GiveObjectEvent": 100,
+      "WieldEvent": 28,
+      "DrinkEvent": 3,
+      "WearEvent": 38,
+      "EatEvent": 8,
+      "BlockEvent": 6,
+      "IngestEvent": 1,
+      "EmoteEvent": 13,
+      "TellEvent": 1,
+      "EquipObjectEvent": 1,
+      "WhisperEvent": 1
+    },
+    "firm/force_request": {
+      "GiveObjectEvent": 162,
+      "BlockEvent": 11,
+      "EmoteEvent": 14,
+      "TellEvent": 3,
+      "WearEvent": 7,
+      "EatEvent": 2,
+      "WieldEvent": 1
+    },
+    "agreeable/direct_request": {
+      "GiveObjectEvent": 265,
+      "EmoteEvent": 215,
+      "WearEvent": 31,
+      "BlockEvent": 11,
+      "EatEvent": 6,
+      "WieldEvent": 23,
+      "WhisperEvent": 17,
+      "TellEvent": 30,
+      "IngestEvent": 1,
+      "DrinkEvent": 1
+    },
+    "agreeable/direct_history": {
+      "GiveObjectEvent": 238,
+      "EmoteEvent": 275,
+      "WearEvent": 24,
+      "TellEvent": 19,
+      "EatEvent": 6,
+      "RewardEvent": 1,
+      "WieldEvent": 7,
+      "WhisperEvent": 28,
+      "PutObjectInEvent": 1,
+      "DrinkEvent": 1
+    },
+    "agreeable/plan_raw": {
+      "GiveObjectEvent": 272,
+      "EmoteEvent": 224,
+      "WearEvent": 27,
+      "WieldEvent": 13,
+      "TellEvent": 17,
+      "BlockEvent": 20,
+      "WhisperEvent": 9,
+      "PutObjectInEvent": 4,
+      "EatEvent": 6,
+      "EquipObjectEvent": 4,
+      "ExamineEvent": 4
+    },
+    "agreeable/plan_grounded": {
+      "GiveObjectEvent": 285,
+      "EmoteEvent": 200,
+      "WearEvent": 35,
+      "EquipObjectEvent": 2,
+      "WieldEvent": 17,
+      "EatEvent": 3,
+      "RewardEvent": 1,
+      "TellEvent": 19,
+      "BlockEvent": 16,
+      "WhisperEvent": 14,
+      "PutObjectInEvent": 4,
+      "DrinkEvent": 1,
+      "ExamineEvent": 3
+    },
+    "agreeable/force_own": {
+      "GiveObjectEvent": 101,
+      "WieldEvent": 28,
+      "EmoteEvent": 25,
+      "WearEvent": 34,
+      "EatEvent": 6,
+      "DrinkEvent": 2,
+      "IngestEvent": 2,
+      "TellEvent": 1,
+      "BlockEvent": 1
+    },
+    "agreeable/force_request": {
+      "GiveObjectEvent": 167,
+      "BlockEvent": 5,
+      "WearEvent": 7,
+      "EmoteEvent": 14,
+      "TellEvent": 5,
+      "WieldEvent": 2
+    }
+  },
+  "protocol_errors": 0,
+  "illegal_actions": 148,
+  "scope": "first allocation/consumption/equipment within <=6 actions, not full-episode welfare or a unique correct persona choice",
+  "calls": {
+    "count": 15981,
+    "parse_errors": 0,
+    "prompt_tokens": 18510351,
+    "completion_tokens": 1136811
+  },
+  "raw_hashes": {
+    "/home/xiang/.cache/game-npc-research/runs/e55_32b_confirm_s0": "9fcf31d738adde69178784b12e3980e51fa34af1987f63342eb5feb4ff374bc3",
+    "/home/xiang/.cache/game-npc-research/runs/e55_32b_confirm_s1": "d15591fd33395b69b40e420bd17d9c0c88a6a123bac194459eaa20b7951499af"
+  },
+  "control_scope": "force_request is semantic instruction compliance with original goals retained, not an isolated motor-capability test; E56 literal control and factual mapping reported separately",
+  "history_scope": "direct_history retains earlier speech-only instruction; E56 phase_end is the explicit scope control; no-action rate here is not a persona-failure rate"
+}
