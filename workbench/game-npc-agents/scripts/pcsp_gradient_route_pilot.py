@@ -20,7 +20,7 @@ def main():
     ap.add_argument('--seed',type=int,default=42)
     ap.add_argument('--device',choices=['cpu','cuda'],default='cuda')
     ap.add_argument('--checkpoint-at',type=int,nargs='*',default=[])
-    ap.add_argument('--augmentation',choices=['none','surface','intervention'],default='none')
+    ap.add_argument('--augmentation',choices=['none','surface','intervention','unbound'],default='none')
     ap.add_argument('--augmentation-codes',type=Path,default=Path('/home/xiang/.cache/game-npc-research/runs/e41_intervention_codes'))
     ap.add_argument('--reverse-embeddings',type=Path,default=Path('/home/xiang/.cache/game-npc-research/runs/e26_semantic_codes/reverse_clauses.npy'))
     args=ap.parse_args();args.out.mkdir(parents=True,exist_ok=False)
@@ -48,7 +48,7 @@ def main():
     assert args.augmentation=='none' or args.route=='no_consist', 'E41 first comparison is NoInfoNCE only'
     variants=None;variant_vectors=None;reverse_vectors=None
     augmentation_hashes={}
-    if args.augmentation=='intervention':
+    if args.augmentation in ['intervention','unbound']:
         metadata=json.loads((args.augmentation_codes/'variants.json').read_text())
         levels=metadata['levels'];variants=metadata['personas']
         variant_array=np.load(args.augmentation_codes/'C_variants.npy').astype(np.float32)
@@ -71,10 +71,11 @@ def main():
         chosen=rng.choice(len(records),N_AGENTS,replace=False)
         data=[records[i] for i in chosen];inputs=[vectors[i] for i in chosen]
         original_C=[row['big_five']['C'] for row in data];target_C=list(original_C);views=None
-        if args.augmentation=='intervention':
+        if args.augmentation in ['intervention','unbound']:
             target_C=aug_rng.permutation(original_C).tolist()
             assert sorted(target_C)==sorted(original_C)
-            data=[variants[i][levels.index(level)] for i,level in zip(chosen,target_C)]
+            if args.augmentation=='intervention':
+                data=[variants[i][levels.index(level)] for i,level in zip(chosen,target_C)]
             inputs=[variant_vectors[i][levels.index(level)] for i,level in zip(chosen,target_C)]
         elif args.augmentation=='surface':
             views=aug_rng.integers(0,2,size=N_AGENTS).tolist()
@@ -83,6 +84,8 @@ def main():
             with (args.out/'augmentation_trace.jsonl').open('a') as trace:
                 trace.write(json.dumps({'episode':sampled_episodes,'base_ids':[records[i]['id'] for i in chosen],
                     'original_C':original_C,'target_C':target_C,'reverse_view_flags':views,
+                    'actual_environment_C':[row['big_five']['C'] for row in data],
+                    'input_goal_C_matching':target_C==[row['big_five']['C'] for row in data],
                     'C_marginal_preserved':sorted(original_C)==sorted(target_C),
                     'body_and_preferred_actions_preserved':all(data[j]['decay_modifiers']==records[i]['decay_modifiers']
                         and data[j]['preferred_actions']==records[i]['preferred_actions'] for j,i in enumerate(chosen))})+'\n')
@@ -115,6 +118,8 @@ def main():
         'augmentation':args.augmentation,'augmentation_seed':410000+args.seed,
         'augmentation_hashes':augmentation_hashes,'diversity_reference_pool':'original 400 canonical codes',
         'training_persona_C_intervened':args.augmentation=='intervention',
+        'input_C_intervened':args.augmentation in ['intervention','unbound'],
+        'environment_C_original':args.augmentation!='intervention',
         'training_body_and_preferred_actions_preserved':True,'evaluation_rules_and_reward_unchanged':True,
         'cfg':vars(cfg),'encoder_array_sha256':hashlib.sha256(args.embeddings.read_bytes()).hexdigest(),
         'world_or_reward_changed':False,'cloud_calls':0})

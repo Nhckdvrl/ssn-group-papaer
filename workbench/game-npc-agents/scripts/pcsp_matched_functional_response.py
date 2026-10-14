@@ -18,6 +18,8 @@ def main():
     ap.add_argument('--iteration', type=int, choices=[30, 100, 300], required=True)
     ap.add_argument('--state-directory', type=Path)
     ap.add_argument('--state-route', choices=['no', 'full'], default='no')
+    ap.add_argument('--policy-manifest', type=Path)
+    ap.add_argument('--identity-controls', action='store_true')
     ap.add_argument('--out', type=Path, required=True)
     args = ap.parse_args(); args.out.mkdir(parents=True, exist_ok=False)
     sys.path.insert(0, str(args.source / 'research'))
@@ -30,6 +32,7 @@ def main():
     from pcsp_observation_rewards import reward_vector
     torch.set_num_threads(1); start = time.monotonic()
     root = args.runs
+    supplied_policies = json.loads(args.policy_manifest.read_text()) if args.policy_manifest else None
     native = args.state_directory or root / 'e34_eval_s42_i30/native'
     manifest = json.loads((native / 'manifest.json').read_text())
     with np.load(native / f'{args.state_route}_native.npz') as d:
@@ -40,6 +43,18 @@ def main():
     metadata = json.loads((root / 'e37_role_edit_codes/texts.json').read_text())
     pairs = metadata['pairs']; pids = np.asarray([p['id'] for p in pairs])
     canonical = np.load(root / 'e26_semantic_codes/canonical.npy').astype(np.float32)[pids - 1]
+    identity_donors = None
+    if args.identity_controls:
+        def signature(r):
+            return json.dumps({k:r[k] for k in ['big_five','decay_modifiers','preferred_actions']},sort_keys=True)
+        classes = {}
+        for pid,row in definitions.items():classes.setdefault(signature(row),[]).append(pid)
+        identity_donors = {}
+        for group in classes.values():
+            group.sort()
+            for i,pid in enumerate(group):identity_donors[pid]=group[(i+1)%len(group)]
+        identity_codes=np.load(root/'e26_semantic_codes/canonical.npy').astype(np.float32)[[identity_donors[int(pid)]-1 for pid in pids]]
+        assert all(signature(definitions[int(pid)])==signature(definitions[identity_donors[int(pid)]]) for pid in pids)
     aliases = np.load(root / 'e26_semantic_codes/reverse_clauses.npy').astype(np.float32)[pids - 1]
     repeated = np.load(root / 'e37_role_edit_codes/canonical_repeat.npy').astype(np.float32)[pids - 401]
     edited = np.load(root / 'e37_role_edit_codes/C_edits.npy').astype(np.float32)
@@ -99,19 +114,24 @@ def main():
         return {str(pid): float(x[pids == pid].mean()) for pid in sorted(set(pids))}
     summaries = {}; arrays = {}; controls = {}; hashes = {}
     e0, ea, ec = map(torch.from_numpy, (canonical, aliases, edited))
+    edit_directions=[('alias',ea),('C_edit',ec)]
+    if args.identity_controls:edit_directions.append(('identity_same_utility',torch.from_numpy(identity_codes)))
     er = torch.from_numpy(repeated)
     with torch.inference_mode():
         for seed in [42, 43, 44]:
             policies = {}; geometries = {}
-            for route, name in [('no', 'no_consist'), ('full', 'full')]:
-                folder = root / f'e34_cpu_s{seed}_{name}' / f'checkpoint_{args.iteration:04d}'
+            routes = supplied_policies[str(seed)] if supplied_policies else {
+                'no': str(root/f'e34_cpu_s{seed}_no_consist'/f'checkpoint_{args.iteration:04d}'),
+                'full': str(root/f'e34_cpu_s{seed}_full'/f'checkpoint_{args.iteration:04d}')}
+            for route, folder_name in routes.items():
+                folder = Path(folder_name)
                 policy = PCSPActorCritic(OBS_DIM_V3_LARGE, N_ACTIONS_V3)
                 policy.load_state_dict(torch.load(folder/'policy.pt', map_location='cpu', weights_only=True))
                 policy.eval().requires_grad_(False); policies[route] = policy
                 meta = json.loads((folder/'manifest.json').read_text())
                 assert meta['seed'] == seed and meta['completed_iterations'] == args.iteration
                 hashes[f'{seed}_{route}'] = hashlib.sha256((folder/'policy.pt').read_bytes()).hexdigest()
-                geometries[route] = {direction: geometry(policy, e0, e) for direction, e in [('alias', ea), ('C_edit', ec)]}
+                geometries[route] = {direction: geometry(policy, e0, e) for direction, e in edit_directions}
                 direct = actor(policy, obs[:, 0], policy.persona_proj(e0))
                 assert torch.equal(direct, policy.action_logits(obs[:, 0], e0))
                 controls[f'{seed}_{route}'] = {'source_actor_logits_byte_equal': True,
@@ -132,7 +152,7 @@ def main():
                         z = d.cos()[:, None]*z0 + d.sin()[:, None]*random[:, k]
                         rjs.append(js(p, probabilities(policy, z)))
                     random_responses[fraction] = torch.stack(rjs, -1)
-                for direction in ['alias', 'C_edit']:
+                for direction,_ in edit_directions:
                     _, z1, tangent, angle, _ = geometries[route][direction]
                     key = f'{seed}_{route}_{direction}'
                     entry = {'natural_angle_mean': float(angle.mean()), 'common_angle_mean': float(common.mean()),
@@ -163,6 +183,9 @@ def main():
     result = {'iteration': args.iteration, 'training_seeds': [42, 43, 44], 'personas': 100, 'edit_pairs': n,
         'states_per_pair': states, 'reward_cell_order': ['pi_original_R_original', 'pi_changed_R_original', 'pi_original_R_edited', 'pi_changed_R_edited'],
         'readouts': summaries, 'controls': controls, 'policy_hashes': hashes,
+        'explicit_policy_manifest': supplied_policies,
+        'identity_control_donors': identity_donors,
+        'identity_scope': 'Same source utility/body/preferred-actions, changed authored age/occupation text. Distinct style remains allowed; action equality is not a scientific requirement.' if args.identity_controls else None,
         'reward_reconstruction': {'native_transitions': len(actions)*actions.shape[1],
             'native_episodes': len(actions), 'maximum_total_reward_abs_error': max(native_errors), 'mean_total_reward_abs_error': float(np.mean(native_errors))},
         'state_source': str(native), 'state_route': args.state_route, 'observation_timing': manifest['observation_timing'],

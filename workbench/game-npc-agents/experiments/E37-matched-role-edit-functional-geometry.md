@@ -34,3 +34,5 @@ POST-HOC构念分析（不改原读数）：查看源reward vectors后发现，C
 原E37/E39固定No30状态以保证跨政策可比，但100轮本人的native需求/行动分布已不同。不能把旧状态上的利益方向直接推成当前episode能力。现在用已经完成的E34 seed42/100轮No和Full各自原生fresh-AEC states，重做100轮六政策的完全相同E37读数；每个state bank保持角色／cohort／world来源明确，照常重建全部60000实际动作reward，不新增rollout/训练。两个bank全部保留：若方向随状态分布改变，这是实质解释；若都存在，继续查形成路径，均不作价值bar。30轮/旧No30及E39原结果不覆盖。
 
 300轮完整预算后的同一状态分布控制：在原No30固定bank中Full三seed的C功能方向均更强，现将相同读数也应用于已有seed42的No300／Full300本人原生state bank。仍保留所有已注册政策与读数，不用有利state bank替换原结果；目的是确认完整训练的正面功能形成与状态机会的关系。
+
+运行前补充（利益相同的身份编辑，衔接I03/P10）：源码train400的big_five/decay_modifiers/preferred_actions组合精确20类、每类20身份；held100也按五配置各20个年龄/职业文本。使用同一held角色与原native状态，第三种direction为同功能配置的另一真实身份输入，和alias/C-edit一起匹配latent幅度；目标/身体/世界不变。选donor为同配置按ID排序循环下一个，规则在看其结果前固定，不选低损失donor。报告natural与matched响应、原目标expected reward变化与C利益方向，保留多个合理style行为，不把身份变化要求为“动作必须一致”。仅固定300完整policy三个seed两route，分别报告原state、No300/Full300state；既有E37重建60000native reward资格沿用。该控制区分全局ID敏感、表述敏感和实际利益编辑，不称功能等价测量本身首创，也不自设bar。

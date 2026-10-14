@@ -48,3 +48,5 @@ E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮�
 
 E34全部300轮：[完整三seed结果](E34_checkpoint_0300.json)。E36：[300轮局部响应](E36_latent_response_i300.json)；E37：[300轮固定状态](E37_matched_functional_i300.json)、[No300状态](E37_matched_functional_i300_states_no300.json)、[Full300状态](E37_matched_functional_i300_states_full300.json)；E39：[300轮全部方向交换](E39_direction_transport_i300.json)。全部预定seed/阶段保留。
 E40：[身体反馈与C标签澄清](E40_need_dynamics_i300.json)，540个原生完整episode，无自设科学bar。E35：[原三人NPC自然重复](E35_natural_repeats.json)，两个额外1200帧episode，分别5/8自然对话。E38：[原编码数值资格](E38_embedding_qualification.json)；原生政策完整评价运行中。E41：[原训练路径byte控制](E41_original_path_control.json)，等义表面与属性覆盖的同预算训练运行中。
+
+E38：[全部26次训练来源](E38_all_training_completed.json)、[全部360原生episode](E38_native_policy_360_episodes.json)、[作者独立读出路径数值核对](E38_phase5_gradient_audit.json)。E41：[surface v1实现作废](E41_surface_v1_invalid.json)和[实际400训练改写资格](E41_actual_surface_encoding_qualification.json)；原错误不当科学零效应。E42：[CPU无损观测与物理控制](E42_cpu_interface.json)、[完整27B单局](E42_local_full_episode_pilot.json)，八卡强模型参考正在跑。E37：[所有训练阶段科学图](E37_functional_opportunities_all_stages.svg)和[完整机会解释](E37_reward_opportunities_complete_posthoc.json)。

@@ -14,9 +14,15 @@ def main():
     ap.add_argument('--seed', type=int, choices=[42, 43, 44], required=True)
     ap.add_argument('--iteration', type=int, choices=[30, 100, 300], required=True)
     ap.add_argument('--out', type=Path, required=True)
+    ap.add_argument('--reference-directory', type=Path)
+    ap.add_argument('--alternative-directory', type=Path)
+    ap.add_argument('--comparison-name', default='author_full_vs_no_consistency')
     args = ap.parse_args()
     sources = {alias: args.runs / f'e34_cpu_s{args.seed}_{route}' / f'checkpoint_{args.iteration:04d}'
                for alias, route in [('no', 'no_consist'), ('full', 'full')]}
+    if args.reference_directory is not None or args.alternative_directory is not None:
+        assert args.reference_directory is not None and args.alternative_directory is not None
+        sources = {'no': args.reference_directory, 'full': args.alternative_directory}
     for alias, folder in sources.items():
         meta = json.loads((folder / 'manifest.json').read_text())
         assert meta['completed_iterations'] == args.iteration and meta['seed'] == args.seed
@@ -62,7 +68,10 @@ def main():
     result = {'training_seed': args.seed, 'completed_iterations': args.iteration,
          'native': summaries['native'], 'semantic': summaries['semantic'], 'interest': summaries['interest'],
          'interest_four_cells': cells, 'wall_seconds': time.monotonic()-start,
-         'raw': str(args.out), 'cloud_calls': 0, 'scientific_increment': 0}
+         'raw': str(args.out), 'cloud_calls': 0, 'scientific_increment': 0,
+         'comparison_name': args.comparison_name,
+         'policy_alias_sources': {k: str(v) for k, v in sources.items()},
+         'alias_note': 'no/reference and full/alternative are harness aliases; actual training conditions are recorded in comparison_name and policy_alias_sources.'}
     (args.out / 'summary.json').write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({'seed': args.seed, 'iteration': args.iteration,
          'native_utility': {r: summaries['native']['policies'][r]['native_reward_mean'] for r in ['no', 'full']},

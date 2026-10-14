@@ -109,3 +109,7 @@
 **解释：** research/Mini-Inzoi的InfoNCE影响φ/η，research/clean CNN-FiLM又共享CNN特征，根PHASE5则独立读出；不能将一个分支的梯度或bug外推其他分支。根报告的平衡采样、pool修正、投影几何等均属强近邻已有结果。我们当前追问功能性属性编辑、实际利益和长程轨迹形成条件，而非重新发现读出分离。
 
 **尚未排除：** PHASE5参数梯度拓扑需数值复核，未完成其全部8seed本地再训练；native同seed不能byte复现的剩余随机性仍未知；CNN局部状态响应不保证长期目标或独立人格构念。完整原生评测预先登记，不能用partial-rollout训练日志替代完整收益，也不用工程错误制造科学gap。
+
+E38根PHASE5数值审计：实际source ActorCritic/ConcatConditioning/GRU/InfoNCEHead、原生episode动作与reward，四次InfoNCE更新loss2.350→1.941，policy/CNN/conditioner梯度均0，权重/同RGB logits逐byte不变；PPO阳性fixture actor/encoder/conditioner各有非零梯度。作者已有独立读出设计确认，E38_phase5_gradient_audit.json；不是trained PHASE5全部表现，也不是新机制。
+
+E38完整360局：正确编码Full/No内部train读取38.07%/6.93%，个人return15.89/18.36、团队97.04/109.59；团队差−12.54，五train-seed簇bootstrap95[−38.52,13.43]。原公开码团队差−57.96[−145.08,1.79]。全部角色/世界重复与五seed保留，不能挑seed3或原码制造故事。直接动作锚点、实际采集/命中、局长/资源/收益及内部读取分别汇报；这些也是强基线测量，不自动升级新主张。
