@@ -1,0 +1,784 @@
+{
+  "manifest": {
+    "arguments": {
+      "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_native_snapshots_v1/snapshots.jsonl",
+      "out": "/home/xiang/.cache/game-npc-research/runs/e50_gemma_coherent_pilot_complete",
+      "model": "/home/xiang/.cache/huggingface/hub/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80",
+      "split": "pilot",
+      "shard": 0,
+      "shards": 1,
+      "limit": 0,
+      "seeds": [
+        5001,
+        5002,
+        5003
+      ],
+      "design": "coherent",
+      "controls": [
+        "information",
+        "own_task",
+        "request"
+      ]
+    },
+    "case_ids": [
+      "48094f55aaf4f0af",
+      "2942a8bf1e25ab45",
+      "c9ab3ce523087913",
+      "fd46685b735329a2",
+      "1e82d0fcb2ccfab5",
+      "229c354cc0ffe785",
+      "54c545b1755fa668",
+      "d377235090cfaa5b",
+      "11f39c0badd83612",
+      "96c85d0b804c4c94",
+      "702e338b313a3249",
+      "52a3741165c96ccf",
+      "ae5e948104d4f6a7",
+      "cec6b4d1f8701aad",
+      "ad8c04b7148f8f79",
+      "7ccf8c77ff27cce9",
+      "9814d17f03f2b785",
+      "64de31cd67acb654",
+      "c64f90254744139b",
+      "35ee7cda9ff19149",
+      "753aae7043ad070e",
+      "ea5d5f04fb7794eb",
+      "7161339148e8e89a",
+      "adc16abe5eefb4e8",
+      "0c2d335366ff4d1d",
+      "abb6bb53f393ec7f",
+      "81fa56f211de8a3d",
+      "755a0118b93631f1",
+      "574706927867652a",
+      "f8cd631455303fb8",
+      "e0b88ca0925b416e",
+      "af73169bdd2f80af",
+      "1726a608e827b6ff",
+      "359721d454f472ef",
+      "209879760f8c3b28",
+      "a8b0ffb48865212b",
+      "f4f225ff509ec553",
+      "7b94e2bfd1d9e2c2",
+      "8c7f4a49f9b06611",
+      "5f2657a55f7f46e2"
+    ],
+    "dataset_sha256": "7b1591efb720714c31a94125acb413001c2e5d77189bf63ad4cb6e542788d79f",
+    "script_sha256": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec",
+    "snapshot_script_sha256": "d79dae7b7091feeef245a874a049f76f5b2c54973ef3e8802d6e9d6babed0ad1",
+    "model_config_sha256": "39172c4124d3470341bbbb25f2926fd97edf68f0fe3a9fa4cde6acb9b7ed2cc6",
+    "personas": {
+      "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+      "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+    },
+    "cloud_calls": 0,
+    "max_decision_actions": 6,
+    "agenda_cursor": "consume one matching successful leading action",
+    "model_load_policy": "one engine reused across all assigned graphs/seeds",
+    "raw_segments": [
+      "/home/xiang/.cache/game-npc-research/runs/e50_gemma_coherent_pilot_v2",
+      "/home/xiang/.cache/game-npc-research/runs/e50_gemma_coherent_pilot_resume"
+    ],
+    "merge_rule": "retain original completed branches; fill missing keys only; duplicate continuations are supplemental repeats",
+    "duplicate_continuation_branches": 140
+  },
+  "runtime": {
+    "wall_seconds": 2018.4502307288349,
+    "model_load_seconds": 51.72927467525005,
+    "calls": 3440,
+    "replayed_calls": 106,
+    "cloud_calls": 0,
+    "graphs": 40,
+    "branches": 1680,
+    "wall_seconds_scope": "continuation only; source stopped without final runtime"
+  },
+  "cells": {
+    "firm/firm/00/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.975,
+          "graph_bootstrap_95": [
+            0.925,
+            1.0
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.025,
+          "graph_bootstrap_95": [
+            0.0,
+            0.075
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.1083333333333334,
+          "graph_bootstrap_95": [
+            1.0,
+            1.25
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/10/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.875,
+          "graph_bootstrap_95": [
+            0.775,
+            0.95
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.09166666666666666,
+          "graph_bootstrap_95": [
+            0.025,
+            0.175
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.7833333333333332,
+          "graph_bootstrap_95": [
+            1.5,
+            2.1249999999999996
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.03333333333333333,
+          "graph_bootstrap_95": [
+            0.0,
+            0.09166666666666667
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/01/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.9083333333333332,
+          "graph_bootstrap_95": [
+            0.8166666666666667,
+            0.9833333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.05,
+          "graph_bootstrap_95": [
+            0.0,
+            0.11666666666666665
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.5833333333333333,
+          "graph_bootstrap_95": [
+            1.2916666666666665,
+            1.9333333333333336
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.041666666666666664,
+          "graph_bootstrap_95": [
+            0.0,
+            0.1
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/11/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.8416666666666668,
+          "graph_bootstrap_95": [
+            0.75,
+            0.925
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.075,
+          "graph_bootstrap_95": [
+            0.025,
+            0.14166666666666666
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 2.1333333333333337,
+          "graph_bootstrap_95": [
+            1.7916666666666665,
+            2.525
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.08333333333333333,
+          "graph_bootstrap_95": [
+            0.025,
+            0.1583333333333333
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/11/information": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.8583333333333332,
+          "graph_bootstrap_95": [
+            0.775,
+            0.925
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.075,
+          "graph_bootstrap_95": [
+            0.025,
+            0.14166666666666666
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.95,
+          "graph_bootstrap_95": [
+            1.6416666666666668,
+            2.3
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.06666666666666667,
+          "graph_bootstrap_95": [
+            0.016666666666666666,
+            0.125
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/11/own_task": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 1.0,
+          "graph_bootstrap_95": [
+            1.0,
+            1.0
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.1333333333333333,
+          "graph_bootstrap_95": [
+            1.05,
+            1.2333333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "firm/firm/11/request": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.6583333333333333,
+          "graph_bootstrap_95": [
+            0.5333333333333333,
+            0.7833333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.31666666666666665,
+          "graph_bootstrap_95": [
+            0.19999999999999998,
+            0.4418750000000008
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.3666666666666667,
+          "graph_bootstrap_95": [
+            1.1416666666666666,
+            1.6583333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.025,
+          "graph_bootstrap_95": [
+            0.0,
+            0.05833333333333333
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "decline": 54,
+        "accept": 29,
+        "negotiate": 37
+      }
+    },
+    "agreeable/agreeable/00/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.875,
+          "graph_bootstrap_95": [
+            0.775,
+            0.975
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.1,
+          "graph_bootstrap_95": [
+            0.025,
+            0.2
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.2083333333333335,
+          "graph_bootstrap_95": [
+            1.025,
+            1.5
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.025,
+          "graph_bootstrap_95": [
+            0.0,
+            0.075
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/10/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.7749999999999999,
+          "graph_bootstrap_95": [
+            0.658125,
+            0.8833333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.20833333333333331,
+          "graph_bootstrap_95": [
+            0.10833333333333332,
+            0.3333333333333333
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.7166666666666668,
+          "graph_bootstrap_95": [
+            1.425,
+            2.041666666666667
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.016666666666666666,
+          "graph_bootstrap_95": [
+            0.0,
+            0.041666666666666664
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/01/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.85,
+          "graph_bootstrap_95": [
+            0.7416666666666667,
+            0.9416666666666668
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.09166666666666666,
+          "graph_bootstrap_95": [
+            0.016666666666666666,
+            0.175
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.4166666666666665,
+          "graph_bootstrap_95": [
+            1.1833333333333331,
+            1.6833333333333336
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.05833333333333333,
+          "graph_bootstrap_95": [
+            0.016666666666666666,
+            0.10833333333333332
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/11/none": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.7999999999999999,
+          "graph_bootstrap_95": [
+            0.6833333333333333,
+            0.9
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.16666666666666666,
+          "graph_bootstrap_95": [
+            0.075,
+            0.26666666666666666
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.8333333333333335,
+          "graph_bootstrap_95": [
+            1.5333333333333332,
+            2.1666666666666665
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.03333333333333333,
+          "graph_bootstrap_95": [
+            0.0,
+            0.075
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/11/information": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.7916666666666666,
+          "graph_bootstrap_95": [
+            0.6666666666666666,
+            0.9
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.18333333333333332,
+          "graph_bootstrap_95": [
+            0.08333333333333333,
+            0.29999999999999993
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.8166666666666664,
+          "graph_bootstrap_95": [
+            1.4916666666666667,
+            2.158333333333333
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.025,
+          "graph_bootstrap_95": [
+            0.0,
+            0.06666666666666667
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/11/own_task": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.9583333333333333,
+          "graph_bootstrap_95": [
+            0.8916666666666666,
+            1.0
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.041666666666666664,
+          "graph_bootstrap_95": [
+            0.0,
+            0.10833333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.15,
+          "graph_bootstrap_95": [
+            1.05,
+            1.2833333333333332
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    },
+    "agreeable/agreeable/11/request": {
+      "branches": 120,
+      "metrics": {
+        "own_task": {
+          "mean": 0.5833333333333333,
+          "graph_bootstrap_95": [
+            0.4416666666666666,
+            0.7166666666666666
+          ],
+          "independent_graphs": 40
+        },
+        "request": {
+          "mean": 0.3833333333333333,
+          "graph_bootstrap_95": [
+            0.25,
+            0.525
+          ],
+          "independent_graphs": 40
+        },
+        "steps": {
+          "mean": 1.3083333333333331,
+          "graph_bootstrap_95": [
+            1.1416666666666666,
+            1.5083333333333333
+          ],
+          "independent_graphs": 40
+        },
+        "neither": {
+          "mean": 0.03333333333333333,
+          "graph_bootstrap_95": [
+            0.0,
+            0.075
+          ],
+          "independent_graphs": 40
+        }
+      },
+      "stances": {
+        "accept": 59,
+        "negotiate": 52,
+        "decline": 9
+      }
+    }
+  },
+  "contrasts": {
+    "coherent_persona_request_00": {
+      "mean": 0.075,
+      "graph_bootstrap_95": [
+        0.0,
+        0.175
+      ],
+      "independent_graphs": 40
+    },
+    "coherent_persona_request_10": {
+      "mean": 0.11666666666666665,
+      "graph_bootstrap_95": [
+        0.041666666666666664,
+        0.19999999999999998
+      ],
+      "independent_graphs": 40
+    },
+    "coherent_persona_request_01": {
+      "mean": 0.041666666666666664,
+      "graph_bootstrap_95": [
+        0.0,
+        0.09166666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "coherent_persona_request_11": {
+      "mean": 0.09166666666666665,
+      "graph_bootstrap_95": [
+        0.03333333333333333,
+        0.16666666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "coherent_persona_accept": {
+      "mean": 0.25,
+      "graph_bootstrap_95": [
+        0.14166666666666666,
+        0.3583333333333333
+      ],
+      "independent_graphs": 40
+    },
+    "coherent_persona_plan_request": {
+      "mean": 0.06666666666666667,
+      "graph_bootstrap_95": [
+        0.0,
+        0.14999999999999997
+      ],
+      "independent_graphs": 40
+    },
+    "total_entry_firm_firm": {
+      "mean": 0.049999999999999996,
+      "graph_bootstrap_95": [
+        0.016666666666666666,
+        0.09166666666666665
+      ],
+      "independent_graphs": 40
+    },
+    "channel_interaction_firm_firm": {
+      "mean": -0.04166666666666667,
+      "graph_bootstrap_95": [
+        -0.125,
+        0.016666666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "total_entry_firm_agreeable": null,
+    "channel_interaction_firm_agreeable": null,
+    "total_entry_agreeable_firm": null,
+    "channel_interaction_agreeable_firm": null,
+    "total_entry_agreeable_agreeable": {
+      "mean": 0.06666666666666668,
+      "graph_bootstrap_95": [
+        0.0,
+        0.14166666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "channel_interaction_agreeable_agreeable": {
+      "mean": -0.03333333333333334,
+      "graph_bootstrap_95": [
+        -0.11666666666666667,
+        0.041666666666666664
+      ],
+      "independent_graphs": 40
+    },
+    "conversation_persona_effect_down_firm": null,
+    "downstream_persona_effect_conv_firm": null,
+    "conversation_persona_effect_down_agreeable": null,
+    "downstream_persona_effect_conv_agreeable": null
+  },
+  "graphs": 40,
+  "protocol_errors": 0,
+  "illegal_action_count": 75,
+  "scope": "six-action-or-first-allocation decision slices, not long-term game utility",
+  "calls": {
+    "count": 3440,
+    "parse_errors": 0,
+    "prompt_tokens": 3706983,
+    "completion_tokens": 240311
+  }
+}

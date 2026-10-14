@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：2026-10-14用户已明确恢复，并下达科研审计与冻结指令。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04承诺冲突裁决](ideas/I04-commitment-conflict-stage-arbitration.md) 与 [E50决策快照](experiments/E50-commitment-decision-snapshots.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：用户已恢复，并要求2026-10-15继续按大问题探索。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[E54自然文本标注](experiments/E54-natural-dialogue-data-labels.md) 与 [E55独立原生确认](experiments/E55-independent-native-role-confirmation.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
@@ -10,10 +10,10 @@
 
 - **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
 
-- **原生决策切片：** E50 已得到 360 个不同 LIGHT source graph，各有原任务／请求的两条原生实体终点；40 pilot、200 confirm、120 reserve 固定拆分。32B 完成 40 图×三 seed 的一致人设实验，共 1680 分支／3183 调用。agreeable−firm 的实际请求转移差在完整渠道为 +13.3pp，图簇95%[4.2,23.3]；人设在真实行动上有效。
+- **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
 - **阶段与渠道：** 32B 的单 seed 2×2 阶段干预已完成；固定下游人设，conversation 人设的请求转移效应约 +15pp，固定 conversation 的下游合并效应约 +2.5pp。完整渠道低于 agenda-only；agreeable 渠道交互 −11.7pp，95%[−20.8,−2.5]。当前检查的是承诺如何传递及被重新裁决。
-- **白盒与决定性下一实验：** 27B／32B 三阶段 residual 与统一 action 读出都已实测。32B conv–exec 方向 cos 从 .140 变为 .712，说明原输出粒度会大幅影响“耗散”解释。E51 已运行：固定计划、承诺、实体状态，仅改 pending/completed，再交叉原任务提醒与真实状态提示，区分完成状态误记和目标显著性。
-- **数据：** 用户指定 Step5 用于数据构造／质检；仅 Step Plan，固定 step-5-preview。200 confirm 图的自然请求另存 v2，盲检不展示行为结果。NPC 决策和实体评价均本地，密钥不入 Git。最新认识见 [阶段裁决记录](knowledge/persona-behavior/STAGE_ARBITRATION_2026-10-15.md)。
+- **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。E53的32B直接决策40图×三seed已完成：原人物差+11.7pp [4.2,20.0]，不同任务执行状态记录可放大或压平人物差；E54检查这些语义在自然文本中多常见，E55以普通一句事实指令为强对照。
+- **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，初轮151保留／40复核／9拒绝，动作对应字段歧义另澄清。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
 
 以下是已封存的基线背景，历史过程见进度报告；不按旧“下一步”恢复执行。
 

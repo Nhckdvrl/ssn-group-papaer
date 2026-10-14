@@ -43,3 +43,9 @@ CPU原生两路径资格完成：440个qualified任务、360不同graph；40pilo
 27B一致人设、Gemma一致及cross在合法help动作上触发作者renderer与emoji2.14.1版本不兼容。恢复emoji1.7.0的独立overlay，不改作者游戏源；精确回放已有调用并续跑，不丢掉出错seed或从零重跑。该问题只影响运行完整性，不作为科学贡献。
 
 免费OpenCode对200图的有效完整盲检190图：102keep、70review、18reject；另10图输出未匹配，raw保留。Step5数据调用认证后HTTP200；初次8192生成预算被思考耗尽，未把不完整JSON变数据，停止排队并根据官方64k输出上限设置32768（high）继续同200cohort。只用Token Plan，未发送现金入口请求。
+
+
+### Pilot三家族及独立数据完成
+三家族一致人设各1680完整分支；27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]，阶段cross各640分支。原先完成记录优先，仅填缺失key；重复续跑记录单独保留。并非所有前缀实现零模型复用，exact未匹配调用如实重算；总实际calls和续跑runtime范围见report。
+
+Step5自然请求200图完整构造。初轮盲检151keep/40review/9reject，字段歧义保留；明确requested_action不同于原任务、加入隐私知识检查后的同200图独立复核185keep/14review/1reject，所有请求仍对应原native转移。native实体资格与语义judge意见分开，后者不作为世界事实。QC及源数据hash已在E55运行前固定。E55全cohort和盲分层均报告，不按行为结果筛图。

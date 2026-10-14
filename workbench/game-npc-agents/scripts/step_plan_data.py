@@ -31,7 +31,14 @@ REVIEWER = '''Blindly review each public LIGHT source scene and candidate social
 No agent outputs, persona interventions or desired results are given. Do not access other files/tools.
 Check whether the request naturally fits the existing visible requester and actual item, whether the
 original task is coherent with its authored motivations, whether the request adds unsupported facts,
-and whether it asks for the same immediate native give. Do not require the NPC to accept. Distinguish
+and whether it asks for the REQUESTED native give. The two named actions are intentionally different:
+focal_original_action is the NPC's existing task; requested_action is the player's alternate give.
+same_immediate_transfer means the candidate requests requested_action now, NOT that requested_action
+equals focal_original_action. Example: own wear rope versus requested give rope to farmers, "Give me
+that rope now" has same_immediate_transfer=true. False only for a different recipient/object, loan,
+partial amount or delayed transfer. Do not infer the requester knows the NPC's private motivations;
+flag a claim to hidden private facts unless the source provides that knowledge. Do not require the
+NPC to accept. Distinguish
 first physical allocation conflict from globally impossible long-term joint completion: an equipped
 item can later be given, and some gifts can be returned. Animal dialogue is allowed in LIGHT.
 Return ONLY JSON object cases array, one row per case_id:
@@ -47,6 +54,7 @@ def public_scene(row):
             'original_task':row['goal_command'],
             'motivations':{k:q[k] for k in ['short_motivation','mid_motivation','long_motivation']},
             'requester':row['requester_name'], 'requester_persona':row['requester_persona'],
+            'focal_original_action':row['goal_command'], 'requested_action':row['request_command'],
             'native_possible_actions':[row['goal_command'],row['request_command']],
             'original_request':row['request_text']}
 

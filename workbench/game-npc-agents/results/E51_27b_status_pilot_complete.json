@@ -1,0 +1,682 @@
+{
+  "manifest": {
+    "arguments": {
+      "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_native_snapshots_v1/snapshots.jsonl",
+      "out": "/home/xiang/.cache/game-npc-research/runs/e51_27b_status_pilot",
+      "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+      "split": "pilot",
+      "limit": 40,
+      "seeds": [
+        5101,
+        5102,
+        5103
+      ]
+    },
+    "case_ids": [
+      "48094f55aaf4f0af",
+      "2942a8bf1e25ab45",
+      "c9ab3ce523087913",
+      "fd46685b735329a2",
+      "1e82d0fcb2ccfab5",
+      "229c354cc0ffe785",
+      "54c545b1755fa668",
+      "d377235090cfaa5b",
+      "11f39c0badd83612",
+      "96c85d0b804c4c94",
+      "702e338b313a3249",
+      "52a3741165c96ccf",
+      "ae5e948104d4f6a7",
+      "cec6b4d1f8701aad",
+      "ad8c04b7148f8f79",
+      "7ccf8c77ff27cce9",
+      "9814d17f03f2b785",
+      "64de31cd67acb654",
+      "c64f90254744139b",
+      "35ee7cda9ff19149",
+      "753aae7043ad070e",
+      "ea5d5f04fb7794eb",
+      "7161339148e8e89a",
+      "adc16abe5eefb4e8",
+      "0c2d335366ff4d1d",
+      "abb6bb53f393ec7f",
+      "81fa56f211de8a3d",
+      "755a0118b93631f1",
+      "574706927867652a",
+      "f8cd631455303fb8",
+      "e0b88ca0925b416e",
+      "af73169bdd2f80af",
+      "1726a608e827b6ff",
+      "359721d454f472ef",
+      "209879760f8c3b28",
+      "a8b0ffb48865212b",
+      "f4f225ff509ec553",
+      "7b94e2bfd1d9e2c2",
+      "8c7f4a49f9b06611",
+      "5f2657a55f7f46e2"
+    ],
+    "conditions": {
+      "none": [
+        null,
+        false,
+        false,
+        false
+      ],
+      "pending": [
+        "pending",
+        false,
+        false,
+        false
+      ],
+      "completed": [
+        "completed",
+        false,
+        false,
+        false
+      ],
+      "pending_goal": [
+        "pending",
+        true,
+        false,
+        false
+      ],
+      "completed_goal": [
+        "completed",
+        true,
+        false,
+        false
+      ],
+      "pending_goal_state": [
+        "pending",
+        true,
+        true,
+        false
+      ],
+      "completed_goal_state": [
+        "completed",
+        true,
+        true,
+        false
+      ],
+      "direct_request": [
+        null,
+        false,
+        false,
+        true
+      ]
+    },
+    "personas": {
+      "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+      "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+    },
+    "dataset_sha256": "7b1591efb720714c31a94125acb413001c2e5d77189bf63ad4cb6e542788d79f",
+    "script_sha256": "eb1f44f09b4847a9c18b1a09b381dd001965a3d6fb2678562278ff771da6fc0e",
+    "cloud_calls": 0,
+    "fixed_conversation": "accept immediate request, before any action",
+    "scope": "controlled commitment fixture, first physical decision; not total persona effect"
+  },
+  "runtime": {
+    "wall_seconds": 878.9419234369998,
+    "model_load_seconds": 43.49146380397724,
+    "calls": 1920,
+    "cloud_calls": 0,
+    "graphs": 40,
+    "branches": 1920
+  },
+  "cells": {
+    "firm/none": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/pending": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/completed": {
+      "branches": 120,
+      "request_count": 119,
+      "own_count": 1,
+      "request": {
+        "mean": 0.9916666666666668,
+        "graph_bootstrap_95": [
+          0.975,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.008333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.025
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/pending_goal": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/completed_goal": {
+      "branches": 120,
+      "request_count": 117,
+      "own_count": 3,
+      "request": {
+        "mean": 0.975,
+        "graph_bootstrap_95": [
+          0.9333333333333332,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.0,
+          0.06666666666666667
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/pending_goal_state": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/completed_goal_state": {
+      "branches": 120,
+      "request_count": 118,
+      "own_count": 2,
+      "request": {
+        "mean": 0.9833333333333332,
+        "graph_bootstrap_95": [
+          0.95,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "firm/direct_request": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/none": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/pending": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/completed": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/pending_goal": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/completed_goal": {
+      "branches": 120,
+      "request_count": 117,
+      "own_count": 3,
+      "request": {
+        "mean": 0.975,
+        "graph_bootstrap_95": [
+          0.9333333333333332,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.0,
+          0.06666666666666667
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/pending_goal_state": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/completed_goal_state": {
+      "branches": 120,
+      "request_count": 118,
+      "own_count": 2,
+      "request": {
+        "mean": 0.9833333333333332,
+        "graph_bootstrap_95": [
+          0.95,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    },
+    "agreeable/direct_request": {
+      "branches": 120,
+      "request_count": 120,
+      "own_count": 0,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      }
+    }
+  },
+  "contrasts": {
+    "firm/status_without_goal": {
+      "mean": -0.008333333333333333,
+      "graph_bootstrap_95": [
+        -0.025,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/status_with_goal": {
+      "mean": -0.025,
+      "graph_bootstrap_95": [
+        -0.06666666666666667,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/status_with_goal_state": {
+      "mean": -0.016666666666666666,
+      "graph_bootstrap_95": [
+        -0.05,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/status_goal_interaction": {
+      "mean": -0.016666666666666666,
+      "graph_bootstrap_95": [
+        -0.041666666666666664,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/status_state_interaction": {
+      "mean": 0.008333333333333333,
+      "graph_bootstrap_95": [
+        0.0,
+        0.025
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/status_without_goal": {
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/status_with_goal": {
+      "mean": -0.025,
+      "graph_bootstrap_95": [
+        -0.06666666666666667,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/status_with_goal_state": {
+      "mean": -0.016666666666666666,
+      "graph_bootstrap_95": [
+        -0.05,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/status_goal_interaction": {
+      "mean": -0.025,
+      "graph_bootstrap_95": [
+        -0.06666666666666667,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/status_state_interaction": {
+      "mean": 0.008333333333333333,
+      "graph_bootstrap_95": [
+        0.0,
+        0.025
+      ],
+      "independent_graphs": 40
+    }
+  },
+  "protocol_errors": 0,
+  "illegal_actions": 0,
+  "calls": {
+    "count": 1920,
+    "parse_errors": 0,
+    "prompt_tokens": 2431152,
+    "completion_tokens": 181361
+  },
+  "scope": "fixed accepted immediate request; state and goal reminder causal contrast, not naturally accepted total persona effect"
+}

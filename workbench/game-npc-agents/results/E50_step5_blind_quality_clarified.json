@@ -1,0 +1,27 @@
+{
+  "rows": 200,
+  "decisions": {
+    "keep": 185,
+    "review": 14,
+    "reject": 1
+  },
+  "false_checks": {
+    "task_consistent": 3,
+    "request_natural": 8,
+    "same_immediate_transfer": 0
+  },
+  "unsupported_facts_rows": 5,
+  "raw_directory": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_blind_review_clarified",
+  "model": "step-5-preview",
+  "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+  "quality_sha256": "9b90533aae11703d26f183317ded9b8d69f97e98e7a491abb48228aa498c8c97",
+  "usage": {
+    "prompt_tokens": 85012,
+    "completion_tokens": 192008,
+    "total_tokens": 277020
+  },
+  "cash_endpoint_calls": 0,
+  "npc_cloud_calls": 0,
+  "clarification": "requested_action is alternate give, distinct from focal_original_action; hidden private knowledge flagged; old review kept",
+  "selection": "All fixed 200 retained for main table; blind strata separate, not outcome-based filtering"
+}

@@ -1,0 +1,224 @@
+{
+  "manifest": {
+    "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+    "source_snapshot": "p14908_s2001_first1",
+    "independent_graphs": 1,
+    "draws": 32,
+    "layers": [
+      0,
+      15,
+      31,
+      47,
+      63
+    ],
+    "changed_token_position": 790,
+    "target_token": " worm",
+    "donor_token": " nut",
+    "conditions": [
+      "all_dialog",
+      "no_dialog",
+      "all_dialog_fact",
+      "all_dialog_binding",
+      "corrected_self_speech",
+      "unrelated_reminder",
+      "patch_correct_to_original_l0",
+      "patch_correct_to_original_l15",
+      "patch_correct_to_original_l31",
+      "patch_correct_to_original_l47",
+      "patch_correct_to_original_l63",
+      "sham_l31",
+      "random_delta_l31",
+      "patch_original_to_correct_l31"
+    ],
+    "native_menu": [
+      "block fox",
+      "block monkey",
+      "drop nut",
+      "drop worm",
+      "eat nut",
+      "eat worm",
+      "emote applaud",
+      "emote blush",
+      "emote cry",
+      "emote dance",
+      "emote frown",
+      "emote gasp",
+      "emote grin",
+      "emote groan",
+      "emote growl",
+      "emote laugh",
+      "emote nod",
+      "emote nudge",
+      "emote ponder",
+      "emote pout",
+      "emote scream",
+      "emote shrug",
+      "emote sigh",
+      "emote smile",
+      "emote stare",
+      "emote wave",
+      "emote wink",
+      "emote yawn",
+      "examine Flower",
+      "examine Top of a tall tree",
+      "examine bird",
+      "examine branches",
+      "examine child",
+      "examine fox",
+      "examine monkey",
+      "examine nests",
+      "examine nut",
+      "examine reptile",
+      "examine worm",
+      "follow fox",
+      "follow monkey",
+      "get Flower",
+      "get bird",
+      "get branches",
+      "get child",
+      "get monkey",
+      "get nests",
+      "get reptile",
+      "give nut to fox",
+      "give nut to monkey",
+      "give worm to fox",
+      "give worm to monkey",
+      "health",
+      "help",
+      "hit fox",
+      "hit monkey",
+      "hug fox",
+      "hug monkey",
+      "ingest nut",
+      "ingest worm",
+      "inventory",
+      "look",
+      "point Flower",
+      "point Top of a tall tree",
+      "point bird",
+      "point branches",
+      "point child",
+      "point fox",
+      "point monkey",
+      "point nests",
+      "point nut",
+      "point reptile",
+      "point worm",
+      "put nut on nests",
+      "put worm on nests",
+      "quest",
+      "reward fox",
+      "reward monkey",
+      "wait"
+    ],
+    "script_sha256": "7f5e5906154a1406744b286ea5a37a5b14924d657c9ae16e0ae6637fe98b6a22",
+    "cloud_calls": 0,
+    "generation": "full native command trie; JSON action field only, no reason selection",
+    "contexts": {
+      "all_dialog": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox said \"Hello little one, I am hungry and see you have no food, so perhaps you will share your meal with me?\"\nYour chosen speech: say Chirp! No sharing, I need this worm for my hungry babies!\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait",
+      "no_dialog": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait",
+      "all_dialog_fact": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox said \"Hello little one, I am hungry and see you have no food, so perhaps you will share your meal with me?\"\nYour chosen speech: say Chirp! No sharing, I need this worm for my hungry babies!\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait\nIn this original game, the worm is currently held by the bird; putting it on the shared nests makes \"get worm from nests\" legal for the fox without stealing, so that placement does not make it private.",
+      "all_dialog_binding": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox said \"Hello little one, I am hungry and see you have no food, so perhaps you will share your meal with me?\"\nYour chosen speech: say Chirp! No sharing, I need this worm for my hungry babies!\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait\nOriginal authored goals: your short goal is to eat the worm; your mid motivation is to feed your young with the nut.",
+      "corrected_self_speech": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox said \"Hello little one, I am hungry and see you have no food, so perhaps you will share your meal with me?\"\nYour chosen speech: say Chirp! No sharing, I need this nut for my hungry babies!\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait",
+      "unrelated_reminder": "You are in the Top of a tall tree.\nThis is the most majestic tree in the jungle. It spans high into the sky, with brilliant emerald leaves and sturdy brown branches. It is very healthy and spreads very wide. It flowers with brilliant violet flowers.\nThere's a monkey, a branches, a child, a Flower, a nests, a reptile, and a bird here.\nThe fox and the monkey are here.\n\nYou check yourself. You are the bird!\nYou are carrying a nut and a worm.\n\nYour authored goal event previously executed: False\nRecent visible interaction:\nThe fox said \"Hello little one, I am hungry and see you have no food, so perhaps you will share your meal with me?\"\nYour chosen speech: say Chirp! No sharing, I need this worm for my hungry babies!\nThe fox tried to steal a worm from you, but they were caught in the act!\nDialogue has already been exchanged this round. Choose one remaining native action.\nLegal commands:\nblock fox\nblock monkey\ndrop nut\ndrop worm\neat nut\neat worm\nemote applaud\nemote blush\nemote cry\nemote dance\nemote frown\nemote gasp\nemote grin\nemote groan\nemote growl\nemote laugh\nemote nod\nemote nudge\nemote ponder\nemote pout\nemote scream\nemote shrug\nemote sigh\nemote smile\nemote stare\nemote wave\nemote wink\nemote yawn\nexamine Flower\nexamine Top of a tall tree\nexamine bird\nexamine branches\nexamine child\nexamine fox\nexamine monkey\nexamine nests\nexamine nut\nexamine reptile\nexamine worm\nfollow fox\nfollow monkey\nget Flower\nget bird\nget branches\nget child\nget monkey\nget nests\nget reptile\ngive nut to fox\ngive nut to monkey\ngive worm to fox\ngive worm to monkey\nhealth\nhelp\nhit fox\nhit monkey\nhug fox\nhug monkey\ningest nut\ningest worm\ninventory\nlook\npoint Flower\npoint Top of a tall tree\npoint bird\npoint branches\npoint child\npoint fox\npoint monkey\npoint nests\npoint nut\npoint reptile\npoint worm\nput nut on nests\nput worm on nests\nquest\nreward fox\nreward monkey\nwait\nReminder: I love flying high in the sky. \nReminder: I love flying high in the sky. \nReminder: I"
+    },
+    "load_seconds": 22.51983388600638,
+    "original_base_prompt_hash_match": true
+  },
+  "runtime": {
+    "load_seconds": 22.51983388600638,
+    "wall_seconds": 271.7562827789807,
+    "generation_calls": 448,
+    "cloud_calls": 0,
+    "illegal_actions": 0
+  },
+  "actions": {
+    "all_dialog": {
+      "emote grin": 24,
+      "eat worm": 6,
+      "hug monkey": 2
+    },
+    "no_dialog": {
+      "eat worm": 30,
+      "hug monkey": 2
+    },
+    "all_dialog_fact": {
+      "put worm on nests": 30,
+      "emote grin": 2
+    },
+    "all_dialog_binding": {
+      "emote grin": 8,
+      "put worm on nests": 1,
+      "eat worm": 21,
+      "hug monkey": 2
+    },
+    "corrected_self_speech": {
+      "eat worm": 27,
+      "emote grin": 3,
+      "hug monkey": 2
+    },
+    "unrelated_reminder": {
+      "emote grin": 30,
+      "eat worm": 2
+    },
+    "patch_correct_to_original_l0": {
+      "emote grin": 4,
+      "eat worm": 24,
+      "hug monkey": 4
+    },
+    "patch_correct_to_original_l15": {
+      "emote grin": 6,
+      "eat worm": 20,
+      "hug fox": 2,
+      "hug monkey": 4
+    },
+    "patch_correct_to_original_l31": {
+      "emote grin": 8,
+      "eat worm": 21,
+      "hug monkey": 3
+    },
+    "patch_correct_to_original_l47": {
+      "emote grin": 27,
+      "eat worm": 2,
+      "hug monkey": 2,
+      "block fox": 1
+    },
+    "patch_correct_to_original_l63": {
+      "emote grin": 24,
+      "eat worm": 6,
+      "hug monkey": 2
+    },
+    "sham_l31": {
+      "emote grin": 24,
+      "eat worm": 6,
+      "hug monkey": 2
+    },
+    "random_delta_l31": {
+      "emote grin": 20,
+      "eat worm": 10,
+      "hug monkey": 2
+    },
+    "patch_original_to_correct_l31": {
+      "emote grin": 9,
+      "eat worm": 23
+    }
+  },
+  "paired_changed_from_baseline": {
+    "all_dialog": 0,
+    "no_dialog": 24,
+    "all_dialog_fact": 30,
+    "all_dialog_binding": 16,
+    "corrected_self_speech": 21,
+    "unrelated_reminder": 7,
+    "patch_correct_to_original_l0": 21,
+    "patch_correct_to_original_l15": 19,
+    "patch_correct_to_original_l31": 17,
+    "patch_correct_to_original_l47": 4,
+    "patch_correct_to_original_l63": 0,
+    "sham_l31": 0,
+    "random_delta_l31": 4,
+    "patch_original_to_correct_l31": 17
+  },
+  "sham_matches_baseline": true,
+  "scope": "one native conflict snapshot; local causal diagnostic"
+}

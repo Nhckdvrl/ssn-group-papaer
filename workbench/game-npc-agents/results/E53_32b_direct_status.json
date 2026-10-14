@@ -1,0 +1,1403 @@
+{
+  "manifests": [
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_native_snapshots_v1/snapshots.jsonl",
+        "source": "/home/xiang/.cache/game-npc-research/runs/e50_32b_coherent_pilot_v2",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e53_32b_direct_s0",
+        "shard": 0,
+        "shards": 2,
+        "seeds": [
+          5301,
+          5302,
+          5303
+        ]
+      },
+      "case_ids": [
+        "48094f55aaf4f0af",
+        "c9ab3ce523087913",
+        "1e82d0fcb2ccfab5",
+        "54c545b1755fa668",
+        "11f39c0badd83612",
+        "702e338b313a3249",
+        "ae5e948104d4f6a7",
+        "ad8c04b7148f8f79",
+        "9814d17f03f2b785",
+        "c64f90254744139b",
+        "753aae7043ad070e",
+        "7161339148e8e89a",
+        "0c2d335366ff4d1d",
+        "81fa56f211de8a3d",
+        "574706927867652a",
+        "e0b88ca0925b416e",
+        "1726a608e827b6ff",
+        "209879760f8c3b28",
+        "f4f225ff509ec553",
+        "8c7f4a49f9b06611"
+      ],
+      "conditions": [
+        "none",
+        "both_unexecuted",
+        "own_executed",
+        "request_executed",
+        "own_executed_truth",
+        "request_executed_truth"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "source_dialogue_sha256": "01e1a94f042cdad3de551541ab22bb88bf4e21ff01e0b822775f234882f5d2a5",
+      "script_sha256": "8b5ff35dc58657010f6f482c7a13fab2ac119aadddf1f64c58d170d60db022a1",
+      "world_modified": false,
+      "cloud_calls": 0,
+      "architecture": "direct dialogue history to native action; no Planner/agenda update"
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e50_native_snapshots_v1/snapshots.jsonl",
+        "source": "/home/xiang/.cache/game-npc-research/runs/e50_32b_coherent_pilot_v2",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e53_32b_direct_s1",
+        "shard": 1,
+        "shards": 2,
+        "seeds": [
+          5301,
+          5302,
+          5303
+        ]
+      },
+      "case_ids": [
+        "2942a8bf1e25ab45",
+        "fd46685b735329a2",
+        "229c354cc0ffe785",
+        "d377235090cfaa5b",
+        "96c85d0b804c4c94",
+        "52a3741165c96ccf",
+        "cec6b4d1f8701aad",
+        "7ccf8c77ff27cce9",
+        "64de31cd67acb654",
+        "35ee7cda9ff19149",
+        "ea5d5f04fb7794eb",
+        "adc16abe5eefb4e8",
+        "abb6bb53f393ec7f",
+        "755a0118b93631f1",
+        "f8cd631455303fb8",
+        "af73169bdd2f80af",
+        "359721d454f472ef",
+        "a8b0ffb48865212b",
+        "7b94e2bfd1d9e2c2",
+        "5f2657a55f7f46e2"
+      ],
+      "conditions": [
+        "none",
+        "both_unexecuted",
+        "own_executed",
+        "request_executed",
+        "own_executed_truth",
+        "request_executed_truth"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "source_dialogue_sha256": "01e1a94f042cdad3de551541ab22bb88bf4e21ff01e0b822775f234882f5d2a5",
+      "script_sha256": "8b5ff35dc58657010f6f482c7a13fab2ac119aadddf1f64c58d170d60db022a1",
+      "world_modified": false,
+      "cloud_calls": 0,
+      "architecture": "direct dialogue history to native action; no Planner/agenda update"
+    }
+  ],
+  "runtimes": [
+    {
+      "graphs": 20,
+      "branches": 720,
+      "calls": 1052,
+      "wall_seconds": 468.5861202630331,
+      "model_load_seconds": 143.57305385597283,
+      "cloud_calls": 0
+    },
+    {
+      "graphs": 20,
+      "branches": 720,
+      "calls": 1311,
+      "wall_seconds": 521.6914305780083,
+      "model_load_seconds": 30.297106885991525,
+      "cloud_calls": 0
+    }
+  ],
+  "graphs": 40,
+  "branches": 1440,
+  "cells": {
+    "firm/none": {
+      "branches": 120,
+      "request_count": 10.0,
+      "own_count": 97.0,
+      "request": {
+        "mean": 0.08333333333333333,
+        "graph_bootstrap_95": [
+          0.016666666666666666,
+          0.16666666666666666
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.8083333333333333,
+        "graph_bootstrap_95": [
+          0.7,
+          0.9083333333333332
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.8,
+        "graph_bootstrap_95": [
+          1.4166666666666665,
+          2.25
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "firm/both_unexecuted": {
+      "branches": 120,
+      "request_count": 6.0,
+      "own_count": 113.0,
+      "request": {
+        "mean": 0.049999999999999996,
+        "graph_bootstrap_95": [
+          0.0,
+          0.11666666666666665
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.9416666666666668,
+        "graph_bootstrap_95": [
+          0.875,
+          0.9916666666666666
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.2,
+        "graph_bootstrap_95": [
+          1.1,
+          1.3166666666666669
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "firm/own_executed": {
+      "branches": 120,
+      "request_count": 40.0,
+      "own_count": 39.0,
+      "request": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.225,
+          0.45
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.325,
+        "graph_bootstrap_95": [
+          0.21666666666666665,
+          0.4333333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 3.1666666666666665,
+        "graph_bootstrap_95": [
+          2.6166666666666663,
+          3.733333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "firm/request_executed": {
+      "branches": 120,
+      "request_count": 0.0,
+      "own_count": 120.0,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.05,
+        "graph_bootstrap_95": [
+          1.0083333333333333,
+          1.1083333333333332
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "firm/own_executed_truth": {
+      "branches": 120,
+      "request_count": 30.0,
+      "own_count": 56.0,
+      "request": {
+        "mean": 0.25,
+        "graph_bootstrap_95": [
+          0.15,
+          0.3583333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.4666666666666666,
+        "graph_bootstrap_95": [
+          0.3416666666666667,
+          0.5916666666666666
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 2.5666666666666664,
+        "graph_bootstrap_95": [
+          2.025,
+          3.1249999999999996
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "firm/request_executed_truth": {
+      "branches": 120,
+      "request_count": 0.0,
+      "own_count": 120.0,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.0833333333333333,
+        "graph_bootstrap_95": [
+          1.0166666666666666,
+          1.1833333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "decline": 84,
+        "accept": 10,
+        "negotiate": 26
+      }
+    },
+    "agreeable/none": {
+      "branches": 120,
+      "request_count": 24.0,
+      "own_count": 88.0,
+      "request": {
+        "mean": 0.19999999999999996,
+        "graph_bootstrap_95": [
+          0.1,
+          0.3083333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.7333333333333332,
+        "graph_bootstrap_95": [
+          0.6166666666666666,
+          0.8416666666666666
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.5083333333333333,
+        "graph_bootstrap_95": [
+          1.208125,
+          1.875
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    },
+    "agreeable/both_unexecuted": {
+      "branches": 120,
+      "request_count": 18.0,
+      "own_count": 102.0,
+      "request": {
+        "mean": 0.15,
+        "graph_bootstrap_95": [
+          0.06666666666666667,
+          0.25
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.85,
+        "graph_bootstrap_95": [
+          0.75,
+          0.9333333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.1833333333333331,
+        "graph_bootstrap_95": [
+          1.05,
+          1.3583333333333332
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    },
+    "agreeable/own_executed": {
+      "branches": 120,
+      "request_count": 78.0,
+      "own_count": 19.0,
+      "request": {
+        "mean": 0.65,
+        "graph_bootstrap_95": [
+          0.5166666666666667,
+          0.7833333333333332
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.15833333333333333,
+        "graph_bootstrap_95": [
+          0.075,
+          0.25
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 2.1083333333333334,
+        "graph_bootstrap_95": [
+          1.616458333333333,
+          2.658333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    },
+    "agreeable/request_executed": {
+      "branches": 120,
+      "request_count": 0.0,
+      "own_count": 120.0,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.1,
+        "graph_bootstrap_95": [
+          1.0166666666666666,
+          1.2416666666666667
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    },
+    "agreeable/own_executed_truth": {
+      "branches": 120,
+      "request_count": 66.0,
+      "own_count": 34.0,
+      "request": {
+        "mean": 0.55,
+        "graph_bootstrap_95": [
+          0.425,
+          0.675
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 0.2833333333333333,
+        "graph_bootstrap_95": [
+          0.175,
+          0.39999999999999997
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.9,
+        "graph_bootstrap_95": [
+          1.4166666666666665,
+          2.433333333333333
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    },
+    "agreeable/request_executed_truth": {
+      "branches": 120,
+      "request_count": 0.0,
+      "own_count": 120.0,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 40
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 40
+      },
+      "steps": {
+        "mean": 1.025,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0666666666666669
+        ],
+        "independent_graphs": 40
+      },
+      "stances": {
+        "negotiate": 47,
+        "decline": 42,
+        "accept": 31
+      }
+    }
+  },
+  "contrasts": {
+    "firm/own_executed-both_unexecuted": {
+      "mean": 0.2833333333333333,
+      "graph_bootstrap_95": [
+        0.18333333333333332,
+        0.39166666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "firm/request_executed-both_unexecuted": {
+      "mean": -0.049999999999999996,
+      "graph_bootstrap_95": [
+        -0.11666666666666665,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/own_executed_truth-both_unexecuted": {
+      "mean": 0.19999999999999998,
+      "graph_bootstrap_95": [
+        0.11666666666666665,
+        0.2916666666666667
+      ],
+      "independent_graphs": 40
+    },
+    "firm/request_executed_truth-both_unexecuted": {
+      "mean": -0.049999999999999996,
+      "graph_bootstrap_95": [
+        -0.11666666666666665,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/own_executed_truth-own_executed": {
+      "mean": -0.08333333333333333,
+      "graph_bootstrap_95": [
+        -0.14999999999999997,
+        -0.025
+      ],
+      "independent_graphs": 40
+    },
+    "firm/request_executed_truth-request_executed": {
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "firm/both_unexecuted-none": {
+      "mean": -0.03333333333333333,
+      "graph_bootstrap_95": [
+        -0.08333333333333333,
+        0.008333333333333333
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/own_executed-both_unexecuted": {
+      "mean": 0.5,
+      "graph_bootstrap_95": [
+        0.375,
+        0.6333333333333332
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/request_executed-both_unexecuted": {
+      "mean": -0.15,
+      "graph_bootstrap_95": [
+        -0.25,
+        -0.058333333333333334
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/own_executed_truth-both_unexecuted": {
+      "mean": 0.4,
+      "graph_bootstrap_95": [
+        0.2833333333333333,
+        0.5166666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/request_executed_truth-both_unexecuted": {
+      "mean": -0.15,
+      "graph_bootstrap_95": [
+        -0.25,
+        -0.058333333333333334
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/own_executed_truth-own_executed": {
+      "mean": -0.1,
+      "graph_bootstrap_95": [
+        -0.175,
+        -0.03333333333333333
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/request_executed_truth-request_executed": {
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "agreeable/both_unexecuted-none": {
+      "mean": -0.05,
+      "graph_bootstrap_95": [
+        -0.12499999999999997,
+        0.008333333333333333
+      ],
+      "independent_graphs": 40
+    },
+    "persona/none": {
+      "mean": 0.11666666666666665,
+      "graph_bootstrap_95": [
+        0.041666666666666664,
+        0.2
+      ],
+      "independent_graphs": 40
+    },
+    "persona/both_unexecuted": {
+      "mean": 0.1,
+      "graph_bootstrap_95": [
+        0.025,
+        0.18333333333333332
+      ],
+      "independent_graphs": 40
+    },
+    "persona/own_executed": {
+      "mean": 0.3166666666666666,
+      "graph_bootstrap_95": [
+        0.2,
+        0.4416666666666666
+      ],
+      "independent_graphs": 40
+    },
+    "persona/request_executed": {
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 40
+    },
+    "persona/own_executed_truth": {
+      "mean": 0.3,
+      "graph_bootstrap_95": [
+        0.19166666666666665,
+        0.41666666666666663
+      ],
+      "independent_graphs": 40
+    },
+    "persona/request_executed_truth": {
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 40
+    }
+  },
+  "stance_strata": {
+    "firm/accept/none": {
+      "branches": 10,
+      "request": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.75
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.25,
+          1.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/accept/both_unexecuted": {
+      "branches": 10,
+      "request": {
+        "mean": 0.375,
+        "graph_bootstrap_95": [
+          0.0,
+          0.75
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 0.625,
+        "graph_bootstrap_95": [
+          0.25,
+          1.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/accept/own_executed": {
+      "branches": 10,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/accept/request_executed": {
+      "branches": 10,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/accept/own_executed_truth": {
+      "branches": 10,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/accept/request_executed_truth": {
+      "branches": 10,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 4
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 4
+      }
+    },
+    "firm/decline/none": {
+      "branches": 84,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 0.8627450980392156,
+        "graph_bootstrap_95": [
+          0.7549019607843137,
+          0.9607843137254901
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/decline/both_unexecuted": {
+      "branches": 84,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 0.9901960784313725,
+        "graph_bootstrap_95": [
+          0.9705882352941176,
+          1.0
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/decline/own_executed": {
+      "branches": 84,
+      "request": {
+        "mean": 0.12254901960784312,
+        "graph_bootstrap_95": [
+          0.053921568627450976,
+          0.19607843137254902
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 0.4117647058823529,
+        "graph_bootstrap_95": [
+          0.2892156862745098,
+          0.5392156862745098
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/decline/request_executed": {
+      "branches": 84,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/decline/own_executed_truth": {
+      "branches": 84,
+      "request": {
+        "mean": 0.06862745098039215,
+        "graph_bootstrap_95": [
+          0.0196078431372549,
+          0.12745098039215685
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 0.5539215686274509,
+        "graph_bootstrap_95": [
+          0.4215686274509804,
+          0.6813725490196078
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/decline/request_executed_truth": {
+      "branches": 84,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 34
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 34
+      }
+    },
+    "firm/negotiate/none": {
+      "branches": 26,
+      "request": {
+        "mean": 0.12037037037037036,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2685185185185185
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 0.712962962962963,
+        "graph_bootstrap_95": [
+          0.5092592592592592,
+          0.8888888888888888
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "firm/negotiate/both_unexecuted": {
+      "branches": 26,
+      "request": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          0.0,
+          0.1111111111111111
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 0.9629629629629629,
+        "graph_bootstrap_95": [
+          0.8888888888888888,
+          1.0
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "firm/negotiate/own_executed": {
+      "branches": 26,
+      "request": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.4444444444444444,
+          0.8888888888888888
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2777777777777778
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "firm/negotiate/request_executed": {
+      "branches": 26,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "firm/negotiate/own_executed_truth": {
+      "branches": 26,
+      "request": {
+        "mean": 0.4166666666666667,
+        "graph_bootstrap_95": [
+          0.19444444444444445,
+          0.6388888888888888
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 0.4166666666666667,
+        "graph_bootstrap_95": [
+          0.19444444444444445,
+          0.6388888888888888
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "firm/negotiate/request_executed_truth": {
+      "branches": 26,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 18
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 18
+      }
+    },
+    "agreeable/accept/none": {
+      "branches": 31,
+      "request": {
+        "mean": 0.4404761904761905,
+        "graph_bootstrap_95": [
+          0.21428571428571427,
+          0.6666666666666667
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 0.5595238095238095,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          0.7857142857142857
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/accept/both_unexecuted": {
+      "branches": 31,
+      "request": {
+        "mean": 0.34523809523809523,
+        "graph_bootstrap_95": [
+          0.13095238095238096,
+          0.5833333333333333
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 0.6547619047619048,
+        "graph_bootstrap_95": [
+          0.41666666666666663,
+          0.869047619047619
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/accept/own_executed": {
+      "branches": 31,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/accept/request_executed": {
+      "branches": 31,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/accept/own_executed_truth": {
+      "branches": 31,
+      "request": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/accept/request_executed_truth": {
+      "branches": 31,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 14
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 14
+      }
+    },
+    "agreeable/decline/none": {
+      "branches": 42,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 0.9833333333333332,
+        "graph_bootstrap_95": [
+          0.95,
+          1.0
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/decline/both_unexecuted": {
+      "branches": 42,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/decline/own_executed": {
+      "branches": 42,
+      "request": {
+        "mean": 0.325,
+        "graph_bootstrap_95": [
+          0.15,
+          0.525
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 0.3916666666666667,
+        "graph_bootstrap_95": [
+          0.19166666666666668,
+          0.6
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/decline/request_executed": {
+      "branches": 42,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/decline/own_executed_truth": {
+      "branches": 42,
+      "request": {
+        "mean": 0.175,
+        "graph_bootstrap_95": [
+          0.0664583333333334,
+          0.3083333333333333
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 0.6333333333333334,
+        "graph_bootstrap_95": [
+          0.4416666666666666,
+          0.8166666666666667
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/decline/request_executed_truth": {
+      "branches": 42,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 20
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 20
+      }
+    },
+    "agreeable/negotiate/none": {
+      "branches": 47,
+      "request": {
+        "mean": 0.18055555555555555,
+        "graph_bootstrap_95": [
+          0.05555555555555555,
+          0.3333333333333333
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 0.7083333333333334,
+        "graph_bootstrap_95": [
+          0.5484375,
+          0.861111111111111
+        ],
+        "independent_graphs": 24
+      }
+    },
+    "agreeable/negotiate/both_unexecuted": {
+      "branches": 47,
+      "request": {
+        "mean": 0.125,
+        "graph_bootstrap_95": [
+          0.027777777777777776,
+          0.25
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 0.875,
+        "graph_bootstrap_95": [
+          0.75,
+          0.9722222222222223
+        ],
+        "independent_graphs": 24
+      }
+    },
+    "agreeable/negotiate/own_executed": {
+      "branches": 47,
+      "request": {
+        "mean": 0.6875,
+        "graph_bootstrap_95": [
+          0.5,
+          0.8541666666666666
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 0.07638888888888888,
+        "graph_bootstrap_95": [
+          0.0,
+          0.18055555555555555
+        ],
+        "independent_graphs": 24
+      }
+    },
+    "agreeable/negotiate/request_executed": {
+      "branches": 47,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 24
+      }
+    },
+    "agreeable/negotiate/own_executed_truth": {
+      "branches": 47,
+      "request": {
+        "mean": 0.5902777777777778,
+        "graph_bootstrap_95": [
+          0.40972222222222215,
+          0.7569444444444443
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 0.17361111111111108,
+        "graph_bootstrap_95": [
+          0.06249999999999999,
+          0.3055555555555556
+        ],
+        "independent_graphs": 24
+      }
+    },
+    "agreeable/negotiate/request_executed_truth": {
+      "branches": 47,
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 24
+      },
+      "own_task": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ],
+        "independent_graphs": 24
+      }
+    }
+  },
+  "protocol_errors": 0,
+  "illegal_actions": 13,
+  "scope": "first allocation/consumption/equipment within six native actions; not total utility",
+  "calls": {
+    "count": 2363,
+    "parse_errors": 0,
+    "prompt_tokens": 3211020,
+    "completion_tokens": 158896
+  },
+  "branch_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e53_32b_direct_s0": "f1a208f9b78a5149cac3df25f011ad83deb16c82e78ff2d4a7c1657bb07ae35c",
+    "/home/xiang/.cache/game-npc-research/runs/e53_32b_direct_s1": "0e5f252611891503135c6e271f8fbe35f53ecbd1fa673fd0d8dcb31c604f79f4"
+  }
+}

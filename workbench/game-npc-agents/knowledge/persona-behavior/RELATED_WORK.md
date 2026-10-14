@@ -69,3 +69,6 @@ E41/I03最新定位：[PPol](../papers/PERSONA_POLICIES_2026.md)已有固定任�
 用户校正后定位：不再把“利益控制”当清楚的论文主旨。当前中心是人物设定、具体请求／自身目标／社会关系与真实选择的关系；PCSP的手写奖励诊断不能独立包装新题。新增[CRPO/ICML2026](../papers/CRPO_2026.md)、[HAMLET/ICLR2026](../papers/HAMLET_2026.md)、[CoSER/ICML2025](../papers/COSER_2025.md)正文及关键附录核对：已有角色约束与迎合冲突、task/style分流、私有goal与公共剧情冲突、动机信息对表现的因果对照。E44的一句时钟／已有责任只是普通强基线；寻找能解释真实NPC选择的新认识，而非将这些命题改名。
 
 E46–49定位补充：[UGST/TACL2026](../papers/UGST_TACL_2026.md)已有profile/policy与任务分解、逐轮goal-state提示、SFT/GRPO；[Goal-Directedness/ICML2026](../papers/GOAL_DIRECTEDNESS_ICML_2026.md)已有behavior/belief/plan分层及因果patch对照。承诺→显式agenda、已有计划冗余及具体世界动作是当前测量层次，不能仅凭不同环境或普通管线消融称新贡献。E48单case支持一个渠道，E49以其他源角色／全部既有历史检验；尚未建立可跨角色／场景的新科学规律。
+
+
+2026-10-15补充定位：ICML Tracing the Persona Circuit、ICLR Persona Dynamic Decoding、ACL Trait Activation、When Role-playing Do Models Believe、KDD DREAM的正文/关键附录已核读，见[机制近邻](MECHANISTIC_NEIGHBORS_2026-10-15.md)。通用“人格仍在但被助手先验压过”、情境重要性、角色输出与信念分离及因果事件记忆都有claim owner。研究增量需在原生NPC目标取舍、具体目标解释与真实动作的可预测关联中形成；不用角度或单case替代独立验证。

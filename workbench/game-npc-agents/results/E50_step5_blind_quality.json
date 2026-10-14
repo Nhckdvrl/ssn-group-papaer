@@ -1,0 +1,29 @@
+{
+  "model": "step-5-preview",
+  "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+  "source": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_confirm_v2_complete_budget/snapshots.jsonl",
+  "source_sha256": "a47f3c0798a0596240695b23cb889178d1c61ecfb4e112505bd7a79a038e628c",
+  "raw_directory": "/home/xiang/.cache/game-npc-research/runs/e50_step5_data_blind_review_v2",
+  "rows": 200,
+  "distinct_source_graphs": 200,
+  "decisions": {
+    "keep": 151,
+    "review": 40,
+    "reject": 9
+  },
+  "false_checks": {
+    "task_consistent": 6,
+    "request_natural": 12,
+    "same_immediate_transfer": 111
+  },
+  "usage": {
+    "prompt_tokens": 77951,
+    "completion_tokens": 281619,
+    "total_tokens": 359570
+  },
+  "format_recovery": "19 complete batches; batch015 yielded 9; missing ID returned single valid object; JSON container normalization only",
+  "cash_endpoint_calls": 0,
+  "npc_cloud_calls": 0,
+  "selection": "All 200 source scenes preserved; blind labels recorded before behavioral confirm",
+  "quality_sha256": "43508df836dd8b238ad93fcdebbcded7b7825d622c0bf7c725ad9b81d117e041"
+}
