@@ -1,6 +1,6 @@
 # E44：自然对话中已有责任与时钟的普通恢复对照
 
-- **状态：** PLANNED。
+- **状态：** DONE。
 - **类型：** REPRO／发现性竞争解释诊断；不是新方法或人物失败主张。
 - **对应：** P11、C01来源校对；回到人物、具体社会互动与实际后果的中心。
 - **问题（一句话）：** E35 seed3502教授在10点讲座期间邀请学生去别处讨论，是否能由对话阶段缺失当前时钟／已有教学责任解释？
@@ -16,3 +16,9 @@
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 CPU完成：3502完整1200frames逐frame同一，4.94秒；787frames精确prefix同一，2.32秒、77录制responses，首次新请求与原call77逐消息一致。单空闲GPU0已启动三分支，原3502成功／失败与其他3501/3503正向合作证据共同保留。本卡不是新的论文题目。
+
+接口校对（行为结论前）：原call77 structured speak因length截断／JSON不完整返回None，实际邀请来自原call78自由文本fallback。v1只向structured路径添加事实，不能解释为所有实际发言均接受相同事实；停止尚未完成的两个提醒分支，全部raw保留，native完整后缀仍有效。独立v2统一处理speak与原自由文本fallback，世界／parser／预算不改。用上游真实LLMAgent.converse强制tool=None：三个条件均实际经过call_tool→chat，两路径的事实句一致，native均不加句；0模型/API。资格见E44_original_fallback_fact_qualification.json。v2只重跑clock／clock_and_duty，使用已完成native对照，先精确prefix再GPU。
+
+完整结果：三个valid分支均1200frames，new model calls为native52／clock66／clock+duty64。fresh native与原episode的三人位置、活动文本全部1200frame一致，首次文字差在frame878／相同消息seed的call92；不能称整条随机或文字byte一致。两个v2事实分支各独立零模型重放全部1200frame同一。
+
+实际选择：native教授frame967起走Williams；clock在847开始Irvine的lecture活动，937走Houston ReadingRoom，1079开始同名lecture活动；clock+duty在862..1150执行Irvine lecture活动，1151后走Houston BilliardRoom。相关新承诺、计划与逐人实际活动全部记录E44_natural_context_complete.json。lecture是合法perform活动及地点，不是公开lecture完成flag／物理教学证据，离开亦不自动失败。上下文信息是有实证支持的竞争解释，本实验persona固定，不证明人物因果效应或新机制。E45才对角色指令作局部干预，仍不以普通提醒当创新。

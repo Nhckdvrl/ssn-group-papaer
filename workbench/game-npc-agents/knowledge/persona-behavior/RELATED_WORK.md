@@ -65,3 +65,5 @@ E25–E28不能仅凭readout、重排敏感、body混杂或正交变换建立新
 新增方法对齐：[PAMDP／ICLR2026](../papers/PAMDP_2026.md)的隐藏profile与双critic、[GCB／ICML2022](../papers/GOAL_CONDITIONED_BISIMULATION_2022.md)的功能等价、[PA-SkewFit／NeurIPS2021](../papers/GOAL_DOMAIN_ALIGNMENT_2021.md)的matched行动与跨域表示。结合BC-PMI／DAIL，当前研究动作转为解释角色编辑的利益结构、控制方向与训练形成过程，实际读数见E37／E39，不把邻近覆盖当关闭探索的理由。
 
 E41/I03最新定位：[PPol](../papers/PERSONA_POLICIES_2026.md)已有固定任务目标的人格交流变化与同预算训练；[Poly-PPO/ICLR2026](../papers/POLYCHROMIC_PPO_2026.md)已有集合成功×多样性、matched采样与局部分支；[SIPO/NeurIPS2023](../papers/SIPO_2023.md)已明确动作差异不等于策略后果并做游戏消融。当前增量研究动作是角色属性利益控制的形成与状态条件，不冒领这三个已有主张，也不因重叠自动关闭。三卡明确正文/附录/代码覆盖范围。
+
+用户校正后定位：不再把“利益控制”当清楚的论文主旨。当前中心是人物设定、具体请求／自身目标／社会关系与真实选择的关系；PCSP的手写奖励诊断不能独立包装新题。新增[CRPO/ICML2026](../papers/CRPO_2026.md)、[HAMLET/ICLR2026](../papers/HAMLET_2026.md)、[CoSER/ICML2025](../papers/COSER_2025.md)正文及关键附录核对：已有角色约束与迎合冲突、task/style分流、私有goal与公共剧情冲突、动机信息对表现的因果对照。E44的一句时钟／已有责任只是普通强基线；寻找能解释真实NPC选择的新认识，而非将这些命题改名。

@@ -1,6 +1,6 @@
 # E41：干预覆盖与普通等义增强的等预算控制（2026-10-14）
 
-- **状态：** RUNNING；执行／编码资格完成，六个等预算300轮任务已启动。
+- **状态：** DONE；四条件 × 三种子共12次有效300轮训练及所有阶段评价完成。
 - **类型：** EXPLORE；I03的研究动作，不预设新loss。
 - **对应：** I03／P10，衔接E34/37/39/40。
 - **问题：** 单C功能控制与文字稳健性需要哪种经验：普通等义表述，还是独立变化C与其他特质／身体的干预覆盖？
@@ -37,3 +37,5 @@ unbound评价补充（首次控制checkpoint评价前）：原/有效surface/mat
 matched比unbound好的结果也可能来自训练目标配置扩大，而不只是文字—利益绑定。因此补goal-only：和matched完全相同的实际C置换/边际/目标/身体/偏好/原sampler，却保持原canonical C输入。与原No、unbound、matched构成2×2（input是否置换×真实目标是否置换），surface另作普通表述控制。三个seed/300轮/30-100-300，全部原优化参数不变；分析canonical原生收益及natural文本C完整四格/功能响应的interaction，而不把不同比较pool的matched幅度混用。目标与输入刻意不匹配的诊断cell不作自然角色失败论据。
 
 先一轮正控制：goal-only与matched初始policy及25600obs/actions/reward必须逐byte相同（初始FiLM中性），实际输入仍original、environment C选择完全与matched同一、首次更新权重应不同。采用既有harness的冻结专用版本，不再修改其他进行中训练脚本。三单core CPU，已有八GPU用于强本地模型闭环，不新增环境/API/世界规则。该cell用于区分reward-config覆盖/输入覆盖/匹配经验，不能因结果不理想舍弃；所有四cell完整预算保留。
+
+全部完整预算对照完成：surface/matched/input-only/goal-only四条件×3seed，均300轮，每次7680000transitions，共12新训练／92160000transitions。30/100/300所有读数归档E41_complete_factorial_all_stages.json，无挑选。300轮binding interaction的原生reward差为[8.1212,2.6036,-3.1668]，逐背景四格保留，不由此自动判科学成败。原作者给定reward诊断不包装“利益控制”新题；更具体人物／社会目标／执行解释沿E35/E44/E45继续，C01不升级。

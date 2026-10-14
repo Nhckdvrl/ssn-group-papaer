@@ -1,0 +1,677 @@
+{
+  "conditions": {
+    "original": {
+      "summary": {
+        "condition": "clock_and_duty",
+        "seed": 3502,
+        "fork_step": 787,
+        "frames": 1200,
+        "prefix_byte_equal_frames": 787,
+        "complete_cpu_replay_byte_equal": false,
+        "first_suffix_request_matches_source": true,
+        "prefix_model_responses": 77,
+        "new_local_calls": 98,
+        "dialogue_style": "original",
+        "factual_additions": 7,
+        "persona_instruction_edits": 0,
+        "root_parser_calls": 28,
+        "root_legal": 28,
+        "wall_seconds": 402.5741330779856,
+        "error": null,
+        "cloud_calls": 0,
+        "world_or_rules_changed": false,
+        "authored_world_persona_preserved": true,
+        "persona_intervention_scope": "Professor conversation instruction only; original history and planner/decider preserved",
+        "weight_load_strategy": "eager",
+        "own_plan_progress_disclosed_in_dialogue": true,
+        "professor_dialogue_max_tokens": 512,
+        "other_budgets_preserved": true,
+        "raw": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_original_budget512/clock_and_duty"
+      },
+      "independent_replay": {
+        "frames_verified": 1200,
+        "all_frames_byte_equal": true,
+        "new_model_or_API_calls": 0,
+        "cassette_sha256": "13eb46eb7531d3ccccdb045ea5c9ceaf47eefbedc986c278fbc3c29aab51f9fb",
+        "branch": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_original_budget512/clock_and_duty",
+        "wall_seconds": 3.932517517998349
+      },
+      "actor_activity_segments": {
+        "Professor Tanaka": [
+          {
+            "start": 0,
+            "end": 70,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 71,
+            "end": 430,
+            "activity": "calibrating projection equipment and whiteboard markers @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 431,
+            "end": 846,
+            "activity": "preparing the whiteboard with initial equations @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 847,
+            "end": 996,
+            "activity": "delivering a guest lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 997,
+            "end": 1026,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1027,
+            "end": 1116,
+            "activity": "explaining gravitational wave detection with a marker on the whiteboard @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1117,
+            "end": 1199,
+            "activity": "walking to Williams Hall — Classroom A @ UPenn:Williams Hall:Classroom A"
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "start": 0,
+            "end": 234,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 235,
+            "end": 418,
+            "activity": "spending time @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 419,
+            "end": 724,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 725,
+            "end": 1199,
+            "activity": "listening intently to professor tanaka's lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          }
+        ],
+        "Diego Torres": [
+          {
+            "start": 0,
+            "end": 26,
+            "activity": "walking to Meyerson Hall @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 27,
+            "end": 206,
+            "activity": "cutting and assembling a studio model @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 207,
+            "end": 399,
+            "activity": "walking to Van Pelt — Kamin Gallery @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 400,
+            "end": 489,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 490,
+            "end": 832,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 833,
+            "end": 1026,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1027,
+            "end": 1191,
+            "activity": "refining acoustic sketches on the whiteboard @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1192,
+            "end": 1197,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1198,
+            "end": 1199,
+            "activity": "walking to Williams Hall — Classroom A @ UPenn:Williams Hall:Classroom A"
+          }
+        ]
+      },
+      "actor_outcomes": {
+        "Professor Tanaka": [
+          {
+            "call_id": 81,
+            "step": 790,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Sofia possesses a remarkable tactile intuition for abstract physics, specifically visualizing metric perturbations as the universe stretching a ruler and comparing LIGO's sensitivity to feeling a heartbeat across a football field. This unique perspective is a valuable asset for future derivations."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 99,
+            "step": 852,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Discuss Diego's acoustic sketches and trace sound reflections on the whiteboard in Irvine Auditorium",
+              "commitment_timing": "immediate",
+              "relationship_note": "Diego Torres demonstrates strong cross-disciplinary intuition, effectively using architectural acoustics to visualize gravitational wave concepts; he is eager to map sound reflections against geometry."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 141,
+            "step": 1030,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Meet Diego Torres at the entrance of Williams Hall, Classroom A, to work through the derivation of spacetime lensing using the parabolic reflector analogy.",
+              "commitment_timing": "immediate",
+              "relationship_note": "Diego Torres demonstrated exceptional cross-disciplinary insight by connecting sound reflection diagrams to gravitational wave lensing, suggesting he is a highly creative and promising student for advanced problem sessions."
+            },
+            "parse_error": null
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "call_id": 82,
+            "step": 790,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Professor Tanaka highly values my tactile and intuitive analogies for complex physics concepts, specifically praising my 'heartbeat across a football field' comparison for LIGO sensitivity."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 120,
+            "step": 942,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Diego is an architecture student who sketches in the Kamin Gallery and Meyerson studio; he suggested looking for the oldest blueprints section to navigate the Van Pelt Book Stacks."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 159,
+            "step": 1089,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Diego has a unique perspective on campus spaces, specifically noting the Moelis Reading Room's acoustics as a 'physical filter for distraction' that aids in visualizing complex physics concepts like gravitational waves."
+            },
+            "parse_error": null
+          }
+        ],
+        "Diego Torres": [
+          {
+            "call_id": 97,
+            "step": 852,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Discuss sketches and trace sound reflections on the whiteboard in Irvine Auditorium with Professor Tanaka",
+              "commitment_timing": "immediate",
+              "relationship_note": "Professor Tanaka highly values cross-disciplinary thinking, specifically appreciating architectural analogies to explain complex physics concepts like gravitational waves."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 119,
+            "step": 942,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Sofia is a first-year student attending Professor Tanaka's lecture on gravitational waves; she struggles with navigating the Book Stacks in Van Pelt and is planning to try the Moelis Reading Room for focus."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 139,
+            "step": 1030,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Meet Professor Tanaka at the entrance of Williams Hall (Classroom A) to work on the parabolic reflector derivation for the problem session.",
+              "commitment_timing": "immediate",
+              "relationship_note": "Professor Tanaka highly values cross-disciplinary insights, specifically appreciating the application of architectural concepts (like parabolic reflectors) to complex physics problems (spacetime lensing)."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 158,
+            "step": 1089,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Sofia is struggling with visualizing gravitational wave concepts for Professor Tanaka's assignment and was inspired by my suggestion to use the Moelis Reading Room for its acoustics."
+            },
+            "parse_error": null
+          }
+        ]
+      },
+      "all_parse_errors": [
+        {
+          "call_id": 86,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 847,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 11 (char 246)"
+        },
+        {
+          "call_id": 108,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 937,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 11 (char 246)"
+        },
+        {
+          "call_id": 122,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 967,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Unterminated string starting at: line 1 column 240 (char 239)"
+        },
+        {
+          "call_id": 124,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 997,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 126,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1027,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 133,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1027,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 144,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1087,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Unterminated string starting at: line 1 column 240 (char 239)"
+        },
+        {
+          "call_id": 163,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1132,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 165,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1162,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 240 (char 239)"
+        },
+        {
+          "call_id": 167,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1192,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        }
+      ],
+      "professor_speak_parse_errors": 0,
+      "professor_speak_budgets": [
+        512
+      ],
+      "same_canonical_frames_as_E46": 789,
+      "same_professor_activity_frames_as_E46": 847,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_original_budget512/clock_and_duty"
+    },
+    "reserved": {
+      "summary": {
+        "condition": "clock_and_duty",
+        "seed": 3502,
+        "fork_step": 787,
+        "frames": 1200,
+        "prefix_byte_equal_frames": 787,
+        "complete_cpu_replay_byte_equal": false,
+        "first_suffix_request_matches_source": true,
+        "prefix_model_responses": 77,
+        "new_local_calls": 61,
+        "dialogue_style": "reserved",
+        "factual_additions": 5,
+        "persona_instruction_edits": 5,
+        "root_parser_calls": 19,
+        "root_legal": 19,
+        "wall_seconds": 291.4894105549902,
+        "error": null,
+        "cloud_calls": 0,
+        "world_or_rules_changed": false,
+        "authored_world_persona_preserved": true,
+        "persona_intervention_scope": "Professor conversation instruction only; original history and planner/decider preserved",
+        "weight_load_strategy": "eager",
+        "own_plan_progress_disclosed_in_dialogue": true,
+        "professor_dialogue_max_tokens": 512,
+        "other_budgets_preserved": true,
+        "raw": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_reserved_budget512/clock_and_duty"
+      },
+      "independent_replay": {
+        "frames_verified": 1200,
+        "all_frames_byte_equal": true,
+        "new_model_or_API_calls": 0,
+        "cassette_sha256": "f4179df222f903ddd6d8c8d596090fe7a28189cc76e9431755fa810454352fe0",
+        "branch": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_reserved_budget512/clock_and_duty",
+        "wall_seconds": 2.373394386959262
+      },
+      "actor_activity_segments": {
+        "Professor Tanaka": [
+          {
+            "start": 0,
+            "end": 70,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 71,
+            "end": 430,
+            "activity": "calibrating projection equipment and whiteboard markers @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 431,
+            "end": 876,
+            "activity": "preparing the whiteboard with initial equations @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 877,
+            "end": 1146,
+            "activity": "delivering a lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1147,
+            "end": 1199,
+            "activity": "walking to Williams Hall — Classroom A @ UPenn:Williams Hall:Classroom A"
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "start": 0,
+            "end": 234,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 235,
+            "end": 418,
+            "activity": "spending time @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 419,
+            "end": 724,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 725,
+            "end": 876,
+            "activity": "listening intently to professor tanaka's lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 877,
+            "end": 981,
+            "activity": "taking notes on the ligo scaling factor derivation @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 982,
+            "end": 1199,
+            "activity": "walking to Williams Hall @ UPenn:Williams Hall:lobby"
+          }
+        ],
+        "Diego Torres": [
+          {
+            "start": 0,
+            "end": 26,
+            "activity": "walking to Meyerson Hall @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 27,
+            "end": 206,
+            "activity": "cutting and assembling a studio model @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 207,
+            "end": 399,
+            "activity": "walking to Van Pelt — Kamin Gallery @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 400,
+            "end": 489,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 490,
+            "end": 832,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 833,
+            "end": 1198,
+            "activity": "listening to the lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1199,
+            "end": 1199,
+            "activity": "walking to Williams Hall — Classroom A @ UPenn:Williams Hall:Classroom A"
+          }
+        ]
+      },
+      "actor_outcomes": {
+        "Professor Tanaka": [
+          {
+            "call_id": 83,
+            "step": 792,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Sofia Ramirez demonstrates a strong intuitive grasp of scaling factors in physics; she quickly connected the abstract math of LIGO's arm length to the concept of a 'magnifying glass' for spacetime ripples and is eager to perform the numerical calculations."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 105,
+            "step": 879,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Diego Torres is an architecture grad student who sits in the back row with a sketchbook; he is interested in the intersection of dynamic space (gravitational waves) and acoustic geometry for his design projects."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 123,
+            "step": 983,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Meet Diego Torres in Williams Hall, Classroom A for a derivation session at 11:00",
+              "commitment_timing": "scheduled",
+              "relationship_note": "Diego is exploring the translation of gravitational wave distortions into a kinetic architectural façade; he is conceptually bold and eager to apply rigorous mathematics to architectural intuition."
+            },
+            "parse_error": null
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "call_id": 84,
+            "step": 792,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Walk through the LIGO arm-length scaling factor derivation with Professor Tanaka in the lecture hall before the lecture begins",
+              "commitment_timing": "immediate",
+              "relationship_note": "Professor Tanaka is highly encouraging and values students who connect abstract math to tangible physical scales; he actively involves students in derivations by handing them the marker."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 111,
+            "step": 925,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Head to Williams Hall after finishing Calc 1 prep to peek at the interactive session visualizations",
+              "commitment_timing": "scheduled",
+              "relationship_note": "Diego is an architecture grad student who blends art and math; he attended Professor Tanaka's lecture on gravitational waves and is attending the interactive session in Williams Hall."
+            },
+            "parse_error": null
+          }
+        ],
+        "Diego Torres": [
+          {
+            "call_id": 103,
+            "step": 879,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Attend interactive derivation session at Williams Hall, Classroom A",
+              "commitment_timing": "scheduled",
+              "relationship_note": "Professor Tanaka recognizes me as the sketching student in the back row and values my perspective on dynamic space; he is moving to Williams Hall for a session on the mathematics of space stretching."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 110,
+            "step": 925,
+            "parsed": {
+              "plans_changed": false,
+              "commitment_timing": "unspecified",
+              "relationship_note": "Sofia is a first-year student struggling with Calc 1 and campus navigation; she is interested in the visual aspects of physics (space stretching) but not ready for the math, and she plans to visit Williams Hall later after her prep."
+            },
+            "parse_error": null
+          },
+          {
+            "call_id": 121,
+            "step": 983,
+            "parsed": {
+              "plans_changed": true,
+              "commitment": "Meet Professor Tanaka in Williams Hall, Classroom A for a derivation session at 11:00",
+              "commitment_timing": "scheduled",
+              "relationship_note": "Professor Tanaka is enthusiastic about the intersection of rigorous mathematics (metric tensor perturbations) and kinetic architecture, viewing the conceptual leap as bold and worth exploring."
+            },
+            "parse_error": null
+          }
+        ]
+      },
+      "all_parse_errors": [
+        {
+          "call_id": 89,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 877,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 11 (char 246)"
+        },
+        {
+          "call_id": 95,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 877,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 114,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 982,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        },
+        {
+          "call_id": 127,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1147,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 11 (char 246)"
+        },
+        {
+          "call_id": 133,
+          "context": {
+            "role": "native_score_memories",
+            "turn": 1199,
+            "tool_name": "score_memories"
+          },
+          "tool": "score_memories",
+          "finish_reason": "length",
+          "parse_error": "JSONDecodeError: Expecting value: line 11 column 1 (char 240)"
+        }
+      ],
+      "professor_speak_parse_errors": 0,
+      "professor_speak_budgets": [
+        512
+      ],
+      "same_canonical_frames_as_E46": 1200,
+      "same_professor_activity_frames_as_E46": 1200,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e47_s3502_reserved_budget512/clock_and_duty"
+    }
+  },
+  "new_local_calls": 159,
+  "seed": 3502,
+  "world_rules_changed": false,
+  "cloud_calls": 0,
+  "scope": "Single natural case, conversation-only role instruction. Longer speech can change content, done flags, plan credit and later samples; not pure parser recovery. Activity text is not physical task completion."
+}

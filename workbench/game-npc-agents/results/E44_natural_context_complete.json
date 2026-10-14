@@ -1,0 +1,442 @@
+{
+  "case_seed": 3502,
+  "native": {
+    "condition": "native",
+    "seed": 3502,
+    "fork_step": 787,
+    "frames": 1200,
+    "prefix_byte_equal_frames": 787,
+    "complete_cpu_replay_byte_equal": false,
+    "first_suffix_request_matches_source_call77": true,
+    "prefix_model_responses": 77,
+    "new_local_calls": 52,
+    "factual_additions": 0,
+    "root_parser_calls": 19,
+    "root_legal": 19,
+    "wall_seconds": 238.0438707479625,
+    "error": null,
+    "cloud_calls": 0,
+    "world_or_persona_or_rules_changed": false,
+    "raw": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks/native"
+  },
+  "fact_conditions": {
+    "clock": {
+      "summary": {
+        "condition": "clock",
+        "seed": 3502,
+        "fork_step": 787,
+        "frames": 1200,
+        "prefix_byte_equal_frames": 787,
+        "complete_cpu_replay_byte_equal": false,
+        "first_suffix_request_matches_source_call77": true,
+        "prefix_model_responses": 77,
+        "new_local_calls": 66,
+        "factual_additions": 9,
+        "root_parser_calls": 22,
+        "root_legal": 22,
+        "wall_seconds": 273.10712504101684,
+        "error": null,
+        "cloud_calls": 0,
+        "world_or_persona_or_rules_changed": false,
+        "raw": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock"
+      },
+      "actor_activity_segments": {
+        "Diego Torres": [
+          {
+            "start": 0,
+            "end": 26,
+            "activity": "walking to Meyerson Hall @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 27,
+            "end": 206,
+            "activity": "cutting and assembling a studio model @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 207,
+            "end": 399,
+            "activity": "walking to Van Pelt — Kamin Gallery @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 400,
+            "end": 489,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 490,
+            "end": 832,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 833,
+            "end": 936,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 937,
+            "end": 1081,
+            "activity": "walking to Houston Hall — Reading Room @ UPenn:Houston Hall:Reading Room"
+          },
+          {
+            "start": 1082,
+            "end": 1199,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Houston Hall:Reading Room"
+          }
+        ],
+        "Professor Tanaka": [
+          {
+            "start": 0,
+            "end": 70,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 71,
+            "end": 430,
+            "activity": "calibrating projection equipment and whiteboard markers @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 431,
+            "end": 846,
+            "activity": "preparing the whiteboard with initial equations @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 847,
+            "end": 936,
+            "activity": "delivering a guest lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 937,
+            "end": 1078,
+            "activity": "walking to Houston Hall — Reading Room @ UPenn:Houston Hall:Reading Room"
+          },
+          {
+            "start": 1079,
+            "end": 1171,
+            "activity": "delivering a guest lecture on gravitational waves @ UPenn:Houston Hall:Reading Room"
+          },
+          {
+            "start": 1172,
+            "end": 1195,
+            "activity": "sketching gravitational wave stress patterns on the whiteboard with diego @ UPenn:Houston Hall:Reading Room"
+          },
+          {
+            "start": 1196,
+            "end": 1199,
+            "activity": "walking to Williams Hall — Classroom A @ UPenn:Williams Hall:Classroom A"
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "start": 0,
+            "end": 234,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 235,
+            "end": 418,
+            "activity": "spending time @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 419,
+            "end": 724,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 725,
+            "end": 1199,
+            "activity": "listening intently to professor tanaka's lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          }
+        ]
+      },
+      "conversation_outcomes": [
+        {
+          "model_call_id": 82,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Sofia Ramirez is a student with a unique intuition for the 'gentle' side of the universe, specifically interested in detecting signals from stellar nurseries rather than violent events like black holes. She is currently navigating her way around Penn and values mentorship; she expressed a strong desire to design a detector for stellar nurseries in the lab in the future."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 83,
+          "actor_declared_in_input": "Sofia Ramirez",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Professor Tanaka is a supportive mentor who validated my idea of detecting 'stellar nursery' waves and expressed a genuine desire to help me design such a detector in the lab one day."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 98,
+          "actor_declared_in_input": "Diego Torres",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Walk to Houston Hall Reading Room to sketch spacetime distortions on a whiteboard",
+            "commitment_timing": "immediate",
+            "relationship_note": "Professor Tanaka enthusiastically bridges astrophysics and architecture, preferring to visualize complex concepts like gravitational waves through analogies and whiteboard sketches rather than just math."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 100,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Walk to Houston Hall Reading Room to visualize spacetime distortions on a whiteboard",
+            "commitment_timing": "immediate",
+            "relationship_note": "Diego Torres is an artist/architect who attended the gravitational wave lecture and is exploring the conceptual intersection of spacetime distortions and structural dynamics (specifically shear forces and load-bearing structures)."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 125,
+          "actor_declared_in_input": "Diego Torres",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Sketching the transient stress pattern of a gravitational wave on a skyscraper frame on the whiteboard with Professor Tanaka",
+            "commitment_timing": "immediate",
+            "relationship_note": "Professor Tanaka is highly enthusiastic about interdisciplinary synthesis, specifically appreciating the connection between astrophysics (gravitational waves) and structural engineering (shear forces). He values analogies like the 'breathing' of a structure and the 'heartbeat' of a wave."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 127,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Visualize the transient stress pattern of a gravitational wave on a skyscraper frame on the whiteboard with Diego Torres",
+            "commitment_timing": "immediate",
+            "relationship_note": "Diego Torres demonstrates a brilliant ability to synthesize architecture and astrophysics, specifically visualizing gravitational wave quadrupole distortions as transient stress patterns in structural frames."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        }
+      ],
+      "independent_replay": {
+        "frames_verified": 1200,
+        "all_frames_byte_equal": true,
+        "new_model_or_API_calls": 0,
+        "cassette_sha256": "79748a318b8d14954e4f497f97109e47ce94312c96e95587e4b51bc4420e0080",
+        "branch": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock",
+        "wall_seconds": 2.3451112029724754
+      },
+      "tool_parse_errors": 9,
+      "free_text_calls": 1,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock"
+    },
+    "clock_and_duty": {
+      "summary": {
+        "condition": "clock_and_duty",
+        "seed": 3502,
+        "fork_step": 787,
+        "frames": 1200,
+        "prefix_byte_equal_frames": 787,
+        "complete_cpu_replay_byte_equal": false,
+        "first_suffix_request_matches_source_call77": true,
+        "prefix_model_responses": 77,
+        "new_local_calls": 64,
+        "factual_additions": 8,
+        "root_parser_calls": 19,
+        "root_legal": 19,
+        "wall_seconds": 274.62174735503504,
+        "error": null,
+        "cloud_calls": 0,
+        "world_or_persona_or_rules_changed": false,
+        "raw": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock_and_duty"
+      },
+      "actor_activity_segments": {
+        "Diego Torres": [
+          {
+            "start": 0,
+            "end": 26,
+            "activity": "walking to Meyerson Hall @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 27,
+            "end": 206,
+            "activity": "cutting and assembling a studio model @ UPenn:Meyerson Hall:lobby"
+          },
+          {
+            "start": 207,
+            "end": 399,
+            "activity": "walking to Van Pelt — Kamin Gallery @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 400,
+            "end": 489,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Van Pelt Library:Kamin Gallery"
+          },
+          {
+            "start": 490,
+            "end": 832,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 833,
+            "end": 966,
+            "activity": "studying architectural precedents in the gallery exhibits @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 967,
+            "end": 1199,
+            "activity": "walking to Van Pelt — Circulation Desk @ UPenn:Van Pelt Library:Circulation"
+          }
+        ],
+        "Professor Tanaka": [
+          {
+            "start": 0,
+            "end": 70,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 71,
+            "end": 430,
+            "activity": "calibrating projection equipment and whiteboard markers @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 431,
+            "end": 861,
+            "activity": "preparing the whiteboard with initial equations @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 862,
+            "end": 1150,
+            "activity": "delivering a guest lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1151,
+            "end": 1199,
+            "activity": "walking to Houston Hall — Billiard Room @ UPenn:Houston Hall:Billiard Room"
+          }
+        ],
+        "Sofia Ramirez": [
+          {
+            "start": 0,
+            "end": 234,
+            "activity": "walking to Irvine Auditorium @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 235,
+            "end": 418,
+            "activity": "spending time @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 419,
+            "end": 724,
+            "activity": "waiting @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 725,
+            "end": 1150,
+            "activity": "listening intently to professor tanaka's lecture on gravitational waves @ UPenn:Irvine Auditorium:lobby"
+          },
+          {
+            "start": 1151,
+            "end": 1199,
+            "activity": "walking to Houston Hall — Billiard Room @ UPenn:Houston Hall:Billiard Room"
+          }
+        ]
+      },
+      "conversation_outcomes": [
+        {
+          "model_call_id": 82,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Sofia Ramirez demonstrated excellent intuition for visualizing gravitational wave signals ('chirps') and a deep appreciation for the elegance of the math; she is a promising student to watch in future lab reports."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 83,
+          "actor_declared_in_input": "Sofia Ramirez",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Professor Tanaka is incredibly encouraging and has a poetic way of explaining complex physics, comparing black hole mergers to a 'cosmic dance.' He noticed my enthusiasm for the LIGO data and specifically praised my intuition for the elegance in the math, suggesting I bring that same curiosity to my next lab report."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 96,
+          "actor_declared_in_input": "Diego Torres",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Meet Professor Tanaka at the Van Pelt circulation desk to pick up notes on spacetime strain and structural resilience",
+            "commitment_timing": "scheduled",
+            "relationship_note": "Professor Tanaka is willing to share interdisciplinary insights on physics and architecture despite a busy schedule; he is currently grading lab reports at the circulation desk."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 98,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Meet Diego Torres at the Van Pelt circulation desk to discuss spacetime strain and structural resilience",
+            "commitment_timing": "scheduled",
+            "relationship_note": "Diego Torres is an architect from the Meyerson studio who draws parallels between gravitational waves and structural dynamics in large-span design."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 110,
+          "actor_declared_in_input": "Diego Torres",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Sofia is a first-year freshman who attended Professor Tanaka's lecture on gravitational waves and is currently struggling to navigate the campus."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 111,
+          "actor_declared_in_input": "Sofia Ramirez",
+          "parsed": {
+            "plans_changed": false,
+            "commitment_timing": "unspecified",
+            "relationship_note": "Diego is an architecture grad student at Meyerson Hall who is currently working on studio projects and needs to pick up notes on structural resilience from Professor Tanaka at Van Pelt."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 124,
+          "actor_declared_in_input": "Professor Tanaka",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Meet Sofia Ramirez at Houston Hall's Billiard Room to visualize spacetime strain using billiard balls and a marker",
+            "commitment_timing": "immediate",
+            "relationship_note": "Sofia Ramirez has a strong intuition for gravitational wave 'chirp' signals, prefers tactile learning methods, and is familiar with the layout of Houston Hall, having previously visited the Billiard Room."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        },
+        {
+          "model_call_id": 126,
+          "actor_declared_in_input": "Sofia Ramirez",
+          "parsed": {
+            "plans_changed": true,
+            "commitment": "Go to Houston Hall's Billiard Room to visualize spacetime strain with billiard balls",
+            "commitment_timing": "immediate",
+            "relationship_note": "Professor Tanaka is an engaging mentor who uses tactile, creative demonstrations (like billiard balls) to explain complex physics concepts like gravitational waves, and he noticed my specific learning style."
+          },
+          "scope": "Source model intention extraction, independently inspect actual dialogue and execution."
+        }
+      ],
+      "independent_replay": {
+        "frames_verified": 1200,
+        "all_frames_byte_equal": true,
+        "new_model_or_API_calls": 0,
+        "cassette_sha256": "b6b046266bd94c468a493553339f1428cde74b93bb150369a244758c754925d9",
+        "branch": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock_and_duty",
+        "wall_seconds": 4.087039722013287
+      },
+      "tool_parse_errors": 4,
+      "free_text_calls": 1,
+      "raw": "/home/xiang/.cache/game-npc-research/runs/e44_natural_context_forks_v2/clock_and_duty"
+    }
+  },
+  "scope": "Ordinary clock/duty context diagnosis, with persona held fixed. Not evidence of persona causal effect; no unique required NPC choice or physical lecture-completion flag."
+}
