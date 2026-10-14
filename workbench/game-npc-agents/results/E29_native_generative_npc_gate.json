@@ -1,0 +1,56 @@
+{
+  "seed": 2901,
+  "arm": "seeded",
+  "error": null,
+  "outcome": "boiled_then_drank",
+  "raw_drinks": false,
+  "safe_drinks": 1,
+  "root_parser_calls": 6,
+  "root_legal": 5,
+  "root_material_changes": 5,
+  "model_calls": 6,
+  "prompt_tokens": 6779,
+  "completion_tokens": 374,
+  "frames": 15,
+  "planner_sources": {
+    "Nadia Okafor": "mock"
+  },
+  "cloud_calls": 0,
+  "scientific_increment": 0,
+  "runtime": {
+    "wall_seconds": 686.9920849290211,
+    "cloud_calls": 0
+  },
+  "manifest": {
+    "source_sha": "d7b872e396df2ef05ff8391de53e0563ca698cf3",
+    "world": "/home/xiang/.cache/game-npc-research/sources/agent-sandbox/godot-generative-agents/backend/penn/world_data_boil.yaml",
+    "world_sha256": "a4f4374869c9774a752c981b357028aba598f3d3c4f0a63dca0c3648d0bbd3c0",
+    "harness_sha256": "930b9906bf4ebcff0d6259b2094845c5b6768ff65f99192a95f79c473560a89d",
+    "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "model_revision": "fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "seeds": [
+      2901
+    ],
+    "arms": [
+      "seeded"
+    ],
+    "steps": 80,
+    "max_calls": 40,
+    "planner": "original MockPlanner",
+    "reflector": null,
+    "embedding": null,
+    "importance_scoring": "not wired: per-action-only client",
+    "decide": "original scoped per-verb tools, local model",
+    "source_schedule_commands_forced": false,
+    "world_or_recipe_changed": false,
+    "cloud_calls": 0
+  },
+  "model_seconds": 28.78322240198031,
+  "notes": [
+    "Single episode is a feasibility gate; no population confidence interval.",
+    "perform boiling only sets activity; actual recipe mutation occurs at turn 13 make.",
+    "Parser failure field persists after a prior rejection; success is authoritative.",
+    "Upstream usage ledger does not receive adapter calls; raw local model log records six calls.",
+    "MockPlanner and no reflector/embedding/importance scorer; not a full original hosted-model reproduction."
+  ]
+}

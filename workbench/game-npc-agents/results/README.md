@@ -23,6 +23,10 @@
 | E22 | [权限/动作独立分支](E22_access_belief_summary.json)，704calls；权限机制未获支持，负向字段neutral正控制失败，联合证据降级 |
 | E23 | [原500编码资格](E23_encoding_context_gate.json)，500/500余弦≥.999988；480行padding pool，正确pool消除跨batch变化，非新算法 |
 | E24 | [原生utility](E24_encoding_native_utility.json)，6政策/6条件/3seed；fixed128收益约降2–14%，Full/NoCons无一致排序 |
-| E25 | [三路完整训练iteration资格](E25_cost_gradient_gate.json)，NoCons/仅η policy逐byte同一；30iteration pilot运行中 |
+| E25 | [cost/gradient gate](E25_cost_gradient_gate.json)、[30iter evaluation](E25_corrected_gradient_route_evaluation.json)，NoCons/仅η policy与utility同一，η1%→5%；Full8.667%，utility差CI跨零 |
+| E26 | [public语义控制](E26_public_semantic_utility.json)、[正确短pilot](E26_corrected_pilot_semantic_utility.json)、[编码gate](E26_semantic_encoding_gate.json)；两政策均顺序敏感，已有强近邻，不称新发现 |
+| E27 | [code/body归因](E27_code_body_attribution.json)，固定code削弱动作trait读出，C含state仍高；语义控制与环境信息并存 |
+| E28 | [Full](E28_full_feature_frame.json)、[NoCons](E28_no_feature_frame.json)，真实辅助步坐标补偿utility效应小/CI跨零，负结果 |
+| E29 | [原生成式NPC物理目标准入](E29_native_generative_npc_gate.json)，CPU16/16，单local episode安全饮用；6call、5/6合法，非人格机制证据 |
 
 E06是统领基线准入卡，实际执行由E07及后续卡记录；旧E00/E02–E05不恢复。每个结果需要使用对应作者场景、模型、接口与度量口径，不能把所有动作数混作独立样本。

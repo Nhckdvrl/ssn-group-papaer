@@ -74,3 +74,15 @@
 **作者公开事实（非我们复现）：** pin5420f7b的research/meltingpot/PHASE5_REPORT.md，已读§1–5、§9–12。先将random32换Qwen语义编码，full12候选heldout top1仍0；§9查明原full candidate heldout仅作负类，将pool缩到train10仍未恢复。§10 PD substrate增加行为KL但读出仍差；§11平衡persona trajectory采样+train pool首次非零但seed双峰；§12各substrate8seed，commons_harvest top1 .364[.192,.554]、top3 .480[.257,.696]，PD阳性basin2/8，spinner始终难读，且ID top3降到chance。作者明确提出projection geometry/embedding-margin与ID/OOD tradeoff，并推荐joint loss/controlled margin/persona arithmetic。
 **解释：** “policy有信号而encoder读不出”、contrast pool与projection几何、简单balanced sampling修复均已有owner。不能拿该报告前半的0结果代表作者最终全证据，也不能把后半设想直接拿来重包装成我们的idea。
 **未排除：** 报告属于public研究记录，不等于每一结论都进入最新论文主张；CNN trained assets/对应seed真实runtime未本地核验。MeltingPot/dmlab2d未安装，报告数字必须标作者。v3-large与CNN分支loss/编码recipe不同，不用E23替其他分支判错。
+
+## 正确编码后独立训练与行为归因（E25–E28）
+**源代码事实：** consistency的直接路径为共享φ和η，PPO/div分别保留原路径；原consistency不直接反传actor/critic。已有作者内部/独立行为评价和PHASE5 projection讨论。
+**本地事实：** E25正确last-nonpad、固定全部RNG、同初值、同完整rollout，三个路由各30iter/768000原生transitions。η-only训练与NoCons的策略和native行为逐byte同一，检索却1%→5%；Full检索8.667%，utility差−1.7812[−4.0146,.5271]。E26等词/事实重排影响两类策略；E27原body固定时constant code显著降低action-only读出，真实code控制与state生理信息并存。E28实际四次辅助步、train-only对齐、小于预定MIE的utility变化及负CI保留。
+**解释：** 读出改善与策略改变必须单列；输入、body、读出器、训练路由是不同因果位置。普通正确pool、已知语言绑定和PPG/Procrustes不能冒领原创。
+**未排除：** E25只有一个训练seed且30iter不是完整收敛复现；E26/27全population变码含伙伴作用；固定policy下persona簇CI不是跨训练seed不确定性。不会用这些限制倒推支持所需结论，也不直接扩大训练。
+
+## 原生成式NPC物理闭环及计划来源（E29）
+**源代码事实：** 同pin agent-sandbox/godot-generative-agents：planner.generate为persona+memory→day→hour→minute stops；原MockPlanner重放authored schedule。decide由本地接入模型选原工具，perform只设activity；make原Recipe要求持有pot且stove on，再创建boiled water；drink改portions/生理及safe/raw counters。对话后原conversation_outcome按persona分类plans_changed/commitment/timing，写入locked PLAN memory，再调用planner.revise；只替未执行tail，immediate允许清下一stop未来clock gate。这些已由作者实现/测试，不是本轮创新。
+**本地事实：** E29原CPU16/16；单Qwen27B episode原工具6calls/5合法，安全水首次饮用。初perform声称boiling但材料不变，缺锅make被拒，后get/activate/make/drink才产生真实后果。MockPlanner/无reflector/embedding/importance scorer；真实工具只有decide。原failure字段stale与adapter不记上游UsageLedger均注明。
+**解释：** 人物表达、活动描述、可执行计划和最终物理后果需要按各自来源判定；此episode说明原生闭环可行，并非“言行不一致”新证据。
+**未排除：** 没有还原LLMPlanner/对话outcome/reflector完整链，不能据此判断原完整系统角色目标控制。memory/boil、能力wish及异步deadline原作者已有实验；不重复制造相同结果。

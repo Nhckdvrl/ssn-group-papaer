@@ -1,6 +1,6 @@
 # E25：正确编码基线的梯度路由pilot（2026-10-14）
 
-- **状态：** RUNNING
+- **状态：** DONE / 单训练seed短pilot
 - **类型：** PILOT / 形成机制控制；非新损失先验。
 - **对应：** I02 / P06 / P09；E17–E24。
 - **问题（一句话）：** 移除已确认的编码混杂后，InfoNCE更新η与更新共享φ，各自是否必要于真实NPC控制与读出？
@@ -15,3 +15,7 @@
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 
 三路完整iteration资格通过，各25600原生transitions，首rollout三路逐byte同一。Full cons对φ/η梯度非零；readout_only对φ/actor/critic零、η非零。NoCons与readout_only一次更新后整个policy逐byte同一，所有原生world/reward未改。成本分别68.58/71.36/69.95秒（NoCons/readout/Full），据预先预算门槛从相同seed42初始化启动三路30iterations，各约35分钟。不是300iteration原结果复现，0API，三GPU≤白天上限8。[完整gate](../results/E25_cost_gradient_gate.json)。
+
+30iterations结束：每路768000原生transitions；Full/NoCons/readout壁时2025.13/2071.29/2096.52秒（合计约1.72GPUh）。NoCons与readout整个policy hash仍同一；原生held100×3世界seed return84.9048逐byte共享，η own200 top1由1%到5%，Full为8.667%且return83.1236。Full−NoCons差−1.7812、persona簇95%[−4.0146,.5271]，不能讲已证明更坏或更好。source homogeneous16/joint-prefix200口径分别1%/2%/4%，与own200不合并。
+
+[完整evaluation](../results/E25_corrected_gradient_route_evaluation.json)，raw cache/runs/e25_30_*。读出共训练可改变proxy而policy不变的控制通过，但PCSP等已有读出/策略区别，未形成新科学增量。额外CPU完整iteration成本28.97秒（GPU约70秒），仅成本资格、CPU/GPU随机抽样不同，未把它当同seed数值复现；后续小MLP训练优先CPU。C01保持L1。

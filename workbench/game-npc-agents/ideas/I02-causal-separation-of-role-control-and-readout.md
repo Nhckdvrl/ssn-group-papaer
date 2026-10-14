@@ -20,3 +20,5 @@
 - **compression risk：** 高；可能只是已知decoder共训练/普通stop-gradient工程。必须补独立语义扰动与真实utility的预测机制，不能把padding bug或读出恢复当完整贡献。
 
 2026-10-14定位校对：进一步读PCSP PHASE5 §9–12，作者已有contrast-pool、persona-balanced sampling、各substrate8seed确认、projection几何及ID/OOD tradeoff。单纯检索恢复或投影几何敏感性不归我们。venue nearest与最新arXiv查询已执行，ECLIPTICA/CITA的instruction条件偏好/因果识别也是强邻居（尚未全文/代码核验）。E25只作原生形成路径诊断；是否存在独立utility/语义稳健性新知识仍不确定。
+
+E25–28后：η-only own200检索5%/Full8.667%，policy和utility与NoCons逐byte同一；Full utility差CI跨零。E26两政策都有顺序敏感，E27输入code确有行为作用且C的state信息有环境通道。E28真实co-step坐标补偿utility只有约.1且CI跨零、NoCons同样存在，坐标机制分支降级，不继续大训练。PPG、Holonomy、Multi-Way Alignment、LIBERO-Para/GSR/DAIL均强化已有ownership。I02仍SEED、无新claim；上述普通读出/语义资格/原生归因结果不足以称好的新增量。
