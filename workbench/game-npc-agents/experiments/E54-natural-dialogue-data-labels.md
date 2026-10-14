@@ -13,10 +13,13 @@
 - **算力预算：** 0 GPU；Step Plan最多37批×20条、4worker、32768 output上限/high；至多一次缺项恢复，不改走现金账户。NPC推理继续零云端。**实际：** 0GPU；42次套餐数据调用，总token数见下文。
 
 ## 结果
-全部720条native文本及8锚点完成。对话：436拒绝、138即时接受、111条件协商、35不确定。意图记忆中77/720明确声称请求已物理完成（27B14/240、32B25/240、Gemma38/240）；当时引擎尚未执行，属于文本与实际状态的错配，不等同模型私人信念。9条声称原目标已完成。1条证据引用需要复核，标签和原文保留。8锚点7个逐字段一致，另一个将“I agreed to give”标pending而预写期望no_claim；两者都没有误标物理completed，分歧保留。
+全部720条native文本及8锚点完成。对话：436拒绝、138即时接受、111条件协商、35不确定。意图记忆中77/720被盲标为请求completed（27B14/240、32B25/240、Gemma38/240）；当时引擎尚未执行，属于文本与实际状态的错配，不等同模型私人信念。9条声称原目标已完成。1条证据引用需要复核，标签和原文保留。8锚点7个逐字段一致，另一个将“I agreed to give”标pending而预写期望no_claim；两者都没有误标物理completed，分歧保留。
 
 42次Step Plan请求全部HTTP200，6次原high回答截断；只恢复99缺失/无效ID，已生成正确标签不重采样。provider报告1212231总tokens（包含截断与恢复），cash/NPC云调用0。数据统计见 `results/E54_step5_blind_text_labels.json`，冻结后关联见 `results/E54_text_action_associations.json`。
 
 POST-HOC：32B agreeable的20条completed记忆来自10世界，其agenda-only实际请求转移12/20、both7/20；图内平均差−25pp，[−50,0]。这是按生成文本分层的关联，原任务、承诺与计划共同变化，不能当completed记忆的自然因果效应；E51/E53已提供单独状态干预。27B/Gemma方向和区间另列，全部保留。
 
 2026-10-15运行后、恢复前参数修正：37批中6批finish_reason=length（4批没有最终内容，2批仅部分完整闭合JSON行）。保留所有已产生标签；2批可无语义修改恢复15/9条。另3条把state写为conditional，保留原始异类值，不擅自转成completed/pending。仅对缺失或schema无效ID分批恢复，最多6批×20，medium/65536；原high数据不重采样、不替换。参数修正解决已实测输出预算不足，不按动作表现选数据；仍唯一Step Plan端点。
+
+
+标注口径补充：completed为Step盲语义标签；“I obliged / I offered / I helped”有接受/提供含义歧义，不能把全部77条都说成毫无歧义的物理断言。明确gave/given/provided/shared/lent等原文与较弱断言分开核对；真实是否执行始终由native日志判断，不由标签决定。标签原样保留，任何机制分析须核原文与动作语义。

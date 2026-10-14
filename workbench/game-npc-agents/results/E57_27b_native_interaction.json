@@ -1,0 +1,925 @@
+{
+  "manifests": [
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e57_native_food_pairs/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e57_27b_interactive_s0",
+        "seeds": [
+          5701,
+          5702,
+          5703
+        ],
+        "shard": 0,
+        "shards": 2
+      },
+      "case_ids": [
+        "06e6bf9ed134b9bcf09b",
+        "0e03a2dc447404c3b6ae",
+        "155527f7ebc2ea103775",
+        "1cb0be99dc73f5a5b21e",
+        "2838949c222bb5a1041f",
+        "3bc0862f83b825fe3b12",
+        "43666ead6d2f3f0e8aec",
+        "49df04e031db4c26dbc5",
+        "4ca39b3647aa5b2f6824",
+        "5770a93cd2064ac69bad",
+        "6506cdf2780449c68b53",
+        "74e443b36c21c357616d",
+        "87ab63e03cf1cb241c2c",
+        "920a816696b5b1adbdac",
+        "ac6d9a78feccbe7fdaff",
+        "ad90b2f6016df5ba9589",
+        "cbd13049317dc6eb0f30",
+        "d661241893dee76df746",
+        "e20083b3a98c683b53ce",
+        "fabe91f89d0d54e2cd84"
+      ],
+      "dataset_sha256": "dea2ff2534f3632daab77e3a43e7a8712097281eed59e636b2e3a91683c24585",
+      "script_sha256": "6f7a49a5a7c292c6f78ae630decba8f4f837f557fcca55994d286cd31357937b",
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "max_action_turns": 24,
+      "world_modified": false,
+      "npc_cloud_calls": 0,
+      "partner": "same local model, original authored persona and private motivations; no focal disposition intervention",
+      "opening_scope": "native Say shared by focal persona pair; speech-only generation instruction is absent from action context",
+      "endpoint_scope": "irreversible consumption of the specified native food, character death, or 24 action turns"
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e57_native_food_pairs/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e57_27b_interactive_s1",
+        "seeds": [
+          5701,
+          5702,
+          5703
+        ],
+        "shard": 1,
+        "shards": 2
+      },
+      "case_ids": [
+        "0a0e110ba930297d5efe",
+        "0e1f311f55c74c70c834",
+        "1bd43d7515103572568e",
+        "1d64c4a0b09fbabd545c",
+        "314833387a579eee10b4",
+        "434117d0ee832ea96d6a",
+        "499a4a04c73b579ced3d",
+        "4bc73ce95262f8fbb659",
+        "5620f1bcd0b60d6c02af",
+        "61ff505bcdc7d8c4e173",
+        "6b2fc64b322a5d2607d6",
+        "7c3abec194de27b92b52",
+        "8ad1df046d5e734adc1f",
+        "982f00237605af89d4eb",
+        "ad67976f1442a9bc4502",
+        "b90c715600fcecfca4e8",
+        "d3908133ff6ba938dcb5",
+        "db9a669366f6a521e240",
+        "e380b9e64ae5cb718220"
+      ],
+      "dataset_sha256": "dea2ff2534f3632daab77e3a43e7a8712097281eed59e636b2e3a91683c24585",
+      "script_sha256": "6f7a49a5a7c292c6f78ae630decba8f4f837f557fcca55994d286cd31357937b",
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment. I take my existing responsibilities seriously.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others. I take my personal relationships seriously."
+      },
+      "max_action_turns": 24,
+      "world_modified": false,
+      "npc_cloud_calls": 0,
+      "partner": "same local model, original authored persona and private motivations; no focal disposition intervention",
+      "opening_scope": "native Say shared by focal persona pair; speech-only generation instruction is absent from action context",
+      "endpoint_scope": "irreversible consumption of the specified native food, character death, or 24 action turns"
+    }
+  ],
+  "runtimes": [
+    {
+      "graphs": 20,
+      "episodes": 120,
+      "calls": 883,
+      "wall_seconds": 926.1072923470056,
+      "model_load_seconds": 46.187939659983385,
+      "npc_cloud_calls": 0
+    },
+    {
+      "graphs": 19,
+      "episodes": 114,
+      "calls": 890,
+      "wall_seconds": 911.0975882039638,
+      "model_load_seconds": 45.23956911399728,
+      "npc_cloud_calls": 0
+    }
+  ],
+  "graphs": 39,
+  "episodes": 234,
+  "cells": {
+    "firm": {
+      "focal_consumed": {
+        "mean": 0.7606837606837608,
+        "graph_bootstrap_95": [
+          0.6495726495726496,
+          0.8632478632478634
+        ],
+        "independent_graphs": 39
+      },
+      "partner_consumed": {
+        "mean": 0.09401709401709402,
+        "graph_bootstrap_95": [
+          0.02564102564102564,
+          0.17094017094017094
+        ],
+        "independent_graphs": 39
+      },
+      "unconsumed": {
+        "mean": 0.14529914529914528,
+        "graph_bootstrap_95": [
+          0.059829059829059825,
+          0.23931623931623933
+        ],
+        "independent_graphs": 39
+      },
+      "focal_goal_event": {
+        "mean": 0.7606837606837608,
+        "graph_bootstrap_95": [
+          0.6495726495726496,
+          0.8632478632478634
+        ],
+        "independent_graphs": 39
+      },
+      "partner_goal_event": {
+        "mean": 0.4444444444444444,
+        "graph_bootstrap_95": [
+          0.3162393162393162,
+          0.5811965811965811
+        ],
+        "independent_graphs": 39
+      },
+      "both_goal_events": {
+        "mean": 0.27350427350427353,
+        "graph_bootstrap_95": [
+          0.15384615384615383,
+          0.4102564102564102
+        ],
+        "independent_graphs": 39
+      },
+      "focal_attainment_with_source_reverse": {
+        "mean": 0.7606837606837608,
+        "graph_bootstrap_95": [
+          0.6495726495726496,
+          0.8632478632478634
+        ],
+        "independent_graphs": 39
+      },
+      "partner_attainment_with_source_reverse": {
+        "mean": 0.45299145299145294,
+        "graph_bootstrap_95": [
+          0.3247863247863248,
+          0.5897435897435896
+        ],
+        "independent_graphs": 39
+      },
+      "both_attainment_with_source_reverse": {
+        "mean": 0.27350427350427353,
+        "graph_bootstrap_95": [
+          0.15384615384615383,
+          0.4102564102564102
+        ],
+        "independent_graphs": 39
+      },
+      "consumption_turns_capped24": {
+        "mean": 6.658119658119658,
+        "graph_bootstrap_95": [
+          4.803205128205128,
+          8.701068376068378
+        ],
+        "independent_graphs": 39
+      },
+      "focal_target_theft_attempted": {
+        "mean": 0.23076923076923078,
+        "graph_bootstrap_95": [
+          0.1367521367521367,
+          0.33333333333333337
+        ],
+        "independent_graphs": 39
+      },
+      "focal_target_theft_succeeded": {
+        "mean": 0.017094017094017092,
+        "graph_bootstrap_95": [
+          0.0,
+          0.04273504273504273
+        ],
+        "independent_graphs": 39
+      },
+      "partner_handover_to_focal": {
+        "mean": 0.23931623931623933,
+        "graph_bootstrap_95": [
+          0.11965811965811965,
+          0.36752136752136755
+        ],
+        "independent_graphs": 39
+      },
+      "harm_to_partner_by_focal": {
+        "mean": 0.017094017094017092,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05128205128205128
+        ],
+        "independent_graphs": 39
+      },
+      "focal_health_change": {
+        "mean": -0.017094017094017092,
+        "graph_bootstrap_95": [
+          -0.05128205128205128,
+          0.0
+        ],
+        "independent_graphs": 39
+      },
+      "first_acquisition": {
+        "GetObjectEvent": 37,
+        "GiveObjectEvent": 28,
+        "initially_held": 30,
+        "StealObjectEvent": 2,
+        "no_acquisition": 20
+      },
+      "stops": {
+        "target_consumed": 100,
+        "turn_limit": 17
+      }
+    },
+    "agreeable": {
+      "focal_consumed": {
+        "mean": 0.6581196581196581,
+        "graph_bootstrap_95": [
+          0.5384615384615384,
+          0.7692307692307693
+        ],
+        "independent_graphs": 39
+      },
+      "partner_consumed": {
+        "mean": 0.1623931623931624,
+        "graph_bootstrap_95": [
+          0.06837606837606837,
+          0.2735042735042735
+        ],
+        "independent_graphs": 39
+      },
+      "unconsumed": {
+        "mean": 0.17948717948717946,
+        "graph_bootstrap_95": [
+          0.09401709401709402,
+          0.2735042735042735
+        ],
+        "independent_graphs": 39
+      },
+      "focal_goal_event": {
+        "mean": 0.6581196581196581,
+        "graph_bootstrap_95": [
+          0.5384615384615384,
+          0.7692307692307693
+        ],
+        "independent_graphs": 39
+      },
+      "partner_goal_event": {
+        "mean": 0.547008547008547,
+        "graph_bootstrap_95": [
+          0.41025641025641024,
+          0.6923076923076922
+        ],
+        "independent_graphs": 39
+      },
+      "both_goal_events": {
+        "mean": 0.3162393162393162,
+        "graph_bootstrap_95": [
+          0.19658119658119658,
+          0.45299145299145294
+        ],
+        "independent_graphs": 39
+      },
+      "focal_attainment_with_source_reverse": {
+        "mean": 0.6581196581196581,
+        "graph_bootstrap_95": [
+          0.5384615384615384,
+          0.7692307692307693
+        ],
+        "independent_graphs": 39
+      },
+      "partner_attainment_with_source_reverse": {
+        "mean": 0.6068376068376068,
+        "graph_bootstrap_95": [
+          0.4786324786324786,
+          0.735042735042735
+        ],
+        "independent_graphs": 39
+      },
+      "both_attainment_with_source_reverse": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.21367521367521364,
+          0.4700854700854701
+        ],
+        "independent_graphs": 39
+      },
+      "consumption_turns_capped24": {
+        "mean": 7.683760683760684,
+        "graph_bootstrap_95": [
+          5.794658119658119,
+          9.7008547008547
+        ],
+        "independent_graphs": 39
+      },
+      "focal_target_theft_attempted": {
+        "mean": 0.1623931623931624,
+        "graph_bootstrap_95": [
+          0.08547008547008546,
+          0.2564102564102564
+        ],
+        "independent_graphs": 39
+      },
+      "focal_target_theft_succeeded": {
+        "mean": 0.034188034188034185,
+        "graph_bootstrap_95": [
+          0.0,
+          0.07692307692307693
+        ],
+        "independent_graphs": 39
+      },
+      "partner_handover_to_focal": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.2051282051282051,
+          0.4700854700854701
+        ],
+        "independent_graphs": 39
+      },
+      "harm_to_partner_by_focal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 39
+      },
+      "focal_health_change": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 39
+      },
+      "first_acquisition": {
+        "GetObjectEvent": 27,
+        "GiveObjectEvent": 39,
+        "initially_held": 27,
+        "StealObjectEvent": 4,
+        "no_acquisition": 20
+      },
+      "stops": {
+        "target_consumed": 96,
+        "turn_limit": 20,
+        "protocol_error": 1
+      }
+    }
+  },
+  "persona_contrasts": {
+    "focal_consumed": {
+      "mean": -0.10256410256410256,
+      "graph_bootstrap_95": [
+        -0.188034188034188,
+        -0.034188034188034185
+      ],
+      "independent_graphs": 39
+    },
+    "partner_consumed": {
+      "mean": 0.06837606837606837,
+      "graph_bootstrap_95": [
+        0.008547008547008546,
+        0.1452991452991453
+      ],
+      "independent_graphs": 39
+    },
+    "unconsumed": {
+      "mean": 0.034188034188034185,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06837606837606838
+      ],
+      "independent_graphs": 39
+    },
+    "focal_goal_event": {
+      "mean": -0.10256410256410256,
+      "graph_bootstrap_95": [
+        -0.188034188034188,
+        -0.034188034188034185
+      ],
+      "independent_graphs": 39
+    },
+    "partner_goal_event": {
+      "mean": 0.10256410256410255,
+      "graph_bootstrap_95": [
+        0.017094017094017096,
+        0.20512820512820512
+      ],
+      "independent_graphs": 39
+    },
+    "both_goal_events": {
+      "mean": 0.04273504273504273,
+      "graph_bootstrap_95": [
+        -0.034188034188034185,
+        0.11965811965811965
+      ],
+      "independent_graphs": 39
+    },
+    "focal_attainment_with_source_reverse": {
+      "mean": -0.10256410256410256,
+      "graph_bootstrap_95": [
+        -0.188034188034188,
+        -0.034188034188034185
+      ],
+      "independent_graphs": 39
+    },
+    "partner_attainment_with_source_reverse": {
+      "mean": 0.15384615384615385,
+      "graph_bootstrap_95": [
+        0.05982905982905983,
+        0.2564102564102564
+      ],
+      "independent_graphs": 39
+    },
+    "both_attainment_with_source_reverse": {
+      "mean": 0.059829059829059825,
+      "graph_bootstrap_95": [
+        -0.017094017094017096,
+        0.13675213675213677
+      ],
+      "independent_graphs": 39
+    },
+    "consumption_turns_capped24": {
+      "mean": 1.0256410256410258,
+      "graph_bootstrap_95": [
+        0.2735042735042735,
+        1.854700854700854
+      ],
+      "independent_graphs": 39
+    },
+    "focal_target_theft_attempted": {
+      "mean": -0.06837606837606837,
+      "graph_bootstrap_95": [
+        -0.15384615384615385,
+        0.008547008547008546
+      ],
+      "independent_graphs": 39
+    },
+    "focal_target_theft_succeeded": {
+      "mean": 0.017094017094017092,
+      "graph_bootstrap_95": [
+        0.0,
+        0.04273504273504273
+      ],
+      "independent_graphs": 39
+    },
+    "partner_handover_to_focal": {
+      "mean": 0.09401709401709402,
+      "graph_bootstrap_95": [
+        0.02564102564102564,
+        0.1623931623931624
+      ],
+      "independent_graphs": 39
+    },
+    "harm_to_partner_by_focal": {
+      "mean": -0.017094017094017092,
+      "graph_bootstrap_95": [
+        -0.05128205128205128,
+        0.0
+      ],
+      "independent_graphs": 39
+    },
+    "focal_health_change": {
+      "mean": 0.017094017094017092,
+      "graph_bootstrap_95": [
+        0.0,
+        0.05128205128205128
+      ],
+      "independent_graphs": 39
+    }
+  },
+  "initial_holder_strata_POST_HOC": {
+    "focal": {
+      "graphs": 10,
+      "contrasts": {
+        "focal_consumed": {
+          "mean": -0.26666666666666666,
+          "graph_bootstrap_95": [
+            -0.5,
+            -0.06666666666666667
+          ],
+          "independent_graphs": 10
+        },
+        "partner_consumed": {
+          "mean": 0.2,
+          "graph_bootstrap_95": [
+            0.0,
+            0.4333333333333333
+          ],
+          "independent_graphs": 10
+        },
+        "unconsumed": {
+          "mean": 0.06666666666666667,
+          "graph_bootstrap_95": [
+            0.0,
+            0.16666666666666666
+          ],
+          "independent_graphs": 10
+        },
+        "focal_goal_event": {
+          "mean": -0.26666666666666666,
+          "graph_bootstrap_95": [
+            -0.5,
+            -0.06666666666666667
+          ],
+          "independent_graphs": 10
+        },
+        "partner_goal_event": {
+          "mean": 0.16666666666666666,
+          "graph_bootstrap_95": [
+            0.0,
+            0.4
+          ],
+          "independent_graphs": 10
+        },
+        "both_goal_events": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 10
+        },
+        "focal_attainment_with_source_reverse": {
+          "mean": -0.26666666666666666,
+          "graph_bootstrap_95": [
+            -0.5,
+            -0.06666666666666667
+          ],
+          "independent_graphs": 10
+        },
+        "partner_attainment_with_source_reverse": {
+          "mean": 0.3333333333333333,
+          "graph_bootstrap_95": [
+            0.13333333333333333,
+            0.5666666666666667
+          ],
+          "independent_graphs": 10
+        },
+        "both_attainment_with_source_reverse": {
+          "mean": 0.06666666666666667,
+          "graph_bootstrap_95": [
+            0.0,
+            0.2
+          ],
+          "independent_graphs": 10
+        },
+        "consumption_turns_capped24": {
+          "mean": 2.666666666666667,
+          "graph_bootstrap_95": [
+            0.8666666666666666,
+            4.533333333333333
+          ],
+          "independent_graphs": 10
+        },
+        "focal_target_theft_attempted": {
+          "mean": 0.06666666666666667,
+          "graph_bootstrap_95": [
+            0.0,
+            0.16666666666666666
+          ],
+          "independent_graphs": 10
+        },
+        "focal_target_theft_succeeded": {
+          "mean": 0.03333333333333333,
+          "graph_bootstrap_95": [
+            0.0,
+            0.1
+          ],
+          "independent_graphs": 10
+        },
+        "partner_handover_to_focal": {
+          "mean": 0.06666666666666667,
+          "graph_bootstrap_95": [
+            0.0,
+            0.2
+          ],
+          "independent_graphs": 10
+        },
+        "harm_to_partner_by_focal": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 10
+        },
+        "focal_health_change": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 10
+        }
+      }
+    },
+    "partner": {
+      "graphs": 14,
+      "contrasts": {
+        "focal_consumed": {
+          "mean": -0.047619047619047616,
+          "graph_bootstrap_95": [
+            -0.11904761904761904,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "partner_consumed": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "unconsumed": {
+          "mean": 0.047619047619047616,
+          "graph_bootstrap_95": [
+            0.0,
+            0.11904761904761904
+          ],
+          "independent_graphs": 14
+        },
+        "focal_goal_event": {
+          "mean": -0.047619047619047616,
+          "graph_bootstrap_95": [
+            -0.11904761904761904,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "partner_goal_event": {
+          "mean": 0.047619047619047616,
+          "graph_bootstrap_95": [
+            -0.047619047619047616,
+            0.16666666666666666
+          ],
+          "independent_graphs": 14
+        },
+        "both_goal_events": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            -0.14285714285714285,
+            0.14285714285714285
+          ],
+          "independent_graphs": 14
+        },
+        "focal_attainment_with_source_reverse": {
+          "mean": -0.047619047619047616,
+          "graph_bootstrap_95": [
+            -0.11904761904761904,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "partner_attainment_with_source_reverse": {
+          "mean": 0.047619047619047616,
+          "graph_bootstrap_95": [
+            -0.047619047619047616,
+            0.16666666666666666
+          ],
+          "independent_graphs": 14
+        },
+        "both_attainment_with_source_reverse": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            -0.14285714285714285,
+            0.14285714285714285
+          ],
+          "independent_graphs": 14
+        },
+        "consumption_turns_capped24": {
+          "mean": 0.09523809523809522,
+          "graph_bootstrap_95": [
+            -0.7142857142857142,
+            0.9285714285714286
+          ],
+          "independent_graphs": 14
+        },
+        "focal_target_theft_attempted": {
+          "mean": -0.11904761904761904,
+          "graph_bootstrap_95": [
+            -0.23809523809523808,
+            -0.023809523809523808
+          ],
+          "independent_graphs": 14
+        },
+        "focal_target_theft_succeeded": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "partner_handover_to_focal": {
+          "mean": 0.09523809523809523,
+          "graph_bootstrap_95": [
+            0.0,
+            0.21428571428571427
+          ],
+          "independent_graphs": 14
+        },
+        "harm_to_partner_by_focal": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 14
+        },
+        "focal_health_change": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "independent_graphs": 14
+        }
+      }
+    },
+    "other": {
+      "graphs": 15,
+      "contrasts": {
+        "focal_consumed": {
+          "mean": -0.04444444444444444,
+          "graph_bootstrap_95": [
+            -0.15555555555555556,
+            0.04444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "partner_consumed": {
+          "mean": 0.04444444444444444,
+          "graph_bootstrap_95": [
+            -0.04444444444444444,
+            0.15555555555555556
+          ],
+          "independent_graphs": 15
+        },
+        "unconsumed": {
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            -0.06666666666666667,
+            0.06666666666666667
+          ],
+          "independent_graphs": 15
+        },
+        "focal_goal_event": {
+          "mean": -0.04444444444444444,
+          "graph_bootstrap_95": [
+            -0.15555555555555556,
+            0.04444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "partner_goal_event": {
+          "mean": 0.1111111111111111,
+          "graph_bootstrap_95": [
+            -0.04444444444444444,
+            0.26666666666666666
+          ],
+          "independent_graphs": 15
+        },
+        "both_goal_events": {
+          "mean": 0.1111111111111111,
+          "graph_bootstrap_95": [
+            0.0,
+            0.24444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "focal_attainment_with_source_reverse": {
+          "mean": -0.04444444444444444,
+          "graph_bootstrap_95": [
+            -0.15555555555555556,
+            0.04444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "partner_attainment_with_source_reverse": {
+          "mean": 0.13333333333333333,
+          "graph_bootstrap_95": [
+            -0.02222222222222222,
+            0.2888888888888889
+          ],
+          "independent_graphs": 15
+        },
+        "both_attainment_with_source_reverse": {
+          "mean": 0.1111111111111111,
+          "graph_bootstrap_95": [
+            0.0,
+            0.24444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "consumption_turns_capped24": {
+          "mean": 0.8000000000000002,
+          "graph_bootstrap_95": [
+            -0.42222222222222217,
+            2.1555555555555554
+          ],
+          "independent_graphs": 15
+        },
+        "focal_target_theft_attempted": {
+          "mean": -0.1111111111111111,
+          "graph_bootstrap_95": [
+            -0.26666666666666666,
+            0.02222222222222223
+          ],
+          "independent_graphs": 15
+        },
+        "focal_target_theft_succeeded": {
+          "mean": 0.02222222222222222,
+          "graph_bootstrap_95": [
+            0.0,
+            0.06666666666666667
+          ],
+          "independent_graphs": 15
+        },
+        "partner_handover_to_focal": {
+          "mean": 0.1111111111111111,
+          "graph_bootstrap_95": [
+            0.0,
+            0.24444444444444444
+          ],
+          "independent_graphs": 15
+        },
+        "harm_to_partner_by_focal": {
+          "mean": -0.04444444444444444,
+          "graph_bootstrap_95": [
+            -0.13333333333333333,
+            0.0
+          ],
+          "independent_graphs": 15
+        },
+        "focal_health_change": {
+          "mean": 0.04444444444444444,
+          "graph_bootstrap_95": [
+            0.0,
+            0.13333333333333333
+          ],
+          "independent_graphs": 15
+        }
+      }
+    }
+  },
+  "paired_outcomes": {
+    "(0, 0)": 75,
+    "(0, None)": 5,
+    "(None, None)": 15,
+    "(None, 0)": 2,
+    "(0, 1)": 9,
+    "(1, 1)": 10,
+    "(1, None)": 1
+  },
+  "protocol_errors": 1,
+  "engine_rejections": {
+    "Say what? You have to say something!": 1,
+    "You are already following the small foxes who have made the ice cave their home.!": 32,
+    "You are already following the person who adventured the cave but has been injured and is awaiting either a rescuer or death.!": 14,
+    "You are already following the child!": 3,
+    "You are already following the priest!": 13,
+    "You are already following the butterfly!": 1,
+    "You are already following the nun!": 6,
+    "You are already blocking the altar boy!": 1
+  },
+  "calls": {
+    "count": 1773,
+    "parse_errors": 1,
+    "prompt_tokens": 2317402,
+    "completion_tokens": 194380
+  },
+  "raw_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e57_27b_interactive_s0": "20639c11eb58abd00bbdae9195730c6220927cc4f474d01988f11a5783fff6db",
+    "/home/xiang/.cache/game-npc-research/runs/e57_27b_interactive_s1": "5cf90c907ff7bddee7348433fcb17870cff15613ec59eb795271f7acae7f7856"
+  },
+  "scope": [
+    "Source two-quest pairings, not the original retrieval partner training.",
+    "Food consumption and health are native physical facts; original goal event flags are not total long-term welfare.",
+    "POST-HOC source reverse attainment adds partner Give for Get/Steal, as switch/quest.py reverse_task; strict event statistics are preserved. This is not the full original DM/RL scorer.",
+    "Initial-holder strata are POST-HOC cross-world comparisons, not causal interventions on ownership.",
+    "Restricted consumption timing caps unresolved episodes at 24 action turns and is not wall-clock latency.",
+    "Persona total effects include the responsive partner, not separately identified dialogue mediation."
+  ]
+}

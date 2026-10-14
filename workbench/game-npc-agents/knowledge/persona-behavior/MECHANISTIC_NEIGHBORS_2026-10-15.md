@@ -53,3 +53,6 @@ PDF资产在cache/papers，sha256：
 [How to Motivate Your Dragon，NAACL2021](https://aclanthology.org/2021.naacl-main.64/)正文§3–5、附录A.2/B.2已重新核读：作者的partner是无私有motivation的固定poly-encoder；两类completion分别是自己完成和通过对话让伙伴执行。goal/action_seq事件reward与学习到的DM语言自然度reward分开，开关原版按示范对话/动作比固定，附录也比较learned switch。作者已经把互动手段和结果分开，不能冒领“首次社交对话影响游戏后果”。本地双私有目标是原图上组合两份作者quest，不称原partner训练路径复现。
 
 [FAIRGAMER，ACL2026 Main](https://aclanthology.org/2026.acl-long.2015/)正文§3–4、实验和附录prompt已查看：16910中英模板，职业/种族/年龄/国籍，交易/合作/竞争三类，7模型，测试2088样例×10采样。它以自/他角色身份和明示规则生成一维/三维决策，FairMCV测分布差；角色取自Steam职业不等于在这些游戏引擎里执行。它直接拥有角色身份对资源决策的影响与社会偏置评价；我们的剩余切口需要原任务动机、真实前置条件、互动与材料后果，不能只把角色标签对give选择的作用换名为新贡献。
+
+
+[AgentSense，NAACL2025 Main](https://aclanthology.org/2025.naacl-long.257/)本轮核读§3.3–4.2、Table2及模拟/评价附录入口（并非重现其结果）。1225场景由245脚本模板扩展，原生是多轮语言交互，允许语言表达动作/表情；双方有目标和私有信息。完成由self/other及三外部judge判，信息推断用选择题，PSI测换profile后的goal分数波动。已有profile、伙伴与多目标/隐私的交互认识，不能声称首次研究动态伙伴和人物目标。其文本动作不提供LIGHT的持有/消费flag。PDF SHA256 `efe9700cae93fbacf63ba374506e26efc9f1c3355f69844462534cdb35f16b3e`；本地未复现AutoGen/11模型评测。

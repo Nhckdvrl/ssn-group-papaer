@@ -27,3 +27,13 @@
 终点：同一原生食物真实Eat/Drink执行（源引擎消耗对象/改变health）、任一角色死亡，或24动作上限。保存双方goal event、最终材料状态、消费者/health、协商和资源取得/转移/偷窃/攻击的顺序与时机、错误和未裁决。get/give事件不是完整长期效用；伙伴回应可能改变目标路径，本轮不称全中介因果识别。P差按39世界内三seed平均、图簇bootstrap95%；食物初始归属等切片仅POST-HOC线索，不作独立科学判决。先CPU原生完整消费路径，再每进程首个完整scene测成本并输出，之后同一固定cohort继续。
 
 算力补充：已有fgvd/BF16/vLLM/.7/512、单卡独立shard，两家族至多四卡；与E55/E56剩余任务合计不超过8卡，启动前逐卡核查。估计2–5GPUh（实际记录含load），0NPC云API、0新数据API。没有RL训练。强原任务文字每步均提供，已有普通指令作为baseline，不以人格失效为目标。
+
+
+### 完整结果与源码口径补充
+两模型各234 episode、39不同原图×三seed，总468完整互动；32B1661调用0JSON失败，27B1773调用1JSON失败，所在episode保留。含四单卡加载总约0.89GPUh。agreeable−firm自己消费差32B−6.8pp [−12.8,−0.9]，27B−10.3pp [−18.8,−3.4]；这说明角色立场能改变真实不可逆消费，并不等同角色失败。27B伙伴向focal实际交付+9.4pp [2.6,16.2]；focal偷取尝试两模型都−6.8pp但全表区间较宽。时机与终点分开，不把同终点的不同手段删去。
+
+POST-HOC按初始持有者分层：自持10图消费差32B−20pp [−30,−10]、27B−26.7pp [−50,−6.7]；需伙伴持有14图消费差−2.4/−4.8pp，但偷取尝试均−11.9pp。持有与任务兼容、伙伴角色共同变化，不能把此横向分层当单独所有权因果。原source食物food_energy全39图为0：原规则仍执行消耗/health计算，但消费没有实际health增益；本批不用于饥饿压力/生存收益结论。27B少量攻击有实际HP变化，另报不混入消费能量。
+
+源码核对（不是新增模型跑）：switch/environments/quest.py reverse_task将get/steal转换为partner give-to-self并接受该反向动作完成；shared/environments/history.py set_goal同时显式编码goal字符串。因此原RL目标条件与人类只有自然motivation输入不是同一信息协议。我们只恢复native engine和私有角色任务，不称原DM/RL scorer复现。严格自己goal event仍保留，同时新增source reverse伙伴完成读数；32B9条、27B8条原严格事件未完成的路径满足partner-give获取目标。首要focal消费结论不变。source逆向完成下27B伙伴原目标达成差+15.4pp [6.0,25.6]，严格event是+10.3pp [1.7,20.5]；都不把它等同完整长期利益。
+
+结果：results/E57_32b_native_interaction.json、E57_27b_native_interaction.json；原episode和原始P/u/世界不重写。source反向评价属于POST-HOC追加口径，原严格事件统计不作废也不替换；按原有决策表继续拆角色目标、说法、合法手段和真实后果。
