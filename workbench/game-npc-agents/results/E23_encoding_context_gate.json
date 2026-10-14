@@ -1,0 +1,223 @@
+{
+  "parity": {
+    "source_pool_cosine_min": 0.999988317489624,
+    "source_pool_cosine_mean": 0.9999955892562866,
+    "source_pool_rows_ge_0999": 500,
+    "source_pool_rows_ge_09999": 500,
+    "proper_pool_cosine_min": 0.9308157563209534,
+    "proper_pool_cosine_mean": 0.9572175145149231,
+    "proper_pool_rows_ge_0999": 20,
+    "last_column_padding_rows": 480,
+    "source_vs_proper_cosine_mean": 0.9572229981422424,
+    "cached_array_sha256": "3ccbce819387c9a17bcde5b74f554e02e9055d0c1fb0da8fb742f6c22dc0288a"
+  },
+  "invariance": {
+    "selected_controls": [
+      {
+        "persona_id": 1,
+        "token_length": 87,
+        "source_repeat_cos": 1.0,
+        "source_repeat_maxabs": 0.0,
+        "raw_single_vs_long_cos": 0.9406067132949829,
+        "proper_single_vs_long_cos": 0.9999960660934448,
+        "raw_single_vs_short_cos": 0.9999955892562866,
+        "proper_single_vs_short_cos": 0.9999955892562866
+      },
+      {
+        "persona_id": 2,
+        "token_length": 87,
+        "source_repeat_cos": 1.0000001192092896,
+        "source_repeat_maxabs": 0.0,
+        "raw_single_vs_long_cos": 0.9448407888412476,
+        "proper_single_vs_long_cos": 0.9999969005584717,
+        "raw_single_vs_short_cos": 0.9999961853027344,
+        "proper_single_vs_short_cos": 0.9999961853027344
+      },
+      {
+        "persona_id": 401,
+        "token_length": 89,
+        "source_repeat_cos": 1.0000001192092896,
+        "source_repeat_maxabs": 0.0,
+        "raw_single_vs_long_cos": 0.9478878974914551,
+        "proper_single_vs_long_cos": 0.9999964237213135,
+        "raw_single_vs_short_cos": 0.999996542930603,
+        "proper_single_vs_short_cos": 0.999996542930603
+      },
+      {
+        "persona_id": 402,
+        "token_length": 89,
+        "source_repeat_cos": 0.9999998807907104,
+        "source_repeat_maxabs": 0.0,
+        "raw_single_vs_long_cos": 0.9500391483306885,
+        "proper_single_vs_long_cos": 0.9999960660934448,
+        "raw_single_vs_short_cos": 0.9999963045120239,
+        "proper_single_vs_short_cos": 0.9999963045120239
+      }
+    ],
+    "raw_single_vs_long_cosine_mean": 0.9473550319671631,
+    "raw_single_vs_long_cosine_min": 0.920234739780426,
+    "proper_source_vs_long_cosine_mean": 0.9999962449073792,
+    "proper_source_vs_long_cosine_min": 0.9999904632568359,
+    "source_parity_pass": true
+  },
+  "policy_scores": {
+    "full_seed42": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 5.741926543123554e-07,
+        "same_state_top_action_changed": 0.0002166666672565043
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.0012128257658332586,
+        "same_state_top_action_changed": 0.01575000025331974
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.001216196920722723,
+        "same_state_top_action_changed": 0.01576666720211506
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.0005411988822743297,
+        "same_state_top_action_changed": 0.009466666728258133
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.004257841967046261,
+        "same_state_top_action_changed": 0.020649999380111694
+      }
+    },
+    "no_consist_seed42": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 7.06788966908789e-07,
+        "same_state_top_action_changed": 0.00031666667200624943
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.00837622582912445,
+        "same_state_top_action_changed": 0.08198333531618118
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.008353267796337605,
+        "same_state_top_action_changed": 0.081816665828228
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.0010102742817252874,
+        "same_state_top_action_changed": 0.014283333905041218
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.006420463789254427,
+        "same_state_top_action_changed": 0.05693333223462105
+      }
+    },
+    "full_seed43": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 2.1730131720687496e-06,
+        "same_state_top_action_changed": 0.0005499999970197678
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.02560962364077568,
+        "same_state_top_action_changed": 0.10925000160932541
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.025511063635349274,
+        "same_state_top_action_changed": 0.10883333534002304
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.0023197068367153406,
+        "same_state_top_action_changed": 0.032483331859111786
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.03413784131407738,
+        "same_state_top_action_changed": 0.12816666066646576
+      }
+    },
+    "no_consist_seed43": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 7.0768658133602e-07,
+        "same_state_top_action_changed": 0.0004666666791308671
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.0036586252972483635,
+        "same_state_top_action_changed": 0.0333000011742115
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.0036331533920019865,
+        "same_state_top_action_changed": 0.03331666812300682
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.0027698848862200975,
+        "same_state_top_action_changed": 0.02043333277106285
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.026577897369861603,
+        "same_state_top_action_changed": 0.08380000293254852
+      }
+    },
+    "full_seed44": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 3.15715169563191e-06,
+        "same_state_top_action_changed": 0.000733333348762244
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.01446583028882742,
+        "same_state_top_action_changed": 0.06379999965429306
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.014397958293557167,
+        "same_state_top_action_changed": 0.06369999796152115
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.0006017130217514932,
+        "same_state_top_action_changed": 0.009633333422243595
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.01995515637099743,
+        "same_state_top_action_changed": 0.04936666786670685
+      }
+    },
+    "no_consist_seed44": {
+      "cached": {
+        "same_native_state_mean_js": 0.0,
+        "same_state_top_action_changed": 0.0
+      },
+      "source_recomputed": {
+        "same_native_state_mean_js": 7.916927415863029e-07,
+        "same_state_top_action_changed": 0.0004000000189989805
+      },
+      "proper_pool": {
+        "same_native_state_mean_js": 0.004975853953510523,
+        "same_state_top_action_changed": 0.033416666090488434
+      },
+      "singleton": {
+        "same_native_state_mean_js": 0.0050110709853470325,
+        "same_state_top_action_changed": 0.03350000083446503
+      },
+      "long_peer": {
+        "same_native_state_mean_js": 0.01598365418612957,
+        "same_state_top_action_changed": 0.045766666531562805
+      },
+      "fixed_max128": {
+        "same_native_state_mean_js": 0.02203867956995964,
+        "same_state_top_action_changed": 0.0689166709780693
+      }
+    }
+  },
+  "scope": "Same text/state, encoding-context diagnostic; no changed world/utility, no new semantic personality claim",
+  "scientific_increment": 0
+}

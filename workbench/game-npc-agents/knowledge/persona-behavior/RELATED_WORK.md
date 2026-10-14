@@ -45,3 +45,12 @@
 
 ## 2026-10-14追加强近邻：FAccT2026
 [When Identity Overrides Incentives](https://arxiv.org/html/2601.10102)，已读方法/Appendix F/G/H/I，卡见../papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md。persona×payoff显式化交互、模型族差异，以及payoff优先/角色rename强prompt已被覆盖；不能给已知现象改名。我们当前原生NPC准入还不是新科学增量。
+
+## 2026-10-14后续邻居定位
+ACL2026 FAIRGAMER已研究transaction/cooperation/competition属性偏差与重复输出分布；2026 Intentional Deception已研究RPG profile条件下的动机操纵、true-statement misdirection与follow/echo。论文卡分别在../papers/FAIRGAMER_2026.md和INTENTIONAL_DECEPTION_2026.md；不把角色/激励交互、真话说服或模式改名当新idea。后者完整代码未公开，前者已读SDK/query统计路径，不冒称完整native engine。
+
+继续正文/附录审计：HARBOR（IJCNLP-AACL2025）已有persona偏好与利润权衡、ToM/ExpertAct/DPO；SPASM已有同会话说话者视角投影/echo；AgentMark已有计划与执行分解及分布保持行为水印；TriEx已有扑克三视角解释审计、显式belief数值干预和50次rerun控制；FPPS已有个性化历史诱发事实扭曲与内部steering。对应卡均在../papers/，原生NPC框架的工程归因不能自动冒领这些机制。
+
+PCSP比初次审计更强：正文§V-E已有50 English designer personas、语言/embedding→projection/行为overlap；作者ood-leakage-audit已测模板/两对韩语同义及排除近邻敏感性。MeltingPot PHASE5 §9–12已有candidate pool、平衡采样、两substrate各8seed、projection geometry/ID-OOD tradeoff。相关数字为作者结果，尚未本地完整复现；I02的“readout不同于policy”本身没有新颖性。
+
+I02定位查询（2026-10-14）：venue corpus nearest已运行，候选包括Consistent Zero-Shot Imitation with Contrastive Goal Inference、Diverse Policies Recovering via PMI、PCSP；最新arXiv检索发现ECLIPTICA/CITA（2601.06157）已有固定prompt下instruction-conditioned preference因果识别和KL信任域。后者仅完成摘要/HTML方法入口核验，尚未精读全实验/作者代码，不将其数值用于结论。Projection Heads（2605.17180）已读理论§5/实验§6，official OpenReview被challenge挡住；corpus标ICML2026，官方会场未独立核对。当前compression risk高，新颖性查询只输出定位，不自动关闭矿区。

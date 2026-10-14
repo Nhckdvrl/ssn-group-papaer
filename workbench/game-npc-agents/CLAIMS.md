@@ -10,3 +10,5 @@
 暂无。任何被普通提示或既有解释吸收的线索照常记录，不筛成功轨迹。
 
 2026-10-14 E14校对：首轮2episodes的tell/whisper载荷未填入原生模板，是本地adapter错误；通信与shadow意图一致性读数降级，不作NPC策略/言行证据。物品give/wield原生state变化仍属可行性。修复后按原选样全部重跑，未筛seed；C01保持L1，无新科学claim升级。
+
+2026-10-14 E19校对：首seed两scorer的Full/NoCons排序反转未跨三个固定trained seed稳定复现，差−.22pp、persona簇95%[−5.67,5.44]；降级该发现性线索，未注册新claim。E22负向权限字段连neutral正控制失败，联合forecast机制证据降级；保留原指标，不事后删字段。E23/E24编码批次影响属于资产/部署审计，正确pool已有owner，不升级新科学主张。

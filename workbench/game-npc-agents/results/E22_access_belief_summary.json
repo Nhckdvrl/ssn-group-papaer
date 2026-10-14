@@ -1,0 +1,201 @@
+{
+  "p14908_s2001_first1": {
+    "truth": {
+      "fox_get_current_held_worm_legal": false,
+      "fox_get_after_put_on_nests_legal": true,
+      "put_blocks_fox_direct_get": false
+    },
+    "discovery_action": "put worm on nests",
+    "conditions": {
+      "no_dialog": {
+        "forecast_all_correct": 0.0625,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 1.0,
+          "fox_get_after_put_on_nests_legal": 1.0,
+          "put_blocks_fox_direct_get": 0.0625
+        },
+        "actions": {
+          "eat worm": 32
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "partner_only": {
+        "forecast_all_correct": 0.0,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 0.8125,
+          "fox_get_after_put_on_nests_legal": 1.0,
+          "put_blocks_fox_direct_get": 0.09375
+        },
+        "actions": {
+          "block fox": 4,
+          "eat worm": 28
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog": {
+        "forecast_all_correct": 0.0,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 0.8125,
+          "fox_get_after_put_on_nests_legal": 0.90625,
+          "put_blocks_fox_direct_get": 0.0
+        },
+        "actions": {
+          "eat worm": 23,
+          "put worm on nests": 9
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog_fact": {
+        "forecast_all_correct": 0.0625,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 0.96875,
+          "fox_get_after_put_on_nests_legal": 1.0,
+          "put_blocks_fox_direct_get": 0.0625
+        },
+        "actions": {
+          "eat worm": 20,
+          "put worm on nests": 10,
+          "block fox": 1,
+          "put nut on nests": 1
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog_binding": {
+        "forecast_all_correct": 0.03125,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 0.96875,
+          "fox_get_after_put_on_nests_legal": 0.9375,
+          "put_blocks_fox_direct_get": 0.03125
+        },
+        "actions": {
+          "eat worm": 31,
+          "put worm on nests": 1
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "neutral_forecast": {
+        "forecast_all_correct": 0.15625,
+        "forecast_field_accuracy": {
+          "fox_get_current_held_worm_legal": 1.0,
+          "fox_get_after_put_on_nests_legal": 1.0,
+          "put_blocks_fox_direct_get": 0.15625
+        },
+        "actions": {},
+        "native_legal": 0,
+        "action_draws": 0
+      }
+    }
+  },
+  "p14207_s2001_first0": {
+    "truth": {
+      "creature_get_algae_now_legal": true,
+      "eel_get_algae_now_legal": true,
+      "say_ownership_changes_get_legality": false
+    },
+    "discovery_action": "emote growl",
+    "conditions": {
+      "no_dialog": {
+        "forecast_all_correct": 1.0,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 1.0,
+          "eel_get_algae_now_legal": 1.0,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {
+          "get algae": 30,
+          "examine algae": 2
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "partner_only": {
+        "forecast_all_correct": 0.96875,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 0.96875,
+          "eel_get_algae_now_legal": 1.0,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {
+          "get algae": 19,
+          "emote growl": 4,
+          "emote grin": 2,
+          "examine algae": 5,
+          "hit electric eel": 2
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog": {
+        "forecast_all_correct": 0.96875,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 0.96875,
+          "eel_get_algae_now_legal": 0.96875,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {
+          "hit electric eel": 1,
+          "get algae": 20,
+          "emote growl": 9,
+          "emote grin": 2
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog_fact": {
+        "forecast_all_correct": 1.0,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 1.0,
+          "eel_get_algae_now_legal": 1.0,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {
+          "get algae": 31,
+          "emote growl": 1
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "all_dialog_binding": {
+        "forecast_all_correct": 0.96875,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 0.96875,
+          "eel_get_algae_now_legal": 1.0,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {
+          "get algae": 28,
+          "emote growl": 3,
+          "hit electric eel": 1
+        },
+        "native_legal": 32,
+        "action_draws": 32
+      },
+      "neutral_forecast": {
+        "forecast_all_correct": 0.96875,
+        "forecast_field_accuracy": {
+          "creature_get_algae_now_legal": 0.96875,
+          "eel_get_algae_now_legal": 1.0,
+          "say_ownership_changes_get_legality": 1.0
+        },
+        "actions": {},
+        "native_legal": 0,
+        "action_draws": 0
+      }
+    }
+  },
+  "runtime": {
+    "wall_seconds": 146.65353765897453,
+    "calls": 704,
+    "parse_errors": 0,
+    "cloud_calls": 0,
+    "scientific_increment": 0,
+    "prompt_tokens": 654560,
+    "completion_tokens": 25276
+  },
+  "scope": "Discovery-only, two natural states; bird joint forecast positive control failed on redundant put_blocks field; raw primary retained, field not treated as valid mechanism evidence."
+}

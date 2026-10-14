@@ -10,3 +10,20 @@ E07 Qwen3-32B non-thinking、原生pureReAct seed101，20次NPC决策，11/20合
 
 ## P03 · 2026-10-14 · 位置probe与原生动作contract不同（E09）
 Gemma3-12B在发现性snapshot原版location9/9，却action合法3/9；单句/viewer/neutral能保持location但动作变0/9，raw输出包含不在场target等失败。Qwen32部分位置literal失败是前缀格式而非知识。位置原文、probe格式/语义、动作参数/对象scope必须分开；不能由“模型知道当前位置”或“问卷正确”自动判断execution能力，亦不能强行把位置提示改善称策略改善。下一步先作者per-action descriptions/scoped tool arguments与可靠格式，不加训练。
+
+## P04：独立意图/行动的采样差不能直接当战略差（2026-10-14）
+E14修复后首12图seed901均选择并原生执行了作者goal事件（不等于所有抽象利益已达成），但独立intent与action仍常不同；许多是emote/speech等可替代选择。H1：同策略两随机draw/多种等价动作；H2：hypothetical意图问法改变选择分布（已有Rethinking上下文解释）；H3：行动粒度/菜单模板与speech payload/真实效果不一致。E15用A/A抽样噪声与I/A分布、原生fork执行校准，不预设存在gap。
+
+## P06：同一训练目标混合政策塑形与读出学习，需独立控制（2026-10-14）
+PCSP已有gradient审计与external trait负结果，均不是我们的发现。源损失同时学η与共享φ，no_consist消融同时移除encoder对齐；检索变化无法单独识别policy变化是否必要。H1：φ改变使策略轨迹更可区分；H2：原policy已经有足够信号，η没学会读取；H3：state/needs机制携带角色信号。E17冻结θ/φ后训练原η，先核原full正控制/held100，若恢复才拆H3；不把这个校准自动当新idea。
+
+## P07：说话与物理行动是否争用一个机会（2026-10-14）
+E20完整36episode/70合法原生动作，0speech；其中一次follow长目标、一次examine食物，不能当人格失败。H1：共享资源与原饥饿目标使角色选择直接行动；H2：当前单动作交替task binding让说话占掉争取物品的先手机会，弱化原Dragon先utterance后action的互动机会；H3：对话规范/信息与角色长期动机本来未正交。E21先复用原native事件，提供已由Dragon研究的speech/action分解控制，原物理规则/目标不改；scheduler差异单列，不给因果persona或新颖性结论。
+
+## P08：公开归属语言、目标物品绑定与实际访问（2026-10-14）
+E21首seed的p14908 bird公开称worm为幼鸟食物并安全存放，put到公共nests后fox用合法get取走。source短动机自己eat worm，中动机feed young with nut；实际nests是开放公共surface，desc为abandoned。这里只是一个发现性样本，不宣称persona失效或必须自私。H1：合理长目标取舍/威胁信号（Can与Will不同）；H2：角色规范性归属被误当物理权限；H3：自己的公开台词priming/目标object绑定被合并（已有上下文/goal grounding近邻）；H4：抽样/菜单/本地clock解释。I01/E22在同物理/相同菜单快照独立测权限，强普通一句事实/原目标物品提醒作为对照；E21另外两个固定seed继续，不筛选成功put。
+
+E22后：不支持H2；源目标绑定可将放worm9/32降到1/32，事实提醒不恢复该动作。负向权限字段neutral阳性对照失败，联合机制读数降级；不能因其与行动同向就升级。详见I01/E22。
+
+## P09：角色编码的批次上下文混杂（2026-10-14）
+E23原500资产500/500高余弦复现，right-padding情况下原脚本末列pool有480行取padding query；同原文编码随批次最长伙伴改变。正确last-nonpad是作者smoke_test和官方已有算法，跨batch变化回到数值地板。E24六原trained政策原生收益受固定padding影响约2–14%，但Full/NoCons没有一致稳健性排序。H1：padding query位置/长度的额外编码信号；H2：旧政策对训练编码分布的正常敏感性；H3：多角色同时变码的动态交互。先建立正确编码训练基线E25，不能把工程缺陷自动升为创新。

@@ -25,7 +25,7 @@
 旧的 `RESEARCH_TERRITORIES.md` 与过时 `configs/entry_manifest.json` 已从当前 HEAD 清除。未执行且因用户明确变更选题而失效的 E00/E02–E05 实验卡也移出当前树：可在[历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)和 git 中追溯，**不是实验否定/科研失败**。E01 实际 CPU 源码检查、全部深读论文卡及领域安全/经济知识库保留。新的 E06 只是**PLANNED，未运行**。
 
 ## 实验与资源现状
-2026-10-14已跑通作者ActionCastle本地闭环，Qwen3-32B/Gemma3-12B/Qwen3.5-27B与原生free-text/single-tool/per-action tool对照全部保留。普通一句提示将E12首次合法48/133提高到92/135，先前失败不能直接讲Persona机制。PCSP公开已训练v3政策恢复480原生动作+160精确重放，人物条件明显影响行为。LIGHT原作者7486quest/2111human demos核验，692条可在完全相同图中匹配bot独立作者目标，当前12自然图×3seed本地NPC运行中。[结果与校对清单](results/README.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[日志](logs/2026-10-14.md)。**C01仍L1基线可行性，新科学增量仍0。**
+2026-10-14已跑通ActionCastle与LIGHT本地原生闭环。E14自然12图×3seed为266/273合法、36/36原作者目标event执行；E15意图差异被抽样噪声吸收。E20/E21各36双角色episodes完成，协议不同使对话机会/路线改变，E22普通目标绑定解释仍足够，权限机制未获支持。PCSP三公开种子无一致Full/NoCons排序；E23复现原500编码并确认批次混杂，E24原生utility受部署padding影响约2–14%，正确pool为已有修复。E25正在正确编码基线上做三路梯度控制，完整iteration成本/逐byte null通过。[结果与校对清单](results/README.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)、[日志](logs/2026-10-14.md)。**C01仍L1基线可行性，新科学增量仍0。**
 
 ## 资产位置与重建
 模型复用HuggingFace缓存，完整rollout/LLM输入输出不进Git，位于本机 `/home/xiang/.cache/game-npc-research/runs/`；上游源码/paper分别在同缓存 `sources/` / `papers/`，commit与PDF hash见 `results/E08_sources.json`。用 `scripts/native_actioncastle.py` 和E07卡重跑；现有Conda fgvd配合隔离deps overlay，具体版本由每次manifest固定。用户已授权七节点全部GPU，07:00 Asia/Tokyo起本项目最多8卡，优先现有Conda/venv；零付费API与单节点优先见LOCAL_FIRST。

@@ -1,6 +1,6 @@
 # E14：LIGHT 原作者双方目标与真实玩家行为的 NPC 闭环（2026-10-14）
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** REPRO（自然NPC强基线/测量资格，不是新idea）
 - **对应：** E06 / E11 / C01；避免把单方player通关证据直接归为NPC。
 - **问题（一句话）：** 在原作者相同graph中，为实际bot角色匹配其作者quest动机，并重放原人类行为，本地NPC可否依据自身利益而非替玩家完成任务作出合法、可追溯的选择？
@@ -18,3 +18,5 @@
 运行前补充（首个model调用前）：不把已执行的单次event goal永远标为pending。使用原parser产生的event class+target node身份核已成功执行（随机失败不算），将已执行状态在之后prompt中显示，避免我们新绑定任务制造重复完成循环；literal字符串指标仍原样保留。表示源目标事件已经执行，不等于作者抽象动机/长程利益全部达成，不设唯一行为gold。原legal菜单可能公开其他角色可偷物品，是原LIGHT possible_actions协议，不称它为完全无泄漏的局部视觉输入。独立probe与action使用各自固定RNG seed，加入probe不改变action RNG。
 
 首轮2episode后的接口校对（仍未做36episode模型推断）：选择tell/whisper原生模板时adapter没有填入utterance，玩家收到字面<SOMETHING>。这是我们的adapter错误，首轮通信/意图一致性降级，不作为模型行为证据；原生give/wield状态变化可保留可行性。修复模板payload并CPU断言后，按原12graphs×3seed全部重跑，不筛选成功角色。对已完成event的提示改为“合法执行过，结果看原生反馈”，因为Hit等事件没有统一failed字段，不能冒称所有事件执行即成功。两条原轨迹/原harness全部保留。
+
+修复后12图×3seed全保留/DONE：266/273 NPC事件合法，72材料变化，36/36作者goal事件合法执行过；0假定抽象动机全实现。按graph平均合法率0.9727，条件性graph-bootstrap95%[0.9216269841269842, 1.0]（非随机抽样总体界）。582本地call/603093输入/28257输出token，原loop1309.12秒，0云；原首2条错误载荷降级保留。7个拒绝来自已有follow或wield容量：原possible_actions含重复非幂等event，所以不把它们全部叫模型看不懂状态。没有Persona causal ablation，不能从goal执行率断言Persona独立因果贡献。

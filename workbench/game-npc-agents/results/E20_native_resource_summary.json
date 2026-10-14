@@ -1,0 +1,1075 @@
+{
+  "episodes": 36,
+  "graphs": 6,
+  "seeds": [
+    2001,
+    2002,
+    2003
+  ],
+  "legal_actions": 70,
+  "actions": 70,
+  "consumed_episodes": 36,
+  "goal_events_executed": 36,
+  "character_goal_opportunities": 72,
+  "event_counts": {
+    "EatEvent": 36,
+    "StealObjectEvent": 24,
+    "FollowEvent": 1,
+    "PointEvent": 2,
+    "ExamineEvent": 1,
+    "GetObjectEvent": 6
+  },
+  "native_runtime_seconds": 432.40339464403223,
+  "model_calls": 199,
+  "prompt_tokens": 150733,
+  "completion_tokens": 9568,
+  "scope": "6 convenience graphs, independently authored goals; one-action alternating task binding, no original RL/Soul. Consumed food satisfies one goal event per episode, not both NPCs or an abstract persona gold.",
+  "cloud_calls": 0,
+  "scientific_increment": 0,
+  "episodes_detail": [
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2691,
+      "completion_tokens": 208
+    },
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4940,
+      "completion_tokens": 276
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2503,
+      "completion_tokens": 211
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 2,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4414,
+      "completion_tokens": 279
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 6,
+      "prompt_tokens": 4142,
+      "completion_tokens": 313
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2265,
+      "completion_tokens": 224
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 6,
+      "prompt_tokens": 5169,
+      "completion_tokens": 259
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2844,
+      "completion_tokens": 191
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 4,
+      "legal_actions": 4,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 8,
+      "prompt_tokens": 6831,
+      "completion_tokens": 376
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 7,
+      "prompt_tokens": 5719,
+      "completion_tokens": 353
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2635,
+      "completion_tokens": 209
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2001,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4776,
+      "completion_tokens": 287
+    },
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2691,
+      "completion_tokens": 186
+    },
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 7,
+      "prompt_tokens": 5967,
+      "completion_tokens": 306
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2503,
+      "completion_tokens": 200
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 7,
+      "prompt_tokens": 5379,
+      "completion_tokens": 305
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 7,
+      "prompt_tokens": 4987,
+      "completion_tokens": 348
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2265,
+      "completion_tokens": 217
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 6,
+      "prompt_tokens": 5169,
+      "completion_tokens": 279
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2844,
+      "completion_tokens": 202
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 4,
+      "legal_actions": 4,
+      "material_actions": 3,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 8,
+      "prompt_tokens": 6819,
+      "completion_tokens": 388
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 4,
+      "legal_actions": 4,
+      "material_actions": 3,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 8,
+      "prompt_tokens": 6837,
+      "completion_tokens": 371
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2635,
+      "completion_tokens": 209
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2002,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 7,
+      "prompt_tokens": 5780,
+      "completion_tokens": 317
+    },
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2691,
+      "completion_tokens": 191
+    },
+    {
+      "files": [
+        "11164.json",
+        "11168.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "cat"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4940,
+      "completion_tokens": 271
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2503,
+      "completion_tokens": 211
+    },
+    {
+      "files": [
+        "11174.json",
+        "11177.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox trying to steal chickens"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4460,
+      "completion_tokens": 281
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 6,
+      "prompt_tokens": 4142,
+      "completion_tokens": 294
+    },
+    {
+      "files": [
+        "12014.json",
+        "12096.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "captain",
+        "rat"
+      ],
+      "original_goals": [
+        "eat moldy bread",
+        "eat moldy bread"
+      ],
+      "initial_owner": "rat",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2265,
+      "completion_tokens": 220
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 6,
+      "prompt_tokens": 5185,
+      "completion_tokens": 266
+    },
+    {
+      "files": [
+        "13022.json",
+        "13023.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "traveler",
+        "bird"
+      ],
+      "original_goals": [
+        "eat nut",
+        "eat nut"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 4,
+      "prompt_tokens": 2844,
+      "completion_tokens": 197
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 7,
+      "prompt_tokens": 5768,
+      "completion_tokens": 299
+    },
+    {
+      "files": [
+        "14207.json",
+        "14697.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "creature",
+        "electric eel"
+      ],
+      "original_goals": [
+        "eat algae",
+        "eat algae"
+      ],
+      "initial_owner": "moat_0",
+      "final_item_container": "VOID",
+      "turns": 3,
+      "legal_actions": 3,
+      "material_actions": 2,
+      "goals_executed": [
+        false,
+        true
+      ],
+      "consumer_index": 1,
+      "model_calls": 7,
+      "prompt_tokens": 5719,
+      "completion_tokens": 325
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 0,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 1,
+      "legal_actions": 1,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 4,
+      "prompt_tokens": 2635,
+      "completion_tokens": 208
+    },
+    {
+      "files": [
+        "14908.json",
+        "16405.json"
+      ],
+      "seed": 2003,
+      "first_actor_index": 1,
+      "characters": [
+        "bird",
+        "fox"
+      ],
+      "original_goals": [
+        "eat worm",
+        "eat worm"
+      ],
+      "initial_owner": "bird",
+      "final_item_container": "VOID",
+      "turns": 2,
+      "legal_actions": 2,
+      "material_actions": 1,
+      "goals_executed": [
+        true,
+        false
+      ],
+      "consumer_index": 0,
+      "model_calls": 6,
+      "prompt_tokens": 4776,
+      "completion_tokens": 291
+    }
+  ]
+}

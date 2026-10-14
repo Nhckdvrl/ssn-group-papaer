@@ -50,3 +50,27 @@
 
 **LIGHT事实：** 官方7486 quest中1787不同graph，1446相同graph具有多角色独立quest，共7034条；与2111human demos严格名字/同图join得到692条bot自身作者目标。E14固定源顺序前12不同graph不按model表现筛；初始goal合法10/12（另2有物品前置），原possible_actions707canonical中25无法经原parser重parse，多数是examine/point self。物理事件/概率/原WorldViewer未改；最小host未加载原学习Soul/OnEventSoul交易攻击脚本/DM，故只声称新的本地NPC任务绑定，不是官方partner完整复现。
 **解释与竞争解释：** private authored motivation可以分开NPC与player利益，不保证全部抽象动机存在可执行终点。候选菜单暴露scope和对手物品沿原协议，不能当完全无信息的观测；合法动作执行可能随机失败/无材料delta。首2条tell payload遗漏是我们的adapter错误，通信降级后修复并按原样本全量重跑。
+
+## PCSP E17–E19观测单位与读出控制
+**源代码事实：** consistency._rollout_persona 将同persona复制给全部16个v3-large actor，AEC遍历时将所有actor obs/actions顺序append到一个列表；_encode_trajectories截前200帧，所以当前约12.5世界cycle。原trainer collect_rollout则分别按actor存200-time-step trajectories并给各自的e_llm。Mixed-persona采样确在train sampler随机选择，不应误写为训练只见同类population。根results/embeddings/有500原Qwen f16编码（先前只查看research子树导致误以为未公开，现已修正）。
+**本地控制：** all-A自写循环与作者helper逐byte相同；混合角色时joint解码更近群体、own更近自身，角色自己的rest偏好仍随自身code。θ/φ全冻结的η训练使同100候选角色ID解码1%→3.7%，full6.7%；conditional-policy likelihood21%/27%（full/no_consist）。所有world/政策原样，η不同不改变native后果。
+**解释：** persona输入确实可影响实际策略；差读出不能单独作“政策缺人格/没有身份信息”证据。但likelihood使用生成policy，不是独立人格语义效度；作者BigFive独立probe负结果是作者ownership，不冒领。
+**尚未排除：** 时间跨度/混合actor单位差、φ几何与η拟合预算、utility/body/state或伙伴信息、个人ID与trait原型粒度。需要更多公开policy seed及state-conditioned控制；当前不是新科学主张。
+
+**三seed补充：** E17冻结政策仅校准η的top1=3.67/4.67/4.67%；E19条件似然full=21.00/36.33/20.33%、no_consist=27.00/25.00/26.33%。同100ID配对Full−NoConsist−0.22pp [−5.67,5.44]，没有一致排序反转。原η低解码不能单独推出政策persona-agnostic；与作者独立语义trait结论仍分开。具体结果E19_three_policy_aggregate.json，CI条件在三固定trained policies而非训练总体。
+
+## LIGHT dialogue与物品访问：新增源事实
+**源代码事实：** Dragon base/environments/envs.py step按initiator utterance、partner utterance、partner act顺序；partner的act输入含它自己刚说的话。E20的单事件轮换是明确本地task binding，不是这个原RL流程。E21只恢复speech/action机会分解，仍未加载原RL/Soul。
+**本地事实：** E20 36episodes/70合法动作/0speech；E21独立原人物对话后出现put物品。source14908短动机worm自用、中动机nut给幼鸟，nests对象位于公共room、开放surface、没有locked_edge；狐狸随后原get取得worm。WorldViewer物品列表/背包使用set迭代，跨Python hash seed顺序不同；E22先核state及view内容一致，再复用原缓存native view/原schema保证同prompt，不把显示顺序差当模型状态错误。
+**解释/未排除：** 公开台词本身是社会行为；合理照顾幼鸟或害怕对方不是人格错误。权限Can、对手Will、角色价值与自我台词priming需独立。一个source goal event未执行不等于抽象利益失败。source物品绑定合并与普通grounding近邻仍可解释观察，尚无新科学主张。
+
+## PCSP 编码资产资格与原生后果（E23/E24）
+**源代码事实：** research/scripts/compute_embeddings_500.py（SHA5d858bca9dd8f6d4084b0e60adda450cc1311118fb33703e76b740699cd0ac14）fp16/max128/batch32/sortedID，无instruction，直接last_hidden_state[:,-1]。同仓smoke_test已有attention-mask-aware last-nonpad helper。官方Qwen3-Embedding说明也支持left padding或取最后真实token。默认运行tokenizer实际right padding，不能只凭源码中没显式padding_side就断言历史runtime。
+**本地资产事实：** E23全部500公开.npy高余弦复现（最小.9999883），480行末列为padding位置；同原文编码随最长伙伴变化，正确pool跨batch降至数值地板。E24保持原人物/body/奖励/初始世界，fixed128使六公开策略原生收益约降2–14%。普通正确pool已解决编码批次依赖，没有Full/NoCons一致稳健性排序。
+**解释：** 当前公开数组与此原recipe高度一致，部署时同人物编码上下文影响原生行为后果；这是资产审计与工程资格，不是科学创新。
+**未排除：** historical模型revision/runtime仍未由作者pin，当前公开数组不自动代表论文全部分支；旧policy输入分布改变是正常OOD效应。E24全部角色同时变码含population交互，需单focal/共同状态才分直接效应。重新训正确pool基线E25另存，不覆盖作者资产。
+
+## PCSP 更强的已有结果：MeltingPot PHASE5
+**作者公开事实（非我们复现）：** pin5420f7b的research/meltingpot/PHASE5_REPORT.md，已读§1–5、§9–12。先将random32换Qwen语义编码，full12候选heldout top1仍0；§9查明原full candidate heldout仅作负类，将pool缩到train10仍未恢复。§10 PD substrate增加行为KL但读出仍差；§11平衡persona trajectory采样+train pool首次非零但seed双峰；§12各substrate8seed，commons_harvest top1 .364[.192,.554]、top3 .480[.257,.696]，PD阳性basin2/8，spinner始终难读，且ID top3降到chance。作者明确提出projection geometry/embedding-margin与ID/OOD tradeoff，并推荐joint loss/controlled margin/persona arithmetic。
+**解释：** “policy有信号而encoder读不出”、contrast pool与projection几何、简单balanced sampling修复均已有owner。不能拿该报告前半的0结果代表作者最终全证据，也不能把后半设想直接拿来重包装成我们的idea。
+**未排除：** 报告属于public研究记录，不等于每一结论都进入最新论文主张；CNN trained assets/对应seed真实runtime未本地核验。MeltingPot/dmlab2d未安装，报告数字必须标作者。v3-large与CNN分支loss/编码recipe不同，不用E23替其他分支判错。

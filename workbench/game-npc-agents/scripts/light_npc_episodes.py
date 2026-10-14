@@ -151,9 +151,9 @@ def system_message(quest):
                 ["short_motivation","mid_motivation","long_motivation","goal"]))
 
 
-def choose(client, messages, menu, seed):
+def choose(client, messages, menu, seed, allow_speech=True):
     schema = {"type":"object","properties":{
-        "action":{"type":"string","enum":menu+["say"]},
+        "action":{"type":"string","enum":menu+(["say"] if allow_speech else [])},
         "utterance":{"type":"string","description":"Speech text if action is say; otherwise empty"},
         "reasoning":{"type":"string","description":"One brief reason based on own goals and visible facts"}},
         "required":["action","utterance","reasoning"],"additionalProperties":False}
