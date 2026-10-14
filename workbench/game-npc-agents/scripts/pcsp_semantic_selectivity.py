@@ -12,6 +12,8 @@ def main():
     ap.add_argument('--source', type=Path, default=Path('/home/xiang/.cache/game-npc-research/sources/pcsp'))
     ap.add_argument('--runs', type=Path, default=Path('/home/xiang/.cache/game-npc-research/runs'))
     ap.add_argument('--out', type=Path, required=True)
+    ap.add_argument('--policy-prefix', type=Path)
+    ap.add_argument('--training-seed', type=int, default=42)
     args = ap.parse_args(); args.out.mkdir(parents=True, exist_ok=False)
     sys.path.insert(0, str(args.source/'research'))
     import numpy as np
@@ -44,11 +46,11 @@ def main():
         return torch.nn.functional.cosine_similarity(a,b,dim=-1)
     raw = {}; summary = {}; hashes = {}
     for route in ['no','full']:
-        folder=args.runs/f'e25_30_{route}'
+        folder=Path(str(args.policy_prefix)+route) if args.policy_prefix is not None else args.runs/f'e25_30_{route}'
         policy=PCSPActorCritic(OBS_DIM_V3_LARGE,N_ACTIONS_V3)
         state=torch.load(folder/'policy.pt',map_location='cpu',weights_only=True)
         policy.load_state_dict(state,strict=True); policy.eval().requires_grad_(False)
-        if route == 'no':
+        if route == 'no' and args.policy_prefix is None:
             reader_state=torch.load(args.runs/'e25_30_readout/policy.pt',map_location='cpu',weights_only=True)
             assert all(torch.equal(state[k],reader_state[k]) for k in state)
         hashes[route]=hashlib.sha256((folder/'policy.pt').read_bytes()).hexdigest()
@@ -86,7 +88,8 @@ def main():
                           for k,e in list(input_vectors.items())+[(f'other_{i}',e) for i,e in enumerate(donor_vectors)]},
             'samples':{'roles':100,'world_seeds':sorted(set(world_seeds.tolist())),'cycles':[0,20,100,199],'states':1200},
             'policy_sha256':hashes,'donor_ids':donors,'bootstrap_seed':32658,'bootstrap_replicates':20000,
-            'world_or_reward_changed':False,'new_rollouts':0,'training_seeds':[42],
+            'world_or_reward_changed':False,'new_rollouts':0,'training_seeds':[args.training_seed],
+            'policy_prefix':str(args.policy_prefix),'readout_policy_parity_checked':args.policy_prefix is None,
             'scope':'Frozen-state action sensitivity only. No semantic correctness, native utility, cross-training-seed or novelty claim.',
             'wall_seconds':time.monotonic()-start,'cloud_calls':0,'gpu_hours':0}
     result['input_sha256']={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in

@@ -1,0 +1,365 @@
+{
+  "condition": "plain",
+  "per_base": [
+    {
+      "route": "no",
+      "id": 401,
+      "world_effects": [
+        0.08689080476764843,
+        6.835153636336315,
+        -3.554917636513707
+      ],
+      "mean_effect": 1.1223756015300854
+    },
+    {
+      "route": "no",
+      "id": 421,
+      "world_effects": [
+        1.2098103638738422,
+        0.46381453201173883,
+        0.013962939754108561
+      ],
+      "mean_effect": 0.5625292785465632
+    },
+    {
+      "route": "no",
+      "id": 441,
+      "world_effects": [
+        4.5703326612711095,
+        3.9572179645299883,
+        5.779001033306102
+      ],
+      "mean_effect": 4.768850553035733
+    },
+    {
+      "route": "no",
+      "id": 461,
+      "world_effects": [
+        -1.4950977265834808,
+        5.231613993644714,
+        -0.764300143718728
+      ],
+      "mean_effect": 0.9907387077808352
+    },
+    {
+      "route": "no",
+      "id": 481,
+      "world_effects": [
+        7.541217438876615,
+        1.4053536012768717,
+        2.567007547616953
+      ],
+      "mean_effect": 3.837859529256813
+    },
+    {
+      "route": "full",
+      "id": 401,
+      "world_effects": [
+        0.23515454828738314,
+        1.0415780335664664,
+        -0.597055292129518
+      ],
+      "mean_effect": 0.22655909657477716
+    },
+    {
+      "route": "full",
+      "id": 421,
+      "world_effects": [
+        0.14188015758989536,
+        1.9659521117806307,
+        0.6610041718930049
+      ],
+      "mean_effect": 0.922945480421177
+    },
+    {
+      "route": "full",
+      "id": 441,
+      "world_effects": [
+        1.9530930250883074,
+        5.587927633523975,
+        5.785257518291502
+      ],
+      "mean_effect": 4.442092725634595
+    },
+    {
+      "route": "full",
+      "id": 461,
+      "world_effects": [
+        2.7299857199192132,
+        2.936774280667315,
+        4.38011667430402
+      ],
+      "mean_effect": 3.3489588916301827
+    },
+    {
+      "route": "full",
+      "id": 481,
+      "world_effects": [
+        3.6701827190816516,
+        3.9923202954232693,
+        2.5697813473641844
+      ],
+      "mean_effect": 3.4107614539563684
+    }
+  ],
+  "routes": {
+    "no": {
+      "mean_effect": 2.256470734030006,
+      "positive_base_count": 5
+    },
+    "full": {
+      "mean_effect": 2.4702635296434203,
+      "positive_base_count": 5
+    }
+  },
+  "wall_seconds": 55.83561168902088,
+  "training_seeds": 1,
+  "episodes": 60,
+  "reward_function_changed": false,
+  "cloud_calls": 0,
+  "raw": "/tmp/npc_e33_plain",
+  "clarification_required_by_card": false,
+  "four_cells_and_dominance": [
+    {
+      "route": "no",
+      "id": 401,
+      "J_H_given_H": 89.88529607574145,
+      "J_H_given_L": 93.90391096244257,
+      "J_L_given_H": 73.11382137159507,
+      "J_L_given_L": 78.25481185982626,
+      "local_orientation": 0.01715835626545044,
+      "raw_cos": 0.99416184425354,
+      "phi_cos": 0.9875897169113159,
+      "effect_on_high_goal": -4.0186148867011156,
+      "effect_on_low_goal": -5.140990488231196,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "no",
+      "id": 421,
+      "J_H_given_H": 91.96349217320483,
+      "J_H_given_L": 92.61057814935845,
+      "J_L_given_H": 85.70435783515374,
+      "J_L_given_L": 86.91397308985393,
+      "local_orientation": 0.008962433910195447,
+      "raw_cos": 0.9893331527709961,
+      "phi_cos": 0.9926345348358154,
+      "effect_on_high_goal": -0.647085976153619,
+      "effect_on_low_goal": -1.2096152547001822,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "no",
+      "id": 441,
+      "J_H_given_H": 115.74065806925296,
+      "J_H_given_L": 120.73366512139637,
+      "J_L_given_H": 79.45595488011837,
+      "J_L_given_L": 89.21781248529753,
+      "local_orientation": 0.030668316243288574,
+      "raw_cos": 0.9853281378746033,
+      "phi_cos": 0.9832406044006348,
+      "effect_on_high_goal": -4.993007052143412,
+      "effect_on_low_goal": -9.76185760517916,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "no",
+      "id": 461,
+      "J_H_given_H": 70.68220192094645,
+      "J_H_given_L": 74.18324422538281,
+      "J_L_given_H": 62.995280267794925,
+      "J_L_given_L": 67.48706128001213,
+      "local_orientation": 0.011753840624378092,
+      "raw_cos": 0.9916313886642456,
+      "phi_cos": 0.9900592565536499,
+      "effect_on_high_goal": -3.5010423044363534,
+      "effect_on_low_goal": -4.491781012217203,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "no",
+      "id": 481,
+      "J_H_given_H": 75.70412281334399,
+      "J_H_given_L": 77.70962055027485,
+      "J_L_given_H": 62.050024815201766,
+      "J_L_given_L": 67.89338208138942,
+      "local_orientation": 0.0271917499801308,
+      "raw_cos": 0.9860879182815552,
+      "phi_cos": 0.9832747578620911,
+      "effect_on_high_goal": -2.005497736930863,
+      "effect_on_low_goal": -5.8433572661876525,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "full",
+      "id": 401,
+      "J_H_given_H": 100.53305408090353,
+      "J_H_given_L": 105.06998504857222,
+      "J_L_given_H": 70.34330181211233,
+      "J_L_given_L": 75.10679187635581,
+      "local_orientation": 0.006894378242804408,
+      "raw_cos": 0.99416184425354,
+      "phi_cos": 0.9891381859779358,
+      "effect_on_high_goal": -4.536930967668695,
+      "effect_on_low_goal": -4.763490064243484,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "full",
+      "id": 421,
+      "J_H_given_H": 79.94141507714987,
+      "J_H_given_L": 78.59183079016705,
+      "J_L_given_H": 59.53352643668652,
+      "J_L_given_L": 59.106887630124895,
+      "local_orientation": 0.006402300783221056,
+      "raw_cos": 0.9893331527709961,
+      "phi_cos": 0.9898090362548828,
+      "effect_on_high_goal": 1.349584286982818,
+      "effect_on_low_goal": 0.4266388065616269,
+      "classification": "high_input_dominates"
+    },
+    {
+      "route": "full",
+      "id": 441,
+      "J_H_given_H": 126.82783402323723,
+      "J_H_given_L": 143.42262098928293,
+      "J_L_given_H": 105.09554321587086,
+      "J_L_given_L": 126.13242290755113,
+      "local_orientation": 0.032216500274437836,
+      "raw_cos": 0.9853281378746033,
+      "phi_cos": 0.9806269407272339,
+      "effect_on_high_goal": -16.594786966045703,
+      "effect_on_low_goal": -21.03687969168027,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "full",
+      "id": 461,
+      "J_H_given_H": 62.16846202274164,
+      "J_H_given_L": 67.58234522879123,
+      "J_L_given_H": 40.04405116101106,
+      "J_L_given_L": 48.80689325869084,
+      "local_orientation": 0.01420562300120938,
+      "raw_cos": 0.9916313886642456,
+      "phi_cos": 0.9896675944328308,
+      "effect_on_high_goal": -5.413883206049583,
+      "effect_on_low_goal": -8.76284209767978,
+      "classification": "low_input_dominates"
+    },
+    {
+      "route": "full",
+      "id": 481,
+      "J_H_given_H": 72.9477621982495,
+      "J_H_given_L": 75.34292011181513,
+      "J_L_given_H": 50.404226242254175,
+      "J_L_given_L": 56.21014560977617,
+      "local_orientation": 0.017123579054639095,
+      "raw_cos": 0.9860879182815552,
+      "phi_cos": 0.9733372926712036,
+      "effect_on_high_goal": -2.395157913565626,
+      "effect_on_low_goal": -5.8059193675219944,
+      "classification": "low_input_dominates"
+    }
+  ],
+  "dominance_counts": {
+    "low_input_dominates": 9,
+    "high_input_dominates": 1,
+    "preference_crossover": 0,
+    "reverse_crossover": 0
+  },
+  "interpretation": "Positive pre-registered relative utility contrast; no clear preference crossover in five-base mean cells. This is not proof of utility-improving goal control. Single short training seed, three world seeds; no independent mechanism claim.",
+  "encoding_control": {
+    "canonical_cosines": {
+      "401": 1.0,
+      "421": 0.999996542930603,
+      "441": 0.9999967813491821,
+      "461": 1.0000001192092896,
+      "481": 0.9999967813491821
+    },
+    "passed": true,
+    "model_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "pooling": "last real attention-mask token",
+    "dtype": "float16",
+    "wall_seconds": 64.78006494801957,
+    "cloud_calls": 0,
+    "canonical_cosines_before_norm_correction": {
+      "401": 1.0004934072494507,
+      "421": 1.0000003576278687,
+      "441": 1.0005865097045898,
+      "461": 1.0002435445785522,
+      "481": 1.0000313520431519
+    },
+    "control_correction": "Before any policy measurement, divide by both vector norms; fp16-normalized vectors are not exact unit vectors."
+  },
+  "reward_control": {
+    "controls": [
+      {
+        "id": 401,
+        "source_reward_contrast_max_error": 2.7755575615628914e-17,
+        "physical_byte_parity": true,
+        "oracle_contrast_span_min": 0.610545426607132,
+        "fixed_tape_returns": [
+          5.546938935518265,
+          4.256152928471565
+        ]
+      },
+      {
+        "id": 421,
+        "source_reward_contrast_max_error": 2.7755575615628914e-17,
+        "physical_byte_parity": true,
+        "oracle_contrast_span_min": 0.5287478685379028,
+        "fixed_tape_returns": [
+          3.105814162939787,
+          0.5518210801482203
+        ]
+      },
+      {
+        "id": 441,
+        "source_reward_contrast_max_error": 0.0,
+        "physical_byte_parity": true,
+        "oracle_contrast_span_min": 0.610545426607132,
+        "fixed_tape_returns": [
+          2.5868101906776433,
+          1.6601644200086596
+        ]
+      },
+      {
+        "id": 461,
+        "source_reward_contrast_max_error": 0.0,
+        "physical_byte_parity": true,
+        "oracle_contrast_span_min": 0.610545426607132,
+        "fixed_tape_returns": [
+          4.457515652775765,
+          3.0275693911314008
+        ]
+      },
+      {
+        "id": 481,
+        "source_reward_contrast_max_error": 2.7755575615628914e-17,
+        "physical_byte_parity": true,
+        "oracle_contrast_span_min": 0.5287478685379028,
+        "fixed_tape_returns": [
+          2.1367240184545513,
+          0.5019831301271919
+        ]
+      }
+    ],
+    "passed": true,
+    "wall_seconds": 0.17318931804038584
+  },
+  "all_world_effects_retained": true,
+  "clarified_matrix_run": false,
+  "scientific_increment_confirmed": false,
+  "asset_relocations": {
+    "/tmp/npc_e33_reward_gate": "/home/xiang/.cache/game-npc-research/runs/e33_reward_gate",
+    "/tmp/npc_e33_codes": "/home/xiang/.cache/game-npc-research/runs/e33_codes",
+    "/tmp/npc_e33_native_cost": "/home/xiang/.cache/game-npc-research/runs/e33_native_cost",
+    "/tmp/npc_e33_plain": "/home/xiang/.cache/game-npc-research/runs/e33_plain"
+  },
+  "asset_hashes": {
+    "workbench/game-npc-agents/scripts/pcsp_interest_edit.py": "1ff8f1e299d966e6750b7d8c7c0ac8142aadd9e519e322ae38f5405173eb03d1",
+    "/tmp/npc_e33_codes/vectors.npy": "80a66c8d964b1807b746b0bba87e6f5fd3ffc6e9a2abbfed0ae5df72457ea1c1",
+    "/home/xiang/.cache/game-npc-research/runs/e25_30_no/policy.pt": "db4f8a489b5471aa436b6f93fac0ad8f2909dc04bf7f1f2c34c57926c88233f9",
+    "/home/xiang/.cache/game-npc-research/runs/e25_30_full/policy.pt": "95b05b8f81b785017be497888f9d3bf7846e01c5563413f78b8b5bf1ae5cc895"
+  }
+}

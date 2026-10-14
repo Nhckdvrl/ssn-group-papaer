@@ -18,6 +18,7 @@ def main():
     ap.add_argument('--iterations',type=int,default=1)
     ap.add_argument('--seed',type=int,default=42)
     ap.add_argument('--device',choices=['cpu','cuda'],default='cuda')
+    ap.add_argument('--checkpoint-at',type=int,nargs='*',default=[])
     args=ap.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     sys.path.insert(0,str(args.source/'research'))
     import numpy as np
@@ -65,9 +66,20 @@ def main():
     dump('manifest.json',{'source_sha':'5420f7b4fa0fdb6110e131402af9f5386ce2d0cf',
         'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'route':args.route,
         'iterations':args.iterations,'seed':args.seed,'device':args.device,'initial_policy_hash':initial,
+        'checkpoint_at':args.checkpoint_at,
         'cfg':vars(cfg),'encoder_array_sha256':hashlib.sha256(args.embeddings.read_bytes()).hexdigest(),
         'world_or_reward_changed':False,'cloud_calls':0})
     start=time.monotonic();all_e=torch.from_numpy(train_emb).to(trainer.device)
+    def checkpoint(folder,completed):
+        folder.mkdir(parents=True,exist_ok=False)
+        torch.save(policy.state_dict(),folder/'policy.pt')
+        torch.save(reader.state_dict(),folder/'traj_encoder.pt')
+        torch.save({'policy_optimizer':trainer.optimizer.state_dict(),'reader_optimizer':trainer.traj_optimizer.state_dict(),
+            'torch_cpu_rng':torch.get_rng_state(),'torch_cuda_rng':torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
+            'sampler_rng':rng.bit_generator.state,'numpy_rng':np.random.get_state(),'python_rng':random.getstate()},folder/'training_state.pt')
+        (folder/'manifest.json').write_text(json.dumps({'completed_iterations':completed,'seed':args.seed,
+            'route':args.route,'device':args.device,'policy_hash':param_hash(policy),
+            'reader_hash':param_hash(reader)},indent=2)+'\n')
     for iteration in range(args.iterations):
         trainer.iteration=iteration
         before=time.monotonic()
@@ -92,6 +104,8 @@ def main():
         trainer.metrics.append(row)
         with (args.out/'metrics.jsonl').open('a') as trace:trace.write(json.dumps(row)+'\n')
         print(json.dumps(row),flush=True)
+        if iteration+1 in args.checkpoint_at:
+            checkpoint(args.out/f'checkpoint_{iteration+1:04d}',iteration+1)
     torch.save(policy.state_dict(),args.out/'policy.pt')
     torch.save(reader.state_dict(),args.out/'traj_encoder.pt')
     torch.save({'policy_optimizer':trainer.optimizer.state_dict(),'reader_optimizer':trainer.traj_optimizer.state_dict(),

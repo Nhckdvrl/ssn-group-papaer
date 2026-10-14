@@ -92,3 +92,6 @@
 **本地事实：** E30恢复local LLMPlanner、修订、评分和反思，18calls、4/5合法、首次饮水safe，plan_source=llm；未知Student Union被原校验过滤。E31全1343双方任务配对中156同物品，145有≤4步event见证、118三个固定seed均有；这不是长期动机满足率。E32固定1200states，Full等义改写JS .0417／No .0752，跨角色JS保留90.7%，选择性差−.479[−.638,−.316]。
 **解释：** Full并非只在整体忽略人物输入；其稳健性是应保留的正向证据。完整计划链可追踪，但一次成功不支持人格机制。新定位见PERSONA_ALGEBRA、NCP_BENCH、CITYSIM论文卡。
 **未排除：** E32只有一个短训练seed，跨角色同时改变多项属性；整套原型识别、身体相关性、语言压缩均能产生当前模式。C属性同时进入style和social reward，不能只计style或把高C等同唯一正确行动。C01仍L1。
+
+## 评估信息时序补充
+源训练collect_rollout与原_rollout_persona逐actor读取fresh obs；E25/E26部分mixed-native评估在cycle开头统一计算16人的动作，因此后面actor没有看见同cycle前面actor刚产生的变化。物理／奖励仍是原引擎，但不是相同信息协议。旧utility数字保留其任务绑定限定，不作与新fresh-AEC训练曲线的纯轮数对比。E33已逐actor取fresh obs；E34所有阶段统一fresh并做原helper3200frames byte replay。C01未受影响、仍L1。

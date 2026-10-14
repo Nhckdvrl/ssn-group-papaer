@@ -18,7 +18,7 @@ class LocalComponentClient(ToolClient):
         self.context = {"role": role}
 
     def _budget(self):
-        if len(self.base.calls) >= self.max_calls:
+        if self.max_calls and len(self.base.calls) >= self.max_calls:
             raise RuntimeError("Local model call budget exhausted")
 
     def call_tools(self, *args, **kwargs):

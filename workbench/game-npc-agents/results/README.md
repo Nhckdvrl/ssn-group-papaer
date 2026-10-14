@@ -1,6 +1,8 @@
 # 结果清单
 
-已获得真实本地NPC模型与原生world结果；**新科学增量仍0，C01仅L1可行性**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
+E33：[完整四格收益](E33_single_interest_control.json)、[静态图](E33_utility_four_cells.svg)。60原生episodes／CPU55.84秒；单项C编辑的相对利益选择性两route均5/5base为正，但9/10均值单元low输入同时胜两目标、1/10相反，无明确偏好交叉。不是新机制证据；不追加明确句矩阵。短训练／身体相关性尚未排除。
+
+已获得真实本地NPC模型与原生world结果；**C01保持L1，探索结果与基线证据分别记录**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
 
 | 实验 | 小结果与范围 |
 |---|---|
@@ -36,3 +38,5 @@ E06是统领基线准入卡，实际执行由E07及后续卡记录；旧E00/E02�
 | E31 | [原人类双目标顺序资格](E31_human_goal_order_qualification.json)，1343配对/156同物品；145有≤4步见证、118三seed都有，非共同利益gold |
 
 | E32 | [固定state语义选择性](E32_semantic_selectivity.json)，Full等义JS下降、保留90.7%不同角色响应；单训练seed，仅候选机制线索 |
+
+E34：[三个seed的30轮固定读数](E34_checkpoint_0030.json)，100／300轮运行中；严格fresh AEC与原helper3200帧byte同一，不把早期方向变化当淘汰依据。E36：[同角度功能响应](E36_latent_response_i30.json)，CPU2.94秒，距离收缩、整体gain和方向响应可出现不同组合，保留逐人物差异继续研究。

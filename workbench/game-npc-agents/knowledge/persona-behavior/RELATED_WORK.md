@@ -56,6 +56,8 @@ PCSP比初次审计更强：正文§V-E已有50 English designer personas、语�
 I02定位查询（2026-10-14）：venue corpus nearest已运行，候选包括Consistent Zero-Shot Imitation with Contrastive Goal Inference、Diverse Policies Recovering via PMI、PCSP；最新arXiv检索发现ECLIPTICA/CITA（2601.06157）已有固定prompt下instruction-conditioned preference因果识别和KL信任域。后者仅完成摘要/HTML方法入口核验，尚未精读全实验/作者代码，不将其数值用于结论。Projection Heads（2605.17180）已读理论§5/实验§6，official OpenReview被challenge挡住；corpus标ICML2026，官方会场未独立核对。当前compression risk高，新颖性查询只输出定位，不自动关闭矿区。
 
 ## 2026-10-14精度审计补充
+新增[PERSONA组合控制](../papers/PERSONA_ALGEBRA_2026.md)、[NCP-Bench](../papers/NCP_BENCH_2026.md)、[CitySim](../papers/CITYSIM_2025.md)、[目标形成博士研究](../papers/INTERNAL_MONOLOGUE_2025.md)及[PACT未全文核验记录](../papers/PACT_UNVERIFIED_2026.md)。人格向量组合／动态适应、长期承诺、人物—需求—计划链均已有明确ownership。E32改写稳健性是正向候选证据，整套原型识别也能解释；E33只诊断单项作者利益编辑能否保留原生控制，不称首次人格组合或新训练法。
+
 已新增[定位卡](../papers/)：CIRL（ICML2026）覆盖goal推断的相对难度/partition，BC-PMI（ICLR2025）覆盖state-action中的style互信息与示范加权；DAIL（NeurIPS2025）覆盖语言+轨迹对比及distributional critic；PerMix-RLVR（2026预印本）覆盖persona鲁棒性/任务训练权衡；LIBERO-Para与GSR（2026预印本/作者会场声明）已覆盖等义指令对原生动作的影响和重新绑定修复。PPG（ICML2021）明确辅助表征学习加policy-KL保护；Holonomy/MultiWay已有坐标对齐/规范不变几何。各卡明示正文/附录/代码阅读范围，未全复现处保持未核对，不把邻居已有现象改名。
 
 E25–E28不能仅凭readout、重排敏感、body混杂或正交变换建立新的NPC方法。E29只为另一原生闭环准入；下一问题必须在目标/人物/真实社会动作的新因果位置上有实测，并排除普通强提示或原作者已有memory/commitment修复。venue nearest查询已补角色目标/承诺：ACL2026 Dialogue is the Plan、Dynamic Persona Coherence、EMNLP2025 Path Drift等，需要正文审计再决定实验，不由检索自动关线。
