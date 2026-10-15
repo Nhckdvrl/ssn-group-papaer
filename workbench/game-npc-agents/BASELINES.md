@@ -1,12 +1,12 @@
 # 各 Game NPC 子领域的基线/数据与本地资产地图（2026-10-14）
 
-本页替代旧“LIGHT为唯一首选”及后来“PCSP为唯一首选”。**选择substrate要由科学问题决定，而不是一个系统决定科研题目。** 当前仅核公开论文/README/指定源码、没有用户GPU、未宣称完整基线复现。
+本页初建于10月14日，保留跨领域资产地图。**选择substrate要由科学问题决定，而不是一个系统决定科研题目。** 已执行的LIGHT/其他基线与当前E63/E64见[最新报告](PROGRESS_REPORT_2026-10-15.md)、[日志](logs/2026-10-15.md)及实验卡；下表未执行的资产不能因并列而视为复现。
 
 | 科学分支 | 最合适的原生/邻接资产 | 真正可观察的单位 | 已核验与未通过的 gate |
 |---|---|---|---|
 | NPC 安全/泄密/角色攻击 | [Gigax](https://github.com/GigaxGames/gigax)、[Shiomi ProvSec](https://arxiv.org/html/2508.19288v1)、[LIGHT](https://github.com/facebookresearch/LIGHT)、[agent-sandbox](https://github.com/ccb/agent-sandbox) | 角色秘密/剧情许可、对话和引擎动作、消息来源 | Gigax有本地GGUF模型与NPC stepper；Shiomi只有单NPC30次单轮示范，不是强长期基准；LIGHT迁移有依赖债，sandbox不等于顶会方法 |
 | 动态人格/社会记忆 | LIGHT/Dragon、[PCSP research](https://github.com/yoosunghong/pcsp/tree/main/research)、[MineAmongUs](https://github.com/JunseoKim0103/Lies-We-Can-See) | 行动/关系/剧情状态随时间变更，角色真实动机 | PCSP独立行为probe已开源；MineAmongUs Docker+游戏日志开源，但8agent回合/默认API及Minecraft server成本未测 |
-| NPC经济及群体攻防 | [KDD2025 MMOAgent代码归档](https://doi.org/10.5281/zenodo.15526912)、[AI-Bazaar](https://github.com/sethkarten/AI-Bazaar)、[BAZAAR](https://github.com/lechmazur/bazaar) | 商品/金币/库存/生产/交易/声誉/价格/群体福利 | KDD项目论文有Zenodo链接**归档未下载**且原实验GPT-3.5/GPT-4；AI-Bazaar GitHub README明确支持Ollama/vLLM但没有实际跑；BAZAAR是非游戏市场bench，只有机制可迁移 |
+| NPC经济及群体攻防 | [KDD2025 MMOAgent代码归档](https://doi.org/10.5281/zenodo.15526912)、[AI-Bazaar](https://github.com/sethkarten/AI-Bazaar)、[BAZAAR](https://github.com/lechmazur/bazaar) | 商品/金币/库存/生产/交易/声誉/价格/群体福利 | KDD归档10月15日已下载124339 bytes，读背景/议价与执行代码；对象是玩家模拟，未本地运行；AI-Bazaar支持Ollama/vLLM但未跑；BAZAAR是非游戏市场bench |
 | NPC行为训练 | PCSP、[EA2026 paper](https://arxiv.org/html/2606.20210v1)、UBCL/MultiGAIL | 动作policy/设计控制/分角色行为 | PCSP开源可试；EA商用引擎资产未开放不能称可复现 |
 | NPC玩家伙伴社会互动 | [ccb sandbox](https://github.com/ccb/agent-sandbox)、LIGHT、Collab-Overcooked、KRAFTON架构 | 玩家指令、角色互动、合法世界行动 | ccb README给本地兼容endpoint (LLM_BASE_URL)，实际启用逻辑需检查；Collab旧Python/MPI，本地规则和vLLM可替换 |
 | NPC多模态/具身安全 | [Lies We Can See](https://github.com/JunseoKim0103/Lies-We-Can-See)、[ReactiveGWM v2](https://github.com/INV-WZQ/ReactiveGWM) | 实体视觉/非语言行动、社交欺骗、视频环境 | MineAmongUs公开Docker/日志/标注，标注用LLM judge；ReactiveGWM 2026-09-29 v2开放权重和代码，默认8 GPU/20k优化步与视频IO不适合无规划全量复训 |

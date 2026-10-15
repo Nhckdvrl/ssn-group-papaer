@@ -29,14 +29,22 @@ def main():
     ap.add_argument('--directories', type=Path, nargs='+', required=True)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--partial', action='store_true')
+    ap.add_argument('--prefix-directory', type=Path)
     a = ap.parse_args()
     manifests, rows, runtimes, calls, assigned = [], [], [], [], set()
-    for d in a.directories:
+    directories = ([a.prefix_directory] if a.prefix_directory else []) + a.directories
+    for d in directories:
         m = json.loads((d / 'manifest.json').read_text())
+        if d == a.prefix_directory:
+            checkpoint = json.loads((d/'interrupted_runtime.json').read_text())
+            assert hashlib.sha256((d/'episodes.jsonl').read_bytes()).hexdigest() == checkpoint['episodes_sha256']
+            m['case_ids'] = sorted({r['case_id'] for r in map(json.loads, (d/'episodes.jsonl').read_text().splitlines())})
         assert not assigned.intersection(m['case_ids']), 'overlapping shards'
         assigned.update(m['case_ids']); manifests.append(m)
         if (d / 'runtime.json').exists():
             runtimes.append(json.loads((d / 'runtime.json').read_text()))
+        elif d == a.prefix_directory:
+            runtimes.append(checkpoint)
         elif not a.partial:
             raise AssertionError(f'incomplete worker: {d}')
         for filename, target in [('episodes.jsonl', rows), ('model_calls.jsonl', calls)]:
@@ -50,7 +58,7 @@ def main():
     for m in manifests:
         for k in ['dataset_sha256', 'script_sha256', 'personas', 'rules', 'max_action_steps']:
             assert m[k] == ref[k], k
-        for k in ['model', 'seeds', 'dataset', 'shards']:
+        for k in ['model', 'seeds', 'dataset']:
             assert m['arguments'][k] == ref['arguments'][k], k
     cases = {r['case']['case_id']: r for r in map(json.loads, Path(ref['arguments']['dataset']).read_text().splitlines())}
     lookup = {(r['case_id'], r['seed'], r['persona'], r['rule'], r['mode']): r for r in rows}
@@ -70,6 +78,8 @@ def main():
               'complete_worlds': len(complete), 'paired_worlds': len(paired),
               'missing_keys': len(expected - set(lookup)), 'cells': {},
               'persona_contrasts': {}, 'rule_contrasts': {}, 'asset_contrasts': {},
+              'persona_by_asset_interactions': {}, 'conversation_stances': {},
+              'paired_persona_outcomes': {},
               'protocol_errors': sum(bool(r['protocol_error']) for r in rows),
               'engine_rejections': dict(Counter(h.get('error', 'unspecified') for r in rows
                   for h in r['history'] if not h['legal'])),
@@ -87,8 +97,17 @@ def main():
         for rule in rules:
             for p in personas:
                 report['cells'][f'{mode}/{rule}/{p}'] = cell(gs, mode, p, rule)
+                report['conversation_stances'][f'{mode}/{rule}/{p}'] = dict(Counter(
+                    (lookup[cid, s, p, rule, mode]['conversation'] or {}).get('stance', 'protocol_error')
+                    for cid in gs for s in seeds))
             report['persona_contrasts'][f'{mode}/{rule}'] = contrast(gs,
                 ('agreeable', rule, mode), ('firm', rule, mode))
+            def endpoint(row):
+                return ('both' if row['both_completed'] else 'original_goal_only' if row['goal_executed']
+                        else 'request_only' if row['request_given'] else 'neither')
+            report['paired_persona_outcomes'][f'{mode}/{rule}'] = dict(Counter(
+                endpoint(lookup[cid, s, 'firm', rule, mode])+' -> '+endpoint(lookup[cid, s, 'agreeable', rule, mode])
+                for cid in gs for s in seeds))
         for p in personas:
             for rule in rules:
                 if rule != 'none':
@@ -99,6 +118,12 @@ def main():
         for p in personas:
             report['asset_contrasts'][f'{p}/{rule}/goal-minus-other'] = contrast(paired,
                 (p, rule, 'goal_item'), (p, rule, 'other_item'))
+        report['persona_by_asset_interactions'][rule] = {f: estimate([
+            np.mean([data[cid, s, 'agreeable', rule, 'goal_item'][f]
+                     - data[cid, s, 'firm', rule, 'goal_item'][f]
+                     - data[cid, s, 'agreeable', rule, 'other_item'][f]
+                     + data[cid, s, 'firm', rule, 'other_item'][f] for s in seeds])
+            for cid in sorted(paired)]) for f in FIELDS}
     report['qualification_strata'] = {}
     for legal in [False, True]:
         gs = {cid for cid in complete if cases[cid]['requests']['goal_item']['original_goal_immediately_legal_after_give'] == legal}
@@ -111,7 +136,7 @@ def main():
     if not a.partial:
         assert len(calls) == sum(rt['calls'] for rt in runtimes)
     report['raw_sha256'] = {str(d): hashlib.sha256((d / 'episodes.jsonl').read_bytes()).hexdigest()
-                             for d in a.directories if (d / 'episodes.jsonl').exists()}
+                             for d in directories if (d / 'episodes.jsonl').exists()}
     report['scope'] = ['Native task event and requested item IDs are separate physical readouts.',
         'Other items need not be worthless for broader goals; this is not a randomized utility intervention.',
         'Give before goal and eight-step failure are not permanent utility destruction; recovery remains legal.',

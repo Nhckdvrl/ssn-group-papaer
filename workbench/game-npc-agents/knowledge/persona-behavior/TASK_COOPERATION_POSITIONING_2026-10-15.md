@@ -8,10 +8,12 @@
 | [Persona-Guided TOD](../papers/PERSONA_GUIDED_TASK_DIALOGUE_2026.md) | 人格适应与服务grounding取舍，明确schema/数据库约束 | NPC有自己的目标，任务与合作分别由实体事件读出 |
 | [Price of Agreement](../papers/PRICE_OF_AGREEMENT_2026.md) | 用户偏好/记忆注入造成任务准确性损失，过滤与训练对照 | 把请求的采纳落实到资产归属与后续合法恢复，不把给予当错误答案 |
 | [ACL2026 DebtBench](../papers/DEBTBENCH_ACL2026.md) | 协议达成高却过度让步；经济理性与体验分开 | 协议后真实行动、对手响应及合作后受损的路径，需要实测而非换场景 |
+| [EMNLP2026 MASCOT](../papers/MASCOT_EMNLP2026.md) | 两级persona对齐/Director训练与社会贡献，含独立人评 | 实体任务与私人利益不由对话贡献分数替代；不照搬两级训练 |
+| [SidConArena](../papers/SIDCONARENA_2026.md) / [KDD2025 MMOAgent](../papers/MMOAGENT_KDD2025.md) | 真实多步经济、礼貌与谈判能力差、画像/劳动成本与交易制度 | NPC私有作者目标与实际履约路径；价格表/目标事件不能自动替代全部效用 |
 | CT-Bench / Dragon / LIGHT | 长期资源承诺、策略互动、以对话影响真实动作 | 不能声称首次多步承诺；聚焦哪些可操纵条件预测保任务的合作 |
 
 **Compression risk：** “人设—效用冲突”“友善导致让步”“加目标优先提示改善”各自都容易压缩成已有结论。E63普通规则是竞争解释控制；若它解释数据，就如实接受。E64仅9独立图的发现性pilot，不能用调用数替代独立情境。
 
-**查询记录：** `python3 tools/venue_corpus/query.py nearest 'NPC personality social compliance instrumental goals costly resource negotiation task preservation'`；命中包括PRISMA、冲突对话对齐、FAIRGAMER、Richelieu等，词面分数不是科学判决。最新主源检索另找到EMNLP2026 MASCOT与ACL2026 DebtBench；MASCOT仅核主源论文/仓库入口，正文尚未精读，不将其摘要当完整审计。
+**查询记录：** `python3 tools/venue_corpus/query.py nearest 'NPC personality social compliance instrumental goals costly resource negotiation task preservation'`；命中包括PRISMA、冲突对话对齐、FAIRGAMER、Richelieu等，词面分数不是科学判决。最新主源检索另找到EMNLP2026 MASCOT与ACL2026 DebtBench；实际阅读正文/关键附录范围在各论文卡逐项列出，代码阅读与训练复现不混写。
 
 **正在检验：** E63同人物/请求者，原目标资产与另一真实资产，none/明确任务优先/资产保护，三模型三seed；E64原生互持物品、私有目标、真实交换/偷取/攻击。得到实际成功失败后才收敛机制；不从attention权重或口头理由直接推断因果回路。

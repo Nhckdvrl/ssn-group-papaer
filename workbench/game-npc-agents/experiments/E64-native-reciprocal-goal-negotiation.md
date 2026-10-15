@@ -27,3 +27,11 @@
 单卡独立模型，两个本地worker预计0.5–2GPUh合计，含32turn/载入；当前全部项目GPU≤8，0API/0训练/0新标签/0patch。根据成功、失败和代价轨迹推进解释与下一自然任务，不把有条件合作或给出资产预定为唯一正确行为。
 
 27B首图profile完成12episode/300调用，推理437.53s+load64.56s；5个错误均为512 token耗尽且只在auxiliary reason字段截尾，action/utterance已经完整。原profile全部保留，不能当角色失效或任务损失。本地主运行前只删除执行器不需要的reason输出字段，action与utterance、角色/goal/规则/菜单/seed/512预算均保留，在同1图以v2复核。动作仍完全由LLM选，无脚本填字段/替代/云fallback。新schema会改变prompt，v1/v2不作机制效应对比；主表全条件统一v2。first case效应不作总体推断。
+
+### 来源敏感性检查（CPU前登记，不改变上述9图模型cohort）
+
+get/steal互持条件可能使源样本偏向敌对获取，不能代表所有作者交易。补查原档案中两角色各自goal为Give给对方的原生任务对：同图、不同物品、两次合法Give均确实执行各自作者goal，最小pair SHA/图，全部数量和零结果都保留。这里只检查源任务结构、物理动作与覆盖，不新增模型调用或把“原goal要求赠予”当作有代价谈判；供判断9图结论能否外推。原9图/两Qwen/三seed/全部条件不替换、不扩展后混池。CPU≤0.25h，无GPU/API。
+
+CPU检查得到39对/33独立源图、66次原goal Give均真实执行通过；另365份Give目标当前不合法、1份actor歧义完整计数。这里说明作者世界存在更多相互赠予任务，不证明这些就是自利交易；与9图get/steal互持样本不合并。raw `runs/e64_bilateral_give_source_qualification/`，模型调用0。
+
+32B v2首图12episode/387calls完成，0JSON错误、17次native随机失败保留；196.81s推理+72.95s载入。已按原冻结设置启动全部9图主运行；27B v2 profile仍在运行。无新语义标签/patch/训练。

@@ -26,3 +26,15 @@ CPU200图/100非目标资产配对全部完成；其他资产交付后原goal100
 主读数：目标资产是否在原goal实际执行前Give请求者、8步内原goal事件是否实际执行、请求实际Give是否完成、非目标条件双方是否完成；另报当前目标状态/恢复/失败/未裁决。逐帧flag不由模型自述决定。三seed6301/6302/6303，对每模型固定全部200 goal-item+100 other-item ×两P×三rule，共5400短episode；先1图完整profile读实测cost，后独立graph shard并行，最多8卡，不以profile effect决定选样或seed。
 
 单图32B profile完成36 episode/294 calls，推理128.01s+load39.35s，0JSON错误；原profile输出保留。全cohort前将终止规则简化为：goal-item条件原任务实际执行即停止（主判定是原任务前交付）；若先交目标资产则继续至原任务恢复或8步。other-item条件继续至两个事件都完成或8步，避免把“先做任务再帮忙”误判为不合作。所求其他物品已消费但原任务未完成时仍继续，才能正确测原任务。这是依据任务判定与cost的运行前修订，未按profile效应筛场景/seed；原36条不混进主表。核心条件、primary pre-goal-transfer读数不变。依据profile保守预计三模型全部≤15GPUh、实际计时覆盖所有load；先两Qwen与独立Gemma，独立shard不做跨节点同步。
+
+### POST-HOC分析登记：保护任务却不实际使用资产
+
+模型主运行继续固定，不据中间结果停/换样本。Gemma首97完整图中asset_protection两P任务完成均约51%，低于none；检查按case_id排序的全部firm保护损失对，前四不同源图包含wear hammer、give trident、give worm、eat bread。部分更新明确列出正确原goal，却在实际执行中连续emote，不只是对目标的遗忘。
+
+为区分“更新没有保留原goal”与“保留了可执行计划却未执行”，补做纯CPU读数：用原native parser在初始快照解析每个priority action，与原goal canonical event/请求item+recipient严格匹配；并按所列顺序真实回放到原引擎，记录序列中非法或随机失败、原goal是否实际完成。全部记录/错误保留，按原world/seed聚类，source goal verb分层明确标为POST-HOC。它不读取理由措辞/标签，不用API、不改变实际轨迹或主读数，不由“emote未动”直接宣称能力缺陷。若普通执行范围/明确任务指令已解释，就接受该解释，不转入无假说白盒网格。
+
+### 27B执行排程调整（不增加条件或seed）
+
+27B单worker已超过1小时、完成41/200世界，成为全队列瓶颈。使用现有空闲卡并行余下独立世界：只在完整原group全部写盘后记录checkpoint并停止原worker；完整前缀逐key保留，未完成世界按原8图group分到3个独立单卡worker。复用同一未改动的`native_dependency_roles.run_group`、原始group成员/顺序、sampling seed、规则、模型revision、全部读数；没有新增实验格/筛seed。原前缀所有模型调用和中断成本计入，包括尚未生成实体episode的调用。最终报告要求前缀+余下shard全200图/5400key完整且不重复；运行分组/不同GPU可影响数值采样，全部来源与hash公开，不称bitwise复现。CPU partition先检查，无需新环境；最多8卡。
+
+实际checkpoint为57完整世界/1494episode/8034calls，原进程总用时4663s（含导入/载入/未成episode调用，秒级测量裕量）。主policy SHA未改；剩余48/48/47世界已在fvcrc21 GPU2、fvcrc20 GPU2/3启动。两32B/Gemma/E64两Qwen同时保留，总8卡。prefix三条JSON协议错误照常入主表；无按结果修复或补抽样。
