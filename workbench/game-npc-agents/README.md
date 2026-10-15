@@ -2,9 +2,11 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E70–E73全部完成，暂缓论文正文。** 最新入口为[执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；此前见[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)、[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E74进行中，E70–E73全部完成，暂缓论文正文。** 最新入口为[执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；此前见[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)、[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
+
+- **E74进行中：** 全117作者Give图、两人物三seed两模型，独立物理后果预测＋自产预测/原生真值同格式替换后实际执行；不将预测当内部信念。819原生反事实/1404输入CPU核对通过，固定首世界成本profile先行。定位见[当日近邻校准](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)，[实验卡](experiments/E74-physical-consequence-prediction-and-choice.md)。
 
 - **E70–E73完成：** 同117原作者Give图、两模型/三seed，23868分支/125126本地调用/2解析失败（保留）/12.847GPUh，峰值8卡、0API。32B冲突下人物原任务效应ready −6.84pp、equipped +5.41pp；普通机制事实恢复大部分交付，单纯priority无同等恢复。E71无人索要亦有前提困难，请求方向可促进/妨碍原任务。
 - **固定对话后的信息控制：** E72对称扩展A/B命令候选，E73保留原生菜单、预先统一给真实引擎操作事实，均大幅恢复。E73冲突下原任务F/A：Gemma56.4/70.7%、32B77.8/80.1%；人物差仍有联合去向差异，不能直接推成私人效用权重。C06限定L2，I04 PROMISING；所有模型job完成，无新增队列。见[报告与复算入口](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。

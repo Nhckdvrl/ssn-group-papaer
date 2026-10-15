@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "worlds": 117,
+  "native_sequences": 819,
+  "paired_input_checks": 1404,
+  "source_sha256": "314e1e1d3ed612a366834d7ce4a0e4718a8c99f9d87fa759e5ffee84f0164801",
+  "model_calls": 0,
+  "raw_witnesses": "/home/xiang/.cache/game-npc-research/runs/e74_native_counterfactuals.json",
+  "raw_sha256": "b95e6f24d32db4f3b5125788a447f62054e04def41f5e0d1c083cd679bd97b68",
+  "trial_truth_patterns": {
+    "initial": [
+      "{\"authored_give_executed\": false, \"equipped\": true, \"owner\": \"self\"}"
+    ],
+    "remove": [
+      "{\"authored_give_executed\": false, \"equipped\": false, \"owner\": \"self\"}"
+    ],
+    "give_A": [
+      "{\"authored_give_executed\": false, \"equipped\": true, \"owner\": \"self\"}"
+    ],
+    "remove_give_A": [
+      "{\"authored_give_executed\": true, \"equipped\": false, \"owner\": \"authored_recipient\"}"
+    ],
+    "remove_give_B": [
+      "{\"authored_give_executed\": false, \"equipped\": false, \"owner\": \"other_peer\"}"
+    ],
+    "examine": [
+      "{\"authored_give_executed\": false, \"equipped\": true, \"owner\": \"self\"}"
+    ],
+    "remove_drop": [
+      "{\"authored_give_executed\": false, \"equipped\": false, \"owner\": \"room\"}"
+    ]
+  }
+}

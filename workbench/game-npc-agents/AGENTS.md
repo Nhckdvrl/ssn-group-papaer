@@ -8,6 +8,8 @@
 
 ## 每次接手优先阅读
 
+**2026-10-16用户要求继续高水平研究：** E74已先登记，基于全117原作者世界，测物理后果预测及同表格原生真值替换对真实选择的作用。先看[定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)、[E74卡](experiments/E74-physical-consequence-prediction-and-choice.md)和当日日志；SimpleToM/Principled Personas/TriEx等正文与关键附录已核，不把已有的知识—行为差或数值信念替换技术当新贡献。0API/训练/patch，≤8卡，正文仍暂缓。
+
 **最新完成（2026-10-15）：** 先读[E70–E73完整报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。117源作者Give图、23868分支/125126新本地调用/2解析失败保留/12.847GPUh；峰值8卡，0API/训练/patch。相同任务下32B人物效应随ready/equipped换向；固定本人对话，扩展候选或预先给真实引擎操作信息均恢复大量交付，E73后仍需结合向A/向B/未交的联合分布解释人物作用。C06限定L2，I04 PROMISING、全局PROPOSED；正文暂缓。全部worker已完成，无新增队列，不自动扫提示、训练或恢复旧线。下列“最新”段落按历史阅读。
 
 **最新工作（2026-10-15）：** [E69](experiments/E69-matched-task-and-motivation-window.md)2760主分支＋144适应性控制全部完成，先读[同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)。112图人物×任务交互成立但完整正负反转未跨模型成立，职责Give约98%–99%且接收者保留；3世界补窗仍无双事件，机制事实在32B恢复5/36双事件、Gemma0/36但17条卸下。27519新调用/2.828GPUh/0API，job和watcher均退出。C04/C05仍限定L2，I04 PROMISING；正文仍暂缓，不因外部审计自动定词汇神经机制或封账。原始图、失败与所有seed保留。
