@@ -37,7 +37,7 @@ for model,sources in [('gemma',['e63_gemma_dependency']),('32b',['e63_32b_depend
  replay=list(map(json.loads,(out/'episodes.jsonl').read_text().splitlines()))[-len(episodes):]
  assert len(replay)==len(episodes)==12
  for a,b in zip(episodes,replay):assert [{k:v for k,v in h.items() if k!='messages'} for h in a['history']]==[{k:v for k,v in h.items() if k!='messages'} for h in b['history']] and a['goal_executed']==b['goal_executed'] and a['request_given']==b['request_given']
- report.append({'model':model,'episodes':len(replay),'prompt_and_schema_matches':client.count,'all_physical_history_equal':True,'native_view_order_differences':client.view_order_differences,'scope':'Historical look/inventory ordering varies with Python process; schema/system/task/history/plan/memory equal. New paired conditions use fixed PYTHONHASHSEED=0 and fresh diagonals.'})
+ report.append({'model':model,'episodes':len(replay),'fixed_fields_and_schema_matches':client.count,'all_physical_history_equal':True,'native_view_order_differences':client.view_order_differences,'scope':'Historical look/inventory ordering varies with Python process; schema/system/task/history/plan/memory equal. New paired conditions use fixed PYTHONHASHSEED=0 and fresh diagonals.'})
 # Actual native canonical block, error and one truthful feedback addition.
 g=m[0].from_json(case['quest']['graph']);a=g.get_node(case['actor_id']);e=next(e for e in m[1].BlockEvent.get_valid_actions(g,a) if e.target_nodes[0].node_id==case['requester_id']);command=e.to_canonical_form()
 first=execute(ViewerHost(g),a,command,*m[1:]);second=execute(ViewerHost(g),a,command,*m[1:]);assert first['legal'] and first['executed'] and not second['legal']

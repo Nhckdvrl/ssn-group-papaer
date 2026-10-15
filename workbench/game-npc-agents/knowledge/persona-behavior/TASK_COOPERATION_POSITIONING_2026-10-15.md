@@ -33,3 +33,5 @@ E63明确任务优先在32B恢复原任务，同时保留另一物品合作的�
 直接重读NegaAlign §3.1 Eq.(1)和§4.1：其成功本就定义为任务完成与约束满足同时成立。因此审计中“该类工作只研究违反禁令”过于狭窄，不能靠守禁令却任务失败宣称独占新问题。AgentIF §3.4也先判断条件触发，已有复杂条件作用的评价。源链接沿用上表论文卡，未新增复现。
 
 本轮研究动作是固定原生世界、全链一致persona及具体上游输出，交叉上游/执行规则，分别测首次防卫、重复拒绝和实体任务；再让预先写定的方向预测109个本地未探索世界。它检验可操纵的阶段条件和行为路径，不预设词汇启动或威胁注意力为真。即使asset→generic恢复成功，也只识别所测试规则包的执行因果效应；词频、长度、逻辑范围与社会焦点尚不是被各自随机化的因素。是否继续拆词须由实际成功/失败模式提供问题，而不是为了封堵所有假想质疑新增网格。
+
+本轮venue-corpus查询（运行中、主张升级前）：`nearest "game NPC personality task preservation rule framing action execution plan causal intervention cooperation"`。主要返回CaPo、Persona Dynamics、FAIRGAMER、Tracing the Persona Circuit和ThinkAct；作为已有定位的增量检查，不以词面rank作选题判决。NegaAlign与AgentIF正文再次核对，任务完成与约束满足的双指标及条件触发均已有直接先例。

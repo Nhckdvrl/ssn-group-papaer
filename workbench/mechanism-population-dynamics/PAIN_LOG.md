@@ -38,6 +38,7 @@
 - **含义：** weight-seed 变体等价于“同初始化、同顺序”的重跑（只有 GPU 非确定性），不能用来分离“初始化 vs 顺序”。E44(b) 的原分组标签作废，按核查后的真实关系重新标注（见 E44 卡）。
 - **教训：** 公开模型套件的“初始化”必须用训练早期的 checkpoint 核对，而不只看发布的 step0 文件。
 - **DataDecide 的同样核查（`scripts/audit_init_start.py`，2026-10-03 已做）：** 1B 的 c4 / dolma1_7 / dclm-baseline × 3 个 seed 的 step 2500（最早的非零 checkpoint）权重，只与**自己 seed** 的 step0 相关（0.226–0.235），与其他两个 seed 的 step0 相关为 0.000 ± 0.001 → DataDecide 的 run 确实从发布的、跨配方共用的 step0 开始训练，C05 的前提在训练起点层面成立。
+- **2026-10-15 复核（E89 再次撞上，未先读本条）：** weight-seed2 / 3 的 step1 与标准版 step0 相关同为 1.0、与各自发布的 step0 为 0.0001 / −0.0005；data-seed2 的 step1 与标准版 step0 为 1.0；seed1 为 −0.0003。weight-seed1 与标准版的权重相关在 step512 仍 0.999、step1000 0.987、step4000 0.69、step16000 0.37，与 data-seed1 的分叉速度相同。E89 中 weight-seed 一律按“标准版的重跑”标注。
 - **对外：** 论文附录报告此发现（对 PolyPythias 使用者有用）；不影响 E44(a)（标准版与去重版的 step0 相同，且两者都是 Pythia 原版训练）。
 
 ## P10 在有运行中任务写入的工作区里做 git rebase / stash，会删掉文件（2026-10-03，E48）

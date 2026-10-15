@@ -2,6 +2,7 @@
 """E67/E68 explanatory native plan replay and paired outcome paths, all episodes."""
 import argparse
 from collections import Counter, defaultdict
+import hashlib
 import json
 from pathlib import Path
 import numpy as np
@@ -63,10 +64,14 @@ def main():
                     'request':sources[cid]['requests'][mode],'plan':r['update'],
                     'before':[{'command':h['command'],'legal':h['legal'],'goal':h['goal_executed_after'],'error':h.get('error')} for h in r['history']],
                     'after':[{'command':h['command'],'legal':h['legal'],'goal':h['goal_executed_after'],'error':h.get('error')} for h in other['history']]})
+    illustrated=a.raw_out/'illustrations.json'
+    illustrated.write_text(json.dumps(dict(examples),ensure_ascii=False,indent=2)+'\n')
     result={'analysis':'EXPLANATORY: source-goal command replay, not a correctness label on intentions',
             'episodes':len(rows),'unique_upstream_plans':len(cache),'cells':cells,
             'paired_transitions':{k:dict(v) for k,v in transition_counts.items()},
-            'illustrations':dict(examples),'model_calls':0,'gpu_hours':0}
+            'illustrations_asset':str(illustrated),
+            'illustrations_sha256':hashlib.sha256(illustrated.read_bytes()).hexdigest(),
+            'model_calls':0,'gpu_hours':0}
     a.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:result[k] for k in ['episodes','unique_upstream_plans','model_calls']}))
 

@@ -312,10 +312,36 @@ def load(family, repo, rev):
         import dd_common as dd
         return dd.load(repo, rev, dtype=torch.float32, attn="eager", device=os.environ.get("E89_DEVICE", "cuda"))
     kw = {} if rev == "main" else {"revision": rev}
-    tok = AutoTokenizer.from_pretrained(repo, cache_dir=str(mc.HF_CACHE), **kw)
-    model = AutoModelForCausalLM.from_pretrained(repo, cache_dir=str(mc.HF_CACHE), torch_dtype=torch.float32,
+    if rev != "main":
+        # Pythia step branches can carry main's safetensors next to the real step weights (pytorch_model.bin)
+        from huggingface_hub import list_repo_files
+        if "pytorch_model.bin" in list_repo_files(repo, revision=rev):
+            kw["use_safetensors"] = False
+    cache = os.environ.get("E89_MODEL_CACHE", str(mc.HF_CACHE))  # per-job local cache for one-off checkpoints
+    tok = AutoTokenizer.from_pretrained(repo, cache_dir=cache, **{k: v for k, v in kw.items() if k == "revision"})
+    model = AutoModelForCausalLM.from_pretrained(repo, cache_dir=cache, torch_dtype=torch.float32,
                                                  attn_implementation="eager", **kw).cuda().eval()
     return model, tok
+
+
+@torch.no_grad()
+def lm_loss(model, tok, n=48, T=256):
+    """Mean next-token NLL on fixed pile-10k documents (the same texts for every model)."""
+    from datasets import load_dataset
+    ds = load_dataset("NeelNanda/pile-10k", split="train", cache_dir=str(mc.HF_CACHE))
+    seqs = []
+    for t in ds["text"][1000:3000]:
+        ids = tok(t, add_special_tokens=False)["input_ids"][:T]
+        if len(ids) == T:
+            seqs.append(ids)
+        if len(seqs) == n:
+            break
+    x = torch.tensor(seqs, device=model.device)
+    tot = 0.0
+    for i in range(0, n, 8):
+        lg = model(x[i:i + 8]).logits[:, :-1].float()
+        tot += torch.nn.functional.cross_entropy(lg.reshape(-1, lg.shape[-1]), x[i:i + 8, 1:].reshape(-1), reduction="sum").item()
+    return tot / (n * (T - 1))
 
 
 def main():
@@ -361,6 +387,7 @@ def main():
             h.remove()
         roles = generic_roles(model, tok)
         res.update({f"role__{k}": v for k, v in roles.items()})
+        summ["lm_loss"] = lm_loss(model, tok)
         OUT.mkdir(parents=True, exist_ok=True)
         np.savez_compressed(OUT / f"{summ['tag']}.npz", **res)
     summ["seconds"] = time.time() - t0
