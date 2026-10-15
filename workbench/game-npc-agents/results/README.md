@@ -1,6 +1,6 @@
 # 结果清单
 
-当前入口为[E63/E64复审报告](../PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)与文末最新结果。E50–62为已完成基线和诊断，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+当前入口为[E69同图任务报告](../PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)与文末最新结果。E50–62为已完成基线和诊断，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
@@ -126,3 +126,8 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 - `E68_*_block_targets_POST_HOC.json`：阻挡对象身份；[32B原子目标/作者动机样例](E68_32b_negative_transfer_examples_POST_HOC.json)明确POST-HOC，不改主读数。
 - [独立配对效应图](E67_E68_figures/E68_reserve_paired_effects.png)、[全109图](E67_E68_figures/E68_reserve_behavior.png)、[41装备图](E67_E68_figures/E68_reserve_equip_behavior.png)，另有PDF/SVG；[全成本](E67_E68_ROUND_COSTS_2026-10-15.json)为6.556GPUh/51631调用，含中断。
 - raw：`/home/xiang/.cache/game-npc-research/runs/e67_{gemma,32b}_cross_s{0,1}`、`e68_{gemma,32b}_reserve_s{0,1}`与`e68_native_reserve/snapshots.jsonl`。统计入口`native_rule_cross_report.py`、预测整理`native_reserve_predictions.py`；原始大文件不入Git。
+
+
+## E69完整收尾
+112同世界任务配对/3个源案例，主分支2760、适应性144，27519新本地调用/2.828GPUh/0API。主结果[E69 Gemma](E69_gemma_matched.json)、[32B](E69_32b_matched.json)，[科学图](E69_figures/E69_matched_task_effects.png)。控制[Gemma](E69_gemma_completion_controls.json)/[32B](E69_32b_completion_controls.json)保留全部恢复分支和动作改变；三世界不当总体样本。
+[完整成本](E69_resource_account.json)、[同源子集POST-HOC](E69_prior_subset_POST_HOC.json)、[顺序物理见证POST-HOC](E69_sequential_native_witness_POST_HOC.json)、[Gemma结构化阶段POST-HOC](E69_gemma_structured_stages_POST_HOC.json)/[32B](E69_32b_structured_stages_POST_HOC.json)。初始资格/hash见E69_native_task_qualification.json；原始输入输出在cache/runs/e69_*，不入Git。

@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**最新工作（2026-10-15）：** 用户要求参考新审计、自主判断并继续。已登记[E69](experiments/E69-matched-task-and-motivation-window.md)，CPU资格112个同图任务配对＋3个源事件窗口案例，Gemma单世界12条profile与1344输入检查通过，本地四卡固定队列运行。先读[新审计判断](knowledge/persona-behavior/TASK_MOTIVATION_AUDIT_2026-10-15.md)。不将原goal成功后的右删失当动机受压，不将goal类型交互当词汇回路；正文仍暂缓。原E67/E68完整结果保留。
+**最新工作（2026-10-15）：** [E69](experiments/E69-matched-task-and-motivation-window.md)2760主分支＋144适应性控制全部完成，先读[同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)。112图人物×任务交互成立但完整正负反转未跨模型成立，职责Give约98%–99%且接收者保留；3世界补窗仍无双事件，机制事实在32B恢复5/36双事件、Gemma0/36但17条卸下。27519新调用/2.828GPUh/0API，job和watcher均退出。C04/C05仍限定L2，I04 PROMISING；正文仍暂缓，不因外部审计自动定词汇神经机制或封账。原始图、失败与所有seed保留。
 
 **最新用户决定与完成状态（2026-10-15）：** 授权的[E67真实执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立世界预测](experiments/E68-clean-reserve-rule-predictions.md)已全部完成，先读[本轮完整报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)。15108分支/51631本地调用/6.556GPUh，0API，worker均退出。执行规则恢复跨两模型、独立41装备图复现；60其他物品图保留人物合作差，但Gemma任务水平约81%–82%。统一三向分流未成立，32B纯否定未降低请求Give。C04/C05 L2、I04 PROMISING、全局PROPOSED；论文仍暂缓，不自动追加措辞网格或训练。
 

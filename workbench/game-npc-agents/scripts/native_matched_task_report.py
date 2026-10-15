@@ -23,6 +23,13 @@ def metrics(r,source):
     final_goal=(final['container']==r['original_recipient'] if r['goal_kind']=='give' else
                 final['container']==actor and final['equipped']==r['goal_kind'])
     first=history[0] if history else None
+    kind=r['goal_kind']
+    strict_goal=any((kind=='give' and h['event_type']=='GiveObjectEvent'
+                     and h['before'][item]['container']==h['actor']
+                     and h['after'][item]['container']==r['original_recipient']) or
+                    (kind in ['wear','wield'] and h['event_type']=={'wear':'WearEvent','wield':'WieldEvent'}[kind]
+                     and h['before'][item]['equipped']!=kind and h['after'][item]['equipped']==kind)
+                    for h in valid)
     v={'goal':float(r['goal_executed']),'request':float(r['request_given']),
        'both':float(r['both_completed']),
        'first_step_goal':float(bool(first in valid and first and first['matches_source_goal'])),
@@ -38,7 +45,9 @@ def metrics(r,source):
        'protocol_error':float(bool(r['protocol_error'])),
        'native_rejections':float(sum(not h['legal'] for h in history)),
        'repeat_block_errors':float(sum('already blocking' in h.get('error','').lower() for h in history)),
-       'steps':float(len(history))}
+       'steps':float(len(history)),
+       'strict_current_item_goal_POST_HOC':float(strict_goal),
+       'strict_current_item_both_POST_HOC':float(bool(strict_goal and requests))}
     if r['panel']=='matched':
         c=source['case'];kind=c['goal_kind']
         authored=[h for h in valid if

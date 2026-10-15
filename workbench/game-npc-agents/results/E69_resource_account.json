@@ -1,0 +1,117 @@
+{
+  "status": "COMPLETE",
+  "experiment": "E69",
+  "jobs": [
+    {
+      "kind": "profile",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_profile",
+      "gpu": 0,
+      "pid": 172593,
+      "episodes": 12,
+      "new_calls": 120,
+      "parse_errors": 0,
+      "prompt_tokens": 161823,
+      "completion_tokens": 8478,
+      "runtime_gpu_hours": 0.022393305881899625,
+      "observed_launch_through_last_log_gpu_hours": 0.06254919177956052
+    },
+    {
+      "kind": "main",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_matched_s0",
+      "gpu": 0,
+      "pid": 173838,
+      "episodes": 696,
+      "new_calls": 6688,
+      "parse_errors": 0,
+      "prompt_tokens": 7997021,
+      "completion_tokens": 442164,
+      "runtime_gpu_hours": 0.41992488157718777,
+      "observed_launch_through_last_log_gpu_hours": 0.4400239439143075
+    },
+    {
+      "kind": "main",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_matched_s1",
+      "gpu": 1,
+      "pid": 173839,
+      "episodes": 684,
+      "new_calls": 6738,
+      "parse_errors": 0,
+      "prompt_tokens": 8297638,
+      "completion_tokens": 462914,
+      "runtime_gpu_hours": 0.43753572169975896,
+      "observed_launch_through_last_log_gpu_hours": 0.45762524359756046
+    },
+    {
+      "kind": "main",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_matched_s0",
+      "gpu": 2,
+      "pid": 173840,
+      "episodes": 696,
+      "new_calls": 6799,
+      "parse_errors": 0,
+      "prompt_tokens": 8740604,
+      "completion_tokens": 463061,
+      "runtime_gpu_hours": 0.846379905953072,
+      "observed_launch_through_last_log_gpu_hours": 0.8671240741676755
+    },
+    {
+      "kind": "main",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_matched_s1",
+      "gpu": 3,
+      "pid": 173841,
+      "episodes": 684,
+      "new_calls": 6748,
+      "parse_errors": 0,
+      "prompt_tokens": 8905736,
+      "completion_tokens": 457529,
+      "runtime_gpu_hours": 0.8648802447533106,
+      "observed_launch_through_last_log_gpu_hours": 0.884946631524298
+    },
+    {
+      "kind": "adaptive",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_completion_controls",
+      "gpu": 0,
+      "pid": 190775,
+      "episodes": 72,
+      "new_calls": 212,
+      "parse_errors": 0,
+      "prompt_tokens": 209251,
+      "completion_tokens": 15432,
+      "runtime_gpu_hours": 0.033822538784427,
+      "observed_launch_through_last_log_gpu_hours": 0.05756658328904046
+    },
+    {
+      "kind": "adaptive",
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_completion_controls",
+      "gpu": 2,
+      "pid": 207651,
+      "episodes": 72,
+      "new_calls": 214,
+      "parse_errors": 0,
+      "prompt_tokens": 221785,
+      "completion_tokens": 14890,
+      "runtime_gpu_hours": 0.043137215693584745,
+      "observed_launch_through_last_log_gpu_hours": 0.05820246073934767
+    }
+  ],
+  "totals": {
+    "new_calls": 27519,
+    "parse_errors": 0,
+    "prompt_tokens": 34533858,
+    "completion_tokens": 1864468,
+    "runtime_gpu_hours": 2.6680738143432405,
+    "observed_launch_through_last_log_gpu_hours": 2.82803812901179
+  },
+  "main_branches": 2760,
+  "adaptive_branches": 144,
+  "profile_branches": 12,
+  "profile_reused_in_main": true,
+  "peak_authorized_gpus_used": 4,
+  "new_cloud_calls": 0,
+  "scope": [
+    "Runtime includes model load and recorded inference, but excludes initial Python/import startup.",
+    "Observed launch-to-last-log time additionally includes startup and logged engine teardown; one GPU per job.",
+    "Profile calls count once; cached E68/profile outputs are not new inference calls.",
+    "Known-world branches and three seeds do not increase the number of independent source worlds."
+  ]
+}

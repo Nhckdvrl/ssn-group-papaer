@@ -1,0 +1,95 @@
+{
+  "method": "Independent readback of event type and exact source-item before/after native state, not canonical command equality.",
+  "episodes": 2904,
+  "source_item_goal_flag_disagreements": [
+    {
+      "model": "gemma",
+      "folder": "e69_gemma_matched_s0",
+      "case_id": "7c1c6aef854528db",
+      "seed": 6901,
+      "persona": "agreeable",
+      "task": "equip",
+      "rule": "generic_priority",
+      "flag": true,
+      "state_verified": false
+    },
+    {
+      "model": "gemma",
+      "folder": "e69_gemma_matched_s0",
+      "case_id": "7c1c6aef854528db",
+      "seed": 6902,
+      "persona": "firm",
+      "task": "equip",
+      "rule": "generic_priority",
+      "flag": true,
+      "state_verified": false
+    },
+    {
+      "model": "gemma",
+      "folder": "e69_gemma_matched_s0",
+      "case_id": "7c1c6aef854528db",
+      "seed": 6903,
+      "persona": "agreeable",
+      "task": "equip",
+      "rule": "generic_priority",
+      "flag": true,
+      "state_verified": false
+    },
+    {
+      "model": "gemma",
+      "folder": "e69_gemma_matched_s0",
+      "case_id": "c0cd4835a3af790e",
+      "seed": 6902,
+      "persona": "agreeable",
+      "task": "equip",
+      "rule": "generic_priority",
+      "flag": true,
+      "state_verified": false
+    },
+    {
+      "model": "32b",
+      "folder": "e69_32b_matched_s1",
+      "case_id": "31481f1223db6504",
+      "seed": 6902,
+      "persona": "firm",
+      "task": "equip",
+      "rule": "generic_priority",
+      "flag": true,
+      "state_verified": false
+    }
+  ],
+  "checks": [
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_matched_s0",
+      "rows": 696,
+      "sha256": "f8f6397d7b5e0ade5343ff60643a14d7db941f5039aa85c4348656e902926cd5"
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_matched_s1",
+      "rows": 684,
+      "sha256": "430dd12d0f1dc3e86b15f1ce529cbff96b78d689a703427d83bab3f471ed4427"
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_gemma_completion_controls",
+      "rows": 72,
+      "sha256": "26d524d34833e471da9aefd8500c705ba3121377dc9f7a916e8778dc649977c4"
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_matched_s0",
+      "rows": 696,
+      "sha256": "9ea326273caee50de1f6cc9612199548b29269bb4215daaff6ed7963d8e784bc"
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_matched_s1",
+      "rows": 684,
+      "sha256": "c1720e6eecc8c1bdc711be50f074b605bb5797eacecc81a0c82e7326805fd679"
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e69_32b_completion_controls",
+      "rows": 72,
+      "sha256": "ffb1668debe36cc47b9069e11c12a8614ab30c1305a50715189b7b5e89af3469"
+    }
+  ],
+  "new_model_calls": 0,
+  "interpretation": "Five text-resolved goal successes used alternative same-name items after the initially bound item had been transferred. Preserve original goal readout and add exact-item sensitivity; these are not parser/engine failures."
+}

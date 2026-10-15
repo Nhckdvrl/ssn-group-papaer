@@ -27,7 +27,7 @@ def main():
             ax.set_yticks([2,1,0],['A−F, Equip task','A−F, Duty-Give task','Difference of effects'])
             ax.grid(axis='x',alpha=.2);ax.set_title(name+'\n'+title)
             ax.set_xlabel('Paired difference (percentage points)')
-    fig.supxlabel('112 same-world task pairs; three seeds per persona; pointwise graph-cluster 95% intervals')
+    fig.supxlabel('A = Agreeable; F = Firm. 112 same-world task pairs; three seeds per persona.\nPointwise graph-cluster 95% intervals; task events use registered native-command resolution.', fontsize=10)
     for ext in ['png','pdf','svg']:
         path=a.out/f'E69_matched_task_effects.{ext}';fig.savefig(path,dpi=180)
         if ext=='svg':path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')

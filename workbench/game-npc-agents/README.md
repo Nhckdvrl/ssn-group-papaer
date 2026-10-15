@@ -2,11 +2,11 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E69同图任务与共同观察窗口进行中，暂缓论文正文。** 新审计判断见[证据与动作](knowledge/persona-behavior/TASK_MOTIVATION_AUDIT_2026-10-15.md)；已完成结果入口为[E67/E68完整报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)，此前见[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E69全部完成，暂缓论文正文。** 最新入口为[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)；此前见[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
-- **E69已启动：** 原309图CPU核查，112同图任务配对、3个源timeline交付案例；共2760主分支。旧目标成功即终止，不能据旧缺失后续Give推“动机受压”；共同8步窗口检验后续行为。单世界12条完整profile通过，四卡固定队列；不将任务交互直接解释为动词启动，也不硬贴309图动机二元标签。
+- **E69完成：** 112同图任务配对＋3个源案例，2760主分支/144适应性控制/27519新增调用，2.828GPUh、0API，GPU已释放。任务人物交互Gemma +4.17pp [0.00,8.33]、32B +6.25 [2.08,10.71]；Duty-Give约98%–99%完成且保留接收者A，未跨模型出现完整正负反转。补共同窗口没有新增顺序完成；单句机制知识在32B恢复5/36双事件，Gemma0/36但17条真实卸下。不将三个案例当总体机制、不把goal交互当动词回路。C04/C05仍限定L2，I04 PROMISING。
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
