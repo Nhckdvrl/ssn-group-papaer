@@ -14,6 +14,17 @@ PCSP/MeltingPot RL、校园1200帧漫游、单模块总体人格修改、Step细
 
 两个模型分别采用原三seed、两traits。上游asset/generic × 执行asset/generic × 原反馈/真实状态反馈；Gemma另完整比较negative/retention。共9480新执行分支、20225实际本地生成调用，1.592 GPU·小时；精确同输入/同seed前缀直接共享输出。全部以79个独立图为统计单位，三seed先图内平均；区间为4000次图簇bootstrap的逐项95%区间。
 
+“上游”合并对话、计划及意图记忆；执行规则逐步进入动作选择。两种人物设定在每条分支全链一致。主要规则的实际区别如下，完整原文在`native_dependency_roles.py`和`native_rule_execution.py`，本轮未改措辞：
+
+| 简称 | 规则内容 |
+|---|---|
+| generic / G | 外部请求冲突时，先完成原作者任务；无冲突时可帮助。 |
+| asset / A | 原任务完成前保有其所需物品；可给其他物品；性格不要求无条件转移。 |
+| negative / B | `Do not give away any item needed for your quest.` |
+| retention / C | `Retain possession of every item needed for your quest.` |
+
+G本身也包含条件句，所以这不是“正句对否定句”或“有条件对无条件”的纯语言学实验。它直接比较这些完整决策规则在不同阶段的作用。
+
 下表为有真实状态/错误反馈时的原目标完成率（%，F=Firm、A=Agreeable）。每格同237条执行、79独立图；这里的目标是原作者给定的wear/wield原子事件。
 
 | 上游 / 执行 | Gemma F | Gemma A | 32B F | 32B A |
@@ -31,6 +42,8 @@ PCSP/MeltingPot RL、校园1200帧漫游、单模块总体人格修改、Step细
 
 ## 3. 反馈检验：重复拒绝减少不等于任务恢复
 
+初始选择确实已改变：纯否定B相对肯定式保有C，Gemma首步合法block差F **+13.9pp [8.4,19.8]**、A **+9.7pp [5.1,15.2]**。它发生在任何拒绝反馈之前，不能由后续多走几步产生更多block机会来解释。整个episode内any-block差为+15.6/+14.8pp，两者分别保留。
+
 Gemma negative_only下，状态反馈使Firm任务完成 **61.6→60.3%**，差−1.3pp [−5.1,3.4]；Agreeable **57.8→54.9%**，差−3.0pp [−5.5,−0.8]。平均重复block错误数分别0.751→0.506、0.388→0.321，仍未消失。首步输入与结果逐字段相同；这里测的是首次行为之后真实状态反馈的作用。
 
 具体例子：`704894d4f06e8db6`, seed6302，原目标`wield shield`。原反馈轨迹为`emote nod → block captain → wield shield`；真实状态反馈下为同样前两步后连续`emote sigh`，8步内未执行原goal。这条失败并非靠重复非法动作耗尽预算。其他轨迹仍会在明确看到already-blocking后重复block，全部保留。
@@ -47,7 +60,14 @@ Gemma共有1569次原生拒绝（1280次重复block）、44次原生随机失败
 
 全部109图比较generic/asset/negative一致链路；41个wear/wield图另做上游/执行交叉；60个other-item图检验generic下人物合作差。**58个Give原任务可能与negative规则直接冲突，因此防卫转向的同类预测单列41个wear/wield层**；全部109图和其他任务层照常公开，不删除。
 
-E68尚在运行，结果表与逐项预测判断待完整队列后填写。每模型2814完整分支，不把分支数当独立世界数。
+E68的Gemma已完整完成2814分支、18328调用、0解析失败，32B仍在运行。每模型2814完整分支，不把分支数当独立世界数。Gemma结果先单独记录，不提前概括成跨模型确认：
+
+- 109图一致链路G−A原goal：F +25.69pp [18.65,33.03]，A +30.89pp [23.24,38.53]。
+- 41个wear/wield图，固定asset上游、Exec G−A原goal：F +27.64pp [17.89,38.21]，A +36.59pp [26.81,47.15]；固定generic上游分别+28.46/+26.02pp。
+- 同41图，B−G首步合法block：F +20.33pp [10.57,29.27]、A +15.45pp [8.13,23.58]；A−G真实请求Give：F +4.07pp [0.81,8.13]、A +16.26pp [8.13,23.58]。
+- 60个other-item图，G下F/A原goal为82.22/80.56%、请求Give为16.67/26.67%、两事件均完成16.11/25.56%。A−F请求Give **+10.00pp [2.78,17.78]**，both **+9.44pp [1.67,17.22]**，goal **−1.67pp [−8.89,6.11]**。共存方向复现，不能继续把“所有新场景都90%+完成”写成结论。
+
+新世界也同时存在计划采用与重新决策：Gemma agreeable固定asset上游的46条恢复分支中，22条原计划可执行goal，24条不可。例子`160f4a2a9409b019`/6803：原计划`examine monkey → wield sack`，asset执行为检查后反复ponder，generic执行为检查后真实wield；另一例`0ae2bb7b27821dc9`/6802原计划只检查/对话/表情，generic执行仍在第5步选回`wield holy book`。这是两条不同恢复路径，不把案例当作独立总体估计。
 
 ## 5. 对研究判断的实际推进
 
