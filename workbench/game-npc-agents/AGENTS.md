@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**2026-10-16最新：** E74完整10552本地调用/1.866GPUh/0API：自产后果表显著提高真实原任务，替换引擎真值没有额外恢复，不能以测验答案直接定义内部信念。E75已先登记并通过102原作者Get前提图/四任务族资格，固定4896分支，首世界profile中；检验同一整体解释能否跨任务预测。先看[定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)、[E74卡](experiments/E74-physical-consequence-prediction-and-choice.md)、[E75卡](experiments/E75-owned-container-task-transfer.md)及当日日志。精读五篇强近邻用于整体贡献定位，不要求每个组件无人做过。0API/训练/patch，≤8卡，正文仍暂缓。
+**2026-10-16最新：** 先看[本轮报告](PROGRESS_REPORT_2026-10-16.md)。E74/E75完整：两模型，预测值真值替换未额外恢复；原作者四任务Get前提中，人物同时影响推进和用途，原任务作用因模型/任务不同。合计27187调用/3.421GPUh，0API。E76固定旧对话、只变原生执行初态，当前两卡全队列运行；不增加新话术。I04 PROMISING、C06 L2、正文暂缓；novelty按整体问题与证据链判断，不要求每个组件无人做过。精读七篇相关工作含MineNPC-Task/Vox Deorum，未启动新平台移植。
 
 **最新完成（2026-10-15）：** 先读[E70–E73完整报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。117源作者Give图、23868分支/125126新本地调用/2解析失败保留/12.847GPUh；峰值8卡，0API/训练/patch。相同任务下32B人物效应随ready/equipped换向；固定本人对话，扩展候选或预先给真实引擎操作信息均恢复大量交付，E73后仍需结合向A/向B/未交的联合分布解释人物作用。C06限定L2，I04 PROMISING、全局PROPOSED；正文暂缓。全部worker已完成，无新增队列，不自动扫提示、训练或恢复旧线。下列“最新”段落按历史阅读。
 

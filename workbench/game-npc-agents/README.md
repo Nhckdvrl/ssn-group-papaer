@@ -2,11 +2,12 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E74完成，E75跨任务实验进行中，暂缓论文正文。** 最新入口为[执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；此前见[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)、[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E74/E75完成，E76固定对话的原生状态反事实进行中，暂缓论文正文。** 最新入口为[执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；此前见[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)、[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
-- **E75进行中：** 跨四类原作者任务的102图，原始取物前提/已取到状态×对称用途路径支持；两人物三seed两模型，共4896固定原生分支。408路径见证/1224输入检查通过，先首世界profile。保留原角色/goal/世界规则，25图与E50重叠、77在池外；不称干净holdout。见[实验卡](experiments/E75-owned-container-task-transfer.md)。
+- **E76进行中：** 固定E75 retrieval本人对话，仅把执行初态换成原生Get后的ready状态，612分支/model、两模型；不增加新指令或表格，用于区分社会历史与当前物理前提。612输入核对通过、完整profile后全队列运行，见[实验卡](experiments/E76-fixed-dialogue-and-native-access.md)。
+- **E75完成：** 102原作者Get前提图/四任务/两模型三seed，4896分支、16635本地调用/0解析失败/1.555GPUh。非Give31图Agreeable首步Get增加15.05/29.03pp、请求交付增加12.90/27.96pp，自身任务却+5.38/−16.13pp，推进与用途共同形成最终表现。见[完整报告](PROGRESS_REPORT_2026-10-16.md)、[实验卡](experiments/E75-native-retrieval-task-transfer.md)、[联合结果图](results/figures/E75_task_request_joint_outcomes.png)。
 - **E74完成：** 117图、2808预测＋2808新增执行、10552本地调用/0解析失败/1.866GPUh/0API。自产表使原任务F/A提高Gemma33.33/23.36pp、32B17.38/17.38pp；引擎真值替换自产值未额外恢复。结果支持继续检验路径呈现与用途选择，预测答案不直接作为内部信念。见[实验与全部读数](experiments/E74-physical-consequence-prediction-and-choice.md)、[科研图](results/figures/E74_predictions_and_actual_actions.png)、[整体定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)。
 
 - **E70–E73完成：** 同117原作者Give图、两模型/三seed，23868分支/125126本地调用/2解析失败（保留）/12.847GPUh，峰值8卡、0API。32B冲突下人物原任务效应ready −6.84pp、equipped +5.41pp；普通机制事实恢复大部分交付，单纯priority无同等恢复。E71无人索要亦有前提困难，请求方向可促进/妨碍原任务。

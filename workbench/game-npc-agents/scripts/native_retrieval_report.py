@@ -18,7 +18,10 @@ def metrics(r):
     hs = r['history']; first = hs[0] if hs else None
     source = r['goal_item_id']; peer = r['first_source_recipient']
     is_get = lambda h: bool(successful(h) and h['event_type']=='GetObjectEvent' and h['target_node_ids'][0]==source)
+    text_goal = any(successful(h) and h['command']==r['goal_command'] for h in hs)
     return {'goal':float(r['goal_executed']),
+        'source_command_goal_sensitivity':float(text_goal),
+        'source_command_without_bound_goal':float(text_goal and not r['goal_executed']),
         'request':float(peer==r['requester_id']),
         'other_source_give':float(peer is not None and not r['goal_executed'] and peer!=r['requester_id']),
         'no_decisive_event':float(not r['goal_executed'] and peer is None),
@@ -123,6 +126,7 @@ def main():
                      'All 102 native-eligible worlds and three seeds; four task types, wield N=0.',
                      'Path support is symmetric across source task/request but is not a pure hidden-knowledge intervention.',
                      'Unconditional joint outcomes; not a causal preference estimated among successful actors.',
+                     'Original canonical-command success is a supplementary sensitivity, not a replacement for the bound-item primary.',
                      'First bound authored event/source Give, not complete private utility or irreversible failure.']}
     args.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:result[k] for k in ['status','worlds','episodes','actual_calls','native_validation']}))

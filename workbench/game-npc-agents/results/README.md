@@ -1,6 +1,6 @@
 # 结果清单
 
-当前入口为[E74完整实验](../experiments/E74-physical-consequence-prediction-and-choice.md)、[E75跨任务设置](../experiments/E75-owned-container-task-transfer.md)及文末结果。E50–73均有完整历史证据，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+当前入口为[E74完整实验](../experiments/E74-physical-consequence-prediction-and-choice.md)、[E75跨任务设置](../experiments/E75-native-retrieval-task-transfer.md)及文末结果。E50–73均有完整历史证据，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
@@ -150,4 +150,7 @@ raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32
 - E74：`E74_{gemma,32b}_complete.json`为全部预测、逐字段混淆、同图配对区间与实际联合去向；2808预测/2808新增原生分支。`E74_native_prediction_check.json`保留117×7原生真值及1404输入核对，`E74_native_state_readback.json`核对2674Remove/2629Give、0不一致。
 - `E74_cost_accounting.json`计全profile/完整分片共10552本地调用/1.866观测GPUh、0API，精确复用单计；[科学图](figures/E74_predictions_and_actual_actions.png)另有PDF/SVG。raw为cache/runs/e74_{gemma,32b}_{profile,s0,s1}/。
 - `E70_equipment_material_state_POST_HOC.json`有界读回原装备状态的actor attack+1，全117图保留；不是新模型实验或引擎修复。
-- E75：`E75_native_qualification.json`为自有容器0候选的完整负向资格；`E75_retrieval_qualification.json`为102原作者Get前提图/408路径，`E75_input_check.json`核对1224同C/同人设/对称支持输入。原始图在cache/runs/e75_native_retrieval_qualification/，首世界profile中，尚无完整模型效应。
+- E75：`E75_native_qualification.json`为自有容器0候选的完整负向资格；`E75_retrieval_qualification.json`为102原作者Get前提图/408路径，`E75_input_check.json`核对1224同C/同人设/对称支持输入。原始图在cache/runs/e75_native_retrieval_qualification/，完整4896分支已收齐，效应见E75_{gemma,32b}_complete.json。
+
+- E75完整：`E75_{gemma,32b}_complete.json`有全体/任务族所有联合结局及配对区间，`E75_cost_accounting.json`结算16635调用/1.555GPUh，`E75_conversation_action_POST_HOC.json`记录结构化态度×事件及顺/逆向案例；[联合去向图](figures/E75_task_request_joint_outcomes.png)另有PDF/SVG。
+- E76登记及CPU输入：`E76_input_check.json`，612个精确C来源/执行输入检查；全102图固定对话后改变原生执行初态，完整模型队列运行中，范围见[实验卡](../experiments/E76-fixed-dialogue-and-native-access.md)。
