@@ -83,17 +83,22 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo")
     ap.add_argument("--rev")
+    ap.add_argument("--local", default=None, help="directory with config.json + weights fetched by curl (HF Xet stalls here)")
     a = ap.parse_args()
     torch.set_grad_enabled(False)
     t0 = time.time()
     from huggingface_hub import list_repo_files
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    kw = {"revision": a.rev}
-    if "pytorch_model.bin" in list_repo_files(a.repo, revision=a.rev):
-        kw["use_safetensors"] = False  # step branches may also carry main's safetensors
-    cache = os.environ.get("E89_MODEL_CACHE", str(mc.HF_CACHE))
-    tok = AutoTokenizer.from_pretrained(a.repo, cache_dir=cache, revision=a.rev)
-    model = AutoModelForCausalLM.from_pretrained(a.repo, cache_dir=cache, torch_dtype=torch.float32, **kw).to(DEV).eval()
+    if a.local:  # weights fetched by curl; the tokenizer is identical across checkpoints
+        tok = AutoTokenizer.from_pretrained(a.repo, cache_dir=str(mc.HF_CACHE))
+        model = AutoModelForCausalLM.from_pretrained(a.local, torch_dtype=torch.float32).to(DEV).eval()
+    else:
+        kw = {"revision": a.rev}
+        if a.rev != "main" and "pytorch_model.bin" in list_repo_files(a.repo, revision=a.rev):
+            kw["use_safetensors"] = False  # step branches may also carry main's safetensors
+        cache = os.environ.get("E89_MODEL_CACHE", str(mc.HF_CACHE))
+        tok = AutoTokenizer.from_pretrained(a.repo, cache_dir=cache, revision=a.rev)
+        model = AutoModelForCausalLM.from_pretrained(a.repo, cache_dir=cache, torch_dtype=torch.float32, **kw).to(DEV).eval()
     res = {"repo": a.repo, "rev": a.rev, "tasks": {}}
     for t in ABSTRACTIVE + EXTRACTIVE:
         res["tasks"]["fv:" + t] = eval_fv(model, fv_prompts(tok, t))
