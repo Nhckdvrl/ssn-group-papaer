@@ -23,3 +23,7 @@
 E63明确任务优先在32B恢复原任务，同时保留另一物品合作的角色差；资产保护包在Gemma反而增加未推进终点和可行计划未采纳。E64两Qwen完整，普通check在27B提高双向Give，firm的跨模型check交互33.3pp [11.1,59.3]；agreeable交互区间跨0，资源取得交互亦未明确。以上不等于发现统一预训练回路。
 
 测量层次需要明确：E63的200任务主要是原子Give/equip/consume，目标对象依赖不等于完整工具利益链；同资产的后续回报、作者长期目标尚未都具备实体flag。E64的9个源get/steal配对和33图CPU原Give来源也不自动等于真实自利交易。下一增量需要让可操纵因素预测实际回报/后续任务，而非仅换一个词汇描述同一交付效应。新颖性保持定位，人决定方向状态。
+
+## E65/E66前的定位补充
+
+最新检索增加[NegaAlign](../papers/NEGAALIGN_2026.md)（2026-10-08预印本，VLA否定约束、真实执行、语义/视觉干预）和[AgentIF](../papers/AGENTIF_NEURIPS2025.md)（NeurIPS2025 D&B，条件/工具约束组合）。本地venue nearest亦返回Persona Dynamics、CoopEval、Constrained Human-AI Cooperation等，列表只作定位。本轮不自动开新环境复现；E65要分辨限制范围/明确许可，E66要测真实动作字段的竞争。普遍否定困难、条件指令困难与保留任务能力已有ownership；当前增量须由NPC实际决策的可检验预测支撑。
