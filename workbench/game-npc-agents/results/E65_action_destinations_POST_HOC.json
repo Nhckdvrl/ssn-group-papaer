@@ -1,0 +1,1236 @@
+{
+  "status": "COMPLETE",
+  "label": "POST-HOC; triggered by complete-cohort native errors",
+  "worlds": 79,
+  "new_episodes": 2370,
+  "reference_episodes": 1422,
+  "counts": {
+    "firm/temporal_permission": {
+      "episodes": 237,
+      "actions": 937,
+      "valid_block_actions": 29,
+      "repeated_block_errors": 24,
+      "native_errors": 29
+    },
+    "firm/negative_only": {
+      "episodes": 237,
+      "actions": 1043,
+      "valid_block_actions": 80,
+      "repeated_block_errors": 183,
+      "native_errors": 196
+    },
+    "firm/retention_only": {
+      "episodes": 237,
+      "actions": 942,
+      "valid_block_actions": 47,
+      "repeated_block_errors": 85,
+      "native_errors": 87
+    },
+    "firm/negative_with_use": {
+      "episodes": 237,
+      "actions": 1004,
+      "valid_block_actions": 65,
+      "repeated_block_errors": 128,
+      "native_errors": 132
+    },
+    "firm/asset_with_use": {
+      "episodes": 237,
+      "actions": 1325,
+      "valid_block_actions": 46,
+      "repeated_block_errors": 58,
+      "native_errors": 58
+    },
+    "agreeable/temporal_permission": {
+      "episodes": 237,
+      "actions": 1004,
+      "valid_block_actions": 6,
+      "repeated_block_errors": 0,
+      "native_errors": 25
+    },
+    "agreeable/negative_only": {
+      "episodes": 237,
+      "actions": 1124,
+      "valid_block_actions": 57,
+      "repeated_block_errors": 91,
+      "native_errors": 95
+    },
+    "agreeable/retention_only": {
+      "episodes": 237,
+      "actions": 986,
+      "valid_block_actions": 17,
+      "repeated_block_errors": 27,
+      "native_errors": 50
+    },
+    "agreeable/negative_with_use": {
+      "episodes": 237,
+      "actions": 1016,
+      "valid_block_actions": 33,
+      "repeated_block_errors": 36,
+      "native_errors": 40
+    },
+    "agreeable/asset_with_use": {
+      "episodes": 237,
+      "actions": 1509,
+      "valid_block_actions": 12,
+      "repeated_block_errors": 30,
+      "native_errors": 45
+    },
+    "firm/none": {
+      "episodes": 237,
+      "actions": 926,
+      "valid_block_actions": 35,
+      "repeated_block_errors": 21,
+      "native_errors": 36
+    },
+    "firm/generic_priority": {
+      "episodes": 237,
+      "actions": 696,
+      "valid_block_actions": 32,
+      "repeated_block_errors": 76,
+      "native_errors": 76
+    },
+    "firm/asset_protection": {
+      "episodes": 237,
+      "actions": 1379,
+      "valid_block_actions": 47,
+      "repeated_block_errors": 92,
+      "native_errors": 95
+    },
+    "agreeable/none": {
+      "episodes": 237,
+      "actions": 883,
+      "valid_block_actions": 10,
+      "repeated_block_errors": 3,
+      "native_errors": 8
+    },
+    "agreeable/generic_priority": {
+      "episodes": 237,
+      "actions": 807,
+      "valid_block_actions": 27,
+      "repeated_block_errors": 28,
+      "native_errors": 50
+    },
+    "agreeable/asset_protection": {
+      "episodes": 237,
+      "actions": 1496,
+      "valid_block_actions": 15,
+      "repeated_block_errors": 11,
+      "native_errors": 30
+    }
+  },
+  "cells": {
+    "firm/asset_protection": {
+      "any_valid_block": {
+        "mean": 0.13080168776371306,
+        "graph_bootstrap_95": [
+          0.06751054852320675,
+          0.20675105485232065
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.12236286919831223,
+        "graph_bootstrap_95": [
+          0.06329113924050632,
+          0.189873417721519
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.06751054852320675,
+        "graph_bootstrap_95": [
+          0.02531645569620253,
+          0.1181434599156118
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.3881856540084388,
+        "graph_bootstrap_95": [
+          0.13924050632911392,
+          0.6835443037974683
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.012658227848101266,
+        "graph_bootstrap_95": [
+          0.0,
+          0.03375527426160337
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.07594936708860758,
+        "graph_bootstrap_95": [
+          0.03375527426160337,
+          0.12658227848101267
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/asset_with_use": {
+      "any_valid_block": {
+        "mean": 0.1350210970464135,
+        "graph_bootstrap_95": [
+          0.07172995780590717,
+          0.20675105485232065
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.1181434599156118,
+        "graph_bootstrap_95": [
+          0.059071729957805914,
+          0.18143459915611815
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08860759493670886
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.24472573839662445,
+        "graph_bootstrap_95": [
+          0.05063291139240506,
+          0.4896624472573848
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08860759493670886
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/generic_priority": {
+      "any_valid_block": {
+        "mean": 0.1012658227848101,
+        "graph_bootstrap_95": [
+          0.05063291139240506,
+          0.16033755274261605
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.050632911392405056,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.09282700421940927
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.050632911392405056,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.09282700421940927
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.32067510548523204,
+        "graph_bootstrap_95": [
+          0.11392405063291139,
+          0.5780590717299579
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.050632911392405056,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.09282700421940927
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/negative_only": {
+      "any_valid_block": {
+        "mean": 0.30801687763713076,
+        "graph_bootstrap_95": [
+          0.22362869198312232,
+          0.3967299578059076
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.18565400843881855,
+        "graph_bootstrap_95": [
+          0.11814345991561183,
+          0.2573839662447257
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.1265822784810127,
+        "graph_bootstrap_95": [
+          0.07172995780590717,
+          0.18565400843881855
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.7721518987341772,
+        "graph_bootstrap_95": [
+          0.44715189873417716,
+          1.1308016877637128
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.054852320675105495,
+        "graph_bootstrap_95": [
+          0.0,
+          0.16455696202531644
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.13924050632911392,
+        "graph_bootstrap_95": [
+          0.08438818565400844,
+          0.19831223628691985
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/negative_with_use": {
+      "any_valid_block": {
+        "mean": 0.21518987341772153,
+        "graph_bootstrap_95": [
+          0.13924050632911392,
+          0.29535864978902954
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.1518987341772152,
+        "graph_bootstrap_95": [
+          0.09282700421940927,
+          0.21940928270042187
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.09282700421940927,
+        "graph_bootstrap_95": [
+          0.05063291139240506,
+          0.13924050632911392
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.5400843881856541,
+        "graph_bootstrap_95": [
+          0.2994725738396624,
+          0.8143459915611814
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.016877637130801686,
+        "graph_bootstrap_95": [
+          0.0,
+          0.04641350210970464
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.10126582278481013,
+        "graph_bootstrap_95": [
+          0.0590717299578059,
+          0.14767932489451477
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/none": {
+      "any_valid_block": {
+        "mean": 0.1181434599156118,
+        "graph_bootstrap_95": [
+          0.06329113924050632,
+          0.18565400843881855
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08860759493670886
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.025316455696202528,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.050632911392405056
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.08860759493670886,
+        "graph_bootstrap_95": [
+          0.02109704641350211,
+          0.17721518987341772
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.06329113924050633,
+        "graph_bootstrap_95": [
+          0.0,
+          0.17299578059071727
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.04219409282700422,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.07594936708860758
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/retention_only": {
+      "any_valid_block": {
+        "mean": 0.16455696202531644,
+        "graph_bootstrap_95": [
+          0.10126582278481011,
+          0.2362869198312236
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.10126582278481013,
+        "graph_bootstrap_95": [
+          0.05063291139240506,
+          0.16033755274261602
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.06329113924050633,
+        "graph_bootstrap_95": [
+          0.02531645569620253,
+          0.10548523206751054
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.35864978902953587,
+        "graph_bootstrap_95": [
+          0.15601265822784816,
+          0.5991561181434599
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.008438818565400843,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02109704641350211
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.07172995780590717,
+        "graph_bootstrap_95": [
+          0.03375527426160337,
+          0.11392405063291139
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/temporal_permission": {
+      "any_valid_block": {
+        "mean": 0.09704641350210969,
+        "graph_bootstrap_95": [
+          0.04641350210970464,
+          0.1561181434599156
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.05063291139240506,
+        "graph_bootstrap_95": [
+          0.02109704641350211,
+          0.08860759493670885
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.02953586497890295,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.05063291139240506
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.10126582278481013,
+        "graph_bootstrap_95": [
+          0.02531645569620253,
+          0.19831223628691985
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05485232067510548
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.07605485232067549
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/asset_protection": {
+      "any_valid_block": {
+        "mean": 0.03797468354430379,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.06751054852320675
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.04641350210970464
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.012658227848101266,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02953586497890295
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.0,
+          0.10548523206751054
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.08016877637130802,
+        "graph_bootstrap_95": [
+          0.008438818565400843,
+          0.1687763713080169
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.0379746835443038,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.07172995780590717
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/asset_with_use": {
+      "any_valid_block": {
+        "mean": 0.04219409282700422,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08016877637130801
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.025316455696202528,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.05063291139240506
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.04641350210970464
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.12658227848101267,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.2742616033755274
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.06329113924050633,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.14345991561181434
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.08438818565400844
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/generic_priority": {
+      "any_valid_block": {
+        "mean": 0.08016877637130801,
+        "graph_bootstrap_95": [
+          0.0379746835443038,
+          0.1350210970464135
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.03797468354430379,
+        "graph_bootstrap_95": [
+          0.008438818565400843,
+          0.0759493670886076
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05485232067510548
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.1181434599156118,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2911392405063291
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.09282700421940927,
+        "graph_bootstrap_95": [
+          0.02109704641350211,
+          0.189873417721519
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.042194092827004225,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.0759493670886076
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/negative_only": {
+      "any_valid_block": {
+        "mean": 0.20253164556962025,
+        "graph_bootstrap_95": [
+          0.13080168776371306,
+          0.2827004219409282
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.12658227848101267,
+        "graph_bootstrap_95": [
+          0.07172995780590717,
+          0.189873417721519
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.06751054852320673,
+        "graph_bootstrap_95": [
+          0.02953586497890295,
+          0.11392405063291138
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.38396624472573837,
+        "graph_bootstrap_95": [
+          0.16033755274261602,
+          0.6541139240506333
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.016877637130801686,
+        "graph_bootstrap_95": [
+          0.0,
+          0.04641350210970464
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.0759493670886076,
+        "graph_bootstrap_95": [
+          0.03375527426160337,
+          0.12236286919831225
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/negative_with_use": {
+      "any_valid_block": {
+        "mean": 0.11392405063291139,
+        "graph_bootstrap_95": [
+          0.059071729957805914,
+          0.1729957805907173
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.07172995780590717,
+        "graph_bootstrap_95": [
+          0.02953586497890295,
+          0.12236286919831225
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.03375527426160337,
+        "graph_bootstrap_95": [
+          0.008438818565400843,
+          0.06329113924050633
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.15189873417721522,
+        "graph_bootstrap_95": [
+          0.03375527426160337,
+          0.31656118143459955
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.016877637130801686,
+        "graph_bootstrap_95": [
+          0.0,
+          0.046413502109704644
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.08016877637130801
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/none": {
+      "any_valid_block": {
+        "mean": 0.0379746835443038,
+        "graph_bootstrap_95": [
+          0.008438818565400843,
+          0.0759493670886076
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.029535864978902957,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.06329113924050633
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.004219409282700422,
+        "graph_bootstrap_95": [
+          0.0,
+          0.012658227848101266
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.012658227848101266,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0379746835443038
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.0,
+          0.05485232067510548
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.012658227848101266,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02953586497890295
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/retention_only": {
+      "any_valid_block": {
+        "mean": 0.06329113924050632,
+        "graph_bootstrap_95": [
+          0.025316455696202528,
+          0.10970464135021099
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.046413502109704644,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08860759493670886
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.04219409282700422
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.11392405063291139,
+        "graph_bootstrap_95": [
+          0.029535864978902957,
+          0.21940928270042198
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.0970464135021097,
+        "graph_bootstrap_95": [
+          0.02109704641350211,
+          0.20675105485232065
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.05485232067510548,
+        "graph_bootstrap_95": [
+          0.02531645569620253,
+          0.08860759493670886
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/temporal_permission": {
+      "any_valid_block": {
+        "mean": 0.025316455696202528,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.0590717299578059
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.004219409282700422,
+        "graph_bootstrap_95": [
+          0.0,
+          0.012658227848101266
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.10548523206751055,
+        "graph_bootstrap_95": [
+          0.008438818565400843,
+          0.23206751054852323
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.03375527426160337,
+        "graph_bootstrap_95": [
+          0.004219409282700422,
+          0.07172995780590717
+        ],
+        "independent_graphs": 79
+      }
+    }
+  },
+  "contrasts": {
+    "firm/negative_only-minus-retention_only": {
+      "any_valid_block": {
+        "mean": 0.14345991561181434,
+        "graph_bootstrap_95": [
+          0.08860759493670885,
+          0.20675105485232065
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.08438818565400845,
+        "graph_bootstrap_95": [
+          0.03375527426160337,
+          0.14345991561181434
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.06329113924050633,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.11814345991561183
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.4135021097046414,
+        "graph_bootstrap_95": [
+          0.08850210970464134,
+          0.7679324894514769
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.046413502109704644,
+        "graph_bootstrap_95": [
+          -0.012658227848101266,
+          0.1518987341772152
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.06751054852320675,
+        "graph_bootstrap_95": [
+          0.016877637130801686,
+          0.11814345991561183
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/temporal_permission-minus-negative_only": {
+      "any_valid_block": {
+        "mean": -0.21097046413502107,
+        "graph_bootstrap_95": [
+          -0.2869198312236287,
+          -0.14335443037974646
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": -0.13502109704641346,
+        "graph_bootstrap_95": [
+          -0.19831223628691982,
+          -0.0759493670886076
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": -0.09704641350210971,
+        "graph_bootstrap_95": [
+          -0.15611814345991562,
+          -0.042194092827004225
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": -0.6708860759493671,
+        "graph_bootstrap_95": [
+          -1.0253164556962024,
+          -0.35010548523206714
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": -0.03375527426160338,
+        "graph_bootstrap_95": [
+          -0.14345991561181434,
+          0.0379746835443038
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": -0.09282700421940927,
+        "graph_bootstrap_95": [
+          -0.1518987341772152,
+          -0.03797468354430379
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "firm/asset_protection-minus-generic_priority": {
+      "any_valid_block": {
+        "mean": 0.029535864978902957,
+        "graph_bootstrap_95": [
+          -0.012658227848101262,
+          0.07172995780590717
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.07172995780590717,
+        "graph_bootstrap_95": [
+          0.02109704641350211,
+          0.13080168776371306
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.016877637130801683,
+        "graph_bootstrap_95": [
+          -0.0379746835443038,
+          0.07172995780590717
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.06751054852320676,
+        "graph_bootstrap_95": [
+          -0.26592827004219405,
+          0.39251054852320716
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.012658227848101266,
+        "graph_bootstrap_95": [
+          0.0,
+          0.03375527426160337
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.02531645569620253,
+        "graph_bootstrap_95": [
+          -0.03375527426160337,
+          0.08016877637130801
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/negative_only-minus-retention_only": {
+      "any_valid_block": {
+        "mean": 0.13924050632911392,
+        "graph_bootstrap_95": [
+          0.08860759493670885,
+          0.1940928270042194
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": 0.08016877637130801,
+        "graph_bootstrap_95": [
+          0.04219409282700422,
+          0.12658227848101264
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": 0.04641350210970464,
+        "graph_bootstrap_95": [
+          0.012658227848101266,
+          0.08438818565400844
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": 0.27004219409282704,
+        "graph_bootstrap_95": [
+          0.09694092827004222,
+          0.4810126582278481
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": -0.08016877637130801,
+        "graph_bootstrap_95": [
+          -0.189873417721519,
+          0.004219409282700422
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": 0.02109704641350211,
+        "graph_bootstrap_95": [
+          -0.01687763713080169,
+          0.059071729957805914
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/temporal_permission-minus-negative_only": {
+      "any_valid_block": {
+        "mean": -0.17721518987341772,
+        "graph_bootstrap_95": [
+          -0.24472573839662445,
+          -0.11392405063291138
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": -0.12236286919831223,
+        "graph_bootstrap_95": [
+          -0.18154008438818564,
+          -0.06751054852320675
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": -0.06751054852320673,
+        "graph_bootstrap_95": [
+          -0.11392405063291138,
+          -0.02953586497890295
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": -0.38396624472573837,
+        "graph_bootstrap_95": [
+          -0.6541139240506328,
+          -0.16033755274261602
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": 0.08860759493670887,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2109704641350211
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": -0.04219409282700421,
+        "graph_bootstrap_95": [
+          -0.09282700421940927,
+          0.008438818565400845
+        ],
+        "independent_graphs": 79
+      }
+    },
+    "agreeable/asset_protection-minus-generic_priority": {
+      "any_valid_block": {
+        "mean": -0.04219409282700422,
+        "graph_bootstrap_95": [
+          -0.08438818565400844,
+          -0.008438818565400843
+        ],
+        "independent_graphs": 79
+      },
+      "valid_block_without_original_goal": {
+        "mean": -0.016877637130801686,
+        "graph_bootstrap_95": [
+          -0.046518987341772115,
+          0.008438818565400843
+        ],
+        "independent_graphs": 79
+      },
+      "any_repeated_block_error": {
+        "mean": -0.008438818565400845,
+        "graph_bootstrap_95": [
+          -0.03375527426160337,
+          0.012658227848101266
+        ],
+        "independent_graphs": 79
+      },
+      "repeated_block_errors": {
+        "mean": -0.07172995780590719,
+        "graph_bootstrap_95": [
+          -0.2109704641350211,
+          0.037974683544303785
+        ],
+        "independent_graphs": 79
+      },
+      "other_native_errors": {
+        "mean": -0.012658227848101262,
+        "graph_bootstrap_95": [
+          -0.11392405063291139,
+          0.08438818565400845
+        ],
+        "independent_graphs": 79
+      },
+      "any_native_error": {
+        "mean": -0.004219409282700423,
+        "graph_bootstrap_95": [
+          -0.04219409282700422,
+          0.03375527426160337
+        ],
+        "independent_graphs": 79
+      }
+    }
+  },
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e65_gemma_scope_s0/episodes.jsonl": "6b4a07eba408a013d5ac3eabd83bba8e2ea9d3578b64190c0bf5a4a222b757a4",
+    "/home/xiang/.cache/game-npc-research/runs/e65_gemma_scope_s1/episodes.jsonl": "608cde9d347391eba79e9dee038735e4c57e6d4e39a7f95887dcb42f31818324",
+    "/home/xiang/.cache/game-npc-research/runs/e63_gemma_dependency/episodes.jsonl": "b8182d2a707326499c4c23cc366c1b98126ef28c5d43173d7c1ce56dc12dfc80"
+  },
+  "model_calls": 0,
+  "scope": [
+    "No filtering or changed outcome; all 79 source worlds retained.",
+    "Blocking can implement defense; its presence is not proof of rational utility or safety intent.",
+    "Repeated already-blocking errors are native engine outcomes, not JSON parsing failures."
+  ]
+}

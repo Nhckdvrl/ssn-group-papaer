@@ -1,0 +1,105 @@
+{
+  "status": "COMPLETE",
+  "new_behavior_episodes": 2370,
+  "historical_behavior_episodes_reanalyzed": 1422,
+  "independent_worlds": 79,
+  "model_calls": {
+    "count": 15630,
+    "parse_errors": 0,
+    "prompt_tokens": 15942209,
+    "completion_tokens": 1121728
+  },
+  "action_readout_contexts": 1896,
+  "readout_forward_calls": 6629,
+  "calibration_processes": 3,
+  "calibration_context_evaluations": 12,
+  "gpu_hours": 1.195788805288628,
+  "runs": [
+    {
+      "id": "E65_shard0",
+      "gpu_hours": 0.47267116479000026,
+      "worlds": 40,
+      "episodes": 1200,
+      "calls": 7945,
+      "wall_seconds": 1660.6150042560184,
+      "model_load_seconds": 41.00118898798246,
+      "cloud_calls": 0
+    },
+    {
+      "id": "E65_shard1",
+      "gpu_hours": 0.4475174589802918,
+      "worlds": 39,
+      "episodes": 1170,
+      "calls": 7685,
+      "wall_seconds": 1570.0589992090245,
+      "model_load_seconds": 41.00385312002618,
+      "cloud_calls": 0
+    },
+    {
+      "id": "E66_gemma",
+      "gpu_hours": 0.07144442784722843,
+      "contexts": 948,
+      "forward_calls": 2956,
+      "model_load_seconds": 17.590105546987616,
+      "wall_seconds": 239.60983470303472,
+      "sham_max_abs_logit_difference": 0.0,
+      "cache_vs_teacher_forcing": {
+        "case_id": "004ddb15538a7b06",
+        "cached_log_probability": -20.53650665283203,
+        "teacher_forced_log_probability": -19.822561264038086,
+        "probability_difference": 1.2559997057161807e-09,
+        "note": "Single unpadded full forward versus batched cached decode; bf16 differences retained."
+      },
+      "native_actions_regenerated": 0,
+      "cloud_calls": 0
+    },
+    {
+      "id": "E66_32b",
+      "gpu_hours": 0.18488401922444206,
+      "contexts": 948,
+      "forward_calls": 3673,
+      "model_load_seconds": 28.416964518954046,
+      "wall_seconds": 637.1655046890373,
+      "sham_max_abs_logit_difference": 0.0,
+      "cache_vs_teacher_forcing": {
+        "case_id": "004ddb15538a7b06",
+        "cached_log_probability": -0.009609277360141277,
+        "teacher_forced_log_probability": -0.009617424570024014,
+        "probability_difference": -8.06926315977119e-06,
+        "note": "Single unpadded full forward versus batched cached decode; bf16 differences retained."
+      },
+      "native_actions_regenerated": 0,
+      "cloud_calls": 0
+    },
+    {
+      "id": "E66_32b_probability_calibration",
+      "gpu_hours": 0.010185736613057089,
+      "model_load_seconds": 27.356566106027458,
+      "wall_seconds": 9.31208570097806,
+      "contexts": 4,
+      "purpose": "same-cohort numerical validation; not new behavior conditions"
+    },
+    {
+      "id": "E66_gemma_probability_calibration",
+      "gpu_hours": 0.004075348659712795,
+      "model_load_seconds": 11.95618239196483,
+      "wall_seconds": 2.715072783001233,
+      "contexts": 4,
+      "purpose": "same-cohort numerical validation; not new behavior conditions"
+    },
+    {
+      "id": "E66_gemma_probability_calibration_with_observed",
+      "gpu_hours": 0.005010649173895622,
+      "model_load_seconds": 14.610584735986777,
+      "wall_seconds": 3.4277522900374606,
+      "contexts": 4,
+      "purpose": "same-cohort numerical validation; not new behavior conditions"
+    }
+  ],
+  "cloud_calls": 0,
+  "training_steps": 0,
+  "activation_interventions": 0,
+  "max_concurrent_gpus": 4,
+  "gpu_hardware": "fvcrc21 NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition 96GB",
+  "scope": "GPU duration includes loading plus measurement. CPU-only replay/plot/bootstrap is not GPU work. Historical E63 costs are not recounted. Calibration repetitions are fully counted; no extra independent worlds."
+}

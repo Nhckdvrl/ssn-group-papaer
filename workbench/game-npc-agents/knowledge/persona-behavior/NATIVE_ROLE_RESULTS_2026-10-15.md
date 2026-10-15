@@ -74,3 +74,7 @@ Step仅数据用途：E59共125 Plan请求、836315总tokens，含两个原批�
 E64两Qwen各9图/108条，另32B通信控制54条。27B check双向Give提高firm25.9pp、agreeable18.5pp；同9图模型×cue交互firm33.3pp [11.1,59.3]，agreeable14.8 [−7.4,37.0]。原生2死亡/1协议失败不删除，取得物与最终持有、私人动机分开。E63原子目标与完整工具回报链的范围、Gemma计划回放、全部失败和新的强近邻见[复审报告](../../PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)。
 
 本轮含profile/中断13.167GPUh、104883实际本地推理调用、0新增API/训练/activation干预，模型worker全部退出。C02仍L2、C03 L1、I04 SEED，未升级新机制。
+
+## 后续E65/E66已完成：实验先于论文
+
+固定79 wear/wield图2370新episode完成，另两模型1896概率上下文；1.196GPUh、15630本地生成、0API/训练/patch。E63范围核对后C04为L2；E66固定原计划/记忆换generic提高两模型原goal命令概率，C05 L1。E65负向限制相对肯定保有既更少交付，也更多合法block并降低任务完成；简单许可不是统一恢复。主结果、竞争解释和资产见[综合解释](CONSTRAINT_SCOPE_RESULTS_2026-10-15.md)与[最新报告](../../PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)。I04按人审认可PROMISING，暂缓正文；早先SEED语句是历史状态。

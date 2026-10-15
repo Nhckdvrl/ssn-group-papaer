@@ -105,3 +105,13 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 
 - [完整GPU/调用成本](E63_E64_ROUND_COSTS_2026-10-15.json)：主实验/控制16470条，另72条profile，13.167GPUh/104883实际本地调用；全部中断与失败计入。
 - [E63科学图](E63_task_cooperation.png)、[E64科学图](E64_native_negotiation.png)，均另有PDF/SVG；[模型×check交互](E64_model_cue_interactions.json)、[reserve图级重叠](E63_reserve_overlap_audit.json)明确POST-HOC。
+
+## E65/E66完成结果
+
+- [最新进度报告](../PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)：先实验，暂缓论文。
+- [E65行为主表](E65_gemma_scope.json)：79图、2370新轨迹、1422历史参考，全部五规则/两P/三seed，世界簇CI、原生计划回放；[CPU使用许可见证](E65_native_use_permission_witnesses.json)。
+- [E65动作去向](E65_action_destinations_POST_HOC.json)：明确POST-HOC，合法block与重复错误分开；不改引擎/主结局。
+- E66：[Gemma](E66_gemma_competition.json)、[32B](E66_32b_competition.json)，各948上下文，canonical完整菜单路径概率/固定top10；各`E66_*probability_calibration*.json`保留全部数值校验。
+- 科学图：[E65](E65_constraint_scope.png)、[E66](E66_action_competition.png)，另有PDF/SVG；[完整成本](E65_E66_ROUND_COSTS_2026-10-15.json)含全部载入和校验。
+- E63新增范围核对：[同轨迹任务＋合作](E63_task_cooperation_scope_audit.json)、[asset−generic](E63_asset_vs_priority_audit.json)，0新推理。
+- 原始完整模型输出/状态/计划回放仍在同一cache的`runs/e65_gemma_scope_s{0,1}`、`e65_gemma_scope_analysis`、`e66_{gemma,32b}_competition`，通过同研究室账号访问/rsync；大日志不入Git。

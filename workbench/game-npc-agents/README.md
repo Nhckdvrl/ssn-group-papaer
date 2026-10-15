@@ -2,13 +2,15 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：本轮固定实验和分析已收尾，报告供用户复审。** 最新入口为[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)；此前见[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：用户最新要求先把实验做到位，暂缓论文正文。** [E65限制范围/许可](experiments/E65-constraint-scope-and-permission.md)和[E66动作概率](experiments/E66-native-action-logit-competition.md)均已完成；最新入口为[E65/E66进度报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)，此前为[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)；此前见[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
-- **最新完整结果：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)三模型各200原图、100其他资产配对、5400 episode收齐。一般任务优先使agreeable原goal完成32B60.8→90.0%、27B78.5→93.0%；Gemma资产规则反而76.8→52.8%。非冲突合作及可行计划采纳分开测；资产比较另对齐原goal前交付窗口，不把总交付差直接归因工具价值。196图交目标物后原任务暂时不可执行、4图有替代物，全部可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)两Qwen各9独立图/108条，另32B通信控制54条，死亡/失败保留。全轮含profile/中断13.167GPUh、104883本地调用、0新增API/训练/内部干预，全部本轮worker退出。原子goal与完整私人利益分开，尚未形成已验证新机制；I04仍SEED。
+- **E65/E66完整结果：** 79原生wear/wield图，2370新轨迹、1896两模型动作概率上下文，1.196GPUh/15630本地生成调用，0API/训练/patch，GPU已释放。否定相对肯定式保有使实际goal F/A降低7.2/9.7pp，同时合法block增加约14pp；许可恢复取决于人设/任务/规则包。固定原计划和记忆换任务优先规则，使Gemma/32B目标命令概率提高17.6/12.6pp；直接效应记C05 L1。C04共存范围核对记L2，I04按人审PROMISING；暂缓正文。
+
+- **E63/E64完整结果：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)三模型各200原图、100其他资产配对、5400 episode收齐。一般任务优先使agreeable原goal完成32B60.8→90.0%、27B78.5→93.0%；Gemma资产规则反而76.8→52.8%。非冲突合作及可行计划采纳分开测；资产比较另对齐原goal前交付窗口，不把总交付差直接归因工具价值。196图交目标物后原任务暂时不可执行、4图有替代物，全部可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)两Qwen各9独立图/108条，另32B通信控制54条，死亡/失败保留。全轮含profile/中断13.167GPUh、104883本地调用、0新增API/训练/内部干预，全部本轮worker退出。原子goal与完整私人利益分开，该轮未升级神经机制；最新人审认可I04为PROMISING，E65/E66已完成。
 
 - **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
 

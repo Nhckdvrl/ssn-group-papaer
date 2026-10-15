@@ -7,6 +7,9 @@
 | C01 | 在 agent-sandbox 指定版本的 Action Castle 作者原生人物/目标/规则中，本地模型的决策能经原生 parser 执行，并产生可回放的客观世界后果；表达、情境意图、首次动作、重试与实际后果可以分开记录（基线可行性，不是新科学发现） | L1 | E07，results/E07_cpu_controls.json与E07_local_episode.json | 首次动作失败由重试或脚本补救；状态变化由玩家/世界脚本引起；引擎阻挡不等于模型守住目标 | 2026-10-14 | 未校对 |
 | C02 | 在固定LIGHT三阶段结构中，原persona附加的一致agreeable/关系相对firm/责任立场提高实际请求物品转移概率；三个模型在独立200图三seed确认，普通状态指令后仍在 | L2 | E50/E55/E56；results/E55_32b_independent_confirm.json（+13.7pp，95%[9.7,17.8]）、E55_gemma_independent_confirm.json（+6.7pp，[4.3,9.3]）、E55_27b_independent_confirm.json（+8.5pp，[5.7,11.7]）；knowledge/persona-behavior/C02_CONFIRM_AUDIT_2026-10-15.md | 完整角色指令包含责任/关系优先信息，非纯BigFive；同一任务族而非跨游戏泛化；各结构角色效应不同 | 2026-10-15 | 混杂核对完成；独立复算/跨游戏证据仍未完成，不升级L3 |
 | C03 | 在同一32B pilot的agreeable条件中，显式计划与意图记忆共同暴露的请求转移效应不等于两个单渠道效应相加；记忆可使计划中的即时请求被重新裁决 | L1 | E50；results/E50_32b_coherent_pilot_complete.json（交互−11.7pp，95%[−20.8,−2.5]）；E51/E53/E59已检验状态/目标/措辞竞争解释 | 完成状态误记、原任务显著性、条件承诺、社交循环；POST-HOC具体例不单独升级机制 | 2026-10-15 | 尚未在独立200图复现同四渠道，不升级 |
+| C04 | 在LIGHT固定100个非目标物品请求世界中，明确任务优先下三模型保持92%–99%的当前原子任务完成，同时agreeable相对firm仍提高实际交付17.7–42pp；同轨迹两事件都完成亦增加 | L2 | E63；results/E63_{32b,27b,gemma}_dependency.json；results/E63_task_cooperation_scope_audit.json；knowledge/persona-behavior/TASK_COOPERATION_CLAIM_AUDIT_2026-10-15.md | 非数学独立/零代价，32B仍有−4pp任务差；other物品非当前目标必需不等于无私人价值；单一环境三阶段框架 | 2026-10-15 | 范围与混杂核对完成；未独立跨系统校对，不升L3 |
+
+| C05 | 在79个已观察wear/wield世界的固定asset计划/记忆/状态下，仅执行规则换为明确任务优先即可提高原goal命令概率；该直接效应在Gemma与32B均出现 | L1 | E66；results/E66_gemma_competition.json（+17.61pp [11.32,23.79]）；E66_32b_competition.json（+12.64pp [8.40,17.23]） | canonical原菜单概率读出，非新实际episode或原JSON采样器精确概率；已观察世界、固定一个seed；未识别回路/安全训练来源 | 2026-10-15 | E65实际行为与概率读出分开；独立场景/系统预测尚待检验 |
 
 ## 作废/降级记录
 以下保留作废/降级及普通解释记录，不筛成功轨迹。
@@ -33,3 +36,5 @@
 2026-10-15报告后E63校正：E58实际责任句是“I take my existing responsibilities seriously.”，不能等同于排他性任务优先规则。E63明确generic_priority在完整200图使32B agreeable原goal完成60.8%→90.0%，差29.17pp [23.67,34.67]；撤回“性格词普遍压倒明确规则”的推断，不把普通提示修复升级为新方法。Gemma资产保护包反而降低goal、增加可行计划未采纳，作为尚待分离的失败线索保留。C02仍L2、C03仍L1；未增加“迎合式自毁”或内部回路主张。E63/E64全结果交本轮复审报告，不恢复旧RL/patch网格/细语义API。
 
 2026-10-15 E63/E64全部收齐：E63三模型各200图/5400条，27B明确generic使agreeable原goal78.5→93.0%，+14.5pp [10.83,18.33]；asset亦到92.0%，不把Gemma资产包负向反转当统一机制。E64两模型各9图/108条及54普通通信控制完成，原生死亡/拒绝/随机失败入主表；资源取得、最终持有与作者用途分开，不由双向Give增长升级私人效用主张。保留原主指标，事后对齐资产观察窗口及模型交互明确标POST-HOC。C02仍L2、C03仍L1、I04仍SEED；没有新增神经机制或自毁主张。
+
+- 2026-10-15 E65/E66解释校正：没有将用户审计中的“否定约束→统一安全先验/熵增”登记成已证机制。E65五规则的许可恢复依赖人设/任务；合法block增加，E66 asset相对none在两模型反向。C04记录范围明确的任务/合作共存，C05只记录固定上下文canonical动作概率的直接规则效应，保持原实际episode主读数。

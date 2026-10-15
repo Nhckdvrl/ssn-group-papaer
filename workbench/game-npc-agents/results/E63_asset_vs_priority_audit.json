@@ -1,0 +1,177 @@
+{
+  "analysis": "POST-HOC audit of reviewer comparisons",
+  "models": {
+    "32b": {
+      "asset_minus_generic": {
+        "firm": {
+          "actual_goal": {
+            "mean": -0.06833333333333332,
+            "graph_bootstrap_95": [
+              -0.09666666666666666,
+              -0.04
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": 0.03333333333333333,
+            "graph_bootstrap_95": [
+              0.015,
+              0.05333333333333333
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.025,
+            "graph_bootstrap_95": [
+              0.011666666666666665,
+              0.04
+            ],
+            "independent_graphs": 200
+          }
+        },
+        "agreeable": {
+          "actual_goal": {
+            "mean": -0.13333333333333333,
+            "graph_bootstrap_95": [
+              -0.1767083333333333,
+              -0.09166666666666667
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": 0.10833333333333332,
+            "graph_bootstrap_95": [
+              0.07,
+              0.14833333333333332
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.016666666666666666,
+            "graph_bootstrap_95": [
+              0.006666666666666666,
+              0.028333333333333332
+            ],
+            "independent_graphs": 200
+          }
+        }
+      },
+      "source_sha256": "8b872b2d6baa9aac24a9078ad146ab52f3dacb6b8a978c89203d0fb2283b70f5"
+    },
+    "27b": {
+      "asset_minus_generic": {
+        "firm": {
+          "actual_goal": {
+            "mean": -0.034999999999999996,
+            "graph_bootstrap_95": [
+              -0.05833333333333333,
+              -0.013333333333333332
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": 0.008333333333333333,
+            "graph_bootstrap_95": [
+              -0.0016666666666666666,
+              0.02
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.003333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.008333333333333333
+            ],
+            "independent_graphs": 200
+          }
+        },
+        "agreeable": {
+          "actual_goal": {
+            "mean": -0.01,
+            "graph_bootstrap_95": [
+              -0.03666666666666667,
+              0.015
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": -0.005,
+            "graph_bootstrap_95": [
+              -0.021666666666666664,
+              0.011666666666666665
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              -0.006666666666666666,
+              0.006666666666666666
+            ],
+            "independent_graphs": 200
+          }
+        }
+      },
+      "source_sha256": "f149382b443b1564971c09846f9dfe95e8021955c1be8c380e2bac55c49cf7fc"
+    },
+    "gemma": {
+      "asset_minus_generic": {
+        "firm": {
+          "actual_goal": {
+            "mean": -0.3133333333333333,
+            "graph_bootstrap_95": [
+              -0.3733333333333333,
+              -0.2533333333333333
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": 0.07666666666666667,
+            "graph_bootstrap_95": [
+              0.04666666666666666,
+              0.11166666666666664
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.12333333333333332,
+            "graph_bootstrap_95": [
+              0.07,
+              0.17833333333333332
+            ],
+            "independent_graphs": 200
+          }
+        },
+        "agreeable": {
+          "actual_goal": {
+            "mean": -0.285,
+            "graph_bootstrap_95": [
+              -0.34,
+              -0.23
+            ],
+            "independent_graphs": 200
+          },
+          "actual_request": {
+            "mean": 0.16666666666666663,
+            "graph_bootstrap_95": [
+              0.12333333333333332,
+              0.21
+            ],
+            "independent_graphs": 200
+          },
+          "replay_goal_but_no_actual_goal": {
+            "mean": 0.07333333333333333,
+            "graph_bootstrap_95": [
+              0.03166666666666667,
+              0.115
+            ],
+            "independent_graphs": 200
+          }
+        }
+      },
+      "source_sha256": "06ab53cf31460a292e6d5268bb82d7381083df297a44c2188432d103c0af73fc"
+    }
+  },
+  "model_calls": 0
+}
