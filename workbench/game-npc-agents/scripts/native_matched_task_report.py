@@ -40,8 +40,13 @@ def metrics(r,source):
        'repeat_block_errors':float(sum('already blocking' in h.get('error','').lower() for h in history)),
        'steps':float(len(history))}
     if r['panel']=='matched':
-        original=source['case']['goal_command']
-        authored=[h for h in valid if h['command']==original]
+        c=source['case'];kind=c['goal_kind']
+        authored=[h for h in valid if
+                  (kind=='give' and h['event_type']=='GiveObjectEvent'
+                   and h['before'][item]['container']==h['actor']
+                   and h['after'][item]['container']==c['original_recipient']) or
+                  (kind in ['wear','wield'] and h['event_type']=={'wear':'WearEvent','wield':'WieldEvent'}[kind]
+                   and h['before'][item]['equipped']!=kind and h['after'][item]['equipped']==kind)]
         v.update(authored_atomic_event=float(bool(authored)),
                  assigned_and_authored_events=float(bool(r['goal_executed'] and authored)))
     if r['panel']=='continuation':

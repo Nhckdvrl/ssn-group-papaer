@@ -1,0 +1,995 @@
+{
+  "status": "COMPLETE",
+  "design": "ADAPTIVE / POST-HOC control following the prespecified Panel A result.",
+  "worlds": 3,
+  "episodes": 72,
+  "counts": {
+    "firm/generic_priority/completion_notice": {
+      "trajectories": 9,
+      "goal": 3.0,
+      "request": 4.0,
+      "both": 0.0
+    },
+    "firm/generic_priority/mechanics_fact": {
+      "trajectories": 9,
+      "goal": 3.0,
+      "request": 4.0,
+      "both": 0.0
+    },
+    "firm/negative_only/completion_notice": {
+      "trajectories": 9,
+      "goal": 7.0,
+      "request": 0.0,
+      "both": 0.0
+    },
+    "firm/negative_only/mechanics_fact": {
+      "trajectories": 9,
+      "goal": 7.0,
+      "request": 0.0,
+      "both": 0.0
+    },
+    "agreeable/generic_priority/completion_notice": {
+      "trajectories": 9,
+      "goal": 2.0,
+      "request": 7.0,
+      "both": 0.0
+    },
+    "agreeable/generic_priority/mechanics_fact": {
+      "trajectories": 9,
+      "goal": 2.0,
+      "request": 7.0,
+      "both": 0.0
+    },
+    "agreeable/negative_only/completion_notice": {
+      "trajectories": 9,
+      "goal": 6.0,
+      "request": 3.0,
+      "both": 0.0
+    },
+    "agreeable/negative_only/mechanics_fact": {
+      "trajectories": 9,
+      "goal": 6.0,
+      "request": 3.0,
+      "both": 0.0
+    }
+  },
+  "cells": {
+    "firm/generic_priority/completion_notice": {
+      "goal": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.4444444444444444,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/generic_priority/mechanics_fact": {
+      "goal": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.4444444444444444,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3333333333333333
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/negative_only/completion_notice": {
+      "goal": {
+        "mean": 0.7777777777777777,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.7777777777777777,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/negative_only/mechanics_fact": {
+      "goal": {
+        "mean": 0.7777777777777777,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3333333333333333
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/generic_priority/completion_notice": {
+      "goal": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.7777777777777778,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/generic_priority/mechanics_fact": {
+      "goal": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.7777777777777778,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/negative_only/completion_notice": {
+      "goal": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/negative_only/mechanics_fact": {
+      "goal": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.0,
+          0.6666666666666666
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    }
+  },
+  "paired_differences": {
+    "firm/generic_priority/completion_notice": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/generic_priority/mechanics_fact": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": -0.2222222222222222,
+        "graph_bootstrap_95": [
+          -0.6666666666666666,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/negative_only/completion_notice": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "firm/negative_only/mechanics_fact": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": -0.6666666666666666,
+        "graph_bootstrap_95": [
+          -1.0,
+          -0.3333333333333333
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/generic_priority/completion_notice": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/generic_priority/mechanics_fact": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": -0.2222222222222222,
+        "graph_bootstrap_95": [
+          -0.6666666666666666,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/negative_only/completion_notice": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    },
+    "agreeable/negative_only/mechanics_fact": {
+      "goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "both": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "goal_then_request": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "final_goal_holds": {
+        "mean": -0.4444444444444444,
+        "graph_bootstrap_95": [
+          -1.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 3
+      }
+    }
+  },
+  "all_changed_outcomes": [],
+  "descriptive_posthoc_action_diagnostics": {
+    "completion_notice": {
+      "episodes": 36,
+      "action_sequence_changed": 14,
+      "target_remove_episodes": 0,
+      "target_drop_episodes": 0
+    },
+    "mechanics_fact": {
+      "episodes": 36,
+      "action_sequence_changed": 18,
+      "target_remove_episodes": 17,
+      "target_drop_episodes": 6
+    }
+  },
+  "descriptive_posthoc_woman_traces": [
+    {
+      "case_id": "063911927a783158",
+      "seed": 6801,
+      "persona": "firm",
+      "rule": "negative_only",
+      "control": "completion_notice",
+      "goal_command": "wield food",
+      "request_given": false,
+      "both_completed": false,
+      "history": [
+        {
+          "command": "wield food",
+          "legal": true,
+          "event_type": "WieldEvent"
+        },
+        {
+          "command": "give a basket to dogs",
+          "legal": true,
+          "event_type": "GiveObjectEvent"
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent"
+        },
+        {
+          "command": "reward dogs",
+          "legal": true,
+          "event_type": "RewardEvent"
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent"
+        },
+        {
+          "command": "reward dogs",
+          "legal": true,
+          "event_type": "RewardEvent"
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent"
+        },
+        {
+          "command": "reward dogs",
+          "legal": true,
+          "event_type": "RewardEvent"
+        }
+      ]
+    },
+    {
+      "case_id": "063911927a783158",
+      "seed": 6801,
+      "persona": "firm",
+      "rule": "negative_only",
+      "control": "mechanics_fact",
+      "goal_command": "wield food",
+      "request_given": false,
+      "both_completed": false,
+      "history": [
+        {
+          "command": "wield food",
+          "legal": true,
+          "event_type": "WieldEvent"
+        },
+        {
+          "command": "remove food",
+          "legal": true,
+          "event_type": "RemoveObjectEvent"
+        },
+        {
+          "command": "drop food",
+          "legal": true,
+          "event_type": "DropObjectEvent"
+        },
+        {
+          "command": "drop a basket",
+          "legal": true,
+          "event_type": "DropObjectEvent"
+        },
+        {
+          "command": "examine food",
+          "legal": true,
+          "event_type": "ExamineEvent"
+        },
+        {
+          "command": "get food",
+          "legal": true,
+          "event_type": "GetObjectEvent"
+        },
+        {
+          "command": "drop food",
+          "legal": true,
+          "event_type": "DropObjectEvent"
+        },
+        {
+          "command": "get food",
+          "legal": true,
+          "event_type": "GetObjectEvent"
+        }
+      ]
+    }
+  ],
+  "actual_calls": 212,
+  "parse_errors": 0,
+  "prompt_tokens": 209251,
+  "completion_tokens": 15432,
+  "runtime": {
+    "episodes": 72,
+    "calls": 212,
+    "reused_calls": 364,
+    "wall_seconds": 87.41091939294711,
+    "model_load_seconds": 34.35022023099009,
+    "pre_goal_histories_identical": true,
+    "cloud_calls": 0
+  },
+  "scope": "All original worlds/seeds retained; no population-frequency inference from three worlds. Changes begin only after the same native goal event."
+}

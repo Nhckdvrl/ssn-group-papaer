@@ -1,0 +1,255 @@
+{
+  "design": "POST-HOC descriptive E68 comparison on the exact E69 reserve-source subset; not a randomized prompt/seed intervention.",
+  "worlds": 43,
+  "old_seeds": [
+    6801,
+    6802,
+    6803
+  ],
+  "new_seeds": [
+    6901,
+    6902,
+    6903
+  ],
+  "new_wrapper": "Current assigned task in every stage plus game-master clarification appended to the system message.",
+  "models": {
+    "gemma": {
+      "old_cells": {
+        "give/firm": {
+          "goal": {
+            "mean": 0.8064516129032259,
+            "graph_bootstrap_95": [
+              0.7096774193548386,
+              0.9032258064516128
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": 0.4838709677419355,
+            "graph_bootstrap_95": [
+              0.3333333333333333,
+              0.6236559139784946
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "give/agreeable": {
+          "goal": {
+            "mean": 0.8817204301075269,
+            "graph_bootstrap_95": [
+              0.7741935483870968,
+              0.9677419354838709
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": 0.6666666666666669,
+            "graph_bootstrap_95": [
+              0.5053763440860215,
+              0.8064516129032258
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "equip/firm": {
+          "goal": {
+            "mean": 0.75,
+            "graph_bootstrap_95": [
+              0.5277777777777777,
+              0.9444444444444444
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": 0.3611111111111111,
+            "graph_bootstrap_95": [
+              0.16666666666666666,
+              0.5833333333333333
+            ],
+            "independent_graphs": 12
+          }
+        },
+        "equip/agreeable": {
+          "goal": {
+            "mean": 0.7222222222222222,
+            "graph_bootstrap_95": [
+              0.49999999999999994,
+              0.9166666666666666
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": 0.38888888888888884,
+            "graph_bootstrap_95": [
+              0.16666666666666666,
+              0.611111111111111
+            ],
+            "independent_graphs": 12
+          }
+        }
+      },
+      "old_A_minus_F": {
+        "give": {
+          "goal": {
+            "mean": 0.07526881720430108,
+            "graph_bootstrap_95": [
+              -0.021505376344086027,
+              0.17204301075268819
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": 0.18279569892473116,
+            "graph_bootstrap_95": [
+              0.021505376344086023,
+              0.3548387096774193
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "equip": {
+          "goal": {
+            "mean": -0.027777777777777776,
+            "graph_bootstrap_95": [
+              -0.16666666666666666,
+              0.1111111111111111
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": 0.02777777777777778,
+            "graph_bootstrap_95": [
+              -0.2222222222222222,
+              0.27777777777777773
+            ],
+            "independent_graphs": 12
+          }
+        }
+      },
+      "rows": 258,
+      "source_sha256": {
+        "/home/xiang/.cache/game-npc-research/runs/e68_gemma_reserve_s0/episodes.jsonl": "64a9f07162b3294c496e744f1a4312118016898190532c35edf9d17cb323b219",
+        "/home/xiang/.cache/game-npc-research/runs/e68_gemma_reserve_s1/episodes.jsonl": "52a9dac0f7af9deecbfb69f5636d219c6c99ae661199f82eb1cdf2062ea5db1e"
+      }
+    },
+    "32b": {
+      "old_cells": {
+        "give/firm": {
+          "goal": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              0.9999999999999999,
+              1.0
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": 0.8709677419354839,
+            "graph_bootstrap_95": [
+              0.7741935483870968,
+              0.946236559139785
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "give/agreeable": {
+          "goal": {
+            "mean": 0.989247311827957,
+            "graph_bootstrap_95": [
+              0.9677419354838709,
+              1.0
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": 0.8602150537634408,
+            "graph_bootstrap_95": [
+              0.7526881720430108,
+              0.946236559139785
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "equip/firm": {
+          "goal": {
+            "mean": 0.9722222222222222,
+            "graph_bootstrap_95": [
+              0.9166666666666666,
+              1.0
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": 0.6388888888888888,
+            "graph_bootstrap_95": [
+              0.38888888888888884,
+              0.8611111111111112
+            ],
+            "independent_graphs": 12
+          }
+        },
+        "equip/agreeable": {
+          "goal": {
+            "mean": 0.9166666666666665,
+            "graph_bootstrap_95": [
+              0.8055555555555555,
+              1.0
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": 0.5555555555555555,
+            "graph_bootstrap_95": [
+              0.36111111111111105,
+              0.7499999999999999
+            ],
+            "independent_graphs": 12
+          }
+        }
+      },
+      "old_A_minus_F": {
+        "give": {
+          "goal": {
+            "mean": -0.01075268817204301,
+            "graph_bootstrap_95": [
+              -0.03225806451612903,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "first_step_goal": {
+            "mean": -0.010752688172043013,
+            "graph_bootstrap_95": [
+              -0.11827956989247312,
+              0.08602150537634409
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "equip": {
+          "goal": {
+            "mean": -0.05555555555555555,
+            "graph_bootstrap_95": [
+              -0.13888888888888887,
+              0.0
+            ],
+            "independent_graphs": 12
+          },
+          "first_step_goal": {
+            "mean": -0.08333333333333333,
+            "graph_bootstrap_95": [
+              -0.2222222222222222,
+              0.08333333333333331
+            ],
+            "independent_graphs": 12
+          }
+        }
+      },
+      "rows": 258,
+      "source_sha256": {
+        "/home/xiang/.cache/game-npc-research/runs/e68_32b_reserve_s0/episodes.jsonl": "a3ce38efdd19c627d0cc61f598d4727f2cd3ff976f250ca80318ecaf8e2a4f18",
+        "/home/xiang/.cache/game-npc-research/runs/e68_32b_reserve_s1/episodes.jsonl": "c334cc14d812cb9ebc343930900276bf83328fec2e8e552ac57458daf589c78b"
+      }
+    }
+  }
+}
