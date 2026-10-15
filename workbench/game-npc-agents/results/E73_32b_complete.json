@@ -1,0 +1,5919 @@
+{
+  "status": "COMPLETE",
+  "experiment": "E73",
+  "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+  "worlds": 117,
+  "new_episodes": 1404,
+  "total_compared_episodes": 4212,
+  "cells": {
+    "firm/aligned_initial_feedback": {
+      "to_goal": {
+        "mean": 0.9857549857549859,
+        "graph_bootstrap_95": [
+          0.968660968660969,
+          0.9971509971509976
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.9857549857549859,
+        "graph_bootstrap_95": [
+          0.968660968660969,
+          0.9971509971509976
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.9886039886039887,
+        "graph_bootstrap_95": [
+          0.9772079772079773,
+          0.9971509971509976
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.943019943019943,
+        "graph_bootstrap_95": [
+          0.9088319088319093,
+          0.9715099715099714
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.9230769230769232,
+        "graph_bootstrap_95": [
+          0.8860398860398863,
+          0.9544159544159547
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.9230769230769232,
+        "graph_bootstrap_95": [
+          0.8860398860398863,
+          0.9544159544159547
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 2.2108262108262107,
+        "graph_bootstrap_95": [
+          2.094017094017095,
+          2.3646723646723644
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.9857549857549859,
+        "graph_bootstrap_95": [
+          0.968660968660969,
+          0.9971509971509976
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.019943019943019943,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.042735042735042736
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.08831908831908832,
+        "graph_bootstrap_95": [
+          0.008547008547008548,
+          0.21937321937321935
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 2.1965811965811968,
+        "graph_bootstrap_95": [
+          2.0911680911680914,
+          2.3361823361823353
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.8005698005698005,
+        "graph_bootstrap_95": [
+          0.7378917378917383,
+          0.8575498575498576
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02564102564102564
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.19088319088319086,
+        "graph_bootstrap_95": [
+          0.13675213675213674,
+          0.2507122507122507
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/aligned_initial_feedback": {
+      "to_goal": {
+        "mean": 0.9943019943019944,
+        "graph_bootstrap_95": [
+          0.9829059829059827,
+          1.0000000000000004
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.9943019943019944,
+        "graph_bootstrap_95": [
+          0.9829059829059827,
+          1.0000000000000004
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.9487179487179487,
+        "graph_bootstrap_95": [
+          0.9116809116809124,
+          0.9772079772079775
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.9259259259259259,
+        "graph_bootstrap_95": [
+          0.888888888888889,
+          0.9601139601139602
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.9259259259259259,
+        "graph_bootstrap_95": [
+          0.888888888888889,
+          0.9601139601139602
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 2.1851851851851856,
+        "graph_bootstrap_95": [
+          2.076923076923077,
+          2.3361823361823357
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.9943019943019944,
+        "graph_bootstrap_95": [
+          0.9829059829059827,
+          1.0000000000000004
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.02564102564102564,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.05698005698005698
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2022792022792023
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 2.1794871794871793,
+        "graph_bootstrap_95": [
+          2.076923076923077,
+          2.3190883190883187
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.9373219373219372,
+        "graph_bootstrap_95": [
+          0.9002849002849006,
+          0.9686609686609691
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.03133903133903134,
+          0.09971509971509972
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/aligned_valid_candidates": {
+      "to_goal": {
+        "mean": 0.5811965811965812,
+        "graph_bootstrap_95": [
+          0.5042735042735044,
+          0.6581196581196581
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.41880341880341876,
+        "graph_bootstrap_95": [
+          0.34188034188034205,
+          0.4957264957264961
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.5811965811965812,
+        "graph_bootstrap_95": [
+          0.5042735042735044,
+          0.6581196581196581
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.5925925925925926,
+        "graph_bootstrap_95": [
+          0.5128205128205131,
+          0.6695156695156698
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.17663817663817663,
+        "graph_bootstrap_95": [
+          0.11965811965811964,
+          0.2421652421652421
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.17663817663817663,
+        "graph_bootstrap_95": [
+          0.11965811965811964,
+          0.2421652421652421
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.17663817663817663,
+        "graph_bootstrap_95": [
+          0.11965811965811964,
+          0.2421652421652421
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 5.877492877492877,
+        "graph_bootstrap_95": [
+          5.404558404558404,
+          6.353276353276353
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.5982905982905983,
+        "graph_bootstrap_95": [
+          0.5213675213675216,
+          0.6752136752136754
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.5327635327635327,
+        "graph_bootstrap_95": [
+          0.44729344729344755,
+          0.6210826210826212
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.15954415954415951,
+        "graph_bootstrap_95": [
+          0.10826210826210825,
+          0.21652421652421652
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.2905982905982906,
+        "graph_bootstrap_95": [
+          0.18233618233618232,
+          0.41310541310541316
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 1.7635327635327633,
+        "graph_bootstrap_95": [
+          1.2592592592592593,
+          2.2849715099715104
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 5.4586894586894585,
+        "graph_bootstrap_95": [
+          5.05690883190883,
+          5.8632478632478655
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.41880341880341876,
+        "graph_bootstrap_95": [
+          0.34188034188034205,
+          0.4957264957264961
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.8005698005698005,
+        "graph_bootstrap_95": [
+          0.7378917378917383,
+          0.8575498575498576
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02564102564102564
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.19088319088319086,
+        "graph_bootstrap_95": [
+          0.13675213675213674,
+          0.2507122507122507
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/aligned_valid_candidates": {
+      "to_goal": {
+        "mean": 0.6495726495726495,
+        "graph_bootstrap_95": [
+          0.5697293447293449,
+          0.7264957264957266
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.35042735042735035,
+        "graph_bootstrap_95": [
+          0.27350427350427353,
+          0.4302706552706557
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.6495726495726495,
+        "graph_bootstrap_95": [
+          0.5697293447293449,
+          0.7264957264957266
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.658119658119658,
+        "graph_bootstrap_95": [
+          0.5783475783475786,
+          0.7350427350427351
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.2022792022792023,
+        "graph_bootstrap_95": [
+          0.13960113960113957,
+          0.2678062678062678
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.2022792022792023,
+        "graph_bootstrap_95": [
+          0.13960113960113957,
+          0.2678062678062678
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.2022792022792023,
+        "graph_bootstrap_95": [
+          0.13960113960113957,
+          0.2678062678062678
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 5.472934472934473,
+        "graph_bootstrap_95": [
+          5.0027065527065515,
+          5.962962962962963
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.6638176638176637,
+        "graph_bootstrap_95": [
+          0.5811965811965816,
+          0.7407407407407408
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.527065527065527,
+        "graph_bootstrap_95": [
+          0.44159544159544173,
+          0.6153846153846156
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.0997150997150997,
+        "graph_bootstrap_95": [
+          0.05982905982905984,
+          0.1452991452991453
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.21937321937321935,
+        "graph_bootstrap_95": [
+          0.14245014245014248,
+          0.2963675213675217
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 1.757834757834758,
+        "graph_bootstrap_95": [
+          1.2591880341880342,
+          2.316239316239316
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 5.1225071225071215,
+        "graph_bootstrap_95": [
+          4.71794871794872,
+          5.535612535612538
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.35042735042735035,
+        "graph_bootstrap_95": [
+          0.27350427350427353,
+          0.4302706552706557
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.9373219373219372,
+        "graph_bootstrap_95": [
+          0.9002849002849006,
+          0.9686609686609691
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.03133903133903134,
+          0.09971509971509972
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/aligned_goal_candidates": {
+      "to_goal": {
+        "mean": 0.9829059829059829,
+        "graph_bootstrap_95": [
+          0.9686609686609687,
+          0.9943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.9829059829059829,
+        "graph_bootstrap_95": [
+          0.9686609686609687,
+          0.9943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.9914529914529915,
+        "graph_bootstrap_95": [
+          0.9800569800569804,
+          1.0000000000000002
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 3.219373219373219,
+        "graph_bootstrap_95": [
+          3.105413105413103,
+          3.361823361823359
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.9829059829059829,
+        "graph_bootstrap_95": [
+          0.9686609686609687,
+          0.9943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02564102564102564
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017096
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 1.1396011396011394,
+        "graph_bootstrap_95": [
+          1.054131054131054,
+          1.2535612535612533
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 3.202279202279202,
+        "graph_bootstrap_95": [
+          3.096866096866095,
+          3.333404558404558
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.8005698005698005,
+        "graph_bootstrap_95": [
+          0.7378917378917383,
+          0.8575498575498576
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02564102564102564
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.19088319088319086,
+        "graph_bootstrap_95": [
+          0.13675213675213674,
+          0.2507122507122507
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/aligned_goal_candidates": {
+      "to_goal": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 3.1196581196581197,
+        "graph_bootstrap_95": [
+          3.0512820512820475,
+          3.2051282051282013
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 1.0,
+        "graph_bootstrap_95": [
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02564102564102564
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 1.0712250712250713,
+        "graph_bootstrap_95": [
+          1.0256410256410255,
+          1.1310541310541307
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 3.1196581196581197,
+        "graph_bootstrap_95": [
+          3.0512820512820475,
+          3.2051282051282013
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.9373219373219372,
+        "graph_bootstrap_95": [
+          0.9002849002849006,
+          0.9686609686609691
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.03133903133903134,
+          0.09971509971509972
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/divert_initial_feedback": {
+      "to_goal": {
+        "mean": 0.7777777777777777,
+        "graph_bootstrap_95": [
+          0.7122507122507127,
+          0.8376068376068379
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.02279202279202279,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.04558404558404559
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.1994301994301994,
+        "graph_bootstrap_95": [
+          0.14245014245014243,
+          0.2621082621082621
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.02279202279202279,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.04558404558404559
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.8176638176638176,
+        "graph_bootstrap_95": [
+          0.757834757834758,
+          0.8746438746438748
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.4700854700854701,
+        "graph_bootstrap_95": [
+          0.398860398860399,
+          0.5413105413105415
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.4358974358974359,
+        "graph_bootstrap_95": [
+          0.3675213675213676,
+          0.5071225071225073
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.452991452991453,
+        "graph_bootstrap_95": [
+          0.381766381766382,
+          0.5242165242165244
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 4.182336182336182,
+        "graph_bootstrap_95": [
+          3.766381766381767,
+          4.618233618233619
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.7777777777777777,
+        "graph_bootstrap_95": [
+          0.7122507122507127,
+          0.8376068376068379
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.10256410256410256,
+        "graph_bootstrap_95": [
+          0.0626780626780627,
+          0.1481481481481481
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.04843304843304843,
+        "graph_bootstrap_95": [
+          0.022792022792022793,
+          0.07977207977207977
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.3789173789173789,
+        "graph_bootstrap_95": [
+          0.30769230769230776,
+          0.4558404558404559
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.07977207977207977,
+        "graph_bootstrap_95": [
+          0.03418803418803419,
+          0.1339031339031339
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.3817663817663817,
+        "graph_bootstrap_95": [
+          0.1339031339031339,
+          0.6666666666666667
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 3.9829059829059834,
+        "graph_bootstrap_95": [
+          3.6210826210826226,
+          4.364672364672365
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.1994301994301994,
+        "graph_bootstrap_95": [
+          0.14245014245014243,
+          0.2621082621082621
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.05698005698005698,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.09116809116809119
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.7122507122507122,
+        "graph_bootstrap_95": [
+          0.6438746438746442,
+          0.7720797720797725
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.23076923076923078,
+        "graph_bootstrap_95": [
+          0.17663817663817669,
+          0.2905982905982906
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/divert_initial_feedback": {
+      "to_goal": {
+        "mean": 0.8005698005698005,
+        "graph_bootstrap_95": [
+          0.7407407407407411,
+          0.8575498575498575
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.05982905982905983,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.0997150997150997
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.1396011396011396,
+        "graph_bootstrap_95": [
+          0.09116809116809117,
+          0.19373219373219372
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.05982905982905983,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.0997150997150997
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.8746438746438746,
+        "graph_bootstrap_95": [
+          0.8232905982905983,
+          0.9202279202279204
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.5213675213675213,
+        "graph_bootstrap_95": [
+          0.44729344729344755,
+          0.5954415954415955
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.4472934472934473,
+        "graph_bootstrap_95": [
+          0.3817663817663818,
+          0.515669515669516
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.5042735042735043,
+        "graph_bootstrap_95": [
+          0.43304843304843327,
+          0.5754985754985759
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 3.7094017094017095,
+        "graph_bootstrap_95": [
+          3.3390313390313398,
+          4.108262108262108
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.8062678062678063,
+        "graph_bootstrap_95": [
+          0.7492877492877495,
+          0.8603988603988608
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.06552706552706553,
+        "graph_bootstrap_95": [
+          0.028490028490028494,
+          0.10826210826210825
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.0,
+          0.037037037037037035
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.36752136752136755,
+        "graph_bootstrap_95": [
+          0.2962962962962964,
+          0.4387464387464389
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.039886039886039885,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.08831908831908832
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.24216524216524218,
+        "graph_bootstrap_95": [
+          0.08539886039886042,
+          0.4415954415954416
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 3.5698005698005693,
+        "graph_bootstrap_95": [
+          3.2420940170940185,
+          3.9173789173789175
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.1396011396011396,
+        "graph_bootstrap_95": [
+          0.09116809116809117,
+          0.19373219373219372
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.23931623931623933,
+        "graph_bootstrap_95": [
+          0.17663817663817666,
+          0.3076923076923077
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.2678062678062678,
+        "graph_bootstrap_95": [
+          0.20505698005698006,
+          0.3333333333333334
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.4928774928774929,
+        "graph_bootstrap_95": [
+          0.42165242165242195,
+          0.5641025641025642
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/divert_valid_candidates": {
+      "to_goal": {
+        "mean": 0.21367521367521364,
+        "graph_bootstrap_95": [
+          0.1538461538461538,
+          0.27635327635327633
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.7806267806267807,
+        "graph_bootstrap_95": [
+          0.7179487179487182,
+          0.8405270655270664
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.2336182336182336,
+        "graph_bootstrap_95": [
+          0.17378917378917375,
+          0.29629629629629634
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.031339031339031334,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.06267806267806268
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.05982905982905983
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.05982905982905983
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 8.017094017094015,
+        "graph_bootstrap_95": [
+          7.689458689458689,
+          8.324786324786322
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.22222222222222218,
+        "graph_bootstrap_95": [
+          0.15954415954415951,
+          0.2877492877492877
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.49572649572649574,
+        "graph_bootstrap_95": [
+          0.4102564102564104,
+          0.5840455840455842
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.1339031339031339,
+        "graph_bootstrap_95": [
+          0.08547008547008547,
+          0.188034188034188
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.6695156695156695,
+        "graph_bootstrap_95": [
+          0.592592592592593,
+          0.743589743589744
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.3162393162393162,
+        "graph_bootstrap_95": [
+          0.20227920227920226,
+          0.435897435897436
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 1.0512820512820513,
+        "graph_bootstrap_95": [
+          0.6951566951566953,
+          1.433048433048433
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 7.236467236467237,
+        "graph_bootstrap_95": [
+          6.968660968660973,
+          7.487179487179486
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.7806267806267807,
+        "graph_bootstrap_95": [
+          0.7179487179487182,
+          0.8405270655270664
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.05698005698005698,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.09116809116809119
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.7122507122507122,
+        "graph_bootstrap_95": [
+          0.6438746438746442,
+          0.7720797720797725
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.23076923076923078,
+        "graph_bootstrap_95": [
+          0.17663817663817669,
+          0.2905982905982906
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/divert_valid_candidates": {
+      "to_goal": {
+        "mean": 0.23076923076923073,
+        "graph_bootstrap_95": [
+          0.17094017094017092,
+          0.2962962962962963
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.02849002849002849
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.7549857549857549,
+        "graph_bootstrap_95": [
+          0.6893874643874643,
+          0.8176638176638179
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.02849002849002849
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.25925925925925924,
+        "graph_bootstrap_95": [
+          0.19658119658119655,
+          0.32763532763532766
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.03133903133903134,
+        "graph_bootstrap_95": [
+          0.008547008547008548,
+          0.05982905982905983
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.05698005698005698
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.03133903133903134,
+        "graph_bootstrap_95": [
+          0.008547008547008548,
+          0.05982905982905983
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 7.937321937321938,
+        "graph_bootstrap_95": [
+          7.603988603988604,
+          8.239316239316235
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.24216524216524216,
+        "graph_bootstrap_95": [
+          0.17948717948717946,
+          0.30769230769230776
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.5071225071225072,
+        "graph_bootstrap_95": [
+          0.42450142450142464,
+          0.5925925925925929
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.05698005698005697,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.09116809116809119
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.6495726495726496,
+        "graph_bootstrap_95": [
+          0.5754985754985756,
+          0.7207977207977213
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.1994301994301994,
+        "graph_bootstrap_95": [
+          0.11396011396011398,
+          0.2934472934472935
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 1.1481481481481481,
+        "graph_bootstrap_95": [
+          0.777777777777778,
+          1.5556267806267814
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 7.182336182336183,
+        "graph_bootstrap_95": [
+          6.911609686609686,
+          7.4273504273504285
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.7549857549857549,
+        "graph_bootstrap_95": [
+          0.6893874643874643,
+          0.8176638176638179
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.23931623931623933,
+        "graph_bootstrap_95": [
+          0.17663817663817666,
+          0.3076923076923077
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.2678062678062678,
+        "graph_bootstrap_95": [
+          0.20505698005698006,
+          0.3333333333333334
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.4928774928774929,
+        "graph_bootstrap_95": [
+          0.42165242165242195,
+          0.5641025641025642
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/divert_goal_candidates": {
+      "to_goal": {
+        "mean": 0.717948717948718,
+        "graph_bootstrap_95": [
+          0.6495726495726497,
+          0.7891737891737894
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.0,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.2678062678062678,
+        "graph_bootstrap_95": [
+          0.19943019943019943,
+          0.3361823361823363
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.014245014245014244,
+        "graph_bootstrap_95": [
+          0.0,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.7549857549857549,
+        "graph_bootstrap_95": [
+          0.6894586894586897,
+          0.8176638176638181
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 5.1111111111111125,
+        "graph_bootstrap_95": [
+          4.735042735042735,
+          5.5099715099715105
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.7236467236467237,
+        "graph_bootstrap_95": [
+          0.6552706552706554,
+          0.7920227920227926
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          0.0,
+          0.034188034188034185
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.06837606837606838,
+        "graph_bootstrap_95": [
+          0.03703703703703704,
+          0.1054131054131054
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 2.4387464387464393,
+        "graph_bootstrap_95": [
+          2.0997150997150986,
+          2.8005698005697996
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 4.843304843304844,
+        "graph_bootstrap_95": [
+          4.527065527065529,
+          5.185256410256413
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.2678062678062678,
+        "graph_bootstrap_95": [
+          0.19943019943019943,
+          0.3361823361823363
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.05698005698005698,
+        "graph_bootstrap_95": [
+          0.025641025641025644,
+          0.09116809116809119
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.7122507122507122,
+        "graph_bootstrap_95": [
+          0.6438746438746442,
+          0.7720797720797725
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.23076923076923078,
+        "graph_bootstrap_95": [
+          0.17663817663817669,
+          0.2905982905982906
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/divert_goal_candidates": {
+      "to_goal": {
+        "mean": 0.7549857549857549,
+        "graph_bootstrap_95": [
+          0.6980056980056981,
+          0.8091168091168095
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.04843304843304843,
+        "graph_bootstrap_95": [
+          0.022792022792022793,
+          0.07977207977207978
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.19658119658119655,
+        "graph_bootstrap_95": [
+          0.1452991452991453,
+          0.25356125356125353
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.04843304843304843,
+        "graph_bootstrap_95": [
+          0.022792022792022793,
+          0.07977207977207978
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.8290598290598289,
+        "graph_bootstrap_95": [
+          0.7749287749287749,
+          0.8774928774928777
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 4.737891737891738,
+        "graph_bootstrap_95": [
+          4.413105413105414,
+          5.099715099715097
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.7549857549857549,
+        "graph_bootstrap_95": [
+          0.6980056980056981,
+          0.8091168091168095
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.04558404558404559,
+          0.1054131054131054
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 2.2108262108262107,
+        "graph_bootstrap_95": [
+          1.917378917378917,
+          2.535683760683761
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 4.5413105413105415,
+        "graph_bootstrap_95": [
+          4.264957264957268,
+          4.846153846153848
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.19658119658119655,
+        "graph_bootstrap_95": [
+          0.1452991452991453,
+          0.25356125356125353
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.23931623931623933,
+        "graph_bootstrap_95": [
+          0.17663817663817666,
+          0.3076923076923077
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.2678062678062678,
+        "graph_bootstrap_95": [
+          0.20505698005698006,
+          0.3333333333333334
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.4928774928774929,
+        "graph_bootstrap_95": [
+          0.42165242165242195,
+          0.5641025641025642
+        ],
+        "independent_graphs": 117
+      }
+    }
+  },
+  "contrasts": {
+    "A_minus_F/aligned_initial_feedback": {
+      "to_goal": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.019943019943019943,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.022792022792022793
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.005698005698005698,
+        "graph_bootstrap_95": [
+          -0.017094017094017096,
+          0.028490028490028494
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.002849002849002849,
+        "graph_bootstrap_95": [
+          -0.02849002849002849,
+          0.037037037037037035
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.002849002849002849,
+        "graph_bootstrap_95": [
+          -0.02849002849002849,
+          0.037037037037037035
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.025641025641025644,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.05413105413105413
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.005698005698005698,
+        "graph_bootstrap_95": [
+          -0.011396011396011395,
+          0.02279202279202279
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.014245014245014244,
+        "graph_bootstrap_95": [
+          -0.03418803418803419,
+          0.002849002849002849
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.017094017094017096,
+        "graph_bootstrap_95": [
+          -0.09686609686609686,
+          0.05705128205128233
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.019943019943019943,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.13675213675213677,
+        "graph_bootstrap_95": [
+          0.09116809116809116,
+          0.188034188034188
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.02564102564102564,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": -0.1282051282051282,
+        "graph_bootstrap_95": [
+          -0.17663817663817663,
+          -0.08262108262108263
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "A_minus_F/aligned_valid_candidates": {
+      "to_goal": {
+        "mean": 0.06837606837606838,
+        "graph_bootstrap_95": [
+          0.0227920227920228,
+          0.11680911680911682
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.06837606837606838,
+        "graph_bootstrap_95": [
+          -0.11680911680911682,
+          -0.0227920227920228
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.06837606837606838,
+        "graph_bootstrap_95": [
+          0.0227920227920228,
+          0.11680911680911682
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.06552706552706553,
+        "graph_bootstrap_95": [
+          0.02279202279202279,
+          0.11111111111111113
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.025641025641025637,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.06267806267806267
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.025641025641025637,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.06267806267806267
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.025641025641025637,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.06267806267806267
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.4045584045584046,
+        "graph_bootstrap_95": [
+          -0.6695156695156694,
+          -0.15954415954415957
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.06552706552706553,
+        "graph_bootstrap_95": [
+          0.019943019943019946,
+          0.11396011396011399
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.005698005698005697,
+        "graph_bootstrap_95": [
+          -0.03133903133903134,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.05982905982905983,
+        "graph_bootstrap_95": [
+          -0.10826210826210823,
+          -0.017094017094017096
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.07122507122507123,
+        "graph_bootstrap_95": [
+          -0.14245014245014245,
+          -0.011396011396011398
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.005698005698005701,
+        "graph_bootstrap_95": [
+          -0.2877492877492877,
+          0.25648148148148175
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.3361823361823362,
+        "graph_bootstrap_95": [
+          -0.558404558404558,
+          -0.12820512820512828
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.06837606837606838,
+        "graph_bootstrap_95": [
+          -0.11680911680911682,
+          -0.0227920227920228
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.13675213675213677,
+        "graph_bootstrap_95": [
+          0.09116809116809116,
+          0.188034188034188
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.02564102564102564,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": -0.1282051282051282,
+        "graph_bootstrap_95": [
+          -0.17663817663817663,
+          -0.08262108262108263
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "A_minus_F/aligned_goal_candidates": {
+      "to_goal": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.017094017094017096,
+        "graph_bootstrap_95": [
+          -0.03133903133903134,
+          -0.005698005698005698
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.0997150997150997,
+        "graph_bootstrap_95": [
+          -0.2307692307692308,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          0.005698005698005698,
+          0.03133903133903134
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.017094017094017096,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.06837606837606837,
+        "graph_bootstrap_95": [
+          -0.17378917378917377,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.08262108262108263,
+        "graph_bootstrap_95": [
+          -0.1994301994301995,
+          0.022863247863248125
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.017094017094017096,
+        "graph_bootstrap_95": [
+          -0.03133903133903134,
+          -0.005698005698005698
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.13675213675213677,
+        "graph_bootstrap_95": [
+          0.09116809116809116,
+          0.188034188034188
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.02564102564102564,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": -0.1282051282051282,
+        "graph_bootstrap_95": [
+          -0.17663817663817663,
+          -0.08262108262108263
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/initial_feedback_minus_valid_candidates/aligned": {
+      "to_goal": {
+        "mean": 0.4045584045584045,
+        "graph_bootstrap_95": [
+          0.33048433048433057,
+          0.4814814814814817
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.4045584045584045,
+        "graph_bootstrap_95": [
+          -0.4814814814814817,
+          -0.33048433048433057
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.4045584045584045,
+        "graph_bootstrap_95": [
+          0.33048433048433057,
+          0.4814814814814817
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.39601139601139596,
+        "graph_bootstrap_95": [
+          0.321937321937322,
+          0.47578347578347585
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.7663817663817665,
+        "graph_bootstrap_95": [
+          0.6980056980056988,
+          0.8262108262108266
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.7464387464387464,
+        "graph_bootstrap_95": [
+          0.6780626780626781,
+          0.8091168091168093
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.7464387464387464,
+        "graph_bootstrap_95": [
+          0.6780626780626781,
+          0.8091168091168093
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -3.666666666666667,
+        "graph_bootstrap_95": [
+          -4.133974358974359,
+          -3.2279202279202277
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.38746438746438744,
+        "graph_bootstrap_95": [
+          0.3133903133903135,
+          0.46438746438746453
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.5128205128205128,
+        "graph_bootstrap_95": [
+          -0.5982905982905986,
+          -0.4301994301994304
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.15384615384615385,
+        "graph_bootstrap_95": [
+          -0.2108262108262108,
+          -0.09971509971509974
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.2849002849002849,
+        "graph_bootstrap_95": [
+          -0.4102564102564103,
+          -0.1737891737891738
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -1.675213675213675,
+        "graph_bootstrap_95": [
+          -2.1737891737891735,
+          -1.1965099715099712
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -3.262108262108262,
+        "graph_bootstrap_95": [
+          -3.658119658119658,
+          -2.886039886039886
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.4045584045584045,
+        "graph_bootstrap_95": [
+          -0.4814814814814817,
+          -0.33048433048433057
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/initial_feedback_minus_goal_candidates/aligned": {
+      "to_goal": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.019943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.019943019943019946,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.019943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.014245014245014245,
+          0.008547008547008548
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.014245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.943019943019943,
+        "graph_bootstrap_95": [
+          0.9088319088319093,
+          0.9715099715099714
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.9230769230769232,
+        "graph_bootstrap_95": [
+          0.8860398860398863,
+          0.9544159544159547
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.9230769230769232,
+        "graph_bootstrap_95": [
+          0.8860398860398863,
+          0.9544159544159547
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -1.0085470085470085,
+        "graph_bootstrap_95": [
+          -1.1623931623931618,
+          -0.8461538461538465
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.019943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.031339031339031334
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.014245014245014244,
+          0.005698005698005698
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -1.133903133903134,
+        "graph_bootstrap_95": [
+          -1.2478632478632472,
+          -1.0484330484330486
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.08831908831908832,
+        "graph_bootstrap_95": [
+          0.008547008547008548,
+          0.21937321937321935
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -1.0056980056980056,
+        "graph_bootstrap_95": [
+          -1.1424501424501423,
+          -0.8603988603988609
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.019943019943019946,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/initial_feedback_minus_valid_candidates/aligned": {
+      "to_goal": {
+        "mean": 0.34472934472934474,
+        "graph_bootstrap_95": [
+          0.2678062678062678,
+          0.42450142450142464
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.34472934472934474,
+        "graph_bootstrap_95": [
+          -0.42450142450142464,
+          -0.2678062678062678
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.34472934472934474,
+        "graph_bootstrap_95": [
+          0.2678062678062678,
+          0.42450142450142464
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.34188034188034183,
+        "graph_bootstrap_95": [
+          0.26495726495726496,
+          0.4216524216524218
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.7464387464387465,
+        "graph_bootstrap_95": [
+          0.6752136752136754,
+          0.811965811965812
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.7236467236467237,
+        "graph_bootstrap_95": [
+          0.6524216524216527,
+          0.7891737891737896
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.7236467236467237,
+        "graph_bootstrap_95": [
+          0.6524216524216527,
+          0.7891737891737896
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -3.2877492877492878,
+        "graph_bootstrap_95": [
+          -3.7607549857549856,
+          -2.84045584045584
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.33048433048433046,
+        "graph_bootstrap_95": [
+          0.2564102564102564,
+          0.41025641025641035
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.5014245014245013,
+        "graph_bootstrap_95": [
+          -0.5898148148148152,
+          -0.4159544159544163
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.09116809116809116,
+        "graph_bootstrap_95": [
+          -0.13675213675213677,
+          -0.051282051282051294
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.21652421652421652,
+        "graph_bootstrap_95": [
+          -0.29351851851851857,
+          -0.1396011396011396
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -1.683760683760684,
+        "graph_bootstrap_95": [
+          -2.2194444444444446,
+          -1.2022792022792026
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -2.9430199430199435,
+        "graph_bootstrap_95": [
+          -3.353276353276352,
+          -2.564031339031338
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.34472934472934474,
+        "graph_bootstrap_95": [
+          -0.42450142450142464,
+          -0.2678062678062678
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/initial_feedback_minus_goal_candidates/aligned": {
+      "to_goal": {
+        "mean": -0.005698005698005697,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": -0.005698005698005697,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.9487179487179487,
+        "graph_bootstrap_95": [
+          0.9116809116809124,
+          0.9772079772079775
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.9259259259259259,
+        "graph_bootstrap_95": [
+          0.888888888888889,
+          0.9601139601139602
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.9259259259259259,
+        "graph_bootstrap_95": [
+          0.888888888888889,
+          0.9601139601139602
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.9344729344729346,
+        "graph_bootstrap_95": [
+          -1.0512820512820515,
+          -0.7806267806267809
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": -0.005698005698005697,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.017094017094017092,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.039886039886039885
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          0.0,
+          0.019943019943019943
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -1.0683760683760684,
+        "graph_bootstrap_95": [
+          -1.128205128205128,
+          -1.0227920227920229
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2022792022792023
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.9401709401709402,
+        "graph_bootstrap_95": [
+          -1.0541310541310538,
+          -0.797720797720798
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.005698005698005697,
+        "graph_bootstrap_95": [
+          0.0,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "persona_x_initial_feedback/aligned": {
+      "to_goal": {
+        "mean": -0.059829059829059845,
+        "graph_bootstrap_95": [
+          -0.1082621082621083,
+          -0.014245014245014247
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": 0.059829059829059845,
+        "graph_bootstrap_95": [
+          0.014245014245014247,
+          0.1082621082621083
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": -0.059829059829059845,
+        "graph_bootstrap_95": [
+          -0.1082621082621083,
+          -0.014245014245014247
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": -0.05413105413105414,
+        "graph_bootstrap_95": [
+          -0.10256410256410257,
+          -0.011396011396011395
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008548,
+          0.017094017094017092
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": -0.019943019943019943,
+        "graph_bootstrap_95": [
+          -0.06267806267806268,
+          0.01994301994301995
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": -0.02279202279202279,
+        "graph_bootstrap_95": [
+          -0.06837606837606837,
+          0.019943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": -0.02279202279202279,
+        "graph_bootstrap_95": [
+          -0.06837606837606837,
+          0.019943019943019946
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": 0.37891737891737887,
+        "graph_bootstrap_95": [
+          0.13098290598290602,
+          0.6467236467236466
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": -0.05698005698005698,
+        "graph_bootstrap_95": [
+          -0.10826210826210825,
+          -0.0113960113960114
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.017094017094017096,
+          0.03988603988603989
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.011396011396011402,
+          0.11680911680911679
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.06837606837606838,
+        "graph_bootstrap_95": [
+          0.005698005698005701,
+          0.14245014245014245
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.008547008547008529,
+        "graph_bootstrap_95": [
+          -0.27350427350427353,
+          0.27350427350427353
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": 0.3190883190883191,
+        "graph_bootstrap_95": [
+          0.10826210826210836,
+          0.5441595441595442
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": 0.059829059829059845,
+        "graph_bootstrap_95": [
+          0.014245014245014247,
+          0.1082621082621083
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "A_minus_F/divert_initial_feedback": {
+      "to_goal": {
+        "mean": 0.022792022792022786,
+        "graph_bootstrap_95": [
+          -0.03703703703703704,
+          0.08262108262108261
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          0.0028490028490028496,
+          0.07692307692307693
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.059829059829059825,
+        "graph_bootstrap_95": [
+          -0.11396011396011396,
+          -0.00854700854700855
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          0.0028490028490028496,
+          0.07692307692307693
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.05698005698005698,
+        "graph_bootstrap_95": [
+          0.011396011396011395,
+          0.10541310541310542
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.05128205128205128,
+        "graph_bootstrap_95": [
+          -0.01709401709401708,
+          0.11965811965811966
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.051282051282051294,
+          0.07692307692307693
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.05128205128205127,
+        "graph_bootstrap_95": [
+          -0.01424501424501425,
+          0.11965811965811965
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.47293447293447294,
+        "graph_bootstrap_95": [
+          -0.8433760683760682,
+          -0.11965811965811984
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          -0.02849002849002848,
+          0.08547008547008547
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.07122507122507121,
+          -0.005698005698005699
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.034188034188034185,
+        "graph_bootstrap_95": [
+          -0.05982905982905984,
+          -0.011396011396011397
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.011396011396011391,
+        "graph_bootstrap_95": [
+          -0.0797720797720798,
+          0.05413105413105414
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.03988603988603988,
+        "graph_bootstrap_95": [
+          -0.07977207977207978,
+          -0.0028490028490028504
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.13960113960113957,
+        "graph_bootstrap_95": [
+          -0.3162393162393162,
+          7.12250712253352e-05
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.41310541310541304,
+        "graph_bootstrap_95": [
+          -0.737962962962963,
+          -0.10249287749287721
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.059829059829059825,
+        "graph_bootstrap_95": [
+          -0.11396011396011396,
+          -0.00854700854700855
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.18233618233618232,
+        "graph_bootstrap_95": [
+          0.1225071225071225,
+          0.24786324786324784
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.44444444444444436,
+        "graph_bootstrap_95": [
+          -0.512820512820513,
+          -0.3732193732193734
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.26210826210826216,
+        "graph_bootstrap_95": [
+          0.1794871794871795,
+          0.339031339031339
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "A_minus_F/divert_valid_candidates": {
+      "to_goal": {
+        "mean": 0.017094017094017096,
+        "graph_bootstrap_95": [
+          -0.028490028490028498,
+          0.06552706552706553
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.02279202279202279
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.02564102564102564,
+        "graph_bootstrap_95": [
+          -0.07977207977207976,
+          0.0227920227920228
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.02279202279202279
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.025641025641025644,
+        "graph_bootstrap_95": [
+          -0.019943019943019946,
+          0.07692307692307691
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": -4.744542840278447e-19,
+        "graph_bootstrap_95": [
+          -0.02849002849002849,
+          0.025641025641025644
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": -4.744542840278447e-19,
+        "graph_bootstrap_95": [
+          -0.02849002849002849,
+          0.025641025641025644
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0028490028490028483,
+        "graph_bootstrap_95": [
+          -0.02564102564102564,
+          0.031339031339031334
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.07977207977207976,
+        "graph_bootstrap_95": [
+          -0.32478632478632485,
+          0.1452991452991453
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.01994301994301994,
+        "graph_bootstrap_95": [
+          -0.025641025641025644,
+          0.06837606837606838
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.011396011396011398,
+        "graph_bootstrap_95": [
+          -0.03133903133903134,
+          0.05413105413105414
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.07692307692307691,
+        "graph_bootstrap_95": [
+          -0.10826210826210828,
+          -0.04558404558404559
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.01994301994301994,
+        "graph_bootstrap_95": [
+          -0.07407407407407407,
+          0.03418803418803419
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.11680911680911682,
+        "graph_bootstrap_95": [
+          -0.23931623931623927,
+          -0.008547008547008562
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.09686609686609687,
+        "graph_bootstrap_95": [
+          -0.09401709401709399,
+          0.29629629629629634
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.05413105413105411,
+        "graph_bootstrap_95": [
+          -0.25356125356125353,
+          0.13105413105413105
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.02564102564102564,
+        "graph_bootstrap_95": [
+          -0.07977207977207976,
+          0.0227920227920228
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.18233618233618232,
+        "graph_bootstrap_95": [
+          0.1225071225071225,
+          0.24786324786324784
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.44444444444444436,
+        "graph_bootstrap_95": [
+          -0.512820512820513,
+          -0.3732193732193734
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.26210826210826216,
+        "graph_bootstrap_95": [
+          0.1794871794871795,
+          0.339031339031339
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "A_minus_F/divert_goal_candidates": {
+      "to_goal": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.025641025641025633,
+          0.09686609686609687
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.03418803418803419,
+        "graph_bootstrap_95": [
+          0.011396011396011397,
+          0.06552706552706553
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.07122507122507121,
+        "graph_bootstrap_95": [
+          -0.1282051282051282,
+          -0.014245014245014256
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.03418803418803419,
+        "graph_bootstrap_95": [
+          0.011396011396011397,
+          0.06552706552706553
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0170940170940171,
+          0.13105413105413105
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.37321937321937326,
+        "graph_bootstrap_95": [
+          -0.6895299145299147,
+          -0.05128205128205131
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.03133903133903134,
+        "graph_bootstrap_95": [
+          -0.028490028490028498,
+          0.09116809116809119
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.022792022792022793,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.005698005698005698,
+        "graph_bootstrap_95": [
+          -0.031339031339031334,
+          0.042735042735042736
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.22792022792022792,
+        "graph_bootstrap_95": [
+          -0.4957264957264957,
+          0.03988603988603982
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.30199430199430194,
+        "graph_bootstrap_95": [
+          -0.5754985754985756,
+          -0.025641025641025633
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.07122507122507121,
+        "graph_bootstrap_95": [
+          -0.1282051282051282,
+          -0.014245014245014256
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.18233618233618232,
+        "graph_bootstrap_95": [
+          0.1225071225071225,
+          0.24786324786324784
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": -0.44444444444444436,
+        "graph_bootstrap_95": [
+          -0.512820512820513,
+          -0.3732193732193734
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.26210826210826216,
+        "graph_bootstrap_95": [
+          0.1794871794871795,
+          0.339031339031339
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/initial_feedback_minus_valid_candidates/divert": {
+      "to_goal": {
+        "mean": 0.5641025641025641,
+        "graph_bootstrap_95": [
+          0.49287749287749333,
+          0.6353276353276356
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.017094017094017092,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.03418803418803419
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.5811965811965812,
+        "graph_bootstrap_95": [
+          -0.6524216524216525,
+          -0.5128205128205129
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.017094017094017092,
+        "graph_bootstrap_95": [
+          0.002849002849002849,
+          0.03418803418803419
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.5840455840455839,
+        "graph_bootstrap_95": [
+          0.512820512820513,
+          0.6552706552706555
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.4387464387464387,
+        "graph_bootstrap_95": [
+          0.3675213675213676,
+          0.5099715099715103
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.40740740740740744,
+        "graph_bootstrap_95": [
+          0.3390313390313391,
+          0.4786324786324787
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.4245014245014245,
+        "graph_bootstrap_95": [
+          0.3532763532763534,
+          0.49572649572649585
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -3.8347578347578346,
+        "graph_bootstrap_95": [
+          -4.247934472934475,
+          -3.413105413105414
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.5555555555555556,
+        "graph_bootstrap_95": [
+          0.4843304843304846,
+          0.6296296296296297
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.39316239316239315,
+        "graph_bootstrap_95": [
+          -0.47293447293447305,
+          -0.31339031339031337
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.08547008547008546,
+        "graph_bootstrap_95": [
+          -0.13105413105413102,
+          -0.0398860398860399
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.2905982905982906,
+        "graph_bootstrap_95": [
+          -0.36467236467236475,
+          -0.21652421652421655
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.23646723646723647,
+        "graph_bootstrap_95": [
+          -0.34472934472934474,
+          -0.13390313390313388
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.6695156695156694,
+        "graph_bootstrap_95": [
+          -1.0056980056980058,
+          -0.3618233618233619
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -3.2535612535612533,
+        "graph_bootstrap_95": [
+          -3.612535612535612,
+          -2.886039886039886
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.5811965811965812,
+        "graph_bootstrap_95": [
+          -0.6524216524216525,
+          -0.5128205128205129
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "firm/initial_feedback_minus_goal_candidates/divert": {
+      "to_goal": {
+        "mean": 0.05982905982905983,
+        "graph_bootstrap_95": [
+          -0.002920227920227902,
+          0.1225071225071225
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.02279202279202279
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.06837606837606837,
+        "graph_bootstrap_95": [
+          -0.13105413105413102,
+          -0.005698005698005704
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.008547008547008548,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.02279202279202279
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.0028490028490028513,
+          0.12250712250712253
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0028490028490028487,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008547008547008546
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.4700854700854701,
+        "graph_bootstrap_95": [
+          0.398860398860399,
+          0.5413105413105415
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.4358974358974359,
+        "graph_bootstrap_95": [
+          0.3675213675213676,
+          0.5071225071225073
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.452991452991453,
+        "graph_bootstrap_95": [
+          0.381766381766382,
+          0.5242165242165244
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.9287749287749287,
+        "graph_bootstrap_95": [
+          -1.2250712250712248,
+          -0.6153846153846156
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.05413105413105414,
+        "graph_bootstrap_95": [
+          -0.008547008547008543,
+          0.11396011396011396
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.09686609686609686,
+        "graph_bootstrap_95": [
+          0.05982905982905984,
+          0.13960113960113957
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          0.011396011396011397,
+          0.06552706552706553
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.3105413105413105,
+        "graph_bootstrap_95": [
+          0.2393162393162393,
+          0.38746438746438755
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -2.3589743589743595,
+        "graph_bootstrap_95": [
+          -2.7179487179487176,
+          -2.0256410256410255
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.3817663817663817,
+        "graph_bootstrap_95": [
+          0.1339031339031339,
+          0.6666666666666667
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.8603988603988602,
+        "graph_bootstrap_95": [
+          -1.116880341880342,
+          -0.5982905982905986
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.06837606837606837,
+        "graph_bootstrap_95": [
+          -0.13105413105413102,
+          -0.005698005698005704
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/initial_feedback_minus_valid_candidates/divert": {
+      "to_goal": {
+        "mean": 0.5698005698005698,
+        "graph_bootstrap_95": [
+          0.4928774928774931,
+          0.646723646723647
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.04558404558404558,
+        "graph_bootstrap_95": [
+          0.019943019943019943,
+          0.07692307692307694
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.6153846153846154,
+        "graph_bootstrap_95": [
+          -0.6866096866096869,
+          -0.5413105413105416
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.04558404558404558,
+        "graph_bootstrap_95": [
+          0.019943019943019943,
+          0.07692307692307694
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.6153846153846155,
+        "graph_bootstrap_95": [
+          0.5441595441595443,
+          0.6866096866096869
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.49002849002848997,
+        "graph_bootstrap_95": [
+          0.4188034188034191,
+          0.5612535612535616
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.4188034188034188,
+        "graph_bootstrap_95": [
+          0.3532763532763532,
+          0.49002849002849014
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.4729344729344729,
+        "graph_bootstrap_95": [
+          0.4045584045584047,
+          0.5470085470085468
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -4.227920227920228,
+        "graph_bootstrap_95": [
+          -4.646723646723645,
+          -3.8062678062678055
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.5641025641025642,
+        "graph_bootstrap_95": [
+          0.4871794871794873,
+          0.6410968660968669
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.44159544159544156,
+        "graph_bootstrap_95": [
+          -0.5242165242165245,
+          -0.3589743589743591
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": -0.042735042735042736,
+        "graph_bootstrap_95": [
+          -0.07407407407407408,
+          -0.017094017094017096
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": -0.282051282051282,
+        "graph_bootstrap_95": [
+          -0.3532763532763533,
+          -0.2136752136752136
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -0.15954415954415954,
+        "graph_bootstrap_95": [
+          -0.25641025641025644,
+          -0.07692307692307693
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.905982905982906,
+        "graph_bootstrap_95": [
+          -1.270655270655271,
+          -0.5783475783475784
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -3.6125356125356127,
+        "graph_bootstrap_95": [
+          -3.9743589743589736,
+          -3.253490028490028
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.6153846153846154,
+        "graph_bootstrap_95": [
+          -0.6866096866096869,
+          -0.5413105413105416
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "agreeable/initial_feedback_minus_goal_candidates/divert": {
+      "to_goal": {
+        "mean": 0.04558404558404558,
+        "graph_bootstrap_95": [
+          -0.002849002849002852,
+          0.0968660968660969
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.005698005698005698,
+          0.02849002849002849
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.05698005698005698,
+        "graph_bootstrap_95": [
+          -0.10826210826210828,
+          -0.008547008547008548
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.005698005698005698,
+          0.02849002849002849
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.04558404558404558,
+        "graph_bootstrap_95": [
+          0.00284900284900285,
+          0.09116809116809116
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.5213675213675213,
+        "graph_bootstrap_95": [
+          0.44729344729344755,
+          0.5954415954415955
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.4472934472934473,
+        "graph_bootstrap_95": [
+          0.3817663817663818,
+          0.515669515669516
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.5042735042735043,
+        "graph_bootstrap_95": [
+          0.43304843304843327,
+          0.5754985754985759
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -1.0284900284900285,
+        "graph_bootstrap_95": [
+          -1.3219373219373218,
+          -0.7293447293447294
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.05128205128205128,
+        "graph_bootstrap_95": [
+          0.00284900284900285,
+          0.10541310541310542
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": 0.06267806267806268,
+        "graph_bootstrap_95": [
+          0.028490028490028494,
+          0.10256410256410256
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.011396011396011395,
+        "graph_bootstrap_95": [
+          -0.002849002849002849,
+          0.034188034188034185
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.2934472934472934,
+        "graph_bootstrap_95": [
+          0.2279202279202279,
+          0.3618233618233619
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": -2.1709401709401708,
+        "graph_bootstrap_95": [
+          -2.498575498575498,
+          -1.877421652421651
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": 0.24216524216524218,
+        "graph_bootstrap_95": [
+          0.08539886039886042,
+          0.4415954415954416
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.9715099715099715,
+        "graph_bootstrap_95": [
+          -1.227920227920228,
+          -0.7065527065527069
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.05698005698005698,
+        "graph_bootstrap_95": [
+          -0.10826210826210828,
+          -0.008547008547008548
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    },
+    "persona_x_initial_feedback/divert": {
+      "to_goal": {
+        "mean": 0.005698005698005691,
+        "graph_bootstrap_95": [
+          -0.06837606837606838,
+          0.07977207977207977
+        ],
+        "independent_graphs": 117
+      },
+      "to_competitor": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          -8.812926547915648e-19,
+          0.06267806267806268
+        ],
+        "independent_graphs": 117
+      },
+      "to_other": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "no_transfer": {
+        "mean": -0.034188034188034185,
+        "graph_bootstrap_95": [
+          -0.09971509971509972,
+          0.031339031339031334
+        ],
+        "independent_graphs": 117
+      },
+      "to_requester": {
+        "mean": 0.028490028490028487,
+        "graph_bootstrap_95": [
+          -8.812926547915648e-19,
+          0.06267806267806268
+        ],
+        "independent_graphs": 117
+      },
+      "source_remove": {
+        "mean": 0.03133903133903134,
+        "graph_bootstrap_95": [
+          -0.034188034188034185,
+          0.09686609686609686
+        ],
+        "independent_graphs": 117
+      },
+      "source_drop": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "source_consumed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "first_necessary_step": {
+        "mean": 0.05128205128205128,
+        "graph_bootstrap_95": [
+          -0.017094017094017092,
+          0.1225071225071225
+        ],
+        "independent_graphs": 117
+      },
+      "optimal_goal_path": {
+        "mean": 0.011396011396011393,
+        "graph_bootstrap_95": [
+          -0.05982905982905982,
+          0.08262108262108263
+        ],
+        "independent_graphs": 117
+      },
+      "resolved_within_2_actions": {
+        "mean": 0.04843304843304844,
+        "graph_bootstrap_95": [
+          -0.022792022792022783,
+          0.12250712250712249
+        ],
+        "independent_graphs": 117
+      },
+      "first_transfer_step_capped9": {
+        "mean": -0.3931623931623931,
+        "graph_bootstrap_95": [
+          -0.7663817663817664,
+          -0.014245014245014277
+        ],
+        "independent_graphs": 117
+      },
+      "native_goal_text_executed": {
+        "mean": 0.008547008547008543,
+        "graph_bootstrap_95": [
+          -0.06267806267806268,
+          0.07977207977207978
+        ],
+        "independent_graphs": 117
+      },
+      "other_item_give": {
+        "mean": -0.04843304843304843,
+        "graph_bootstrap_95": [
+          -0.10256410256410256,
+          0.005698005698005691
+        ],
+        "independent_graphs": 117
+      },
+      "any_legal_block": {
+        "mean": 0.042735042735042736,
+        "graph_bootstrap_95": [
+          0.005698005698005701,
+          0.07692307692307694
+        ],
+        "independent_graphs": 117
+      },
+      "any_speech": {
+        "mean": 0.008547008547008544,
+        "graph_bootstrap_95": [
+          -0.07122507122507123,
+          0.08262108262108261
+        ],
+        "independent_graphs": 117
+      },
+      "any_examine": {
+        "mean": -0.0028490028490028487,
+        "graph_bootstrap_95": [
+          -0.008547008547008546,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "native_rejections": {
+        "mean": 0.07692307692307694,
+        "graph_bootstrap_95": [
+          -0.019943019943019932,
+          0.18233618233618235
+        ],
+        "independent_graphs": 117
+      },
+      "native_failed_events": {
+        "mean": -0.2364672364672364,
+        "graph_bootstrap_95": [
+          -0.5527065527065526,
+          0.03710826210826241
+        ],
+        "independent_graphs": 117
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "steps": {
+        "mean": -0.358974358974359,
+        "graph_bootstrap_95": [
+          -0.6837606837606838,
+          -0.03133903133903146
+        ],
+        "independent_graphs": 117
+      },
+      "budget_exhausted_without_transfer": {
+        "mean": -0.034188034188034185,
+        "graph_bootstrap_95": [
+          -0.09971509971509972,
+          0.031339031339031334
+        ],
+        "independent_graphs": 117
+      },
+      "native_early_end_without_transfer": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_accept": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_decline": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      },
+      "stance_negotiate": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 117
+      }
+    }
+  },
+  "actual_calls": {
+    "count": 4187,
+    "parse_errors": 0,
+    "prompt_tokens": 5652898,
+    "completion_tokens": 291689
+  },
+  "runtime_gpu_hours": 0.5215042542738957,
+  "runtime": {
+    "episodes": 1404,
+    "calls": 4187,
+    "reused_calls": 1404,
+    "wall_seconds": 1838.681228453992,
+    "model_load_seconds": 38.73408693203237,
+    "new_cloud_calls": 0
+  },
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e73_32b/episodes.jsonl": "63bd12c826c03ee1f4ff97f98497900813a3b138c4691b4398bf85c626888e20",
+    "/home/xiang/.cache/game-npc-research/runs/e72_32b_s0/episodes.jsonl": "928e5ec405b1318d0503375fccdfc1e0426e018dd08e4a075effb94628bab29b",
+    "/home/xiang/.cache/game-npc-research/runs/e72_32b_s1/episodes.jsonl": "02f7a3a0914033fd2a78571e686326023ea07b2deba88b4f767ffc6ef4f4449d"
+  },
+  "scope": [
+    "Same dialogue, native menu, neutral directive and eight chosen-action slots as E72 native-menu arm; added genuine initial-state mechanics information.",
+    "The engine check is not an executed NPC action and changes no physical state; no scripted remove/give.",
+    "Information exposure is equal, not proof of equal internal beliefs; salience/message position remain possible mechanisms.",
+    "Expanded-candidate comparison additionally differs in candidate set and endogenous error timing/budget.",
+    "First exact-source-item Give, not full private utility; three-seed graph means and 4000 bootstrap samples."
+  ]
+}

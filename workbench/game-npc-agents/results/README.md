@@ -131,3 +131,16 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 ## E69完整收尾
 112同世界任务配对/3个源案例，主分支2760、适应性144，27519新本地调用/2.828GPUh/0API。主结果[E69 Gemma](E69_gemma_matched.json)、[32B](E69_32b_matched.json)，[科学图](E69_figures/E69_matched_task_effects.png)。控制[Gemma](E69_gemma_completion_controls.json)/[32B](E69_32b_completion_controls.json)保留全部恢复分支和动作改变；三世界不当总体样本。
 [完整成本](E69_resource_account.json)、[同源子集POST-HOC](E69_prior_subset_POST_HOC.json)、[顺序物理见证POST-HOC](E69_sequential_native_witness_POST_HOC.json)、[Gemma结构化阶段POST-HOC](E69_gemma_structured_stages_POST_HOC.json)/[32B](E69_32b_structured_stages_POST_HOC.json)。初始资格/hash见E69_native_task_qualification.json；原始输入输出在cache/runs/e69_*，不入Git。
+
+## E70–E73完整收尾
+
+[完整报告](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：117源作者Give图、两模型/三seed、23868分支，125126本地调用/2解析失败保留/12.847GPUh/0API。所有格均完成，分支/调用不是独立世界。
+
+- E70：`E70_{gemma,32b}_complete.json`为全部9条件主表/配对CI，`*_paths.json`描述实际原物品及其他资源路径，`*_persona_interactions_posthoc.json`明确事后补充交互，原登记三重交互不替换。资格`E70_native_request_qualification.json`、`E70_graph_units.json`及各输入/profile检查。
+- E71：`E71_{gemma,32b}_complete.json`无人索要，`E70_E71_{gemma,32b}_joined.json`同图有/无请求；整体上下文差，不是单词效应。
+- E72：`E72_{gemma,32b}_complete.json`同本人对话的原生/扩展候选，真实错误消耗预算并反馈；`E72_native_feedback_check.json`保留原生见证与成对输入核对。
+- E73：`E73_{gemma,32b}_complete.json`原生菜单+统一初始反馈，包含与两种E72接口全部配对；`E73_initial_feedback_check.json`核对反馈源真值/输入一致。相同事实暴露不等内部信念。
+- [成本](E70_E73_resource_accounting.json)包括15job载入/推理/观察窗口，profile精确复用只计一次；[全实体读回](E70_E73_native_state_readback.json)核对23868条、10486源Remove、14379源Give，0标记不一致，嵌套归属敏感性无漏记。
+- [去向图](figures/E70_first_disposition.png)、[机制/priority/阶段控制](figures/E70_paired_controls.png)、[无人索要对照](figures/E70_E71_persona_by_context.png)、[候选效应](figures/E72_candidate_effects.png)、[初始信息对照](figures/E73_initial_information.png)，均另有PDF/SVG。
+
+raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32b}`、`e72_{gemma,32b}_s{0,1}`、`e73_{gemma,32b}`；源状态`e70_native_request_qualification/snapshots.jsonl`。统计/读回/成本脚本及参数入口见报告，完整数据与模型日志不进Git。

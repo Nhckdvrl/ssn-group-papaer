@@ -3,7 +3,7 @@
 **2026-10-14 / 当前任务已由用户选择 A**。这里是执行引导，不是第二套科研总宪章。所有科研准则继续以[根AGENTS](../../AGENTS.md)、[本目录AGENTS](AGENTS.md)、[EXECUTION](../EXECUTION.md)为准。
 
 ## 不要被历史文件误导
-**用户已明确恢复科研，并要求按总体审计判决重构。** 当前入口是[最新复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[E63](experiments/E63-native-dependency-and-explicit-priority.md)、[E64](experiments/E64-native-reciprocal-goal-negotiation.md)与最新日志。E50–62已收尾；E63/E64按固定队列完成后先交本轮报告，不自动追加矩阵。停止新增Step细语义标注和无具体回路假说的patch。PCSP／MeltingPot小模型RL冻结；禁止1200帧全图盲跑、单模块修改冒称完整persona效应、无实体flag任务。旧[进度报告](PROGRESS_REPORT_2026-10-14.md)只作历史背景。
+**用户已明确恢复科研，并要求按总体审计判决重构。** 当前入口是[E70–E73完整报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[C06混杂核对](knowledge/persona-behavior/GOAL_EXECUTION_CLAIM_AUDIT_2026-10-15.md)与最新日志。固定117作者Give图的全量队列已完成，不围3案例调提示；下一问题区分行动后果信念、执行推进与接收者取舍，不把普通操作信息恢复当新规划方法。停止新增Step细语义标注和无具体回路假说的patch。PCSP／MeltingPot小模型RL冻结；禁止1200帧全图盲跑、单模块修改冒称完整persona效应、无实体flag任务。旧[进度报告](PROGRESS_REPORT_2026-10-14.md)只作历史背景。
 历史 E00/E02–E05 和过时 manifest 不恢复。E06 是历史统领设计；E43 原为小MLP诊断，已冻结，新的LLM跨阶段白盒在E50实际执行。安全、经济、人格漂移等全域仍开放，A只是本轮优先探索。
 
 ## 接手即做

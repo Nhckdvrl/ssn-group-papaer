@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E70 static scientific exports: first recipients and paired control effects."""
+"""E70–E73 static scientific exports from complete graph-cluster reports."""
 import argparse
 import json
 from pathlib import Path
@@ -119,6 +119,29 @@ def main():
             ax.spines[['top','right']].set_visible(False);ax.legend(frameon=False)
         fig.supxlabel('117 equipped source worlds; identical dialogue/persona/state and eight-action budget.\nOnly candidate list/enum differs; failed attempts consume steps. Pointwise graph-cluster 95% intervals.',fontsize=10)
         save(fig,args.out,'E72_candidate_effects')
+    e73_paths = {m: args.results/f'E73_{m}_complete.json' for m in ['gemma', '32b']}
+    if all(p.exists() for p in e73_paths.values()):
+        arms = ['valid_candidates', 'goal_candidates', 'initial_feedback']
+        fig, axes = plt.subplots(2, 2, figsize=(11, 7), layout='constrained', sharey=True)
+        for i, (model, name) in enumerate([('gemma', 'Gemma 3 12B'), ('32b', 'Qwen3 32B')]):
+            r = json.loads(e73_paths[model].read_text())
+            for j, direction in enumerate(['aligned', 'divert']):
+                ax = axes[i, j]
+                for p, color, offset in [('firm', '#4477AA', -.10), ('agreeable', '#AA3377', .10)]:
+                    vv = [r['cells'][p+'/'+direction+'_'+arm]['to_goal'] for arm in arms]
+                    means = np.array([v['mean'] for v in vv])*100
+                    lo = np.array([v['graph_bootstrap_95'][0] for v in vv])*100
+                    hi = np.array([v['graph_bootstrap_95'][1] for v in vv])*100
+                    ax.errorbar(np.arange(3)+offset, means, yerr=[means-lo, hi-means],
+                                fmt='o', capsize=3, color=color, label=p.capitalize())
+                ax.set_xticks(np.arange(3), ['Native menu', 'Expanded\ncandidates', 'Native menu +\ninitial feedback'])
+                ax.set_ylim(0, 104); ax.set_ylabel('Give to authored recipient (%)')
+                ax.set_title(name+' / '+direction+' request')
+                ax.grid(axis='y', alpha=.2); ax.spines[['top', 'right']].set_visible(False)
+        handles, labels = axes[0, 0].get_legend_handles_labels()
+        fig.legend(handles, labels, loc='outside upper center', ncol=2, frameon=False)
+        fig.supxlabel('Same 117 equipped worlds, exact dialogue and eight-action budget; three seeds, graph-cluster 95% intervals.\nExpanded candidates allow costly failed attempts; initial feedback exposes a true engine check before the first action.', fontsize=10)
+        save(fig, args.out, 'E73_initial_information')
 
 
 if __name__ == '__main__':
