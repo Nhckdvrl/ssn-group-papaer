@@ -8,7 +8,6 @@
 | C02 | 在固定LIGHT三阶段结构中，原persona附加的一致agreeable/关系相对firm/责任立场提高实际请求物品转移概率；三个模型在独立200图三seed确认，普通状态指令后仍在 | L2 | E50/E55/E56；results/E55_32b_independent_confirm.json（+13.7pp，95%[9.7,17.8]）、E55_gemma_independent_confirm.json（+6.7pp，[4.3,9.3]）、E55_27b_independent_confirm.json（+8.5pp，[5.7,11.7]）；knowledge/persona-behavior/C02_CONFIRM_AUDIT_2026-10-15.md | 完整角色指令包含责任/关系优先信息，非纯BigFive；同一任务族而非跨游戏泛化；各结构角色效应不同 | 2026-10-15 | 混杂核对完成；独立复算/跨游戏证据仍未完成，不升级L3 |
 | C03 | 在同一32B pilot的agreeable条件中，显式计划与意图记忆共同暴露的请求转移效应不等于两个单渠道效应相加；记忆可使计划中的即时请求被重新裁决 | L1 | E50；results/E50_32b_coherent_pilot_complete.json（交互−11.7pp，95%[−20.8,−2.5]）；E51/E53/E59已检验状态/目标/措辞竞争解释 | 完成状态误记、原任务显著性、条件承诺、社交循环；POST-HOC具体例不单独升级机制 | 2026-10-15 | 尚未在独立200图复现同四渠道，不升级 |
 | C04 | 在LIGHT固定100个非目标物品请求世界中，明确任务优先下三模型保持92%–99%的当前原子任务完成，同时agreeable相对firm仍提高实际交付17.7–42pp；同轨迹两事件都完成亦增加 | L2 | E63；results/E63_{32b,27b,gemma}_dependency.json；results/E63_task_cooperation_scope_audit.json；knowledge/persona-behavior/TASK_COOPERATION_CLAIM_AUDIT_2026-10-15.md | 非数学独立/零代价，32B仍有−4pp任务差；other物品非当前目标必需不等于无私人价值；单一环境三阶段框架 | 2026-10-15 | 范围与混杂核对完成；未独立跨系统校对，不升L3 |
-
 | C05 | 在79个已观察wear/wield世界的固定asset计划/记忆/状态下，仅执行规则换为明确任务优先即可提高原goal命令概率；该直接效应在Gemma与32B均出现 | L1 | E66；results/E66_gemma_competition.json（+17.61pp [11.32,23.79]）；E66_32b_competition.json（+12.64pp [8.40,17.23]） | canonical原菜单概率读出，非新实际episode或原JSON采样器精确概率；已观察世界、固定一个seed；未识别回路/安全训练来源 | 2026-10-15 | E65实际行为与概率读出分开；独立场景/系统预测尚待检验 |
 
 ## 作废/降级记录

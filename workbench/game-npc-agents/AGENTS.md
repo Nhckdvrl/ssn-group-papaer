@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**最新用户决定（2026-10-15）：** E63/E64后授权E65限制范围/否定/许可探针与E66首动作概率读出；随后明确“也别急着写论文，先把实验都做到位”。固定79世界行为与概率队列现已完成，见[最新报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)。后续依据该报告的实际行为/概率差异推进竞争解释；暂缓论文正文，不把审计中的安全先验/解耦定理当既定机制。下方旧收尾/不新增实验描述不覆盖此授权。
+**最新用户决定（2026-10-15）：** 授权[E67真实执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立世界预测](experiments/E68-clean-reserve-rule-predictions.md)，仍暂缓论文。E67已在本地4卡启动；E68锁定109未在本地探索使用的世界与60其他物品对照。先区分首次合法防卫、重复拒绝和原目标执行；规则交叉不等于可加中介分解，审计的威胁锚定/词汇启动仍待证据。
 
 **2026-10-15进度报告后用户再审计：** 不把Agreeable比Firm多给物品本身当独立贡献。停止新增Step语义细分/时态标注；禁止没有具体回路假说的单层patch网格。本轮固定任务为[I04](ideas/I04-commitment-conflict-stage-arbitration.md)的[E63任务资产与明确规则](experiments/E63-native-dependency-and-explicit-priority.md)、[E64双角色有代价谈判](experiments/E64-native-reciprocal-goal-negotiation.md)，收尾后见[复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)。E58第二句是一般责任表态，不是明确排他规则；“迎合式自毁/预训练先验绕过推理”只是待检验解释。原子goal、资产持有与完整私人利益分开，交付后恢复路径与敌对角色的攻击后果保留，不改世界使结论成立。
 
