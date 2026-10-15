@@ -2,7 +2,7 @@
 
 Usage: e93_lesion.py --arm C|H|R|N --lr LR --local DIR [--steps 2000] [--bs 128] [--tag NAME]
   DIR holds config.json + pytorch_model.bin of the base checkpoint (fetched with curl; HF Xet stalls here).
-Arms
+Arms (O = overshoot along a real batch gradient, Q = scale Q/K of --head, both calibrated to --target_dloss)
   C  no damage
   H  re-initialise one or more heads (--head L.H[,L.H], default the 160M previous-token hub 3.2): its Q/K/V rows + biases and its
      columns of the attention output projection, drawn from Pythia's init distributions (small_init / wang_init)
@@ -77,6 +77,57 @@ def set_attn(model, impl):
         l.attention.config._attn_implementation = impl
 
 
+def overshoot(model, step_size, grad):
+    for n, p in model.named_parameters():
+        if n in grad:
+            p.data -= step_size * grad[n]
+
+
+def scale_qk(model, heads, k):
+    """Multiply the Q and K rows (and biases) of the given heads by k: attention logits scale by k^2."""
+    c = model.config
+    H, dh = c.num_attention_heads, c.hidden_size // c.num_attention_heads
+    for hh in heads:
+        l, h = map(int, hh.split("."))
+        att = model.gpt_neox.layers[l].attention
+        W = att.query_key_value.weight.data.view(H, 3, dh, -1)
+        W[h, :2] *= k
+        if att.query_key_value.bias is not None:
+            att.query_key_value.bias.data.view(H, 3, dh)[h, :2] *= k
+
+
+def calibrate(model, tok, apply, lo, hi, target, l0, iters=12, grow=True):
+    """Find a strength x in [lo, hi] with loss increase ~ target for a damage apply(x) (restored after each probe)."""
+    base = {n: p.data.clone() for n, p in model.named_parameters()}
+
+    def probe(x):
+        apply(x)
+        dl = lm_loss(model, tok) - l0
+        for n, p in model.named_parameters():
+            p.data.copy_(base[n])
+        return dl
+    if grow:  # expand the upper bound until it overshoots the target
+        while probe(hi) < target and hi < 1e6:
+            lo, hi = hi, hi * 2
+    for _ in range(iters):
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if probe(mid) < target else (lo, mid)
+    x = (lo + hi) / 2
+    del base
+    return x
+
+
+@torch.no_grad()
+def distance_to(model, ref):
+    """Relative L2 distance of the current weights to a reference state, by module type."""
+    out = {}
+    for n, p in model.named_parameters():
+        key = "emb" if "embed" in n else "ln" if "layernorm" in n or "norm" in n else "attn" if "attention" in n else "mlp" if "mlp" in n else "other"
+        num, den = out.get(key, (0.0, 0.0))
+        out[key] = (num + (p.data - ref[n]).float().pow(2).sum().item(), den + ref[n].float().pow(2).sum().item())
+    return {k: round(math.sqrt(a / b), 6) for k, (a, b) in out.items()}
+
+
 @torch.no_grad()
 def roles(model, tok):
     """Per-head previous-token attention (natural text) and induction attention (repeated random tokens)."""
@@ -142,11 +193,31 @@ def main():
     prompts = {t: fv_prompts(tok, t) for t in ABSTRACTIVE + EXTRACTIVE}
     log = {"args": vars(a), "evals": {}}
     log["pre_damage"] = evaluate(model, tok, prompts)
+    base_ref = {n: p.data.clone().cpu() for n, p in model.named_parameters()}
     if a.arm in ("H", "R"):
         gen = torch.Generator().manual_seed(1234)
         for hh in a.head.split(","):  # one or several heads, e.g. "3.2,3.0"
             l, h = map(int, hh.split("."))
             reinit_head(model, l, h, gen)
+    elif a.arm == "O":  # overshoot: one huge step along the descent direction of a real training batch
+        xb = torch.tensor(pq.read_table(SHARDS[3]).column("tokens").slice(50000, a.bs).to_pylist()).cuda()
+        model.zero_grad(set_to_none=True)
+        for mb in xb.split(a.micro):
+            (model(mb, labels=mb).loss * (len(mb) / len(xb))).backward()
+        gn = math.sqrt(sum(p.grad.float().pow(2).sum().item() for p in model.parameters() if p.grad is not None))
+        grad = {n: (p.grad / gn).detach().clone() for n, p in model.named_parameters() if p.grad is not None}
+        model.zero_grad(set_to_none=True)
+        with torch.no_grad():
+            st = calibrate(model, tok, lambda x: overshoot(model, x, grad), 0.0, 1.0, a.target_dloss, log["pre_damage"]["lm_loss"])
+            overshoot(model, st, grad)
+        log["overshoot_step"] = st
+        del grad
+    elif a.arm == "Q":  # attention-logit blow-up on the given heads
+        heads = a.head.split(",")
+        with torch.no_grad():
+            k = calibrate(model, tok, lambda x: scale_qk(model, heads, 1 + x), 0.0, 1.0, a.target_dloss, log["pre_damage"]["lm_loss"])
+            scale_qk(model, heads, 1 + k)
+        log["qk_scale"] = 1 + k
     elif a.arm == "N":
         base = {n: p.data.clone() for n, p in model.named_parameters() if p.dim() == 2}
         l0 = log["pre_damage"]["lm_loss"]
@@ -171,6 +242,7 @@ def main():
         if step in EVAL_STEPS:
             log["evals"][step] = evaluate(model, tok, prompts)
             e = log["evals"][step]
+            e["dist_to_pre"] = distance_to(model, {n: v.cuda() for n, v in base_ref.items()})
             fv = np.mean([v["acc"] for k, v in e["tasks"].items() if k.startswith("fv:")])
             print(json.dumps({"tag": tag, "step": step, "loss": round(e["lm_loss"], 4), "fv_mean": round(float(fv), 4),
                               "ind": round(e["tasks"]["el:induction"]["acc"], 3), "sec": round(time.time() - t0)}), flush=True)
