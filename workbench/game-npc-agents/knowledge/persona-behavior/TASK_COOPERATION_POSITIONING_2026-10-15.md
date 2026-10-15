@@ -37,3 +37,7 @@ E63明确任务优先在32B恢复原任务，同时保留另一物品合作的�
 本轮venue-corpus查询（运行中、主张升级前）：`nearest "game NPC personality task preservation rule framing action execution plan causal intervention cooperation"`。主要返回CaPo、Persona Dynamics、FAIRGAMER、Tracing the Persona Circuit和ThinkAct；作为已有定位的增量检查，不以词面rank作选题判决。NegaAlign与AgentIF正文再次核对，任务完成与约束满足的双指标及条件触发均已有直接先例。
 
 另核[Agent GPA v2](../papers/AGENT_GPA_2026.md)的阶段定义、数据/裁判协议、Table1–4与效率裁判附录：目标—计划—行动分解、计划质量与遵循分离、重复错误循环均已有明确先例。本轮可推进的是具体阶段干预对原生行为的预测，不能把换阶段标签或统计计划/行动不一致写成独占贡献。没有为这一近邻新开复现或追加GPU实验。
+
+## E69前的定位
+
+venue nearest以`persona task action congruence character motivation assigned task physical game actions task completion`查询，返回Persona Dynamics等。[PANDA/ACL2025](../papers/PERSONA_DYNAMICS_ACL2025.md)§5.3已经用成功walkthrough的特质倾向解释任务表现，Table6–8已有奖励动作与人物动作分布。因此“特质与任务动作兼容”本身有直接先例。E69的具体增量待同图任务干预与接收者/动作族真实事件检验，不能仅给假说起trait-verb名称。[Dragon](../papers/HOW_TO_MOTIVATE_DRAGON_2021.md)的动机—timeline框架也早已存在；旧原子goal成功即结束的观察窗没有覆盖其后交付，E69对此做共同窗口实测。近邻用于定位，不输出自动科学去留判决。
