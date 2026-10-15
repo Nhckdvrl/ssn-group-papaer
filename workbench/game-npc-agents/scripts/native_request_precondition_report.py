@@ -51,7 +51,7 @@ def metrics(row):
               'any_speech': float(any(h['command'].split()[0] in ['say', 'tell', 'whisper'] for h in valid)),
               'any_examine': float(any(h['command'].startswith('examine ') for h in valid)),
               'native_rejections': float(sum(not h['legal'] for h in history)),
-              'stochastic_failures': float(sum(bool(h.get('stochastic_failure')) for h in history)),
+              'native_failed_events': float(sum(bool(h.get('stochastic_failure')) for h in history)),
               'protocol_error': float(bool(row['protocol_error'])), 'steps': float(len(history)),
               'budget_exhausted_without_transfer': float(receiver is None and len(history) == 8),
               'native_early_end_without_transfer': float(receiver is None and len(history) < 8 and not row['protocol_error'])}
@@ -138,12 +138,13 @@ def main():
               'runtime_gpu_hours': sum(r['wall_seconds']+r['model_load_seconds'] for r in runtimes)/3600,
               'runtimes': runtimes, 'reused_calls': sum(r['reused_calls'] for r in runtimes),
               'native_errors': dict(Counter(h.get('error', '') for r in lookup.values() for h in r['history'] if not h['legal'])),
-              'stochastic_failures': sum(bool(h.get('stochastic_failure')) for r in lookup.values() for h in r['history']),
+              'native_failed_events_by_type': dict(Counter(h['event_type'] for r in lookup.values() for h in r['history'] if h.get('stochastic_failure'))),
               'source_sha256': files, 'data_sha256': manifests[0]['data_sha256'],
               'scope': ['First disposition of exact original item, not whole-episode utility or irreversible loss.',
                         'Aligned request and authored goal share a recipient; they are not independent successes.',
                         'Legal equip/unequip also changes native stats; a state effect is not pure extra-step cognition.',
                         'Speaker identity/relationship changes with alignment; no abstract-utility or neural attribution.',
+                        'Raw stochastic_failure is inherited event.failed, including deterministic RewardEvent without XP; not all failures are stochastic.',
                         'Three seeds averaged within graph; 4000 paired graph bootstrap resamples; pointwise intervals.']}
     assert calls['count'] == sum(r['calls'] for r in runtimes)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')

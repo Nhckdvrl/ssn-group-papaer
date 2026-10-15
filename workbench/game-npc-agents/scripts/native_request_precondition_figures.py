@@ -69,6 +69,34 @@ def main():
         ax.set_xlabel('Paired difference (percentage points)'); ax.legend(frameon=False)
     fig.supxlabel('All controls hold equipped physical state fixed. Pointwise graph-cluster 95% intervals.\nStaged and direct interfaces share the exact same conversation; interface packages differ.', fontsize=10)
     save(fig, args.out, 'E70_paired_controls')
+    joined_paths = {m: args.results/f'E70_E71_{m}_joined.json' for m in ['gemma', '32b']}
+    if all(p.exists() for p in joined_paths.values()):
+        fig, axes = plt.subplots(1, 2, figsize=(10, 4), layout='constrained', sharey=True)
+        for ax, (model, name) in zip(axes, [('gemma', 'Gemma 3 12B'), ('32b', 'Qwen3 32B')]):
+            data = json.loads(joined_paths[model].read_text())
+            for state, color, offset in [('ready', '#4477AA', .10), ('equipped', '#CC6677', -.10)]:
+                vals = []
+                for context in ['unsolicited', 'aligned', 'divert']:
+                    f = data['cells']['firm/'+state+'_'+context]['to_goal']['mean']
+                    a = data['cells']['agreeable/'+state+'_'+context]['to_goal']['mean']
+                    if context == 'unsolicited':
+                        entry = data['contrasts']['A_minus_F/'+state+'_unsolicited']['to_goal']
+                    else:
+                        entry = reports[model]['contrasts']['A_minus_F/'+state+'_'+context]['to_goal']
+                    assert abs(entry['mean']-(a-f)) < 1e-10
+                    vals.append(entry)
+                means = np.array([v['mean'] for v in vals])*100
+                lower = np.array([v['graph_bootstrap_95'][0] for v in vals])*100
+                upper = np.array([v['graph_bootstrap_95'][1] for v in vals])*100
+                ax.errorbar(means, np.arange(3)+offset, xerr=[means-lower, upper-means],
+                            fmt='o', capsize=3, color=color, label=state.capitalize())
+            ax.set_yticks(np.arange(3), ['No solicitation', 'Aligned request', 'Diverting request'])
+            ax.set_ylim(2.5, -.5); ax.axvline(0, color='#777777', linewidth=.8)
+            ax.grid(axis='x', alpha=.2); ax.spines[['top', 'right']].set_visible(False)
+            ax.set_title(name); ax.set_xlabel('Agreeable - Firm: authored-recipient Give (pp)')
+            ax.legend(frameon=False)
+        fig.supxlabel('Same 117 authored Give tasks, source items and three seeds. Pointwise graph-cluster 95% intervals.\nNo solicitation removes request and generated dialogue together; it is a context-package baseline.', fontsize=10)
+        save(fig, args.out, 'E70_E71_persona_by_context')
 
 
 if __name__ == '__main__':
