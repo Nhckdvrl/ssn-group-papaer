@@ -94,3 +94,8 @@
 - PolyPythias 原文核实（§3、§5、附录 A）：50 个 run 中只有 410M seed3、seed4 被判为异常，也只有它们出现 loss spike；原文未给 spike 步数、未涉及 induction / ICL。E89 从因果分工独立标出的两个异常组织（seed3 无早层枢纽且整体偏深；seed4 induction 单头集中）恰是这两个种子 → 进入 E90 轨迹追踪。
 - Gemini “尺度裂变（160M 中 induction 与 IOI 挤在同一头、410M 分开）”的核查：IOI 落在 induction 枢纽头上的效应份额 160M 中位 0.16 → 410M 0.06；枢纽头在 IOI top-3 内 9/10 → 6/10（随机 6.1% / 2.3%）；枢纽头对 IOI 的作用都在上游（end/all ≈ 0）。是减弱而非分离，且只有两个尺度，DataDecide-1B 出来前不写成规律。
 - “all vs end 区分上游瓶颈与末端写出”已在结果一给出（早层枢纽 0–24%、序数头 87–103%），不是新的待做项。
+
+### 结果三（2026-10-15 17:50；DataDecide-1B 10/12：c4 / dolma1_7 / dolma1_7-no-flan × 3 种子 + dclm default；`results/e89/prelim2_dd1b.json`）
+- 另一个训练栈、4 种语料下复现：任务深度顺序 τ 0.72；S 跨模型 0.67（满分 0.97，打乱 95% 分位 0.35）；greater-than~后继共用 top-3 头 10/10，induction~反义词 ICL 7/9，induction~后继 8/10。
+- induction~IOI 共用比例：Pythia-160M 15/15 → Pythia-410M 7/10 → DataDecide-1B 4/10。方向与 Gemini 的“随规模减弱”一致，但三个点来自两个模型家族、随机水平也不同（6.1% / 2.3% / 3.5%），只记为描述。
+- 文献复核（宣称新意前）：Bali 2026 §3.3 已做跨层匹配（注意力模式层面，跨层略优、中层头最佳匹配散在相邻层），无任务因果读数 → “对应跨层”本身不是新点，增量仅在多任务因果共载层面；未找到把 loss spike 与电路 / ICL 变化联系起来的工作。

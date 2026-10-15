@@ -1,0 +1,806 @@
+{
+ "models": [
+  "dd__DataDecide-c4-1B__step69369-seed-default",
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-2",
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-3",
+  "dd__DataDecide-dclm-baseline-1B__step69369-seed-default",
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-default",
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-2",
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-3",
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-default",
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-2",
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-3"
+ ],
+ "passed": {
+  "dd__DataDecide-c4-1B__step69369-seed-default": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-2": [
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-3": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dclm-baseline-1B__step69369-seed-default": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-default": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-2": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-3": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-default": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-2": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ],
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-3": [
+   "antonym",
+   "capital",
+   "gender",
+   "greater_than",
+   "induction",
+   "ioi",
+   "past_tense",
+   "successor",
+   "sva"
+  ]
+ },
+ "metric": {
+  "dd__DataDecide-c4-1B__step69369-seed-default": {
+   "antonym": 1.07,
+   "capital": 5.14,
+   "gender": 5.08,
+   "greater_than": 2.53,
+   "induction": 7.65,
+   "ioi": 3.64,
+   "past_tense": 2.03,
+   "successor": 1.87,
+   "sva": 3.36
+  },
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-2": {
+   "antonym": 0.33,
+   "capital": 4.96,
+   "gender": 4.02,
+   "greater_than": 2.72,
+   "induction": 7.52,
+   "ioi": 3.96,
+   "past_tense": 1.35,
+   "successor": 2.16,
+   "sva": 3.14
+  },
+  "dd__DataDecide-c4-1B__step69369-seed-large-aux-3": {
+   "antonym": 4.07,
+   "capital": 5.24,
+   "gender": 4.38,
+   "greater_than": 2.96,
+   "induction": 8.5,
+   "ioi": 3.34,
+   "past_tense": 2.68,
+   "successor": 1.76,
+   "sva": 3.23
+  },
+  "dd__DataDecide-dclm-baseline-1B__step69369-seed-default": {
+   "antonym": 5.43,
+   "capital": 6.0,
+   "gender": 4.0,
+   "greater_than": 3.67,
+   "induction": 7.7,
+   "ioi": 4.13,
+   "past_tense": 4.41,
+   "successor": 2.21,
+   "sva": 3.43
+  },
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-default": {
+   "antonym": 3.55,
+   "capital": 5.05,
+   "gender": 4.09,
+   "greater_than": 3.41,
+   "induction": 8.83,
+   "ioi": 3.79,
+   "past_tense": 2.15,
+   "successor": 2.14,
+   "sva": 3.21
+  },
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-2": {
+   "antonym": 3.86,
+   "capital": 5.04,
+   "gender": 4.38,
+   "greater_than": 2.7,
+   "induction": 9.28,
+   "ioi": 4.03,
+   "past_tense": 2.26,
+   "successor": 2.86,
+   "sva": 3.08
+  },
+  "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-3": {
+   "antonym": 4.9,
+   "capital": 4.82,
+   "gender": 4.6,
+   "greater_than": 3.04,
+   "induction": 9.4,
+   "ioi": 4.5,
+   "past_tense": 3.15,
+   "successor": 2.39,
+   "sva": 3.05
+  },
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-default": {
+   "antonym": 3.38,
+   "capital": 3.92,
+   "gender": 3.51,
+   "greater_than": 2.65,
+   "induction": 9.54,
+   "ioi": 3.52,
+   "past_tense": 3.54,
+   "successor": 1.94,
+   "sva": 3.16
+  },
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-2": {
+   "antonym": 3.46,
+   "capital": 5.14,
+   "gender": 3.82,
+   "greater_than": 3.55,
+   "induction": 9.51,
+   "ioi": 4.42,
+   "past_tense": 3.65,
+   "successor": 2.53,
+   "sva": 3.2
+  },
+  "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-3": {
+   "antonym": 3.49,
+   "capital": 4.69,
+   "gender": 4.14,
+   "greater_than": 3.12,
+   "induction": 9.7,
+   "ioi": 3.84,
+   "past_tense": 4.02,
+   "successor": 2.87,
+   "sva": 3.24
+  }
+ },
+ "depth": {
+  "com": {
+   "dd__DataDecide-c4-1B__step69369-seed-default": {
+    "antonym": 5.5,
+    "capital": 11.1,
+    "gender": 10.9,
+    "greater_than": 4.5,
+    "induction": 6.2,
+    "ioi": 9.6,
+    "past_tense": 3.8,
+    "successor": 6.1,
+    "sva": 10.8
+   },
+   "dd__DataDecide-c4-1B__step69369-seed-large-aux-2": {
+    "capital": 10.3,
+    "gender": 10.6,
+    "greater_than": 4.6,
+    "induction": 6.2,
+    "ioi": 9.7,
+    "past_tense": 5.3,
+    "successor": 5.5,
+    "sva": 11.0
+   },
+   "dd__DataDecide-c4-1B__step69369-seed-large-aux-3": {
+    "antonym": 6.1,
+    "capital": 10.7,
+    "gender": 10.6,
+    "greater_than": 5.8,
+    "induction": 6.4,
+    "ioi": 9.1,
+    "past_tense": 6.3,
+    "successor": 6.2,
+    "sva": 10.5
+   },
+   "dd__DataDecide-dclm-baseline-1B__step69369-seed-default": {
+    "antonym": 6.8,
+    "capital": 9.9,
+    "gender": 11.0,
+    "greater_than": 3.9,
+    "induction": 6.0,
+    "ioi": 9.7,
+    "past_tense": 6.4,
+    "successor": 6.8,
+    "sva": 10.6
+   },
+   "dd__DataDecide-dolma1_7-1B__step69369-seed-default": {
+    "antonym": 5.1,
+    "capital": 9.4,
+    "gender": 11.1,
+    "greater_than": 5.3,
+    "induction": 6.1,
+    "ioi": 9.9,
+    "past_tense": 5.9,
+    "successor": 4.2,
+    "sva": 11.0
+   },
+   "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-2": {
+    "antonym": 6.7,
+    "capital": 11.0,
+    "gender": 10.5,
+    "greater_than": 5.6,
+    "induction": 6.5,
+    "ioi": 9.4,
+    "past_tense": 6.0,
+    "successor": 5.8,
+    "sva": 10.5
+   },
+   "dd__DataDecide-dolma1_7-1B__step69369-seed-large-aux-3": {
+    "antonym": 6.1,
+    "capital": 10.5,
+    "gender": 10.2,
+    "greater_than": 5.0,
+    "induction": 6.6,
+    "ioi": 9.8,
+    "past_tense": 6.6,
+    "successor": 5.5,
+    "sva": 10.7
+   },
+   "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-default": {
+    "antonym": 5.4,
+    "capital": 11.0,
+    "gender": 10.6,
+    "greater_than": 5.5,
+    "induction": 7.0,
+    "ioi": 9.9,
+    "past_tense": 6.6,
+    "successor": 6.7,
+    "sva": 10.8
+   },
+   "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-2": {
+    "antonym": 5.4,
+    "capital": 10.8,
+    "gender": 10.1,
+    "greater_than": 5.1,
+    "induction": 6.1,
+    "ioi": 9.3,
+    "past_tense": 6.5,
+    "successor": 5.5,
+    "sva": 10.8
+   },
+   "dd__DataDecide-dolma1_7-no-flan-1B__step69369-seed-large-aux-3": {
+    "antonym": 6.1,
+    "capital": 10.4,
+    "gender": 10.8,
+    "greater_than": 4.4,
+    "induction": 6.1,
+    "ioi": 9.5,
+    "past_tense": 6.3,
+    "successor": 5.6,
+    "sva": 10.6
+   }
+  },
+  "kendall_task_order_median": 0.7222222222222222,
+  "kendall_q": [
+   0.611111111111111,
+   0.8333333333333334
+  ]
+ },
+ "S": {
+  "within_med": 0.9651235115295873,
+  "cross_med": 0.6678890342736812,
+  "cross_q": [
+   0.4773543855827371,
+   0.850588568865693
+  ],
+  "null_q95": 0.35264969471883173,
+  "null_med": -0.032456017808069254,
+  "pair_mean_sd": {
+   "greater_than~successor": [
+    0.58,
+    0.169,
+    10
+   ],
+   "induction~successor": [
+    0.349,
+    0.167,
+    10
+   ],
+   "antonym~induction": [
+    0.348,
+    0.107,
+    9
+   ],
+   "antonym~successor": [
+    0.296,
+    0.18,
+    9
+   ],
+   "antonym~greater_than": [
+    0.255,
+    0.132,
+    9
+   ],
+   "greater_than~induction": [
+    0.237,
+    0.19,
+    10
+   ],
+   "greater_than~ioi": [
+    0.187,
+    0.092,
+    10
+   ],
+   "capital~successor": [
+    0.133,
+    0.082,
+    10
+   ],
+   "induction~ioi": [
+    0.129,
+    0.084,
+    10
+   ],
+   "antonym~ioi": [
+    0.121,
+    0.043,
+    9
+   ],
+   "antonym~past_tense": [
+    0.116,
+    0.203,
+    9
+   ],
+   "gender~sva": [
+    0.077,
+    0.065,
+    10
+   ],
+   "capital~induction": [
+    0.077,
+    0.066,
+    10
+   ],
+   "capital~greater_than": [
+    0.063,
+    0.082,
+    10
+   ],
+   "ioi~successor": [
+    0.054,
+    0.09,
+    10
+   ],
+   "antonym~capital": [
+    0.046,
+    0.054,
+    9
+   ],
+   "past_tense~sva": [
+    0.023,
+    0.04,
+    10
+   ],
+   "gender~past_tense": [
+    0.015,
+    0.02,
+    10
+   ],
+   "gender~ioi": [
+    0.001,
+    0.056,
+    10
+   ],
+   "capital~gender": [
+    0.001,
+    0.02,
+    10
+   ],
+   "ioi~past_tense": [
+    -0.002,
+    0.081,
+    10
+   ],
+   "ioi~sva": [
+    -0.017,
+    0.018,
+    10
+   ],
+   "capital~sva": [
+    -0.022,
+    0.006,
+    10
+   ],
+   "gender~greater_than": [
+    -0.025,
+    0.019,
+    10
+   ],
+   "gender~successor": [
+    -0.027,
+    0.01,
+    10
+   ],
+   "capital~past_tense": [
+    -0.03,
+    0.038,
+    10
+   ],
+   "greater_than~sva": [
+    -0.032,
+    0.016,
+    10
+   ],
+   "antonym~sva": [
+    -0.033,
+    0.01,
+    9
+   ],
+   "gender~induction": [
+    -0.033,
+    0.009,
+    10
+   ],
+   "successor~sva": [
+    -0.036,
+    0.012,
+    10
+   ],
+   "antonym~gender": [
+    -0.037,
+    0.013,
+    9
+   ],
+   "induction~sva": [
+    -0.038,
+    0.011,
+    10
+   ],
+   "greater_than~past_tense": [
+    -0.044,
+    0.167,
+    10
+   ],
+   "capital~ioi": [
+    -0.063,
+    0.05,
+    10
+   ],
+   "past_tense~successor": [
+    -0.112,
+    0.194,
+    10
+   ],
+   "induction~past_tense": [
+    -0.128,
+    0.222,
+    10
+   ]
+  }
+ },
+ "hub": {
+  "chance_share": 0.0347,
+  "pairs": {
+   "greater_than~successor": [
+    1.0,
+    10
+   ],
+   "induction~successor": [
+    0.8,
+    10
+   ],
+   "antonym~induction": [
+    0.78,
+    9
+   ],
+   "antonym~successor": [
+    0.78,
+    9
+   ],
+   "greater_than~ioi": [
+    0.7,
+    10
+   ],
+   "antonym~past_tense": [
+    0.44,
+    9
+   ],
+   "greater_than~induction": [
+    0.4,
+    10
+   ],
+   "induction~ioi": [
+    0.4,
+    10
+   ],
+   "ioi~successor": [
+    0.4,
+    10
+   ],
+   "antonym~greater_than": [
+    0.33,
+    9
+   ],
+   "antonym~ioi": [
+    0.33,
+    9
+   ],
+   "greater_than~past_tense": [
+    0.2,
+    10
+   ],
+   "induction~past_tense": [
+    0.2,
+    10
+   ],
+   "past_tense~successor": [
+    0.2,
+    10
+   ],
+   "capital~greater_than": [
+    0.1,
+    10
+   ],
+   "capital~induction": [
+    0.1,
+    10
+   ],
+   "capital~ioi": [
+    0.1,
+    10
+   ],
+   "capital~successor": [
+    0.1,
+    10
+   ],
+   "gender~sva": [
+    0.1,
+    10
+   ],
+   "ioi~past_tense": [
+    0.1,
+    10
+   ],
+   "antonym~capital": [
+    0.0,
+    9
+   ],
+   "antonym~gender": [
+    0.0,
+    9
+   ],
+   "antonym~sva": [
+    0.0,
+    9
+   ],
+   "capital~gender": [
+    0.0,
+    10
+   ],
+   "capital~past_tense": [
+    0.0,
+    10
+   ],
+   "capital~sva": [
+    0.0,
+    10
+   ],
+   "gender~greater_than": [
+    0.0,
+    10
+   ],
+   "gender~induction": [
+    0.0,
+    10
+   ],
+   "gender~ioi": [
+    0.0,
+    10
+   ],
+   "gender~past_tense": [
+    0.0,
+    10
+   ],
+   "gender~successor": [
+    0.0,
+    10
+   ],
+   "greater_than~sva": [
+    0.0,
+    10
+   ],
+   "induction~sva": [
+    0.0,
+    10
+   ],
+   "ioi~sva": [
+    0.0,
+    10
+   ],
+   "past_tense~sva": [
+    0.0,
+    10
+   ],
+   "successor~sva": [
+    0.0,
+    10
+   ]
+  }
+ },
+ "align": {
+  "antonym": {
+   "identity": 0.088,
+   "within_layer": 0.25,
+   "cross_layer": 0.176,
+   "cross_layer_assisted": 0.579,
+   "hit_identity": 0.06,
+   "hit_within_layer": 0.15,
+   "hit_cross_layer": 0.12,
+   "hit_cross_layer_assisted": 0.38,
+   "ceiling": 0.951,
+   "chance_hit": 0.0117
+  },
+  "capital": {
+   "identity": 0.022,
+   "within_layer": 0.056,
+   "cross_layer": 0.045,
+   "cross_layer_assisted": 0.7,
+   "hit_identity": 0.06,
+   "hit_within_layer": 0.04,
+   "hit_cross_layer": 0.16,
+   "hit_cross_layer_assisted": 0.69,
+   "ceiling": 0.979,
+   "chance_hit": 0.0117
+  },
+  "gender": {
+   "identity": 0.003,
+   "within_layer": 0.025,
+   "cross_layer": 0.035,
+   "cross_layer_assisted": 0.731,
+   "hit_identity": 0.1,
+   "hit_within_layer": 0.04,
+   "hit_cross_layer": 0.08,
+   "hit_cross_layer_assisted": 0.74,
+   "ceiling": 0.998,
+   "chance_hit": 0.0117
+  },
+  "greater_than": {
+   "identity": 0.03,
+   "within_layer": 0.125,
+   "cross_layer": 0.197,
+   "cross_layer_assisted": 0.491,
+   "hit_identity": 0.06,
+   "hit_within_layer": 0.11,
+   "hit_cross_layer": 0.2,
+   "hit_cross_layer_assisted": 0.36,
+   "ceiling": 0.986,
+   "chance_hit": 0.0117
+  },
+  "induction": {
+   "identity": 0.064,
+   "within_layer": 0.156,
+   "cross_layer": 0.209,
+   "cross_layer_assisted": 0.509,
+   "hit_identity": 0.04,
+   "hit_within_layer": 0.1,
+   "hit_cross_layer": 0.16,
+   "hit_cross_layer_assisted": 0.28,
+   "ceiling": 0.954,
+   "chance_hit": 0.0117
+  },
+  "ioi": {
+   "identity": 0.012,
+   "within_layer": 0.128,
+   "cross_layer": 0.093,
+   "cross_layer_assisted": 0.526,
+   "hit_identity": 0.04,
+   "hit_within_layer": 0.18,
+   "hit_cross_layer": 0.14,
+   "hit_cross_layer_assisted": 0.61,
+   "ceiling": 0.972,
+   "chance_hit": 0.0117
+  },
+  "past_tense": {
+   "identity": 0.031,
+   "within_layer": 0.13,
+   "cross_layer": 0.069,
+   "cross_layer_assisted": 0.354,
+   "hit_identity": 0.06,
+   "hit_within_layer": 0.13,
+   "hit_cross_layer": 0.07,
+   "hit_cross_layer_assisted": 0.17,
+   "ceiling": 0.797,
+   "chance_hit": 0.0117
+  },
+  "successor": {
+   "identity": 0.077,
+   "within_layer": 0.255,
+   "cross_layer": 0.313,
+   "cross_layer_assisted": 0.471,
+   "hit_identity": 0.04,
+   "hit_within_layer": 0.22,
+   "hit_cross_layer": 0.3,
+   "hit_cross_layer_assisted": 0.41,
+   "ceiling": 0.944,
+   "chance_hit": 0.0117
+  },
+  "sva": {
+   "identity": -0.004,
+   "within_layer": 0.01,
+   "cross_layer": 0.016,
+   "cross_layer_assisted": 0.734,
+   "hit_identity": 0.17,
+   "hit_within_layer": 0.08,
+   "hit_cross_layer": 0.07,
+   "hit_cross_layer_assisted": 0.78,
+   "ceiling": 0.996,
+   "chance_hit": 0.0117
+  }
+ }
+}
