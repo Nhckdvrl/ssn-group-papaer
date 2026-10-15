@@ -1,6 +1,6 @@
 # 结果清单
 
-当前入口为[E69同图任务报告](../PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)与文末最新结果。E50–62为已完成基线和诊断，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+当前入口为[E74完整实验](../experiments/E74-physical-consequence-prediction-and-choice.md)、[E75跨任务设置](../experiments/E75-owned-container-task-transfer.md)及文末结果。E50–73均有完整历史证据，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
@@ -144,3 +144,10 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 - [去向图](figures/E70_first_disposition.png)、[机制/priority/阶段控制](figures/E70_paired_controls.png)、[无人索要对照](figures/E70_E71_persona_by_context.png)、[候选效应](figures/E72_candidate_effects.png)、[初始信息对照](figures/E73_initial_information.png)，均另有PDF/SVG。
 
 raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32b}`、`e72_{gemma,32b}_s{0,1}`、`e73_{gemma,32b}`；源状态`e70_native_request_qualification/snapshots.jsonl`。统计/读回/成本脚本及参数入口见报告，完整数据与模型日志不进Git。
+
+## E74完整与E75当前资格
+
+- E74：`E74_{gemma,32b}_complete.json`为全部预测、逐字段混淆、同图配对区间与实际联合去向；2808预测/2808新增原生分支。`E74_native_prediction_check.json`保留117×7原生真值及1404输入核对，`E74_native_state_readback.json`核对2674Remove/2629Give、0不一致。
+- `E74_cost_accounting.json`计全profile/完整分片共10552本地调用/1.866观测GPUh、0API，精确复用单计；[科学图](figures/E74_predictions_and_actual_actions.png)另有PDF/SVG。raw为cache/runs/e74_{gemma,32b}_{profile,s0,s1}/。
+- `E70_equipment_material_state_POST_HOC.json`有界读回原装备状态的actor attack+1，全117图保留；不是新模型实验或引擎修复。
+- E75：`E75_native_qualification.json`为自有容器0候选的完整负向资格；`E75_retrieval_qualification.json`为102原作者Get前提图/408路径，`E75_input_check.json`核对1224同C/同人设/对称支持输入。原始图在cache/runs/e75_native_retrieval_qualification/，首世界profile中，尚无完整模型效应。

@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**2026-10-16用户要求继续高水平研究：** E74已先登记，基于全117原作者世界，测物理后果预测及同表格原生真值替换对真实选择的作用。先看[定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)、[E74卡](experiments/E74-physical-consequence-prediction-and-choice.md)和当日日志；SimpleToM/Principled Personas/TriEx等正文与关键附录已核，不把已有的知识—行为差或数值信念替换技术当新贡献。0API/训练/patch，≤8卡，正文仍暂缓。
+**2026-10-16最新：** E74完整10552本地调用/1.866GPUh/0API：自产后果表显著提高真实原任务，替换引擎真值没有额外恢复，不能以测验答案直接定义内部信念。E75已先登记并通过102原作者Get前提图/四任务族资格，固定4896分支，首世界profile中；检验同一整体解释能否跨任务预测。先看[定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)、[E74卡](experiments/E74-physical-consequence-prediction-and-choice.md)、[E75卡](experiments/E75-owned-container-task-transfer.md)及当日日志。精读五篇强近邻用于整体贡献定位，不要求每个组件无人做过。0API/训练/patch，≤8卡，正文仍暂缓。
 
 **最新完成（2026-10-15）：** 先读[E70–E73完整报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。117源作者Give图、23868分支/125126新本地调用/2解析失败保留/12.847GPUh；峰值8卡，0API/训练/patch。相同任务下32B人物效应随ready/equipped换向；固定本人对话，扩展候选或预先给真实引擎操作信息均恢复大量交付，E73后仍需结合向A/向B/未交的联合分布解释人物作用。C06限定L2，I04 PROMISING、全局PROPOSED；正文暂缓。全部worker已完成，无新增队列，不自动扫提示、训练或恢复旧线。下列“最新”段落按历史阅读。
 

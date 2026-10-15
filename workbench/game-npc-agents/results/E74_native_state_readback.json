@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "episodes": 2808,
+  "verified_source_removes": 2674,
+  "verified_source_gives": 2629,
+  "physical_flag_mismatches": 0,
+  "cells": {
+    "E74/gemma/firm/divert_self_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 315,
+      "terminal_indirect_owner_goal": 315,
+      "terminal_indirect_owner_competitor": 0,
+      "terminal_indirect_owner_actor": 30
+    },
+    "E74/gemma/agreeable/divert_self_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 330,
+      "terminal_indirect_owner_goal": 330,
+      "terminal_indirect_owner_competitor": 2,
+      "terminal_indirect_owner_actor": 15
+    },
+    "E74/gemma/firm/divert_native_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 309,
+      "terminal_indirect_owner_goal": 309,
+      "terminal_indirect_owner_competitor": 0,
+      "terminal_indirect_owner_actor": 41
+    },
+    "E74/gemma/agreeable/divert_native_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 328,
+      "terminal_indirect_owner_goal": 328,
+      "terminal_indirect_owner_competitor": 1,
+      "terminal_indirect_owner_actor": 19
+    },
+    "E74/32b/firm/divert_self_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 334,
+      "terminal_indirect_owner_goal": 334,
+      "terminal_indirect_owner_competitor": 0,
+      "terminal_indirect_owner_actor": 17
+    },
+    "E74/32b/agreeable/divert_self_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 342,
+      "terminal_indirect_owner_goal": 342,
+      "terminal_indirect_owner_competitor": 1,
+      "terminal_indirect_owner_actor": 8
+    },
+    "E74/32b/firm/divert_native_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 329,
+      "terminal_indirect_owner_goal": 329,
+      "terminal_indirect_owner_competitor": 0,
+      "terminal_indirect_owner_actor": 22
+    },
+    "E74/32b/agreeable/divert_native_forecast": {
+      "episodes": 351,
+      "primary_to_goal": 336,
+      "terminal_indirect_owner_goal": 336,
+      "terminal_indirect_owner_competitor": 2,
+      "terminal_indirect_owner_actor": 13
+    }
+  },
+  "indirect_goal_ownership_without_direct_source_give": [],
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e74_gemma_s0/episodes.jsonl": "8b417b27e5ea9e66f160c406f6c6ed25c001451b0158999438243fea273ddd72",
+    "/home/xiang/.cache/game-npc-research/runs/e74_gemma_s1/episodes.jsonl": "13b969a7a7948098d064a6062c5c9670a53b72ffa1b6dfa511afea5083db691a",
+    "/home/xiang/.cache/game-npc-research/runs/e74_32b_s0/episodes.jsonl": "6b7e01ef01daa3d5143003008f369e4163aadfaef547d333a677b9605e6d319f",
+    "/home/xiang/.cache/game-npc-research/runs/e74_32b_s1/episodes.jsonl": "24a2b4cd58e6154491463f10698cc643b339f823197ced0f108da8078519f327"
+  },
+  "model_calls": 0,
+  "scope": [
+    "Primary first source-item Give unchanged; terminal transitive ownership is a separate sensitivity readout.",
+    "Indirect possession is not full private utility and uses the same episode stopping/horizon.",
+    "This is internal state validation, not independent L3 scientific review."
+  ]
+}

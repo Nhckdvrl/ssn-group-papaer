@@ -1,0 +1,133 @@
+{
+  "status": "COMPLETE",
+  "experiment": "E74",
+  "source_worlds": 117,
+  "unique_prediction_contexts": 2808,
+  "unique_execution_branches": 2808,
+  "profile_exact_reuse": {
+    "gemma": {
+      "predictions.jsonl": 12,
+      "episodes.jsonl": 12
+    },
+    "32b": {
+      "predictions.jsonl": 12,
+      "episodes.jsonl": 12
+    }
+  },
+  "jobs": [
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_gemma_profile",
+      "host": "fvcrc21",
+      "gpu": 0,
+      "pid": 346999,
+      "profile": true,
+      "calls": 36,
+      "parse_errors": 0,
+      "prompt_tokens": 58398,
+      "completion_tokens": 3373,
+      "stage_effects": 12,
+      "stage_exec": 24,
+      "reused_calls": 12,
+      "model_load_and_inference_gpu_hours": 0.0643188534633373,
+      "observed_slot_hours": 0.1247691199514601
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_32b_profile",
+      "host": "fvcrc21",
+      "gpu": 2,
+      "pid": 352475,
+      "profile": true,
+      "calls": 32,
+      "parse_errors": 0,
+      "prompt_tokens": 54494,
+      "completion_tokens": 4046,
+      "stage_effects": 12,
+      "stage_exec": 20,
+      "reused_calls": 16,
+      "model_load_and_inference_gpu_hours": 0.04243703735888832,
+      "observed_slot_hours": 0.07782078391975826
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_gemma_s0",
+      "host": "fvcrc21",
+      "gpu": 0,
+      "pid": 354916,
+      "profile": false,
+      "calls": 2847,
+      "parse_errors": 0,
+      "prompt_tokens": 4750928,
+      "completion_tokens": 257304,
+      "stage_effects": 696,
+      "stage_exec": 2151,
+      "reused_calls": 744,
+      "model_load_and_inference_gpu_hours": 0.2988951598791755,
+      "observed_slot_hours": 0.31574311236540475
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_gemma_s1",
+      "host": "fvcrc21",
+      "gpu": 1,
+      "pid": 354919,
+      "profile": false,
+      "calls": 2809,
+      "parse_errors": 0,
+      "prompt_tokens": 4596500,
+      "completion_tokens": 257052,
+      "stage_effects": 696,
+      "stage_exec": 2113,
+      "reused_calls": 698,
+      "model_load_and_inference_gpu_hours": 0.3039679696819318,
+      "observed_slot_hours": 0.319675022231208
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_32b_s0",
+      "host": "fvcrc21",
+      "gpu": 2,
+      "pid": 361773,
+      "profile": false,
+      "calls": 2401,
+      "parse_errors": 0,
+      "prompt_tokens": 4154272,
+      "completion_tokens": 276590,
+      "stage_effects": 696,
+      "stage_exec": 1705,
+      "reused_calls": 981,
+      "model_load_and_inference_gpu_hours": 0.47343576702748474,
+      "observed_slot_hours": 0.5031461789210637
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e74_32b_s1",
+      "host": "fvcrc21",
+      "gpu": 3,
+      "pid": 361776,
+      "profile": false,
+      "calls": 2427,
+      "parse_errors": 0,
+      "prompt_tokens": 4120556,
+      "completion_tokens": 281448,
+      "stage_effects": 696,
+      "stage_exec": 1731,
+      "reused_calls": 866,
+      "model_load_and_inference_gpu_hours": 0.4946075299555539,
+      "observed_slot_hours": 0.5244821536540986
+    }
+  ],
+  "totals": {
+    "calls": 10552,
+    "parse_errors": 0,
+    "prompt_tokens": 17735148,
+    "completion_tokens": 1079813,
+    "stage_effects": 2808,
+    "stage_exec": 7744,
+    "reused_calls": 3317,
+    "model_load_and_inference_gpu_hours": 1.6776623173663716,
+    "observed_slot_hours": 1.8656363710429933
+  },
+  "new_cloud_calls": 0,
+  "peak_gpus": 4,
+  "scope": [
+    "Profile calls counted once, profile outputs not counted as additional independent cases.",
+    "Observed slot hours include CPU preparation, imports, load, inference and logged teardown.",
+    "One failed cache-preflight launch occurred before loading any model and made zero model calls."
+  ]
+}

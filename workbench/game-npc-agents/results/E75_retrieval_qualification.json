@@ -1,0 +1,45 @@
+{
+  "status": "COMPLETE",
+  "counts": {
+    "eat/source_quests": 75,
+    "give/source_quests": 931,
+    "wield/source_quests": 74,
+    "wear/source_quests": 138,
+    "give/eligible_quests": 89,
+    "drink/source_quests": 30,
+    "drink/eligible_quests": 11,
+    "eat/eligible_quests": 12,
+    "wear/eligible_quests": 13
+  },
+  "qualified_worlds": 102,
+  "qualified_goal_counts": {
+    "give": 71,
+    "drink": 10,
+    "wear": 12,
+    "eat": 9
+  },
+  "source_prior_overlap": {
+    "False": 77,
+    "True": 25
+  },
+  "failure_counts": {
+    "no_one_get_goal_and_request_path": 351,
+    "original_goal_already_executable": 770,
+    "ambiguous_actor": 2
+  },
+  "failures": "/home/xiang/.cache/game-npc-research/runs/e75_native_retrieval_qualification/qualification_failures.json",
+  "failures_sha256": "048d6c5ad01d1bb0d1026d6b5402f3525b2c6754c58f3a461412427477430df7",
+  "data": "/home/xiang/.cache/game-npc-research/runs/e75_native_retrieval_qualification/snapshots.jsonl",
+  "data_sha256": "1079bb5e9ca8aec54c8f14f359b86ee361237c6ec91bb7c37d91e60519f5380b",
+  "native_path_witnesses": 408,
+  "archive_sha256": "743d9a9dc85e9fd7737c6cb51762deae684382de326bf724cde5b72bcf7c7c7d",
+  "script_sha256": "bf5378b0f420e426aafa95592c43ecbaa0797a3de35f8dced342de243bdd8908",
+  "model_calls": 0,
+  "gpu_hours": 0,
+  "rules_modified": false,
+  "scope": [
+    "Retrieval is the original authored initial state; ready is produced by one legal native Get.",
+    "Source task and motivations unchanged; resource custody, menus and sequence length vary.",
+    "Prior E50 overlap alone is not a complete prior-model-exposure audit."
+  ]
+}
