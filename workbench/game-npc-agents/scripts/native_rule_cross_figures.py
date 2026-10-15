@@ -24,7 +24,7 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--results',type=Path,required=True)
     ap.add_argument('--out',type=Path,required=True);a=ap.parse_args();a.out.mkdir(exist_ok=True)
     plt.rcParams.update({'font.size':10,'pdf.fonttype':42,'svg.fonttype':'none'})
-    data={e:{m:json.loads((a.results/f'{e}_{m}_cross_summary.json').read_text()) for m in ['gemma','32b']} for e in ['E67','E68']}
+    data={'E67':{m:json.loads((a.results/f'E67_{m}_cross_summary.json').read_text()) for m in ['gemma','32b']}}
     colors=['#4477AA','#EE9944'];models={'gemma':'Gemma 3 12B','32b':'Qwen3 32B'}
     fig,axes=plt.subplots(2,2,figsize=(11,7),sharey=True,layout='constrained')
     combinations=[(A,A),(A,G),(G,A),(G,G)]
@@ -39,6 +39,8 @@ def main():
     axes[0,0].legend(fontsize=8,loc='upper left');fig.supxlabel('Upstream rule / Execution rule; 79 worlds, 3 seeds per persona')
     for ext in ['png','pdf','svg']:fig.savefig(a.out/f'E67_cross_execution.{ext}',dpi=180)
     plt.close(fig)
+    if not all((a.results/f'E68_{m}_cross_summary.json').exists() for m in ['gemma','32b']):return
+    data['E68']={m:json.loads((a.results/f'E68_{m}_cross_summary.json').read_text()) for m in ['gemma','32b']}
     fig,axes=plt.subplots(2,3,figsize=(12,6.5),sharey=True,layout='constrained')
     for i,m in enumerate(['gemma','32b']):
         for j,(metric,title) in enumerate([('goal','Task executed'),('any_legal_block','Any first legal block'),('transfer','Requested transfer')]):

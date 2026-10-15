@@ -1,6 +1,6 @@
 # E67：上游规则×执行规则的原生闭环与阻挡状态反馈
 
-- **状态：** RUNNING
+- **状态：** DONE
 - **类型：** CLAIM / 解释性实验
 - **对应：** C05 / I04 / P12；用户2026-10-15最新审计授权，暂缓论文。
 - **问题（一句话）：** 保持原生世界、人设和具体上游输出固定，执行规则能否改变8步内实体结局；重复block是否由缺少显式状态反馈扩大？
@@ -16,7 +16,13 @@
 - **算力预算：** 预计3–6 GPUh，现有Conda/HF缓存，优先本地4卡按模型/世界独立分片；全时≤8空闲授权卡。0API/训练/激活干预。
 
 ## 结果
-运行前登记；待固定队列完成填写。
+79图、三seed、两traits完整9480分支；Gemma5688/32B3792，20225本地调用，1.59199GPUh，0API/训练。Gemma1次解析失败、32B0，全部保留。
+
+block_status下固定asset上游，Exec generic−asset实际goal：Gemma F +32.07pp [23.21,41.35]、A +28.69 [20.68,36.72]；32B F +7.59 [3.80,11.39]、A +13.08 [8.86,17.72]。反向交叉（generic上游改asset执行）同样降低任务完成。上游仍有作用，交互与所有方向均入结果JSON。
+
+Gemma negative_only的status−legacy goal F −1.27pp [−5.06,3.38]、A −2.95 [−5.49,−0.84]。重复错误点估计下降却未恢复goal，普通反馈缺失不能承担主要差距；首次合法防卫和失败后的合法表情/检查分别看。所有feedback首步轨迹逐字段一致。
+
+C05由概率L1扩充为范围限定的实体L2；见[混杂核对](../knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md)。[Gemma结果](../results/E67_gemma_cross_summary.json)、[32B结果](../results/E67_32b_cross_summary.json)，原计划回放与新旧对角比较分别为results/E67_*_plan_paths.json、E67_*_historical_reference.json。原始轨迹cache runs/e67_*_cross_s[01]。E68仍在执行，暂不计入本结论。
 
 ### 推理前协议落实
 历史look/inventory的物品枚举受Python进程hash次序影响，无法把新过程称为全部字节复刻；源system/schema/原任务/计划/记忆与动作历史逐项相同，CPU重放核物理状态。E67/E68统一PYTHONHASHSEED=0，全部主对角与交叉在同批新运行；原E63/E65仅历史参照。不同feedback首步输入同字节，完整messages/schema/采样seed相同的调用只执行一次并记录复用，之后仅在输入真正改变时新推理。没有跨不同prompt复用。

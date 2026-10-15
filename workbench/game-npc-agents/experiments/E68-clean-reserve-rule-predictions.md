@@ -26,3 +26,5 @@ E68尚未产生模型输出时核对：58个原目标是Give，negative_only的�
 
 ### 执行资源调整（未改变实验）
 远端32B两worker冷权重读取1750秒仍无模型调用/episode；E67的32B本地两卡已释放，停止远端这两个进程组并保存启动日志/manifest，原条件与数据完整迁至fvcrc21 GPU2/3。两次中断启动按全时预约保守计0.97222GPUh，0输出/0种子被淘汰；见results/E68_interrupted_startups.json。Gemma继续fvcrc20。新旧运行路径和计费分别保留，不覆盖输出。
+
+Gemma远端完整首批之后实测生成也明显慢于fvcrc21；待E67结束释放GPU0/1，采用既有精确输入缓存续跑。远端所有已记录messages/schema/seed对应输出直接复用，原已完成episode必须逐字段完全一致、所有旧调用必须被重新使用，才将完整结果原子发布给分析脚本；不重采样已记录决策。原始部分轨迹保留remote_partial，2409秒/卡的全进程预约成本（含启动）合入最终runtime，作为保守计费。续跑封装native_rule_resume.py；原实验driver/原生规则不改，0新增实验条件。
