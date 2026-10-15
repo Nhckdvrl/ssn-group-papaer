@@ -26,6 +26,12 @@ def metrics(row):
              first_invalid_source_give=float(bool(feedback and feedback[0] == 0)),
              first_attempt_goal_command=float(bool(h and h[0]['command'] == row['goal_command'])),
              first_attempt_request_command=float(bool(h and h[0]['command'] == row['request_command'])))
+    # Exploratory path readout motivated by E70 persona sign change; no new model conditions.
+    from_request = bool(feedback and row['direction'] == 'divert' and h[feedback[0]]['command'] == row['request_command'])
+    from_goal = bool(feedback and h[feedback[0]]['command'] == row['goal_command'])
+    m.update(secondary_first_feedback_from_request=float(from_request),
+             secondary_request_feedback_then_goal=float(from_request and then_remove and then_give and m['to_goal']),
+             secondary_goal_feedback_then_goal=float(from_goal and then_remove and then_give and m['to_goal']))
     return m
 
 

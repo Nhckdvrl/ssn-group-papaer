@@ -12,7 +12,8 @@ import matplotlib.pyplot as plt
 def save(fig, folder, name):
     for ext in ['png', 'pdf', 'svg']:
         p = folder/(name+'.'+ext)
-        fig.savefig(p, dpi=180)
+        metadata = {'Date': None} if ext == 'svg' else {'CreationDate': None} if ext == 'pdf' else None
+        fig.savefig(p, dpi=180, metadata=metadata)
         if ext == 'svg':
             p.write_text('\n'.join(line.rstrip() for line in p.read_text().splitlines())+'\n')
     plt.close(fig)
@@ -25,7 +26,7 @@ def main():
     args = ap.parse_args(); args.out.mkdir(exist_ok=True)
     reports = {model: json.loads((args.results/f'E70_{model}_complete.json').read_text())
                for model in ['gemma', '32b']}
-    plt.rcParams.update({'font.size': 10, 'pdf.fonttype': 42, 'svg.fonttype': 'none'})
+    plt.rcParams.update({'font.size': 10, 'pdf.fonttype': 42, 'svg.fonttype': 'none', 'svg.hashsalt': 'game-npc-E70-E72'})
     fig, axes = plt.subplots(2, 2, figsize=(11, 7), layout='constrained', sharey=True)
     outcomes = [('to_goal', 'Authored recipient', '#4477AA'),
                 ('to_competitor', 'Other peer', '#CC6677'),
@@ -97,6 +98,27 @@ def main():
             ax.legend(frameon=False)
         fig.supxlabel('Same 117 authored Give tasks, source items and three seeds. Pointwise graph-cluster 95% intervals.\nNo solicitation removes request and generated dialogue together; it is a context-package baseline.', fontsize=10)
         save(fig, args.out, 'E70_E71_persona_by_context')
+    e72_paths = {m: args.results/f'E72_{m}_complete.json' for m in ['gemma','32b']}
+    if all(p.exists() for p in e72_paths.values()):
+        selections = [('aligned','to_goal','Aligned: authored-recipient Give'),
+                      ('divert','to_goal','Divert: authored-recipient Give'),
+                      ('divert','to_competitor','Divert: requesting-peer Give'),
+                      ('divert','no_transfer','Divert: no selected-item Give')]
+        fig,axes=plt.subplots(1,2,figsize=(12,4.8),layout='constrained',sharey=True)
+        for ax,(model,name) in zip(axes,[('gemma','Gemma 3 12B'),('32b','Qwen3 32B')]):
+            r=json.loads(e72_paths[model].read_text())
+            for p,color,offset in [('firm','#4477AA',.10),('agreeable','#AA3377',-.10)]:
+                vv=[r['contrasts'][p+'/goal_minus_valid/'+d][f] for d,f,_ in selections]
+                means=np.array([v['mean'] for v in vv])*100
+                lo=np.array([v['graph_bootstrap_95'][0] for v in vv])*100
+                hi=np.array([v['graph_bootstrap_95'][1] for v in vv])*100
+                ax.errorbar(means,np.arange(4)+offset,xerr=[means-lo,hi-means],fmt='o',capsize=3,label=p.capitalize(),color=color)
+            ax.set_yticks(np.arange(4),[s[2] for s in selections]);ax.set_ylim(3.5,-.5)
+            ax.axvline(0,color='#777777',linewidth=.8);ax.grid(axis='x',alpha=.2)
+            ax.set_title(name);ax.set_xlabel('Expanded - native-menu candidates (pp)')
+            ax.spines[['top','right']].set_visible(False);ax.legend(frameon=False)
+        fig.supxlabel('117 equipped source worlds; identical dialogue/persona/state and eight-action budget.\nOnly candidate list/enum differs; failed attempts consume steps. Pointwise graph-cluster 95% intervals.',fontsize=10)
+        save(fig,args.out,'E72_candidate_effects')
 
 
 if __name__ == '__main__':
