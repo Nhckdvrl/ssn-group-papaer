@@ -1,0 +1,91 @@
+{
+  "status": "COMPLETE",
+  "experiment": "E76",
+  "source_worlds": 102,
+  "unique_execution_branches": 1224,
+  "profile_exactly_reused_branches": 12,
+  "jobs": [
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e76_gemma_profile",
+      "model": "gemma",
+      "profile": true,
+      "gpu": 0,
+      "pid": 389335,
+      "host": "fvcrc21",
+      "calls": 10,
+      "parse_errors": 0,
+      "prompt_tokens": 15283,
+      "completion_tokens": 658,
+      "stage_exec": 10,
+      "reused_calls": 6,
+      "load_and_inference_gpu_hours": 0.015516435866108319,
+      "observed_slot_hours": 0.036722626156277124
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e76_gemma",
+      "model": "gemma",
+      "profile": false,
+      "gpu": 0,
+      "pid": 390143,
+      "host": "fvcrc21",
+      "calls": 874,
+      "parse_errors": 0,
+      "prompt_tokens": 1060690,
+      "completion_tokens": 65482,
+      "stage_exec": 874,
+      "reused_calls": 633,
+      "load_and_inference_gpu_hours": 0.11794314671695853,
+      "observed_slot_hours": 0.13205640819337633
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e76_32b_profile",
+      "model": "32b",
+      "profile": true,
+      "gpu": 2,
+      "pid": 389336,
+      "host": "fvcrc21",
+      "calls": 9,
+      "parse_errors": 0,
+      "prompt_tokens": 14491,
+      "completion_tokens": 686,
+      "stage_exec": 9,
+      "reused_calls": 6,
+      "load_and_inference_gpu_hours": 0.020261718646959505,
+      "observed_slot_hours": 0.04144394437472026
+    },
+    {
+      "folder": "/home/xiang/.cache/game-npc-research/runs/e76_32b",
+      "model": "32b",
+      "profile": false,
+      "gpu": 2,
+      "pid": 390144,
+      "host": "fvcrc21",
+      "calls": 1045,
+      "parse_errors": 0,
+      "prompt_tokens": 1338027,
+      "completion_tokens": 74374,
+      "stage_exec": 1045,
+      "reused_calls": 625,
+      "load_and_inference_gpu_hours": 0.19038876249720083,
+      "observed_slot_hours": 0.2043272187312444
+    }
+  ],
+  "totals": {
+    "calls": 1938,
+    "parse_errors": 0,
+    "prompt_tokens": 2428491,
+    "completion_tokens": 141200,
+    "stage_conv": 0,
+    "stage_exec": 1938,
+    "reused_calls": 1270,
+    "load_and_inference_gpu_hours": 0.3441100637272272,
+    "observed_slot_hours": 0.4145501974556181
+  },
+  "peak_gpus": 2,
+  "new_cloud_calls": 0,
+  "scope": [
+    "Profile actual calls counted once; full-shard logical reuse is not extra independent evidence.",
+    "Observed slot includes CPU imports, model load, inference and logged teardown.",
+    "Owned-container and retrieval eligibility/input controls used no model/GPU."
+  ]
+}

@@ -2,53 +2,42 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E74/E75完成，E76固定对话的原生状态反事实进行中，暂缓论文正文。** 最新入口为[执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；此前见[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)、[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E74–E76全部完成，I04保持PROMISING，论文正文暂缓。** 最新[进度报告](PROGRESS_REPORT_2026-10-16.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
 
-## 当前研究动作
+中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 
-- **E76进行中：** 固定E75 retrieval本人对话，仅把执行初态换成原生Get后的ready状态，612分支/model、两模型；不增加新指令或表格，用于区分社会历史与当前物理前提。612输入核对通过、完整profile后全队列运行，见[实验卡](experiments/E76-fixed-dialogue-and-native-access.md)。
-- **E75完成：** 102原作者Get前提图/四任务/两模型三seed，4896分支、16635本地调用/0解析失败/1.555GPUh。非Give31图Agreeable首步Get增加15.05/29.03pp、请求交付增加12.90/27.96pp，自身任务却+5.38/−16.13pp，推进与用途共同形成最终表现。见[完整报告](PROGRESS_REPORT_2026-10-16.md)、[实验卡](experiments/E75-native-retrieval-task-transfer.md)、[联合结果图](results/figures/E75_task_request_joint_outcomes.png)。
-- **E74完成：** 117图、2808预测＋2808新增执行、10552本地调用/0解析失败/1.866GPUh/0API。自产表使原任务F/A提高Gemma33.33/23.36pp、32B17.38/17.38pp；引擎真值替换自产值未额外恢复。结果支持继续检验路径呈现与用途选择，预测答案不直接作为内部信念。见[实验与全部读数](experiments/E74-physical-consequence-prediction-and-choice.md)、[科研图](results/figures/E74_predictions_and_actual_actions.png)、[整体定位](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)。
+## 当前整体认识
 
-- **E70–E73完成：** 同117原作者Give图、两模型/三seed，23868分支/125126本地调用/2解析失败（保留）/12.847GPUh，峰值8卡、0API。32B冲突下人物原任务效应ready −6.84pp、equipped +5.41pp；普通机制事实恢复大部分交付，单纯priority无同等恢复。E71无人索要亦有前提困难，请求方向可促进/妨碍原任务。
-- **固定对话后的信息控制：** E72对称扩展A/B命令候选，E73保留原生菜单、预先统一给真实引擎操作事实，均大幅恢复。E73冲突下原任务F/A：Gemma56.4/70.7%、32B77.8/80.1%；人物差仍有联合去向差异，不能直接推成私人效用权重。C06限定L2，I04 PROMISING；所有模型job完成，无新增队列。见[报告与复算入口](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。
+**角色设定同时影响必要动作的推进和资源用途，物理前提决定它们怎样显露为最终任务表现。** E75非Give31图中，Agreeable相对Firm的首步Get增加Gemma/32B 15.05/29.03pp，请求交付增加12.90/27.96pp，自身任务却+5.38/−16.13pp。E76固定同一段对话后，Gemma人物×可及性任务交互仍为−21.51pp [−37.63,−6.45]，32B为0 [−11.83,11.83]。
 
-- **E69完成：** 112同图任务配对＋3个源案例，2760主分支/144适应性控制/27519新增调用，2.828GPUh、0API，GPU已释放。任务人物交互Gemma +4.17pp [0.00,8.33]、32B +6.25 [2.08,10.71]；Duty-Give约98%–99%完成且保留接收者A，未跨模型出现完整正负反转。补共同窗口没有新增顺序完成；单句机制知识在32B恢复5/36双事件，Gemma0/36但17条真实卸下。不将三个案例当总体机制、不把goal交互当动词回路。C04/C05仍限定L2，I04 PROMISING。
+这与既有C04任务/非冲突合作共存、C05执行规则的物理作用构成一条研究链。当前C06限定L2；推进差不直接等于潜在能力差，下一项应区分目标/等待价值和已选目标的实际实现。[整体定位与七篇新精读](knowledge/persona-behavior/BELIEF_CHOICE_POSITIONING_2026-10-16.md)。
 
-中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
+## 最近完成的实验
 
-- **E67/E68完成：** 15108新执行/51631本地调用/6.556GPUh（含中断），GPU已释放。E67执行规则恢复在E68独立41装备图复现：固定asset上游换generic执行，Gemma F/A原goal +27.6/+36.6pp，32B +8.9/+13.0pp。60个其他物品图人物交付差+10.0/+38.3pp、同轨迹both亦增加；Gemma任务约81%–82%，32B约99%。32B纯否定未复现强阻挡/降低交付的统一分流。C04/C05 L2，见[预测完整读数](results/E68_prediction_readout.md)与[混杂核对](knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md)；0API，不追加盲网格。
+| 实验 | 设置与结果 |
+|---|---|
+| [E74](experiments/E74-physical-consequence-prediction-and-choice.md) | 117原作者Give图、2808预测＋2808新增执行。自产后果表提高原任务17.4–33.3pp，替换原生真值未额外恢复；预测答案、行动链呈现和真实选择分开解释。 |
+| [E75](experiments/E75-native-retrieval-task-transfer.md) | 102原作者自然Get前提图、四任务族、4896分支。原角色/目标/规则保留；ready是原生Get后的反事实。推进与用途共同变化，任务改善有不同来源。 |
+| [E76](experiments/E76-fixed-dialogue-and-native-access.md) | 精确固定E75 retrieval对话，只变执行初态，1224分支。人物×物理前提作用在固定历史下成立于Gemma，32B的资源取舍更稳定；不增加新指令或表格。 |
 
-- **E65/E66完整结果：** 79原生wear/wield图，2370新轨迹、1896两模型动作概率上下文，1.196GPUh/15630本地生成调用，0API/训练/patch，GPU已释放。否定相对肯定式保有使实际goal F/A降低7.2/9.7pp，同时合法block增加约14pp；许可恢复取决于人设/任务/规则包。固定原计划和记忆换任务优先规则，使Gemma/32B目标命令概率提高17.6/12.6pp；直接效应记C05 L1。C04共存范围核对记L2，I04按人审PROMISING；暂缓正文。
+三轮共29125实际本地调用、8928新增物理分支、2808预测上下文、208不同源图，3.83553观测GPUh/3.46147载入与推理GPUh，峰值4卡，0API/解析失败；本轮worker已退出。[合并成本与源图口径](results/E74_E76_round_accounting.json)。分支/调用不是独立世界，E76复用E75源图，E74与E75相交11图。
 
-- **E63/E64完整结果：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)三模型各200原图、100其他资产配对、5400 episode收齐。一般任务优先使agreeable原goal完成32B60.8→90.0%、27B78.5→93.0%；Gemma资产规则反而76.8→52.8%。非冲突合作及可行计划采纳分开测；资产比较另对齐原goal前交付窗口，不把总交付差直接归因工具价值。196图交目标物后原任务暂时不可执行、4图有替代物，全部可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)两Qwen各9独立图/108条，另32B通信控制54条，死亡/失败保留。全轮含profile/中断13.167GPUh、104883本地调用、0新增API/训练/内部干预，全部本轮worker退出。原子goal与完整私人利益分开，该轮未升级神经机制；最新人审认可I04为PROMISING，E65/E66已完成。
+[结果清单](results/README.md) · [E74图](results/figures/E74_predictions_and_actual_actions.png) · [E75图](results/figures/E75_task_request_joint_outcomes.png) · [E76图](results/figures/E76_fixed_dialogue_access_effects.png)，均有PDF/SVG。
 
-- **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
+## 历史证据与明确冻结的执行线
 
-- **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
-- **阶段与渠道：** 32B 的单 seed 2×2 阶段干预已完成；固定下游人设，conversation 人设的请求转移效应约 +15pp，固定 conversation 的下游合并效应约 +2.5pp。完整渠道低于 agenda-only；agreeable 渠道交互 −11.7pp，95%[−20.8,−2.5]。当前检查的是承诺如何传递及被重新裁决。
-- **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。27B patch与随机都28/32，机制未统一。E53三个模型全部40图×三seed完成；不同状态记录可改变人物效应，外加记录不等于自然错误频率。
-- **独立确认与解释：** 三个模型各200不同confirm世界×三seed/5600完整分支；实际请求人物差32B13.7pp [9.7,17.8]、27B8.5pp [5.7,11.7]、Gemma6.7pp [4.3,9.3]。E56普通阶段结束解释大量无动作；E57两强模型39原世界动态伙伴互动，E58分量、E59同未来记录、E60/E61共2400完整原生分支均完成。E62三模型各4896原生选择/2448概率读出完成；同未来承诺的参数角色差1.47/5.88/0pp，单层donor无统一定向控制。固定动作族诊断与自由NPC行为、完整私有利益分开。
-- **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，澄清盲检185保留／14复核／1拒绝，全部200为主表；[派生请求与QC](results/E55_natural_requests.jsonl)已公开。E54全部720文本盲标注完成。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
+- [E70–E73报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：同117作者Give图，23868分支/125126调用；状态、请求方向、候选和原生反馈的作用。原三重交互不确定、全部负向结果保留。
+- [E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)：112同图任务配对及三来源案例的后续执行；不把三个案例当总体机制。
+- [E67/E68](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)：执行规则恢复在独立41装备图复现，60其他资产图保留角色合作差；三向统一分流未成立。
+- [E65/E66](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62](PROGRESS_REPORT_2026-10-15.md)：三模型200图确认、角色分量、实体任务/合作、动态伙伴及白盒正负结果。
+- [10月14日报告](PROGRESS_REPORT_2026-10-14.md)：原生系统恢复与旧实验。PCSP/MeltingPot小模型RL及追加诊断、校园1200帧全图漫游、只改conversation的总体人格实验、无实体flag任务均按用户决定冻结；历史文件保留，不按旧下一步恢复。E00/E02–E05不自动恢复。
 
-以下是已封存的基线背景，历史过程见进度报告；不按旧“下一步”恢复执行。
+## 接手入口
 
-- **原生NPC闭环：** ActionCastle／LIGHT已恢复。E35原三人校园世界三个自然episode各1200帧，129/129/166本地27B调用、5/5/8对话；首episode完整cassette独立回放一致。正向目标对应与地点/计划异常均保留，新增承诺超出episode边界的不记失败。E42两强模型与具体偏好提醒全部240个原生200cycle episodes完成，48000本地决策，无随机fallback。
-- **PCSP完整预算：** E34正确编码、原作者300轮预算，三seed×Full／No全部完成（4608万原生transitions）。300轮Full局部人物利益响应三seed更强，完整游戏收益三seed较低。E41四种普通覆盖／绑定对照×三seed全300轮完成（9216万新增transitions），所有30／100／300阶段保留；结果不支持用一个方向概括全部收益，亦不包装成独立“利益控制”新题。
-- **功能测量（冻结）：** E37／E39 分开测等义变化、属性编辑与原生收益方向，60000动作累计reward完成重建。按用户指令停止追加训练或诊断。
-- **独立战略环境：** E38恢复原MeltingPot2.4.0／DMLab2D1.0.0；26次默认/强/正确编码训练与360完整原生episode均完成。正确码Full−No团队return−12.54、五seed簇95%[−38.52,13.43]，内部读取38.1%/6.9%，不同层次分别解释。PHASE5源码稀疏检出遗漏已纠正，作者独立读出路径完成数值审计。
-- **自然角色测量（历史）：** E45–49 完成并在2026-10-14暂停收尾。E49复用三条自然历史，不将24后缀当24独立场景；校园讲课／画图文字不作实体完成判定。用户随后已恢复并要求关键决策切片重构。
+[AGENTS](AGENTS.md) · [LOCAL_AGENT_START](LOCAL_AGENT_START.md) · [EXPLORATION_ENTRY](EXPLORATION_ENTRY.md) · [E06基线卡](experiments/E06-persona-strategy-baseline.md) · [领域地图](knowledge/DOMAIN_ATLAS.md) · [人格—行为知识](knowledge/persona-behavior/) · [强近邻](knowledge/persona-behavior/RELATED_WORK.md) · [源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md) · [痛点](PAIN_LOG.md)。源代码事实、实测、解释分别记录。
 
-[实验卡](experiments/) · [结果与校对](results/README.md) · [当前日志](logs/2026-10-15.md) · [I04阶段裁决](ideas/I04-commitment-conflict-stage-arbitration.md) · [主张账本](CLAIMS.md)。C02已由独立200图确认至L2；C03保持范围明确的pilot。依据动态伙伴、原生前置条件与实体后果继续研究角色选择，不预定失效故事。
+## 资产与执行边界
 
-## 阅读与执行入口
+完整轨迹、输入输出、模型与checkpoint在`/home/xiang/.cache/game-npc-research/`，不进Git；E74–76 raw位于`runs/e74_*`、`e75_*`、`e76_*`。源数据/driver/model pin、启动参数和成本在实验卡与manifest；统计重建脚本在`scripts/`。原生动作、错误与物理变化均记录，无脚本替模型完成任务。
 
-[LOCAL_AGENT_START](LOCAL_AGENT_START.md) · [EXPLORATION_ENTRY](EXPLORATION_ENTRY.md) · [领域地图](knowledge/DOMAIN_ATLAS.md) · [人格—行为知识](knowledge/persona-behavior/) · [源代码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md) · [强近邻定位](knowledge/persona-behavior/RELATED_WORK.md)。源代码事实、我们的解释与未排除的竞争解释分别记录。
-
-不自动恢复已撤出的E00／E02–E05，不建立第二套工作台。优先原作者人物／目标／合法动作与实际后果；自述表达、特定场景意图和执行策略分开；抽象标签不对应唯一正确动作。
-
-## 资产位置与重建
-
-完整轨迹、checkpoint、模型输入输出保存在`/home/xiang/.cache/game-npc-research/runs/`，不进Git；E35完整三人轨迹在`e35_original_cast/`。模型复用HuggingFace缓存；上游源码在同缓存`sources/`，版本与hash见各结果manifest。原PCSP主pin5420f7b与MeltingPot隔离分支4fbbffa分别保留，不改运行中源码。
-
-环境优先现有Conda／venv：NPC／Mini-Inzoi用fgvd＋deps overlay，MeltingPot用lightwam＋项目隔离overlay。用户已授权七节点全部GPU，07:00 Asia/Tokyo起最多8卡；本轮采用全时≤8，不干扰其他任务。NPC/模拟伙伴/物理判定全部本地，无SDK云fallback；用户单独授权Step5数据用途，只走Token Plan、不走现金端点。实际分项成本见本轮报告与结果账本。
+环境优先现有Conda fgvd及deps overlay，模型复用HuggingFace缓存。用户授权节点资源按现场空闲使用，全时≤8卡、独立单卡/单节点优先，不干扰其他任务。NPC/伙伴/教师/判定核心链路全部本地；用户另授权Step5仅作数据并限定Token Plan，本轮0调用。人物表达、情境意图、真实执行分开；原子任务不是角色全部私人利益，不把抽象标签映射成唯一正确选择。

@@ -1,0 +1,44 @@
+{
+  "status": "COMPLETE",
+  "experiments": [
+    "E74",
+    "E75",
+    "E76"
+  ],
+  "totals": {
+    "calls": 29125,
+    "parse_errors": 0,
+    "prompt_tokens": 39399139,
+    "completion_tokens": 2369910,
+    "stage_conv": 2448,
+    "stage_effects": 2808,
+    "stage_exec": 23869,
+    "observed_slot_gpu_hours": 3.8355310122172037,
+    "model_load_and_inference_gpu_hours": 3.4614727175988893
+  },
+  "unique_source_graphs_by_raw_json": 208,
+  "unique_source_graphs_by_canonical_json": 208,
+  "E74_E75_source_overlap": 11,
+  "source_units": {
+    "E74": 117,
+    "E75": 102,
+    "E76": 102
+  },
+  "forecast_contexts": 2808,
+  "native_execution_branches": 8928,
+  "peak_gpus": 4,
+  "new_cloud_calls": 0,
+  "source_sha256": {
+    "workbench/game-npc-agents/results/E74_cost_accounting.json": "66986d80746cad4bf90702d4ba90b91e3527a6f4e22f471514918b6c678585a3",
+    "workbench/game-npc-agents/results/E75_cost_accounting.json": "e80b95ba130fc5c8fa8f61231d7905837c6a0ad01465973fd0a4a865a16c6be5",
+    "workbench/game-npc-agents/results/E76_cost_accounting.json": "98a96748f5227a7b08e676d68ed4fde6174f125b7fc8a5bb23d7b9e1cbbf1f8b",
+    "/home/xiang/.cache/game-npc-research/runs/e70_native_request_qualification/snapshots.jsonl": "314e1e1d3ed612a366834d7ce4a0e4718a8c99f9d87fa759e5ffee84f0164801",
+    "/home/xiang/.cache/game-npc-research/runs/e75_native_retrieval_qualification/snapshots.jsonl": "1079bb5e9ca8aec54c8f14f359b86ee361237c6ec91bb7c37d91e60519f5380b"
+  },
+  "scope": [
+    "Source graphs, branches, forecasts and actual calls are distinct units.",
+    "E76 reuses the E75 source set; no pooled independent replication claim.",
+    "Costs include profiles once and model startup/teardown; exact reused output is not an extra actual call.",
+    "No inference about latent ability or complete private utility follows from a source-task flag alone."
+  ]
+}

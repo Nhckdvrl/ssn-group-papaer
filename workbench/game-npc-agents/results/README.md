@@ -153,4 +153,5 @@ raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32
 - E75：`E75_native_qualification.json`为自有容器0候选的完整负向资格；`E75_retrieval_qualification.json`为102原作者Get前提图/408路径，`E75_input_check.json`核对1224同C/同人设/对称支持输入。原始图在cache/runs/e75_native_retrieval_qualification/，完整4896分支已收齐，效应见E75_{gemma,32b}_complete.json。
 
 - E75完整：`E75_{gemma,32b}_complete.json`有全体/任务族所有联合结局及配对区间，`E75_cost_accounting.json`结算16635调用/1.555GPUh，`E75_conversation_action_POST_HOC.json`记录结构化态度×事件及顺/逆向案例；[联合去向图](figures/E75_task_request_joint_outcomes.png)另有PDF/SVG。
-- E76登记及CPU输入：`E76_input_check.json`，612个精确C来源/执行输入检查；全102图固定对话后改变原生执行初态，完整模型队列运行中，范围见[实验卡](../experiments/E76-fixed-dialogue-and-native-access.md)。
+- E76：`E76_input_check.json`核对612个C来源/执行输入；`E76_{gemma,32b}_complete.json`包含全1224固定C原生分支及E75参照配对区间，0新对话。`E76_cost_accounting.json`结算1938新执行调用/0.41455观测GPUh；[固定对话图](figures/E76_fixed_dialogue_access_effects.png)另有PDF/SVG，[实验卡](../experiments/E76-fixed-dialogue-and-native-access.md)记录完整范围。
+- [E74–E76合并账本](E74_E76_round_accounting.json)：29125调用/8928原生分支/2808预测分叉/208不同源图/3.83553观测GPUh、0API/解析失败。E76复用E75源图，E74与E75相交11，不把分支相加当独立样本；本轮worker均已退出。

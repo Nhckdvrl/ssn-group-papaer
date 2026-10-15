@@ -81,13 +81,43 @@ def figure(results,out):
     out.mkdir(parents=True,exist_ok=True);save(fig,out,'E75_task_request_joint_outcomes')
 
 
+def fixed_figure(results,out):
+    import numpy as np
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from native_request_precondition_figures import save
+    plt.rcParams.update({'font.size':10,'pdf.fonttype':42,'svg.fonttype':'none','svg.hashsalt':'game-npc-E76'})
+    fig,axes=plt.subplots(2,2,figsize=(12,7.2),layout='constrained',sharey='row')
+    conditions=['retrieval_baseline','ready_frozen_dialogue','ready_baseline']
+    labels=['Dialogue: floor\nExecution: floor','Same dialogue\nExecution: inventory','Dialogue: inventory\nExecution: inventory']
+    for j,(model,title) in enumerate([('gemma','Gemma 3 12B'),('32b','Qwen3 32B')]):
+        result=json.loads((results/f'E76_{model}_complete.json').read_text())
+        for i,(group,subtitle) in enumerate([('all','All tasks'),('source_use','Wear / Eat / Drink')]):
+            d=result['groups'][group];ax=axes[i,j]
+            for metric,name,color,offset in [('goal','Authored task','#4477AA',-.08),('request','Give to requester','#EE7733',.08)]:
+                vv=[d['contrasts']['A_minus_F/'+c][metric] for c in conditions]
+                y=np.array([v['mean'] for v in vv])*100
+                lo=np.array([v['graph_bootstrap_95'][0] for v in vv])*100
+                hi=np.array([v['graph_bootstrap_95'][1] for v in vv])*100
+                ax.errorbar(np.arange(3)+offset,y,yerr=[y-lo,hi-y],fmt='o',color=color,capsize=3,label=name)
+            ax.set_xticks(np.arange(3),labels,fontsize=9);ax.axhline(0,color='#444444',lw=1)
+            ax.set_ylabel('Agreeable − Firm (pp)');ax.set_title(title+' / '+subtitle+f' (N={d["worlds"]})')
+            ax.grid(axis='y',alpha=.2);ax.spines[['top','right']].set_visible(False)
+    handles,legend=axes[0,0].get_legend_handles_labels();fig.legend(handles,legend,loc='outside upper center',ncol=2,frameon=False)
+    fig.supxlabel('Middle condition reuses the exact dialogue from the floor state; only native execution start changes.\nThree seeds per source graph; pointwise graph-cluster 95% intervals. This is one added counterfactual cell.',fontsize=10)
+    out.mkdir(parents=True,exist_ok=True);save(fig,out,'E76_fixed_dialogue_access_effects')
+
+
 def main():
     ap=argparse.ArgumentParser();sub=ap.add_subparsers(dest='mode',required=True)
     p=sub.add_parser('cost');p.add_argument('--runs-root',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--experiment',choices=['E75','E76'],default='E75')
     p=sub.add_parser('figure');p.add_argument('--results',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    p=sub.add_parser('fixed-figure');p.add_argument('--results',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     a=ap.parse_args()
     if a.mode=='cost':cost(a.runs_root,a.out,a.experiment)
+    elif a.mode=='fixed-figure':fixed_figure(a.results,a.out)
     else:figure(a.results,a.out)
 
 
