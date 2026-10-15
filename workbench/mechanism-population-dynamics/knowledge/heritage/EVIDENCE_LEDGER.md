@@ -21,6 +21,17 @@
 | C03：机制陈述跨训练可迁移性分层 | 角色/算法宽泛描述比单头编号更易跨一些任务和 seed 保持；阈值与能力条件重要 | 已建立跨模型定量统一可迁移性定律 | [E15](../../experiments/E15-claim-portability.md)、[CLAIMS](../../CLAIMS.md) |
 | C05：初始化 × 数据与角色图 | 已审计69个1B模型，同初始化跨语料有一定层内角色图对应，异初始化原编号接近零 | 初始化决定具体头命运；数据绝不能影响 head；有直接行为因果后果 | [E35](../../experiments/E35-init-by-data-mechanism-census.md)、[E59](../../experiments/E59-more-head-roles.md)、[E42](../../experiments/E42-causal-role-maps-and-transfer.md) |
 
+## 2b. 2026-10-15/16 重启后的新证据（E89–E92；原始记录见各实验卡）
+
+| 观察 | 状态 | 范围与读法 | 证据 |
+|---|---|---|---|
+| 跨独立种子重现的是任务深度顺序与“哪些任务共用关键头”（greater-than~后继 10/10、induction~反义词 ICL 9/10；S 跨模型 0.57 / 满分 0.95 / 打乱 0.38），不重现的是头编号与层号 | SUPPORTED-LIMITED | Pythia-410M 10 种子、160M 15 模型、DataDecide-1B 12 模型；9 个任务；共用关系由 top-3 重合与 S 刻画，未做“共用头”的因果检验；两组共用可由已有认识预言（Olsson、Gould） | [E89](../../experiments/E89-division-of-labour-atlas.md) |
+| 编号对应只在共享初始化时出现（同一 run 0.97、重跑 0.74、换顺序 0.72、换去重语料 0.52、换种子 0.00） | OBSERVED | 160M weight-seed 实为原版重跑（P09 复核） | E89 结果二 |
+| 正常 410M 种子在 1k 步定下 induction 的单点瓶颈 previous-token 头，此后 14 万步不换；两个异常种子各在一次单步 loss spike（74k→76k、122k→124k）当步换头并全面崩溃，之后按原发育顺序重学，示例格式 ICL 在剩余训练内不恢复 | OBSERVED（n=2 事件） | “深度预算”解释被 seed4 否定；剩余解释接近“后期能力重学慢 + 学习率已低” | [E90](../../experiments/E90-outlier-trajectories.md) |
+| seed4 的 spike 前 ≥7k 步，第 21 层非 previous-token 头 21.14 的行内 logit 尖锐度陡增；seed3 无头级前兆 | OBSERVED，停止 | 与 Kimi K2“少数头 logit 爆炸”一致，作排除项 | [E91](../../experiments/E91-spike-origin-heads.md) |
+| 真实预训练（PolyPythias ≤410M，42 任务）中正常 run 的能力种子差异是逐任务独立的小幅连续波动，不是双峰；失败尾部是 run 级事件 | SUPPORTED-LIMITED | 31M seed8 的 few-shot 全零主要是“A: 后接换行”格式偏好；410M seed8 的“反义词失败”是 E89 自制测法的假象 | [E92](../../experiments/E92-capability-atlas-seeds.md) |
+| 31M 正常种子中出现“学会后丢失”（后继 4 种子 0.30–0.40 → 0.05–0.17 等）而损失持续下降 | HYPOTHESIS（线索） | 只在 31M、未做机制分析；IOI 的低于随机下探已由 Dahiya 2026 解释 | E92 结果二 |
+
 ## 3. 重要的可观测数值与正确读法
 
 | 观察（历史实验读数） | 情境/单位 | 现阶段如何理解 |

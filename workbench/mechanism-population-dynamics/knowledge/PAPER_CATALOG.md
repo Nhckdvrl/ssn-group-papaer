@@ -36,6 +36,14 @@
 | 训练数据/算法 | [Kawata et al. NeurIPS 2025, From Shortcut to Induction Head](https://proceedings.neurips.cc/paper_files/paper/2025/hash/6499b639e8a4b5c9a780d9b88c09722f-Abstract-Conference.html) | 核心问题筛读 | 数据多样性导致不同计算策略已被怎样识别 |
 | 模型机制可推广性 | [Sun ACL 2025, Circuit Stability Characterizes Language Model Generalization](https://aclanthology.org/2025.acl-long.442/) | 原知识地图摘要 | 电路稳定性和OOD泛化已有哪种预测指标 |
 | 因果抽象 | [Geiger et al. JMLR 2025, Causal Abstraction](https://www.jmlr.org/papers/v26/23-0058.html) | 方法背景 | 路径对应能否转成真正的因果中间变量映射 |
+| 发育阶段 | Hoogland et al. TMLR 2025, Loss Landscape Degeneracy and Stagewise Development | 正文 | 小模型阶段与头分化，未解释谁专业化 | [HOOGLAND](papers/HOOGLAND_2025.md) |
+| 头分化 | Wang et al. ICLR 2025, Refined LLC | 正文前半 | 头按发育曲线分型、multigram 跨层迁移 | [WANG_RLLC](papers/WANG_RLLC_2025.md) |
+| 训练中干预结构 | Chen, …, Saphra ICLR 2024, Sudden Drops in the Loss | 正文与附录A–C | 抑制 / 放开 SAS 判前提与竞争；相变中干预最糟 | [CHEN_SAPHRA](papers/CHEN_SAPHRA_2024.md) |
+| 暂时性与竞合 | Singh et al. 2023；Singh et al. 2025 Strategy Coopetition | 2023摘要；2025正文 | 能力起落由组件角色转换驱动（合成） | [SINGH_TRANSIENCE](papers/SINGH_TRANSIENCE_2023_2025.md) |
+| 自然预训练发育 | Dahiya & Blondin 2026, Copying Before Suppression | 正文前半 | IOI 下探由复制头早于抑制头发育造成，未解释顺序 | [DAHIYA](papers/DAHIYA_2026.md) |
+| 种子与涌现 | Zhao, …, Saphra 2026, Random Scaling of Emergent Capabilities | 正文 | 合成 / 模拟设置中能力双峰，无机制 | [ZHAO_SAPHRA](papers/ZHAO_SAPHRA_2026.md) |
+| 种子与涌现 | Baherwani, …, Izmailov 2026, Emergent Capabilities Arise Randomly… | Pythia部分与摘要 | 初级能力随机时间出现，注意力模式突变 | [BAHERWANI](papers/BAHERWANI_2026.md) |
+| 删除学习信号 | Şahin, …, Mueller 2026, In-Context Learning Without Copying | 正文 | 去掉 induction 可预测的损失后抽象 ICL 仍在 | [SAHIN_HAPAX](papers/SAHIN_HAPAX_2025.md) |
 | 跨模型评测 | [MIB ICML 2025](https://proceedings.mlr.press/v267/mueller25a.html) | 基准背景 | 从图保真度到下游中介干预需要增补哪些读数 |
 | 训练后组件 | [Prakash et al. ICLR 2024, Fine-Tuning Enhances Existing Mechanisms](https://arxiv.org/html/2402.14811) | 原知识地图相关章节 | E81的lineage稳定已被解释到哪里 |
 | 训练后边变化 | [Wang et al. 2025, Towards Understanding Fine-Tuning Mechanisms via Circuit Analysis](https://arxiv.org/html/2502.11812) | 原知识地图相关章节 | 节点复用和关系边改写是否能区分 |
