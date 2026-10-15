@@ -2,20 +2,20 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：用户恢复科研后，要求本轮完成并再次报告供检查。** 入口为 [本轮进度报告](PROGRESS_REPORT_2026-10-15.md)；历史见 [上次报告](PROGRESS_REPORT_2026-10-14.md)。当前 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)、[E62接收者因果诊断](experiments/E62-native-recipient-causal-diagnostic.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：本轮固定实验和分析已收尾，报告供用户复审。** 最新入口为[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)；此前见[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
-- **报告后最新执行：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)的32B/Gemma均完成200原图、100其他资产配对、5400 episode；27B固定队列仍在运行。明确任务优先规则使32B agreeable原goal完成60.8%→90.0%，同时保留非冲突合作；Gemma资产保护包反而使原goal下降，CPU回放区分计划可行与实际采纳。196图交目标物后原任务暂时不可执行、4图有替代物，全部仍可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)两Qwen均完成9独立图/108双角色episode，另32B普通通信指令54条。27B普通回报检查提高双向Give，2原生死亡/1协议失败保留；交换、偷取、最终归属与伤害分别报告。新增API细标签与无回路假说patch均为0。
+- **最新完整结果：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)三模型各200原图、100其他资产配对、5400 episode收齐。一般任务优先使agreeable原goal完成32B60.8→90.0%、27B78.5→93.0%；Gemma资产规则反而76.8→52.8%。非冲突合作及可行计划采纳分开测；资产比较另对齐原goal前交付窗口，不把总交付差直接归因工具价值。196图交目标物后原任务暂时不可执行、4图有替代物，全部可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)两Qwen各9独立图/108条，另32B通信控制54条，死亡/失败保留。全轮含profile/中断13.167GPUh、104883本地调用、0新增API/训练/内部干预，全部本轮worker退出。原子goal与完整私人利益分开，尚未形成已验证新机制；I04仍SEED。
 
 - **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
 
 - **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
 - **阶段与渠道：** 32B 的单 seed 2×2 阶段干预已完成；固定下游人设，conversation 人设的请求转移效应约 +15pp，固定 conversation 的下游合并效应约 +2.5pp。完整渠道低于 agenda-only；agreeable 渠道交互 −11.7pp，95%[−20.8,−2.5]。当前检查的是承诺如何传递及被重新裁决。
 - **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。27B patch与随机都28/32，机制未统一。E53三个模型全部40图×三seed完成；不同状态记录可改变人物效应，外加记录不等于自然错误频率。
-- **独立确认与解释：** 三个模型各200新世界×三seed/5600完整分支；实际请求人物差32B13.7pp [9.7,17.8]、27B8.5pp [5.7,11.7]、Gemma6.7pp [4.3,9.3]。E56普通阶段结束解释大量无动作；E57两强模型39原世界动态伙伴互动，E58分量、E59同未来记录、E60/E61共2400完整原生分支均完成。E62三模型各4896原生选择/2448概率读出完成；同未来承诺的参数角色差1.47/5.88/0pp，单层donor无统一定向控制。固定动作族诊断与自由NPC行为、完整私有利益分开。
+- **独立确认与解释：** 三个模型各200不同confirm世界×三seed/5600完整分支；实际请求人物差32B13.7pp [9.7,17.8]、27B8.5pp [5.7,11.7]、Gemma6.7pp [4.3,9.3]。E56普通阶段结束解释大量无动作；E57两强模型39原世界动态伙伴互动，E58分量、E59同未来记录、E60/E61共2400完整原生分支均完成。E62三模型各4896原生选择/2448概率读出完成；同未来承诺的参数角色差1.47/5.88/0pp，单层donor无统一定向控制。固定动作族诊断与自由NPC行为、完整私有利益分开。
 - **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，澄清盲检185保留／14复核／1拒绝，全部200为主表；[派生请求与QC](results/E55_natural_requests.jsonl)已公开。E54全部720文本盲标注完成。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
 
 以下是已封存的基线背景，历史过程见进度报告；不按旧“下一步”恢复执行。

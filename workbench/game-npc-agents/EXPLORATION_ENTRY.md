@@ -2,6 +2,8 @@
 
 **2026-10-14 用户主动选择先研究 A。** 不意味着已发现“人格只能影响语气”“RLHF先验劫持NPC”等现象，亦非永久锁死 Game NPC 整个 workbench。总领域仍见 [DOMAIN_ATLAS](knowledge/DOMAIN_ATLAS.md)。
 
+**最新入口：** [E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[当前日志](logs/2026-10-15.md)及[I04](ideas/I04-commitment-conflict-stage-arbitration.md)。旧小模型RL停止追加，Step细语义标注与无回路假说patch也已停止。明确规则、原生任务进展与有代价互动是本轮检验，不预定“自毁”。
+
 ## 实际研究对象
 真实游戏 NPC 中，角色作者指定的身份/价值/利益目标、玩家对话行为、NPC当下可见状态和可执行 action 共同决定策略。这里“策略利益”不能简单写成“金币最大化”；商人也可能珍惜长期声誉或遵循公会协议，守卫可能以职责优先，队友可能以协作义务优先。**必须先从游戏设定中获得目标，不能由我们以性格刻板印象自造唯一正确动作。**
 
@@ -9,7 +11,7 @@
 
 ## 先读已经挡在面前的强近邻
 - ICML2026 [The Personality Illusion](https://proceedings.mlr.press/v306/han26n.html)：自述—行为失配与 persona injection 的直接前人。
-- 2026 [Rethinking Psychometric Evaluation](https://arxiv.org/abs/2606.12730)：TPB 相比 Big Five 更细；同会话/跨会话的测量设计可能解释一部分失配，切勿简单称内部人格不存在；作者仓库称 NeurIPS2026 录用，本轮未独立找到官方 proceedings。
+- 2026 [Rethinking Psychometric Evaluation](https://arxiv.org/abs/2606.12730)：TPB相比Big Five更细；同会话/跨会话的测量设计可能解释一部分失配。会议归属按原始论文卡的主源核对，不把旧仓库中的NeurIPS自称当官方接收证据。
 - 2026 [The Story Shapes the Agent](https://arxiv.org/abs/2607.18566)：同构游戏行动结构下不同 narrative frame 产生行为先验，直接覆盖“故事背景 vs persona”的很多简单对照。
 - 2026 [Persona Vectors in Games](https://arxiv.org/abs/2603.21398)：game theory 中 activation steering 和文本/策略偶尔分离，不能把“首次用表征干预战略行为”当新 idea。
 - [PCSP](https://arxiv.org/abs/2605.23652)：共享 persona 条件政策，作者的独立行动度量不支持简单“内部对齐损失提高外部人设表现”的结论。
@@ -35,4 +37,4 @@
 
 用户指出：尚未观察结果就设非公认bar，再因未过bar舍弃线索，是过度防御的错误流程。此指令优先于此前卡片中的探索启发式。实验仍记录问题、实际配置、结果与竞争解释；不再以MIE、2×noise、4/5同向、80%保留率等自设条件决定研究价值或丢弃方向。既有数值完整保留，旧决策只作为历史记录。实际结果应与强近邻正文／代码／消融对照，分析它揭示了什么，再决定下一步；小效应、负结果和不稳定性均可成为科学线索。工程正确性和用户资源约束用于保证结果可信，不替代科学品味。
 
-当前保留的研究动作：完整300轮／三seed形成过程；相同state上的语义输入效应；单项利益编辑的完整四格；原生NPC对话—计划—执行链。它们不再组成逐级淘汰流水线。允许有证据时沿任何一条展开，也允许并行观察和提出新解释。
+上段自由探索原则继续有效；其中旧完整300轮/三seed、小模型语义输入与利益编辑现已完成并被用户冻结，不能按历史“当前保留动作”重新启动。当前研究是本地LLM的角色选择、原生任务进展与互动回报；新实验依据实际矛盾与强近邻定位，不以整齐矩阵或通过率决定科学价值。

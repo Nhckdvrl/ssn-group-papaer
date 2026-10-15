@@ -66,3 +66,11 @@ Step仅数据用途：E59共125 Plan请求、836315总tokens，含两个原批�
 源动机盲DATA200/200完成，不看P/模型/行为；40 Plan响应/453124 tokens含失败补缺。102 give世界的短动机文字scope self30/other61/mixed1/unknown10，中期56/31/5/10，长期62/24/14/2。fisherman原give coin pouch to peasant是换fishing pole；villager给保护费；giver物理转移可以服务自身利益。类别是带逐字引文的语义标注，未有人类独立金标、不定义真实效用、也不证明偏好随时间改变。request13/200明确声称支持原动机，这不是实际帮助或合法私人知识的证明。详见 `results/E61_source_motivation_data.json`。
 
 本轮最终 [进度报告](../../PROGRESS_REPORT_2026-10-15.md) 覆盖用户纠正至E62，含全部强近邻定位、负结果、未完成的机制与成本。当前要分离的是目标解释/优先采用、实现方式/受益关系与动作参数粒度，而非某仓库两个函数。全部本轮模型任务已收尾，未启动下一轮实验；C02 L2、C03 L1、I04 SEED不变。
+
+## 最新审计后的E63/E64完整结果
+
+三模型E63各200图/100另一资产配对/5400 episode。agreeable的none→generic原goal完成32B60.8→90.0%（+29.17pp [23.67,34.67]）、27B78.5→93.0%（+14.5 [10.83,18.33]）；Gemma asset则76.8→52.8%。另一物品generic下角色交付差仍在，任务保护不等于一律拒绝。资产总交付窗口不同，POST-HOC原goal前交付对齐后差异缩小；不据总率差独推工具价值敏感。
+
+E64两Qwen各9图/108条，另32B通信控制54条。27B check双向Give提高firm25.9pp、agreeable18.5pp；同9图模型×cue交互firm33.3pp [11.1,59.3]，agreeable14.8 [−7.4,37.0]。原生2死亡/1协议失败不删除，取得物与最终持有、私人动机分开。E63原子目标与完整工具回报链的范围、Gemma计划回放、全部失败和新的强近邻见[复审报告](../../PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)。
+
+本轮含profile/中断13.167GPUh、104883实际本地推理调用、0新增API/训练/activation干预，模型worker全部退出。C02仍L2、C03 L1、I04 SEED，未升级新机制。

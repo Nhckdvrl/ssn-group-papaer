@@ -1,0 +1,30 @@
+{
+  "analysis": "POST-HOC bounded reserve-readiness audit, no model calls",
+  "reserve_label_worlds": 120,
+  "overlaps_with_model_run_datasets": {
+    "E57": [
+      "092e5be772f36b17cda1b8794d09824a1d9da71857c6b19b75f365d91571bba2",
+      "48f7c79bbbfd8cb001f31407570535e435e5a4b93f668c2816c9ffb7b4c62be9",
+      "5dbba51d584519e4ef31a99857c4ffe6305eedbe931420d703e2962bd972a9ab",
+      "5fd5598d45c03d61d6e48a5cad753df50ecebfb64615e90908be310d68c598f9",
+      "75898970d17fb99265e324f7fb83bf63ca1291ecc0c893e40c39780e4db48837",
+      "895b1d3b95772193ebae317c6b7f661905bd4d2ae0462fcddf15ab1151065811",
+      "a4b53fc257cccad910fc5e2741dce876faa2da79192f77779b295813a02573bb",
+      "cbb183b8e4d25111e14211ce0c639f9cb8c614c619ab4abc2633bd461fad00b1",
+      "e53a9ebb7f7b16ac2016c0af931c19c9ef03350018ed951b7ed0420995bde9f8"
+    ],
+    "E64": [
+      "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e"
+    ]
+  },
+  "distinct_exposed_worlds_in_E57_E64": 10,
+  "not_in_E57_E64": 110,
+  "source_sha256": {
+    "E50": "7b1591efb720714c31a94125acb413001c2e5d77189bf63ad4cb6e542788d79f",
+    "E57": "dea2ff2534f3632daab77e3a43e7a8712097281eed59e636b2e3a91683c24585",
+    "E64": "d084ec81317ea4d82ed8e79f249a9570f1f94d58a63d8f6bf39e3bb2e623eed2"
+  },
+  "canonical_graph_check": "JSON parse and sort-key serialization independently gave the same overlaps",
+  "older_E14_E22_and_other_sources": "not audited here; remaining count is not certified fully untouched holdout",
+  "scope": "Original split labels and all E63/E64 cohorts are unchanged; do not call all 120 unseen."
+}

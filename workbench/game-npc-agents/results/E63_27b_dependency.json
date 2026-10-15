@@ -1,0 +1,4553 @@
+{
+  "status": "COMPLETE",
+  "manifests": [
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e63_native_dependency_qualification/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency",
+        "seeds": [
+          6301,
+          6302,
+          6303
+        ],
+        "shard": 0,
+        "shards": 1,
+        "profile": false
+      },
+      "case_ids": [
+        "00826c1384a1cd61",
+        "0587967fb4038fea",
+        "092631f8790734bc",
+        "09cb20c72dc950ba",
+        "0a307c9df373c517",
+        "1435165ae2541722",
+        "1bf29268c50a8a65",
+        "20012688976467de",
+        "21a99f36ade488f8",
+        "2c5408a7d2526978",
+        "301b8a01f7a8c08e",
+        "349227488bc20990",
+        "466b7fd61422a2b3",
+        "4a182cd504e4d0d6",
+        "4a38cdbaeee1441b",
+        "4dd47b0be2bdb344",
+        "4f4dfd284f821a29",
+        "5aff3a791f166044",
+        "62b283fb534b8131",
+        "66007d98c559295a",
+        "676eaa050d63be72",
+        "7cd8f2f3a6f69f02",
+        "851333b366a36288",
+        "88f1fb8d1dbab342",
+        "8b2ab01144c42726",
+        "8c5702fb5f398a13",
+        "8e95e83715275c26",
+        "8f2e5dfa3dbc78bc",
+        "9419bbde4b38fcbb",
+        "946de051b6f7b0bc",
+        "96f69392fd1f0643",
+        "9be386a190695e42",
+        "a058d50c51505ea9",
+        "a6534644b81659d6",
+        "aa8a03f587c19122",
+        "b0a89a88818eefbe",
+        "bb51e43fd61b638c",
+        "bc295d753d80f02f",
+        "bd24cc5779015241",
+        "c08a7b9ab02dbb2f",
+        "c2e550f4340cb521",
+        "c6bf95456badbed2",
+        "c7ecdae131c64491",
+        "cad2beddf4382a40",
+        "d524762ee8a481ab",
+        "d7ebda0a15aba13c",
+        "dc3125e8d9bd667e",
+        "df43b7a04c08af22",
+        "e73ada333d7974ea",
+        "e7c9f1bb7a7afa8b",
+        "ee234730afef695e",
+        "eecb1e851050522c",
+        "f02444905f5d430b",
+        "f5b585f9340af087",
+        "fbfdb27c8bc31caf",
+        "fde69fb4fafca0db",
+        "fecb2ac6e66af54f"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others."
+      },
+      "rules": {
+        "none": "",
+        "generic_priority": "When an external request conflicts with your original authored task, complete your original task before fulfilling that request. You may help when there is no conflict.",
+        "asset_protection": "Keep any item needed to perform your original authored task until you have actually performed that task. You may give other items when requested. Your disposition describes how you treat people; it does not require unconditional transfers."
+      },
+      "dataset_sha256": "feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f",
+      "script_sha256": "306d20a51f59392c8310ed3575b923064ab8ced296ee8906574388ec9861203d",
+      "max_action_steps": 8,
+      "structure": "plan_grounded",
+      "all_stages_coherent": true,
+      "goal_event_scope": "Current native resolution of authored goal text; original-target state separately retained.",
+      "world_modified": false,
+      "cloud_calls": 0
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e63_native_dependency_qualification/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_resume_s0",
+        "seeds": [
+          6301,
+          6302,
+          6303
+        ],
+        "shard": 0,
+        "shards": 3,
+        "profile": false
+      },
+      "case_ids": [
+        "0b365c18a7d1f43c",
+        "18fa06170b224f77",
+        "5dbaa46ee67c0d30",
+        "441f9a5b5e3b9468",
+        "d9d3dda668d2e06c",
+        "afe6bc4b79ce7e16",
+        "4cbbeb51d5f49092",
+        "eb1e8a10c21a0a07",
+        "f5472c8734911637",
+        "af588ad3eb3cc518",
+        "62e940866e6e5b42",
+        "8daeb93cdc0a0b70",
+        "03e7b2e78e52b372",
+        "4bb99f6489e72a70",
+        "421d8c64d188be98",
+        "9f10dd1c0772e4a5",
+        "ccca1f607b5c9db3",
+        "c061e24a60072ee8",
+        "55dc3f4cbd6b5771",
+        "ce04a29974b03ab4",
+        "f2fb221bc44cfd28",
+        "31c222a50bdff284",
+        "2170564d05e803b4",
+        "72a6eac9dcf336d4",
+        "471fceac3a9b772e",
+        "ee5e2122e81784e3",
+        "ce0d6b135ba65ff2",
+        "18459d3f5a615679",
+        "e77ee60f33b015dd",
+        "f135a2e77acf2c30",
+        "4864ac3dde639602",
+        "ad0904638a1644a5",
+        "d03ce876e274bab4",
+        "ade08e25f08b425d",
+        "1da21b8e516da8c9",
+        "9d986c90f7b96dc0",
+        "5d7b4f812950a048",
+        "b28bfda61be68ddb",
+        "7c1c6aef854528db",
+        "a721c85a0e80618e",
+        "4f6cad4af6e566f1",
+        "b42b8d6856edfc46",
+        "369be10263f03e7b",
+        "f2b617c17e9363f3",
+        "9ff4da9d4080fed3",
+        "04eb3077c9e27e31",
+        "52b36625db273bbb",
+        "226a78a898dbebf6"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others."
+      },
+      "rules": {
+        "none": "",
+        "generic_priority": "When an external request conflicts with your original authored task, complete your original task before fulfilling that request. You may help when there is no conflict.",
+        "asset_protection": "Keep any item needed to perform your original authored task until you have actually performed that task. You may give other items when requested. Your disposition describes how you treat people; it does not require unconditional transfers."
+      },
+      "dataset_sha256": "feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f",
+      "script_sha256": "306d20a51f59392c8310ed3575b923064ab8ced296ee8906574388ec9861203d",
+      "max_action_steps": 8,
+      "structure": "plan_grounded",
+      "all_stages_coherent": true,
+      "goal_event_scope": "Current native resolution of authored goal text; original-target state separately retained.",
+      "world_modified": false,
+      "cloud_calls": 0,
+      "driver_sha256": "fc23dab5c3784b24afce6a36a0e73e01ec26ad6d2614f95eef02125118766e09",
+      "prefix_directory": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency",
+      "prefix_checkpoint": {
+        "episodes": 1494,
+        "worlds": 57,
+        "calls": 8034,
+        "wall_seconds": 4663,
+        "model_load_seconds": 0,
+        "timing_scope": "ps process elapsed includes imports, loading and partial-batch inference; plus one-second measurement allowance",
+        "episodes_sha256": "808ccedab592e067633d62eb40175bb4c846f641f42ec99c2969745f38975b97",
+        "signal": "SIGINT to this worker process group after complete batch",
+        "pid": 3697639,
+        "cloud_calls": 0,
+        "unused_call_cost_retained": true
+      }
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e63_native_dependency_qualification/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_migrated_s1",
+        "seeds": [
+          6301,
+          6302,
+          6303
+        ],
+        "shard": 1,
+        "shards": 3,
+        "profile": false
+      },
+      "case_ids": [
+        "0a146da36b6ba2aa",
+        "75980f8bdb6eecd2",
+        "039f88bad884fcd1",
+        "004ddb15538a7b06",
+        "0d26be23a02f2121",
+        "187a25b29749e709",
+        "f262b4a9b3719daa",
+        "f2c41229b5394d39",
+        "bdc536e4ad248170",
+        "e56f7791f10b3ad6",
+        "2353caa95a94fbbb",
+        "7aef820eb25c6221",
+        "a8f8c5be75878bd6",
+        "9b5ddbdb54fab276",
+        "dd0ca30aceb1829c",
+        "ed07642e9c7df6bc",
+        "cd49b3cb2819c2d5",
+        "15a354dfec344694",
+        "4299ea8555c00615",
+        "ac0fb75f1cef05eb",
+        "ffbe502b7a44d24d",
+        "0fbfb8d890778069",
+        "704894d4f06e8db6",
+        "8f6c369ddfa697ba",
+        "b245193acb124279",
+        "889c5de26e011aa7",
+        "4dbde24e7ce1a4a2",
+        "3474564868aa6990",
+        "370614f7bc4169c4",
+        "ea214b40fce741ec",
+        "ab0ce35162ff5df1",
+        "9b295e697a01161e",
+        "b76642fafec607c1",
+        "995e95fac91da568",
+        "c0cd4835a3af790e",
+        "0ccf45d1cf63a270",
+        "b620ae3c913d1b7d",
+        "2f6b3a680d6bdd74",
+        "62ca4d9b241e78c4",
+        "1b46382d4d3601c4",
+        "55bdfa00fc2a572a",
+        "18811122cb171065",
+        "a9618fe29b5a8664",
+        "00bc0b4c412a4568",
+        "46bd97de01a53e1b",
+        "ec123c6a1ad1272a",
+        "b7823e18ba445fc7",
+        "733ecd1e961f9471"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others."
+      },
+      "rules": {
+        "none": "",
+        "generic_priority": "When an external request conflicts with your original authored task, complete your original task before fulfilling that request. You may help when there is no conflict.",
+        "asset_protection": "Keep any item needed to perform your original authored task until you have actually performed that task. You may give other items when requested. Your disposition describes how you treat people; it does not require unconditional transfers."
+      },
+      "dataset_sha256": "feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f",
+      "script_sha256": "306d20a51f59392c8310ed3575b923064ab8ced296ee8906574388ec9861203d",
+      "max_action_steps": 8,
+      "structure": "plan_grounded",
+      "all_stages_coherent": true,
+      "goal_event_scope": "Current native resolution of authored goal text; original-target state separately retained.",
+      "world_modified": false,
+      "cloud_calls": 0,
+      "driver_sha256": "0df2dfa2056e9d05b4ac1313f29f87eb90058fa14e9ba1720532b7d95a8536d3",
+      "prefix_directory": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency",
+      "prefix_checkpoint": {
+        "episodes": 1494,
+        "worlds": 57,
+        "calls": 8034,
+        "wall_seconds": 4663,
+        "model_load_seconds": 0,
+        "timing_scope": "ps process elapsed includes imports, loading and partial-batch inference; plus one-second measurement allowance",
+        "episodes_sha256": "808ccedab592e067633d62eb40175bb4c846f641f42ec99c2969745f38975b97",
+        "signal": "SIGINT to this worker process group after complete batch",
+        "pid": 3697639,
+        "cloud_calls": 0,
+        "unused_call_cost_retained": true
+      },
+      "resumed_worker_from": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_resume_s1",
+      "prior_worker_runtime": {
+        "episodes": 162,
+        "worlds": 8,
+        "calls": 1281,
+        "wall_seconds": 2579,
+        "model_load_seconds": 0,
+        "timing_scope": "process elapsed includes import/loading/interrupted inference; measurement allowance included",
+        "episodes_sha256": "46c8094143b7c894a98193cc1bbce2413fa8d1cbe8e458587554823989468d8a",
+        "reason": "move unchanged remaining cases to released faster A100",
+        "cloud_calls": 0
+      }
+    },
+    {
+      "arguments": {
+        "dataset": "/home/xiang/.cache/game-npc-research/runs/e63_native_dependency_qualification/snapshots.jsonl",
+        "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3.5-27B/snapshots/fc05daec18b0a78c049392ed2e771dde82bdf654",
+        "out": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_migrated_s2",
+        "seeds": [
+          6301,
+          6302,
+          6303
+        ],
+        "shard": 2,
+        "shards": 3,
+        "profile": false
+      },
+      "case_ids": [
+        "31de9f60651c9e87",
+        "75fcdd394aafbc51",
+        "9478a2b5b3429b79",
+        "3f9bf4295b8173ff",
+        "03489b63a01320c0",
+        "a12c8ea3df0fdbc9",
+        "75eaa9fc77f8de92",
+        "a3de944d62a44196",
+        "87c2f9599ccb027e",
+        "83347deaabddae3e",
+        "d51b35f449d9bbcf",
+        "54fd80a87862f629",
+        "8344d5edb5fdf798",
+        "c7ab3c483dc97a76",
+        "1659e185e240855d",
+        "c639254606db8156",
+        "abef95a56f536206",
+        "3a7798ad59f79540",
+        "fe01b9d2a1c7462e",
+        "c67c2235fc489663",
+        "457701faf2f089ba",
+        "a1c9a680b48807f9",
+        "e8fd526562cef20d",
+        "48179d03cb66d955",
+        "0782a390d7b5d878",
+        "8717be3e07c5768d",
+        "4ee55c75ce1c5cf5",
+        "3053dfcac61b38cd",
+        "356807bd3bfe2979",
+        "a44d34437c5f0189",
+        "a8714f21a1c83709",
+        "7ff65d412e3a40f1",
+        "ee491b0fd19100ab",
+        "6e674eebeb3a77b9",
+        "aa1165b8aa89e25c",
+        "cadb083f6845f520",
+        "7171c403d0cd00fc",
+        "d98bb199ae788de4",
+        "4b4bf1f6a1a21eb9",
+        "f74c6adaa9df2732",
+        "c712ab52988b89d2",
+        "928e8bc523756b6b",
+        "fffecf62e9fd8d73",
+        "c20d1c612a445202",
+        "2a84728cf670c8e5",
+        "629209538fb64b03",
+        "8015b45e38175f44"
+      ],
+      "personas": {
+        "firm": "I am firm, dutiful, and independent in my judgment.",
+        "agreeable": "I am agreeable, accommodating, and attentive to others."
+      },
+      "rules": {
+        "none": "",
+        "generic_priority": "When an external request conflicts with your original authored task, complete your original task before fulfilling that request. You may help when there is no conflict.",
+        "asset_protection": "Keep any item needed to perform your original authored task until you have actually performed that task. You may give other items when requested. Your disposition describes how you treat people; it does not require unconditional transfers."
+      },
+      "dataset_sha256": "feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f",
+      "script_sha256": "306d20a51f59392c8310ed3575b923064ab8ced296ee8906574388ec9861203d",
+      "max_action_steps": 8,
+      "structure": "plan_grounded",
+      "all_stages_coherent": true,
+      "goal_event_scope": "Current native resolution of authored goal text; original-target state separately retained.",
+      "world_modified": false,
+      "cloud_calls": 0,
+      "driver_sha256": "0df2dfa2056e9d05b4ac1313f29f87eb90058fa14e9ba1720532b7d95a8536d3",
+      "prefix_directory": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency",
+      "prefix_checkpoint": {
+        "episodes": 1494,
+        "worlds": 57,
+        "calls": 8034,
+        "wall_seconds": 4663,
+        "model_load_seconds": 0,
+        "timing_scope": "ps process elapsed includes imports, loading and partial-batch inference; plus one-second measurement allowance",
+        "episodes_sha256": "808ccedab592e067633d62eb40175bb4c846f641f42ec99c2969745f38975b97",
+        "signal": "SIGINT to this worker process group after complete batch",
+        "pid": 3697639,
+        "cloud_calls": 0,
+        "unused_call_cost_retained": true
+      },
+      "resumed_worker_from": "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_resume_s2",
+      "prior_worker_runtime": {
+        "episodes": 216,
+        "worlds": 8,
+        "calls": 1350,
+        "wall_seconds": 2595,
+        "model_load_seconds": 0,
+        "timing_scope": "process elapsed includes import/loading/interrupted inference; measurement allowance included",
+        "episodes_sha256": "61fad25f6ae0142e090b5cd3765c3c168c86fdd20af023d7c07ce288f76821b0",
+        "reason": "move unchanged remaining cases to released faster A100",
+        "cloud_calls": 0
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "episodes": 1494,
+      "worlds": 57,
+      "calls": 8034,
+      "wall_seconds": 4663,
+      "model_load_seconds": 0,
+      "timing_scope": "ps process elapsed includes imports, loading and partial-batch inference; plus one-second measurement allowance",
+      "episodes_sha256": "808ccedab592e067633d62eb40175bb4c846f641f42ec99c2969745f38975b97",
+      "signal": "SIGINT to this worker process group after complete batch",
+      "pid": 3697639,
+      "cloud_calls": 0,
+      "unused_call_cost_retained": true
+    },
+    {
+      "worlds": 48,
+      "episodes": 1368,
+      "calls": 7626,
+      "wall_seconds": 4354.006968931004,
+      "model_load_seconds": 63.93495936796535,
+      "cloud_calls": 0
+    },
+    {
+      "worlds": 48,
+      "episodes": 1170,
+      "calls": 4732,
+      "replayed_prior_decisions": 468,
+      "wall_seconds": 2752.2201614060323,
+      "model_load_seconds": 54.915621707972605,
+      "prior_run": {
+        "episodes": 162,
+        "worlds": 8,
+        "calls": 1281,
+        "wall_seconds": 2579,
+        "model_load_seconds": 0,
+        "timing_scope": "process elapsed includes import/loading/interrupted inference; measurement allowance included",
+        "episodes_sha256": "46c8094143b7c894a98193cc1bbce2413fa8d1cbe8e458587554823989468d8a",
+        "reason": "move unchanged remaining cases to released faster A100",
+        "cloud_calls": 0
+      },
+      "cloud_calls": 0
+    },
+    {
+      "worlds": 47,
+      "episodes": 1368,
+      "calls": 6962,
+      "replayed_prior_decisions": 0,
+      "wall_seconds": 4024.5968486939673,
+      "model_load_seconds": 96.33707906602649,
+      "prior_run": {
+        "episodes": 216,
+        "worlds": 8,
+        "calls": 1350,
+        "wall_seconds": 2595,
+        "model_load_seconds": 0,
+        "timing_scope": "process elapsed includes import/loading/interrupted inference; measurement allowance included",
+        "episodes_sha256": "61fad25f6ae0142e090b5cd3765c3c168c86fdd20af023d7c07ce288f76821b0",
+        "reason": "move unchanged remaining cases to released faster A100",
+        "cloud_calls": 0
+      },
+      "cloud_calls": 0
+    }
+  ],
+  "episodes": 5400,
+  "expected_episodes": 5400,
+  "complete_worlds": 200,
+  "paired_worlds": 100,
+  "missing_keys": 0,
+  "cells": {
+    "goal_item/none/firm": {
+      "target_given_before_goal": {
+        "mean": 0.05166666666666666,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.07999999999999999
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.8866666666666667,
+        "graph_bootstrap_95": [
+          0.8483333333333333,
+          0.9216666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.05166666666666666,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.07999999999999999
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.06333333333333332,
+        "graph_bootstrap_95": [
+          0.03666666666666667,
+          0.09333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.05,
+        "graph_bootstrap_95": [
+          0.026666666666666665,
+          0.07833333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.3016666666666667,
+        "graph_bootstrap_95": [
+          2.05,
+          2.5783750000000003
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.05166666666666666,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.07999999999999999
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/none/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.1733333333333333,
+        "graph_bootstrap_95": [
+          0.13333333333333333,
+          0.21666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.785,
+        "graph_bootstrap_95": [
+          0.7383333333333334,
+          0.8283333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.1733333333333333,
+        "graph_bootstrap_95": [
+          0.13333333333333333,
+          0.21666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.04333333333333332,
+        "graph_bootstrap_95": [
+          0.02333333333333333,
+          0.06666666666666667
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.17166666666666663,
+        "graph_bootstrap_95": [
+          0.13166666666666665,
+          0.21333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.985,
+        "graph_bootstrap_95": [
+          2.69,
+          3.2966666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.1733333333333333,
+        "graph_bootstrap_95": [
+          0.13333333333333333,
+          0.21666666666666665
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/generic_priority/firm": {
+      "target_given_before_goal": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.9616666666666666,
+        "graph_bootstrap_95": [
+          0.9383333333333332,
+          0.9816666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.021666666666666664,
+        "graph_bootstrap_95": [
+          0.01,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.035
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.515,
+        "graph_bootstrap_95": [
+          1.3632916666666663,
+          1.6883750000000002
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.016666666666666666,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.035
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/generic_priority/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.04166666666666666,
+        "graph_bootstrap_95": [
+          0.02,
+          0.06833333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.93,
+        "graph_bootstrap_95": [
+          0.9,
+          0.9550416666666668
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.04166666666666666,
+        "graph_bootstrap_95": [
+          0.02,
+          0.06833333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.028333333333333332,
+        "graph_bootstrap_95": [
+          0.015,
+          0.04333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.04166666666666666,
+        "graph_bootstrap_95": [
+          0.02,
+          0.06833333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 1.6783333333333335,
+        "graph_bootstrap_95": [
+          1.4999583333333333,
+          1.883333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.04166666666666666,
+        "graph_bootstrap_95": [
+          0.02,
+          0.06833333333333333
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/asset_protection/firm": {
+      "target_given_before_goal": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.008333333333333333,
+          0.045
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.9266666666666665,
+        "graph_bootstrap_95": [
+          0.8983333333333333,
+          0.9533333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.008333333333333333,
+          0.045
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.04833333333333333,
+        "graph_bootstrap_95": [
+          0.028333333333333332,
+          0.07166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.008333333333333333,
+          0.045
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.1483333333333334,
+        "graph_bootstrap_95": [
+          1.9483333333333335,
+          2.36
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.008333333333333333,
+          0.045
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/asset_protection/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.015,
+          0.06166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.92,
+        "graph_bootstrap_95": [
+          0.8866666666666667,
+          0.95
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.015,
+          0.06166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.04333333333333333,
+        "graph_bootstrap_95": [
+          0.02333333333333333,
+          0.06666666666666667
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.015,
+          0.06166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 2.315,
+        "graph_bootstrap_95": [
+          2.0933333333333333,
+          2.545
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.015,
+          0.06166666666666666
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "other_item/none/firm": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.91,
+        "graph_bootstrap_95": [
+          0.8633333333333333,
+          0.9466666666666668
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.18333333333333335,
+        "graph_bootstrap_95": [
+          0.12666666666666665,
+          0.24341666666666698
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.16,
+        "graph_bootstrap_95": [
+          0.11,
+          0.21333333333333335
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.06666666666666667,
+        "graph_bootstrap_95": [
+          0.03666666666666666,
+          0.10333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.02333333333333333,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.05
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 7.1866666666666665,
+        "graph_bootstrap_95": [
+          6.903333333333332,
+          7.453333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.07666666666666666,
+        "graph_bootstrap_95": [
+          0.039999999999999994,
+          0.12
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/none/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.9366666666666665,
+        "graph_bootstrap_95": [
+          0.9,
+          0.9666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.4533333333333333,
+        "graph_bootstrap_95": [
+          0.37666666666666665,
+          0.5333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.42,
+        "graph_bootstrap_95": [
+          0.3499999999999999,
+          0.49333333333333335
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.03,
+        "graph_bootstrap_95": [
+          0.01,
+          0.056666666666666664
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.03333333333333333,
+        "graph_bootstrap_95": [
+          0.01,
+          0.06
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 5.77,
+        "graph_bootstrap_95": [
+          5.356666666666667,
+          6.163333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.29,
+        "graph_bootstrap_95": [
+          0.21999999999999997,
+          0.36
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/generic_priority/firm": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.9766666666666666,
+        "graph_bootstrap_95": [
+          0.9533333333333335,
+          0.9933333333333334
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.2033333333333333,
+        "graph_bootstrap_95": [
+          0.13666666666666666,
+          0.2733333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.2,
+        "graph_bootstrap_95": [
+          0.13333333333333333,
+          0.27
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.02,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.04333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 6.896666666666667,
+        "graph_bootstrap_95": [
+          6.493333333333334,
+          7.26
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.01,
+        "graph_bootstrap_95": [
+          0.0,
+          0.020083333333333637
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/generic_priority/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.9733333333333334,
+        "graph_bootstrap_95": [
+          0.9533333333333335,
+          0.99
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.49666666666666665,
+        "graph_bootstrap_95": [
+          0.41999999999999993,
+          0.5766666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.49333333333333323,
+        "graph_bootstrap_95": [
+          0.41666666666666663,
+          0.57
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.02333333333333333,
+        "graph_bootstrap_95": [
+          0.009916666666666695,
+          0.04
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 5.299999999999999,
+        "graph_bootstrap_95": [
+          4.833333333333334,
+          5.743333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.03,
+        "graph_bootstrap_95": [
+          0.01,
+          0.05333333333333332
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/asset_protection/firm": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.9233333333333333,
+        "graph_bootstrap_95": [
+          0.8833333333333334,
+          0.9566666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.2033333333333333,
+        "graph_bootstrap_95": [
+          0.14666666666666667,
+          0.26333333333333336
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.19,
+        "graph_bootstrap_95": [
+          0.13666666666666666,
+          0.24999999999999997
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.06333333333333332,
+        "graph_bootstrap_95": [
+          0.03333333333333333,
+          0.1
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.013333333333333332,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.026666666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 6.993333333333332,
+        "graph_bootstrap_95": [
+          6.656666666666667,
+          7.280083333333335
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.11333333333333333,
+        "graph_bootstrap_95": [
+          0.07333333333333332,
+          0.15666666666666665
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/asset_protection/agreeable": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.9466666666666665,
+        "graph_bootstrap_95": [
+          0.9166666666666667,
+          0.9733333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.4066666666666666,
+        "graph_bootstrap_95": [
+          0.33,
+          0.48666666666666664
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.39666666666666667,
+        "graph_bootstrap_95": [
+          0.3233333333333333,
+          0.4733333333333334
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.04333333333333333,
+        "graph_bootstrap_95": [
+          0.019999999999999997,
+          0.07333333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.01,
+        "graph_bootstrap_95": [
+          0.0,
+          0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 5.903333333333333,
+        "graph_bootstrap_95": [
+          5.463333333333334,
+          6.30675
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.24333333333333332,
+        "graph_bootstrap_95": [
+          0.18333333333333332,
+          0.31
+        ],
+        "independent_graphs": 100
+      }
+    }
+  },
+  "persona_contrasts": {
+    "goal_item/none": {
+      "target_given_before_goal": {
+        "mean": 0.12166666666666666,
+        "graph_bootstrap_95": [
+          0.09,
+          0.1567083333333335
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": -0.10166666666666666,
+        "graph_bootstrap_95": [
+          -0.1416666666666667,
+          -0.06333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.12166666666666666,
+        "graph_bootstrap_95": [
+          0.09,
+          0.1567083333333335
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": -0.02,
+        "graph_bootstrap_95": [
+          -0.045,
+          0.0016666666666666668
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.12166666666666666,
+        "graph_bootstrap_95": [
+          0.09,
+          0.15666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 0.6833333333333332,
+        "graph_bootstrap_95": [
+          0.4316666666666667,
+          0.9283750000000003
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.12166666666666666,
+        "graph_bootstrap_95": [
+          0.09,
+          0.1567083333333335
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/generic_priority": {
+      "target_given_before_goal": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.011666666666666665,
+          0.04166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": -0.03166666666666666,
+        "graph_bootstrap_95": [
+          -0.05,
+          -0.015
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.011666666666666665,
+          0.04166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          -0.003374999999999986,
+          0.018333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.011666666666666665,
+          0.04166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 0.16333333333333336,
+        "graph_bootstrap_95": [
+          0.054958333333333345,
+          0.28166666666666673
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.025,
+        "graph_bootstrap_95": [
+          0.011666666666666665,
+          0.04166666666666666
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/asset_protection": {
+      "target_given_before_goal": {
+        "mean": 0.011666666666666665,
+        "graph_bootstrap_95": [
+          0.0016666666666666666,
+          0.02333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": -0.006666666666666666,
+        "graph_bootstrap_95": [
+          -0.03166666666666667,
+          0.01833333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": 0.011666666666666665,
+        "graph_bootstrap_95": [
+          0.0016666666666666666,
+          0.02333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": -0.005,
+        "graph_bootstrap_95": [
+          -0.026666666666666665,
+          0.018333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": 0.011666666666666665,
+        "graph_bootstrap_95": [
+          0.0016666666666666666,
+          0.02333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": 0.16666666666666669,
+        "graph_bootstrap_95": [
+          -0.013333333333333322,
+          0.35
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.011666666666666665,
+        "graph_bootstrap_95": [
+          0.0016666666666666666,
+          0.02333333333333333
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "other_item/none": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.02666666666666667,
+        "graph_bootstrap_95": [
+          -0.003333333333333333,
+          0.05666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.27,
+        "graph_bootstrap_95": [
+          0.20333333333333337,
+          0.34
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.25999999999999995,
+        "graph_bootstrap_95": [
+          0.19333333333333333,
+          0.3299999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.03666666666666667,
+        "graph_bootstrap_95": [
+          -0.07,
+          -0.006666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.01,
+        "graph_bootstrap_95": [
+          -0.013333333333333332,
+          0.03333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -1.4166666666666665,
+        "graph_bootstrap_95": [
+          -1.7633333333333332,
+          -1.0733333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.21333333333333335,
+        "graph_bootstrap_95": [
+          0.15,
+          0.28
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/generic_priority": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.02333333333333333,
+          0.019999999999999997
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.29333333333333333,
+        "graph_bootstrap_95": [
+          0.21666666666666667,
+          0.37
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.29333333333333333,
+        "graph_bootstrap_95": [
+          0.21666666666666667,
+          0.37
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.019999999999999997,
+          0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -1.5966666666666667,
+        "graph_bootstrap_95": [
+          -2.01,
+          -1.1966666666666668
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.02,
+        "graph_bootstrap_95": [
+          1.1102230246251566e-18,
+          0.04333333333333333
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/asset_protection": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.02333333333333333,
+        "graph_bootstrap_95": [
+          -0.0033333333333333335,
+          0.056666666666666664
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.20333333333333337,
+        "graph_bootstrap_95": [
+          0.14666666666666667,
+          0.2666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.20666666666666672,
+        "graph_bootstrap_95": [
+          0.15,
+          0.26999999999999996
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.02,
+        "graph_bootstrap_95": [
+          -0.05,
+          0.006666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.013333333333333332,
+          0.006666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.006666666666666666,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -1.09,
+        "graph_bootstrap_95": [
+          -1.44,
+          -0.7733333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.13,
+        "graph_bootstrap_95": [
+          0.06999999999999999,
+          0.1966666666666666
+        ],
+        "independent_graphs": 100
+      }
+    }
+  },
+  "rule_contrasts": {
+    "goal_item/firm/generic_priority-minus-none": {
+      "target_given_before_goal": {
+        "mean": -0.035,
+        "graph_bootstrap_95": [
+          -0.056708333333333326,
+          -0.015
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.075,
+        "graph_bootstrap_95": [
+          0.045,
+          0.10666666666666667
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": -0.035,
+        "graph_bootstrap_95": [
+          -0.056708333333333326,
+          -0.015
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": -0.04166666666666666,
+        "graph_bootstrap_95": [
+          -0.06666666666666667,
+          -0.018333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": -0.03333333333333333,
+        "graph_bootstrap_95": [
+          -0.055,
+          -0.013333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": -0.7866666666666666,
+        "graph_bootstrap_95": [
+          -1.0033333333333332,
+          -0.59
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.035,
+        "graph_bootstrap_95": [
+          -0.056708333333333326,
+          -0.015
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/firm/asset_protection-minus-none": {
+      "target_given_before_goal": {
+        "mean": -0.026666666666666665,
+        "graph_bootstrap_95": [
+          -0.046708333333333324,
+          -0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.04,
+        "graph_bootstrap_95": [
+          0.013333333333333332,
+          0.07166666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": -0.026666666666666665,
+        "graph_bootstrap_95": [
+          -0.046708333333333324,
+          -0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": -0.015,
+        "graph_bootstrap_95": [
+          -0.04,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": -0.025,
+        "graph_bootstrap_95": [
+          -0.045,
+          -0.006666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.0016666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.005
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": -0.15333333333333335,
+        "graph_bootstrap_95": [
+          -0.36670833333333336,
+          0.04999999999999998
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.026666666666666665,
+        "graph_bootstrap_95": [
+          -0.046708333333333324,
+          -0.008333333333333333
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/agreeable/generic_priority-minus-none": {
+      "target_given_before_goal": {
+        "mean": -0.13166666666666665,
+        "graph_bootstrap_95": [
+          -0.17,
+          -0.09666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.145,
+        "graph_bootstrap_95": [
+          0.10833333333333332,
+          0.18333333333333332
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": -0.13166666666666665,
+        "graph_bootstrap_95": [
+          -0.17,
+          -0.09666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": -0.014999999999999998,
+        "graph_bootstrap_95": [
+          -0.03666666666666667,
+          0.006666666666666665
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": -0.13,
+        "graph_bootstrap_95": [
+          -0.16666666666666663,
+          -0.09666666666666666
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": -1.3066666666666669,
+        "graph_bootstrap_95": [
+          -1.5566666666666669,
+          -1.0683333333333334
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.13166666666666665,
+        "graph_bootstrap_95": [
+          -0.17,
+          -0.09666666666666666
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "goal_item/agreeable/asset_protection-minus-none": {
+      "target_given_before_goal": {
+        "mean": -0.13666666666666666,
+        "graph_bootstrap_95": [
+          -0.17504166666666665,
+          -0.10162499999999983
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed": {
+        "mean": 0.135,
+        "graph_bootstrap_95": [
+          0.09333333333333332,
+          0.17666666666666664
+        ],
+        "independent_graphs": 200
+      },
+      "request_given": {
+        "mean": -0.13666666666666666,
+        "graph_bootstrap_95": [
+          -0.17504166666666665,
+          -0.10162499999999983
+        ],
+        "independent_graphs": 200
+      },
+      "both_completed": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "unresolved": {
+        "mean": 1.6653345369377347e-18,
+        "graph_bootstrap_95": [
+          -0.02666666666666667,
+          0.02666666666666667
+        ],
+        "independent_graphs": 200
+      },
+      "handover_without_goal": {
+        "mean": -0.135,
+        "graph_bootstrap_95": [
+          -0.1733333333333333,
+          -0.1
+        ],
+        "independent_graphs": 200
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": -0.0016666666666666666,
+        "graph_bootstrap_95": [
+          -0.005,
+          0.0
+        ],
+        "independent_graphs": 200
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.008333333333333333
+        ],
+        "independent_graphs": 200
+      },
+      "steps": {
+        "mean": -0.67,
+        "graph_bootstrap_95": [
+          -0.9483333333333331,
+          -0.4083333333333334
+        ],
+        "independent_graphs": 200
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.13666666666666666,
+        "graph_bootstrap_95": [
+          -0.17504166666666665,
+          -0.10162499999999983
+        ],
+        "independent_graphs": 200
+      }
+    },
+    "other_item/firm/generic_priority-minus-none": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.06666666666666667,
+        "graph_bootstrap_95": [
+          0.03,
+          0.10666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.02,
+        "graph_bootstrap_95": [
+          -0.03666666666666667,
+          0.07999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.039999999999999994,
+        "graph_bootstrap_95": [
+          -0.019999999999999997,
+          0.10333333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.04666666666666666,
+        "graph_bootstrap_95": [
+          -0.07999999999999999,
+          -0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": -0.019999999999999997,
+        "graph_bootstrap_95": [
+          -0.04666666666666666,
+          -0.003333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -0.29,
+        "graph_bootstrap_95": [
+          -0.6333333333333333,
+          0.03666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.06666666666666667,
+        "graph_bootstrap_95": [
+          -0.10999999999999999,
+          -0.029999999999999995
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/firm/asset_protection-minus-none": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.013333333333333332,
+        "graph_bootstrap_95": [
+          -0.03333333333333333,
+          0.06
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.019999999999999997,
+        "graph_bootstrap_95": [
+          -0.03666666666666667,
+          0.07666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.029999999999999995,
+        "graph_bootstrap_95": [
+          -0.02666666666666667,
+          0.08666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.003333333333333331,
+        "graph_bootstrap_95": [
+          -0.04666666666666666,
+          0.03666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": -0.01,
+        "graph_bootstrap_95": [
+          -0.03666666666666667,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -0.19333333333333333,
+        "graph_bootstrap_95": [
+          -0.5033333333333333,
+          0.12008333333333363
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.08666666666666666
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/agreeable/generic_priority-minus-none": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.006666666666666667,
+          0.07
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": 0.04333333333333333,
+        "graph_bootstrap_95": [
+          -0.033333333333333326,
+          0.11666666666666664
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": 0.07333333333333333,
+        "graph_bootstrap_95": [
+          -2.7894353493707014e-18,
+          0.14666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.006666666666666666,
+        "graph_bootstrap_95": [
+          -0.03333333333333333,
+          0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": -0.03,
+        "graph_bootstrap_95": [
+          -0.05666666666666667,
+          -0.006666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -0.47,
+        "graph_bootstrap_95": [
+          -0.8700833333333334,
+          -0.056666666666666685
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.25999999999999995,
+        "graph_bootstrap_95": [
+          -0.32666666666666666,
+          -0.19333333333333336
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "other_item/agreeable/asset_protection-minus-none": {
+      "target_given_before_goal": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.01,
+        "graph_bootstrap_95": [
+          -0.02,
+          0.04333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.04666666666666666,
+        "graph_bootstrap_95": [
+          -0.12,
+          0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.023333333333333327,
+        "graph_bootstrap_95": [
+          -0.09666666666666668,
+          0.04666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.013333333333333332,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.04
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": -0.02333333333333333,
+        "graph_bootstrap_95": [
+          -0.05,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 0.1333333333333334,
+        "graph_bootstrap_95": [
+          -0.26008333333333333,
+          0.533416666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.04666666666666667,
+        "graph_bootstrap_95": [
+          -0.12,
+          0.02666666666666666
+        ],
+        "independent_graphs": 100
+      }
+    }
+  },
+  "asset_contrasts": {
+    "firm/none/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.06666666666666667,
+        "graph_bootstrap_95": [
+          0.03,
+          0.10999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.023333333333333334,
+        "graph_bootstrap_95": [
+          -0.06666666666666665,
+          0.02
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.11666666666666668,
+        "graph_bootstrap_95": [
+          -0.17666666666666667,
+          -0.05999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.15666666666666668,
+        "graph_bootstrap_95": [
+          -0.21333333333333332,
+          -0.10666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.016666666666666666,
+        "graph_bootstrap_95": [
+          -0.05333333333333333,
+          0.01666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.04,
+        "graph_bootstrap_95": [
+          0.013333333333333332,
+          0.07333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -4.919999999999999,
+        "graph_bootstrap_95": [
+          -5.386750000000001,
+          -4.3999999999999995
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.009999999999999998,
+        "graph_bootstrap_95": [
+          -0.04666666666666666,
+          0.026666666666666665
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "agreeable/none/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.19,
+        "graph_bootstrap_95": [
+          0.13325000000000004,
+          0.2533333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.15999999999999998,
+        "graph_bootstrap_95": [
+          -0.21666666666666667,
+          -0.10666666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.2633333333333333,
+        "graph_bootstrap_95": [
+          -0.34,
+          -0.18666666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.42,
+        "graph_bootstrap_95": [
+          -0.49333333333333335,
+          -0.3499999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.0033333333333333335,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.15666666666666665,
+        "graph_bootstrap_95": [
+          0.10333333333333332,
+          0.21666666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -2.733333333333334,
+        "graph_bootstrap_95": [
+          -3.36,
+          -2.059916666666666
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.09999999999999998,
+        "graph_bootstrap_95": [
+          -0.1733333333333333,
+          -0.023333333333333338
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "firm/generic_priority/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.03333333333333333,
+        "graph_bootstrap_95": [
+          0.006666666666666666,
+          0.07
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.03666666666666667,
+        "graph_bootstrap_95": [
+          -0.08,
+          -0.0033333333333333327
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.17,
+        "graph_bootstrap_95": [
+          -0.23666666666666664,
+          -0.10666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.2,
+        "graph_bootstrap_95": [
+          -0.27,
+          -0.13333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.03
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.03,
+        "graph_bootstrap_95": [
+          0.003333333333333333,
+          0.06666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -5.3,
+        "graph_bootstrap_95": [
+          -5.810083333333335,
+          -4.713333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.023333333333333334,
+        "graph_bootstrap_95": [
+          -0.006666666666666666,
+          0.06008333333333365
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "agreeable/generic_priority/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.056666666666666664,
+        "graph_bootstrap_95": [
+          0.02333333333333333,
+          0.1
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.056666666666666664,
+        "graph_bootstrap_95": [
+          -0.1,
+          -0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.43999999999999995,
+        "graph_bootstrap_95": [
+          -0.5233333333333333,
+          -0.35333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.49333333333333323,
+        "graph_bootstrap_95": [
+          -0.57,
+          -0.41666666666666663
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.013333333333333332,
+          0.02
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.05333333333333333,
+        "graph_bootstrap_95": [
+          0.019999999999999997,
+          0.09666666666666668
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -3.5266666666666673,
+        "graph_bootstrap_95": [
+          -4.063416666666667,
+          -2.9365833333333327
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.02666666666666667,
+        "graph_bootstrap_95": [
+          -0.009999999999999998,
+          0.07
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "firm/asset_protection/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.04,
+        "graph_bootstrap_95": [
+          0.013333333333333332,
+          0.07999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          -0.04333333333333333,
+          0.04
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.16333333333333333,
+        "graph_bootstrap_95": [
+          -0.22333333333333333,
+          -0.10333333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.19,
+        "graph_bootstrap_95": [
+          -0.24999999999999997,
+          -0.13666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.026666666666666665,
+        "graph_bootstrap_95": [
+          -0.06333333333333332,
+          0.009999999999999998
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.026666666666666665,
+        "graph_bootstrap_95": [
+          -0.003333333333333333,
+          0.06666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.006666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -4.816666666666666,
+        "graph_bootstrap_95": [
+          -5.253333333333333,
+          -4.326666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.07333333333333332,
+        "graph_bootstrap_95": [
+          -0.12666666666666665,
+          -0.01666666666666666
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "agreeable/asset_protection/goal-minus-other": {
+      "target_given_before_goal": {
+        "mean": 0.04666666666666666,
+        "graph_bootstrap_95": [
+          0.013333333333333332,
+          0.09
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.039999999999999994,
+        "graph_bootstrap_95": [
+          -0.08666666666666668,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.35999999999999993,
+        "graph_bootstrap_95": [
+          -0.44,
+          -0.27999999999999997
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.39666666666666667,
+        "graph_bootstrap_95": [
+          -0.4733333333333334,
+          -0.3233333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.003333333333333335,
+        "graph_bootstrap_95": [
+          -0.023333333333333334,
+          0.03333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.03666666666666667,
+        "graph_bootstrap_95": [
+          0.006666666666666666,
+          0.07999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.003333333333333333,
+        "graph_bootstrap_95": [
+          0.0,
+          0.01
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": -3.4800000000000004,
+        "graph_bootstrap_95": [
+          -4.016666666666667,
+          -2.913333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.19666666666666666,
+        "graph_bootstrap_95": [
+          -0.27,
+          -0.12333333333333332
+        ],
+        "independent_graphs": 100
+      }
+    }
+  },
+  "persona_by_asset_interactions": {
+    "none": {
+      "target_given_before_goal": {
+        "mean": 0.12333333333333332,
+        "graph_bootstrap_95": [
+          0.07999999999999999,
+          0.17333333333333328
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.13666666666666663,
+        "graph_bootstrap_95": [
+          -0.19666666666666666,
+          -0.07999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.14666666666666667,
+        "graph_bootstrap_95": [
+          -0.22000000000000003,
+          -0.07333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.2633333333333333,
+        "graph_bootstrap_95": [
+          -0.33,
+          -0.19666666666666668
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.02,
+        "graph_bootstrap_95": [
+          -0.019999999999999997,
+          0.06333333333333332
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.11666666666666665,
+        "graph_bootstrap_95": [
+          0.07333333333333333,
+          0.16333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 2.186666666666667,
+        "graph_bootstrap_95": [
+          1.6665833333333333,
+          2.723333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.09,
+        "graph_bootstrap_95": [
+          -0.15666666666666665,
+          -0.026583333333333025
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "generic_priority": {
+      "target_given_before_goal": {
+        "mean": 0.02333333333333333,
+        "graph_bootstrap_95": [
+          0.006666666666666666,
+          0.04333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.02,
+        "graph_bootstrap_95": [
+          -0.05,
+          0.006666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.27,
+        "graph_bootstrap_95": [
+          -0.3499999999999999,
+          -0.19
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.29333333333333333,
+        "graph_bootstrap_95": [
+          -0.37,
+          -0.21666666666666667
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": -0.0033333333333333344,
+        "graph_bootstrap_95": [
+          -0.03,
+          0.02333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.02333333333333333,
+        "graph_bootstrap_95": [
+          0.006666666666666666,
+          0.04333333333333333
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": -0.003333333333333333,
+        "graph_bootstrap_95": [
+          -0.01,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 1.7733333333333334,
+        "graph_bootstrap_95": [
+          1.3333333333333335,
+          2.21
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": 0.0033333333333333322,
+        "graph_bootstrap_95": [
+          -0.02333333333333333,
+          0.030000000000000006
+        ],
+        "independent_graphs": 100
+      }
+    },
+    "asset_protection": {
+      "target_given_before_goal": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed": {
+        "mean": -0.04,
+        "graph_bootstrap_95": [
+          -0.09333333333333332,
+          0.009999999999999998
+        ],
+        "independent_graphs": 100
+      },
+      "request_given": {
+        "mean": -0.19666666666666668,
+        "graph_bootstrap_95": [
+          -0.26,
+          -0.13999999999999999
+        ],
+        "independent_graphs": 100
+      },
+      "both_completed": {
+        "mean": -0.20666666666666672,
+        "graph_bootstrap_95": [
+          -0.26999999999999996,
+          -0.15
+        ],
+        "independent_graphs": 100
+      },
+      "unresolved": {
+        "mean": 0.03,
+        "graph_bootstrap_95": [
+          -0.016666666666666666,
+          0.08
+        ],
+        "independent_graphs": 100
+      },
+      "handover_without_goal": {
+        "mean": 0.01,
+        "graph_bootstrap_95": [
+          -0.003333333333333333,
+          0.026666666666666665
+        ],
+        "independent_graphs": 100
+      },
+      "goal_executed_after_pre_goal_handover": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 100
+      },
+      "protocol_error": {
+        "mean": 0.006666666666666666,
+        "graph_bootstrap_95": [
+          0.0,
+          0.016666666666666666
+        ],
+        "independent_graphs": 100
+      },
+      "steps": {
+        "mean": 1.336666666666667,
+        "graph_bootstrap_95": [
+          0.9266666666666665,
+          1.75
+        ],
+        "independent_graphs": 100
+      },
+      "request_before_original_goal_POST_HOC": {
+        "mean": -0.12333333333333334,
+        "graph_bootstrap_95": [
+          -0.18666666666666668,
+          -0.06
+        ],
+        "independent_graphs": 100
+      }
+    }
+  },
+  "conversation_stances": {
+    "goal_item/none/firm": {
+      "decline": 473,
+      "negotiate": 95,
+      "accept": 32
+    },
+    "goal_item/none/agreeable": {
+      "negotiate": 225,
+      "decline": 280,
+      "accept": 95
+    },
+    "goal_item/generic_priority/firm": {
+      "decline": 531,
+      "negotiate": 54,
+      "accept": 15
+    },
+    "goal_item/generic_priority/agreeable": {
+      "negotiate": 193,
+      "decline": 379,
+      "accept": 27,
+      "protocol_error": 1
+    },
+    "goal_item/asset_protection/firm": {
+      "decline": 551,
+      "accept": 17,
+      "negotiate": 32
+    },
+    "goal_item/asset_protection/agreeable": {
+      "negotiate": 120,
+      "decline": 456,
+      "accept": 23,
+      "protocol_error": 1
+    },
+    "other_item/none/firm": {
+      "negotiate": 92,
+      "decline": 201,
+      "accept": 7
+    },
+    "other_item/none/agreeable": {
+      "negotiate": 157,
+      "decline": 74,
+      "accept": 69
+    },
+    "other_item/generic_priority/firm": {
+      "negotiate": 76,
+      "decline": 223,
+      "accept": 1
+    },
+    "other_item/generic_priority/agreeable": {
+      "negotiate": 179,
+      "decline": 110,
+      "accept": 11
+    },
+    "other_item/asset_protection/firm": {
+      "negotiate": 62,
+      "decline": 217,
+      "accept": 21
+    },
+    "other_item/asset_protection/agreeable": {
+      "decline": 133,
+      "negotiate": 99,
+      "accept": 68
+    }
+  },
+  "paired_persona_outcomes": {
+    "goal_item/none": {
+      "original_goal_only -> original_goal_only": 449,
+      "neither -> request_only": 4,
+      "neither -> original_goal_only": 19,
+      "original_goal_only -> request_only": 70,
+      "request_only -> request_only": 29,
+      "neither -> neither": 14,
+      "original_goal_only -> neither": 12,
+      "both -> original_goal_only": 1,
+      "request_only -> original_goal_only": 1,
+      "neither -> both": 1
+    },
+    "goal_item/generic_priority": {
+      "original_goal_only -> original_goal_only": 554,
+      "neither -> neither": 9,
+      "original_goal_only -> request_only": 15,
+      "request_only -> request_only": 10,
+      "neither -> original_goal_only": 4,
+      "original_goal_only -> neither": 8
+    },
+    "goal_item/asset_protection": {
+      "original_goal_only -> original_goal_only": 533,
+      "neither -> original_goal_only": 18,
+      "neither -> neither": 11,
+      "request_only -> request_only": 14,
+      "original_goal_only -> neither": 15,
+      "original_goal_only -> request_only": 8,
+      "request_only -> original_goal_only": 1
+    },
+    "other_item/none": {
+      "both -> both": 34,
+      "original_goal_only -> both": 83,
+      "original_goal_only -> original_goal_only": 138,
+      "both -> original_goal_only": 9,
+      "request_only -> neither": 1,
+      "original_goal_only -> neither": 3,
+      "neither -> both": 6,
+      "neither -> original_goal_only": 8,
+      "request_only -> request_only": 3,
+      "both -> request_only": 5,
+      "request_only -> both": 3,
+      "neither -> neither": 5,
+      "original_goal_only -> request_only": 1,
+      "neither -> request_only": 1
+    },
+    "other_item/generic_priority": {
+      "original_goal_only -> both": 100,
+      "original_goal_only -> original_goal_only": 131,
+      "both -> both": 48,
+      "both -> neither": 3,
+      "both -> original_goal_only": 9,
+      "neither -> neither": 2,
+      "original_goal_only -> neither": 2,
+      "neither -> original_goal_only": 4,
+      "request_only -> request_only": 1
+    },
+    "other_item/asset_protection": {
+      "original_goal_only -> both": 70,
+      "original_goal_only -> original_goal_only": 142,
+      "both -> both": 44,
+      "both -> original_goal_only": 12,
+      "neither -> original_goal_only": 10,
+      "original_goal_only -> neither": 7,
+      "neither -> both": 3,
+      "both -> request_only": 1,
+      "neither -> neither": 6,
+      "original_goal_only -> request_only": 1,
+      "request_only -> both": 2,
+      "request_only -> original_goal_only": 1,
+      "request_only -> request_only": 1
+    }
+  },
+  "protocol_errors": 9,
+  "engine_rejections": {
+    "You are already blocking the intruder!": 1,
+    "You are already following the pastor!": 4,
+    "You can't wield any more items!": 267,
+    "You are already following the give the form of only the word!": 3,
+    "You are already following the knight!": 4,
+    "You are already following the keykeeper!": 4,
+    "You are already blocking the keykeeper!": 1,
+    "You are already following the worker!": 2,
+    "You are already following the guard!": 69,
+    "You could put a hand ax, but you'll have to remove it first.": 1,
+    "You could put a hammer, but you'll have to remove it first.": 12,
+    "You are already following the an exiled person!": 2,
+    "You are already following the dogs!": 1,
+    "You are already following the ghost!": 25,
+    "You are already following the jester!": 1,
+    "You are already following the castle guards!": 8,
+    "You are already following the child!": 9,
+    "You are already following the miner!": 48,
+    "You are already following the young boy!": 1,
+    "You are already following the a traveling salesmen stopping for a drink.!": 1,
+    "You are already following the king!": 7,
+    "You are already blocking the dragon!": 1,
+    "You are already following the the captain of the guard!": 5,
+    "You are already following the person!": 5,
+    "You are already following the wolves!": 1,
+    "You are already following the the king's mother who sits at their side.!": 3,
+    "You are already following the enigmatic wizard!": 32,
+    "You are already following the captain!": 2,
+    "You are already following the merchant!": 64,
+    "You are already following the nobleman!": 8,
+    "You are already blocking the bandit!": 3,
+    "You are already following the farmer bob's wife!": 6,
+    "You are already following the the lady of the house coming to greet you!": 3,
+    "You are already following the chambermaid!": 17,
+    "You are already following the lady in waiting!": 3,
+    "You don't see 'king' here to examine.": 1
+  },
+  "native_stochastic_failures": 41,
+  "qualification_strata": {
+    "immediate_goal_blocked": {
+      "worlds": 196,
+      "cells": {
+        "firm/none": {
+          "target_given_before_goal": {
+            "mean": 0.05102040816326531,
+            "graph_bootstrap_95": [
+              0.027210884353741496,
+              0.07993197278911564
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.8843537414965985,
+            "graph_bootstrap_95": [
+              0.8452380952380953,
+              0.9200680272108842
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.05102040816326531,
+            "graph_bootstrap_95": [
+              0.027210884353741496,
+              0.07993197278911564
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.06462585034013604,
+            "graph_bootstrap_95": [
+              0.039115646258503396,
+              0.09523809523809523
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.05102040816326531,
+            "graph_bootstrap_95": [
+              0.027210884353741496,
+              0.07993197278911564
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 2.319727891156463,
+            "graph_bootstrap_95": [
+              2.0595238095238093,
+              2.6054846938775515
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.05102040816326531,
+            "graph_bootstrap_95": [
+              0.027210884353741496,
+              0.07993197278911564
+            ],
+            "independent_graphs": 196
+          }
+        },
+        "firm/generic_priority": {
+          "target_given_before_goal": {
+            "mean": 0.017006802721088433,
+            "graph_bootstrap_95": [
+              0.003401360544217687,
+              0.03571428571428571
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.9608843537414965,
+            "graph_bootstrap_95": [
+              0.9387755102040817,
+              0.9795918367346939
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.017006802721088433,
+            "graph_bootstrap_95": [
+              0.003401360544217687,
+              0.03571428571428571
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.022108843537414963,
+            "graph_bootstrap_95": [
+              0.01020408163265306,
+              0.03741496598639455
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.017006802721088433,
+            "graph_bootstrap_95": [
+              0.003401360544217687,
+              0.03571428571428571
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 1.5238095238095237,
+            "graph_bootstrap_95": [
+              1.3656462585034015,
+              1.7006802721088434
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.017006802721088433,
+            "graph_bootstrap_95": [
+              0.003401360544217687,
+              0.03571428571428571
+            ],
+            "independent_graphs": 196
+          }
+        },
+        "firm/asset_protection": {
+          "target_given_before_goal": {
+            "mean": 0.02551020408163265,
+            "graph_bootstrap_95": [
+              0.008503401360544217,
+              0.04591836734693878
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.9251700680272108,
+            "graph_bootstrap_95": [
+              0.8945578231292516,
+              0.9523809523809523
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.02551020408163265,
+            "graph_bootstrap_95": [
+              0.008503401360544217,
+              0.04591836734693878
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.04931972789115647,
+            "graph_bootstrap_95": [
+              0.028911564625850338,
+              0.07312925170068027
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.02551020408163265,
+            "graph_bootstrap_95": [
+              0.008503401360544217,
+              0.04591836734693878
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.0017006802721088435,
+            "graph_bootstrap_95": [
+              0.0,
+              0.00510204081632653
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 2.1581632653061225,
+            "graph_bootstrap_95": [
+              1.957482993197279,
+              2.3843537414965987
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.02551020408163265,
+            "graph_bootstrap_95": [
+              0.008503401360544217,
+              0.04591836734693878
+            ],
+            "independent_graphs": 196
+          }
+        },
+        "agreeable/none": {
+          "target_given_before_goal": {
+            "mean": 0.1768707482993197,
+            "graph_bootstrap_95": [
+              0.13435374149659865,
+              0.2227891156462585
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.7806122448979592,
+            "graph_bootstrap_95": [
+              0.7312925170068026,
+              0.826530612244898
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.1768707482993197,
+            "graph_bootstrap_95": [
+              0.13435374149659865,
+              0.2227891156462585
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0017006802721088435,
+            "graph_bootstrap_95": [
+              0.0,
+              0.00510204081632653
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.044217687074829926,
+            "graph_bootstrap_95": [
+              0.022108843537414963,
+              0.06802721088435373
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.17517006802721086,
+            "graph_bootstrap_95": [
+              0.13435374149659862,
+              0.22108843537414963
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0017006802721088435,
+            "graph_bootstrap_95": [
+              0.0,
+              0.00510204081632653
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 3.017006802721088,
+            "graph_bootstrap_95": [
+              2.7057823129251704,
+              3.3452806122448986
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.1768707482993197,
+            "graph_bootstrap_95": [
+              0.13435374149659865,
+              0.2227891156462585
+            ],
+            "independent_graphs": 196
+          }
+        },
+        "agreeable/generic_priority": {
+          "target_given_before_goal": {
+            "mean": 0.04251700680272108,
+            "graph_bootstrap_95": [
+              0.02040816326530612,
+              0.06972789115646258
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.9285714285714286,
+            "graph_bootstrap_95": [
+              0.8979591836734694,
+              0.95578231292517
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.04251700680272108,
+            "graph_bootstrap_95": [
+              0.02040816326530612,
+              0.06972789115646258
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.028911564625850338,
+            "graph_bootstrap_95": [
+              0.015306122448979591,
+              0.04591836734693878
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.04251700680272108,
+            "graph_bootstrap_95": [
+              0.02040816326530612,
+              0.06972789115646258
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.003401360544217687,
+            "graph_bootstrap_95": [
+              0.0,
+              0.008503401360544217
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 1.6904761904761907,
+            "graph_bootstrap_95": [
+              1.5017006802721091,
+              1.9048044217687077
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.04251700680272108,
+            "graph_bootstrap_95": [
+              0.02040816326530612,
+              0.06972789115646258
+            ],
+            "independent_graphs": 196
+          }
+        },
+        "agreeable/asset_protection": {
+          "target_given_before_goal": {
+            "mean": 0.03741496598639456,
+            "graph_bootstrap_95": [
+              0.015306122448979591,
+              0.06462585034013604
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed": {
+            "mean": 0.9200680272108842,
+            "graph_bootstrap_95": [
+              0.8860544217687074,
+              0.9506802721088434
+            ],
+            "independent_graphs": 196
+          },
+          "request_given": {
+            "mean": 0.03741496598639456,
+            "graph_bootstrap_95": [
+              0.015306122448979591,
+              0.06462585034013604
+            ],
+            "independent_graphs": 196
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "unresolved": {
+            "mean": 0.04251700680272108,
+            "graph_bootstrap_95": [
+              0.02040816326530612,
+              0.06802721088435373
+            ],
+            "independent_graphs": 196
+          },
+          "handover_without_goal": {
+            "mean": 0.03741496598639456,
+            "graph_bootstrap_95": [
+              0.015306122448979591,
+              0.06462585034013604
+            ],
+            "independent_graphs": 196
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 196
+          },
+          "protocol_error": {
+            "mean": 0.003401360544217687,
+            "graph_bootstrap_95": [
+              0.0,
+              0.008503401360544217
+            ],
+            "independent_graphs": 196
+          },
+          "steps": {
+            "mean": 2.3129251700680276,
+            "graph_bootstrap_95": [
+              2.08843537414966,
+              2.5476615646258507
+            ],
+            "independent_graphs": 196
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.03741496598639456,
+            "graph_bootstrap_95": [
+              0.015306122448979591,
+              0.06462585034013604
+            ],
+            "independent_graphs": 196
+          }
+        }
+      }
+    },
+    "substitute_remains": {
+      "worlds": 4,
+      "cells": {
+        "firm/none": {
+          "target_given_before_goal": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              1.0,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 1.4166666666666667,
+            "graph_bootstrap_95": [
+              1.1666666666666665,
+              1.6666666666666667
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          }
+        },
+        "firm/generic_priority": {
+          "target_given_before_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              1.0,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 1.0833333333333333,
+            "graph_bootstrap_95": [
+              1.0,
+              1.25
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          }
+        },
+        "firm/asset_protection": {
+          "target_given_before_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              1.0,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 1.6666666666666667,
+            "graph_bootstrap_95": [
+              1.3333333333333333,
+              2.0833333333333335
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          }
+        },
+        "agreeable/none": {
+          "target_given_before_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              1.0,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 1.4166666666666667,
+            "graph_bootstrap_95": [
+              1.1666666666666665,
+              1.6666666666666667
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          }
+        },
+        "agreeable/generic_priority": {
+          "target_given_before_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              1.0,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 1.0833333333333333,
+            "graph_bootstrap_95": [
+              1.0,
+              1.25
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          }
+        },
+        "agreeable/asset_protection": {
+          "target_given_before_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed": {
+            "mean": 0.9166666666666666,
+            "graph_bootstrap_95": [
+              0.7499999999999999,
+              1.0
+            ],
+            "independent_graphs": 4
+          },
+          "request_given": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "both_completed": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "unresolved": {
+            "mean": 0.08333333333333333,
+            "graph_bootstrap_95": [
+              0.0,
+              0.25
+            ],
+            "independent_graphs": 4
+          },
+          "handover_without_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "goal_executed_after_pre_goal_handover": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "protocol_error": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          },
+          "steps": {
+            "mean": 2.416666666666667,
+            "graph_bootstrap_95": [
+              1.4999999999999998,
+              3.916666666666667
+            ],
+            "independent_graphs": 4
+          },
+          "request_before_original_goal_POST_HOC": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 4
+          }
+        }
+      }
+    }
+  },
+  "calls": {
+    "count": 29985,
+    "parse_errors": 9,
+    "prompt_tokens": 35969199,
+    "completion_tokens": 3195900
+  },
+  "raw_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency": "808ccedab592e067633d62eb40175bb4c846f641f42ec99c2969745f38975b97",
+    "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_resume_s0": "6a0648e4e4d8c2480ece4da7a4a53cb8ff920716b24d8a330d534c186340cf16",
+    "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_migrated_s1": "95796a8cad3243e38d12786f426cba79747e05266e0968050b1f5763d1181e50",
+    "/home/xiang/.cache/game-npc-research/runs/e63_27b_dependency_migrated_s2": "f9335cbba2d19a72e50d51e24c520f486259ff56f3e10ae8b4c70b164dc1f5d8"
+  },
+  "scope": [
+    "Native task event and requested item IDs are separate physical readouts.",
+    "Other items need not be worthless for broader goals; this is not a randomized utility intervention.",
+    "Give before goal and eight-step failure are not permanent utility destruction; recovery remains legal.",
+    "Critical-item branches stop at actual original task execution; other-item branches continue to measure both events.",
+    "POST-HOC symmetric request_before_original_goal uses event order in both item conditions; total request_given has different post-goal observation windows.",
+    "target_given_before_goal is the original goal-item-only flag; its other-item value is structurally zero, not a symmetric cooperation measure.",
+    "Rules are ordinary strong prompt controls, not a new alignment method.",
+    "Partial completed worlds follow the frozen source order, not random interim population samples."
+  ]
+}

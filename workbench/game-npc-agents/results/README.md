@@ -1,6 +1,6 @@
 # 结果清单
 
-当前已按用户恢复指令重构，先读 [阶段裁决记录](../knowledge/persona-behavior/STAGE_ARBITRATION_2026-10-15.md)、[E50](../experiments/E50-commitment-decision-snapshots.md) 与 [E51](../experiments/E51-stage-persona-causal-transfer.md)。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+当前入口为[E63/E64复审报告](../PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)与文末最新结果。E50–62为已完成基线和诊断，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
@@ -99,6 +99,9 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 
 ## 最新审计后的E63/E64
 
-- E63：`E63_{32b,gemma}_dependency.json`已完整，各200独立图/100其他资产配对/5400 episode，27B固定队列尚在收尾；`E63_*_plan_analysis.json`为POST-HOC原生计划回放。主表保留，总请求交付的观察窗口不同，资产间需另看`request_before_original_goal_POST_HOC`。
+- E63：`E63_{32b,27b,gemma}_dependency.json`均完整，各200独立图/100其他资产配对/5400 episode；`E63_*_plan_analysis.json`为POST-HOC原生计划回放。主表保留，总请求交付的观察窗口不同，资产间需另看`request_before_original_goal_POST_HOC`。
 - E64：`E64_{32b,27b}_reciprocal.json`各9独立图/108双角色episode，真实取得、双向Give、最终归属、伤害/死亡分开；`E64_32b_transmission_guide.json`和`E64_32b_guide_comparison.json`为54条普通通信指令对照。27B的2死亡和1协议失败不剔除。
 - 数据与源例：`E63_native_dependency_qualification.json`、`E64_native_reciprocal_qualification.json`、`E64_bilateral_source_qualification.json`；`E63_gemma_native_examples.json`公开三个说明性源图的全部两P/三规则/三seed。全部raw仍在同一cache，不入Git。
+
+- [完整GPU/调用成本](E63_E64_ROUND_COSTS_2026-10-15.json)：主实验/控制16470条，另72条profile，13.167GPUh/104883实际本地调用；全部中断与失败计入。
+- [E63科学图](E63_task_cooperation.png)、[E64科学图](E64_native_negotiation.png)，均另有PDF/SVG；[模型×check交互](E64_model_cue_interactions.json)、[reserve图级重叠](E63_reserve_overlap_audit.json)明确POST-HOC。
