@@ -65,3 +65,8 @@
 - **核查（按字节范围读第 5 层 q_proj 一个张量）：** `main` 与 stage1 step0、stage1 终点、stage2 i1 / i2 终点、Instruct 的元素相关全部为 0.000；stage2 终点与 Instruct 0.976、与 stage1 终点 0.960 → Instruct（及其上游 SFT / DPO）来自 stage2 分支，而 `main` 来自另一次训练（初始化也不同）。SFT / DPO 仓库只有 pytorch_model.bin，未做张量核对，按头布局（与 stage2 0.96）判定。
 - **处理：** E81 中“base main → SFT / Instruct”两对不是父子关系，从结论中排除；继续训练链以 stage1 → stage2 → SFT → DPO → Instruct 为准。E30 / E77 / E80 用的是 stage 分支，不受影响。
 - **对外：** 与 P09 / P11 / P12 一起写入公开套件审计（用 `main` 当作 SFT 的基座做对比的研究会比较两个不相关的模型）。
+
+## P14（2026-10-16）：PolyPythias 410M seed3 / seed4 在训练中途被重置回初始化——不是 loss spike
+- **现象（E90 / E94b / E95）：** seed3 75k→76k、seed4 122k→123k 的一千步内，几乎所有权重矩阵与前一检查点的余弦降到 0.02–0.30、范数大幅缩小；事件后的权重与该种子 step0 的余弦 0.90–0.999。
+- **含义：** 这两个“异常种子”的后续检查点是从初始化、在低学习率下短时间重训的模型；PolyPythias 论文的 loss spike / 不稳定解释需修正。E90 的“spike 改写分工”作废，E89 / E92 中涉及这两个种子的结论需剔除复核。
+- **教训：** 看到“训练中途的剧烈变化”时，先用权重与早期检查点的相似度排除重置 / 恢复错误，再谈优化动力学。见 [E95](experiments/E95-polypythias-reset-audit.md)。
