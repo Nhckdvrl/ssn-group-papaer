@@ -14,7 +14,7 @@
 - **算力预算：** CPU来源≤0.5h、0GPU/0API；具体模型、回合上限/预算及强控制在CPU结果后、任何模型调用前登记。旧PCSP/RL/1200帧/无回路patch全部冻结。
 
 ## 结果
-待原生来源资格。
+原生资格、32B主运行与普通通信指令对照完成；27B按原决策记录恢复后继续固定9图队列。
 
 ### CPU完成与模型前设置（原生剧情后果保留）
 
@@ -35,3 +35,23 @@ get/steal互持条件可能使源样本偏向敌对获取，不能代表所有�
 CPU检查得到39对/33独立源图、66次原goal Give均真实执行通过；另365份Give目标当前不合法、1份actor歧义完整计数。这里说明作者世界存在更多相互赠予任务，不证明这些就是自利交易；与9图get/steal互持样本不合并。raw `runs/e64_bilateral_give_source_qualification/`，模型调用0。
 
 32B v2首图12episode/387calls完成，0JSON错误、17次native随机失败保留；196.81s推理+72.95s载入。已按原冻结设置启动全部9图主运行；27B v2 profile仍在运行。无新语义标签/patch/训练。
+
+### 32B主运行完成与普通通信指令对照（对照运行前登记）
+
+32B全部9图/108episode/3483calls完成，0JSON、64步原生拒绝（主要重复block）、485随机失败全部保留，1400.10s+load62.14s。none条件focal目标物实际到手firm51.9%、agreeable40.7%；两目标物实际双向Give22.2%/11.1%；先交出对方所需物却未取得自己目标11.1%/22.2%。N9、图簇区间与逐世界结果见JSON；不是总体人群结论，不把物品到手或给予当全部效用。
+
+POST-HOC检查所有动作：none focal firm/agreeable的432动作中emote253/296，实际Tell15/15、Whisper5/8。非speech动作的utterance字段不发送给伙伴；已有system有此说明，但未限制空字符串。因此区分H1角色改变实际取舍/手段；H2普通通信接口范围尚未充分理解；不从非空文本直接判断“模型相信已说出口”。候选菜单也不是引擎合法性的保证，最终以每一步native执行为准，不改原菜单/规则修阳性。
+
+在已释放的32B卡上做单一普通强指令控制：全部9图×两P×原三seed、只原none cue，54episode；原32B对应27个partner opening固定复用，动作状态/规则/模型/512预算/32交替决策不变。每次双方行动system末尾统一加："If you want the other character to hear words, choose a say, tell, or whisper command. For an emote or other non-speech action, set utterance to the empty string: emoting does not transmit that field."。不自动代发文本、不增行动机会、不把说话和动作偷偷合并。
+
+阳性对照是原native Say/Tell确实广播、Emote不发送额外文本，已由源执行路径及实际消息核实；强指令只解释现有接口。仍读原生取得/双方Give/先交无回报/HP，另读原生动作类型；全部原none配对、所有拒绝与随机失败保留。若恢复，接受普通协议解释，不称新方法；若不恢复，只缩小该解释，不等于已证明利益或表征失常。预测约0.2–0.4GPUh、0API/训练、总≤8卡。该对照不改变原9图主表、不补抽样。
+
+### 27B原生死亡后的记录恢复（恢复运行前登记）
+
+原v2在第二组、turn21遇到真实死亡，原引擎移除actor旧ID后，logger读取其health时报NoneType异常，尚未写出该组episode。原12完整episode、1188次模型调用全部保留。修正只涉及终止/健康/死亡读出：旧actor被原DeathEvent转为`__dead__`尸体后记health0/deadTrue，按原卡停止；不改Hit/死亡/人物/目标/提示/随机数或动作策略。
+
+使用同source graph与逐动作seed回放原决策，先CPU核对完整首图12轨迹的全部物理before/after与最终结果，及中断组的实际死亡点。未完成组的既有决策是状态回放记录，保留原始prompt/response来源，不宣称跨进程renderer逐字一致的推理cache；不把旧响应用于新条件。后续仅对无原调用的case/seed/persona/cue/turn进行新推理。完整首图直接保留，不按生死或成功选分支。旧1188调用与中断进程成本计入总成本；若回放不一致则先定位，不自动换seed。新adapter源码单列hash，source policy/世界pin保持。
+
+### 普通通信指令对照完整结果
+
+全部9图/54 episode完成，1728新增本地调用，0JSON错误、226原生随机失败保留；634.20s推理+62.37s载入。复用27个原partner opening，非新推理。相比原none条件，focal每局非speech却有非空utterance减少firm9.59 [8.15,10.85]次、agreeable12.19 [11.30,13.04]次；字段使用明显改善。原生目标资源到手差firm−7.4pp [−22.2,7.4]、agreeable+14.8pp [−3.7,40.7]；两向Give差−11.1pp [−37.0,7.4] / +7.4pp [0,22.2]。协议改善与策略结果没有统一对应方向，不能从较小N的区间推出效果恒零或内部机制已定。原完整baseline、guide与逐图配对另存results，不替换主表。

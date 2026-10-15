@@ -8,7 +8,7 @@
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
-- **报告后最新执行：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)固定200原图、100图有另一自持物品可配对；三模型×三seed比较任务资产请求、其他资产请求与两种明确优先规则。CPU发现196图交目标物后原任务暂时不可执行、4图有替代物，全部仍可合法偷回。三模型四worker运行中，未汇总最终效果。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)从原1787图取得9个双角色互持目标物品场景，两Qwen运行短谈判profile；交换、偷取、后续攻击/健康都保留。停止新增API细标签与无回路假说patch。
+- **报告后最新执行：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)的32B/Gemma均完成200原图、100其他资产配对、5400 episode；27B固定队列仍在运行。明确任务优先规则使32B agreeable原goal完成60.8%→90.0%，同时保留非冲突合作；Gemma资产保护包反而使原goal下降，CPU回放区分计划可行与实际采纳。196图交目标物后原任务暂时不可执行、4图有替代物，全部仍可合法偷回。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)32B完成9独立图/108双角色episode及54普通通信指令对照；27B保留真实死亡后按原决策记录恢复队列。交换、偷取、后续攻击/健康分别报告。新增API细标签与无回路假说patch均为0。
 
 - **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
 

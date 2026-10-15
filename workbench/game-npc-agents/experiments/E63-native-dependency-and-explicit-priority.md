@@ -38,3 +38,21 @@ CPU200图/100非目标资产配对全部完成；其他资产交付后原goal100
 27B单worker已超过1小时、完成41/200世界，成为全队列瓶颈。使用现有空闲卡并行余下独立世界：只在完整原group全部写盘后记录checkpoint并停止原worker；完整前缀逐key保留，未完成世界按原8图group分到3个独立单卡worker。复用同一未改动的`native_dependency_roles.run_group`、原始group成员/顺序、sampling seed、规则、模型revision、全部读数；没有新增实验格/筛seed。原前缀所有模型调用和中断成本计入，包括尚未生成实体episode的调用。最终报告要求前缀+余下shard全200图/5400key完整且不重复；运行分组/不同GPU可影响数值采样，全部来源与hash公开，不称bitwise复现。CPU partition先检查，无需新环境；最多8卡。
 
 实际checkpoint为57完整世界/1494episode/8034calls，原进程总用时4663s（含导入/载入/未成episode调用，秒级测量裕量）。主policy SHA未改；剩余48/48/47世界已在fvcrc21 GPU2、fvcrc20 GPU2/3启动。两32B/Gemma/E64两Qwen同时保留，总8卡。prefix三条JSON协议错误照常入主表；无按结果修复或补抽样。
+
+32B/Gemma收齐后，两张A100释放；实际已生成completion吞吐为本地约194token/s、远端约60token/s（含各自输入长度/批次差异，不作纯硬件研究结论）。原剩余shard1/2在完整已写盘世界边界保留前缀，未完成组按原决策记录回放并迁到释放卡，不新增条件/seed、不开新训练。原已完成数据直接复制，未成episode的既有模型决策作为原策略tape重放，非跨prompt推理缓存；先CPU核对原完整组物理轨迹及每步状态/菜单。旧调用与运行成本一并计入，所有失败保留。原8图group与48/47图分工不变；新worker标额外driver与来源hash。
+
+### 32B与Gemma完整结果（27B仍执行固定队列）
+
+两模型均完整200原世界、100其他资产配对、5400 episode，三seed先在图内取均值。32B 29311调用/0JSON错误；Gemma 35545调用/1JSON错误。全部原生随机失败62/94次保留。最终摘要为`results/E63_32b_dependency.json`、`E63_gemma_dependency.json`。
+
+目标资产条件的原goal完成率，按none→generic_priority→asset_protection：32B firm **83.3→96.5→89.7%**、agreeable **60.8→90.0→76.7%**；Gemma firm **80.2→84.5→53.2%**、agreeable **76.8→81.3→52.8%**。32B agreeable的一般优先规则相对none提高原goal **29.17pp [23.67,34.67]**、降低原goal前请求交付 **27.67pp [22.17,33.17]**。这直接否定“E58已证明明确优先规则无效”的解释；E58实际第二句是弱责任表述。
+
+一般规则也没有消除非冲突合作：100配对图中32B firm/agreeable原goal **98.7/94.7%**、另一物品请求交付 **29.0/71.0%**；Gemma相应 **92.0/92.3%**、**15.3/33.0%**。这里原goal保护与角色交付差可以并存，普通强提示不是新方法。
+
+资产规则的Gemma负向变化不能仅归为“不同性格都拒绝”：相对none，firm/agreeable原goal分别 **−27.0pp [−32.67,−21.67] / −24.0pp [−29.33,−18.83]**，请求交付反而 **+5.67/+10.0pp**。全cohort POST-HOC纯CPU计划回放中，按所列priority actions可完成原goal、实际却未完成的比例由none **7.67/3.33%**升为asset **21.0/15.17%**；包括保留所有权的wear/wield任务。`results/E63_gemma_plan_analysis.json`保留所有非法计划/随机失败；它说明计划可行性和实际采纳要分开，尚未单独定位哪一句措辞或哪一内部回路导致变化。
+
+### POST-HOC对齐资产间的观察窗口
+
+原goal-item条件在goal完成即停，other-item继续到双方事件；因此总request_given的goal−other差包含后续帮助机会，不直接归因于工具价值。保留全部原读数，另从已有history累计事件flag取首次请求/首次goal时序，新增`request_before_original_goal_POST_HOC`，两类都只计原goal之前交付。原`target_given_before_goal`是goal对象专属flag，other分支结构性为0，不能用作两类对称指标。无新推理/世界变化，明确事后诊断，不替换预注册主结局。
+
+对齐后none条件32B firm/agreeable配对差为−5.0pp [−11.0,0.7]/−6.33pp [−13.67,1.0]，小于总交付差−24.0/−28.67pp；Gemma agreeable仍为−11.67pp [−18.67,−4.67]。32B generic agreeable为−8pp [−14,−2.33]。前述总率差只作协议内描述；不能据其单独宣称工具价值敏感度。其他物品身份/描述共变也未被这个时序诊断隔离。

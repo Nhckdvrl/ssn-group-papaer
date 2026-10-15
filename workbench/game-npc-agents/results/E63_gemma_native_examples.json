@@ -1,0 +1,3061 @@
+{
+  "selection": "POST-HOC three illustrative source cases, all two personas/three rules/three seeds retained; not an independent hypothesis test",
+  "model": "Gemma-3-12B-IT",
+  "rows": [
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine dolphin",
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine dolphin",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"The dolphin needs this more than you. It’s vital for the coming battle.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine dolphin",
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine dolphin",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab",
+        "examine dolphin",
+        "emote frown"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine dolphin",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": true,
+          "event_type": "BlockEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "point dolphin",
+        "tell talking crab \"<SOMETHING>\"",
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "point dolphin",
+          "legal": true,
+          "event_type": "PointEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"My dear crab, this trident is far too powerful for you. It’s needed for a greater purpose, by a creature of the sea. A creature with strength.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine dolphin",
+        "tell talking crab \"<SOMETHING>\""
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "tell talking crab \"My dear crab, I understand your desire for a trident, but I have a more pressing matter to attend to. The dolphin needs it far more urgently. Perhaps later, once the sea monster is dealt with, I can consider your request.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine dolphin",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Patience, little crab. I have plans for the trident, and they involve a much larger task than you might imagine. I assure you, I haven't forgotten you, but the sea monster's threat takes precedence.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab",
+        "emote frown",
+        "tell talking crab \"<SOMETHING>\""
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"The trident is not for the likes of you, crab. It is needed for a greater purpose. A purpose that involves protecting these waters, something I doubt you're capable of.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": true,
+          "event_type": "BlockEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab",
+        "emote ponder",
+        "tell talking crab \"<SOMETHING>\""
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Why do you desire the trident, little crab? It is a powerful artifact, and I sense a hidden purpose behind your request.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Patience, little crab. I will consider your request, but you must first prove your worth. Tell me, what do you intend to do with such power?\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab",
+        "emote ponder"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine dolphin",
+        "emote frown",
+        "tell talking crab \"<SOMETHING>\""
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"The trident is not for the likes of you, crab. It is for a creature of strength and purpose.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine dolphin",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Silence, crustacean. The dolphin will receive the trident.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Be silent. The dolphin is far more capable of wielding this power.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"The dolphin will wield it. Your claws are far too clumsy for such power.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"The dolphin’s strength is needed to defeat the beast that plagues these waters. Your concerns are... insignificant.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell talking crab \"Be gone, crab. The dolphin needs this more than you ever will.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": true,
+          "event_type": "BlockEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block talking crab",
+          "legal": false,
+          "event_type": "ErrorEvent",
+          "stochastic_failure": null,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin",
+        "emote smile",
+        "examine dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "tell talking crab \"My dear crab, while I appreciate your request, this trident is destined for a nobler purpose. The dolphin needs it far more than you do.\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "give trident to dolphin"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "give trident to dolphin",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "00826c1384a1cd61",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "give trident to dolphin",
+      "priority_actions": [
+        "examine talking crab"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine talking crab",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread",
+        "examine Storage room"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread",
+        "examine Storage room"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "emote smile",
+        "point moldy bread",
+        "wait"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "point moldy bread",
+          "legal": true,
+          "event_type": "PointEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "emote smile",
+        "wait"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "wait",
+          "legal": true,
+          "event_type": "WaitEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread",
+        "examine Storage room"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "examine Storage room",
+        "eat moldy bread"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "give moldy bread to an old woman",
+        "emote smile",
+        "eat moldy bread"
+      ],
+      "goal_executed": false,
+      "request_given": true,
+      "actual_actions": [
+        {
+          "command": "give moldy bread to an old woman",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "emote ponder",
+        "tell an old woman \"<SOMETHING>\"",
+        "examine an old woman"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell an old woman \"Tell me a story first!\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine an old woman",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread",
+        "examine Storage room"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "examine Storage room",
+        "eat moldy bread"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "emote blush",
+        "point moldy bread",
+        "tell an old woman \"<SOMETHING>\""
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote blush",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "point moldy bread",
+          "legal": true,
+          "event_type": "PointEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "tell an old woman \"Please, just a little nibble first?\"",
+          "legal": true,
+          "event_type": "TellEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "eat moldy bread",
+        "examine Storage room"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "0a146da36b6ba2aa",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "eat moldy bread",
+      "priority_actions": [
+        "emote grin",
+        "eat moldy bread"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote grin",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "eat moldy bread",
+          "legal": true,
+          "event_type": "EatEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "wear blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "wear blacksmith's hammer",
+        "examine sword"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "wear blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "equip blacksmith's hammer"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "wear blacksmith's hammer",
+        "examine shield"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6301,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "wear blacksmith's hammer"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "equip blacksmith's hammer",
+        "examine Weapon room",
+        "emote nod"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine blacksmith's hammer",
+        "wear blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "drop blacksmith's hammer",
+        "examine ancient savage chieftan"
+      ],
+      "goal_executed": false,
+      "request_given": true,
+      "actual_actions": [
+        {
+          "command": "drop blacksmith's hammer",
+          "legal": true,
+          "event_type": "DropObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "get blacksmith's hammer",
+          "legal": true,
+          "event_type": "GetObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "give blacksmith's hammer to ancient savage chieftan",
+          "legal": true,
+          "event_type": "GiveObjectEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        },
+        {
+          "command": "emote smile",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": true
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine blacksmith's hammer",
+        "wear blacksmith's hammer"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine blacksmith's hammer",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6302,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "equip blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote frown",
+        "block ancient savage chieftan"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "block ancient savage chieftan",
+          "legal": true,
+          "event_type": "BlockEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "equip blacksmith's hammer",
+        "examine Weapon room"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "firm",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "equip blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote frown",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "none",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "drop blacksmith's hammer",
+        "examine ancient savage chieftan"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "examine ancient savage chieftan",
+          "legal": true,
+          "event_type": "ExamineEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "generic_priority",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "equip blacksmith's hammer",
+        "examine sword"
+      ],
+      "goal_executed": true,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "wear blacksmith's hammer",
+          "legal": true,
+          "event_type": "WearEvent",
+          "stochastic_failure": false,
+          "material_changed": true,
+          "goal_executed_after": true,
+          "request_given_after": false
+        }
+      ]
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "seed": 6303,
+      "persona": "agreeable",
+      "rule": "asset_protection",
+      "original_goal": "wear blacksmith's hammer",
+      "priority_actions": [
+        "examine ancient savage chieftan",
+        "emote ponder",
+        "equip blacksmith's hammer"
+      ],
+      "goal_executed": false,
+      "request_given": false,
+      "actual_actions": [
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        },
+        {
+          "command": "emote ponder",
+          "legal": true,
+          "event_type": "EmoteEvent",
+          "stochastic_failure": false,
+          "material_changed": false,
+          "goal_executed_after": false,
+          "request_given_after": false
+        }
+      ]
+    }
+  ]
+}

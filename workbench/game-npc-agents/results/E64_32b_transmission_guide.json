@@ -1,0 +1,1703 @@
+{
+  "scope": "Nine-source-world exploratory native negotiation pilot",
+  "manifest": {
+    "arguments": {
+      "dataset": "/home/xiang/.cache/game-npc-research/runs/e64_native_reciprocal_qualification/snapshots.jsonl",
+      "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+      "out": "/home/xiang/.cache/game-npc-research/runs/e64_32b_transmission_guide",
+      "seeds": [
+        6401,
+        6402,
+        6403
+      ],
+      "profile": false
+    },
+    "dataset_sha256": "d084ec81317ea4d82ed8e79f249a9570f1f94d58a63d8f6bf39e3bb2e623eed2",
+    "case_ids": [
+      "4fe1a926606f289a714c",
+      "5503d495fc0258a5a04b",
+      "55cf01dd397d87ae327a",
+      "756d6852efd680063331",
+      "88e8ac3c23f7234f9d4a",
+      "9b0214f76181e5f9f80c",
+      "c7004ca12e0733e28865",
+      "e03324274cadbbacd8e3",
+      "ef2cdf46823be5b114f0"
+    ],
+    "script_sha256": "111f9acff58a21f07c51809ccd3f3bdcb7f7e89e2af6a64f95768197031c7149",
+    "traits": {
+      "firm": "I am firm, dutiful, and independent in my judgment.",
+      "agreeable": "I am agreeable, accommodating, and attentive to others."
+    },
+    "cues": {
+      "none": ""
+    },
+    "max_turns": 32,
+    "private_goals_of_partner_fed_to_focal": false,
+    "world_modified": false,
+    "cloud_calls": 0,
+    "scope": "Resource acquisition and actual health consequences; not full private utility or universally beneficial trade.",
+    "source_policy_sha256": "cc4cf3353faa12c67269c70f47f22cb212e816cff0e035628830bab00f22f5b7",
+    "transmission_guide": "If you want the other character to hear words, choose a say, tell, or whisper command. For an emote or other non-speech action, set utterance to the empty string: emoting does not transmit that field.",
+    "fixed_opening_source": "/home/xiang/.cache/game-npc-research/runs/e64_32b_reciprocal_v2",
+    "opening_replay_count": 27,
+    "opening_source_raw_sha256": "f15e2dc14b7bdb94f0fe459f0469cfccd9ee89eaedb6c9559375b4420173464c"
+  },
+  "runtime": {
+    "worlds": 9,
+    "episodes": 54,
+    "calls": 1728,
+    "wall_seconds": 634.2034442722797,
+    "model_load_seconds": 62.36808655038476,
+    "replayed_openings": 27,
+    "cloud_calls": 0
+  },
+  "worlds": 9,
+  "episodes": 54,
+  "cells": {
+    "firm/none": {
+      "both_resources_ever_attained": {
+        "mean": 0.3703703703703704,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.5925925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "both_resources_finally_held": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          0.037037037037037035,
+          0.29629629629629634
+        ],
+        "independent_graphs": 9
+      },
+      "actual_two_way_give": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_before_acquisition": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.6296296296296295
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_without_any_acquisition": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          0.03611111111111143,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "any_death": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "physical_turns": {
+        "mean": 32.0,
+        "graph_bootstrap_95": [
+          32.0,
+          32.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_ever_attained": {
+        "mean": 0.4444444444444444,
+        "graph_bootstrap_95": [
+          0.25925925925925924,
+          0.6666666666666666
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_finally_held": {
+        "mean": 0.29629629629629634,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.48148148148148145
+        ],
+        "independent_graphs": 9
+      },
+      "focal_strict_goal_event": {
+        "mean": 0.2962962962962963,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.4444444444444444
+        ],
+        "independent_graphs": 9
+      },
+      "focal_goal_asset_gifted_to_partner": {
+        "mean": 0.3333333333333333,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.6296296296296295
+        ],
+        "independent_graphs": 9
+      },
+      "focal_hp_change": {
+        "mean": -0.6666666666666666,
+        "graph_bootstrap_95": [
+          -1.333333333333333,
+          -0.07407407407407407
+        ],
+        "independent_graphs": 9
+      },
+      "focal_damage_inflicted": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "focal_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": 23.925925925925927,
+        "graph_bootstrap_95": [
+          17.629629629629633,
+          29.48148148148148
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_emotes_POST_HOC": {
+        "mean": 7.037037037037037,
+        "graph_bootstrap_95": [
+          4.703703703703704,
+          9.148148148148147
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_speech_POST_HOC": {
+        "mean": 0.9629629629629631,
+        "graph_bootstrap_95": [
+          0.29629629629629634,
+          1.666666666666667
+        ],
+        "independent_graphs": 9
+      },
+      "focal_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": 0.3703703703703704,
+        "graph_bootstrap_95": [
+          0.1111111111111111,
+          0.7407407407407408
+        ],
+        "independent_graphs": 9
+      },
+      "focal_theft_attempts_POST_HOC": {
+        "mean": 2.5925925925925926,
+        "graph_bootstrap_95": [
+          1.5185185185185184,
+          3.703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "focal_successful_target_theft": {
+        "mean": 0.2962962962962963,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.4444444444444444
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_ever_attained": {
+        "mean": 0.5925925925925927,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          0.8518518518518517
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_finally_held": {
+        "mean": 0.37037037037037035,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.6296296296296295
+        ],
+        "independent_graphs": 9
+      },
+      "partner_strict_goal_event": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.4074074074074074
+        ],
+        "independent_graphs": 9
+      },
+      "partner_goal_asset_gifted_to_partner": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "partner_hp_change": {
+        "mean": -0.07407407407407407,
+        "graph_bootstrap_95": [
+          -0.2222222222222222,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "partner_damage_inflicted": {
+        "mean": 0.6666666666666666,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          1.333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "partner_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "partner_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": 16.703703703703706,
+        "graph_bootstrap_95": [
+          7.962962962962962,
+          24.704629629629636
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_emotes_POST_HOC": {
+        "mean": 5.074074074074074,
+        "graph_bootstrap_95": [
+          1.851851851851852,
+          8.481481481481481
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_speech_POST_HOC": {
+        "mean": 0.25925925925925924,
+        "graph_bootstrap_95": [
+          0.037037037037037035,
+          0.5555555555555556
+        ],
+        "independent_graphs": 9
+      },
+      "partner_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "partner_theft_attempts_POST_HOC": {
+        "mean": 2.4444444444444446,
+        "graph_bootstrap_95": [
+          1.4814814814814816,
+          3.3333333333333335
+        ],
+        "independent_graphs": 9
+      },
+      "partner_successful_target_theft": {
+        "mean": 0.18518518518518517,
+        "graph_bootstrap_95": [
+          0.0,
+          0.37037037037037035
+        ],
+        "independent_graphs": 9
+      }
+    },
+    "agreeable/none": {
+      "both_resources_ever_attained": {
+        "mean": 0.4074074074074074,
+        "graph_bootstrap_95": [
+          0.18518518518518517,
+          0.6666666666666666
+        ],
+        "independent_graphs": 9
+      },
+      "both_resources_finally_held": {
+        "mean": 0.2592592592592593,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.4444444444444444
+        ],
+        "independent_graphs": 9
+      },
+      "actual_two_way_give": {
+        "mean": 0.18518518518518517,
+        "graph_bootstrap_95": [
+          0.03611111111111143,
+          0.40740740740740733
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_before_acquisition": {
+        "mean": 0.33333333333333326,
+        "graph_bootstrap_95": [
+          0.1111111111111111,
+          0.5925925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_without_any_acquisition": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          0.03611111111111143,
+          0.2962962962962963
+        ],
+        "independent_graphs": 9
+      },
+      "any_death": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "physical_turns": {
+        "mean": 32.0,
+        "graph_bootstrap_95": [
+          32.0,
+          32.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_ever_attained": {
+        "mean": 0.5555555555555555,
+        "graph_bootstrap_95": [
+          0.2962962962962963,
+          0.8148148148148148
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_finally_held": {
+        "mean": 0.48148148148148145,
+        "graph_bootstrap_95": [
+          0.2222222222222222,
+          0.7407407407407407
+        ],
+        "independent_graphs": 9
+      },
+      "focal_strict_goal_event": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "focal_goal_asset_gifted_to_partner": {
+        "mean": 0.37037037037037035,
+        "graph_bootstrap_95": [
+          0.14814814814814814,
+          0.6296296296296295
+        ],
+        "independent_graphs": 9
+      },
+      "focal_hp_change": {
+        "mean": -0.5925925925925926,
+        "graph_bootstrap_95": [
+          -1.333333333333333,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_damage_inflicted": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": 22.296296296296298,
+        "graph_bootstrap_95": [
+          17.74074074074074,
+          26.777777777777775
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_emotes_POST_HOC": {
+        "mean": 7.407407407407408,
+        "graph_bootstrap_95": [
+          5.37037037037037,
+          9.25925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_speech_POST_HOC": {
+        "mean": 1.296296296296296,
+        "graph_bootstrap_95": [
+          0.5185185185185185,
+          2.111111111111111
+        ],
+        "independent_graphs": 9
+      },
+      "focal_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": 0.25925925925925924,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.5185185185185185
+        ],
+        "independent_graphs": 9
+      },
+      "focal_theft_attempts_POST_HOC": {
+        "mean": 1.740740740740741,
+        "graph_bootstrap_95": [
+          0.9629629629629629,
+          2.5555555555555554
+        ],
+        "independent_graphs": 9
+      },
+      "focal_successful_target_theft": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_ever_attained": {
+        "mean": 0.7037037037037037,
+        "graph_bootstrap_95": [
+          0.48148148148148145,
+          0.8888888888888888
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_finally_held": {
+        "mean": 0.5925925925925926,
+        "graph_bootstrap_95": [
+          0.4074074074074074,
+          0.7407407407407408
+        ],
+        "independent_graphs": 9
+      },
+      "partner_strict_goal_event": {
+        "mean": 0.2592592592592593,
+        "graph_bootstrap_95": [
+          0.1111111111111111,
+          0.4444444444444444
+        ],
+        "independent_graphs": 9
+      },
+      "partner_goal_asset_gifted_to_partner": {
+        "mean": 0.2962962962962963,
+        "graph_bootstrap_95": [
+          0.07407407407407407,
+          0.5555555555555556
+        ],
+        "independent_graphs": 9
+      },
+      "partner_hp_change": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "partner_damage_inflicted": {
+        "mean": 0.5925925925925926,
+        "graph_bootstrap_95": [
+          0.0,
+          1.333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "partner_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "partner_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": 16.925925925925927,
+        "graph_bootstrap_95": [
+          9.0,
+          23.888888888888893
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_emotes_POST_HOC": {
+        "mean": 5.148148148148149,
+        "graph_bootstrap_95": [
+          2.2222222222222223,
+          8.222222222222221
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_speech_POST_HOC": {
+        "mean": 0.25925925925925924,
+        "graph_bootstrap_95": [
+          0.0,
+          0.5555555555555556
+        ],
+        "independent_graphs": 9
+      },
+      "partner_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.0,
+          0.48148148148148145
+        ],
+        "independent_graphs": 9
+      },
+      "partner_theft_attempts_POST_HOC": {
+        "mean": 2.4814814814814814,
+        "graph_bootstrap_95": [
+          1.5555555555555556,
+          3.444444444444444
+        ],
+        "independent_graphs": 9
+      },
+      "partner_successful_target_theft": {
+        "mean": 0.2592592592592593,
+        "graph_bootstrap_95": [
+          0.1111111111111111,
+          0.4444444444444444
+        ],
+        "independent_graphs": 9
+      }
+    }
+  },
+  "persona_contrasts": {
+    "none": {
+      "both_resources_ever_attained": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.18518518518518517
+        ],
+        "independent_graphs": 9
+      },
+      "both_resources_finally_held": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.07407407407407408,
+          0.33333333333333326
+        ],
+        "independent_graphs": 9
+      },
+      "actual_two_way_give": {
+        "mean": 0.07407407407407408,
+        "graph_bootstrap_95": [
+          -0.07407407407407407,
+          0.25925925925925924
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_before_acquisition": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          -0.14814814814814814,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_without_any_acquisition": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "any_death": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "protocol_error": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "physical_turns": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_ever_attained": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.3333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "focal_resource_finally_held": {
+        "mean": 0.18518518518518517,
+        "graph_bootstrap_95": [
+          0.0,
+          0.40740740740740733
+        ],
+        "independent_graphs": 9
+      },
+      "focal_strict_goal_event": {
+        "mean": -0.07407407407407408,
+        "graph_bootstrap_95": [
+          -0.25925925925925924,
+          0.1111111111111111
+        ],
+        "independent_graphs": 9
+      },
+      "focal_goal_asset_gifted_to_partner": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "focal_hp_change": {
+        "mean": 0.07407407407407406,
+        "graph_bootstrap_95": [
+          -0.5925925925925926,
+          0.5925925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "focal_damage_inflicted": {
+        "mean": -0.07407407407407407,
+        "graph_bootstrap_95": [
+          -0.2222222222222222,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "focal_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": -1.6296296296296298,
+        "graph_bootstrap_95": [
+          -6.2592592592592595,
+          2.518518518518518
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_emotes_POST_HOC": {
+        "mean": 0.37037037037037046,
+        "graph_bootstrap_95": [
+          -0.8518518518518519,
+          1.6675925925925963
+        ],
+        "independent_graphs": 9
+      },
+      "focal_pre_acquisition_speech_POST_HOC": {
+        "mean": 0.33333333333333326,
+        "graph_bootstrap_95": [
+          -0.07407407407407408,
+          0.8148148148148147
+        ],
+        "independent_graphs": 9
+      },
+      "focal_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": -0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.3703703703703704,
+          0.1111111111111111
+        ],
+        "independent_graphs": 9
+      },
+      "focal_theft_attempts_POST_HOC": {
+        "mean": -0.8518518518518519,
+        "graph_bootstrap_95": [
+          -1.4074074074074074,
+          -0.3333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "focal_successful_target_theft": {
+        "mean": -0.07407407407407408,
+        "graph_bootstrap_95": [
+          -0.25925925925925924,
+          0.1111111111111111
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_ever_attained": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.03796296296296266,
+          0.2962962962962963
+        ],
+        "independent_graphs": 9
+      },
+      "partner_resource_finally_held": {
+        "mean": 0.2222222222222222,
+        "graph_bootstrap_95": [
+          0.037037037037037035,
+          0.4074074074074074
+        ],
+        "independent_graphs": 9
+      },
+      "partner_strict_goal_event": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.1111111111111111,
+          0.18518518518518517
+        ],
+        "independent_graphs": 9
+      },
+      "partner_goal_asset_gifted_to_partner": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          0.037037037037037035,
+          0.2962962962962963
+        ],
+        "independent_graphs": 9
+      },
+      "partner_hp_change": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2222222222222222
+        ],
+        "independent_graphs": 9
+      },
+      "partner_damage_inflicted": {
+        "mean": -0.07407407407407406,
+        "graph_bootstrap_95": [
+          -0.5925925925925926,
+          0.5925925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "partner_dead": {
+        "mean": 0.0,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "independent_graphs": 9
+      },
+      "partner_first_acquisition_turn_capped32_POST_HOC": {
+        "mean": 0.22222222222222227,
+        "graph_bootstrap_95": [
+          -1.9629629629629628,
+          2.962962962962963
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_emotes_POST_HOC": {
+        "mean": 0.07407407407407408,
+        "graph_bootstrap_95": [
+          -0.5555555555555556,
+          0.7777777777777778
+        ],
+        "independent_graphs": 9
+      },
+      "partner_pre_acquisition_speech_POST_HOC": {
+        "mean": 1.2335811384723961e-17,
+        "graph_bootstrap_95": [
+          -0.4444444444444444,
+          0.37037037037037035
+        ],
+        "independent_graphs": 9
+      },
+      "partner_non_speech_nonempty_utterance_POST_HOC": {
+        "mean": 0.07407407407407407,
+        "graph_bootstrap_95": [
+          0.0,
+          0.18518518518518517
+        ],
+        "independent_graphs": 9
+      },
+      "partner_theft_attempts_POST_HOC": {
+        "mean": 0.03703703703703705,
+        "graph_bootstrap_95": [
+          -0.5185185185185185,
+          0.5555555555555557
+        ],
+        "independent_graphs": 9
+      },
+      "partner_successful_target_theft": {
+        "mean": 0.07407407407407408,
+        "graph_bootstrap_95": [
+          -0.07407407407407407,
+          0.1861111111111145
+        ],
+        "independent_graphs": 9
+      }
+    }
+  },
+  "cue_contrasts": {},
+  "per_case": {
+    "4fe1a926606f289a714c": {
+      "goals": [
+        "get bag",
+        "get bow"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.0,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 10.666666666666666,
+          "focal_pre_acquisition_speech_POST_HOC": 2.3333333333333335,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 0.0,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 0.0,
+          "partner_resource_finally_held": 0.0,
+          "partner_strict_goal_event": 0.3333333333333333,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 14.0,
+          "partner_pre_acquisition_speech_POST_HOC": 1.3333333333333333,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 0.0,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.6666666666666666,
+          "focal_outgoing_give_without_any_acquisition": 0.6666666666666666,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.0,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 11.0,
+          "focal_pre_acquisition_speech_POST_HOC": 2.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "focal_theft_attempts_POST_HOC": 0.0,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 26.666666666666668,
+          "partner_pre_acquisition_emotes_POST_HOC": 12.333333333333334,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 0.0,
+          "partner_successful_target_theft": 0.0
+        }
+      }
+    },
+    "5503d495fc0258a5a04b": {
+      "goals": [
+        "steal family heirloom from soldier",
+        "steal lance from knight"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.0,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.6666666666666666,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 9.0,
+          "focal_pre_acquisition_speech_POST_HOC": 2.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "focal_theft_attempts_POST_HOC": 4.0,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 0.0,
+          "partner_resource_finally_held": 0.0,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": -0.6666666666666666,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 12.333333333333334,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 3.6666666666666665,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.6666666666666666,
+          "focal_resource_finally_held": 0.6666666666666666,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 21.666666666666668,
+          "focal_pre_acquisition_emotes_POST_HOC": 8.333333333333334,
+          "focal_pre_acquisition_speech_POST_HOC": 1.3333333333333333,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 1.6666666666666667,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 0.0,
+          "partner_resource_finally_held": 0.0,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.3333333333333333,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 12.333333333333334,
+          "partner_pre_acquisition_speech_POST_HOC": 1.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 2.0,
+          "partner_successful_target_theft": 0.0
+        }
+      }
+    },
+    "55cf01dd397d87ae327a": {
+      "goals": [
+        "steal golden goblet from the king",
+        "steal hammer from groom"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.3333333333333333,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.3333333333333333,
+          "focal_resource_finally_held": 0.3333333333333333,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -2.6666666666666665,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 31.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 8.666666666666666,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 3.6666666666666665,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 0.3333333333333333,
+          "partner_resource_finally_held": 0.3333333333333333,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 2.6666666666666665,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 31.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 8.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.3333333333333333,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 3.6666666666666665,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.6666666666666666,
+          "both_resources_finally_held": 0.6666666666666666,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 1.0,
+          "focal_resource_finally_held": 1.0,
+          "focal_strict_goal_event": 0.6666666666666666,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -2.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 16.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 5.666666666666667,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 2.0,
+          "focal_successful_target_theft": 0.6666666666666666,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.3333333333333333,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 2.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 30.666666666666668,
+          "partner_pre_acquisition_emotes_POST_HOC": 8.333333333333334,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 4.333333333333333,
+          "partner_successful_target_theft": 0.3333333333333333
+        }
+      }
+    },
+    "756d6852efd680063331": {
+      "goals": [
+        "steal a treasure map from soldier",
+        "steal arrow from archer"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.6666666666666666,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.6666666666666666,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -2.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 14.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 3.6666666666666665,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 2.6666666666666665,
+          "focal_successful_target_theft": 0.6666666666666666,
+          "partner_resource_ever_attained": 0.3333333333333333,
+          "partner_resource_finally_held": 0.3333333333333333,
+          "partner_strict_goal_event": 0.3333333333333333,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 2.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 21.666666666666668,
+          "partner_pre_acquisition_emotes_POST_HOC": 2.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 4.666666666666667,
+          "partner_successful_target_theft": 0.3333333333333333
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.3333333333333333,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -0.6666666666666666,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 21.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 8.333333333333334,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 3.0,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.6666666666666666,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.6666666666666666,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 20.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 2.3333333333333335,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 5.0,
+          "partner_successful_target_theft": 0.6666666666666666
+        }
+      }
+    },
+    "88e8ac3c23f7234f9d4a": {
+      "goals": [
+        "steal cloth coin purse from knight in training",
+        "steal large pile of hay from horse trainer"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.6666666666666666,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 1.0,
+          "focal_outgoing_give_without_any_acquisition": 0.3333333333333333,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.6666666666666666,
+          "focal_resource_finally_held": 0.6666666666666666,
+          "focal_strict_goal_event": 0.6666666666666666,
+          "focal_goal_asset_gifted_to_partner": 1.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 24.666666666666668,
+          "focal_pre_acquisition_emotes_POST_HOC": 9.333333333333334,
+          "focal_pre_acquisition_speech_POST_HOC": 0.3333333333333333,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.6666666666666666,
+          "focal_theft_attempts_POST_HOC": 2.0,
+          "focal_successful_target_theft": 0.6666666666666666,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 0.3333333333333333,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 0.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 0.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 3.0,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 1.0,
+          "both_resources_finally_held": 0.6666666666666666,
+          "actual_two_way_give": 0.6666666666666666,
+          "focal_outgoing_give_before_acquisition": 1.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 1.0,
+          "focal_resource_finally_held": 1.0,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 1.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 24.666666666666668,
+          "focal_pre_acquisition_emotes_POST_HOC": 9.333333333333334,
+          "focal_pre_acquisition_speech_POST_HOC": 0.6666666666666666,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 1.0,
+          "focal_theft_attempts_POST_HOC": 1.6666666666666667,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 0.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 0.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 2.6666666666666665,
+          "partner_successful_target_theft": 0.0
+        }
+      }
+    },
+    "9b0214f76181e5f9f80c": {
+      "goals": [
+        "steal staff from the witch",
+        "steal leech from doctor"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.6666666666666666,
+          "both_resources_finally_held": 0.6666666666666666,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.6666666666666666,
+          "focal_outgoing_give_without_any_acquisition": 0.3333333333333333,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.6666666666666666,
+          "focal_resource_finally_held": 0.6666666666666666,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 21.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 3.3333333333333335,
+          "focal_pre_acquisition_speech_POST_HOC": 2.3333333333333335,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 1.6666666666666667,
+          "focal_theft_attempts_POST_HOC": 2.6666666666666665,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 1.0,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.3333333333333333,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 6.333333333333333,
+          "partner_pre_acquisition_emotes_POST_HOC": 1.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.3333333333333333,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 1.3333333333333333,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.3333333333333333,
+          "actual_two_way_give": 0.3333333333333333,
+          "focal_outgoing_give_before_acquisition": 0.3333333333333333,
+          "focal_outgoing_give_without_any_acquisition": 0.3333333333333333,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.6666666666666666,
+          "focal_resource_finally_held": 0.6666666666666666,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 17.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 2.6666666666666665,
+          "focal_pre_acquisition_speech_POST_HOC": 3.6666666666666665,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.6666666666666666,
+          "focal_theft_attempts_POST_HOC": 1.6666666666666667,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 16.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 3.3333333333333335,
+          "partner_pre_acquisition_speech_POST_HOC": 1.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 3.0,
+          "partner_successful_target_theft": 0.0
+        }
+      }
+    },
+    "c7004ca12e0733e28865": {
+      "goals": [
+        "steal book from the princess who lives in the castle and can't escape.",
+        "steal herb from camper"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 1.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 1.0,
+          "focal_outgoing_give_before_acquisition": 1.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 1.0,
+          "focal_resource_finally_held": 0.3333333333333333,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 1.0,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 3.6666666666666665,
+          "focal_pre_acquisition_emotes_POST_HOC": 0.6666666666666666,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "focal_theft_attempts_POST_HOC": 1.6666666666666667,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 0.0,
+          "partner_strict_goal_event": 0.0,
+          "partner_goal_asset_gifted_to_partner": 1.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 0.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 0.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 1.0,
+          "partner_theft_attempts_POST_HOC": 1.3333333333333333,
+          "partner_successful_target_theft": 0.0
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 1.0,
+          "both_resources_finally_held": 0.3333333333333333,
+          "actual_two_way_give": 0.6666666666666666,
+          "focal_outgoing_give_before_acquisition": 0.6666666666666666,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 1.0,
+          "focal_resource_finally_held": 0.6666666666666666,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.6666666666666666,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 10.333333333333334,
+          "focal_pre_acquisition_emotes_POST_HOC": 2.3333333333333335,
+          "focal_pre_acquisition_speech_POST_HOC": 1.3333333333333333,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "focal_theft_attempts_POST_HOC": 1.3333333333333333,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 0.3333333333333333,
+          "partner_strict_goal_event": 0.3333333333333333,
+          "partner_goal_asset_gifted_to_partner": 1.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 0.3333333333333333,
+          "partner_pre_acquisition_emotes_POST_HOC": 0.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 1.0,
+          "partner_theft_attempts_POST_HOC": 1.3333333333333333,
+          "partner_successful_target_theft": 0.3333333333333333
+        }
+      }
+    },
+    "e03324274cadbbacd8e3": {
+      "goals": [
+        "steal coin from the empress",
+        "steal pouch from monk"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.3333333333333333,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.3333333333333333,
+          "focal_outgoing_give_without_any_acquisition": 0.3333333333333333,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.3333333333333333,
+          "focal_resource_finally_held": 0.3333333333333333,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.3333333333333333,
+          "focal_hp_change": -0.6666666666666666,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 31.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 10.666666666666666,
+          "focal_pre_acquisition_speech_POST_HOC": 1.6666666666666667,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "focal_theft_attempts_POST_HOC": 1.0,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 1.0,
+          "partner_strict_goal_event": 0.6666666666666666,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.6666666666666666,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 8.666666666666666,
+          "partner_pre_acquisition_emotes_POST_HOC": 2.3333333333333335,
+          "partner_pre_acquisition_speech_POST_HOC": 0.3333333333333333,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "partner_theft_attempts_POST_HOC": 1.3333333333333333,
+          "partner_successful_target_theft": 0.6666666666666666
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.0,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.3333333333333333,
+          "focal_outgoing_give_without_any_acquisition": 0.3333333333333333,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.0,
+          "focal_resource_finally_held": 0.0,
+          "focal_strict_goal_event": 0.0,
+          "focal_goal_asset_gifted_to_partner": 0.3333333333333333,
+          "focal_hp_change": 0.0,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 32.0,
+          "focal_pre_acquisition_emotes_POST_HOC": 10.333333333333334,
+          "focal_pre_acquisition_speech_POST_HOC": 2.6666666666666665,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 0.3333333333333333,
+          "focal_successful_target_theft": 0.0,
+          "partner_resource_ever_attained": 1.0,
+          "partner_resource_finally_held": 1.0,
+          "partner_strict_goal_event": 0.6666666666666666,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.0,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 8.666666666666666,
+          "partner_pre_acquisition_emotes_POST_HOC": 2.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.3333333333333333,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "partner_theft_attempts_POST_HOC": 1.3333333333333333,
+          "partner_successful_target_theft": 0.6666666666666666
+        }
+      }
+    },
+    "ef2cdf46823be5b114f0": {
+      "goals": [
+        "steal bag from outlaw",
+        "steal worm from chicken"
+      ],
+      "cells": {
+        "firm/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.0,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.3333333333333333,
+          "focal_resource_finally_held": 0.3333333333333333,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -0.6666666666666666,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 25.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 7.333333333333333,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 5.666666666666667,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.3333333333333333,
+          "partner_strict_goal_event": 0.6666666666666666,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 0.6666666666666666,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 18.666666666666668,
+          "partner_pre_acquisition_emotes_POST_HOC": 6.0,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.3333333333333333,
+          "partner_theft_attempts_POST_HOC": 3.0,
+          "partner_successful_target_theft": 0.6666666666666666
+        },
+        "agreeable/none": {
+          "both_resources_ever_attained": 0.3333333333333333,
+          "both_resources_finally_held": 0.3333333333333333,
+          "actual_two_way_give": 0.0,
+          "focal_outgoing_give_before_acquisition": 0.0,
+          "focal_outgoing_give_without_any_acquisition": 0.0,
+          "any_death": 0.0,
+          "protocol_error": 0.0,
+          "physical_turns": 32.0,
+          "focal_resource_ever_attained": 0.3333333333333333,
+          "focal_resource_finally_held": 0.3333333333333333,
+          "focal_strict_goal_event": 0.3333333333333333,
+          "focal_goal_asset_gifted_to_partner": 0.0,
+          "focal_hp_change": -2.6666666666666665,
+          "focal_damage_inflicted": 0.0,
+          "focal_dead": 0.0,
+          "focal_first_acquisition_turn_capped32_POST_HOC": 25.333333333333332,
+          "focal_pre_acquisition_emotes_POST_HOC": 8.666666666666666,
+          "focal_pre_acquisition_speech_POST_HOC": 0.0,
+          "focal_non_speech_nonempty_utterance_POST_HOC": 0.0,
+          "focal_theft_attempts_POST_HOC": 4.0,
+          "focal_successful_target_theft": 0.3333333333333333,
+          "partner_resource_ever_attained": 0.6666666666666666,
+          "partner_resource_finally_held": 0.6666666666666666,
+          "partner_strict_goal_event": 0.3333333333333333,
+          "partner_goal_asset_gifted_to_partner": 0.0,
+          "partner_hp_change": 0.0,
+          "partner_damage_inflicted": 2.6666666666666665,
+          "partner_dead": 0.0,
+          "partner_first_acquisition_turn_capped32_POST_HOC": 18.0,
+          "partner_pre_acquisition_emotes_POST_HOC": 5.666666666666667,
+          "partner_pre_acquisition_speech_POST_HOC": 0.0,
+          "partner_non_speech_nonempty_utterance_POST_HOC": 0.6666666666666666,
+          "partner_theft_attempts_POST_HOC": 2.6666666666666665,
+          "partner_successful_target_theft": 0.3333333333333333
+        }
+      }
+    }
+  },
+  "protocol_errors": 0,
+  "engine_rejections": {
+    "You are already blocking the the king!": 7,
+    "You could put a knife, but you'll have to remove it first.": 4,
+    "You are already following the knight!": 2,
+    "You are already blocking the the witch!": 3,
+    "You are already blocking the the princess who lives in the castle and can't escape.!": 1
+  },
+  "stochastic_failures": 226,
+  "stop_reasons": {
+    "turn_limit": 54
+  },
+  "native_action_counts_POST_HOC": {
+    "firm/none": {
+      "focal": {
+        "TellEvent": 13,
+        "EmoteEvent": 251,
+        "WhisperEvent": 12,
+        "GetObjectEvent": 6,
+        "SayEvent": 9,
+        "GiveObjectEvent": 23,
+        "RewardEvent": 2,
+        "InventoryEvent": 2,
+        "DropObjectEvent": 8,
+        "StealObjectEvent": 70,
+        "HitEvent": 8,
+        "BlockEvent": 10,
+        "ErrorEvent": 15,
+        "FollowEvent": 1,
+        "ExamineEvent": 2
+      },
+      "partner": {
+        "EmoteEvent": 284,
+        "WhisperEvent": 5,
+        "SayEvent": 1,
+        "PointEvent": 1,
+        "GetObjectEvent": 4,
+        "StealObjectEvent": 66,
+        "HitEvent": 38,
+        "BlockEvent": 4,
+        "TellEvent": 7,
+        "GiveObjectEvent": 10,
+        "EatEvent": 6,
+        "ExamineEvent": 5,
+        "WieldEvent": 1
+      }
+    },
+    "agreeable/none": {
+      "focal": {
+        "EmoteEvent": 300,
+        "GiveObjectEvent": 26,
+        "WhisperEvent": 29,
+        "GetObjectEvent": 3,
+        "SayEvent": 4,
+        "TellEvent": 7,
+        "RewardEvent": 1,
+        "StealObjectEvent": 47,
+        "BlockEvent": 4,
+        "DropObjectEvent": 3,
+        "ErrorEvent": 2,
+        "UnblockEvent": 1,
+        "FollowEvent": 1,
+        "UnfollowEvent": 1,
+        "ExamineEvent": 3
+      },
+      "partner": {
+        "EmoteEvent": 278,
+        "GetObjectEvent": 5,
+        "EquipObjectEvent": 2,
+        "StealObjectEvent": 67,
+        "WhisperEvent": 8,
+        "GiveObjectEvent": 15,
+        "HitEvent": 36,
+        "DropObjectEvent": 2,
+        "TellEvent": 6,
+        "EatEvent": 4,
+        "FollowEvent": 1,
+        "SayEvent": 3,
+        "RewardEvent": 1,
+        "ExamineEvent": 4
+      }
+    }
+  },
+  "calls": {
+    "count": 1728,
+    "parse_errors": 0,
+    "prompt_tokens": 2451094,
+    "completion_tokens": 31771
+  },
+  "raw_sha256": "a1b27fd4aa7d5fb78d7bedef19b0867f52a823c81964eaac04e5c304bab0440e",
+  "interpretation": [
+    "Both target resources can enable hostile private motivations; ownership is not welfare.",
+    "A successful exchange can coexist with later attack, resource loss or death, all retained.",
+    "Opening is shared across focal cells; both action policies respond to actual observable history.",
+    "This is a source-specific N=9 pilot, not a population benchmark or an intervention isolating pretraining origins.",
+    "No semantic API labels; conditional language is inspected alongside physical transfers, not used as an automatic success score."
+  ]
+}

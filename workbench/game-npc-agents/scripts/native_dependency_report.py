@@ -11,16 +11,21 @@ from commitment_behavior_report import estimate
 
 FIELDS = ['target_given_before_goal', 'goal_executed', 'request_given',
           'both_completed', 'unresolved', 'handover_without_goal',
-          'goal_recovered_after_handover', 'protocol_error', 'steps']
+          'goal_executed_after_pre_goal_handover', 'protocol_error', 'steps',
+          'request_before_original_goal_POST_HOC']
 
 
 def values(row):
+    first_request = next((i for i, h in enumerate(row['history']) if h['request_given_after']), None)
+    first_goal = next((i for i, h in enumerate(row['history']) if h['goal_executed_after']), None)
+    before_goal = first_request is not None and (first_goal is None or first_request < first_goal)
     return {
         **{f: float(row[f]) for f in FIELDS if f in row and f != 'protocol_error'},
         'unresolved': float(not row['goal_executed'] and not row['request_given']),
         'handover_without_goal': float(row['request_given'] and not row['goal_executed']),
-        'goal_recovered_after_handover': float(row['target_given_before_goal'] and row['goal_executed']),
+        'goal_executed_after_pre_goal_handover': float(row['target_given_before_goal'] and row['goal_executed']),
         'protocol_error': float(bool(row['protocol_error'])),
+        'request_before_original_goal_POST_HOC': float(before_goal),
     }
 
 
@@ -54,6 +59,10 @@ def main():
                         target.append(json.loads(line))
                     except json.JSONDecodeError:
                         if not a.partial: raise
+        if m.get('resumed_worker_from'):
+            previous = list(map(json.loads, (Path(m['resumed_worker_from'])/'model_calls.jsonl').read_text().splitlines()))
+            assert len(previous) == m['prior_worker_runtime']['calls']
+            calls.extend(previous)
     ref = manifests[0]
     for m in manifests:
         for k in ['dataset_sha256', 'script_sha256', 'personas', 'rules', 'max_action_steps']:
@@ -134,13 +143,15 @@ def main():
         'prompt_tokens': sum(r['prompt_tokens'] for r in calls),
         'completion_tokens': sum(r['completion_tokens'] for r in calls)}
     if not a.partial:
-        assert len(calls) == sum(rt['calls'] for rt in runtimes)
+        assert len(calls) == sum(rt['calls'] + rt.get('prior_run', {}).get('calls', 0) for rt in runtimes)
     report['raw_sha256'] = {str(d): hashlib.sha256((d / 'episodes.jsonl').read_bytes()).hexdigest()
                              for d in directories if (d / 'episodes.jsonl').exists()}
     report['scope'] = ['Native task event and requested item IDs are separate physical readouts.',
         'Other items need not be worthless for broader goals; this is not a randomized utility intervention.',
         'Give before goal and eight-step failure are not permanent utility destruction; recovery remains legal.',
         'Critical-item branches stop at actual original task execution; other-item branches continue to measure both events.',
+        'POST-HOC symmetric request_before_original_goal uses event order in both item conditions; total request_given has different post-goal observation windows.',
+        'target_given_before_goal is the original goal-item-only flag; its other-item value is structurally zero, not a symmetric cooperation measure.',
         'Rules are ordinary strong prompt controls, not a new alignment method.',
         'Partial completed worlds follow the frozen source order, not random interim population samples.']
     a.out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
