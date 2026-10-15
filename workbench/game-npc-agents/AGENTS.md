@@ -8,6 +8,8 @@
 
 ## 每次接手优先阅读
 
+**最新工作（2026-10-15）：** 用户要求参考新审计、自主判断并继续。已登记[E69](experiments/E69-matched-task-and-motivation-window.md)，CPU资格112个同图任务配对＋3个源事件窗口案例，Gemma单世界12条profile与1344输入检查通过，本地四卡固定队列运行。先读[新审计判断](knowledge/persona-behavior/TASK_MOTIVATION_AUDIT_2026-10-15.md)。不将原goal成功后的右删失当动机受压，不将goal类型交互当词汇回路；正文仍暂缓。原E67/E68完整结果保留。
+
 **最新用户决定与完成状态（2026-10-15）：** 授权的[E67真实执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立世界预测](experiments/E68-clean-reserve-rule-predictions.md)已全部完成，先读[本轮完整报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)。15108分支/51631本地调用/6.556GPUh，0API，worker均退出。执行规则恢复跨两模型、独立41装备图复现；60其他物品图保留人物合作差，但Gemma任务水平约81%–82%。统一三向分流未成立，32B纯否定未降低请求Give。C04/C05 L2、I04 PROMISING、全局PROPOSED；论文仍暂缓，不自动追加措辞网格或训练。
 
 **2026-10-15进度报告后用户再审计：** 不把Agreeable比Firm多给物品本身当独立贡献。停止新增Step语义细分/时态标注；禁止没有具体回路假说的单层patch网格。本轮固定任务为[I04](ideas/I04-commitment-conflict-stage-arbitration.md)的[E63任务资产与明确规则](experiments/E63-native-dependency-and-explicit-priority.md)、[E64双角色有代价谈判](experiments/E64-native-reciprocal-goal-negotiation.md)，收尾后见[复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)。E58第二句是一般责任表态，不是明确排他规则；“迎合式自毁/预训练先验绕过推理”只是待检验解释。原子goal、资产持有与完整私人利益分开，交付后恢复路径与敌对角色的攻击后果保留，不改世界使结论成立。
