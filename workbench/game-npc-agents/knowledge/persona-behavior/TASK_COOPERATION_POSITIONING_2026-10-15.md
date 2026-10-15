@@ -41,3 +41,8 @@ E63明确任务优先在32B恢复原任务，同时保留另一物品合作的�
 ## E69前的定位
 
 venue nearest以`persona task action congruence character motivation assigned task physical game actions task completion`查询，返回Persona Dynamics等。[PANDA/ACL2025](../papers/PERSONA_DYNAMICS_ACL2025.md)§5.3已经用成功walkthrough的特质倾向解释任务表现，Table6–8已有奖励动作与人物动作分布。因此“特质与任务动作兼容”本身有直接先例。E69的具体增量待同图任务干预与接收者/动作族真实事件检验，不能仅给假说起trait-verb名称。[Dragon](../papers/HOW_TO_MOTIVATE_DRAGON_2021.md)的动机—timeline框架也早已存在；旧原子goal成功即结束的观察窗没有覆盖其后交付，E69对此做共同窗口实测。近邻用于定位，不输出自动科学去留判决。
+
+
+## E70：请求方向与动作前提
+venue nearest查询`NPC persona own authored goal aligned conflicting social request action preconditions physical execution cooperation`，命中Constrained Human-AI Cooperation、FAIRGAMER、Spontaneous Giving and Calculated Greed等；rank不作去留判决。本轮额外核读[AGWM](../papers/AGWM_2026.md)与最新[Agent Sociodrama](../papers/AGENT_SOCIODRAMA_2026.md)正文/表/附录。动态前提、人物×任务、角色重配与协作收益都有ownership，不以这些大词申领新机制。
+E70固定原作者Give目标，比较请求方向和合法装备前提；普通机制知识、明确优先级及直接/三阶段接口给出相互可区分的解释。这是从E69已见矛盾推出的研究动作，不预设失败一定来自特质、执行知识或架构。compression risk是退化成“加提示能改善”或“多一步更难”；具体增量须由人物×目标关系的真实接收者选择及路径证据决定。
