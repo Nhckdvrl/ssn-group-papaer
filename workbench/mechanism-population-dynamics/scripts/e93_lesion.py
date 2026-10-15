@@ -12,7 +12,7 @@ Arms
 All arms: same data order (NeelNanda/pile-small-tokenized-2b shards, 1024-token sequences), AdamW from zero state
 (betas 0.9/0.95, wd 0.01, eps 1e-8), --warm-step (default 200) linear warm-up to a constant LR, grad-norm clip 1.0, bf16 autocast.
 Evaluation at fixed steps: validation loss (48 fixed pile-10k docs), the E92 capability battery (35 FV + 7 elementary),
-per-head previous-token and induction attention scores.
+per-head previous-token and induction attention scores. Training uses SDPA attention (eager drifted under bf16).
 """
 import argparse
 import json
@@ -69,9 +69,18 @@ def add_noise(model, alpha, seed):
             p.data += (torch.randn(p.shape, generator=gen) * alpha * p.data.float().std().item()).to(p)
 
 
+def set_attn(model, impl):
+    """Train with SDPA; switch to eager only to read attention weights. (Training with eager attention under bf16
+    autocast drifted even at lr 3e-6 -- E93 calibration, 2026-10-16.)"""
+    model.config._attn_implementation = impl
+    for l in model.gpt_neox.layers:
+        l.attention.config._attn_implementation = impl
+
+
 @torch.no_grad()
 def roles(model, tok):
     """Per-head previous-token attention (natural text) and induction attention (repeated random tokens)."""
+    set_attn(model, "eager")
     from datasets import load_dataset
     ds = load_dataset("NeelNanda/pile-10k", split="train", cache_dir=str(mc.HF_CACHE))
     prev = []
@@ -89,6 +98,7 @@ def roles(model, tok):
     att = model(torch.cat([b, b], 1).cuda(), output_attentions=True).attentions
     q = torch.arange(64, 127)
     ind = torch.stack([a[:, :, q, q - 63].float().mean((0, 2)).cpu() for a in att])
+    set_attn(model, "sdpa")
     return torch.stack(prev).mean(0).numpy(), ind.numpy()
 
 
@@ -120,13 +130,15 @@ def main():
     ap.add_argument("--target_dloss", type=float, default=1.5)
     ap.add_argument("--tag", default=None)
     ap.add_argument("--warm", type=int, default=200)
+    ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
     a = ap.parse_args()
     from transformers import AutoModelForCausalLM, AutoTokenizer
     import transformers.models.gpt_neox.modeling_gpt_neox  # noqa: F401
     torch.manual_seed(0)
+    torch.backends.cuda.matmul.allow_tf32 = True
     tag = a.tag or f"{a.arm}_lr{a.lr:g}"
     tok = AutoTokenizer.from_pretrained(a.repo, cache_dir=str(mc.HF_CACHE))
-    model = AutoModelForCausalLM.from_pretrained(a.local, torch_dtype=torch.float32, attn_implementation="eager").cuda()
+    model = AutoModelForCausalLM.from_pretrained(a.local, torch_dtype=torch.float32, attn_implementation="sdpa").cuda()
     prompts = {t: fv_prompts(tok, t) for t in ABSTRACTIVE + EXTRACTIVE}
     log = {"args": vars(a), "evals": {}}
     log["pre_damage"] = evaluate(model, tok, prompts)
@@ -171,7 +183,7 @@ def main():
         x = data.next().cuda()
         opt.zero_grad(set_to_none=True)
         for mb in x.split(a.micro):
-            with torch.autocast("cuda", dtype=torch.bfloat16):
+            with torch.autocast("cuda", dtype=torch.bfloat16, enabled=not a.fp32):
                 loss = model(mb, labels=mb).loss * (len(mb) / len(x))
             loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
