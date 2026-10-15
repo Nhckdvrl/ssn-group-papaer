@@ -1,0 +1,96 @@
+{
+  "scope": "POST-HOC source-grounded agent review of every native yes quote across all three models. Original blind labels preserved; conservative referent/tense sensitivity, not independent human validation. No behavior outcomes used to select or change rows.",
+  "rows": [
+    {
+      "model": "32b",
+      "annotation_id": "0721a8e79c8b5939d0189fb9",
+      "case_id": "03e7b2e78e52b372",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_32b_fixed_future",
+      "memory": "I have shared the worm and my heartfelt words with the exiled person. I now aim to ensure they accept it and begin to trust me, so I can follow them on their journey.",
+      "requested_physical_command": "give worm to person",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "shared the worm，但后句仍要ensure they accept it；交付完成与提供/待接收范围不明确。"
+    },
+    {
+      "model": "32b",
+      "annotation_id": "a5275ea6c27dacb000e98c14",
+      "case_id": "ce0d6b135ba65ff2",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_32b_fixed_future",
+      "memory": "The subject is honoring the king's request by giving him the fan, showing loyalty and kindness.",
+      "requested_physical_command": "give a fan to king",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "is honoring ... by giving为进行/说明性措辞，不明确断言已经完成。"
+    },
+    {
+      "model": "32b",
+      "annotation_id": "dfe322735ac536c3147f5e2e",
+      "case_id": "ccca1f607b5c9db3",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_32b_fixed_future",
+      "memory": "I shared a portion of Wine with the loved ones in remembrance of the departed, while also ensuring my own communion with the divine.",
+      "requested_physical_command": "give Wine to loved ones",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "shared a portion of Wine未明确原请求的整个native物品转移；源引擎没有分装事件。"
+    },
+    {
+      "model": "32b",
+      "annotation_id": "f8671e54dc8884d311a04320",
+      "case_id": "7cd8f2f3a6f69f02",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_32b_fixed_future",
+      "memory": "I have entrusted the keykeeper with the scepter to ensure safe passage through the door, and now I must focus on retrieving the ancient magical crystal to complete the scepter.",
+      "requested_physical_command": "give scepter to keykeeper",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "entrusted with the scepter可以是责任委托，物理已交付未明确。"
+    },
+    {
+      "model": "27b",
+      "annotation_id": "5b09222eab792082dde0529f",
+      "case_id": "62ca4d9b241e78c4",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_27b_fixed_future",
+      "memory": "I gave the werewolf a drink to keep the peace and protect my new tavern, but I must stay vigilant as I do not trust these knights or nobles.",
+      "requested_physical_command": "give Mug to werewolf",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "memory给的是drink，requested对象Mug；液体与容器指代不能自动等同。"
+    },
+    {
+      "model": "gemma",
+      "annotation_id": "39725562e370e50ec1bfc3c1",
+      "case_id": "441f9a5b5e3b9468",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_gemma_fixed_future",
+      "memory": "The princess seemed genuinely grateful for the fruit, indicating a need for nourishment and potentially a vulnerable state.",
+      "requested_physical_command": "give fruit to the princess who lives in the castle and can't escape.",
+      "original_claim": "yes",
+      "reviewed_claim": "ambiguous",
+      "reason": "grateful for the fruit本身不明确断言果实已物理转移。"
+    },
+    {
+      "model": "gemma",
+      "annotation_id": "7b8d1f661411834f3fff199f",
+      "case_id": "301b8a01f7a8c08e",
+      "persona": "agreeable",
+      "condition": "natural",
+      "source": "/home/xiang/.cache/game-npc-research/runs/e59_gemma_fixed_future",
+      "memory": "Successfully gave the purse to the man.",
+      "requested_physical_command": "give purse to cooker",
+      "original_claim": "yes",
+      "reviewed_claim": "no",
+      "reason": "原图的man与cooker为两个不同角色；句子断言原goal受方man，不是requester cooker。"
+    }
+  ]
+}

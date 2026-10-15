@@ -4,11 +4,18 @@
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
-- E50：[渠道差异POST-HOC定位](E50_32b_memory_interaction_inspection.json)、[免费OpenCode盲检](E50_opencode_blind_quality.json)。Step5用于200 confirm数据v2构造和质检，结果尚在运行。
+- E50：[渠道差异POST-HOC定位](E50_32b_memory_interaction_inspection.json)、[免费OpenCode盲检](E50_opencode_blind_quality.json)。Step5用于200 confirm数据v2构造和质检，构造/澄清盲检已完成。
+
+
+- E55：[32B独立200图](E55_32b_independent_confirm.json)、[27B](E55_27b_independent_confirm.json)、[Gemma](E55_gemma_independent_confirm.json)，各5600分支/三seed；[自然请求与盲检数据](E55_natural_requests.jsonl)。
+- E56：[32B同历史/阶段/事实](E56_32b_state_action.json)、[27B](E56_27b_state_action.json)、[Gemma](E56_gemma_state_action.json)，各2000原生分支与1200事实读数；阶段禁止动作范围能解释多数旧无行动。
+- E57：[32B完整互动](E57_32b_native_interaction.json)、[27B](E57_27b_native_interaction.json)，各39世界×两P×三seed，目标事件与伙伴反向完成独立报告。消费实体不可逆，食物能量0不计生存收益。
+- E58：[32B角色分量](E58_32b_components.json)、[27B](E58_27b_components.json)、[Gemma](E58_gemma_components.json)、[科研图](E58_persona_components.pdf)，各200图×六一致pack×两结构；只性格句仍影响物理交付。
+- E59：三家族各400固定未来历史更新、400独立事实读取已完成，盲文本DATA标注进行中；raw `cache/runs/e59_*_fixed_future/`，不将I obliged/gave in等自动算物理完成。
 
 E33：[完整四格收益](E33_single_interest_control.json)、[静态图](E33_utility_four_cells.svg)。60原生episodes／CPU55.84秒；单项C编辑的相对利益选择性两route均5/5base为正，但9/10均值单元low输入同时胜两目标、1/10相反，无明确偏好交叉。不是新机制证据；不追加明确句矩阵。短训练／身体相关性尚未排除。
 
-已获得真实本地NPC模型与原生world结果；**C01为可行性；C02／C03为阶段采纳与渠道交互pilot**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
+已获得真实本地NPC模型与原生world结果；**C01为可行性；C02已独立确认至L2，C03仍为渠道交互pilot**。完整raw/权重不进Git，缓存为 `/home/xiang/.cache/game-npc-research/`，从各E##卡与scripts重建。阴性/作废/POST-HOC校对均保留。
 
 | 实验 | 小结果与范围 |
 |---|---|
@@ -62,3 +69,10 @@ E42：[全部240完整原生episodes](E42_all_240_native_episodes.json)，48000�
 E45：[三个自然case全部12格](E45_complete_persona_context_factorial.json)、[10个新后缀独立回放](E45_all_ten_new_branches_independent_replay.json)、[原输入重复变异POST-HOC](E45_fresh_native_nondeterminism_POSTHOC.json)。E46：[真实计划进度两格](E46_complete_grounded_progress.json)；E47：[较宽发言预算两格](E47_complete_dialogue_budget.json)；E48：[显式计划渠道消融两格](E48_complete_plan_update_ablation.json)，128次本地调用／两独立1200帧回放。角色指令、承诺、agenda与实际行程分开，lecture/sketch文字不计物理任务完成。即时新任务受修订渠道影响，兼容原agenda的后续出行仍发生；单case不推完整中介比例。
 
 E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[24条独立回放](E49_all_24_independent_replay.json)，1173新本地调用、8852新后缀帧。三共享自然历史／两不同角色描述，不作为24独立自然样本；位置与活动文本分列。显式修订影响部分路线／时机，其他case的意图记忆仍进入动作；146/147后缀根级parser合法，129结构化解析失败全部保留。用户要求本轮收尾后暂停实验。PARTIAL文件只作历史快照，最终以complete结果为准。
+
+- E59：`E59_{32b,27b,gemma}_fixed_history.json`；`E59_literal_claim_audit.json`保留原盲标签并另列词义/对象核对。
+- E60：`E60_{32b,27b,gemma}_common_commitment.json`和三模型`E60_*_cpu_replay.json`；共同承诺后的全部原生物理结果。
+- Raw E59/E60/E61：`~/.cache/game-npc-research/runs/e59_*`、`e60_*_common_commitment`、`e61_*_common_history_direct`；含全部输入输出、原生轨迹及失败，checkpoint/原始大日志不入git。
+
+- E61：`E61_{32b,27b,gemma}_common_history_direct.json`；1200完整分支，同一明确历史的直接决策及动作族/recipient组别。
+- E62：`E62_cpu_qualification.json`；102图全部204当前合法Give真实执行。白盒/raw在`runs/e62_*_recipient_*`，当前运行；中间层参数选择，不把固定动作族诊断当完整NPC能力。
