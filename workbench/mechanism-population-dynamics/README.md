@@ -8,6 +8,7 @@
 
 | 内容 | 文件 | 用法 |
 |---|---|---|
+| **研究知识库（2026-10-15新整理）** | [knowledge/](knowledge/) | 按问题组织的论文理解卡、实验全景、可信证据/撤回记录、度量审计与本地Agent指南；仅知识整理，不代表重启 |
 | **结项科研判断** | [CLOSEOUT.md](CLOSEOUT.md) | 证据、反证、局限、终止理由 |
 | **完整文件/复现索引** | [ASSET_INDEX.md](ASSET_INDEX.md) | 各版本、结果、程序与缺失资产 |
 | **最终工作稿（v3）** | [PDF](paper-acl-v3/main.pdf) · [LaTeX](paper-acl-v3/main.tex) · [说明](paper-acl-v3/README.md) | 最新成稿，**不是投稿/录用证明** |
