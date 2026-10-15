@@ -11,7 +11,7 @@
 - E56：[32B同历史/阶段/事实](E56_32b_state_action.json)、[27B](E56_27b_state_action.json)、[Gemma](E56_gemma_state_action.json)，各2000原生分支与1200事实读数；阶段禁止动作范围能解释多数旧无行动。
 - E57：[32B完整互动](E57_32b_native_interaction.json)、[27B](E57_27b_native_interaction.json)，各39世界×两P×三seed，目标事件与伙伴反向完成独立报告。消费实体不可逆，食物能量0不计生存收益。
 - E58：[32B角色分量](E58_32b_components.json)、[27B](E58_27b_components.json)、[Gemma](E58_gemma_components.json)、[科研图](E58_persona_components.pdf)，各200图×六一致pack×两结构；只性格句仍影响物理交付。
-- E59：三家族各400固定未来历史更新、400独立事实读取已完成，盲文本DATA标注进行中；raw `cache/runs/e59_*_fixed_future/`，不将I obliged/gave in等自动算物理完成。
+- E59：三个模型各400固定未来历史更新、400独立事实读取及盲文本DATA标注均完成；raw `cache/runs/e59_*_fixed_future/`，不将I obliged/gave in等自动算物理完成。
 
 E33：[完整四格收益](E33_single_interest_control.json)、[静态图](E33_utility_four_cells.svg)。60原生episodes／CPU55.84秒；单项C编辑的相对利益选择性两route均5/5base为正，但9/10均值单元low输入同时胜两目标、1/10相反，无明确偏好交叉。不是新机制证据；不追加明确句矩阵。短训练／身体相关性尚未排除。
 
@@ -96,3 +96,9 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 | `E62_*_native_recipient.json` / `E62_*_recipient_probabilities.json` | 动作族条件化下recipient与局部内部干预/实际概率 |
 | [分项成本](ROUND_PROGRESS_COSTS_2026-10-15.json) | final GPU runtime与记录在案的Plan响应usage，失败/恢复透明 |
 | [本轮完成核对](ROUND_COMPLETE_2026-10-15.json) | 结果hash/数量/sham/本地进程与现场GPU读数；科学goal未标完成 |
+
+## 最新审计后的E63/E64
+
+- E63：`E63_{32b,gemma}_dependency.json`已完整，各200独立图/100其他资产配对/5400 episode，27B固定队列尚在收尾；`E63_*_plan_analysis.json`为POST-HOC原生计划回放。主表保留，总请求交付的观察窗口不同，资产间需另看`request_before_original_goal_POST_HOC`。
+- E64：`E64_{32b,27b}_reciprocal.json`各9独立图/108双角色episode，真实取得、双向Give、最终归属、伤害/死亡分开；`E64_32b_transmission_guide.json`和`E64_32b_guide_comparison.json`为54条普通通信指令对照。27B的2死亡和1协议失败不剔除。
+- 数据与源例：`E63_native_dependency_qualification.json`、`E64_native_reciprocal_qualification.json`、`E64_bilateral_source_qualification.json`；`E63_gemma_native_examples.json`公开三个说明性源图的全部两P/三规则/三seed。全部raw仍在同一cache，不入Git。

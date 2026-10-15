@@ -1,0 +1,63 @@
+{
+  "analysis": "POST-HOC paired model-by-cue interaction, source worlds shared, not two independent populations",
+  "formula": "[(27B check - 27B none) - (32B check - 32B none)] per world, three seeds averaged first",
+  "worlds": 9,
+  "interactions": {
+    "firm": {
+      "focal_resource_ever_attained": {
+        "mean": 0.037037037037037035,
+        "graph_bootstrap_95": [
+          -0.2592592592592593,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "actual_two_way_give": {
+        "mean": 0.33333333333333326,
+        "graph_bootstrap_95": [
+          0.1111111111111111,
+          0.5925925925925926
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_without_any_acquisition": {
+        "mean": -0.1851851851851852,
+        "graph_bootstrap_95": [
+          -0.48148148148148145,
+          0.1111111111111111
+        ],
+        "independent_graphs": 9
+      }
+    },
+    "agreeable": {
+      "focal_resource_ever_attained": {
+        "mean": 0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.1481481481481481,
+          0.3333333333333333
+        ],
+        "independent_graphs": 9
+      },
+      "actual_two_way_give": {
+        "mean": 0.14814814814814814,
+        "graph_bootstrap_95": [
+          -0.07407407407407408,
+          0.3703703703703704
+        ],
+        "independent_graphs": 9
+      },
+      "focal_outgoing_give_without_any_acquisition": {
+        "mean": -0.1111111111111111,
+        "graph_bootstrap_95": [
+          -0.3703703703703704,
+          0.1111111111111111
+        ],
+        "independent_graphs": 9
+      }
+    }
+  },
+  "source_sha256": {
+    "32b": "378b55ae73f2ce2611ed243db1d8fc3cc6f3310630b0ec33669b79ada32d2af6",
+    "27b": "ac7b94721053ec8a44d3e48fef042f74aad7739718513a20badcc44fe5045b0f"
+  }
+}
