@@ -6,6 +6,8 @@
 
 ## 当前研究动作
 
+- **E72已登记、等待已有任务释放卡：** 同117图、固定E70对话，比较合法候选与加入目标/请求命令的候选；原生错误消耗动作并反馈，共5616分支。CPU234纠错见证/1404成对输入PASS，区分候选可见性/原生反馈与前提知识，不新增提示网格。[实验卡](experiments/E72-native-candidate-feedback-and-goal-execution.md)。
+
 - **E71进行中：** 同117图、两traits/三seed/两模型，共2808条无人索要基线，区分一般Give倾向与社交响应；468输入CPU检查通过，fvcrc20另两卡独立运行，总峰值8卡。[实验卡](experiments/E71-unsolicited-authored-goal-baseline.md)。
 
 - **E70进行中：** 全原作者Give任务池核查得到117不同世界，固定作者目标，比较请求方向×合法装备状态；零API，单world54分支/321调用通过，18954项输入检查通过。已锁12636分支/两traits三seed两模型，六张空闲卡独立分片；有普通机制知识/priority与同conv直接-三阶段对照，不围三个案例调提示。见[实验卡](experiments/E70-native-goal-request-and-execution-preconditions.md)。
