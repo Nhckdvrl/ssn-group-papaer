@@ -46,3 +46,8 @@ venue nearest以`persona task action congruence character motivation assigned ta
 ## E70：请求方向与动作前提
 venue nearest查询`NPC persona own authored goal aligned conflicting social request action preconditions physical execution cooperation`，命中Constrained Human-AI Cooperation、FAIRGAMER、Spontaneous Giving and Calculated Greed等；rank不作去留判决。本轮额外核读[AGWM](../papers/AGWM_2026.md)与最新[Agent Sociodrama](../papers/AGENT_SOCIODRAMA_2026.md)正文/表/附录。动态前提、人物×任务、角色重配与协作收益都有ownership，不以这些大词申领新机制。
 E70固定原作者Give目标，比较请求方向和合法装备前提；普通机制知识、明确优先级及直接/三阶段接口给出相互可区分的解释。这是从E69已见矛盾推出的研究动作，不预设失败一定来自特质、执行知识或架构。compression risk是退化成“加提示能改善”或“多一步更难”；具体增量须由人物×目标关系的真实接收者选择及路径证据决定。
+
+
+### EMNLP2025推理与合作：避免把接口比较写成新机制
+
+[Spontaneous Giving精读](../papers/SPONTANEOUS_GIVING_2025.md)覆盖六经济博弈与十轮公共品，已拥有推理方式改变合作/个体群体收益的主张。其货币Giving成本有定义，不能直接等同原作者NPC职责Give。E70 staged/direct包含多项接口变化，不能据其差异宣称推理抹除人设；E71无人索要则提供更直接的同源行为基线。

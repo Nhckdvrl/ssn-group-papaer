@@ -2,9 +2,11 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E70已登记并通过单世界profile，暂缓论文正文。** 最新入口为[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)；此前见[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E70/E71八卡固定队列进行中，暂缓论文正文。** 最新入口为[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)；此前见[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
+
+- **E71进行中：** 同117图、两traits/三seed/两模型，共2808条无人索要基线，区分一般Give倾向与社交响应；468输入CPU检查通过，fvcrc20另两卡独立运行，总峰值8卡。[实验卡](experiments/E71-unsolicited-authored-goal-baseline.md)。
 
 - **E70进行中：** 全原作者Give任务池核查得到117不同世界，固定作者目标，比较请求方向×合法装备状态；零API，单world54分支/321调用通过，18954项输入检查通过。已锁12636分支/两traits三seed两模型，六张空闲卡独立分片；有普通机制知识/priority与同conv直接-三阶段对照，不围三个案例调提示。见[实验卡](experiments/E70-native-goal-request-and-execution-preconditions.md)。
 

@@ -38,7 +38,7 @@ def metrics(row):
                         first['event_type'] == 'RemoveObjectEvent' and first['target_node_ids'][0] == item))
     stance = (row['conversation'] or {}).get('stance')
     result = {'to_goal': float(goal), 'to_competitor': float(competitor), 'to_other': float(other),
-              'no_transfer': float(receiver is None), 'to_requester': float(receiver == row['requester_id']),
+              'no_transfer': float(receiver is None), 'to_requester': float(row['requester_id'] is not None and receiver == row['requester_id']),
               'source_remove': float(bool(remove)), 'source_drop': float(bool(source_drop)),
               'source_consumed': float(any(h['event_type'] in ['EatEvent', 'DrinkEvent'] and h['target_node_ids'] and h['target_node_ids'][0] == item for h in valid)),
               'first_necessary_step': float(first_necessary),

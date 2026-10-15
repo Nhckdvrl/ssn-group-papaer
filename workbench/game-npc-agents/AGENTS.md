@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**正在推进E70（2026-10-15用户明确继续）：** 原作者Give目标固定，117不同graph，主2×2为请求来自目标对象/另一对象×交付ready/须先remove，固定普通机制/priority和接口对照。全部条件/读数先登记；profile54分支/321调用/0协议失败与18954输入检查通过，完整12636分支在fvcrc21四卡/fvcrc20两卡独立运行。用户要求不围3案例调提示、不急论文。见[E70](experiments/E70-native-goal-request-and-execution-preconditions.md)，此前E69完整结果如下。
+**正在推进E70（2026-10-15用户明确继续）：** 原作者Give目标固定，117不同graph，主2×2为请求来自目标对象/另一对象×交付ready/须先remove，固定普通机制/priority和接口对照。全部条件/读数先登记；profile54分支/321调用/0协议失败与18954输入检查通过，完整12636分支在fvcrc21四卡/fvcrc20两卡独立运行。另登记E71同117图无人索要2808分支，fvcrc20剩余两卡；总峰值8卡。用户要求不围3案例调提示、不急论文。见[E70](experiments/E70-native-goal-request-and-execution-preconditions.md)，此前E69完整结果如下。
 
 **最新工作（2026-10-15）：** [E69](experiments/E69-matched-task-and-motivation-window.md)2760主分支＋144适应性控制全部完成，先读[同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)。112图人物×任务交互成立但完整正负反转未跨模型成立，职责Give约98%–99%且接收者保留；3世界补窗仍无双事件，机制事实在32B恢复5/36双事件、Gemma0/36但17条卸下。27519新调用/2.828GPUh/0API，job和watcher均退出。C04/C05仍限定L2，I04 PROMISING；正文仍暂缓，不因外部审计自动定词汇神经机制或封账。原始图、失败与所有seed保留。
 
