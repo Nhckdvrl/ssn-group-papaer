@@ -1,0 +1,17 @@
+# 任务保留与合作：E63/E64的近邻定位
+
+用户报告后要求超越“Agreeable更愿意给物品”，停止新增细标签与无回路patch。当前大问题仍是NPC怎样同时形成角色选择、维持自身目标并响应社会互动，不钦定“自毁”故事。
+
+| 近邻 | 已拥有的具体认识 | 当前可检验的增量入口 |
+|---|---|---|
+| [FAccT2026 Identity Overrides Incentives](../papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md) | persona×收益显式化交互；附录已有收益优先、人格只影响风格的控制 | 原生物品依赖、顺序、可恢复路径与真实对方行动，而非重复人格压倒收益 |
+| [Persona-Guided TOD](../papers/PERSONA_GUIDED_TASK_DIALOGUE_2026.md) | 人格适应与服务grounding取舍，明确schema/数据库约束 | NPC有自己的目标，任务与合作分别由实体事件读出 |
+| [Price of Agreement](../papers/PRICE_OF_AGREEMENT_2026.md) | 用户偏好/记忆注入造成任务准确性损失，过滤与训练对照 | 把请求的采纳落实到资产归属与后续合法恢复，不把给予当错误答案 |
+| [ACL2026 DebtBench](../papers/DEBTBENCH_ACL2026.md) | 协议达成高却过度让步；经济理性与体验分开 | 协议后真实行动、对手响应及合作后受损的路径，需要实测而非换场景 |
+| CT-Bench / Dragon / LIGHT | 长期资源承诺、策略互动、以对话影响真实动作 | 不能声称首次多步承诺；聚焦哪些可操纵条件预测保任务的合作 |
+
+**Compression risk：** “人设—效用冲突”“友善导致让步”“加目标优先提示改善”各自都容易压缩成已有结论。E63普通规则是竞争解释控制；若它解释数据，就如实接受。E64仅9独立图的发现性pilot，不能用调用数替代独立情境。
+
+**查询记录：** `python3 tools/venue_corpus/query.py nearest 'NPC personality social compliance instrumental goals costly resource negotiation task preservation'`；命中包括PRISMA、冲突对话对齐、FAIRGAMER、Richelieu等，词面分数不是科学判决。最新主源检索另找到EMNLP2026 MASCOT与ACL2026 DebtBench；MASCOT仅核主源论文/仓库入口，正文尚未精读，不将其摘要当完整审计。
+
+**正在检验：** E63同人物/请求者，原目标资产与另一真实资产，none/明确任务优先/资产保护，三模型三seed；E64原生互持物品、私有目标、真实交换/偷取/攻击。得到实际成功失败后才收敛机制；不从attention权重或口头理由直接推断因果回路。

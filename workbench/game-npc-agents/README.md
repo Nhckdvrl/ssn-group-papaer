@@ -8,6 +8,8 @@
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
+- **报告后最新执行：** [E63](experiments/E63-native-dependency-and-explicit-priority.md)固定200原图、100图有另一自持物品可配对；三模型×三seed比较任务资产请求、其他资产请求与两种明确优先规则。CPU发现196图交目标物后原任务暂时不可执行、4图有替代物，全部仍可合法偷回。三模型四worker运行中，未汇总最终效果。[E64](experiments/E64-native-reciprocal-goal-negotiation.md)从原1787图取得9个双角色互持目标物品场景，两Qwen运行短谈判profile；交换、偷取、后续攻击/健康都保留。停止新增API细标签与无回路假说patch。
+
 - **跨环境矛盾：** 既有轨迹已拉通，见 [归因表](knowledge/persona-behavior/CROSS_ENVIRONMENT_CONTRADICTIONS_2026-10-15.md)。E42具体偏好提示提高收益但降低初始人设动作差；E22鸟自己台词改变原目标物品绑定。接下来区分目标可用性、绑定、优先级竞争与执行能力，而不是给仓库做QA。
 
 - **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
