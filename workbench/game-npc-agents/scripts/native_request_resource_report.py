@@ -10,10 +10,14 @@ def main():
     ap.add_argument('--runs-root', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--include-e72', action='store_true')
+    ap.add_argument('--include-e73', action='store_true')
     args = ap.parse_args(); jobs = []
     launch_files = [('profile', 'e70_profile_launch.json'), ('E70', 'e70_launch_fvcrc21.json'),
                     ('E70', 'e70_launch_fvcrc20.json'), ('E71', 'e71_launch.json')]
     if args.include_e72: launch_files.append(('E72', 'e72_launch.json'))
+    if args.include_e73:
+        assert args.include_e72
+        launch_files.append(('E73', 'e73_launch.json'))
     for kind, name in launch_files:
         launches = json.loads((args.runs_root/name).read_text())
         if isinstance(launches, dict): launches = [launches]
@@ -33,16 +37,17 @@ def main():
                          'reused_calls': runtime['reused_calls'],
                          'runtime_gpu_hours': (runtime['wall_seconds']+runtime['model_load_seconds'])/3600,
                          'observed_launch_through_last_log_gpu_hours': (end-launch['start_epoch'])/3600})
-    assert len(jobs) == (13 if args.include_e72 else 9)
+    assert len(jobs) == (15 if args.include_e73 else 13 if args.include_e72 else 9)
     fields = ['new_calls', 'parse_errors', 'prompt_tokens', 'completion_tokens', 'reused_calls',
               'runtime_gpu_hours', 'observed_launch_through_last_log_gpu_hours']
     totals = {k: sum(j[k] for j in jobs) for k in fields}
     by_experiment = {e: {k: sum(j[k] for j in jobs if j['kind'] == e or (e == 'E70' and j['kind'] == 'profile'))
-                         for k in fields} for e in ['E70', 'E71']+(['E72'] if args.include_e72 else [])}
+                         for k in fields} for e in ['E70', 'E71']+(['E72'] if args.include_e72 else [])+(['E73'] if args.include_e73 else [])}
     result = {'status': 'COMPLETE', 'experiments': list(by_experiment), 'jobs': jobs, 'totals': totals,
               'by_experiment': by_experiment, 'unique_main_episodes': 12636, 'unique_unsolicited_episodes': 2808,
               'profile_episodes': 54, 'profile_reused_in_main': True,
               'unique_candidate_episodes': 5616 if args.include_e72 else 0,
+              'unique_initial_feedback_episodes': 2808 if args.include_e73 else 0,
               'peak_authorized_gpus_used': 8, 'new_cloud_calls': 0,
               'scope': ['Profile outputs reused exactly; its 321 actual calls are added once to E70 shard calls.',
                         'Runtime includes model load/inference; launch-to-last-log additionally includes interpreter startup and logged teardown.',

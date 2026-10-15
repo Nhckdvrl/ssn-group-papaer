@@ -2,13 +2,15 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E70完成，E71/E72固定队列进行中，暂缓论文正文。** 最新入口为[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)；此前见[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E70/E71完成，E72/E73固定队列进行中，暂缓论文正文。** 最新入口为[E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)；此前见[E67/E68报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
+- **E73进行中：** 同117图固定对话/原生菜单，首次行动前统一暴露真实引擎操作反馈；仅一个新增信息对照，2808分支。CPU1404检查/117真值见证通过，fvcrc21释放的两卡运行，0新增conv/update/API。[实验卡](experiments/E73-equal-initial-native-feedback.md)。
+
 - **E72进行中：** 同117图、固定E70对话，比较原生菜单与加入目标/请求命令的候选；原生错误消耗动作并反馈，共5616分支。CPU234纠错见证/1404成对输入PASS，区分候选可见性/原生反馈与前提知识，不新增提示网格。[实验卡](experiments/E72-native-candidate-feedback-and-goal-execution.md)。
 
-- **E71进行中：** 同117图、两traits/三seed/两模型，共2808条无人索要基线，区分一般Give倾向与社交响应；468输入CPU检查通过，fvcrc20另两卡独立运行，总峰值8卡。[实验卡](experiments/E71-unsolicited-authored-goal-baseline.md)。
+- **E71完成：** 同117图、两traits/三seed/两模型，共2808条无人索要基线，区分一般Give倾向与社交响应；468输入CPU检查通过，两模型全部收齐，总峰值8卡，失败分支保留。[实验卡](experiments/E71-unsolicited-authored-goal-baseline.md)。
 
 - **E70完成：** 全原作者Give任务池核查得到117不同世界，固定作者目标，比较请求方向×合法装备状态；零API，单world54分支/321调用通过，18954项输入检查通过。12636分支/两traits三seed两模型全部完成、73100新增调用/0解析失败；有普通机制知识/priority与同conv直接-三阶段对照，不围三个案例调提示。见[实验卡](experiments/E70-native-goal-request-and-execution-preconditions.md)。
 
