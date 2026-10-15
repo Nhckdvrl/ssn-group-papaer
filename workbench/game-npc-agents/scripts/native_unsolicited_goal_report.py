@@ -81,6 +81,11 @@ def main():
     for persona in ['firm', 'agreeable']:
         contrasts[persona+'/equipped_minus_ready/unsolicited'] = estimate([
             (1, persona, 'equipped_unsolicited'), (-1, persona, 'ready_unsolicited')])
+        if args.solicited_runs:
+            for direction in ['aligned', 'divert']:
+                contrasts[persona+'/secondary_context_x_state/'+direction] = estimate([
+                    (1, persona, 'equipped_'+direction), (-1, persona, 'equipped_unsolicited'),
+                    (-1, persona, 'ready_'+direction), (1, persona, 'ready_unsolicited')])
     result = {'status': 'COMPLETE', 'experiment': 'E70+E71' if args.solicited_runs else 'E71',
               'model': manifest['model'], 'worlds': len(sources), 'unsolicited_episodes': 1404,
               'total_compared_episodes': len(lookup), 'cells': cells, 'contrasts': contrasts,
@@ -91,6 +96,7 @@ def main():
               'scope': ['Absence of both solicitation and generated dialogue is a context-package baseline, not a single-token intervention.',
                         'Authored recipient and selected source item unchanged; first Give stopping and eight-action horizon match E70.',
                         'No-request stance/requester metrics are inapplicable and omitted.',
+                        'Context-by-state is a secondary derived contrast added during collection; primary outcomes/cells unchanged.',
                         'Three seeds averaged within each of 117 graphs; 4000 paired graph bootstrap samples; pointwise intervals.']}
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
     print(json.dumps({k: result[k] for k in ['status', 'experiment', 'worlds', 'total_compared_episodes', 'unsolicited_actual_calls']}), flush=True)

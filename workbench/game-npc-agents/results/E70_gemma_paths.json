@@ -1,0 +1,3976 @@
+{
+  "status": "COMPLETE",
+  "analysis": "DESCRIPTIVE, no additional model calls or revised primary metric",
+  "episodes": 6318,
+  "cells": {
+    "firm/ready_aligned": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 347,
+        "stance_accept": 288,
+        "stance_accept/to_goal": 288,
+        "stance_negotiate": 61,
+        "stance_negotiate/to_goal": 57,
+        "no_transfer": 4,
+        "stance_negotiate/no_transfer": 4,
+        "stance_decline": 2,
+        "stance_decline/to_goal": 2
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 116,
+        "no_transfer": 2
+      },
+      "no_selected_give_categories": {
+        "other_no_give": 4
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 347,
+        "TellEvent": 13,
+        "EmoteEvent": 2
+      },
+      "legal_event_step_counts": {
+        "GiveObjectEvent": 347,
+        "TellEvent": 44,
+        "EmoteEvent": 5
+      },
+      "first_event_counts": {
+        "to_goal": 337,
+        "TellEvent": 13,
+        "EmoteEvent": 1
+      },
+      "native_failed_event_counts": {},
+      "most_common_paths": [
+        [
+          "to_goal",
+          337
+        ],
+        [
+          "TellEvent > to_goal",
+          7
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > TellEvent > TellEvent > TellEvent",
+          1
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > to_goal",
+          1
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > to_goal",
+          1
+        ],
+        [
+          "EmoteEvent > to_goal",
+          1
+        ]
+      ]
+    },
+    "agreeable/ready_aligned": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 351,
+        "stance_accept": 344,
+        "stance_accept/to_goal": 344,
+        "stance_negotiate": 7,
+        "stance_negotiate/to_goal": 7
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 117
+      },
+      "no_selected_give_categories": {},
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 351,
+        "TellEvent": 1,
+        "EmoteEvent": 1
+      },
+      "legal_event_step_counts": {
+        "GiveObjectEvent": 351,
+        "TellEvent": 1,
+        "EmoteEvent": 1
+      },
+      "first_event_counts": {
+        "to_goal": 350,
+        "TellEvent": 1
+      },
+      "native_failed_event_counts": {},
+      "most_common_paths": [
+        [
+          "to_goal",
+          350
+        ],
+        [
+          "TellEvent > EmoteEvent > to_goal",
+          1
+        ]
+      ]
+    },
+    "firm/ready_divert": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 324,
+        "stance_decline": 137,
+        "stance_decline/to_goal": 128,
+        "stance_negotiate": 122,
+        "stance_negotiate/to_goal": 106,
+        "stance_accept": 92,
+        "stance_accept/to_goal": 90,
+        "no_transfer": 25,
+        "stance_decline/no_transfer": 9,
+        "stance_negotiate/no_transfer": 16,
+        "to_competitor": 2,
+        "stance_accept/to_competitor": 2
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 114,
+        "no_transfer": 16,
+        "to_competitor": 1
+      },
+      "no_selected_give_categories": {
+        "other_no_give": 25
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 326,
+        "TellEvent": 102,
+        "EmoteEvent": 17,
+        "BlockEvent": 6,
+        "ExamineEvent": 1,
+        "WhisperEvent": 1
+      },
+      "legal_event_step_counts": {
+        "GiveObjectEvent": 326,
+        "TellEvent": 214,
+        "EmoteEvent": 71,
+        "BlockEvent": 9,
+        "ExamineEvent": 7,
+        "WhisperEvent": 1
+      },
+      "first_event_counts": {
+        "to_goal": 235,
+        "TellEvent": 99,
+        "EmoteEvent": 12,
+        "BlockEvent": 3,
+        "to_competitor": 1,
+        "WhisperEvent": 1
+      },
+      "native_failed_event_counts": {},
+      "most_common_paths": [
+        [
+          "to_goal",
+          235
+        ],
+        [
+          "TellEvent > to_goal",
+          69
+        ],
+        [
+          "TellEvent > TellEvent > to_goal",
+          9
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          8
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          4
+        ],
+        [
+          "BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          3
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > to_goal",
+          2
+        ],
+        [
+          "EmoteEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > to_goal",
+          1
+        ],
+        [
+          "TellEvent > EmoteEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          1
+        ],
+        [
+          "TellEvent > BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          1
+        ],
+        [
+          "TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > TellEvent > TellEvent > TellEvent",
+          1
+        ],
+        [
+          "TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          1
+        ]
+      ]
+    },
+    "agreeable/ready_divert": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 331,
+        "stance_accept": 221,
+        "stance_accept/to_goal": 208,
+        "stance_decline": 28,
+        "stance_decline/to_goal": 28,
+        "stance_negotiate": 102,
+        "stance_negotiate/to_goal": 95,
+        "to_competitor": 10,
+        "stance_accept/to_competitor": 9,
+        "no_transfer": 10,
+        "stance_negotiate/no_transfer": 6,
+        "stance_negotiate/to_competitor": 1,
+        "stance_accept/no_transfer": 4
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 113,
+        "to_competitor": 6,
+        "no_transfer": 7
+      },
+      "no_selected_give_categories": {
+        "other_no_give": 10
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 341,
+        "TellEvent": 62,
+        "EmoteEvent": 9,
+        "BlockEvent": 1,
+        "WhisperEvent": 3
+      },
+      "legal_event_step_counts": {
+        "GiveObjectEvent": 341,
+        "TellEvent": 105,
+        "EmoteEvent": 46,
+        "BlockEvent": 2,
+        "WhisperEvent": 4
+      },
+      "first_event_counts": {
+        "to_goal": 272,
+        "TellEvent": 61,
+        "to_competitor": 9,
+        "EmoteEvent": 6,
+        "WhisperEvent": 3
+      },
+      "native_failed_event_counts": {},
+      "most_common_paths": [
+        [
+          "to_goal",
+          272
+        ],
+        [
+          "TellEvent > to_goal",
+          44
+        ],
+        [
+          "to_competitor",
+          9
+        ],
+        [
+          "TellEvent > TellEvent > to_goal",
+          5
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          4
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > to_goal",
+          4
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "WhisperEvent > to_goal",
+          2
+        ],
+        [
+          "TellEvent > to_competitor",
+          1
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          1
+        ],
+        [
+          "TellEvent > TellEvent > EmoteEvent > EmoteEvent > to_goal",
+          1
+        ],
+        [
+          "TellEvent > BlockEvent > BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          1
+        ]
+      ]
+    },
+    "firm/equipped_aligned": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 245,
+        "stance_accept": 285,
+        "stance_accept/no_transfer": 198,
+        "stance_negotiate": 65,
+        "stance_negotiate/no_transfer": 46,
+        "to_goal": 106,
+        "stance_negotiate/to_goal": 19,
+        "stance_accept/to_goal": 87,
+        "stance_decline": 1,
+        "stance_decline/no_transfer": 1
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 92,
+        "to_goal": 45
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 240,
+        "removed_without_give": 5
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 155,
+        "EmoteEvent": 35,
+        "GiveObjectEvent": 235,
+        "PointEvent": 91,
+        "RemoveObjectEvent": 111,
+        "FollowEvent": 4,
+        "SayEvent": 2,
+        "GetObjectEvent": 3
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 634,
+        "EmoteEvent": 106,
+        "GiveObjectEvent": 398,
+        "PointEvent": 171,
+        "RemoveObjectEvent": 114,
+        "FollowEvent": 4,
+        "SayEvent": 3,
+        "GetObjectEvent": 3
+      },
+      "first_event_counts": {
+        "TellEvent": 67,
+        "GiveObjectEvent/other": 171,
+        "PointEvent": 34,
+        "RemoveObjectEvent/source": 14,
+        "native_failed:RewardEvent": 51,
+        "EmoteEvent": 6,
+        "rejected:put": 8
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 885
+      },
+      "most_common_paths": [
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          45
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          26
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          20
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          15
+        ],
+        [
+          "RemoveObjectEvent/source > to_goal",
+          14
+        ],
+        [
+          "GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          14
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          9
+        ],
+        [
+          "PointEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          9
+        ],
+        [
+          "GiveObjectEvent/other > PointEvent > RemoveObjectEvent/source > to_goal",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          6
+        ],
+        [
+          "PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ]
+      ]
+    },
+    "agreeable/equipped_aligned": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 229,
+        "stance_accept": 345,
+        "stance_accept/no_transfer": 223,
+        "to_goal": 122,
+        "stance_accept/to_goal": 122,
+        "stance_negotiate": 6,
+        "stance_negotiate/no_transfer": 6
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 85,
+        "to_goal": 52
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 228,
+        "removed_without_give": 1
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 97,
+        "EmoteEvent": 39,
+        "GiveObjectEvent": 249,
+        "PointEvent": 83,
+        "RemoveObjectEvent": 123,
+        "FollowEvent": 3,
+        "WaitEvent": 1,
+        "ExamineEvent": 2,
+        "SayEvent": 1,
+        "GetObjectEvent": 4,
+        "DropObjectEvent": 1
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 350,
+        "EmoteEvent": 152,
+        "GiveObjectEvent": 429,
+        "PointEvent": 144,
+        "RemoveObjectEvent": 126,
+        "FollowEvent": 3,
+        "WaitEvent": 7,
+        "ExamineEvent": 2,
+        "SayEvent": 1,
+        "GetObjectEvent": 4,
+        "DropObjectEvent": 1
+      },
+      "first_event_counts": {
+        "TellEvent": 27,
+        "GiveObjectEvent/other": 189,
+        "PointEvent": 32,
+        "RemoveObjectEvent/source": 24,
+        "native_failed:RewardEvent": 58,
+        "rejected:put": 12,
+        "EmoteEvent": 8,
+        "DropObjectEvent/other": 1
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 994
+      },
+      "most_common_paths": [
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          52
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          32
+        ],
+        [
+          "RemoveObjectEvent/source > to_goal",
+          24
+        ],
+        [
+          "GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          19
+        ],
+        [
+          "PointEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          13
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          12
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          11
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          9
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          8
+        ],
+        [
+          "GiveObjectEvent/other > PointEvent > RemoveObjectEvent/source > to_goal",
+          7
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "PointEvent > RemoveObjectEvent/source > to_goal",
+          5
+        ]
+      ]
+    },
+    "firm/equipped_divert": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 331,
+        "stance_decline": 138,
+        "stance_decline/no_transfer": 133,
+        "stance_negotiate": 133,
+        "stance_negotiate/no_transfer": 130,
+        "stance_accept": 80,
+        "stance_accept/no_transfer": 68,
+        "to_goal": 19,
+        "stance_decline/to_goal": 5,
+        "stance_negotiate/to_goal": 3,
+        "stance_accept/to_goal": 11,
+        "to_competitor": 1,
+        "stance_accept/to_competitor": 1
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 115,
+        "to_goal": 12,
+        "to_competitor": 1
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 328,
+        "removed_without_give": 3
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 288,
+        "GiveObjectEvent": 137,
+        "PointEvent": 66,
+        "EmoteEvent": 47,
+        "WhisperEvent": 9,
+        "RemoveObjectEvent": 23,
+        "ExamineEvent": 8,
+        "BlockEvent": 23,
+        "FollowEvent": 3,
+        "UnblockEvent": 1
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 1591,
+        "GiveObjectEvent": 198,
+        "PointEvent": 222,
+        "EmoteEvent": 198,
+        "WhisperEvent": 28,
+        "RemoveObjectEvent": 23,
+        "ExamineEvent": 21,
+        "BlockEvent": 31,
+        "FollowEvent": 3,
+        "UnblockEvent": 1
+      },
+      "first_event_counts": {
+        "TellEvent": 223,
+        "GiveObjectEvent/other": 57,
+        "PointEvent": 22,
+        "EmoteEvent": 19,
+        "RemoveObjectEvent/source": 3,
+        "BlockEvent": 12,
+        "native_failed:RewardEvent": 6,
+        "WhisperEvent": 3,
+        "rejected:put": 6
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 279
+      },
+      "most_common_paths": [
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          96
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          22
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          13
+        ],
+        [
+          "BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          10
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          8
+        ],
+        [
+          "TellEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "GiveObjectEvent/other > PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "TellEvent > PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          4
+        ]
+      ]
+    },
+    "agreeable/equipped_divert": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 309,
+        "stance_accept": 222,
+        "stance_accept/no_transfer": 187,
+        "stance_decline": 30,
+        "stance_decline/no_transfer": 30,
+        "stance_negotiate": 99,
+        "stance_negotiate/no_transfer": 92,
+        "to_goal": 38,
+        "stance_negotiate/to_goal": 7,
+        "stance_accept/to_goal": 31,
+        "to_competitor": 4,
+        "stance_accept/to_competitor": 4
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 110,
+        "to_goal": 20,
+        "to_competitor": 2
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 308,
+        "removed_without_give": 1
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 253,
+        "GiveObjectEvent": 187,
+        "PointEvent": 85,
+        "EmoteEvent": 44,
+        "WhisperEvent": 12,
+        "RemoveObjectEvent": 43,
+        "ExamineEvent": 6,
+        "FollowEvent": 5,
+        "BlockEvent": 4,
+        "GetObjectEvent": 2,
+        "HugEvent": 2
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 1305,
+        "GiveObjectEvent": 291,
+        "PointEvent": 270,
+        "EmoteEvent": 124,
+        "WhisperEvent": 40,
+        "RemoveObjectEvent": 43,
+        "ExamineEvent": 6,
+        "FollowEvent": 5,
+        "BlockEvent": 4,
+        "GetObjectEvent": 2,
+        "HugEvent": 2
+      },
+      "first_event_counts": {
+        "TellEvent": 159,
+        "GiveObjectEvent/other": 108,
+        "PointEvent": 32,
+        "WhisperEvent": 6,
+        "EmoteEvent": 11,
+        "native_failed:RewardEvent": 22,
+        "RemoveObjectEvent/source": 6,
+        "BlockEvent": 1,
+        "rejected:put": 6
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 490
+      },
+      "most_common_paths": [
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          61
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          19
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          18
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          18
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          8
+        ],
+        [
+          "GiveObjectEvent/other > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent",
+          7
+        ],
+        [
+          "TellEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          6
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "TellEvent > PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          5
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          5
+        ]
+      ]
+    },
+    "firm/equipped_aligned_mechanics": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 325,
+        "stance_accept": 238,
+        "stance_accept/to_goal": 225,
+        "stance_negotiate": 111,
+        "stance_negotiate/to_goal": 98,
+        "no_transfer": 26,
+        "stance_negotiate/no_transfer": 13,
+        "stance_accept/no_transfer": 13,
+        "stance_decline": 2,
+        "stance_decline/to_goal": 2
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 111,
+        "no_transfer": 11
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 21,
+        "removed_without_give": 5
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 332,
+        "RemoveObjectEvent": 330,
+        "SayEvent": 3,
+        "TellEvent": 33,
+        "EmoteEvent": 9,
+        "WhisperEvent": 1,
+        "ExamineEvent": 1
+      },
+      "legal_event_step_counts": {
+        "RemoveObjectEvent": 337,
+        "GiveObjectEvent": 367,
+        "SayEvent": 3,
+        "TellEvent": 100,
+        "EmoteEvent": 43,
+        "WhisperEvent": 1,
+        "ExamineEvent": 1
+      },
+      "first_event_counts": {
+        "RemoveObjectEvent/source": 286,
+        "SayEvent": 3,
+        "GiveObjectEvent/other": 24,
+        "TellEvent": 19,
+        "RemoveObjectEvent/other": 3,
+        "native_failed:RewardEvent": 11,
+        "WhisperEvent": 1,
+        "EmoteEvent": 4
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 104
+      },
+      "most_common_paths": [
+        [
+          "RemoveObjectEvent/source > to_goal",
+          274
+        ],
+        [
+          "TellEvent > RemoveObjectEvent/source > to_goal",
+          11
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          7
+        ],
+        [
+          "GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > to_goal",
+          4
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > RemoveObjectEvent/other > to_goal",
+          3
+        ],
+        [
+          "native_failed:RewardEvent > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "SayEvent > RemoveObjectEvent/source > to_goal",
+          2
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          2
+        ]
+      ]
+    },
+    "agreeable/equipped_aligned_mechanics": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 334,
+        "stance_accept": 328,
+        "stance_accept/to_goal": 311,
+        "stance_negotiate": 23,
+        "stance_negotiate/to_goal": 23,
+        "no_transfer": 17,
+        "stance_accept/no_transfer": 17
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 112,
+        "no_transfer": 6
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 17
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 340,
+        "RemoveObjectEvent": 334,
+        "TellEvent": 7,
+        "EmoteEvent": 2
+      },
+      "legal_event_step_counts": {
+        "RemoveObjectEvent": 342,
+        "GiveObjectEvent": 379,
+        "TellEvent": 28,
+        "EmoteEvent": 14
+      },
+      "first_event_counts": {
+        "RemoveObjectEvent/source": 306,
+        "GiveObjectEvent/other": 26,
+        "RemoveObjectEvent/other": 3,
+        "TellEvent": 7,
+        "native_failed:RewardEvent": 9
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 97
+      },
+      "most_common_paths": [
+        [
+          "RemoveObjectEvent/source > to_goal",
+          302
+        ],
+        [
+          "GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          9
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          7
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "RemoveObjectEvent/source > RemoveObjectEvent/other > to_goal",
+          3
+        ],
+        [
+          "RemoveObjectEvent/other > GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "native_failed:RewardEvent > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "TellEvent > RemoveObjectEvent/source > to_goal",
+          2
+        ],
+        [
+          "TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          2
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          2
+        ]
+      ]
+    },
+    "firm/equipped_divert_mechanics": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 282,
+        "stance_decline": 191,
+        "stance_decline/to_goal": 159,
+        "stance_negotiate": 126,
+        "stance_negotiate/to_goal": 92,
+        "no_transfer": 69,
+        "stance_decline/no_transfer": 32,
+        "stance_accept": 34,
+        "stance_accept/to_goal": 31,
+        "stance_negotiate/no_transfer": 34,
+        "stance_accept/no_transfer": 3
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 101,
+        "no_transfer": 31
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 48,
+        "removed_without_give": 21
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 295,
+        "RemoveObjectEvent": 305,
+        "TellEvent": 125,
+        "BlockEvent": 9,
+        "FollowEvent": 2,
+        "EmoteEvent": 25,
+        "WhisperEvent": 4,
+        "PointEvent": 1
+      },
+      "legal_event_step_counts": {
+        "RemoveObjectEvent": 312,
+        "GiveObjectEvent": 322,
+        "TellEvent": 398,
+        "BlockEvent": 9,
+        "FollowEvent": 2,
+        "EmoteEvent": 105,
+        "WhisperEvent": 21,
+        "PointEvent": 2
+      },
+      "first_event_counts": {
+        "RemoveObjectEvent/source": 235,
+        "TellEvent": 78,
+        "RemoveObjectEvent/other": 1,
+        "GiveObjectEvent/other": 15,
+        "EmoteEvent": 14,
+        "WhisperEvent": 1,
+        "native_failed:RewardEvent": 2,
+        "BlockEvent": 3,
+        "rejected:put": 2
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 43
+      },
+      "most_common_paths": [
+        [
+          "RemoveObjectEvent/source > to_goal",
+          193
+        ],
+        [
+          "TellEvent > RemoveObjectEvent/source > to_goal",
+          27
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > to_goal",
+          21
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          18
+        ],
+        [
+          "GiveObjectEvent/other > RemoveObjectEvent/source > to_goal",
+          7
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "TellEvent > TellEvent > RemoveObjectEvent/source > to_goal",
+          5
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "RemoveObjectEvent/source > BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          3
+        ],
+        [
+          "RemoveObjectEvent/source > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ],
+        [
+          "BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          3
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          2
+        ]
+      ]
+    },
+    "agreeable/equipped_divert_mechanics": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 304,
+        "stance_accept": 173,
+        "stance_accept/to_goal": 159,
+        "stance_decline": 59,
+        "stance_decline/to_goal": 49,
+        "stance_negotiate": 119,
+        "stance_negotiate/to_goal": 96,
+        "to_competitor": 1,
+        "stance_accept/to_competitor": 1,
+        "no_transfer": 46,
+        "stance_decline/no_transfer": 10,
+        "stance_negotiate/no_transfer": 23,
+        "stance_accept/no_transfer": 13
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 108,
+        "to_competitor": 1,
+        "no_transfer": 23
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 36,
+        "removed_without_give": 10
+      },
+      "legal_event_episode_counts": {
+        "GiveObjectEvent": 315,
+        "RemoveObjectEvent": 316,
+        "TellEvent": 86,
+        "EmoteEvent": 23,
+        "PointEvent": 1,
+        "BlockEvent": 4,
+        "DropObjectEvent": 2,
+        "GetObjectEvent": 2,
+        "FollowEvent": 3,
+        "WhisperEvent": 5
+      },
+      "legal_event_step_counts": {
+        "RemoveObjectEvent": 328,
+        "GiveObjectEvent": 339,
+        "EmoteEvent": 140,
+        "TellEvent": 199,
+        "PointEvent": 1,
+        "BlockEvent": 4,
+        "DropObjectEvent": 4,
+        "GetObjectEvent": 2,
+        "FollowEvent": 3,
+        "WhisperEvent": 24
+      },
+      "first_event_counts": {
+        "RemoveObjectEvent/source": 253,
+        "EmoteEvent": 16,
+        "TellEvent": 57,
+        "GiveObjectEvent/other": 11,
+        "RemoveObjectEvent/other": 3,
+        "WhisperEvent": 2,
+        "native_failed:RewardEvent": 3,
+        "BlockEvent": 3,
+        "rejected:put": 3
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 56
+      },
+      "most_common_paths": [
+        [
+          "RemoveObjectEvent/source > to_goal",
+          218
+        ],
+        [
+          "TellEvent > RemoveObjectEvent/source > to_goal",
+          30
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > to_goal",
+          12
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          10
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          5
+        ],
+        [
+          "TellEvent > TellEvent > RemoveObjectEvent/source > to_goal",
+          5
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > RemoveObjectEvent/other > to_goal",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > TellEvent > to_goal",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > FollowEvent > RemoveObjectEvent/source > to_goal",
+          3
+        ]
+      ]
+    },
+    "firm/equipped_divert_priority": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 345,
+        "stance_decline": 235,
+        "stance_decline/no_transfer": 233,
+        "stance_negotiate": 92,
+        "stance_negotiate/no_transfer": 92,
+        "stance_accept": 24,
+        "stance_accept/no_transfer": 20,
+        "to_goal": 6,
+        "stance_accept/to_goal": 4,
+        "stance_decline/to_goal": 2
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 116,
+        "to_goal": 4
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 342,
+        "removed_without_give": 3
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 249,
+        "ExamineEvent": 11,
+        "BlockEvent": 74,
+        "GiveObjectEvent": 131,
+        "EmoteEvent": 19,
+        "PointEvent": 56,
+        "FollowEvent": 6,
+        "WhisperEvent": 11,
+        "RemoveObjectEvent": 9,
+        "WaitEvent": 3,
+        "GetObjectEvent": 2
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 1421,
+        "ExamineEvent": 28,
+        "BlockEvent": 75,
+        "EmoteEvent": 74,
+        "GiveObjectEvent": 188,
+        "PointEvent": 197,
+        "FollowEvent": 6,
+        "WhisperEvent": 37,
+        "RemoveObjectEvent": 9,
+        "WaitEvent": 8,
+        "GetObjectEvent": 2
+      },
+      "first_event_counts": {
+        "TellEvent": 175,
+        "ExamineEvent": 3,
+        "BlockEvent": 33,
+        "PointEvent": 17,
+        "native_failed:RewardEvent": 22,
+        "GiveObjectEvent/other": 81,
+        "RemoveObjectEvent/source": 3,
+        "EmoteEvent": 6,
+        "WaitEvent": 1,
+        "WhisperEvent": 6,
+        "rejected:put": 3,
+        "FollowEvent": 1
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 289
+      },
+      "most_common_paths": [
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          89
+        ],
+        [
+          "BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          30
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          22
+        ],
+        [
+          "GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          8
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          8
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          8
+        ],
+        [
+          "TellEvent > BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          7
+        ],
+        [
+          "TellEvent > TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "TellEvent > TellEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "GiveObjectEvent/other > BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          4
+        ],
+        [
+          "PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent",
+          4
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          4
+        ]
+      ]
+    },
+    "agreeable/equipped_divert_priority": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 333,
+        "stance_accept": 83,
+        "stance_accept/no_transfer": 68,
+        "stance_negotiate": 194,
+        "stance_negotiate/no_transfer": 192,
+        "stance_decline": 74,
+        "stance_decline/no_transfer": 73,
+        "to_goal": 18,
+        "stance_accept/to_goal": 15,
+        "stance_negotiate/to_goal": 2,
+        "stance_decline/to_goal": 1
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 115,
+        "to_goal": 11
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 333
+      },
+      "legal_event_episode_counts": {
+        "TellEvent": 262,
+        "GiveObjectEvent": 141,
+        "BlockEvent": 34,
+        "EmoteEvent": 36,
+        "PointEvent": 58,
+        "WhisperEvent": 11,
+        "ExamineEvent": 10,
+        "FollowEvent": 11,
+        "RemoveObjectEvent": 18,
+        "GetObjectEvent": 1
+      },
+      "legal_event_step_counts": {
+        "TellEvent": 1516,
+        "GiveObjectEvent": 216,
+        "BlockEvent": 36,
+        "EmoteEvent": 123,
+        "PointEvent": 200,
+        "WhisperEvent": 46,
+        "ExamineEvent": 25,
+        "FollowEvent": 11,
+        "RemoveObjectEvent": 18,
+        "GetObjectEvent": 1
+      },
+      "first_event_counts": {
+        "TellEvent": 188,
+        "PointEvent": 21,
+        "native_failed:RewardEvent": 14,
+        "WhisperEvent": 7,
+        "ExamineEvent": 2,
+        "GiveObjectEvent/other": 89,
+        "EmoteEvent": 14,
+        "RemoveObjectEvent/source": 2,
+        "BlockEvent": 8,
+        "rejected:put": 6
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 333
+      },
+      "most_common_paths": [
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          100
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          25
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          12
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          9
+        ],
+        [
+          "BlockEvent > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block > rejected:block",
+          7
+        ],
+        [
+          "TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "TellEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          5
+        ],
+        [
+          "PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent > PointEvent",
+          5
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          5
+        ],
+        [
+          "TellEvent > PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ]
+      ]
+    },
+    "firm/equipped_aligned_staged": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 313,
+        "stance_accept": 285,
+        "stance_accept/no_transfer": 250,
+        "stance_negotiate": 65,
+        "stance_negotiate/no_transfer": 62,
+        "to_goal": 38,
+        "stance_accept/to_goal": 35,
+        "plan_mentions_remove": 8,
+        "plan_mentions_remove/removed": 8,
+        "stance_negotiate/to_goal": 3,
+        "stance_decline": 1,
+        "stance_decline/no_transfer": 1
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 112,
+        "to_goal": 21
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 309,
+        "removed_without_give": 4
+      },
+      "legal_event_episode_counts": {
+        "ExamineEvent": 162,
+        "TellEvent": 216,
+        "EmoteEvent": 235,
+        "GiveObjectEvent": 169,
+        "PointEvent": 102,
+        "RemoveObjectEvent": 42,
+        "FollowEvent": 19,
+        "WaitEvent": 34,
+        "WhisperEvent": 4,
+        "GetObjectEvent": 2,
+        "HugEvent": 2,
+        "BlockEvent": 6
+      },
+      "legal_event_step_counts": {
+        "EmoteEvent": 789,
+        "ExamineEvent": 238,
+        "TellEvent": 655,
+        "GiveObjectEvent": 240,
+        "PointEvent": 185,
+        "RemoveObjectEvent": 42,
+        "FollowEvent": 19,
+        "WaitEvent": 65,
+        "WhisperEvent": 7,
+        "GetObjectEvent": 2,
+        "HugEvent": 7,
+        "BlockEvent": 6
+      },
+      "first_event_counts": {
+        "EmoteEvent": 71,
+        "TellEvent": 45,
+        "rejected:put": 6,
+        "GiveObjectEvent/other": 94,
+        "PointEvent": 57,
+        "ExamineEvent": 42,
+        "FollowEvent": 7,
+        "RemoveObjectEvent/source": 9,
+        "native_failed:RewardEvent": 17,
+        "BlockEvent": 3
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 324
+      },
+      "most_common_paths": [
+        [
+          "GiveObjectEvent/other > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          14
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          8
+        ],
+        [
+          "RemoveObjectEvent/source > to_goal",
+          7
+        ],
+        [
+          "PointEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          5
+        ],
+        [
+          "PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          5
+        ],
+        [
+          "TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "TellEvent > ExamineEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "EmoteEvent > ExamineEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ],
+        [
+          "TellEvent > ExamineEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "ExamineEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ],
+        [
+          "TellEvent > ExamineEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ]
+      ]
+    },
+    "agreeable/equipped_aligned_staged": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 311,
+        "stance_accept": 345,
+        "stance_accept/no_transfer": 305,
+        "to_goal": 40,
+        "stance_accept/to_goal": 40,
+        "stance_negotiate": 6,
+        "stance_negotiate/no_transfer": 6,
+        "plan_mentions_remove": 4,
+        "plan_mentions_remove/removed": 4
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 113,
+        "to_goal": 25
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 309,
+        "removed_without_give": 2
+      },
+      "legal_event_episode_counts": {
+        "ExamineEvent": 152,
+        "TellEvent": 188,
+        "EmoteEvent": 287,
+        "GiveObjectEvent": 175,
+        "PointEvent": 91,
+        "FollowEvent": 18,
+        "RemoveObjectEvent": 42,
+        "WhisperEvent": 12,
+        "WaitEvent": 44,
+        "HugEvent": 5,
+        "GetObjectEvent": 3,
+        "DropObjectEvent": 1,
+        "BlockEvent": 3
+      },
+      "legal_event_step_counts": {
+        "ExamineEvent": 221,
+        "EmoteEvent": 976,
+        "TellEvent": 522,
+        "GiveObjectEvent": 245,
+        "PointEvent": 176,
+        "FollowEvent": 18,
+        "RemoveObjectEvent": 42,
+        "WhisperEvent": 39,
+        "WaitEvent": 103,
+        "HugEvent": 21,
+        "GetObjectEvent": 3,
+        "DropObjectEvent": 1,
+        "BlockEvent": 3
+      },
+      "first_event_counts": {
+        "rejected:put": 6,
+        "GiveObjectEvent/other": 99,
+        "PointEvent": 50,
+        "native_failed:RewardEvent": 19,
+        "ExamineEvent": 23,
+        "EmoteEvent": 105,
+        "FollowEvent": 7,
+        "WhisperEvent": 1,
+        "TellEvent": 33,
+        "RemoveObjectEvent/source": 7,
+        "DropObjectEvent/other": 1
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 262
+      },
+      "most_common_paths": [
+        [
+          "GiveObjectEvent/other > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          13
+        ],
+        [
+          "PointEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          10
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          10
+        ],
+        [
+          "RemoveObjectEvent/source > to_goal",
+          7
+        ],
+        [
+          "EmoteEvent > native_failed:RewardEvent > WaitEvent > WaitEvent > WaitEvent > WaitEvent > WaitEvent > WaitEvent",
+          5
+        ],
+        [
+          "TellEvent > ExamineEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          5
+        ],
+        [
+          "EmoteEvent > TellEvent > WaitEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          5
+        ],
+        [
+          "EmoteEvent > ExamineEvent > ExamineEvent > ExamineEvent > ExamineEvent > ExamineEvent > ExamineEvent > ExamineEvent",
+          4
+        ],
+        [
+          "EmoteEvent > TellEvent > ExamineEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          4
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "PointEvent > TellEvent > EmoteEvent > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "PointEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ]
+      ]
+    },
+    "firm/equipped_divert_staged": {
+      "episodes": 351,
+      "counts": {
+        "to_goal": 24,
+        "stance_decline": 138,
+        "stance_decline/to_goal": 11,
+        "no_transfer": 327,
+        "stance_decline/no_transfer": 127,
+        "stance_negotiate": 133,
+        "stance_negotiate/no_transfer": 126,
+        "stance_accept": 80,
+        "stance_accept/no_transfer": 74,
+        "stance_accept/to_goal": 6,
+        "plan_mentions_remove": 2,
+        "plan_mentions_remove/removed": 2,
+        "stance_negotiate/to_goal": 7
+      },
+      "distinct_graphs_by_outcome": {
+        "to_goal": 18,
+        "no_transfer": 116
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 326,
+        "removed_without_give": 1
+      },
+      "legal_event_episode_counts": {
+        "ExamineEvent": 242,
+        "GiveObjectEvent": 176,
+        "TellEvent": 291,
+        "RemoveObjectEvent": 25,
+        "EmoteEvent": 165,
+        "PointEvent": 131,
+        "FollowEvent": 18,
+        "BlockEvent": 28,
+        "WhisperEvent": 9,
+        "WaitEvent": 11,
+        "UnblockEvent": 3,
+        "GetObjectEvent": 3,
+        "HugEvent": 1
+      },
+      "legal_event_step_counts": {
+        "ExamineEvent": 320,
+        "TellEvent": 934,
+        "RemoveObjectEvent": 25,
+        "GiveObjectEvent": 235,
+        "EmoteEvent": 461,
+        "PointEvent": 251,
+        "FollowEvent": 18,
+        "BlockEvent": 30,
+        "WhisperEvent": 30,
+        "WaitEvent": 21,
+        "UnblockEvent": 3,
+        "GetObjectEvent": 3,
+        "HugEvent": 1
+      },
+      "first_event_counts": {
+        "rejected:put": 4,
+        "ExamineEvent": 121,
+        "TellEvent": 58,
+        "GiveObjectEvent/other": 43,
+        "EmoteEvent": 29,
+        "PointEvent": 69,
+        "BlockEvent": 17,
+        "FollowEvent": 6,
+        "RemoveObjectEvent/source": 1,
+        "native_failed:RewardEvent": 2,
+        "WaitEvent": 1
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 274
+      },
+      "most_common_paths": [
+        [
+          "PointEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          7
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          7
+        ],
+        [
+          "PointEvent > TellEvent > ExamineEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          6
+        ],
+        [
+          "ExamineEvent > TellEvent > GiveObjectEvent/other > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          6
+        ],
+        [
+          "ExamineEvent > TellEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          6
+        ],
+        [
+          "ExamineEvent > TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          5
+        ],
+        [
+          "ExamineEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          5
+        ],
+        [
+          "PointEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          5
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "ExamineEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          4
+        ],
+        [
+          "TellEvent > ExamineEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "ExamineEvent > TellEvent > GiveObjectEvent/other > GiveObjectEvent/other > GiveObjectEvent/other > PointEvent > PointEvent > PointEvent",
+          3
+        ]
+      ]
+    },
+    "agreeable/equipped_divert_staged": {
+      "episodes": 351,
+      "counts": {
+        "no_transfer": 321,
+        "stance_accept": 222,
+        "stance_accept/no_transfer": 201,
+        "to_goal": 28,
+        "stance_decline": 30,
+        "stance_decline/to_goal": 2,
+        "stance_negotiate": 99,
+        "stance_negotiate/no_transfer": 92,
+        "stance_decline/no_transfer": 28,
+        "stance_negotiate/to_goal": 7,
+        "stance_accept/to_goal": 19,
+        "plan_mentions_remove": 3,
+        "plan_mentions_remove/removed": 3,
+        "to_competitor": 2,
+        "stance_accept/to_competitor": 2
+      },
+      "distinct_graphs_by_outcome": {
+        "no_transfer": 115,
+        "to_goal": 18,
+        "to_competitor": 2
+      },
+      "no_selected_give_categories": {
+        "still_equipped_without_remove": 320,
+        "removed_without_give": 1
+      },
+      "legal_event_episode_counts": {
+        "ExamineEvent": 197,
+        "TellEvent": 281,
+        "EmoteEvent": 221,
+        "PointEvent": 108,
+        "GiveObjectEvent": 180,
+        "RemoveObjectEvent": 31,
+        "FollowEvent": 19,
+        "WhisperEvent": 14,
+        "WaitEvent": 19,
+        "DropObjectEvent": 3,
+        "BlockEvent": 4,
+        "HugEvent": 2,
+        "GetObjectEvent": 2,
+        "UnblockEvent": 1
+      },
+      "legal_event_step_counts": {
+        "ExamineEvent": 266,
+        "TellEvent": 889,
+        "EmoteEvent": 561,
+        "PointEvent": 222,
+        "RemoveObjectEvent": 31,
+        "GiveObjectEvent": 249,
+        "FollowEvent": 19,
+        "WhisperEvent": 36,
+        "WaitEvent": 31,
+        "DropObjectEvent": 3,
+        "BlockEvent": 7,
+        "HugEvent": 2,
+        "GetObjectEvent": 2,
+        "UnblockEvent": 1
+      },
+      "first_event_counts": {
+        "rejected:put": 4,
+        "PointEvent": 58,
+        "TellEvent": 75,
+        "EmoteEvent": 40,
+        "GiveObjectEvent/other": 57,
+        "ExamineEvent": 90,
+        "FollowEvent": 5,
+        "native_failed:RewardEvent": 13,
+        "RemoveObjectEvent/source": 5,
+        "BlockEvent": 2,
+        "DropObjectEvent/other": 2
+      },
+      "native_failed_event_counts": {
+        "RewardEvent": 339
+      },
+      "most_common_paths": [
+        [
+          "PointEvent > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          11
+        ],
+        [
+          "native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          8
+        ],
+        [
+          "ExamineEvent > TellEvent > GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          4
+        ],
+        [
+          "RemoveObjectEvent/source > to_goal",
+          4
+        ],
+        [
+          "GiveObjectEvent/other > EmoteEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          4
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "ExamineEvent > TellEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent > EmoteEvent",
+          3
+        ],
+        [
+          "TellEvent > EmoteEvent > ExamineEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "GiveObjectEvent/other > TellEvent > EmoteEvent > TellEvent > TellEvent > TellEvent > TellEvent > TellEvent",
+          3
+        ],
+        [
+          "rejected:put > RemoveObjectEvent/source > to_goal",
+          3
+        ],
+        [
+          "GiveObjectEvent/other > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          3
+        ],
+        [
+          "ExamineEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent > native_failed:RewardEvent",
+          3
+        ]
+      ]
+    }
+  },
+  "paired_transitions": {
+    "firm/aligned/mechanics": {
+      "to_goal -> to_goal": 104,
+      "no_transfer -> to_goal": 221,
+      "no_transfer -> no_transfer": 24,
+      "to_goal -> no_transfer": 2
+    },
+    "agreeable/aligned/mechanics": {
+      "to_goal -> to_goal": 122,
+      "no_transfer -> to_goal": 212,
+      "no_transfer -> no_transfer": 17
+    },
+    "firm/divert/mechanics": {
+      "to_goal -> to_goal": 18,
+      "no_transfer -> to_goal": 263,
+      "no_transfer -> no_transfer": 68,
+      "to_goal -> no_transfer": 1,
+      "to_competitor -> to_goal": 1
+    },
+    "agreeable/divert/mechanics": {
+      "to_goal -> to_goal": 37,
+      "no_transfer -> to_goal": 263,
+      "no_transfer -> no_transfer": 45,
+      "to_competitor -> to_goal": 4,
+      "no_transfer -> to_competitor": 1,
+      "to_goal -> no_transfer": 1
+    },
+    "firm/aligned/staged": {
+      "to_goal -> no_transfer": 77,
+      "no_transfer -> no_transfer": 236,
+      "to_goal -> to_goal": 29,
+      "no_transfer -> to_goal": 9
+    },
+    "agreeable/aligned/staged": {
+      "to_goal -> no_transfer": 90,
+      "to_goal -> to_goal": 32,
+      "no_transfer -> no_transfer": 221,
+      "no_transfer -> to_goal": 8
+    },
+    "firm/divert/staged": {
+      "to_goal -> to_goal": 9,
+      "to_goal -> no_transfer": 10,
+      "no_transfer -> to_goal": 15,
+      "no_transfer -> no_transfer": 316,
+      "to_competitor -> no_transfer": 1
+    },
+    "agreeable/divert/staged": {
+      "to_goal -> no_transfer": 22,
+      "to_goal -> to_goal": 16,
+      "no_transfer -> no_transfer": 297,
+      "no_transfer -> to_goal": 11,
+      "to_competitor -> to_competitor": 1,
+      "to_competitor -> no_transfer": 2,
+      "no_transfer -> to_competitor": 1,
+      "to_competitor -> to_goal": 1
+    }
+  },
+  "deterministic_examples_per_transition": {
+    "firm/aligned/mechanics": {
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "RemoveObjectEvent/other",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "RemoveObjectEvent/other",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7002,
+          "baseline": [
+            "PointEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "3053dfcac61b38cd",
+          "seed": 7002,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "3053dfcac61b38cd",
+          "seed": 7003,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "31481f1223db6504",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "94ae1ba2718d090a",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "PointEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "c99403226dd7fe5d",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "GiveObjectEvent/other",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        }
+      ]
+    },
+    "agreeable/aligned/mechanics": {
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "RemoveObjectEvent/other",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "RemoveObjectEvent/other",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "EmoteEvent",
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "EmoteEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "31481f1223db6504",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "31481f1223db6504",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "31481f1223db6504",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ]
+    },
+    "firm/divert/mechanics": {
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "EmoteEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b6eb450fc993533",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "PointEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "TellEvent",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "TellEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "TellEvent",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "092631f8790734bc",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "092631f8790734bc",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "092631f8790734bc",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "54c545b1755fa668",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "PointEvent",
+            "PointEvent"
+          ]
+        }
+      ],
+      "to_competitor -> to_goal": [
+        {
+          "case_id": "6e674eebeb3a77b9",
+          "seed": 7002,
+          "baseline": [
+            "PointEvent",
+            "PointEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ]
+    },
+    "agreeable/divert/mechanics": {
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "09cb20c72dc950ba",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        },
+        {
+          "case_id": "09cb20c72dc950ba",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "09cb20c72dc950ba",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        }
+      ],
+      "to_competitor -> to_goal": [
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7002,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7003,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_competitor": [
+        {
+          "case_id": "e56f7791f10b3ad6",
+          "seed": 7002,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "EmoteEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ]
+        }
+      ],
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "fde69fb4fafca0db",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        }
+      ]
+    },
+    "firm/aligned/staged": {
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7002,
+          "baseline": [
+            "PointEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "to_goal -> to_goal": [
+        {
+          "case_id": "0587967fb4038fea",
+          "seed": 7002,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "0587967fb4038fea",
+          "seed": 7003,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "301b8a01f7a8c08e",
+          "seed": 7002,
+          "baseline": [
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "WaitEvent",
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "2b0fbacf4d5a9601",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b0fbacf4d5a9601",
+          "seed": 7002,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b0fbacf4d5a9601",
+          "seed": 7003,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ]
+    },
+    "agreeable/aligned/staged": {
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "0587967fb4038fea",
+          "seed": 7001,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b6eb450fc993533",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "EmoteEvent",
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "EmoteEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "EmoteEvent",
+            "PointEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "04eb3077c9e27e31",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "EmoteEvent"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "2b0fbacf4d5a9601",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b6eb450fc993533",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "6e674eebeb3a77b9",
+          "seed": 7002,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ]
+    },
+    "firm/divert/staged": {
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "PointEvent",
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b6eb450fc993533",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "PointEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "TellEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "301b8a01f7a8c08e",
+          "seed": 7001,
+          "baseline": [
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "EmoteEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "PointEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "301b8a01f7a8c08e",
+          "seed": 7003,
+          "baseline": [
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "rejected:put",
+            "rejected:put",
+            "rejected:put",
+            "rejected:put",
+            "EmoteEvent",
+            "EmoteEvent",
+            "rejected:put",
+            "rejected:put"
+          ]
+        },
+        {
+          "case_id": "35ee7cda9ff19149",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "to_goal"
+          ],
+          "treatment": [
+            "TellEvent",
+            "PointEvent",
+            "ExamineEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "PointEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "TellEvent",
+            "native_failed:RewardEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "0587967fb4038fea",
+          "seed": 7001,
+          "baseline": [
+            "BlockEvent",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "2b6eb450fc993533",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "TellEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "PointEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "PointEvent",
+            "ExamineEvent",
+            "PointEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "PointEvent",
+            "TellEvent",
+            "ExamineEvent",
+            "PointEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "to_competitor -> no_transfer": [
+        {
+          "case_id": "6e674eebeb3a77b9",
+          "seed": 7002,
+          "baseline": [
+            "PointEvent",
+            "PointEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "PointEvent",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent"
+          ]
+        }
+      ]
+    },
+    "agreeable/divert/staged": {
+      "to_goal -> no_transfer": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "TellEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "301b8a01f7a8c08e",
+          "seed": 7001,
+          "baseline": [
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "WaitEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent",
+            "EmoteEvent"
+          ]
+        }
+      ],
+      "to_goal -> to_goal": [
+        {
+          "case_id": "00826c1384a1cd61",
+          "seed": 7002,
+          "baseline": [
+            "WhisperEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "TellEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "4471eb0eda2feaa3",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "GiveObjectEvent/other",
+            "ExamineEvent",
+            "EmoteEvent",
+            "GiveObjectEvent/other",
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "5295d89d2db18887",
+          "seed": 7002,
+          "baseline": [
+            "EmoteEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ],
+          "treatment": [
+            "EmoteEvent",
+            "PointEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "no_transfer -> no_transfer": [
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        },
+        {
+          "case_id": "03489b63a01320c0",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "PointEvent",
+            "EmoteEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ]
+        }
+      ],
+      "no_transfer -> to_goal": [
+        {
+          "case_id": "0587967fb4038fea",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "BlockEvent",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block",
+            "rejected:block"
+          ],
+          "treatment": [
+            "TellEvent",
+            "EmoteEvent",
+            "ExamineEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "33ccffb9825b8c50",
+          "seed": 7003,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "rejected:put",
+            "RemoveObjectEvent/source",
+            "ExamineEvent",
+            "to_goal"
+          ]
+        },
+        {
+          "case_id": "370614f7bc4169c4",
+          "seed": 7002,
+          "baseline": [
+            "TellEvent",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "TellEvent",
+            "native_failed:RewardEvent",
+            "TellEvent"
+          ],
+          "treatment": [
+            "TellEvent",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ],
+      "to_competitor -> to_competitor": [
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "GiveObjectEvent/other",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ]
+        }
+      ],
+      "to_competitor -> no_transfer": [
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7002,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "EmoteEvent",
+            "GiveObjectEvent/other",
+            "GiveObjectEvent/other",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        },
+        {
+          "case_id": "75fcdd394aafbc51",
+          "seed": 7003,
+          "baseline": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent",
+            "native_failed:RewardEvent"
+          ]
+        }
+      ],
+      "no_transfer -> to_competitor": [
+        {
+          "case_id": "c9ab3ce523087913",
+          "seed": 7001,
+          "baseline": [
+            "GiveObjectEvent/other",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent",
+            "PointEvent"
+          ],
+          "treatment": [
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ]
+        }
+      ],
+      "to_competitor -> to_goal": [
+        {
+          "case_id": "fbfdb27c8bc31caf",
+          "seed": 7001,
+          "baseline": [
+            "TellEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_competitor"
+          ],
+          "treatment": [
+            "ExamineEvent",
+            "TellEvent",
+            "RemoveObjectEvent/source",
+            "to_goal"
+          ]
+        }
+      ]
+    }
+  },
+  "all_case_summaries": "/home/xiang/.cache/game-npc-research/runs/e70_gemma_path_lines.jsonl",
+  "scope": [
+    "Stance is model self-description including conditional acceptance, not an external truth label.",
+    "Lexical plan remove counts do not certify semantic correctness or a causal mediator.",
+    "RewardEvent concerns XP, never selected-item ownership; inherited failed flag includes deterministic no-XP failure.",
+    "No-give categories follow consumed > dropped > removed > still-equipped precedence; raw traces preserve overlaps.",
+    "Examples chosen by case_id then seed within each outcome transition, never to optimize a narrative."
+  ]
+}

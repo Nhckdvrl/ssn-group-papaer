@@ -53,3 +53,8 @@ E70固定原作者Give目标，比较请求方向和合法装备前提；普通�
 [Spontaneous Giving精读](../papers/SPONTANEOUS_GIVING_2025.md)覆盖六经济博弈与十轮公共品，已拥有推理方式改变合作/个体群体收益的主张。其货币Giving成本有定义，不能直接等同原作者NPC职责Give。E70 staged/direct包含多项接口变化，不能据其差异宣称推理抹除人设；E71无人索要则提供更直接的同源行为基线。
 
 [CHAIC正文/附录核读](../papers/CHAIC_2024.md)进一步确认：具身限制、伙伴目标推断、计划—执行模块与共同任务表现已有直接研究。E70的符号LIGHT条件不涉及视觉识别/导航；增量必须落在保留NPC自有目标后，社会请求关系与执行前提对人物行为的联合预测，不能只说前提影响合作。未开新环境复现。
+
+
+### E72前的动作反馈定位
+
+venue nearest `language model agent legal action masking native error feedback prerequisite goal execution` 首个强相关为NAACL2025 main [PSALM](../papers/PSALM_NAACL2025.md)。已核正文/关键消融/附录：错误提示未满足前提、推断动作语义与符号规划恢复都有owner。E72用来区分NPC失败的普通接口/知识解释，不以“反馈可修复动作”申领新方法。Web检索还返回HSL训练期无关动作mask，未精读不据摘要判断其与推理期候选干预相同；不新开训练/复现。

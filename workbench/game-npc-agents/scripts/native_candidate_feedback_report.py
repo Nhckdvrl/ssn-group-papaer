@@ -90,6 +90,7 @@ def main():
               'runtime_gpu_hours':sum(r['wall_seconds']+r['model_load_seconds'] for r in runtimes)/3600,
               'runtimes':runtimes,'source_sha256':hashes,'data_sha256':manifests[0]['data_sha256'],
               'scope':['Both arms share exact E70 dialogue and common neutral proposal directive; only candidate list/enum differs.',
+                       'valid_candidates is the native get_valid_actions menu, which can still contain parser-rejected put/block commands; it is not a perfect legality oracle.',
                        'Failed native attempts consume steps; no retry, scripted repair or altered engine rule.',
                        'Recovered trajectories do not prove pre-existing internal knowledge; native feedback itself supplies information.',
                        'Candidate expansion also supplies action anchors; feedback-then-recovery describes a path, not an independently isolated necessary mediator.',
