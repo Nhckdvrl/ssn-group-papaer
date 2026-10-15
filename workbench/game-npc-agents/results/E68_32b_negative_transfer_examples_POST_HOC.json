@@ -1,0 +1,204 @@
+{
+  "scope": "POST-HOC illustrative pairs, all matching branch count and first two by case/seed/persona; not mechanism attribution.",
+  "matching_seed_branches": 11,
+  "examples": [
+    {
+      "case_id": "063911927a783158",
+      "seed": 6802,
+      "persona": "agreeable",
+      "kind": "wield",
+      "negative_plan": {
+        "priority_actions": [
+          "give food to dogs",
+          "emote smile"
+        ],
+        "intention_memory": "I gave the dogs some food and smiled at them as a sign of affection and encouragement.",
+        "reason": "I wanted to fulfill my short-term goal of feeding the dogs and showed warmth to build a positive relationship with them."
+      },
+      "generic_plan": {
+        "priority_actions": [
+          "wield food"
+        ],
+        "intention_memory": "I promised the dogs a food, and I intend to fulfill that promise while also completing my original task of wielding food.",
+        "reason": "I am agreeable and want to honor my promise to the dogs while still completing my goal."
+      },
+      "negative_actions": [
+        "give food to dogs",
+        "emote smile",
+        "emote grin",
+        "emote grin",
+        "emote grin",
+        "emote grin",
+        "hug dogs",
+        "hug dogs"
+      ],
+      "generic_actions": [
+        "wield food"
+      ],
+      "authored_source": {
+        "character": "the woman",
+        "goal": "wield food",
+        "short_motivation": "I want to give food to the dogs",
+        "mid_motivation": "I plan to take the dogs home today",
+        "long_motivation": "I want the dogs to guard the home whenever I am not around in the future"
+      },
+      "goal_command": "wield food"
+    },
+    {
+      "case_id": "063911927a783158",
+      "seed": 6802,
+      "persona": "firm",
+      "kind": "wield",
+      "negative_plan": {
+        "priority_actions": [
+          "give food to dogs",
+          "emote smile"
+        ],
+        "intention_memory": "I promised the dogs that if they come with me, they will get the food and a new home to guard.",
+        "reason": "I need to fulfill my short-term motivation of giving the dogs food while encouraging them to come with me, aligning with my mid-term goal of bringing them home to guard it."
+      },
+      "generic_plan": {
+        "priority_actions": [
+          "give food to dogs",
+          "wield food"
+        ],
+        "intention_memory": "I reminded the dogs of my plan to take them home and that they need to be well-fed for it.",
+        "reason": "I intend to fulfill my immediate goal of feeding the dogs while keeping in mind my plan to take them home, ensuring they are prepared for the future."
+      },
+      "negative_actions": [
+        "give food to dogs",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile",
+        "emote smile"
+      ],
+      "generic_actions": [
+        "wield food"
+      ],
+      "authored_source": {
+        "character": "the woman",
+        "goal": "wield food",
+        "short_motivation": "I want to give food to the dogs",
+        "mid_motivation": "I plan to take the dogs home today",
+        "long_motivation": "I want the dogs to guard the home whenever I am not around in the future"
+      },
+      "goal_command": "wield food"
+    }
+  ],
+  "selection": [
+    "wear/wield",
+    "B request_given and no goal",
+    "paired G goal_executed"
+  ],
+  "model_calls": 0,
+  "all_matching_worlds": [
+    {
+      "case_id": "063911927a783158",
+      "branches": [
+        {
+          "seed": 6802,
+          "persona": "firm"
+        },
+        {
+          "seed": 6802,
+          "persona": "agreeable"
+        },
+        {
+          "seed": 6803,
+          "persona": "agreeable"
+        }
+      ],
+      "goal_command": "wield food",
+      "requester": "dogs",
+      "authored_motivations": {
+        "short_motivation": "I want to give food to the dogs",
+        "mid_motivation": "I plan to take the dogs home today",
+        "long_motivation": "I want the dogs to guard the home whenever I am not around in the future"
+      }
+    },
+    {
+      "case_id": "0eb7488063edee09",
+      "branches": [
+        {
+          "seed": 6802,
+          "persona": "agreeable"
+        },
+        {
+          "seed": 6803,
+          "persona": "agreeable"
+        }
+      ],
+      "goal_command": "wear bag of herbs",
+      "requester": "knight",
+      "authored_motivations": {
+        "short_motivation": "Give \"medicinal\" herbs to knight.",
+        "mid_motivation": "Use herbs to slowly poison the knight.",
+        "long_motivation": "Attack weakened knight and steal armor."
+      }
+    },
+    {
+      "case_id": "18c83abfb56f2acd",
+      "branches": [
+        {
+          "seed": 6801,
+          "persona": "agreeable"
+        },
+        {
+          "seed": 6802,
+          "persona": "agreeable"
+        }
+      ],
+      "goal_command": "wield spoon",
+      "requester": "person",
+      "authored_motivations": {
+        "short_motivation": "I want to eat a meal ",
+        "mid_motivation": "I plan to finish my meal before touring the Grand hall of the City today ",
+        "long_motivation": "I plan to carry out renovations on the Grand hall of the City in the coming weeks "
+      }
+    },
+    {
+      "case_id": "abe07f9629cbbe87",
+      "branches": [
+        {
+          "seed": 6801,
+          "persona": "firm"
+        },
+        {
+          "seed": 6801,
+          "persona": "agreeable"
+        },
+        {
+          "seed": 6802,
+          "persona": "agreeable"
+        }
+      ],
+      "goal_command": "wield bag",
+      "requester": "guard",
+      "authored_motivations": {
+        "short_motivation": "I want to get some coin for the guard",
+        "mid_motivation": "I plan to finagle a meeting with the king today ",
+        "long_motivation": "I hope to become the exclusive supplier of weapons to the kingdom in the coming months "
+      }
+    },
+    {
+      "case_id": "b52372903605a356",
+      "branches": [
+        {
+          "seed": 6803,
+          "persona": "agreeable"
+        }
+      ],
+      "goal_command": "wield knife",
+      "requester": "police officer",
+      "authored_motivations": {
+        "short_motivation": "I use the knife to cut some bread",
+        "mid_motivation": "I hug the officer and gain his trust",
+        "long_motivation": "I stab the officer with my knife "
+      }
+    }
+  ],
+  "scope_note": "The explicit short-term motivations of the woman and customer call for giving to the requester. This does not change the authored atomic-goal score or certify long-term utility for any case."
+}

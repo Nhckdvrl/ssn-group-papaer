@@ -2,13 +2,13 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：用户授权[E67执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立预测](experiments/E68-clean-reserve-rule-predictions.md)，暂缓论文正文。** [E65限制范围/许可](experiments/E65-constraint-scope-and-permission.md)和[E66动作概率](experiments/E66-native-action-logit-competition.md)均已完成；最新入口为[E65/E66进度报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)，此前为[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)；此前见[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：E67/E68已全部完成，暂缓论文正文。** 最新入口为[E67/E68完整进度报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)，此前见[E65/E66报告](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62报告](PROGRESS_REPORT_2026-10-15.md)、[10月14日报告](PROGRESS_REPORT_2026-10-14.md)。当前[I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
 中心问题：面对具体请求、自身目标、角色规范、社会关系和游戏状态，人物设定怎样影响NPC的选择与实际后果？按用户最新纠偏，先横向研究LIGHT、E42与校园轨迹的成功/失败矛盾。阶段渠道与完成状态是诊断线索，不是钦定论文故事；依据实证发展解释和方法，不先规定GRPO／steering／新损失，也不用自设通过比例判科学价值。
 
-- **E67完成，E68进行中：** E67原79图/9480新执行/1.592GPUh，固定asset上游换generic执行使Gemma F/A原goal +32.1/+28.7pp，32B +7.6/+13.1pp；上游另有作用。普通block状态/错误反馈未恢复Gemma纯否定下的任务。C05扩展至限定范围实体L2，见[混杂核对](knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md)。E68锁定109保留图、60其他物品对照，仍在运行；0API。
+- **E67/E68完成：** 15108新执行/51631本地调用/6.556GPUh（含中断），GPU已释放。E67执行规则恢复在E68独立41装备图复现：固定asset上游换generic执行，Gemma F/A原goal +27.6/+36.6pp，32B +8.9/+13.0pp。60个其他物品图人物交付差+10.0/+38.3pp、同轨迹both亦增加；Gemma任务约81%–82%，32B约99%。32B纯否定未复现强阻挡/降低交付的统一分流。C04/C05 L2，见[预测完整读数](results/E68_prediction_readout.md)与[混杂核对](knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md)；0API，不追加盲网格。
 
 - **E65/E66完整结果：** 79原生wear/wield图，2370新轨迹、1896两模型动作概率上下文，1.196GPUh/15630本地生成调用，0API/训练/patch，GPU已释放。否定相对肯定式保有使实际goal F/A降低7.2/9.7pp，同时合法block增加约14pp；许可恢复取决于人设/任务/规则包。固定原计划和记忆换任务优先规则，使Gemma/32B目标命令概率提高17.6/12.6pp；直接效应记C05 L1。C04共存范围核对记L2，I04按人审PROMISING；暂缓正文。
 

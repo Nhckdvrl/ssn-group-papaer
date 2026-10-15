@@ -115,3 +115,14 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 - 科学图：[E65](E65_constraint_scope.png)、[E66](E66_action_competition.png)，另有PDF/SVG；[完整成本](E65_E66_ROUND_COSTS_2026-10-15.json)含全部载入和校验。
 - E63新增范围核对：[同轨迹任务＋合作](E63_task_cooperation_scope_audit.json)、[asset−generic](E63_asset_vs_priority_audit.json)，0新推理。
 - 原始完整模型输出/状态/计划回放仍在同一cache的`runs/e65_gemma_scope_s{0,1}`、`e65_gemma_scope_analysis`、`e66_{gemma,32b}_competition`，通过同研究室账号访问/rsync；大日志不入Git。
+
+
+## E67/E68完成结果
+
+- [完整报告](../PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)；E67 79图/9480执行，E68 109独立保留图/5628执行，全部两模型三seed，0API。
+- `E{67,68}_{gemma,32b}_cross_summary.json`：完整cells、配对图簇CI、拒绝/随机失败与actual calls；[预注册预测表](E68_prediction_readout.md)明确记录P2跨模型未成立。
+- `E{67,68}_*_plan_paths.json`：原生计划回放与所有正反向配对；说明案例在cache、附路径/hash；`E67_*_historical_reference.json`仅作历史参照。
+- [E68资格](E68_native_qualification.json)、[曝光核对](E68_reserve_exposure.json)、[Gemma续跑验证](E68_gemma_resume_validation.json)；全部旧调用与已完成轨迹保留。
+- `E68_*_block_targets_POST_HOC.json`：阻挡对象身份；[32B原子目标/作者动机样例](E68_32b_negative_transfer_examples_POST_HOC.json)明确POST-HOC，不改主读数。
+- [独立配对效应图](E67_E68_figures/E68_reserve_paired_effects.png)、[全109图](E67_E68_figures/E68_reserve_behavior.png)、[41装备图](E67_E68_figures/E68_reserve_equip_behavior.png)，另有PDF/SVG；[全成本](E67_E68_ROUND_COSTS_2026-10-15.json)为6.556GPUh/51631调用，含中断。
+- raw：`/home/xiang/.cache/game-npc-research/runs/e67_{gemma,32b}_cross_s{0,1}`、`e68_{gemma,32b}_reserve_s{0,1}`与`e68_native_reserve/snapshots.jsonl`。统计入口`native_rule_cross_report.py`、预测整理`native_reserve_predictions.py`；原始大文件不入Git。

@@ -1,0 +1,59 @@
+{
+  "status": "COMPLETE",
+  "experiments": {
+    "E67": {
+      "independent_worlds": 79,
+      "episodes": 9480,
+      "successful_queue_gpu_hours": 1.5919892983316741,
+      "actual_model_calls": 20225,
+      "prompt_tokens": 23288520,
+      "completion_tokens": 1453945,
+      "parse_errors": 1,
+      "protocol_errors": 1,
+      "native_rejections": 1691,
+      "repeat_block_rejections": 1319,
+      "native_stochastic_failures": 80
+    },
+    "E68": {
+      "independent_worlds": 109,
+      "episodes": 5628,
+      "successful_queue_gpu_hours": 3.9922754073044215,
+      "actual_model_calls": 31406,
+      "prompt_tokens": 34844775,
+      "completion_tokens": 2178983,
+      "parse_errors": 0,
+      "protocol_errors": 0,
+      "native_rejections": 1364,
+      "repeat_block_rejections": 1292,
+      "native_stochastic_failures": 66
+    }
+  },
+  "additional_interrupted_startup_gpu_hours": 0.9722222222222222,
+  "accounting": "Gemma prior full process reservation 2409s per shard is already included in final runtime; Qwen startup-only 1750s per shard added once. Conservative reserved cost includes loading and I/O.",
+  "max_simultaneous_gpus": 8,
+  "cloud_calls": 0,
+  "training_runs": 0,
+  "activation_patching_runs": 0,
+  "total_gpu_hours": 6.556486927858318,
+  "total_episodes": 15108,
+  "actual_model_calls": 51631,
+  "prompt_tokens": 58133295,
+  "completion_tokens": 3632928,
+  "result_sha256": {
+    "E67_gemma": "264f886a555dc92770035845566557fccdb8ed4c2a489d3ce7172f00e4193632",
+    "E67_32b": "253edf60f5ab9682b74e0dd9b2cfb81bca6a48e29416d6f7a16c00b6cdc7af1f",
+    "E68_gemma": "ad0a2b010c4e744dc53bf3ebc4b6f3fb26bfe9319ab8c4b11b5a949ab6e9f827",
+    "E68_32b": "ae025f06d3566081f049b6e5027ae9b15dd04417d8d9a5ef99f4693c1bc1a2a3"
+  },
+  "release_check": {
+    "date_utc": "2026-10-15T09:14Z",
+    "active_worker_pids": [],
+    "fvcrc21_gpu_memory_MiB": [
+      15,
+      15,
+      15,
+      15
+    ],
+    "remote_worker_groups_stopped_and_archived": true
+  }
+}

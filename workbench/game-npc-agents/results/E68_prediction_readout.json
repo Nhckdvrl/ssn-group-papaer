@@ -1,0 +1,1549 @@
+{
+  "status": "COMPLETE",
+  "interpretation": "Prespecified directional estimates; no automatic scientific pass/fail threshold.",
+  "scope": "all=109 graphs; wear_wield=41; give=58; other_item=60. Seeds averaged within graph.",
+  "intervals": "Pointwise 95% paired graph bootstrap, not simultaneous intervals.",
+  "negative_rule_scope": "Give goals can conflict directly with B. The 41 equip worlds are the prior-declared comparable P2 stratum.",
+  "estimates": [
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.2568807339449541,
+      "graph_bootstrap_95": [
+        0.18654434250764523,
+        0.33027522935779824
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.3639143730886851,
+      "graph_bootstrap_95": [
+        0.29357798165137616,
+        0.4373088685015291
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.290519877675841,
+      "graph_bootstrap_95": [
+        0.2201834862385321,
+        0.3608562691131499
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.3669724770642202,
+      "graph_bootstrap_95": [
+        0.2904434250764526,
+        0.4403669724770643
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": -0.024464831804281346,
+      "graph_bootstrap_95": [
+        -0.05198776758409785,
+        -0.0061162079510703364
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.04281345565749235,
+      "graph_bootstrap_95": [
+        0.01834862385321101,
+        0.07033639143730888
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.2782874617737003,
+      "graph_bootstrap_95": [
+        0.21100917431192662,
+        0.34862385321100914
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.2874617737003058,
+      "graph_bootstrap_95": [
+        0.2140672782874618,
+        0.3639143730886849
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.30886850152905204,
+      "graph_bootstrap_95": [
+        0.23241590214067281,
+        0.3853211009174312
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.4159021406727828,
+      "graph_bootstrap_95": [
+        0.3363914373088685,
+        0.4984709480122324
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.20183486238532106,
+      "graph_bootstrap_95": [
+        0.13761467889908258,
+        0.26605504587155965
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.24770642201834864,
+      "graph_bootstrap_95": [
+        0.17737003058103973,
+        0.3211009174311926
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": -0.04281345565749235,
+      "graph_bootstrap_95": [
+        -0.08562691131498472,
+        1.3377131758746645e-18
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.14984709480122324,
+      "graph_bootstrap_95": [
+        0.09480122324159022,
+        0.20489296636085633
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.2018348623853211,
+      "graph_bootstrap_95": [
+        0.1284403669724771,
+        0.27522935779816515
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.2782874617737003,
+      "graph_bootstrap_95": [
+        0.2079510703363914,
+        0.3547400611620795
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.3170731707317073,
+      "graph_bootstrap_95": [
+        0.20325203252032523,
+        0.4227642276422764
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.39837398373983735,
+      "graph_bootstrap_95": [
+        0.2845528455284553,
+        0.5203252032520325
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.20325203252032517,
+      "graph_bootstrap_95": [
+        0.10569105691056913,
+        0.29268292682926833
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.2845528455284553,
+      "graph_bootstrap_95": [
+        0.17886178861788615,
+        0.39837398373983735
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": -0.03252032520325203,
+      "graph_bootstrap_95": [
+        -0.08943089430894309,
+        0.0
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.04065040650406504,
+      "graph_bootstrap_95": [
+        0.008130081300813007,
+        0.08130081300813007
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.2845528455284552,
+      "graph_bootstrap_95": [
+        0.16260162601626016,
+        0.3983739837398374
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.2764227642276422,
+      "graph_bootstrap_95": [
+        0.17073170731707316,
+        0.39024390243902435
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "Exec G−A | upstream A",
+      "metric": "goal",
+      "mean": 0.2764227642276422,
+      "graph_bootstrap_95": [
+        0.17886178861788618,
+        0.3821138211382113
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "Exec G−A | upstream G",
+      "metric": "goal",
+      "mean": 0.2845528455284553,
+      "graph_bootstrap_95": [
+        0.18699186991869918,
+        0.3902439024390243
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.3739837398373984,
+      "graph_bootstrap_95": [
+        0.25203252032520324,
+        0.4878048780487804
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.4308943089430894,
+      "graph_bootstrap_95": [
+        0.3089430894308943,
+        0.5528455284552846
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.15447154471544713,
+      "graph_bootstrap_95": [
+        0.08130081300813008,
+        0.23577235772357724
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.15447154471544713,
+      "graph_bootstrap_95": [
+        0.07317073170731707,
+        0.25203252032520324
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": -0.09756097560975609,
+      "graph_bootstrap_95": [
+        -0.17073170731707318,
+        -0.04065040650406504
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.16260162601626016,
+      "graph_bootstrap_95": [
+        0.0813008130081301,
+        0.23577235772357727
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.2926829268292683,
+      "graph_bootstrap_95": [
+        0.15447154471544716,
+        0.4308943089430894
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.25203252032520324,
+      "graph_bootstrap_95": [
+        0.14634146341463414,
+        0.37398373983739824
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "Exec G−A | upstream A",
+      "metric": "goal",
+      "mean": 0.36585365853658536,
+      "graph_bootstrap_95": [
+        0.2680894308943089,
+        0.4715447154471544
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "gemma",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "Exec G−A | upstream G",
+      "metric": "goal",
+      "mean": 0.26016260162601623,
+      "graph_bootstrap_95": [
+        0.16260162601626016,
+        0.35772357723577225
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.18965517241379307,
+      "graph_bootstrap_95": [
+        0.08045977011494253,
+        0.29310344827586204
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.3333333333333333,
+      "graph_bootstrap_95": [
+        0.2241379310344827,
+        0.43678160919540215
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.36781609195402304,
+      "graph_bootstrap_95": [
+        0.2586206896551724,
+        0.4770114942528735
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.44252873563218387,
+      "graph_bootstrap_95": [
+        0.32183908045977005,
+        0.5574712643678161
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.0,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.034482758620689655,
+      "graph_bootstrap_95": [
+        0.005747126436781609,
+        0.07471264367816091
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.264367816091954,
+      "graph_bootstrap_95": [
+        0.17241379310344823,
+        0.36206896551724127
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.2701149425287356,
+      "graph_bootstrap_95": [
+        0.17227011494252875,
+        0.37931034482758613
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.22988505747126434,
+      "graph_bootstrap_95": [
+        0.12068965517241381,
+        0.33908045977011486
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.3793103448275862,
+      "graph_bootstrap_95": [
+        0.264367816091954,
+        0.49425287356321834
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.264367816091954,
+      "graph_bootstrap_95": [
+        0.16091954022988503,
+        0.3678160919540229
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.3505747126436781,
+      "graph_bootstrap_95": [
+        0.23563218390804594,
+        0.4655172413793102
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.01149425287356322,
+      "graph_bootstrap_95": [
+        -0.028735632183908046,
+        0.0574712643678161
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.10919540229885057,
+      "graph_bootstrap_95": [
+        0.040229885057471264,
+        0.18965517241379307
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.13793103448275862,
+      "graph_bootstrap_95": [
+        0.04597701149425287,
+        0.23563218390804594
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "gemma",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.28160919540229884,
+      "graph_bootstrap_95": [
+        0.17816091954022986,
+        0.3908045977011494
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P5",
+      "model": "gemma",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "transfer",
+      "mean": 0.09999999999999999,
+      "graph_bootstrap_95": [
+        0.02777777777777778,
+        0.17777777777777778
+      ],
+      "independent_graphs": 60
+    },
+    {
+      "prediction": "P5",
+      "model": "gemma",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "both",
+      "mean": 0.09444444444444443,
+      "graph_bootstrap_95": [
+        0.016666666666666684,
+        0.17222222222222225
+      ],
+      "independent_graphs": 60
+    },
+    {
+      "prediction": "P5",
+      "model": "gemma",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "goal",
+      "mean": -0.016666666666666666,
+      "graph_bootstrap_95": [
+        -0.08888888888888889,
+        0.061111111111111116
+      ],
+      "independent_graphs": 60
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.05810397553516819,
+      "graph_bootstrap_95": [
+        0.024464831804281346,
+        0.09181957186544372
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.1620795107033639,
+      "graph_bootstrap_95": [
+        0.10703363914373087,
+        0.22018348623853215
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": -0.0061162079510703364,
+      "graph_bootstrap_95": [
+        -0.03669724770642202,
+        0.024464831804281346
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": -5.0927661680053055e-19,
+      "graph_bootstrap_95": [
+        -0.033639143730886854,
+        0.033639143730886854
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.027522935779816515,
+      "graph_bootstrap_95": [
+        0.0030581039755351682,
+        0.06116207951070336
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.009174311926605505,
+      "graph_bootstrap_95": [
+        0.0,
+        0.021406727828746176
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.027522935779816515,
+      "graph_bootstrap_95": [
+        0.009174311926605505,
+        0.0489296636085627
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.10397553516819573,
+      "graph_bootstrap_95": [
+        0.061162079510703356,
+        0.14984709480122324
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.14067278287461774,
+      "graph_bootstrap_95": [
+        0.09480122324159022,
+        0.18960244648318042
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.2171253822629969,
+      "graph_bootstrap_95": [
+        0.1559633027522936,
+        0.2813455657492354
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.009174311926605505,
+      "graph_bootstrap_95": [
+        -0.012232415902140673,
+        0.03058103975535168
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.021406727828746176,
+      "graph_bootstrap_95": [
+        -0.00305810397553517,
+        0.04587155963302753
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.0764525993883792,
+      "graph_bootstrap_95": [
+        0.030581039755351685,
+        0.12232415902140674
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.10703363914373089,
+      "graph_bootstrap_95": [
+        0.06116207951070337,
+        0.15596330275229356
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.021406727828746176,
+      "graph_bootstrap_95": [
+        0.0030581039755351674,
+        0.04281345565749236
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "all",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.1070336391437309,
+      "graph_bootstrap_95": [
+        0.051987767584097865,
+        0.16513761467889906
+      ],
+      "independent_graphs": 109
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.0975609756097561,
+      "graph_bootstrap_95": [
+        0.04065040650406504,
+        0.17073170731707316
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.20325203252032517,
+      "graph_bootstrap_95": [
+        0.11382113821138212,
+        0.30081300813008127
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.016260162601626018,
+      "graph_bootstrap_95": [
+        -0.03252032520325203,
+        0.06504065040650406
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.024390243902439025,
+      "graph_bootstrap_95": [
+        -0.03252032520325203,
+        0.08130081300813007
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.008130081300813007,
+      "graph_bootstrap_95": [
+        0.0,
+        0.024390243902439022
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.016260162601626015,
+      "graph_bootstrap_95": [
+        0.0,
+        0.04065040650406504
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.06504065040650406,
+      "graph_bootstrap_95": [
+        0.016260162601626015,
+        0.12195121951219512
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.07317073170731707,
+      "graph_bootstrap_95": [
+        0.016260162601626015,
+        0.14634146341463414
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "Exec G−A | upstream A",
+      "metric": "goal",
+      "mean": 0.08943089430894308,
+      "graph_bootstrap_95": [
+        0.03252032520325203,
+        0.17073170731707313
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "firm",
+      "contrast": "Exec G−A | upstream G",
+      "metric": "goal",
+      "mean": 0.13008130081300812,
+      "graph_bootstrap_95": [
+        0.056910569105691054,
+        0.2195121951219512
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.22764227642276424,
+      "graph_bootstrap_95": [
+        0.1544715447154471,
+        0.31707317073170715
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.3008130081300813,
+      "graph_bootstrap_95": [
+        0.19512195121951217,
+        0.4065040650406503
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": 0.03252032520325203,
+      "graph_bootstrap_95": [
+        0.008130081300813007,
+        0.06504065040650406
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": 0.06504065040650406,
+      "graph_bootstrap_95": [
+        0.024390243902439022,
+        0.10569105691056911
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.04878048780487805,
+      "graph_bootstrap_95": [
+        -0.016463414634146276,
+        0.12195121951219512
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.15447154471544713,
+      "graph_bootstrap_95": [
+        0.08130081300813008,
+        0.2439024390243902
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.04878048780487805,
+      "graph_bootstrap_95": [
+        -1.029551331270788e-18,
+        0.1056910569105691
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.1056910569105691,
+      "graph_bootstrap_95": [
+        0.03252032520325203,
+        0.1869918699186992
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "Exec G−A | upstream A",
+      "metric": "goal",
+      "mean": 0.13008130081300814,
+      "graph_bootstrap_95": [
+        0.06504065040650406,
+        0.1951219512195122
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P4",
+      "model": "32b",
+      "scope": "wear_wield",
+      "persona": "agreeable",
+      "contrast": "Exec G−A | upstream G",
+      "metric": "goal",
+      "mean": 0.09756097560975609,
+      "graph_bootstrap_95": [
+        0.03252032520325203,
+        0.1707317073170732
+      ],
+      "independent_graphs": 41
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.028735632183908042,
+      "graph_bootstrap_95": [
+        0.005747126436781609,
+        0.05747126436781609
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.10919540229885055,
+      "graph_bootstrap_95": [
+        0.028735632183908046,
+        0.18965517241379304
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": -0.022988505747126436,
+      "graph_bootstrap_95": [
+        -0.06896551724137931,
+        0.01738505747126489
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": -0.01149425287356322,
+      "graph_bootstrap_95": [
+        -0.0632183908045977,
+        0.034482758620689655
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.04597701149425287,
+      "graph_bootstrap_95": [
+        0.0,
+        0.10344827586206896
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.005747126436781609,
+      "graph_bootstrap_95": [
+        0.0,
+        0.017241379310344827
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.005747126436781609,
+      "graph_bootstrap_95": [
+        0.0,
+        0.017241379310344827
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "firm",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.11494252873563217,
+      "graph_bootstrap_95": [
+        0.057471264367816084,
+        0.17816091954022983
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "goal",
+      "mean": 0.05172413793103448,
+      "graph_bootstrap_95": [
+        1.1863913427657474e-18,
+        0.11494252873563217
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P1",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "G−A",
+      "metric": "first_step_goal",
+      "mean": 0.13218390804597702,
+      "graph_bootstrap_95": [
+        0.05747126436781607,
+        0.2126436781609195
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "first_step_block",
+      "mean": -0.005747126436781609,
+      "graph_bootstrap_95": [
+        -0.04037356321839076,
+        0.028735632183908046
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "any_legal_block",
+      "mean": -0.005747126436781609,
+      "graph_bootstrap_95": [
+        -0.04597701149425287,
+        0.028735632183908046
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P2",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "B−G",
+      "metric": "transfer",
+      "mean": 0.10344827586206895,
+      "graph_bootstrap_95": [
+        0.04597701149425287,
+        0.17241379310344823
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "transfer",
+      "mean": 0.051724137931034475,
+      "graph_bootstrap_95": [
+        6.380592095546877e-19,
+        0.10919540229885058
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_examine",
+      "mean": 0.005747126436781609,
+      "graph_bootstrap_95": [
+        0.0,
+        0.017241379310344827
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P3",
+      "model": "32b",
+      "scope": "give",
+      "persona": "agreeable",
+      "contrast": "A−G",
+      "metric": "any_speech",
+      "mean": 0.09195402298850575,
+      "graph_bootstrap_95": [
+        0.022988505747126436,
+        0.16666666666666666
+      ],
+      "independent_graphs": 58
+    },
+    {
+      "prediction": "P5",
+      "model": "32b",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "transfer",
+      "mean": 0.3833333333333334,
+      "graph_bootstrap_95": [
+        0.27777777777777773,
+        0.4833333333333333
+      ],
+      "independent_graphs": 60
+    },
+    {
+      "prediction": "P5",
+      "model": "32b",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "both",
+      "mean": 0.3833333333333334,
+      "graph_bootstrap_95": [
+        0.27777777777777773,
+        0.4833333333333333
+      ],
+      "independent_graphs": 60
+    },
+    {
+      "prediction": "P5",
+      "model": "32b",
+      "scope": "other_item",
+      "persona": "agreeable−firm",
+      "contrast": "A−F | generic",
+      "metric": "goal",
+      "mean": 0.005555555555555555,
+      "graph_bootstrap_95": [
+        -0.011111111111111112,
+        0.022222222222222223
+      ],
+      "independent_graphs": 60
+    }
+  ]
+}

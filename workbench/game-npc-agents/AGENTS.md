@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**最新用户决定（2026-10-15）：** 授权[E67真实执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立世界预测](experiments/E68-clean-reserve-rule-predictions.md)，仍暂缓论文。E67已在本地4卡启动；E68锁定109未在本地探索使用的世界与60其他物品对照。先区分首次合法防卫、重复拒绝和原目标执行；规则交叉不等于可加中介分解，审计的威胁锚定/词汇启动仍待证据。
+**最新用户决定与完成状态（2026-10-15）：** 授权的[E67真实执行交叉](experiments/E67-stage-rule-physical-cross-swap.md)与[E68独立世界预测](experiments/E68-clean-reserve-rule-predictions.md)已全部完成，先读[本轮完整报告](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)。15108分支/51631本地调用/6.556GPUh，0API，worker均退出。执行规则恢复跨两模型、独立41装备图复现；60其他物品图保留人物合作差，但Gemma任务水平约81%–82%。统一三向分流未成立，32B纯否定未降低请求Give。C04/C05 L2、I04 PROMISING、全局PROPOSED；论文仍暂缓，不自动追加措辞网格或训练。
 
 **2026-10-15进度报告后用户再审计：** 不把Agreeable比Firm多给物品本身当独立贡献。停止新增Step语义细分/时态标注；禁止没有具体回路假说的单层patch网格。本轮固定任务为[I04](ideas/I04-commitment-conflict-stage-arbitration.md)的[E63任务资产与明确规则](experiments/E63-native-dependency-and-explicit-priority.md)、[E64双角色有代价谈判](experiments/E64-native-reciprocal-goal-negotiation.md)，收尾后见[复审报告](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)。E58第二句是一般责任表态，不是明确排他规则；“迎合式自毁/预训练先验绕过推理”只是待检验解释。原子goal、资产持有与完整私人利益分开，交付后恢复路径与敌对角色的攻击后果保留，不改世界使结论成立。
 

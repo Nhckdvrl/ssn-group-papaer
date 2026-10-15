@@ -7,8 +7,8 @@
 | C01 | 在 agent-sandbox 指定版本的 Action Castle 作者原生人物/目标/规则中，本地模型的决策能经原生 parser 执行，并产生可回放的客观世界后果；表达、情境意图、首次动作、重试与实际后果可以分开记录（基线可行性，不是新科学发现） | L1 | E07，results/E07_cpu_controls.json与E07_local_episode.json | 首次动作失败由重试或脚本补救；状态变化由玩家/世界脚本引起；引擎阻挡不等于模型守住目标 | 2026-10-14 | 未校对 |
 | C02 | 在固定LIGHT三阶段结构中，原persona附加的一致agreeable/关系相对firm/责任立场提高实际请求物品转移概率；三个模型在独立200图三seed确认，普通状态指令后仍在 | L2 | E50/E55/E56；results/E55_32b_independent_confirm.json（+13.7pp，95%[9.7,17.8]）、E55_gemma_independent_confirm.json（+6.7pp，[4.3,9.3]）、E55_27b_independent_confirm.json（+8.5pp，[5.7,11.7]）；knowledge/persona-behavior/C02_CONFIRM_AUDIT_2026-10-15.md | 完整角色指令包含责任/关系优先信息，非纯BigFive；同一任务族而非跨游戏泛化；各结构角色效应不同 | 2026-10-15 | 混杂核对完成；独立复算/跨游戏证据仍未完成，不升级L3 |
 | C03 | 在同一32B pilot的agreeable条件中，显式计划与意图记忆共同暴露的请求转移效应不等于两个单渠道效应相加；记忆可使计划中的即时请求被重新裁决 | L1 | E50；results/E50_32b_coherent_pilot_complete.json（交互−11.7pp，95%[−20.8,−2.5]）；E51/E53/E59已检验状态/目标/措辞竞争解释 | 完成状态误记、原任务显著性、条件承诺、社交循环；POST-HOC具体例不单独升级机制 | 2026-10-15 | 尚未在独立200图复现同四渠道，不升级 |
-| C04 | 在LIGHT固定100个非目标物品请求世界中，明确任务优先下三模型保持92%–99%的当前原子任务完成，同时agreeable相对firm仍提高实际交付17.7–42pp；同轨迹两事件都完成亦增加 | L2 | E63；results/E63_{32b,27b,gemma}_dependency.json；results/E63_task_cooperation_scope_audit.json；knowledge/persona-behavior/TASK_COOPERATION_CLAIM_AUDIT_2026-10-15.md | 非数学独立/零代价，32B仍有−4pp任务差；other物品非当前目标必需不等于无私人价值；单一环境三阶段框架 | 2026-10-15 | 范围与混杂核对完成；未独立跨系统校对，不升L3 |
-| C05 | 在LIGHT原79个wear/wield世界、固定具体上游输出与原生状态时，仅将执行规则从asset换为明确任务优先即可提高实际原goal完成；普通block状态/错误反馈下，Gemma F/A +32.1/+28.7pp，32B +7.6/+13.1pp，上游规则另有作用 | L2 | E66/E67；results/E67_{gemma,32b}_cross_summary.json；knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md | 三阶段包装、具体规则包、已观察图；非能力缺失/纯正确计划服从/词汇或神经回路归因；E68独立预测在跑 | 2026-10-15 | 12项混杂核对完成，实体反事实与概率读数分开；不升跨系统L3 |
+| C04 | 明确任务优先下，当前原子任务与角色合作差可以并存：E63的100个other-item图三模型交付差17.7–42pp；E68独立60图中Gemma/32B角色交付差+10.0/+38.3pp，同轨迹both差+9.4/+38.3pp，任务完成分别约81%–82%/99% | L2 | E63/E68；results/E63_task_cooperation_scope_audit.json；results/E68_{gemma,32b}_cross_summary.json；results/E68_prediction_readout.md；knowledge/persona-behavior/TASK_COOPERATION_CLAIM_AUDIT_2026-10-15.md | 非数学独立/零代价，不把探索集92%–99%外推为所有新图90%+；非当前目标必需不等于无私人价值；单一环境三阶段框架 | 2026-10-15 | 原范围核对及独立60图检验完成；未独立跨系统校对，不升L3 |
+| C05 | 固定asset上游与原生初态，仅换执行规则为任务优先即可提高实体goal：原79个wear/wield图Gemma F/A +32.1/+28.7pp、32B +7.6/+13.1pp；独立41图再得+27.6/+36.6pp及+8.9/+13.0pp，上游规则另有作用 | L2 | E66/E67/E68；results/E{67,68}_{gemma,32b}_cross_summary.json；knowledge/persona-behavior/EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md | 三阶段包装与具体规则包；非纯正确计划服从或神经回路归因；B的统一防卫/减少交付预测未跨模型成立 | 2026-10-15 | 12项混杂核对及独立原生实体预测完成，概率与实际后果分开；不升跨系统L3 |
 
 ## 作废/降级记录
 以下保留作废/降级及普通解释记录，不筛成功轨迹。
@@ -37,3 +37,7 @@
 2026-10-15 E63/E64全部收齐：E63三模型各200图/5400条，27B明确generic使agreeable原goal78.5→93.0%，+14.5pp [10.83,18.33]；asset亦到92.0%，不把Gemma资产包负向反转当统一机制。E64两模型各9图/108条及54普通通信控制完成，原生死亡/拒绝/随机失败入主表；资源取得、最终持有与作者用途分开，不由双向Give增长升级私人效用主张。保留原主指标，事后对齐资产观察窗口及模型交互明确标POST-HOC。C02仍L2、C03仍L1、I04仍SEED；没有新增神经机制或自毁主张。
 
 - 2026-10-15 E65/E66解释校正：没有将用户审计中的“否定约束→统一安全先验/熵增”登记成已证机制。E65五规则的许可恢复依赖人设/任务；合法block增加，E66 asset相对none在两模型反向。C04记录范围明确的任务/合作共存，C05只记录固定上下文canonical动作概率的直接规则效应，保持原实际episode主读数。
+
+- 2026-10-15 E67/E68全部完成：C05扩展至实体L2并在独立41图确认；C04补独立60图共存，保留Gemma较低的任务水平。E67普通block状态/错误反馈未恢复Gemma纯否定下任务。E68 P2没有跨模型完整成立：32B全109图B−G请求Give反而F +2.75pp [0.31,6.12] / A +7.65pp [3.06,12.23]；其中58个Give原目标可能与B冲突，41个装备图亦未得到请求Give减少。统一三向分流只保留为被本轮改写的预测，不登记成神经机制。原生block限制移动，不等于有效资产防护。所有失败、三seed与预测保持。
+
+- E68源目标层次核对（POST-HOC）：32B装备图中11条B转移失败/G原goal成功配对涉及5图；其中2图的作者短期动机明确要求将当前物品交给请求者，覆盖5条上述分支。原子goal与请求Give原计分不改；“原子指令执行改善”不能升级为“完整角色利益改善”，C04/C05仍限定原子事件。证据`results/E68_32b_negative_transfer_examples_POST_HOC.json`，不是LLM自述利益裁判。

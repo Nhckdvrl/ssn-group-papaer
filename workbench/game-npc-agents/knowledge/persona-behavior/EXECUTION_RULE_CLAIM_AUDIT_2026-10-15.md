@@ -2,7 +2,7 @@
 
 [E67](../../experiments/E67-stage-rule-physical-cross-swap.md)在原79个wear/wield世界、两模型、三seed、两traits完成9480条新执行分支。固定asset上游、使用真实block状态/错误反馈时，执行规则asset→generic的原goal效应：Gemma F +32.07pp [23.21,41.35]、A +28.69 [20.68,36.72]；32B F +7.59 [3.80,11.39]、A +13.08 [8.86,17.72]。固定generic上游时，该执行差仍为Gemma +29.54/+29.11pp、32B +10.97/+8.02pp。全部来自原生事件，不是语言裁判或首步概率代替轨迹。
 
-结果：[Gemma](../../results/E67_gemma_cross_summary.json)、[32B](../../results/E67_32b_cross_summary.json)；计划回放分别见`results/E67_{gemma,32b}_plan_paths.json`。采用L2、限定本框架/这些规则包，未宣布跨系统或神经回路机制。E68独立世界队列尚未完成，不提前计作确认。
+结果：[Gemma](../../results/E67_gemma_cross_summary.json)、[32B](../../results/E67_32b_cross_summary.json)；计划回放分别见`results/E67_{gemma,32b}_plan_paths.json`。采用L2、限定本框架/这些规则包，未宣布跨系统或神经回路机制。E68随后全部收齐，独立验证见文末。
 
 | EXECUTION §4项目 | 判断与证据 |
 |---|---|
@@ -26,3 +26,12 @@ Gemma纯否定规则下，状态/错误反馈使goal F −1.27pp [−5.06,3.38]�
 当前尚未各自操纵规则长度、词汇、逻辑范围或威胁语义。因此“词汇启动”“注意力威胁锚定”仍是竞争解释。NegaAlign已同时定义任务完成与约束满足，AgentIF已有条件触发评价；当前新增证据是具体规则部署阶段对实际行动路径的可重复影响，不能仅靠改名区分近邻。
 
 **原生block的实际含义（源代码事实，0新推理）：** LIGHT commit `71a06cae8573048b1af41507ac52fe33b650fab3`的[BlockEvent](https://github.com/facebookresearch/LIGHT/blob/71a06cae8573048b1af41507ac52fe33b650fab3/light/graph/events/graph_events.py#L1178)注册阻挡关系，[GoEvent.is_not_blocked](https://github.com/facebookresearch/LIGHT/blob/71a06cae8573048b1af41507ac52fe33b650fab3/light/graph/events/graph_events.py#L704)在对方移动时检查它；StealObjectEvent的成功检查不依赖这一阻挡关系。因此数据中的block是对另一角色移动的控制，不能直接解释成有效资产保护。威胁解释、动作词语义联想和原生行动用途理解仍是不同解释。保留全部原有block读数及“defense”历史字段名，正文称“阻挡动作”，不改引擎或事后重标成有益/有害。
+
+## E68独立预测完成
+
+109本地未用于探索的原生图、两模型各2814条、三seed全部保留，0协议失败。41装备图固定asset上游的Exec G−A goal：Gemma F +27.64pp [17.89,38.21]、A +36.59 [26.81,47.15]；32B F +8.94 [3.25,17.07]、A +13.01 [6.50,19.51]。固定generic上游同样支持执行差；C05 L2有独立场景证据。源hash、模型、种子与规则在首调用前锁定；原计划未筛选，Gemma续跑旧输出全部精确复用并通过逐episode校验。
+
+P2不完整成立：Gemma B−G明显转向block，32B的变化小、请求Give没有下降。109图32B请求Give差F +2.75pp [0.31,6.12] / A +7.65 [3.06,12.23]；58个Give层的规则冲突与41个装备层全部公布，不更换预测或剔除世界。故不把C05升级成跨模型统一任务/防卫/转移机制。逐项读数见[完整预测表](../../results/E68_prediction_readout.md)，正文继续暂缓。
+
+
+源目标层次补充：E68中32B装备图有11条“B交出且未做原goal、G做原goal”的分支，5个世界全部列入POST-HOC样例资产。村妇/草药两图的作者短期动机明确要求对应Give，覆盖其中5条。保持原子goal与Give两个物理读数，不把前者提升为总体效用金标，也不把这些模型行为自动称为违禁/自毁。C05是指定原子目标的阶段控制证据。
