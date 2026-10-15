@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：用户已恢复，并要求2026-10-15继续按大问题探索。** 历史入口为 [进度报告](PROGRESS_REPORT_2026-10-14.md)；当前推进 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[E58指令分量](experiments/E58-disposition-and-priority-components.md) 与 [E59同历史事实记录](experiments/E59-fixed-history-state-invariance.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
+**执行：用户恢复科研后，要求本轮完成并再次报告供检查。** 入口为 [本轮进度报告](PROGRESS_REPORT_2026-10-15.md)；历史见 [上次报告](PROGRESS_REPORT_2026-10-14.md)。当前 [I04人物设定与决策](ideas/I04-commitment-conflict-stage-arbitration.md)、[原生结果综合](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)、[E62接收者因果诊断](experiments/E62-native-recipient-causal-diagnostic.md)。PCSP／MeltingPot小模型RL及其后续诊断停止追加；禁止1200帧全图漫游、只改conversation的总体人格实验、无实体完成判定的任务研究。全部历史证据保留。
 
 ## 当前研究动作
 
@@ -12,8 +12,8 @@
 
 - **原生决策切片：** E50得到360个不同LIGHT图，40 pilot／200 confirm／120 reserve固定。三模型各1680完整分支；完整渠道agreeable−firm的实际请求转移差：32B +13.3pp [4.2,23.3]、27B +5.0pp [0,10.8]、Gemma +9.2pp [3.3,16.7]。人设在真实行动上有效。
 - **阶段与渠道：** 32B 的单 seed 2×2 阶段干预已完成；固定下游人设，conversation 人设的请求转移效应约 +15pp，固定 conversation 的下游合并效应约 +2.5pp。完整渠道低于 agenda-only；agreeable 渠道交互 −11.7pp，95%[−20.8,−2.5]。当前检查的是承诺如何传递及被重新裁决。
-- **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。E53的32B直接决策40图×三seed已完成：原人物差+11.7pp [4.2,20.0]，不同任务执行状态记录可放大或压平人物差；E54检查这些语义在自然文本中多常见，E55以普通一句事实指令为强对照。
-- **独立确认与解释：** 200新世界×三seed，32B/Gemma各5600完整分支；实际请求人物差+13.7pp [9.7,17.8]/+6.7pp [4.3,9.3]。E56阶段结束一句恢复大量原目标行动，接受普通指令范围解释；数值与下一步见 [综合结果](knowledge/persona-behavior/NATIVE_ROLE_RESULTS_2026-10-15.md)。E57已完成39原世界的双私有目标/动态伙伴/不可逆消费，两强模型全部三seed。E58三家族确认只性格句仍影响交付；E59用同一明确未来历史区分记录问题。
+- **机制诊断：** 三阶段白盒没有共同单调耗散；E52单一鸟案例中，32B自己台词worm→nut使eat从6/32到27/32，31层词位patch为21/32、sham6/32。27B patch与随机都28/32，机制未统一。E53三个模型全部40图×三seed完成；不同状态记录可改变人物效应，外加记录不等于自然错误频率。
+- **独立确认与解释：** 三个模型各200新世界×三seed/5600完整分支；实际请求人物差32B13.7pp [9.7,17.8]、27B8.5pp [5.7,11.7]、Gemma6.7pp [4.3,9.3]。E56普通阶段结束解释大量无动作；E57两强模型39原世界动态伙伴互动，E58分量、E59同未来记录、E60/E61共2400完整原生分支均完成。E62三模型各4896原生选择/2448概率读出完成；同未来承诺的参数角色差1.47/5.88/0pp，单层donor无统一定向控制。固定动作族诊断与自由NPC行为、完整私有利益分开。
 - **数据与近邻：** Step5完成200 confirm自然请求构造；盲检不展示行为结果，澄清盲检185保留／14复核／1拒绝，全部200为主表；[派生请求与QC](results/E55_natural_requests.jsonl)已公开。E54全部720文本盲标注完成。NPC和实体评价均本地；Step仅Plan做数据，密钥不入Git。已核读 [五篇机制近邻](knowledge/persona-behavior/MECHANISTIC_NEIGHBORS_2026-10-15.md)，人格信号竞争、情境加权和角色信念分离均已有owner。
 
 以下是已封存的基线背景，历史过程见进度报告；不按旧“下一步”恢复执行。
@@ -36,4 +36,4 @@
 
 完整轨迹、checkpoint、模型输入输出保存在`/home/xiang/.cache/game-npc-research/runs/`，不进Git；E35完整三人轨迹在`e35_original_cast/`。模型复用HuggingFace缓存；上游源码在同缓存`sources/`，版本与hash见各结果manifest。原PCSP主pin5420f7b与MeltingPot隔离分支4fbbffa分别保留，不改运行中源码。
 
-环境优先现有Conda／venv：NPC／Mini-Inzoi用fgvd＋deps overlay，MeltingPot用lightwam＋项目隔离overlay。用户已授权七节点全部GPU；07:00 Asia/Tokyo起本项目最多8卡，不干扰其他任务。核心链路零付费API，不允许SDK云端fallback。依据实际计算特点使用GPU；先原生完整episode再扩大。
+环境优先现有Conda／venv：NPC／Mini-Inzoi用fgvd＋deps overlay，MeltingPot用lightwam＋项目隔离overlay。用户已授权七节点全部GPU，07:00 Asia/Tokyo起最多8卡；本轮采用全时≤8，不干扰其他任务。NPC/模拟伙伴/物理判定全部本地，无SDK云fallback；用户单独授权Step5数据用途，只走Token Plan、不走现金端点。实际分项成本见本轮报告与结果账本。

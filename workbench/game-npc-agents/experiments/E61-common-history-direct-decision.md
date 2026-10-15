@@ -1,5 +1,11 @@
 # E61：相同历史的直接决策与动作参数粒度（2026-10-15）
 
+本轮收尾DATA补全登记（请求发出前）：原20批源动机抽取完成，301685 provider tokens；142/200条通过逐字引文与字段资格。6批截尾及20条缺失受益者枚举均保留，不从姓名自动推断类别。仅58个缺失ID以每批4条、2并发、明确JSON字段重新抽取；同Step Plan端点/step-5-preview，不调用现金端点，不重做已合格142条，不向NPC输入这些标注。补全不是新增行为实验。
+
+DATA恢复记录：15补缺批次完成、130733 provider tokens；合并后195/200合格。1个ID复制错误、1个空内容截尾批次的4行保留，只补这5个原ID、每批1行、2并发；这是原DATA字段/截尾恢复，没有新增NPC干预、换场景或筛结果。
+
+DATA最终：200/200合格，40个Plan请求/453124 provider tokens，失败/恢复全计入；逐字引文/ID校验通过，60行显式字段别名规范化、21原无效row保留。原give102图short scope self30/other61/mixed1/unknown10，mid56/31/5/10，long62/24/14/2。源动机的受益目的与实际recipient/真实效用分开，不把Give自动映射为无私。完整可审阅派生结果 `results/E61_source_motivation_data.json`；原请求/响应/失败在 `runs/e61_source_motivation_blind_data`、`*_recovery`、`*_recovery_single`。这是描述性DATA，语义类别未有人类独立金标，既有行为主读数未改。
+
 - **状态：** DONE；三家族各200图/400完整分支完成。
 - **对应：** I04 / P12 / C02；同明确承诺后的动作与原目标接收者绑定。
 - **类型：** 竞争解释，不预定新机制或训练。
@@ -24,3 +30,5 @@
 102个原goal=give参数组：自然direct P差−1.0/2.0/1.0pp，同历史direct为2.9/7.8/1.0pp，同历史plan为7.8/22.5/8.8pp；另98图对应的差不同，完整五种goal分组均保存。弱差也可能是原任务占主导、基线接近floor，或者原目标关系/受益不同；不先断言缺乏fine-grained persona能力。E62固定Give动作族并读完整候选分数/真实recipient及源P因果交换，区分这些解释。
 
 results/E61_*_common_history_direct.json包含全部200图、组级区间、成本与错误。共同说话历史是显式干预；原人物/动机/目标/规则未改。C02/C03/I04状态不自行升级。
+
+DATA补充（行为冻结后、调用前登记）：对全部200原场景，Step5 Plan仅见原角色、short/mid/long motivation与请求原文，隐藏P/模型/condition/行为。逐层抽取文本明确的受益对象self/other/self_and_other/unspecified及原文证据，标请求是否声称帮助原动机并引用请求原句；不是判断真实效用、正确动作或科研假说。物理recipient/Goal真值仍用native parser。目的为核查Give原目标是否具有私人利益/关系动机，不能从verb推无私或唯一正确选择。全200保留，最多20批×10条/2worker，low/16384，仅Plan固定端点；缺项/歧义保存，禁止现金/科学审计fallback。属于POST-HOC语义分层，不使组间关联变因果。

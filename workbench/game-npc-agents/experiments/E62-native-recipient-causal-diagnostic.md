@@ -1,6 +1,6 @@
 # E62：固定动作族后的接收者选择与因果白盒诊断（2026-10-15）
 
-- **状态：** RUNNING / PROFILING；32B首图完成后固定全102图已启动；Gemma原loader失败保留，v2首图恢复。
+- **状态：** DONE；三模型各102图/4896真实Give选择、2448实际解码概率读出完成；原profile/失败保留。
 - **对应：** I04 / P12 / C02；E58/E60/E61的动作种类与参数粒度线索。
 - **类型：** 有原生后果的局部机制诊断；不是新的persona steering方法。
 - **问题：** 当共同give动作已经指定，角色信息还能改变交给谁吗？明确承诺和原目标/请求者绑定怎样影响这项选择，内部角色信号是否真的参与参数裁决？
@@ -18,7 +18,7 @@
 - **算力：** 先CPU资格与单图完整profile。优先32B/Gemma两家族，单卡各自运行，实际成本后同固定102图继续，27B条件一致扩展而非择结果；现有fgvd/cache，总占用≤8。每模型102×三context×两P×四干预×两draw=4896原生单步诊断，另612prefill及1224候选打分，估计1–4GPUh/模型含load。无训练、0API。按实测信息量推进，不占满卡凑矩阵。
 
 ## 结果
-待CPU资格与真实运行。不是为某个钦定管道公式填数据。
+三模型全cohort已完成；不是为某个钦定管道公式填数据。原运行前补充与资格记录按下文保留。
 
 CPU完整资格：102不同原世界、204当前合法目标物品Give命令，204/204真实执行且原goal/R结果匹配，0模型调用。数据路径runs/e62_native_recipient_cpu；首版本地adapter把官方类GiveObjectEvent误写GiveEvent，在GPU前失败并纠正，未改作者引擎或世界，不作科学结果。
 
@@ -27,3 +27,15 @@ CPU完整资格：102不同原世界、204当前合法目标物品Give命令，2
 首图32B：48真实诊断+6prefill+12完整候选打分，26.90秒（load22.77秒），0协议/原生失败，12配对sham全匹配；N=1只用于成本/闭环，不判科学效果。Gemma首版loader沿用旧Transformers属性而失败，已按当前官方安装源码改model.model.language_model，原失败目录保留，以v2再资格；不修改任何世界或模型权重。
 
 新增竞争解释：原goal=give的目标关系/实际受益对象与其他动作族不同，不能把分层差全归细参数能力；原作者短中长动机与物理recipient不同。私人利益未知处保留未知，不从Give句型推“无私”。完整候选language log-likelihood与trie限制后的选择概率不是同一量，将分别解释。
+
+概率读出补充（全cohort结果分析前）：本批每图恰好两个合法Give叶节点，最长共同token prefix后首次分叉决定完整命令，余下token由trie强制。因此另用同一模型/输入/保存residual及相同logits processors取一次first-branch分布，记录temperature.7后的exact command概率与log-odds，sham/donor/random同样读出。每完整模型2448个单token readout、不重新执行native、不重抽已有样本；Source完整冻结后运行，估计0.1–0.5GPUh/模型。完整suffix原语言log-likelihood仍保留，不把它冒称trie选择概率。此补充提高信息密度、检查floor与角色分数差，主native读数不变、不以“有微小分数差”当新能力。
+
+### 三模型完整结果
+
+三个模型共14688真实Give选择，另1836 residual capture、3672完整候选打分、7344 exact概率读出。全部协议/native错误0；3672个动作baseline/sham配对完全一致，概率sham精确差0。参数动作均由原native引擎执行，没有权重训练或world修改。
+
+同未来承诺的实际接收者P差32B1.47pp [0,3.43]、27B5.88pp [2.94,9.31]、Gemma0；对应exact概率质量P差1.54pp [0.32,3.14]、5.36pp [3.56,7.41]、0.038pp [0.001,0.103]。binding的实际差0/3.43/1.96pp，exact差0.68/4.55/2.02pp。低基线与抽样读数使动作翻转少，不能推人格表征消失；原goal/current agenda仍重复明确，关系/目的与粒度需进一步同图分离。
+
+单中间层donor有向动作变化很小：32B全部0，27Bfuture/binding各−0.245pp，Gemma无承诺+0.245pp；随机同样可有零星变化。donor有向概率变化32Bbinding约−0.0465pp、27Bfuture−0.0882pp、Gemmabinding+0.0548pp，不支持稳定跨模型的角色定向控制。此单层/单位置阴性不判整条线失效，也不追加扫层找阳性。
+
+完整结果 `results/E62_{32b,27b,gemma}_native_recipient.json` 与 `E62_*_recipient_probabilities.json`；CPU资格 `E62_cpu_qualification.json`。原始prompts/命令/native后果/residual张量在 `runs/e62_*_recipient_all`；概率在 `runs/e62_*_recipient_probabilities`。三个模型及概率final runtime合计约2.103GPUh（含各载入，不含首图profile/失败资格）；exact附录与主自由菜单证据分开。

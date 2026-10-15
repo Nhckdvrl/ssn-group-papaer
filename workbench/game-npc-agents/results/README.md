@@ -75,4 +75,24 @@ E49：[全部24条跨角色结果](E49_complete_cross_role_commitments.json)、[
 - Raw E59/E60/E61：`~/.cache/game-npc-research/runs/e59_*`、`e60_*_common_commitment`、`e61_*_common_history_direct`；含全部输入输出、原生轨迹及失败，checkpoint/原始大日志不入git。
 
 - E61：`E61_{32b,27b,gemma}_common_history_direct.json`；1200完整分支，同一明确历史的直接决策及动作族/recipient组别。
-- E62：`E62_cpu_qualification.json`；102图全部204当前合法Give真实执行。白盒/raw在`runs/e62_*_recipient_*`，当前运行；中间层参数选择，不把固定动作族诊断当完整NPC能力。
+- E62：`E62_cpu_qualification.json`；三模型`E62_*_native_recipient.json`和`E62_*_recipient_probabilities.json`。102图全部204当前合法Give CPU执行；每模型4896原生选择及2448实际解码概率，中间层参数选择不是完整NPC能力。白盒/raw在`runs/e62_*_recipient_*`。
+
+## 本轮E50–62检查入口
+
+总览见 [2026-10-15进度报告](../PROGRESS_REPORT_2026-10-15.md)，统计按原world graph聚类；分支、seed、帧和调用不充当独立N。
+
+| 结果 | 内容 |
+|---|---|
+| `E50_*_coherent_pilot_complete.json` / `*_cross_pilot_complete.json` / `*_geometry.json` | 40图三家族一致P/局部交叉/匹配白盒 |
+| `E51_*_status_pilot_complete.json` / `E52_*_binding_patch.json` / `E53_*_direct_status.json` | 完成状态、N=1词位patch、外加错误状态竞争解释 |
+| `E54_step5_blind_text_labels.json` / `E54_text_action_associations.json` | 盲文本语义与POST-HOC关联，completed标签非物理真值 |
+| `E55_*_independent_confirm.json` / [200自然请求](E55_natural_requests.jsonl) | 三模型200图×三seed，全部固定样本与质量分层 |
+| `E56_*_state_action.json` | 普通结束阶段/状态/强动作与独立事实回答 |
+| `E57_*_native_interaction.json` | 真正双角色动作、严格goal与源reverse路径、food_energy=0 |
+| `E58_*_components.json` / [科学图](E58_persona_components.png) | 完整包/性格句/责任关系句；PNG/PDF/SVG |
+| `E59_*_fixed_history.json` / `E59_literal_claim_audit.json` | 同未来承诺；保留原盲标签与词义/对象复核 |
+| `E60_*_common_commitment.json` / `E61_*_common_history_direct.json` | 同承诺的生成更新/直接原生选择 |
+| `E61_source_motivation_data.json` | 源动机与请求支持主张的盲抽取，逐字引文，非效用金标 |
+| `E62_*_native_recipient.json` / `E62_*_recipient_probabilities.json` | 动作族条件化下recipient与局部内部干预/实际概率 |
+| [分项成本](ROUND_PROGRESS_COSTS_2026-10-15.json) | final GPU runtime与记录在案的Plan响应usage，失败/恢复透明 |
+| [本轮完成核对](ROUND_COMPLETE_2026-10-15.json) | 结果hash/数量/sham/本地进程与现场GPU读数；科学goal未标完成 |
