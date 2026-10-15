@@ -24,3 +24,5 @@
 Gemma纯否定规则下，状态/错误反馈使goal F −1.27pp [−5.06,3.38]、A −2.95 [−5.49,−0.84]；重复拒绝的点估计减少，但未消失，原goal未恢复。这个普通反馈包解释不了主要损失；没有据此宣布所有接口因素已被排除。首次合法block、后续重复拒绝和未推进的合法行为仍分别报告。
 
 当前尚未各自操纵规则长度、词汇、逻辑范围或威胁语义。因此“词汇启动”“注意力威胁锚定”仍是竞争解释。NegaAlign已同时定义任务完成与约束满足，AgentIF已有条件触发评价；当前新增证据是具体规则部署阶段对实际行动路径的可重复影响，不能仅靠改名区分近邻。
+
+**原生block的实际含义（源代码事实，0新推理）：** LIGHT commit `71a06cae8573048b1af41507ac52fe33b650fab3`的[BlockEvent](https://github.com/facebookresearch/LIGHT/blob/71a06cae8573048b1af41507ac52fe33b650fab3/light/graph/events/graph_events.py#L1178)注册阻挡关系，[GoEvent.is_not_blocked](https://github.com/facebookresearch/LIGHT/blob/71a06cae8573048b1af41507ac52fe33b650fab3/light/graph/events/graph_events.py#L704)在对方移动时检查它；StealObjectEvent的成功检查不依赖这一阻挡关系。因此数据中的block是对另一角色移动的控制，不能直接解释成有效资产保护。威胁解释、动作词语义联想和原生行动用途理解仍是不同解释。保留全部原有block读数及“defense”历史字段名，正文称“阻挡动作”，不改引擎或事后重标成有益/有害。

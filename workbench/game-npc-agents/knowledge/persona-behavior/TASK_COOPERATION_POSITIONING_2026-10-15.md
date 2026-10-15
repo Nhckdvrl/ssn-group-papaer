@@ -35,3 +35,5 @@ E63明确任务优先在32B恢复原任务，同时保留另一物品合作的�
 本轮研究动作是固定原生世界、全链一致persona及具体上游输出，交叉上游/执行规则，分别测首次防卫、重复拒绝和实体任务；再让预先写定的方向预测109个本地未探索世界。它检验可操纵的阶段条件和行为路径，不预设词汇启动或威胁注意力为真。即使asset→generic恢复成功，也只识别所测试规则包的执行因果效应；词频、长度、逻辑范围与社会焦点尚不是被各自随机化的因素。是否继续拆词须由实际成功/失败模式提供问题，而不是为了封堵所有假想质疑新增网格。
 
 本轮venue-corpus查询（运行中、主张升级前）：`nearest "game NPC personality task preservation rule framing action execution plan causal intervention cooperation"`。主要返回CaPo、Persona Dynamics、FAIRGAMER、Tracing the Persona Circuit和ThinkAct；作为已有定位的增量检查，不以词面rank作选题判决。NegaAlign与AgentIF正文再次核对，任务完成与约束满足的双指标及条件触发均已有直接先例。
+
+另核[Agent GPA v2](../papers/AGENT_GPA_2026.md)的阶段定义、数据/裁判协议、Table1–4与效率裁判附录：目标—计划—行动分解、计划质量与遵循分离、重复错误循环均已有明确先例。本轮可推进的是具体阶段干预对原生行为的预测，不能把换阶段标签或统计计划/行动不一致写成独占贡献。没有为这一近邻新开复现或追加GPU实验。
