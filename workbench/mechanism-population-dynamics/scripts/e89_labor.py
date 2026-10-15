@@ -48,6 +48,17 @@ PAST = [("go", "went"), ("see", "saw"), ("eat", "ate"), ("run", "ran"), ("take",
         ("fly", "flew"), ("begin", "began"), ("choose", "chose"), ("drive", "drove"), ("fall", "fell"), ("grow", "grew"),
         ("hold", "held"), ("leave", "left"), ("lose", "lost"), ("meet", "met"), ("sell", "sold"), ("send", "sent"),
         ("sing", "sang"), ("stand", "stood"), ("teach", "taught"), ("wear", "wore"), ("win", "won"), ("break", "broke")]
+PLURAL = [("dog", "dogs"), ("cat", "cats"), ("book", "books"), ("car", "cars"), ("tree", "trees"), ("house", "houses"),
+          ("girl", "girls"), ("boy", "boys"), ("bird", "birds"), ("cup", "cups"), ("door", "doors"), ("hat", "hats"),
+          ("key", "keys"), ("ship", "ships"), ("road", "roads"), ("game", "games"), ("song", "songs"), ("river", "rivers"),
+          ("friend", "friends"), ("city", "cities"), ("hand", "hands"), ("week", "weeks"), ("plan", "plans"), ("team", "teams")]
+SYNONYM = [("big", "large"), ("small", "little"), ("fast", "quick"), ("start", "begin"), ("end", "finish"), ("smart", "clever"),
+           ("happy", "glad"), ("sick", "ill"), ("angry", "mad"), ("rich", "wealthy"), ("hard", "difficult"), ("easy", "simple"),
+           ("shut", "close"), ("buy", "purchase"), ("help", "assist"), ("show", "display"), ("choose", "select"), ("try", "attempt")]
+COPYW = "apple river window garden doctor engine forest silver market planet guitar island pocket ladder candle mirror basket rocket".split()
+# clean-only ICL battery: same 3-demo format; transform tasks use "copy the query" as the foil, the copy task uses the
+# previous demonstration's output as the foil
+ICL_EXTRA = ("icl_copy", "icl_plural", "icl_capital", "icl_synonym", "icl_antonym_vs_copy")
 COLORS = "red blue green yellow black white brown purple orange pink gray".split()
 CO_OBJ = "ball box car cup hat pen book shirt door chair bag bike lamp key".split()
 SVA_N = [("key", "keys"), ("book", "books"), ("dog", "dogs"), ("car", "cars"), ("teacher", "teachers"),
@@ -209,6 +220,32 @@ class Builder:
             p = "".join(f"{a}: {b}\n" for a, b in d[:3]) + f"{d[3][0]}:"
             items.append((p, [self.one(d[3][1])], [self.one(d[3][0])], d[3][0]))
         return self.emit(items)
+
+    def _icl(self, pairs, copy_foil=True):
+        pairs = [(a, b) for a, b in pairs if self.one(a) and self.one(b) and a != b or (a == b and self.one(a))]
+        items = []
+        for i in range(self.n):
+            idx = self.rng.choice(len(pairs), 4, replace=False)
+            d = [pairs[j] for j in idx]
+            p = "".join(f"{a}: {b}\n" for a, b in d[:3]) + f"{d[3][0]}:"
+            fo = [self.one(d[3][0])] if copy_foil else [self.one(d[2][1])]
+            items.append((p, [self.one(d[3][1])], fo, d[3][0]))
+        return self.emit(items)
+
+    def icl_copy(self):
+        return self._icl([(w, w) for w in COPYW], copy_foil=False)
+
+    def icl_plural(self):
+        return self._icl(PLURAL)
+
+    def icl_capital(self):
+        return self._icl(CAPITALS)
+
+    def icl_synonym(self):
+        return self._icl(SYNONYM)
+
+    def icl_antonym_vs_copy(self):
+        return self._icl(ANT)
 
     def binding(self):
         cols, objs = self.ok(COLORS), self.ok(CO_OBJ)
@@ -380,6 +417,15 @@ def main():
             res[f"{t}__end"] = np.concatenate(ends).astype(np.float16)
             res[f"{t}__all"] = np.concatenate(alls).astype(np.float16)
         print(t, summ["tasks"][t], f"{time.time() - t0:.0f}s", flush=True)
+    summ["icl_extra"] = {}
+    for t in ICL_EXTRA:  # clean metrics only (no ablation): copy vs retrieve-then-transform ICL
+        cl = []
+        for g in getattr(B, t)():
+            lg = model(g["toks"].to(model.device)).logits[:, -1].float()
+            cl.append(P.metric(lg, P.index(g["tg"], model.device), P.index(g["fo"], model.device)).numpy())
+        cl = np.concatenate(cl)
+        summ["icl_extra"][t] = {"n": int(len(cl)), "metric": float(cl.mean()), "acc": float((cl > 0).mean())}
+        print(t, summ["icl_extra"][t], flush=True)
     if not a.smoke:
         sys.path.insert(0, str(mc.CACHE / "circuits-over-time"))
         from e81_carriers import generic_roles
