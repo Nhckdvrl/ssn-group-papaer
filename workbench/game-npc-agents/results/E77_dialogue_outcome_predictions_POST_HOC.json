@@ -1,5 +1,5 @@
 {
-  "status": "SOURCE_PREDICTIONS_FROZEN_AWAITING_COMPLETE_E77",
+  "status": "COMPLETE_POST_HOC",
   "analysis": "POST-HOC fixed competing predictions for E77 free off-diagonals",
   "model_calls": 0,
   "gpu_hours": 0,
@@ -70,5 +70,1353 @@
     "Equal mixture has no optimized weight; alpha=0.5 fixed uniformly for all five categories.",
     "Physical consumption secondary is reused from the review report; exact bound-goal main endpoint remains unchanged elsewhere.",
     "Three source seeds produce noisy predictive distributions; score differences remain paired and pointwise, not an automatic scientific decision rule."
-  ]
+  ],
+  "results": {
+    "gemma": {
+      "all_102_descriptive": {
+        "all": {
+          "worlds": 102,
+          "offdiagonal_episodes": 612,
+          "observed_category_counts": {
+            "no_successful_get": 342,
+            "get_then_physical_goal": 236,
+            "get_then_request": 28,
+            "get_without_decisive_use": 6
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.41095446443040023,
+                "ci95": [
+                  0.3616350672500406,
+                  0.46443310106411706
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.8507529867985746,
+                "ci95": [
+                  0.7661290056548624,
+                  0.9426345192187181
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.3616377680548804,
+                "ci95": [
+                  0.3240412142818559,
+                  0.4013963161021985
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7648706251492838,
+                "ci95": [
+                  0.7028054732051044,
+                  0.8312251826056039
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.36344730729757463,
+                "ci95": [
+                  0.328201128936423,
+                  0.40055839140063737
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.758051927344062,
+                "ci95": [
+                  0.7033090804704812,
+                  0.8160212593531296
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.04931669637551989,
+                "ci95": [
+                  0.010101010101010109,
+                  0.09328579916815208
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08588236164929082,
+                "ci95": [
+                  0.016407922067897443,
+                  0.16414862895643
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.047507157132825564,
+                "ci95": [
+                  -0.07443553178847295,
+                  -0.024117512018581522
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.09270105945451283,
+                "ci95": [
+                  -0.1451436571783053,
+                  -0.04657378952427629
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.0018095392426943264,
+                "ci95": [
+                  -0.015988764651866244,
+                  0.02063482417760494
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.006818697805221992,
+                "ci95": [
+                  -0.037826431077054815,
+                  0.024418051127963532
+                ]
+              }
+            }
+          }
+        },
+        "source_give": {
+          "worlds": 71,
+          "offdiagonal_episodes": 426,
+          "observed_category_counts": {
+            "no_successful_get": 269,
+            "get_then_physical_goal": 141,
+            "get_without_decisive_use": 4,
+            "get_then_request": 12
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.3730260349978658,
+                "ci95": [
+                  0.3205660963023317,
+                  0.42897800023280164
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7848018809031546,
+                "ci95": [
+                  0.6976074175959748,
+                  0.8789256746188423
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.3226632522407169,
+                "ci95": [
+                  0.2865789780002327,
+                  0.36216389244558245
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.6969939996480352,
+                "ci95": [
+                  0.640391209907662,
+                  0.7605220580671236
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.3301517091529894,
+                "ci95": [
+                  0.293717262251193,
+                  0.36841461995111147
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7036397958881708,
+                "ci95": [
+                  0.6483257157443229,
+                  0.7631584614786974
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.05036278275714894,
+                "ci95": [
+                  0.011950490823730255,
+                  0.09304310712761414
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08780788125511929,
+                "ci95": [
+                  0.018207805745973662,
+                  0.1644912734403405
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.0428743258448764,
+                "ci95": [
+                  -0.06984344081015013,
+                  -0.019089745082062615
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.08116208501498372,
+                "ci95": [
+                  -0.13497640170069192,
+                  -0.03562294802269636
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.007488456912272539,
+                "ci95": [
+                  -0.009079269002444403,
+                  0.024174523726380334
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.006645796240135562,
+                "ci95": [
+                  -0.02191527529058718,
+                  0.03306908584565972
+                ]
+              }
+            }
+          }
+        },
+        "source_use": {
+          "worlds": 31,
+          "offdiagonal_episodes": 186,
+          "observed_category_counts": {
+            "get_then_physical_goal": 95,
+            "get_then_request": 16,
+            "no_successful_get": 73,
+            "get_without_decisive_use": 2
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.49782280280814,
+                "ci95": [
+                  0.3963343108504399,
+                  0.6039278414644981
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.0018022938493758,
+                "ci95": [
+                  0.8252997176672584,
+                  1.1883421620086174
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.45090198169377055,
+                "ci95": [
+                  0.36523593708344443,
+                  0.542793032968986
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9203299932327892,
+                "ci95": [
+                  0.7761602336389543,
+                  1.0766715853552327
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.43970496756420513,
+                "ci95": [
+                  0.3653159157557986,
+                  0.5129298853639029
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.8826732606785221,
+                "ci95": [
+                  0.7646335219289339,
+                  1.0012933437137501
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.04692082111436949,
+                "ci95": [
+                  -0.0469208211143695,
+                  0.15249266862170086
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08147230061658692,
+                "ci95": [
+                  -0.08593091010134443,
+                  0.2712662285991901
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.05811783524393494,
+                "ci95": [
+                  -0.12245845552297162,
+                  -0.0047098551497378694
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.11912903317085363,
+                "ci95": [
+                  -0.24057641497000387,
+                  -0.022008517756094772
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": -0.011197014129565449,
+                "ci95": [
+                  -0.05625388785212833,
+                  0.03643695014662758
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.037656732554266714,
+                "ci95": [
+                  -0.11949543573697775,
+                  0.042981055271932155
+                ]
+              }
+            }
+          }
+        }
+      },
+      "exclude_profile_101_primary_explanatory": {
+        "all": {
+          "worlds": 101,
+          "offdiagonal_episodes": 606,
+          "observed_category_counts": {
+            "no_successful_get": 336,
+            "get_then_physical_goal": 236,
+            "get_then_request": 28,
+            "get_without_decisive_use": 6
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.413386793224777,
+                "ci95": [
+                  0.36614434170689797,
+                  0.46412323050486876
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.8547011834624907,
+                "ci95": [
+                  0.7737981876417432,
+                  0.9418404302234267
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.36358181272672724,
+                "ci95": [
+                  0.32599623598723504,
+                  0.40400540054005396
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7679685014008306,
+                "ci95": [
+                  0.7055098530476623,
+                  0.834447464158723
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.36540926819954717,
+                "ci95": [
+                  0.3315604287701498,
+                  0.40124989771704445
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7610822917361513,
+                "ci95": [
+                  0.7083896648889536,
+                  0.8171572301544381
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.049804980498049815,
+                "ci95": [
+                  0.010201020102010206,
+                  0.0948094809480948
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08673268206166003,
+                "ci95": [
+                  0.016784631097990596,
+                  0.16720809130363276
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.047977525025229784,
+                "ci95": [
+                  -0.07560824264244605,
+                  -0.024738837520115648
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.09361889172633969,
+                "ci95": [
+                  -0.14779336333555473,
+                  -0.04901910879869844
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.001827455472820015,
+                "ci95": [
+                  -0.016584840302212026,
+                  0.020811853912663998
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.006886209664679636,
+                "ci95": [
+                  -0.03904619658096222,
+                  0.024688982914354975
+                ]
+              }
+            }
+          }
+        },
+        "source_give": {
+          "worlds": 70,
+          "offdiagonal_episodes": 420,
+          "observed_category_counts": {
+            "no_successful_get": 263,
+            "get_then_physical_goal": 141,
+            "get_without_decisive_use": 4,
+            "get_then_request": 12
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.37599370326643033,
+                "ci95": [
+                  0.324746162927981,
+                  0.4335320739866193
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7895564060054417,
+                "ci95": [
+                  0.7039368959535146,
+                  0.8890388520161279
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.3249114521841793,
+                "ci95": [
+                  0.28870129870129857,
+                  0.3638744588744588
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7004941264466779,
+                "ci95": [
+                  0.6428123356388716,
+                  0.7629260716483406
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.3325068870523415,
+                "ci95": [
+                  0.2958254624163713,
+                  0.3708785911058637
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7072348626331011,
+                "ci95": [
+                  0.6514022841745672,
+                  0.7657951136298408
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.05108225108225107,
+                "ci95": [
+                  0.01298701298701299,
+                  0.09525974025974034
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08906227955876385,
+                "ci95": [
+                  0.02007211039783507,
+                  0.16828908247771057
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.043486816214088925,
+                "ci95": [
+                  -0.07182310114128296,
+                  -0.020462416371507256
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.08232154337234063,
+                "ci95": [
+                  -0.13648354586854705,
+                  -0.03761246171949834
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.007595434868162146,
+                "ci95": [
+                  -0.008817394726485621,
+                  0.024714679260133803
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.006740736186423213,
+                "ci95": [
+                  -0.02115544634214778,
+                  0.03440372749953116
+                ]
+              }
+            }
+          }
+        },
+        "source_use": {
+          "worlds": 31,
+          "offdiagonal_episodes": 186,
+          "observed_category_counts": {
+            "get_then_physical_goal": 95,
+            "get_then_request": 16,
+            "no_successful_get": 73,
+            "get_without_decisive_use": 2
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.49782280280814,
+                "ci95": [
+                  0.3963343108504399,
+                  0.6039278414644981
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.0018022938493758,
+                "ci95": [
+                  0.8252997176672584,
+                  1.1883421620086174
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.45090198169377055,
+                "ci95": [
+                  0.36523593708344443,
+                  0.542793032968986
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9203299932327892,
+                "ci95": [
+                  0.7761602336389543,
+                  1.0766715853552327
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.43970496756420513,
+                "ci95": [
+                  0.3653159157557986,
+                  0.5129298853639029
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.8826732606785221,
+                "ci95": [
+                  0.7646335219289339,
+                  1.0012933437137501
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.04692082111436949,
+                "ci95": [
+                  -0.0469208211143695,
+                  0.15249266862170086
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.08147230061658692,
+                "ci95": [
+                  -0.08593091010134443,
+                  0.2712662285991901
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.05811783524393494,
+                "ci95": [
+                  -0.12245845552297162,
+                  -0.0047098551497378694
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.11912903317085363,
+                "ci95": [
+                  -0.24057641497000387,
+                  -0.022008517756094772
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": -0.011197014129565449,
+                "ci95": [
+                  -0.05625388785212833,
+                  0.03643695014662758
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.037656732554266714,
+                "ci95": [
+                  -0.11949543573697775,
+                  0.042981055271932155
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "32b": {
+      "all_102_descriptive": {
+        "all": {
+          "worlds": 102,
+          "offdiagonal_episodes": 612,
+          "observed_category_counts": {
+            "get_then_physical_goal": 446,
+            "no_successful_get": 89,
+            "get_then_request": 49,
+            "get_without_decisive_use": 28
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.43596391724733974,
+                "ci95": [
+                  0.3824825798087831,
+                  0.4907375898017609
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9063428621966076,
+                "ci95": [
+                  0.8140803713850903,
+                  1.0025103498427304
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.35753254469832013,
+                "ci95": [
+                  0.3192891481661535,
+                  0.3966401987792361
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7596444086133431,
+                "ci95": [
+                  0.6977023445769966,
+                  0.8244835056987382
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.3753578566412791,
+                "ci95": [
+                  0.3361685032139578,
+                  0.4154195700318697
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7849387485751117,
+                "ci95": [
+                  0.722233162394135,
+                  0.8496773809935924
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.07843137254901959,
+                "ci95": [
+                  0.04811348781937016,
+                  0.11408199643493756
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.14669845358326442,
+                "ci95": [
+                  0.08957769047681337,
+                  0.21125037053024118
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.060606060606060594,
+                "ci95": [
+                  -0.08356492734834976,
+                  -0.04026764975962835
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.1214041136214961,
+                "ci95": [
+                  -0.1672204344117605,
+                  -0.08061018339239542
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.017825311942959006,
+                "ci95": [
+                  0.006022119591638305,
+                  0.03138402744017718
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.025294339961768317,
+                "ci95": [
+                  0.004826798100720669,
+                  0.04736274463634566
+                ]
+              }
+            }
+          }
+        },
+        "source_give": {
+          "worlds": 71,
+          "offdiagonal_episodes": 426,
+          "observed_category_counts": {
+            "get_then_physical_goal": 358,
+            "no_successful_get": 55,
+            "get_without_decisive_use": 4,
+            "get_then_request": 9
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.33360493539750885,
+                "ci95": [
+                  0.2852597679742365,
+                  0.38404725875916645
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7252289391147249,
+                "ci95": [
+                  0.6461536192586881,
+                  0.8083847144637482
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.29689985643890876,
+                "ci95": [
+                  0.25934117099289944,
+                  0.3350812866177782
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.6571682171808929,
+                "ci95": [
+                  0.597507624837263,
+                  0.7179039658730703
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.3036123074535365,
+                "ci95": [
+                  0.2651214449229813,
+                  0.34241357234314973
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.665249260273042,
+                "ci95": [
+                  0.606376933693796,
+                  0.7231697911587702
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.03670507895860008,
+                "ci95": [
+                  0.01536491677336747,
+                  0.06145966709346991
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.06806072193383193,
+                "ci95": [
+                  0.029757466753500803,
+                  0.1139693849242189
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.029992627943972363,
+                "ci95": [
+                  -0.04741396034609861,
+                  -0.01575291972218988
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.05997967884168296,
+                "ci95": [
+                  -0.09648517307273742,
+                  -0.031276340461346995
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.00671245101462772,
+                "ci95": [
+                  -0.0028721918286578937,
+                  0.016761727389128168
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.00808104309214897,
+                "ci95": [
+                  -0.009420982184327199,
+                  0.025884844426832476
+                ]
+              }
+            }
+          }
+        },
+        "source_use": {
+          "worlds": 31,
+          "offdiagonal_episodes": 186,
+          "observed_category_counts": {
+            "get_then_physical_goal": 88,
+            "get_then_request": 40,
+            "no_successful_get": 34,
+            "get_without_decisive_use": 24
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.6703990047098549,
+                "ci95": [
+                  0.5760197280725139,
+                  0.766377854794277
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.3211521699002748,
+                "ci95": [
+                  1.1514000449930548,
+                  1.4998263816275985
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.4964009597440683,
+                "ci95": [
+                  0.4297476228561273,
+                  0.5612725495423442
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9943479438296007,
+                "ci95": [
+                  0.8782998940075586,
+                  1.1121766703178597
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.5396783080067536,
+                "ci95": [
+                  0.4764929352172754,
+                  0.5994845818892739
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.0590662862992066,
+                "ci95": [
+                  0.9537029334806104,
+                  1.1621587719104371
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.17399804496578686,
+                "ci95": [
+                  0.09775171065493643,
+                  0.26783968719452583
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.32680422607067433,
+                "ci95": [
+                  0.18201256097329974,
+                  0.5003433657101497
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.13072069670310138,
+                "ci95": [
+                  -0.1909779614325068,
+                  -0.08202257175864212
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.26208588360106816,
+                "ci95": [
+                  -0.3836461200465863,
+                  -0.16379141236129816
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.04327734826268549,
+                "ci95": [
+                  0.012796587576646206,
+                  0.07936328090287037
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.06471834246960617,
+                "ci95": [
+                  0.012274193192575786,
+                  0.12443904685940624
+                ]
+              }
+            }
+          }
+        }
+      },
+      "exclude_profile_101_primary_explanatory": {
+        "all": {
+          "worlds": 101,
+          "offdiagonal_episodes": 606,
+          "observed_category_counts": {
+            "get_then_physical_goal": 441,
+            "get_then_request": 49,
+            "no_successful_get": 88,
+            "get_without_decisive_use": 28
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.4356981152660721,
+                "ci95": [
+                  0.38147451108747243,
+                  0.48953986307721675
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9059646766715289,
+                "ci95": [
+                  0.8122245722322069,
+                  1.000361551781532
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.35769031448599403,
+                "ci95": [
+                  0.32042931565883853,
+                  0.39636690941821445
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7601818894311521,
+                "ci95": [
+                  0.6986615972868082,
+                  0.8231546924203407
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.3752557073889207,
+                "ci95": [
+                  0.33595041322314045,
+                  0.4144518997354282
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7848961831978191,
+                "ci95": [
+                  0.7211769001315786,
+                  0.8473224239287699
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.07800780078007799,
+                "ci95": [
+                  0.0474047404740474,
+                  0.11341134113411339
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.14578278724037708,
+                "ci95": [
+                  0.0890438473743803,
+                  0.2111966507829909
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.06044240787715134,
+                "ci95": [
+                  -0.08351744265335621,
+                  -0.04047609306385181
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.12106849347371011,
+                "ci95": [
+                  -0.16812803729730297,
+                  -0.08068622983046608
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.017565392902926656,
+                "ci95": [
+                  0.005427133622453157,
+                  0.03046736491831002
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.024714293766666957,
+                "ci95": [
+                  0.004343826632695881,
+                  0.046067728032329856
+                ]
+              }
+            }
+          }
+        },
+        "source_give": {
+          "worlds": 70,
+          "offdiagonal_episodes": 420,
+          "observed_category_counts": {
+            "get_then_physical_goal": 353,
+            "no_successful_get": 54,
+            "get_without_decisive_use": 4,
+            "get_then_request": 9
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.331759149940968,
+                "ci95": [
+                  0.2822510822510821,
+                  0.3824537583628491
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.7220959296702273,
+                "ci95": [
+                  0.6404073889802298,
+                  0.8082622290322852
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.2962613144431325,
+                "ci95": [
+                  0.25800865800865785,
+                  0.3360881542699723
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.6564797796261247,
+                "ci95": [
+                  0.5957405682703586,
+                  0.7200793714236228
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.30243998425816593,
+                "ci95": [
+                  0.2631631247540337,
+                  0.3433717040535221
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.66347799468149,
+                "ci95": [
+                  0.603420167768044,
+                  0.7260918929338808
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.03549783549783549,
+                "ci95": [
+                  0.012121212121212128,
+                  0.05974025974025974
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.06561615004410257,
+                "ci95": [
+                  0.024168990169185677,
+                  0.11021771834657969
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.029319165682802035,
+                "ci95": [
+                  -0.045769382133018476,
+                  -0.01448248720975993
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.05861793498873725,
+                "ci95": [
+                  -0.09277195249939152,
+                  -0.02909888236213846
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.0061786698150334595,
+                "ci95": [
+                  -0.004014167650531277,
+                  0.016253443526170804
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.006998215055365311,
+                "ci95": [
+                  -0.012112499469383274,
+                  0.024715810497654398
+                ]
+              }
+            }
+          }
+        },
+        "source_use": {
+          "worlds": 31,
+          "offdiagonal_episodes": 186,
+          "observed_category_counts": {
+            "get_then_physical_goal": 88,
+            "get_then_request": 40,
+            "no_successful_get": 34,
+            "get_without_decisive_use": 24
+          },
+          "predictor_losses": {
+            "current_exec_trait": {
+              "brier": {
+                "estimate": 0.6703990047098549,
+                "ci95": [
+                  0.5760197280725139,
+                  0.766377854794277
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.3211521699002748,
+                "ci95": [
+                  1.1514000449930548,
+                  1.4998263816275985
+                ]
+              }
+            },
+            "dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.4964009597440683,
+                "ci95": [
+                  0.4297476228561273,
+                  0.5612725495423442
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.9943479438296007,
+                "ci95": [
+                  0.8782998940075586,
+                  1.1121766703178597
+                ]
+              }
+            },
+            "equal_mixture": {
+              "brier": {
+                "estimate": 0.5396783080067536,
+                "ci95": [
+                  0.4764929352172754,
+                  0.5994845818892739
+                ]
+              },
+              "log_loss": {
+                "estimate": 1.0590662862992066,
+                "ci95": [
+                  0.9537029334806104,
+                  1.1621587719104371
+                ]
+              }
+            }
+          },
+          "paired_loss_contrasts": {
+            "current_exec_trait_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.17399804496578686,
+                "ci95": [
+                  0.09775171065493643,
+                  0.26783968719452583
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.32680422607067433,
+                "ci95": [
+                  0.18201256097329974,
+                  0.5003433657101497
+                ]
+              }
+            },
+            "equal_mixture_minus_current_exec_trait": {
+              "brier": {
+                "estimate": -0.13072069670310138,
+                "ci95": [
+                  -0.1909779614325068,
+                  -0.08202257175864212
+                ]
+              },
+              "log_loss": {
+                "estimate": -0.26208588360106816,
+                "ci95": [
+                  -0.3836461200465863,
+                  -0.16379141236129816
+                ]
+              }
+            },
+            "equal_mixture_minus_dialogue_source_trait": {
+              "brier": {
+                "estimate": 0.04327734826268549,
+                "ci95": [
+                  0.012796587576646206,
+                  0.07936328090287037
+                ]
+              },
+              "log_loss": {
+                "estimate": 0.06471834246960617,
+                "ci95": [
+                  0.012274193192575786,
+                  0.12443904685940624
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "evaluation_source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s0/episodes.jsonl": "696c93e416bfa0b1ce593567ea13119ddf34b007056465c91579d1ec6fcd318c",
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s0/manifest.json": "70176cc1403e74360e5acf8edbb646f261319f1b65370b0f43f36a62f0375080",
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s0/runtime.json": "5a0af5918e151fd97dac61cb24dc4f5c33fb483c8251cb145150f884d700bc86",
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s1/episodes.jsonl": "93a0c3038f0d7814962f8368d538963b0c1d099af39ef20d1a0bc3da3097b074",
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s1/manifest.json": "ad6e1abebffe473573f1269ee35b1828bf1e0743d0030880d674aecf7157b6aa",
+    "/home/xiang/.cache/game-npc-research/runs/e77_gemma_s1/runtime.json": "2df8df21d3504d6493d58809e5d7e5a0da09eddd98693891c1b2547b6c834844",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s0/episodes.jsonl": "77842f235a36fe4730723d371cd691bf174147d1690450a01ab0828b76bb383d",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s0/manifest.json": "41d6524bf59127b736a18457f3e36dea95559f5d9d8c2b445419dc92df3d2dff",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s0/runtime.json": "613f17a67a382d083b3935ef59e484b83f6080d16914afae262809c40ff2d0f5",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s1/episodes.jsonl": "22d02e0682cbe8adc73670728aaeb54efc60ef74c71b85a4604408f62bfca584",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s1/manifest.json": "30f8b834062b8daea8b7c432c988923098d835cebbc9719c91f91963917c6b11",
+    "/home/xiang/.cache/game-npc-research/runs/e77_32b_s1/runtime.json": "8fa8714771dec0944bfa2fe4248e0fa20df6505b9809a0eac0ec44ffe0b4fdff"
+  }
 }

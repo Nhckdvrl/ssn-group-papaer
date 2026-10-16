@@ -1,0 +1,3288 @@
+{
+  "status": "INDEPENDENT_CPU_READBACK",
+  "source": "complete E77 raw, no new inference",
+  "statistics": {
+    "gemma": {
+      "all": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": 0.05392156862745098,
+            "graph_bootstrap_95": [
+              -0.0032679738562091335,
+              0.11274509803921566
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.05392156862745098,
+            "graph_bootstrap_95": [
+              -0.0032679738562091335,
+              0.11274509803921566
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.06372549019607844,
+            "graph_bootstrap_95": [
+              0.004901960784313734,
+              0.1241830065359477
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.011437908496732027,
+            "graph_bootstrap_95": [
+              -0.003267973856209149,
+              0.027777777777777776
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": 0.008169934640522875,
+            "graph_bootstrap_95": [
+              -0.03594771241830065,
+              0.05065359477124183
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.008169934640522875,
+            "graph_bootstrap_95": [
+              -0.03594771241830065,
+              0.05065359477124183
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.04411764705882353,
+            "graph_bootstrap_95": [
+              0.011437908496732032,
+              0.07843137254901959
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.03758169934640523,
+            "graph_bootstrap_95": [
+              0.0130718954248366,
+              0.06699346405228758
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.480392156862745,
+            "graph_bootstrap_95": [
+              0.3954248366013072,
+              0.5686274509803919
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.5130718954248366,
+            "graph_bootstrap_95": [
+              0.42810457516339867,
+              0.6013071895424834
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.5163398692810457,
+            "graph_bootstrap_95": [
+              0.43137254901960786,
+              0.6045751633986925
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.36928104575163395,
+            "graph_bootstrap_95": [
+              0.2973856209150327,
+              0.4444444444444443
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.36928104575163395,
+            "graph_bootstrap_95": [
+              0.2973856209150327,
+              0.4444444444444443
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.4150326797385621,
+            "graph_bootstrap_95": [
+              0.3366013071895425,
+              0.49673202614379064
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.03594771241830065,
+            "graph_bootstrap_95": [
+              0.0065359477124183,
+              0.0718954248366013
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.11111111111111112,
+            "graph_bootstrap_95": [
+              0.04248366013071896,
+              0.17973856209150324
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.1437908496732026,
+            "graph_bootstrap_95": [
+              0.0849673202614379,
+              0.20588235294117652
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.10130718954248363,
+            "graph_bootstrap_95": [
+              0.04248366013071897,
+              0.16013071895424838
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": -0.03594771241830065,
+            "graph_bootstrap_95": [
+              -0.0718954248366013,
+              -0.0065359477124183
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.4869281045751634,
+            "graph_bootstrap_95": [
+              0.4052287581699346,
+              0.5718954248366009
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.5261437908496732,
+            "graph_bootstrap_95": [
+              0.44444444444444436,
+              0.6111111111111107
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.5392156862745098,
+            "graph_bootstrap_95": [
+              0.45751633986928103,
+              0.6241830065359476
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.0130718954248366,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03594771241830065
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.37581699346405223,
+            "graph_bootstrap_95": [
+              0.2941176470588236,
+              0.4542483660130719
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.3823529411764705,
+            "graph_bootstrap_95": [
+              0.30383986928104567,
+              0.46078431372549006
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.45424836601307184,
+            "graph_bootstrap_95": [
+              0.3725490196078431,
+              0.5359477124183005
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.06209150326797385,
+            "graph_bootstrap_95": [
+              0.0261437908496732,
+              0.10784313725490195
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.11111111111111112,
+            "graph_bootstrap_95": [
+              0.04575163398692812,
+              0.1764705882352941
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.14379084967320263,
+            "graph_bootstrap_95": [
+              0.08169934640522876,
+              0.21241830065359474
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.08496732026143793,
+            "graph_bootstrap_95": [
+              0.029411764705882356,
+              0.14052287581699346
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": -0.049019607843137254,
+            "graph_bootstrap_95": [
+              -0.0915032679738562,
+              -0.013071895424836602
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": 0.0065359477124183,
+            "graph_bootstrap_95": [
+              -0.0261437908496732,
+              0.039215686274509796
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.013071895424836598,
+            "graph_bootstrap_95": [
+              -0.016339869281045753,
+              0.045751633986928095
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.02287581699346405,
+            "graph_bootstrap_95": [
+              -0.0065359477124183,
+              0.05228758169934641
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.0130718954248366,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03594771241830065
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.09803921568627451,
+            "graph_bootstrap_95": [
+              0.05555555555555555,
+              0.14705882352941177
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.09803921568627451,
+            "graph_bootstrap_95": [
+              0.05555555555555555,
+              0.14705882352941177
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.5,
+            "graph_bootstrap_95": [
+              0.41830065359477114,
+              0.5816993464052286
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.39542483660130723,
+            "graph_bootstrap_95": [
+              0.31699346405228757,
+              0.47385620915032656
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.36928104575163395,
+            "graph_bootstrap_95": [
+              0.2973856209150327,
+              0.4444444444444443
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.36928104575163395,
+            "graph_bootstrap_95": [
+              0.2973856209150327,
+              0.4444444444444443
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.4150326797385621,
+            "graph_bootstrap_95": [
+              0.3366013071895425,
+              0.49673202614379064
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.03594771241830065,
+            "graph_bootstrap_95": [
+              0.0065359477124183,
+              0.0718954248366013
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.2712418300653595,
+            "graph_bootstrap_95": [
+              -0.34313725490196073,
+              -0.2026143790849673
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.2712418300653595,
+            "graph_bootstrap_95": [
+              -0.34313725490196073,
+              -0.2026143790849673
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.0849673202614379,
+            "graph_bootstrap_95": [
+              0.032679738562091505,
+              0.13725490196078433
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.35947712418300654,
+            "graph_bootstrap_95": [
+              0.28431372549019607,
+              0.4379084967320258
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.0718954248366013,
+            "graph_bootstrap_95": [
+              0.03594771241830065,
+              0.11437908496732027
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.0718954248366013,
+            "graph_bootstrap_95": [
+              0.03594771241830065,
+              0.11437908496732027
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.5653594771241831,
+            "graph_bootstrap_95": [
+              0.4803921568627451,
+              0.6503267973856208
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.49019607843137264,
+            "graph_bootstrap_95": [
+              0.40849673202614367,
+              0.5718954248366012
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.37581699346405223,
+            "graph_bootstrap_95": [
+              0.2941176470588236,
+              0.4542483660130719
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.3823529411764705,
+            "graph_bootstrap_95": [
+              0.30383986928104567,
+              0.46078431372549006
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.45424836601307184,
+            "graph_bootstrap_95": [
+              0.3725490196078431,
+              0.5359477124183005
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.06209150326797385,
+            "graph_bootstrap_95": [
+              0.0261437908496732,
+              0.10784313725490195
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.30392156862745096,
+            "graph_bootstrap_95": [
+              -0.3758169934640522,
+              -0.23202614379084965
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.31045751633986923,
+            "graph_bootstrap_95": [
+              -0.38235294117647045,
+              -0.238562091503268
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.1111111111111111,
+            "graph_bootstrap_95": [
+              0.05220588235294119,
+              0.16993464052287585
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.4281045751633987,
+            "graph_bootstrap_95": [
+              0.3431372549019607,
+              0.5098039215686274
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": -0.0261437908496732,
+            "graph_bootstrap_95": [
+              -0.0457516339869281,
+              -0.006535947712418301
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.0261437908496732,
+            "graph_bootstrap_95": [
+              -0.0457516339869281,
+              -0.006535947712418301
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.06535947712418301,
+            "graph_bootstrap_95": [
+              0.022875816993464047,
+              0.10784313725490198
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.09477124183006536,
+            "graph_bootstrap_95": [
+              0.04575163398692811,
+              0.1437908496732026
+            ],
+            "independent_graphs": 102
+          }
+        }
+      },
+      "source_give": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": 0.011737089201877937,
+            "graph_bootstrap_95": [
+              -0.05399061032863848,
+              0.0751173708920188
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.011737089201877937,
+            "graph_bootstrap_95": [
+              -0.05399061032863848,
+              0.0751173708920188
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.021126760563380285,
+            "graph_bootstrap_95": [
+              -0.04460093896713614,
+              0.08685446009389672
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.007042253521126761,
+            "graph_bootstrap_95": [
+              0.0,
+              0.016431924882629106
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": 0.05399061032863849,
+            "graph_bootstrap_95": [
+              0.016431924882629102,
+              0.09389671361502344
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.05399061032863849,
+            "graph_bootstrap_95": [
+              0.016431924882629102,
+              0.09389671361502344
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.053990610328638486,
+            "graph_bootstrap_95": [
+              0.018779342723004695,
+              0.08920187793427231
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.007042253521126761,
+            "graph_bootstrap_95": [
+              -0.004694835680751174,
+              0.025821596244131453
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.3849765258215963,
+            "graph_bootstrap_95": [
+              0.28169014084507044,
+              0.48826291079812206
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.3849765258215963,
+            "graph_bootstrap_95": [
+              0.28169014084507044,
+              0.48826291079812206
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.3849765258215963,
+            "graph_bootstrap_95": [
+              0.28169014084507044,
+              0.48826291079812206
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.3145539906103287,
+            "graph_bootstrap_95": [
+              0.23004694835680753,
+              0.40375586854460094
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.3145539906103287,
+            "graph_bootstrap_95": [
+              0.23004694835680753,
+              0.40375586854460094
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.352112676056338,
+            "graph_bootstrap_95": [
+              0.26291079812206575,
+              0.44600938967136156
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.02816901408450704,
+            "graph_bootstrap_95": [
+              0.0,
+              0.06572769953051644
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.07042253521126762,
+            "graph_bootstrap_95": [
+              0.009389671361502344,
+              0.136150234741784
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.07042253521126762,
+            "graph_bootstrap_95": [
+              0.009389671361502344,
+              0.136150234741784
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.03286384976525821,
+            "graph_bootstrap_95": [
+              -0.023474178403755867,
+              0.08450704225352114
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": -0.02816901408450704,
+            "graph_bootstrap_95": [
+              -0.06572769953051644,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.41784037558685444,
+            "graph_bootstrap_95": [
+              0.3192488262910798,
+              0.5165492957746485
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.41784037558685444,
+            "graph_bootstrap_95": [
+              0.3192488262910798,
+              0.5165492957746485
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.41784037558685444,
+            "graph_bootstrap_95": [
+              0.3192488262910798,
+              0.5165492957746485
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.3708920187793427,
+            "graph_bootstrap_95": [
+              0.27218309859154927,
+              0.4647887323943663
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.3708920187793427,
+            "graph_bootstrap_95": [
+              0.27218309859154927,
+              0.4647887323943663
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.39906103286384975,
+            "graph_bootstrap_95": [
+              0.29577464788732394,
+              0.4976525821596245
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.028169014084507043,
+            "graph_bootstrap_95": [
+              0.0,
+              0.07042253521126761
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.046948356807511735,
+            "graph_bootstrap_95": [
+              -0.023474178403755867,
+              0.11737089201877934
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.046948356807511735,
+            "graph_bootstrap_95": [
+              -0.023474178403755867,
+              0.11737089201877934
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.018779342723004702,
+            "graph_bootstrap_95": [
+              -0.042253521126760556,
+              0.07523474178403798
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": -0.028169014084507043,
+            "graph_bootstrap_95": [
+              -0.07042253521126761,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": 0.03286384976525822,
+            "graph_bootstrap_95": [
+              -0.004694835680751174,
+              0.07511737089201877
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.03286384976525822,
+            "graph_bootstrap_95": [
+              -0.004694835680751174,
+              0.07511737089201877
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.03286384976525822,
+            "graph_bootstrap_95": [
+              -0.004694835680751174,
+              0.07511737089201877
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.14084507042253525,
+            "graph_bootstrap_95": [
+              0.07511737089201878,
+              0.2112676056338028
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.14084507042253525,
+            "graph_bootstrap_95": [
+              0.07511737089201878,
+              0.2112676056338028
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.45070422535211263,
+            "graph_bootstrap_95": [
+              0.3521126760563381,
+              0.5492957746478874
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.3004694835680751,
+            "graph_bootstrap_95": [
+              0.22065727699530518,
+              0.3896713615023475
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.3145539906103287,
+            "graph_bootstrap_95": [
+              0.23004694835680753,
+              0.40375586854460094
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.3145539906103287,
+            "graph_bootstrap_95": [
+              0.23004694835680753,
+              0.40375586854460094
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.352112676056338,
+            "graph_bootstrap_95": [
+              0.26291079812206575,
+              0.44600938967136156
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.02816901408450704,
+            "graph_bootstrap_95": [
+              0.0,
+              0.06572769953051644
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.1737089201877934,
+            "graph_bootstrap_95": [
+              -0.2488262910798122,
+              -0.10328638497652583
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.1737089201877934,
+            "graph_bootstrap_95": [
+              -0.2488262910798122,
+              -0.10328638497652583
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.09859154929577464,
+            "graph_bootstrap_95": [
+              0.04694835680751172,
+              0.15492957746478872
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.27230046948356806,
+            "graph_bootstrap_95": [
+              0.20187793427230047,
+              0.35211267605633806
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.10328638497652581,
+            "graph_bootstrap_95": [
+              0.0516431924882629,
+              0.1643192488262911
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.10328638497652581,
+            "graph_bootstrap_95": [
+              0.0516431924882629,
+              0.1643192488262911
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.5070422535211268,
+            "graph_bootstrap_95": [
+              0.40375586854460094,
+              0.6056338028169014
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.3990610328638497,
+            "graph_bootstrap_95": [
+              0.30985915492957744,
+              0.49295774647887336
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.3708920187793427,
+            "graph_bootstrap_95": [
+              0.27218309859154927,
+              0.4647887323943663
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.3708920187793427,
+            "graph_bootstrap_95": [
+              0.27218309859154927,
+              0.4647887323943663
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.39906103286384975,
+            "graph_bootstrap_95": [
+              0.29577464788732394,
+              0.4976525821596245
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.028169014084507043,
+            "graph_bootstrap_95": [
+              0.0,
+              0.07042253521126761
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.2676056338028169,
+            "graph_bootstrap_95": [
+              -0.35211267605633806,
+              -0.1877934272300469
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.2676056338028169,
+            "graph_bootstrap_95": [
+              -0.35211267605633806,
+              -0.1877934272300469
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.107981220657277,
+            "graph_bootstrap_95": [
+              0.042253521126760556,
+              0.1784037558685446
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.37089201877934264,
+            "graph_bootstrap_95": [
+              0.28169014084507055,
+              0.46009389671361517
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": -0.03755868544600939,
+            "graph_bootstrap_95": [
+              -0.06572769953051642,
+              -0.009389671361502348
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.03755868544600939,
+            "graph_bootstrap_95": [
+              -0.06572769953051642,
+              -0.009389671361502348
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.05633802816901408,
+            "graph_bootstrap_95": [
+              0.0046948356807511755,
+              0.10798122065727697
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.09859154929577466,
+            "graph_bootstrap_95": [
+              0.042253521126760556,
+              0.15962441314553988
+            ],
+            "independent_graphs": 71
+          }
+        }
+      },
+      "source_use": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": 0.15053763440860216,
+            "graph_bootstrap_95": [
+              0.04825268817204305,
+              0.25806451612903225
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.15053763440860216,
+            "graph_bootstrap_95": [
+              0.04825268817204305,
+              0.25806451612903225
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.16129032258064513,
+            "graph_bootstrap_95": [
+              0.04838709677419354,
+              0.28494623655913975
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.02150537634408602,
+            "graph_bootstrap_95": [
+              -0.021505376344086023,
+              0.06989247311827956
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": -0.09677419354838708,
+            "graph_bootstrap_95": [
+              -0.19905913978494622,
+              0.005376344086021504
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.09677419354838708,
+            "graph_bootstrap_95": [
+              -0.19905913978494622,
+              0.005376344086021504
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.021505376344086016,
+            "graph_bootstrap_95": [
+              -0.05376344086021505,
+              0.0967741935483871
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.1075268817204301,
+            "graph_bootstrap_95": [
+              0.03763440860215053,
+              0.1881720430107527
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.6989247311827956,
+            "graph_bootstrap_95": [
+              0.5698924731182795,
+              0.8172043010752688
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.8064516129032258,
+            "graph_bootstrap_95": [
+              0.7096774193548386,
+              0.8924731182795699
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.8172043010752688,
+            "graph_bootstrap_95": [
+              0.7096774193548387,
+              0.9032258064516129
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3548387096774194,
+              0.6236559139784946
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3548387096774194,
+              0.6236559139784946
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.5591397849462365,
+            "graph_bootstrap_95": [
+              0.4193548387096774,
+              0.6881720430107527
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.05376344086021505,
+            "graph_bootstrap_95": [
+              0.0,
+              0.13978494623655913
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.20430107526881713,
+            "graph_bootstrap_95": [
+              0.05349462365591405,
+              0.3655913978494624
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.31182795698924737,
+            "graph_bootstrap_95": [
+              0.1935483870967742,
+              0.44086021505376344
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.25806451612903225,
+            "graph_bootstrap_95": [
+              0.13978494623655913,
+              0.38736559139785043
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": -0.05376344086021505,
+            "graph_bootstrap_95": [
+              -0.13978494623655913,
+              0.0
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.6451612903225806,
+            "graph_bootstrap_95": [
+              0.5053763440860215,
+              0.7741935483870968
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.7741935483870968,
+            "graph_bootstrap_95": [
+              0.6559139784946236,
+              0.8709677419354839
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.8172043010752688,
+            "graph_bootstrap_95": [
+              0.7204301075268816,
+              0.9032258064516129
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.04301075268817204,
+            "graph_bootstrap_95": [
+              0.0,
+              0.11854838709677516
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.3870967741935483,
+            "graph_bootstrap_95": [
+              0.24731182795698925,
+              0.5268817204301075
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.4086021505376344,
+            "graph_bootstrap_95": [
+              0.26881720430107525,
+              0.5376344086021505
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.5806451612903225,
+            "graph_bootstrap_95": [
+              0.4408602150537634,
+              0.7096774193548387
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.13978494623655913,
+            "graph_bootstrap_95": [
+              0.05376344086021505,
+              0.24731182795698922
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.25806451612903225,
+            "graph_bootstrap_95": [
+              0.1290322580645161,
+              0.3870967741935484
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.3655913978494624,
+            "graph_bootstrap_95": [
+              0.24731182795698925,
+              0.48387096774193544
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.2365591397849462,
+            "graph_bootstrap_95": [
+              0.13978494623655913,
+              0.3440860215053763
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": -0.0967741935483871,
+            "graph_bootstrap_95": [
+              -0.1827956989247312,
+              -0.02150537634408602
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": -0.05376344086021505,
+            "graph_bootstrap_95": [
+              -0.10752688172043011,
+              -0.01075268817204301
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.03225806451612903,
+            "graph_bootstrap_95": [
+              -0.0967741935483871,
+              0.010752688172043013
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              -0.04301075268817204,
+              0.04301075268817204
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.04301075268817204,
+            "graph_bootstrap_95": [
+              0.0,
+              0.11854838709677516
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.6129032258064516,
+            "graph_bootstrap_95": [
+              0.47311827956989244,
+              0.7419354838709677
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.6129032258064516,
+            "graph_bootstrap_95": [
+              0.47311827956989244,
+              0.7419354838709677
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3548387096774194,
+              0.6236559139784946
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3548387096774194,
+              0.6236559139784946
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.5591397849462365,
+            "graph_bootstrap_95": [
+              0.4193548387096774,
+              0.6881720430107527
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.05376344086021505,
+            "graph_bootstrap_95": [
+              0.0,
+              0.13978494623655913
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.49462365591397844,
+            "graph_bootstrap_95": [
+              -0.6236559139784946,
+              -0.3548387096774194
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.49462365591397844,
+            "graph_bootstrap_95": [
+              -0.6236559139784946,
+              -0.3548387096774194
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.05376344086021505,
+            "graph_bootstrap_95": [
+              -0.05376344086021506,
+              0.17204301075268813
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.5591397849462365,
+            "graph_bootstrap_95": [
+              0.4193548387096774,
+              0.6989247311827956
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.6989247311827957,
+            "graph_bootstrap_95": [
+              0.5591397849462365,
+              0.8387096774193548
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.6989247311827957,
+            "graph_bootstrap_95": [
+              0.5591397849462365,
+              0.8387096774193548
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.3870967741935483,
+            "graph_bootstrap_95": [
+              0.24731182795698925,
+              0.5268817204301075
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.4086021505376344,
+            "graph_bootstrap_95": [
+              0.26881720430107525,
+              0.5376344086021505
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.5806451612903225,
+            "graph_bootstrap_95": [
+              0.4408602150537634,
+              0.7096774193548387
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.13978494623655913,
+            "graph_bootstrap_95": [
+              0.05376344086021505,
+              0.24731182795698922
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.3870967741935483,
+            "graph_bootstrap_95": [
+              -0.5268817204301075,
+              -0.24731182795698925
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.4086021505376344,
+            "graph_bootstrap_95": [
+              -0.5376344086021505,
+              -0.26881720430107525
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.11827956989247312,
+            "graph_bootstrap_95": [
+              -0.010752688172043012,
+              0.24731182795698922
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.5591397849462366,
+            "graph_bootstrap_95": [
+              0.3870967741935483,
+              0.7204301075268817
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.08602150537634408,
+            "graph_bootstrap_95": [
+              -6.938893903907228e-18,
+              0.18279569892473116
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.08602150537634408,
+            "graph_bootstrap_95": [
+              -6.938893903907228e-18,
+              0.18279569892473116
+            ],
+            "independent_graphs": 31
+          }
+        }
+      }
+    },
+    "32b": {
+      "all": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": -0.0130718954248366,
+            "graph_bootstrap_95": [
+              -0.06213235294117647,
+              0.0392156862745098
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.008169934640522875,
+            "graph_bootstrap_95": [
+              -0.0588235294117647,
+              0.04411764705882353
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.031045751633986925,
+            "graph_bootstrap_95": [
+              -0.013071895424836602,
+              0.076797385620915
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.06372549019607843,
+            "graph_bootstrap_95": [
+              0.021241830065359478,
+              0.10947712418300654
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": -0.0326797385620915,
+            "graph_bootstrap_95": [
+              -0.06372549019607844,
+              -0.001633986928104572
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.03431372549019607,
+            "graph_bootstrap_95": [
+              -0.06699346405228755,
+              -0.003267973856209144
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.008169934640522878,
+            "graph_bootstrap_95": [
+              -0.014705882352941181,
+              0.0326797385620915
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.027777777777777776,
+            "graph_bootstrap_95": [
+              0.014705882352941176,
+              0.04248366013071896
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.9215686274509806,
+            "graph_bootstrap_95": [
+              0.8823529411764705,
+              0.9575163398692805
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.9346405228758171,
+            "graph_bootstrap_95": [
+              0.898692810457516,
+              0.9673202614379078
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.9444444444444445,
+            "graph_bootstrap_95": [
+              0.9084967320261437,
+              0.9738562091503267
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.00326797385620915,
+            "graph_bootstrap_95": [
+              0.0,
+              0.00980392156862745
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.7287581699346406,
+            "graph_bootstrap_95": [
+              0.660130718954248,
+              0.7973856209150322
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.7352941176470589,
+            "graph_bootstrap_95": [
+              0.6666666666666667,
+              0.8006535947712417
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.84640522875817,
+            "graph_bootstrap_95": [
+              0.794117647058823,
+              0.8986928104575158
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.08496732026143788,
+            "graph_bootstrap_95": [
+              0.0457516339869281,
+              0.13071895424836602
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.19281045751633985,
+            "graph_bootstrap_95": [
+              0.12745098039215688,
+              0.26143790849673193
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.19934640522875816,
+            "graph_bootstrap_95": [
+              0.1372549019607843,
+              0.26797385620915015
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.09803921568627451,
+            "graph_bootstrap_95": [
+              0.05228758169934641,
+              0.14705882352941177
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": -0.08169934640522875,
+            "graph_bootstrap_95": [
+              -0.12418300653594773,
+              -0.042483660130718956
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.9281045751633986,
+            "graph_bootstrap_95": [
+              0.8888888888888882,
+              0.9640522875816987
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.9444444444444445,
+            "graph_bootstrap_95": [
+              0.9084967320261438,
+              0.9738562091503266
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.9607843137254902,
+            "graph_bootstrap_95": [
+              0.9346405228758164,
+              0.9836601307189542
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.00326797385620915,
+            "graph_bootstrap_95": [
+              0.0,
+              0.00980392156862745
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.696078431372549,
+            "graph_bootstrap_95": [
+              0.6209150326797385,
+              0.7679738562091503
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.696078431372549,
+            "graph_bootstrap_95": [
+              0.6209150326797385,
+              0.7679738562091503
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.8562091503267973,
+            "graph_bootstrap_95": [
+              0.8039215686274508,
+              0.9052287581699341
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.1111111111111111,
+            "graph_bootstrap_95": [
+              0.06209150326797385,
+              0.16666666666666669
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.23202614379084965,
+            "graph_bootstrap_95": [
+              0.16993464052287585,
+              0.29738562091503257
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.24836601307189538,
+            "graph_bootstrap_95": [
+              0.1830065359477124,
+              0.3169934640522875
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.1045751633986928,
+            "graph_bootstrap_95": [
+              0.06862745098039216,
+              0.1437908496732026
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": -0.10784313725490194,
+            "graph_bootstrap_95": [
+              -0.16339869281045752,
+              -0.06200980392156832
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": 0.0065359477124183,
+            "graph_bootstrap_95": [
+              -0.02941176470588235,
+              0.0392156862745098
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.00980392156862745,
+            "graph_bootstrap_95": [
+              -0.02287581699346405,
+              0.04248366013071895
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.01633986928104575,
+            "graph_bootstrap_95": [
+              -0.009803921568627449,
+              0.042483660130718956
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.02941176470588235,
+            "graph_bootstrap_95": [
+              0.00980392156862745,
+              0.05555555555555555
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.02941176470588235,
+            "graph_bootstrap_95": [
+              0.00980392156862745,
+              0.05555555555555555
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.6797385620915031,
+            "graph_bootstrap_95": [
+              0.607843137254902,
+              0.7483660130718953
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.611111111111111,
+            "graph_bootstrap_95": [
+              0.5424836601307187,
+              0.6797385620915031
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.7287581699346406,
+            "graph_bootstrap_95": [
+              0.660130718954248,
+              0.7973856209150322
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.7352941176470589,
+            "graph_bootstrap_95": [
+              0.6666666666666667,
+              0.8006535947712417
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.84640522875817,
+            "graph_bootstrap_95": [
+              0.794117647058823,
+              0.8986928104575158
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.08496732026143788,
+            "graph_bootstrap_95": [
+              0.0457516339869281,
+              0.13071895424836602
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.6993464052287582,
+            "graph_bootstrap_95": [
+              -0.76797385620915,
+              -0.6307189542483658
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.7058823529411765,
+            "graph_bootstrap_95": [
+              -0.7712418300653593,
+              -0.6372549019607842
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": -0.16666666666666663,
+            "graph_bootstrap_95": [
+              -0.23202614379084965,
+              -0.10130718954248367
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.5261437908496732,
+            "graph_bootstrap_95": [
+              0.4575163398692809,
+              0.5980392156862742
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.0261437908496732,
+            "graph_bootstrap_95": [
+              0.0065359477124183,
+              0.0522875816993464
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.0261437908496732,
+            "graph_bootstrap_95": [
+              0.0065359477124183,
+              0.0522875816993464
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.7549019607843137,
+            "graph_bootstrap_95": [
+              0.6895424836601304,
+              0.8169934640522873
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.7124183006535948,
+            "graph_bootstrap_95": [
+              0.6437908496732021,
+              0.7810457516339867
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.696078431372549,
+            "graph_bootstrap_95": [
+              0.6209150326797385,
+              0.7679738562091503
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": 0.696078431372549,
+            "graph_bootstrap_95": [
+              0.6209150326797385,
+              0.7679738562091503
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.8562091503267973,
+            "graph_bootstrap_95": [
+              0.8039215686274508,
+              0.9052287581699341
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.1111111111111111,
+            "graph_bootstrap_95": [
+              0.06209150326797385,
+              0.16666666666666669
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.6699346405228758,
+            "graph_bootstrap_95": [
+              -0.7418300653594769,
+              -0.5947712418300652
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.6699346405228758,
+            "graph_bootstrap_95": [
+              -0.7418300653594769,
+              -0.5947712418300652
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": -0.10130718954248366,
+            "graph_bootstrap_95": [
+              -0.16339869281045752,
+              -0.0392156862745098
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.6013071895424836,
+            "graph_bootstrap_95": [
+              0.5261437908496729,
+              0.6732026143790848
+            ],
+            "independent_graphs": 102
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": -0.00326797385620915,
+            "graph_bootstrap_95": [
+              -0.02287581699346405,
+              0.0130718954248366
+            ],
+            "independent_graphs": 102
+          },
+          "physical_goal": {
+            "mean": -0.00326797385620915,
+            "graph_bootstrap_95": [
+              -0.02287581699346405,
+              0.0130718954248366
+            ],
+            "independent_graphs": 102
+          },
+          "retrieved": {
+            "mean": 0.07516339869281045,
+            "graph_bootstrap_95": [
+              0.02941176470588236,
+              0.12091503267973856
+            ],
+            "independent_graphs": 102
+          },
+          "request": {
+            "mean": 0.10130718954248366,
+            "graph_bootstrap_95": [
+              0.055473856209150345,
+              0.15359477124183005
+            ],
+            "independent_graphs": 102
+          }
+        }
+      },
+      "source_give": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": -0.0023474178403755878,
+            "graph_bootstrap_95": [
+              -0.05633802816901408,
+              0.051643192488262914
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.0023474178403755878,
+            "graph_bootstrap_95": [
+              -0.05633802816901408,
+              0.051643192488262914
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": -0.0023474178403755865,
+            "graph_bootstrap_95": [
+              -0.046948356807511735,
+              0.03990610328638497
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": -0.0023474178403755865,
+            "graph_bootstrap_95": [
+              -0.030516431924882625,
+              0.02347417840375587
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": 0.007042253521126761,
+            "graph_bootstrap_95": [
+              -0.023474178403755867,
+              0.03990610328638498
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.007042253521126761,
+            "graph_bootstrap_95": [
+              -0.023474178403755867,
+              0.03990610328638498
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.011737089201877934,
+            "graph_bootstrap_95": [
+              -0.01643192488262911,
+              0.04225352112676056
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.011737089201877934,
+            "graph_bootstrap_95": [
+              0.002347417840375587,
+              0.025821596244131453
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.92018779342723,
+            "graph_bootstrap_95": [
+              0.868544600938967,
+              0.9624413145539902
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.92018779342723,
+            "graph_bootstrap_95": [
+              0.868544600938967,
+              0.9624413145539902
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.92018779342723,
+            "graph_bootstrap_95": [
+              0.868544600938967,
+              0.9624413145539902
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.84037558685446,
+            "graph_bootstrap_95": [
+              0.7699530516431924,
+              0.9061032863849761
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.84037558685446,
+            "graph_bootstrap_95": [
+              0.7699530516431924,
+              0.9061032863849761
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.8685446009389671,
+            "graph_bootstrap_95": [
+              0.8028169014084505,
+              0.924882629107981
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.023474178403755867,
+            "graph_bootstrap_95": [
+              0.0,
+              0.056338028169014086
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.07981220657276995,
+            "graph_bootstrap_95": [
+              0.02816901408450704,
+              0.13615023474178403
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.07981220657276995,
+            "graph_bootstrap_95": [
+              0.02816901408450704,
+              0.13615023474178403
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.05164319248826291,
+            "graph_bootstrap_95": [
+              0.004694835680751173,
+              0.10328638497652581
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": -0.023474178403755867,
+            "graph_bootstrap_95": [
+              -0.056338028169014086,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.9483568075117372,
+            "graph_bootstrap_95": [
+              0.901408450704225,
+              0.9859154929577458
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.9483568075117372,
+            "graph_bootstrap_95": [
+              0.901408450704225,
+              0.9859154929577458
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.9577464788732394,
+            "graph_bootstrap_95": [
+              0.9201877934272296,
+              0.9859154929577462
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.8544600938967136,
+            "graph_bootstrap_95": [
+              0.7887323943661969,
+              0.9107981220657277
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.8544600938967136,
+            "graph_bootstrap_95": [
+              0.7887323943661969,
+              0.9107981220657277
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.8873239436619718,
+            "graph_bootstrap_95": [
+              0.8262910798122063,
+              0.9389671361502345
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.02816901408450704,
+            "graph_bootstrap_95": [
+              0.004694835680751174,
+              0.06103286384976526
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.09389671361502346,
+            "graph_bootstrap_95": [
+              0.0516431924882629,
+              0.14553990610328635
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.09389671361502346,
+            "graph_bootstrap_95": [
+              0.0516431924882629,
+              0.14553990610328635
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.0704225352112676,
+            "graph_bootstrap_95": [
+              0.03286384976525822,
+              0.11267605633802816
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": -0.02816901408450704,
+            "graph_bootstrap_95": [
+              -0.06103286384976526,
+              -0.004694835680751174
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": 0.028169014084507043,
+            "graph_bootstrap_95": [
+              -0.009389671361502346,
+              0.06572769953051642
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.028169014084507043,
+            "graph_bootstrap_95": [
+              -0.009389671361502346,
+              0.06572769953051642
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.03755868544600939,
+            "graph_bootstrap_95": [
+              0.004694835680751174,
+              0.07053990610328681
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.03755868544600939,
+            "graph_bootstrap_95": [
+              0.009389671361502348,
+              0.07042253521126761
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.03755868544600939,
+            "graph_bootstrap_95": [
+              0.009389671361502348,
+              0.07042253521126761
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.647887323943662,
+            "graph_bootstrap_95": [
+              0.5586854460093899,
+              0.7323943661971831
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.5774647887323944,
+            "graph_bootstrap_95": [
+              0.4929577464788733,
+              0.6619718309859155
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.84037558685446,
+            "graph_bootstrap_95": [
+              0.7699530516431924,
+              0.9061032863849761
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.84037558685446,
+            "graph_bootstrap_95": [
+              0.7699530516431924,
+              0.9061032863849761
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.8685446009389671,
+            "graph_bootstrap_95": [
+              0.8028169014084505,
+              0.924882629107981
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.023474178403755867,
+            "graph_bootstrap_95": [
+              0.0,
+              0.056338028169014086
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.8028169014084506,
+            "graph_bootstrap_95": [
+              -0.8685446009389669,
+              -0.7323943661971828
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.8028169014084506,
+            "graph_bootstrap_95": [
+              -0.8685446009389669,
+              -0.7323943661971828
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": -0.22065727699530516,
+            "graph_bootstrap_95": [
+              -0.3051643192488263,
+              -0.13615023474178406
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.5539906103286384,
+            "graph_bootstrap_95": [
+              0.4694835680751174,
+              0.6384976525821595
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.03286384976525822,
+            "graph_bootstrap_95": [
+              0.004694835680751174,
+              0.06572769953051642
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.03286384976525822,
+            "graph_bootstrap_95": [
+              0.004694835680751174,
+              0.06572769953051642
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.7136150234741784,
+            "graph_bootstrap_95": [
+              0.6291079812206576,
+              0.7934272300469483
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.6666666666666666,
+            "graph_bootstrap_95": [
+              0.5821596244131455,
+              0.7511737089201879
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.8544600938967136,
+            "graph_bootstrap_95": [
+              0.7887323943661969,
+              0.9107981220657277
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": 0.8544600938967136,
+            "graph_bootstrap_95": [
+              0.7887323943661969,
+              0.9107981220657277
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.8873239436619718,
+            "graph_bootstrap_95": [
+              0.8262910798122063,
+              0.9389671361502345
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.02816901408450704,
+            "graph_bootstrap_95": [
+              0.004694835680751174,
+              0.06103286384976526
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.8215962441314554,
+            "graph_bootstrap_95": [
+              -0.8826291079812205,
+              -0.7511737089201879
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.8215962441314554,
+            "graph_bootstrap_95": [
+              -0.8826291079812205,
+              -0.7511737089201879
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": -0.17370892018779344,
+            "graph_bootstrap_95": [
+              -0.24882629107981225,
+              -0.09859154929577464
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.6384976525821595,
+            "graph_bootstrap_95": [
+              0.5492957746478875,
+              0.7230046948356809
+            ],
+            "independent_graphs": 71
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": -0.004694835680751174,
+            "graph_bootstrap_95": [
+              -0.03286384976525821,
+              0.018779342723004692
+            ],
+            "independent_graphs": 71
+          },
+          "physical_goal": {
+            "mean": -0.004694835680751174,
+            "graph_bootstrap_95": [
+              -0.03286384976525821,
+              0.018779342723004692
+            ],
+            "independent_graphs": 71
+          },
+          "retrieved": {
+            "mean": 0.06572769953051642,
+            "graph_bootstrap_95": [
+              0.009389671361502348,
+              0.1220657276995305
+            ],
+            "independent_graphs": 71
+          },
+          "request": {
+            "mean": 0.0892018779342723,
+            "graph_bootstrap_95": [
+              0.028169014084507043,
+              0.15023474178403756
+            ],
+            "independent_graphs": 71
+          }
+        }
+      },
+      "source_use": {
+        "average_C_A_minus_F": {
+          "goal": {
+            "mean": -0.03763440860215054,
+            "graph_bootstrap_95": [
+              -0.14516129032258066,
+              0.07526881720430106
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.021505376344086027,
+            "graph_bootstrap_95": [
+              -0.13440860215053763,
+              0.0913978494623656
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.10752688172043008,
+            "graph_bootstrap_95": [
+              0.005376344086021528,
+              0.2150537634408602
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.21505376344086022,
+            "graph_bootstrap_95": [
+              0.1021505376344086,
+              0.3279569892473118
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "average_exec_A_minus_F": {
+          "goal": {
+            "mean": -0.1236559139784946,
+            "graph_bootstrap_95": [
+              -0.1881720430107527,
+              -0.05913978494623655
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.1290322580645161,
+            "graph_bootstrap_95": [
+              -0.1989247311827957,
+              -0.05913978494623655
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              -0.04301075268817204,
+              0.03763440860215054
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.06451612903225806,
+            "graph_bootstrap_95": [
+              0.03225806451612903,
+              0.1021505376344086
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_goal": {
+          "goal": {
+            "mean": 0.924731182795699,
+            "graph_bootstrap_95": [
+              0.8602150537634408,
+              0.9784946236559139
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.967741935483871,
+            "graph_bootstrap_95": [
+              0.9247311827956989,
+              1.0
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 1.0,
+            "graph_bootstrap_95": [
+              0.9999999999999999,
+              1.0
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/matched_free_goal": {
+          "goal": {
+            "mean": 0.47311827956989244,
+            "graph_bootstrap_95": [
+              0.3440860215053763,
+              0.6021505376344085
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3655913978494624,
+              0.6236559139784945
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.795698924731183,
+            "graph_bootstrap_95": [
+              0.6989247311827956,
+              0.8924731182795698
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.2258064516129032,
+            "graph_bootstrap_95": [
+              0.12903225806451613,
+              0.3333333333333333
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.45161290322580644,
+            "graph_bootstrap_95": [
+              0.3118279569892473,
+              0.5913978494623655
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.47311827956989244,
+            "graph_bootstrap_95": [
+              0.34408602150537637,
+              0.6021505376344085
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.20430107526881716,
+            "graph_bootstrap_95": [
+              0.1075268817204301,
+              0.3010752688172043
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": -0.2150537634408602,
+            "graph_bootstrap_95": [
+              -0.3118279569892473,
+              -0.11827956989247311
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_goal": {
+          "goal": {
+            "mean": 0.8817204301075269,
+            "graph_bootstrap_95": [
+              0.7956989247311828,
+              0.9569892473118279
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.9354838709677418,
+            "graph_bootstrap_95": [
+              0.8709677419354839,
+              0.978494623655914
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.967741935483871,
+            "graph_bootstrap_95": [
+              0.9247311827956989,
+              1.0
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/matched_free_goal": {
+          "goal": {
+            "mean": 0.3333333333333333,
+            "graph_bootstrap_95": [
+              0.2043010752688172,
+              0.46236559139784944
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.3333333333333333,
+            "graph_bootstrap_95": [
+              0.2043010752688172,
+              0.46236559139784944
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.7849462365591398,
+            "graph_bootstrap_95": [
+              0.6774193548387096,
+              0.8817204301075268
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.30107526881720426,
+            "graph_bootstrap_95": [
+              0.16129032258064516,
+              0.4408602150537634
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_minus_free/goal": {
+          "goal": {
+            "mean": 0.5483870967741935,
+            "graph_bootstrap_95": [
+              0.4301075268817204,
+              0.6666666666666665
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.6021505376344086,
+            "graph_bootstrap_95": [
+              0.4731182795698925,
+              0.7204301075268817
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.18279569892473113,
+            "graph_bootstrap_95": [
+              0.1075268817204301,
+              0.26881720430107525
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": -0.2903225806451613,
+            "graph_bootstrap_95": [
+              -0.4193548387096774,
+              -0.16129032258064516
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "A_minus_F/assigned_goal": {
+          "goal": {
+            "mean": -0.04301075268817204,
+            "graph_bootstrap_95": [
+              -0.11827956989247311,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.03225806451612903,
+            "graph_bootstrap_95": [
+              -0.0967741935483871,
+              0.021505376344086023
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": -0.03225806451612903,
+            "graph_bootstrap_95": [
+              -0.07526881720430106,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_request": {
+          "goal": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.7526881720430109,
+            "graph_bootstrap_95": [
+              0.6344086021505375,
+              0.8709677419354838
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.6881720430107525,
+            "graph_bootstrap_95": [
+              0.5591397849462365,
+              0.8064516129032258
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/matched_free_request": {
+          "goal": {
+            "mean": 0.47311827956989244,
+            "graph_bootstrap_95": [
+              0.3440860215053763,
+              0.6021505376344085
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.49462365591397844,
+            "graph_bootstrap_95": [
+              0.3655913978494624,
+              0.6236559139784945
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.795698924731183,
+            "graph_bootstrap_95": [
+              0.6989247311827956,
+              0.8924731182795698
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.2258064516129032,
+            "graph_bootstrap_95": [
+              0.12903225806451613,
+              0.3333333333333333
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "firm/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.46236559139784944,
+            "graph_bootstrap_95": [
+              -0.5913978494623655,
+              -0.3333333333333333
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.48387096774193544,
+            "graph_bootstrap_95": [
+              -0.6129032258064515,
+              -0.3548387096774194
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": -0.04301075268817204,
+            "graph_bootstrap_95": [
+              -0.12903225806451613,
+              0.04301075268817204
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.46236559139784944,
+            "graph_bootstrap_95": [
+              0.3333333333333333,
+              0.5913978494623655
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_request": {
+          "goal": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.01075268817204301,
+            "graph_bootstrap_95": [
+              0.0,
+              0.03225806451612903
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.8494623655913981,
+            "graph_bootstrap_95": [
+              0.7526881720430108,
+              0.9354838709677419
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.8172043010752688,
+            "graph_bootstrap_95": [
+              0.7096774193548386,
+              0.9139784946236559
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/matched_free_request": {
+          "goal": {
+            "mean": 0.3333333333333333,
+            "graph_bootstrap_95": [
+              0.2043010752688172,
+              0.46236559139784944
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.3333333333333333,
+            "graph_bootstrap_95": [
+              0.2043010752688172,
+              0.46236559139784944
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.7849462365591398,
+            "graph_bootstrap_95": [
+              0.6774193548387096,
+              0.8817204301075268
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.30107526881720426,
+            "graph_bootstrap_95": [
+              0.16129032258064516,
+              0.4408602150537634
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "agreeable/assigned_minus_free/request": {
+          "goal": {
+            "mean": -0.3225806451612903,
+            "graph_bootstrap_95": [
+              -0.4516129032258064,
+              -0.2043010752688172
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": -0.3225806451612903,
+            "graph_bootstrap_95": [
+              -0.4516129032258064,
+              -0.2043010752688172
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.06451612903225806,
+            "graph_bootstrap_95": [
+              -0.02150537634408602,
+              0.15053763440860213
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.5161290322580645,
+            "graph_bootstrap_95": [
+              0.3870967741935483,
+              0.6451612903225806
+            ],
+            "independent_graphs": 31
+          }
+        },
+        "A_minus_F/assigned_request": {
+          "goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "physical_goal": {
+            "mean": 0.0,
+            "graph_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "independent_graphs": 31
+          },
+          "retrieved": {
+            "mean": 0.0967741935483871,
+            "graph_bootstrap_95": [
+              0.03225806451612903,
+              0.1827956989247312
+            ],
+            "independent_graphs": 31
+          },
+          "request": {
+            "mean": 0.12903225806451613,
+            "graph_bootstrap_95": [
+              0.05376344086021505,
+              0.2150537634408602
+            ],
+            "independent_graphs": 31
+          }
+        }
+      }
+    }
+  },
+  "full_report_statistic_comparisons": 384,
+  "all_means_and_intervals_match": true
+}

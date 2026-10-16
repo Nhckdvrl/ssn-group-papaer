@@ -155,3 +155,16 @@ raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32
 - E75完整：`E75_{gemma,32b}_complete.json`有全体/任务族所有联合结局及配对区间，`E75_cost_accounting.json`结算16635调用/1.555GPUh，`E75_conversation_action_POST_HOC.json`记录结构化态度×事件及顺/逆向案例；[联合去向图](figures/E75_task_request_joint_outcomes.png)另有PDF/SVG。
 - E76：`E76_input_check.json`核对612个C来源/执行输入；`E76_{gemma,32b}_complete.json`包含全1224固定C原生分支及E75参照配对区间，0新对话。`E76_cost_accounting.json`结算1938新执行调用/0.41455观测GPUh；[固定对话图](figures/E76_fixed_dialogue_access_effects.png)另有PDF/SVG，[实验卡](../experiments/E76-fixed-dialogue-and-native-access.md)记录完整范围。
 - [E74–E76合并账本](E74_E76_round_accounting.json)：29125调用/8928原生分支/2808预测分叉/208不同源图/3.83553观测GPUh、0API/解析失败。E76复用E75源图，E74与E75相交11，不把分支相加当独立样本；本轮worker均已退出。
+
+## E77完整与应用审视
+
+[连续报告的E77续报](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：原102图/两模型/三seed，4896逻辑记录含1224旧对角，3672新增分支/17375实际新调用/2.15314观测GPUh，0新对话/API/解析失败。worker已退出，峰4卡；源图联集仍208。
+
+- [Gemma完整统计](E77_gemma_complete.json)、[32B完整统计](E77_32b_complete.json)：各2448记录、全部C/旧对角精确复用与实体核对，all/Give/非Give/Wear/Eat/Drink的C×当前trait及共同C下A/B终局指派；原绑定事件、物理消费/装备/归属、首次决定性用途与所有区间同时保留。
+- [成本](E77_cost_accounting.json)包括profile调用单计、48条profile精确复用、实际tokens、初始化/载入/推理与观测槽时；[profile核对](E77_profile_validation.json)、`E77_{gemma,32b}_input_check.json`保留首模型前控制。
+- [非Give图](figures/E77_dialogue_and_assigned_outcomes_source_use.png)、[全部任务图](figures/E77_dialogue_and_assigned_outcomes_all.png)、[Give图](figures/E77_dialogue_and_assigned_outcomes_source_give.png)，均有PDF/SVG。物理后果为堆叠、原绑定goal为空心菱形。
+- [冻结预测POST-HOC](E77_dialogue_outcome_predictions_POST_HOC.json)：仅用旧E75三seed联合结局频率预测新交叉条件，固定α=.5，102描述/101主解释、Brier/logloss图簇比较，不是新世界确认或纯中介。
+- [指派后执行读回POST-HOC](E77_assigned_execution_readback_POST_HOC.json)：2448分支中879未达物理终局＝777未Get＋75分流＋27取物未处置，全部未Get没有源Get尝试/拒绝。复算`scripts/native_dialogue_outcome_readback_posthoc.py`。
+- [384项CPU复算核对](E77_primary_contrasts_independent_check.json)另作逐图聚合，复用冻结metrics/相同bootstrap定义，与完整报告均值/区间完全一致，非L3独立测量。`E77_{gemma,32b}_complete_compute_audit.json`记录短launcher内存去重计算的AST等值核对（以实际文件名为准）。
+
+主raw为cache/runs/e77_{gemma,32b}_{profile,s0,s1}/，完整数据/模型调用不进Git。统计入口`scripts/native_dialogue_outcome_report_fast.py`、成本/图`scripts/native_dialogue_outcome_assets.py`；原冻结report/指标保持不动。工业与玩家文献审视在knowledge/persona-behavior的PLAYABLE_NPC_APPLICATION_AUDIT/PLAYER_VALUE_EVIDENCE两笔记，0新模型实验或API。
