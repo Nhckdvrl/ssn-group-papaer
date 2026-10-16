@@ -50,3 +50,5 @@
   原审计3案例共同8步仍无双事件，旧删失未解释全部缺失；同goal前历史固定的适应性机制事实使32B恢复5/36双事件（2源图），完成说明不恢复，Gemma0/36但17条真实remove。普通环境知识已能解释部分真实恢复，撤销任何“缺少后续Give统一源于角色动机压制”的推断。112/112图都有Equip→remove→给A的原生三步见证；事件与最终状态分开，不以原子计分替代私人效用。证据实验卡E69、results/E69_{gemma,32b}_{matched,completion_controls}.json及E69_resource_account.json；完整报告PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md。
 
 E69最终物理读回补充：2904条中5条命令级goal使用同名替代物（Gemma4/32B1，3图），原预注册goal结果保持。固定初始item_id的POST-HOC goal交互Gemma+4.76pp [0.60,8.93]、32B+5.95 [1.79,10.42]，结论方向保持；命令级与固定物品事件不能混写。原生状态读回及原文件hash见results/E69_native_state_readback.json，未重跑/删轨迹。
+
+- 2026-10-16 E80完整：200已知作者世界/4800动态双角色episode，在共同强selector/真实反馈后人物效应仍存在（模型下层A−F Give Gemma+10.50pp [6.83,14.50]、32B+12.83 [9.17,16.50]；绑定goal−9.00/−12.50pp）。首次共同两步前提实现3/12、38/124→12/12、124/124，整体goal仅+.17/+.50pp；选择、下层再次取舍与真实实现不可从任务总分互相代替。20对共同prefix不合格留在主200，原792部分完成记录优先保留/恢复差异敏感性公开，首激活重复计数已纠正。原子Wield/Eat未完成仍可能实际付酬/腾手/取得treasure，不能由负goal差升级私人效用受损。证据E80卡、results/E80_{gemma,32b}_complete.json、E80_first_activation_POST_HOC.json与连续报告。C02/C04/C05/C06等级不变，C06仍限定L2，I04 PROMISING；无新神经或普遍二阶段定律。

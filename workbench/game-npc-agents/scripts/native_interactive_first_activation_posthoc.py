@@ -23,7 +23,7 @@ import numpy as np
 
 from native_interactive_report import (
     ALIASES, BACKENDS, PERSONAS, SEEDS, SPEECH, decision_key, event_readback,
-    load_sources, read_runs, sha, success,
+    load_sources, read_runs, sha, success, first_difference,
 )
 
 BOOTSTRAPS = 4000
@@ -34,6 +34,10 @@ PROJECTION = ['actor', 'role', 'turn', 'command', 'event_type', 'target_node_ids
 CATEGORIES = ['expected_prerequisite_success', 'expected_prerequisite_failed',
               'other_legal_speech', 'other_legal_action', 'other_rejected_or_failed',
               'protocol_failure_no_primitive']
+
+
+class UnverifiedNativeReadback(Exception):
+    pass
 
 
 def native_projection(turn):
@@ -89,16 +93,40 @@ def replay_prefix_and_witness(case, row, prefix, selected, expected_before, modu
     host = ViewerHost(graph)
     for turn in [row['opening'], *prefix]:
         actor = graph.get_node(turn['actor'])
-        ident = event_id(parse_event(graph, actor, turn['command'], *modules[1:]), modules)
-        assert (list(ident[1]) if ident else []) == turn['target_node_ids']
+        parsed = parse_event(graph, actor, turn['command'], *modules[1:])
+        ident = event_id(parsed, modules)
+        expected_identity = [turn['event_type'], turn['target_node_ids']]
+        exact = ident and [ident[0], list(ident[1])] == expected_identity
+        rebound = None
+        if turn['legal'] and not exact:
+            if turn['event_type'] in SPEECH:
+                raise UnverifiedNativeReadback('Ambiguous speech target cannot be safely rebound without changing text semantics.')
+            cls = getattr(modules[1], turn['event_type'])
+            candidates = [e for e in cls.get_valid_actions(graph, actor)
+                          if [type(e).__name__, [n.node_id for n in e.target_nodes]] == expected_identity]
+            if not candidates:
+                raise UnverifiedNativeReadback('Recorded event IDs absent from native legal candidates.')
+            rebound = candidates[0]
         random.seed(row['seed'] + int(row['case_id'][:7], 16)*1000 + turn['turn'] + 1000)
-        actual = execute(host, actor, turn['command'], *modules[1:])
+        if rebound is None:
+            actual = execute(host, actor, turn['command'], *modules[1:])
+        else:
+            before = material_state(graph); message_start = len(host.messages)
+            rebound.execute(host)
+            actual = {'actor':actor.node_id,'command':turn['command'],'legal':True,
+                'before':before,'event_type':type(rebound).__name__,'executed':rebound.executed,
+                'stochastic_failure':getattr(rebound,'failed',False),'after':material_state(graph),
+                'messages':host.messages[message_start:]}
+            actual['material_changed'] = actual['before'] != actual['after']
         for field in actual:
-            assert actual[field] == turn[field], ('Prefix replay differs', row['case_id'], turn['turn'], field)
+            if actual[field] != turn[field]:
+                raise UnverifiedNativeReadback('Recorded-ID prefix replay differs at turn '+str(turn['turn'])+' field '+field)
     assert material_state(graph) == expected_before
     original_json = graph.to_json()
     path = native_short_path(graph, case, selected, modules)
-    assert path and len(path) == 2 and graph.to_json() == original_json
+    if not path or len(path) != 2:
+        raise UnverifiedNativeReadback('No native two-step witness reconstructed from recorded prefix.')
+    assert graph.to_json() == original_json
     witnesses = []
     fork = modules[0].from_json(original_json)
     for command in path:
@@ -123,14 +151,21 @@ def replay_prefix_and_witness(case, row, prefix, selected, expected_before, modu
 def pair_readback(case, left, right, calls, jobs, modules):
     assert left['backend'] == 'model_steps' and right['backend'] == 'native_skill'
     assert left['initial_state'] == right['initial_state'] == case['initial_state']
-    assert native_projection(left['opening']) == native_projection(right['opening'])
     visible = [{'npc': [], 'player': []}, {'npc': [], 'player': []}]
     add_visible(visible[0], left['opening'], left)
     add_visible(visible[1], right['opening'], right)
     record = {'case_id': case['case_id'], 'graph_sha256': case['graph_sha256'],
               'goal_kind': case['goal_kind'], 'persona': left['persona'], 'seed': left['seed'],
               'activated': False, 'common_prefix_native_turns': 0,
-              'common_prefix_including_opening_checks': 1}
+              'common_prefix_including_opening_checks': 1, 'prefix_qualification':'qualified_common_prefix'}
+    def unqualified(reason, turn, a=None, b=None, extra=None):
+        record.update(prefix_qualification='unqualified_prefix', qualification_reason=reason,
+                      first_divergence_turn=turn,
+                      first_actual_difference=first_difference(native_projection(a), native_projection(b)) if a and b else None)
+        if extra:record['qualification_details']=extra
+        return record
+    if native_projection(left['opening']) != native_projection(right['opening']):
+        return unqualified('opening_native_event_differs',-1,left['opening'],right['opening'])
     max_turns = max(len(left['turns']), len(right['turns']))
     for i in range(max_turns):
         assert i < len(right['turns']), ('Pre-activation skill stop diverges', record)
@@ -142,26 +177,38 @@ def pair_readback(case, left, right, calls, jobs, modules):
             assert left['protocol_error'] == 'invalid_npc_primitive_json' and i == len(left['turns'])
             assert b['role'] == 'npc' and b['path_length'] == 2
         before = a['before'] if a else left['final_state']
-        assert before == b['before'] and visible[0] == visible[1]
+        if before != b['before'] or visible[0] != visible[1]:
+            return unqualified('actual_state_or_visible_history_differs_before_first_activation',i,a,b)
         assert b['turn'] == i
         if a:
             assert a['role'] == b['role'] and a['turn'] == i
         stage = 'npc_choice' if b['role'] == 'npc' else 'player'
         jk = lambda backend: (case['case_id'], left['seed'], left['persona'], backend, stage, i)
-        assert jobs[jk('model_steps')] == jobs[jk('native_skill')], ('Pre-activation policy input diverges', record, i)
+        if jobs[jk('model_steps')] != jobs[jk('native_skill')]:
+            return unqualified('policy_inputs_differ_before_first_activation',i,a,b,
+                {'model_input_key':jobs[jk('model_steps')],'skill_input_key':jobs[jk('native_skill')]})
         common_key = jobs[jk('model_steps')]
         assert b['decision'] == calls[common_key]['parsed']
         if a:
             assert a['decision'] == b['decision']
-            assert a['selected_target'] == b['selected_target'] and a['path_length'] == b['path_length']
+            if a['selected_target'] != b['selected_target'] or a['path_length'] != b['path_length']:
+                return unqualified('native_target_or_path_length_differs_despite_same_choice',i,a,b)
         if b['path_length'] == 2:
             assert b['role'] == 'npc' and b['selected_target'] in ['goal', 'request']
             assert ALIASES[b['decision']['action']] == b['selected_target']
             assert (a is None or a['lower_decision'] is not None) and b['lower_decision'] is None
-            path, witness = replay_prefix_and_witness(case, left, left['turns'][:i],
-                b['selected_target'], before, modules)
-            expected = witness[0]['identity']
-            assert b['command'] == path[0] and expected_success(b, expected)
+            witness_status, witness_reason = 'VERIFIED_RECORDED_ID_NATIVE_PREFIX_AND_FORK', None
+            try:
+                path, witness = replay_prefix_and_witness(case, left, left['turns'][:i],
+                    b['selected_target'], before, modules)
+                expected = witness[0]['identity']
+                assert b['command'] == path[0] and expected_success(b, expected)
+            except (UnverifiedNativeReadback, AssertionError) as exc:
+                witness_status, witness_reason = 'UNVERIFIED', str(exc)
+                path, witness = [b['command']], []
+                expected = [b['event_type'],b['target_node_ids']]
+                assert expected[0] in ['GetObjectEvent','RemoveObjectEvent'] and expected[1][0]==case['item_id']
+                assert expected_success(b,expected)
             lower_job = (case['case_id'], left['seed'], left['persona'], 'model_steps', 'npc_primitive', i)
             lower = calls[jobs[lower_job]]
             assert (a['lower_decision'] if a else None) == lower['parsed']
@@ -172,6 +219,8 @@ def pair_readback(case, left, right, calls, jobs, modules):
             record.update(activated=True, activation_turn=i, selected_target=b['selected_target'],
                 common_selector_decision_key=common_key, common_before_state_sha256=digest(before),
                 common_visible_history_sha256=digest(visible[0]), native_two_primitive_witness=witness,
+                native_witness_status=witness_status, native_witness_unverified_reason=witness_reason,
+                expected_primitive_identity=expected,
                 model_lower_decision_key=jobs[lower_job], model_primitive_command=a['command'] if a else None,
                 model_primitive_identity=[a['event_type'], a['target_node_ids']] if a else None,
                 model_primitive_category=category,
@@ -193,7 +242,9 @@ def pair_readback(case, left, right, calls, jobs, modules):
                 record[backend + '_remaining_native_turns_including_activation'] = len(episode['turns']) - i
             return record
         assert a is not None
-        assert native_projection(a) == native_projection(b), ('Native prefix diverges before activation', record, i)
+        if native_projection(a) != native_projection(b):
+            return unqualified('same_input_and_choice_but_actual_native_event_differs',i,a,b,
+                {'shared_input_key':common_key,'same_parsed_choice':a['decision']==b['decision']})
         add_visible(visible[0], a, left); add_visible(visible[1], b, right)
         record['common_prefix_native_turns'] += 1
         record['common_prefix_including_opening_checks'] += 1
@@ -215,24 +266,27 @@ def summarize(records, graph_ids):
     for r in records:
         counts = per_graph[r['case_id']]
         counts['eligible_pairs'] += 1
+        counts['qualified_prefix_pairs'] += r['prefix_qualification']=='qualified_common_prefix'
+        counts['unqualified_prefix_pairs'] += r['prefix_qualification']=='unqualified_prefix'
         counts['active_pairs'] += int(r['activated'])
         if not r['activated']:
             continue
-        counts['model_expected_prerequisite_success'] += r['model_expected_prerequisite_success']
         counts['skill_expected_prerequisite_success'] += r['skill_expected_prerequisite_success']
         counts['skill_minus_model_expected_prerequisite_success'] += (
             r['skill_expected_prerequisite_success'] - r['model_expected_prerequisite_success'])
         counts['model_identity_equals_witness'] += r['model_identity_equals_witness']
         counts['model_command_equals_witness'] += r['model_command_equals_witness']
+        counts['native_witness_verified'] += r['native_witness_status'].startswith('VERIFIED')
+        counts['native_witness_unverified'] += r['native_witness_status']=='UNVERIFIED'
         for category in CATEGORIES:
             counts['model_' + category] += r['model_primitive_category'] == category
         for target in ['goal', 'request']:
             counts['selected_target_' + target] += r['selected_target'] == target
         for event in ['GetObjectEvent', 'RemoveObjectEvent']:
-            counts['expected_' + event] += r['native_two_primitive_witness'][0]['identity'][0] == event
+            counts['expected_' + event] += r['expected_primitive_identity'][0] == event
         for backend in BACKENDS:
             counts[backend + '_selected_outcome_ever_after_activation'] += r[backend + '_selected_outcome_ever_after_activation']
-    fixed_fields = {'eligible_pairs', 'active_pairs', 'model_expected_prerequisite_success',
+    fixed_fields = {'eligible_pairs', 'qualified_prefix_pairs', 'unqualified_prefix_pairs', 'native_witness_verified', 'native_witness_unverified', 'active_pairs', 'model_expected_prerequisite_success',
                     'skill_expected_prerequisite_success', 'skill_minus_model_expected_prerequisite_success',
                     'model_identity_equals_witness', 'model_command_equals_witness',
                     'selected_target_goal', 'selected_target_request', 'expected_GetObjectEvent',
@@ -242,6 +296,8 @@ def summarize(records, graph_ids):
     matrix = np.asarray([[per_graph[cid][f] for f in fields] for cid in graph_ids], dtype=float)
     totals = matrix.sum(axis=0)
     where = {f: i for i, f in enumerate(fields)}
+    assert sum(totals[where['model_'+c]] for c in CATEGORIES) == totals[where['active_pairs']]
+    assert totals[where['model_expected_prerequisite_success']] <= totals[where['active_pairs']]
     rng = np.random.default_rng(BOOTSTRAP_SEED)
     weights = rng.multinomial(len(graph_ids), np.full(len(graph_ids), 1/len(graph_ids)), size=BOOTSTRAPS)
     sampled = weights @ matrix
@@ -250,12 +306,14 @@ def summarize(records, graph_ids):
     active = totals[active_index]
     conditional = {}
     for f in fields:
-        if f in ['active_pairs', 'eligible_pairs']:
+        if f in ['active_pairs', 'eligible_pairs','qualified_prefix_pairs','unqualified_prefix_pairs']:
             continue
         point = float(totals[where[f]] / active) if active else None
         ci = (list(map(float, np.quantile(sampled[defined, where[f]] / sampled[defined, active_index], [.025, .975])))
               if active and defined.any() else None)
         conditional[f] = {'conditional_pair_rate': point, 'graph_cluster_95': ci}
+        assert point is None or -1 <= point <= 1
+        assert ci is None or all(-1 <= x <= 1 for x in ci)
     activation = sampled[:, active_index] / sampled[:, where['eligible_pairs']]
     return {'eligible_graphs': len(graph_ids), 'active_graphs': sum(v['active_pairs'] > 0 for v in per_graph.values()),
             'counts': {f: int(totals[where[f]]) for f in fields},
@@ -269,15 +327,19 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--runs', type=Path, nargs='+', required=True)
     ap.add_argument('--call-runs', type=Path, nargs='*', default=[])
+    ap.add_argument('--partial-runs', type=Path, nargs='*', default=[],
+                    help='Technical archived aborted trace dependencies, not additional samples.')
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--profile', action='store_true')
     args = ap.parse_args()
     assert os.environ.get('PYTHONHASHSEED') == '0', 'Native prefix replay requires the driver PYTHONHASHSEED=0.'
-    by_model = defaultdict(list); call_model = defaultdict(list)
+    by_model = defaultdict(list); call_model = defaultdict(list); partial_model = defaultdict(list)
     for folder in dict.fromkeys(args.runs):
         by_model[json.loads((folder / 'manifest.json').read_text())['model']].append(folder)
     for folder in dict.fromkeys(args.call_runs):
         call_model[json.loads((folder / 'manifest.json').read_text())['model']].append(folder)
+    for folder in dict.fromkeys(args.partial_runs):
+        partial_model[json.loads((folder / 'manifest.json').read_text())['model']].append(folder)
     from light_native_gate import load_event_modules
     from light_npc_episodes import CACHE
     modules = load_event_modules(CACHE / 'sources/LIGHT')
@@ -290,8 +352,8 @@ def main():
     ids = profile if args.profile else list(cases)
     models = {}; hashes = {str(source): sha(source)}
     for model, folders in by_model.items():
-        loaded = read_runs(folders, call_model[model], args.profile)
-        rows, manifests, runtimes, model_hashes, duplicates, calls, jobs, costs, reused, call_runtimes = loaded
+        loaded = read_runs(folders, call_model[model], args.profile, partial_model[model])
+        rows, manifests, runtimes, model_hashes, duplicates, calls, jobs, costs, reused, call_runtimes, merge_meta = loaded
         assert all(m['source_sha256'] == first_manifest['source_sha256'] for m in manifests)
         expected = {(cid, seed, persona, backend) for cid in ids for seed in SEEDS
                     for persona in PERSONAS for backend in BACKENDS}
@@ -316,20 +378,28 @@ def main():
                           and (persona == 'pooled_traits' or r['persona'] == persona)]
                 summaries[group + '/' + persona] = summarize(subset, cids)
         models[model] = {'worlds': len(ids), 'episodes': len(rows), 'backend_pairs': len(pairs),
-            'identical_profile_full_episode_records_excluded': duplicates,
-            'pre_activation_invariant': {'status': 'PASS', 'all_pairs_checked': len(pairs),
+            'duplicate_episode_records_excluded_including_partial': duplicates,
+            'primary_episode_sources_ordered':merge_meta['audit']['primary_episode_sources_ordered'],
+            'technical_merge_audit':merge_meta['audit'],
+            'pre_activation_invariant': {'status': 'PARTIALLY_UNQUALIFIED_PREFIX' if any(r['prefix_qualification']=='unqualified_prefix' for r in pairs) else 'ALL_RECORDED_PAIRS_COMMON_PREFIX_QUALIFIED', 'all_pairs_checked': len(pairs),
+                'unqualified_prefix_pairs':sum(r['prefix_qualification']=='unqualified_prefix' for r in pairs),
+                'unqualified_prefix_graphs':len({r['case_id'] for r in pairs if r['prefix_qualification']=='unqualified_prefix'}),
                 'prefix_native_events_compared_including_opening': sum(r['common_prefix_including_opening_checks'] for r in pairs),
                 'first_common_two_step_pairs': sum(r['activated'] for r in pairs),
                 'activated_graphs': len({r['case_id'] for r in pairs if r['activated']}),
-                'native_witnesses_verified': sum(r['activated'] for r in pairs)},
+                'native_witnesses_verified': sum(r['activated'] and r['native_witness_status'].startswith('VERIFIED') for r in pairs),
+                'native_witnesses_unverified':sum(r['activated'] and r['native_witness_status']=='UNVERIFIED' for r in pairs)},
             'summaries': summaries, 'pair_readback': pairs}
     result = {'status': 'PROFILE_TOOL_CHECK_ONLY_POST_HOC' if args.profile else 'COMPLETE_POST_HOC',
         'experiment': 'E80', 'analysis': 'first_common_two_step_activation', 'model_calls': 0, 'API_calls': 0,
         'design_timing': 'Added after both two-world profiles, before full E80 results completed. Not an original preregistered primary endpoint.',
+        'technical_loader_revision': 'POST-HOC earliest complete serialization (profile, partial, full) preserves original aborted episodes; nonexact parser variants audited, not forcibly matched. Source inclusion, outcome classifications and bootstrap unchanged.',
+        'withdrawn_technical_assumption': 'All-pair pre-activation identity was disproved by actual native parser ties; qualify each recorded prefix and retain unqualified pairs in all-world main N. They are not common-prefix implementation forks.',
+        'technical_counter_correction': 'Removed duplicate accumulation of model_expected_prerequisite_success through both explicit bool and its identically named category. Pair booleans/categories, paired skill-minus-model differences and main E80 endpoints were unchanged; category sums and rate bounds now checked.',
         'fixed_readback': [
             'Retain every preassigned source graph, seed and persona; pair model_steps/native_skill by exact source/seed/persona.',
             'Before first len2 alias, compare actual material states, native events, viewer-visible history, selector/player input keys and parsed high-level choices. Ignore lower-decision metadata.',
-            'At first common len2 choice verify same selected target and a native two-primitive fork witness; expected first primitive is source Get or Remove.',
+            'Mark pre-activation divergence unqualified with actual first differences. At qualified first len2 choices verify source Get/Remove witness; replay recorded native target IDs if text parsing is ambiguous; otherwise mark witness unverified.',
             'Read actual model lower action and physical success against that witness; distinguish other legal speech/action from rejections/failed flags.',
             'Skill and model primitive use the same original game opportunity. Subsequent freely revised choices/player responses are descriptive suffix outcomes.',
             'Cluster bootstrap source graphs with all seed/trait pairs retained. Conditional rates use active-pair counts as denominators; zero-trigger graphs remain in resampling.',

@@ -1,0 +1,131 @@
+{
+  "status": "COMPLETE_POST_HOC",
+  "scope": "Physical item-flow description only; simultaneous two-way transfers do not establish a negotiated contract. No new model calls.",
+  "models": {
+    "gemma": {
+      "counts_per_600_episode_cell": {
+        "agreeable/model_steps": {
+          "NPC_sourceGive_and_player_source_consumption": 16,
+          "bidirectional_any_Give": 5,
+          "NPC_sourceGive_and_player_source_return": 3,
+          "NPC_sourceGive_and_player_other_assetGive": 1
+        },
+        "agreeable/native_skill": {
+          "NPC_sourceGive_and_player_source_consumption": 16,
+          "bidirectional_any_Give": 5,
+          "NPC_sourceGive_and_player_source_return": 3,
+          "NPC_sourceGive_and_player_other_assetGive": 1
+        },
+        "firm/model_steps": {
+          "bidirectional_any_Give": 2,
+          "NPC_sourceGive_and_player_other_assetGive": 1,
+          "NPC_sourceGive_and_player_source_return": 2,
+          "NPC_sourceGive_and_player_source_consumption": 5
+        },
+        "firm/native_skill": {
+          "bidirectional_any_Give": 3,
+          "NPC_sourceGive_and_player_other_assetGive": 1,
+          "NPC_sourceGive_and_player_source_return": 2,
+          "NPC_sourceGive_and_player_source_consumption": 5
+        }
+      },
+      "source_worlds": {
+        "NPC_sourceGive_and_player_source_consumption": 7,
+        "bidirectional_any_Give": 6,
+        "NPC_sourceGive_and_player_source_return": 4,
+        "NPC_sourceGive_and_player_other_assetGive": 1
+      },
+      "hash_median_example_keys": {
+        "NPC_sourceGive_and_player_source_consumption": [
+          "a8f8c5be75878bd6",
+          8002,
+          "agreeable",
+          "native_skill"
+        ],
+        "bidirectional_any_Give": [
+          "a721c85a0e80618e",
+          8001,
+          "firm",
+          "model_steps"
+        ],
+        "NPC_sourceGive_and_player_source_return": [
+          "a721c85a0e80618e",
+          8001,
+          "firm",
+          "native_skill"
+        ],
+        "NPC_sourceGive_and_player_other_assetGive": [
+          "a721c85a0e80618e",
+          8003,
+          "agreeable",
+          "model_steps"
+        ]
+      }
+    },
+    "32b": {
+      "counts_per_600_episode_cell": {
+        "firm/model_steps": {
+          "bidirectional_any_Give": 23,
+          "NPC_sourceGive_and_player_source_return": 18,
+          "NPC_sourceGive_and_player_other_assetGive": 1,
+          "NPC_sourceGive_and_player_source_consumption": 13
+        },
+        "firm/native_skill": {
+          "bidirectional_any_Give": 20,
+          "NPC_sourceGive_and_player_source_return": 17,
+          "NPC_sourceGive_and_player_other_assetGive": 1,
+          "NPC_sourceGive_and_player_source_consumption": 13
+        },
+        "agreeable/model_steps": {
+          "bidirectional_any_Give": 24,
+          "NPC_sourceGive_and_player_source_return": 22,
+          "NPC_sourceGive_and_player_source_consumption": 16,
+          "NPC_sourceGive_and_player_other_assetGive": 3
+        },
+        "agreeable/native_skill": {
+          "bidirectional_any_Give": 24,
+          "NPC_sourceGive_and_player_source_return": 23,
+          "NPC_sourceGive_and_player_source_consumption": 16,
+          "NPC_sourceGive_and_player_other_assetGive": 3
+        }
+      },
+      "source_worlds": {
+        "bidirectional_any_Give": 31,
+        "NPC_sourceGive_and_player_source_return": 26,
+        "NPC_sourceGive_and_player_source_consumption": 8,
+        "NPC_sourceGive_and_player_other_assetGive": 4
+      },
+      "hash_median_example_keys": {
+        "bidirectional_any_Give": [
+          "a721c85a0e80618e",
+          8002,
+          "agreeable",
+          "native_skill"
+        ],
+        "NPC_sourceGive_and_player_source_return": [
+          "a721c85a0e80618e",
+          8003,
+          "agreeable",
+          "model_steps"
+        ],
+        "NPC_sourceGive_and_player_source_consumption": [
+          "8717be3e07c5768d",
+          8001,
+          "agreeable",
+          "native_skill"
+        ],
+        "NPC_sourceGive_and_player_other_assetGive": [
+          "a721c85a0e80618e",
+          8002,
+          "agreeable",
+          "native_skill"
+        ]
+      }
+    }
+  },
+  "source_reports_sha256": {
+    "workbench/game-npc-agents/results/E80_gemma_complete.json": "acbed90076377314d2d645ec1d0432288e697904f7431673aea7536b71d75e56",
+    "workbench/game-npc-agents/results/E80_32b_complete.json": "382668835ec0784627231f0b7ce8a2d404b7885e7f2290ea833481673259eb8e"
+  },
+  "script_sha256": "ce8e61b68cc6b0a60d2a3f7284073bb02986100d0e04488b0655500e747bff0a"
+}

@@ -308,44 +308,97 @@ def load_sources(path, modules):
     return cases
 
 
-def read_runs(folders, call_folders, profile):
-    rows, manifests, runtimes, hashes = {}, [], [], {}
-    duplicate_episodes = 0
-    for folder in dict.fromkeys(folders):
+def canonical_sha(row):
+    return hashlib.sha256(json.dumps(row, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
+
+def first_difference(a, b, path=''):
+    if type(a) != type(b):
+        return {'path': path, 'primary': a, 'alternative': b}
+    if isinstance(a, dict):
+        for key in sorted(a.keys() | b.keys()):
+            if a.get(key) != b.get(key):
+                return first_difference(a.get(key), b.get(key), path + '/' + key)
+    elif isinstance(a, list):
+        for i, (x, y) in enumerate(zip(a, b)):
+            if x != y:
+                return first_difference(x, y, path + '/' + str(i))
+        if len(a) != len(b):
+            return {'path': path + '/length', 'primary': len(a), 'alternative': len(b)}
+    elif a != b:
+        return {'path': path, 'primary': a, 'alternative': b}
+    return None
+
+
+def read_runs(folders, call_folders, profile, partial_folders=()):
+    """Explicit POST-HOC recovery rule: profile, original partial, then full.
+
+    Preserve the physically earliest complete serialized episode, regardless
+    of its outcome. Every duplicate, including nonexact parser variants, is
+    retained in the audit; the full-only version is returned for sensitivity.
+    Resolve each primary episode's decisions using its own trace provenance.
+    """
+    folders = list(dict.fromkeys(folders)); partial_folders = list(dict.fromkeys(partial_folders))
+    infos = {}
+    for folder in dict.fromkeys([*folders, *partial_folders, *call_folders]):
         manifest = json.loads((folder / 'manifest.json').read_text())
         runtime = json.loads((folder / 'runtime.json').read_text())
         assert manifest['experiment'] == 'E80'
-        if profile:
+        if folder in partial_folders:
+            assert runtime['status'] == 'ABORTED_NATIVE_HELP_DEPENDENCY_API' and not profile
+        elif folder in folders and profile:
             assert manifest['profile']
-        manifests.append(manifest); runtimes.append(runtime)
-        path = folder / 'episodes.jsonl'
-        hashes[str(path)] = sha(path)
-        count = 0
-        for row in map(json.loads, path.open()):
-            k = row_key(row)
-            if k in rows:
-                assert rows[k] == row, ('Non-identical profile/full duplicate', k)
-                duplicate_episodes += 1
-            else:
-                rows[k] = row
-            count += 1
-        assert count == runtime['episodes'] == len(manifest['case_ids']) * 12
-    first = manifests[0]
-    for key in ['model', 'source_sha256', 'seeds', 'personas', 'backends', 'max_turns',
-                'driver_sha256', 'skills_sha256', 'rules_modified', 'new_cloud_calls']:
-        assert all(m[key] == first[key] for m in manifests), key
+        infos[folder] = (manifest, runtime)
+    ordered = ([f for f in folders if infos[f][0]['profile']] + partial_folders
+               + [f for f in folders if not infos[f][0]['profile']])
+    assert len(ordered) == len(set(ordered))
+    first = infos[ordered[0]][0]
+    for manifest, runtime in infos.values():
+        for key in ['model', 'source_sha256', 'seeds', 'personas', 'backends', 'max_turns',
+                    'driver_sha256', 'skills_sha256', 'rules_modified', 'new_cloud_calls']:
+            assert manifest[key] == first[key], key
     assert set(first['personas']) == set(PERSONAS) and first['seeds'] == SEEDS
     assert first['backends'] == BACKENDS and first['max_turns'] == 16
     assert not first['rules_modified'] and first['new_cloud_calls'] == 0
-    calls, job_keys, totals, reused_totals = {}, {}, Counter(), 0
-    call_runtimes, call_manifests = [], []
-    for folder in dict.fromkeys([*folders, *call_folders]):
-        manifest = json.loads((folder / 'manifest.json').read_text())
-        runtime = json.loads((folder / 'runtime.json').read_text())
-        for field in ['model', 'source_sha256', 'driver_sha256', 'skills_sha256']:
-            assert manifest[field] == first[field]
-        call_manifests.append(manifest); call_runtimes.append(runtime)
-        count = 0
+    rows, origins, full_rows, full_origins, hashes = {}, {}, {}, {}, {}
+    duplicates = []; manifests = []; runtimes = []; partial_counts = Counter()
+    for folder in ordered:
+        manifest, runtime = infos[folder]
+        manifests.append(manifest); runtimes.append(runtime)
+        for name in ['manifest.json', 'runtime.json', 'episodes.jsonl']:
+            hashes[str(folder / name)] = sha(folder / name)
+        local_keys = set()
+        for row in map(json.loads, (folder / 'episodes.jsonl').open()):
+            k = row_key(row)
+            assert k not in local_keys and k[0] in manifest['case_ids']
+            local_keys.add(k)
+            if k in rows:
+                exact = rows[k] == row
+                duplicates.append({'key': list(k), 'exact': exact,
+                    'primary_path': str(origins[k] / 'episodes.jsonl'),
+                    'alternative_path': str(folder / 'episodes.jsonl'),
+                    'primary_canonical_sha256': canonical_sha(rows[k]),
+                    'alternative_canonical_sha256': canonical_sha(row),
+                    'first_difference': None if exact else first_difference(rows[k], row)})
+            else:
+                rows[k] = row; origins[k] = folder
+                if folder in partial_folders:
+                    partial_counts[str(folder)] += 1
+            if folder not in partial_folders and not manifest['profile']:
+                assert k not in full_rows
+                full_rows[k] = row; full_origins[k] = folder
+        assert len(local_keys) == runtime['episodes']
+        if folder in partial_folders:
+            assert len(local_keys) <= len(manifest['case_ids']) * 12
+        else:
+            assert len(local_keys) == len(manifest['case_ids']) * 12
+    if not profile:
+        assert set(full_rows) == set(rows), 'Complete full/recovered factorial must cover every primary key.'
+    calls, folder_jobs, totals, reused_totals = {}, {}, Counter(), 0
+    call_runtimes = []
+    for folder in dict.fromkeys([*ordered, *call_folders]):
+        manifest, runtime = infos[folder]
+        call_runtimes.append(runtime); local_jobs = {}; count = 0; reuses = 0
         for name in ['model_calls.jsonl', 'reused_calls.jsonl']:
             path = folder / name
             if not path.exists():
@@ -354,9 +407,9 @@ def read_runs(folders, call_folders, profile):
             hashes[str(path)] = sha(path)
             for record in map(json.loads, path.open()):
                 jk = job_key(record)
-                if jk in job_keys:
-                    assert job_keys[jk] == record['decision_key'], ('Different same-job decisions', jk)
-                job_keys[jk] = record['decision_key']
+                if jk in local_jobs:
+                    assert local_jobs[jk] == record['decision_key']
+                local_jobs[jk] = record['decision_key']
                 if name == 'model_calls.jsonl':
                     assert decision_key(record) == record['decision_key']
                     if record['decision_key'] in calls:
@@ -369,17 +422,41 @@ def read_runs(folders, call_folders, profile):
                                   completion_tokens=record['completion_tokens'],
                                   parse_errors=int(bool(record['parse_error'])))
                 else:
-                    reused_totals += 1
-        assert count == runtime['calls']
+                    reused_totals += 1; reuses += 1
+        assert count == runtime['calls'] and reuses == runtime['reused_calls']
         assert runtime['new_cloud_calls'] == 0
-    assert all(k in calls for k in job_keys.values()), 'Supply cached profile dependencies via --call-runs'
-    return rows, manifests, runtimes, hashes, duplicate_episodes, calls, job_keys, dict(totals), reused_totals, call_runtimes
+        indexed = defaultdict(dict)
+        for jk, value in local_jobs.items():
+            indexed[jk[:4]][jk] = value
+        folder_jobs[folder] = indexed
+    def select_jobs(provenance):
+        selected = {}
+        for k, folder in provenance.items():
+            for jk, value in folder_jobs[folder][k].items():
+                assert value in calls, 'Supply cached profile/partial dependencies.'
+                selected[jk] = value
+        return selected
+    jobs = select_jobs(origins); full_jobs = select_jobs(full_origins)
+    audit = {
+        'rule': 'POST-HOC technical recovery: earliest complete serialized episode, profile then original partial then recovered/full; never select by outcome.',
+        'primary_episode_sources_ordered': [str(f / 'episodes.jsonl') for f in ordered],
+        'primary_episode_origin_counts': dict(Counter(str(f / 'episodes.jsonl') for f in origins.values())),
+        'primary_canonical_selection_sha256': canonical_sha([
+            [list(k), str(origins[k] / 'episodes.jsonl'), canonical_sha(rows[k])] for k in sorted(rows)]),
+        'duplicate_exact_records': sum(d['exact'] for d in duplicates),
+        'duplicate_nonexact_records': sum(not d['exact'] for d in duplicates),
+        'duplicates': duplicates,
+        'original_partial_complete_episodes_retained_primary': dict(partial_counts),
+        'full_only_alternative_keys': len(full_rows),
+    }
+    meta = {'audit': audit, 'full_rows': full_rows, 'full_jobs': full_jobs}
+    return rows, manifests, runtimes, hashes, len(duplicates), calls, jobs, dict(totals), reused_totals, call_runtimes, meta
 
 
 def audit_decisions(rows, cases, calls, job_keys):
     from native_interactive_execution import player_header, npc_header, configure
     configure()
-    audit = Counter()
+    audit = Counter(); initial_mismatches = []
     for k, row in rows.items():
         cid, seed, persona, backend = k
         case = cases[cid]
@@ -410,11 +487,21 @@ def audit_decisions(rows, cases, calls, job_keys):
         assert left in rows and right in rows
         jl = (cid, seed, persona, BACKENDS[0], 'npc_choice', 0)
         jr = (cid, seed, persona, BACKENDS[1], 'npc_choice', 0)
-        assert job_keys[jl] == job_keys[jr], ('Initial policy input differs by backend', cid)
         a, b = rows[left], rows[right]
-        assert a['opening'] == b['opening']
-        assert a['turns'][:1] == b['turns'][:1], ('First one-step action differs by backend', cid)
-        audit['paired_common_initial_input_and_action_checks'] += 1
+        input_same = job_keys[jl] == job_keys[jr]
+        first_fields = ['actor','command','event_type','target_node_ids','legal','executed',
+                        'stochastic_failure','error','before','after','messages','material_changed']
+        project = lambda episode: [{f: h.get(f) for f in first_fields} for h in episode['turns'][:1]]
+        native_same = project(a) == project(b)
+        audit['paired_initial_checks_total'] += 1
+        audit['paired_initial_input_identical'] += input_same
+        audit['paired_initial_native_action_identical'] += native_same
+        if input_same and native_same:
+            audit['paired_common_initial_input_and_action_checks'] += 1
+        else:
+            initial_mismatches.append({'case_id':cid,'seed':seed,'persona':persona,
+                'same_policy_input':input_same,'same_first_native_action':native_same,
+                'first_native_difference':first_difference(project(a),project(b))})
     # Visible speech may later legitimately disclose motivations. This is a
     # structural header check, not a ban on private text becoming public speech.
     for record in calls.values():
@@ -427,7 +514,7 @@ def audit_decisions(rows, cases, calls, job_keys):
                 if len(value) > 25 and value not in case['requester_persona']:
                     assert value not in record['messages'][0]['content']
             audit['player_header_private_goal_checks'] += 1
-    return dict(audit)
+    return {**dict(audit), 'paired_initial_mismatches': initial_mismatches}
 
 
 def verify_replay(rows, cases, calls, job_keys, modules):
@@ -541,45 +628,12 @@ def raw_counts(rows):
             'native_error_texts': dict(errors)}
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--runs', type=Path, nargs='+', required=True)
-    ap.add_argument('--call-runs', type=Path, nargs='*', default=[])
-    ap.add_argument('--source', type=Path)
-    ap.add_argument('--out', type=Path, required=True)
-    ap.add_argument('--profile', action='store_true', help='Report only the two source-selected profile worlds.')
-    ap.add_argument('--verify-replay', action='store_true', help='CPU replay all supplied episodes and exact inputs.')
-    args = ap.parse_args()
-    if args.verify_replay:
-        assert os.environ.get('PYTHONHASHSEED') == '0', 'Exact native view reconstruction needs the driver PYTHONHASHSEED=0.'
-    from light_native_gate import load_event_modules
-    from light_npc_episodes import CACHE
-    loaded = read_runs(args.runs, args.call_runs, args.profile)
-    rows, manifests, runtimes, hashes, duplicate_episodes, calls, job_keys, costs, reused, call_runtimes = loaded
-    assert manifests[0]['driver_sha256'] == sha(Path(__file__).with_name('native_interactive_execution.py'))
-    assert manifests[0]['skills_sha256'] == sha(Path(__file__).with_name('native_interactive_skills.py'))
-    source = args.source or Path(manifests[0]['source'])
-    assert sha(source) == manifests[0]['source_sha256']
-    hashes[str(source)] = sha(source)
-    modules = load_event_modules(CACHE / 'sources/LIGHT')
-    cases = load_sources(source, modules)
-    if args.profile:
-        ids = [next(cid for cid, c in cases.items() if c['goal_kind'] == kind)
-               for kind in ['give', next(c['goal_kind'] for c in cases.values() if c['goal_kind'] != 'give')]]
-    else:
-        ids = list(cases)
-    expected = {(cid, seed, persona, backend) for cid in ids for seed in SEEDS
-                for persona in PERSONAS for backend in BACKENDS}
-    assert set(rows) == expected, ('Incomplete or unexpected factorial', len(rows), len(expected))
-    data = {k: metrics(row, cases[row['case_id']]) for k, row in rows.items()}
-    fields = list(next(iter(data.values())))
-    arrays = {k: np.asarray([value[f] for f in fields]) for k, value in data.items()}
-    decision_audit = audit_decisions(rows, cases, calls, job_keys)
-    replay = verify_replay(rows, cases, calls, job_keys, modules) if args.verify_replay else {'status': 'NOT_REQUESTED'}
+def aggregate_results(rows, data, cases, ids, fields):
     groups = {'all': ids, 'Give': [cid for cid in ids if cases[cid]['goal_kind'] == 'give'],
               'nonGive': [cid for cid in ids if cases[cid]['goal_kind'] != 'give']}
     groups.update({kind: [cid for cid in ids if cases[cid]['goal_kind'] == kind]
                    for kind in sorted({cases[cid]['goal_kind'] for cid in ids})})
+    arrays = {k: np.asarray([value[f] for f in fields]) for k, value in data.items()}
     cells, contrasts, raw = {}, {}, {}
     graph_vectors = {(cid, persona, backend): np.mean([arrays[cid, seed, persona, backend] for seed in SEEDS], axis=0)
                      for cid in ids for persona in PERSONAS for backend in BACKENDS}
@@ -607,21 +661,94 @@ def main():
         contrasts[f'{group}/backend_x_trait_interaction'] = summarize(
             [graph_vector(cid, 'agreeable', 'native_skill') - graph_vector(cid, 'agreeable', 'model_steps')
              - graph_vector(cid, 'firm', 'native_skill') + graph_vector(cid, 'firm', 'model_steps') for cid in cids], fields)
+    return {'group_worlds': {k: len(v) for k, v in groups.items()}, 'cells': cells, 'contrasts': contrasts, 'raw_counts': raw}
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--runs', type=Path, nargs='+', required=True)
+    ap.add_argument('--call-runs', type=Path, nargs='*', default=[])
+    ap.add_argument('--partial-runs', type=Path, nargs='*', default=[],
+                    help='Archived aborted traces; earliest complete episodes retained, duplicate variants audited.')
+    ap.add_argument('--source', type=Path)
+    ap.add_argument('--out', type=Path, required=True)
+    ap.add_argument('--profile', action='store_true', help='Report only the two source-selected profile worlds.')
+    ap.add_argument('--verify-replay', action='store_true', help='CPU replay all supplied episodes and exact inputs.')
+    args = ap.parse_args()
+    if args.verify_replay:
+        assert os.environ.get('PYTHONHASHSEED') == '0', 'Exact native view reconstruction needs the driver PYTHONHASHSEED=0.'
+    from light_native_gate import load_event_modules
+    from light_npc_episodes import CACHE
+    loaded = read_runs(args.runs, args.call_runs, args.profile, args.partial_runs)
+    rows, manifests, runtimes, hashes, duplicate_episodes, calls, job_keys, costs, reused, call_runtimes, merge_meta = loaded
+    assert manifests[0]['driver_sha256'] == sha(Path(__file__).with_name('native_interactive_execution.py'))
+    assert manifests[0]['skills_sha256'] == sha(Path(__file__).with_name('native_interactive_skills.py'))
+    source = args.source or Path(manifests[0]['source'])
+    assert sha(source) == manifests[0]['source_sha256']
+    hashes[str(source)] = sha(source)
+    modules = load_event_modules(CACHE / 'sources/LIGHT')
+    cases = load_sources(source, modules)
+    if args.profile:
+        ids = [next(cid for cid, c in cases.items() if c['goal_kind'] == kind)
+               for kind in ['give', next(c['goal_kind'] for c in cases.values() if c['goal_kind'] != 'give')]]
+    else:
+        ids = list(cases)
+    expected = {(cid, seed, persona, backend) for cid in ids for seed in SEEDS
+                for persona in PERSONAS for backend in BACKENDS}
+    assert set(rows) == expected, ('Incomplete or unexpected factorial', len(rows), len(expected))
+    data = {k: metrics(row, cases[row['case_id']]) for k, row in rows.items()}
+    fields = list(next(iter(data.values())))
+    arrays = {k: np.asarray([value[f] for f in fields]) for k, value in data.items()}
+    decision_audit = audit_decisions(rows, cases, calls, job_keys)
+    replay = verify_replay(rows, cases, calls, job_keys, modules) if args.verify_replay else {'status': 'NOT_REQUESTED'}
+    primary_summary = aggregate_results(rows, data, cases, ids, fields)
+    cells, contrasts, raw = (primary_summary[k] for k in ['cells','contrasts','raw_counts'])
+    sensitivities = {}
+    sensitivity_fields = [f for f in fields if f in {
+        'npc_goal_bound_ever','npc_goal_physical_ever','npc_source_give_requester_ever',
+        'both_goal_physical_and_npc_request_ever','player_source_get_ever','player_source_steal_ever',
+        'player_get_or_steal_source_ever','final_source_ultimate_requester','bidirectional_any_item_give_ever',
+        'npc_other_asset_give_other_party_ever','npc_two_step_choice_ever','npc_dead','player_dead','protocol_error'}]
+    if not args.profile:
+        alternative = merge_meta['full_rows']
+        alt_data = {k: metrics(r,cases[r['case_id']]) for k,r in alternative.items()}
+        sensitivities['complete_recovered_full_version_POST_HOC'] = aggregate_results(
+            alternative,alt_data,cases,ids,sensitivity_fields)
+        diagnostic_graph = '21a99f36ade488f8'
+        if diagnostic_graph in ids:
+            restricted = [cid for cid in ids if cid != diagnostic_graph]
+            sensitivities['exclude_known_parser_ambiguity_graph_POST_HOC'] = aggregate_results(
+                {k:r for k,r in rows.items() if k[0] in restricted},
+                {k:r for k,r in data.items() if k[0] in restricted},cases,restricted,sensitivity_fields)
+        sensitivities['scope'] = 'Diagnostics fixed after parser recovery mismatch, before reading main effects; primary all-200 and seeds unchanged. Full-version sensitivity does not choose outcomes; graph exclusion is never primary.'
     profile_ids = [next(cid for cid, c in cases.items() if c['goal_kind'] == 'give'),
                    next(cid for cid, c in cases.items() if c['goal_kind'] != 'give')]
+    timed = [r for r in call_runtimes if r['wall_seconds'] is not None and r['model_load_seconds'] is not None]
+    untimed = [r for r in call_runtimes if r not in timed]
+    known_GPU_hours = sum(r['wall_seconds'] + r['model_load_seconds'] for r in timed) / 3600
+    observed_aborted_GPU_hours = (sum(r['observed_slot_seconds'] for r in untimed) / 3600
+        if all(r.get('observed_slot_seconds') is not None for r in untimed) else None)
     result = {
         'status': 'COMPLETE_PROFILE_CPU_READBACK' if args.profile else 'COMPLETE',
         'experiment': 'E80', 'model': manifests[0]['model'], 'worlds': len(ids), 'episodes': len(rows),
         'seeds': SEEDS, 'personas': PERSONAS, 'backends': BACKENDS,
-        'group_worlds': {k: len(v) for k, v in groups.items()}, 'profile_case_ids_in_source_order': profile_ids,
-        'duplicate_identical_episode_records_excluded': duplicate_episodes,
+        'group_worlds': primary_summary['group_worlds'], 'profile_case_ids_in_source_order': profile_ids,
+        'duplicate_episode_records_excluded': duplicate_episodes,
+        'duplicate_identical_episode_records_excluded': merge_meta['audit']['duplicate_exact_records'],
+        'duplicate_nonidentical_episode_records_excluded': merge_meta['audit']['duplicate_nonexact_records'],
+        'primary_episode_sources_ordered': merge_meta['audit']['primary_episode_sources_ordered'],
+        'technical_merge_audit': merge_meta['audit'], 'technical_sensitivities_POST_HOC': sensitivities,
         'physical_episode_records_read': len(rows) + duplicate_episodes,
         'metrics': fields, 'cells': cells, 'contrasts': contrasts, 'raw_counts': raw,
         'decision_input_audit': decision_audit, 'CPU_native_replay': replay,
         'costs': {**costs, 'unique_decision_keys': len(calls), 'unique_job_keys': len(job_keys),
                   'reused_call_records_read': reused, 'new_cloud_calls': 0,
-                  'supplied_run_GPU_hours_including_profiles': sum(r['wall_seconds'] + r['model_load_seconds']
-                                                               for r in call_runtimes)/3600},
+                  'supplied_run_GPU_hours_including_profiles': known_GPU_hours if not untimed else None,
+                  'completed_run_timer_GPU_hours_including_profiles': known_GPU_hours,
+                  'aborted_observed_slot_GPU_hours': observed_aborted_GPU_hours,
+                  'observed_total_GPU_hours_completed_timers_plus_aborted_slots':
+                      known_GPU_hours + observed_aborted_GPU_hours if observed_aborted_GPU_hours is not None else None,
+                  'aborted_attempts_without_serialized_final_timers': len(untimed)},
         'episode_runtimes': runtimes, 'cost_runtimes_including_call_dependencies': call_runtimes,
         'source_sha256': hashes, 'report_script_sha256': sha(Path(__file__)),
         'pinned_driver_sha256': manifests[0]['driver_sha256'], 'pinned_skills_sha256': manifests[0]['skills_sha256'],
@@ -636,7 +763,8 @@ def main():
             'speech': 'Only successful native Say/Tell/Whisper events transmit utterance. Opening common request is excluded from the 8+8 action/count metrics.',
             'skills': 'Only already selected two-primitive outcomes trigger the executor contrast. Every primitive uses one opportunity and the player may act between them.',
             'triggered_subsets': 'Two-step choices and realized choices are post-treatment descriptions, not separate causal effect estimates or independent samples.',
-            'costs': 'All physically incurred calls in supplied distinct directories count once; identical profile/full episodes and repeated decision inputs are separately deduplicated.',
+            'costs': 'All physically incurred calls in supplied distinct directories count once; identical profile/full/aborted episodes and repeated decision inputs are separately deduplicated. Aborted missing final timers remain null; observed slot duration is separately labeled.',
+            'technical_loader_revision': 'Added explicit archived ABORTED_NATIVE_HELP_DEPENDENCY_API inputs after a native Help/emoji API crash; after parser ambiguity disproved exact restoration, preserve earliest complete episodes (profile, partial, full) and audit nonexact duplicates; full-version and graph-exclusion diagnostics do not change primary N/endpoints/conditions/seeds/bootstrap.',
         },
         'scope': [
             'All source worlds and all configured seeds retained, including zero-player-asset worlds, rejected actions, deaths and protocol failures.',

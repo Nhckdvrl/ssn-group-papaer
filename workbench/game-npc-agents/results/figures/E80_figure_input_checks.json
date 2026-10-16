@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "models": {
+    "gemma": {
+      "worlds": 200,
+      "unique_episodes": 2400,
+      "chronological_primary_duplicate_audit": {
+        "duplicate_rows": 276,
+        "exact_duplicate_rows": 269,
+        "nonexact_duplicate_rows": 7,
+        "duplicate_rows_with_different_plot_categories": 0,
+        "selection": "chronological first complete row",
+        "episode_sources_ordered": [
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_profile/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s0/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s1/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s2/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl"
+        ]
+      },
+      "primary_event_and_custody_marginals_match_report": true,
+      "joint_definition": "Exact bound authored event AND actual NPC source Give to requester; historical events.",
+      "custody_precedence": "NPC, player B, distinct authored Give recipient A, direct VOID, other."
+    },
+    "32b": {
+      "worlds": 200,
+      "unique_episodes": 2400,
+      "chronological_primary_duplicate_audit": {
+        "duplicate_rows": 564,
+        "exact_duplicate_rows": 563,
+        "nonexact_duplicate_rows": 1,
+        "duplicate_rows_with_different_plot_categories": 0,
+        "selection": "chronological first complete row",
+        "episode_sources_ordered": [
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_profile/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3_native_help_failed/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_s0/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_s1/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_s2/episodes.jsonl",
+          "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3/episodes.jsonl"
+        ]
+      },
+      "primary_event_and_custody_marginals_match_report": true,
+      "joint_definition": "Exact bound authored event AND actual NPC source Give to requester; historical events.",
+      "custody_precedence": "NPC, player B, distinct authored Give recipient A, direct VOID, other."
+    }
+  }
+}

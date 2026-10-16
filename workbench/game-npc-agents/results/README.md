@@ -168,3 +168,14 @@ raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32
 - [384项CPU复算核对](E77_primary_contrasts_independent_check.json)另作逐图聚合，复用冻结metrics/相同bootstrap定义，与完整报告均值/区间完全一致，非L3独立测量。`E77_{gemma,32b}_complete_compute_audit.json`记录短launcher内存去重计算的AST等值核对（以实际文件名为准）。
 
 主raw为cache/runs/e77_{gemma,32b}_{profile,s0,s1}/，完整数据/模型调用不进Git。统计入口`scripts/native_dialogue_outcome_report_fast.py`、成本/图`scripts/native_dialogue_outcome_assets.py`；原冻结report/指标保持不动。工业与玩家文献审视在knowledge/persona-behavior的PLAYABLE_NPC_APPLICATION_AUDIT/PLAYER_VALUE_EVIDENCE两笔记，0新模型实验或API。
+
+## E80完整：响应玩家与共同决策/执行对照
+
+[连续报告E80续报](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：200源图/4800逻辑episode/37642新本地calls/3.61979观测GPUh/峰8卡/0API，所有本轮槽释放。
+
+- [Gemma](E80_gemma_complete.json)、[32B](E80_32b_complete.json)：全部任务族主统计/图簇CI、实际事件ID与before/after核对、协议/死亡/返还/消费/偷取、初始1200对输入与动作一致、恢复与199图敏感性。原partial792条优先保留，无图/seed过滤。
+- [首次共同两步POST-HOC](E80_first_activation_POST_HOC.json)：合格12/124节点、8/51图，预期前提3/12、38/124对可靠技能全实现；20对共同prefix不合格明确记，完整主200保留。计数修正及独立bool/互斥/界限核验公开。
+- [成本](E80_cost_accounting.json)纳入48profile精确复用、8初始化失败和2部分中断所有实际调用/槽时，异常未序列化timer标未知；[图](figures/E80_joint_events_and_final_custody.png)、[主对比](figures/E80_backend_trait_primary_contrasts.png)有PDF/SVG，[图输入检查](figures/E80_figure_input_checks.json)逐项吻合报告。
+- [源资格](E80_source_audit.json)、[输入](E80_input_check.json)、[profile](E80_profile_validation.json)、[装备语义](E80_equipment_event_semantics.json)、[help兼容](E80_help_render_compatibility.json)、[恢复/解析审计](E80_parser_recovery_audit_POST_HOC.json)、[物品流POST-HOC](E80_item_flows_POST_HOC.json)、[340原图去重窗口](E70_E80_source_union.json)提供原始路径/哈希与适用范围。
+
+raw为cache/runs/e80_{gemma,32b}_{profile,s0,s1,s2,s3}及*_native_help_failed、*_init_failed*；不进git。原数据沿用e63_native_dependency_qualification/snapshots.jsonl；复算入口native_interactive_report.py/native_interactive_first_activation_posthoc.py/native_interactive_assets.py及物品流native_interactive_item_flows_posthoc.py，模型driver与skills保持原SHA。

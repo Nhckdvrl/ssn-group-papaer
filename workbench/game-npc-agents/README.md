@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E74–E77完成；E80真实玩家回应＋共同策略执行对照已通过完整profile，固定200图/4800episode运行中，峰值8卡；当前fvcrc21滚动原分片。I04保持PROMISING，论文正文暂缓。** 最新[E70–E77连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
+**执行：E74–E77与E80全部完成；E80在200原图跑完4800真实双角色episode/37642本地调用/3.61979观测GPUh，峰8卡，0API，全部GPU释放。I04保持PROMISING，论文正文暂缓。** 最新[E70–E80连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 
@@ -22,7 +22,7 @@ E77进一步显示：非Give中固定当前trait换社会回应来源，Get增�
 | [E75](experiments/E75-native-retrieval-task-transfer.md) | 102原作者自然Get前提图、四任务族、4896分支。原角色/目标/规则保留；ready是原生Get后的反事实。推进与用途共同变化，任务改善有不同来源。 |
 | [E76](experiments/E76-fixed-dialogue-and-native-access.md) | 精确固定E75 retrieval对话，只变执行初态，1224分支。人物×物理前提作用在固定历史下成立于Gemma，32B的资源取舍更稳定；不增加新指令或表格。 |
 | [E77](experiments/E77-dialogue-and-assigned-outcome-execution.md) | 逐字C来源×当前trait、共同C下对称终局指派，4896记录含1224旧对角。非Give明确原后果物理履约Gemma80.65/77.42%、32B96.77/93.55%；指派请求后32B人物差仍+12.90pp。全部任务族/失败/原事件与物理口径并报。 |
-| [E80](experiments/E80-responsive-player-and-grounded-execution.md)（运行中） | 200原生自持资产图，玩家会真实说话/交换/偷取，双方各8行动且首目标后继续。NPC共同强selector＋两执行器，技能只实现已选后果，每次1primitive。两模型各24完整profile重放通过；完整4800episode固定队列，未由首2图预判效应。 |
+| [E80](experiments/E80-responsive-player-and-grounded-execution.md)（完成） | 响应玩家＋共同selector/两执行器，200图4800episode。A−F请求Give +10.50/+12.83pp；绑定goal −9.00/−12.50pp。首次共同两步前提实现3/12、38/124→12/12、124/124，全图原goal仅+.17/+.50pp；选择、实现、最终归属分列。 |
 
 三轮共29125实际本地调用、8928新增物理分支、2808预测上下文、208不同源图，3.83553观测GPUh/3.46147载入与推理GPUh，峰值4卡，0API/解析失败；本轮worker已退出。[合并成本与源图口径](results/E74_E76_round_accounting.json)。分支/调用不是独立世界，E76复用E75源图，E74与E75相交11图。
 

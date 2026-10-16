@@ -1,0 +1,473 @@
+{
+  "status": "COMPLETE_CPU_TECHNICAL_RECOVERY_AUDIT_POST_HOC",
+  "model_calls": 0,
+  "API_calls": 0,
+  "primary_rule_timing": "Root fixed before reading overall primary effects: preserve earliest complete row (profile, partial, recovered/full), audit all nonexact duplicates and report full-only/graph-exclusion sensitivities; no world/seed removed.",
+  "original_complete_partial_episodes": 252,
+  "restored_keys_present": 252,
+  "exact": 245,
+  "nonexact": 7,
+  "nonexact_source_graphs": [
+    "21a99f36ade488f8"
+  ],
+  "nonexact_records": [
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8001,
+        "firm",
+        "native_skill"
+      ],
+      "first_changed_turn": 15,
+      "same_command_at_first_change": true,
+      "old_command": "examine blacksmith",
+      "restored_command": "examine blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/15/messages/0/text",
+        "primary": "The king examined The Blacksmith.",
+        "alternative": "The king examined you."
+      },
+      "primary_canonical_sha256": "3fba6f550bbed1aea2c22ba1f28593748e027cf3476dd09f4ff195914b0d4cc8",
+      "restored_canonical_sha256": "a6fc42d7bed3784e72619594fd6b4e31deb299dbffef027ddd20dd8c428fd15d",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8002,
+        "firm",
+        "model_steps"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine Blacksmith",
+      "restored_command": "examine Blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/1/messages/0/text",
+        "primary": "The king examined The Blacksmith.",
+        "alternative": "The king examined you."
+      },
+      "primary_canonical_sha256": "9b8bd560aa03e39116bb39e11ea2474a890b35555b1e28b4d8ad0122f2b41701",
+      "restored_canonical_sha256": "c0147e7a7886092494e38b98c14a81f3c899f92a887e649d788d1831b74959d3",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8002,
+        "firm",
+        "native_skill"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine Blacksmith",
+      "restored_command": "examine Blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/1/messages/0/text",
+        "primary": "The king examined you.",
+        "alternative": "The king examined The Blacksmith."
+      },
+      "primary_canonical_sha256": "1e8bda54893e241e840692a1e89edf10c6732574e45de93993649eb7288ded63",
+      "restored_canonical_sha256": "e9690a9a5188c40969e77f6e07a0566d7279d7c0cd8c1d7ce382d66db0225cde",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8002,
+        "agreeable",
+        "model_steps"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine Blacksmith",
+      "restored_command": "examine Blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/1/messages/0/text",
+        "primary": "The king examined you.",
+        "alternative": "The king examined The Blacksmith."
+      },
+      "primary_canonical_sha256": "5fe9f92dfddd0eed0cbd29b72c209c5ae3db9764e383b4504f76ba5112f96250",
+      "restored_canonical_sha256": "1d42f0fba7ecc761cf3cada73266e2bdec27d76e50fe449cbbb46e71ccbf4753",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8002,
+        "agreeable",
+        "native_skill"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine Blacksmith",
+      "restored_command": "examine Blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/1/messages/0/text",
+        "primary": "The king examined you.",
+        "alternative": "The king examined The Blacksmith."
+      },
+      "primary_canonical_sha256": "2fcded472cec56192c36cb9578058083b969b6520ec7ad0558ef2006f2d12522",
+      "restored_canonical_sha256": "a12e21719c17550f7271de12e54c5b1e741bf198226a29b76153fd1b2839410e",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8003,
+        "firm",
+        "model_steps"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine blacksmith",
+      "restored_command": "examine blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/turns/1/messages/0/text",
+        "primary": "The king examined you.",
+        "alternative": "The king examined The Blacksmith."
+      },
+      "primary_canonical_sha256": "b33668ba0f63cee0ff999484662bc351462fb8f303712f2652da8be2029b69bd",
+      "restored_canonical_sha256": "d3bda1f72b23a18c65e923f9b833c55e21ef3cf1d5fee0a121db6395703f5444",
+      "same_final_material_state": true
+    },
+    {
+      "key": [
+        "21a99f36ade488f8",
+        8003,
+        "agreeable",
+        "model_steps"
+      ],
+      "first_changed_turn": 1,
+      "same_command_at_first_change": true,
+      "old_command": "examine blacksmith",
+      "restored_command": "examine blacksmith",
+      "old_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith"
+        ]
+      ],
+      "restored_event_identity": [
+        "ExamineEvent",
+        [
+          "blacksmith_0"
+        ]
+      ],
+      "same_before_material_state": true,
+      "first_row_difference": {
+        "path": "/final_state/rag_3/container",
+        "primary": "blacksmith",
+        "alternative": "king"
+      },
+      "primary_canonical_sha256": "b2b290d5f132461837ed4f5b875652e81732507a775914efc68642f801f31ede",
+      "restored_canonical_sha256": "0af058a6cc2627bd8568fe769bdc37510ff72a36876c72f6e7ad1159a8278e38",
+      "same_final_material_state": false
+    }
+  ],
+  "same_input_demonstration": {
+    "case_id": "21a99f36ade488f8",
+    "seed": 8002,
+    "persona": "firm",
+    "role": "player",
+    "turn": 1,
+    "both_backend_and_recovery_input_key": "ba803116d3a46bebcfebfa545e26d6779f16f72331c881d6b2d67ea4f0b6cfab",
+    "parsed": {
+      "action": "examine Blacksmith",
+      "utterance": ""
+    },
+    "observed_targets": [
+      "blacksmith",
+      "blacksmith_0"
+    ]
+  },
+  "source_facts": [
+    {
+      "path": "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/structured_graph.py",
+      "line": 388,
+      "fact": "desc_to_nodes builds candidates from Python sets and at line 462 sorts by name length only."
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/elements/graph_nodes.py",
+      "line": 361,
+      "fact": "GraphNode.__hash__ delegates to object hash; equal-length native candidate tie order is not pinned by PYTHONHASHSEED or action RNG."
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/events/graph_events.py",
+      "line": 3560,
+      "fact": "ExamineEvent selects applicable_nodes[0], so room/NPC name collisions can change actual information returned."
+    }
+  ],
+  "scope": "Engine unchanged. This is a parsing/recovery/coupling qualification issue, not a new NPC mechanism. The all-pair common-prefix assumption is withdrawn; recorded-ID replay may verify an eligible prefix, otherwise it remains unverified.",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl": "39fc7bade102ecbe7061e58cd184d54a7cccb63169ed9b429d4f1ee63a8fe91c",
+    "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl": "803098924e1fa7ecc990a9c0effcfb8f38597cddfbb4657515464f30ead2f9de",
+    "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/structured_graph.py": "23105c81892fdec63d0ad6209f9aafdcb5ae09861e2b5cd687816de354585ae4",
+    "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/elements/graph_nodes.py": "32e0e63c1133d91528ae7635d944a34cbc52c3c6061b3c004fcd8dd82b2d3c5d",
+    "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/events/graph_events.py": "6ea8dfa374a12e5afafacf2778da2554b0b14d82db75147c8a38f89f76e33025"
+  },
+  "final_full_merge_audits": {
+    "gemma": {
+      "primary_episodes": 2400,
+      "primary_worlds": 200,
+      "original_partial_complete_episodes_retained_primary": {
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed": 252
+      },
+      "restoration_exact": 245,
+      "restoration_nonexact": 7,
+      "nonexact_restoration_records": [
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8001,
+            "firm",
+            "native_skill"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "3fba6f550bbed1aea2c22ba1f28593748e027cf3476dd09f4ff195914b0d4cc8",
+          "alternative_canonical_sha256": "a6fc42d7bed3784e72619594fd6b4e31deb299dbffef027ddd20dd8c428fd15d",
+          "first_difference": {
+            "path": "/turns/15/messages/0/text",
+            "primary": "The king examined The Blacksmith.",
+            "alternative": "The king examined you."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8002,
+            "firm",
+            "model_steps"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "9b8bd560aa03e39116bb39e11ea2474a890b35555b1e28b4d8ad0122f2b41701",
+          "alternative_canonical_sha256": "c0147e7a7886092494e38b98c14a81f3c899f92a887e649d788d1831b74959d3",
+          "first_difference": {
+            "path": "/turns/1/messages/0/text",
+            "primary": "The king examined The Blacksmith.",
+            "alternative": "The king examined you."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8002,
+            "firm",
+            "native_skill"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "1e8bda54893e241e840692a1e89edf10c6732574e45de93993649eb7288ded63",
+          "alternative_canonical_sha256": "e9690a9a5188c40969e77f6e07a0566d7279d7c0cd8c1d7ce382d66db0225cde",
+          "first_difference": {
+            "path": "/turns/1/messages/0/text",
+            "primary": "The king examined you.",
+            "alternative": "The king examined The Blacksmith."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8002,
+            "agreeable",
+            "model_steps"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "5fe9f92dfddd0eed0cbd29b72c209c5ae3db9764e383b4504f76ba5112f96250",
+          "alternative_canonical_sha256": "1d42f0fba7ecc761cf3cada73266e2bdec27d76e50fe449cbbb46e71ccbf4753",
+          "first_difference": {
+            "path": "/turns/1/messages/0/text",
+            "primary": "The king examined you.",
+            "alternative": "The king examined The Blacksmith."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8002,
+            "agreeable",
+            "native_skill"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "2fcded472cec56192c36cb9578058083b969b6520ec7ad0558ef2006f2d12522",
+          "alternative_canonical_sha256": "a12e21719c17550f7271de12e54c5b1e741bf198226a29b76153fd1b2839410e",
+          "first_difference": {
+            "path": "/turns/1/messages/0/text",
+            "primary": "The king examined you.",
+            "alternative": "The king examined The Blacksmith."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8003,
+            "firm",
+            "model_steps"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "b33668ba0f63cee0ff999484662bc351462fb8f303712f2652da8be2029b69bd",
+          "alternative_canonical_sha256": "d3bda1f72b23a18c65e923f9b833c55e21ef3cf1d5fee0a121db6395703f5444",
+          "first_difference": {
+            "path": "/turns/1/messages/0/text",
+            "primary": "The king examined you.",
+            "alternative": "The king examined The Blacksmith."
+          }
+        },
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8003,
+            "agreeable",
+            "model_steps"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl",
+          "primary_canonical_sha256": "b2b290d5f132461837ed4f5b875652e81732507a775914efc68642f801f31ede",
+          "alternative_canonical_sha256": "0af058a6cc2627bd8568fe769bdc37510ff72a36876c72f6e7ad1159a8278e38",
+          "first_difference": {
+            "path": "/final_state/rag_3/container",
+            "primary": "blacksmith",
+            "alternative": "king"
+          }
+        }
+      ],
+      "primary_canonical_selection_sha256": "05e9ed77e4e94971ed48230021ae6b7013b4d0a84e447121462155cafc593a0c",
+      "primary_episode_sources_ordered": [
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_profile/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3_native_help_failed/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s0/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s1/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s2/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_gemma_s3/episodes.jsonl"
+      ]
+    },
+    "32b": {
+      "primary_episodes": 2400,
+      "primary_worlds": 200,
+      "original_partial_complete_episodes_retained_primary": {
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3_native_help_failed": 540
+      },
+      "restoration_exact": 539,
+      "restoration_nonexact": 1,
+      "nonexact_restoration_records": [
+        {
+          "key": [
+            "21a99f36ade488f8",
+            8003,
+            "agreeable",
+            "model_steps"
+          ],
+          "exact": false,
+          "primary_path": "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3_native_help_failed/episodes.jsonl",
+          "alternative_path": "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3/episodes.jsonl",
+          "primary_canonical_sha256": "a72f2d8142c061aba8cce479281354822ce37c9dec45cc3a9f739797b5821f7e",
+          "alternative_canonical_sha256": "d6315feb4930ba18b19b079fa5494c59ccd581ce790c8e72083df2899ca426ec",
+          "first_difference": {
+            "path": "/turns/13/messages/0/text",
+            "primary": "The king examined you.",
+            "alternative": "The king examined The Blacksmith."
+          }
+        }
+      ],
+      "primary_canonical_selection_sha256": "9f41f20489f81abf9ac22ade7132f2ae51da7c3ccad211f7af7a0e55819bed82",
+      "primary_episode_sources_ordered": [
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_profile/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3_native_help_failed/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s0/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s1/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s2/episodes.jsonl",
+        "/home/xiang/.cache/game-npc-research/runs/e80_32b_s3/episodes.jsonl"
+      ]
+    }
+  }
+}

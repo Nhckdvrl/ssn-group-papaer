@@ -1,6 +1,6 @@
 # E80：会回应的玩家、角色取舍与可靠原生执行（2026-10-16）
 
-- **状态：** RUNNING；完整profile与实体/输入重放通过，准备按原固定队列扩展。
+- **状态：** DONE；4800逻辑episode/200图全部收齐，37642本地调用/3.61979观测GPUh/峰8卡/0API，本轮GPU均释放。
 - **类型：** REPRO / I04探索；恢复有实际回应的强交互基线，不把技能包装成新方法。
 - **对应：** I04 / C06 / P12。
 - **问题（一句话）：** 玩家真正回应并采取合法行动后，NPC怎样坚持、协商或改变目标；可靠执行能解释哪些履约差，又保留哪些角色取舍？
@@ -19,7 +19,7 @@
 
 ## 结果
 
-首模型前源资格/输入检查进行中，尚无新模型调用。编号工具因历史未来编号引用生成E80；E78/E79仅为旧设计讨论，不代表已运行实验。
+编号工具因历史未来编号引用生成E80；E78/E79仅为旧设计讨论，不代表已运行实验。下文保留先验设计、运行异常及POST-HOC读回的实际顺序。
 
 ### 首模型前独立审阅补充
 
@@ -42,3 +42,23 @@
 fvcrc20四个首attempt均在模型初始化失败，无model calls/episode。机器实际为RTX PRO 6000 SM120；FlashInfer默认发现`/usr/local/cuda`的12.8工具链，规范化SM120f要求CUDA≥12.9而架构列表为空，最终误报sm75。没有证据是继承了旧ARCH环境变量。仅为该四worker指定现有Conda内cu13工具链（nvcc13.2）、PATH及真实`FLASHINFER_CUDA_ARCH_LIST=12.0f`，同一driver/skills/data/seed/条件恢复。失败目录/log/launch以`_init_failed`保留，每片约4.8分钟实际占卡另计；不作为低效果种子删除。
 
 第二次四attempt因现有pip工具链nvcc13.2与头文件13.0不兼容而在采样JIT失败，仍0调用/episode，保存为`_init_failed2`。不继续修编译环境；fvcrc21的s0/s1完成并GPU释放后，同slot滚动执行s2/s3，目标、代码、精度、seed与输入不变。共8次失败实际占卡0.49244632GPUh，成本工具逐attempt纳入；峰值始终≤8。所有8个成功分片launch元数据按实际host/PID更新，后续不重复启动已在运行的片。
+
+### 原生help依赖兼容与完整同配置恢复
+
+Gemma s3在252条完整episode后合法选择HelpEvent，LIGHT原views.py使用emoji已弃用的`use_aliases=True`导致worker异常退出。全部2149新calls/2315cache trace/252完整episode及794.450204s观测槽时封存在`e80_gemma_s3_native_help_failed`。异常退出未序列化最终载入/推理timer，明确null而非补0。只将help渲染关键词换为当前API的`language="alias"`；全200图help全文与历史接口等价适配逐字一致、完整graph/material不变，见`results/E80_help_render_compatibility.json`。driver/skills/规则/模型/seed未变。
+
+相同driver以profile＋partial全部原输入决策缓存恢复原s3，旧252条须canonical逐字匹配才通过全样本核对。ABORTED runtime明确标真实部分计数；统计加载器仅增加partial trace依赖与精确去重支持，不更改主读数/CI/样本，profile核心输出逐值回归一致。监控补充全日志前部异常与父进程退出核对。此问题不解释成人物/策略机制，也不以删除help动作规避。
+
+### POST-HOC恢复合并规则（全样本主效应读出前固定）
+
+partial252与恢复版有245条canonical一致、7条不一致，均源图`21a99f36ade488f8`。相同player input-key/parsed `examine Blacksmith`因原生set候选同名NPC/房间、对象地址hash与等长排序tie可解析至不同ID；旧partial内两backend也已发生，不能称恢复之前所有prefix确定相同。保持native parser/规则与全部图不变，不将此当科研新发现。
+
+主合并统一按实际时间取每个(case,seed,trait,backend)最早完整序列化episode：profile→原partial→恢复/full补缺；旧252条全保留，不按结果选轨迹。所有重复保留exact/nonexact审计，完整恢复版替换仅作敏感性，主全200/4800不变。POST-HOC首次激活核对按实际记录验证共同prefix；在第一次两步选择之前已分歧者标无共同prefix资格，不能对其假报不变量PASS或纯实现效应。因本次技术假设被原生记录否定，加载/资格处理透明修订，模型条件/读数/CI不变。
+
+### 全部结果与本轮判断
+
+全200图/4800逻辑episode完成；主全图模型下层A−F绑定goal为Gemma −9.00pp [−13.50,−4.50]、32B −12.50 [−16.67,−8.67]，NPC请求Give +10.50 [6.83,14.50]/+12.83 [9.17,16.50]pp。可靠技能总体goal仅+.17/+.50pp，但首次共同两步选择中原生前提从3/12、38/124恢复为12/12、124/124；下层改选与路径实现是竞争解释，不用它定义纯潜在能力。任务、最终归属、消费、返还/偷取及作者更高目的分别读回。
+
+[完整E80续报](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、results/E80_{gemma,32b}_complete.json、E80_first_activation_POST_HOC.json、E80_cost_accounting.json及两张科学图提供全部结果。原792完整partial全部优先保留，恢复784exact/8nonexact；全图主值不变的敏感性与20对不满足共同prefix均公开。firstactivation汇总曾有同名counter重复success，已修正并核原始bool/类别和/概率界限，主完整结果未变。
+
+实际37642新本地calls，47822360输入/920604输出tokens，1次parse导致2个primary协议终止、0死亡，8init＋2中途异常完整计费，3.61978671观测GPUh/峰8卡/0API。全部worker退出；C06 L2/I04 PROMISING不变，不机械开E81，正文暂缓。

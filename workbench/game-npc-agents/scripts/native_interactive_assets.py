@@ -27,7 +27,7 @@ def file_digest(path):
 
 
 def cost(root, out):
-    """Read completed profile/full jobs, counting actual calls exactly once.
+    """Read completed and archived failed jobs, counting real calls once.
 
     model_calls.jsonl contains actual new inference, while reused_calls.jsonl
     records cache hits without new inference. Repeated metadata for the same
@@ -37,6 +37,7 @@ def cost(root, out):
     jobs, models, seen_jobs, folders, duplicate_metadata = [], {}, {}, set(), 0
     profile_matches = 0
     full_manifests = []
+    full_episode_digests, completed_manifests = {}, {}
     for model in ['gemma', '32b']:
         model_jobs, model_manifests = [], []
         for suffix in ['profile_launch', 'launch']:
@@ -89,7 +90,8 @@ def cost(root, out):
                 assert end >= job['start_epoch']
                 record = {'folder': str(folder), 'requested_output': str(requested), 'model': model,
                           'profile': bool(manifest['profile']), 'host': str(job['host']),
-                          'initialization_failed': False, 'load_and_inference_timing_available': True,
+                          'initialization_failed': False, 'runtime_aborted': False,
+                          'load_and_inference_timing_available': True,
                           'gpu': str(job['gpu']), 'pid': int(job['pid']),
                           'start_epoch': job['start_epoch'], 'end_epoch': end, 'end_source': end_source,
                           'runtime_worlds': runtime['worlds'], 'runtime_episodes': runtime['episodes'],
@@ -119,7 +121,7 @@ def cost(root, out):
                 count += 1
             assert count == job['runtime_episodes']
         assert len(profiles) == 24
-        full_keys, world_ids, matched_profiles = set(), set(), set()
+        full_keys, world_ids, matched_profiles, complete_digests = set(), set(), set(), {}
         for job in model_jobs:
             if job['profile']:
                 continue
@@ -128,6 +130,7 @@ def cost(root, out):
                 key = episode_key(row)
                 assert key not in full_keys
                 full_keys.add(key)
+                complete_digests[key] = canonical_digest(row)
                 world_ids.add(row['case_id'])
                 if key in profiles:
                     assert canonical_digest(row) == profiles[key], ('Profile/full record differs', key)
@@ -139,6 +142,8 @@ def cost(root, out):
                     for p in first_manifest['personas'] for b in first_manifest['backends']}
         assert full_keys == expected and matched_profiles == set(profiles)
         profile_matches += len(matched_profiles)
+        full_episode_digests[model] = complete_digests
+        completed_manifests[model] = first_manifest
         models[model] = {'source_worlds': len(world_ids), 'logical_execution_episodes': len(full_keys),
                          'new_logical_execution_episodes': len(full_keys),
                          'old_E75_E77_episodes_reused': 0,
@@ -166,7 +171,8 @@ def cost(root, out):
             assert end >= job['start_epoch']
             files = [metadata_file, folder/'manifest.json', folder.with_suffix('.log')]
             record = {'folder': str(folder), 'requested_output': str(requested), 'model': model,
-                      'profile': False, 'initialization_failed': True, 'status': job['status'],
+                      'profile': False, 'initialization_failed': True, 'runtime_aborted': False,
+                      'status': job['status'],
                       'reason': job.get('reason'), 'host': str(job['host']), 'gpu': str(job['gpu']),
                       'pid': int(job['pid']), 'start_epoch': job['start_epoch'], 'end_epoch': end,
                       'end_source': 'failed_launch_metadata.end_epoch',
@@ -180,6 +186,105 @@ def cost(root, out):
             failed_attempts.append(record)
             jobs.append(record)
         models[model]['initialization_failed_attempts'] = sum(j['model'] == model for j in failed_attempts)
+    # A native read-only rendering dependency failed after real inference.
+    # Preserve its entire physical cost, while completed episodes are included
+    # only once in the chronological primary. Native ambiguous-name parsing
+    # can differ on replay; report every such difference, never pick an outcome.
+    aborted_attempts = []
+    for model in ['gemma', '32b']:
+        partial_matches, partial_differences, retained_partial = 0, 0, 0
+        for metadata_file in sorted(root.glob(f'e80_{model}_s*_native_help_failed*_launch.json')):
+            job = json.loads(metadata_file.read_text())
+            assert job['status'] == 'ABORTED_NATIVE_HELP_DEPENDENCY_API'
+            folder = Path(job['artifact_folder'])
+            requested = Path(job['cmd'][job['cmd'].index('--out')+1])
+            job_key = (str(job['host']), int(job['pid']), float(job['start_epoch']))
+            assert job_key not in seen_jobs and folder.resolve() not in folders
+            seen_jobs[job_key] = folder.resolve()
+            folders.add(folder.resolve())
+            manifest = json.loads((folder/'manifest.json').read_text())
+            runtime = json.loads((folder/'runtime.json').read_text())
+            assert runtime['status'] == job['status'] and runtime['new_cloud_calls'] == 0
+            assert manifest['experiment'] == 'E80' and not manifest['profile']
+            for field in ['model', 'source_sha256', 'driver_sha256', 'skills_sha256',
+                          'seeds', 'personas', 'backends']:
+                assert manifest[field] == completed_manifests[model][field], (model, field)
+            counts, decision_keys = Counter(), set()
+            for row in map(json.loads, (folder/'model_calls.jsonl').open()):
+                assert row['stage'] in STAGES and row['decision_key'] not in decision_keys
+                decision_keys.add(row['decision_key'])
+                counts.update(calls=1, parse_errors=int(bool(row.get('parse_error'))),
+                              prompt_tokens=row['prompt_tokens'], completion_tokens=row['completion_tokens'])
+                counts['stage_'+row['stage']] += 1
+            assert counts['calls'] == runtime['calls']
+            replay = folder/'reused_calls.jsonl'
+            cache_hits = sum(1 for _ in replay.open()) if replay.exists() else 0
+            assert cache_hits == runtime['reused_calls']
+            partial_keys, different_keys, exact_matches = set(), [], 0
+            partial_digests = {}
+            for row in map(json.loads, (folder/'episodes.jsonl').open()):
+                key = episode_key(row)
+                assert key not in partial_keys
+                partial_keys.add(key)
+                digest = canonical_digest(row)
+                partial_digests[key] = digest
+                if digest == full_episode_digests[model][key]:
+                    exact_matches += 1
+                else:
+                    different_keys.append(list(key))
+            assert len(partial_keys) == runtime['episodes']
+            partial_matches += exact_matches
+            partial_differences += len(different_keys)
+            retained_partial += len(partial_keys)
+            primary_report = json.loads((out.parent/f'E80_{model}_complete.json').read_text())
+            assert primary_report['status'] == 'COMPLETE'
+            primary_digests = {}
+            for source in primary_report['primary_episode_sources_ordered']:
+                for row in map(json.loads, Path(source).open()):
+                    primary_digests.setdefault(episode_key(row), canonical_digest(row))
+            assert len(primary_digests) == 2400
+            assert all(primary_digests[key] == digest for key, digest in partial_digests.items()), (
+                'Chronological primary must retain original completed partial episodes', folder)
+            restored_jobs = [j for j in jobs if j['model'] == model and not j['profile']
+                             and not j['initialization_failed'] and not j['runtime_aborted']
+                             and j['requested_output'] == str(requested)]
+            assert len(restored_jobs) == 1
+            restored_metadata = json.loads((root/f'e80_{model}_launch.json').read_text())
+            restored_metadata = (restored_metadata if isinstance(restored_metadata, list)
+                                 else [restored_metadata])
+            restore = next(j for j in restored_metadata if int(j['pid']) == restored_jobs[0]['pid'])
+            assert '--prior-runs' in restore['cmd']
+            assert str(folder) in restore['cmd'][restore['cmd'].index('--prior-runs')+1:]
+            end = float(job['end_epoch'])
+            assert end >= job['start_epoch']
+            assert abs(runtime['observed_slot_seconds']-(end-job['start_epoch'])) < 0.001
+            assert runtime['wall_seconds'] is None and runtime['model_load_seconds'] is None
+            files = [metadata_file, folder/'manifest.json', folder/'runtime.json',
+                     folder/'model_calls.jsonl', folder/'episodes.jsonl', replay,
+                     folder.with_suffix('.log')]
+            record = {'folder': str(folder), 'requested_output': str(requested), 'model': model,
+                      'profile': False, 'initialization_failed': False, 'runtime_aborted': True,
+                      'status': job['status'], 'reason': job.get('reason'), 'host': str(job['host']),
+                      'gpu': str(job['gpu']), 'pid': int(job['pid']),
+                      'start_epoch': job['start_epoch'], 'end_epoch': end,
+                      'end_source': 'aborted_launch_metadata.end_epoch',
+                      'runtime_worlds_planned': runtime['worlds_planned'],
+                      'runtime_episodes': len(partial_keys), **dict(counts), 'reused_calls': cache_hits,
+                      'distinct_actual_decision_keys_in_job': len(decision_keys),
+                      'completed_episodes_exactly_reused_in_restored_full': exact_matches,
+                      'completed_episodes_different_in_restored_full': len(different_keys),
+                      'different_restored_episode_keys': different_keys,
+                      'completed_partial_episodes_retained_in_chronological_primary': len(partial_keys),
+                      'load_and_inference_timing_available': False,
+                      'load_and_inference_gpu_hours': None,
+                      'observed_slot_hours': (end-job['start_epoch'])/3600,
+                      'source_sha256': {str(file): file_digest(file) for file in files if file.exists()}}
+            aborted_attempts.append(record)
+            jobs.append(record)
+        models[model]['runtime_aborted_attempts'] = sum(j['model'] == model for j in aborted_attempts)
+        models[model]['aborted_completed_episodes_exactly_reused'] = partial_matches
+        models[model]['aborted_completed_episodes_different_on_restore'] = partial_differences
+        models[model]['aborted_completed_episodes_retained_in_primary'] = retained_partial
     for field in ['source_sha256', 'driver_sha256', 'skills_sha256', 'seeds', 'backends']:
         assert all(m[field] == full_manifests[0][field] for m in full_manifests), field
     assert len(full_manifests) == 8
@@ -187,7 +292,10 @@ def cost(root, out):
             'load_and_inference_gpu_hours', 'observed_slot_hours'] + ['stage_'+s for s in STAGES]
     totals = {key: sum(job.get(key, 0) for job in jobs if job.get(key) is not None) for key in keys}
     totals['initialization_failed_observed_slot_hours'] = sum(j['observed_slot_hours'] for j in failed_attempts)
-    totals['completed_job_observed_slot_hours'] = sum(j['observed_slot_hours'] for j in jobs if not j['initialization_failed'])
+    totals['runtime_aborted_observed_slot_hours'] = sum(j['observed_slot_hours'] for j in aborted_attempts)
+    totals['runtime_aborted_actual_new_calls'] = sum(j['calls'] for j in aborted_attempts)
+    totals['completed_job_observed_slot_hours'] = sum(j['observed_slot_hours'] for j in jobs
+                                                    if not j['initialization_failed'] and not j['runtime_aborted'])
     events = sorted([(job['start_epoch'], 1, (job['host'], job['gpu'])) for job in jobs]
                     + [(job['end_epoch'], -1, (job['host'], job['gpu'])) for job in jobs])
     active, peak = Counter(), 0
@@ -202,6 +310,10 @@ def cost(root, out):
               'old_E75_E77_episodes_reused': 0, 'profile_exactly_reused_episodes': profile_matches,
               'duplicate_launch_metadata_deduplicated': duplicate_metadata,
               'initialization_failed_attempts': len(failed_attempts),
+              'runtime_aborted_attempts': len(aborted_attempts),
+              'aborted_completed_episodes_exactly_reused': sum(j['completed_episodes_exactly_reused_in_restored_full'] for j in aborted_attempts),
+              'aborted_completed_episodes_different_on_restore': sum(j['completed_episodes_different_in_restored_full'] for j in aborted_attempts),
+              'aborted_completed_episodes_retained_in_primary': sum(j['completed_partial_episodes_retained_in_chronological_primary'] for j in aborted_attempts),
               'models': models, 'jobs': jobs, 'totals': totals, 'peak_gpus': peak,
               'gpu_limit': 8, 'gpu_limit_respected': peak <= 8,
               'all_profiles_completed_before_full_start': profile_before_full,
@@ -212,6 +324,7 @@ def cost(root, out):
                         'No old E75/E77 episodes are reused; source worlds remain the same existing held-item200 cohort.',
                         'Observed slot time includes imports, model loading, inference and logged teardown; load+inference is reported separately.',
                         'Zero-inference initialization failures retain their full observed slot time. Their exact load+infer timer is unavailable; that subtotal covers completed jobs only.',
+                        'Runtime-aborted attempts retain all actual inference calls and full observed slot time. Chronological primary retains their earliest complete episodes; exact and nonexact replay duplicates are separately audited and do not enlarge the logical denominator.',
                         'Final mtimes are the original shared-filesystem artifacts unless explicit source end times are in launch metadata.',
                         'Peak concurrency groups physical slots by host and GPU; all profiles must finish before eight-worker execution.']}
     out.write_text(json.dumps(result, indent=2)+'\n')
@@ -219,7 +332,7 @@ def cost(root, out):
                       'profile_matches': profile_matches}))
 
 
-def read_figure_categories(paths, expected_hashes=None):
+def read_figure_categories(paths, expected_hashes=None, chronological_first=False, audit=None):
     """Read registered-event conjunctions and mutually exclusive final custody.
 
     The primary report validates full event traces; this helper uses its
@@ -227,7 +340,8 @@ def read_figure_categories(paths, expected_hashes=None):
     It does not replace the bound primary with the physical sensitivity.
     """
     from native_interactive_report import owner
-    cells, seen, duplicates = {}, {}, 0
+    cells, seen, duplicates, row_digests = {}, {}, 0, {}
+    exact_duplicates, different_duplicates, different_categories = 0, 0, 0
     for path in dict.fromkeys(paths):
         digest = hashlib.sha256()
         with path.open('rb') as handle:
@@ -251,10 +365,16 @@ def read_figure_categories(paths, expected_hashes=None):
                     custody = 'other'
                 fingerprint = (joint, custody)
                 if key in seen:
-                    assert seen[key] == fingerprint, ('Changed plotting categories for one episode', key)
+                    same_row = row_digests[key] == canonical_digest(row)
+                    exact_duplicates += int(same_row)
+                    different_duplicates += int(not same_row)
+                    different_categories += int(seen[key] != fingerprint)
+                    if not chronological_first:
+                        assert same_row, ('Changed row without chronological primary rule', key)
                     duplicates += 1
                     continue
                 seen[key] = fingerprint
+                row_digests[key] = canonical_digest(row)
                 cell = cells.setdefault((row['persona'], row['backend']), Counter())
                 cell.update(episodes=1)
                 cell['joint/'+joint] += 1
@@ -264,6 +384,12 @@ def read_figure_categories(paths, expected_hashes=None):
     for cell in cells.values():
         assert sum(cell['joint/'+k] for k in ['goal_only', 'both', 'give_only', 'neither']) == cell['episodes']
         assert sum(cell['custody/'+k] for k in ['npc', 'player', 'authored_recipient', 'VOID', 'other']) == cell['episodes']
+    if audit is not None:
+        audit.update(duplicate_rows=duplicates, exact_duplicate_rows=exact_duplicates,
+                     nonexact_duplicate_rows=different_duplicates,
+                     duplicate_rows_with_different_plot_categories=different_categories,
+                     selection='chronological first complete row' if chronological_first else 'exact identity required',
+                     episode_sources_ordered=[str(path) for path in dict.fromkeys(paths)])
     return cells, seen, duplicates
 
 
@@ -276,9 +402,11 @@ def figure(results, out, check_only=False):
         # Profiles are for tool/cost checks; this CLI never publishes N=2 plots.
         assert report['status'] == 'COMPLETE' and report['experiment'] == 'E80'
         assert report['worlds'] == 200 and report['episodes'] == 2400
-        paths = [Path(p) for p in report['source_sha256'] if Path(p).name == 'episodes.jsonl']
+        paths = [Path(p) for p in report['primary_episode_sources_ordered']]
         assert paths
-        cells, keys, duplicates = read_figure_categories(paths, report['source_sha256'])
+        duplicate_audit = {}
+        cells, keys, duplicates = read_figure_categories(paths, report['source_sha256'],
+                                                        chronological_first=True, audit=duplicate_audit)
         assert len(keys) == 2400 and len({key[0] for key in keys}) == 200
         for persona in ['firm', 'agreeable']:
             for backend in ['model_steps', 'native_skill']:
@@ -297,7 +425,7 @@ def figure(results, out, check_only=False):
                     assert np.isclose(mean, primary[field]['mean'], atol=1e-12), (model, persona, backend, field)
         reports[model], counts[model] = report, cells
         checks[model] = {'worlds': 200, 'unique_episodes': 2400,
-                         'duplicate_profile_categories_checked': duplicates,
+                         'chronological_primary_duplicate_audit': duplicate_audit,
                          'primary_event_and_custody_marginals_match_report': True,
                          'joint_definition': 'Exact bound authored event AND actual NPC source Give to requester; historical events.',
                          'custody_precedence': 'NPC, player B, distinct authored Give recipient A, direct VOID, other.'}
