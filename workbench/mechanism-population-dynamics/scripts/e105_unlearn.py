@@ -69,6 +69,7 @@ def lm_loss(model, x):
 
 
 def main():
+    global BASE
     ap = argparse.ArgumentParser()
     ap.add_argument("--subset", required=True)
     ap.add_argument("--out", required=True)
@@ -81,6 +82,7 @@ def main():
     ap.add_argument("--eval_every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0, help="torch seed, forget-prompt seed (seed + 1) and retain-data offset")
     ap.add_argument("--tag", default="")
+    ap.add_argument("--base", default=BASE, help="base checkpoint directory (default Pythia-160M step100k)")
     ap.add_argument("--format_reg", type=float, default=0.0, help="penalty keeping the original IOI probe readout "
                     "(projection of the final-position residual on saved probe directions) unchanged -- keeps the upstream "
                     "feature in its original format (E116)")
@@ -88,11 +90,19 @@ def main():
     ap.add_argument("--attn_reg", type=float, default=0.0, help="penalty weight on attention distortion (KL to the original "
                     "model's attention) on general Pile text -- narrows the edit's footprint on general data (E112)")
     a = ap.parse_args()
+    BASE = a.base
     torch.manual_seed(a.seed)
     torch.backends.cuda.matmul.allow_tf32 = True
     tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", cache_dir=str(mc.HF_CACHE))
     model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32,
                                                  attn_implementation="eager" if a.attn_reg > 0 else "sdpa").cuda()
+    ref = None
+    if a.attn_reg > 0:
+        ref = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="eager").cuda().eval()
+        for p_ in ref.parameters():
+            p_.requires_grad_(False)
+    train = Builder(tok, 512, seed=a.seed + 1).ioi()
+    held = Builder(tok, 256, seed=0).ioi()
     fmt = None
     if a.format_reg > 0:
         dirs = torch.load(a.probe_dirs)
@@ -104,13 +114,6 @@ def main():
                 hs = ref_m(g["toks"].cuda(), output_hidden_states=True).hidden_states
                 fmt_ref.append({l: hs[l][:, -1] @ fmt[l] for l in fmt})
         del ref_m
-    ref = None
-    if a.attn_reg > 0:
-        ref = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="eager").cuda().eval()
-        for p_ in ref.parameters():
-            p_.requires_grad_(False)
-    train = Builder(tok, 512, seed=a.seed + 1).ioi()
-    held = Builder(tok, 256, seed=0).ioi()
     tbl = pq.read_table(SHARD).column("tokens")
     eval_x = torch.tensor(tbl.slice(120000, 16).to_pylist()).cuda()
     m = masks(model, a.subset)
