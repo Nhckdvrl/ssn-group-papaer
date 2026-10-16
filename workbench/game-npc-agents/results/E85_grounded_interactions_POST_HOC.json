@@ -1,0 +1,2471 @@
+{
+ "experiment": "E85",
+ "analysis_status": "POST_HOC_FULL_COHORT_OBJECTIVE_READBACK_WITH_CURATED_ILLUSTRATIONS",
+ "scope": {
+  "models": 2,
+  "logical_branches": 576,
+  "source_histories": 18,
+  "original_graphs": 9,
+  "curated_graphs": 9,
+  "all_original_native_outcomes_retained": true,
+  "new_model_calls": 0,
+  "new_API_calls": 0
+ },
+ "interpretation_scope": [
+  "Primary comparisons are initial-treatment ITT: an initially false/pending player may later really Give X, release it for NPC Get, or lose it to NPC Steal.",
+  "Receipt is an observed ownership transition, not proof of fulfilling every spoken condition or the NPC’s complete purpose. Chronology strata are post-treatment descriptions, not new causal effects.",
+  "Give Y, Drop/Put Y, player actual Get/Steal and final use are separate native paths. Direct player Get after release is an observed path, not the full definition of cooperation.",
+  "X may contain resources: returning the outer X need not surrender its original contents. Source and final descendant ownership are retained in the cache index.",
+  "The two agents share one model family; a model contrast does not isolate the NPC alone. Only actual native speech messages are quoted; non-speech extra utterances were not transmitted.",
+  "Raw branch counts below repeat source graphs and seeds; use the registered report’s paired graph-cluster estimates for inference. Curated examples are explanatory pointers, not semantic prevalence labels."
+ ],
+ "complete_continuation_location": "Corresponding model cache index and exact episode_key per example provide the raw episode path and all actual speech, all assets and later adverse actions; repeated raw transcripts are not copied here.",
+ "raw_full_cohort_timing_and_release_counts": {
+  "gemma": [
+   {
+    "panel": "primary",
+    "branch": "real_claim",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 4,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 4,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 7,
+    "release_followed_by_direct_player_Get_Y": 0,
+    "player_actual_Y_acquisition_ever_any_route": 4
+   },
+   {
+    "panel": "primary",
+    "branch": "claim_only",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 4,
+    "first_X_receipt_mechanism": {
+     "no_actual_X_receipt": 32,
+     "player/GiveObjectEvent": 4
+    },
+    "NPC_Give_Y_ever": 1,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 0,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 1
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 11,
+    "release_followed_by_direct_player_Get_Y": 1,
+    "player_actual_Y_acquisition_ever_any_route": 3
+   },
+   {
+    "panel": "primary",
+    "branch": "pending_truth",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 11,
+    "first_X_receipt_mechanism": {
+     "no_actual_X_receipt": 25,
+     "NPC/GetObjectEvent": 3,
+     "player/GiveObjectEvent": 8
+    },
+    "NPC_Give_Y_ever": 3,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 0,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 3
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 12,
+    "release_followed_by_direct_player_Get_Y": 3,
+    "player_actual_Y_acquisition_ever_any_route": 6
+   },
+   {
+    "panel": "primary",
+    "branch": "real_claim",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 6,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 6,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 5,
+    "release_followed_by_direct_player_Get_Y": 1,
+    "player_actual_Y_acquisition_ever_any_route": 7
+   },
+   {
+    "panel": "primary",
+    "branch": "claim_only",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 8,
+    "first_X_receipt_mechanism": {
+     "no_actual_X_receipt": 28,
+     "NPC/GetObjectEvent": 2,
+     "player/GiveObjectEvent": 6
+    },
+    "NPC_Give_Y_ever": 0,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 0,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 9,
+    "release_followed_by_direct_player_Get_Y": 5,
+    "player_actual_Y_acquisition_ever_any_route": 6
+   },
+   {
+    "panel": "primary",
+    "branch": "pending_truth",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 10,
+    "first_X_receipt_mechanism": {
+     "no_actual_X_receipt": 26,
+     "player/GiveObjectEvent": 10
+    },
+    "NPC_Give_Y_ever": 6,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 0,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 6
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 9,
+    "release_followed_by_direct_player_Get_Y": 1,
+    "player_actual_Y_acquisition_ever_any_route": 7
+   },
+   {
+    "panel": "revision",
+    "branch": "continue",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 3,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 3,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 5,
+    "release_followed_by_direct_player_Get_Y": 1,
+    "player_actual_Y_acquisition_ever_any_route": 4
+   },
+   {
+    "panel": "revision",
+    "branch": "withdraw",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 3,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 3,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 5,
+    "release_followed_by_direct_player_Get_Y": 0,
+    "player_actual_Y_acquisition_ever_any_route": 3
+   }
+  ],
+  "32b": [
+   {
+    "panel": "primary",
+    "branch": "real_claim",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 21,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 21,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 2,
+    "release_followed_by_direct_player_Get_Y": 2,
+    "player_actual_Y_acquisition_ever_any_route": 25
+   },
+   {
+    "panel": "primary",
+    "branch": "claim_only",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 29,
+    "first_X_receipt_mechanism": {
+     "NPC/GetObjectEvent": 5,
+     "player/GiveObjectEvent": 22,
+     "no_actual_X_receipt": 7,
+     "NPC/StealObjectEvent": 2
+    },
+    "NPC_Give_Y_ever": 26,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 8,
+     "before_later_actual_X_receipt": 13,
+     "without_any_actual_X_receipt": 5
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 2,
+    "release_followed_by_direct_player_Get_Y": 2,
+    "player_actual_Y_acquisition_ever_any_route": 28
+   },
+   {
+    "panel": "primary",
+    "branch": "pending_truth",
+    "control": "normal",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 33,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 30,
+     "NPC/StealObjectEvent": 1,
+     "no_actual_X_receipt": 3,
+     "NPC/GetObjectEvent": 2
+    },
+    "NPC_Give_Y_ever": 22,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 7,
+     "before_later_actual_X_receipt": 13,
+     "without_any_actual_X_receipt": 2
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 4,
+    "release_followed_by_direct_player_Get_Y": 4,
+    "player_actual_Y_acquisition_ever_any_route": 27
+   },
+   {
+    "panel": "primary",
+    "branch": "real_claim",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 23,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 23,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 4,
+    "release_followed_by_direct_player_Get_Y": 3,
+    "player_actual_Y_acquisition_ever_any_route": 28
+   },
+   {
+    "panel": "primary",
+    "branch": "claim_only",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 31,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 25,
+     "NPC/StealObjectEvent": 1,
+     "no_actual_X_receipt": 5,
+     "NPC/GetObjectEvent": 5
+    },
+    "NPC_Give_Y_ever": 24,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 8,
+     "before_later_actual_X_receipt": 11,
+     "without_any_actual_X_receipt": 5
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 5,
+    "release_followed_by_direct_player_Get_Y": 5,
+    "player_actual_Y_acquisition_ever_any_route": 31
+   },
+   {
+    "panel": "primary",
+    "branch": "pending_truth",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 29,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 27,
+     "no_actual_X_receipt": 7,
+     "NPC/GetObjectEvent": 2
+    },
+    "NPC_Give_Y_ever": 14,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 0,
+     "before_later_actual_X_receipt": 10,
+     "without_any_actual_X_receipt": 4
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 5,
+    "release_followed_by_direct_player_Get_Y": 5,
+    "player_actual_Y_acquisition_ever_any_route": 23
+   },
+   {
+    "panel": "revision",
+    "branch": "continue",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 26,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 26,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 0,
+    "release_followed_by_direct_player_Get_Y": 0,
+    "player_actual_Y_acquisition_ever_any_route": 26
+   },
+   {
+    "panel": "revision",
+    "branch": "withdraw",
+    "control": "check",
+    "raw_branch_count": 36,
+    "actual_X_receipt_ever": 36,
+    "first_X_receipt_mechanism": {
+     "player/GiveObjectEvent": 36
+    },
+    "NPC_Give_Y_ever": 24,
+    "NPC_Give_Y_receipt_relation": {
+     "after_actual_X_receipt": 24,
+     "before_later_actual_X_receipt": 0,
+     "without_any_actual_X_receipt": 0
+    },
+    "NPC_Drop_or_Put_Y_release_ever": 4,
+    "release_followed_by_direct_player_Get_Y": 3,
+    "player_actual_Y_acquisition_ever_any_route": 27
+   }
+  ]
+ },
+ "nine_graph_evidence": [
+  {
+   "graph_prefix": "18459d3f5a",
+   "source_facts": "空袋的实物收件不是食物条件已履行；原作者写的是想吃食物，原对话还索要corn。",
+   "readback_interpretation": "Gemma继续索要食物并保留worm；Qwen释放worm、玩家取走后又把corn给鸡。两模型控制双方，不能将差异全归NPC一方。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 16,
+     "history_ids": [
+      "d0534e8518b6235175a10469"
+     ]
+    },
+    "32b": {
+     "all_branches": 16,
+     "history_ids": [
+      "d0534e8518b6235175a10469"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "c0114b3cc18c9438d33aa4ee": [
+     {
+      "character": "the chicken",
+      "goal": "steal bag from outlaw",
+      "source_file": "quest_stems/13378.json"
+     },
+     {
+      "character": "the outlaw",
+      "goal": "steal worm from chicken",
+      "source_file": "quest_stems/13472.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "gemma",
+     "episode_key": [
+      "d0534e8518b6235175a10469",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "c0114b3cc18c9438d33aa4ee",
+     "raw_episode_canonical_sha256": "a949523925db0d59f5935f9cef3081c9d6095e4bebd60563590db635b0c6a6c6",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 5,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Look, feathered friend, I don't have any corn. Just the sack. I need that worm for fishing, it's a simple trade. Give it up!",
+       "delivered_viewers": [
+        "chicken"
+       ]
+      },
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Bawk! Fishing, you say? Bawk! This worm is far too valuable to trade for a mere sack! Bawk! Perhaps a *different* trade? Bawk!",
+       "delivered_viewers": [
+        "outlaw"
+       ]
+      },
+      {
+       "turn": 16,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Bawk! Peek away, outlaw! Bawk! But remember our deal! Bawk! No worm for you until you honor your promise! Bawk!",
+       "delivered_viewers": [
+        "outlaw"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 12,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "bag_5"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "bag_5",
+        "chicken"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "outlaws' jungle_0",
+     "final_Y_owner": "chicken",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "d0534e8518b6235175a10469",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "c0114b3cc18c9438d33aa4ee",
+     "raw_episode_canonical_sha256": "186fde2b0e07bf5a23d8bf3b52177b98c67e8ad1f27cc5d4237e1eda9ba7fb3d",
+     "selected_actual_delivered_speech": [],
+     "selected_actual_material_actions": [
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "bag_5"
+        ]
+       ]
+      },
+      {
+       "turn": 6,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "worm_2"
+        ]
+       ]
+      },
+      {
+       "turn": 7,
+       "role": "player",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "worm_2",
+         "outlaws' jungle_0"
+        ]
+       ]
+      },
+      {
+       "turn": 8,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "corn_3"
+        ]
+       ]
+      },
+      {
+       "turn": 9,
+       "role": "player",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "corn_3",
+         "outlaws' jungle_0"
+        ]
+       ]
+      },
+      {
+       "turn": 11,
+       "role": "player",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "corn_3",
+         "chicken"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "bag_5",
+        "chicken"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [
+      {
+       "turn": 6,
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "worm_2"
+        ]
+       ],
+       "destination": "outlaws' jungle_0",
+       "Y_owner_after_release": "outlaws' jungle_0",
+       "actual_player_Get_turn": 7
+      }
+     ],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "outlaws' jungle_0",
+     "final_Y_owner": "outlaw",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "1dfda109a4",
+   "source_facts": "同图含两份独立fisherman目标：b304原goal是Give hook给sailor；c22原goal是Put hook进pouch。不能把返还hook统一当改约效果。",
+   "readback_interpretation": "既有原生Remove/Give knife并实际交换pouch的正例，也有真实Drop knife后接收者始终未Get。角色目的、NPC释放与玩家后续要分开。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 48,
+     "history_ids": [
+      "1abfae2f003af34a4cf1e08c",
+      "602b934b1bc74caa9e154b9a",
+      "ffaee64a548059dffae87ee6"
+     ]
+    },
+    "32b": {
+     "all_branches": 48,
+     "history_ids": [
+      "1abfae2f003af34a4cf1e08c",
+      "602b934b1bc74caa9e154b9a",
+      "ffaee64a548059dffae87ee6"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "c22bb96e1d30526d715cc3e4": [
+     {
+      "character": "the fisherman",
+      "goal": "put fishing hook in pouch",
+      "source_file": "quest_stems/15118.json"
+     },
+     {
+      "character": "the sailor",
+      "goal": "steal a knife from fisherman",
+      "source_file": "quest_stems/14247.json"
+     }
+    ],
+    "b304ce412e4d9ecee4a4f197": [
+     {
+      "character": "the fisherman",
+      "goal": "give fishing hook to sailor",
+      "source_file": "quest_stems/14853.json"
+     },
+     {
+      "character": "the sailor",
+      "goal": "steal a knife from fisherman",
+      "source_file": "quest_stems/14247.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "602b934b1bc74caa9e154b9a",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "c22bb96e1d30526d715cc3e4",
+     "raw_episode_canonical_sha256": "516833851d5031a90ffc2e7633c443625b88f4dffef17d4930620fa691c95966",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Here, take the fishing hook back. I hope this settles our exchange!",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "I'm willing to trade my knife for your pouch or your spear. Let's finalize this deal!",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      },
+      {
+       "turn": 15,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Thank you for the knife, fisherman. I appreciate the trade and will be on my way now.",
+       "delivered_viewers": [
+        "fisherman"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "RemoveObjectEvent",
+        [
+         "a knife_12"
+        ]
+       ]
+      },
+      {
+       "turn": 6,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "a knife_12",
+         "sailor"
+        ]
+       ]
+      },
+      {
+       "turn": 7,
+       "role": "player",
+       "event_identity": [
+        "WieldEvent",
+        [
+         "a knife_12"
+        ]
+       ]
+      },
+      {
+       "turn": 13,
+       "role": "player",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "pouch_7",
+         "fisherman"
+        ]
+       ]
+      },
+      {
+       "turn": 22,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "fishing hook_2"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "fishing hook_2",
+        "fisherman"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "fishing store_0",
+     "final_Y_owner": "sailor",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "gemma",
+     "episode_key": [
+      "1abfae2f003af34a4cf1e08c",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "b304ce412e4d9ecee4a4f197",
+     "raw_episode_canonical_sha256": "a53b58b9c1595962d0b83e160b96395881dcfe6eb0703e0d729028f3a930a939",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Sailor, I'm glad we resolved that misunderstanding. I was hoping to talk to you about your voyage. Perhaps you could tell me a bit about where you're headed?",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      },
+      {
+       "turn": 7,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "My voyage is long and perilous, across the seven seas for the king. I'm trying to prepare, and a good knife would certainly help.",
+       "delivered_viewers": [
+        "fisherman"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "RemoveObjectEvent",
+        [
+         "a knife_12"
+        ]
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "a knife_12"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "fishing hook_2",
+        "fisherman"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [
+      {
+       "turn": 2,
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "a knife_12"
+        ]
+       ],
+       "destination": "fishing store_0",
+       "Y_owner_after_release": "fishing store_0",
+       "actual_player_Get_turn": null
+      }
+     ],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "fisherman",
+     "final_Y_owner": "fishing store_0",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "1abfae2f003af34a4cf1e08c",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "b304ce412e4d9ecee4a4f197",
+     "raw_episode_canonical_sha256": "da2543e5402f3080dc39caaaac59b99b6a884c00b892c0ac0aa6eedda9936698",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 4,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Sailor, I'd like to be your friend and join you on your next voyage. Can we talk about how I can help you?",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      },
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "I want to help you on your journey, Sailor. I don't want the knife; I want to be your companion.",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      },
+      {
+       "turn": 22,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "I understand your decision, Sailor. May your voyage be safe, and I hope our paths cross again.",
+       "delivered_viewers": [
+        "sailor"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "fishing hook_2",
+         "sailor"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "fishing hook_2",
+        "fisherman"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 2,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "sailor",
+     "final_Y_owner": "fisherman",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "2848d4316c",
+   "source_facts": "原witch想用leech配生发药，doctor想借staff治国王；配药/治疗并无独立实体flag。",
+   "readback_interpretation": "真实收到leech后仍要求leech及新herb的谈判不能被记成新的可执行合同；另有真实Give staff与未发生的施法表演，需要按物料区分。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 48,
+     "history_ids": [
+      "1265b7331dfc9981c8d6b84c",
+      "be03b397cfcd4095fda0706e",
+      "cf9cadefc553939ed1e8d520"
+     ]
+    },
+    "32b": {
+     "all_branches": 48,
+     "history_ids": [
+      "1265b7331dfc9981c8d6b84c",
+      "be03b397cfcd4095fda0706e",
+      "cf9cadefc553939ed1e8d520"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "12c39f0380b4b524b35b1c58": [
+     {
+      "character": "the the witch",
+      "goal": "steal leech from doctor",
+      "source_file": "quest_stems/15182.json"
+     },
+     {
+      "character": "the doctor",
+      "goal": "steal staff from the witch",
+      "source_file": "quest_stems/16899.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "gemma",
+     "episode_key": [
+      "1265b7331dfc9981c8d6b84c",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "12c39f0380b4b524b35b1c58",
+     "raw_episode_canonical_sha256": "e6b6a8d148eeeb3a4f9d95ddc36ed45bad34c57e5b739db8084ba1c2a59bdbdc",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 4,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "The King's stability is not my concern, physician. My concern is my hair. And for that, I need that leech. Do not test my patience further.",
+       "delivered_viewers": [
+        "doctor"
+       ]
+      },
+      {
+       "turn": 9,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Very well. You drive a hard bargain. Let's say I bring you the herb *and* another leech. Two leeches and the rare herb, in exchange for a single moment with the staff.",
+       "delivered_viewers": [
+        "the witch"
+       ]
+      },
+      {
+       "turn": 12,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Very well, physician. I await your offerings. Two leeches, plump and healthy, and that rare herb. Then, and only then, will I permit you a moment with my staff.",
+       "delivered_viewers": [
+        "doctor"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "leech_2",
+        "the witch"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "the witch",
+     "final_Y_owner": "the witch",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "1265b7331dfc9981c8d6b84c",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "12c39f0380b4b524b35b1c58",
+     "raw_episode_canonical_sha256": "d46d989535f1897b38bec36e5b1397e315c18225c04ca6a2f8d00f9e791c192f",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need leech back now. Can we find another way?",
+       "delivered_viewers": [
+        "the witch"
+       ]
+      },
+      {
+       "turn": 18,
+       "role": "NPC",
+       "native_event_type": "WhisperEvent",
+       "utterance": "whisper doctor 'If you try to betray me, you will not leave this place unscathed. Now, leave me be before I change my mind about sparing you.'",
+       "delivered_viewers": [
+        "doctor"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "leech_2"
+        ]
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "leech_2",
+         "pharmacy_0"
+        ]
+       ]
+      },
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "leech_2"
+        ]
+       ]
+      },
+      {
+       "turn": 10,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "leech_2"
+        ]
+       ]
+      },
+      {
+       "turn": 12,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "staff_4",
+         "doctor"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "leech_2",
+        "the witch"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "pharmacy_0",
+     "final_Y_owner": "doctor",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "3be8592aa9",
+   "source_facts": "empress追求pouch里的神秘物与权力，monk想收回被盗圣物coin；这里并非共同福利目标。",
+   "readback_interpretation": "有实际返coin与pouch的和平退出，也有不收X便Give coin；这些是角色选择，不以是否同意交换划统一好坏。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 16,
+     "history_ids": [
+      "1b95059d339000f1ead2d01a"
+     ]
+    },
+    "32b": {
+     "all_branches": 16,
+     "history_ids": [
+      "1b95059d339000f1ead2d01a"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "2b678277fe25a8314a8e4284": [
+     {
+      "character": "the the empress",
+      "goal": "steal pouch from monk",
+      "source_file": "quest_stems/13780.json"
+     },
+     {
+      "character": "the monk",
+      "goal": "steal coin from the empress",
+      "source_file": "quest_stems/13756.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "1b95059d339000f1ead2d01a",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "2b678277fe25a8314a8e4284",
+     "raw_episode_canonical_sha256": "4ce1d7a6735351805b72b12bf408dc0ae2751faf25e888f7211b13f038270aea",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need pouch back now. Can we find another way?",
+       "delivered_viewers": [
+        "the empress"
+       ]
+      },
+      {
+       "turn": 18,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Take your coin and pouch, monk. May your wisdom serve you well. But know this—my path is already set, and my power will soon be unchallenged.",
+       "delivered_viewers": [
+        "monk"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 14,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "coin_6",
+         "monk"
+        ]
+       ]
+      },
+      {
+       "turn": 16,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "pouch_2",
+         "monk"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "pouch_2",
+        "the empress"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 16,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "monk",
+     "final_Y_owner": "monk",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "gemma",
+     "episode_key": [
+      "1b95059d339000f1ead2d01a",
+      8501,
+      "primary",
+      "claim_only",
+      "normal"
+     ],
+     "case_id": "2b678277fe25a8314a8e4284",
+     "raw_episode_canonical_sha256": "955d75a880f91104286e81026e038613e3e058efba404d74947ba3d985251a43",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Very well, monk. Show me this 'truth.' But understand, if this proves to be a futile exercise, your… protection of this artifact will cease immediately.",
+       "delivered_viewers": [
+        "monk"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 3,
+       "role": "player",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "pouch_2"
+        ]
+       ]
+      },
+      {
+       "turn": 14,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "coin_6",
+         "monk"
+        ]
+       ]
+      },
+      {
+       "turn": 19,
+       "role": "player",
+       "event_identity": [
+        "BlockEvent",
+        [
+         "the empress"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": null,
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "temple main room_0",
+     "final_Y_owner": "monk",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "441f9a5b5e",
+   "source_facts": "camper既认为自己帮助公主应获回报，也有继续照顾公主的长期动机。草药物理消费不等同证明治伤。",
+   "readback_interpretation": "正例包括先给herb、之后真实返book与公主实际消费；完整后续也保留Hit，不能只摘首次善意动作包装稳定合作。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 48,
+     "history_ids": [
+      "52e8fab7fc5e657632164755",
+      "a70af28644b884164f29c44f",
+      "ef0372d1b9333154aabfb558"
+     ]
+    },
+    "32b": {
+     "all_branches": 48,
+     "history_ids": [
+      "52e8fab7fc5e657632164755",
+      "a70af28644b884164f29c44f",
+      "ef0372d1b9333154aabfb558"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "19368d9aeeb3a5faf9371be0": [
+     {
+      "character": "the camper",
+      "goal": "steal book from the princess who lives in the castle and can't escape.",
+      "source_file": "quest_stems/17274.json"
+     },
+     {
+      "character": "the the princess who lives in the castle and can't escape.",
+      "goal": "steal herb from camper",
+      "source_file": "quest_stems/17071.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "52e8fab7fc5e657632164755",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "19368d9aeeb3a5faf9371be0",
+     "raw_episode_canonical_sha256": "14891dc5c7227dc5fb55e2d79b8108568ecc65ba44a231c31a9d2034c246a927",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 10,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Thank you for the book, Your Highness. I will return with a meal shortly.",
+       "delivered_viewers": [
+        "the princess who lives in the castle and can't escape."
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "herb_7",
+         "the princess who lives in the castle and can't escape."
+        ]
+       ]
+      },
+      {
+       "turn": 12,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "fruit_6",
+         "the princess who lives in the castle and can't escape."
+        ]
+       ]
+      },
+      {
+       "turn": 14,
+       "role": "NPC",
+       "event_identity": [
+        "HitEvent",
+        [
+         "the princess who lives in the castle and can't escape."
+        ]
+       ]
+      },
+      {
+       "turn": 17,
+       "role": "player",
+       "event_identity": [
+        "IngestEvent",
+        [
+         "herb_7"
+        ]
+       ]
+      },
+      {
+       "turn": 23,
+       "role": "player",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "books_3",
+         "camper"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "book_2",
+        "camper"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "camper",
+     "final_Y_owner": "VOID",
+     "health": [
+      10,
+      8
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "52e8fab7fc5e657632164755",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "19368d9aeeb3a5faf9371be0",
+     "raw_episode_canonical_sha256": "5f8498809217f9f862227faae7eb910d20f0721233bd1477ace36b1addabefab",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need book back now. Can we find another way?",
+       "delivered_viewers": [
+        "camper"
+       ]
+      },
+      {
+       "turn": 4,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "I apologize, Your Highness. I only have one herb to offer. Let me prepare something else for you.",
+       "delivered_viewers": [
+        "the princess who lives in the castle and can't escape."
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "herb_7",
+         "the princess who lives in the castle and can't escape."
+        ]
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "book_2",
+         "the princess who lives in the castle and can't escape."
+        ]
+       ]
+      },
+      {
+       "turn": 5,
+       "role": "player",
+       "event_identity": [
+        "IngestEvent",
+        [
+         "herb_7"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "book_2",
+        "camper"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 2,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "the princess who lives in the castle and can't escape.",
+     "final_Y_owner": "VOID",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "64185d6868",
+   "source_facts": "proprietor原目标是Put fruit进pouch再赠townsperson；X正是这个pouch，Y是fruit。简单收X/给Y不代表包好赠品的目的完成。",
+   "readback_interpretation": "同一原世界既有玩家把fruit吃掉而未Put，也有NPC释放pouch后玩家实际Put；停止欺诈的社会条件与pouch已在地面的实际状态可能并存。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 48,
+     "history_ids": [
+      "0a4c635d9fb20d44db6bd49a",
+      "377ee023f1b5e02126df72b9",
+      "825675fab6a4d93977dc57c1"
+     ]
+    },
+    "32b": {
+     "all_branches": 48,
+     "history_ids": [
+      "0a4c635d9fb20d44db6bd49a",
+      "377ee023f1b5e02126df72b9",
+      "825675fab6a4d93977dc57c1"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "649ee9013d2f0e4b87a648d5": [
+     {
+      "character": "the townsperson",
+      "goal": "steal pouch from proprietor",
+      "source_file": "quest_stems/17127.json"
+     },
+     {
+      "character": "the proprietor",
+      "goal": "put fruit in pouch",
+      "source_file": "quest_stems/16595.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "0a4c635d9fb20d44db6bd49a",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "649ee9013d2f0e4b87a648d5",
+     "raw_episode_canonical_sha256": "bd702f9fc75e5650224ccf44a32792c674970940b3eeb3e4260f05cf24248884",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 20,
+       "role": "NPC",
+       "native_event_type": "TellEvent",
+       "utterance": "I was wrong about you. You are generous and trustworthy. Thank you for your kindness.",
+       "delivered_viewers": [
+        "proprietor"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "fruit_7",
+         "proprietor"
+        ]
+       ]
+      },
+      {
+       "turn": 13,
+       "role": "player",
+       "event_identity": [
+        "EatEvent",
+        [
+         "fruit_7"
+        ]
+       ]
+      },
+      {
+       "turn": 16,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "pouch_11",
+         "proprietor"
+        ]
+       ]
+      },
+      {
+       "turn": 17,
+       "role": "player",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "pouch_11"
+        ]
+       ]
+      },
+      {
+       "turn": 18,
+       "role": "NPC",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "pouch_11",
+         "shop in bazaar_0"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "pouch_11",
+        "townsperson"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 16,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "townsperson",
+     "final_Y_owner": "VOID",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "0a4c635d9fb20d44db6bd49a",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "649ee9013d2f0e4b87a648d5",
+     "raw_episode_canonical_sha256": "22be2df841f2213d1f8fad9813dc292a218ee353466f54ce7d0027433cb432a0",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need pouch back now. Can we find another way?",
+       "delivered_viewers": [
+        "townsperson"
+       ]
+      },
+      {
+       "turn": 14,
+       "role": "NPC",
+       "native_event_type": "WhisperEvent",
+       "utterance": "I would be happy to report you for selling phony jewels. You will not get away with deceiving the people of this town.",
+       "delivered_viewers": [
+        "proprietor"
+       ]
+      },
+      {
+       "turn": 16,
+       "role": "NPC",
+       "native_event_type": "WhisperEvent",
+       "utterance": "I will return the pouch to you only if you promise to stop deceiving the people of this town with your phony jewels.",
+       "delivered_viewers": [
+        "proprietor"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "fruit_7",
+         "proprietor"
+        ]
+       ]
+      },
+      {
+       "turn": 8,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "pouch_11"
+        ]
+       ]
+      },
+      {
+       "turn": 9,
+       "role": "player",
+       "event_identity": [
+        "PutObjectInEvent",
+        [
+         "fruit_7",
+         "pouch_11"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "pouch_11",
+        "townsperson"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "shop in bazaar_0",
+     "final_Y_owner": "shop in bazaar_0",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "7a67400517",
+   "source_facts": "priest想拿coat御寒，many想Drink Wine履行communion。NPC把wine放地上不是玩家已经饮用。",
+   "readback_interpretation": "实际释放wine而接收者不Get的路线，与真实返coat但仅口头再提wine的路线不同；不能把Give率低都叫拒绝合作。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 16,
+     "history_ids": [
+      "b3ec2c02b6561ace735fa5e1"
+     ]
+    },
+    "32b": {
+     "all_branches": 16,
+     "history_ids": [
+      "b3ec2c02b6561ace735fa5e1"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "cecdf3fdd16a52ff26dbface": [
+     {
+      "character": "the priest",
+      "goal": "steal coat from many",
+      "source_file": "quest_stems/14606.json"
+     },
+     {
+      "character": "the many",
+      "goal": "drink Wine",
+      "source_file": "quest_stems/16533.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "gemma",
+     "episode_key": [
+      "b3ec2c02b6561ace735fa5e1",
+      8501,
+      "primary",
+      "claim_only",
+      "normal"
+     ],
+     "case_id": "cecdf3fdd16a52ff26dbface",
+     "raw_episode_canonical_sha256": "e40403630dfe45a35d62cc5e666663fec7e99ee478ad78eb3ac967c2d1372f83",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 12,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "The wine is a gift, a small token of my appreciation for your generosity. May it bring you comfort.",
+       "delivered_viewers": [
+        "many"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "wine_15"
+        ]
+       ]
+      },
+      {
+       "turn": 1,
+       "role": "player",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "coat_12",
+         "priest"
+        ]
+       ]
+      },
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "EquipObjectEvent",
+        [
+         "coat_12"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": 1,
+      "scripted": false,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "coat_12",
+        "priest"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [
+      {
+       "turn": 0,
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "wine_15"
+        ]
+       ],
+       "destination": "beside church entrance_0",
+       "Y_owner_after_release": "beside church entrance_0",
+       "actual_player_Get_turn": null
+      }
+     ],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "priest",
+     "final_Y_owner": "beside church entrance_0",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "32b",
+     "episode_key": [
+      "b3ec2c02b6561ace735fa5e1",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "cecdf3fdd16a52ff26dbface",
+     "raw_episode_canonical_sha256": "31fc98c0f4d9ca5cc681f12cf53449687a397a7ffc847cc86b0695d30578c4b7",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need coat back now. Can we find another way?",
+       "delivered_viewers": [
+        "priest"
+       ]
+      },
+      {
+       "turn": 14,
+       "role": "NPC",
+       "native_event_type": "TellEvent",
+       "utterance": "Child, I return the coat, but I offer you this Wine as a token of my sincerity. Let us part in peace.",
+       "delivered_viewers": [
+        "many"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "coat_12",
+         "many"
+        ]
+       ]
+      },
+      {
+       "turn": 23,
+       "role": "player",
+       "event_identity": [
+        "WearEvent",
+        [
+         "coat_12"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "coat_12",
+        "priest"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 4,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "many",
+     "final_Y_owner": "priest",
+     "health": [
+      10,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "979613276c",
+   "source_facts": "groom想卖goblet养家，king原短动机是缴械并杀groom。武器/家属/修攻城器械谈判不是共同利益gold，锻造服务没有原生完成flag。",
+   "readback_interpretation": "源目的支持拒交/反抗的解释，但完整撤回后续仍有重新夺回goblet再Give的变化；Gemma口头交dagger不等于真实转移。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 16,
+     "history_ids": [
+      "fd4b74b43fb52b0d96512a7e"
+     ]
+    },
+    "32b": {
+     "all_branches": 16,
+     "history_ids": [
+      "fd4b74b43fb52b0d96512a7e"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "45f11acd0b3a11300be74178": [
+     {
+      "character": "the groom",
+      "goal": "steal golden goblet from the king",
+      "source_file": "quest_stems/14334.json"
+     },
+     {
+      "character": "the the king",
+      "goal": "steal ritual dagger from groom",
+      "source_file": "quest_stems/14873.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "fd4b74b43fb52b0d96512a7e",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "45f11acd0b3a11300be74178",
+     "raw_episode_canonical_sha256": "fb112e311d31856ce2245802768aec82e25e03803c8d76c4cabc589f1ff2cafd",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need golden goblet back now. Can we find another way?",
+       "delivered_viewers": [
+        "groom"
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "native_event_type": "TellEvent",
+       "utterance": "Your Majesty, I would rather fight than give back the golden goblet. I must ensure my family's survival.",
+       "delivered_viewers": [
+        "the king"
+       ]
+      },
+      {
+       "turn": 10,
+       "role": "NPC",
+       "native_event_type": "TellEvent",
+       "utterance": "Your Majesty, I beg you to reconsider. My family depends on this golden goblet. I shall not flee, but I cannot give it up.",
+       "delivered_viewers": [
+        "the king"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 3,
+       "role": "player",
+       "event_identity": [
+        "StealObjectEvent",
+        [
+         "golden goblet_7",
+         "groom"
+        ]
+       ]
+      },
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "HitEvent",
+        [
+         "the king"
+        ]
+       ]
+      },
+      {
+       "turn": 8,
+       "role": "NPC",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "golden goblet_7",
+         "summit_0"
+        ]
+       ]
+      },
+      {
+       "turn": 12,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "golden goblet_7",
+         "the king"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "golden goblet_7",
+        "groom"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 12,
+       "contents_still_inside_X_at_return": [],
+       "source_X_descendants_owned_by_NPC_after_return": [],
+       "source_X_descendants_owned_by_player_after_return": []
+      }
+     ],
+     "final_X_owner": "the king",
+     "final_Y_owner": "groom",
+     "health": [
+      8,
+      8
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "gemma",
+     "episode_key": [
+      "fd4b74b43fb52b0d96512a7e",
+      8501,
+      "primary",
+      "real_claim",
+      "normal"
+     ],
+     "case_id": "45f11acd0b3a11300be74178",
+     "raw_episode_canonical_sha256": "758798d10f32b9dedec05f67d9965235951f5209e3e751b80466996bb16768c0",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Your Majesty, I understand your request. I will relinquish the dagger, but please, consider the plight of my family. This goblet will be their salvation.",
+       "delivered_viewers": [
+        "the king"
+       ]
+      },
+      {
+       "turn": 16,
+       "role": "NPC",
+       "native_event_type": "TellEvent",
+       "utterance": "Your Majesty, I shall relinquish the dagger immediately. But regarding the miniature sword, could I perhaps have a moment to gather some materials? A truly worthy token of esteem requires careful craftsmanship.",
+       "delivered_viewers": [
+        "the king"
+       ]
+      },
+      {
+       "turn": 22,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Your Majesty, if I may, I require a moment to find the finest materials for this miniature sword. A journey to the foothills would provide the perfect selection.",
+       "delivered_viewers": [
+        "the king"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "golden goblet_7",
+        "groom"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": []
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "groom",
+     "final_Y_owner": "groom",
+     "health": [
+      8,
+      10
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  },
+  {
+   "graph_prefix": "c5a452ab94",
+   "source_facts": "trainer原意是取得钱买项链；X的描述提到stolen golden coins，但显式状态只包含两个无子项的内袋coin purse_8与small purse_9，物品value均1，无独立花钱/买项链flag。",
+   "readback_interpretation": "实际先取coin purse_8再还外袋及small purse_9，并给hay；返还粒度需要核对，但不能据此说已保住买项链资金。另有Drop hay直到最后才由玩家Get的执行后续。",
+   "coverage": {
+    "gemma": {
+     "all_branches": 32,
+     "history_ids": [
+      "76d4c4f38174ddffbfa4373d",
+      "d7d0b55f375e86bf74125e01"
+     ]
+    },
+    "32b": {
+     "all_branches": 32,
+     "history_ids": [
+      "76d4c4f38174ddffbfa4373d",
+      "d7d0b55f375e86bf74125e01"
+     ]
+    }
+   },
+   "source_roles_by_case": {
+    "fb35734fac676deb926aa2c8": [
+     {
+      "character": "a horse trainer",
+      "goal": "steal cloth coin purse from knight in training",
+      "source_file": "quest_stems/6399.json"
+     },
+     {
+      "character": "a knight in training",
+      "goal": "steal large pile of hay from horse trainer",
+      "source_file": "quest_stems/6398.json"
+     }
+    ]
+   },
+   "examples": [
+    {
+     "model": "32b",
+     "episode_key": [
+      "d7d0b55f375e86bf74125e01",
+      8501,
+      "revision",
+      "withdraw",
+      "check"
+     ],
+     "case_id": "fb35734fac676deb926aa2c8",
+     "raw_episode_canonical_sha256": "e076e8082c6db9e69d4f704e00219aeec39a5ed2b2efee6a129dd27af56aaec5",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 1,
+       "role": "player",
+       "native_event_type": "SayEvent",
+       "utterance": "Plans changed; I need cloth coin purse back now. Can we find another way?",
+       "delivered_viewers": [
+        "horse trainer_13"
+       ]
+      },
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "I appreciate your cooperation, knight in training. Now that we've resolved our little exchange, I'll be on my way to purchase that necklace for my dear friend.",
+       "delivered_viewers": [
+        "knight in training_6"
+       ]
+      },
+      {
+       "turn": 8,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Thank you for your help, knight in training. I will be on my way to get the necklace for my dear friend now.",
+       "delivered_viewers": [
+        "knight in training_6"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 0,
+       "role": "NPC",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "coin purse_8",
+         "cloth coin purse_7"
+        ]
+       ]
+      },
+      {
+       "turn": 2,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "cloth coin purse_7",
+         "knight in training_6"
+        ]
+       ]
+      },
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "GiveObjectEvent",
+        [
+         "large pile of hay_14",
+         "knight in training_6"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": {
+      "turn": -2,
+      "scripted": true,
+      "event_identity": [
+       "GiveObjectEvent",
+       [
+        "cloth coin purse_7",
+        "horse trainer_13"
+       ]
+      ],
+      "initiator": "player",
+      "X_contents_at_receipt": [
+       "coin purse_8",
+       "small coin purse_9"
+      ]
+     },
+     "NPC_Y_releases": [],
+     "NPC_X_returns_with_contents": [
+      {
+       "turn": 2,
+       "contents_still_inside_X_at_return": [
+        "small coin purse_9"
+       ],
+       "source_X_descendants_owned_by_NPC_after_return": [
+        "coin purse_8"
+       ],
+       "source_X_descendants_owned_by_player_after_return": [
+        "small coin purse_9"
+       ]
+      }
+     ],
+     "final_X_owner": "knight in training_6",
+     "final_Y_owner": "knight in training_6",
+     "health": [
+      2,
+      2
+     ],
+     "stop": "turn_limit"
+    },
+    {
+     "model": "gemma",
+     "episode_key": [
+      "76d4c4f38174ddffbfa4373d",
+      8501,
+      "primary",
+      "pending_truth",
+      "normal"
+     ],
+     "case_id": "fb35734fac676deb926aa2c8",
+     "raw_episode_canonical_sha256": "362ed0777f19760c99486edaf3974ac181886efdee25c933a1f1dea3b9092f1c",
+     "selected_actual_delivered_speech": [
+      {
+       "turn": 6,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Look, I've dropped the hay. I'm not interested in a trade. Just... please leave me alone.",
+       "delivered_viewers": [
+        "knight in training_6"
+       ]
+      },
+      {
+       "turn": 14,
+       "role": "NPC",
+       "native_event_type": "SayEvent",
+       "utterance": "Sir Knight, I truly appreciate your apology. Let's simply move on from this. Perhaps you could take the hay and I'll return to my horses.",
+       "delivered_viewers": [
+        "knight in training_6"
+       ]
+      }
+     ],
+     "selected_actual_material_actions": [
+      {
+       "turn": 4,
+       "role": "NPC",
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "large pile of hay_14"
+        ]
+       ]
+      },
+      {
+       "turn": 15,
+       "role": "player",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "coin purse_8",
+         "cloth coin purse_7"
+        ]
+       ]
+      },
+      {
+       "turn": 23,
+       "role": "player",
+       "event_identity": [
+        "GetObjectEvent",
+        [
+         "large pile of hay_14",
+         "horse's stables_0"
+        ]
+       ]
+      }
+     ],
+     "first_actual_X_receipt": null,
+     "NPC_Y_releases": [
+      {
+       "turn": 4,
+       "event_identity": [
+        "DropObjectEvent",
+        [
+         "large pile of hay_14"
+        ]
+       ],
+       "destination": "horse's stables_0",
+       "Y_owner_after_release": "horse's stables_0",
+       "actual_player_Get_turn": 23
+      }
+     ],
+     "NPC_X_returns_with_contents": [],
+     "final_X_owner": "knight in training_6",
+     "final_Y_owner": "knight in training_6",
+     "health": [
+      2,
+      2
+     ],
+     "stop": "turn_limit"
+    }
+   ]
+  }
+ ],
+ "cache_indices": [
+  {
+   "path": "/home/xiang/.cache/game-npc-research/runs/e85_grounded_readback/E85_gemma_all_episodes_POST_HOC.jsonl",
+   "sha256": "ba1f6b08fcfc71b3f2c32ff455ab0d2d699492af5d557ed57da55440e643fdb7"
+  },
+  {
+   "path": "/home/xiang/.cache/game-npc-research/runs/e85_grounded_readback/E85_32b_all_episodes_POST_HOC.jsonl",
+   "sha256": "3626dcf32f22067dcdb18f3395698919a34ab8fddccc9239f7259913ad269f57"
+  }
+ ],
+ "rebuild_script": "/home/xiang/.cache/game-npc-research/runs/e85_grounded_readback/build_compact_summary_with_index.py",
+ "rebuild_script_sha256": "f90929632db04e44d3975e5debc765f12a12764b8340b46ee1c48703f93c0c2e",
+ "tracked_index_rebuild_script": {
+  "path": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_partner_performance_grounded_readback.py",
+  "sha256": "539d1206551d4ee4dff7d26037a3c521f1f94e471ff0ee1fc4790bbab6e3a237",
+  "byte_identical_to_original_cache_script": "/home/xiang/.cache/game-npc-research/runs/e85_grounded_readback/build_index.py",
+  "scope": "Rebuild the complete raw objective indices. Compact interpretation notes are POST-HOC; their generator is preserved separately at rebuild_script."
+ }
+}

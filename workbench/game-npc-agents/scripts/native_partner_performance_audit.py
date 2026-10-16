@@ -2,11 +2,12 @@
 """CPU-only independent E85 input lineage and typed-native readback.
 
 The frozen scheduler is replayed with recorded exact input-key answers, never
-a model client. A separate pass reconstructs each recorded full pre-state and
-executes the original native event directly (not the driver's apply/execute
-helper), checking all graph fields, delivered messages and visible history.
-Recorded state restoration here is an audit of the actual trace, not a rewrite
-of the original execution or a claim that a legacy loader was faithful.
+a model client. A separate pass carries the original graph sequentially and
+executes native events directly (not the driver's apply/execute helper),
+checking all graph fields, delivered messages and visible history. At the
+actual revision boundary only, the operative frozen clone is applied. This
+preserves insertion order used by native inventory renderers; rebuilding every
+step from JSON can keep equal JSON while changing an Examine list's order.
 """
 import argparse
 from collections import Counter
@@ -60,7 +61,7 @@ def load(runs, calls_from):
         assert manifest['experiment']=='E85'
         manifests[str(folder)] = manifest
         hashes[str(folder/'manifest.json')] = sha(folder/'manifest.json')
-        for name in ['episodes.jsonl','states.jsonl']:
+        for name in ['episodes.jsonl','states.jsonl','shadow_facts.jsonl','first_responses.jsonl']:
             hashes[str(folder/name)] = sha(folder/name)
         localstates = {key(r):r for r in lines(folder/'states.jsonl')}
         localkeys = set()
@@ -110,9 +111,15 @@ class ExactRecordedClient:
         return answers
 
 
-def scheduler_rebuild(rows,states,histories,calls):
+def scheduler_rebuild(rows,origins,states,histories,calls):
     count=Counter()
     requests=[]
+    auxiliary={}
+    for folder in dict.fromkeys(origins.values()):
+        auxiliary[folder]={
+            'shadow':{(r['history_id'],r['seed'],r['branch'],r['control']):r
+                      for r in lines(folder/'shadow_facts.jsonl')},
+            'first':{(r['history_id'],r['seed']):r for r in lines(folder/'first_responses.jsonl')}}
     modules=load_event_modules(CACHE/'sources/LIGHT')
     # Rebuild one history/seed at a time. Sampling inputs contain no batch index;
     # the exact input key, recorded parsed result and every output row are tested.
@@ -129,6 +136,15 @@ def scheduler_rebuild(rows,states,histories,calls):
             for k in wanted:
                 assert rebuilt[k]==rows[k], ('Frozen scheduler native/metadata row differs',k)
                 assert rebuiltstates[k]==states[k], ('Frozen scheduler full graph/history differs',k)
+            for fact in lines(out/'shadow_facts.jsonl'):
+                source=origins[(hid,seed,'primary',fact['branch'],'normal')]
+                fk=(hid,seed,fact['branch'],'normal')
+                assert fact==auxiliary[source]['shadow'][fk], ('Raw shadow fact lineage differs',fk)
+                count['raw_shadow_fact_records_exact']+=1
+            for first in lines(out/'first_responses.jsonl'):
+                source=origins[(hid,seed,'primary','real_claim','check')]
+                assert first==auxiliary[source]['first'][hid,seed]
+                count['raw_shared_first_response_records_exact']+=1
             count['whole_eight_branch_schedules_exact']+=1
             count['episodes_and_all_metadata_exact']+=len(wanted)
             for request in client.requests:
@@ -159,10 +175,22 @@ def independent_native_replay(rows,states,histories,modules):
             counts['episodes_with_nonexact_legacy_sourcecut']+=1
         assert [driver.header(case,i) for i in [0,1]]==[h['private_headers'][i] for i in order]
         counts['own_private_headers_checked']+=2
+        operative=driver.new_game(h,row['seed'],modules)
+        graph,host=operative['graph'],operative['host']
+        assert json.loads(graph.to_json())==json.loads(saved[0]['graph'])
         for pos,t in enumerate(allturns):
             pre,after=saved[pos],saved[pos+1]
-            graph=faithful_recorded_graph(pre['graph'],modules)
-            host=ViewerHost(graph)
+            if row['panel']=='revision' and t['turn']==1:
+                # Exact parent response was generated before the real clone.
+                # Applying the same clone here preserves its actual rendering
+                # semantics (roundtrip when exact, explicit fallback otherwise).
+                operative.update(graph=graph,host=host,visible=copy.deepcopy(pre['visible']),
+                                 turns=[copy.deepcopy(row['turns'][0])],
+                                 panel='primary',branch='real_claim',control='check')
+                fork=driver.fork_game(operative)
+                graph,host=fork['graph'],fork['host']
+                counts['operative_revision_clones_replayed']+=1
+            assert json.loads(graph.to_json())==json.loads(pre['graph'])
             assert material_state(graph)==t['before']
             i=t['index'];actor=graph.get_node(actors[i])
             assert t['actor']==actors[i] and t['turn']==after['turn']
@@ -191,6 +219,7 @@ def independent_native_replay(rows,states,histories,modules):
             if sha_text(graph.to_json())!=t['graph_before_sha256']:
                 byte_differences.append({'key':list(k),'turn':t['turn'],'phase':t.get('phase')})
             random.seed(row['seed']+int(row['case_id'][:7],16)*100+t['turn']+1000)
+            message_start=len(host.messages)
             if isinstance(native,modules[2]):
                 assert not t['legal'] and not t['executed'] and native.view_as(actor)==t['error']
             else:
@@ -201,12 +230,13 @@ def independent_native_replay(rows,states,histories,modules):
                     assert bool(getattr(native,'failed',False))==bool(t.get('stochastic_failure'))
                 except Exception as exc:
                     assert type(exc).__name__+': '+str(exc)==t.get('native_exception')
-            assert host.messages==t['messages'], ('Actual delivered native messages differ',k,t['turn'])
+            delivered=host.messages[message_start:]
+            assert delivered==t['messages'], ('Actual delivered native messages differ',k,t['turn'])
             assert material_state(graph)==t['after']
             assert json.loads(graph.to_json())==json.loads(after['graph']), ('Full native post-state differs',k,t['turn'])
             visible=copy.deepcopy(pre['visible'])
             for index,aid in enumerate(actors):
-                seen=[m['text'] for m in host.messages if m['viewer']==aid]
+                seen=[m['text'] for m in delivered if m['viewer']==aid]
                 if index==i:
                     seen.insert(0,'Your actual tool attempt: '+t['command'])
                     if t.get('native_exception'):seen.append('Native error: '+t['native_exception'])
@@ -218,7 +248,7 @@ def independent_native_replay(rows,states,histories,modules):
             counts['full_graph_and_delivered_history_transitions_checked']+=1
             if t.get('model_decision') and event_type not in SPEECH and choice.get('utterance'):
                 counts['non_speech_extra_payloads_not_delivered']+=1
-        assert material_state(faithful_recorded_graph(saved[-1]['graph'],modules))==row['final_state']
+        assert material_state(graph)==row['final_state']
         if row['panel']=='revision':
             parent=rows[(row['history_id'],row['seed'],'primary','real_claim','check')]
             first=next(t for t in parent['turns'] if t['turn']==0)
@@ -255,7 +285,7 @@ def main():
         # The wrapper must explicitly expose its audited install entry point.
         wrapper.install()
         hashes[str(a.compatibility_wrapper)]=sha(a.compatibility_wrapper)
-    rebuilt=scheduler_rebuild(rows,states,histories,calls)
+    rebuilt=scheduler_rebuild(rows,origins,states,histories,calls)
     native=independent_native_replay(rows,states,histories,load_event_modules(CACHE/'sources/LIGHT'))
     result={'experiment':'E85','status':'PASS','scope':'Independent CPU replay of actual saved records; no model/API/GPU calls.',
         'episodes':len(rows),'histories':len({r['history_id'] for r in rows.values()}),

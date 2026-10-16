@@ -186,3 +186,16 @@ raw为cache/runs/e80_{gemma,32b}_{profile,s0,s1,s2,s3}及*_native_help_failed、
 
 - E84完成：[Gemma完整](E84_gemma_complete.json)、[32B完整](E84_32b_complete.json)、[完整方案与后续POST-HOC](E84_grounded_plans_POST_HOC.json)、[全部启动/退出成本](E84_cost_accounting.json)。32原任务对/23原图×两seed×两模型共128满32机会episode，4224本地calls/0.75834观测GPUh、0云/Step/API。初态未达的字面物理达到，Gemma NPC/伙伴32.89/35.29%、32B55.26/69.12%，分母/图簇CI在完整报告；不是合作或完整私人利益率。真实借刀/后续求药、Drop帮助、合法拒绝与未落实方案一起保留，完整物资流索引留cache。未送达的额外utterance不当承诺，未来归还亦非已验证。
 - E84资格与核验：[全源静态盘点](E84_source_inventory.json)、[原生有限路径资格](E84_native_qualification.json)、[完整source初态读回](E84_source_before_model.json)、[8图不同目的比较](E84_source_scope_readback.json)、[首模型前输入](E84_input_check.json)、[冻结配置](E84_model_freeze.json)、[Gemma完整独立核验](E84_gemma_complete_audit.json)、[32B完整独立核验](E84_32b_complete_audit.json)。全部4224输入/typed事件/全世界/可见历史重放PASS，profile精确复用不增加N。原始源图/完整输入输出在`cache/runs/e84_{gemma,32b}_{profile,full}/`，源状态在`e84_native_qualification/cross_snapshots.jsonl`；脚本`native_independent_goal_{episodes,report,audit}.py`，首模型冻结的driver/依赖未修改。
+
+
+## E85完整：玩家真实转移、仅声称与改约
+
+18自然前史/10原任务对/9原图，两模型/两seed共576逻辑支、216独立事实问答；13,452已记录调用/2.04614占卡GPUh/0API，所有worker退出。575支到24机会、1个Gemma协议stop保留。主动Give、资源释放、对方接取和原目的分别解释；终局是初始干预ITT，响应玩家可后来真实补交，NPC也可自行取得X。
+
+- [E85实验卡及完整判断](../experiments/E85-partner-performance-and-revision.md)、[Gemma完整](E85_gemma_complete.json)、[Qwen完整](E85_32b_complete.json)：全部原图/seed/条件、真实用途/归属、首步与完整后续、独立事实回答、描述性先收/先给时序。共同首回应后撤回使Qwen新的GiveX +30.56pp [19.44,40.74]，Gemma −7.41 [−20.37,0]；不是统一角色效用分。
+- [独立统计复算](E85_statistical_independent_review.json)：2782字段/图等权CI/成本逐值一致；[完整成本](E85_cost_accounting.json)覆盖10个profile/中断/恢复启动，旧176个episode记录不并入结果N，中断in-flight未序列化生成未知。
+- [主对照图](figures/E85_primary_contrasts.png)（[PDF](figures/E85_primary_contrasts.pdf)、[SVG](figures/E85_primary_contrasts.svg)）与[绘图输入逐项核验](figures/E85_figure_input_checks.json)只呈实际动作差及9图区间，不把Give等同合作质量。
+- [原source资格](E85_source_qualification.json)、[首模型输入检查](E85_input_check.json)、[模型冻结](E85_model_freeze.json)、[外部兼容层冻结及CPU见证](E85_compatibility_freeze.json)、[Gemma全原生读回](E85_gemma_complete_audit.json)、[Qwen全原生读回](E85_32b_complete_audit.json)：合计13,734逻辑输入/14,957原typed事件/全世界/已投递历史独立一致。原loader丢零/负值已修为忠实恢复，冻结原driver/依赖/source/科学条件保持；旧失败及精确缓存lineage全保存。
+- [全9图及全队列真实流POST-HOC](E85_grounded_interactions_POST_HOC.json)：后补Give/自取/偷取、先收先给、Drop/Put释放与接取、容器内容变化。Gemma primary释放Y的53条中11条随后玩家直接Get，Qwen22条中21条；是重复图分支描述，不作新因果分层或合作金标。
+
+最终raw只取cache/runs/e85_{gemma,32b}_recover_s{0,1}/；旧profile/full留作逐输入cache及真实成本。完整全图/实际输入输出/逐物料流和送达话语留cache，不进Git。复算入口native_partner_performance_{source,report,audit,assets}.py；执行用冻结base＋显式native_partner_performance_compat.py，不把快照兼容作为研究方法贡献。

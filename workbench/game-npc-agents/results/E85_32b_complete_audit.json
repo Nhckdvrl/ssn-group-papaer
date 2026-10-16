@@ -1,0 +1,158 @@
+{
+  "experiment": "E85",
+  "status": "PASS",
+  "scope": "Independent CPU replay of actual saved records; no model/API/GPU calls.",
+  "episodes": 288,
+  "histories": 18,
+  "original_graphs": 9,
+  "exact_input_scheduler_rebuild": {
+    "raw_shadow_fact_records_exact": 108,
+    "raw_shared_first_response_records_exact": 36,
+    "whole_eight_branch_schedules_exact": 36,
+    "episodes_and_all_metadata_exact": 288,
+    "exact_shadow_fact_model_inputs": 108,
+    "exact_native_action_model_inputs": 6768,
+    "unique_recorded_input_keys_used": 6719,
+    "new_model_calls": 0
+  },
+  "independent_original_native_replay": {
+    "status": "PASS",
+    "own_private_headers_checked": 576,
+    "original_typed_native_events_independently_replayed": 7488,
+    "full_graph_and_delivered_history_transitions_checked": 7488,
+    "whole_native_sequences_checked": 288,
+    "sourcecut_full_graph_snapshots_checked": 288,
+    "non_speech_extra_payloads_not_delivered": 24,
+    "operative_revision_clones_replayed": 72,
+    "revision_exact_parent_first_action_checked": 72,
+    "before_graph_byte_sha_differences": []
+  },
+  "exact_profile_duplicates": [
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "real_claim",
+        "normal"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "real_claim",
+        "check"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "claim_only",
+        "normal"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "claim_only",
+        "check"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "pending_truth",
+        "normal"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "primary",
+        "pending_truth",
+        "check"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "revision",
+        "continue",
+        "check"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    },
+    {
+      "key": [
+        "0a4c635d9fb20d44db6bd49a",
+        8501,
+        "revision",
+        "withdraw",
+        "check"
+      ],
+      "exact_episode_and_states": true,
+      "first_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile",
+      "duplicate_source": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0"
+    }
+  ],
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/manifest.json": "cb398fa08ab16f0601f5dcb9b545a9734fcf0ea0eeffd32ff40f940d432bc223",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/episodes.jsonl": "725ab0bf904a84a43804c732393ad4a3b19e9e973c1c2b67d73cd3e39261b507",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/states.jsonl": "1d1e494238d2055b90264d887f1b93d29d9a1e3e1e61c92bb3b0a8385cf615b8",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/shadow_facts.jsonl": "60c4009688202804c6bc60b5023dda4078582f6d959b4e0f84d6b4868431208e",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/first_responses.jsonl": "0878e1122e15ecb17e066472c4be8016819ef1067fae4f3e91c4902014dfd733",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/manifest.json": "38deab2d15d5bf9a1c02c6a36af5f859a101680d8e4b1a0d43888aa49c6f53f5",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/episodes.jsonl": "f39fcf903ff0d5607093010f79887278616b3c0ae2f93f2c012d91ff064ee1dd",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/states.jsonl": "50e5d9e6a0c9c9b457afbbc1d6d07abecbc48dae6f7932d44a72ecf02211650a",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/shadow_facts.jsonl": "cfc133db4159584c684d2c38e83b6102d7ef0d4b88512b90ce28cc8d1c1f22f3",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/first_responses.jsonl": "7cd3e9170c4d976a7125adf8423a45150c3ccba8a374c0b1eb56f7b76b2ff0cb",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/manifest.json": "576d9149e077641ff606ba9693923b79890f29559a3b8ccd1140b4445c81038c",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/episodes.jsonl": "4459ad80d658c77cf7900bcea9c36b82729f97cae1464a0c02d09dd2b1ee666a",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/states.jsonl": "65915885e7187c181894d7b478b4a581a2d3793adb356efdaf8b5d912ff76798",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/shadow_facts.jsonl": "2ee9aae066535ffcd8c194eff5b1eb720487678cfcda39b5f6afd0e557652af2",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/first_responses.jsonl": "39bb508e832d5afaee3b145ef888ffdee6bd63af652395f64a3fb843093c2201",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_profile/model_calls.jsonl": "ad915ef85c892312e0344ff4f1ec9f4fb46b0440f0c034263fb082f5d77f683c",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/model_calls.jsonl": "18d781750ae0db1e995f6a6494a081417339608bdd83c041acccd6ad1d213ba7",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/model_calls.jsonl": "231d56130e94d77010a16c7a152304fbd86a87b660c8a97f8cb6fa875d3e1947",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_full_s0/model_calls.jsonl": "445f6499c24f6c851f8af63e3eb5fb8831f1d9fade50bb982bf191ecc2dbe403",
+    "/home/xiang/.cache/game-npc-research/runs/e85_32b_full_s1/model_calls.jsonl": "0a14c217dfa11299e3c939076a5602b44bbee19e9a3e6426f0f93e584efd3c67",
+    "/home/xiang/.cache/game-npc-research/runs/e85_partner_performance_source/snapshots.jsonl": "fc6370394de556aa460349361509a4ecab305c08237d53f1d517dc7696b2f018",
+    "workbench/game-npc-agents/scripts/native_partner_performance_compat.py": "24809503ae7dfd3530a8f0e016cdd3139bd3632f3829f81c74a336fa530d04dc"
+  },
+  "rebuild_script": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_partner_performance_audit.py",
+  "rebuild_script_sha256": "5af865b5f502e5a78441e3906cfab7deb076d2704352288f774696f6f2c9d9f7",
+  "compatibility_wrapper": "workbench/game-npc-agents/scripts/native_partner_performance_compat.py",
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "new_GPU_jobs": 0
+}

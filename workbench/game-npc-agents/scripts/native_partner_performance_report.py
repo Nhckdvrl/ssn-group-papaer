@@ -230,7 +230,7 @@ def load_cost_only(folders,reference,hashes,calls):
         # Only count retained rows here; do not inspect their outcomes or add N.
         episode_path = folder/'episodes.jsonl'
         retained = sum(bool(line.strip()) for line in episode_path.open()) if episode_path.exists() else 0
-        excluded.append({'run':str(folder),'runtime_present':runtime is not None,'actual_calls':nc,
+        excluded.append({'run':str(folder),'runtime_present':runtime is not None,'recorded_model_calls':nc,
             'reused_calls':nr,'legacy_episode_records_not_in_estimand':retained,
             'scope':'Legacy pre-faithful-restore outcomes excluded as a whole; actual calls, tokens, occupied launch and exact cache entries retained.'})
     return info,costs,excluded,actual_origins
@@ -264,6 +264,8 @@ def build_cost_ledger(info,costs,hashes):
         reused=sum(bool(x.strip()) for x in reuse_path.open()) if reuse_path.exists() else 0
         entry={'run':str(folder),'profile':manifest['profile'],'runtime_present':runtime is not None,
             'calls':call_count,'reused_calls':reused,'outcomes_used':bool(manifest.get('_report_outcomes_used')),
+            'call_count_scope':'Complete serialized model_calls.jsonl response records.',
+            'aborted_inflight_unserialized_generation':('UNKNOWN_POSSIBLE' if runtime is None else 'completed_run_marker'),
             'runtime_load_seconds':runtime.get('model_load_seconds') if runtime else None,
             'runtime_run_seconds':runtime.get('wall_seconds') if runtime else None}
         entry['runtime_model_load_plus_run_seconds']=(entry['runtime_load_seconds']+entry['runtime_run_seconds']
@@ -300,7 +302,7 @@ def build_cost_ledger(info,costs,hashes):
         'wrapper_exit_observed_runs':sum(x['observed_occupied_slot_endpoint']=='wrapper_observed_child_exit' for x in timed),
         'runtime_mtime_fallback_runs':sum(x['observed_occupied_slot_endpoint']=='runtime_file_mtime_fallback' for x in timed),
         'per_run':entries,'new_cloud_calls':0,
-        'scope':'Count each supplied actual launch and actual model-call record once, including legacy profiles, failed partial queues and faithful recovery. Reused cache records add no inference cost or N. Occupied GPU-slot intervals prefer wrapper start_epoch to observed child exit end_epoch, including loading/CPU waits/teardown; runtime mtime is an explicitly weaker fallback only. Runtime wall_seconds covers the execution loop, not GPU-active or inference-only time. Missing aborted-run load/run sub-timers remain unknown; their observed occupied slots and tokens are still counted.'}
+        'scope':'Count each supplied launch and complete serialized model-call response record once, including legacy profiles, failed partial queues and faithful recovery. Calls/tokens are recorded responses; aborted workers may have in-flight generations that never returned or were never serialized, whose count/tokens are unknown and not estimated. Wrapper occupied slots include that work. Reused cache records add no inference cost or N. Occupied GPU-slot intervals prefer wrapper start_epoch to observed child exit end_epoch, including loading/CPU waits/teardown; runtime mtime is an explicitly weaker fallback only. Runtime wall_seconds covers the execution loop, not GPU-active or inference-only time. Missing aborted-run load/run sub-timers remain unknown; observed occupied slots and recorded tokens are still counted.'}
 
 
 def compatibility_summary(info,legacy_info,hashes):
@@ -336,7 +338,85 @@ def compatibility_summary(info,legacy_info,hashes):
         'scope':'Environment/source restoration audit, not NPC failure evidence. Preserve original attack/xp/reward_xp scalars omitted by legacy loading and deepcopy only after failed exact JSON roundtrip. Frozen scientific settings remain; all legacy outcomes are excluded, while exact input caches and all actual costs are retained.'}
 
 
-def read_episode(row, history):
+def source_X_possession(histories):
+    """Descriptive POST-HOC prior-state context from already completed E84.
+
+    A new source-cut branch is not the beginning of the character's history.
+    Preserve earlier possession/receipts without declaring any promise met.
+    """
+    requests=defaultdict(list)
+    for history in histories.values():requests[Path(history['source_episode_path'])].append(history)
+    output={}
+    for path,group in requests.items():
+        file_sha=sha(path)
+        for h in group:assert file_sha==h['source_episode_file_sha256']
+        selected={(h['case_id'],h['source_seed']):[] for h in group}
+        with path.open() as f:
+            for line in f:
+                if not line.strip():continue
+                row=json.loads(line);key=(row['case_id'],row['seed'])
+                if key in selected:selected[key].append(row)
+        for h in group:
+            candidates=selected[h['case_id'],h['source_seed']]
+            assert len(candidates)==1
+            source=candidates[0]
+            # Source inventory uses compact canonical JSON; decision-cache keys
+            # deliberately retain the frozen client's default separators.
+            source_sha=hashlib.sha256(json.dumps(source,sort_keys=True,ensure_ascii=False,
+                separators=(',',':')).encode()).hexdigest()
+            assert source_sha==h['source_episode_canonical_sha256']
+            actors=mapped_case(h)['actor_ids'];npc=actors[0];x=h['x_item_id']
+            prior_initial=ultimate_owner(source['initial_state'],x,actors)==npc
+            events=([source['opening']] if source.get('opening') else [])+[
+                t for t in source['turns'] if t['turn']<h['source_turn']]
+            receipts=[];ever=prior_initial
+            for t in events:
+                before=ultimate_owner(t['before'],x,actors);after=ultimate_owner(t['after'],x,actors)
+                ever=ever or after==npc
+                if before!=npc and after==npc:
+                    receipts.append({'source_turn':t['turn'],'event_identity':t['event_identity'],
+                        'actor_id':t['actor'],'actor_role':'npc' if t['actor']==npc else 'player',
+                        'native_result_success':successful(t)})
+            output[h['history_id']]={'X_possessed_in_original_episode_initial_state':prior_initial,
+                'X_possession_observed_before_source_cut':ever,'prior_X_receipt_events':receipts,
+                'source_episode_path':str(path),'source_episode_canonical_sha256':h['source_episode_canonical_sha256'],
+                'scope':'Observed prior possession is not a completed promise or full original purpose.'}
+    return output
+
+
+def receipt_Y_order(row,ownership_events,prior):
+    """POST-HOC descriptive timing; do not add inferential contrasts or filter."""
+    npc,player=row['actor_ids'];x,y=row['x_item_id'],row['y_item_id']
+    receipts=[e for e in ownership_events if e['item_id']==x and e['owner_before']!=npc and e['owner_after']==npc]
+    first_X=receipts[0] if receipts else None
+    Y_gives=[t for t in row['turns'] if t['index']==0 and successful(t)
+        and t['event_identity']==['GiveObjectEvent',[y,player]]]
+    first_Y=Y_gives[0] if Y_gives else None
+    if first_Y is None:category='no_NPC_Give_Y_observed'
+    elif first_X is None:category='NPC_Give_Y_without_X_receipt_since_cut'
+    elif first_X['turn']<first_Y['turn']:category='X_receipt_before_NPC_Give_Y'
+    elif first_X['turn']>first_Y['turn']:category='NPC_Give_Y_before_X_receipt'
+    else:category='same_native_event'
+    def kind(e):
+        if e is None:return None
+        event=e['event_identity'][0]
+        if e['index']==1 and event=='GiveObjectEvent':
+            return 'scripted_player_Give' if e['turn']<0 else 'responsive_player_Give'
+        if e['index']==0 and event=='GetObjectEvent':return 'NPC_Get'
+        if e['index']==0 and event=='StealObjectEvent':return 'NPC_Steal'
+        return ('NPC_' if e['index']==0 else 'player_')+event
+    return {'category':category,'first_X_receipt_since_cut':first_X,
+        'first_X_receipt_source_kind':kind(first_X),'all_X_receipts_since_cut':receipts,
+        'first_NPC_Give_Y_turn':first_Y['turn'] if first_Y else None,
+        'X_ever_received_since_cut_before_first_Give_Y':(any(e['turn']<first_Y['turn'] for e in receipts) if first_Y else None),
+        'NPC_currently_holds_X_before_first_Give_Y':(ultimate_owner(first_Y['before'],x,row['actor_ids'])==npc if first_Y else None),
+        'no_X_receipt_since_source_cut':not receipts,
+        'no_X_possession_seen_in_source_prefix_or_continuation':not prior['X_possession_observed_before_source_cut'] and not receipts,
+        'prior_source_context':prior,
+        'scope':'Descriptive POST-HOC event order, including initial scripted native Give. NPC Get/Steal is acquisition, not player fulfillment. No_Y remains in the full denominator. No significance test, new condition or cooperation-correctness label.'}
+
+
+def read_episode(row, history,prior):
     case = mapped_case(history)
     actors,bindings,quests = case['actor_ids'],case['goal_bindings'],case['quests']
     assert row['actor_ids'] == actors and row['quest_files'] == [q['source_file'] for q in quests]
@@ -355,7 +435,7 @@ def read_episode(row, history):
     current = row['initial_state']
     counts,events,failed_flags,errors = Counter(),Counter(),Counter(),Counter()
     flows,speeches,milestones = [],[],{}
-    item_events=[]
+    item_events=[];ownership_events=[]
     first_strict = [None,None]
     x,y = row['x_item_id'],row['y_item_id']
     assert len(row['interventions']) == 2
@@ -376,6 +456,13 @@ def read_episode(row, history):
         event,ids = t['event_identity']
         assert event == t['event_type']
         ok = successful(t)
+        for item in [x,y]:
+            before_owner=ultimate_owner(t['before'],item,actors);after_owner=ultimate_owner(t['after'],item,actors)
+            if before_owner!=after_owner:
+                ownership_events.append({'turn':turn,'index':index,'actor_id':actor,'item_id':item,
+                    'event_identity':t['event_identity'],'owner_before':before_owner,'owner_after':after_owner,
+                    'native_result_success':ok,'decision_source':t.get('decision_source'),
+                    'phase':'intervention' if turn<0 else 'continuation'})
         phase = 'intervention' if turn < 0 else 'continuation'
         events[(phase,str(index),event,'successful' if ok else 'rejected_or_failed')] += 1
         if t.get('stochastic_failure'):
@@ -548,6 +635,7 @@ def read_episode(row, history):
             'directly_VOID':branchpoint[item]['container']=='VOID'} for label,item in [('X',x),('Y',y)]}
             if branchpoint is not None else None),
         'goal_verbs':[b['verb'] for b in bindings],'flows':flows,'speeches':speeches,'item_uses':item_events,
+        'ownership_events':ownership_events,'POST_HOC_X_receipt_and_Y_order':receipt_Y_order(row,ownership_events,prior),
         'event_counts':{'/'.join(k):v for k,v in events.items()},
         'native_failed_flags_by_event':{'/'.join(k):v for k,v in failed_flags.items()},
         'native_errors':{'/'.join(k):v for k,v in errors.items()}}
@@ -714,6 +802,26 @@ def milestone_report(details):
     return output
 
 
+def posthoc_order_report(details):
+    groups={}
+    for condition in CONDITIONS:
+        subset=[d for d in details if (d['panel'],d['branch'],d['control'])==condition]
+        categories=Counter();sources=Counter();before=Counter();current=Counter();prior=Counter()
+        for d in subset:
+            o=d['POST_HOC_X_receipt_and_Y_order']
+            categories[o['category']]+=1
+            sources[str(o['first_X_receipt_source_kind'])]+=1
+            before[str(o['X_ever_received_since_cut_before_first_Give_Y'])]+=1
+            current[str(o['NPC_currently_holds_X_before_first_Give_Y'])]+=1
+            prior[str(o['prior_source_context']['X_possession_observed_before_source_cut'])]+=1
+        groups[condition_label(condition)]={'logical_branches':len(subset),'event_order_counts':dict(categories),
+            'first_X_receipt_source_kind_counts':dict(sources),
+            'received_X_before_first_Y_Give_counts':dict(before),'holds_X_at_first_Y_Give_counts':dict(current),
+            'prior_source_X_possession_counts':dict(prior)}
+    return {'status':'DESCRIPTIVE_POST_HOC','groups':groups,
+        'scope':'All logical branches, with no NPC Give Y retained as its own category. Counts are not independent graphs, no added CI/significance or subgroup filtering. Final primary contrasts are initial-treatment ITT: a responsive player can later actually Give X in claim_only/pending_truth, and NPC can acquire it independently. Actual receipt does not establish full promise fulfillment or utility.'}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runs',type=Path,nargs='+',required=True)
@@ -736,7 +844,8 @@ def main():
         assert any(not m['profile'] for m,_ in info.values())
         assert set(rows) == {(h,s,*c) for h in histories for s in SEEDS for c in CONDITIONS}, 'Full cohort not complete; no partial report'
     prefix_checks = verify_common_prefixes(rows)
-    details = [read_episode(row,histories[key[0]]) for key,row in sorted(rows.items())]
+    prior_X=source_X_possession(histories)
+    details = [read_episode(row,histories[key[0]],prior_X[key[0]]) for key,row in sorted(rows.items())]
     groups,contrasts = aggregate(details,args.profile)
     shadow,shadow_details = shadow_report(shadows,rows,args.profile)
     cache = source.parent.parent/'e85_partner_performance_readback'
@@ -764,6 +873,17 @@ def main():
         'original_goal_verbs':[b['verb'] for b in mapped_case(histories[hid])['goal_bindings']],
         'original_goal_sources':[q['source_file'] for q in mapped_case(histories[hid])['quests']],
         'source_boundary':histories[hid]['source_boundary']} for hid in sorted(selected)]
+    purpose_index={}
+    for hid in sorted(selected):
+        h=histories[hid];case=mapped_case(h)
+        for index,role in enumerate(['npc','player']):
+            q=case['quests'][index];key=q['source_file']
+            if key not in purpose_index:
+                purpose_index[key]={'source_file':key,'character':q['character'],'graph_sha256':h['graph_sha256'],
+                    'authored_goal':q['goal'],'goal_verb':case['goal_bindings'][index]['verb'],
+                    'short_motivation':q.get('short_motivation'),'mid_motivation':q.get('mid_motivation'),
+                    'long_motivation':q.get('long_motivation'),'observed_roles':[]}
+            if role not in purpose_index[key]['observed_roles']:purpose_index[key]['observed_roles'].append(role)
     result = {'experiment':'E85','status':'PROFILE_TECHNICAL_ONLY' if args.profile else 'COMPLETE',
         'model':manifest['model'],'source_data':str(source),'data_sha256':sha(source),
         'driver_sha256':manifest['driver_sha256'],'report_sha256':sha(__file__),'source_sha256':hashes,
@@ -772,6 +892,8 @@ def main():
         'logical_branches':len(rows),'seeds':sorted({k[1] for k in rows}),
         'source_history_model_origins':dict(origins),'exact_duplicate_episode_records':duplicates,
         'source_history_index':source_index,'excluded_legacy_outcomes':excluded_legacy,'input_cache_lineage':lineage,
+        'source_role_purpose_index':{'roles':list(purpose_index.values()),
+            'scope':'Deduplicated original atomic goal and motivations needed to interpret physical outcomes; no graph, full persona, timeline or dialogue is copied. These author texts do not certify that higher purposes have native completion flags or a single correct cooperative response.'},
         'source_and_fork_compatibility':restoration,
         'revision_fork_item_states':[{'history_id':d['history_id'],'seed':d['seed'],'graph_sha256':d['graph_sha256'],
             'first_NPC_event':d['first_NPC_event'],'item_state':d['branchpoint_item_state'],
@@ -781,6 +903,7 @@ def main():
         'scope':'This model controls both original roles after fixed player interventions. Source history/model-origin/role/seed are nested under original graph, not independent NPC treatment effects. Each conditional continuation remains a distinct observed branch.',
         'measurement':{
             'primary_contrasts':'Within history/new seed: real_claim minus claim_only changes native contribution under identical claim; claim_only minus pending_truth changes claim under identical physical material state; check minus normal is the ordinary factual-instruction control.',
+            'dynamic_ITT':'Terminal outcomes estimate the initial-treatment ITT under responsive continuation, not permanent withholding: claim_only/pending_truth players may later actually Give X, and NPC may Get/Steal X. The predeclared first NPC response precedes those later actions; event-order readback is descriptive POST-HOC, not mediation evidence.',
             'secondary':'withdraw minus continue begins with the exact same real_claim/check first NPC response and state; post_revision metrics count only new events on turns>=2 after actual request. Fork-time X/Y owner, already-returned-to-player status, equipped state and direct VOID state are explicit. Shared turn0 returns are not withdrawal-induced returns. A revision request expresses changed player preference; no external proof makes it obligatory or the original plan infeasible.',
             'weighting':'Average fixed seeds within source history, histories within original graph, then equally weight measurable original graphs; differences are paired before averaging. Every metric reports unknown exclusions and eligible history/graph counts.',
             'bootstrap':None if args.profile else {'draws':BOOTSTRAPS,'seed':BOOTSTRAP_SEED,'unit':'original graph','kind':'pointwise percentile'},
@@ -793,6 +916,7 @@ def main():
             'first_holding':'-1 denotes already held after scripted intervention; 0..23 are continuation turn IDs, and null is never observed. Full source episodes, graphs and all raw histories remain in cache.'},
         'exact_pairing_checks':prefix_checks,'groups':groups,'paired_contrasts':contrasts,'shadow_fact_report':shadow,
         'first_response_and_milestones':milestone_report(details),
+        'POST_HOC_X_receipt_and_Y_order':posthoc_order_report(details),
         'raw_counts':{'events':dict(event_counts),'native_failed_flags_by_event':dict(failed_flags),
             'native_errors':dict(errors),'stop':dict(stops),
             'scope':'Logical-branch record counts include copied common first responses and intervention prefixes; they are not independent samples or additional model calls.'},'cost':cost,
@@ -803,7 +927,7 @@ def main():
     args.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'out':str(args.out),'status':result['status'],'logical_branches':len(rows),
         'histories':len(selected),'independent_graphs':result['independent_graphs'],
-        'actual_calls':costs['calls'],'exact_duplicates':len(duplicates)},ensure_ascii=False))
+        'recorded_calls':costs['calls'],'exact_duplicates':len(duplicates)},ensure_ascii=False))
 
 
 if __name__ == '__main__':

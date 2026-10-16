@@ -1,0 +1,276 @@
+{
+  "experiment": "E85",
+  "kind": "POST_HOC independent numeric audit of predeclared readouts",
+  "status": "PASS",
+  "scope": "No production report functions imported. Independently read native success flags, exact source-item IDs, final recursive ownership, post-revision turn>=2 events and paired original-graph statistics. No model/API/GPU jobs. Legacy launches are actual cost only, never scientific outcome N. Independent shadow answers are not internal beliefs; Give is not universal cooperation quality.",
+  "total_logical_branches": 576,
+  "total_shadow_reports": 216,
+  "total_numeric_fields_matched": 2782,
+  "total_actual_calls_all_launches": 13452,
+  "total_observed_GPU_slot_hours_all_launches": 2.046137567692333,
+  "method": {
+    "pairing": "Same source history and new seed, differences before aggregation",
+    "point_estimate": "Mean seeds within history, histories within original graph, equal graph weighting",
+    "confidence_interval": "4000 multinomial original-graph bootstrap draws; RNG8585; percentile95; independently reconstructed",
+    "independent_metrics": [
+      "npc_gave_Y_to_player",
+      "first_NPC_gave_Y_to_player",
+      "player_holds_Y_final",
+      "npc_holds_X_final",
+      "npc_gave_X_to_player",
+      "npc_consumed_X",
+      "npc_equipped_X",
+      "npc_goal_physical_final",
+      "post_revision_npc_gave_X_to_player",
+      "post_revision_npc_gave_Y_to_player",
+      "post_revision_npc_consume_X",
+      "post_revision_npc_equip_X",
+      "post_revision_X_NPC_to_player_ownership_change"
+    ],
+    "comparison_absolute_tolerance": 1e-12
+  },
+  "models": [
+    {
+      "model": "gemma",
+      "status": "PASS",
+      "logical_branches": 288,
+      "shadow_reports": 108,
+      "independent_original_graphs": 9,
+      "source_histories": 18,
+      "numeric_fields_matched": 1391,
+      "raw_episodes": [
+        {
+          "path": "/home/xiang/.cache/game-npc-research/runs/e85_gemma_recover_s0/episodes.jsonl",
+          "sha256": "56e497e45c557392097dc9f3dd341bd1d4e348bfdea3305948d336fed76e4cac"
+        },
+        {
+          "path": "/home/xiang/.cache/game-npc-research/runs/e85_gemma_recover_s1/episodes.jsonl",
+          "sha256": "6c1e66c660227c5ebf3b2781ae1dd0ecf9ead1c9c7eca77a2a9bb62cadd42a2d"
+        }
+      ],
+      "independent_statistics_path": "/home/xiang/.cache/game-npc-research/runs/e85_partner_performance_readback/E85_gemma_independent_statistics.json",
+      "independent_statistics_sha256": "18438344e00e2cea6933db60965dd7731106abb0e882a25279e06d22cedf86a5",
+      "production_report_path": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/results/E85_gemma_complete.json",
+      "production_report_sha256": "0ea42a932ab192a34d199cdeb8a763ac4dede3631a9345b8314dc107ce895957",
+      "shadow_facts_independently_checked": {
+        "real_claim": {
+          "elicited_holder_correct": 0.09259259259259259,
+          "elicited_npc_holds_X_correct": 0.5555555555555556
+        },
+        "claim_only": {
+          "elicited_holder_correct": 0.9444444444444444,
+          "elicited_npc_holds_X_correct": 0.4444444444444444
+        },
+        "pending_truth": {
+          "elicited_holder_correct": 0.31481481481481477,
+          "elicited_npc_holds_X_correct": 0.8148148148148148
+        }
+      },
+      "actual_calls_all_launches": 6733,
+      "observed_GPU_slot_hours_all_launches": 0.8045379865169525,
+      "paired_contrasts_selected": {
+        "real_claim_minus_claim_only/normal": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.018518518518518514,
+          "graph_bootstrap_95": [
+            -0.14814814814814814,
+            0.16666666666666666
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "claim_only_minus_pending_truth/normal": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.0,
+          "graph_bootstrap_95": [
+            -0.11157407407407391,
+            0.14814814814814814
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "real_claim_minus_claim_only/check": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.1111111111111111,
+          "graph_bootstrap_95": [
+            0.018518518518518517,
+            0.24074074074074073
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "claim_only_minus_pending_truth/check": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.1111111111111111,
+          "graph_bootstrap_95": [
+            -0.25925925925925924,
+            -0.018518518518518517
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/real_claim": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.037037037037037035,
+          "graph_bootstrap_95": [
+            0.0,
+            0.07453703703703872
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/claim_only": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.05555555555555555,
+          "graph_bootstrap_95": [
+            -0.16666666666666666,
+            0.0
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/pending_truth": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.05555555555555555,
+          "graph_bootstrap_95": [
+            0.0,
+            0.12962962962962962
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "withdraw_minus_continue": {
+          "metric": "post_revision_npc_gave_X_to_player",
+          "mean": -0.07407407407407407,
+          "graph_bootstrap_95": [
+            -0.2037037037037037,
+            0.0
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        }
+      }
+    },
+    {
+      "model": "32b",
+      "status": "PASS",
+      "logical_branches": 288,
+      "shadow_reports": 108,
+      "independent_original_graphs": 9,
+      "source_histories": 18,
+      "numeric_fields_matched": 1391,
+      "raw_episodes": [
+        {
+          "path": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s0/episodes.jsonl",
+          "sha256": "f39fcf903ff0d5607093010f79887278616b3c0ae2f93f2c012d91ff064ee1dd"
+        },
+        {
+          "path": "/home/xiang/.cache/game-npc-research/runs/e85_32b_recover_s1/episodes.jsonl",
+          "sha256": "4459ad80d658c77cf7900bcea9c36b82729f97cae1464a0c02d09dd2b1ee666a"
+        }
+      ],
+      "independent_statistics_path": "/home/xiang/.cache/game-npc-research/runs/e85_partner_performance_readback/E85_32b_independent_statistics.json",
+      "independent_statistics_sha256": "8ea7299f1551ee6371e28cd12f0f4e2a870f4b6d5ead46ef2b6cebea2e9c275e",
+      "production_report_path": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/results/E85_32b_complete.json",
+      "production_report_sha256": "c699d6526f90c4515d4bac8cfa295c8b5b4cba899133d223a3600797494eaa31",
+      "shadow_facts_independently_checked": {
+        "real_claim": {
+          "elicited_holder_correct": 0.6296296296296295,
+          "elicited_npc_holds_X_correct": 0.3333333333333333
+        },
+        "claim_only": {
+          "elicited_holder_correct": 0.37037037037037035,
+          "elicited_npc_holds_X_correct": 0.925925925925926
+        },
+        "pending_truth": {
+          "elicited_holder_correct": 0.2592592592592593,
+          "elicited_npc_holds_X_correct": 0.3333333333333333
+        }
+      },
+      "actual_calls_all_launches": 6719,
+      "observed_GPU_slot_hours_all_launches": 1.2415995811753804,
+      "paired_contrasts_selected": {
+        "real_claim_minus_claim_only/normal": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.25,
+          "graph_bootstrap_95": [
+            -0.5555555555555555,
+            0.009259259259259259
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "claim_only_minus_pending_truth/normal": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.055555555555555546,
+          "graph_bootstrap_95": [
+            -0.18518518518518517,
+            0.2777777777777778
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "real_claim_minus_claim_only/check": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.1388888888888889,
+          "graph_bootstrap_95": [
+            -0.3148148148148148,
+            0.037037037037037035
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "claim_only_minus_pending_truth/check": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.24074074074074078,
+          "graph_bootstrap_95": [
+            0.0,
+            0.4444444444444444
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/real_claim": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": 0.037037037037037035,
+          "graph_bootstrap_95": [
+            0.0,
+            0.1111111111111111
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/claim_only": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.07407407407407406,
+          "graph_bootstrap_95": [
+            -0.37037037037037035,
+            0.2037037037037037
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "check_minus_normal/pending_truth": {
+          "metric": "npc_gave_Y_to_player",
+          "mean": -0.25925925925925924,
+          "graph_bootstrap_95": [
+            -0.40740740740740744,
+            -0.1111111111111111
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        },
+        "withdraw_minus_continue": {
+          "metric": "post_revision_npc_gave_X_to_player",
+          "mean": 0.3055555555555556,
+          "graph_bootstrap_95": [
+            0.19444444444444442,
+            0.40740740740740744
+          ],
+          "known_history_seed_pairs": 36,
+          "independent_graphs": 9
+        }
+      }
+    }
+  ]
+}
