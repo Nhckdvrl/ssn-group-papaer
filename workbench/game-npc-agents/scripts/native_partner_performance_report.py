@@ -14,8 +14,6 @@ from pathlib import Path
 
 import numpy as np
 
-from native_independent_goal_report import cost_ledger
-
 SEEDS = (8501, 8502)
 FACT_BRANCHES = ('real_claim', 'claim_only', 'pending_truth')
 CONTROLS = ('normal', 'check')
@@ -180,7 +178,162 @@ def load_runs(folders, profile):
                     costs.update(calls=1,prompt_tokens=rec['prompt_tokens'],completion_tokens=rec['completion_tokens'],
                         parse_errors=int(bool(rec['parse_error'])))
         assert (nc,nr) == (runtime['calls'],runtime['reused_calls'])
-    return rows,shadows,info,hashes,duplicates,costs
+    return rows,shadows,info,hashes,duplicates,costs,calls
+
+
+def load_cost_only(folders,reference,hashes,calls):
+    """Retain every actual legacy request/launch, excluding all old outcomes.
+
+    A failed run need not have runtime.json. Its absence is not a zero load/run
+    timer. Legacy profiles and partial runs supply exact cached inputs only;
+    faithful complete recovered trajectories exclusively define the estimand.
+    """
+    info,costs,excluded,actual_origins = {},Counter(),[],defaultdict(list)
+    for folder in dict.fromkeys(folders):
+        manifest_path = folder/'manifest.json'
+        manifest = json.loads(manifest_path.read_text())
+        assert manifest['experiment'] == 'E85'
+        for field in ['model','data_sha256','max_turns','primary_conditions','controls','revision_conditions',
+                'fact_check_sentence','statement_templates']:
+            assert manifest[field] == reference[field],('Legacy scientific configuration differs',field,folder)
+        assert not manifest['world_rules_modified'] and manifest['new_cloud_calls'] == 0
+        runtime_path = folder/'runtime.json'
+        runtime = json.loads(runtime_path.read_text()) if runtime_path.exists() else None
+        info[folder] = manifest,runtime
+        for name in ['manifest.json','runtime.json','episodes.jsonl','states.jsonl','shadow_facts.jsonl',
+                'first_responses.jsonl','failure.json','failure_summary.json','partial_runtime.json']:
+            path = folder/name
+            if path.exists():hashes[str(path)] = sha(path)
+        nc=nr=0
+        for name in ['model_calls.jsonl','reused_calls.jsonl']:
+            path = folder/name
+            if not path.exists():continue
+            hashes[str(path)] = sha(path)
+            with path.open() as f:
+                for line in f:
+                    if not line.strip():continue
+                    rec = json.loads(line)
+                    if name == 'reused_calls.jsonl':
+                        nr += 1;costs['reused_calls'] += 1
+                    else:
+                        assert canonical_sha({k:rec[k] for k in ['messages','schema','seed']}) == rec['decision_key']
+                        if rec['decision_key'] in calls:
+                            assert all(rec[k] == calls[rec['decision_key']][k] for k in ['messages','schema','seed','parsed'])
+                        calls[rec['decision_key']] = rec
+                        actual_origins[rec['decision_key']].append(str(path))
+                        nc += 1
+                        costs.update(calls=1,prompt_tokens=rec['prompt_tokens'],completion_tokens=rec['completion_tokens'],
+                            parse_errors=int(bool(rec['parse_error'])))
+        if runtime is not None:
+            assert runtime['new_cloud_calls'] == 0
+            assert (nc,nr) == (runtime['calls'],runtime['reused_calls'])
+        # Only count retained rows here; do not inspect their outcomes or add N.
+        episode_path = folder/'episodes.jsonl'
+        retained = sum(bool(line.strip()) for line in episode_path.open()) if episode_path.exists() else 0
+        excluded.append({'run':str(folder),'runtime_present':runtime is not None,'actual_calls':nc,
+            'reused_calls':nr,'legacy_episode_records_not_in_estimand':retained,
+            'scope':'Legacy pre-faithful-restore outcomes excluded as a whole; actual calls, tokens, occupied launch and exact cache entries retained.'})
+    return info,costs,excluded,actual_origins
+
+
+def cache_lineage(info,calls,legacy_origins):
+    counts=Counter();sources=Counter()
+    for folder in info:
+        path=folder/'reused_calls.jsonl'
+        if not path.exists():continue
+        with path.open() as f:
+            for line in f:
+                if not line.strip():continue
+                rec=json.loads(line);key=rec['decision_key']
+                assert key in calls,('Reused result lacks an actual recorded input/response',path,key)
+                counts['reused_request_records'] += 1
+                if key in legacy_origins:
+                    counts['reused_records_with_legacy_actual_input'] += 1
+                    for origin in sorted(set(legacy_origins[key])):sources[origin]+=1
+                else:
+                    counts['reused_records_with_only_faithful_run_actual_input'] += 1
+    return {**dict(counts),'legacy_actual_input_sources':dict(sources),
+        'scope':'Every cached decision key resolves to an actual messages/schema/seed hash and retained response. A reused record is not another inference call or independent sample; multiple sources for one hash are listed, not silently deduplicated actual costs.'}
+
+
+def build_cost_ledger(info,costs,hashes):
+    entries=[]
+    for folder,(manifest,runtime) in info.items():
+        call_path=folder/'model_calls.jsonl';reuse_path=folder/'reused_calls.jsonl'
+        call_count=sum(bool(x.strip()) for x in call_path.open()) if call_path.exists() else 0
+        reused=sum(bool(x.strip()) for x in reuse_path.open()) if reuse_path.exists() else 0
+        entry={'run':str(folder),'profile':manifest['profile'],'runtime_present':runtime is not None,
+            'calls':call_count,'reused_calls':reused,'outcomes_used':bool(manifest.get('_report_outcomes_used')),
+            'runtime_load_seconds':runtime.get('model_load_seconds') if runtime else None,
+            'runtime_run_seconds':runtime.get('wall_seconds') if runtime else None}
+        entry['runtime_model_load_plus_run_seconds']=(entry['runtime_load_seconds']+entry['runtime_run_seconds']
+            if entry['runtime_load_seconds'] is not None and entry['runtime_run_seconds'] is not None else None)
+        path=folder.parent/(folder.name+'_launch.json')
+        if path.exists():
+            launch=json.loads(path.read_text());hashes[str(path)]=sha(path)
+            for field in ['driver_sha256','data_sha256']:assert launch[field]==manifest[field]
+            start=launch['start_epoch'];end=launch.get('end_epoch')
+            fallback=(folder/'runtime.json').stat().st_mtime if runtime is not None else None
+            endpoint=end if end is not None else fallback
+            entry.update(launch_metadata=str(path),host=launch['host'],gpu=launch['gpu'],
+                pid=launch.get('pid'),launch_epoch=start,wrapper_end_epoch=end,
+                wrapper_exit_code=launch.get('exit_code'),original_runtime_mtime_epoch=fallback,
+                observed_occupied_slot_endpoint=('wrapper_observed_child_exit' if end is not None
+                    else 'runtime_file_mtime_fallback' if fallback is not None else None),
+                observed_occupied_slot_seconds=endpoint-start if endpoint is not None else None)
+            if endpoint is not None:assert endpoint>=start
+            if entry['runtime_model_load_plus_run_seconds'] is not None and endpoint is not None:
+                assert endpoint-start>=entry['runtime_model_load_plus_run_seconds']-2
+        else:
+            entry.update(launch_metadata=None,observed_occupied_slot_endpoint=None,observed_occupied_slot_seconds=None)
+        entries.append(entry)
+    loads=[x['runtime_load_seconds'] for x in entries if x['runtime_load_seconds'] is not None]
+    runs=[x['runtime_run_seconds'] for x in entries if x['runtime_run_seconds'] is not None]
+    timed=[x for x in entries if x['observed_occupied_slot_seconds'] is not None]
+    return {**costs,'sum_known_model_load_seconds':sum(loads),'sum_known_run_loop_wall_seconds':sum(runs),
+        'unknown_model_load_timer_runs':len(entries)-len(loads),'unknown_run_loop_timer_runs':len(entries)-len(runs),
+        'known_runtime_model_load_plus_run_GPU_hours':sum(x['runtime_model_load_plus_run_seconds'] for x in entries
+            if x['runtime_model_load_plus_run_seconds'] is not None)/3600,
+        'observed_occupied_GPU_slot_hours':sum(x['observed_occupied_slot_seconds'] for x in timed)/3600,
+        'observed_slot_runs':len(timed),'total_runs':len(entries),
+        'unknown_occupied_slot_runs':len(entries)-len(timed),
+        'wrapper_exit_observed_runs':sum(x['observed_occupied_slot_endpoint']=='wrapper_observed_child_exit' for x in timed),
+        'runtime_mtime_fallback_runs':sum(x['observed_occupied_slot_endpoint']=='runtime_file_mtime_fallback' for x in timed),
+        'per_run':entries,'new_cloud_calls':0,
+        'scope':'Count each supplied actual launch and actual model-call record once, including legacy profiles, failed partial queues and faithful recovery. Reused cache records add no inference cost or N. Occupied GPU-slot intervals prefer wrapper start_epoch to observed child exit end_epoch, including loading/CPU waits/teardown; runtime mtime is an explicitly weaker fallback only. Runtime wall_seconds covers the execution loop, not GPU-active or inference-only time. Missing aborted-run load/run sub-timers remain unknown; their observed occupied slots and tokens are still counted.'}
+
+
+def compatibility_summary(info,legacy_info,hashes):
+    overlays=[m.get('compatibility_overlay') for m,_ in info.values()]
+    if not any(overlays):return None
+    assert all(overlays),'Faithful and pre-restoration outcomes must not be mixed'
+    first=overlays[0]
+    for overlay in overlays:
+        for key in ['overlay_sha256','frozen_driver_sha256','operative_loader']:
+            assert overlay[key]==first[key]
+        for partial in overlay['partial_runs']:
+            folder=Path(partial['path'])
+            assert folder in legacy_info,('Declared partial launch omitted from costs',folder)
+            assert sha(folder/'manifest.json')==partial['manifest_sha256']
+            assert sha(folder/'model_calls.jsonl')==partial['model_calls_sha256']
+            assert sum(bool(x.strip()) for x in (folder/'model_calls.jsonl').open())==partial['calls']
+    freeze_path=Path(__file__).resolve().parents[1]/'results/E85_compatibility_freeze.json'
+    freeze=json.loads(freeze_path.read_text())
+    assert freeze['overlay_sha256']==first['overlay_sha256']
+    assert freeze['base_driver_sha256']==first['frozen_driver_sha256']
+    audit_path=Path(freeze['cpu_audit_path'])
+    assert sha(audit_path)==freeze['cpu_audit_sha256']
+    audit=json.loads(audit_path.read_text())
+    restored={e['history_id'] for e in audit['compatibility_events'] if e['kind']=='source_scalar_restoration'}
+    for path in [freeze_path,audit_path,Path(first['overlay_path'])]:hashes[str(path)]=sha(path)
+    return {'overlay_sha256':first['overlay_sha256'],'frozen_driver_sha256':first['frozen_driver_sha256'],
+        'operative_loader':first['operative_loader'],'freeze_path':str(freeze_path),'freeze_sha256':sha(freeze_path),
+        'sourcecut_full_JSON_exact_after_restoration':audit['sourcecuts_full_JSON_exact'],
+        'sourcecut_histories_requiring_original_scalar_restoration':len(restored),
+        'sourcecut_legacy_full_JSON_exact':len(audit['source_checks'])-len(restored),
+        'old_profiles_exact_CPU_episode_replays':freeze['old_profiles_exact_episodes_and_states'],
+        'partial_outcomes_used':False,
+        'scope':'Environment/source restoration audit, not NPC failure evidence. Preserve original attack/xp/reward_xp scalars omitted by legacy loading and deepcopy only after failed exact JSON roundtrip. Frozen scientific settings remain; all legacy outcomes are excluded, while exact input caches and all actual costs are retained.'}
 
 
 def read_episode(row, history):
@@ -202,6 +355,7 @@ def read_episode(row, history):
     current = row['initial_state']
     counts,events,failed_flags,errors = Counter(),Counter(),Counter(),Counter()
     flows,speeches,milestones = [],[],{}
+    item_events=[]
     first_strict = [None,None]
     x,y = row['x_item_id'],row['y_item_id']
     assert len(row['interventions']) == 2
@@ -249,6 +403,11 @@ def read_episode(row, history):
                 heard = [m['text'] for m in t.get('messages',[]) if m['viewer'] == actors[1-index] and m['event'] == event]
                 speeches.append({'turn':turn,'index':index,'event':event,'target_ids':ids,
                     'utterance':t['choice']['utterance'],'peer_received_messages':heard,'phase':phase})
+            if turn >= 0 and ids and ids[0] in [x,y]:
+                item_events.append({'turn':turn,'index':index,'event':event,'item_id':ids[0],
+                    'target_ids':ids,'before_parent':t['before'][ids[0]]['container'],
+                    'after_parent':t['after'][ids[0]]['container'],
+                    'equipped_after':t['after'][ids[0]].get('equipped')})
         if turn >= 0:
             counts[prefix+'opportunities_recorded'] += 1
             counts[prefix+'local_model_choices_recorded'] += int(t.get('model_decision') is True)
@@ -262,11 +421,13 @@ def read_episode(row, history):
                 counts[prefix+'peer_heard_speech_count'] += int(event in SPEECH and bool(heard))
                 counts[prefix+'successful_material_actions'] += int(t['material_changed'])
                 for cls,label in [('GiveObjectEvent','give'),('StealObjectEvent','steal'),('GetObjectEvent','get'),
-                        ('PutObjectInEvent','put'),('DropObjectEvent','drop'),('BlockEvent','block'),('WaitEvent','wait')]:
+                        ('PutObjectInEvent','put'),('DropObjectEvent','drop'),('RemoveObjectEvent','remove'),
+                        ('BlockEvent','block'),('WaitEvent','wait')]:
                     counts[prefix+label+'_count'] += int(event == cls)
                 for item,label in [(x,'X'),(y,'Y')]:
                     if ids and ids[0] == item:
-                        for cls,action in [('GiveObjectEvent','give'),('DropObjectEvent','drop'),('PutObjectInEvent','put')]:
+                        for cls,action in [('GiveObjectEvent','give'),('DropObjectEvent','drop'),('PutObjectInEvent','put'),
+                                ('RemoveObjectEvent','remove')]:
                             counts[prefix+action+'_'+label+'_count'] += int(event == cls)
                         counts[prefix+'consume_'+label+'_count'] += int(event in CONSUME)
                         counts[prefix+'equip_'+label+'_count'] += int(event in ['WearEvent','WieldEvent','EquipObjectEvent'])
@@ -296,10 +457,10 @@ def read_episode(row, history):
         for label in ['opportunities_recorded','local_model_choices_recorded','native_rejections','native_failed_flags',
                 'native_exceptions','legal_unexecuted','non_speech_payloads_not_sent','actual_speech_count',
                 'peer_heard_speech_count','successful_material_actions','give_count','steal_count','get_count',
-                'put_count','drop_count','block_count','wait_count']:
+                'put_count','drop_count','remove_count','block_count','wait_count']:
             metric.setdefault(prefix+label,0)
         for label in ['X','Y']:
-            for action in ['give','drop','put','consume','equip','give_to_peer']:
+            for action in ['give','drop','put','remove','consume','equip','give_to_peer']:
                 field = prefix+action+'_'+label+'_count' if action != 'give_to_peer' else prefix+'give_'+label+'_to_peer_count'
                 metric.setdefault(field,0)
     for index,prefix in enumerate(['npc_','player_']):
@@ -332,8 +493,32 @@ def read_episode(row, history):
     metric['npc_put_X'] = int(metric['npc_put_X_count'] > 0)
     metric['X_directly_VOID_at_branchpoint'] = (int(branchpoint[x]['container'] == 'VOID') if branchpoint is not None else None)
     metric['X_directly_VOID_final'] = int(current[x]['container'] == 'VOID')
+    metric['X_equipped_at_branchpoint'] = (int(bool(branchpoint[x].get('equipped'))) if branchpoint is not None else None)
+    metric['npc_X_equipped_at_branchpoint'] = (int(ultimate_owner(branchpoint,x,actors)==actors[0]
+        and bool(branchpoint[x].get('equipped'))) if branchpoint is not None else None)
     metric['protocol_failure_episode'] = int(bool(row.get('protocol_failure')))
     metric['revision_request_delivered'] = int(request_delivered) if revision else None
+    first=next((t for t in turns if t['turn']==0),None)
+    metric['first_NPC_event_recorded']=int(first is not None)
+    metric['first_NPC_protocol_failure']=int(row.get('protocol_failure',{}).get('turn')==0)
+    for label,item in [('X',x),('Y',y)]:
+        for action,classes in [('give',{'GiveObjectEvent'}),('consume',CONSUME),
+                ('equip',{'WearEvent','WieldEvent','EquipObjectEvent'}),('put',{'PutObjectInEvent'}),
+                ('drop',{'DropObjectEvent'}),('remove',{'RemoveObjectEvent'})]:
+            metric['first_NPC_'+action+'_'+label]=int(first is not None and successful(first)
+                and first['event_type'] in classes and first['event_identity'][1] and first['event_identity'][1][0]==item)
+            milestones['npc_first_'+action+'_'+label]=next((e['turn'] for e in item_events
+                if e['index']==0 and e['event'] in classes and e['item_id']==item),None)
+        metric['first_NPC_gave_'+label+'_to_player']=int(first is not None and successful(first)
+            and first['event_identity']==['GiveObjectEvent',[item,actors[1]]])
+    metric['first_NPC_actual_speech']=int(first is not None and successful(first) and first['event_type'] in SPEECH)
+    metric['first_NPC_peer_heard_speech']=int(any(s['turn']==0 and s['index']==0 and s['peer_received_messages'] for s in speeches))
+    metric['first_NPC_original_goal_event']=int(first is not None and successful(first) and
+        first.get('original_goal_current_identity') is not None and first['event_identity']==first['original_goal_current_identity'])
+    for index,role in enumerate(['npc','player']):
+        milestones[role+'_first_physical_goal_after_intervention']=(-1 if after_intervention[index] is True else
+            next((t for t,v in perturn_goals.items() if v[index] is True),None))
+        milestones[role+'_first_strict_original_event_since_cut']=first_strict[index]
     # The revision estimand concerns actions following the shared first response,
     # not a second use of the same turn0. It may be undefined after upstream stop.
     if revision:
@@ -345,16 +530,24 @@ def read_episode(row, history):
             metric['post_revision_npc_gave_'+label+'_to_player'] = (int(any(t['index'] == 0 and successful(t)
                 and t['event_identity'] == ['GiveObjectEvent',[item,actors[1]]] for t in eligible_turns))
                 if request_delivered else None)
+        metric['post_revision_X_NPC_to_player_ownership_change']=(int(any(f['turn']>=2 and f['item_id']==x
+            and f['owner_before']==actors[0] and f['owner_after']==actors[1] for f in flows)) if request_delivered else None)
     else:
         for label in ['X','Y']:
             for action in ['give','consume','equip','put']:
                 metric['post_revision_npc_'+action+'_'+label] = None
             metric['post_revision_npc_gave_'+label+'_to_player'] = None
+        metric['post_revision_X_NPC_to_player_ownership_change']=None
     return {**{k:row[k] for k in ['history_id','seed','panel','branch','control','graph_sha256','case_id',
                 'model_origin','source_seed','source_turn','source_role_map','x_item_id','y_item_id']},
         'metrics':metric,'stop':row['stop'],'final_dead':row['final_dead'],'final_health':row['final_health'],
         'source_boundary':history['source_boundary'],'first_strict_turn':first_strict,'first_holding':milestones,
-        'goal_verbs':[b['verb'] for b in bindings],'flows':flows,'speeches':speeches,
+        'first_NPC_event':first['event_identity'] if first is not None else None,
+        'branchpoint_item_state':({label:{'item_id':item,'direct_parent':branchpoint[item]['container'],
+            'ultimate_owner':ultimate_owner(branchpoint,item,actors),'equipped':branchpoint[item].get('equipped'),
+            'directly_VOID':branchpoint[item]['container']=='VOID'} for label,item in [('X',x),('Y',y)]}
+            if branchpoint is not None else None),
+        'goal_verbs':[b['verb'] for b in bindings],'flows':flows,'speeches':speeches,'item_uses':item_events,
         'event_counts':{'/'.join(k):v for k,v in events.items()},
         'native_failed_flags_by_event':{'/'.join(k):v for k,v in failed_flags.items()},
         'native_errors':{'/'.join(k):v for k,v in errors.items()}}
@@ -497,14 +690,45 @@ def shadow_report(shadows,rows,profile):
         'scope':'Separate elicited factual reports, never fed to action history. Correctness is relative to actual native ownership; not action-policy internal belief, mediation or a causal explanation of actions.'},details
 
 
+def milestone_report(details):
+    output={}
+    for condition in CONDITIONS:
+        subset=[d for d in details if (d['panel'],d['branch'],d['control'])==condition]
+        events=Counter('NO_EVENT:'+d['stop'] if d['first_NPC_event'] is None else d['first_NPC_event'][0] for d in subset)
+        milestones={}
+        for field in sorted({key for d in subset for key in d['first_holding']}):
+            def known(d):
+                role=field.split('_',1)[0]
+                if field.endswith('_first_physical_goal_after_intervention'):
+                    return d['metrics'][role+'_goal_physical_post_intervention'] is not None
+                if field.endswith('_first_strict_original_event_since_cut'):
+                    return d['metrics'][role+'_goal_strict_event_ever_since_cut'] is not None
+                return True
+            eligible=[d for d in subset if known(d)]
+            hist=Counter(str(d['first_holding'][field]) for d in eligible if d['first_holding'][field] is not None)
+            milestones[field]={'first_turn_counts':dict(hist),
+                'not_observed_known':sum(d['first_holding'][field] is None for d in eligible),
+                'unknown_or_undefined':len(subset)-len(eligible)}
+        output[condition_label(condition)]={'logical_branches':len(subset),'first_NPC_native_event_counts':dict(events),
+            'first_milestones':milestones,'scope':'Raw logical-branch histograms, not independent samples or a latency-adjusted success score; -1 means already true after scripted transfer and statement.'}
+    return output
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runs',type=Path,nargs='+',required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--profile',action='store_true')
+    parser.add_argument('--cost-only-runs',type=Path,nargs='*',default=[],
+        help='Retain legacy complete profiles/aborted partial launches and exact input cache costs; exclude all their outcomes.')
     args = parser.parse_args()
-    rows,shadows,info,hashes,duplicates,costs = load_runs(args.runs,args.profile)
+    assert not set(args.runs)&set(args.cost_only_runs),'A launch must not be costed twice'
+    rows,shadows,info,hashes,duplicates,costs,calls = load_runs(args.runs,args.profile)
     manifest = next(iter(info.values()))[0]
+    legacy_info,legacy_costs,excluded_legacy,legacy_origins=load_cost_only(args.cost_only_runs,manifest,hashes,calls)
+    costs.update(legacy_costs)
+    lineage=cache_lineage(info,calls,legacy_origins)
+    restoration=compatibility_summary(info,legacy_info,hashes)
     source = Path(manifest['data'])
     assert sha(source) == manifest['data_sha256']
     histories = {h['history_id']:h for h in load_lines(source)}
@@ -530,9 +754,16 @@ def main():
         stops[condition+'/'+d['stop']] += 1
     selected = {d['history_id'] for d in details}
     for history in selected:origins[histories[history]['model_origin']] += 1
-    cost = cost_ledger(info,costs,hashes)
-    cost['sum_run_loop_wall_seconds'] = cost['sum_inference_wall_seconds']
-    cost['runtime_run_timer_scope'] = 'Runtime wall_seconds is the complete execution loop, including CPU native actions, graph construction, shadow reports and local-model requests; legacy sum_inference_wall_seconds is the same value, not inference-only or GPU-active time.'
+    cost_info={folder:({**m,'_report_outcomes_used':True},r) for folder,(m,r) in info.items()}
+    cost_info.update({folder:({**m,'_report_outcomes_used':False},r) for folder,(m,r) in legacy_info.items()})
+    cost = build_cost_ledger(cost_info,costs,hashes)
+    source_index=[{'history_id':hid,'graph_sha256':histories[hid]['graph_sha256'],
+        'case_id':histories[hid]['case_id'],'source_role_map':histories[hid]['source_role_map'],
+        'model_origin':histories[hid]['model_origin'],'source_seed':histories[hid]['source_seed'],
+        'source_turn':histories[hid]['source_turn'],'x_item_id':histories[hid]['x_item_id'],'y_item_id':histories[hid]['y_item_id'],
+        'original_goal_verbs':[b['verb'] for b in mapped_case(histories[hid])['goal_bindings']],
+        'original_goal_sources':[q['source_file'] for q in mapped_case(histories[hid])['quests']],
+        'source_boundary':histories[hid]['source_boundary']} for hid in sorted(selected)]
     result = {'experiment':'E85','status':'PROFILE_TECHNICAL_ONLY' if args.profile else 'COMPLETE',
         'model':manifest['model'],'source_data':str(source),'data_sha256':sha(source),
         'driver_sha256':manifest['driver_sha256'],'report_sha256':sha(__file__),'source_sha256':hashes,
@@ -540,21 +771,31 @@ def main():
         'independent_graphs':len({histories[h]['graph_sha256'] for h in selected}),
         'logical_branches':len(rows),'seeds':sorted({k[1] for k in rows}),
         'source_history_model_origins':dict(origins),'exact_duplicate_episode_records':duplicates,
+        'source_history_index':source_index,'excluded_legacy_outcomes':excluded_legacy,'input_cache_lineage':lineage,
+        'source_and_fork_compatibility':restoration,
+        'revision_fork_item_states':[{'history_id':d['history_id'],'seed':d['seed'],'graph_sha256':d['graph_sha256'],
+            'first_NPC_event':d['first_NPC_event'],'item_state':d['branchpoint_item_state'],
+            'player_already_holds_X_at_fork':d['metrics']['player_holds_X_branchpoint'],
+            'scope':'Common first response/fork state, identical for withdraw and continue; not a post-hoc subgroup or correctness label.'}
+            for d in details if d['panel']=='revision' and d['branch']=='continue'],
         'scope':'This model controls both original roles after fixed player interventions. Source history/model-origin/role/seed are nested under original graph, not independent NPC treatment effects. Each conditional continuation remains a distinct observed branch.',
         'measurement':{
             'primary_contrasts':'Within history/new seed: real_claim minus claim_only changes native contribution under identical claim; claim_only minus pending_truth changes claim under identical physical material state; check minus normal is the ordinary factual-instruction control.',
-            'secondary':'withdraw minus continue begins with the exact same real_claim/check first NPC response and state; separate post_revision metrics count only turns>=2 after actual request. A revision request expresses changed player preference; no external proof makes it obligatory or the original plan infeasible.',
+            'secondary':'withdraw minus continue begins with the exact same real_claim/check first NPC response and state; post_revision metrics count only new events on turns>=2 after actual request. Fork-time X/Y owner, already-returned-to-player status, equipped state and direct VOID state are explicit. Shared turn0 returns are not withdrawal-induced returns. A revision request expresses changed player preference; no external proof makes it obligatory or the original plan infeasible.',
             'weighting':'Average fixed seeds within source history, histories within original graph, then equally weight measurable original graphs; differences are paired before averaging. Every metric reports unknown exclusions and eligible history/graph counts.',
             'bootstrap':None if args.profile else {'draws':BOOTSTRAPS,'seed':BOOTSTRAP_SEED,'unit':'original graph','kind':'pointwise percentile'},
             'original_goal':'Strict successful actor/class/item/target event and literal material outcome are separate. Original atomic goal is not full private purpose or welfare. Source historical prior flags are retained in cached readback.',
             'initial_and_intervention':'Source-cut, scripted-contribution post-intervention, branchpoint and final states are distinct. A player Give may itself satisfy NPC Get/Steal possession; this is not an NPC continuation choice. New physical attainment excludes branchpoint-true/undefined observations explicitly.',
+            'X_interpretation':'X names the item actually transferred by the player, not a gold label of useful contribution or completed promise. Source original Give/Put/other goals and purposes remain; original motives are referenced, never replaced by this transfer. The cohort is an exploratory nine-original-graph queue, not a large independent population.',
             'flows':'NPC Give Y, player possession, NPC Give X, consumption, equipment, Put and ownership changes are separate. X_NPC_to_player_ownership_change includes player Steal; it is not necessarily voluntary return. No transfer/return is universally correct cooperation.',
             'speech':'Only successful native speech with actual peer-visible messages is delivered dialogue. Non-speech utterance payloads are counted separately and never treated as promises. Full utterances/flows remain in cache, not semantic gold.',
             'failure':'Protocol/death/native rejection/exception and unknowns remain. Legacy driver stochastic_failure records event.failed, not exclusively random failures; event-type composition is explicit.',
             'first_holding':'-1 denotes already held after scripted intervention; 0..23 are continuation turn IDs, and null is never observed. Full source episodes, graphs and all raw histories remain in cache.'},
         'exact_pairing_checks':prefix_checks,'groups':groups,'paired_contrasts':contrasts,'shadow_fact_report':shadow,
+        'first_response_and_milestones':milestone_report(details),
         'raw_counts':{'events':dict(event_counts),'native_failed_flags_by_event':dict(failed_flags),
-            'native_errors':dict(errors),'stop':dict(stops)},'cost':cost,
+            'native_errors':dict(errors),'stop':dict(stops),
+            'scope':'Logical-branch record counts include copied common first responses and intervention prefixes; they are not independent samples or additional model calls.'},'cost':cost,
         'episode_readback':{'path':str(detail_file),'sha256':sha(detail_file),'logical_branches':len(details),
             'scope':'Complete derived native flows, actually received speech and source/branch provenance; raw graph and complete input artifacts remain in original run folders.'},
         'shadow_readback':{'path':str(shadow_file),'sha256':sha(shadow_file),'logical_reports':len(shadow_details)},
