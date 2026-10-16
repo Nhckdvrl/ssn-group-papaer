@@ -82,6 +82,9 @@ def main():
     ap.add_argument("--eval_every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0, help="torch seed, forget-prompt seed (seed + 1) and retain-data offset")
     ap.add_argument("--tag", default="")
+    ap.add_argument("--method", default="gd", choices=["gd", "npo"], help="gd: relu(logit IO - logit S + margin); "
+                    "npo: negative preference optimisation on the IO token, (2/beta) log(1 + (p/p_ref)^beta)")
+    ap.add_argument("--npo_beta", type=float, default=0.1)
     ap.add_argument("--base", default=BASE, help="base checkpoint directory (default Pythia-160M step100k)")
     ap.add_argument("--format_reg", type=float, default=0.0, help="penalty keeping the original IOI probe readout "
                     "(projection of the final-position residual on saved probe directions) unchanged -- keeps the upstream "
@@ -103,6 +106,16 @@ def main():
             p_.requires_grad_(False)
     train = Builder(tok, 512, seed=a.seed + 1).ioi()
     held = Builder(tok, 256, seed=0).ioi()
+    npo_ref = None
+    if a.method == "npo":
+        ref_n = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32).cuda().eval()
+        npo_ref = []
+        with torch.no_grad():
+            for g in train:
+                lp = torch.log_softmax(ref_n(g["toks"].cuda()).logits[:, -1].float(), -1)
+                io_ = torch.tensor([t[0] for t in g["tg"]], device="cuda")
+                npo_ref.append(lp.gather(1, io_[:, None]).squeeze(1))
+        del ref_n
     fmt = None
     if a.format_reg > 0:
         dirs = torch.load(a.probe_dirs)
@@ -142,7 +155,12 @@ def main():
             gi = step % len(train)
             for l in fmt:
                 freg = freg + ((out_f.hidden_states[l][:, -1] @ fmt[l] - fmt_ref[gi][l]) ** 2).mean()
-        forget = torch.relu(diff + a.margin).mean()
+        if a.method == "npo":
+            lp_io = torch.log_softmax(lg.float(), -1).gather(1, io[:, None]).squeeze(1)
+            ratio = a.npo_beta * (lp_io - npo_ref[step % len(train)])
+            forget = (2.0 / a.npo_beta) * torch.nn.functional.softplus(ratio).mean()
+        else:
+            forget = torch.relu(diff + a.margin).mean()
         r = torch.tensor(tbl.slice(ptr, a.retain_bs).to_pylist()).cuda()
         ptr += a.retain_bs
         retain = model(r, labels=r).loss
