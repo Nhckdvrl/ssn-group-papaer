@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E74–E77完成；E80真实玩家回应＋共同策略执行对照已通过完整profile，固定200图/4800episode在八卡运行。I04保持PROMISING，论文正文暂缓。** 最新[E70–E77连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
+**执行：E74–E77完成；E80真实玩家回应＋共同策略执行对照已通过完整profile，固定200图/4800episode运行中，峰值8卡；当前fvcrc21滚动原分片。I04保持PROMISING，论文正文暂缓。** 最新[E70–E77连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 

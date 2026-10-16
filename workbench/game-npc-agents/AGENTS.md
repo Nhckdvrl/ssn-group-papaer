@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**2026-10-16当前运行：** 用户明确继续，E80已通过两模型完整profile/独立CPU重放，在fvcrc20/21共8卡跑固定全200原held源图、两trait/三seed/两执行器/两模型共4800episode。读[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)，raw为runs/e80_{gemma,32b}_{s0,s1,s2,s3}，各shard50图/600条，不重复排队、不改driver/条件/seed。双方真实交替各8原生机会，不首goal/Give停；玩家不见NPC私有目标，原生Steal/攻击仍合法保留。技能只执行NPC自选后果下一primitive。driver bd2e5ac…、skills8665d31…已冻结；profile48条精确复用，0API。编号E78/E79是旧未来引用，非漏失实验。C06/I04状态保持，等全结果再判断科学含义。
+**2026-10-16当前运行：** 用户明确继续，E80已通过两模型完整profile/独立CPU重放，先在fvcrc20/21至多8卡启动，fvcrc20两轮初始化0调用失败已封存成本；现仅fvcrc21四卡滚动固定原分片，继续全200原held源图、两trait/三seed/两执行器/两模型共4800episode。读[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)，raw为runs/e80_{gemma,32b}_{s0,s1,s2,s3}，各shard50图/600条，不重复排队、不改driver/条件/seed。双方真实交替各8原生机会，不首goal/Give停；玩家不见NPC私有目标，原生Steal/攻击仍合法保留。技能只执行NPC自选后果下一primitive。driver bd2e5ac…、skills8665d31…已冻结；profile48条精确复用，0API。编号E78/E79是旧未来引用，非漏失实验。C06/I04状态保持，等全结果再判断科学含义。
 
 **2026-10-16最新完成：** E77全102图/两模型/三seed/4896逻辑记录完成，1224旧对角＋3672新增分支，17375新本地调用/2.15314观测GPUh/0解析/API，worker及GPU已释放，不重复启动。[E70–E77连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)已追加完整结果与新应用审计。非Give推进差更随C来源变化，当前trait仍改变用途；Gemma Give固定C仍有直接推进效应，明确终局没有统一修复所有目标，不改写为二模块定律或能力等价。原事件/物理消费并报、全部失败保留。C06 L2/I04 PROMISING不变。
 

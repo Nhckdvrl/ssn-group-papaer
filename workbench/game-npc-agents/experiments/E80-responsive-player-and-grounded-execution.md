@@ -40,3 +40,5 @@
 ### 启动异常与原配置恢复（不产生科学样本）
 
 fvcrc20四个首attempt均在模型初始化失败，无model calls/episode。机器实际为RTX PRO 6000 SM120；FlashInfer默认发现`/usr/local/cuda`的12.8工具链，规范化SM120f要求CUDA≥12.9而架构列表为空，最终误报sm75。没有证据是继承了旧ARCH环境变量。仅为该四worker指定现有Conda内cu13工具链（nvcc13.2）、PATH及真实`FLASHINFER_CUDA_ARCH_LIST=12.0f`，同一driver/skills/data/seed/条件恢复。失败目录/log/launch以`_init_failed`保留，每片约4.8分钟实际占卡另计；不作为低效果种子删除。
+
+第二次四attempt因现有pip工具链nvcc13.2与头文件13.0不兼容而在采样JIT失败，仍0调用/episode，保存为`_init_failed2`。不继续修编译环境；fvcrc21的s0/s1完成并GPU释放后，同slot滚动执行s2/s3，目标、代码、精度、seed与输入不变。共8次失败实际占卡0.49244632GPUh，成本工具逐attempt纳入；峰值始终≤8。所有8个成功分片launch元数据按实际host/PID更新，后续不重复启动已在运行的片。
