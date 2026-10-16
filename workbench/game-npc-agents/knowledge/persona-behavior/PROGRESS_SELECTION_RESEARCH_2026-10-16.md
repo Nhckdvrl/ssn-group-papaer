@@ -76,3 +76,29 @@
 ## 资产与核读边界
 
 源码只读缓存：`/home/xiang/.cache/game-npc-research/sources/progress-selection-2026-10-16/`。`panda_model.py` SHA256 `f23f4f9e72fcb68adf1f7bdc7d8bf48c2a7ec0254803669a241f9474cb6c15b3`；`panda_drrn.py` `1a18b80b21c072bd1e4dc999dad3711810dd57faeb25b286983b262516f81330`；`panda_cond.py` `55f5161c56d6039f8875ec3d41661988aef40c6ffbb297b189882b5560c7f77d`；SayCan notebook `5f1b975f43197af538867e6cb1864a2fea354fe4540668e8be20c37e682d626c`。FEDS PDF 通过浏览器工具读正文，直接下载返回 403，未生成本地 PDF/hash；这不妨碍已列正文/附录核读，也不假称代码复现。
+
+## 6. 本轮最新检索与有响应玩家的定位补充
+
+2026-10-16 北京时间上午 root 执行：
+
+`python3 tools/venue_corpus/query.py nearest 'Game NPC persona own goals social requests action initiation planning execution' -k 6`。
+
+Accepted 列表为 FAIRGAMER（ACL2026）、ASPERA（ACL2025）、Tough Resister（ACL2025）、Introspective Planning（NeurIPS2024）、ThinkBot（ICLR2025）、VideoGUI（NeurIPS2024）。Rejected/Withdrawn 列表含 Fake Player（ICLR2026，平均4.5）、TwinVoice、Goal Guided Efficient Exploration、Imitation Game、LOOP；接收身份只作索引，不作科学价值自动判断。
+
+root 同时在 arXiv/ACL Anthology/OpenReview 主域执行最新检索，三条 query 是 `LLM game NPC persona goals dialogue actions 2026`、`LLM role playing goals social requests action planning persona 2026`、`NPC persona action initiation task goal commitment 2026`。命中多数已有正文阅读邻居（persona-guided task dialogue、trait activation、FAIRGAMER、Dragon、KNUDGE），另出现 ASPERA/Tough Resister/Fake Player；2609.02931 的 Unity 战术 Mistral7B/PPO 工作本轮仅检索摘要，未纳入实证定位。此扫描不覆盖全部最新文献，也不输出“没有撞车”的判决。
+
+新增核读：[GAIA / Tough Resister 论文卡](../papers/GAIA_TOUGH_RESISTER_ACL2025.md)记录正文/关键附录及训练—评测对手区别；[Fake Player 卡](../papers/FAKE_PLAYER_ICLR2026_SUBMISSION.md)严格限定已读的原文第2/9页索引正文与 Table2，关键附录访问未完成，停止反复抓取。没有新开 self-play/蒸馏训练或新平台。
+
+**整体判断：** 对手会回应、对手有角色/目标、策略规划和合成玩家都有强先例，均可继承。我们的问题不是首次做互动 NPC，而是人物怎样在自身目标、他人请求与实际物理前提之间形成选择和真实后果。下一步若做有限响应者，应让它区分“合理协商尚待回应”与“明确意图仍未实现”，不是靠多一个强对手把成功率推高。GAIA 的对话成交/态度指标和 Fake Player 已读范围的角色文本质量，不能代替原生库存转移、本人实际使用与未解决互动的联合记录。
+
+**为何小闭环比再加一句路径提示更可能改变理解：** E75 非 Give 未 Get 轨迹多含合法表情/等待，一次社会回应可能改变人物想完成什么、何时行动以及等待是否有意义。若对方确实回答问题/接受或拒绝条件后 Firm 恢复行动，原有“实现不足”就需更多按互动未解决解释；若仍停滞，再结合 E77 指定终局结果定位。回应者不得读取 NPC 私有动机，不得虚构道具或履约事件；请求者获得物品不是唯一成功，原子目标也不是角色全部利益。
+
+最小可操作范围是原有31个非Give作者世界、两人物三seed、固定已生成对话前缀，对照静态请求者与最多两次有响应请求者；NPC保留原八次动作机会。每模型新增186条响应分支、旧基线复用；这是未来设计建议，未注册/运行。现有作者动机包括社交饮酒、戴花伪装捕猎、维持生存，允许人物选择不同合理结果。先检验静态请求者是否实质改变结局解释，再决定是否扩展；不因一次模拟改善就宣称真实玩家体验提升，也不把它扩成自由漫游、伙伴人格网格或谈判训练大坑。
+
+## 7. 新一份应用审计后的优先级校准
+
+上节有限响应者是一个待比较的研究动作，不是E77之后自动执行的E78。用户随后提供应用导向审计，仍明确仅供参考。E77按原固定设计完成；下一次新增模型数据之前，先将其结果与真实玩法、普通强执行方案及玩家证据放在一起判断。已曝光世界里Get/Remove没有被自主采用，不直接等于工业系统尚未解决的瓶颈。
+
+[工业与可玩基线核查](PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)找到PUBG Ally公开技术报告：它已经结合可行性检查、状态反馈、可靠行为树，以及同请求在可行/不可行状态的配对监督。应继承这种强起点；PUBG共享团队目标与我们保留NPC自身作者动机的条件也要区分。原生脚本、强本地LLM＋真实状态/简洁规则、以及同一决策器＋可靠原生技能，是解释现有执行现象时需要面对的对照。
+
+整体科学问题仍是角色在自身目标、社交请求与物理前提之间如何形成有后果的选择。应用审视既不要求每个分析立即导出新方法，也不要求先做玩家研究才承认行为规律的价值。它要求下一项数据能够解释一种具体玩家行动的后果，例如条件提议是否真的被执行、对方履约后角色是否更新回应、需求变化后旧方案是否被合理修订。先辨认普通方案解决了什么和剩下什么，再决定实验；不预设新架构、训练方式或论文结论。

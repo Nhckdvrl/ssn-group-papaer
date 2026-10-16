@@ -1,0 +1,74 @@
+{
+  "status": "SOURCE_PREDICTIONS_FROZEN_AWAITING_COMPLETE_E77",
+  "analysis": "POST-HOC fixed competing predictions for E77 free off-diagonals",
+  "model_calls": 0,
+  "gpu_hours": 0,
+  "design": {
+    "status": "FIXED_POST_HOC",
+    "registration_timing": "After the first E77 profile and full launch; before reading full E77 off-diagonal outcomes for this analysis.",
+    "source": "Per-model/per-world/per-trait E75 retrieval_baseline three-seed diagonal five-category frequencies only.",
+    "labels": [
+      "no_successful_get",
+      "get_then_physical_goal",
+      "get_then_request",
+      "get_then_other_source_give",
+      "get_without_decisive_use"
+    ],
+    "dirichlet_alpha_each_category": 0.5,
+    "probability": "(category_count + 0.5) / (3 + 5*0.5)",
+    "predictors": {
+      "current_exec_trait": "Use the old diagonal distribution of the current execution trait.",
+      "dialogue_source_trait": "Use the old diagonal distribution of the donor conversation trait.",
+      "equal_mixture": "Arithmetic mean of those two old diagonal distributions, weights fixed at 0.5/0.5."
+    },
+    "scored_data": "Only the two E77 free off-diagonals: donor != exec trait, all three original seeds.",
+    "primary_explanatory_subset": "All dataset rows except the first row used in the E77 profile; exclusion depends only on source order.",
+    "additional_descriptive_subset": "All 102 source graphs, including the profile graph.",
+    "groups": [
+      "all",
+      "source_give",
+      "source_use"
+    ],
+    "loss": {
+      "brier": "sum over five categories of (p_k - indicator_k)^2, range 0..2, lower is better",
+      "log_loss": "-log(p_observed) using natural logarithm, lower is better"
+    },
+    "aggregation": "Average the two off-diagonals and three seeds within source graph, then average graphs.",
+    "uncertainty": "4000 paired source-graph bootstrap samples, percentile 95% pointwise intervals, seed 770075.",
+    "interpretation": "Prediction of new C x current-trait combinations on already seen worlds; not new-world generalization, neural modularity, or independent replication.",
+    "no_tuning": "No optimization, fitted mixture weights, selected seeds, outcome-based exclusion, or E77 parameter fitting."
+  },
+  "design_sha256": "57746a8e557f1be91ac1891b40c4a8c5933f45045fc3bad62f4ef45ccaea8610",
+  "frozen_cache_path": "/home/xiang/.cache/game-npc-research/runs/e77_dialogue_outcome_predictions_frozen.json",
+  "frozen_cache_sha256": "f3546d4c8cfdd25b14e8ac595e7e943c7e46e690eccf8f6feb1145d51649f8da",
+  "frozen_created_utc": "2026-10-16T02:37:50.466460+00:00",
+  "source_worlds": 102,
+  "source_diagonal_episodes_per_model": 612,
+  "profile_graph": "c59724b4d0bbaa74",
+  "profile_exclusion_rule": "First original data row, fixed before reading full E77 outcomes for this analysis.",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e75_native_retrieval_qualification/snapshots.jsonl": "1079bb5e9ca8aec54c8f14f359b86ee361237c6ec91bb7c37d91e60519f5380b",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s0/episodes.jsonl": "5ff7bdb2272ca719e4cd25d16d63dcd28a9c768dce16d134fba6263dd6086114",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s0/manifest.json": "0fa95490fc68b0f23418884ca8c00d9d3b4dc4b49a58f9ac24a3edd51fc084d8",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s0/runtime.json": "f3da0705b059a872b5a4517d4d0432dc092c0cfd4038922532533dd13eb13af2",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s1/episodes.jsonl": "1cb6cdf2e66d2781927713de93c10eb2348c877e802ed55ba261d2f40b6cb60d",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s1/manifest.json": "4835e3efee5f8784139a16692effcd785f52998a800e2589f065a9c1a70a2c7d",
+    "/home/xiang/.cache/game-npc-research/runs/e75_gemma_s1/runtime.json": "305be22949107bb490f8af537e9f10badca1bdddb460b3eb42f75b6f9515a7be",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s0/episodes.jsonl": "6544c6fc60966f14e8c7bcfeb792d2e7368b00a988f782efebeefdb72f92f426",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s0/manifest.json": "00254994306bafce547fe40dd938a60a08e8864f25e6587f8264d2c3ff0f7203",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s0/runtime.json": "78f195edd9c78f748123ed43e3d0aeef81e3b0ae2cbe19bb97b755e0c75bd882",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s1/episodes.jsonl": "9e7c72e39f12725281ba2c1a9831af4f95ffe99f6f69270e868493fac3338f50",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s1/manifest.json": "6e1ec3da92ee7670790e0b6f24bf1098accfbf73e9d72170c064e43f4439d89f",
+    "/home/xiang/.cache/game-npc-research/runs/e75_32b_s1/runtime.json": "b51c2394c96ba21af65ea87ed90362e0e51802cc5c4fe5abfd4d192736c17971"
+  },
+  "script_sha256": "634f1b8397ddd3f871a9cfa702be1dcc558d73a555b74925b2f0d639ce2b2946",
+  "review_metrics_sha256": "6334fedbe684297ecf53dbcadd273dfec6289db3fb5b6e0a4f23b460ec30fbaf",
+  "scope": [
+    "Added after E77 initial profile; not an original preregistered primary endpoint or independent experiment.",
+    "Same source worlds and seeds; predictions address new intervention combinations, not new-world generalization.",
+    "Pure exec/C predictors are deliberately restrictive descriptive alternatives; winning either does not identify a brain module or exclusive causal mechanism.",
+    "Equal mixture has no optimized weight; alpha=0.5 fixed uniformly for all five categories.",
+    "Physical consumption secondary is reused from the review report; exact bound-goal main endpoint remains unchanged elsewhere.",
+    "Three source seeds produce noisy predictive distributions; score differences remain paired and pointwise, not an automatic scientific decision rule."
+  ]
+}
