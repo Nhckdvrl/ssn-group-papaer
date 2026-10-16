@@ -348,6 +348,11 @@ def load(family, repo, rev):
     if family == "dd":
         import dd_common as dd
         return dd.load(repo, rev, dtype=torch.float32, attn="eager", device=os.environ.get("E89_DEVICE", "cuda"))
+    if os.environ.get("E89_LOCAL"):  # weights saved locally (e.g. by e93_lesion.py --save_final)
+        tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", cache_dir=str(mc.HF_CACHE))
+        model = AutoModelForCausalLM.from_pretrained(os.environ["E89_LOCAL"], torch_dtype=torch.float32,
+                                                     attn_implementation="eager").cuda().eval()
+        return model, tok
     kw = {} if rev == "main" else {"revision": rev}
     if rev != "main":
         # Pythia step branches can carry main's safetensors next to the real step weights (pytorch_model.bin)

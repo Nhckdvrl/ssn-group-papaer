@@ -227,6 +227,7 @@ def main():
     ap.add_argument("--parts", default="all", help="which part of the --head heads to re-initialise: all|qk|ov")
     ap.add_argument("--knockout", default="", help="heads to silence permanently, e.g. 3.0,1.2")
     ap.add_argument("--init_seed", type=int, default=1234)
+    ap.add_argument("--save_final", default="", help="directory to save the final weights (for post-hoc causal maps)")
     ap.add_argument("--warm", type=int, default=200)
     ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
     a = ap.parse_args()
@@ -315,6 +316,8 @@ def main():
                 knockout(model, ko)
     log["seconds"] = time.time() - t0
     (OUT / f"{tag}.json").write_text(json.dumps(log))
+    if a.save_final:
+        model.save_pretrained(a.save_final, safe_serialization=False)
 
 
 if __name__ == "__main__":
