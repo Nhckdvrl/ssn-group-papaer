@@ -1,0 +1,123 @@
+{
+  "experiment": "E84",
+  "status": "COMPLETE",
+  "observed_utc": "2026-10-16T08:35:42.649251+00:00",
+  "logical_episodes": 128,
+  "pairs": 32,
+  "independent_graphs": 23,
+  "models": 2,
+  "seeds": [
+    8401,
+    8402
+  ],
+  "new_local_calls": 4224,
+  "full_run_exact_reused_calls": 66,
+  "profile_duplicate_episode_records": 2,
+  "prompt_tokens": 10201748,
+  "completion_tokens": 135596,
+  "launch_to_wrapper_exit_occupied_gpu_hours": 0.7583402566115062,
+  "runtime_load_plus_inference_gpu_hours": 0.6524311976725261,
+  "peak_owned_gpus": 2,
+  "new_cloud_calls": 0,
+  "new_step_calls": 0,
+  "runs": [
+    {
+      "model": "gemma",
+      "kind": "profile",
+      "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json",
+      "launch_sha256": "c64e7e2fcf74196c4f78d5b9e312aac4584577699dcf218992e7a7523d56a49d",
+      "host": "fvcrc21",
+      "gpu": 1,
+      "wrapper_pid": 1024178,
+      "worker_pid": 1024190,
+      "start_epoch": 1792137543.9948852,
+      "end_epoch": 1792137711.398895,
+      "exit_code": 0,
+      "occupied_gpu_hours": 0.046501113838619657,
+      "runtime": {
+        "pairs": 1,
+        "episodes": 1,
+        "calls": 33,
+        "reused_calls": 0,
+        "wall_seconds": 64.60187965305522,
+        "model_load_seconds": 26.79187618906144,
+        "new_cloud_calls": 0
+      }
+    },
+    {
+      "model": "gemma",
+      "kind": "full",
+      "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full_launch.json",
+      "launch_sha256": "10b0f150a8df2277dbbe91c8f916a292a5d58568dddf171d6b3a0ca19f2c13d9",
+      "host": "fvcrc21",
+      "gpu": 1,
+      "wrapper_pid": 1028144,
+      "worker_pid": 1028157,
+      "start_epoch": 1792137985.2933695,
+      "end_epoch": 1792138853.5161684,
+      "exit_code": 0,
+      "occupied_gpu_hours": 0.24117299967341954,
+      "runtime": {
+        "pairs": 32,
+        "episodes": 64,
+        "calls": 2079,
+        "reused_calls": 33,
+        "wall_seconds": 727.8277209129883,
+        "model_load_seconds": 23.981073154020123,
+        "new_cloud_calls": 0
+      }
+    },
+    {
+      "model": "32b",
+      "kind": "profile",
+      "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_32b_profile_launch.json",
+      "launch_sha256": "46bf711a231dfa939fb723d87ddced5820a258b852132fc2ebd1929a5d9e0195",
+      "host": "fvcrc21",
+      "gpu": 0,
+      "wrapper_pid": 1024177,
+      "worker_pid": 1024189,
+      "start_epoch": 1792137543.97442,
+      "end_epoch": 1792137703.1627853,
+      "exit_code": 0,
+      "occupied_gpu_hours": 0.04421899033917321,
+      "runtime": {
+        "pairs": 1,
+        "episodes": 1,
+        "calls": 33,
+        "reused_calls": 0,
+        "wall_seconds": 55.05999355704989,
+        "model_load_seconds": 34.245632620994,
+        "new_cloud_calls": 0
+      }
+    },
+    {
+      "model": "32b",
+      "kind": "full",
+      "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_32b_full_launch.json",
+      "launch_sha256": "c65caf5f0fec136e36e3c4acb1c53454eb15dcb58aec811a5a9fc6709520f0e0",
+      "host": "fvcrc21",
+      "gpu": 0,
+      "wrapper_pid": 1028143,
+      "worker_pid": 1028156,
+      "start_epoch": 1792137985.269128,
+      "end_epoch": 1792139520.478878,
+      "exit_code": 0,
+      "occupied_gpu_hours": 0.42644715276029377,
+      "runtime": {
+        "pairs": 32,
+        "episodes": 64,
+        "calls": 2079,
+        "reused_calls": 33,
+        "wall_seconds": 1382.470756984898,
+        "model_load_seconds": 33.77337854902726,
+        "new_cloud_calls": 0
+      }
+    }
+  ],
+  "release_check": {
+    "owned_parent_pids_still_live": [],
+    "nvidia_compute_apps_stdout": "",
+    "owned_model_gpu_processes_observed": false
+  },
+  "scope": "All four profile/full launch→wrapper exit intervals include imports, loading, idle/CPU waits, inference and process cleanup; no profile timing is subtracted. Full reuse contributes neither new calls nor additional logical episodes. Runtime sub-timers are separately shown, not called complete occupied-slot cost. Pair/seed repetitions do not add independent source worlds."
+}

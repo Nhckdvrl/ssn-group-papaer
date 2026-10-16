@@ -2,11 +2,11 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E81双方原作者目的的126图/504逻辑episode完成；E82原Minecraft多步制作完成；E83两条完整角色交互已跑完；E84全7486作者quests/1787图完成资格，保全交叉持物32对/23图、两模型两seed完整基线正在运行。** 无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务与结果](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [E84原任务资格](experiments/E84-independent-goals-and-alternative-cooperation.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
+**执行：E81双方原作者目的的126图/504逻辑episode完成；E82原Minecraft多步制作完成；E83两条完整角色交互已跑完；E84全32原任务对/23原图、两模型两seed共128完整episode完成。** E84新增4224本地调用/0.75834观测GPUh，全部本轮worker退出。无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务与结果](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [E84完整观察](experiments/E84-independent-goals-and-alternative-cooperation.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 
-**最新实际观察：** E81原交付事件Gemma/32B为72.2%/86.5%，很多普通原生互动已经能完成；还有直接Put到对方目标位置的替代帮助。E83沿Minecraft论文原角色目的与条件，在同一重建归还阶段跑两路径：最终都完成实物交换，却都提前发奖并随后重复发已交资产；P1又能依据自身目的拒借珍贵剑。接下来检验不同原任务中玩家真实履约/改方案如何改变NPC合作，不由这一角色两路径宣布普遍机制。E83全部16请求/独立物理读回完成、原生/模型server退出，0云/付费API。
+**最新实际观察：** E84普通32B已能真实给鱼钩后协商有条件借刀、卸下/交出并装备，以及交书取果后继续求药并获得/消费。原Steal/Put标签会漏记这些对角色目的有用的办法。Gemma也有真实Drop帮助和被偷后合理拒借，另有接受方案而未转移、协商超出原世界能力的轨迹；完整后续决定应怎样解释，不能统一叫不合作。全体字面取得数据与完整方案分别报告，0云/付费API。[E84实际方案与后续](results/E84_grounded_plans_POST_HOC.json)。E81的高完成和E83终局正确却提前奖励/重复结清同样保留；下一判断围绕玩家实际行动怎样改变NPC合作，不围少数案例优化Give率。
 
 ## 当前证据与研究判断
 

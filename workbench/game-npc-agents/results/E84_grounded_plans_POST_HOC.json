@@ -1,0 +1,1840 @@
+{
+  "experiment": "E84",
+  "status": "POST_HOC_COMPLETE_COHORT_GROUNDED_PLAN_READBACK",
+  "date": "2026-10-16",
+  "corresponding": "I04 / P12; no claim upgrade",
+  "timing": "Selected after all completed native trajectories; qualitative illustrations, not preregistered labels/endpoints or another independent dataset.",
+  "main_reading": [
+    "普通双角色系统已经能在原世界真实提供食物、通过Drop/Get帮助、取得物资后回应新请求，以及落实附带将来归还条件的借用。",
+    "另有合法拒绝、取消方案、最初可行方案被后续行为打断；缺少两个原子goal不能统一解释为不会合作。",
+    "原本已true的交付关系、仅原生事件identity未发生但实际物资已取得、以及需要引擎未实现服务的叙事目的必须区分。",
+    "仍有真实难点：提出/接受的计划与后续物理操作不总一致，已经交付/返还的物品会进入回转或再夺取；本轮不把它预定为通用机制或按少数例子调提示。"
+  ],
+  "coverage_index": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_readback/E84_all_cohort_native_material_flow_index_POST_HOC.jsonl",
+    "sha256": "b1b77b9f300dc53d5b9b93417d7f3b289eaef5b2016ae670996d34ac4a74562b",
+    "logical_episodes": 128,
+    "source_pairs": 32,
+    "original_graphs": 23,
+    "models": {
+      "gemma": {
+        "logical_episodes": 64,
+        "source_pairs": 32,
+        "original_graphs": 23,
+        "objective_counts": {
+          "episodes_any_successful_material_action": 45,
+          "episodes_any_Give": 15,
+          "episodes_opposite_Give_different_assets": 0,
+          "episodes_opposite_Give_same_asset_only": 1,
+          "non_speech_payloads_not_transmitted": 612,
+          "successful_GiveObjectEvent": 18,
+          "native_failed_flag_StealObjectEvent": 26,
+          "successful_DropObjectEvent": 40,
+          "successful_GetObjectEvent": 31,
+          "successful_EatEvent": 2,
+          "successful_WieldEvent": 8,
+          "successful_EquipObjectEvent": 8,
+          "successful_StealObjectEvent": 2,
+          "successful_PutObjectInEvent": 3,
+          "native_failed_flag_RewardEvent": 2,
+          "successful_DrinkEvent": 1
+        },
+        "opposite_Give_different_asset_episode_keys": [],
+        "opposite_Give_same_asset_only_episode_keys": [
+          [
+            "9576f9a9c894679cc02ec19f",
+            8401
+          ]
+        ]
+      },
+      "32b": {
+        "logical_episodes": 64,
+        "source_pairs": 32,
+        "original_graphs": 23,
+        "objective_counts": {
+          "successful_StealObjectEvent": 30,
+          "episodes_any_successful_material_action": 61,
+          "episodes_any_Give": 43,
+          "episodes_opposite_Give_different_assets": 12,
+          "episodes_opposite_Give_same_asset_only": 2,
+          "non_speech_payloads_not_transmitted": 10,
+          "native_failed_flag_StealObjectEvent": 195,
+          "successful_RemoveObjectEvent": 30,
+          "successful_GiveObjectEvent": 101,
+          "successful_EquipObjectEvent": 18,
+          "successful_DropObjectEvent": 57,
+          "successful_GetObjectEvent": 69,
+          "successful_EatEvent": 8,
+          "successful_IngestEvent": 2,
+          "native_failed_flag_RewardEvent": 36,
+          "successful_WearEvent": 5,
+          "successful_PutObjectInEvent": 20,
+          "successful_WieldEvent": 2
+        },
+        "opposite_Give_different_asset_episode_keys": [
+          [
+            "12c39f0380b4b524b35b1c58",
+            8402
+          ],
+          [
+            "19368d9aeeb3a5faf9371be0",
+            8401
+          ],
+          [
+            "19368d9aeeb3a5faf9371be0",
+            8402
+          ],
+          [
+            "2b678277fe25a8314a8e4284",
+            8402
+          ],
+          [
+            "367e2d6963c81915881868c4",
+            8402
+          ],
+          [
+            "649ee9013d2f0e4b87a648d5",
+            8401
+          ],
+          [
+            "b304ce412e4d9ecee4a4f197",
+            8401
+          ],
+          [
+            "b304ce412e4d9ecee4a4f197",
+            8402
+          ],
+          [
+            "c22bb96e1d30526d715cc3e4",
+            8401
+          ],
+          [
+            "cecdf3fdd16a52ff26dbface",
+            8402
+          ],
+          [
+            "fb35734fac676deb926aa2c8",
+            8401
+          ],
+          [
+            "fb35734fac676deb926aa2c8",
+            8402
+          ]
+        ],
+        "opposite_Give_same_asset_only_episode_keys": [
+          [
+            "12c39f0380b4b524b35b1c58",
+            8401
+          ],
+          [
+            "45f11acd0b3a11300be74178",
+            8401
+          ]
+        ]
+      }
+    },
+    "definition": "Every successful native material action across all 128 logical episodes; profile duplicates excluded. Opposite-direction Give of distinct assets is a flow fact, not economic exchange, agreement success or mutual utility. No complete-corpus semantic annotation."
+  },
+  "source_snapshot": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+    "sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b"
+  },
+  "provenance": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl": {
+      "sha256": "e49efcf6b6469af28f2b6666b5c0b0ac8e0b36da836cade417c0351fe7440e42",
+      "rows": 64
+    },
+    "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/results/E84_gemma_complete_audit.json": {
+      "sha256": "2374d3aaa927f36ef494f3b2f436547ff33fa951232a43c8974cbd7ad9d5da90",
+      "status": "PASS"
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_32b_full/episodes.jsonl": {
+      "sha256": "3ed5dd37313bbf8c0957ccca9dbe2ef00ce7839aec669b46f3625f92a81eb399",
+      "rows": 64
+    },
+    "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/results/E84_32b_complete_audit.json": {
+      "sha256": "c4570c38f331a4e4f7a2d5cb4be957bea18a38eb43b9d38781915b2b20dd08b9",
+      "status": "PASS"
+    }
+  },
+  "comparisons": [
+    {
+      "candidate_id": "160742ded667ed21c3ba1c56",
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "title": "请求后真实提供食物，通过Drop而非Give实施",
+      "source_roles": [
+        {
+          "actor_id": "friend",
+          "quest_file": "quest_stems/12865.json",
+          "goal": "drop a sleeping bag",
+          "short_motivation": "I would like to examine the salesman's haul",
+          "mid_motivation": "I need to purchase a tent to set up camp",
+          "long_motivation": "I am traveling a great distance over the next few weeks and will need to sleep outdoors until I reach the next town",
+          "bound_item_id": "a sleeping bag_2"
+        },
+        {
+          "actor_id": "visitor",
+          "quest_file": "quest_stems/13708.json",
+          "goal": "eat Chocolate",
+          "short_motivation": "I need a snack to get my energy up",
+          "mid_motivation": "I would like to buy some local goods during my stay",
+          "long_motivation": "I would like to bring home presents to my family",
+          "bound_item_id": "chocolate_9"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "gemma",
+          "seed": 8402,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "d39837964fc32e517b82c4a43d9856a2ebd87c0de2da009e10a389d7ca7ad99c",
+          "selected_actual_events": [
+            {
+              "turn": -1,
+              "actor_index": 1,
+              "actor_id": "visitor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "friend",
+                  "event": "SayEvent",
+                  "text": "The visitor said \"Greetings! I'm visiting my aunt and quite peckish, actually. I'm hoping to find some chocolate, and perhaps browse the general store for some local goods to take back home. Do you know if the general store has a good selection?\""
+                }
+              ]
+            },
+            {
+              "turn": 10,
+              "actor_index": 0,
+              "actor_id": "friend",
+              "native_event": "DropObjectEvent",
+              "target_ids": [
+                "chocolate_9"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "chocolate_9": {
+                  "container": {
+                    "before": "friend",
+                    "after": "town center_0"
+                  }
+                }
+              },
+              "command": "drop Chocolate",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 11,
+              "actor_index": 1,
+              "actor_id": "visitor",
+              "native_event": "GetObjectEvent",
+              "target_ids": [
+                "chocolate_9",
+                "town center_0"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "chocolate_9": {
+                  "container": {
+                    "before": "town center_0",
+                    "after": "visitor"
+                  }
+                }
+              },
+              "command": "get Chocolate"
+            },
+            {
+              "turn": 13,
+              "actor_index": 1,
+              "actor_id": "visitor",
+              "native_event": "EatEvent",
+              "target_ids": [
+                "chocolate_9"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "chocolate_9": {
+                  "container": {
+                    "before": "visitor",
+                    "after": "VOID"
+                  }
+                }
+              },
+              "command": "eat Chocolate"
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "160742ded667ed21c3ba1c56",
+            8402
+          ],
+          "strict_events_ever": [
+            false,
+            true
+          ],
+          "physical_initial": [
+            null,
+            false
+          ],
+          "physical_ever": [
+            null,
+            true
+          ],
+          "physical_final": [
+            null,
+            true
+          ],
+          "goal_item_final_state": {
+            "a sleeping bag_2": {
+              "container": "visitor",
+              "equipped": "wield"
+            },
+            "chocolate_9": {
+              "container": "VOID",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "visitor以饥饿/想吃Chocolate开启交流，friend实际Drop自己的Chocolate，visitor随后Get并Eat。这里确有对另一方原生消费目标的物理帮助，无需把Give作为唯一合作动作。",
+      "scope_and_competing_explanations": "friend的原Drop sleeping bag目标涉及本就在visitor手中的另一个物；未执行该原子事件不等于没有帮助。游客的精力/后续买礼物未因此全部证明完成，不称双赢交易。"
+    },
+    {
+      "candidate_id": "63e1c3c7db75553de0dba339",
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "title": "先前偷窃后明确拒借：保留人物自主选择",
+      "source_roles": [
+        {
+          "actor_id": "friend",
+          "quest_file": "quest_stems/13676.json",
+          "goal": "steal a sleeping bag from visitor",
+          "short_motivation": "I want to take the sleeping bag ",
+          "mid_motivation": "I want to sleep comfortably in the sleeping bag tonight ",
+          "long_motivation": "I plan to explore this town for a few weeks before moving on",
+          "bound_item_id": "a sleeping bag_2"
+        },
+        {
+          "actor_id": "visitor",
+          "quest_file": "quest_stems/13708.json",
+          "goal": "eat Chocolate",
+          "short_motivation": "I need a snack to get my energy up",
+          "mid_motivation": "I would like to buy some local goods during my stay",
+          "long_motivation": "I would like to bring home presents to my family",
+          "bound_item_id": "chocolate_9"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "gemma",
+          "seed": 8402,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "8f12f5e9eb68fb1e24e48791683fdd41935340a6104fe522ac68350958599edb",
+          "selected_actual_events": [
+            {
+              "turn": 10,
+              "actor_index": 0,
+              "actor_id": "friend",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "a sleeping bag_2",
+                "visitor"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal a sleeping bag from visitor"
+            },
+            {
+              "turn": 16,
+              "actor_index": 0,
+              "actor_id": "friend",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "visitor",
+                  "event": "SayEvent",
+                  "text": "The friend said \"You know, I've been thinking... maybe a trade would be better than a theft. I'll give you this chocolate if you let me borrow the sleeping bag for tonight?\""
+                }
+              ]
+            },
+            {
+              "turn": 17,
+              "actor_index": 1,
+              "actor_id": "visitor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "friend",
+                  "event": "SayEvent",
+                  "text": "The visitor said \"That's a rather... unusual request. I'm not inclined to lend out my sleeping bag, especially after what your friend just attempted. Perhaps we can just stick to discussing souvenirs?\""
+                }
+              ]
+            },
+            {
+              "turn": 27,
+              "actor_index": 1,
+              "actor_id": "visitor",
+              "native_event": "WieldEvent",
+              "target_ids": [
+                "a sleeping bag_2"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "a sleeping bag_2": {
+                  "equipped": {
+                    "before": null,
+                    "after": "wield"
+                  }
+                }
+              },
+              "command": "wield a sleeping bag",
+              "extra_payload_not_transmitted_as_speech": true
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "63e1c3c7db75553de0dba339",
+            8402
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            false,
+            false
+          ],
+          "physical_final": [
+            false,
+            false
+          ],
+          "goal_item_final_state": {
+            "a sleeping bag_2": {
+              "container": "visitor",
+              "equipped": "wield"
+            },
+            "chocolate_9": {
+              "container": "friend",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "friend偷睡袋失败后，提出交出自己的Chocolate换借睡袋一晚。visitor实际说不愿借出，明确联系到此前偷窃，并转谈纪念品；睡袋保持visitor持有。拒绝是真实互动结果，不能由未达双方goal自动判为不会合作。",
+      "scope_and_competing_explanations": "这是一条观察轨迹，没有把先前偷窃随机操纵成反事实；不能从此单例估计信任因果效应或宣称拒绝最优。"
+    },
+    {
+      "candidate_id": "c22bb96e1d30526d715cc3e4",
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "title": "同一原任务中的条件借用落实、拒绝及取消",
+      "source_roles": [
+        {
+          "actor_id": "sailor",
+          "quest_file": "quest_stems/14247.json",
+          "goal": "steal a knife from fisherman",
+          "short_motivation": "I need to get the fisherman's knife, but I don't want to have to ask him for it.",
+          "mid_motivation": "I need to prepare for a voyage across the sea and I need to arm myself against sea monsters.",
+          "long_motivation": "I want to finish my journey across the seven seas on behalf of the king so that I can finally return home to my wife.",
+          "bound_item_id": "a knife_12"
+        },
+        {
+          "actor_id": "fisherman",
+          "quest_file": "quest_stems/15118.json",
+          "goal": "put fishing hook in pouch",
+          "short_motivation": "I want to buy a new fishing hook ",
+          "mid_motivation": "I plan to go fishing today",
+          "long_motivation": "I hope to catch a lot of fish in the coming months ",
+          "bound_item_id": "fishing hook_2"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "32b",
+          "seed": 8401,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_32b_full/episodes.jsonl",
+          "episode_canonical_sha256": "5f9cd3bfe083cde4abeeba05dc9654cfb7cdb7b35001fdc139807b2dfc6ecf5d",
+          "selected_actual_events": [
+            {
+              "turn": 3,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "pouch_7",
+                "sailor"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "pouch_7": {
+                  "container": {
+                    "before": "fisherman",
+                    "after": "sailor"
+                  }
+                }
+              },
+              "command": "give pouch to sailor"
+            },
+            {
+              "turn": 6,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "fishing hook_2",
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "fishing hook_2": {
+                  "container": {
+                    "before": "sailor",
+                    "after": "fisherman"
+                  }
+                }
+              },
+              "command": "give fishing hook to fisherman"
+            },
+            {
+              "turn": 12,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "TellEvent",
+              "target_ids": [
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "TellEvent",
+                  "text": "The sailor told you \"Here's your fishing hook, and I need a knife for my voyage. Can I borrow it, or perhaps buy it?\""
+                }
+              ]
+            },
+            {
+              "turn": 13,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Sure, I can lend you my knife for your voyage. But remember to return it once you're back!\""
+                }
+              ]
+            },
+            {
+              "turn": 16,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "TellEvent",
+              "target_ids": [
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "TellEvent",
+                  "text": "The sailor told you \"Thank you, fisherman. I'll return it once I complete my voyage across the seven seas.\""
+                }
+              ]
+            },
+            {
+              "turn": 17,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "RemoveObjectEvent",
+              "target_ids": [
+                "a knife_12"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "a knife_12": {
+                  "equipped": {
+                    "before": "wield",
+                    "after": null
+                  }
+                }
+              },
+              "command": "remove a knife"
+            },
+            {
+              "turn": 18,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "a knife_12",
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal a knife from fisherman"
+            },
+            {
+              "turn": 20,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "a knife_12",
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal a knife from fisherman"
+            },
+            {
+              "turn": 21,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "a knife_12",
+                "sailor"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "a knife_12": {
+                  "container": {
+                    "before": "fisherman",
+                    "after": "sailor"
+                  }
+                }
+              },
+              "command": "give a knife to sailor"
+            },
+            {
+              "turn": 22,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "WieldEvent",
+              "target_ids": [
+                "a knife_12"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "a knife_12": {
+                  "equipped": {
+                    "before": null,
+                    "after": "wield"
+                  }
+                }
+              },
+              "command": "wield a knife"
+            }
+          ],
+          "all_material_actions_index_key": [
+            "32b",
+            "c22bb96e1d30526d715cc3e4",
+            8401
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            true,
+            false
+          ],
+          "physical_final": [
+            true,
+            false
+          ],
+          "goal_item_final_state": {
+            "a knife_12": {
+              "container": "sailor",
+              "equipped": "wield"
+            },
+            "fishing hook_2": {
+              "container": "fisherman",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        },
+        {
+          "model": "gemma",
+          "seed": 8401,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "ab0c612a2d5b50e6eecc3e67bb9eaa403ea7b043683d1c34eb9648dfdfe4ad0b",
+          "selected_actual_events": [
+            {
+              "turn": 3,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"A sharp knife, you say? I do have a few. Perhaps I could trade you one for some bait? I need to get ready for my fishing trip, and good bait is essential.\""
+                }
+              ]
+            },
+            {
+              "turn": 4,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"A trade for a knife? Hmm... I suppose I could part with some bait. How much do you want for it? I have a generous amount in my pouch.\""
+                }
+              ]
+            },
+            {
+              "turn": 5,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Alright, a trade it is. This knife is quite sharp, and I'll let you have it for a generous portion of your bait. Enough to fill my pouch, please. I need to be well-prepared for a productive fishing day – I really want to get that new hook!\""
+                }
+              ]
+            },
+            {
+              "turn": 6,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "pouch_7",
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal pouch from fisherman"
+            },
+            {
+              "turn": 7,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "BlockEvent",
+              "target_ids": [
+                "sailor"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "fisherman": {
+                  "blocking": {
+                    "before": null,
+                    "after": "sailor"
+                  }
+                }
+              },
+              "command": "block sailor",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 8,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "BlockEvent",
+              "target_ids": [
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "sailor": {
+                  "blocking": {
+                    "before": null,
+                    "after": "fisherman"
+                  }
+                }
+              },
+              "command": "block fisherman"
+            },
+            {
+              "turn": 13,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Alright, let's forget about the knife. Just show me where the best bait for cod is, please. I really need to get fishing!\""
+                }
+              ]
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "c22bb96e1d30526d715cc3e4",
+            8401
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            false,
+            false
+          ],
+          "physical_final": [
+            false,
+            false
+          ],
+          "goal_item_final_state": {
+            "a knife_12": {
+              "container": "fisherman",
+              "equipped": "wield"
+            },
+            "fishing hook_2": {
+              "container": "sailor",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        },
+        {
+          "model": "gemma",
+          "seed": 8402,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "b06fb7e7fe99ea40e9fc9bec2a871fc7b64d6ee52cf7de8d8bff1f1eadc22782",
+          "selected_actual_events": [
+            {
+              "turn": 3,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"You mentioned a sturdy blade. This knife has served me well for years, balanced just right for cleaning fish and, well, other things a fisherman needs. But I need that hook first, so I can get back to the sea.\""
+                }
+              ]
+            },
+            {
+              "turn": 4,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"You mentioned needing a hook. Perhaps... perhaps I could offer you something in exchange for that knife? Something of equal value, of course.\""
+                }
+              ]
+            },
+            {
+              "turn": 5,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"A knife? No, sailor. I appreciate the offer, but this knife is far too valuable to me. I'm just trying to get a fishing hook so I can get back out on the water and earn a living. Do you have any hooks for sale?\""
+                }
+              ]
+            },
+            {
+              "turn": 7,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Look, sailor, I'm not interested in trading my knife. I just need a hook. Do you have any hooks for sale, or not?\""
+                }
+              ]
+            },
+            {
+              "turn": 8,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"You're right to prioritize the hook, fisherman. A man needs to earn his living. Perhaps... while you're out fishing, I could just... borrow the knife for a bit? I promise to return it, once I've finished my task.\""
+                }
+              ]
+            },
+            {
+              "turn": 19,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Sailor, I'm not interested in your fishing spot. I need that hook, and I don't lend my knife out. Just sell me the hook, or I'll find someone who will.\""
+                }
+              ]
+            },
+            {
+              "turn": 21,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "BlockEvent",
+              "target_ids": [
+                "sailor"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "fisherman": {
+                  "blocking": {
+                    "before": null,
+                    "after": "sailor"
+                  }
+                }
+              },
+              "command": "block sailor",
+              "extra_payload_not_transmitted_as_speech": true
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "c22bb96e1d30526d715cc3e4",
+            8402
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            false,
+            false
+          ],
+          "physical_final": [
+            false,
+            false
+          ],
+          "goal_item_final_state": {
+            "a knife_12": {
+              "container": "fisherman",
+              "equipped": "wield"
+            },
+            "fishing hook_2": {
+              "container": "sailor",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "32B先真正把hook交给fisherman，之后sailor请求借/买knife，fisherman同意有条件借用并要求航海后归还；sailor答应，fisherman实际Remove再Give，sailorWield。双方当前物资帮助确实发生，不能被原Steal和Put标签掩盖。Gemma8402则明确拒绝用自己的knife交易/出借；8401谈的是未绑定实际bait的对价，之后真实偷pouch失败、互Block，再口头取消knife交易。",
+      "scope_and_competing_explanations": "32B中间两次偷knife失败也完整保留。真实双资产流不是预先定价的hook换knife合同；航海后归还没有在本回合实现的deadline/航海flag，不计逾期。fisherman原Put hook入pouch仍未完成。两模型同时更换两个角色的控制模型，seed/历史也不同，不能当NPC单方因果效应。"
+    },
+    {
+      "candidate_id": "b304ce412e4d9ecee4a4f197",
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "title": "物理上可行且曾获接受的方案，随后没有成交",
+      "source_roles": [
+        {
+          "actor_id": "sailor",
+          "quest_file": "quest_stems/14247.json",
+          "goal": "steal a knife from fisherman",
+          "short_motivation": "I need to get the fisherman's knife, but I don't want to have to ask him for it.",
+          "mid_motivation": "I need to prepare for a voyage across the sea and I need to arm myself against sea monsters.",
+          "long_motivation": "I want to finish my journey across the seven seas on behalf of the king so that I can finally return home to my wife.",
+          "bound_item_id": "a knife_12"
+        },
+        {
+          "actor_id": "fisherman",
+          "quest_file": "quest_stems/14853.json",
+          "goal": "give fishing hook to sailor",
+          "short_motivation": "I want to buy the fishing hook for the sailor ",
+          "mid_motivation": "I hope to befriend the sailor today",
+          "long_motivation": "I hope to follow the sailor on his next voyage ",
+          "bound_item_id": "fishing hook_2"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "gemma",
+          "seed": 8402,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "bca60d11955795d4be97eb926e5d0ed28cd9a52b48bb9b383fdfd6dffeda1d24",
+          "selected_actual_events": [
+            {
+              "turn": 1,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Perhaps you're right about being pressed for time. But, could I at least offer you this fishing hook? It's quite good, and I'd like you to have it.\""
+                }
+              ]
+            },
+            {
+              "turn": 2,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"Thank you for the hook, truly. But I'm still short on supplies for my voyage. Perhaps you have a sturdy knife I could... borrow?\""
+                }
+              ]
+            },
+            {
+              "turn": 3,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"A sturdy knife, you say? I do have one. Perhaps a trade then? The hook for the knife?\""
+                }
+              ]
+            },
+            {
+              "turn": 4,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"A trade, you say? Very well. This hook is quite useful, but a sturdy knife would be even more so for my journey. I'll gladly give you the hook.\""
+                }
+              ]
+            },
+            {
+              "turn": 5,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "EmoteEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "command": "emote smile",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 6,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "EmoteEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "command": "emote nod",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 10,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "pouch_7",
+                "fisherman"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal pouch from fisherman",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 11,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"I apologize for trying to follow you. I was just hoping to learn more about your voyages. Perhaps another time?\""
+                }
+              ]
+            },
+            {
+              "turn": 12,
+              "actor_index": 0,
+              "actor_id": "sailor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "fisherman",
+                  "event": "SayEvent",
+                  "text": "The sailor said \"I need to be going, fisherman. I have a long voyage ahead of me. Perhaps we can speak later.\""
+                }
+              ]
+            },
+            {
+              "turn": 31,
+              "actor_index": 1,
+              "actor_id": "fisherman",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "sailor",
+                  "event": "SayEvent",
+                  "text": "The fisherman said \"Alright, sailor. It seems you're truly in a hurry. I'll head to the pub then, as I mentioned. I'll give you this fishing hook, as a small token of our brief encounter. Perhaps it will bring you luck on your voyage.\""
+                }
+              ]
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "b304ce412e4d9ecee4a4f197",
+            8402
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            true
+          ],
+          "physical_ever": [
+            false,
+            true
+          ],
+          "physical_final": [
+            false,
+            true
+          ],
+          "goal_item_final_state": {
+            "a knife_12": {
+              "container": "fisherman",
+              "equipped": "wield"
+            },
+            "fishing hook_2": {
+              "container": "sailor",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "此轨迹fisherman提出hook换knife，sailor口头接受，两个物品均真实存在且分别由两人持有。随后转入Follow/Block、偷pouch失败、道歉和离别，直到本回合结束都没有实际hook/knife交接。说明不能把所有未完成都归为从未形成可执行方案。",
+      "scope_and_competing_explanations": "不能忽略方案后的互动变化或直接称纯执行能力缺失。它与c22bb共享原图和人物资产，但fisherman原作者goal是Give hook给sailor，而非Put hook入pouch；不是同一作者任务的配对因果对照。t31的再次口头提供也不是物理交付。"
+    },
+    {
+      "candidate_id": "12c39f0380b4b524b35b1c58",
+      "graph_sha256": "2848d4316ca7cb9845150972f136d950d8c724fb98a7bffac687c73bf5d067fc",
+      "title": "一方真实交付、另一项约定服务缺少原生实现",
+      "source_roles": [
+        {
+          "actor_id": "the witch",
+          "quest_file": "quest_stems/15182.json",
+          "goal": "steal leech from doctor",
+          "short_motivation": "I want to get the leech",
+          "mid_motivation": "I need the leech to make a potion for hair growth tonight ",
+          "long_motivation": "I hope to have very long luxuriant hair in the coming months ",
+          "bound_item_id": "leech_2"
+        },
+        {
+          "actor_id": "doctor",
+          "quest_file": "quest_stems/16899.json",
+          "goal": "steal staff from the witch",
+          "short_motivation": "I need the magic from the witch's staff",
+          "mid_motivation": "To heal the king, I need a powerful magic spell and only the staff can summon that power",
+          "long_motivation": "I have to heal the king to prevent him from dying which could lead to my prosecution",
+          "bound_item_id": "staff_4"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "gemma",
+          "seed": 8401,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl",
+          "episode_canonical_sha256": "53a3c9af703d741bcc4c571f219fe13cecac449f2eaf67b74d80ef0753e3cac3",
+          "selected_actual_events": [
+            {
+              "turn": 3,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the witch",
+                  "event": "SayEvent",
+                  "text": "The doctor said \"Very well. It seems direct negotiation is required. I will give you the leech. But in return, I need a guarantee. You will allow me to channel the staff's power, just once, to heal the King. I require no more than a few moments. Should you agree, I shall hand over the leech immediately.\""
+                }
+              ]
+            },
+            {
+              "turn": 4,
+              "actor_index": 0,
+              "actor_id": "the witch",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "doctor",
+                  "event": "SayEvent",
+                  "text": "The the witch said \"Very well, physician. A single moment with the staff, for the King. But you break your word, and you will regret it. Now, the leech.\""
+                }
+              ]
+            },
+            {
+              "turn": 5,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "leech_2",
+                "the witch"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "leech_2": {
+                  "container": {
+                    "before": "doctor",
+                    "after": "the witch"
+                  }
+                }
+              },
+              "command": "give leech to the witch"
+            },
+            {
+              "turn": 7,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "WhisperEvent",
+              "target_ids": [
+                "the witch"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the witch",
+                  "event": "WhisperEvent",
+                  "text": "The doctor whispered \"Now, about that staff... I need to be quick. Just a moment, and I'll be gone. The King's health truly depends on this.\" to you"
+                }
+              ]
+            },
+            {
+              "turn": 8,
+              "actor_index": 0,
+              "actor_id": "the witch",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "doctor",
+                  "event": "SayEvent",
+                  "text": "The the witch said \"Very well. But I'll be watching you, physician. Do not betray our agreement.\""
+                }
+              ]
+            },
+            {
+              "turn": 11,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "PointEvent",
+              "target_ids": [
+                "staff_4"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "command": "point staff",
+              "extra_payload_not_transmitted_as_speech": true
+            },
+            {
+              "turn": 23,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the witch",
+                  "event": "SayEvent",
+                  "text": "The doctor said \"Very well, you've made your point. Let me demonstrate. I need only a moment to focus, and then I shall return the staff.\""
+                }
+              ]
+            },
+            {
+              "turn": 31,
+              "actor_index": 1,
+              "actor_id": "doctor",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the witch",
+                  "event": "SayEvent",
+                  "text": "The doctor said \"Very well. Let me demonstrate. I need only a moment to focus, and then I shall return the staff.\""
+                }
+              ]
+            }
+          ],
+          "all_material_actions_index_key": [
+            "gemma",
+            "12c39f0380b4b524b35b1c58",
+            8401
+          ],
+          "strict_events_ever": [
+            false,
+            false
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            true,
+            false
+          ],
+          "physical_final": [
+            true,
+            false
+          ],
+          "goal_item_final_state": {
+            "leech_2": {
+              "container": "the witch",
+              "equipped": null
+            },
+            "staff_4": {
+              "container": "the witch",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "双方谈定leech换短暂staff使用，doctor实际Give leech，之后仍讨论演示和归还；staff从未离开witch。原始目标所需的staff取得未实现，leech取得则已真实实现。",
+      "scope_and_competing_explanations": "约定原话是一次channel/use，未明确必须转移所有权；此引擎无相应channel/heal动作或治愈flag，因此不能把没有Give staff直接打成违约或断言已治好King。这一例说明应区分实物前提与仅叙事服务。"
+    },
+    {
+      "candidate_id": "19368d9aeeb3a5faf9371be0",
+      "graph_sha256": "441f9a5b5e3b94689e1baa7ac15feddfa336363221c8d9d24108e927fa56c979",
+      "title": "既有帮助之后继续响应实际请求，并保留后续回转",
+      "source_roles": [
+        {
+          "actor_id": "the princess who lives in the castle and can't escape.",
+          "quest_file": "quest_stems/17071.json",
+          "goal": "steal herb from camper",
+          "short_motivation": "I need a healing herb",
+          "mid_motivation": "I have escaped from the kingdom and am hiding from the guards before I begin to explore, but I tripped and fell",
+          "long_motivation": "I hope to find a family that will take me in or a commoner to fall in love with",
+          "bound_item_id": "herb_7"
+        },
+        {
+          "actor_id": "camper",
+          "quest_file": "quest_stems/17274.json",
+          "goal": "steal book from the princess who lives in the castle and can't escape.",
+          "short_motivation": "I am feeding the Princess and am entitled to something in return",
+          "mid_motivation": "I need to eat a meal and would like to read this book",
+          "long_motivation": "I am risking my life by helping the princess but I will help her until she finds a place to stay",
+          "bound_item_id": "book_2"
+        }
+      ],
+      "episodes": [
+        {
+          "model": "32b",
+          "seed": 8402,
+          "raw_episode_path": "/home/xiang/.cache/game-npc-research/runs/e84_32b_full/episodes.jsonl",
+          "episode_canonical_sha256": "ea49a11d35102cd89e197e3471063b7abb7c4e3fc37ae39d244e5ec057fa18ae",
+          "selected_actual_events": [
+            {
+              "turn": -1,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the princess who lives in the castle and can't escape.",
+                  "event": "SayEvent",
+                  "text": "The camper said \"Your Highness, I have fruit for you and a small task in return. Would you be willing to let me take something of yours in exchange?\""
+                }
+              ]
+            },
+            {
+              "turn": 4,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "book_2",
+                "camper"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "book_2": {
+                  "container": {
+                    "before": "the princess who lives in the castle and can't escape.",
+                    "after": "camper"
+                  }
+                }
+              },
+              "command": "give book to camper"
+            },
+            {
+              "turn": 5,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "fruit_6",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "fruit_6": {
+                  "container": {
+                    "before": "camper",
+                    "after": "the princess who lives in the castle and can't escape."
+                  }
+                }
+              },
+              "command": "give fruit to the princess who lives in the castle and can't escape."
+            },
+            {
+              "turn": 16,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "IngestEvent",
+              "target_ids": [
+                "fruit_6"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "fruit_6": {
+                  "container": {
+                    "before": "the princess who lives in the castle and can't escape.",
+                    "after": "VOID"
+                  }
+                }
+              },
+              "command": "ingest fruit"
+            },
+            {
+              "turn": 17,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "SayEvent",
+              "target_ids": [],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "the princess who lives in the castle and can't escape.",
+                  "event": "SayEvent",
+                  "text": "The camper said \"Your Highness, I have the book you gave me. If you need anything, I am here to help.\""
+                }
+              ]
+            },
+            {
+              "turn": 18,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "herb_7",
+                "camper"
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal herb from camper"
+            },
+            {
+              "turn": 20,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "TellEvent",
+              "target_ids": [
+                "camper"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "camper",
+                  "event": "TellEvent",
+                  "text": "The the princess who lives in the castle and can't escape. told you \"I need the herb for an injury. Please, give it to me.\""
+                }
+              ]
+            },
+            {
+              "turn": 21,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "herb_7",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "herb_7": {
+                  "container": {
+                    "before": "camper",
+                    "after": "the princess who lives in the castle and can't escape."
+                  }
+                }
+              },
+              "command": "give herb to the princess who lives in the castle and can't escape."
+            },
+            {
+              "turn": 22,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "IngestEvent",
+              "target_ids": [
+                "herb_7"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "herb_7": {
+                  "container": {
+                    "before": "the princess who lives in the castle and can't escape.",
+                    "after": "VOID"
+                  }
+                }
+              },
+              "command": "ingest herb"
+            },
+            {
+              "turn": 24,
+              "actor_index": 0,
+              "actor_id": "the princess who lives in the castle and can't escape.",
+              "native_event": "TellEvent",
+              "target_ids": [
+                "camper"
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {},
+              "actual_native_messages_to_partner": [
+                {
+                  "viewer": "camper",
+                  "event": "TellEvent",
+                  "text": "The the princess who lives in the castle and can't escape. told you \"Thank you for your kindness. I truly appreciate your help.\""
+                }
+              ]
+            },
+            {
+              "turn": 25,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "GiveObjectEvent",
+              "target_ids": [
+                "book_2",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "book_2": {
+                  "container": {
+                    "before": "camper",
+                    "after": "the princess who lives in the castle and can't escape."
+                  }
+                }
+              },
+              "command": "give book to the princess who lives in the castle and can't escape."
+            },
+            {
+              "turn": 27,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "book_2",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal book from the princess who lives in the castle and can't escape."
+            },
+            {
+              "turn": 29,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "book_2",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": true,
+              "material_delta": {},
+              "command": "steal book from the princess who lives in the castle and can't escape."
+            },
+            {
+              "turn": 31,
+              "actor_index": 1,
+              "actor_id": "camper",
+              "native_event": "StealObjectEvent",
+              "target_ids": [
+                "book_2",
+                "the princess who lives in the castle and can't escape."
+              ],
+              "executed": true,
+              "native_failed_flag": false,
+              "material_delta": {
+                "book_2": {
+                  "container": {
+                    "before": "the princess who lives in the castle and can't escape.",
+                    "after": "camper"
+                  }
+                }
+              },
+              "command": "steal book from the princess who lives in the castle and can't escape."
+            }
+          ],
+          "all_material_actions_index_key": [
+            "32b",
+            "19368d9aeeb3a5faf9371be0",
+            8402
+          ],
+          "strict_events_ever": [
+            false,
+            true
+          ],
+          "physical_initial": [
+            false,
+            false
+          ],
+          "physical_ever": [
+            true,
+            true
+          ],
+          "physical_final": [
+            false,
+            true
+          ],
+          "goal_item_final_state": {
+            "herb_7": {
+              "container": "VOID",
+              "equipped": null
+            },
+            "book_2": {
+              "container": "camper",
+              "equipped": null
+            }
+          },
+          "final_health": [
+            10,
+            10
+          ],
+          "stop": "turn_limit"
+        }
+      ],
+      "our_reading": "camper提出fruit换princess的物品；book真实交付后fruit也真实提供并被吃下。随后camper表示愿意继续帮忙，公主明确请求herb，camper实际给药草、公主实际Ingest并致谢。这是伙伴先前所做之事与后续新请求相连的完整正向互动，不能仅报两个Steal标签。",
+      "scope_and_competing_explanations": "必须保留尾部：camper把book归还公主后又尝试偷回并最终成功。不能在首次达成时停表。初始/最终HP都为10，Ingest herb不等于已证明治愈；无法仅据这些动作判定全部更高目的或最优决策。"
+    }
+  ],
+  "quotation_rule": "Only successful native speech events and their recorded actual viewer messages are quoted. Any utterance attached to a non-speech action is untransmitted metadata, never dialogue evidence.",
+  "scope": [
+    "The two models control both characters. Case/model/seed contrasts here are descriptive, not an isolated NPC intervention.",
+    "Full 32-pair/23-graph cohort and all failures remain; illustrations do not define a scenario filter or rates of plans/fulfillment.",
+    "The E81-shared header already explicitly says only selected speech transmits text and non-speech utterance should be empty. Nevertheless Gemma has 612 non-speech extra payloads and Qwen has 10. Such text did not reach the partner and may change what each side actually knows and how negotiation proceeds. Model contrasts and unfulfilled plans cannot all be attributed to strategy or persona mechanisms; this readback starts no format-repair grid.",
+    "Source same-graph quests were independently authored, not a jointly authored cooperation game. No private-utility or cooperation-success gold is introduced.",
+    "Native event.failed is retained by event type; Reward failure from no XP is deterministic, not a random skill failure."
+  ],
+  "rebuild": {
+    "script": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_independent_goal_plans_posthoc.py",
+    "sha256": "d31b9bf7d2e0dac3a36d955ccf1ae078591ed9d6760308863a6f8d2fa584048f",
+    "command": "python3 /home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_independent_goal_plans_posthoc.py"
+  },
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "new_GPU_hours": 0
+}

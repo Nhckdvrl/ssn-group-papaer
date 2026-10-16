@@ -1,0 +1,2895 @@
+{
+  "experiment": "E84",
+  "status": "COMPLETE",
+  "model": "/home/xiang/.cache/huggingface/hub/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80",
+  "scope": "Whole model configuration controls both original roles. Roles, pairs and seeds from one original graph are not independent NPC treatment effects.",
+  "source_data": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+  "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+  "driver_sha256": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+  "report_sha256": "acd30f665a704262ca24d2814217523eb82e814934eda9371eeb7f2224acf58c",
+  "loader_sha256": "ae76b7ba48d80fa38b09ec64156de287f560f91d21d9d95271c2cec1807b8397",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/manifest.json": "73bc288ef9b179f2ff51df48b292c7b10e10ec5ffc646c8a85de8f4aba314154",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/runtime.json": "dff7c1228417f5faf5b0ff79da58096b0352fea6935c0a871321e9e84c648f0f",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl": "d6a6c8e5e304c064c0d9606acba1221556d26de92701ea44634ca2c0527b5ad9",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/states.jsonl": "3e6c330201fa4cd742235ab5c6a238e27e45244c62de0128fe8ed9c228476328",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/model_calls.jsonl": "7e6a3304a0a16e2a34a5936aa4a3398c71c717242a0a86c54ee706cccda3295a",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/reused_calls.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/manifest.json": "41e2d92f3c7ed57fa2df5d467722621daa3da143ff1d2783681e3286fa40974c",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/runtime.json": "a8110d34a6d533401e11ae890094d09ef7d90ac6d99576d451a8382f81cbd739",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl": "e49efcf6b6469af28f2b6666b5c0b0ac8e0b36da836cade417c0351fe7440e42",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/states.jsonl": "e9dfa3fea9d73256917bc3ed6c0d378c2c877f5f0801db72049a4d90b8400824",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/model_calls.jsonl": "842d0746f5b504e1739ce47ce85942e146324ec31bc95ee73c6e064abe64c590",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/reused_calls.jsonl": "622311c0683a7215b30cd91cb77f7f5e52dc36dd45d8c06736a9b572df38d43e",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json": "c64e7e2fcf74196c4f78d5b9e312aac4584577699dcf218992e7a7523d56a49d",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full_launch.json": "10b0f150a8df2277dbbe91c8f916a292a5d58568dddf171d6b3a0ca19f2c13d9"
+  },
+  "pairs": 32,
+  "independent_graphs": 23,
+  "logical_episodes": 64,
+  "seeds": [
+    8401,
+    8402
+  ],
+  "exact_duplicate_episode_records": [
+    {
+      "key": [
+        "0061d077087bc80453ff4f0d",
+        8401
+      ],
+      "exact": true,
+      "primary_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl",
+      "duplicate_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl"
+    }
+  ],
+  "measurement": {
+    "strict_event": "Successful native actor/class/target IDs match the source-bound original event; implicit Get uses current source parent. No receipt is relabeled as Steal/Get event.",
+    "material": "Get/Steal recursive ownership; Give/Put exact parent; Wear/Wield exact mode; Eat/Drink same actor consumes bound item into VOID. Drop/Remove have no substituted state label.",
+    "initial": "Initial true is reported explicitly. Newly reached only has initially-false measurable episodes in its denominator; None is never failure.",
+    "first_turn": "-1 is already true at initial state; 0..31 are actual alternating primitive opportunities. Histograms are raw logical counts, not independent-sample estimates.",
+    "weighting": "Within pair average fixed seeds, within original graph average pair values, then equal weight per measurable original graph. Unknown observations and denominators are explicit for every metric.",
+    "bootstrap": {
+      "draws": 4000,
+      "seed": 8484,
+      "unit": "original graph",
+      "kind": "pointwise percentile interval"
+    },
+    "both": "Co-occurring atomic events/material states are not cooperation success, welfare, agreement fulfillment or complete private purposes.",
+    "native_failed_flag": "Legacy driver field stochastic_failure directly records native event.failed. stochastic_failures and native_failed_flag_count are identical audit aliases, not a claim that every failure is random. RewardEvent may fail deterministically for insufficient reward_xp; event-type counts retain this distinction.",
+    "actual_bidirectional_Give": "At least one actual Give in each peer direction; includes returning the same item. It does not require different assets, accepted terms or a completed exchange."
+  },
+  "measurement_denominators": {
+    "role_0": {
+      "strict_supported": 62,
+      "strict_unknown_binding": 2,
+      "physical_initial_true": 4,
+      "physical_initial_false_new_attainment_denominator": 48,
+      "physical_not_defined_for_actor_event_goal": 10,
+      "physical_unknown_target_binding": 2
+    },
+    "role_1": {
+      "strict_supported": 64,
+      "strict_unknown_binding": 0,
+      "physical_initial_true": 12,
+      "physical_initial_false_new_attainment_denominator": 42,
+      "physical_not_defined_for_actor_event_goal": 10
+    },
+    "both_new_physical": {
+      "both_initially_false": 30,
+      "at_least_one_initially_true": 14,
+      "at_least_one_material_unknown_or_event_only": 22,
+      "scope": "Exclusion categories may overlap; initial truth is not unsupported measurement."
+    }
+  },
+  "overall": {
+    "actual_bidirectional_Give": {
+      "mean": 0.021739130434782608,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "both_atomic_events_or_acquisition_ever": {
+      "mean": 0.021739130434782608,
+      "known_logical_episodes": 62,
+      "excluded_or_unknown_logical_episodes": 2,
+      "raw_sum": 1.0,
+      "independent_graphs": 23,
+      "pairs": 31,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "both_new_physical_among_both_initially_false": {
+      "mean": 0.03571428571428571,
+      "known_logical_episodes": 30,
+      "excluded_or_unknown_logical_episodes": 34,
+      "raw_sum": 1.0,
+      "independent_graphs": 14,
+      "pairs": 15,
+      "graph_bootstrap_95": [
+        0.0,
+        0.10714285714285714
+      ]
+    },
+    "both_physical_ever": {
+      "mean": 0.08333333333333333,
+      "known_logical_episodes": 42,
+      "excluded_or_unknown_logical_episodes": 22,
+      "raw_sum": 3.0,
+      "independent_graphs": 18,
+      "pairs": 21,
+      "graph_bootstrap_95": [
+        0.0,
+        0.2222222222222222
+      ]
+    },
+    "both_physical_final": {
+      "mean": 0.05555555555555555,
+      "known_logical_episodes": 42,
+      "excluded_or_unknown_logical_episodes": 22,
+      "raw_sum": 2.0,
+      "independent_graphs": 18,
+      "pairs": 21,
+      "graph_bootstrap_95": [
+        0.0,
+        0.16666666666666666
+      ]
+    },
+    "both_physical_initial": {
+      "mean": 0.05555555555555555,
+      "known_logical_episodes": 42,
+      "excluded_or_unknown_logical_episodes": 22,
+      "raw_sum": 2.0,
+      "independent_graphs": 18,
+      "pairs": 21,
+      "graph_bootstrap_95": [
+        0.0,
+        0.16666666666666666
+      ]
+    },
+    "both_strict_events_ever": {
+      "mean": 0.0,
+      "known_logical_episodes": 62,
+      "excluded_or_unknown_logical_episodes": 2,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 31,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_action_opportunities": {
+      "mean": 16.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1024.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        15.999999999999998,
+        16.0
+      ]
+    },
+    "role_0_actual_speech_count": {
+      "mean": 8.717391304347826,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 559.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        7.228260869565217,
+        10.141304347826086
+      ]
+    },
+    "role_0_atomic_event_or_acquisition_ever": {
+      "mean": 0.29347826086956524,
+      "known_logical_episodes": 62,
+      "excluded_or_unknown_logical_episodes": 2,
+      "raw_sum": 18.0,
+      "independent_graphs": 23,
+      "pairs": 31,
+      "graph_bootstrap_95": [
+        0.15217391304347827,
+        0.44565217391304346
+      ]
+    },
+    "role_0_block_count": {
+      "mean": 0.5869565217391305,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 35.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.2391304347826087,
+        1.0434782608695652
+      ]
+    },
+    "role_0_consume_count": {
+      "mean": 0.021739130434782608,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "role_0_dead_final": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_drop_count": {
+      "mean": 0.25,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 20.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.06521739130434782,
+        0.4567934782608706
+      ]
+    },
+    "role_0_get_count": {
+      "mean": 0.2608695652173913,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 18.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.09782608695652174,
+        0.45652173913043476
+      ]
+    },
+    "role_0_give_count": {
+      "mean": 0.15217391304347827,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 8.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.043478260869565216,
+        0.3152173913043478
+      ]
+    },
+    "role_0_give_other_asset_count": {
+      "mean": 0.043478260869565216,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 2.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.13043478260869565
+      ]
+    },
+    "role_0_give_peer_count": {
+      "mean": 0.13043478260869565,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 6.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.021739130434782608,
+        0.2826086956521739
+      ]
+    },
+    "role_0_hit_count": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_legal_not_recorded_executed": {
+      "mean": 0.03260869565217391,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 2.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.08695652173913043
+      ]
+    },
+    "role_0_native_exceptions": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_native_failed_flag_count": {
+      "mean": 0.30434782608695654,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 19.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.15217391304347827,
+        0.4565217391304348
+      ]
+    },
+    "role_0_native_rejections": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_new_physical_ever_among_initially_false": {
+      "mean": 0.32894736842105265,
+      "known_logical_episodes": 48,
+      "excluded_or_unknown_logical_episodes": 16,
+      "raw_sum": 17.0,
+      "independent_graphs": 19,
+      "pairs": 24,
+      "graph_bootstrap_95": [
+        0.15789473684210525,
+        0.5
+      ]
+    },
+    "role_0_physical_ever": {
+      "mean": 0.39285714285714285,
+      "known_logical_episodes": 52,
+      "excluded_or_unknown_logical_episodes": 12,
+      "raw_sum": 21.0,
+      "independent_graphs": 21,
+      "pairs": 26,
+      "graph_bootstrap_95": [
+        0.22619047619047616,
+        0.5714285714285714
+      ]
+    },
+    "role_0_physical_final": {
+      "mean": 0.30952380952380953,
+      "known_logical_episodes": 52,
+      "excluded_or_unknown_logical_episodes": 12,
+      "raw_sum": 16.0,
+      "independent_graphs": 21,
+      "pairs": 26,
+      "graph_bootstrap_95": [
+        0.16666666666666666,
+        0.4642857142857143
+      ]
+    },
+    "role_0_physical_initial": {
+      "mean": 0.09523809523809523,
+      "known_logical_episodes": 52,
+      "excluded_or_unknown_logical_episodes": 12,
+      "raw_sum": 4.0,
+      "independent_graphs": 21,
+      "pairs": 26,
+      "graph_bootstrap_95": [
+        0.0,
+        0.23809523809523808
+      ]
+    },
+    "role_0_protocol_failure": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_put_count": {
+      "mean": 0.05434782608695652,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 3.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.15217391304347827
+      ]
+    },
+    "role_0_remove_count": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_steal_count": {
+      "mean": 0.010869565217391304,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.03260869565217391
+      ]
+    },
+    "role_0_stochastic_failures": {
+      "mean": 0.30434782608695654,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 19.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.15217391304347827,
+        0.4565217391304348
+      ]
+    },
+    "role_0_strict_event_ever": {
+      "mean": 0.05434782608695652,
+      "known_logical_episodes": 62,
+      "excluded_or_unknown_logical_episodes": 2,
+      "raw_sum": 3.0,
+      "independent_graphs": 23,
+      "pairs": 31,
+      "graph_bootstrap_95": [
+        0.0,
+        0.11956521739130435
+      ]
+    },
+    "role_0_successful_material_actions": {
+      "mean": 1.8043478260869565,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 121.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        1.2608695652173914,
+        2.369565217391304
+      ]
+    },
+    "role_0_wait_count": {
+      "mean": 0.14130434782608695,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 12.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.358695652173913
+      ]
+    },
+    "role_1_action_opportunities": {
+      "mean": 16.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1024.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        15.999999999999998,
+        16.0
+      ]
+    },
+    "role_1_actual_speech_count": {
+      "mean": 9.032608695652174,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 573.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        7.423913043478261,
+        10.652173913043477
+      ]
+    },
+    "role_1_atomic_event_or_acquisition_ever": {
+      "mean": 0.2391304347826087,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 15.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.10869565217391304,
+        0.3913043478260869
+      ]
+    },
+    "role_1_block_count": {
+      "mean": 0.7717391304347826,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 54.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.20652173913043478,
+        1.543750000000001
+      ]
+    },
+    "role_1_consume_count": {
+      "mean": 0.021739130434782608,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 2.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "role_1_dead_final": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_drop_count": {
+      "mean": 0.2826086956521739,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 20.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.10869565217391304,
+        0.47826086956521735
+      ]
+    },
+    "role_1_get_count": {
+      "mean": 0.17391304347826086,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 13.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.06521739130434782,
+        0.30434782608695654
+      ]
+    },
+    "role_1_give_count": {
+      "mean": 0.17391304347826086,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 10.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.07608695652173914,
+        0.2934782608695652
+      ]
+    },
+    "role_1_give_other_asset_count": {
+      "mean": 0.05434782608695652,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 3.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.11956521739130435
+      ]
+    },
+    "role_1_give_peer_count": {
+      "mean": 0.11956521739130435,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 6.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.03260869565217391,
+        0.23913043478260865
+      ]
+    },
+    "role_1_hit_count": {
+      "mean": 0.05434782608695652,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 5.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.14130434782608695
+      ]
+    },
+    "role_1_legal_not_recorded_executed": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_native_exceptions": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_native_failed_flag_count": {
+      "mean": 0.17391304347826086,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 9.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.07608695652173914,
+        0.2934782608695652
+      ]
+    },
+    "role_1_native_rejections": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_new_physical_ever_among_initially_false": {
+      "mean": 0.35294117647058826,
+      "known_logical_episodes": 42,
+      "excluded_or_unknown_logical_episodes": 22,
+      "raw_sum": 15.0,
+      "independent_graphs": 17,
+      "pairs": 21,
+      "graph_bootstrap_95": [
+        0.1764705882352941,
+        0.5588235294117647
+      ]
+    },
+    "role_1_physical_ever": {
+      "mean": 0.475,
+      "known_logical_episodes": 54,
+      "excluded_or_unknown_logical_episodes": 10,
+      "raw_sum": 27.0,
+      "independent_graphs": 20,
+      "pairs": 27,
+      "graph_bootstrap_95": [
+        0.3,
+        0.675
+      ]
+    },
+    "role_1_physical_final": {
+      "mean": 0.4,
+      "known_logical_episodes": 54,
+      "excluded_or_unknown_logical_episodes": 10,
+      "raw_sum": 22.0,
+      "independent_graphs": 20,
+      "pairs": 27,
+      "graph_bootstrap_95": [
+        0.25,
+        0.575
+      ]
+    },
+    "role_1_physical_initial": {
+      "mean": 0.2,
+      "known_logical_episodes": 54,
+      "excluded_or_unknown_logical_episodes": 10,
+      "raw_sum": 12.0,
+      "independent_graphs": 20,
+      "pairs": 27,
+      "graph_bootstrap_95": [
+        0.05,
+        0.375
+      ]
+    },
+    "role_1_protocol_failure": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_put_count": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_remove_count": {
+      "mean": 0.0,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 0.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_steal_count": {
+      "mean": 0.021739130434782608,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 1.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "role_1_stochastic_failures": {
+      "mean": 0.17391304347826086,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 9.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.07608695652173914,
+        0.2934782608695652
+      ]
+    },
+    "role_1_strict_event_ever": {
+      "mean": 0.10869565217391304,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 7.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.021739130434782608,
+        0.2173913043478261
+      ]
+    },
+    "role_1_successful_material_actions": {
+      "mean": 1.9130434782608696,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 130.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        1.2391304347826086,
+        2.7608695652173907
+      ]
+    },
+    "role_1_wait_count": {
+      "mean": 0.10869565217391304,
+      "known_logical_episodes": 64,
+      "excluded_or_unknown_logical_episodes": 0,
+      "raw_sum": 8.0,
+      "independent_graphs": 23,
+      "pairs": 32,
+      "graph_bootstrap_95": [
+        0.0,
+        0.2608695652173913
+      ]
+    }
+  },
+  "by_role_goal_verb": {
+    "role_0_drop": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "physical_ever": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "physical_final": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_0_give": {
+      "strict_event_ever": {
+        "mean": 0.3333333333333333,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.5
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.6666666666666666,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.8333333333333334,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 5.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.5,
+          1.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.8333333333333334,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 5.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.5,
+          1.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.5,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 4,
+        "raw_sum": 1.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.3333333333333333,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.5
+        ]
+      },
+      "give_count": {
+        "mean": 0.3333333333333333,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.5
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_0_put": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 2,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.16666666666666666,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.5
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.3333333333333333,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          1.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 6,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 3,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_0_steal": {
+      "strict_event_ever": {
+        "mean": 0.029411764705882353,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.08823529411764706
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.38235294117647056,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 16.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.20588235294117646,
+          0.5588235294117647
+        ]
+      },
+      "physical_final": {
+        "mean": 0.27941176470588236,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 11.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.11764705882352941,
+          0.44117647058823534
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.38235294117647056,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 16.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.20588235294117646,
+          0.5588235294117647
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.38235294117647056,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 16.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.20588235294117646,
+          0.5588235294117647
+        ]
+      },
+      "give_count": {
+        "mean": 0.1323529411764706,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 5.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3235294117647059
+        ]
+      },
+      "steal_count": {
+        "mean": 0.029411764705882353,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.08823529411764706
+        ]
+      },
+      "put_count": {
+        "mean": 0.014705882352941176,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.04411764705882353
+        ]
+      },
+      "consume_count": {
+        "mean": 0.029411764705882353,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.08823529411764706
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 40,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 17,
+        "pairs": 20,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_0_wear": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_drink": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_drop": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "physical_ever": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "physical_final": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": null,
+        "known_logical_episodes": 0,
+        "excluded_or_unknown_logical_episodes": 10,
+        "raw_sum": 0.0,
+        "independent_graphs": 0,
+        "pairs": 0
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.08333333333333333,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 10,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 3,
+        "pairs": 5,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_eat": {
+      "strict_event_ever": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "physical_final": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "give_count": {
+        "mean": 0.25,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.25,
+          0.25
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.5,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_get": {
+      "strict_event_ever": {
+        "mean": 1.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 1.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "physical_final": {
+        "mean": 1.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 1.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 1.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 4.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 2,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_give": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.8333333333333334,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 12.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.5,
+          1.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.8333333333333334,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 12.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.5,
+          1.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.6666666666666666,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 10.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.3333333333333333,
+          1.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.0,
+        "known_logical_episodes": 4,
+        "excluded_or_unknown_logical_episodes": 12,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 2,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.16666666666666666,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 2.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3333333333333333
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 16,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 6,
+        "pairs": 8,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_put": {
+      "strict_event_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "give_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "steal_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 2,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 1,
+        "pairs": 1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "role_1_steal": {
+      "strict_event_ever": {
+        "mean": 0.041666666666666664,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.125
+        ]
+      },
+      "physical_initial": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "physical_ever": {
+        "mean": 0.375,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 9.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.16666666666666666,
+          0.625
+        ]
+      },
+      "physical_final": {
+        "mean": 0.25,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 6.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.08333333333333333,
+          0.45833333333333326
+        ]
+      },
+      "new_physical_ever_among_initially_false": {
+        "mean": 0.375,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 9.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.16666666666666666,
+          0.625
+        ]
+      },
+      "atomic_event_or_acquisition_ever": {
+        "mean": 0.375,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 9.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.16666666666666666,
+          0.625
+        ]
+      },
+      "give_count": {
+        "mean": 0.25,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 6.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.041666666666666664,
+          0.4583333333333333
+        ]
+      },
+      "steal_count": {
+        "mean": 0.041666666666666664,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 1.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.125
+        ]
+      },
+      "put_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "consume_count": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "native_rejections": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "protocol_failure": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dead_final": {
+        "mean": 0.0,
+        "known_logical_episodes": 26,
+        "excluded_or_unknown_logical_episodes": 0,
+        "raw_sum": 0.0,
+        "independent_graphs": 12,
+        "pairs": 13,
+        "graph_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "first_attainment": {
+    "role_0_strict": {
+      "first_turn_counts": {
+        "10": 1,
+        "12": 1,
+        "16": 1
+      },
+      "unreached_known": 59,
+      "unknown": 2,
+      "initial_true_turn_code": -1
+    },
+    "role_0_physical": {
+      "first_turn_counts": {
+        "-1": 4,
+        "2": 4,
+        "4": 2,
+        "5": 1,
+        "6": 2,
+        "8": 2,
+        "10": 1,
+        "12": 1,
+        "16": 1,
+        "18": 1,
+        "24": 1,
+        "29": 1
+      },
+      "unreached_known": 31,
+      "unknown": 12,
+      "initial_true_turn_code": -1
+    },
+    "role_1_strict": {
+      "first_turn_counts": {
+        "1": 5,
+        "13": 1,
+        "23": 1
+      },
+      "unreached_known": 57,
+      "unknown": 0,
+      "initial_true_turn_code": -1
+    },
+    "role_1_physical": {
+      "first_turn_counts": {
+        "-1": 12,
+        "0": 1,
+        "1": 8,
+        "2": 1,
+        "7": 1,
+        "10": 1,
+        "11": 1,
+        "13": 1,
+        "23": 1
+      },
+      "unreached_known": 27,
+      "unknown": 10,
+      "initial_true_turn_code": -1
+    }
+  },
+  "raw_counts": {
+    "events": {
+      "1/SayEvent/successful": 511,
+      "0/SayEvent/successful": 513,
+      "1/EmoteEvent/successful": 254,
+      "1/TellEvent/successful": 21,
+      "0/EmoteEvent/successful": 206,
+      "0/WhisperEvent/successful": 36,
+      "1/WhisperEvent/successful": 41,
+      "0/TellEvent/successful": 10,
+      "1/GiveObjectEvent/successful": 10,
+      "0/QuestEvent/successful": 1,
+      "1/PointEvent/successful": 20,
+      "0/WaitEvent/successful": 12,
+      "0/StealObjectEvent/rejected_or_failed": 18,
+      "1/ExamineEvent/successful": 83,
+      "0/ExamineEvent/successful": 75,
+      "0/DropObjectEvent/successful": 20,
+      "1/GetObjectEvent/successful": 13,
+      "1/EatEvent/successful": 2,
+      "1/WieldEvent/successful": 6,
+      "0/GiveObjectEvent/successful": 8,
+      "1/FollowEvent/successful": 18,
+      "0/FollowEvent/successful": 27,
+      "1/WaitEvent/successful": 8,
+      "0/WieldEvent/successful": 2,
+      "1/DropObjectEvent/successful": 20,
+      "0/GetObjectEvent/successful": 18,
+      "0/HelpEvent/rejected_or_failed": 2,
+      "0/EquipObjectEvent/successful": 4,
+      "1/StealObjectEvent/rejected_or_failed": 8,
+      "1/BlockEvent/successful": 54,
+      "0/BlockEvent/successful": 35,
+      "0/StealObjectEvent/successful": 1,
+      "1/HitEvent/successful": 5,
+      "0/PutObjectInEvent/successful": 3,
+      "1/EquipObjectEvent/successful": 4,
+      "0/LookEvent/successful": 1,
+      "1/HealthEvent/successful": 3,
+      "0/PointEvent/successful": 27,
+      "0/HugEvent/successful": 1,
+      "1/UnblockEvent/successful": 1,
+      "1/StealObjectEvent/successful": 1,
+      "1/LookEvent/successful": 2,
+      "1/InventoryEvent/successful": 1,
+      "1/HugEvent/successful": 1,
+      "1/RewardEvent/rejected_or_failed": 1,
+      "0/UnblockEvent/successful": 2,
+      "0/RewardEvent/rejected_or_failed": 1,
+      "0/DrinkEvent/successful": 1
+    },
+    "native_failed_flags_by_event": {
+      "0/StealObjectEvent": 18,
+      "1/StealObjectEvent": 8,
+      "1/RewardEvent": 1,
+      "0/RewardEvent": 1
+    },
+    "native_errors": {},
+    "stop": {
+      "turn_limit": 64
+    }
+  },
+  "cost": {
+    "calls": 2112,
+    "prompt_tokens": 5313248,
+    "completion_tokens": 86325,
+    "parse_errors": 0,
+    "reused_calls": 33,
+    "sum_inference_wall_seconds": 792.4296005660435,
+    "sum_model_load_seconds": 50.772949343081564,
+    "runtime_model_load_plus_run_GPU_hours": 0.2342229305303125,
+    "observed_occupied_GPU_slot_hours": 0.2876741135120392,
+    "observed_slot_runs": 2,
+    "total_runs": 2,
+    "per_run": [
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile",
+        "profile": true,
+        "calls": 33,
+        "reused_calls": 0,
+        "runtime_load_seconds": 26.79187618906144,
+        "runtime_run_seconds": 64.60187965305522,
+        "runtime_model_load_plus_run_seconds": 91.39375584211666,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json",
+        "host": "fvcrc21",
+        "gpu": 1,
+        "pid": 1024190,
+        "launch_epoch": 1792137543.9948852,
+        "original_runtime_mtime_epoch": 1792137707.4916623,
+        "observed_occupied_slot_seconds": 167.40400981903076,
+        "monitoring_resume": null,
+        "wrapper_end_epoch": 1792137711.398895,
+        "wrapper_exit_code": 0,
+        "observed_occupied_slot_endpoint": "wrapper_observed_child_exit"
+      },
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full",
+        "profile": false,
+        "calls": 2079,
+        "reused_calls": 33,
+        "runtime_load_seconds": 23.981073154020123,
+        "runtime_run_seconds": 727.8277209129883,
+        "runtime_model_load_plus_run_seconds": 751.8087940670084,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full_launch.json",
+        "host": "fvcrc21",
+        "gpu": 1,
+        "pid": 1028157,
+        "launch_epoch": 1792137985.2933695,
+        "original_runtime_mtime_epoch": 1792138850.018429,
+        "observed_occupied_slot_seconds": 868.2227988243103,
+        "monitoring_resume": null,
+        "wrapper_end_epoch": 1792138853.5161684,
+        "wrapper_exit_code": 0,
+        "observed_occupied_slot_endpoint": "wrapper_observed_child_exit"
+      }
+    ],
+    "new_cloud_calls": 0,
+    "scope": "Costs include every supplied profile/full launch once; exact outcome reuse adds no samples or inference calls. Runtime model-load and run sub-timers are reported separately. Occupied GPU-slot intervals prefer wrapper start_epoch to end_epoch, when the wrapper observed child process exit, and include imports, loading, pauses, inference and teardown. Only without a recorded wrapper end is original runtime-file mtime used as a weaker endpoint; this fallback may omit teardown. Parallel launches count separate GPU slots. These are launch/exit wall-clock observations, not GPU-active or kernel timings; no unobserved timings are imputed.",
+    "wrapper_exit_observed_runs": 2,
+    "runtime_mtime_fallback_runs": 0
+  },
+  "numeric_episode_readback": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_numeric_readback/E84_gemma_complete_episodes.jsonl",
+    "sha256": "08ba0bf33433a77f07eb4d602667da1edf076bb485b1aec40934d6539203ef45",
+    "episodes": 64,
+    "scope": "Compact per-logical-episode metrics/milestones; complete speech, states and inputs remain in original raw artifacts."
+  },
+  "report_new_model_calls": 0,
+  "report_new_API_calls": 0,
+  "report_new_GPU_jobs": 0
+}

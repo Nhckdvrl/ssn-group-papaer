@@ -348,6 +348,34 @@ def aggregate(rows, metrics, profile):
     return estimates
 
 
+def completed_cost_ledger(info, costs, hashes):
+    """Final occupied slot ends at the recorded launcher exit, not JSON write."""
+    result = cost_ledger(info, costs, hashes)
+    result['launch_to_runtime_mtime_GPU_hours'] = result['observed_occupied_GPU_slot_hours']
+    for entry in result['per_run']:
+        entry['launch_to_runtime_mtime_seconds'] = entry['observed_occupied_slot_seconds']
+        path = Path(entry['run']).parent/(Path(entry['run']).name+'_launch.json')
+        launch = json.loads(path.read_text()) if path.exists() else {}
+        end = launch.get('end_epoch')
+        if end is not None:
+            assert launch['exit_code'] == 0
+            assert end >= entry['original_runtime_mtime_epoch']
+            seconds = end-launch['start_epoch']
+            assert abs(seconds/3600-launch['occupied_gpu_hours']) < 1e-9
+            entry.update(launcher_end_epoch=end, launcher_exit_code=launch['exit_code'],
+                         observed_occupied_slot_seconds=seconds)
+        else:
+            entry.update(launcher_end_epoch=None, launcher_exit_code=None,
+                         observed_occupied_slot_seconds=None)
+    timed = [e for e in result['per_run'] if e['observed_occupied_slot_seconds'] is not None]
+    result['observed_occupied_GPU_slot_hours'] = sum(e['observed_occupied_slot_seconds'] for e in timed)/3600
+    result['observed_slot_runs'] = len(timed)
+    result['scope'] = ('Final occupied slots use launcher start_epoch→end_epoch and include process shutdown; '
+        'launch→original runtime mtime is retained separately as a lower observation. Runtime load/run sub-timers '
+        'remain separate. All supplied profile/full costs counted once; exact duplicate episodes add no samples.')
+    return result
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--runs', type=Path, nargs='+', required=True)
@@ -378,7 +406,7 @@ def main():
         stops[row['stop']] += 1
         events.update(detail['raw_event_counts'])
     audit = native_and_inputs(rows,origins,cases,calls,jobs,modules,a.verify_replay)
-    cost = cost_ledger(info,costs,hashes)
+    cost = completed_cost_ledger(info,costs,hashes)
     cache = CACHE/'runs/e84_independent_goal_readback'
     cache.mkdir(exist_ok=True)
     raw = cache/(a.out.stem+'_episodes.jsonl')

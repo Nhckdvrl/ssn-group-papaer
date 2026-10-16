@@ -1,0 +1,3655 @@
+{
+  "experiment": "E84",
+  "status": "COMPLETE",
+  "model": "/home/xiang/.cache/huggingface/hub/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80",
+  "data": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+  "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+  "driver_sha256": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+  "report_sha256": "9750ff0f6211727ae4db1ac49ccf60f8df658ac91782875d04159c3a5b4d31d8",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/manifest.json": "73bc288ef9b179f2ff51df48b292c7b10e10ec5ffc646c8a85de8f4aba314154",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/runtime.json": "dff7c1228417f5faf5b0ff79da58096b0352fea6935c0a871321e9e84c648f0f",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl": "d6a6c8e5e304c064c0d9606acba1221556d26de92701ea44634ca2c0527b5ad9",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/states.jsonl": "3e6c330201fa4cd742235ab5c6a238e27e45244c62de0128fe8ed9c228476328",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/model_calls.jsonl": "7e6a3304a0a16e2a34a5936aa4a3398c71c717242a0a86c54ee706cccda3295a",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/reused_calls.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/manifest.json": "41e2d92f3c7ed57fa2df5d467722621daa3da143ff1d2783681e3286fa40974c",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/runtime.json": "a8110d34a6d533401e11ae890094d09ef7d90ac6d99576d451a8382f81cbd739",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl": "e49efcf6b6469af28f2b6666b5c0b0ac8e0b36da836cade417c0351fe7440e42",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/states.jsonl": "e9dfa3fea9d73256917bc3ed6c0d378c2c877f5f0801db72049a4d90b8400824",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/model_calls.jsonl": "842d0746f5b504e1739ce47ce85942e146324ec31bc95ee73c6e064abe64c590",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/reused_calls.jsonl": "622311c0683a7215b30cd91cb77f7f5e52dc36dd45d8c06736a9b572df38d43e",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json": "c64e7e2fcf74196c4f78d5b9e312aac4584577699dcf218992e7a7523d56a49d",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full_launch.json": "10b0f150a8df2277dbbe91c8f916a292a5d58568dddf171d6b3a0ca19f2c13d9"
+  },
+  "primary_episode_sources_ordered": [
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl"
+  ],
+  "source_pairs": 32,
+  "original_graphs": 23,
+  "episodes": 64,
+  "duplicate_episode_records": [
+    {
+      "key": [
+        "0061d077087bc80453ff4f0d",
+        8401
+      ],
+      "exact": true,
+      "primary_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl",
+      "duplicate_path": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full/episodes.jsonl"
+    }
+  ],
+  "measurement": {
+    "strict_event": "Current native goal with frozen authored item/target binding, same actor, legal successful event; no name rebinding.",
+    "physical": "Recursive possession for Get/Steal; exact Give/Put destination; exact wear/wield mode; own bound consumption into VOID. Drop/Remove have only strict events.",
+    "initial": "Physical predicates already true in source are explicitly separate; not evidence of newly induced cooperation.",
+    "joint": "Both original atomic events or, for Get/Steal only, material acquisition. Not agreement, complete purpose, mutual benefit or cooperation success.",
+    "unknown": "Unbound/nonimplemented predicates remain null and leave that metric denominator; all episodes remain.",
+    "bootstrap": {
+      "draws": 4000,
+      "seed": 8484,
+      "unit": "original graph",
+      "within_graph": "mean over original pairs and fixed seeds"
+    }
+  },
+  "independent_full_state_and_input_audit": {
+    "status": "PASS",
+    "exact_complete_model_inputs_checked": 2112,
+    "original_typed_native_events_replayed": 2112,
+    "full_graph_and_visible_history_snapshots_checked": 2112,
+    "whole_episodes_replayed": 64,
+    "whole_saved_sequences_checked": 64,
+    "typed_replay_requested": true,
+    "before_graph_byte_sha_differences": [],
+    "new_model_calls": 0,
+    "new_API_calls": 0
+  },
+  "estimates": {
+    "actual_bidirectional_Give": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.021739130434782608,
+      "graph_cluster_95CI": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "both_atomic_events_or_acquisition_ever": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 62,
+      "eligible_graphs": 23,
+      "graph_mean": 0.021739130434782608,
+      "graph_cluster_95CI": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "role_0_actual_speech_count": {
+      "raw_sum": 559.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 8.717391304347826,
+      "graph_cluster_95CI": [
+        7.239130434782608,
+        10.119836956521741
+      ]
+    },
+    "role_0_atomic_event_or_acquisition_ever": {
+      "raw_sum": 18.0,
+      "eligible_episodes": 62,
+      "eligible_graphs": 23,
+      "graph_mean": 0.29347826086956524,
+      "graph_cluster_95CI": [
+        0.15217391304347827,
+        0.44565217391304346
+      ]
+    },
+    "role_0_get_count": {
+      "raw_sum": 18.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.2608695652173913,
+      "graph_cluster_95CI": [
+        0.09782608695652174,
+        0.45652173913043476
+      ]
+    },
+    "role_0_give_count": {
+      "raw_sum": 8.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.15217391304347827,
+      "graph_cluster_95CI": [
+        0.03260869565217391,
+        0.30434782608695654
+      ]
+    },
+    "role_0_native_rejections": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_0_new_physical_ever_among_initially_false": {
+      "raw_sum": 17.0,
+      "eligible_episodes": 48,
+      "eligible_graphs": 19,
+      "graph_mean": 0.32894736842105265,
+      "graph_cluster_95CI": [
+        0.15789473684210525,
+        0.5003289473684223
+      ]
+    },
+    "role_0_physical_ever": {
+      "raw_sum": 21.0,
+      "eligible_episodes": 52,
+      "eligible_graphs": 21,
+      "graph_mean": 0.39285714285714285,
+      "graph_cluster_95CI": [
+        0.2261904761904762,
+        0.5714285714285714
+      ]
+    },
+    "role_0_physical_final": {
+      "raw_sum": 16.0,
+      "eligible_episodes": 52,
+      "eligible_graphs": 21,
+      "graph_mean": 0.30952380952380953,
+      "graph_cluster_95CI": [
+        0.15476190476190477,
+        0.47619047619047616
+      ]
+    },
+    "role_0_physical_initial": {
+      "raw_sum": 4.0,
+      "eligible_episodes": 52,
+      "eligible_graphs": 21,
+      "graph_mean": 0.09523809523809523,
+      "graph_cluster_95CI": [
+        0.0,
+        0.23809523809523808
+      ]
+    },
+    "role_0_steal_count": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.010869565217391304,
+      "graph_cluster_95CI": [
+        0.0,
+        0.03260869565217391
+      ]
+    },
+    "role_0_stochastic_failures": {
+      "raw_sum": 19.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.30434782608695654,
+      "graph_cluster_95CI": [
+        0.15217391304347827,
+        0.45652173913043476
+      ]
+    },
+    "role_0_strict_event_ever": {
+      "raw_sum": 3.0,
+      "eligible_episodes": 62,
+      "eligible_graphs": 23,
+      "graph_mean": 0.05434782608695652,
+      "graph_cluster_95CI": [
+        0.0,
+        0.11956521739130435
+      ]
+    },
+    "role_1_actual_speech_count": {
+      "raw_sum": 573.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 9.032608695652174,
+      "graph_cluster_95CI": [
+        7.445652173913044,
+        10.66304347826087
+      ]
+    },
+    "role_1_atomic_event_or_acquisition_ever": {
+      "raw_sum": 15.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.2391304347826087,
+      "graph_cluster_95CI": [
+        0.10869565217391304,
+        0.391304347826087
+      ]
+    },
+    "role_1_get_count": {
+      "raw_sum": 13.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.17391304347826086,
+      "graph_cluster_95CI": [
+        0.06494565217391314,
+        0.31521739130434784
+      ]
+    },
+    "role_1_give_count": {
+      "raw_sum": 10.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.17391304347826086,
+      "graph_cluster_95CI": [
+        0.07608695652173914,
+        0.29347826086956524
+      ]
+    },
+    "role_1_native_rejections": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": [
+        0.0,
+        0.0
+      ]
+    },
+    "role_1_new_physical_ever_among_initially_false": {
+      "raw_sum": 15.0,
+      "eligible_episodes": 42,
+      "eligible_graphs": 17,
+      "graph_mean": 0.35294117647058826,
+      "graph_cluster_95CI": [
+        0.17647058823529413,
+        0.5588235294117647
+      ]
+    },
+    "role_1_physical_ever": {
+      "raw_sum": 27.0,
+      "eligible_episodes": 54,
+      "eligible_graphs": 20,
+      "graph_mean": 0.475,
+      "graph_cluster_95CI": [
+        0.275,
+        0.675
+      ]
+    },
+    "role_1_physical_final": {
+      "raw_sum": 22.0,
+      "eligible_episodes": 54,
+      "eligible_graphs": 20,
+      "graph_mean": 0.4,
+      "graph_cluster_95CI": [
+        0.225,
+        0.5506250000000024
+      ]
+    },
+    "role_1_physical_initial": {
+      "raw_sum": 12.0,
+      "eligible_episodes": 54,
+      "eligible_graphs": 20,
+      "graph_mean": 0.2,
+      "graph_cluster_95CI": [
+        0.05,
+        0.375
+      ]
+    },
+    "role_1_steal_count": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.021739130434782608,
+      "graph_cluster_95CI": [
+        0.0,
+        0.06521739130434782
+      ]
+    },
+    "role_1_stochastic_failures": {
+      "raw_sum": 9.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.17391304347826086,
+      "graph_cluster_95CI": [
+        0.06521739130434782,
+        0.29347826086956524
+      ]
+    },
+    "role_1_strict_event_ever": {
+      "raw_sum": 7.0,
+      "eligible_episodes": 64,
+      "eligible_graphs": 23,
+      "graph_mean": 0.10869565217391304,
+      "graph_cluster_95CI": [
+        0.021739130434782608,
+        0.21739130434782608
+      ]
+    }
+  },
+  "raw_counts": {
+    "stop": {
+      "turn_limit": 64
+    },
+    "native_events": {
+      "1/SayEvent/successful": 511,
+      "0/SayEvent/successful": 513,
+      "1/EmoteEvent/successful": 254,
+      "1/TellEvent/successful": 21,
+      "0/EmoteEvent/successful": 206,
+      "0/WhisperEvent/successful": 36,
+      "1/WhisperEvent/successful": 41,
+      "0/TellEvent/successful": 10,
+      "1/GiveObjectEvent/successful": 10,
+      "0/QuestEvent/successful": 1,
+      "1/PointEvent/successful": 20,
+      "0/WaitEvent/successful": 12,
+      "0/StealObjectEvent/rejected_or_failed": 18,
+      "1/ExamineEvent/successful": 83,
+      "0/ExamineEvent/successful": 75,
+      "0/DropObjectEvent/successful": 20,
+      "1/GetObjectEvent/successful": 13,
+      "1/EatEvent/successful": 2,
+      "1/WieldEvent/successful": 6,
+      "0/GiveObjectEvent/successful": 8,
+      "1/FollowEvent/successful": 18,
+      "0/FollowEvent/successful": 27,
+      "1/WaitEvent/successful": 8,
+      "0/WieldEvent/successful": 2,
+      "1/DropObjectEvent/successful": 20,
+      "0/GetObjectEvent/successful": 18,
+      "0/HelpEvent/rejected_or_failed": 2,
+      "0/EquipObjectEvent/successful": 4,
+      "1/StealObjectEvent/rejected_or_failed": 8,
+      "1/BlockEvent/successful": 54,
+      "0/BlockEvent/successful": 35,
+      "0/StealObjectEvent/successful": 1,
+      "1/HitEvent/successful": 5,
+      "0/PutObjectInEvent/successful": 3,
+      "1/EquipObjectEvent/successful": 4,
+      "0/LookEvent/successful": 1,
+      "1/HealthEvent/successful": 3,
+      "0/PointEvent/successful": 27,
+      "0/HugEvent/successful": 1,
+      "1/UnblockEvent/successful": 1,
+      "1/StealObjectEvent/successful": 1,
+      "1/LookEvent/successful": 2,
+      "1/InventoryEvent/successful": 1,
+      "1/HugEvent/successful": 1,
+      "1/RewardEvent/rejected_or_failed": 1,
+      "0/UnblockEvent/successful": 2,
+      "0/RewardEvent/rejected_or_failed": 1,
+      "0/DrinkEvent/successful": 1
+    },
+    "native_error_events": 0,
+    "episodes_with_any_actor_death": 0
+  },
+  "cost": {
+    "calls": 2112,
+    "prompt_tokens": 5313248,
+    "completion_tokens": 86325,
+    "parse_errors": 0,
+    "reused_calls": 33,
+    "sum_inference_wall_seconds": 792.4296005660435,
+    "sum_model_load_seconds": 50.772949343081564,
+    "runtime_model_load_plus_run_GPU_hours": 0.2342229305303125,
+    "observed_occupied_GPU_slot_hours": 0.2876741135120392,
+    "observed_slot_runs": 2,
+    "total_runs": 2,
+    "per_run": [
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile",
+        "profile": true,
+        "calls": 33,
+        "reused_calls": 0,
+        "runtime_load_seconds": 26.79187618906144,
+        "runtime_run_seconds": 64.60187965305522,
+        "runtime_model_load_plus_run_seconds": 91.39375584211666,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json",
+        "host": "fvcrc21",
+        "gpu": 1,
+        "pid": 1024190,
+        "launch_epoch": 1792137543.9948852,
+        "original_runtime_mtime_epoch": 1792137707.4916623,
+        "observed_occupied_slot_seconds": 167.40400981903076,
+        "monitoring_resume": null,
+        "launch_to_runtime_mtime_seconds": 163.4967770576477,
+        "launcher_end_epoch": 1792137711.398895,
+        "launcher_exit_code": 0
+      },
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full",
+        "profile": false,
+        "calls": 2079,
+        "reused_calls": 33,
+        "runtime_load_seconds": 23.981073154020123,
+        "runtime_run_seconds": 727.8277209129883,
+        "runtime_model_load_plus_run_seconds": 751.8087940670084,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_full_launch.json",
+        "host": "fvcrc21",
+        "gpu": 1,
+        "pid": 1028157,
+        "launch_epoch": 1792137985.2933695,
+        "original_runtime_mtime_epoch": 1792138850.018429,
+        "observed_occupied_slot_seconds": 868.2227988243103,
+        "monitoring_resume": null,
+        "launch_to_runtime_mtime_seconds": 864.7250595092773,
+        "launcher_end_epoch": 1792138853.5161684,
+        "launcher_exit_code": 0
+      }
+    ],
+    "new_cloud_calls": 0,
+    "scope": "Final occupied slots use launcher start_epoch→end_epoch and include process shutdown; launch→original runtime mtime is retained separately as a lower observation. Runtime load/run sub-timers remain separate. All supplied profile/full costs counted once; exact duplicate episodes add no samples.",
+    "launch_to_runtime_mtime_GPU_hours": 0.28561717682414584
+  },
+  "episodes_readback": [
+    {
+      "case_id": "0061d077087bc80453ff4f0d",
+      "seed": 8401,
+      "graph_sha256": "b2db34299835a49df3217cc7402fac0147ec0f9633ab36d219928bda90e2f7f7",
+      "quest_files": [
+        "quest_stems/16205.json",
+        "quest_stems/16711.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 16,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 16,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "0061d077087bc80453ff4f0d",
+      "seed": 8402,
+      "graph_sha256": "b2db34299835a49df3217cc7402fac0147ec0f9633ab36d219928bda90e2f7f7",
+      "quest_files": [
+        "quest_stems/16205.json",
+        "quest_stems/16711.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 16,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "12c39f0380b4b524b35b1c58",
+      "seed": 8401,
+      "graph_sha256": "2848d4316ca7cb9845150972f136d950d8c724fb98a7bffac687c73bf5d067fc",
+      "quest_files": [
+        "quest_stems/15182.json",
+        "quest_stems/16899.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 14,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 14,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "12c39f0380b4b524b35b1c58",
+      "seed": 8402,
+      "graph_sha256": "2848d4316ca7cb9845150972f136d950d8c724fb98a7bffac687c73bf5d067fc",
+      "quest_files": [
+        "quest_stems/15182.json",
+        "quest_stems/16899.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 15,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 16,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "160742ded667ed21c3ba1c56",
+      "seed": 8401,
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "quest_files": [
+        "quest_stems/12865.json",
+        "quest_stems/13708.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "eat"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 3,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 13,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "160742ded667ed21c3ba1c56",
+      "seed": 8402,
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "quest_files": [
+        "quest_stems/12865.json",
+        "quest_stems/13708.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "eat"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 3,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 13,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "19368d9aeeb3a5faf9371be0",
+      "seed": 8401,
+      "graph_sha256": "441f9a5b5e3b94689e1baa7ac15feddfa336363221c8d9d24108e927fa56c979",
+      "quest_files": [
+        "quest_stems/17071.json",
+        "quest_stems/17274.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 14,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "19368d9aeeb3a5faf9371be0",
+      "seed": 8402,
+      "graph_sha256": "441f9a5b5e3b94689e1baa7ac15feddfa336363221c8d9d24108e927fa56c979",
+      "quest_files": [
+        "quest_stems/17071.json",
+        "quest_stems/17274.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 6,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "28b660e52e49c9d4f709beb9",
+      "seed": 8401,
+      "graph_sha256": "a81c7c63af82967c1e478f23f4ddb9628c3b8e25d5e485e6b4096ddf90dd98c1",
+      "quest_files": [
+        "quest_stems/14244.json",
+        "quest_stems/16381.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 2,
+        "role_0_actual_speech_count": 6,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "28b660e52e49c9d4f709beb9",
+      "seed": 8402,
+      "graph_sha256": "a81c7c63af82967c1e478f23f4ddb9628c3b8e25d5e485e6b4096ddf90dd98c1",
+      "quest_files": [
+        "quest_stems/14244.json",
+        "quest_stems/16381.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "2b678277fe25a8314a8e4284",
+      "seed": 8401,
+      "graph_sha256": "3be8592aa967912f70f33e0029be2b1ecbb6af6ee0f4b90c2d2d1c15fe55c0d7",
+      "quest_files": [
+        "quest_stems/13756.json",
+        "quest_stems/13780.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 2,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 8,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "2b678277fe25a8314a8e4284",
+      "seed": 8402,
+      "graph_sha256": "3be8592aa967912f70f33e0029be2b1ecbb6af6ee0f4b90c2d2d1c15fe55c0d7",
+      "quest_files": [
+        "quest_stems/13756.json",
+        "quest_stems/13780.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 15,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 16,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "30327cfdb09483c64a2f3184",
+      "seed": 8401,
+      "graph_sha256": "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e",
+      "quest_files": [
+        "quest_stems/13811.json",
+        "quest_stems/13812.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 4,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "30327cfdb09483c64a2f3184",
+      "seed": 8402,
+      "graph_sha256": "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e",
+      "quest_files": [
+        "quest_stems/13811.json",
+        "quest_stems/13812.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 6,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "367e2d6963c81915881868c4",
+      "seed": 8401,
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "quest_files": [
+        "quest_stems/15780.json",
+        "quest_stems/17137.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": null,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": null,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": null,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "367e2d6963c81915881868c4",
+      "seed": 8402,
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "quest_files": [
+        "quest_stems/15780.json",
+        "quest_stems/17137.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": null,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": null,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 15,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 17,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": null,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "3ab40a1b5e4c594ba69ccb6a",
+      "seed": 8401,
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "quest_files": [
+        "quest_stems/17113.json",
+        "quest_stems/17137.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 2,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 14,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "3ab40a1b5e4c594ba69ccb6a",
+      "seed": 8402,
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "quest_files": [
+        "quest_stems/17113.json",
+        "quest_stems/17137.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 1,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 1,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 14,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 17,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "45f11acd0b3a11300be74178",
+      "seed": 8401,
+      "graph_sha256": "979613276ccd9bd8bd6d0cb3fb432b6181a9499285b23e973951fe7d8d849f39",
+      "quest_files": [
+        "quest_stems/14334.json",
+        "quest_stems/14873.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 2,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 1,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "45f11acd0b3a11300be74178",
+      "seed": 8402,
+      "graph_sha256": "979613276ccd9bd8bd6d0cb3fb432b6181a9499285b23e973951fe7d8d849f39",
+      "quest_files": [
+        "quest_stems/14334.json",
+        "quest_stems/14873.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 13,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 7,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "4e6fdf6cb936fb3a40d222d2",
+      "seed": 8401,
+      "graph_sha256": "144cbd53084265d064d4f5238d2a39f88e34d9dc3b956daa4e6f4fc6ba8facc8",
+      "quest_files": [
+        "quest_stems/11128.json",
+        "quest_stems/11135.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "get"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 0,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 1,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "4e6fdf6cb936fb3a40d222d2",
+      "seed": 8402,
+      "graph_sha256": "144cbd53084265d064d4f5238d2a39f88e34d9dc3b956daa4e6f4fc6ba8facc8",
+      "quest_files": [
+        "quest_stems/11128.json",
+        "quest_stems/11135.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "get"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 0,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 1,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "54bb561ee0d6de1b73c8c057",
+      "seed": 8401,
+      "graph_sha256": "ab6cef1caa7dbdb201f726ce1ad93fcb4b0d8b0998c393bbe54d13b202326b19",
+      "quest_files": [
+        "quest_stems/14588.json",
+        "quest_stems/15654.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "get"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 6,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 2,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "54bb561ee0d6de1b73c8c057",
+      "seed": 8402,
+      "graph_sha256": "ab6cef1caa7dbdb201f726ce1ad93fcb4b0d8b0998c393bbe54d13b202326b19",
+      "quest_files": [
+        "quest_stems/14588.json",
+        "quest_stems/15654.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "get"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 1,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 2,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "55fa1228e279a4bcc3268248",
+      "seed": 8401,
+      "graph_sha256": "b0b26cb6c593a876bfa11365618017fd212c0f08c14a99dd04f22b4611e06e34",
+      "quest_files": [
+        "quest_stems/14777.json",
+        "quest_stems/15629.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 1,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 1,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "55fa1228e279a4bcc3268248",
+      "seed": 8402,
+      "graph_sha256": "b0b26cb6c593a876bfa11365618017fd212c0f08c14a99dd04f22b4611e06e34",
+      "quest_files": [
+        "quest_stems/14777.json",
+        "quest_stems/15629.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 8,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "6054c8261063a5fc0ebf1e81",
+      "seed": 8401,
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "quest_files": [
+        "quest_stems/16878.json",
+        "quest_stems/17371.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 7,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 3,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "6054c8261063a5fc0ebf1e81",
+      "seed": 8402,
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "quest_files": [
+        "quest_stems/16878.json",
+        "quest_stems/17371.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "63e1c3c7db75553de0dba339",
+      "seed": 8401,
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "quest_files": [
+        "quest_stems/13676.json",
+        "quest_stems/13708.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "eat"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 14,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 12,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "63e1c3c7db75553de0dba339",
+      "seed": 8402,
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "quest_files": [
+        "quest_stems/13676.json",
+        "quest_stems/13708.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "eat"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 13,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 13,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "646778d4d5156641b9677fd2",
+      "seed": 8401,
+      "graph_sha256": "ad25570d55107148cc9e0fcaf2afd129b82aa6dd80e5ed013b60cf4e28faf330",
+      "quest_files": [
+        "quest_stems/11857.json",
+        "quest_stems/12099.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "646778d4d5156641b9677fd2",
+      "seed": 8402,
+      "graph_sha256": "ad25570d55107148cc9e0fcaf2afd129b82aa6dd80e5ed013b60cf4e28faf330",
+      "quest_files": [
+        "quest_stems/11857.json",
+        "quest_stems/12099.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 7,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 15,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "649ee9013d2f0e4b87a648d5",
+      "seed": 8401,
+      "graph_sha256": "64185d6868fa5b11a043f52acc715fa203166d5ade6a5bdbc96d0dd0ea30ce9a",
+      "quest_files": [
+        "quest_stems/16595.json",
+        "quest_stems/17127.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 1,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 1,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 1,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 3,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "649ee9013d2f0e4b87a648d5",
+      "seed": 8402,
+      "graph_sha256": "64185d6868fa5b11a043f52acc715fa203166d5ade6a5bdbc96d0dd0ea30ce9a",
+      "quest_files": [
+        "quest_stems/16595.json",
+        "quest_stems/17127.json"
+      ],
+      "goal_verbs": [
+        "put",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 6,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 10,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "67a7d824b520861490983197",
+      "seed": 8401,
+      "graph_sha256": "b2db34299835a49df3217cc7402fac0147ec0f9633ab36d219928bda90e2f7f7",
+      "quest_files": [
+        "quest_stems/16295.json",
+        "quest_stems/16711.json"
+      ],
+      "goal_verbs": [
+        "wear",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 14,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 13,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "67a7d824b520861490983197",
+      "seed": 8402,
+      "graph_sha256": "b2db34299835a49df3217cc7402fac0147ec0f9633ab36d219928bda90e2f7f7",
+      "quest_files": [
+        "quest_stems/16295.json",
+        "quest_stems/16711.json"
+      ],
+      "goal_verbs": [
+        "wear",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 8,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 14,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "71f35f196bb0f33ce94d7caf",
+      "seed": 8401,
+      "graph_sha256": "246f2448db7410326fb20b3aad1e6d5cc6a3965e496c462c002138402118c826",
+      "quest_files": [
+        "quest_stems/14933.json",
+        "quest_stems/15395.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 14,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "71f35f196bb0f33ce94d7caf",
+      "seed": 8402,
+      "graph_sha256": "246f2448db7410326fb20b3aad1e6d5cc6a3965e496c462c002138402118c826",
+      "quest_files": [
+        "quest_stems/14933.json",
+        "quest_stems/15395.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 15,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "88ffa8b1a5c36b21cb91b760",
+      "seed": 8401,
+      "graph_sha256": "81351398d4a6e663c90fb486f8499a08a7774b0cdad1bdd1712710032707cae4",
+      "quest_files": [
+        "quest_stems/11159.json",
+        "quest_stems/11161.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 7,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 15,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "88ffa8b1a5c36b21cb91b760",
+      "seed": 8402,
+      "graph_sha256": "81351398d4a6e663c90fb486f8499a08a7774b0cdad1bdd1712710032707cae4",
+      "quest_files": [
+        "quest_stems/11159.json",
+        "quest_stems/11161.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 2,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "9576f9a9c894679cc02ec19f",
+      "seed": 8401,
+      "graph_sha256": "a235bacecd67abfe4b85e723e7ea41f6fb41aa156d0e1ec651400dc714f7f985",
+      "quest_files": [
+        "quest_stems/9024.json",
+        "quest_stems/9028.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 1,
+        "role_0_physical_initial": 1,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 7,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 5,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 1
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "9576f9a9c894679cc02ec19f",
+      "seed": 8402,
+      "graph_sha256": "a235bacecd67abfe4b85e723e7ea41f6fb41aa156d0e1ec651400dc714f7f985",
+      "quest_files": [
+        "quest_stems/9024.json",
+        "quest_stems/9028.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 1,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "9ea064ba94eba3ef30efbf3b",
+      "seed": 8401,
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "quest_files": [
+        "quest_stems/16311.json",
+        "quest_stems/17371.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 1,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 1,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 2,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "9ea064ba94eba3ef30efbf3b",
+      "seed": 8402,
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "quest_files": [
+        "quest_stems/16311.json",
+        "quest_stems/17371.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "a3fd584d946acc8f2ee8429b",
+      "seed": 8401,
+      "graph_sha256": "ab6cef1caa7dbdb201f726ce1ad93fcb4b0d8b0998c393bbe54d13b202326b19",
+      "quest_files": [
+        "quest_stems/14588.json",
+        "quest_stems/16911.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 3,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 3,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "a3fd584d946acc8f2ee8429b",
+      "seed": 8402,
+      "graph_sha256": "ab6cef1caa7dbdb201f726ce1ad93fcb4b0d8b0998c393bbe54d13b202326b19",
+      "quest_files": [
+        "quest_stems/14588.json",
+        "quest_stems/16911.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 0,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 1,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 7,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "b304ce412e4d9ecee4a4f197",
+      "seed": 8401,
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "quest_files": [
+        "quest_stems/14247.json",
+        "quest_stems/14853.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 9,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "b304ce412e4d9ecee4a4f197",
+      "seed": 8402,
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "quest_files": [
+        "quest_stems/14247.json",
+        "quest_stems/14853.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 9,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c0114b3cc18c9438d33aa4ee",
+      "seed": 8401,
+      "graph_sha256": "18459d3f5a6156796c2c3cd9a65638becfdfdb51543f9e958487dbd784861d93",
+      "quest_files": [
+        "quest_stems/13378.json",
+        "quest_stems/13472.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 5,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 10,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c0114b3cc18c9438d33aa4ee",
+      "seed": 8402,
+      "graph_sha256": "18459d3f5a6156796c2c3cd9a65638becfdfdb51543f9e958487dbd784861d93",
+      "quest_files": [
+        "quest_stems/13378.json",
+        "quest_stems/13472.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 8,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 2,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 6,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c20e9fc9b435d3c4cfee20ca",
+      "seed": 8401,
+      "graph_sha256": "979613276ccd9bd8bd6d0cb3fb432b6181a9499285b23e973951fe7d8d849f39",
+      "quest_files": [
+        "quest_stems/14334.json",
+        "quest_stems/14476.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 2,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 9,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c20e9fc9b435d3c4cfee20ca",
+      "seed": 8402,
+      "graph_sha256": "979613276ccd9bd8bd6d0cb3fb432b6181a9499285b23e973951fe7d8d849f39",
+      "quest_files": [
+        "quest_stems/14334.json",
+        "quest_stems/14476.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 10,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 9,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c22bb96e1d30526d715cc3e4",
+      "seed": 8401,
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "quest_files": [
+        "quest_stems/14247.json",
+        "quest_stems/15118.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "put"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 2,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c22bb96e1d30526d715cc3e4",
+      "seed": 8402,
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "quest_files": [
+        "quest_stems/14247.json",
+        "quest_stems/15118.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "put"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 10,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c2c8f7b33027dae97e7853be",
+      "seed": 8401,
+      "graph_sha256": "81351398d4a6e663c90fb486f8499a08a7774b0cdad1bdd1712710032707cae4",
+      "quest_files": [
+        "quest_stems/11159.json",
+        "quest_stems/11162.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 8,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "c2c8f7b33027dae97e7853be",
+      "seed": 8402,
+      "graph_sha256": "81351398d4a6e663c90fb486f8499a08a7774b0cdad1bdd1712710032707cae4",
+      "quest_files": [
+        "quest_stems/11159.json",
+        "quest_stems/11162.json"
+      ],
+      "goal_verbs": [
+        "drop",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": null,
+        "role_0_physical_ever": null,
+        "role_0_physical_final": null,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 7,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 10,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        8,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "ce1afd26d2282dd531e03daf",
+      "seed": 8401,
+      "graph_sha256": "5dbba51d584519e4ef31a99857c4ffe6305eedbe931420d703e2962bd972a9ab",
+      "quest_files": [
+        "quest_stems/15100.json",
+        "quest_stems/16852.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 1,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 16,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 15,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "ce1afd26d2282dd531e03daf",
+      "seed": 8402,
+      "graph_sha256": "5dbba51d584519e4ef31a99857c4ffe6305eedbe931420d703e2962bd972a9ab",
+      "quest_files": [
+        "quest_stems/15100.json",
+        "quest_stems/16852.json"
+      ],
+      "goal_verbs": [
+        "give",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 1,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 1,
+        "role_0_new_physical_ever_among_initially_false": null,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 13,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 1,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 12,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "cecdf3fdd16a52ff26dbface",
+      "seed": 8401,
+      "graph_sha256": "7a67400517cd6f59d8f211d2291327a3b17ccd81a0f9c46bc5ed2402a023caaf",
+      "quest_files": [
+        "quest_stems/14606.json",
+        "quest_stems/16533.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drink"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 9,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 4,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "cecdf3fdd16a52ff26dbface",
+      "seed": 8402,
+      "graph_sha256": "7a67400517cd6f59d8f211d2291327a3b17ccd81a0f9c46bc5ed2402a023caaf",
+      "quest_files": [
+        "quest_stems/14606.json",
+        "quest_stems/16533.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drink"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 11,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "e60e554dc4c086afafdf65ea",
+      "seed": 8401,
+      "graph_sha256": "b0b26cb6c593a876bfa11365618017fd212c0f08c14a99dd04f22b4611e06e34",
+      "quest_files": [
+        "quest_stems/13867.json",
+        "quest_stems/15629.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 12,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 3,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "e60e554dc4c086afafdf65ea",
+      "seed": 8402,
+      "graph_sha256": "b0b26cb6c593a876bfa11365618017fd212c0f08c14a99dd04f22b4611e06e34",
+      "quest_files": [
+        "quest_stems/13867.json",
+        "quest_stems/15629.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "drop"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 2,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": null,
+        "role_1_physical_ever": null,
+        "role_1_physical_final": null,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 1,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "fb35734fac676deb926aa2c8",
+      "seed": 8401,
+      "graph_sha256": "c5a452ab941eb28449bb672bde076c3586f9afe740ad8e9cb538dd0e48cee585",
+      "quest_files": [
+        "quest_stems/6398.json",
+        "quest_stems/6399.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 11,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": 1,
+        "role_1_atomic_event_or_acquisition_ever": 1,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 1,
+        "role_1_actual_speech_count": 13,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 1,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        2,
+        2
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    },
+    {
+      "case_id": "fb35734fac676deb926aa2c8",
+      "seed": 8402,
+      "graph_sha256": "c5a452ab941eb28449bb672bde076c3586f9afe740ad8e9cb538dd0e48cee585",
+      "quest_files": [
+        "quest_stems/6398.json",
+        "quest_stems/6399.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "steal"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 1,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 1,
+        "role_0_atomic_event_or_acquisition_ever": 1,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 1,
+        "role_0_actual_speech_count": 2,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 0,
+        "role_1_physical_ever": 0,
+        "role_1_physical_final": 0,
+        "role_1_new_physical_ever_among_initially_false": 0,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 9,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 1,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        2,
+        2
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    }
+  ],
+  "full_actual_interactions": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_readback/E84_gemma_complete_audit_episodes.jsonl",
+    "sha256": "c877fc48bdc05d66a3ea5b412012b85f65997cfc9e95515082eabe72c889f746",
+    "episodes": 64
+  },
+  "scope": "Both roles use this model. Profile is one technical case, not a population result. Original quests are independent annotations on the same original graph. No uniform cooperation label.",
+  "report_new_model_calls": 0,
+  "report_new_API_calls": 0
+}

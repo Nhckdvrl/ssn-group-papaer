@@ -5,7 +5,7 @@
   "data": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
   "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
   "driver_sha256": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
-  "report_sha256": "ae76b7ba48d80fa38b09ec64156de287f560f91d21d9d95271c2cec1807b8397",
+  "report_sha256": "9750ff0f6211727ae4db1ac49ccf60f8df658ac91782875d04159c3a5b4d31d8",
   "source_sha256": {
     "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/manifest.json": "73bc288ef9b179f2ff51df48b292c7b10e10ec5ffc646c8a85de8f4aba314154",
     "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/runtime.json": "dff7c1228417f5faf5b0ff79da58096b0352fea6935c0a871321e9e84c648f0f",
@@ -246,7 +246,7 @@
     "sum_inference_wall_seconds": 64.60187965305522,
     "sum_model_load_seconds": 26.79187618906144,
     "runtime_model_load_plus_run_GPU_hours": 0.02538715440058796,
-    "observed_occupied_GPU_slot_hours": 0.04541577140490214,
+    "observed_occupied_GPU_slot_hours": 0.046501113838619657,
     "observed_slot_runs": 1,
     "total_runs": 1,
     "per_run": [
@@ -264,12 +264,16 @@
         "pid": 1024190,
         "launch_epoch": 1792137543.9948852,
         "original_runtime_mtime_epoch": 1792137707.4916623,
-        "observed_occupied_slot_seconds": 163.4967770576477,
-        "monitoring_resume": null
+        "observed_occupied_slot_seconds": 167.40400981903076,
+        "monitoring_resume": null,
+        "launch_to_runtime_mtime_seconds": 163.4967770576477,
+        "launcher_end_epoch": 1792137711.398895,
+        "launcher_exit_code": 0
       }
     ],
     "new_cloud_calls": 0,
-    "scope": "Costs include every supplied profile/full run once; duplicate outcomes add no samples. Runtime load+run sub-timers are separate from launch→original runtime mtime slot observations, which include import, loading, pauses and inference. No unobserved timings are imputed."
+    "scope": "Final occupied slots use launcher start_epoch→end_epoch and include process shutdown; launch→original runtime mtime is retained separately as a lower observation. Runtime load/run sub-timers remain separate. All supplied profile/full costs counted once; exact duplicate episodes add no samples.",
+    "launch_to_runtime_mtime_GPU_hours": 0.04541577140490214
   },
   "episodes_readback": [
     {

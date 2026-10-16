@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 
 from native_independent_goal_audit import load_runs
-from native_cooperation_report import cost_ledger
+from native_cooperation_report import cost_ledger as runtime_cost_ledger
 
 SEEDS = [8401, 8402]
 BOOTSTRAPS, BOOTSTRAP_SEED = 4000, 8484
@@ -29,6 +29,41 @@ EVENTS = {'get':'GetObjectEvent', 'steal':'StealObjectEvent',
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def cost_ledger(info, costs, hashes):
+    """Prefer observed child exit over the weaker runtime-write endpoint.
+
+    This derived-report correction does not modify frozen execution or its
+    shared reporting dependency. The interval counts the assigned GPU slot
+    from wrapper launch through the wrapper's observation of child exit,
+    including process teardown; it is not GPU-kernel or inference time.
+    """
+    ledger = runtime_cost_ledger(info, costs, hashes)
+    for entry in ledger['per_run']:
+        if entry.get('launch_metadata') is None:
+            entry['observed_occupied_slot_endpoint'] = None
+            continue
+        launch = json.loads(Path(entry['launch_metadata']).read_text())
+        if launch.get('end_epoch') is not None:
+            finished = launch['end_epoch']
+            assert finished >= entry['original_runtime_mtime_epoch'] - 2
+            entry.update(wrapper_end_epoch=finished, wrapper_exit_code=launch.get('exit_code'),
+                observed_occupied_slot_endpoint='wrapper_observed_child_exit',
+                observed_occupied_slot_seconds=finished-entry['launch_epoch'])
+        else:
+            entry.update(wrapper_end_epoch=None, wrapper_exit_code=launch.get('exit_code'),
+                observed_occupied_slot_endpoint='runtime_file_mtime_fallback')
+    timed = [x for x in ledger['per_run'] if x['observed_occupied_slot_seconds'] is not None]
+    ledger['observed_occupied_GPU_slot_hours'] = sum(x['observed_occupied_slot_seconds'] for x in timed)/3600
+    ledger['wrapper_exit_observed_runs'] = sum(x.get('observed_occupied_slot_endpoint') == 'wrapper_observed_child_exit' for x in timed)
+    ledger['runtime_mtime_fallback_runs'] = sum(x.get('observed_occupied_slot_endpoint') == 'runtime_file_mtime_fallback' for x in timed)
+    ledger['scope'] = ('Costs include every supplied profile/full launch once; exact outcome reuse adds no samples or inference calls. '
+        'Runtime model-load and run sub-timers are reported separately. Occupied GPU-slot intervals prefer wrapper start_epoch to '
+        'end_epoch, when the wrapper observed child process exit, and include imports, loading, pauses, inference and teardown. '
+        'Only without a recorded wrapper end is original runtime-file mtime used as a weaker endpoint; this fallback may omit teardown. '
+        'Parallel launches count separate GPU slots. These are launch/exit wall-clock observations, not GPU-active or kernel timings; no unobserved timings are imputed.')
+    return ledger
 
 
 def successful(t):
@@ -95,7 +130,7 @@ def read_episode(row, case):
     ever, current = list(initial), row['initial_state']
     first_strict = [None, None]
     first_material = [-1 if v is True else None for v in initial]
-    counts, events, errors = Counter(), Counter(), Counter()
+    counts, events, errors, failed_flags = Counter(), Counter(), Counter(), Counter()
     flows = []
     assert row['physical_goal_initial'] == initial
     assert [t['turn'] for t in row['turns']] == list(range(len(row['turns'])))
@@ -115,6 +150,9 @@ def read_episode(row, case):
         counts[prefix+'action_opportunities'] += int(t['turn'] >= 0)
         counts[prefix+'native_rejections'] += int(not t['legal'])
         counts[prefix+'stochastic_failures'] += int(bool(t.get('stochastic_failure')))
+        counts[prefix+'native_failed_flag_count'] += int(bool(t.get('stochastic_failure')))
+        if t.get('stochastic_failure'):
+            failed_flags[(str(i), event)] += 1
         counts[prefix+'native_exceptions'] += int(bool(t.get('native_exception')))
         counts[prefix+'legal_not_recorded_executed'] += int(t['legal'] and not t.get('executed'))
         if t.get('error') or t.get('native_exception'):
@@ -173,7 +211,7 @@ def read_episode(row, case):
         metric[p+'new_physical_ever_among_initially_false'] = int(bool(ever[i])) if initial[i] is False else None
         metric[p+'atomic_event_or_acquisition_ever'] = (None if strict[i] is None else int(bool(strict[i] or (
             case['goal_bindings'][i]['verb'] in ['get','steal'] and ever[i]))))
-        for label in ['action_opportunities','native_rejections','stochastic_failures','native_exceptions',
+        for label in ['action_opportunities','native_rejections','stochastic_failures','native_failed_flag_count','native_exceptions',
                 'legal_not_recorded_executed','successful_material_actions','give_count','steal_count','get_count',
                 'put_count','drop_count','remove_count','consume_count','actual_speech_count','give_peer_count',
                 'give_other_asset_count','hit_count','block_count','wait_count']:
@@ -191,7 +229,9 @@ def read_episode(row, case):
         'goal_verbs':[b['verb'] for b in case['goal_bindings']],'metrics':metric,
         'first_strict_turn':first_strict,'first_physical_turn':first_material,
         'stop':row['stop'],'final_health':row['final_health'],'final_dead':row['final_dead'],
-        'raw_event_counts':{'/'.join(k):v for k,v in events.items()},'native_errors':dict(errors)}
+        'raw_event_counts':{'/'.join(k):v for k,v in events.items()},
+        'native_failed_flags_by_event':{'/'.join(k):v for k,v in failed_flags.items()},
+        'native_errors':dict(errors)}
 
 
 def estimate(observations, profile):
@@ -285,9 +325,10 @@ def main():
         assert set(rows)=={(cid,s) for cid in cases for s in SEEDS}, 'Full cohort not complete; no partial result reported'
     details=[read_episode(row,cases[k[0]]) for k,row in sorted(rows.items())]
     overall, by_goal, first=aggregate(details,args.profile)
-    event_counts, errors, stops=Counter(),Counter(),Counter()
+    event_counts, errors, stops, failed_flags=Counter(),Counter(),Counter(),Counter()
     for d in details:
         event_counts.update(d['raw_event_counts']);errors.update(d['native_errors']);stops[d['stop']]+=1
+        failed_flags.update(d['native_failed_flags_by_event'])
     cache=source.parent.parent/'e84_independent_goal_numeric_readback'
     cache.mkdir(exist_ok=True)
     detail_file=cache/(args.out.stem+'_episodes.jsonl')
@@ -304,10 +345,13 @@ def main():
             'first_turn':'-1 is already true at initial state; 0..31 are actual alternating primitive opportunities. Histograms are raw logical counts, not independent-sample estimates.',
             'weighting':'Within pair average fixed seeds, within original graph average pair values, then equal weight per measurable original graph. Unknown observations and denominators are explicit for every metric.',
             'bootstrap':None if args.profile else {'draws':BOOTSTRAPS,'seed':BOOTSTRAP_SEED,'unit':'original graph','kind':'pointwise percentile interval'},
-            'both':'Co-occurring atomic events/material states are not cooperation success, welfare, agreement fulfillment or complete private purposes.'},
+            'both':'Co-occurring atomic events/material states are not cooperation success, welfare, agreement fulfillment or complete private purposes.',
+            'native_failed_flag':'Legacy driver field stochastic_failure directly records native event.failed. stochastic_failures and native_failed_flag_count are identical audit aliases, not a claim that every failure is random. RewardEvent may fail deterministically for insufficient reward_xp; event-type counts retain this distinction.',
+            'actual_bidirectional_Give':'At least one actual Give in each peer direction; includes returning the same item. It does not require different assets, accepted terms or a completed exchange.'},
         'measurement_denominators':denominators(details,cases),
         'overall':overall,'by_role_goal_verb':by_goal,'first_attainment':first,
-        'raw_counts':{'events':dict(event_counts),'native_errors':dict(errors),'stop':dict(stops)},
+        'raw_counts':{'events':dict(event_counts),'native_failed_flags_by_event':dict(failed_flags),
+            'native_errors':dict(errors),'stop':dict(stops)},
         'cost':cost_ledger(info,costs,hashes),
         'numeric_episode_readback':{'path':str(detail_file),'sha256':sha(detail_file),'episodes':len(details),
             'scope':'Compact per-logical-episode metrics/milestones; complete speech, states and inputs remain in original raw artifacts.'},
