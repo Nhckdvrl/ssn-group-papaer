@@ -21,7 +21,8 @@
 | 非唯一性 | Chen et al. ICML 2026, All Circuits Lead to Rome | 忠实性与多个稀疏电路 | faithful subcircuit不保证唯一解释 | [ALL_CIRCUITS](papers/ALL_CIRCUITS_2026.md) |
 | 条件与粒度 | Bayat Makou et al. arXiv 2026, Many Circuits, One Mechanism | 75电路与条件间比较 | 电路图差异可不对应计算机制差异 | [MANY_CIRCUITS](papers/MANY_CIRCUITS_2026.md) |
 | 抽取定义 | Sheng & Fu arXiv 2026, Circuit Claims Depend on What Is Extracted... | 抽取对象与比较层次 | 功能图相似性本身依赖粒度/抽取方法 | [SHENG](papers/SHENG_2026.md) |
-| 重学 / 可逆性 | Jain 2024；Deeb & Roger 2024；Guo 2024；Siddiqui 2025；2505.16831；Schallon 2026 | 仅摘要 | 能力会回来、离原解近就回去，均在整模型 / 表示层面；无组件层面的“回到谁身上” | [RELEARNING](papers/RELEARNING_REVERSIBILITY_2024_2026.md) |
+| 重学 / 可逆性 | UNDO 2025；Siddiqui 2025；Deeb & Roger 2024；Jain 2024；Guo 2024 | 正文精读（10-17） | 遗忘普遍可逆；加噪 + 蒸馏抗重学（无机制）；Guo：改写入端 MLP 比改抽取头更难重学（组件层面最近邻） | [UNDO](papers/UNDO_LEE_2025.md) · [SIDDIQUI](papers/SIDDIQUI_2025.md) · [DEEB](papers/DEEB_ROGER_2024.md) · [JAIN](papers/JAIN_2024.md) · [GUO](papers/GUO_MECH_UNLEARNING_2024.md) · [总览](papers/RELEARNING_REVERSIBILITY_2024_2026.md) |
+| 自修复 / 可塑性 | Rushing & Nanda ICML 2024；arXiv 2606.24752 | 正文精读（10-17） | 推理时 previous-token / induction 头不自修复；可塑性丧失有现象无机制、未测重置 | [RUSHING](papers/RUSHING_NANDA_2024.md) · [PLASTICITY](papers/PLASTICITY_SCALE_2026.md) |
 
 **阅读范围诚实标记**：这些卡主要来自相关正文/特定附录的核读与当前workbench实验对照，未对15篇逐一完成全附录证明、软件逐函数审计或本地复现。使用“精读卡”是指带实验逻辑与批判性边界的独立阅读资产，不是上述深度均已完成。
 
