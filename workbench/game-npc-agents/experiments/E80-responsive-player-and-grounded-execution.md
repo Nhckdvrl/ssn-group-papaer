@@ -32,3 +32,11 @@
 两模型各2源图/24完整episode收齐：Gemma168新calls/216精确复用、50.404s推理＋23.825s载入；32B211新calls/184复用、82.326s＋33.603s。两者全部episode均跑满16机会，0原生拒绝/死亡/协议失败，32B原生Steal失败12次和Reward无奖励3次保留。每模型408事件（含opening）独立CPU重放、384/395真实input-key/schema/messages重建、12对共同初始输入/动作和72/97玩家私有目标隔离检查通过。profile只做闭环/成本，不用2图估计普适角色效应；所有成功和失败保留、输入匹配才复用。
 
 源装备CPU对照确认79/79的Equip与Wear/Wield actor stats相同，完整状态唯一差异为源equipped字符串；继续分列exact/strict/generic，不静默替换主口径。依据profile成本，固定全200图×原三seed×原两trait×两backend×两模型，在fvcrc20/21现场空闲的8个独立单卡槽扩展，每模型4片，全部profile精确复用。两节点同一driver/data/Conda路径与SHA核对通过、时钟差<5s，不复制修改raw时间戳；profile先结束再启动full，峰值≤8。driver SHA `bd2e5ac631795a18cf03a27bf33bfb41722143ca6ae93333a81a028270073e8a`，skills `8665d31e6f36c5ac3501d8cfc0e6963aab2b85cd9bf890ec52786333c764bc0a`，data `feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f`。不改变条件、评价或seed。
+
+### POST-HOC补充读回（完整profile后、全样本结果前固定）
+
+除原全图主读数外，额外核对成对执行器首次共同选择两步后果的分叉点。该点以前后台尚未改变实际事件/可见历史，两臂应共享状态、选择、原生见证。CPU重放共同prefix，重算Get/Remove前提，再比较model_steps的下一真实命令与native_skill实现。首次激活子群以共同prefix形成，与分叉后内生触发次数分开；只回答同状态已选后果的实现，不用它替代全200图结果或估计跨trait能力。此分析明确POST-HOC，不追记为首模型前预注册，不新增模型调用。
+
+### 启动异常与原配置恢复（不产生科学样本）
+
+fvcrc20四个首attempt均在模型初始化失败，无model calls/episode。机器实际为RTX PRO 6000 SM120；FlashInfer默认发现`/usr/local/cuda`的12.8工具链，规范化SM120f要求CUDA≥12.9而架构列表为空，最终误报sm75。没有证据是继承了旧ARCH环境变量。仅为该四worker指定现有Conda内cu13工具链（nvcc13.2）、PATH及真实`FLASHINFER_CUDA_ARCH_LIST=12.0f`，同一driver/skills/data/seed/条件恢复。失败目录/log/launch以`_init_failed`保留，每片约4.8分钟实际占卡另计；不作为低效果种子删除。
