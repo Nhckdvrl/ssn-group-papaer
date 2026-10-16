@@ -81,6 +81,10 @@ def main():
     ap.add_argument("--eval_every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0, help="torch seed, forget-prompt seed (seed + 1) and retain-data offset")
     ap.add_argument("--tag", default="")
+    ap.add_argument("--format_reg", type=float, default=0.0, help="penalty keeping the original IOI probe readout "
+                    "(projection of the final-position residual on saved probe directions) unchanged -- keeps the upstream "
+                    "feature in its original format (E116)")
+    ap.add_argument("--probe_dirs", default="/home/xiang/mechpop_cache/e116_probe_dirs.pt")
     ap.add_argument("--attn_reg", type=float, default=0.0, help="penalty weight on attention distortion (KL to the original "
                     "model's attention) on general Pile text -- narrows the edit's footprint on general data (E112)")
     a = ap.parse_args()
@@ -89,6 +93,17 @@ def main():
     tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", cache_dir=str(mc.HF_CACHE))
     model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32,
                                                  attn_implementation="eager" if a.attn_reg > 0 else "sdpa").cuda()
+    fmt = None
+    if a.format_reg > 0:
+        dirs = torch.load(a.probe_dirs)
+        fmt = {l: dirs[l]["w"].cuda() for l in dirs}
+        ref_m = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32).cuda().eval()
+        fmt_ref = []
+        with torch.no_grad():
+            for g in train:
+                hs = ref_m(g["toks"].cuda(), output_hidden_states=True).hidden_states
+                fmt_ref.append({l: hs[l][:, -1] @ fmt[l] for l in fmt})
+        del ref_m
     ref = None
     if a.attn_reg > 0:
         ref = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="eager").cuda().eval()
@@ -116,8 +131,14 @@ def main():
         x = g["toks"].cuda()
         io = torch.tensor([t[0] for t in g["tg"]], device="cuda")
         s = torch.tensor([f[0] for f in g["fo"]], device="cuda")
-        lg = model(x).logits[:, -1]
+        out_f = model(x, output_hidden_states=fmt is not None)
+        lg = out_f.logits[:, -1]
         diff = lg.gather(1, io[:, None]) - lg.gather(1, s[:, None])
+        freg = torch.zeros((), device="cuda")
+        if fmt is not None:
+            gi = step % len(train)
+            for l in fmt:
+                freg = freg + ((out_f.hidden_states[l][:, -1] @ fmt[l] - fmt_ref[gi][l]) ** 2).mean()
         forget = torch.relu(diff + a.margin).mean()
         r = torch.tensor(tbl.slice(ptr, a.retain_bs).to_pylist()).cuda()
         ptr += a.retain_bs
@@ -133,7 +154,7 @@ def main():
                 reg = reg + (A * (torch.log(A + 1e-9) - torch.log(Bq + 1e-9))).sum(-1).mean()
             reg = reg / len(ra)
         opt.zero_grad(set_to_none=True)
-        (forget + a.retain_w * retain + a.attn_reg * reg).backward()
+        (forget + a.retain_w * retain + a.attn_reg * reg + a.format_reg * freg).backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
         if step % a.eval_every == 0:
