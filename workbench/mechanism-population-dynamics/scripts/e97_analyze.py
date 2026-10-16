@@ -35,10 +35,13 @@ def main():
             A = pre["maps"][(t, "all")].mean(0).ravel()
             B = post["maps"][(t, "all")].mean(0).ravel()
             ref = ctrl["maps"][(t, "all")].mean(0).ravel() if ctrl else A
-            gain = B - ref
             idx = l * H + h
-            gain[idx] = -np.inf
-            taker = int(np.argmax(gain))
+            # take-over head = strongest post-lesion carrier other than the lesioned head (the "largest increase"
+            # definition picked up strongly negative heads relaxing to zero, e.g. 8.10 on IOI: -0.90 -> 0.01)
+            Bx = B.copy()
+            Bx[idx] = -np.inf
+            taker = int(np.argmax(Bx))
+            gain = B - ref
             order = [i for i in np.argsort(-A) if i != idx]
             rank = order.index(taker) + 2  # the lesioned head was rank 1
             out[f"{tag}:{t}"] = {"lesioned": head, "taker": f"{taker // H}.{taker % H}", "taker_pre_rank": rank,
@@ -46,7 +49,7 @@ def main():
                                   "lesioned_recovery": round(float(B[idx] / A[idx]), 3) if A[idx] > 0 else None,
                                   "taker_eff_pre_post": [round(float(A[taker]), 3), round(float(B[taker]), 3)],
                                   "task_metric_pre_post": [round(float(pre["clean"][t].mean()), 2), round(float(post["clean"][t].mean()), 2)],
-                                  "top3_post": [f"{i // H}.{i % H}" for i in np.argsort(-B)[:3]]}
+                                  "top3_post": [f"{i // H}.{i % H}" for i in np.argsort(-B)[:3]], "taker_gain_vs_ref": round(float(gain[taker]), 3)}
             print(f"{tag}:{t}", out[f"{tag}:{t}"], flush=True)
     if out:
         hits = [v["hit_rank2"] for v in out.values()]
