@@ -562,6 +562,15 @@ def main():
     replay=states_and_replay(rows,origins,cases,calls,jobs,modules,a.verify_replay)
     groups=aggregate(rows,data,cases,a.profile)
     cost=cost_ledger(info,costs,hashes)
+    # Verbatim interaction extracts are raw derived assets, not repository
+    # evidence summaries. Keep them in the existing cache and bind by SHA.
+    cache_dir=CACHE/'runs/e81_cooperation_readback'
+    cache_dir.mkdir(exist_ok=True)
+    cache_path=cache_dir/(a.out.stem+'_episodes.jsonl')
+    cache_path.write_text(''.join(json.dumps(d,ensure_ascii=False)+'\n' for d in details))
+    retained=['case_id','seed','graph_sha256','receiver_kind','task_family','metrics',
+        'first_milestones','final_source_direct_parent','final_source_ultimate_owner',
+        'final_source_equipped_mode','stop']
     result={'experiment':'E81','status':'PROFILE_TECHNICAL_ONLY' if a.profile else 'COMPLETE',
         'model':manifest['model'],'data':str(source),'data_sha256':sha(source),
         'driver_sha256':manifest['driver_sha256'],'report_sha256':sha(Path(__file__)),
@@ -586,7 +595,10 @@ def main():
         'raw_counts':{'stop':dict(stops),'events':{'/'.join(k):v for k,v in sorted(raw_events.items())},
             'native_errors':dict(errors),'final_source_equipped_modes':dict(final_modes)},
         'cost':cost,
-        'episodes_readback':details,'report_new_model_calls':0,'report_new_API_calls':0}
+        'full_interaction_readback':{'path':str(cache_path),'sha256':sha(cache_path),'episodes':len(details),
+            'scope':'Verbatim actual speech, source events, all Give flows and native errors retained in cache; not semantic gold.'},
+        'episodes_readback':[{f:d[f] for f in retained} for d in details],
+        'report_new_model_calls':0,'report_new_API_calls':0}
     a.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'out':str(a.out),'status':result['status'],'graphs':result['independent_graphs'],
         'episodes':len(rows),'replay':replay,'cost':result['cost']},ensure_ascii=False))

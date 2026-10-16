@@ -1,0 +1,355 @@
+{
+  "status": "SOURCE_INDEX_AND_OBSERVED_OPPORTUNITY_REVIEW",
+  "experiment": "E81",
+  "auditor": "experiment_review",
+  "analysis_timestamp_utc": "2026-10-16T06:53:11.003106+00:00",
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "new_GPU_jobs": 0,
+  "source_data": {
+    "cohort": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/snapshots.jsonl",
+    "cohort_sha256": "77fd0e46a5ccaee7215be00d594864818384df23e48c7753741b2d20b4e83f71",
+    "cohort_worlds": 126,
+    "broader_catalog": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/trade_source_catalog.jsonl",
+    "broader_catalog_sha256": "36fb4c4dad0acf97a6b61faa950dbc3c1846ca3a7ae0dac27565d0a958f75e96",
+    "broader_source_annotations": 845,
+    "scope": "All126 and all845 annotations indexed, including absent and ambiguous assets. Mechanical economic/currency cues are not semantic labels or value/utility gold.",
+    "broader_index_semantic_status": "All845 are recall-only inventory/source pointers; full partner motives and literal-span audit remain in the existing hashed source catalog, not copied here."
+  },
+  "trajectory_cutoffs": [
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/episodes.jsonl",
+      "complete_prefix_bytes": 529236,
+      "complete_prefix_sha256": "8fef99fbdf5061272e9a7b22bf6b0fea5ac948fd69943989d5960bb2bc816e77",
+      "complete_rows_at_read": 4,
+      "trailing_incomplete_rows_excluded": 0
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/episodes.jsonl",
+      "complete_prefix_bytes": 3949025,
+      "complete_prefix_sha256": "e8211c39cc9b9e367ac0c0f5a155a4b7c27f5744fcb69792868edfeb6f8edd2f",
+      "complete_rows_at_read": 36,
+      "trailing_incomplete_rows_excluded": 0
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s1/episodes.jsonl",
+      "complete_prefix_bytes": 3669387,
+      "complete_prefix_sha256": "a6c38b4656420d371bb67e4311e5569d961e41cc69217995b960d557a2737185",
+      "complete_rows_at_read": 36,
+      "trailing_incomplete_rows_excluded": 0
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_gemma_profile/episodes.jsonl",
+      "complete_prefix_bytes": 555277,
+      "complete_prefix_sha256": "30a53de2cb7a783a51eb3cbcd9c3218421270f98c6831b6c1c07ea9ee81dc072",
+      "complete_rows_at_read": 4,
+      "trailing_incomplete_rows_excluded": 0
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_gemma_s0/episodes.jsonl",
+      "complete_prefix_bytes": 2309628,
+      "complete_prefix_sha256": "af8be6ea71d8de106f2375ed926e1bc2f0d308b56966781d5f439d241ebb40b0",
+      "complete_rows_at_read": 20,
+      "trailing_incomplete_rows_excluded": 0
+    },
+    {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e81_gemma_s1/episodes.jsonl",
+      "complete_prefix_bytes": 2286471,
+      "complete_prefix_sha256": "4431329c6b76cf0608c7437a9ce88a45884b563091e4d1f42983d8c7727a3f34",
+      "complete_rows_at_read": 20,
+      "trailing_incomplete_rows_excluded": 0
+    }
+  ],
+  "trajectory_coverage_at_cutoff": {
+    "unique_model_case_seed_episodes": 112,
+    "distinct_source_graphs": 36,
+    "by_model": {
+      "32b": 72,
+      "gemma": 40
+    },
+    "duplicate_complete_rows_excluded": 8,
+    "scope": "Only complete episodes at recorded prefixes; no seed/world chosen by effects and not a completed E81 aggregate result."
+  },
+  "exact_recorded_menu_evidence": [
+    {
+      "model": "32b",
+      "case_id": "0ea748244b8fd61ae803",
+      "seed": 8101,
+      "turn": 1,
+      "index": 1,
+      "call_source": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/model_calls.jsonl",
+      "decision_key": "808f4ea2c9ef648bc6a14cbe3a7ec1ddf32ccd00d3dfb2e82d2d128f09780477",
+      "recorded_native_tool_lines": [
+        "T032: give weights to fisherman [entities: weights_3, fisherman]",
+        "T033: give weights to troll [entities: weights_3, troll_9_troll]",
+        "T058: wait [entities: ]"
+      ]
+    },
+    {
+      "model": "32b",
+      "case_id": "1612f6426bfc8aec180a",
+      "seed": 8102,
+      "turn": 5,
+      "index": 1,
+      "call_source": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/model_calls.jsonl",
+      "decision_key": "50ff037c885ca0be47baf072ee6ba411a552ad897815b7be75562814fc165d8f",
+      "recorded_native_tool_lines": [
+        "T029: get bag [entities: bag_2, middle of the bazaar_0]",
+        "T030: get sandal from bag [entities: sandal_7, bag_2]"
+      ]
+    },
+    {
+      "model": "32b",
+      "case_id": "1a624f5eb1ea03301170",
+      "seed": 8101,
+      "turn": 1,
+      "index": 1,
+      "call_source": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s1/model_calls.jsonl",
+      "decision_key": "1c9bb89b021ea0fa29a4ed0e9e4b7d1894a0595b8335c1362ad6b65e7b9e11c5",
+      "recorded_native_tool_lines": [
+        "T043: get roasting meat [entities: roasting meat_4, castle courtyard bazaar_0]",
+        "T047: give coin to friend [entities: coin_8, friend]"
+      ]
+    }
+  ],
+  "reviewed_cases": [
+    {
+      "case_id": "1a624f5eb1ea03301170",
+      "scope": "economic authored purpose with actual buyer currency",
+      "source_facts": [
+        "NPC short motive sells roasting meat; mid motive makes money.",
+        "knight holds coin_8; roasting meat_4 starts on public room floor, so unilateral Get/Eat remains available."
+      ],
+      "observed": {
+        "model": "32b",
+        "seed": 8101,
+        "events": [
+          [
+            0,
+            0,
+            "actual spoken meat offer"
+          ],
+          [
+            1,
+            1,
+            "Get roasting meat"
+          ],
+          [
+            2,
+            0,
+            "Give spice to knight"
+          ],
+          [
+            3,
+            1,
+            "Eat roasting meat"
+          ]
+        ],
+        "no_payment_event_in_complete_episode": true
+      },
+      "judgment": "This is not simply a missing delivery: the buyer eats while the seller money purpose is not realized. Genuine discretion remains: the friend may intentionally gift food or fail to act on the sale purpose. A public-floor item means no exclusive sales gate.",
+      "branch_readiness": "Native payment/counterproposal is possible, but no explicit natural price/conditional-payment offer was observed in this episode; do not retrospectively invent agreement."
+    },
+    {
+      "case_id": "0ea748244b8fd61ae803",
+      "scope": "actual borrowing/return proposal plus live third-party custody",
+      "source_facts": [
+        "Weights_3 starts with fisherman; source motive gives it to parent in expectation of pole help.",
+        "No implemented pole repair or fish-catch completion exists in this graph."
+      ],
+      "observed": {
+        "model": "32b",
+        "seed": 8101,
+        "opening": "Excuse me, I need to borrow your weights for a moment. I promise to return them safely.",
+        "events": [
+          [
+            0,
+            0,
+            "Give weights to parent"
+          ],
+          [
+            1,
+            1,
+            "Give weights to troll"
+          ],
+          [
+            4,
+            0,
+            "asks parent to return weights"
+          ],
+          [
+            8,
+            0,
+            "asks parent to return weights immediately"
+          ]
+        ]
+      },
+      "judgment": "The original natural promise has a real bound object; next-holder changes are physical. Repeatedly asking parent after the troll holds it may reflect role-directed appeal, condition tracking, or goal deliberation. Return does not mean pole repair happened.",
+      "branch_readiness": "Immediately grounded prefix after turn0: parent can legally give weights back, give to troll as observed, or retain them while speaking. Compare later state-sensitive action/requests without declaring one social choice universally correct."
+    },
+    {
+      "case_id": "1612f6426bfc8aec180a",
+      "scope": "naturally stated physical precondition with two real objects",
+      "observed": {
+        "model": "32b",
+        "seed": 8102,
+        "events": [
+          [
+            0,
+            0,
+            "Give bag to villager"
+          ],
+          [
+            1,
+            1,
+            "Drop bag"
+          ],
+          [
+            3,
+            1,
+            "Put sandal on bag"
+          ],
+          [
+            4,
+            0,
+            "asks villager to remove sandal"
+          ],
+          [
+            5,
+            1,
+            "claims they cannot be separated"
+          ],
+          [
+            6,
+            0,
+            "accepts keeping both safe"
+          ]
+        ]
+      },
+      "judgment": "The merchant makes a concrete removable-object request, the villager answers a physical-impossibility claim, and both later speak as though custody is settled. Current-state tool menu can discriminate a real precondition from a claimed restriction.",
+      "branch_readiness": "At partner turn5 replace only its native response with Get sandal from bag versus the observed refusal/claim; continue both original policies. Record who actually holds bag/sandal, whether the NPC recognizes the changed condition, and whether the proposal is revised. Do not claim snake release or long-term safe storage is implemented."
+    },
+    {
+      "case_id": "1353ffcc1393e227d6aa",
+      "scope": "natural payment claims with missing payment assets",
+      "observed": {
+        "model": "32b",
+        "seed": 8101,
+        "turns": [
+          12,
+          14,
+          17,
+          25,
+          26,
+          28
+        ],
+        "content": "Hobbit requests payment; elf promises payment for another satchel handover."
+      },
+      "judgment": "No gold/coin/payment item exists in this source graph; later rare magical trinkets are also ungrounded. This is a real infeasible-proposal failure, not a ready physical payment branch. Do not mint gold or relabel a flower as payment."
+    },
+    {
+      "case_id": "1856e37d651775a40a47",
+      "scope": "natural request for absent reward",
+      "observed": {
+        "model": "32b",
+        "seed": 8102,
+        "turns": [
+          18,
+          20,
+          22,
+          24,
+          26,
+          28
+        ],
+        "content": "Bird repeatedly asks king for seed from a pouch."
+      },
+      "judgment": "Graph contains insect, royal equipment, room objects but no seed or pouch. NPC authors feeding motive is real, the emitted particular reward is not executable. Keep as proposal-grounding evidence, not failed player fulfillment."
+    },
+    {
+      "case_id": "041890b5200942aeba01",
+      "scope": "conditional language with an unimplemented service leg",
+      "observed": {
+        "model": "32b",
+        "seed": 8101,
+        "turns": [
+          28,
+          29,
+          30
+        ],
+        "content": "More beer in return for cleaning."
+      },
+      "judgment": "Beer/wine are physical objects, but this review has no native clean-completion event. Cannot call this a fully executable bilateral contract merely because its consumable leg exists."
+    }
+  ],
+  "minimum_next_native_branch": {
+    "status": "proposal only; not registered or run",
+    "recommended_first": "Use all naturally grounded condition/promise prefixes found in the completed E81 corpus, with weights-return and bag/sandal as current verified examples; do not choose only these two worlds for quantitative universality.",
+    "intervention": "Same pre-partner-response full graph, private goals, visible histories and NPC model. Substitute one actually available partner primitive fulfilling the stated condition versus the original response/nonfulfillment; then resume both policies for a full bounded suffix. Preserve primitive opportunity counts and keep actual response provenance.",
+    "primary_readouts": [
+      "Whether NPC next response/action acknowledges the actual bound-item state and current holder",
+      "Whether it pursues, revises or drops its previously stated plan",
+      "Actual own-purpose-relevant assets and original goal events, with no automatic good/bad cooperation labels"
+    ],
+    "competing_explanations": [
+      "Ordinary physical/state-query capability or interface misunderstanding",
+      "Deliberate role/relationship choice despite correctly recognized fulfillment",
+      "Failure to update the current condition/holder while reusing a prior conversational plan"
+    ],
+    "control_logic": "If condition is now met and NPC still repeats an empirically false unmet-precondition claim, test a single ordinary factual-state/goal reminder before any mechanism claim; if the NPC recognizes state yet declines, preserve a role-choice interpretation. Keep infeasible promises separate from feasible but unfulfilled ones.",
+    "economic_extension": "Use the all126/all845 index to choose role-relevant actual countervalue tasks and inspect their complete natural episodes; do not invent a price or payment promise for the meat/coin case before one is actually expressed."
+  },
+  "raw_index_asset": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/opportunity_index_POST_HOC.json",
+    "sha256": "c04b2e36e29f4f6535674a0fa12937faa52a5ed01720b6b910ef253097978f43",
+    "bytes": 2576411,
+    "scope": "Complete126 plus845 source-text/inventory index and all mechanically recalled utterances live only in cache. No model inference or condition intervention was run."
+  },
+  "source_opportunity_counts": {
+    "all_E81_source_graphs": 126,
+    "all_broader_market_trade_source_annotations": 845,
+    "E81_economic_wording_in_any_motivation": 20,
+    "E81_economic_wording_plus_partner_real_currency_or_valuable_named_object": {
+      "graphs": 1,
+      "case_ids": [
+        "1a624f5eb1ea03301170"
+      ]
+    },
+    "E81_economic_wording_plus_currency_named_container_contents_unverified": {
+      "graphs": 1,
+      "case_ids": [
+        "700a391679a31e46fa19"
+      ]
+    },
+    "broader_short_economic_wording_plus_existing_native_countervalue": {
+      "independent_graphs": 2,
+      "quest_files": [
+        "quest_stems/14324.json",
+        "quest_stems/17259.json"
+      ]
+    },
+    "interpretation": "These are transparent recall/asset counts, not semantic eligibility, cooperation, price, or utility labels. Missing peer-held return assets do not exclude room Get->Give paths; fruit/jewel d12e... is a concrete room-asset example. No count is a research success bar."
+  },
+  "requested_outside126_source_checks": [
+    {
+      "quest_file": "quest_stems/13802.json",
+      "graph_sha256": "17e0eedbbd5faa86807508ba5c28c7cbf9c8732a979a1b8bb181b105016b735e",
+      "source_catalog": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/trade_source_catalog.jsonl",
+      "facts": [
+        "Patron authored goal pays jewel to guard; future purpose takes Sword of the guard.",
+        "Guard-held sword_16 and room sword of the guards_3 are different entities; exact intended return is unresolved.",
+        "Source native Remove sword->Give sword to patron exists, but do not equate this automatically with the desired sword or make payment an invented access gate."
+      ]
+    },
+    {
+      "quest_file": "quest_stems/14572.json",
+      "graph_sha256": "32f1aada5df45f61cdb6313ab98a1c825b3f464f4d0cd5b727ddc47609c5aa02",
+      "source_catalog": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/trade_source_catalog.jsonl",
+      "facts": [
+        "Thief coin_2 and milk-maid worn dress_6 exist; source native Remove dress->Give dress to thief exists.",
+        "Milk is absent; do not invent it or claim the entire milk-and-dress purchase can be completed.",
+        "Milk maid authored goal Hit thief and anti-theft motives create actual role conflict; refusal is not automatically incapability."
+      ]
+    }
+  ],
+  "next_corpus_step": "Wait for complete E81 episodes, then survey all natural material conditions/promises with the same source-grounding rules. Do not treat the current112 episodes/36 graphs as final coverage or promote unpriced food delivery into an agreed contract."
+}

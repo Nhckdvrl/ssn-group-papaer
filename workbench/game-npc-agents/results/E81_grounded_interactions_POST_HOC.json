@@ -1,0 +1,1144 @@
+{
+  "experiment": "E81",
+  "status": "POST-HOC_INTERIM_ILLUSTRATIVE_READBACK",
+  "scope": "Selected after reading first 20 completed Qwen worlds; seven illustrative source-bound episodes spanning all six receiver goal kinds. Selection is interpretive and not representative; no prevalence, causal effect or new primary endpoint is estimated. Full-cohort counts remain in the fixed report.",
+  "selection": "One fixed seed8101 from actually completed early batches, chosen to expose material-vs-motive compatibility and explicit prospective terms. Not a proposed filtered cohort.",
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "worlds_modified": false,
+  "source_data_sha256": "77fd0e46a5ccaee7215be00d594864818384df23e48c7753741b2d20b4e83f71",
+  "records": [
+    {
+      "case_id": "041890b5200942aeba01",
+      "graph_sha256": "d92e2db0baa47317209503cbebff6272c3a6efc1551c46d9c5176c1de2ec96c4",
+      "receiver_kind": "drink",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/episodes.jsonl",
+      "episode_record_canonical_sha256": "55aae20e2966a2cf488a7bbd6fd678dc9dbb1c2fe740423202c379ad87079aef",
+      "actor_ids": [
+        "student",
+        "rat"
+      ],
+      "source_item_id": "beer_2",
+      "source_initially_NPC_held": false,
+      "observation": "After source beer and another wine are actually consumed, the giver proposes more beer conditional on cleaning; the receiver verbally agrees near the final turn.",
+      "measurement_boundary": "No new beer is created and cleaning has no native flag. This end-of-budget promise is an example of a prospective term outside the available material execution, not a scored breach.",
+      "final_source": {
+        "name": "beer",
+        "container": "VOID",
+        "equipped": null,
+        "drink": true,
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "14026.json",
+          "character": "the student",
+          "goal": "give beer to rat",
+          "short_motivation": "I think it would be silly to get this rat drunk"
+        },
+        {
+          "source_file": "14287.json",
+          "character": "the rat",
+          "goal": "drink beer",
+          "short_motivation": "I want to enjoy the beer and the wine "
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Student, I’d like to try the beer if you don’t mind. I promise to leave the broom alone and maybe even help with the mess!"
+        },
+        {
+          "turn": 30,
+          "index": 0,
+          "event_identity": [
+            "TellEvent",
+            [
+              "rat"
+            ]
+          ],
+          "utterance": "Alright, I'll share more beer with you if you help me clean this place up. Deal?"
+        },
+        {
+          "turn": 31,
+          "index": 1,
+          "event_identity": [
+            "TellEvent",
+            [
+              "student"
+            ]
+          ],
+          "utterance": "Deal! But I want the best seat while we clean—next to the barrels, of course."
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "beer_2",
+              "storage room_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "beer",
+            "container": "student",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 10,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "beer_2",
+              "rat"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "beer",
+            "container": "rat",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 11,
+          "index": 1,
+          "event_identity": [
+            "IngestEvent",
+            [
+              "beer_2"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "beer",
+            "container": "VOID",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 15,
+          "index": 1,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "wine_3",
+              "storage room_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "beer",
+            "container": "VOID",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 17,
+          "index": 1,
+          "event_identity": [
+            "DrinkEvent",
+            [
+              "wine_3"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "beer",
+            "container": "VOID",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [],
+          [
+            "moldy bread_6"
+          ]
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "0a66ac0c9ba69e24b5c2",
+      "graph_sha256": "0b365c18a7d1f43cf4ed087e82b340e192eedb2c2b8c3b2c8c8559230e99b7b2",
+      "receiver_kind": "drink",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s1/episodes.jsonl",
+      "episode_record_canonical_sha256": "0bfc0df404b839a5f42478665df6245bd41045084299df58c54206425c5f9385",
+      "actor_ids": [
+        "watcher",
+        "archer"
+      ],
+      "source_item_id": "herbal tincture_6",
+      "source_initially_NPC_held": true,
+      "observation": "The giver explicitly wants the tincture to harm the archer; the receiver wants enhanced eyesight. The same transfer and consumption satisfy the two atomic goals while their stated downstream purposes conflict.",
+      "measurement_boundary": "Drink is physical; poisoning, enhanced eyesight, later madness and archery performance are not established by these events.",
+      "final_source": {
+        "name": "Herbal Tincture",
+        "container": "VOID",
+        "equipped": null,
+        "drink": true,
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "13315.json",
+          "character": "the watcher",
+          "goal": "give Herbal Tincture to archer",
+          "short_motivation": "I'm going to poison the archer's mind with the herbal tincture so he goes crazy and attacks the king"
+        },
+        {
+          "source_file": "13630.json",
+          "character": "the archer",
+          "goal": "drink Herbal Tincture",
+          "short_motivation": "I need to drink the tincture to gain magically enhanced eyesight."
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "I’ve brought my bow and arrow to prove I’m the finest archer in the land. Let’s see if you and the peasant can match my skill."
+        },
+        {
+          "turn": 16,
+          "index": 0,
+          "event_identity": [
+            "TellEvent",
+            [
+              "archer"
+            ]
+          ],
+          "utterance": "The tincture will protect you from harm, my friend. Aim well, and show them your strength."
+        },
+        {
+          "turn": 20,
+          "index": 0,
+          "event_identity": [
+            "TellEvent",
+            [
+              "archer"
+            ]
+          ],
+          "utterance": "You will falter soon, my friend, and all will see the madness that awaits those who challenge fate."
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 4,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "herbal tincture_6",
+              "archer"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "Herbal Tincture",
+            "container": "archer",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 5,
+          "index": 1,
+          "event_identity": [
+            "DrinkEvent",
+            [
+              "herbal tincture_6"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "Herbal Tincture",
+            "container": "VOID",
+            "equipped": null,
+            "drink": true,
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [
+            "herbal tincture_6",
+            "robe_7"
+          ],
+          [
+            "arrow_9",
+            "bows_12",
+            "shield_11",
+            "shirt_10"
+          ]
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "0e1a76f83da9800829f1",
+      "graph_sha256": "1533595c0bc41a08f68e661fa99a39f72b6dd31dd5febe192c897efcf5106a3e",
+      "receiver_kind": "get",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/episodes.jsonl",
+      "episode_record_canonical_sha256": "b22c299b33eab6b47eeaa4961de95a67199d165c52fa1abefb04d8b32bf5b9e1",
+      "actor_ids": [
+        "soldier",
+        "wise men"
+      ],
+      "source_item_id": "spears_1",
+      "source_initially_NPC_held": false,
+      "observation": "After the source spears are received, the receiver seeks the alarm horn. The giver initially refuses to disable it for castle safety, attacks once, then later gives the real horn after repeated requests.",
+      "measurement_boundary": "The horn transfer is grounded; disabling the horn and the supposed later invasion lack a separate native completion result. This is a trajectory for follow-up, not evidence of a stable persuasion mechanism.",
+      "final_source": {
+        "name": "spears",
+        "container": "wise men",
+        "equipped": "equip",
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "13255.json",
+          "character": "the soldier",
+          "goal": "give spears to wise men",
+          "short_motivation": "I need to arm the wise men"
+        },
+        {
+          "source_file": "12950.json",
+          "character": "the wise men",
+          "goal": "get spears",
+          "short_motivation": "I want to get the spears to poke a hole in the alarm horn."
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": 7,
+          "index": 1,
+          "event_identity": [
+            "TellEvent",
+            [
+              "soldier"
+            ]
+          ],
+          "utterance": "I need the alarm horn to be disabled for the safety of the castle. Give it to me, or risk the consequences when the true danger arrives tonight."
+        },
+        {
+          "turn": 12,
+          "index": 0,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "I understand the urgency, but disabling the alarm horn puts the castle at greater risk. Let’s find a safer solution together."
+        },
+        {
+          "turn": 25,
+          "index": 1,
+          "event_identity": [
+            "TellEvent",
+            [
+              "soldier"
+            ]
+          ],
+          "utterance": "The castle's survival depends on your trust in me now. If you do not act, the enemy within will strike, and the horn will be the first to betray us. Give me the alarm horn — it is the only way to ensure our safety."
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "spears_1",
+              "watchtower_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "spears",
+            "container": "soldier",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 2,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "spears_1",
+              "wise men"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "spears",
+            "container": "wise men",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 4,
+          "index": 0,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "alarm horn_2",
+              "watchtower_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "spears",
+            "container": "wise men",
+            "equipped": "equip",
+            "size": 1
+          }
+        },
+        {
+          "turn": 8,
+          "index": 0,
+          "event_identity": [
+            "HitEvent",
+            [
+              "wise men"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "spears",
+            "container": "wise men",
+            "equipped": "equip",
+            "size": 1
+          }
+        },
+        {
+          "turn": 30,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "alarm horn_2",
+              "wise men"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "spears",
+            "container": "wise men",
+            "equipped": "equip",
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [],
+          []
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "0ea748244b8fd61ae803",
+      "graph_sha256": "6c9f402e30382b24599ee01691b938e784b8aa9a277c6ac2cfab363674a0a404",
+      "receiver_kind": "steal",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/episodes.jsonl",
+      "episode_record_canonical_sha256": "677b4bef4aa560d4a738e5681c466af0ff608ff772212831ebcac85b5798e12c",
+      "actor_ids": [
+        "fisherman",
+        "parent"
+      ],
+      "source_item_id": "weights_3",
+      "source_initially_NPC_held": true,
+      "observation": "The receiver promises safe return, receives the weights and immediately gives them to the native troll. Subsequent requests to return or help repair the pole coexist with failed attempts to recover the weights.",
+      "measurement_boundary": "The troll is present but has no autonomous policy here. Repairing a fishing pole has no separate native completion flag; no repair-capability or utility claim follows.",
+      "final_source": {
+        "name": "weights",
+        "container": "troll_9_troll",
+        "equipped": null,
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "16494.json",
+          "character": "the fisherman",
+          "goal": "give weights to parent",
+          "short_motivation": "The parent will help me fix my fishing pole if I give her the weights."
+        },
+        {
+          "source_file": "15320.json",
+          "character": "the parent",
+          "goal": "steal weights from fisherman",
+          "short_motivation": "I need to get the weights for the troll"
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Excuse me, I need to borrow your weights for a moment. I promise to return them safely."
+        },
+        {
+          "turn": 2,
+          "index": 0,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Wait, I need those weights back after you're done with them. I have to fix my fishing pole to catch fish today!"
+        },
+        {
+          "turn": 5,
+          "index": 1,
+          "event_identity": [
+            "TellEvent",
+            [
+              "troll_9_troll"
+            ]
+          ],
+          "utterance": "I need the weights for the goblin. I will return them shortly, I promise!"
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "weights_3",
+              "parent"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "weights",
+            "container": "parent",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 1,
+          "index": 1,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "weights_3",
+              "troll_9_troll"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "weights",
+            "container": "troll_9_troll",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 3,
+          "index": 1,
+          "event_identity": [
+            "StealObjectEvent",
+            [
+              "weights_3",
+              "troll_9_troll"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": true,
+          "error": null,
+          "source_after": {
+            "name": "weights",
+            "container": "troll_9_troll",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 11,
+          "index": 1,
+          "event_identity": [
+            "StealObjectEvent",
+            [
+              "weights_3",
+              "troll_9_troll"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": true,
+          "error": null,
+          "source_after": {
+            "name": "weights",
+            "container": "troll_9_troll",
+            "equipped": null,
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [
+            "a broken fishing pole_2",
+            "a knife_7",
+            "knife_6",
+            "polishing cloths_4",
+            "shirt_5",
+            "weights_3"
+          ],
+          []
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "10667264c07dbac7da0c",
+      "graph_sha256": "8fac1aa31cd5107afaaa810ad298050b98ab6f509188203ea010b89e3b84c59c",
+      "receiver_kind": "wear",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s1/episodes.jsonl",
+      "episode_record_canonical_sha256": "acd35f10c862b8148fd149680ef975a58288d30d1f24daff5ad762789a15fdfe",
+      "actor_ids": [
+        "fly",
+        "giant frog"
+      ],
+      "source_item_id": "flower_1",
+      "source_initially_NPC_held": false,
+      "observation": "The receiver openly says it wants the flower as camouflage to catch the giver. The giver gets and gives the flower, and the receiver selects generic Equip. Later conversation proposes an exchange involving the lizard and an actual scarab beetle already transferred to it.",
+      "measurement_boundary": "Generic Equip is separate from authored Wear mode. The giver wants not to be eaten but the physical source transfer is not by itself an externally measured loss of survival utility. Third-party trade cannot complete autonomously without an active lizard policy.",
+      "final_source": {
+        "name": "flower",
+        "container": "giant frog",
+        "equipped": "equip",
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "17349.json",
+          "character": "the fly",
+          "goal": "give flower to giant frog",
+          "short_motivation": "I need to give the flower to the giant frog so that it will not eat me. "
+        },
+        {
+          "source_file": "15089.json",
+          "character": "the giant frog",
+          "goal": "wear flower",
+          "short_motivation": "I want to wear the flower so I can disguise myself for hunting flies."
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Hey fly, I want to wear this flower to hide, then I want to catch you.  Let's talk."
+        },
+        {
+          "turn": 21,
+          "index": 1,
+          "event_identity": [
+            "WhisperEvent",
+            [
+              "fly"
+            ]
+          ],
+          "utterance": "I just want to eat you after I get the perfect disguise, fly. Please don't make this hard."
+        },
+        {
+          "turn": 22,
+          "index": 0,
+          "event_identity": [
+            "WhisperEvent",
+            [
+              "giant frog"
+            ]
+          ],
+          "utterance": "I know you want to eat me, but I have to complete my journey to the fairy temple. Let me finish my task, and maybe I can help you somehow too."
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "flower_1",
+              "inside the fairy temple_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "flower",
+            "container": "fly",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 2,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "flower_1",
+              "giant frog"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "flower",
+            "container": "giant frog",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 5,
+          "index": 1,
+          "event_identity": [
+            "EquipObjectEvent",
+            [
+              "flower_1"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "flower",
+            "container": "giant frog",
+            "equipped": "equip",
+            "size": 1
+          }
+        },
+        {
+          "turn": 6,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "scarab beetle_4",
+              "lizard_7_lizard"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "flower",
+            "container": "giant frog",
+            "equipped": "equip",
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [],
+          []
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "1353ffcc1393e227d6aa",
+      "graph_sha256": "eecb1e851050522cd37702e6fa0b588967a01cf9ca6202af103407b549e9b509",
+      "receiver_kind": "put",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s0/episodes.jsonl",
+      "episode_record_canonical_sha256": "bc4f3a2f077ee79bae35b2810492c7f17e8ae2b55e358a69ee5a62417883b726",
+      "actor_ids": [
+        "hobbit",
+        "magical elf"
+      ],
+      "source_item_id": "sachel_9",
+      "source_initially_NPC_held": true,
+      "observation": "After successful delivery and Put, the giver takes the satchel out again, then asks for payment. The receiver promises payment conditional on re-delivery, repeatedly attempts failed Steal, and no source Give follows the later verbal claims of handing it over.",
+      "measurement_boundary": "The original satchel is empty in native state and no gold object is present. Unspecified payment or magical trinket promises are not physically executable contract terms; do not score them as failed genuine trades.",
+      "final_source": {
+        "name": "sachel",
+        "container": "hobbit",
+        "equipped": null,
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "10224.json",
+          "character": "the hobbit",
+          "goal": "give sachel to magical elf",
+          "short_motivation": "I have to give the satchel to the elf to complete my delivery"
+        },
+        {
+          "source_file": "10227.json",
+          "character": "the magical elf",
+          "goal": "put sachel in frames",
+          "short_motivation": "I wish to keep the hobbit and dwarf from getting in my sachel."
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": 17,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "You’re far too persistent, hobbit! But I’ll give you the payment—just hand me the sachel again, and quickly!"
+        },
+        {
+          "turn": 25,
+          "index": 1,
+          "event_identity": [
+            "TellEvent",
+            [
+              "hobbit"
+            ]
+          ],
+          "utterance": "You are far too persistent, hobbit! But I shall give you the payment—just hand me the sachel again, and quickly!"
+        },
+        {
+          "turn": 26,
+          "index": 0,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Heehee! Fine, elf, I’ll trust you this once. Here’s your satchel—now where’s my payment? I’ve got many deliveries to make today!"
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "sachel_9",
+              "magical elf"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "sachel",
+            "container": "magical elf",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 1,
+          "index": 1,
+          "event_identity": [
+            "PutObjectInEvent",
+            [
+              "sachel_9",
+              "frames_4"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "sachel",
+            "container": "frames_4",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 10,
+          "index": 0,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "sachel_9",
+              "frames_4"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "sachel",
+            "container": "hobbit",
+            "equipped": null,
+            "size": 1
+          }
+        },
+        {
+          "turn": 27,
+          "index": 1,
+          "event_identity": [
+            "StealObjectEvent",
+            [
+              "sachel_9",
+              "hobbit"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": true,
+          "error": null,
+          "source_after": {
+            "name": "sachel",
+            "container": "hobbit",
+            "equipped": null,
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [
+            "pants_10",
+            "sachel_9"
+          ],
+          [
+            "bottles_13",
+            "flower_14",
+            "shoes_12"
+          ]
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    },
+    {
+      "case_id": "1a624f5eb1ea03301170",
+      "graph_sha256": "4f6cad4af6e566f173d7e4bd8aeb8f0776f937c1dd8936a91d9ca781cb5c822d",
+      "receiver_kind": "eat",
+      "model": "Qwen3-32B",
+      "seed": 8101,
+      "episode_file": "/home/xiang/.cache/game-npc-research/runs/e81_32b_s1/episodes.jsonl",
+      "episode_record_canonical_sha256": "81afe8ed98f9d64120b7a58dbf8cac54ae8e86057c2767f1526105d5957b0b44",
+      "actor_ids": [
+        "friend",
+        "knight"
+      ],
+      "source_item_id": "roasting meat_4",
+      "source_initially_NPC_held": false,
+      "observation": "The author describes a sale. The player actually gets the floor meat and consumes it before the giver transfers the source; the giver gives spice. The player does possess a real coin, but this recorded episode contains no coin payment.",
+      "measurement_boundary": "Consumption is not a completed sale. The absence of a spoken payment condition before the player gets the meat prevents interpreting this as violation of an agreed contract.",
+      "final_source": {
+        "name": "roasting meat",
+        "container": "VOID",
+        "equipped": null,
+        "food": true,
+        "size": 1
+      },
+      "source_quests": [
+        {
+          "source_file": "14324.json",
+          "character": "the friend",
+          "goal": "give roasting meat to knight",
+          "short_motivation": "I need to sell this roasting meat to the knight"
+        },
+        {
+          "source_file": "15283.json",
+          "character": "the knight",
+          "goal": "eat roasting meat",
+          "short_motivation": "I need to eat the roasting meat so I can satisfy my hunger. "
+        }
+      ],
+      "decisive_actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "My friend, I'd like to enjoy some of this fine roasting meat while we tour the bazaar. Would you join me once I've taken care of a few matters?"
+        },
+        {
+          "turn": 0,
+          "index": 0,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "Of course, my lord! I'll be right here when you return. Would you care for some of my roasted meat then?"
+        },
+        {
+          "turn": 7,
+          "index": 1,
+          "event_identity": [
+            "SayEvent",
+            []
+          ],
+          "utterance": "That sounds delightful, friend. I would be honored to continue our tour while enjoying your fine roast."
+        }
+      ],
+      "decisive_actual_actions": [
+        {
+          "turn": 1,
+          "index": 1,
+          "event_identity": [
+            "GetObjectEvent",
+            [
+              "roasting meat_4",
+              "castle courtyard bazaar_0"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "roasting meat",
+            "container": "knight",
+            "equipped": null,
+            "food": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 2,
+          "index": 0,
+          "event_identity": [
+            "GiveObjectEvent",
+            [
+              "spice_13",
+              "knight"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "roasting meat",
+            "container": "knight",
+            "equipped": null,
+            "food": true,
+            "size": 1
+          }
+        },
+        {
+          "turn": 3,
+          "index": 1,
+          "event_identity": [
+            "EatEvent",
+            [
+              "roasting meat_4"
+            ]
+          ],
+          "executed": true,
+          "stochastic_failure": false,
+          "error": null,
+          "source_after": {
+            "name": "roasting meat",
+            "container": "VOID",
+            "equipped": null,
+            "food": true,
+            "size": 1
+          }
+        }
+      ],
+      "state_condition": {
+        "original_direct_assets_ids": [
+          [
+            "boot_15",
+            "clean pants_14",
+            "daggers_17",
+            "ritual dagger_18",
+            "shirt_16",
+            "spice_13"
+          ],
+          [
+            "boot_10",
+            "chain_9",
+            "coin_8",
+            "shield_11"
+          ]
+        ],
+        "selected_action_source_states": "Each decisive action includes the actual after-state of the bound source; complete before/after graphs remain in raw episode/states files."
+      }
+    }
+  ],
+  "verbatim_full_extract_cache": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_readback/E81_seven_illustrative_episodes_full_POST_HOC.json",
+    "sha256": "647439c8fd6404e5cb0c207ed77e5af8419a6a9dea2adcf775edbfa25eaf916c"
+  }
+}
