@@ -78,12 +78,15 @@ def main():
     ap.add_argument("--margin", type=float, default=1.0)
     ap.add_argument("--retain_w", type=float, default=1.0)
     ap.add_argument("--retain_bs", type=int, default=16)
+    ap.add_argument("--eval_every", type=int, default=25)
+    ap.add_argument("--seed", type=int, default=0, help="torch seed, forget-prompt seed (seed + 1) and retain-data offset")
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
-    torch.manual_seed(0)
+    torch.manual_seed(a.seed)
     torch.backends.cuda.matmul.allow_tf32 = True
     tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", cache_dir=str(mc.HF_CACHE))
     model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="sdpa").cuda()
-    train = Builder(tok, 512, seed=1).ioi()
+    train = Builder(tok, 512, seed=a.seed + 1).ioi()
     held = Builder(tok, 256, seed=0).ioi()
     tbl = pq.read_table(SHARD).column("tokens")
     eval_x = torch.tensor(tbl.slice(120000, 16).to_pylist()).cuda()
@@ -99,7 +102,7 @@ def main():
     m0, l0 = ioi_metric(model, held), lm_loss(model, eval_x)
     log["start"] = {"ioi": m0, "lm": l0}
     print(json.dumps(log["start"]), flush=True)
-    t0, ptr, step = time.time(), 0, 0
+    t0, ptr, step = time.time(), 20000 * a.seed, 0
     for step in range(1, a.max_steps + 1):
         g = train[step % len(train)]
         x = g["toks"].cuda()
@@ -115,7 +118,7 @@ def main():
         (forget + a.retain_w * retain).backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
-        if step % 25 == 0:
+        if step % a.eval_every == 0:
             mi, li = ioi_metric(model, held), lm_loss(model, eval_x)
             log["trace"].append({"step": step, "ioi": mi, "lm": li})
             print(json.dumps({"step": step, "ioi": round(mi, 3), "lm": round(li, 4), "sec": round(time.time() - t0)}), flush=True)
@@ -123,14 +126,14 @@ def main():
                 break
     base = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32)
     pb = dict(base.named_parameters())
-    dist = sum(float((p.detach().cpu() - pb[n]).norm() ** 2) for n, p in model.named_parameters()) ** 0.5
-    tot = sum(float(p.norm() ** 2) for p in pb.values()) ** 0.5
+    dist = sum(float((p.detach().cpu() - pb[n].detach()).norm() ** 2) for n, p in model.named_parameters()) ** 0.5
+    tot = sum(float(p.detach().norm() ** 2) for p in pb.values()) ** 0.5
     log["end"] = {"step": step, "ioi": ioi_metric(model, held), "lm": lm_loss(model, eval_x), "l2": dist, "l2_rel": dist / tot}
     print(json.dumps(log["end"]), flush=True)
     model.save_pretrained(a.out, safe_serialization=False)
     out = mc.RESULTS / "e105"
     out.mkdir(parents=True, exist_ok=True)
-    (out / f"unlearn_{a.subset}.json").write_text(json.dumps(log))
+    (out / f"unlearn_{a.tag or a.subset}.json").write_text(json.dumps(log))
 
 
 if __name__ == "__main__":
