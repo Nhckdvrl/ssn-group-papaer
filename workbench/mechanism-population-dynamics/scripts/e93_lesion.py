@@ -245,6 +245,8 @@ def main():
                     "orthogonal d x d matrix (this seed) -- keeps what the head writes intact up to rotation, breaks readers' alignment")
     ap.add_argument("--ov_scale", type=float, default=1.0, help="after the lesion, multiply each lesioned head's output-projection "
                     "columns by this factor (same direction, stronger / weaker coupling to its readers)")
+    ap.add_argument("--train_only", action="store_true", help="freeze everything except the lesioned heads' own QKV rows and "
+                    "output-projection columns (Schallon-style surgery: the rest of the network cannot adapt)")
     ap.add_argument("--save_at", default="", help="comma-separated steps at which to also save weights to <save_final>_s<step>")
     ap.add_argument("--warm", type=int, default=200)
     ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
@@ -309,7 +311,28 @@ def main():
     if ko:
         knockout(model, ko)
     data = Data(a.bs)
-    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, betas=(0.9, 0.95), weight_decay=0.01, eps=1e-8)
+    if a.train_only:
+        c = model.config
+        Hh, d = c.num_attention_heads, c.hidden_size
+        dh = d // Hh
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        masks = {}
+        for hh in a.head.split(","):
+            l, h = map(int, hh.split("."))
+            att = model.gpt_neox.layers[l].attention
+            qm = masks.setdefault(att.query_key_value.weight, torch.zeros_like(att.query_key_value.weight))
+            qm.view(Hh, 3, dh, d)[h] = 1
+            bm = masks.setdefault(att.query_key_value.bias, torch.zeros_like(att.query_key_value.bias))
+            bm.view(Hh, 3, dh)[h] = 1
+            om = masks.setdefault(att.dense.weight, torch.zeros_like(att.dense.weight))
+            om[:, h * dh:(h + 1) * dh] = 1
+        for p_, mk in masks.items():
+            p_.requires_grad_(True)
+            p_.register_hook(lambda g, mk=mk: g * mk)
+        opt = torch.optim.AdamW([p_ for p_ in masks], lr=a.lr, betas=(0.9, 0.95), weight_decay=0.0, eps=1e-8)
+    else:
+        opt = torch.optim.AdamW(model.parameters(), lr=a.lr, betas=(0.9, 0.95), weight_decay=0.01, eps=1e-8)
     model.train()
     t0 = time.time()
     for step in range(a.steps + 1):
