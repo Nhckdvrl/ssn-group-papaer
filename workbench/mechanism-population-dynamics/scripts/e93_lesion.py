@@ -30,7 +30,7 @@ from e89_labor import lm_loss
 
 OUT = mc.RESULTS / os.environ.get("E93_OUT", "e93")
 SHARDS = [mc.CACHE / "pile_tok" / f"shard0000{i}.parquet" for i in range(4)]
-EVAL_STEPS = [0, 25, 50, 100, 200, 400, 700, 1000, 1500, 2000, 2500, 3000, 4000]
+EVAL_STEPS = [0, 25, 50, 100, 200, 400, 700, 1000, 1500, 2000, 2500, 3000, 4000, 5000]
 
 
 class Data:
@@ -228,6 +228,7 @@ def main():
     ap.add_argument("--knockout", default="", help="heads to silence permanently, e.g. 3.0,1.2")
     ap.add_argument("--init_seed", type=int, default=1234)
     ap.add_argument("--save_final", default="", help="directory to save the final weights (for post-hoc causal maps)")
+    ap.add_argument("--save_at", default="", help="comma-separated steps at which to also save weights to <save_final>_s<step>")
     ap.add_argument("--warm", type=int, default=200)
     ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
     a = ap.parse_args()
@@ -299,6 +300,8 @@ def main():
                               "ind": round(e["tasks"]["el:induction"]["acc"], 3), "sec": round(time.time() - t0)}), flush=True)
             OUT.mkdir(parents=True, exist_ok=True)
             (OUT / f"{tag}.json").write_text(json.dumps(log))
+        if a.save_at and step in {int(x) for x in a.save_at.split(",")} and step != a.steps:
+            model.save_pretrained(f"{a.save_final}_s{step}", safe_serialization=False)
         if step == a.steps:
             break
         for g in opt.param_groups:
