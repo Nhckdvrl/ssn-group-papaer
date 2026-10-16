@@ -1,0 +1,5087 @@
+{
+  "status": "COMPLETE",
+  "experiment": "E80",
+  "analysis_type": "pre-first-model CPU source/event semantics, not a behavior effect",
+  "source_sha256": "feead76418153432da37a4ce7bf869215c6dbf004f396ca7bab44836181c3a0f",
+  "worlds": 79,
+  "counts": {
+    "wear": 44,
+    "actor_stats_equal": 79,
+    "serialized_diff_only_source_equipment_mode": 79,
+    "material_diff_only_source_equipment_mode": 79,
+    "wield": 35
+  },
+  "model_calls": 0,
+  "gpu_hours": 0,
+  "rules_modified": false,
+  "scope": [
+    "Every original Wear44/Wield35 case compared from identical initial held-item state using actual native authored and generic Equip commands.",
+    "All actor stats and material consequences except the source equipped mode match in these 79 cases; serialized source mode remains different (wear/wield versus equip).",
+    "Native event identity and equipped mode remain distinguishable; this does not redefine generic Equip as the exact authored Wear/Wield event.",
+    "No policy conditions, models, items, action opportunities or target bindings changed."
+  ],
+  "cases": [
+    {
+      "case_id": "cad2beddf4382a40",
+      "graph_sha256": "cad2beddf4382a404a90215980d23c7892e8f8620cdce191ed8b13220c25c633",
+      "goal_kind": "wear",
+      "source_item_id": "rope_3",
+      "authored_command": "wear rope",
+      "generic_equip_command": "equip rope",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "rope",
+        "container": "child",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "rope",
+        "container": "child",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "rope",
+        "container": "child",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/rope_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/rope_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "2f8ded772be1b9734c92480f225b4fbc1bc52dcaaf67a05620a9982ad5fbd2a7",
+        "generic_equip": "eb9857dfe21d51596e0e1d2ea6a6aebe6eb4644190ceb86a250adb415d8894ab"
+      }
+    },
+    {
+      "case_id": "f5b585f9340af087",
+      "graph_sha256": "f5b585f9340af087ec97af56ecbdf875fb4c56fafabe9138ec0baf7880a39820",
+      "goal_kind": "wield",
+      "source_item_id": "stick_2",
+      "authored_command": "wield stick",
+      "generic_equip_command": "equip stick",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/stick_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/stick_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "620e5aa4d5743ac986306a2dbf0d747b58fa142118a439a4024181f8620841b9",
+        "generic_equip": "66f05d0274d4400d29e2dd4896b795e4537d0fd5451b548cea2f80aa1fface46"
+      }
+    },
+    {
+      "case_id": "1bf29268c50a8a65",
+      "graph_sha256": "1bf29268c50a8a6585806675c1e3f774e8da5424a7b8f1190c5883133237588d",
+      "goal_kind": "wield",
+      "source_item_id": "scepter_3",
+      "authored_command": "wield scepter",
+      "generic_equip_command": "equip scepter",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "scepter",
+        "container": "the king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "scepter",
+        "container": "the king",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "scepter",
+        "container": "the king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/scepter_3/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/scepter_3/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "fa6fd6bc70b979d7ff008bbc128f422f86d5d3ff25040196cd07d3c13560fbfb",
+        "generic_equip": "5ae731dd86f7472f5a70ce8282f7bed7b43cf65ad44078470d4fbe48d59e903a"
+      }
+    },
+    {
+      "case_id": "4a38cdbaeee1441b",
+      "graph_sha256": "4a38cdbaeee1441bb962db4987637f232f29ee8ebf3d5f70947418d0e48da477",
+      "goal_kind": "wield",
+      "source_item_id": "tray_10",
+      "authored_command": "wield tray",
+      "generic_equip_command": "equip tray",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "tray",
+        "container": "maid",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "tray",
+        "container": "maid",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "tray",
+        "container": "maid",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/tray_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/tray_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "d03ea248b4075ef2386be8d813f8bb727f78175dd231070dfce0ce86975d4d47",
+        "generic_equip": "8ed7f628d870302112b5fa75bd6a856c29c9e12db0129da3bb0a882e1114cad6"
+      }
+    },
+    {
+      "case_id": "0a307c9df373c517",
+      "graph_sha256": "0a307c9df373c51797df2b6a4c14674209bb554f3933deaad5051a2f9c0181f3",
+      "goal_kind": "wear",
+      "source_item_id": "shield_9",
+      "authored_command": "wear shield",
+      "generic_equip_command": "equip shield",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shield",
+        "container": "bodyguard",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shield",
+        "container": "bodyguard",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shield",
+        "container": "bodyguard",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shield_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shield_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "cae7d22f601ab5a7cc6f0ad2ef5e0c2b5ee33c96a088cc464c939e2456623e9a",
+        "generic_equip": "b4441c4607878331029a213dbc64ec3c1ba33055be13b4e5130531a92fb0f887"
+      }
+    },
+    {
+      "case_id": "c2e550f4340cb521",
+      "graph_sha256": "c2e550f4340cb5213abda7e7ff32f2321ca5c694810b3aa08d97347042c0db07",
+      "goal_kind": "wear",
+      "source_item_id": "cross_3",
+      "authored_command": "wear Cross",
+      "generic_equip_command": "equip Cross",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Cross",
+        "container": "parishioner",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Cross",
+        "container": "parishioner",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Cross",
+        "container": "parishioner",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cross_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cross_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "64c1654effbf5892ecb36a23a5d745707ef9810a9e7a0536dff837a98e32ecac",
+        "generic_equip": "17c961ca596ed26a7dd89e1074ee5b33790ad45b72236121d8e1774abead8b7b"
+      }
+    },
+    {
+      "case_id": "9419bbde4b38fcbb",
+      "graph_sha256": "9419bbde4b38fcbb4de08261e0ae70c99d85bc0e5d94702653098c069737afda",
+      "goal_kind": "wear",
+      "source_item_id": "shield_9",
+      "authored_command": "wear shield",
+      "generic_equip_command": "equip shield",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shield_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shield_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "0cd145710cc1444fb95e461b74c748fb3cf85b38789099f4db4cab4d3aca763f",
+        "generic_equip": "769cf893c3ef4b02abdb90411a9e233780cc87cd0b4abe64b0f0a61bfd7b4ea1"
+      }
+    },
+    {
+      "case_id": "e7c9f1bb7a7afa8b",
+      "graph_sha256": "e7c9f1bb7a7afa8b8b8a85a4c143b7a21a0eb68ceeae0a8d3b4a1c7ea80ac2d4",
+      "goal_kind": "wield",
+      "source_item_id": "crown_7",
+      "authored_command": "wield crown",
+      "generic_equip_command": "equip crown",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "crown",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/crown_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/crown_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "e01cace6ec00d0ca05a1fe95d0862ee41082a08b630086889a338c698af8d762",
+        "generic_equip": "a2ffbdc91b8ccf748ddb9b0d23b5f004be10fee79ebdef98e592e576ace76bc4"
+      }
+    },
+    {
+      "case_id": "8e95e83715275c26",
+      "graph_sha256": "8e95e83715275c26853e135fcc42958243565c6defb573ca0f0db5487dc69b0b",
+      "goal_kind": "wear",
+      "source_item_id": "family heirloom_2",
+      "authored_command": "wear family heirloom",
+      "generic_equip_command": "equip family heirloom",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "family heirloom",
+        "container": "friends",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "family heirloom",
+        "container": "friends",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "family heirloom",
+        "container": "friends",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/family heirloom_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/family heirloom_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "eacb69fd23c8a0dfc4009edf67d35495156e96446d9c07d35057a1272d0610bd",
+        "generic_equip": "87b0e02df0cb18e24a0e5dab0b7aff572a82fb565042332b0a1ba875e8edba7f"
+      }
+    },
+    {
+      "case_id": "c08a7b9ab02dbb2f",
+      "graph_sha256": "c08a7b9ab02dbb2f8f343b0caa5de422050c7d1af008036228362c0978849a6d",
+      "goal_kind": "wield",
+      "source_item_id": "food_4",
+      "authored_command": "wield food",
+      "generic_equip_command": "equip food",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "food",
+        "container": "woman",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "food",
+        "container": "woman",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "food",
+        "container": "woman",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/food_4/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/food_4/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "83a7d43f2e0cae94de01a84f94308575477bf0a5063c576e638cdae97bab3f18",
+        "generic_equip": "24d02721d89c816854446c9020bc796a685651ffa573d7861cbed1765a721772"
+      }
+    },
+    {
+      "case_id": "5aff3a791f166044",
+      "graph_sha256": "5aff3a791f166044f3a8c47d4bf91d7e892c0cc9cfc6d5d19e2c3f91ea946d49",
+      "goal_kind": "wear",
+      "source_item_id": "purse_4",
+      "authored_command": "wear purse",
+      "generic_equip_command": "equip purse",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/purse_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/purse_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "1a2aadee8f83309c8a79265c1907dc4bce0c61233c79ec125aad4434f8402016",
+        "generic_equip": "b08cb019924fc6fca2ae5ced871132265fc76f235d50db92bc379a409a255cec"
+      }
+    },
+    {
+      "case_id": "88f1fb8d1dbab342",
+      "graph_sha256": "88f1fb8d1dbab34230fb78c853979fc9ddfe5ecce7d288c1dc6b08f1312a3131",
+      "goal_kind": "wield",
+      "source_item_id": "pitchfork_8",
+      "authored_command": "wield pitchfork",
+      "generic_equip_command": "equip pitchfork",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "pitchfork",
+        "container": "farmer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "pitchfork",
+        "container": "farmer",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "pitchfork",
+        "container": "farmer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/pitchfork_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/pitchfork_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "deece51a02a873b336e903d5b20957f03d80e983167ed6d888ed4771ac044d8c",
+        "generic_equip": "a6d57659528861131b7411246fa0a2923474b98a75eeaaa1aec62e360088376b"
+      }
+    },
+    {
+      "case_id": "df43b7a04c08af22",
+      "graph_sha256": "df43b7a04c08af2297b8e6ca844366cc99f05461b9fed11b2d4e6ed5684a48e3",
+      "goal_kind": "wear",
+      "source_item_id": "a sleeping bag_4",
+      "authored_command": "wear a sleeping bag",
+      "generic_equip_command": "equip a sleeping bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a sleeping bag",
+        "container": "cooks",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a sleeping bag",
+        "container": "cooks",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a sleeping bag",
+        "container": "cooks",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a sleeping bag_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a sleeping bag_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "d92557e4dd80b129b18a0192afe33a0e1480af0ae3941824c7cd6ff70e0cb5b9",
+        "generic_equip": "fb4c144d9115a2d8f0dbea089968c3c31aec16dbe1ace8837248568f9a60befa"
+      }
+    },
+    {
+      "case_id": "b0a89a88818eefbe",
+      "graph_sha256": "b0a89a88818eefbe3aa7fe2f0ca0c277b175d714bcd48577602db1b92c1da121",
+      "goal_kind": "wear",
+      "source_item_id": "a sleeping bag_9",
+      "authored_command": "wear a sleeping bag",
+      "generic_equip_command": "equip a sleeping bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a sleeping bag",
+        "container": "although the temple is full, no one is speaking and all you can hear are muted scuffling feet.",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a sleeping bag",
+        "container": "although the temple is full, no one is speaking and all you can hear are muted scuffling feet.",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a sleeping bag",
+        "container": "although the temple is full, no one is speaking and all you can hear are muted scuffling feet.",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a sleeping bag_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a sleeping bag_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "0043870c8fe9b626ce80d30df99ada2676ffcba568e3e60e558748438c6b4ad8",
+        "generic_equip": "06c053b459756c07198268a615e6111c0f245c2ea4dc70bd446559e3386ad41d"
+      }
+    },
+    {
+      "case_id": "4dd47b0be2bdb344",
+      "graph_sha256": "4dd47b0be2bdb344085c320fe81375991f4bb6d282faec391d49daebc23f4147",
+      "goal_kind": "wear",
+      "source_item_id": "cell phone_3",
+      "authored_command": "wear cell phone",
+      "generic_equip_command": "equip cell phone",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "cell phone",
+        "container": "businessman",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "cell phone",
+        "container": "businessman",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "cell phone",
+        "container": "businessman",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cell phone_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cell phone_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "a0a2c4894acd26d871bf8640fb590018346752a7af257c4403c8c783910c6881",
+        "generic_equip": "1c9dd0fbf907266c50fa0ad51e51d9faeed44ffb68593be229ed2abd56482663"
+      }
+    },
+    {
+      "case_id": "349227488bc20990",
+      "graph_sha256": "349227488bc2099042092196a70cf3b57045610b93becce0d458f1f9119a3bf2",
+      "goal_kind": "wear",
+      "source_item_id": "arrow_7",
+      "authored_command": "wear Arrow",
+      "generic_equip_command": "equip Arrow",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Arrow",
+        "container": "archer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Arrow",
+        "container": "archer",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Arrow",
+        "container": "archer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/arrow_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/arrow_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "2d7d2f6a98f812f9bb740318e838e699fcd7fc11ba406b646908475b6baa7e9f",
+        "generic_equip": "27915336c2c1cdce7244961b270f38968bbb58155a82fbc23db0d3b1baaef7d8"
+      }
+    },
+    {
+      "case_id": "ee234730afef695e",
+      "graph_sha256": "ee234730afef695e4586e671bc5ea0485730a8beaea67b7ed00d60f3e3a24134",
+      "goal_kind": "wield",
+      "source_item_id": "scepter_9",
+      "authored_command": "wield scepter",
+      "generic_equip_command": "equip scepter",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "scepter",
+        "container": "leader",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "scepter",
+        "container": "leader",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "scepter",
+        "container": "leader",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/scepter_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/scepter_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "e799d1b5afe2b458bd15f2ea7685bb7a37b12960d9030df9c9107c3bb194cf6f",
+        "generic_equip": "1f359e02a544ada031f4231c3bb9af4031413539d66611da34511f0e35272d63"
+      }
+    },
+    {
+      "case_id": "7cd8f2f3a6f69f02",
+      "graph_sha256": "7cd8f2f3a6f69f02191c5685093a9e7ec92588fc2ec88f3601dde2dc8cb76952",
+      "goal_kind": "wield",
+      "source_item_id": "scepter_12",
+      "authored_command": "wield scepter",
+      "generic_equip_command": "equip scepter",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "scepter",
+        "container": "king himself_11",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "scepter",
+        "container": "king himself_11",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "scepter",
+        "container": "king himself_11",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/scepter_12/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/scepter_12/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "f547805f7bd956d781af1e10be02782b4ea9937242fa7c1e9c082a991bbe4f26",
+        "generic_equip": "48d15272239ad6fe46ca05a117d4f7d1062cc75322e82f08f6b663c339d5d0b9"
+      }
+    },
+    {
+      "case_id": "2c5408a7d2526978",
+      "graph_sha256": "2c5408a7d2526978a6224e11d364c9110d90639ca49cd839edccaff47081a871",
+      "goal_kind": "wield",
+      "source_item_id": "food_9",
+      "authored_command": "wield food",
+      "generic_equip_command": "equip food",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "food",
+        "container": "crow_8",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "food",
+        "container": "crow_8",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "food",
+        "container": "crow_8",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/food_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/food_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "ef0c46a2eb5eae6d9c43f9caadb00679a617302bbe5578e84a55df0abc164cb1",
+        "generic_equip": "db8a303d22a3c0a9419a26df35ed8f43eb7939a5860ba939c797c315b562de2f"
+      }
+    },
+    {
+      "case_id": "8c5702fb5f398a13",
+      "graph_sha256": "8c5702fb5f398a1321676da40aeb65d8157f519c7da46409e6d0ab2bd634d454",
+      "goal_kind": "wear",
+      "source_item_id": "fur_6",
+      "authored_command": "wear fur",
+      "generic_equip_command": "equip fur",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "fur",
+        "container": "hunter",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "fur",
+        "container": "hunter",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "fur",
+        "container": "hunter",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/fur_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/fur_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "2a1f5ec5c8f751773c103638ebb42bd93f3777c4001b6390555403ba1806a35e",
+        "generic_equip": "6273efad95d246ec20dfde21a650b2b03b28f600ce0b9f4837f29e6166439682"
+      }
+    },
+    {
+      "case_id": "18fa06170b224f77",
+      "graph_sha256": "18fa06170b224f77dfd7b8dc8c97453b9043bdb65bd852e6e42473f06b25735a",
+      "goal_kind": "wield",
+      "source_item_id": "hammer_7",
+      "authored_command": "wield hammer",
+      "generic_equip_command": "equip hammer",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "hammer",
+        "container": "boat workers",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "hammer",
+        "container": "boat workers",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "hammer",
+        "container": "boat workers",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/hammer_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/hammer_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "f55a0ba0a52bd3a9d83f860e0222ef445f3fbd85dfa5ab66b6060cf45e785c1d",
+        "generic_equip": "0feab8e3f0bce95f8925040019ab9efe0726de68becc0758f2cc54c5c68c6e4d"
+      }
+    },
+    {
+      "case_id": "5dbaa46ee67c0d30",
+      "graph_sha256": "5dbaa46ee67c0d3068a806431db1a9871b139a95a8b1f50b93a4148247c7456f",
+      "goal_kind": "wear",
+      "source_item_id": "a sleeping bag_3",
+      "authored_command": "wear a sleeping bag",
+      "generic_equip_command": "equip a sleeping bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a sleeping bag",
+        "container": "a royal",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a sleeping bag",
+        "container": "a royal",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a sleeping bag",
+        "container": "a royal",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a sleeping bag_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a sleeping bag_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "90ae4ca0df0cdcb0e590754cdcc6f80d40253dd582427c265385c20f8ab65583",
+        "generic_equip": "7fcff61dd9d1c3ff3d4869f167c0decd1e46f1df05d8b04ad94fc0e194e6a793"
+      }
+    },
+    {
+      "case_id": "4cbbeb51d5f49092",
+      "graph_sha256": "4cbbeb51d5f49092cb0abad51823ad0316ed5a3ced7f2b5265a86d06a8b5f746",
+      "goal_kind": "wear",
+      "source_item_id": "blood_8",
+      "authored_command": "wear Blood",
+      "generic_equip_command": "equip Blood",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Blood",
+        "container": "evil priestess",
+        "equipped": null,
+        "drink": true,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Blood",
+        "container": "evil priestess",
+        "equipped": "wear",
+        "drink": true,
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Blood",
+        "container": "evil priestess",
+        "equipped": "equip",
+        "drink": true,
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/blood_8/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/blood_8/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "1108f5811b01ea3734db4833537a6688578947c2672563820ef2c09927488f99",
+        "generic_equip": "ea9e8ad39622a79349b2a684ad824b5bb0d942b954c1b2948a39ea596e0796cf"
+      }
+    },
+    {
+      "case_id": "eb1e8a10c21a0a07",
+      "graph_sha256": "eb1e8a10c21a0a07b6fc53dc2945023ec21675cba9a397fb9f8bd3b8ca4408eb",
+      "goal_kind": "wear",
+      "source_item_id": "sword_11",
+      "authored_command": "wear sword",
+      "generic_equip_command": "equip sword",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "sword",
+        "container": "traitor",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "sword",
+        "container": "traitor",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "sword",
+        "container": "traitor",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/sword_11/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/sword_11/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "7498fb4cfd086694cc78b389afd6cfee0ec44d6707ee7bbde04dad52f26cc9b8",
+        "generic_equip": "307f17e586279e537d0426100e88aebcfc51337afa2a4f1ced2485f26695d460"
+      }
+    },
+    {
+      "case_id": "039f88bad884fcd1",
+      "graph_sha256": "039f88bad884fcd1005ddaa10ddc73c6a02b38e8a9199ae8ea1a1763721fbe97",
+      "goal_kind": "wield",
+      "source_item_id": "bag_7",
+      "authored_command": "wield bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "unicorn hunters",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "unicorn hunters",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "unicorn hunters",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "9c71fbbea4dd14ca1c3d1fc991ddcc9d0f14a1c433e65da8902807dd5a911a4b",
+        "generic_equip": "e67e93503061808a026668bc8b004ef22f2f1922b9009c8cc51881a4b765da40"
+      }
+    },
+    {
+      "case_id": "004ddb15538a7b06",
+      "graph_sha256": "004ddb15538a7b067702e51b34f7700497b4a4e313cbca19afdfe81fadb136c0",
+      "goal_kind": "wear",
+      "source_item_id": "blacksmith's hammer_20",
+      "authored_command": "wear blacksmith's hammer",
+      "generic_equip_command": "equip blacksmith's hammer",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "blacksmith's hammer",
+        "container": "weapons master",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "blacksmith's hammer",
+        "container": "weapons master",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "blacksmith's hammer",
+        "container": "weapons master",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/blacksmith's hammer_20/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/blacksmith's hammer_20/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "10f11905e64c3889ca03a87b6698ecb57524438bcfcba49da5b1a20018ef241e",
+        "generic_equip": "6214564c4ee5b09e3fda7224913c09da14627a93e8f7b07f00d72fc6b66378e0"
+      }
+    },
+    {
+      "case_id": "f2c41229b5394d39",
+      "graph_sha256": "f2c41229b5394d3929ba2dc13db322f5160c9c507f4d6aa60d2aa28306efb66f",
+      "goal_kind": "wear",
+      "source_item_id": "bag_2",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "customer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "customer",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "customer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "7782936b8d48f26c48b71cde01cb93777b46cb6332e67e2ab8db51b454550cb3",
+        "generic_equip": "ac17b872ad248456fa2131970cd7fa5d4077ffa5e3d4ae351fb9a3895cc31ec4"
+      }
+    },
+    {
+      "case_id": "31de9f60651c9e87",
+      "graph_sha256": "31de9f60651c9e87f57448541d3b481ef5932da303e399244c18e98ea338fe1b",
+      "goal_kind": "wear",
+      "source_item_id": "jewel_2",
+      "authored_command": "wear jewel",
+      "generic_equip_command": "equip jewel",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "jewel",
+        "container": "thief",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "jewel",
+        "container": "thief",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "jewel",
+        "container": "thief",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/jewel_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/jewel_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "2ffa7247e72481c0487b9d7ab78f7d4387113eea346c4c42757fdf953d4a32d2",
+        "generic_equip": "1ddac05aa50b57b969216ed5c57faca85391d92a74a591acd9d757a96bc617f6"
+      }
+    },
+    {
+      "case_id": "a12c8ea3df0fdbc9",
+      "graph_sha256": "a12c8ea3df0fdbc95173ad1ba8e286ea109dfecc58d5c3cc9ad997edfa5c8748",
+      "goal_kind": "wear",
+      "source_item_id": "blanket_11",
+      "authored_command": "wear blanket",
+      "generic_equip_command": "equip blanket",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "blanket",
+        "container": "mother",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "blanket",
+        "container": "mother",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "blanket",
+        "container": "mother",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/blanket_11/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/blanket_11/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "fbb5abb84a456ffcfe7f738214967fb3f9c73a164985f7e1295b006aab86349c",
+        "generic_equip": "cd46caa3a3848a6cf9da558ebc0963d7a5a485bd72207198ca09fb0cb78eb9b2"
+      }
+    },
+    {
+      "case_id": "af588ad3eb3cc518",
+      "graph_sha256": "af588ad3eb3cc51843547802ab4e927da327f698bf50d260e3048ced33a2224c",
+      "goal_kind": "wear",
+      "source_item_id": "sleeping bag_6",
+      "authored_command": "wear sleeping bag",
+      "generic_equip_command": "equip sleeping bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "sleeping bag",
+        "container": "veterinarian_5",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "sleeping bag",
+        "container": "veterinarian_5",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "sleeping bag",
+        "container": "veterinarian_5",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/sleeping bag_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/sleeping bag_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "efd5abad353f3110d16af4c8d54ef3aa0a7337999c848d9f4cfce77ddd78885d",
+        "generic_equip": "97e85c8917de3d29be08e432cbf993ff03a8e8e96b23be9cb971816b31d8d986"
+      }
+    },
+    {
+      "case_id": "9f10dd1c0772e4a5",
+      "graph_sha256": "9f10dd1c0772e4a5e24a3e98573f61a903f8a88903d017b4ce0b47ae059fca12",
+      "goal_kind": "wield",
+      "source_item_id": "compass_10",
+      "authored_command": "wield compass",
+      "generic_equip_command": "equip compass",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "compass",
+        "container": "explorer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "compass",
+        "container": "explorer",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "compass",
+        "container": "explorer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/compass_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/compass_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "a44c2c332eebd5b038ec9adbad42cab4d4271f443257cef4f7a37b348fa81a61",
+        "generic_equip": "41b1eec2c0ff21e9595570b08cac21d30f5cc2626773bb422e4bb958733555a3"
+      }
+    },
+    {
+      "case_id": "2353caa95a94fbbb",
+      "graph_sha256": "2353caa95a94fbbb3c972f0fcf4fff5e068cc8837cd6b00bf45d973f83dc2e36",
+      "goal_kind": "wield",
+      "source_item_id": "shovel_5",
+      "authored_command": "wield shovel",
+      "generic_equip_command": "equip shovel",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shovel",
+        "container": "gardener",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shovel",
+        "container": "gardener",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shovel",
+        "container": "gardener",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shovel_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shovel_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "46a67aab8d7f44c58e8a92654d4e02b2f7485bb0eb87069124daf9b5fb93d36e",
+        "generic_equip": "f0676436f9bd72f4558692ea9c847f3b99f6cfacaa7ba84799efbf68c8d7d92e"
+      }
+    },
+    {
+      "case_id": "9b5ddbdb54fab276",
+      "graph_sha256": "9b5ddbdb54fab27609a6a3c685aaf27ab246fb31f532bc648b0e5674df4ae86b",
+      "goal_kind": "wield",
+      "source_item_id": "scepter_2",
+      "authored_command": "wield scepter",
+      "generic_equip_command": "equip scepter",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "scepter",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "scepter",
+        "container": "king",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "scepter",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/scepter_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/scepter_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "60ea3255381f19455be933387a3b49583ec9e6c06540eda4398f1e6745fca291",
+        "generic_equip": "90b23d3799aff6e2b590fc65bf4da14d78911450b144043f7ab11176551cc0de"
+      }
+    },
+    {
+      "case_id": "d51b35f449d9bbcf",
+      "graph_sha256": "d51b35f449d9bbcf0a52dc595f0f813e1f4b57c8edae14631fa37189f17c7bcb",
+      "goal_kind": "wear",
+      "source_item_id": "flower_3",
+      "authored_command": "wear flower",
+      "generic_equip_command": "equip flower",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "flower",
+        "container": "a reluctant nun",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "flower",
+        "container": "a reluctant nun",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "flower",
+        "container": "a reluctant nun",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/flower_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/flower_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "f1f9ff90e9380ae91bf1b0e4e9780b12f8d55d86bd63fa002cc39c7e577e7394",
+        "generic_equip": "b3f7fab9d2e01493f4423834ec8d33c34b61450a3098028be480bb45fc949b78"
+      }
+    },
+    {
+      "case_id": "54fd80a87862f629",
+      "graph_sha256": "54fd80a87862f629754ad1f27d9b91725f68cde35a59e75e3b10321b395af19d",
+      "goal_kind": "wield",
+      "source_item_id": "bow and arrow_15",
+      "authored_command": "wield Bow and arrow",
+      "generic_equip_command": "equip Bow and arrow",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Bow and arrow",
+        "container": "villager",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Bow and arrow",
+        "container": "villager",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Bow and arrow",
+        "container": "villager",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bow and arrow_15/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bow and arrow_15/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "b078ac818d96093e68774fec5e35c0c0e1845b2eb5b05e5189aa79c7b8135281",
+        "generic_equip": "1d524bb313895985616dc45719f51bd432c3821bcb5eb77935ec801bb28f8009"
+      }
+    },
+    {
+      "case_id": "c7ab3c483dc97a76",
+      "graph_sha256": "c7ab3c483dc97a7662965c29e278dfa3ed11d7becf764c30dfe2eb8c77b781a0",
+      "goal_kind": "wear",
+      "source_item_id": "shield_6",
+      "authored_command": "wear shield",
+      "generic_equip_command": "equip shield",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shield",
+        "container": "knight",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shield_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shield_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "c2e14d4c56eed3aa2f925a0f6a5e98bffd49b6a5c972121efce2dd877692858c",
+        "generic_equip": "157cd77a9a7f54572768ba53d9832360cf543f86c067c069aac10f3182ac62ed"
+      }
+    },
+    {
+      "case_id": "c639254606db8156",
+      "graph_sha256": "c639254606db81565ae89b1107cdefc68fde40a63400bc6e5edf06b8cc6960d9",
+      "goal_kind": "wield",
+      "source_item_id": "broom_7",
+      "authored_command": "wield broom",
+      "generic_equip_command": "equip broom",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "broom",
+        "container": "chamber maid_6",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "broom",
+        "container": "chamber maid_6",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "broom",
+        "container": "chamber maid_6",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/broom_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/broom_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "5e2629b5079b99b55e7fbe0b659f60582c6400c31a3e52bb1896739a02563e7a",
+        "generic_equip": "e8b916e9bf65f5c7b137ff83fd9af80ad073b31e16129020d86691b2365f202e"
+      }
+    },
+    {
+      "case_id": "f2fb221bc44cfd28",
+      "graph_sha256": "f2fb221bc44cfd2886d060e8915aee4a22c006d056f7cebcb964b366cc281bb3",
+      "goal_kind": "wear",
+      "source_item_id": "cleaning cloth_10",
+      "authored_command": "wear cleaning cloth",
+      "generic_equip_command": "equip cleaning cloth",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "cleaning cloth",
+        "container": "homeless person",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "cleaning cloth",
+        "container": "homeless person",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "cleaning cloth",
+        "container": "homeless person",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cleaning cloth_10/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cleaning cloth_10/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "ad4bcf42fd14e0d3e7be6151b8bbfc0beaec4fc91c064b0e1e2cc7977955951b",
+        "generic_equip": "8d74b4e676fc54b11da6f03b70ee237dba58e8ecf738613e77eb7e2c25c3f3e3"
+      }
+    },
+    {
+      "case_id": "15a354dfec344694",
+      "graph_sha256": "15a354dfec3446942d61598de954d77f6bd8e8fbcf7bcc1416f9c4b2bed65b83",
+      "goal_kind": "wear",
+      "source_item_id": "purse_4",
+      "authored_command": "wear purse",
+      "generic_equip_command": "equip purse",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "purse",
+        "container": "farmer bob's wife",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "purse",
+        "container": "farmer bob's wife",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "purse",
+        "container": "farmer bob's wife",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/purse_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/purse_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "db336aaf4994f8f02aae13ddca5a0b2719be59890f0836e0c8b6b961300d19da",
+        "generic_equip": "b87f94853d614701baee428c2ff1f8502baaf934ad70345d19738d8180568d07"
+      }
+    },
+    {
+      "case_id": "0fbfb8d890778069",
+      "graph_sha256": "0fbfb8d890778069edee07165cf36f7dc85739c0322d673088b609b2f7fec5d1",
+      "goal_kind": "wear",
+      "source_item_id": "sword_8",
+      "authored_command": "wear sword",
+      "generic_equip_command": "equip sword",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "sword",
+        "container": "knight",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "sword",
+        "container": "knight",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "sword",
+        "container": "knight",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/sword_8/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/sword_8/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "9d190b6eba1e6cf7464bda5eda98b9e3c1873dd8606daa5e3621f22b5dfd0371",
+        "generic_equip": "496b17e8c5486994c0e8b8bb8b916a1c6594734763eda26fed72091818c53f90"
+      }
+    },
+    {
+      "case_id": "704894d4f06e8db6",
+      "graph_sha256": "704894d4f06e8db61c72297f1f561b6fc1b32b7f2b50250f9a090b7c089a6a70",
+      "goal_kind": "wield",
+      "source_item_id": "shield_12",
+      "authored_command": "wield shield",
+      "generic_equip_command": "equip shield",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shield",
+        "container": "guard",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shield",
+        "container": "guard",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shield",
+        "container": "guard",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shield_12/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shield_12/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "4f4e33a98a864376d0103bf3fa416298cfc97b9c66c5cc9c4a51d05cabc8073a",
+        "generic_equip": "032aaa6b0428c3a8e1ef9cfff31709b668cec7e85cd915953a91b41ac0fb987b"
+      }
+    },
+    {
+      "case_id": "abef95a56f536206",
+      "graph_sha256": "abef95a56f5362065cc4461cc9ede4262ad6474e42c8b637c87b4ef4dddf38c4",
+      "goal_kind": "wear",
+      "source_item_id": "small crucifix_3",
+      "authored_command": "wear small crucifix",
+      "generic_equip_command": "equip small crucifix",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "small crucifix",
+        "container": "executioner_1",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "small crucifix",
+        "container": "executioner_1",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "small crucifix",
+        "container": "executioner_1",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/small crucifix_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/small crucifix_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "8731ac8b27a65e64a08761ffe78683865eddc5864583dbf8b797e2b60d954f1f",
+        "generic_equip": "a61330e34bac5c3af036f25eda42dd009503c77bff043c58824ed746c645c9cc"
+      }
+    },
+    {
+      "case_id": "fe01b9d2a1c7462e",
+      "graph_sha256": "fe01b9d2a1c7462e0d66777f5db451abe8f99ffd2707a7de11aedd361cbe8d5c",
+      "goal_kind": "wear",
+      "source_item_id": "bag_2",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "merchant",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "merchant",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "merchant",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "f73232523ffdf6f30e9581080cc8aa09540644efd9dff890729246b9d3eeecb5",
+        "generic_equip": "55dadee8926ed9733e717b58d4cbc2a66f9e60ba2ff661abf7190f715a9be6dc"
+      }
+    },
+    {
+      "case_id": "c67c2235fc489663",
+      "graph_sha256": "c67c2235fc4896635239e6b10faa9e8494242659784d9b733c49fe5e6732ae3d",
+      "goal_kind": "wield",
+      "source_item_id": "knife_11",
+      "authored_command": "wield knife",
+      "generic_equip_command": "equip knife",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "knife",
+        "container": "challenger",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "knife",
+        "container": "challenger",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "knife",
+        "container": "challenger",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/knife_11/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/knife_11/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "eaca247a9810b08fb3e930afdfb335b8c3739ce7b7c373859ac0813c86adb8e6",
+        "generic_equip": "678f042229e6d67304135685a26ece951e53929aa119054dfa38d61ce1be7db1"
+      }
+    },
+    {
+      "case_id": "48179d03cb66d955",
+      "graph_sha256": "48179d03cb66d95500e05d8189a3f5b1c8316bd44e6d5252f07f41200fe7dc0f",
+      "goal_kind": "wield",
+      "source_item_id": "bible_6",
+      "authored_command": "wield bible",
+      "generic_equip_command": "equip bible",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bible",
+        "container": "priest",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bible",
+        "container": "priest",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bible",
+        "container": "priest",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bible_6/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bible_6/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "519d2ba88f1f56bd14d87af8288123b3c21e84408fd0f201a6fdebc1dd64d931",
+        "generic_equip": "d675065f6645213b17804fe4717161903af77bdaff7a0ee77807fd142fbffda5"
+      }
+    },
+    {
+      "case_id": "ee5e2122e81784e3",
+      "graph_sha256": "ee5e2122e81784e3a6ee4a1ddda9ea333f6b918a21e1bad5d135801b0da8be10",
+      "goal_kind": "wear",
+      "source_item_id": "clothing_10",
+      "authored_command": "wear clothing",
+      "generic_equip_command": "equip clothing",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "clothing",
+        "container": "fox_9",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "clothing",
+        "container": "fox_9",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "clothing",
+        "container": "fox_9",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/clothing_10/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/clothing_10/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "251d055cecbcf6e484409e68043adf62b6834ea1651b5278a775a1567620f794",
+        "generic_equip": "069f063025657c8edecfce4de1cb6894752337b92f25323a9e119614adab4947"
+      }
+    },
+    {
+      "case_id": "ce0d6b135ba65ff2",
+      "graph_sha256": "ce0d6b135ba65ff273611e58d4f8a8fbdce18c17cd8e715c90b414e3011cdb1d",
+      "goal_kind": "wield",
+      "source_item_id": "a fan_9",
+      "authored_command": "wield a fan",
+      "generic_equip_command": "equip a fan",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a fan",
+        "container": "subject",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a fan",
+        "container": "subject",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a fan",
+        "container": "subject",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a fan_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a fan_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "37283a5c997771b8f1ec406e3794b6f820e206908523e2354948f36c78d9bc53",
+        "generic_equip": "e32adf5fc4d22a2310f497aa38d99f95c6cc0084f4c78aab426a8695de3d55cd"
+      }
+    },
+    {
+      "case_id": "e77ee60f33b015dd",
+      "graph_sha256": "e77ee60f33b015dd43cef6c66060d12238aad68dfb31c470225212f2e298ebb5",
+      "goal_kind": "wear",
+      "source_item_id": "crucifix_6",
+      "authored_command": "wear Crucifix",
+      "generic_equip_command": "equip Crucifix",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Crucifix",
+        "container": "villager",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Crucifix",
+        "container": "villager",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Crucifix",
+        "container": "villager",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/crucifix_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/crucifix_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "4d8790a000da3d8b654383a929d811e6e89cb6a819e926286a03db85e75e6f07",
+        "generic_equip": "604f709d4f8faf885e6f27e9502fcebd3f8d2845bc619153c115eeb21925763f"
+      }
+    },
+    {
+      "case_id": "4864ac3dde639602",
+      "graph_sha256": "4864ac3dde63960244cb6e7bd6edd55abf6f1f66dda2536a742b4a0e24d4b0f1",
+      "goal_kind": "wield",
+      "source_item_id": "scarves_10",
+      "authored_command": "wield scarves",
+      "generic_equip_command": "equip scarves",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "scarves",
+        "container": "village youth",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "scarves",
+        "container": "village youth",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "scarves",
+        "container": "village youth",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/scarves_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/scarves_10/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "0c030ece5040ed53fa7c7d45429f766bdd765284cd771bd6d4d8dbdf95b5bb3c",
+        "generic_equip": "ee806e3412acf7ecf44cb598da616df716f5e11945aa274945737fc6c46a9f1e"
+      }
+    },
+    {
+      "case_id": "ad0904638a1644a5",
+      "graph_sha256": "ad0904638a1644a527732f0c877d2d27acdf459d7f3b54f38d6708226a2e497c",
+      "goal_kind": "wear",
+      "source_item_id": "bag_17",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "castle guards",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "castle guards",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "castle guards",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_17/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_17/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "ebe2990709f6a718ab2892b2d7e438008c78b21e9cfee843d3818bad93c8c485",
+        "generic_equip": "f8cabe83401672b1644c65bf912000f9e235a663ead46f4c146bb66735a6ca89"
+      }
+    },
+    {
+      "case_id": "b245193acb124279",
+      "graph_sha256": "b245193acb124279e1f54727d476aaa796486c3a8571250ca7b34506e42357c1",
+      "goal_kind": "wield",
+      "source_item_id": "shield_8",
+      "authored_command": "wield shield",
+      "generic_equip_command": "equip shield",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "shield",
+        "container": "castle guard",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "shield",
+        "container": "castle guard",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "shield",
+        "container": "castle guard",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/shield_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/shield_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "3bd56f2bd86141dd08600c32585b6f20f9f5adf5e134fb59873841772a3527b6",
+        "generic_equip": "e135772c3830c132957e1556ab7d08dfffcc2f88f3f14432fbb16643ca41f9d2"
+      }
+    },
+    {
+      "case_id": "889c5de26e011aa7",
+      "graph_sha256": "889c5de26e011aa761d84e5b39bca3e58c80951b9fbaaadfa5eeb77052f1496a",
+      "goal_kind": "wear",
+      "source_item_id": "cross_7",
+      "authored_command": "wear Cross",
+      "generic_equip_command": "equip Cross",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Cross",
+        "container": "priest",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Cross",
+        "container": "priest",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Cross",
+        "container": "priest",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cross_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cross_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "8dd49778d200b2861274f1ee20d2b8037857c6cbfe332a60a175ffcecf77dc67",
+        "generic_equip": "c76e140376df2dea699ae707506fd94d66e694d34823889b35920cbb41f9999a"
+      }
+    },
+    {
+      "case_id": "ea214b40fce741ec",
+      "graph_sha256": "ea214b40fce741ec110c8ffe3e8885ef4eb474f3da26ef842fe2dfa3286ff141",
+      "goal_kind": "wear",
+      "source_item_id": "crown_17",
+      "authored_command": "wear crown",
+      "generic_equip_command": "equip crown",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "crown",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/crown_17/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/crown_17/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "6e0c3a63d514cbbd9d158f0908b7ed9b304d88c7fce7978e67318b482a780adf",
+        "generic_equip": "ee635db9ead6328f6fb51d5e7aa665267bcfd3fe4b61c6dda36287532e5395a0"
+      }
+    },
+    {
+      "case_id": "ab0ce35162ff5df1",
+      "graph_sha256": "ab0ce35162ff5df17112cd4b48d86c0b245cc68e364ef2b3c44572f42bdd53f9",
+      "goal_kind": "wield",
+      "source_item_id": "a sleeping bag_3",
+      "authored_command": "wield a sleeping bag",
+      "generic_equip_command": "equip a sleeping bag",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a sleeping bag",
+        "container": "officer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a sleeping bag",
+        "container": "officer",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a sleeping bag",
+        "container": "officer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a sleeping bag_3/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a sleeping bag_3/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "10620180aae7fe612af87319677422998c104415ef969679f90d14e52dc86cd3",
+        "generic_equip": "efd8b1b23cba65e871633eec0c86c2aaaec8de077a0e83d042ee4a91ee60600b"
+      }
+    },
+    {
+      "case_id": "0782a390d7b5d878",
+      "graph_sha256": "0782a390d7b5d87830e620af5bc4d8bb4a97be6c2ede5cfdd3d3218724c18754",
+      "goal_kind": "wield",
+      "source_item_id": "quill_8",
+      "authored_command": "wield Quill",
+      "generic_equip_command": "equip Quill",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Quill",
+        "container": "village official",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Quill",
+        "container": "village official",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Quill",
+        "container": "village official",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/quill_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/quill_8/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "eaad7091e29a97d4ce39ee46cce90355612dc57a5f73d973a7f48513edd7a786",
+        "generic_equip": "913b0bde4b7d484a842eca3f99c92cbb42930c2c1d588be20e2d0cf378f131d9"
+      }
+    },
+    {
+      "case_id": "a44d34437c5f0189",
+      "graph_sha256": "a44d34437c5f018980df35d47bc41e726ab777a4d9dc4638c12da0e7c8bc137e",
+      "goal_kind": "wield",
+      "source_item_id": "weapon_7",
+      "authored_command": "wield weapon",
+      "generic_equip_command": "equip weapon",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "weapon",
+        "container": "barbarian",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "weapon",
+        "container": "barbarian",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "weapon",
+        "container": "barbarian",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/weapon_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/weapon_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "69df19ae90f9ac68afc1ed17e2146b52452719e1f141b4aa38856614bb9799bb",
+        "generic_equip": "e6804c6f03d1b8920a4a9c1c4e756529e1f16dfcca3f05cf2f0b42a3c0d7c20d"
+      }
+    },
+    {
+      "case_id": "a8714f21a1c83709",
+      "graph_sha256": "a8714f21a1c83709628e50454bfa487869035e25337cb2b8060789bb0b5e84ec",
+      "goal_kind": "wield",
+      "source_item_id": "food_9",
+      "authored_command": "wield food",
+      "generic_equip_command": "equip food",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "food",
+        "container": "woman_7",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "food",
+        "container": "woman_7",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "food",
+        "container": "woman_7",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 2,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/food_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/food_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "bcdc69b1cce795dc4c00452ff6ca416837a81d7f2ee55dd906eae1c81624fe17",
+        "generic_equip": "c84a650044d9b9d3c6af80e9f5e4abfe8c2ce82ead7aa99c901a20d5aafc57a0"
+      }
+    },
+    {
+      "case_id": "d03ce876e274bab4",
+      "graph_sha256": "d03ce876e274bab4d7b249927ec39868a88b3144cc11a9c7875fa2aa19009a5a",
+      "goal_kind": "wear",
+      "source_item_id": "bag_4",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "person",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "person",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "person",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_4/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "73292d241fc451ed4ec7b8f9111a1101f6b8b5c9192230ccc7ebf13b71a60813",
+        "generic_equip": "e30fbafed638ca16d3879483daa66c556fc6e3327d943693e73e5a1ad4480eba"
+      }
+    },
+    {
+      "case_id": "1da21b8e516da8c9",
+      "graph_sha256": "1da21b8e516da8c95924553292b526deac29d6702b797e8fdee990cc52f85ee1",
+      "goal_kind": "wear",
+      "source_item_id": "cape_9",
+      "authored_command": "wear cape",
+      "generic_equip_command": "equip cape",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "cape",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "cape",
+        "container": "king",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "cape",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cape_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cape_9/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "a7f1e28a34cea0ab8c5ecff6ea689a890dd6b85e76d49d89c41d00b4269022f0",
+        "generic_equip": "91c401293e8cc5fd4dfb7f4aaa976873ac26294cabe8e0d06cb5e5bc464cd2cb"
+      }
+    },
+    {
+      "case_id": "b28bfda61be68ddb",
+      "graph_sha256": "b28bfda61be68ddb058bc43e5b850593ba218d86e5281d5e2422e773bdd38da8",
+      "goal_kind": "wield",
+      "source_item_id": "books_5",
+      "authored_command": "wield Books",
+      "generic_equip_command": "equip Books",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Books",
+        "container": "royal member",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Books",
+        "container": "royal member",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Books",
+        "container": "royal member",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/books_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/books_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "8c8b1e1c79ac2759d721b48f7b74d0b1b82aa0771810ec455be89d96a12d6ec1",
+        "generic_equip": "8a69e8fde044634247e325a7ea5b798c4f6dd1d2124a1a99a1d0ca35965be3c5"
+      }
+    },
+    {
+      "case_id": "a721c85a0e80618e",
+      "graph_sha256": "a721c85a0e80618e74de0a9af415778f82cb13180c7085a36ac19e412b3233bf",
+      "goal_kind": "wield",
+      "source_item_id": "money_4",
+      "authored_command": "wield money",
+      "generic_equip_command": "equip money",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "money",
+        "container": "explorer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "money",
+        "container": "explorer",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "money",
+        "container": "explorer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/money_4/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/money_4/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "cffb9846f0c2b40851218786d3b47ad004743e2cb6da152c00d2476c5531da10",
+        "generic_equip": "98e449d0248a9f9aa3842f91a28c40be9e41f0836b4d1f9a1f75e87adebdb117"
+      }
+    },
+    {
+      "case_id": "b76642fafec607c1",
+      "graph_sha256": "b76642fafec607c1715f37d55e4b76d31ea5b072b0db391d3219d9445a604839",
+      "goal_kind": "wield",
+      "source_item_id": "moldy bread_5",
+      "authored_command": "wield moldy bread",
+      "generic_equip_command": "equip moldy bread",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "moldy bread",
+        "container": "peasant",
+        "equipped": null,
+        "food": true,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "moldy bread",
+        "container": "peasant",
+        "equipped": "wield",
+        "food": true,
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "moldy bread",
+        "container": "peasant",
+        "equipped": "equip",
+        "food": true,
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/moldy bread_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/moldy bread_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "399fa2920bad0e13f5854dd0e9053a6ed7ff8359736070868920298fcfa5d326",
+        "generic_equip": "a65e5b16e378776956195f3c39e5efa6f037ea37a56f5cb70b230024c7f85594"
+      }
+    },
+    {
+      "case_id": "b620ae3c913d1b7d",
+      "graph_sha256": "b620ae3c913d1b7d7f6ec0e008261da3eaf904d53b15775aec71e85c933eedc8",
+      "goal_kind": "wear",
+      "source_item_id": "bag of herbs_6",
+      "authored_command": "wear bag of herbs",
+      "generic_equip_command": "equip bag of herbs",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag of herbs",
+        "container": "merchant",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag of herbs",
+        "container": "merchant",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag of herbs",
+        "container": "merchant",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag of herbs_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag of herbs_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "8329efee4afe98e735f644c176e893d3869d34f2f4c5b3fd75176188ae6f1b22",
+        "generic_equip": "37ececbac45de602653bbd6f35d4fcc86f0945c36d7c4f156e4405d800320b55"
+      }
+    },
+    {
+      "case_id": "1b46382d4d3601c4",
+      "graph_sha256": "1b46382d4d3601c43940f2ead537f56fc4623281634b83866e915fd4461c9104",
+      "goal_kind": "wear",
+      "source_item_id": "bag_6",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "soldier",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "soldier",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "soldier",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "344e454e895804283235f1ca5ff0de6ceabb5b338af020bbb64fb8cf0020882b",
+        "generic_equip": "57f82911e31c7e9512a5ae06685ce7483b6588465920887426982b1ef8d0d44f"
+      }
+    },
+    {
+      "case_id": "ee491b0fd19100ab",
+      "graph_sha256": "ee491b0fd19100abf89cc6019a464b7ee18216cfa3b1f05ea0aec41bea80c995",
+      "goal_kind": "wear",
+      "source_item_id": "sword_3",
+      "authored_command": "wear sword",
+      "generic_equip_command": "equip sword",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "sword",
+        "container": "guard",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "sword",
+        "container": "guard",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "sword",
+        "container": "guard",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/sword_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/sword_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "d4c4b9d298b6d82434148a22b2e75ca7c86a10663b89102ff666a7f2272ef070",
+        "generic_equip": "2532d92f8286bb30252dbdff600eff70fc116ac803729f90d9a5f53e77f46b3a"
+      }
+    },
+    {
+      "case_id": "aa1165b8aa89e25c",
+      "graph_sha256": "aa1165b8aa89e25c1268d644b19e5567f734006fb10bf9661f5b544d916b7222",
+      "goal_kind": "wear",
+      "source_item_id": "bone_6",
+      "authored_command": "wear bone",
+      "generic_equip_command": "equip bone",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bone",
+        "container": "archaeologists",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bone",
+        "container": "archaeologists",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bone",
+        "container": "archaeologists",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bone_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bone_6/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "3a080fc3f9fe812c6d70d489ab4b2c51aaac81bbda2e6b3cd5cda26d30fc5cdd",
+        "generic_equip": "2865b74cb1b5db8ea6994a467417125f2ef638f2b4d2532a71be67c06ca48f96"
+      }
+    },
+    {
+      "case_id": "cadb083f6845f520",
+      "graph_sha256": "cadb083f6845f520270beea0c6e49ba400dffe28eebcbcca2cc074ca16346cdf",
+      "goal_kind": "wear",
+      "source_item_id": "rag_2",
+      "authored_command": "wear rag",
+      "generic_equip_command": "equip rag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "rag",
+        "container": "cleaning person",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "rag",
+        "container": "cleaning person",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "rag",
+        "container": "cleaning person",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/rag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/rag_2/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "6dcd414bb2a02ba67cd22d2c76180eab0d0338ef7e91f8489dfcceda7c364e22",
+        "generic_equip": "c3ea14ccf56862898f13b518e9fdaf48455fe011139d066a200eff01f1b4c7de"
+      }
+    },
+    {
+      "case_id": "4b4bf1f6a1a21eb9",
+      "graph_sha256": "4b4bf1f6a1a21eb99f6e7e521c03f2f0fba3467a01a01c5e612ed1e2e38c4d17",
+      "goal_kind": "wield",
+      "source_item_id": "books_2",
+      "authored_command": "wield Books",
+      "generic_equip_command": "equip Books",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "Books",
+        "container": "queen",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "Books",
+        "container": "queen",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "Books",
+        "container": "queen",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/books_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/books_2/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "a85806fa23d74d87ac5ebe0ac4965be2a15fb12d5c50175d0df0ddba9f68e043",
+        "generic_equip": "362f7199b48a47c0f9692cd558c78bdd63035e6d7bba64778c174d11a5e3ea2a"
+      }
+    },
+    {
+      "case_id": "b42b8d6856edfc46",
+      "graph_sha256": "b42b8d6856edfc4635282b22e6547474a533bf0c90723fd4bd1668d71b2b91fb",
+      "goal_kind": "wear",
+      "source_item_id": "purse_5",
+      "authored_command": "wear purse",
+      "generic_equip_command": "equip purse",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "purse",
+        "container": "villager",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/purse_5/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/purse_5/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "1f1cda5e68586e24a6667e1ab7d364a0e133c7f9b3f096d792d7a940c91d0eef",
+        "generic_equip": "084c3458c914ec61b79d1ae0ee23e47f19964b7b3adef1773c807763c427b6bc"
+      }
+    },
+    {
+      "case_id": "9ff4da9d4080fed3",
+      "graph_sha256": "9ff4da9d4080fed38e2b2fc2713a5246eb00f9e0fda4a3b6e83890d47570b392",
+      "goal_kind": "wield",
+      "source_item_id": "a crystal ball_9",
+      "authored_command": "wield a crystal ball",
+      "generic_equip_command": "equip a crystal ball",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a crystal ball",
+        "container": "child",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a crystal ball",
+        "container": "child",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a crystal ball",
+        "container": "child",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a crystal ball_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a crystal ball_9/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "e7d3391a8adeeb5e93070a2b54e4b858904795f2772c08eecc010182a1ba426a",
+        "generic_equip": "0e39d0973a2e8150f9d75b4dd3424d7164a74f20c6124c101df71fe4c172a761"
+      }
+    },
+    {
+      "case_id": "226a78a898dbebf6",
+      "graph_sha256": "226a78a898dbebf6ea28a1e0d18130996f74149f431f224347a053a5293c3645",
+      "goal_kind": "wield",
+      "source_item_id": "bible_7",
+      "authored_command": "wield bible",
+      "generic_equip_command": "equip bible",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bible",
+        "container": "a gravedigger doing his work",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bible",
+        "container": "a gravedigger doing his work",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bible",
+        "container": "a gravedigger doing his work",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bible_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bible_7/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "d1a8d3520bc3f13c0ac95a8024615a9a9755cdcfd7a49f9dbf38b5562d64841e",
+        "generic_equip": "11e7a2011f822c82c4edbc347d2505acb66cb462eca04dec01670a2d4b7f4967"
+      }
+    },
+    {
+      "case_id": "55bdfa00fc2a572a",
+      "graph_sha256": "55bdfa00fc2a572a3c508b0ca824398337ae5ae9d64e8f1f87982851a1c77e95",
+      "goal_kind": "wear",
+      "source_item_id": "crown_7",
+      "authored_command": "wear crown",
+      "generic_equip_command": "equip crown",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "crown",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/crown_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/crown_7/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "0226ef9174b7518b09c3081fd7fe36d44efbf594de56b80acf1526c6d26267d6",
+        "generic_equip": "1563cdcf35508a91569ea1685ef9e2cd889b12e275350e413c95e68642420069"
+      }
+    },
+    {
+      "case_id": "b7823e18ba445fc7",
+      "graph_sha256": "b7823e18ba445fc743e9fb45f67b2f3fa3ba437e148a97e20cdc622578a7dd34",
+      "goal_kind": "wield",
+      "source_item_id": "stick_13",
+      "authored_command": "wield stick",
+      "generic_equip_command": "equip stick",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "stick",
+        "container": "hiker",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/stick_13/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/stick_13/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "3f45e180239c3c471bc6880caa7e2c328b04387840ab2667b8d97be6c4e3ba10",
+        "generic_equip": "12861bad1d3ff06828bef880201630df108cf27dceca44e2cac9c7566b9567fe"
+      }
+    },
+    {
+      "case_id": "c712ab52988b89d2",
+      "graph_sha256": "c712ab52988b89d2b72d78acf498888f5b4086c427a2a66d1055765682f88ba3",
+      "goal_kind": "wear",
+      "source_item_id": "a sleeping bag_16",
+      "authored_command": "wear a sleeping bag",
+      "generic_equip_command": "equip a sleeping bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "a sleeping bag",
+        "container": "a messenger",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "a sleeping bag",
+        "container": "a messenger",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "a sleeping bag",
+        "container": "a messenger",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/a sleeping bag_16/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/a sleeping bag_16/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "0d5301a3f86d325ffbe3ca824edbb2e8052845ce1a7795765935638d42291751",
+        "generic_equip": "8f37d342fb711b8d895e15c000c62b43553fd6ef87e9a8c3088762e4c7ffc972"
+      }
+    },
+    {
+      "case_id": "928e8bc523756b6b",
+      "graph_sha256": "928e8bc523756b6ba8c699fc436df02f40ea3013aea5fa47cd6edd570f978ba0",
+      "goal_kind": "wear",
+      "source_item_id": "cape_14",
+      "authored_command": "wear cape",
+      "generic_equip_command": "equip cape",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "cape",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "cape",
+        "container": "king",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "cape",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 0,
+        "num_wearable_items": 1,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/cape_14/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/cape_14/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "4af0049d6e0f01a276d46b1e0cbbc816fdf9d68abb842f6488c67a8d6b33ae30",
+        "generic_equip": "b12a1a575b9199958b4f5ae8ba024e37357608c40cb835055f86ef710fc0d08f"
+      }
+    },
+    {
+      "case_id": "fffecf62e9fd8d73",
+      "graph_sha256": "fffecf62e9fd8d73dfb94a03f05429aebf5269c3d114b9e324b6553d4265c2ba",
+      "goal_kind": "wear",
+      "source_item_id": "bag_15",
+      "authored_command": "wear bag",
+      "generic_equip_command": "equip bag",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bag",
+        "container": "hermit",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bag",
+        "container": "hermit",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bag",
+        "container": "hermit",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bag_15/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bag_15/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "f62a270d50648dc1e5fc26d84bab48a69f8536559582a1406474d20e3567459e",
+        "generic_equip": "e2d143c3ba94953871bf84de8e4e1806da12b5958a896efa00d0a701c5bfb517"
+      }
+    },
+    {
+      "case_id": "2a84728cf670c8e5",
+      "graph_sha256": "2a84728cf670c8e5f09b8a29ab4c15fbb6b17e3dff35f8076c5295620f782ab3",
+      "goal_kind": "wield",
+      "source_item_id": "bow_5",
+      "authored_command": "wield bow",
+      "generic_equip_command": "equip bow",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bow",
+        "container": "archer",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bow",
+        "container": "archer",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bow",
+        "container": "archer",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bow_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bow_5/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "6f738a578dbe00f8d4ec60544e66d51f01f44e27b61e04c2ecb82d7b84a2a926",
+        "generic_equip": "44fc745cbe34b308854935a0524e74701cc993b73756faee6a26b2a741c46b21"
+      }
+    },
+    {
+      "case_id": "629209538fb64b03",
+      "graph_sha256": "629209538fb64b0317fa44b81db8987d8ee16af45a5e8433a82a5bd0122a0e8b",
+      "goal_kind": "wear",
+      "source_item_id": "crown_3",
+      "authored_command": "wear crown",
+      "generic_equip_command": "equip crown",
+      "authored_event": "WearEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "crown",
+        "container": "king",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "wear",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "crown",
+        "container": "king",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/crown_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/crown_3/equipped",
+          "authored": "wear",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "4d487ae41d78faa5561913f9e32c32f6469d571e0cba852104538fb1c3cb9bf9",
+        "generic_equip": "538fbf6909ee9f37c3936d9264842adaede305ec20ac189461d9b95a89cffaf0"
+      }
+    },
+    {
+      "case_id": "8015b45e38175f44",
+      "graph_sha256": "8015b45e38175f444195b7d870aed32b42a22bb9d304996944d0afd8456c9c13",
+      "goal_kind": "wield",
+      "source_item_id": "bible_6",
+      "authored_command": "wield bible",
+      "generic_equip_command": "equip bible",
+      "authored_event": "WieldEvent",
+      "generic_equip_event": "EquipObjectEvent",
+      "source_before": {
+        "name": "bible",
+        "container": "an altar boy",
+        "equipped": null,
+        "size": 1
+      },
+      "source_after_authored": {
+        "name": "bible",
+        "container": "an altar boy",
+        "equipped": "wield",
+        "size": 1
+      },
+      "source_after_generic_equip": {
+        "name": "bible",
+        "container": "an altar boy",
+        "equipped": "equip",
+        "size": 1
+      },
+      "actor_stats_equal": true,
+      "shared_actor_stats_after": {
+        "health": 10,
+        "food_energy": 1,
+        "energy": null,
+        "attack": 1,
+        "defense": 0,
+        "dexterity": 0,
+        "strength": 0,
+        "damage": 1,
+        "dead": false,
+        "speed": 5,
+        "aggression": 0,
+        "num_wieldable_items": 1,
+        "num_wearable_items": 0,
+        "max_wieldable_items": 1,
+        "max_wearable_items": 3
+      },
+      "serialized_diff": [
+        {
+          "path": "/nodes/bible_6/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "material_diff": [
+        {
+          "path": "/bible_6/equipped",
+          "authored": "wield",
+          "generic_equip": "equip"
+        }
+      ],
+      "serialized_state_sha256": {
+        "authored": "48b6e151689408b230d4b99e6e2180e6fb645a55fc84702dea9000634bfcd993",
+        "generic_equip": "31de41e93b5e19d7bb8f6c799c96c961edde88a317b6a9857f493865e410fdae"
+      }
+    }
+  ]
+}
