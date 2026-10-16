@@ -1,17 +1,45 @@
 # Mechanism Population Dynamics
 
-**状态：2026-10-15 用户要求重启探索（E89 起）；2026-10-11 的结项判断与旧论文作为历史保留。** 新问题：重新训练后，头之间的**分工**（哪些计算共用同一个关键头、任务的深度顺序）是否重现——用置换不变的多任务因果图谱测量，见 [E89](experiments/E89-division-of-labour-atlas.md)。本项目存在大量有用的实验资产，但**不是已录用论文，也没有通过全面独立的机制审计**。
+**状态（2026-10-17 00:20）：探索中，只有一条主线。** 主线定义、领域意义、平凡与不平凡的严格自评与下一步见 [knowledge/research/MAINLINE_2026-10-17.md](knowledge/research/MAINLINE_2026-10-17.md)；证据汇总见 [knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md](knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md)。不是已录用论文。下面“核心入口”以下的内容是 2026-10-11 结项时的历史记录。
 
-> 最后一版研究问题：当两个语言模型是同一次训练的前后代，或由同一初始化独立训练时，注意力角色图与真正承担某项计算的头究竟能否继承？
+## 当前主线
+**问题：** 训练好的 transformer 中一个组件被破坏后继续训练，什么决定了原来的解被恢复、被另一个组件接替，还是能力一直丢失（而损失照样恢复）？一个学到的“角色”存放在哪里？
 
-## 研究简报（2026-10-15，随证据更新）
+**目前的答案（Pythia-160M，受控损伤 + 配对对照）：**
+- 角色存放在下游读者对该组件输出方向的对准中。保留输出、只重置注意力，原头会回来；输出旋转后（权重“完好”）等于完整重置；只保留注意力也不够。
+- 现有最强的重学预测指标（权重距离）在组件层面排反。
+- 恢复时回到整个旧配置，已在工作的替补会被挤回。
+- 无接口的头不会被招募，而是被推成注意力汇。
+- 没有已耦合的候选时，能力停在部分恢复（IOI 0.40），损失却照样恢复。
 
-- **问题：** 重新训练后，注意力头之间的分工哪些层级会重现、哪些不会？什么能改写它？
-- **最近邻：** Tigges 2024（单次训练内算法稳定、组件轮换）；Bali 2026（注意力模式最佳匹配，含跨层匹配，无任务因果）；Merullo 2024、Gould 2024（单模型内跨任务复用、successor 头）；PolyPythias 2025（410M seed3/4 是 50 个 run 中仅有的异常、伴 loss spike，未做机制分析）；loss spike 文献（Spike No More 等）只当作优化失稳处理。
-- **可靠观察（E89）：** 跨独立种子重现的是任务深度顺序（τ 0.73）与“哪些任务共用关键头”（greater-than~后继 10/10、induction~反义词 ICL 9/10）；不重现的是头编号与层号（按编号 0.00，跨层对齐预测留出任务 0.00–0.27）。编号对应只在共享初始化时出现（重跑 0.74、换顺序 0.72、换语料 0.52）。异常组织恰在 PolyPythias 的两个异常种子上。
-- **仍然同样符合结果的解释：** 共用关系可能只是“两个任务需要同一个原语”的必然结果（强先验：Olsson、Gould 已预言这两组），此时它是一条校准过的复现事实，不是新认识。
-- **E90（已完成）：** 两个异常种子都是单步 loss spike（seed3 74k→76k，seed4 122k→124k）改写了已形成的分工；重学按原发育顺序进行，示例格式 ICL 在剩余训练内不恢复而损失大体恢复。seed4 在早层重建底座仍不恢复 ICL，否定了“搬深→深度预算”猜想；剩下的解释接近平凡（后期能力重学慢 + 后段学习率低），此线止损。
-- **下一步：** 精读 Yin & Steinhardt 2025 与 In-Context Learning Without Copying 2025，核实“抽象 ICL 是否依赖早期 induction”之争是否真实、我们的数据与训练设施能否切中，再决定是否开实验。
+**最大弱点：** 窗口短、学习率低；只有 160M（410M 在跑）；人为损伤，与真实遗忘之间的桥梁还没检验。
+
+## 实验索引（主线）
+| 卡 | 问题 | 状态 / 一句话结果 |
+|---|---|---|
+| [E93](experiments/E93-lesion-recovery-pilot.md) | 校准：对照不漂移、损伤可测、窗口内可见恢复 | 完成；SDPA + fp32，学习率 2e-5 |
+| [E95](experiments/E95-polypythias-reset-audit.md) | PolyPythias 410M seed3 / 4 的“spike” | 完成；实为训练中途被重置回初始化（数据完整性问题） |
+| [E96](experiments/E96-role-reassignment.md) | 3.2 靠什么保住 / 夺回角色（QK、OV、空缺，2×2） | 完成；保留 OV 时原头回归，有现任也夺回 |
+| [E97](experiments/E97-who-takes-over.md) | 跨 5 个功能“谁接管” | 完成；登记的“第 2 名接手”不成立，接管大半是推理时自修复 |
+| [E98](experiments/E98-capability-vs-loss-recovery.md) | 损失恢复而能力不恢复：慢还是卡住 | 完成；IOI 卡在 0.40，无人接替 8.9 |
+| [E99](experiments/E99-where-role-memory-lives.md) | 记忆在头自身还是读者（输出旋转） | 完成；在读者；停滞与初始化尺度无关 |
+| [E100](experiments/E100-de-novo-recruitment-vs-age.md) | 从头招募是否随训练阶段丧失 | 完成；不单调，取决于是否有已耦合候选（9.5） |
+| [E101](experiments/E101-coupling-law-on-ioi.md) | 规律在 IOI 头 8.9 上的事先预测 | 完成；QK 回归（整个回路复原），OV / 旋转不回 |
+| [E102](experiments/E102-coupling-law-across-functions.md) | 规律在另外 4 个功能上的事先预测 | 9 / 12 组完成；旋转 3 / 3，原头回归 1 / 2，孤立头变注意力汇 |
+| [E103](experiments/E103-regrowth-lag-coupling-gain.md) | 停滞长度是否由耦合幅度决定 | 运行中；早期与预测相反 |
+| [E104](experiments/E104-coupling-law-at-410m.md) | 410M 规模复现 | 运行中（预计 05:30） |
+
+## 模型、检查点与文件夹
+- **基础检查点：** `~/mechpop_cache/ckpt/pythia-160m_step{8000,43000,100000}`、`pythia-410m_step100000`（HF Xet 会卡死，用 curl 下载）。
+- **损伤后的权重：** `~/mechpop_cache/ckpt/e98`、`e100`、`e101`、`e102`、`e104`（只保留终点与 2500 步；400 / 1000 步与 e97 已删除——都可用 init_seed 1234 重新生成，因果图已存于 `results/`）。
+- **脚本：**
+  - `scripts/e93_lesion.py`：损伤 + 继续训练，可选 `--parts qk|ov|all`、`--rot_out`、`--init_scale`、`--ov_scale`、`--knockout`、`--save_at`。
+  - `scripts/e89_labor.py`：每头因果图，`E89_LOCAL` 指定本地权重。
+  - `scripts/e101_nameattn.py`：名字移动特征。
+  - `scripts/run_e10x.sh`：卡位 worker。
+- **结果：** `results/e93`–`results/e104`（JSON 轨迹与因果图 npz）。
+- **知识库：** `knowledge/`（论文卡、`syntheses/`、`research/`）。
+- **算力规则：** fvcrc10 / 12 / 13 / 15 / 20 / 21 的空卡；夜间 ≤ 16 张，09:00 后 ≤ 8 张。
 
 ## 核心入口
 
