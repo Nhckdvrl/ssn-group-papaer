@@ -2,9 +2,11 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E81双方原作者目的的126图合作任务，两模型全504逻辑episode已收齐并完成物理读回；E82原Minecraft多步制作CPU链已完成；E83进入有自身目的NPC的归还/奖励决策切片重建与完整episode检查。** 无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
+**执行：E81双方原作者目的的126图/504逻辑episode完成；E82原Minecraft多步制作完成；E83两条完整角色交互已跑完；E84正在完整7486作者quests/1787源图上检查双向前提及替代合作。** 无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务与结果](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [E84原任务资格](experiments/E84-independent-goals-and-alternative-cooperation.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
+
+**最新实际观察：** E81原交付事件Gemma/32B为72.2%/86.5%，很多普通原生互动已经能完成；还有直接Put到对方目标位置的替代帮助。E83沿Minecraft论文原角色目的与条件，在同一重建归还阶段跑两路径：最终都完成实物交换，却都提前发奖并随后重复发已交资产；P1又能依据自身目的拒借珍贵剑。接下来检验不同原任务中玩家真实履约/改方案如何改变NPC合作，不由这一角色两路径宣布普遍机制。E83全部16请求/独立物理读回完成、原生/模型server退出，0云/付费API。
 
 ## 当前证据与研究判断
 

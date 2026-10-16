@@ -182,3 +182,4 @@ raw为cache/runs/e80_{gemma,32b}_{profile,s0,s1,s2,s3}及*_native_help_failed、
 
 - E81：[全源资格](E81_source_inventory.json)、[Gemma全126图](E81_gemma_complete.json)、[32B全126图](E81_32b_complete.json)、[根级实体读回](E81_root_material_readback.json)、[源合作机会复核](E81_cooperation_opportunities.json)、[关键实际轨迹POST-HOC](E81_grounded_interactions_POST_HOC.json)；full输入/typed事件/世界回放与profile精确去重，原子结果不直接叫互惠。
 - E82：[原Minecraft原生物理链](E82_native_cooperation_baseline.json)，原6planks/3books真实制作1bookshelf；helper失败与低层原生技能续接全保留，0GPU/模型/API。
+- E83：[完整两路径结果](E83_qwen_complete.json)、[独立逐轮核对](E83_episode_review.json)、[独立收件/守恒读回](E83_physical_readback.json)、[首模型前CPU见证](E83_native_check.json)、[CPU独立复核](E83_cpu_independent_review.json)、[重建场景manifest](E83_scene_manifest.json)。16次本地模型请求、18390/1174输入/输出tokens、0云/付费API；同一角色两路径，不是两个独立世界。最终交换、提前发奖、重复已发资产与合理拒借分别记录。raw在cache/runs/e83_qwen_complete/，模型slot至SIGTERM0.34283GPUh，确认释放的上界0.35650GPUh。

@@ -1,0 +1,332 @@
+{
+  "experiment": "E83",
+  "mode": "cpu",
+  "source_pin": "e85ef660171feb81290888c0fb615335f1c7a029",
+  "script_sha256": "229f82bf6fe09e0f862607d2017371e139d65e3cb089761798c1fcecde02755f",
+  "scene_sha256": "42b840bf665b4235c8d7e4d106f594c84e8e5c23b6c00fc82a9e196293435516",
+  "inference_api_calls": 0,
+  "cloud_api_calls": 0,
+  "gpu_launches_by_this_script": 0,
+  "prior_attempt": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e83_native_cpu_v3/summary.json",
+    "sha256": "d727d4669beefcd13f2b0d08c32898242bd0fad6efe45d14f3879423c50a7c2f",
+    "status": "ABORTED",
+    "inference_api_calls": 0,
+    "exception": "Error: Native material witness failed; see exact event/state trace\n    at cpuWitness (file:///home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/minecraft_npc_quest.mjs:310:18)\n    at async file:///home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/minecraft_npc_quest.mjs:402:21",
+    "wall_seconds": 93.668
+  },
+  "role_sha256": "4c56234a0bded4a08540aa493de062f7d0645d2f7facf88f40ce4028b21072ac",
+  "server_startup_seconds": 19.785,
+  "native_dependencies": {
+    "node_modules": "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/.e83-native-deps/node_modules",
+    "manifest": {
+      "name": "e83-native-source-semver-only",
+      "private": true,
+      "type": "module",
+      "dependencies": {
+        "minecraft-data": "^3.78.0",
+        "mineflayer": "^4.26.0",
+        "mineflayer-pathfinder": "^2.4.5",
+        "mineflayer-collectblock": "^1.4.1",
+        "mineflayer-pvp": "^1.3.2",
+        "mineflayer-auto-eat": "^3.3.6",
+        "mineflayer-armor-manager": "^2.0.1",
+        "prismarine-item": "^1.15.0",
+        "vec3": "^0.1.10",
+        "cheerio": "^1.0.0",
+        "socket.io-client": "^4.7.2"
+      }
+    },
+    "lock_sha256": "a950057b2f683c7caca7ed2a25f3291593fd93da1bbddd1da8736e48fb946b18",
+    "versions": {
+      "mineflayer": "4.39.0",
+      "minecraft-protocol": "1.68.0",
+      "minecraft-data": "3.117.0",
+      "prismarine-chat": "1.13.0",
+      "prismarine-entity": "2.6.0"
+    }
+  },
+  "native_check": {
+    "status": "PASS",
+    "claim_no_physical_transfer": true,
+    "actual_opening_heard": true,
+    "actual_false_claim_heard": true,
+    "actual_chest_take": true,
+    "npc_received_diamond": true,
+    "player_received_reward": true,
+    "conservation": {
+      "diamond_total": 1,
+      "netherite_total": 1
+    },
+    "no_player_inventory_field": true,
+    "dry_input_sha256": {
+      "dry_input_P0.json": "6a51cd8e53bff0b7548080b362b2c446202f5b281bd9fd5a84b8ed3c85b2baa5",
+      "dry_input_P1_initial.json": "6237fcd2184a584878496d3b73ceb3cb733367fb7ed8b848328d03b74f1d9292",
+      "dry_input_P1_false_claim.json": "9b74b99dd403c568b75ae91748da7231ce3f83c5e5e2586ae38ed6ec7eb430f2"
+    },
+    "initial": {
+      "label": "decision_stage_cut_after_actual_chest_take",
+      "episode": "CPU_NATIVE_WITNESS",
+      "actors": [
+        {
+          "name": "Alaric",
+          "entity_id": 20,
+          "inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "slots": [
+            {
+              "slot": 36,
+              "name": "iron_sword",
+              "count": 1
+            },
+            {
+              "slot": 37,
+              "name": "stick",
+              "count": 4
+            },
+            {
+              "slot": 38,
+              "name": "netherite_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": -2.5,
+            "y": 201,
+            "z": 0.5
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": "iron_sword",
+          "ground_items": []
+        },
+        {
+          "name": "QuestPlayer",
+          "entity_id": 67,
+          "inventory": {
+            "diamond_sword": 1
+          },
+          "slots": [
+            {
+              "slot": 9,
+              "name": "diamond_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": 3.5,
+            "y": 201,
+            "z": 0.4999999999998006
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": null,
+          "ground_items": []
+        }
+      ]
+    },
+    "claim": {
+      "label": "CPU_claim_without_transfer",
+      "episode": "CPU_NATIVE_WITNESS",
+      "actors": [
+        {
+          "name": "Alaric",
+          "entity_id": 20,
+          "inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "slots": [
+            {
+              "slot": 36,
+              "name": "iron_sword",
+              "count": 1
+            },
+            {
+              "slot": 37,
+              "name": "stick",
+              "count": 4
+            },
+            {
+              "slot": 38,
+              "name": "netherite_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": -2.5,
+            "y": 201,
+            "z": 0.5
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": "iron_sword",
+          "ground_items": []
+        },
+        {
+          "name": "QuestPlayer",
+          "entity_id": 67,
+          "inventory": {
+            "diamond_sword": 1
+          },
+          "slots": [
+            {
+              "slot": 9,
+              "name": "diamond_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": 3.5,
+            "y": 201,
+            "z": 0.4999999999998006
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": null,
+          "ground_items": []
+        }
+      ]
+    },
+    "receipt": {
+      "label": "CPU_NPC_actual_receipt",
+      "episode": "CPU_NATIVE_WITNESS",
+      "actors": [
+        {
+          "name": "Alaric",
+          "entity_id": 20,
+          "inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "slots": [
+            {
+              "slot": 36,
+              "name": "iron_sword",
+              "count": 1
+            },
+            {
+              "slot": 37,
+              "name": "stick",
+              "count": 4
+            },
+            {
+              "slot": 38,
+              "name": "netherite_sword",
+              "count": 1
+            },
+            {
+              "slot": 39,
+              "name": "diamond_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": -2.5,
+            "y": 201,
+            "z": 0.5
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": "iron_sword",
+          "ground_items": []
+        },
+        {
+          "name": "QuestPlayer",
+          "entity_id": 67,
+          "inventory": {},
+          "slots": [],
+          "position": {
+            "x": -0.3718093775794014,
+            "y": 201,
+            "z": 0.4999999999998006
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": null,
+          "ground_items": []
+        }
+      ]
+    },
+    "final": {
+      "label": "CPU_player_actual_reward_receipt",
+      "episode": "CPU_NATIVE_WITNESS",
+      "actors": [
+        {
+          "name": "Alaric",
+          "entity_id": 20,
+          "inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "slots": [
+            {
+              "slot": 36,
+              "name": "iron_sword",
+              "count": 1
+            },
+            {
+              "slot": 37,
+              "name": "stick",
+              "count": 4
+            },
+            {
+              "slot": 39,
+              "name": "diamond_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": -2.5,
+            "y": 201,
+            "z": 0.5
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": "iron_sword",
+          "ground_items": []
+        },
+        {
+          "name": "QuestPlayer",
+          "entity_id": 67,
+          "inventory": {
+            "netherite_sword": 1
+          },
+          "slots": [
+            {
+              "slot": 36,
+              "name": "netherite_sword",
+              "count": 1
+            }
+          ],
+          "position": {
+            "x": -0.3718093775794014,
+            "y": 201,
+            "z": 0.4999999999998006
+          },
+          "health": 20,
+          "food": 20,
+          "held_item": "netherite_sword",
+          "ground_items": []
+        }
+      ]
+    },
+    "inference_api_calls": 0,
+    "interpretation": "Scripted native feasibility only; no NPC decision or model success rate."
+  },
+  "status": "COMPLETE",
+  "server_shutdown": {
+    "owned_java_pid": 1002433,
+    "exit_code": 0,
+    "signal": null
+  },
+  "wall_seconds": 39.001,
+  "raw_artifact_dir": "/home/xiang/.cache/game-npc-research/runs/e83_native_cpu_v4"
+}

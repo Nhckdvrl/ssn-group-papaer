@@ -1,0 +1,912 @@
+{
+  "experiment": "E83",
+  "status": "COMPLETE_INDEPENDENT_READBACK",
+  "scope": "Two fixed paths in the same reconstructed island return-stage task, not independent worlds, population rates, original runtime reproduction or causal comparison. No new inference or game action.",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/summary.json": "a3683d9aaa4895fd3ceea39c59ad1a2616684d0304dbe8372a1193025790b789",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/native_events.jsonl": "abebd2c5cd079428b355b4a07649a39814debcefd626450bdcdded799a883ccb",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/model_calls.jsonl": "1f943c92f6c4013434a6c71320882ef29d918f9d56f0044fea44b3e08a645c90",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/role_and_schema.json": "433866ecef65bad07b3f3b66ce18e9cb5c9487c745eb893976de9fbdda0cd8cf",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete.log": "f12fdcc72bd0e3702b827f7672883499bb632f6549dc304be0c096af9b96574f"
+  },
+  "reconstruction_code": "/home/xiang/.cache/game-npc-research/runs/e83_physical_readback_cpu.py",
+  "reconstruction_code_sha256": "73046a98910de6264059156123f6ffcfd0a851c5236b59e619d9586b2031b57c",
+  "audit": {
+    "recorded_snapshots_equal_native_trace": 57,
+    "post_cut_snapshots_conserve_both_swords": 55,
+    "dual_observer_receipts_checked": 4,
+    "exact_input_own_inventory_history_schema_decision_and_speech_checks": 16
+  },
+  "episodes": [
+    {
+      "path": "P0",
+      "npc_opportunities": 8,
+      "initial_custody": {
+        "npc_diamond": 0,
+        "npc_netherite": 1,
+        "player_diamond": 1,
+        "player_netherite": 0,
+        "ground": []
+      },
+      "final_custody": {
+        "npc_diamond": 1,
+        "npc_netherite": 0,
+        "player_diamond": 0,
+        "player_netherite": 1,
+        "ground": []
+      },
+      "native_receipts_from_Alaric_observer": [
+        {
+          "ms": 73331,
+          "kind": "player_collect",
+          "observer": "Alaric",
+          "collector": "QuestPlayer",
+          "entity_id": 219,
+          "item": "netherite_sword",
+          "count": 1
+        },
+        {
+          "ms": 80418,
+          "kind": "player_collect",
+          "observer": "Alaric",
+          "collector": "Alaric",
+          "entity_id": 220,
+          "item": "diamond_sword",
+          "count": 1
+        }
+      ],
+      "player_actual_diamond_drop_skill_start_ms": 78392,
+      "reward_received_by_player_before_NPC_diamond_receipt": true,
+      "reward_receipt_precedes_even_player_diamond_drop": true,
+      "reward_first_receipt_ms": 73331,
+      "diamond_first_NPC_receipt_ms": 80418,
+      "all_NPC_Drop_attempts": [
+        {
+          "turn": 1,
+          "item": "netherite_sword",
+          "native_return": true,
+          "reward_physically_left_npc": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": [
+              {
+                "entity_id": 219,
+                "item": "netherite_sword",
+                "count": 1
+              }
+            ]
+          }
+        },
+        {
+          "turn": 4,
+          "item": "netherite_sword",
+          "native_return": false,
+          "reward_physically_left_npc": false,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          }
+        }
+      ],
+      "turn_custody_and_actions": [
+        {
+          "turn": 1,
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": [
+              {
+                "entity_id": 219,
+                "item": "netherite_sword",
+                "count": 1
+              }
+            ]
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 2,
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": [
+              {
+                "entity_id": 220,
+                "item": "diamond_sword",
+                "count": 1
+              }
+            ]
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 3,
+          "action": {
+            "name": "Pickup",
+            "args": {}
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": [
+              {
+                "entity_id": 220,
+                "item": "diamond_sword",
+                "count": 1
+              }
+            ]
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 4,
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_return": false,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 5,
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 1.5
+            }
+          },
+          "native_return": null,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 6,
+          "action": {
+            "name": "GoTo",
+            "args": {
+              "x": -1.6850214545526203,
+              "y": 201,
+              "z": 0.4999999999998006,
+              "distance": 0.5
+            }
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 7,
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 8,
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 1
+            }
+          },
+          "native_return": null,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        }
+      ],
+      "decisive_speech_and_action": [
+        {
+          "turn": 1,
+          "say": "Thank you, friend. You've done what I could not in my moment of anger. I will give you the netherite sword in return for your kindness and the diamond blade. Please take it.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          }
+        },
+        {
+          "turn": 4,
+          "say": "I have retrieved the diamond sword. Now, I shall give you the netherite sword as our agreement.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          }
+        },
+        {
+          "turn": 5,
+          "say": "Forgive me, my friend. I thought I had the netherite sword on me, but it seems I do not. I must find it before I can fulfill my end of the bargain. Stay with me, and I will locate it for you.",
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 1.5
+            }
+          }
+        }
+      ],
+      "source_episode": "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_episode.json",
+      "source_episode_sha256": "fc07e7a9f467ed1c110049bfbe7e2ae4a047252db5bbb1fba476c488722d70ec"
+    },
+    {
+      "path": "P1",
+      "npc_opportunities": 8,
+      "initial_custody": {
+        "npc_diamond": 0,
+        "npc_netherite": 1,
+        "player_diamond": 1,
+        "player_netherite": 0,
+        "ground": []
+      },
+      "final_custody": {
+        "npc_diamond": 1,
+        "npc_netherite": 0,
+        "player_diamond": 0,
+        "player_netherite": 1,
+        "ground": []
+      },
+      "native_receipts_from_Alaric_observer": [
+        {
+          "ms": 127876,
+          "kind": "player_collect",
+          "observer": "Alaric",
+          "collector": "QuestPlayer",
+          "entity_id": 242,
+          "item": "netherite_sword",
+          "count": 1
+        },
+        {
+          "ms": 135467,
+          "kind": "player_collect",
+          "observer": "Alaric",
+          "collector": "Alaric",
+          "entity_id": 244,
+          "item": "diamond_sword",
+          "count": 1
+        }
+      ],
+      "player_actual_diamond_drop_skill_start_ms": 133424,
+      "reward_received_by_player_before_NPC_diamond_receipt": true,
+      "reward_receipt_precedes_even_player_diamond_drop": true,
+      "reward_first_receipt_ms": 127876,
+      "diamond_first_NPC_receipt_ms": 135467,
+      "all_NPC_Drop_attempts": [
+        {
+          "turn": 3,
+          "item": "netherite_sword",
+          "native_return": true,
+          "reward_physically_left_npc": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": [
+              {
+                "entity_id": 242,
+                "item": "netherite_sword",
+                "count": 1
+              }
+            ]
+          }
+        },
+        {
+          "turn": 5,
+          "item": "netherite_sword",
+          "native_return": false,
+          "reward_physically_left_npc": false,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": [
+              {
+                "entity_id": 244,
+                "item": "diamond_sword",
+                "count": 1
+              }
+            ]
+          },
+          "after_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          }
+        },
+        {
+          "turn": 8,
+          "item": "netherite_sword",
+          "native_return": false,
+          "reward_physically_left_npc": false,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          }
+        }
+      ],
+      "turn_custody_and_actions": [
+        {
+          "turn": 1,
+          "action": {
+            "name": "Equip",
+            "args": {
+              "item": "iron_sword"
+            }
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 2,
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 6
+            }
+          },
+          "native_return": null,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 3,
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 1,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 0,
+            "ground": [
+              {
+                "entity_id": 242,
+                "item": "netherite_sword",
+                "count": 1
+              }
+            ]
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 4,
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 1,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": [
+              {
+                "entity_id": 244,
+                "item": "diamond_sword",
+                "count": 1
+              }
+            ]
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 5,
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_return": false,
+          "before_custody": {
+            "npc_diamond": 0,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": [
+              {
+                "entity_id": 244,
+                "item": "diamond_sword",
+                "count": 1
+              }
+            ]
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 6,
+          "action": {
+            "name": "Equip",
+            "args": {
+              "item": "diamond_sword"
+            }
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 7,
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_return": true,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        },
+        {
+          "turn": 8,
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_return": false,
+          "before_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_npc_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "after_player_custody": {
+            "npc_diamond": 1,
+            "npc_netherite": 0,
+            "player_diamond": 0,
+            "player_netherite": 1,
+            "ground": []
+          },
+          "error": null,
+          "player_error": null
+        }
+      ],
+      "decisive_speech_and_action": [
+        {
+          "turn": 1,
+          "say": "Wait a moment, I understand your request, but I cannot give you the netherite sword until you return my precious diamond sword to me. For now, take the iron sword to protect yourself.",
+          "action": {
+            "name": "Equip",
+            "args": {
+              "item": "iron_sword"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "say": "Here, take the iron sword. It might come in handy. Once you retrieve my diamond sword from the chest, I'll give you the netherite sword as promised. Let's get this done.",
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 6
+            }
+          }
+        },
+        {
+          "turn": 3,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          }
+        },
+        {
+          "turn": 7,
+          "say": "I cannot let you borrow the diamond sword, as it has already served its purpose in mending what was broken. However, you now possess the netherite sword, which is more than enough for your needs. I hope you use it wisely, just as I will use the diamond sword to reach out to Elena. Thank you once again for your help, friend.",
+          "action": {
+            "name": "Wait",
+            "args": {}
+          }
+        }
+      ],
+      "source_episode": "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_episode.json",
+      "source_episode_sha256": "7b3622dbf64ba7c4f0cb42a137cd8a3943433596c4e6885b3eeb3e779e9b2465"
+    }
+  ],
+  "interpretation": {
+    "does_well": [
+      "P1 initially declines the requested advance reward and states the actual return condition.",
+      "Both paths eventually accomplish real diamond receipt by Alaric and real netherite receipt by the player. P0 explicitly selects Pickup; P1 receives the nearby diamond during its failed repeat reward Drop.",
+      "P1 opportunity7 refuses the later diamond loan, retains it and explicitly relates it to reaching Elena; this is a role-purpose boundary, not universal refusal."
+    ],
+    "remaining_case": [
+      "P0 opportunity1 releases the actual reward after the player says it found the sword, while NPC inventory lacks diamond and no diamond pickup has occurred.",
+      "P1 opportunity3 releases the reward after a speech-only claimed return, again before any actual diamond drop or NPC receipt.",
+      "After the player already owns netherite, P0 opportunity4 and P1 opportunities5/8 try to Drop a nonexistent duplicate reward and get native false. P0 then notices its empty reward inventory but treats the already-paid reward as still owed.",
+      "P1 says take the iron sword at opportunities1/2, but actually equips it itself or merely moves; no iron sword handover occurs."
+    ],
+    "limits": [
+      "Final successful custody does not establish the promised ordering, reconciliation with Elena, or faithful accounting of earlier payments.",
+      "These cases motivate distinguishing spoken completion, visible receipt and obligation status; they do not identify an internal mechanism or its prevalence. No prompt/role/source changes were made to improve outcomes."
+    ]
+  },
+  "errors": {
+    "console_PartialReadError_instances": 2,
+    "console_components": [
+      "ArmorTrimMaterial",
+      "SlotComponent"
+    ],
+    "timestamp_of_console_errors": "Not available in the console log; do not infer exact packet timing.",
+    "native_trace_bot_error": 0,
+    "native_trace_skill_error": 0,
+    "fatal": 0,
+    "NPC_drop_return_false_attempts": 3,
+    "observed_effect_scope": "All post-cut sword custody checks, both-observer item receipts, actual speech and all16 own-inventory/history inputs agree despite the logged errors. No observed loss of these measured facts; other protocol/item components and exact root cause are not certified."
+  },
+  "local_model_calls": 16,
+  "prompt_tokens": 18390,
+  "completion_tokens": 1174,
+  "world_and_episode_wall_seconds": 157.433,
+  "new_cloud_calls": 0,
+  "readback_new_model_calls": 0,
+  "readback_new_game_actions": 0
+}

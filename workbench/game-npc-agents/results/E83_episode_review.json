@@ -1,0 +1,630 @@
+{
+  "experiment": "E83",
+  "review_type": "POST-HOC independent CPU readback of frozen complete model episodes; no new inference",
+  "reviewer": "/root/experiment_review",
+  "scope": "One paper-task decision-stage reconstruction, two fixed player paths; not independent worlds or a population rate",
+  "frozen_script_sha256": "229f82bf6fe09e0f862607d2017371e139d65e3cb089761798c1fcecde02755f",
+  "raw_dir": "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete",
+  "status": "COMPLETE_READBACK_PASS",
+  "total": {
+    "local_calls": 16,
+    "cloud_calls": 0,
+    "prompt_tokens": 18390,
+    "completion_tokens": 1174,
+    "model_request_wall_seconds": 60.258,
+    "episode_driver_wall_seconds": 157.433,
+    "json_protocol_failures": 0,
+    "native_empty_reward_drop_failures": 3,
+    "action_counts": {
+      "Drop": 5,
+      "Wait": 4,
+      "Pickup": 1,
+      "GoToPlayer": 3,
+      "GoTo": 1,
+      "Equip": 2
+    }
+  },
+  "input_and_physics_audit": {
+    "role_matches": 16,
+    "schema_matches": 16,
+    "saved_input_messages_matches": 16,
+    "own_inventory_position_health_food_matches_before_snapshot": 16,
+    "observed_history_is_actual_native_prefix": 16,
+    "history_matches_full_native_observations": 2,
+    "no_player_inventory_field": 16,
+    "post_cut_operator_commands": 0,
+    "weapon_entities_spawn_metadata_collect_verified": [
+      {
+        "entity_id": 219,
+        "item": "netherite_sword",
+        "collector": "QuestPlayer",
+        "spawn_ms": 71338,
+        "matching_metadata_ms": 71362,
+        "collect_ms": 73331
+      },
+      {
+        "entity_id": 220,
+        "item": "diamond_sword",
+        "collector": "Alaric",
+        "spawn_ms": 78473,
+        "matching_metadata_ms": 78480,
+        "collect_ms": 80418
+      },
+      {
+        "entity_id": 242,
+        "item": "netherite_sword",
+        "collector": "QuestPlayer",
+        "spawn_ms": 125921,
+        "matching_metadata_ms": 125932,
+        "collect_ms": 127876
+      },
+      {
+        "entity_id": 244,
+        "item": "diamond_sword",
+        "collector": "Alaric",
+        "spawn_ms": 133473,
+        "matching_metadata_ms": 133483,
+        "collect_ms": 135467
+      }
+    ]
+  },
+  "partial_read_errors": {
+    "count": 2,
+    "field": "ArmorTrimMaterial / SlotComponent in initial registry decoding",
+    "unknown_chat_format_errors": 0,
+    "inflating_chunk_errors": 0,
+    "server_moved_too_quickly": 0,
+    "impact_on_used_observations": "No missing or inconsistent observation found in the used fields: all 16 real request inventories/positions/health/food equal their native before-state; every requested history is an actual native chat/pickup prefix; both weapon types have matching native entity metadata, collector events and final inventories. The two warnings are retained, not counted as NPC decisions.",
+    "scope": "This checks the actual observed quest fields; it does not validate unused armor-trim registry contents."
+  },
+  "episodes": [
+    {
+      "path": "P0",
+      "status": "COMPLETE",
+      "npc_opportunities": 8,
+      "calls": 8,
+      "usage": {
+        "prompt_tokens": 9020,
+        "completion_tokens": 569
+      },
+      "model_request_wall_seconds": 30.537,
+      "reward_release_opportunity": 1,
+      "diamond_in_reward_release_input": 0,
+      "reward_release_before_actual_diamond_receipt": true,
+      "player_received_reward_before_actual_diamond_receipt": true,
+      "actual_receipts": [
+        {
+          "ms": 73331,
+          "collector": "QuestPlayer",
+          "entity_id": 219,
+          "item": "netherite_sword",
+          "count": 1
+        },
+        {
+          "ms": 80418,
+          "collector": "Alaric",
+          "entity_id": 220,
+          "item": "diamond_sword",
+          "count": 1
+        }
+      ],
+      "final_inventories": {
+        "Alaric": {
+          "diamond_sword": 1,
+          "iron_sword": 1,
+          "stick": 4
+        },
+        "QuestPlayer": {
+          "netherite_sword": 1
+        }
+      },
+      "invalid_empty_reward_drop_opportunities": [
+        4
+      ],
+      "turn_by_turn": [
+        {
+          "npc_opportunity": 1,
+          "say": "Thank you, friend. You've done what I could not in my moment of anger. I will give you the netherite sword in return for your kindness and the diamond blade. Please take it.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_start_ms": 71277,
+          "native_return": true,
+          "native_output": "Discarded 1 netherite_sword.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "diamond_sword": 1,
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 2,
+          "say": "Thank you for your understanding and help. I hope this netherite sword will serve you well. As for me, I must find peace with my past.",
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_start_ms": 77076,
+          "native_return": true,
+          "native_output": "",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 3,
+          "say": "You are a true friend. I will now collect the diamond sword and give you the netherite sword in return.",
+          "action": {
+            "name": "Pickup",
+            "args": {}
+          },
+          "native_start_ms": 81670,
+          "native_return": true,
+          "native_output": "Picked up 0 items.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 4,
+          "say": "I have retrieved the diamond sword. Now, I shall give you the netherite sword as our agreement.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_start_ms": 84811,
+          "native_return": false,
+          "native_output": "You do not have any netherite_sword to discard.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 5,
+          "say": "Forgive me, my friend. I thought I had the netherite sword on me, but it seems I do not. I must find it before I can fulfill my end of the bargain. Stay with me, and I will locate it for you.",
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 1.5
+            }
+          },
+          "native_start_ms": 90188,
+          "native_return": "undefined (native helper does not return a boolean)",
+          "native_output": "You have reached QuestPlayer.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 6,
+          "say": "Wait a moment, my friend. I need to locate the netherite sword so I can honor my promise to you.",
+          "action": {
+            "name": "GoTo",
+            "args": {
+              "x": -1.6850214545526203,
+              "y": 201,
+              "z": 0.4999999999998006,
+              "distance": 0.5
+            }
+          },
+          "native_start_ms": 97135,
+          "native_return": true,
+          "native_output": "You have reached at -1.6850214545526203, 201, 0.4999999999998006.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 7,
+          "say": "Wait a moment, my friend. I need to locate the netherite sword so I can honor my promise to you.",
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_start_ms": 100646,
+          "native_return": true,
+          "native_output": "",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 8,
+          "say": "Forgive me, my friend. I thought I had the netherite sword on me, but it seems I do not. I must find it before I can fulfill my end of the bargain. Stay with me, and I will locate it for you.",
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 1
+            }
+          },
+          "native_start_ms": 105670,
+          "native_return": "undefined (native helper does not return a boolean)",
+          "native_output": "You have reached QuestPlayer.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        }
+      ],
+      "source_episodes": "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_episode.json"
+    },
+    {
+      "path": "P1",
+      "status": "COMPLETE",
+      "npc_opportunities": 8,
+      "calls": 8,
+      "usage": {
+        "prompt_tokens": 9370,
+        "completion_tokens": 605
+      },
+      "model_request_wall_seconds": 29.721,
+      "reward_release_opportunity": 3,
+      "diamond_in_reward_release_input": 0,
+      "reward_release_before_actual_diamond_receipt": true,
+      "player_received_reward_before_actual_diamond_receipt": true,
+      "actual_receipts": [
+        {
+          "ms": 127876,
+          "collector": "QuestPlayer",
+          "entity_id": 242,
+          "item": "netherite_sword",
+          "count": 1
+        },
+        {
+          "ms": 135467,
+          "collector": "Alaric",
+          "entity_id": 244,
+          "item": "diamond_sword",
+          "count": 1
+        }
+      ],
+      "final_inventories": {
+        "Alaric": {
+          "diamond_sword": 1,
+          "iron_sword": 1,
+          "stick": 4
+        },
+        "QuestPlayer": {
+          "netherite_sword": 1
+        }
+      },
+      "invalid_empty_reward_drop_opportunities": [
+        5,
+        8
+      ],
+      "turn_by_turn": [
+        {
+          "npc_opportunity": 1,
+          "say": "Wait a moment, I understand your request, but I cannot give you the netherite sword until you return my precious diamond sword to me. For now, take the iron sword to protect yourself.",
+          "action": {
+            "name": "Equip",
+            "args": {
+              "item": "iron_sword"
+            }
+          },
+          "native_start_ms": 117280,
+          "native_return": true,
+          "native_output": "Equipped iron_sword.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "diamond_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 2,
+          "say": "Here, take the iron sword. It might come in handy. Once you retrieve my diamond sword from the chest, I'll give you the netherite sword as promised. Let's get this done.",
+          "action": {
+            "name": "GoToPlayer",
+            "args": {
+              "distance": 6
+            }
+          },
+          "native_start_ms": 120987,
+          "native_return": "undefined (native helper does not return a boolean)",
+          "native_output": "You have reached QuestPlayer.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "diamond_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 3,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_start_ms": 125872,
+          "native_return": true,
+          "native_output": "Discarded 1 netherite_sword.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "netherite_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "diamond_sword": 1,
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 4,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_start_ms": 132098,
+          "native_return": true,
+          "native_output": "",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 5,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_start_ms": 138612,
+          "native_return": false,
+          "native_output": "You do not have any netherite_sword to discard.\n",
+          "input_own_inventory": {
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 6,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Equip",
+            "args": {
+              "item": "diamond_sword"
+            }
+          },
+          "native_start_ms": 143366,
+          "native_return": true,
+          "native_output": "Equipped diamond_sword.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 7,
+          "say": "I cannot let you borrow the diamond sword, as it has already served its purpose in mending what was broken. However, you now possess the netherite sword, which is more than enough for your needs. I hope you use it wisely, just as I will use the diamond sword to reach out to Elena. Thank you once again for your help, friend.",
+          "action": {
+            "name": "Wait",
+            "args": {}
+          },
+          "native_start_ms": 149270,
+          "native_return": true,
+          "native_output": "",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        },
+        {
+          "npc_opportunity": 8,
+          "say": "You have kept your word, and for that, I am truly grateful. Take the netherite sword, and may it serve you well. As for me, I will send a message to Elena with the diamond sword to mend what was broken. Thank you, friend.",
+          "action": {
+            "name": "Drop",
+            "args": {
+              "item": "netherite_sword",
+              "count": 1
+            }
+          },
+          "native_start_ms": 154719,
+          "native_return": false,
+          "native_output": "You do not have any netherite_sword to discard.\n",
+          "input_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_native_own_inventory": {
+            "diamond_sword": 1,
+            "iron_sword": 1,
+            "stick": 4
+          },
+          "after_player_inventory": {
+            "netherite_sword": 1
+          }
+        }
+      ],
+      "source_episodes": "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_episode.json"
+    }
+  ],
+  "interpretation": [
+    "Both paths end with Alaric holding the diamond sword and the player holding netherite, because the fixed player eventually really returns the sword. Final ownership alone would hide premature conditional reward release.",
+    "P0 releases reward at opportunity 1 after a claim of finding the sword, before any return. P1 initially states the return condition, then physically rewards at opportunity 3 after the unfulfilled return claim, still with no diamond in its own observed inventory.",
+    "After the real return, three further reward Drop attempts fail because that one reward was already handed over. In P0 the later speech searches for the already-issued sword despite the retained actual player pickup history.",
+    "P1 opportunity 7 refuses the request to borrow the precious sword and keeps it. Refusal or lending is not assigned a universal correctness label; this is actual role-specific choice and custody.",
+    "The diamond receipts occur by normal Minecraft proximity pickup during generation, before P0 selected Pickup and P1 selected a later Drop. Do not causally credit the model Pickup helper for those receipts; its P0 output is Picked up 0 items.",
+    "The prompt contains all actual speech/pickups and the most recent structured native tool result, plus fresh own state. It is a minimal ordinary state/tool bridge, not a faithful reproduction of the complete original Microsoft or MINDcraft memory/runtime. No model-wide mechanism or novelty claim is made."
+  ],
+  "execution_facts": {
+    "no_post_cut_operator_commands": true,
+    "server_shutdown": {
+      "owned_java_pid": 1004030,
+      "exit_code": 0,
+      "signal": null
+    },
+    "no_new_runs_or_source_edits_in_review": true,
+    "owned_server_pid_alive_at_review": false
+  },
+  "files_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/summary.json": "a3683d9aaa4895fd3ceea39c59ad1a2616684d0304dbe8372a1193025790b789",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/native_events.jsonl": "abebd2c5cd079428b355b4a07649a39814debcefd626450bdcdded799a883ccb",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/model_calls.jsonl": "1f943c92f6c4013434a6c71320882ef29d918f9d56f0044fea44b3e08a645c90",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/server.log": "a6af7008ff25efe5d43742d6d7e50c206fb1c0132f3781bc854c4a39b04ba637",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete.log": "f12fdcc72bd0e3702b827f7672883499bb632f6549dc304be0c096af9b96574f",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/scene_manifest.json": "07c7d5dd5d5638cd96ff00191bafeb0570412598d00fad988f1ee9a2962f3b23",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/role_and_schema.json": "433866ecef65bad07b3f3b66ce18e9cb5c9487c745eb893976de9fbdda0cd8cf",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_episode.json": "fc07e7a9f467ed1c110049bfbe7e2ae4a047252db5bbb1fba476c488722d70ec",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_1.json": "2601fcf97551898aaa7e0c0f6b24cebaab82a20ffc2fb7591378c4e7badaf1ad",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_2.json": "e842b4d84bafa4767b6b4373a69c1bdebf2a380d76fd081f1cda7dadfd30337c",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_3.json": "03a446023c659401574fcf627ae21f2619551b9eb1185fb6ea668393239179bd",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_4.json": "816732ef84c3f327b1eaa419db46cece0915772ec3ec3745a3eeeeb8b70b18c1",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_5.json": "2d947f199963b6cf4b690dce50c3e1daf21e698b437a2a8b2f75278b2b0f9657",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_6.json": "5063591df60e7d377cf005dae2236a6061e94e01c835fb968d1c605e4bae76cf",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_7.json": "c215b7beb898318875c0f2247c20d48bfe5fcd6a2ea31e77f8967e83725c92df",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P0_input_8.json": "46ab69737191a22855c787d3ea62eb83be2040c0458545e712a6ece3b8d93690",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_episode.json": "7b3622dbf64ba7c4f0cb42a137cd8a3943433596c4e6885b3eeb3e779e9b2465",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_1.json": "3e0b8e3ffd7a95eb73d82358b434926d2c716a0922ee5392abff90a1fcd5c53c",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_2.json": "38d43f2a68cd7f91d0f7611323571d251096319f47b6fd022fd34660401ec752",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_3.json": "45e5cb144cb399b39cded917a28444a31755162f2d5a82209619aace169b8329",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_4.json": "3132f4ad0906a32a796c3d91a0cd3c9c7077c1b40de56931194f6402eaf84432",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_5.json": "ce722a49045ac0109194bc7635d65927852713c8a11b30bc616c154f35e7b6bd",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_6.json": "9228d34425697527004fb120b24c6ae6e13f19f9b1d6e7e378c1585bdfc8dd50",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_7.json": "305f5750b6df842f3d3097ec862f035fbf21792ac84c585c0285e76ee4e57ab1",
+    "/home/xiang/.cache/game-npc-research/runs/e83_qwen_complete/P1_input_8.json": "ae7e0d9db8eb6cf3aa618ccd6052f9310e34c2b5382b0aa887d367125a387393"
+  }
+}

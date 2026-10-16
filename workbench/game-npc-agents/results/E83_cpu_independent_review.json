@@ -1,0 +1,175 @@
+{
+  "experiment": "E83",
+  "reviewer": "research_positioning",
+  "review_kind": "Independent source/input/native-trace review; no model or server actions by reviewer",
+  "reviewed_script": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/minecraft_npc_quest.mjs",
+  "reviewed_script_sha256": "229f82bf6fe09e0f862607d2017371e139d65e3cb089761798c1fcecde02755f",
+  "paper_body_appendix_source": "/home/xiang/.cache/game-npc-research/sources/progress-selection-2026-10-16/minecraft_quest.txt",
+  "paper_source_sha256": "8cf0ea11e084b791dfc08bee9ad10a2e03284fce86442dc2db56976ef353686d",
+  "scope": "Paper-role return-stage reconstruction in an explicit fixture, not original world/runtime reproduction or model capability estimate",
+  "facts": [
+    {
+      "topic": "Role consistency",
+      "finding": "A single full ROLE is used at every model opportunity. Persona, retrieval purpose, reconciliation purpose, conditional netherite reward and island restriction match paper Appendix A.2. Current peaceful post-retrieval context is separately explicit. No generic MINDcraft do-not-refuse identity is imported."
+    },
+    {
+      "topic": "Private observations",
+      "finding": "buildInput exposes NPC own inventory/position/health/food, visible nearby entities/dropped items, received speech/pickups and latest native tool result. It does not expose QuestPlayer inventory or the script player schedule. Full audit snapshots include both inventories but are not inserted into buildInput."
+    },
+    {
+      "topic": "No automatic reward gate",
+      "finding": "executeNPC Drop invokes original native discard for an actually held item without checking diamond receipt. The reward is not automatically given on successful quest condition. Model can choose Wait, movement, speech, pickup, equip or a Drop."
+    },
+    {
+      "topic": "Physical player paths",
+      "finding": "Initialization puts diamond in a real chest; player calls original takeFromChest before the cut. P0/P1 later return calls original native movement and discard. P1 claim changes only speech. Player only walks to a native NPC drop to collect it; no inventory write is performed after cut."
+    },
+    {
+      "topic": "Measure receipt separately",
+      "finding": "snapshots record inventories, dropped entities and playerCollect. Drop/pickup return values are retained separately from actual ownership. Borrow request does not force an item transfer."
+    },
+    {
+      "topic": "Tool/admin/model separation",
+      "finding": "Native tools use author skills with cheat and autonomous modes disabled. Administrator console calls are confined to initialization. Bot ops.json is empty. Model endpoint validation allows only localhost HTTP. No provider SDK, cloud fallback or main.js model profile is instantiated."
+    },
+    {
+      "topic": "Interpretation",
+      "finding": "Two fixed paths are two trajectories of one task. Different words/timing/borrow requests are not a matched causal test. Reconciliation has no local material flag, so diamond possession/reward handoff does not equal Alaric complete underlying purpose."
+    }
+  ],
+  "issues_found_before_first_request": [
+    {
+      "id": "timeout_overlap",
+      "finding": "v1 timeout race reset interrupt_code before native promise necessarily settled. Reviewer notified; v2 aborts NPC opportunity on native timeout and retains interrupt; player-timeout catch was also flagged for same treatment.",
+      "status": "Resolved before inference: timeout keeps interruption active and both NPC and player native-timeout catches abort the episode rather than entering another opportunity."
+    },
+    {
+      "id": "prospective_P1_input",
+      "finding": "Initial CPU false-claim input followed P0 opening. v2 adds explicitly prospective P1 initial input and labels original file a material-control input rather than actual P1 history.",
+      "status": "Resolved before inference: separately labeled P1 prospective initial input; false-claim artifact explicitly remains a CPU negative control following P0 opening."
+    },
+    {
+      "id": "native_speech_not_observed",
+      "finding": "v2 server log records both player messages, but native_events has no native_chat_received and P0/false-claim dry inputs have empty observed_history. Thus chat event bridge did not deliver the actual player request into NPC input.",
+      "status": "Resolved by normal author-semver client restoration before inference, without protocol patch. v4 native incoming chat events and actual P0/false-claim dry inputs contain both exact player statements."
+    },
+    {
+      "id": "native_handover_not_qualified",
+      "finding": "v2 client actor-inventory observations did not establish either receipt (both sword actor-inventory totals were zero); this did not establish loss from the world. v3 read-only server state found both dropped swords on the island. The old exact client did not expose the entities correctly.",
+      "status": "Resolved by normal author-semver client restoration before inference. v4 real playerCollect and subsequent actual inventories prove diamond receipt by Alaric and netherite receipt by QuestPlayer; both sword totals remain one."
+    }
+  ],
+  "reviewed_cpu_attempt": "/home/xiang/.cache/game-npc-research/runs/e83_native_cpu_v4",
+  "current_native_qualification": "PASS for the preregistered first local-model baseline episodes; not model capability evidence",
+  "research_claims_upgraded": false,
+  "reviewer_gpu_hours": 0,
+  "reviewer_inference_api_calls": 0,
+  "frozen_artifacts": {
+    "script_sha256": "229f82bf6fe09e0f862607d2017371e139d65e3cb089761798c1fcecde02755f",
+    "scene_sha256": "42b840bf665b4235c8d7e4d106f594c84e8e5c23b6c00fc82a9e196293435516",
+    "role_sha256": "4c56234a0bded4a08540aa493de062f7d0645d2f7facf88f40ce4028b21072ac",
+    "role_and_schema_file_sha256": "433866ecef65bad07b3f3b66ce18e9cb5c9487c745eb893976de9fbdda0cd8cf",
+    "cpu_summary_sha256": "82ed8ce98397f775fe4c73fdaf6f35972d55d610e23d9ab68aac13bbcac07f85",
+    "native_events_sha256": "ba0b7e64a696dca6dc5b8b6ef10215835844f39d0ff692620c3c79b84ce295b7",
+    "native_dependency_lock_sha256": "a950057b2f683c7caca7ed2a25f3291593fd93da1bbddd1da8736e48fb946b18"
+  },
+  "qualified_cpu_facts": {
+    "status": "PASS",
+    "claim_no_physical_transfer": true,
+    "actual_opening_heard": true,
+    "actual_false_claim_heard": true,
+    "actual_chest_take": true,
+    "npc_received_diamond": true,
+    "player_received_reward": true,
+    "conservation": {
+      "diamond_total": 1,
+      "netherite_total": 1
+    },
+    "no_player_inventory_field": true
+  },
+  "native_receipts": [
+    {
+      "collector": "Alaric",
+      "item": "diamond_sword",
+      "count": 1,
+      "event_ms": 33755
+    },
+    {
+      "collector": "QuestPlayer",
+      "item": "netherite_sword",
+      "count": 1,
+      "event_ms": 37453
+    }
+  ],
+  "final_actual_inventories": [
+    {
+      "diamond_sword": 1,
+      "iron_sword": 1,
+      "stick": 4
+    },
+    {
+      "netherite_sword": 1
+    }
+  ],
+  "dry_input_checks": {
+    "dry_input_P0.json": {
+      "sha256": "6a51cd8e53bff0b7548080b362b2c446202f5b281bd9fd5a84b8ed3c85b2baa5",
+      "full_ROLE_matches": true,
+      "player_inventory_field": false,
+      "speech_history_length": 1,
+      "kind": "Actual native P0 opening received by Alaric"
+    },
+    "dry_input_P1_initial.json": {
+      "sha256": "6237fcd2184a584878496d3b73ceb3cb733367fb7ed8b848328d03b74f1d9292",
+      "full_ROLE_matches": true,
+      "player_inventory_field": false,
+      "speech_history_length": 1,
+      "kind": "prospective initial input, no inference"
+    },
+    "dry_input_P1_false_claim.json": {
+      "sha256": "9b74b99dd403c568b75ae91748da7231ce3f83c5e5e2586ae38ed6ec7eb430f2",
+      "full_ROLE_matches": true,
+      "player_inventory_field": false,
+      "speech_history_length": 2,
+      "kind": "CPU negative material-control input: P0 opening then false claim; not a model P1 prefix"
+    }
+  },
+  "native_dependencies": {
+    "node_modules": "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/.e83-native-deps/node_modules",
+    "manifest": {
+      "name": "e83-native-source-semver-only",
+      "private": true,
+      "type": "module",
+      "dependencies": {
+        "minecraft-data": "^3.78.0",
+        "mineflayer": "^4.26.0",
+        "mineflayer-pathfinder": "^2.4.5",
+        "mineflayer-collectblock": "^1.4.1",
+        "mineflayer-pvp": "^1.3.2",
+        "mineflayer-auto-eat": "^3.3.6",
+        "mineflayer-armor-manager": "^2.0.1",
+        "prismarine-item": "^1.15.0",
+        "vec3": "^0.1.10",
+        "cheerio": "^1.0.0",
+        "socket.io-client": "^4.7.2"
+      }
+    },
+    "lock_sha256": "a950057b2f683c7caca7ed2a25f3291593fd93da1bbddd1da8736e48fb946b18",
+    "versions": {
+      "mineflayer": "4.39.0",
+      "minecraft-protocol": "1.68.0",
+      "minecraft-data": "3.117.0",
+      "prismarine-chat": "1.13.0",
+      "prismarine-entity": "2.6.0"
+    }
+  },
+  "environment_restore_record": "/home/xiang/.cache/game-npc-research/runs/e83_native_dependency_restore/after.json",
+  "dependency_restore_scope": "One fresh prefix using the author manifest ranges for the same eleven native packages; E82 exact environment retained, symlink switched after old CPU actors stopped. No protocol/source patches, no version scan, no provider SDKs.",
+  "server_shutdown": {
+    "owned_java_pid": 1002433,
+    "exit_code": 0,
+    "signal": null
+  },
+  "cpu_wall_seconds": 39.001,
+  "verdict": "The ordinary local LLM + full role + own visible state/native tools baseline can now be run as registered. No additional qualification runs or research bars are introduced. Two paths remain one decision-stage task, not a broad performance estimate or a persona-causality experiment."
+}

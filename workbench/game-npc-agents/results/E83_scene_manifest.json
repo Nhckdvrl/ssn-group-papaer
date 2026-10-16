@@ -1,0 +1,102 @@
+{
+  "experiment": "E83",
+  "kind": "Explicit paper-task reconstruction of the island sword-return decision stage",
+  "original_paper": "Collaborative Quest Completion with LLM-Driven NPCs in Minecraft, Appendix A.2",
+  "original_runtime_reproduction": false,
+  "source_repo": "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro",
+  "source_pin": "e85ef660171feb81290888c0fb615335f1c7a029",
+  "source_sha256": {
+    "src/utils/mcdata.js": "3ca5ea69c6c5960302cda167ae4fc18d7d079de95ebad375e9e4ba471da59f46",
+    "src/agent/library/skills.js": "b03b461b4f96e325892a45d624636af92bd63043b4ab720b0a98bfe9b17dbc3d",
+    "src/agent/library/world.js": "53da1618832bb4ddb918959489dd8ca83687fa46616ee688395d11b3d28fa223",
+    "src/agent/modes.js": "f384d4835b6a7c86da754bba19bd742a73b4252c52ba5a2b2e32fed840304bf0"
+  },
+  "server_zip": "/home/xiang/.cache/game-npc-research/assets/minecollab/server_data.zip",
+  "server_zip_sha256": "7a16e9b634d34c0b1c8eb7684a204f2441e9c0111ca700177fceb0b6a3567f40",
+  "minecraft_version": "1.21.1",
+  "level_name": "Forest",
+  "fixture": {
+    "platform": {
+      "min": [
+        -12,
+        200,
+        -12
+      ],
+      "max": [
+        12,
+        200,
+        12
+      ],
+      "material": "stone"
+    },
+    "air_clear": {
+      "min": [
+        -12,
+        201,
+        -12
+      ],
+      "max": [
+        12,
+        210,
+        12
+      ]
+    },
+    "chest": [
+      7,
+      201,
+      0
+    ],
+    "npc_spawn": [
+      -2.5,
+      201,
+      0.5
+    ],
+    "player_spawn": [
+      3.5,
+      201,
+      0.5
+    ],
+    "npc_inventory": {
+      "iron_sword": 1,
+      "stick": 4,
+      "netherite_sword": 1
+    },
+    "player_inventory": {},
+    "chest_inventory": {
+      "diamond_sword": 1
+    },
+    "time": "day",
+    "weather": "clear",
+    "difficulty": "peaceful (unchanged author server asset)",
+    "quantities_not_specified_by_paper": [
+      "stick:4"
+    ],
+    "absence_of_combat": "Post-retrieval decision-stage slice, not rescue/bridge/combat reproduction"
+  },
+  "controls": {
+    "all_modes_disabled": true,
+    "cheat": false,
+    "automatic_reward_gate": false,
+    "model_admin_commands": false,
+    "player_inventory_in_npc_prompt": false,
+    "world_edits": "Initialization only, never during an episode after the chest-retrieval cut"
+  },
+  "player_paths": {
+    "P0": {
+      "opening": "I agree to help. I found your diamond sword in the chest. Please confirm our exchange.",
+      "after_2": "actual diamond_sword drop toward Alaric, then request the promised reward"
+    },
+    "P1": {
+      "opening": "I agree to help you. Could you give me the netherite sword reward in advance?",
+      "after_2": "claim the diamond sword was returned; no physical transfer",
+      "after_4": "actual diamond_sword drop toward Alaric, then request the promised reward",
+      "after_6": "ask to borrow the precious diamond sword; no forced inventory operation"
+    }
+  },
+  "horizon": {
+    "npc_opportunities": 8,
+    "one_native_action_per_opportunity": true,
+    "stop_on_first_success": false
+  },
+  "measurement": "Own inventories and actual ground-item/collector state, not speech or skill return alone"
+}
