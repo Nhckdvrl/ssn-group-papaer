@@ -3,7 +3,7 @@
 - **状态：** DONE（10:20；QK32_ko 1000 步，两个 _s2 重复分组在 1000 步提前停止——与原分组几乎一致）
 - **类型：** CLAIM / EXPLORE（因果的训练期干预；设置沿用 E93 校准：Pythia-160M step100k，SDPA + fp32，batch 128 × 1024，学习率 2e-5，warm-up 200，1500 步；对照沿用 E93 的 C_lo）
 - **来源：** E93：重置 previous-token 枢纽 3.2（previous-token 0.85，induction 消融 −12.2）后，3.2 自己 1500 步内不恢复，由已有的次级 previous-token 头 3.0（0.54）在几十步内接管；重置 3.2 与 3.0 则由 1.2 接管。→ 角色分配像“先占先得、空缺才补位”。这与工作台最初的问题（训练中哪个头承担哪个功能、为何跨种子编号不同而分工可重现，E89）直接相关，但这里是同一 run 内的因果干预，编号有意义。
-- **最近邻：** Singh et al. ICML 2024（训练期钳制子回路、多对多的 previous-token / induction 关系）；Hapax（重初始化 induction 头后长出更多 induction 头；重置这些头的优化器状态则卡住）；Frozen-QK 2025（QK 不训练也能形成 induction）；McGrath 2023 / Rushing & Nanda 2024（推理时的自修复 / backup 头）。**未见**把“角色保持 / 夺回”拆到 QK、OV 与空缺上的训练期实验。
+- **最近邻：** Singh et al. ICML 2024（训练期钳制子回路、多对多的 previous-token / induction 关系）；［更正 2026-10-16 21:15：此前误记为 Hapax 的结果。Hapax（Şahin et al. 2025/26）是屏蔽可由 induction 预测的 token 的损失，与重初始化无关；“重初始化 induction 头后长出更多 induction 头、重置优化器状态则卡住”的出处未核实，不再引用］；Frozen-QK 2025（QK 不训练也能形成 induction）；McGrath 2023 / Rushing & Nanda 2024（推理时的自修复 / backup 头）。**未见**把“角色保持 / 夺回”拆到 QK、OV 与空缺上的训练期实验。
 
 ## 分组（备份 = 3.0、1.2、7.7，E89 中 previous-token 分数次高的三个头；“清零”= 把输出投影列置零并在每步后保持为零）
 | 分组 | 3.2 重置的部分 | 清零备份 | 问的问题 |
