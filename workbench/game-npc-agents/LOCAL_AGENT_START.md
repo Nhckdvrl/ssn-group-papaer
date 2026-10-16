@@ -2,10 +2,10 @@
 
 **2026-10-14 / 当前任务已由用户选择 A**。这里是执行引导，不是第二套科研总宪章。所有科研准则继续以[根AGENTS](../../AGENTS.md)、[本目录AGENTS](AGENTS.md)、[EXECUTION](../EXECUTION.md)为准。
 
-**最新执行状态：暂停新增实验（2026-10-16用户决定）。** E85全部576分支/216事实问答完成，13,452已记录本地调用/2.04614GPUh，全部自有worker退出、GPU释放，没有待运行队列。当前只整理文档；恢复须用户明确指令。先读[本轮完整报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)，工作台与idea/claim状态保持。
+**最新执行状态：暂停新增实验（2026-10-16用户决定）。** E85全部576分支/216事实问答完成，13,452已记录本地调用/2.04614GPUh，全部自有worker退出、GPU释放，没有待运行队列。当前只整理文档；恢复须用户明确指令。先读[整个项目的整体报告](PROJECT_PROGRESS_REPORT_2026-10-16.md)，再看[E85分报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)，工作台与idea/claim状态保持。
 
 ## 不要被历史文件误导
-当前结果入口是[E85完整报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)、[E85卡](experiments/E85-partner-performance-and-revision.md)、[I04](ideas/I04-commitment-conflict-stage-arbitration.md)与[最新日志](logs/2026-10-16.md)。已从同类物品索要推进到双方原作者目的、真实玩家行动与方案修订；后续候选问题是原生多步任务中替代手段及原路线失效后的目的保持，不围三例继续调提示。旧[E70–E80报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)与[C06混杂核对](knowledge/persona-behavior/GOAL_EXECUTION_CLAIM_AUDIT_2026-10-15.md)保留证据，不是当前任务队列。停止新增Step细语义标注和无回路假说patch。PCSP／MeltingPot小模型RL、1200帧全图漫游、单模块修改冒称完整persona效应、无实体flag履约均继续冻结。10月14日“恢复”决定是历史，不能覆盖本次暂停。
+当前整体入口是[从最初接手到E85的总报告](PROJECT_PROGRESS_REPORT_2026-10-16.md)；最近一轮入口是[E85完整报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)、[E85卡](experiments/E85-partner-performance-and-revision.md)、[I04](ideas/I04-commitment-conflict-stage-arbitration.md)与[最新日志](logs/2026-10-16.md)。已从同类物品索要推进到双方原作者目的、真实玩家行动与方案修订；后续候选问题是原生多步任务中替代手段及原路线失效后的目的保持，不围三例继续调提示。旧[E70–E80报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)与[C06混杂核对](knowledge/persona-behavior/GOAL_EXECUTION_CLAIM_AUDIT_2026-10-15.md)保留证据，不是当前任务队列。停止新增Step细语义标注和无回路假说patch。PCSP／MeltingPot小模型RL、1200帧全图漫游、单模块修改冒称完整persona效应、无实体flag履约均继续冻结。10月14日“恢复”决定是历史，不能覆盖本次暂停。
 历史 E00/E02–E05 和过时 manifest 不恢复。E06 是历史统领设计；E43 原为小MLP诊断，已冻结，新的LLM跨阶段白盒在E50实际执行。安全、经济、人格漂移等全域仍开放，A只是本轮优先探索。
 
 ## 恢复后的研究指导（当前不执行）

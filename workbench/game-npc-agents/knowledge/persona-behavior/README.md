@@ -1,6 +1,6 @@
 # 矿区 A：角色表达、行动意图与游戏内策略选择
 
-**状态：CURRENT EXPLORATION，非已证实 IDEA**（2026-10-14 用户选择）。本目录只收精读、源码/数据审计与实际观察，不复制其它全域知识库。
+**矿区A知识库（2026-10-16当前入口）。** 用户2026-10-14选择此矿区，现已有范围明确的行动证据，统一机制与方法仍在探索；具体主张以[CLAIMS](../../CLAIMS.md)为准。本目录收精读、源码/数据审计与实际观察，不复制其它全域知识库。
 
 **执行已按用户要求暂停（2026-10-16）。** E85全576分支完成、GPU释放；当前仅整理文档，恢复须明确指令。I04 PROMISING/C06限定L2/工作台PROPOSED保持。
 
@@ -8,6 +8,7 @@
 真正认识 Game NPC 中的 **Persona ↔ Intended Behavior ↔ Executed Strategic Action ↔ World Consequence**。不仅是比较两段不同语气。不同 NPC 的作者目标/任务利益、玩家关系、游戏状态不同；研究既允许发现显著断裂，也允许发现高质量上下文匹配或角色约束有效，并解释它们的边界。
 
 ## 当前入口
+- **[整体进度报告：从最初接手到E85](../../PROJECT_PROGRESS_REPORT_2026-10-16.md)**：全部阶段的选择理由、有效认识、被推翻的故事、资源和当前未解问题；E85分报告只覆盖最近一轮。
 - [本轮进度报告：E85](../../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)：9原图/18前史、两模型576分支的真实行动/声称/改约、完整后续及暂停接手说明。
 - [合作与方案修订定位](COOPERATION_REPAIR_POSITIONING_2026-10-16.md)：CT-Bench、TradeCraft、ContractSim、GenCoord及真实玩家证据；普通强baseline、角色持续目的和合法替代的整体问题。
 - [E84完整互动](../../experiments/E84-independent-goals-and-alternative-cooperation.md)、[E85实验卡](../../experiments/E85-partner-performance-and-revision.md)及[结果索引](../../results/README.md)：已有成功、失败、原生物料流与全部复算入口。

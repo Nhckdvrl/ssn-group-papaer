@@ -1,6 +1,6 @@
 # 结果清单
 
-当前入口为[E81双方作者目的合作任务](../experiments/E81-authored-cooperation-and-partner-response.md)、[E82原Minecraft任务CPU闭环](../experiments/E82-minecraft-original-cooperation-baseline.md)和[E83有自身目的NPC的角色任务重建](../experiments/E83-npc-quest-receipt-and-reward-baseline.md)。E81主物理计数与真实条件/作者目的分开；E82无模型能力主张，E83先CPU后完整episode，不按几个例子调提示。旧结果及冻结执行线均保留。
+**整体解释先读[全项目进度报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)**，覆盖从最初接手到E85的实验选择、结果、纠偏、主张与未解问题。最近一轮详见[E85分报告](../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)。当前保持用户要求的暂停，所有自有worker/GPU释放，无待运行队列。下面按实验编号索引原始紧凑结果，旧结果及冻结执行线均保留；不把每项readout单独当研究贡献。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。

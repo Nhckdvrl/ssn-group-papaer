@@ -1,9 +1,14 @@
-# 矿区 A · 活跃研究线索（非论文贡献）
+# 矿区A研究候选与证据入口
 
-**目前 0 个经过实验确认的 I##/C##。** 当前有用户选择的探索矿区 A（Persona ↔ Strategic Utility），但没有“言行解耦”已经被我们发现的主张。
+**当前保持暂停（2026-10-16用户决定）。** 科学状态以各idea卡和[主张账本](../CLAIMS.md)为准；旧“0个已确认主张”已不代表现状。先读[整体进度报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)，不从历史“下一步”自动运行。
 
-[I01：角色归属与原生访问权限](I01-normative-ownership-and-mechanical-access.md)为E21真实轨迹引出的SEED；E22后权限机制未获支持，普通目标绑定/priming解释仍足够，负向字段正控制失败已降级。[I02：角色控制与读出形成的梯度路径](I02-causal-separation-of-role-control-and-readout.md)也是SEED，E25先从正确编码的原训练基线区分路径；不能把stop-gradient或读出修复本身称创新。
-最新入口 [EXPLORATION_ENTRY](../EXPLORATION_ENTRY.md)、[RELATED_WORK](../knowledge/persona-behavior/RELATED_WORK.md)、[E06](../experiments/E06-persona-strategy-baseline.md)。
+| idea | 当前状态 | 已有证据与范围 |
+|---|---|---|
+| [I01：角色归属与原生访问](I01-normative-ownership-and-mechanical-access.md) | SEED | E22未支持权限投射；普通目标绑定/priming仍可解释，失败字段保留。 |
+| [I02：角色控制与读出路径](I02-causal-separation-of-role-control-and-readout.md) | SEED | 有读出、编码、梯度和完整预算诊断；相关PCSP小模型执行线按用户决定冻结，未把工程恢复当新机制。 |
+| [I03：干预覆盖与功能角色控制](I03-interventional-coverage-for-functional-persona-control.md) | SEED | E41/E42结果保留，无统一收益排序或已验证方法；旧执行冻结。 |
+| [I04：人物、目标与真实NPC选择](I04-commitment-conflict-stage-arbitration.md) | PROMISING | C02/C04/C05/C06为限定L2，C03发现性L1；后续原角色合作见E81–E85。尚未识别统一内部机制或已验证新方法。 |
 
-旧六方向文档与五张从未运行的实验卡已被用户多次纠正，从当前 HEAD 移到Git历史（[旧版本](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents)）；安全、经济和其它方向仍在 [DOMAIN_ATLAS](../knowledge/DOMAIN_ATLAS.md)，**没有被关闭**。
-不要为凑 idea 数量预先注册论文故事。若有相对 ICML/NeurIPS 最近邻仍成立的真实异常，再依根 IDEA_EXPLORATION 流程建立 SEED，列最强已知解释、可否决实验与新认识价值。
+当前整体问题是：NPC如何在自身目的、人物立场与玩家实际行动/新方案之间形成持续、可执行的选择。前期人物干预与后期自然互动各有作用，不能用后者补成新人物因果效应；也不要求每个组件都没人研究过。
+
+安全、经济、人格漂移及其他领域仍在[领域地图](../knowledge/DOMAIN_ATLAS.md)，没有因矿区A优先被关闭。旧E00/E02–E05已撤出当前目录，不恢复；此前历史状态、负结果与撤销理由在Git及各卡保留。所有状态此次均未变更，研究恢复须用户明确指令。
