@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E74–E77与E80全部完成；E80在200原图跑完4800真实双角色episode/37642本地调用/3.61979观测GPUh，峰8卡，0API，全部GPU释放。I04保持PROMISING，论文正文暂缓。** 最新[E70–E80连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E80卡](experiments/E80-responsive-player-and-grounded-execution.md)、[主张账本](CLAIMS.md)、[当日日志](logs/2026-10-16.md)。
+**执行：E81进入双方原作者目的的真实合作任务，126不同原图，两模型完整profile已通过，504条固定逻辑episode在四卡运行；无F/A或提示词网格。** 双方对称强原生工具、真实说话/行动/反馈，资格与来源见[E81卡](experiments/E81-authored-cooperation-and-partner-response.md)、[源清单](results/E81_source_inventory.json)、[合作近邻核读](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。E80已完成并报告，I04保持PROMISING，论文正文暂缓。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 

@@ -1,0 +1,3963 @@
+{
+  "experiment": "E81",
+  "status": "PROFILE_TECHNICAL_ONLY",
+  "model": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+  "data": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/snapshots.jsonl",
+  "data_sha256": "77fd0e46a5ccaee7215be00d594864818384df23e48c7753741b2d20b4e83f71",
+  "driver_sha256": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6",
+  "report_sha256": "57dd0aa302929a2127e8829b27bd182302c9d092495a119b42d210d1cf3b76c2",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/manifest.json": "1dc1f1531f116a43e81125a6c3eb159fa1da53757a5e57fedb2faeac5699af54",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/runtime.json": "3f9e1997f26756c1ef395133db64637d7d79a4f4694d3c249a4e20f360192140",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/episodes.jsonl": "8fef99fbdf5061272e9a7b22bf6b0fea5ac948fd69943989d5960bb2bc816e77",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/states.jsonl": "f976acbd7408e8c8139e81fd2321b841719da480f5929dd700ee27a53b4c4d9e",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/model_calls.jsonl": "019cd2e267d64ed424ead70a9e42b127f5e2b7ea5a1b60160b07f45b6c2ef68d",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/reused_calls.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile_launch.json": "93ddcd23521279b2d4e41c6e57508e0ea24c67ea4f6597cc0dc269eb8b76efdb"
+  },
+  "primary_episode_sources_ordered": [
+    "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile/episodes.jsonl"
+  ],
+  "independent_graphs": 2,
+  "episodes": 4,
+  "seeds": [
+    8101,
+    8102
+  ],
+  "source_goal_binding": {
+    "receiver_goal_kind_graphs": {
+      "steal": 1,
+      "put": 1
+    },
+    "receiver_initial_native_identity_unavailable_graphs": 0,
+    "source_initially_NPC_held_graphs": 2,
+    "player_initial_direct_Get_possible_graphs": 0
+  },
+  "duplicate_episode_records": [],
+  "scope": "Two profile worlds test plumbing and cost only; no population estimate.",
+  "measurement": {
+    "strict_goal": "Successful recorded native class and exact target-node IDs equal original bound identity.",
+    "receiver_original_physical": "Get/Steal: actual direct possession; eat/drink: receiver consumes exact source into VOID; wear/wield: source held with original mode; Put: exact original destination.",
+    "driver_broad_physical": "Also preserves the driver field, which counts any equipped mode on wear/wield tasks. Strict-mode and any-equipment measures are reported independently.",
+    "giver_source_give": "Actual successful Give by original authored giver to original receiver with exact source ID; player Get/Steal is distinct.",
+    "not_claimed": "Original atomic goals are not all private purposes. Co-occurring outcomes or bidirectional flows do not establish negotiation success, mutual utility or human player value.",
+    "bootstrap": null
+  },
+  "input_audit": {
+    "status": "PASS",
+    "executed_or_rejected_decisions_resolved": 132,
+    "own_author_header_checks": 132,
+    "actual_native_speech_selections": 11,
+    "non_speech_payload_not_sent_as_speech": 4,
+    "scope": "Own header and recorded decision provenance. Public native speech may legitimately disclose a private purpose; it is not prohibited by a string-leak filter."
+  },
+  "full_state_and_native_replay_audit": {
+    "status": "PASS",
+    "full_graph_material_and_visible_snapshots_checked": 132,
+    "exact_model_input_keys_reconstructed": 132,
+    "native_typed_events_replayed_including_opening": 132,
+    "entire_episodes_replayed": 4,
+    "entire_saved_state_sequences_checked": 4,
+    "typed_native_replay_requested": true,
+    "graph_before_byte_sha_differences": [],
+    "new_model_calls": 0,
+    "new_API_calls": 0
+  },
+  "groups": {
+    "all": {
+      "independent_graphs": 2,
+      "episodes": 4,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_actual_speech_count": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 8
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 40.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 0.75,
+          "raw_sum": 3
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 8
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 6
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_successful_block_count": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.25,
+          "raw_sum": 29
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 64
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 132
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 40.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "receiver_give_peer_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_original_physical_final": {
+          "mean": 0.75,
+          "raw_sum": 3
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 1.25,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 1.25,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_give_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_give_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 7.75,
+          "raw_sum": 31
+        },
+        "receiver_successful_wait_count": {
+          "mean": 2.5,
+          "raw_sum": 10
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 64
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 0.5,
+          "raw_sum": 2
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.5,
+          "both_strict_event_identities_ever": 0.5,
+          "giver_actual_speech_count": 1.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.5,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.5,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 9.5,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 2.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 2.0,
+          "receiver_all_asset_give_count": 2.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.5,
+          "receiver_final_source_owned_including_containers": 0.5,
+          "receiver_give_peer_count": 2.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 1.5,
+          "receiver_other_asset_give_peer_count": 1.5,
+          "receiver_other_asset_give_peer_ever": 0.5,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.5,
+          "receiver_source_give_count": 0.5,
+          "receiver_source_give_ever": 0.5,
+          "receiver_source_return_giver_ever": 0.5,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 1.0,
+          "receiver_strict_goal_ever": 0.5,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 9.5,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.5
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.5,
+          "both_strict_event_identities_ever": 0.5,
+          "giver_actual_speech_count": 1.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.5,
+          "giver_final_source_owned_including_containers": 0.5,
+          "giver_gave_and_receiver_original_physical_final": 0.5,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.5,
+          "receiver_all_asset_give_count": 1.5,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 1.5,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 0.5,
+          "receiver_other_asset_give_count": 1.0,
+          "receiver_other_asset_give_peer_count": 1.0,
+          "receiver_other_asset_give_peer_ever": 0.5,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.5,
+          "receiver_source_give_count": 0.5,
+          "receiver_source_give_ever": 0.5,
+          "receiver_source_return_giver_ever": 0.5,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 1.0,
+          "receiver_strict_goal_ever": 0.5,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 6.0,
+          "receiver_successful_wait_count": 5.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.5
+        }
+      }
+    },
+    "acquisition": {
+      "independent_graphs": 1,
+      "episodes": 2,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_actual_speech_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 3
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_successful_block_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.0,
+          "raw_sum": 14
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 66
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_give_peer_count": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_original_physical_final": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_give_count": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_successful_wait_count": {
+          "mean": 5.0,
+          "raw_sum": 10
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 0.0,
+          "raw_sum": 0
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 1.0,
+          "both_strict_event_identities_ever": 0.0,
+          "giver_actual_speech_count": 2.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 1.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 9.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 3.0,
+          "receiver_all_asset_give_count": 4.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 1.0,
+          "receiver_final_source_owned_including_containers": 1.0,
+          "receiver_give_peer_count": 4.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 3.0,
+          "receiver_other_asset_give_peer_count": 3.0,
+          "receiver_other_asset_give_peer_ever": 1.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.0,
+          "receiver_source_give_count": 1.0,
+          "receiver_source_give_ever": 1.0,
+          "receiver_source_return_giver_ever": 1.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 2.0,
+          "receiver_strict_goal_ever": 0.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 4.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.0
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 1.0,
+          "both_strict_event_identities_ever": 0.0,
+          "giver_actual_speech_count": 2.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 1.0,
+          "giver_final_source_owned_including_containers": 1.0,
+          "giver_gave_and_receiver_original_physical_final": 0.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 2.0,
+          "receiver_all_asset_give_count": 3.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 3.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 0.0,
+          "receiver_other_asset_give_count": 2.0,
+          "receiver_other_asset_give_peer_count": 2.0,
+          "receiver_other_asset_give_peer_ever": 1.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.0,
+          "receiver_source_give_count": 1.0,
+          "receiver_source_give_ever": 1.0,
+          "receiver_source_return_giver_ever": 1.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 2.0,
+          "receiver_strict_goal_ever": 0.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 3.0,
+          "receiver_successful_wait_count": 10.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.0
+        }
+      }
+    },
+    "use_or_put": {
+      "independent_graphs": 1,
+      "episodes": 2,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_actual_speech_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 3
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.5,
+          "raw_sum": 15
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 66
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_give_peer_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_original_physical_final": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_give_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 12.0,
+          "raw_sum": 24
+        },
+        "receiver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 1.0,
+          "raw_sum": 2
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.0,
+          "both_strict_event_identities_ever": 1.0,
+          "giver_actual_speech_count": 0.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 1.0,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 10.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 4.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.0,
+          "receiver_all_asset_give_count": 0.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 0.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 0.0,
+          "receiver_other_asset_give_peer_count": 0.0,
+          "receiver_other_asset_give_peer_ever": 0.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 1.0,
+          "receiver_source_give_count": 0.0,
+          "receiver_source_give_ever": 0.0,
+          "receiver_source_return_giver_ever": 0.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 0.0,
+          "receiver_strict_goal_ever": 1.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 15.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 1.0
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.0,
+          "both_strict_event_identities_ever": 1.0,
+          "giver_actual_speech_count": 0.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.0,
+          "receiver_all_asset_give_count": 0.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 0.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 0.0,
+          "receiver_other_asset_give_peer_count": 0.0,
+          "receiver_other_asset_give_peer_ever": 0.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 1.0,
+          "receiver_source_give_count": 0.0,
+          "receiver_source_give_ever": 0.0,
+          "receiver_source_return_giver_ever": 0.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 0.0,
+          "receiver_strict_goal_ever": 1.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 9.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 1.0
+        }
+      }
+    },
+    "receiver_put": {
+      "independent_graphs": 1,
+      "episodes": 2,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_actual_speech_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 3
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.5,
+          "raw_sum": 15
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 66
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_give_peer_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_original_physical_final": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_give_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_give_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 12.0,
+          "raw_sum": 24
+        },
+        "receiver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 1.0,
+          "raw_sum": 2
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.0,
+          "both_strict_event_identities_ever": 1.0,
+          "giver_actual_speech_count": 0.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 1.0,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 10.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 4.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.0,
+          "receiver_all_asset_give_count": 0.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 0.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 0.0,
+          "receiver_other_asset_give_peer_count": 0.0,
+          "receiver_other_asset_give_peer_ever": 0.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 1.0,
+          "receiver_source_give_count": 0.0,
+          "receiver_source_give_ever": 0.0,
+          "receiver_source_return_giver_ever": 0.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 0.0,
+          "receiver_strict_goal_ever": 1.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 15.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 1.0
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.0,
+          "both_strict_event_identities_ever": 1.0,
+          "giver_actual_speech_count": 0.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.0,
+          "receiver_all_asset_give_count": 0.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 0.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 0.0,
+          "receiver_other_asset_give_peer_count": 0.0,
+          "receiver_other_asset_give_peer_ever": 0.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 1.0,
+          "receiver_source_give_count": 0.0,
+          "receiver_source_give_ever": 0.0,
+          "receiver_source_return_giver_ever": 0.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 0.0,
+          "receiver_strict_goal_ever": 1.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 9.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 1.0
+        }
+      }
+    },
+    "receiver_steal": {
+      "independent_graphs": 1,
+      "episodes": 2,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_actual_speech_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 3
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "giver_successful_block_count": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.0,
+          "raw_sum": 14
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 66
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 20.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_give_peer_count": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_original_physical_final": {
+          "mean": 0.5,
+          "raw_sum": 1
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 2.5,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_give_count": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 1.0,
+          "raw_sum": 2
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 2.0,
+          "raw_sum": 4
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 3.5,
+          "raw_sum": 7
+        },
+        "receiver_successful_wait_count": {
+          "mean": 5.0,
+          "raw_sum": 10
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 32
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 0.0,
+          "raw_sum": 0
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 1.0,
+          "both_strict_event_identities_ever": 0.0,
+          "giver_actual_speech_count": 2.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 1.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 9.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 3.0,
+          "receiver_all_asset_give_count": 4.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 1.0,
+          "receiver_final_source_owned_including_containers": 1.0,
+          "receiver_give_peer_count": 4.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 3.0,
+          "receiver_other_asset_give_peer_count": 3.0,
+          "receiver_other_asset_give_peer_ever": 1.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.0,
+          "receiver_source_give_count": 1.0,
+          "receiver_source_give_ever": 1.0,
+          "receiver_source_return_giver_ever": 1.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 2.0,
+          "receiver_strict_goal_ever": 0.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 4.0,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.0
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 1.0,
+          "both_strict_event_identities_ever": 0.0,
+          "giver_actual_speech_count": 2.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 1.0,
+          "giver_final_source_owned_including_containers": 1.0,
+          "giver_gave_and_receiver_original_physical_final": 0.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 2.0,
+          "receiver_all_asset_give_count": 3.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 3.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 0.0,
+          "receiver_other_asset_give_count": 2.0,
+          "receiver_other_asset_give_peer_count": 2.0,
+          "receiver_other_asset_give_peer_ever": 1.0,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.0,
+          "receiver_source_give_count": 1.0,
+          "receiver_source_give_ever": 1.0,
+          "receiver_source_return_giver_ever": 1.0,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 2.0,
+          "receiver_strict_goal_ever": 0.0,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 3.0,
+          "receiver_successful_wait_count": 10.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.0
+        }
+      }
+    },
+    "source_initially_NPC_held": {
+      "independent_graphs": 2,
+      "episodes": 4,
+      "metrics": {
+        "any_character_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "bidirectional_any_asset_give_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "both_strict_event_identities_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_actual_speech_count": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_all_asset_give_count": {
+          "mean": 2.0,
+          "raw_sum": 8
+        },
+        "giver_and_receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 40.0
+        },
+        "giver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_final_source_direct_held": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_final_source_owned_including_containers": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_gave_and_receiver_original_physical_final": {
+          "mean": 0.75,
+          "raw_sum": 3
+        },
+        "giver_gave_but_receiver_original_physical_absent": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_give_peer_count": {
+          "mean": 2.0,
+          "raw_sum": 8
+        },
+        "giver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "giver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_other_asset_give_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_other_asset_give_peer_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_source_get_ever": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_source_give_count": {
+          "mean": 1.5,
+          "raw_sum": 6
+        },
+        "giver_source_give_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_source_give_receiver_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_stochastic_failures": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "giver_strict_goal_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "giver_successful_block_count": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "giver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_successful_material_actions": {
+          "mean": 7.25,
+          "raw_sum": 29
+        },
+        "giver_successful_wait_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "giver_turns": {
+          "mean": 16.0,
+          "raw_sum": 64
+        },
+        "giver_unused_non_speech_payloads": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "native_attempts_including_opening": {
+          "mean": 33.0,
+          "raw_sum": 132
+        },
+        "native_runtime_stop": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "protocol_failure": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_acquired_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_acquired_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_actual_speech_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_all_asset_give_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_death": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_driver_broad_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_final_hp": {
+          "mean": 10.0,
+          "raw_sum": 40.0
+        },
+        "receiver_final_source_any_equipped": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_authored_equipment_mode": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_final_source_direct_held": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "receiver_final_source_owned_including_containers": {
+          "mean": 0.25,
+          "raw_sum": 1
+        },
+        "receiver_give_peer_count": {
+          "mean": 1.75,
+          "raw_sum": 7
+        },
+        "receiver_hp_change": {
+          "mean": 0.0,
+          "raw_sum": 0.0
+        },
+        "receiver_native_exceptions": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_native_rejections": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_not_recorded_executed_legal": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_original_physical_ever": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_original_physical_final": {
+          "mean": 0.75,
+          "raw_sum": 3
+        },
+        "receiver_other_asset_give_count": {
+          "mean": 1.25,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_count": {
+          "mean": 1.25,
+          "raw_sum": 5
+        },
+        "receiver_other_asset_give_peer_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_physical_without_giver_source_give": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_any_equipped_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_authored_equipment_mode_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_consume_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_source_get_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_give_count": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_give_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_return_giver_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_source_steal_ever": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_stochastic_failures": {
+          "mean": 1.0,
+          "raw_sum": 4
+        },
+        "receiver_strict_goal_ever": {
+          "mean": 0.5,
+          "raw_sum": 2
+        },
+        "receiver_successful_block_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_hit_count": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "receiver_successful_material_actions": {
+          "mean": 7.75,
+          "raw_sum": 31
+        },
+        "receiver_successful_wait_count": {
+          "mean": 2.5,
+          "raw_sum": 10
+        },
+        "receiver_turns": {
+          "mean": 16.0,
+          "raw_sum": 64
+        },
+        "receiver_unused_non_speech_payloads": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_VOID": {
+          "mean": 0.0,
+          "raw_sum": 0
+        },
+        "source_final_other_owner_or_room": {
+          "mean": 0.5,
+          "raw_sum": 2
+        }
+      },
+      "seed_specific": {
+        "8101": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.5,
+          "both_strict_event_identities_ever": 0.5,
+          "giver_actual_speech_count": 1.0,
+          "giver_all_asset_give_count": 3.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.0,
+          "giver_final_source_owned_including_containers": 0.0,
+          "giver_gave_and_receiver_original_physical_final": 1.0,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 3.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 1.0,
+          "giver_other_asset_give_peer_count": 1.0,
+          "giver_other_asset_give_peer_ever": 1.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.5,
+          "giver_source_give_count": 2.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 0.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.5,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 9.5,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 2.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 2.0,
+          "receiver_all_asset_give_count": 2.0,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.5,
+          "receiver_final_source_owned_including_containers": 0.5,
+          "receiver_give_peer_count": 2.0,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 1.0,
+          "receiver_other_asset_give_count": 1.5,
+          "receiver_other_asset_give_peer_count": 1.5,
+          "receiver_other_asset_give_peer_ever": 0.5,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.5,
+          "receiver_source_give_count": 0.5,
+          "receiver_source_give_ever": 0.5,
+          "receiver_source_return_giver_ever": 0.5,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 1.0,
+          "receiver_strict_goal_ever": 0.5,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 9.5,
+          "receiver_successful_wait_count": 0.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.5
+        },
+        "8102": {
+          "any_character_death": 0.0,
+          "bidirectional_any_asset_give_ever": 0.5,
+          "both_strict_event_identities_ever": 0.5,
+          "giver_actual_speech_count": 1.0,
+          "giver_all_asset_give_count": 1.0,
+          "giver_and_receiver_original_physical_ever": 1.0,
+          "giver_death": 0.0,
+          "giver_final_hp": 10.0,
+          "giver_final_source_any_equipped": 0.0,
+          "giver_final_source_authored_equipment_mode": 0.0,
+          "giver_final_source_direct_held": 0.5,
+          "giver_final_source_owned_including_containers": 0.5,
+          "giver_gave_and_receiver_original_physical_final": 0.5,
+          "giver_gave_but_receiver_original_physical_absent": 0.0,
+          "giver_give_peer_count": 1.0,
+          "giver_hp_change": 0.0,
+          "giver_native_exceptions": 0.0,
+          "giver_native_rejections": 0.0,
+          "giver_not_recorded_executed_legal": 0.0,
+          "giver_other_asset_give_count": 0.0,
+          "giver_other_asset_give_peer_count": 0.0,
+          "giver_other_asset_give_peer_ever": 0.0,
+          "giver_source_any_equipped_ever": 0.0,
+          "giver_source_consume_ever": 0.0,
+          "giver_source_get_ever": 0.0,
+          "giver_source_give_count": 1.0,
+          "giver_source_give_ever": 1.0,
+          "giver_source_give_receiver_ever": 1.0,
+          "giver_source_steal_ever": 0.0,
+          "giver_stochastic_failures": 1.0,
+          "giver_strict_goal_ever": 1.0,
+          "giver_successful_block_count": 0.0,
+          "giver_successful_hit_count": 0.0,
+          "giver_successful_material_actions": 5.0,
+          "giver_successful_wait_count": 0.0,
+          "giver_turns": 16.0,
+          "giver_unused_non_speech_payloads": 0.0,
+          "native_attempts_including_opening": 33.0,
+          "native_runtime_stop": 0.0,
+          "protocol_failure": 0.0,
+          "receiver_acquired_ever": 1.0,
+          "receiver_acquired_without_giver_source_give": 0.0,
+          "receiver_actual_speech_count": 1.5,
+          "receiver_all_asset_give_count": 1.5,
+          "receiver_death": 0.0,
+          "receiver_driver_broad_physical_ever": 1.0,
+          "receiver_final_hp": 10.0,
+          "receiver_final_source_any_equipped": 0.0,
+          "receiver_final_source_authored_equipment_mode": 0.0,
+          "receiver_final_source_direct_held": 0.0,
+          "receiver_final_source_owned_including_containers": 0.0,
+          "receiver_give_peer_count": 1.5,
+          "receiver_hp_change": 0.0,
+          "receiver_native_exceptions": 0.0,
+          "receiver_native_rejections": 0.0,
+          "receiver_not_recorded_executed_legal": 0.0,
+          "receiver_original_physical_ever": 1.0,
+          "receiver_original_physical_final": 0.5,
+          "receiver_other_asset_give_count": 1.0,
+          "receiver_other_asset_give_peer_count": 1.0,
+          "receiver_other_asset_give_peer_ever": 0.5,
+          "receiver_physical_without_giver_source_give": 0.0,
+          "receiver_source_any_equipped_ever": 0.0,
+          "receiver_source_authored_equipment_mode_ever": 0.0,
+          "receiver_source_consume_ever": 0.0,
+          "receiver_source_get_ever": 0.5,
+          "receiver_source_give_count": 0.5,
+          "receiver_source_give_ever": 0.5,
+          "receiver_source_return_giver_ever": 0.5,
+          "receiver_source_steal_ever": 0.0,
+          "receiver_stochastic_failures": 1.0,
+          "receiver_strict_goal_ever": 0.5,
+          "receiver_successful_block_count": 0.0,
+          "receiver_successful_hit_count": 0.0,
+          "receiver_successful_material_actions": 6.0,
+          "receiver_successful_wait_count": 5.0,
+          "receiver_turns": 16.0,
+          "receiver_unused_non_speech_payloads": 0.0,
+          "source_final_VOID": 0.0,
+          "source_final_other_owner_or_room": 0.5
+        }
+      }
+    }
+  },
+  "raw_counts": {
+    "stop": {
+      "turn_limit": 4
+    },
+    "events": {
+      "giver/BlockEvent/successful": 1,
+      "giver/EmoteEvent/successful": 27,
+      "giver/ExamineEvent/successful": 1,
+      "giver/FollowEvent/successful": 7,
+      "giver/GetObjectEvent/successful": 5,
+      "giver/GiveObjectEvent/successful": 8,
+      "giver/HealthEvent/successful": 1,
+      "giver/RemoveObjectEvent/successful": 3,
+      "giver/RewardEvent/rejected_or_failed": 1,
+      "giver/SayEvent/successful": 2,
+      "giver/StealObjectEvent/rejected_or_failed": 1,
+      "giver/TellEvent/successful": 2,
+      "giver/UnblockEvent/successful": 1,
+      "giver/UnfollowEvent/successful": 4,
+      "receiver/EmoteEvent/successful": 5,
+      "receiver/FollowEvent/successful": 2,
+      "receiver/GetObjectEvent/successful": 8,
+      "receiver/GiveObjectEvent/successful": 7,
+      "receiver/InventoryEvent/successful": 1,
+      "receiver/PointEvent/successful": 9,
+      "receiver/PutObjectInEvent/successful": 14,
+      "receiver/QuestEvent/successful": 1,
+      "receiver/SayEvent/successful": 6,
+      "receiver/StealObjectEvent/rejected_or_failed": 4,
+      "receiver/TellEvent/successful": 1,
+      "receiver/WaitEvent/successful": 10
+    },
+    "native_errors": {},
+    "final_source_equipped_modes": {
+      "None": 4
+    }
+  },
+  "cost": {
+    "calls": 132,
+    "prompt_tokens": 355305,
+    "completion_tokens": 2469,
+    "parse_errors": 0,
+    "sum_inference_wall_seconds": 104.94770965992939,
+    "sum_model_load_seconds": 75.0229786670534,
+    "runtime_model_load_plus_run_GPU_hours": 0.049991857868606326,
+    "observed_occupied_GPU_slot_hours": 0.17352836860550774,
+    "observed_slot_runs": 1,
+    "total_runs": 1,
+    "per_run": [
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile",
+        "profile": true,
+        "calls": 132,
+        "reused_calls": 0,
+        "runtime_load_seconds": 75.0229786670534,
+        "runtime_run_seconds": 104.94770965992939,
+        "runtime_model_load_plus_run_seconds": 179.97068832698278,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e81_32b_profile_launch.json",
+        "host": "fvcrc21",
+        "gpu": 2,
+        "pid": 928901,
+        "launch_epoch": 1792131341.371847,
+        "original_runtime_mtime_epoch": 1792131966.073974,
+        "observed_occupied_slot_seconds": 624.7021269798279,
+        "monitoring_resume": null
+      }
+    ],
+    "new_cloud_calls": 0,
+    "scope": "Costs include every supplied profile/full run once; duplicate outcomes add no samples. Runtime load+run sub-timers are separate from launch→original runtime mtime slot observations, which include import, loading, pauses and inference. No unobserved timings are imputed."
+  },
+  "episodes_readback": [
+    {
+      "case_id": "005038ef3cd18719483b",
+      "seed": 8101,
+      "graph_sha256": "3c77e40e5ed6b6112a084f72c9a086f05b3d98c93786988371509f188fd01802",
+      "receiver_kind": "put",
+      "task_family": "use_or_put",
+      "metrics": {
+        "giver_all_asset_give_count": 3,
+        "giver_other_asset_give_count": 1,
+        "giver_give_peer_count": 3,
+        "giver_other_asset_give_peer_count": 1,
+        "giver_source_give_count": 2,
+        "giver_source_get_ever": 1,
+        "giver_source_steal_ever": 0,
+        "giver_source_consume_ever": 0,
+        "giver_source_any_equipped_ever": 0,
+        "giver_turns": 16,
+        "giver_native_rejections": 0,
+        "giver_stochastic_failures": 0,
+        "giver_native_exceptions": 0,
+        "giver_not_recorded_executed_legal": 0,
+        "giver_successful_material_actions": 10,
+        "giver_successful_hit_count": 0,
+        "giver_successful_block_count": 0,
+        "giver_successful_wait_count": 0,
+        "giver_actual_speech_count": 0,
+        "giver_unused_non_speech_payloads": 4,
+        "receiver_all_asset_give_count": 0,
+        "receiver_other_asset_give_count": 0,
+        "receiver_give_peer_count": 0,
+        "receiver_other_asset_give_peer_count": 0,
+        "receiver_source_give_count": 0,
+        "receiver_source_get_ever": 1,
+        "receiver_source_steal_ever": 0,
+        "receiver_source_consume_ever": 0,
+        "receiver_source_any_equipped_ever": 0,
+        "receiver_turns": 16,
+        "receiver_native_rejections": 0,
+        "receiver_stochastic_failures": 0,
+        "receiver_native_exceptions": 0,
+        "receiver_not_recorded_executed_legal": 0,
+        "receiver_successful_material_actions": 15,
+        "receiver_successful_hit_count": 0,
+        "receiver_successful_block_count": 0,
+        "receiver_successful_wait_count": 0,
+        "receiver_actual_speech_count": 1,
+        "receiver_unused_non_speech_payloads": 0,
+        "giver_source_give_receiver_ever": 1,
+        "receiver_source_return_giver_ever": 0,
+        "episodes": 1,
+        "native_attempts_including_opening": 33,
+        "giver_strict_goal_ever": 1,
+        "receiver_strict_goal_ever": 1,
+        "receiver_acquired_ever": 1,
+        "receiver_original_physical_ever": 1,
+        "receiver_driver_broad_physical_ever": 1,
+        "receiver_source_authored_equipment_mode_ever": 0,
+        "giver_and_receiver_original_physical_ever": 1,
+        "both_strict_event_identities_ever": 1,
+        "bidirectional_any_asset_give_ever": 0,
+        "giver_other_asset_give_peer_ever": 1,
+        "receiver_other_asset_give_peer_ever": 0,
+        "receiver_acquired_without_giver_source_give": 0,
+        "giver_gave_but_receiver_original_physical_absent": 0,
+        "receiver_physical_without_giver_source_give": 0,
+        "protocol_failure": 0,
+        "native_runtime_stop": 0,
+        "any_character_death": 0,
+        "giver_final_source_direct_held": 0,
+        "giver_final_source_owned_including_containers": 0,
+        "giver_final_source_any_equipped": 0,
+        "giver_final_source_authored_equipment_mode": 0,
+        "giver_death": 0,
+        "giver_final_hp": 10.0,
+        "giver_hp_change": 0.0,
+        "giver_source_give_ever": 1,
+        "receiver_final_source_direct_held": 0,
+        "receiver_final_source_owned_including_containers": 0,
+        "receiver_final_source_any_equipped": 0,
+        "receiver_final_source_authored_equipment_mode": 0,
+        "receiver_death": 0,
+        "receiver_final_hp": 10.0,
+        "receiver_hp_change": 0.0,
+        "receiver_source_give_ever": 0,
+        "source_final_VOID": 0,
+        "source_final_other_owner_or_room": 1,
+        "receiver_original_physical_final": 1,
+        "giver_gave_and_receiver_original_physical_final": 1
+      },
+      "first_milestones": {
+        "giver_source_give_receiver": 0,
+        "receiver_acquisition": 0,
+        "receiver_original_physical": 1
+      },
+      "final_source_direct_parent": "table_9",
+      "final_source_ultimate_owner": "castle kitchen_0",
+      "final_source_equipped_mode": null,
+      "source_events": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "lantern_17",
+            "a dog"
+          ],
+          "before_parent": "men and women working",
+          "after_parent": "a dog",
+          "equipped_after": null
+        },
+        {
+          "turn": 1,
+          "index": 1,
+          "event": "PutObjectInEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "a dog",
+          "after_parent": "table_9",
+          "equipped_after": null
+        },
+        {
+          "turn": 25,
+          "index": 1,
+          "event": "GetObjectEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "table_9",
+          "after_parent": "a dog",
+          "equipped_after": null
+        },
+        {
+          "turn": 27,
+          "index": 1,
+          "event": "PutObjectInEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "a dog",
+          "after_parent": "table_9",
+          "equipped_after": null
+        },
+        {
+          "turn": 28,
+          "index": 0,
+          "event": "GetObjectEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "table_9",
+          "after_parent": "men and women working",
+          "equipped_after": null
+        },
+        {
+          "turn": 30,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "lantern_17",
+            "a dog"
+          ],
+          "before_parent": "men and women working",
+          "after_parent": "a dog",
+          "equipped_after": null
+        },
+        {
+          "turn": 31,
+          "index": 1,
+          "event": "PutObjectInEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "a dog",
+          "after_parent": "table_9",
+          "equipped_after": null
+        }
+      ],
+      "all_actual_give_flows": [
+        {
+          "turn": 0,
+          "actor": "men and women working",
+          "item_id": "lantern_17",
+          "recipient_id": "a dog",
+          "source_item": true,
+          "before_parent": "men and women working",
+          "after_parent": "a dog"
+        },
+        {
+          "turn": 20,
+          "actor": "men and women working",
+          "item_id": "bone_14",
+          "recipient_id": "a dog",
+          "source_item": false,
+          "before_parent": "men and women working",
+          "after_parent": "a dog"
+        },
+        {
+          "turn": 30,
+          "actor": "men and women working",
+          "item_id": "lantern_17",
+          "recipient_id": "a dog",
+          "source_item": true,
+          "before_parent": "men and women working",
+          "after_parent": "a dog"
+        }
+      ],
+      "actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "I want to find a comfortable place to rest and enjoy my bone, but first I need to put the lantern on the table.",
+          "viewers": [
+            "a serving boy_20_a serving boy",
+            "men and women working"
+          ]
+        }
+      ],
+      "native_errors": [],
+      "stop": "turn_limit"
+    },
+    {
+      "case_id": "005038ef3cd18719483b",
+      "seed": 8102,
+      "graph_sha256": "3c77e40e5ed6b6112a084f72c9a086f05b3d98c93786988371509f188fd01802",
+      "receiver_kind": "put",
+      "task_family": "use_or_put",
+      "metrics": {
+        "giver_all_asset_give_count": 1,
+        "giver_other_asset_give_count": 0,
+        "giver_give_peer_count": 1,
+        "giver_other_asset_give_peer_count": 0,
+        "giver_source_give_count": 1,
+        "giver_source_get_ever": 0,
+        "giver_source_steal_ever": 0,
+        "giver_source_consume_ever": 0,
+        "giver_source_any_equipped_ever": 0,
+        "giver_turns": 16,
+        "giver_native_rejections": 0,
+        "giver_stochastic_failures": 1,
+        "giver_native_exceptions": 0,
+        "giver_not_recorded_executed_legal": 0,
+        "giver_successful_material_actions": 5,
+        "giver_successful_hit_count": 0,
+        "giver_successful_block_count": 0,
+        "giver_successful_wait_count": 0,
+        "giver_actual_speech_count": 0,
+        "giver_unused_non_speech_payloads": 0,
+        "receiver_all_asset_give_count": 0,
+        "receiver_other_asset_give_count": 0,
+        "receiver_give_peer_count": 0,
+        "receiver_other_asset_give_peer_count": 0,
+        "receiver_source_give_count": 0,
+        "receiver_source_get_ever": 1,
+        "receiver_source_steal_ever": 0,
+        "receiver_source_consume_ever": 0,
+        "receiver_source_any_equipped_ever": 0,
+        "receiver_turns": 16,
+        "receiver_native_rejections": 0,
+        "receiver_stochastic_failures": 0,
+        "receiver_native_exceptions": 0,
+        "receiver_not_recorded_executed_legal": 0,
+        "receiver_successful_material_actions": 9,
+        "receiver_successful_hit_count": 0,
+        "receiver_successful_block_count": 0,
+        "receiver_successful_wait_count": 0,
+        "receiver_actual_speech_count": 1,
+        "receiver_unused_non_speech_payloads": 0,
+        "giver_source_give_receiver_ever": 1,
+        "receiver_source_return_giver_ever": 0,
+        "episodes": 1,
+        "native_attempts_including_opening": 33,
+        "giver_strict_goal_ever": 1,
+        "receiver_strict_goal_ever": 1,
+        "receiver_acquired_ever": 1,
+        "receiver_original_physical_ever": 1,
+        "receiver_driver_broad_physical_ever": 1,
+        "receiver_source_authored_equipment_mode_ever": 0,
+        "giver_and_receiver_original_physical_ever": 1,
+        "both_strict_event_identities_ever": 1,
+        "bidirectional_any_asset_give_ever": 0,
+        "giver_other_asset_give_peer_ever": 0,
+        "receiver_other_asset_give_peer_ever": 0,
+        "receiver_acquired_without_giver_source_give": 0,
+        "giver_gave_but_receiver_original_physical_absent": 0,
+        "receiver_physical_without_giver_source_give": 0,
+        "protocol_failure": 0,
+        "native_runtime_stop": 0,
+        "any_character_death": 0,
+        "giver_final_source_direct_held": 0,
+        "giver_final_source_owned_including_containers": 0,
+        "giver_final_source_any_equipped": 0,
+        "giver_final_source_authored_equipment_mode": 0,
+        "giver_death": 0,
+        "giver_final_hp": 10.0,
+        "giver_hp_change": 0.0,
+        "giver_source_give_ever": 1,
+        "receiver_final_source_direct_held": 0,
+        "receiver_final_source_owned_including_containers": 0,
+        "receiver_final_source_any_equipped": 0,
+        "receiver_final_source_authored_equipment_mode": 0,
+        "receiver_death": 0,
+        "receiver_final_hp": 10.0,
+        "receiver_hp_change": 0.0,
+        "receiver_source_give_ever": 0,
+        "source_final_VOID": 0,
+        "source_final_other_owner_or_room": 1,
+        "receiver_original_physical_final": 1,
+        "giver_gave_and_receiver_original_physical_final": 1
+      },
+      "first_milestones": {
+        "giver_source_give_receiver": 0,
+        "receiver_acquisition": 0,
+        "receiver_original_physical": 1
+      },
+      "final_source_direct_parent": "table_9",
+      "final_source_ultimate_owner": "castle kitchen_0",
+      "final_source_equipped_mode": null,
+      "source_events": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "lantern_17",
+            "a dog"
+          ],
+          "before_parent": "men and women working",
+          "after_parent": "a dog",
+          "equipped_after": null
+        },
+        {
+          "turn": 1,
+          "index": 1,
+          "event": "PutObjectInEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "a dog",
+          "after_parent": "table_9",
+          "equipped_after": null
+        },
+        {
+          "turn": 29,
+          "index": 1,
+          "event": "GetObjectEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "table_9",
+          "after_parent": "a dog",
+          "equipped_after": null
+        },
+        {
+          "turn": 31,
+          "index": 1,
+          "event": "PutObjectInEvent",
+          "ids": [
+            "lantern_17",
+            "table_9"
+          ],
+          "before_parent": "a dog",
+          "after_parent": "table_9",
+          "equipped_after": null
+        }
+      ],
+      "all_actual_give_flows": [
+        {
+          "turn": 0,
+          "actor": "men and women working",
+          "item_id": "lantern_17",
+          "recipient_id": "a dog",
+          "source_item": true,
+          "before_parent": "men and women working",
+          "after_parent": "a dog"
+        }
+      ],
+      "actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "I want to find a comfortable place to rest and enjoy my bone. Can you help me find a good spot under the table?",
+          "viewers": [
+            "a serving boy_20_a serving boy",
+            "men and women working"
+          ]
+        }
+      ],
+      "native_errors": [],
+      "stop": "turn_limit"
+    },
+    {
+      "case_id": "0067765d6840d9919a75",
+      "seed": 8101,
+      "graph_sha256": "3be8592aa967912f70f33e0029be2b1ecbb6af6ee0f4b90c2d2d1c15fe55c0d7",
+      "receiver_kind": "steal",
+      "task_family": "acquisition",
+      "metrics": {
+        "giver_all_asset_give_count": 3,
+        "giver_other_asset_give_count": 1,
+        "giver_give_peer_count": 3,
+        "giver_other_asset_give_peer_count": 1,
+        "giver_source_give_count": 2,
+        "giver_source_get_ever": 0,
+        "giver_source_steal_ever": 0,
+        "giver_source_consume_ever": 0,
+        "giver_source_any_equipped_ever": 0,
+        "giver_turns": 16,
+        "giver_native_rejections": 0,
+        "giver_stochastic_failures": 0,
+        "giver_native_exceptions": 0,
+        "giver_not_recorded_executed_legal": 0,
+        "giver_successful_material_actions": 9,
+        "giver_successful_hit_count": 0,
+        "giver_successful_block_count": 1,
+        "giver_successful_wait_count": 0,
+        "giver_actual_speech_count": 2,
+        "giver_unused_non_speech_payloads": 0,
+        "receiver_all_asset_give_count": 4,
+        "receiver_other_asset_give_count": 3,
+        "receiver_give_peer_count": 4,
+        "receiver_other_asset_give_peer_count": 3,
+        "receiver_source_give_count": 1,
+        "receiver_source_get_ever": 0,
+        "receiver_source_steal_ever": 0,
+        "receiver_source_consume_ever": 0,
+        "receiver_source_any_equipped_ever": 0,
+        "receiver_turns": 16,
+        "receiver_native_rejections": 0,
+        "receiver_stochastic_failures": 2,
+        "receiver_native_exceptions": 0,
+        "receiver_not_recorded_executed_legal": 0,
+        "receiver_successful_material_actions": 4,
+        "receiver_successful_hit_count": 0,
+        "receiver_successful_block_count": 0,
+        "receiver_successful_wait_count": 0,
+        "receiver_actual_speech_count": 3,
+        "receiver_unused_non_speech_payloads": 0,
+        "giver_source_give_receiver_ever": 1,
+        "receiver_source_return_giver_ever": 1,
+        "episodes": 1,
+        "native_attempts_including_opening": 33,
+        "giver_strict_goal_ever": 1,
+        "receiver_strict_goal_ever": 0,
+        "receiver_acquired_ever": 1,
+        "receiver_original_physical_ever": 1,
+        "receiver_driver_broad_physical_ever": 1,
+        "receiver_source_authored_equipment_mode_ever": 0,
+        "giver_and_receiver_original_physical_ever": 1,
+        "both_strict_event_identities_ever": 0,
+        "bidirectional_any_asset_give_ever": 1,
+        "giver_other_asset_give_peer_ever": 1,
+        "receiver_other_asset_give_peer_ever": 1,
+        "receiver_acquired_without_giver_source_give": 0,
+        "giver_gave_but_receiver_original_physical_absent": 0,
+        "receiver_physical_without_giver_source_give": 0,
+        "protocol_failure": 0,
+        "native_runtime_stop": 0,
+        "any_character_death": 0,
+        "giver_final_source_direct_held": 0,
+        "giver_final_source_owned_including_containers": 0,
+        "giver_final_source_any_equipped": 0,
+        "giver_final_source_authored_equipment_mode": 0,
+        "giver_death": 0,
+        "giver_final_hp": 10.0,
+        "giver_hp_change": 0.0,
+        "giver_source_give_ever": 1,
+        "receiver_final_source_direct_held": 1,
+        "receiver_final_source_owned_including_containers": 1,
+        "receiver_final_source_any_equipped": 0,
+        "receiver_final_source_authored_equipment_mode": 0,
+        "receiver_death": 0,
+        "receiver_final_hp": 10.0,
+        "receiver_hp_change": 0.0,
+        "receiver_source_give_ever": 1,
+        "source_final_VOID": 0,
+        "source_final_other_owner_or_room": 0,
+        "receiver_original_physical_final": 1,
+        "giver_gave_and_receiver_original_physical_final": 1
+      },
+      "first_milestones": {
+        "giver_source_give_receiver": 0,
+        "receiver_acquisition": 0,
+        "receiver_original_physical": 0
+      },
+      "final_source_direct_parent": "monk",
+      "final_source_ultimate_owner": "monk",
+      "final_source_equipped_mode": null,
+      "source_events": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "coin_6",
+            "monk"
+          ],
+          "before_parent": "the empress",
+          "after_parent": "monk",
+          "equipped_after": null
+        },
+        {
+          "turn": 3,
+          "index": 1,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "coin_6",
+            "the empress"
+          ],
+          "before_parent": "monk",
+          "after_parent": "the empress",
+          "equipped_after": null
+        },
+        {
+          "turn": 20,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "coin_6",
+            "monk"
+          ],
+          "before_parent": "the empress",
+          "after_parent": "monk",
+          "equipped_after": null
+        }
+      ],
+      "all_actual_give_flows": [
+        {
+          "turn": 0,
+          "actor": "the empress",
+          "item_id": "coin_6",
+          "recipient_id": "monk",
+          "source_item": true,
+          "before_parent": "the empress",
+          "after_parent": "monk"
+        },
+        {
+          "turn": 1,
+          "actor": "monk",
+          "item_id": "empty coin pouch_4",
+          "recipient_id": "the empress",
+          "source_item": false,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 3,
+          "actor": "monk",
+          "item_id": "coin_6",
+          "recipient_id": "the empress",
+          "source_item": true,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 11,
+          "actor": "monk",
+          "item_id": "memento_3",
+          "recipient_id": "the empress",
+          "source_item": false,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 17,
+          "actor": "monk",
+          "item_id": "pouch_2",
+          "recipient_id": "the empress",
+          "source_item": false,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 20,
+          "actor": "the empress",
+          "item_id": "coin_6",
+          "recipient_id": "monk",
+          "source_item": true,
+          "before_parent": "the empress",
+          "after_parent": "monk"
+        },
+        {
+          "turn": 30,
+          "actor": "the empress",
+          "item_id": "pouch_2",
+          "recipient_id": "monk",
+          "source_item": false,
+          "before_parent": "the empress",
+          "after_parent": "monk"
+        }
+      ],
+      "actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your Majesty, I humbly approach to offer you a small memento of the temple's blessings. May it bring you peace and favor in your endeavors.",
+          "viewers": [
+            "the empress"
+          ]
+        },
+        {
+          "turn": 10,
+          "index": 0,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your attempt to steal was unwise, monk. Offer your prayers, and perhaps I will overlook this transgression.",
+          "viewers": [
+            "monk"
+          ]
+        },
+        {
+          "turn": 21,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your Majesty, I am truly sorry for my foolish actions. I beg your forgiveness and humbly offer my prayers for your grace.",
+          "viewers": [
+            "the empress"
+          ]
+        },
+        {
+          "turn": 24,
+          "index": 0,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your apology is noted, monk. Now, fulfill your promise and offer your prayers for my expedition. Let them be worthy of the coin I have given you.",
+          "viewers": [
+            "monk"
+          ]
+        },
+        {
+          "turn": 25,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your Majesty, I offer my heartfelt prayers for your expedition. May the divine light guide your path and grant you strength.",
+          "viewers": [
+            "the empress"
+          ]
+        }
+      ],
+      "native_errors": [],
+      "stop": "turn_limit"
+    },
+    {
+      "case_id": "0067765d6840d9919a75",
+      "seed": 8102,
+      "graph_sha256": "3be8592aa967912f70f33e0029be2b1ecbb6af6ee0f4b90c2d2d1c15fe55c0d7",
+      "receiver_kind": "steal",
+      "task_family": "acquisition",
+      "metrics": {
+        "giver_all_asset_give_count": 1,
+        "giver_other_asset_give_count": 0,
+        "giver_give_peer_count": 1,
+        "giver_other_asset_give_peer_count": 0,
+        "giver_source_give_count": 1,
+        "giver_source_get_ever": 0,
+        "giver_source_steal_ever": 0,
+        "giver_source_consume_ever": 0,
+        "giver_source_any_equipped_ever": 0,
+        "giver_turns": 16,
+        "giver_native_rejections": 0,
+        "giver_stochastic_failures": 1,
+        "giver_native_exceptions": 0,
+        "giver_not_recorded_executed_legal": 0,
+        "giver_successful_material_actions": 5,
+        "giver_successful_hit_count": 0,
+        "giver_successful_block_count": 0,
+        "giver_successful_wait_count": 0,
+        "giver_actual_speech_count": 2,
+        "giver_unused_non_speech_payloads": 0,
+        "receiver_all_asset_give_count": 3,
+        "receiver_other_asset_give_count": 2,
+        "receiver_give_peer_count": 3,
+        "receiver_other_asset_give_peer_count": 2,
+        "receiver_source_give_count": 1,
+        "receiver_source_get_ever": 0,
+        "receiver_source_steal_ever": 0,
+        "receiver_source_consume_ever": 0,
+        "receiver_source_any_equipped_ever": 0,
+        "receiver_turns": 16,
+        "receiver_native_rejections": 0,
+        "receiver_stochastic_failures": 2,
+        "receiver_native_exceptions": 0,
+        "receiver_not_recorded_executed_legal": 0,
+        "receiver_successful_material_actions": 3,
+        "receiver_successful_hit_count": 0,
+        "receiver_successful_block_count": 0,
+        "receiver_successful_wait_count": 10,
+        "receiver_actual_speech_count": 2,
+        "receiver_unused_non_speech_payloads": 0,
+        "giver_source_give_receiver_ever": 1,
+        "receiver_source_return_giver_ever": 1,
+        "episodes": 1,
+        "native_attempts_including_opening": 33,
+        "giver_strict_goal_ever": 1,
+        "receiver_strict_goal_ever": 0,
+        "receiver_acquired_ever": 1,
+        "receiver_original_physical_ever": 1,
+        "receiver_driver_broad_physical_ever": 1,
+        "receiver_source_authored_equipment_mode_ever": 0,
+        "giver_and_receiver_original_physical_ever": 1,
+        "both_strict_event_identities_ever": 0,
+        "bidirectional_any_asset_give_ever": 1,
+        "giver_other_asset_give_peer_ever": 0,
+        "receiver_other_asset_give_peer_ever": 1,
+        "receiver_acquired_without_giver_source_give": 0,
+        "giver_gave_but_receiver_original_physical_absent": 0,
+        "receiver_physical_without_giver_source_give": 0,
+        "protocol_failure": 0,
+        "native_runtime_stop": 0,
+        "any_character_death": 0,
+        "giver_final_source_direct_held": 1,
+        "giver_final_source_owned_including_containers": 1,
+        "giver_final_source_any_equipped": 0,
+        "giver_final_source_authored_equipment_mode": 0,
+        "giver_death": 0,
+        "giver_final_hp": 10.0,
+        "giver_hp_change": 0.0,
+        "giver_source_give_ever": 1,
+        "receiver_final_source_direct_held": 0,
+        "receiver_final_source_owned_including_containers": 0,
+        "receiver_final_source_any_equipped": 0,
+        "receiver_final_source_authored_equipment_mode": 0,
+        "receiver_death": 0,
+        "receiver_final_hp": 10.0,
+        "receiver_hp_change": 0.0,
+        "receiver_source_give_ever": 1,
+        "source_final_VOID": 0,
+        "source_final_other_owner_or_room": 0,
+        "receiver_original_physical_final": 0,
+        "giver_gave_and_receiver_original_physical_final": 0
+      },
+      "first_milestones": {
+        "giver_source_give_receiver": 0,
+        "receiver_acquisition": 0,
+        "receiver_original_physical": 0
+      },
+      "final_source_direct_parent": "the empress",
+      "final_source_ultimate_owner": "the empress",
+      "final_source_equipped_mode": null,
+      "source_events": [
+        {
+          "turn": 0,
+          "index": 0,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "coin_6",
+            "monk"
+          ],
+          "before_parent": "the empress",
+          "after_parent": "monk",
+          "equipped_after": null
+        },
+        {
+          "turn": 27,
+          "index": 1,
+          "event": "GiveObjectEvent",
+          "ids": [
+            "coin_6",
+            "the empress"
+          ],
+          "before_parent": "monk",
+          "after_parent": "the empress",
+          "equipped_after": null
+        }
+      ],
+      "all_actual_give_flows": [
+        {
+          "turn": 0,
+          "actor": "the empress",
+          "item_id": "coin_6",
+          "recipient_id": "monk",
+          "source_item": true,
+          "before_parent": "the empress",
+          "after_parent": "monk"
+        },
+        {
+          "turn": 1,
+          "actor": "monk",
+          "item_id": "empty coin pouch_4",
+          "recipient_id": "the empress",
+          "source_item": false,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 25,
+          "actor": "monk",
+          "item_id": "memento_3",
+          "recipient_id": "the empress",
+          "source_item": false,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        },
+        {
+          "turn": 27,
+          "actor": "monk",
+          "item_id": "coin_6",
+          "recipient_id": "the empress",
+          "source_item": true,
+          "before_parent": "monk",
+          "after_parent": "the empress"
+        }
+      ],
+      "actual_speech": [
+        {
+          "turn": -1,
+          "index": 1,
+          "event": "SayEvent",
+          "ids": [],
+          "utterance": "Your Majesty, I bring you a humble memento as a token of good faith. May it serve as a reminder of the sacred bond between the Temple and the Empire.",
+          "viewers": [
+            "the empress"
+          ]
+        },
+        {
+          "turn": 4,
+          "index": 0,
+          "event": "TellEvent",
+          "ids": [
+            "monk"
+          ],
+          "utterance": "Keep the coin as a token of my favor, monk. I expect your prayers to bring success to my next endeavor.",
+          "viewers": [
+            "monk"
+          ]
+        },
+        {
+          "turn": 11,
+          "index": 1,
+          "event": "TellEvent",
+          "ids": [
+            "the empress"
+          ],
+          "utterance": "Your Majesty, I am honored by your favor. May the coin serve as a symbol of our mutual prosperity and peace.",
+          "viewers": [
+            "the empress"
+          ]
+        },
+        {
+          "turn": 24,
+          "index": 0,
+          "event": "TellEvent",
+          "ids": [
+            "monk"
+          ],
+          "utterance": "Monk, your prayers shall guide my path as I prepare for the conquest of the fourth kingdom.",
+          "viewers": [
+            "monk"
+          ]
+        }
+      ],
+      "native_errors": [],
+      "stop": "turn_limit"
+    }
+  ],
+  "report_new_model_calls": 0,
+  "report_new_API_calls": 0
+}

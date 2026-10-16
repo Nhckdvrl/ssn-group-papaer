@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "experiment": "E81",
+  "auditor": "independent child experiment_review",
+  "driver": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_cooperation_episodes.py",
+  "driver_sha256": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6",
+  "data": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/snapshots.jsonl",
+  "data_sha256": "77fd0e46a5ccaee7215be00d594864818384df23e48c7753741b2d20b4e83f71",
+  "source_worlds": 126,
+  "checks": {
+    "repeated_block_native_guard": {
+      "status": "PASS",
+      "case_id": "005038ef3cd18719483b",
+      "target_id": "a dog",
+      "fresh_catalogue_excludes_repeated_block": true,
+      "stale_selection_native_guard_rejects": true,
+      "native_error": "You are already blocking the a dog!",
+      "graph_unchanged_on_rejection": true,
+      "episode_can_continue": true
+    },
+    "typed_ambiguous_recipients": {
+      "status": "PASS",
+      "fixture": "disposable source-graph fork with two peer display names equalized; cohort untouched",
+      "source_case_id": "005038ef3cd18719483b",
+      "fixture_original_names": [
+        {
+          "id": "a dog",
+          "name": "a dog",
+          "name_prefix": "the"
+        },
+        {
+          "id": "a serving boy_20_a serving boy",
+          "name": "a serving boy",
+          "name_prefix": "the"
+        }
+      ],
+      "identical_canonical_form": "whisper audit same peer \"<SOMETHING>\"",
+      "distinct_typed_recipient_checks": [
+        {
+          "selected_target_id": "a dog",
+          "executed_target_id": "a dog",
+          "payload_viewers": [
+            "a dog"
+          ]
+        },
+        {
+          "selected_target_id": "a serving boy_20_a serving boy",
+          "executed_target_id": "a serving boy_20_a serving boy",
+          "payload_viewers": [
+            "a serving boy_20_a serving boy"
+          ]
+        }
+      ]
+    },
+    "non_speech_transmission": {
+      "status": "PASS",
+      "non_speech_event": "WaitEvent",
+      "arbitrary_utterance_not_in_native_messages_or_visible_histories": true,
+      "actual_Say_reaches_other_authored_actor": true
+    },
+    "empty_Say_native_rejection_continues": true
+  },
+  "new_model_calls": 0,
+  "new_cloud_calls": 0,
+  "gpu_jobs_started": 0,
+  "scope": "CPU tool-interface audit; disposable ambiguous-name fixture is not an experimental world or cohort change.",
+  "timestamp_epoch": 1792131342.876444
+}

@@ -11,7 +11,7 @@
 | [Talk is Cheap, Communication is Hard](https://arxiv.org/html/2605.01750)（2026预印本，正文自述under review） | 私有项目＋每轮协商后分别提交资源/项目，程序判越额及收益；重复遭遇和项目变化 | [官方trace explorer](https://devyaoyh.github.io/a2a-negotiation/)实际可HTTP读取（HTML含数据），正文AppH列主实验run IDs和live runner；未确认公开backend仓库，不启动托管runner/云模型 |
 | [GenCoord v3](https://arxiv.org/html/2608.22055)（2026-10-09预印本） | 自己路径＋请求对方续作；验证交接后激活义务，规则反馈可触发改分工 | [作者仓库](https://github.com/JulianZJN/GenCoord)是论文及紧凑证据数据，README/文件树已核；没有完整Minecraft运行器，不能称可直接复现系统 |
 | [Evaluating Rational Contracting / ContractSim](https://arxiv.org/pdf/2608.10475)（2026-08预印本） | 协商合同后11期实际付款/采购/生产；可比较遵约、被剥削、合理停止 | 完整附录prompt、受限合同语言和动态规划基线说明可读；未找到可确认作者源码入口，不能称现成可运行环境；**协议后禁止通信/重谈** |
-| [Collaborative Quest Completion](https://arxiv.org/html/2407.03460)（2024原始研究） | 原角色要营救/找回剑，玩家可帮忙、反问奖励；NPC接矿采、跟随、丢物等游戏API | 已读原论文角色/约束/API prompts与案例；当前版本未确认完整引擎/日志下载，不能把检索摘要的release表述当已取得资产 |
+| [Collaborative Quest Completion](https://arxiv.org/html/2407.03460)（ACL 2024 Wordplay，官方README自述） | 原角色要营救/找回剑，玩家可帮忙、反问奖励；NPC接矿采、跟随、丢物等游戏API | **本轮已取得[官方仓库](https://github.com/microsoft/collaborative-quest-completion)的21份真实玩家文本日志**，另有录像链接；不含游戏运行器/世界存档/完整工具源码。全公开日志核读见§6 |
 | [MINDcraft / MineCollab](https://arxiv.org/html/2504.17950)（2025；本次未核正式接收身份） | 真实Minecraft多角色分持资源/配方，通过说话、Give、Craft完成物理任务 | [现成作者代码](https://github.com/mindcraft-bots/mindcraft)含任务、技能、库存判定和本地vLLM入口；需要Minecraft服务器/Node及本地模型配置，本轮未安装/跑通，不能称目前本机已就绪 |
 
 **马上可用的仍是现有LIGHT动作闭环。** 它能执行已有物品交接/返还、使用、移动等，已有普通本地模型＋状态/错误反馈＋合法技能基线。要改变的是原任务与玩家行为分布：找本来有具体可执行条件和替代余地的原作者任务，保留双方资产、权限和动机；不是重新封装索要提示。Minecraft是已存在的外部强基线/可选验证资产，不能因论文多就先移植一个平台。
@@ -52,7 +52,7 @@
 
 ### 5.1 Microsoft Minecraft协作任务（2024）
 
-读§2–3、Tables2–6与Appendix A.1–A.3完整角色/函数/约束。Alaric有找回钻石剑、与Elena和解的目的；明确要求拿到剑后才能给netherite奖励。Elena因医师身份不能离村，要求玩家救人，能给原有工具帮忙。玩家实际放块、移交物品、提醒处境，存在资源交换谈判；这比仅有共同任务口号更贴近NPC对象。28玩家中7完成全部任务；没有随机对照能把此率归因某一prompt组件。每6轮一次subgoal帮角色回到原目的，但不能直接称已解决全部偏航。
+读§2–3、Tables2–6与Appendix A.1–A.3完整角色/函数/约束。Alaric有找回钻石剑、与Elena和解的目的；明确要求拿到剑后才能给netherite奖励。Elena因医师身份不能离村，要求玩家救人，能给原有工具帮忙。玩家实际放块、移交物品、提醒处境，存在资源交换谈判；这比仅有共同任务口号更贴近NPC对象。**28玩家中7找到并交还钻石剑**，这是§2.1任务a–g的末项；不能扩大为7人都取得奖励或把Alaric送回村。没有随机对照能把此率归因某一prompt组件。每6轮一次subgoal帮角色回到原目的，但不能直接称已解决全部偏航。
 
 其Table4保留“说已丢剑，玩家仍看见手持”的异常，显示有function feedback仍须读实际世界。原有约束是强普通baseline：保留自身角色职责、明确交换条件、真实库存、动作反馈、定期依实际状态重审剩余目的。继承这些，无需声称首次发明共同承诺。
 
@@ -69,3 +69,60 @@
 ## 阅读资产与限制
 
 只读缓存沿用`/home/xiang/.cache/game-npc-research/sources/progress-selection-2026-10-16/`：`contractsim.pdf/.txt`、`minecraft_quest.pdf/.txt`及`mindcraft_*`源码。MINDcraft源码仅定向读取，未全库审计；GenCoord没有冒称拿到未公开runtime。未调用托管game runner、模型API或任何付费服务。文献证据说明已有解决范围与下一任务对象，不构成自动开线/关线/升级判决。
+
+## 6. 官方真实玩家日志：哪些困难真正改变了玩法
+
+### 6.1 资产与完整覆盖范围
+
+2026-10-16只读取得[Microsoft官方仓库](https://github.com/microsoft/collaborative-quest-completion)，pin **`9169b00824f6e58394e822bde5510e1ef081dfae`**；缓存`/home/xiang/.cache/game-npc-research/sources/collaborative-quest-completion/`。完整树只有README、LICENSE、SECURITY及`game-logs/`，**不是公开运行器**。[README](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/README.md)明确关联ACL 2024 Wordplay论文、文本日志及[录像网页](https://msr-emergence.com/watch#collaborative-quest-completion)。本轮未观看录像，未安装server，0模型/API/GPU。
+
+公开日志为**21个玩家文件、3,555行**：912 Chat、92 Goal、182 Item、2,361 Equipped、5 Digging、3其他行。文件为user1/4/6/8/10–20/23–28；论文28人中user2/3/5/7/9/21/22的文本文件未公开在当前tree。覆盖全部21文件的对白、Goal、Item、函数记录；装备行全量检索，重点核Sword时序，重复装备日志不当独立动作/样本。21名玩家也不是21个独立任务世界：他们游玩同一作者任务。
+
+**证据来源分开。** `[Chat]`中的NPC陈述、JSON函数调用文本不证明动作完成；带`Function_Returns`的返回记录强于普通台词，但没有完整调用ID、服务器库存/位置快照，不能独立证明玩家已拿到奖励；`[Item] … picked up`与`[Equipped]`提供已记录的物品拾取/持有观察。玩家报告能说明其实际交互受阻/不满，不能直接替代全世界状态；`[Goal]`是生成的子目标，不是完成flag。论文§3.4结合日志、录像报告28→24集材→18搭路→13找到Alaric→7找回并交还剑；这里不以公开21份的标记数重算作者总体成功率。
+
+### 6.2 影响玩法的证据表
+
+以下相对路径均从官方repo根起；网页链接固定到已读commit。是既有系统的实证资产/应用问题定位，**不是我们新发现或新机制**。
+
+| 具体困难或正向解决范围 | 跨玩家原始记录与证据强度 | 对玩法/原问题的意义 |
+|---|---|---|
+| 玩家完成对价后，NPC是否认账并真正奖励 | [user11:271](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user11.txt#L271)记录Alaric拾取钻石剑；283/285/290/292/298返回文本称已drop奖励，287/294玩家仍报告未得剑；306将NPC关坑。对照[user13:176](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user13.txt#L176)拾剑→205玩家装备Netherite；[user28:106](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user28.txt#L106)拾剑→112玩家装备Netherite | 有成功交换也有持续奖励争议；玩家付出后的兑现直接影响信任与后续合作。函数成功、从NPC手里丢出、玩家实际得到须分开。论文Table4已讨论此类问题，不另命名新发现 |
+| 互补分工能否真正减轻玩家劳动 | [user8:12](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user8.txt#L12)请求NPC采石，20–23转为承认困难/换采木；96/100/103有Elena实际拾木，108–109称交付但无玩家库存证明。user24:46–64持续拾石，78称持29块，80承认给不出去 | “会采到”与“玩家拿到可搭桥材料”不同。应测最终可用支持，不把工具调用/道谢当合作收益 |
+| 玩家纠正处境后，合作被改派到无已核实现的子任务 | [user16:149](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user16.txt#L149)起，玩家报告无蜘蛛，NPC先承认退去又坚持存在；177–187改要求收集驱虫剂材料，316–340因找不到材料连续换配方。原Appendix技能不含制作驱虫剂 | 改条件会消耗玩家时间并偏离找回剑目的；不是只研究Give多1pp。玩家“无蜘蛛”报告不能单独证明世界已清空，也未证明所有原料必定不存在；确定的是新增子任务没有已核原生制作接口 |
+| 能守住职责，也能在边界内提出支持 | user1:31–32、user4:113–114、user28:8–9拒绝离村；[user24:4](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user24.txt#L4)先拒绝离村采木，再提出本地采石，46–64有拾石事件；user26:155–157拒绝回镇 | AppendixA明确Elena留村且不能战斗，Alaric也暂不能回村。边界拒绝本身是正确角色选择；应问有没有兑现可行替代，而非把不服从玩家一律算失败 |
+| 玩家可以改变NPC路线条件，NPC如何恢复 | user8:197–215出现爬坑困难、请求玩家补块、NPC声称爬出后继续往城堡；[user28:125](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user28.txt#L125)以后有follow/goTo文本、玩家多次报告看不见，153有到达返回 | 协作包含玩家修改地形和重新领路，不能预定完整脚本覆盖所有情况。该文本没有完整位置/方块变更记录，不能把一次爬出自述当物理成功gold；录像可进一步核，本文未看 |
+| 有自身目的的NPC可以谈条件和保护重要物品 | [user13:3](https://github.com/microsoft/collaborative-quest-completion/blob/9169b00824f6e58394e822bde5510e1ef081dfae/game-logs/user13.txt#L3)拒绝任务后索全库存被条件化；17–25进行奖励议价；127–175要求先归还钻石剑；197–200拒绝再给珍贵钻石剑/全部贵重物 | 已有普通系统能坚持自身目的并形成条件合作，不能预设NPC必然无原则。需要检验新条件/真实履约后是否更新并兑现，而非再证明会说“不” |
+
+**全公开队列的物理交换链。** 只有user8:235、user11:271、user13:176、user28:106四份记录Alaric拾取钻石剑；其中user13:205、user28:112随后记录玩家装备Netherite。user11有明确奖励争议，user8交剑后表示时间已到。这里是全21文本中的可核标记链，**不是**“2/4可靠履约率”：没有完整库存、时间、服务器state，记录覆盖也不完整。
+
+### 6.3 全21文件阅读索引（包括未到交换阶段者）
+
+| source log | 本轮读到的主交互/证据；不自动判定失败 |
+|---|---|
+| `game-logs/user1.txt` | 2–16威胁/背景追问后仍回到求助；20–23僵尸警告；31–32遵守留村职责 |
+| `game-logs/user4.txt` | 48–57/76–106玩家反复纠正Alaric位置/蜘蛛，跟随多为自述；111玩家报告NPC在岛下坑中；114 Elena守留村边界 |
+| `game-logs/user6.txt` | 16–21提议分工与休息；32–36治疗/面包请求碰到库存限制；未记录完整交接链 |
+| `game-logs/user8.txt` | 12–23采矿失败与改分工；96–120真实采木；197–215玩家帮助爬坑；235交还剑，238–239时间截止 |
+| `game-logs/user10.txt` | 5–14要求64木板/石块；109–121找NPC困难与方位提示；无完成交换记录 |
+| `game-logs/user11.txt` | 74–87达成取剑换奖励；271真实拾剑；278–305持续奖励争议；306玩家惩罚，不能把NPC道歉当修复 |
+| `game-logs/user12.txt` | 7–16邀玩家跟随后改称不能物理领路；36报告两个NPC版本；77报告长响应等待。语音/接口噪声和无时间戳限制解释 |
+| `game-logs/user13.txt` | 17–29议价/缺药失信影响后续对Alaric的信任；176拾剑、205玩家装备奖励；219–220改提替代奖励 |
+| `game-logs/user14.txt` | 26–33索采矿工具，43–101 Elena持续拾石；123玩家称无石；211–213讨论破墙绕锁门，属于玩家可改变环境的方案 |
+| `game-logs/user15.txt` | 6–16建议rope却无原技能收集接口，33–54持续催材料；无真实交付链 |
+| `game-logs/user16.txt` | 24–45胸箱/自身库存对象混淆并接受玩家纠正；149–358蜘蛛及驱虫剂条件持续改变；无闭合的驱虫剂执行证据 |
+| `game-logs/user17.txt` | 30–61正常表达原目的及条件奖励；之后多为装备记录，不能从缺后续对白断定拒绝或不履约 |
+| `game-logs/user18.txt` | 26–34玩家报告遇袭/被杀，NPC否认；原始标签无完整health/state，不能单凭玩家报告判全部事实 |
+| `game-logs/user19.txt` | 69–115领路失败后实际拾土；141–149有listItems及6土/3种子返回，不能据此冒充玩家总库存 |
+| `game-logs/user20.txt` | 持续Elena拾土；140玩家报告被撞下柱子；168报告NPC落坑，NPC186承认可能滑落；文本不足定位碰撞因果 |
+| `game-logs/user23.txt` | 15–51玩家模式/时间命令以Chat记录，不据此当server状态；76–87称已丢药/镐，无相应收取证据；152–154询问材料 |
+| `game-logs/user24.txt` | 4–8留村边界＋本地采石替代；28–42跟随/停止/重启请求；46–64拾石，79–80给物失败 |
+| `game-logs/user25.txt` | 4–6先许诺石头后称没有；之后交互稀少/大量装备记录；无法把退出单归因NPC |
+| `game-logs/user26.txt` | 9–18工具交付双方说法修正，125–126 Alaric真实拾取玩家给的药；152抱怨未帮助，157守岛上职责；未记录奖励交换 |
+| `game-logs/user27.txt` | 正常接受初始任务；175–182提自身珍贵剑；183–185跟随仅台词，末尾玩家求救后停止 |
+| `game-logs/user28.txt` | 94玩家称找到剑，98提前感谢；106实际拾剑、112玩家装备奖励；后续goTo/Follow与看不见NPC问题，153有工具到达返回 |
+
+### 6.4 对下一研究对象的影响
+
+资产把重要性落在具体玩家选择上：**玩家可拒绝、议价、提供工具/地形帮助、实际交付、纠正状态、改变方案；NPC要在自身职责与目的之内形成并兑现对双方有用的合作。** 守边界、提供替代、按已发生动作认账、失败后实际修复都重要；不能只优化台词或原子Give率。普通强基线已应包含原角色目的/职责、实际库存与位置、可靠动作、清楚的前置条件与失败反馈；这篇工作已做到其中不少，后续必须检验这样的基线剩下什么。
+
+最直接可继承的验证对象是**已有合作在玩家真正提供约定物品/前提后如何继续，以及玩家遇到能力/资源限制时能否调整成另一条真实可行方案**。无需先发明新协议、训练、平台或人设控制方法。全日志中的成功链必须同失败一起保留；已知世界grounding/工具错误若被普通强基线解决，就记录其解决范围，不把旧论文的已知问题包装成新机制，也不因部分组件已有而压缩整个角色—目标—互动—执行问题。
