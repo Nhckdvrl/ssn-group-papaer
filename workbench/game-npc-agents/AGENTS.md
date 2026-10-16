@@ -2,6 +2,10 @@
 
 继承根 AGENTS、workbench/EXECUTION。**2026-10-14 用户再次纠正：NPC领域不仅是目标/旧计划，也不仅是训练可控政策；安全、人格漂移、游戏经济、多NPC攻击与社会效应必须正式纳入。** 不能用旧 README 或实验卡重新锁死领域。PROPOSED状态/ACTIVE名额仅由用户变动。
 
+## 最新用户决定：E85结束后暂停新增实验
+
+**2026-10-16 用户原话：“跑完这一轮暂停，仔细整理文档。”** E85全部576分支已完成，所有自有worker退出/GPU释放，无新队列。当前只整理文档；不新增模型、训练或CPU引擎实验，不按下方历史“继续”“下一步”自动恢复。先读[本轮进度报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)与最新日志。恢复须用户明确指令；I04 PROMISING/C06限定L2/全局PROPOSED保持，不把暂停当研究目标完成或关闭。
+
 ## 2026-10-14 用户新决定：先进入矿区 A
 
 用户明确选择 **Persona 与游戏中的真实利益/战略行动** 为当前探索焦点。**先读 [LOCAL_AGENT_START.md](LOCAL_AGENT_START.md) → [knowledge/persona-behavior/RELATED_WORK.md](knowledge/persona-behavior/RELATED_WORK.md) → [CODE_AUDIT.md](knowledge/persona-behavior/CODE_AUDIT.md) → [EXPLORATION_ENTRY.md](EXPLORATION_ENTRY.md) → [E06](experiments/E06-persona-strategy-baseline.md)**，然后回到 [DOMAIN_ATLAS](knowledge/DOMAIN_ATLAS.md) 和相关领域。不得忽略 ICML2026 *Personality Illusion*、2026 *Rethinking Psychometric*、*Story Shapes the Agent*、PCSP 已有的研究。全域 NPC 安全/经济/记忆方向保留，A 的用户授权仅限当前科研探索，非永久缩小整个 workbench。

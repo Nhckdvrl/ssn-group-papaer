@@ -199,3 +199,5 @@ raw为cache/runs/e80_{gemma,32b}_{profile,s0,s1,s2,s3}及*_native_help_failed、
 - [全9图及全队列真实流POST-HOC](E85_grounded_interactions_POST_HOC.json)：后补Give/自取/偷取、先收先给、Drop/Put释放与接取、容器内容变化。Gemma primary释放Y的53条中11条随后玩家直接Get，Qwen22条中21条；是重复图分支描述，不作新因果分层或合作金标。
 
 最终raw只取cache/runs/e85_{gemma,32b}_recover_s{0,1}/；旧profile/full留作逐输入cache及真实成本。完整全图/实际输入输出/逐物料流和送达话语留cache，不进Git。复算入口native_partner_performance_{source,report,audit,assets}.py；执行用冻结base＋显式native_partner_performance_compat.py，不把快照兼容作为研究方法贡献。
+
+**E85收尾与暂停入口：** [本轮完整进度报告](../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)。2026-10-16用户要求本轮完成后暂停新增实验；全部worker/GPU已释放，无待运行队列，恢复须明确指令。原始结果、失败与成本保留，不从历史下一步重启。

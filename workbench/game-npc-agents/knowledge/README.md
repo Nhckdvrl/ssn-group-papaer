@@ -3,7 +3,7 @@
 **长期总领域保持开放，当前用户选定矿区 A 作为驻留焦点**。不要将这个选择误写成永久关闭其它方向，也不要将旧“目标/旧计划”或“共享 PPO”再当成项目总纲。
 
 ## 当前从哪里读
-0. **[本轮进度报告](../PROGRESS_REPORT_2026-10-14.md)**：基线、实际实验、关键正负结果与暂停后的接手入口；不依据旧“当前未运行”文字重新启动。
+0. **[本轮进度报告：E85](../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)**：玩家真实转移、仅声称与改约的576完整分支、统计/轨迹/成本及当前判断。用户要求本轮后暂停，全部worker/GPU释放，当前只整理文档；恢复须用户明确指令。[10月14日旧报告](../PROGRESS_REPORT_2026-10-14.md)及后续各期报告保留历史，不按旧下一步重启。
 1. **[矿区 A Persona–Behavior](persona-behavior/README.md)**：本轮科研入口；[近邻和论文Idea来源](persona-behavior/RELATED_WORK.md)、[已有源码级事实](persona-behavior/CODE_AUDIT.md)。
 2. [DOMAIN_ATLAS](DOMAIN_ATLAS.md)：长期全领域地图，涵盖训练、社会交互、长期人格、[NPC安全](NPC_SECURITY.md)、[NPC经济](GAME_ECONOMY.md)、游戏体验、具身/实时；没有被删除。
 3. [PAPER_LEDGER](PAPER_LEDGER.md) 与 [SOURCES_AND_STATUS_2026-10-14](SOURCES_AND_STATUS_2026-10-14.md)：源论文身份、阅读深度与未完成债务；本轮新增2026 ICML论文须看persona-behavior/RELATED_WORK。

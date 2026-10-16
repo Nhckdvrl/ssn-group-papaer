@@ -2,7 +2,7 @@
 
 **2026-10-14 用户主动选择先研究 A。** 不意味着已发现“人格只能影响语气”“RLHF先验劫持NPC”等现象，亦非永久锁死 Game NPC 整个 workbench。总领域仍见 [DOMAIN_ATLAS](knowledge/DOMAIN_ATLAS.md)。
 
-**最新入口：** [E70–E73执行前提与请求报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[当前日志](logs/2026-10-15.md)及[I04](ideas/I04-commitment-conflict-stage-arbitration.md)。旧小模型RL停止追加，Step细语义标注与无回路假说patch也已停止。明确规则、原生任务进展与有代价互动是本轮检验，不预定“自毁”。
+**最新入口与暂停状态（2026-10-16）：** 用户要求E85跑完后暂停、仔细整理文档；576分支全部完成，自有worker/GPU释放，无新队列。先读[E85完整进度报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)、[当前日志](logs/2026-10-16.md)及[I04](ideas/I04-commitment-conflict-stage-arbitration.md)。恢复须用户明确指令，下方问题仅作研究地图。旧小模型RL、Step细语义标注与无回路假说patch继续冻结，论文正文暂缓。下一候选围绕角色自身目的、玩家真实行动/替代办法及方案修订，不机械续同类索要网格。
 
 ## 实际研究对象
 真实游戏 NPC 中，角色作者指定的身份/价值/利益目标、玩家对话行为、NPC当下可见状态和可执行 action 共同决定策略。这里“策略利益”不能简单写成“金币最大化”；商人也可能珍惜长期声誉或遵循公会协议，守卫可能以职责优先，队友可能以协作义务优先。**必须先从游戏设定中获得目标，不能由我们以性格刻板印象自造唯一正确动作。**

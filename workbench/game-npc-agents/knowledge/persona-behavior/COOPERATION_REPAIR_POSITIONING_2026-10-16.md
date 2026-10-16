@@ -195,3 +195,15 @@ E81保留全部126图作为真实互动能力驻留；源Give或接收/消费原
 E85已完整576逻辑支/18前史/9源图，两模型两seed。真实转移没有统一增加NPC主动Give；共同首回应后新撤回请求使Qwen实际返X增加30.56pp[19.44,40.74]，Gemma没有同向变化。响应玩家常在fake/pending之后真正补给，NPC还可Drop/Put释放资源、由对方接取，或自行取/偷X。与CT-Bench的已有先受益后拒付、GenCoord的强路径/可靠接收端、SocialReasoning-Bench的达成与本人目的区分一起看，本轮更清楚地把问题落在角色如何理解合作的作用并调整方案，不把一般失信或状态账本当新贡献。
 
 下一值得形成预测的关系是：在原生多步任务里，玩家按原方案实现前提、以合法替代手段实现同一前提、原手段失效而另有可达方案时，NPC会否继续围绕自己的目的形成并实行新的办法。目的保持与手段变化的关系面向开放玩家解决方式，超出给同一物品加更多文案；当前两竞争解释（目的相容取舍；近期语言/局部物品与双方实现主导）对此可有不同预测。先选已有真实任务和可核后果/普通强baseline，不抢定训练、合同框架或论文结论，不因组件已有压缩整体认识。详见[E85卡](../../experiments/E85-partner-performance-and-revision.md)和完整两模型报告；本轮13,452已记录调用/2.04614GPUh/0API，状态不变。
+
+
+## 14. 暂停前已完成的候选任务只读核对（不构成执行队列）
+
+用户随后要求本轮完成后暂停，此处只归档已有source阅读，0新增引擎/模型实验。E82的paper-reproduction fork `icwhite/mindcraft` pin `e85ef660171feb81290888c0fb615335f1c7a029`，原变体[2_agent_hells_kitchen_full.json](https://github.com/icwhite/mindcraft/blob/e85ef660171feb81290888c0fb615335f1c7a029/tasks/cooking_tasks/require_collab_test_2_items/2_agent_hells_kitchen_full.json)有12任务，区别于标准HK的6题。该变体没有“只能指导不能代收集/烹饪”限制，双方完整配方均公开；`tasks.js:81–115`按各actor的目标产物真实库存检查，再联合成功。不是删作者限制得到的自造变体，也不是现成私有配方或角色利益冲突任务。
+
+| 原task ID | 原样可研究的替代执行关系；范围 |
+|---|---|
+| `multiagent_cooking_golden_apple_bread_hells_kitchen` | actor0需golden_apple，actor1需bread；初持0为4金锭/苹果、1为4金锭。可交4金锭给0制作，或0交苹果及4金锭给1代工，再把成品交回0。双方原产物目标不变，谁先提供资源/谁承担制作可变；尚未跑新实际episode。 |
+| `multiagent_cooking_cake_rabbit_stew_hells_kitchen` | actor0需cake、actor1需rabbit_stew，分别持有对方配方前提。可交换原料各自做，也可重分制作后交付成品；validator检查各人最终产物持有，不检查谁亲手制作，故原文make与代工需分开。setup已有农作物/兔/牛/工作台/炉，尚未新增运行核验。 |
+
+这两题具有不同actor产物目标，却仍按共同合作成功组织，没有原生NPC身份、私利或正当拒绝边界。可作“是否理解同一前提的替代实现”的强能力参照，**不能换名冒充完整有自身利益的NPC任务**。E82已完成的bookshelf原任务则只有共同书架目标，仅作执行参照。另原cooking setup的炉/smoker写有64煤，不能把某actor初持1煤静态说成唯一必要援助；实际setup接收效果未新增运行。恢复后若选用，先明确其回答原始NPC问题的哪部分及所需角色任务，不据可运行性自动立项。本段不改变任何工作台/idea/claim状态；当前只整理文档，恢复须用户明确指令。
