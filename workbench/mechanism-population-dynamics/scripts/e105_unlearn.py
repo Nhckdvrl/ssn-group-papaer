@@ -81,11 +81,19 @@ def main():
     ap.add_argument("--eval_every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0, help="torch seed, forget-prompt seed (seed + 1) and retain-data offset")
     ap.add_argument("--tag", default="")
+    ap.add_argument("--attn_reg", type=float, default=0.0, help="penalty weight on attention distortion (KL to the original "
+                    "model's attention) on general Pile text -- narrows the edit's footprint on general data (E112)")
     a = ap.parse_args()
     torch.manual_seed(a.seed)
     torch.backends.cuda.matmul.allow_tf32 = True
     tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", cache_dir=str(mc.HF_CACHE))
-    model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="sdpa").cuda()
+    model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32,
+                                                 attn_implementation="eager" if a.attn_reg > 0 else "sdpa").cuda()
+    ref = None
+    if a.attn_reg > 0:
+        ref = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.float32, attn_implementation="eager").cuda().eval()
+        for p_ in ref.parameters():
+            p_.requires_grad_(False)
     train = Builder(tok, 512, seed=a.seed + 1).ioi()
     held = Builder(tok, 256, seed=0).ioi()
     tbl = pq.read_table(SHARD).column("tokens")
@@ -114,8 +122,18 @@ def main():
         r = torch.tensor(tbl.slice(ptr, a.retain_bs).to_pylist()).cuda()
         ptr += a.retain_bs
         retain = model(r, labels=r).loss
+        reg = torch.zeros((), device="cuda")
+        if ref is not None:
+            xa = torch.tensor(tbl.slice(100000 + (step % 50) * 8, 8).to_pylist())[:, :256].cuda()
+            with torch.no_grad():
+                ra = ref(xa, output_attentions=True).attentions
+            ma = model(xa, output_attentions=True).attentions
+            for A, Bq in zip(ra, ma):  # KL(ref || model) over keys, positions >= 16
+                A, Bq = A[:, :, 16:], Bq[:, :, 16:]
+                reg = reg + (A * (torch.log(A + 1e-9) - torch.log(Bq + 1e-9))).sum(-1).mean()
+            reg = reg / len(ra)
         opt.zero_grad(set_to_none=True)
-        (forget + a.retain_w * retain).backward()
+        (forget + a.retain_w * retain + a.attn_reg * reg).backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
         if step % a.eval_every == 0:
