@@ -49,17 +49,60 @@ class Data:
         return torch.tensor(rows, dtype=torch.long)
 
 
-def reinit_head(model, l, h, gen):
-    """Pythia (GPT-NeoX) init: small_init std = sqrt(2 / (5 d)) for QKV; wang_init std = 2 / (L sqrt(d)) for dense."""
+def reinit_head(model, l, h, gen, parts="all"):
+    """Pythia (GPT-NeoX) init: small_init std = sqrt(2 / (5 d)) for QKV; wang_init std = 2 / (L sqrt(d)) for dense.
+    parts: all | qk (query and key rows) | ov (value rows and output-projection columns)."""
     c = model.config
     d, H, L = c.hidden_size, c.num_attention_heads, c.num_hidden_layers
     dh = d // H
     att = model.gpt_neox.layers[l].attention
     W = att.query_key_value.weight.data.view(H, 3, dh, d)
-    W[h] = torch.randn(W[h].shape, generator=gen, device="cpu").to(W) * math.sqrt(2 / (5 * d))
-    if att.query_key_value.bias is not None:
-        att.query_key_value.bias.data.view(H, 3, dh)[h] = 0
-    att.dense.weight.data[:, h * dh:(h + 1) * dh] = (torch.randn(d, dh, generator=gen) * (2 / (L * math.sqrt(d)))).to(att.dense.weight)
+    B = att.query_key_value.bias.data.view(H, 3, dh) if att.query_key_value.bias is not None else None
+    idx = {"all": [0, 1, 2], "qk": [0, 1], "ov": [2]}[parts]
+    for j in idx:
+        W[h, j] = torch.randn(W[h, j].shape, generator=gen).to(W) * math.sqrt(2 / (5 * d))
+        if B is not None:
+            B[h, j] = 0
+    if parts in ("all", "ov"):
+        att.dense.weight.data[:, h * dh:(h + 1) * dh] = (torch.randn(d, dh, generator=gen) * (2 / (L * math.sqrt(d)))).to(att.dense.weight)
+
+
+def knockout(model, heads):
+    """Permanently silence heads: zero their output-projection columns (re-applied after every optimizer step)."""
+    c = model.config
+    dh = c.hidden_size // c.num_attention_heads
+    for hh in heads:
+        l, h = map(int, hh.split("."))
+        model.gpt_neox.layers[l].attention.dense.weight.data[:, h * dh:(h + 1) * dh] = 0
+
+
+@torch.no_grad()
+def kcomp(model, ind_scores, layer_max=4, n_ind=3):
+    """K-composition (Elhage et al. 2021) of every head in layers <= layer_max into the n_ind heads with the highest
+    induction-attention score: ||W_QK^I W_OV^P||_F / (||W_QK^I||_F ||W_OV^P||_F), W_QK = W_Q^T W_K, W_OV = W_O W_V
+    (rotary and layer norms ignored, as usual). Computed through dh x dh Gram matrices. Returns [layer_max+1, H]."""
+    c = model.config
+    H, dh, d = c.num_attention_heads, c.hidden_size // c.num_attention_heads, c.hidden_size
+    def parts(l, h):
+        att = model.gpt_neox.layers[l].attention
+        W = att.query_key_value.weight.float().view(H, 3, dh, d)
+        return W[h, 0], W[h, 1], W[h, 2], att.dense.weight.float()[:, h * dh:(h + 1) * dh]
+    flat = np.argsort(-np.asarray(ind_scores).ravel())
+    ind = [(int(i) // H, int(i) % H) for i in flat if int(i) // H > 0][:n_ind]
+    out = np.zeros((layer_max + 1, H))
+    for li, hi in ind:
+        Q, K, _, _ = parts(li, hi)
+        GQ, GK = Q @ Q.T, K @ K.T
+        nqk = torch.trace(GQ @ GK).clamp_min(1e-12).sqrt()
+        for l in range(min(layer_max, li - 1) + 1):
+            for h in range(H):
+                _, _, V, O = parts(l, h)
+                Bm = K @ O                      # dh x dh
+                GV = V @ V.T
+                num = torch.trace(Bm.T @ GQ @ Bm @ GV).clamp_min(0).sqrt()
+                nov = torch.trace((O.T @ O) @ GV).clamp_min(1e-12).sqrt()
+                out[l, h] += (num / (nqk * nov)).item() / len(ind)
+    return out
 
 
 def add_noise(model, alpha, seed):
@@ -164,6 +207,7 @@ def evaluate(model, tok, prompts):
         res["lm_loss"] = lm_loss(model, tok)
     p, i = roles(model, tok)
     res["prev"], res["ind"] = p.round(4).tolist(), i.round(4).tolist()
+    res["kcomp"] = kcomp(model, i).round(4).tolist()
     model.train()
     return res
 
@@ -180,6 +224,9 @@ def main():
     ap.add_argument("--micro", type=int, default=32)
     ap.add_argument("--target_dloss", type=float, default=1.5)
     ap.add_argument("--tag", default=None)
+    ap.add_argument("--parts", default="all", help="which part of the --head heads to re-initialise: all|qk|ov")
+    ap.add_argument("--knockout", default="", help="heads to silence permanently, e.g. 3.0,1.2")
+    ap.add_argument("--init_seed", type=int, default=1234)
     ap.add_argument("--warm", type=int, default=200)
     ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
     a = ap.parse_args()
@@ -195,10 +242,10 @@ def main():
     log["pre_damage"] = evaluate(model, tok, prompts)
     base_ref = {n: p.data.clone().cpu() for n, p in model.named_parameters()}
     if a.arm in ("H", "R"):
-        gen = torch.Generator().manual_seed(1234)
+        gen = torch.Generator().manual_seed(a.init_seed)
         for hh in a.head.split(","):  # one or several heads, e.g. "3.2,3.0"
             l, h = map(int, hh.split("."))
-            reinit_head(model, l, h, gen)
+            reinit_head(model, l, h, gen, a.parts)
     elif a.arm == "O":  # overshoot: one huge step along the descent direction of a real training batch
         xb = torch.tensor(pq.read_table(SHARDS[3]).column("tokens").slice(50000, a.bs).to_pylist()).cuda()
         model.zero_grad(set_to_none=True)
@@ -234,6 +281,9 @@ def main():
         add_noise(model, alpha, seed=4321)
         log["alpha"] = alpha
         del base
+    ko = [x for x in a.knockout.split(",") if x]
+    if ko:
+        knockout(model, ko)
     data = Data(a.bs)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, betas=(0.9, 0.95), weight_decay=0.01, eps=1e-8)
     model.train()
@@ -260,6 +310,9 @@ def main():
             loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         opt.step()
+        if ko:
+            with torch.no_grad():
+                knockout(model, ko)
     log["seconds"] = time.time() - t0
     (OUT / f"{tag}.json").write_text(json.dumps(log))
 
