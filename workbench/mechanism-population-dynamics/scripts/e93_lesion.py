@@ -49,7 +49,7 @@ class Data:
         return torch.tensor(rows, dtype=torch.long)
 
 
-def reinit_head(model, l, h, gen, parts="all"):
+def reinit_head(model, l, h, gen, parts="all", scale=1.0):
     """Pythia (GPT-NeoX) init: small_init std = sqrt(2 / (5 d)) for QKV; wang_init std = 2 / (L sqrt(d)) for dense.
     parts: all | qk (query and key rows) | ov (value rows and output-projection columns)."""
     c = model.config
@@ -60,11 +60,23 @@ def reinit_head(model, l, h, gen, parts="all"):
     B = att.query_key_value.bias.data.view(H, 3, dh) if att.query_key_value.bias is not None else None
     idx = {"all": [0, 1, 2], "qk": [0, 1], "ov": [2]}[parts]
     for j in idx:
-        W[h, j] = torch.randn(W[h, j].shape, generator=gen).to(W) * math.sqrt(2 / (5 * d))
+        W[h, j] = torch.randn(W[h, j].shape, generator=gen).to(W) * math.sqrt(2 / (5 * d)) * scale
         if B is not None:
             B[h, j] = 0
     if parts in ("all", "ov"):
         att.dense.weight.data[:, h * dh:(h + 1) * dh] = (torch.randn(d, dh, generator=gen) * (2 / (L * math.sqrt(d)))).to(att.dense.weight)
+
+
+def rotate_out(model, l, h, seed):
+    """W_O[:, head block] <- R W_O[:, head block], R a Haar-random orthogonal d x d matrix (norms and the head's internal
+    OV spectrum unchanged; the residual directions it writes to are moved away from what downstream heads read)."""
+    c = model.config
+    d, dh = c.hidden_size, c.hidden_size // c.num_attention_heads
+    g = torch.Generator().manual_seed(seed)
+    q, r = torch.linalg.qr(torch.randn(d, d, generator=g, dtype=torch.float64))
+    R = (q * torch.sign(torch.diagonal(r))).float()
+    Wd = model.gpt_neox.layers[l].attention.dense.weight.data
+    Wd[:, h * dh:(h + 1) * dh] = (R.to(Wd) @ Wd[:, h * dh:(h + 1) * dh])
 
 
 def knockout(model, heads):
@@ -228,6 +240,9 @@ def main():
     ap.add_argument("--knockout", default="", help="heads to silence permanently, e.g. 3.0,1.2")
     ap.add_argument("--init_seed", type=int, default=1234)
     ap.add_argument("--save_final", default="", help="directory to save the final weights (for post-hoc causal maps)")
+    ap.add_argument("--init_scale", type=float, default=1.0, help="multiplier on the re-init std (QKV rows)")
+    ap.add_argument("--rot_out", type=int, default=-1, help="if >=0: rotate each lesioned head's output projection by a random "
+                    "orthogonal d x d matrix (this seed) -- keeps what the head writes intact up to rotation, breaks readers' alignment")
     ap.add_argument("--save_at", default="", help="comma-separated steps at which to also save weights to <save_final>_s<step>")
     ap.add_argument("--warm", type=int, default=200)
     ap.add_argument("--fp32", action="store_true", help="no bf16 autocast (TF32 matmuls)")
@@ -247,7 +262,9 @@ def main():
         gen = torch.Generator().manual_seed(a.init_seed)
         for hh in a.head.split(","):  # one or several heads, e.g. "3.2,3.0"
             l, h = map(int, hh.split("."))
-            reinit_head(model, l, h, gen, a.parts)
+            reinit_head(model, l, h, gen, a.parts, a.init_scale)
+            if a.rot_out >= 0:
+                rotate_out(model, l, h, a.rot_out)
     elif a.arm == "O":  # overshoot: one huge step along the descent direction of a real training batch
         xb = torch.tensor(pq.read_table(SHARDS[3]).column("tokens").slice(50000, a.bs).to_pylist()).cuda()
         model.zero_grad(set_to_none=True)
