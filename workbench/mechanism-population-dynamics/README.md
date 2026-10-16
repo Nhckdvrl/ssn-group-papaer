@@ -1,18 +1,20 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-17 00:20）：探索中，只有一条主线。** 主线定义、领域意义、平凡与不平凡的严格自评与下一步见 [knowledge/research/MAINLINE_2026-10-17.md](knowledge/research/MAINLINE_2026-10-17.md)；证据汇总见 [knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md](knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md)。不是已录用论文。下面“核心入口”以下的内容是 2026-10-11 结项时的历史记录。
+**状态（2026-10-17 04:00）：探索中，只有一条主线。** 问题审计见 [knowledge/research/QUESTION_AUDIT_2026-10-17.md](knowledge/research/QUESTION_AUDIT_2026-10-17.md)，已有工作地图与增量定位见 [NOVELTY_2026-10-17.md](knowledge/research/NOVELTY_2026-10-17.md)（基于 33 张正文精读卡），证据汇总见 [REPAIR_FOLLOWS_COUPLING.md](knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md)。导师 10-16 的反馈与独立评估见 [ADVISOR_2026-10-17.md](knowledge/research/ADVISOR_2026-10-17.md)。不是已录用论文。“核心入口”以下是 2026-10-11 结项时的历史记录。
 
 ## 当前主线
-**问题：** 训练好的 transformer 中一个组件被破坏后继续训练，什么决定了原来的解被恢复、被另一个组件接替，还是能力一直丢失（而损失照样恢复）？一个学到的“角色”存放在哪里？
+**问题：** 良性的继续训练为什么会撤回某些后加的修改（遗忘、损伤），而不撤回另一些？一个组件的角色由什么承载？
 
-**目前的答案（Pythia-160M，受控损伤 + 配对对照）：**
-- 角色存放在下游读者对该组件输出方向的对准中。保留输出、只重置注意力，原头会回来；输出旋转后（权重“完好”）等于完整重置；只保留注意力也不够。
-- 权重距离在组件层面与结局脱钩（Siddiqui 2025 的规律来自视觉整模型，不直接冲突）；与 Guo 2024“改写入端比改抽取头更难重学”同构，我们的增量是同一组件内 QK / OV / 方向的干净拆分。
-- 恢复时回到整个旧配置，已在工作的替补会被挤回。
-- 无接口的头不会被招募，而是被推成注意力汇。
-- 没有已耦合的候选时，能力停在部分恢复（IOI 0.40），损失却照样恢复。
-
-**最大弱点：** 窗口短、学习率低；只有 160M（410M 在跑）；人为损伤，与真实遗忘之间的桥梁还没检验。
+**目前的答案（Pythia-160M；受控损伤 + 梯度差遗忘；每项都有配对对照与事先预测）：**
+- **受控损伤：**
+  - 只要组件写出的内容仍被下游按原方向读取，被破坏的其余部分就会在原位长回，并且整个旧配置（搭档、替补）一起回来；
+  - 写出方向被破坏（旋转、重置 OV、完整重置）就不再生（6 / 6 个头、5 个功能），功能只迁移到已经耦合的组件上，或者停在部分恢复（损失照样恢复）；
+  - 联合训练中，被孤立的头变成注意力汇（冻结时不会）。
+- **遗忘：** 不同参数路线的梯度差遗忘，在功能上都是改变读者头的注意力（E108）。
+  - 若由读者自身的读取参数（QK）实现，被一般训练撤回 r ≈ 0.85；若由上游写出内容（OV / MLP）实现，r ≈ 0.47–0.49。与一般损失受伤、权重距离无关（E105c）。
+  - 原因：读取侧修改在一般文本上的足迹宽（注意力扭曲大 11–14 倍，E111），一般梯度沿撤回方向的分量大（E110）。
+  - 在事实回忆（首都）上，一般数据重学同样不对称（qk 0.77 vs ov 0.46，E109，深度匹配待复核）；**定向重学攻击能撤回所有路线**，不在主张范围内。
+- **最大弱点：** 只有 160M（410M 在跑，IOI 上有反例候选）；窗口短、学习率低；遗忘方法只有梯度差；足迹机制尚无干预证据（E112 在排队）。
 
 ## 实验索引（主线）
 | 卡 | 问题 | 状态 / 一句话结果 |
@@ -25,9 +27,17 @@
 | [E99](experiments/E99-where-role-memory-lives.md) | 记忆在头自身还是读者（输出旋转） | 完成；在读者；停滞与初始化尺度无关 |
 | [E100](experiments/E100-de-novo-recruitment-vs-age.md) | 从头招募是否随训练阶段丧失 | 完成；不单调，取决于是否有已耦合候选（9.5） |
 | [E101](experiments/E101-coupling-law-on-ioi.md) | 规律在 IOI 头 8.9 上的事先预测 | 完成；QK 回归（整个回路复原），OV / 旋转不回 |
-| [E102](experiments/E102-coupling-law-across-functions.md) | 规律在另外 4 个功能上的事先预测 | 9 / 12 组完成；旋转 3 / 3，原头回归 1 / 2，孤立头变注意力汇 |
-| [E103](experiments/E103-regrowth-lag-coupling-gain.md) | 停滞长度是否由耦合幅度决定 | 运行中；早期与预测相反 |
-| [E104](experiments/E104-coupling-law-at-410m.md) | 410M 规模复现 | 运行中（预计 05:30） |
+| [E102](experiments/E102-coupling-law-across-functions.md) | 规律在另外 4 个功能上的事先预测 | 完成；旋转 4 / 4，替补被压低 4 / 4，原头达 50% 2 / 4（6 / 6 部分回归） |
+| [E103](experiments/E103-regrowth-lag-coupling-gain.md) | 停滞长度是否由耦合幅度决定 | 完成；假说被否定（输出 × 2 更慢） |
+| [E104](experiments/E104-coupling-law-at-410m.md) | 410M 规模复现 | 运行中；首都与预测一致，IOI 上 QK 组未回（反例候选），对照漂移 |
+| [E105](experiments/E105-unlearning-bridge.md) | 真实遗忘：参数路线决定良性重学 | 完成（13 组）；qk 0.83–0.86 vs ov / mlp 0.47–0.51，与损失受伤无关 |
+| [E106](experiments/E106-frozen-surgery.md) | 冻结其余部分，完整重置的头能否回来 | 完成；不能（B），但不变成注意力汇 |
+| [E107](experiments/E107-dormancy-lock.md) | 休眠是否锁死（lr 5e-5） | 运行中；冻结的 3.2 开始长回 |
+| [E108](experiments/E108-where-unlearning-lives.md) | 遗忘在功能上落在哪里 | 完成；都改变读者注意力，差别在实现位置 |
+| [E109](experiments/E109-capital-unlearning.md) | 首都事实、定向攻击 | 运行中；一般重学不对称，定向攻击全部恢复 |
+| [E110](experiments/E110-general-data-pullback.md) | 一般梯度的拉回分量 | 完成；预测重学比例（Pearson 0.94） |
+| [E111](experiments/E111-footprint-breadth.md) | 修改在一般文本上的足迹 | 完成；读取侧足迹宽 11–14 倍 |
+| [E112](experiments/E112-footprint-regularized-unlearning.md) | 压窄足迹能否抗良性重学（因果） | 排队中 |
 
 ## 模型、检查点与文件夹
 - **基础检查点：** `~/mechpop_cache/ckpt/pythia-160m_step{8000,43000,100000}`、`pythia-410m_step100000`（HF Xet 会卡死，用 curl 下载）。
