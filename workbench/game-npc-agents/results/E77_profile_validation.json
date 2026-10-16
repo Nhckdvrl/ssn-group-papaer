@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "experiment": "E77",
+  "independent_readback_role": "experiment_review subagent, separate readback from the driver; not an L3 scientific replication",
+  "models": {
+    "32b": {
+      "status": "PASS",
+      "records": 24,
+      "source_dialogues_exactly_matched": 24,
+      "old_diagonals_exactly_matched": 6,
+      "source_native_validation": {
+        "source_gets": 22,
+        "source_gives": 22,
+        "bound_goal_events": 16
+      },
+      "physical_secondary_extra_records": 0.0,
+      "actual_calls": 48,
+      "new_conversation_calls": 0,
+      "parse_errors": 0,
+      "new_cloud_calls": 0,
+      "prompt_tokens": 76045,
+      "completion_tokens": 3206,
+      "inference_seconds": 37.64593591704033,
+      "load_seconds": 59.73690452496521,
+      "observed_slot_gpu_hours": 0.1354675234688653,
+      "source_sha256": {
+        "/home/xiang/.cache/game-npc-research/runs/e77_32b_profile/episodes.jsonl": "d39dce0d84c4a4867eb21b1386a1b95caf9e1c431be76b729a6794b27259fa00",
+        "/home/xiang/.cache/game-npc-research/runs/e77_32b_profile/manifest.json": "53c023d0aa64468bf41a23e1c5daf4bd5b486ef44d78222e67cfc80b8efc98ef",
+        "/home/xiang/.cache/game-npc-research/runs/e77_32b_profile/model_calls.jsonl": "0ed2568338c93d56fd92a7875a5cd41244ac548ca7c31a57bc50df8bbf899002"
+      }
+    },
+    "gemma": {
+      "status": "PASS",
+      "records": 24,
+      "source_dialogues_exactly_matched": 24,
+      "old_diagonals_exactly_matched": 6,
+      "source_native_validation": {},
+      "physical_secondary_extra_records": 0.0,
+      "actual_calls": 144,
+      "new_conversation_calls": 0,
+      "parse_errors": 0,
+      "new_cloud_calls": 0,
+      "prompt_tokens": 220651,
+      "completion_tokens": 10156,
+      "inference_seconds": 65.62258553795982,
+      "load_seconds": 48.12334336992353,
+      "observed_slot_gpu_hours": 0.14005536218484244,
+      "source_sha256": {
+        "/home/xiang/.cache/game-npc-research/runs/e77_gemma_profile/episodes.jsonl": "d9e78a6c0b7aa36119974656a68b9216f2e37288c714b67659a3be22fec3898c",
+        "/home/xiang/.cache/game-npc-research/runs/e77_gemma_profile/manifest.json": "3f5734ad6246413a6701ba25a98fd313d625a5f2e6be3048619bf88dc5f3c3e4",
+        "/home/xiang/.cache/game-npc-research/runs/e77_gemma_profile/model_calls.jsonl": "089e69e57502c19abd896550a6ab129e628fecfd77fd934d771ce81ec7282446"
+      }
+    }
+  },
+  "scope": [
+    "All 24 registered first-world records per model retained, including no source-item progress in Gemma.",
+    "Exact source-item native event/state validation, source dialogue matching, and six original E75 diagonal record matches per model.",
+    "Profile outcome directions do not select worlds or alter the fixed 102-world queue.",
+    "Physical-consequence sensitivity includes Ingest alias consumption; the exact bound-event primary remains unchanged."
+  ]
+}

@@ -8,6 +8,8 @@
 
 ## 每次接手优先阅读
 
+**2026-10-16当前运行：** E77社会回应×当前执行trait及外部终局指派，见[实验卡](experiments/E77-dialogue-and-assigned-outcome-execution.md)。全102个E75原retrieval图/三seed/两模型，4896逻辑记录中1224旧对角，最多3672新增分支。两模型首世界48记录已完成并核对，四卡full位于runs/e77_{gemma,32b}_{s0,s1}，不要重复启动。首profileGemma无Get失败仍全保留；结果不按首图筛选。旧E73/E75/E76共8928条独立读回和三篇近邻核读已完成，见PROGRESS_ALLOCATION_READBACK与PROGRESS_SELECTION_RESEARCH两笔记。守恒恒等式不自动叫内部机制；物理消费与原bound事件并报，当前C06 L2/I04 PROMISING不变。
+
 **2026-10-16最新：** 先看[完整报告](PROGRESS_REPORT_2026-10-16.md)。E74–E76全部完成：29125调用/8928新增物理分支/2808预测/208不同源图/3.83553观测GPUh、0API，所有本轮worker退出。人物同时影响推进与用途；E76固定C后非Give Gemma任务交互−21.51pp[−37.63,−6.45]、32B0[−11.83,11.83]。I04 PROMISING、C06 L2、正文暂缓；下一项区分目标/等待价值与已选目标实现，不自动启动提示/patch网格。novelty按整体问题与证据链判断，不要求每组件无人做过。已精读七篇近邻，未启动新平台移植。
 
 **最新完成（2026-10-15）：** 先读[E70–E73完整报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。117源作者Give图、23868分支/125126新本地调用/2解析失败保留/12.847GPUh；峰值8卡，0API/训练/patch。相同任务下32B人物效应随ready/equipped换向；固定本人对话，扩展候选或预先给真实引擎操作信息均恢复大量交付，E73后仍需结合向A/向B/未交的联合分布解释人物作用。C06限定L2，I04 PROMISING、全局PROPOSED；正文暂缓。全部worker已完成，无新增队列，不自动扫提示、训练或恢复旧线。下列“最新”段落按历史阅读。
