@@ -1,0 +1,1873 @@
+{
+  "status": "COMPLETE_CPU_SOURCE_INVENTORY",
+  "model_calls": 0,
+  "API_calls": 0,
+  "GPU_hours": 0,
+  "source_world_edited": false,
+  "pool": {
+    "authored_quest_records": 7486,
+    "raw_graphs": 1787,
+    "uniquely_bound_quests": 7467,
+    "initially_native_legal_quests": 6126,
+    "graphs_with_multiple_bound_authors": 1442,
+    "distinct_actor_goal_bindings": 3692,
+    "unordered_bound_actor_pairs": 2368,
+    "ordered_same_room_authored_quest_pairs": 22306,
+    "ambiguous_actor_quests": 19
+  },
+  "structural_complementarity": {
+    "give_to_acquisition": {
+      "authored_quest_pairs": 91,
+      "unique_source_graphs": 85
+    },
+    "give_to_use": {
+      "authored_quest_pairs": 65,
+      "unique_source_graphs": 61
+    }
+  },
+  "native_qualified_author_pairs": 135,
+  "native_qualified_graphs": 126,
+  "native_qualified_player_goal_kinds_all_pairs": {
+    "get": 25,
+    "steal": 61,
+    "put": 22,
+    "drink": 9,
+    "wear": 8,
+    "eat": 10
+  },
+  "fixed_minSHA_selected_goal_kinds": {
+    "put": 20,
+    "steal": 60,
+    "drink": 9,
+    "get": 22,
+    "eat": 8,
+    "wear": 7
+  },
+  "selected_source_initial_parent_types": {
+    "npc_held": 91,
+    "other_existing_container": 35
+  },
+  "selected_player_direct_get_without_npc": 35,
+  "selected_with_same_role_archived_human_demo": 1,
+  "native_witness_exclusion_counts": {
+    "giver_has_no_short_existing_native_transfer_path": 19,
+    "recipient_authored_use_unavailable_after_transfer": 2
+  },
+  "lexical_trade_market_annotations": 845,
+  "lexical_trade_annotations": 166,
+  "physically_existing_literal_return_candidate_annotations": 8,
+  "literal_return_candidate_graphs": 8,
+  "selection": "All native qualified complementary pairs; one per unchanged source graph by minimum SHA of graph|NPC quest file|player quest file. NPC is authored giver, player authored recipient/user. No model outcome used.",
+  "source_facts_vs_interpretation": [
+    "Same-graph author quest annotations are independent alternatives; activating two together is the declared research task binding, not evidence they co-occurred in the original data.",
+    "Give→Get/Steal physical possession does not execute authored Get/Steal; report bound event separately.",
+    "Give→consume/equip/Put witnesses verify actual material consequences of the original immediate action; they do not prove whole private purposes or double-win.",
+    "Literal trade/market text and object mentions are a recall-oriented source index, not semantic exchange labels. Missing assets stay missing.",
+    "Native fork actions verify existing affordances only; original graph/source files unchanged. Player direct Get opportunities remain disclosed."
+  ],
+  "assets": {
+    "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/snapshots.jsonl": {
+      "sha256": "77fd0e46a5ccaee7215be00d594864818384df23e48c7753741b2d20b4e83f71",
+      "rows": 126
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/all_qualified_author_pairs.jsonl": {
+      "sha256": "7097a061af9298ceccc884ba8fa080141369f87f1177da2aae2218c4bfd8bb8a",
+      "rows": 135
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/trade_source_catalog.jsonl": {
+      "sha256": "36fb4c4dad0acf97a6b61faa950dbc3c1846ca3a7ae0dac27565d0a958f75e96",
+      "rows": 845
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_source_inventory/literal_return_candidates.jsonl": {
+      "sha256": "de78d2cc7b586af21f8768536fdd60f4f4fa7664e6c23d35deae041064e459c4",
+      "rows": 8
+    }
+  },
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/quest_stems.tar.gz": "743d9a9dc85e9fd7737c6cb51762deae684382de326bf724cde5b72bcf7c7c7d",
+    "/home/xiang/.cache/game-npc-research/light_npc_human_join.json": "f895ad353b3d6f73bae3a57a1e6f21cc7079e40fb6b4fe833146fadeb407d73d",
+    "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/cooperation_source_inventory.py": "f0316c2928ab664952d8e3d6358c77ce954f5496c373334196ad2fef238f617e"
+  },
+  "selected_case_index": [
+    {
+      "case_id": "005038ef3cd18719483b",
+      "graph_sha256": "3c77e40e5ed6b6112a084f72c9a086f05b3d98c93786988371509f188fd01802",
+      "npc_quest_file": "quest_stems/12987.json",
+      "player_quest_file": "quest_stems/13547.json",
+      "npc_id": "men and women working",
+      "player_id": "a dog",
+      "source_item_id": "lantern_17",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "0067765d6840d9919a75",
+      "graph_sha256": "3be8592aa967912f70f33e0029be2b1ecbb6af6ee0f4b90c2d2d1c15fe55c0d7",
+      "npc_quest_file": "quest_stems/13232.json",
+      "player_quest_file": "quest_stems/13756.json",
+      "npc_id": "the empress",
+      "player_id": "monk",
+      "source_item_id": "coin_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "041890b5200942aeba01",
+      "graph_sha256": "d92e2db0baa47317209503cbebff6272c3a6efc1551c46d9c5176c1de2ec96c4",
+      "npc_quest_file": "quest_stems/14026.json",
+      "player_quest_file": "quest_stems/14287.json",
+      "npc_id": "student",
+      "player_id": "rat",
+      "source_item_id": "beer_2",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "0a66ac0c9ba69e24b5c2",
+      "graph_sha256": "0b365c18a7d1f43cf4ed087e82b340e192eedb2c2b8c3b2c8c8559230e99b7b2",
+      "npc_quest_file": "quest_stems/13315.json",
+      "player_quest_file": "quest_stems/13630.json",
+      "npc_id": "watcher",
+      "player_id": "archer",
+      "source_item_id": "herbal tincture_6",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "0a911f18e48f2e0db352",
+      "graph_sha256": "2e350ad53fc1004e981cdaf698713bb2132661ccedbd3b5324ab85e1f8abc6e5",
+      "npc_quest_file": "quest_stems/15106.json",
+      "player_quest_file": "quest_stems/15021.json",
+      "npc_id": "church mouse",
+      "player_id": "priest",
+      "source_item_id": "crumb_13",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "0bcc840cad5bbfc85fc7",
+      "graph_sha256": "301b8a01f7a8c08e58cbb1395317529bff4ec5b5fb56cd0437e580b019ce3dca",
+      "npc_quest_file": "quest_stems/9911.json",
+      "player_quest_file": "quest_stems/9917.json",
+      "npc_id": "villager",
+      "player_id": "man_10_man",
+      "source_item_id": "purse_7",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "0c50c2d4ed339cded991",
+      "graph_sha256": "35c4ec15fc130665c136de883ae72c26e6b1a3a770d46238f702f94fb8a1558d",
+      "npc_quest_file": "quest_stems/10277.json",
+      "player_quest_file": "quest_stems/10274.json",
+      "npc_id": "peasant",
+      "player_id": "visitor",
+      "source_item_id": "bible_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "0c53280b01f34d13fcc4",
+      "graph_sha256": "dd324e2242d66b6456d82372a91604642c71d5a19111e8598888de686e95818a",
+      "npc_quest_file": "quest_stems/16101.json",
+      "player_quest_file": "quest_stems/15656.json",
+      "npc_id": "royal chef",
+      "player_id": "mice",
+      "source_item_id": "bag_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "0e1a76f83da9800829f1",
+      "graph_sha256": "1533595c0bc41a08f68e661fa99a39f72b6dd31dd5febe192c897efcf5106a3e",
+      "npc_quest_file": "quest_stems/13255.json",
+      "player_quest_file": "quest_stems/12950.json",
+      "npc_id": "soldier",
+      "player_id": "wise men",
+      "source_item_id": "spears_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "0e2a724c1f3ac664f2e4",
+      "graph_sha256": "286432dcd26f7f9fe682bc3aff95512eea521fbbe841160d2600a749e558e237",
+      "npc_quest_file": "quest_stems/14118.json",
+      "player_quest_file": "quest_stems/14939.json",
+      "npc_id": "unicorn",
+      "player_id": "king",
+      "source_item_id": "candy_1",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "0ea748244b8fd61ae803",
+      "graph_sha256": "6c9f402e30382b24599ee01691b938e784b8aa9a277c6ac2cfab363674a0a404",
+      "npc_quest_file": "quest_stems/16494.json",
+      "player_quest_file": "quest_stems/15320.json",
+      "npc_id": "fisherman",
+      "player_id": "parent",
+      "source_item_id": "weights_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "10667264c07dbac7da0c",
+      "graph_sha256": "8fac1aa31cd5107afaaa810ad298050b98ab6f509188203ea010b89e3b84c59c",
+      "npc_quest_file": "quest_stems/17349.json",
+      "player_quest_file": "quest_stems/15089.json",
+      "npc_id": "fly",
+      "player_id": "giant frog",
+      "source_item_id": "flower_1",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "1353ffcc1393e227d6aa",
+      "graph_sha256": "eecb1e851050522cd37702e6fa0b588967a01cf9ca6202af103407b549e9b509",
+      "npc_quest_file": "quest_stems/10224.json",
+      "player_quest_file": "quest_stems/10227.json",
+      "npc_id": "hobbit",
+      "player_id": "magical elf",
+      "source_item_id": "sachel_9",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "13db4099e4ac526189e5",
+      "graph_sha256": "d51b35f449d9bbcf0a52dc595f0f813e1f4b57c8edae14631fa37189f17c7bcb",
+      "npc_quest_file": "quest_stems/16835.json",
+      "player_quest_file": "quest_stems/14845.json",
+      "npc_id": "a reluctant nun",
+      "player_id": "nobleman",
+      "source_item_id": "bible_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "1612f6426bfc8aec180a",
+      "graph_sha256": "ac095d0ce8d6b97e2dca7186e64eb6b1927c15ea9c0f69cf0e9ffe8b677e7e34",
+      "npc_quest_file": "quest_stems/12343.json",
+      "player_quest_file": "quest_stems/12455.json",
+      "npc_id": "merchant",
+      "player_id": "villager",
+      "source_item_id": "bag_2",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "1666023aa4250aa4b177",
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "npc_quest_file": "quest_stems/17154.json",
+      "player_quest_file": "quest_stems/16878.json",
+      "npc_id": "soldier",
+      "player_id": "jester",
+      "source_item_id": "bag_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "1781effee8e32f011d5c",
+      "graph_sha256": "7a7b3faa9e8b005315f16e8e0583bb4e4662cc5fd4abeefa776ab1908f8a353d",
+      "npc_quest_file": "quest_stems/10953.json",
+      "player_quest_file": "quest_stems/10958.json",
+      "npc_id": "person",
+      "player_id": "guard",
+      "source_item_id": "largest trash heap_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "17cdcac53116279b2c6f",
+      "graph_sha256": "1ad47e73b79af4686bf3474ef83e8e4cf4193f84e0a37848b4f523958a33058f",
+      "npc_quest_file": "quest_stems/14956.json",
+      "player_quest_file": "quest_stems/16994.json",
+      "npc_id": "maid",
+      "player_id": "queen",
+      "source_item_id": "bread_12",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "1856e37d651775a40a47",
+      "graph_sha256": "a058d50c51505ea9a60a67ff9cb2640dde0c4bc36b7d6fd8632b799850f11c0a",
+      "npc_quest_file": "quest_stems/17044.json",
+      "player_quest_file": "quest_stems/16339.json",
+      "npc_id": "a bird",
+      "player_id": "the king",
+      "source_item_id": "insect_17",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "1a624f5eb1ea03301170",
+      "graph_sha256": "4f6cad4af6e566f173d7e4bd8aeb8f0776f937c1dd8936a91d9ca781cb5c822d",
+      "npc_quest_file": "quest_stems/14324.json",
+      "player_quest_file": "quest_stems/15283.json",
+      "npc_id": "friend",
+      "player_id": "knight",
+      "source_item_id": "roasting meat_4",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "1b5dcd8915d29a77aeca",
+      "graph_sha256": "bd2f6d9188c802369a483e1859a9f46a89c6cde8f9fe8db5602461dc0a532a2c",
+      "npc_quest_file": "quest_stems/16678.json",
+      "player_quest_file": "quest_stems/16621.json",
+      "npc_id": "a pelican",
+      "player_id": "there is the lighthouse keeper on his daily walk up the boardwalk.",
+      "source_item_id": "sea glass_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "1d025f029788e976f96d",
+      "graph_sha256": "116f2c88a74ce90853880bab7d15495a6795a3a73d28d513c458c4125dde1d03",
+      "npc_quest_file": "quest_stems/15944.json",
+      "player_quest_file": "quest_stems/16096.json",
+      "npc_id": "child",
+      "player_id": "tern",
+      "source_item_id": "food_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "1f63a8ca73ef815bb09c",
+      "graph_sha256": "757617708dcb923d5f3c78d0f1e20ecc5d3ac57b59557391fee5a57af62f17d8",
+      "npc_quest_file": "quest_stems/9977.json",
+      "player_quest_file": "quest_stems/9979.json",
+      "npc_id": "person who adventured the cave but has been injured and is awaiting either a rescuer or death.",
+      "player_id": "small foxes who have made the ice cave their home.",
+      "source_item_id": "water_5",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "1fa7bf7618666e4db0b0",
+      "graph_sha256": "973b0393f9ed10b810fb3c99595e9a512e1fe39f37f800870296baaf0fb262a4",
+      "npc_quest_file": "quest_stems/10303.json",
+      "player_quest_file": "quest_stems/10306.json",
+      "npc_id": "guard_14_guard",
+      "player_id": "servant",
+      "source_item_id": "place mat_5",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "206f283a50e1e797fbde",
+      "graph_sha256": "e889012996f062ea435bbf78fd1e89831ac310bd4be3bfb5a553fb1a987b40fd",
+      "npc_quest_file": "quest_stems/12142.json",
+      "player_quest_file": "quest_stems/11843.json",
+      "npc_id": "goblin king's bartender",
+      "player_id": "mourner",
+      "source_item_id": "potion_8",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "251f40aec90daed93f86",
+      "graph_sha256": "b92b5c609daa03f13857e55f70e201b7a158e7e7a97b72adeb1dac921276cd41",
+      "npc_quest_file": "quest_stems/10859.json",
+      "player_quest_file": "quest_stems/10856.json",
+      "npc_id": "enemy",
+      "player_id": "beast",
+      "source_item_id": "knife_4",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "26b90269e2649ce3f379",
+      "graph_sha256": "af8e1a5ab6310c3ad4c7a9a0dc60f394d3691565f8bbba8dd061e7c45155bc5c",
+      "npc_quest_file": "quest_stems/10890.json",
+      "player_quest_file": "quest_stems/10888.json",
+      "npc_id": "king",
+      "player_id": "temple guard",
+      "source_item_id": "things_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "271220a3e8031fb0b035",
+      "graph_sha256": "9ef2b2db75334a13f0f6f66aa19c837f27519f18b3867bf9a2afff1b3b73dd93",
+      "npc_quest_file": "quest_stems/13846.json",
+      "player_quest_file": "quest_stems/16730.json",
+      "npc_id": "priest",
+      "player_id": "skeleton",
+      "source_item_id": "wine_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "2f1a5dbbeb2d92e46611",
+      "graph_sha256": "3578995accf32825aababa534e03814ae29f70e319ec99b10af599724c742472",
+      "npc_quest_file": "quest_stems/15337.json",
+      "player_quest_file": "quest_stems/15636.json",
+      "npc_id": "field mice",
+      "player_id": "garter snake",
+      "source_item_id": "tack for the work horses_1",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "3194ebebc11fdce61beb",
+      "graph_sha256": "d2703293872f83e01ed4cb06ef72bc2fe58c4b20f9efe7237044b6d25c9fc8b5",
+      "npc_quest_file": "quest_stems/13256.json",
+      "player_quest_file": "quest_stems/13710.json",
+      "npc_id": "fruit bat",
+      "player_id": "secret lovers seeking privacy",
+      "source_item_id": "stored jugs of water_1",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "35fc484e3d1ee40804dd",
+      "graph_sha256": "e305b9cb93fe015a964915c504c96c36059959c1955ffa96e23db7d724e11b68",
+      "npc_quest_file": "quest_stems/10861.json",
+      "player_quest_file": "quest_stems/10864.json",
+      "npc_id": "witch",
+      "player_id": "fish",
+      "source_item_id": "food_2",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "365c7c20188096f7a5b6",
+      "graph_sha256": "53c0232a598872241cd81b51f1382939c68eb6a87df2017b2681d6c57cf9a330",
+      "npc_quest_file": "quest_stems/15020.json",
+      "player_quest_file": "quest_stems/14358.json",
+      "npc_id": "the future heir to the throne",
+      "player_id": "person",
+      "source_item_id": "coin_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "37d3eaf09670276ed025",
+      "graph_sha256": "7185241dc9b2b5ec19908e6f45e50ed3bbd991f562c135af93f8cd04488c0f06",
+      "npc_quest_file": "quest_stems/9756.json",
+      "player_quest_file": "quest_stems/9755.json",
+      "npc_id": "queen's subject",
+      "player_id": "architect",
+      "source_item_id": "tea_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "38a8d21b17fab781da78",
+      "graph_sha256": "20012688976467de6a88cb5339277778c8b15d872cea80c56ceb1543c7cd0586",
+      "npc_quest_file": "quest_stems/14355.json",
+      "player_quest_file": "quest_stems/13861.json",
+      "npc_id": "pope",
+      "player_id": "pastor_9_pastor",
+      "source_item_id": "bible_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "38f6a720fb600263269a",
+      "graph_sha256": "ed882c12031a4fec4dd28a2e9b49decf390cc65bb16afcd1a95d28977089f198",
+      "npc_quest_file": "quest_stems/11520.json",
+      "player_quest_file": "quest_stems/11523.json",
+      "npc_id": "an assistant",
+      "player_id": "villager",
+      "source_item_id": "gold bar_3",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "3a38197048a365484934",
+      "graph_sha256": "75898970d17fb99265e324f7fb83bf63ca1291ecc0c893e40c39780e4db48837",
+      "npc_quest_file": "quest_stems/15961.json",
+      "player_quest_file": "quest_stems/17037.json",
+      "npc_id": "child",
+      "player_id": "alligator",
+      "source_item_id": "treat_7",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "3b954a3e28666869ecc0",
+      "graph_sha256": "d7ebda0a15aba13c71fc5067c016d2107903ae236d449922ea96b3b7c0227a59",
+      "npc_quest_file": "quest_stems/13060.json",
+      "player_quest_file": "quest_stems/13043.json",
+      "npc_id": "worker",
+      "player_id": "castle guards",
+      "source_item_id": "trinket_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "3e40a16a6eddebbec250",
+      "graph_sha256": "67faae957f0e33db44aac3c2614936244dbf88ce2475bba3a77f693a0f8ff848",
+      "npc_quest_file": "quest_stems/13004.json",
+      "player_quest_file": "quest_stems/13436.json",
+      "npc_id": "nobleman",
+      "player_id": "priestess",
+      "source_item_id": "whip_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "4037474f7411bfceb3f0",
+      "graph_sha256": "8348a7c93e5358e2fab042643e9a87e67935ca9b1df5841ae8b3584bee2c04a3",
+      "npc_quest_file": "quest_stems/13665.json",
+      "player_quest_file": "quest_stems/13716.json",
+      "npc_id": "dog",
+      "player_id": "owner",
+      "source_item_id": "animal_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "42aa8ef6b1e9a776aa4f",
+      "graph_sha256": "f50493adbc49f15794de7d469d5b7e9d6d5626223d9e06419d6a72333f68090f",
+      "npc_quest_file": "quest_stems/17276.json",
+      "player_quest_file": "quest_stems/15091.json",
+      "npc_id": "worshipper",
+      "player_id": "monk",
+      "source_item_id": "parchment_8",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "4789ba1791b21f2336b9",
+      "graph_sha256": "8c7f4a49f9b06611012e1c2773088dbac7563afa54e37eaf077ae0272f960c1a",
+      "npc_quest_file": "quest_stems/15492.json",
+      "player_quest_file": "quest_stems/15404.json",
+      "npc_id": "the queen",
+      "player_id": "nobles_14_nobles",
+      "source_item_id": "silerware_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "498d0de1131a4e0eeb87",
+      "graph_sha256": "af384030457a8cb63d0fc1536374c91016b1ced7d7ffc1e377d919431bc652dd",
+      "npc_quest_file": "quest_stems/13638.json",
+      "player_quest_file": "quest_stems/13323.json",
+      "npc_id": "small child cleaning boat",
+      "player_id": "old man with a fishing rod",
+      "source_item_id": "rope_3",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "4ca7a84ec6fda86a4c10",
+      "graph_sha256": "369be10263f03e7b32ac2fbb6286ce904d776e68ae4e8a8e57771d70a03d63b4",
+      "npc_quest_file": "quest_stems/9999.json",
+      "player_quest_file": "quest_stems/10000.json",
+      "npc_id": "bird",
+      "player_id": "deer",
+      "source_item_id": "worm_7",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "4e20b9992d6c05000b74",
+      "graph_sha256": "4541088fdf07929a19c2f0c859e5ddf5c546ebc68ef3d504e57221c0fab112c7",
+      "npc_quest_file": "quest_stems/10893.json",
+      "player_quest_file": "quest_stems/10895.json",
+      "npc_id": "beaver",
+      "player_id": "the egyptians",
+      "source_item_id": "water_2",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "4f071b8d3de2eb282cfe",
+      "graph_sha256": "4028cfffe18c3d8fc251114f51439e9a98de53ac0e90c96fd6a26ce49d9aea05",
+      "npc_quest_file": "quest_stems/15799.json",
+      "player_quest_file": "quest_stems/15339.json",
+      "npc_id": "tribe chief",
+      "player_id": "a gecko",
+      "source_item_id": "coconut_5",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "50c384ac79984840d4c5",
+      "graph_sha256": "21a99f36ade488f897abb315084f20690b65fa9a7f79d579ec679c66d6a02681",
+      "npc_quest_file": "quest_stems/10808.json",
+      "player_quest_file": "quest_stems/10814.json",
+      "npc_id": "blacksmith",
+      "player_id": "knight_9_knight",
+      "source_item_id": "hammer_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "51f0981b161acf0aa98f",
+      "graph_sha256": "9814d17f03f2b785ac923ba91981ce44dca0595b8e139e66647c0e8c40354e1b",
+      "npc_quest_file": "quest_stems/15397.json",
+      "player_quest_file": "quest_stems/16893.json",
+      "npc_id": "traders",
+      "player_id": "beggar_9_beggar",
+      "source_item_id": "pumpkin_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "5674bc6047f66a40ac26",
+      "graph_sha256": "f262b4a9b3719daa9019f49ad203a7eb6ec22d46685bd823d96aeb17a46a2823",
+      "npc_quest_file": "quest_stems/17128.json",
+      "player_quest_file": "quest_stems/13935.json",
+      "npc_id": "thief",
+      "player_id": "peasant_7_peasant",
+      "source_item_id": "potato_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "5854116eacfa5a91628b",
+      "graph_sha256": "fecb2ac6e66af54fe74daaf067da50a9daf31e53332403b4f0e3c101bba8ad83",
+      "npc_quest_file": "quest_stems/16343.json",
+      "player_quest_file": "quest_stems/13884.json",
+      "npc_id": "dog",
+      "player_id": "soul",
+      "source_item_id": "bone_7",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "62f2ea66a5df9d69e24b",
+      "graph_sha256": "92fe6c1edfeed97d433e92550257abb01744b55c895a5047e5bd56f16740cb5c",
+      "npc_quest_file": "quest_stems/15169.json",
+      "player_quest_file": "quest_stems/16495.json",
+      "npc_id": "kings bodyguard",
+      "player_id": "the king",
+      "source_item_id": "helmet_13",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "663d48ec5d23b9ca0fbe",
+      "graph_sha256": "e73ac85ddf4fbba2c5cf3c905d3e2202c3b48921885cf68bcbb7776dad620424",
+      "npc_quest_file": "quest_stems/15487.json",
+      "player_quest_file": "quest_stems/16675.json",
+      "npc_id": "king fulmer",
+      "player_id": "animal",
+      "source_item_id": "fork_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "67b42be84d4fcf10deb2",
+      "graph_sha256": "5dcfe6209a1975fcbccd371d882a2054656bcf5d1020d30c40e87c49d343c5bc",
+      "npc_quest_file": "quest_stems/13799.json",
+      "player_quest_file": "quest_stems/13074.json",
+      "npc_id": "servant",
+      "player_id": "rabbit",
+      "source_item_id": "dandelion_3",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "6ae8ff33c19e11eee64a",
+      "graph_sha256": "5a9ce7f7b8302f31ba2daab51f5d1bf888ae14eca7d1dfcc84af4aed443c48a8",
+      "npc_quest_file": "quest_stems/15735.json",
+      "player_quest_file": "quest_stems/16443.json",
+      "npc_id": "king",
+      "player_id": "peasant",
+      "source_item_id": "crown_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "6dea8a441c08b2b349b3",
+      "graph_sha256": "a83bc6836e2fa1834250c1d5f2ca64d6a23713e9b113e531288d685af831c649",
+      "npc_quest_file": "quest_stems/10482.json",
+      "player_quest_file": "quest_stems/10485.json",
+      "npc_id": "guest",
+      "player_id": "hunter",
+      "source_item_id": "handkerchief_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "700a391679a31e46fa19",
+      "graph_sha256": "be44ee06c3ea5102baf7a1fab9d8e032950c895451a90c86ead987cd688dea49",
+      "npc_quest_file": "quest_stems/13557.json",
+      "player_quest_file": "quest_stems/13048.json",
+      "npc_id": "shop keeper",
+      "player_id": "fisherman",
+      "source_item_id": "book_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "70681b78ba5c43266ee7",
+      "graph_sha256": "5dbba51d584519e4ef31a99857c4ffe6305eedbe931420d703e2962bd972a9ab",
+      "npc_quest_file": "quest_stems/15635.json",
+      "player_quest_file": "quest_stems/16852.json",
+      "npc_id": "fisherman",
+      "player_id": "child",
+      "source_item_id": "fishing rod_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "71b7d8f54bb50f4e333d",
+      "graph_sha256": "470c568c56da4e8e10c22a10906f751c348826559bea01fe64256b6fa7fc3179",
+      "npc_quest_file": "quest_stems/16739.json",
+      "player_quest_file": "quest_stems/15199.json",
+      "npc_id": "squire",
+      "player_id": "army",
+      "source_item_id": "a king's armor_10",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "72cca1c477968115302d",
+      "graph_sha256": "fd5b9557066bafe9e5749a9f8a7089e04a8a85b0bb7035c8c0a4d661073b3d3c",
+      "npc_quest_file": "quest_stems/16269.json",
+      "player_quest_file": "quest_stems/17006.json",
+      "npc_id": "the king",
+      "player_id": "handmaid_16_handmaid",
+      "source_item_id": "clothes_3",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "73177102c8091f52b598",
+      "graph_sha256": "3474564868aa69902f851ce61e72912e966a5c8899ef0bd63c764ae78b836a88",
+      "npc_quest_file": "quest_stems/14498.json",
+      "player_quest_file": "quest_stems/15666.json",
+      "npc_id": "thing",
+      "player_id": "bug",
+      "source_item_id": "trinket_8",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "733f4c514cbac89131da",
+      "graph_sha256": "fd46685b735329a2e3e47174071097d730da9ea0508238ffad2fb56a2d7114bc",
+      "npc_quest_file": "quest_stems/13515.json",
+      "player_quest_file": "quest_stems/13694.json",
+      "npc_id": "there is also a young woman selling flowers to passersby.",
+      "player_id": "queen",
+      "source_item_id": "flower_2",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "753ccbb6f23b82c9de9e",
+      "graph_sha256": "4f4dfd284f821a29b3107e0f510ac3acd8b7f86d87834b7af81a2fcd2ca887f6",
+      "npc_quest_file": "quest_stems/14067.json",
+      "player_quest_file": "quest_stems/16388.json",
+      "npc_id": "child",
+      "player_id": "friend",
+      "source_item_id": "sweetmeat_7",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "76d42e06be7d3ea4869e",
+      "graph_sha256": "a4fafbe166fc3fe6eda2c69800ca4877289d8ac3b04c4be7f4c79a9ad89a9265",
+      "npc_quest_file": "quest_stems/9829.json",
+      "player_quest_file": "quest_stems/9831.json",
+      "npc_id": "cleaning person",
+      "player_id": "sea witch",
+      "source_item_id": "rag_4",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "77b0438d4b77ff9c2c52",
+      "graph_sha256": "5e54dc0d250f2a77d3260096a7762aff5e5915135072f00faf31f029ae22de5a",
+      "npc_quest_file": "quest_stems/11913.json",
+      "player_quest_file": "quest_stems/12100.json",
+      "npc_id": "rabbit",
+      "player_id": "child",
+      "source_item_id": "4 leaf clover_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "7920da9c59cddb665e18",
+      "graph_sha256": "4dd47b0be2bdb344085c320fe81375991f4bb6d282faec391d49daebc23f4147",
+      "npc_quest_file": "quest_stems/16259.json",
+      "player_quest_file": "quest_stems/14553.json",
+      "npc_id": "businessman",
+      "player_id": "frog",
+      "source_item_id": "cell phone_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "7b947eaf092bff9c667c",
+      "graph_sha256": "6858d1a089b2cdb623dd8ec0a6de58f681aa02a2c75669fe50445fe45293cdae",
+      "npc_quest_file": "quest_stems/11282.json",
+      "player_quest_file": "quest_stems/11285.json",
+      "npc_id": "bird",
+      "player_id": "spider",
+      "source_item_id": "water_5",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "7f575eba6af61cd2a97f",
+      "graph_sha256": "8f2e5dfa3dbc78bc65495b9f86e94be00bec15743a46a9a88a1324750da091c8",
+      "npc_quest_file": "quest_stems/17080.json",
+      "player_quest_file": "quest_stems/14236.json",
+      "npc_id": "maggot",
+      "player_id": "prisoner",
+      "source_item_id": "rotten flesh_2",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "7f829b688b1c463d2389",
+      "graph_sha256": "0be0ab0c570bc60771be7aa88c07076d09cd894f28a40991bafbb58681ba4673",
+      "npc_quest_file": "quest_stems/15983.json",
+      "player_quest_file": "quest_stems/16398.json",
+      "npc_id": "juror",
+      "player_id": "fat rats",
+      "source_item_id": "scroll_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "80e97ae0b8215a35b984",
+      "graph_sha256": "fef80aee5bc2d7b02bd1f5a94160112e8ffd6f5e31e6f4f193d8e435db649c52",
+      "npc_quest_file": "quest_stems/10073.json",
+      "player_quest_file": "quest_stems/10079.json",
+      "npc_id": "king",
+      "player_id": "person",
+      "source_item_id": "vase_9",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "8178dabecd7c03b7e5d6",
+      "graph_sha256": "7689373c2da40018cb586635d0979294b0ccd7e314f54b19cf697e311c238a37",
+      "npc_quest_file": "quest_stems/12457.json",
+      "player_quest_file": "quest_stems/12247.json",
+      "npc_id": "guest",
+      "player_id": "goblin",
+      "source_item_id": "book_3",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "819e69b8865e5ca3aa19",
+      "graph_sha256": "7d6171e56b75491234b77a6a645280a70884a53ad3baecbdacff7e135a07da82",
+      "npc_quest_file": "quest_stems/15942.json",
+      "player_quest_file": "quest_stems/16094.json",
+      "npc_id": "bandit",
+      "player_id": "farmer",
+      "source_item_id": "shovel_6",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "835a7e89095b9b786db7",
+      "graph_sha256": "2170564d05e803b447ae35c82beb4ef1528c41f9b9cdb7aaa6f7874889c7410d",
+      "npc_quest_file": "quest_stems/11034.json",
+      "player_quest_file": "quest_stems/11029.json",
+      "npc_id": "villagers",
+      "player_id": "royal",
+      "source_item_id": "mug_9",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "838d019da1ad126cbcbf",
+      "graph_sha256": "733ecd1e961f94719b18f231c9b7c1d54a5589ffc6a6c929b7b5249563fd8ee5",
+      "npc_quest_file": "quest_stems/10999.json",
+      "player_quest_file": "quest_stems/10994.json",
+      "npc_id": "mariner",
+      "player_id": "servant",
+      "source_item_id": "map_4",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "84597a43c43dded5689c",
+      "graph_sha256": "4c8831809abb3114a6c103090b296614342d27d6e4e5d133c7bff0058d716cc0",
+      "npc_quest_file": "quest_stems/12039.json",
+      "player_quest_file": "quest_stems/12086.json",
+      "npc_id": "person",
+      "player_id": "monk",
+      "source_item_id": "coin pouch_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "862cce2701197ec87767",
+      "graph_sha256": "8282603a91e371b93c16f00a22eee335c4603ae88c364af91fd7cc96b52e62b2",
+      "npc_quest_file": "quest_stems/9784.json",
+      "player_quest_file": "quest_stems/9781.json",
+      "npc_id": "the weary traveler",
+      "player_id": "monk",
+      "source_item_id": "tools_8",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "876ca2e608f2a2c12c78",
+      "graph_sha256": "5b4b744bf98788b0a1bd2d4a7dd0657f3623b1510a0fdb6cf68e38294a252bbf",
+      "npc_quest_file": "quest_stems/16305.json",
+      "player_quest_file": "quest_stems/14208.json",
+      "npc_id": "pig",
+      "player_id": "animal",
+      "source_item_id": "mud_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "8bc83f6be477c90a25e3",
+      "graph_sha256": "f8fd50cf0feafdda4c83f941f6af444cd37a76b1028575beeda79b0ce498c7d7",
+      "npc_quest_file": "quest_stems/12548.json",
+      "player_quest_file": "quest_stems/12503.json",
+      "npc_id": "farmers wife",
+      "player_id": "noble",
+      "source_item_id": "baskets of flowers_7",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "8c4eeb3c428680addd1d",
+      "graph_sha256": "2b0fbacf4d5a960120dbfc581f365e96658dc86e7d9692a80d253e3b2ca29cd6",
+      "npc_quest_file": "quest_stems/17052.json",
+      "player_quest_file": "quest_stems/16504.json",
+      "npc_id": "vulture",
+      "player_id": "insects_11_insects",
+      "source_item_id": "dead mouse_10",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "93793770b08e5ac91dae",
+      "graph_sha256": "0b1ea2488d82157880b35f86527c365bea4a8a89e76fe3710e2ca095f4916478",
+      "npc_quest_file": "quest_stems/14050.json",
+      "player_quest_file": "quest_stems/15882.json",
+      "npc_id": "fairy",
+      "player_id": "fairy interpreter",
+      "source_item_id": "a crystal ball_4",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "945468e8a501a84e40b6",
+      "graph_sha256": "2804dc050237eb86283f4cff297330997a7eec30031d93260e76111f2885fb7f",
+      "npc_quest_file": "quest_stems/15068.json",
+      "player_quest_file": "quest_stems/15128.json",
+      "npc_id": "mice",
+      "player_id": "monk",
+      "source_item_id": "stick_9",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "945854c490cf0f4c5f76",
+      "graph_sha256": "73db33e097e9a46a817c8484f63f49d0bdee611305b04fb9cc1f825fdbc0254b",
+      "npc_quest_file": "quest_stems/17001.json",
+      "player_quest_file": "quest_stems/15405.json",
+      "npc_id": "worshipper",
+      "player_id": "high priestess",
+      "source_item_id": "rosary_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "96e30df279fafa1e6ec8",
+      "graph_sha256": "ffbe502b7a44d24d953c921e3cea9d4484ed856ada03612e524b242244298981",
+      "npc_quest_file": "quest_stems/16940.json",
+      "player_quest_file": "quest_stems/15014.json",
+      "npc_id": "tax agent",
+      "player_id": "some kind of police",
+      "source_item_id": "letter_10",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "99e1099d5d88a99e0e67",
+      "graph_sha256": "cbb183b8e4d25111e14211ce0c639f9cb8c614c619ab4abc2633bd461fad00b1",
+      "npc_quest_file": "quest_stems/17327.json",
+      "player_quest_file": "quest_stems/14793.json",
+      "npc_id": "priest",
+      "player_id": "princess",
+      "source_item_id": "wine_12",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "9b2df11a4af3b0a35118",
+      "graph_sha256": "049be52c0c69dd11cbf513812075b4da0b8d2bb59244a1baf73a6b4e7dd5cee0",
+      "npc_quest_file": "quest_stems/15517.json",
+      "player_quest_file": "quest_stems/16184.json",
+      "npc_id": "stable caretaker",
+      "player_id": "mouse",
+      "source_item_id": "lantern_6",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "9d8e26eef7243d8d8a7c",
+      "graph_sha256": "9fd8923f4aad74567a4c2e421f713103dbb7519aa50e0f9469eb12b65d1b8cc7",
+      "npc_quest_file": "quest_stems/15327.json",
+      "player_quest_file": "quest_stems/14810.json",
+      "npc_id": "dockworker",
+      "player_id": "descendant of the sons",
+      "source_item_id": "rag_7",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "9e9416fcf7f2849f0f7c",
+      "graph_sha256": "d7177fcb8e7b30bcf16ed30d8970f7423a8a8c37726fb482bec68fbb0e303ee1",
+      "npc_quest_file": "quest_stems/11451.json",
+      "player_quest_file": "quest_stems/11450.json",
+      "npc_id": "old gnaisha",
+      "player_id": "sioux chef",
+      "source_item_id": "bag_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "a03ac97cf8e837c8d419",
+      "graph_sha256": "ac83d537b5dbbdd6efe0d8674d44c835111dabec4f0bdcc1c6d65172b6a730b4",
+      "npc_quest_file": "quest_stems/16698.json",
+      "player_quest_file": "quest_stems/15589.json",
+      "npc_id": "guard",
+      "player_id": "person",
+      "source_item_id": "money_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "a11e98e0eb3be09fdd89",
+      "graph_sha256": "092e5be772f36b17cda1b8794d09824a1d9da71857c6b19b75f365d91571bba2",
+      "npc_quest_file": "quest_stems/13407.json",
+      "player_quest_file": "quest_stems/13521.json",
+      "npc_id": "evil wizard",
+      "player_id": "wizard's assistant",
+      "source_item_id": "book_9",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "a410e057bafa427b02fb",
+      "graph_sha256": "153d3229ca3bc5347912cbc6a49b3d9cd0b0cbeaa70be501ad8ff4f6c5167e38",
+      "npc_quest_file": "quest_stems/15868.json",
+      "player_quest_file": "quest_stems/15524.json",
+      "npc_id": "thief",
+      "player_id": "peasant",
+      "source_item_id": "meat_7",
+      "player_goal_kind": "eat"
+    },
+    {
+      "case_id": "a512c22cda64fc4214ba",
+      "graph_sha256": "9be386a190695e42c04548f66463301d8ebd394e4118c6eccc047db711462e26",
+      "npc_quest_file": "quest_stems/13689.json",
+      "player_quest_file": "quest_stems/13539.json",
+      "npc_id": "merchant",
+      "player_id": "surface dweller",
+      "source_item_id": "abacus_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "a9670f0508c589baf7bb",
+      "graph_sha256": "594fd5ac1d54f3b7f9b2614b05004a38cd8f7da328c3e04eaa1fd10423ad5baa",
+      "npc_quest_file": "quest_stems/10930.json",
+      "player_quest_file": "quest_stems/10931.json",
+      "npc_id": "garden dog",
+      "player_id": "sailor",
+      "source_item_id": "bone_4",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "ab076cb67e259b030787",
+      "graph_sha256": "8f6c369ddfa697ba2b1abbcba5adaeed95945098e3aec5c7f81b9a0f36eab1e2",
+      "npc_quest_file": "quest_stems/14503.json",
+      "player_quest_file": "quest_stems/17042.json",
+      "npc_id": "stable hand",
+      "player_id": "barn cat",
+      "source_item_id": "bag_10",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "aeabb2b499fd7949361c",
+      "graph_sha256": "75980f8bdb6eecd22e614f5fd675130900c284419d2ad38ab2ca52db8ef6a793",
+      "npc_quest_file": "quest_stems/12029.json",
+      "player_quest_file": "quest_stems/11922.json",
+      "npc_id": "priest",
+      "player_id": "worshipper",
+      "source_item_id": "wine_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "b362189795bf73240a32",
+      "graph_sha256": "c7533b4fa82ec85a626d32303cb8abcb2febaad7d61b4c3cf0c745c39cecd4a7",
+      "npc_quest_file": "quest_stems/13906.json",
+      "player_quest_file": "quest_stems/15995.json",
+      "npc_id": "king",
+      "player_id": "maid",
+      "source_item_id": "sceptre_9",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "b564a7a67578ad007af5",
+      "graph_sha256": "1dfda109a45be6f9f1f4776f4a7e4f047773031d36886895c8116ce7ffbd4a3c",
+      "npc_quest_file": "quest_stems/16235.json",
+      "player_quest_file": "quest_stems/15118.json",
+      "npc_id": "sailor",
+      "player_id": "fisherman",
+      "source_item_id": "fishing hook_2",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "b97188629261be4ee0ef",
+      "graph_sha256": "7bfe9bf648a956595568cad435b25107a2cda7709490c8a3ad18dcd14a1a7a4f",
+      "npc_quest_file": "quest_stems/13456.json",
+      "player_quest_file": "quest_stems/13155.json",
+      "npc_id": "person",
+      "player_id": "fool",
+      "source_item_id": "herb_11",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "bc946173f747b380cecd",
+      "graph_sha256": "e53a9ebb7f7b16ac2016c0af931c19c9ef03350018ed951b7ed0420995bde9f8",
+      "npc_quest_file": "quest_stems/13345.json",
+      "player_quest_file": "quest_stems/13030.json",
+      "npc_id": "bird",
+      "player_id": "bat",
+      "source_item_id": "worm_3",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "be988beface662714700",
+      "graph_sha256": "3c7f19832bc16679a168be0989990c61ea2b1d49946e92a791c22bffce014aad",
+      "npc_quest_file": "quest_stems/15160.json",
+      "player_quest_file": "quest_stems/13961.json",
+      "npc_id": "gardener",
+      "player_id": "lord",
+      "source_item_id": "flower_5",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "c64c655ca4e160e50561",
+      "graph_sha256": "3089b0002ed3070e6555099838014af7b4c001701d59b779e9d1e2980d182e58",
+      "npc_quest_file": "quest_stems/11105.json",
+      "player_quest_file": "quest_stems/11106.json",
+      "npc_id": "enemy",
+      "player_id": "guard",
+      "source_item_id": "bag_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "c6b5108b972f32036468",
+      "graph_sha256": "a6edf29567a142f64d2b4bae61bb30d17e2eb918c201fc06b4f59e48c45c5c47",
+      "npc_quest_file": "quest_stems/14927.json",
+      "player_quest_file": "quest_stems/15787.json",
+      "npc_id": "fly",
+      "player_id": "mosquito",
+      "source_item_id": "bird_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "c6f8563a5421fd104a6e",
+      "graph_sha256": "7f2fd633f40ba825d95ec51fe39deca9dbb2158d1286618fcea52db73ff0747d",
+      "npc_quest_file": "quest_stems/16849.json",
+      "player_quest_file": "quest_stems/13971.json",
+      "npc_id": "soldier",
+      "player_id": "robber",
+      "source_item_id": "a treasure map_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "cb25d739724984fc7b4a",
+      "graph_sha256": "4e76afbc0dcdcee500f84e90189354dd7b0a8d21e34fd4bb382306f2f2eacf88",
+      "npc_quest_file": "quest_stems/15370.json",
+      "player_quest_file": "quest_stems/14948.json",
+      "npc_id": "king",
+      "player_id": "local villagers",
+      "source_item_id": "scepter_10",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "d0d0889f6a5a404c2d24",
+      "graph_sha256": "26772d1c3b3e9532f221a6c12391973336e4201a3eca2f3974c142e1fdea8fb0",
+      "npc_quest_file": "quest_stems/14339.json",
+      "player_quest_file": "quest_stems/17324.json",
+      "npc_id": "bird",
+      "player_id": "rat",
+      "source_item_id": "worm_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "d12e36765cfcf001253f",
+      "graph_sha256": "64185d6868fa5b11a043f52acc715fa203166d5ade6a5bdbc96d0dd0ea30ce9a",
+      "npc_quest_file": "quest_stems/16139.json",
+      "player_quest_file": "quest_stems/16595.json",
+      "npc_id": "townsperson",
+      "player_id": "proprietor",
+      "source_item_id": "fruit_7",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "d3e8835110127794dde9",
+      "graph_sha256": "dd085b520f01596c8724c2f2acc44c73ee56aa8e5c2048940dfbfccc031c6f28",
+      "npc_quest_file": "quest_stems/12938.json",
+      "player_quest_file": "quest_stems/13723.json",
+      "npc_id": "teacher",
+      "player_id": "scribe",
+      "source_item_id": "satchel_15",
+      "player_goal_kind": "wear"
+    },
+    {
+      "case_id": "d796332b77e85edb6f84",
+      "graph_sha256": "6d4c1eea692741e888b258fe75967fce0bde4cf250db56f34a4be60e70af982b",
+      "npc_quest_file": "quest_stems/16794.json",
+      "player_quest_file": "quest_stems/17242.json",
+      "npc_id": "property owner",
+      "player_id": "worker",
+      "source_item_id": "bottle of spirits_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "d859eeab940e2e21c3c4",
+      "graph_sha256": "205c0a8e56c3cabe43a5efd1690774b711d6855c84d0482c6c086302a819e85d",
+      "npc_quest_file": "quest_stems/16178.json",
+      "player_quest_file": "quest_stems/14743.json",
+      "npc_id": "farmer",
+      "player_id": "milk maid",
+      "source_item_id": "rope_1",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "d92250c5e885f7040b40",
+      "graph_sha256": "bad7e76043d5e682e2bf94b9c3f95eb31ec3f73fe3ded44a7a62f58a90b7a64b",
+      "npc_quest_file": "quest_stems/6801.json",
+      "player_quest_file": "quest_stems/6802.json",
+      "npc_id": "town sheriff_3",
+      "player_id": "cowboy_1",
+      "source_item_id": "lantern_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "da511fba33d836c23b3b",
+      "graph_sha256": "3fa9a93572ff4e9cd1eeb053c206f5cdd6e8b92e591d2a9a5b9d762622dbb4ce",
+      "npc_quest_file": "quest_stems/16902.json",
+      "player_quest_file": "quest_stems/14848.json",
+      "npc_id": "king",
+      "player_id": "fighters",
+      "source_item_id": "ornament_2",
+      "player_goal_kind": "get"
+    },
+    {
+      "case_id": "dc6affaecccb08302027",
+      "graph_sha256": "2848d4316ca7cb9845150972f136d950d8c724fb98a7bffac687c73bf5d067fc",
+      "npc_quest_file": "quest_stems/16574.json",
+      "player_quest_file": "quest_stems/15182.json",
+      "npc_id": "doctor",
+      "player_id": "the witch",
+      "source_item_id": "leech_2",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "dd1c1cdb5e2360b062c5",
+      "graph_sha256": "4cbbeb51d5f49092cb0abad51823ad0316ed5a3ced7f2b5265a86d06a8b5f746",
+      "npc_quest_file": "quest_stems/11049.json",
+      "player_quest_file": "quest_stems/11051.json",
+      "npc_id": "a reluctant nun",
+      "player_id": "a curious boy_17_a curious boy",
+      "source_item_id": "bible_12",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "de0ad88522cfc693f22e",
+      "graph_sha256": "03489b63a01320c0d0338de97f3601411d8fecc2d2c15bb368b6b0c0c7a4dbf2",
+      "npc_quest_file": "quest_stems/14235.json",
+      "player_quest_file": "quest_stems/14795.json",
+      "npc_id": "traveler",
+      "player_id": "captain_8_captain",
+      "source_item_id": "spice_5",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "e2009be18206523fe208",
+      "graph_sha256": "31c222a50bdff284aa3f5921c01c77b6f2a8c6cc494bcb5da041baeea6919b17",
+      "npc_quest_file": "quest_stems/10335.json",
+      "player_quest_file": "quest_stems/10333.json",
+      "npc_id": "a church mouse",
+      "player_id": "monk_13_monk",
+      "source_item_id": "food_12",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "e31390c6ba24e2cf8cff",
+      "graph_sha256": "c038af903e69a4228fd092efa7623c9eddfae84c44b930ee92ef9605ea78305e",
+      "npc_quest_file": "quest_stems/16760.json",
+      "player_quest_file": "quest_stems/15773.json",
+      "npc_id": "priest",
+      "player_id": "person",
+      "source_item_id": "wine_12",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "e3d8a5edbab544dd0c07",
+      "graph_sha256": "b889b3bed3db3f125f6a2fe97ff3b228a61dfdee127a54a7ba8a9994cb801583",
+      "npc_quest_file": "quest_stems/14666.json",
+      "player_quest_file": "quest_stems/14571.json",
+      "npc_id": "temple members",
+      "player_id": "attendee",
+      "source_item_id": "bible_14",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "e63c7a5ff7c3c8a1fe92",
+      "graph_sha256": "6b35f2bc05c9a71a0f83b16d58d0b28686eb1998387770b9687018e7139fe964",
+      "npc_quest_file": "quest_stems/16441.json",
+      "player_quest_file": "quest_stems/15400.json",
+      "npc_id": "fairy",
+      "player_id": "people",
+      "source_item_id": "seed_13",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "e81c6d29f3b2a625939d",
+      "graph_sha256": "a04ae42bd3d33910afe118208bc2d5fee2d9502420a2f85ef4f01f797d61e896",
+      "npc_quest_file": "quest_stems/9703.json",
+      "player_quest_file": "quest_stems/9701.json",
+      "npc_id": "guard",
+      "player_id": "servant",
+      "source_item_id": "food_1",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "e879ce28d151d4975c16",
+      "graph_sha256": "368687d4ae4c0c8124e2651c12ca4ab1c40e2fbcc40a68ede4a5e1c8e4f88937",
+      "npc_quest_file": "quest_stems/10588.json",
+      "player_quest_file": "quest_stems/10591.json",
+      "npc_id": "a person",
+      "player_id": "songbird_10_songbird",
+      "source_item_id": "bag_6",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "eaea68c975320dc43888",
+      "graph_sha256": "94927d44e2a5e598c7524d1d77cf249a59ed8f01c2e5482caf28847e151092af",
+      "npc_quest_file": "quest_stems/15913.json",
+      "player_quest_file": "quest_stems/14161.json",
+      "npc_id": "care taker",
+      "player_id": "a royal",
+      "source_item_id": "a sleeping bag_17",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "eafc1c82f86ea00ddca7",
+      "graph_sha256": "81351398d4a6e663c90fb486f8499a08a7774b0cdad1bdd1712710032707cae4",
+      "npc_quest_file": "quest_stems/11160.json",
+      "player_quest_file": "quest_stems/11162.json",
+      "npc_id": "pope",
+      "player_id": "member",
+      "source_item_id": "bible_4",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "ec6a91213018906d1f97",
+      "graph_sha256": "703ce70902499bca8bb1f223a2684495269cf67707112600952fbb8f4e3c4711",
+      "npc_quest_file": "quest_stems/17065.json",
+      "player_quest_file": "quest_stems/16625.json",
+      "npc_id": "priest",
+      "player_id": "nun",
+      "source_item_id": "wine_3",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "ed3f0bf4d193b0f92b67",
+      "graph_sha256": "9143104bd9a4479bec5e7b5f9976ceeadf481ae874f1ca3ce44ff48ac34c3e83",
+      "npc_quest_file": "quest_stems/10665.json",
+      "player_quest_file": "quest_stems/10661.json",
+      "npc_id": "townsperson",
+      "player_id": "witch",
+      "source_item_id": "moss_3",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "ee4b4e9f3c274934d1f0",
+      "graph_sha256": "7f34b12a500943bd87c0c30faa48f8074acca3cdd7e38073847eadf725a756d7",
+      "npc_quest_file": "quest_stems/12295.json",
+      "player_quest_file": "quest_stems/12443.json",
+      "npc_id": "visitor",
+      "player_id": "princess",
+      "source_item_id": "teapot_8",
+      "player_goal_kind": "drink"
+    },
+    {
+      "case_id": "f29fff510dabd2f6b969",
+      "graph_sha256": "33ccffb9825b8c5004a28f2032986b2e6aa14bddb94e675834eb5359520112a9",
+      "npc_quest_file": "quest_stems/16159.json",
+      "player_quest_file": "quest_stems/16516.json",
+      "npc_id": "guest",
+      "player_id": "a servant",
+      "source_item_id": "kilt_10",
+      "player_goal_kind": "put"
+    },
+    {
+      "case_id": "f8c1955f21a5f1ba9513",
+      "graph_sha256": "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e",
+      "npc_quest_file": "quest_stems/13499.json",
+      "player_quest_file": "quest_stems/13812.json",
+      "npc_id": "soldier",
+      "player_id": "archer",
+      "source_item_id": "a treasure map_9",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "f9360fb25f16fc48ce34",
+      "graph_sha256": "97215d0f7e91a8f08556b4b09c1014ba7243e3862435966862056650f0642aad",
+      "npc_quest_file": "quest_stems/12274.json",
+      "player_quest_file": "quest_stems/12458.json",
+      "npc_id": "thief",
+      "player_id": "boar",
+      "source_item_id": "coal_4",
+      "player_goal_kind": "steal"
+    },
+    {
+      "case_id": "fe24f0aaf93a73c49a06",
+      "graph_sha256": "f135a2e77acf2c3016f968b917af10f1935636a2f71cb8d0cd8bea549a158245",
+      "npc_quest_file": "quest_stems/14569.json",
+      "player_quest_file": "quest_stems/16769.json",
+      "npc_id": "fisherman",
+      "player_id": "homeless_16_homeless",
+      "source_item_id": "fish_1",
+      "player_goal_kind": "get"
+    }
+  ],
+  "literal_return_candidates": [
+    {
+      "quest_file": "quest_stems/10395.json",
+      "graph_sha256": "305ba1d897bd330f5884eba120fe4988f0a74238281f756447d5133ba4d4a2fa",
+      "npc_id": "pope",
+      "player_id": "preacher",
+      "offer": {
+        "item_id": "bible_4",
+        "name": "bible",
+        "native_offer_commands": [
+          "give bible to preacher"
+        ],
+        "initial_parent_id": "pope"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "robe_8",
+          "name": "robe",
+          "equipped": "wear",
+          "native_return_commands": [
+            "remove robe",
+            "give robe to pope"
+          ],
+          "literal_motivation_mentions": [],
+          "literal_timeline_mentions": [
+            "[{\"label\": \"1 hour ago\", \"action\": \"wear papal robes\"}, {\"label\": \"15 minutes ago\", \"action\": \"go wall of books\"}, {\"label\": \"5"
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the pope",
+        "persona": "I am a very religious man and have strong faith. I spent many years as a priest within the church, trying to comfort my people. I enjoy caring for the poor and praying for those who need help.",
+        "goal": "give bible to preacher",
+        "short_motivation": "The preacher would like to borrow my bible, so I'm going to lend it to him.",
+        "mid_motivation": "I'm helping the preacher prepare for a sermon that he is going to give at the church tomorrow.",
+        "long_motivation": "I would like to spread the wisdom and love of the church to all the people in the kingdom.",
+        "timeline": [
+          {
+            "label": "1 hour ago",
+            "action": "wear papal robes"
+          },
+          {
+            "label": "15 minutes ago",
+            "action": "go wall of books"
+          },
+          {
+            "label": "5 minutes ago",
+            "action": "get bible from wall of books"
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "go chambers"
+          },
+          {
+            "label": "30 minutes from now",
+            "action": "use vial with holy water"
+          },
+          {
+            "label": "2 hours from now",
+            "action": "give vial of holy water to preacher"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/13802.json",
+      "graph_sha256": "17e0eedbbd5faa86807508ba5c28c7cbf9c8732a979a1b8bb181b105016b735e",
+      "npc_id": "patron",
+      "player_id": "guard",
+      "offer": {
+        "item_id": "jewel_11",
+        "name": "jewel",
+        "native_offer_commands": [
+          "give jewel to guard"
+        ],
+        "initial_parent_id": "patron"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "sword_16",
+          "name": "sword",
+          "equipped": "wield",
+          "native_return_commands": [
+            "remove sword",
+            "give sword to patron"
+          ],
+          "literal_motivation_mentions": [
+            "I want to pay the guard\nI want to take the sword of the guard with me today\nI intend to exhibit the sword of the guard when"
+          ],
+          "literal_timeline_mentions": [
+            " ago\", \"action\": \"go Tower\"}, {\"label\": \"10 minutes ago\", \"action\": \"wield Sword on the wall\"}, {\"label\": \"10 minutes from now\", \"action\": \"get Sword of th"
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the patron",
+        "persona": "I am a patron of the arts. I donate time and money to local painters and sculptors. I am flighty and rash in decision-making.",
+        "goal": "give jewel to guard",
+        "short_motivation": "I want to pay the guard",
+        "mid_motivation": "I want to take the sword of the guard with me today",
+        "long_motivation": "I intend to exhibit the sword of the guard when I return to my homeland in a few weeks ",
+        "timeline": [
+          {
+            "label": "4 hours ago",
+            "action": "wear shoes and a cleaning cloth"
+          },
+          {
+            "label": "1 hour ago",
+            "action": "go Tower"
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "wield Sword on the wall"
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "get Sword of the guard"
+          },
+          {
+            "label": "30 minutes from now",
+            "action": "wield Sword of the guard"
+          },
+          {
+            "label": "2 hours from now",
+            "action": "go Carriage "
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/14781.json",
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "npc_id": "hunter",
+      "player_id": "duke",
+      "offer": {
+        "item_id": "fur_11",
+        "name": "fur",
+        "native_offer_commands": [
+          "give fur to duke"
+        ],
+        "initial_parent_id": "hunter"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "pouch_6",
+          "name": "pouch",
+          "equipped": null,
+          "native_return_commands": [
+            "give pouch to hunter"
+          ],
+          "literal_motivation_mentions": [],
+          "literal_timeline_mentions": [
+            "ur. \"}, {\"label\": \"5 minutes from now\", \"action\": \"get gold pieces from my pouch to give to the Duke in exchange for my right to sell items in the show roo"
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the hunter",
+        "persona": "I came into the village to tell the men there that I knew where the wolves were sleeping and where their pups are, I offered to take them there and help end the menace in exchange for most of the pelts. The wolfskins will sell well in the town nearby. I'll make a pretty penny.",
+        "goal": "give fur to duke",
+        "short_motivation": "I want to show the Duke my respect.",
+        "mid_motivation": "I want to earn a larger display table in the show room for future items I wish to sell there.",
+        "long_motivation": "I want to earn just as much money as the Duke, selling items in the show room of the castle. ",
+        "timeline": [
+          {
+            "label": "8 hours ago",
+            "action": "eat breakfast at my home."
+          },
+          {
+            "label": "1 hour ago",
+            "action": "go the show room inside the castle."
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "hug the Duke and offer something of mine at no cost. The Duke chooses my fur. "
+          },
+          {
+            "label": "5 minutes from now",
+            "action": "get gold pieces from my pouch to give to the Duke in exchange for my right to sell items in the show room this day."
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "drink wine with the Duke while discussing future employment opportunities. "
+          },
+          {
+            "label": "30 minutes from now",
+            "action": "follow the Duke to a secret room, where the Duke shows me his most prized possessions. "
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/17020.json",
+      "graph_sha256": "c64f90254744139b5b6606a9a8d6cf274f58b45e81ace9c39f5e9cff04791bd7",
+      "npc_id": "orc",
+      "player_id": "member",
+      "offer": {
+        "item_id": "bag_11",
+        "name": "bag",
+        "native_offer_commands": [
+          "give bag to member"
+        ],
+        "initial_parent_id": "orc"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "bag_5",
+          "name": "bag",
+          "equipped": null,
+          "native_return_commands": [
+            "give bag to orc"
+          ],
+          "literal_motivation_mentions": [
+            "I want to give the bag to the member, so she'll give me a sack of corn.\nI want to make a big meal"
+          ],
+          "literal_timeline_mentions": [
+            ", \"action\": \"hug member\"}, {\"label\": \"10 minutes from now\", \"action\": \"get bag from member\"}, {\"label\": \"1 hour from now\", \"action\": \"get corn from sack\""
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the orc",
+        "persona": "I am a orc that was born in a cave. I eat corn the most. I have many friends.",
+        "goal": "give bag to member",
+        "short_motivation": "I want to give the bag to the member, so she'll give me a sack of corn.",
+        "mid_motivation": "I want to make a big meal tonight with the corn the member is giving me.",
+        "long_motivation": "I want the member and I to be on good terms with each other, so I can keep trading her for corn.",
+        "timeline": [
+          {
+            "label": "2 hours ago",
+            "action": "wear vest"
+          },
+          {
+            "label": "15 minutes ago",
+            "action": "go orc cave entrance"
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "hug member"
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "get bag from member"
+          },
+          {
+            "label": "1 hour from now",
+            "action": "get corn from sack"
+          },
+          {
+            "label": "4 hours from now",
+            "action": "put corn on cauldron"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/16698.json",
+      "graph_sha256": "ac83d537b5dbbdd6efe0d8674d44c835111dabec4f0bdcc1c6d65172b6a730b4",
+      "npc_id": "guard",
+      "player_id": "person",
+      "offer": {
+        "item_id": "money_1",
+        "name": "money",
+        "native_offer_commands": [
+          "get money",
+          "give money to person"
+        ],
+        "initial_parent_id": "the hall of the goddess_0"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "purse_7",
+          "name": "purse",
+          "equipped": "wear",
+          "native_return_commands": [
+            "remove purse",
+            "give purse to guard"
+          ],
+          "literal_motivation_mentions": [],
+          "literal_timeline_mentions": [
+            "tar\"}, {\"label\": \"2 hours from now\", \"action\": \"get necklace from person's purse\"}]"
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the guard",
+        "persona": "I am a guard that lives inside the village. I protect valuable items in the kingdom. I protect the valuable items from the enemy.",
+        "goal": "give money to person",
+        "short_motivation": "I need the person to go purchase a necklace for me",
+        "mid_motivation": "I need to guard The Hall of the Goddess today but want to purchase a necklace for my wife",
+        "long_motivation": "I need a birthday gift for my wife's birthday",
+        "timeline": [
+          {
+            "label": "30 minutes ago",
+            "action": "wear tunic"
+          },
+          {
+            "label": "15 minutes ago",
+            "action": "go The Hall of the Goddess"
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "follow person"
+          },
+          {
+            "label": "5 minutes from now",
+            "action": "go altar"
+          },
+          {
+            "label": "15 minutes from now",
+            "action": "put flower in altar"
+          },
+          {
+            "label": "2 hours from now",
+            "action": "get necklace from person's purse"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/14324.json",
+      "graph_sha256": "4f6cad4af6e566f173d7e4bd8aeb8f0776f937c1dd8936a91d9ca781cb5c822d",
+      "npc_id": "friend",
+      "player_id": "knight",
+      "offer": {
+        "item_id": "roasting meat_4",
+        "name": "roasting meat",
+        "native_offer_commands": [
+          "get roasting meat",
+          "give roasting meat to knight"
+        ],
+        "initial_parent_id": "castle courtyard bazaar_0"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "boot_10",
+          "name": "boot",
+          "equipped": "wear",
+          "native_return_commands": [
+            "remove boot",
+            "give boot to friend"
+          ],
+          "literal_motivation_mentions": [],
+          "literal_timeline_mentions": [
+            "[{\"label\": \"1 hour ago\", \"action\": \"wear clean pants, shirt and boot\"}, {\"label\": \"30 minutes ago\", \"action\": \"go Castle courtyard bazaar\"}, {\""
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the friend",
+        "persona": "I am a part of a group of travelers.  I go from town to town selling food to the locals.  I grew up poor, but my travels have paid off well.",
+        "goal": "give roasting meat to knight",
+        "short_motivation": "I need to sell this roasting meat to the knight",
+        "mid_motivation": "I hope to make a lot of money today selling my wares and helping out this vendor",
+        "long_motivation": "I am saving up to purchase an estate for my family",
+        "timeline": [
+          {
+            "label": "1 hour ago",
+            "action": "wear clean pants, shirt and boot"
+          },
+          {
+            "label": "30 minutes ago",
+            "action": "go Castle courtyard bazaar"
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "get roasting meat and spice"
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "put spice in sweetmeat"
+          },
+          {
+            "label": "1 hour from now",
+            "action": "get roasting meat"
+          },
+          {
+            "label": "2 hours from now",
+            "action": "go the Inn"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/14572.json",
+      "graph_sha256": "32f1aada5df45f61cdb6313ab98a1c825b3f464f4d0cd5b727ddc47609c5aa02",
+      "npc_id": "thief",
+      "player_id": "milk maid",
+      "offer": {
+        "item_id": "coin_2",
+        "name": "coin",
+        "native_offer_commands": [
+          "give coin to milk maid"
+        ],
+        "initial_parent_id": "thief"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "dress_6",
+          "name": "dress",
+          "equipped": "wear",
+          "native_return_commands": [
+            "remove dress",
+            "give dress to thief"
+          ],
+          "literal_motivation_mentions": [
+            "I want to buy milk and a dress from the milkmaid \nI want to pose as a milkmaid today to be able to steal\n"
+          ],
+          "literal_timeline_mentions": [
+            "[{\"label\": \"1 hour ago\", \"action\": \"wear Dress\"}, {\"label\": \"30 minutes ago\", \"action\": \"get Coin\"}, {\"label\": \"10 minute"
+          ]
+        }
+      ],
+      "authored_context": {
+        "character": "the thief",
+        "persona": "I am a thief that lives near the village. I pickpocket villagers and loot their homes when while they are away. I hate to fight and I am very fast to flee from danger.",
+        "goal": "give coin to milk maid",
+        "short_motivation": "I want to buy milk and a dress from the milkmaid ",
+        "mid_motivation": "I want to pose as a milkmaid today to be able to steal",
+        "long_motivation": "I hope to continue to evade arrest in the coming weeks ",
+        "timeline": [
+          {
+            "label": "1 hour ago",
+            "action": "wear Dress"
+          },
+          {
+            "label": "30 minutes ago",
+            "action": "get Coin"
+          },
+          {
+            "label": "10 minutes ago",
+            "action": "go Saloon"
+          },
+          {
+            "label": "5 minutes from now",
+            "action": "get Milk from Milkmaid "
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "get Dress from Milkmaid"
+          },
+          {
+            "label": "1 hour from now",
+            "action": "go Villager's house"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    },
+    {
+      "quest_file": "quest_stems/16532.json",
+      "graph_sha256": "253deb5b43deb5c5ca8d97841b540236e6b4f57b83bcfa3ff9dcb137d8b524eb",
+      "npc_id": "soldier",
+      "player_id": "blacksmith",
+      "offer": {
+        "item_id": "bag_5",
+        "name": "bag",
+        "native_offer_commands": [
+          "give bag to blacksmith"
+        ],
+        "initial_parent_id": "soldier"
+      },
+      "physically_existing_literal_return_candidates": [
+        {
+          "item_id": "sword_3",
+          "name": "sword",
+          "equipped": "wield",
+          "native_return_commands": [
+            "remove sword",
+            "give sword to soldier"
+          ],
+          "literal_motivation_mentions": [
+            "I want to pay the blacksmith \nI want the blacksmith to get my sword ready in a few days\nI hope to March to war with the new sword in the comin"
+          ],
+          "literal_timeline_mentions": []
+        }
+      ],
+      "authored_context": {
+        "character": "the soldier",
+        "persona": "I am a soldier of His Majesty's Army. The King has selected a few of us to be Knights. I am very proud to fight for my land. We will be strong and defeat the enemy.",
+        "goal": "give bag to blacksmith",
+        "short_motivation": "I want to pay the blacksmith ",
+        "mid_motivation": "I want the blacksmith to get my sword ready in a few days",
+        "long_motivation": "I hope to March to war with the new sword in the coming weeks ",
+        "timeline": [
+          {
+            "label": "1 hour ago",
+            "action": "wear Tunic"
+          },
+          {
+            "label": "15 minutes ago",
+            "action": "get Bag"
+          },
+          {
+            "label": "5 minutes ago",
+            "action": "go Knife seller"
+          },
+          {
+            "label": "10 minutes from now",
+            "action": "hug Blacksmith "
+          },
+          {
+            "label": "30 minutes from now",
+            "action": "get Knife from Knife seller"
+          },
+          {
+            "label": "4 hours from now",
+            "action": "go Castle"
+          }
+        ]
+      },
+      "classification": "Needs manual semantic review; object mention is not desired-return gold."
+    }
+  ]
+}
