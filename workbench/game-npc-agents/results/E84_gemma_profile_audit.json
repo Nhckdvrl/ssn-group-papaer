@@ -1,0 +1,334 @@
+{
+  "experiment": "E84",
+  "status": "PROFILE_TECHNICAL_ONLY",
+  "model": "/home/xiang/.cache/huggingface/hub/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80",
+  "data": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+  "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+  "driver_sha256": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+  "report_sha256": "ae76b7ba48d80fa38b09ec64156de287f560f91d21d9d95271c2cec1807b8397",
+  "source_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/manifest.json": "73bc288ef9b179f2ff51df48b292c7b10e10ec5ffc646c8a85de8f4aba314154",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/runtime.json": "dff7c1228417f5faf5b0ff79da58096b0352fea6935c0a871321e9e84c648f0f",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl": "d6a6c8e5e304c064c0d9606acba1221556d26de92701ea44634ca2c0527b5ad9",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/states.jsonl": "3e6c330201fa4cd742235ab5c6a238e27e45244c62de0128fe8ed9c228476328",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/model_calls.jsonl": "7e6a3304a0a16e2a34a5936aa4a3398c71c717242a0a86c54ee706cccda3295a",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/reused_calls.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json": "c64e7e2fcf74196c4f78d5b9e312aac4584577699dcf218992e7a7523d56a49d"
+  },
+  "primary_episode_sources_ordered": [
+    "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile/episodes.jsonl"
+  ],
+  "source_pairs": 1,
+  "original_graphs": 1,
+  "episodes": 1,
+  "duplicate_episode_records": [],
+  "measurement": {
+    "strict_event": "Current native goal with frozen authored item/target binding, same actor, legal successful event; no name rebinding.",
+    "physical": "Recursive possession for Get/Steal; exact Give/Put destination; exact wear/wield mode; own bound consumption into VOID. Drop/Remove have only strict events.",
+    "initial": "Physical predicates already true in source are explicitly separate; not evidence of newly induced cooperation.",
+    "joint": "Both original atomic events or, for Get/Steal only, material acquisition. Not agreement, complete purpose, mutual benefit or cooperation success.",
+    "unknown": "Unbound/nonimplemented predicates remain null and leave that metric denominator; all episodes remain.",
+    "bootstrap": null
+  },
+  "independent_full_state_and_input_audit": {
+    "status": "PASS",
+    "exact_complete_model_inputs_checked": 33,
+    "original_typed_native_events_replayed": 33,
+    "full_graph_and_visible_history_snapshots_checked": 33,
+    "whole_episodes_replayed": 1,
+    "whole_saved_sequences_checked": 1,
+    "typed_replay_requested": true,
+    "before_graph_byte_sha_differences": [],
+    "new_model_calls": 0,
+    "new_API_calls": 0
+  },
+  "estimates": {
+    "actual_bidirectional_Give": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "both_atomic_events_or_acquisition_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_actual_speech_count": {
+      "raw_sum": 16.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 16.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_atomic_event_or_acquisition_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_get_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_give_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_native_rejections": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_new_physical_ever_among_initially_false": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_physical_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_physical_final": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_physical_initial": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_steal_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_stochastic_failures": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_0_strict_event_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_actual_speech_count": {
+      "raw_sum": 16.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 16.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_atomic_event_or_acquisition_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_get_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_give_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_native_rejections": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_new_physical_ever_among_initially_false": {
+      "raw_sum": 0,
+      "eligible_episodes": 0,
+      "eligible_graphs": 0,
+      "graph_mean": null,
+      "graph_cluster_95CI": null
+    },
+    "role_1_physical_ever": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 1.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_physical_final": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 1.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_physical_initial": {
+      "raw_sum": 1.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 1.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_steal_count": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_stochastic_failures": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    },
+    "role_1_strict_event_ever": {
+      "raw_sum": 0.0,
+      "eligible_episodes": 1,
+      "eligible_graphs": 1,
+      "graph_mean": 0.0,
+      "graph_cluster_95CI": null
+    }
+  },
+  "raw_counts": {
+    "stop": {
+      "turn_limit": 1
+    },
+    "native_events": {
+      "1/SayEvent/successful": 16,
+      "0/SayEvent/successful": 16,
+      "1/EmoteEvent/successful": 1
+    },
+    "native_error_events": 0,
+    "episodes_with_any_actor_death": 0
+  },
+  "cost": {
+    "calls": 33,
+    "prompt_tokens": 79888,
+    "completion_tokens": 1691,
+    "parse_errors": 0,
+    "sum_inference_wall_seconds": 64.60187965305522,
+    "sum_model_load_seconds": 26.79187618906144,
+    "runtime_model_load_plus_run_GPU_hours": 0.02538715440058796,
+    "observed_occupied_GPU_slot_hours": 0.04541577140490214,
+    "observed_slot_runs": 1,
+    "total_runs": 1,
+    "per_run": [
+      {
+        "run": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile",
+        "profile": true,
+        "calls": 33,
+        "reused_calls": 0,
+        "runtime_load_seconds": 26.79187618906144,
+        "runtime_run_seconds": 64.60187965305522,
+        "runtime_model_load_plus_run_seconds": 91.39375584211666,
+        "launch_metadata": "/home/xiang/.cache/game-npc-research/runs/e84_gemma_profile_launch.json",
+        "host": "fvcrc21",
+        "gpu": 1,
+        "pid": 1024190,
+        "launch_epoch": 1792137543.9948852,
+        "original_runtime_mtime_epoch": 1792137707.4916623,
+        "observed_occupied_slot_seconds": 163.4967770576477,
+        "monitoring_resume": null
+      }
+    ],
+    "new_cloud_calls": 0,
+    "scope": "Costs include every supplied profile/full run once; duplicate outcomes add no samples. Runtime load+run sub-timers are separate from launch→original runtime mtime slot observations, which include import, loading, pauses and inference. No unobserved timings are imputed."
+  },
+  "episodes_readback": [
+    {
+      "case_id": "0061d077087bc80453ff4f0d",
+      "seed": 8401,
+      "graph_sha256": "b2db34299835a49df3217cc7402fac0147ec0f9633ab36d219928bda90e2f7f7",
+      "quest_files": [
+        "quest_stems/16205.json",
+        "quest_stems/16711.json"
+      ],
+      "goal_verbs": [
+        "steal",
+        "give"
+      ],
+      "metrics": {
+        "role_0_strict_event_ever": 0,
+        "role_0_physical_initial": 0,
+        "role_0_physical_ever": 0,
+        "role_0_physical_final": 0,
+        "role_0_new_physical_ever_among_initially_false": 0,
+        "role_0_atomic_event_or_acquisition_ever": 0,
+        "role_0_give_count": 0,
+        "role_0_steal_count": 0,
+        "role_0_get_count": 0,
+        "role_0_actual_speech_count": 16,
+        "role_0_native_rejections": 0,
+        "role_0_stochastic_failures": 0,
+        "role_1_strict_event_ever": 0,
+        "role_1_physical_initial": 1,
+        "role_1_physical_ever": 1,
+        "role_1_physical_final": 1,
+        "role_1_new_physical_ever_among_initially_false": null,
+        "role_1_atomic_event_or_acquisition_ever": 0,
+        "role_1_give_count": 0,
+        "role_1_steal_count": 0,
+        "role_1_get_count": 0,
+        "role_1_actual_speech_count": 16,
+        "role_1_native_rejections": 0,
+        "role_1_stochastic_failures": 0,
+        "both_atomic_events_or_acquisition_ever": 0,
+        "actual_bidirectional_Give": 0
+      },
+      "stop": "turn_limit",
+      "final_health": [
+        10,
+        10
+      ],
+      "final_dead": [
+        false,
+        false
+      ]
+    }
+  ],
+  "full_actual_interactions": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_readback/E84_gemma_profile_audit_episodes.jsonl",
+    "sha256": "4d0c3f4b808b28935eb5a773aa6b2ef08c7fa18232f6a757db4769d2e2b71588",
+    "episodes": 1
+  },
+  "scope": "Both roles use this model. Profile is one technical case, not a population result. Original quests are independent annotations on the same original graph. No uniform cooperation label.",
+  "report_new_model_calls": 0,
+  "report_new_API_calls": 0
+}

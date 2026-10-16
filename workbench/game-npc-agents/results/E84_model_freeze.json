@@ -1,0 +1,53 @@
+{
+  "experiment": "E84",
+  "frozen_epoch": 1792137522.0809937,
+  "data": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+  "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+  "pairs": 32,
+  "graphs": 23,
+  "all_cross_source_pairs_retained": true,
+  "limited_joint_witness_pairs": 29,
+  "limited_witness_is_not_solvability_oracle": true,
+  "unbound_goal_target_cases": [
+    "367e2d6963c81915881868c4"
+  ],
+  "unbound_target_metrics": null,
+  "profile_case_id": "0061d077087bc80453ff4f0d",
+  "seeds": [
+    8401,
+    8402
+  ],
+  "max_alternating_opportunities": 32,
+  "opening": "simulated player original own purpose; actual native Say",
+  "model_configs": [
+    "google/gemma-3-12b-it",
+    "Qwen/Qwen3-32B"
+  ],
+  "sampling": {
+    "temperature": 0.7,
+    "max_tokens": 512,
+    "enable_thinking": false,
+    "max_model_len": 8192
+  },
+  "cpu_input_check": {
+    "status": "PASS",
+    "pairs": 32,
+    "source_graphs": 23,
+    "typed_tools": 4515,
+    "private_headers_checked": 64,
+    "driver_sha256": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+    "new_model_calls": 0,
+    "new_cloud_calls": 0,
+    "data_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b"
+  },
+  "cloud_paid_calls": 0,
+  "dependency_sha256": {
+    "native_independent_goal_episodes.py": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+    "native_independent_goal_qualification.py": "49ef8b9ebba98b713a585a9d41ae6a7e41d99a951972787527ba18a0a1d9ecba",
+    "native_cooperation_episodes.py": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6",
+    "light_npc_episodes.py": "0063aecfce03d3845ebd5e988238db175e00a1605478777f51e50d8cd0d194b5",
+    "native_rule_execution.py": "a88c24e0713a8ace106f6ceeabaa6894f2a46da7dd2ec56925c9c9834307a444",
+    "commitment_decisions_v2.py": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec",
+    "light_native_gate.py": "61c5d1b155b440c9cfd764d5f9836bf51263f807ee47a20af2e0bca7b3ce8f24"
+  }
+}

@@ -8,7 +8,9 @@
 
 ## 每次接手优先阅读
 
-**2026-10-16当前已获用户明确推进授权：** [E81](experiments/E81-authored-cooperation-and-partner-response.md)全126双作者原图/504逻辑episode完成（16611本地calls/3.45956GPUh）；[E82](experiments/E82-minecraft-original-cooperation-baseline.md)原Minecraft资源交接→书架制作CPU链已完成；[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)原paper-role归还/奖励重建切片2完整episode/16本地请求及独立物理读回完成，server/GPU已释放。两路径最终交换但提前奖励/重复结清，P1也能拒借；单角色不当总体机制。当前[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)只CPU检查完整7486作者quests/1787源图，超越Give同物限制，找原世界自带的双向前提与不同合作办法；模型配置/范围须实际资格后首推理前冻结。读实际manifest/进程，不重跑已结束队列。不围Alaric加提示网格或预定方法。
+**2026-10-16用户新增要求：每次启动实验前，必须判断是否在局部优化、追逐局部现象。** 在实验卡写明：它回答原始中心问题的哪一部分、不同结果会改变什么研究判断、为什么不是上一例的提示/接口/指标微调；同时写最实际的局部化风险及如何从完整结果识别。扩大N、换模型/任务或增加条件本身不算研究价值。判断服务研究选择，不新增人为通过bar、不替人关闭idea，也不把必要的强基线驻留包装机制贡献。
+
+**2026-10-16当前已获用户明确推进授权：** [E81](experiments/E81-authored-cooperation-and-partner-response.md)全126双作者原图/504逻辑episode完成（16611本地calls/3.45956GPUh）；[E82](experiments/E82-minecraft-original-cooperation-baseline.md)原Minecraft资源交接→书架制作CPU链已完成；[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)原paper-role归还/奖励重建切片2完整episode/16本地请求及独立物理读回完成，server/GPU已释放。两路径最终交换但提前奖励/重复结清，P1也能拒借；单角色不当总体机制。当前[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)已完成全7486作者quests/1787图资格，两模型首完整profile/独立读回均PASS，按冻结原设置全32对/23图×两seed运行；两张单卡，不扩提示条件。新driver/data/依赖首模型前已冻结；metric未知及初态已满足单列，不用both flags代替合作成功。读实际manifest/进程，不重跑已结束队列。不围Alaric加提示网格或预定方法。
 
 **2026-10-16用户再次质疑研究尺度：** 已承认E80仍沿用同类物品索要，应用审计没有充分改变实验优先级。先读README“当前证据与研究判断”。不要将“用途采纳/执行/修订”再细分就视为科学推进；后续证据围绕NPC自身目的、玩家不同合作办法与真实后果的关系判断价值，已有可靠执行与测量作为底座。不新增同类提示/动作分解队列，不凭相关工作关闭idea或擅改状态；正文仍暂缓。本次复盘0新增模型/GPU/API调用。
 

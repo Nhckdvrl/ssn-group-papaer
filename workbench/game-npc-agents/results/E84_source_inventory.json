@@ -1,0 +1,174 @@
+{
+  "experiment": "E84",
+  "status": "COMPLETE_STATIC_SOURCE_INVENTORY",
+  "scope": "All7486 original authored quests, structural role/goal/ownership relations only; no event execution or model calls.",
+  "source_archive": "/home/xiang/.cache/game-npc-research/quest_stems.tar.gz",
+  "source_archive_sha256": "743d9a9dc85e9fd7737c6cb51762deae684382de326bf724cde5b72bcf7c7c7d",
+  "reproduction_script": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_independent_goal_source_inventory.py",
+  "reproduction_script_sha256": "ea14405fbca027314e1d6dbd7b20d613b80a0544c08b72d0492dd257c32f7c4b",
+  "reproduction_command": "env PYTHONHASHSEED=0 PYTHONPATH=/home/xiang/.cache/game-npc-research/deps /home/xiang/miniconda3/envs/fgvd/bin/python workbench/game-npc-agents/scripts/native_independent_goal_source_inventory.py --out <new-cache-directory> --frozen-bindings /home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl",
+  "output_policy": "Required --out, refuses an existing directory. Frozen bindings optional for fresh builds; supplied for byte-exact recovery of this recorded inventory. Source graphs/full quests are cache-only, not copied into git.",
+  "original_actual_run": {
+    "script": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source_inventory.py",
+    "script_sha256": "95d7b8a7604d2aa22333964ac8e6e96d9c9c0296ea54ef45863dd19701698740",
+    "summary": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/summary.json",
+    "summary_sha256": "e54b00cac532a4c7fcaf168f4328de81afa6892889df6291c9b7bec2043a4398",
+    "wall_seconds": 9.024314565001987
+  },
+  "POST_HOC_binding_alternatives": {
+    "scope": "Added after first scan at reviewer request; retains all same-name alternatives and changes no initial candidate selection. Integrated into tracked builder.",
+    "rows": 7467,
+    "surface_ambiguous_quests": 236,
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/binding_alternatives.jsonl",
+    "sha256": "eabf3389839c8057531b44fff65fc5c9742285c1db08f0b81be2e8fba82e68af",
+    "script_sha256": "8402ad6057d3f8cd6029992671a08e6be4d532e0633857ee8b89749103aeeb24",
+    "new_event_executions": 0,
+    "model_calls": 0
+  },
+  "counts": {
+    "authored_quests": 7486,
+    "raw_graphs": 1787,
+    "surface_ambiguous_quests": 236,
+    "bound_quests": 7467,
+    "initial_native_goal_parse_success": 6126,
+    "goal_verb_get": 1910,
+    "goal_verb_hit": 956,
+    "goal_verb_give": 930,
+    "goal_verb_put": 397,
+    "goal_verb_follow": 560,
+    "all_different_actor_unordered_quest_pairs": 11153,
+    "co_present_unordered_quest_pairs": 11153,
+    "goal_verb_steal": 601,
+    "goal_verb_wear": 137,
+    "goal_verb_hug": 1089,
+    "structural_candidate_pairs": 2340,
+    "goal_verb_remove": 326,
+    "goal_verb_drop": 382,
+    "goal_verb_wield": 74,
+    "goal_verb_drink": 30,
+    "goal_verb_eat": 75,
+    "ambiguous_actor_quests": 19
+  },
+  "relationship_counts": {
+    "a_goal_item_owned_by_peer": {
+      "quest_pairs": 902,
+      "graphs": 364
+    },
+    "a_goal_target_owned_by_peer": {
+      "quest_pairs": 4,
+      "graphs": 3
+    },
+    "b_goal_item_owned_by_peer": {
+      "quest_pairs": 901,
+      "graphs": 357
+    },
+    "b_goal_target_owned_by_peer": {
+      "quest_pairs": 14,
+      "graphs": 6
+    },
+    "cross_directly_held_distinct_goal_items": {
+      "quest_pairs": 32,
+      "graphs": 23
+    },
+    "cross_owned_distinct_goal_items": {
+      "quest_pairs": 32,
+      "graphs": 23
+    },
+    "reciprocal_authored_give_distinct_items": {
+      "quest_pairs": 72,
+      "graphs": 63
+    },
+    "shared_goal_item": {
+      "quest_pairs": 1080,
+      "graphs": 581
+    }
+  },
+  "original_source_assets_used_by_native_qualification": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/graphs.jsonl": {
+      "sha256": "30bfb038d236d755b4b541735048ec708f5584414092090a503dcdd3b49cc10c",
+      "bytes": 28925764,
+      "rows": 1787
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl": {
+      "sha256": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d",
+      "bytes": 13879091,
+      "rows": 7467
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/binding_exclusions.jsonl": {
+      "sha256": "51bf51702cba5ba69fb98a99d90ca0851983507fdbca9c7e7b7481246f696147",
+      "bytes": 29738,
+      "rows": 19
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/co_present_pairs.jsonl": {
+      "sha256": "3f6ea94b23720bcefdfc85eb10cad162b03bc82a76a31723721a07fd3eadedcc",
+      "bytes": 4952558,
+      "rows": 11153
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/candidates.jsonl": {
+      "sha256": "1cad1834034c58c88c38850b0de17d4a055865bc730e1740b1a8dc6a9f6e7d8c",
+      "bytes": 11138724,
+      "rows": 2340
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/binding_alternatives.jsonl": {
+      "sha256": "eabf3389839c8057531b44fff65fc5c9742285c1db08f0b81be2e8fba82e68af",
+      "bytes": 4056995,
+      "rows": 7467
+    }
+  },
+  "reproduction": {
+    "verified_output": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source_frozen_repro",
+    "summary_sha256": "fe585e245bcc7ca8ec5aa327ecfdad04d8edc170b836da98f6d05013fa49eab7",
+    "wall_seconds": 6.643109201919287,
+    "frozen_bindings": {
+      "path": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl",
+      "sha256": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d"
+    },
+    "all_six_source_sidecars_byte_identical_to_initial_recorded_assets": {
+      "graphs.jsonl": true,
+      "quests.jsonl": true,
+      "binding_exclusions.jsonl": true,
+      "co_present_pairs.jsonl": true,
+      "candidates.jsonl": true,
+      "binding_alternatives.jsonl": true
+    },
+    "POST_HOC_name_binding_check": {
+      "source": "LIGHT structured_graph.py desc_to_nodes uses a set and sorts matches only by description length; equally named objects may bind differently between processes. Native parser/source unchanged.",
+      "two_free_parse_rebuilds": [
+        "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source_seeded_repro",
+        "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source_seeded_check"
+      ],
+      "different_quest_binding_records": 30,
+      "same_all_source_and_relation_counts": true,
+      "all_32_cross_owned_candidate_records_identical": true,
+      "resolution": "Do not declare a new semantic target. Preserve original frozen IDs and full surface alternatives; optional frozen-binding replay gives exact recorded assets."
+    }
+  },
+  "interpretation": [
+    "Native parsing used only to bind existing author goal entities. No event execution or physical qualification was run.",
+    "No source text or graph edits, invented goals/assets/rewards, semantic labels, model/API calls or GPU.",
+    "All same-graph different-author pairs retained in co_present_pairs.jsonl, including no structural cue; name does not impose same-room selection.",
+    "Role persona/motives/timeline are source text, not implemented completion flags.",
+    "Peer ownership may permit unilateral Steal and does not establish necessity of cooperation.",
+    "Structural reciprocal Give and shared-item cases are controls/candidates, not claimed mutual benefit."
+  ],
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "new_GPU_hours": 0,
+  "native_event_executions": 0,
+  "source_graphs_edited": false,
+  "cross_owned_source_index": {
+    "source_jsonl": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/candidates.jsonl",
+    "filter": "cross_owned_distinct_goal_items in relationship_types",
+    "quest_pairs": 32,
+    "independent_graphs": 23,
+    "source_pointer_fields": [
+      "candidate_id",
+      "graph_sha256",
+      "quest_a.file",
+      "quest_b.file",
+      "quest_a.item_id",
+      "quest_b.item_id"
+    ],
+    "scope": "Complete per-candidate IDs/author text remain in the linked cache. No full source graphs or quest texts copied into this git summary."
+  }
+}

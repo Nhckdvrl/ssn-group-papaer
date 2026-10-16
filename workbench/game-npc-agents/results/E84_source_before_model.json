@@ -1,0 +1,1397 @@
+{
+  "experiment": "E84",
+  "type": "SOURCE-ONLY INITIAL-STATE AND PURPOSE READBACK; no model trajectory or output read",
+  "timing": "Compiled after profile launch from the already frozen source corpus only; no outcome-based case selection or new registered claim.",
+  "full_source": {
+    "authored_quests": 7486,
+    "source_graphs": 1787,
+    "bound_quests": 7467,
+    "unbound_actor_annotations": 19
+  },
+  "frozen_cross_dataset": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+    "sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+    "cases": 32,
+    "graphs": 23
+  },
+  "dependency_freeze_verification": {
+    "native_cooperation_episodes.py": {
+      "registered": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6",
+      "current": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6"
+    },
+    "native_independent_goal_qualification.py": {
+      "registered": "49ef8b9ebba98b713a585a9d41ae6a7e41d99a951972787527ba18a0a1d9ecba",
+      "current": "49ef8b9ebba98b713a585a9d41ae6a7e41d99a951972787527ba18a0a1d9ecba"
+    },
+    "light_npc_episodes.py": {
+      "registered": "0063aecfce03d3845ebd5e988238db175e00a1605478777f51e50d8cd0d194b5",
+      "current": "0063aecfce03d3845ebd5e988238db175e00a1605478777f51e50d8cd0d194b5"
+    },
+    "native_rule_execution.py": {
+      "registered": "a88c24e0713a8ace106f6ceeabaa6894f2a46da7dd2ec56925c9c9834307a444",
+      "current": "a88c24e0713a8ace106f6ceeabaa6894f2a46da7dd2ec56925c9c9834307a444"
+    },
+    "commitment_decisions_v2.py": {
+      "registered": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec",
+      "current": "a696739ffd64ab65ae4aa65b764cbca3b03f221b5094d85fbe14f8043473aeec"
+    },
+    "light_native_gate.py": {
+      "registered": "61c5d1b155b440c9cfd764d5f9836bf51263f807ee47a20af2e0bca7b3ce8f24",
+      "current": "61c5d1b155b440c9cfd764d5f9836bf51263f807ee47a20af2e0bca7b3ce8f24"
+    },
+    "native_independent_goal_episodes.py": {
+      "registered": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae",
+      "current": "1d518770ee70313e1d1a1f108fd0609d740be167925682ccf5fd8fb1079c09ae"
+    }
+  },
+  "full_bound_corpus_initial_relations": {
+    "counts": {
+      "authored_bindings": 7467,
+      "verb:get": 1910,
+      "acquisition_relation_already_true:False": 2369,
+      "verb:hit": 956,
+      "verb:give": 930,
+      "direct_recipient_custody_already_true:False": 814,
+      "ultimate_recipient_custody_already_true:False": 814,
+      "verb:put": 397,
+      "in_authored_container_already_true:None": 31,
+      "verb:follow": 560,
+      "verb:steal": 601,
+      "verb:wear": 137,
+      "authored_equipment_mode_already_true:False": 200,
+      "verb:hug": 1089,
+      "verb:remove": 326,
+      "own_object_already_unequipped:False": 306,
+      "acquisition_relation_already_true:None": 60,
+      "verb:drop": 382,
+      "actor_already_not_owning_source_object:None": 21,
+      "source_already_on_current_room_floor:None": 21,
+      "source_equipped_by_authored_actor:None": 21,
+      "in_authored_container_already_true:False": 366,
+      "verb:wield": 74,
+      "own_object_already_unequipped:None": 16,
+      "authored_equipment_mode_already_true:None": 3,
+      "actor_already_not_owning_source_object:False": 268,
+      "source_already_on_current_room_floor:False": 320,
+      "source_equipped_by_authored_actor:True": 7,
+      "source_equipped_by_authored_actor:False": 354,
+      "direct_recipient_custody_already_true:None": 53,
+      "ultimate_recipient_custody_already_true:None": 53,
+      "acquisition_relation_already_true:True": 82,
+      "actor_already_not_owning_source_object:True": 93,
+      "source_already_on_current_room_floor:True": 41,
+      "verb:drink": 30,
+      "source_in_VOID_without_actor_consumption_proof:False": 100,
+      "verb:eat": 75,
+      "authored_equipment_mode_already_true:True": 8,
+      "direct_recipient_custody_already_true:True": 63,
+      "ultimate_recipient_custody_already_true:True": 63,
+      "source_in_VOID_without_actor_consumption_proof:None": 5,
+      "own_object_already_unequipped:True": 4
+    },
+    "example_source_files": {
+      "source_equipped_by_authored_actor": [
+        "quest_stems/10288.json",
+        "quest_stems/10401.json",
+        "quest_stems/11379.json",
+        "quest_stems/13814.json",
+        "quest_stems/14253.json"
+      ],
+      "acquisition_relation_already_true": [
+        "quest_stems/10105.json",
+        "quest_stems/10106.json",
+        "quest_stems/10122.json",
+        "quest_stems/10213.json",
+        "quest_stems/10214.json"
+      ],
+      "actor_already_not_owning_source_object": [
+        "quest_stems/10389.json",
+        "quest_stems/10448.json",
+        "quest_stems/10617.json",
+        "quest_stems/10833.json",
+        "quest_stems/10907.json"
+      ],
+      "source_already_on_current_room_floor": [
+        "quest_stems/10389.json",
+        "quest_stems/10833.json",
+        "quest_stems/11046.json",
+        "quest_stems/11289.json",
+        "quest_stems/11336.json"
+      ],
+      "authored_equipment_mode_already_true": [
+        "quest_stems/10951.json",
+        "quest_stems/11579.json",
+        "quest_stems/12861.json",
+        "quest_stems/14875.json",
+        "quest_stems/15247.json"
+      ],
+      "direct_recipient_custody_already_true": [
+        "quest_stems/10124.json",
+        "quest_stems/10126.json",
+        "quest_stems/10896.json",
+        "quest_stems/11098.json",
+        "quest_stems/11161.json"
+      ],
+      "ultimate_recipient_custody_already_true": [
+        "quest_stems/10124.json",
+        "quest_stems/10126.json",
+        "quest_stems/10896.json",
+        "quest_stems/11098.json",
+        "quest_stems/11161.json"
+      ],
+      "own_object_already_unequipped": [
+        "quest_stems/14177.json",
+        "quest_stems/14506.json",
+        "quest_stems/15140.json",
+        "quest_stems/17178.json"
+      ]
+    }
+  },
+  "cross_32_actor_instances_initial_relations": {
+    "counts": {
+      "authored_bindings": 64,
+      "verb:put": 4,
+      "in_authored_container_already_true:False": 3,
+      "verb:get": 2,
+      "acquisition_relation_already_true:False": 35,
+      "verb:drop": 10,
+      "actor_already_not_owning_source_object:True": 10,
+      "source_already_on_current_room_floor:False": 10,
+      "source_equipped_by_authored_actor:False": 10,
+      "verb:eat": 2,
+      "source_in_VOID_without_actor_consumption_proof:False": 3,
+      "verb:steal": 33,
+      "verb:give": 11,
+      "direct_recipient_custody_already_true:True": 8,
+      "ultimate_recipient_custody_already_true:True": 8,
+      "direct_recipient_custody_already_true:False": 3,
+      "ultimate_recipient_custody_already_true:False": 3,
+      "verb:drink": 1,
+      "in_authored_container_already_true:None": 1,
+      "verb:wear": 1,
+      "authored_equipment_mode_already_true:False": 1
+    },
+    "example_source_files": {
+      "actor_already_not_owning_source_object": [
+        "quest_stems/11159.json",
+        "quest_stems/12865.json",
+        "quest_stems/14588.json",
+        "quest_stems/15629.json",
+        "quest_stems/16381.json"
+      ],
+      "direct_recipient_custody_already_true": [
+        "quest_stems/11161.json",
+        "quest_stems/12099.json",
+        "quest_stems/14853.json",
+        "quest_stems/15100.json",
+        "quest_stems/16711.json"
+      ],
+      "ultimate_recipient_custody_already_true": [
+        "quest_stems/11161.json",
+        "quest_stems/12099.json",
+        "quest_stems/14853.json",
+        "quest_stems/15100.json",
+        "quest_stems/16711.json"
+      ]
+    }
+  },
+  "conceptual_readback": [
+    "Cross ownership of two action arguments is not proof that two new beneficial transfers are needed. Some Give recipients already own the item at the start; a fresh Give event and an already-true delivery relation are different measurements.",
+    "Initial recipient custody is not evidence that this NPC previously gifted the item or fulfilled a promise. It establishes only an already-true present possession relation; historical Give and new useful cooperation remain distinct.",
+    "All authored Drop targets in this cross cohort begin with the other character, so the speaker already does not hold that source object. For explicit free-hand/remove-sword/hat-off subconditions, retrieving it merely to drop it would recreate an already-absent burden. This does not prove a potion, exorcism, seat reservation, bird observation or alliance is complete.",
+    "Some Steal motivations are covert reclaiming, taking enemy arms, revenge, poisoning or cult information gathering. A CPU path that lets both original atomic actions occur is not a common-purpose or mutual-benefit label.",
+    "The original separate authors supplied personas, motives, timelines and action targets on a shared static graph. The composed dual-role task keeps those facts, including tensions and already-true relations; it is not an author-tested simultaneous cooperative quest.",
+    "Every one of the 32 source pairs remains in evaluation. Unknown target IDs stay unknown; no missing action, failure or success label is inferred from an unobservable higher-purpose story."
+  ],
+  "cases": [
+    {
+      "case_id": "4e6fdf6cb936fb3a40d222d2",
+      "actors": [
+        {
+          "file": "quest_stems/11128.json",
+          "actor_id": "follower",
+          "goal": "put shoes in wood",
+          "item_id": "shoes_12",
+          "initial_direct_parent": "founder",
+          "initial_ultimate_owner": "founder",
+          "initial_equipped_mode": "wear",
+          "target_id": "wood_6",
+          "objective_relation_flags": {
+            "in_authored_container_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/11135.json",
+          "actor_id": "founder",
+          "goal": "get sack",
+          "item_id": "sack_8",
+          "initial_direct_parent": "follower",
+          "initial_ultimate_owner": "follower",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "160742ded667ed21c3ba1c56",
+      "actors": [
+        {
+          "file": "quest_stems/12865.json",
+          "actor_id": "friend",
+          "goal": "drop a sleeping bag",
+          "item_id": "a sleeping bag_2",
+          "initial_direct_parent": "visitor",
+          "initial_ultimate_owner": "visitor",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Not owning the sleeping bag does not show that the salesman haul was examined or the tent purchased; Drop is an authored primitive, not a complete plan for these purposes.",
+          "short_motivation_source_text": "I would like to examine the salesman's haul"
+        },
+        {
+          "file": "quest_stems/13708.json",
+          "actor_id": "visitor",
+          "goal": "eat Chocolate",
+          "item_id": "chocolate_9",
+          "initial_direct_parent": "friend",
+          "initial_ultimate_owner": "friend",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "source_in_VOID_without_actor_consumption_proof": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "63e1c3c7db75553de0dba339",
+      "actors": [
+        {
+          "file": "quest_stems/13676.json",
+          "actor_id": "friend",
+          "goal": "steal a sleeping bag from visitor",
+          "item_id": "a sleeping bag_2",
+          "initial_direct_parent": "visitor",
+          "initial_ultimate_owner": "visitor",
+          "initial_equipped_mode": null,
+          "target_id": "visitor",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/13708.json",
+          "actor_id": "visitor",
+          "goal": "eat Chocolate",
+          "item_id": "chocolate_9",
+          "initial_direct_parent": "friend",
+          "initial_ultimate_owner": "friend",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "source_in_VOID_without_actor_consumption_proof": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "c0114b3cc18c9438d33aa4ee",
+      "actors": [
+        {
+          "file": "quest_stems/13378.json",
+          "actor_id": "chicken",
+          "goal": "steal bag from outlaw",
+          "item_id": "bag_5",
+          "initial_direct_parent": "outlaw",
+          "initial_ultimate_owner": "outlaw",
+          "initial_equipped_mode": null,
+          "target_id": "outlaw",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/13472.json",
+          "actor_id": "outlaw",
+          "goal": "steal worm from chicken",
+          "item_id": "worm_2",
+          "initial_direct_parent": "chicken",
+          "initial_ultimate_owner": "chicken",
+          "initial_equipped_mode": null,
+          "target_id": "chicken",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "b304ce412e4d9ecee4a4f197",
+      "actors": [
+        {
+          "file": "quest_stems/14247.json",
+          "actor_id": "sailor",
+          "goal": "steal a knife from fisherman",
+          "item_id": "a knife_12",
+          "initial_direct_parent": "fisherman",
+          "initial_ultimate_owner": "fisherman",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/14853.json",
+          "actor_id": "fisherman",
+          "goal": "give fishing hook to sailor",
+          "item_id": "fishing hook_2",
+          "initial_direct_parent": "sailor",
+          "initial_ultimate_owner": "sailor",
+          "initial_equipped_mode": null,
+          "target_id": "sailor",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "c22bb96e1d30526d715cc3e4",
+      "actors": [
+        {
+          "file": "quest_stems/14247.json",
+          "actor_id": "sailor",
+          "goal": "steal a knife from fisherman",
+          "item_id": "a knife_12",
+          "initial_direct_parent": "fisherman",
+          "initial_ultimate_owner": "fisherman",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/15118.json",
+          "actor_id": "fisherman",
+          "goal": "put fishing hook in pouch",
+          "item_id": "fishing hook_2",
+          "initial_direct_parent": "sailor",
+          "initial_ultimate_owner": "sailor",
+          "initial_equipped_mode": null,
+          "target_id": "pouch_7",
+          "objective_relation_flags": {
+            "in_authored_container_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "71f35f196bb0f33ce94d7caf",
+      "actors": [
+        {
+          "file": "quest_stems/14933.json",
+          "actor_id": "soldier",
+          "goal": "steal lance from knight",
+          "item_id": "lance_4",
+          "initial_direct_parent": "knight",
+          "initial_ultimate_owner": "knight",
+          "initial_equipped_mode": null,
+          "target_id": "knight",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/15395.json",
+          "actor_id": "knight",
+          "goal": "steal family heirloom from soldier",
+          "item_id": "family heirloom_8",
+          "initial_direct_parent": "soldier",
+          "initial_ultimate_owner": "soldier",
+          "initial_equipped_mode": null,
+          "target_id": "soldier",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "30327cfdb09483c64a2f3184",
+      "actors": [
+        {
+          "file": "quest_stems/13811.json",
+          "actor_id": "soldier",
+          "goal": "steal arrow from archer",
+          "item_id": "arrow_3",
+          "initial_direct_parent": "archer",
+          "initial_ultimate_owner": "archer",
+          "initial_equipped_mode": null,
+          "target_id": "archer",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/13812.json",
+          "actor_id": "archer",
+          "goal": "steal a treasure map from soldier",
+          "item_id": "a treasure map_9",
+          "initial_direct_parent": "soldier",
+          "initial_ultimate_owner": "soldier",
+          "initial_equipped_mode": null,
+          "target_id": "soldier",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "12c39f0380b4b524b35b1c58",
+      "actors": [
+        {
+          "file": "quest_stems/15182.json",
+          "actor_id": "the witch",
+          "goal": "steal leech from doctor",
+          "item_id": "leech_2",
+          "initial_direct_parent": "doctor",
+          "initial_ultimate_owner": "doctor",
+          "initial_equipped_mode": null,
+          "target_id": "doctor",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/16899.json",
+          "actor_id": "doctor",
+          "goal": "steal staff from the witch",
+          "item_id": "staff_4",
+          "initial_direct_parent": "the witch",
+          "initial_ultimate_owner": "the witch",
+          "initial_equipped_mode": null,
+          "target_id": "the witch",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "2b678277fe25a8314a8e4284",
+      "actors": [
+        {
+          "file": "quest_stems/13756.json",
+          "actor_id": "monk",
+          "goal": "steal coin from the empress",
+          "item_id": "coin_6",
+          "initial_direct_parent": "the empress",
+          "initial_ultimate_owner": "the empress",
+          "initial_equipped_mode": null,
+          "target_id": "the empress",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/13780.json",
+          "actor_id": "the empress",
+          "goal": "steal pouch from monk",
+          "item_id": "pouch_2",
+          "initial_direct_parent": "monk",
+          "initial_ultimate_owner": "monk",
+          "initial_equipped_mode": null,
+          "target_id": "monk",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "19368d9aeeb3a5faf9371be0",
+      "actors": [
+        {
+          "file": "quest_stems/17071.json",
+          "actor_id": "the princess who lives in the castle and can't escape.",
+          "goal": "steal herb from camper",
+          "item_id": "herb_7",
+          "initial_direct_parent": "camper",
+          "initial_ultimate_owner": "camper",
+          "initial_equipped_mode": null,
+          "target_id": "camper",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/17274.json",
+          "actor_id": "camper",
+          "goal": "steal book from the princess who lives in the castle and can't escape.",
+          "item_id": "book_2",
+          "initial_direct_parent": "the princess who lives in the castle and can't escape.",
+          "initial_ultimate_owner": "the princess who lives in the castle and can't escape.",
+          "initial_equipped_mode": null,
+          "target_id": "the princess who lives in the castle and can't escape.",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "9ea064ba94eba3ef30efbf3b",
+      "actors": [
+        {
+          "file": "quest_stems/16311.json",
+          "actor_id": "jester",
+          "goal": "give bag to knight",
+          "item_id": "bag_5",
+          "initial_direct_parent": "soldier",
+          "initial_ultimate_owner": "soldier",
+          "initial_equipped_mode": null,
+          "target_id": "knight_13_knight",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": false,
+            "ultimate_recipient_custody_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/17371.json",
+          "actor_id": "soldier",
+          "goal": "drop Ball",
+          "item_id": "ball_2",
+          "initial_direct_parent": "jester",
+          "initial_ultimate_owner": "jester",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Short motive explicitly wants both hands for inspecting a sword. The source Ball is already not held by this soldier; inspecting a sword with both hands has no separate source completion flag.",
+          "short_motivation_source_text": "I want to hold up a sword here with both hands to check it out"
+        }
+      ]
+    },
+    {
+      "case_id": "6054c8261063a5fc0ebf1e81",
+      "actors": [
+        {
+          "file": "quest_stems/16878.json",
+          "actor_id": "jester",
+          "goal": "steal bag from soldier",
+          "item_id": "bag_5",
+          "initial_direct_parent": "soldier",
+          "initial_ultimate_owner": "soldier",
+          "initial_equipped_mode": null,
+          "target_id": "soldier",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/17371.json",
+          "actor_id": "soldier",
+          "goal": "drop Ball",
+          "item_id": "ball_2",
+          "initial_direct_parent": "jester",
+          "initial_ultimate_owner": "jester",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Short motive explicitly wants both hands for inspecting a sword. The source Ball is already not held by this soldier; inspecting a sword with both hands has no separate source completion flag.",
+          "short_motivation_source_text": "I want to hold up a sword here with both hands to check it out"
+        }
+      ]
+    },
+    {
+      "case_id": "ce1afd26d2282dd531e03daf",
+      "actors": [
+        {
+          "file": "quest_stems/15100.json",
+          "actor_id": "fisherman",
+          "goal": "give treat to child",
+          "item_id": "treat_7",
+          "initial_direct_parent": "child",
+          "initial_ultimate_owner": "child",
+          "initial_equipped_mode": null,
+          "target_id": "child",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/16852.json",
+          "actor_id": "child",
+          "goal": "steal fishing rod from fisherman",
+          "item_id": "fishing rod_2",
+          "initial_direct_parent": "fisherman",
+          "initial_ultimate_owner": "fisherman",
+          "initial_equipped_mode": null,
+          "target_id": "fisherman",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "649ee9013d2f0e4b87a648d5",
+      "actors": [
+        {
+          "file": "quest_stems/16595.json",
+          "actor_id": "proprietor",
+          "goal": "put fruit in pouch",
+          "item_id": "fruit_7",
+          "initial_direct_parent": "townsperson",
+          "initial_ultimate_owner": "townsperson",
+          "initial_equipped_mode": null,
+          "target_id": "pouch_11",
+          "objective_relation_flags": {
+            "in_authored_container_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/17127.json",
+          "actor_id": "townsperson",
+          "goal": "steal pouch from proprietor",
+          "item_id": "pouch_11",
+          "initial_direct_parent": "proprietor",
+          "initial_ultimate_owner": "proprietor",
+          "initial_equipped_mode": null,
+          "target_id": "proprietor",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "cecdf3fdd16a52ff26dbface",
+      "actors": [
+        {
+          "file": "quest_stems/14606.json",
+          "actor_id": "priest",
+          "goal": "steal coat from many",
+          "item_id": "coat_12",
+          "initial_direct_parent": "many",
+          "initial_ultimate_owner": "many",
+          "initial_equipped_mode": "wear",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/16533.json",
+          "actor_id": "many",
+          "goal": "drink Wine",
+          "item_id": "wine_15",
+          "initial_direct_parent": "priest",
+          "initial_ultimate_owner": "priest",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "source_in_VOID_without_actor_consumption_proof": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "88ffa8b1a5c36b21cb91b760",
+      "actors": [
+        {
+          "file": "quest_stems/11159.json",
+          "actor_id": "pope",
+          "goal": "drop sword",
+          "item_id": "sword_2",
+          "initial_direct_parent": "member",
+          "initial_ultimate_owner": "member",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Short motive names dropping the sword as a prerequisite to making a potion. The Pope already neither holds nor wields this source sword; making the potion/exorcism is not thereby completed.",
+          "short_motivation_source_text": "I need to drop my sword so I can make a potion"
+        },
+        {
+          "file": "quest_stems/11161.json",
+          "actor_id": "member",
+          "goal": "give bible to pope",
+          "item_id": "bible_4",
+          "initial_direct_parent": "pope",
+          "initial_ultimate_owner": "pope",
+          "initial_equipped_mode": null,
+          "target_id": "pope",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "c2c8f7b33027dae97e7853be",
+      "actors": [
+        {
+          "file": "quest_stems/11159.json",
+          "actor_id": "pope",
+          "goal": "drop sword",
+          "item_id": "sword_2",
+          "initial_direct_parent": "member",
+          "initial_ultimate_owner": "member",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Short motive names dropping the sword as a prerequisite to making a potion. The Pope already neither holds nor wields this source sword; making the potion/exorcism is not thereby completed.",
+          "short_motivation_source_text": "I need to drop my sword so I can make a potion"
+        },
+        {
+          "file": "quest_stems/11162.json",
+          "actor_id": "member",
+          "goal": "steal bible from pope",
+          "item_id": "bible_4",
+          "initial_direct_parent": "pope",
+          "initial_ultimate_owner": "pope",
+          "initial_equipped_mode": null,
+          "target_id": "pope",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "c20e9fc9b435d3c4cfee20ca",
+      "actors": [
+        {
+          "file": "quest_stems/14334.json",
+          "actor_id": "groom",
+          "goal": "steal golden goblet from the king",
+          "item_id": "golden goblet_7",
+          "initial_direct_parent": "the king",
+          "initial_ultimate_owner": "the king",
+          "initial_equipped_mode": null,
+          "target_id": "the king",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/14476.json",
+          "actor_id": "the king",
+          "goal": "steal hammer from groom",
+          "item_id": "hammer_3",
+          "initial_direct_parent": "groom",
+          "initial_ultimate_owner": "groom",
+          "initial_equipped_mode": null,
+          "target_id": "groom",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "45f11acd0b3a11300be74178",
+      "actors": [
+        {
+          "file": "quest_stems/14334.json",
+          "actor_id": "groom",
+          "goal": "steal golden goblet from the king",
+          "item_id": "golden goblet_7",
+          "initial_direct_parent": "the king",
+          "initial_ultimate_owner": "the king",
+          "initial_equipped_mode": null,
+          "target_id": "the king",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/14873.json",
+          "actor_id": "the king",
+          "goal": "steal ritual dagger from groom",
+          "item_id": "ritual dagger_5",
+          "initial_direct_parent": "groom",
+          "initial_ultimate_owner": "groom",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "367e2d6963c81915881868c4",
+      "actors": [
+        {
+          "file": "quest_stems/15780.json",
+          "actor_id": "hunter",
+          "goal": "put coin pouch in pouch",
+          "item_id": "coin pouch_7",
+          "initial_direct_parent": "duke",
+          "initial_ultimate_owner": "duke",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "in_authored_container_already_true": null
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/17137.json",
+          "actor_id": "duke",
+          "goal": "give fur to chamber maid",
+          "item_id": "fur_11",
+          "initial_direct_parent": "hunter",
+          "initial_ultimate_owner": "hunter",
+          "initial_equipped_mode": null,
+          "target_id": "chamber maid_13_chamber maid",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": false,
+            "ultimate_recipient_custody_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "3ab40a1b5e4c594ba69ccb6a",
+      "actors": [
+        {
+          "file": "quest_stems/17113.json",
+          "actor_id": "hunter",
+          "goal": "steal coin pouch from duke",
+          "item_id": "coin pouch_7",
+          "initial_direct_parent": "duke",
+          "initial_ultimate_owner": "duke",
+          "initial_equipped_mode": null,
+          "target_id": "duke",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/17137.json",
+          "actor_id": "duke",
+          "goal": "give fur to chamber maid",
+          "item_id": "fur_11",
+          "initial_direct_parent": "hunter",
+          "initial_ultimate_owner": "hunter",
+          "initial_equipped_mode": null,
+          "target_id": "chamber maid_13_chamber maid",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": false,
+            "ultimate_recipient_custody_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "9576f9a9c894679cc02ec19f",
+      "actors": [
+        {
+          "file": "quest_stems/9024.json",
+          "actor_id": "leader",
+          "goal": "give bone to the king's dog",
+          "item_id": "bone_16",
+          "initial_direct_parent": "the king's dog",
+          "initial_ultimate_owner": "the king's dog",
+          "initial_equipped_mode": null,
+          "target_id": "the king's dog",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/9028.json",
+          "actor_id": "the king's dog",
+          "goal": "give scepter to leader",
+          "item_id": "scepter_12",
+          "initial_direct_parent": "leader",
+          "initial_ultimate_owner": "leader",
+          "initial_equipped_mode": null,
+          "target_id": "leader",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "28b660e52e49c9d4f709beb9",
+      "actors": [
+        {
+          "file": "quest_stems/14244.json",
+          "actor_id": "hoakbera",
+          "goal": "steal shield from guard",
+          "item_id": "shield_4",
+          "initial_direct_parent": "guard",
+          "initial_ultimate_owner": "guard",
+          "initial_equipped_mode": null,
+          "target_id": "guard",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/16381.json",
+          "actor_id": "guard",
+          "goal": "drop hats",
+          "item_id": "hats_8",
+          "initial_direct_parent": "hoakbera",
+          "initial_ultimate_owner": "hoakbera",
+          "initial_equipped_mode": "wear",
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Short motive asks to take the hat off before entering the outpost. This guard already does not wear or hold the source hats; entering the outpost or concluding an alliance has no demonstrated flag.",
+          "short_motivation_source_text": "I need to take my hat off to enter the military outpost"
+        }
+      ]
+    },
+    {
+      "case_id": "54bb561ee0d6de1b73c8c057",
+      "actors": [
+        {
+          "file": "quest_stems/14588.json",
+          "actor_id": "turtles",
+          "goal": "drop google",
+          "item_id": "google_10",
+          "initial_direct_parent": "swimmer",
+          "initial_ultimate_owner": "swimmer",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Not owning the source object named google does not prove the bird destination was observed. Preserve the source spelling and do not invent a viewing tool or completion flag.",
+          "short_motivation_source_text": "I wanted to see where the bird is headed"
+        },
+        {
+          "file": "quest_stems/15654.json",
+          "actor_id": "swimmer",
+          "goal": "get worm",
+          "item_id": "worm_8",
+          "initial_direct_parent": "turtles",
+          "initial_ultimate_owner": "turtles",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "a3fd584d946acc8f2ee8429b",
+      "actors": [
+        {
+          "file": "quest_stems/14588.json",
+          "actor_id": "turtles",
+          "goal": "drop google",
+          "item_id": "google_10",
+          "initial_direct_parent": "swimmer",
+          "initial_ultimate_owner": "swimmer",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Not owning the source object named google does not prove the bird destination was observed. Preserve the source spelling and do not invent a viewing tool or completion flag.",
+          "short_motivation_source_text": "I wanted to see where the bird is headed"
+        },
+        {
+          "file": "quest_stems/16911.json",
+          "actor_id": "swimmer",
+          "goal": "steal worm from turtles",
+          "item_id": "worm_8",
+          "initial_direct_parent": "turtles",
+          "initial_ultimate_owner": "turtles",
+          "initial_equipped_mode": null,
+          "target_id": "turtles",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    },
+    {
+      "case_id": "646778d4d5156641b9677fd2",
+      "actors": [
+        {
+          "file": "quest_stems/11857.json",
+          "actor_id": "bird",
+          "goal": "steal sickle from god",
+          "item_id": "sickle_6",
+          "initial_direct_parent": "god",
+          "initial_ultimate_owner": "god",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/12099.json",
+          "actor_id": "god",
+          "goal": "give nut to bird",
+          "item_id": "nut_3",
+          "initial_direct_parent": "bird",
+          "initial_ultimate_owner": "bird",
+          "initial_equipped_mode": null,
+          "target_id": "bird",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "e60e554dc4c086afafdf65ea",
+      "actors": [
+        {
+          "file": "quest_stems/13867.json",
+          "actor_id": "they are not quite outcast",
+          "goal": "steal sword from person",
+          "item_id": "sword_8",
+          "initial_direct_parent": "person",
+          "initial_ultimate_owner": "person",
+          "initial_equipped_mode": "wield",
+          "target_id": null,
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/15629.json",
+          "actor_id": "person",
+          "goal": "drop bag",
+          "item_id": "bag_11",
+          "initial_direct_parent": "they are not quite outcast",
+          "initial_ultimate_owner": "they are not quite outcast",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Not owning the bag does not prove a back-row seat has been reserved. Source Drop has no specified seat or occupancy flag.",
+          "short_motivation_source_text": "I want to reserve a seat for myself in the back rows"
+        }
+      ]
+    },
+    {
+      "case_id": "55fa1228e279a4bcc3268248",
+      "actors": [
+        {
+          "file": "quest_stems/14777.json",
+          "actor_id": "they are not quite outcast",
+          "goal": "steal voodoo doll from person",
+          "item_id": "voodoo doll_7",
+          "initial_direct_parent": "person",
+          "initial_ultimate_owner": "person",
+          "initial_equipped_mode": null,
+          "target_id": "person",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/15629.json",
+          "actor_id": "person",
+          "goal": "drop bag",
+          "item_id": "bag_11",
+          "initial_direct_parent": "they are not quite outcast",
+          "initial_ultimate_owner": "they are not quite outcast",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "actor_already_not_owning_source_object": true,
+            "source_already_on_current_room_floor": false,
+            "source_equipped_by_authored_actor": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false,
+          "drop_source_context": "Not owning the bag does not prove a back-row seat has been reserved. Source Drop has no specified seat or occupancy flag.",
+          "short_motivation_source_text": "I want to reserve a seat for myself in the back rows"
+        }
+      ]
+    },
+    {
+      "case_id": "0061d077087bc80453ff4f0d",
+      "actors": [
+        {
+          "file": "quest_stems/16205.json",
+          "actor_id": "lord",
+          "goal": "steal family heirloom from friends",
+          "item_id": "family heirloom_7",
+          "initial_direct_parent": "friends",
+          "initial_ultimate_owner": "friends",
+          "initial_equipped_mode": null,
+          "target_id": "friends",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/16711.json",
+          "actor_id": "friends",
+          "goal": "give paper to lord",
+          "item_id": "paper_3",
+          "initial_direct_parent": "lord",
+          "initial_ultimate_owner": "lord",
+          "initial_equipped_mode": null,
+          "target_id": "lord",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "67a7d824b520861490983197",
+      "actors": [
+        {
+          "file": "quest_stems/16295.json",
+          "actor_id": "lord",
+          "goal": "wear family heirloom",
+          "item_id": "family heirloom_7",
+          "initial_direct_parent": "friends",
+          "initial_ultimate_owner": "friends",
+          "initial_equipped_mode": null,
+          "target_id": null,
+          "objective_relation_flags": {
+            "authored_equipment_mode_already_true": false
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        },
+        {
+          "file": "quest_stems/16711.json",
+          "actor_id": "friends",
+          "goal": "give paper to lord",
+          "item_id": "paper_3",
+          "initial_direct_parent": "lord",
+          "initial_ultimate_owner": "lord",
+          "initial_equipped_mode": null,
+          "target_id": "lord",
+          "objective_relation_flags": {
+            "direct_recipient_custody_already_true": true,
+            "ultimate_recipient_custody_already_true": true
+          },
+          "initial_native_text_parse_legal": false,
+          "initial_typed_menu_and_guard_legal": false
+        }
+      ]
+    },
+    {
+      "case_id": "fb35734fac676deb926aa2c8",
+      "actors": [
+        {
+          "file": "quest_stems/6398.json",
+          "actor_id": "knight in training_6",
+          "goal": "steal large pile of hay from horse trainer",
+          "item_id": "large pile of hay_14",
+          "initial_direct_parent": "horse trainer_13",
+          "initial_ultimate_owner": "horse trainer_13",
+          "initial_equipped_mode": null,
+          "target_id": "horse trainer_13",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        },
+        {
+          "file": "quest_stems/6399.json",
+          "actor_id": "horse trainer_13",
+          "goal": "steal cloth coin purse from knight in training",
+          "item_id": "cloth coin purse_7",
+          "initial_direct_parent": "knight in training_6",
+          "initial_ultimate_owner": "knight in training_6",
+          "initial_equipped_mode": null,
+          "target_id": "knight in training_6",
+          "objective_relation_flags": {
+            "acquisition_relation_already_true": false
+          },
+          "initial_native_text_parse_legal": true,
+          "initial_typed_menu_and_guard_legal": true
+        }
+      ]
+    }
+  ],
+  "full_raw_initial_facts": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/source_initial_goal_facts.jsonl",
+    "sha256": "8edc0671bf687da448207d518ff6e31925b90cd5a9b399f377ce8d1ddac37711",
+    "rows": 7467
+  },
+  "source_hashes": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/graphs.jsonl": "30bfb038d236d755b4b541735048ec708f5584414092090a503dcdd3b49cc10c",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/summary.json": "e54b00cac532a4c7fcaf168f4328de81afa6892889df6291c9b7bec2043a4398"
+  },
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "GPU_hours": 0,
+  "frozen_dependency_or_dataset_edits": false,
+  "full_source_only_readback_asset": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/source_before_model_full.json",
+    "sha256": "baf54e7977df4f215e8e1cf8c8202de41bf2bd49354d88fa4fde754087f9ad84"
+  }
+}

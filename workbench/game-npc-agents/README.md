@@ -2,7 +2,7 @@
 
 **状态：PROPOSED；用户选定本轮优先矿区 A：人物设定、真实利益与战略行为的关系。** 全局ACTIVE状态不变；安全、人格漂移、社会互动和游戏经济仍开放。允许结果显示Persona对真实行动很有效。
 
-**执行：E81双方原作者目的的126图/504逻辑episode完成；E82原Minecraft多步制作完成；E83两条完整角色交互已跑完；E84正在完整7486作者quests/1787源图上检查双向前提及替代合作。** 无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务与结果](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [E84原任务资格](experiments/E84-independent-goals-and-alternative-cooperation.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
+**执行：E81双方原作者目的的126图/504逻辑episode完成；E82原Minecraft多步制作完成；E83两条完整角色交互已跑完；E84全7486作者quests/1787图完成资格，保全交叉持物32对/23图、两模型两seed完整基线正在运行。** 无人物提示词网格。[E81卡](experiments/E81-authored-cooperation-and-partner-response.md) · [E82原生见证](experiments/E82-minecraft-original-cooperation-baseline.md) · [E83角色任务与结果](experiments/E83-npc-quest-receipt-and-reward-baseline.md) · [E84原任务资格](experiments/E84-independent-goals-and-alternative-cooperation.md) · [合作近邻与真实玩家日志](knowledge/persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。I04保持PROMISING，论文正文暂缓。
 
 中心问题：NPC面对自身目标、角色规范、社会关系、玩家请求与可见游戏状态，怎样形成选择并产生实际后果？新颖性按整体问题与证据链判断，不要求每个工具组件前所未有。
 

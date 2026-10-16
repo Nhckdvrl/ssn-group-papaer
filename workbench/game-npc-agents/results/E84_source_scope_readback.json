@@ -1,0 +1,984 @@
+{
+  "status": "COMPLETE_INDEPENDENT_CPU_SOURCE_SCOPE_READBACK; native feasibility is a separate audit",
+  "date": "2026-10-16",
+  "corresponding": "E84 / I04 / P12; no claim upgrade",
+  "selection": "Purposive comparisons after complete static source inventory and before any E84 inference; no prevalence estimate or outcome-dependent scenario selection. These comparisons do not define a reduced model cohort.",
+  "source_facts": {
+    "archive_sha256": "743d9a9dc85e9fd7737c6cb51762deae684382de326bf724cde5b72bcf7c7c7d",
+    "all_source_counts": {
+      "authored_quests": 7486,
+      "raw_graphs": 1787,
+      "bound_quests": 7467,
+      "initial_native_goal_parse_success": 6126,
+      "goal_verb_get": 1910,
+      "goal_verb_hit": 956,
+      "goal_verb_give": 930,
+      "goal_verb_put": 397,
+      "goal_verb_follow": 560,
+      "all_different_actor_unordered_quest_pairs": 11153,
+      "co_present_unordered_quest_pairs": 11153,
+      "goal_verb_steal": 601,
+      "goal_verb_wear": 137,
+      "goal_verb_hug": 1089,
+      "structural_candidate_pairs": 2340,
+      "goal_verb_remove": 326,
+      "goal_verb_drop": 382,
+      "goal_verb_wield": 74,
+      "goal_verb_drink": 30,
+      "goal_verb_eat": 75,
+      "ambiguous_actor_quests": 19
+    },
+    "relationship_counts": {
+      "a_goal_item_owned_by_peer": {
+        "quest_pairs": 902,
+        "graphs": 364
+      },
+      "a_goal_target_owned_by_peer": {
+        "quest_pairs": 4,
+        "graphs": 3
+      },
+      "b_goal_item_owned_by_peer": {
+        "quest_pairs": 901,
+        "graphs": 357
+      },
+      "b_goal_target_owned_by_peer": {
+        "quest_pairs": 14,
+        "graphs": 6
+      },
+      "cross_directly_held_distinct_goal_items": {
+        "quest_pairs": 32,
+        "graphs": 23
+      },
+      "cross_owned_distinct_goal_items": {
+        "quest_pairs": 32,
+        "graphs": 23
+      },
+      "reciprocal_authored_give_distinct_items": {
+        "quest_pairs": 72,
+        "graphs": 63
+      },
+      "shared_goal_item": {
+        "quest_pairs": 1080,
+        "graphs": 581
+      }
+    },
+    "additional_exact_counts": {
+      "shared_item_get_or_steal_only": {
+        "pairs": 308,
+        "graphs": 251,
+        "goal_verb_pairs": {
+          "get|get": 187,
+          "get|steal": 59,
+          "steal|steal": 62
+        }
+      },
+      "cross_directly_held_distinct_items": {
+        "pairs": 32,
+        "graphs": 23,
+        "goal_verb_pairs": {
+          "drink|steal": 1,
+          "drop|eat": 1,
+          "drop|get": 1,
+          "drop|give": 2,
+          "drop|steal": 6,
+          "eat|steal": 1,
+          "get|put": 1,
+          "give|give": 1,
+          "give|put": 1,
+          "give|steal": 5,
+          "give|wear": 1,
+          "put|steal": 2,
+          "steal|steal": 9
+        },
+        "both_get_or_steal_pairs": 9,
+        "both_get_or_steal_graphs": 8
+      },
+      "cross_or_mutual_give_union": {
+        "pairs": 103,
+        "graphs": 83,
+        "overlapping_pair_count": 1,
+        "overlapping_graph_count": 3
+      }
+    }
+  },
+  "main_judgment": [
+    "中心问题有真实可执行的原物质前提，但不能把候选结构直接当作合作必要性或互利任务标签。",
+    "共享目标物既可能形成竞争，也可能是送给对方、临时借用等顺序兼容用途；跨不同目标物的交叉持有也可能是敌对解除武装。",
+    "双方作者均有 Give 目标仍可能分别要求卖肉与买情报、样品鉴定与带路。真实协商能否改变原条件是值得观察的行为，不是预先已有的双赢 gold。",
+    "下一步普通强系统应保留各人全部作者 persona/motivation 与真实合法替代，并观察提出方案、履行前提、真实交接、后续行动。任务的原事件、物理后果、叙事目的必须分开读。",
+    "不按这几个例子筛 cohort，不用增加物品/奖励/规则来补齐叙事，不把未建模服务硬打失败或成功。"
+  ],
+  "examples": [
+    {
+      "candidate_id": "367e2d6963c81915881868c4",
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "comparison": "报酬与第三方交付：有自然物质互补，尚不是现成的双方合同",
+      "source_facts": {
+        "relationship_types": [
+          "a_goal_item_owned_by_peer",
+          "b_goal_item_owned_by_peer",
+          "cross_owned_distinct_goal_items",
+          "cross_directly_held_distinct_goal_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/15780.json",
+            "actor_id": "hunter",
+            "actor_initial_health": 10,
+            "goal": "put coin pouch in pouch",
+            "goal_item_id": "coin pouch_7",
+            "goal_item_initial_parent_id": "duke",
+            "goal_item_owner_agent_id": "duke",
+            "goal_target_id": null,
+            "initial_parsed_native_identity": null,
+            "persona": "I came into the village to tell the men there that I knew where the wolves were sleeping and where their pups are, I offered to take them there and help end the menace in exchange for most of the pelts. The wolfskins will sell well in the town nearby. I'll make a pretty penny.",
+            "short_motivation": "I am collecting payment for a kill",
+            "mid_motivation": "I want to make good money hunting for the Duke",
+            "long_motivation": "I want the Duke to hire me permanently on the castle staff",
+            "own_initial_asset_ids": [
+              "boot_12",
+              "fur_11",
+              "pouch_10"
+            ],
+            "own_initial_equipped": {
+              "boot_12": "wear"
+            }
+          },
+          {
+            "quest_file": "quest_stems/17137.json",
+            "actor_id": "duke",
+            "actor_initial_health": 10,
+            "goal": "give fur to chamber maid",
+            "goal_item_id": "fur_11",
+            "goal_item_initial_parent_id": "hunter",
+            "goal_item_owner_agent_id": "hunter",
+            "goal_target_id": "chamber maid_13_chamber maid",
+            "initial_parsed_native_identity": null,
+            "persona": "I am a royal duke in the kingdom. I have a lot of important duties, but I also get to enjoy some fun balls. I am very studious and polite.",
+            "short_motivation": "I want the chambermaid to get the fur cleaned",
+            "mid_motivation": "I am expecting visitors and must put on my best appearance",
+            "long_motivation": "I want to leave a lasting good impression on all that visit me at the castle",
+            "own_initial_asset_ids": [
+              "coin pouch_7",
+              "pouch_6",
+              "sword_8"
+            ],
+            "own_initial_equipped": {
+              "sword_8": "wield"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "coin pouch_7": {
+            "node_id": "coin pouch_7",
+            "name": "coin pouch",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": true,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 3,
+            "container_node": "duke",
+            "contained_node_ids": []
+          },
+          "fur_11": {
+            "node_id": "fur_11",
+            "name": "fur",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": true,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "hunter",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "chamber maid_13_chamber maid"
+        ]
+      },
+      "our_interpretation": "hunter 的作者目的为收取狩猎报酬，duke 的作者目的为让 chamber maid 清理 fur。coin pouch 原在 duke，fur 原在 hunter，存在由各方释放对方所需物品的结构。这里涉及原图第三方，不能删掉 maid 后把任务改成两人交换。",
+      "question_for_native_or_interaction": "交叉资产使协商具有实际内容；但双方在初态可否单方 Steal、Put 的准确容器绑定、实际执行顺序必须由独立 native 资格确认。不能仅凭源文本说需要合作。",
+      "not_established": [
+        "hunter 的完整狩猎/雇佣关系与 duke 的清理/接待目的没有同名物理完成 flag。",
+        "初始 Put 与 Give 的 parsed identity 均为 null：不代表不可能；原目标必须在准确原生前提下再绑定，不能在此猜 target。"
+      ],
+      "practical_implication": "可作为物质前提交换与第三方履约的候选比较，须服从全部 native 资格结果；不是按该例效果选 cohort。"
+    },
+    {
+      "candidate_id": "19368d9aeeb3a5faf9371be0",
+      "graph_sha256": "441f9a5b5e3b94689e1baa7ac15feddfa336363221c8d9d24108e927fa56c979",
+      "comparison": "帮助、应得回报与借用：双方原目的容纳条件协商",
+      "source_facts": {
+        "relationship_types": [
+          "a_goal_item_owned_by_peer",
+          "b_goal_item_owned_by_peer",
+          "cross_owned_distinct_goal_items",
+          "cross_directly_held_distinct_goal_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/17071.json",
+            "actor_id": "the princess who lives in the castle and can't escape.",
+            "actor_initial_health": 10,
+            "goal": "steal herb from camper",
+            "goal_item_id": "herb_7",
+            "goal_item_initial_parent_id": "camper",
+            "goal_item_owner_agent_id": "camper",
+            "goal_target_id": "camper",
+            "initial_parsed_native_identity": [
+              "StealObjectEvent",
+              [
+                "herb_7",
+                "camper"
+              ]
+            ],
+            "persona": "I am stuck here forever. I wish I could leave but can't use to my father. I do not like the guards.",
+            "short_motivation": "I need a healing herb",
+            "mid_motivation": "I have escaped from the kingdom and am hiding from the guards before I begin to explore, but I tripped and fell",
+            "long_motivation": "I hope to find a family that will take me in or a commoner to fall in love with",
+            "own_initial_asset_ids": [
+              "book_2",
+              "books_3",
+              "slipper_4"
+            ],
+            "own_initial_equipped": {
+              "slipper_4": "wear"
+            }
+          },
+          {
+            "quest_file": "quest_stems/17274.json",
+            "actor_id": "camper",
+            "actor_initial_health": 10,
+            "goal": "steal book from the princess who lives in the castle and can't escape.",
+            "goal_item_id": "book_2",
+            "goal_item_initial_parent_id": "the princess who lives in the castle and can't escape.",
+            "goal_item_owner_agent_id": "the princess who lives in the castle and can't escape.",
+            "goal_target_id": "the princess who lives in the castle and can't escape.",
+            "initial_parsed_native_identity": [
+              "StealObjectEvent",
+              [
+                "book_2",
+                "the princess who lives in the castle and can't escape."
+              ]
+            ],
+            "persona": "I am a camper that lives out in the woods to hunt and grab herbs and fruits. I have a band that travel with me. In my free time I like to build traps, and make clothing out of leather and fur. I enjoy nature and love looking at the stars.",
+            "short_motivation": "I am feeding the Princess and am entitled to something in return",
+            "mid_motivation": "I need to eat a meal and would like to read this book",
+            "long_motivation": "I am risking my life by helping the princess but I will help her until she finds a place to stay",
+            "own_initial_asset_ids": [
+              "boot_8",
+              "fruit_6",
+              "herb_7",
+              "pan_9"
+            ],
+            "own_initial_equipped": {
+              "boot_8": "wear",
+              "pan_9": "wield"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "herb_7": {
+            "node_id": "herb_7",
+            "name": "herb",
+            "equipped": null,
+            "food": true,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": true,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "camper",
+            "contained_node_ids": []
+          },
+          "book_2": {
+            "node_id": "book_2",
+            "name": "book",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": true,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "the princess who lives in the castle and can't escape.",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": []
+      },
+      "our_interpretation": "princess 想取得 camper 的 herb，源动机是逃亡受伤后需要治疗；camper 想取得 princess 的 book，源动机明确说自己喂养公主、应得到回报，同时会继续帮助她。两件物品确实各自直接由另一人持有。",
+      "question_for_native_or_interaction": "可观察原角色会否提出先帮助、暂借、交换或拒绝，不必人为补价格。但原目标均是 Steal，合作 Give 可实现持有后果而不产生原 Steal event，二者应分列。",
+      "not_established": [
+        "治疗/继续保护/成功逃亡不等于取得 herb/book；两个角色初态 health 均为 10，不能将叙事受伤写成已实现的 HP 缺口。",
+        "借书/回报是源动机容纳的可能解释，不是作者预先签署的合同，也不能直接规定交换即双方更高目的满足。"
+      ],
+      "practical_implication": "值得以原 persona 和全部动机原样运行的角色互动类型；保留单方偷取替代，不预设友善或自利结论。"
+    },
+    {
+      "candidate_id": "63e1c3c7db75553de0dba339",
+      "graph_sha256": "17010f8e77bdccac0d508c0ef004771379bc894bca48634156b138c3ebcc0c04",
+      "comparison": "消费与旅途物资：两个不同目标存在兼容的物质途径",
+      "source_facts": {
+        "relationship_types": [
+          "a_goal_item_owned_by_peer",
+          "b_goal_item_owned_by_peer",
+          "cross_owned_distinct_goal_items",
+          "cross_directly_held_distinct_goal_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/13676.json",
+            "actor_id": "friend",
+            "actor_initial_health": 10,
+            "goal": "steal a sleeping bag from visitor",
+            "goal_item_id": "a sleeping bag_2",
+            "goal_item_initial_parent_id": "visitor",
+            "goal_item_owner_agent_id": "visitor",
+            "goal_target_id": "visitor",
+            "initial_parsed_native_identity": [
+              "StealObjectEvent",
+              [
+                "a sleeping bag_2",
+                "visitor"
+              ]
+            ],
+            "persona": "I am a part of a group of travelers.  I go from town to town selling food to the locals.  I grew up poor, but my travels have paid off well.",
+            "short_motivation": "I want to take the sleeping bag ",
+            "mid_motivation": "I want to sleep comfortably in the sleeping bag tonight ",
+            "long_motivation": "I plan to explore this town for a few weeks before moving on",
+            "own_initial_asset_ids": [
+              "chocolate_9",
+              "clean pants_10",
+              "jacket_11",
+              "ritual dagger_12"
+            ],
+            "own_initial_equipped": {
+              "clean pants_10": "wear",
+              "jacket_11": "wear",
+              "ritual dagger_12": "wield"
+            }
+          },
+          {
+            "quest_file": "quest_stems/13708.json",
+            "actor_id": "visitor",
+            "actor_initial_health": 10,
+            "goal": "eat Chocolate",
+            "goal_item_id": "chocolate_9",
+            "goal_item_initial_parent_id": "friend",
+            "goal_item_owner_agent_id": "friend",
+            "goal_target_id": null,
+            "initial_parsed_native_identity": null,
+            "persona": "I am a visitor to the kingdom.  I come from many miles away.  My aunt lives here in the kingdom.  I will be staying with her for my visit.",
+            "short_motivation": "I need a snack to get my energy up",
+            "mid_motivation": "I would like to buy some local goods during my stay",
+            "long_motivation": "I would like to bring home presents to my family",
+            "own_initial_asset_ids": [
+              "a sleeping bag_2",
+              "ceremonial hat_5",
+              "hats_4",
+              "knife_7",
+              "sandal_6",
+              "tunic_3"
+            ],
+            "own_initial_equipped": {
+              "ceremonial hat_5": "wear",
+              "hats_4": "wear",
+              "knife_7": "wield",
+              "sandal_6": "wear",
+              "tunic_3": "wear"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "a sleeping bag_2": {
+            "node_id": "a sleeping bag_2",
+            "name": "a sleeping bag",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": true,
+            "wieldable": true,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "visitor",
+            "contained_node_ids": []
+          },
+          "chocolate_9": {
+            "node_id": "chocolate_9",
+            "name": "Chocolate",
+            "equipped": null,
+            "food": true,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "friend",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "a salesman_13_a salesman"
+        ]
+      },
+      "our_interpretation": "friend 想取得 visitor 的 sleeping bag，以便今晚睡得舒服并继续探索小镇；visitor 想 Eat friend 的 Chocolate 来补充精力，并继续买当地礼物。sleeping bag 与 chocolate 确实交叉持有。",
+      "question_for_native_or_interaction": "这比只比较 Give 率更直接：一方的物品取得与另一方的原生消费后果可以分别记录。双方作者没有说这是巧克力换睡袋的交易，模型是否自然形成方案仍待观察。",
+      "not_established": [
+        "双方原事件是 Steal 和 Eat；接受自愿 Give 的 friend 不会触发其原 Steal event，但仍可能满足取得物资这一实际前提。",
+        "不能因两种后果可兼容，就设定丢失 sleeping bag 对 visitor 零代价；其原 persona/叙事可能容纳其他考虑。"
+      ],
+      "practical_implication": "适合比较可替代的取得方式与不可逆消费，无需新增物品或把所有合作限制为互向 Give。"
+    },
+    {
+      "candidate_id": "30327cfdb09483c64a2f3184",
+      "graph_sha256": "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e",
+      "comparison": "物质互换与敌对目的：两个原子目标可达不代表互利",
+      "source_facts": {
+        "relationship_types": [
+          "a_goal_item_owned_by_peer",
+          "b_goal_item_owned_by_peer",
+          "cross_owned_distinct_goal_items",
+          "cross_directly_held_distinct_goal_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/13811.json",
+            "actor_id": "soldier",
+            "actor_initial_health": 10,
+            "goal": "steal arrow from archer",
+            "goal_item_id": "arrow_3",
+            "goal_item_initial_parent_id": "archer",
+            "goal_item_owner_agent_id": "archer",
+            "goal_target_id": "archer",
+            "initial_parsed_native_identity": [
+              "StealObjectEvent",
+              [
+                "arrow_3",
+                "archer"
+              ]
+            ],
+            "persona": "I'm a soldier. I'm paid to kill. This is a job, nothing more. I'm a mercenary in a lot of ways.",
+            "short_motivation": "I want to disarm the archer and the knight",
+            "mid_motivation": "I plan to kill the knight and the archer today",
+            "long_motivation": "I intend to defect to the enemy's kingdom in a few weeks as they pay far more",
+            "own_initial_asset_ids": [
+              "a treasure map_9",
+              "armor_11",
+              "coin_8",
+              "map of the kingdom_10"
+            ],
+            "own_initial_equipped": {
+              "armor_11": "wear"
+            }
+          },
+          {
+            "quest_file": "quest_stems/13812.json",
+            "actor_id": "archer",
+            "actor_initial_health": 10,
+            "goal": "steal a treasure map from soldier",
+            "goal_item_id": "a treasure map_9",
+            "goal_item_initial_parent_id": "soldier",
+            "goal_item_owner_agent_id": "soldier",
+            "goal_target_id": "soldier",
+            "initial_parsed_native_identity": [
+              "StealObjectEvent",
+              [
+                "a treasure map_9",
+                "soldier"
+              ]
+            ],
+            "persona": "I am an archer. My weapon of choice is a bow and arrow. I'm very skillful and shooting a bow and arrow.",
+            "short_motivation": "I want to take away the treasure map from the soldier ",
+            "mid_motivation": "I plan to show the treasure map to a ship captain today",
+            "long_motivation": "I hope to sail to the island with the ship captain to get treasure ",
+            "own_initial_asset_ids": [
+              "arrow_3",
+              "bow_2",
+              "knife_6",
+              "shield_5",
+              "shirt_4"
+            ],
+            "own_initial_equipped": {
+              "knife_6": "wield",
+              "shield_5": "wield",
+              "shirt_4": "wear"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "arrow_3": {
+            "node_id": "arrow_3",
+            "name": "arrow",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": true,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "archer",
+            "contained_node_ids": []
+          },
+          "a treasure map_9": {
+            "node_id": "a treasure map_9",
+            "name": "a treasure map",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 3,
+            "container_node": "soldier",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "knight_12_knight"
+        ]
+      },
+      "our_interpretation": "soldier 想 Steal archer 的 arrow 以解除其武装，之后杀死 archer 和 knight，并投敌；archer 想 Steal soldier 的 treasure map，以向船长展示并寻宝。两件目标物品实际交叉持有。",
+      "question_for_native_or_interaction": "双方取得目标物可以在持有统计上并存，但帮助 soldier 得箭可能直接威胁 archer 的生存目的。若 NPC 拒绝给箭，不能直接标成不合作或不理性。",
+      "not_established": [
+        "杀死对方是源叙事目的，不是本次已经发生的物理后果；只有实际 native Hit/health/death 才能写成后果。",
+        "不应因来源敌对就事后删掉该候选；它是检验“原子双目标=共同利益”错误解释的有用对照。"
+      ],
+      "practical_implication": "保留为不兼容目的的比较，分析请求、披露和行动；不能混入统一双赢 success gold。"
+    },
+    {
+      "candidate_id": "b8ef5a5e93a741e28d2959ca",
+      "graph_sha256": "25b9d518c24de7d73f053dc442d2e556aef40fd3ee19b474a12a6cf5ab0d71ce",
+      "comparison": "同一物品不必零和，但此处本来存在单方取得路径",
+      "source_facts": {
+        "relationship_types": [
+          "shared_goal_item"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/14598.json",
+            "actor_id": "dolphin",
+            "actor_initial_health": 10,
+            "goal": "get fish",
+            "goal_item_id": "fish_1",
+            "goal_item_initial_parent_id": "turquoise shore_0",
+            "goal_item_owner_agent_id": null,
+            "goal_target_id": "turquoise shore_0",
+            "initial_parsed_native_identity": [
+              "GetObjectEvent",
+              [
+                "fish_1",
+                "turquoise shore_0"
+              ]
+            ],
+            "persona": "I live in the ocean, but often come up to the surface for air. I enjoy the visits I get from people who live on land, and the treats they bring me. I live in a pack with my family.",
+            "short_motivation": "I want to give the fish to the mermaid ",
+            "mid_motivation": "I hope to befriend the mermaid today",
+            "long_motivation": "I plan to visit the kingdom of the mermaids in the coming months ",
+            "own_initial_asset_ids": [
+              "robe_10"
+            ],
+            "own_initial_equipped": {
+              "robe_10": "wear"
+            }
+          },
+          {
+            "quest_file": "quest_stems/16058.json",
+            "actor_id": "mermaid",
+            "actor_initial_health": 10,
+            "goal": "get fish",
+            "goal_item_id": "fish_1",
+            "goal_item_initial_parent_id": "turquoise shore_0",
+            "goal_item_owner_agent_id": null,
+            "goal_target_id": "turquoise shore_0",
+            "initial_parsed_native_identity": [
+              "GetObjectEvent",
+              [
+                "fish_1",
+                "turquoise shore_0"
+              ]
+            ],
+            "persona": "I am one of the most beautiful mermaids to live in the sea. I like to watch the other sea creatures swim by me, including dolphins, who are my favorite creatures because they are so friendly. I fear the people who live on land because they hunt my kind.",
+            "short_motivation": "I need to get the fish so I can cook it.",
+            "mid_motivation": "I will eat the cooked fish to gain sustenance. ",
+            "long_motivation": "If I am strong with sustenance I will swim out to the reef and look for treasure.",
+            "own_initial_asset_ids": [],
+            "own_initial_equipped": {}
+          }
+        ],
+        "source_goal_items": {
+          "fish_1": {
+            "node_id": "fish_1",
+            "name": "fish",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "turquoise shore_0",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "sea witch_11_sea witch"
+        ]
+      },
+      "our_interpretation": "dolphin 的 Get fish 是为了把鱼给 mermaid、交朋友；mermaid 的 Get 同一 fish 是为了烹饪、进食，再出海寻宝。fish 原在 turquoise shore 的地面，两人同处该原房间。",
+      "question_for_native_or_interaction": "前者的更高动机与后者取得鱼可以顺序兼容，不能把 shared item 自动称为抢夺。但初始两条目标都已绑定 GetObjectEvent(fish, room)，所以合作不是唯一结构途径；需要区分 partner 帮助与直接取走。",
+      "not_established": [
+        "直接 Get 的 native guard/随机执行结果由资格报告独立确认；此处只记录现有初始 parse identity 与地面归属。",
+        "dolphin Give fish 可实现其叙事中的送鱼，却不替代 mermaid 的严格 Get event；“两人曾持有”更不等于所有寻宝/烹饪目的完成。"
+      ],
+      "practical_implication": "同物正向目的比较；解释取得方式和后续用途，不用共同持有率证明合作必要性。"
+    },
+    {
+      "candidate_id": "1a09637a6a2a7be8a3bdf2bc",
+      "graph_sha256": "b8938857d99707da7d5837afba6885ec4f2a219a1e6895852fadcff58bd426d7",
+      "comparison": "同物的临时工具用途与最终消费：顺序选择有意义，关键前提却未实现",
+      "source_facts": {
+        "relationship_types": [
+          "shared_goal_item"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/10015.json",
+            "actor_id": "snakes",
+            "actor_initial_health": 10,
+            "goal": "get bone",
+            "goal_item_id": "bone_3",
+            "goal_item_initial_parent_id": "mud pit_0",
+            "goal_item_owner_agent_id": null,
+            "goal_target_id": "mud pit_0",
+            "initial_parsed_native_identity": [
+              "GetObjectEvent",
+              [
+                "bone_3",
+                "mud pit_0"
+              ]
+            ],
+            "persona": "I am a snake. Snakes are not regarded as important in the realm. I kill rodents and chickens.",
+            "short_motivation": "I must reach the bone so I can use it pull myself from the sticky mudpit.",
+            "mid_motivation": "I must hunt and eat today while the sticky brown mud hides me from my prey.",
+            "long_motivation": "I can use the cunning tactic of covering myself in mud to avoid dangers and corner prey, and even venture onto human farms for delicious chickens.",
+            "own_initial_asset_ids": [],
+            "own_initial_equipped": {}
+          },
+          {
+            "quest_file": "quest_stems/10019.json",
+            "actor_id": "vulture_9_vulture",
+            "actor_initial_health": 10,
+            "goal": "get bone",
+            "goal_item_id": "bone_3",
+            "goal_item_initial_parent_id": "mud pit_0",
+            "goal_item_owner_agent_id": null,
+            "goal_target_id": "mud pit_0",
+            "initial_parsed_native_identity": [
+              "GetObjectEvent",
+              [
+                "bone_3",
+                "mud pit_0"
+              ]
+            ],
+            "persona": "I am a bird that eats dead things.",
+            "short_motivation": "I am so hungry.",
+            "mid_motivation": "I want to gather food to eat.",
+            "long_motivation": "I should store food in my cave for long term eating.",
+            "own_initial_asset_ids": [],
+            "own_initial_equipped": {}
+          }
+        ],
+        "source_goal_items": {
+          "bone_3": {
+            "node_id": "bone_3",
+            "name": "bone",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": true,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "mud pit_0",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "insects"
+        ]
+      },
+      "our_interpretation": "snakes 想 Get bone 以把自己从黏泥中拉出，之后捕猎；vulture 想 Get 同一 bone，因为饥饿、收集食物，并想存到山洞。bone 原在 mud pit 地面，双方原目标均已绑定 GetObjectEvent(bone, room)。",
+      "question_for_native_or_interaction": "若真实实现临时使用再交接，就可能有顺序合作；若先消费便可能破坏另一人的工具用途。可是源图的“从泥里脱出/储藏未来食物”并不自动是原生已建模的状态转换，不能凭台词创造这些完成 flag。",
+      "not_established": [
+        "mud pit 是房间，源叙事的困住不能直接等同于 actor 被 native movement guard 限制。",
+        "Get 可以表示工具前提或收集食物，不能给同一个 Get event 统一赋予工具理性或自利 gold。"
+      ],
+      "practical_implication": "适合保留为原子物理结果与叙事用途的边界例；不能据本例声称验证了工具顺序规划。"
+    },
+    {
+      "candidate_id": "4e97baeaeac4c7859becd11a",
+      "graph_sha256": "4f6cad4af6e566f173d7e4bd8aeb8f0776f937c1dd8936a91d9ca781cb5c822d",
+      "comparison": "肉与钱俱全，但两位作者谈的是两种交易",
+      "source_facts": {
+        "relationship_types": [
+          "reciprocal_authored_give_distinct_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/14324.json",
+            "actor_id": "friend",
+            "actor_initial_health": 10,
+            "goal": "give roasting meat to knight",
+            "goal_item_id": "roasting meat_4",
+            "goal_item_initial_parent_id": "castle courtyard bazaar_0",
+            "goal_item_owner_agent_id": null,
+            "goal_target_id": "knight",
+            "initial_parsed_native_identity": null,
+            "persona": "I am a part of a group of travelers.  I go from town to town selling food to the locals.  I grew up poor, but my travels have paid off well.",
+            "short_motivation": "I need to sell this roasting meat to the knight",
+            "mid_motivation": "I hope to make a lot of money today selling my wares and helping out this vendor",
+            "long_motivation": "I am saving up to purchase an estate for my family",
+            "own_initial_asset_ids": [
+              "boot_15",
+              "clean pants_14",
+              "daggers_17",
+              "ritual dagger_18",
+              "shirt_16",
+              "spice_13"
+            ],
+            "own_initial_equipped": {
+              "boot_15": "wear",
+              "clean pants_14": "wear",
+              "daggers_17": "wield",
+              "ritual dagger_18": "wield",
+              "shirt_16": "wear"
+            }
+          },
+          {
+            "quest_file": "quest_stems/15824.json",
+            "actor_id": "knight",
+            "actor_initial_health": 10,
+            "goal": "give coin to friend",
+            "goal_item_id": "coin_8",
+            "goal_item_initial_parent_id": "knight",
+            "goal_item_owner_agent_id": "knight",
+            "goal_target_id": "friend",
+            "initial_parsed_native_identity": [
+              "GiveObjectEvent",
+              [
+                "coin_8",
+                "friend"
+              ]
+            ],
+            "persona": "I am a knight. I protect my King and will sacrifice myself. I command respect and wear my shield with honor.",
+            "short_motivation": "I want the friend to discreetly get some information for me",
+            "mid_motivation": "I want my informant friend to return to me with any information on threats to the king",
+            "long_motivation": "I want to make sure the king survives the recent uprising that's infected the kingdom",
+            "own_initial_asset_ids": [
+              "boot_10",
+              "chain_9",
+              "coin_8",
+              "shield_11"
+            ],
+            "own_initial_equipped": {
+              "boot_10": "wear",
+              "chain_9": "wear",
+              "shield_11": "wield"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "roasting meat_4": {
+            "node_id": "roasting meat_4",
+            "name": "roasting meat",
+            "equipped": null,
+            "food": true,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "castle courtyard bazaar_0",
+            "contained_node_ids": []
+          },
+          "coin_8": {
+            "node_id": "coin_8",
+            "name": "coin",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "knight",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": [
+          "vendor_19_vendor"
+        ]
+      },
+      "our_interpretation": "friend 想 Give roasting meat 给 knight，是为了卖肉赚钱；knight 想 Give 自己的 coin 给 friend，是为了让 informant friend 去获取威胁国王的情报。肉在原房间，coin 由 knight 持有。",
+      "question_for_native_or_interaction": "肉和 coin 实体齐全、互向 Give 也有结构，并不说明两人的作者动机已经对齐成一笔肉价交易。若模型自发把钱当肉价，这是一项实际协商或改约观察，而不是复现既定合同。",
+      "not_established": [
+        "交付肉/coin 与获得新情报是不同后果；情报在当前 source 中没有绑定成可独立校验的原子任务。",
+        "friend 可以 Get 地面肉后再 Give；不能把地面物品描写成 friend 初始专有资产。"
+      ],
+      "practical_implication": "适合检查替代交易能否形成及被落实，反对仅从现有资产倒推私有效用 gold。"
+    },
+    {
+      "candidate_id": "0d657d06eb645a9418d5526f",
+      "graph_sha256": "a721c85a0e80618e74de0a9af415778f82cb13180c7085a36ac19e412b3233bf",
+      "comparison": "双方愿意交付资产，不代表要求的服务已经互相履行",
+      "source_facts": {
+        "relationship_types": [
+          "reciprocal_authored_give_distinct_items"
+        ],
+        "roles": [
+          {
+            "quest_file": "quest_stems/12851.json",
+            "actor_id": "miner",
+            "actor_initial_health": 10,
+            "goal": "give coal to explorer",
+            "goal_item_id": "coal_2",
+            "goal_item_initial_parent_id": "miner",
+            "goal_item_owner_agent_id": "miner",
+            "goal_target_id": "explorer",
+            "initial_parsed_native_identity": [
+              "GiveObjectEvent",
+              [
+                "coal_2",
+                "explorer"
+              ]
+            ],
+            "persona": "I am a miner who works in a dangerous mine. I do not enjoy being dirty. I make sure to get paid fairly for anything I trade.",
+            "short_motivation": "I need to give the coal to the explorer so he can analyze it.",
+            "mid_motivation": "If the coal is analyzed and identified as dragon coal, the explorer will reward me with fame and riches.",
+            "long_motivation": "If I receive fame and riches, I will buy my family a new home.",
+            "own_initial_asset_ids": [
+              "coal_2"
+            ],
+            "own_initial_equipped": {}
+          },
+          {
+            "quest_file": "quest_stems/13629.json",
+            "actor_id": "explorer",
+            "actor_initial_health": 10,
+            "goal": "give money to miner",
+            "goal_item_id": "money_4",
+            "goal_item_initial_parent_id": "explorer",
+            "goal_item_owner_agent_id": "explorer",
+            "goal_target_id": "miner",
+            "initial_parsed_native_identity": [
+              "GiveObjectEvent",
+              [
+                "money_4",
+                "miner"
+              ]
+            ],
+            "persona": "I am an explorer who travels the kingdom. I discover new lands and technologies that we do not have in our kingdom. I travel all over looking for the new lands to conquer.",
+            "short_motivation": "I want to pay the miner",
+            "mid_motivation": "I want the miner to guide me through the cave from today",
+            "long_motivation": "I hope to explore the caves in this area in a few weeks ",
+            "own_initial_asset_ids": [
+              "compass_5",
+              "knife_6",
+              "money_4"
+            ],
+            "own_initial_equipped": {
+              "knife_6": "wield"
+            }
+          }
+        ],
+        "source_goal_items": {
+          "coal_2": {
+            "node_id": "coal_2",
+            "name": "coal",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": false,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "miner",
+            "contained_node_ids": []
+          },
+          "money_4": {
+            "node_id": "money_4",
+            "name": "money",
+            "equipped": null,
+            "food": false,
+            "food_energy": 0,
+            "drink": false,
+            "wearable": false,
+            "wieldable": true,
+            "size": 1,
+            "contain_size": 0,
+            "container_node": "explorer",
+            "contained_node_ids": []
+          }
+        },
+        "other_actor_ids": []
+      },
+      "our_interpretation": "miner 想 Give coal 让 explorer 分析，若是 dragon coal 希望得到名利；explorer 想 Give money 付钱，让 miner 从今天起在洞里带路。coal 与 money 确实分别由两人直接持有，两个原 Give 都已有 parse identity。",
+      "question_for_native_or_interaction": "这对源任务容纳分析样品、付钱、带路等不同条件与替代方案，因而谈判有内容。但 coal 与 money 的真实转移只能证明物品流；并无“鉴定为龙煤/获得名利/带路完成”的相应已绑定 flag。",
+      "not_established": [
+        "两个独立作者给角色安排的服务不完全相同，不能将互向 Give 机械称为原合同成交。",
+        "对话中承诺分析或带路应保留为承诺；当前资格不能把它们当已执行或失败。"
+      ],
+      "practical_implication": "作为物理支持充分、服务目的仅叙事支持的清楚边界；需要任务来源/引擎能实施后续服务后才研究完整履约。"
+    }
+  ],
+  "scope_limits": [
+    "All quests for the same graph are independent author annotations, not an authored simultaneous cooperation level.",
+    "Initial parsed identity is source binding, not a new successful native execution or a proof of an exhaustive legal path.",
+    "Native qualification is owned by experiment_review; unilateral Get/Steal existence/success and cooperative witness results must be taken from that audit, not inferred from text here.",
+    "No GPU, model/API calls, game/world edits, broad semantic tagging, prompts, or new experiment launched.",
+    "No causal mechanism, human-player value, cooperation success rate, or generalizable persona effect is claimed."
+  ],
+  "provenance": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/summary.json": {
+      "sha256": "e54b00cac532a4c7fcaf168f4328de81afa6892889df6291c9b7bec2043a4398"
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/candidates.jsonl": {
+      "sha256": "1cad1834034c58c88c38850b0de17d4a055865bc730e1740b1a8dc6a9f6e7d8c"
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl": {
+      "sha256": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d"
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/graphs.jsonl": {
+      "sha256": "30bfb038d236d755b4b541735048ec708f5584414092090a503dcdd3b49cc10c"
+    }
+  },
+  "rebuild": {
+    "script": "/home/xiang/.cache/game-npc-research/runs/e84_source_scope_readback/build.py",
+    "script_sha256": "994af7b7926a345c78bc18f326a15b0d5d1449b4bbbead40482524665aea2ee7",
+    "command": "python3 /home/xiang/.cache/game-npc-research/runs/e84_source_scope_readback/build.py"
+  },
+  "counts": {
+    "illustrative_comparisons": 8,
+    "GPU_hours": 0,
+    "model_calls": 0,
+    "API_calls": 0
+  }
+}

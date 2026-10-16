@@ -1,0 +1,699 @@
+{
+  "experiment": "E84",
+  "status": "COMPLETE_CPU_NATIVE_QUALIFICATION",
+  "script_sha256": "49ef8b9ebba98b713a585a9d41ae6a7e41d99a951972787527ba18a0a1d9ecba",
+  "source_summary": "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/summary.json",
+  "source_counts": {
+    "authored_quests": 7486,
+    "raw_graphs": 1787,
+    "bound_quests": 7467,
+    "initial_native_goal_parse_success": 6126,
+    "goal_verb_get": 1910,
+    "goal_verb_hit": 956,
+    "goal_verb_give": 930,
+    "goal_verb_put": 397,
+    "goal_verb_follow": 560,
+    "all_different_actor_unordered_quest_pairs": 11153,
+    "co_present_unordered_quest_pairs": 11153,
+    "goal_verb_steal": 601,
+    "goal_verb_wear": 137,
+    "goal_verb_hug": 1089,
+    "structural_candidate_pairs": 2340,
+    "goal_verb_remove": 326,
+    "goal_verb_drop": 382,
+    "goal_verb_wield": 74,
+    "goal_verb_drink": 30,
+    "goal_verb_eat": 75,
+    "ambiguous_actor_quests": 19
+  },
+  "source_hashes": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/graphs.jsonl": "30bfb038d236d755b4b541735048ec708f5584414092090a503dcdd3b49cc10c",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/candidates.jsonl": "1cad1834034c58c88c38850b0de17d4a055865bc730e1740b1a8dc6a9f6e7d8c",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/co_present_pairs.jsonl": "3f6ea94b23720bcefdfc85eb10cad162b03bc82a76a31723721a07fd3eadedcc",
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/binding_alternatives.jsonl": "eabf3389839c8057531b44fff65fc5c9742285c1db08f0b81be2e8fba82e68af"
+  },
+  "native_seed": 8401,
+  "relation_counts": {
+    "a_goal_item_owned_by_peer": {
+      "candidate_pairs": 902,
+      "candidate_graphs": 364,
+      "joint_witness_pairs": 729,
+      "joint_witness_graphs": 337
+    },
+    "a_goal_target_owned_by_peer": {
+      "candidate_pairs": 4,
+      "candidate_graphs": 3,
+      "joint_witness_pairs": 0,
+      "joint_witness_graphs": 0
+    },
+    "b_goal_item_owned_by_peer": {
+      "candidate_pairs": 901,
+      "candidate_graphs": 357,
+      "joint_witness_pairs": 727,
+      "joint_witness_graphs": 327
+    },
+    "b_goal_target_owned_by_peer": {
+      "candidate_pairs": 14,
+      "candidate_graphs": 6,
+      "joint_witness_pairs": 0,
+      "joint_witness_graphs": 0
+    },
+    "cross_directly_held_distinct_goal_items": {
+      "candidate_pairs": 32,
+      "candidate_graphs": 23,
+      "joint_witness_pairs": 29,
+      "joint_witness_graphs": 22
+    },
+    "cross_owned_distinct_goal_items": {
+      "candidate_pairs": 32,
+      "candidate_graphs": 23,
+      "joint_witness_pairs": 29,
+      "joint_witness_graphs": 22
+    },
+    "reciprocal_authored_give_distinct_items": {
+      "candidate_pairs": 72,
+      "candidate_graphs": 63,
+      "joint_witness_pairs": 45,
+      "joint_witness_graphs": 37
+    },
+    "shared_goal_item": {
+      "candidate_pairs": 1080,
+      "candidate_graphs": 581,
+      "joint_witness_pairs": 779,
+      "joint_witness_graphs": 517
+    }
+  },
+  "authored_action_activation": {
+    "recipient_goal_initially_ready": 18378,
+    "no_activation_observed": 3003,
+    "partner_authored_goal_initially_blocked": 814,
+    "native_action_enabled_strict_or_acquisition": 111,
+    "enabled_graphs": 98
+  },
+  "cross_summary": {
+    "status": "CROSS_COMPLETE",
+    "source_pairs": 32,
+    "source_graphs": 23,
+    "joint_witness_pairs": 29,
+    "dataset": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl",
+    "dataset_sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+    "all_source_pairs_retained": true,
+    "model_calls": 0
+  },
+  "raw_assets": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl": {
+      "sha256": "6c20ff17366c954da03e18bb496fb3beac0ac7a1f06961c10e7cdfd692459804",
+      "bytes": 55933633
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/authored_action_activations.jsonl": {
+      "sha256": "526f26492e5c8a7b7c1bab982ffcbf013306e1cdf4de5b35e5f94136cfdbef57",
+      "bytes": 8339559
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl": {
+      "sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+      "bytes": 2496136
+    }
+  },
+  "scope": [
+    "No source graph, asset, reward, persona, motivation, timeline or goal edited.",
+    "Joint original atomic events or material acquisition are not complete private purpose, mutual benefit, necessity of cooperation or a contract.",
+    "The five fixed native schedules verify concrete existing paths; no witness is not an impossibility proof.",
+    "Get/Steal by actual peer transfer and strict original Get/Steal events are separate fields.",
+    "Initial native text bindings and source surface ambiguities remain in the source assets; typed execution never rebinds similarly named targets."
+  ],
+  "model_calls": 0,
+  "cloud_calls": 0,
+  "GPU_hours": 0,
+  "wall_seconds": 151.79620708490256,
+  "invalid_constructor_only_attempt": {
+    "path": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification_constructor_only_aborted/INVALID_MEASUREMENT.json",
+    "sha256": "ba1d71572dc870b616721be8f03782df59b14343d11899f4d7ca7670c6534ba1",
+    "status": "INVALID_MEASUREMENT_AND_ABORTED",
+    "reason": "The earlier qualifier used constructors without original action enumeration. Constructors alone allow targets that are outside the actual native tool catalogue. No model experiment used that output."
+  },
+  "full_raw_readback": {
+    "type": "POST-HOC aggregation/readback of existing registered native fields; no new execution",
+    "all_candidate_pairs": 2340,
+    "all_candidate_graphs": 740,
+    "joint_native_atomic_or_acquisition_witness_pairs": 1796,
+    "joint_native_atomic_or_acquisition_witness_graphs": 697,
+    "authored_action_enables_goal_or_acquisition": 111,
+    "enabled_graphs": 98,
+    "after_activation_both_original_atomic_or_acquisition_completed": 82,
+    "after_activation_completed_graphs": 70,
+    "recipient_strict_event_completed_after_activation": 76,
+    "enabled_but_recipient_stochastic_failure": 29,
+    "native_runtime_exceptions_in_candidates": 0,
+    "solo_alternatives": [
+      {
+        "event_type": "GetObjectEvent",
+        "legal_in_actual_initial_menu_and_guard": false,
+        "acquired_in_one_fixed_native_attempt": false,
+        "directions": 1803
+      },
+      {
+        "event_type": "StealObjectEvent",
+        "legal_in_actual_initial_menu_and_guard": false,
+        "acquired_in_one_fixed_native_attempt": false,
+        "directions": 274
+      },
+      {
+        "event_type": "StealObjectEvent",
+        "legal_in_actual_initial_menu_and_guard": true,
+        "acquired_in_one_fixed_native_attempt": false,
+        "directions": 1529
+      }
+    ],
+    "activation_event_sequences": [
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ],
+        "count": 12
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent"
+        ],
+        "count": 6
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "DropObjectEvent"
+        ],
+        "count": 20
+      },
+      {
+        "sequence": [
+          "RemoveObjectEvent",
+          "StealObjectEvent"
+        ],
+        "count": 23
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "DrinkEvent"
+        ],
+        "count": 6
+      },
+      {
+        "sequence": [
+          "PutObjectInEvent",
+          "GetObjectEvent"
+        ],
+        "count": 3
+      },
+      {
+        "sequence": [
+          "DropObjectEvent",
+          "GetObjectEvent"
+        ],
+        "count": 20
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "EatEvent"
+        ],
+        "count": 5
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "WearEvent"
+        ],
+        "count": 5
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "PutObjectInEvent"
+        ],
+        "count": 5
+      },
+      {
+        "sequence": [
+          "GetObjectEvent",
+          "StealObjectEvent"
+        ],
+        "count": 5
+      },
+      {
+        "sequence": [
+          "GiveObjectEvent",
+          "StealObjectEvent"
+        ],
+        "count": 1
+      }
+    ],
+    "scope": "Enabled means a real native prerequisite was removed; it is distinct from subsequent successful execution. Single fixed native random attempts are not success probabilities. Original authored atomic goals are not complete motive fulfillment."
+  },
+  "representative_original_cases": [
+    {
+      "case_id": "19368d9aeeb3a5faf9371be0",
+      "graph_sha256": "441f9a5b5e3b94689e1baa7ac15feddfa336363221c8d9d24108e927fa56c979",
+      "relationship_types": [
+        "a_goal_item_owned_by_peer",
+        "b_goal_item_owned_by_peer",
+        "cross_owned_distinct_goal_items",
+        "cross_directly_held_distinct_goal_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/17071.json",
+          "character": "the the princess who lives in the castle and can't escape.",
+          "goal": "steal herb from camper",
+          "short_motivation": "I need a healing herb",
+          "item_id": "herb_7",
+          "item_initial_owner": "camper",
+          "target_id": "camper"
+        },
+        {
+          "file": "quest_stems/17274.json",
+          "character": "the camper",
+          "goal": "steal book from the princess who lives in the castle and can't escape.",
+          "short_motivation": "I am feeding the Princess and am entitled to something in return",
+          "item_id": "book_2",
+          "item_initial_owner": "the princess who lives in the castle and can't escape.",
+          "target_id": "the princess who lives in the castle and can't escape."
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "herb_7",
+              "camper"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "book_2",
+              "the princess who lives in the castle and can't escape."
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=19368d9aeeb3a5faf9371be0",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "12c39f0380b4b524b35b1c58",
+      "graph_sha256": "2848d4316ca7cb9845150972f136d950d8c724fb98a7bffac687c73bf5d067fc",
+      "relationship_types": [
+        "a_goal_item_owned_by_peer",
+        "b_goal_item_owned_by_peer",
+        "cross_owned_distinct_goal_items",
+        "cross_directly_held_distinct_goal_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/15182.json",
+          "character": "the the witch",
+          "goal": "steal leech from doctor",
+          "short_motivation": "I want to get the leech",
+          "item_id": "leech_2",
+          "item_initial_owner": "doctor",
+          "target_id": "doctor"
+        },
+        {
+          "file": "quest_stems/16899.json",
+          "character": "the doctor",
+          "goal": "steal staff from the witch",
+          "short_motivation": "I need the magic from the witch's staff",
+          "item_id": "staff_4",
+          "item_initial_owner": "the witch",
+          "target_id": "the witch"
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "leech_2",
+              "doctor"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "staff_4",
+              "the witch"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=12c39f0380b4b524b35b1c58",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "30327cfdb09483c64a2f3184",
+      "graph_sha256": "2503b54d0402d891d2854de94d4036a6f6a9bbb5d766480eabe603524aeeb53e",
+      "relationship_types": [
+        "a_goal_item_owned_by_peer",
+        "b_goal_item_owned_by_peer",
+        "cross_owned_distinct_goal_items",
+        "cross_directly_held_distinct_goal_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/13811.json",
+          "character": "the soldier",
+          "goal": "steal arrow from archer",
+          "short_motivation": "I want to disarm the archer and the knight",
+          "item_id": "arrow_3",
+          "item_initial_owner": "archer",
+          "target_id": "archer"
+        },
+        {
+          "file": "quest_stems/13812.json",
+          "character": "the archer",
+          "goal": "steal a treasure map from soldier",
+          "short_motivation": "I want to take away the treasure map from the soldier ",
+          "item_id": "a treasure map_9",
+          "item_initial_owner": "soldier",
+          "target_id": "soldier"
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "arrow_3",
+              "archer"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "StealObjectEvent",
+            [
+              "a treasure map_9",
+              "soldier"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=30327cfdb09483c64a2f3184",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "367e2d6963c81915881868c4",
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "relationship_types": [
+        "a_goal_item_owned_by_peer",
+        "b_goal_item_owned_by_peer",
+        "cross_owned_distinct_goal_items",
+        "cross_directly_held_distinct_goal_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/15780.json",
+          "character": "the hunter",
+          "goal": "put coin pouch in pouch",
+          "short_motivation": "I am collecting payment for a kill",
+          "item_id": "coin pouch_7",
+          "item_initial_owner": "duke",
+          "target_id": null
+        },
+        {
+          "file": "quest_stems/17137.json",
+          "character": "the duke",
+          "goal": "give fur to chamber maid",
+          "short_motivation": "I want the chambermaid to get the fur cleaned",
+          "item_id": "fur_11",
+          "item_initial_owner": "hunter",
+          "target_id": "chamber maid_13_chamber maid"
+        }
+      ],
+      "native_joint_witness_found": false,
+      "initial_goal_status": [
+        {
+          "typed_legal": false,
+          "identity": null,
+          "native_error": "target_not_uniquely_bound",
+          "physical_initial": null
+        },
+        {
+          "typed_legal": false,
+          "identity": null,
+          "native_error": "not_in_original_native_action_catalogue",
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=367e2d6963c81915881868c4",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "b8ef5a5e93a741e28d2959ca",
+      "graph_sha256": "25b9d518c24de7d73f053dc442d2e556aef40fd3ee19b474a12a6cf5ab0d71ce",
+      "relationship_types": [
+        "shared_goal_item"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/14598.json",
+          "character": "the dolphin",
+          "goal": "get fish",
+          "short_motivation": "I want to give the fish to the mermaid ",
+          "item_id": "fish_1",
+          "item_initial_owner": null,
+          "target_id": "turquoise shore_0"
+        },
+        {
+          "file": "quest_stems/16058.json",
+          "character": "the mermaid",
+          "goal": "get fish",
+          "short_motivation": "I need to get the fish so I can cook it.",
+          "item_id": "fish_1",
+          "item_initial_owner": null,
+          "target_id": "turquoise shore_0"
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "GetObjectEvent",
+            [
+              "fish_1",
+              "turquoise shore_0"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "GetObjectEvent",
+            [
+              "fish_1",
+              "turquoise shore_0"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=b8ef5a5e93a741e28d2959ca",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "1a09637a6a2a7be8a3bdf2bc",
+      "graph_sha256": "b8938857d99707da7d5837afba6885ec4f2a219a1e6895852fadcff58bd426d7",
+      "relationship_types": [
+        "shared_goal_item"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/10015.json",
+          "character": "the snakes",
+          "goal": "get bone",
+          "short_motivation": "I must reach the bone so I can use it pull myself from the sticky mudpit.",
+          "item_id": "bone_3",
+          "item_initial_owner": null,
+          "target_id": "mud pit_0"
+        },
+        {
+          "file": "quest_stems/10019.json",
+          "character": "the vulture",
+          "goal": "get bone",
+          "short_motivation": "I am so hungry.",
+          "item_id": "bone_3",
+          "item_initial_owner": null,
+          "target_id": "mud pit_0"
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "GetObjectEvent",
+            [
+              "bone_3",
+              "mud pit_0"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "GetObjectEvent",
+            [
+              "bone_3",
+              "mud pit_0"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=1a09637a6a2a7be8a3bdf2bc",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "4e97baeaeac4c7859becd11a",
+      "graph_sha256": "4f6cad4af6e566f173d7e4bd8aeb8f0776f937c1dd8936a91d9ca781cb5c822d",
+      "relationship_types": [
+        "reciprocal_authored_give_distinct_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/14324.json",
+          "character": "the friend",
+          "goal": "give roasting meat to knight",
+          "short_motivation": "I need to sell this roasting meat to the knight",
+          "item_id": "roasting meat_4",
+          "item_initial_owner": null,
+          "target_id": "knight"
+        },
+        {
+          "file": "quest_stems/15824.json",
+          "character": "the knight",
+          "goal": "give coin to friend",
+          "short_motivation": "I want the friend to discreetly get some information for me",
+          "item_id": "coin_8",
+          "item_initial_owner": "knight",
+          "target_id": "friend"
+        }
+      ],
+      "native_joint_witness_found": false,
+      "initial_goal_status": [
+        {
+          "typed_legal": false,
+          "identity": null,
+          "native_error": "not_in_original_native_action_catalogue",
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "GiveObjectEvent",
+            [
+              "coin_8",
+              "friend"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=4e97baeaeac4c7859becd11a",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    },
+    {
+      "case_id": "0d657d06eb645a9418d5526f",
+      "graph_sha256": "a721c85a0e80618e74de0a9af415778f82cb13180c7085a36ac19e412b3233bf",
+      "relationship_types": [
+        "reciprocal_authored_give_distinct_items"
+      ],
+      "original_authors": [
+        {
+          "file": "quest_stems/12851.json",
+          "character": "the miner",
+          "goal": "give coal to explorer",
+          "short_motivation": "I need to give the coal to the explorer so he can analyze it.",
+          "item_id": "coal_2",
+          "item_initial_owner": "miner",
+          "target_id": "explorer"
+        },
+        {
+          "file": "quest_stems/13629.json",
+          "character": "the explorer",
+          "goal": "give money to miner",
+          "short_motivation": "I want to pay the miner",
+          "item_id": "money_4",
+          "item_initial_owner": "explorer",
+          "target_id": "miner"
+        }
+      ],
+      "native_joint_witness_found": true,
+      "initial_goal_status": [
+        {
+          "typed_legal": true,
+          "identity": [
+            "GiveObjectEvent",
+            [
+              "coal_2",
+              "explorer"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        },
+        {
+          "typed_legal": true,
+          "identity": [
+            "GiveObjectEvent",
+            [
+              "money_4",
+              "miner"
+            ]
+          ],
+          "native_error": null,
+          "physical_initial": false
+        }
+      ],
+      "raw_witness_pointer": "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl#candidate_id=0d657d06eb645a9418d5526f",
+      "semantic_source_scope_readback": "workbench/game-npc-agents/results/E84_source_scope_readback.json; independent source purpose comparison, not an outcome flag"
+    }
+  ]
+}
