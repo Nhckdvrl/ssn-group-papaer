@@ -37,4 +37,10 @@ P1两模型均支持G相对A提升原goal及首步goal。P4固定asset上游的�
 
 **P2未跨模型完整成立：** Gemma装备图B−G首步block F/A +20.33/+15.45pp，32B仅+1.63/+3.25pp；32B请求Give差+0.81/+4.88pp，非预测的减少。全部109图32B B−G请求Give反而+2.75 [0.31,6.12] / +7.65 [3.06,12.23]，原Give层的逻辑冲突单列。P3的交付增加在Agreeable两模型清楚，32B Firm接近地板；检查/说话分别保留，不构造互斥三路故事。
 
-完整结果`results/E68_{gemma,32b}_cross_summary.json`；预注册读数`results/E68_prediction_readout.{json,md}`；原计划回放`results/E68_*_plan_paths.json`；原生block目标身份补充明确POST-HOC。报告[本轮完成版](../PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)，不追加seed、措辞网格或训练。
+完整结果`results/E68_{gemma,32b}_cross_summary.json`；预注册读数`results/E68_prediction_readout.{json,md}`；原计划回放`results/E68_*_plan_paths.json`；原生block目标身份补充明确POST-HOC。报告[本轮完成版](E68-clean-reserve-rule-predictions.md)，不追加seed、措辞网格或训练。
+
+## E67–E68跨轮归档与复算入口（文档整理迁入）
+
+[完整合账](../results/E67_E68_ROUND_COSTS_2026-10-15.json)为15108新增执行分支、51631本地调用、58133295输入／3632928输出tokens、6.556GPUh；含32B远端无输出冷启动0.972GPUh和Gemma原部分运行。主要raw为`runs/e67_{gemma,32b}_cross_s{0,1}`与`e68_{gemma,32b}_reserve_s{0,1}`。原354条Gemma旧轨迹／2583调用精确复用，不加N或重复推理成本。
+
+[预注册预测逐项读数](../results/E68_prediction_readout.md)、`E{67,68}_{gemma,32b}_cross_summary.json`和`*_plan_paths.json`保留模型反例、原计划可行但未采用与重新找到目标两种路径；相同上游不是固定实际选择，原子goal改善不等于完整人物利益改善。保留集SHA为`5bee70eeda144f3dd176ba1847c18d3a08b815e07e115a844368f2c19be7505b`，实际资格／曝光以本卡与source记录为准。

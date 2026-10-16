@@ -1,11 +1,11 @@
-# 来源与真实阅读范围｜2026-10-14
+# 跨领域来源与阅读范围登记
 
-**来源分类与阅读深度两维分别记录。** P0=出处/题名；P1=摘要；P2=正文相关段或代码说明；P3=正文+关键附录细读并核重要实现；P4=本地复现/重算。原始整理时“所有来源非P4／所有训练0”已过期：PCSP、agent-sandbox、LIGHT和MeltingPot已有本地执行，不能据此称复现所有论文主表。最新见 [进度报告](../PROGRESS_REPORT_2026-10-14.md)。安全／经济邻接工作仍按下表范围解释。
+此表保留相应日期的来源登记；后续单篇论文卡覆盖的身份/阅读更新优先于本表，不作为当前实验状态页。\n\n**来源分类与阅读深度两维分别记录。** P0=出处/题名；P1=摘要；P2=正文相关段或代码说明；P3=正文+关键附录细读并核重要实现；P4=本地复现/重算。原始整理时“所有来源非P4／所有训练0”已过期：PCSP、agent-sandbox、LIGHT和MeltingPot已有本地执行，不能据此称复现所有论文主表。最新见 [进度记录](../PROJECT_PROGRESS_REPORT_2026-10-16.md)。安全／经济邻接工作仍按下表范围解释。
 
 | 来源（直接链接） | 论文身份/与游戏 NPC 关联 | 本轮阅读深度与证据边界 |
 |---|---|---|
 | [Tricking LLM-Based NPCs into Spilling Secrets](https://arxiv.org/html/2508.19288v1) | ProvSec 2025；**直接游戏 NPC 安全** | P2：ar5iv/HTML方法/30样本/判分/结论；非全套统计复算 |
-| [Empowering MMO Economic Simulation](https://arxiv.org/html/2506.04699v1) | **KDD 2025 正式论文，直接游戏世界经济** | P2+：正文方法、5组实验、结论、附录结构；代码Zenodo入口未下载 |
+| [Empowering MMO Economic Simulation](https://arxiv.org/html/2506.04699v1) | **KDD 2025 正式论文，直接游戏世界经济** | P2+：正文方法、5组实验、结论、附录结构；当时未下载；后续有限Bargain源码范围见MMOAgent论文卡 |
 | [RoleBreak](https://aclanthology.org/2025.coling-main.494/) | COLING2025 main；角色攻击，**相邻非原生游戏执行** | P1 摘要/方法描述，未核关键脚本 |
 | [Dynamic Persona Coherence](https://aclanthology.org/2026.acl-long.1336/) | ACL2026 main；动态人格，偏角色语言 | 正文方法／主表／消融及关键附录已读；匿名代码入口返回401，代码未审 |
 | [Lies, Deceit, and Hallucinations](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/) | CHI2024；**真实游戏 NPC 玩家感知** | P1 作者摘要，玩家研究29人；未细读全部访谈编码 |
@@ -30,5 +30,5 @@
 2. 游戏**直接**经济已有KDD2025，真实结构包含资源、拍卖、P2P、货币、升级和规划；且 AIIDE2008已经讨论NPC交易和抗剥削。非游戏 AgentBazaar 又已系统研究 Sybil/价格危机，不能称“首次多Agent交易被攻击”。
 3. “长期人格漂移”已有COLING2025与ACL2026角色研究；要找到 game-specific 的新科学认识，需在真实角色经历/状态、允许剧情变迁、玩家行为后果上辨明现有理解边界，而非更长对话分类器。
 
-## 待完成而未冒充完成
-真实游戏经济KDD Zenodo数据及许可/可运行性未核；ProvSec原30条数据与更多角色未确认；AIIDE侦探完整方法与数据未查；mineamongus实际Docker与本地替换未运行。NeurIPS2026身份仍须逐篇核验，不能把题名索引当全文已读。安全／经济攻防实测仍0；矿区A训练与原生行动实测已有结果，分别记录。
+## 非主线来源的阅读欠账
+KDD完整环境/玩家数据许可及可运行性未核（有限Bargain源码核读不等于完整复现）；ProvSec原30条数据与更多角色未确认；AIIDE侦探完整方法与数据未查；mineamongus实际Docker与本地替换未运行。NeurIPS2026身份仍须逐篇核验，不能把题名索引当全文已读。安全／经济攻防实测仍0；矿区A训练与原生行动实测已有结果，分别记录。

@@ -1,74 +1,70 @@
-# 矿区 A 的最近邻与 idea 来源分析（2026-10-14）
+# Persona、目标与原生行动：近邻定位
 
-下文保留初次阅读快照。**2026-10-14 已读指定正文方法/关键附录/表格并执行E07/E08**；4张新论文卡在 `../papers/`，PCSP全链与原生动作最新审计在 [SOURCE_AUDIT](SOURCE_AUDIT_2026-10-14.md)。仍未复现作者完整模型数字，不能把局部CPU核验升级为全文实证复现。
+本页是跨论文定位，单篇身份、正文/附录/代码读取范围优先看论文卡；实验进度和自有主张只在整体报告、实验卡与CLAIMS维护。相关工作用于继承强基线和形成整体增量，不要求每个组件无人研究，也不因有近邻就自动缩窄或关闭问题。
 
-最新必须补入的近邻：[ReflAct（EMNLP2025）](https://aclanthology.org/2025.emnlp-main.1697/)已研究goal-state reflection；[ReFract（2026-10-02）](https://arxiv.org/abs/2610.03356)已有role-calibrated intent/knowledge/capability与可执行Text World Model。前者对位置/goal grounding有直接ownership，后者角色权限与我们当前观测视角归属不同但构成强近邻；正文/附录继续审计中。P02不能靠“在NPC中发现位置没接上角色”自动成为idea。
+## 已有认识与本项目要解释的关系
 
-## 1. The Personality Illusion — ICML 2026 正式主会
-[正式 PMLR](https://proceedings.mlr.press/v306/han26n.html) / [作者代码](https://github.com/psychology-of-AI/Personality-Illusion) / [arXiv](https://arxiv.org/abs/2509.03730)；本轮 P1 paper + P2 repo/data。
-- **DOCUMENTED**：研究心理量表自述、风险选择/阿谀/诚实等具体行为、persona injection；发现自述人格不可靠地预测行为，persona 注入会改变自述但行为效果小或不稳定。
-- **RECONSTRUCTED 研究动作**：人们用低价问卷代表人格 → 需要行为实验检验预测效度 → 不只测报告相关性，还控制模型对齐阶段和persona定向注入。
-- **强定位**：用户提出的“角色说得像但策略不一样”已有非常接近且成熟的 owner；游戏NPC论文需要超出普通人格/行为相关性，找到**自然游戏中角色/玩家利益、合法行动与世界后果**的新知识。不要先猜“RLHF讨好先验主导”。
+| 已有工作 | 已明确处理什么 | 对本研究的启发 |
+|---|---|---|
+| [The Personality Illusion](../papers/THE_PERSONALITY_ILLUSION_2026.md)、[Rethinking Psychometric](../papers/RETHINKING_PSYCHOMETRIC_2026.md) | 自述/行为效度、具体意图粒度、同/跨会话及priming | 表达、意图与执行分测；不把不一致本身当新发现。 |
+| [Story Shapes the Agent](../papers/STORY_SHAPES_AGENT_2026.md)、[Persona Vectors](../papers/PERSONA_VECTORS_GAMES_2026.md) | 多阶段叙事先验/动作锚点、内部向量改变博弈策略 | 不能用“前人全部单步”或“首次steer策略”立论；要解释真实角色与世界条件。 |
+| [PCSP](../papers/PCSP_2026.md)、[PANDA](../papers/PERSONA_DYNAMICS_ACL2025.md) | 人物条件化行动、训练读出与独立行为、人格与任务探索 | 真实行为差是起点；本地奖励/分类器不自动成为独立人格金标。 |
+| [Identity Overrides Incentives](../papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md)、[Persona-Guided TOD](../papers/PERSONA_GUIDED_TASK_DIALOGUE_2026.md)、[Price of Agreement](../papers/PRICE_OF_AGREEMENT_2026.md) | 人物×收益、明确优先、角色适配与任务grounding | 把人设/效用冲突或普通优先提示换名不够；原生任务依赖和玩家后续动作需进入解释。 |
+| [DebtBench](../papers/DEBTBENCH_ACL2026.md)、[MASCOT](../papers/MASCOT_EMNLP2026.md)、[SidConArena](../papers/SIDCONARENA_2026.md)、[MMOAgent](../papers/MMOAGENT_KDD2025.md) | 谈判让步、社会贡献、真实多步经济与制度 | 协议、物品真正交付和本人后续目的不能互相替代。 |
+| [NegaAlign](../papers/NEGAALIGN_2026.md)、[AgentIF](../papers/AGENTIF_NEURIPS2025.md)、[Agent GPA](../papers/AGENT_GPA_2026.md) | 任务与约束共同满足、条件触发、计划质量与遵循 | 原生阶段交叉用于解释角色行为，不冒领一般否定困难或计划/执行分解。NegaAlign本已同时要求任务完成，不能误说只看违禁。 |
+| [Principled Personas](../papers/PRINCIPLED_PERSONAS_EMNLP2025.md)、[SimpleToM](../papers/SIMPLETOM_ICLR2026.md)、[TriEx](../papers/TRIEX_ACL2026.md)、[Trust/behavior](../papers/TRUST_BELIEF_BEHAVIOR_2025.md) | 人格与任务效应、显式预测与应用、数值profile干预及rerun | 外部预测回答不是隐状态；相同信息和实际物理行动的干预才约束解释。 |
+| [PSALM](../papers/PSALM_NAACL2025.md)、[AGWM](../papers/AGWM_2026.md)、[SayCan](../papers/SAYCAN_2022.md) | 前提反馈、动作模型、目标有用性与可执行性 | 继承可靠动作支持，仍需解释NPC选择何种目的及何时采用路径。 |
+| [Dragon](../papers/HOW_TO_MOTIVATE_DRAGON_2021.md)、[KNUDGE](../papers/KNUDGE_2024.md)、[CDT](../papers/CDT_2026.md)、[NCP](../papers/NCP_2026.md) | 作者动机、专业RPG知识、情境人物逻辑、长期叙事约束 | 各有不同状态与评价对象；不能把authoring/narrator误称完整独立NPC引擎。 |
 
-## 2. Rethinking Psychometric Evaluation — 2026 NeurIPS 作者声称接收
-[预印本](https://arxiv.org/abs/2606.12730) / [作者开源](https://github.com/psychology-of-AI/Rethinking-Pyschometric-Eval-LLMs)；本轮 P1/局部 P2 code。作者 README 标注 NeurIPS2026，**未独立核对官方 main proceedings**；2026 ICML CTB workshop oral 不等于 ICML main。
-- **DOCUMENTED**：2×2×2 框架比较 BigFive vs Theory of Planned Behavior（TPB）、同会话 vs 跨会话、参数网格 vs persona；作者报告情境化/行为化测量能提高可预测性，BigFive在具体任务上很弱。同一对话本身可能引入 priming/额外信息，应审计不能当独立行为证据。
-- **RECONSTRUCTED**：最初自述-行为不一致 → 可能是心理指标尺度/上下文错位，而不是模型人格不存在 → 细化构念 + 强测量因果混杂。
-- **影响**：矿区 A 首个竞争解释必须包含**粗粒度测量失配和上下文匹配效应**。若这些足以解释 NPC 故事/选择差异，仍是前人已有方向的延展，需验证实际游戏动作的新内容。
+训练、投影/读出、组合控制的具体已有方法仍保留在逐篇卡：CIRL、BC-PMI、DAIL、PPG、PAMDP、SIPO、Poly-PPO等。它们已使用的对比学习、坐标对齐或辅助保护不是禁用工具；本项目要用整体证据说明角色取舍、执行条件与真实后果形成了什么新理解或改进。合作、持续目的与玩家改约的强邻近另见[合作定位](COOPERATION_REPAIR_POSITIONING_2026-10-16.md)。
 
-## 3. The Story Shapes the Agent — arXiv 2607.18566（2026）
-[论文](https://arxiv.org/abs/2607.18566)；本轮 P1 原始摘要与索引，未确认顶会录用、代码尚未核实。
-- **DOCUMENTED 作者报告**：三种文本调查游戏保持动作空间/阶段/资源约束同构，仅换疾病调查/IT故障/谋杀谜案叙事；共1890 sessions，3模型10 personas；故事框架的行为方差可达persona的5–31倍；直接与动作词汇关联的角色锚点有跨故事迁移优势，作者报告删去 anchor words 令某类转移一致性降95%。
-- **RECONSTRUCTED**：普通 persona 与动作对比可能只是叙事先验 → 使用结构同构任务，将“故事”与决策结构解耦 → 再对具体词锚做小干预。
-- **强限制**：**“叙事故事比人设更能影响决策”已经被这篇研究**，不能换 NPC 外壳后当成原创。需要看它是否有真正 NPC 自身目标、玩家互动与后续世界状态、是否排除角色与行动词汇不匹配；不能仅凭 abstract 把结论全推广。
+## 机制类原文的独有核读记录
 
-## 4. Persona Vectors in Games — arXiv 2603.21398
-[论文](https://arxiv.org/abs/2603.21398)；本轮 P1 摘要，代码/会场未确认。
-- **DOCUMENTED 作者报告**：博弈场景中构造利他/宽恕/他人预期的 activation vectors，steering 改变策略选择和语言依据，并发现措辞/战略不一定同步。并非人物多角色 RPG 的完整实测。
-- **限制**：用 activation steering 影响“战略行为”已有近邻，不能先跑 probes 再称发现“可分离人格策略表征”；若要做需至少核作者做过的因果干预、向量层、数据与真正执行决策。
+以下五篇尚无独立单篇卡，保留完整原文范围和asset hash；这是文献事实，不是本项目已识别的内部机制。
 
-## 5. PCSP — One Policy, Infinite NPCs, arXiv 2605.23652
-[论文](https://arxiv.org/abs/2605.23652) / [源码](https://github.com/yoosunghong/pcsp) / [作者独立行为结果](https://github.com/yoosunghong/pcsp/blob/main/research/docs/evaluations/independent-behavior.md)；本轮 P2 指定源码。
-- **DOCUMENTED**：Mini-Inzoi生活模拟中 frozen persona embedding→共享条件政策 PPO、contrastive与diversity，作者已经对400/100 train/held-out personas+3 seeds 进行独立行动特征审计；行为 probe full 0.482 vs no_consist 0.511（action-only），action+state 0.556 vs0.558。此差异是**作者的发现**。
-- **方法/度量注意**：Mini-Inzoi v3 的游戏奖励本身就用动作是否属于 persona.preferred_actions 加0.5、与 BigFive 对应 ACTION_STYLE_PROFILE 的余弦加0.3；策略在该环境中学到“风格”可能部分是直接优化了研究者指定的行为图谱。不能把模型学会 reward 定义直接外推成“人类真正感到人物有独特利益”。
-- **RECONSTRUCTED**：可控制上千 NPC 成本高 → 低成本条件策略，轨迹→persona信息对齐 → 需要外部行为验证。
-- **未来有价值的检验**：独立于 style reward 的真实游戏行为/目标/关系是否被角色设定控制。**这是需要在自然任务和强对照中检验的研究空间，不是已经证明其外部行为毫无意义。**
+## Tracing the Persona Circuit｜ICML 2026
 
-## 6. RPG/真实世界任务近邻
-- [LIGHT/How to Motivate Your Dragon](https://aclanthology.org/2021.naacl-main.64/)：角色原生动机/对话+物理行动；适于角色利益对照，但旧代码/任务归档待恢复，示范平均动作短，不宣称完整强本地基线。
-- [CDT ACL2026](https://aclanthology.org/2026.acl-long.568/)：情景化人物决策树已研究，默认 GPT4.1 构建逻辑/评分不免费；不能把“把persona写成if-else”当创新。
-- [KNUDGE EMNLP2024](https://aclanthology.org/2024.emnlp-main.520/)：RPG作者侧自然任务知识/对话图，不自动变在线行动 policy。
-- [ccb/agent-sandbox](https://github.com/ccb/agent-sandbox)：MIT学术研究工程，具备世界前提/动作后果和 NPC 自己目标/人格，是低成本引擎候选而**非顶会NPC方法强基线**。
+[官方正文](https://proceedings.mlr.press/v306/qin26h.html)。**文献事实：** §3–4以Latent Persona Vector扩展因果patch；600 trait contrast pairs，三对特质各100 discovery/100 validation。主要Llama3.2-3B，另Qwen2.5/13B验证；Character-LLM的1714单轮、450多轮和RoleBench文本评价。附录G对helpful assistant/assistant/helpful person/pirate匹配方向消融，支持人格信号与助手方向竞争；15-turn检查已做。Table1–2局部头增强改善文本人格分数并保留一般任务。PMLR只链接PDF/OpenReview；检索出的`suehuynh/icml-persona-circuit-reproduction`是第三方复现，不能当作者代码。
 
-## 不能宣称新颖的五个句子
-“LLM报告的人格和行为不一致”；“人格prompt影响语言比行为明显”；“叙事模板比persona强”；“加入外部persona向量能调策略”；“PCSP内部contrastive指标和独立行为一致”。这五句话要么被近邻做过、要么最后一句不符合作者独立行为报告。矿区A只能从可信真实游戏任务、新解释/控制边界、新独立测量及有效方法推进。
+**我们的解释：** 泛称“知道角色但助手先验覆盖”或“少数头增强人格”已有明确owner。**竞争解释：** 本项目的动作变化可能来自这种竞争，也可能来自仍然完整的人格对具体目标/状态/条件承诺的不同解释；要以原生实体裁决和相同信息干预区分，而不是用阶段方向角度代替。
 
-## 2026-10-14追加强近邻：FAccT2026
-[When Identity Overrides Incentives](https://arxiv.org/html/2601.10102)，已读方法/Appendix F/G/H/I，卡见../papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md。persona×payoff显式化交互、模型族差异，以及payoff优先/角色rename强prompt已被覆盖；不能给已知现象改名。我们当前原生NPC准入还不是新科学增量。
+## Persona Dynamic Decoding｜ICLR 2026
 
-## 2026-10-14后续邻居定位
-ACL2026 FAIRGAMER已研究transaction/cooperation/competition属性偏差与重复输出分布；2026 Intentional Deception已研究RPG profile条件下的动机操纵、true-statement misdirection与follow/echo。论文卡分别在../papers/FAIRGAMER_2026.md和INTENTIONAL_DECEPTION_2026.md；不把角色/激励交互、真话说服或模式改名当新idea。后者完整代码未公开，前者已读SDK/query统计路径，不冒称完整native engine。
+[正文](https://arxiv.org/abs/2603.01438)。**文献事实：** CAPS理论→PIE语境属性重要性→PIA多目标解码；Qwen2.5-7B/Llama3-8B，CharacterEval1785多轮/77角色、BeyondDialogue3552对话、PersonalityBench180k问题。Table1为文本对比胜率；Table2的PB仍由CharacterEval文本判据打分，不是游戏引擎action。附录D有人评和规模/权重消融。
 
-继续正文/附录审计：HARBOR（IJCNLP-AACL2025）已有persona偏好与利润权衡、ToM/ExpertAct/DPO；SPASM已有同会话说话者视角投影/echo；AgentMark已有计划与执行分解及分布保持行为水印；TriEx已有扑克三视角解释审计、显式belief数值干预和50次rerun控制；FPPS已有个性化历史诱发事实扭曲与内部steering。对应卡均在../papers/，原生NPC框架的工程归因不能自动冒领这些机制。
+**我们的解释：** “人格影响因语境而变”和动态属性加权不是本项目新主张。**竞争解释：** 原生资源选择差可能是恰当情境适配，而非人格失效；必须保留短/中/长动机及合法行动机会，比较具体意图与实际状态。
 
-PCSP比初次审计更强：正文§V-E已有50 English designer personas、语言/embedding→projection/行为overlap；作者ood-leakage-audit已测模板/两对韩语同义及排除近邻敏感性。MeltingPot PHASE5 §9–12已有candidate pool、平衡采样、两substrate各8seed、projection geometry/ID-OOD tradeoff。相关数字为作者结果，尚未本地完整复现；I02的“readout不同于policy”本身没有新颖性。
+## Trait Activation in Silicon｜ACL 2026 main
 
-I02定位查询（2026-10-14）：venue corpus nearest已运行，候选包括Consistent Zero-Shot Imitation with Contrastive Goal Inference、Diverse Policies Recovering via PMI、PCSP；最新arXiv检索发现ECLIPTICA/CITA（2601.06157）已有固定prompt下instruction-conditioned preference因果识别和KL信任域。后者仅完成摘要/HTML方法入口核验，尚未精读全实验/作者代码，不将其数值用于结论。Projection Heads（2605.17180）已读理论§5/实验§6，official OpenReview被challenge挡住；corpus标ICML2026，官方会场未独立核对。当前compression risk高，新颖性查询只输出定位，不自动关闭矿区。
+[正文](https://aclanthology.org/2026.acl-long.1792/)。**文献事实：** 十个正/负特质LoRA加DIAMONDS情境强度调制，Llama3-8B骨干；SPB-5k实际5420生成场景，情境测试85场景×25探针=2125交互，另32角色BFI。§4使用文本Trait-Situation Fit，DeepSeek-V3.2 judge；200场景人工数据校对、20场景judge校对。附录有训练/生成/评分协议。材料按论文要求验证后学术访问，不能声称已拿到其权重或源码。
 
-## 2026-10-14精度审计补充
-新增[PERSONA组合控制](../papers/PERSONA_ALGEBRA_2026.md)、[NCP-Bench](../papers/NCP_BENCH_2026.md)、[CitySim](../papers/CITYSIM_2025.md)、[目标形成博士研究](../papers/INTERNAL_MONOLOGUE_2025.md)及[PACT未全文核验记录](../papers/PACT_UNVERIFIED_2026.md)。人格向量组合／动态适应、长期承诺、人物—需求—计划链均已有明确ownership。E32改写稳健性是正向候选证据，整套原型识别也能解释；E33只诊断单项作者利益编辑能否保留原生控制，不称首次人格组合或新训练法。
+**我们的解释：** 强情境压缩人物差异、助手惯性及情境LoRA已有owner。**竞争解释：** E53人物差被任务状态放大/压平可能是情境强度的实例，或是具体目标被错误地视为已完成；需要直接测状态解释和真实动作，不能只给旧理论换NPC名称。
 
-已新增[定位卡](../papers/)：CIRL（ICML2026）覆盖goal推断的相对难度/partition，BC-PMI（ICLR2025）覆盖state-action中的style互信息与示范加权；DAIL（NeurIPS2025）覆盖语言+轨迹对比及distributional critic；PerMix-RLVR（2026预印本）覆盖persona鲁棒性/任务训练权衡；LIBERO-Para与GSR（2026预印本/作者会场声明）已覆盖等义指令对原生动作的影响和重新绑定修复。PPG（ICML2021）明确辅助表征学习加policy-KL保护；Holonomy/MultiWay已有坐标对齐/规范不变几何。各卡明示正文/附录/代码阅读范围，未全复现处保持未核对，不把邻居已有现象改名。
+## When Role-playing, Do Models Believe What They Say?｜2026预印本v3
 
-E25–E28不能仅凭readout、重排敏感、body混杂或正交变换建立新的NPC方法。E29只为另一原生闭环准入；下一问题必须在目标/人物/真实社会动作的新因果位置上有实测，并排除普通强提示或原作者已有memory/commitment修复。venue nearest查询已补角色目标/承诺：ACL2026 Dialogue is the Plan、Dynamic Persona Coherence、EMNLP2025 Path Drift等，需要正文审计再决定实验，不由检索自动关线。
+[最新正文](https://arxiv.org/abs/2606.11502)。**文献事实：** 15历史人物/时代原型；prompt、ICL、SFT、OCT与EM，Llama3.3-70B/Qwen3-8B。真值probe来自800真/800假statement，包含chat-template及训练后probe重新校准；另有质疑辩护和推理推广，不能把probe角度独自叫信念。代码链接[作者仓库](https://github.com/BenSturgeon/persona-belief-probes-submission)，本轮尚未代码复现。
 
-新增方法对齐：[PAMDP／ICLR2026](../papers/PAMDP_2026.md)的隐藏profile与双critic、[GCB／ICML2022](../papers/GOAL_CONDITIONED_BISIMULATION_2022.md)的功能等价、[PA-SkewFit／NeurIPS2021](../papers/GOAL_DOMAIN_ALIGNMENT_2021.md)的matched行动与跨域表示。结合BC-PMI／DAIL，当前研究动作转为解释角色编辑的利益结构、控制方向与训练形成过程，实际读数见E37／E39，不把邻近覆盖当关闭探索的理由。
+**我们的解释：** “角色说什么不等于内部相信什么”也已有实证owner。**竞争解释：** NPC自己台词可能是策略借口而非私有目标；E52的物品词干预改变行动，不证明原台词是错误信念或人格消失。我们的对象是可动态校验的游戏状态/目标与后续事件，不能以era-belief换皮。
 
-E41/I03最新定位：[PPol](../papers/PERSONA_POLICIES_2026.md)已有固定任务目标的人格交流变化与同预算训练；[Poly-PPO/ICLR2026](../papers/POLYCHROMIC_PPO_2026.md)已有集合成功×多样性、matched采样与局部分支；[SIPO/NeurIPS2023](../papers/SIPO_2023.md)已明确动作差异不等于策略后果并做游戏消融。当前增量研究动作是角色属性利益控制的形成与状态条件，不冒领这三个已有主张，也不因重叠自动关闭。三卡明确正文/附录/代码覆盖范围。
+## DREAM｜KDD 2026
 
-用户校正后定位：不再把“利益控制”当清楚的论文主旨。当前中心是人物设定、具体请求／自身目标／社会关系与真实选择的关系；PCSP的手写奖励诊断不能独立包装新题。新增[CRPO/ICML2026](../papers/CRPO_2026.md)、[HAMLET/ICLR2026](../papers/HAMLET_2026.md)、[CoSER/ICML2025](../papers/COSER_2025.md)正文及关键附录核对：已有角色约束与迎合冲突、task/style分流、私有goal与公共剧情冲突、动机信息对表现的因果对照。E44的一句时钟／已有责任只是普通强基线；寻找能解释真实NPC选择的新认识，而非将这些命题改名。
+[正文](https://arxiv.org/abs/2608.05170)。**文献事实：** Event–Belief–Consequence启发的事件图、时间约束检索和动态profile；CoSER文本/LLM评价、LifeChoice多选、TCM600场景（60人工核对），Table4消融timestamp/memory/dynamic profile。正文明确在线互动对话写回EMG仍为后续扩展。
 
-E46–49定位补充：[UGST/TACL2026](../papers/UGST_TACL_2026.md)已有profile/policy与任务分解、逐轮goal-state提示、SFT/GRPO；[Goal-Directedness/ICML2026](../papers/GOAL_DIRECTEDNESS_ICML_2026.md)已有behavior/belief/plan分层及因果patch对照。承诺→显式agenda、已有计划冗余及具体世界动作是当前测量层次，不能仅凭不同环境或普通管线消融称新贡献。E48单case支持一个渠道，E49以其他源角色／全部既有历史检验；尚未建立可跨角色／场景的新科学规律。
+**我们的解释：** 泛称因果事件记忆和长期角色一致性已有owner；本项目不先造新图记忆。**竞争解释：** E50差异可能被既有时间/目标记忆方法解释，或需要对实际engine event和社交意图区别建模；先用普通grounding对照和独立原生场景检查。
 
 
-2026-10-15补充定位：ICML Tracing the Persona Circuit、ICLR Persona Dynamic Decoding、ACL Trait Activation、When Role-playing Do Models Believe、KDD DREAM的正文/关键附录已核读，见[机制近邻](MECHANISTIC_NEIGHBORS_2026-10-15.md)。通用“人格仍在但被助手先验压过”、情境重要性、角色输出与信念分离及因果事件记忆都有claim owner。研究增量需在原生NPC目标取舍、具体目标解释与真实动作的可预测关联中形成；不用角度或单case替代独立验证。
+PDF资产在cache/papers，sha256：
+
+| PDF | SHA256 |
+|---|---|
+| persona_circuit_icml2026 | 6aecee2f08b1211b7eab687b45c562957d196abff4fec92cc5ef6b2d24c68bed |
+| pdd_iclr2026 | c753235245a6fc1f88f3115486bd82149d11d8dd1b3d912c14aba89d4ed19814 |
+| trait_activation_acl2026 | 8c1f3e167ae95ae9243a587fbdaefdfc2fd864d2a65b52d60eabde3196ebda7c |
+| roleplay_beliefs_2026 | 4d2346d1823e429c0dc49fb27366d60846708fef64efab05b32188dbe9979152 |
+| dream_2026 | 16b36d5d2f4c94172a3686998006f62d6b37f4d4f5218a59994e8dc55d46e3d2 |
+
+
+
+## AgentSense：语言交互的目标与私有信息
+
+[AgentSense，NAACL2025 Main](https://aclanthology.org/2025.naacl-long.257/)本轮核读§3.3–4.2、Table2及模拟/评价附录入口（并非重现其结果）。1225场景由245脚本模板扩展，原生是多轮语言交互，允许语言表达动作/表情；双方有目标和私有信息。完成由self/other及三外部judge判，信息推断用选择题，PSI测换profile后的goal分数波动。已有profile、伙伴与多目标/隐私的交互认识，不能声称首次研究动态伙伴和人物目标。其文本动作不提供LIGHT的持有/消费flag。PDF SHA256 `efe9700cae93fbacf63ba374506e26efc9f1c3355f69844462534cdb35f16b3e`；本地未复现AutoGen/11模型评测。

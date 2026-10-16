@@ -1,106 +1,40 @@
-# 本地痛点与意外现象
+# 痛点与解释边界
 
-## P12 · 2026-10-14 · 用户科研审计：将工程数据流误当科学机制，独立场景不足
-用户明确冻结小模型RL、全图漫游和无实体flag的case研究。E45/E49的conversation局部改写保留为局部组件实验，撤销其作为完整persona干预的资格；E48只阻止agenda，不阻止memory，不能据此断言承诺总因果效应为零。当前要回答：同一NPC的原生任务与外来请求争用同一实体资源时，persona影响承诺采纳、计划选择、真实分配的哪一阶段？普通信息恢复、礼貌表达、任务能力与承诺采纳是竞争解释。I04/E50用原作者实体任务及未见图级样本辨别，不再加旧QA实验。
+本页按稳定ID记录实际问题、竞争解释和证据，不作逐轮进度日志。**当前保持暂停，不由历史问题启动实验或改变状态。** 整体脉络见[项目报告](PROJECT_PROGRESS_REPORT_2026-10-16.md)，过程见[实验卡](experiments/README.md)与[日期日志](logs/2026-10-16.md)。原有11个痛点ID保持不重排。
 
-2026-10-15报告后再纠偏：单独证明性格词改变交付率存在显而易见性风险；E63以真实任务依赖/其他资产及明确规则区分无条件交付与保留任务的合作。E58弱责任句无效不能推出明确规则失效。E64以原双角色目标与物理代价研究交换，N=9只作发现性pilot。新增API语义细分与无回路假说patch停止，旧阴性不通过更多扫层找阳性。
+## 稳定痛点表
 
-2026-10-16整体推进：E74两个模型均从行动后果表得到真实任务恢复，但校正为原生真值没有额外收益；不要再将低测验分数直接视作内部信念缺陷。E75跨四类原作者自然Get前提，保留人物/目标/原生规则，用对称用途路径检验推进与取舍解释。用户重申novelty应按整体问题及证据链判断，不按每组件是否前所未有不断缩小主张；明确条件与竞争解释服务更大的认识，不能退成局部提示搜索。
+| ID | 痛点与独有来源 | 当前认识／竞争解释 | 原证据与边界 |
+|---|---|---|---|
+| <a id="p01"></a>**P01** | 依赖／运行失败与人物行为混淆。Action Castle缺prompty／aiofiles，PCSP旧PettingZoo AgentSelector失败；Qwen权重能加载但flashinfer warmup缺PATH中的ninja | 工程恢复、CPU正控与真正推理分开，导入／warmup不是persona失败 | [E07](experiments/E07-native-actioncastle-closure.md)／[E08](experiments/E08-pcsp-gradient-and-protocol-audit.md)保留版本和失败；本地资产见BASELINES，不再开环境QA线 |
+| <a id="p02"></a>**P02** | E07 seed101的20次决定中11次合法；troll已在岗位却说返回并离开，ghost离开后因黑暗返回失败 | 观测／语法／后果信息、地名与位置整合、运行模式／预算、全局narration与不在场历史均可解释；非总体persona失效 | E07／[E09](experiments/E09-viewpoint-grounding-control.md)；单seed只定位，自动吃鱼另作引擎归因 |
+| <a id="p03"></a>**P03** | 位置probe不等于动作contract。E09 Gemma位置9/9而合法动作3/9；换说明后位置可对、动作却0/9且含不在场target | 前缀literal、probe格式、对象scope和动作语义需分开，知道地点不等于能执行 | E09／[E10](experiments/E10-strong-native-action-interface.md)；原per-action说明和可靠格式是普通基线 |
+| <a id="p04"></a>**P04** | E14原目标能执行，但独立intent／action常不同，含多种emote／speech替代 | 两次随机draw、问法／同会话priming、粒度／载荷可解释；E15的I/A相对A/A未超抽样地板，差异本身非gap | [E14](experiments/E14-light-author-goal-npc-episodes.md)通信初版错误与全量修正、[E15](experiments/E15-intention-action-sampling-floor.md)噪声与fork对照均保留 |
+| <a id="p06"></a>**P06** | PCSP训练混合读出η与投影φ，no_consist移除不止一条路径 | φ塑形、政策原有信号而η未读出、state／needs信号都需区分；冻结政策只训练读出可改善retrieval，不能直接归因政策形成 | [E17](experiments/E17-pcsp-frozen-policy-readout-control.md)／[E25](experiments/E25-corrected-baseline-gradient-route-pilot.md)／[I02](ideas/I02-causal-separation-of-role-control-and-readout.md)；作者已有梯度及外部trait负结果，旧执行冻结 |
+| <a id="p07"></a>**P07** | E20的36局／70合法动作无speech，说话与物理行动争用机会 | 共享资源／饥饿、单动作交替的先手、对话规范与动机未正交；无speech非无社会能力 | [E20](experiments/E20-native-two-character-resource-episodes.md)／[E21](experiments/E21-native-dialogue-action-protocol-control.md)；Dragon已有speech/action分解，scheduler不冒充人物新机制 |
+| <a id="p08"></a>**P08** | bird把worm称幼鸟食物并放开放nests，fox合法取走；短期eat worm、中期feed young with nut | 合理长目标／威胁应对、规范归属误作权限、自己的台词priming／对象绑定、抽样或接口均可解释。E22未支持权限投射，目标提醒9/32→1/32，事实提醒未恢复动作 | [I01](ideas/I01-normative-ownership-and-mechanical-access.md)／[E22](experiments/E22-native-storage-access-belief-control.md)：负向字段连neutral正控失败，联合forecast降级；Can与Will分开 |
+| <a id="p09"></a>**P09** | 原500行编码有480行末列pool取padding query，同文随batch伙伴长度改变 | padding信号、旧政策对训练编码敏感、多角色变码互动均影响解释；正确last-nonpad是已有算法，Full／No无统一收益稳健性排序 | [E23](experiments/E23-persona-encoding-context-invariance.md)／[E24](experiments/E24-native-policy-utility-under-encoding-context.md)／E25；修pool非创新，旧资产／负结果保留，执行冻结 |
+| <a id="p10"></a>**P10** | train400为20种BF配置×20身份，held非C背景另5类，无精确单C配对；设计满秩非非线性组合能力 | 训练／投影路径、属性覆盖不足、目标与身体／状态机会相关均可解释；Full局部C更强与整体return更低并存，增强／绑定无统一排序 | [E34](experiments/E34-full-budget-corrected-baseline.md)、[E37](experiments/E37-matched-role-edit-functional-geometry.md)、[E39](experiments/E39-cross-role-direction-transport.md)、[E40](experiments/E40-preference-control-and-need-dynamics.md)、[E41](experiments/E41-interventional-persona-coverage.md)／[I03](ideas/I03-interventional-coverage-for-functional-persona-control.md)；surface v1作废与有效全预算均保留，不恢复RL |
+| <a id="p11"></a>**P11** | E35 seed3502 turn787/call77输入有warm／precise、Irvine与6条记忆，却无时钟／10:00讲座；frame967离开 | 时钟不可见、责任检索／显著性、合理教学重排或执行gate均可解释；3503错地点计划后恢复共同Irvine活动的正例保留 | [E35](experiments/E35-original-three-npc-goal-loop.md)／[E44](experiments/E44-natural-duty-context-restoration.md)：旧v1未覆盖fallback，不作统一事实证据；校园漫游冻结 |
+| <a id="p12"></a>**P12** | 用户审计指出把源码管道／QA当机制、独立场景不足、局部persona不一致；后期又过度细分物品索要 | 当前困难是角色能否围绕自身目的理解玩家真正做过的事、形成／修订可行方案并执行；目的取舍、近期语言／对象、路径采用与双方实现未完全分开 | [I04](ideas/I04-commitment-conflict-stage-arbitration.md)、[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)／[E85](experiments/E85-partner-performance-and-revision.md)；扩大N／提示格／统一失败名不能替代研究判断 |
 
-## P01 · 2026-10-14 · 本地依赖/运行路径恢复（工程痛点，不是科学增量）
+## P12当前未解关系
 
-ActionCastle首次导入缺prompty/aiofiles：现有Conda fgvd加隔离依赖overlay后CPU闭环8/8通过。PCSP原测试在PettingZoo1.24.3因AgentSelector导入失败；改用1.25.0后重试，原失败日志保留。
-Qwen3-32B单GPU权重成功加载61.03 GiB，但vLLM0.23.0/flashinfer采样kernel warmup找不到PATH中的ninja，尚未发生模型推理。需完整Conda激活，或明确使用已有非flashinfer采样器。工程失败不能当“persona行为失败”。版本、log与资产见E07/E08。
+普通系统已有实际交换、借用、帮助、拒绝和响应新请求。关键未解的是：**同一目的下，玩家用合法替代满足前提，或原办法失效而另有路径时，NPC能否理解贡献、保持目的并落实调整？** 它面向玩家未预编写的解决办法，同时允许NPC有自己的立场；当前只保存问题，不生成队列。
 
-## P02 · 2026-10-14 · 作者目标动作与当前地点/执行后果错位（单seed发现性观察）
-E07 Qwen3-32B non-thinking、原生pureReAct seed101，20次NPC决策，11/20合法执行，4次NPC动作有material变化；未启script fallback。troll在已经位于Drawbridge时说“return to my post”却执行go west离开，guard离开Courtyard后该处阻挡解除；ghost离开Dungeon后因黑暗连续返回失败（1/9动作成功），其目标性理由没有消失。全部失败保留。
-不是已证明persona失效：竞争解释H1为NPC原生观测/动作语法/后果信息不足，H2为地名与自我位置整合或叙事prior导致目标型语言先于当前state；H3为non-thinking/128token/采样的运行模式影响策略；H4为多NPC/未在场全局Game narration与history使目标对象错位。最小下一动作：在同一自然snapshot分别测无历史的当前位置、原版action、一个明确核当前地点的提示和信息等价structured state；先定位，再谈新机制。CPU自动吃鱼事实仍仅为执行归因。
+目的相容的取舍，与近期话语／局部物品／双方衔接主导可能并存。原子goal、Give、曾取得、终态和完整利益不合成一个正确合作分；前期人物干预与E81–E85自然互动分开，后者不补成新persona因果证据。
 
-## P03 · 2026-10-14 · 位置probe与原生动作contract不同（E09）
-Gemma3-12B在发现性snapshot原版location9/9，却action合法3/9；单句/viewer/neutral能保持location但动作变0/9，raw输出包含不在场target等失败。Qwen32部分位置literal失败是前缀格式而非知识。位置原文、probe格式/语义、动作参数/对象scope必须分开；不能由“模型知道当前位置”或“问卷正确”自动判断execution能力，亦不能强行把位置提示改善称策略改善。下一步先作者per-action descriptions/scoped tool arguments与可靠格式，不加训练。
+## P12负结果与撤销解释入口
 
-## P04：独立意图/行动的采样差不能直接当战略差（2026-10-14）
-E14修复后首12图seed901均选择并原生执行了作者goal事件（不等于所有抽象利益已达成），但独立intent与action仍常不同；许多是emote/speech等可替代选择。H1：同策略两随机draw/多种等价动作；H2：hypothetical意图问法改变选择分布（已有Rethinking上下文解释）；H3：行动粒度/菜单模板与speech payload/真实效果不一致。E15用A/A抽样噪声与I/A分布、原生fork执行校准，不预设存在gap。
+| 需要保留的边界 | 证据入口 |
+|---|---|
+| 局部人物／渠道和小样本被过度解释 | [E45](experiments/E45-natural-persona-and-goal-adoption.md)／[E49](experiments/E49-cross-role-commitment-causality.md)不作完整persona；[E48](experiments/E48-conversation-plan-update-ablation.md)只阻agenda未清记忆，非承诺总效应；[E50](experiments/E50-commitment-decision-snapshots.md)重构一致干预 |
+| 普通指令／弱责任句形成虚假遗忘或自毁故事 | [E56](experiments/E56-native-state-belief-and-action.md)阶段结束恢复；[E58](experiments/E58-disposition-and-priority-components.md)弱责任句不等于优先规则，[E63](experiments/E63-native-dependency-and-explicit-priority.md)明确规则有效 |
+| 小样本持有／交付被当完整利益 | [E57](experiments/E57-native-private-goal-interaction.md)／[E64](experiments/E64-native-reciprocal-goal-negotiation.md)消费、付酬、敌对伤害／死亡与通信控制保留；E64仅9图，双Give非总体互利 |
+| 否定过载／熵增／防卫分流及纯接口解释未成立 | [E65](experiments/E65-constraint-scope-and-permission.md)／[E66](experiments/E66-native-action-logit-competition.md)、[E67](experiments/E67-stage-rule-physical-cross-swap.md)／[E68](experiments/E68-clean-reserve-rule-predictions.md)保留许可异质、反馈未恢复及反向结果；[逐项预测](results/E68_prediction_readout.md)不删阴性 |
+| 知识、选择与作者后续目的不相同 | [E69](experiments/E69-matched-task-and-motivation-window.md)共同窗口仍缺失、知识只部分恢复，绑定敏感性另报；[E70](experiments/E70-native-goal-request-and-execution-preconditions.md)／[E71](experiments/E71-unsolicited-authored-goal-baseline.md)／[E72](experiments/E72-native-candidate-feedback-and-goal-execution.md)／[E73](experiments/E73-equal-initial-native-feedback.md)保留前提、请求方向与反馈控制 |
+| 测验／推进／终局指派未给统一潜在能力或二模块机制 | [E74](experiments/E74-physical-consequence-prediction-and-choice.md)真值未额外恢复；[E75](experiments/E75-native-retrieval-task-transfer.md)／[E76](experiments/E76-fixed-dialogue-and-native-access.md)状态作用依模型；[E77](experiments/E77-dialogue-and-assigned-outcome-execution.md)Give反例、879未履约构成及未Get无源Get拒绝保留 |
+| 实现支持或终局交换不自动是目的延续 | [E80](experiments/E80-responsive-player-and-grounded-execution.md)技能支持当前用途；[E81](experiments/E81-authored-cooperation-and-partner-response.md)／E84有合法替代与拒绝；[E82](experiments/E82-minecraft-original-cooperation-baseline.md)只为CPU见证；[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)提前／重复奖励与拒借并存 |
+| 收到／声称／改约非普遍合理回报或内部信念 | E85真实转移未统一提高GiveY，终局含后补交、自取／偷取、释放／接取；216问答两字段不稳定，改变的是新请求而非世界失效；[独立统计](results/E85_statistical_independent_review.json)及两模型完整原生审计／结果保留 |
 
-## P06：同一训练目标混合政策塑形与读出学习，需独立控制（2026-10-14）
-PCSP已有gradient审计与external trait负结果，均不是我们的发现。源损失同时学η与共享φ，no_consist消融同时移除encoder对齐；检索变化无法单独识别policy变化是否必要。H1：φ改变使策略轨迹更可区分；H2：原policy已经有足够信号，η没学会读取；H3：state/needs机制携带角色信号。E17冻结θ/φ后训练原η，先核原full正控制/held100，若恢复才拆H3；不把这个校准自动当新idea。
-
-## P07：说话与物理行动是否争用一个机会（2026-10-14）
-E20完整36episode/70合法原生动作，0speech；其中一次follow长目标、一次examine食物，不能当人格失败。H1：共享资源与原饥饿目标使角色选择直接行动；H2：当前单动作交替task binding让说话占掉争取物品的先手机会，弱化原Dragon先utterance后action的互动机会；H3：对话规范/信息与角色长期动机本来未正交。E21先复用原native事件，提供已由Dragon研究的speech/action分解控制，原物理规则/目标不改；scheduler差异单列，不给因果persona或新颖性结论。
-
-## P08：公开归属语言、目标物品绑定与实际访问（2026-10-14）
-E21首seed的p14908 bird公开称worm为幼鸟食物并安全存放，put到公共nests后fox用合法get取走。source短动机自己eat worm，中动机feed young with nut；实际nests是开放公共surface，desc为abandoned。这里只是一个发现性样本，不宣称persona失效或必须自私。H1：合理长目标取舍/威胁信号（Can与Will不同）；H2：角色规范性归属被误当物理权限；H3：自己的公开台词priming/目标object绑定被合并（已有上下文/goal grounding近邻）；H4：抽样/菜单/本地clock解释。I01/E22在同物理/相同菜单快照独立测权限，强普通一句事实/原目标物品提醒作为对照；E21另外两个固定seed继续，不筛选成功put。
-
-E22后：不支持H2；源目标绑定可将放worm9/32降到1/32，事实提醒不恢复该动作。负向权限字段neutral阳性对照失败，联合机制读数降级；不能因其与行动同向就升级。详见I01/E22。
-
-## P09：角色编码的批次上下文混杂（2026-10-14）
-E23原500资产500/500高余弦复现，right-padding情况下原脚本末列pool有480行取padding query；同原文编码随批次最长伙伴改变。正确last-nonpad是作者smoke_test和官方已有算法，跨batch变化回到数值地板。E24六原trained政策原生收益受固定padding影响约2–14%，但Full/NoCons没有一致稳健性排序。H1：padding query位置/长度的额外编码信号；H2：旧政策对训练编码分布的正常敏感性；H3：多角色同时变码的动态交互。先建立正确编码训练基线E25，不能把工程缺陷自动升为创新。
-
-## P10：角色数量、单属性覆盖与功能控制不是同一问题（2026-10-14）
-E34完整300轮后，Full三个seed的局部C利益方向均强于No，不能讲persona只有proxy；同时整体native return更低、等义相对敏感性更大。E37/39同状态同幅度控制与E40身体反馈／C标注对照提供三种分开的读数。源train400实际上是20种BF组合×20职业；20种非C背景与test5种完全不重叠，原500中没有精确单C配对。线性设计满秩6并未保证非线性条件policy的单属性组合能力。
-H1是训练目标／projection的形成路径，H2是单属性干预覆盖不足，H3是目标与身体相关及不同状态机会；不将任一个先判定为真。下一先用普通surface augmentation与C配置干预进行等预算训练，避免一看到差异就设计新loss。干预保持每episode C边际、原body与preferred_actions，评价沿原作者任务／固定读数。
-
-## P11：角色社会互动时，已有责任是否仍进入决策输入（2026-10-14）
-源代码事实：E35 seed3502 turn787/call77，教授的原speak消息有warm/precise人设、当前Irvine地点、六条学生相关chat/reflection/observation；没有当前时钟或本人10:00讲座责任。本人原schedule/t0计划已有该责任。对话主动邀请学生去Williams，双方outcome判immediate，revision保留10:00讲座到later；真实frame967起教授离开Irvine。原conversation输入的阶段差异是待解释事实，不自动是科学创新。
-
-我们的解释：角色规范“热情教学”与实际已有责任的关系，可能受组件所见信息影响；不能由友善台词或plan字段 alone 判断执行。竞争解释H1时钟不可见、H2责任检索／显著性、H3合理教学重排或原执行gate。E44在同原生prefix用普通时钟／本人责任一句事实作最小对照，不改规则／角色／gold；成功与负结果均保留。3503学生的错地点计划随后实际恢复共同Irvine活动是正证据，不能沿“gap”故事删去。
-
-2026-10-15 E63/E64收尾：P12不再只问角色会不会多交付。明确任务优先在两Qwen保任务且保留非冲突合作；Gemma资产包损失主要包含任务/请求都未推进及可行计划未采纳。问题转向哪些因素预测任务进展与真实回报。E63主要原子goal，E64资源取得/持有亦不等完整私人动机；archer付酬例说明“留住bag更多”并非统一好结局。优先真实工具链，普通解释先检验；不自动给失败命名机制。参见完整复审报告，旧RL/细标签/无假说patch继续冻结。
-
-2026-10-15 E65/E66：P12进一步具体化为人物动机、保有/转移限制与原任务怎样共同决定动作选择。79图五规则2370条完成；纯否定相对保有同时降低交付、降低原goal、增加合法block约14pp。故未完成包含主动防卫、重复防卫和无物理变化行为，不能以统一“安全不动”取代真实动作分析。两模型固定计划/记忆后换generic使原goal概率+17.6/+12.6pp，执行规则有直接作用；范围解释与行动语义竞争，下一用真实执行及未见原任务判别，暂缓论文。
-
-2026-10-15 E67：9480实体执行表明执行规则的条件效应在两模型可重复，Gemma效应约29–32pp、32B约8–13pp；上游C/U仍有贡献。状态/错误反馈没有恢复纯否定下任务，重复错误与合法非推进动作并存。原计划回放显示既有可行计划未采用，也有原计划不可行而执行端重新找回目标。I04继续以任务、角色与社会请求的真实裁决为问题，E68独立预测运行中，不把所有差距归于单一最后层机制。
-
-
-### P12：E67/E68完成后的实际进展
-执行端规则作用已跨独立41装备图复现（Gemma +27.6/+36.6pp，32B +8.9/+13.0pp），其他物品上的人物合作差也在60图保留。纯否定导致统一防卫的预测未跨模型成立；原生block本身控制移动。更具体的矛盾出现在源目标层次：部分32B转移分支跳过wear/wield，却执行作者短期动机明确要求的Give。原子goal失败不是完整利益受损的充分判据。现有路径和作者动机足以提供下一问题，不需要继续投预算给语义细标或保护句网格。详见E68、最新RULE_EXECUTION报告；0追加训练/patch。
-
-
-### P12 · E69：任务类型调节人物效应，后续执行有部分普通机制知识解释
-112同图配对已执行。32B Equip下Agreeable−Firm任务−6.85pp [−11.31,−2.68]、请求转移+7.14 [3.57,11.01]；DutyGive任务−0.60 [−2.08,0.89]且约99%到职责A。Gemma角色差更明显地出现在首步，不能统一归结为只改变启动时间或无差别Give激活。3源案例补窗仍无双事件，但在原goal后给出remove真实机制，32B恢复5/36（2世界），Gemma只出现17条remove而无恢复；完成说明均不恢复。知晓某动作前提、选择后续行动与完成角色叙事后果是可分的读数，不能把剩余全部叫深层人格失效。普通解释与模型差异保留，不追加措辞网格。见E69完整报告/全部轨迹与source hash。
-
-
-### P12 · E70：前提路径与受益对象须拆开
-
-原作者Give目标固定的117图显示：32B人物作用在ready/equipped之间真实换向（−6.84/+5.41pp），Gemma装备人物效应也为正。很多未源物品交付仍在交其他物品；应分别记录原物品到谁、前提Remove是否执行与额外资源流动。原生get_valid_actions不是完美合法性oracle，Reward是XP且可确定性失败，作为解释边界记录，不修引擎开QA线。E72固定原对话比较候选机会，E71补无人索要；问题是怎样从角色行为推断其目标取舍，而非继续找保护句。
-
-### P12 · E71–E73：相同事实可用之后，人物改变了哪部分决策？
-
-所有23868分支收齐。前提知识与候选接口解释大部分交付损失；E73保留原菜单只给真实初态操作反馈，原任务Gemma F/A56.4/70.7%、32B77.8/80.1%。32B任务人物差小，但同时减少未交付、增加向B交付；单任务分数不足以推断私人目标权重。下一有信息量的问题是人物是否改变行动后果信念，或在正确预测下改变推进/取舍，不能用“知识都告诉了”代替信念证据。相同信息可用并非相同内部信念，不靠新提示网格、只看理由或全网格patch作答。见[报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。
-
-### P12 · E74–E77：从推进读数回到互动中的角色选择
-
-真实后果表没有比自产表额外恢复，提示共同行动链/目标呈现值得重视；自然Get任务和固定C的状态反事实又显示推进与用途共同变化。E77把同一回应和当前trait实际交叉：非Give换C来源的Get8均值差Gemma/32B +16.13/+10.75pp，固定C换当前trait请求仍+10.75/+6.45pp；Gemma Give仍有直接推进效应，避免把新的分组结果钦定成二阶段独立机制。
-
-外部指定原后果可恢复非Give物理履约至Gemma80.65/77.42%、32B96.77/93.55%，但Gemma Give仍38.50/41.78%，指定B亦保留人物差。2448指派分支的879未履约由777未Get、75分流、27已取未处置组成；未Get没有尝试源Get，不是取物被引擎拒绝。这个痛点应按目标采用、互动尚待解决及实际后果分别解释，而不是全部叫程序能力或人格失效。
-
-工业/玩家核查表明强状态接口、可靠原生技能与可行性反馈是现成起点。下一有价值的数据应显示玩家回应/兑现/改变条件后，NPC能否保有自身动机并落实可行方案；先用这些强普通对照剥离原子执行负担，观察具体玩法损失。不机械开E78、不为三案例再改提示；当前分析整体仍有独立价值。见[E70–E77报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)和应用/玩家笔记。
-
-### P12 · E80：普通可靠执行与角色目的同时进入真实互动
-
-200图/4800episode强交互基线完成，首次已选两步后果的前提实现从25.0%/30.65%恢复到100%，但全图goal只+.17/.50pp；角色请求Give效应仍+10.50/+12.83pp。当前痛点转为怎样区分已选用途的继续/改选、物理实现与作者更高目的，而非继续修Get或保护句。支付/腾手等替代行动已有真实记录，原子任务失败不能自动叫角色利益失败。实际不同资产交换样本仅1/4图，下一数据应围绕对方有能力兑现的真实条件，先从现有轨迹验证价值，不再刷无穷索要格或三案例提示。见E80续报/全部原生结果；PCSP等旧线不恢复。
-
-### P12 · E81–E83：让NPC持续目的真正参与玩家合作
-
-E81在双方原作者任务中跑完126图/504episode；真实交接相当常见，但两原子结果不能代替私有目的，未Give也可能有直接Put的实际帮助。原世界缺很多后续功能，继续在少数返还例上分支不能替代重要能力问题。已继承E82原Minecraft多步物理执行；E83重建有自身找剑目的与条件奖励的NPC决策阶段，先观察普通强系统面对玩家实际履约、声称已做及改变要求怎样作出并兑现选择。不是再开人物措辞网格，也不是以新协议/训练为预设终点。
-
-
-### P12 · E81–E84：实际帮助、按条件认账与继续合作
-
-E81全126图/504episode显示普通原生互动大多能完成，直接Put到对方目标位置是合理替代帮助，Give率不能穷尽合作。E83同一原paper-role的2路径，最终交换与提前支付/重复奖励并存；拒预付/拒借可以成功，但玩家仅声称归还后仍真实支付。可见库存与真实收件进入了全部输入，下一步应检验合作判断如何随真实行动更新，不先叫人格忘记或预设记账方法。完整7486作者quests/1787源图正在按E84检查双向原生前提和不同合作办法，避免围单角色调提示。双方作者目标的物理兼容、更高目的兼容、已经谈妥的承诺仍分开；已有一般条件合作方法要作为强起点。
-
-
-### P12 · E84：原子完成、可行合作与角色自主性必须对着完整互动判断
-
-32原任务对/23图、128完整episode跑完。普通32B可真实给钩后协商借刀、卸刀/交刀/装备，也可在书果交接后继续响应求药；这些能推进原角色的具体目的，原Steal/Put分数却漏掉。Gemma有Drop巧克力的实际帮助，也会因对方先偷而拒借睡袋。未达原goal不等于模型没有合作能力或违反角色利益；原Give已由收件者持有、Drop原本人未持物等源边界保留，不从重复原动作造唯一正确选择。
-
-与此同时，原生可行的已谈方案、后来被取消的方案，以及未落在现有能力上的魔法/材料方案，需要不同判断。全128局实际话语/物资流和后续都保存，不把其他动作附带未送达utterance当承诺，不以最后库存代替按约继续。下一新增信息须能改变对NPC自身目的与玩家真实贡献之间关系的认识，而非再提高几个案例的分数；每次立项先写局部化风险。该轮4224本地calls/0.75834完整观测GPUh、0云/Step/API、全部进程退出；0新提示格/训练，I04/C06状态保持。详见E84完整卡、两模型报告和grounded_plans_POST_HOC。
-
-
-### P12 · E85：玩家事实、实际补交与改约后的角色选择
-
-全576分支/9原图收齐，13,452已记录调用/2.04614GPUh/0API。真收到X并未跨模型统一提高主动GiveY；Qwen改约后新返X增加30.56pp[19.44,40.74]，Gemma −7.41[−20.37,0]。全轨迹显示玩家可在claim/pending之后真实Give，NPC也可自取/偷取；Drop/Put释放之后玩家是否接取又影响终局。对方所需Y的曾持有、NPC主动帮助、原目的与后续用途必须同时读，不能从低Give率直接制造NPC失败。
-
-现在更值得追的困难是角色是否理解合作手段对自身目的的作用：遇到玩家提供合法替代、原计划手段失效但另有可达方案时，能否继续/调整并实际实现目的。这与只认某个物品/近期说法或局部动作线索能产生不同预测。先选已有原生多步任务、可靠动作与普通强基线，不围这9图再加提示/holder词面或随即训练。216独立事实问答两字段常不一致已如实保留，不给内部信念作证。全部源/seed/失败/成本保留，I04/C06不升级；详见[E85卡](experiments/E85-partner-performance-and-revision.md)。
-
-**2026-10-16最新用户决定：本轮完成后暂停新增实验，仅整理文档。** E85全部完成、worker/GPU释放、无新队列；上述下一问题只作候选，恢复须用户明确指令。完整结果、当前判断与归档入口见[本轮进度报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)；研究状态保持。
+工程兼容、协议错误、降级／作废、同名替代物、消费同义事件、失败和成本继续保存在原卡／最终JSON／[CLAIMS作废记录](CLAIMS.md#作废降级记录)。I04另保留E52／E62白盒阴性索引。不删除证据，不据阴性关题；旧RL、漫游、细标签或无回路patch不自动恢复。本页不再逐轮写“最新运行中／已完成”。

@@ -2,7 +2,7 @@
 
 **截至2026-10-16，北京时间。覆盖当前工作台从E01、E06到E85的全部研究阶段，不仅是最近一轮。** 本报告重新组织已有实验卡、结果、主张账本与历次报告，说明为什么开展这些实验、哪些结果改变了研究判断、哪里走了弯路、对原始NPC问题推进了什么。没有新增模型调用、训练、引擎实验或文献检索。
 
-**当前保持暂停：** E85已结束，自有worker及GPU已释放，无待运行队列；恢复须用户明确指令。工作台PROPOSED、I04 PROMISING、C01–C06原有等级保持，论文正文暂缓。旧报告中的“继续”“下一步”“尚未完成”须按当时语境阅读，本报告是当前整体入口。
+**当前保持暂停：** E85已结束，自有worker及GPU已释放，无待运行队列；恢复须用户明确指令。工作台PROPOSED、I04 PROMISING、C01–C06原有等级保持，论文正文暂缓。阶段报告已合并到本报告与对应实验卡；原始历史版本可从Git `af7564ff`读取。实验卡/日志中的“继续”“下一步”须按当时语境阅读，本报告是当前整体入口。
 
 ## 1. 整体判断：已经认识到什么，还差在哪里
 
@@ -66,7 +66,7 @@ E01对公开指标/动作声明做了8项源码合约检查，零模型调用，
 - **E15：意图与行动不同，可能只是抽样。** 24个快照、1152调用中，意图—行动JS超出行动A/A噪声的差为−0.01125，95%区间[−0.03103,0.01020]。这阻止了把两次随机选择不同直接写成科学发现。
 - **E20–E22：对话机会、真实访问与原目标必须一起看。** 双角色可消费同一资源，世界确实裁决后果；原目标物品提醒使一条鸟放虫轨迹的放置从9/32降至1/32。权限问答的一个负向字段连正控制都未通过，I01的“规范归属投射为机械访问”没有获证。
 
-本阶段的进步是建立可靠观察和排除明显误读。扩大接口、重放历史、核对原生规则是必要底座，不单独构成新方法。对应完整证据见[早期报告](PROGRESS_REPORT_2026-10-14.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)。
+本阶段的进步是建立可靠观察和排除明显误读。扩大接口、重放历史、核对原生规则是必要底座，不单独构成新方法。对应完整证据见[E06准入及后续卡](experiments/E06-persona-strategy-baseline.md)、[源码审计](knowledge/persona-behavior/SOURCE_AUDIT_2026-10-14.md)。
 
 ## 5. PCSP与校园线：哪些资产有用，哪里确实走了弯路
 
@@ -130,7 +130,7 @@ E29/E30恢复真实饮水与planner，E35在同一校园三条自然历史中各
 
 E57已经恢复真正双角色私有目标互动，人物改变取得、转移、消费及偷取；其中食物能量为0，不能讲成生存损害。E61源动机读回也说明，Give可能是换工具、交保护费、维护关系等有目的行为，不是天然利他。
 
-这一阶段让“人物有用”有了可信行动证据，并排除一批普通解释。它也再次产生边际收益风险：持续细分memory时态、用Step给文本反复分类、无回路假说单层patch，并不能自动产生重要研究。后两类扩展已停止。完整结果、质量问题与成本见[E50–E62报告](PROGRESS_REPORT_2026-10-15.md)。
+这一阶段让“人物有用”有了可信行动证据，并排除一批普通解释。它也再次产生边际收益风险：持续细分memory时态、用Step给文本反复分类、无回路假说单层patch，并不能自动产生重要研究。后两类扩展已停止。完整结果、质量问题与成本见[E62与阶段合账说明](experiments/E62-native-recipient-causal-diagnostic.md)。
 
 ## 7. E63–E69：从人物主效应进入任务与合作的张力
 
@@ -169,7 +169,7 @@ E68还发现，部分原子穿戴任务与作者短期动机要求的交付不�
 
 三个旧案例补齐共同观察窗仍未自行完成两个事件；追加真实Remove前提事实，仅Qwen恢复5/36条双事件，Gemma虽17次Remove却仍没有后续Give。它识别了普通机制知识能解决的一部分，不支持把所有剩余未给归成人物动机压制。三个案例也不承载总体比例。
 
-这一阶段推进了任务、规则、动机与实体后果的关系，纠正了多次过早故事。详见[E63/E64](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E65/E66](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E67/E68](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)、[E69](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)。
+这一阶段推进了任务、规则、动机与实体后果的关系，纠正了多次过早故事。详见[E63](experiments/E63-native-dependency-and-explicit-priority.md)/[E64](experiments/E64-native-reciprocal-goal-negotiation.md)、[E65](experiments/E65-constraint-scope-and-permission.md)/[E66](experiments/E66-native-action-logit-competition.md)、[E67](experiments/E67-stage-rule-physical-cross-swap.md)/[E68](experiments/E68-clean-reserve-rule-predictions.md)、[E69](experiments/E69-matched-task-and-motivation-window.md)。
 
 ## 8. E70–E77：最终得分为何不足以解释人物作用
 
@@ -200,7 +200,7 @@ E77再交叉本人社会回应来源与当前人物、并指派可达后果。�
 
 它让任务分数更可解释，C06获得限定L2证据。但E70–E77的36,468条新增分支仍来自208个不同源图，主要围绕物品索要。继续把影响拆得更细，不会自动回答玩家为什么需要这种NPC，也没有跨游戏或真人体验结果。
 
-这是第二次需要明确承认的局部化风险：**测量越来越精细，应用问题没有同步变宽。** 后续没有把某个二阶段公式钦定为论文，而是检验强现有执行系统能解释多少，并回到双方有目的的合作。完整细节见[E70–E77连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)与[E74–E76分报告](PROGRESS_REPORT_2026-10-16.md)。
+这是第二次需要明确承认的局部化风险：**测量越来越精细，应用问题没有同步变宽。** 后续没有把某个二阶段公式钦定为论文，而是检验强现有执行系统能解释多少，并回到双方有目的的合作。完整细节见[E77累计口径](experiments/E77-dialogue-and-assigned-outcome-execution.md)及[E74](experiments/E74-physical-consequence-prediction-and-choice.md)、[E75](experiments/E75-native-retrieval-task-transfer.md)、[E76](experiments/E76-fixed-dialogue-and-native-access.md)。
 
 ## 9. E80–E85：回到有自身目的的NPC和会真正行动的玩家
 
@@ -247,7 +247,7 @@ E85从E84全部方向机械选出18条自然交付前史、10任务对、9图。
 
 216次独立事实问答的两个字段常互相矛盾，没有提供稳定的事实读出，更不能充当行动内部信念。撤回只是新请求，未改变玩家原私有目标，也未令世界方案真正失效；E85没有人物随机干预。因此本轮识别了对后续行为的影响，仍未识别持续目的机制。
 
-详见[E80续报](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、[E81](experiments/E81-authored-cooperation-and-partner-response.md)、[E82](experiments/E82-minecraft-original-cooperation-baseline.md)、[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)、[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)、[E85完整报告](PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)。
+详见[E80](experiments/E80-responsive-player-and-grounded-execution.md)、[E81](experiments/E81-authored-cooperation-and-partner-response.md)、[E82](experiments/E82-minecraft-original-cooperation-baseline.md)、[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)、[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)、[E85完整记录](experiments/E85-partner-performance-and-revision.md)。
 
 ## 10. 哪些判断被推翻，哪些仍然成立
 
@@ -338,13 +338,13 @@ E85从E84全部方向机械选出18条自然交付前史、10任务对、9图。
 
 核心NPC、模拟玩家和实体判定使用本地模型或规则，复用Conda环境和模型缓存；后续实验没有恢复小模型RL。Step数据阶段有271个带usage响应、3,476,780 provider tokens，用于构造／质检／文本标注，固定Token Plan端点；不是本地决策调用，也不是新实验样本。Credit实际账单未由独立计费接口核对，不用token计数冒充现金账单。密钥不写入文档或Git。
 
-各阶段成本及失败见对应报告和[结果索引](results/README.md)。大轨迹、输入输出、状态、权重与来源在`/home/xiang/.cache/game-npc-research/`；GitHub保存轻量证据、脚本、图和manifest，**不等于全部raw已异地备份**。
+各阶段成本及失败见对应实验卡和[结果索引](results/README.md)。大轨迹、输入输出、状态、权重与来源在`/home/xiang/.cache/game-npc-research/`；GitHub保存轻量证据、脚本、图和manifest，**不等于全部raw已异地备份**。
 
 ## 14. 暂停状态与如何检查本报告
 
 **保持用户要求的暂停。** 不启动模型、训练、CPU引擎实验、推理API或新队列；不按历史卡片“下一步”自动恢复。当前文档工作不改变科学状态，也不把研究目标标完成。
 
-建议检查的顺序是：先看第1–3节是否仍围绕最初NPC问题；再看第5节是否正视了浪费和错误；第6–9节的对照是否确实改变解释；第10–12节是否将成立认识、被推翻故事与真正未解问题分清。需要核数时再打开阶段报告、实验卡和结果JSON，不要求从头读上万帧日志才能理解结论。
+建议检查的顺序是：先看第1–3节是否仍围绕最初NPC问题；再看第5节是否正视了浪费和错误；第6–9节的对照是否确实改变解释；第10–12节是否将成立认识、被推翻故事与真正未解问题分清。需要核数时再打开实验卡和结果JSON，不要求从头读上万帧日志才能理解结论。
 
 以下附表覆盖现存全部实验卡，便于逐项追查；历史负结果和原始失败不删除。研究问题、方法形态及恢复后的优先级继续由证据和人的判断决定。
 

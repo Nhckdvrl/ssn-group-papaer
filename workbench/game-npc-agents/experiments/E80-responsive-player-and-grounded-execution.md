@@ -59,6 +59,10 @@ partial252与恢复版有245条canonical一致、7条不一致，均源图`21a99
 
 全200图/4800逻辑episode完成；主全图模型下层A−F绑定goal为Gemma −9.00pp [−13.50,−4.50]、32B −12.50 [−16.67,−8.67]，NPC请求Give +10.50 [6.83,14.50]/+12.83 [9.17,16.50]pp。可靠技能总体goal仅+.17/+.50pp，但首次共同两步选择中原生前提从3/12、38/124恢复为12/12、124/124；下层改选与路径实现是竞争解释，不用它定义纯潜在能力。任务、最终归属、消费、返还/偷取及作者更高目的分别读回。
 
-[完整E80续报](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)、results/E80_{gemma,32b}_complete.json、E80_first_activation_POST_HOC.json、E80_cost_accounting.json及两张科学图提供全部结果。原792完整partial全部优先保留，恢复784exact/8nonexact；全图主值不变的敏感性与20对不满足共同prefix均公开。firstactivation汇总曾有同名counter重复success，已修正并核原始bool/类别和/概率界限，主完整结果未变。
+[完整E80记录](E73-equal-initial-native-feedback.md)、results/E80_{gemma,32b}_complete.json、E80_first_activation_POST_HOC.json、E80_cost_accounting.json及两张科学图提供全部结果。原792完整partial全部优先保留，恢复784exact/8nonexact；全图主值不变的敏感性与20对不满足共同prefix均公开。firstactivation汇总曾有同名counter重复success，已修正并核原始bool/类别和/概率界限，主完整结果未变。
 
 实际37642新本地calls，47822360输入/920604输出tokens，1次parse导致2个primary协议终止、0死亡，8init＋2中途异常完整计费，3.61978671观测GPUh/峰8卡/0API。全部worker退出；C06 L2/I04 PROMISING不变，不机械开E81，正文暂缓。
+
+## 与前轮的来源窗口（文档整理迁入）
+
+[源图联集账本](../results/E70_E80_source_union.json)按原JSON与canonical双重去重：E70–E77为208图，E80为200图，相交68图，合计340不同原图；不是340个独立生成器或新holdout。E80同时改变伙伴响应、强selector与执行接口，不能把旧新分差当纯玩家回应效应；本卡共同prefix节点与主200图保持分开。原money支付／cheese腾手的完整物理流见`E80_item_flows_POST_HOC.json`，只作原目的解释，不替代全图因果效应。

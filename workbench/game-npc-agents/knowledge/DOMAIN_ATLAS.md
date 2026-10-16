@@ -1,4 +1,4 @@
-# 游戏 NPC Agent 全领域地图（2026-10-14）
+# 游戏 NPC Agent 领域地图
 
 本页保留**重要的问题与科学结构**，不是按易跑程度给标题、也不是“NPC+安全/经济”的机械组合。依据：游戏 AI 原生研究（EA/AIIDE/CHI/KDD）、角色/NLP（ACL/COLING）、agent 机制与安全（NeurIPS/ICLR/ICML）、游戏界技术资料，以及跨领域的社会计算。
 
@@ -12,17 +12,17 @@
 
 它们都可以是游戏 NPC，但需要不同效度标准。不能将“玩家自己操控的通关模型”当成所有 NPC 的定义；只有拿其 policy/harness 方法迁移后，在 NPC 游戏机制中验证才获得直接意义。
 
-## 2. 横向科学问题（八片矿区）
+## 2. 横向科学问题（领域分类，不对应当前矿区编号）
 | 板块 | 社区关心的真实压力 | 例示近邻（不是新 idea） | 解释/实验可能聚焦什么 |
 |---|---|---|---|
-| A 设计师行为控制与学习 | NPC 的可塑性、设计反馈、动作可用、补丁更新 | EA 2026、MultiGAIL、Direct Behavior Specification、PCSP | 行为监督/训练损失真正怎样改变执行轨迹；行为控制的可预测边界 |
-| B Agent 系统与执行 | 语言、记忆、规划到动作与游戏世界因果闭环 | LIGHT/Dragon、KNUDGE、KRAFTON、ccb sandbox | 世界真值谁持有、语义输入怎样安全变成合法事件 |
-| C 社会交互与伙伴 | 长期互惠、误解、合作、对人/其他NPC适应 | Generative Agents、GAMMA、SOTOPIA、CollabBench | 信息不对称、策略互动的自然失败、伙伴分布与真实任务效用 |
-| D 身份/人格/关系长期动态 | 稳定身份和合法人物成长、情绪波动、记忆更新 | ACL2026 Dynamic Persona、RoleBreak、PCSP | 词面相似≠人格；动作/关系/历史怎样证明 drift 或 adaptation |
-| E **安全、被攻击与防御** | 玩家/NPC 发起诱导、秘密越权泄露、行动授权、记忆污染、规则篡改 | ProvSec2025 Secret, NeurIPS2024 AgentDojo, ICLR2025 ASB, AIIDE2026 detective | 控制权边界、长程攻击传播、既安全又可玩 |
-| F **MMO 经济与多主体风险** | 库存/钱/交换/价值/市场，局部自利行为如何放大成系统脆弱性 | KDD2025 MMO economy, AIIDE2008 EVE, AgentBazaar, TruthMarketTwin | 游戏制度与市场真实性、欺诈/套利/协作/坍塌的机制 |
-| G 剧情、欺骗与真实玩家 | 允许的故事欺骗 vs LLM 无意幻觉；信息揭示节奏和 agency | CHI2024 Lies, AIIDE2026 SKT, NCP | 哪些“错误陈述”有玩法意义；限制多强才破坏玩家自由 |
-| H 实时多模态与扩展 | 语音/视频行动、低延迟、几百个NPC的资源成本 | ReactiveGWM, WorldMind, PUBG Ally, EA | 模型+游戏引擎分工、NPC策略时序/吞吐与用户体验 |
+| 设计师行为控制与学习 | NPC 的可塑性、设计反馈、动作可用、补丁更新 | EA 2026、MultiGAIL、Direct Behavior Specification、PCSP | 行为监督/训练损失真正怎样改变执行轨迹；行为控制的可预测边界 |
+| Agent 系统与执行 | 语言、记忆、规划到动作与游戏世界因果闭环 | LIGHT/Dragon、KNUDGE、KRAFTON、ccb sandbox | 世界真值谁持有、语义输入怎样安全变成合法事件 |
+| 社会交互与伙伴 | 长期互惠、误解、合作、对人/其他NPC适应 | Generative Agents、GAMMA、SOTOPIA、CollabBench | 信息不对称、策略互动的自然失败、伙伴分布与真实任务效用 |
+| 身份/人格/关系长期动态 | 稳定身份和合法人物成长、情绪波动、记忆更新 | ACL2026 Dynamic Persona、RoleBreak、PCSP | 词面相似≠人格；动作/关系/历史怎样证明 drift 或 adaptation |
+| **安全、被攻击与防御** | 玩家/NPC 发起诱导、秘密越权泄露、行动授权、记忆污染、规则篡改 | ProvSec2025 Secret, NeurIPS2024 AgentDojo, ICLR2025 ASB, AIIDE2026 detective | 控制权边界、长程攻击传播、既安全又可玩 |
+| **MMO 经济与多主体风险** | 库存/钱/交换/价值/市场，局部自利行为如何放大成系统脆弱性 | KDD2025 MMO economy, AIIDE2008 EVE, AgentBazaar, TruthMarketTwin | 游戏制度与市场真实性、欺诈/套利/协作/坍塌的机制 |
+| 剧情、欺骗与真实玩家 | 允许的故事欺骗 vs LLM 无意幻觉；信息揭示节奏和 agency | CHI2024 Lies, AIIDE2026 SKT, NCP | 哪些“错误陈述”有玩法意义；限制多强才破坏玩家自由 |
+| 实时多模态与扩展 | 语音/视频行动、低延迟、几百个NPC的资源成本 | ReactiveGWM, WorldMind, PUBG Ally, EA | 模型+游戏引擎分工、NPC策略时序/吞吐与用户体验 |
 
 ## 3. 这些关系比“8个标题”更重要
 - **安全 ↔ 剧情**：一个侦探游戏里，玩家用对话诱使嫌疑人逐渐吐露线索可能是核心玩法；越过作者设定的未解锁事实、伪造新事件或系统规则，才可能是违规。“不泄露任何秘密”不是自然统一安全目标。
@@ -45,3 +45,11 @@
 [AI-Native Games Survey 2026](https://arxiv.org/html/2607.00527v2) 综述53个可玩作品，讨论 rule-bounded generation、multi-agent worlds 与安全；它区分 AI-native/augmented，但本工作台**不限制只研究 AI-native 产品**。
 直接经济：[KDD2025 MMO Agent](https://arxiv.org/html/2506.04699v1)；直接安全：[ProvSec2025 NPC Secrets](https://arxiv.org/html/2508.19288v1)；游戏交互人类证据：[CHI2024 NPC deception](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)。
 其他严格身份见 [SOURCES_AND_STATUS](SOURCES_AND_STATUS_2026-10-14.md)。
+
+## 7. 怎样从领域问题进入具体研究
+
+领域重要性由三类证据共同支持：已发表工作说明同行持续研究什么，开发者第一方材料说明真实制作压力，公开代码与数据说明能检验什么。商业演示不证明方法有效，会议身份不证明我们的变体新颖，能本地跑也不证明问题重要。
+
+作者控制与玩家自由、稳定身份与合理成长、个体利益与群体后果，都是需要在具体游戏规则里解释的关系。现成接口、角色标签或两种指标能对照，不能单独成为选题理由。增量可以是加深整体认识或提出有用方法，不要求每个组件都从未有人用过。
+
+对每个候选，连接四层：领域仍重要的问题 → 可信的自然线索 → 能区分解释的主张与研究动作 → 若成立会改变哪种理解、训练、制作或评价。定位用于辨认已有贡献和调整增量，不自动关闭方向。当前状态与实际研究取舍见整体报告；本图不保留旧的主轴、投资顺序或执行队列。

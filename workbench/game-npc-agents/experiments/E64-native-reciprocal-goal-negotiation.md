@@ -63,3 +63,9 @@ POST-HOC检查所有动作：none focal firm/agreeable的432动作中emote253/29
 king/groom两条死亡都在seed6401、none、turn21，firm从未取得golden goblet，agreeable曾偷得/Get恢复后又送回，二者最终HP0；取得事件和最终私人福利不能合并。普通指令与真实失败一起汇报，不增加新控制或按结果剔除死亡。raw `runs/e64_27b_reciprocal_v3_resume/`，最终`results/E64_27b_reciprocal.json`。
 
 源用途校对：archer/groundskeeper图的源short motivation为付酬；给回bag可能服务该动机。check下双向Give与终点持有增加只描述原生事件，不自动判私人福利增加。两模型check差已按同9图做POST-HOC交互：双向Give firm33.3pp [11.1,59.3]、agreeable14.8 [−7.4,37.0]；目标取得交互区间跨0，不以“一个显著一个不显著”推全部能力差。全轮结果与成本见复审报告。
+
+## E63–E64合并账本与来源覆盖（文档整理迁入）
+
+两轮合账为[原分项目录及hash](../results/E63_E64_ROUND_COSTS_2026-10-15.json)：16470条主运行／通信控制，另72条不混主表的profile，104883次本地调用，122929563输入／8061699输出tokens，13.167GPUh，含载入、中断及未成episode调用；不是GPU内核活跃时间，旧决策回放不重复计推理。E63和E64个体协议／原生失败仍以各自结果为准。
+
+[reserve曝光核对](../results/E63_reserve_overlap_audit.json)发现原120标签中9图已用于E57、1图用于E64；其余110当时仅排除了这两轮，未审完更早来源，不能把旧标签直接当clean holdout。后续E68的独立资格以E68原卡为准，不追改旧cohort。

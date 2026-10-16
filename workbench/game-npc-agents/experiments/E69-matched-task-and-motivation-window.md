@@ -36,7 +36,11 @@ Panel A完整72条中，共同8步仍没有任一条双事件完成，延长前�
 ## 完整结果与成本
 2760主分支＋144适应性控制全部完成，27519新增本地调用、0解析失败、0API。模型载入/推理2.66807GPUh，完整启动至最后日志2.82804GPUh；四卡峰值，所有job已退出。112图8步goal人物×任务交互Gemma +4.17pp [0.00,8.33]、32B +6.25pp [2.08,10.71]；32B Duty-Give人物效应−0.60pp [−2.08,0.89]，没有跨模型完整正负反转。职责Give约98%–99%，请求者转移约0%，不能由goal交互确定动词回路。
 三世界补窗72条仍0双事件；适应性控制中完成说明不恢复，机制知识在32B恢复5/36双事件（2源图），Gemma0/36但17/36真实remove。全部原goal前历史一致，不据三个世界推总体机制。
-POST-HOC只读补充分别标明：结构化stance/精确计划命令、旧E68同来源子集比较、112/112图的Equip→remove→给A三步物理见证。无新模型条件/读数替换。C04/C05范围仍L2，I04 PROMISING，正文暂缓。完整统计、科学图和成本入口见[本轮报告](../PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)。
+POST-HOC只读补充分别标明：结构化stance/精确计划命令、旧E68同来源子集比较、112/112图的Equip→remove→给A三步物理见证。无新模型条件/读数替换。C04/C05范围仍L2，I04 PROMISING，正文暂缓。完整统计、科学图和成本入口见[本轮记录](E69-matched-task-and-motivation-window.md)。
 
 ### 最终物理状态校对后的POST-HOC敏感性
 2904条原生状态读回中，5条原命令goal成功发生在同名替代物上，最初绑定物品仍在别的角色处（Gemma4条、32B1条，3源图）。这属于原命令当前解析与固定物品读数的范围差；原预注册goal读数/轨迹保持。补充精确初始item_id的goal/both敏感性并报同图交互，不重跑或作废原数据。证据E69_native_state_readback.json，任何固定物品主张优先看该敏感性。
+
+## 旧阶段报告的派生证据入口（文档整理迁入）
+
+[来源覆盖](../results/E69_source_coverage.json)、[原E68同来源子集比较](../results/E69_prior_subset_POST_HOC.json)、`E69_{gemma,32b}_structured_stages_POST_HOC.json`及[112图三步物理见证](../results/E69_sequential_native_witness_POST_HOC.json)均为明确标注的派生／POST-HOC证据，不当新holdout或预注册主效应。完整主表与共同窗口控制分别为`E69_{gemma,32b}_matched.json`、`E69_{gemma,32b}_completion_controls.json`；[成本](../results/E69_resource_account.json)包括profile单计，原raw／数据SHA在本卡前文保留。

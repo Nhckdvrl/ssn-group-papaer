@@ -1,10 +1,26 @@
-# 2026-10-14 源码、数据与执行审计
+# 源码、数据与执行来源审计
 
-范围：E07/E08；pin、PDF SHA和clone路径在 [`E08_sources.json`](../../results/E08_sources.json)。Fact / Interpretation / Alternative分开。作者结果仍属作者；本地CPU路径复算不等于论文模型复现。
+本页保留E01及PCSP/agent-sandbox/LIGHT后续使用的代码事实与解释范围。来源版本、文件读取和局部CPU验证不等于全文实验复现；执行状态、成本和当前研究判断以整体报告/各实验卡为准。以下结果保留相应实验时的设置，不从旧限制或下一步自动重开实验。
 
-**当前接手更新：** 上句是初始E07/E08范围，后续审计与执行已追加。E34六次300轮、E41十二次300轮、E38完整360局与PHASE5数值路径已完成；E35／E44–49自然角色闭环也有实际数据。原“未运行／未定位”只按各历史段和后面的纠正解释。最新全貌见 [进度报告](../../PROGRESS_REPORT_2026-10-14.md)。用户要求本轮分析后暂停，不从旧下一步自动启动。
+## E01：初始源码合约与可追溯版本
+
+| 来源及相对路径 | Git blob | 本轮范围/判断 |
+|---|---|---|
+| NLP2CT/NCP-Bench: src/ncpbench/metrics.py | `4ba08045919c9860a35d7b14c6f1244bea71c43f` | 全文读取；E01 抽取原始 survival_curve 执行；按记录长度而非终止标签计算 |
+| NLP2CT/NCP-Bench: src/ncpbench/evaluator.py | `c65c03cbd98e57bf3d6d5f6c737cd98398ca2397` | 110–300 行：模型抽事实、判冲突/复核、判轨迹/承诺，不是独立游戏物理状态 |
+| KomeijiForce/Codified_Decision_Tree: codified_decision_tree.py | `418db7bde3aca65e9e2251df4ba969d6766a5cb9` | 1–210 行：模型加载、默认配置、数据对齐/切分入口 |
+| KomeijiForce/Codified_Decision_Tree: run_benchmark.py | `6d5318065014f21ebf37c6b473bdcb2ef29c1db8` | 1–265 行：语义条件判断、grounding 后生成、与原作行动 NLI 评分 |
+| MahammadNuriyev62/CPDC-challenge-2025-solution: function_call_langchain/action_functions_0001.py | `a5eaf793635d1d7303d09997ea68540d12253aff` | 全文读取；E01 AST 核查 sell/equip 声明，没有状态变更实现 |
+| 同一 CPDC 公开实现: function_call_langchain/executor.py | `a587083041f511ac62a29d2c024f910a83b54432` | 全文：sample gold matcher；作者明确与真实官方 evaluator 不同 |
+| 同一 CPDC 公开实现: local_run_task1_test.py | `57b4fc4957fff6fb526c2c3724d5a41e6258ea9f` | 全文：参考历史/返回、本地归一化匹配，不是完整 on-policy 游戏评估 |
+| yoosunghong/pcsp: research/docs/evaluations/independent-behavior.md | `d472e016b2c973bf3d77b2497013df55ed589e49` | 全文协议/作者结果，不等于我们已经读完或重跑相应 evaluator 源码 |
+
+
+上表是实际核读快照，可按Git blob算法校验，不重新分发上游原文。E01只隔离执行NCP survival_curve及解析CPDC AST：8项合约检查，结果见E01_source_contracts.json。两个完整输入文件6413/990bytes及对应blob核对通过；没有完整运行这些系统或复现论文曲线。按长度计达到阈值不等于完成/无冲突率，sample函数声明也不等于已实现游戏状态变化。
 
 ## PCSP：persona 到策略的真实路径
+
+初次定点源码快照还保留完整pin/blob：PCSP commit 5420f7b4fa0fdb6110e131402af9f5386ce2d0cf；research/src/env/mini_inzoi_v3.py blob 20b505d4a8195e437ad15e098362355a82097247，research/scripts/run_pcsp_v3.py blob a225f25a289d1aefe3bf35524ac46842d742ace6。该run_pcsp_v3入口当时设置4 agents、20 actions、33维基础观测、200步episode，含smoke及full/no_consist/no_diverse/concat/frozen_proj配置；不是后续16角色v3-large全部配置。smoke不等于论文复现。
 
 **源代码事实**（`pcsp@5420f7b`，路径均相对research/）：
 
@@ -28,9 +44,11 @@
 
 **我们的解释**：InfoNCE内部可恢复性不是独立特质行为效度；但projection间接作用和MeltingPot/UE5证据不可删掉。最新论文已有三层stack、无consistency消融、自然语言共享政策扩展。只审v3奖励不足以关闭PCSP认识。
 
-**尚未排除的竞争解释/阅读债**：作者独立评估的BigFive构念、组合OOD与任务机会分布都影响probe；内部分类decoder共训练与真实策略改变可能并存。需原weights/trajectory重算或外部任务评价后才能论方法效果。UE5与MeltingPot未安装/未复现；我们不声称它们失败。
+**尚未排除的竞争解释/阅读债**：作者独立评估的BigFive构念、组合OOD与任务机会分布都影响probe；内部分类decoder共训练与真实策略改变可能并存。需原weights/trajectory重算或外部任务评价后才能论方法效果。UE5未复现；MeltingPot的后续恢复、完整评测和依赖差异见本页E38，不从初次未安装状态推方法失败。
 
 ## agent-sandbox：Action Castle 的原生执行范围
+
+初次定点核读npc.py blob 43197a95f2c2e287a4e3f08d7a696cdfc6ad77c4，完整repo pin d7b872e396df2ef05ff8391de53e0563ca698cf3。LLM_PROVIDER=mock只提供零API集成检查，不是LLM基线；本地LLM_BASE_URL及具体pure/hybrid入口需分别记录。
 
 **源代码事实**（`d7b872e`）：
 
@@ -75,7 +93,7 @@
 ## PCSP 更强的已有结果：MeltingPot PHASE5
 **作者公开事实（非我们复现）：** pin5420f7b的research/meltingpot/PHASE5_REPORT.md，已读§1–5、§9–12。先将random32换Qwen语义编码，full12候选heldout top1仍0；§9查明原full candidate heldout仅作负类，将pool缩到train10仍未恢复。§10 PD substrate增加行为KL但读出仍差；§11平衡persona trajectory采样+train pool首次非零但seed双峰；§12各substrate8seed，commons_harvest top1 .364[.192,.554]、top3 .480[.257,.696]，PD阳性basin2/8，spinner始终难读，且ID top3降到chance。作者明确提出projection geometry/embedding-margin与ID/OOD tradeoff，并推荐joint loss/controlled margin/persona arithmetic。
 **解释：** “policy有信号而encoder读不出”、contrast pool与projection几何、简单balanced sampling修复均已有owner。不能拿该报告前半的0结果代表作者最终全证据，也不能把后半设想直接拿来重包装成我们的idea。
-**未排除：** 报告属于public研究记录，不等于每一结论都进入最新论文主张；CNN trained assets/对应seed真实runtime未本地核验。MeltingPot/dmlab2d未安装，报告数字必须标作者。v3-large与CNN分支loss/编码recipe不同，不用E23替其他分支判错。
+**未排除：** 报告属于public研究记录，不等于每一结论都进入最新论文主张；CNN trained assets/对应seed真实runtime未本地核验。该段PHASE5数值属于作者报告；后续本地恢复另列E38，不能把两者混为复现。v3-large与CNN分支loss/编码recipe不同，不用E23替其他分支判错。
 
 ## 正确编码后独立训练与行为归因（E25–E28）
 **源代码事实：** consistency的直接路径为共享φ和η，PPO/div分别保留原路径；原consistency不直接反传actor/critic。已有作者内部/独立行为评价和PHASE5 projection讨论。
@@ -100,7 +118,7 @@
 
 ## 外部原生游戏恢复补充（E38，2026-10-14）
 源码事实：当前可执行clean CNN分支的personas_v0含10train／2held，action_prior存在于JSON但clean trainer不读取；默认环境reward不按persona赋值，collective_reward_alpha默认0。CNN特征、persona projection与trajectory encoder的共同梯度路径须与Mini-Inzoi分支区别。原wrapper seed参数未使用，builder.draws Python random seed；E38记录到两个环境build settings、env_seed与Lab2d.start seed相同而RGB／return不同。原因尚未核对，不称论文种子无效。
-本地事实：复用Conda lightwam＋隔离overlay恢复原DMLab2D1.0.0，完整CPU自然结束episodes已运行，NOOP与移动控制、苹果／zap等事件可记录。依赖TensorFlow2.18.1／chex.1.87与作者lock不同，记录在manifest；这些是引擎资格，尚未构成训练方法结果。PHASE5所述balanced／candidate-pool脚本尚在追踪作者指明分支，不以主分支暂未见作论文判断。
+本地事实：复用Conda lightwam＋隔离overlay恢复原DMLab2D1.0.0，完整CPU自然结束episodes已运行，NOOP与移动控制、苹果／zap等事件可记录。依赖TensorFlow2.18.1／chex.1.87与作者lock不同，记录在manifest；这些是引擎资格，尚未构成训练方法结果。PHASE5脚本的检出范围随后核清，见下节；不能以最初稀疏目录缺项判作者未发布。
 
 ## E38 最新源码纠正及三条路径的边界
 
@@ -115,3 +133,7 @@
 E38根PHASE5数值审计：实际source ActorCritic/ConcatConditioning/GRU/InfoNCEHead、原生episode动作与reward，四次InfoNCE更新loss2.350→1.941，policy/CNN/conditioner梯度均0，权重/同RGB logits逐byte不变；PPO阳性fixture actor/encoder/conditioner各有非零梯度。作者已有独立读出设计确认，E38_phase5_gradient_audit.json；不是trained PHASE5全部表现，也不是新机制。
 
 E38完整360局：正确编码Full/No内部train读取38.07%/6.93%，个人return15.89/18.36、团队97.04/109.59；团队差−12.54，五train-seed簇bootstrap95[−38.52,13.43]。原公开码团队差−57.96[−145.08,1.79]。全部角色/世界重复与五seed保留，不能挑seed3或原码制造故事。直接动作锚点、实际采集/命中、局长/资源/收益及内部读取分别汇报；这些也是强基线测量，不自动升级新主张。
+
+## 原版Generative Agents的运行范围
+
+已读joonspk-research/generative_agents@fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4的README。原配置要求openai_api_key与Django/模拟服务，本地替换和数据许可须另说明。它是社会记忆/反思/计划的重要源头，不直接等于本项目已运行的零API角色利益基线。Psychometric两篇的具体pin/blob与数据/重试事实移到各自论文卡。

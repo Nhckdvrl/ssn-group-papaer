@@ -1,8 +1,6 @@
-> **2026-10-14 文档身份说明：** 本页是已读过的**训练/方法子领域**科研资产，不再代表整个游戏 NPC 领域的唯一优先级。请先读 [DOMAIN_ATLAS](DOMAIN_ATLAS.md)、[NPC_SECURITY](NPC_SECURITY.md)、[GAME_ECONOMY](GAME_ECONOMY.md) 和 [PERSONA_DRIFT](PERSONA_DRIFT.md)。本页旧阅读等级仍以原始来源核验范围为准。
-
 # 2025–2026 游戏 NPC 原生研究：论文与实际代码调查
 
-本页以**游戏内非玩家角色的学习、制作与行动**为边界。阅读截至2026-10-13。记号：F=论文 HTML 正文含方法/结果/局限读过；A=作者摘要；R=开源 repo README/目录/指定源码读过；X=本地可复现实测（**本轮 X=0**）。学术状态仅在正式会场/期刊页面核实时写已发表；arXiv 只写预印本。
+本页以**游戏内非玩家角色的学习、制作与行动**为边界。阅读截至2026-10-13。记号：F=论文 HTML 正文含方法/结果/局限读过；A=作者摘要；R=开源 repo README/目录/指定源码读过；X=本地可复现实测（须按对应论文或实验卡核对；没有运行的文献不标X）。学术状态仅在正式会场/期刊页面核实时写已发表；arXiv 只写预印本。
 
 ## 1. Electronic Arts｜Augmenting Game AI with Deep Reinforcement Learning（2026 CoG vision / arXiv 2606.20210）【F】
 全文 https://arxiv.org/html/2606.20210v1 。这是本领域最重要的**需求锚点**之一，而非我们得出结论的来源。
@@ -26,8 +24,8 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 - 方法：冻结 Qwen3-Embedding-0.6B，人格低秩投影+FiLM/concat 条件化共享政策，PPO + trajectory/persona InfoNCE + KL diversity；不只是聊天评价。
 - **必须分开指标的关键事实：** 作者研究目录 docs/evaluations/independent-behavior.md 报内部对齐损失减少后 retrieval 大幅下降，但独立 action-only BigFive probe: full 0.482、no consistency 0.511；action+state 0.556 vs0.558。对外“角色表现更好”不能仅从内部检索推出，且 BigFive probe 并非完整角色行为的金标准。
 - 作者自己的论文已做丰富条件、Melting Pot 三场景、UE部署、多种子、留出人格等；不允许因只读摘要就假设它没有真人/跨域检验。
-- **可复现性：** MIT 源码；research/src/env/mini_inzoi_v3.py、research/src/training/pcsp_trainer.py、scripts/run_pcsp_v3.py、行为独立测试、personas train/test JSON 已公开。没有实际安装/重训练/测吞吐；支持 PCSP 的特殊本地 environment，不能代表所有 RPG/combat NPC。
-- **Idea 来源重建：** 从逐 NPC 手工编树/逐角色训练/每步 LLM 都贵的产业压力，转成共享条件政策。对当前新研究：最值得复现其**独立行为解释和训练可编辑性**，而不是在原 loss 上盲目再加 term。
+- **可复现性：** MIT 源码；research/src/env/mini_inzoi_v3.py、research/src/training/pcsp_trainer.py、scripts/run_pcsp_v3.py、行为独立测试、personas train/test JSON 已公开。后续本地训练/原生测量见PCSP论文卡与E13–E41；支持的是特定环境，不能代表所有RPG/combat NPC。
+- **Idea 来源重建：** 从逐 NPC 手工编树/逐角色训练/每步 LLM 都贵的产业压力，转成共享条件政策。独立行为解释与训练可编辑性是当时关注的研究问题；实际已完成的本地审计见对应卡，不将这段方法来源重建当成恢复冻结线的指令。
 
 ## 4. Game persona/action learning ownership map
 - *Generating Personas for Games with Multimodal Adversarial Imitation Learning* (EA, IEEE CoG 2023): https://arxiv.org/abs/2308.07598 【A】。多个 discriminator 从不同专家风格示范学习，单政策通过辅助输入切换/混合风格，已占“多示范、可控人格行动政策”主张。其出发点偏自动 playtesting，不能直接当人们喜欢的 NPC。
@@ -39,7 +37,7 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 - PUBG Ally（KRAFTON/NVIDIA 工程技术说明 2026）：https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/ 【R / 产品研发说明】。官方把它称 Co-Playable Character (CPC) 以区别传统 NPC；我们仅视为游戏内 AI 伙伴邻接应用。2B 本地小模型负责高层语音/工具/协作，BT 在 tick 级处理战斗/移动，厂商蒸馏游戏知识并用玩家反馈校验。内部训练数据与引擎不可公开复现。
 - *LLM-Guided Reinforcement Learning for Adaptive NPC Behavior in Multi-Agent Combat Games* (arXiv 2609.02931) https://arxiv.org/html/2609.02931v1 【正文部分】。Unity 五 NPC 共享 PPO，本地 Mistral7B 每5秒选战术 tag；文中报告不同对手收益差异但83.8%的选择为Surround。**审计注意：** baseline 与LLM条件的训练时风格信号/奖励可能不等价，复现先核对两政策训练与评估条件，再做相同 conditioned-policy 配对替换 selector；不是把小型 preprint 的胜率作为顶会强共识。
 - ccb/agent-sandbox: https://github.com/ccb/agent-sandbox 【R】。2026 UPenn group text-adventure/Godot 游戏 NPC，有 world-state 前提/效果、NPC 回合、ReAct/Reflect、LLM_BASE_URL；文档有不同开发阶段残留、默认 API key，启动必须设置本地 endpoint /mock，避免自动外联。研究平台，**不是已接收顶会方法 baseline**。
-- LIGHT/Dragon (EMNLP-IJCNLP2019/NAACL2021) 见旧知识库：具有角色自身动机、可执行 action，不应因其年代老就忽视；但现实 code/data 恢复成本和规模验证仍未完成。
+- LIGHT/Dragon (EMNLP-IJCNLP2019/NAACL2021) 见旧知识库：具有角色自身动机、可执行 action，不应因其年代老就忽视；本地恢复与后续测量见整体报告及相应实验卡。
 
 ## 6. 视频生成式NPC（单列，不作为当前行为控制的默认基线）
 - *ReactiveGWM v2* (2026 arXiv): https://github.com/INV-WZQ/ReactiveGWM 【R】。2026-09-29 发布含 HNM/SF3 两种游戏的 v2 训练/推理、预训练权重、数据；用 mask 绑定控制角色、world model 生成 NPC 反应。Wan2.2 5B backbone、约20k optimizer updates、默认8卡训练，重视频 IO——研究价值高，但当前弱互联/弱盘不适合主线全面训练。
@@ -52,3 +50,20 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 
 ## 研究审查结论
 直接游戏 NPC 研究中最有价值的主题是**设计/训练成本下的行为生成、对真实局势的可控适应、策略快速修复、部署与评估**。同样重要的是不要把 player-style bot 与生活模拟对话角色完全等同。各科学 claim 必须绑定具体 NPC 类型/游戏机制/玩家反馈；强主会多集中通用 RL/多智能体机制，游戏专门会议和行业论文提供最直接的真实问题，并非低级应忽视。
+
+## 方法选择所对应的真实问题
+
+另一个只作方法概览的来源是[Behavioral Foundation Models for Quality Diversity](https://arxiv.org/abs/2609.35615)：原阅读仅摘要与方法概览，接收track未确认。行为多样性可在预训练行为空间中搜索，不是本项目已运行的语言NPC底座；未据标题补写效果。
+
+| 问题 | 已有方法/可靠参照 | 值得保留的研究判断 |
+|---|---|---|
+| 设计反馈成本 | EA design-in-the-loop、MultiGAIL示范、Direct Behavior Specification约束、UBCL行为向量、PCSP条件策略 | 比较信号实际改变了哪些原生行为、可靠性及未见角色；不把信号类型或新loss名字当贡献。 |
+| 补丁后的可编辑性 | 共享条件策略、模块化、replay/adapter、事件触发LoRA-MARL | 修改一项可核行为规格时，区分编辑成本、其他角色旧行为、未见伙伴与实时成本。 |
+| 高层语言到快速执行 | PUBG Ally等已有低频语言决策＋快速原生控制 | 教师轨迹需引擎真值，蒸馏、BT/技能和小策略的全部调用/训练成本应匹配。分层本身不是新意。 |
+| 玩家适应 | GAMMA、Hypothetical Minds与真实游戏伙伴 | 玩家分布、责任分工和控制感分别测；模拟伙伴不支持人类效用主张。 |
+
+这些是可选择的问题与方法，不是当前执行优先级，也不恢复已冻结的小模型线。具体方法应来自仍未解释的自然成功/失败，不能在一个手写奖励环境里不断微调就外推整体NPC价值。
+
+**Proact-VL（ICML2026）阅读补充。** [正文v4](https://arxiv.org/html/2603.03447v4)、[官方发布](https://github.com/microsoft/AnthropomorphicIntelligence/tree/main/Proact-VL)的decide-then-generate、§5.1、关键实现附录和资源/评估入口已核。作者已发布权重、训练数据和测试入口；主训练约200 H100 GPUh，质量/PAUC使用GPT-5.1，另有F1/TimeDiff。对象主要为流式解说/指导，不能借作实体NPC执行或零API复现结论。
+
+[AI for Games综述（2026预印本）](https://arxiv.org/html/2609.16679)另用于发现跨角色/运行期NPC与体验入口；原记录只读有关NPC、运行期角色、体验与开放问题的部分，不以综述或NeurIPS下载题目目录替代单篇接收/深读证据。

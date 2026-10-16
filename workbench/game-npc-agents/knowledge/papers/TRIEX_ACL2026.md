@@ -9,3 +9,5 @@
 **RECONSTRUCTED idea来源：** 将社会博弈解释从自由理由转成可对照、可干预、可随时间核查的对象。**对我们：** E74物理预测替换不申领新干预技术；应判断角色自身后果理解与受益对象选择能否解释E70–73的效应换向。普通预测—行为相关或不相关不能被叫作内部因果机制。
 
 资产cache/papers/triex_acl2026.pdf，SHA256 `1a9dbf595a0c420c025eec3cbba14a60a44098737694ec2c13654460d701eec2`；局部代码cache/sources/triex-audit/，仅审计不安装其云客户端。
+
+早期arXiv阅读还明确记录：B.2使用显式belief数值的logit perturbation（δ2.5），另50次同belief rerun估计采样波动；不是激活向量干预。equity/pot-odds规则和oracle输出都不是内在解释的真值。该次旧预印本PDF SHA为dfdc81bb542558a0f5852873163e16ebb5feaf28f6d7adea1fc7789cdce8bbad，与上方正式正文资产分别保留；后续已读局部作者代码，早期“尚未clone”不再作为当前状态。

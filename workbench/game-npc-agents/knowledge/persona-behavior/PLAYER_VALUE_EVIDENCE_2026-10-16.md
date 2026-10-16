@@ -54,6 +54,8 @@
 
 ## 6. 原始资产与实际阅读范围
 
+另保留此前的[Interactive Drama（ACL2025）](https://aclanthology.org/2025.acl-long.546/)及[正文](https://arxiv.org/html/2502.17878v1)阅读：只核引言、沉浸/玩家能动性构念与评价设计入口，没有重做人类实验，也不列入上方四项全文审计。它明确将人类体验作为独立对象；语言流畅、任务完成、角色分类分数不能替代真实体验证据。
+
 只读下载位于`/home/xiang/.cache/game-npc-research/sources/player_value_audit_20261016/`，PDF及`pdftotext -layout`文本未入Git。
 
 | 原文缓存 | SHA256 | 已核部分 |

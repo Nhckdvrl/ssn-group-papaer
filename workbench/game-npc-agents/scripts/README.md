@@ -1,35 +1,45 @@
-# 实验脚本接手说明
+# 代码与复算入口
 
-**用户已恢复，并冻结旧小模型RL和全图漫游线。** 本轮E50–62结果及范围见 [进度报告](../PROGRESS_REPORT_2026-10-15.md)。本表给复算入口，旧脚本存在不授权重新运行；模型、source pin、种子、数据与hash以卡片和raw manifest为准。
+**当前实验暂停。** 本页列保留代码的用途，不是启动队列。条件、source/model pin、随机种子、schema和成本以[实验卡](../experiments/README.md)及raw manifest为准，整体认识见[项目报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)。
 
-| 用途 | 当前入口 | 范围 |
+## 当前保留代码
+
+保留执行、最终统计、独立核对和共享模块的原文件名与字节，不为了目录美观改import或冻结SHA。一次用过不等于无用：可重算最终读数、或被后期代码导入的文件保留。
+
+| 用途 | 主要入口 | 范围 |
 |---|---|---|
-| 原生冲突快照 | `commitment_snapshots.py` | E50公开source graph与两条实体路径；40/200/120拆分 |
-| 一致人设／阶段交叉 | `commitment_decisions_v2.py`、`commitment_behavior_report.py` | E50短序贯、四渠道、图簇统计；v1原始结果保留 |
-| 完成状态机制 | `commitment_status_intervention.py` | E51同承诺/状态，pending/completed及goal/state对照 |
-| 三阶段白盒 | `commitment_residuals.py`、`commitment_residual_report.py` | E50 native/common action读出；非仅凭角度论机制 |
-| 数据构造与盲检 | `step_plan_data.py`、`commitment_quality_review.py` | Step5固定Token Plan；OpenCode明确免费；不作NPC或runtime裁判 |
-| 中断续跑 | `commitment_decisions_resume.py` | 精确匹配原调用cassette，不丢弃已生成seed |
-| 独立确认/状态控制 | `native_role_confirmation.py`、`native_state_readout.py` | E55/E56，具体命令以卡片为准 |
-| 角色分量与互动 | `native_persona_components.py`、`native_food_interaction.py` | E58/E57，原生物理后果与源目标 |
-| 同一承诺 | `fixed_history_state.py`、`common_commitment_native.py`、`common_history_direct.py` | E59–61，事实回答不写回策略 |
-| 接收者白盒/报告 | `native_recipient_patch.py`、`native_recipient_report.py` | E62全合法Give、原生状态，局部中间层交换 |
-| 实际解码概率 | `native_recipient_probability_readout.py`、`native_recipient_probability_report.py` | E62恰好两叶的完整命令概率，与suffix语言分数分开 |
-| 源动机DATA | `source_motivation_data.py`、`source_motivation_recover.py`、`source_motivation_collect.py`、`source_motivation_report.py` | E61盲抽取/逐字引用；仅补缺行，不定义效用或gold动作 |
-| 成本复算 | `round_progress_costs.py` | final runtime分项及Step响应ID去重；不是整项目时长/独立账单 |
-| 原生NPC接口 | `native_actioncastle.py`、`local_component_client.py` | 原parser与本地模型adapter；cloud constructor禁止 |
-| 原三角色校园episode | `native_penn_social.py`、`penn_social_repeats.py` | E35原作者cast与1200帧；完整raw不进Git |
-| 完整原记录回放 | `penn_strict_replay_complete.py`、`penn_branch_verify.py` | 零模型重放；不是重新采样 |
-| 人物／原责任四格 | `penn_persona_goal_adoption.py` | E45三个原episode，conversation组件干预 |
-| 当前计划执行位置 | `penn_plan_progress_fork.py` | E46；plan状态不是物理任务完成证明 |
-| 发言预算控制 | `penn_dialogue_budget_fork.py` | E47；两路512，不等于所有actor都512 |
-| 教授显式计划渠道 | `penn_plan_update_ablation.py`、`penn_plan_update_verify.py` | E48窄干预及同干预独立回放 |
-| 两其他角色四格 | `penn_cross_role_worker_v2.py`、`penn_cross_role_commitments_v2.py` | E49六处境×四条件；每worker复用一个模型 |
-| E49回放／报告 | `penn_cross_role_verify.py`、`penn_cross_role_report.py` | 前者零模型原生回放，后者只读JSON，不加载引擎／模型 |
-| PCSP原300轮 | `pcsp_full_budget_finish.py` | E34；CPU快于单GPU的小MLP，不为占卡改变路径 |
-| 普通覆盖／绑定对照 | `pcsp_coverage_finish.py`、`pcsp_surface_train_codes.py` | E41有效v2资格与四条件，三种子全300轮 |
-| MeltingPot | `meltingpot_source_train.py`、`meltingpot_policy_episodes.py`、`meltingpot_policy_report.py` | E38；用现有lightwam与隔离overlay |
+| 原生接口 | [native_actioncastle.py](native_actioncastle.py)、[native_tool_loop.py](native_tool_loop.py)、[strong_native_baseline.py](strong_native_baseline.py)、[viewpoint_control.py](viewpoint_control.py) | 早期文件仍是后期实际依赖，不能按年代删除 |
+| 快照与一致人物 | [commitment_snapshots.py](commitment_snapshots.py)、[commitment_decisions_v2.py](commitment_decisions_v2.py)、[commitment_behavior_report.py](commitment_behavior_report.py) | 原图、阶段输入和配对读数 |
+| E55–E62 | [native_role_confirmation.py](native_role_confirmation.py)、[native_state_readout.py](native_state_readout.py)、[native_components_report.py](native_components_report.py)、[native_recipient_report.py](native_recipient_report.py)、[native_recipient_probability_report.py](native_recipient_probability_report.py) | 独立确认、普通对照、分量与白盒正负结果 |
+| 共享执行/状态 | [native_dependency_roles.py](native_dependency_roles.py)、[native_rule_execution.py](native_rule_execution.py)、[native_reciprocal_negotiation.py](native_reciprocal_negotiation.py)、[native_reciprocal_deathsafe.py](native_reciprocal_deathsafe.py) | 后期仍导入其client、健康/存活和执行函数；并非一次性包装器 |
+| E67–E69 | [native_rule_cross_report.py](native_rule_cross_report.py)、[native_matched_task_execution.py](native_matched_task_execution.py)、[native_matched_task_report.py](native_matched_task_report.py)、[native_task_completion_report.py](native_task_completion_report.py) | 阶段交叉、任务指定与适应性控制 |
+| E70–E76 | [native_request_precondition_report.py](native_request_precondition_report.py)、[native_consequence_report.py](native_consequence_report.py)、[native_retrieval_report.py](native_retrieval_report.py)、[native_fixed_dialogue_report.py](native_fixed_dialogue_report.py) | 保留执行、来源资格和最终读数依赖链 |
+| E77 | [native_dialogue_outcome_execution.py](native_dialogue_outcome_execution.py)、[native_dialogue_outcome_report.py](native_dialogue_outcome_report.py)、[native_dialogue_outcome_report_fast.py](native_dialogue_outcome_report_fast.py) | fast是最终操作入口，原报告定义也保留 |
+| E80/E81 | [native_interactive_execution.py](native_interactive_execution.py)、[native_interactive_skills.py](native_interactive_skills.py)、[native_interactive_report.py](native_interactive_report.py)、[native_cooperation_episodes.py](native_cooperation_episodes.py)、[native_cooperation_report.py](native_cooperation_report.py) | 响应玩家、可靠技能与双方原目的 |
+| E82/E83 | [minecraft_native_cooperation.mjs](minecraft_native_cooperation.mjs)、[minecraft_npc_quest.mjs](minecraft_npc_quest.mjs) | CPU物理见证及明确角色任务重建 |
+| E84 | [native_independent_goal_episodes.py](native_independent_goal_episodes.py)、[native_independent_goal_report.py](native_independent_goal_report.py)、[native_independent_goal_audit.py](native_independent_goal_audit.py) | 完整互动、读数和独立全流核对 |
+| E85 | [native_partner_performance.py](native_partner_performance.py)、[native_partner_performance_compat.py](native_partner_performance_compat.py)、[native_partner_performance_report.py](native_partner_performance_report.py)、[native_partner_performance_audit.py](native_partner_performance_audit.py)、[native_partner_performance_grounded_readback.py](native_partner_performance_grounded_readback.py) | 原driver、最终兼容层与统计/全流核对都是复现所需 |
+| 冻结线纯复算 | [meltingpot_policy_report.py](meltingpot_policy_report.py)、[pcsp_native_llm_report.py](pcsp_native_llm_report.py)、[pcsp_functional_opportunity_report.py](pcsp_functional_opportunity_report.py)、[penn_cross_role_report.py](penn_cross_role_report.py) | 只读既有raw重算，不恢复训练、漫游或采样 |
 
-历史失败文件保留用于追溯，不作当前运行入口：E44 `penn_duty_context_fork.py`未覆盖freechat提醒，统一事实条件用`penn_duty_context_fork_v2.py`；E49 `penn_cross_role_commitments.py`／`penn_cross_role_worker.py`只做过CPU v1，Diego同帧切入失败，GPU一律使用v2。不能将失败实现的“零效应”当科学结果。
+其他同族执行、报告、来源资格和图代码仍在本目录。模型/引擎代码与纯report须区分；文件存在不代表当前获准执行，不能盲目导入整个目录。统计定义、失败、分层与科学输出未因清理改写。
 
-运行环境：NPC复用 `/home/xiang/miniconda3/envs/fgvd/bin/python`，overlay `e50-legacy-renderer:deps` 恢复旧LIGHT help对emoji1.7.0的依赖，不改变物理规则。CPU回放显式设 `CUDA_VISIBLE_DEVICES=''`、BLAS线程1。原始数据／模型缓存见manifest。启动前核GPU空闲，总量≤8，禁止云fallback；本表旧训练入口仅供历史重建，不授权恢复。
+## 已清理的历史代码
+
+73个旧入口已退出当前树：冻结PCSP/MeltingPot执行/训练36个，校园执行/回放/worker18个，旧版启动/续跑/preflight9个，已完成DATA生成/收集/补缺10个。最终JSON、成本、负结果、原数据和代码SHA保留；删除执行文件不等于关闭idea或否认原实验。
+
+**精确清理前版本：`af7564ff2a8b74fc5ae0c8d9bda38d6e953414ef`。** 所有删除文件都来自已上传main的该版本，不另建archive目录。需要旧代码、旧阶段报告或旧接手页时，直接读Git：
+
+```bash
+# 只读某个原文件；文件名可替换为实验卡中的名字
+git show af7564ff:workbench/game-npc-agents/scripts/pcsp_full_budget_finish.py
+
+# 完整旧workbench导出到独立目录，不恢复到当前工作树
+mkdir -p /tmp/npc-reproduction
+git archive af7564ff workbench/game-npc-agents | tar -x -C /tmp/npc-reproduction
+```
+
+可用`git diff --name-status af7564ff..HEAD -- workbench/game-npc-agents`核对删除清单。旧卡/manifest中的路径和hash记录当时来源，不为目录整理替换成新科学输入。大raw与模型仍在既有cache，Git导出不包含这些资产。
+
+## 环境与权限
+
+环境、缓存、API与节点规则统一见[BASELINES](../BASELINES.md)和[AGENTS](../AGENTS.md)，不再重复维护。Step历史DATA调用脚本已退出当前树，最终数据/用量/raw指针仍保留。当前不启动模型、训练、引擎回放或API。

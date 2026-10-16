@@ -1,34 +1,24 @@
-# 矿区 A：角色表达、行动意图与游戏内策略选择
+# 矿区A：人物、本人目的与真实游戏选择
 
-**矿区A知识库（2026-10-16当前入口）。** 用户2026-10-14选择此矿区，现已有范围明确的行动证据，统一机制与方法仍在探索；具体主张以[CLAIMS](../../CLAIMS.md)为准。本目录收精读、源码/数据审计与实际观察，不复制其它全域知识库。
+中心问题是NPC面对人物设定、自身目标、角色规范、社会关系、玩家请求与可见状态，怎样形成选择并产生游戏后果。自述/语气、情境意图、合法行动和真实后果分别测量；既允许人物作用有效，也允许普通控制解释表面失配。
 
-**执行已按用户要求暂停（2026-10-16）。** E85全576分支完成、GPU释放；当前仅整理文档，恢复须明确指令。I04 PROMISING/C06限定L2/工作台PROPOSED保持。
+当前研究和暂停状态见[整体报告](../../PROJECT_PROGRESS_REPORT_2026-10-16.md)、[CLAIMS](../../CLAIMS.md)和[本地入口](../../AGENTS.md)。本目录不维护第二份实验队列。
 
-## 研究目标
-真正认识 Game NPC 中的 **Persona ↔ Intended Behavior ↔ Executed Strategic Action ↔ World Consequence**。不仅是比较两段不同语气。不同 NPC 的作者目标/任务利益、玩家关系、游戏状态不同；研究既允许发现显著断裂，也允许发现高质量上下文匹配或角色约束有效，并解释它们的边界。
+## 文献与实现事实
 
-## 当前入口
-- **[整体进度报告：从最初接手到E85](../../PROJECT_PROGRESS_REPORT_2026-10-16.md)**：全部阶段的选择理由、有效认识、被推翻的故事、资源和当前未解问题；E85分报告只覆盖最近一轮。
-- [本轮进度报告：E85](../../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)：9原图/18前史、两模型576分支的真实行动/声称/改约、完整后续及暂停接手说明。
-- [合作与方案修订定位](COOPERATION_REPAIR_POSITIONING_2026-10-16.md)：CT-Bench、TradeCraft、ContractSim、GenCoord及真实玩家证据；普通强baseline、角色持续目的和合法替代的整体问题。
-- [E84完整互动](../../experiments/E84-independent-goals-and-alternative-cooperation.md)、[E85实验卡](../../experiments/E85-partner-performance-and-revision.md)及[结果索引](../../results/README.md)：已有成功、失败、原生物料流与全部复算入口。
-- [RELATED_WORK](RELATED_WORK.md)：最接近本矿区的6篇重要近邻，特别是已占位的 ICML2026/2026 的测量与叙事先验成果。
-- [CODE_AUDIT](CODE_AUDIT.md)：PCSP、agent-sandbox、Generative Agents、Psychometric 两篇作者代码的已读事实；未跑不升级 P4。
-- [实验卡 E06](../../experiments/E06-persona-strategy-baseline.md)：最小自然任务/真实 action gate，正负控制、决策标准。
-- [当前执行说明](../../LOCAL_AGENT_START.md)：本地 Agent 接手与授权节点纪律。
-- [领域全景](../DOMAIN_ATLAS.md)：A 是临时焦点，不得把工作台其它方向视为被关停。
+- [最近邻与整体定位](RELATED_WORK.md)：心理测量、叙事、角色/任务、内部干预及对应逐篇卡。
+- [合作、持续目的与玩家变化](COOPERATION_REPAIR_POSITIONING_2026-10-16.md)：CT-Bench、GenCoord、ContractSim、TradeCraft、原作者任务和真实日志。
+- [源码与数据审计](SOURCE_AUDIT_2026-10-14.md)：E01/PCSP/agent-sandbox/LIGHT的事实、版本、执行来源及解释边界。
+- [可玩系统与工业基线](PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)、[玩家价值证据](PLAYER_VALUE_EVIDENCE_2026-10-16.md)：工程能力与人类效果分别核对。
 
-## 三组需要被分清的变量
-(1) **自述/语气**：角色语言是否体现设定；Big Five是粗粒度心理构念，未必预测某一选择。
-(2) **目标与行动意图**：特定情景的许可行为、效用/义务与代价；TPB式 task-specific instrument 也可能更有意义。
-(3) **可执行行动与后果**：如商人真正拒卖或低价交易、守卫真正保护/放行、队友真正分享稀缺资源；必须检查 game state change 和合理替代行动。
-需要进一步分离世界叙事预设、具体行为词（anchor words）、玩家提示中的角色权威、故事原型、模型大小/服务模板、奖励中硬编码的偏好。
+## 主张依据与专门读回
 
-## 审计流程原则
-先读作者真正做到的实验与强对照；优先通过可用原始数据的 re-analysis 或**原生游戏动作基线**验证测量。初步只有文本判别/同一玩法不足以支持广义“游戏NPC利益策略”主张；如缺数据，先调查而非马上生成。
-严禁把模型“我是自私的”与行为被人类评分“不够自私”当作可自证的唯一 gold。机制推断须干预，先问提示/明确状态/动机提醒能否解释结果。
+| 依据 | 对应问题 |
+|---|---|
+| [C02/C03审计](C02_CONFIRM_AUDIT_2026-10-15.md) | 全链一致人物的独立确认、pilot渠道/阶段与读出控制 |
+| [C04审计](TASK_COOPERATION_CLAIM_AUDIT_2026-10-15.md) | 当前任务与非冲突角色合作差的同轨迹共存 |
+| [C05审计](EXECUTION_RULE_CLAIM_AUDIT_2026-10-15.md) | 固定上游后执行规则的实体效应、反馈与独立图 |
+| [C06审计](GOAL_EXECUTION_CLAIM_AUDIT_2026-10-15.md) | 原目标、物理前提与人物效应的联合条件 |
+| [推进—用途读回](PROGRESS_ALLOCATION_READBACK_2026-10-16.md) | 精确事件、源item_id、余项与物理消费等价；恒等式不是因果机制 |
 
-## 本地新增证据（2026-10-14）
-- [源码与split审计](SOURCE_AUDIT_2026-10-14.md)：E07原生CPU阳阴控制8/8，E08作者梯度/独立行为feature测试通过、5套官方角色split全量枚举。
-- 用户点名五篇强近邻及补充方法论文的阅读卡在 `../papers/`，逐篇标已核范围；版本见E08及各manifest。PCSP全预算训练、MeltingPot独立环境与强本地LLM参考均已运行，不能继续概括为仅CPU阅读。
-- E35原三人自然episode、E44–49角色／状态／协议／显式计划渠道测量见 [结果索引](../../results/README.md)。人物可影响真实行动，作用随具体任务和处境变化；尚无独立验证的新顶会级idea。按用户要求收尾后暂停实验，不关闭矿区。
+统计/方法版本回到[实验卡](../../experiments/)、[结果](../../results/README.md)和整体报告，不在knowledge复制全部表格。领域仍开放，见[全域图](../DOMAIN_ATLAS.md)。

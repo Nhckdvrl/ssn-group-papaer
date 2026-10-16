@@ -21,4 +21,4 @@
 
 ## 完整结果
 两模型/全117图/三seed/5616分支全部完成，30461新增exec调用、0解析失败。扩展−原生菜单的冲突原物品到A差：Gemma F +49.00pp [41.31,56.98]、A +65.24 [57.83,72.65]；32B F +50.43 [43.02,58.12]、A +52.42 [45.30,59.54]。成功源物品Give前均收到原生remove纠错，属于路径描述，不单独证明必要中介。主体先尝试作者A而非请求B，B首次纠错后给A的Gemma F/A各2条，不将总恢复钦定为社交请求带来的信息学习。
-结果[E72 Gemma](../results/E72_gemma_complete.json)/[32B](../results/E72_32b_complete.json)包含全部对照与真实路径。实际启动至最后日志2.729682GPUh，0新conv/update/API。E73额外信息控制已经完成，统一见[报告](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)；全部worker退出，不追加候选/措辞网格。
+结果[E72 Gemma](../results/E72_gemma_complete.json)/[32B](../results/E72_32b_complete.json)包含全部对照与真实路径。实际启动至最后日志2.729682GPUh，0新conv/update/API。E73额外信息控制已经完成，统一见[记录](E73-equal-initial-native-feedback.md)；全部worker退出，不追加候选/措辞网格。

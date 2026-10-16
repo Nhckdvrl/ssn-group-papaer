@@ -35,3 +35,9 @@ P2不完整成立：Gemma B−G明显转向block，32B的变化小、请求Give�
 
 
 源目标层次补充：E68中32B装备图有11条“B交出且未做原goal、G做原goal”的分支，5个世界全部列入POST-HOC样例资产。村妇/草药两图的作者短期动机明确要求对应Give，覆盖其中5条。保持原子goal与Give两个物理读数，不把前者提升为总体效用金标，也不把这些模型行为自动称为违禁/自毁。C05是指定原子目标的阶段控制证据。
+
+## E65/E66数值与原生语义补充
+
+E66固定canonical读出中，Gemma自然asset相对none的emote质量仅+0.52pp [−6.40,7.28]；examine约18.0→29.0%、Give10.9→18.2%、tell4.8→8.2%。两模型合法首分支熵变化没有统一方向。完整原goal绝对概率及全部五规则实体表保留E65/E66报告与JSON，不在本页再复制；命令路径概率不是8步完成率。
+
+LIGHT Wear/Wield继承EquipObjectEvent，分别取wearable/wieldable guard，改变装备状态/stats，不自动攻击。RemoveObjectEvent.execute清装备并调整stats，不移出库存；其docstring提room不改变实际代码。E69告知Remove前提后，Gemma17条卸物、其中6条Drop而未新增Give，不能把Remove误当Drop，也不能用名字判作者任务噪声。这些源事实与E69共同窗口/适应性结果相连，不建立新引擎修复线。

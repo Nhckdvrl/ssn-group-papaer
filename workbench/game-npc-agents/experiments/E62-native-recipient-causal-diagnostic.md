@@ -39,3 +39,7 @@ CPU完整资格：102不同原世界、204当前合法目标物品Give命令，2
 单中间层donor有向动作变化很小：32B全部0，27Bfuture/binding各−0.245pp，Gemma无承诺+0.245pp；随机同样可有零星变化。donor有向概率变化32Bbinding约−0.0465pp、27Bfuture−0.0882pp、Gemmabinding+0.0548pp，不支持稳定跨模型的角色定向控制。此单层/单位置阴性不判整条线失效，也不追加扫层找阳性。
 
 完整结果 `results/E62_{32b,27b,gemma}_native_recipient.json` 与 `E62_*_recipient_probabilities.json`；CPU资格 `E62_cpu_qualification.json`。原始prompts/命令/native后果/residual张量在 `runs/e62_*_recipient_all`；概率在 `runs/e62_*_recipient_probabilities`。三个模型及概率final runtime合计约2.103GPUh（含各载入，不含首图profile/失败资格）；exact附录与主自由菜单证据分开。
+
+## E50–E62阶段归档口径（文档整理迁入，非新增实验）
+
+原阶段报告的跨轮成本入口保留为[ROUND_PROGRESS_COSTS](../results/ROUND_PROGRESS_COSTS_2026-10-15.json)与[ROUND_COMPLETE](../results/ROUND_COMPLETE_2026-10-15.json)。E51–E61有完整计时的最终运行合计15.3973GPUh／103672次生成、决策及独立事实调用；E62主选择与概率最终运行约2.103GPUh。该口径不含缺完整runtime的E50原中断进程、部分资格／失败profile，不能当整个阶段或项目完整成本。Step数据usage与本地决策调用分列，provider tokens不冒充Credit或现金账单。各次失败、原seed及raw保留，当前状态只见CLAIMS和整体报告，不沿历史状态重新执行。

@@ -1,16 +1,20 @@
-# Game NPC Agents · 内部可追溯知识库
+# Game NPC Agent 知识库
 
-**长期总领域保持开放，当前用户选定矿区 A 作为驻留焦点**。不要将这个选择误写成永久关闭其它方向，也不要将旧“目标/旧计划”或“共享 PPO”再当成项目总纲。
+当前研究与暂停状态以[整体进度报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)、[CLAIMS](../CLAIMS.md)和[执行入口](../AGENTS.md)为准。本目录保留来源事实、阅读范围、领域认识及主张审计；不重复实验进度流水账，不从旧阅读建议启动实验。
 
-## 当前从哪里读
-0. **[整体进度报告：从最初接手到E85](../PROJECT_PROGRESS_REPORT_2026-10-16.md)**：全部阶段的问题、实验选择、结果解释、纠偏与未解问题，附现存79张实验卡索引。最近一轮另见**[E85分报告](../PROGRESS_REPORT_2026-10-16_PARTNER_PERFORMANCE.md)**：玩家真实转移、仅声称与改约的576完整分支、统计/轨迹/成本及当前判断。用户要求本轮后暂停，全部worker/GPU释放，当前只整理文档；恢复须用户明确指令。[10月14日旧报告](../PROGRESS_REPORT_2026-10-14.md)及后续各期报告保留历史，不按旧下一步重启。
-1. **[矿区 A Persona–Behavior](persona-behavior/README.md)**：本轮科研入口；[近邻和论文Idea来源](persona-behavior/RELATED_WORK.md)、[已有源码级事实](persona-behavior/CODE_AUDIT.md)。
-2. [DOMAIN_ATLAS](DOMAIN_ATLAS.md)：长期全领域地图，涵盖训练、社会交互、长期人格、[NPC安全](NPC_SECURITY.md)、[NPC经济](GAME_ECONOMY.md)、游戏体验、具身/实时；没有被删除。
-3. [PAPER_LEDGER](PAPER_LEDGER.md) 与 [SOURCES_AND_STATUS_2026-10-14](SOURCES_AND_STATUS_2026-10-14.md)：源论文身份、阅读深度与未完成债务；本轮新增2026 ICML论文须看persona-behavior/RELATED_WORK。
-4. [papers/](papers/)：当前精读卡，逐篇标正文／附录／代码已核范围；[RESEARCH_CALIBRATION](RESEARCH_CALIBRATION.md)、[PROBLEM_GENEALOGY](PROBLEM_GENEALOGY.md)、[LITERATURE_MAP](LITERATURE_MAP.md)、[NATIVE_GAME_NPC_FRONTIER](NATIVE_GAME_NPC_FRONTIER.md)、[METHOD_TERRITORIES](METHOD_TERRITORIES.md)、[CORE_NOTES](CORE_NOTES.md)、[GOAL_CONTROL_REVIEW](GOAL_CONTROL_REVIEW.md) 保留历史认知，旧“当前优先”不指导执行。
-5. [MEASUREMENT](MEASUREMENT.md)：世界事件、NPC行动、统计、因果干预；[POSITIONING](POSITIONING.md) 全域最强近邻。最新局部 ownership 另见矿区 A。
-6. [READING_QUEUE](READING_QUEUE.md)：跨领域积累，A 的当前优先由 [LOCAL_AGENT_START](../LOCAL_AGENT_START.md) 决定。
+## 问题与研究尺度
 
-## 避免重复堆积
-不新建独立 `kb/`、`exp_engine/`、`hypotheses/`；现有knowledge/、experiments/、ideas/、logs/、results/继续使用。旧撤销卡只在Git历史保留；E07–E49已有真实测量与训练，准确状态看对应卡和进度报告。
-P0仅索引、P1摘要、P2部分正文/代码、P3正文/关键附录与代码系统精读、P4本地复算。写分清 **文献事实 / 解释与混杂 / 猜想与需检验的研究动作**；一句idea来源重建不是作者真实科研回忆。
+- [领域地图](DOMAIN_ATLAS.md)：NPC类型、控制、社会互动、漂移、安全、经济、体验与实时部署。当前优先矿区A，不关闭其他领域。
+- [目标控制与伙伴研究谱系](GOAL_CONTROL_REVIEW.md)：LIGHT/Dragon、设计者约束、目标持续/切换、伙伴适应与研究设计。
+- [原生训练与部署](NATIVE_GAME_NPC_FRONTIER.md)：EA、共享策略、低成本感知、语言与快速控制、视频NPC；保留实际阅读范围。
+- [安全](NPC_SECURITY.md)、[经济](GAME_ECONOMY.md)、[人格成长与漂移](PERSONA_DRIFT.md)：各自已有工作、游戏规则与待辨问题。
+- [测量规范](MEASUREMENT.md)：世界真值、可见信息、意图、原生动作与物理后果。
+
+## 当前矿区与来源
+
+- [Persona–Behavior](persona-behavior/README.md)：当前核心问题、近邻定位、源码事实和C02–C06审计。
+- [逐篇论文卡](papers/)：单篇来源、正文/附录/代码阅读范围及已有贡献；同一论文只留一张权威卡。
+- [跨领域来源登记](SOURCES_AND_STATUS_2026-10-14.md)：安全、经济等未逐篇建卡来源的身份和阅读欠账。单篇后续更新以论文卡为准。
+- [玩家价值证据](persona-behavior/PLAYER_VALUE_EVIDENCE_2026-10-16.md)、[可玩系统与工业基线](persona-behavior/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)、[合作与持续目的](persona-behavior/COOPERATION_REPAIR_POSITIONING_2026-10-16.md)：人类效果、运行资产和研究近邻分别解释。
+
+阅读等级与身份分开：P0出处，P1摘要，P2相关正文/代码，P3正文及关键附录/实现，P4本地复算。文献事实、源码事实、我们的解释及待检验猜想分别标出；本地一个函数或CPU见证不等于论文结果复现。实验设置与数字回到对应卡/结果，原始轨迹留cache，历史文档版本由Git追溯。

@@ -1,8 +1,16 @@
-# 当前实验索引｜2026-10-14 仓库清理
+# 实验记录
 
-| ID | 类型与结果 |
-|---|---|
-| [E01-source-contracts](E01-source-contracts.md) | 已完成 CPU 上游源码合约测试：8/8，只说明指定程序性质，不是 NPC 行为实验 |
-| [E06-persona-strategy-baseline](E06-persona-strategy-baseline.md) | **PLANNED**：矿区 A，自报、意图、实际行动、世界后果的原生NPC强基线准入；未运行 |
+**当前暂停。** 实验卡记录跑前问题、来源、对照、读数和跑后结果，历史“下一步”不构成执行授权。整体认识先读[项目报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)，执行规则见[AGENTS](../AGENTS.md)，统计和资产见[结果索引](../results/README.md)。
 
-**历史未执行实验** E00/E02/E03/E04/E05 全部是旧用户方向变化前的探索草案，**已从当前树退出**，可在[Git历史快照](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)中找回。它们既不算实验否定，也不算已获认可的基线。新执行入口以 [LOCAL_AGENT_START](../LOCAL_AGENT_START.md) 与 [E06](E06-persona-strategy-baseline.md) 为准。是否开始新模型试验必须先完成必要的环境/任务审计、对照与成本计划，遵守[EXECUTION](../../EXECUTION.md)。
+## 编号与执行范围
+
+- 当前79张实验卡的逐项索引见[整体报告附表](../PROJECT_PROGRESS_REPORT_2026-10-16.md)。编号不是79项独立发现，也不代表79批互不重叠场景。
+- E01是源码合约检查；E06是总体准入协议，不另计独立运行；E07–E77、E80–E85按各卡结果读取。
+- E43为未运行的小MLP诊断；E42只有原八条件完成，追加规则知情条件未跑。LLM白盒的实际记录见E50/E52/E62。
+- E78/E79没有实际结果。旧E00/E02–E05已按用户决定退出当前树，原历史见[旧版本](https://github.com/Nhckdvrl/ssn-group-papaer/tree/37f4e9ba4152c3a21c36c73830897221a186924b/workbench/game-npc-agents/experiments)，不恢复。
+
+## 如何复核历史实验
+
+主读数、正负结果、无效版本及改读数记录仍保留在原卡、结果JSON、[CLAIMS](../CLAIMS.md)和按日日志中。此次整理没有重跑实验、修改原图/种子或提高证据等级。
+
+冻结旧执行线、作废版本和一次性调度脚本已从当前树清理。历史卡中的原命令、脚本名和SHA是当时的复现记录；需要完整旧代码时，按[scripts说明](../scripts/README.md)取清理前的精确Git版本，不能将当前缺少旧启动器解释成实验未执行。大raw和模型缓存仍按manifest保存。

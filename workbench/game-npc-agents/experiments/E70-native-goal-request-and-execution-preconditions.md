@@ -33,4 +33,4 @@ CPU资格阶段的输入约束补充（尚无模型调用）：若原命令在�
 
 两模型固定队列全部完成：12636分支/117图/三seed，73100实际新增调用（含321 profile，精确复用不重复计）、0解析失败。模型完整主表E70_gemma_complete.json与E70_32b_complete.json已生成；NoReq完整配对与E72在后。32B在冲突请求下ready的A−F原Goal差−6.84pp、equipped则+5.41pp；条件交互的补充复算另标POST-HOC，不替换预注册主读数或称统一跨模型反转。
 
-最终E71/E72/E73均完成，统一[报告](../PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)。预登记三重交互32B +6.27pp [−1.42,13.96]、Gemma0.00 [−6.55,6.55]保留；事后persona×state/divert复算不能替换主读数。C06限定L2，不称跨模型统一反转或冲突专属机制。
+最终E71/E72/E73均完成，统一[记录](E73-equal-initial-native-feedback.md)。预登记三重交互32B +6.27pp [−1.42,13.96]、Gemma0.00 [−6.55,6.55]保留；事后persona×state/divert复算不能替换主读数。C06限定L2，不称跨模型统一反转或冲突专属机制。
