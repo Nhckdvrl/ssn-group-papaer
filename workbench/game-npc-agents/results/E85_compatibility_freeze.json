@@ -1,0 +1,101 @@
+{
+  "experiment": "E85",
+  "status": "FROZEN_CPU_COMPATIBILITY_OVERLAY",
+  "cpu_status": "PASS",
+  "timestamp_utc": "2026-10-16T10:01:55.917485+00:00",
+  "overlay_path": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_partner_performance_compat.py",
+  "overlay_sha256": "24809503ae7dfd3530a8f0e016cdd3139bd3632f3829f81c74a336fa530d04dc",
+  "base_driver_path": "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_partner_performance.py",
+  "base_driver_sha256": "4767814ed0ecab53ce2cdaa970b4ec2d8b256a06c958f77e301547ca22b3dc9b",
+  "data_sha256": "fc6370394de556aa460349361509a4ecab305c08237d53f1d517dc7696b2f018",
+  "cpu_audit_path": "/home/xiang/.cache/game-npc-research/runs/e85_fork_compat/overlay_cpu_validation.json",
+  "cpu_audit_sha256": "1560c14a9336638f2cfd76c4903cd82ef50e9120849b15111157a6f4a83554bf",
+  "actual_failure_diagnostic_path": "/home/xiang/.cache/game-npc-research/runs/e85_fork_compat/diagnostic.json",
+  "actual_failure": "history1abfae2f/8501 real_claim+check actual Remove shirt_11 generated fisherman.attack=-1; roundtrip drops that key. deepcopy preserves complete JSON.",
+  "sourcecuts_full_JSON_exact_after_overlay": 18,
+  "old_profiles_exact_episodes_and_states": 16,
+  "cached_prefix_checks": [
+    {
+      "model": "gemma",
+      "profile_episodes_exact": 8,
+      "cached_inputs_replayed": 191,
+      "states_exact": true
+    },
+    {
+      "model": "32b",
+      "profile_episodes_exact": 8,
+      "cached_inputs_replayed": 191,
+      "states_exact": true
+    },
+    {
+      "model": "gemma",
+      "shard": 0,
+      "cache_unique": 218,
+      "exact_inputs_replayed": 42,
+      "completed_episodes_CPU": 0,
+      "first_uncached": {
+        "stage": "native_action",
+        "turn": 1,
+        "history_id": "0a4c635d9fb20d44db6bd49a",
+        "seed": 8502
+      },
+      "new_model_calls": 0
+    },
+    {
+      "model": "gemma",
+      "shard": 1,
+      "cache_unique": 2544,
+      "exact_inputs_replayed": 2384,
+      "completed_episodes_CPU": 96,
+      "first_uncached": {
+        "stage": "native_action",
+        "turn": 3,
+        "history_id": "d0534e8518b6235175a10469",
+        "seed": 8501
+      },
+      "new_model_calls": 0
+    },
+    {
+      "model": "32b",
+      "shard": 0,
+      "cache_unique": 1460,
+      "exact_inputs_replayed": 1496,
+      "completed_episodes_CPU": 32,
+      "first_uncached": {
+        "stage": "native_action",
+        "turn": 23,
+        "history_id": "377ee023f1b5e02126df72b9",
+        "seed": 8501
+      },
+      "new_model_calls": 0
+    },
+    {
+      "model": "32b",
+      "shard": 1,
+      "cache_unique": 1472,
+      "exact_inputs_replayed": 1336,
+      "completed_episodes_CPU": 32,
+      "first_uncached": {
+        "stage": "native_action",
+        "turn": 18,
+        "history_id": "52e8fab7fc5e657632164755",
+        "seed": 8501
+      },
+      "new_model_calls": 0
+    }
+  ],
+  "changes": [
+    "Source loader preserves only original numeric attack/xp/reward_xp scalar values omitted by the legacy loader; full JSON equality asserted.",
+    "Original successful roundtrip fork remains unchanged; a failed full-JSON roundtrip uses isolated full-graph deepcopy and equality assertions.",
+    "Partial attempts supply only exact messages/schema/seed response-cache keys; no partial outcomes are imported."
+  ],
+  "unchanged": [
+    "Frozen driver and eight dependencies",
+    "source data and original LIGHT source",
+    "roles/private goals/prompts/schema/conditions/seeds/model configuration"
+  ],
+  "new_model_calls": 0,
+  "new_API_calls": 0,
+  "new_GPU_jobs": 0,
+  "cache_provenance_field": "manifest.compatibility_overlay (overlay/base hashes, partial run paths/hashes/counts); compatibility_events.jsonl logs actual loader/fork differences"
+}

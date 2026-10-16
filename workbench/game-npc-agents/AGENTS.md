@@ -10,6 +10,8 @@
 
 **2026-10-16用户新增要求：每次启动实验前，必须判断是否在局部优化、追逐局部现象。** 在实验卡写明：它回答原始中心问题的哪一部分、不同结果会改变什么研究判断、为什么不是上一例的提示/接口/指标微调；同时写最实际的局部化风险及如何从完整结果识别。扩大N、换模型/任务或增加条件本身不算研究价值。判断服务研究选择，不新增人为通过bar、不替人关闭idea，也不把必要的强基线驻留包装机制贡献。
 
+**2026-10-16当前E85运行中：** 按最新授权从E84全部完整队列机械取得18前史/10任务对/9图，固定双方原目的，对比真实转移/同句虚假声称/未给的如实说明，以及共同首回应后的继续/撤回请求。原快照loader丢零/负值已独立定位，旧partial成本与调用全保留；最小外部compat冻结、18源cut全JSON及两旧profile16episode/states精确重放后，四卡按原设置恢复576逻辑支。最终outcome只取`e85_*_recover_s*`四完整目录，旧profile/full仅作exact cache和真实成本。不修改原source/driver/deps或科学输入，不补随机seed或据部分结果选案例。先读E85卡与最新日志，勿按下方E84历史“0新队列”误停当前授权工作；I04/C06/全局状态不变，正文暂缓。
+
 **2026-10-16当前已获用户明确推进授权：** [E81](experiments/E81-authored-cooperation-and-partner-response.md)全126双作者原图/504逻辑episode完成（16611本地calls/3.45956GPUh）；[E82](experiments/E82-minecraft-original-cooperation-baseline.md)原Minecraft资源交接→书架制作CPU链已完成；[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)原paper-role归还/奖励重建切片2完整episode/16本地请求及独立物理读回完成。两路径最终交换但提前奖励/重复结清，P1也能拒借；单角色不当总体机制。[E84](experiments/E84-independent-goals-and-alternative-cooperation.md)全32对/23图×两seed×两模型128完整episode完成，4224本地calls/0.75834完整占卡GPUh，全部输入/typed事件/全世界重放PASS，0云/Step/API；本轮server/GPU已全部释放。普通32B已能实际帮忙后有条件借刀、连续响应求药，Gemma也有真实帮助与合理拒借。读[完整方案和后续](results/E84_grounded_plans_POST_HOC.json)，不将原Steal/Put标签或双向Give当合作/完整利益；未送达的choice.utterance不当对话承诺。当前0新队列，先根据玩家真实行动/改方案会改变什么判断作下一次立项检查；不围几例提示优化、不预定方法或擅改I04/C06状态。
 
 **2026-10-16用户再次质疑研究尺度：** 已承认E80仍沿用同类物品索要，应用审计没有充分改变实验优先级。先读README“当前证据与研究判断”。不要将“用途采纳/执行/修订”再细分就视为科学推进；后续证据围绕NPC自身目的、玩家不同合作办法与真实后果的关系判断价值，已有可靠执行与测量作为底座。不新增同类提示/动作分解队列，不凭相关工作关闭idea或擅改状态；正文仍暂缓。本次复盘0新增模型/GPU/API调用。
