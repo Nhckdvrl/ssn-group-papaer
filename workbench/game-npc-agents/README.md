@@ -26,7 +26,7 @@
 
 ## 历史证据与明确冻结的执行线
 
-- [E70–E73报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：同117作者Give图，23868分支/125126调用；状态、请求方向、候选和原生反馈的作用。原三重交互不确定、全部负向结果保留。
+- [E70–E76连续报告](PROGRESS_REPORT_2026-10-15_REQUEST_PRECONDITIONS.md)：先保留E70–E73原报告（117源图、23868分支/125126调用），文末完整附加E74–E76续报；各期成本与样本口径分别保留。
 - [E69同图任务报告](PROGRESS_REPORT_2026-10-15_MATCHED_TASKS.md)：112同图任务配对及三来源案例的后续执行；不把三个案例当总体机制。
 - [E67/E68](PROGRESS_REPORT_2026-10-15_RULE_EXECUTION.md)：执行规则恢复在独立41装备图复现，60其他资产图保留角色合作差；三向统一分流未成立。
 - [E65/E66](PROGRESS_REPORT_2026-10-15_CONSTRAINT_PROBES.md)、[E63/E64](PROGRESS_REPORT_2026-10-15_POST_REVIEW.md)、[E50–62](PROGRESS_REPORT_2026-10-15.md)：三模型200图确认、角色分量、实体任务/合作、动态伙伴及白盒正负结果。
