@@ -1,6 +1,6 @@
 # 结果清单
 
-当前入口为[E74完整实验](../experiments/E74-physical-consequence-prediction-and-choice.md)、[E75跨任务设置](../experiments/E75-native-retrieval-task-transfer.md)及文末结果。E50–73均有完整历史证据，阶段裁决不是预设论文故事。旧 [进度报告](../PROGRESS_REPORT_2026-10-14.md) 为历史暂停时的状态，旧小模型RL与全图漫游冻结。
+当前入口为[E81双方作者目的合作任务](../experiments/E81-authored-cooperation-and-partner-response.md)、[E82原Minecraft任务CPU闭环](../experiments/E82-minecraft-original-cooperation-baseline.md)和[E83有自身目的NPC的角色任务重建](../experiments/E83-npc-quest-receipt-and-reward-baseline.md)。E81主物理计数与真实条件/作者目的分开；E82无模型能力主张，E83先CPU后完整episode，不按几个例子调提示。旧结果及冻结执行线均保留。
 
 - E50：[360原图实体资格](E50_native_snapshot_qualification.json)、[32B三seed一致人设](E50_32b_coherent_pilot_complete.json)、[32B阶段四格](E50_32b_cross_pilot_complete.json)、[27B阶段四格](E50_27b_cross_pilot_complete.json)。独立N=40图，不把分支数当独立样本。
 - E50白盒：[27B native](E50_27b_stage_geometry.json)、[32B native](E50_32b_stage_geometry.json)、[27B同字段](E50_27b_common_readout_geometry.json)、[32B同字段](E50_32b_common_readout_geometry.json)。统一字段改变32B方向几何，角度不替代因果干预。
@@ -179,3 +179,6 @@ raw仍在`/home/xiang/.cache/game-npc-research/runs/`的`e70_*`、`e71_{gemma,32
 - [源资格](E80_source_audit.json)、[输入](E80_input_check.json)、[profile](E80_profile_validation.json)、[装备语义](E80_equipment_event_semantics.json)、[help兼容](E80_help_render_compatibility.json)、[恢复/解析审计](E80_parser_recovery_audit_POST_HOC.json)、[物品流POST-HOC](E80_item_flows_POST_HOC.json)、[340原图去重窗口](E70_E80_source_union.json)提供原始路径/哈希与适用范围。
 
 raw为cache/runs/e80_{gemma,32b}_{profile,s0,s1,s2,s3}及*_native_help_failed、*_init_failed*；不进git。原数据沿用e63_native_dependency_qualification/snapshots.jsonl；复算入口native_interactive_report.py/native_interactive_first_activation_posthoc.py/native_interactive_assets.py及物品流native_interactive_item_flows_posthoc.py，模型driver与skills保持原SHA。
+
+- E81：[全源资格](E81_source_inventory.json)、[Gemma全126图](E81_gemma_complete.json)、[32B全126图](E81_32b_complete.json)、[根级实体读回](E81_root_material_readback.json)、[源合作机会复核](E81_cooperation_opportunities.json)、[关键实际轨迹POST-HOC](E81_grounded_interactions_POST_HOC.json)；full输入/typed事件/世界回放与profile精确去重，原子结果不直接叫互惠。
+- E82：[原Minecraft原生物理链](E82_native_cooperation_baseline.json)，原6planks/3books真实制作1bookshelf；helper失败与低层原生技能续接全保留，0GPU/模型/API。

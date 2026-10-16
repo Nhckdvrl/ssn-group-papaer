@@ -1,0 +1,172 @@
+{
+  "experiment": "E82",
+  "inference_api_calls": 0,
+  "gpu_hours": 0,
+  "port": 55982,
+  "source_repo": "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro",
+  "source_pin": "e85ef660171feb81290888c0fb615335f1c7a029",
+  "server_zip": "/home/xiang/.cache/game-npc-research/assets/minecollab/server_data.zip",
+  "server_zip_sha256": "7a16e9b634d34c0b1c8eb7684a204f2441e9c0111ca700177fceb0b6a3567f40",
+  "server_zip_bytes": 127036886,
+  "task_id": "multiagent_crafting_bookshelf_full_plan_requires_ctable__depth_0",
+  "scope": "Author native physical feasibility witness, not an LLM experiment or success-rate estimate.",
+  "native_dependency_manifest": {
+    "name": "e82-native-qualification-only",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+      "minecraft-data": "^3.78.0",
+      "mineflayer": "4.26.0",
+      "mineflayer-pathfinder": "2.4.5",
+      "mineflayer-collectblock": "1.4.1",
+      "mineflayer-pvp": "1.3.2",
+      "mineflayer-auto-eat": "3.3.6",
+      "mineflayer-armor-manager": "2.0.1",
+      "prismarine-item": "1.15.0",
+      "vec3": "0.1.10",
+      "cheerio": "1.0.0",
+      "socket.io-client": "4.7.2"
+    }
+  },
+  "native_dependency_lock_sha256": "12dc5e48626d03251bf5d651625de76a531a41c03020f25eb0fee9ccc84a5178",
+  "resolved_minecraft_data": "3.117.0",
+  "prior_attempt": {
+    "artifact": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_continuation/aggregate_native_failure.json",
+    "sha256": "bfb7ddf67ad98571de6722bfc771bdae1db43ddef05cca2f39ebc729b280f8b9",
+    "actor_exit_code": 1,
+    "wall_seconds": 45.955380033003166,
+    "exception": "",
+    "earlier_attempt": {
+      "artifact": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_qualification_source_range/aggregate_native_failure.json",
+      "sha256": "1330316d8156df177ee055ca91fa3cc71150c0f77b80f9b86d93f6c183e844a0",
+      "actor_exit_code": 1,
+      "wall_seconds": 88.42864076502156,
+      "exception": "",
+      "earlier_attempt": {
+        "artifact": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_qualification/aggregate_bootstrap_failure.json",
+        "sha256": "a20f858bd3b1e9b4110ca843fa41b3d035c67808336a9efe841870df61a7ac64",
+        "actor_exit_code": 1,
+        "wall_seconds": 62.02937879192177,
+        "exception": "RangeError: Version '1.21.4' not found in [1.21.3 ; 1.21.2 ; 1.21.2-rc2 ; 1.21.2-rc1 ; 1.21.2-pre5 ; 1.21.2-pre4 ; 1.21.2-pre3 ; 1.21.2-pre2 ; 1.21.2-pre1 ; 24w40a ; 24w39a ; 24w38",
+        "interpretation": "Bootstrap only: operator incorrectly narrowed author minecraft-data ^3.78.0 to 3.78.0; restore declared author semver range. No source recipe/physics change; no NPC/model behavior occurred."
+      },
+      "interpretation": "Native failure retained; continuation uses the same saved world/inventories and one source movement skill, with no reset or item creation."
+    },
+    "interpretation": "Native failure retained; continuation uses the same saved world/inventories, with no reset or item creation. See current continuation_mode for the explicitly distinct native skill composition."
+  },
+  "continuation_mode": "POST-HOC native discard/pickup/craft composition",
+  "resume_server_dir": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_qualification_source_range/server_data",
+  "resume_state": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_continuation/episode/final_before_any_automatic_clear.json",
+  "resume_state_sha256": "1fd033d39398080e257b8b435076ef43bdc88313e78cf5c37ee8503145d2470b",
+  "source_files_sha256": {
+    "src/agent/library/skills.js": "b03b461b4f96e325892a45d624636af92bd63043b4ab720b0a98bfe9b17dbc3d",
+    "src/agent/tasks/tasks.js": "43a70dc407f21bde16fbd77c3bed193ee71feceeca03b7c0cac00e198f21c104",
+    "tasks/crafting_tasks/test_tasks/2_agent.json": "ef8668e61132ae301adf9faf9a305651406500a78c224bc23902135aa88979ba"
+  },
+  "initialization_adapter": "Isolated copy: bind localhost/unique port, original Forest world, offline ops for exact author inventory initialization; no changes to recipe, native source or world assets.",
+  "java_pid": 981400,
+  "server_startup_seconds": 11.25272237509489,
+  "actor_exit_code": 0,
+  "episode": {
+    "task_id": "multiagent_crafting_bookshelf_full_plan_requires_ctable__depth_0",
+    "task_source": "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/tasks/crafting_tasks/test_tasks/2_agent.json",
+    "original_task": {
+      "goal": "Collaborate with other agents to craft a bookshelf",
+      "conversation": "Let's work together to craft a bookshelf.",
+      "initial_inventory": {
+        "0": {
+          "oak_planks": 4,
+          "book": 2
+        },
+        "1": {
+          "oak_planks": 2,
+          "book": 1,
+          "crafting_table": 1
+        }
+      },
+      "agent_count": 2,
+      "target": "bookshelf",
+      "number_of_target": 1,
+      "type": "techtree",
+      "max_depth": 1,
+      "depth": 0,
+      "timeout": 300,
+      "blocked_actions": {
+        "0": [],
+        "1": []
+      },
+      "missing_items": [],
+      "requires_ctable": true
+    },
+    "mode": "scripted native feasibility witness, not model cooperation",
+    "continuation_mode": "POST-HOC original discard/pickup/craft composition, distinct from giveToPlayer helper",
+    "inference_api_calls": 0,
+    "gpu_hours": 0,
+    "success": true,
+    "resumed_from_preserved_state": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_continuation/episode/final_before_any_automatic_clear.json",
+    "exact_initial_inventory": true,
+    "craft_return": true,
+    "wall_seconds": 35.684
+  },
+  "initial_inventory": [
+    {
+      "book": 2
+    },
+    {
+      "oak_planks": 6,
+      "book": 1,
+      "crafting_table": 1
+    }
+  ],
+  "final_inventory": [
+    {},
+    {
+      "bookshelf": 1,
+      "crafting_table": 1
+    }
+  ],
+  "validator_before": [
+    {
+      "valid": false,
+      "score": 0
+    },
+    {
+      "valid": false,
+      "score": 0
+    }
+  ],
+  "validator_final": [
+    {
+      "valid": false,
+      "score": 0
+    },
+    {
+      "valid": true,
+      "score": 1
+    }
+  ],
+  "transfer_stages": [
+    {
+      "stage": "native_discard_pickup",
+      "item": "book",
+      "count": 2,
+      "author_skill_return": true,
+      "inventories": [
+        {},
+        {
+          "oak_planks": 6,
+          "book": 3,
+          "crafting_table": 1
+        }
+      ]
+    }
+  ],
+  "server_shutdown": "owned PID stopped via Minecraft console",
+  "wall_seconds": 49.638280646991916,
+  "raw_artifact_dir": "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_composition",
+  "artifacts_sha256": {
+    "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_composition/server.log": "5ed8d3fdd25255853e0ab95db29bad70553e6e56dddc143db6e87bc87b0e6424",
+    "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_composition/native_actor.log": "826deb365c767d1520e2236aee1896882becd896e55fb3fab88fc45902ece016",
+    "/home/xiang/.cache/game-npc-research/runs/e82_bookshelf_native_composition/episode/native_events.jsonl": "9b34f4d733d191bed84364a9a0fe3b915701d2e0b56a552d063d072618de66c6"
+  }
+}

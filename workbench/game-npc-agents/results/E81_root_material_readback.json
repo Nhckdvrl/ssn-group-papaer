@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "scope": "Independent direct native effect and exact profile-duplicate readback; no new model/API calls, no L3 or altered primary metric. Confidence intervals not recomputed.",
+  "models": {
+    "gemma": {
+      "unique_graphs": 126,
+      "episodes": 252,
+      "exact_profile_duplicates_removed": 4,
+      "raw_numerators": {
+        "giver_source_give_receiver_ever": 182,
+        "receiver_acquired_ever": 207,
+        "receiver_original_physical_ever": 181,
+        "receiver_original_physical_final": 139,
+        "giver_and_receiver_original_physical_ever": 156,
+        "giver_gave_and_receiver_original_physical_final": 118,
+        "protocol_failure": 0,
+        "any_character_death": 0
+      },
+      "all_eight_metrics_agree_with_frozen_full_report": true
+    },
+    "32b": {
+      "unique_graphs": 126,
+      "episodes": 252,
+      "exact_profile_duplicates_removed": 4,
+      "raw_numerators": {
+        "giver_source_give_receiver_ever": 218,
+        "receiver_acquired_ever": 247,
+        "receiver_original_physical_ever": 223,
+        "receiver_original_physical_final": 137,
+        "giver_and_receiver_original_physical_ever": 197,
+        "giver_gave_and_receiver_original_physical_final": 118,
+        "protocol_failure": 1,
+        "any_character_death": 0
+      },
+      "all_eight_metrics_agree_with_frozen_full_report": true
+    }
+  }
+}

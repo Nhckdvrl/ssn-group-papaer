@@ -295,7 +295,6 @@ def readback(row, case):
     m.update(giver_strict_goal_ever=int(strict[0]),receiver_strict_goal_ever=int(strict[1]),
         receiver_acquired_ever=int(acquired),receiver_original_physical_ever=int(receiver_physical),
         receiver_driver_broad_physical_ever=int(receiver_driver_physical),
-        receiver_source_any_equipped_ever=int(receiver_any_equipped),
         receiver_source_authored_equipment_mode_ever=int(receiver_strict_mode),
         giver_and_receiver_original_physical_ever=int(strict[0] and receiver_physical),
         both_strict_event_identities_ever=int(all(strict)),
@@ -308,6 +307,9 @@ def readback(row, case):
         protocol_failure=int(row['stop']=='protocol_error'),
         native_runtime_stop=int(row['stop']=='native_runtime_error'),
         any_character_death=int(any(row['final_dead'])))
+    # This state flag shares the event flag's name. Counter.update would add
+    # the two observations of the same fact; assign the final Boolean once.
+    m['receiver_source_any_equipped_ever'] = int(receiver_any_equipped)
     sid_final = final[sid]
     parent = sid_final['container']; ultimate = owner(final,sid,actors)
     for i, role in enumerate(['giver','receiver']):
@@ -332,6 +334,7 @@ def readback(row, case):
         final_goal = parent == case['receiver_goal_identity'][1][1]
     m['receiver_original_physical_final'] = int(final_goal)
     m['giver_gave_and_receiver_original_physical_final'] = int(strict[0] and final_goal)
+    assert all(value in [0,1] for field,value in m.items() if field.endswith('_ever'))
     return dict(m), {'case_id':row['case_id'],'seed':row['seed'],'graph_sha256':row['graph_sha256'],
         'receiver_kind':kind,'task_family':case['task_family'],'metrics':dict(m),
         'first_milestones':milestones,'final_source_direct_parent':parent,

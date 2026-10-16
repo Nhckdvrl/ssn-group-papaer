@@ -1,0 +1,217 @@
+{
+  "status": "PASS",
+  "scope": "POST-HOC report arithmetic correction only; no experimental input, native execution, primary definition, seed, bootstrap or sample change.",
+  "bug": "Counter.update added an event Boolean and state Boolean of the same any-equipped flag. Final Boolean now assigned once; all _ever fields are asserted binary.",
+  "archived_before_report": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_readback/pre_any_equipment_counter_fix/E81_gemma_complete.json",
+  "archived_before_report_sha256": "84d384b3abe891e818d94e980704a1878adc3c248465c9437d9feb7da1887a54",
+  "archived_before_code": "/home/xiang/.cache/game-npc-research/runs/e81_cooperation_readback/pre_any_equipment_counter_fix/native_cooperation_report.py",
+  "corrected_report": "E81_gemma_complete.json",
+  "unchanged_group_metrics": 871,
+  "changed_group_metrics": [
+    [
+      "all",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.23412698412698413,
+        "graph_bootstrap_95": [
+          0.1349206349206349,
+          0.34523809523809523
+        ],
+        "independent_graphs": 126,
+        "raw_sum": 59
+      },
+      {
+        "mean": 0.11904761904761904,
+        "graph_bootstrap_95": [
+          0.06746031746031746,
+          0.1746031746031746
+        ],
+        "independent_graphs": 126,
+        "raw_sum": 30
+      }
+    ],
+    [
+      "acquisition",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.2073170731707317,
+        "graph_bootstrap_95": [
+          0.08536585365853659,
+          0.34146341463414637
+        ],
+        "independent_graphs": 82,
+        "raw_sum": 34
+      },
+      {
+        "mean": 0.10365853658536585,
+        "graph_bootstrap_95": [
+          0.042682926829268296,
+          0.17073170731707318
+        ],
+        "independent_graphs": 82,
+        "raw_sum": 17
+      }
+    ],
+    [
+      "use_or_put",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.2840909090909091,
+        "graph_bootstrap_95": [
+          0.10227272727272728,
+          0.5
+        ],
+        "independent_graphs": 44,
+        "raw_sum": 25
+      },
+      {
+        "mean": 0.14772727272727273,
+        "graph_bootstrap_95": [
+          0.05681818181818182,
+          0.26136363636363635
+        ],
+        "independent_graphs": 44,
+        "raw_sum": 13
+      }
+    ],
+    [
+      "receiver_get",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.09090909090909091,
+        "graph_bootstrap_95": [
+          0.0,
+          0.2727272727272727
+        ],
+        "independent_graphs": 22,
+        "raw_sum": 4
+      },
+      {
+        "mean": 0.045454545454545456,
+        "graph_bootstrap_95": [
+          0.0,
+          0.13636363636363635
+        ],
+        "independent_graphs": 22,
+        "raw_sum": 2
+      }
+    ],
+    [
+      "receiver_put",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.175,
+        "graph_bootstrap_95": [
+          0.0,
+          0.4
+        ],
+        "independent_graphs": 20,
+        "raw_sum": 7
+      },
+      {
+        "mean": 0.1,
+        "graph_bootstrap_95": [
+          0.0,
+          0.225
+        ],
+        "independent_graphs": 20,
+        "raw_sum": 4
+      }
+    ],
+    [
+      "receiver_steal",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.25,
+        "graph_bootstrap_95": [
+          0.1,
+          0.41666666666666663
+        ],
+        "independent_graphs": 60,
+        "raw_sum": 30
+      },
+      {
+        "mean": 0.125,
+        "graph_bootstrap_95": [
+          0.05,
+          0.20833333333333331
+        ],
+        "independent_graphs": 60,
+        "raw_sum": 15
+      }
+    ],
+    [
+      "receiver_wear",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 1.2857142857142858,
+        "graph_bootstrap_95": [
+          0.5714285714285714,
+          1.8571428571428572
+        ],
+        "independent_graphs": 7,
+        "raw_sum": 18
+      },
+      {
+        "mean": 0.6428571428571429,
+        "graph_bootstrap_95": [
+          0.2857142857142857,
+          0.9285714285714286
+        ],
+        "independent_graphs": 7,
+        "raw_sum": 9
+      }
+    ],
+    [
+      "source_initially_NPC_held",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.2692307692307692,
+        "graph_bootstrap_95": [
+          0.14285714285714285,
+          0.4067307692307698
+        ],
+        "independent_graphs": 91,
+        "raw_sum": 49
+      },
+      {
+        "mean": 0.13736263736263737,
+        "graph_bootstrap_95": [
+          0.07142857142857144,
+          0.20879120879120877
+        ],
+        "independent_graphs": 91,
+        "raw_sum": 25
+      }
+    ],
+    [
+      "source_initially_not_NPC_held",
+      "receiver_source_any_equipped_ever",
+      {
+        "mean": 0.14285714285714285,
+        "graph_bootstrap_95": [
+          0.0,
+          0.3142857142857143
+        ],
+        "independent_graphs": 35,
+        "raw_sum": 10
+      },
+      {
+        "mean": 0.07142857142857142,
+        "graph_bootstrap_95": [
+          0.0,
+          0.15714285714285714
+        ],
+        "independent_graphs": 35,
+        "raw_sum": 5
+      }
+    ]
+  ],
+  "all_other_episode_metrics_exact": true,
+  "raw_counts_cost_and_typed_replay_exact": true,
+  "independent_raw_state_any_equipped_episode_sum": 30,
+  "old_any_equipped_sum": 59,
+  "new_any_equipped_sum": 30,
+  "new_model_calls": 0,
+  "new_API_calls": 0
+}

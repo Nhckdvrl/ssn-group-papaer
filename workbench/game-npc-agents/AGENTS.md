@@ -8,7 +8,7 @@
 
 ## 每次接手优先阅读
 
-**2026-10-16当前已获用户明确推进授权：** 正在执行[E81](experiments/E81-authored-cooperation-and-partner-response.md)，126同图双作者合作任务，原NPC/玩家各有完整persona/动机/goal/timeline。两模型完整profile先行，无F/A或提示网格，双方对称typed原生工具，经原类完整guard；0API/训练。旧“无E81队列”是E80收尾历史，勿误停当前明确授权工作，也不重复启动。读取实际manifest/进程后继续；不用交付/goal两事件冒充协商或全部效用，真实履约/条件变化的分支须来自实际轨迹再登记。
+**2026-10-16当前已获用户明确推进授权：** [E81](experiments/E81-authored-cooperation-and-partner-response.md)全126双作者原图/504逻辑episode完成（16611本地calls/3.45956GPUh）；[E82](experiments/E82-minecraft-original-cooperation-baseline.md)原Minecraft资源交接→书架制作CPU链已完成。当前[E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)实现有自身目的NPC的原paper-role归还/奖励切片，先CPU真实收件/可见speech资格，再本地2完整episode技术检查；不将它称大N研究或原微软世界复现。读实际manifest/进程，不重跑已结束队列。角色目的、实际交还与声称/改约成为任务对象，不新增人物提示词网格或预定方法。
 
 **2026-10-16用户再次质疑研究尺度：** 已承认E80仍沿用同类物品索要，应用审计没有充分改变实验优先级。先读README“当前证据与研究判断”。不要将“用途采纳/执行/修订”再细分就视为科学推进；后续证据围绕NPC自身目的、玩家不同合作办法与真实后果的关系判断价值，已有可靠执行与测量作为底座。不新增同类提示/动作分解队列，不凭相关工作关闭idea或擅改状态；正文仍暂缓。本次复盘0新增模型/GPU/API调用。
 
