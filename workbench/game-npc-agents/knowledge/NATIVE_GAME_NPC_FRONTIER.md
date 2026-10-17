@@ -1,6 +1,6 @@
 # 2025–2026 游戏 NPC 原生研究：论文与实际代码调查
 
-本页以**游戏内非玩家角色的学习、制作与行动**为边界。阅读截至2026-10-13。记号：F=论文 HTML 正文含方法/结果/局限读过；A=作者摘要；R=开源 repo README/目录/指定源码读过；X=本地可复现实测（须按对应论文或实验卡核对；没有运行的文献不标X）。学术状态仅在正式会场/期刊页面核实时写已发表；arXiv 只写预印本。
+本页以**游戏内非玩家角色的学习、制作与行动**为边界。原记录截至2026-10-13；2026-10-18补核PCSP与PUBG，其他条目仍按下列原范围。完整跨代谱系见[领域重读](FIELD_REVIEW_2026-10-18.md)。记号：F=论文 HTML 正文含方法/结果/局限读过；A=作者摘要；R=开源 repo README/目录/指定源码读过；X=本地可复现实测（须按对应论文或实验卡核对；没有运行的文献不标X）。学术状态仅在正式会场/期刊页面核实时写已发表；arXiv 只写预印本。
 
 ## 1. Electronic Arts｜Augmenting Game AI with Deep Reinforcement Learning（2026 CoG vision / arXiv 2606.20210）【F】
 全文 https://arxiv.org/html/2606.20210v1 。这是本领域最重要的**需求锚点**之一，而非我们得出结论的来源。
@@ -24,6 +24,7 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 - 方法：冻结 Qwen3-Embedding-0.6B，人格低秩投影+FiLM/concat 条件化共享政策，PPO + trajectory/persona InfoNCE + KL diversity；不只是聊天评价。
 - **必须分开指标的关键事实：** 作者研究目录 docs/evaluations/independent-behavior.md 报内部对齐损失减少后 retrieval 大幅下降，但独立 action-only BigFive probe: full 0.482、no consistency 0.511；action+state 0.556 vs0.558。对外“角色表现更好”不能仅从内部检索推出，且 BigFive probe 并非完整角色行为的金标准。
 - 作者自己的论文已做丰富条件、Melting Pot 三场景、UE部署、多种子、留出人格等；不允许因只读摘要就假设它没有真人/跨域检验。
+- 2026-10-18正文/关键附录补核：在线LLM基线仅Qwen3-1.7B，约22倍是该配置延迟；UE5高层每0.5秒决策，不能用渲染帧预算否定强高层LLM。30人×30判断不是900玩家。引言与§VII的Full/NoCons奖励标签反转、未见人格的失败及内部测量限制均见[原卡](../mine-a-persona-strategy/knowledge/papers/PCSP_2026.md)。
 - **可复现性：** MIT 源码；research/src/env/mini_inzoi_v3.py、research/src/training/pcsp_trainer.py、scripts/run_pcsp_v3.py、行为独立测试、personas train/test JSON 已公开。后续本地训练/原生测量见PCSP论文卡与E13–E41；支持的是特定环境，不能代表所有RPG/combat NPC。
 - **Idea 来源重建：** 从逐 NPC 手工编树/逐角色训练/每步 LLM 都贵的产业压力，转成共享条件政策。独立行为解释与训练可编辑性是当时关注的研究问题；实际已完成的本地审计见对应卡，不将这段方法来源重建当成恢复冻结线的指令。
 
@@ -34,7 +35,7 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 - *Events as Triggers for Behavioral Diversity in MARL* (NeurIPS 2026): https://www.proroklab.org/publications/events-as-triggers-neurips2026/ 【A、作者会议身份】。事件触发 hypernetwork 产生共享政策 LoRA、解耦身份和事件中的角色行为。VMAS，不是发布的游戏NPC本身；事件触发角色重分工方法已有直接近邻。
 
 ## 5. LLM＋游戏策略整合（和单纯 LLM Roleplay 不同）
-- PUBG Ally（KRAFTON/NVIDIA 工程技术说明 2026）：https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/ 【R / 产品研发说明】。官方把它称 Co-Playable Character (CPC) 以区别传统 NPC；我们仅视为游戏内 AI 伙伴邻接应用。2B 本地小模型负责高层语音/工具/协作，BT 在 tick 级处理战斗/移动，厂商蒸馏游戏知识并用玩家反馈校验。内部训练数据与引擎不可公开复现。
+- PUBG Ally（KRAFTON/NVIDIA）：[第一方访谈](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/)、[9月技术论文](https://arxiv.org/abs/2609.29837)【正文/关键附录定向深读，非全55页】。本地模型处理高层语音/工具/协作，BT处理快速战斗；系统已刷新动作/世界状态、保留待办与承诺、读取执行反馈并事件重规划。论文以Opus4.8作离线强质量参考，真人A/B受延迟显著影响，不能只概括为小模型加BT。共享团队目标不等于独立私人利益NPC，公开backbone不等于完整可复现产品。[完整应用与玩家证据](../mine-a-persona-strategy/knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)
 - *LLM-Guided Reinforcement Learning for Adaptive NPC Behavior in Multi-Agent Combat Games* (arXiv 2609.02931) https://arxiv.org/html/2609.02931v1 【正文部分】。Unity 五 NPC 共享 PPO，本地 Mistral7B 每5秒选战术 tag；文中报告不同对手收益差异但83.8%的选择为Surround。**审计注意：** baseline 与LLM条件的训练时风格信号/奖励可能不等价，复现先核对两政策训练与评估条件，再做相同 conditioned-policy 配对替换 selector；不是把小型 preprint 的胜率作为顶会强共识。
 - ccb/agent-sandbox: https://github.com/ccb/agent-sandbox 【R】。2026 UPenn group text-adventure/Godot 游戏 NPC，有 world-state 前提/效果、NPC 回合、ReAct/Reflect、LLM_BASE_URL；文档有不同开发阶段残留、默认 API key，启动必须设置本地 endpoint /mock，避免自动外联。研究平台，**不是已接收顶会方法 baseline**。
 - LIGHT/Dragon (EMNLP-IJCNLP2019/NAACL2021) 见旧知识库：具有角色自身动机、可执行 action，不应因其年代老就忽视；本地恢复与后续测量见整体报告及相应实验卡。
@@ -67,3 +68,7 @@ arXiv 2605.23652，https://arxiv.org/html/2605.23652v1 ；源码 https://github.
 **Proact-VL（ICML2026）阅读补充。** [正文v4](https://arxiv.org/html/2603.03447v4)、[官方发布](https://github.com/microsoft/AnthropomorphicIntelligence/tree/main/Proact-VL)的decide-then-generate、§5.1、关键实现附录和资源/评估入口已核。作者已发布权重、训练数据和测试入口；主训练约200 H100 GPUh，质量/PAUC使用GPT-5.1，另有F1/TimeDiff。对象主要为流式解说/指导，不能借作实体NPC执行或零API复现结论。
 
 [AI for Games综述（2026预印本）](https://arxiv.org/html/2609.16679)另用于发现跨角色/运行期NPC与体验入口；原记录只读有关NPC、运行期角色、体验与开放问题的部分，不以综述或NeurIPS下载题目目录替代单篇接收/深读证据。
+
+## 强能力比较的当前要求
+
+有动作能力、能在商业游戏里通关、可实时部署、符合人物规范、玩家体验更好是不同主张。Voyager/JARVIS-1/Cradle分别显示模型、记忆、controller和运行接口会改变能力尺度；它们为[强基线](STRONG_BASELINES.md)提供方法参照，不直接证明自主NPC私有义务的结论。经典GOAP/ABL/CiF/Versu及Slice of Life还要求比较传统可编程控制；不以给传统方法一个弱聊天壳来制造新方法优势。

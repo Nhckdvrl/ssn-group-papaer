@@ -1,14 +1,14 @@
 # 人格漂移、角色成长和长程操纵：Game NPC 的真实构念
 
-2026-10-14。这里区分 **语言型 role-play** 与 **有游戏状态和实际后果的 NPC**，前者提供评价/训练方法，不能直接转成后者已复现的发现。
+原阅读2026-10-14；2026-10-18补核Generative Agents、CHI与PCSP。这里区分 **语言型 role-play** 与 **有游戏状态和实际后果的 NPC**，前者提供评价/训练方法，不能直接转成后者已复现的发现。
 
 ## 1. 文献谱系与主张所有权
 - [RoleBreak, COLING 2025](https://aclanthology.org/2025.coling-main.494/)：角色被对抗输入导致偏离，研究 query sparsity 和 role-query conflict，提出叙述性防御。角色受诱导已非空白。
 - [Beyond Static Persona Consistency, ACL 2026 main](https://aclanthology.org/2026.acl-long.1336/)：把 identity-layer stability 与 adaptive-layer appropriateness 分开，L/M/S 角色心理状态和纠偏。**“人物不是一成不变的静态 persona”是已有贡献**。
 - [ArcANE, arXiv 2606.05553](https://arxiv.org/abs/2606.05553)：人物在剧情不同阶段应该适时改变，会议接收身份本轮未确认。
 - [PCSP 2026 arXiv](https://github.com/yoosunghong/pcsp)：行为条件化政策、轨迹/persona 内部对齐与独立动作 probe 不等价；已经有测量反证，不能只看文本一致。
-- [CHI 2024 Lies, Deceit, and Hallucinations](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)：29位游戏玩家研究中，有意义的主动谎言和无意错误得到不同体验解释。
-- [Generative Agents UIST 2023](https://arxiv.org/abs/2304.03442)：记忆/反思/社会世界模型长程模拟的基础，不宜称“首次给角色长期记忆”。
+- [CHI 2024 Lies, Deceit, and Hallucinations](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)：29位玩家玩预生成、人工审阅台词后访谈，有意义的主动谎言和无意错误得到不同体验解释；不是在线LLM错误率。
+- [Generative Agents UIST 2023](https://arxiv.org/abs/2304.03442)：记忆/反思/计划与社会模拟的基础；已报告过度接受不合兴趣的提议与口头有意却未赴约。固定历史采访消融及LLM更新部分物体状态的边界见[重读](FIELD_REVIEW_2026-10-18.md#4-角色行为与社会模拟从文本像人到可核后果)，不宜称首次记忆或言行失配。
 
 ## 2. 不可混同的四种轨迹
 | 轨迹类型 | 示例 | 什么时候才判为问题 |
@@ -31,4 +31,4 @@
 
 ## 5. 可形成贡献的形态
 现有 persona/漂移度量在实际可执行 NPC 社会中是否预测有意义的状态和玩家行为？什么自然事件更新了身份中的哪个层次？已有修正机制是否会抹去合法成长？可能走评价、机制或方法，不锁定“做新的漂移 Benchmark”。 
-阅读等级：上述大多 P1/P2，不宣称全篇已精读；见 [source status](DOMAIN_ATLAS.md#source-status)。
+阅读范围：Generative Agents与CHI本轮正文全读，PCSP正文/关键附录重读；其他来源仍按既有P1/P2或单篇卡，不随更新日期升级。见 [source status](DOMAIN_ATLAS.md#source-status)。

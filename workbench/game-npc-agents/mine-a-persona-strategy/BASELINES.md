@@ -13,6 +13,10 @@
 | MINDcraft / MineCollab | 原Minecraft双方库存→真实转移／制作→原validator的CPU见证 | [E82](experiments/E82-minecraft-original-cooperation-baseline.md)；原bookshelf共同任务，0模型，不当角色利益冲突证据 |
 | Microsoft角色任务的明确重建 | Alaric找回剑／条件奖励切片，两条Qwen完整路径及独立收件读回 | [E83](experiments/E83-npc-quest-receipt-and-reward-baseline.md)；非微软原世界／原系统复现，同一角色两路径不作总体统计 |
 
+## 当前比较能力的缺口
+
+截至本次审查，后期主要是Qwen3-32B与Gemma3-12B，本地共享客户端关闭thinking、输出上限512；有原人物/各层动机、状态、合法工具和反馈，不能称裸提示。但尚无强商业推理模型加完整普通记忆/重规划的同域结果，合作上下文的最近32条消息也不等于有效承诺持久记录。具体源码、分母和未排除解释见[独立审查](results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md#5-普通强基线还缺什么来自实际源码)。这些是证据缺口，不是认定商业模型必然解决；[完整比较原则](../knowledge/STRONG_BASELINES.md)不构成新执行队列。
+
 ## 本地数据、环境与复算
 
 - 统一资产根为`/home/xiang/.cache/game-npc-research/`。`runs/`保存各E##原图、实际messages／schema／seed、原生事件、逐步状态、模型输出、manifest、启动／退出和失败；完整source与模型缓存另按manifest指针读取，不入Git。

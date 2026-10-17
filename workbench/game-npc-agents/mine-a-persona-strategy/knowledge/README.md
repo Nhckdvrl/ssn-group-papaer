@@ -6,9 +6,11 @@
 
 专属逐篇论文见[papers](papers)，通用系统与跨方向论文在[领域论文目录](../../knowledge/papers)；同一论文只保留一份。领域地图、测量、安全、经济、漂移等共通知识见[外层知识库](../../knowledge/README.md)。
 
+2026-10-18领域更新见[综合阅读](../../knowledge/FIELD_REVIEW_2026-10-18.md)和[强普通基线](../../knowledge/STRONG_BASELINES.md)。当前结果是否足够的判断位于[独立审查](../results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)，不混入文献事实。
+
 ## 文献与实现事实
 
-- [最近邻与整体定位](RELATED_WORK.md)：心理测量、叙事、角色/任务、内部干预及对应逐篇卡。
+- [最近邻与整体定位](RELATED_WORK.md)：先读经典角色控制、实体合作、强系统和玩家证据，再进入心理测量与内部机制。
 - [合作、持续目的与玩家变化](COOPERATION_AND_GOAL_POSITIONING.md)：CT-Bench、GenCoord、ContractSim、TradeCraft、原作者任务和真实日志。
 - [目标控制近邻补核](COOPERATION_AND_GOAL_POSITIONING.md#field-review-2026-10-17)：目标、手段、伙伴重规划与社会修订的已有工作。
 - [可玩系统与工业基线](PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)、[玩家价值证据](PLAYER_VALUE_EVIDENCE_2026-10-16.md)：工程能力与人类效果分别核对。

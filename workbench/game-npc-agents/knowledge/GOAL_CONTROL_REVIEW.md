@@ -1,6 +1,6 @@
 # 目标控制研究谱系：切口为什么重要，哪些认识已属于前人
 
-核查日：2026-10-13。本文是定向阅读的综合，不是“全部NPC文献已精读”。原文动机记为 DOCUMENTED；推断作者如何想到实验只记为 RECONSTRUCTED。阅读范围逐条列出，没有本地重现论文数字。
+更新：2026-10-18。保留13/17日定向阅读，补充经典控制、强模型与普通重规划比较；未将旧文献全部重新精读。原文动机记为 DOCUMENTED；推断作者如何想到实验只记为 RECONSTRUCTED。阅读范围逐条列出，没有本地重现论文数字。
 
 ## 1. LIGHT / How to Motivate Your Dragon：先有角色自己的动机
 
@@ -50,17 +50,19 @@ DOCUMENTED：在可控gridworld区分难度、等难变换、钥匙作为工具�
 
 来源：[Hypothetical Minds ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html)、[原文](https://arxiv.org/pdf/2407.07086)、[Bayesian Partner Modelling](https://arxiv.org/abs/2608.18490)。Hypothetical Minds沿用前轮已记录的正文/成本阅读，未重新运行。10月13日Bayesian论文仅摘要可读；10月17日已成功补核正文／附录指定部分，读取范围和对本项目的影响见下方领域补核，不再将当前范围写成只有摘要。
 
-前者通过提出/评价/修正伙伴策略假设在线适应；后者摘要直接提出“正确推断但执行旧技能”，以伙伴矛盾驱动选择性重规划。
+前者通过提出/评价/修正伙伴策略假设在线适应；后者正文和关键附录提出“正确推断但执行旧技能”，以伙伴矛盾驱动选择性重规划。
 
-**主张边界：** belief–action gap、事件触发replanning都已有明确owner。相关方法比较需要说明每步/事件触发的计划更新频率，不能只以不更新计划作为弱参照。不能把其云端默认配置当本地成本。
+**主张边界：** belief–action gap和事件触发replanning已有直接研究；相同支持下周期/事件/LLM触发可取得相近或个别更高奖励，主要代价是调用较多，不能只和不重规划比较。2026-10-18补核还确认互补gold是固定技能映射，不是逐状态最优动作标签；同骨干方法并非逐格超过全部LLM，详见[原卡§4补核](../../../library/themes/game-npc-social/INTERACTION_PAPER_CARDS_2026-10-03.md)。相关方法比较需要说明每步/事件触发的计划更新频率，不能只以不更新计划作为弱参照。不能把其云端默认配置当本地成本。
 
 ## 7. 经典游戏规划与真正的游戏制作需求
 
-来源：[Orkin GDC 2006](https://gdcvault.com/play/1013459/Three-States-and-a-Plan)、[GOAP十年开发者回顾](https://www.gdcvault.com/play/1022019/Goal-Oriented-Action-Planning-Ten)、[Ubisoft Teammates](https://news.ubisoft.com/en-us/article/3mWlITIuWuu0MoVuR6o8ps/ubisoft-reveals-teammates-an-ai-experiment-to-change-the-game)、[KRAFTON技术访谈](https://developer.nvidia.com/blog/how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace/)。读取会议讲述简介和厂商技术全文，不冒称看完受限演讲视频。
+本轮新增完整阅读ABL（2002）、Speaking with Your Sidekick（2005）、Orkin的18页GOAP工程文（2006）、CiF（2011）、Prom Week（2013）与Slice of Life（2025），Versu读37页作者技术稿的关键章；原文和精确范围见[统一记录](FIELD_REVIEW_2026-10-18.md#classical)，不冒称看完受限GDC视频。
 
-GOAP早已让人物选择达成目标的行动路线。Ubisoft强调作者边界与玩家对角色行动的影响；KRAFTON区分高层语言选择和快速行为树反应。它们共同支持“稳定目的、适应局势”的制作需求，却不证明某个LM必然有缺陷。
+ABL已经处理动作反馈、持续context、失败替代、玩家打断和跨阶段目标，joint behavior还协调承诺进入/成功/失败/暂停。GOAP已有代价、角色动作集合、失败后换路与为保命拒绝队伍命令。CiF/Versu中人物欲望、非对称关系、历史与接受/拒绝产生持久社会后果。Slice of Life把符号行为/后果与LLM表达结合，是当前有限社会玩法的合理强参照。
 
-**对照要求：** 符号规划器是必须认真考虑的强参照，不可故意只比聊天模型；高层结果和动作步骤应分开控制。商业实时小模型说明本地部署有现实动机，不提供可以免费继承的专有数据或产品效果。
+**真正值得继承的困难。** Versu §13.2明确指出新事件应压下某些活动、却保留相关活动，单一支配实践太粗；§13.1描述300多欲望跨场景调参困难。Prom Week发现内在理由合理不等于玩家能理解和改变，需要显露相关状态、理由与可干预选择。Orkin强调价值可以在管理已有行为组合复杂度，故组件有前史不否定整体贡献。
+
+新研究应比较开放提议如何进入有边界的技能/社会规则，变化后哪些目的与义务持续，以及是否减少逐例作者劳动并改善可理解性；仅加入目标表、优先级或普通重规划不足以独立论证。Ubisoft NEO/Teammates的第一方需求和PUBG的完整状态/记忆/反馈支持与此相连，但没有证明我们的特定模型机制存在。
 
 ## 8. 与近期角色/叙事研究的关系
 
@@ -70,7 +72,7 @@ KNUDGE、CDT、NCP、Dynamic Persona与最新NARRA-Gym仍需保留在认识中�
 
 ## 9. 伙伴分布、协作要求与叙事评价的参照
 
-**GAMMA（NeurIPS2024）。** [正式论文](https://proceedings.neurips.cc/paper_files/paper/2024/hash/6e9f99809b6df59e8fe5c9ffe269bf40-Abstract-Conference.html)关注训练伙伴分布无法覆盖真实玩家风格。这里的generative agent是生成伙伴政策，不是LLM。原阅读核了问题/方法及主要对照，未本地重训；伙伴数量不是目标，是否改善目标配对分布才是设计对象。模拟伙伴结果不能充当人类体验结论。
+**GAMMA（NeurIPS2024）。** [正式论文](https://proceedings.neurips.cc/paper_files/paper/2024/hash/6e9f99809b6df59e8fe5c9ffe269bf40-Abstract-Conference.html)关注训练伙伴分布无法覆盖真实玩家风格。这里的generative agent是生成伙伴政策，不是LLM。本轮完整读正文与关键A–G方法/统计、Tables3–4；80位真人Overcooked比较，但部分基线/布局不显著或方向相反，不能概括全面改善。没有本地重训；伙伴数量不是目标，覆盖真实玩家策略才是设计对象。[完整范围](FIELD_REVIEW_2026-10-18.md#cooperation)
 
 **Hypothetical Minds的成本与对照补充。** 原阅读另核正文§4.5、Appendix B.1及官方README，而非全部提示/后台分支。论文已有仅提示、模块化、假设评价与精炼对照，也有Llama-3-70B配置。1000-step RWS示例GPT-4约10美元/局，Llama3配置4卡，均为作者成本。不能把无训练当无成本；本地替换后需说明与原配方的差异。
 

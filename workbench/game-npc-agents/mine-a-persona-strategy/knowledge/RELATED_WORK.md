@@ -1,26 +1,31 @@
-# Persona、目标与原生行动：近邻定位
+# 人物、独立目的与真实合作：最近邻及整体定位
 
-本页是跨论文定位，单篇身份、正文/附录/代码读取范围优先看论文卡；实验进度和自有主张只在整体报告、实验卡与CLAIMS维护。相关工作用于继承强基线和形成整体增量，不要求每个组件无人研究，也不因有近邻就自动缩窄或关闭问题。
+更新：2026-10-18。先按NPC玩法与完整系统判断，再借心理测量或内部表示解释残余。文献重要性不由它是否支持现有叙事决定；有近邻不自动否定集成贡献，但不能凭一个实现差别宣称空白。自有实验与研究判断见[独立审查](../results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)，本页只维护来源和定位。
 
-## 已有认识与本项目要解释的关系
+## 应先读的直接谱系
 
-| 已有工作 | 已明确处理什么 | 对本研究的启发 |
+| 研究谱系 | 已经解释或实现什么 | 对本研究真正形成的要求 |
 |---|---|---|
-| [The Personality Illusion](papers/THE_PERSONALITY_ILLUSION_2026.md)、[Rethinking Psychometric](papers/RETHINKING_PSYCHOMETRIC_2026.md) | 自述/行为效度、具体意图粒度、同/跨会话及priming | 表达、意图与执行分测；不把不一致本身当新发现。 |
-| [Story Shapes the Agent](papers/STORY_SHAPES_AGENT_2026.md)、[Persona Vectors](papers/PERSONA_VECTORS_GAMES_2026.md) | 多阶段叙事先验/动作锚点、内部向量改变博弈策略 | 不能用“前人全部单步”或“首次steer策略”立论；要解释真实角色与世界条件。 |
-| [PCSP](papers/PCSP_2026.md)、[PANDA](../../knowledge/papers/PERSONA_DYNAMICS_ACL2025.md) | 人物条件化行动、训练读出与独立行为、人格与任务探索 | 真实行为差是起点；本地奖励/分类器不自动成为独立人格金标。 |
-| [Identity Overrides Incentives](papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md)、[Persona-Guided TOD](papers/PERSONA_GUIDED_TASK_DIALOGUE_2026.md)、[Price of Agreement](papers/PRICE_OF_AGREEMENT_2026.md) | 人物×收益、明确优先、角色适配与任务grounding | 把人设/效用冲突或普通优先提示换名不够；原生任务依赖和玩家后续动作需进入解释。 |
-| [DebtBench](papers/DEBTBENCH_ACL2026.md)、[MASCOT](../../knowledge/papers/MASCOT_EMNLP2026.md)、[SidConArena](papers/SIDCONARENA_2026.md)、[MMOAgent](../../knowledge/papers/MMOAGENT_KDD2025.md) | 谈判让步、社会贡献、真实多步经济与制度 | 协议、物品真正交付和本人后续目的不能互相替代。 |
-| [NegaAlign](papers/NEGAALIGN_2026.md)、[AgentIF](papers/AGENTIF_NEURIPS2025.md)、[Agent GPA](papers/AGENT_GPA_2026.md) | 任务与约束共同满足、条件触发、计划质量与遵循 | 原生阶段交叉用于解释角色行为，不冒领一般否定困难或计划/执行分解。NegaAlign本已同时要求任务完成，不能误说只看违禁。 |
-| [Principled Personas](papers/PRINCIPLED_PERSONAS_EMNLP2025.md)、[SimpleToM](papers/SIMPLETOM_ICLR2026.md)、[TriEx](papers/TRIEX_ACL2026.md)、[Trust/behavior](papers/TRUST_BELIEF_BEHAVIOR_2025.md) | 人格与任务效应、显式预测与应用、数值profile干预及rerun | 外部预测回答不是隐状态；相同信息和实际物理行动的干预才约束解释。 |
-| [PSALM](papers/PSALM_NAACL2025.md)、[AGWM](../../knowledge/papers/AGWM_2026.md)、[SayCan](papers/SAYCAN_2022.md) | 前提反馈、动作模型、目标有用性与可执行性 | 继承可靠动作支持，仍需解释NPC选择何种目的及何时采用路径。 |
-| [Dragon](../../knowledge/papers/HOW_TO_MOTIVATE_DRAGON_2021.md)、[KNUDGE](../../knowledge/papers/KNUDGE_2024.md)、[CDT](../../knowledge/papers/CDT_2026.md)、[NCP](../../knowledge/papers/NCP_2026.md) | 作者动机、专业RPG知识、情境人物逻辑、长期叙事约束 | 各有不同状态与评价对象；不能把authoring/narrator误称完整独立NPC引擎。 |
+| ABL、GOAP、CiF、Prom Week、Versu、Slice of Life | 目标/手段、执行反馈、中断与替代、私人意愿、社会拒绝和后果；也明确作者复杂度 | 不能将重规划/阶段切换本身写成贡献；可检验新语言提议、选择性修订、跨内容泛化或更低作者成本。[原文综合](../../knowledge/FIELD_REVIEW_2026-10-18.md#classical) |
+| LIGHT/Dragon、Generative Agents | 作者动机、对话与行为；过度合作、口头有意但未赴约早有观察 | 在双方各有目标、独立规则后果和真实条件变化中提出更强解释，而非再次发现言行不一。[角色证据](../../knowledge/FIELD_REVIEW_2026-10-18.md#4-角色行为与社会模拟从文本像人到可核后果) |
+| GenCoord、CT-Bench、ContractSim、TradeCraft | 私有信息/利益、条件承诺、真实交接/执行、原任务与履约分离、制度与自主选择 | 最近的整体近邻，须吸收强普通成功与提示/制度修复；不能逐篇列一个缺项就拼成原创性。[完整定位](COOPERATION_AND_GOAL_POSITIONING.md) |
+| GAMMA、CollabBench、BayesBeliefAgent | 伙伴分布、人类补偿、强模型合作、belief到行动及选择性重规划 | 共享团队任务和NPC私有职责不同；普通重规划与强模型必须充分工作。[合作综合](../../knowledge/FIELD_REVIEW_2026-10-18.md#cooperation) |
+| Microsoft CQC、Ubisoft NEO/Teammates、PUBG Ally | 角色边界、开放玩家、条件奖励、动作反馈与真实使用 | 已有正常记忆/工具/技能和商业模型参考；原型需求、离线指标和真人结果分开。[应用核查](PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md) |
+| CHI虚假信息感知、开放对话研究、SKT | 角色动机和可理解后果、交互修复成本、安全与合法推进 | 不将更服从、零泄露、交付率或更长对话当玩家价值。[玩家证据](PLAYER_VALUE_EVIDENCE_2026-10-16.md) |
 
-训练、投影/读出、组合控制的具体已有方法仍保留在逐篇卡：CIRL、BC-PMI、DAIL、PPG、PAMDP、SIPO、Poly-PPO等。它们已使用的对比学习、坐标对齐或辅助保护不是禁用工具；本项目要用整体证据说明角色取舍、执行条件与真实后果形成了什么新理解或改进。合作、持续目的与玩家改约的强邻近另见[合作定位](COOPERATION_AND_GOAL_POSITIONING.md)。
+这些工作已经覆盖当前宽泛叙事的大块内容。可研究的剩余关系是：**当合作前提或实现办法变化时，原人物目的、职责和有效义务如何选择性持续，强普通系统在哪些条件下仍处理不好，并因此限制了什么有意义的玩家行动？** 这是待检验的问题，不是已确认的文献空白或新机制。
+
+## 解释残余时再进入的心理与机制近邻
+
+- 自述与行为效度：[The Personality Illusion](papers/THE_PERSONALITY_ILLUSION_2026.md)、[Rethinking Psychometric](papers/RETHINKING_PSYCHOMETRIC_2026.md)、[PCSP](papers/PCSP_2026.md)。真实动作是必要证据，但一个内部或外部persona分类器都不是完整角色金标。
+- 叙事与人物策略：[Story Shapes the Agent](papers/STORY_SHAPES_AGENT_2026.md)、[Persona Vectors](papers/PERSONA_VECTORS_GAMES_2026.md)、[Identity Overrides Incentives](papers/IDENTITY_OVERRIDES_INCENTIVES_2026.md)、[Persona-Guided TOD](papers/PERSONA_GUIDED_TASK_DIALOGUE_2026.md)。情境适配、任务优先和策略steering均有前史。
+- 约束、计划与实际执行：[NegaAlign](papers/NEGAALIGN_2026.md)、[AgentIF](papers/AGENTIF_NEURIPS2025.md)、[Agent GPA](papers/AGENT_GPA_2026.md)、[PSALM](papers/PSALM_NAACL2025.md)、[SayCan](papers/SAYCAN_2022.md)。保留任务完成、可执行性和普通反馈控制，不先把残差叫人格失效。
+- 预测与行动的关系：[SimpleToM](papers/SIMPLETOM_ICLR2026.md)、[TriEx](papers/TRIEX_ACL2026.md)、[Trust/behavior](papers/TRUST_BELIEF_BEHAVIOR_2025.md)。问答/自述和行动时内部信念不是同一证据。
+- 训练与表示方法CIRL、BC-PMI、DAIL、PPG、PAMDP、SIPO、Poly-PPO等继续保留在逐篇卡；方法可复用，但选择应由强基线下剩余问题驱动。
 
 ## 机制类原文的独有核读记录
 
-以下五篇尚无独立单篇卡，保留完整原文范围和asset hash；这是文献事实，不是本项目已识别的内部机制。
+以下是此前五篇原文的唯一核读记录，本轮未逐篇重新阅读。保留原文范围和asset hash，不把旧文中的“本轮”误读为2026-10-18；这些不是本项目已识别的内部机制。
 
 ## Tracing the Persona Circuit｜ICML 2026
 

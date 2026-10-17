@@ -1,93 +1,68 @@
 # 游戏 NPC Agent 领域地图
 
-本页保留**重要的问题与科学结构**，不是按易跑程度给标题、也不是“NPC+安全/经济”的机械组合。依据：游戏 AI 原生研究（EA/AIIDE/CHI/KDD）、角色/NLP（ACL/COLING）、agent 机制与安全（NeurIPS/ICLR/ICML）、游戏界技术资料，以及跨领域的社会计算。
+更新：2026-10-18。本文按**玩家能做什么、作者需要控制什么、系统怎样产生后果**组织领域，不以矿区A现成实验、模型大小或易跑程度界定研究价值。综述用于建立覆盖；具体能力判断回到论文正文、关键附录、原生系统与玩家研究。逐篇阅读范围见[本轮综合阅读](FIELD_REVIEW_2026-10-18.md)，已有来源的较早范围仍由单篇卡保留。
 
-## 1. 游戏 NPC 的构成，不预设底座
-真实游戏的 NPC 可能是：
-1. **剧情/知识角色**：知道哪些事实、何时可说、如何合理撒谎/泄露线索，玩家如何影响剧情；
-2. **交互角色/居民**：目标、记忆、情绪、关系、社会规范，会聊天也会做事；
-3. **对战 NPC/同伴**：快速行动、对玩家局势反应、设计者控制、适应和训练；
-4. **社会/经济主体**：生产、消费、交易、储存货币/道具、组织声誉，形成群体与市场；
-5. **多模态/具身 NPC**：视觉感知/语言/动作/声音耦合，实时反馈。
+## 1. 先区分五种研究对象
 
-它们都可以是游戏 NPC，但需要不同效度标准。不能将“玩家自己操控的通关模型”当成所有 NPC 的定义；只有拿其 policy/harness 方法迁移后，在 NPC 游戏机制中验证才获得直接意义。
-
-## 2. 横向科学问题（领域分类，不对应当前矿区编号）
-| 板块 | 社区关心的真实压力 | 例示近邻（不是新 idea） | 解释/实验可能聚焦什么 |
+| 对象 | 主要目标与真实压力 | 代表谱系 | 不能自动推出什么 |
 |---|---|---|---|
-| 设计师行为控制与学习 | NPC 的可塑性、设计反馈、动作可用、补丁更新 | EA 2026、MultiGAIL、Direct Behavior Specification、PCSP | 行为监督/训练损失真正怎样改变执行轨迹；行为控制的可预测边界 |
-| Agent 系统与执行 | 语言、记忆、规划到动作与游戏世界因果闭环 | LIGHT/Dragon、KNUDGE、KRAFTON、ccb sandbox | 世界真值谁持有、语义输入怎样安全变成合法事件 |
-| 社会交互与伙伴 | 长期互惠、误解、合作、对人/其他NPC适应 | Generative Agents、GAMMA、SOTOPIA、CollabBench | 信息不对称、策略互动的自然失败、伙伴分布与真实任务效用 |
-| 身份/人格/关系长期动态 | 稳定身份和合法人物成长、情绪波动、记忆更新 | ACL2026 Dynamic Persona、RoleBreak、PCSP | 词面相似≠人格；动作/关系/历史怎样证明 drift 或 adaptation |
-| **安全、被攻击与防御** | 玩家/NPC 发起诱导、秘密越权泄露、行动授权、记忆污染、规则篡改 | ProvSec2025 Secret, NeurIPS2024 AgentDojo, ICLR2025 ASB, AIIDE2026 detective | 控制权边界、长程攻击传播、既安全又可玩 |
-| **MMO 经济与多主体风险** | 库存/钱/交换/价值/市场，局部自利行为如何放大成系统脆弱性 | KDD2025 MMO economy, AIIDE2008 EVE, AgentBazaar, TruthMarketTwin | 游戏制度与市场真实性、欺诈/套利/协作/坍塌的机制 |
-| 剧情、欺骗与真实玩家 | 允许的故事欺骗 vs LLM 无意幻觉；信息揭示节奏和 agency | CHI2024 Lies, AIIDE2026 SKT, NCP | 哪些“错误陈述”有玩法意义；限制多强才破坏玩家自由 |
-| 实时多模态与扩展 | 语音/视频行动、低延迟、几百个NPC的资源成本 | ReactiveGWM, WorldMind, PUBG Ally, EA | 模型+游戏引擎分工、NPC策略时序/吞吐与用户体验 |
+| 扮演玩家的通关 agent | 学会游戏、探索、长任务、感知与工具执行 | Voyager、JARVIS-1、Cradle | 赢分不证明角色合适、作者可控或玩家喜欢 |
+| 游戏内角色与居民 | 让人物动机、知识、关系影响可理解的选择 | LIGHT/Dragon、Generative Agents、PCSP、PersonaArena | 台词或同源judge认为像角色，不证明规则世界中的行为与关系后果 |
+| 与人类合作的队友 | 减少协调负担、适应不同伙伴、及时行动 | GAMMA、CoELA/ProAgent、CollabBench、PUBG Ally | 共享团队目标不等于NPC与玩家有独立利益和义务 |
+| 社会与经济主体 | 自利目标、交换、契约、信誉、群体制度 | CiF/Versu、MMOAgent、CT-Bench、ContractSim、TradeCraft | 一个交易成功或有合同，不证明长期NPC社会与玩法有效 |
+| 作者工具、叙事与玩家体验 | 扩大可创作内容，保持规则、信息节奏和玩家能动性 | ABL/Façade、KNUDGE、NCP、SKT、CHI玩家研究 | 原型演示、生成量或违规率降低，不等于更好的游戏体验 |
 
-## 3. 这些关系比“8个标题”更重要
-- **安全 ↔ 剧情**：一个侦探游戏里，玩家用对话诱使嫌疑人逐渐吐露线索可能是核心玩法；越过作者设定的未解锁事实、伪造新事件或系统规则，才可能是违规。“不泄露任何秘密”不是自然统一安全目标。
-- **漂移 ↔ 学习**：一个受玩家经历影响变得信任/冷漠的角色可能更真实；无依据跟随对方口吻、忘记创作身份、把NPC话语当系统命令才可能是 drift。需要人工/作者目标，而不是一个角色分类器。
-- **经济 ↔ 攻防**：NPC 可能在规则内议价、竞标、撒谎、结盟；只有确定该世界的法律/交易规则、谁能控制身份/库存/货币，才能界定 exploit、Sybil、异常财富流和操纵。价格变动本身不是异常。
-- **长期互动 ↔ 传播**：受攻击 NPC 的错误可能通过它讲给另一个 NPC、登记入日志、被写进长期记忆等步骤扩散；一般 AgentDojo 研究不自动证明这种游戏社会传播。
-- **大模型能力 ↔ 工程真实**：游戏自身状态、任务类型、LLM输入/行动机会、模拟器和 judge 直接决定“能力”。模型大不等于符合角色，模型会答不等于动作真的发生。
-- **可玩性 ↔ 安全**：脚本完全封闭可能减少违规，却剥夺开放剧情的有趣性；系统级安全须同时测合法剧情/游戏效用与误阻止率。没有玩家研究不宣称提升沉浸感。
+这些对象交叉而不互相替代。Gallotta等综述把LLM在游戏中的玩家、NPC、助手、主持、机制和设计等角色分开；Hu等游戏agent综述帮助组织感知、推理、记忆、行动与评价；AI-Native Games综述进一步追问运行时生成怎样进入可玩的核心循环。三个视角需结合，不能只看“LLM agents”榜单。[综述原文与范围](FIELD_REVIEW_2026-10-18.md#surveys)
 
-## 4. 四种可能的论文形态（不提前选择）
-- **理解/机制：** 澄清一个自然的 NPC 行为/攻击/经济现象真正由哪个条件造成，以及何时失效；强对照/因果干预比画相关性更重要。
-- **方法/训练：** 针对现实失败提出简单但可验证、成本公平、跨 NPC 类型有意义的修复/训练方法。
-- **新测量/benchmark：** 只有已有测量不能反映某个重要游戏后果，且数据自然、评分真值经检验，才有贡献；不能靠术语新来证明意义。
-- **系统/交互研究：** 开放的玩家/NPC/游戏引擎闭环在可执行规则、时延和体验下有稳定可复现实证；系统工程不能只当新模块堆砌。
+## 2. 领域持续关心的核心问题
 
-## 5. 观察哪个层面的证据
-对话合法性、作者承诺、NPC局部知识、角色行动、世界事件、奖励/资产账本、社会扩散路径、玩家选择感、延迟/成本，应分别标出“规则可复算/人工标注/LLM judge/推断”。**不要用一个总分把这些互相替代。**
+| 问题 | 为什么对游戏重要 | 已有能力与强参照 | 尚须具体证明的空间 |
+|---|---|---|---|
+| 作者控制与可编辑性 | 改一个角色或规则后，其他行为应仍可预测；逐场景脚本成本不能无界增长 | GOAP、ABL、CiF、Versu；Direct Behavior Specification；EA设计迭代；PCSP | 开放表达或新情境下，怎样减少作者逐例修补，同时保持角色边界与已有内容 |
+| 语言到真实行动 | 玩家根据NPC承诺选择下一步，空口完成会使策略失效 | LIGHT、Voyager/JARVIS技能与反馈、PUBG的状态刷新/BT执行 | 正确信息、合理预算、可靠技能齐全后，还有哪些可复现的选择或协作错误 |
+| 与玩家协商及适应 | 玩家可提出、拒绝、贡献资源、改变计划；NPC可保留自己利益 | 经典多人行为协调、Microsoft角色任务、GenCoord、CT-Bench、ContractSim、BayesBeliefAgent | 新提议怎样进入作者定义的规则；变故后哪些义务仍有效，哪些手段可换，何时应拒绝或重谈 |
+| 角色与关系持续变化 | 关系可被经历改变，而角色不应无缘由换人格 | Generative Agents、动态persona、PCSP、CoSER、PersonaArena | 可追溯事件引起的合理成长与无依据偏移怎样区分；变化能否预测行动和玩家理解 |
+| 信息权限与剧情节奏 | 玩家应能合法调查、说服和发现秘密；不能凭措辞取得系统权限 | SKT、角色知识隔离、AgentDojo/ASB邻接方法 | 减少越权时是否仍保留正常调查、完成与开放表达，错误是否产生实际后果 |
+| 群体与游戏经济 | 单个交易之外还有生产、库存、价格、信誉和制度 | AIIDE2008交易NPC、KDD2025 MMOAgent、Agent Bazaar邻接市场 | 个体行为、交易机制、外部扰动怎样分别引起系统效应；真实玩家数据与可复现性如何支撑外推 |
+| 实时性与规模 | 响应太迟或控制循环太贵会损害玩法 | BT/GOAP与低频模型分工、EA、PUBG Ally | 全系统端到端延迟和品质如何权衡；不能以渲染帧预算否定所有高层LLM |
+| 评价与玩家价值 | 好队友不等于赢分机器，好角色不等于最听话 | GAMMA真人合作、CHI虚假信息感知、开放NPC对话研究、PUBG A/B | 角色选择是否增加有意义的策略、减少被迫修复、保持可理解性与重玩价值 |
 
-## 6. 来源
-[AI-Native Games Survey 2026](https://arxiv.org/html/2607.00527v2) 综述53个可玩作品，讨论 rule-bounded generation、multi-agent worlds 与安全；它区分 AI-native/augmented，但本工作台**不限制只研究 AI-native 产品**。
-直接经济：[KDD2025 MMO Agent](https://arxiv.org/html/2506.04699v1)；直接安全：[ProvSec2025 NPC Secrets](https://arxiv.org/html/2508.19288v1)；游戏交互人类证据：[CHI2024 NPC deception](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)。
-其他严格身份见 [SOURCES_AND_STATUS](DOMAIN_ATLAS.md#source-status)。
+原文与证据限定分别在[目标控制](GOAL_CONTROL_REVIEW.md)、[原生系统](NATIVE_GAME_NPC_FRONTIER.md)、[合作定位](../mine-a-persona-strategy/knowledge/COOPERATION_AND_GOAL_POSITIONING.md)、[玩家证据](../mine-a-persona-strategy/knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md)。安全、经济、人格仍独立保留，[NPC安全](NPC_SECURITY.md)、[游戏经济](GAME_ECONOMY.md)、[人格变化](PERSONA_DRIFT.md)不会因当前主线而从领域地图消失。
 
-## 7. 怎样从领域问题进入具体研究
+## 3. 必须认真吸收的成功证据
 
-领域重要性由三类证据共同支持：已发表工作说明同行持续研究什么，开发者第一方材料说明真实制作压力，公开代码与数据说明能检验什么。商业演示不证明方法有效，会议身份不证明我们的变体新颖，能本地跑也不证明问题重要。
+**普通规划、持续目标和失败后换路有悠久前史。** GOAP、ABL和Versu已处理目标、前提、执行反馈、中断、替代、团队承诺和社会选择。它们仍面临内容制作与规则交互复杂度，故已有组件不否定新系统贡献；贡献需落在此前难处理的组合、泛化、作者成本或玩家效果，不能只说“首次让NPC重规划”。[经典原文](FIELD_REVIEW_2026-10-18.md#classical)
 
-作者控制与玩家自由、稳定身份与合理成长、个体利益与群体后果，都是需要在具体游戏规则里解释的关系。现成接口、角色标签或两种指标能对照，不能单独成为选题理由。增量可以是加深整体认识或提出有用方法，不要求每个组件都从未有人用过。
+**强LLM与普通系统已解决相当范围的协作。** GenCoord v3的同后端对话加结构化提交为766/768次任务成功，DSL为768/768；任务有私有信息和实体交接，但静态双边结构、可靠技能及有限协议很强。CollabBench中GPT-5.2配合现有合作框架明显强于未训练小模型。这样的成功必须进入基线判断，而不是只引用失败案例。[强协作比较](FIELD_REVIEW_2026-10-18.md#cooperation)
 
-对每个候选，连接四层：领域仍重要的问题 → 可信的自然线索 → 能区分解释的主张与研究动作 → 若成立会改变哪种理解、训练、制作或评价。定位用于辨认已有贡献和调整增量，不自动关闭方向。当前状态与实际研究取舍见整体报告；本图不保留旧的主轴、投资顺序或执行队列。
+**强模型也不是自动解决一切。** ContractSim用高推理强模型、状态与完整对话上下文仍观察到违约；但收益最大化的默认规范和明确“不单边违约”指导都会影响结果。CT-Bench的合同还改变了执行制度和激励；不能把制度有效直接归因于自主决策能力提高。上述结果既反对“商业模型必然解决”，也不证明矿区A在同等支持下仍有剩余难题。[合作定位](../mine-a-persona-strategy/knowledge/COOPERATION_AND_GOAL_POSITIONING.md)
+
+**商业系统比聊天原型更完整。** PUBG Ally保留待办与承诺、刷新状态、读取工具反馈、按事件重规划并由BT处理快速行动；论文还给出强模型质量参照。它是共享命运的游戏队友，不能直接替代独立利益NPC的验证。[应用原文核查](../mine-a-persona-strategy/knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)
+
+## 4. 重要性、未解决性和贡献是三个问题
+
+1. **重要性：** 解决后，玩家新增哪种可用策略，或作者减少哪类制作、维护与调试困难？需要游戏机制或直接需求证据。
+2. **未解决性：** 强模型、完整普通系统、合理作者规范与强脚本/规划参照下，缺口是否仍在？本地模型有失败只回答了局部能力。
+3. **贡献：** 能否产生跨情境预测、纠正已有评价，或给出在相同信息/执行支持下有效的新方法？“不同于某论文一个字段”不是充分理由。
+
+三个问题都不能由投入实验的数量回答。方法可以复用成熟组件；理解型成果也可以有价值。反过来，领域重要不保证当前实例有论文贡献，模型分数提升也不保证有玩法价值。
+
+## 5. 评价应保留的区别
+
+- 世界真值、NPC可见信息、玩家声称与NPC自己的回忆，来源不同。
+- 作者的最终目的、要求某人亲自完成的职责、某条实现路线与已接受的社会义务，规范不同。
+- 说同意、形成有效协议、完成前提、兑现约定、双方各自获益，事件不同。
+- 撤销请求、目的已被代办、旧方案真正失效、伙伴违约，后续正确行动也不同。
+- 独立地图/任务结构、同图角色对、自然前史、重复分支/seed、真人被试，统计单位不同。
+- 任务成功、拒绝的合理性、玩家付出的额外劳动、角色可理解性、乐趣与留存，证据不同。
+
+具体规范见[MEASUREMENT](MEASUREMENT.md)。对信息不足或规范含糊的实例保留不可判定，不在看到模型结果后补写“真正目标”。
 
 <a id="source-status"></a>
-## 8. 来源身份与阅读范围（2026-10-14登记）
+## 6. 来源身份、阅读范围与维护原则
 
-此表保留相应日期的来源登记；后续单篇论文卡覆盖的身份/阅读更新优先于本表，不作为当前实验状态页。
+本轮采用[逐篇阅读登记](FIELD_REVIEW_2026-10-18.md#reading-register)：记录原始版本、正文/附录实际范围、代码是否取得、支持什么及不能外推什么。论文全文阅读不等于代码复现；搜索/摘要只用于发现，不进入关键实证。官方会场、作者自报接收、预印本分别标注。
 
-**来源分类与阅读深度两维分别记录。** P0=出处/题名；P1=摘要；P2=正文相关段或代码说明；P3=正文+关键附录细读并核重要实现；P4=本地复现/重算。原始整理时“所有来源非P4／所有训练0”已过期：PCSP、agent-sandbox、LIGHT和MeltingPot已有本地执行，不能据此称复现所有论文主表。最新见 [进度记录](../mine-a-persona-strategy/PROJECT_PROGRESS_REPORT_2026-10-16.md)。安全／经济邻接工作仍按下表范围解释。
+旧卡不是本轮全部重读。安全/经济的AgentDojo、ASB、Agent Bazaar、TruthMarketTwin等继续按各主题页原有摘要/局部源码范围解释；MMOAgent完整规则/玩家数据可用性、ProvSec原30输入、MineAmongUs端到端运行等欠账没有自动消失。NeurIPS下载标题目录不能确认具体track或全文内容。
 
-| 来源（直接链接） | 论文身份/与游戏 NPC 关联 | 本轮阅读深度与证据边界 |
-|---|---|---|
-| [Tricking LLM-Based NPCs into Spilling Secrets](https://arxiv.org/html/2508.19288v1) | ProvSec 2025；**直接游戏 NPC 安全** | P2：ar5iv/HTML方法/30样本/判分/结论；非全套统计复算 |
-| [Empowering MMO Economic Simulation](https://arxiv.org/html/2506.04699v1) | **KDD 2025 正式论文，直接游戏世界经济** | P2+：正文方法、5组实验、结论、附录结构；当时未下载；后续有限Bargain源码范围见MMOAgent论文卡 |
-| [RoleBreak](https://aclanthology.org/2025.coling-main.494/) | COLING2025 main；角色攻击，**相邻非原生游戏执行** | P1 摘要/方法描述，未核关键脚本 |
-| [Dynamic Persona Coherence](https://aclanthology.org/2026.acl-long.1336/) | ACL2026 main；动态人格，偏角色语言 | 正文方法／主表／消融及关键附录已读；匿名代码入口返回401，代码未审 |
-| [Lies, Deceit, and Hallucinations](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/) | CHI2024；**真实游戏 NPC 玩家感知** | P1 作者摘要，玩家研究29人；未细读全部访谈编码 |
-| [SKT Detective NPC](https://arxiv.org/abs/2609.23043) | AIIDE2026（作者机构列已接受；当时论文待会期）；**直接游戏信息控制** | P1 原作者摘要，人类研究/零提前披露按作者报告 |
-| [AgentDojo](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html) | NeurIPS2024 Datasets & Benchmarks；**跨领域agent安全方法** | P1 官方摘要+代码repo入口 |
-| [Agent Security Bench](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5750f91d8fb9d5c02bd8ad2c3b44456b-Abstract-Conference.html) | ICLR2025 main；**agent安全** | P1 官方摘要+代码repo入口 |
-| [Agent Bazaar](https://sethkarten.ai/papers/agent-bazaar.html) / [GitHub](https://github.com/sethkarten/AI-Bazaar) | 2026作者页写 COLM（未独立确认官方目录）；**非游戏多Agent市场攻防** | P2 repo README；本地 vLLM/Ollama 后端明确存在；未运行 |
-| [TruthMarketTwin](https://arxiv.org/abs/2605.10059) | 2026 arXiv；**非游戏信息不对称电商** | P1 摘要 |
-| [Formal Mechanisms for Market Stability](https://arxiv.org/abs/2607.08652) | 2026 arXiv；**非游戏agent市场对抗** | P1 摘要 |
-| [Lies We Can See](https://github.com/JunseoKim0103/Lies-We-Can-See) | 2026 arXiv；官方仓库明确 ECCV/COLM **workshop**，MineAmongUs可玩实体行动 | P2 README/code topology；默认示例用付费API且8-agent Docker，每容器有并发冲突 |
-| [PCSP](https://github.com/yoosunghong/pcsp) | 2026 arXiv；原生life-sim NPC行为训练 | 训练／梯度／split／独立行为评价源码审计与完整预算训练；不冒称所有表格完全复现 |
-| [EA Augmenting Game AI with Deep RL](https://arxiv.org/html/2606.20210v1) | 2026游戏/工业研究；**原生FC25/BF6 NPC控制** | 前轮正文 F（作者数据），当前未额外源代码核对 |
-| [AI-Native Games: Survey and Roadmap](https://arxiv.org/html/2607.00527v2) | 2026 arXiv **survey，不冒称录用**；全游戏系统 | P2+ HTML正文II–VI (53可玩样本、游戏规则/多角色/安全/成本) |
-| [Intelligent Trading Agents for MMO Economies](https://ojs.aaai.org/index.php/AIIDE/article/view/18680) | AIIDE2008；**原生经济NPC古典先驱** | P1 官方摘要/EVE经济任务 |
-| [ccb/agent-sandbox](https://github.com/ccb/agent-sandbox) | 2026 UPenn工程平台，非顶会已接收方法 | 原生parser／retry／Reflect／计划／对话／world审计，本地ActionCastle和三角色1200帧闭环、独立回放均已执行 |
-| [AgentSociety 2](https://github.com/tsinghua-fib-lab/agentsociety) | 2026社会模拟框架，非游戏NPC直接系统 | P2 repo README；默认 API 服务，v2 源码要求进一步审计 |
-| [Gigax NPC](https://github.com/GigaxGames/gigax) | 游戏NPC生成/本地GGUF资产，不是正式强论文 | P2 repo README，本地模型入口；Shiomi使用它作单轮对话 |
-| [NeurIPS 2026 Downloads](https://neurips.cc/Downloads/2026) | 官方题目合集，可能混入 position/workshop/不同 track | P0 仅用于发现；**绝不以题目存在确认main接收或全文深读** |
-
-### 来源核查带来的认识修正
-1. NPC**直接**安全并非空白：ProvSec2025已在本地模型单NPC秘密任务测攻击，较小实验且标注有构念疑问；“攻击NPC”作为标签本身不能形成 novelty。
-2. 游戏**直接**经济已有KDD2025，真实结构包含资源、拍卖、P2P、货币、升级和规划；且 AIIDE2008已经讨论NPC交易和抗剥削。非游戏 AgentBazaar 又已系统研究 Sybil/价格危机，不能称“首次多Agent交易被攻击”。
-3. “长期人格漂移”已有COLING2025与ACL2026角色研究；要找到 game-specific 的新科学认识，需在真实角色经历/状态、允许剧情变迁、玩家行为后果上辨明现有理解边界，而非更长对话分类器。
-
-### 尚未完成的阅读与复现
-KDD完整环境/玩家数据许可及可运行性未核（有限Bargain源码核读不等于完整复现）；ProvSec原30条数据与更多角色未确认；AIIDE侦探完整方法与数据未查；mineamongus实际Docker与本地替换未运行。NeurIPS2026身份仍须逐篇核验，不能把题名索引当全文已读。安全／经济攻防实测仍0；矿区A训练与原生行动实测已有结果，分别记录。
+新增来源先找现有单篇卡或规范段落；同一论文保留一个主要事实记录，其他页只做综合引用。过时阅读标签直接改正，互相矛盾的数字标明，不用不断追加结论掩盖旧内容。原始实验资料与研究状态由矿区目录管理，本页不产生运行队列。

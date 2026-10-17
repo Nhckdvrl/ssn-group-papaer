@@ -51,6 +51,12 @@
 
 2026-10-17 Game NPC领域复核补充：重新核[§4–5／Tables1–4、App8.4–9.4及10.1–10.2](https://arxiv.org/html/2608.18490v1)，未运行作者／baseline代码，未新核其余Appendix11结果或接收身份。Table3中断对照与Table4周期／事件／LLM重规划控制说明，不能把正确信息仅入prompt当唯一强基线；部分一般重规划奖励相近、调用更多，Ring G3等仍有反向，不据此写统一收益优势。App10.1明确团队共同得分、伙伴不沟通；它没有直接评价有自己职责／有效社会承诺的NPC怎样处理玩家提出的替代合作。作为对I04的定位，角色目的、承诺与实际贡献的整体关系仍可研究；普通事件再规划本身不重新申领为方法或机制。
 
+### 2026-10-18 BayesBeliefAgent结果与测量补核
+
+本轮重读2608.18490v1的关键方法、Tables1–4、8–11和App11.6。互补gold是按配方图事先编写的**固定技能/角色映射表**，不依赖布局、时刻，不是多位标注者对逐步情境最优性的金标；主文对gap分母也有“全部决策”与“正确估计条件内”两种描述，精确复现应回实现，不把它直接搬作新构念。
+
+普通周期/事件/LLM触发可达相近或个别更高奖励，本文优势主要包括较少replans。Table1标题的“超过所有LLM”不能逐格成立：Open G2里GPT-4o版Full337低于ProAgent388、Hypothetical Minds369；GPT-5.2版395才略高。Table3的Ring G2 Full231低于No replan264，Ring G3无belief607高于Full506。App11.5同架构换GPT-5.2的六格中三升三降，不能讲越大越好或完全与模型无关。总体收益与限定机制结果可保留，统一优势措辞应收紧。公开运行代码本轮未取得，无本地复现。
+
 ## 5. Navigating Rifts in Human–LLM Grounding — ACL 2025 main（补充精读）
 
 - [会议页](https://aclanthology.org/2025.acl-long.1016/)、[全文](https://arxiv.org/html/2503.13975v1)、[代码](https://github.com/microsoft/rifts)。精读 taxonomy、§4–6、limitations、forecaster/标注附录。

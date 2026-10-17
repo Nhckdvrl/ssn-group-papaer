@@ -1,6 +1,6 @@
 # 深读：游戏 NPC 的攻击面、信任边界与可玩性安全
 
-**安全是本领域的独立科学分支。** 本页只有本地离线/合法模拟研究对象；不包含针对线上游戏、真实玩家资产、私人账号或未授权商业平台的攻击操作。阅读日期2026-10-14。
+**安全是本领域的独立科学分支。** 本页只有本地离线/合法模拟研究对象；不包含针对线上游戏、真实玩家资产、私人账号或未授权商业平台的攻击操作。原阅读2026-10-14；2026-10-18补核SKT全文，其他来源按原范围。
 
 ## 1. ProvSec2025：Tricking LLM-Based NPCs into Spilling Secrets（实际原文方法/结果已读）
 原文 https://arxiv.org/html/2508.19288v1 （ProvSec 2025 论文，Hiroshima University）。
@@ -27,7 +27,7 @@
 - [ACL2026 Dynamic Persona Coherence main](https://aclanthology.org/2026.acl-long.1336/) 【本轮摘要】：identity stability 与 adaptive psychological state 已区分，并有自动修正；不能把静态persona不足/加入状态层当创新。
 - [AgentDojo, NeurIPS2024 D&B](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html) 【摘要+官方代码入口】：97 agent任务/629例安全测试，动态攻防、强调 untrusted tool output；不是NPC直接验证。
 - [Agent Security Bench, ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5750f91d8fb9d5c02bd8ad2c3b44456b-Abstract-Conference.html) 【摘要+代码入口】：包含 prompt/memory/backdoor 与 utility–security 衡量。游戏设计师权限不同，但“记忆污染/工具越权”不新。
-- [Structured Knowledge Trees, AIIDE2026](https://arxiv.org/abs/2609.23043) 【作者接受信息/摘要】：侦探游戏中用知识树控制角色信息与揭示节奏，报告降低错误并防提前泄露，同时影响自然交互。已占结构化 disclosure control，并非空白。
+- [Structured Knowledge Trees](https://arxiv.org/abs/2609.23043) 【2026-10-18完整9页；作者称AIIDE2026接收，终版未核】：33人组内比较，关键幻觉17.80%→6.27%，9项校正后主观指标均不显著；0提前招供也对应20分钟内0最终招供。知识树、三agent、UI与故事同时变化，不能归因单模块。结构化disclosure已有直接研究，必须同时检查合法调查与完成。[完整玩家核查](../mine-a-persona-strategy/knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md#42-skt侦探npc降低错误时也要看推进是否被阻断)
 - [Lies We Can See, 2026 arXiv + workshops](https://github.com/JunseoKim0103/Lies-We-Can-See) 【repo README】：Minecraft MineAmongUs 中2 imposter/6 crewmates 的**游戏内允许的欺骗行为**，用言语和非言语行动分析策略；不是“欺骗=恶意攻击”的证据。其2026接受的是 ECCV/COLM **workshop**，不要冒称主会。
 
 ## 4. 好实验的必要比较，而非写死 AttackBench
@@ -41,4 +41,4 @@
 ## 5. 真正值得追的认识，而非已经新颖的标题
 如何让**玩家能做玩法中被许可的诱导**，却不能仅凭自然语言获得设计者/世界状态的权限？对话、记忆、交易和NPC传播之间的信任边界哪一部分造成真实损失？是否有某些最简单的、可证明的世界事件与权限设计，优于追加复杂模型拒绝训练？这些是开放问题，不是预先断定现有研究没答案。
 
-原材料阅读欠账：ProvSec30条输入/人工判分数据、SKT完整方法与公开实现，以及各攻击源的权限/正常玩家正控制仍须按具体来源核实；这不是已启动的安全实验。跨领域来源表给出当时实际读取等级，不把摘要或README扩写成实证。
+原材料阅读欠账：ProvSec30条输入/人工判分数据、SKT公开实现与原始数据（方法/表格本轮已完整核读），以及各攻击源的权限/正常玩家正控制仍须按具体来源核实；这不是已启动的安全实验。跨领域来源表给出当时实际读取等级，不把摘要或README扩写成实证。
