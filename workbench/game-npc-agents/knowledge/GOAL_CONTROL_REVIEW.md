@@ -48,7 +48,7 @@ DOCUMENTED：在可控gridworld区分难度、等难变换、钥匙作为工具�
 
 ## 6. Hypothetical Minds 与 Bayesian Partner Modelling
 
-来源：[Hypothetical Minds ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html)、[原文](https://arxiv.org/pdf/2407.07086)、[Bayesian Partner Modelling](https://arxiv.org/abs/2608.18490)。Hypothetical Minds沿用前轮已记录的正文/成本阅读；本轮不虚称重新运行。Bayesian论文本轮摘要可读，HTML和PDF获取失败，细节以历史笔记为线索而非重新精读完成。
+来源：[Hypothetical Minds ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html)、[原文](https://arxiv.org/pdf/2407.07086)、[Bayesian Partner Modelling](https://arxiv.org/abs/2608.18490)。Hypothetical Minds沿用前轮已记录的正文/成本阅读，未重新运行。10月13日Bayesian论文仅摘要可读；10月17日已成功补核正文／附录指定部分，读取范围和对本项目的影响见下方领域补核，不再将当前范围写成只有摘要。
 
 前者通过提出/评价/修正伙伴策略假设在线适应；后者摘要直接提出“正确推断但执行旧技能”，以伙伴矛盾驱动选择性重规划。
 
@@ -81,3 +81,15 @@ KNUDGE、CDT、NCP、Dynamic Persona与最新NARRA-Gym仍需保留在认识中�
 上述两项身份最初核自[alem作者公告](https://www.kaleabtessera.com/news/)、[NARRA作者页](https://jackwwj619.github.io/)及[机构公告](https://www.som.lmu.de/ai/en/update/news-overview/news/5-papers-accepted-at-neurips-2026-7c6c1c03.html)。标题目录仅作发现入口；只见标题或未取得原文的项目不补写机制。Goal-Directedness的后续正式身份/阅读范围以[单篇卡](papers/GOAL_DIRECTEDNESS_ICML_2026.md)为准。
 
 [Collab-Overcooked（EMNLP2025）](https://aclanthology.org/2025.emnlp-main.249/)作为必要协作/过程评价的来源仍保留；原记录为初筛及指定部分阅读，不升为全文/代码复现。它与GAMMA的伙伴分布、Hypothetical Minds的策略推断是互补问题，不是一条互相继承的方法链。
+
+<a id="field-review-2026-10-17"></a>
+## 2026-10-17领域尺度补核（只读）
+
+用户要求维持暂停、从领域尺度判断整体认识与下一实验。本次只读原文、既有本地全文／论文卡和检索定位；未启动任何引擎、模型或推理API。整体判断与建议仅维护在[I04](../ideas/I04-commitment-conflict-stage-arbitration.md)，不复制第二份报告或启动E86。
+
+- **Bayesian Partner Modelling补读。** [HTML v1](https://arxiv.org/html/2608.18490v1)本次可读；核§4–5／Tables1–4、App8.4–9.4及10.1–10.2提示。沿用而非新建[已有论文卡§4](../../../library/themes/game-npc-social/INTERACTION_PAPER_CARDS_2026-10-03.md#4-bayesian-partner-modelling-enables-adaptive-replanning-for-llm-coordination--arxiv-2026-08)，补了精确原文范围。相同posterior只入prompt与触发技能中断的对照已做；一般重规划也能取得相近奖励但调用更多，RL基线若干场景更强，不能宣称一种中断方法普遍更优。App10.1明确共同团队得分且伙伴不能沟通，与可谈判、负有职责／承诺的NPC不同。行为识别、动作切换及事件控制已是强基线，本项目不能仅把“看出变化却仍做旧计划”当新发现。未取得／运行该文自身实现；列出的ProAgent等仓库不是其完整runner。
+- **目标—手段并非概念空白。** 复核[Everitt等方法与讨论](https://arxiv.org/html/2504.11844v1)的能力条件化定义，及[Arghal等§4.3／Table1](https://arxiv.org/html/2602.08964v1)的工具性钥匙、无用钥匙与两路径控制。坚持、无用子目标与可解码计划均有前史；不能将“替代出现仍追旧物”一例独立包装。值得检验的是作者目的／职责、有效承诺与开放玩家贡献在真实闭环中怎样共同决定应保持和应改变的部分。
+- **社会修订与工具修订分开。** 补核[Talk is Cheap §5.7／Appendix F](https://arxiv.org/html/2605.01750v1)：透明信息改善部分指标却未可靠提升最优率，早期提案锚定已有分析。核[ContractSim §3／Appendix B.2](https://arxiv.org/html/2608.10475v1)：允许合同条件，履约期无重谈；主履约实验fresh agent不带协商历史。核[CT-Bench AppB](https://arxiv.org/html/2607.22750v1)：重谈列为后续，不否认其已做真实自主拒付。TradeCraft仍按已全文核读的作者版本理解其未来承诺／自主制作，不因当前交易原子结算就排除其重合。我们的增量按整体可检验关系判断，不用各自实现限制虚构无人研究的空白。
+- **定位检索。** 两个venue-corpus nearest查询：`goal directed role conditioned agents adapting cooperation to changing causal task dependencies and partner actions`、`language agents private goals negotiated commitments dynamic grounding alternative plans execution`；命中CaPo／COMBO、Plan-and-Act、Agent GPA等，均仅作标题定位，不新增已精读声明。网页检索同名TradeCraft还返回另一代码仓库，作者／论文对应关系本次未审，不能据同名混同原论文资产。
+
+**本次判断。** 现有数据最强的整体认识是：角色影响真实行为，其后果随目的、请求、共同前提和用途的关系变化；单一任务分不能识别人设控制。这可作为实证研究的骨架。下一轮应检验NPC是否能按实际因果作用选择性调整合作，同时保留原作者职责与已接受义务；先面对及时重规划、普通明确说明和可靠技能，仍不预选方法、神经机制或阴性故事。它没有被标为已解决、尚未产生新证据等级；当前暂停继续有效。

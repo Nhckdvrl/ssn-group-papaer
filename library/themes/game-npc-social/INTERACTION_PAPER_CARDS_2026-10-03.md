@@ -49,6 +49,8 @@
 - **限制：** 有限手工技能、likelihood 以自身控制器近似队友；紧耦合 Forced Coordination 仍弱，RL 往往更强。某些互补技能标签由人定义，不能忽略。公开代码/可本地替换端点本轮未确认，不把它选为唯一 D1 入口。
 - **对我们：** 伙伴适应可从公开策略池开始；应把 perception、partner inference、分工、动作触发拆清。仅换小模型重做 belief/action 二分，会被此文压缩。
 
+2026-10-17 Game NPC领域复核补充：重新核[§4–5／Tables1–4、App8.4–9.4及10.1–10.2](https://arxiv.org/html/2608.18490v1)，未运行作者／baseline代码，未新核其余Appendix11结果或接收身份。Table3中断对照与Table4周期／事件／LLM重规划控制说明，不能把正确信息仅入prompt当唯一强基线；部分一般重规划奖励相近、调用更多，Ring G3等仍有反向，不据此写统一收益优势。App10.1明确团队共同得分、伙伴不沟通；它没有直接评价有自己职责／有效社会承诺的NPC怎样处理玩家提出的替代合作。作为对I04的定位，角色目的、承诺与实际贡献的整体关系仍可研究；普通事件再规划本身不重新申领为方法或机制。
+
 ## 5. Navigating Rifts in Human–LLM Grounding — ACL 2025 main（补充精读）
 
 - [会议页](https://aclanthology.org/2025.acl-long.1016/)、[全文](https://arxiv.org/html/2503.13975v1)、[代码](https://github.com/microsoft/rifts)。精读 taxonomy、§4–6、limitations、forecaster/标注附录。
