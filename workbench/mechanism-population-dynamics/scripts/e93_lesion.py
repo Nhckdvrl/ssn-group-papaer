@@ -243,6 +243,9 @@ def main():
     ap.add_argument("--init_scale", type=float, default=1.0, help="multiplier on the re-init std (QKV rows)")
     ap.add_argument("--rot_out", type=int, default=-1, help="if >=0: rotate each lesioned head's output projection by a random "
                     "orthogonal d x d matrix (this seed) -- keeps what the head writes intact up to rotation, breaks readers' alignment")
+    ap.add_argument("--mix_out", type=float, default=-1.0, help="if >= 0: angle (degrees) to mix each lesioned head's output "
+                    "projection with a random matrix of equal norm: W_O <- cos(phi) W_O + sin(phi) W_rand (graded loss of reader alignment)")
+    ap.add_argument("--mix_seed", type=int, default=11)
     ap.add_argument("--ov_scale", type=float, default=1.0, help="after the lesion, multiply each lesioned head's output-projection "
                     "columns by this factor (same direction, stronger / weaker coupling to its readers)")
     ap.add_argument("--train_only", action="store_true", help="freeze everything except the lesioned heads' own QKV rows and "
@@ -269,6 +272,16 @@ def main():
             reinit_head(model, l, h, gen, a.parts, a.init_scale)
             if a.rot_out >= 0:
                 rotate_out(model, l, h, a.rot_out)
+            if a.mix_out >= 0:
+                dh_ = model.config.hidden_size // model.config.num_attention_heads
+                Wd = model.gpt_neox.layers[l].attention.dense.weight.data
+                blk = Wd[:, h * dh_:(h + 1) * dh_]
+                g2 = torch.Generator().manual_seed(a.mix_seed)
+                Rn = torch.randn(blk.shape, generator=g2).to(blk)
+                Rn = Rn - (Rn * blk).sum() / (blk * blk).sum() * blk  # orthogonal to W_O in Frobenius sense
+                Rn = Rn * blk.norm() / Rn.norm()
+                phi = math.radians(a.mix_out)
+                Wd[:, h * dh_:(h + 1) * dh_] = math.cos(phi) * blk + math.sin(phi) * Rn
             if a.ov_scale != 1.0:
                 dh = model.config.hidden_size // model.config.num_attention_heads
                 model.gpt_neox.layers[l].attention.dense.weight.data[:, h * dh:(h + 1) * dh] *= a.ov_scale
