@@ -14,7 +14,7 @@ import datetime as dt
 import re
 import sys
 
-from common import ROOT, SLUG, TEMPLATES, WB
+from common import ROOT, SLUG, TEMPLATES, WB, registry, research_dir
 
 
 def next_number(d, prefix):
@@ -65,6 +65,8 @@ def main():
     d = WB / wb
     if not d.is_dir():
         sys.exit(f"workbench 不存在：{wb}")
+    row = next((r for r in registry()[1] if r["name"] == wb), {"name": wb})
+    d = research_dir(row)
     prefix, sub, tpl, title = {
         "experiment": ("E", "experiments", "experiment_card.md", "# E##：<名字>（<日期>）"),
         "idea": ("I", "ideas", "idea_card.md", "# I##：<一句话>（<日期>）"),

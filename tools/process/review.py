@@ -13,7 +13,7 @@ import re
 import subprocess
 import sys
 
-from common import LEVELS, ROOT, WB, choice, claims, field, parse_date, registry, today
+from common import LEVELS, ROOT, WB, choice, claims, field, ledger_path, parse_date, registry, research_dir, today
 
 DRIFT_CARDS = 5  # completed experiment cards without any claim change
 
@@ -51,7 +51,8 @@ def main():
     d = WB / args.workbench
     if not d.is_dir():
         sys.exit(f"workbench 不存在：{args.workbench}")
-    row = next((r for r in registry()[1] if r["name"] == args.workbench), {})
+    row = next((r for r in registry()[1] if r["name"] == args.workbench), {"name": args.workbench})
+    d = research_dir(row)
     since = parse_date(args.since) if args.since else last_review(d, row)
     rel = d.relative_to(ROOT).as_posix()
     commits, touched = git_touched(d, since)
@@ -59,7 +60,7 @@ def main():
     out = [f"# 人审 — {args.workbench} — {now}（{window}）", "",
            "**触发原因：** ＿（D1–D6 交付 / pilot 要选分支 / 主张升降级 / 漂移信号 / 开关线、转向、进候选、投稿之前）", ""]
 
-    ledger = d / (re.sub(r"`", "", row.get("主张账本", "")).strip() or "CLAIMS.md")
+    ledger = ledger_path(row)
     rows = [c for c in claims(ledger) if next((v for k, v in c.items() if "主张" in k), "").strip()]
     by_level, changed = {lv: 0 for lv in LEVELS}, []
     for c in rows:

@@ -49,6 +49,17 @@ def registry():
     return None, []
 
 
+def ledger_path(row):
+    """The registry's ledger may live in a research subdirectory of a workbench."""
+    ledger = re.sub(r"`", "", row.get("主张账本", "")).strip()
+    return WB / row["name"] / (ledger if ledger and ledger not in {"—", "-"} else "CLAIMS.md")
+
+
+def research_dir(row):
+    """Route cards and logs beside the declared ledger; keep one registered workbench."""
+    return ledger_path(row).parent
+
+
 def claims(path):
     """Parse the first table in a CLAIMS.md whose header has 'ID' and '等级'."""
     if not path.exists():

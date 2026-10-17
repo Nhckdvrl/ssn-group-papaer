@@ -9,7 +9,7 @@ import argparse
 import re
 import sys
 
-from common import LEVELS, ROOT, STATUSES, WB, choice, claims, field, parse_date, registry, today
+from common import LEVELS, ROOT, STATUSES, WB, choice, claims, field, ledger_path, parse_date, registry, research_dir, today
 
 README_MAX_LINES = 200
 CARD_FIELD_GROUPS = [["对应"], ["阳性对照"], ["噪声地板 + MIE", "噪声地板"], ["决策表（跑之前写）"]]
@@ -73,7 +73,7 @@ def check_active(rep, row):
         rep.add("ERROR", where, f"主张账本 {ledger} 不存在")
     if not parse_date(row.get("上次人审")):
         rep.add("WARN", where, "没有人审记录（人审在决策点触发，见 EXECUTION.md §9）")
-    if not (d / "PAIN_LOG.md").exists() and "痛点" not in readme.read_text():
+    if not (research_dir(row) / "PAIN_LOG.md").exists() and "痛点" not in readme.read_text():
         rep.add("WARN", where, "没有痛点日志（PAIN_LOG.md）")
 
 
@@ -104,8 +104,7 @@ def check_cards(rep, d):
             rep.add("WARN", card.relative_to(ROOT), "idea 卡未写具体来源（IDEA_EXPLORATION.md §1）")
 
 
-def check_claims(rep, d):
-    path = d / "CLAIMS.md"
+def check_claims(rep, path):
     for c in claims(path):
         col = lambda key: next((v for k, v in c.items() if key in k), "")
         cid, level = c.get("ID", "?"), col("等级").strip()
@@ -147,8 +146,8 @@ def main():
         if row.get("状态", "").startswith("ACTIVE"):
             check_active(rep, row)
         if row.get("状态") in {"ACTIVE-MAIN", "ACTIVE-EXPLORE", "PROPOSED"}:
-            check_cards(rep, d)
-            check_claims(rep, d)
+            check_cards(rep, research_dir(row))
+            check_claims(rep, ledger_path(row))
     check_kills(rep)
     order = {"ERROR": 0, "WARN": 1, "INFO": 2}
     for level, where, msg in sorted(rep.items, key=lambda i: (order[i[0]], str(i[1]))):

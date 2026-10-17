@@ -1,24 +1,30 @@
-# Game NPC Agents
+# Game NPC Agents：领域工作台
 
-**实验暂停。** E85及此前已启动任务均结束，自有worker/GPU释放，无待运行队列；恢复须用户明确指令。工作台PROPOSED、I04 PROMISING、C01–C06既有等级保持，论文正文暂缓。
+研究范围是游戏NPC的身份与目标、玩家互动、真实行动、社会关系、长期变化、安全、经济及部署。**矿区A单独放在子目录；领域范围不由矿区A限定。** 本次是目录重整，实验继续暂停，PROPOSED与既有主张等级不变。
 
-中心问题：**有自身身份和目的的NPC，面对玩家提出、执行和改变合作办法，怎样选择、修订或拒绝，并产生真实游戏后果？** 当前优先矿区A（人物设定与实际战略行为），其他NPC领域仍开放。
+## 两层入口
 
-## 阅读入口
-
-| 需要了解什么 | 唯一入口 |
+| 需要了解什么 | 入口 |
 |---|---|
-| 从最初接手到E85：为何实验、结果、纠偏与未解问题 | [整体进度报告](PROJECT_PROGRESS_REPORT_2026-10-16.md) |
-| 已成立主张、证据等级与撤回记录 | [CLAIMS](CLAIMS.md) |
-| 当前研究候选与痛点 | [ideas](ideas/README.md) · [PAIN_LOG](PAIN_LOG.md) |
-| 工作规则、暂停、资源和授权 | [AGENTS](AGENTS.md) |
-| 已恢复的系统、环境、缓存与资产 | [BASELINES](BASELINES.md) |
-| 领域、强近邻、论文与源码事实 | [knowledge](knowledge/README.md) |
-| 原始设计与完整结果说明 | [experiments](experiments/README.md)，79张卡的索引在整体报告附表 |
-| 最终统计、负结果、来源和成本 | [results](results/README.md) |
-| 保留代码、复算与旧文件精确恢复 | [scripts](scripts/README.md) |
-| 按日过程记录 | [logs/2026-10-16](logs/2026-10-16.md)及同目录其他日期 |
+| NPC领域地图、测量规范与跨方向知识 | [通用知识库](knowledge/README.md) |
+| 通用系统、开源候选资产与适用边界 | [BASELINES](BASELINES.md) |
+| 领域规则、资源与暂停边界 | [AGENTS](AGENTS.md) |
+| 矿区A：人物设定、自身目标与真实战略行为 | [矿区A](mine-a-persona-strategy/README.md) |
+| 矿区A全部实验、纠偏、结果与未解问题 | [整体报告](mine-a-persona-strategy/PROJECT_PROGRESS_REPORT_2026-10-16.md) |
 
-阶段报告已合并为一份整体报告，运行设置/独有范围回到实验卡，历史决定回到按日日志；不再多页复制“最新完成”。一次性脚本、重复综合笔记和重复图导出从当前树清理，原始负结果和最终统计保留。清理前完整版本为Git `af7564ff`，不另建归档目录。
+```text
+game-npc-agents/
+├── README.md / AGENTS.md / BASELINES.md
+├── knowledge/                    NPC通用知识与跨方向论文卡
+└── mine-a-persona-strategy/
+    ├── README.md / AGENTS.md / BASELINES.md
+    ├── CLAIMS.md / PAIN_LOG.md / PROJECT_PROGRESS_REPORT_2026-10-16.md
+    ├── experiments/ / ideas/ / logs/
+    ├── knowledge/                只放领域理解、文献与定位
+    ├── data/                     数据、缓存与历史路径入口
+    └── results/ / scripts/       结果、results/audits/核对及复算代码
+```
 
-完整raw、世界状态、模型及权重在`/home/xiang/.cache/game-npc-research/`，具体pin/路径按manifest；GitHub的轻量结果不等于raw已异地备份。目录整理没有启动研究实验或改变科学结论。
+矿区A是同一workbench内的研究目录，不新增第二个workbench或重复账本。通用论文与矿区专属论文各保留一个文件，跨目录引用。原始轨迹、世界及权重继续保存在既有cache，不复制进Git；迁移与旧路径说明见[数据入口](mine-a-persona-strategy/data/README.md)。
+
+恢复实验须用户明确指令；目录中的旧“下一步”、脚本与设计不构成启动授权。

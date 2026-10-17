@@ -16,3 +16,5 @@
 - `CLAIMS.md` 第一个含 `ID` 与 `等级` 的表格是主张表；等级写 `L0`–`L5`；日期写 `YYYY-MM-DD`。
 - 痛点日志每条以 `- P## · YYYY-MM-DD ·` 开头。
 - 实验卡的实际算力写在 `**实际：** <数字>`（GPU·时），`review.py` 用它计算 EXPLORE 占比。
+
+领域workbench可以把当前研究放在子目录：登记表`主张账本`填写相对路径，例如`mine-a-persona-strategy/CLAIMS.md`。检查、建卡与人审统一在该账本的同级目录寻找`experiments/`、`ideas/`、`logs/`和`PAIN_LOG.md`；CLI仍使用登记名`game-npc-agents`，不另注册矿区或创建第二套编号。原来账本位于根目录的workbench行为不变。

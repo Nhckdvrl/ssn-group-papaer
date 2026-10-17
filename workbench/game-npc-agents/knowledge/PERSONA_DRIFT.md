@@ -31,4 +31,4 @@
 
 ## 5. 可形成贡献的形态
 现有 persona/漂移度量在实际可执行 NPC 社会中是否预测有意义的状态和玩家行为？什么自然事件更新了身份中的哪个层次？已有修正机制是否会抹去合法成长？可能走评价、机制或方法，不锁定“做新的漂移 Benchmark”。 
-阅读等级：上述大多 P1/P2，不宣称全篇已精读；见 [source status](SOURCES_AND_STATUS_2026-10-14.md)。
+阅读等级：上述大多 P1/P2，不宣称全篇已精读；见 [source status](DOMAIN_ATLAS.md#source-status)。
