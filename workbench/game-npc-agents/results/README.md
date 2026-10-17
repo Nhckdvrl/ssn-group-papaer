@@ -28,6 +28,10 @@
 | E84独立目标与替代合作 | [E84_32b_complete](E84_32b_complete.json)、[E84_gemma_complete](E84_gemma_complete.json)、[E84_grounded_plans_POST_HOC](E84_grounded_plans_POST_HOC.json) | 32任务对/23图，所有成功/拒绝/不利后续保留 |
 | E85真实转移/声称/新请求 | [E85_32b_complete](E85_32b_complete.json)、[E85_gemma_complete](E85_gemma_complete.json)、[E85_grounded_interactions_POST_HOC](E85_grounded_interactions_POST_HOC.json) | 18前史/9图，终局包含双方补交、自取和接取；问答不作内心读数 |
 
+## 暂停期间的设计来源
+
+[合作路径来源核对](COOPERATION_PATH_SOURCE_REVIEW_2026-10-17.json)只索引原任务、源码与已有见证，0新增原生事件／模型／API；对应[未运行设计](../experiments/COOPERATION_PATH_DESIGN.md)。其中47个LIGHT源图和12个Minecraft配置不是已运行的新实验，也不是全部未曝光确认集。
+
 ## 来源、成本与可靠性
 
 - `*_freeze.json`、`*_qualification.json`、`*_input_check.json`记录原数据/代码/模型及首运行前的资格；`*_audit.json`、`*_native_state_readback.json`记录独立核对。旧无效版本与失败不能当科学结果，亦不删除以制造幸存样本。

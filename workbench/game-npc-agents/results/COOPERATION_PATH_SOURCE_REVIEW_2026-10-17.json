@@ -1,0 +1,2134 @@
+{
+  "record_kind": "READ_ONLY_NATIVE_SOURCE_REVIEW_FOR_DESIGN; NOT_A_NEW_EXPERIMENT_OR_FINAL_DATASET",
+  "date": "2026-10-17",
+  "corresponding": [
+    "I04",
+    "P12"
+  ],
+  "new_model_calls": 0,
+  "new_inference_API_calls": 0,
+  "new_GPU_hours": 0,
+  "new_native_event_executions": 0,
+  "source_worlds_modified": false,
+  "source_pins": {
+    "LIGHT": "71a06cae8573048b1af41507ac52fe33b650fab3",
+    "mindcraft_paper_repro": "e85ef660171feb81290888c0fb615335f1c7a029"
+  },
+  "selection_rules": {
+    "relay": "From complete E84 candidates: authored verb=give; goal item owned by paired helper; goal recipient distinct from NPC and helper; deduplicate by authored NPC quest file, retain all partner/candidate IDs. Read corresponding stored E84 native witnesses without replay.",
+    "container": "From complete E84 candidates: authored verb=put; container owned by paired helper. Deduplicate NPC quest file; item==container kept as unsupported, not repaired.",
+    "minecraft": "All 12 entries of original 2_agent_hells_kitchen_full.json unchanged; no selection by model outcome."
+  },
+  "counts": {
+    "relay_source_pairs": 142,
+    "relay_authored_NPC_quests": 51,
+    "relay_source_graphs": 43,
+    "relay_stored_serial_native_successes": 142,
+    "relay_direct_route_newly_executed": 0,
+    "container_source_pairs_including_self_targets": 18,
+    "container_nonself_pairs": 14,
+    "container_nonself_quests": 5,
+    "container_nonself_graphs": 5,
+    "container_self_target_quests": 2,
+    "container_self_target_pairs": 4,
+    "relay_container_graph_overlap": 1,
+    "light_union_graphs": 47,
+    "relay_graph_overlap_with_E84_model_cohort": 2,
+    "minecraft_authored_configs": 12,
+    "minecraft_distinct_target_recipe_names": 6,
+    "minecraft_configs_with_initial_gold_or_cake_recipe_split": 9
+  },
+  "exposure_scope": "A source inventory and design support count, not unseen-world N. Comparison with all prior model exposure has not been completed; E84 overlap alone does not prove other worlds are unseen.",
+  "relay_tasks": [
+    {
+      "npc_quest_file": "quest_stems/10813.json",
+      "graph_sha256": "21a99f36ade488f897abb315084f20690b65fa9a7f79d579ec679c66d6a02681",
+      "npc_actor_id": "knight_9_knight",
+      "helper_actor_id": "king",
+      "item_id": "crown_8",
+      "recipient_id": "blacksmith",
+      "authored_action_goal": "give crown to blacksmith",
+      "source_pair_count": 1,
+      "all_source_candidate_ids": [
+        "524c1d7def8b45d401ff2214"
+      ],
+      "serial_stored_native_successes": 1,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "crown_8",
+        "recipient_id": "blacksmith"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/10993.json",
+      "graph_sha256": "733ecd1e961f94719b18f231c9b7c1d54a5589ffc6a6c929b7b5249563fd8ee5",
+      "npc_actor_id": "servant",
+      "helper_actor_id": "mariner",
+      "item_id": "map_4",
+      "recipient_id": "guard_10_guard",
+      "authored_action_goal": "give map to guard",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "8864955d95307e5390ee34d4",
+        "3ec602a3596d1966c3a51005",
+        "5961de4f014ac39404f8111d"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "map_4",
+        "recipient_id": "guard_10_guard"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11178.json",
+      "graph_sha256": "48f7c79bbbfd8cb001f31407570535e435e5a4b93f668c2816c9ffb7b4c62be9",
+      "npc_actor_id": "fox trying to steal chickens_5_fox trying to steal chickens",
+      "helper_actor_id": "bird",
+      "item_id": "nut_3",
+      "recipient_id": "peasant",
+      "authored_action_goal": "give nut to peasant",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "2ff7c769061417d4c760916b",
+        "1d4154b3327ed36d78f79fec",
+        "251c3eb81bf1e8d693cbaa2f"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "nut_3",
+        "recipient_id": "peasant"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11212.json",
+      "graph_sha256": "41da5ace8805e078feb36acb41655e6fc1cca57c893c42c18b5e681b5db9ddd4",
+      "npc_actor_id": "handmaid_13_handmaid",
+      "helper_actor_id": "dog",
+      "item_id": "animal_10",
+      "recipient_id": "servant",
+      "authored_action_goal": "give animal to servant",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "f92acf925b0f8e7699337dd1",
+        "9f2f914c0ed969cfb3c53bd0",
+        "5d10de46cf932ef579bed2b8"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "animal_10",
+        "recipient_id": "servant"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11244.json",
+      "graph_sha256": "35ee7cda9ff191499591deb6e79a5c0c907c79778cb325445e262288d1130be2",
+      "npc_actor_id": "demonic hound_11_demonic hound",
+      "helper_actor_id": "skeleton assistant",
+      "item_id": "key_9",
+      "recipient_id": "reaper",
+      "authored_action_goal": "give key to reaper",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "d9d937910abfe5ba442a23c8",
+        "d62bab4b29dfc38f22dfd100",
+        "4437c81d5d5b471bae5bc2bb"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "key_9",
+        "recipient_id": "reaper"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11317.json",
+      "graph_sha256": "466b7fd61422a2b304dabbbf4a622863b330712b50c126a7f4c54f14ce26fd17",
+      "npc_actor_id": "horse_10_horse",
+      "helper_actor_id": "preacher",
+      "item_id": "holy water_8",
+      "recipient_id": "teacher",
+      "authored_action_goal": "give holy water to teacher",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "fbfd9f62b38c8345dfbadcb8",
+        "964964acea77fd2d28424630"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "holy water_8",
+        "recipient_id": "teacher"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11428.json",
+      "graph_sha256": "ea530c4a09174fc955a952b4ef7a31cf6d3e995cdd609ff30cc5a8cdb667dae4",
+      "npc_actor_id": "firemen_8_firemen",
+      "helper_actor_id": "police",
+      "item_id": "cell phone_4",
+      "recipient_id": "traveler",
+      "authored_action_goal": "give cell phone to traveler",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "f4af2dfd01153bb7daa96ac5",
+        "8470e31bfade31dddeb03f95"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "cell phone_4",
+        "recipient_id": "traveler"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11461.json",
+      "graph_sha256": "f02444905f5d430bb3c2b1be0ef159cc896d99d8f16893ba08e05180fa9fda7e",
+      "npc_actor_id": "kings",
+      "helper_actor_id": "queen",
+      "item_id": "broken glass_4",
+      "recipient_id": "groundskeeper_11_groundskeeper",
+      "authored_action_goal": "give broken glass to groundskeeper",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "e779f11be6bb2db0e1208be7",
+        "6be3d331dbd311330d2a7bcf",
+        "64db7a4d6be1e83cc2a9cf7f"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "broken glass_4",
+        "recipient_id": "groundskeeper_11_groundskeeper"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11510.json",
+      "graph_sha256": "0587967fb4038fead323c8fc3f1ce409d75430b40c075f1054c9646d83f8a355",
+      "npc_actor_id": "an old woman_7_an old woman",
+      "helper_actor_id": "temple members",
+      "item_id": "bible_4",
+      "recipient_id": "rodent",
+      "authored_action_goal": "give bible to rodent",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "a0f19ac7ecb61e276bbad0d1",
+        "adffe1fbbaa73316a414403e"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "bible_4",
+        "recipient_id": "rodent"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/11954.json",
+      "graph_sha256": "f74c6adaa9df2732171a86f43aaf84dbec9becbc059d8051c4c44f939f5b7452",
+      "npc_actor_id": "donkey_12_donkey",
+      "helper_actor_id": "barn cat",
+      "item_id": "stick_7",
+      "recipient_id": "milkmaid",
+      "authored_action_goal": "give stick to milkmaid",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "b55d2b2b6ded111f96c7aad9",
+        "5dd6835c41ed48c48f69b343",
+        "dfe5383e91e025b370cb56f3"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "stick_7",
+        "recipient_id": "milkmaid"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13006.json",
+      "graph_sha256": "dabe6de89c397ad59d4c5d930a8314feb31c15b402ea28b4f148dd6d7a9fe0e7",
+      "npc_actor_id": "roach_16_roach",
+      "helper_actor_id": "traveler",
+      "item_id": "a tattered map_12",
+      "recipient_id": "a cat",
+      "authored_action_goal": "give a tattered map to a cat",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "f7ca16ad7328c03b1e442a94",
+        "efb8dbde33af9175f4228625"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "a tattered map_12",
+        "recipient_id": "a cat"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13148.json",
+      "graph_sha256": "00826c1384a1cd619f6035f6881e9d7667ee2ddeb272972f38fe28347f8263ec",
+      "npc_actor_id": "talking crab_12_talking crab",
+      "helper_actor_id": "sea witch",
+      "item_id": "trident_10",
+      "recipient_id": "dolphin",
+      "authored_action_goal": "give trident to dolphin",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "6b32503039c9dc07848f8af7",
+        "4977ca3d24f699eb4fac3219",
+        "85b2635ca7fc4cf2acfbfc75"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "trident_10",
+        "recipient_id": "dolphin"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13161.json",
+      "graph_sha256": "3c77e40e5ed6b6112a084f72c9a086f05b3d98c93786988371509f188fd01802",
+      "npc_actor_id": "a serving boy_20_a serving boy",
+      "helper_actor_id": "men and women working",
+      "item_id": "lantern_17",
+      "recipient_id": "a dog",
+      "authored_action_goal": "give lantern to a dog",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "7b42a84d88e50d0ca7ff12ec",
+        "d19525408ebe3d601cadf140"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "lantern_17",
+        "recipient_id": "a dog"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13205.json",
+      "graph_sha256": "f8cd631455303fb896323ddf97f7fad24dd986d916eef3f1df693cd40c57edbf",
+      "npc_actor_id": "traveler_10_traveler",
+      "helper_actor_id": "a salesman",
+      "item_id": "writing utensil_2",
+      "recipient_id": "sailor",
+      "authored_action_goal": "give writing utensil to sailor",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "691bbffd09423c84ce42c19d",
+        "176ab1e9c7b728d4596ea7aa",
+        "e40ca7ddd7649e12a164c879"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "writing utensil_2",
+        "recipient_id": "sailor"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13229.json",
+      "graph_sha256": "509c8ca8ea8f6b22d4900009d229f3944db90dcf33ffe844af5537c1a7b5a388",
+      "npc_actor_id": "peasant",
+      "helper_actor_id": "queen",
+      "item_id": "broken glass_3",
+      "recipient_id": "ghost_10_ghost",
+      "authored_action_goal": "give broken glass to ghost",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "d076df766570a474e877f4dc",
+        "963326c4197b58c493987da0",
+        "439d41e748ce7355cabb3768"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "broken glass_3",
+        "recipient_id": "ghost_10_ghost"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13282.json",
+      "graph_sha256": "d7ebda0a15aba13c71fc5067c016d2107903ae236d449922ea96b3b7c0227a59",
+      "npc_actor_id": "groom_11_groom",
+      "helper_actor_id": "worker",
+      "item_id": "trinket_6",
+      "recipient_id": "castle guards",
+      "authored_action_goal": "give trinket to castle guards",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "79d2213230520a04f5c740da",
+        "2171e1c3838dbb0ebf9df625",
+        "120d7ab5a4fc8aa2777e7840"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "trinket_6",
+        "recipient_id": "castle guards"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13298.json",
+      "graph_sha256": "c9ab3ce5230879133a5c1e381a27e977799864d4af7c565b81b5aa97784d3927",
+      "npc_actor_id": "altar boy_8_altar boy",
+      "helper_actor_id": "nun",
+      "item_id": "bible_2",
+      "recipient_id": "priest",
+      "authored_action_goal": "give bible to priest",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "eebacfe531b61806697c5d06",
+        "57f17d81219d89e8ac4dd5f3",
+        "21a0a943dff6fef3391feb1d"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "bible_2",
+        "recipient_id": "priest"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13309.json",
+      "graph_sha256": "827c6cc305b3cbbc7791e74396fb4f5931edb17a9eb5caea028babf14ba588e8",
+      "npc_actor_id": "prince_5_prince",
+      "helper_actor_id": "queen",
+      "item_id": "books_2",
+      "recipient_id": "princess",
+      "authored_action_goal": "give Books to princess",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "4811f6fcedca73ff7fdb5def",
+        "0faddd5e5812e43e34feb89a",
+        "a6a6020c31eab181fb63d889"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "books_2",
+        "recipient_id": "princess"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13322.json",
+      "graph_sha256": "00826c1384a1cd619f6035f6881e9d7667ee2ddeb272972f38fe28347f8263ec",
+      "npc_actor_id": "dolphin",
+      "helper_actor_id": "sea witch",
+      "item_id": "trident_10",
+      "recipient_id": "talking crab_12_talking crab",
+      "authored_action_goal": "give trident to talking crab",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "ff509ce2b2e70d58615f8ff5",
+        "ead1b8daed3f2ecdf1e507fe",
+        "8cfd3d866995925009551610"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "trident_10",
+        "recipient_id": "talking crab_12_talking crab"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13359.json",
+      "graph_sha256": "5bf6e92261731a0840d5abd45b57458f6ccd0723830727b4cef559475fd02b9e",
+      "npc_actor_id": "wolves_15_wolves",
+      "helper_actor_id": "the bartender",
+      "item_id": "towel_8",
+      "recipient_id": "werewolf",
+      "authored_action_goal": "give towel to werewolf",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "95ce2827350261c9b793b9a9",
+        "d3bdcf754a0dd85ee7421308",
+        "63fab196101e1880a7aa7878"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "towel_8",
+        "recipient_id": "werewolf"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13435.json",
+      "graph_sha256": "509c8ca8ea8f6b22d4900009d229f3944db90dcf33ffe844af5537c1a7b5a388",
+      "npc_actor_id": "ghost_10_ghost",
+      "helper_actor_id": "queen",
+      "item_id": "broken glass_3",
+      "recipient_id": "peasant",
+      "authored_action_goal": "give broken glass to peasant",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "c47b464145e9ff4750c77d57",
+        "4fbe4072fddc3865c9c37780",
+        "a8c5ddbe7ec3f5788a625656"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "broken glass_3",
+        "recipient_id": "peasant"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13449.json",
+      "graph_sha256": "8e673849e38f716d23add2661d295e1edc390f9627a6db550b09d4084c2fb96d",
+      "npc_actor_id": "maid_8_maid",
+      "helper_actor_id": "butler",
+      "item_id": "cleaning cloth_2",
+      "recipient_id": "guest",
+      "authored_action_goal": "give cleaning cloth to guest",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "5d15496d59487107cb663bad",
+        "00c7366df7ed90b895251b5f",
+        "ea2d84f1eb718a1cb9bc80ee"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "cleaning cloth_2",
+        "recipient_id": "guest"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13633.json",
+      "graph_sha256": "5bf6e92261731a0840d5abd45b57458f6ccd0723830727b4cef559475fd02b9e",
+      "npc_actor_id": "wolves_15_wolves",
+      "helper_actor_id": "the bartender",
+      "item_id": "mug_9",
+      "recipient_id": "werewolf",
+      "authored_action_goal": "give mug to werewolf",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "a00a0c74122243a230b58035",
+        "630ad8a09b7ac5bb9b844fb7",
+        "18fc134cc5d116608e4a4c7a"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "mug_9",
+        "recipient_id": "werewolf"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/13668.json",
+      "graph_sha256": "69e5df53986ea240edfa5f971ceebfa2846a2ba5ff06d687be02a85332f73dad",
+      "npc_actor_id": "servant_11_servant",
+      "helper_actor_id": "god",
+      "item_id": "ledger_7",
+      "recipient_id": "priest",
+      "authored_action_goal": "give ledger to priest",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "8c6313bb5ddea7618395b214",
+        "33cb67fdfe67d899575495ba",
+        "ae96cde3dc4e80f79cc6e957"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "ledger_7",
+        "recipient_id": "priest"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14077.json",
+      "graph_sha256": "4bebd9fa903ac06dd01663f4a95606e2eee3a2d91bc4db8d67d375d8ceeb5fee",
+      "npc_actor_id": "queen_11_queen",
+      "helper_actor_id": "prince",
+      "item_id": "gold locket_7",
+      "recipient_id": "noble",
+      "authored_action_goal": "give Gold locket to noble",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "07356df37545ddd0150273fd",
+        "1a7202af911b2c61ce4b1e7c"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "gold locket_7",
+        "recipient_id": "noble"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14082.json",
+      "graph_sha256": "288217a303257668c7220fce0a9c042e681277d73908ea68a1729aa7565661b3",
+      "npc_actor_id": "traveler_12_traveler",
+      "helper_actor_id": "gather",
+      "item_id": "craft_10",
+      "recipient_id": "homeless",
+      "authored_action_goal": "give craft to homeless",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "39c038c957f35eb5931a42b2",
+        "0785d61f9039b0a23e86ee3b",
+        "7d382ef2ef590da0310ecf7b"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "craft_10",
+        "recipient_id": "homeless"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14170.json",
+      "graph_sha256": "94927d44e2a5e598c7524d1d77cf249a59ed8f01c2e5482caf28847e151092af",
+      "npc_actor_id": "zombies_19_zombies",
+      "helper_actor_id": "care taker",
+      "item_id": "hoe for digging_18",
+      "recipient_id": "a royal",
+      "authored_action_goal": "give hoe for digging to a royal",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "ead178d71e440a2310b64a21",
+        "eb7dd3f4ee95d3d468b621d4",
+        "0f8e9179bd7a1a3b34574e41"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "hoe for digging_18",
+        "recipient_id": "a royal"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14357.json",
+      "graph_sha256": "f135a2e77acf2c3016f968b917af10f1935636a2f71cb8d0cd8bea549a158245",
+      "npc_actor_id": "homeless_16_homeless",
+      "helper_actor_id": "fisherman",
+      "item_id": "weights_11",
+      "recipient_id": "criminal",
+      "authored_action_goal": "give weights to criminal",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "028071fc029b1492ecdf529c",
+        "4428ceb46db8c8b9ee9c615d",
+        "0809bbc65508a7cacd78c424"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "weights_11",
+        "recipient_id": "criminal"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14424.json",
+      "graph_sha256": "a058d50c51505ea9a60a67ff9cb2640dde0c4bc36b7d6fd8632b799850f11c0a",
+      "npc_actor_id": "maid_22_maid",
+      "helper_actor_id": "a bird",
+      "item_id": "insect_17",
+      "recipient_id": "the king",
+      "authored_action_goal": "give insect to the king",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "5c783d7a82b5516aafaa1135",
+        "1dab1a90030b9b668a831b22",
+        "d1abeeab0260e2347d099d28"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "insect_17",
+        "recipient_id": "the king"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14427.json",
+      "graph_sha256": "e73ada333d7974ea5f9a9bb5bb6ce4079a75618534d80e8bd42b71704cdb8c45",
+      "npc_actor_id": "hound_22_hound",
+      "helper_actor_id": "guest",
+      "item_id": "a sleeping bag_18",
+      "recipient_id": "servant",
+      "authored_action_goal": "give a sleeping bag to servant",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "bfaa60701f2b312e80bd047f",
+        "f521f7aac2902aeb47c30d3a",
+        "495b75e181c9d440bec999d2"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "a sleeping bag_18",
+        "recipient_id": "servant"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14667.json",
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "npc_actor_id": "chamber maid_13_chamber maid",
+      "helper_actor_id": "hunter",
+      "item_id": "fur_11",
+      "recipient_id": "duke",
+      "authored_action_goal": "give fur to duke",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "bb90d1edf03578fef379b60d",
+        "b5e31d0147137b9b32ee486f",
+        "9716affc50d52341c3272583"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "fur_11",
+        "recipient_id": "duke"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14812.json",
+      "graph_sha256": "9478a2b5b3429b79dc75688cf9ec663011c44e816681bd37fabd500d0aa8baef",
+      "npc_actor_id": "princess_14_princess",
+      "helper_actor_id": "a frog",
+      "item_id": "lillypad_11",
+      "recipient_id": "worker",
+      "authored_action_goal": "give Lillypad to worker",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "b03a4ed67d48833ed1ea7f27",
+        "7e305e044635136d4c626c08"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "lillypad_11",
+        "recipient_id": "worker"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/14957.json",
+      "graph_sha256": "5d7b4f812950a048e8507fbd1870bc3e5fd1c8d0ad9c48e28f9e940840a99f82",
+      "npc_actor_id": "chicken",
+      "helper_actor_id": "townsperson",
+      "item_id": "cleaning cloth_13",
+      "recipient_id": "cat_18_cat",
+      "authored_action_goal": "give cleaning cloth to cat",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "28e3aa23dd38a2cc261f42cc",
+        "83574d62af0f7b7594a9b06c",
+        "c44affb2827b72cbeea218bd"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "cleaning cloth_13",
+        "recipient_id": "cat_18_cat"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15496.json",
+      "graph_sha256": "f6943a8f6867b3b32ca107541425f961d4d80d87100dab0a307ba3e22a6ee163",
+      "npc_actor_id": "fairy interpreter",
+      "helper_actor_id": "fairy",
+      "item_id": "ceremonial hat_6",
+      "recipient_id": "cricket_7_cricket",
+      "authored_action_goal": "give ceremonial hat to cricket",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "8013751ea5f04fc537069497",
+        "7b3dce02fa937713c5d3afaf",
+        "ebc17828370e6d65058a1dd1"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "RemoveObjectEvent",
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "ceremonial hat_6",
+        "recipient_id": "cricket_7_cricket"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15708.json",
+      "graph_sha256": "bb51e43fd61b638c3b4e3000a8f8ad3a515cd97d68da23acc0a49a33accf02b3",
+      "npc_actor_id": "thief_11_thief",
+      "helper_actor_id": "bird",
+      "item_id": "worm_4",
+      "recipient_id": "knight",
+      "authored_action_goal": "give worm to knight",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "3dd35dcd4744dc647b3e52f3",
+        "b1cb9a16e560d2550d13a8b6",
+        "2c162b0dc8c065a3764c7d3c"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "worm_4",
+        "recipient_id": "knight"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15730.json",
+      "graph_sha256": "253deb5b43deb5c5ca8d97841b540236e6b4f57b83bcfa3ff9dcb137d8b524eb",
+      "npc_actor_id": "jester_11_jester",
+      "helper_actor_id": "soldier",
+      "item_id": "bag_5",
+      "recipient_id": "blacksmith",
+      "authored_action_goal": "give bag to blacksmith",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "7a80e5a9d073e615451e8410",
+        "0e28d73deaf66fbf30e9b4f9"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "bag_5",
+        "recipient_id": "blacksmith"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15760.json",
+      "graph_sha256": "a9618fe29b5a86643e9da29d27b9f638949f9e94df261d320df9678babb185de",
+      "npc_actor_id": "grandmother_9_grandmother",
+      "helper_actor_id": "son",
+      "item_id": "shovel_7",
+      "recipient_id": "mother",
+      "authored_action_goal": "give shovel to mother",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "5024d1db03b6049f9e0b83f8",
+        "2ba8e405d6b29b70da4e501d",
+        "7e745abd810417ebee0f890c"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "shovel_7",
+        "recipient_id": "mother"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15813.json",
+      "graph_sha256": "fffecf62e9fd8d73dfb94a03f05429aebf5269c3d114b9e324b6553d4265c2ba",
+      "npc_actor_id": "dog_17_dog",
+      "helper_actor_id": "hermit",
+      "item_id": "food_14",
+      "recipient_id": "peasant",
+      "authored_action_goal": "give food to peasant",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "294d44dd9b6a75e9d4222ce4",
+        "6bbf45bc89e0b7d5cbd5cb0b",
+        "33d5fc8bf13902714ee1f6c6"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "food_14",
+        "recipient_id": "peasant"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15861.json",
+      "graph_sha256": "f6943a8f6867b3b32ca107541425f961d4d80d87100dab0a307ba3e22a6ee163",
+      "npc_actor_id": "fairy interpreter",
+      "helper_actor_id": "fairy",
+      "item_id": "a crystal ball_4",
+      "recipient_id": "cricket_7_cricket",
+      "authored_action_goal": "give a crystal ball to cricket",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "67647b2a8858396d257aaaf7",
+        "f3d51ffda09dd639206ae645",
+        "a866d404ce0ea23773b50995"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "a crystal ball_4",
+        "recipient_id": "cricket_7_cricket"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15869.json",
+      "graph_sha256": "1db4ff9d540953302bffe63ae044fbf59f4ffaf3b536694f158056d13fa360c9",
+      "npc_actor_id": "brother",
+      "helper_actor_id": "a squire still keeping everything sharp",
+      "item_id": "trinket_13",
+      "recipient_id": "a maid_14_a maid",
+      "authored_action_goal": "give trinket to a maid",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "00d6be5aafdcbc6019e65731",
+        "dcb15c4b0b48c67289f44b72",
+        "8924845b74bdbb834019868a"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "trinket_13",
+        "recipient_id": "a maid_14_a maid"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/15931.json",
+      "graph_sha256": "9c4b0c4820823cc40b1ea9231c19ed3b992959f68cbe9a8e4cf1568e1bfd458e",
+      "npc_actor_id": "servant_12_servant",
+      "helper_actor_id": "maid",
+      "item_id": "food tray_6",
+      "recipient_id": "king",
+      "authored_action_goal": "give food tray to king",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "f593c10400b84ea4dea508ea",
+        "87acadc805a66c93a9f6b12b",
+        "85b2d9226e6938f7f3e7224c"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "food tray_6",
+        "recipient_id": "king"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16133.json",
+      "graph_sha256": "e099dab7c01a1a4f6ebef88eacfcab3f773b60d65e074cf7f1a804f69e9aaf20",
+      "npc_actor_id": "guard_8_guard",
+      "helper_actor_id": "hoakbera",
+      "item_id": "book_6",
+      "recipient_id": "goblin",
+      "authored_action_goal": "give Book to goblin",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "72112205f5dced155b2d5fb1",
+        "98af2f427c8997782017725d",
+        "46c83d92a54e7d29aaa3f89f"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "book_6",
+        "recipient_id": "goblin"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16148.json",
+      "graph_sha256": "5d7b4f812950a048e8507fbd1870bc3e5fd1c8d0ad9c48e28f9e940840a99f82",
+      "npc_actor_id": "cat_18_cat",
+      "helper_actor_id": "townsperson",
+      "item_id": "cleaning cloth_13",
+      "recipient_id": "chicken",
+      "authored_action_goal": "give cleaning cloth to chicken",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "f509a7fdced1e99e36dfae5f",
+        "99d81224e22289079226084b",
+        "7e1ce2fbc97cc415813c2fa1"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "cleaning cloth_13",
+        "recipient_id": "chicken"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16311.json",
+      "graph_sha256": "55dc3f4cbd6b57717fdaa2cc8bfac86a4c01fe703b2c82e086815f70f2d54ba0",
+      "npc_actor_id": "jester",
+      "helper_actor_id": "soldier",
+      "item_id": "bag_5",
+      "recipient_id": "knight_13_knight",
+      "authored_action_goal": "give bag to knight",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "bd1a7c908bde9cf1de17bcde",
+        "24ca799e0b860ffa1d09a4e9",
+        "9ea064ba94eba3ef30efbf3b"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "bag_5",
+        "recipient_id": "knight_13_knight"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16330.json",
+      "graph_sha256": "bd24cc577901524108f696f6b7df58c37413f2824b47cf6288154832944d25e8",
+      "npc_actor_id": "a scullery boy_20_a scullery boy",
+      "helper_actor_id": "bodyguard",
+      "item_id": "coin_16",
+      "recipient_id": "traveler",
+      "authored_action_goal": "give coin to traveler",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "c5c185bec6b3d8aea282e75e",
+        "10cfc4c7c3d89f468093911d",
+        "e76ddf58e8037c5d9eaff8e7"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "coin_16",
+        "recipient_id": "traveler"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16487.json",
+      "graph_sha256": "cbb183b8e4d25111e14211ce0c639f9cb8c614c619ab4abc2633bd461fad00b1",
+      "npc_actor_id": "worker_13_worker",
+      "helper_actor_id": "priest",
+      "item_id": "wine_12",
+      "recipient_id": "princess",
+      "authored_action_goal": "give Wine to princess",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "2b6451c63cd09b694dabe49d",
+        "4212942e83c93b1f0eb0ab9f",
+        "877df4a8618f3f23f0ecbf6f"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "wine_12",
+        "recipient_id": "princess"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16529.json",
+      "graph_sha256": "2b83398dfbfe521fab45c5070c982c2bb56c6f3ba6260adbc5cffce68342dedc",
+      "npc_actor_id": "sheep_15_sheep",
+      "helper_actor_id": "clergy",
+      "item_id": "quill_11",
+      "recipient_id": "visitor",
+      "authored_action_goal": "give Quill to visitor",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "7bf87fcdf8da7552a4301971",
+        "987629792854909ec7769072",
+        "26e0f467e0e00ab256659dba"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "quill_11",
+        "recipient_id": "visitor"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/16803.json",
+      "graph_sha256": "5d7b4f812950a048e8507fbd1870bc3e5fd1c8d0ad9c48e28f9e940840a99f82",
+      "npc_actor_id": "cat_18_cat",
+      "helper_actor_id": "townsperson",
+      "item_id": "thread_12",
+      "recipient_id": "chicken",
+      "authored_action_goal": "give thread to chicken",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "7a1e116d47fb3e5c77a37477",
+        "92baf2d1ec676cc889efd96b",
+        "218afdaa316d1108ed1ef8bf"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "thread_12",
+        "recipient_id": "chicken"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/17137.json",
+      "graph_sha256": "995e95fac91da56836b91d1cd02fa4aed2155300a9c349f355e5f4bb416c3ebd",
+      "npc_actor_id": "duke",
+      "helper_actor_id": "hunter",
+      "item_id": "fur_11",
+      "recipient_id": "chamber maid_13_chamber maid",
+      "authored_action_goal": "give fur to chamber maid",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "99c3dc4fc41680d063f5c31d",
+        "367e2d6963c81915881868c4",
+        "3ab40a1b5e4c594ba69ccb6a"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "fur_11",
+        "recipient_id": "chamber maid_13_chamber maid"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/17205.json",
+      "graph_sha256": "9c4b0c4820823cc40b1ea9231c19ed3b992959f68cbe9a8e4cf1568e1bfd458e",
+      "npc_actor_id": "servant_12_servant",
+      "helper_actor_id": "maid",
+      "item_id": "towel_8",
+      "recipient_id": "king",
+      "authored_action_goal": "give towel to king",
+      "source_pair_count": 3,
+      "all_source_candidate_ids": [
+        "2714daa6f2eef52703aed1cd",
+        "8e596dab821840d749e15006",
+        "8a66caa35325701270e1853e"
+      ],
+      "serial_stored_native_successes": 3,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "towel_8",
+        "recipient_id": "king"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    },
+    {
+      "npc_quest_file": "quest_stems/9856.json",
+      "graph_sha256": "8b2ab01144c42726ee4ea60eab74e8e4b7c75e30be19e71b090e212b90ac8d1b",
+      "npc_actor_id": "talking cat_5_talking cat",
+      "helper_actor_id": "queen",
+      "item_id": "books_2",
+      "recipient_id": "princess",
+      "authored_action_goal": "give Books to princess",
+      "source_pair_count": 2,
+      "all_source_candidate_ids": [
+        "6268f0a362a29451705058b1",
+        "dca3142a83df693f52be599e"
+      ],
+      "serial_stored_native_successes": 2,
+      "serial_native_event_patterns": [
+        [
+          "GiveObjectEvent",
+          "GiveObjectEvent"
+        ]
+      ],
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_recipient",
+        "item_id": "books_2",
+        "recipient_id": "princess"
+      },
+      "route_support": "SERIAL_STORED_NATIVE__DIRECT_STATIC_ONLY"
+    }
+  ],
+  "container_tasks": [
+    {
+      "npc_quest_file": "quest_stems/11069.json",
+      "graph_sha256": "96f699f0b5277c686af40a3186f321e61120869b4de3f7aac6b114174d873c11",
+      "npc_actor_id": "party goers_12_party goers",
+      "helper_actor_id": "musician",
+      "authored_action_goal": "put Pitch pipe in Pipe",
+      "item_id": "pitch pipe_9",
+      "container_id": "pipe_10",
+      "source_candidate_ids": [
+        "8534ffaefac961f64b0f3825",
+        "a465432d3f80698e72dcefec"
+      ],
+      "source_state": {
+        "pitch pipe_9": {
+          "name": "Pitch pipe",
+          "container": false,
+          "container_node": {
+            "target_id": "musician"
+          },
+          "contain_size": 0,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        },
+        "pipe_10": {
+          "name": "Pipe",
+          "container": true,
+          "container_node": {
+            "target_id": "musician"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "STATIC_SOURCE_SUPPORTED_BOTH_MAKERS; container must first be unequipped if necessary and placed in room for current native menu",
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_container",
+        "item_id": "pitch pipe_9",
+        "container_id": "pipe_10"
+      }
+    },
+    {
+      "npc_quest_file": "quest_stems/13614.json",
+      "graph_sha256": "5bf6e92261731a0840d5abd45b57458f6ccd0723830727b4cef559475fd02b9e",
+      "npc_actor_id": "werewolf",
+      "helper_actor_id": "the bartender",
+      "authored_action_goal": "put bone in mug",
+      "item_id": "bone_5",
+      "container_id": "mug_9",
+      "source_candidate_ids": [
+        "7d7808d8db02a747db5bdf53",
+        "35887b2e73e3404d02f6aaa8",
+        "9669986a08f4f01d8c658c39"
+      ],
+      "source_state": {
+        "mug_9": {
+          "name": "mug",
+          "container": true,
+          "container_node": {
+            "target_id": "the bartender"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        },
+        "bone_5": {
+          "name": "bone",
+          "container": false,
+          "container_node": {
+            "target_id": "the werewolves tavern_0"
+          },
+          "contain_size": 0,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "STATIC_SOURCE_SUPPORTED_BOTH_MAKERS; container must first be unequipped if necessary and placed in room for current native menu",
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_container",
+        "item_id": "bone_5",
+        "container_id": "mug_9"
+      }
+    },
+    {
+      "npc_quest_file": "quest_stems/15261.json",
+      "graph_sha256": "946de051b6f7b0bcc7cfe46e609d82be8f83f4350eafd7ff5caab27d1900af81",
+      "npc_actor_id": "a powerful but aged wizard_10_a powerful but aged wizard",
+      "helper_actor_id": "child",
+      "authored_action_goal": "put diamond in bag",
+      "item_id": "diamond_2",
+      "container_id": "bag_5",
+      "source_candidate_ids": [
+        "8f948fadc00b890a4ec65349",
+        "fd619a2e6d38ea652a1b459c",
+        "94b13cc8cf81e425f1fc631e"
+      ],
+      "source_state": {
+        "bag_5": {
+          "name": "bag",
+          "container": true,
+          "container_node": {
+            "target_id": "child"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        },
+        "diamond_2": {
+          "name": "diamond",
+          "container": false,
+          "container_node": {
+            "target_id": "the throne_0"
+          },
+          "contain_size": 0,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "STATIC_SOURCE_SUPPORTED_BOTH_MAKERS; container must first be unequipped if necessary and placed in room for current native menu",
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_container",
+        "item_id": "diamond_2",
+        "container_id": "bag_5"
+      }
+    },
+    {
+      "npc_quest_file": "quest_stems/16686.json",
+      "graph_sha256": "9f72b5302980ceba1802ad69a3a2dd6452a7df5fa64b25aaeb8323f0e6f9f934",
+      "npc_actor_id": "witch_10_witch",
+      "helper_actor_id": "child",
+      "authored_action_goal": "put belt in backpack",
+      "item_id": "belt_7",
+      "container_id": "backpack_9",
+      "source_candidate_ids": [
+        "d4f1d6e654d92df0f8c9335a",
+        "289899a614c29b4d6e601fae",
+        "0021c965ea9cb0f4e8b6620f"
+      ],
+      "source_state": {
+        "belt_7": {
+          "name": "belt",
+          "container": false,
+          "container_node": {
+            "target_id": "child"
+          },
+          "contain_size": 0,
+          "size": 1,
+          "gettable": true,
+          "equipped": "wear",
+          "contained_nodes": {}
+        },
+        "backpack_9": {
+          "name": "backpack",
+          "container": true,
+          "container_node": {
+            "target_id": "child"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": "wear",
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "STATIC_SOURCE_SUPPORTED_BOTH_MAKERS; container must first be unequipped if necessary and placed in room for current native menu",
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_container",
+        "item_id": "belt_7",
+        "container_id": "backpack_9"
+      }
+    },
+    {
+      "npc_quest_file": "quest_stems/17311.json",
+      "graph_sha256": "54c545b1755fa66833bdabf21ef95dce851071c3c22ff831e857e70b310ccb75",
+      "npc_actor_id": "fighter",
+      "helper_actor_id": "squire",
+      "authored_action_goal": "put weights in sack",
+      "item_id": "weights_7",
+      "container_id": "sack_10",
+      "source_candidate_ids": [
+        "d0631a7b74bbb983d80c7771",
+        "78c95a71a1bfe84e9a0422ee",
+        "343da746fe67a400c102dad4"
+      ],
+      "source_state": {
+        "weights_7": {
+          "name": "weights",
+          "container": false,
+          "container_node": {
+            "target_id": "training fields_0"
+          },
+          "contain_size": 0,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        },
+        "sack_10": {
+          "name": "sack",
+          "container": true,
+          "container_node": {
+            "target_id": "squire"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "STATIC_SOURCE_SUPPORTED_BOTH_MAKERS; container must first be unequipped if necessary and placed in room for current native menu",
+      "measurement_predicate": {
+        "kind": "existing_item_parent_equals_existing_container",
+        "item_id": "weights_7",
+        "container_id": "sack_10"
+      }
+    }
+  ],
+  "unsupported_self_target_tasks": [
+    {
+      "npc_quest_file": "quest_stems/11448.json",
+      "graph_sha256": "d7177fcb8e7b30bcf16ed30d8970f7423a8a8c37726fb482bec68fbb0e303ee1",
+      "npc_actor_id": "sioux chef",
+      "helper_actor_id": "old gnaisha",
+      "authored_action_goal": "put bag in bag",
+      "item_id": "bag_2",
+      "container_id": "bag_2",
+      "source_candidate_ids": [
+        "9ea41e391dfec4a430146d0b",
+        "b2040c028b79a2b105985935"
+      ],
+      "source_state": {
+        "bag_2": {
+          "name": "bag",
+          "container": true,
+          "container_node": {
+            "target_id": "old gnaisha"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "CURRENT_UNIQUE_BOUND_ITEM_IS_CONTAINER_ITSELF; do not invent second object"
+    },
+    {
+      "npc_quest_file": "quest_stems/17058.json",
+      "graph_sha256": "c57b71f4191ff0ac19165376b955d9bf6f1b602c26e12ab68fa7ab6bcd07a7b1",
+      "npc_actor_id": "owl",
+      "helper_actor_id": "doctor",
+      "authored_action_goal": "put cup in cup",
+      "item_id": "cup_3",
+      "container_id": "cup_3",
+      "source_candidate_ids": [
+        "efd2d9e5d3c31f16407d6742",
+        "145dcf76f8629811abb17919"
+      ],
+      "source_state": {
+        "cup_3": {
+          "name": "cup",
+          "container": true,
+          "container_node": {
+            "target_id": "doctor"
+          },
+          "contain_size": 3,
+          "size": 1,
+          "gettable": true,
+          "equipped": null,
+          "contained_nodes": {}
+        }
+      },
+      "new_route_native_witness": false,
+      "status": "CURRENT_UNIQUE_BOUND_ITEM_IS_CONTAINER_ITSELF; do not invent second object"
+    }
+  ],
+  "minecraft_configs": [
+    {
+      "task_id": "multiagent_cooking_golden_apple_bread_hells_kitchen",
+      "targets": [
+        "golden_apple",
+        "bread"
+      ],
+      "initial_inventory": {
+        "0": {
+          "gold_ingot": 4,
+          "apple": 1
+        },
+        "1": {
+          "gold_ingot": 4
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_golden_apple_cake_hells_kitchen",
+      "targets": [
+        "golden_apple",
+        "cake"
+      ],
+      "initial_inventory": {
+        "0": {
+          "gold_ingot": 4,
+          "apple": 1,
+          "milk_bucket": 2
+        },
+        "1": {
+          "gold_ingot": 4,
+          "milk_bucket": 1,
+          "egg": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_golden_apple_rabbit_stew_hells_kitchen",
+      "targets": [
+        "golden_apple",
+        "rabbit_stew"
+      ],
+      "initial_inventory": {
+        "0": {
+          "gold_ingot": 4,
+          "apple": 1
+        },
+        "1": {
+          "gold_ingot": 4,
+          "bowl": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_golden_apple_baked_potato_hells_kitchen",
+      "targets": [
+        "golden_apple",
+        "baked_potato"
+      ],
+      "initial_inventory": {
+        "0": {
+          "gold_ingot": 4,
+          "apple": 1
+        },
+        "1": {
+          "gold_ingot": 4,
+          "coal": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_golden_apple_cooked_beef_hells_kitchen",
+      "targets": [
+        "golden_apple",
+        "cooked_beef"
+      ],
+      "initial_inventory": {
+        "0": {
+          "gold_ingot": 4,
+          "apple": 1
+        },
+        "1": {
+          "gold_ingot": 4,
+          "coal": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_bread_cake_hells_kitchen",
+      "targets": [
+        "bread",
+        "cake"
+      ],
+      "initial_inventory": {
+        "0": {
+          "milk_bucket": 2
+        },
+        "1": {
+          "milk_bucket": 1,
+          "egg": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_cake_rabbit_stew_hells_kitchen",
+      "targets": [
+        "cake",
+        "rabbit_stew"
+      ],
+      "initial_inventory": {
+        "0": {
+          "milk_bucket": 2,
+          "bowl": 1
+        },
+        "1": {
+          "milk_bucket": 1,
+          "egg": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_cake_baked_potato_hells_kitchen",
+      "targets": [
+        "cake",
+        "baked_potato"
+      ],
+      "initial_inventory": {
+        "0": {
+          "milk_bucket": 2,
+          "coal": 1
+        },
+        "1": {
+          "milk_bucket": 1,
+          "egg": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_cake_cooked_beef_hells_kitchen",
+      "targets": [
+        "cake",
+        "cooked_beef"
+      ],
+      "initial_inventory": {
+        "0": {
+          "milk_bucket": 2,
+          "coal": 1
+        },
+        "1": {
+          "milk_bucket": 1,
+          "egg": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": true,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_rabbit_stew_baked_potato_hells_kitchen",
+      "targets": [
+        "rabbit_stew",
+        "baked_potato"
+      ],
+      "initial_inventory": {
+        "0": {
+          "bowl": 1
+        },
+        "1": {
+          "coal": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": false,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_rabbit_stew_cooked_beef_hells_kitchen",
+      "targets": [
+        "rabbit_stew",
+        "cooked_beef"
+      ],
+      "initial_inventory": {
+        "0": {
+          "bowl": 1
+        },
+        "1": {
+          "coal": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": false,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    },
+    {
+      "task_id": "multiagent_cooking_baked_potato_cooked_beef_hells_kitchen",
+      "targets": [
+        "baked_potato",
+        "cooked_beef"
+      ],
+      "initial_inventory": {
+        "0": {
+          "coal": 1
+        },
+        "1": {
+          "coal": 1
+        }
+      },
+      "blocked_access_to_recipe": [],
+      "blocked_actions": null,
+      "restrict_to_inventory": false,
+      "support": "Authored recipe and native Give/Craft/Smelt setup source; no Hell Kitchen episode executed by this review",
+      "initial_inventory_split_gold_or_cake_recipe": false,
+      "candidate_paths": [
+        "transfer initial ingredients then each agent produces assigned inventory target",
+        "one agent produces partner target and transfers the existing product"
+      ],
+      "scope": "Shared cooperative objective and per-agent inventory check; not private-role or promise-equivalence evidence. Initial split does not prove no solo/world-resource alternative."
+    }
+  ],
+  "source_files": {
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/candidates.jsonl": {
+      "sha256": "1cad1834034c58c88c38850b0de17d4a055865bc730e1740b1a8dc6a9f6e7d8c",
+      "bytes": 11138724
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/quests.jsonl": {
+      "sha256": "5969ff824841620d54da2477ef10d29a7dedb57e53ad64b3ae1f5dd4e91fc93d",
+      "bytes": 13879091
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/graphs.jsonl": {
+      "sha256": "30bfb038d236d755b4b541735048ec708f5584414092090a503dcdd3b49cc10c",
+      "bytes": 28925764
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_independent_goal_source/binding_alternatives.jsonl": {
+      "sha256": "eabf3389839c8057531b44fff65fc5c9742285c1db08f0b81be2e8fba82e68af",
+      "bytes": 4056995
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/candidate_witnesses.jsonl": {
+      "sha256": "6c20ff17366c954da03e18bb496fb3beac0ac7a1f06961c10e7cdfd692459804",
+      "bytes": 55933633
+    },
+    "/home/xiang/.cache/game-npc-research/runs/e84_native_qualification/cross_snapshots.jsonl": {
+      "sha256": "0f25cbabbcfd0d690e5ac166f37a49a2784f9d80a9b1e8f365c2a338627c459b",
+      "bytes": 2496136
+    },
+    "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/events/graph_events.py": {
+      "sha256": "6ea8dfa374a12e5afafacf2778da2554b0b14d82db75147c8a38f89f76e33025",
+      "bytes": 160817
+    },
+    "/home/xiang/.cache/game-npc-research/sources/LIGHT/light/graph/elements/graph_nodes.py": {
+      "sha256": "32e0e63c1133d91528ae7635d944a34cbc52c3c6061b3c004fcd8dd82b2d3c5d",
+      "bytes": 32781
+    },
+    "/home/xiang/ssn-group-papaer/workbench/game-npc-agents/scripts/native_cooperation_episodes.py": {
+      "sha256": "e3c18cc9da85d860b93017a55e074ca2ec895a497c3ab6cb94e7df34e7afe4b6",
+      "bytes": 17294
+    },
+    "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/tasks/cooking_tasks/require_collab_test_2_items/2_agent_hells_kitchen_full.json": {
+      "sha256": "d884bf69cf72adb62ff3d4812ac7572f57cf86d69a6e6cabba4012bd404683fd",
+      "bytes": 40147
+    },
+    "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/src/agent/tasks/tasks.js": {
+      "sha256": "43a70dc407f21bde16fbd77c3bed193ee71feceeca03b7c0cac00e198f21c104",
+      "bytes": 25263
+    },
+    "/home/xiang/.cache/game-npc-research/sources/mindcraft-paper-repro/src/agent/tasks/cooking_tasks.js": {
+      "sha256": "f8f66db88635a56bd333262e434f88c9d397adaa5f4d88190b9d0aec9a6f98c7",
+      "bytes": 15856
+    }
+  },
+  "mechanical_vs_scientific_outcomes": "Actor-specific original Give/Put flags differ mechanically under delegation. That difference is not a model finding. Recognition, actual continuation, new agreement and material consequences require future authorized runs. No current model outcome or claim grade is changed.",
+  "relay_common_scope": {
+    "author_motivation_source": "e84_independent_goal_source/quests.jsonl, keyed by npc_quest_file; quest.short_motivation/mid_motivation/long_motivation",
+    "direct_helper_route_support": "Static implication from the stored serial witness and original GiveObjectEvent menu/guard/effect. Not newly executed.",
+    "interpretation": "Recipient holding is an existing material readout, not authored actor-specific Give or full private-purpose completion. Social obligations/credit depend on actual disclosed agreement; no unique-correct-cooperation label."
+  }
+}
