@@ -15,7 +15,7 @@
 | 已恢复的系统、环境、缓存与资产 | [BASELINES](BASELINES.md) |
 | 全部数据、原始缓存、历史路径与版本 | [data](data/README.md) |
 | 矿区A强近邻、论文与源码事实 | [knowledge](knowledge/README.md)；[通用知识](../knowledge/README.md) |
-| 原始设计与完整结果说明 | [experiments](experiments/README.md)，79张卡的索引在整体报告附表 |
+| 原始设计与完整结果说明 | [experiments](experiments/README.md)，79张卡与未运行设计的统一索引 |
 | 最终统计、负结果、来源和成本 | [results](results/README.md) |
 | 保留代码、复算与旧文件精确恢复 | [scripts](scripts/README.md) |
 | 当前维护与历史追溯 | [logs](logs/README.md)，旧重复过程日志转为精确Git历史入口 |
