@@ -1,6 +1,6 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-17 04:00）：探索中，只有一条主线。** 问题审计见 [knowledge/research/QUESTION_AUDIT_2026-10-17.md](knowledge/research/QUESTION_AUDIT_2026-10-17.md)，已有工作地图与增量定位见 [NOVELTY_2026-10-17.md](knowledge/research/NOVELTY_2026-10-17.md)（基于 33 张正文精读卡），证据汇总见 [REPAIR_FOLLOWS_COUPLING.md](knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md)。导师 10-16 的反馈与独立评估见 [ADVISOR_2026-10-17.md](knowledge/research/ADVISOR_2026-10-17.md)。不是已录用论文。“核心入口”以下是 2026-10-11 结项时的历史记录。
+**状态（2026-10-17 12:45）：本线已结项。** 结项判断见 [knowledge/research/CLOSEOUT_2026-10-17.md](knowledge/research/CLOSEOUT_2026-10-17.md)：可靠的经验结论保留，最有希望的统一图景（原分工是有清晰边界的吸引子）在 E119 中落空（回归随对准度线性渐变），按收尾规则停止。下面“当前主线”为结项前的记录。
 
 ## 当前主线
 **问题：** 良性的继续训练为什么会撤回某些后加的修改（遗忘、损伤），而不撤回另一些？一个组件的角色由什么承载？
