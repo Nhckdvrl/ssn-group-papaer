@@ -1,34 +1,44 @@
-# 人格漂移、角色成长和长程操纵：Game NPC 的真实构念
+# 人物、情绪、记忆和关系怎样随时间变化
 
-原阅读2026-10-14；2026-10-18补核Generative Agents、CHI与PCSP。这里区分 **语言型 role-play** 与 **有游戏状态和实际后果的 NPC**，前者提供评价/训练方法，不能直接转成后者已复现的发现。
+更新：2026-10-18。人物并不是一个固定标签：身份、价值、知识、短时情绪、当下目标、对他人的关系和身体表达可能按不同速度变化。研究应解释这些变化怎样发生、怎样被作者控制及玩家理解，而不把“越稳定越好”当统一目标。
 
-## 1. 文献谱系与主张所有权
-- [RoleBreak, COLING 2025](https://aclanthology.org/2025.coling-main.494/)：角色被对抗输入导致偏离，研究 query sparsity 和 role-query conflict，提出叙述性防御。角色受诱导已非空白。
-- [Beyond Static Persona Consistency, ACL 2026 main](https://aclanthology.org/2026.acl-long.1336/)：把 identity-layer stability 与 adaptive-layer appropriateness 分开，L/M/S 角色心理状态和纠偏。**“人物不是一成不变的静态 persona”是已有贡献**。
-- [ArcANE, arXiv 2606.05553](https://arxiv.org/abs/2606.05553)：人物在剧情不同阶段应该适时改变，会议接收身份本轮未确认。
-- [PCSP 2026 arXiv](https://github.com/yoosunghong/pcsp)：行为条件化政策、轨迹/persona 内部对齐与独立动作 probe 不等价；已经有测量反证，不能只看文本一致。
-- [CHI 2024 Lies, Deceit, and Hallucinations](https://www.robertxiao.ca/research/lies-deceit-and-hallucinations/)：29位玩家玩预生成、人工审阅台词后访谈，有意义的主动谎言和无意错误得到不同体验解释；不是在线LLM错误率。
-- [Generative Agents UIST 2023](https://arxiv.org/abs/2304.03442)：记忆/反思/计划与社会模拟的基础；已报告过度接受不合兴趣的提议与口头有意却未赴约。固定历史采访消融及LLM更新部分物体状态的边界见[重读](FIELD_REVIEW_2026-10-18.md#4-角色行为与社会模拟从文本像人到可核后果)，不宜称首次记忆或言行失配。
+## 1. 四种现象必须分开
 
-## 2. 不可混同的四种轨迹
-| 轨迹类型 | 示例 | 什么时候才判为问题 |
+| 现象 | 可以合理发生的情况 | 需要证明的问题 |
 |---|---|---|
-| **身份稳定** | 商人有长期职业身份和价值边界 | 不依赖无依据偏好或格式变更意外丢失 |
-| **合理人物成长** | 经多次玩家行为后改变信任/敌意 | 与可追溯自然事件相联系；变化可能是**正确**而非漂移 |
-| **能力与体验上的噪声** | 台词重复、词风变化、剧情阶段造成情绪转变 | 单独不能证明 identity drift |
-| **失控漂移/受攻击偏移** | 人物无来源地把攻击者声明当历史真相，改变原则/关系/真实动作 | 必须展示权限边界和有意义后果，排除它只是合法人物演化 |
+| 身份／价值持续 | 职业、背景、核心立场在无关输入下保持 | 无依据丢失、互相矛盾，是否跨情境影响表现 |
+| 合理成长与关系变化 | 经真实经历、获知信息、任务进展后改变信任或目标 | 变化是否有来源、幅度合适、能被人物与玩家理解 |
+| 短时情绪和表达波动 | 受挫、惊喜、疲劳、语境和身体信号变化 | 是否与事件和人物相合，而非把波动本身算漂移 |
+| 非合意漂移或污染 | 玩家声明被误当历史、错误摘要固定了新身份 | 来源／权限错误怎样持续并影响后续行为和关系 |
 
-## 3. 为什么这个问题对游戏 NPC 有意义
-普通聊天角色的内部 persona 分类器往往只看单轮语义/语气；游戏角色能改变**物品交易、互惠关系、加入阵营、暴露线索、执行保护/攻击动作**。若目标是现实玩家体验，还必须检验真实玩家是否察觉角色变迁有意义，不能用同一个LLM一边模拟经历一边判审。
-角色的“世界记忆”至少需要来源（目击、谣言、玩家声称、游戏日志）、可更正性、时间和可信度。把玩家的谎言当成自身过去会改变角色状态，这是一个**需要验证的候选风险**，而非已知一般定律。
+这个区分连接[角色／用户个性化综述](../../../library/themes/game-npc-social/papers/TWO_TALES_PERSONA_2024.md)、[动态人格](papers/DYNAMIC_PERSONA_COHERENCE_2026.md)与[同伴体验](../../../library/themes/game-npc-social/papers/COMPANIONS_DISSERTATION2019.md)。适应玩家与保持独立人物也可能同时有价值。
 
-## 4. 深入研究需要哪些实验区分
-- **同历史不同干预**：玩家行为确实改变了NPC可见关系/事件 vs 单纯改变措辞；保持其它世界条件可比。
-- **同样角色不同事件**：合法成长 vs 无来源变异；需事前设计者意图/剧情许可标准。
-- **语言 vs 行动 vs 关系**：改口吻是否意味着真实游戏行为变化？只有一层变化时不可笼统称人格漂移。
-- **评价器外部性**：文本judge、行为统计、玩家回放/人工标注各自能证明什么；模型内部persona embedding相似不是忠实性的金标准。
-- **跨时间/伙伴/模型**：换玩家与NPC消息来源，固定输入 token 和剧本事件；识别脚手架/记忆归纳而非模型本身。
+## 2. 传统情绪和社会架构提供了什么
 
-## 5. 可形成贡献的形态
-现有 persona/漂移度量在实际可执行 NPC 社会中是否预测有意义的状态和玩家行为？什么自然事件更新了身份中的哪个层次？已有修正机制是否会抹去合法成长？可能走评价、机制或方法，不锁定“做新的漂移 Benchmark”。 
-阅读范围：Generative Agents与CHI本轮正文全读，PCSP正文/关键附录重读；其他来源仍按既有P1/P2或单篇卡，不随更新日期升级。见 [source status](DOMAIN_ATLAS.md#source-status)。
+[EMA](../../../library/themes/game-npc-social/papers/EMA_2009.md)把情绪看作对因果信念、目标重要性、可控性和应对策略的评价过程。它不是让角色多使用正面词语；同一事件可因不同信念和目标引发不同情绪，后续应对又更新解释。[FAtiMA Modular](../../../library/themes/game-npc-social/papers/FATIMA_MODULAR_2014.md)进一步把通用评价与应用情境拆开，[Toolkit](../../../library/themes/game-npc-social/papers/FATIMA_TOOLKIT2022.md)让作者编辑知识、目标、情绪与社会决策。其模型或应用存在不代表心理学上已全面验证。
+
+[PsychSim](../../../library/themes/game-npc-social/papers/PSYCHSIM_2005.md)用决策理论和嵌套他人模型连接信念、动机与社会影响；[Talk of the Town](../../../library/themes/game-npc-social/papers/TALK_OF_TOWN_2015.md)让角色观察、转述、误记和说谎，保存信息传播来源。它们提醒记忆不只是向量检索：谁见过、谁告诉谁、哪种内容是猜测，以及如何修正，会改变角色互动。
+
+Generative Agents把记忆、反思和计划用于小镇社会模拟，是LLM长时角色的重要基础；前轮完整正文与关键消融也记录了采访式评价、部分物体状态由LLM更新及过度接受邀请等边界。[原阅读](FIELD_REVIEW_2026-10-18.md#4-角色行为与社会模拟从文本像人到可核后果)
+
+## 3. 本轮新证据怎样改变“动态人格”判断
+
+[Beyond Static Persona Consistency](papers/DYNAMIC_PERSONA_COHERENCE_2026.md)明确区分稳定身份和适应性状态，是应保留的方向贡献。但其Vanilla每轮只得到人物、当前事件和固定5.0初始状态，没有历史响应或状态记忆。加入累计状态的收益不能证明正常保留历史的强商业模型仍普遍不会情绪累积。
+
+原文PCC定义与若干表格汇总还存在需澄清的不一致；不能仅凭接近满分的结果认定心理状态模型充分有效。这里区分作者提出的概念、相对该基线的效果，以及尚未排除的普通记忆解释。具体数值和附录位置保留在单篇卡。
+
+[Persona Dynamics / PANDA](papers/PERSONA_DYNAMICS_ACL2025.md)研究人格属性在文本游戏中的作用；[Agent Sociodrama](papers/AGENT_SOCIODRAMA_2026.md)根据社会动态与任务诊断重选团队人格配置并重开任务；[CDT](papers/CDT_2026.md)从故事提取角色逻辑。这些分别关注属性—行为、团队角色与人物决策，不应拼成一个“人格成长已解决”的叙事。
+
+[InCharacter](../../../library/themes/game-npc-social/papers/INCHARACTER_2024.md)、[CharacterEval](../../../library/themes/game-npc-social/papers/CHARACTEREVAL_2024.md)的静态量表／文本评价可用于某些身份维度，但不能直接判成长。[CoSER](papers/COSER_2025.md)和[HER](../../../library/themes/game-npc-social/papers/HER_2026.md)增加情境、动机和思想，同样主要在文本演绎中验证。将这些方法接到可执行角色时，语言、动作、关系、作者和玩家读数仍须分别连接。
+
+## 4. 关系和身体表达如何进入玩家体验
+
+同伴研究显示玩家重视人物自己的目标、独特性和关系发展，同时厌恶挡路和反复保护弱队友。它提供设计压力，不证明某一种记忆模块能解决。[237人研究的作者改写章](../../../library/themes/game-npc-social/papers/COMPANIONS_DISSERTATION2019.md)
+
+[情绪镜像试验](../../../library/themes/game-npc-social/papers/AFFECTIVE_MIRRORING2025.md)中理想人控镜像更受欢迎，而自动镜像受自然表情识别限制；机械模仿玩家表情也可能抹去角色独立情绪。[VR互动研究](../../../library/themes/game-npc-social/papers/PRESS_WAVE2024.md)与[语音NPC研究](../../../library/themes/game-npc-social/papers/DIALOGS_GENAI2026.md)说明视线、距离、打断、发音和回应时序会改变玩家对人物的归因。文本人格不是身体表现的充分代理。
+
+## 5. 可形成一般认识的问题
+
+什么事件应改变哪个人物层次？同一历史下，状态更新、简单摘要、全历史提示和显式社会模型有何差异？为了防漂移而加入的纠正是否抹掉了合理成长？人物变化能否预测未见情境的行为，也能被玩家理解而非只被评委识别？知识来源错误怎样沿关系传播，又怎样被更正？
+
+这些问题可以支持训练、记忆／表示、因果分析、作者工具或玩家研究；不必一律做新的“漂移benchmark”。仍需补完整RoleBreak／ArcANE等已有摘要、更多原生行为人格、跨会话长期玩家、多语言文化及联合语音／身体证据。[角色综述](../../../library/themes/game-npc-social/papers/OSCARS_SURVEY_2025.md)和[广域总账](READING_CATALOG.md)只是继续追原文的入口，不代替这些阅读。

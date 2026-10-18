@@ -1,8 +1,47 @@
-# CoSER：人物动机与给定情境已有的强对照
+# CoSER: Coordinating LLM-Based Persona Simulation of Established Roles
 
-- 来源：[ICML2025官方全文](https://proceedings.mlr.press/v267/wang25dk.html)、[代码](https://github.com/Neph0s/CoSER)。本地PDF `/tmp/npc_coser.pdf`。
-- 阅读范围：正文§3–5、GCA设计、main tables、inner-thought／motivation消融Table5及附录入口；当前未审其作者代码和完整数据抽取流水线，不能称完成源码审计。
-- 论文事实：771本书、17966人物；抽取对话、场景、人物动机与thought/action，部分非对话内容由模型推断。GCA把本人物profile／motivation、场景和其他人物资料作为给定情境；训练亦覆盖省略部分资料的组合。角色内心与动机对其他模拟参与者私有。模拟以文学场景对话为主、critic评价多维表现，不能冒称独立物理游戏状态的成功率。
-- 已有对照：Table5同时比较inner thoughts与动机的启用／移除，正文报告多模型改善；Llama3.1-8B 52.99→51.97（有thought时去motivation），CoSER8B 56.45→54.65。人物动机信息影响角色表现已被直接实验，不能把加一句责任／目标提示当新命题。
-- 我们的解释：真实NPC的计划、执行和状态可以提供不同证据层次，但“我们用了物理引擎”本身不是足够增量；必须有能跨角色／场景解释决策形成的具体新认识。E44首先是普通信息解释诊断，不是一篇替代CoSER的benchmark论文。
-- 竞争解释／限制：thought与动机同时关联训练格式、评价场景及生成长度；这里摘录的是作者固定评价，不推一般所有角色必然受益，也不把profile与实际目标合并成一种心理量。
+- 规范记录：`R11`；主题类型：`role_training_narrative`。
+- 主源：[论文与出版信息](https://proceedings.mlr.press/v267/wang25dk.html)；实际所读文件：[PDF](https://raw.githubusercontent.com/mlresearch/v267/main/assets/wang25dk/wang25dk.pdf)。
+- 版本：ICML 2025, PMLR 267:64822–64858。
+- 阅读范围（2026-10-18）：完整正文 pp.1–10、表1–6；未宣称37页附录全部读完。
+- 证据身份：正文阅读；未进行代码复现、模型调用或玩家实验。发表／接收身份与实际所读版本分开记录。
+
+## 1. 问题、原有做法与改变的前提（DOCUMENTED）
+
+通用QA式角色数据与自然文学交互存在差距；本文用原著对话、经历、动机及情境建立训练和多人演绎评价。
+
+## 2. 方法、任务与主要证据
+
+从771本书抽取17966角色、29798段会话，平均13.2轮，建立剧情/经历/动机/内心思考等层次；Llama3.1 8B/70B多角色SFT并训练下一发言者/环境响应。Given-Circumstance Acting以各自隐藏动机和思想推进多人文本剧情，20轮上限；环境由GPT-4o模拟。原始台词来自书，思想/动作部分为模型推断，不能一概称真实原作标注。
+
+200段测试（100来自见过书、100未见书），3次运行；原协议CoSER70B平均59.06、GPT-4o59.95。LifeChoice 93.47对75.96，是17.51个百分点/约23%相对增幅。人评60个场景7模型，3位标注员各评20场景，非每场景3独立评分。结构化经历/会话检索有效，原文片段检索弱；动机/内心思考总体有益，但8B去动机56.81略高于标准56.45，非每组都改善。
+
+## 3. 与最近邻的距离
+
+此表包含后来工作，用于当前领域定位，不把后来论文写成本文发表时的基线。
+
+| 近邻 | 本文相对该工作的方法、对象或证据区别 |
+|---|---|
+| [character llm](../../../../library/themes/game-npc-social/papers/CHARACTER_LLM_2023.md) | 原始对话与合成思想混合，不是将整段经历都合成为训练文本。 |
+| [rolellm](../../../../library/themes/game-npc-social/papers/ROLELLM_2024.md) | 从通用／角色专有QA扩展为给定情境的多人行为。 |
+| [her](../../../../library/themes/game-npc-social/papers/HER_2026.md) | 后者新增隐藏系统推理、偏好奖励与RL，且更换CoSER评委。 |
+| [characterbox](../../../../library/themes/game-npc-social/papers/CHARACTERBOX_2024.md) | 共享多人文本演绎目标，原始数据和评估参考的权威来源不同。 |
+
+## 4. 证据边界与未排除解释
+
+故事一致性以原著走向为参考，未验证玩家偏离原作的新分支应如何评估。人物fidelity、故事质量、原作一致性分开；模型评委随模型/参考/rubric/长度校正变化明显。NPC环境响应是文本模型而非游戏引擎，缺少玩家体验与因果执行证据。后续HER改变评委/格式后绝对分不可横比。
+
+## 5. 对整个NPC领域可迁移的认识
+
+连接人物学习、多人调度与故事质量的重要原始工作；支持阅读经历和动机的数据结构，不能升级为已解决实时可玩NPC。
+
+
+## 6. 本次校正
+
+正式ICML版的动机／思考消融在Table 6。旧卡将52.99→51.97、56.45→54.65写为去动机，实际是去内心思考；去动机分别为49.63与56.81。移除旧错误，不据其中一列声称所有模型都改善。正式页码是64822–64858。
+
+## 官方资产与历史核查范围
+
+[官方代码、模型与数据入口](https://github.com/Neph0s/CoSER)
+
+作者README提供数据构建、GCA评价、样例及8B／70B模型入口。此前卡与本次阅读均未审完代码和数据抽取流水线；入口存在不代表已复现。 历史核查细节与固定文件身份见[此前规范卡](https://github.com/Nhckdvrl/ssn-group-papaer/blob/c3af2a785368632ebcce5bc8cfce8994ecc56eb3/workbench/game-npc-agents/knowledge/papers/COSER_2025.md)。

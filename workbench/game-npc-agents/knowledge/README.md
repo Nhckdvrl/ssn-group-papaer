@@ -1,22 +1,43 @@
-# NPC 通用知识库
+# Game NPC Agent 通用知识库
 
-本目录只记录整个Game NPC Agent领域的理解与论文来源；[矿区A知识库](../mine-a-persona-strategy/knowledge/README.md)只记录定向领域理解、文献与定位。具体实验在矿区A的`experiments/`，结果及实验审计在`results/`，均位于知识库之外。
+这里维护整个游戏NPC领域的概念、方法谱系、实际系统、玩家与作者证据。NPC可以是对手、同伴、居民或剧情人物；叙述者、世界裁决器、模拟玩家和社会仿真与它们相邻，但研究目的和权限不同。知识库据此组织问题，不以任何单一矿区的任务定义筛选整个领域。
 
-| 主题 | 入口 |
+## 从地图到专题，再到原文
+
+| 层次与问题 | 入口 |
 |---|---|
-| NPC类型、控制、互动、体验与研究尺度 | [领域地图](DOMAIN_ATLAS.md) |
-| 综述、经典系统、现代agent与合作的完整证据链 | [综合阅读与范围](FIELD_REVIEW_2026-10-18.md) |
-| 强商业模型、普通记忆/规划/技能与脚本参照 | [强基线原则](STRONG_BASELINES.md) |
-| 角色目标、设计者约束、目标持续与伙伴适应 | [目标控制谱系](GOAL_CONTROL_REVIEW.md) |
-| 原生训练、执行与部署 | [原生NPC前沿](NATIVE_GAME_NPC_FRONTIER.md) |
-| 真值、可见信息、意图、动作和后果 | [测量规范](MEASUREMENT.md) |
-| 安全、泄密及剧情权限 | [NPC安全](NPC_SECURITY.md) |
-| 社会关系、角色成长和人格变化 | [人格漂移](PERSONA_DRIFT.md) |
-| 游戏经济与群体互动 | [游戏经济](GAME_ECONOMY.md) |
-| 来源身份、阅读范围及欠账 | [来源登记](DOMAIN_ATLAS.md#source-status) |
-| 通用系统与跨方向逐篇文献 | [论文卡](papers) |
-| 已核玩家体验与工业主源 | [玩家证据](../mine-a-persona-strategy/knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md) · [应用审计](../mine-a-persona-strategy/knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)，保留在矿区A的单一原文件 |
+| NPC功能、17个交叉方向、研究尺度与覆盖空白 | [领域地图](DOMAIN_ATLAS.md) |
+| 逐篇版本、发表身份、正文／附录范围、来源与未读欠账 | [阅读总账](READING_CATALOG.md) · [JSON](READING_CATALOG.json) |
+| 动作风格、原生控制、学习、对手、难度和人类合作 | [学习、控制与人类合作](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md) |
+| 人物知识、表达、角色训练、原创人物与评价有效性 | [角色学习与评价](ROLE_LEARNING_AND_EVALUATION.md) |
+| 叙事规划、情绪、群体关系、社会规范与制度 | [叙事、社会与制度](SOCIAL_SIMULATION_AND_NARRATIVE.md) |
+| 玩家表达与选择、交互负担、作者工作流、可编辑性 | [玩家体验与作者工具](PLAYER_EXPERIENCE_AND_AUTHORING.md) |
 
-通用论文卡包括LIGHT／Dragon、CDT、KNUDGE、CoSER、HAMLET、NCP、F.A.C.U.L.、MineNPC、MMOAgent等系统与领域来源。矿区A围绕心理测量、策略人设、目标／承诺、控制机制和自身实验建立的定向卡在[专属论文目录](../mine-a-persona-strategy/knowledge/papers)；一篇只保留一份，互相引用。
+四张综合页互相交叉：例如同伴自主性同时涉及合作、人物目标和玩家体验；叙事工具同时涉及作者控制、世界规则和角色表达。分组方便阅读，不表示独立学科或投入优先级。
 
-阅读以逐篇实际范围为准，论文正文、长附录、作者代码与本地复算分别登记；旧卡P0–P4标记不替代具体范围，会场身份另核。2026-10-18重写领域入口，保留安全、经济与人格等方向；旧卡没有全部重读，不因本轮日期自动升级。通用知识中的例子或过去建议不构成运行授权；当前实验保持暂停。
+## 跨方向的具体问题
+
+| 问题 | 入口 |
+|---|---|
+| 角色目标、作者约束、规划、行为树、效用与伙伴适应 | [目标控制谱系](GOAL_CONTROL_REVIEW.md) |
+| 强模型、普通记忆／规划／技能、脚本及信息权限 | [强基线原则](STRONG_BASELINES.md) |
+| 评价构念、观察权限、独立样本、动作与体验证据 | [测量规范](MEASUREMENT.md) |
+| 原生动作接口、训练、模块分工与部署 | [原生NPC前沿](NATIVE_GAME_NPC_FRONTIER.md) |
+| 情绪、关系、记忆、人格变化与角色成长 | [人格与关系变化](PERSONA_DRIFT.md) |
+| 生产、交易、资源、市场与制度 | [游戏经济](GAME_ECONOMY.md) |
+| 知识权限、玩家说服、合法欺骗与越权防护 | [NPC安全](NPC_SECURITY.md) |
+| 经典系统、开放合作与早期强系统的定向阅读 | [31项定向专题](FIELD_REVIEW_2026-10-18.md) |
+
+方法研究需要公平对照与明确增量；玩家访谈、设计研究和创作实践需要与其问题相配的取样、分析和适用范围。人物表达、规则执行、玩家体验和作者劳动分别成立，不构成从“文本”到“引擎”的论文质量阶梯。
+
+## 规范论文卡与维护方式
+
+2026-10-18的外围扩展新增阅读记录96项：95篇论文正文、1个完整作者改写研究章。14张已有卡在[原论文目录](papers)更新，82张新卡放入[游戏NPC主题文献目录](../../../library/themes/game-npc-social/papers)。按题名、DOI／arXiv与前次31项核对无重复，但不将不同阅读范围简单相加成“127篇全文”。具体卡片和来源身份以[总账](READING_CATALOG.md)为准。
+
+维护时先查现有规范卡，再补原卡。正文、附录、版本核对、代码、数据及本地复算分别记录；下载成功不等于读完，出版年份不等于实验模型年份，自动裁判不等于真人评价。发现错误时直接修改对应卡和专题，同时保留关键不确定性。未重读的旧摘要与索引继续标明历史范围。
+
+更早的检索线索可从[主题文献入口](../../../library/themes/game-npc-social/README.md)查阅。第一方工业记录与旧玩家证据分别保留在[应用审计](../mine-a-persona-strategy/knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)和[玩家证据](../mine-a-persona-strategy/knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md)的既有文件；新的跨方向玩家与作者综合由本目录维护。
+
+## 与具体研究的边界
+
+[矿区A知识库](../mine-a-persona-strategy/knowledge/README.md)保存该方向的定位；其`experiments/`、`results/`和`CLAIMS.md`保存实验、结果与主张。外围阅读可以修正领域理解，不自动升级、关闭或恢复任何研究。当前实验保持暂停。

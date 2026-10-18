@@ -1,87 +1,67 @@
-# 目标控制研究谱系：切口为什么重要，哪些认识已属于前人
+# NPC目标与控制：角色、作者、玩家和世界的不同职责
 
-更新：2026-10-18。保留13/17日定向阅读，补充经典控制、强模型与普通重规划比较；未将旧文献全部重新精读。原文动机记为 DOCUMENTED；推断作者如何想到实验只记为 RECONSTRUCTED。阅读范围逐条列出，没有本地重现论文数字。
+更新：2026-10-18。本页从NPC控制的完整谱系出发：角色选择、身体与技能执行、作者意图、戏剧组织、玩家适应和系统维护。合作中的目的／承诺只是其中一种情境。新论文的正文阅读见[总账](READING_CATALOG.md)；较早定向文献的具体范围在本页末保留。
 
-## 1. LIGHT / How to Motivate Your Dragon：先有角色自己的动机
+## 1. 不同控制目标应有不同所有者
 
-来源：[NAACL 2021正式论文](https://aclanthology.org/2021.naacl-main.64/)、[完整HTML](https://arxiv.org/html/2010.00685v3)、[PDF](https://aclanthology.org/2021.naacl-main.64.pdf)。本轮读正文任务/数据/方法/结果及关键设置附录，查看PDF p.2示例；并核查LIGHT当前引擎入口，未完整恢复旧训练代码。
+| 层次 | 谁规定目标或边界 | 典型方法 | 应检验的控制能力 |
+|---|---|---|---|
+| 世界规则 | 游戏设计和引擎 | 状态机、动作前提／效果、权限和资源结算 | 结果合法、状态一致、可回放；不能用人物解释修改规则 |
+| 角色行为 | 作者给定身份／目标，角色按可见信息选择 | 行为树、GOAP、BDI、效用策略、模仿／RL、LLM | 跨局势完成目的、合理中断、风格和边界、适合角色的失败 |
+| 身体与技能 | 运动控制、资产与任务约束 | 动作图、轨迹优化、动作先验、技能策略 | 达成任务且运动自然、响应及时、动作可控 |
+| 叙事组织 | 作者／导演系统 | 叙事规划、戏剧管理、事件图、生成与检查 | 角色动机和情节可理解、玩家表达与选择得到合乎作品目标的反馈、作者能修改和调试 |
+| 玩家配合 | 游戏模式与玩家共同形成 | 伙伴建模、习惯适应、交流、让位与重规划 | 任务贡献、协调劳动、玩家参与空间和角色主见 |
 
-DOCUMENTED：原LIGHT人物可以对话和行动，但没有系统的自身目标；作者加入短/中/长期动机、时间线、可执行行动与人类示范。RECONSTRUCTED：不是靠更长persona制造人格，而是把“人物想达到的结果”加入可执行环境，让说话和行动共同承担任务。
+这些目标可以冲突：更强的战斗策略可能破坏角色风格；更紧的剧情控制可能取消玩家选择；更积极的队友可能抢走玩家想完成的动作；更稳定的人格可能抹去应发生的成长。控制研究应说明保留什么权衡，而非把任一方的满足率当全局质量。[DeepMimic](../../../library/themes/game-npc-social/papers/PENG_2018_DEEPMIMIC.md)、[HSP](../../../library/themes/game-npc-social/papers/YU_2023_HSP.md)、[同伴研究](../../../library/themes/game-npc-social/papers/COMPANIONS_DISSERTATION2019.md)和[叙事综述](../../../library/themes/game-npc-social/papers/RIEDL_BULITKO_2013.md)分别提供这些不同压力的证据。
 
-7486个quest、2111条示范是不同资产；示范平均12.92个事件，其中2.18个行动、10.74个对话。原伙伴为固定模型且无自身独立目标；部分语言奖励依赖学习到的DM或参考话语。不能把这些数据自动称为自然长期关系、强动态玩家或纯引擎评分。
+## 2. 经典方法已经提供的能力
 
-**给我们的认识：** 沿用原生角色动机与世界，而不是从竞赛接口生长NPC概念。原作者的事件型action goal和高层自然动机不同；重新映射目标必须明确是新任务定义，不能指控旧评分不忠实。
+**GOAP与ABL。** 动作前提、代价、context、执行反馈、失败替代、中断和恢复是成熟能力。ABL的joint behavior还维护协同行为的进入、暂停、成功和失败；GOAP可通过不同角色动作集合产生不同作风。不能把“有目标表”“计划失败后重新规划”当作新发现。相应2002/2005/2006原文在[前轮阅读§2](FIELD_REVIEW_2026-10-18.md#classical)保留。
 
-## 2. Direct Behavior Specification：成功率不能代表作者控制
+**社会规则与角色动机。** CiF/Prom Week、Versu显式处理欲望、非对称关系、社会实践、接受／拒绝和历史效果。它们的困难包括规则组合和跨场景调参，以及让玩家理解、利用和改变人物的理由。解释是作者及玩家的操作界面，不只是模型输出一段自述。[经典社会系统原文与范围](FIELD_REVIEW_2026-10-18.md#classical)
 
-来源：[ICML 2022](https://proceedings.mlr.press/v162/roy22a.html)、[全文](https://arxiv.org/html/2112.12228v6)、[Ubisoft研究说明](https://www.ubisoft.com/en-us/studio/laforge/news/6phoEAQOzIdkiMv8T2kLNS/direct-behavior-specification-via-constrained-reinforcement-learning)。两次定向阅读覆盖§2–6、实验设置与主实验图，核过作者/机构，未完整代码复现；查看PDF的真实环境/约束示例。
+**意图与冲突规划。** [CPOCL](../../../library/themes/game-npc-social/papers/CPOCL_2011.md)允许动机充分但被阻止的行动，使角色之间可以真正冲突；[Glaive](../../../library/themes/game-npc-social/papers/GLAIVE_2014.md)改善规划搜索；[Sabre](../../../library/themes/game-npc-social/papers/SABRE_2021.md)进一步建模深层信念和错误信念。它们展示“故事中的人物必须各有理由”可以成为可计算约束，但中央全知规划器不等同于各NPC自主推理。允许动机合理的失败也不保证故事有趣。
 
-DOCUMENTED：多项行为要求难以靠reward权重反复调；以可解释的事件频率约束表示要求，并处理优化稳定性与主任务不进展。RECONSTRUCTED：先展示reward设计随约束数量恶化，再把设计者希望直接控制的量变成训练约束，不靠堆复杂网络解决含糊目标。
+**体验管理。** [DODM](../../../library/themes/game-npc-social/papers/DODM_2006.md)把作者质量、玩家自由和干预代价放入同一优化问题。[StoryAssembler](../../../library/themes/game-npc-social/papers/STORYASSEMBLER2019.md)在选择后重新规划片段，既能连接外部小游戏，也显示组合式内容难以调试。它们说明作者不总是追求最大自主性；研究对象也可能是可控的故事空间。
 
-**研究尺度启发：** 约束满足不能通过“不行动”免费取得，目标成功和行为边界要同时测。已有工作不意味着我们能把一张目标/计划表当新方法；贡献须有新的可检验认识或明确瓶颈。
+## 3. 学习式控制改变了哪些前提
 
-## 3. Goal Drift：持续与切换已被直接研究
+示范和RL可获得手写规则难以覆盖的动作细节，但任务奖励不保证风格。[DeepMimic](../../../library/themes/game-npc-social/papers/PENG_2018_DEEPMIMIC.md)的任务／示范联合目标、[AMP](../../../library/themes/game-npc-social/papers/PENG_2021_AMP.md)动作分布先验、[ASE](../../../library/themes/game-npc-social/papers/PENG_2022_ASE.md)可复用技能空间，分别把控制从指定轨迹扩展到风格和技能组合。[MultiGAIL](../../../library/themes/game-npc-social/papers/MULTIGAIL_2023.md)可混合少量示范行为模式，其persona主要是移动风格，不能解释成完整社会人格。
 
-来源：[全文](https://arxiv.org/html/2505.02709v1)、[PDF](https://arxiv.org/pdf/2505.02709)。本轮读方法、结果、关键历史控制和局限，查看Figure1。AIES2025/预印本谱系，不误标ICML主会。
+作者约束也不只等于奖励调权。[Direct Behavior Specification](https://proceedings.mlr.press/v162/roy22a.html)直接使用事件频率约束，分开行为边界和任务进展。原库已读§2–6及主要实验，未复现。它与条件策略、技能编辑、示教和作者反馈构成不同控制手段；应比较修改一项要求的成本、其他能力保留和新场景推广。
 
-DOCUMENTED：股票环境中设置竞争压力与暂时工具性目标，后者完成后要回到原目标；比较强提示、上下文与行为历史。作者已发现切换比单纯持续更难，并以历史改造支持模式延续解释。部分工具性阶段由程序构造，不能直接等价真实角色行动造成的状态演化。
+[Dynamic Scripting](../../../library/themes/game-npc-social/papers/SPRONCK_2006_DYNAMIC_SCRIPTING.md)在规则层在线适应，[Enemy Within](../../../library/themes/game-npc-social/papers/PFAU_2020_ENEMY_WITHIN.md)用玩家行为模型做难度适应，[MLMove](../../../library/themes/game-npc-social/papers/DURST_2024_MLMOVE.md)从职业轨迹学战术移动。它们分别优化适应、挑战和像人程度，不应被一张“最强敌人”榜单覆盖。详见[学习与控制](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md)。
 
-RECONSTRUCTED：不只记录“忘了目标”，而是把忘记、行为模式延续、压力和时间分离；这正是我们需要学习的实验动作。
+## 4. LLM带来的覆盖与新增负担
 
-**直接重合风险：** “目标切换难”“历史行动影响后续”“提醒目标有帮助”均不能作为我们的新发现。NPC切口必须进一步由真实角色和世界的目标/手段/完成条件解释结果，仅换游戏皮肤不够。
+LLM扩展了开放表达、未枚举意图、人物知识和自然语言规范。对声称控制游戏状态或动作的系统，还需把建议落到可执行动作和作者约束。[F.A.C.U.L.](papers/FACUL_AAAI2026.md)、PUBG Ally采用高层语言理解／规划与原生快速执行；[Vox Deorum](papers/VOX_DEORUM_2025.md)也把LLM决策与游戏内部能力组合。这些是值得认真比较的整系统，不是裸模型提示。
 
-## 4. Everitt等：能力不足与不运用能力必须分开
+[CDT](papers/CDT_2026.md)把人物逻辑从故事中诱导、验证后编码为决策树；同一知识线性化提示接近完整方法，说明知识质量与执行结构应分开。[NCP](papers/NCP_2026.md)研究长程互动叙事约束；[HAMLET](papers/HAMLET_2026.md)结合层次导演与角色执行；[WhatELSE](../../../library/themes/game-npc-social/papers/WHATELSE2025.md)和[Orchid-Creator](../../../library/themes/game-npc-social/papers/ORCHID_CREATOR2026.md)让作者编辑抽象结构和事件。这条线真正扩大的是作者表达空间与可检查性，同时增加规范编写、状态管理和调试负担。
 
-来源：[Evaluating the Goal-Directedness of Large Language Models](https://arxiv.org/html/2504.11844v1)。本轮读§1–4和能力/上下文局限；会场未据正式录用页完成核实，按2025预印本使用，不能因模板关键词ICML认定录用。
+普通重规划、检索和状态记忆能修复多少问题，是需要公平比较的事实问题。[ProAgent](../../../library/themes/game-npc-social/papers/ZHANG_2024_PROAGENT.md)依靠搜索控制与前置检查，[CoELA](../../../library/themes/game-npc-social/papers/ZHANG_2024_COELA.md)依靠模块化感知／通信／计划；不能把它们的表现归给一段提示或某个模型。反过来，已有模块也不证明组合后的作者成本和玩家体验已经解决。
 
-DOCUMENTED：用子任务估计模型能做到的事，再判断复合任务是否充分运用该能力；含信息收集、规划执行、受干扰动作和倒塔后重试。它已经讨论坚持性测试可能混淆自动循环与有目的行为。
+## 5. 能形成一般认识的比较
 
-**迁移：** 同一NPC变化后快照的从零执行是必要能力对照；不能把局部观测下的失败直接叫目标丢失。我们不直接复制其归一化GD指标，因为独立子任务能力可迁移是额外假设，原文也承认限制。
+| 要理解什么 | 应对照的解释 | 适合的结果 |
+|---|---|---|
+| 角色坚持或切换目标 | 信息不足、能力不足、任务规范不同、历史惯性、控制更新失败 | 同一信息与执行支持下的轨迹、合法替代与原目的达成 |
+| 人物可编辑性 | 新表示确有优势，还是只是提供了更完整知识／示例 | 同知识提示／检索、显式规则、学习方法的编辑成本与保留率 |
+| 叙事控制 | 降低违例，还是减少了玩家自由与角色动机 | 约束、可达分支（如适用）、作者劳动、玩家表达和理解联合报告 |
+| 队友适应 | 识别玩家，还是只学会一套固定约定／代替玩家完成 | 未见伙伴、让位、玩家贡献、失败恢复和真人体验 |
+| 多种控制方式组合 | 新组件收益，还是更多工具、信息和推理预算 | 信息／执行／预算匹配，以及整系统质量和维护代价 |
 
-## 5. Arghal等：无用子目标、内部状态与计划的强近邻
+本页提供研究问题结构，不自动推荐一个特定模块，也不把所有任务转成目标保持试验。原生低层控制、剧情编排、角色训练与合作适应都可各自形成完整贡献。
 
-来源：[2026全文](https://arxiv.org/html/2602.08964v1)、[OpenReview入口](https://openreview.net/forum?id=E3xtLUfA5E)。本轮读§3–5、关键实验/假设；OpenReview遇浏览器验证，接收身份暂不升级。
+## 6. 较早定向阅读继续有效的部分
 
-DOCUMENTED：在可控gridworld区分难度、等难变换、钥匙作为工具性子目标与无用目标样式线索，并解码内部地图/计划。无门时仍绕去拿钥匙的偏好已经有直接研究；动作与探针解码地图的一致性也不是空白。
+| 来源 | 已有实际范围与重要限定 | 规范记录 |
+|---|---|---|
+| LIGHT / How to Motivate Your Dragon | 正文、任务／方法关键附录；7486 quests与2111示范分开，原伙伴无自身独立目标 | [Dragon原卡](papers/HOW_TO_MOTIVATE_DRAGON_2021.md)、[历史阅读](FIELD_REVIEW_2026-10-18.md) |
+| Goal Drift（AIES2025谱系） | 方法、结果与历史控制定向阅读；工具性目标后切回原目标，不等于游戏长期关系 | [原文](https://arxiv.org/html/2505.02709v1) |
+| Goal-Directedness | 原有§1–4及能力／上下文局限；子任务能完成不保证复合任务会运用 | [既有单篇卡](../mine-a-persona-strategy/knowledge/papers/GOAL_DIRECTEDNESS_ICML_2026.md) |
+| Arghal等2026研究 | 原有§3–5／关键假设；无用钥匙、语义诱因与内部地图已研究；接收未核实 | [原文](https://arxiv.org/html/2602.08964v1) |
+| Hypothetical Minds | 原有正文、§4.5成本、B.1、README；伙伴假设及其评价／修订已有比较；不是本轮新增全文数 | [正式ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html) |
+| Bayesian Partner Modelling | 选择性重规划与周期／事件／LLM触发的比较；方法、主表与关键控制附录选读 | [原单一记录](../../../library/themes/game-npc-social/INTERACTION_PAPER_CARDS_2026-10-03.md) |
+| alem / NARRA-Gym / Collab-Overcooked | 较早指定部分阅读，不升级本轮全文；作者接收公告与具体track核实程度分开 | [alem](https://arxiv.org/abs/2606.08340)、[NARRA-Gym](https://arxiv.org/abs/2605.08503)、[Collab-Overcooked](https://aclanthology.org/2025.emnlp-main.249/) |
 
-**迁移与限制：** 先测可观察状态、能力、语义诱因，而非见到错误就归因于“意图被覆盖”。可解码不等于被因果使用；本工作台不预定SAE或探针方法，更不能仅重复无用钥匙图。
-
-## 6. Hypothetical Minds 与 Bayesian Partner Modelling
-
-来源：[Hypothetical Minds ICLR2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/12f483f624b378f9f3058d8ecd3c7ff5-Abstract-Conference.html)、[原文](https://arxiv.org/pdf/2407.07086)、[Bayesian Partner Modelling](https://arxiv.org/abs/2608.18490)。Hypothetical Minds沿用前轮已记录的正文/成本阅读，未重新运行。10月13日Bayesian论文仅摘要可读；10月17日已成功补核正文／附录指定部分，读取范围和对本项目的影响见下方领域补核，不再将当前范围写成只有摘要。
-
-前者通过提出/评价/修正伙伴策略假设在线适应；后者正文和关键附录提出“正确推断但执行旧技能”，以伙伴矛盾驱动选择性重规划。
-
-**主张边界：** belief–action gap和事件触发replanning已有直接研究；相同支持下周期/事件/LLM触发可取得相近或个别更高奖励，主要代价是调用较多，不能只和不重规划比较。2026-10-18补核还确认互补gold是固定技能映射，不是逐状态最优动作标签；同骨干方法并非逐格超过全部LLM，详见[原卡§4补核](../../../library/themes/game-npc-social/INTERACTION_PAPER_CARDS_2026-10-03.md)。相关方法比较需要说明每步/事件触发的计划更新频率，不能只以不更新计划作为弱参照。不能把其云端默认配置当本地成本。
-
-## 7. 经典游戏规划与真正的游戏制作需求
-
-本轮新增完整阅读ABL（2002）、Speaking with Your Sidekick（2005）、Orkin的18页GOAP工程文（2006）、CiF（2011）、Prom Week（2013）与Slice of Life（2025），Versu读37页作者技术稿的关键章；原文和精确范围见[统一记录](FIELD_REVIEW_2026-10-18.md#classical)，不冒称看完受限GDC视频。
-
-ABL已经处理动作反馈、持续context、失败替代、玩家打断和跨阶段目标，joint behavior还协调承诺进入/成功/失败/暂停。GOAP已有代价、角色动作集合、失败后换路与为保命拒绝队伍命令。CiF/Versu中人物欲望、非对称关系、历史与接受/拒绝产生持久社会后果。Slice of Life把符号行为/后果与LLM表达结合，是当前有限社会玩法的合理强参照。
-
-**真正值得继承的困难。** Versu §13.2明确指出新事件应压下某些活动、却保留相关活动，单一支配实践太粗；§13.1描述300多欲望跨场景调参困难。Prom Week发现内在理由合理不等于玩家能理解和改变，需要显露相关状态、理由与可干预选择。Orkin强调价值可以在管理已有行为组合复杂度，故组件有前史不否定整体贡献。
-
-新研究应比较开放提议如何进入有边界的技能/社会规则，变化后哪些目的与义务持续，以及是否减少逐例作者劳动并改善可理解性；仅加入目标表、优先级或普通重规划不足以独立论证。Ubisoft NEO/Teammates的第一方需求和PUBG的完整状态/记忆/反馈支持与此相连，但没有证明我们的特定模型机制存在。
-
-## 8. 与近期角色/叙事研究的关系
-
-KNUDGE、CDT、NCP、Dynamic Persona与最新NARRA-Gym仍需保留在认识中，不能因不用它们的pipeline而忽略。CDT有情境/多轮评价，NCP有多审核器、人类与自然输入对照，不能冒领缺失控制。NARRA-Gym评估互动叙事体验而不只是文本质量；但它的自动叙事世界不是本项目低成本状态真值。
-
-相关前沿补查合并在下节。选择本切口的理由不是“没有近邻”，而是角色目标控制的重要性、可从本地交互中区分解释的机会，以及可能改变控制/评价认识的尺度。
-
-## 9. 伙伴分布、协作要求与叙事评价的参照
-
-**GAMMA（NeurIPS2024）。** [正式论文](https://proceedings.neurips.cc/paper_files/paper/2024/hash/6e9f99809b6df59e8fe5c9ffe269bf40-Abstract-Conference.html)关注训练伙伴分布无法覆盖真实玩家风格。这里的generative agent是生成伙伴政策，不是LLM。本轮完整读正文与关键A–G方法/统计、Tables3–4；80位真人Overcooked比较，但部分基线/布局不显著或方向相反，不能概括全面改善。没有本地重训；伙伴数量不是目标，覆盖真实玩家策略才是设计对象。[完整范围](FIELD_REVIEW_2026-10-18.md#cooperation)
-
-**Hypothetical Minds的成本与对照补充。** 原阅读另核正文§4.5、Appendix B.1及官方README，而非全部提示/后台分支。论文已有仅提示、模块化、假设评价与精炼对照，也有Llama-3-70B配置。1000-step RWS示例GPT-4约10美元/局，Llama3配置4卡，均为作者成本。不能把无训练当无成本；本地替换后需说明与原配方的差异。
-
-**alem（NeurIPS2026 Evaluations & Datasets Track，作者公告）。** [原文](https://arxiv.org/html/2606.08340v1)§1–3、任务接口/依赖和评价设计已读，未全核45页。它保留布局、操控交接与同步要求，以原生文本动作检验协作；单体困难、依赖和套路不能混成一个协作分数。一个难度参数也可能改变多项机制。此处借鉴相同世界中可核依赖的研究设计，没有重训其MARL。
-
-**NARRA-Gym（NeurIPS2026，具体track未单独确认）。** [原文](https://arxiv.org/html/2605.08503v1)框架、实验/评价、误差与局限已读，未复现。它用9模型×8persona及3judge研究互动叙事，自动与人类评价排序可能不同；持续角色、记忆、响应和体验应分开。其样本数不是其他NPC研究的充分样本门槛。
-
-上述两项身份最初核自[alem作者公告](https://www.kaleabtessera.com/news/)、[NARRA作者页](https://jackwwj619.github.io/)及[机构公告](https://www.som.lmu.de/ai/en/update/news-overview/news/5-papers-accepted-at-neurips-2026-7c6c1c03.html)。标题目录仅作发现入口；只见标题或未取得原文的项目不补写机制。Goal-Directedness的后续正式身份/阅读范围以[单篇卡](../mine-a-persona-strategy/knowledge/papers/GOAL_DIRECTEDNESS_ICML_2026.md)为准。
-
-[Collab-Overcooked（EMNLP2025）](https://aclanthology.org/2025.emnlp-main.249/)作为必要协作/过程评价的来源仍保留；原记录为初筛及指定部分阅读，不升为全文/代码复现。它与GAMMA的伙伴分布、Hypothetical Minds的策略推断是互补问题，不是一条互相继承的方法链。
-
-矿区A的2026-10-17定向补核与研究判断见[专属定位](../mine-a-persona-strategy/knowledge/COOPERATION_AND_GOAL_POSITIONING.md#field-review-2026-10-17)。
+矿区A的目标／承诺定向判断由[专属知识库](../mine-a-persona-strategy/knowledge/README.md)维护。外层保留完整控制地图，不由某一局部假设决定文献取舍。

@@ -1,9 +1,27 @@
-# Beyond Static Persona Consistency — ACL2026 Long（官方）
-- 来源：[PDF](https://aclanthology.org/2026.acl-long.1336.pdf)，SHA256 95c071f42dfb1d539c7933d0fd90c6f747c20fb1b5a25150aaef51056ec390bd。
-- 阅读范围：§3–5、Table1/2、Appendix B评分/修复示例、D跨judge/E语言/F敏感性；非全代码复现。作者anonymous DPC-30A1代码链接web不可访问，未审代码，不能称确认实现。
-- **DOCUMENTED**：固定identity L与动态S/M state，GPT评估event impact累计clip0–10；PCC证据NLI/情绪/意义评分，低分PDS改写、高分PCR复用。5personas×3models，约100–150turn、5seeds204–208。主评价GPT-4o T.3，独立Claude全15配置、DeepSeek仅2persona；多语言也只2persona×1model×2seed。
-- 作者Table2平均PCC .7254→.8902(S/M)→.9195(+PDS)；84.9%增益由state tracking贡献。是文字反应/自动评分，未给原生合法物理动作与游戏利益的因果结果。采用既定state/rubric，不能把内向人物某个台词当唯一真实策略选择。
-- **RECONSTRUCTED**：人格持续不等于情绪僵化→身份/适应分层、累计状态、逐句纠偏；已经拥有动态人格与状态适应方向。
-- 未排除：同judge/rubric回路、event流选自Ours对照、外在游戏回报的解释范围；独立judge部分覆盖已明确，不能忽略。
+# Beyond Static Persona Consistency: Dynamic Persona Coherence in LLM Role-Playing
 
-2026-10-14收尾核对：作者匿名代码入口curl返回401，仍未审代码。正文／关键附录的原阅读范围与PDF SHA保留。已有关联：动态identity／状态、state-conditioned生成与闭环修复；我们不能将进度提醒或动态角色语言当新贡献。E49使用独立位置／原生动作证据，仍须形成超出上述原则的可预测认识。
+规范记录：`dynamic_persona_2026`；ACL 2026 Main，28942–28956（ACL Anthology正式PDF）。实际版本：ACL Anthology 2026.acl-long.1336，15页。
+
+**实际阅读范围：** 完整正文第1–8页及附录A–F第10–15页；包含全部人物、状态、评分、基线、完整结果与跨评判器/语言/超参协议；参考文献选择性核对
+
+[原文](https://aclanthology.org/2026.acl-long.1336.pdf) · [发表／主源信息](https://aclanthology.org/2026.acl-long.1336/)
+
+**来源与范围：** 2026；ACL 2026 Main，28942–28956（ACL Anthology正式PDF）；ACL Anthology 2026.acl-long.1336，15页。完整正文第1–8页及附录A–F第10–15页；包含全部人物、状态、评分、基线、完整结果与跨评判器/语言/超参协议；参考文献选择性核对。[Beyond Static Persona Consistency: Dynamic Persona Coherence in LLM Role-Playing](https://aclanthology.org/2026.acl-long.1336.pdf)。阅读标记：first_full_body_after_existing_partial_card。
+
+**问题与机制。** 区分恒定身份与可以累积改变的心理状态，反对把人物一致性等同于每次情绪不变。L固定天生/习得特征及当前处境；S为情绪效价，Mmeaning为意义感，Mstrain为压力适应能力，三个0–10标量按GPT-4o评事件的增量累积截断。PCC分别核身份与状态表达并取较低分；低于.6重写，达到.85的案例入PCR，按场景与状态检索改写参考。其价值是给角色变化明确接口；EMA、FAtiMA等经典早已有稳定倾向影响动态评估与应对的机制，不能把全部人格动态建模史写成静态提示。
+
+**证据与最重要的基线条件。** 五个人设×GPT-4o/Claude-3.5/DeepSeek-V3.2，宣称每配置5种子、100–150轮。Vanilla不是带完整对话的普通商业角色：附录A明写每次只给L、当前事件、固定中性S/M，完全不保留历史响应或状态演化。Ours事件流回放给所有基线，未测各方法自由演化的匹配分布。PCC平均.7254→状态累计.8902→加改写.9195，84.9%报告增益来自补状态；不能推断强模型获得相同历史/累计摘要后仍需完整P3。
+
+**评价局限与数值澄清。** GPT-4o兼状态估计和评价，重写也针对同PCC；Claude复评15配置、DeepSeek仅2人物，同意排序未替代人类心理合理性/玩家体验。无真人参与。PCC对不表现某特征的neutral仅.25，可能鼓励每句显露性格。式5为min(L,(S+M)/2)，但表1/3 Lisa-GPT4o基线.6876大于S/M .6751，Alex-DeepSeek .7278大于.6577；同批样本的均值应保留该不等式，不能以四舍五入解释，需作者澄清汇总。正文2,185 generation tasks与15配置×5种子×100–150轮的计数关系也未交代。跨语言仅2人物×1模型×2种子，λ敏感性仅单配置单种子，不能声称普遍鲁棒。
+
+**领域位置。** 这是一套文本人物压力/情绪轨迹生成与修复系统，没有可执行游戏世界、关系网络或玩家改变制度的结果。真正有意义的开放问题是何种事件历史应改变何种心理变量，如何体现恢复、矛盾情绪、人物成长，以及这些状态是否因果性地影响持续选择。当前夹逼到模型自定心理量表的高分，只证明指定表达控制的一部分。
+
+## 与最近邻的距离
+
+此表是当前比较视角，包含后来工作；不把它们均视作本文发表时的基线。
+
+| 近邻 | 方法、对象或证据的区别 |
+|---|---|
+| [EMA: A process model of appraisal dynamics](../../../../library/themes/game-npc-social/papers/EMA_2009.md) | EMA已有随事件和应对变化的情绪过程，DPC新增的是LLM场景下身份/状态分评与修复。 |
+| [FAtiMA Modular: Towards an Agent Architecture with a Generic Appraisal Framework](../../../../library/themes/game-npc-social/papers/FATIMA_MODULAR_2014.md) | FAtiMA展示情绪模块与动机/ToM的组合，DPC只实例化少数心理标量和表达约束。 |
+| [Agent Sociodrama: Social-Dynamics-Guided Persona Recasting for LLM Agent Teams](AGENT_SOCIODRAMA_2026.md) | Sociodrama把动态情绪放入多角色关系与团队选角，DPC主要是单人物压力轨迹。 |

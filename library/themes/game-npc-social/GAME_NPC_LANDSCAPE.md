@@ -3,7 +3,7 @@
 **Last verified:** 2026-09-29  
 **Scope:** reusable research material for game NPCs / interactive characters. This is **not** a candidate list and does not authorize a paper direction.
 
-**2026-10-18 update:** The current field map, strong-baseline analysis, and explicit paper-reading register are maintained in the [NPC workbench](../../../workbench/game-npc-agents/knowledge/DOMAIN_ATLAS.md) and [full reading synthesis](../../../workbench/game-npc-agents/knowledge/FIELD_REVIEW_2026-10-18.md). This older genealogy remains background; its dated reading levels are not automatically upgraded.
+**2026-10-18 update:** This is a historical genealogy, not the current whole-field map. The expanded [field atlas](../../../workbench/game-npc-agents/knowledge/DOMAIN_ATLAS.md), [thematic knowledge index](../../../workbench/game-npc-agents/knowledge/README.md), and [reading catalog](../../../workbench/game-npc-agents/knowledge/READING_CATALOG.md) now cover control, cooperation, character learning, narrative and society, player experience, authoring, and their limitations. The earlier [31-source review](../../../workbench/game-npc-agents/knowledge/FIELD_REVIEW_2026-10-18.md) is a focused classical-systems and open-cooperation review. Historical reading levels here are not automatically upgraded.
 
 ## 0. Why “NPC” is not one research problem
 

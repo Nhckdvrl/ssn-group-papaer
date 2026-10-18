@@ -1,90 +1,42 @@
-# 游戏 NPC 与社会智能体（Game NPCs / social agents）
+# 游戏 NPC 与社会智能体
 
-**范围：** 游戏 NPC 与社会智能体：角色扮演、人格与行为、NPC 队友/对手、社会模拟、ToM 与社交推理游戏。
-**更新：** 2026-09-30（按题材重组；内容从 `KEY_PAPERS.md`、`TERRITORY_BANK.md`、`deep/` 迁移或索引而来，未改写）。
+更新：2026-10-18。本主题维护游戏角色的控制、人物表现、合作与竞争、情绪和关系、叙事、社会、经济、交互、玩家体验和作者工具。社会模拟、角色聊天与通关agent提供相关方法，使用其证据时保留各自的研究对象与适用边界。
 
-## 1. 热度（`tools/venue_corpus`，顶会 main 接收数；ICLR 括号内为切片接收率 / 全会基准）
+## 当前知识入口
 
-正则：`\b(NPCs?|non[- ]player characters?|role[- ]?play\w*|social simulation|theory of mind)\b`（粗筛，数字是量级参考）
+| 内容 | 入口 |
+|---|---|
+| 全领域的NPC类型、17个交叉方向与覆盖空白 | [领域地图](../../../workbench/game-npc-agents/knowledge/DOMAIN_ATLAS.md) |
+| 所有专题与维护规则 | [通用知识库](../../../workbench/game-npc-agents/knowledge/README.md) |
+| 96项独立研究的来源、版本、阅读范围与未读欠账 | [阅读总账](../../../workbench/game-npc-agents/knowledge/READING_CATALOG.md) |
+| 动作、控制、学习、合作、对手与难度 | [学习与合作](../../../workbench/game-npc-agents/knowledge/LEARNING_CONTROL_AND_HUMAN_COOPERATION.md) |
+| 人物知识、表达、训练与评价 | [角色学习与评价](../../../workbench/game-npc-agents/knowledge/ROLE_LEARNING_AND_EVALUATION.md) |
+| 叙事、情绪、群体、社会与制度 | [叙事与社会](../../../workbench/game-npc-agents/knowledge/SOCIAL_SIMULATION_AND_NARRATIVE.md) |
+| 玩家价值、交互设计、作者工具与可编辑性 | [玩家与作者](../../../workbench/game-npc-agents/knowledge/PLAYER_EXPERIENCE_AND_AUTHORING.md) |
+| 模型、接口、系统参照与评价有效性 | [强基线](../../../workbench/game-npc-agents/knowledge/STRONG_BASELINES.md) · [测量规范](../../../workbench/game-npc-agents/knowledge/MEASUREMENT.md) |
 
-| NeurIPS2024 | ICLR2025 | ICML2025 | NeurIPS2025 | ICLR2026 | ICML2026 | ACL2025 | EMNLP2025 | ACL2026 |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 10 | 11（28% / 基准 32%） | 7 | 14 | 15（24% / 基准 27%） | 16 | 21 | 13 | 24 |
+本次外围扩展实际阅读95篇论文正文与1个完整作者改写研究章。82张新规范卡保存在本目录的[papers](papers)，14张已有卡在[工作台原目录](../../../workbench/game-npc-agents/knowledge/papers)更新；同一研究不复制两套卡。专题负责跨论文理解，规范卡负责问题、方法、数据、对照、结果、近邻与限制，阅读总账负责范围和来源核查。
 
-## 2. Territory 笔记（原 `TERRITORY_BANK.md`）
+## 历史索引与检索线索
 
-### T13 — Game NPCs / interactive characters
+- [KEY_PAPERS](KEY_PAPERS.md)保留旧NPC编号，方便追溯引用；已精读研究跳转到现有规范卡。历史摘要不因入口更新自动成为全文阅读记录。
+- [GAME_NPC_LANDSCAPE](GAME_NPC_LANDSCAPE.md)保留2026-09的谱系笔记；当前结论、覆盖范围与逐篇阅读以新地图和总账为准。
+- 第一方系统线索见[博客与报告](../../sources/BLOGS_REPORTS.md)，包括Ubisoft、NVIDIA与KRAFTON等公开记录。公告、工程说明、实际玩家研究与可复现论文分别使用。
 
-**Why keep inhabiting it**
+旧版首页的会议关键词命中数不再承担方向重要性判断：它既不是完整领域分母，也不能反映游戏中的实际需要。挑选阅读和研究对象，应结合概念谱系、可核查系统、玩家／作者材料、正反证据及覆盖缺口。
 
-Foundation-model NPCs are not merely dialogue generators. In actual games they sit at the junction of **character identity, memory, shared world state, social reasoning, action/control, narrative authority, latency, and player experience**. Recent work increasingly shows that optimizing one of these in isolation can move another in the wrong direction.
+以下列表仅作发现来源的入口；收录与否不代表已读、已验证或正式接收：
 
-**Recurring assumptions worth auditing**
+- [LLM Game Agent Papers](https://github.com/git-disl/awesome-LLM-game-agent-papers)
+- [Game Agent Papers](https://github.com/JayCheng113/awesome-gameagent-papers)
+- [AI for Games](https://github.com/Eurekaleo/awesome-ai-for-games)
+- [GPA-LM](https://github.com/BAAI-Agents/GPA-LM)
+- [LLM Role Playing with Persona](https://github.com/Neph0s/awesome-llm-role-playing-with-persona)
+- [Role Play Papers](https://github.com/nuochenpku/Awesome-Role-Play-Papers)
+- [LLM Human Simulation](https://github.com/Persdre/awesome-llm-human-simulation)
+- [Social Simulation](https://github.com/Social-Atoms/awesome-social-sim)
+- [全仓库检索入口](../../sources/AWESOME_LISTS.md)
 
-- fluent / persona-consistent dialogue implies a good NPC;
-- remembered text implies stable relationship or behavior;
-- more open-ended interaction is monotonically better;
-- the LLM should own world state, social state, planning, and low-level action;
-- dialogue-only evaluation predicts co-play quality;
-- LLM-as-judge roleplay scores are sufficient evidence;
-- adding more context/memory is always helpful;
-- a believable social simulation is behaviorally faithful;
-- visual realism in a game world model implies state-aware NPC behavior.
+## 工作台关系
 
-**Natural observations**
-
-- which component owns or validates each state transition;
-- linguistic persona vs action/trajectory persona;
-- verbal vs non-verbal social behavior;
-- player/NPC shared-state disagreement;
-- long-horizon commitment survival;
-- role/task dependence of structure vs openness;
-- deliberative vs reflexive control timescales;
-- player outcome / cognitive-load changes that disagree with response-quality scores.
-
-**Baseline / observation first**
-
-Prefer public substrates where the NPC actually interacts with a game loop: CPDC, collaborative Minecraft NPCs, NCP-Bench, MineAmongUs/ARIA, ReactiveGWM, or other released environments. Start by reproducing the strongest baseline and mapping which state/action/evaluation dependency is load-bearing before inventing a memory module, planner, or personality method.
-
-**High-risk failure modes**
-
-- “NPC” becomes a cosmetic wrapper around an ordinary chatbot benchmark;
-- simulator/game engineering dominates the science;
-- another generic memory/RAG/persona method;
-- player-study conclusions without a clear computational object;
-- chasing proprietary production NPCs that cannot be reproduced.
-
-**Deep map:** `GAME_NPC_LANDSCAPE.md`（本目录）.
-**Anchors:** NPC01–NPC12, B19–B22.
-
-## 3. 关键论文与本目录文件
-
-- [`GAME_NPC_LANDSCAPE.md`](GAME_NPC_LANDSCAPE.md)
-- [`KEY_PAPERS.md`](KEY_PAPERS.md)
-
-## 4. 深读材料：`library/deep/` 中与本题材相关的章节
-
-- （无）
-
-## 5. 博客 / 报告（`../../sources/BLOGS_REPORTS.md`）
-
-- B19 — Ubisoft — NEO NPC
-- B20 — Ubisoft — Teammates
-- B21 — NVIDIA ACE — autonomous game characters
-- B22 — NVIDIA / KRAFTON — How PUBG Ally was built
-
-## 6. 最新 arXiv 入口
-
-- [git-disl/awesome-LLM-game-agent-papers](https://github.com/git-disl/awesome-LLM-game-agent-papers)
-- [JayCheng113/awesome-gameagent-papers](https://github.com/JayCheng113/awesome-gameagent-papers)
-- [Eurekaleo/awesome-ai-for-games](https://github.com/Eurekaleo/awesome-ai-for-games)
-- [BAAI-Agents/GPA-LM](https://github.com/BAAI-Agents/GPA-LM)
-- [Neph0s/awesome-llm-role-playing-with-persona](https://github.com/Neph0s/awesome-llm-role-playing-with-persona)
-- [nuochenpku/Awesome-Role-Play-Papers](https://github.com/nuochenpku/Awesome-Role-Play-Papers)
-- [Persdre/awesome-llm-human-simulation](https://github.com/Persdre/awesome-llm-human-simulation)
-- [Social-Atoms/awesome-social-sim](https://github.com/Social-Atoms/awesome-social-sim)
-- 全题材通用：`../../sources/AWESOME_LISTS.md`（awesome 列表、daily-arXiv 镜像、PaperNotes、spotlight 归档）
-
-## 7. 本仓库相关 workbench / 历史
-
-- **历史工作台（2026-10-11 已按用户决定从 HEAD 删除）**：`workbench/npc-persona-behavior-grounding/`、`workbench/npc-deception-investigability/`。保留本领域阅读与开源底座信息，不代表这两个研究项目继续运行；原提案可从 Git 历史查阅。
+当前领域工作台为[game-npc-agents](../../../workbench/game-npc-agents/README.md)，具体研究状态由其矿区文件维护。2026-10-11已按用户决定删除的旧`npc-persona-behavior-grounding`与`npc-deception-investigability`工作台可从Git历史查阅；保留文献不表示恢复研究。当前实验保持暂停。
