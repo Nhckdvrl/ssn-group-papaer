@@ -4,8 +4,8 @@
 
 ## 当前边界
 
-- **实验继续暂停。** 用户本次授权重整目录，未恢复引擎、模型、训练、GPU、推理API、场景生成或执行队列。
-- 目前只有[矿区A](mine-a-persona-strategy/README.md)的已有研究；PROPOSED与ACTIVE分配不变。其他NPC方向保持开放，知识分类不等于开线。
+- **矿区A已终止（2026-10-19用户明确决定，CLOSED／TERMINATED）。** 不启动引擎、模型、训练、GPU、推理API、场景生成、商业模型验证或论文推进；所有历史执行建议取消。当前仅做终止复盘、证据整理与知识维护。
+- 当前研究登记为CLOSED，只有[矿区A](mine-a-persona-strategy/README.md)的历史成果；其他NPC方向的知识保留，关闭当前项目不等于判定整个领域无价值，也不授权新开线。
 - 进入矿区A还须读其[AGENTS](mine-a-persona-strategy/AGENTS.md)、整体报告、CLAIMS、痛点及相关实验卡；该目录保存持续有效的科研判断、冻结线与授权限制。
 
 ## 通用知识与资产

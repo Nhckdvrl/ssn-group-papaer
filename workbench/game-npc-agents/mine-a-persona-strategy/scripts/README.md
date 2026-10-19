@@ -1,6 +1,6 @@
 # 代码与复算入口
 
-**当前实验暂停。** 本页列保留代码的用途，不是启动队列。条件、source/model pin、随机种子、schema和成本以[实验卡](../experiments/README.md)及raw manifest为准，整体认识见[项目报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)。
+**矿区A已终止。** 本页只列历史代码与复核用途，不是启动队列；不运行模型、训练、引擎或API。条件、source/model pin、随机种子、schema和成本以[实验卡](../experiments/README.md)及raw manifest为准，失败复盘见[终止总结](../CLOSEOUT.md)。
 
 ## 当前保留代码
 

@@ -1,10 +1,10 @@
 # 结果与复核入口
 
-**实验保持暂停。** 整体解释见[项目报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)，主张范围见[CLAIMS](../CLAIMS.md)，跑前条件和完整结果说明见[实验卡索引](../experiments/README.md)。本目录保留最终统计、负结果、作废记录、来源/成本和必要审计，不把每个文件当一个独立发现。
+**矿区A已终止（2026-10-19用户决定）。** 完整失败复盘见[终止总结](../CLOSEOUT.md)，原主张范围见[CLAIMS](../CLAIMS.md)，设置和结果说明见[实验卡索引](../experiments/README.md)。本目录保留最终统计、负结果、作废记录、来源／成本和审计，不把每个文件当一个独立发现，不安排补证。
 
 ## 独立研究价值审查
 
-[2026-10-18独立审查](audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)回查E55–E85关键原始结果与调用路径，结合强模型、经典游戏AI和真实玩家证据判断价值与未知，包含对未运行设计的批评及一轮判别建议。审查不改研究状态、不启动实验；E80首步与完整后果口径已在整体报告澄清。
+[2026-10-18独立审查](audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)保留原始价值判断、证据核查与当时建议；其中追加实验的建议已被用户终止决定覆盖。E80首步与完整后果口径已在终止总结澄清，审查正文作为历史不重写。
 
 ## 最终统计
 
@@ -32,7 +32,7 @@
 | E84独立目标与替代合作 | [E84_32b_complete](E84_32b_complete.json)、[E84_gemma_complete](E84_gemma_complete.json)、[E84_grounded_plans_POST_HOC](E84_grounded_plans_POST_HOC.json) | 32任务对/23图，所有成功/拒绝/不利后续保留 |
 | E85真实转移/声称/新请求 | [E85_32b_complete](E85_32b_complete.json)、[E85_gemma_complete](E85_gemma_complete.json)、[E85_grounded_interactions_POST_HOC](E85_grounded_interactions_POST_HOC.json) | 18前史/9图，终局包含双方补交、自取和接取；问答不作内心读数 |
 
-## 暂停期间的设计来源
+## 已取消设计的来源
 
 [合作路径来源核对](COOPERATION_PATH_SOURCE_REVIEW_2026-10-17.json)只索引原任务、源码与已有见证，0新增原生事件／模型／API；对应[未运行设计](../experiments/COOPERATION_PATH_DESIGN.md)。其中47个LIGHT源图和12个Minecraft配置不是已运行的新实验，也不是全部未曝光确认集。
 

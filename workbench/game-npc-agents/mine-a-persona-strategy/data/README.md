@@ -1,6 +1,6 @@
 # 矿区A：数据与资产入口
 
-**实验继续暂停。** 本页统一说明全部既有数据的归属与位置，不生成新数据、不重新采样、不移动大raw或修改来源内容。
+**矿区A已终止。** 本页保存既有数据的归属与位置，不生成数据、不重新采样、不移动大raw或修改来源；证据保留不构成后续运行授权。
 
 ## 当前资产
 
@@ -8,7 +8,7 @@
 |---|---|
 | 最终统计、来源／资格、负结果、成本与审计JSON／JSONL | [results](../results/README.md)，保留全部原文件内容 |
 | 原实验设置、统计口径与输入版本 | [experiments](../experiments/README.md)，79张编号卡及未运行设计 |
-| 下一轮原生合作路径的全量来源索引 | [来源核对](../results/COOPERATION_PATH_SOURCE_REVIEW_2026-10-17.json)，不是新实验数据或已确认holdout |
+| 已取消合作路径草案的来源索引 | [来源核对](../results/COOPERATION_PATH_SOURCE_REVIEW_2026-10-17.json)，不是新实验数据或已确认holdout |
 | 完整输入、模型输出、实际投递、逐步世界状态、原生事件及失败 | `/home/xiang/.cache/game-npc-research/runs/`，按各E## manifest读取 |
 | 作者源码、原quest／graph档案、论文PDF／文本与版本 | `/home/xiang/.cache/game-npc-research/sources/`及原manifest所列位置 |
 | 依赖与本地环境／模型／权重 | 原cache、Conda／venv与各实验manifest；见[矿区A基线](../BASELINES.md) |

@@ -1,6 +1,6 @@
 # 痛点与解释边界
 
-本页按稳定ID记录实际问题、竞争解释和证据，不作逐轮进度日志。**当前保持暂停，不由历史问题启动实验或改变状态。** 整体脉络见[项目报告](PROJECT_PROGRESS_REPORT_2026-10-16.md)，过程见[实验卡](experiments/README.md)与[日期日志](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-16.md)。原有11个痛点ID保持不重排。
+本页按稳定ID保留历史问题、竞争解释和证据，不作待办。**2026-10-19用户终止矿区A，所有相关研究停止，不由未解问题启动实验。** 整体失败与教训见[终止总结](CLOSEOUT.md)，过程见[实验卡](experiments/README.md)与[日期日志](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-16.md)。原有11个痛点ID保持不重排；下文“当前”均指当时研究阶段。
 
 ## 稳定痛点表
 

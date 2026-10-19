@@ -17,4 +17,4 @@
 
 ## 实验资料入口在知识库之外
 
-[实验卡与设计](../experiments/README.md)、[结果及审计](../results/README.md)、[主张账本](../CLAIMS.md)、[整体报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)各自维护原职责，本页只提供跳转。实验继续暂停。
+[历史实验与取消设计](../experiments/README.md)、[结果及审计](../results/README.md)、[主张账本](../CLAIMS.md)、[终止总结](../CLOSEOUT.md)各自维护原职责，本页只提供跳转。矿区A已终止，定向知识保留作领域与历史参考。

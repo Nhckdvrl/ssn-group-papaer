@@ -1,13 +1,13 @@
 # I04：人物、自身目的与真实NPC选择
 
-- **状态：PROMISING。** 用户2026-10-15认可研究张力；工作台PROPOSED、C01–C06等级保持，论文正文暂缓。2026-10-16用户要求本轮结束后暂停，E85已完成，无待运行队列；恢复须用户明确指令。
+- **状态：CLOSED／TERMINATED。** 2026-10-19用户明确终止矿区A，终止前为PROMISING；C01–C06原证据等级保留。下文整体增量设想、投入建议及状态均为历史，不再安排实验或论文；完整判决见[终止总结](../CLOSEOUT.md)。
 - **对应：** P12；C02／C04／C05／C06限定L2，C03发现性L1，以[CLAIMS](../CLAIMS.md)为准，不由本卡升级。
 - **问题：** 有自身身份、目的和社会关系的NPC，面对玩家请求、真实行动和新方案，怎样选择、修订或拒绝，并经合法动作产生后果？
 - **候选认识：** 人物立场、互动中形成的回应、行动前提和资源用途共同形成真实行为；任务分数不能直接反推人物有用／无用、潜在能力或私人目标权重。这有实证支撑，尚非统一内部机制或已验证新方法。
 
 ## 来源与整体增量
 
-- **来源：** P12；E14／E22的LIGHT目标与台词、E42焦点强LLM参考、E45–E49校园后续的成功与矛盾。用户审计推动一致人物与实体后果测量，并纠正将双信道、TCE／SFR或“迎合自毁”钦定为故事。E42不是双角色对话博弈；校园局部改写不作总体persona效应。源事实与纠偏见[整体报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)、[E22](../experiments/E22-native-storage-access-belief-control.md)、[E42](../experiments/E42-native-llm-persona-utility-reference.md)、[E45](../experiments/E45-natural-persona-and-goal-adoption.md)及[E49](../experiments/E49-cross-role-commitment-causality.md)。
+- **来源：** P12；E14／E22的LIGHT目标与台词、E42焦点强LLM参考、E45–E49校园后续的成功与矛盾。用户审计推动一致人物与实体后果测量，并纠正将双信道、TCE／SFR或“迎合自毁”钦定为故事。E42不是双角色对话博弈；校园局部改写不作总体persona效应。源事实与纠偏见[终止总结](../CLOSEOUT.md)、[E22](../experiments/E22-native-storage-access-belief-control.md)、[E42](../experiments/E42-native-llm-persona-utility-reference.md)、[E45](../experiments/E45-natural-persona-and-goal-adoption.md)及[E49](../experiments/E49-cross-role-commitment-causality.md)。
 
 整体增量应来自对**角色目的、社交互动与真实实现怎样共同组织选择**的新理解或改进。不是首次发现言行差异、长程互动、失信或steering，也不要求每个组件首创。分析／测量、机制或方法的形态由证据决定，不预选训练／架构／损失，不用自设bar或某个区间自动去留。
 
@@ -38,7 +38,7 @@ E57／E64的消费、付酬与敌对伤害／死亡均保留；E82只为CPU物�
 
 当前关键关系是：**同一目的下，玩家按原办法实现前提、用合法替代实现同一前提、原办法失效但另有路径时，NPC能否保持目的并实际调整方案？** 目的相容的取舍，与近期话语／局部物品／双方实现过程主导，对此可作不同预测，也可能共同作用。E85只改变转移、说法和新请求，尚未裁决；这不是已注册队列。
 
-## 领域尺度判断与投入建议（2026-10-19，实验暂停）
+## 领域尺度判断与投入建议（2026-10-19终止前的历史）
 
 **现有结果最有价值的整体认识：人物控制的行为效果取决于“角色目的—他人请求—共同动作前提”的关系。** E55给出真实行动效应；E63／E68说明保护当前任务可以保留其他合作差；E75同一立场同时提高Get与请求交付而任务方向不同；E80可靠实现不替代用途判断；E84／E85已有实际合作和修订。整体可形成对人物控制／任务评价的实证认识：人物并非只改台词，其效果也不能从一个终局分数读出。不同任务下的异质性有可检验的结构来源，不是统一神经机制已被识别。
 
@@ -50,9 +50,9 @@ E57／E64的消费、付酬与敌对伤害／死亡均保留；E82只为CPU物�
 
 [合作路径设计](../experiments/COOPERATION_PATH_DESIGN.md)与[只读来源索引](../results/COOPERATION_PATH_SOURCE_REVIEW_2026-10-17.json)保留：LIGHT47图与Minecraft12配置提供具体候选关系。但代办权限、本人职责及真实路径失效并未普遍具备；原样执行两套本地模型的旧草案不足以裁决用户的核心担忧。代办导致本人动作G不计分是定义，不是机制；物理结果P已达也不自动解除有效义务。缺少规范时允许澄清／多种合理回应，不能事后替作者写正确答案。
 
-撤回把强商业比较列为下一轮必要实验的建议；直接比较属于未来若要主张能力缺口时的证据要求，不是本次投入判断的前置条件。具体理由见[整体报告第6节](../PROJECT_PROGRESS_REPORT_2026-10-16.md#6-本次投入判断维持暂停不追加当前实验)；[独立审查](../results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)的已有证据核查保留，其后续实验建议不构成当前安排。不从少量残余失败、成本或新造情境中寻找继续原路线的理由。
+撤回把强商业比较列为下一轮必要实验的建议；直接比较属于未来若要主张能力缺口时的证据要求，不是本次投入判断的前置条件。具体理由见[终止总结](../CLOSEOUT.md#1-总体判决与责任)；[独立审查](../results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)的已有证据核查保留，其后续实验建议不构成当前安排。不从少量残余失败、成本或新造情境中寻找继续原路线的理由。
 
-当前只有静态来源核对与设计，没有E86／新队列，没有导入或运行CPU引擎、生成模型数据、推理API或GPU实验；暂停继续有效。
+该段写于终止前暂停阶段：当时只有静态来源核对与设计，没有E86／新队列或新实验；现已由2026-10-19用户终止决定覆盖。
 
 ## 负结果与撤销解释的索引
 
@@ -71,4 +71,4 @@ E57／E64的消费、付酬与敌对伤害／死亡均保留；E82只为CPU物�
 
 自述效度、粒度／同会话、叙事／动作锚点、策略steering已有Personality Illusion、Rethinking、Story Shapes、Persona Vectors；未来意图／记忆干预已有PM-Bench、PASB等邻域。Dragon／CDT／KNUDGE已有动机—对话—行动谱系。When Identity Overrides Incentives已研究人物×收益与收益优先提示；Dialogue is the Plan关注grounding／repair，Persona Circuits是内部干预近邻。CT-Bench、TradeCraft、ContractSim已有私有目标、承诺／拒付与强状态支持；GenCoord、FACUL／PUBG已有可靠技能，GAIA有冲突目标协商，CoopEval有序贯合作。整体问题是角色身份／目的怎样与开放玩家行动、可变实现和持续后果相联系，不靠RPG外壳／一般失约改名，也不逐组件压缩增量。
 
-阅读／源码与应用范围集中在[合作定位](../knowledge/COOPERATION_AND_GOAL_POSITIONING.md)、[应用审计](../knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)、[玩家证据](../knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md)。成功、合理拒绝、普通控制与负结果都是证据，不预定steering／SFT／LoRA／GRPO／新协议。历史过程与人审见[整体报告](../PROJECT_PROGRESS_REPORT_2026-10-16.md)、[实验卡](../experiments/README.md)及[14日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-14.md)／[15日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-15.md)／[16日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-16.md)日记；当前保持暂停。
+阅读／源码与应用范围集中在[合作定位](../knowledge/COOPERATION_AND_GOAL_POSITIONING.md)、[应用审计](../knowledge/PLAYABLE_NPC_APPLICATION_AUDIT_2026-10-16.md)、[玩家证据](../knowledge/PLAYER_VALUE_EVIDENCE_2026-10-16.md)。成功、合理拒绝、普通控制与负结果均保留。历史过程与人审见[终止总结](../CLOSEOUT.md)、[实验卡](../experiments/README.md)及[14日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-14.md)／[15日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-15.md)／[16日](https://github.com/Nhckdvrl/ssn-group-papaer/blob/caedd5c8/workbench/game-npc-agents/logs/2026-10-16.md)日记；本候选已终止，不执行旧研究建议。

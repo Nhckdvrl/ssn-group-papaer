@@ -15,4 +15,4 @@
 - **结果：** 原生基线与分层测量已经执行，详见后续实验卡和进度报告；本卡不是单独的已验证hypothesis。
 
 ## 2026-10-14实际执行映射
-本卡保留最初准入设计，具体baseline／测量按E07–E49分别登记执行；不得重新凑本卡的四条件矩阵。ActionCastle／LIGHT／校园NPC闭环、PCSP完整300轮、MeltingPot独立战略环境与强本地LLM参考均已有结果。当前C01仍L1可行性，没有独立验证的新科学claim。最新状态、数字、失败与恢复入口见 [进度记录](../PROJECT_PROGRESS_REPORT_2026-10-16.md) 和 [结果索引](../results/README.md)。按用户最新要求，本轮收尾后暂停新增实验。
+本卡保留最初准入设计，具体baseline／测量按E07–E49分别登记执行；不得重新凑本卡的四条件矩阵。ActionCastle／LIGHT／校园NPC闭环、PCSP完整300轮、MeltingPot独立战略环境与强本地LLM参考均已有结果。当前C01仍L1可行性，没有独立验证的新科学claim。最新状态、数字、失败与恢复入口见 [终止总结](../CLOSEOUT.md) 和 [结果索引](../results/README.md)。按用户最新要求，本轮收尾后暂停新增实验。

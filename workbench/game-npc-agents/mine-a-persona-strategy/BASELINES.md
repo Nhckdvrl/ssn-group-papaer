@@ -1,6 +1,6 @@
 # 基线、来源与本地资产
 
-更新2026-10-16。**选择系统由科学问题决定；能下载、已跑通物理链、复现论文、足以回答NPC问题是不同事实。** 当前保持[暂停](AGENTS.md#当前执行边界)，本页不是待运行队列。整体认识见[项目报告](PROJECT_PROGRESS_REPORT_2026-10-16.md)，具体资格／结果／失败以原实验卡和manifest为准。
+更新2026-10-19。**矿区A已[终止](AGENTS.md#当前执行边界)。** 本页仅保存历史系统与资产资格，不是待运行队列。能下载、已跑通物理链、复现论文、足以回答NPC问题是不同事实；这一选择失误的复盘见[终止总结](CLOSEOUT.md)，具体设置／结果／失败仍以原实验卡和manifest为准。
 
 ## 已恢复的基线与能力边界
 
@@ -24,7 +24,7 @@
 - NPC／Mini-Inzoi历史环境沿用`/home/xiang/miniconda3/envs/fgvd`与`/home/xiang/.cache/game-npc-research/deps`隔离依赖；MeltingPot历史环境为`lightwam`及其overlay。Minecraft沿用已有Node／Java和cache内依赖。冻结环境只用于解释／复算原资产，不构成启动许可。
 - 已用Gemma3-12B-it revision `96b6f1eccf38110c56df3a15bffe176da04bfd80`、Qwen3-32B revision `9216db5781bf21249d130ec9da846c4624c16137`；27B和其他历史模型及chat template以各manifest为准。不能只用模型简称冒称同一配置。
 - E70–77 raw为`runs/e70_*`至`e77_*`；E80为`e80_*`，E81／E84为各模型profile与full目录。E85最终outcome只取`runs/e85_{gemma,32b}_recover_s{0,1}/`，旧profile／full保留作精确输入cache及实际成本，不合并旧episode充N。
-- 复算与执行脚本入口见[scripts](scripts/README.md)，最终统计、资格、成本及source hash见[results](results/README.md)。历史校园cassette可离线CPU重放，但当前暂停仍不启动引擎。一次性环境修复、partial与最终结果的区别以实验卡为准。
+- 复算与历史代码见[scripts](scripts/README.md)，最终统计、资格、成本及source hash见[results](results/README.md)。历史校园cassette有离线CPU重放资产，但终止后不启动引擎。一次性环境修复、partial与最终结果的区别以实验卡为准。
 - 研究室共享资产可用已有SSH／共享文件系统读取或rsync；不要重下模型、盲目修节点或把弱网络多卡当高速mesh。资源、API与授权规则只在[AGENTS](AGENTS.md#资源权限与资产)维护。
 
 领域候选资产见[通用资产目录](../BASELINES.md)；矿区A的数据入口见[data](data/README.md)。

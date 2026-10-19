@@ -19,6 +19,7 @@ workbench 内部的探索性失败留在该 workbench；只有跨项目有用的
 ## 文件
 | 文件 | 内容 |
 |---|---|
+| [矿区A终止复盘](../workbench/game-npc-agents/mine-a-persona-strategy/CLOSEOUT.md) | 2026-10-19用户终止：问题价值、强基线尺度与局部实验扩张的跨项目教训；完整证据留原工作台，不作为NPC领域禁区 |
 | `REAUDIT_2026-09-30.md` | v3 再审：kill 分类、效力变化、ID 消歧 |
 | `KILLED_LEDGER.md` | K001–K184（历史主账本） |
 | `2026-09-14_SEARCH_KILL_BATCH_*.md` | K185–K253 批次（桌面 kill 为主） |
