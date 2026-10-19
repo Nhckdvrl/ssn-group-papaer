@@ -1,8 +1,12 @@
 # Game NPC Agent 阅读总账与覆盖欠账
 
-更新：2026-10-18（Asia/Shanghai）。本轮按领域而非矿区选择来源，完成 **95篇论文正文＋1个完整作者改写研究章，共96项独立研究**。其中14张原有规范卡在原位置重写／加深，82张建立独立规范卡；有些新卡对应旧库曾提及的题名，因此不称82篇此前完全未知的论文。
+更新：2026-10-19。总账现在包含**两批138项独立工作记录**：2026-10-18广域扩展96项，2026-10-19四兴趣矿区新增42项。新批次包含38项论文/理论文章/作者稿、1项demo与设计短稿合并记录、2篇技术报告、1个完整书章；不能统称42篇正式顶会长文。正文、附录、版本及发表身份逐项分开。
 
-与前轮31项定向阅读按题名、arXiv／DOI核对无重复。本页不把这两批简单相加称为127篇全文：前轮含定向选读、技术文与其他来源，其原范围保留在[前轮登记](FIELD_REVIEW_2026-10-18.md#reading-register)。旧库其余卡也没有随本轮日期自动升级。
+原批次95篇论文正文＋1个完整作者改写研究章的范围原样保留；两批共14张已有卡维护、124张新规范卡。42项与已计数96/31项按身份去重，但有旧库已提及或选读的题名：例如CoG开放对话补正式短文，旧库已读同家族学位论文；ACL互动戏剧补正式全文，旧库已有预印本选读。因此不称42项此前全库完全未知研究。
+
+**类型口径：** 旧96项的`source_kind`原样保留，其中旧`paper`标签也包含FAtiMA Modular等书章作者稿；全账类型总数沿用历史标签，不冒称已统一重分类所有出版物。本批42项的38＋1＋2＋1是明确分开的新批次来源口径。条目数量不等于相互独立的实验、作者或玩家样本数。
+
+更早31项含定向选读、技术文等不同范围，继续见[前轮登记](FIELD_REVIEW_2026-10-18.md#reading-register)，不简单相加成169篇全文。四兴趣方向的综合判断和矿区入口见[B–E总图](../MINES.md)。
 
 ## 怎样理解阅读记录
 
@@ -10,11 +14,11 @@
 - **作者改写章**：同伴研究PA23完整读第一作者博士论文第7章，未取得CHI PLAY2018正式PDF；只算一个研究，也不称整本博士论文已读。
 - **主源身份**：正式发表、作者自报接收、预印本和不同PDF版本分开；会议模板、搜索标题、再入库日期不作接收／新论文证据。
 - **证据与解释**：作者方法／设置／结果（DOCUMENTED）与本库近邻比较、跨论文推论、待检验问题分开。未报告的人数、成本、评审分数不补猜。
-- **文件核验**：96份主要实读文件的SHA-256已核；哈希只说明来源文件一致，不证明阅读质量。完整机器记录见[READING_CATALOG.json](READING_CATALOG.json)，每篇正文事实保存在唯一规范卡。
+- **文件核验**：原96份主要实读文件及新批次可取得的PDF/PS/HTML原件分别登记SHA-256；作者网页全文无完整本地原件时明确没有PDF哈希。哈希只说明来源文件一致，不证明阅读质量。完整机器记录见[READING_CATALOG.json](READING_CATALOG.json)，每篇正文事实保存在唯一规范卡。
 
-本轮通过综述追索、经典引用链、近年正式论文集和作者预印本相互校对；没有全会议库筛选分母或系统偏倚分析，因此不是PRISMA式穷尽综述。以下分组只用于导航，不是互斥学科或研究投入优先级。
+两批通过综述追索、经典引用链、近年正式论文集和作者预印本相互校对；没有全会议库筛选分母或系统偏倚分析，因此不是PRISMA式穷尽综述。以下分组只用于导航，不是互斥学科或研究投入优先级。
 
-## 六篇本轮综述怎样互补
+## 2026-10-18广域批次：六篇综述怎样互补
 
 | 综述 | 适合提供的结构 | 覆盖限制 |
 |---|---|---|
@@ -155,7 +159,78 @@
 | `NPC-PA22` | [Ontologically Faithful Generation of Non-Player Character Dialogues](papers/KNUDGE_2024.md) | EMNLP 2024, pp.9212–9242 | 全文正文 §1–8、Limitations/Ethics、Tables 1–6；附录 A–L 方法文字、Algorithm1、Tables7–8及关键任务/人物/评价和修订提示/树样例。未逐字读全部重复长提示和所有巨大树节点，非全部附录逐图审查。 |
 | `NPC-PA23` | [I’m Glad You Are on My Side: How to Design Compelling Game Companions](../../../library/themes/game-npc-social/papers/COMPANIONS_DISSERTATION2019.md) | CHI PLAY 2018, pp.141–152; study read through author dissertation adaptation | 完整第7章 §7.1–7.6、Tables10–12；不是整本博士论文全文，不冒称正式会议版逐页一致。 |
 
-## 本轮直接改正的知识问题
+<a id="mines-2026-10-19"></a>
+## 2026-10-19：四兴趣矿区的42项正文阅读
+
+本节是新增规范记录，不与旧题名、预印本版本、附录或后续发表重复相加。B/C/D/E分组只服务阅读和矿区定位；同一工作可以被四区交叉引用。
+
+### B · 角色表演、人物塑造与延展：12项
+
+| ID | 规范卡 | 实际版本/发表身份 | 阅读范围 |
+|---|---|---|---|
+| `NPC-B01` | [ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?](../../../library/themes/game-npc-social/papers/ARCANE_2026.md) | arXiv v2；作者自报 EMNLP 2026 Main 接收，未独立核会场条目；arXiv:2606.05553v2, 2026-09-02 | 完整正文 pp.1–10；附录 D.2–F pp.18–20、P pp.27–29；其余附录、逐条提示、数据和代码未完整读。 |
+| `NPC-B02` | [RoleBreak: Character Hallucination as a Jailbreak Attack in Role-Playing Systems](../../../library/themes/game-npc-social/papers/ROLEBREAK_2025.md) | COLING 2025 Main；ACL Anthology 2025.coling-main.494, pp.7386–7402 | 完整正文与limitations，PDF pp.1–9；附录完整提示/代码未读。 |
+| `NPC-B03` | [Mitigating Hallucination in Fictional Character Role-Play](../../../library/themes/game-npc-social/papers/ROLEFACT_2024.md) | Findings of EMNLP 2024；ACL Anthology 2024.findings-emnlp.846, pp.14467–14479 | 完整正文PDF pp.1–9含limitations；附录与代码未完整读。 |
+| `NPC-B04` | [TimeChara: Evaluating Point-in-Time Character Hallucination of Role-Playing Large Language Models](../../../library/themes/game-npc-social/papers/TIMECHARA_2024.md) | Findings of ACL 2024；ACL Anthology 2024.findings-acl.197, pp.3291–3325 | 完整正文 pp.1–10；附录pp.30–31全量评价说明、H.1人工复核、算法；其余附录未完整读。 |
+| `NPC-B05` | [PsyMem: Fine-grained Psychological Alignment and Explicit Memory Control for Advanced Role-Playing LLMs](../../../library/themes/game-npc-social/papers/PSYMEM_2026.md) | TACL 2026；ACL 2026.tacl-1.24；TACL 14:510–529；正式PDF页脚April2026 | 完整正文pp.1–11；附录B–E主要方法、人工标注、稳健性pp.18–20；完整提示和代码未逐项读。 |
+| `NPC-B06` | [Memory-Driven Role-Playing: Evaluation and Enhancement of Persona Knowledge Utilization in LLMs](../../../library/themes/game-npc-social/papers/MEMORY_DRIVEN_ROLEPLAY_2026.md) | Findings of ACL 2026；ACL 2026.findings-acl.1175, pp.23475–23510 | 完整正文pp.1–9；附录A人物/片段统计、C.3/E构造、K–N评委校准/关联/预算（印刷23487–23489、23494–23496）；其余长提示示例代码未全读。 |
+| `NPC-B07` | [Thinking in Character: Advancing Role-playing Agents with Role-Aware Reasoning](../../../library/themes/game-npc-social/papers/THINKING_IN_CHARACTER_2025.md) | NeurIPS 2025；NeurIPS 2025 official conference PDF | 完整正文pp.1–10；附录B–E pp.14–17；其余提示、案例、checklist和代码未全读。 |
+| `NPC-B08` | [Crafting Customisable Characters with LLMs: A Persona-Driven Role-Playing Agent Framework](../../../library/themes/game-npc-social/papers/SIMSCONV_2025.md) | Findings of EMNLP 2025；ACL 2025.findings-emnlp.1100, pp.20216–20240 | 完整正文pp.1–9含limitations；附录A/C pp.11–12；其余完整提示/数据代码未全读。 |
+| `NPC-B09` | [Crab: A Novel Configurable Role-Playing LLM with Assessing Benchmark](../../../library/themes/game-npc-social/papers/CRAB_2025.md) | ACL 2025 Main；ACL 2025.acl-long.731, pp.15030–15052 | 完整正文pp.1–9；附录7.1–7.9方法/标注/未见角色/训练统计，pp.10–14相关段落；p.19表14角色提示。长案例和其余提示未全读，图表全数值未逐项视觉复核。 |
+| `NPC-B10` | [ORIBA: Exploring LLM-Driven Role-Play Chatbot as a Creativity Support Tool for Original Character Artists](../../../library/themes/game-npc-social/papers/ORIBA_2025.md) | arXiv preprint；ACM投稿排版，接收身份未核；arXiv:2512.12630v1, 2025-12-14 | 完整正文pp.1–20；A.1/A.2/A.4文字pp.25–26、28；图像式问卷p.27及全部作品视觉未读，参考文献未逐项追溯。 |
+| `NPC-B11` | [The Role of Emotion in Believable Agents](../../../library/themes/game-npc-social/papers/BATES_BELIEVABLE_EMOTION_1994.md) | CMU technical report；另有CACM版本未逐字比对；CMU-CS-94-136, April 1994, author PostScript | 作者技术报告9页全部读取，正文印刷1–6、参考文献7与前置页；PS本地转换PDF。CACM正式4页版本未比对。 |
+| `NPC-B12` | [An Oz-Centric Review of Interactive Drama and Believable Agents](../../../library/themes/game-npc-social/papers/OZ_CENTRIC_REVIEW_1997.md) | CMU technical report；CMU-CS-97-156, June 1997, author HTML | HTML全部正文Introduction至Conclusion逐段阅读（本地1370行纯文本）；图像式架构图未视觉核查，外链注释书目未逐项追溯。 |
+
+### C · 共同叙事、作者意图与玩家参与：12项
+
+| ID | 规范卡 | 实际版本/发表身份 | 阅读范围 |
+|---|---|---|---|
+| `NPC-C01` | [Narrative Planning: Balancing Plot and Character（JAIR 2010）](../../../library/themes/game-npc-social/papers/IPOCL_2010.md) | JAIR 39; DOI 10.1613/jair.2989；author-hosted 51-page PDF; formal 2010; 2014 arXiv redeposit excluded | 全文正文 pp.1–37，附录 A.1–A.3 pp.38–47；视觉核对 p.35、pp.42–45；参考文献浏览 |
+| `NPC-C02` | [Agency Reconsidered（DiGRA 2009）](../../../library/themes/game-npc-social/papers/AGENCY_RECONSIDERED_2009.md) | DiGRA 2009; DOI 10.26503/dl.v2009i1.369；author-institution archived 9-page PDF | 全部9页理论、案例、结论及参考文献 |
+| `NPC-C03` | [Achieving the Illusion of Agency（ICIDS 2012）](../../../library/themes/game-npc-social/papers/ILLUSION_OF_AGENCY_2012.md) | ICIDS 2012, pp.114–125; DOI 10.1007/978-3-642-34851-8_11；author-hosted 12-page published-layout PDF | 全部12页，含三阶段招募、筛选、逐题分析及局限 |
+| `NPC-C04` | [Foreseeing Meaningful Choices（AIIDE 2014）](../../../library/themes/game-npc-social/papers/FORESEEING_MEANINGFUL_CHOICES_2014.md) | AIIDE 10(1):9–15; DOI 10.1609/aiide.v10i1.12716；official 7-page PDF | 全部7页；视觉核对 pp.4–5 表3–6与图2 |
+| `NPC-C05` | [A Coauthorship-Centric History of Interactive Emergent Narrative（ICIDS 2021）](../../../library/themes/game-npc-social/papers/COAUTHORSHIP_EMERGENT_NARRATIVE_2021.md) | ICIDS 2021, LNCS13138, pp.222–235；author-hosted 14-page PDF | 全部14页理论史、案例、结论及参考文献 |
+| `NPC-C06` | [Drama Llama: An LLM-Powered Storylets Framework for Authorable Responsiveness in Interactive Narrative（2025 预印本）](../../../library/themes/game-npc-social/papers/DRAMA_LLAMA_2025.md) | arXiv preprint 2501.09099; formal venue unverified；arXiv2501.09099v1, 2025-01-15, 10 pages | 全文§I–VIII；附录A–C全部提示；附录D图和p.5界面/表II视觉读取 |
+| `NPC-C07` | [Dramamancer: Interactive Narratives with LLM-powered Storylets（UIST Adjunct 2025，Demo）](../../../library/themes/game-npc-social/papers/DRAMAMANCER_2025.md) | UIST Adjunct 2025 Demo; DOI 10.1145/3746058.3758995; Wordplay2025 design short paper；5-page formal demo + 3-page Wordplay2025 design paper; 2026 arXiv identical text redeposit | 完整demo全部正文/图注及pp.2–4界面视觉；完整三页设计短稿；逐行核2026再存只多水印 |
+| `NPC-C08` | [Towards Enhanced Immersion and Agency for LLM-based Interactive Drama（ACL 2025 Main）](../../../library/themes/game-npc-social/papers/IMMERSION_AGENCY_DRAMA_2025.md) | ACL 2025 Main Long, pp.11166–11182; 2025.acl-long.546；17-page ACL version of record; checked arXiv2502.17878v2 2025-06-03 | 正文pp.1–9，附录A–D pp.12–17完整提示/剧本/模拟玩家；p.8关键表视觉；参考文献浏览 |
+| `NPC-C09` | [Language Models as Narrative Planning Heuristics（FDG 2025）](../../../library/themes/game-npc-social/papers/LM_NARRATIVE_HEURISTICS_2025.md) | FDG 2025 article31; DOI 10.1145/3723498.3723815；author-hosted 9-page published-layout PDF | 完整9页正文/表/算法/图注；p.6表2–4视觉；未逐点重建曲线 |
+| `NPC-C10` | [Gameplay as On-Line Mediation Search（AIIDE Workshop 2014）](../../../library/themes/game-npc-social/papers/GAMEPLAY_MEDIATION_2014.md) | AIIDE Workshop Experimental AI in Games 2014,42–48; DOI 10.1609/aiide.v10i3.12740；official 7-page workshop PDF; later archive timestamp not publication year | 完整7页正文、伪代码、图注和案例；未逐图重建搜索树 |
+| `NPC-C11` | [Narrative Planning Using LLMs as a Model of Action Believability（Halberd，2026 作者稿）](../../../library/themes/game-npc-social/papers/HALBERD_2026.md) | AIIDE 2026 forthcoming per author lab; formal proceedings not yet verified；11-page author manuscript; outdated 2024 copyright template | 全部正文/算法/实验/局限及参考文献；pp.7–9表1–6视觉核查 |
+| `NPC-C12` | [Bonsai: Cultivating Author Intent in LLM-Based Interactive Digital Narratives（ICML 2026 Workshop）](../../../library/themes/game-npc-social/papers/BONSAI_2026.md) | ICML2026 Workshop on Human-AI Co-Creativity; not ICML main；workshop-hosted 16-page manuscript, no version identifier on source | 正文§1–6 pp.1–6及附录A–L pp.9–16全部；参考文献浏览；pp.6/9/13/14/15表视觉 |
+
+### D · 情绪、关系与玩家情感：10项
+
+| ID | 规范卡 | 实际版本/发表身份 | 阅读范围 |
+|---|---|---|---|
+| `NPC-D01` | [Establishing and Maintaining Long-Term Human-Computer Relationships](../../../library/themes/game-npc-social/papers/RELATIONAL_AGENTS_2005.md) | ACM TOCHI 12(2):293–327；44-page author manuscript linked from author publication list; PDF creation 2004-03-24; formal article 2005 | 完整作者稿正文PDF pp.1–40；参考文献选择性追索；未读的另一个50页早稿不重复计数 |
+| `NPC-D02` | [Simulation of the Dynamics of Nonplayer Characters’ Emotions and Social Relations in Games](../../../library/themes/game-npc-social/papers/OSSE_SOCIOEMOTION_2009.md) | IEEE TCIAIG 1(4):281–297；27-page author manuscript, metadata 2009-11-02; journal issue December 2009; author list sorts into 2010 | 27页作者稿pp.1–24完整正文；参考文献选择性读；不与AIIDE/ACII短版或法语版本相加 |
+| `NPC-D03` | [Emotional Appraisal Engines for Games](../../../library/themes/game-npc-social/papers/APPRAISAL_ENGINES_2016.md) | Emotion in Games, Springer, pp.215–232；18-page author chapter | 18页完整书章，包括方法/四种接入示例/13名开发者先导与结论 |
+| `NPC-D04` | [Spoken Conversational AI in Video Games – Emotional Dialogue Management Increases User Engagement](../../../library/themes/game-npc-social/papers/SPOKEN_EMOTION_2018.md) | IVA 2018, pp.179–184；Author Ioannis Papaioannou uploaded full article on ResearchGate 2018-10-11 | 作者上传全文HTML完整§1–7，web extraction lines67–1218逐段读；参考文献选择性；未把PDF受限写成PDF全读 |
+| `NPC-D05` | [Exploring Emotional Attachment to Game Characters](../../../library/themes/game-npc-social/papers/CHARACTER_ATTACHMENT_2019.md) | CHI PLAY 2019, pp.313–324；Aalto accepted manuscript, 13 PDF pages including cover | PDF pp.2–11全部正文；旋转表p.7另用raw核读；封面p.1、参考文献12–13选择性 |
+| `NPC-D06` | [“I Harbour Strong Feelings for Tali Despite Her Being a Fictional Character”: Investigating Videogame Players’ Emotional Attachments to Non-Player Characters](../../../library/themes/game-npc-social/papers/NPC_ATTACHMENT_MASS_EFFECT_2020.md) | Game Studies 20(1), February 2020；Publisher full HTML | 完整HTML主文：理论、资料来源、词汇/质性方法、分析、讨论、结论；参考文献选择性 |
+| `NPC-D07` | [An appraisal-based chain-of-emotion architecture for affective language model game agents](../../../library/themes/game-npc-social/papers/CHAIN_EMOTION_2024.md) | PLOS ONE 19(5):e0301033；Formal published 2024-05-10; first preprint 2023 | 21页正式PDF pp.1–18完整正文与三项实验；参考文献选择性；独立S1附件和OSF原始数据未读/未审计 |
+| `NPC-D08` | [From Triggers to Emotions: A CPM-Grounded Appraisal Multi-Agent for Dynamic Emotional Evolution in Persona-Based Dialogue](../../../library/themes/game-npc-social/papers/CPM_MULTIAGENT_2026.md) | arXiv preprint; formal acceptance not verified；arXiv2607.07824v1, 2026-07-08 | 23页完整正文、局限、伦理与附录A–H；所有提示/主表/消融/人评/模型迁移；未运行代码 |
+| `NPC-D09` | [EmoLLM: Appraisal-Grounded Cognitive-Emotional Co-Reasoning in Large Language Models](../../../library/themes/game-npc-social/papers/EMOLLM_2026.md) | arXiv preprint; formal acceptance not verified；arXiv2603.16553v1, 2026-03-17 | 完整主文pp.1–9及附录A–I pp.11–20；参考文献选择性 |
+| `NPC-D10` | [Too Categorical to be Human: Emotion Concepts in LLMs and Humans](../../../library/themes/game-npc-social/papers/CORE_EMOTION_CONCEPTS_2026.md) | arXiv preprint v3; an earlier version presented at WiML Workshop @ NeurIPS 2025, not NeurIPS main；arXiv2508.05880v3, 2026-10-06; v1 title Do Machines Think Emotionally? Cognitive Appraisal Analysis of Large Language Models | 105页PDF完整主文pp.1–19；关键附录pp.32–56及100–105；未声称其余附录逐项全读；旧题/版本不重复计数 |
+
+### E · 玩家活动、交互自由与体验测量：8项
+
+| ID | 规范卡 | 实际版本/发表身份 | 阅读范围 |
+|---|---|---|---|
+| `NPC-E01` | [Exploring Presence in Interactions with LLM-Driven NPCs: A Comparative Study of Speech Recognition and Dialogue Options](../../../library/themes/game-npc-social/papers/PRESENCE_VRST_2024.md) | ACM VRST 2024；institution-hosted published-layout PDF, including repository cover; DOI 10.1145/3641825.3687716 | 完整研究正文§1–7；含封面12页PDF，图5–6另视觉核对；代码、原始数据未读/未运行。 |
+| `NPC-E02` | [Open-Ended NPC Dialogue Favors Casual Players: A Pilot Comparison of Three LLM-Driven Dialogue Systems](../../../library/themes/game-npc-social/papers/OPEN_ENDED_DIALOGUE_2025.md) | IEEE CoG 2025；author-uploaded full-text HTML of 4-page formal paper; DOI 10.1109/CoG64752.2025.11114150 | 作者上传HTML完整§I–VII、表I及图说明；未取得可校验PDF，未逐图视觉核对。旧库已读同家族硕士论文相关章节，本批补正式短文。 |
+| `NPC-E03` | [Symbolically Scaffolded Play: Designing Role-Sensitive Prompts for Generative NPC Dialogue](../../../library/themes/game-npc-social/papers/SCAFFOLDED_PLAY_2025.md) | arXiv preprint; formal venue unverified；arXiv:2510.25820v1, 2025-10-29; 2018 template is not publication year | 20页PDF正文§1–6、表1–5、Listings1–3完整；表3–4视觉核对；外部补充/代码未完整读。 |
+| `NPC-E04` | [Pharos Night: Crown Pursuit: An AI-Native Deck-Building and Tactical Arena Game Design Based on Multi-Agent Systems](../../../library/themes/game-npc-social/papers/PHAROS_NIGHT_2026.md) | arXiv preprint; formal venue unverified；arXiv:2608.12216v1, 2026-08 | 完整研究正文§1–6、机制、表1；参考文献用于追溯，未运行Unity或核原始问卷。 |
+| `NPC-E05` | [Development and Validation of the Player Experience Inventory: A Scale to Measure Player Experiences at the Level of Functional and Psychosocial Consequences](../../../library/themes/game-npc-social/papers/PXI_2020.md) | International Journal of Human–Computer Studies 135:102370；49-page author manuscript dated 2019-10-20; formal journal 2020 | 完整作者稿研究正文§1–9、印刷pp.1–34、表1–11；参考文献未逐篇追读；未复算数据。 |
+| `NPC-E06` | [Independent Validation of the Player Experience Inventory: Findings from a Large Set of Video Game Players](../../../library/themes/game-npc-social/papers/PXI_VALIDATION_2024.md) | ACM CHI 2024；institution-hosted 13-page formal paper; DOI 10.1145/3613904.3642270 | 完整正文§1–11、表1–8；PDF pp.7–8表4–8视觉核对；未复算OSF数据。 |
+| `NPC-E07` | [“It depends on where AI is used”: Players’ attitude patterns and evaluative logics toward different AI applications in digital games](../../../library/themes/game-npc-social/papers/PLAYERS_AI_ATTITUDES_2026.md) | arXiv preprint; work in progress；arXiv:2604.27812v1, 2026-04-30 | 14页PDF完整正文§1–5及附录A–B问卷/编码本；图1–2按文本和图说明读；未重新编码。 |
+| `NPC-E08` | [Playing the Imitation Game: How Perceived Generated Content Shapes Player Experience](../../../library/themes/game-npc-social/papers/IMITATION_GAME_2026.md) | ACM CHI 2026；arXiv:2602.14254v1; formal DOI 10.1145/3772318.3790473 | 21页PDF完整正文§1–6及附录A.1–A.3；表1和问卷图12视觉核对；未复算数据或运行游戏。 |
+
+**本批补完的旧阅读债：** Spoken Conversational AI（作者完整HTML）、Presence VRST（机构PDF）、IPOCL（正文与实质附录）。具体未读附件依各卡保留；补完不把此前仅列欠账的条目重复相加。
+
+**版本/家族排重：** Dramamancer的UIST demo和设计短稿合成一项，2026 arXiv只是2025三页稿重存；CoRE旧题/新题、Bates技术报告/CACM线索不分拆计数；CoG与FDG2026属于同家族，后续数据复用范围未核清，不另计。CoG/ACL两项在A已有家族证据，正式全文升级不改写冻结历史。
+
+## 2026-10-18批次直接改正的知识问题
 
 | 原记录／常见推断 | 改正后的事实与范围 |
 |---|---|
@@ -177,18 +252,15 @@
 <a id="reading-debts"></a>
 ## 仍然欠缺的阅读与领域覆盖
 
-数量增加不等于覆盖完成。下表包括未读新来源、同论文版本／附录，以及尚需系统追索的整条研究线；**均不额外进入95＋1计数**。其他旧摘要／项目来源还在相应专题页明确标注。
+数量增加不等于覆盖完成。下表包含未读新来源、同论文版本/附录，以及尚需系统追索的整条研究线；**不额外进入138项记录计数**。已补完条目移入JSON的`resolved_reading_debts`，保留原状与解决记录。
 
 | 来源或方向 | 当前范围 | 为什么需要补 |
 |---|---|---|
 | [Beyond Pre-Defined Scripts: Player Perceptions on Generative NPC Dialogues](https://doi.org/10.1145/3742413.3789221) | metadata_and_abstract_only | Original ACM PDF request returned access failure; institutional metadata seen, methods/results not read. |
-| [RPGAgent](https://doi.org/10.1145/3772318.3790326) | institutional_publication_notice_only | No full paper obtained; acronym title not expanded from memory. |
+| [RPGAgent: Driving Coherent Story-to-Play Generation with an LLM-Based Multi-Agent System](https://doi.org/10.1145/3772318.3790326) | institutional_publication_notice_only | CHI2026身份已核，ACM全文访问403，未取得全文；不据摘要推断完整对照或人类效果。 |
 | [Gathering Self-Report Data in Games Through NPC Dialogues](https://doi.org/10.1145/3411764.3445411) | metadata_and_abstract_only | Full methods, conditions and participant-level results not obtained/read. |
-| [Spoken Conversational AI in Video Games – Emotional Dialogue Management Increases User Engagement](https://doi.org/10.1145/3267851.3267896) | institutional_abstract_only | Original ACM PDF access failed; do not treat title as verified empirical conclusion. |
-| [Exploring Presence in Interactions with LLM-Driven NPCs: A Comparative Study of Speech Recognition and Dialogue Options](https://vbn.aau.dk/ws/portalfiles/portal/747035191/Exploring_Presence_in_Interactions_with_LLM_Driven_NPCs_A_Comparative_Study_of_Speech_Recognition_and_Dialogue_Options.pdf) | late_search_discovery_not_downloaded_or_read | Primary PDF link surfaced during final metadata verification; excluded rather than count discovery as reading. |
-| [An Empirical Evaluation of AI-powered NPCs in VR](https://arxiv.org/abs/2507.10469) | not_read_possible_duplicate | Possible same-study predecessor of Dialogs with GenAI NPCs; no independent-paper counting without identity verification. |
-| Narrative Planning: Balancing Plot and Character（Riedl & Young, JAIR 39, 2010） | downloaded_not_read_beyond_identity | 需补完IPOCL的正式意图论证、人物理解实验、完整算法与失败边界；本轮CPOCL/Glaive/Sabre不能代替此前原文。 |
-| 更多剧情规划、经验管理、用户模型与作者控制的经典原始系统及新综述 | coverage_gap_not_bibliographically_exhausted | 当前只有1篇2013综述及少数规划/管理者代表，不能声称覆盖互动叙事史；需补Fabulist/Mimesis、Thespian等原始系统以及此后整合性综述，先核身份再读。 |
+| [An Empirical Evaluation of AI-Powered Non-Player Characters' Perceived Realism and Performance in Virtual Reality Environments](https://arxiv.org/abs/2507.10469) | identity_verified_distinct_abstract_only_full_text_unread | 官方arXiv已核Korkiakoski等、2025-07-14v1、18人审讯场景，与Presence VRST/Dialogs IJHCI作者与场景不同；解除疑似重复，正文仍未读。 |
+| 更多剧情规划、经验管理、用户模型与作者控制的经典原始系统及新综述 | coverage_gap_not_bibliographically_exhausted | 本批补IPOCL、GME、agency/共同创作理论、现代导演和编辑工具；Fabulist/Mimesis、Thespian、后续整合性综述与大量作者实践仍待系统追索。 |
 | BDI、社会规范、组织/角色制度、文化差异与社会认知架构 | coverage_gap_not_bibliographically_exhausted | PsychSim/EMA/FAtiMA只覆盖部分个体心智和情绪建模；命名游戏与GovSim不代表整个规范与组织研究。需要可执行制度、例外、义务冲突及文化差异的原始研究。 |
 | [FAtiMA Modular最终出版章节](https://link.springer.com/chapter/10.1007/978-3-319-12973-0_3) | final_chapter_not_read_author_draft_read | 已读12页作者稿有Figure??及未完段落，正式书目为44–56页。需比对最终版本；不能把同篇补完再计为新题名。 |
 | [Emergent social conventions and collective bias in LLM populations，独立Supplementary Materials](https://doi.org/10.1126/sciadv.adu9368) | main_and_methods_read_supplement_not_read | 正文Methods已核，但详细模型提示、额外规模/历史/字母集合及稳健性图可能在独立补充材料。不能声称已穷尽全协议附件。 |
@@ -197,7 +269,7 @@
 | [AgentSociety：另一个作者集的75页社会仿真研究（arXiv:2502.08691）](https://arxiv.org/abs/2502.08691) | identity_distinguished_not_full_read | 与本轮Jun Zhang等ACL Industry 11页并行框架不是同一论文；更广社会、制度干预与数据校准主张需要独立阅读全文。 |
 | 更多游戏经济/宏观经济代理、制度学习与外部数据校准研究 | coverage_gap_not_bibliographically_exhausted | AI Economist、MMOAgent和Vox Deorum覆盖三个不同问题，仍不足以审视市场价格、异质人群、政策响应、经济预测的泛化与识别；EconAgent、MMOEconomist等应先核原始版本与身份。 |
 | 商业游戏需求、关系、派系、犯罪、声誉、经济及日程系统的一手工程材料 | coverage_gap_neighbor_team_may_partially_cover | 这25项多为研究原型与邻接仿真，不能替代真实开发中的内容编写、调试、存档、可解释失败与性能约束；需对照The Sims等需求模拟与RPG派系/社会系统的一手材料。 |
-| 长期关系、角色成长、情绪可信性、群体制度的真人玩家纵向研究 | coverage_gap_longitudinal_players | 相关论文有人类读者或标注者，仍缺长期实际玩家行为与持续世界体验；作者工具和玩家研究也尚未充分覆盖所需人群与时间跨度。 |
+| 长期关系、角色成长、情绪可信性、群体制度的真人玩家纵向研究 | coverage_gap_longitudinal_players | 本批补Bickmore非游戏30天关系研究、ORIBA作者后续创作、游戏依恋回忆材料；它们仍不等于跨会话实际NPC玩家关系/成长与留存验证。 |
 | 25项中逐篇read_scope明确未读的长示例、热力图、会务清单及代码实现 | explicit_partial_supplement_scope | 本轮已读全部正文与决定性方法/评分/样本协议，但非所有PDF逐字、非代码审计、非复现实验。若后续主张依赖未读具体附件，需要先补该附件。 |
 | CivRealm及学习控制线相关近邻 | delegated_neighbor_team_not_independently_full_read_here | Vox Deorum正文足以识别其抽象层区别，但性能比较应由学习控制线的CivRealm全文记录交叉核，不能据Vox单方跨论文数字宣布优越。 |
 | [LLM-Based NPCs in Video Games: A Systematic Mapping Study](https://pure.etsmtl.ca/en/publications/llm-based-npcs-in-video-games-a-systematic-mapping-study/) | primary_metadata_and_abstract_only | IEEE Transactions on Games 2026 early access，DOI 10.1109/TG.2026.3733302；正式全文访问未取得。检索377／纳入42及技术比例只见摘要，不作为已读正文结论。 |
@@ -205,5 +277,12 @@
 | [The Case for Dynamic Difficulty Adjustment in Games（Hunicke 2005）](https://doi.org/10.1145/1178477.1178573) | metadata_only_not_full_read | 经典DDA原文未完成阅读；Dynamic Scripting与Enemy Within不能代替整条难度适应谱系。 |
 | 导航、感知、避障、人群、现代运动生成、完整MARL和更多DDA方法 | coverage_gap | 本轮控制／合作24篇提供代表链条，并非该方向完整综述。详见学习控制专题的缺口表。 |
 | [HER正式ACL2026版与arXiv v4完整版本比对](https://aclanthology.org/2026.findings-acl.1283/) | v1_main_and_v4_critical_sections_read | 完整正文实读v1，并补v4实验、伦理及F–H；未逐页比对正式38页。补版本不重复计数。 |
+| [Toward Believable Acting for Autonomous Animated Characters](https://doi.org/10.1145/3561975.3562941) | primary_abstract_only | MIG2022第一方摘要；ACM403，表演机制/评估正文未读。 |
+| [Quest of Aivengarde](https://fdg2026.org/abstracts/) | formal_abstract_only_same_family_data_overlap_unverified | FDG2026会议与机构摘要确认同一项目家族、64人描述；11页正文未读，具体数据复用范围未核清，不计新增独立研究或样本。 |
+| [miniPXI](https://doi.org/10.1145/3549507) | identity_only_not_full_read | 量表原文未完整读，不能把完整PXI效度直接继承给短版或自行截断题项。 |
+| [Large Language Models as Narrative Planning Search Guides](https://cs.uky.edu/~sgware/reading/papers/farrell2024large.pdf) | located_not_full_read | 作者PDF已定位，IEEE ToG2024online/2025卷期；本轮未完整读，不使用细节作新证据。 |
+| 情绪理论的量化综述、多模态表演与调节 | coverage_gap | 已读2016appraisal章、CoRE及经典机制；仍需coping/regulation/action readiness、混合情绪、语音身体时机及心理效度的原始/综述链。 |
+| 叙事策展、choice poetics、作者负担与重复体验 | coverage_gap | 已有agency/共同创作历史与现代工具，不等于覆盖作者长期演化意图、反事实编辑、重玩与专业制作过程。 |
+| 四兴趣方向的跨文化、无障碍、非亲密关系及不同玩法 | coverage_gap | 现有小样本角色/RPG材料不能代表儿童、老年、不同语言、恐怖/喜剧、对手、宠物或竞技等体验。 |
 
 维护时先查题名、DOI／arXiv和现有规范卡，再补原卡，避免同一研究因改题名、正式发表、附录或代码更新重复计数。新事实若改变判断，直接修正相应主题段落；争议保留来源和不确定性，不以追加结论掩盖旧错误。阅读优先补薄弱方向及会改变现有认识的反证，不靠堆叠同一种小任务凑数量。

@@ -1,6 +1,6 @@
 # 叙事、社会与制度：人物、世界和作者之间的关系
 
-更新：2026-10-18。经典规划、情绪架构、角色交互、群体规范与经济制度提供不同的控制语义和证据。这些研究可互相借鉴，也需要保留游戏内社会、作者主导作品与研究用社会模拟的不同目标。逐篇题名、正式身份、实读版本、附录范围和欠账见[阅读总账](READING_CATALOG.md#social-narrative)。
+更新：2026-10-19。经典规划、情绪架构、角色交互、群体规范与经济制度提供不同的控制语义和证据。这些研究可互相借鉴，也需要保留游戏内社会、作者主导作品与研究用社会模拟的不同目标。新增共同叙事、情绪与关系的定向深化见[矿区C](../mine-c-shared-narrative/README.md)和[矿区D](../mine-d-affect-relationships/README.md)；逐篇身份与范围见[总账](READING_CATALOG.md)。
 
 ## 1. 研究对象必须先分开
 
@@ -52,6 +52,14 @@ PANDA、CDT 和 Dynamic Persona Coherence 三者也不能并称为同一种“�
 第二层是社交任务中的目标达成与他人互动，Sotopia/π 属于这一层。第三层是群体形成共同约定：命名游戏能隔离局部记忆、网络互动和初始偏差如何放大，但共享字母约定不等于具有私利冲突的伦理或制度。第四层是制度改变激励后的反馈：GovSim 有资源再生和崩溃；AI Economist 让税制与代理行为共同适应，能出现收入跨期转移等响应。不能用“涌现社会行为”把这四层混写。[约定形成](https://openaccess.city.ac.uk/id/eprint/35211/1/sciadv.adu9368.pdf)、[GovSim](https://arxiv.org/pdf/2404.16698v4)、[AI Economist 实读版](https://arxiv.org/pdf/2108.02755v1)。
 
 对游戏尤其重要的推论是：角色服从普遍道德规范不一定是设计目标。反派的欺骗、派系的排斥、商人的投机可以是所需内容；应测其是否符合设定、可被玩家理解和影响、并承担规则后果，而不是默认社会规范扣分就是 NPC 失败。
+
+### 2.5 作者意图、人物解释和关系都可以演变
+
+[IPOCL](../../../library/themes/game-npc-social/papers/IPOCL_2010.md)已补完整正文/实质附录，作者结局与人物意图的区分不再只依后续论文转述；其读者实验仍只有一个Aladdin域和每条件一篇故事，不能当开放玩家效果。[Agency Reconsidered](../../../library/themes/game-npc-social/papers/AGENCY_RECONSIDERED_2009.md)与[共同创作历史](../../../library/themes/game-npc-social/papers/COAUTHORSHIP_EMERGENT_NARRATIVE_2021.md)进一步要求区分世界内扮演和共同作者权限：玩家想改变故事，与能否改写任何过去事实不是一回事。
+
+现代近邻已经包含[普通剧情反思](../../../library/themes/game-npc-social/papers/IMMERSION_AGENCY_DRAMA_2025.md)、[自然语言storylet](../../../library/themes/game-npc-social/papers/DRAMAMANCER_2025.md)、[符号搜索＋LLM人物合理性](../../../library/themes/game-npc-social/papers/HALBERD_2026.md)和[Bonsai](../../../library/themes/game-npc-social/papers/BONSAI_2026.md)的持久分支/编辑/规则积累。因而“加导演”“保存意外”“从编辑提意图”均不是空白。真正尚待研究的连接包括：作者在创作中改主意，人物因新证据改变解释，玩家在下一次互动中理解并利用这种变化。Bonsai主量化条件使用完整模拟偏好，Halberd的故事偏好未显著并不等价；真实作者与玩家过程不能由这些技术表单独推出。
+
+[OSSE](../../../library/themes/game-npc-social/papers/OSSE_SOCIOEMOTION_2009.md)已经区分触发/当前/表达情绪和有向关系；[Appraisal Engines](../../../library/themes/game-npc-social/papers/APPRAISAL_ENGINES_2016.md)整理游戏接入方式。新的情绪关系题必须超出“给状态加一分”。[Chain-of-Emotion](../../../library/themes/game-npc-social/papers/CHAIN_EMOTION_2024.md)的自然语言评价已有短时真人证据，[CPM](../../../library/themes/game-npc-social/papers/CPM_MULTIAGENT_2026.md)在强主干上增量很小；[Bickmore–Picard](../../../library/themes/game-npc-social/papers/RELATIONAL_AGENTS_2005.md)的非游戏30天关系研究又说明脚本和历史行为也能产生部分关系感受。它们支持研究关系意义与变化，但不证明特定新架构或实际游戏长期留存。
 
 ## 3. 已经显示能力的部分，与仍不能外推的部分
 
@@ -105,7 +113,7 @@ Vox Deorum 在真实 Civilization V/Vox Populi 中保留成熟战术 AI，让 LL
 
 **具有边界的即兴叙事。** 什么必须维护，什么可以协商，什么应让玩家改写？需要既能描述角色个体目标又能表达作者硬约束的接口，并测控制介入如何影响玩家判断。固定正典遵守与完全无约束自由续写之间还有很大的设计空间。
 
-**知识、信任与关系如何产生可玩的因果链。** 消息来源、错误观察、谣言、承诺、信用和关系修复可以形成玩家推理对象。关键不是关系分数会变，而是变化有来源、玩家能影响、他人可持不同认识，并最终改变可执行行动。Talk of the Town 提供了重要前史，但其本文没有完成玩家验证；Concordia 提供架构而非这一玩法的完整证据。
+**知识、信任与关系如何成为可参与的角色经验。** 消息来源、错误观察、谣言、信用、尊重与关系修复可以形成玩家推理对象。关键是变化有来源、玩家能回应、他人可持不同认识；它可以通过克制的措辞、沉默、拒绝、关系选择或规则后果体现，不统一要求物理行动。Talk of the Town、OSSE提供前史，Concordia提供架构；这些论文没有单独完成相应玩法价值验证。[矿区D](../mine-d-affect-relationships/RESEARCH_MAP.md)将短期心情、长期关系、角色表达和实际玩家解释分开。
 
 **从口头规范到可执行制度。** 群体能否创设并修订价格、准入、惩罚、分享或税收规则；规则改变后，角色是否产生适应、规避、分工和意外分配后果？GovSim、AI Economist 和 MMOAgent 各覆盖其中不同环节。开放点既包括制度表达和执行，也包括怎样把其动态反馈做成玩家可理解的游戏内容。
 
@@ -115,6 +123,6 @@ Vox Deorum 在真实 Civilization V/Vox Populi 中保留成熟战术 AI，让 LL
 
 ## 6. 覆盖债务与使用边界
 
-这 25 项把叙事规划、情绪评估、角色条件行为、社会互动、群体规范和经济制度联系起来，但**不能据此声称完整覆盖互动叙事或社会模拟史**。当前仍明显缺少：完整的 IPOCL/Fabulist 原始论证及更系统的规划谱系；BDI 和社会规范/组织建模的大量原始系统；更多跨文化情绪与关系长期评测；商业游戏中的需求、派系、犯罪、声誉和经济系统的一手工程材料；规范涌现的复现实验；经济仿真外部校准的更多独立数据研究。
+原25项与本批C/D等新阅读把叙事规划、情绪关系、角色行为、社会互动、群体规范和经济制度联系起来，但**不能据此声称完整覆盖互动叙事或社会模拟史**。IPOCL、GME、agency/共同创作理论和现代编辑已补原文；仍需更系统的Fabulist/Mimesis/Thespian与后续整合综述、choice poetics和叙事策展；BDI及规范/组织系统；跨文化情绪与关系长期评测；商业游戏需求、派系、犯罪、声誉及经济系统的一手工程材料；规范复现与经济外部校准。
 
-阅读范围的具体债务包括 FAtiMA 最终正式章、Science Advances 命名约定论文的独立补充材料、AI Economist 2022 正式版与早期人类实验版本，以及另一个同名 AgentSociety 长文。Riedl/Young 2010 尚未完成正文阅读，列为阅读欠账。Sotopia、HAMLET、PANDA 等长附录中没有逐行读完的示例或图版也已逐篇标明。
+阅读范围的具体债务包括FAtiMA最终正式章、Science Advances命名约定的独立补充材料、AI Economist2022正式版与早期人类实验版本，以及另一个同名AgentSociety长文。RPGAgent、部分搜索引导与作者工具尚未完整读。Sotopia、HAMLET、PANDA、CoRE等长附录的未读示例/图版逐篇保留；补阅读不新增同一研究计数。

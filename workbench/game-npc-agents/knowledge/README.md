@@ -8,6 +8,7 @@
 |---|---|
 | NPC功能、17个交叉方向、研究尺度与覆盖空白 | [领域地图](DOMAIN_ATLAS.md) |
 | 逐篇版本、发表身份、正文／附录范围、来源与未读欠账 | [阅读总账](READING_CATALOG.md) · [JSON](READING_CATALOG.json) |
+| 角色扮演、叙事、情绪、玩家体验的四个知识/问题矿区 | [B–E总图与选题判断](../MINES.md) |
 | 动作风格、原生控制、学习、对手、难度和人类合作 | [学习、控制与人类合作](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md) |
 | 人物知识、表达、角色训练、原创人物与评价有效性 | [角色学习与评价](ROLE_LEARNING_AND_EVALUATION.md) |
 | 叙事规划、情绪、群体关系、社会规范与制度 | [叙事、社会与制度](SOCIAL_SIMULATION_AND_NARRATIVE.md) |
@@ -32,7 +33,7 @@
 
 ## 规范论文卡与维护方式
 
-2026-10-18的外围扩展新增阅读记录96项：95篇论文正文、1个完整作者改写研究章。14张已有卡在[原论文目录](papers)更新，82张新卡放入[游戏NPC主题文献目录](../../../library/themes/game-npc-social/papers)。按题名、DOI／arXiv与前次31项核对无重复，但不将不同阅读范围简单相加成“127篇全文”。具体卡片和来源身份以[总账](READING_CATALOG.md)为准。
+2026-10-18的广域批次登记96项，2026-10-19四矿区建设新增42项，合计138项独立工作记录。本批新增38项论文/理论文章/作者稿、1项demo与设计短稿合并记录、2篇技术报告和1个书章；来源身份与正文/附录范围分别保留。14张已有卡在[原论文目录](papers)维护，两批124张新卡在[游戏NPC主题文献目录](../../../library/themes/game-npc-social/papers)。更早31项含不同阅读范围，不简单相加为全文数。具体身份以[总账](READING_CATALOG.md)为准。
 
 维护时先查现有规范卡，再补原卡。正文、附录、版本核对、代码、数据及本地复算分别记录；下载成功不等于读完，出版年份不等于实验模型年份，自动裁判不等于真人评价。发现错误时直接修改对应卡和专题，同时保留关键不确定性。未重读的旧摘要与索引继续标明历史范围。
 
@@ -40,4 +41,4 @@
 
 ## 与具体研究的边界
 
-[矿区A知识库](../mine-a-persona-strategy/knowledge/README.md)保存该方向的定位；其`experiments/`、`results/`和`CLAIMS.md`保存实验、结果与主张。外围阅读可以修正领域理解，不自动升级、关闭或恢复任何研究。当前实验保持暂停。
+[矿区A知识库](../mine-a-persona-strategy/knowledge/README.md)及其`experiments/`、`results/`、`CLAIMS.md`保留终止前的历史证据，最终判断见[CLOSEOUT](../mine-a-persona-strategy/CLOSEOUT.md)。[B–E](../MINES.md)按用户新要求建立知识/问题目录，尚无实验项目。外围阅读直接修正知识理解，不自动改变研究状态或分配资源。

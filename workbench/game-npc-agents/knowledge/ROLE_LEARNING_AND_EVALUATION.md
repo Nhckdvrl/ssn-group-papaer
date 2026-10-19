@@ -1,6 +1,6 @@
 # 角色学习与评价：人物知识、表达与情境表现
 
-更新：2026-10-18。主要依据本轮角色综述、训练、评价论文的完整正文与指定关键附录；每项的版本和边界见[阅读总账](READING_CATALOG.md)。这里把角色表达当作NPC领域的一条重要研究线，同时保留其与动作、叙事和玩家体验的接口。
+更新：2026-10-19。依据两批角色综述、训练、评价、经典表演与作者研究的完整正文及指定关键附录；每项的版本和边界见[阅读总账](READING_CATALOG.md)。这里把角色表达当作NPC领域的一条重要研究线，同时保留其与动作、叙事和玩家体验的接口。定向问题进入[矿区B](../mine-b-character-enactment/README.md)，不缩小外围知识范围。
 
 ## 1. 先分开六种能力
 
@@ -46,10 +46,20 @@ PersonaGym中GPT4.1和Llama3-8B都为4.49，只说明在该高分、聚合且带
 
 **信息、历史和知识结构是必须认真给足的普通参照。** [Dynamic Persona Coherence](papers/DYNAMIC_PERSONA_COHERENCE_2026.md)的Vanilla没有历史响应和状态累积；[CDT](papers/CDT_2026.md)把同一知识树线性化成普通提示后已很接近完整树方法。它们支持结构／记忆可能有用，也使“特殊机制不可替代”的主张需要更强比较。
 
-## 5. 值得形成的整体认识与研究问题
+## 5. 从角色分数走向人物塑造与延展
+
+**可配置人物已有主会工作，但“未见人物”的分母要仔细读。** [Crab](../../../library/themes/game-npc-social/papers/CRAB_2025.md)的约15%未见角色是22/146个角色，只有56段对话、277问；不能改成15%的全部对话或问题。RoleRM对互动吸引力的人机Spearman仅.142，不能把自动总分当真实玩家吸引力。[PsyMem](../../../library/themes/game-npc-social/papers/PSYMEM_2026.md)、[Thinking in Character](../../../library/themes/game-npc-social/papers/THINKING_IN_CHARACTER_2025.md)、[SimsConv](../../../library/themes/game-npc-social/papers/SIMSCONV_2025.md)分别补心理/记忆控制、角色化推理和偏好属性；其文本、校准及合成评价均不能自动成为可用创作流程。
+
+**人物时间和开放成长不同。** [TimeChara](../../../library/themes/game-npc-social/papers/TIMECHARA_2024.md)研究某时点的知识边界；[ArcANE](../../../library/themes/game-npc-social/papers/ARCANE_2026.md)研究已从小说给出的成长阶段。后者不是玩家改变未知后续弧线的系统，短ArcHint对两个基础模型已接近完整Arc；真正盲评又仅单个人物、三位读者。新题目需说明新增经历如何进入未来表现，不能只是再给模型一份已知阶段标签。
+
+**“长期记忆”要回到实际调用协议。** [MDRP](../../../library/themes/game-npc-social/papers/MEMORY_DRIVEN_ROLEPLAY_2026.md)在固定历史上单次续答，没有在线积累/跨会话实验；Qwen3-Max加方法后的均分8.08→8.07，GLM-4.7为8.11→8.13。它支持人物信息组织的比较，不能证明旗舰普通系统需要复杂记忆。与[RoleFact](../../../library/themes/game-npc-social/papers/ROLEFACT_2024.md)/[RoleBreak](../../../library/themes/game-npc-social/papers/ROLEBREAK_2025.md)的事实/攻击问题相接时，还要区分拒绝不实信息和作者许可即兴。
+
+**作者意图可以在试演中形成。** [ORIBA](../../../library/themes/game-npc-social/papers/ORIBA_2025.md)的14位原创角色艺术家会切换互动身份、修改设定并创作后续作品；它提供真实使用过程，仍没有同界面、同支持时间的完整普通GPT-4比较。[Bates](../../../library/themes/game-npc-social/papers/BATES_BELIEVABLE_EMOTION_1994.md)与[Oz](../../../library/themes/game-npc-social/papers/OZ_CENTRIC_REVIEW_1997.md)的经典论述又提醒，人物状态、表演和观众解释可以分离。由此应同时保留原设定符合、作者受启发后接受的新解释，以及玩家实际辨认；三者都不必化成任务完成率。
+
+## 6. 值得形成的整体认识与研究问题
 
 角色学习正在从“让模型听话扮演”扩展到**作者新建人物、知识边界、情境动机、长程经历、可解释约束和群体表现**。已有数据、训练和评测提供了可复用基础；研究价值不必靠重新发现小模型容易失忆。
 
 更具信息量的问题包括：同一人物知识在完整提示、检索、SFT和结构化规则下的覆盖与可编辑性如何不同；作者独特文风、沉默、含糊、不讨喜态度和披露节奏能否保持并低成本修改；角色训练是否牺牲任务能力或作者设定之外的常识；人物变化怎样由事件推动且能被玩家理解；评价中的高分是否预测新的情境决策与实际行动；多个有自身立场的角色怎样共同构成可理解的互动。它们需连接相应证据层，不能仅加一项“人格一致性”总分。
 
-与这些问题相接的路线见[人格变化](PERSONA_DRIFT.md)、[叙事与社会](SOCIAL_SIMULATION_AND_NARRATIVE.md)、[玩家与作者](PLAYER_EXPERIENCE_AND_AUTHORING.md)。当前欠账包括RoleBreak/ArcANE等已有摘要来源的完整阅读、更多跨文化原创人物、语音／身体联合表达、跨会话真人长期研究；不因本批数量增加就标为完成。
+与这些问题相接的路线见[人格变化](PERSONA_DRIFT.md)、[叙事与社会](SOCIAL_SIMULATION_AND_NARRATIVE.md)、[玩家与作者](PLAYER_EXPERIENCE_AND_AUTHORING.md)及[B–E矿区](../MINES.md)。RoleBreak、ArcANE已补正文，具体附录边界见卡；当前仍欠演员/角色作者细粒度工作、多模态acting、跨文化原创人物和跨会话真人长期研究。MIG 2022 *Toward Believable Acting for Autonomous Animated Characters*尚只有第一方摘要，不计正文阅读。

@@ -1,6 +1,6 @@
 # 玩家体验与作者工具：角色价值、交互设计与创作控制
 
-更新：2026-10-18。NPC交互的价值包括挑战与协作、人物辨认、角色扮演、情感联系、故事理解和世界氛围。开放输入增加表达空间，也改变能力发现、误解修复和下一步判断的负担。作者工具需要同时支持探索可能性、保持作品意图和定位修改。以下综合分别观察玩家实际体验、作者工作过程与系统行为；完整来源、版本、阅读范围及计数见[阅读总账](READING_CATALOG.md)。
+更新：2026-10-19。NPC交互的价值包括挑战与协作、人物辨认、角色扮演、情感联系、故事理解和世界氛围。开放输入增加表达空间，也改变能力发现、误解修复和下一步判断的负担。作者工具需要支持探索可能性、形成/修订作品意图和理解修改。以下综合分别观察玩家实际体验、作者工作过程与系统行为；新增问题进入[B–E矿区](../MINES.md)，完整来源与阅读范围见[总账](READING_CATALOG.md)。
 
 ## 一、领域关心的价值，比“对话更自然”或“任务成功更高”宽得多
 
@@ -33,7 +33,11 @@
 
 **DiaryPlay、Orchid-Creator、Elsewise（2026）** 分别支持日常短篇再现、可编辑角色/事件/变量图、模拟玩家轨迹的可能空间可视化。三者的作者目标不同，不能用一个“开放程度”排优劣：DiaryPlay 刻意把分歧引回个人故事关键事件；Orchid 允许作者安排多种事件与变量；Elsewise 帮助作者比较不同输入下的生成趋势。Orchid 的六个月艺术家案例是本页所引研究少见的长期创作证据：约20轮修改，艺术家放弃原定实物/手势输入转为词语交互，也花力气把笼统要求拆成可调步骤。工具能支持完成作品与展出是实质进展，工具同时塑造甚至收缩创作意图也是实质发现。[PA13 原文](https://arxiv.org/pdf/2507.11628v3)、[PA14 原文](https://xrim.hkust.edu.hk/static/publications/orchid-creator/3772318.3791426.pdf)、[PA15 原文](https://arxiv.org/pdf/2601.15295v2)
 
-这条谱系的共同问题是：如何让作者在生成前表达足够意图、生成后理解意外、修改后预测影响。开放生成将负担从逐条写台词转移到规范、选择、检视、调试与版本维护；它可能在一些环节节省劳动，但这些研究没有证明端到端商业制作成本普遍下降。
+**ORIBA（2025预印本）**把原创角色艺术家的试演带入这条谱系。14位作者通过切换互动身份、观察角色回应和修改设定来发展人物，7位后续提交受启发作品。两个月后作品提交不是两个月持续使用，研究员辅助编辑和普通GPT-4结构提示也没有同界面强基线。它仍提供一个重要使用事实：作者可能通过系统重新发现人物，原设定保持并非唯一成功。[规范卡](../../../library/themes/game-npc-social/papers/ORIBA_2025.md)
+
+**Drama Llama、Dramamancer与Bonsai（2025–2026）**进一步把自然语言storylet、时间事件、开放输入、持久新分支和作者修剪放进工具。前两者共享项目谱系，6作者研究与后续内部8作者/15作品不能相加为独立验证。Bonsai在三个月第一人称设计和3名形成性测试者之后，以完整模拟偏好做主要自动评价；它很接近“保留意外—编辑—积累规则”，但尚未证明真实作者意图演化或下游玩家收益。[Drama Llama](../../../library/themes/game-npc-social/papers/DRAMA_LLAMA_2025.md)、[Dramamancer](../../../library/themes/game-npc-social/papers/DRAMAMANCER_2025.md)、[Bonsai](../../../library/themes/game-npc-social/papers/BONSAI_2026.md)
+
+这条谱系的共同问题是：如何让作者在生成前表达足够意图、生成后理解意外、修改后预测影响，并允许作者从中改变主意。开放生成将负担从逐条写台词转移到规范、选择、检视、调试与版本维护；它可能在一些环节节省劳动，但这些研究没有证明端到端商业制作成本普遍下降。新颖性不能只落在“给作者编辑器”或“从编辑提规则”，应说明哪种创作理解或能力得到改变。
 
 ### 普通工程能力本身应进入方法比较
 
@@ -72,6 +76,22 @@ Façade 的 CHI 2007 研究用12名参与者比较键盘、桌面语音和AR三�
 
 端到端指标也会互相拉扯：NPC回答无用、信息矛盾和虚构地点会迫使玩家重复问、走错路和向社区求助；这类修复劳动是真实玩法成本。反过来，少量难以判断真假的角色回应可被部分玩家当有趣社会不确定性，因此一刀切排除所有不可靠台词也会错过叙事能力。需要在作者意图、可理解性和游戏进展中定义适当不确定性。[PA16 原文](https://www.samcox.eu/files/CONVERSATIONS%2723%20Paper.pdf)、[PA19 原文](https://ris.utwente.nl/ws/portalfiles/portal/522572838/Dialogs_with_GenAI_NPCs_Exploring_Player_Interactions_with_Speech_Agents_in_a_VR_Game.pdf)
 
+### 2026-10-19补读后：自由、情绪和体验证据进一步分开
+
+| 新补来源 | 实际活动与独立单位 | 改变的理解 | 保留的限制 |
+|---|---|---|---|
+| [Agency Reconsidered](../../../library/themes/game-npc-social/papers/AGENCY_RECONSIDERED_2009.md)、[共同创作历史](../../../library/themes/game-npc-social/papers/COAUTHORSHIP_EMERGENT_NARRATIVE_2021.md) | 理论、历史与案例论证 | 能动性涉及玩家意图、可支撑的行动和系统回应；扮演与共同作者权限不同 | 无新增受控玩家实验，不能把概念直接当量表 |
+| [Illusion of Agency](../../../library/themes/game-npc-social/papers/ILLUSION_OF_AGENCY_2012.md)、[Meaningful Choices](../../../library/themes/game-npc-social/papers/FORESEEING_MEANINGFUL_CHOICES_2014.md) | 两项各单故事的选择研究 | 回应和可预见差异可能有作用 | 前者无等价检验，后者有事后分析；不证明简单确认等价真实改写 |
+| [Presence VRST2024](../../../library/themes/game-npc-social/papers/PRESENCE_VRST_2024.md) | 22人、15分钟、同LLM回答的语音/选项比较 | 自由表达与引导是各有作用的设计 | 存在/沉浸主项未显著；时延/模态混杂，非强旗舰上限 |
+| [Open-Ended CoG2025](../../../library/themes/game-npc-social/papers/OPEN_ENDED_DIALOGUE_2025.md) | 同一RPG、62人分析、四种对话形式 | 措辞、生成树、全开放可以拆成不同自由 | 总时长含输入/等待；casual分组是探索；旧库已读同家族学位论文 |
+| [Scaffolded Play](../../../library/themes/game-npc-social/papers/SCAFFOLDED_PLAY_2025.md) | 10人真人比较，另60问句对模型评价 | 约束可能随角色用途产生不同取舍 | 真人未检出差异不等价；重新设计未再次真人验证 |
+| [Spoken Emotion IVA2018](../../../library/themes/game-npc-social/papers/SPOKEN_EMOTION_2018.md) | 16人、两个8人组 | 情绪可成为需要玩家回应的互动规则 | 条件同时改变线索获得，较长时长不能纯当投入 |
+| [Pharos Night](../../../library/themes/game-npc-social/papers/PHAROS_NIGHT_2026.md) | 13人单条件卡牌/战术pilot | 生成的惊喜与可掌握性在实际玩法里会拉扯 | 机制限作者清单，无架构/平衡因果验证 |
+
+情感联系也有独立材料：[游戏角色依恋](../../../library/themes/game-npc-social/papers/CHARACTER_ATTACHMENT_2019.md)区分玩家对不同人物的关系意义；[Mass Effect研究](../../../library/themes/game-npc-social/papers/NPC_ATTACHMENT_MASS_EFFECT_2020.md)分析的是粉丝回顾和回复，而非70,023位玩家。[Bickmore–Picard](../../../library/themes/game-npc-social/papers/RELATIONAL_AGENTS_2005.md)有非游戏30天关系干预，部分bond和继续意愿提高，却不证明实际NPC留存或总体行为优势。当前缺口是明确的实际玩家纵向证据，不应说所有跨会话关系研究都不存在。
+
+测量上，[PXI开发](../../../library/themes/game-npc-social/papers/PXI_2020.md)刻意未覆盖全部社会/叙事构念，[独立1518人验证](../../../library/themes/game-npc-social/papers/PXI_VALIDATION_2024.md)支持按分构念而非总PX报告。喜欢、好奇、自主、沉浸、意义及关系不能强合成一个“更有趣”。[玩家AI用途态度](../../../library/themes/game-npc-social/papers/PLAYERS_AI_ATTITUDES_2026.md)的假想情境与[Imitation Game](../../../library/themes/game-npc-social/papers/IMITATION_GAME_2026.md)的来源推测—体验关联也不等于实际使用或标签因果；玩家的作者性和质量顾虑应作为可理解的判断，不以偏见一词排除。
+
 ## 五、这些文献共同留下的开放问题
 
 **作者如何预测和修改生成行为？** 明确图和状态便于检验，却可能让非程序员陷入条件组合；自然语言规范易表达，但运行语义和影响范围不透明。Elsewise 的语义维度和模拟玩家帮助浏览，但“模型说处于某状态”不等于可验证状态；其概念归纳本身未评估。仍需要理解人类作者在什么层级最能诊断错误、改一处是否需要重新测全局、团队如何分享可复用规则和失败案例。
@@ -91,7 +111,7 @@ Façade 的 CHI 2007 研究用12名参与者比较键盘、桌面语音和AR三�
 本页所引研究较强覆盖“英语/欧美与韩国小样本、RPG/短篇叙事、桌面/VR语音、近年LLM作者界面”。仍有明显缺口：
 
 - **传统作者工具和可验证生产流程**：当前覆盖尚缺 ABL/Façade 编辑与调试工具系列、SQUEGE/ScriptEase、行为树作者工具、基于示范的角色创作、角色动作时间线、社会语言生成工具的实际作者研究。StoryAssembler和FAtiMA提供入口，不能代替全部经典谱系。
-- **叙事理论与选择实证**：目前主要入口是较宽的选择访谈与同伴调查；玩家能动性、agency illusion、道德选择、作者意图、玩家类型、存读档与社区传播的经典系列仍需逐篇补原文。不能把引用中提到的同理心或自我认同效应算成已读事实。
+- **叙事理论与选择实证**：本批补agency、agency illusion、可预见选择与共同创作历史正文；choice poetics、道德选择、作者意图演化、玩家类型、存读档、叙事策展及社区传播仍需系统追索。读过综述不等于已读其中所有原始研究。
 - **多模态完整表现**：语音识别、轮替和面部镜像以外，语调、视线/共同注意、手势生成、行走/身体朝向、情绪与动作同步、多角色自然接话、非语言合作仍薄弱。VT/IVA、HRI、虚拟人领域有很多可迁移证据，但其教学/医疗/访谈情境不能自动外推娱乐NPC。
 - **真实商业长期使用与作者劳动**：商业评论属于自选数据；长期玩家留存、付费、社交关系发展、多语言与无障碍需求、成熟工作室可编辑性和QA成本目前覆盖不足。营销demo不填补这些缺口。
 - **个性化与差异**：个性化任务这里只是单次文本意图；玩家策略与技能适应见[学习、控制与人类合作](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md)，关系偏好、叙事风格、不同文化/年龄/语言能力、神经多样性和不愿语音的人仍需专门材料。
@@ -104,10 +124,10 @@ Façade 的 CHI 2007 研究用12名参与者比较键盘、桌面语音和AR三�
 | Beyond Pre-Defined Scripts: Player Perceptions on Generative NPC Dialogues | IUI 2026，DOI [10.1145/3742413.3789221](https://doi.org/10.1145/3742413.3789221) | ACM访问受限，只有机构/摘要，需核完整条件、被试及结果 |
 | RPGAgent | CHI 2026，DOI [10.1145/3772318.3790326](https://doi.org/10.1145/3772318.3790326) | 未取得全文，仅原机构发表信息 |
 | Gathering Self-Report Data in Games Through NPC Dialogues | CHI 2021，DOI [10.1145/3411764.3445411](https://doi.org/10.1145/3411764.3445411) | 需补“用NPC收集评价本身是否干扰体验”的完整方法 |
-| Spoken Conversational AI in Video Games – Emotional Dialogue Management Increases User Engagement | IVA 2018，DOI [10.1145/3267851.3267896](https://doi.org/10.1145/3267851.3267896) | 只见机构摘要，未取得原始实验细节 |
-| Exploring Presence in Interactions with LLM-Driven NPCs: A Comparative Study of Speech Recognition and Dialogue Options | VRST 2024，[机构PDF入口](https://vbn.aau.dk/ws/portalfiles/portal/747035191/Exploring_Presence_in_Interactions_with_LLM_Driven_NPCs_A_Comparative_Study_of_Speech_Recognition_and_Dialogue_Options.pdf) | 已发现机构PDF入口，尚未取得并完整阅读；不作为已完成的对照证据 |
+| Quest of Aivengarde | FDG2026，[机构条目](https://portal.findresearcher.sdu.dk/en/publications/quest-of-aivengarde-comparative-study-of-player-experience-across/) | 同家族64人描述；未读11页正式文，需核与CoG/学位论文的数据重叠，不另计 |
+| miniPXI | DOI [10.1145/3549507](https://doi.org/10.1145/3549507) | 原文未完整读，不能自行缩短完整PXI后继承原效度 |
 
-此外，arXiv 2507.10469 与 PA19 的题名/作者链可能属于同一研究的前身，尚未核清，不能另计新论文；FAtiMA正式2022版、DIS选择正式2022版及CHI PLAY2018原版仍可补版本比对，但不因此再增加研究条目。
+Spoken Emotion和Presence VRST已补正文并移出欠账。[arXiv2507.10469](https://arxiv.org/abs/2507.10469)已通过官方作者/场景身份核实为Korkiakoski等的另一个VR审讯研究，与PA19的Zargham等办公室研究、Presence VRST均不同；解除疑似重复，但仍仅摘要/身份阅读，不计全文。FAtiMA正式2022版、DIS选择正式2022版及CHI PLAY2018原版仍可补版本比对，不因此增加独立研究条目。
 
 ## 七、跨方向的横向关系
 
@@ -123,4 +143,4 @@ Façade 的 CHI 2007 研究用12名参与者比较键盘、桌面语音和AR三�
 
 
 
-本页对应的逐篇规范卡按PA01–PA23收录于[阅读总账](READING_CATALOG.md#player-authoring)，与[学习合作](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md)、[叙事社会](SOCIAL_SIMULATION_AND_NARRATIVE.md)交叉使用。
+本页原PA01–PA23与新B/C/D/E相关卡分别见[广域批次](READING_CATALOG.md#player-authoring)和[四兴趣批次](READING_CATALOG.md#mines-2026-10-19)，与[学习合作](LEARNING_CONTROL_AND_HUMAN_COOPERATION.md)、[叙事社会](SOCIAL_SIMULATION_AND_NARRATIVE.md)交叉使用。当前重点问题可从[四矿区总图](../MINES.md)进入。

@@ -1,6 +1,6 @@
 # NPC研究的强基线：按任务比较完整系统
 
-更新：2026-10-18。强基线用于判断一种困难来自模型、信息与接口、已有工程支持，还是仍需新的方法或认识。这里不推荐采购模型，不启动实验；商业模型名称按作者实际披露记录，未给固定版本处明确标注。
+更新：2026-10-19。强基线用于判断一种困难来自模型、信息与接口、已有工程支持，还是仍需新的方法或认识。这里不推荐采购模型，不启动实验；商业模型名称按作者实际披露记录，未给固定版本处明确标注。B–E的具体参照和未运行设计由[各矿区](../MINES.md)维护。
 
 ## 1. 强基线随研究对象变化
 
@@ -28,6 +28,19 @@
 **像素控制失败不是状态与技能系统的能力上限。** VideoGameBench禁止引擎状态和专用控制，BALROG主表使用很短历史和零样本下一动作，SIMA 2的通用模型比较也受原生视觉动作接口约束。它们证明各自任务中的困难；不能据此断言充分接地的高层NPC必然失败。另一方面，SIMA系列显示专门训练的行动能力确有可测进展，不应将其缩成提示工程。[VideoGameBench](../../../library/themes/game-npc-social/papers/VIDEOGAMEBENCH_2026.md)、[BALROG](../../../library/themes/game-npc-social/papers/BALROG_2025.md)、[SIMA 2](../../../library/themes/game-npc-social/papers/SIMA2_2025.md)
 
 **成熟结构检查和强提示也会有维度上的优势。** KNUDGE的完整生成修订法在一些任务／知识指标更好，但专家的内容建议和吸引力并未全面胜普通ICL；CoSER的结构化经历／对话检索优于某些原文检索。比较要保留真实强点，不能选择对新方法有利的一个总分。[KNUDGE](papers/KNUDGE_2024.md)、[CoSER](papers/COSER_2025.md)
+
+### 2.1 四兴趣方向的新近正文证据
+
+| 研究 | 认真对待普通系统的具体理由 | 不能据此推出什么 |
+|---|---|---|
+| [MDRP，2026](../../../library/themes/game-npc-social/papers/MEMORY_DRIVEN_ROLEPLAY_2026.md) | Qwen3-Max人物分面提示均分8.08→8.07，GLM-4.7为8.11→8.13；固定历史单次续答 | 专门角色记忆必需，或长期在线关系已经被解决 |
+| [ArcANE，2026 v2](../../../library/themes/game-npc-social/papers/ARCANE_2026.md) | 极短ArcHint对两个基础模型各项距完整Arc不超过±2.6；信息条件需配平 | 复杂成长表示不可替代；已给小说阶段等于玩家改变未来 |
+| [CPM-MultiAgent，2026](../../../library/themes/game-npc-social/papers/CPM_MULTIAGENT_2026.md) | 同GPT-5.4下zero-shot4.283、单体CPM4.295、full4.322；无相应区间/显著性 | 多agent情绪架构显著改善游戏玩家体验 |
+| [Chain-of-Emotion，2024](../../../library/themes/game-npc-social/papers/CHAIN_EMOTION_2024.md) | 完整历史加一次自然语言appraisal已有30人短时互动证据 | 无状态基线可以代表合理普通系统；旧模型单情境结果代表当期旗舰 |
+| [ACL互动戏剧，2025](../../../library/themes/game-npc-social/papers/IMMERSION_AGENCY_DRAMA_2025.md) | GPT-4o完整历史、每5步普通剧情反思可以改善有限轨迹评分 | 剧情反思全无效；也不能从一Conan剧本推出跨作品需求全部解决 |
+| [Bonsai，2026 workshop](../../../library/themes/game-npc-social/papers/BONSAI_2026.md) | 持久分支、直接编辑、从修改提规则都已有；还须比较原编辑few-shot/直接意图/简单项目隔离 | “记住作者修改”本身新颖；模拟完整偏好相当于真实作者发展意图 |
+
+这些分数来自不同量表、任务和评委，不可合并成模型排行榜。它们共同要求：先让普通系统接触同样的资料、历史、编辑支持和合理反馈，再判断新表示/分工是否必要。若研究的是作者探索或玩家交互，底层模型足够强并不取消人的问题；相应贡献也不应伪装成模型能力突破。
 
 ## 3. 一个普通高层NPC系统应有的支持
 

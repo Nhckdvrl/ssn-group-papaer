@@ -1,6 +1,6 @@
 # 游戏 NPC Agent 领域地图
 
-更新：2026-10-18。这个地图覆盖**游戏中角色的行为、人物表现、与人的互动、叙事、社会、制作与运行**。它不是矿区A的相关工作表，也不把所有游戏AI或角色聊天模型都算作直接NPC证据。逐篇来源、实际版本、阅读范围与未读欠账见[阅读总账](READING_CATALOG.md)。
+更新：2026-10-19。这个地图覆盖**游戏中角色的行为、人物表现、与人的互动、叙事、社会、制作与运行**。它不是矿区A的相关工作表，也不把所有游戏AI或角色聊天模型都算作直接NPC证据。逐篇来源、实际版本、阅读范围与未读欠账见[阅读总账](READING_CATALOG.md)。用户新指定的角色扮演、叙事、情绪和玩家体验，已深入为[B–E知识/问题矿区](../MINES.md)；17方向全景继续保留。
 
 ## 1. 先明确：谁在游戏里承担什么功能
 
@@ -67,7 +67,18 @@ NPC是产品中的角色位置，不是一种模型架构。同一个守卫可�
 | 评价贡献 | 清晰构念、独立效度、会改变已有判断 | 新命名一组小任务，再用同一LLM自评 |
 | 玩家／开发者理解与设计证据 | 情境充分的访谈、观察、作品／使用过程和可信分析 | 将少量偏好包装为普遍因果效果，或因无算法胜率而否定设计认识 |
 
-这里没有预先给某方向排优先级。选题的证据门槛与模型／接口公平性见[强基线](STRONG_BASELINES.md)；矿区A的现有工作只在[独立审查](../mine-a-persona-strategy/results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md)中评判，不再充当外围地图的默认问题。
+全领域地图不按篇数为方向排价值。2026-10-19用户指定四个兴趣方向后，局部深入的优先判断见[四矿区总图](../MINES.md#3-当前最值得继续深挖的交叉问题)；这不排除其余方向。模型／接口公平性见[强基线](STRONG_BASELINES.md)；矿区A的终止结论见[CLOSEOUT](../mine-a-persona-strategy/CLOSEOUT.md)，不再充当外围地图的默认问题。
+
+### 四个兴趣方向深化后，怎样重新理解“角色变化”
+
+| 视角 | 本批新连接 | 需要保留的边界 |
+|---|---|---|
+| 角色扮演 | [ORIBA](../../../library/themes/game-npc-social/papers/ORIBA_2025.md)的作者试演/再理解，与[ArcANE](../../../library/themes/game-npc-social/papers/ARCANE_2026.md)的阶段人物、[Crab](../../../library/themes/game-npc-social/papers/CRAB_2025.md)的可配置角色相连 | 知道原作未来和接受玩家新经历不同；作者后来接受的变化不能伪装成事前规范命中 |
+| 叙事与作者 | [IPOCL](../../../library/themes/game-npc-social/papers/IPOCL_2010.md)、[能动性](../../../library/themes/game-npc-social/papers/AGENCY_RECONSIDERED_2009.md)连接到[Bonsai](../../../library/themes/game-npc-social/papers/BONSAI_2026.md)的持久分支与作者编辑 | 作者意图会形成和改变；导演、重规划、保存分支、提取规则都不是空白贡献 |
+| 情绪与关系 | [OSSE](../../../library/themes/game-npc-social/papers/OSSE_SOCIOEMOTION_2009.md)的多层关系与[Chain](../../../library/themes/game-npc-social/papers/CHAIN_EMOTION_2024.md)的自然语言评价，连接真实[游戏依恋](../../../library/themes/game-npc-social/papers/CHARACTER_ATTACHMENT_2019.md) | NPC情绪、玩家角色感受和实际玩家情绪分开；伤心、敌意和保持距离可能有意义 |
+| 玩家体验 | [开放对话](../../../library/themes/game-npc-social/papers/OPEN_ENDED_DIALOGUE_2025.md)、[语音/选项](../../../library/themes/game-npc-social/papers/PRESENCE_VRST_2024.md)与[PXI验证](../../../library/themes/game-npc-social/papers/PXI_VALIDATION_2024.md)连接 | 系统能做、玩家发现、愿意表达、理解后果各需证据；更长时长和单个总分不能代替这些区别 |
+
+据此，本库把“人物能有来由地变化、作者能修改和发现作品、玩家能理解并参与”作为四矿区之间的候选共同问题；它尚不是被验证的新构念或必须统一实现的架构。共享的应是经历与解释来源，各方向分别回答创作控制、故事意义、情感关系和玩家活动，避免同一材料被包装成四个独立基准。
 
 <a id="source-status"></a>
 ## 5. 阅读范围与仍然欠缺的覆盖

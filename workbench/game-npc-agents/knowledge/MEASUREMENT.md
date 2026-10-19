@@ -1,6 +1,6 @@
 # NPC研究的测量：对象、构念、因果与玩家价值
 
-更新：2026-10-18。测量应与研究目的相配：动作控制、角色表达、作者工具、社会仿真和玩家体验各有合理证据。**实际游戏后果是声称改变游戏机制时的必要证据，但不是语言表达、角色认同和创作价值的唯一来源。** 本页是知识规范，不启动任何测量。
+更新：2026-10-19。测量应与研究目的相配：动作控制、角色表达、作者工具、社会仿真和玩家体验各有合理证据。**实际游戏后果是声称改变游戏机制时的必要证据，但不是语言表达、角色认同和创作价值的唯一来源。** 本页是知识规范，不启动任何测量。
 
 ## 1. 把对象和评价单位写清楚
 
@@ -72,3 +72,17 @@
 分开自愿探索、表达和角色扮演，与为绕过错误被迫重复指令、补做队友工作、修复状态、搜索外部攻略。更长时间既可能是投入，也可能是摩擦。更少NPC发言既可能是高效，也可能使人物缺乏存在感。
 
 [自由语音](../../../library/themes/game-npc-social/papers/VOICE_CONTROLLED2025.md)和[礼貌机制](../../../library/themes/game-npc-social/papers/ETIQUETTE2024.md)显示表达、认知投入和易用性可朝不同方向变化；[Vaudeville评论研究](../../../library/themes/game-npc-social/papers/VAUDEVILLE_FEEDBACK2024.md)与[VR语音研究](../../../library/themes/game-npc-social/papers/DIALOGS_GENAI2026.md)显示错误会改变玩家行为和归因。作者侧同样应区分生成、筛选、规范编写、调试、引擎接入、回归和多人交接成本，不能只测第一次生成耗时。
+
+## 8. 四兴趣方向新增的测量约束
+
+**按体验构念报告。** [PXI开发](../../../library/themes/game-npc-social/papers/PXI_2020.md)为通用性排除了专门社会/叙事构念；[1518人独立验证](../../../library/themes/game-npc-social/papers/PXI_VALIDATION_2024.md)支持分构念模型而非高阶总PX。选择自主、好奇、意义等应服从问题，补充角色关系/叙事过程；不能自行合为“整体好玩”，也不能把关联SEM当设计因果。
+
+**允许人物和作者有依据地改变。** [ORIBA](../../../library/themes/game-npc-social/papers/ORIBA_2025.md)的作者会受互动启发而修订角色，[Bonsai](../../../library/themes/game-npc-social/papers/BONSAI_2026.md)则处理生成后的作者编辑。保留“符合先前明确意图”和“作者后来采纳新方向”两份记录；新的创作决定不反写旧评价gold。若规范本来允许多解，不要求玩家猜中隐藏心理的唯一解释。
+
+**情绪至少有三个对象。** NPC内部状态、玩家所扮演人物的感受和实际玩家情绪不能混同。[OSSE](../../../library/themes/game-npc-social/papers/OSSE_SOCIOEMOTION_2009.md)还把内部与表达分开，[CoRE](../../../library/themes/game-npc-social/papers/CORE_EMOTION_CONCEPTS_2026.md)显示分类结构与人类差异，不等于NPC体验好坏。更积极、更信任玩家、情绪类别更确定不是统一成功。短互动、跨会话关系和实际留存各要相应时间证据。
+
+**交互支持同时会改变模型输入。** 比较引导、确认、恢复时保留原始输入、模型理解、可用状态、回应/后果与玩家解释。相同后端不保证收到的意图和历史相同；固定意图回放只证明该表达下能力。将多种支持一起加入只能估计组合效果；两次体验只能观察重复暴露，不能直接分离新奇、学习和剧情熟悉。[E进入设计](../mine-e-player-agency/POSITIONING.md)
+
+**归因、态度与实际行为分开。** [Imitation Game](../../../library/themes/game-npc-social/papers/IMITATION_GAME_2026.md)没有随机操纵来源标签，体验可能反过来影响来源猜测；[AI用途态度](../../../library/themes/game-npc-social/papers/PLAYERS_AI_ATTITUDES_2026.md)研究假想情境，不是实际游玩。不能据此主张隐藏AI改善体验，或未使用自由就证明玩家不需要。
+
+**文献数不等于独立实证数。** [Dramamancer](../../../library/themes/game-npc-social/papers/DRAMAMANCER_2025.md)的demo/短稿合并，Drama Llama与其共享项目谱系且作者样本重叠未知；CoG开放对话与旧学位论文为同一研究家族。目录条目、独立样本、作品和复现分别统计，详见[身份与范围总账](READING_CATALOG.md#mines-2026-10-19)。
