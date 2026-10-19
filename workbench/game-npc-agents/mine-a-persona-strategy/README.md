@@ -19,7 +19,8 @@
 | 最终统计、负结果、来源和成本 | [results](results/README.md) |
 | 保留代码、复算与旧文件精确恢复 | [scripts](scripts/README.md) |
 | 当前维护与历史追溯 | [logs](logs/README.md)，旧重复过程日志转为精确Git历史入口 |
-| 暂停期间细化的下一轮设计 | [原生合作路径设计](experiments/COOPERATION_PATH_DESIGN.md)，尚未运行 |
+| 独立研究价值判断与证据审查 | [2026-10-18独立审查](results/audits/INDEPENDENT_RESEARCH_VALUE_REVIEW_2026-10-18.md) |
+| 原生路径来源与待修订设计 | [合作路径设计](experiments/COOPERATION_PATH_DESIGN.md)，原样执行不足以裁决强基线与任务规范问题；尚未运行 |
 
 阶段报告已合并为一份整体报告，运行设置/独有范围回到实验卡，历史决定回到按日日志；不再多页复制“最新完成”。一次性脚本、重复综合笔记和重复图导出从当前树清理，原始负结果和最终统计保留。清理前完整版本为Git `af7564ff`，不另建归档目录。
 
