@@ -9,8 +9,8 @@ def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--out',required=True);args=a.parse_args();root=Path(args.asset_root);local=[];api=[];totals=defaultdict(Counter)
  for meta in sorted((root/'runs').rglob('metadata.json')):
   run=meta.parent;m=json.loads(meta.read_text());relative=str(run.relative_to(root/'runs'))
-  if (run/'judgments.jsonl').exists():
-   rows=read(run/'judgments.jsonl');usage={k:sum(r.get('usage',{}).get(k,0) for r in rows) for k in ['prompt_tokens','completion_tokens','total_tokens']};valid={r['judge_id'] for r in rows if r.get('parse_ok')};api.append(dict(run=relative,model=m.get('model'),endpoint=m.get('endpoint'),n_recorded_attempts=len(rows),n_valid_judge_ids=len(valid),errors=dict(Counter(r.get('error') for r in rows if r.get('error'))),finishes=dict(Counter(r.get('finish_reason') for r in rows)),usage=usage,complete=m.get('complete'),reasoning_effort=m.get('reasoning_effort')));continue
+  if (run/'judgments.jsonl').exists() or m.get('transport')=='step_plan':
+   actor=m.get('kind')=='state_update_actor';rows=read(run/('responses.jsonl' if actor else 'judgments.jsonl'));usage={k:sum(r.get('usage',{}).get(k,0) for r in rows) for k in ['prompt_tokens','completion_tokens','total_tokens']};valid={r['task_id'] if actor else r['judge_id'] for r in rows if r.get('complete_state' if actor else 'parse_ok')};api.append(dict(run=relative,kind='state_update_actor' if actor else 'judge',model=m.get('model'),endpoint=m.get('endpoint'),n_recorded_attempts=len(rows),n_complete_state_tasks=len(valid) if actor else None,n_valid_judge_ids=len(valid) if not actor else None,errors=dict(Counter(r.get('error') for r in rows if r.get('error'))),finishes=dict(Counter(r.get('finish_reason') for r in rows)),usage=usage,complete=m.get('complete'),reasoning_effort=m.get('reasoning_effort')));continue
   assert m.get('complete'),'Not complete: '+relative
   if run.name=='target_likelihood':
    rows=read(run/'scores.jsonl');kind='teacher_forced_forward';usage=dict(prompt_tokens=sum(r['n_prompt_tokens'] for r in rows),target_tokens_scored=sum(r['n_target_tokens'] for r in rows));finishes={}

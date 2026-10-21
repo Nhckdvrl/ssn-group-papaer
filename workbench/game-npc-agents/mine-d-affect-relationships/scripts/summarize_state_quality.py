@@ -24,10 +24,14 @@ def parse_puf(text):
 def ci(v):
  v=list(v);rng=random.Random(0);s=sorted(mean(rng.choices(v,k=len(v))) for _ in range(20000));return [s[499],s[19499]]
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--out',required=True);args=a.parse_args();root=Path(args.asset_root);read=lambda p:[json.loads(l) for l in p.read_text().splitlines()];qual=json.loads((root/'data/update_D-E04/puf_tasks.qualification.json').read_text());rows=[]
- for name in ['puf_judge','puf_judge_recovery']:
-  p=root/'runs/D-E04'/name/'responses.jsonl'
-  if p.exists():rows+=read(p)
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--out',required=True);a.add_argument('--include-plan',action='store_true');args=a.parse_args();root=Path(args.asset_root);read=lambda p:[json.loads(l) for l in p.read_text().splitlines()];qual=json.loads((root/'data/update_D-E04/puf_tasks.qualification.json').read_text());rows=[]
+ experiments=['D-E04']
+ if args.include_plan:
+  extra=json.loads((root/'data/update_D-E04/plan_puf_tasks.qualification.json').read_text());qual['n_candidates']+=extra['n_candidates'];qual['n_qualified']+=extra['n_qualified'];qual['details']+=extra['details'];experiments.append('D-E05')
+ for experiment in experiments:
+  for name in ['puf_judge','puf_judge_recovery']:
+   p=root/'runs'/experiment/name/'responses.jsonl'
+   if p.exists():rows+=read(p)
  valid={};invalid=[]
  for r in rows:
   p=parse_puf(r['response'])
@@ -45,6 +49,6 @@ def main():
   for r in changes:b[r['book_name']].append(r['delta'])
   if b:
    ds={book:mean(v) for book,v in b.items()};paired[model]=dict(n_common_valid=len(changes),book_mean_delta=mean(ds.values()),by_book=ds,descriptive_book_bootstrap95=ci(ds.values()),win_tie_loss=[sum(r['delta']>0 for r in changes),sum(r['delta']==0 for r in changes),sum(r['delta']<0 for r in changes)],changes=changes)
- result=dict(experiment='D-E04',metric='Native PUF criterion and score formula, full-before-state single-character adapter; local Qwen3-32B judge, same-model actor bias possible; no gold flag/profile in judge input.',n_candidates=qual['n_candidates'],n_structural_candidates=qual['n_qualified'],n_judge_attempts=len(rows),n_valid_judgments=len(valid),invalid_judge_ids=sorted(set(invalid)-set(valid)),groups=groups,paired_instruction_effect=paired,point_range_diagnostic=dict(Counter(r['all_points_within_prompt_range'] for r in valid.values())),native_json_count=sum(r['native_json'] for r in valid.values()),finishes=dict(Counter(r['finish_reason'] for r in rows)),usage={k:sum(r['usage'][k] for r in rows) for k in ['prompt_tokens','completion_tokens']},details=list(valid.values()),qualification=qual['details'])
+ result=dict(experiment='+'.join(experiments),metric='Native PUF criterion and score formula, full-before-state single-character adapter; local Qwen3-32B judge, same-model actor bias possible; no gold flag/profile in judge input.',n_candidates=qual['n_candidates'],n_structural_candidates=qual['n_qualified'],n_judge_attempts=len(rows),n_valid_judgments=len(valid),invalid_judge_ids=sorted(set(invalid)-set(valid)),groups=groups,paired_instruction_effect=paired,point_range_diagnostic=dict(Counter(r['all_points_within_prompt_range'] for r in valid.values())),native_json_count=sum(r['native_json'] for r in valid.values()),finishes=dict(Counter(r['finish_reason'] for r in rows)),usage={k:sum(r['usage'][k] for r in rows) for k in ['prompt_tokens','completion_tokens']},details=list(valid.values()),qualification=qual['details'])
  Path(args.out).write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n');print(json.dumps(groups,indent=2))
 if __name__=='__main__':main()

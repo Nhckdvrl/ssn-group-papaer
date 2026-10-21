@@ -12,7 +12,7 @@ def main():
  metas=list((root/'runs').rglob('metadata.json'));assert metas
  for path in metas:
   m=json.loads(path.read_text())
-  if path.parent.name.startswith('step5_judge'):
+  if path.parent.name.startswith('step5_judge') or m.get('transport')=='step_plan':
    stopped=path.parent/'CALIBRATION.json'
    assert m.get('finished_utc') or (stopped.exists() and json.loads(stopped.read_text()).get('stopped_utc')),'API transport must have a finished/stopped record before archiving'
   else:assert m.get('complete') and m.get('finished_utc'),'Still running/failed: '+str(path)
