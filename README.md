@@ -66,7 +66,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 - **ACTIVE-MAIN：** [`role-playing-agents`](workbench/role-playing-agents/README.md)（2026-10-21 用户授权开线；四中心与 A–H 候选开放，尚无新实验）。
 - **ACTIVE-EXPLORE：** [`in-context-evidence-structure`](workbench/in-context-evidence-structure/README.md)，保持原状态。
 - **CLOSED：** [`game-npc-agents`](workbench/game-npc-agents/README.md) 的历史矿区 A 继续 CLOSED／TERMINATED；B–E 为知识/问题矿区，不随新线自动恢复实验。其他旧关闭与已删 workbench 维持原状态。
-- **其他 PROPOSED / 关闭与历史条目：** 以 [workbench 登记表](workbench/README.md#9-登记表2026-10-13toolsprocesscheckpy-读取本表) 为准；本次无其他状态变更。
+- **其他 PROPOSED / 关闭与历史条目：** 以 [workbench 登记表](workbench/README.md) 为准；本次无其他状态变更。
 
 ## 仓库规则
 - 顶层目录代表阶段 / 功能，不代表题目；不建 `search_rounds/` 之类的过程堆积目录；不在 `search/` 下放实验。
