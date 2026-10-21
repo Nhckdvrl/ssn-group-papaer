@@ -34,6 +34,6 @@ def main():
                 cells.append(f'{action}: {utterance}' if action else f"无有效输出 ({row.get('finish_reason','missing')})")
             lines.append('| '+' | '.join(escape(x) for x in cells)+' |')
         lines.append('')
-    (root/'CASEBOOK.md').write_text('\n'.join(lines)+'\n')
+    (root/'CASEBOOK.md').write_text('\n'.join(lines).rstrip()+'\n')
 
 if __name__=='__main__':main()

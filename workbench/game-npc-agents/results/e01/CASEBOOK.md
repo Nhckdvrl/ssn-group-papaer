@@ -82,4 +82,3 @@
 仅对原轮截断项提高预算，以下是额外请求；不覆盖上表。
 
 - `watch_captain/stranger_wound/pressure/explicit`: B: Healer. Now.
-

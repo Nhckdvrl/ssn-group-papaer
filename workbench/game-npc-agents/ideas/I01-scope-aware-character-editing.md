@@ -13,7 +13,7 @@
   | [Persona Hierarchy Model, Oct 2026 preprint](https://arxiv.org/abs/2610.09384) | 微调的上下文影响传播和 persona-preserving regularization | 同一原创角色**内部的行为语义作用范围**，不能再以一般 local/global 编辑当新颖性 |
   | [BalancEdit, ICML 2025](https://proceedings.mlr.press/v267/guo25e.html) | 多模态事实编辑 generality–locality 的作用范围 | 从事实替换到作者的关系/行为/表达修订，允许条件变化与合理多解 |
 
-- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** [E01](../experiments/E01-scope-aware-character-edit-baseline-gate.md) 为 PLANNED；[初始评测骨架](../experiments/scope_edit_pilot/README.md) 的手工材料仅为代码 self-test，**不是可以据以决定模型/顶会主张的样本**。
+- **最便宜的决定性 pilot（能分出决策分支的最小算力）：** [E01](../experiments/E01-scope-aware-character-edit-baseline-gate.md) 已完成，实际结果见文末；以下为初版运行前设计：[初始评测骨架](../experiments/scope_edit_pilot/README.md) 的手工材料仅为代码 self-test，**不是可以据以决定模型/顶会主张的样本**。
   - **阳性对照：** 受控的编辑前后期望行为可以通过配对指标被检出，故意打乱答案会使程序计数下降；模型侧正控仍待建立。
   - **噪声地板 + MIE：** 先记录真实模型 seed/故事/作者间方差，再确定足以改变科研选择的最小有意义差异。四个手工故事不足以估计效应。
   - **决策表：** 参见 E01；没有实际模型或作者材料前不能将自测结果解释为 I01 成功。
