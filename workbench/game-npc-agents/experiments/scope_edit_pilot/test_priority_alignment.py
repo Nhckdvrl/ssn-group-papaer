@@ -2,9 +2,17 @@ import unittest,tempfile,json
 from pathlib import Path
 from alignment_audit import lint,annotation,score
 from priority_pilot import prepare
+from run_baseline import task_batches
 import scope_probe as p
 
 class PriorityAlignmentTests(unittest.TestCase):
+    def test_batches_visit_each_task_once_across_budget_boundary(self):
+        tasks=[dict(task_id=str(i),max_new_tokens=512 if i<100 else 1536) for i in range(108)]
+        batches=list(task_batches(tasks,8,512))
+        self.assertEqual([t['task_id'] for b in batches for t in b],[str(i) for i in range(108)])
+        self.assertEqual([len(b) for b in batches][-2:],[4,8])
+        self.assertTrue(all(len({t['max_new_tokens'] for t in b})==1 for b in batches))
+
     def test_lint_is_not_a_keyword_verdict(self):
         self.assertIn('commitment',lint("But if you insist, I'll do it."))
         self.assertNotIn('commitment',lint('I will not do it.'))

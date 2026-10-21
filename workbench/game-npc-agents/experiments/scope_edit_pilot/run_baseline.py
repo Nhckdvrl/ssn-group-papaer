@@ -88,6 +88,18 @@ def run_step(tasks, args, out, meta):
                 raise RuntimeError('Step Plan request failed; no further wave or cash fallback')
 
 
+def task_batches(tasks, batch_size, default_max_tokens):
+    """Partition exactly once; never mix output budgets in a generation batch."""
+    block=[]
+    for task in tasks:
+        if block and (len(block)==batch_size or task.get('max_new_tokens',default_max_tokens)!=block[0].get('max_new_tokens',default_max_tokens)):
+            yield block
+            block=[]
+        block.append(task)
+    if block:
+        yield block
+
+
 def run_hf(tasks, args, out, meta):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
@@ -109,13 +121,11 @@ def run_hf(tasks, args, out, meta):
         tokenizer_template_sha256=hashlib.sha256(str(tokenizer.chat_template).encode()).hexdigest(),
         config_sha256=sha(checkpoint / 'config.json'))
     dump(out / 'metadata.json', meta)
-    offset = 0
-    while offset < len(tasks):
-        budget = tasks[offset].get('max_new_tokens', args.max_tokens)
-        end = offset
-        while end < len(tasks) and end-offset < args.batch_size and tasks[end].get('max_new_tokens',args.max_tokens)==budget:
-            end += 1
-        block = tasks[offset:end]
+    completed = 0
+    seen = set()
+    for block in task_batches(tasks, args.batch_size, args.max_tokens):
+        if any(t['task_id'] in seen for t in block):
+            raise RuntimeError('Duplicate task detected before inference')
         batch_max_tokens = max(t.get('max_new_tokens', args.max_tokens) for t in block)
         rendered = [tokenizer.apply_chat_template(t['messages'], tokenize=False,
                     add_generation_prompt=True, enable_thinking=False) for t in block]
@@ -133,8 +143,8 @@ def run_hf(tasks, args, out, meta):
         eos = set(eos if isinstance(eos, list) else [eos])
         for j, task in enumerate(block):
             ids = generated[j, inputs.input_ids.shape[1]:].tolist()
-            end = next((k+1 for k,t in enumerate(ids) if t in eos), len(ids))
-            ids = ids[:end]
+            token_end = next((k+1 for k,t in enumerate(ids) if t in eos), len(ids))
+            ids = ids[:token_end]
             raw = tokenizer.decode(ids, skip_special_tokens=True)
             action, utterance = probe.parse_reply(raw)
             row = dict(task_id=task['task_id'], model=args.model, revision=checkpoint.name,
@@ -145,8 +155,10 @@ def run_hf(tasks, args, out, meta):
                 batch_latency_s=elapsed, batch_size=len(block), max_new_tokens=batch_max_tokens,
                 rendered_prompt=rendered[j], generated_token_ids=ids)
             append(out / 'responses.jsonl', row)
-        offset = end
-        print(f'{offset}/{len(tasks)} batch_s={elapsed:.2f}', flush=True)
+            seen.add(task['task_id'])
+        completed += len(block)
+        print(f'{completed}/{len(tasks)} batch_s={elapsed:.2f}', flush=True)
+    assert len(seen)==len(tasks)
     meta['peak_allocated_bytes'] = torch.cuda.max_memory_allocated()
 
 
