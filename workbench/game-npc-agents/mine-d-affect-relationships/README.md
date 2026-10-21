@@ -1,6 +1,6 @@
 # 矿区 D：可理解的情绪与关系演变
 
-**状态：2026-10-22用户明确选择本矿区为现有Game NPC Agents主线的优先研究方向。** B/I01暂停，C/NCP-Bench为备选，不新增平级workbench或独立ACTIVE名额。当前推进公开资产与强官方基线的驻留，不预设某个失败机制，也不锁定单一方法。
+**状态：2026-10-22用户明确选择本矿区为现有Game NPC Agents主线的优先研究方向。** B/I01暂停，C/NCP-Bench为备选，不新增平级workbench或独立ACTIVE名额。当前已完成首夜公开资产与强官方基线驻留，不预设某个失败机制，也不锁定单一方法。
 
 ## 当前研究入口：动态角色认知与长期人物演化
 
@@ -12,13 +12,15 @@
 
 | 记录 | 当前交付 |
 |---|---|
-| [D-E01](experiments/D-E01-arcane-official-residency.md) | 六作品/25人物/64完整probe/205 phase；Qwen3-8B与ArcANE-8B-DPO原生vanilla/arc共820条生成已完成，Step部分因共享并发限制停止；正式比较统一本地32B完整评分中 |
-| [D-E02](experiments/D-E02-longevorole-textual-residency.md) | 已完成256条角色输出＋256条本地判分；[报告](results/D-E02-REPORT.md)：PT Char/Sem3.656/3.281，NR3.453/3.047；不同评委/样本下的有限复现，不是新机制发现 |
-| [D-E03](experiments/D-E03-native-chapter-summary-reference.md) | 补原生近期章节Summary普通参照：固定嵌套25probe/81phase，242章教师与两8B角色生成已完成，追加同25人物的通用32B三条件容量参照；不把它冒充已保证因果可知的纯事件输入 |
-| [D-E04](experiments/D-E04-native-character-update-reference.md) | 现有EvolvingWorld角色更新任务：冻结8作品/61角色/64场景，8B与32B原生输入实测中；与阶段表演任务分开 |
-| [资产入口](ASSETS.md) | 代码、权重、数据、原始输出的位置、revision、环境、许可身份与离线复算 |
+| [首夜综合报告](results/D-OVERNIGHT-REPORT-2026-10-22.md) | 实际结果、关键成功/残差、评价边界与接下来两项研究动作；不是新方法或已成立机制 |
+| [D-E01](results/D-E01-REPORT.md) | 64完整probe/205phase，820条回复＋1,076本地评分；Arc条件APF/PTF：通用8B65.93/60.92，专用8B78.05/83.48；跨评委绝对分差大 |
+| [D-E02](results/D-E02-REPORT.md) | 64对话问题四文本条件，256回复＋256评分＋256 NLL前向；PT对NR的Sem+0.234、NLL−0.318，有额外输入信息混杂 |
+| [D-E03](results/D-E03-REPORT.md) | 嵌套25probe/81phase，242章教师＋405新回复；普通摘要有轨迹收益；32B Arc APF/PTF74.36/72.59，尚非同信息在线推断测量 |
+| [D-E04](results/D-E04-REPORT.md) | 64原生场景/8作品，256状态更新；一句提示部分恢复主体，名字正确不保证事件归属正确；PUF完整内容分另列 |
+| [D-E05](results/D-E05-REPORT.md) | Step5同信息强普通参照65次Plan请求，64完整后态；主体审阅0明确换人，47/64监督一致，修复主要Qwen身份混淆；收回手表仍记成送出 |
+| [资产入口](ASSETS.md) | 固定revision、完整raw归档/校验、环境与离线复算；模型/全原文不进Git |
 
-本轮没有提出新训练目标或小idea，不把RP离题自动叫过期状态干扰，也不把树方法的既有收益重新包装为我们的创新。
+本轮没有提出新训练目标或小idea。现有方法有效；下一步优先把合法经历→角色自身当前状态→后续表演连起来，比较普通强总结/更新系统与近邻，不围绕单例继续调提示。
 
 ## 我们要理解什么
 

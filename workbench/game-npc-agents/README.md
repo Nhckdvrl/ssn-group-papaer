@@ -8,7 +8,7 @@
 
 核心问题：Role-playing Agent如何利用截至当前可获得的经历，形成、更新并表现人物状态，同时保留仍成立的身份特征？优先进入[矿区D](mine-d-affect-relationships/README.md)，先复现强官方基线，再从真实现象探索；[矿区C](mine-c-shared-narrative/README.md)为叙事方向备选。
 
-当前已完成[LongEvo文本基线D-E02](mine-d-affect-relationships/results/D-E02-REPORT.md)，ArcANE两模型820条生成完成，统一本地判分与普通摘要/32B容量参照持续运行；原生角色状态更新也已冻结64场景并开始实测。具体入口见[矿区D](mine-d-affect-relationships/README.md)与[资产清单](mine-d-affect-relationships/ASSETS.md)。不将B的有限案例迁移成D结论，不预设摘要/检索/动态状态方法失败。
+首夜[D-E01–D-E05实测及科研报告](mine-d-affect-relationships/results/D-OVERNIGHT-REPORT-2026-10-22.md)已完成：1,481条角色回复、256条本地状态更新、Step5 65次Plan请求得到64状态，另有章节教师/完整内容评分/原句预测。ArcANE专用8B在原生Arc下APF/PTF78.05/83.48，通用8B65.93/60.92；PHASE文本状态对普通卡重写Sem+0.234、NLL−0.318。现有方法有效；强Step修复主要主体错配，但三模型都将已收回金表记成送出，评委也可能漏核最终事实。当前无新机制/算法主张，继续围绕有据状态形成及其后续人物行为，不做局部坏例调参。完整范围/不确定性见报告与[资产表](mine-d-affect-relationships/ASSETS.md)。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 

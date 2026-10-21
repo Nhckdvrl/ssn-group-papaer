@@ -4,6 +4,7 @@ import argparse,json,re,math,hashlib,random
 from pathlib import Path
 from collections import defaultdict,Counter
 from statistics import mean
+from itertools import combinations
 
 def parse_puf(text):
  s=text.strip();clean=s
@@ -49,6 +50,17 @@ def main():
   for r in changes:b[r['book_name']].append(r['delta'])
   if b:
    ds={book:mean(v) for book,v in b.items()};paired[model]=dict(n_common_valid=len(changes),book_mean_delta=mean(ds.values()),by_book=ds,descriptive_book_bootstrap95=ci(ds.values()),win_tie_loss=[sum(r['delta']>0 for r in changes),sum(r['delta']==0 for r in changes),sum(r['delta']<0 for r in changes)],changes=changes)
- result=dict(experiment='+'.join(experiments),metric='Native PUF criterion and score formula, full-before-state single-character adapter; local Qwen3-32B judge, same-model actor bias possible; no gold flag/profile in judge input.',n_candidates=qual['n_candidates'],n_structural_candidates=qual['n_qualified'],n_judge_attempts=len(rows),n_valid_judgments=len(valid),invalid_judge_ids=sorted(set(invalid)-set(valid)),groups=groups,paired_instruction_effect=paired,point_range_diagnostic=dict(Counter(r['all_points_within_prompt_range'] for r in valid.values())),native_json_count=sum(r['native_json'] for r in valid.values()),finishes=dict(Counter(r['finish_reason'] for r in rows)),usage={k:sum(r['usage'][k] for r in rows) for k in ['prompt_tokens','completion_tokens']},details=list(valid.values()),qualification=qual['details'])
+ # Strong reference and instructions are compared only on the same valid questions.
+ paired_groups={};index=defaultdict(dict)
+ for r in valid.values():index[r['actor_model']+'|'+r['condition']][r['question_id']]=r
+ for left,right in combinations(sorted(index),2):
+  common=sorted(set(index[left])&set(index[right]));books=defaultdict(list)
+  for q in common:
+   assert index[left][q]['book_name']==index[right][q]['book_name']
+   books[index[left][q]['book_name']].append(index[left][q]['score']-index[right][q]['score'])
+  if books:
+   ds={book:mean(v) for book,v in books.items()};values=[x for v in books.values() for x in v]
+   paired_groups[left+' minus '+right]=dict(n_common_valid=len(common),book_mean_delta=mean(ds.values()),by_book=ds,descriptive_book_bootstrap95=ci(ds.values()),win_tie_loss=[sum(x>0 for x in values),sum(x==0 for x in values),sum(x<0 for x in values)])
+ result=dict(experiment='+'.join(experiments),metric='Native PUF criterion and score formula, full-before-state single-character adapter; local Qwen3-32B judge, same-model actor bias possible; no gold flag/profile in judge input.',n_candidates=qual['n_candidates'],n_structural_candidates=qual['n_qualified'],n_judge_attempts=len(rows),n_valid_judgments=len(valid),invalid_judge_ids=sorted(set(invalid)-set(valid)),groups=groups,paired_instruction_effect=paired,paired_groups=paired_groups,point_range_diagnostic=dict(Counter(r['all_points_within_prompt_range'] for r in valid.values())),native_json_count=sum(r['native_json'] for r in valid.values()),finishes=dict(Counter(r['finish_reason'] for r in rows)),usage={k:sum(r['usage'][k] for r in rows) for k in ['prompt_tokens','completion_tokens']},details=list(valid.values()),qualification=qual['details'])
  Path(args.out).write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n');print(json.dumps(groups,indent=2))
 if __name__=='__main__':main()

@@ -7,7 +7,7 @@ def sha(path):
  with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--destination',required=True);a.add_argument('--manifest',required=True);args=a.parse_args();root=Path(args.asset_root);dest=Path(args.destination);dest.mkdir(parents=True,exist_ok=True,mode=0o700);archive=dest/'raw-runs-and-frozen-inputs.tar.gz';assert not archive.exists(),'Do not overwrite an existing research archive'
- required=['D-E01/qwen3_8b','D-E01/arcane_8b_dpo','D-E01/local_qwen32_judge','D-E02/qwen25_7b','D-E02/qwen3_32b_judge','D-E02/target_likelihood','D-E03/summary_teacher','D-E03/qwen3_8b','D-E03/arcane_8b_dpo','D-E03/qwen3_32b','D-E03/local_qwen32_judge','D-E03/local_qwen32_capacity_judge','D-E04/qwen3_8b','D-E04/qwen3_32b','D-E04/identity_line/qwen3_8b','D-E04/identity_line/qwen3_32b','D-E04/puf_judge']
+ required=['D-E01/qwen3_8b','D-E01/arcane_8b_dpo','D-E01/local_qwen32_judge','D-E02/qwen25_7b','D-E02/qwen3_32b_judge','D-E02/target_likelihood','D-E03/summary_teacher','D-E03/qwen3_8b','D-E03/arcane_8b_dpo','D-E03/qwen3_32b','D-E03/local_qwen32_judge','D-E03/local_qwen32_capacity_judge','D-E04/qwen3_8b','D-E04/qwen3_32b','D-E04/identity_line/qwen3_8b','D-E04/identity_line/qwen3_32b','D-E04/puf_judge','D-E05/step5','D-E05/puf_judge']
  for name in required:assert (root/'runs'/name/'metadata.json').exists(),'Registered run not started: '+name
  metas=list((root/'runs').rglob('metadata.json'));assert metas
  for path in metas:

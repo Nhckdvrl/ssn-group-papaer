@@ -39,3 +39,39 @@ D-E01角色生成以原生prompt为准，由`scripts/run_local_arcane.py`写官�
 官方代码固定`1de26550ccfff105f3ffe9f4b386716446291341`，HF数据固定`ae7d82d38909783805979a8055d5ae913cb982f7`。本轮大文件只下载训练混合文件和character_update单任务文件（约4.55GB），同时保存固定版本dataset card，不称完整世界模拟复现或已取得专用权重。单任务文件删除details，完整文件可恢复作品/角色/场景；两者24,977条conversation hash完全匹配。51部作品、2,671角色，22,306次相邻出场的输入profile/tracker与上次输出逐字相接；6条tracker为dict，按原生f-string存入下一输入。清单见`results/update_provenance_inventory.json`。
 
 D-E04直接使用原生角色更新system/human；完整监督与输出留在`data/update_D-E04/`、`runs/D-E04/`，只将样本ID/hash与轻量结果入Git。这是公开训练资产上的通用模型诊断，非官方held-out rollout。该代码revision未见LICENSE文件，HF数据卡未给标准license标识；卡片正文明确说明非商用学术研究/复现，并列出训练评估用途，再分发细节未另展开。当前仅本地研究运行/读取，无vendor代码或原文再发布。原著出处仍分别核对。
+
+## 本轮完整原始输出的持久归档
+
+主机`fvcrc20`；独立于NVMe临时目录的持久文件：
+
+`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-first-residency/raw-runs-and-frozen-inputs.tar.gz`
+
+校验和、每个成员的路径/字节/hash及归档对应研究commit见[RAW-MANIFEST](results/D-RAW-MANIFEST.json)；[运行总账](results/D-RUN-LEDGER.json)把角色、状态、教师、评委、前向与API分开。[输入与评分来源核验](results/D-INTEGRITY.json)确认同题/仅一句指令、API输入与本地相同、首个完整结果选择、PUF候选与raw hash对应、四文本NLL目标一致。归档不含权重、完整第三方corpus或vendor仓库，不因此改变原资产许可；文件仅限本地研究者访问。
+
+已配置该研究机SSH别名时可下载（亦可替换为实际登录地址）：
+
+```sh
+scp fvcrc20:/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-first-residency/raw-runs-and-frozen-inputs.tar.gz .
+sha256sum raw-runs-and-frozen-inputs.tar.gz
+mkdir -p restored-d
+tar -xzf raw-runs-and-frozen-inputs.tar.gz -C restored-d
+```
+
+`environment.json`保存Python/torch/transformers/CUDA/GPU信息；各run metadata、runner_source、frozen tasks包含实际配置、模型revision、输入与完整输出。HF缓存中的Qwen3-8B/Qwen2.5-7B可按表中revision重新下载。环境恢复后可重播冻结任务，不需要重新抽样/生成故事。Step API没有可固定权重hash，原回包/usage/response_id保留；生成token IDs供应方不提供则明确null，不伪造。
+
+Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源中断、不拼入本地主表；后者65请求/64完整状态、394,805已记录tokens。所有已记录Plan用量及早期最多2个在途未知调用见总账；绝不把未知计为0，也不把API壁钟加到GPU小时。
+
+## 不调用模型的完整复算
+
+下面命令在仓库根目录执行，`/var/tmp/ssn-game-npc-d`可换成解压后的完整资产根；如使用官方后处理，按上表恢复相应固定vendor revision。解释器推荐现有openslime环境。
+
+实际脚本目录为`workbench/game-npc-agents/mine-d-affect-relationships/scripts/`：
+
+- `recompute_arcane.py --asset-root <资产根> --project <仓库根>`：D-E01/D-E03主表、严格轨、跨评委与图，无新模型请求。
+- `summarize_results.py --asset-root <资产根> --experiment D-E02 --out <输出>`：LongEvo原生文本内容表；加`--strict-native-json`为严格轨。
+- `summarize_likelihood.py --asset-root <资产根> --out <输出>`：原句NLL，256次已保存前向分数复算，无新生成。
+- `summarize_updates.py --asset-root <资产根> --out <输出>`：D-E04原生flag主表；加`--condition identity_line`为控制；另加`--plan-run <资产根>/runs/D-E05/step5`为强普通参照。
+- `summarize_state_quality.py --asset-root <资产根> --out <输出>`：D-E04原生PUF准则单角色适配；加`--include-plan`给D-E04＋D-E05共同表与同题有效配对。
+- `summarize_runs.py --asset-root <资产根> --out <输出>`和`verify_measurement.py --asset-root <资产根> --out <输出>`：总账与来源检查。所有算术从保留raw重建，不以人工改分覆盖原结果。
+
+原生阅读范围、样本来源与许可说明见正文报告及四张权威论文卡；本轮没有跑PHASE参数适配、ArcANE-32B专用权重、EvolvingWorld专用checkpoint或完整多智能体rollout，也没有声称它们已被这些普通单步基线替代。

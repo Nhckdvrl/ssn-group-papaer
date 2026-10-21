@@ -7,12 +7,12 @@ from collections import Counter,defaultdict
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--audit',required=True);a.add_argument('--out',required=True);args=a.parse_args();root=Path(args.asset_root);audit=json.loads(Path(args.audit).read_text());ann={(r['model'],r['task_id']):r for r in audit['annotations']};details=[]
  for task in map(json.loads,(root/'data/update_D-E04/tasks.jsonl').read_text().splitlines()):
-  scene=task['messages'][1]['content'].split('## Scene Interactions\n')[1].split('\n\n## Current Profile')[0];counts=Counter();bad=0
+  scene=task['messages'][1]['content'].split('## Scene Interactions\n')[1].split('\n\n## Current Profile')[0];counts=Counter();bad=0;turns=0
   for text in re.findall(r'^(\[[^\n]*?\]):',scene,re.M):
    try:names=json.loads(text);assert isinstance(names,list)
    except Exception:bad+=1;continue
-   counts.update(str(n).casefold() for n in names)
-  target=task['role'].casefold();r=dict(task_id=task['task_id'],book_name=task['book_name'],target=task['role'],n_target_tagged_turns=counts[target],n_all_tagged_turns=sum(counts.values()),tag_parse_failures=bad,top_tagged_roles=counts.most_common(3))
+   turns+=1;counts.update(str(n).casefold() for n in names)
+  target=task['role'].casefold();r=dict(task_id=task['task_id'],book_name=task['book_name'],target=task['role'],n_target_tagged_turns=counts[target],n_actor_tag_occurrences=sum(counts.values()),n_tagged_turns=turns,tag_parse_failures=bad,top_tagged_roles=counts.most_common(3))
   for model in ['qwen3_8b','qwen3_32b']:r[model+'_subject_status']=ann[model,task['task_id']]['status'];r[model+'_definite_subject_error']=ann[model,task['task_id']]['definite_current_record_subject_error']
   details.append(r)
  summary={}
