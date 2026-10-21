@@ -42,7 +42,7 @@ def parse_arcane_local(row):
 def load_arcane(root,experiment,judge,strict=False):
  run=root/'runs'/experiment
  if judge=='step5':return read(run/'step5_judge/judgments.jsonl')
- paths=[run/'local_qwen32_judge/responses.jsonl',run/'local_qwen32_judge_recovery/responses.jsonl']
+ paths=[run/name/'responses.jsonl' for name in ['local_qwen32_judge','local_qwen32_judge_recovery','local_qwen32_capacity_judge','local_qwen32_capacity_judge_recovery']]
  raw=[parse_arcane_local(r) for p in paths if p.exists() for r in read(p)]
  if strict:
   for r in raw:r['parse_ok']=r['native_json']

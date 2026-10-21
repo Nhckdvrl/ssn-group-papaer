@@ -13,8 +13,8 @@ def wait_done(path):
   time.sleep(5)
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python'
- env=dict(os.environ,CUDA_VISIBLE_DEVICES='3',HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);a.add_argument('--only',choices=['D-E01','D-E03','both'],default='both');a.add_argument('--gpu',default='3');a.add_argument('--after');args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python'
+ env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
  def run(tasks,out,log,cap):
   cmd=[python,'-u',str(scripts/'run_local_text.py'),'--tasks',str(tasks),'--checkpoint',str(root/'models/Qwen3-32B'),'--revision','9216db5781bf21249d130ec9da846c4624c16137','--model','Qwen/Qwen3-32B','--out',str(out),'--max-tokens',str(cap),'--batch-size','4']
   with log.open('w') as f:subprocess.run(cmd,cwd=project,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
@@ -28,11 +28,14 @@ def main():
   rows=[json.loads(l) for l in (data/'local_judge_tasks.jsonl').read_text().splitlines()];selected=[r for r in rows if r['task_id'] in invalid];assert len(selected)==len(invalid)
   tasks=data/'local_judge_recovery_tasks.jsonl';tasks.write_text(''.join(json.dumps(t,ensure_ascii=False)+'\n' for t in selected))
   run(tasks,base/'local_qwen32_judge_recovery',root/'logs'/(experiment+'-local-judge-recovery.log'),1024)
- wait_done(root/'runs/D-E01/local_qwen32_judge/metadata.json');recovery('D-E01')
+ if args.only!='D-E03':wait_done(root/'runs/D-E01/local_qwen32_judge/metadata.json');recovery('D-E01')
+ if args.only=='D-E01':return
+ if args.after:wait_done(Path(args.after))
  for model in ['qwen3_8b','arcane_8b_dpo']:wait_done(root/'runs/D-E03'/model/'metadata.json')
  tasks=root/'data/arcane_D-E03/local_judge_tasks.jsonl'
  subprocess.run([python,str(scripts/'prepare_arcane_local_judge.py'),'--arcane',str(root/'vendor/ArcANE'),'--references',str(root/'data/arcane_D-E03/references.jsonl'),'--sources',str(root/'runs/D-E03/qwen3_8b'),str(root/'runs/D-E03/arcane_8b_dpo'),'--out',str(tasks)],cwd=project,check=True)
  assert len(tasks.read_text().splitlines())==212
  run(tasks,root/'runs/D-E03/local_qwen32_judge',root/'logs/D-E03-local-judge.log',512);recovery('D-E03')
+ (root/'runs/D-E03/local_judge_transport_complete.json').write_text(json.dumps({'complete':True})+'\n')
  print('Uniform local D-E01 and D-E03 judging complete',flush=True)
 if __name__=='__main__':main()

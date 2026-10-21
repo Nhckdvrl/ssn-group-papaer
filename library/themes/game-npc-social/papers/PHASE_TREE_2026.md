@@ -1,6 +1,6 @@
 # PHASE-Tree：Character-State Evolution in Long-Horizon Role-Playing Dialogue
 
-证据级别：主文选读＋官方代码/数据。2026-10-22读取arXiv:2608.06975v1（2026-08-07）主文§1–5、方法公式/主表，核对官方prompt与状态演化关键入口；未声称全文/全部附录完成。来源：[论文](https://arxiv.org/abs/2608.06975) · [代码](https://github.com/MemTensor/PHASE-Tree) · [数据](https://huggingface.co/datasets/IAAR-Shanghai/LongEvoRoleBench)。本地代码固定`0be378fd23c49915255406d881f2389b46b608b8`。
+证据级别：主文选读＋官方代码/数据。2026-10-22读取arXiv:2608.06975v1（2026-08-07）主文§1–6、方法公式/主表，核对官方prompt与状态演化关键入口；未声称全文/全部附录完成。来源：[论文](https://arxiv.org/abs/2608.06975) · [代码](https://github.com/MemTensor/PHASE-Tree) · [数据](https://huggingface.co/datasets/IAAR-Shanghai/LongEvoRoleBench)。本地代码固定`0be378fd23c49915255406d881f2389b46b608b8`。
 
 1. **论文形态：** 动态人物状态表示、统一下一句回复benchmark、文本与参数适配两种条件化方式；目前核对为预印本身份，不冒充主会已接收。
 2. **背景与压力：** 固定人物档案难以反映当前叙事状态。作者已将仍按过去人物状态说话命名为stale-state failure；“旧人物状态妨碍成长”不是我们的新发现。

@@ -8,7 +8,7 @@
 
 核心问题：Role-playing Agent如何利用截至当前可获得的经历，形成、更新并表现人物状态，同时保留仍成立的身份特征？优先进入[矿区D](mine-d-affect-relationships/README.md)，先复现强官方基线，再从真实现象探索；[矿区C](mine-c-shared-narrative/README.md)为叙事方向备选。
 
-当前已完成[LongEvo文本基线D-E02](mine-d-affect-relationships/results/D-E02-REPORT.md)，ArcANE两模型820条生成完成、正式判分及普通章节摘要参照持续运行。具体入口见[矿区D](mine-d-affect-relationships/README.md)与[资产清单](mine-d-affect-relationships/ASSETS.md)。不将B的有限案例迁移成D结论，不预设摘要/检索/动态状态方法失败。
+当前已完成[LongEvo文本基线D-E02](mine-d-affect-relationships/results/D-E02-REPORT.md)，ArcANE两模型820条生成完成，统一本地判分与普通摘要/32B容量参照持续运行；原生角色状态更新也已冻结64场景并开始实测。具体入口见[矿区D](mine-d-affect-relationships/README.md)与[资产清单](mine-d-affect-relationships/ASSETS.md)。不将B的有限案例迁移成D结论，不预设摘要/检索/动态状态方法失败。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 

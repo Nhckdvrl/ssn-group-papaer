@@ -12,9 +12,10 @@
 
 | 记录 | 当前交付 |
 |---|---|
-| [D-E01](experiments/D-E01-arcane-official-residency.md) | 六作品/25人物/64完整probe/205 phase；Qwen3-8B与ArcANE-8B-DPO原生vanilla/arc共820条生成已完成，正式Step评委正在批量评分 |
+| [D-E01](experiments/D-E01-arcane-official-residency.md) | 六作品/25人物/64完整probe/205 phase；Qwen3-8B与ArcANE-8B-DPO原生vanilla/arc共820条生成已完成，Step部分因共享并发限制停止；正式比较统一本地32B完整评分中 |
 | [D-E02](experiments/D-E02-longevorole-textual-residency.md) | 已完成256条角色输出＋256条本地判分；[报告](results/D-E02-REPORT.md)：PT Char/Sem3.656/3.281，NR3.453/3.047；不同评委/样本下的有限复现，不是新机制发现 |
-| [D-E03](experiments/D-E03-native-chapter-summary-reference.md) | 补原生近期章节Summary普通参照：固定嵌套25probe/81phase，242章教师摘要与角色生成按依赖推进；不把它冒充已保证因果可知的纯事件输入 |
+| [D-E03](experiments/D-E03-native-chapter-summary-reference.md) | 补原生近期章节Summary普通参照：固定嵌套25probe/81phase，242章教师与两8B角色生成已完成，追加同25人物的通用32B三条件容量参照；不把它冒充已保证因果可知的纯事件输入 |
+| [D-E04](experiments/D-E04-native-character-update-reference.md) | 现有EvolvingWorld角色更新任务：冻结8作品/61角色/64场景，8B与32B原生输入实测中；与阶段表演任务分开 |
 | [资产入口](ASSETS.md) | 代码、权重、数据、原始输出的位置、revision、环境、许可身份与离线复算 |
 
 本轮没有提出新训练目标或小idea，不把RP离题自动叫过期状态干扰，也不把树方法的既有收益重新包装为我们的创新。
