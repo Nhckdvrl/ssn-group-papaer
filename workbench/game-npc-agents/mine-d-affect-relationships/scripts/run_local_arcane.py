@@ -46,7 +46,7 @@ def main():
      raw=tok.decode(ids,skip_special_tokens=True);text=strip_think_block(raw)
      trial=Trial(**t['trial']);system,user=t['messages'][0]['content'],t['messages'][1]['content']
      usage=dict(prompt_tokens=int(enc.attention_mask[j].sum()),completion_tokens=len(ids))
-     rec=_row(trial,t['mode'],args.model,_build_full_trial_id(trial,t['mode'],args.model),system,user,hashlib.sha1((system+'\n---\n'+user).encode()).hexdigest()[:16],len(system),text,usage,int(1000*elapsed/len(block)),None,error=None,record_prompts=True)
+     rec=_row(trial,t['mode'],args.model,_build_full_trial_id(trial,t['mode'],args.model),system,user,hashlib.sha1((system+'\n---\n'+user).encode()).hexdigest()[:16],(len(system.split('<context>\n',1)[1].rsplit('\n</context>',1)[0]) if '<context>\n' in system else 0),text,usage,int(1000*elapsed/len(block)),None,error=None,record_prompts=True)
      rec.update(task_id=t['task_id'],model_revision=args.revision,raw=raw,generated_token_ids=ids,finish_reason='stop' if ids and ids[-1] in eos else 'length',batch_started_utc=started,batch_wall_s=elapsed,batch_size=len(block))
      f.write(json.dumps(rec,ensure_ascii=False)+'\n');seen.add(t['task_id'])
     f.flush();os.fsync(f.fileno());print(f'{offset+len(block)}/{len(tasks)} prompt_pad={enc.input_ids.shape[1]} batch_s={elapsed:.2f}',flush=True)

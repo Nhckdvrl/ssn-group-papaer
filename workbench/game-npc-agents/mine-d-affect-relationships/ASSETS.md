@@ -10,14 +10,14 @@
 | ArcANE-8B-DPO | `67b9bea604bea65a5245928ed87103545814b4f7` | `models/ArcANE-8B-DPO`；完整merged权重已下载并实际推理 |
 | PHASE-Tree代码 | `0be378fd23c49915255406d881f2389b46b608b8` | `vendor/PHASE-Tree`；四种文本输入使用原生prompt，状态/门控源码已核查 |
 | LongEvoRoleBench | `ce09fb68439963c71c3035ee2918c21ae02a3cbc` | `data/LongEvoRoleBench`；四长程语料全部processed资产约7.14GB，含六文本变体、原始时间元数据、中间状态及演化档案；无短程全量跑分 |
-| PHASE参数模型资产 | `db2aa3b516a1d78650ffd3f01ef14dcb8f6ea8b4` | `models/phase_tree_models`；下载状态以HF缓存为准，本轮文本路径不依赖、不声称已跑参数适配 |
+| PHASE参数模型资产 | `db2aa3b516a1d78650ffd3f01ef14dcb8f6ea8b4` | `models/phase_tree_models`；两套hypermod约1.8GB已下载；本轮文本路径不依赖，不声称已跑参数适配 |
 | Qwen3-8B | `b968826d9c46dd6066d109eabc6255188de91218` | 复用本机HF缓存；D-E01/D-E03角色生成 |
 | Qwen2.5-7B-Instruct | `a09a35458c702b33eeacc393d103063234e8bc28` | 复用本机HF缓存；D-E02原生backbone |
-| Qwen3-32B | `9216db5781bf21249d130ec9da846c4624c16137` | 已从本机固定缓存复制到`models/Qwen3-32B`；普通章节摘要与本地PHASE评委，非角色模型新增比较行 |
+| Qwen3-32B | `9216db5781bf21249d130ec9da846c4624c16137` | 已从本机固定缓存复制到`models/Qwen3-32B`；普通章节摘要、统一本地评委与容量参照；D-E04直接状态更新普通模型 |
 
 目录关系：`data/arcane_D-E01/`存205个phase的原生任务/独立参考；`data/phase_D-E02/`存64问题四变体与独立评委参考；`data/arcane_D-E03/`存固定嵌套25probe/81phase及242章摘要教师任务。实际prompt/raw/token IDs在`runs/D-E0*/`，运行stdout在`logs/`。metadata/source快照保存每次调用配置，章节摘要与原文不入本仓库Git。
 
-公开ArcANE存量判分的四作品主表与两部lowpop表已由官方脚本离线复算，放`logs/official_*_reaggregated.{json,txt,tex}`；这是历史输出重聚合，不是新模型实测。我们新judge使用Step5低推理档固定量表，须和论文原DeepSeek评委分开；PHASE本地judge为Qwen3-32B，须和原GPT-4.1分开。没有未授权OpenAI/DeepSeek/embedding调用。
+公开ArcANE存量判分的四作品主表与两部lowpop表已由官方脚本离线复算，放`logs/official_*_reaggregated.{json,txt,tex}`；这是历史输出重聚合，不是新模型实测。Step5 low因实际共享并发9/8限制停止，340正式尝试321合法分数单列，未转现金；D-E01/03正式比较统一用本地Qwen3-32B完整评分，不拼接评委。它与论文原DeepSeek须分开；PHASE同一本地judge与原GPT-4.1须分开。没有未授权OpenAI/DeepSeek/embedding调用。
 
 ## 获取与许可身份
 
@@ -30,6 +30,12 @@
 
 现有推理解释器：`/home/xiang/miniconda3/envs/openslime/bin/python`（PyTorch 2.9.1+cu129、Transformers 5.3.0，依赖见各run metadata）。系统`python3`仅用于stdlib脚本与Step HTTP transport；导入官方ArcANE需要该现有环境的dotenv/openai等依赖。
 
-D-E01角色生成以原生prompt为准，由`scripts/run_local_arcane.py`写官方兼容记录；D-E02/Summary教师与本地judge由`scripts/run_local_text.py`保存完整raw和token IDs。`queue_summary_actors.py`只按依赖完成状态推进；`queue_judges.py`顺序执行已登记的评分与统一技术恢复，密钥只在进程内存/子进程环境，不写文件。
+D-E01角色生成以原生prompt为准，由`scripts/run_local_arcane.py`写官方兼容记录；D-E02/Summary教师与本地judge由`scripts/run_local_text.py`保存完整raw和token IDs。`queue_summary_actors.py`只按依赖完成状态推进；`queue_judges.py`的Step队列已因实际限流退出；本地评分使用`queue_local_judges.py`。密钥只在进程内存/子进程环境，不写文件。
 
 离线复算：`scripts/summarize_results.py --asset-root /var/tmp/ssn-game-npc-d --experiment D-E01|D-E02|D-E03 --out 输出.json`。它取每个judge_id的首个合法分数，保留全部失败尝试计数；D-E03明确复用同一嵌套样本上的D-E01参照，不重复计为新调用。
+
+## 直接状态形成参照：EvolvingWorld
+
+官方代码固定`1de26550ccfff105f3ffe9f4b386716446291341`，HF数据固定`ae7d82d38909783805979a8055d5ae913cb982f7`。本轮只下载训练混合文件和character_update单任务文件（约4.55GB），不称完整世界模拟复现或已取得专用权重。单任务文件删除details，完整文件可恢复作品/角色/场景；两者24,977条conversation hash完全匹配。51部作品、2,671角色，22,306次相邻出场的输入profile/tracker与上次输出逐字相接；6条tracker为dict，按原生f-string存入下一输入。清单见`results/update_provenance_inventory.json`。
+
+D-E04直接使用原生角色更新system/human；完整监督与输出留在`data/update_D-E04/`、`runs/D-E04/`，只将样本ID/hash与轻量结果入Git。这是公开训练资产上的通用模型诊断，非官方held-out rollout。代码MIT；数据/原小说许可仍分别核对，当前无原文再发布。

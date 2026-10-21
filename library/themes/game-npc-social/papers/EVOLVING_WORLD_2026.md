@@ -11,3 +11,9 @@
 7. **边界：** 主对象是多人物与世界共同模拟，不天然等于单NPC在线成长；不能用其轨迹分数替ArcANE阶段或LongEvo下一句指标。
 8. **研究动作：** 对状态形成与表演分别建模，区分监督标签的回顾性构造与部署时的可观察输入。
 9. **对D：** 是角色更新学习的直接强邻居，不自动改成多智能体研究线。若后续考虑学习updater，应核对其Character Agent模块；当前仍以ArcANE/PHASE-Tree的真实测量为主。
+
+## 本轮代码与实际发布资产核对（2026-10-22）
+
+代码`1de26550ccfff105f3ffe9f4b386716446291341`的transform角色更新段与simulation.build_character_update_messages已读；HF`ae7d82d38909783805979a8055d5ae913cb982f7`实际下载混合训练文件4.18GB及单任务375MB。混合文件138,596记录；character_state_update24,977条，51作品/2,671角色。hash核验单任务内容一致，22,306相邻出场profile/tracker能精确接续。完整源清单在矿区D结果，不把论文57本总覆盖混写为51本该任务训练覆盖。
+
+执行输入确为场景开始profile/tracker/motivation与该角色可见的完整当前场景；初始profile构建明确用全故事反推起点，标签构建可用lookahead。回顾性标签来源与执行时不显式给未来须分开。可直接做状态形成普通基线；未取得/运行专用EvolvingWorld权重或完整联合模拟。
