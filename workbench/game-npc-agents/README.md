@@ -1,6 +1,6 @@
 # Game NPC Agents：领域工作台
 
-**状态：ACTIVE-MAIN（2026-10-21 用户授权在本目录继续开展 Role-playing Agent 研究）。** 四中心及 A–H 问题已登记，现处于研究驻留与方向探索，未锁定单个论文题目、方法或实验；**没有新实验和已证实主张**。历史矿区 A 保持 **CLOSED／TERMINATED**，旧实验不恢复。原有 B–E 仍为知识/问题矿区，未自动启动其独立实验。
+**状态：ACTIVE-MAIN（2026-10-21 用户授权在本目录继续开展 Role-playing Agent 研究）。** 四中心及 A–H 问题已登记；**第一条具体研究焦点已选择 I01（Scope-Aware Character Editing）**，处于 SEED 与测量准备阶段，尚未确定新算法或论文最终主旨；**没有新模型实验和已证实主张**。历史矿区 A 保持 **CLOSED／TERMINATED**，旧实验不恢复。原有 B–E 仍为知识/问题矿区，未自动启动其独立实验。
 
 本工作台维护游戏NPC的行为控制、人物表现、人机互动、叙事、社会、玩家体验、作者工具与运行部署知识。先理解不同角色在游戏中承担什么功能，再比较方法、证据和仍然存在的问题。具体研究项目各自保留进展与主张，外围知识库按整个领域组织。
 
@@ -32,6 +32,12 @@
 | [ideas](ideas/README.md) · [experiments](experiments/README.md) · [日志](logs/2026-10-21.md) | 后续研究资产与决定记录，注册时无实验 |
 
 **历史隔离：** [矿区 A 的终止结论](mine-a-persona-strategy/CLOSEOUT.md)与旧 C01–C06/E01–E85 全部保留原位，不继承为本研究证据；B–E 的知识与论文卡继续复用，不复制第二套。新研究没有自动承继旧研究的算力、API 或外部资源授权。
+
+## 首个具体研究焦点（2026-10-21）
+
+经用户授权从开放议程中选一条直接开始，当前选择 **B：Scope-Aware Character Editing（角色行为修订的语义作用范围）** 为第一条研究 idea [I01](ideas/I01-scope-aware-character-editing.md)。对照基线与定位见 [E01](experiments/E01-scope-aware-character-edit-baseline-gate.md) · [PAPER_SHAPE 草稿](PAPER_SHAPE.md)。已建立最小 [scope_edit_pilot](experiments/scope_edit_pilot/README.md) 评分骨架，当前仅有本地协议自检，**没有任何模型/玩家实验结果**。
+
+问题是：作者修改角色的一项行为原则，哪些陌生场景中的**选择**应该改变，哪些社会关系、行为及语气应该保持？作者意图的变化可能是例外、条件原则或人物整体重塑；不能预设所有编辑必须局部。**其他 A–H 仍在 RESEARCH_AGENDA 内开放，不代表已经开八个项目。**
 
 ## 新矿区
 

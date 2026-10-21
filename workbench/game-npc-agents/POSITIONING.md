@@ -41,3 +41,15 @@
 - 尚未确定某一个 A–H 研究切口是最优；还没有本线新的人类玩家/作者数据、训练集或复现曲线。
 - B–E 的已有知识库可提供历史事实与警示，但不能凭其文献数量宣称强基线已经复现。
 - 具体实验条件、首批模型与研究问题的取舍，要在定位和人审时独立确定；不得从本文直接自动执行。
+
+## 5. 首个具体焦点 I01：角色修订的语义作用范围（2026-10-21）
+
+用户选择进入实际研究，焦点为 [I01 Scope-Aware Character Editing](ideas/I01-scope-aware-character-editing.md)，但其他 A–H 保留开放。此处新近邻只核查官方摘要/元数据与仓库既有论文卡，**未冒充全文复现**。
+
+- [The Persona Hierarchy Model（2026-10-07 预印本）](https://arxiv.org/abs/2610.09384) 已讨论微调中的局部/全局 persona 影响传播与 PPR；不能重做 context locality 就声称新颖。
+- [BalancEdit（ICML 2025）](https://proceedings.mlr.press/v267/guo25e.html) 已讨论 generality-locality，范围辨认并非本线发明。
+- [FinePE（Applied Soft Computing, 2026）](https://www.sciencedirect.com/science/article/pii/S1568494626003911) 与 [PERSONA（ICLR 2026）](https://proceedings.iclr.cc/paper_files/paper/2026/hash/f66ce276436c4cd151535b03841ac713-Abstract-Conference.html) 也在研究细粒度人格/激活编辑。
+
+可辨认的增量必须是 **作者意图在人际关系、条件行为、叙事动作与语言表现之间的语义作用范围**，与一般事实编辑及 Prompt 上下文范围不同；具体困难存在与否待强普通基线与真实创作材料确认。[ORIBA](https://arxiv.org/abs/2512.12630) 有作者试演修改的人类需求证据，[CDT](https://aclanthology.org/2026.acl-long.568/) 是不可忽略的条件逻辑近邻。
+
+初始 [scope_edit_pilot](experiments/scope_edit_pilot/README.md) 的四个人造角色、16 受控情境只能验证程序；明显存在显式条件阅读理解的天花板，**不是已建立的 Role-playing 能力缺陷**。
