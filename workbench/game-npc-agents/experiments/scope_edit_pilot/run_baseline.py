@@ -48,38 +48,44 @@ def run_step(tasks, args, out, meta):
         secret = getpass.getpass('Step Plan API key (hidden): ')
     if not secret:
         raise ValueError('Missing Step Plan credential')
-    session = requests.Session()
-    session.trust_env = False
-    for i, task in enumerate(tasks):
+    from concurrent.futures import ThreadPoolExecutor
+
+    def call(task):
         start = time.monotonic()
         payload = step_payload(task, args)
         row = dict(task_id=task['task_id'], model='step-5-preview', started_utc=now(),
                    endpoint=STEP_ENDPOINT, request=payload)
         try:
-            response = session.post(STEP_ENDPOINT, json=payload,
-                headers={'Authorization': 'Bearer ' + secret}, timeout=(20, 240),
-                allow_redirects=False)
+            with requests.Session() as session:
+                session.trust_env = False
+                response = session.post(STEP_ENDPOINT, json=payload,
+                    headers={'Authorization': 'Bearer ' + secret}, timeout=(20, 300),
+                    allow_redirects=False)
             row['http_status'] = response.status_code
             row['request_id'] = response.headers.get('x-request-id')
-            # Never store headers, request credentials, or exception request objects.
             row['response_body'] = response.json()
             if response.status_code != 200:
                 row['error'] = 'HTTP ' + str(response.status_code)
             else:
-                body = row['response_body']
-                choice = body['choices'][0]
+                body = row['response_body']; choice = body['choices'][0]
                 row.update(raw=choice['message'].get('content') or '',
                            finish_reason=choice.get('finish_reason'),
                            usage=body.get('usage', {}), returned_model=body.get('model'))
         except Exception as exc:
-            row['error'] = type(exc).__name__  # credential-safe failure record
+            row['error'] = type(exc).__name__
         row['latency_s'] = time.monotonic() - start
         row['action_id'], row['utterance'] = probe.parse_reply(row.get('raw', ''))
-        append(out / 'responses.jsonl', row)
-        print(f"{i+1}/{len(tasks)} {task['task_id']} finish={row.get('finish_reason')} error={row.get('error')}", flush=True)
-        if row.get('error'):
-            # Fail closed on billing, auth, redirect, or transport failure. No fallback.
-            raise RuntimeError('Step Plan request failed; inspect saved credential-free record')
+        return row
+
+    # At most one bounded wave is in flight; fail before submitting another wave.
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        for start in range(0, len(tasks), args.workers):
+            rows=list(pool.map(call, tasks[start:start+args.workers]))
+            for i,row in enumerate(rows,start+1):
+                append(out / 'responses.jsonl', row)
+                print(f"{i}/{len(tasks)} {row['task_id']} finish={row.get('finish_reason')} error={row.get('error')}", flush=True)
+            if any(row.get('error') for row in rows):
+                raise RuntimeError('Step Plan request failed; no further wave or cash fallback')
 
 
 def run_hf(tasks, args, out, meta):
@@ -103,13 +109,19 @@ def run_hf(tasks, args, out, meta):
         tokenizer_template_sha256=hashlib.sha256(str(tokenizer.chat_template).encode()).hexdigest(),
         config_sha256=sha(checkpoint / 'config.json'))
     dump(out / 'metadata.json', meta)
-    for offset in range(0, len(tasks), args.batch_size):
-        block = tasks[offset:offset+args.batch_size]
+    offset = 0
+    while offset < len(tasks):
+        budget = tasks[offset].get('max_new_tokens', args.max_tokens)
+        end = offset
+        while end < len(tasks) and end-offset < args.batch_size and tasks[end].get('max_new_tokens',args.max_tokens)==budget:
+            end += 1
+        block = tasks[offset:end]
         batch_max_tokens = max(t.get('max_new_tokens', args.max_tokens) for t in block)
         rendered = [tokenizer.apply_chat_template(t['messages'], tokenize=False,
                     add_generation_prompt=True, enable_thinking=False) for t in block]
         inputs = tokenizer(rendered, return_tensors='pt', padding=True,
                            add_special_tokens=False).to(model.device)
+        started_utc = now()
         start = time.monotonic()
         with torch.inference_mode():
             generated = model.generate(**inputs, do_sample=False,
@@ -126,14 +138,15 @@ def run_hf(tasks, args, out, meta):
             raw = tokenizer.decode(ids, skip_special_tokens=True)
             action, utterance = probe.parse_reply(raw)
             row = dict(task_id=task['task_id'], model=args.model, revision=checkpoint.name,
-                started_utc=now(), raw=raw, action_id=action, utterance=utterance,
+                started_utc=started_utc, raw=raw, action_id=action, utterance=utterance,
                 finish_reason='stop' if ids and ids[-1] in eos else 'length',
                 usage=dict(prompt_tokens=int(inputs.attention_mask[j].sum()),
                            completion_tokens=len(ids)),
                 batch_latency_s=elapsed, batch_size=len(block), max_new_tokens=batch_max_tokens,
                 rendered_prompt=rendered[j], generated_token_ids=ids)
             append(out / 'responses.jsonl', row)
-        print(f'{offset+len(block)}/{len(tasks)} batch_s={elapsed:.2f}', flush=True)
+        offset = end
+        print(f'{offset}/{len(tasks)} batch_s={elapsed:.2f}', flush=True)
     meta['peak_allocated_bytes'] = torch.cuda.max_memory_allocated()
 
 
@@ -146,6 +159,7 @@ def main():
     p.add_argument('--checkpoint')
     p.add_argument('--max-tokens', type=int, required=True)
     p.add_argument('--batch-size', type=int, default=8)
+    p.add_argument('--workers', type=int, choices=[1,2], default=1)
     args = p.parse_args()
     tasks = probe.read_jsonl(args.tasks)
     assert len({t['task_id'] for t in tasks}) == len(tasks)
@@ -167,6 +181,7 @@ def main():
     if args.backend=='hf':
         meta['packages']['transformers']=importlib.metadata.version('transformers')
     dump(out / 'metadata.json', meta)
+    (out / 'runner_source.py').write_bytes(Path(__file__).read_bytes())
     start=time.monotonic()
     try:
         (run_hf if args.backend=='hf' else run_step)(tasks,args,out,meta)
