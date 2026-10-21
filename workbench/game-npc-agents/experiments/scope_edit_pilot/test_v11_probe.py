@@ -43,6 +43,7 @@ class V11Tests(unittest.TestCase):
         result = v11.evaluate(self.tasks,oracle)
         self.assertEqual(len(result["paired_comparisons"]),40)
         self.assertTrue(any(x["n_author_intent_only"]>0 for x in result["metrics"] if x["mode"]=="situated"))
+        self.assertTrue(all(x["n_scored"]==0 for x in result["metrics"] if x["mode"]=="situated"))
         self.assertTrue(any(x["n_scored"]>0 for x in result["metrics"] if x["mode"]=="explicit"))
 
     def test_pressure_has_same_expected_action(self):

@@ -69,3 +69,11 @@
 - [Modeling Future Conversation Turns to Teach LLMs to Ask Clarifying Questions（ICLR 2025）](https://mlanthology.org/iclr/2025/zhang2025iclr-modeling/) 已通过模拟未来对话使模型学会在模糊请求下澄清；「能够问问题」本身不新。
 - [Uncertainty-Aware Clarification in LLM Agents with Information Gain（ICML 2026）](https://proceedings.mlr.press/v306/deng26l.html) 已通过信息增益奖励训练 agent 澄清欠确定意图；不能把 entropy-based question selection 当未被研究的方法。
 - 可能真正需要研究的是**原创人物的行为规则修改边界**：从一幕表演纠偏里决定哪些未知场景确实需要作者确认，是否能用少量针对性确认减少后续多场景返工，以及确认后是否在 NPC 决策/台词两类通道正确保持角色。强澄清策略、规则重写、完整作者人物卡都是直接近邻。
+
+## 8. Prior-Guided Scope Induction 的位置（2026-10-21）
+
+Bayesian concept learning / probabilistic program induction 早已研究从少量样例借助先验进行跨情境泛化（[Tenenbaum, NeurIPS 1998](https://papers.neurips.cc/paper_files/paper/1998/hash/d010396ca8abf6ead8cacc2c2f26c7-Abstract.html)、[Lake et al., Science 2015](https://pubmed.ncbi.nlm.nih.gov/26659050/)）。`posterior ∝ likelihood × prior` **不是** I01 的新算法贡献。
+
+这里值得研究的是**人物生命经历作为行为先验**怎样影响作者稀疏修订的条件化泛化，何时帮助、何时妨碍作者重塑角色；与 [CDT](https://aclanthology.org/2026.acl-long.568/) 的条件规则、[Persona Hierarchy Model](https://arxiv.org/abs/2610.09384) 的跨情境训练传播、[Behavior Editing](https://arxiv.org/abs/2506.20606) 及 [Personalization Editing](https://arxiv.org/abs/2512.13676) 的泛化/局部性正面对标。
+
+**必备区别**：推断某条人物规则概率较高并不意味唯一符合作者意图；可存在 *latent rule ambiguous but test-action identifiable*。本批开发者给的 `situated_scope=supported` 不具独立作者证明，E01 V1.2 已校准严格评分口径。

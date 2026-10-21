@@ -34,3 +34,13 @@
 **新增强近邻**：[ORIBA](https://arxiv.org/html/2512.12630) 报告 14 位艺术家中 8 位修改了配置，但未确证「单场景批注是最常见反馈」；[CDT ACL 2026](https://aclanthology.org/2026.acl-long.568/) 已有条件规则归纳和更新，不能未经测试称它必然动作/语言耦合；[Persona Hierarchy Model 2026-10-07](https://arxiv.org/abs/2610.09384) 是**微调跨上下文传播**，并非静态 RPG 属性树；[Test-Time-Matching](https://arxiv.org/abs/2507.16799) 已分别组织人格/记忆/语言风格；[Behavior Editing](https://arxiv.org/abs/2506.20606) 与 [Personalization Editing](https://arxiv.org/abs/2512.13676) 已研究行为/偏好的编辑与局部性。
 
 **额外新近邻：** 通用意图澄清与信息增益问答已分别在 [ICLR 2025](https://mlanthology.org/iclr/2025/zhang2025iclr-modeling/) 和 [ICML 2026](https://proceedings.mlr.press/v306/deng26l.html) 出现。因此本 I01 不能把「给不完整编辑提澄清问题」独立称新技术；需证明它对**人物行为修订、作用范围推断与作者后续工作成本**有额外贡献。
+
+## 第三轮审查（2026-10-21）：Persona-guided Scope Induction
+
+**主问题仍然是 NPC 行为策略编辑，不转为作者问答助手。** 新的研究假说：原有人物的经历、关系与价值可帮助从少量现场表演纠偏中推断合理的行为修订范围。概念上考察 `p(S|P,C) ∝ p(C|S,P)p(S|P)`，其中 P 是先前人物资料、C 是试演失败与纠正、S 是候选编辑范围；这并不证明模型在使用贝叶斯算法，更不能把后验最大的一项当作作者唯一意图。
+
+**四种需要分别识别的情况**：（a）旧人设与反馈足以支持某个测试场景的行为；（b）先验偏好某种解释，但其它解释仍合理；（c）反馈与人设仍真正欠定；（d）作者修订有意**覆盖**旧的人物习惯，强先验不应阻止必要改变。尤其要区分 **latent-scope identifiable** 与 **decision-identifiable**：多个 S 可以保持多解，但若它们对某个测试情境 x 都给出相同合理行动，该测试动作仍可能有可靠评价。
+
+原 Persona 被强化不一定是好，模型需要学会何时保留旧约束、何时尊重新作者修改。将 `one positive critique + one boundary negative critique` 视为后续可选的最小对比信息机制，而不是现在就上通用聊天式澄清。
+
+不能凭几段研究者创作的背景伏笔宣称 gold unique。竞争者包括完整强 Prompt、同等 M2 反馈下的 profile rewrite、few-shot、CDT 规则归纳与现有 personalization/behavior editing；允许这些普通方法已经足够好。

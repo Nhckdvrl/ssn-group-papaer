@@ -75,6 +75,8 @@ def make_tasks(fixtures, overrides):
                         task_id=f"{sid}/{cid}/{variant}/{mode}", story_id=sid, case_id=cid, variant=variant,
                         mode=mode, category=meta["category"], scope=case["scope"],
                         situated_scope=meta["situated_scope"],
+                        author_verified=bool(meta.get("author_verified", False)),
+                        decision_identifiable=bool(meta.get("decision_identifiable", False)),
                         expected_actions=case["expected_before" if mode == "original" else "expected_after"],
                         allowed_actions=list(case["actions"]),
                         messages=[{"role":"system","content":instructions},{"role":"user","content":user}]
@@ -99,7 +101,11 @@ def evaluate(tasks, responses):
             action, _ = v1.parse_reply(r["raw"])
         valid = action in task["allowed_actions"]
         correct = bool(valid and action in task["expected_actions"])
-        annotated = task["mode"] != "situated" or task["situated_scope"] == "supported"
+        # Developer-written scope labels are not independent evidence of author intent.
+        # Require independent confirmation AND decision-identifiability before strict scoring.
+        annotated = task["mode"] != "situated" or (
+            task.get("author_verified", False) and task.get("decision_identifiable", False)
+        )
         item = {k:task[k] for k in
                 ("task_id","story_id","case_id","variant","mode","category","scope","situated_scope")}
         item.update(action=action, valid=valid, author_intent_agreement=correct, strictly_scored=annotated)
@@ -127,8 +133,9 @@ def evaluate(tasks, responses):
                           observed_action_changed=bool(baseline["valid"] and item["valid"] and baseline["action"]!=item["action"])))
     return {
         "warning": ("Researcher-authored smoke fixture, not a scientific benchmark. A single in-situ "
-                    "critique leaves many true author constraints unknown. These cases are NOT strict "
-                    "scope-inference accuracy. Style is NOT scored by action choice."),
+                    "critique leaves many true author constraints unknown. Developer-only situated "
+                    "cases have no independent author/decision certification, so any agreement with "
+                    "their oracle labels is descriptive only. Style is NOT scored by action choice."),
         "n_stories":len({i["story_id"] for i in rows}), "n_tasks":len(tasks), "n_responses":len(responses),
         "metrics":metrics, "paired_comparisons":pairs, "details":rows
     }
