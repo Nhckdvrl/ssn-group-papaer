@@ -120,7 +120,9 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 - 2026-10-11 **后续人类决定**：再从 HEAD 删除 `npc-persona-behavior-grounding` 和 `npc-deception-investigability`，仍保留知识库中的 NPC 文献；**10 月 11 日清理后剩余 5 个 workbench**。2026-10-12 新建 `xeno-interpretability` 后，**截至 2026-10-12 共 6 个**；2026-10-13 新建 `game-npc-agents` 后共 7 个。详见 [清理记录](WORKBENCH_CLEANUP_2026-10-11.md)。
 - [2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)只是历史快照；相关领域的 `library/` 文献继续保留。
 
-## 9. 登记表（2026-10-13；`tools/process/check.py` 读取本表）
+**2026-10-21 新决定：**用户授权新增 `role-playing-agents` 并列为 ACTIVE-MAIN；既有 `game-npc-agents` 仍 CLOSED（仅旧矿区 A），其 B–E 为知识矿区；`in-context-evidence-structure` 继续 ACTIVE-EXPLORE。新线处于研究驻留而非已有实证成果。
+
+## 9. 登记表（2026-10-21；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
@@ -133,3 +135,4 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `xeno-interpretability` | PROPOSED | —（探索阶段） | — | `CLAIMS.md` | — | **用户 2026-10-12 指定新建 workbench，专属知识库在 [`knowledge/`](xeno-interpretability/knowledge/) 内；初始文献核查与实验设计仍未构成实证发现；不调整 ACTIVE 分配。** |
 | `game-npc-agents` | CLOSED | — | — | `mine-a-persona-strategy/CLAIMS.md` | 2026-10-19 | **既有矿区A维持CLOSED／TERMINATED，I01–I04终止。** [终止总结](game-npc-agents/mine-a-persona-strategy/CLOSEOUT.md)、79张历史[实验卡](game-npc-agents/mine-a-persona-strategy/experiments/README.md)及证据保留。用户随后明确要求深入角色扮演、叙事、情绪和玩家体验，据此建立[B–E知识/问题矿区](game-npc-agents/MINES.md)；未进入实验立项，无ACTIVE分配。登记状态与历史账本不变，外层[NPC领域知识](game-npc-agents/knowledge/DOMAIN_ATLAS.md)继续维护。 |
+| `role-playing-agents` | ACTIVE-MAIN | ACL Main（暂定；论文形态可经人审调整） | — | `CLAIMS.md` | 2026-10-21 | **2026-10-21 用户授权新线开展正式 Role-playing Agent 研究驻留；四中心与 A–H 问题开放，尚无实证主张和运行实验。** [研究入口](role-playing-agents/README.md) · [研究议程](role-playing-agents/RESEARCH_AGENDA.md) · [最近邻定位](role-playing-agents/POSITIONING.md)。旧 NPC 矿区 A 仍 CLOSED，原有 ACTIVE-EXPLORE 不变。 |
