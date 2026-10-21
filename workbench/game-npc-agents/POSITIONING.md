@@ -63,3 +63,9 @@
 5. **ORIBA 的证据边界：** [原文](https://arxiv.org/html/2512.12630) 中 14 位艺术家、其中 8 位在研究期间修改了 OC 配置；并没有对「仅凭单次 in-situ critique 推断潜在行为规则」提供系统性泛化检验。
 
 **修订后的增量问题：** 从一幕创作反馈中恢复**不完整、可能多解的作者意图**，区分哪类行为变化受反馈支持、哪类必须澄清；仅在语义证据足够时检验跨人物/剧情动作的正确泛化与表达保持。它比「风格/行为完全分开」更明确，也比「隐藏金标的 if–then 文本分类」更不易制造伪失败。详见 [I01](ideas/I01-scope-aware-character-editing.md) 与 [E01](experiments/E01-scope-aware-character-edit-baseline-gate.md)。
+
+## 7. 对「模型问作者澄清」的新近邻限制（2026-10-21）
+
+- [Modeling Future Conversation Turns to Teach LLMs to Ask Clarifying Questions（ICLR 2025）](https://mlanthology.org/iclr/2025/zhang2025iclr-modeling/) 已通过模拟未来对话使模型学会在模糊请求下澄清；「能够问问题」本身不新。
+- [Uncertainty-Aware Clarification in LLM Agents with Information Gain（ICML 2026）](https://proceedings.mlr.press/v306/deng26l.html) 已通过信息增益奖励训练 agent 澄清欠确定意图；不能把 entropy-based question selection 当未被研究的方法。
+- 可能真正需要研究的是**原创人物的行为规则修改边界**：从一幕表演纠偏里决定哪些未知场景确实需要作者确认，是否能用少量针对性确认减少后续多场景返工，以及确认后是否在 NPC 决策/台词两类通道正确保持角色。强澄清策略、规则重写、完整作者人物卡都是直接近邻。

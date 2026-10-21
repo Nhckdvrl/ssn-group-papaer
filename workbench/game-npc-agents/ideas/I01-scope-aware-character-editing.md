@@ -32,3 +32,5 @@
 **潜在贡献形态**：作者意图的不确定范围识别；由局部纠正诱导可迁移、可编辑的角色条件原则；动作与外显风格分别可控；在未充分确定时主动询问作者并低成本修订。SFT、DPO、编辑、结构规则、模型表示皆为后续根据证据选择的工具，不预置损失函数。
 
 **新增强近邻**：[ORIBA](https://arxiv.org/html/2512.12630) 报告 14 位艺术家中 8 位修改了配置，但未确证「单场景批注是最常见反馈」；[CDT ACL 2026](https://aclanthology.org/2026.acl-long.568/) 已有条件规则归纳和更新，不能未经测试称它必然动作/语言耦合；[Persona Hierarchy Model 2026-10-07](https://arxiv.org/abs/2610.09384) 是**微调跨上下文传播**，并非静态 RPG 属性树；[Test-Time-Matching](https://arxiv.org/abs/2507.16799) 已分别组织人格/记忆/语言风格；[Behavior Editing](https://arxiv.org/abs/2506.20606) 与 [Personalization Editing](https://arxiv.org/abs/2512.13676) 已研究行为/偏好的编辑与局部性。
+
+**额外新近邻：** 通用意图澄清与信息增益问答已分别在 [ICLR 2025](https://mlanthology.org/iclr/2025/zhang2025iclr-modeling/) 和 [ICML 2026](https://proceedings.mlr.press/v306/deng26l.html) 出现。因此本 I01 不能把「给不完整编辑提澄清问题」独立称新技术；需证明它对**人物行为修订、作用范围推断与作者后续工作成本**有额外贡献。
