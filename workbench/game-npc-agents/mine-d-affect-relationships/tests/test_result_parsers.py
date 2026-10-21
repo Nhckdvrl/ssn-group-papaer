@@ -2,7 +2,7 @@
 import json,sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from summarize_results import parse_arcane_local,first_valid
+from summarize_results import parse_arcane_local,first_valid,paired_arcane,token_sum
 from summarize_state_quality import parse_puf
 
 class ArcaneTransportTest(unittest.TestCase):
@@ -35,4 +35,12 @@ class PUFTransportTest(unittest.TestCase):
  def test_range_diagnostic_does_not_silently_change_native_arithmetic(self):
   p=parse_puf('{"merits":[{"points":18}],"demerits":[]}')
   self.assertEqual(p['score'],68);self.assertFalse(p['all_points_within_prompt_range'])
+
+class AggregationTest(unittest.TestCase):
+ def test_pairing_uses_the_same_phase_not_two_unmatched_means(self):
+  def row(phase,score):return dict(kind='per_response',novel='book',probe_id='probe',phase_idx=phase,scores=dict(apf=score,rpf=score,rae=score))
+  details={'a':{'a0':row(0,100),'a1':row(1,10)},'b':{'b1':row(1,10)}}
+  p=paired_arcane(details,'a','b');self.assertEqual(p['apf']['mean_delta'],0);self.assertEqual(p['apf']['n_common_units'],1)
+ def test_total_tokens_not_zero_when_provider_omits_the_total_field(self):
+  self.assertEqual(token_sum([dict(usage=dict(prompt_tokens=7,completion_tokens=3))],'total_tokens'),10)
 if __name__=='__main__':unittest.main()

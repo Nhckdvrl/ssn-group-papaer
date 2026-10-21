@@ -6,6 +6,8 @@ from collections import defaultdict,Counter
 from statistics import mean
 
 def read(path):return [json.loads(l) for l in Path(path).read_text().splitlines() if l.strip()]
+def token_sum(rows,key):
+ return sum((r.get('usage',{}).get('total_tokens',r.get('usage',{}).get('prompt_tokens',0)+r.get('usage',{}).get('completion_tokens',0)) if key=='total_tokens' else r.get('usage',{}).get(key,0)) for r in rows)
 def interval(v):
  v=list(v)
  if not v:return None
@@ -34,7 +36,8 @@ def parse_arcane_local(row):
  dims=['apf','rpf','rae'] if row['kind']=='per_response' else ['ptf_alignment','ptf_direction','ptf_shape']
  ok=isinstance(obj,dict) and isinstance(obj.get('scores'),dict) and all(type(obj['scores'].get(d)) is int and 1<=obj['scores'][d]<=100 for d in dims)
  out={k:row[k] for k in ['kind','mode','novel','character_slug','probe_id','finish_reason']}
- out.update(judge_id=row['task_id'],model=row['actor_model'],parse_ok=ok,native_json=strict and ok,parse_method=method,response_sha256=hashlib.sha256(row['response'].encode()).hexdigest(),scores={d:obj['scores'][d] for d in dims} if ok else None,usage=row.get('usage',{}))
+ out.update(judge_id=row['task_id'],model=row['actor_model'],parse_ok=ok,native_json=strict and ok,parse_method=method,judge_response_sha256=hashlib.sha256(row['response'].encode()).hexdigest(),evaluator_messages_sha256=hashlib.sha256(json.dumps(row.get('messages',[]),sort_keys=True,ensure_ascii=False).encode()).hexdigest(),scores={d:obj['scores'][d] for d in dims} if ok else None,usage=row.get('usage',{}))
+ if 'candidate_sha256' in row:out['candidate_sha256']=row['candidate_sha256']
  for k in ['phase_idx','n_phases']:
   if k in row:out[k]=row[k]
  return out
@@ -48,41 +51,72 @@ def load_arcane(root,experiment,judge,strict=False):
   for r in raw:r['parse_ok']=r['native_json']
  return raw
 
+def paired_arcane(details,lhs,rhs):
+ def key(r):return (r['kind'],r['novel'],r['probe_id'],r.get('phase_idx'))
+ a={key(r):r for r in details[lhs].values()};b={key(r):r for r in details[rhs].values()};common=set(a)&set(b);out={}
+ for dim in ['apf','rpf','rae','ptf']:
+  ds=defaultdict(list)
+  for k in common:
+   if (dim=='ptf')!=(k[0]=='trajectory'):continue
+   def score(r):return mean(r['scores'][d] for d in ['ptf_alignment','ptf_direction','ptf_shape']) if dim=='ptf' else r['scores'][dim]
+   ds[k[1]].append(score(a[k])-score(b[k]))
+  if ds:
+   means={n:mean(v) for n,v in ds.items()};out[dim]=dict(mean_delta=mean(means.values()),n_common_units=sum(map(len,ds.values())),by_novel=means,descriptive_novel_bootstrap95=interval(means.values()))
+ return out
+
 def arcane(root,experiment,judge='local',strict=False):
  run=root/'runs'/experiment;raw=load_arcane(root,experiment,judge,strict);valid_new=first_valid(raw,'judge_id');valid=list(valid_new);reused=[]
  if experiment=='D-E03':
   selected={r['trial_id'].rsplit('__p',1)[0] for r in read(root/'data/arcane_D-E03/references.jsonl')}
   reused=[r for r in first_valid(load_arcane(root,'D-E01',judge,strict),'judge_id') if r['probe_id'] in selected]
   valid+=reused
+ trials={}
+ for t in read(root/'data/arcane_D-E01/tasks.jsonl'):
+  tr=t['trial'];trials[tr['novel'],tr['probe_id']]=tr
  bucket=defaultdict(lambda:defaultdict(lambda:defaultdict(list)))
+ types=defaultdict(lambda:defaultdict(lambda:defaultdict(lambda:defaultdict(list))))
+ characters=defaultdict(lambda:defaultdict(lambda:defaultdict(list)))
+ axes=defaultdict(lambda:defaultdict(lambda:defaultdict(list)))
  details=defaultdict(dict)
  for r in valid:
   group=r['model']+'|'+r['mode'];novel=r['novel']
   dims=['apf','rpf','rae'] if r['kind']=='per_response' else ['ptf_alignment','ptf_direction','ptf_shape']
   scores={k:r['scores'][k] for k in dims}
   if r['kind']=='trajectory':scores={'ptf':mean(scores.values())}
-  for dim,score in scores.items():bucket[group][novel][dim].append(score)
+  tr=trials[novel,r['probe_id']]
+  for dim,score in scores.items():
+   bucket[group][novel][dim].append(score);types[group][tr['probe_type']][novel][dim].append(score);characters[group][novel+'/'+r['character_slug']][dim].append(score);axes[group][novel+'/'+r['character_slug']+'/'+tr['axis_id']][dim].append(score)
   details[group][r['judge_id']]=r
  result={}
  for group,novels in sorted(bucket.items()):
   by_novel={n:{d:mean(v) for d,v in dims.items()} for n,dims in novels.items()}
   metrics={d:mean(x[d] for x in by_novel.values() if d in x) for d in ['apf','rpf','rae','ptf'] if any(d in x for x in by_novel.values())}
-  result[group]=dict(metrics=metrics,by_novel=by_novel,metric_descriptive_novel_bootstrap95={d:interval([x[d] for x in by_novel.values() if d in x]) for d in metrics},n_per_response=sum(r['kind']=='per_response' for r in details[group].values()),n_trajectories=sum(r['kind']=='trajectory' for r in details[group].values()))
+  by_type={}
+  for typ,books in types[group].items():
+   nb={n:{d:mean(v) for d,v in ds.items()} for n,ds in books.items()};by_type[typ]=dict(n_books=len(nb),metrics={d:mean(v[d] for v in nb.values() if d in v) for d in metrics if any(d in v for v in nb.values())},by_novel=nb)
+  slices={name:{d:mean(v[d] for n,v in by_novel.items() if n in novels and d in v) for d in metrics if any(n in novels and d in v for n,v in by_novel.items())} for name,novels in [('main_public_four',{'don_quixote','Benjamin_Franklin','Monte_Cristo','Anna_Kareina'}),('lowpop_two',{'He Knew He Was Right','The Odd Women'})]}
+  result[group]=dict(metrics=metrics,by_novel=by_novel,by_evaluation_slice=slices,by_probe_type=by_type,by_character={c:{d:dict(mean=mean(v),n=len(v)) for d,v in ds.items()} for c,ds in characters[group].items()},by_axis={c:{d:dict(mean=mean(v),n=len(v)) for d,v in ds.items()} for c,ds in axes[group].items()},metric_descriptive_novel_bootstrap95={d:interval([x[d] for x in by_novel.values() if d in x]) for d in metrics},n_per_response=sum(r['kind']=='per_response' for r in details[group].values()),n_trajectories=sum(r['kind']=='trajectory' for r in details[group].values()))
  paired={}
  models=sorted({g.split('|')[0] for g in result})
  for model in models:
   if model+'|vanilla' not in result:continue
   for mode in ['arc','summary']:
    if model+'|'+mode not in result:continue
-   a=result[model+'|'+mode]['by_novel'];b=result[model+'|vanilla']['by_novel'];common=sorted(set(a)&set(b));out={}
-   for dim in ['apf','rpf','rae','ptf']:
-    ds={n:a[n][dim]-b[n][dim] for n in common if dim in a[n] and dim in b[n]}
-    if ds:out[dim]=dict(mean_delta=mean(ds.values()),by_novel=ds,descriptive_novel_bootstrap95=interval(ds.values()))
-   paired[model+'|'+mode+'-vanilla']=out
+   paired[model+'|'+mode+'-vanilla']=paired_arcane(details,model+'|'+mode,model+'|vanilla')
+  if model+'|summary' in result and model+'|arc' in result:paired[model+'|arc-summary']=paired_arcane(details,model+'|arc',model+'|summary')
+ for mode in ['vanilla','arc','summary']:
+  for lhs,rhs,label in [('arcane-8B-dpo','Qwen/Qwen3-8B','ArcANE8DPO-minus-Qwen8'),('Qwen/Qwen3-32B','Qwen/Qwen3-8B','Qwen32-minus-Qwen8'),('arcane-8B-dpo','Qwen/Qwen3-32B','ArcANE8DPO-minus-Qwen32')]:
+   if lhs+'|'+mode in result and rhs+'|'+mode in result:paired[label+'|'+mode]=paired_arcane(details,lhs+'|'+mode,rhs+'|'+mode)
  sources={}
  for path in sorted(run.glob('*/responses.jsonl')):
   rows=read(path);sources[path.parent.name]=dict(n=len(rows),unique_task_ids=len({r.get('task_id') for r in rows}),finishes=dict(Counter(r.get('finish_reason') for r in rows)),tokens={k:sum(r.get('usage',{}).get(k,0) for r in rows) for k in ['prompt_tokens','completion_tokens']})
- return dict(experiment=experiment,judge=('Local Qwen3-32B greedy/nonthinking' if judge=='local' else 'Step5 low partial only')+'; official prompts, scale100; different from original paper judge',strict_native_json=strict,aggregation='Per-metric novel macro means; no pooled cross-benchmark overall. Phase-level APF/RPF/RAE pooled within novel as native table, PTF over complete probe trajectories. Paired deltas by novel; six-book convenience sample intervals descriptive only.',calls_recorded=len(raw),unique_judge_ids=len({r['judge_id'] for r in raw}),valid_judge_ids=len(valid_new),reused_reference_judgments=len(reused),valid_by_kind=dict(Counter(r['kind'] for r in valid)),parse_methods=dict(Counter(r.get('parse_method','step_api') for r in valid_new)),error_attempts=dict(Counter(r.get('error') for r in raw if r.get('error'))),invalid_judge_ids=[r['judge_id'] for r in raw if not r.get('parse_ok') and r['judge_id'] not in {v['judge_id'] for v in valid_new}],usage={k:sum(r.get('usage',{}).get(k,0) for r in raw) for k in ['prompt_tokens','completion_tokens','total_tokens']},groups=result,paired_deltas=paired,source_runs=sources,details=[{k:v for k,v in r.items() if k not in ['usage','raw','response','error','metadata','messages','reasoning']} for r in valid])
+ detail_keys=['judge_id','kind','model','mode','novel','character_slug','probe_id','phase_idx','n_phases','scores','parse_method','native_json','finish_reason','judge_response_sha256','evaluator_messages_sha256','candidate_sha256','input_response_sha256']
+ compact=[]
+ for r in valid:
+  row={k:r[k] for k in detail_keys if k in r}
+  if judge=='step5':row['judge_response_sha256']=hashlib.sha256(str(r.get('raw','')).encode()).hexdigest();row['evaluator_messages_sha256']=hashlib.sha256(json.dumps(r['request']['messages'],sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+  compact.append(row)
+ return dict(experiment=experiment,judge=('Local Qwen3-32B greedy/nonthinking' if judge=='local' else 'Step5 low partial only')+'; official prompts, scale100; different from original paper judge',strict_native_json=strict,aggregation='Per-metric novel macro means; no pooled cross-benchmark overall. Phase-level APF/RPF/RAE pooled within novel as native table, PTF over complete probe trajectories. Paired deltas by novel; six-book convenience sample intervals descriptive only.',calls_recorded=len(raw),unique_judge_ids=len({r['judge_id'] for r in raw}),valid_judge_ids=len(valid_new),reused_reference_judgments=len(reused),valid_by_kind=dict(Counter(r['kind'] for r in valid)),parse_methods=dict(Counter(r.get('parse_method','step_api') for r in valid_new)),error_attempts=dict(Counter(r.get('error') for r in raw if r.get('error'))),invalid_judge_ids=[r['judge_id'] for r in raw if not r.get('parse_ok') and r['judge_id'] not in {v['judge_id'] for v in valid_new}],usage={k:token_sum(raw,k) for k in ['prompt_tokens','completion_tokens','total_tokens']},groups=result,paired_deltas=paired,source_runs=sources,details=compact)
 
 def phase(root):
  rows=read(root/'runs/D-E02/qwen3_32b_judge/responses.jsonl');scores=[];errors=[]

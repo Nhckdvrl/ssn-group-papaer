@@ -19,3 +19,5 @@
 执行输入确为场景开始profile/tracker/motivation与该角色可见的完整当前场景；初始profile模板用提供的相关场景向故事起点反推（代码上限100k tokens，可能覆盖后期材料），标签构建可用lookahead。回顾性标签来源与执行时不显式给未来须分开。可直接做状态形成普通基线；未取得/运行专用EvolvingWorld权重或完整联合模拟。
 
 已另读官方PUF/PES与后处理：PUF把profile和hidden tracker作为联合持久化机制，要求每项有事件依据并判断更新门槛；PES是跨场景演化平滑性。官方不是仅看profile_updated布尔值。模拟器原本就把dict/list形式的profile转换回Markdown；不能把这一表示差异误判成没有给内容。当前代码revision没有LICENSE，固定HF数据卡也未声明license；可访问性与再发布/训练授权应分开记录。本轮不分发其原始语料或vendor代码。
+
+实际样例还表明，other-thought masking是标记级操作：圆括号中的I think仍可能保留。场景可跨地点/含转述。不能把原生“character perspective”标签直接当语义上完整的第一人称可观察性保证；人物记录、角色本人所知和读者解释应分开。该限制不抹除原生任务和状态学习资产的可用价值。
