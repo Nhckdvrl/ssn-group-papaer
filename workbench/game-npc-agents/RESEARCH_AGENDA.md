@@ -1,6 +1,6 @@
 # Research Agenda：四中心 / A–H 开放研究问题
 
-**状态：问题谱系与方法假说，2026-10-21。** 这里没有声称发现缺陷、算法新颖性已成立、RL 奖励有效或某论文可直接复现。用 [POSITIONING](POSITIONING.md) 辨认强近邻，相关完整阅读卡仍在原 [知识库](../game-npc-agents/knowledge/README.md)。
+**状态：问题谱系与方法假说，2026-10-21。** 这里没有声称发现缺陷、算法新颖性已成立、RL 奖励有效或某论文可直接复现。用 [POSITIONING](POSITIONING.md) 辨认强近邻，相关完整阅读卡仍在原 [知识库](knowledge/README.md)。
 
 ## 0. 共同研究对象
 

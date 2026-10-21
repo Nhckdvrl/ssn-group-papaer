@@ -1,14 +1,14 @@
 # Positioning：现有能力、最近邻与真实增量（初始版）
 
-**2026-10-21；状态：研究入口定位，非完整最新近邻扫描。** 证据身份、完整论文阅读范围和局限以原 [文献总账](../game-npc-agents/knowledge/READING_CATALOG.md) 与规范卡为准；本页不冒充逐篇重新全文阅读或已运行强模型。后续按根目录 R6 更新正式接收、预印本版本与 claim ownership。
+**2026-10-21；状态：研究入口定位，非完整最新近邻扫描。** 证据身份、完整论文阅读范围和局限以原 [文献总账](knowledge/READING_CATALOG.md) 与规范卡为准；本页不冒充逐篇重新全文阅读或已运行强模型。后续按根目录 R6 更新正式接收、预印本版本与 claim ownership。
 
 ## 1. 近邻已经占据的空间
 
 | 研究谱系 | 关键近邻 | 已有能力；不能再声称什么 | 还值得询问的增量 |
 |---|---|---|---|
 | 人物化推理与训练 | [Thinking in Character](../../library/themes/game-npc-social/papers/THINKING_IN_CHARACTER_2025.md) · [HER](../../library/themes/game-npc-social/papers/HER_2026.md) · [CRPO](https://proceedings.mlr.press/v306/tang26c.html) | 已有 role-aware reasoning、场景化奖励、角色相关 RL；“让 NPC 先内心思考”不是新主张 | 推理是否决定了未见互动中的行为，而不只输出风格 |
-| 人物条件规则与认知 | [CDT](../game-npc-agents/knowledge/papers/CDT_2026.md) · [ThinkPersona](https://aclanthology.org/2026.acl-long.449/) · [RoleCDE](https://aclanthology.org/2026.findings-acl.106/) | 条件决策树、经历驱动推理、角色价值冲突已有直接研究 | 从稀疏修订/行为中学习非显式逻辑并跨情境泛化 |
-| 人物状态、成长与记忆 | [ArcANE](../../library/themes/game-npc-social/papers/ARCANE_2026.md) · [MDRP](../../library/themes/game-npc-social/papers/MEMORY_DRIVEN_ROLEPLAY_2026.md) · [Dynamic Persona Coherence](../game-npc-agents/knowledge/papers/DYNAMIC_PERSONA_COHERENCE_2026.md) | 已知文学人物阶段、记忆分面与身份—状态分离已有成果 | 玩家新增经历带来的选择性更新、回溯重评、后续策略作用范围 |
+| 人物条件规则与认知 | [CDT](knowledge/papers/CDT_2026.md) · [ThinkPersona](https://aclanthology.org/2026.acl-long.449/) · [RoleCDE](https://aclanthology.org/2026.findings-acl.106/) | 条件决策树、经历驱动推理、角色价值冲突已有直接研究 | 从稀疏修订/行为中学习非显式逻辑并跨情境泛化 |
+| 人物状态、成长与记忆 | [ArcANE](../../library/themes/game-npc-social/papers/ARCANE_2026.md) · [MDRP](../../library/themes/game-npc-social/papers/MEMORY_DRIVEN_ROLEPLAY_2026.md) · [Dynamic Persona Coherence](knowledge/papers/DYNAMIC_PERSONA_COHERENCE_2026.md) | 已知文学人物阶段、记忆分面与身份—状态分离已有成果 | 玩家新增经历带来的选择性更新、回溯重评、后续策略作用范围 |
 | 情绪、关系与可解释更新 | [OSSE](../../library/themes/game-npc-social/papers/OSSE_SOCIOEMOTION_2009.md) · [FAtiMA](../../library/themes/game-npc-social/papers/FATIMA_MODULAR_2014.md) · [Chain-of-Emotion](../../library/themes/game-npc-social/papers/CHAIN_EMOTION_2024.md) | 情绪评价、非对称关系、情绪来源、自然语言 appraisal 不是新模块 | 新证据如何改变旧解释并影响后续行为，而非只提升情绪文本分 |
 | 原创人物作者编辑 | [ORIBA](../../library/themes/game-npc-social/papers/ORIBA_2025.md) · [Bonsai](../../library/themes/game-npc-social/papers/BONSAI_2026.md) · [WhatELSE](../../library/themes/game-npc-social/papers/WHATELSE2025.md) | 作者试演/修订、持久分支与编辑提规则已有工作 | 修订的语义范围、跨场景泛化、作者对意外接受与拒绝的区分 |
 | 可读性与角色表演 | [Bates/Oz](../../library/themes/game-npc-social/papers/BATES_BELIEVABLE_EMOTION_1994.md) · [PersonaEval](https://arxiv.org/abs/2508.10014) · [HRI Legibility](https://doi.org/10.15607/RSS.2013.IX.061) | 可信人物与通过行为推断意图/身份有经典和近期研究 | 玩家在未见情境预测与互动中是否获得可使用的人物理解 |
