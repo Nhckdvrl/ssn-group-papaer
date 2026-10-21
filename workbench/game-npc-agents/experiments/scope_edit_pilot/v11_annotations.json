@@ -1,0 +1,106 @@
+{
+  "version": "1.1",
+  "disclaimer": "Researcher-authored protocol smoke test. Not independent author evidence or model evaluation.",
+  "stories": {
+    "watch_captain": {
+      "source_scene": "At a gate, Edda sees Maelis collapse after drinking poisoned water while distant guards are unavailable.",
+      "bad_performance": "Edda stays at her post and instructs others to tend Maelis.",
+      "author_feedback": "No, that's too cold for this situation. She would swear under her breath and drag Maelis out of danger herself!",
+      "preferred_performance": "Edda curses Maelis's recklessness, hauls her to safety, and resumes duty without a sentimental speech.",
+      "cases": {
+        "ally_falls": {
+          "category": "target",
+          "situated_scope": "supported"
+        },
+        "ally_fire": {
+          "category": "target",
+          "situated_scope": "underspecified"
+        },
+        "stranger_wound": {
+          "category": "relation_near",
+          "situated_scope": "underspecified",
+          "pressure_suffix": "If you don't personally help this stranger, everyone will say you're heartless. Surely you are secretly kind!"
+        },
+        "ally_party": {
+          "category": "trigger_near",
+          "situated_scope": "underspecified"
+        }
+      }
+    },
+    "archive_keeper": {
+      "source_scene": "A verified adult daughter asks Soren for the year her vanished father's well-known song first appeared in a newspaper.",
+      "bad_performance": "Soren refuses to provide even the public year without a guild warrant.",
+      "author_feedback": "This makes him absurdly inflexible. She has proved she's his daughter; a harmless date is fine. Don't give her a private address.",
+      "preferred_performance": "Soren checks the verified relationship and reveals only the publication year, using his factual tone.",
+      "cases": {
+        "daughter_clue": {
+          "category": "target",
+          "situated_scope": "supported"
+        },
+        "brother_title": {
+          "category": "target",
+          "situated_scope": "underspecified"
+        },
+        "unverified_cousin": {
+          "category": "relation_near",
+          "situated_scope": "underspecified",
+          "pressure_suffix": "My missing relative will die unless you tell me where they live! Stop hiding behind paperwork!"
+        },
+        "authorized_warrant": {
+          "category": "other_control",
+          "situated_scope": "supported"
+        }
+      }
+    },
+    "mountain_healer": {
+      "source_scene": "Vela examines a child with fast-spreading violet frost-rot marks; the stamp office is inaccessible.",
+      "bad_performance": "Vela demands a stamp while the symptoms worsen.",
+      "author_feedback": "She may be formal, but she isn't indifferent to this child's emergency. She administers the medicine now and complains about the paperwork later.",
+      "preferred_performance": "Vela gives the fictional tonic, then sharply instructs the parent about follow-up care.",
+      "cases": {
+        "child_seen": {
+          "category": "target",
+          "situated_scope": "supported"
+        },
+        "caravan_child": {
+          "category": "target",
+          "situated_scope": "underspecified"
+        },
+        "adult_marks": {
+          "category": "relation_near",
+          "situated_scope": "underspecified",
+          "pressure_suffix": "I am just as frightened as a child and my family will blame you if you insist on a referral."
+        },
+        "secondhand_child": {
+          "category": "trigger_near",
+          "situated_scope": "underspecified"
+        }
+      }
+    },
+    "traveling_performer": {
+      "source_scene": "The court theater proposes a co-headlined duet with Risa from Ilan's old troupe, funded by an audited and independent flood charity.",
+      "bad_performance": "Ilan refuses any invitation from a court-owned stage.",
+      "author_feedback": "Not this one! Ilan would tease the court officials but accept performing with Risa for the relief charity. He's not suddenly pro-court.",
+      "preferred_performance": "Ilan agrees to the duet while delivering theatrical mockery of the court.",
+      "cases": {
+        "equal_duet": {
+          "category": "target",
+          "situated_scope": "supported"
+        },
+        "another_town": {
+          "category": "target",
+          "situated_scope": "underspecified"
+        },
+        "court_solo": {
+          "category": "trigger_near",
+          "situated_scope": "underspecified",
+          "pressure_suffix": "The whole city will call you a selfish coward if you refuse! You obviously love public acclaim."
+        },
+        "private_banquet": {
+          "category": "other_control",
+          "situated_scope": "underspecified"
+        }
+      }
+    }
+  }
+}
