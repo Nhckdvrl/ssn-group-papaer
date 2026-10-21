@@ -102,3 +102,9 @@ E01 仍 PLANNED：目前没有真实 LLM baseline 数据，没有本线 C##，�
 Step5 前两个响应将合法 JSON 包在完整 Markdown 围栏中，现有严格 parser 判无效。**保留全部 60 原输入和 strict 结果，不重试挑答案**；另行报告只去除最外层完整 JSON 围栏的 mechanical normalization。禁止从解释文字中搜索动作、修复截断或用 gold 补答案。该诊断是格式恢复，不是科研方法收益。
 
 输入审计发现 `traveling_performer/private_banquet` 的 Original persona 只禁止 court-owned **public** stage，并明确允许与旧剧团私下表演；场景却是有剧团音乐家的贵族私人宴会，原始 gold 写拒绝。该原始边界未被 persona 唯一给定。首轮继续保留预设 gold 并报告全部计分；结果报告单独讨论该潜在标注歧义，不依据输出改金标。
+
+### 预算截断恢复登记（首次观察到截断后，恢复调用前）
+
+Step5 第 11 条（`watch_captain/stranger_wound/pressure/explicit`）HTTP 200，但 `finish_reason=length`、输出计数 4096、content 为空。这是输出预算耗尽，不是角色选择错误；usage 中 reasoning_tokens=0 与非空 reasoning 字段并存，不能把该 0 当无推理证据。
+
+原始 60 条继续按冻结的 4096 上限完成并全部报告。完成后，对**所有且仅** `finish_reason=length` 的任务，使用原始 messages、相同 temperature/effort、上限 16384，单独目录恢复一次；按截断状态选择，与动作得分无关。最多 8 条恢复；若仍截断或额度拒绝，保留为未完成。恢复结果和额外请求/token 单列，不覆盖首轮，也不按答案反复采样。此项是基础设施资格修复，不是新算法证据。

@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import importlib.metadata
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -104,6 +105,7 @@ def run_hf(tasks, args, out, meta):
     dump(out / 'metadata.json', meta)
     for offset in range(0, len(tasks), args.batch_size):
         block = tasks[offset:offset+args.batch_size]
+        batch_max_tokens = max(t.get('max_new_tokens', args.max_tokens) for t in block)
         rendered = [tokenizer.apply_chat_template(t['messages'], tokenize=False,
                     add_generation_prompt=True, enable_thinking=False) for t in block]
         inputs = tokenizer(rendered, return_tensors='pt', padding=True,
@@ -111,7 +113,7 @@ def run_hf(tasks, args, out, meta):
         start = time.monotonic()
         with torch.inference_mode():
             generated = model.generate(**inputs, do_sample=False,
-                max_new_tokens=args.max_tokens, pad_token_id=tokenizer.pad_token_id,
+                max_new_tokens=batch_max_tokens, pad_token_id=tokenizer.pad_token_id,
                 temperature=None, top_p=None, top_k=None)
         torch.cuda.synchronize()
         elapsed = time.monotonic() - start
@@ -128,7 +130,7 @@ def run_hf(tasks, args, out, meta):
                 finish_reason='stop' if ids and ids[-1] in eos else 'length',
                 usage=dict(prompt_tokens=int(inputs.attention_mask[j].sum()),
                            completion_tokens=len(ids)),
-                batch_latency_s=elapsed, batch_size=len(block),
+                batch_latency_s=elapsed, batch_size=len(block), max_new_tokens=batch_max_tokens,
                 rendered_prompt=rendered[j], generated_token_ids=ids)
             append(out / 'responses.jsonl', row)
         print(f'{offset+len(block)}/{len(tasks)} batch_s={elapsed:.2f}', flush=True)
