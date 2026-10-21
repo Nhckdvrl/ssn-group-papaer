@@ -54,3 +54,9 @@ DPO 后再 GRPO，在主评委下均分 60.2→68.2。其所谓 RLVR 使用 Qwen
 
 “人物会发展”已是直接研究对象。矿区 B 可以继续问：作者如何界定可延展范围，玩家造成的新经历如何改变表演，作者与玩家能否辨认合理变化。本文没有验证这些问题已难倒最强普通系统；在原创人物、自然互动和作者编辑中是否还有方法空间仍未知。
 
+
+## 2026-10-22矿区D驻留代码核对（不同于此前阅读范围）
+
+官方仓库已固定到`46ee34a73c7bd006ba52a7a262586f02301cdb6f`，公开18部作品（Harry Potter不分发）。本地正式probe/phase清点、原生prompt渲染与两8B模型复现已启动；确切单位以[资产清单](../../../../workbench/game-npc-agents/mine-d-affect-relationships/results/assets_inventory.json)为准，不把HF训练配置内部test当benchmark。六种上下文、ArcHint/MixedArc与正式judge框架已经存在，普通summary/RAG不是我们的新方法。
+
+`_curate_axes`保留axis_name，按phase起点保留整段阶段文字；这是输入的时间粒度事实，不直接证明未来泄露或其对分数的影响。人物已给定阶段的演绎与从时点有效经历自行归纳状态仍需区分。B/I01暂停，本工作在D作为主载体，历史B数据不继承。

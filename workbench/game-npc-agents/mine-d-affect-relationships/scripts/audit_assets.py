@@ -17,10 +17,13 @@ def main():
   stat=Counter();chars=[]
   for axispath in sorted((nd/'final_auto').glob('*_auto_axes.json')):
    slug=axispath.name.removesuffix('_auto_axes.json');raw=json.loads(axispath.read_text())
-   axes=raw.get('intrapersonal_axes',[])+raw.get('relational_axes',[]);stat['axes']+=len(axes);stat['characters']+=1
+   axes=raw.get('intrapersonal_axes',[])+raw.get('relational_axes',[]);stat['character_files']+=1
+   if not axes:stat['empty_axis_files']+=1
+   else:stat['characters_with_nonempty_axes']+=1
+   stat['axes']+=len(axes)
    try:pp=probe_file(nd.name,slug)
    except FileNotFoundError:stat['missing_probe_files']+=1;continue
-   probe=json.loads(pp.read_text());trials=load_trials(nd.name,slug)
+   probe=json.loads(pp.read_text());trials=load_trials(nd.name,slug);stat['characters_with_probes']+=1
    stat['probes']+=sum(len(f['probes']) for f in probe.get('families',[]));stat['phase_trials']+=len(trials)
    for t in trials:
     stat['trials_'+t.probe_type]+=1
