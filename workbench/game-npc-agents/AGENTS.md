@@ -5,7 +5,7 @@
 ## 当前边界
 
 - **矿区A已终止（2026-10-19用户明确决定，CLOSED／TERMINATED）。** 不启动引擎、模型、训练、GPU、推理API、场景生成、商业模型验证或论文推进；所有历史执行建议取消。当前仅做终止复盘、证据整理与知识维护。
-- **2026-10-21 用户明确授权本 `game-npc-agents` workbench 为 ACTIVE-MAIN，进行新的 Role-playing Agent 研究驻留。** 当前仍未选定单个论文题目、训练目标或实验；研究议程见 [RESEARCH_AGENDA](RESEARCH_AGENDA.md)。旧矿区 A 的 CLOSED / TERMINATED **只在 A 内持续生效**，不能重用其结果为新实证。
+- **2026-10-21 用户明确授权本 `game-npc-agents` workbench 为 ACTIVE-MAIN，进行新的 Role-playing Agent 研究驻留。** 该次登记时尚未选定单个论文题目、训练目标或实验；当前以2026-10-22矿区D决定为准，研究议程见 [RESEARCH_AGENDA](RESEARCH_AGENDA.md)。旧矿区 A 的 CLOSED / TERMINATED **只在 A 内持续生效**，不能重用其结果为新实证。
 - **2026-10-19** 已建立 B–E 角色扮演/叙事/情绪/玩家体验知识与问题矿区，现保持相应知识结构，不自动作为 4 条激活的独立研究线。
 - 矿区A以[终止总结](mine-a-persona-strategy/CLOSEOUT.md)为最终总结；其[AGENTS](mine-a-persona-strategy/AGENTS.md)、CLAIMS、相关实验卡与原始结果保存历史判断和授权限制。本次B–E建设不修改A的资产或状态。
 

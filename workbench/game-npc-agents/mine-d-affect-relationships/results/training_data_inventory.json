@@ -1,0 +1,168 @@
+{
+  "configs": {
+    "dpo/test.parquet": {
+      "n_rows": 375,
+      "columns": [
+        "chosen",
+        "rejected",
+        "metadata"
+      ],
+      "novels": {
+        "Lady Audley's Secret": 34,
+        "Little Women": 57,
+        "Jane_Eyre": 37,
+        "Great Expectations": 27,
+        "Persuasion": 33,
+        "Treasure Island": 47,
+        "pride_and_prejudice": 51,
+        "Anne of Green Gables": 44,
+        "Dorian Gray": 32,
+        "Olaudah Equiano": 13
+      },
+      "n_distinct_probe_ids": 281,
+      "n_distinct_phase_cells": 281,
+      "current_phase_equals_scene_anchor": {}
+    },
+    "dpo/train.parquet": {
+      "n_rows": 12746,
+      "columns": [
+        "chosen",
+        "rejected",
+        "metadata"
+      ],
+      "novels": {
+        "Treasure Island": 1186,
+        "Anne of Green Gables": 1549,
+        "pride_and_prejudice": 1788,
+        "Dorian Gray": 1007,
+        "Little Women": 1911,
+        "Lady Audley's Secret": 1211,
+        "Jane_Eyre": 1538,
+        "Great Expectations": 781,
+        "Persuasion": 1318,
+        "Olaudah Equiano": 457
+      },
+      "n_distinct_probe_ids": 2234,
+      "n_distinct_phase_cells": 2234,
+      "current_phase_equals_scene_anchor": {}
+    },
+    "rl/test.parquet": {
+      "n_rows": 678,
+      "columns": [
+        "data_source",
+        "prompt",
+        "ability",
+        "reward_model",
+        "extra_info"
+      ],
+      "novels": {
+        "Jane_Eyre": 81,
+        "Little Women": 90,
+        "pride_and_prejudice": 83,
+        "Treasure Island": 76,
+        "Dorian Gray": 63,
+        "Great Expectations": 42,
+        "Lady Audley's Secret": 60,
+        "Persuasion": 76,
+        "Anne of Green Gables": 79,
+        "Olaudah Equiano": 28
+      },
+      "n_distinct_probe_ids": 678,
+      "n_distinct_phase_cells": 678,
+      "current_phase_equals_scene_anchor": {
+        "True": 678
+      }
+    },
+    "rl/train.parquet": {
+      "n_rows": 2513,
+      "columns": [
+        "data_source",
+        "prompt",
+        "ability",
+        "reward_model",
+        "extra_info"
+      ],
+      "novels": {
+        "Dorian Gray": 219,
+        "Anne of Green Gables": 265,
+        "Little Women": 356,
+        "Treasure Island": 243,
+        "Lady Audley's Secret": 237,
+        "Jane_Eyre": 288,
+        "Great Expectations": 167,
+        "pride_and_prejudice": 350,
+        "Olaudah Equiano": 106,
+        "Persuasion": 282
+      },
+      "n_distinct_probe_ids": 2513,
+      "n_distinct_phase_cells": 2513,
+      "current_phase_equals_scene_anchor": {
+        "True": 2513
+      }
+    },
+    "sft/test.parquet": {
+      "n_rows": 2285,
+      "columns": [
+        "id",
+        "source",
+        "meta_data",
+        "messages"
+      ],
+      "novels": {
+        "Jane_Eyre": 272,
+        "Lady Audley's Secret": 212,
+        "Dorian Gray": 191,
+        "Little Women": 331,
+        "Olaudah Equiano": 85,
+        "pride_and_prejudice": 321,
+        "Treasure Island": 219,
+        "Persuasion": 236,
+        "Anne of Green Gables": 272,
+        "Great Expectations": 146
+      },
+      "n_distinct_probe_ids": 1523,
+      "n_distinct_phase_cells": 2067,
+      "current_phase_equals_scene_anchor": {
+        "True": 752,
+        "False": 1533
+      }
+    },
+    "sft/train.parquet": {
+      "n_rows": 20560,
+      "columns": [
+        "id",
+        "source",
+        "meta_data",
+        "messages"
+      ],
+      "novels": {
+        "Treasure Island": 1968,
+        "Anne of Green Gables": 2452,
+        "Jane_Eyre": 2446,
+        "pride_and_prejudice": 2886,
+        "Dorian Gray": 1717,
+        "Little Women": 2978,
+        "Lady Audley's Secret": 1912,
+        "Great Expectations": 1312,
+        "Persuasion": 2122,
+        "Olaudah Equiano": 767
+      },
+      "n_distinct_probe_ids": 2537,
+      "n_distinct_phase_cells": 7609,
+      "current_phase_equals_scene_anchor": {
+        "False": 13764,
+        "True": 6796
+      }
+    }
+  },
+  "selected_evaluation_novels": [
+    "don_quixote",
+    "Benjamin_Franklin",
+    "Monte_Cristo",
+    "Anna_Kareina",
+    "He Knew He Was Right",
+    "The Odd Women"
+  ],
+  "public_training_overlap": [],
+  "warning": "Training test splits are internal configurations. probe anchor phase differs from the current generation phase; neither is a new independent character."
+}

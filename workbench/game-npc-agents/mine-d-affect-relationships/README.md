@@ -8,6 +8,17 @@
 
 首先核查并复现官方数据、输入条件、评价与模型，建立规模足够且来源清楚的测量。不把训练数据内部test当正式人物弧benchmark，不把回顾性阶段描述等同在线事件证据，不将分数变化直接称泄露或状态惯性。方法从真实测量发展；普通合法历史总结与官方状态更新均认真比较。
 
+## 当前实测与资产
+
+| 记录 | 当前交付 |
+|---|---|
+| [D-E01](experiments/D-E01-arcane-official-residency.md) | 六作品/25人物/64完整probe/205 phase；Qwen3-8B与ArcANE-8B-DPO原生vanilla/arc共820条生成已完成，正式Step评委正在批量评分 |
+| [D-E02](experiments/D-E02-longevorole-textual-residency.md) | 已完成256条角色输出＋256条本地判分；[报告](results/D-E02-REPORT.md)：PT Char/Sem3.656/3.281，NR3.453/3.047；不同评委/样本下的有限复现，不是新机制发现 |
+| [D-E03](experiments/D-E03-native-chapter-summary-reference.md) | 补原生近期章节Summary普通参照：固定嵌套25probe/81phase，242章教师摘要与角色生成按依赖推进；不把它冒充已保证因果可知的纯事件输入 |
+| [资产入口](ASSETS.md) | 代码、权重、数据、原始输出的位置、revision、环境、许可身份与离线复算 |
+
+本轮没有提出新训练目标或小idea，不把RP离题自动叫过期状态干扰，也不把树方法的既有收益重新包装为我们的创新。
+
 ## 我们要理解什么
 
 **在持续角色扮演中，NPC怎样根据自己在乎的事情、知道的事实与共同经历，产生玩家能够理解、影响和回应的情绪与关系变化？**

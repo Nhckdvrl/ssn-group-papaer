@@ -17,7 +17,7 @@ def read_rows(path):
  return out
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--arcane',required=True);a.add_argument('--references',required=True);a.add_argument('--sources',nargs='+',required=True);a.add_argument('--out',required=True);a.add_argument('--expected-per-source',type=int,required=True);a.add_argument('--budget-calls',type=int,default=1200);a.add_argument('--reasoning-effort',choices=['low','medium'],default='low');a.add_argument('--max-wait-s',type=int,default=21600);a.add_argument('--workers',type=int,choices=[1,2,4,6],default=2);a.add_argument('--resume',action='store_true');args=a.parse_args()
+ a=argparse.ArgumentParser();a.add_argument('--arcane',required=True);a.add_argument('--references',required=True);a.add_argument('--sources',nargs='+',required=True);a.add_argument('--out',required=True);a.add_argument('--expected-per-source',type=int,required=True);a.add_argument('--budget-calls',type=int,default=1200);a.add_argument('--reasoning-effort',choices=['low','medium'],default='low');a.add_argument('--max-wait-s',type=int,default=21600);a.add_argument('--workers',type=int,choices=[1,2,4,6],default=2);a.add_argument('--resume',action='store_true');a.add_argument('--retry-invalid-once',action='store_true');a.add_argument('--max-tokens',type=int,default=8192);args=a.parse_args()
  sys.path.insert(0,args.arcane)
  from evaluation.per_response.prompt import EvalTrial,render_evaluator_messages as single_messages
  from evaluation.trajectory.prompt import PhaseRef,render_evaluator_messages as trajectory_messages
@@ -38,10 +38,10 @@ def main():
   probe,phase=tid.rsplit('__p',1);expected_phases[probe].add(int(phase))
  key=os.environ.get('STEPFUN_API_KEY') or getpass.getpass('Step Plan API key (hidden): ')
  if not key:raise ValueError('Missing authorized key')
- meta=dict(started_utc=stamp(),args=vars(args),endpoint=ENDPOINT,model=MODEL,temperature=0,reasoning_effort=args.reasoning_effort,max_tokens=8192,workers=args.workers,complete=False,protocol='Official ArcANE prompts and scale100; Step5 judge substitution; no method/model labels sent',script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+ meta=dict(started_utc=stamp(),args=vars(args),endpoint=ENDPOINT,model=MODEL,temperature=0,reasoning_effort=args.reasoning_effort,max_tokens=args.max_tokens,workers=args.workers,complete=False,protocol='Official ArcANE prompts and scale100; Step5 judge substitution; no method/model labels sent',script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
  (out/'runner_source.py').write_bytes(Path(__file__).read_bytes());(out/'metadata.json').write_text(json.dumps(meta,indent=2)+'\n')
  existing=read_rows(out/'judgments.jsonl') if args.resume else []
- seen={r['judge_id'] for r in existing if not r.get('error') or r.get('error')=='invalid_judge_verdict'};attempts=len(existing);scored=sum(bool(r.get('parse_ok')) for r in existing);usage=Counter()
+ seen={r['judge_id'] for r in existing if (r.get('parse_ok') if args.retry_invalid_once else (not r.get('error') or r.get('error')=='invalid_judge_verdict'))};attempts=len(existing);scored=sum(bool(r.get('parse_ok')) for r in existing);usage=Counter()
  for r in existing:
   for k,v in r.get('usage',{}).items():
    if isinstance(v,(int,float)):usage[k]+=v
@@ -52,7 +52,7 @@ def main():
   meta['resumed_after_calls']=attempts
  started=time.monotonic()
  def call(task):
-  payload=dict(model=MODEL,messages=task['messages'],temperature=0,reasoning_effort=args.reasoning_effort,max_tokens=8192,response_format={'type':'json_object'},stream=False)
+  payload=dict(model=MODEL,messages=task['messages'],temperature=0,reasoning_effort=args.reasoning_effort,max_tokens=args.max_tokens,response_format={'type':'json_object'},stream=False)
   begin=time.monotonic();row={k:v for k,v in task.items() if k!='messages'};row.update(started_utc=stamp(),request=payload,endpoint=ENDPOINT)
   try:
    with requests.Session() as s:
