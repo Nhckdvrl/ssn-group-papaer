@@ -1,0 +1,122 @@
+{
+  "teacher_usage": {
+    "full_card": {
+      "calls": 4,
+      "prompt_tokens": 1112,
+      "completion_tokens": 1125
+    },
+    "priority": {
+      "calls": 4,
+      "prompt_tokens": 1396,
+      "completion_tokens": 576
+    }
+  },
+  "posthoc_fact_slot_audit": [
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/original",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/explicit",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/situated",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/original",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/explicit",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/situated",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/contrastive",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/contrastive",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/coherence",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/coherence",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/full_card",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/full_card",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/daughter_clue/base/priority",
+      "provided_fact_present": true
+    },
+    {
+      "model": "qwen",
+      "task_id": "archive_keeper/brother_title/base/priority",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/daughter_clue/base/explicit",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/daughter_clue/base/situated",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/brother_title/base/explicit",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/brother_title/base/situated",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/daughter_clue/base/contrastive",
+      "provided_fact_present": true
+    },
+    {
+      "model": "step5",
+      "task_id": "archive_keeper/brother_title/base/contrastive",
+      "provided_fact_present": true
+    }
+  ],
+  "fact_slot_disclosures": 20,
+  "provided_fact_present": 20,
+  "qualifying_model_calls": 228,
+  "invalid_saved_calls": 320,
+  "invalid_uncaptured_inflight_upper_bound": 8,
+  "step_total_tokens": 108025
+}

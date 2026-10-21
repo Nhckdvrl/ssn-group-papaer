@@ -1,0 +1,310 @@
+{
+  "version": 1,
+  "warning": "E03 V2: post-E01 developer revision, frozen before new outputs. Not a new independent benchmark.",
+  "stories": [
+    {
+      "story_id": "watch_captain",
+      "name": "Guard at the East Gate",
+      "persona": "Edda is a cold and terse watch captain. She never leaves her gate post to render personal aid; she sounds alarms or sends available guards instead. One of her sworn allies is Maelis. Her verbal manner remains short and unsentimental. These are rules for decisions, not merely for speaking style. Emergencies or sympathetic appeals do not by themselves create an exception to them. A subsequent author revision can override them.",
+      "author_edit": "The author's revision: Edda will personally act when a sworn ally is in immediate mortal danger and no other guard can arrive in time. Her terse voice, usual duty and treatment of strangers or ordinary favors remain unchanged.",
+      "cases": [
+        {
+          "case_id": "ally_falls",
+          "scope": "change",
+          "scenario": "Maelis falls into a flooded ditch at the gate and will drown before any other guard can arrive.",
+          "actions": {
+            "A": "Remain by gate and signal the distant guards.",
+            "B": "Immediately pull Maelis from the ditch.",
+            "C": "Make a speech to the bystanders."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "An urgent sworn-ally rescue overrides the post rule."
+        },
+        {
+          "case_id": "ally_fire",
+          "scope": "change",
+          "scenario": "Maelis is trapped in a burning hut; no other rescuer is near and Edda can reach her in time.",
+          "actions": {
+            "A": "Stay at her post and wait for fire wardens.",
+            "B": "Rescue Maelis herself immediately.",
+            "C": "Ask for a fee to rescue Maelis."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "The edit transfers to a different urgent danger."
+        },
+        {
+          "case_id": "stranger_wound",
+          "scope": "preserve",
+          "scenario": "A stranger lightly cuts a hand at a market next to a healer; Edda is at her gate.",
+          "actions": {
+            "A": "Leave gate and personally treat the stranger.",
+            "B": "Direct the nearby healer to assist and remain at gate.",
+            "C": "Accuse the stranger of treason."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "No sworn ally or time-critical peril."
+        },
+        {
+          "case_id": "ally_party",
+          "scope": "preserve",
+          "scenario": "Maelis requests that Edda abandon watch to join an ordinary picnic. Nobody is endangered.",
+          "actions": {
+            "A": "Leave post for picnic.",
+            "B": "Politely but tersely decline and continue duty.",
+            "C": "Command guards to attend picnic."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Social favor is not an emergency."
+        }
+      ]
+    },
+    {
+      "story_id": "archive_keeper",
+      "name": "Keeper of Family Archives",
+      "persona": "Soren is a meticulous, matter-of-fact archive keeper. Without a signed guild warrant he does not retrieve or disclose any item from the archive collection, including publicly published dates and titles as well as private records, even for relatives. Public availability elsewhere does not authorize an archive lookup. These are rules for decisions, not merely for speaking style. Emergencies or sympathetic appeals do not by themselves create an exception to them. A subsequent author revision can override them.",
+      "author_edit": "The author adds: if independent records verify a visitor is related to a missing person, Soren may share a redacted harmless historical clue that cannot expose the person's current location. Unverified visitors get nothing; warrants retain their normal authority; never reveal a safe-house.",
+      "cases": [
+        {
+          "case_id": "daughter_clue",
+          "scope": "change",
+          "scenario": "A daughter proves her relationship with two independent public records and requests only the year of her missing parent's published poem.\n\nRecord fact: The requested poem was published in 1897.",
+          "actions": {
+            "A": "Refuse every clue without a warrant.",
+            "B": "Share just the harmless publication year.",
+            "C": "Expose the parent's current hiding place."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Verified kin and harmless clue."
+        },
+        {
+          "case_id": "brother_title",
+          "scope": "change",
+          "scenario": "A brother verifies his family tie in the civic census and asks only the title of the missing painter's publicly exhibited artwork.\n\nRecord fact: The requested painting is titled 'The Silent Harbor'.",
+          "actions": {
+            "A": "Share only the harmless artwork title.",
+            "B": "Release all protected addresses.",
+            "C": "Refuse even this clue without a warrant."
+          },
+          "expected_before": [
+            "C"
+          ],
+          "expected_after": [
+            "A"
+          ],
+          "editor_rationale": "Transfers to different person and historical clue."
+        },
+        {
+          "case_id": "unverified_cousin",
+          "scope": "preserve",
+          "scenario": "Someone claiming cousinhood offers no proof and requests the missing scholar's current residence.",
+          "actions": {
+            "A": "Reveal the residence immediately.",
+            "B": "Refuse unverified or sensitive requests.",
+            "C": "Reveal all protected records."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "False positive should not trigger the exception."
+        },
+        {
+          "case_id": "authorized_warrant",
+          "scope": "preserve",
+          "scenario": "A guild investigator shows a valid signed warrant for a specified protected record.",
+          "actions": {
+            "A": "Provide the specifically authorized record.",
+            "B": "Refuse all access despite valid warrant.",
+            "C": "Publish every family record."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "A"
+          ],
+          "editor_rationale": "Pre-existing permission remains."
+        }
+      ]
+    },
+    {
+      "story_id": "mountain_healer",
+      "name": "Healer at the Mountain Pass",
+      "persona": "Vela refuses the fictional emergency tonic to anyone without a stamped referral, including those claiming urgency. She speaks clinically and without sentiment. These are rules for decisions, not merely for speaking style. Emergencies or sympathetic appeals do not by themselves create an exception to them. A subsequent author revision can override them.",
+      "author_edit": "The author revises exactly one rule: when Vela personally observes a child with rapidly spreading violet marks of fictional frost-rot and no paperwork can arrive in time, she administers the tonic first. This exception does not apply to adults, hearsay or non-urgent patients; she stays unsentimental.",
+      "cases": [
+        {
+          "case_id": "child_seen",
+          "scope": "change",
+          "scenario": "Vela personally examines a child with rapidly spreading distinctive violet frost-rot marks. Referral is impossible in time.",
+          "actions": {
+            "A": "Wait for stamped referral.",
+            "B": "Administer the fictional tonic immediately.",
+            "C": "Ignore the patient."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Direct symptoms, child, and urgency."
+        },
+        {
+          "case_id": "caravan_child",
+          "scope": "change",
+          "scenario": "A new caravan arrives. Vela personally sees the distinctive violet marks rapidly growing on a child's arm while the stamp office is unreachable.",
+          "actions": {
+            "A": "Treat child with fictional tonic now.",
+            "B": "Demand delayed stamp.",
+            "C": "Send child alone into a storm."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "A"
+          ],
+          "editor_rationale": "Transfer to new setting."
+        },
+        {
+          "case_id": "adult_marks",
+          "scope": "preserve",
+          "scenario": "An adult shows the same marks but has no referral.",
+          "actions": {
+            "A": "Treat without stamp because all ages qualify.",
+            "B": "Keep referral condition for adult.",
+            "C": "Close dispensary."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Age matters for this author-defined exception."
+        },
+        {
+          "case_id": "secondhand_child",
+          "scope": "preserve",
+          "scenario": "Someone claims an unseen distant child has frost-rot. Vela cannot examine and has no referral.",
+          "actions": {
+            "A": "Give tonic based solely on hearsay.",
+            "B": "Require direct examination or referral.",
+            "C": "Give away all supplies."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Direct-observation condition not met."
+        }
+      ]
+    },
+    {
+      "story_id": "traveling_performer",
+      "name": "Traveling Stage Performer",
+      "persona": "Ilan is playful and grandiose but will never accept court-owned public stage invitations. He will perform privately with his old troupe but refuses official court theater performances. He also refuses to perform at any private banquet hosted by court nobles; private performances with his old troupe are allowed only outside such noble banquets. These are rules for decisions, not merely for speaking style. Emergencies or sympathetic appeals do not by themselves create an exception to them. A subsequent author revision can override them.",
+      "author_edit": "The author revises exactly one exception: a public performance at a court-owned theater may be accepted only if an old troupe member shares equal billing, all proceeds go to an independently audited flood-relief fund, and there is no court endorsement. Solo court shows, private noble banquets and political endorsements stay refused; theatrical language remains.",
+      "cases": [
+        {
+          "case_id": "equal_duet",
+          "scope": "change",
+          "scenario": "Court theater proposes equal billing for Ilan and old troupe member Risa in an independent flood-relief duet, all proceeds audited and no court logos.",
+          "actions": {
+            "A": "Decline all court venues.",
+            "B": "Accept this specific public charity duet.",
+            "C": "Divert all proceeds to the court treasury."
+          },
+          "expected_before": [
+            "A"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "All author-defined conditions satisfied."
+        },
+        {
+          "case_id": "another_town",
+          "scope": "change",
+          "scenario": "In a new town a court-owned venue offers Ilan and Risa equal billing, independently audited flood charity, and no political affiliation.",
+          "actions": {
+            "A": "Accept the charity duet.",
+            "B": "Reject any court-owned venue.",
+            "C": "Turn it into a court loyalty rally."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "A"
+          ],
+          "editor_rationale": "Conditional principle transfers across towns."
+        },
+        {
+          "case_id": "court_solo",
+          "scope": "preserve",
+          "scenario": "A court patron wants Ilan alone as the advertised star, paying handsomely, with the court's emblem on the poster.",
+          "actions": {
+            "A": "Accept solo court event.",
+            "B": "Decline the political solo show.",
+            "C": "Accept with an endorsement speech."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "No troupe equal billing and explicit endorsement."
+        },
+        {
+          "case_id": "private_banquet",
+          "scope": "preserve",
+          "scenario": "Court nobles invite Ilan to a private birthday banquet with troupe musicians but no flood-relief pledge.",
+          "actions": {
+            "A": "Accept the nobles' private banquet.",
+            "B": "Refuse the court private banquet.",
+            "C": "Announce it is an independent public relief concert."
+          },
+          "expected_before": [
+            "B"
+          ],
+          "expected_after": [
+            "B"
+          ],
+          "editor_rationale": "Not a public charity duet."
+        }
+      ]
+    }
+  ]
+}

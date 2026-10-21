@@ -1,0 +1,205 @@
+{
+  "started_utc": "2026-10-21T15:49:06.285003+00:00",
+  "args": {
+    "backend": "hf",
+    "tasks": "workbench/game-npc-agents/results/e03/qwen_stage1_tasks.jsonl",
+    "out": "workbench/game-npc-agents/results/e03/qwen_stage1",
+    "model": "Qwen/Qwen3-8B",
+    "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "max_tokens": 512,
+    "batch_size": 8,
+    "workers": 1
+  },
+  "argv": [
+    "workbench/game-npc-agents/experiments/scope_edit_pilot/run_baseline.py",
+    "--backend",
+    "hf",
+    "--tasks",
+    "workbench/game-npc-agents/results/e03/qwen_stage1_tasks.jsonl",
+    "--out",
+    "workbench/game-npc-agents/results/e03/qwen_stage1",
+    "--model",
+    "Qwen/Qwen3-8B",
+    "--checkpoint",
+    "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "--max-tokens",
+    "512"
+  ],
+  "git_commit": "7f6acd4f119478a74ed7e5a0eb1dd4d0f796b34d",
+  "tasks_sha256": "319faaa4aa071aae31fe33b5bfe726abe76d32861506df633426f32757b0a702",
+  "runner_sha256": "86f93d60fdeea5df8c2ef2be790f255639caf96e09a17d8ce508d418f31d3cd1",
+  "python": "3.12.12 | packaged by conda-forge | (main, Oct 13 2025, 14:34:15) [GCC 14.3.0]",
+  "packages": {
+    "requests": "2.34.2",
+    "transformers": "5.3.0"
+  },
+  "seed": 0,
+  "config": {
+    "temperature": 0,
+    "do_sample": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "enable_thinking": false
+  },
+  "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "torch": "2.9.1+cu129",
+  "cuda": "12.9",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "generation_config": {
+    "max_length": null,
+    "max_new_tokens": null,
+    "min_length": null,
+    "min_new_tokens": null,
+    "early_stopping": null,
+    "max_time": null,
+    "stop_strings": null,
+    "do_sample": true,
+    "num_beams": null,
+    "use_cache": null,
+    "cache_implementation": null,
+    "cache_config": null,
+    "temperature": 0.6,
+    "top_k": 20,
+    "top_p": 0.95,
+    "min_p": null,
+    "top_h": null,
+    "typical_p": null,
+    "epsilon_cutoff": null,
+    "eta_cutoff": null,
+    "repetition_penalty": null,
+    "encoder_repetition_penalty": null,
+    "length_penalty": null,
+    "no_repeat_ngram_size": null,
+    "bad_words_ids": null,
+    "renormalize_logits": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": null,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "sequence_bias": null,
+    "token_healing": null,
+    "guidance_scale": null,
+    "watermarking_config": null,
+    "num_return_sequences": null,
+    "output_attentions": null,
+    "output_hidden_states": null,
+    "output_scores": null,
+    "output_logits": null,
+    "return_dict_in_generate": null,
+    "pad_token_id": 151643,
+    "bos_token_id": 151643,
+    "eos_token_id": [
+      151645,
+      151643
+    ],
+    "encoder_no_repeat_ngram_size": null,
+    "decoder_start_token_id": null,
+    "is_assistant": null,
+    "num_assistant_tokens": null,
+    "num_assistant_tokens_schedule": null,
+    "assistant_confidence_threshold": null,
+    "prompt_lookup_num_tokens": null,
+    "max_matching_ngram_size": null,
+    "assistant_early_exit": null,
+    "assistant_lookbehind": null,
+    "target_lookbehind": null,
+    "compile_config": null,
+    "disable_compile": null,
+    "low_memory": null,
+    "penalty_alpha": null,
+    "dola_layers": null,
+    "diversity_penalty": null,
+    "num_beam_groups": null,
+    "constraints": null,
+    "force_words_ids": null,
+    "prefill_chunk_size": null,
+    "_from_model_config": null,
+    "transformers_version": "5.3.0"
+  },
+  "asset_files": [
+    {
+      "name": ".gitattributes",
+      "size": 1570,
+      "cache_blob": "52373fe24473b1aa44333d318f578ae6bf04b49b"
+    },
+    {
+      "name": "LICENSE",
+      "size": 11343,
+      "cache_blob": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab"
+    },
+    {
+      "name": "README.md",
+      "size": 16660,
+      "cache_blob": "ecc3ebd0849aa08d9484bd911dddfd5261b10d30"
+    },
+    {
+      "name": "config.json",
+      "size": 728,
+      "cache_blob": "d46195ac87f837ad233d02b2f80f148bf7c005e0"
+    },
+    {
+      "name": "generation_config.json",
+      "size": 239,
+      "cache_blob": "20a8a9156fc8c3f25295ca067f61fdf120d517c5"
+    },
+    {
+      "name": "merges.txt",
+      "size": 1671853,
+      "cache_blob": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7"
+    },
+    {
+      "name": "model-00001-of-00005.safetensors",
+      "size": 3996250744,
+      "cache_blob": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
+    },
+    {
+      "name": "model-00002-of-00005.safetensors",
+      "size": 3993160032,
+      "cache_blob": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
+    },
+    {
+      "name": "model-00003-of-00005.safetensors",
+      "size": 3959604768,
+      "cache_blob": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
+    },
+    {
+      "name": "model-00004-of-00005.safetensors",
+      "size": 3187841392,
+      "cache_blob": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
+    },
+    {
+      "name": "model-00005-of-00005.safetensors",
+      "size": 1244659840,
+      "cache_blob": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "size": 32878,
+      "cache_blob": "2b85c00f1b118961cd7a477e2bba0fe197a4ce1a"
+    },
+    {
+      "name": "tokenizer.json",
+      "size": 11422654,
+      "cache_blob": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size": 9732,
+      "cache_blob": "417d038a63fa3de29cfde265caedae14d1a58d92"
+    },
+    {
+      "name": "vocab.json",
+      "size": 2776833,
+      "cache_blob": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    }
+  ],
+  "tokenizer_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+  "config_sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+  "peak_allocated_bytes": 17387266560,
+  "complete": true,
+  "finished_utc": "2026-10-21T15:51:24.262355+00:00",
+  "wall_s": 137.94498775154352
+}

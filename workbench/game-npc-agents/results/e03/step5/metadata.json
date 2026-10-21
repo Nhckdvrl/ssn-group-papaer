@@ -1,0 +1,46 @@
+{
+  "started_utc": "2026-10-21T15:45:15.302409+00:00",
+  "args": {
+    "backend": "step-plan",
+    "tasks": "workbench/game-npc-agents/results/e03/step_tasks.jsonl",
+    "out": "workbench/game-npc-agents/results/e03/step5",
+    "model": "step-5-preview",
+    "checkpoint": null,
+    "max_tokens": 8192,
+    "batch_size": 8,
+    "workers": 2
+  },
+  "argv": [
+    "workbench/game-npc-agents/experiments/scope_edit_pilot/run_baseline.py",
+    "--backend",
+    "step-plan",
+    "--tasks",
+    "workbench/game-npc-agents/results/e03/step_tasks.jsonl",
+    "--out",
+    "workbench/game-npc-agents/results/e03/step5",
+    "--model",
+    "step-5-preview",
+    "--max-tokens",
+    "8192",
+    "--workers",
+    "2"
+  ],
+  "git_commit": "761577c38cf191a5836f30da9cb97bc336f6c20d",
+  "tasks_sha256": "72e27db997c242e76c7e9848936d5cb1b60bec530aecba06b4dd99ca6eb547c6",
+  "runner_sha256": "198c0dc7f9668a253a32fcf567457bd6458d94c48827456858ab51c369d1b5e3",
+  "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+  "packages": {
+    "requests": "2.31.0"
+  },
+  "seed": 0,
+  "config": {
+    "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+    "reasoning_effort": "medium",
+    "temperature": 0,
+    "redirects": false,
+    "cash_fallback": false
+  },
+  "complete": true,
+  "finished_utc": "2026-10-21T15:57:03.678198+00:00",
+  "wall_s": 708.3578920848668
+}

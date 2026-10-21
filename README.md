@@ -63,7 +63,7 @@ agent 执行很快，瓶颈是算力和决策质量，不是日程。所以流�
 | `archive/` | 只读历史 |
 
 ## 当前状态（2026-10-21；正式登记以 workbench 表为准）
-- **ACTIVE-MAIN：** [`game-npc-agents`](workbench/game-npc-agents/README.md)（2026-10-21 用户确认在原工作台内开启 Role-playing 研究驻留；四中心与 A–H 候选开放；I01已完成E01/E02首次真实模型与普通控制，见工作台结果报告）。
+- **ACTIVE-MAIN：** [`game-npc-agents`](workbench/game-npc-agents/README.md)（2026-10-21 用户确认在原工作台内开启 Role-playing 研究驻留；2026-10-22用户暂停B/I01，优先矿区D动态角色演化，C/NCP-Bench备选；在既有工作台开展公开资产与强基线驻留）。
 - **ACTIVE-EXPLORE：** [`in-context-evidence-structure`](workbench/in-context-evidence-structure/README.md)，保持原状态。
 - **历史矿区：** `game-npc-agents/mine-a-persona-strategy` 继续 CLOSED／TERMINATED；同工作台 B–E 为知识/问题矿区，不自动恢复其独立实验。其他历史关闭/已删 workbench 状态不变.
 - **其他 PROPOSED / 关闭与历史条目：** 以 [workbench 登记表](workbench/README.md) 为准；本次无其他状态变更。
