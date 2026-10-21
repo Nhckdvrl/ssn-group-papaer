@@ -37,7 +37,7 @@
 
 ## 4. 尚未建立的证据
 
-- **0 个本线已运行实验；0 条实验支持的角色新机制主张。**
+- **已完成E01首次三家族基线与E02同信息普通控制；0条已验证新机制主张。**
 - 尚未确定某一个 A–H 研究切口是最优；还没有本线新的人类玩家/作者数据、训练集或复现曲线。
 - B–E 的已有知识库可提供历史事实与警示，但不能凭其文献数量宣称强基线已经复现。
 - 具体实验条件、首批模型与研究问题的取舍，要在定位和人审时独立确定；不得从本文直接自动执行。
@@ -84,3 +84,11 @@ Bayesian concept learning / probabilistic program induction 早已研究从少�
 - [ProbabilityBench（2026-10-12 预印本）](https://arxiv.org/abs/2610.17016) 展示了完整生成机制如何提供可计算的合成概率真值，同时必须证明文本渲染保留其概率语义。可借鉴这种**true by construction 的受控真值**思想，但不代表我们的人物故事已经拥有可计算的真实作者意图分布。
 - 本仓库 I01 首批 `S*` 已作为开发者规则预设，因此**合成规则动作一致率合法且分母不为零**。同一单场景批注未必足以唯一识别 `S*`，所以将未猜中 `S*` 直接称为因果归纳失败会高估模型应有的信息。
 - 人生经历双先验 P_A/P_B 主要用于研究归纳偏好与泛化作用域，不是预注册的唯一动作 oracle；若在背景直接明确触发规则，会重新落入 instruction-following/NLI 基线。
+
+## 10. 首次真实baseline之后的位置（2026-10-21）
+
+[实测报告](results/e01/REPORT.md)：三家族完整规则动作均可解决；Qwen同信息完整卡重写15/20→18/20，但一条必要迁移损失。当前**compression risk更具体**：若只是显式规则执行，普通Prompt已足够；若只是卡更新，需要正面对标CDT/普通条件规则归纳；若只是问作者澄清，既有clarification方法已经占据该claim。尚无训练或内部干预，不声称超过Persona Hierarchy Model的机制或PPR。
+
+本次运行`venue_corpus/query.py nearest "role playing character behavior editing scope situated creative feedback" -k 8`；近邻包括CharacterBox、Codifying Character Logic in Role-Playing、Neeko、CRPO、Thinking in Character（仅作定位，无自动判决）。核查CDT官方ACL页与Persona Hierarchy arXiv摘要/版本；未重新全文复现。awesome-role-playing与DailyArXiv镜像也检索过，最新发现的[Human Interventions as Labels](https://arxiv.org/abs/2610.21708)已涉及用人工干预定位/修改agent失败的计算，不能把“纠偏信号指导内部修改”本身当新颖性；[摘要级论文卡](knowledge/papers/HUMAN_INTERVENTIONS_AS_LABELS_2026.md)明确其非角色创作设定与未读范围。
+
+可继续检验的增量是**具有作者证据的旧人物原则与新例外如何整合，并保持正确的行动及外显表达**，而非已证明全新形式化理论。先验反事实、少量边界纠偏和强普通规则系统都应先配平信息，避免把隐藏oracle奖励当真正作者意图。C01/C02保持L0，未改变I01或workbench状态。

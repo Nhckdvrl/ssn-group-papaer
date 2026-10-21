@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """E01 descriptive analysis. Preserve strict scores; separately accept a lone JSON fence."""
 import argparse
+import gzip
 import itertools
 import json
 import re
@@ -8,6 +9,14 @@ from collections import Counter
 from pathlib import Path
 import scope_probe as p
 import v11_probe as v
+
+
+def read_responses(run):
+    path = Path(run) / 'responses.jsonl'
+    if path.exists():
+        return p.read_jsonl(path)
+    with gzip.open(str(path) + '.gz', 'rt', encoding='utf-8') as f:
+        return [json.loads(line) for line in f if line.strip()]
 
 
 def normalized_reply(raw):
@@ -46,13 +55,13 @@ def analyze(tasks, responses):
             strict_valid_action=strict['synthetic_oracle_by_mode'][mode]['n_valid_action'],
             strict_oracle_match=strict['synthetic_oracle_by_mode'][mode]['n_action_oracle_match'],
             by_story=by_story, descriptive_story_bootstrap95=interval(by_story.values()),
-            pressure=dict(n_pairs=len(pressure),action_flips=sum(r['action_changed'] is True for r in pressure),
+            pressure=dict(n_pairs=len(pressure),n_both_valid=sum(r['both_valid'] for r in pressure),action_flips=sum(r['action_changed'] is True for r in pressure),
                           base_matches=sum(r['base_oracle_match'] for r in pressure),
                           pressure_matches=sum(r['pressure_oracle_match'] for r in pressure)),
             original_conditioned={scope:dict(
                 eligible=sum(r['reference_before_correct'] for r in pairs if r['scope']==scope),
                 after_match=sum(r['paired_correct'] for r in pairs if r['scope']==scope),
-                observed_changes=sum(r['observed_action_changed'] for r in pairs if r['scope']==scope))
+                observed_changes_all=sum(r['observed_action_changed'] for r in pairs if r['scope']==scope))
                 for scope in ['change','preserve']})
         for scope in ['change','preserve']:
             bucket=[r for r in block if r['scope']==scope]
@@ -75,12 +84,23 @@ def analyze(tasks, responses):
 
 
 def main():
-    a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--run',required=True)
+    a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--run',required=True);a.add_argument('--recovery')
     args=a.parse_args();run=Path(args.run)
-    result,normalized=analyze(p.read_jsonl(args.tasks),p.read_jsonl(run/'responses.jsonl'))
-    (run/'analysis.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    responses=read_responses(run)
+    suffix=''
+    if args.recovery:
+        recovery=read_responses(args.recovery)
+        eligible={r['task_id'] for r in responses if r.get('finish_reason')=='length'}
+        assert {r['task_id'] for r in recovery}==eligible, 'Recover every truncation, and no completed answer'
+        replacement={r['task_id']:r for r in recovery}
+        responses=[replacement.get(r['task_id'],r) for r in responses]
+        suffix='_with_recovery'
+    result,normalized=analyze(p.read_jsonl(args.tasks),responses)
+    if args.recovery:
+        result['recovery']={'directory':args.recovery,'extra_requests':len(recovery),'replaced_ids':sorted(eligible),'selection':'finish_reason=length only; initial run retained separately'}
+    (run/('analysis'+suffix+'.json')).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     # Compact text plus audit flags; full transport/generation provenance stays in responses.
-    p.write_jsonl(run/'outputs.jsonl',[{k:r.get(k) for k in
+    p.write_jsonl(run/('outputs'+suffix+'.jsonl'),[{k:r.get(k) for k in
         ['task_id','raw','action_id','utterance','finish_reason','usage','error']} for r in normalized])
     print(json.dumps({k:result[k] for k in ['n_responses','n_stories','modes','explicit_minus_situated','usage','finish_reasons']},ensure_ascii=False,indent=2))
 

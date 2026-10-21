@@ -1,0 +1,200 @@
+{
+  "started_utc": "2026-10-21T15:09:37.587851+00:00",
+  "args": {
+    "backend": "hf",
+    "tasks": "workbench/game-npc-agents/results/e01/tasks.jsonl",
+    "out": "workbench/game-npc-agents/results/e01/llama31_8b",
+    "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+    "checkpoint": "/home/xiang/.cache/huggingface/hub/models--NousResearch--Meta-Llama-3.1-8B-Instruct/snapshots/d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+    "max_tokens": 512,
+    "batch_size": 8
+  },
+  "argv": [
+    "workbench/game-npc-agents/experiments/scope_edit_pilot/run_baseline.py",
+    "--backend",
+    "hf",
+    "--tasks",
+    "workbench/game-npc-agents/results/e01/tasks.jsonl",
+    "--out",
+    "workbench/game-npc-agents/results/e01/llama31_8b",
+    "--model",
+    "NousResearch/Meta-Llama-3.1-8B-Instruct",
+    "--checkpoint",
+    "/home/xiang/.cache/huggingface/hub/models--NousResearch--Meta-Llama-3.1-8B-Instruct/snapshots/d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+    "--max-tokens",
+    "512"
+  ],
+  "git_commit": "cc9d6c3d26d93bd9c877d2aac484e000f2c0e001",
+  "tasks_sha256": "361811dda59f63d14d187383fbfd60eb41a75f13cc4d95a9a46a9b5d4d815187",
+  "runner_sha256": "4bf03934d166f28394b9decee3779f80afcd6fe8d10b0d669a939c3a98abc994",
+  "python": "3.12.12 | packaged by conda-forge | (main, Oct 13 2025, 14:34:15) [GCC 14.3.0]",
+  "packages": {
+    "requests": "2.34.2",
+    "transformers": "5.3.0"
+  },
+  "seed": 0,
+  "config": {
+    "temperature": 0,
+    "do_sample": false,
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "enable_thinking": false
+  },
+  "checkpoint": "/home/xiang/.cache/huggingface/hub/models--NousResearch--Meta-Llama-3.1-8B-Instruct/snapshots/d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+  "revision": "d10aef7999a2b5ba950ab3974312feeedbfe0b77",
+  "torch": "2.9.1+cu129",
+  "cuda": "12.9",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "generation_config": {
+    "max_length": null,
+    "max_new_tokens": null,
+    "min_length": null,
+    "min_new_tokens": null,
+    "early_stopping": null,
+    "max_time": null,
+    "stop_strings": null,
+    "do_sample": true,
+    "num_beams": null,
+    "use_cache": null,
+    "cache_implementation": null,
+    "cache_config": null,
+    "temperature": 0.6,
+    "top_k": null,
+    "top_p": 0.9,
+    "min_p": null,
+    "top_h": null,
+    "typical_p": null,
+    "epsilon_cutoff": null,
+    "eta_cutoff": null,
+    "repetition_penalty": null,
+    "encoder_repetition_penalty": null,
+    "length_penalty": null,
+    "no_repeat_ngram_size": null,
+    "bad_words_ids": null,
+    "renormalize_logits": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": null,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "sequence_bias": null,
+    "token_healing": null,
+    "guidance_scale": null,
+    "watermarking_config": null,
+    "num_return_sequences": null,
+    "output_attentions": null,
+    "output_hidden_states": null,
+    "output_scores": null,
+    "output_logits": null,
+    "return_dict_in_generate": null,
+    "pad_token_id": null,
+    "bos_token_id": 128000,
+    "eos_token_id": [
+      128001,
+      128008,
+      128009
+    ],
+    "encoder_no_repeat_ngram_size": null,
+    "decoder_start_token_id": null,
+    "is_assistant": null,
+    "num_assistant_tokens": null,
+    "num_assistant_tokens_schedule": null,
+    "assistant_confidence_threshold": null,
+    "prompt_lookup_num_tokens": null,
+    "max_matching_ngram_size": null,
+    "assistant_early_exit": null,
+    "assistant_lookbehind": null,
+    "target_lookbehind": null,
+    "compile_config": null,
+    "disable_compile": null,
+    "low_memory": null,
+    "penalty_alpha": null,
+    "dola_layers": null,
+    "diversity_penalty": null,
+    "num_beam_groups": null,
+    "constraints": null,
+    "force_words_ids": null,
+    "prefill_chunk_size": null,
+    "_from_model_config": null,
+    "transformers_version": "5.3.0"
+  },
+  "asset_files": [
+    {
+      "name": ".gitattributes",
+      "size": 1519,
+      "cache_blob": "a6344aac8c09253b3b630fb776ae94478aa0275b"
+    },
+    {
+      "name": "LICENSE",
+      "size": 7627,
+      "cache_blob": "a7c3ca16cee30425ed6ad841a809590f2bcbf290"
+    },
+    {
+      "name": "README.md",
+      "size": 41844,
+      "cache_blob": "71ce2f59177b48e3da2ac1b559393f4fcd9b3ea1"
+    },
+    {
+      "name": "USE_POLICY.md",
+      "size": 4691,
+      "cache_blob": "81ebb55902285e8dd5804ccf423d17ffb2a622ee"
+    },
+    {
+      "name": "config.json",
+      "size": 855,
+      "cache_blob": "0bb6fd75b3ad2fe988565929f329945262c2814e"
+    },
+    {
+      "name": "generation_config.json",
+      "size": 184,
+      "cache_blob": "cc7276afd599de091142c6ed3005faf8a74aa257"
+    },
+    {
+      "name": "model-00001-of-00004.safetensors",
+      "size": 4976698672,
+      "cache_blob": "2b1879f356aed350030bb40eb45ad362c89d9891096f79a3ab323d3ba5607668"
+    },
+    {
+      "name": "model-00002-of-00004.safetensors",
+      "size": 4999802720,
+      "cache_blob": "09d433f650646834a83c580877bd60c6d1f88f7755305c12576b5c7058f9af15"
+    },
+    {
+      "name": "model-00003-of-00004.safetensors",
+      "size": 4915916176,
+      "cache_blob": "fc1cdddd6bfa91128d6e94ee73d0ce62bfcdb7af29e978ddcab30c66ae9ea7fa"
+    },
+    {
+      "name": "model-00004-of-00004.safetensors",
+      "size": 1168138808,
+      "cache_blob": "92ecfe1a2414458b4821ac8c13cf8cb70aed66b5eea8dc5ad9eeb4ff309d6d7b"
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "size": 23950,
+      "cache_blob": "0fd8120f1c6acddc268ebc2583058efaf699a771"
+    },
+    {
+      "name": "special_tokens_map.json",
+      "size": 296,
+      "cache_blob": "02ee80b6196926a5ad790a004d9efd6ab1ba6542"
+    },
+    {
+      "name": "tokenizer.json",
+      "size": 9085657,
+      "cache_blob": "5cc5f00a5b203e90a27a3bd60d1ec393b07971e8"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size": 50870,
+      "cache_blob": "421cda369d1e01e742b01d82e3a39c7cc82a8586"
+    }
+  ],
+  "tokenizer_template_sha256": "b48c47f6443892716176eb200bf4ef108f64e06ca26ed0fa8ebc0a4b3992fcb2",
+  "config_sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e",
+  "peak_allocated_bytes": 16763051008,
+  "complete": true,
+  "finished_utc": "2026-10-21T15:13:10.790190+00:00",
+  "wall_s": 213.17646276578307
+}

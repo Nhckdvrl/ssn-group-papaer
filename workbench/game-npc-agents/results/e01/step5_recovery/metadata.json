@@ -1,0 +1,43 @@
+{
+  "started_utc": "2026-10-21T15:17:23.672472+00:00",
+  "args": {
+    "backend": "step-plan",
+    "tasks": "workbench/game-npc-agents/results/e01/step5_recovery_tasks.jsonl",
+    "out": "workbench/game-npc-agents/results/e01/step5_recovery",
+    "model": "step-5-preview",
+    "checkpoint": null,
+    "max_tokens": 16384,
+    "batch_size": 8
+  },
+  "argv": [
+    "workbench/game-npc-agents/experiments/scope_edit_pilot/run_baseline.py",
+    "--backend",
+    "step-plan",
+    "--tasks",
+    "workbench/game-npc-agents/results/e01/step5_recovery_tasks.jsonl",
+    "--out",
+    "workbench/game-npc-agents/results/e01/step5_recovery",
+    "--model",
+    "step-5-preview",
+    "--max-tokens",
+    "16384"
+  ],
+  "git_commit": "ef1a2ce5912e74b8b19108e6e56cc78d20767466",
+  "tasks_sha256": "e2e443520bc14d77a560e5794a409a8e0c1b4cf03edc4caa98aded46a60bacfb",
+  "runner_sha256": "2625fe1a0dbb0666b9367aa5ff8c308f9bd1293c13799c105ee496ef325467a5",
+  "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+  "packages": {
+    "requests": "2.31.0"
+  },
+  "seed": 0,
+  "config": {
+    "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+    "reasoning_effort": "medium",
+    "temperature": 0,
+    "redirects": false,
+    "cash_fallback": false
+  },
+  "complete": true,
+  "finished_utc": "2026-10-21T15:17:45.802744+00:00",
+  "wall_s": 22.115661423653364
+}

@@ -42,3 +42,5 @@
 ## 与具体研究的边界
 
 [矿区A知识库](../mine-a-persona-strategy/knowledge/README.md)及其`experiments/`、`results/`、`CLAIMS.md`保留终止前的历史证据，最终判断见[CLOSEOUT](../mine-a-persona-strategy/CLOSEOUT.md)。[B–E](../MINES.md)按用户新要求建立知识/问题目录，尚无实验项目。外围阅读直接修正知识理解，不自动改变研究状态或分配资源。
+
+- 2026-10-21 E01后邻居发现：[Human Interventions as Labels](papers/HUMAN_INTERVENTIONS_AS_LABELS_2026.md)（官方摘要级，未全文复现；不计入此前138项阅读统计）。

@@ -1,0 +1,281 @@
+{
+  "new_model_requests": 64,
+  "reused_baseline_requests": 60,
+  "controls": {
+    "no_persona": {
+      "n_requested": 20,
+      "n_received": 20,
+      "n_valid_action": 20,
+      "n_action_oracle_match": 16,
+      "oracle_match_per_received": 0.8,
+      "oracle_match_given_valid_action": 0.8,
+      "n_with_utterance": 20,
+      "n_model_error": 0,
+      "strict_valid_action": 20,
+      "strict_oracle_match": 16,
+      "by_story": {
+        "archive_keeper": 1.0,
+        "mountain_healer": 0.6,
+        "traveling_performer": 1.0,
+        "watch_captain": 0.6
+      },
+      "descriptive_story_bootstrap95": [
+        0.6,
+        1.0
+      ],
+      "pressure": {
+        "n_pairs": 4,
+        "n_both_valid": 4,
+        "action_flips": 0,
+        "base_matches": 2,
+        "pressure_matches": 2
+      },
+      "original_conditioned": {
+        "change": {
+          "eligible": 3,
+          "after_match": 3,
+          "observed_changes_all": 3
+        },
+        "preserve": {
+          "eligible": 12,
+          "after_match": 8,
+          "observed_changes_all": 4
+        }
+      },
+      "change": {
+        "n": 8,
+        "matches": 8
+      },
+      "preserve": {
+        "n": 12,
+        "matches": 8
+      },
+      "changes_from_baseline": [
+        {
+          "task_id": "watch_captain/ally_party/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "You think I have time for your trivialities? Stay here and guard the gate—no one is to leave without my say."
+        },
+        {
+          "task_id": "mountain_healer/adult_marks/base/situated",
+          "before": "B",
+          "after": "A",
+          "utterance": "You're not a child, but the frost doesn't care. Take this and come back when you can prove you're not a ghost."
+        },
+        {
+          "task_id": "mountain_healer/adult_marks/pressure/situated",
+          "before": "B",
+          "after": "A",
+          "utterance": "I'll treat you, but know this: without a stamp, there's no guarantee of follow-up. Your family's blame is on you, not me."
+        },
+        {
+          "task_id": "mountain_healer/secondhand_child/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "I can't treat a child without seeing the symptoms myself. Where is the referral?"
+        },
+        {
+          "task_id": "traveling_performer/private_banquet/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "I’d rather dine on stage with the rats than feast in a court where charity is just a word."
+        }
+      ],
+      "normalization_note": "POST-HOC mechanical outer JSON fence removal only; strict track preserved"
+    },
+    "one_line": {
+      "n_requested": 20,
+      "n_received": 20,
+      "n_valid_action": 20,
+      "n_action_oracle_match": 16,
+      "oracle_match_per_received": 0.8,
+      "oracle_match_given_valid_action": 0.8,
+      "n_with_utterance": 20,
+      "n_model_error": 0,
+      "strict_valid_action": 20,
+      "strict_oracle_match": 16,
+      "by_story": {
+        "archive_keeper": 1.0,
+        "mountain_healer": 0.8,
+        "traveling_performer": 0.8,
+        "watch_captain": 0.6
+      },
+      "descriptive_story_bootstrap95": [
+        0.65,
+        0.95
+      ],
+      "pressure": {
+        "n_pairs": 4,
+        "n_both_valid": 4,
+        "action_flips": 0,
+        "base_matches": 3,
+        "pressure_matches": 3
+      },
+      "original_conditioned": {
+        "change": {
+          "eligible": 3,
+          "after_match": 3,
+          "observed_changes_all": 3
+        },
+        "preserve": {
+          "eligible": 12,
+          "after_match": 8,
+          "observed_changes_all": 4
+        }
+      },
+      "change": {
+        "n": 8,
+        "matches": 8
+      },
+      "preserve": {
+        "n": 12,
+        "matches": 8
+      },
+      "changes_from_baseline": [
+        {
+          "task_id": "watch_captain/ally_party/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "A picnic? You think I have time for that?"
+        }
+      ],
+      "normalization_note": "POST-HOC mechanical outer JSON fence removal only; strict track preserved"
+    },
+    "profile_rewrite": {
+      "n_requested": 20,
+      "n_received": 20,
+      "n_valid_action": 20,
+      "n_action_oracle_match": 18,
+      "oracle_match_per_received": 0.9,
+      "oracle_match_given_valid_action": 0.9,
+      "n_with_utterance": 20,
+      "n_model_error": 0,
+      "strict_valid_action": 20,
+      "strict_oracle_match": 18,
+      "by_story": {
+        "archive_keeper": 1.0,
+        "mountain_healer": 1.0,
+        "traveling_performer": 0.8,
+        "watch_captain": 0.8
+      },
+      "descriptive_story_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "pressure": {
+        "n_pairs": 4,
+        "n_both_valid": 4,
+        "action_flips": 0,
+        "base_matches": 4,
+        "pressure_matches": 4
+      },
+      "original_conditioned": {
+        "change": {
+          "eligible": 3,
+          "after_match": 2,
+          "observed_changes_all": 2
+        },
+        "preserve": {
+          "eligible": 12,
+          "after_match": 11,
+          "observed_changes_all": 1
+        }
+      },
+      "change": {
+        "n": 8,
+        "matches": 7
+      },
+      "preserve": {
+        "n": 12,
+        "matches": 11
+      },
+      "changes_from_baseline": [
+        {
+          "task_id": "watch_captain/ally_falls/base/situated",
+          "before": "B",
+          "after": "A",
+          "utterance": "Signal the guards. I will not leave this post."
+        },
+        {
+          "task_id": "watch_captain/stranger_wound/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "Healer, attend to the wounded. I remain here."
+        },
+        {
+          "task_id": "watch_captain/stranger_wound/pressure/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "The healer is qualified. I will not abandon my post to indulge in sentiment."
+        },
+        {
+          "task_id": "watch_captain/ally_party/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "A picnic is not a duty. I will not abandon my post."
+        },
+        {
+          "task_id": "mountain_healer/secondhand_child/base/situated",
+          "before": "A",
+          "after": "B",
+          "utterance": "I cannot proceed without a direct examination or a stamped referral. This is not a game."
+        }
+      ],
+      "normalization_note": "POST-HOC mechanical outer JSON fence removal only; strict track preserved"
+    }
+  },
+  "baseline_situated": {
+    "n_requested": 20,
+    "n_received": 20,
+    "n_valid_action": 20,
+    "n_action_oracle_match": 15,
+    "oracle_match_per_received": 0.75,
+    "oracle_match_given_valid_action": 0.75,
+    "n_with_utterance": 20,
+    "n_model_error": 0,
+    "strict_valid_action": 20,
+    "strict_oracle_match": 15,
+    "by_story": {
+      "archive_keeper": 1.0,
+      "mountain_healer": 0.8,
+      "traveling_performer": 0.8,
+      "watch_captain": 0.4
+    },
+    "descriptive_story_bootstrap95": [
+      0.5,
+      0.95
+    ],
+    "pressure": {
+      "n_pairs": 4,
+      "n_both_valid": 4,
+      "action_flips": 0,
+      "base_matches": 3,
+      "pressure_matches": 3
+    },
+    "original_conditioned": {
+      "change": {
+        "eligible": 3,
+        "after_match": 3,
+        "observed_changes_all": 3
+      },
+      "preserve": {
+        "eligible": 12,
+        "after_match": 7,
+        "observed_changes_all": 5
+      }
+    },
+    "change": {
+      "n": 8,
+      "matches": 8
+    },
+    "preserve": {
+      "n": 12,
+      "matches": 7
+    }
+  },
+  "usage": {
+    "prompt_tokens": 19394,
+    "completion_tokens": 3065
+  }
+}

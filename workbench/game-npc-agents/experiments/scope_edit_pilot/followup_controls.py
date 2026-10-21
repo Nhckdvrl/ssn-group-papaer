@@ -3,7 +3,7 @@
 import argparse,copy,json,re
 from pathlib import Path
 import scope_probe as p
-from analyze_baseline import normalized_reply, analyze
+from analyze_baseline import normalized_reply, analyze, read_responses
 
 ONE_LINE = ('Treat the rehearsal correction as an exception to the existing character: '
             'generalize only where the relevant circumstances are supported, and retain '
@@ -32,7 +32,7 @@ def prepare(e01,out):
 
 
 def apply_rewrites(e01,out):
-    tasks=p.read_jsonl(e01/'tasks.jsonl');rows=p.read_jsonl(out/'stage1'/'responses.jsonl')
+    tasks=p.read_jsonl(e01/'tasks.jsonl');rows=read_responses(out/'stage1')
     cards={}
     for r in rows:
         if not r['task_id'].startswith('rewrite/'):continue
@@ -55,8 +55,8 @@ def apply_rewrites(e01,out):
 
 def summarize(e01,out):
     tasks=p.read_jsonl(e01/'tasks.jsonl')
-    baseline=p.read_jsonl(e01/'qwen3_8b'/'responses.jsonl')
-    responses=p.read_jsonl(out/'stage1'/'responses.jsonl')+p.read_jsonl(out/'stage2'/'responses.jsonl')
+    baseline=read_responses(e01/'qwen3_8b')
+    responses=read_responses(out/'stage1')+read_responses(out/'stage2')
     result={'new_model_requests':len(responses),'reused_baseline_requests':60,'controls':{}}
     base,_=analyze(tasks,baseline)
     result['baseline_situated']=base['modes']['situated']

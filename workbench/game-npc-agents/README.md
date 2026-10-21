@@ -1,8 +1,16 @@
 # Game NPC Agents：领域工作台
 
-**状态：ACTIVE-MAIN（2026-10-21 用户授权在本目录继续开展 Role-playing Agent 研究）。** 四中心及 A–H 问题已登记；**第一条具体研究焦点已选择 I01（Scope-Aware Character Editing）**，处于 SEED 与测量准备阶段，尚未确定新算法或论文最终主旨；**没有新模型实验和已证实主张**。历史矿区 A 保持 **CLOSED／TERMINATED**，旧实验不恢复。原有 B–E 仍为知识/问题矿区，未自动启动其独立实验。
+**状态：ACTIVE-MAIN（2026-10-21用户授权）。** 当前焦点I01 Scope-Aware Character Editing仍为SEED；已完成E01首次真实模型及E02普通控制，共245次模型调用、4个开发者故事。仅C01/C02两条L0观测，未确定新算法或论文机制。历史矿区A保持CLOSED／TERMINATED，未执行、未修改。
 
 本工作台维护游戏NPC的行为控制、人物表现、人机互动、叙事、社会、玩家体验、作者工具与运行部署知识。先理解不同角色在游戏中承担什么功能，再比较方法、证据和仍然存在的问题。具体研究项目各自保留进展与主张，外围知识库按整个领域组织。
+
+## 最新实测（2026-10-21）
+
+- **E01：** Qwen3-8B、Llama-3.1-8B-Instruct、Step5各60请求，Step另1次截断恢复。Original / Situated / Explicit合成规则一致分别为 **75/75/100%、60/90/100%、90/85/95%（预算恢复后100%）**。Step只用Token Plan入口；严格格式与围栏恢复另报。
+- **E02：** 64次Qwen调用；Situated原15/20，一句提示16/20，去原卡16/20，完整卡重写18/20；重写Preserve 7/12→11/12，但Change 8/8→7/8。
+- **科研判断：** 完整规则动作执行已足够好；仍欠确定的作者边界不能判能力失败。优先核查旧规则与新例外如何整合，以及动作—台词联合约束；不提前训练RL。Decision-identifiable Accuracy分母0，四故事不能作245独立样本。
+- **证据入口：** [E01完整报告](results/e01/REPORT.md) · [E02报告](results/e02/REPORT.md) · [全量台词](results/e01/CASEBOOK.md) · [CLAIMS](CLAIMS.md) · [PAIN_LOG](PAIN_LOG.md)。
+- **资产位置：** `results/e01/`、`results/e02/`存任务/配置/评分及无损压缩raw（245条合计约110KB）；[哈希索引](results/raw_manifest.json)。本地解压raw同目录git-ignore；权重在`/home/xiang/.cache/huggingface/hub/models--*/snapshots/<revision>`，不入Git。版本与复算见[工具说明](experiments/scope_edit_pilot/README.md)。
 
 ## 领域入口
 
@@ -33,7 +41,7 @@
 
 **历史隔离：** [矿区 A 的终止结论](mine-a-persona-strategy/CLOSEOUT.md)与旧 C01–C06/E01–E85 全部保留原位，不继承为本研究证据；B–E 的知识与论文卡继续复用，不复制第二套。新研究没有自动承继旧研究的算力、API 或外部资源授权。
 
-## 首个具体研究焦点（2026-10-21）
+## 首个具体研究焦点（2026-10-21运行前历史；最新结果见上节）
 
 经用户授权从开放议程中选一条直接开始，当前选择 **B：Scope-Aware Character Editing（角色行为修订的语义作用范围）** 为第一条研究 idea [I01](ideas/I01-scope-aware-character-editing.md)。对照基线与定位见 [E01](experiments/E01-scope-aware-character-edit-baseline-gate.md) · [PAPER_SHAPE 草稿](PAPER_SHAPE.md)。已建立最小 [scope_edit_pilot](experiments/scope_edit_pilot/README.md) 评分骨架，当前仅有本地协议自检，**没有任何模型/玩家实验结果**。
 
