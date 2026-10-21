@@ -53,3 +53,13 @@
 可辨认的增量必须是 **作者意图在人际关系、条件行为、叙事动作与语言表现之间的语义作用范围**，与一般事实编辑及 Prompt 上下文范围不同；具体困难存在与否待强普通基线与真实创作材料确认。[ORIBA](https://arxiv.org/abs/2512.12630) 有作者试演修改的人类需求证据，[CDT](https://aclanthology.org/2026.acl-long.568/) 是不可忽略的条件逻辑近邻。
 
 初始 [scope_edit_pilot](experiments/scope_edit_pilot/README.md) 的四个人造角色、16 受控情境只能验证程序；明显存在显式条件阅读理解的天花板，**不是已建立的 Role-playing 能力缺陷**。
+
+## 6. E01 v1.1 近邻实质审查补充（2026-10-21）
+
+1. **CDT 不等于狭义手工规则树。** [正式 ACL 2026 论文](https://aclanthology.org/2026.acl-long.568/) 已通过故事场景/行动数据归纳、验证、逐层细化人物规则，并允许更新；作者仓库已有构建/评价实现。它是否会出现 Action–Style 耦合，只能通过同等输入与实际表现检验，不可先验断言。
+2. **The Persona Hierarchy Model 不是作者 RPG 人物属性节点结构。** [2026-10-07 预印本](https://arxiv.org/abs/2610.09384) 研究特定 system prompt 下的**微调行为**向其它 Persona context 的局部/全局传播与 PPR，不能说它只测静态属性问答；也不能直接从其结论推出角色创作中的语义编辑范围。
+3. **[Test-Time-Matching](https://arxiv.org/abs/2507.16799)** 已将人格、记忆与语言风格组织为独立测试时要素；「将 Action 和 Style 分开」作为设计常识而非新贡献。
+4. **[Behavior Editing](https://arxiv.org/abs/2506.20606)** 与 **[Personalization Editing](https://arxiv.org/abs/2512.13676)** 已分别讨论 agent 行为和用户偏好的编辑/局部性；仅借用 ROME/MEMIT/IKE 的 efficacy/generalization/locality 并改为 role play 不足以立项。
+5. **ORIBA 的证据边界：** [原文](https://arxiv.org/html/2512.12630) 中 14 位艺术家、其中 8 位在研究期间修改了 OC 配置；并没有对「仅凭单次 in-situ critique 推断潜在行为规则」提供系统性泛化检验。
+
+**修订后的增量问题：** 从一幕创作反馈中恢复**不完整、可能多解的作者意图**，区分哪类行为变化受反馈支持、哪类必须澄清；仅在语义证据足够时检验跨人物/剧情动作的正确泛化与表达保持。它比「风格/行为完全分开」更明确，也比「隐藏金标的 if–then 文本分类」更不易制造伪失败。详见 [I01](ideas/I01-scope-aware-character-editing.md) 与 [E01](experiments/E01-scope-aware-character-edit-baseline-gate.md)。

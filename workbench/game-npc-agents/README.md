@@ -39,6 +39,8 @@
 
 问题是：作者修改角色的一项行为原则，哪些陌生场景中的**选择**应该改变，哪些社会关系、行为及语气应该保持？作者意图的变化可能是例外、条件原则或人物整体重塑；不能预设所有编辑必须局部。**其他 A–H 仍在 RESEARCH_AGENDA 内开放，不代表已经开八个项目。**
 
+**I01 近邻审查后更新（2026-10-21）：** 首个焦点进一步改为 **Learning the Scope of Character Revisions from Situated Creative Feedback**。区分作者已明确概括的原则与仅针对一次试演的现场批注；后者可能无法唯一决定相关情境与通道边界，允许澄清，而不是强迫猜测隐藏规则。见 [I01](ideas/I01-scope-aware-character-editing.md)、[E01 v1.1](experiments/E01-scope-aware-character-edit-baseline-gate.md) 与 [研究评测 V1.1](experiments/scope_edit_pilot/README.md)。仍未运行新模型实验。
+
 ## 新矿区
 
 先读[四矿区总图与当前选题判断](MINES.md)，再进入对应研究地图和近邻定位。
