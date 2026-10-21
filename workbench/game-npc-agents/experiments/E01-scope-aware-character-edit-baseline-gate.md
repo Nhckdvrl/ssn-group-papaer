@@ -85,3 +85,20 @@ E01 仍 PLANNED：目前没有真实 LLM baseline 数据，没有本线 C##，�
 **双先验 P_A/P_B 是下一项研究假说，不是本轮答案金标。** 个人恩情 vs 职业创伤让角色偏向不同泛化，但不逻辑保证第三队友获救/被拒。若为了保证唯一而在背景写入完整条件规则，则又退化为显式阅读理解。真正对比需区分：先验造成的倾向、背景提供的事实以及作者纠偏对旧先验的覆盖。
 
 **E01 Smoke 判读标准**：先看每个模式的 n_received/n_valid_action、synthetic oracle match、对应 case 的前后编辑情况及 `pressure_pairs`；抽查 `utterance` 时只作人工描述性观察，不写自动 Style Bleed。四个独立故事无法提供稳定总体置信区间。需使用当期正常可用的强模型和适当本地开源底座，记录实际型号/版本/think 配置、token 截断与成本，不假设旧旗舰的 2026 上限性能。
+
+## 首次真实运行登记（2026-10-21，任何模型输出产生前）
+
+- **对应**：I01；用户本会话明确授权本地开源推理和 Step5 Token Plan，禁止现金 API。仅新线 E01，不执行旧矿区 A。
+- **输入冻结**：从 `4e22df2f` 的 V1.1 renderer 生成原 60 条；不改人物、情境、动作顺序、提示或金标。既有 17 项单测通过。只把 `messages` 发给模型。
+- **顺序与配置**：先 Qwen/Qwen3-8B（本地 revision `b968826d9c46dd6066d109eabc6255188de91218`），BF16、SDPA、greedy、`enable_thinking=false`、seed=0、max_new_tokens=512、batch=8、空闲 GPU 0；随后 Step `step-5-preview`（服务端 alias、实际返回型号/版本记录原响应），temperature=0、reasoning_effort=medium、max_tokens=4096、并发=1。第二开源家族可用 NousResearch/Meta-Llama-3.1-8B-Instruct，本地 revision `d10aef7999a2b5ba950ab3974312feeedbfe0b77`，相同 greedy/BF16/512 配置。三者不视为等能力或等推理预算。
+- **资源上限**：首轮每模型 60 条、最多 180 条任务；本地预计合计 <1 GPU·h；Step 输出上限 245,760 tokens（实际 usage 单列），固定套餐端点，不回退现金接口，不绕过额度。请求错误/截断完整保留，不挑种子、不按分数重采样。故障修复重跑另存并说明。
+- **读数/阳性对照**：沿用 V1.3 双轨评分；汇总每模式 20 条、Change 8 / Preserve 12、4 pressure/base 对、4 story 各 5 场景；original 和 explicit 检查旧策略与新规则可执行性；原 oracle/错误标签单测检查计数。记录严格 JSON、合法动作、非空台词、finish_reason、tokens、版本、延迟与哈希。
+- **噪声地板**：本轮单次确定性推理，没有种子方差估计。若给区间，只以 4 故事聚类的描述性 bootstrap，明确四故事方便样本不能支持总体推断，不把 60 当独立 n。不因多模型就升 L2/L3。
+- **决策表**：Explicit 好且 Situated 也好 → 接受普通基线足以解决当前材料；差异仅集中欠定边界 → 先审计信息与 oracle，不宣称能力缺陷；出现可解释失败 → 在结果后单独登记同输入普通恢复控制，才考虑方法。台词逐例文字审阅是 agent 辅助描述，不能冒充独立真人评价或机制验证。
+- **可复现性**：新增薄 runner 补足本地 Hugging Face、完整 API body/finish_reason、逐条落盘与版本/哈希记录；不重新实现评分修复。完整轻量输出保存，模型权重不入 Git。
+
+### 执行时校对备注：格式与构念（首批响应后，POST-HOC）
+
+Step5 前两个响应将合法 JSON 包在完整 Markdown 围栏中，现有严格 parser 判无效。**保留全部 60 原输入和 strict 结果，不重试挑答案**；另行报告只去除最外层完整 JSON 围栏的 mechanical normalization。禁止从解释文字中搜索动作、修复截断或用 gold 补答案。该诊断是格式恢复，不是科研方法收益。
+
+输入审计发现 `traveling_performer/private_banquet` 的 Original persona 只禁止 court-owned **public** stage，并明确允许与旧剧团私下表演；场景却是有剧团音乐家的贵族私人宴会，原始 gold 写拒绝。该原始边界未被 persona 唯一给定。首轮继续保留预设 gold 并报告全部计分；结果报告单独讨论该潜在标注歧义，不依据输出改金标。
