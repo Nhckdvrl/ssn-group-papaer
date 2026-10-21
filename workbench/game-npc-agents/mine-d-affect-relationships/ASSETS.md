@@ -38,4 +38,4 @@ D-E01角色生成以原生prompt为准，由`scripts/run_local_arcane.py`写官�
 
 官方代码固定`1de26550ccfff105f3ffe9f4b386716446291341`，HF数据固定`ae7d82d38909783805979a8055d5ae913cb982f7`。本轮只下载训练混合文件和character_update单任务文件（约4.55GB），不称完整世界模拟复现或已取得专用权重。单任务文件删除details，完整文件可恢复作品/角色/场景；两者24,977条conversation hash完全匹配。51部作品、2,671角色，22,306次相邻出场的输入profile/tracker与上次输出逐字相接；6条tracker为dict，按原生f-string存入下一输入。清单见`results/update_provenance_inventory.json`。
 
-D-E04直接使用原生角色更新system/human；完整监督与输出留在`data/update_D-E04/`、`runs/D-E04/`，只将样本ID/hash与轻量结果入Git。这是公开训练资产上的通用模型诊断，非官方held-out rollout。代码MIT；数据/原小说许可仍分别核对，当前无原文再发布。
+D-E04直接使用原生角色更新system/human；完整监督与输出留在`data/update_D-E04/`、`runs/D-E04/`，只将样本ID/hash与轻量结果入Git。这是公开训练资产上的通用模型诊断，非官方held-out rollout。该代码revision未见LICENSE文件，HF数据卡的license字段也未声明；不把公开可下载等同已有明确再发布授权。当前仅本地研究运行/读取，无vendor代码或原文再发布。原著出处仍分别核对。

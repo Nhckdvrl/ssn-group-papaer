@@ -1,0 +1,1642 @@
+{
+  "status": "POST-HOC descriptive input audit, no model calls",
+  "interpretation": "Exact case-folded native speaker tags. Zero tags does not mean absent/unobservable: narration, reported events, aliases and group references still provide evidence. Association is not mechanism, independent samples, or a causal effect.",
+  "summary": {
+    "zero_target_tag": {
+      "n": 15,
+      "explicit_subject_substitutions": {
+        "qwen3_8b": 6,
+        "qwen3_32b": 4
+      },
+      "definite_current_record_subject_errors": {
+        "qwen3_8b": 4,
+        "qwen3_32b": 2
+      }
+    },
+    "has_target_tag": {
+      "n": 49,
+      "explicit_subject_substitutions": {
+        "qwen3_8b": 1,
+        "qwen3_32b": 0
+      },
+      "definite_current_record_subject_errors": {
+        "qwen3_8b": 1,
+        "qwen3_32b": 0
+      }
+    }
+  },
+  "details": [
+    {
+      "task_id": "ew/4d7ae445afb12b3e6f19f28a",
+      "book_name": "Treasure Island",
+      "target": "Johnny",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 60,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "jim hawkins",
+          20
+        ],
+        [
+          "environment",
+          14
+        ],
+        [
+          "blind pew",
+          11
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": true,
+      "qwen3_32b_subject_status": "explicit_wrong_subject",
+      "qwen3_32b_definite_subject_error": true
+    },
+    {
+      "task_id": "ew/e056bf36147313011fbef75b",
+      "book_name": "The Three Musketeers",
+      "target": "Robespierre",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 19,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "cardinal armand du plessis de richelieu",
+          8
+        ],
+        [
+          "environment",
+          6
+        ],
+        [
+          "louis xiii",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "explicit_wrong_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/e9e2a30361273a70d66cd32a",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Gabriel John Utterson",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel john utterson",
+          2
+        ],
+        [
+          "poole",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/41834b393f12cdc4defd8f9c",
+      "book_name": "The Portrait of a Lady",
+      "target": "Henrietta C. Stackpole",
+      "n_target_tagged_turns": 8,
+      "n_all_tagged_turns": 15,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "henrietta c. stackpole",
+          8
+        ],
+        [
+          "ralph touchett",
+          7
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/d81046c25cb5b164e3206fe3",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Sir Danvers Carew",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel john utterson",
+          2
+        ],
+        [
+          "inspector newcomen",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/f0a2f100575543084e30bb8c",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Fanny's child",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 1,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "bathsheba everdene",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": true,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/5a7150107b5cb62af191cb62",
+      "book_name": "The Portrait of a Lady",
+      "target": "Edmund Ludlow",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 8,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "isabel archer",
+          4
+        ],
+        [
+          "edmund ludlow",
+          2
+        ],
+        [
+          "lilian ludlow",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/eed7cd48e9a91598bdf4c969",
+      "book_name": "Treasure Island",
+      "target": "Ben Gunn",
+      "n_target_tagged_turns": 6,
+      "n_all_tagged_turns": 12,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "ben gunn",
+          6
+        ],
+        [
+          "jim hawkins",
+          5
+        ],
+        [
+          "environment",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/8f9544616a4ebb3010e38206",
+      "book_name": "The Portrait of a Lady",
+      "target": "Isabel Archer",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 6,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "isabel archer",
+          3
+        ],
+        [
+          "serena merle",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/2667a0ac3e121727b88ebe7d",
+      "book_name": "The Portrait of a Lady",
+      "target": "Mr. Pratt",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 8,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "ralph touchett",
+          4
+        ],
+        [
+          "henrietta c. stackpole",
+          2
+        ],
+        [
+          "mr. pratt",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/9f26712098e5d5987cda7d3f",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Sir Henry Baskerville",
+      "n_target_tagged_turns": 22,
+      "n_all_tagged_turns": 47,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "sir henry baskerville",
+          22
+        ],
+        [
+          "barrymore",
+          19
+        ],
+        [
+          "john watson",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/503ead037d37d93fdb1182ce",
+      "book_name": "The Portrait of a Lady",
+      "target": "Mrs Keyes",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 11,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "lilian ludlow",
+          5
+        ],
+        [
+          "edmund ludlow",
+          3
+        ],
+        [
+          "edith archer",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/7ea1ba57b94056fc38125894",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Eliza Barrymore",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 9,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "john watson",
+          4
+        ],
+        [
+          "sir henry baskerville",
+          3
+        ],
+        [
+          "environment",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/707f583360923604391428e6",
+      "book_name": "The Portrait of a Lady",
+      "target": "Justine",
+      "n_target_tagged_turns": 16,
+      "n_all_tagged_turns": 126,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "madame catherine",
+          36
+        ],
+        [
+          "gilbert osmond",
+          35
+        ],
+        [
+          "pansy osmond",
+          24
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/ce918e9734da8bcf1d5548a8",
+      "book_name": "Middlemarch",
+      "target": "Mrs. Taft",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          1
+        ],
+        [
+          "mrs. taft",
+          1
+        ],
+        [
+          "mrs. farebrother",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/737471600796935619a10443",
+      "book_name": "Treasure Island",
+      "target": "Alan",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 67,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "jim hawkins",
+          27
+        ],
+        [
+          "ben gunn",
+          19
+        ],
+        [
+          "environment",
+          8
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": true,
+      "qwen3_32b_subject_status": "explicit_wrong_subject",
+      "qwen3_32b_definite_subject_error": true
+    },
+    {
+      "task_id": "ew/447175bb0d659e60743d5661",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Poole",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 23,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel john utterson",
+          11
+        ],
+        [
+          "dr. henry jekyll",
+          9
+        ],
+        [
+          "poole",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/2ac171995ed7fe363bebdf95",
+      "book_name": "The Call of the Wild",
+      "target": "Buck",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          1
+        ],
+        [
+          "buck",
+          1
+        ],
+        [
+          "manuel",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/61a2662fd68a21f5692e67cd",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Jan Coggan",
+      "n_target_tagged_turns": 7,
+      "n_all_tagged_turns": 14,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel oak",
+          7
+        ],
+        [
+          "jan coggan",
+          7
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/a63e0d7fc4a25000c4e32216",
+      "book_name": "The Call of the Wild",
+      "target": "Mercedes",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 11,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "buck",
+          3
+        ],
+        [
+          "environment",
+          2
+        ],
+        [
+          "hal",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/1af8cf99d05af1daefddfdb6",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Hugo Baskerville",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 18,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "john watson",
+          8
+        ],
+        [
+          "sir henry baskerville",
+          5
+        ],
+        [
+          "jack stapleton",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "explicit_wrong_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/12034c852c1b731cc756bd25",
+      "book_name": "The Three Musketeers",
+      "target": "Duhallier",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 6,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          2
+        ],
+        [
+          "la coste",
+          2
+        ],
+        [
+          "clément",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/3d61c3a7c8ae8d03eb7a446d",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Beryl Stapleton",
+      "n_target_tagged_turns": 6,
+      "n_all_tagged_turns": 19,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "beryl stapleton",
+          6
+        ],
+        [
+          "sir henry baskerville",
+          6
+        ],
+        [
+          "john watson",
+          5
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/a1fcec9daaa08831f0093c86",
+      "book_name": "Far From the Madding Crowd",
+      "target": "George",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 7,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel oak",
+          4
+        ],
+        [
+          "environment",
+          2
+        ],
+        [
+          "george",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/9e0507874e876c3097e40712",
+      "book_name": "The Three Musketeers",
+      "target": "Patrick",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 36,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "george villiers, the duke of buckingham",
+          16
+        ],
+        [
+          "mister o'reilly",
+          7
+        ],
+        [
+          "d'artagnan",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/bd50be1ffca6af6d15e4fcc7",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Pennyways",
+      "n_target_tagged_turns": 8,
+      "n_all_tagged_turns": 89,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "bathsheba everdene",
+          15
+        ],
+        [
+          "jan coggan",
+          15
+        ],
+        [
+          "joseph poorgrass",
+          15
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/412d3554a7e6bb791061b253",
+      "book_name": "The Three Musketeers",
+      "target": "Lackey",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 84,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "comte de rochefort",
+          34
+        ],
+        [
+          "d'artagnan",
+          20
+        ],
+        [
+          "innkeeper",
+          20
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/bbcd9c91f594ed823a85ed43",
+      "book_name": "The Three Musketeers",
+      "target": "Curate",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 9,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "curate",
+          3
+        ],
+        [
+          "jesuit",
+          3
+        ],
+        [
+          "d'artagnan",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/e4264b48ddd4ed51c6ced435",
+      "book_name": "Treasure Island",
+      "target": "Mr. Blandly",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 9,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "jim hawkins",
+          3
+        ],
+        [
+          "environment",
+          3
+        ],
+        [
+          "mr. blandly",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/68be1d0c58ab1d5cc0f2d90b",
+      "book_name": "The Call of the Wild",
+      "target": "Francois",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 5,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "buck",
+          2
+        ],
+        [
+          "perrault",
+          1
+        ],
+        [
+          "francois",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/154b8371ec5d124db56f4dd7",
+      "book_name": "The Call of the Wild",
+      "target": "Scottish man",
+      "n_target_tagged_turns": 5,
+      "n_all_tagged_turns": 13,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "scottish man",
+          5
+        ],
+        [
+          "environment",
+          4
+        ],
+        [
+          "dave",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/2916366d5f614a1ee7afd585",
+      "book_name": "Middlemarch",
+      "target": "Protheroe",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 16,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          3
+        ],
+        [
+          "nicholas bulstrode",
+          2
+        ],
+        [
+          "dr. sprague",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": true,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/7d95947356343b0ac4cf2230",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Bradshaw",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 72,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "poole",
+          29
+        ],
+        [
+          "gabriel john utterson",
+          28
+        ],
+        [
+          "environment",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/e02178a6a6bd7fc0bd8e23f5",
+      "book_name": "Middlemarch",
+      "target": "Nicholas Bulstrode",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 13,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "will ladislaw",
+          4
+        ],
+        [
+          "environment",
+          2
+        ],
+        [
+          "mr. keck",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/9bab3efca4800a942a9c1f10",
+      "book_name": "The Call of the Wild",
+      "target": "Spitz",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 10,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "buck",
+          5
+        ],
+        [
+          "curly",
+          2
+        ],
+        [
+          "spitz",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "explicit_wrong_subject",
+      "qwen3_8b_definite_subject_error": true,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/44466987ec5d2c797336e076",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Dr. James Mortimer",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 9,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "john watson",
+          4
+        ],
+        [
+          "sir henry baskerville",
+          2
+        ],
+        [
+          "dr. james mortimer",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/09654bbea2ed7dbb8b64e2c5",
+      "book_name": "The Portrait of a Lady",
+      "target": "Ralph Touchett",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 8,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "lord warburton",
+          4
+        ],
+        [
+          "isabel archer",
+          3
+        ],
+        [
+          "ralph touchett",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/c6225c481169ef3b9d209d1d",
+      "book_name": "The Three Musketeers",
+      "target": "Cardinal Armand du Plessis de Richelieu",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 11,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "louis xiii",
+          1
+        ],
+        [
+          "cardinal armand du plessis de richelieu",
+          1
+        ],
+        [
+          "bassompierre",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/2c3ab4c2aae3671d48f62132",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Knife-boy",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 72,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "poole",
+          29
+        ],
+        [
+          "gabriel john utterson",
+          28
+        ],
+        [
+          "environment",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/5416ee55e1ce140562c0f55a",
+      "book_name": "Treasure Island",
+      "target": "Abraham Gray",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 25,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "alexander smollett",
+          6
+        ],
+        [
+          "david livesey",
+          5
+        ],
+        [
+          "jim hawkins",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/0014e9da0c477bb931e97413",
+      "book_name": "Middlemarch",
+      "target": "Adolf Naumann",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "dorothea brooke",
+          2
+        ],
+        [
+          "will ladislaw",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/e901426f2ba656c7e1692feb",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Mr. Guest",
+      "n_target_tagged_turns": 8,
+      "n_all_tagged_turns": 19,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel john utterson",
+          9
+        ],
+        [
+          "mr. guest",
+          8
+        ],
+        [
+          "environment",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/ee3bbeedc0d61c023454d4af",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "Sir Charles Baskerville",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 8,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "sherlock holmes",
+          4
+        ],
+        [
+          "dr. james mortimer",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/a224c0c494511e168368a51d",
+      "book_name": "Middlemarch",
+      "target": "Frank Hawley",
+      "n_target_tagged_turns": 4,
+      "n_all_tagged_turns": 8,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "mr. hackbutt",
+          4
+        ],
+        [
+          "frank hawley",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/2bdb753c95ac088dc1cad32d",
+      "book_name": "The Call of the Wild",
+      "target": "Charles",
+      "n_target_tagged_turns": 4,
+      "n_all_tagged_turns": 21,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "hal",
+          9
+        ],
+        [
+          "charles",
+          4
+        ],
+        [
+          "buck",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/080be1c9c9f407adbd2ca0c0",
+      "book_name": "The Three Musketeers",
+      "target": "Patrick",
+      "n_target_tagged_turns": 2,
+      "n_all_tagged_turns": 28,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "george villiers, the duke of buckingham",
+          14
+        ],
+        [
+          "john felton",
+          12
+        ],
+        [
+          "patrick",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/14c7a0d2fb9e9d889c9c1439",
+      "book_name": "Treasure Island",
+      "target": "Jim's father",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 4,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "jim hawkins",
+          2
+        ],
+        [
+          "jim's father",
+          1
+        ],
+        [
+          "billy bones",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/ba9ef490135093727186a49e",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "John Baskerville",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 13,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          7
+        ],
+        [
+          "hugo baskerville",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/63d6035b0d5f1f9136abfc99",
+      "book_name": "The Call of the Wild",
+      "target": "Joe",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 30,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "buck",
+          10
+        ],
+        [
+          "spitz",
+          7
+        ],
+        [
+          "dave",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/521abcef1352972b683f1a89",
+      "book_name": "Far From the Madding Crowd",
+      "target": "the clerk's wife",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 17,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          5
+        ],
+        [
+          "francis troy",
+          5
+        ],
+        [
+          "the clerk",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/5dc80a555aeb2cff7eabea23",
+      "book_name": "Middlemarch",
+      "target": "Tegg",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "environment",
+          2
+        ],
+        [
+          "nicholas bulstrode",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/36ca942b926bd1b4b0d83bfc",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Lester",
+      "n_target_tagged_turns": 6,
+      "n_all_tagged_turns": 13,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "francis troy",
+          7
+        ],
+        [
+          "lester",
+          6
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/d00af6fe65b6534f6c193762",
+      "book_name": "Treasure Island",
+      "target": "Dogger",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 60,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "jim hawkins",
+          20
+        ],
+        [
+          "environment",
+          14
+        ],
+        [
+          "blind pew",
+          11
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/6cae5c3f3199875953caebb6",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "Mr. Guest",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 7,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel john utterson",
+          3
+        ],
+        [
+          "dr. henry jekyll",
+          2
+        ],
+        [
+          "dr. hastie lanyon",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/a4eedee5fa576e523e992dc5",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Maryann Money",
+      "n_target_tagged_turns": 10,
+      "n_all_tagged_turns": 58,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "gabriel oak",
+          16
+        ],
+        [
+          "environment",
+          11
+        ],
+        [
+          "maryann money",
+          10
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/441f17f8a4a62492655a37f7",
+      "book_name": "Treasure Island",
+      "target": "Mrs. Hawkins",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 22,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "david livesey",
+          8
+        ],
+        [
+          "jim hawkins",
+          7
+        ],
+        [
+          "billy bones",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/cff53ffb5d34605cdcb6556b",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "target": "The Doctor",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 50,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "mr. richard enfield",
+          23
+        ],
+        [
+          "gabriel john utterson",
+          16
+        ],
+        [
+          "dr. henry jekyll",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "ambiguous_entity_alias",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/e082e9f52a7e065107da5c5f",
+      "book_name": "Far From the Madding Crowd",
+      "target": "Francis Troy",
+      "n_target_tagged_turns": 47,
+      "n_all_tagged_turns": 99,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "bathsheba everdene",
+          47
+        ],
+        [
+          "francis troy",
+          47
+        ],
+        [
+          "environment",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/f1cae8bb4abe8f0830d35cc2",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "target": "John Clayton",
+      "n_target_tagged_turns": 17,
+      "n_all_tagged_turns": 39,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "sherlock holmes",
+          19
+        ],
+        [
+          "john clayton",
+          17
+        ],
+        [
+          "john watson",
+          2
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/3f6987b6beca8fa790697444",
+      "book_name": "The Call of the Wild",
+      "target": "Francois",
+      "n_target_tagged_turns": 3,
+      "n_all_tagged_turns": 17,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "buck",
+          3
+        ],
+        [
+          "environment",
+          3
+        ],
+        [
+          "francois",
+          3
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/552ff324421326e36fd542e0",
+      "book_name": "The Three Musketeers",
+      "target": "Comte de Toiras",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 3,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "george villiers, the duke of buckingham",
+          1
+        ],
+        [
+          "baron de chantal",
+          1
+        ],
+        [
+          "comte de toiras",
+          1
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/77a6d545d4f91f5cfdd7b9fe",
+      "book_name": "Middlemarch",
+      "target": "Louisa Vincy",
+      "n_target_tagged_turns": 0,
+      "n_all_tagged_turns": 44,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "tertius lydgate",
+          16
+        ],
+        [
+          "rosamond vincy",
+          14
+        ],
+        [
+          "fred vincy",
+          5
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/af97ef03c1857e1dca0f3f58",
+      "book_name": "Middlemarch",
+      "target": "Tom",
+      "n_target_tagged_turns": 1,
+      "n_all_tagged_turns": 33,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "caleb garth",
+          13
+        ],
+        [
+          "fred vincy",
+          11
+        ],
+        [
+          "environment",
+          4
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    },
+    {
+      "task_id": "ew/6620b6e94a4a208e111a7136",
+      "book_name": "The Portrait of a Lady",
+      "target": "Mildred Molyneux",
+      "n_target_tagged_turns": 9,
+      "n_all_tagged_turns": 88,
+      "tag_parse_failures": 0,
+      "top_tagged_roles": [
+        [
+          "isabel archer",
+          36
+        ],
+        [
+          "lord warburton",
+          23
+        ],
+        [
+          "miss molyneux",
+          11
+        ]
+      ],
+      "qwen3_8b_subject_status": "consistent_target_subject",
+      "qwen3_8b_definite_subject_error": false,
+      "qwen3_32b_subject_status": "consistent_target_subject",
+      "qwen3_32b_definite_subject_error": false
+    }
+  ]
+}

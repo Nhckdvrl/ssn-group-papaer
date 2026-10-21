@@ -3,6 +3,7 @@ import json,sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from summarize_results import parse_arcane_local,first_valid
+from summarize_state_quality import parse_puf
 
 class ArcaneTransportTest(unittest.TestCase):
  def row(self,text,kind='per_response',finish='stop'):
@@ -23,4 +24,15 @@ class ArcaneTransportTest(unittest.TestCase):
  def test_first_valid_does_not_reselect_by_score(self):
   rows=[dict(judge_id='x',parse_ok=False,scores=None),dict(judge_id='x',parse_ok=True,scores=10),dict(judge_id='x',parse_ok=True,scores=90)]
   self.assertEqual(first_valid(rows,'judge_id')[0]['scores'],10)
+
+class PUFTransportTest(unittest.TestCase):
+ def test_native_arithmetic_and_own_score_ignored(self):
+  p=parse_puf(json.dumps(dict(merits=[dict(points=8)],demerits=[dict(points=-3)],score=99)))
+  self.assertEqual(p['score'],55)
+ def test_missing_structure_does_not_default_to_fifty(self):
+  self.assertFalse(parse_puf('{}')['parse_ok'])
+  self.assertFalse(parse_puf('{"merits":[],"demerits":')['parse_ok'])
+ def test_range_diagnostic_does_not_silently_change_native_arithmetic(self):
+  p=parse_puf('{"merits":[{"points":18}],"demerits":[]}')
+  self.assertEqual(p['score'],68);self.assertFalse(p['all_points_within_prompt_range'])
 if __name__=='__main__':unittest.main()

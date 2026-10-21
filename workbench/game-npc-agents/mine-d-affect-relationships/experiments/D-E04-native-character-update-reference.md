@@ -19,3 +19,25 @@
 
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 待填。由tools/process/new.py生成骨架后使用矿区D现有命名空间；未新增平级工作台或ACTIVE名额。
+
+### POST-HOC输出兼容性与主体审阅（128生成完成后）
+
+初版严格表按预声明要求updated_profile为字符串，32B有4条dict与1条不合法JSON；严格表保留。核对原生run_scene_reflection后发现，官方本来就用dict_to_markdown_text接受dict/list profile，并直接替换完整卡。因此另作native-runtime兼容轨，不能将4条对象表示当作模型没有给更新内容；不重生成或改答案。tracker原生也可携带结构对象，类型只分列不任意判心理错误。
+
+Johnny原生例中，两模型将Jim Hawkins的经历写入目标角色状态，触发对全部64题×2模型short_description的主体审阅。定义：仅在短描述明确以另一个角色为当前主体时标explicit_wrong_subject；别名、代词或未写名字不能自动算错；correct_subject只表示主体相符，绝非所有事实/心理正确。候选的自他事件错配另须读原scene speaker标签与current_profile，不从词串匹配直接确诊。该审阅是事后、单执行agent描述性编码，不作为独立盲评或机制证明；不改原Agreement读数，不挑案例造新题。
+
+### 一句普通指令恢复对照（生成前登记；仅一次，不搜索提示）
+
+全量短描述审阅中，8B有7条明确另一个主体＋1条别名需复核，32B有4条明确另一个主体。其中两模型各2条涉及历史人物/已故祖先的叙事资料，不作为在世NPC成长能力反例；由当前角色卡/场景可清楚核验的主体错配为8B 5/64、32B 2/64。为遵守仓库R8，不将原生prompt现象单独当能力证据，在原64题×两模型上各补一次通用指令：
+
+`Keep every update about the specified target character ({role}); distinguish that character's own actions, experiences, relations, and knowledge from those of every other person in the scene.`
+
+只追加这句话，目标角色名称早已在输入中；无新事件、gold、反例或教师内容，解码/版本/样本完全不变，新增128请求，仍在本卡4 GPU·h本地预算内。不同结果都保留，不另找第二版提示。报告原严格/原生兼容flag读数与主体审阅；恢复不能只看名字：对原已观察的主体/事件归属错配与16条先选案例阅读实际profile/tracker/description，若换回名字却仍把别人的母亲/行动/阵营转移进来，不算内容恢复。此为事后由真实现象触发的强普通系统对照，不改原生baseline结果，不据它自动推出学习方法必要性。
+
+### 原版PUF内容准则的补充测量（判分前登记）
+
+EvolvingWorld已有Profile Update Fidelity(PUF)与Profile Evolution Smoothness(PES)；本轮布尔一致率只是轻量诊断，不是原论文的完整评价，更不能据其盲区声称原评测失效。追加原版PUF system criterion与merits/demerits计分，对原生＋一句指令、两模型、全部64题的可执行结构输出评分（预期最多256）。为让评委获得actor实际已见的信息，user适配器明确提供同一完整原始输入（含先前tracker与motivation）和按原生dict_to_markdown_text规范化的后态；不提供发布的gold flag/profile，不展示模型/条件名。这是原准则、完整前态的单角色适配，非原论文联合模拟或逐字user-format复现。
+
+本地Qwen3-32B固定revision、greedy/非thinking/seed0、2048上限、batch8，GPU2在其余依赖结束后执行，无API；同一模型也作为32B actor的自评偏好风险明确保留。原不合法完整结构单列有效率，不拿缺字段默认False制造合法候选；PUF均分以内容可评价者为分母，控制差在同题共同有效集合配对。评分严格计算50＋merits点数−demerits点数并截到0..100，不采用模型自行给的score。完整分数对象之后的额外文字机械解析单列；真正缺完整合法判语才统一恢复一次4096，合法结果不重评，总评分≤320调用，仍在本卡4 GPU·h本地上限内。若资格/资源不足则保留缺失，不按分数挑恢复。
+
+主体审阅后的输入描述另记原始speaker tags：64题中15题没有目标角色的显式tag，49题有；分别有6/1条(8B)与4/0条(32B)明确换名。这是事后观察关联，不等同在场性或注意力机制，别名/叙述/群体动作都可能影响tag覆盖，不据此改样本。详见context-description结果。
