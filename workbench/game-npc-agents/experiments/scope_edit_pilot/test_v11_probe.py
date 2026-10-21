@@ -46,6 +46,41 @@ class V11Tests(unittest.TestCase):
         self.assertTrue(all(x["n_scored"]==0 for x in result["metrics"] if x["mode"]=="situated"))
         self.assertTrue(any(x["n_scored"]>0 for x in result["metrics"] if x["mode"]=="explicit"))
 
+    def test_synthetic_oracle_is_nonempty_when_situated_scope_uncertified(self):
+        oracle = [
+            {"task_id": t["task_id"], "action_id": t["expected_actions"][0]}
+            for t in self.tasks
+        ]
+        result = v11.evaluate(self.tasks, oracle)
+        self.assertTrue(result["complete"])
+        self.assertEqual(result["n_certified_situated"], 0)
+        for mode in ("original", "situated", "explicit"):
+            summary = result["synthetic_oracle_by_mode"][mode]
+            self.assertEqual(summary["n_requested"], 20)
+            self.assertEqual(summary["n_received"], 20)
+            self.assertEqual(summary["n_action_oracle_match"], 20)
+            self.assertEqual(summary["oracle_match_per_received"], 1.0)
+        self.assertEqual(len(result["pressure_pairs"]), 12)
+
+    def test_missing_responses_do_not_vanish_into_accuracy_denominator(self):
+        example = self.tasks[0]
+        result = v11.evaluate(self.tasks, [
+            {"task_id": example["task_id"], "action_id": example["expected_actions"][0]}
+        ])
+        self.assertFalse(result["complete"])
+        mode = result["synthetic_oracle_by_mode"][example["mode"]]
+        self.assertEqual(mode["n_received"], 1)
+        self.assertEqual(mode["oracle_match_per_received"], 1.0)
+
+    def test_pressure_twins_are_reported_separately(self):
+        oracle = [
+            {"task_id": t["task_id"], "action_id": t["expected_actions"][0]}
+            for t in self.tasks
+        ]
+        result = v11.evaluate(self.tasks, oracle)
+        self.assertEqual(len(result["pressure_pairs"]), 12)
+        self.assertTrue(all(r["action_changed"] is False for r in result["pressure_pairs"]))
+
     def test_pressure_has_same_expected_action(self):
         indexed = {(t["story_id"],t["case_id"],t["mode"],t["variant"]):t for t in self.tasks}
         for t in self.tasks:

@@ -77,3 +77,10 @@ Bayesian concept learning / probabilistic program induction 早已研究从少�
 这里值得研究的是**人物生命经历作为行为先验**怎样影响作者稀疏修订的条件化泛化，何时帮助、何时妨碍作者重塑角色；与 [CDT](https://aclanthology.org/2026.acl-long.568/) 的条件规则、[Persona Hierarchy Model](https://arxiv.org/abs/2610.09384) 的跨情境训练传播、[Behavior Editing](https://arxiv.org/abs/2506.20606) 及 [Personalization Editing](https://arxiv.org/abs/2512.13676) 的泛化/局部性正面对标。
 
 **必备区别**：推断某条人物规则概率较高并不意味唯一符合作者意图；可存在 *latent rule ambiguous but test-action identifiable*。本批开发者给的 `situated_scope=supported` 不具独立作者证明，E01 V1.2 已校准严格评分口径。
+
+## 9. 合成真值、Version Space 与模型不确定性（2026-10-21）
+
+- [Mitchell, Version Spaces（IJCAI 1977）](https://www.ijcai.org/Proceedings/77-1/Papers/048.pdf) 与 [Generalization as Search（1982）](https://www.sciencedirect.com/science/article/pii/0004370282900406) 已建立从正反例维护一致假说空间的经典框架。对候选规则共识下的选择性预测亦有近期工作：[Selective Prediction from Agreement（2026 预印本）](https://arxiv.org/abs/2605.02611)。不能将「∩S 必须改、∪S 外必保」作为全新数学定理；且它只在明确作用域规则对应单一二元行动、未遗漏其它一致解释时有效。
+- [ProbabilityBench（2026-10-12 预印本）](https://arxiv.org/abs/2610.17016) 展示了完整生成机制如何提供可计算的合成概率真值，同时必须证明文本渲染保留其概率语义。可借鉴这种**true by construction 的受控真值**思想，但不代表我们的人物故事已经拥有可计算的真实作者意图分布。
+- 本仓库 I01 首批 `S*` 已作为开发者规则预设，因此**合成规则动作一致率合法且分母不为零**。同一单场景批注未必足以唯一识别 `S*`，所以将未猜中 `S*` 直接称为因果归纳失败会高估模型应有的信息。
+- 人生经历双先验 P_A/P_B 主要用于研究归纳偏好与泛化作用域，不是预注册的唯一动作 oracle；若在背景直接明确触发规则，会重新落入 instruction-following/NLI 基线。

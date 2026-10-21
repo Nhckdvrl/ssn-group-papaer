@@ -44,3 +44,11 @@
 原 Persona 被强化不一定是好，模型需要学会何时保留旧约束、何时尊重新作者修改。将 `one positive critique + one boundary negative critique` 视为后续可选的最小对比信息机制，而不是现在就上通用聊天式澄清。
 
 不能凭几段研究者创作的背景伏笔宣称 gold unique。竞争者包括完整强 Prompt、同等 M2 反馈下的 profile rewrite、few-shot、CDT 规则归纳与现有 personalization/behavior editing；允许这些普通方法已经足够好。
+
+## 第四轮：Known Generating Scope 与 Inferable Scope 的正式区分（2026-10-21）
+
+合成任务可先抽样或人工构造隐藏角色编辑规则 `S*`、再给单次人物批注 `C`，从而严格衡量 `S*` 作用下的行动与模型输出是否一致。**但** `S*` 既然生成了批注，不代表观察者仅凭 `(P,C)` 能唯一恢复它。必须区分 `synthetic-oracle fidelity` 与 `identifiable decision fidelity`。模型在不可辨识样本对隐藏 S* 预测失败，可以作为受限信息下的泛化统计，不能直接指控模型「不懂人物」。
+
+Version Space 的条件化共识可作数学工具，但不是本文首创（Mitchell 1977/1982；近年 selective prediction by agreement 也直接研究该问题）。定义假说类 `H`、与旧 Persona/作者批注的相容性、情境 `x` 与角色其他约束后，才能说所有 `h ∈ H(P,C)` 给出同一行动。若人物允许多种合理选择，应以允许的**动作集合**/偏好或分布表达，而不是硬写唯一最佳动作。
+
+补充的 `P_A`（只对 Maelis 有个人恩情）与 `P_B`（有守岗害死队友的集体创伤）很好地提示了一个重要研究问题：**仅改变人物经历，固定作者批注，是否会定向改变模型在另一位队友遇险时的策略？** 目前只是可检验的方向性假说；两段背景不能严格排除其它动机，不能预先宣称应产生 180° 反转。其余 A–H 研究方向仍开放，本轮优先让 I01 的第一个合成 smoke 提供可靠描述性信息。

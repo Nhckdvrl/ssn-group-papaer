@@ -43,3 +43,14 @@ This only adds a *measurement design*; the honest research sample count is still
 The input dataset and all **60 tasks are unchanged**. A developer-authored `situated_scope=supported` tag is only a hypothesis about reasonable transfer, **not an independent author label**. For situated cases, the scorer now counts a case toward `strictly_scored` only when **both** `author_verified=true` and `decision_identifiable=true` are attached to the case's task metadata. Neither is available for this toy fixture: consequently the correct **strict situated denominator is zero**. `author_intent_agreement_total` remains a descriptive comparison with the developer's full-rule oracle.
 
 An informative character background can bias plausible edit scopes but cannot automatically identify the intended rule uniquely; an author's correction may itself override the old biography. `explicit` vs `situated` differs in information provided, so it is not an equal-information algorithm comparison. The pilot measures action choices but does not evaluate the generated `utterance` tone/style; inference errors and output formatting errors must be reported separately. No LLM model has been run as part of this update.
+
+## V1.3 dual synthetic / identifiability scoring (2026-10-21)
+
+The V1.1 **60 input requests are unchanged**. Evaluating them yields two different kinds of statements, deliberately not conflated:
+
+- **`synthetic_oracle_by_mode`**: `n_requested`, `n_received`, `n_valid_action`, `n_action_oracle_match`, `oracle_match_per_received`, and `oracle_match_given_valid_action` for `original / situated / explicit`. These numerators are valid against the **developer's known, fully specified generating rule** even if the model input was underdetermined. They DO NOT imply that the situated evidence uniquely entails that rule. Disaggregate change/preserve via `synthetic_oracle_by_bucket`.
+- **`n_certified_situated` and `metrics[].n_scored`**: available only with a stated hypothesis space and decision-consensus argument or independently validated author labels. Current developer labels lack this evidence, so the Situated strict denominator remains zero; **the synthetic-oracle score is NOT zero or discarded**.
+
+The report additionally exposes `complete`, responses received, valid action counts, model errors, utterance presence, and separately the 12 *dependent* pressure/base comparisons (`pressure_pairs`; four scene pairs times three input modes). Missing requests are not silently counted as poor semantic decisions: oracle match per received response is reported with its denominator. The script still **does not grade style**, and a `thought` field is not needed.
+
+A real likelihood of a hypothesis cannot be inferred from the fact that the developer picked it; a generative benchmark can score recovery of its own `S*` yet cannot alone prove unique author-intent inference. See [E01](../E01-scope-aware-character-edit-baseline-gate.md).
