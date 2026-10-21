@@ -46,7 +46,7 @@ D-E04直接使用原生角色更新system/human；完整监督与输出留在`da
 
 `/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-first-residency/raw-runs-and-frozen-inputs.tar.gz`
 
-校验和、每个成员的路径/字节/hash及归档对应研究commit见[RAW-MANIFEST](results/D-RAW-MANIFEST.json)；[运行总账](results/D-RUN-LEDGER.json)把角色、状态、教师、评委、前向与API分开。[输入与评分来源核验](results/D-INTEGRITY.json)确认同题/仅一句指令、API输入与本地相同、首个完整结果选择、PUF候选与raw hash对应、四文本NLL目标一致。归档不含权重、完整第三方corpus或vendor仓库，不因此改变原资产许可；文件仅限本地研究者访问。
+实际归档157文件，压缩20.12 MiB、原始105.32 MiB，全部成员逐字节SHA256核验完成，归档对应研究commit为`39e7c575`。校验和、每个成员的路径/字节/hash及归档对应研究commit见[RAW-MANIFEST](results/D-RAW-MANIFEST.json)；[运行总账](results/D-RUN-LEDGER.json)把角色、状态、教师、评委、前向与API分开。[输入与评分来源核验](results/D-INTEGRITY.json)确认同题/仅一句指令、API输入与本地相同、首个完整结果选择、PUF候选与raw hash对应、四文本NLL目标一致。归档不含权重、完整第三方corpus或vendor仓库，不因此改变原资产许可；文件仅限本地研究者访问。
 
 已配置该研究机SSH别名时可下载（亦可替换为实际登录地址）：
 
