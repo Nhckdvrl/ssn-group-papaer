@@ -118,7 +118,7 @@ def arcane(root,experiment,judge='local',strict=False):
   compact.append(row)
  return dict(experiment=experiment,judge=('Local Qwen3-32B greedy/nonthinking' if judge=='local' else 'Step5 low partial only')+'; official prompts, scale100; different from original paper judge',strict_native_json=strict,aggregation='Per-metric novel macro means; no pooled cross-benchmark overall. Phase-level APF/RPF/RAE pooled within novel as native table, PTF over complete probe trajectories. Paired deltas by novel; six-book convenience sample intervals descriptive only.',calls_recorded=len(raw),unique_judge_ids=len({r['judge_id'] for r in raw}),valid_judge_ids=len(valid_new),reused_reference_judgments=len(reused),valid_by_kind=dict(Counter(r['kind'] for r in valid)),parse_methods=dict(Counter(r.get('parse_method','step_api') for r in valid_new)),error_attempts=dict(Counter(r.get('error') for r in raw if r.get('error'))),invalid_judge_ids=[r['judge_id'] for r in raw if not r.get('parse_ok') and r['judge_id'] not in {v['judge_id'] for v in valid_new}],usage={k:token_sum(raw,k) for k in ['prompt_tokens','completion_tokens','total_tokens']},groups=result,paired_deltas=paired,source_runs=sources,details=compact)
 
-def phase(root):
+def phase(root,strict=False):
  rows=read(root/'runs/D-E02/qwen3_32b_judge/responses.jsonl');scores=[];errors=[]
  source=ast.parse((root/'vendor/PHASE-Tree/evaluation/judge.py').read_text())
  parser_node=next(n for n in source.body if isinstance(n,ast.FunctionDef) and n.name=='parse_judge_response')
@@ -129,7 +129,9 @@ def phase(root):
   if text.startswith('```'):text='\n'.join(l for l in text.splitlines() if not l.strip().startswith('```'))
   try:
    try:obj=json.loads(text);parse_method='strict_json'
-   except ValueError:obj=native_parse(r['response']);parse_method='native_parser_fallback';fallback+=1
+   except ValueError:
+    if strict:raise
+    obj=native_parse(r['response']);parse_method='native_parser_fallback';fallback+=1
    assert all(type(obj[k]) in [int,float] and 1<=obj[k]<=5 for k in ['character_score','semantic_score'])
    scores.append(dict(task_id=r['task_id'],question_id=r['question_id'],corpus=r['corpus'],split=r['split'],role=r['role'],mode=r['mode'],parse_method=parse_method,character_score=obj['character_score'],semantic_score=obj['semantic_score'],reasoning_sha256=hashlib.sha256(str(obj.get('reasoning','')).encode()).hexdigest()))
   except Exception:errors.append(dict(task_id=r['task_id'],finish_reason=r['finish_reason']))
@@ -148,11 +150,11 @@ def phase(root):
   for q,m in by_question.items():
    if 'phase_tree' in m and comparison in m:changes.append(dict(question_id=q,corpus=m['phase_tree']['corpus'],split=m['phase_tree']['split'],role=m['phase_tree']['role'],character_delta=m['phase_tree']['character_score']-m[comparison]['character_score'],semantic_delta=m['phase_tree']['semantic_score']-m[comparison]['semantic_score']))
   pairs['phase_tree-'+comparison]=dict(n=len(changes),semantic_win_tie_loss=[sum(x['semantic_delta']>0 for x in changes),sum(x['semantic_delta']==0 for x in changes),sum(x['semantic_delta']<0 for x in changes)],changes=changes)
- return dict(experiment='D-E02',judge='Local Qwen3-32B, native PHASE-Tree rubric, greedy/nonthinking; not original GPT4.1 or official Emb',n_judgments=len(rows),valid=len(scores),native_parser_fallback=fallback,invalid=errors,groups=groups,paired=pairs,details=scores,aggregation='Four-corpus macro, question-level pairing; intervals descriptive, four corpora not population sample. No cross-benchmark score pooling.')
+ return dict(experiment='D-E02',judge='Local Qwen3-32B, native PHASE-Tree rubric, greedy/nonthinking; not original GPT4.1 or official Emb',strict_native_json=strict,n_judgments=len(rows),valid=len(scores),native_parser_fallback=fallback,invalid=errors,groups=groups,paired=pairs,details=scores,aggregation='Four-corpus macro, question-level pairing; intervals descriptive, four corpora not population sample. No cross-benchmark score pooling.')
 
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--experiment',choices=['D-E01','D-E02','D-E03'],required=True);a.add_argument('--out',required=True);a.add_argument('--judge',choices=['local','step5'],default='local');a.add_argument('--strict-native-json',action='store_true');args=a.parse_args();root=Path(args.asset_root)
- obj=phase(root) if args.experiment=='D-E02' else arcane(root,args.experiment,args.judge,args.strict_native_json)
+ obj=phase(root,args.strict_native_json) if args.experiment=='D-E02' else arcane(root,args.experiment,args.judge,args.strict_native_json)
  Path(args.out).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n')
  if args.experiment=='D-E02':print(json.dumps(obj['groups'],indent=2))
  else:print(json.dumps({k:dict(metrics=v['metrics'],n_per_response=v['n_per_response'],n_trajectories=v['n_trajectories']) for k,v in obj['groups'].items()},indent=2))

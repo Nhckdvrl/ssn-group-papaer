@@ -1,8 +1,10 @@
 {
   "experiment": "D-E02",
   "judge": "Local Qwen3-32B, native PHASE-Tree rubric, greedy/nonthinking; not original GPT4.1 or official Emb",
+  "strict_native_json": true,
   "n_judgments": 256,
   "valid": 255,
+  "native_parser_fallback": 0,
   "invalid": [
     {
       "task_id": "TheOffice_c83063cd9cc4__naive_rewrite",
@@ -28,6 +30,16 @@
         "StarTrek_TNG": {
           "character_score": 3.5625,
           "semantic_score": 3.1875
+        }
+      },
+      "by_split": {
+        "random_test": {
+          "character_score": 3.46875,
+          "semantic_score": 3.125
+        },
+        "ood_test": {
+          "character_score": 2.875,
+          "semantic_score": 2.8125
         }
       },
       "macro": {
@@ -65,6 +77,16 @@
           "semantic_score": 3.4375
         }
       },
+      "by_split": {
+        "random_test": {
+          "character_score": 3.46875,
+          "semantic_score": 3.0625
+        },
+        "ood_test": {
+          "character_score": 3.5161290322580645,
+          "semantic_score": 3.064516129032258
+        }
+      },
       "macro": {
         "character_score": 3.486458333333333,
         "semantic_score": 3.060416666666667
@@ -98,6 +120,16 @@
         "StarTrek_TNG": {
           "character_score": 3.875,
           "semantic_score": 3.625
+        }
+      },
+      "by_split": {
+        "random_test": {
+          "character_score": 3.8125,
+          "semantic_score": 3.34375
+        },
+        "ood_test": {
+          "character_score": 3.5,
+          "semantic_score": 3.21875
         }
       },
       "macro": {
@@ -135,6 +167,16 @@
           "semantic_score": 2.5625
         }
       },
+      "by_split": {
+        "random_test": {
+          "character_score": 2.78125,
+          "semantic_score": 2.5
+        },
+        "ood_test": {
+          "character_score": 2.5,
+          "semantic_score": 2.15625
+        }
+      },
       "macro": {
         "character_score": 2.640625,
         "semantic_score": 2.328125
@@ -151,2553 +193,4623 @@
       }
     }
   },
+  "paired": {
+    "phase_tree-base": {
+      "n": 64,
+      "semantic_win_tie_loss": [
+        22,
+        37,
+        5
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Ross Geller",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Chandler Bing",
+          "character_delta": -2,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Monica Geller",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Ross Geller",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Chandler Bing",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Monica Geller",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Andy",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Jim",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Dwight",
+          "character_delta": 0,
+          "semantic_delta": -2
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Michael",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_c83063cd9cc4",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Angela",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Andy",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Jim",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Dwight",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Michael",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Angela",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Harry",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Snape",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Ron",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Dumbledore",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Harry",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Snape",
+          "character_delta": 2,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Ron",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Dumbledore",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Picard",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Data",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Troi",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Laforge",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Picard",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Data",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Troi",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Laforge",
+          "character_delta": 1,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 0
+        }
+      ]
+    },
+    "phase_tree-raw_profile": {
+      "n": 64,
+      "semantic_win_tie_loss": [
+        41,
+        17,
+        6
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Ross Geller",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Chandler Bing",
+          "character_delta": -2,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Monica Geller",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 3,
+          "semantic_delta": 3
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Ross Geller",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Chandler Bing",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Monica Geller",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 3,
+          "semantic_delta": 3
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Andy",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Jim",
+          "character_delta": 1,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Dwight",
+          "character_delta": 0,
+          "semantic_delta": -2
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Michael",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_c83063cd9cc4",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Angela",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Andy",
+          "character_delta": -1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Jim",
+          "character_delta": 3,
+          "semantic_delta": 3
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Dwight",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Michael",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Angela",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Harry",
+          "character_delta": 2,
+          "semantic_delta": 3
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Snape",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Ron",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Dumbledore",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": 2,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Harry",
+          "character_delta": 1,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Snape",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Ron",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Dumbledore",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Picard",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Data",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Troi",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Laforge",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": 3,
+          "semantic_delta": 3
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 3,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Picard",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Data",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Troi",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Laforge",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 4,
+          "semantic_delta": 4
+        }
+      ]
+    },
+    "phase_tree-naive_rewrite": {
+      "n": 63,
+      "semantic_win_tie_loss": [
+        20,
+        32,
+        11
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Ross Geller",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Chandler Bing",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Monica Geller",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "role": "Rachel Green",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Ross Geller",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Chandler Bing",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Monica Geller",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Joey Tribbiani",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Phoebe Buffay",
+          "character_delta": -2,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "role": "Rachel Green",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Andy",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Jim",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Dwight",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Michael",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Angela",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "role": "Pam",
+          "character_delta": 2,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Andy",
+          "character_delta": -2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Jim",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Dwight",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Michael",
+          "character_delta": -2,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Angela",
+          "character_delta": 2,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "role": "Pam",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Harry",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Snape",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Ron",
+          "character_delta": 1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Dumbledore",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hermione",
+          "character_delta": 2,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "role": "Hagrid",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Harry",
+          "character_delta": 1,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Snape",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Ron",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Dumbledore",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hermione",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "role": "Hagrid",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Picard",
+          "character_delta": -1,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Data",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Troi",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Laforge",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "role": "Riker",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 1,
+          "semantic_delta": 1
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Picard",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Data",
+          "character_delta": -1,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Troi",
+          "character_delta": 0,
+          "semantic_delta": -1
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Laforge",
+          "character_delta": 1,
+          "semantic_delta": 2
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Worf",
+          "character_delta": 0,
+          "semantic_delta": 0
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "role": "Riker",
+          "character_delta": 0,
+          "semantic_delta": 0
+        }
+      ]
+    }
+  },
   "details": [
     {
       "task_id": "Friends_1f4d1a3232cc__base",
+      "question_id": "Friends_1f4d1a3232cc",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "f77111a4c8fce45270cde77bc1647480b97f9b43dfa388babf0bc79e51b38ce8"
     },
     {
       "task_id": "Friends_1f4d1a3232cc__raw_profile",
+      "question_id": "Friends_1f4d1a3232cc",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "158701908a4cbf0df1ed9bef1fe96530d9504e5c9e428768b016caf30602e51b"
     },
     {
       "task_id": "Friends_1f4d1a3232cc__naive_rewrite",
+      "question_id": "Friends_1f4d1a3232cc",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "ed13d0e7b51bf74b59cf706e1a2a8701ee01aa7af1b247337b21fbc05e064cdb"
     },
     {
       "task_id": "Friends_1f4d1a3232cc__phase_tree",
+      "question_id": "Friends_1f4d1a3232cc",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b3109d747f80ac3b8d321fed1826ae14ae62891cb09027903d86951f5588d22c"
     },
     {
       "task_id": "Friends_d5f7e4b5e890__base",
+      "question_id": "Friends_d5f7e4b5e890",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "d8c3a3ff7f961af31eaae28735cdfffe98558d67b0fc36e619cb3ad97dadfa76"
     },
     {
       "task_id": "Friends_d5f7e4b5e890__raw_profile",
+      "question_id": "Friends_d5f7e4b5e890",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "5e21381799fe6b3ee3a7600b082db080f75655d5554b526cd94017df69901265"
     },
     {
       "task_id": "Friends_d5f7e4b5e890__naive_rewrite",
+      "question_id": "Friends_d5f7e4b5e890",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "56a71e8dc1ae28d4f6915071345f96c241540835b2ef8c61eef22f0b75dcb24b"
     },
     {
       "task_id": "Friends_d5f7e4b5e890__phase_tree",
+      "question_id": "Friends_d5f7e4b5e890",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "c6373ea0bd076b05da931b105a98319830c3ca1267438ba414c6391bae7f19c8"
     },
     {
       "task_id": "Friends_18ce439a90db__base",
+      "question_id": "Friends_18ce439a90db",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Ross Geller",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "49d0ec9d59133a932a6612bd33c811aa85bd37ea64d65a3cc6db9a254e50ed7d"
     },
     {
       "task_id": "Friends_18ce439a90db__raw_profile",
+      "question_id": "Friends_18ce439a90db",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Ross Geller",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "09cf42d93f3afc5d342ce2f490e6a3c6135e09dd5258d4b702cb3d5fc92a647d"
     },
     {
       "task_id": "Friends_18ce439a90db__naive_rewrite",
+      "question_id": "Friends_18ce439a90db",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Ross Geller",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "3442f350bf5b14821fa844406332a66aee3e28c7b8e4936e535b4c36abf73e03"
     },
     {
       "task_id": "Friends_18ce439a90db__phase_tree",
+      "question_id": "Friends_18ce439a90db",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Ross Geller",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "ba8cdf8570cf8fb447f544dd79485fb49cc06148e28c9df38d2473c2588dfc31"
     },
     {
       "task_id": "Friends_341c1da17072__base",
+      "question_id": "Friends_341c1da17072",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Chandler Bing",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "038728ad044916d119914100c3c229ff77e9108eb90b8fd81bc9f6c0cab72817"
     },
     {
       "task_id": "Friends_341c1da17072__raw_profile",
+      "question_id": "Friends_341c1da17072",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Chandler Bing",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "e2ef96d7bd4a3e050402b536ffc7d10d9f22c828cbf5e85bb27973bf7a290e54"
     },
     {
       "task_id": "Friends_341c1da17072__naive_rewrite",
+      "question_id": "Friends_341c1da17072",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Chandler Bing",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "fdd40a7ce078298c6cce552156f4814edf0cfbfe9c53a9f379e015ebeb5fbcf0"
     },
     {
       "task_id": "Friends_341c1da17072__phase_tree",
+      "question_id": "Friends_341c1da17072",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Chandler Bing",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "7096dc57610247a3e0635c91fdf5fdf09520b4bbae980b1dbaf792eba3cbfd5d"
     },
     {
       "task_id": "Friends_3455ccf07d94__base",
+      "question_id": "Friends_3455ccf07d94",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Monica Geller",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "74a797e5cbbfaea43d27d492e54ca68c215a60f8d313bb6e035d80b35c9ec94d"
     },
     {
       "task_id": "Friends_3455ccf07d94__raw_profile",
+      "question_id": "Friends_3455ccf07d94",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Monica Geller",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "3b43b4def6aeee76c141602cd62c464a1f98d077a1c0ab99c941210e2821d135"
     },
     {
       "task_id": "Friends_3455ccf07d94__naive_rewrite",
+      "question_id": "Friends_3455ccf07d94",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Monica Geller",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "72b983e9737b0dfe40b7402e129552c81f4aeb29deb4048da4fac6d885107cba"
     },
     {
       "task_id": "Friends_3455ccf07d94__phase_tree",
+      "question_id": "Friends_3455ccf07d94",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Monica Geller",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "08b89c1dc3935d02a8de737a79a3c36bf106c0d7dcf6fa3269e7144d341377dc"
     },
     {
       "task_id": "Friends_9fa0a4d0344d__base",
+      "question_id": "Friends_9fa0a4d0344d",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Joey Tribbiani",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "bb0d748b4ed62386fdda71aad89ebb4cb178efc1119a7df80598476a4aeced68"
     },
     {
       "task_id": "Friends_9fa0a4d0344d__raw_profile",
+      "question_id": "Friends_9fa0a4d0344d",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Joey Tribbiani",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "c47e03ad69854fff0ee3ef2f90b3a3b8917d513df36b29693134193655cd6507"
     },
     {
       "task_id": "Friends_9fa0a4d0344d__naive_rewrite",
+      "question_id": "Friends_9fa0a4d0344d",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Joey Tribbiani",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "69bd42d8252cdb7e2494b7ec94e84e3269d48fef650ed91e941190b390e383dc"
     },
     {
       "task_id": "Friends_9fa0a4d0344d__phase_tree",
+      "question_id": "Friends_9fa0a4d0344d",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Joey Tribbiani",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "bc1d643c0e18a2cc049a1eb9a4cdd57ba082688f5d929511de58a3c960a75ac0"
     },
     {
       "task_id": "Friends_0cf810d3376e__base",
+      "question_id": "Friends_0cf810d3376e",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "60922f17c7aa780d34f4ada819be6e7e1e2091ba2a9b4e437da6d695e84e9f87"
     },
     {
       "task_id": "Friends_0cf810d3376e__raw_profile",
+      "question_id": "Friends_0cf810d3376e",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "7eab04bd99649b0dc5abcd00e1f9a4876b8cda2705e04c81107af9fc97b2df8d"
     },
     {
       "task_id": "Friends_0cf810d3376e__naive_rewrite",
+      "question_id": "Friends_0cf810d3376e",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b903c479821e5f9b8a21f91f6b0b0f75902ac0f090022a272b23b1e9f39252a9"
     },
     {
       "task_id": "Friends_0cf810d3376e__phase_tree",
+      "question_id": "Friends_0cf810d3376e",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Phoebe Buffay",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "8f45d591ae44ae1452b61514035ab840e80d8b22a7f392011ebd26290c6939ae"
     },
     {
       "task_id": "Friends_718aa076e95c__base",
+      "question_id": "Friends_718aa076e95c",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "74bca791418b2827943878ecccdb41afd3061cb40531ae465a65c099b002492f"
     },
     {
       "task_id": "Friends_718aa076e95c__raw_profile",
+      "question_id": "Friends_718aa076e95c",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "d989d60762fe935a1ee5eb591120ec161704efef17363655e1e275c99862a82f"
     },
     {
       "task_id": "Friends_718aa076e95c__naive_rewrite",
+      "question_id": "Friends_718aa076e95c",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "d1f19457d67e76b3394562fa6293cd5221a10468321efd28acc2ba20619f93bd"
     },
     {
       "task_id": "Friends_718aa076e95c__phase_tree",
+      "question_id": "Friends_718aa076e95c",
       "corpus": "Friends",
       "split": "random_test",
       "role": "Rachel Green",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "6a073d8c03e12ac03c180d02ce79a9f54171a7b46e2cfb53873f0ae181988488"
     },
     {
       "task_id": "Friends_89f4f857f6c7__base",
+      "question_id": "Friends_89f4f857f6c7",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "911c33007736583aca828e4ac7b86af197b6e6039bae432156a0fa98d6a22b44"
     },
     {
       "task_id": "Friends_89f4f857f6c7__raw_profile",
+      "question_id": "Friends_89f4f857f6c7",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "dd4a9d69ca02fc1ec34c3ca90db5623d49dcdff113ce18dd5f3fb227e875757d"
     },
     {
       "task_id": "Friends_89f4f857f6c7__naive_rewrite",
+      "question_id": "Friends_89f4f857f6c7",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "563ea1c00f0ae9b660ddd6c4e361f54cca73ba4d961f4b86b32217e22fa5f0d7"
     },
     {
       "task_id": "Friends_89f4f857f6c7__phase_tree",
+      "question_id": "Friends_89f4f857f6c7",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "abf68cb0a08c5dd21ee232fc861b89d94488e94e9315750c6fd96fcd7d718250"
     },
     {
       "task_id": "Friends_67fc3a5dd700__base",
+      "question_id": "Friends_67fc3a5dd700",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "0de5498d996c81ad280c810a69b3c3f5c8ae12dcb3ab8e61279e13052563b15a"
     },
     {
       "task_id": "Friends_67fc3a5dd700__raw_profile",
+      "question_id": "Friends_67fc3a5dd700",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "7670209966a7cf9800735aab178f38ef93ff628c992816b4625f905c8894b1a1"
     },
     {
       "task_id": "Friends_67fc3a5dd700__naive_rewrite",
+      "question_id": "Friends_67fc3a5dd700",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "dcea45d15ea571d8789b099ec66d9deacf50dda9f7e83830f32e81076b298a5e"
     },
     {
       "task_id": "Friends_67fc3a5dd700__phase_tree",
+      "question_id": "Friends_67fc3a5dd700",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "e7e741aa04cf91f7fb1f13d51806bab1bc08dce4f54bf4481fc20184d39bf149"
     },
     {
       "task_id": "Friends_d509aae1b173__base",
+      "question_id": "Friends_d509aae1b173",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Ross Geller",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "ef8f90b2c364d192cd4fff03e24a7c035638821c5487db92cee57e849b7c1eed"
     },
     {
       "task_id": "Friends_d509aae1b173__raw_profile",
+      "question_id": "Friends_d509aae1b173",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Ross Geller",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "77b489a3fb5bccb765ce0f486c0119bdc17f1b0c26be645d8f4200a9f6406afa"
     },
     {
       "task_id": "Friends_d509aae1b173__naive_rewrite",
+      "question_id": "Friends_d509aae1b173",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Ross Geller",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "898fc694d5d417ed87d536d6c341cb6fe7da3da0fa97d1849a920631d893db49"
     },
     {
       "task_id": "Friends_d509aae1b173__phase_tree",
+      "question_id": "Friends_d509aae1b173",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Ross Geller",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "462d41f1d5921f40022adfb107daf820c25e97fb6f5fc9f5edf0d46217946da2"
     },
     {
       "task_id": "Friends_a5c9f84001e0__base",
+      "question_id": "Friends_a5c9f84001e0",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Chandler Bing",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "48eb699719a23d75802cbd9c6aa1d2feefc93be13f5d32ff10892fbbba37ad7d"
     },
     {
       "task_id": "Friends_a5c9f84001e0__raw_profile",
+      "question_id": "Friends_a5c9f84001e0",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Chandler Bing",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "f64d0202d4b431d82d210b356b8befc99a130457142a9e7cb9b39c6a9ea11862"
     },
     {
       "task_id": "Friends_a5c9f84001e0__naive_rewrite",
+      "question_id": "Friends_a5c9f84001e0",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Chandler Bing",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "ebbe9330e15a488167b97bc324b4cec222be47aad724c12698e2d284abe7db67"
     },
     {
       "task_id": "Friends_a5c9f84001e0__phase_tree",
+      "question_id": "Friends_a5c9f84001e0",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Chandler Bing",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "57f6e1326c76e363991d63c4ee6050af8bf91f556d69d4a844ade92ea1a5b80c"
     },
     {
       "task_id": "Friends_f600cbfe9fc9__base",
+      "question_id": "Friends_f600cbfe9fc9",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Monica Geller",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "edf0d674e41e5d19f62c74d25c1b4dd174f360e7a9425a277f3a2bc9cd6b4e6e"
     },
     {
       "task_id": "Friends_f600cbfe9fc9__raw_profile",
+      "question_id": "Friends_f600cbfe9fc9",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Monica Geller",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "edeb489d9ff6b38fba9c78be51f430b483c56e66d62ddc7c9f41752447c91fbe"
     },
     {
       "task_id": "Friends_f600cbfe9fc9__naive_rewrite",
+      "question_id": "Friends_f600cbfe9fc9",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Monica Geller",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "0646670268ca09e06aa5abdba4070d46009033033a3f3744a2e272cb2bb6e309"
     },
     {
       "task_id": "Friends_f600cbfe9fc9__phase_tree",
+      "question_id": "Friends_f600cbfe9fc9",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Monica Geller",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "8e0ad12300b180476f50876ca2b8f115b0bc2235475916b509fc8a077ee1a767"
     },
     {
       "task_id": "Friends_bf1ea4e16d83__base",
+      "question_id": "Friends_bf1ea4e16d83",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Joey Tribbiani",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "ee53ce29c5732adf39269518e7e2cf12810623749e47fed439a7d4b32bc2d383"
     },
     {
       "task_id": "Friends_bf1ea4e16d83__raw_profile",
+      "question_id": "Friends_bf1ea4e16d83",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Joey Tribbiani",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "e6cc1b45284dbad07aaca40d0b9c97c39b7760b4881de3e8fc1e867f58d845b9"
     },
     {
       "task_id": "Friends_bf1ea4e16d83__naive_rewrite",
+      "question_id": "Friends_bf1ea4e16d83",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Joey Tribbiani",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "fa5bb13635162202c9a5d501bbb6debfcf0be2ab94e1205d31920d651cd65adb"
     },
     {
       "task_id": "Friends_bf1ea4e16d83__phase_tree",
+      "question_id": "Friends_bf1ea4e16d83",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Joey Tribbiani",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "09ecb372227b1fe3ab73510892bc766269ce49e46e4eb658c9ab67c6c06567d0"
     },
     {
       "task_id": "Friends_9c3ee0b8a13f__base",
+      "question_id": "Friends_9c3ee0b8a13f",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "825631d683a45b4ef3e87a0ce0df850966d5fa0d82786395d4632e3819022de4"
     },
     {
       "task_id": "Friends_9c3ee0b8a13f__raw_profile",
+      "question_id": "Friends_9c3ee0b8a13f",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "560acdf67d5c5179753a12b3a8f3776aee9dbc3646f0a6ac72bbb3f4926d34f6"
     },
     {
       "task_id": "Friends_9c3ee0b8a13f__naive_rewrite",
+      "question_id": "Friends_9c3ee0b8a13f",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "c53282ffd03ebcd226793e8264c6f1edccfae74b6c139b417a2b46df9128ea37"
     },
     {
       "task_id": "Friends_9c3ee0b8a13f__phase_tree",
+      "question_id": "Friends_9c3ee0b8a13f",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Phoebe Buffay",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "fe03446e857cec0627a1d4015bfa0b874664fc36121d1315b77920970ecf5d32"
     },
     {
       "task_id": "Friends_13b74e75e9c5__base",
+      "question_id": "Friends_13b74e75e9c5",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "d42c14b4122bf801ed01ff238339dbcdd9cb2f9f4cea0032a346c7362f85c2a0"
     },
     {
       "task_id": "Friends_13b74e75e9c5__raw_profile",
+      "question_id": "Friends_13b74e75e9c5",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "29908ddc15686cf79cc609869cd169a7f1109eaa165435ecd213bd256c7eed1d"
     },
     {
       "task_id": "Friends_13b74e75e9c5__naive_rewrite",
+      "question_id": "Friends_13b74e75e9c5",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "99c619ebb65e46cf4170e395938fb1cdae39d025107db7a5cc34f8b852809056"
     },
     {
       "task_id": "Friends_13b74e75e9c5__phase_tree",
+      "question_id": "Friends_13b74e75e9c5",
       "corpus": "Friends",
       "split": "ood_test",
       "role": "Rachel Green",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "c6ea6d16eb0a88fa4da800defcf350941a27e284258f3fe5b3d62fec321e810b"
     },
     {
       "task_id": "TheOffice_b7c1d954e312__base",
+      "question_id": "TheOffice_b7c1d954e312",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "65dbe0d5e743812ca3c69c1757aa2a2030c0d5c77f97b0db23a4553e8ef180c3"
     },
     {
       "task_id": "TheOffice_b7c1d954e312__raw_profile",
+      "question_id": "TheOffice_b7c1d954e312",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "39aaee04bd4ae25d3ec0c922935cf71fbdcaecaddcfc22f7ce4b911f5b013af9"
     },
     {
       "task_id": "TheOffice_b7c1d954e312__naive_rewrite",
+      "question_id": "TheOffice_b7c1d954e312",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "5c9c52bfe395b09542152f3662e77b7b96809f97fbc39a96139d4ab810e54a49"
     },
     {
       "task_id": "TheOffice_b7c1d954e312__phase_tree",
+      "question_id": "TheOffice_b7c1d954e312",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "7246983169dce3de061e17600595ba3e2203c7c78c21f16b9553a60ad1d20c85"
     },
     {
       "task_id": "TheOffice_2a0696f97f66__base",
+      "question_id": "TheOffice_2a0696f97f66",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "8ad80559c3fe0788d8b14695595b0434d9c7847c0d063dd5e4724141591b9240"
     },
     {
       "task_id": "TheOffice_2a0696f97f66__raw_profile",
+      "question_id": "TheOffice_2a0696f97f66",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "c00eb7564322e8fe0aeb106e50f9811e7b4c8c887ad273c42f571ee2090afe37"
     },
     {
       "task_id": "TheOffice_2a0696f97f66__naive_rewrite",
+      "question_id": "TheOffice_2a0696f97f66",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "976df0f16688e27116fea55691994293b90bf3eb612dfa814f8ab9f13f5f07ef"
     },
     {
       "task_id": "TheOffice_2a0696f97f66__phase_tree",
+      "question_id": "TheOffice_2a0696f97f66",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "c00eb7564322e8fe0aeb106e50f9811e7b4c8c887ad273c42f571ee2090afe37"
     },
     {
       "task_id": "TheOffice_6edc3e95b691__base",
+      "question_id": "TheOffice_6edc3e95b691",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Andy",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "9c47a6a77a76b911e4033768fc29b9734ccd97879a82971bbccda871aae9782e"
     },
     {
       "task_id": "TheOffice_6edc3e95b691__raw_profile",
+      "question_id": "TheOffice_6edc3e95b691",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Andy",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "ffe5b68ef5b2ba5be5c0daecc4ac9dcf5b44bee42a3b25352be2bf39893c7ade"
     },
     {
       "task_id": "TheOffice_6edc3e95b691__naive_rewrite",
+      "question_id": "TheOffice_6edc3e95b691",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Andy",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "5b526aa233a34f536b7d7a897e93e374e91c03bb5ae19e356bcd10b881f70063"
     },
     {
       "task_id": "TheOffice_6edc3e95b691__phase_tree",
+      "question_id": "TheOffice_6edc3e95b691",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Andy",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "e5f02d7c6a4618417d88c8208eb9ae872d36530499661239e353d6d36dff21c0"
     },
     {
       "task_id": "TheOffice_b52d1028d846__base",
+      "question_id": "TheOffice_b52d1028d846",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Jim",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "e89b2fd0a09316ce2755dc71effb9a21074dcbb8f5123c572b923d8b4d894187"
     },
     {
       "task_id": "TheOffice_b52d1028d846__raw_profile",
+      "question_id": "TheOffice_b52d1028d846",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Jim",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "8bf110872aa5fb8c99dc893efb9bc0e1cbb276ec4d9d59ab2a76b2013bab41f1"
     },
     {
       "task_id": "TheOffice_b52d1028d846__naive_rewrite",
+      "question_id": "TheOffice_b52d1028d846",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Jim",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "7c915720fcbf753830804f442920f064927ae208b2f8362faeec0cb3ab358651"
     },
     {
       "task_id": "TheOffice_b52d1028d846__phase_tree",
+      "question_id": "TheOffice_b52d1028d846",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Jim",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "47495a5b0fa529d31d5555a87e0f8f59c252a0d65c1a89a28f1377f8687c40c2"
     },
     {
       "task_id": "TheOffice_a287306571c2__base",
+      "question_id": "TheOffice_a287306571c2",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Dwight",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 5,
       "reasoning_sha256": "341e812a667040d4068475d57b20074526e48d6f92b44d2fb11c02e3f2f9c45b"
     },
     {
       "task_id": "TheOffice_a287306571c2__raw_profile",
+      "question_id": "TheOffice_a287306571c2",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Dwight",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 5,
       "reasoning_sha256": "84b8bb0811628f41d8a47cad96179625199a30127784d252f355a1f24b07f900"
     },
     {
       "task_id": "TheOffice_a287306571c2__naive_rewrite",
+      "question_id": "TheOffice_a287306571c2",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Dwight",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "f25b294d5266c5a7b5341458413ff6099d8cc0030a4891d5a69e82f3129dfade"
     },
     {
       "task_id": "TheOffice_a287306571c2__phase_tree",
+      "question_id": "TheOffice_a287306571c2",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Dwight",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "07e1b42a0df9359dd168ce5b3bc64e5440029b0febb96541a8b314d61b9023c8"
     },
     {
       "task_id": "TheOffice_131df5281240__base",
+      "question_id": "TheOffice_131df5281240",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Michael",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "5d2bef311be42696c7329afbc25df4865041a53b82940731e0d8b2dec1fea81c"
     },
     {
       "task_id": "TheOffice_131df5281240__raw_profile",
+      "question_id": "TheOffice_131df5281240",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Michael",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "f91e0ae1f789a8640291d45edf6c452d980f7de6f16a207dffcc4da88b0cfa1e"
     },
     {
       "task_id": "TheOffice_131df5281240__naive_rewrite",
+      "question_id": "TheOffice_131df5281240",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Michael",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "9d98ee913a0d27be596bd0da3f060bfa96f43ae8deabb7661b4f076bc6d677e7"
     },
     {
       "task_id": "TheOffice_131df5281240__phase_tree",
+      "question_id": "TheOffice_131df5281240",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Michael",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "970202b6ea9bb8852071d68ae4ed7911ca687135da7bb2f8ec19419d0456d12c"
     },
     {
       "task_id": "TheOffice_9ce880cace9b__base",
+      "question_id": "TheOffice_9ce880cace9b",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "b627a1002d92a83843799ddfb8c137e77216612bd8ad2a276c861ece1fa332f5"
     },
     {
       "task_id": "TheOffice_9ce880cace9b__raw_profile",
+      "question_id": "TheOffice_9ce880cace9b",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "7312354961b55ee3ae98706f735362a3f3833e2df16eea404914994afa86020f"
     },
     {
       "task_id": "TheOffice_9ce880cace9b__naive_rewrite",
+      "question_id": "TheOffice_9ce880cace9b",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "2c01bff40e0fc480396557e004a9d38712659f0dbb586405d5fe41abc7c0e29f"
     },
     {
       "task_id": "TheOffice_9ce880cace9b__phase_tree",
+      "question_id": "TheOffice_9ce880cace9b",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Angela",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "9baf3761aaea2241007b852f24fc6f1babc00111eb2a8becbce5e343b2075bd8"
     },
     {
       "task_id": "TheOffice_771c740e1913__base",
+      "question_id": "TheOffice_771c740e1913",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "aac4cfb6446e1bbcfa9c8eacefd89a91b8a688c491c7d26408a86a6f1913f103"
     },
     {
       "task_id": "TheOffice_771c740e1913__raw_profile",
+      "question_id": "TheOffice_771c740e1913",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "ae61b78a524230f785ea11699c75b02040bc47412657b8822a31840836750e1c"
     },
     {
       "task_id": "TheOffice_771c740e1913__naive_rewrite",
+      "question_id": "TheOffice_771c740e1913",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "feadab43379103fb88c6f64d32b4f0d0076e553b355fe255c77c89e3101a5f44"
     },
     {
       "task_id": "TheOffice_771c740e1913__phase_tree",
+      "question_id": "TheOffice_771c740e1913",
       "corpus": "TheOffice",
       "split": "random_test",
       "role": "Pam",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "2fe4a841073b53c03351e7074323c08301a3f11f402a3120f4150b6fcccb75e8"
     },
     {
       "task_id": "TheOffice_c83063cd9cc4__base",
+      "question_id": "TheOffice_c83063cd9cc4",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 2,
       "reasoning_sha256": "942ee90243db4fc1b5f0cd6a8d243276159898fea4bd6a58a7c8e2a34e807b57"
     },
     {
       "task_id": "TheOffice_c83063cd9cc4__raw_profile",
+      "question_id": "TheOffice_c83063cd9cc4",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "bf1572a2554087511ae6fbfdb8dfdb1201a6a3ec82530026317072c6b1e0db5f"
     },
     {
       "task_id": "TheOffice_c83063cd9cc4__phase_tree",
+      "question_id": "TheOffice_c83063cd9cc4",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "c03802646a0c39004b2897af729c262f09f319cd4a35062646c6909200936721"
     },
     {
       "task_id": "TheOffice_5a3cbddee6f8__base",
+      "question_id": "TheOffice_5a3cbddee6f8",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "4b356bd956be3cc9cd1dbebf888c4f0b4fbeaf347bd77c543a380c252545fb6e"
     },
     {
       "task_id": "TheOffice_5a3cbddee6f8__raw_profile",
+      "question_id": "TheOffice_5a3cbddee6f8",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "d317501811e5244590562fe824517f818577c357bf8d763b22a129c6d4612a5e"
     },
     {
       "task_id": "TheOffice_5a3cbddee6f8__naive_rewrite",
+      "question_id": "TheOffice_5a3cbddee6f8",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "6b67f7b295f69f83acb23f112c3f50866fa4bf45023ec52fa93858cbddcf4bb7"
     },
     {
       "task_id": "TheOffice_5a3cbddee6f8__phase_tree",
+      "question_id": "TheOffice_5a3cbddee6f8",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "ba73e342bceb2a99a65041362a6ea3b517e3badd653e9ec8d5a6fd41de9dea34"
     },
     {
       "task_id": "TheOffice_88c282c7bcd5__base",
+      "question_id": "TheOffice_88c282c7bcd5",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Andy",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "bdbaacb32ae58150a7bc61f91c7f72d4acccbd08916eab953a2ee8f0a3cf3e32"
     },
     {
       "task_id": "TheOffice_88c282c7bcd5__raw_profile",
+      "question_id": "TheOffice_88c282c7bcd5",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Andy",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "a80b63b8824403a70e79a7a5b2aa525ac1a16ef56438d68d4f32f45941002792"
     },
     {
       "task_id": "TheOffice_88c282c7bcd5__naive_rewrite",
+      "question_id": "TheOffice_88c282c7bcd5",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Andy",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "c53b6576e322a12a8a02016c44f818d2abc07aec443dba788c32b32555a18698"
     },
     {
       "task_id": "TheOffice_88c282c7bcd5__phase_tree",
+      "question_id": "TheOffice_88c282c7bcd5",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Andy",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "f0c35e4a155a481d24066ec740a25bfabc5f8986efcea0a98f468d18d5077583"
     },
     {
       "task_id": "TheOffice_b00ca3c2cf45__base",
+      "question_id": "TheOffice_b00ca3c2cf45",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Jim",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "d43eaea006db43f0e7e8d1cb610e87700609fc465aa9b90e1b69ed7329c76f73"
     },
     {
       "task_id": "TheOffice_b00ca3c2cf45__raw_profile",
+      "question_id": "TheOffice_b00ca3c2cf45",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Jim",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "459d081050978821515b5c4a1b1de220097a1e095e6de82889788a24cf8daa17"
     },
     {
       "task_id": "TheOffice_b00ca3c2cf45__naive_rewrite",
+      "question_id": "TheOffice_b00ca3c2cf45",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Jim",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "f31d5dd6df6d9a64b437ba9119cd6d5fa72362a8be2db7f20f35284e6843fe76"
     },
     {
       "task_id": "TheOffice_b00ca3c2cf45__phase_tree",
+      "question_id": "TheOffice_b00ca3c2cf45",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Jim",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "6805ff3d67aa1d0d1559f46a7fc60709764a3a0acff05c6720ac82c1379baceb"
     },
     {
       "task_id": "TheOffice_b39b93bbf62a__base",
+      "question_id": "TheOffice_b39b93bbf62a",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Dwight",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "cf09bc981017722c962da947b5735f75c001618c2055370a287a4e6d71575d6a"
     },
     {
       "task_id": "TheOffice_b39b93bbf62a__raw_profile",
+      "question_id": "TheOffice_b39b93bbf62a",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Dwight",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "7be99a22ef508c108951b4abbb11235c82d16adf337e960f436d9077cdbe8fd9"
     },
     {
       "task_id": "TheOffice_b39b93bbf62a__naive_rewrite",
+      "question_id": "TheOffice_b39b93bbf62a",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Dwight",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "5cd823ef4fd185f3f06675c402a28009e37dd994ace616a177e4f21d682bb312"
     },
     {
       "task_id": "TheOffice_b39b93bbf62a__phase_tree",
+      "question_id": "TheOffice_b39b93bbf62a",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Dwight",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "1bb308ec5c3eb571f46ec81fbffd59d124618c00ae3718b306fdddd25ed7149c"
     },
     {
       "task_id": "TheOffice_168f292317ef__base",
+      "question_id": "TheOffice_168f292317ef",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Michael",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "81442fa9b6380227ee130908bc3c930d84a132cb7aeb7aa9c0e88d01c566b6a2"
     },
     {
       "task_id": "TheOffice_168f292317ef__raw_profile",
+      "question_id": "TheOffice_168f292317ef",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Michael",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "1e046f405be6c7eb9451e0f1c8aa9537038a66f79e972ea5a2cd2268e0ff7c11"
     },
     {
       "task_id": "TheOffice_168f292317ef__naive_rewrite",
+      "question_id": "TheOffice_168f292317ef",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Michael",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "18d5eaf081643fa66cf6c448cfdbcf58cf713847dcf91cc102acfd93c584325a"
     },
     {
       "task_id": "TheOffice_168f292317ef__phase_tree",
+      "question_id": "TheOffice_168f292317ef",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Michael",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "40280c5ee966900e2b1f6d046e369b0659e3c98b227aef4490b074d375b2aae3"
     },
     {
       "task_id": "TheOffice_9e3ac8332531__base",
+      "question_id": "TheOffice_9e3ac8332531",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "763170cce355ea41df4c8476878f1424441987595f7e40b71ea853cd77e6f072"
     },
     {
       "task_id": "TheOffice_9e3ac8332531__raw_profile",
+      "question_id": "TheOffice_9e3ac8332531",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "f5d2197ce9b28e5e1db85ac536760e520a639936f87114bb910599c31e65cfd1"
     },
     {
       "task_id": "TheOffice_9e3ac8332531__naive_rewrite",
+      "question_id": "TheOffice_9e3ac8332531",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "dc8c7beb42dc92729cc458c42b3c8a2c40aaff32566160b60162257018ace000"
     },
     {
       "task_id": "TheOffice_9e3ac8332531__phase_tree",
+      "question_id": "TheOffice_9e3ac8332531",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Angela",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "92c201c1fafa04e64017a3b00711190a05ea6b42fb6d32445a999e78ce922a73"
     },
     {
       "task_id": "TheOffice_a866140a9e0d__base",
+      "question_id": "TheOffice_a866140a9e0d",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "d8f055b073a47622d3b3be8c70611b71ca6b6678582469789500c64c75140b1e"
     },
     {
       "task_id": "TheOffice_a866140a9e0d__raw_profile",
+      "question_id": "TheOffice_a866140a9e0d",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "3a5d8993c37cfd55331fc3a82a97587afecdbc0e2dd7d6df69a6327d17da6c17"
     },
     {
       "task_id": "TheOffice_a866140a9e0d__naive_rewrite",
+      "question_id": "TheOffice_a866140a9e0d",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "0913b4e72202c218a17c30c3afb0178cc50f76928fade2ff884b3b54c3a97c96"
     },
     {
       "task_id": "TheOffice_a866140a9e0d__phase_tree",
+      "question_id": "TheOffice_a866140a9e0d",
       "corpus": "TheOffice",
       "split": "ood_test",
       "role": "Pam",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "946e214f4e8b09e88410e514194ce2d0bd2255fa531185c9c6d6390b07a95939"
     },
     {
       "task_id": "HPD_3aed7a50f060__base",
+      "question_id": "HPD_3aed7a50f060",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "33e530bbde4b5df887dbaf9c0a053a1572268121f186e60a62f03d10deb38071"
     },
     {
       "task_id": "HPD_3aed7a50f060__raw_profile",
+      "question_id": "HPD_3aed7a50f060",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "ba3c37c079bf5f4c2a75c6b414feb501f4430843b2c68bfddc4c292a6ff7ac75"
     },
     {
       "task_id": "HPD_3aed7a50f060__naive_rewrite",
+      "question_id": "HPD_3aed7a50f060",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "b8fd44ed639c90e0938fc1e603da4cab64fb19c73bf06bed53d15b223e407f30"
     },
     {
       "task_id": "HPD_3aed7a50f060__phase_tree",
+      "question_id": "HPD_3aed7a50f060",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "2217af23310076a76163cba145cf72c4adb3c4b769c055b314670d5bdae13630"
     },
     {
       "task_id": "HPD_798859e699bb__base",
+      "question_id": "HPD_798859e699bb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "f0632ced09f8fa0c9834f197c8493ee21bf0a2f96d2c8edba1c11322d6df2cf3"
     },
     {
       "task_id": "HPD_798859e699bb__raw_profile",
+      "question_id": "HPD_798859e699bb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "f7a3ec07d9766014354ae4a4b63826ee11547f8710248f3bd73ff1f0ecdcd1b3"
     },
     {
       "task_id": "HPD_798859e699bb__naive_rewrite",
+      "question_id": "HPD_798859e699bb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "d8a78be76167c591265017674894d4666b978c0d9d1dfbfb3e75d0def5f8085c"
     },
     {
       "task_id": "HPD_798859e699bb__phase_tree",
+      "question_id": "HPD_798859e699bb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b8d38c05518d462c26b9820001b10b40267efe102bf7472ef9db951f7f2ac1ed"
     },
     {
       "task_id": "HPD_61ffbb7ec789__base",
+      "question_id": "HPD_61ffbb7ec789",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Harry",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "c4d356b948f01de8c3e927e2155b489a05b0e5c9f98ff112756990b4faf03bf8"
     },
     {
       "task_id": "HPD_61ffbb7ec789__raw_profile",
+      "question_id": "HPD_61ffbb7ec789",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Harry",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "974a54791d4b5b5481cb92430e193a86fd0f2997443ad0b6d0a63e2bd990988e"
     },
     {
       "task_id": "HPD_61ffbb7ec789__naive_rewrite",
+      "question_id": "HPD_61ffbb7ec789",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Harry",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "bef09234a92fd72bed09023ab0700ad81ce45dfabc76e14a1554219fa95260ee"
     },
     {
       "task_id": "HPD_61ffbb7ec789__phase_tree",
+      "question_id": "HPD_61ffbb7ec789",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Harry",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "c004d3dc4ed4794c37f93dca7161f3cc6b3caf85e246289846765c2a0ef50c69"
     },
     {
       "task_id": "HPD_c648ee26e9d5__base",
+      "question_id": "HPD_c648ee26e9d5",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Snape",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b7815e6523b12b68cdc3f5040156578a5f324c0b4f07a352d0164500d0fd4414"
     },
     {
       "task_id": "HPD_c648ee26e9d5__raw_profile",
+      "question_id": "HPD_c648ee26e9d5",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Snape",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "acc3c89077c14dd1de69d96b11231ae0c46e6149f7bd2376fc68be9083bbfe13"
     },
     {
       "task_id": "HPD_c648ee26e9d5__naive_rewrite",
+      "question_id": "HPD_c648ee26e9d5",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Snape",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b01588c3abba658024a94487dfdfef065365b3b9b1436e4e1c634f44228af4cb"
     },
     {
       "task_id": "HPD_c648ee26e9d5__phase_tree",
+      "question_id": "HPD_c648ee26e9d5",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Snape",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b25ad1e4377ba3e8da81a05a981006a333daa9855bbfa0e496635d755a6733e0"
     },
     {
       "task_id": "HPD_c2a1cc4e8dcb__base",
+      "question_id": "HPD_c2a1cc4e8dcb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Ron",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "46cefe8583085bcffd8217aa3a2874bf4c42137c77107030ed5bb0d6a6faddbc"
     },
     {
       "task_id": "HPD_c2a1cc4e8dcb__raw_profile",
+      "question_id": "HPD_c2a1cc4e8dcb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Ron",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "ceafc2265faf3c2152bbf164c0ca4f89e8397e1600abdf03789ffcdbf15a6def"
     },
     {
       "task_id": "HPD_c2a1cc4e8dcb__naive_rewrite",
+      "question_id": "HPD_c2a1cc4e8dcb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Ron",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "0879179a5fa17678ce66adc5db59589dfd414125f6867444415a6081b905d355"
     },
     {
       "task_id": "HPD_c2a1cc4e8dcb__phase_tree",
+      "question_id": "HPD_c2a1cc4e8dcb",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Ron",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "98db3ac10e94d7322f70c395c8c86bcb193e6fce85581cfad2a0d7e07893721f"
     },
     {
       "task_id": "HPD_bf7fcb79908a__base",
+      "question_id": "HPD_bf7fcb79908a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Dumbledore",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "96ee0041ceb3f06c508c899a788a60f4b38d4b6e48abf4a27add5134549e377b"
     },
     {
       "task_id": "HPD_bf7fcb79908a__raw_profile",
+      "question_id": "HPD_bf7fcb79908a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Dumbledore",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "3dcbdc88a276f9b318e6838faae858a8c28fbd76e3e7cd2498c63e7cb1900437"
     },
     {
       "task_id": "HPD_bf7fcb79908a__naive_rewrite",
+      "question_id": "HPD_bf7fcb79908a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Dumbledore",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "278515b6738ddbd1b1c6595dc862cff312fb8da0279d8a47f18dc94949201ffb"
     },
     {
       "task_id": "HPD_bf7fcb79908a__phase_tree",
+      "question_id": "HPD_bf7fcb79908a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Dumbledore",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "3d2995f4ec88ed37a624710a88516c9c818bf4802e9ea57ed8134caff7de92cb"
     },
     {
       "task_id": "HPD_f2165ccd469a__base",
+      "question_id": "HPD_f2165ccd469a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "3b03e5dcc54827eec0fd654dc96cc9a905c99e6f27806babf1f1b512a026e56c"
     },
     {
       "task_id": "HPD_f2165ccd469a__raw_profile",
+      "question_id": "HPD_f2165ccd469a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "ef73347f6a52421712da9db945e60128c829aa7b01fd9e37d9fa53fd76d1f5de"
     },
     {
       "task_id": "HPD_f2165ccd469a__naive_rewrite",
+      "question_id": "HPD_f2165ccd469a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "4b53ab3f59c7c6d77b909df12eee2d5fa49c28e16fbe4c08551fe16df84c7bb5"
     },
     {
       "task_id": "HPD_f2165ccd469a__phase_tree",
+      "question_id": "HPD_f2165ccd469a",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hermione",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "70f5593533be19877a35f90078785805e5c1a1c8c30a946abf59093cc8e27b3c"
     },
     {
       "task_id": "HPD_92f99c3f348c__base",
+      "question_id": "HPD_92f99c3f348c",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "ff7e2d6462ecf7aed35a6d12881fda3d3e1c2ee222f9d97329c560077e03ea75"
     },
     {
       "task_id": "HPD_92f99c3f348c__raw_profile",
+      "question_id": "HPD_92f99c3f348c",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "692ce2652ad23371bd5bdb82d1d731731930802160f12230b21390b7fed7899e"
     },
     {
       "task_id": "HPD_92f99c3f348c__naive_rewrite",
+      "question_id": "HPD_92f99c3f348c",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 4,
       "reasoning_sha256": "e7260c530ec93008df17bc081a4d82d4197dab2de6661fceac492ce3414d53aa"
     },
     {
       "task_id": "HPD_92f99c3f348c__phase_tree",
+      "question_id": "HPD_92f99c3f348c",
       "corpus": "HPD",
       "split": "random_test",
       "role": "Hagrid",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "c35c140873378d3a539dd03971314fe25e249aa09f823ba4d9252720dfc020bf"
     },
     {
       "task_id": "HPD_40b99c3da417__base",
+      "question_id": "HPD_40b99c3da417",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "56b9d8a96a1c899d41cc21e9e61a2d8c1728e6c7b715b764552888a4948b15e1"
     },
     {
       "task_id": "HPD_40b99c3da417__raw_profile",
+      "question_id": "HPD_40b99c3da417",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "17384c1ea67edc794d6ea67d96eb4af826ea93afc8b8f8a4102f38d853568765"
     },
     {
       "task_id": "HPD_40b99c3da417__naive_rewrite",
+      "question_id": "HPD_40b99c3da417",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "e0c3334565163ad95ee8bf17ccf5898ee03dc82072c60d76166033f3dd8788e9"
     },
     {
       "task_id": "HPD_40b99c3da417__phase_tree",
+      "question_id": "HPD_40b99c3da417",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "cc16aef5d63f46345825c6ea98efa69c498237197ef5b0cb9e5ba37f5671f54b"
     },
     {
       "task_id": "HPD_6a174348f400__base",
+      "question_id": "HPD_6a174348f400",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "94352dd6fadc4218e8848970c590c1dbe944e210037f82ee3fa7a9dd7a6bba0e"
     },
     {
       "task_id": "HPD_6a174348f400__raw_profile",
+      "question_id": "HPD_6a174348f400",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 1,
       "reasoning_sha256": "14f2c6a0cfc622ac9f12bbd4f88ffebb7776debb3d7e79b8f692dffcb9b30b68"
     },
     {
       "task_id": "HPD_6a174348f400__naive_rewrite",
+      "question_id": "HPD_6a174348f400",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "0acbdd0280343579b580fe6aacef7a1564c5c1a5b77ced1daba1e7f82861a9e1"
     },
     {
       "task_id": "HPD_6a174348f400__phase_tree",
+      "question_id": "HPD_6a174348f400",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "9518e5e988af6e82fc4f78e7dadebbebc1dcef6d7216b3588cbb9894dbd627b3"
     },
     {
       "task_id": "HPD_5160f6ba4572__base",
+      "question_id": "HPD_5160f6ba4572",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Harry",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "794fcfd0d760e6e29549e7ac26c5061b43dbe31b4cce8360a8d807de0a14ae1d"
     },
     {
       "task_id": "HPD_5160f6ba4572__raw_profile",
+      "question_id": "HPD_5160f6ba4572",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Harry",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "439e4e8f3ca5b721b09c4278d1a05ae0eda5834c17b78ee7d0625c3a0cb223e9"
     },
     {
       "task_id": "HPD_5160f6ba4572__naive_rewrite",
+      "question_id": "HPD_5160f6ba4572",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Harry",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "68030c28e5b26a39f8827fc597aa0c45f4e28a5f52eb628d09b716e9249c763f"
     },
     {
       "task_id": "HPD_5160f6ba4572__phase_tree",
+      "question_id": "HPD_5160f6ba4572",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Harry",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "794fcfd0d760e6e29549e7ac26c5061b43dbe31b4cce8360a8d807de0a14ae1d"
     },
     {
       "task_id": "HPD_a805f945b33e__base",
+      "question_id": "HPD_a805f945b33e",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Snape",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "d3c2cabe3fbc7bf59ae96468b328d3a3d4ab212c15f7667e285d50cf2ab3843c"
     },
     {
       "task_id": "HPD_a805f945b33e__raw_profile",
+      "question_id": "HPD_a805f945b33e",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Snape",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "2bc9929943cb5b772e140a6296d062a4cace310f769a4021156be79adf6b68a1"
     },
     {
       "task_id": "HPD_a805f945b33e__naive_rewrite",
+      "question_id": "HPD_a805f945b33e",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Snape",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "b84f3490e5a8833e7d18b41c60308260a58fde561f84f06497aa32fe9a29f5b3"
     },
     {
       "task_id": "HPD_a805f945b33e__phase_tree",
+      "question_id": "HPD_a805f945b33e",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Snape",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "e9548aeac139e2b7000bf5c9ef9aa7c7498de7776922ceee498c101aae6c72d3"
     },
     {
       "task_id": "HPD_0284895839c8__base",
+      "question_id": "HPD_0284895839c8",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Ron",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 3,
       "reasoning_sha256": "6efafd99c581b48d62689ff35fb58facd5572814bd9b9a5db6800b0fc3b1eb23"
     },
     {
       "task_id": "HPD_0284895839c8__raw_profile",
+      "question_id": "HPD_0284895839c8",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Ron",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "500aef46958e8f8fbd72a0ae849a9334df04b61874405f19aa800b469b610e55"
     },
     {
       "task_id": "HPD_0284895839c8__naive_rewrite",
+      "question_id": "HPD_0284895839c8",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Ron",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "23982007ab62646bc9ad3f6f005bf93f20c55673aff2e795095729ca22d09db8"
     },
     {
       "task_id": "HPD_0284895839c8__phase_tree",
+      "question_id": "HPD_0284895839c8",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Ron",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "624f651f7b7078bd3d4973ecc314e580b65d344428ebed9a0364779183900d28"
     },
     {
       "task_id": "HPD_231c702125c3__base",
+      "question_id": "HPD_231c702125c3",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Dumbledore",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "ff924830629048f2633a524c5bd047c7e0c335d28d171718db8d0f6970d8d8b1"
     },
     {
       "task_id": "HPD_231c702125c3__raw_profile",
+      "question_id": "HPD_231c702125c3",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Dumbledore",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "3580111bbbb78f0347683162682c8c9706000f8637453868e18d5baf2201c2f5"
     },
     {
       "task_id": "HPD_231c702125c3__naive_rewrite",
+      "question_id": "HPD_231c702125c3",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Dumbledore",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "c2f0fe066ff5ec0fdbd89500bdc9beaef37764f5fde1865b28377cd86ae68b43"
     },
     {
       "task_id": "HPD_231c702125c3__phase_tree",
+      "question_id": "HPD_231c702125c3",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Dumbledore",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "7fa8c1fb097871b4fce452a92a3fc32610080b0a74ea028866c7b783e3413ede"
     },
     {
       "task_id": "HPD_3dc9d7b49add__base",
+      "question_id": "HPD_3dc9d7b49add",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "729de3578f2582913a4834c9bac286f2534a90dd9ddb6eae68f627d044cf92bb"
     },
     {
       "task_id": "HPD_3dc9d7b49add__raw_profile",
+      "question_id": "HPD_3dc9d7b49add",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "10463f6cf7a68d3476092ca6f1cd4c8571bf7dcee8326bb102264c283124a8e5"
     },
     {
       "task_id": "HPD_3dc9d7b49add__naive_rewrite",
+      "question_id": "HPD_3dc9d7b49add",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "0aeff47ab7b5178ff356b24b640387d1e35763767bef891f89fc712b3948df08"
     },
     {
       "task_id": "HPD_3dc9d7b49add__phase_tree",
+      "question_id": "HPD_3dc9d7b49add",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hermione",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "1239a831a9914495bd4b82c226c83ab47e034a61501c621f90d62eca2dd434c1"
     },
     {
       "task_id": "HPD_0dbd6419acb6__base",
+      "question_id": "HPD_0dbd6419acb6",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "9c3e746bd63b3b3b831f06ecfa26fc0aef302613f10e30b33d2b1ac8514b4958"
     },
     {
       "task_id": "HPD_0dbd6419acb6__raw_profile",
+      "question_id": "HPD_0dbd6419acb6",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "c677186fa866d0a84da398a20a7dbb49e802bc774c95bf7a1290697836f388d7"
     },
     {
       "task_id": "HPD_0dbd6419acb6__naive_rewrite",
+      "question_id": "HPD_0dbd6419acb6",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "00267c7f4280ab4e49c698992704b6007497f68cefc7723319c5bdf55fb35c50"
     },
     {
       "task_id": "HPD_0dbd6419acb6__phase_tree",
+      "question_id": "HPD_0dbd6419acb6",
       "corpus": "HPD",
       "split": "ood_test",
       "role": "Hagrid",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "240ff575f81345882848cb7c60e3dca2b61a78aa936d237bf383171b1c60c90d"
     },
     {
       "task_id": "TNG_a0ee5c856d9c__base",
+      "question_id": "TNG_a0ee5c856d9c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 2,
       "reasoning_sha256": "155007d5151802255949f18be0d6a152fe90ed39bf64fd011ba1736b2e1a76c0"
     },
     {
       "task_id": "TNG_a0ee5c856d9c__raw_profile",
+      "question_id": "TNG_a0ee5c856d9c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "13c0ef1c03570989c4a8c61f81fdae3a79c8fc8d857294a9fa7598e5ebd0c0eb"
     },
     {
       "task_id": "TNG_a0ee5c856d9c__naive_rewrite",
+      "question_id": "TNG_a0ee5c856d9c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "48f2b403519af3b7ffcfbba03a38b9543e72c5ac49572bce396cd2451e216daa"
     },
     {
       "task_id": "TNG_a0ee5c856d9c__phase_tree",
+      "question_id": "TNG_a0ee5c856d9c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "d7d4860e9b17f76b967ec94f29efbab450d59c95cdab26df46998af2c7987a09"
     },
     {
       "task_id": "TNG_512d80d361d3__base",
+      "question_id": "TNG_512d80d361d3",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "d60822a0eca9bcbbce3f15f49084b1b164b9fa306563b832e7a6ceb3f0e0ed48"
     },
     {
       "task_id": "TNG_512d80d361d3__raw_profile",
+      "question_id": "TNG_512d80d361d3",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "d60822a0eca9bcbbce3f15f49084b1b164b9fa306563b832e7a6ceb3f0e0ed48"
     },
     {
       "task_id": "TNG_512d80d361d3__naive_rewrite",
+      "question_id": "TNG_512d80d361d3",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "23949b60ece2f508d2b05e06526de68ace24fd425449bfc77bc08ccba6b70963"
     },
     {
       "task_id": "TNG_512d80d361d3__phase_tree",
+      "question_id": "TNG_512d80d361d3",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "2cae74a9fe8610ce2f64db663953e9abe736d5ba9cde3481a121d243f5e23268"
     },
     {
       "task_id": "TNG_b8a92357c62c__base",
+      "question_id": "TNG_b8a92357c62c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Picard",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "fccda670e4ac3ae3b94429f95d953d6b891b9682f855c983a9434162cf365d32"
     },
     {
       "task_id": "TNG_b8a92357c62c__raw_profile",
+      "question_id": "TNG_b8a92357c62c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Picard",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "fcd4927d35b5c0618f4f3d6b370154858988c6e210f12d54de9c40709f1583d5"
     },
     {
       "task_id": "TNG_b8a92357c62c__naive_rewrite",
+      "question_id": "TNG_b8a92357c62c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Picard",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "131bf0dd34789a5db619d8a4e16cf0a27b092b43bb32a71fcdaf941461867a72"
     },
     {
       "task_id": "TNG_b8a92357c62c__phase_tree",
+      "question_id": "TNG_b8a92357c62c",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Picard",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "e87c11546025814d353e3bad5587156378bdcda4fc2689f6fb58a39800099a53"
     },
     {
       "task_id": "TNG_cf562c371b79__base",
+      "question_id": "TNG_cf562c371b79",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Data",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "9f983894c583a32c948f9f4308c3bd85dcc831d81dd780f82ea3bbd22112845c"
     },
     {
       "task_id": "TNG_cf562c371b79__raw_profile",
+      "question_id": "TNG_cf562c371b79",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Data",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "eda7c871067b0d8df9e6f444b194770debdc87584e7e25b5b078052629189e57"
     },
     {
       "task_id": "TNG_cf562c371b79__naive_rewrite",
+      "question_id": "TNG_cf562c371b79",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Data",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 4,
       "reasoning_sha256": "6ee4f5c05d86752f2bc05dd334486a50de5905022837075b180470b79a192158"
     },
     {
       "task_id": "TNG_cf562c371b79__phase_tree",
+      "question_id": "TNG_cf562c371b79",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Data",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 4,
       "reasoning_sha256": "17c0dd08a7f7cf79884a64f966d3c7bfcb421f546ae89a3451ba932eee21e415"
     },
     {
       "task_id": "TNG_1e4ed361ae25__base",
+      "question_id": "TNG_1e4ed361ae25",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Troi",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "35e910356a5d558d347fddf83be215501ca9ae028854294185cea8ab0ee6163e"
     },
     {
       "task_id": "TNG_1e4ed361ae25__raw_profile",
+      "question_id": "TNG_1e4ed361ae25",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Troi",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "315fc8c4ecd4d9c93412329c29111c27a7e0f014c6a71472592db94d13af7437"
     },
     {
       "task_id": "TNG_1e4ed361ae25__naive_rewrite",
+      "question_id": "TNG_1e4ed361ae25",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Troi",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "6906fad8627da1d0ab01c5e16ade5f129e55e264dab6f986788a46d266f73298"
     },
     {
       "task_id": "TNG_1e4ed361ae25__phase_tree",
+      "question_id": "TNG_1e4ed361ae25",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Troi",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "2a42ab54a267ec8e55a671b45ce16edbe320a504b52545c9548287ca61d84201"
     },
     {
       "task_id": "TNG_076cdfb78f5f__base",
+      "question_id": "TNG_076cdfb78f5f",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Laforge",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "c9289e11a6d2a4f24769ed39eb633c1806d54f32eca34384183a59bd776eb087"
     },
     {
       "task_id": "TNG_076cdfb78f5f__raw_profile",
+      "question_id": "TNG_076cdfb78f5f",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Laforge",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "a16fb3abce0a9036bbd39ce3b986a322209709beb93893740ad68f6c9bf2258b"
     },
     {
       "task_id": "TNG_076cdfb78f5f__naive_rewrite",
+      "question_id": "TNG_076cdfb78f5f",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Laforge",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "dc24fd673b98ff4b31770be870aaa3bd2dee011693e8fccfb0afe871c45bfbee"
     },
     {
       "task_id": "TNG_076cdfb78f5f__phase_tree",
+      "question_id": "TNG_076cdfb78f5f",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Laforge",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "c5a7fb18f1d2c6144b4be40ada678b1c702f748b4bf82cc6e2935ee458da49d5"
     },
     {
       "task_id": "TNG_f22545cc9ea6__base",
+      "question_id": "TNG_f22545cc9ea6",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "204df8cafde46d461784e5a1741788e48b069032c7f4879d4216c2e98beb6e26"
     },
     {
       "task_id": "TNG_f22545cc9ea6__raw_profile",
+      "question_id": "TNG_f22545cc9ea6",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "204df8cafde46d461784e5a1741788e48b069032c7f4879d4216c2e98beb6e26"
     },
     {
       "task_id": "TNG_f22545cc9ea6__naive_rewrite",
+      "question_id": "TNG_f22545cc9ea6",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "9018c2509fc4cef0fa143ba547c76337c11607eb6c0821bf01109df68b54f8a0"
     },
     {
       "task_id": "TNG_f22545cc9ea6__phase_tree",
+      "question_id": "TNG_f22545cc9ea6",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Worf",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "0c3fe3da0aad94b848284ff4ee5c999adc2718f6d9ae9f0de2c90d2ac8eb7b52"
     },
     {
       "task_id": "TNG_925db50d09c9__base",
+      "question_id": "TNG_925db50d09c9",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "98b7bf84e9a47b838fb776c71dd07b8be5f84950c0faf1742c19b9abcf8fb105"
     },
     {
       "task_id": "TNG_925db50d09c9__raw_profile",
+      "question_id": "TNG_925db50d09c9",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "c681396ff7c661658fcfe6056c94ca60cd36b2c8c5e8e86ccda7116664dcbfe6"
     },
     {
       "task_id": "TNG_925db50d09c9__naive_rewrite",
+      "question_id": "TNG_925db50d09c9",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "e2f9c24db74025fcc83537be47197faa2782e17271d7019eb9e6855714de923c"
     },
     {
       "task_id": "TNG_925db50d09c9__phase_tree",
+      "question_id": "TNG_925db50d09c9",
       "corpus": "StarTrek_TNG",
       "split": "random_test",
       "role": "Riker",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "87c5df94db1a37f3941424324c9b06ab80866e171557dd3ea12adbcf09e16917"
     },
     {
       "task_id": "TNG_682d1b83b47f__base",
+      "question_id": "TNG_682d1b83b47f",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "f409ced50f71485501425014056e751ea74d5db1911ac583c6154bbe9d08073b"
     },
     {
       "task_id": "TNG_682d1b83b47f__raw_profile",
+      "question_id": "TNG_682d1b83b47f",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "239b6fe8f8fecbbde180eabe89450f7675c24efe01660311d53973f5604992b3"
     },
     {
       "task_id": "TNG_682d1b83b47f__naive_rewrite",
+      "question_id": "TNG_682d1b83b47f",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "03a47b44c8d2bade2fc9dd659ee77ffdaf2fc6717f58d3c4adc93f9d0c5b4de8"
     },
     {
       "task_id": "TNG_682d1b83b47f__phase_tree",
+      "question_id": "TNG_682d1b83b47f",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "d8197a2307e6ba38101809b9b2ed1d993b146aae7eca43c7c3a248a2c23b4c6c"
     },
     {
       "task_id": "TNG_8f29bfc8ef23__base",
+      "question_id": "TNG_8f29bfc8ef23",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "22fee68afa54c3c9b7fc0615fcd55c4fbe7267e5213d36de5e0bcb6a5006521d"
     },
     {
       "task_id": "TNG_8f29bfc8ef23__raw_profile",
+      "question_id": "TNG_8f29bfc8ef23",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "4ab68c967d21dd79f160ee8e1e76ad40a857b129fd1ae4089796320248f178c2"
     },
     {
       "task_id": "TNG_8f29bfc8ef23__naive_rewrite",
+      "question_id": "TNG_8f29bfc8ef23",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "d5dc4a47ea4689db9ebf4fa73a795d030bc036d66549c0f8b1025e97671ce2c0"
     },
     {
       "task_id": "TNG_8f29bfc8ef23__phase_tree",
+      "question_id": "TNG_8f29bfc8ef23",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "6f4316cb61d81e2f72d8f8502aa898d04a1e85f441b61116a1fda43ed06182af"
     },
     {
       "task_id": "TNG_68163dcda27c__base",
+      "question_id": "TNG_68163dcda27c",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Picard",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "0a3d73b2c0d1dc8afad2b4eac7e4dfc0f1f98cb2de05519bb6230bc441594e53"
     },
     {
       "task_id": "TNG_68163dcda27c__raw_profile",
+      "question_id": "TNG_68163dcda27c",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Picard",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "9d200d99f57b3e83ca43b51aa4cd871c5f245e9af50085a9e1173f05c60487c9"
     },
     {
       "task_id": "TNG_68163dcda27c__naive_rewrite",
+      "question_id": "TNG_68163dcda27c",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Picard",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "ddd72299462e83ab1d7d70de840004f06944587c2e9329e6b6b6bddb23739332"
     },
     {
       "task_id": "TNG_68163dcda27c__phase_tree",
+      "question_id": "TNG_68163dcda27c",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Picard",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "2e8c6624a52a8ca5dc87f0d9f038216ce3860f8583d28c21203617b6bb981e6e"
     },
     {
       "task_id": "TNG_c657ca867af3__base",
+      "question_id": "TNG_c657ca867af3",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Data",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "05d9ac76a51c71ba4e2fa59464d1584667a70f1dd4c2b896d50a5297422977c3"
     },
     {
       "task_id": "TNG_c657ca867af3__raw_profile",
+      "question_id": "TNG_c657ca867af3",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Data",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "94e95f39fec1be1a4dc6629bbf59187127388d70b38be284ff679de10d35e8c6"
     },
     {
       "task_id": "TNG_c657ca867af3__naive_rewrite",
+      "question_id": "TNG_c657ca867af3",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Data",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "d72bbbd6f6186edbf18137bc033e2e5400ebd06db691185f8e88a0652c3c562d"
     },
     {
       "task_id": "TNG_c657ca867af3__phase_tree",
+      "question_id": "TNG_c657ca867af3",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Data",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "f16dce968350c37f439f18b2e54128423e81c0e2dcbef0fa52d4c63c24d0d712"
     },
     {
       "task_id": "TNG_76a2dac858df__base",
+      "question_id": "TNG_76a2dac858df",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Troi",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 3,
       "reasoning_sha256": "5c84b0da23ca3106b583d4a438f40a7fce31b5a8fcdcdaab4ea009ca9e16d46f"
     },
     {
       "task_id": "TNG_76a2dac858df__raw_profile",
+      "question_id": "TNG_76a2dac858df",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Troi",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "dcefd043e2864420146f50a0d882239257e4f3929ad505481a18457ed43cf3fc"
     },
     {
       "task_id": "TNG_76a2dac858df__naive_rewrite",
+      "question_id": "TNG_76a2dac858df",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Troi",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "af9ffc7ae335623b0b68c295a67aa99b1e54cd5745564654157adcb9af418f16"
     },
     {
       "task_id": "TNG_76a2dac858df__phase_tree",
+      "question_id": "TNG_76a2dac858df",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Troi",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "8d2ccb81ca825dd6ea5b061afcabf41d88b842abaa3b1df016e4d0c4cf54c33d"
     },
     {
       "task_id": "TNG_36854c09dc2d__base",
+      "question_id": "TNG_36854c09dc2d",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Laforge",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "6853bfd2bb36c01401fc0ab51a04701a25cbfc7fdcca40743ef11cf3a69e48a4"
     },
     {
       "task_id": "TNG_36854c09dc2d__raw_profile",
+      "question_id": "TNG_36854c09dc2d",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Laforge",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 3,
       "reasoning_sha256": "beb3aade984de39d19417c823380717673dcb12f10b0d54cca98032168be7603"
     },
     {
       "task_id": "TNG_36854c09dc2d__naive_rewrite",
+      "question_id": "TNG_36854c09dc2d",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Laforge",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 3,
       "semantic_score": 2,
       "reasoning_sha256": "73787bfa480d8cc52c8a55ef43eea8d31af6a0a49633ee120b0d606f06b47bd0"
     },
     {
       "task_id": "TNG_36854c09dc2d__phase_tree",
+      "question_id": "TNG_36854c09dc2d",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Laforge",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 4,
       "semantic_score": 4,
       "reasoning_sha256": "d68af4921180dd63a9b72b58a4e980b63fed01806d3589b6b57fd3c54f9e4d61"
     },
     {
       "task_id": "TNG_fa3c2b340d32__base",
+      "question_id": "TNG_fa3c2b340d32",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 2,
       "reasoning_sha256": "cde49c842330a612c2574e8d922065623f92368de65948727dadac58ab9874ff"
     },
     {
       "task_id": "TNG_fa3c2b340d32__raw_profile",
+      "question_id": "TNG_fa3c2b340d32",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 2,
       "semantic_score": 2,
       "reasoning_sha256": "79fdb03dc26847859ccf022af745369ad20f9073b282dd5f1e5774f623082a2f"
     },
     {
       "task_id": "TNG_fa3c2b340d32__naive_rewrite",
+      "question_id": "TNG_fa3c2b340d32",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 2,
       "reasoning_sha256": "219a669996de9d12f67aa05ec0daf9e8cfc39219fa270d51cca872f642f2f660"
     },
     {
       "task_id": "TNG_fa3c2b340d32__phase_tree",
+      "question_id": "TNG_fa3c2b340d32",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Worf",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 2,
       "reasoning_sha256": "cde49c842330a612c2574e8d922065623f92368de65948727dadac58ab9874ff"
     },
     {
       "task_id": "TNG_d98d78e786dd__base",
+      "question_id": "TNG_d98d78e786dd",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "base",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "ac595445859ed34296a52ba2f89266ab0bab7e4430472aebd79e13b20ba1db7f"
     },
     {
       "task_id": "TNG_d98d78e786dd__raw_profile",
+      "question_id": "TNG_d98d78e786dd",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "raw_profile",
+      "parse_method": "strict_json",
       "character_score": 1,
       "semantic_score": 1,
       "reasoning_sha256": "22cb69e9f5b0b0cba1a622d920884b53d9c83fdb9da15ff731f0414741ede17a"
     },
     {
       "task_id": "TNG_d98d78e786dd__naive_rewrite",
+      "question_id": "TNG_d98d78e786dd",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "naive_rewrite",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "9a93474e3f34c9af45a355fa037be7faa3a4354aa826cdd790b16ce862841c77"
     },
     {
       "task_id": "TNG_d98d78e786dd__phase_tree",
+      "question_id": "TNG_d98d78e786dd",
       "corpus": "StarTrek_TNG",
       "split": "ood_test",
       "role": "Riker",
       "mode": "phase_tree",
+      "parse_method": "strict_json",
       "character_score": 5,
       "semantic_score": 5,
       "reasoning_sha256": "9a93474e3f34c9af45a355fa037be7faa3a4354aa826cdd790b16ce862841c77"

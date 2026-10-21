@@ -13,7 +13,8 @@ def main():
  for path in metas:
   m=json.loads(path.read_text())
   if path.parent.name.startswith('step5_judge'):
-   assert m.get('finished_utc'),'API transport must have stopped before archiving'
+   stopped=path.parent/'CALIBRATION.json'
+   assert m.get('finished_utc') or (stopped.exists() and json.loads(stopped.read_text()).get('stopped_utc')),'API transport must have a finished/stopped record before archiving'
   else:assert m.get('complete') and m.get('finished_utc'),'Still running/failed: '+str(path)
  parts=['runs','logs','data/arcane_D-E01','data/arcane_D-E03','data/phase_D-E02','data/update_D-E04'];files=sorted(p for part in parts for p in (root/part).rglob('*') if p.is_file());assert files
  if (root/'environment.json').exists():files.append(root/'environment.json')

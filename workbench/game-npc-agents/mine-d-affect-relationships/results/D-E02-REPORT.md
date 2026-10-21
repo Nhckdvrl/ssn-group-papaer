@@ -53,3 +53,18 @@ ArcANE的同probe跨phase任务仍作为主要探索载体；本任务是独立�
 Actor 256/256均stop；本地judge 256/256均stop，其中255为严格JSON，1条有多余闭括号。该条包含完整两个分数，按**原官方parse_judge_response**的既有fragment fallback恢复，未重跑或按分数挑选；严格诊断曾为255条，见`D-E02-summary-strict.json`。正式轻量表使用256个原生parser读数；单条恢复不改变总体方向。
 
 角色生成193,986输入/3,864输出tokens，wall483.5秒；判分638,920输入/40,250输出tokens，wall1946.8秒；单卡进程wall合计约0.675 GPU·h，含导入/加载上界。严格无静默prompt截断，角色卡源文件、模型revision、全部配置和生成token IDs完整保存。没有训练新模型，没有调用现金API。
+
+## 5. POST-HOC原文下一句预测（计算前已登记）
+
+用同一Qwen2.5-7B、同一64题四种输入，计算原生参考下一句正文的条件NLL，目标token不变、prompt不计loss、无EOS。新增的是256次forward，不是256次角色生成；没有调用评委或API。原Char/Sem主读数不变。
+
+| 条件 | 参考正文NLL（nats/token，低为好） |
+|---|---:|
+| Base | 4.428 |
+| RP | 4.517 |
+| NR | 4.537 |
+| PT | 4.220 |
+
+PT−NR为−0.318，四语料描述性bootstrap95为[−0.490,−0.145]；四个语料均值方向一致，逐题为38条降低、26条升高。Friends上Base略低于PT，PT并非处处最优。这个不依赖LLM Judge的补充读数支持“发布的PT状态有助于当前下一句预测”，但不把原句当唯一合法续写，也不证明长期更新机制、来源严格因果可知或单独树格式带来增益。NR的生成Sem略高于Base，而原句NLL更高，两种读数评价的对象不同。
+
+实际wall155.3秒，所有token边界逐条验证，分数和配对在[D-E02-likelihood.json](D-E02-likelihood.json)。当前总进程GPU·h上界约0.718（含原actor/judge与此forward）。

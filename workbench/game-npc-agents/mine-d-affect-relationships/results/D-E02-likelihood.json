@@ -1,0 +1,4348 @@
+{
+  "operation": "teacher-forced conditional log likelihood of native target content tokens; no EOS, no generation",
+  "n": 256,
+  "by_corpus": {
+    "base": {
+      "Friends": 4.456135869026184,
+      "TheOffice": 4.831282883882523,
+      "HPD": 3.9682711511850357,
+      "StarTrek_TNG": 4.456176921725273
+    },
+    "raw_profile": {
+      "Friends": 4.695952460169792,
+      "TheOffice": 5.187259823083878,
+      "HPD": 3.769376277923584,
+      "StarTrek_TNG": 4.413624718785286
+    },
+    "naive_rewrite": {
+      "Friends": 4.723656386137009,
+      "TheOffice": 5.030239574611187,
+      "HPD": 3.821869358420372,
+      "StarTrek_TNG": 4.573963448405266
+    },
+    "phase_tree": {
+      "Friends": 4.503674536943436,
+      "TheOffice": 4.581811271607876,
+      "HPD": 3.7524257749319077,
+      "StarTrek_TNG": 4.041520528495312
+    }
+  },
+  "corpus_macro": {
+    "base": 4.427966706454754,
+    "raw_profile": 4.516553319990635,
+    "naive_rewrite": 4.537432191893458,
+    "phase_tree": 4.219858027994633
+  },
+  "details": [
+    {
+      "task_id": "Friends_1f4d1a3232cc__base",
+      "question_id": "Friends_1f4d1a3232cc",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "base",
+      "mean_target_nll": 3.946242570877075,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 175,
+      "target_sha256": "818496a0a7b466f3409ee26cd8ade6be77b0311b21205e95c7dc48b6556761a0"
+    },
+    {
+      "task_id": "Friends_1f4d1a3232cc__raw_profile",
+      "question_id": "Friends_1f4d1a3232cc",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.224746227264404,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 484,
+      "target_sha256": "818496a0a7b466f3409ee26cd8ade6be77b0311b21205e95c7dc48b6556761a0"
+    },
+    {
+      "task_id": "Friends_1f4d1a3232cc__naive_rewrite",
+      "question_id": "Friends_1f4d1a3232cc",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.813505172729492,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 389,
+      "target_sha256": "818496a0a7b466f3409ee26cd8ade6be77b0311b21205e95c7dc48b6556761a0"
+    },
+    {
+      "task_id": "Friends_1f4d1a3232cc__phase_tree",
+      "question_id": "Friends_1f4d1a3232cc",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.1765646934509277,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 1879,
+      "target_sha256": "818496a0a7b466f3409ee26cd8ade6be77b0311b21205e95c7dc48b6556761a0"
+    },
+    {
+      "task_id": "Friends_d5f7e4b5e890__base",
+      "question_id": "Friends_d5f7e4b5e890",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "base",
+      "mean_target_nll": 3.8642077445983887,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 996,
+      "target_sha256": "7761cbfb7fc64808233a741728a41d30cc6604904b6897738d7127d3881f57fb"
+    },
+    {
+      "task_id": "Friends_d5f7e4b5e890__raw_profile",
+      "question_id": "Friends_d5f7e4b5e890",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.658616542816162,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1271,
+      "target_sha256": "7761cbfb7fc64808233a741728a41d30cc6604904b6897738d7127d3881f57fb"
+    },
+    {
+      "task_id": "Friends_d5f7e4b5e890__naive_rewrite",
+      "question_id": "Friends_d5f7e4b5e890",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.369326114654541,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1216,
+      "target_sha256": "7761cbfb7fc64808233a741728a41d30cc6604904b6897738d7127d3881f57fb"
+    },
+    {
+      "task_id": "Friends_d5f7e4b5e890__phase_tree",
+      "question_id": "Friends_d5f7e4b5e890",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.975739002227783,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1950,
+      "target_sha256": "7761cbfb7fc64808233a741728a41d30cc6604904b6897738d7127d3881f57fb"
+    },
+    {
+      "task_id": "Friends_18ce439a90db__base",
+      "question_id": "Friends_18ce439a90db",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Ross Geller",
+      "mode": "base",
+      "mean_target_nll": 7.686813831329346,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 445,
+      "target_sha256": "efadc50a9cd20464a8cb3f2b3e0f18f86cef54ae0210fd0bc6eabbea8e1690dd"
+    },
+    {
+      "task_id": "Friends_18ce439a90db__raw_profile",
+      "question_id": "Friends_18ce439a90db",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Ross Geller",
+      "mode": "raw_profile",
+      "mean_target_nll": 8.117339134216309,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 730,
+      "target_sha256": "efadc50a9cd20464a8cb3f2b3e0f18f86cef54ae0210fd0bc6eabbea8e1690dd"
+    },
+    {
+      "task_id": "Friends_18ce439a90db__naive_rewrite",
+      "question_id": "Friends_18ce439a90db",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Ross Geller",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 7.634014129638672,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 665,
+      "target_sha256": "efadc50a9cd20464a8cb3f2b3e0f18f86cef54ae0210fd0bc6eabbea8e1690dd"
+    },
+    {
+      "task_id": "Friends_18ce439a90db__phase_tree",
+      "question_id": "Friends_18ce439a90db",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Ross Geller",
+      "mode": "phase_tree",
+      "mean_target_nll": 8.622574806213379,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1360,
+      "target_sha256": "efadc50a9cd20464a8cb3f2b3e0f18f86cef54ae0210fd0bc6eabbea8e1690dd"
+    },
+    {
+      "task_id": "Friends_341c1da17072__base",
+      "question_id": "Friends_341c1da17072",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Chandler Bing",
+      "mode": "base",
+      "mean_target_nll": 5.712317943572998,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 620,
+      "target_sha256": "76d3074d190d913d417d500bdc7cb7e3a51f51c59a81394e627580eaacbcce01"
+    },
+    {
+      "task_id": "Friends_341c1da17072__raw_profile",
+      "question_id": "Friends_341c1da17072",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Chandler Bing",
+      "mode": "raw_profile",
+      "mean_target_nll": 6.578375816345215,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 864,
+      "target_sha256": "76d3074d190d913d417d500bdc7cb7e3a51f51c59a81394e627580eaacbcce01"
+    },
+    {
+      "task_id": "Friends_341c1da17072__naive_rewrite",
+      "question_id": "Friends_341c1da17072",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Chandler Bing",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.332320690155029,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 857,
+      "target_sha256": "76d3074d190d913d417d500bdc7cb7e3a51f51c59a81394e627580eaacbcce01"
+    },
+    {
+      "task_id": "Friends_341c1da17072__phase_tree",
+      "question_id": "Friends_341c1da17072",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Chandler Bing",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.341639995574951,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 2704,
+      "target_sha256": "76d3074d190d913d417d500bdc7cb7e3a51f51c59a81394e627580eaacbcce01"
+    },
+    {
+      "task_id": "Friends_3455ccf07d94__base",
+      "question_id": "Friends_3455ccf07d94",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Monica Geller",
+      "mode": "base",
+      "mean_target_nll": 3.7961649894714355,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 249,
+      "target_sha256": "ca2c2243f3aba7bd7721f04b8fac12e9b188e0ce52c3145a675e6e907d13e7fb"
+    },
+    {
+      "task_id": "Friends_3455ccf07d94__raw_profile",
+      "question_id": "Friends_3455ccf07d94",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Monica Geller",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.96558141708374,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 532,
+      "target_sha256": "ca2c2243f3aba7bd7721f04b8fac12e9b188e0ce52c3145a675e6e907d13e7fb"
+    },
+    {
+      "task_id": "Friends_3455ccf07d94__naive_rewrite",
+      "question_id": "Friends_3455ccf07d94",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Monica Geller",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.342640399932861,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 484,
+      "target_sha256": "ca2c2243f3aba7bd7721f04b8fac12e9b188e0ce52c3145a675e6e907d13e7fb"
+    },
+    {
+      "task_id": "Friends_3455ccf07d94__phase_tree",
+      "question_id": "Friends_3455ccf07d94",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Monica Geller",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.540517330169678,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 2121,
+      "target_sha256": "ca2c2243f3aba7bd7721f04b8fac12e9b188e0ce52c3145a675e6e907d13e7fb"
+    },
+    {
+      "task_id": "Friends_9fa0a4d0344d__base",
+      "question_id": "Friends_9fa0a4d0344d",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Joey Tribbiani",
+      "mode": "base",
+      "mean_target_nll": 4.135003566741943,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 475,
+      "target_sha256": "ab56c68a8e678b03499fb40bcf15c0355292231dd3b147ed40d49e1560a081a5"
+    },
+    {
+      "task_id": "Friends_9fa0a4d0344d__raw_profile",
+      "question_id": "Friends_9fa0a4d0344d",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Joey Tribbiani",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.065694808959961,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 758,
+      "target_sha256": "ab56c68a8e678b03499fb40bcf15c0355292231dd3b147ed40d49e1560a081a5"
+    },
+    {
+      "task_id": "Friends_9fa0a4d0344d__naive_rewrite",
+      "question_id": "Friends_9fa0a4d0344d",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Joey Tribbiani",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.417288303375244,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 690,
+      "target_sha256": "ab56c68a8e678b03499fb40bcf15c0355292231dd3b147ed40d49e1560a081a5"
+    },
+    {
+      "task_id": "Friends_9fa0a4d0344d__phase_tree",
+      "question_id": "Friends_9fa0a4d0344d",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Joey Tribbiani",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.250083923339844,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 1165,
+      "target_sha256": "ab56c68a8e678b03499fb40bcf15c0355292231dd3b147ed40d49e1560a081a5"
+    },
+    {
+      "task_id": "Friends_0cf810d3376e__base",
+      "question_id": "Friends_0cf810d3376e",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "base",
+      "mean_target_nll": 4.195028305053711,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 403,
+      "target_sha256": "605b820204b0c5c6ec7e0ac1b76ea45099655578d97121af846c0873dcfaa3e8"
+    },
+    {
+      "task_id": "Friends_0cf810d3376e__raw_profile",
+      "question_id": "Friends_0cf810d3376e",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.216014862060547,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 712,
+      "target_sha256": "605b820204b0c5c6ec7e0ac1b76ea45099655578d97121af846c0873dcfaa3e8"
+    },
+    {
+      "task_id": "Friends_0cf810d3376e__naive_rewrite",
+      "question_id": "Friends_0cf810d3376e",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.012685775756836,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 632,
+      "target_sha256": "605b820204b0c5c6ec7e0ac1b76ea45099655578d97121af846c0873dcfaa3e8"
+    },
+    {
+      "task_id": "Friends_0cf810d3376e__phase_tree",
+      "question_id": "Friends_0cf810d3376e",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Phoebe Buffay",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.527120590209961,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 2129,
+      "target_sha256": "605b820204b0c5c6ec7e0ac1b76ea45099655578d97121af846c0873dcfaa3e8"
+    },
+    {
+      "task_id": "Friends_718aa076e95c__base",
+      "question_id": "Friends_718aa076e95c",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "base",
+      "mean_target_nll": 4.911086082458496,
+      "n_target_tokens": 10,
+      "n_prompt_tokens": 472,
+      "target_sha256": "7b9473381d72a02e901a579452dd38f14a530521212b17bc440d19d3cb7b270d"
+    },
+    {
+      "task_id": "Friends_718aa076e95c__raw_profile",
+      "question_id": "Friends_718aa076e95c",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.815854072570801,
+      "n_target_tokens": 10,
+      "n_prompt_tokens": 747,
+      "target_sha256": "7b9473381d72a02e901a579452dd38f14a530521212b17bc440d19d3cb7b270d"
+    },
+    {
+      "task_id": "Friends_718aa076e95c__naive_rewrite",
+      "question_id": "Friends_718aa076e95c",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.466823101043701,
+      "n_target_tokens": 10,
+      "n_prompt_tokens": 726,
+      "target_sha256": "7b9473381d72a02e901a579452dd38f14a530521212b17bc440d19d3cb7b270d"
+    },
+    {
+      "task_id": "Friends_718aa076e95c__phase_tree",
+      "question_id": "Friends_718aa076e95c",
+      "corpus": "Friends",
+      "split": "random_test",
+      "role": "Rachel Green",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.799711227416992,
+      "n_target_tokens": 10,
+      "n_prompt_tokens": 1409,
+      "target_sha256": "7b9473381d72a02e901a579452dd38f14a530521212b17bc440d19d3cb7b270d"
+    },
+    {
+      "task_id": "Friends_89f4f857f6c7__base",
+      "question_id": "Friends_89f4f857f6c7",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "base",
+      "mean_target_nll": 3.310723066329956,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 916,
+      "target_sha256": "4ee0062ece95acf727d49e7b3364888b1fce52353702c5df1a6b59d2e5ba35f3"
+    },
+    {
+      "task_id": "Friends_89f4f857f6c7__raw_profile",
+      "question_id": "Friends_89f4f857f6c7",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.765582323074341,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 1225,
+      "target_sha256": "4ee0062ece95acf727d49e7b3364888b1fce52353702c5df1a6b59d2e5ba35f3"
+    },
+    {
+      "task_id": "Friends_89f4f857f6c7__naive_rewrite",
+      "question_id": "Friends_89f4f857f6c7",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.3615238666534424,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 1119,
+      "target_sha256": "4ee0062ece95acf727d49e7b3364888b1fce52353702c5df1a6b59d2e5ba35f3"
+    },
+    {
+      "task_id": "Friends_89f4f857f6c7__phase_tree",
+      "question_id": "Friends_89f4f857f6c7",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.1759586334228516,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 2881,
+      "target_sha256": "4ee0062ece95acf727d49e7b3364888b1fce52353702c5df1a6b59d2e5ba35f3"
+    },
+    {
+      "task_id": "Friends_67fc3a5dd700__base",
+      "question_id": "Friends_67fc3a5dd700",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "base",
+      "mean_target_nll": 5.950437545776367,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 434,
+      "target_sha256": "1dc1ac03d6f97b4933f23b8f4ae72a7270481ce2cc4c8a20c389b5c7e66cc843"
+    },
+    {
+      "task_id": "Friends_67fc3a5dd700__raw_profile",
+      "question_id": "Friends_67fc3a5dd700",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "raw_profile",
+      "mean_target_nll": 6.816673278808594,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 709,
+      "target_sha256": "1dc1ac03d6f97b4933f23b8f4ae72a7270481ce2cc4c8a20c389b5c7e66cc843"
+    },
+    {
+      "task_id": "Friends_67fc3a5dd700__naive_rewrite",
+      "question_id": "Friends_67fc3a5dd700",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.003757953643799,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 657,
+      "target_sha256": "1dc1ac03d6f97b4933f23b8f4ae72a7270481ce2cc4c8a20c389b5c7e66cc843"
+    },
+    {
+      "task_id": "Friends_67fc3a5dd700__phase_tree",
+      "question_id": "Friends_67fc3a5dd700",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.710929870605469,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 2080,
+      "target_sha256": "1dc1ac03d6f97b4933f23b8f4ae72a7270481ce2cc4c8a20c389b5c7e66cc843"
+    },
+    {
+      "task_id": "Friends_d509aae1b173__base",
+      "question_id": "Friends_d509aae1b173",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Ross Geller",
+      "mode": "base",
+      "mean_target_nll": 4.6923441886901855,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 324,
+      "target_sha256": "8e87f740c34ab05fe27273946e060d26a0339e0645353a37dfac37121bd971c3"
+    },
+    {
+      "task_id": "Friends_d509aae1b173__raw_profile",
+      "question_id": "Friends_d509aae1b173",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Ross Geller",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.148656368255615,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 609,
+      "target_sha256": "8e87f740c34ab05fe27273946e060d26a0339e0645353a37dfac37121bd971c3"
+    },
+    {
+      "task_id": "Friends_d509aae1b173__naive_rewrite",
+      "question_id": "Friends_d509aae1b173",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Ross Geller",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.908974647521973,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 520,
+      "target_sha256": "8e87f740c34ab05fe27273946e060d26a0339e0645353a37dfac37121bd971c3"
+    },
+    {
+      "task_id": "Friends_d509aae1b173__phase_tree",
+      "question_id": "Friends_d509aae1b173",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Ross Geller",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.959456443786621,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 3771,
+      "target_sha256": "8e87f740c34ab05fe27273946e060d26a0339e0645353a37dfac37121bd971c3"
+    },
+    {
+      "task_id": "Friends_a5c9f84001e0__base",
+      "question_id": "Friends_a5c9f84001e0",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Chandler Bing",
+      "mode": "base",
+      "mean_target_nll": 2.665268898010254,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 121,
+      "target_sha256": "a2391e679043583a95692bd50bb760726382711f9ba5fe49fc76953c500552f9"
+    },
+    {
+      "task_id": "Friends_a5c9f84001e0__raw_profile",
+      "question_id": "Friends_a5c9f84001e0",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Chandler Bing",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.884629726409912,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 365,
+      "target_sha256": "a2391e679043583a95692bd50bb760726382711f9ba5fe49fc76953c500552f9"
+    },
+    {
+      "task_id": "Friends_a5c9f84001e0__naive_rewrite",
+      "question_id": "Friends_a5c9f84001e0",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Chandler Bing",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.819993495941162,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 333,
+      "target_sha256": "a2391e679043583a95692bd50bb760726382711f9ba5fe49fc76953c500552f9"
+    },
+    {
+      "task_id": "Friends_a5c9f84001e0__phase_tree",
+      "question_id": "Friends_a5c9f84001e0",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Chandler Bing",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.7512059211730957,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 2939,
+      "target_sha256": "a2391e679043583a95692bd50bb760726382711f9ba5fe49fc76953c500552f9"
+    },
+    {
+      "task_id": "Friends_f600cbfe9fc9__base",
+      "question_id": "Friends_f600cbfe9fc9",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Monica Geller",
+      "mode": "base",
+      "mean_target_nll": 4.2736592292785645,
+      "n_target_tokens": 25,
+      "n_prompt_tokens": 196,
+      "target_sha256": "0f7996fed748e94d8871c35c86e7f2fb1dacbc75c672c34dfc129138d488b3c1"
+    },
+    {
+      "task_id": "Friends_f600cbfe9fc9__raw_profile",
+      "question_id": "Friends_f600cbfe9fc9",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Monica Geller",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.076577186584473,
+      "n_target_tokens": 25,
+      "n_prompt_tokens": 479,
+      "target_sha256": "0f7996fed748e94d8871c35c86e7f2fb1dacbc75c672c34dfc129138d488b3c1"
+    },
+    {
+      "task_id": "Friends_f600cbfe9fc9__naive_rewrite",
+      "question_id": "Friends_f600cbfe9fc9",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Monica Geller",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.691980838775635,
+      "n_target_tokens": 25,
+      "n_prompt_tokens": 424,
+      "target_sha256": "0f7996fed748e94d8871c35c86e7f2fb1dacbc75c672c34dfc129138d488b3c1"
+    },
+    {
+      "task_id": "Friends_f600cbfe9fc9__phase_tree",
+      "question_id": "Friends_f600cbfe9fc9",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Monica Geller",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.6936402320861816,
+      "n_target_tokens": 25,
+      "n_prompt_tokens": 2284,
+      "target_sha256": "0f7996fed748e94d8871c35c86e7f2fb1dacbc75c672c34dfc129138d488b3c1"
+    },
+    {
+      "task_id": "Friends_bf1ea4e16d83__base",
+      "question_id": "Friends_bf1ea4e16d83",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Joey Tribbiani",
+      "mode": "base",
+      "mean_target_nll": 3.8948354721069336,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 515,
+      "target_sha256": "0e9743880447b9ffadc449f369b41b2adc225b71681088136d46dbd0d6d9a282"
+    },
+    {
+      "task_id": "Friends_bf1ea4e16d83__raw_profile",
+      "question_id": "Friends_bf1ea4e16d83",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Joey Tribbiani",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.4039511680603027,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 798,
+      "target_sha256": "0e9743880447b9ffadc449f369b41b2adc225b71681088136d46dbd0d6d9a282"
+    },
+    {
+      "task_id": "Friends_bf1ea4e16d83__naive_rewrite",
+      "question_id": "Friends_bf1ea4e16d83",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Joey Tribbiani",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.119351387023926,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 706,
+      "target_sha256": "0e9743880447b9ffadc449f369b41b2adc225b71681088136d46dbd0d6d9a282"
+    },
+    {
+      "task_id": "Friends_bf1ea4e16d83__phase_tree",
+      "question_id": "Friends_bf1ea4e16d83",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Joey Tribbiani",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.420968770980835,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 2250,
+      "target_sha256": "0e9743880447b9ffadc449f369b41b2adc225b71681088136d46dbd0d6d9a282"
+    },
+    {
+      "task_id": "Friends_9c3ee0b8a13f__base",
+      "question_id": "Friends_9c3ee0b8a13f",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "base",
+      "mean_target_nll": 4.121717929840088,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 468,
+      "target_sha256": "66cdf6390480062c5ba48ed14ceb8028d9a1a107c5543698c7ce1721ad08abdb"
+    },
+    {
+      "task_id": "Friends_9c3ee0b8a13f__raw_profile",
+      "question_id": "Friends_9c3ee0b8a13f",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.580327033996582,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 777,
+      "target_sha256": "66cdf6390480062c5ba48ed14ceb8028d9a1a107c5543698c7ce1721ad08abdb"
+    },
+    {
+      "task_id": "Friends_9c3ee0b8a13f__naive_rewrite",
+      "question_id": "Friends_9c3ee0b8a13f",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.408757209777832,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 670,
+      "target_sha256": "66cdf6390480062c5ba48ed14ceb8028d9a1a107c5543698c7ce1721ad08abdb"
+    },
+    {
+      "task_id": "Friends_9c3ee0b8a13f__phase_tree",
+      "question_id": "Friends_9c3ee0b8a13f",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Phoebe Buffay",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.5722832679748535,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 2522,
+      "target_sha256": "66cdf6390480062c5ba48ed14ceb8028d9a1a107c5543698c7ce1721ad08abdb"
+    },
+    {
+      "task_id": "Friends_13b74e75e9c5__base",
+      "question_id": "Friends_13b74e75e9c5",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "base",
+      "mean_target_nll": 4.142322540283203,
+      "n_target_tokens": 29,
+      "n_prompt_tokens": 199,
+      "target_sha256": "2861e4674aa4339f5a5640a776a58dbb4d22c1a2f8157bebd7049ee71050a297"
+    },
+    {
+      "task_id": "Friends_13b74e75e9c5__raw_profile",
+      "question_id": "Friends_13b74e75e9c5",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.816619396209717,
+      "n_target_tokens": 29,
+      "n_prompt_tokens": 474,
+      "target_sha256": "2861e4674aa4339f5a5640a776a58dbb4d22c1a2f8157bebd7049ee71050a297"
+    },
+    {
+      "task_id": "Friends_13b74e75e9c5__naive_rewrite",
+      "question_id": "Friends_13b74e75e9c5",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.875559091567993,
+      "n_target_tokens": 29,
+      "n_prompt_tokens": 414,
+      "target_sha256": "2861e4674aa4339f5a5640a776a58dbb4d22c1a2f8157bebd7049ee71050a297"
+    },
+    {
+      "task_id": "Friends_13b74e75e9c5__phase_tree",
+      "question_id": "Friends_13b74e75e9c5",
+      "corpus": "Friends",
+      "split": "ood_test",
+      "role": "Rachel Green",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.540397882461548,
+      "n_target_tokens": 29,
+      "n_prompt_tokens": 1914,
+      "target_sha256": "2861e4674aa4339f5a5640a776a58dbb4d22c1a2f8157bebd7049ee71050a297"
+    },
+    {
+      "task_id": "TheOffice_b7c1d954e312__base",
+      "question_id": "TheOffice_b7c1d954e312",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "base",
+      "mean_target_nll": 2.0238187313079834,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 191,
+      "target_sha256": "6ad507d08daab1e7b8746d1d6b0a64ca2a276cbba5c90c31ddafa75a7d58aeb2"
+    },
+    {
+      "task_id": "TheOffice_b7c1d954e312__raw_profile",
+      "question_id": "TheOffice_b7c1d954e312",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "raw_profile",
+      "mean_target_nll": 1.8633058071136475,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 380,
+      "target_sha256": "6ad507d08daab1e7b8746d1d6b0a64ca2a276cbba5c90c31ddafa75a7d58aeb2"
+    },
+    {
+      "task_id": "TheOffice_b7c1d954e312__naive_rewrite",
+      "question_id": "TheOffice_b7c1d954e312",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 1.3996728658676147,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 359,
+      "target_sha256": "6ad507d08daab1e7b8746d1d6b0a64ca2a276cbba5c90c31ddafa75a7d58aeb2"
+    },
+    {
+      "task_id": "TheOffice_b7c1d954e312__phase_tree",
+      "question_id": "TheOffice_b7c1d954e312",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "phase_tree",
+      "mean_target_nll": 1.9213942289352417,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 556,
+      "target_sha256": "6ad507d08daab1e7b8746d1d6b0a64ca2a276cbba5c90c31ddafa75a7d58aeb2"
+    },
+    {
+      "task_id": "TheOffice_2a0696f97f66__base",
+      "question_id": "TheOffice_2a0696f97f66",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "base",
+      "mean_target_nll": 4.49979305267334,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 135,
+      "target_sha256": "79f31dc5f956d78221abd64c3ac65c6ac8413f0f10c8115fda024a3b69253895"
+    },
+    {
+      "task_id": "TheOffice_2a0696f97f66__raw_profile",
+      "question_id": "TheOffice_2a0696f97f66",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.386927604675293,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 393,
+      "target_sha256": "79f31dc5f956d78221abd64c3ac65c6ac8413f0f10c8115fda024a3b69253895"
+    },
+    {
+      "task_id": "TheOffice_2a0696f97f66__naive_rewrite",
+      "question_id": "TheOffice_2a0696f97f66",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.741722822189331,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 354,
+      "target_sha256": "79f31dc5f956d78221abd64c3ac65c6ac8413f0f10c8115fda024a3b69253895"
+    },
+    {
+      "task_id": "TheOffice_2a0696f97f66__phase_tree",
+      "question_id": "TheOffice_2a0696f97f66",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.57118821144104,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 476,
+      "target_sha256": "79f31dc5f956d78221abd64c3ac65c6ac8413f0f10c8115fda024a3b69253895"
+    },
+    {
+      "task_id": "TheOffice_6edc3e95b691__base",
+      "question_id": "TheOffice_6edc3e95b691",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Andy",
+      "mode": "base",
+      "mean_target_nll": 7.002965450286865,
+      "n_target_tokens": 24,
+      "n_prompt_tokens": 159,
+      "target_sha256": "a7a3939d28bafe6108d06a39ab92bd25a5fb01a6935af42a245f41c8efb34c50"
+    },
+    {
+      "task_id": "TheOffice_6edc3e95b691__raw_profile",
+      "question_id": "TheOffice_6edc3e95b691",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Andy",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.990895748138428,
+      "n_target_tokens": 24,
+      "n_prompt_tokens": 463,
+      "target_sha256": "a7a3939d28bafe6108d06a39ab92bd25a5fb01a6935af42a245f41c8efb34c50"
+    },
+    {
+      "task_id": "TheOffice_6edc3e95b691__naive_rewrite",
+      "question_id": "TheOffice_6edc3e95b691",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Andy",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.771139621734619,
+      "n_target_tokens": 24,
+      "n_prompt_tokens": 399,
+      "target_sha256": "a7a3939d28bafe6108d06a39ab92bd25a5fb01a6935af42a245f41c8efb34c50"
+    },
+    {
+      "task_id": "TheOffice_6edc3e95b691__phase_tree",
+      "question_id": "TheOffice_6edc3e95b691",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Andy",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.397491455078125,
+      "n_target_tokens": 24,
+      "n_prompt_tokens": 486,
+      "target_sha256": "a7a3939d28bafe6108d06a39ab92bd25a5fb01a6935af42a245f41c8efb34c50"
+    },
+    {
+      "task_id": "TheOffice_b52d1028d846__base",
+      "question_id": "TheOffice_b52d1028d846",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Jim",
+      "mode": "base",
+      "mean_target_nll": 4.296949863433838,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 266,
+      "target_sha256": "55f6e9d639a2df0e85fe3bb8694d5efa04d1253f29b78d42dcc30ad9be5ab755"
+    },
+    {
+      "task_id": "TheOffice_b52d1028d846__raw_profile",
+      "question_id": "TheOffice_b52d1028d846",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Jim",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.91721510887146,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 482,
+      "target_sha256": "55f6e9d639a2df0e85fe3bb8694d5efa04d1253f29b78d42dcc30ad9be5ab755"
+    },
+    {
+      "task_id": "TheOffice_b52d1028d846__naive_rewrite",
+      "question_id": "TheOffice_b52d1028d846",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Jim",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.106625556945801,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 499,
+      "target_sha256": "55f6e9d639a2df0e85fe3bb8694d5efa04d1253f29b78d42dcc30ad9be5ab755"
+    },
+    {
+      "task_id": "TheOffice_b52d1028d846__phase_tree",
+      "question_id": "TheOffice_b52d1028d846",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Jim",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.675520181655884,
+      "n_target_tokens": 18,
+      "n_prompt_tokens": 651,
+      "target_sha256": "55f6e9d639a2df0e85fe3bb8694d5efa04d1253f29b78d42dcc30ad9be5ab755"
+    },
+    {
+      "task_id": "TheOffice_a287306571c2__base",
+      "question_id": "TheOffice_a287306571c2",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Dwight",
+      "mode": "base",
+      "mean_target_nll": 3.530656337738037,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 371,
+      "target_sha256": "8158c11e20a82537d1521c89013741632cddb65db06987c75d8060083f1f411f"
+    },
+    {
+      "task_id": "TheOffice_a287306571c2__raw_profile",
+      "question_id": "TheOffice_a287306571c2",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Dwight",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.780930280685425,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 711,
+      "target_sha256": "8158c11e20a82537d1521c89013741632cddb65db06987c75d8060083f1f411f"
+    },
+    {
+      "task_id": "TheOffice_a287306571c2__naive_rewrite",
+      "question_id": "TheOffice_a287306571c2",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Dwight",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.0091166496276855,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 580,
+      "target_sha256": "8158c11e20a82537d1521c89013741632cddb65db06987c75d8060083f1f411f"
+    },
+    {
+      "task_id": "TheOffice_a287306571c2__phase_tree",
+      "question_id": "TheOffice_a287306571c2",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Dwight",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.895284414291382,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1047,
+      "target_sha256": "8158c11e20a82537d1521c89013741632cddb65db06987c75d8060083f1f411f"
+    },
+    {
+      "task_id": "TheOffice_131df5281240__base",
+      "question_id": "TheOffice_131df5281240",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Michael",
+      "mode": "base",
+      "mean_target_nll": 4.893627166748047,
+      "n_target_tokens": 48,
+      "n_prompt_tokens": 217,
+      "target_sha256": "ade1c8f4a76070f41910a952e8183d4524d9f4be2d15d0cef428578e63481a23"
+    },
+    {
+      "task_id": "TheOffice_131df5281240__raw_profile",
+      "question_id": "TheOffice_131df5281240",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Michael",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.686459541320801,
+      "n_target_tokens": 48,
+      "n_prompt_tokens": 489,
+      "target_sha256": "ade1c8f4a76070f41910a952e8183d4524d9f4be2d15d0cef428578e63481a23"
+    },
+    {
+      "task_id": "TheOffice_131df5281240__naive_rewrite",
+      "question_id": "TheOffice_131df5281240",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Michael",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.587830543518066,
+      "n_target_tokens": 48,
+      "n_prompt_tokens": 432,
+      "target_sha256": "ade1c8f4a76070f41910a952e8183d4524d9f4be2d15d0cef428578e63481a23"
+    },
+    {
+      "task_id": "TheOffice_131df5281240__phase_tree",
+      "question_id": "TheOffice_131df5281240",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Michael",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.7947611808776855,
+      "n_target_tokens": 48,
+      "n_prompt_tokens": 655,
+      "target_sha256": "ade1c8f4a76070f41910a952e8183d4524d9f4be2d15d0cef428578e63481a23"
+    },
+    {
+      "task_id": "TheOffice_9ce880cace9b__base",
+      "question_id": "TheOffice_9ce880cace9b",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "base",
+      "mean_target_nll": 4.106719970703125,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 233,
+      "target_sha256": "b22a43ccb79c3f3ddb48663a95c702cedda7a1a3f93ddbe68bd8448f66bdb930"
+    },
+    {
+      "task_id": "TheOffice_9ce880cace9b__raw_profile",
+      "question_id": "TheOffice_9ce880cace9b",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.284455299377441,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 422,
+      "target_sha256": "b22a43ccb79c3f3ddb48663a95c702cedda7a1a3f93ddbe68bd8448f66bdb930"
+    },
+    {
+      "task_id": "TheOffice_9ce880cace9b__naive_rewrite",
+      "question_id": "TheOffice_9ce880cace9b",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.15093469619751,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 444,
+      "target_sha256": "b22a43ccb79c3f3ddb48663a95c702cedda7a1a3f93ddbe68bd8448f66bdb930"
+    },
+    {
+      "task_id": "TheOffice_9ce880cace9b__phase_tree",
+      "question_id": "TheOffice_9ce880cace9b",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Angela",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.195281505584717,
+      "n_target_tokens": 39,
+      "n_prompt_tokens": 618,
+      "target_sha256": "b22a43ccb79c3f3ddb48663a95c702cedda7a1a3f93ddbe68bd8448f66bdb930"
+    },
+    {
+      "task_id": "TheOffice_771c740e1913__base",
+      "question_id": "TheOffice_771c740e1913",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "base",
+      "mean_target_nll": 4.056051254272461,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 157,
+      "target_sha256": "a2143ee00ebcc626ad0b54f1703a4c27c6f49bb5c90efddf91dd5e4cb1e138ca"
+    },
+    {
+      "task_id": "TheOffice_771c740e1913__raw_profile",
+      "question_id": "TheOffice_771c740e1913",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.3504323959350586,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 415,
+      "target_sha256": "a2143ee00ebcc626ad0b54f1703a4c27c6f49bb5c90efddf91dd5e4cb1e138ca"
+    },
+    {
+      "task_id": "TheOffice_771c740e1913__naive_rewrite",
+      "question_id": "TheOffice_771c740e1913",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.005602836608887,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 346,
+      "target_sha256": "a2143ee00ebcc626ad0b54f1703a4c27c6f49bb5c90efddf91dd5e4cb1e138ca"
+    },
+    {
+      "task_id": "TheOffice_771c740e1913__phase_tree",
+      "question_id": "TheOffice_771c740e1913",
+      "corpus": "TheOffice",
+      "split": "random_test",
+      "role": "Pam",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.637319564819336,
+      "n_target_tokens": 19,
+      "n_prompt_tokens": 729,
+      "target_sha256": "a2143ee00ebcc626ad0b54f1703a4c27c6f49bb5c90efddf91dd5e4cb1e138ca"
+    },
+    {
+      "task_id": "TheOffice_c83063cd9cc4__base",
+      "question_id": "TheOffice_c83063cd9cc4",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "base",
+      "mean_target_nll": 5.781722545623779,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 157,
+      "target_sha256": "81f0c21197e49912ec3f820cef00903b8134dcab5bf4364b05bc388fdcb2b182"
+    },
+    {
+      "task_id": "TheOffice_c83063cd9cc4__raw_profile",
+      "question_id": "TheOffice_c83063cd9cc4",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "raw_profile",
+      "mean_target_nll": 12.322237968444824,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 346,
+      "target_sha256": "81f0c21197e49912ec3f820cef00903b8134dcab5bf4364b05bc388fdcb2b182"
+    },
+    {
+      "task_id": "TheOffice_c83063cd9cc4__naive_rewrite",
+      "question_id": "TheOffice_c83063cd9cc4",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 8.878623962402344,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 337,
+      "target_sha256": "81f0c21197e49912ec3f820cef00903b8134dcab5bf4364b05bc388fdcb2b182"
+    },
+    {
+      "task_id": "TheOffice_c83063cd9cc4__phase_tree",
+      "question_id": "TheOffice_c83063cd9cc4",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "phase_tree",
+      "mean_target_nll": 9.977147102355957,
+      "n_target_tokens": 4,
+      "n_prompt_tokens": 850,
+      "target_sha256": "81f0c21197e49912ec3f820cef00903b8134dcab5bf4364b05bc388fdcb2b182"
+    },
+    {
+      "task_id": "TheOffice_5a3cbddee6f8__base",
+      "question_id": "TheOffice_5a3cbddee6f8",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "base",
+      "mean_target_nll": 6.9121880531311035,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 176,
+      "target_sha256": "ab21b1bb0ded8fd2385561cb8b9c6b596df8ed3d31fad2bceddb28235f53630d"
+    },
+    {
+      "task_id": "TheOffice_5a3cbddee6f8__raw_profile",
+      "question_id": "TheOffice_5a3cbddee6f8",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.842034816741943,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 434,
+      "target_sha256": "ab21b1bb0ded8fd2385561cb8b9c6b596df8ed3d31fad2bceddb28235f53630d"
+    },
+    {
+      "task_id": "TheOffice_5a3cbddee6f8__naive_rewrite",
+      "question_id": "TheOffice_5a3cbddee6f8",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.867977619171143,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 383,
+      "target_sha256": "ab21b1bb0ded8fd2385561cb8b9c6b596df8ed3d31fad2bceddb28235f53630d"
+    },
+    {
+      "task_id": "TheOffice_5a3cbddee6f8__phase_tree",
+      "question_id": "TheOffice_5a3cbddee6f8",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.3767781257629395,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 2370,
+      "target_sha256": "ab21b1bb0ded8fd2385561cb8b9c6b596df8ed3d31fad2bceddb28235f53630d"
+    },
+    {
+      "task_id": "TheOffice_88c282c7bcd5__base",
+      "question_id": "TheOffice_88c282c7bcd5",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Andy",
+      "mode": "base",
+      "mean_target_nll": 6.385965347290039,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 144,
+      "target_sha256": "be673d1906ee2874e573f52378c047eb4b169642d4bc742e575ab9481d8e284f"
+    },
+    {
+      "task_id": "TheOffice_88c282c7bcd5__raw_profile",
+      "question_id": "TheOffice_88c282c7bcd5",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Andy",
+      "mode": "raw_profile",
+      "mean_target_nll": 8.053099632263184,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 448,
+      "target_sha256": "be673d1906ee2874e573f52378c047eb4b169642d4bc742e575ab9481d8e284f"
+    },
+    {
+      "task_id": "TheOffice_88c282c7bcd5__naive_rewrite",
+      "question_id": "TheOffice_88c282c7bcd5",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Andy",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 7.95028018951416,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 391,
+      "target_sha256": "be673d1906ee2874e573f52378c047eb4b169642d4bc742e575ab9481d8e284f"
+    },
+    {
+      "task_id": "TheOffice_88c282c7bcd5__phase_tree",
+      "question_id": "TheOffice_88c282c7bcd5",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Andy",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.710762023925781,
+      "n_target_tokens": 9,
+      "n_prompt_tokens": 623,
+      "target_sha256": "be673d1906ee2874e573f52378c047eb4b169642d4bc742e575ab9481d8e284f"
+    },
+    {
+      "task_id": "TheOffice_b00ca3c2cf45__base",
+      "question_id": "TheOffice_b00ca3c2cf45",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Jim",
+      "mode": "base",
+      "mean_target_nll": 3.907491683959961,
+      "n_target_tokens": 5,
+      "n_prompt_tokens": 549,
+      "target_sha256": "c49365e55f99241f4afe8616f0945363ece80ff472fb83c3e5b2719adb408de3"
+    },
+    {
+      "task_id": "TheOffice_b00ca3c2cf45__raw_profile",
+      "question_id": "TheOffice_b00ca3c2cf45",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Jim",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.13028621673584,
+      "n_target_tokens": 5,
+      "n_prompt_tokens": 765,
+      "target_sha256": "c49365e55f99241f4afe8616f0945363ece80ff472fb83c3e5b2719adb408de3"
+    },
+    {
+      "task_id": "TheOffice_b00ca3c2cf45__naive_rewrite",
+      "question_id": "TheOffice_b00ca3c2cf45",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Jim",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.7539825439453125,
+      "n_target_tokens": 5,
+      "n_prompt_tokens": 744,
+      "target_sha256": "c49365e55f99241f4afe8616f0945363ece80ff472fb83c3e5b2719adb408de3"
+    },
+    {
+      "task_id": "TheOffice_b00ca3c2cf45__phase_tree",
+      "question_id": "TheOffice_b00ca3c2cf45",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Jim",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.014082908630371,
+      "n_target_tokens": 5,
+      "n_prompt_tokens": 1342,
+      "target_sha256": "c49365e55f99241f4afe8616f0945363ece80ff472fb83c3e5b2719adb408de3"
+    },
+    {
+      "task_id": "TheOffice_b39b93bbf62a__base",
+      "question_id": "TheOffice_b39b93bbf62a",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Dwight",
+      "mode": "base",
+      "mean_target_nll": 2.9686996936798096,
+      "n_target_tokens": 31,
+      "n_prompt_tokens": 205,
+      "target_sha256": "80bed54b13e489928eda12c2befb8827d6af273ea2d3e066e867449457881345"
+    },
+    {
+      "task_id": "TheOffice_b39b93bbf62a__raw_profile",
+      "question_id": "TheOffice_b39b93bbf62a",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Dwight",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.8817741870880127,
+      "n_target_tokens": 31,
+      "n_prompt_tokens": 545,
+      "target_sha256": "80bed54b13e489928eda12c2befb8827d6af273ea2d3e066e867449457881345"
+    },
+    {
+      "task_id": "TheOffice_b39b93bbf62a__naive_rewrite",
+      "question_id": "TheOffice_b39b93bbf62a",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Dwight",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.9864699840545654,
+      "n_target_tokens": 31,
+      "n_prompt_tokens": 429,
+      "target_sha256": "80bed54b13e489928eda12c2befb8827d6af273ea2d3e066e867449457881345"
+    },
+    {
+      "task_id": "TheOffice_b39b93bbf62a__phase_tree",
+      "question_id": "TheOffice_b39b93bbf62a",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Dwight",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.3990800380706787,
+      "n_target_tokens": 31,
+      "n_prompt_tokens": 960,
+      "target_sha256": "80bed54b13e489928eda12c2befb8827d6af273ea2d3e066e867449457881345"
+    },
+    {
+      "task_id": "TheOffice_168f292317ef__base",
+      "question_id": "TheOffice_168f292317ef",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Michael",
+      "mode": "base",
+      "mean_target_nll": 5.303441524505615,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 121,
+      "target_sha256": "be87d6472b1ef667642e2d9490f68a849cbb0293c6d8b19c450996b50d2f1b0a"
+    },
+    {
+      "task_id": "TheOffice_168f292317ef__raw_profile",
+      "question_id": "TheOffice_168f292317ef",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Michael",
+      "mode": "raw_profile",
+      "mean_target_nll": 6.4959917068481445,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 393,
+      "target_sha256": "be87d6472b1ef667642e2d9490f68a849cbb0293c6d8b19c450996b50d2f1b0a"
+    },
+    {
+      "task_id": "TheOffice_168f292317ef__naive_rewrite",
+      "question_id": "TheOffice_168f292317ef",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Michael",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.023399353027344,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 310,
+      "target_sha256": "be87d6472b1ef667642e2d9490f68a849cbb0293c6d8b19c450996b50d2f1b0a"
+    },
+    {
+      "task_id": "TheOffice_168f292317ef__phase_tree",
+      "question_id": "TheOffice_168f292317ef",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Michael",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.798593521118164,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 819,
+      "target_sha256": "be87d6472b1ef667642e2d9490f68a849cbb0293c6d8b19c450996b50d2f1b0a"
+    },
+    {
+      "task_id": "TheOffice_9e3ac8332531__base",
+      "question_id": "TheOffice_9e3ac8332531",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "base",
+      "mean_target_nll": 5.314525127410889,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 120,
+      "target_sha256": "c0b96d45c765f39985fbce17b3b293a17496f12939ed07923be98e09f614a475"
+    },
+    {
+      "task_id": "TheOffice_9e3ac8332531__raw_profile",
+      "question_id": "TheOffice_9e3ac8332531",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.5772552490234375,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 309,
+      "target_sha256": "c0b96d45c765f39985fbce17b3b293a17496f12939ed07923be98e09f614a475"
+    },
+    {
+      "task_id": "TheOffice_9e3ac8332531__naive_rewrite",
+      "question_id": "TheOffice_9e3ac8332531",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.790038585662842,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 298,
+      "target_sha256": "c0b96d45c765f39985fbce17b3b293a17496f12939ed07923be98e09f614a475"
+    },
+    {
+      "task_id": "TheOffice_9e3ac8332531__phase_tree",
+      "question_id": "TheOffice_9e3ac8332531",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Angela",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.979888916015625,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 894,
+      "target_sha256": "c0b96d45c765f39985fbce17b3b293a17496f12939ed07923be98e09f614a475"
+    },
+    {
+      "task_id": "TheOffice_a866140a9e0d__base",
+      "question_id": "TheOffice_a866140a9e0d",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "base",
+      "mean_target_nll": 6.315910339355469,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 425,
+      "target_sha256": "5015986822900fec72003c812478ae26783b822e72a8bcb1a9c046b180fae968"
+    },
+    {
+      "task_id": "TheOffice_a866140a9e0d__raw_profile",
+      "question_id": "TheOffice_a866140a9e0d",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.432855606079102,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 683,
+      "target_sha256": "5015986822900fec72003c812478ae26783b822e72a8bcb1a9c046b180fae968"
+    },
+    {
+      "task_id": "TheOffice_a866140a9e0d__naive_rewrite",
+      "question_id": "TheOffice_a866140a9e0d",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.460415363311768,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 656,
+      "target_sha256": "5015986822900fec72003c812478ae26783b822e72a8bcb1a9c046b180fae968"
+    },
+    {
+      "task_id": "TheOffice_a866140a9e0d__phase_tree",
+      "question_id": "TheOffice_a866140a9e0d",
+      "corpus": "TheOffice",
+      "split": "ood_test",
+      "role": "Pam",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.964406967163086,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 2022,
+      "target_sha256": "5015986822900fec72003c812478ae26783b822e72a8bcb1a9c046b180fae968"
+    },
+    {
+      "task_id": "HPD_3aed7a50f060__base",
+      "question_id": "HPD_3aed7a50f060",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "base",
+      "mean_target_nll": 2.833118438720703,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 636,
+      "target_sha256": "0e713117660e1f65db13ba0817d1621b149598c712bc053dc4aef9fe12c3cc40"
+    },
+    {
+      "task_id": "HPD_3aed7a50f060__raw_profile",
+      "question_id": "HPD_3aed7a50f060",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.406498432159424,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 927,
+      "target_sha256": "0e713117660e1f65db13ba0817d1621b149598c712bc053dc4aef9fe12c3cc40"
+    },
+    {
+      "task_id": "HPD_3aed7a50f060__naive_rewrite",
+      "question_id": "HPD_3aed7a50f060",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.7930142879486084,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 890,
+      "target_sha256": "0e713117660e1f65db13ba0817d1621b149598c712bc053dc4aef9fe12c3cc40"
+    },
+    {
+      "task_id": "HPD_3aed7a50f060__phase_tree",
+      "question_id": "HPD_3aed7a50f060",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.182111978530884,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 1380,
+      "target_sha256": "0e713117660e1f65db13ba0817d1621b149598c712bc053dc4aef9fe12c3cc40"
+    },
+    {
+      "task_id": "HPD_798859e699bb__base",
+      "question_id": "HPD_798859e699bb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "base",
+      "mean_target_nll": 4.343593597412109,
+      "n_target_tokens": 32,
+      "n_prompt_tokens": 142,
+      "target_sha256": "5ba3c2158a938b3bfb0b1a7ed2f790e32dcac09e336bfdda1120c0808a7c7c7f"
+    },
+    {
+      "task_id": "HPD_798859e699bb__raw_profile",
+      "question_id": "HPD_798859e699bb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.7755985260009766,
+      "n_target_tokens": 32,
+      "n_prompt_tokens": 438,
+      "target_sha256": "5ba3c2158a938b3bfb0b1a7ed2f790e32dcac09e336bfdda1120c0808a7c7c7f"
+    },
+    {
+      "task_id": "HPD_798859e699bb__naive_rewrite",
+      "question_id": "HPD_798859e699bb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.79950213432312,
+      "n_target_tokens": 32,
+      "n_prompt_tokens": 345,
+      "target_sha256": "5ba3c2158a938b3bfb0b1a7ed2f790e32dcac09e336bfdda1120c0808a7c7c7f"
+    },
+    {
+      "task_id": "HPD_798859e699bb__phase_tree",
+      "question_id": "HPD_798859e699bb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.294902324676514,
+      "n_target_tokens": 32,
+      "n_prompt_tokens": 470,
+      "target_sha256": "5ba3c2158a938b3bfb0b1a7ed2f790e32dcac09e336bfdda1120c0808a7c7c7f"
+    },
+    {
+      "task_id": "HPD_61ffbb7ec789__base",
+      "question_id": "HPD_61ffbb7ec789",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Harry",
+      "mode": "base",
+      "mean_target_nll": 5.593061923980713,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 141,
+      "target_sha256": "26b1dc6d3e777f2da7da1ee32f08f1b9ed6caf68749ffd90c8c19204c8172913"
+    },
+    {
+      "task_id": "HPD_61ffbb7ec789__raw_profile",
+      "question_id": "HPD_61ffbb7ec789",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Harry",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.74292516708374,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 426,
+      "target_sha256": "26b1dc6d3e777f2da7da1ee32f08f1b9ed6caf68749ffd90c8c19204c8172913"
+    },
+    {
+      "task_id": "HPD_61ffbb7ec789__naive_rewrite",
+      "question_id": "HPD_61ffbb7ec789",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Harry",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.459978103637695,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 359,
+      "target_sha256": "26b1dc6d3e777f2da7da1ee32f08f1b9ed6caf68749ffd90c8c19204c8172913"
+    },
+    {
+      "task_id": "HPD_61ffbb7ec789__phase_tree",
+      "question_id": "HPD_61ffbb7ec789",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Harry",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.478786468505859,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 450,
+      "target_sha256": "26b1dc6d3e777f2da7da1ee32f08f1b9ed6caf68749ffd90c8c19204c8172913"
+    },
+    {
+      "task_id": "HPD_c648ee26e9d5__base",
+      "question_id": "HPD_c648ee26e9d5",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Snape",
+      "mode": "base",
+      "mean_target_nll": 3.3995859622955322,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 861,
+      "target_sha256": "6f450622e7119e65632fe71ef47e8e7805b2db9b45be8aa989556d2e02d8ca0f"
+    },
+    {
+      "task_id": "HPD_c648ee26e9d5__raw_profile",
+      "question_id": "HPD_c648ee26e9d5",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Snape",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.0683043003082275,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 1099,
+      "target_sha256": "6f450622e7119e65632fe71ef47e8e7805b2db9b45be8aa989556d2e02d8ca0f"
+    },
+    {
+      "task_id": "HPD_c648ee26e9d5__naive_rewrite",
+      "question_id": "HPD_c648ee26e9d5",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Snape",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.1394147872924805,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 1124,
+      "target_sha256": "6f450622e7119e65632fe71ef47e8e7805b2db9b45be8aa989556d2e02d8ca0f"
+    },
+    {
+      "task_id": "HPD_c648ee26e9d5__phase_tree",
+      "question_id": "HPD_c648ee26e9d5",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Snape",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.919257879257202,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 1184,
+      "target_sha256": "6f450622e7119e65632fe71ef47e8e7805b2db9b45be8aa989556d2e02d8ca0f"
+    },
+    {
+      "task_id": "HPD_c2a1cc4e8dcb__base",
+      "question_id": "HPD_c2a1cc4e8dcb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Ron",
+      "mode": "base",
+      "mean_target_nll": 4.379543304443359,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 206,
+      "target_sha256": "98eaf183c7e975b29ab772542742c13206f7a740e29ce7332be3410ef8ca9eb7"
+    },
+    {
+      "task_id": "HPD_c2a1cc4e8dcb__raw_profile",
+      "question_id": "HPD_c2a1cc4e8dcb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Ron",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.664508581161499,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 515,
+      "target_sha256": "98eaf183c7e975b29ab772542742c13206f7a740e29ce7332be3410ef8ca9eb7"
+    },
+    {
+      "task_id": "HPD_c2a1cc4e8dcb__naive_rewrite",
+      "question_id": "HPD_c2a1cc4e8dcb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Ron",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.26227331161499,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 443,
+      "target_sha256": "98eaf183c7e975b29ab772542742c13206f7a740e29ce7332be3410ef8ca9eb7"
+    },
+    {
+      "task_id": "HPD_c2a1cc4e8dcb__phase_tree",
+      "question_id": "HPD_c2a1cc4e8dcb",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Ron",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.417691707611084,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 510,
+      "target_sha256": "98eaf183c7e975b29ab772542742c13206f7a740e29ce7332be3410ef8ca9eb7"
+    },
+    {
+      "task_id": "HPD_bf7fcb79908a__base",
+      "question_id": "HPD_bf7fcb79908a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Dumbledore",
+      "mode": "base",
+      "mean_target_nll": 5.245141506195068,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 480,
+      "target_sha256": "d7a48c106bb2c9f9d27c2df0d91cfbd6e7e10fad3686721a8a32919fd1148b30"
+    },
+    {
+      "task_id": "HPD_bf7fcb79908a__raw_profile",
+      "question_id": "HPD_bf7fcb79908a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Dumbledore",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.254565238952637,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 753,
+      "target_sha256": "d7a48c106bb2c9f9d27c2df0d91cfbd6e7e10fad3686721a8a32919fd1148b30"
+    },
+    {
+      "task_id": "HPD_bf7fcb79908a__naive_rewrite",
+      "question_id": "HPD_bf7fcb79908a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Dumbledore",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.685181140899658,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 683,
+      "target_sha256": "d7a48c106bb2c9f9d27c2df0d91cfbd6e7e10fad3686721a8a32919fd1148b30"
+    },
+    {
+      "task_id": "HPD_bf7fcb79908a__phase_tree",
+      "question_id": "HPD_bf7fcb79908a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Dumbledore",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.398715972900391,
+      "n_target_tokens": 6,
+      "n_prompt_tokens": 789,
+      "target_sha256": "d7a48c106bb2c9f9d27c2df0d91cfbd6e7e10fad3686721a8a32919fd1148b30"
+    },
+    {
+      "task_id": "HPD_f2165ccd469a__base",
+      "question_id": "HPD_f2165ccd469a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "base",
+      "mean_target_nll": 3.170534610748291,
+      "n_target_tokens": 22,
+      "n_prompt_tokens": 825,
+      "target_sha256": "fb745eb9ad6674211bc16bd881c194a95787cdc204c5a6479484205cfd3295bf"
+    },
+    {
+      "task_id": "HPD_f2165ccd469a__raw_profile",
+      "question_id": "HPD_f2165ccd469a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.24882435798645,
+      "n_target_tokens": 22,
+      "n_prompt_tokens": 1116,
+      "target_sha256": "fb745eb9ad6674211bc16bd881c194a95787cdc204c5a6479484205cfd3295bf"
+    },
+    {
+      "task_id": "HPD_f2165ccd469a__naive_rewrite",
+      "question_id": "HPD_f2165ccd469a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.2797276973724365,
+      "n_target_tokens": 22,
+      "n_prompt_tokens": 1079,
+      "target_sha256": "fb745eb9ad6674211bc16bd881c194a95787cdc204c5a6479484205cfd3295bf"
+    },
+    {
+      "task_id": "HPD_f2165ccd469a__phase_tree",
+      "question_id": "HPD_f2165ccd469a",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hermione",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.2919533252716064,
+      "n_target_tokens": 22,
+      "n_prompt_tokens": 1282,
+      "target_sha256": "fb745eb9ad6674211bc16bd881c194a95787cdc204c5a6479484205cfd3295bf"
+    },
+    {
+      "task_id": "HPD_92f99c3f348c__base",
+      "question_id": "HPD_92f99c3f348c",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "base",
+      "mean_target_nll": 2.987046480178833,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 166,
+      "target_sha256": "5c1965206dc083c243e43d4d0840aa59445f426a1419b9308735f878a99be6ff"
+    },
+    {
+      "task_id": "HPD_92f99c3f348c__raw_profile",
+      "question_id": "HPD_92f99c3f348c",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.09887957572937,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 462,
+      "target_sha256": "5c1965206dc083c243e43d4d0840aa59445f426a1419b9308735f878a99be6ff"
+    },
+    {
+      "task_id": "HPD_92f99c3f348c__naive_rewrite",
+      "question_id": "HPD_92f99c3f348c",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.7688939571380615,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 379,
+      "target_sha256": "5c1965206dc083c243e43d4d0840aa59445f426a1419b9308735f878a99be6ff"
+    },
+    {
+      "task_id": "HPD_92f99c3f348c__phase_tree",
+      "question_id": "HPD_92f99c3f348c",
+      "corpus": "HPD",
+      "split": "random_test",
+      "role": "Hagrid",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.028825044631958,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 529,
+      "target_sha256": "5c1965206dc083c243e43d4d0840aa59445f426a1419b9308735f878a99be6ff"
+    },
+    {
+      "task_id": "HPD_40b99c3da417__base",
+      "question_id": "HPD_40b99c3da417",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "base",
+      "mean_target_nll": 5.538715362548828,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 278,
+      "target_sha256": "7a022e9593ccaa1b347c9501ea919a6da4ae626f57073f5c07b47945e9c9e440"
+    },
+    {
+      "task_id": "HPD_40b99c3da417__raw_profile",
+      "question_id": "HPD_40b99c3da417",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.512826442718506,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 569,
+      "target_sha256": "7a022e9593ccaa1b347c9501ea919a6da4ae626f57073f5c07b47945e9c9e440"
+    },
+    {
+      "task_id": "HPD_40b99c3da417__naive_rewrite",
+      "question_id": "HPD_40b99c3da417",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.611438751220703,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 498,
+      "target_sha256": "7a022e9593ccaa1b347c9501ea919a6da4ae626f57073f5c07b47945e9c9e440"
+    },
+    {
+      "task_id": "HPD_40b99c3da417__phase_tree",
+      "question_id": "HPD_40b99c3da417",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.893009185791016,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 1051,
+      "target_sha256": "7a022e9593ccaa1b347c9501ea919a6da4ae626f57073f5c07b47945e9c9e440"
+    },
+    {
+      "task_id": "HPD_6a174348f400__base",
+      "question_id": "HPD_6a174348f400",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "base",
+      "mean_target_nll": 3.4096479415893555,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 331,
+      "target_sha256": "9244c6b71a93b168a29f46151c5499cc6a38db44df2e7cbb9c33e99e5cac1382"
+    },
+    {
+      "task_id": "HPD_6a174348f400__raw_profile",
+      "question_id": "HPD_6a174348f400",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.0993919372558594,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 627,
+      "target_sha256": "9244c6b71a93b168a29f46151c5499cc6a38db44df2e7cbb9c33e99e5cac1382"
+    },
+    {
+      "task_id": "HPD_6a174348f400__naive_rewrite",
+      "question_id": "HPD_6a174348f400",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.1810035705566406,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 583,
+      "target_sha256": "9244c6b71a93b168a29f46151c5499cc6a38db44df2e7cbb9c33e99e5cac1382"
+    },
+    {
+      "task_id": "HPD_6a174348f400__phase_tree",
+      "question_id": "HPD_6a174348f400",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.0633254051208496,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 851,
+      "target_sha256": "9244c6b71a93b168a29f46151c5499cc6a38db44df2e7cbb9c33e99e5cac1382"
+    },
+    {
+      "task_id": "HPD_5160f6ba4572__base",
+      "question_id": "HPD_5160f6ba4572",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Harry",
+      "mode": "base",
+      "mean_target_nll": 5.131926536560059,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 2479,
+      "target_sha256": "ecf4fa13ec6999b52d3660ebb19f47980b97826ffdb3c6e3399cec3fadd210e4"
+    },
+    {
+      "task_id": "HPD_5160f6ba4572__raw_profile",
+      "question_id": "HPD_5160f6ba4572",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Harry",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.9354448318481445,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 2764,
+      "target_sha256": "ecf4fa13ec6999b52d3660ebb19f47980b97826ffdb3c6e3399cec3fadd210e4"
+    },
+    {
+      "task_id": "HPD_5160f6ba4572__naive_rewrite",
+      "question_id": "HPD_5160f6ba4572",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Harry",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.803305149078369,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 2690,
+      "target_sha256": "ecf4fa13ec6999b52d3660ebb19f47980b97826ffdb3c6e3399cec3fadd210e4"
+    },
+    {
+      "task_id": "HPD_5160f6ba4572__phase_tree",
+      "question_id": "HPD_5160f6ba4572",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Harry",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.904331684112549,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 3537,
+      "target_sha256": "ecf4fa13ec6999b52d3660ebb19f47980b97826ffdb3c6e3399cec3fadd210e4"
+    },
+    {
+      "task_id": "HPD_a805f945b33e__base",
+      "question_id": "HPD_a805f945b33e",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Snape",
+      "mode": "base",
+      "mean_target_nll": 3.0536766052246094,
+      "n_target_tokens": 89,
+      "n_prompt_tokens": 356,
+      "target_sha256": "7c7991e23ba62528b09356318ef5ca44204a072d6705ed547e7246219c02728f"
+    },
+    {
+      "task_id": "HPD_a805f945b33e__raw_profile",
+      "question_id": "HPD_a805f945b33e",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Snape",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.861497402191162,
+      "n_target_tokens": 89,
+      "n_prompt_tokens": 594,
+      "target_sha256": "7c7991e23ba62528b09356318ef5ca44204a072d6705ed547e7246219c02728f"
+    },
+    {
+      "task_id": "HPD_a805f945b33e__naive_rewrite",
+      "question_id": "HPD_a805f945b33e",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Snape",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.8321850299835205,
+      "n_target_tokens": 89,
+      "n_prompt_tokens": 595,
+      "target_sha256": "7c7991e23ba62528b09356318ef5ca44204a072d6705ed547e7246219c02728f"
+    },
+    {
+      "task_id": "HPD_a805f945b33e__phase_tree",
+      "question_id": "HPD_a805f945b33e",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Snape",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.872551441192627,
+      "n_target_tokens": 89,
+      "n_prompt_tokens": 649,
+      "target_sha256": "7c7991e23ba62528b09356318ef5ca44204a072d6705ed547e7246219c02728f"
+    },
+    {
+      "task_id": "HPD_0284895839c8__base",
+      "question_id": "HPD_0284895839c8",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Ron",
+      "mode": "base",
+      "mean_target_nll": 3.1946468353271484,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 503,
+      "target_sha256": "4aa0b59e7863475c88cb59d80e7de13e4d92e969f53cd74512373a85db2e2e1c"
+    },
+    {
+      "task_id": "HPD_0284895839c8__raw_profile",
+      "question_id": "HPD_0284895839c8",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Ron",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.1522819995880127,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 812,
+      "target_sha256": "4aa0b59e7863475c88cb59d80e7de13e4d92e969f53cd74512373a85db2e2e1c"
+    },
+    {
+      "task_id": "HPD_0284895839c8__naive_rewrite",
+      "question_id": "HPD_0284895839c8",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Ron",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.4090871810913086,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 763,
+      "target_sha256": "4aa0b59e7863475c88cb59d80e7de13e4d92e969f53cd74512373a85db2e2e1c"
+    },
+    {
+      "task_id": "HPD_0284895839c8__phase_tree",
+      "question_id": "HPD_0284895839c8",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Ron",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.253627061843872,
+      "n_target_tokens": 17,
+      "n_prompt_tokens": 1059,
+      "target_sha256": "4aa0b59e7863475c88cb59d80e7de13e4d92e969f53cd74512373a85db2e2e1c"
+    },
+    {
+      "task_id": "HPD_231c702125c3__base",
+      "question_id": "HPD_231c702125c3",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Dumbledore",
+      "mode": "base",
+      "mean_target_nll": 2.5090999603271484,
+      "n_target_tokens": 205,
+      "n_prompt_tokens": 509,
+      "target_sha256": "bc8705d997be38009e265de02eab9c0d7873f0ff9705e74b8a9af55be4a4a992"
+    },
+    {
+      "task_id": "HPD_231c702125c3__raw_profile",
+      "question_id": "HPD_231c702125c3",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Dumbledore",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.536625623703003,
+      "n_target_tokens": 205,
+      "n_prompt_tokens": 782,
+      "target_sha256": "bc8705d997be38009e265de02eab9c0d7873f0ff9705e74b8a9af55be4a4a992"
+    },
+    {
+      "task_id": "HPD_231c702125c3__naive_rewrite",
+      "question_id": "HPD_231c702125c3",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Dumbledore",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.4513845443725586,
+      "n_target_tokens": 205,
+      "n_prompt_tokens": 762,
+      "target_sha256": "bc8705d997be38009e265de02eab9c0d7873f0ff9705e74b8a9af55be4a4a992"
+    },
+    {
+      "task_id": "HPD_231c702125c3__phase_tree",
+      "question_id": "HPD_231c702125c3",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Dumbledore",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.52319598197937,
+      "n_target_tokens": 205,
+      "n_prompt_tokens": 925,
+      "target_sha256": "bc8705d997be38009e265de02eab9c0d7873f0ff9705e74b8a9af55be4a4a992"
+    },
+    {
+      "task_id": "HPD_3dc9d7b49add__base",
+      "question_id": "HPD_3dc9d7b49add",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "base",
+      "mean_target_nll": 5.822502136230469,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 124,
+      "target_sha256": "6b34dbf0aebf5885ab171f6ab40755590fe602f1738b73c369f4b2f99a946a2f"
+    },
+    {
+      "task_id": "HPD_3dc9d7b49add__raw_profile",
+      "question_id": "HPD_3dc9d7b49add",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.806066513061523,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 415,
+      "target_sha256": "6b34dbf0aebf5885ab171f6ab40755590fe602f1738b73c369f4b2f99a946a2f"
+    },
+    {
+      "task_id": "HPD_3dc9d7b49add__naive_rewrite",
+      "question_id": "HPD_3dc9d7b49add",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.825376033782959,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 319,
+      "target_sha256": "6b34dbf0aebf5885ab171f6ab40755590fe602f1738b73c369f4b2f99a946a2f"
+    },
+    {
+      "task_id": "HPD_3dc9d7b49add__phase_tree",
+      "question_id": "HPD_3dc9d7b49add",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hermione",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.379368305206299,
+      "n_target_tokens": 36,
+      "n_prompt_tokens": 836,
+      "target_sha256": "6b34dbf0aebf5885ab171f6ab40755590fe602f1738b73c369f4b2f99a946a2f"
+    },
+    {
+      "task_id": "HPD_0dbd6419acb6__base",
+      "question_id": "HPD_0dbd6419acb6",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "base",
+      "mean_target_nll": 2.8804972171783447,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 296,
+      "target_sha256": "af5e4a8c76a1b0878cbc2c2133b90543f73f7da5b8569aaf211d150cc51376f8"
+    },
+    {
+      "task_id": "HPD_0dbd6419acb6__raw_profile",
+      "question_id": "HPD_0dbd6419acb6",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.145781517028809,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 592,
+      "target_sha256": "af5e4a8c76a1b0878cbc2c2133b90543f73f7da5b8569aaf211d150cc51376f8"
+    },
+    {
+      "task_id": "HPD_0dbd6419acb6__naive_rewrite",
+      "question_id": "HPD_0dbd6419acb6",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.848144054412842,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 529,
+      "target_sha256": "af5e4a8c76a1b0878cbc2c2133b90543f73f7da5b8569aaf211d150cc51376f8"
+    },
+    {
+      "task_id": "HPD_0dbd6419acb6__phase_tree",
+      "question_id": "HPD_0dbd6419acb6",
+      "corpus": "HPD",
+      "split": "ood_test",
+      "role": "Hagrid",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.1371586322784424,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 806,
+      "target_sha256": "af5e4a8c76a1b0878cbc2c2133b90543f73f7da5b8569aaf211d150cc51376f8"
+    },
+    {
+      "task_id": "TNG_a0ee5c856d9c__base",
+      "question_id": "TNG_a0ee5c856d9c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "base",
+      "mean_target_nll": 3.272829055786133,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 416,
+      "target_sha256": "a7908b4926a2430d6d07d66bd65d6b91f3e07d1c303a7865fb6fb075948b65a6"
+    },
+    {
+      "task_id": "TNG_a0ee5c856d9c__raw_profile",
+      "question_id": "TNG_a0ee5c856d9c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.559593677520752,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 666,
+      "target_sha256": "a7908b4926a2430d6d07d66bd65d6b91f3e07d1c303a7865fb6fb075948b65a6"
+    },
+    {
+      "task_id": "TNG_a0ee5c856d9c__naive_rewrite",
+      "question_id": "TNG_a0ee5c856d9c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.01456880569458,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 596,
+      "target_sha256": "a7908b4926a2430d6d07d66bd65d6b91f3e07d1c303a7865fb6fb075948b65a6"
+    },
+    {
+      "task_id": "TNG_a0ee5c856d9c__phase_tree",
+      "question_id": "TNG_a0ee5c856d9c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.198273658752441,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 1007,
+      "target_sha256": "a7908b4926a2430d6d07d66bd65d6b91f3e07d1c303a7865fb6fb075948b65a6"
+    },
+    {
+      "task_id": "TNG_512d80d361d3__base",
+      "question_id": "TNG_512d80d361d3",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "base",
+      "mean_target_nll": 5.798454284667969,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 634,
+      "target_sha256": "799a20d5baef8c0ed0417afafeadc94e6c0daa927f4e7dc536f99a241eb02fb0"
+    },
+    {
+      "task_id": "TNG_512d80d361d3__raw_profile",
+      "question_id": "TNG_512d80d361d3",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.5622968673706055,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 892,
+      "target_sha256": "799a20d5baef8c0ed0417afafeadc94e6c0daa927f4e7dc536f99a241eb02fb0"
+    },
+    {
+      "task_id": "TNG_512d80d361d3__naive_rewrite",
+      "question_id": "TNG_512d80d361d3",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.0002031326293945,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 919,
+      "target_sha256": "799a20d5baef8c0ed0417afafeadc94e6c0daa927f4e7dc536f99a241eb02fb0"
+    },
+    {
+      "task_id": "TNG_512d80d361d3__phase_tree",
+      "question_id": "TNG_512d80d361d3",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.3159403800964355,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1216,
+      "target_sha256": "799a20d5baef8c0ed0417afafeadc94e6c0daa927f4e7dc536f99a241eb02fb0"
+    },
+    {
+      "task_id": "TNG_b8a92357c62c__base",
+      "question_id": "TNG_b8a92357c62c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Picard",
+      "mode": "base",
+      "mean_target_nll": 5.603307247161865,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 335,
+      "target_sha256": "6bcd6eabb590d384f796ef8f8f1c0f86f66372214b2f605d90e1ab1bcf472892"
+    },
+    {
+      "task_id": "TNG_b8a92357c62c__raw_profile",
+      "question_id": "TNG_b8a92357c62c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Picard",
+      "mode": "raw_profile",
+      "mean_target_nll": 6.3877129554748535,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 648,
+      "target_sha256": "6bcd6eabb590d384f796ef8f8f1c0f86f66372214b2f605d90e1ab1bcf472892"
+    },
+    {
+      "task_id": "TNG_b8a92357c62c__naive_rewrite",
+      "question_id": "TNG_b8a92357c62c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Picard",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 7.118167877197266,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 580,
+      "target_sha256": "6bcd6eabb590d384f796ef8f8f1c0f86f66372214b2f605d90e1ab1bcf472892"
+    },
+    {
+      "task_id": "TNG_b8a92357c62c__phase_tree",
+      "question_id": "TNG_b8a92357c62c",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Picard",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.402168273925781,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 1066,
+      "target_sha256": "6bcd6eabb590d384f796ef8f8f1c0f86f66372214b2f605d90e1ab1bcf472892"
+    },
+    {
+      "task_id": "TNG_cf562c371b79__base",
+      "question_id": "TNG_cf562c371b79",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Data",
+      "mode": "base",
+      "mean_target_nll": 6.618342876434326,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 411,
+      "target_sha256": "7f28a3341a4b78eef5e74b668cd26d460aeabbd8f3d9918aaa05f24b35cee03c"
+    },
+    {
+      "task_id": "TNG_cf562c371b79__raw_profile",
+      "question_id": "TNG_cf562c371b79",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Data",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.801666259765625,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 693,
+      "target_sha256": "7f28a3341a4b78eef5e74b668cd26d460aeabbd8f3d9918aaa05f24b35cee03c"
+    },
+    {
+      "task_id": "TNG_cf562c371b79__naive_rewrite",
+      "question_id": "TNG_cf562c371b79",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Data",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.725921154022217,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 672,
+      "target_sha256": "7f28a3341a4b78eef5e74b668cd26d460aeabbd8f3d9918aaa05f24b35cee03c"
+    },
+    {
+      "task_id": "TNG_cf562c371b79__phase_tree",
+      "question_id": "TNG_cf562c371b79",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Data",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.4152092933654785,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 1571,
+      "target_sha256": "7f28a3341a4b78eef5e74b668cd26d460aeabbd8f3d9918aaa05f24b35cee03c"
+    },
+    {
+      "task_id": "TNG_1e4ed361ae25__base",
+      "question_id": "TNG_1e4ed361ae25",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Troi",
+      "mode": "base",
+      "mean_target_nll": 5.653482913970947,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 213,
+      "target_sha256": "e67ea6b9139f81d801b58c8dc50c095809be8025e579a844d81b2ca01469f8a4"
+    },
+    {
+      "task_id": "TNG_1e4ed361ae25__raw_profile",
+      "question_id": "TNG_1e4ed361ae25",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Troi",
+      "mode": "raw_profile",
+      "mean_target_nll": 6.4867963790893555,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 520,
+      "target_sha256": "e67ea6b9139f81d801b58c8dc50c095809be8025e579a844d81b2ca01469f8a4"
+    },
+    {
+      "task_id": "TNG_1e4ed361ae25__naive_rewrite",
+      "question_id": "TNG_1e4ed361ae25",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Troi",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 6.767584800720215,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 408,
+      "target_sha256": "e67ea6b9139f81d801b58c8dc50c095809be8025e579a844d81b2ca01469f8a4"
+    },
+    {
+      "task_id": "TNG_1e4ed361ae25__phase_tree",
+      "question_id": "TNG_1e4ed361ae25",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Troi",
+      "mode": "phase_tree",
+      "mean_target_nll": 6.215599536895752,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 642,
+      "target_sha256": "e67ea6b9139f81d801b58c8dc50c095809be8025e579a844d81b2ca01469f8a4"
+    },
+    {
+      "task_id": "TNG_076cdfb78f5f__base",
+      "question_id": "TNG_076cdfb78f5f",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Laforge",
+      "mode": "base",
+      "mean_target_nll": 2.952380895614624,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 141,
+      "target_sha256": "f15ecf66e3390e7b3fc2ef36f5bf4e4f15f0321df54ca205f4736f60e6bdaa84"
+    },
+    {
+      "task_id": "TNG_076cdfb78f5f__raw_profile",
+      "question_id": "TNG_076cdfb78f5f",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Laforge",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.28399920463562,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 396,
+      "target_sha256": "f15ecf66e3390e7b3fc2ef36f5bf4e4f15f0321df54ca205f4736f60e6bdaa84"
+    },
+    {
+      "task_id": "TNG_076cdfb78f5f__naive_rewrite",
+      "question_id": "TNG_076cdfb78f5f",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Laforge",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.057753086090088,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 351,
+      "target_sha256": "f15ecf66e3390e7b3fc2ef36f5bf4e4f15f0321df54ca205f4736f60e6bdaa84"
+    },
+    {
+      "task_id": "TNG_076cdfb78f5f__phase_tree",
+      "question_id": "TNG_076cdfb78f5f",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Laforge",
+      "mode": "phase_tree",
+      "mean_target_nll": 1.375928282737732,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 340,
+      "target_sha256": "f15ecf66e3390e7b3fc2ef36f5bf4e4f15f0321df54ca205f4736f60e6bdaa84"
+    },
+    {
+      "task_id": "TNG_f22545cc9ea6__base",
+      "question_id": "TNG_f22545cc9ea6",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "base",
+      "mean_target_nll": 3.8287181854248047,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 224,
+      "target_sha256": "556a234c523ef8d05ce5fb64e786093b5348055c61a6387563280ed9474ff14c"
+    },
+    {
+      "task_id": "TNG_f22545cc9ea6__raw_profile",
+      "question_id": "TNG_f22545cc9ea6",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.5614993572235107,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 474,
+      "target_sha256": "556a234c523ef8d05ce5fb64e786093b5348055c61a6387563280ed9474ff14c"
+    },
+    {
+      "task_id": "TNG_f22545cc9ea6__naive_rewrite",
+      "question_id": "TNG_f22545cc9ea6",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.899995803833008,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 468,
+      "target_sha256": "556a234c523ef8d05ce5fb64e786093b5348055c61a6387563280ed9474ff14c"
+    },
+    {
+      "task_id": "TNG_f22545cc9ea6__phase_tree",
+      "question_id": "TNG_f22545cc9ea6",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Worf",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.068791627883911,
+      "n_target_tokens": 12,
+      "n_prompt_tokens": 715,
+      "target_sha256": "556a234c523ef8d05ce5fb64e786093b5348055c61a6387563280ed9474ff14c"
+    },
+    {
+      "task_id": "TNG_925db50d09c9__base",
+      "question_id": "TNG_925db50d09c9",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "base",
+      "mean_target_nll": 3.497030735015869,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 1204,
+      "target_sha256": "73f2954e761f46a25e9045ca1ed98167ca4158b8f7e081f900adf0671ffd367d"
+    },
+    {
+      "task_id": "TNG_925db50d09c9__raw_profile",
+      "question_id": "TNG_925db50d09c9",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.4463086128234863,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 1462,
+      "target_sha256": "73f2954e761f46a25e9045ca1ed98167ca4158b8f7e081f900adf0671ffd367d"
+    },
+    {
+      "task_id": "TNG_925db50d09c9__naive_rewrite",
+      "question_id": "TNG_925db50d09c9",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.7320611476898193,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 1460,
+      "target_sha256": "73f2954e761f46a25e9045ca1ed98167ca4158b8f7e081f900adf0671ffd367d"
+    },
+    {
+      "task_id": "TNG_925db50d09c9__phase_tree",
+      "question_id": "TNG_925db50d09c9",
+      "corpus": "StarTrek_TNG",
+      "split": "random_test",
+      "role": "Riker",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.352149248123169,
+      "n_target_tokens": 8,
+      "n_prompt_tokens": 1758,
+      "target_sha256": "73f2954e761f46a25e9045ca1ed98167ca4158b8f7e081f900adf0671ffd367d"
+    },
+    {
+      "task_id": "TNG_682d1b83b47f__base",
+      "question_id": "TNG_682d1b83b47f",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "base",
+      "mean_target_nll": 5.354490280151367,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 253,
+      "target_sha256": "4d44210a8ff5802668ea0b7f05810fbda0558edd9df6c00df9d052234a47a812"
+    },
+    {
+      "task_id": "TNG_682d1b83b47f__raw_profile",
+      "question_id": "TNG_682d1b83b47f",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.4236249923706055,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 503,
+      "target_sha256": "4d44210a8ff5802668ea0b7f05810fbda0558edd9df6c00df9d052234a47a812"
+    },
+    {
+      "task_id": "TNG_682d1b83b47f__naive_rewrite",
+      "question_id": "TNG_682d1b83b47f",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.530574321746826,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 481,
+      "target_sha256": "4d44210a8ff5802668ea0b7f05810fbda0558edd9df6c00df9d052234a47a812"
+    },
+    {
+      "task_id": "TNG_682d1b83b47f__phase_tree",
+      "question_id": "TNG_682d1b83b47f",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "phase_tree",
+      "mean_target_nll": 3.558915376663208,
+      "n_target_tokens": 13,
+      "n_prompt_tokens": 1440,
+      "target_sha256": "4d44210a8ff5802668ea0b7f05810fbda0558edd9df6c00df9d052234a47a812"
+    },
+    {
+      "task_id": "TNG_8f29bfc8ef23__base",
+      "question_id": "TNG_8f29bfc8ef23",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "base",
+      "mean_target_nll": 3.032140016555786,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 268,
+      "target_sha256": "5a5d743acfe32e1d254156d1fe35a81f79021e2285b1d4e43828e7ead17a8709"
+    },
+    {
+      "task_id": "TNG_8f29bfc8ef23__raw_profile",
+      "question_id": "TNG_8f29bfc8ef23",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.623708724975586,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 526,
+      "target_sha256": "5a5d743acfe32e1d254156d1fe35a81f79021e2285b1d4e43828e7ead17a8709"
+    },
+    {
+      "task_id": "TNG_8f29bfc8ef23__naive_rewrite",
+      "question_id": "TNG_8f29bfc8ef23",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.3825793266296387,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 477,
+      "target_sha256": "5a5d743acfe32e1d254156d1fe35a81f79021e2285b1d4e43828e7ead17a8709"
+    },
+    {
+      "task_id": "TNG_8f29bfc8ef23__phase_tree",
+      "question_id": "TNG_8f29bfc8ef23",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.8986012935638428,
+      "n_target_tokens": 21,
+      "n_prompt_tokens": 1120,
+      "target_sha256": "5a5d743acfe32e1d254156d1fe35a81f79021e2285b1d4e43828e7ead17a8709"
+    },
+    {
+      "task_id": "TNG_68163dcda27c__base",
+      "question_id": "TNG_68163dcda27c",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Picard",
+      "mode": "base",
+      "mean_target_nll": 2.7360165119171143,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 435,
+      "target_sha256": "cb428e7695c4e3bd6a2e23267396bd3a4bbb4b1cbfcf9999034c06c1e0cd59da"
+    },
+    {
+      "task_id": "TNG_68163dcda27c__raw_profile",
+      "question_id": "TNG_68163dcda27c",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Picard",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.800856113433838,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 748,
+      "target_sha256": "cb428e7695c4e3bd6a2e23267396bd3a4bbb4b1cbfcf9999034c06c1e0cd59da"
+    },
+    {
+      "task_id": "TNG_68163dcda27c__naive_rewrite",
+      "question_id": "TNG_68163dcda27c",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Picard",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.60701322555542,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 671,
+      "target_sha256": "cb428e7695c4e3bd6a2e23267396bd3a4bbb4b1cbfcf9999034c06c1e0cd59da"
+    },
+    {
+      "task_id": "TNG_68163dcda27c__phase_tree",
+      "question_id": "TNG_68163dcda27c",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Picard",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.247255325317383,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1175,
+      "target_sha256": "cb428e7695c4e3bd6a2e23267396bd3a4bbb4b1cbfcf9999034c06c1e0cd59da"
+    },
+    {
+      "task_id": "TNG_c657ca867af3__base",
+      "question_id": "TNG_c657ca867af3",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Data",
+      "mode": "base",
+      "mean_target_nll": 4.815463066101074,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 440,
+      "target_sha256": "ffa1d0274db9151f6df944669683531f543d315d72fdc4421b1865f79c519212"
+    },
+    {
+      "task_id": "TNG_c657ca867af3__raw_profile",
+      "question_id": "TNG_c657ca867af3",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Data",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.148181438446045,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 722,
+      "target_sha256": "ffa1d0274db9151f6df944669683531f543d315d72fdc4421b1865f79c519212"
+    },
+    {
+      "task_id": "TNG_c657ca867af3__naive_rewrite",
+      "question_id": "TNG_c657ca867af3",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Data",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 3.8918392658233643,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 662,
+      "target_sha256": "ffa1d0274db9151f6df944669683531f543d315d72fdc4421b1865f79c519212"
+    },
+    {
+      "task_id": "TNG_c657ca867af3__phase_tree",
+      "question_id": "TNG_c657ca867af3",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Data",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.844912528991699,
+      "n_target_tokens": 15,
+      "n_prompt_tokens": 3325,
+      "target_sha256": "ffa1d0274db9151f6df944669683531f543d315d72fdc4421b1865f79c519212"
+    },
+    {
+      "task_id": "TNG_76a2dac858df__base",
+      "question_id": "TNG_76a2dac858df",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Troi",
+      "mode": "base",
+      "mean_target_nll": 2.785257339477539,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 501,
+      "target_sha256": "7581140c72ecb0c3ff9e0be4e7a5f9f5abdef14d2bfbfba0cf30f37f49846bcb"
+    },
+    {
+      "task_id": "TNG_76a2dac858df__raw_profile",
+      "question_id": "TNG_76a2dac858df",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Troi",
+      "mode": "raw_profile",
+      "mean_target_nll": 2.8289260864257812,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 808,
+      "target_sha256": "7581140c72ecb0c3ff9e0be4e7a5f9f5abdef14d2bfbfba0cf30f37f49846bcb"
+    },
+    {
+      "task_id": "TNG_76a2dac858df__naive_rewrite",
+      "question_id": "TNG_76a2dac858df",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Troi",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 2.480482339859009,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 712,
+      "target_sha256": "7581140c72ecb0c3ff9e0be4e7a5f9f5abdef14d2bfbfba0cf30f37f49846bcb"
+    },
+    {
+      "task_id": "TNG_76a2dac858df__phase_tree",
+      "question_id": "TNG_76a2dac858df",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Troi",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.5648880004882812,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 1506,
+      "target_sha256": "7581140c72ecb0c3ff9e0be4e7a5f9f5abdef14d2bfbfba0cf30f37f49846bcb"
+    },
+    {
+      "task_id": "TNG_36854c09dc2d__base",
+      "question_id": "TNG_36854c09dc2d",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Laforge",
+      "mode": "base",
+      "mean_target_nll": 4.659523010253906,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 173,
+      "target_sha256": "378ca9494d287dd4acef0f5f7977a90e8f5a9f68868c54ec3fb9d2a453f80033"
+    },
+    {
+      "task_id": "TNG_36854c09dc2d__raw_profile",
+      "question_id": "TNG_36854c09dc2d",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Laforge",
+      "mode": "raw_profile",
+      "mean_target_nll": 4.770668029785156,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 428,
+      "target_sha256": "378ca9494d287dd4acef0f5f7977a90e8f5a9f68868c54ec3fb9d2a453f80033"
+    },
+    {
+      "task_id": "TNG_36854c09dc2d__naive_rewrite",
+      "question_id": "TNG_36854c09dc2d",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Laforge",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.21295166015625,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 369,
+      "target_sha256": "378ca9494d287dd4acef0f5f7977a90e8f5a9f68868c54ec3fb9d2a453f80033"
+    },
+    {
+      "task_id": "TNG_36854c09dc2d__phase_tree",
+      "question_id": "TNG_36854c09dc2d",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Laforge",
+      "mode": "phase_tree",
+      "mean_target_nll": 2.7476539611816406,
+      "n_target_tokens": 16,
+      "n_prompt_tokens": 584,
+      "target_sha256": "378ca9494d287dd4acef0f5f7977a90e8f5a9f68868c54ec3fb9d2a453f80033"
+    },
+    {
+      "task_id": "TNG_fa3c2b340d32__base",
+      "question_id": "TNG_fa3c2b340d32",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "base",
+      "mean_target_nll": 6.173262119293213,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 176,
+      "target_sha256": "ef2142c56d1e7c871fba2cd01c80efe0d88bce0564df3ba56cf788778920d514"
+    },
+    {
+      "task_id": "TNG_fa3c2b340d32__raw_profile",
+      "question_id": "TNG_fa3c2b340d32",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "raw_profile",
+      "mean_target_nll": 5.982078552246094,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 426,
+      "target_sha256": "ef2142c56d1e7c871fba2cd01c80efe0d88bce0564df3ba56cf788778920d514"
+    },
+    {
+      "task_id": "TNG_fa3c2b340d32__naive_rewrite",
+      "question_id": "TNG_fa3c2b340d32",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 5.224876880645752,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 361,
+      "target_sha256": "ef2142c56d1e7c871fba2cd01c80efe0d88bce0564df3ba56cf788778920d514"
+    },
+    {
+      "task_id": "TNG_fa3c2b340d32__phase_tree",
+      "question_id": "TNG_fa3c2b340d32",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Worf",
+      "mode": "phase_tree",
+      "mean_target_nll": 5.266312122344971,
+      "n_target_tokens": 11,
+      "n_prompt_tokens": 1396,
+      "target_sha256": "ef2142c56d1e7c871fba2cd01c80efe0d88bce0564df3ba56cf788778920d514"
+    },
+    {
+      "task_id": "TNG_d98d78e786dd__base",
+      "question_id": "TNG_d98d78e786dd",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "base",
+      "mean_target_nll": 4.518132209777832,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 356,
+      "target_sha256": "027a0ef764b87447b5adc961fd7c4628ea9d740f6e1fe3b0aa026b962e2e6f4c"
+    },
+    {
+      "task_id": "TNG_d98d78e786dd__raw_profile",
+      "question_id": "TNG_d98d78e786dd",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "raw_profile",
+      "mean_target_nll": 3.950078248977661,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 614,
+      "target_sha256": "027a0ef764b87447b5adc961fd7c4628ea9d740f6e1fe3b0aa026b962e2e6f4c"
+    },
+    {
+      "task_id": "TNG_d98d78e786dd__naive_rewrite",
+      "question_id": "TNG_d98d78e786dd",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "naive_rewrite",
+      "mean_target_nll": 4.536842346191406,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 589,
+      "target_sha256": "027a0ef764b87447b5adc961fd7c4628ea9d740f6e1fe3b0aa026b962e2e6f4c"
+    },
+    {
+      "task_id": "TNG_d98d78e786dd__phase_tree",
+      "question_id": "TNG_d98d78e786dd",
+      "corpus": "StarTrek_TNG",
+      "split": "ood_test",
+      "role": "Riker",
+      "mode": "phase_tree",
+      "mean_target_nll": 4.191729545593262,
+      "n_target_tokens": 7,
+      "n_prompt_tokens": 1305,
+      "target_sha256": "027a0ef764b87447b5adc961fd7c4628ea9d740f6e1fe3b0aa026b962e2e6f4c"
+    }
+  ],
+  "interpretation": "Post-hoc reference predictability, not unique valid continuation accuracy; no causal claim for state structure vs extra information.",
+  "experiment": "D-E02",
+  "status": "POST-HOC readout registered before computation; initial Char/Sem readouts unchanged",
+  "unit": "Mean target-content NLL in natural-log nats/token; question-average within corpus then four-corpus macro; lower is better. No EOS, no generated responses, all exact token boundaries verified.",
+  "n_model_forwards": 256,
+  "n_new_generations": 0,
+  "wall_s": 155.32304440438747,
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "paired": {
+    "phase_tree-base": {
+      "n": 64,
+      "corpus_mean_delta": -0.20810867846012115,
+      "by_corpus": {
+        "Friends": 0.04753866791725159,
+        "TheOffice": -0.24947161227464676,
+        "HPD": -0.21584537625312805,
+        "StarTrek_TNG": -0.4146563932299614
+      },
+      "by_split": {
+        "random_test": -0.12984754890203476,
+        "ood_test": -0.28636980801820755
+      },
+      "descriptive_corpus_bootstrap95": [
+        -0.36495363898575306,
+        -0.026713902130723
+      ],
+      "lower_tie_higher": [
+        39,
+        0,
+        25
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.7696778774261475
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 1.1115312576293945
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.9357609748840332
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.6293220520019531
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 1.7443523406982422
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.11508035659790039
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.33209228515625
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.1113748550415039
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.1347644329071045
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -1.2395076751708984
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.26711225509643555
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.0859370231628418
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.5800189971923828
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.47386670112609863
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.5494346618652344
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.6019246578216553
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.1024245023727417
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -1.9286048412322998
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.6054739952087402
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.6214296817779541
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.3646280765533447
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.09886598587036133
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.9114384651184082
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.418731689453125
+        },
+        {
+          "question_id": "TheOffice_c83063cd9cc4",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": 4.195424556732178
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.535409927368164
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": 0.3247966766357422
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": 0.10659122467041016
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.5696196556091309
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": 0.49515199661254883
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.33463621139526367
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -2.351503372192383
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.34899353981018066
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.0486912727355957
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -1.1142754554748535
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.4803280830383301
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -1.9618515968322754
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.15357446670532227
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.12141871452331543
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.041778564453125
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.3542938232421875
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.34632253646850586
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.22759485244750977
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.18112516403198242
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.05898022651672363
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.01409602165222168
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.4431338310241699
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.25666141510009766
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.9254446029663086
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.5174860954284668
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.20113897323608398
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.20313358306884766
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.5621166229248047
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -1.576452612876892
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.7599265575408936
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.1448814868927002
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -1.7955749034881592
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.13353872299194336
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.48876118659973145
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.029449462890625
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.2203693389892578
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -1.9118690490722656
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.9069499969482422
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.3264026641845703
+        }
+      ]
+    },
+    "phase_tree-raw_profile": {
+      "n": 64,
+      "corpus_mean_delta": -0.2966952919960022,
+      "by_corpus": {
+        "Friends": -0.1922779232263565,
+        "TheOffice": -0.6054485514760017,
+        "HPD": -0.01695050299167633,
+        "StarTrek_TNG": -0.3721041902899742
+      },
+      "by_split": {
+        "random_test": -0.04919765144586563,
+        "ood_test": -0.5441929325461388
+      },
+      "descriptive_corpus_bootstrap95": [
+        -0.5021558944135904,
+        -0.10461421310901642
+      ],
+      "lower_tie_higher": [
+        39,
+        0,
+        25
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -1.0481815338134766
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.3171224594116211
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.5052356719970703
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.23673582077026367
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.5749359130859375
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.1843891143798828
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.31110572814941406
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.016142845153808594
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.41037631034851074
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -2.105743408203125
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.18919992446899414
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.1334238052368164
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.382936954498291
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.017017602920532227
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -1.0080437660217285
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.27622151374816895
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.05808842182159424
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.8157393932342529
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.40659570693969727
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.24169492721557617
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.11435413360595703
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.10830163955688477
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -1.0891737937927246
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.28688716888427734
+        },
+        {
+          "question_id": "TheOffice_c83063cd9cc4",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -2.345090866088867
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.4652566909790039
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.3423376083374023
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.1162033081054688
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.482694149017334
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.6973981857299805
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.5973663330078125
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.4684486389160156
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.77561354637146
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.5193037986755371
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.26413869857788086
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.1490464210510254
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -1.246816873550415
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.1441507339477539
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.04312896728515625
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.07005453109741211
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.38018274307250977
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.036066532135009766
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.031113147735595703
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.011054039001464844
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.10134506225585938
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.013429641723632812
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.5733017921447754
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -1.0086228847503662
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.6386799812316895
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.7536435127258301
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.9855446815490723
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.6135430335998535
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.2711968421936035
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.9080709218978882
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.4927077293395996
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.09415936470031738
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -1.8647096157073975
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.7251074314117432
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.5536007881164551
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.6967310905456543
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.2640380859375
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -2.0230140686035156
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.715766429901123
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.24165129661560059
+        }
+      ]
+    },
+    "phase_tree-naive_rewrite": {
+      "n": 64,
+      "corpus_mean_delta": -0.31757416389882565,
+      "by_corpus": {
+        "Friends": -0.219981849193573,
+        "TheOffice": -0.44842830300331116,
+        "HPD": -0.06944358348846436,
+        "StarTrek_TNG": -0.5324429199099541
+      },
+      "by_split": {
+        "random_test": -0.24959353730082512,
+        "ood_test": -0.38555479049682617
+      },
+      "descriptive_corpus_bootstrap95": [
+        -0.4904356114566326,
+        -0.14471271634101868
+      ],
+      "lower_tie_higher": [
+        38,
+        0,
+        26
+      ],
+      "changes": [
+        {
+          "question_id": "Friends_1f4d1a3232cc",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.6369404792785645
+        },
+        {
+          "question_id": "Friends_d5f7e4b5e890",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.3935871124267578
+        },
+        {
+          "question_id": "Friends_18ce439a90db",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.988560676574707
+        },
+        {
+          "question_id": "Friends_341c1da17072",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.009319305419921875
+        },
+        {
+          "question_id": "Friends_3455ccf07d94",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.1978769302368164
+        },
+        {
+          "question_id": "Friends_9fa0a4d0344d",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.1672043800354004
+        },
+        {
+          "question_id": "Friends_0cf810d3376e",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": 0.514434814453125
+        },
+        {
+          "question_id": "Friends_718aa076e95c",
+          "corpus": "Friends",
+          "split": "random_test",
+          "delta": -0.667111873626709
+        },
+        {
+          "question_id": "Friends_89f4f857f6c7",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.18556523323059082
+        },
+        {
+          "question_id": "Friends_67fc3a5dd700",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -1.29282808303833
+        },
+        {
+          "question_id": "Friends_d509aae1b173",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.05048179626464844
+        },
+        {
+          "question_id": "Friends_a5c9f84001e0",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.0687875747680664
+        },
+        {
+          "question_id": "Friends_f600cbfe9fc9",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.9983406066894531
+        },
+        {
+          "question_id": "Friends_bf1ea4e16d83",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": 0.3016173839569092
+        },
+        {
+          "question_id": "Friends_9c3ee0b8a13f",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.8364739418029785
+        },
+        {
+          "question_id": "Friends_13b74e75e9c5",
+          "corpus": "Friends",
+          "split": "ood_test",
+          "delta": -0.3351612091064453
+        },
+        {
+          "question_id": "TheOffice_b7c1d954e312",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.521721363067627
+        },
+        {
+          "question_id": "TheOffice_2a0696f97f66",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -1.170534610748291
+        },
+        {
+          "question_id": "TheOffice_6edc3e95b691",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.6263518333435059
+        },
+        {
+          "question_id": "TheOffice_b52d1028d846",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.431105375289917
+        },
+        {
+          "question_id": "TheOffice_a287306571c2",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.11383223533630371
+        },
+        {
+          "question_id": "TheOffice_131df5281240",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": 0.20693063735961914
+        },
+        {
+          "question_id": "TheOffice_9ce880cace9b",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.955653190612793
+        },
+        {
+          "question_id": "TheOffice_771c740e1913",
+          "corpus": "TheOffice",
+          "split": "random_test",
+          "delta": -0.3682832717895508
+        },
+        {
+          "question_id": "TheOffice_c83063cd9cc4",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": 1.0985231399536133
+        },
+        {
+          "question_id": "TheOffice_5a3cbddee6f8",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.4911994934082031
+        },
+        {
+          "question_id": "TheOffice_88c282c7bcd5",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.239518165588379
+        },
+        {
+          "question_id": "TheOffice_b00ca3c2cf45",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.7398996353149414
+        },
+        {
+          "question_id": "TheOffice_b39b93bbf62a",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.5873899459838867
+        },
+        {
+          "question_id": "TheOffice_168f292317ef",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -0.2248058319091797
+        },
+        {
+          "question_id": "TheOffice_9e3ac8332531",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.8101496696472168
+        },
+        {
+          "question_id": "TheOffice_a866140a9e0d",
+          "corpus": "TheOffice",
+          "split": "ood_test",
+          "delta": -1.4960083961486816
+        },
+        {
+          "question_id": "HPD_3aed7a50f060",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.6109023094177246
+        },
+        {
+          "question_id": "HPD_798859e699bb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.49540019035339355
+        },
+        {
+          "question_id": "HPD_61ffbb7ec789",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.9811916351318359
+        },
+        {
+          "question_id": "HPD_c648ee26e9d5",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -0.22015690803527832
+        },
+        {
+          "question_id": "HPD_c2a1cc4e8dcb",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": -1.8445816040039062
+        },
+        {
+          "question_id": "HPD_bf7fcb79908a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.7135348320007324
+        },
+        {
+          "question_id": "HPD_f2165ccd469a",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.012225627899169922
+        },
+        {
+          "question_id": "HPD_92f99c3f348c",
+          "corpus": "HPD",
+          "split": "random_test",
+          "delta": 0.2599310874938965
+        },
+        {
+          "question_id": "HPD_40b99c3da417",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.2815704345703125
+        },
+        {
+          "question_id": "HPD_6a174348f400",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.11767816543579102
+        },
+        {
+          "question_id": "HPD_5160f6ba4572",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.10102653503417969
+        },
+        {
+          "question_id": "HPD_a805f945b33e",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.040366411209106445
+        },
+        {
+          "question_id": "HPD_0284895839c8",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": -0.15546011924743652
+        },
+        {
+          "question_id": "HPD_231c702125c3",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.07181143760681152
+        },
+        {
+          "question_id": "HPD_3dc9d7b49add",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.5539922714233398
+        },
+        {
+          "question_id": "HPD_0dbd6419acb6",
+          "corpus": "HPD",
+          "split": "ood_test",
+          "delta": 0.2890145778656006
+        },
+        {
+          "question_id": "TNG_a0ee5c856d9c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.18370485305786133
+        },
+        {
+          "question_id": "TNG_512d80d361d3",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.315737247467041
+        },
+        {
+          "question_id": "TNG_b8a92357c62c",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -1.7159996032714844
+        },
+        {
+          "question_id": "TNG_cf562c371b79",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": 0.6892881393432617
+        },
+        {
+          "question_id": "TNG_1e4ed361ae25",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.5519852638244629
+        },
+        {
+          "question_id": "TNG_076cdfb78f5f",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -1.681824803352356
+        },
+        {
+          "question_id": "TNG_f22545cc9ea6",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.8312041759490967
+        },
+        {
+          "question_id": "TNG_925db50d09c9",
+          "corpus": "StarTrek_TNG",
+          "split": "random_test",
+          "delta": -0.3799118995666504
+        },
+        {
+          "question_id": "TNG_682d1b83b47f",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -1.9716589450836182
+        },
+        {
+          "question_id": "TNG_8f29bfc8ef23",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.4839780330657959
+        },
+        {
+          "question_id": "TNG_68163dcda27c",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.3597579002380371
+        },
+        {
+          "question_id": "TNG_c657ca867af3",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.953073263168335
+        },
+        {
+          "question_id": "TNG_76a2dac858df",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.08440566062927246
+        },
+        {
+          "question_id": "TNG_36854c09dc2d",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -2.4652976989746094
+        },
+        {
+          "question_id": "TNG_fa3c2b340d32",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": 0.04143524169921875
+        },
+        {
+          "question_id": "TNG_d98d78e786dd",
+          "corpus": "StarTrek_TNG",
+          "split": "ood_test",
+          "delta": -0.34511280059814453
+        }
+      ]
+    }
+  }
+}
