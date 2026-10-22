@@ -1,0 +1,1482 @@
+{
+  "experiment": "D-E06",
+  "selection": "First eligible roles/windows in independent fixed-hash order, up to four per existing source book; no model outputs or source growth flags used.",
+  "n_trajectories": 29,
+  "n_books": 8,
+  "n_update_steps": 232,
+  "n_native_queries": 87,
+  "n_first_actor_calls": 435,
+  "by_book": {
+    "Treasure Island": 4,
+    "The Portrait of a Lady": 4,
+    "The Call of the Wild": 2,
+    "Far From the Madding Crowd": 4,
+    "The Three Musketeers": 4,
+    "Middlemarch": 4,
+    "The Hound of the Baskervilles (Sherlock Holmes, #5)": 4,
+    "Dr  Jekyll and Mr  Hyde": 3
+  },
+  "candidate_rejection_events": {
+    "missing_next_first_role_turn": 80
+  },
+  "snapshot_and_update_continuity_verified": true,
+  "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "native_input_token_range": [
+    1443,
+    11029
+  ],
+  "trajectories_sha256": "90c97c010669b1b02d19b799171e97a84cac382723e908cdeebc7a2e5f11ca79",
+  "references_sha256": "0c2c5efff443365a5c59cc2393c98c941dc1852990273d3eaaf696c6c80a165e",
+  "trajectories": [
+    {
+      "trajectory_id": "chain/5b6b52c55810744e839cec01",
+      "book_name": "Treasure Island",
+      "role": "Billy Bones",
+      "scene_indices": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "f35bdb46269a23f3f5ac7f55dd2e2f8bcb9daef9d3e2813ce3acadadd06eca23",
+        "8164bae9baadf094341b6150d55f71e7cb75fae11fd84d81fccf941908d7d455",
+        "01efe4c87d3a634d8c06c366daedc5f2d3e61e42f58c2b1049e91046e342eee1",
+        "43ace4134d73e541e28b7b12a956c2cb829e65630e9dc82da636a3b226dc4770",
+        "f38eedf2b810fec6544be0b57ac2592c47899f6fc3878e5656eb5d106fd66096",
+        "886358028e1f103cc438dad1eb7205079a5a43f55f0fa401679f525e5f89fceb",
+        "a9420ab050be35727ae580a8ca00dc27b995f7cdb1ed637c0df6ba497a80f68d",
+        "3f7cb3acc08b28b7c1b0255567f38e7604ed8baf20d819e35341d6e188254752"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/5b6b52c55810744e839cec01/after1",
+          "scene_index": 4,
+          "after_updates": 1,
+          "native_prompt_tokens": 3481,
+          "input_sha256": "c150fa96d7761180226793773eeae9a392f1b5038ad460ad6123d143b08d6dc7"
+        },
+        {
+          "question_id": "chain/5b6b52c55810744e839cec01/after4",
+          "scene_index": 7,
+          "after_updates": 4,
+          "native_prompt_tokens": 3975,
+          "input_sha256": "22fc893e6b998d0976fb16d66431b72b1dbce2688f6fab963da81a4f6ac8852c"
+        },
+        {
+          "question_id": "chain/5b6b52c55810744e839cec01/after8",
+          "scene_index": 11,
+          "after_updates": 8,
+          "native_prompt_tokens": 3586,
+          "input_sha256": "59bae2b9f1ebe13b3ae7efea4eb28e12befc3c295bf985a5a43acb62d679bfe9"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/024bce9c3dc756ad99538ab8",
+      "book_name": "Treasure Island",
+      "role": "Jim Hawkins",
+      "scene_indices": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "781084a1e7693466d29c93b43222b073befbb1183b42f67aacba301d3c965ccb",
+        "c2b8ecaa169b2362d0dc9e25cb9d9ce58667dd90c70f28a130bf22bff9da097e",
+        "84ab8c4e9f8ae28a1bc32637718bdbf10d08948c3cd997e101161ee75eca731e",
+        "7d91856e96440de2358d83441876fa227ad4d89389c1e106e023de43c80ee686",
+        "88c07fd986585059e6435e30ec5462e39e48c6c3ead06eec03fadb1c311a58d5",
+        "6473b5620b6f93098bcea7f02fc642507609c6038839af8897cf2dafc98fb354",
+        "d176d63b41d5d10fd13a6c4f311ca8472a6e4c13076f73f40cc770da6af04ef5",
+        "ab2e0963ac05cbe655edd308aca52765190cda5fca17ba8b738288f9ce66d69a"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/024bce9c3dc756ad99538ab8/after1",
+          "scene_index": 8,
+          "after_updates": 1,
+          "native_prompt_tokens": 3691,
+          "input_sha256": "02bf8d0bc67377a26bf1dec5426540915ece11c944327bf9f039bc73fb884374"
+        },
+        {
+          "question_id": "chain/024bce9c3dc756ad99538ab8/after4",
+          "scene_index": 11,
+          "after_updates": 4,
+          "native_prompt_tokens": 3812,
+          "input_sha256": "cbb65827961392caeeee150b618a913ff1c508d6be45398a62c1b2565b74a707"
+        },
+        {
+          "question_id": "chain/024bce9c3dc756ad99538ab8/after8",
+          "scene_index": 15,
+          "after_updates": 8,
+          "native_prompt_tokens": 3501,
+          "input_sha256": "63c9af080a207b9e2bfe4436620fa7dbfa1fb7fd1e1e1ccbaa41b0e93fabdb4b"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/23e83e5455dcc428995b2cca",
+      "book_name": "Treasure Island",
+      "role": "Alexander Smollett",
+      "scene_indices": [
+        41,
+        43,
+        44,
+        45,
+        46,
+        51,
+        52,
+        54,
+        56
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "c6e326a1a79de860214ca2eca03e2817bdd82edbcf9dff90357929f07de393c9",
+        "d7876d0cc9cdf042c4c19832042f9f58430dd07e305e0a6a5a017d6687d63ba0",
+        "055479344f7dd3acd4d7fab881588431639148e89ca30ba5236476906bf5063e",
+        "004a5ebaac34c4765bac5407a9cb896f8807f8650de7fd148bd11b2d924eb65f",
+        "c14de317464068c0bd4bbe741d5e1a34a2cec7c7ffecde5c61b6d7c3e12c34ca",
+        "58d88862b50d2933a486bdcbf891470394ad8ae7b69e9bab4e6062375b651307",
+        "4c88ceb04fff72af6daeaa58e575478d291713c401e5217990f6b5d9caed192f",
+        "46cbc3114736a20c414b27f9024fe34a57fe6e9bbbbf44466bf13f4b267e90fa"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/23e83e5455dcc428995b2cca/after1",
+          "scene_index": 43,
+          "after_updates": 1,
+          "native_prompt_tokens": 4927,
+          "input_sha256": "62005dd88fe9399735a533b4e9395d637edd880a55f8a572002bf73ab52ca54e"
+        },
+        {
+          "question_id": "chain/23e83e5455dcc428995b2cca/after4",
+          "scene_index": 46,
+          "after_updates": 4,
+          "native_prompt_tokens": 4876,
+          "input_sha256": "08d04ef3dffaa211e399bf2276a31cd8903e0c9c5d5ab276adfed481d939b6c8"
+        },
+        {
+          "question_id": "chain/23e83e5455dcc428995b2cca/after8",
+          "scene_index": 56,
+          "after_updates": 8,
+          "native_prompt_tokens": 4746,
+          "input_sha256": "9aca8e123d5379218f266c6207051caf2b9be89d618fc10352c238769360250a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/337a8875cc579d674d47d258",
+      "book_name": "Treasure Island",
+      "role": "Long John Silver",
+      "scene_indices": [
+        30,
+        31,
+        32,
+        35,
+        36,
+        38,
+        39,
+        42,
+        43
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "3985c22f1f5b7b3f0fc9fb80ac5d436fcad737fe0c3bf6f9a9f90a540c5c82a8",
+        "bef99835f3946a88f2260574f3e88e8f45d2c6e3fa733019f7938b6e848139fe",
+        "6993eeefcc940506bab6015aeb53e55b5cdef3ce07c2a45dea99e78760598623",
+        "c5167ebae8ba36765839f812308704aac6c3d0eb50776c23d63fdd7392c6f4a6",
+        "4246cd6f5acaf26c7c05999c9433a7f2710df9329bbadbf04d32e5865fb37e56",
+        "20c596f500bdf99d74e31c6ca7938d5a853025d672b77caf6918ed67b0a1eb46",
+        "d9a76248a1e4f9900a4e661379e306160782315445ffe3531fcc842588a4208a",
+        "e653c2710f918eefd2ec541d48fda6c7bde81ec829ef7eb5dcd091f794a60556"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/337a8875cc579d674d47d258/after1",
+          "scene_index": 31,
+          "after_updates": 1,
+          "native_prompt_tokens": 3114,
+          "input_sha256": "e25d526491e9029c0f964eb6b3fb0f2ca2af957ba0764d2471b25b038b99cadc"
+        },
+        {
+          "question_id": "chain/337a8875cc579d674d47d258/after4",
+          "scene_index": 36,
+          "after_updates": 4,
+          "native_prompt_tokens": 4193,
+          "input_sha256": "37190dbc46b711866ceb38d79c7dbe6a3dbce393aba1a9509ce7d81113467116"
+        },
+        {
+          "question_id": "chain/337a8875cc579d674d47d258/after8",
+          "scene_index": 43,
+          "after_updates": 8,
+          "native_prompt_tokens": 4865,
+          "input_sha256": "948d720c5dec1cd219854a12e54fd8afea6c7385f443c18ef1d2022abebd3381"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/1998daccc41eb21e9580f032",
+      "book_name": "The Portrait of a Lady",
+      "role": "Serena Merle",
+      "scene_indices": [
+        78,
+        80,
+        85,
+        86,
+        87,
+        88,
+        90,
+        91,
+        92
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "f4265f3cf90c11e416f81ba912a0b193638d8c7ee12e769383191b958e22d6c4",
+        "4e695a719bb824283e4e0f20b1e4d92c1713987a2a36324914e1aa72c1f6c629",
+        "656ad5f11e67dbdfc4311ee9cdc550b45f665fbf675eddf54ff2ff618353b319",
+        "b9f2bc59ed9a5e25602a5e15721cfaf8bf749518271a0c0430efb760dcb118ae",
+        "721836a3614354556ca45b7a0040c7d75d1d0717ecdd3f2da06ef5393686e655",
+        "239238a7241bcf2055e16c28441a185171b2e5726cb0dcf15b89aa1b350ec65c",
+        "81a8b6df6099b9271aa848d7013d9ba09814a3b54190909da19c6837123be9f4",
+        "545539be3755c46f556706e46ce16931456bb023a8ec62fae0a3235c23f4e8af"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/1998daccc41eb21e9580f032/after1",
+          "scene_index": 80,
+          "after_updates": 1,
+          "native_prompt_tokens": 3787,
+          "input_sha256": "94aa209a77d009b0cfe580531cb0a6e069921d7af5e13c4313ea0c1f30971eb2"
+        },
+        {
+          "question_id": "chain/1998daccc41eb21e9580f032/after4",
+          "scene_index": 87,
+          "after_updates": 4,
+          "native_prompt_tokens": 4029,
+          "input_sha256": "1dc20ab2890cc1eab42a41cde54f7ea88593ee071b285c383875f7a063102a14"
+        },
+        {
+          "question_id": "chain/1998daccc41eb21e9580f032/after8",
+          "scene_index": 92,
+          "after_updates": 8,
+          "native_prompt_tokens": 3923,
+          "input_sha256": "ce3e7be69c2290542fae0c5e916a81e0da9ab00b4907ba176c0084dba738ea4c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/037eeb44a96e2fc8d63be963",
+      "book_name": "The Portrait of a Lady",
+      "role": "Ralph Touchett",
+      "scene_indices": [
+        137,
+        140,
+        143,
+        144,
+        145,
+        149,
+        150,
+        151,
+        157
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "3a609356b8db7a5593c520b09339a6ad506a3bca1e2ccb493ad0802b992b98f7",
+        "357e9225e9ec7de384d8f80513ccae2bb083bb2c8862af24157d4e66ac27a3d8",
+        "5ebd0d64e28f533c497388779e6a590e8604b43d8ae09efaa9df84e70be10ef4",
+        "2175dbeda639c60d42e9203c4df2d226768e99717454cf0f977f8f8911b4cb53",
+        "8c771fb48c100ab389f6a2cd75f7f11fcda2dd79bd195c644ba72bf65e17de46",
+        "606a897d8971ea02bbb901d6bf99e55503e3914b4e0778c4ed004e7b4cf2fae5",
+        "e68abf4fd42879e7176072b7d94a158c6351db0cb9847450450d657a63c7c72f",
+        "664f131f078e7a7b832df530ef162c031d65746a48e3a4cf5fcf992884b629d4"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/037eeb44a96e2fc8d63be963/after1",
+          "scene_index": 140,
+          "after_updates": 1,
+          "native_prompt_tokens": 6374,
+          "input_sha256": "4b0f8b90eb9cfaf7fe3868d9421adda9e253162d1598d69105094d6688dc8141"
+        },
+        {
+          "question_id": "chain/037eeb44a96e2fc8d63be963/after4",
+          "scene_index": 145,
+          "after_updates": 4,
+          "native_prompt_tokens": 6455,
+          "input_sha256": "29a4ea20c59722dbb0100124f8363bcd71a4bef2dd7e43fcc0ac77a2618040e5"
+        },
+        {
+          "question_id": "chain/037eeb44a96e2fc8d63be963/after8",
+          "scene_index": 157,
+          "after_updates": 8,
+          "native_prompt_tokens": 5468,
+          "input_sha256": "d02490275a40f631f9813fdbd028a88f689614c0075f01171688333e61085f38"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/41d6927169519e8b9c3f13e4",
+      "book_name": "The Portrait of a Lady",
+      "role": "Pansy Osmond",
+      "scene_indices": [
+        121,
+        122,
+        123,
+        129,
+        154,
+        171,
+        173,
+        176,
+        177
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "a1a36aa469a739674f7b44b61a200f8e3c276817701dfcb14f1305ee989b55f6",
+        "afca5210a8ec189d66ba5148b23f56e3318a9fbfa7cece09c8d762400d03d3a6",
+        "e87691e2fc028821da2ec3f57c32698e79dd939bc61926f05f1d156cb301a690",
+        "1e86cc91d15fbacadce654fc6d10086f1b7e57c00858f5cd87ed73943beb93af",
+        "f4b06a2a82f746fb64d31a57a273160a3be4cbcacd8192cd0cb573a5d938bc27",
+        "495e62d2d56cc6f3094b76076e9465b59df0317fd196366cc305f14f8a44993b",
+        "104ccebd653cecbe4ebc6dcc95972dbe019698cceb3df149166b0ab86b33611b",
+        "8c8016961a533cde0c19dcb82fbadffe74e78d185d55110ddf64c28db1e7c20a"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/41d6927169519e8b9c3f13e4/after1",
+          "scene_index": 122,
+          "after_updates": 1,
+          "native_prompt_tokens": 5424,
+          "input_sha256": "70725701a6433561c916eaddfd5f4fb22d20ba841bf90a58f285846c4c86e948"
+        },
+        {
+          "question_id": "chain/41d6927169519e8b9c3f13e4/after4",
+          "scene_index": 154,
+          "after_updates": 4,
+          "native_prompt_tokens": 5555,
+          "input_sha256": "ed9a18245be71e867f1f87b1d850fb27f78697813d26ca124535d3c7f85ea5e8"
+        },
+        {
+          "question_id": "chain/41d6927169519e8b9c3f13e4/after8",
+          "scene_index": 177,
+          "after_updates": 8,
+          "native_prompt_tokens": 7230,
+          "input_sha256": "14a3214059f18578f952e03683efd23221ad2a72e0d1c3952be6611648d73f26"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/006ca643bee78a40ef9328dc",
+      "book_name": "The Portrait of a Lady",
+      "role": "Henrietta C. Stackpole",
+      "scene_indices": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        47,
+        48
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "92caecd9aeb2453b709402f90294d9f937357e6834b14090664196e77488e7ce",
+        "a7b88d2ee63367c991e225c3368b0e70b094f2f4629d175b26fba98a8c8d8c89",
+        "d23fba6babac1c96b6d11966aeb481ebfbab137f72480520ef284805c5feb6c6",
+        "0e63e009f64e90454542b2b92923665986897f5a44f2b90d7af899d15c398776",
+        "3032d06a5052878d3f923686beeb9a23753e614f2a9a0372c8baccd008df4a9b",
+        "7eaca26811a09feedce960222b5a8ba9825f40090ff25b5510c7da9b41ca2601",
+        "82d908e4bf4af5bc13a45352e10e35af498d9329c83dbc18a13b8a87ae45ed18",
+        "7420c2b2a312183f3866cebc516b7600b4f6e36fcc05116b44ae7181b7b008bb"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/006ca643bee78a40ef9328dc/after1",
+          "scene_index": 40,
+          "after_updates": 1,
+          "native_prompt_tokens": 6399,
+          "input_sha256": "f5a8f159ba28b617c89b6790679ff8766449a671d530cd34bc535ac9e8824fef"
+        },
+        {
+          "question_id": "chain/006ca643bee78a40ef9328dc/after4",
+          "scene_index": 43,
+          "after_updates": 4,
+          "native_prompt_tokens": 6861,
+          "input_sha256": "bef58ed7057044f2d067c14f5c858549335c9a5d3a7278ac86b909398df50235"
+        },
+        {
+          "question_id": "chain/006ca643bee78a40ef9328dc/after8",
+          "scene_index": 48,
+          "after_updates": 8,
+          "native_prompt_tokens": 7324,
+          "input_sha256": "41c6b6b9e2fa13334d20f551ee5d6bcb9eb1b029943c94afc20d62c31f402a97"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/b8513d7e54de96ebc44020c1",
+      "book_name": "The Call of the Wild",
+      "role": "Francois",
+      "scene_indices": [
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        21,
+        22
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "9c581b563986ccbe075a83dc96df4ff678b8b9877b56867851808d7fb1c651c8",
+        "6e4f4033eca688a1edc8a4b038801a651bcc5f11132df25f52f1b8c6e19078bc",
+        "246c05a299a8ef87e270d9afa4df5f4d6dac1f740bae1a3be16e3270755a130e",
+        "cc206775c70a3bda1e4a99913d1c86f18315f719d1ded05c7ea9f87ffd1c763b",
+        "ba8f508aae86c14725f86e9ebaa85e5d65c0e719f71e9c5268acf7c3e3c76b29",
+        "a798f0f1f41cab869ad505b1fb77cc9bcadcb407f55a2b4b1e9629d6e348e558",
+        "97574e316deb6fb7279680fdf29e55457872cfc8d3f7a4bb19e570a0c934e9fb",
+        "06dce82394cd86f9c9f74c1b884ef6d97e97bb8c8d60bae7aabd7c9c8c222fdf"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/b8513d7e54de96ebc44020c1/after1",
+          "scene_index": 13,
+          "after_updates": 1,
+          "native_prompt_tokens": 2967,
+          "input_sha256": "ffbcd709456adb6873f5f7864d76c0905710fa1ceebc8fa4fb9e808de876717a"
+        },
+        {
+          "question_id": "chain/b8513d7e54de96ebc44020c1/after4",
+          "scene_index": 17,
+          "after_updates": 4,
+          "native_prompt_tokens": 3795,
+          "input_sha256": "651ea3afd025895c70038b1978e94d2608ca6fc540ab9265b5f3de08d39f3d64"
+        },
+        {
+          "question_id": "chain/b8513d7e54de96ebc44020c1/after8",
+          "scene_index": 22,
+          "after_updates": 8,
+          "native_prompt_tokens": 3212,
+          "input_sha256": "3323dad73931f0c18b5a05a2185f4d60f445e573adfda7816afd26268163ee9a"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/1701d502a6cbe14e8b2e0715",
+      "book_name": "The Call of the Wild",
+      "role": "Buck",
+      "scene_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "ccda911a9f920ebc2ef9cea55890fe99d09d2ceb5b91989c93b0069de0c31caf",
+        "3325bbff30e26103ee7bec17542efb67874e7a24febdacd05f1adf140cbc38a9",
+        "7c174bf5687c2169c734ebcf123f65028afa27e9db6b0ca907d88df9612fc815",
+        "c368962d5563d0b3018967bdb0fb9842217db7ff32e7c651346727fca76ad6c9",
+        "e98d8cd0c0f769c8ea864ac94ce36b7e1dc5052ca917f534b1ce8a5f3d7835f6",
+        "af68c0f51951581776cb0212cc73a33d6718187370e41b67f402845bd6cdedf5",
+        "e8334bcf42788e7449151616a1a42961135c26e30c313721ae4e1c07fffde388",
+        "0938fe253038da0e3029f635bc8ac729ca8f7d29e10deb45a9c9748291953367"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/1701d502a6cbe14e8b2e0715/after1",
+          "scene_index": 9,
+          "after_updates": 1,
+          "native_prompt_tokens": 3504,
+          "input_sha256": "d4c6dbc5d9f0d462378af6560bd5e6b59f6d07cbe67fe90fcf6c89e9c9aff70a"
+        },
+        {
+          "question_id": "chain/1701d502a6cbe14e8b2e0715/after4",
+          "scene_index": 12,
+          "after_updates": 4,
+          "native_prompt_tokens": 3462,
+          "input_sha256": "0718a3bddfcb04e302cf9f1d59816c7b710c7b3ca33a388fa70acee3907f8019"
+        },
+        {
+          "question_id": "chain/1701d502a6cbe14e8b2e0715/after8",
+          "scene_index": 16,
+          "after_updates": 8,
+          "native_prompt_tokens": 3704,
+          "input_sha256": "55919a27aa1aafbe3bed66b732f0f2463f57a042e600d89c6600f6e08abde0d2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/02d46e643416f35d973c4e23",
+      "book_name": "Far From the Madding Crowd",
+      "role": "Bathsheba Everdene",
+      "scene_indices": [
+        66,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "54665ec17be4197d284167bfa6eda0dea82157df9e24cb976a604f928e2df900",
+        "703a5569298312fd2827bd223fe30c94501125c7ffc08c89852f62aa79d86448",
+        "5c1cf403aa3974239deaaca1618c56e992da4c8eb33f543066a545c372849563",
+        "95a74cb516a186958f511797f30418aa55c9422156ddcb4f8fbd9c7bcd4e95ec",
+        "5cc66020dc07d84dc2fdd73d002cdfa1065ebff1d6b5f2dab80b3a4d2c91beee",
+        "460c5a6c506b0e2ba5f59b1cfe3c84ec9419fb1dd6ef87f4df7d52b3923a5379",
+        "51b6fd1175e10492b53cb8a5ec20eb094ec2186f269ce59bfb737fdea09aa4a3",
+        "7657a7220479cf8ece8c764c90433d737ac2b6f605ac36a16b6987a191d0dc20"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/02d46e643416f35d973c4e23/after1",
+          "scene_index": 68,
+          "after_updates": 1,
+          "native_prompt_tokens": 6726,
+          "input_sha256": "4d5b1ae773b8872c1375a946653ef3380cf5121f789b20f272c4b5e839fbd70a"
+        },
+        {
+          "question_id": "chain/02d46e643416f35d973c4e23/after4",
+          "scene_index": 71,
+          "after_updates": 4,
+          "native_prompt_tokens": 6614,
+          "input_sha256": "d5572f1bb44427323e5e1fe007de6f7e1a7ceff5dad933470e769930f7eec407"
+        },
+        {
+          "question_id": "chain/02d46e643416f35d973c4e23/after8",
+          "scene_index": 75,
+          "after_updates": 8,
+          "native_prompt_tokens": 5305,
+          "input_sha256": "d8c0c5cf30dc4dea3bdf06cee2bfd4b3cdbacb0bb9d14a381352257dd5524aa6"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/0284b96cb20565db853a892a",
+      "book_name": "Far From the Madding Crowd",
+      "role": "Gabriel Oak",
+      "scene_indices": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        116,
+        121,
+        122,
+        123
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "b1ed10d11e5c5c210711d369c875922dc6716fbccba71f965f239892aa224f3c",
+        "a7053a11d80608b2b771739f9cbf768e023d0c30ba0c0aa355ccf50f8bab8500",
+        "fc0266decf38963e9082e6480ffb4c198d6695d2133297a986cf1e24c19167ef",
+        "23ecf98145597f9261a11df8fdfcbb2b72b76e53d8128265f9f1327f8ab0450f",
+        "5d7cf3284b75529d1d2e27fb8a1feb7323c3d3e45916da6e5c2c2008ae88678f",
+        "19f84d51df571132d53af5dd2b3eb112707dc1dcbc9f041c5fa416b16b3eb63b",
+        "12a51407311170e130737fde85b18f08087d2886d4d55321bcb8b62c01b05e95",
+        "f9a0f8d7fa6d85bbe9b6e16ef4590252bb6b99e984bb9529b37d02e3343ae918"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/0284b96cb20565db853a892a/after1",
+          "scene_index": 105,
+          "after_updates": 1,
+          "native_prompt_tokens": 6667,
+          "input_sha256": "59306108d042b0a2a7c24017f41a12f8e244e61f99a56fe86c9a09d9a3d5f4f7"
+        },
+        {
+          "question_id": "chain/0284b96cb20565db853a892a/after4",
+          "scene_index": 108,
+          "after_updates": 4,
+          "native_prompt_tokens": 5054,
+          "input_sha256": "2f5775fb835aca4a7621102fc70cfecfedf5d80b801485ff66cd1c8214065878"
+        },
+        {
+          "question_id": "chain/0284b96cb20565db853a892a/after8",
+          "scene_index": 123,
+          "after_updates": 8,
+          "native_prompt_tokens": 6194,
+          "input_sha256": "593ab802abafa25baa50cd0a71c8157e548ee753f82f9234a0a2454ec6bdb180"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/8453f6a2b9304a7fc673e5fe",
+      "book_name": "Far From the Madding Crowd",
+      "role": "William Smallbury",
+      "scene_indices": [
+        22,
+        24,
+        27,
+        28,
+        29,
+        30,
+        31,
+        37,
+        44
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "85ddf50e7e22c5becca8e0805abb11e1a7a18bdda2c72c13f00a6ce8de4fffb3",
+        "b3cc2faa3d6989d61e7386f268b26bd959c6b71b6e3c2ef88300d29c9ebbf095",
+        "5c333f27f03831d93f18f8e8da29d3cec9c425c936629deedf5c5e7f6ea1b350",
+        "a530cc7841c2c350298a0b561900d7b4b520a83c17accb47c9e22c7cc37103ac",
+        "5d09205ebbb6336d418b109bb9fc9631007039de160f6b51999a97a086d549d3",
+        "b9f1caefb79375097309b0b13fedf2ed059b8e88fdaea13a68696215e27abffb",
+        "a9acd1af327d786948038f26db915c6d5fb451a990741fbc1cb4c52f5352585e",
+        "04c461a6a17c607070da1497c4473367d5e4dc2a215520a21dc0b4b9658be547"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/8453f6a2b9304a7fc673e5fe/after1",
+          "scene_index": 24,
+          "after_updates": 1,
+          "native_prompt_tokens": 5560,
+          "input_sha256": "bbd6ad07f3bc3e6950f2130e1c105c7244ff358e6cabdaf90ec73386cd03ee71"
+        },
+        {
+          "question_id": "chain/8453f6a2b9304a7fc673e5fe/after4",
+          "scene_index": 29,
+          "after_updates": 4,
+          "native_prompt_tokens": 4596,
+          "input_sha256": "485ff66d4ed0e81057847efd3c098b90a8a0e99187ad4b0f86d194ceb35dd472"
+        },
+        {
+          "question_id": "chain/8453f6a2b9304a7fc673e5fe/after8",
+          "scene_index": 44,
+          "after_updates": 8,
+          "native_prompt_tokens": 5596,
+          "input_sha256": "bd131e841c29d88b5ed91893ec8dc0f1d63a00795cbb34283002d76d6d4563c8"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/0abd078b2b22a4501c62dd58",
+      "book_name": "Far From the Madding Crowd",
+      "role": "William Boldwood",
+      "scene_indices": [
+        56,
+        61,
+        62,
+        73,
+        79,
+        89,
+        90,
+        91,
+        92
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "606fa64cdabdb29965d9752b17537289dad4cafb409bcf247ddfcffbebd69702",
+        "f17a90eea9e7897cd4b82fd991f77b9f1a7f0148626f2054a2af007a87c4492b",
+        "e17246fea428dad377ac8e62ab6750c2b53beaf23747131dfcbbe0fd9ffc5d6a",
+        "9cb90f462f436a60eea7ad2b79b2c22312957d26ac8c328d5c8b1edffeafea27",
+        "557d6ad4a8ad05cae2374ea47875659ea46ee12e0d0a47db2ff00b8a12799474",
+        "57ea14a6bc27d16e15a56b1f6939ae714815d5633e41571f83f8c51ae9f70461",
+        "e79517840377a9b26ed334227d8772dc7381117836c73d075a69f78fe5a7ef04",
+        "c0ee72d93e5c1404f1a8d6d85766ef737915d233ca7368c9c7774934ca2aaef7"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/0abd078b2b22a4501c62dd58/after1",
+          "scene_index": 61,
+          "after_updates": 1,
+          "native_prompt_tokens": 8354,
+          "input_sha256": "dd7150f708e22f03c3b6aad8b1de1c79951a09f524ee8c40e4e987efd3676d1a"
+        },
+        {
+          "question_id": "chain/0abd078b2b22a4501c62dd58/after4",
+          "scene_index": 79,
+          "after_updates": 4,
+          "native_prompt_tokens": 5344,
+          "input_sha256": "03ac6102b50a14c26f59f7c4c687899c297141a1e77b025b01dfc48e1ac0a304"
+        },
+        {
+          "question_id": "chain/0abd078b2b22a4501c62dd58/after8",
+          "scene_index": 92,
+          "after_updates": 8,
+          "native_prompt_tokens": 5393,
+          "input_sha256": "6b00b62b31184ecc861597d900231434f7be17648409b617a7b7d18a8e6043e2"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/1303b3541fd351c1e1be434f",
+      "book_name": "The Three Musketeers",
+      "role": "Constance Bonacieux",
+      "scene_indices": [
+        69,
+        72,
+        73,
+        74,
+        75,
+        104,
+        105,
+        106,
+        107
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "f00c779a6a18c1b5a4b32b5d739daf8780540ff8a1b3c7cfe9da0fbad6f6e304",
+        "c560d9b4479c32690c132fd187b91498a98b16eada7f3ba0b255fb7f8475f4e1",
+        "ac11dec464eb3ec20209cc1885d9b20058e36e164e2b85ef0e6b7ab1e34b8698",
+        "cafdd1597c4219bd8c3b100b30c970102ce9297c68c74be92beda80f6f726f81",
+        "7107e303ab28456d9bbf913c2df35fad8d6f0b84373c87f9003e612c2c0c5178",
+        "71af09bc1094bb1fc81f8ca799fc5aa560d37e69ca0acfbad13cfd7ecf950af2",
+        "2f37e86b87d896ae576df8c9aa2b0b6fa88da098d193d11b50b21d692ef67839",
+        "b1f94f9b5fee87592b1c4be0d765bdc0f88bebf063024078403152342120f757"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/1303b3541fd351c1e1be434f/after1",
+          "scene_index": 72,
+          "after_updates": 1,
+          "native_prompt_tokens": 4766,
+          "input_sha256": "ccf150d3a6ce34f2c8f1db463608e191d4a2f402bc4725f287bb6b13f9189f35"
+        },
+        {
+          "question_id": "chain/1303b3541fd351c1e1be434f/after4",
+          "scene_index": 75,
+          "after_updates": 4,
+          "native_prompt_tokens": 5661,
+          "input_sha256": "463c216589558d574e42aed35154b106afc274c3ae6c6eafa846c523ea3bb3ef"
+        },
+        {
+          "question_id": "chain/1303b3541fd351c1e1be434f/after8",
+          "scene_index": 107,
+          "after_updates": 8,
+          "native_prompt_tokens": 4547,
+          "input_sha256": "cdda2d03bacabef4ce94c990363b777a57cef2d2eac83d7ea0d95d2abe5e6603"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/39ef2b5de8d069befc6be633",
+      "book_name": "The Three Musketeers",
+      "role": "Kitty",
+      "scene_indices": [
+        208,
+        209,
+        210,
+        211,
+        217,
+        218,
+        219,
+        220,
+        221
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "493970950d15e4e0cc028555c7d62a9791c7b44d3e09aa487044771482420077",
+        "cfcf5492768ca8d55ba3214077d0eb5422a9fdde93e7321d43d28924dcba44b0",
+        "52192fdee7607d189eaad9d1008f1d6b15c79860928fec003bf291be227ba1ac",
+        "29eb53061608b037febbc0e225154cc23ea03f1abf59767429b392ab505d2bac",
+        "ab2b6aa9404251644f9bcc470fe3e3e4e36c26ebc05dcf081a227f1195cc577f",
+        "b33a4248f456f587a14ffb22861b065ae08ba71fa1325296819033a7f398ded0",
+        "1040b81094fb1afa01ce90058df49b221768279e346c3573f6f2df5ffc93becb",
+        "2023894cf8150d24a19446ebc13bf4d8b7cd44854b067c176d891b11765282f1"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/39ef2b5de8d069befc6be633/after1",
+          "scene_index": 209,
+          "after_updates": 1,
+          "native_prompt_tokens": 8533,
+          "input_sha256": "8b799b5e208879133deffe6dfb8798729dabeaa6801f69ed99e1f90dde4e54da"
+        },
+        {
+          "question_id": "chain/39ef2b5de8d069befc6be633/after4",
+          "scene_index": 217,
+          "after_updates": 4,
+          "native_prompt_tokens": 9048,
+          "input_sha256": "a088dda8386cd86e964c08cb76cd4773a5fa53970889b1ca6476d3e8183af789"
+        },
+        {
+          "question_id": "chain/39ef2b5de8d069befc6be633/after8",
+          "scene_index": 221,
+          "after_updates": 8,
+          "native_prompt_tokens": 9235,
+          "input_sha256": "9c796a96b70a34a8224a53438d0455a7e8662b4a7472bc40bac1649b42fe056c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/0fe34cf3328bedc415eb0dd2",
+      "book_name": "The Three Musketeers",
+      "role": "Planchet",
+      "scene_indices": [
+        50,
+        51,
+        52,
+        58,
+        70,
+        113,
+        115,
+        116,
+        117
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "da89845783186b33aaadb266e6f359b000920c8bef8f0369a14fb65eb0144cf7",
+        "e0c5eac197dc12d9852e6401e0ac1645e5ed8b6e960c4ef07f31b245cc97e7d3",
+        "7fc164a0fb4e0b3e6884744d745abe7be4fc1ec960a3c14d7c3f6892ec56add0",
+        "7300c95f0aaa1fff4611b06339e658c62939bc69989d393726c7f108ea4a938b",
+        "a1d12d4bf8c161b272700c756352b9adb2c18c8b57498e48a051ac028a9f9cae",
+        "79da52a37f6e18a71e5a10f62901087e9f0e9ce3ee10d69e583fcaaf7fad7817",
+        "dca24acc65106a8a04da753a3008bd9e1b58f273e524af6335b8c4216669fd0f",
+        "46996cfd96ab5dbec5126ddae2baf8f9d1d1b00684f8d022c4ebeb28a8017aab"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/0fe34cf3328bedc415eb0dd2/after1",
+          "scene_index": 51,
+          "after_updates": 1,
+          "native_prompt_tokens": 4740,
+          "input_sha256": "4ccc081b924fcb4b5b408eee9aa1f98b3959f2c07975a297d3433b8b9c57ee51"
+        },
+        {
+          "question_id": "chain/0fe34cf3328bedc415eb0dd2/after4",
+          "scene_index": 70,
+          "after_updates": 4,
+          "native_prompt_tokens": 4261,
+          "input_sha256": "51664d8b6b231fbedb60b9ae6312f02145a315cb287debb65ee398fa1b36f74c"
+        },
+        {
+          "question_id": "chain/0fe34cf3328bedc415eb0dd2/after8",
+          "scene_index": 117,
+          "after_updates": 8,
+          "native_prompt_tokens": 4217,
+          "input_sha256": "58e922e2e7f360b21de01bf54f981d1593e5124607d59cb04a9cc7a13b794eac"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/16341e8284ddfbbba4e0972e",
+      "book_name": "The Three Musketeers",
+      "role": "Aramis",
+      "scene_indices": [
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        174,
+        181,
+        182
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "37acf933a105684ed691a684cebb4750f31349a091193c06dd301f70377162d7",
+        "d14f40bf1c870ada7522be68856acc13d58d9cfcd800758ac04c6711277ccc24",
+        "4ad687800f228fe2518b51e406b18465c6effff71eadcea89e412f0b0e2abedc",
+        "7c35d2e914d24348e3a05c7f4d7705ba7ac0f91765eab44068b9bb4439fb1f3b",
+        "09164f1cc9d3a8a1e00ae48d92e3bb487b1f56225351af61d42424c6bd0ed3d0",
+        "ca8d75ebcc2cf9f62e1081c1fc76524f4910f098d5e24c125837dfa26b41a9e4",
+        "73d965f9c7e434dc501a247650d01439a33a8271589319994f9311707fc6c309",
+        "32b9c2447e50716fd9ad01d7330013153330ce7e757193c1d7f6eabb1c3f059c"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/16341e8284ddfbbba4e0972e/after1",
+          "scene_index": 168,
+          "after_updates": 1,
+          "native_prompt_tokens": 6969,
+          "input_sha256": "2c7e2ef40756ac42b79a540f773600ba18134c3a5f5806f702d0cd614693c828"
+        },
+        {
+          "question_id": "chain/16341e8284ddfbbba4e0972e/after4",
+          "scene_index": 171,
+          "after_updates": 4,
+          "native_prompt_tokens": 6346,
+          "input_sha256": "4f36030a171ade7e531b815a8a6d10e3710fdd4624d0788a5725c1a740e5b604"
+        },
+        {
+          "question_id": "chain/16341e8284ddfbbba4e0972e/after8",
+          "scene_index": 182,
+          "after_updates": 8,
+          "native_prompt_tokens": 7932,
+          "input_sha256": "1382e58c6dbf2c527328510f36b47cfe2e88cd3d8bbb19f8d0f62f0a291176ac"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/02c0bd9205d989738931f883",
+      "book_name": "Middlemarch",
+      "role": "Camden Farebrother",
+      "scene_indices": [
+        99,
+        100,
+        133,
+        135,
+        160,
+        185,
+        215,
+        216,
+        217
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "a7e83fe109253acc02c521edb42fcbe2613b8b4559bcf8c7a8600f106b512972",
+        "f5ea45320891beef2628587e712834af9314e96321c0fcd9ad88e48814a95def",
+        "afad455d868100d9e682c40b9f1fb5102f7af8a81815daa27b4e8f4845d5e749",
+        "fd586f1379701cf6ae1a8996caf372804f7c40fe8f651166593f1ed15498d698",
+        "f8f50c19181ba968b1b098a95167e1d90f5b193c190ac637dd0e0960fc94b72a",
+        "1618d06fdfa136c604d970cc0afe36c90d2b219286446125e74b34d811396170",
+        "0cf54e6cda30a5c4dae9f54f29935747e1615e2eac3b3c6c12ba0638bbf862ff",
+        "dd805434ca7ecd723f81023cecedbead40d69fd07b6b1fdd45c39be930b62b90"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/02c0bd9205d989738931f883/after1",
+          "scene_index": 100,
+          "after_updates": 1,
+          "native_prompt_tokens": 6126,
+          "input_sha256": "8e9cc1eb494405ba5caf8df39107c0762cbfc82e1ee9659e3e94a75df3d939b5"
+        },
+        {
+          "question_id": "chain/02c0bd9205d989738931f883/after4",
+          "scene_index": 160,
+          "after_updates": 4,
+          "native_prompt_tokens": 7538,
+          "input_sha256": "d5926b5cd991e64f8a8031a55fc66f5455b240058836e63be970563d90146638"
+        },
+        {
+          "question_id": "chain/02c0bd9205d989738931f883/after8",
+          "scene_index": 217,
+          "after_updates": 8,
+          "native_prompt_tokens": 8468,
+          "input_sha256": "d4adc1f0053ca3da020336a3f170569c358862657dcebe74b8880d43bdd34d28"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/016e9666f471f5bf2b0ac6b7",
+      "book_name": "Middlemarch",
+      "role": "Dorothea Brooke",
+      "scene_indices": [
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "5082a0143c86d0b00b3e6a1a9a17537a38c370bcb46b60e09b4c84fc1f940f4d",
+        "fa0eebcb580a1c13cc63c1e59a376785a553e58de21dd181ce253e7f732f3354",
+        "a25571160dbef4ed50bfeb35425b0298c3e52d806fa661b564fe1e41c268fd1b",
+        "6d4d749f546d968af065f2a9d04d2c9283bdc3d940784423c11064b2b12054dc",
+        "d25bb6f0bd04f79a5f758f928665b977c264e0c75f38268d65c6116de2deea76",
+        "9a76a3041e5f7fd24286bc18221dd1167e0709238229679485fbb90cb82bc4ce",
+        "79231a8c570132ca74eb4c392996b523c857920328c578bb52532a29a338e7a2",
+        "5976389a68e388c94bb671556a5f286cd53f9c51aaf6cad188dcf0fa0b0f5e5b"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/016e9666f471f5bf2b0ac6b7/after1",
+          "scene_index": 10,
+          "after_updates": 1,
+          "native_prompt_tokens": 4821,
+          "input_sha256": "d89b248bccaa39c9a7b7062c1a47151e7381baf5b4e9ff63de23bc4d8e182b34"
+        },
+        {
+          "question_id": "chain/016e9666f471f5bf2b0ac6b7/after4",
+          "scene_index": 15,
+          "after_updates": 4,
+          "native_prompt_tokens": 5021,
+          "input_sha256": "eac1c8cb3302dc113251ec088c27a3dfd6d36fdbbee4190a2207412e68d9a2d5"
+        },
+        {
+          "question_id": "chain/016e9666f471f5bf2b0ac6b7/after8",
+          "scene_index": 19,
+          "after_updates": 8,
+          "native_prompt_tokens": 3779,
+          "input_sha256": "265faaea1a99a2e446df3107897f3cde0db3d4e4df40050752c2d8cf1f4d58e6"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/054cf56a59bc729b6e88009f",
+      "book_name": "Middlemarch",
+      "role": "Walter Vincy",
+      "scene_indices": [
+        72,
+        73,
+        88,
+        89,
+        90,
+        119,
+        121,
+        123,
+        130
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "17128dbd6c74d0e4fa4904979e8d70683151a7f86602ff50b17fec36c9de2e69",
+        "743baca3bcd261279a9b38228672d31db375d8968698f63920bb6a3ebb1987ba",
+        "d3abbe2ec89a2c9d5d3d0c51116a03da3739b552d7caf50bb16d99bcb9512972",
+        "2ad2743e1186e84b847f2a16746aa504aa2bcaa82fb48dda3ed79f201c88228f",
+        "852d43ca9f45481238e26803c5ce9d37e8a93a8b8f4c2e95cd988022d2fcedc3",
+        "d281df42292c2e36289585e179b4a1a06b760778f36a8547938319d5b05f32aa",
+        "95143f5a373ca84c5c05c884ae6f9e5012b22d46e2b7bbaadc1c84fc8b2dff85",
+        "edebd3d4969f95c685cf1480880b1e23cb5cfe336209232297f5081377c940d3"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/054cf56a59bc729b6e88009f/after1",
+          "scene_index": 73,
+          "after_updates": 1,
+          "native_prompt_tokens": 4651,
+          "input_sha256": "bbd79a59271b25b73ee564e8c24a679085b06bcc104a16a1709ea636d1ef5441"
+        },
+        {
+          "question_id": "chain/054cf56a59bc729b6e88009f/after4",
+          "scene_index": 90,
+          "after_updates": 4,
+          "native_prompt_tokens": 8118,
+          "input_sha256": "c174be4498d5fc4efef14c6d786603a1784ea98ee16f6b0b8cac720f289e50a3"
+        },
+        {
+          "question_id": "chain/054cf56a59bc729b6e88009f/after8",
+          "scene_index": 130,
+          "after_updates": 8,
+          "native_prompt_tokens": 7167,
+          "input_sha256": "4ef84be6aa1282b9f18add42d1c515dedb27bd99735d53cca1c946bd504dc24c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/02e9a922e7a041b86c6c5b87",
+      "book_name": "Middlemarch",
+      "role": "Edward Casaubon",
+      "scene_indices": [
+        237,
+        238,
+        254,
+        261,
+        263,
+        264,
+        267,
+        271,
+        273
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "883efba51aa4b5d37536780d0e653476f8ad74cbdc606426290c652c9076bb83",
+        "054c780c35367794a91d791890e45dc4f87df151f0a2c6379d537b3147b52800",
+        "676a2fb044c30969db8d66298159b507c058186b1f659b1523865b1893da19ed",
+        "09409a4db4779350df0db05acc7cb09ac0e50aaf58b9c75c8e6f996aec9e62ef",
+        "0a92402656fd7a259a82a300a503414f7d44b6bbea04edb1cfeca3b35dff1fce",
+        "26703179f4f543bd502c683ade78327daa41a2c31ea2942d4fd114c18b7aaa43",
+        "e5c9f19ac27a6565a0a707b4863fdcee556202352afb38203b9644a38e06bd4d",
+        "c2575240dea856e3e632a5fce8100bdb7cb306ff6c7bfc317f18e93f8e53324b"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/02e9a922e7a041b86c6c5b87/after1",
+          "scene_index": 238,
+          "after_updates": 1,
+          "native_prompt_tokens": 9715,
+          "input_sha256": "a7633e6679dde1f16961fdfd05d0fd90ab9bd62618c4647aaea1466e0cd6e795"
+        },
+        {
+          "question_id": "chain/02e9a922e7a041b86c6c5b87/after4",
+          "scene_index": 263,
+          "after_updates": 4,
+          "native_prompt_tokens": 10518,
+          "input_sha256": "7575515129862b11a15785b438aa74d6826b20178e1e68125194799bd7bbb2d5"
+        },
+        {
+          "question_id": "chain/02e9a922e7a041b86c6c5b87/after8",
+          "scene_index": 273,
+          "after_updates": 8,
+          "native_prompt_tokens": 11029,
+          "input_sha256": "69997cafab40d8fa5ea22935838fcbe4a5a4017393b3926a0e16520f1123d0cf"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/0325927f9bbae9d669ec5e3f",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "role": "John Watson",
+      "scene_indices": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "a58bfda82b055b5c5b85d56cc68b12bfe2fc1b5f788516cd077eec38853e2edb",
+        "da6a60a3954743e005c551deae2fa269acf62e8d8f72edbbcf093547dc797171",
+        "364783448730f3200d00405819890c66723e8a3bd1e6d38bea2ad89c77983063",
+        "512c75624d6e275923c3217f85f4b125f42725b5ab310956a126783788172241",
+        "4123bc76912c2d002d2ec9172f66273fce7b836fbeacc1dbaaf7c6a4e9665191",
+        "818323888471912168b9973324fbe7f1e0c79764c5230f81575f75f9d1a46d16",
+        "dc3a9feb0eb0f1a1ed840cac87b0b3483ec1e47a5b51872dc8eefeb9d9c3c2db",
+        "137c090a4b82b3c686775d082468375583be5791a9ee0ecc501663d27fb49eca"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/0325927f9bbae9d669ec5e3f/after1",
+          "scene_index": 11,
+          "after_updates": 1,
+          "native_prompt_tokens": 3297,
+          "input_sha256": "c7d47817b0df70bea361de8ad681bcdd36945e7f8cbf102c642207efbbfbc2dd"
+        },
+        {
+          "question_id": "chain/0325927f9bbae9d669ec5e3f/after4",
+          "scene_index": 14,
+          "after_updates": 4,
+          "native_prompt_tokens": 4075,
+          "input_sha256": "05f81d65ce3614996b7c426e09490a7b166f4421d544f9300f55d206b7c6216c"
+        },
+        {
+          "question_id": "chain/0325927f9bbae9d669ec5e3f/after8",
+          "scene_index": 18,
+          "after_updates": 8,
+          "native_prompt_tokens": 3512,
+          "input_sha256": "813b61af08f2390c1f12422c11ef1bbfbe7acb4b970387fa30651d36f2b638cd"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/249f5e0ed259d007164022ab",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "role": "Sherlock Holmes",
+      "scene_indices": [
+        2,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "0eb7214f9cb86d59a409841a3318ffd8b72486cac05356d4491e733170fd0794",
+        "443499a64b64773a414bddd9529a5e88a541080377ac38f7a084ea5e2f862c62",
+        "d45be2e217a23d3d3e82402b780cb5c67b501ce7564fd7bf83470eb79fd59660",
+        "022219e413ad9d279302b76f66215c7e902d23a2c39130c02994c5fabbeb32d6",
+        "d79d1508f6743a101285bc7203fc0551878777af045a96849717b9050ecd1271",
+        "55dd5fd5832bd3f00ce5a43b960e3e367ae50b73535cef52a7d2673ede6f060e",
+        "284b597c88ce376b0b052070d8a444d33c84dc4b58817a9d93e49201a11d1c16",
+        "451fd9a08e7eefcfdecedbbd87e9ab23afbbefe8d950475fd03ef6cc3fed9389"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/249f5e0ed259d007164022ab/after1",
+          "scene_index": 5,
+          "after_updates": 1,
+          "native_prompt_tokens": 3550,
+          "input_sha256": "ce670a1216613cfa28deaecee72d4df95fa1238d8c966507d337f3345d54e0c4"
+        },
+        {
+          "question_id": "chain/249f5e0ed259d007164022ab/after4",
+          "scene_index": 10,
+          "after_updates": 4,
+          "native_prompt_tokens": 3438,
+          "input_sha256": "bfd9c41712a6fb0c9e60df8f2363aeef6948050f949800c8732be44a74e00dc4"
+        },
+        {
+          "question_id": "chain/249f5e0ed259d007164022ab/after8",
+          "scene_index": 14,
+          "after_updates": 8,
+          "native_prompt_tokens": 4349,
+          "input_sha256": "ebcdfd7487b309312084cc012ecc1410001252919f2b884f89ad9f9c85257f46"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/1b459ad690cbc69a8857dffe",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "role": "Dr. James Mortimer",
+      "scene_indices": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        14
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "1eff7cfac34d660389d01bd54cbc52ff4ee7e36f5d874908630685bc8dff704c",
+        "547e2533076c602065b5d0e1448c6318b345a80160c13fcbf73e5a5931d38666",
+        "769d7ed626549c61d74b37a7e4b51c09e0346d6d624f1cb57d3c67a13681a2e4",
+        "425441c510ce4c85f53fbe6ca72096de7745fa365bd5da16a7570214bd64b9ca",
+        "ee9272ff359065b46e0eeb93771b933f6688e7b5d9e94e0e0990e2d7ccfc4ddf",
+        "afcc29124f18c79fcc92d49cae8e4ef5b0645e7abd3d9c80cef518ff07f832d2",
+        "15110539beacb5c42618a2559069eb3fbf24c949e7d20a6e734a892453fbdc18",
+        "44228f0d9fd4b4b4b743e829757ad6f96ff2cce8fa0d8db8f7a4f99a3e6af631"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/1b459ad690cbc69a8857dffe/after1",
+          "scene_index": 5,
+          "after_updates": 1,
+          "native_prompt_tokens": 3576,
+          "input_sha256": "3648484d9b6b625a7a14cd27bc5729180d5cddb25e576eb3cb07977e64cec84d"
+        },
+        {
+          "question_id": "chain/1b459ad690cbc69a8857dffe/after4",
+          "scene_index": 8,
+          "after_updates": 4,
+          "native_prompt_tokens": 4465,
+          "input_sha256": "b07eb7ce12343664ee132c29a2634ea4c6abb50449d58d9c6e0b6eeac5c71405"
+        },
+        {
+          "question_id": "chain/1b459ad690cbc69a8857dffe/after8",
+          "scene_index": 14,
+          "after_updates": 8,
+          "native_prompt_tokens": 4503,
+          "input_sha256": "2d40c51bf3c87f3937e60c25c46281c9d3fc95cd9bf4e01fc08d1e416e1edf9c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/115d95d113fe7f808ae3fb2f",
+      "book_name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+      "role": "Sir Henry Baskerville",
+      "scene_indices": [
+        41,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "b1837b8c0619da65b478b43e311a7b7a45ef44538e357f63d509680b1d52afd7",
+        "b462f753315afcf03eac36a96a50fd1c0288f1eff8febc9ab3233604c85a873c",
+        "914105129fe1d6d47a2fa138b7cdf8f934e40814ee97d6c06345cb0e303467ed",
+        "948016dd215b49a43440528797817dc2374f5da1b9df2e63ecdc17278d7a589d",
+        "125e8b45dcb59100a175c1649a044ac782d280a3c922c8cc7c1f694b29ddb849",
+        "2e29810dc25735e41564e30dd9ab7f4bc1c656385cde63ee3daf586f81e8e2b6",
+        "48e79da2f9eb9084547c851e98dfe64dfae14c22b5079440589b6876919b0826",
+        "ea173aadbf03b811b9b505840baca8635f79a904ff7c3b0af5f924d332a26447"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/115d95d113fe7f808ae3fb2f/after1",
+          "scene_index": 43,
+          "after_updates": 1,
+          "native_prompt_tokens": 5385,
+          "input_sha256": "cfc87b1eb11d329b5e7256626b3714d45d558dae08bd1d54f9437c0e978ef0f7"
+        },
+        {
+          "question_id": "chain/115d95d113fe7f808ae3fb2f/after4",
+          "scene_index": 46,
+          "after_updates": 4,
+          "native_prompt_tokens": 5712,
+          "input_sha256": "34681d86ff5702053e160f38b2c0f10a2497acc5d81ded7ef409540a3d3ad2f8"
+        },
+        {
+          "question_id": "chain/115d95d113fe7f808ae3fb2f/after8",
+          "scene_index": 50,
+          "after_updates": 8,
+          "native_prompt_tokens": 5422,
+          "input_sha256": "1333d226056692daa9acc638d5f17c1e38a5d7770cc119e244b0e5914728d526"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/33c3bd3fdf720a4e679d11bf",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "role": "Dr. Henry Jekyll",
+      "scene_indices": [
+        4,
+        7,
+        10,
+        11,
+        12,
+        20,
+        24,
+        25,
+        27
+      ],
+      "preselected_review": true,
+      "update_input_sha256": [
+        "b5c81593edacf2a9dc072862b24687a9e5a2fe8d00c2e623b19d9a1bea148be9",
+        "1d00da02c4626696ceeedf36825a4074613f14dd5cd38cc79cc7aec8f7b1baaf",
+        "eb9207807b8817d6f17ddae0388bd69f5ff39496063d9b2e591d801467798d71",
+        "01f2bcb72a071691c44febb1cc75e020ce29195dd800d15af7d2ef62ab96f66e",
+        "82f8aaf0a3ceb5bf9a04199fbfed9f0c2c3bd6c4eed6bffaaf14cf083af4f5b5",
+        "f0ffb26247be05c3e909e3e4d5466bc8133a1864b790e048acd401222020dcac",
+        "b118e704d566fdbbf3e09b4e08dc3be4eb47631d1f03fcce7a315ddc796fcb54",
+        "a4c8685e2f7cebc12c13285633e2c143bc806950e1bd848a8f95a0f5a84bf3a2"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/33c3bd3fdf720a4e679d11bf/after1",
+          "scene_index": 7,
+          "after_updates": 1,
+          "native_prompt_tokens": 3333,
+          "input_sha256": "d02856c05c125d1ef1eeddf350b37cd10f99fc023856fbc5975187b7c5dc5517"
+        },
+        {
+          "question_id": "chain/33c3bd3fdf720a4e679d11bf/after4",
+          "scene_index": 12,
+          "after_updates": 4,
+          "native_prompt_tokens": 3204,
+          "input_sha256": "a0e3fdab5536756b88b1b562b5c6449fa93ea28379f3d9812aecec5d1e50dc30"
+        },
+        {
+          "question_id": "chain/33c3bd3fdf720a4e679d11bf/after8",
+          "scene_index": 27,
+          "after_updates": 8,
+          "native_prompt_tokens": 2950,
+          "input_sha256": "93bf91834d6a3656295ceb43e944014fe38232929b36c42faa196496d196000c"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/380d0504fa555d98c780628d",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "role": "Poole",
+      "scene_indices": [
+        20,
+        21,
+        25,
+        29,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "4465c990b1456bb98a596675c32f8368c5119b08854ba37133771343000b58b4",
+        "5ac018d24409ebb20881b695841b1dc3185d4d430d3260d56eb9cc38ee93f819",
+        "c223190505a0818599f3872de9d57bca6e9ef1cab512e7901d0666dcfda0737d",
+        "0f39607fff0e8260eb85cd159735f27d40df6ad687e307f18a42fbf0fba865cf",
+        "3c2331e5751d0d1e17233fae34489b45a882a7f56928a5ab9c517b66d29ca08f",
+        "fc719ab0de77a592bba540fcf8c460c59861dea301efffe1fcb14c5bdd0ab4df",
+        "3b40f3cd0472aa86a0f8a40187099f33c9754892910a07e66c082446fc47c876",
+        "83d7341a19b92721db36078c59448b68ecbe20973ad9b5c3d95bac9529a587f4"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/380d0504fa555d98c780628d/after1",
+          "scene_index": 21,
+          "after_updates": 1,
+          "native_prompt_tokens": 3548,
+          "input_sha256": "040a8fb96b08eb1e71f23be95f7f066005e7fad44bfeae9bca35b95f3d9d6288"
+        },
+        {
+          "question_id": "chain/380d0504fa555d98c780628d/after4",
+          "scene_index": 31,
+          "after_updates": 4,
+          "native_prompt_tokens": 4397,
+          "input_sha256": "5b16dbde166f243fc3797efad83691260f0d814743f6c1baf5d97d9a025ddd3a"
+        },
+        {
+          "question_id": "chain/380d0504fa555d98c780628d/after8",
+          "scene_index": 35,
+          "after_updates": 8,
+          "native_prompt_tokens": 4130,
+          "input_sha256": "405c5a20af6bdc063c4a921bbbc6002339cf2159f6415395717c263c105c5c4e"
+        }
+      ]
+    },
+    {
+      "trajectory_id": "chain/0096b605dbbf461b83f3f389",
+      "book_name": "Dr  Jekyll and Mr  Hyde",
+      "role": "Gabriel John Utterson",
+      "scene_indices": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "preselected_review": false,
+      "update_input_sha256": [
+        "8d9ccf1be670a5b1ea20586d862d9ec4ecef7e86c24ad1a89361a6e7c11cff97",
+        "4342d544c3f726fd53600c44fddda30136ca82b24373c807b1484b0fdbd24363",
+        "6747a588db1371c59cb053775a9f69417c8cb3ad00771c021c31849b46ef5308",
+        "e0f76258ba9de584a732286c9c5a9736f039c01b233ae1955a5bd99c0ab64b86",
+        "375c0dc397714c5f246e27bb44e49af0338b74c970924d58508347fbb5809089",
+        "790d513930a3ccdfc216d6436fe7619c9cc6f0e20a4fb4afad80c9dd8170fb2b",
+        "806660fcb0c8909a2d4a33c2d02aed910286b0f48b1264d035c603ddf66a1ea6",
+        "52b38757c84f9234a82039c68e5a3efae5c27ceebeab4b87ff2dc0ac5c44ce5d"
+      ],
+      "queries": [
+        {
+          "question_id": "chain/0096b605dbbf461b83f3f389/after1",
+          "scene_index": 18,
+          "after_updates": 1,
+          "native_prompt_tokens": 3383,
+          "input_sha256": "95576e2edf100e9538d81906df1f0109632f31347fc090e079a6ac12f36e21e4"
+        },
+        {
+          "question_id": "chain/0096b605dbbf461b83f3f389/after4",
+          "scene_index": 21,
+          "after_updates": 4,
+          "native_prompt_tokens": 3906,
+          "input_sha256": "7e42aea77350df8d7f22b7f26ed2dbb6510e1b3d42496f1f08917a6e0d8042f1"
+        },
+        {
+          "question_id": "chain/0096b605dbbf461b83f3f389/after8",
+          "scene_index": 25,
+          "after_updates": 8,
+          "native_prompt_tokens": 4352,
+          "input_sha256": "c9d4d445601b5900977831fc5e5b9bfd213f64b1a6fc5018e697d30384d20709"
+        }
+      ]
+    }
+  ]
+}
