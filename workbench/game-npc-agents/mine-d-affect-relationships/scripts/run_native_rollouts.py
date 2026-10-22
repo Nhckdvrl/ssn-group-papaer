@@ -55,17 +55,25 @@ class LocalClient:
         adapter=uses_adapter(b.system,self.owner,self.task_name)
         setting=dict(do_sample=True,temperature=.7,top_p=.8,top_k=0,max_new_tokens=max_tokens,pad_token_id=b.tokenizer.pad_token_id)
         if extra_body and 'repetition_penalty' in extra_body:setting['repetition_penalty']=extra_body['repetition_penalty']
-        with (b.model.disable_adapter() if b.has_adapter and not adapter else contextlib.nullcontext()),b.torch.inference_mode():
-            t=time.monotonic();out=b.model.generate(**inputs,**setting);b.torch.cuda.synchronize()
-        ids=out[0,n:].tolist();text=b.tokenizer.decode(ids,skip_special_tokens=True)
         record=dict(call_index=b.calls,snapshot_index=b.snapshot_index,owner=self.owner,task=self.task_name,
-                    adapter_active=adapter,messages=messages,response=text,prompt_token_ids=inputs['input_ids'][0].tolist(),
-                    completion_token_ids=ids,usage=dict(prompt_tokens=n,completion_tokens=len(ids)),
-                    finish_reason='stop' if ids and ids[-1] in b.eos_ids else 'length',generation=setting,
-                    requested_temperature=temperature,wall_s=time.monotonic()-t)
-        with b.raw.open('a') as f:f.write(json.dumps(record,ensure_ascii=False)+'\n')
+                    adapter_active=adapter,messages=messages,prompt_token_ids=inputs['input_ids'][0].tolist(),
+                    generation=setting,requested_temperature=temperature)
         b.calls+=1
-        return text
+        with b.raw.with_name('requests.jsonl').open('a') as f:f.write(json.dumps(record,ensure_ascii=False)+'\n')
+        t=time.monotonic()
+        try:
+            with (b.model.disable_adapter() if b.has_adapter and not adapter else contextlib.nullcontext()),b.torch.inference_mode():
+                out=b.model.generate(**inputs,**setting);b.torch.cuda.synchronize()
+            ids=out[0,n:].tolist();text=b.tokenizer.decode(ids,skip_special_tokens=True)
+            record.update(response=text,completion_token_ids=ids,usage=dict(prompt_tokens=n,completion_tokens=len(ids)),
+                          finish_reason='stop' if ids and ids[-1] in b.eos_ids else 'length')
+            return text
+        except BaseException as error:
+            record.update(response=None,completion_token_ids=None,usage=dict(prompt_tokens=n,completion_tokens=None),
+                          finish_reason='error',error=repr(error));raise
+        finally:
+            record['wall_s']=time.monotonic()-t
+            with b.raw.open('a') as f:f.write(json.dumps(record,ensure_ascii=False)+'\n')
 
 
 def main():
@@ -118,6 +126,7 @@ def main():
             meta['adapter_files']={f.name:digest(f) for f in adapter.glob('*') if f.suffix in ['.json','.safetensors']}
         meta.update(checkpoint=Q8,resolved_checkpoint=checkpoint,local_weight_mirror=mirror,adapter=str(adapter) if adapter else None,
                     generation_config=model.generation_config.to_dict(),
+                    cuda_visible_devices=os.environ.get('CUDA_VISIBLE_DEVICES'),
                     torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(0))
         save();eos=model.generation_config.eos_token_id
         backend=SimpleNamespace(system=a.system,tokenizer=tok,model=model,torch=torch,has_adapter=adapter is not None,
@@ -152,6 +161,7 @@ def main():
     except BaseException as e:
         meta['error']=repr(e);raise
     finally:
+        if 'backend' in locals():meta['recorded_generation_attempts']=backend.calls
         meta['wall_s']=time.monotonic()-started;meta['finished_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();save()
 
 

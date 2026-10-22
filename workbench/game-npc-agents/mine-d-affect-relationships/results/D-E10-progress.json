@@ -1,49 +1,49 @@
 {
   "experiment": "D-E10",
-  "snapshot_time": "2026-10-23T01:32:33.322254+08:00",
+  "snapshot_time": "2026-10-23T02:08:39.916844+08:00",
   "complete": false,
   "training": {
     "update": {
       "complete": false,
-      "completed_steps": 111,
+      "completed_steps": 137,
       "planned_steps": 440,
-      "seen_examples": 7104,
-      "seen_forward_tokens": 21708172,
+      "seen_examples": 8768,
+      "seen_forward_tokens": 26814756,
       "planned_forward_tokens": 85899086,
       "trainable_parameters": 174587904,
       "error": null,
       "last_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/step-0100",
       "last_step": {
-        "step": 111,
-        "loss": 1.1729861623607576,
-        "grad_norm": 0.2560812830924988,
-        "lr": 1.8620315354151695e-05,
-        "examples": 7104,
-        "forward_tokens": 21708172,
-        "step_s": 76.93086710572243,
-        "wall_s": 9374.239697650075,
+        "step": 137,
+        "loss": 1.1364998363424093,
+        "grad_norm": 0.2670336961746216,
+        "lr": 1.739951364382884e-05,
+        "examples": 8768,
+        "forward_tokens": 26814756,
+        "step_s": 81.9808017835021,
+        "wall_s": 11549.083986938,
         "peak_allocated": 39884331520
       }
     },
     "multitask": {
       "complete": false,
-      "completed_steps": 64,
+      "completed_steps": 79,
       "planned_steps": 265,
-      "seen_examples": 4096,
-      "seen_forward_tokens": 20857676,
+      "seen_examples": 5056,
+      "seen_forward_tokens": 25771097,
       "planned_forward_tokens": 85900956,
       "trainable_parameters": 174587904,
       "error": null,
       "last_checkpoint": null,
       "last_step": {
-        "step": 64,
-        "loss": 1.8065017610788345,
-        "grad_norm": 0.5558459758758545,
-        "lr": 1.8830852662071507e-05,
-        "examples": 4096,
-        "forward_tokens": 20857676,
-        "step_s": 145.56933945789933,
-        "wall_s": 9374.168274506927,
+        "step": 79,
+        "loss": 1.7923975950106978,
+        "grad_norm": 0.6265056729316711,
+        "lr": 1.773533563475053e-05,
+        "examples": 5056,
+        "forward_tokens": 25771097,
+        "step_s": 137.56437695398927,
+        "wall_s": 11545.234809476882,
         "peak_allocated": 39897118720
       }
     }
@@ -103,9 +103,28 @@
   "new_paid_api_calls": 0,
   "judges": {
     "complete": false,
-    "systems_completed": [],
+    "systems_completed": [
+      "base"
+    ],
     "error": null,
     "started_utc": "2026-10-22T17:29:41.242715+00:00",
-    "recorded_generation_attempts": 2
-  }
+    "gpu_hours": 0.4899073289013985,
+    "recorded_generation_attempts": 123,
+    "completed_readouts": {
+      "base": {
+        "valid_primary": 87,
+        "macro_quality": 4.05515873015873,
+        "dimensions": {
+          "experience_interpretation": 3.9905753968253967,
+          "justified_change_or_preservation": 3.6726190476190474,
+          "goals_and_relationships": 3.9097222222222223,
+          "speech_action_alignment": 4.4002976190476195,
+          "character_expression": 4.302579365079366
+        },
+        "repeat_pairs": 12,
+        "repeat_mean_absolute_difference": 0.03333333333333333
+      }
+    }
+  },
+  "interpretation": "Timestamped progress, not final seven-system comparison. Scores are exploratory judgments, not growth accuracy."
 }

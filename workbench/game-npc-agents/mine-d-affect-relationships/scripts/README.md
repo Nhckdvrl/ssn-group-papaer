@@ -14,6 +14,7 @@
 | 学习输入预算 | `inspect_adaptation_budget.py` | 原生SFT导出＋固定本地tokenizer→全部输入/监督token数量及上下文预算覆盖；不截断、不筛选或训练 |
 | 训练基线 | `prepare_adaptation_training.py`、`train_adaptation_sft.py` | 原生三任务→固定token缓存→完整更新SFT/等forward-token多任务SFT；只对completion训练，保留检查点/优化器/RNG |
 | 后续互动冻结与消费 | `adaptation_protocol.py`、`prepare_adaptation_evaluation.py`、`run_adaptation_pipeline.py` | 固定经历→新态→生成动机→多个原生后续context；同场景已发生行为不当作未来评价 |
+| 原生连续互动 | `run_native_rollouts.py`、`queue_native_rollouts.py`、`score_native_rollouts.py` | D-E11官方模拟器＋本地传输；生成互动/反思/后续场景，最终SFT自动接入，全部完成后独立原生角色分项评分 |
 | 学习后的评价与交付 | `score_adaptation_quality.py`、`summarize_adaptation_study.py`、`finish_adaptation_study.py` | 本地盲评/共同消费者NLL→作品层区间；只对全量完成生成主表，完成后可按授权提交两份结果至main |
 | ArcANE冻结 | `prepare_arcane.py`、`prepare_summary.py`、`prepare_state_summary.py` | 官方probe/来源→D-E01/03/07冻结messages和独立references |
 | LongEvo冻结 | `prepare_phase.py`、`prepare_phase_judge.py` | 选定对话→四文本条件及原生评分输入 |
@@ -35,6 +36,7 @@
 | 审计与成本 | `verify_measurement.py`、`compare_judges.py`、`summarize_runs.py`、`collect_continuation_costs.py` | 原始输入/输出/metadata→来源核验、独立调用账与评分比较 |
 | 事后描述 | `describe_update_context.py`、`audit_update_subjects.py` | 输入结构统计、已完成审阅记录导出；不是新增模型评价 |
 | 持久归档 | `archive_runs.py` | 已结束/有中断说明的run与冻结输入→仓库外tar.gz＋逐成员SHA清单 |
+| 学习与互动持久归档 | `archive_adaptation_study.py` | 等D-E10/D-E11注册结果完成，保存原始证据和最终LoRA/优化器，逐成员核验后仅同步轻量manifest |
 
 ## 队列归属
 
@@ -49,6 +51,7 @@
 | D-E08 | `queue_strong_compiler.py`；`handoff_gpu3.py`为本次已有队列的一次交接 |
 | D-E09（已预算停止） | `queue_prefix_memory.py`；原定后续角色/评分未启动，不自动重启 |
 | D-E10（运行中） | `queue_adaptation_evaluation.py`按训练完成标记接最终checkpoint；`score_adaptation_quality.py`等strong32释放GPU后评分；`finish_adaptation_study.py`等全部系统/评委完整后复算与提交 |
+| D-E11（运行中） | `queue_native_rollouts.py`占GPU2顺序执行三路径；`score_native_rollouts.py`等本项生成与D-E10完整完成后才用GPU3，不抢训练或现有评分 |
 
 旧`queue_judges.py`的Plan评分路径已资源中止，不因其文件存在而恢复。`handoff_gpu3.py`不是通用清理工具；不用于终止其他项目进程。D-E09冻结窗口、提示、恢复或抽样政策保留历史，不靠修改它们补造完成状态。
 

@@ -161,3 +161,19 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 为避免shell profile等待，从本地目录以`/bin/bash`非login启动。四个模型入口的Git provenance改为脚本定位仓库，消除cwd依赖。首次盲评因此失败时尚无metadata/模型输出、0评分调用；`judges/base_setup_failed_workdir`、`queue_before_cwd_fix.json`及`finish_before_judge_cwd_fix.json`保留。新队列已启动，不覆盖首次失败记录；作业表记录全部PIDs/原因。
 
 首次实际评分前固定judge batch为2，并明确动机生成于场景入口、回复发生于后续可见互动处；不得要求入口动机预知后来对话。五维量表与样本未改。该澄清早于任何评分生成；不是根据分数改读数。七系统主表仍只在全部注册路径结束后生成。
+
+## D-E11：官方模拟器下的连续生成
+
+固定HF revision的`data/EvolvingWorld/test/test_snapshots_ood.json`保存106官方起点，33,921,259字节；下载方式为HF snapshot_download指定本文件及既有revision。源hash与6个固定索引见[D-E11-selection](results/D-E11-selection.json)。`data/native_D-E11/snapshots.json`只有模拟所需初始字段，无ground_truth_scenes/tag；回顾性初始资料的资格不因此变成严格时间证据。
+
+`runs/D-E11/{base,update_sft,multitask_sft}/`保留每次物理调用raw、精确输入/生成tokens、采样设置、adapter路由和metadata；每个`snapshot_<index>`有实时result/trace/meta、官方all_scenes/character_dynamic/world_dynamic视图和日志。官方vendor实现不修改、不入Git，本地runner保存原始源码及vendor逐文件hash。世界调用禁用LoRA；U-SFT仅角色更新启用；MT三个角色任务启用。快照输入先冻结，生成过程中不插入未来参考对白。
+
+`runs/D-E11/jobs.json`登记GPU2实际生成队列，后续评分等D-E10与三条互动路径完整结束。该项是多角色原生短轨迹参照，用于人物变化的交互后果，不是新多智能体社会研究线或真人玩家试验；最多3场景不能称长期人物成长已验证。
+
+首次资源中断的`base_interrupted_gpu_contention`含21完整生成记录及0完整轨迹。OOM/中断时原client未返回的调用没有完整输出，INTERRUPTION与实验卡明确其缺失，不将21称全部启动数。后续client先记录requests，失败写error及未知completion tokens。新队列等GPU2空闲，已消耗231.201秒仍计累计预算；不隐藏原失败或终止别的作业。
+
+生成队列优先GPU2；D-E10全部完成后，也可使用它释放的空闲GPU0/1/3，实际选择写入status与模型metadata。不会在D-E10训练/评价期间夺用其卡，也不依赖其他项目必须停机。
+
+### 完成后持久归档队列（尚未完成）
+
+`archive_adaptation_study.py`分别等待D-E10正式结果/D-E11正式评分完整完成，将原始记录、失败尝试、冻结评测输入和最终LoRA/优化器状态保存到`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-23-adaptation/{D-E10,D-E11}/raw-and-final-adapters.tar.gz`。只保留最终训练权重，基础/中途权重不复制入包；训练token缓存可按源revision及manifest重建。逐成员SHA复读通过后才产生Git轻量`D-E10-RAW-MANIFEST.json`或`D-E11-RAW-MANIFEST.json`。当前是已启动的等待任务，路径预登记不代表归档已存在；失败不会发布完成清单。

@@ -3,6 +3,7 @@
 import argparse
 import datetime
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -27,10 +28,29 @@ def main():
                     if meta.get('error') or meta.get('stop_reason'):raise RuntimeError('Final training unavailable: '+system)
                     if meta.get('complete'):break
                     time.sleep(30)
+            preferred=os.environ.get('CUDA_VISIBLE_DEVICES','0').split(',')[0]
+            state['phase']='waiting_for_idle_gpu';state['waiting_system']=system;save()
+            while True:
+                candidates=[preferred]
+                earlier=root/'runs/D-E10/finish_status.json'
+                try:earlier_complete=json.loads(earlier.read_text()).get('complete',False)
+                except (FileNotFoundError,json.JSONDecodeError):earlier_complete=False
+                # After D-E10 releases all of its GPUs, avoid indefinite
+                # dependence on another project's use of the preferred GPU.
+                if earlier_complete:candidates+=['0','1','3']
+                available=[g for g in dict.fromkeys(candidates) if int(subprocess.check_output(
+                    ['nvidia-smi','--id='+g,'--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True).strip())<1024]
+                if available:
+                    gpu=available[0];break
+                time.sleep(30)
+            used=sum(json.loads(q.read_text()).get('wall_s',0) for q in out.glob(system+'_interrupted*/metadata.json'))
+            remaining=3-used/3600
+            if remaining<=0:raise TimeoutError('Registered cumulative generation budget exhausted: '+system)
             command=[sys.executable,str(Path(__file__).with_name('run_native_rollouts.py')),
-                     '--asset-root',str(root),'--system',system]
+                     '--asset-root',str(root),'--system',system,'--max-hours',str(remaining)]
+            state['phase']='generating';state['selected_gpu']=gpu;save()
             with (root/'logs'/('D-E11-'+system+'.log')).open('x') as f:
-                subprocess.run(command,stdout=f,stderr=subprocess.STDOUT,check=True)
+                subprocess.run(command,env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu),stdout=f,stderr=subprocess.STDOUT,check=True)
             meta=json.loads((out/system/'metadata.json').read_text())
             if not meta.get('complete'):raise RuntimeError('Registered interaction cohort incomplete: '+system)
             state['systems_completed'].append(system);save()
