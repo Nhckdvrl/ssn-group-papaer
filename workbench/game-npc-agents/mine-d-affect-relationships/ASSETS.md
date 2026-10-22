@@ -92,3 +92,18 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 - `archive_runs.py --asset-root <根> --destination <新的持久目录> --manifest <清单> --include-continuation`：所有运行结束且资格检查通过后归档。完整模型输入含实际使用的来源前缀文本，限本地研究保存；原文与权重不进Git。
 
 另外只读取得EvolvingWorld官方六部OOD作品的`extracted_data/scenes`与`character_dynamic`，hash与规模见[D-HELDOUT-SOURCE-INVENTORY](results/D-HELDOUT-SOURCE-INVENTORY.json)；尚未据此声称新实测或所有模型都未见作品。
+
+
+## 可复用连续经历索引
+
+`data/EvolvingWorld/experience_index.sqlite`是固定4.18GB混合训练文件的只读索引，约28.66MiB，不复制正文。已将138,596条任务的精确UTF-8字节区间、SHA256与作品/角色/场景/任务元数据全部回读核验；51作品、2,671角色条目、22,306相邻出场链接。24,977更新出场均有同出场动机任务，其中19,937有互动生成任务。这是来源可用性，不是新增独立科研样本或已标好的成长真值。
+
+[轻量索引清单](results/D-EXPERIENCE-INDEX.json)记录固定HF revision、原文件hash、索引hash/大小、任务数及核验覆盖；SQLite留在资产目录，不进Git。`experience_store.py`将同一出场的原生任务和同人物下次出场连接；保留未说话角色、无更新样本及原始源划分，不按模型表现挑选。返回的原生conversation包含监督目标，调用方必须把目标和未来记录与当前推理输入分开。
+
+重建与使用：
+
+```sh
+python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience_store.py --build --source /var/tmp/ssn-game-npc-d/data/EvolvingWorld/train/all_tasks_with_details.json --index /var/tmp/ssn-game-npc-d/data/EvolvingWorld/experience_index.sqlite --revision ae7d82d38909783805979a8055d5ae913cb982f7 --expected-sha256 2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07 --verify --out /var/tmp/experience-index-inventory.json
+```
+
+已有索引时去掉`--build`，用`--verify`全量核验；重建须选新目标路径，不覆盖已有来源记录。`ExperienceStore.get(row_id)`精确回读一条原任务并校验hash；`appearance(update_id)`返回同出场各任务ID及同人物下次出场ID，不自动构造新训练prompt。此入口供之后不同baseline与学习方案共享，原D-E01–09冻结输入不受影响。

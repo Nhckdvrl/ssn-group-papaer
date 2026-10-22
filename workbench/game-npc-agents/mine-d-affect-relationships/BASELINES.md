@@ -43,3 +43,5 @@ Step仅使用已授权Token Plan入口；现金接口和其他付费服务未获
 - **DREAM、EvoSpark、PD-LLM、CRPO：** 当前为方法阅读与定位来源，未将论文数字写成我们实测。DREAM固定公开repo只有占位文件。
 
 强普通系统和直接近邻是方法构建的基础，不是逐项缩窄问题的理由。完整研究叙事与学习目标见[POSITIONING](POSITIONING.md)；任何未来训练须另有实验卡和清楚的整体能力目标。
+
+共享数据入口：[experience_store](scripts/experience_store.py)已索引整个发布训练文件，连接动机、互动、更新与后续同人物出场。它供各方案使用同一来源，既非新benchmark，也不提前规定人物状态表示或训练loss。[数据清单](results/D-EXPERIENCE-INDEX.json)

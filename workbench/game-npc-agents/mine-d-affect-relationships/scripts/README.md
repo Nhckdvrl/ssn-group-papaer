@@ -8,6 +8,7 @@
 |---|---|---|
 | 官方资产库存 | `audit_assets.py`、`inspect_training.py`、`inspect_timelines.py` | 固定vendor/HF资产→来源、训练/正式评测/时间结构清单 |
 | EW来源连接 | `index_update_provenance.py`、`inspect_update_supervision.py`、`index_role_interactions.py` | 公开混合任务→作品/角色/连续出场/原生下一turn索引 |
+| 可复用连续经历入口 | `experience_store.py` | 整个发布训练文件→只读字节偏移/哈希索引，连接同一出场的动机/互动/更新与下次出场；不新增场景/标签或改训练划分 |
 | ArcANE冻结 | `prepare_arcane.py`、`prepare_summary.py`、`prepare_state_summary.py` | 官方probe/来源→D-E01/03/07冻结messages和独立references |
 | LongEvo冻结 | `prepare_phase.py`、`prepare_phase_judge.py` | 选定对话→四文本条件及原生评分输入 |
 | 状态更新冻结 | `prepare_updates.py`、`prepare_closed_loop.py`、`prepare_closed_actor.py` | 原生单步或连续更新→状态输入与后续角色输入 |
