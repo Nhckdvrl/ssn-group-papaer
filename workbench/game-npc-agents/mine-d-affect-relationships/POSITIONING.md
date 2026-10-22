@@ -48,10 +48,13 @@ P03主体归属、P04撤回事实仍是应诚实保留的工程/测量观察。�
 | [DualMem / RoleMemo](../../../library/themes/game-npc-social/papers/DUALMEM_ROLEMEMO_2026.md) | 人物条件化事实/解释记忆，SFT与下游角色质量驱动的整轨迹RL | 可借鉴完整学习范式，在人物自身变化与跨互动迁移上比较；不能将下游反馈训练记忆当首次提出。数据/权重尚未完整发布 |
 | [EvoSpark](../../../library/themes/game-npc-social/papers/EVOSPARK_2026.md) | 经历反思、关系/人格原位更新、演化与行动一致性 | 单NPC的变化学习或互动后果；不能声称近邻都只看卡片不看行为 |
 | [PD-LLM](../../../library/themes/game-npc-social/papers/TRAIT_ACTIVATION_2026.md) | 情境调节特质LoRA与风格、正负特质表达 | 持续经历造成的变化；一次压力处境的适配不是长期成长 |
+| [AdvRole](../../../library/themes/game-npc-social/papers/ADVROLE_2026.md) | Actor/情境改写器交替GRPO、情境覆盖与多轮角色评价 | 所学人物适应过程及经历的持续后果；模型/训练池演化不等于人物成长 |
 | [DPC](../../../library/themes/game-npc-social/papers/DYNAMIC_PERSONA_COHERENCE_2026.md) / [BFI-Adapt](../../../library/themes/game-npc-social/papers/PERSONA_GROWTH_2026.md) | 身份与动态状态一致性；人生事件后量表变化 | 跨情境的角色行为及关系意义，不能仅靠人格量表差 |
 | EMA / FAtiMA / OSSE | 评价、应对、人格与关系的过程模型 | 从开放语言经历学习人物特有过程，而非再包装手工心理架构 |
 
 **整体增量压力：** 动态树、事件图、关系覆盖、反思更新、阶段DPO均已存在。潜在贡献须体现在新学到的能力及其证据，不能仅靠模块排列或增加“causal / evidence-driven”等名称。近邻的存在用于调整增量，不构成自动关闭方向的理由。
+
+**2026-10-23补读后的整体判断：** [EvolveR](../../../library/themes/game-npc-social/papers/EVOLVER_2026.md)说明从自身轨迹整理原则并学习复用已有通用Agent方法谱系；这一轮仅核对摘要，不冒称全文审查。角色适应的目标仍需由人物如何理解经历、修订追求与关系，以及之后怎样行动来定义，不能直接换成任务成功率。另一端，[Prompting Destiny](../../../library/themes/game-npc-social/papers/PROMPTING_DESTINY_2026.md)的小规模玩家研究提醒：人物抵抗引导、玩家重新调整交往方式本身也可能有价值。它不是我们的能力证据，但让最终互动验证有明确用途：变化应进入双方的后续行动，而非只在后台卡片或心理量表中可见。当前D-E10的固定后续context是这个整体问题的一层测量，不能代替真实生成的连续互动；不因此修改正在运行的主读数。
 
 **整体叙事如何成立：** 从角色为什么需要因经历而改变出发，明确现有训练/系统解决了哪部分，提出对完整适应能力有作用的学习目标和方法，再以多人物、多种后续互动及独立任务证明其作用。已有组件可以组成有效方法；是否新颖看这条问题—方法—证据链相对最近邻的整体增量。单个组件有先例不等于整条链已被覆盖，反过来仅将若干组件拼接也不能自动宣称创新。比较单位是同一主张、同一设定与相应证据，而非共享一个术语。
 
