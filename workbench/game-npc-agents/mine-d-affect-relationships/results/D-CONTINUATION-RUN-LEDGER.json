@@ -1,0 +1,733 @@
+{
+  "status": "COMPLETE",
+  "experiments": [
+    "D-E06",
+    "D-E07",
+    "D-E08"
+  ],
+  "missing_required_runs": [],
+  "running_or_failed_without_approved_source_stop": [],
+  "local_generations_recorded": 2696,
+  "source_turn_forward_rows": 1305,
+  "extra_alignment_validation_forwards": 6,
+  "unpersisted_source_interruption_local_generation_upper_bound": 4,
+  "completed_or_stopped_gpu_process_hours": 15.824294087199702,
+  "cost_note": "Known process wall includes load/import, not per-row shared batch latency. Running process wall not imputed as zero. Up to four in-flight local compiler generations were not persisted at the source-audit interruption; raw count is a lower bound. API wall and usage are separate; first-night API totals are not included here.",
+  "by_kind": {
+    "role_reply": {
+      "recorded_attempts": 1119,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 9961.324769373983,
+      "prompt_tokens": 3681228,
+      "completion_tokens": 189441
+    },
+    "teacher_forced_forward": {
+      "recorded_attempts": 1305,
+      "extra_validation_forward_calls": 6,
+      "completed_or_stopped_process_wall_s": 1560.6735653467476,
+      "prompt_tokens": 6870522,
+      "target_tokens": 59205
+    },
+    "state_update": {
+      "recorded_attempts": 730,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 33725.67968358472,
+      "prompt_tokens": 1918684,
+      "completion_tokens": 544806
+    },
+    "judge": {
+      "recorded_attempts": 584,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 7810.112432934344,
+      "prompt_tokens": 1017982,
+      "completion_tokens": 85422
+    },
+    "source_fragment_summary_teacher": {
+      "recorded_attempts": 169,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 2003.3518236279488,
+      "prompt_tokens": 658795,
+      "completion_tokens": 39621
+    },
+    "source_unit_summary_teacher": {
+      "recorded_attempts": 13,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 281.47771940380335,
+      "prompt_tokens": 41952,
+      "completion_tokens": 3947
+    },
+    "character_state_summary_teacher": {
+      "recorded_attempts": 81,
+      "extra_validation_forward_calls": 0,
+      "completed_or_stopped_process_wall_s": 1624.8387196473777,
+      "prompt_tokens": 119141,
+      "completion_tokens": 38747
+    }
+  },
+  "runs": [
+    {
+      "run": "D-E06/actor_baselines",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 174,
+      "unique_tasks": 174,
+      "usage": {
+        "prompt_tokens": 911643,
+        "completion_tokens": 13620
+      },
+      "finishes": {
+        "stop": 174
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 633.4929720461369,
+      "gpu_process_hours": 0.1759702700128158,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/actor_recursive_native",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 457121,
+        "completion_tokens": 6747
+      },
+      "finishes": {
+        "stop": 87
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 350.02530401200056,
+      "gpu_process_hours": 0.0972292511144446,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/actor_recursive_summary",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 468723,
+        "completion_tokens": 7194
+      },
+      "finishes": {
+        "stop": 87
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 303.84190798178315,
+      "gpu_process_hours": 0.08440052999493976,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/actor_teacher_forced",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 452687,
+        "completion_tokens": 8190
+      },
+      "finishes": {
+        "stop": 86,
+        "length": 1
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 521.8312246352434,
+      "gpu_process_hours": 0.1449531179542343,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/consumer_arcane_8b_dpo/actor",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 120,
+      "unique_tasks": 120,
+      "usage": {
+        "prompt_tokens": 546323,
+        "completion_tokens": 6146
+      },
+      "finishes": {
+        "stop": 120
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 261.84284253418446,
+      "gpu_process_hours": 0.07273412292616235,
+      "model": "arcane-8B-dpo",
+      "revision": "67b9bea604bea65a5245928ed87103545814b4f7",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/consumer_arcane_8b_dpo/likelihood",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 435,
+      "unique_tasks": 435,
+      "usage": {
+        "prompt_tokens": 2290174,
+        "target_tokens": 19735
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 248.96494575589895,
+      "gpu_process_hours": 0.0691569293766386,
+      "model": "arcane-8B-dpo",
+      "revision": "67b9bea604bea65a5245928ed87103545814b4f7",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/consumer_qwen3_32b/actor",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 120,
+      "unique_tasks": 120,
+      "usage": {
+        "prompt_tokens": 546323,
+        "completion_tokens": 16361
+      },
+      "finishes": {
+        "stop": 120
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 1519.9243065863848,
+      "gpu_process_hours": 0.42220119627399577,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/consumer_qwen3_32b/likelihood",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 435,
+      "unique_tasks": 435,
+      "usage": {
+        "prompt_tokens": 2290174,
+        "target_tokens": 19735
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 854.4021921828389,
+      "gpu_process_hours": 0.2373339422730108,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/likelihood_baselines",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 174,
+      "unique_tasks": 174,
+      "usage": {
+        "prompt_tokens": 911643,
+        "target_tokens": 7894
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 141.41993245854974,
+      "gpu_process_hours": 0.03928331457181937,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/likelihood_recursive_native",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 457121,
+        "target_tokens": 3947
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 89.95647429302335,
+      "gpu_process_hours": 0.02498790952583982,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/likelihood_recursive_summary",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 468723,
+        "target_tokens": 3947
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 85.3661678135395,
+      "gpu_process_hours": 0.02371282439264986,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/likelihood_teacher_forced",
+      "kind": "teacher_forced_forward",
+      "complete": true,
+      "recorded_attempts": 87,
+      "unique_tasks": 87,
+      "usage": {
+        "prompt_tokens": 452687,
+        "target_tokens": 3947
+      },
+      "finishes": {},
+      "extra_validation_forward_calls": 1,
+      "wall_s": 140.56385284289718,
+      "gpu_process_hours": 0.03904551467858255,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "49e0f7c019df8a778f07a542c97aef49bbe3637661f66c7bb7fc627324865bf5",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/recursive_native",
+      "kind": "state_update",
+      "complete": true,
+      "recorded_attempts": 243,
+      "unique_tasks": 232,
+      "usage": {
+        "prompt_tokens": 668292,
+        "completion_tokens": 166183
+      },
+      "finishes": {
+        "stop": 243
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 11201.510786499828,
+      "gpu_process_hours": 3.11153077402773,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "ab1d114af9b181df7b8eea7236672710ed7a6dcd9f9b13a50d8ad3f7075a561e",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/recursive_summary",
+      "kind": "state_update",
+      "complete": true,
+      "recorded_attempts": 242,
+      "unique_tasks": 232,
+      "usage": {
+        "prompt_tokens": 573737,
+        "completion_tokens": 253350
+      },
+      "finishes": {
+        "stop": 242
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 13913.201104290783,
+      "gpu_process_hours": 3.8647780845252178,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "ab1d114af9b181df7b8eea7236672710ed7a6dcd9f9b13a50d8ad3f7075a561e",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E06/teacher_forced",
+      "kind": "state_update",
+      "complete": true,
+      "recorded_attempts": 245,
+      "unique_tasks": 232,
+      "usage": {
+        "prompt_tokens": 676655,
+        "completion_tokens": 125273
+      },
+      "finishes": {
+        "stop": 245
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 8610.967792794108,
+      "gpu_process_hours": 2.3919354979983636,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "ab1d114af9b181df7b8eea7236672710ed7a6dcd9f9b13a50d8ad3f7075a561e",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/arcane_8b_dpo",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 81,
+      "unique_tasks": 81,
+      "usage": {
+        "prompt_tokens": 51314,
+        "completion_tokens": 12303
+      },
+      "finishes": {
+        "stop": 81
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 331.0105656571686,
+      "gpu_process_hours": 0.0919473793492135,
+      "model": "arcane-8B-dpo",
+      "revision": "67b9bea604bea65a5245928ed87103545814b4f7",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/local_qwen32_capacity_judge",
+      "kind": "judge",
+      "complete": true,
+      "recorded_attempts": 124,
+      "unique_tasks": 124,
+      "usage": {
+        "prompt_tokens": 233143,
+        "completion_tokens": 18312
+      },
+      "finishes": {
+        "stop": 96,
+        "length": 28
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 1623.6329361088574,
+      "gpu_process_hours": 0.4510091489191271,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/local_qwen32_judge",
+      "kind": "judge",
+      "complete": true,
+      "recorded_attempts": 248,
+      "unique_tasks": 248,
+      "usage": {
+        "prompt_tokens": 415152,
+        "completion_tokens": 36915
+      },
+      "finishes": {
+        "stop": 194,
+        "length": 54
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 3498.074197113514,
+      "gpu_process_hours": 0.9716872769759761,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/qwen3_32b",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 81,
+      "unique_tasks": 81,
+      "usage": {
+        "prompt_tokens": 51314,
+        "completion_tokens": 30579
+      },
+      "finishes": {
+        "stop": 81
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 2366.5130281336606,
+      "gpu_process_hours": 0.6573647300371279,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/qwen3_8b",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 81,
+      "unique_tasks": 81,
+      "usage": {
+        "prompt_tokens": 51314,
+        "completion_tokens": 27729
+      },
+      "finishes": {
+        "stop": 81
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 751.8150534257293,
+      "gpu_process_hours": 0.20883751484048035,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/source_repair/arcane_8b_dpo_summary",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 13,
+      "unique_tasks": 13,
+      "usage": {
+        "prompt_tokens": 18350,
+        "completion_tokens": 2021
+      },
+      "finishes": {
+        "stop": 13
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 101.53529634326696,
+      "gpu_process_hours": 0.028204248984240822,
+      "model": "arcane-8B-dpo",
+      "revision": "67b9bea604bea65a5245928ed87103545814b4f7",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/source_repair/qwen3_32b_summary",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 13,
+      "unique_tasks": 13,
+      "usage": {
+        "prompt_tokens": 18350,
+        "completion_tokens": 5842
+      },
+      "finishes": {
+        "stop": 13
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 512.9851812086999,
+      "gpu_process_hours": 0.1424958836690833,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/source_repair/qwen3_8b_summary",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 13,
+      "unique_tasks": 13,
+      "usage": {
+        "prompt_tokens": 18350,
+        "completion_tokens": 5211
+      },
+      "finishes": {
+        "stop": 13
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 232.316700886935,
+      "gpu_process_hours": 0.0645324169130375,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/source_repair_maps",
+      "kind": "source_fragment_summary_teacher",
+      "complete": true,
+      "recorded_attempts": 169,
+      "unique_tasks": 169,
+      "usage": {
+        "prompt_tokens": 658795,
+        "completion_tokens": 39621
+      },
+      "finishes": {
+        "stop": 169
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 2003.3518236279488,
+      "gpu_process_hours": 0.5564866176744302,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/source_repair_reduce",
+      "kind": "source_unit_summary_teacher",
+      "complete": true,
+      "recorded_attempts": 13,
+      "unique_tasks": 13,
+      "usage": {
+        "prompt_tokens": 41952,
+        "completion_tokens": 3947
+      },
+      "finishes": {
+        "stop": 13
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 281.47771940380335,
+      "gpu_process_hours": 0.07818825538994538,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E07/state_compiler",
+      "kind": "character_state_summary_teacher",
+      "complete": false,
+      "recorded_attempts": 28,
+      "unique_tasks": 28,
+      "usage": {
+        "prompt_tokens": 38346,
+        "completion_tokens": 12846
+      },
+      "finishes": {
+        "stop": 28
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 539.509052913636,
+      "gpu_process_hours": 0.14986362580934331,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": {
+        "stopped_utc": "2026-10-22T03:08:21.875031+00:00",
+        "reason": "SOURCE_ALIGNMENT_AUDIT: source Summary Monte IDs do not match published phase timeline; stopped before any C role or score calls",
+        "n_saved": 28,
+        "saved_books": [
+          "Anna_Kareina",
+          "Benjamin_Franklin"
+        ],
+        "saved_complete_records_can_be_reused_only_if_messages_byte_equal": true,
+        "unpersisted_local_inflight_generation_upper_bound": 4
+      }
+    },
+    {
+      "run": "D-E07/state_compiler_v2",
+      "kind": "character_state_summary_teacher",
+      "complete": true,
+      "recorded_attempts": 53,
+      "unique_tasks": 53,
+      "usage": {
+        "prompt_tokens": 80795,
+        "completion_tokens": 25901
+      },
+      "finishes": {
+        "stop": 53
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 1085.3296667337418,
+      "gpu_process_hours": 0.3014804629815949,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E08/arcane_8b_dpo",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 81,
+      "unique_tasks": 81,
+      "usage": {
+        "prompt_tokens": 44708,
+        "completion_tokens": 11947
+      },
+      "finishes": {
+        "stop": 81
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 344.1591284684837,
+      "gpu_process_hours": 0.09559975790791214,
+      "model": "arcane-8B-dpo",
+      "revision": "67b9bea604bea65a5245928ed87103545814b4f7",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E08/local_qwen32_judge",
+      "kind": "judge",
+      "complete": true,
+      "recorded_attempts": 212,
+      "unique_tasks": 212,
+      "usage": {
+        "prompt_tokens": 369687,
+        "completion_tokens": 30195
+      },
+      "finishes": {
+        "stop": 168,
+        "length": 44
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 2688.4052997119725,
+      "gpu_process_hours": 0.7467792499199923,
+      "model": "Qwen/Qwen3-32B",
+      "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+      "script_sha256": "986d09f52dd0a975a6695cf580c7a303d3020afaa885451d170be749a50d652a",
+      "source_interruption": null
+    },
+    {
+      "run": "D-E08/qwen3_8b",
+      "kind": "role_reply",
+      "complete": true,
+      "recorded_attempts": 81,
+      "unique_tasks": 81,
+      "usage": {
+        "prompt_tokens": 44708,
+        "completion_tokens": 35551
+      },
+      "finishes": {
+        "stop": 80,
+        "length": 1
+      },
+      "extra_validation_forward_calls": 0,
+      "wall_s": 1730.031257454306,
+      "gpu_process_hours": 0.48056423818175165,
+      "model": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "script_sha256": "f8ed0f97c416d1dac15a24b4ba35dafb162ab00fd024fd7efd3b11ea254e4723",
+      "source_interruption": null
+    }
+  ],
+  "step_plan": {
+    "recorded_attempts": 82,
+    "usage": {
+      "prompt_tokens": 120085,
+      "completion_tokens": 197763,
+      "total_tokens": 317848
+    },
+    "runs": [
+      {
+        "run": "D-E08/step5_compiler",
+        "complete": true,
+        "kind": "character_state_summary_teacher",
+        "model": "step-5-preview",
+        "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+        "recorded_attempts": 82,
+        "usable_tasks": 81,
+        "usage": {
+          "prompt_tokens": 120085,
+          "completion_tokens": 197763,
+          "total_tokens": 317848
+        },
+        "finishes": {
+          "stop": 81,
+          "length": 1
+        },
+        "errors": {},
+        "wall_s": 1560.40249581635,
+        "reasoning_effort": "low"
+      }
+    ]
+  }
+}

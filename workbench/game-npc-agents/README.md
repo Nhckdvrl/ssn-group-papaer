@@ -1,6 +1,6 @@
 # Game NPC Agents：领域工作台
 
-**持续研究中的源纠正：** D-E03的Monte Summary误把14原生叙事单元改为117文学章号；六作品S相关比较暂撤回，其他V/A与D-E02/04–06保留。[纠正与修复](mine-d-affect-relationships/results/D-SOURCE-CORRECTION-2026-10-22.md)；D-E06连续更新仍在运行，D-E07按正确来源继续。
+**当前研究重点：** 依用户最新纠正，停止新增局部坏例/窗口/字段补丁实验，回到“角色怎样从经历中改变后续互动”的整体问题。[方向判断](mine-d-affect-relationships/POSITIONING.md) · [D-E06–08完成报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)。
 
 **状态：ACTIVE-MAIN。2026-10-22用户明确暂停B/I01，优先转入本工作台现有矿区D：动态角色认知与长期人物演化；矿区C/NCP-Bench保留为备选。** 当前是公开资产上的研究驻留，优先ArcANE、PHASE-Tree/LongEvoRoleBench，不提前锁定方法或预设失败。B的E01–E03及历史矿区A资产保留；A仍CLOSED／TERMINATED。
 
@@ -12,7 +12,7 @@
 
 首夜[D-E01–D-E05实测及科研报告](mine-d-affect-relationships/results/D-OVERNIGHT-REPORT-2026-10-22.md)已完成：1,481条角色回复、256条本地状态更新、Step5 65次Plan请求得到64状态，另有章节教师/完整内容评分/原句预测。ArcANE专用8B在原生Arc下APF/PTF78.05/83.48，通用8B65.93/60.92；PHASE文本状态对普通卡重写Sem+0.234、NLL−0.318。现有方法有效；强Step修复主要主体错配，但三模型都将已收回金表记成送出，评委也可能漏核最终事实。当前无新机制/算法主张，继续围绕有据状态形成及其后续人物行为，不做局部坏例调参。完整范围/不确定性见报告与[资产表](mine-d-affect-relationships/ASSETS.md)。
 
-**持续推进：** [D-E06](mine-d-affect-relationships/experiments/D-E06-closed-loop-state-enactment.md)连接29人物的8轮状态更新与后续表演；[D-E07/08案例](mine-d-affect-relationships/results/D-E07-CASEBOOK.md)区分摘要源错配、人物整理错配与实际行为，Step同信息82次Plan请求已得到81卡，修复部分归属并保留材料不足，完整下游评分继续。[D-E09](mine-d-affect-relationships/experiments/D-E09-full-prefix-character-memory.md)已冻结6人物/15probe/47phase的完整来源前缀普通记忆参照，排入前序测量后的空闲卡。主问题始终是经历怎样形成这个人物的状态，并影响多个情境中的实际表演；不是累计调用数或预设新RL。
+**持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/experiments/D-E09-full-prefix-character-memory.md)是此前已启动的完整前缀参照，继续按冻结预算记录。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 

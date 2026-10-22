@@ -19,4 +19,7 @@
 
 [D-E04](mine-d-affect-relationships/results/D-E04-REPORT.md)/[D-E05](mine-d-affect-relationships/results/D-E05-REPORT.md)保留普通强系统成功、所有失败与原PUF分数；下一步应连到连续更新/后续人物行为，不围绕单例加提示。B的P01/P02为已暂停历史，不继承为D证据。
 
-持续核对：D-E07的Mary人物卡错接Monica婚姻，8B随后也使用了虚构的自身婚姻经历；同输入Step整理修复这项关系，但下游测量尚在运行。Anna则是上游摘要已经错配，不能重复计为新编译错误。[案例与来源](mine-d-affect-relationships/results/D-E07-CASEBOOK.md)。D-E06预选Bathsheba链中的普通摘要保留金表被“提出赠送”的情感影响，未明确断言她仍持有手表；作为P04的成功/边界案例保留。[连续案例](mine-d-affect-relationships/results/D-E06-CASEBOOK.md)。均未形成总体错误率或统一机制结论。
+持续核对：D-E07的Mary人物卡错接Monica婚姻，8B随后也使用了虚构的自身婚姻经历；同输入Step整理修复这项关系，下游测量已完成：通用8B不再以虚构的自身婚姻为由回应，但完整轨迹总体没有明确增益。Anna则是上游摘要已经错配，不能重复计为新编译错误。[案例与来源](mine-d-affect-relationships/results/D-E07-CASEBOOK.md)。D-E06预选Bathsheba链中的普通摘要保留金表被“提出赠送”的情感影响，未明确断言她仍持有手表；作为P04的成功/边界案例保留。[连续案例](mine-d-affect-relationships/results/D-E06-CASEBOOK.md)。均未形成总体错误率或统一机制结论。
+
+
+2026-10-22用户纠正研究方向：P03/P04继续作为有限事实观察保留，不再自动驱动下一张局部实验卡。D-E06强消费者修复部分弱模型身份问题；D-E07/08事实修复与轨迹量表改善并不同步，未建立统一机制。[完成报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)及[整体定位](mine-d-affect-relationships/POSITIONING.md)将重心转回人物经历如何改变后续判断、关系与应对。

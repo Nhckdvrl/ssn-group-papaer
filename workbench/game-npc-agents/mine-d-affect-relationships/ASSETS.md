@@ -77,3 +77,16 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 - `summarize_runs.py --asset-root <资产根> --out <输出>`和`verify_measurement.py --asset-root <资产根> --out <输出>`：总账与来源检查。所有算术从保留raw重建，不以人工改分覆盖原结果。
 
 原生阅读范围、样本来源与许可说明见正文报告及四张权威论文卡；本轮没有跑PHASE参数适配、ArcANE-32B专用权重、EvolvingWorld专用checkpoint或完整多智能体rollout，也没有声称它们已被这些普通单步基线替代。
+
+## 持续实验资产（D-E06–D-E09）
+
+同一NVMe根下，`data/closed_D-E06`保存29轨迹/87后续问题、原句、三更新路径与强消费者冻结输入；`data/arcane_D-E07_v2`保存正确Monte源分片、完整81摘要与人物整理输入；旧`arcane_D-E07`及中断raw保留。`data/arcane_D-E08`复用同81输入，Step5实际82次Plan调用得到81卡，新增317,848记录tokens。`data/prefix_D-E09`为六人物的完整来源前缀、301固定窗口、15 probe/47 phase与查询边界证明。权重沿用上表revision，无新训练。
+
+对应完整原始运行分别在`runs/D-E06`至`runs/D-E09`。D-E06–08推理和离线表已全部完成，D-E09两条完整前缀任务仍在运行；各自metadata区分完成状态，不能将目录存在等同完成。当前首夜持久归档不会被覆盖，持续实验完成后另建归档。
+
+- `recompute_continuation.py --asset-root <根> --project <仓库>`：按依赖完成D-E06三消费者、D-E07修正来源全表及D-E08强教师表与图，仅离线分析。
+- `recompute_prefix_results.py --asset-root <根> --project <仓库>`：D-E09全47phase主表，与共同20phase的近期上下文嵌套表分开。
+- `collect_continuation_costs.py --asset-root <根> --out <账本> --include-prefix --require-complete`：D-E06–09独立调用账，含Step新增用量；不把API壁钟加入GPU小时，不重复首夜账。
+- `archive_runs.py --asset-root <根> --destination <新的持久目录> --manifest <清单> --include-continuation`：所有运行结束且资格检查通过后归档。完整模型输入含实际使用的来源前缀文本，限本地研究保存；原文与权重不进Git。
+
+另外只读取得EvolvingWorld官方六部OOD作品的`extracted_data/scenes`与`character_dynamic`，hash与规模见[D-HELDOUT-SOURCE-INVENTORY](results/D-HELDOUT-SOURCE-INVENTORY.json)；尚未据此声称新实测或所有模型都未见作品。
