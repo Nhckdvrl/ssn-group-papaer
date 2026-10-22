@@ -70,6 +70,10 @@ def arcane(root,experiment,judge='local',strict=False):
   selected={r['trial_id'].rsplit('__p',1)[0] for r in read(root/'data/arcane_D-E03/references.jsonl')}
   reused=[r for r in first_valid(load_arcane(root,'D-E01',judge,strict),'judge_id') if r['probe_id'] in selected]
   valid+=reused
+ elif experiment=='D-E09':
+  selected={r['trial_id'].rsplit('__p',1)[0] for r in read(root/'data/prefix_D-E09/references.jsonl')}
+  reused=[r for r in first_valid(load_arcane(root,'D-E01',judge,strict),'judge_id') if r['probe_id'] in selected]
+  valid+=reused
  elif experiment in ['D-E07','D-E08']:
   # S/Monte in the old D-E03 run used the wrong narrative-unit binding.
   # Only source-qualified rows enter the corrected table, irrespective of score.
@@ -110,7 +114,7 @@ def arcane(root,experiment,judge='local',strict=False):
  models=sorted({g.split('|')[0] for g in result})
  for model in models:
   if model+'|vanilla' not in result:continue
-  for mode in ['arc','summary','state_summary','state_summary_step']:
+  for mode in ['arc','summary','state_summary','state_summary_step','prefix_memory']:
    if model+'|'+mode not in result:continue
    paired[model+'|'+mode+'-vanilla']=paired_arcane(details,model+'|'+mode,model+'|vanilla')
   if model+'|summary' in result and model+'|arc' in result:paired[model+'|arc-summary']=paired_arcane(details,model+'|arc',model+'|summary')
@@ -120,7 +124,8 @@ def arcane(root,experiment,judge='local',strict=False):
   if model+'|state_summary_step' in result:
    for other in ['state_summary','summary','arc']:
     if model+'|'+other in result:paired[model+'|state_summary_step-'+other]=paired_arcane(details,model+'|state_summary_step',model+'|'+other)
- for mode in ['vanilla','arc','summary','state_summary','state_summary_step']:
+  if model+'|prefix_memory' in result and model+'|arc' in result:paired[model+'|prefix_memory-arc']=paired_arcane(details,model+'|prefix_memory',model+'|arc')
+ for mode in ['vanilla','arc','summary','state_summary','state_summary_step','prefix_memory']:
   for lhs,rhs,label in [('arcane-8B-dpo','Qwen/Qwen3-8B','ArcANE8DPO-minus-Qwen8'),('Qwen/Qwen3-32B','Qwen/Qwen3-8B','Qwen32-minus-Qwen8'),('arcane-8B-dpo','Qwen/Qwen3-32B','ArcANE8DPO-minus-Qwen32')]:
    if lhs+'|'+mode in result and rhs+'|'+mode in result:paired[label+'|'+mode]=paired_arcane(details,lhs+'|'+mode,rhs+'|'+mode)
  sources={}
@@ -169,8 +174,8 @@ def phase(root,strict=False):
  return dict(experiment='D-E02',judge='Local Qwen3-32B, native PHASE-Tree rubric, greedy/nonthinking; not original GPT4.1 or official Emb',strict_native_json=strict,n_judgments=len(rows),valid=len(scores),native_parser_fallback=fallback,invalid=errors,groups=groups,paired=pairs,details=scores,aggregation='Four-corpus macro, question-level pairing; intervals descriptive, four corpora not population sample. No cross-benchmark score pooling.')
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--experiment',choices=['D-E01','D-E02','D-E03','D-E07','D-E08'],required=True);a.add_argument('--out',required=True);a.add_argument('--judge',choices=['local','step5'],default='local');a.add_argument('--strict-native-json',action='store_true');args=a.parse_args();root=Path(args.asset_root)
- if args.experiment in ['D-E07','D-E08']:assert args.judge=='local','The Step compiler is not a Step judge run'
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--experiment',choices=['D-E01','D-E02','D-E03','D-E07','D-E08','D-E09'],required=True);a.add_argument('--out',required=True);a.add_argument('--judge',choices=['local','step5'],default='local');a.add_argument('--strict-native-json',action='store_true');args=a.parse_args();root=Path(args.asset_root)
+ if args.experiment in ['D-E07','D-E08','D-E09']:assert args.judge=='local','The Step compiler is not a Step judge run'
  obj=phase(root,args.strict_native_json) if args.experiment=='D-E02' else arcane(root,args.experiment,args.judge,args.strict_native_json)
  Path(args.out).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n')
  if args.experiment=='D-E02':print(json.dumps(obj['groups'],indent=2))

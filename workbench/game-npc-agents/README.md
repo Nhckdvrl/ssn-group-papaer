@@ -12,6 +12,8 @@
 
 首夜[D-E01–D-E05实测及科研报告](mine-d-affect-relationships/results/D-OVERNIGHT-REPORT-2026-10-22.md)已完成：1,481条角色回复、256条本地状态更新、Step5 65次Plan请求得到64状态，另有章节教师/完整内容评分/原句预测。ArcANE专用8B在原生Arc下APF/PTF78.05/83.48，通用8B65.93/60.92；PHASE文本状态对普通卡重写Sem+0.234、NLL−0.318。现有方法有效；强Step修复主要主体错配，但三模型都将已收回金表记成送出，评委也可能漏核最终事实。当前无新机制/算法主张，继续围绕有据状态形成及其后续人物行为，不做局部坏例调参。完整范围/不确定性见报告与[资产表](mine-d-affect-relationships/ASSETS.md)。
 
+**持续推进：** [D-E06](mine-d-affect-relationships/experiments/D-E06-closed-loop-state-enactment.md)连接29人物的8轮状态更新与后续表演；[D-E07/08案例](mine-d-affect-relationships/results/D-E07-CASEBOOK.md)区分摘要源错配、人物整理错配与实际行为，Step同信息82次Plan请求已得到81卡，修复部分归属并保留材料不足，完整下游评分继续。[D-E09](mine-d-affect-relationships/experiments/D-E09-full-prefix-character-memory.md)已冻结6人物/15probe/47phase的完整来源前缀普通记忆参照，排入前序测量后的空闲卡。主问题始终是经历怎样形成这个人物的状态，并影响多个情境中的实际表演；不是累计调用数或预设新RL。
+
 ## B/I01历史实测（已暂停；2026-10-21）
 
 - **E01：** Qwen3-8B、Llama-3.1-8B-Instruct、Step5各60请求，Step另1次截断恢复。Original / Situated / Explicit合成规则一致分别为 **75/75/100%、60/90/100%、90/85/95%（预算恢复后100%）**。Step只用Token Plan入口；严格格式与围栏恢复另报。
