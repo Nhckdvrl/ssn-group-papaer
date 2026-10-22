@@ -7,7 +7,7 @@ from summarize_results import parse_arcane_local
 
 def read(p):return [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python';data=root/'data/arcane_D-E08';base=root/'runs/D-E08'
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);a.add_argument('--gpu',default='2');a.add_argument('--after');args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python';data=root/'data/arcane_D-E08';base=root/'runs/D-E08'
  wait_done(base/'step5_compiler/metadata.json');raw=read(base/'step5_compiler/responses.jsonl');expected={r['task_id']:r for r in read(data/'compiler_tasks.jsonl')};index={}
  for r in raw:
   assert r['request']['messages']==expected[r['task_id']]['messages']
@@ -15,8 +15,11 @@ def main():
  assert set(index)==set(expected),'Do not score selectively complete profiles';tasks=[];proof=[]
  for r in read(root/'data/arcane_D-E07_v2/summary_tasks_all.jsonl'):
   v=copy.deepcopy(r);key=r['task_id'].removesuffix('__summary')+'__compiler';text=index[key]['response'];prefix,tail=v['messages'][0]['content'].split('<context>\n',1);old,suffix=tail.rsplit('\n</context>',1);v['messages'][0]['content']=prefix+'<context>\nCurrent character state inferred from the supplied recent summaries:\n'+text+'\n</context>'+suffix;v.update(task_id=r['task_id'].removesuffix('__summary')+'__state_summary_step',mode='state_summary_step',compiler_response_sha256=hashlib.sha256(text.encode()).hexdigest());assert v['messages'][1:]==r['messages'][1:];tasks.append(v);proof.append(dict(task_id=v['task_id'],compiler_task_id=key,selected_attempt=index[key]['attempt'],compiler_response_sha256=v['compiler_response_sha256']))
- taskfile=data/'tasks.jsonl';assert not taskfile.exists();taskfile.write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in tasks));(data/'actor_provenance.json').write_text(json.dumps(dict(n=81,only_context_changed=True,details=proof),indent=2)+'\n');print('Complete Step profiles frozen for actors',len(tasks),flush=True)
- wait_done(root/'runs/D-E06/consumer_arcane_8b_dpo/likelihood/metadata.json');time.sleep(3);env=dict(os.environ,CUDA_VISIBLE_DEVICES='2',HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
+ taskfile=data/'tasks.jsonl';content=''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in tasks)
+ if taskfile.exists():assert taskfile.read_text()==content,'Never replace frozen actor inputs'
+ else:taskfile.write_text(content)
+ (data/'actor_provenance.json').write_text(json.dumps(dict(n=81,only_context_changed=True,details=proof),indent=2)+'\n');print('Complete Step profiles frozen for actors',len(tasks),flush=True)
+ wait_done(Path(args.after) if args.after else root/'runs/D-E06/consumer_arcane_8b_dpo/likelihood/metadata.json');time.sleep(3);env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
  def run(argv,log):
   with (root/'logs'/log).open('w') as f:subprocess.run([python,'-u']+list(map(str,argv)),cwd=project,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
  models=[('qwen3_8b','/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218','b968826d9c46dd6066d109eabc6255188de91218','Qwen/Qwen3-8B'),('arcane_8b_dpo',root/'models/ArcANE-8B-DPO','67b9bea604bea65a5245928ed87103545814b4f7','arcane-8B-dpo')]

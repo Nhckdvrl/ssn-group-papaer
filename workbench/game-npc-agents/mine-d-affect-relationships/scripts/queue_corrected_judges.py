@@ -6,10 +6,12 @@ from queue_local_judges import wait_done
 from summarize_results import parse_arcane_local
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python';base=root/'runs/D-E07';data=root/'data/arcane_D-E07_v2';env=dict(os.environ,CUDA_VISIBLE_DEVICES='3',HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);a.add_argument('--capacity-only',action='store_true');args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python';base=root/'runs/D-E07';data=root/'data/arcane_D-E07_v2';env=dict(os.environ,CUDA_VISIBLE_DEVICES='3',HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
  def run(argv,log):
   with (root/'logs'/log).open('w') as f:subprocess.run([python,'-u']+list(map(str,argv)),cwd=project,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
- for models,name,n in [(['qwen3_8b','arcane_8b_dpo'],'local_qwen32_judge',248),(['qwen3_32b'],'local_qwen32_capacity_judge',124)]:
+ partitions=[(['qwen3_8b','arcane_8b_dpo'],'local_qwen32_judge',248),(['qwen3_32b'],'local_qwen32_capacity_judge',124)]
+ if args.capacity_only:wait_done(base/'primary_judge_transport_complete.json');partitions=partitions[1:]
+ for models,name,n in partitions:
   sources=[base/model for model in models]+[base/'source_repair'/(model+'_summary') for model in models]
   for source in sources:wait_done(source/'metadata.json')
   tasks=data/(name+'_tasks.jsonl');assert not tasks.exists();subprocess.run([python,str(scripts/'prepare_arcane_local_judge.py'),'--arcane',str(root/'vendor/ArcANE'),'--references',str(root/'data/arcane_D-E03/references.jsonl'),'--sources']+list(map(str,sources))+['--out',str(tasks)],cwd=project,check=True);assert len(tasks.read_text().splitlines())==n
@@ -18,5 +20,6 @@ def main():
   if missing:
    p=data/(name+'_recovery_tasks.jsonl');p.write_text(''.join(l+'\n' for l in tasks.read_text().splitlines() if json.loads(l)['task_id'] in missing));judge(p,name+'_recovery',1024)
   print('Completed judge partition',name,n,flush=True)
+  if name=='local_qwen32_judge':(base/'primary_judge_transport_complete.json').write_text(json.dumps(dict(complete=True,n=248))+'\n')
  (base/'transport_complete.json').write_text(json.dumps(dict(complete=True,n_primary_judgments=372,partitions=[248,124]))+'\n')
 if __name__=='__main__':main()
