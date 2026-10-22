@@ -1,0 +1,34 @@
+{
+  "experiment": "D-E08",
+  "component": "Step5 same-information ordinary compiler",
+  "complete": true,
+  "actor_evaluation_complete": false,
+  "n_source_tasks": 81,
+  "n_recorded_requests": 82,
+  "n_initial_stop_nonempty": 80,
+  "n_recovered": 1,
+  "selection": "First nonempty stop; one length output retained and uniformly retried at 16384. No semantic retries.",
+  "finishes": {
+    "stop": 81,
+    "length": 1
+  },
+  "usage": {
+    "prompt_tokens": 120085,
+    "completion_tokens": 197763,
+    "total_tokens": 317848
+  },
+  "wall_s": 1560.40249581635,
+  "endpoint": "https://api.stepfun.com/step_plan/v1/chat/completions",
+  "model": "step-5-preview",
+  "provider_models": {
+    "step-5-preview": 82
+  },
+  "reasoning_effort": "low",
+  "input_sha256": "79d1c1bde2a0c299d86b3c4e28e5b8827739d42f65218fa0214376a016f21a6c",
+  "mean_profile_visible_words": 300.71604938271605,
+  "recovery_ids": [
+    "gerard_de_villefort_final_intra_04_intext_a1__p1__compiler"
+  ],
+  "quality_note": "Technical completion, not semantic accuracy. Same 81 summaries/prompt as Qwen32; new role replies and native judgments still pending. Step token usage includes provider-reported completion usage, not just visible profile words.",
+  "usage_detail_note": "Provider returns nonempty reasoning and reasoning_content (duplicate text), while completion_tokens_details.reasoning_tokens is reported as zero. Preserve the complete response and total billed/plan usage as supplied; do not infer a reliable visible/reasoning token split or count duplicate reasoning fields twice."
+}

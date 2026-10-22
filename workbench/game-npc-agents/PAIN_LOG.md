@@ -18,3 +18,5 @@
 | P04 | 已撤回的中途行为仍被写成当前后态，同时人物情感信号可能合理保留 | D-E04事前选定Troy/scene70：原输入明确最后收回金表，两模型仍记录已送出；32B tracker明确称仍在Bathsheba手中 | 同64题普通提示两Qwen仍错，强Step亦将送出写入后态并展开贵族身份后果。本地PUF给Step85并奖励失表，原分保留。一场景，未测下游影响/发生率，不是长程惯性或新训练必要性证据 |
 
 [D-E04](mine-d-affect-relationships/results/D-E04-REPORT.md)/[D-E05](mine-d-affect-relationships/results/D-E05-REPORT.md)保留普通强系统成功、所有失败与原PUF分数；下一步应连到连续更新/后续人物行为，不围绕单例加提示。B的P01/P02为已暂停历史，不继承为D证据。
+
+持续核对：D-E07的Mary人物卡错接Monica婚姻，8B随后也使用了虚构的自身婚姻经历；同输入Step整理修复这项关系，但下游测量尚在运行。Anna则是上游摘要已经错配，不能重复计为新编译错误。[案例与来源](mine-d-affect-relationships/results/D-E07-CASEBOOK.md)。D-E06预选Bathsheba链中的普通摘要保留金表被“提出赠送”的情感影响，未明确断言她仍持有手表；作为P04的成功/边界案例保留。[连续案例](mine-d-affect-relationships/results/D-E06-CASEBOOK.md)。均未形成总体错误率或统一机制结论。
