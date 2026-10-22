@@ -1,0 +1,42 @@
+{
+  "experiment": "D-E10",
+  "source_revision": "ae7d82d38909783805979a8055d5ae913cb982f7",
+  "source_sha256": "2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07",
+  "partition_inventory_sha256": "f2914f4e9414bec6b5df7db4b7f3fe354d6155eb4bb5e5e17f6521e1252f1b73",
+  "tokenizer": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+  "script_sha256": "172ef5ba7d59e26f6496a6820026a87155e718356c05f9cfd77ef4f9eb3a056a",
+  "dtype": "little-endian int32",
+  "n_tokens": 272937874,
+  "counts": {
+    "train/interaction_generation": 23088,
+    "train/character_state_update": 14079,
+    "train/character_motivation_update": 14079,
+    "validation/character_state_update": 128
+  },
+  "total_tokens": {
+    "train/interaction_generation": 149042123,
+    "train/character_state_update": 42949543,
+    "train/character_motivation_update": 80589471,
+    "validation/character_state_update": 356737
+  },
+  "exclusions": {},
+  "native_update_two_epoch_tokens": 85899086,
+  "files": {
+    "tokens.bin": {
+      "sha256": "08b31a689a29863f74b5add5c7ff3395a10bc067dd386ebc307e20eab04a9ffd",
+      "bytes": 1091751496
+    },
+    "entries.jsonl": {
+      "sha256": "3bd988c75fbb14797d62d9dcd3b27f2065e7bc0e2345e3df9f62430c76a06028",
+      "bytes": 15774111
+    },
+    "exclusions.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "max_sequence": 32768,
+  "no_truncation": true,
+  "actor_target": "First assistant turn of each native segment",
+  "model_calls": 0
+}

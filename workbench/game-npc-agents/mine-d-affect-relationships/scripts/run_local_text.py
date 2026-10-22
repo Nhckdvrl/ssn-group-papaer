@@ -5,7 +5,7 @@ from pathlib import Path
 
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def main():
- a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--checkpoint',required=True);a.add_argument('--revision',required=True);a.add_argument('--model',required=True);a.add_argument('--out',required=True);a.add_argument('--max-tokens',type=int,required=True);a.add_argument('--temperature',type=float,default=0);a.add_argument('--seed',type=int,default=0);a.add_argument('--batch-size',type=int,default=4);a.add_argument('--context-limit',type=int,default=32768);args=a.parse_args()
+ a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--checkpoint',required=True);a.add_argument('--revision',required=True);a.add_argument('--model',required=True);a.add_argument('--out',required=True);a.add_argument('--max-tokens',type=int,required=True);a.add_argument('--temperature',type=float,default=0);a.add_argument('--seed',type=int,default=0);a.add_argument('--batch-size',type=int,default=4);a.add_argument('--context-limit',type=int,default=32768);a.add_argument('--adapter');args=a.parse_args()
  tasks=[json.loads(l) for l in Path(args.tasks).read_text().splitlines()];assert len(tasks)==len({t['task_id'] for t in tasks})
  out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
  if (out/'metadata.json').exists():raise FileExistsError(out)
@@ -19,6 +19,11 @@ def main():
   tok=AutoTokenizer.from_pretrained(args.checkpoint,local_files_only=True);tok.padding_side='left'
   if tok.pad_token_id is None:tok.pad_token_id=tok.eos_token_id
   model=AutoModelForCausalLM.from_pretrained(args.checkpoint,local_files_only=True,dtype=torch.bfloat16,attn_implementation='sdpa',device_map={'':0}).eval()
+  if args.adapter:
+   from peft import PeftModel
+   adapter=Path(args.adapter)
+   meta['adapter_files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in adapter.iterdir() if p.name in ['adapter_config.json','adapter_model.safetensors']}
+   model=PeftModel.from_pretrained(model,str(adapter),is_trainable=False).eval()
   meta.update(torch=torch.__version__,transformers=transformers.__version__,gpu=torch.cuda.get_device_name(0),cuda=torch.version.cuda,generation_config=model.generation_config.to_dict());save()
   eos=model.generation_config.eos_token_id;eos=set(eos if isinstance(eos,list) else [eos]);seen=set()
   with (out/'responses.jsonl').open('a') as f:
