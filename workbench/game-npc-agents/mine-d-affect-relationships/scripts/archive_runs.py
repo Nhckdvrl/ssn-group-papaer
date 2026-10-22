@@ -9,7 +9,7 @@ def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--destination',required=True);a.add_argument('--manifest',required=True);a.add_argument('--include-continuation',action='store_true');args=a.parse_args();root=Path(args.asset_root);dest=Path(args.destination);dest.mkdir(parents=True,exist_ok=True,mode=0o700);archive=dest/'raw-runs-and-frozen-inputs.tar.gz';assert not archive.exists(),'Do not overwrite an existing research archive'
  required=['D-E01/qwen3_8b','D-E01/arcane_8b_dpo','D-E01/local_qwen32_judge','D-E02/qwen25_7b','D-E02/qwen3_32b_judge','D-E02/target_likelihood','D-E03/summary_teacher','D-E03/qwen3_8b','D-E03/arcane_8b_dpo','D-E03/qwen3_32b','D-E03/local_qwen32_judge','D-E03/local_qwen32_capacity_judge','D-E04/qwen3_8b','D-E04/qwen3_32b','D-E04/identity_line/qwen3_8b','D-E04/identity_line/qwen3_32b','D-E04/puf_judge','D-E05/step5','D-E05/puf_judge']
  for name in required:assert (root/'runs'/name/'metadata.json').exists(),'Registered run not started: '+name
- metas=list((root/'runs').rglob('metadata.json'));assert metas
+ metas=list((root/'runs').rglob('metadata.json'));assert metas;stopped_runs=[]
  for path in metas:
   m=json.loads(path.read_text())
   if path.parent.name.startswith('step5_judge') or m.get('transport')=='step_plan':
@@ -19,6 +19,8 @@ def main():
    interrupted=path.parent/'INTERRUPTION.json'
    approved_stop=interrupted.exists() and json.loads(interrupted.read_text()).get('stopped_utc') and m.get('finished_utc')
    assert (m.get('complete') and m.get('finished_utc')) or approved_stop,'Still running/failed: '+str(path)
+  records=[p.name for p in [path.parent/'INTERRUPTION.json',path.parent/'CALIBRATION.json'] if p.exists()]
+  if records or m.get('complete') is False:stopped_runs.append(dict(run=str(path.parent.relative_to(root)),metadata_declares_complete=m.get('complete'),finished_utc=m.get('finished_utc'),stop_records=records))
  parts=['runs','logs','data/arcane_D-E01','data/arcane_D-E03','data/phase_D-E02','data/update_D-E04']
  if args.include_continuation:parts+=['data/closed_D-E06','data/arcane_D-E07','data/arcane_D-E07_v2','data/arcane_D-E08','data/prefix_D-E09']
  files=sorted(p for part in parts for p in (root/part).rglob('*') if p.is_file());assert files
@@ -32,6 +34,6 @@ def main():
   assert len(tar.getmembers())==len(index)
   for item in tar:
    stream=tar.extractfile(item);assert stream is not None;assert hashlib.file_digest(stream,'sha256').hexdigest()==index[item.name]['sha256'],'Archive verification failed: '+item.name
- result=dict(created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),host=socket.gethostname(),research_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),nvme_asset_root=str(root),persistent_archive=str(archive),archive_bytes=archive.stat().st_size,archive_sha256=sha(archive),all_members_verified=True,n_files=len(index),uncompressed_bytes=sum(v['bytes'] for v in index.values()),scope='Unique outputs, complete frozen prompts/references, run configs/source snapshots/token IDs/logs. Excludes model weights and vendor checkouts. Frozen prompts include the actual source-prefix text used in experiments; unused third-party source files are excluded. Step partial/calibration remain separate and incomplete by design; no cross-judge score merging.',files=index)
+ result=dict(created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),host=socket.gethostname(),research_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),nvme_asset_root=str(root),persistent_archive=str(archive),archive_bytes=archive.stat().st_size,archive_sha256=sha(archive),all_members_verified=True,n_files=len(index),uncompressed_bytes=sum(v['bytes'] for v in index.values()),scope='Unique outputs from finished or explicitly stopped processes, frozen planned prompts/references, run configs/source snapshots/token IDs/logs. Excludes model weights and vendor checkouts. Frozen prefix plans include unprocessed windows; execution coverage is recorded separately. Calibration, source-interrupted and budget-stopped runs remain partial, not completed experiments; no cross-judge score merging.',incomplete_or_stopped_runs=stopped_runs,files=index)
  Path(args.manifest).write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='files'},indent=2))
 if __name__=='__main__':main()

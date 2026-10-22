@@ -84,7 +84,7 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 
 同一NVMe根下，`data/closed_D-E06`保存29轨迹/87后续问题、原句、三更新路径与强消费者冻结输入；`data/arcane_D-E07_v2`保存正确Monte源分片、完整81摘要与人物整理输入；旧`arcane_D-E07`及中断raw保留。`data/arcane_D-E08`复用同81输入，Step5实际82次Plan调用得到81卡，新增317,848记录tokens。`data/prefix_D-E09`为六人物的完整来源前缀、301固定窗口、15 probe/47 phase与查询边界证明。权重沿用上表revision，无新训练。
 
-对应完整原始运行分别在`runs/D-E06`至`runs/D-E09`。D-E06–08推理和离线表已全部完成，D-E09两条完整前缀任务仍在运行；各自metadata区分完成状态，不能将目录存在等同完成。当前首夜持久归档不会被覆盖，持续实验完成后另建归档。
+对应完整原始运行分别在`runs/D-E06`至`runs/D-E09`。D-E06–08推理和离线表已全部完成，D-E09两个前缀worker已按预算停止，完整cohort未齐，演员/评分未启动；各自metadata区分完成状态，不能将目录存在等同完成。当前首夜持久归档不会被覆盖，持续实验完成后另建归档。
 
 - `recompute_continuation.py --asset-root <根> --project <仓库>`：按依赖完成D-E06三消费者、D-E07修正来源全表及D-E08强教师表与图，仅离线分析。
 - `recompute_prefix_results.py --asset-root <根> --project <仓库>`：D-E09全47phase主表，与共同20phase的近期上下文嵌套表分开。

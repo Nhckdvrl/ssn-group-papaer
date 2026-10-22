@@ -22,6 +22,7 @@
 | 来源句前向 | `score_target_likelihood.py`、`score_role_likelihood.py` | 冻结参考回复→条件token损失；不是生成或LLM裁判 |
 | 评分输入 | `prepare_arcane_local_judge.py`、`prepare_update_quality.py`、`prepare_plan_quality.py` | 完整actor输出＋原生rubric→冻结judge任务 |
 | 聚合 | `summarize_results.py`、`summarize_updates.py`、`summarize_state_quality.py`、`summarize_likelihood.py`、`summarize_closed_behavior.py` | 已保存记录→表/配对区间/覆盖；不调用模型 |
+| 未完成前缀覆盖 | `summarize_prefix_coverage.py` | 两worker结束后核对原始尝试、提交态、问题覆盖与成本；不评分完成者子集 |
 | 复算编排 | `recompute_arcane.py`、`recompute_continuation.py`、`recompute_prefix_results.py` | 已结束依赖→主/严格表、图；未结束会等待，不会代替模型运行 |
 | 图 | `plot_arcane.py`、`plot_baselines.py`、`plot_closed_behavior.py` | 聚合JSON→PNG/PDF；不同任务/样本不混分 |
 | 审计与成本 | `verify_measurement.py`、`compare_judges.py`、`summarize_runs.py`、`collect_continuation_costs.py` | 原始输入/输出/metadata→来源核验、独立调用账与评分比较 |
@@ -55,3 +56,5 @@ python3 -m unittest discover -s workbench/game-npc-agents/mine-d-affect-relation
 ```
 
 严格JSON加`--strict-native-json`，但其非均匀轨迹缺失必须连同分数汇报。D-E09完成后才使用包含`--include-prefix --require-complete`的完整续测成本账。重新生成任务或跑模型须遵守实验卡，不将“可运行”视为新实验的科研理由。
+
+D-E09如存在`transport_stopped.json`，`recompute_prefix_results.py`明确报未完成，不生成APF/PTF表。预算停止后使用`summarize_prefix_coverage.py --asset-root <根> --out <覆盖报告>`及**不带**`--require-complete`的含前缀成本账，保留未完成状态。

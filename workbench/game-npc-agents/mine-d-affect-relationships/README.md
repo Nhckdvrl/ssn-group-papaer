@@ -23,7 +23,7 @@
 | [D-E06–08综合报告](results/D-CONTINUATION-REPORT-2026-10-22.md) | 三实验已完成：2,696本地生成、1,305来源句前向、82次Plan；同信息强整理没有明确轨迹增益，连续更新无跨消费者一致退化 |
 | [D-E06案例](results/D-E06-CASEBOOK.md) | 29角色/8作品连续更新接回表演；强消费者修复部分主体问题，仍有策略差异，不判统一惯性 |
 | [D-E07/08案例](results/D-E07-CASEBOOK.md) | 完整81phase、三消费者/两整理教师；区分真实事实修复与阶段/轨迹能力，Monte正确来源另表 |
-| [D-E09](experiments/D-E09-full-prefix-character-memory.md) | 此前已启动：6角色、15既有probe/47phase、301原文窗口；按冻结预算记录，不由其单项结果自动展开下一局部实验 |
+| [D-E09预算停止报告](results/D-E09-REPORT.md) | 225真实尝试、208/301提交态；3/6前缀完整，0演员/评分，不对子集给阶段分数；9.080 GPU·h |
 | [Baseline登记](BASELINES.md) | 实际运行系统、任务、信息条件、评价身份及尚未复现部分 |
 | [脚本导航](scripts/README.md) / [结果导航](results/README.md) | 离线复算与推理队列分开；有效/历史/在途结果可追溯 |
 | [资产入口](ASSETS.md) | 固定revision、完整raw归档/校验、环境与离线复算；模型/全原文不进Git |

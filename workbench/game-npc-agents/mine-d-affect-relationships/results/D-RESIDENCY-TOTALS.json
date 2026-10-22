@@ -1,0 +1,32 @@
+{
+  "source_ledgers": [
+    "D-RUN-LEDGER.json",
+    "D-CONTINUATION-WITH-PREFIX-LEDGER.json"
+  ],
+  "local_generations_recorded": 7080,
+  "source_target_forward_rows": 1561,
+  "extra_alignment_validation_forwards": 6,
+  "gpu_process_hours": 38.7488515877734,
+  "step_plan_recorded_attempts": 495,
+  "step_plan_recorded_usage": {
+    "prompt_tokens": 831776,
+    "completion_tokens": 1890983,
+    "total_tokens": 2722759
+  },
+  "unpersisted_local_source_interruption_upper_bound": 4,
+  "unpersisted_api_calibration_upper_bound": 2,
+  "completed_measurements": [
+    "D-E01",
+    "D-E02",
+    "D-E03 (original Monte S withdrawn; corrected in D-E07)",
+    "D-E04",
+    "D-E05",
+    "D-E06",
+    "D-E07",
+    "D-E08"
+  ],
+  "incomplete_measurements": [
+    "D-E09: registered prefix worker compute budgets reached; no actor/judge stage"
+  ],
+  "note": "Physical recorded generations/requests, including source-disqualified and budget-stopped work; not independent scientific sample counts. Public MiniMax trajectories are excluded. API wall time is not GPU time. No training, no cash fallback."
+}

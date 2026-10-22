@@ -1,0 +1,501 @@
+{
+  "experiment": "D-E09",
+  "status": "INCOMPLETE_PREFIX_BUDGET",
+  "model": "Qwen/Qwen3-32B",
+  "model_revision": "9216db5781bf21249d130ec9da846c4624c16137",
+  "planned_windows": 301,
+  "recorded_generation_attempts": 225,
+  "committed_states": 208,
+  "completed_planned_character_prefixes": 3,
+  "planned_character_prefixes": 6,
+  "planned_actor_questions": 47,
+  "checkpoint_material_available_for_questions": 36,
+  "actor_calls": 0,
+  "judge_calls": 0,
+  "gpu_process_hours": 9.080341644064626,
+  "usage": {
+    "prompt_tokens": 2047094,
+    "completion_tokens": 321168
+  },
+  "shards": [
+    {
+      "shard": 0,
+      "complete": false,
+      "finished_utc": "2026-10-22T11:57:28.615769+00:00",
+      "wall_s": 16381.477261517197,
+      "planned_windows": 144,
+      "attempts": 77,
+      "committed_states": 61,
+      "attempts_by_number": {
+        "1": 63,
+        "2": 14
+      },
+      "finishes": {
+        "stop": 59,
+        "length": 18
+      },
+      "carried_previous": 3,
+      "raw_candidate_ids_without_committed_state": [
+        "prefix/don_quixote/step26",
+        "prefix/louis_trevelyan/step26"
+      ],
+      "usage": {
+        "prompt_tokens": 748704,
+        "completion_tokens": 151405
+      }
+    },
+    {
+      "shard": 1,
+      "complete": false,
+      "finished_utc": "2026-10-22T11:13:09.909062+00:00",
+      "wall_s": 16307.75265711546,
+      "planned_windows": 157,
+      "attempts": 148,
+      "committed_states": 147,
+      "attempts_by_number": {
+        "1": 147,
+        "2": 1
+      },
+      "finishes": {
+        "stop": 147,
+        "length": 1
+      },
+      "carried_previous": 0,
+      "raw_candidate_ids_without_committed_state": [],
+      "usage": {
+        "prompt_tokens": 1298390,
+        "completion_tokens": 169763
+      }
+    }
+  ],
+  "by_chain": {
+    "prefix/deborah_read_franklin": {
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "planned_windows": 11,
+      "committed_windows": 11,
+      "complete": true,
+      "last_completed_source_unit": 13
+    },
+    "prefix/louis_trevelyan": {
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "planned_windows": 58,
+      "committed_windows": 25,
+      "complete": false,
+      "last_completed_source_unit": 41
+    },
+    "prefix/don_quixote": {
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "planned_windows": 75,
+      "committed_windows": 25,
+      "complete": false,
+      "last_completed_source_unit": 33
+    },
+    "prefix/anna_karenina": {
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "planned_windows": 61,
+      "committed_windows": 61,
+      "complete": true,
+      "last_completed_source_unit": 215
+    },
+    "prefix/fernand_mondego": {
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "planned_windows": 71,
+      "committed_windows": 61,
+      "complete": false,
+      "last_completed_source_unit": 9
+    },
+    "prefix/mary_barfoot": {
+      "novel": "The Odd Women",
+      "character_slug": "mary_barfoot",
+      "planned_windows": 25,
+      "committed_windows": 25,
+      "complete": true,
+      "last_completed_source_unit": 29
+    }
+  },
+  "planned_question_coverage": [
+    {
+      "probe_id": "don_quixote_final_intra_03_outworld_a0",
+      "phase_idx": 0,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 14,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "don_quixote_final_intra_03_outworld_a0",
+      "phase_idx": 1,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 77,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "don_quixote_final_intra_03_outworld_a0",
+      "phase_idx": 2,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 127,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "phase_idx": 0,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 12,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "phase_idx": 1,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 32,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "phase_idx": 2,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 112,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "don_quixote_final_intra_03_inworld_a0",
+      "phase_idx": 0,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 14,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "don_quixote_final_intra_03_inworld_a0",
+      "phase_idx": 1,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 77,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "don_quixote_final_intra_03_inworld_a0",
+      "phase_idx": 2,
+      "novel": "don_quixote",
+      "character_slug": "don_quixote",
+      "query_source_unit": 127,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "phase_idx": 0,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 4,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "phase_idx": 1,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 6,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "phase_idx": 2,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 13,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_rel_01_intext_a1",
+      "phase_idx": 0,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 4,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_rel_01_intext_a1",
+      "phase_idx": 1,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 7,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_rel_01_intext_a1",
+      "phase_idx": 2,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 13,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_inworld_a0",
+      "phase_idx": 0,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 4,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_inworld_a0",
+      "phase_idx": 1,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 6,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_01_inworld_a0",
+      "phase_idx": 2,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 13,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_03_outworld_a0",
+      "phase_idx": 0,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 6,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "deborah_read_franklin_final_intra_03_outworld_a0",
+      "phase_idx": 1,
+      "novel": "Benjamin_Franklin",
+      "character_slug": "deborah_read_franklin",
+      "query_source_unit": 7,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_03_outworld_a1",
+      "phase_idx": 0,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 1,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_03_outworld_a1",
+      "phase_idx": 1,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 2,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_03_outworld_a1",
+      "phase_idx": 2,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 11,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_02_intext_a1",
+      "phase_idx": 0,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 1,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_02_intext_a1",
+      "phase_idx": 1,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 2,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "phase_idx": 0,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 1,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "phase_idx": 1,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 2,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "phase_idx": 2,
+      "novel": "Monte_Cristo",
+      "character_slug": "fernand_mondego",
+      "query_source_unit": 11,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "phase_idx": 0,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 20,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "phase_idx": 1,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 45,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "phase_idx": 2,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 177,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "phase_idx": 3,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 215,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_01_inworld_a3",
+      "phase_idx": 0,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 20,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_01_inworld_a3",
+      "phase_idx": 1,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 36,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_01_inworld_a3",
+      "phase_idx": 2,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 90,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_01_inworld_a3",
+      "phase_idx": 3,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 155,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "anna_karenina_final_rel_01_inworld_a3",
+      "phase_idx": 4,
+      "novel": "Anna_Kareina",
+      "character_slug": "anna_karenina",
+      "query_source_unit": 200,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "phase_idx": 0,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 3,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "phase_idx": 1,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 21,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "phase_idx": 2,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 65,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "phase_idx": 3,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 96,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_intext_a2",
+      "phase_idx": 1,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 21,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_intext_a2",
+      "phase_idx": 2,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 86,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "louis_trevelyan_final_intra_01_intext_a2",
+      "phase_idx": 3,
+      "novel": "He Knew He Was Right",
+      "character_slug": "louis_trevelyan",
+      "query_source_unit": 96,
+      "committed_checkpoint_available": false
+    },
+    {
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "phase_idx": 0,
+      "novel": "The Odd Women",
+      "character_slug": "mary_barfoot",
+      "query_source_unit": 8,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "phase_idx": 1,
+      "novel": "The Odd Women",
+      "character_slug": "mary_barfoot",
+      "query_source_unit": 19,
+      "committed_checkpoint_available": true
+    },
+    {
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "phase_idx": 2,
+      "novel": "The Odd Women",
+      "character_slug": "mary_barfoot",
+      "query_source_unit": 29,
+      "committed_checkpoint_available": true
+    }
+  ],
+  "integrity": "Every recorded token count, source-window hash, prior-state hash and committed selection verified. Uncommitted raw candidates retained; no synthetic completion.",
+  "interpretation": "Coverage and cost of the frozen ordinary reader pipeline only. Checkpoint material may include registered carry-forward after invalid output. No APF/PTF or survivor-cohort estimate; not a capability verdict on character growth or full-history methods."
+}

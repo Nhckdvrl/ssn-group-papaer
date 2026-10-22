@@ -4,11 +4,20 @@ import argparse,json,subprocess,time
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean
-from queue_local_judges import wait_done
 from summarize_results import arcane,paired_arcane,interval
 
+def wait_for_transport(run):
+ while True:
+  stopped=run/'transport_stopped.json'
+  if stopped.exists():
+   note=json.loads(stopped.read_text())
+   raise RuntimeError('D-E09 did not complete: '+note['reason']+'. No partial-cohort score table will be generated.')
+  complete=run/'transport_complete.json'
+  if complete.exists() and json.loads(complete.read_text()).get('complete'):return
+  time.sleep(5)
+
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;results=scripts.parent/'results';python='/home/xiang/miniconda3/envs/openslime/bin/python';wait_done(root/'runs/D-E09/transport_complete.json')
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;results=scripts.parent/'results';python='/home/xiang/miniconda3/envs/openslime/bin/python';wait_for_transport(root/'runs/D-E09')
  main_table=None
  for strict in [False,True]:
   table=arcane(root,'D-E09',strict=strict);path=results/('D-E09-summary-strict.json' if strict else 'D-E09-summary.json');path.write_text(json.dumps(table,ensure_ascii=False,indent=2)+'\n')

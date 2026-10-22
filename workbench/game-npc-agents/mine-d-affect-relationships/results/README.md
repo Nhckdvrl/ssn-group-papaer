@@ -15,7 +15,7 @@
 | 连续状态消费 | [Qwen8表](D-E06-qwen3_8b-summary.json)、[专用8B表](D-E06-arcane_8b_dpo-summary.json)、[32B表](D-E06-qwen3_32b-summary.json) | 29角色/8作品；跨消费者绝对NLL不排榜 |
 | 同信息人物整理 | [D-E07表](D-E07-summary.json)、[D-E08表](D-E08-summary.json) | 同25probe/81phase，Monte已纠源；Step整理仅两个8B消费者 |
 | 连续/整理实际案例 | [D-E06 CASEBOOK](D-E06-CASEBOOK.md)、[D-E07/08 CASEBOOK](D-E07-CASEBOOK.md) | 成功、失败、可接受多解及来源边界；非独立人评 |
-| 正在运行的完整前缀 | [D-E09 selection](D-E09-selection.json) | 只认证冻结来源/样本，不是已完成结果；实验卡在上级experiments |
+| 完整前缀预算停止 | [D-E09报告](D-E09-REPORT.md)、[覆盖](D-E09-COVERAGE.json) | 225尝试、208/301提交态，0演员/评分；没有APF/PTF结果 |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |
@@ -24,3 +24,5 @@
 `*-selection.json`是冻结样本与来源；`*-summary.json`是聚合及逐项评分记录；`*-summary-strict.json`只作严格格式敏感性分析；`*-CASEBOOK.md`为执行agent审阅；`figures/`保存图及导出PDF。早期`D-E06-progress.json`是当时进度快照，当前结论使用完整三消费者summary和续测报告。
 
 当前科学问题和下一步优先级见[POSITIONING](../POSITIONING.md)，baseline身份见[BASELINES](../BASELINES.md)，离线复算入口见[脚本导航](../scripts/README.md)。没有因为某个结果文件新增，就自动升级CLAIMS或启动后续模型实验。
+
+完整驻留的记录总数见[D-RESIDENCY-TOTALS](D-RESIDENCY-TOTALS.json)；其中D-E09为预算停止，不能将所有计算条数等同已完成实验样本。

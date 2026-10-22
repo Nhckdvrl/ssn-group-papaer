@@ -12,7 +12,7 @@
 
 首夜[D-E01–D-E05实测及科研报告](mine-d-affect-relationships/results/D-OVERNIGHT-REPORT-2026-10-22.md)已完成：1,481条角色回复、256条本地状态更新、Step5 65次Plan请求得到64状态，另有章节教师/完整内容评分/原句预测。ArcANE专用8B在原生Arc下APF/PTF78.05/83.48，通用8B65.93/60.92；PHASE文本状态对普通卡重写Sem+0.234、NLL−0.318。现有方法有效；强Step修复主要主体错配，但三模型都将已收回金表记成送出，评委也可能漏核最终事实。当前无新机制/算法主张，继续围绕有据状态形成及其后续人物行为，不做局部坏例调参。完整范围/不确定性见报告与[资产表](mine-d-affect-relationships/ASSETS.md)。
 
-**持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/experiments/D-E09-full-prefix-character-memory.md)是此前已启动的完整前缀参照，继续按冻结预算记录。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
+**持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/results/D-E09-REPORT.md)已按预算停止，225次尝试未完成全部前缀，未启动演员/评分。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 

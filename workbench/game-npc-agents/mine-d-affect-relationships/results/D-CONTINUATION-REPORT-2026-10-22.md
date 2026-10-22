@@ -1,6 +1,6 @@
 # D-E06–D-E08：连续更新、人物整理与后续表演实测
 
-2026-10-22。所有本报告列出的模型生成与离线聚合已完成；D-E09仍是另一个在途实验，**不纳入本报告调用数或结果**。卡：[D-E06](../experiments/D-E06-closed-loop-state-enactment.md) · [D-E07](../experiments/D-E07-same-information-character-state-summary.md) · [D-E08](../experiments/D-E08-strong-character-state-compiler.md)。
+2026-10-22。所有本报告列出的模型生成与离线聚合已完成；D-E09是另一个已预算停止的未完成实验，**不纳入本报告调用数或结果**。卡：[D-E06](../experiments/D-E06-closed-loop-state-enactment.md) · [D-E07](../experiments/D-E07-same-information-character-state-summary.md) · [D-E08](../experiments/D-E08-strong-character-state-compiler.md)。
 
 ## 结论及其对研究方向的作用
 
@@ -92,7 +92,7 @@ D-E06–08新增本地生成**2,696条**：1,119角色回复＋730状态更新�
 
 D-E08 Step5仅Token Plan：**82请求，81可用人物卡，317,848记录tokens**（输入120,085，输出197,763）；一条length按统一预算规则恢复，未按语义挑结果，无现金fallback。供应方细分reasoning用量记0，但返回非空推理字段；不据此捏造推理token拆分。[账本](D-CONTINUATION-RUN-LEDGER.json) · [Plan摘要](D-E08-compiler-summary.json)
 
-模型/revision、推理配置、冻结messages、全部raw与token IDs位于[ASSETS](../ASSETS.md)记录的本地资产根。首夜归档保持不变；在途D-E09与完成D-E06–08分账。
+模型/revision、推理配置、冻结messages、全部raw与token IDs位于[ASSETS](../ASSETS.md)记录的本地资产根。首夜归档保持不变；预算停止的D-E09与完成D-E06–08分账。
 
 离线复算入口：`scripts/summarize_closed_behavior.py --consumer ...`、`scripts/summarize_results.py`（D-E07/D-E08及`--strict-native-json`）、`scripts/collect_continuation_costs.py`。这些脚本不触发模型/API。表：[Qwen8连续](D-E06-qwen3_8b-summary.json) · [专用8B连续](D-E06-arcane_8b_dpo-summary.json) · [32B连续](D-E06-qwen3_32b-summary.json) · [D-E07](D-E07-summary.json) · [D-E08](D-E08-summary.json) · [严格D7](D-E07-summary-strict.json) · [严格D8](D-E08-summary-strict.json)。
 
@@ -103,3 +103,5 @@ D-E08 Step5仅Token Plan：**82请求，81可用人物卡，317,848记录tokens*
 ## 5. 主张与下一步
 
 本报告不升级新的机制或算法主张。修复源绑定恢复可解释的S比较，但不恢复旧错误S数字。下一步以[整体研究定位](../POSITIONING.md)为准：研究人物特有的经历学习及其跨互动后果，认真处理现成训练/更新方法已经覆盖的部分。当前不新建局部补丁实验、不预设RL，也不以本报告运行完成作为科研成功。
+
+D-E09最终状态见[独立报告](D-E09-REPORT.md)：225前缀生成尝试，未完成全cohort，0演员/评分，无APF/PTF结论。全驻留计算记录见[总数](D-RESIDENCY-TOTALS.json)，不与本报告实验得分混合。
