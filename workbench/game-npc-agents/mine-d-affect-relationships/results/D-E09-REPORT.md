@@ -42,3 +42,5 @@
 原始尝试、token IDs、完整messages、提交态、未提交候选、冻结301窗口、停止记录均在ASSETS的同一仓库外根下。停止原因记录在两个worker的`INTERRUPTION.json`及`runs/D-E09/transport_stopped.json`；没有未保存的在途D-E09生成。逐条token计数、来源文本hash、实际输入与冻结模板、前态链及提交选择已核验。
 
 复算：`scripts/summarize_prefix_coverage.py --asset-root <根> --out <覆盖表>`。含本项的[续测总账](D-CONTINUATION-WITH-PREFIX-LEDGER.json)保持INCOMPLETE并列出未启动的三个后续run；原[D-E06–08完成账](D-CONTINUATION-RUN-LEDGER.json)不覆盖。来源序列不依赖EW场景ID，该数据源资格问题不用于解释本项预算停止。
+
+持久保存已完成：[372文件的累积归档清单](D-CONTINUATION-RAW-MANIFEST.json)，完整及未完成记录分开标识；所有成员SHA256已校验，未把停止状态改成成功。

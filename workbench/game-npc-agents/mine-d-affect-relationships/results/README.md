@@ -19,7 +19,7 @@
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |
-| 来源与归档 | [首夜校验](D-INTEGRITY.json)、[首夜持久清单](D-RAW-MANIFEST.json) | 首夜归档不可覆盖；续测按独立清单另归档 |
+| 来源与归档 | [首夜校验](D-INTEGRITY.json)、[首夜清单](D-RAW-MANIFEST.json)、[续测持久清单](D-CONTINUATION-RAW-MANIFEST.json) | 首夜原包保留；续测372文件逐成员SHA已核验，部分run仍标部分 |
 
 `*-selection.json`是冻结样本与来源；`*-summary.json`是聚合及逐项评分记录；`*-summary-strict.json`只作严格格式敏感性分析；`*-CASEBOOK.md`为执行agent审阅；`figures/`保存图及导出PDF。早期`D-E06-progress.json`是当时进度快照，当前结论使用完整三消费者summary和续测报告。
 

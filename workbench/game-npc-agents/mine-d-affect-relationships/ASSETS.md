@@ -84,7 +84,7 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 
 同一NVMe根下，`data/closed_D-E06`保存29轨迹/87后续问题、原句、三更新路径与强消费者冻结输入；`data/arcane_D-E07_v2`保存正确Monte源分片、完整81摘要与人物整理输入；旧`arcane_D-E07`及中断raw保留。`data/arcane_D-E08`复用同81输入，Step5实际82次Plan调用得到81卡，新增317,848记录tokens。`data/prefix_D-E09`为六人物的完整来源前缀、301固定窗口、15 probe/47 phase与查询边界证明。权重沿用上表revision，无新训练。
 
-对应完整原始运行分别在`runs/D-E06`至`runs/D-E09`。D-E06–08推理和离线表已全部完成，D-E09两个前缀worker已按预算停止，完整cohort未齐，演员/评分未启动；各自metadata区分完成状态，不能将目录存在等同完成。当前首夜持久归档不会被覆盖，持续实验完成后另建归档。
+对应完整原始运行分别在`runs/D-E06`至`runs/D-E09`。D-E06–08推理和离线表已全部完成，D-E09两个前缀worker已按预算停止，完整cohort未齐，演员/评分未启动；各自metadata区分完成状态，不能将目录存在等同完成。首夜持久归档未覆盖；持续实验的完整与明确停止记录已另行归档，见末节。
 
 - `recompute_continuation.py --asset-root <根> --project <仓库>`：按依赖完成D-E06三消费者、D-E07修正来源全表及D-E08强教师表与图，仅离线分析。
 - `recompute_prefix_results.py --asset-root <根> --project <仓库>`：D-E09全47phase主表，与共同20phase的近期上下文嵌套表分开。
@@ -120,3 +120,16 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 获取：`snapshot_download('MiniMaxAI/role-play-bench', repo_type='dataset', revision=上述hash, allow_patterns=['README.md','data/*/*.parquet'], local_dir=资产根+'/data/MiniMaxRolePlay')`。复核使用`scripts/inspect_interaction_release.py --root <本地目录> --revision <固定hash> --out <库存>`，需现有openslime环境的pyarrow。
 
 数据卡明确这是偏聊天的合成公开子集，英语统一用户侧字段、中文按场景变化；评价将有铺垫的人物变化与OOC区分，并关注不替用户说话、叙事推进和回应性。它没有阶段人物弧或可执行游戏世界，六表也未提供完整用户模拟器/细粒度judge运行代码；因此作为互动证据资产，不冒称已复现其生成/评分协议。角色原设定、原始轨迹及未改评分只留仓库外。
+
+
+## 持续驻留的最终持久归档（含明确未完成记录）
+
+`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-continuation/raw-runs-and-frozen-inputs.tar.gz`
+
+实际372文件、58,688,960压缩字节，所有成员逐项SHA256核验；对应研究commit `86c90ad633937c520247caeec54e9c66842b5fe5`。归档SHA256：
+
+`6de6db7ee89cbc431cc3bc09b622784d38e4289494a2f88687dc326fc7aec974`
+
+[逐成员清单与停止状态](results/D-CONTINUATION-RAW-MANIFEST.json)保存完整/停止run资格。该包累积保留首夜及续测raw、冻结计划输入、配置、runner源码、token IDs与日志；D-E07源中断、Step部分校准、D-E09预算停止仍明确为部分记录，不因归档而成为完成实验。D-E09冻结计划含未处理窗口，实际覆盖以[覆盖表](results/D-E09-COVERAGE.json)为准。没有权重、vendor或完整未使用的第三方corpus；文件仅限本地研究访问，下载方式同前述SSH/scp示例，替换为本节路径。
+
+[全部调用/成本记录](results/D-RESIDENCY-TOTALS.json)与[完成结果](results/D-CONTINUATION-REPORT-2026-10-22.md)分开：7,080本地生成记录、495 Plan请求，不包含公开MiniMax旧轨迹；D-E09无角色评分。旧首夜归档继续保留原hash。
