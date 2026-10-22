@@ -2,13 +2,15 @@
 """Use GPU0 after its updater finishes; phase-source repair cannot stall D-E06."""
 import argparse,json,subprocess,os,time
 from pathlib import Path
-from queue_local_judges import wait_done
+from queue_local_judges import wait_done,wait_gpu_idle
 
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);args=a.parse_args();root=Path(args.asset_root);scripts=Path(__file__).resolve().parent;project=Path(args.project);python='/home/xiang/miniconda3/envs/openslime/bin/python';env=dict(os.environ,CUDA_VISIBLE_DEVICES='0',HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false');q8='/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218';rev='b968826d9c46dd6066d109eabc6255188de91218';wait_done(root/'runs/D-E06/teacher_forced/metadata.json');time.sleep(3)
  def run(argv,log):
+  wait_gpu_idle(0)
   with (root/'logs'/log).open('w') as f:subprocess.run([python,'-u']+list(map(str,argv)),cwd=project,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
  todo=['teacher_forced','recursive_native','recursive_summary']
+ todo=[mode for mode in todo if not ((root/'runs/D-E06'/('likelihood_'+mode)/'metadata.json').exists() and json.loads((root/'runs/D-E06'/('likelihood_'+mode)/'metadata.json').read_text())['complete'])]
  while todo:
   ready=[]
   for mode in todo:

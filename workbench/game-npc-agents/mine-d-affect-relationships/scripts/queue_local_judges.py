@@ -12,6 +12,17 @@ def wait_done(path):
    if m.get('finished_utc'):raise RuntimeError('Dependency failed: '+str(path))
   time.sleep(5)
 
+def wait_gpu_idle(index):
+ """Do not start a queued model on a GPU another workspace has occupied."""
+ uuid=subprocess.check_output(['nvidia-smi','--id='+str(index),'--query-gpu=uuid','--format=csv,noheader'],text=True).strip();announced=False
+ while True:
+  lines=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,gpu_uuid','--format=csv,noheader'],text=True).splitlines();busy=[l.split(',',1)[0].strip() for l in lines if ',' in l and l.split(',',1)[1].strip()==uuid]
+  if not busy:
+   if announced:print('GPU available',index,flush=True)
+   return
+  if not announced:print('Waiting for occupied GPU',index,'compute PIDs',busy,flush=True);announced=True
+  time.sleep(5)
+
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);a.add_argument('--only',choices=['D-E01','D-E03','both'],default='both');a.add_argument('--gpu',default='3');a.add_argument('--after');args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python'
  env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false')

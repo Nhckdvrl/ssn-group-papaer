@@ -2,7 +2,7 @@
 """Check state-use with existing strong consumers on frozen cases, no new prompts."""
 import argparse,json,time,subprocess,os
 from pathlib import Path
-from queue_local_judges import wait_done
+from queue_local_judges import wait_done,wait_gpu_idle
 
 def main():
  a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--project',required=True);a.add_argument('--consumer',choices=['arcane_8b_dpo','qwen3_32b'],required=True);args=a.parse_args();root=Path(args.asset_root);project=Path(args.project);scripts=Path(__file__).resolve().parent;python='/home/xiang/miniconda3/envs/openslime/bin/python';data=root/'data/closed_D-E06';ready=data/'strong_consumers_READY.json';all_tasks=data/'actor_all_conditions.jsonl';subset=data/'actor_preselected_review.jsonl'
@@ -15,6 +15,7 @@ def main():
   gpu='0';checkpoint=root/'models/Qwen3-32B';revision='9216db5781bf21249d130ec9da846c4624c16137';model='Qwen/Qwen3-32B';batch=2
  time.sleep(3);env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu,HF_HUB_OFFLINE='1',TOKENIZERS_PARALLELISM='false');out=root/'runs/D-E06'/('consumer_'+args.consumer)
  def run(argv,log):
+  wait_gpu_idle(gpu)
   with (root/'logs'/log).open('w') as f:subprocess.run([python,'-u']+list(map(str,argv)),cwd=project,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
  run([scripts/'run_local_text.py','--tasks',subset,'--checkpoint',checkpoint,'--revision',revision,'--model',model,'--out',out/'actor','--max-tokens',1024,'--batch-size',batch],'D-E06-'+args.consumer+'-actor.log')
  run([scripts/'score_role_likelihood.py','--tasks',all_tasks,'--references',data/'references.jsonl','--checkpoint',checkpoint,'--revision',revision,'--model',model,'--out',out/'likelihood'],'D-E06-'+args.consumer+'-likelihood.log');print('Strong consumer complete',args.consumer,flush=True)
