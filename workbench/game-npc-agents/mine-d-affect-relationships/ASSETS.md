@@ -1,5 +1,7 @@
 # 矿区D资产与复现入口（2026-10-22）
 
+**2026-10-22源纠正：** D-E03 Monte Summary的14原生单元被本轮适配器误换成117文学章号；原归档保持完整历史，六作品S相关比较暂撤回。正确来源与新结果见[纠正记录](results/D-SOURCE-CORRECTION-2026-10-22.md)。新冻结输入在`data/arcane_D-E07_v2/`，完整旧28编译中断记录也保留；D-E06连续轨迹另在`data/closed_D-E06/`和`runs/D-E06/`。
+
 完整第三方数据、权重、原文和大raw位于本机NVMe：`/var/tmp/ssn-game-npc-d/`。Git仅保留源hash/样本ID、轻量读数、代码和中文报告。父workbench保持一个ACTIVE-MAIN；B/I01暂停，矿区A不执行。
 
 | 资产 | 固定版本 | 位置与本轮状态 |
