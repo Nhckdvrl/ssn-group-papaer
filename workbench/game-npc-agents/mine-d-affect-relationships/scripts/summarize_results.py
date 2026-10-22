@@ -70,6 +70,15 @@ def arcane(root,experiment,judge='local',strict=False):
   selected={r['trial_id'].rsplit('__p',1)[0] for r in read(root/'data/arcane_D-E03/references.jsonl')}
   reused=[r for r in first_valid(load_arcane(root,'D-E01',judge,strict),'judge_id') if r['probe_id'] in selected]
   valid+=reused
+ elif experiment=='D-E07':
+  # S/Monte in the old D-E03 run used the wrong narrative-unit binding.
+  # Only source-qualified rows enter the corrected table, irrespective of score.
+  selected={r['trial_id'].rsplit('__p',1)[0] for r in read(root/'data/arcane_D-E03/references.jsonl')}
+  prior=first_valid(load_arcane(root,'D-E03',judge,strict),'judge_id')+[r for r in first_valid(load_arcane(root,'D-E01',judge,strict),'judge_id') if r['probe_id'] in selected]
+  reused=[r for r in prior if not (r['novel']=='Monte_Cristo' and r['mode']=='summary')]
+  assert len({r['judge_id'] for r in reused})==len(reused)
+  assert not (set(r['judge_id'] for r in reused)&set(r['judge_id'] for r in valid_new))
+  valid+=reused
  trials={}
  for t in read(root/'data/arcane_D-E01/tasks.jsonl'):
   tr=t['trial'];trials[tr['novel'],tr['probe_id']]=tr
@@ -100,11 +109,14 @@ def arcane(root,experiment,judge='local',strict=False):
  models=sorted({g.split('|')[0] for g in result})
  for model in models:
   if model+'|vanilla' not in result:continue
-  for mode in ['arc','summary']:
+  for mode in ['arc','summary','state_summary']:
    if model+'|'+mode not in result:continue
    paired[model+'|'+mode+'-vanilla']=paired_arcane(details,model+'|'+mode,model+'|vanilla')
   if model+'|summary' in result and model+'|arc' in result:paired[model+'|arc-summary']=paired_arcane(details,model+'|arc',model+'|summary')
- for mode in ['vanilla','arc','summary']:
+  if model+'|state_summary' in result:
+   for other in ['summary','arc']:
+    if model+'|'+other in result:paired[model+'|state_summary-'+other]=paired_arcane(details,model+'|state_summary',model+'|'+other)
+ for mode in ['vanilla','arc','summary','state_summary']:
   for lhs,rhs,label in [('arcane-8B-dpo','Qwen/Qwen3-8B','ArcANE8DPO-minus-Qwen8'),('Qwen/Qwen3-32B','Qwen/Qwen3-8B','Qwen32-minus-Qwen8'),('arcane-8B-dpo','Qwen/Qwen3-32B','ArcANE8DPO-minus-Qwen32')]:
    if lhs+'|'+mode in result and rhs+'|'+mode in result:paired[label+'|'+mode]=paired_arcane(details,lhs+'|'+mode,rhs+'|'+mode)
  sources={}
@@ -153,7 +165,7 @@ def phase(root,strict=False):
  return dict(experiment='D-E02',judge='Local Qwen3-32B, native PHASE-Tree rubric, greedy/nonthinking; not original GPT4.1 or official Emb',strict_native_json=strict,n_judgments=len(rows),valid=len(scores),native_parser_fallback=fallback,invalid=errors,groups=groups,paired=pairs,details=scores,aggregation='Four-corpus macro, question-level pairing; intervals descriptive, four corpora not population sample. No cross-benchmark score pooling.')
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--experiment',choices=['D-E01','D-E02','D-E03'],required=True);a.add_argument('--out',required=True);a.add_argument('--judge',choices=['local','step5'],default='local');a.add_argument('--strict-native-json',action='store_true');args=a.parse_args();root=Path(args.asset_root)
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--experiment',choices=['D-E01','D-E02','D-E03','D-E07'],required=True);a.add_argument('--out',required=True);a.add_argument('--judge',choices=['local','step5'],default='local');a.add_argument('--strict-native-json',action='store_true');args=a.parse_args();root=Path(args.asset_root)
  obj=phase(root,args.strict_native_json) if args.experiment=='D-E02' else arcane(root,args.experiment,args.judge,args.strict_native_json)
  Path(args.out).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n')
  if args.experiment=='D-E02':print(json.dumps(obj['groups'],indent=2))

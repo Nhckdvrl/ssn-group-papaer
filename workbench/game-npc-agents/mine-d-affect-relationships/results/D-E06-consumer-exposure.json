@@ -1,0 +1,43 @@
+{
+  "consumer": "ArcANE-8B-DPO",
+  "source": "Previously audited public ArcANE-Data dpo/train.parquet and sft/train.parquet",
+  "dataset_revision": "6076de00429ca293b6738f571196ad1264e9a433",
+  "source_books": [
+    "Treasure Island",
+    "The Portrait of a Lady",
+    "The Call of the Wild",
+    "Far From the Madding Crowd",
+    "The Three Musketeers",
+    "Middlemarch",
+    "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+    "Dr  Jekyll and Mr  Hyde"
+  ],
+  "certain_public_training_overlap": [
+    "Treasure Island"
+  ],
+  "not_in_public_ten_books": [
+    "Dr  Jekyll and Mr  Hyde",
+    "Far From the Madding Crowd",
+    "Middlemarch",
+    "The Call of the Wild",
+    "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+    "The Portrait of a Lady",
+    "The Three Musketeers"
+  ],
+  "limitations": "Known reported post-training overlap is Treasure Island; seven source titles are outside the released ArcANE corpus. Pretraining and undocumented weight history are not certified. No guaranteed unseen-IP claim. Cross-model absolute NLL is not an ability ranking; compare matched within-model state contrasts.",
+  "outside_all_released_arcane_novel_names": [
+    "Dr  Jekyll and Mr  Hyde",
+    "Far From the Madding Crowd",
+    "Middlemarch",
+    "The Call of the Wild",
+    "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+    "The Portrait of a Lady",
+    "The Three Musketeers"
+  ],
+  "note": "Seven D-E06 source titles are also absent from all eighteen released ArcANE novel directories; Treasure Island is a known training source. Public resources do not certify unknown pretraining or undocumented weight history.",
+  "reported_historical_pool_additional_titles": [
+    "East Lynne",
+    "The Underdogs"
+  ],
+  "primary_paper_support": "ArcANE Appendix D.1 explicitly identifies East Lynne and The Underdogs as training novels, completing the twelve with the public ten."
+}

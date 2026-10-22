@@ -6,7 +6,7 @@ from pathlib import Path
 def sha(path):
  with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--destination',required=True);a.add_argument('--manifest',required=True);args=a.parse_args();root=Path(args.asset_root);dest=Path(args.destination);dest.mkdir(parents=True,exist_ok=True,mode=0o700);archive=dest/'raw-runs-and-frozen-inputs.tar.gz';assert not archive.exists(),'Do not overwrite an existing research archive'
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--destination',required=True);a.add_argument('--manifest',required=True);a.add_argument('--include-continuation',action='store_true');args=a.parse_args();root=Path(args.asset_root);dest=Path(args.destination);dest.mkdir(parents=True,exist_ok=True,mode=0o700);archive=dest/'raw-runs-and-frozen-inputs.tar.gz';assert not archive.exists(),'Do not overwrite an existing research archive'
  required=['D-E01/qwen3_8b','D-E01/arcane_8b_dpo','D-E01/local_qwen32_judge','D-E02/qwen25_7b','D-E02/qwen3_32b_judge','D-E02/target_likelihood','D-E03/summary_teacher','D-E03/qwen3_8b','D-E03/arcane_8b_dpo','D-E03/qwen3_32b','D-E03/local_qwen32_judge','D-E03/local_qwen32_capacity_judge','D-E04/qwen3_8b','D-E04/qwen3_32b','D-E04/identity_line/qwen3_8b','D-E04/identity_line/qwen3_32b','D-E04/puf_judge','D-E05/step5','D-E05/puf_judge']
  for name in required:assert (root/'runs'/name/'metadata.json').exists(),'Registered run not started: '+name
  metas=list((root/'runs').rglob('metadata.json'));assert metas
@@ -15,8 +15,13 @@ def main():
   if path.parent.name.startswith('step5_judge') or m.get('transport')=='step_plan':
    stopped=path.parent/'CALIBRATION.json'
    assert m.get('finished_utc') or (stopped.exists() and json.loads(stopped.read_text()).get('stopped_utc')),'API transport must have a finished/stopped record before archiving'
-  else:assert m.get('complete') and m.get('finished_utc'),'Still running/failed: '+str(path)
- parts=['runs','logs','data/arcane_D-E01','data/arcane_D-E03','data/phase_D-E02','data/update_D-E04'];files=sorted(p for part in parts for p in (root/part).rglob('*') if p.is_file());assert files
+  else:
+   interrupted=path.parent/'INTERRUPTION.json'
+   approved_stop=interrupted.exists() and json.loads(interrupted.read_text()).get('stopped_utc') and m.get('finished_utc')
+   assert (m.get('complete') and m.get('finished_utc')) or approved_stop,'Still running/failed: '+str(path)
+ parts=['runs','logs','data/arcane_D-E01','data/arcane_D-E03','data/phase_D-E02','data/update_D-E04']
+ if args.include_continuation:parts+=['data/closed_D-E06','data/arcane_D-E07','data/arcane_D-E07_v2']
+ files=sorted(p for part in parts for p in (root/part).rglob('*') if p.is_file());assert files
  if (root/'environment.json').exists():files.append(root/'environment.json')
  index={str(p.relative_to(root)):dict(bytes=p.stat().st_size,sha256=sha(p)) for p in files}
  def clean(info):info.uid=info.gid=0;info.uname=info.gname='';return info

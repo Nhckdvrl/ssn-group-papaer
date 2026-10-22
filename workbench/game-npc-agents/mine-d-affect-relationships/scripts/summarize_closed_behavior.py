@@ -17,9 +17,10 @@ def macro(rows,metric):
  return dict(n_questions=sum(len(v) for ps in people.values() for v in ps.values()),n_trajectories=sum(len(ps) for ps in people.values()),n_books=len(books),book_macro=mean(books.values()),by_book=books,descriptive_book_bootstrap95=interval(books.values())) if books else None
 
 def main():
- a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--out',required=True);args=a.parse_args();root=Path(args.asset_root);run=root/'runs/D-E06';scores=[];metas={};missing=[]
- for name in ['baselines','teacher_forced','recursive_native','recursive_summary']:
-  p=run/('likelihood_'+name)/'metadata.json'
+ a=argparse.ArgumentParser();a.add_argument('--asset-root',required=True);a.add_argument('--out',required=True);a.add_argument('--consumer',choices=['qwen3_8b','arcane_8b_dpo','qwen3_32b'],default='qwen3_8b');args=a.parse_args();root=Path(args.asset_root);run=root/'runs/D-E06';scores=[];metas={};missing=[]
+ likelihood_paths={name:run/('likelihood_'+name) for name in ['baselines','teacher_forced','recursive_native','recursive_summary']} if args.consumer=='qwen3_8b' else {'all':run/('consumer_'+args.consumer)/'likelihood'}
+ for name,directory in likelihood_paths.items():
+  p=directory/'metadata.json'
   if not p.exists():missing.append(name);continue
   m=json.loads(p.read_text());metas[name]=m
   if not m['complete']:missing.append(name);continue
@@ -50,11 +51,15 @@ def main():
  if len(first_wave)==2:
   a0=first_wave['teacher_forced'];b0=first_wave['recursive_native'];common=set(a0)&set(b0);anchor=dict(n_common_first_attempts=len(common),identical_messages=sum(a0[k]['messages']==b0[k]['messages'] for k in common),identical_responses=sum(a0[k]['response']==b0[k]['response'] for k in common))
  actors={}
- for name in ['baselines','teacher_forced','recursive_native','recursive_summary']:
-  p=run/('actor_'+name)/'metadata.json'
+ actor_paths={name:run/('actor_'+name) for name in ['baselines','teacher_forced','recursive_native','recursive_summary']} if args.consumer=='qwen3_8b' else {'preselected_review':run/('consumer_'+args.consumer)/'actor'}
+ for name,directory in actor_paths.items():
+  p=directory/'metadata.json'
   if p.exists() and json.loads(p.read_text())['complete']:
    rr=read(p.parent/'responses.jsonl');actors[name]=dict(n=len(rr),finishes=dict(Counter(r['finish_reason'] for r in rr)),empty=sum(not r['response'].strip() for r in rr),usage={key:sum(r['usage'][key] for r in rr) for key in ['prompt_tokens','completion_tokens']})
- status='COMPLETE' if not missing and all(v['complete'] for v in updates.values()) and len(updates)==3 and len(actors)==4 else 'INCOMPLETE'
- result=dict(experiment='D-E06',status=status,missing_likelihood_runs=missing,interpretation='Source-turn predictability, not unique psychologically correct action. Outside-square-brackets is a native-format proxy for visible words/actions, not a semantic visibility certificate. T has released before-states; R/S recur. World and released motivation are shared and can provide parallel information. Equal book macro with equal trajectories inside each book; n=8 convenience books, descriptive intervals.',n_likelihood_rows=len(scores),n_distinct_questions=len(paired),groups=groups,paired_differences=comparisons,updaters=updates,first_wave_control=anchor,actors=actors,likelihood_validation_extra_forwards=sum(m.get('one_forward_alignment_validation',{}).get('extra_forward_calls',0) for m in metas.values()),details=scores)
+ status='COMPLETE' if not missing and all(v['complete'] for v in updates.values()) and len(updates)==3 and len(actors)==len(actor_paths) else 'INCOMPLETE'
+ if status=='COMPLETE':
+  assert len(scores)==435 and len(paired)==87 and all(len(v)==5 for v in paired.values())
+  assert sum(v['n'] for v in actors.values())==(435 if args.consumer=='qwen3_8b' else 120)
+ result=dict(experiment='D-E06',consumer=args.consumer,status=status,missing_likelihood_runs=missing,interpretation='Source-turn predictability, not unique psychologically correct action. Outside-square-brackets is a native-format proxy for visible words/actions, not a semantic visibility certificate. T has released before-states; R/S recur. World and released motivation are shared and can provide parallel information. Equal book macro with equal trajectories inside each book; n=8 convenience books, descriptive intervals. Compare conditions within each consumer; absolute NLL is not a cross-model ability ranking.',n_likelihood_rows=len(scores),n_distinct_questions=len(paired),groups=groups,paired_differences=comparisons,updaters=updates,first_wave_control=anchor,actors=actors,likelihood_validation_extra_forwards=sum(m.get('one_forward_alignment_validation',{}).get('extra_forward_calls',0) for m in metas.values()),details=scores)
  Path(args.out).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(dict(status=status,n_rows=len(scores),groups={k:{metric:v['metrics'][metric]['book_macro'] if v['metrics'][metric] else None for metric in METRICS} for k,v in groups.items()},first_wave_control=anchor),ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

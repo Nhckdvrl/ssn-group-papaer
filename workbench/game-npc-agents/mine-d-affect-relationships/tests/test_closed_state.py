@@ -4,6 +4,7 @@ from types import SimpleNamespace
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from run_closed_updates import substitute,decode_state
 from score_role_likelihood import character_regions
+from summarize_closed_behavior import macro
 
 class ClosedStateTests(unittest.TestCase):
  def test_replacing_state_preserves_scene_and_current_motivation(self):
@@ -19,4 +20,9 @@ class ClosedStateTests(unittest.TestCase):
   self.assertIsNone(decode_state('{"hidden_tracker":"x","short_description":"y"}',dict(profile='z'),native))
  def test_visible_actions_are_distinct_from_private_thought(self):
   text='[I distrust her.] (I close the door.) No.';inside,valid=character_regions(text);self.assertTrue(valid);self.assertTrue(inside[2]);self.assertFalse(inside[text.index('close')]);self.assertFalse(character_regions('[unclosed')[1])
+ def test_component_missingness_does_not_reweight_people_as_turns(self):
+  rows=[dict(book_name='a',trajectory_id='x',loss=v) for v in [0,0,0]]+[dict(book_name='a',trajectory_id='y',loss=6),dict(book_name='a',trajectory_id='y',loss=None),dict(book_name='b',trajectory_id='z',loss=9)]
+  result=macro(rows,'loss')
+  self.assertEqual(result['by_book'],{'a':3,'b':9});self.assertEqual(result['book_macro'],6)
+  self.assertEqual((result['n_questions'],result['n_trajectories'],result['n_books']),(5,3,2))
 if __name__=='__main__':unittest.main()
