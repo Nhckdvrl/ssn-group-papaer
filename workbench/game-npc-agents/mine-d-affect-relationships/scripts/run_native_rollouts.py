@@ -138,6 +138,9 @@ def main():
             def persist(result,trace):
                 (target/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
                 (target/'trace.json').write_text(json.dumps(trace,ensure_ascii=False,indent=2)+'\n')
+                entry={k:result.get(k) for k in ['book_name','source_scene_index','stop_reason','story_finished','error']}
+                entry['sample_index']=item['source_index']
+                (target/'meta.json').write_text(json.dumps(entry,ensure_ascii=False,indent=2)+'\n')
             result,trace=sim.run_snapshot(copy.deepcopy(item['input']),on_progress=persist);persist(result,trace)
             views=split_result_views(result)
             for name,value in views.items():(target/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
