@@ -158,3 +158,12 @@ D-E07补强同信息普通人物状态整理；Monte源单元映射已实质纠�
 ## 2026-10-22用户要求的整体方向校准
 
 本图保留宽问题谱系；当前优先级由[POSITIONING](POSITIONING.md)重新综合。新读[CAPS](../../../library/themes/game-npc-social/papers/CAPS_1995.md)帮助区分情境激活与持久变化，[PD-LLM](../../../library/themes/game-npc-social/papers/TRAIT_ACTIVATION_2026.md)已有情境参数控制，[EvoSpark](../../../library/themes/game-npc-social/papers/EVOSPARK_2026.md)已有关系更新与演化行动评价。不能把“状态接回行为”本身当新颖性。当前更值得深入的是角色特有的经历学习能否迁移到新情境/人物，以及重新理解旧经历怎样改变关系；没有据此新增训练或局部实验。
+
+
+### 从完整学习问题看直接记忆近邻与互动资产
+
+[DualMem/RoleMemo](../../../library/themes/game-npc-social/papers/DUALMEM_ROLEMEMO_2026.md)已经以固定角色消费者的下游质量训练完整记忆构建轨迹，不能把这个套路当成全新；它可成为我们整体适应系统的学习参照。PsyMem则实质训练记忆消费，不能描述成纯prompt。两者的存在不要求把D收窄到一个小字段，而要求比较整个角色经历学习目标在人物自身变化和后续互动上实现了什么。
+
+[角色记忆综述](../../../library/themes/game-npc-social/papers/ROLE_MEMORY_SURVEY_2026.md)把角色自身与用户互动记忆、关系变化和行为后果放在一起；其议程支持研究对象的社区相关性，不独立证明某个机制缺陷。正式身份为KDD共址PILA workshop，未将README的“KDD Oral”误写为Main Oral。
+
+[MiniMax公开互动资产](ASSETS.md)补充文学阶段之外的95场景/3,135模拟轨迹，已取得且有逐文件hash；没有阶段金标或真人玩家实验。它支持将人物变化与叙事推进、回应性和用户行动边界合看，后续与ArcANE/LongEvo分别形成证据，不混分。

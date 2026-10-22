@@ -1,0 +1,266 @@
+{
+  "dataset": "MiniMaxAI/role-play-bench",
+  "revision": "3c1be2a56afbcaab19ae6b40b8a24429eae792f5",
+  "license_declared": "apache-2.0",
+  "pyarrow_version": "24.0.0",
+  "files": {
+    "data/en/seeds.parquet": {
+      "bytes": 44149,
+      "sha256": "10297cef74e7f77db31f08334e57b004473519dbcf5860c3a7b75a2cd3926328",
+      "n_rows": 45,
+      "columns": [
+        "id",
+        "ai_name",
+        "ai_setting",
+        "user_name",
+        "user_setting",
+        "ai_prologue",
+        "initial_user_input"
+      ]
+    },
+    "data/en/dialogues.parquet": {
+      "bytes": 54065616,
+      "sha256": "149b497158f4a62abe8dcf0e7d89b9e06fbf4598921e77e72f98111d53fa3c79",
+      "n_rows": 1485,
+      "columns": [
+        "seed_id",
+        "model_name",
+        "run_id",
+        "dialogue",
+        "num_turns"
+      ]
+    },
+    "data/en/evaluations.parquet": {
+      "bytes": 14529,
+      "sha256": "379c2631d14bebeb9056c1d95472340537a42a97ba17cf314d62db21c66a4459",
+      "n_rows": 1485,
+      "columns": [
+        "seed_id",
+        "model_name",
+        "run_id",
+        "basics_score",
+        "logic_score",
+        "knowledge_score",
+        "diversity_score",
+        "content_logic_score",
+        "interaction_score"
+      ]
+    },
+    "data/zh/seeds.parquet": {
+      "bytes": 80136,
+      "sha256": "3a74b3e4549af2acf0582e9266ba03805668db532b059294e79e6be3c2b5794c",
+      "n_rows": 50,
+      "columns": [
+        "id",
+        "ai_name",
+        "ai_setting",
+        "user_name",
+        "user_setting",
+        "ai_prologue",
+        "initial_user_input"
+      ]
+    },
+    "data/zh/dialogues.parquet": {
+      "bytes": 25351083,
+      "sha256": "18412443db49f5d02490b94c5a5865054d80fbf2d678d80914d8768111a96138",
+      "n_rows": 1650,
+      "columns": [
+        "seed_id",
+        "model_name",
+        "run_id",
+        "dialogue",
+        "num_turns"
+      ]
+    },
+    "data/zh/evaluations.parquet": {
+      "bytes": 15137,
+      "sha256": "d582e24505385b602af053e3065a3a755f0c80d4325c1ff06e107b96f4840200",
+      "n_rows": 1650,
+      "columns": [
+        "seed_id",
+        "model_name",
+        "run_id",
+        "basics_score",
+        "logic_score",
+        "knowledge_score",
+        "diversity_score",
+        "content_logic_score",
+        "interaction_score"
+      ]
+    }
+  },
+  "languages": {
+    "en": {
+      "n_seed_rows": 45,
+      "n_unique_seeds": 45,
+      "n_dialogues": 1485,
+      "n_evaluations": 1485,
+      "duplicate_dialogue_keys": 0,
+      "duplicate_evaluation_keys": 0,
+      "dialogue_evaluation_keys_equal": true,
+      "unknown_seed_ids": [],
+      "by_model": {
+        "grok-4.1": 135,
+        "claude-opus-4.5-highthinking": 135,
+        "claude-opus-4.5-lowthinking": 135,
+        "claude-sonnet-4.5": 135,
+        "deepseek-v3.1": 135,
+        "deepseek-v3.2": 135,
+        "gemini-2.5-pro": 135,
+        "gemini-3-pro": 135,
+        "doubao-1.5-pro": 135,
+        "MiniMax-M2-her": 135,
+        "gpt-5.1": 135
+      },
+      "runs": [
+        "run_1",
+        "run_2",
+        "run_3"
+      ],
+      "trajectories_per_seed_histogram": {
+        "33": 45
+      },
+      "reported_turn_counts": {
+        "102": 1485
+      },
+      "actual_turn_counts": {
+        "102": 1485
+      },
+      "turn_roles": {
+        "ai": 75735,
+        "user": 75735
+      },
+      "structural_counts": {
+        "parsed_dialogues": 1485,
+        "metadata_turn_count_mismatch": 0,
+        "nonconsecutive_round_numbers": 0,
+        "non_string_turn_text": 0
+      },
+      "structural_anomalies": [],
+      "published_score_fields": {
+        "basics_score": {
+          "n_numeric": 1485,
+          "minimum": 0.0,
+          "maximum": 100.0
+        },
+        "logic_score": {
+          "n_numeric": 1485,
+          "minimum": 0.0,
+          "maximum": 100.0
+        },
+        "knowledge_score": {
+          "n_numeric": 1485,
+          "minimum": 72.0,
+          "maximum": 100.0
+        },
+        "diversity_score": {
+          "n_numeric": 1485,
+          "minimum": 11.0,
+          "maximum": 100.0
+        },
+        "content_logic_score": {
+          "n_numeric": 1485,
+          "minimum": 36.0,
+          "maximum": 100.0
+        },
+        "interaction_score": {
+          "n_numeric": 1485,
+          "minimum": 45.0,
+          "maximum": 100.0
+        }
+      }
+    },
+    "zh": {
+      "n_seed_rows": 50,
+      "n_unique_seeds": 50,
+      "n_dialogues": 1650,
+      "n_evaluations": 1650,
+      "duplicate_dialogue_keys": 0,
+      "duplicate_evaluation_keys": 0,
+      "dialogue_evaluation_keys_equal": true,
+      "unknown_seed_ids": [],
+      "by_model": {
+        "MiniMax-M2-her": 150,
+        "claude-opus-4.5-highthinking": 150,
+        "claude-opus-4.5-lowthinking": 150,
+        "claude-sonnet-4.5": 150,
+        "deepseek-v3.1": 150,
+        "deepseek-v3.2": 150,
+        "gemini-2.5-pro": 150,
+        "gemini-3-pro": 150,
+        "gpt-5.1": 150,
+        "grok-4.1": 150,
+        "doubao-1.5-pro": 150
+      },
+      "runs": [
+        "run_1",
+        "run_2",
+        "run_3"
+      ],
+      "trajectories_per_seed_histogram": {
+        "33": 50
+      },
+      "reported_turn_counts": {
+        "102": 1650
+      },
+      "actual_turn_counts": {
+        "102": 1650
+      },
+      "turn_roles": {
+        "ai": 84102,
+        "user": 84198
+      },
+      "structural_counts": {
+        "parsed_dialogues": 1650,
+        "metadata_turn_count_mismatch": 0,
+        "nonconsecutive_round_numbers": 1,
+        "non_string_turn_text": 0
+      },
+      "structural_anomalies": [
+        {
+          "key": [
+            "zh_dialogue_033",
+            "claude-sonnet-4.5",
+            "run_1"
+          ],
+          "kind": "nonconsecutive_round_numbers",
+          "dialogue_field_sha256": "6465fc9e3d10dda0b9ac4d3f46126036c134a2f121ad1a88ff1465d9843180c9"
+        }
+      ],
+      "published_score_fields": {
+        "basics_score": {
+          "n_numeric": 1650,
+          "minimum": 20,
+          "maximum": 100
+        },
+        "logic_score": {
+          "n_numeric": 1650,
+          "minimum": 0,
+          "maximum": 100
+        },
+        "knowledge_score": {
+          "n_numeric": 1650,
+          "minimum": 72.0,
+          "maximum": 100.0
+        },
+        "diversity_score": {
+          "n_numeric": 1650,
+          "minimum": 0.0,
+          "maximum": 99.0
+        },
+        "content_logic_score": {
+          "n_numeric": 1650,
+          "minimum": 23.0,
+          "maximum": 100.0
+        },
+        "interaction_score": {
+          "n_numeric": 1650,
+          "minimum": 50.0,
+          "maximum": 100.0
+        }
+      }
+    }
+  },
+  "new_model_calls": 0,
+  "scope": "Provider-released synthetic model-on-model dialogues and existing scores; not our model runs, human player traces, or phase-labelled growth ground truth. Structural integrity only; no semantic failure rate or capability claim."
+}

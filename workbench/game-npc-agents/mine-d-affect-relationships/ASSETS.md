@@ -107,3 +107,14 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 ```
 
 已有索引时去掉`--build`，用`--verify`全量核验；重建须选新目标路径，不覆盖已有来源记录。`ExperienceStore.get(row_id)`精确回读一条原任务并校验hash；`appearance(update_id)`返回同出场各任务ID及同人物下次出场ID，不自动构造新训练prompt。此入口供之后不同baseline与学习方案共享，原D-E01–09冻结输入不受影响。
+
+
+## 补充互动资产：MiniMax Role-play Benchmark
+
+官方[MiniMaxAI/role-play-bench](https://huggingface.co/datasets/MiniMaxAI/role-play-bench)，固定revision `3c1be2a56afbcaab19ae6b40b8a24429eae792f5`，数据卡声明Apache-2.0。本地`data/MiniMaxRolePlay`取得README及六个parquet，共79,570,650字节数据文件：英语45种子/1,485轨迹，中文50/1,650；另有相同键的3,135评分。11模型/推理档位、每种子各3run，均为作者发布的模拟互动，不是我们的推理或真人玩家记录。
+
+[库存](results/D-MINIMAX-ASSET-INVENTORY.json)逐文件固定hash、记录schema和join覆盖。全部dialogue可按JSON解析且长度与num_turns一致，每条102项（与数据卡100生成turn及初始消息需区分）。中文一条round编号非连续，异常键/hash保留；不改原值、不按此当模型行为失败。轨迹/评分无重复键，种子引用全部存在。六项评分是已发布记录，未重新调用裁判。
+
+获取：`snapshot_download('MiniMaxAI/role-play-bench', repo_type='dataset', revision=上述hash, allow_patterns=['README.md','data/*/*.parquet'], local_dir=资产根+'/data/MiniMaxRolePlay')`。复核使用`scripts/inspect_interaction_release.py --root <本地目录> --revision <固定hash> --out <库存>`，需现有openslime环境的pyarrow。
+
+数据卡明确这是偏聊天的合成公开子集，英语统一用户侧字段、中文按场景变化；评价将有铺垫的人物变化与OOC区分，并关注不替用户说话、叙事推进和回应性。它没有阶段人物弧或可执行游戏世界，六表也未提供完整用户模拟器/细粒度judge运行代码；因此作为互动证据资产，不冒称已复现其生成/评分协议。角色原设定、原始轨迹及未改评分只留仓库外。

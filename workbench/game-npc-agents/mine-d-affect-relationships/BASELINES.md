@@ -45,3 +45,9 @@ Step仅使用已授权Token Plan入口；现金接口和其他付费服务未获
 强普通系统和直接近邻是方法构建的基础，不是逐项缩窄问题的理由。完整研究叙事与学习目标见[POSITIONING](POSITIONING.md)；任何未来训练须另有实验卡和清楚的整体能力目标。
 
 共享数据入口：[experience_store](scripts/experience_store.py)已索引整个发布训练文件，连接动机、互动、更新与后续同人物出场。它供各方案使用同一来源，既非新benchmark，也不提前规定人物状态表示或训练loss。[数据清单](results/D-EXPERIENCE-INDEX.json)
+
+## 补充互动资产：已有发布结果，非本轮模型运行
+
+MiniMax Role-play Benchmark固定revision的六表已取得：95角色场景种子、3,135模拟互动轨迹及一一对应的评分。11模型/推理档位×3次运行/种子，数组每条102项，包含初始消息。公开模型输出不计入我们的调用总数，也不把3,135轨迹当3,135独立人物。评价允许有铺垫的人物演化并关注互动边界，但没有ArcANE式phase参考；它可补充连续互动证据，不能替代阶段测量。详见[ASSETS](ASSETS.md)和[库存](results/D-MINIMAX-ASSET-INVENTORY.json)。
+
+DualMem / RoleMemo保留为直接学习方法参照：已核查官方实现入口，但完整数据、权重及循环RL agent仍标待发布，未运行其baseline；不与MiniMax已发布轨迹混淆。

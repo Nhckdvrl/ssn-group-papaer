@@ -16,6 +16,7 @@
 | 连续/整理实际案例 | [D-E06 CASEBOOK](D-E06-CASEBOOK.md)、[D-E07/08 CASEBOOK](D-E07-CASEBOOK.md) | 成功、失败、可接受多解及来源边界；非独立人评 |
 | 正在运行的完整前缀 | [D-E09 selection](D-E09-selection.json) | 只认证冻结来源/样本，不是已完成结果；实验卡在上级experiments |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
+| 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |
 | 来源与归档 | [首夜校验](D-INTEGRITY.json)、[首夜持久清单](D-RAW-MANIFEST.json) | 首夜归档不可覆盖；续测按独立清单另归档 |
 

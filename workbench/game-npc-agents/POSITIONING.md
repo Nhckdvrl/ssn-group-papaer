@@ -1,6 +1,6 @@
 # Positioning：现有能力、最近邻与真实增量（初始版）
 
-**当前主线更新（2026-10-22）：** 用户暂停B/I01，转入已有矿区D。当前[定位](mine-d-affect-relationships/POSITIONING.md)与[首夜实测](mine-d-affect-relationships/results/D-OVERNIGHT-REPORT-2026-10-22.md)以ArcANE、PHASE-Tree、DREAM、EvolvingWorld为直接近邻；已有阶段后训练/多时间尺度更新/事件—信念图/hidden tracker及内容评价均非我们的新贡献。普通强Step修复主要身份错配，但尚有有限最终事实残差及评委漏核；下一步看合法经历形成的状态及其后续人物行为。下文B定位是历史，不再执行其提示/训练计划。
+**当前主线更新（2026-10-22）：** 用户暂停B/I01，转入矿区D，并进一步要求从整体问题—方法—证据链判断novelty，不因相邻组件存在而不断收窄贡献。[D整体定位](mine-d-affect-relationships/POSITIONING.md)聚焦人物特有的经历学习及跨互动后果；[完成实测](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留强基线成功与有限残差，已停止局部补丁实验链。新增DualMem等直接学习参照用于建设完整方案，不将下游反馈训练记忆误称首次提出。下文B定位仅保留历史，不再执行其提示/训练计划。
 
 **2026-10-21；状态：研究入口定位，非完整最新近邻扫描。** 证据身份、完整论文阅读范围和局限以原 [文献总账](knowledge/READING_CATALOG.md) 与规范卡为准；本页不冒充逐篇重新全文阅读或已运行强模型。后续按根目录 R6 更新正式接收、预印本版本与 claim ownership。
 

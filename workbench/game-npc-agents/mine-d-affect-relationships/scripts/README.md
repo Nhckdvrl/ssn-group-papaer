@@ -7,6 +7,7 @@
 | 环节 | 入口 | 输入→输出 |
 |---|---|---|
 | 官方资产库存 | `audit_assets.py`、`inspect_training.py`、`inspect_timelines.py` | 固定vendor/HF资产→来源、训练/正式评测/时间结构清单 |
+| 补充互动资产 | `inspect_interaction_release.py` | MiniMax固定发布parquet→来源hash、角色/轨迹/评分连接及结构覆盖；不调用模型、不重评分 |
 | EW来源连接 | `index_update_provenance.py`、`inspect_update_supervision.py`、`index_role_interactions.py` | 公开混合任务→作品/角色/连续出场/原生下一turn索引 |
 | 可复用连续经历入口 | `experience_store.py` | 整个发布训练文件→只读字节偏移/哈希索引，连接同一出场的动机/互动/更新与下次出场；不新增场景/标签或改训练划分 |
 | ArcANE冻结 | `prepare_arcane.py`、`prepare_summary.py`、`prepare_state_summary.py` | 官方probe/来源→D-E01/03/07冻结messages和独立references |
