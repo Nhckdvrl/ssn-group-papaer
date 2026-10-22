@@ -19,6 +19,7 @@
 | [D-E04](results/D-E04-REPORT.md) | 64原生场景/8作品，256状态更新；一句提示部分恢复主体，名字正确不保证事件归属正确；PUF完整内容分另列 |
 | [D-E05](results/D-E05-REPORT.md) | Step5同信息强普通参照65次Plan请求，64完整后态；主体审阅0明确换人，47/64监督一致，修复主要Qwen身份混淆；收回手表仍记成送出 |
 | [D-E06](experiments/D-E06-closed-loop-state-enactment.md) | 用户要求持续推进：29角色/8作品，8步真实更新链，87下一出场探针；原生单步/递归与普通强摘要接回角色回复，正在运行，不以首夜报告停止 |
+| [D-E07](experiments/D-E07-same-information-character-state-summary.md) | 同D-E03的81phase：32B只看相同Summary整理当前人物卡，再测三actor；补强普通系统而非新方法，已冻结输入并排入同GPU依赖队列 |
 | [资产入口](ASSETS.md) | 固定revision、完整raw归档/校验、环境与离线复算；模型/全原文不进Git |
 
 本轮没有提出新训练目标或小idea。现有方法有效；下一步优先把合法经历→角色自身当前状态→后续表演连起来，比较普通强总结/更新系统与近邻，不围绕单例继续调提示。
