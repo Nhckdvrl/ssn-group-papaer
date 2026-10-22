@@ -20,7 +20,7 @@ def main():
    approved_stop=interrupted.exists() and json.loads(interrupted.read_text()).get('stopped_utc') and m.get('finished_utc')
    assert (m.get('complete') and m.get('finished_utc')) or approved_stop,'Still running/failed: '+str(path)
  parts=['runs','logs','data/arcane_D-E01','data/arcane_D-E03','data/phase_D-E02','data/update_D-E04']
- if args.include_continuation:parts+=['data/closed_D-E06','data/arcane_D-E07','data/arcane_D-E07_v2']
+ if args.include_continuation:parts+=['data/closed_D-E06','data/arcane_D-E07','data/arcane_D-E07_v2','data/arcane_D-E08']
  files=sorted(p for part in parts for p in (root/part).rglob('*') if p.is_file());assert files
  if (root/'environment.json').exists():files.append(root/'environment.json')
  index={str(p.relative_to(root)):dict(bytes=p.stat().st_size,sha256=sha(p)) for p in files}
