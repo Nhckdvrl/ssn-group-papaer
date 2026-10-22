@@ -133,3 +133,11 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 [逐成员清单与停止状态](results/D-CONTINUATION-RAW-MANIFEST.json)保存完整/停止run资格。该包累积保留首夜及续测raw、冻结计划输入、配置、runner源码、token IDs与日志；D-E07源中断、Step部分校准、D-E09预算停止仍明确为部分记录，不因归档而成为完成实验。D-E09冻结计划含未处理窗口，实际覆盖以[覆盖表](results/D-E09-COVERAGE.json)为准。没有权重、vendor或完整未使用的第三方corpus；文件仅限本地研究访问，下载方式同前述SSH/scp示例，替换为本节路径。
 
 [全部调用/成本记录](results/D-RESIDENCY-TOTALS.json)与[完成结果](results/D-CONTINUATION-REPORT-2026-10-22.md)分开：7,080本地生成记录、495 Plan请求，不包含公开MiniMax旧轨迹；D-E09无角色评分。旧首夜归档继续保留原hash。
+
+## 人物适应学习准备：原生视图与SFT导出
+
+固定来源仍为上述EvolvingWorld revision与4.18GB混合训练文件。[数据契约及重建命令](data/README.md)、[固定作品政策](data/adaptation_view_policy.json)、[全量清单](results/D-ADAPTATION-VIEWS.json)共同登记：51作品24,977更新，所有22,306同人物后继的profile/tracker接续匹配；18,144连接有后续互动。它们是发布顺序资格，不是原著时序证明。
+
+仓库外工作路径：`/var/tmp/ssn-game-npc-d/data/adaptation_views_v1/`。`episodes.jsonl`为19,029,259字节指针，SHA256 `3d0ce18d3a99c3dd14ae36a9a606ac0cba197ecba22583b3f425aa3752af3371`；`native_update_train.jsonl`实际14,079条、202,960,875字节，SHA256 `bec24aa18aeb0816dc59494a13bfa7dde5a95bec34566ec96dc323280837feb0`。原生prompt与completion分字段，全文不进Git。已观察的9作品不进入新训练或新测试，完整划分见清单；不认证基础模型或既有专用模型未见这些作品。
+
+持久本地归档：`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-adaptation-preparation/native-learning-views.tar.gz`，含视图、原生训练导出、政策与必要脚本快照；逐成员校验与完整hash见[准备归档清单](results/D-ADAPTATION-PREPARATION-MANIFEST.json)。仅限本地研究访问，不公开再分发原始文本。该资料准备没有模型调用、训练或新的心理标签，不能加入实验调用总数。

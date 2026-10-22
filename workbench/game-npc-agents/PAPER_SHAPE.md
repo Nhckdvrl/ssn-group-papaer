@@ -2,6 +2,8 @@
 
 用户暂停B/I01，转向现有矿区D“时间证据约束下的人物状态推断与适应”。目前先复现官方资产，尚未锁定单一idea、方法或摘要机制主张；主线形态可随实证发展，不要求立刻提出RL。以下B草稿仅保留历史，不再执行。
 
+**后续建设更新：** 已形成[D-I01方法SEED](mine-d-affect-relationships/ideas/D-I01-learning-character-adaptation.md)：以经历后的多种行为约束人物更新学习。51作品的[原生数据视图](mine-d-affect-relationships/data/README.md)已建立，方法尚未训练；候选不是最终定题，也没有新主张升级。
+
 
 **当前更值得形成的论文对象：** 人物特有的经历学习及其跨互动后果。研究角色如何从经历修订判断、关系或应对，并把变化迁移到新情境；不是一份摘要错误目录，也不预设历史干扰或新RL。现成阶段表演、状态更新与关系演化方法均为强近邻，详见[整体定位](mine-d-affect-relationships/POSITIONING.md)。
 

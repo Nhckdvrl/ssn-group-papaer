@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_revision": "ae7d82d38909783805979a8055d5ae913cb982f7",
+  "source_sha256": "2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07",
+  "source_release_split": "train",
+  "partition_salt": "D-I01-complete-books-2026-10-22-v1",
+  "observed_books": [
+    "Don Quixote",
+    "Treasure Island",
+    "The Portrait of a Lady",
+    "The Call of the Wild",
+    "Far From the Madding Crowd",
+    "The Three Musketeers",
+    "Middlemarch",
+    "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+    "Dr  Jekyll and Mr  Hyde"
+  ],
+  "new_test_books": 6,
+  "new_validation_books": 4,
+  "partition_rule": "Keep previously model-inspected books as observed_development; hash-sort every other complete book, first six test, next four validation, remainder train. No outcome, character, change-flag or sequence-length filtering.",
+  "scope": "Internal source-training views, not a new benchmark or certification of canonical chronology. Test means held out from our prospective new training, not from foundation-model pretraining or all prior published post-training."
+}

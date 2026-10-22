@@ -5,7 +5,7 @@
 | 要找什么 | 入口 | 范围/状态 |
 |---|---|---|
 | 首夜实测总论 | [D-OVERNIGHT-REPORT](D-OVERNIGHT-REPORT-2026-10-22.md) | D-E01–05历史交付；其Monte S解释受后续源纠正限制 |
-| 当前连续实测总论 | [D-CONTINUATION-REPORT](D-CONTINUATION-REPORT-2026-10-22.md) | D-E06–08全部完成；不含在途D-E09 |
+| 当前连续实测总论 | [D-CONTINUATION-REPORT](D-CONTINUATION-REPORT-2026-10-22.md) | D-E06–08全部完成；不含预算停止的D-E09 |
 | ArcANE阶段表演 | [D-E01](D-E01-REPORT.md)、[表](D-E01-summary.json) | 64完整probe/205phase，原生量表；不是准确率 |
 | LongEvo文本状态 | [D-E02](D-E02-REPORT.md)、[内容表](D-E02-summary.json)、[来源句预测](D-E02-likelihood.json) | 64问题四条件；来源预测与人物质量分开 |
 | 普通摘要/容量旧记录 | [D-E03](D-E03-REPORT.md) | **原六作品S比较无效；旧raw/表/图保留历史** |
@@ -16,6 +16,8 @@
 | 同信息人物整理 | [D-E07表](D-E07-summary.json)、[D-E08表](D-E08-summary.json) | 同25probe/81phase，Monte已纠源；Step整理仅两个8B消费者 |
 | 连续/整理实际案例 | [D-E06 CASEBOOK](D-E06-CASEBOOK.md)、[D-E07/08 CASEBOOK](D-E07-CASEBOOK.md) | 成功、失败、可接受多解及来源边界；非独立人评 |
 | 完整前缀预算停止 | [D-E09报告](D-E09-REPORT.md)、[覆盖](D-E09-COVERAGE.json) | 225尝试、208/301提交态，0演员/评分；没有APF/PTF结果 |
+| 人物适应学习资料 | [全量连接与作品划分](D-ADAPTATION-VIEWS.json) | 24,977更新、22,306发布顺序接续；输入/监督/未来任务分开，无模型调用 |
+| 原生学习输入预算 | [token库存](D-ADAPTATION-TRAIN-BUDGET.json)、[持久归档](D-ADAPTATION-PREPARATION-MANIFEST.json) | 14,079训练条目共42,949,543 tokens；未截断、未训练 |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |

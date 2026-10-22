@@ -10,6 +10,8 @@
 | 补充互动资产 | `inspect_interaction_release.py` | MiniMax固定发布parquet→来源hash、角色/轨迹/评分连接及结构覆盖；不调用模型、不重评分 |
 | EW来源连接 | `index_update_provenance.py`、`inspect_update_supervision.py`、`index_role_interactions.py` | 公开混合任务→作品/角色/连续出场/原生下一turn索引 |
 | 可复用连续经历入口 | `experience_store.py` | 整个发布训练文件→只读字节偏移/哈希索引，连接同一出场的动机/互动/更新与下次出场；不新增场景/标签或改训练划分 |
+| 适应学习资料视图 | `build_adaptation_views.py` | 来源索引＋冻结作品划分→全部更新的输入/监督hash、后继任务与接续资格；可显式导出原生SFT数据，不调用模型或训练 |
+| 学习输入预算 | `inspect_adaptation_budget.py` | 原生SFT导出＋固定本地tokenizer→全部输入/监督token数量及上下文预算覆盖；不截断、不筛选或训练 |
 | ArcANE冻结 | `prepare_arcane.py`、`prepare_summary.py`、`prepare_state_summary.py` | 官方probe/来源→D-E01/03/07冻结messages和独立references |
 | LongEvo冻结 | `prepare_phase.py`、`prepare_phase_judge.py` | 选定对话→四文本条件及原生评分输入 |
 | 状态更新冻结 | `prepare_updates.py`、`prepare_closed_loop.py`、`prepare_closed_actor.py` | 原生单步或连续更新→状态输入与后续角色输入 |
@@ -40,9 +42,9 @@
 | D-E06 | `queue_evidence_state_behavior.py`、`queue_closed_behavior.py`、`queue_strong_consumer.py` |
 | D-E07纠源/评分 | `queue_corrected_summary.py`、`queue_corrected_judges.py` |
 | D-E08 | `queue_strong_compiler.py`；`handoff_gpu3.py`为本次已有队列的一次交接 |
-| D-E09（当前在途） | `queue_prefix_memory.py`；两worker结束后才接角色与评分 |
+| D-E09（已预算停止） | `queue_prefix_memory.py`；原定后续角色/评分未启动，不自动重启 |
 
-旧`queue_judges.py`的Plan评分路径已资源中止，不因其文件存在而恢复。`handoff_gpu3.py`不是通用清理工具；不用于终止其他项目进程。D-E09运行期间不改变冻结窗口、提示、恢复或抽样政策。
+旧`queue_judges.py`的Plan评分路径已资源中止，不因其文件存在而恢复。`handoff_gpu3.py`不是通用清理工具；不用于终止其他项目进程。D-E09冻结窗口、提示、恢复或抽样政策保留历史，不靠修改它们补造完成状态。
 
 ## 常用离线操作
 

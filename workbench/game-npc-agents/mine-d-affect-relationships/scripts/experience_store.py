@@ -167,14 +167,20 @@ class ExperienceStore:
         get() returns original conversations including supervision; adapters must
         keep assistant targets and future material separate from inference inputs.
         """
-        row = self.db.execute('SELECT * FROM updates WHERE row_id=?', (update_id,)).fetchone()
+        # Filtering the LEAD window view by row_id recomputes all timelines for
+        # every lookup. Use indexed point/range reads for the same successor.
+        row = self.db.execute("SELECT * FROM records WHERE row_id=? AND task='character_state_update'",
+                              (update_id,)).fetchone()
         if row is None:
             raise KeyError(update_id)
+        following = self.db.execute('''SELECT row_id FROM records
+            WHERE book=? AND role=? AND scene>? AND task='character_state_update'
+            ORDER BY scene LIMIT 1''', (row['book'], row['role'], row['scene'])).fetchone()
         tasks = {}
         for item in self.db.execute('SELECT row_id,task FROM records WHERE book=? AND role=? AND scene=? ORDER BY segment,row_id', (row['book'], row['role'], row['scene'])):
             tasks.setdefault(item['task'], []).append(item['row_id'])
         return dict(update_id=update_id, book=row['book'], role=row['role'], scene=row['scene'],
-                    same_appearance_tasks=tasks, next_update_id=row['next_update_id'])
+                    same_appearance_tasks=tasks, next_update_id=following['row_id'] if following else None)
 
     def verify_all(self):
         """Check every exact byte span and metadata key against the native source."""
