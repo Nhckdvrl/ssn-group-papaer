@@ -20,6 +20,7 @@
 | [D-E05](results/D-E05-REPORT.md) | Step5同信息强普通参照65次Plan请求，64完整后态；主体审阅0明确换人，47/64监督一致，修复主要Qwen身份混淆；收回手表仍记成送出 |
 | [D-E06](experiments/D-E06-closed-loop-state-enactment.md) | 用户要求持续推进：29角色/8作品，8步真实更新链，87下一出场探针；原生单步/递归与普通强摘要接回角色回复，正在运行，不以首夜报告停止 |
 | [D-E07](experiments/D-E07-same-information-character-state-summary.md) | 同D-E03的81phase：32B只看相同Summary整理当前人物卡，再测三actor；补强普通系统而非新方法，已冻结输入并排入同GPU依赖队列 |
+| [D-E08](experiments/D-E08-strong-character-state-compiler.md) | 由真实归属错误触发：Step5 Token Plan对完整81同输入、同提示做普通人物整理；接回两个固定8B消费者，已登记预算并运行，无坏例提示调优 |
 | [资产入口](ASSETS.md) | 固定revision、完整raw归档/校验、环境与离线复算；模型/全原文不进Git |
 
 本轮没有提出新训练目标或小idea。现有方法有效；下一步优先把合法经历→角色自身当前状态→后续表演连起来，比较普通强总结/更新系统与近邻，不围绕单例继续调提示。
