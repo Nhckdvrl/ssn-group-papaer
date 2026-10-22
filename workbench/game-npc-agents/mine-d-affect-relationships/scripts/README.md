@@ -22,6 +22,8 @@
 | 源纠正 | `repair_arcane_source.py` | Monte原生14单元→完整覆盖的分片/归并任务；旧117章错误记录不覆盖 |
 | 源文件资格 | `inspect_source_bindings.py` | EW冻结训练场景与单独发布场景逐字对照；只记录不同命名空间，不重排、替换输入或重评分 |
 | 本地生成 | `run_local_arcane.py`、`run_local_text.py` | 冻结任务→逐条raw、token IDs、usage、配置/源码快照 |
+| 本地权重缓存 | `cache_local_weights.py` | 固定HF snapshot从共享盘复制到NVMe；逐文件及LFS SHA核对后才启用，推理/NLL记录实际路径与缓存manifest |
+| 本地运行依赖 | `cache_local_runtime.py` | 对现有依赖逐文件复制/校验，完成后为隔离venv启用NVMe overlay；不升级版本、不改正在运行的训练 |
 | 连续生成 | `run_closed_updates.py`、`run_prefix_memory.py` | 连续冻结经历＋上一提交态→全部尝试及提交态；统一恢复/承接规则 |
 | Token Plan | `run_judge.py`、`run_plan_state.py`、`run_plan_compiler.py` | 预登记输入→完整供应方回包/usage；禁止现金fallback |
 | 来源句前向 | `score_target_likelihood.py`、`score_role_likelihood.py` | 冻结参考回复→条件token损失；不是生成或LLM裁判 |

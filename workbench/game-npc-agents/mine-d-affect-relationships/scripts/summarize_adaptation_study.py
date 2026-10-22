@@ -5,12 +5,28 @@ from collections import defaultdict
 import json
 from pathlib import Path
 import statistics
-import numpy as np
 from run_adaptation_pipeline import SYSTEMS,read
 from score_adaptation_quality import DIMENSIONS
 
 
+def aggregate_primary(primary,books,expected_count):
+    """Equal questions within a role, roles within a book, then equal books."""
+    byrole=defaultdict(lambda:defaultdict(list));good={}
+    for r in primary:
+        if r['valid']:
+            value=r['result']['scores'];good[r['question_id']]=value
+            for dim in DIMENSIONS:byrole[r['book_name'],r['episode_id']][dim].append(value[dim])
+    bybook={b:{} for b in books}
+    for b in books:
+        rows=[v for (book,_),v in byrole.items() if book==b]
+        for dim in DIMENSIONS:bybook[b][dim]=statistics.mean(statistics.mean(v[dim]) for v in rows) if rows else None
+    complete=len(good)==expected_count
+    metrics={dim:statistics.mean(bybook[b][dim] for b in books) for dim in DIMENSIONS} if complete else None
+    return good,bybook,metrics
+
+
 def main():
+    import numpy as np
     p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--out',required=True)
     a=p.parse_args();root=Path(a.asset_root);runs=root/'runs/D-E10';out=Path(a.out);out.mkdir(exist_ok=True)
     selection=read(root/'data/evaluation_D-E10/episodes.jsonl');expected={q['question_id'] for e in selection for q in e['queries']}
@@ -18,6 +34,7 @@ def main():
     result=dict(experiment='D-E10',status='COMPLETE-AUTOMATED-AGGREGATION',n_books=len(books),n_episodes=len(selection),n_queries=len(expected),systems={},training={},
         interpretation='Exploratory five-dimension source-conditioned role judgments. Not validated growth accuracy, not autonomous long dialogue, not a mechanism claim. Single training seed. Descriptive case review remains separate.')
     book_values={}
+    reference_states={r['episode_id']:r['update_target'] for r in read(root/'data/evaluation_D-E10/references.jsonl')}
     for system in SYSTEMS:
         path=runs/('system_'+system);meta=json.loads((path/'metadata.json').read_text())
         if not meta.get('complete'):raise ValueError('Incomplete system: '+system)
@@ -25,17 +42,8 @@ def main():
         if {r['question_id'] for r in responses}!=expected:raise ValueError('Different output cohort')
         scores=read(runs/'judges'/system/'selected.jsonl');primary=[r for r in scores if not r['repeat']]
         if {r['question_id'] for r in primary}!=expected:raise ValueError('Different judge cohort')
-        byrole=defaultdict(lambda:defaultdict(list));good={}
-        for r in primary:
-            if r['valid']:
-                value=r['result']['scores'];good[r['question_id']]=value
-                for dim in DIMENSIONS:byrole[r['book_name'],r['episode_id']][dim].append(value[dim])
-        bybook={b:{} for b in books}
-        for b in books:
-            rows=[v for (book,_),v in byrole.items() if book==b]
-            for dim in DIMENSIONS:bybook[b][dim]=statistics.mean(statistics.mean(v[dim]) for v in rows) if rows else None
+        good,bybook,metrics=aggregate_primary(primary,books,len(expected))
         complete=len(good)==len(expected)
-        metrics={dim:statistics.mean(bybook[b][dim] for b in books) for dim in DIMENSIONS} if complete else None
         if complete:
             book_values[system]=np.array([statistics.mean(bybook[b].values()) for b in books])
         repeated=[]
@@ -48,6 +56,11 @@ def main():
             dimensions=metrics,by_book=bybook,repeat_pairs=len(repeated),mean_repeat_absolute_difference=statistics.mean(repeated) if repeated else None,
             n_primary_strict_json=sum(r['valid'] and r['result']['strict_json'] for r in primary),
             gpu_process_hours=meta['gpu_process_hours'],recorded_generation_attempts=meta['recorded_generation_attempts'])
+        if system in ['base','update_sft','multitask_sft','strong32']:
+            states=read(path/'states.jsonl')
+            result['systems'][system]['native_change_flag_agreement']=dict(
+                matched=sum(r['valid'] and r['state'].get('profile_updated') is reference_states[r['episode_id']]['profile_updated'] for r in states),
+                denominator=len(selection),meaning='Agreement with published teacher flag, not psychological growth accuracy; invalid carries do not count as correct.')
     if 'base' in book_values:
         for name,values in book_values.items():
             delta=values-book_values['base'];distribution=delta[bootstrap].mean(1)

@@ -1,73 +1,111 @@
 {
   "experiment": "D-E10",
-  "snapshot_time": "2026-10-22T23:27:29.279738+08:00",
+  "snapshot_time": "2026-10-23T01:32:33.322254+08:00",
   "complete": false,
   "training": {
     "update": {
       "complete": false,
-      "completed_steps": 21,
+      "completed_steps": 111,
       "planned_steps": 440,
-      "seen_examples": 1344,
-      "seen_forward_tokens": 4107966,
+      "seen_examples": 7104,
+      "seen_forward_tokens": 21708172,
       "planned_forward_tokens": 85899086,
       "trainable_parameters": 174587904,
       "error": null,
+      "last_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/step-0100",
       "last_step": {
-        "step": 21,
-        "loss": 1.3804988008923829,
-        "grad_norm": 0.540386438369751,
-        "lr": 1e-05,
-        "examples": 1344,
-        "forward_tokens": 4107966,
-        "step_s": 83.07269648835063,
-        "wall_s": 1860.0396464169025,
-        "peak_allocated": 37484521984
+        "step": 111,
+        "loss": 1.1729861623607576,
+        "grad_norm": 0.2560812830924988,
+        "lr": 1.8620315354151695e-05,
+        "examples": 7104,
+        "forward_tokens": 21708172,
+        "step_s": 76.93086710572243,
+        "wall_s": 9374.239697650075,
+        "peak_allocated": 39884331520
       }
     },
     "multitask": {
       "complete": false,
-      "completed_steps": 12,
+      "completed_steps": 64,
       "planned_steps": 265,
-      "seen_examples": 768,
-      "seen_forward_tokens": 3866580,
+      "seen_examples": 4096,
+      "seen_forward_tokens": 20857676,
       "planned_forward_tokens": 85900956,
       "trainable_parameters": 174587904,
       "error": null,
+      "last_checkpoint": null,
       "last_step": {
-        "step": 12,
-        "loss": 2.9028478898108006,
-        "grad_norm": 6.8864264488220215,
-        "lr": 9.62962962962963e-06,
-        "examples": 768,
-        "forward_tokens": 3866580,
-        "step_s": 141.75572688132524,
-        "wall_s": 1823.3717812895775,
-        "peak_allocated": 35690968064
+        "step": 64,
+        "loss": 1.8065017610788345,
+        "grad_norm": 0.5558459758758545,
+        "lr": 1.8830852662071507e-05,
+        "examples": 4096,
+        "forward_tokens": 20857676,
+        "step_s": 145.56933945789933,
+        "wall_s": 9374.168274506927,
+        "peak_allocated": 39897118720
       }
     }
   },
   "systems": {
-    "strong32": {
-      "complete": false,
-      "error": null,
-      "n_outputs": null,
-      "valid_outputs": null,
-      "recorded_stage_attempts": {
-        "update": 40
-      }
-    },
     "base": {
-      "complete": false,
+      "complete": true,
       "error": null,
-      "n_outputs": null,
-      "valid_outputs": null,
-      "recorded_stage_attempts": {
-        "update": 47,
-        "update_recovery": 1,
-        "motivation": 47,
-        "actor": 44
-      }
+      "n_outputs": 87,
+      "valid_outputs": 87,
+      "valid_states": 46,
+      "valid_motivations": 47,
+      "recorded_generation_attempts": 182,
+      "gpu_process_hours": 0.44366516573561565
+    },
+    "frozen": {
+      "complete": true,
+      "error": null,
+      "n_outputs": 87,
+      "valid_outputs": 87,
+      "valid_states": 47,
+      "valid_motivations": 47,
+      "recorded_generation_attempts": 134,
+      "gpu_process_hours": 0.45403880873177616
+    },
+    "full_evidence": {
+      "complete": true,
+      "error": null,
+      "n_outputs": 87,
+      "valid_outputs": 87,
+      "valid_states": 47,
+      "valid_motivations": 47,
+      "recorded_generation_attempts": 134,
+      "gpu_process_hours": 1.1789120032141607
+    },
+    "released": {
+      "complete": true,
+      "error": null,
+      "n_outputs": 87,
+      "valid_outputs": 87,
+      "valid_states": 47,
+      "valid_motivations": 47,
+      "recorded_generation_attempts": 87,
+      "gpu_process_hours": 0.07940600980590615
+    },
+    "strong32": {
+      "complete": true,
+      "error": null,
+      "n_outputs": 87,
+      "valid_outputs": 87,
+      "valid_states": 46,
+      "valid_motivations": 45,
+      "recorded_generation_attempts": 187,
+      "gpu_process_hours": 2.314345264941868
     }
   },
-  "new_paid_api_calls": 0
+  "new_paid_api_calls": 0,
+  "judges": {
+    "complete": false,
+    "systems_completed": [],
+    "error": null,
+    "started_utc": "2026-10-22T17:29:41.242715+00:00",
+    "recorded_generation_attempts": 2
+  }
 }

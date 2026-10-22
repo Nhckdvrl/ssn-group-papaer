@@ -9,16 +9,23 @@ def main():
  tasks=[json.loads(l) for l in Path(args.tasks).read_text().splitlines()];assert len(tasks)==len({t['task_id'] for t in tasks})
  out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
  if (out/'metadata.json').exists():raise FileExistsError(out)
- meta=dict(started_utc=now(),args=vars(args),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),task_sha256=hashlib.sha256(Path(args.tasks).read_bytes()).hexdigest(),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),complete=False)
+ meta=dict(started_utc=now(),args=vars(args),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),task_sha256=hashlib.sha256(Path(args.tasks).read_bytes()).hexdigest(),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[4],text=True).strip(),complete=False)
  def save(): (out/'metadata.json').write_text(json.dumps(meta,indent=2)+'\n')
  save();(out/'runner_source.py').write_bytes(Path(__file__).read_bytes());start=time.monotonic()
  try:
   import torch,transformers
   from transformers import AutoTokenizer,AutoModelForCausalLM,set_seed
   set_seed(args.seed);torch.set_num_threads(8)
-  tok=AutoTokenizer.from_pretrained(args.checkpoint,local_files_only=True);tok.padding_side='left'
+  from cache_local_weights import resolve_local_checkpoint
+  resolved_checkpoint,mirror=resolve_local_checkpoint(args.checkpoint)
+  if mirror:meta['local_weight_mirror']=mirror
+  helper=Path(__file__).with_name('cache_local_weights.py');meta['weight_cache_helper_sha256']=hashlib.sha256(helper.read_bytes()).hexdigest();(out/'cache_local_weights.py').write_bytes(helper.read_bytes())
+  meta['resolved_checkpoint']=resolved_checkpoint;save()
+  tok=AutoTokenizer.from_pretrained(resolved_checkpoint,local_files_only=True);tok.padding_side='left'
   if tok.pad_token_id is None:tok.pad_token_id=tok.eos_token_id
-  model=AutoModelForCausalLM.from_pretrained(args.checkpoint,local_files_only=True,dtype=torch.bfloat16,attn_implementation='sdpa',device_map={'':0}).eval()
+  load_started=time.monotonic()
+  model=AutoModelForCausalLM.from_pretrained(resolved_checkpoint,local_files_only=True,dtype=torch.bfloat16,attn_implementation='sdpa',device_map={'':0}).eval()
+  meta['model_load_wall_s']=time.monotonic()-load_started
   if args.adapter:
    from peft import PeftModel
    adapter=Path(args.adapter)

@@ -151,3 +151,13 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 - 七系统：`runs/D-E10/system_<name>/`保存update/motivation/actor与统一recovery所有尝试，实际messages、生成IDs、模型/adapter hash；states/motivations/outputs给出确定性选择与失败承接。`judges/<name>`保留盲评及事前12组重复；`likelihood/`使用共同未适配8B评分。
 - 运行编排：`runs/D-E10/{training_jobs,evaluation_jobs,analysis_jobs}.json`；stdout在`logs/D-E10-*`。评分等strong32完整释放GPU后才装模型，SFT路径等对应最终完整checkpoint。`finish_status.json`明确汇总/推送失败或完成；不会改用中途checkpoint或幸存系统。
 - 当前权重和raw仍在运行中，不打包搬动；结束后再按实际完整性归档。所有大文件不入Git，代码和轻量读数同步原main。D-E10全部本地，无新API和现金fallback；旧D-E01–09总账保持原数字，另计本轮。
+
+### D-E10本地I/O与启动修复（2026-10-23，非新实验条件）
+
+共享家目录的权重/依赖读取拖慢阶段切换，已按原文件逐字复制到NVMe。`models/local_snapshots/<revision>/LOCAL_MIRROR.json`登记完整校验；8B为16,397,461,266字节、32B为65,540,298,478字节，只有完成且来源匹配的镜像会被推理/NLL选用。配置、tokenizer与LFS内容hash一并核验，不改变模型版本。简明路径/hash见[D-E10-local-cache](results/D-E10-local-cache.json)。
+
+`runtime/site-packages-v2/RUNTIME_MIRROR.json`含19,970文件、7,940,962,509字节逐项hash；隔离venv的`game_npc_local_runtime.pth`启用相同依赖字节，PEFT/TorchAO局部版本保持不变。已实测导入Torch2.9.1、Transformers5.3.0、PEFT0.21.2、NumPy1.26.4。训练进程未中断或换运行环境；启动条件不同，不把旧/新阶段壁钟差当方法效率增益。首轮离线预扫描中断目录和日志保留。
+
+为避免shell profile等待，从本地目录以`/bin/bash`非login启动。四个模型入口的Git provenance改为脚本定位仓库，消除cwd依赖。首次盲评因此失败时尚无metadata/模型输出、0评分调用；`judges/base_setup_failed_workdir`、`queue_before_cwd_fix.json`及`finish_before_judge_cwd_fix.json`保留。新队列已启动，不覆盖首次失败记录；作业表记录全部PIDs/原因。
+
+首次实际评分前固定judge batch为2，并明确动机生成于场景入口、回复发生于后续可见互动处；不得要求入口动机预知后来对话。五维量表与样本未改。该澄清早于任何评分生成；不是根据分数改读数。七系统主表仍只在全部注册路径结束后生成。

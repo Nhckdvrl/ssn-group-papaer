@@ -85,7 +85,7 @@ def main():
     vals = [i for i, r in enumerate(entries) if r['partition'] == 'validation']
     meta = dict(experiment='D-E10', started_utc=now(), args=vars(a), complete=False,
         source_manifest_sha256=sha(root/'manifest.json'), script_sha256=sha(__file__),
-        git_commit=subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+        git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[4],text=True).strip(),
         planned_examples=len(order), planned_forward_tokens=sum(entries[i]['length'] for i in order),
         planned_target_tokens=sum(entries[i]['target_length'] for i in order),
         planned_steps=len(groups), planned_tasks=dict(Counter(entries[i]['task'] for i in order)),
