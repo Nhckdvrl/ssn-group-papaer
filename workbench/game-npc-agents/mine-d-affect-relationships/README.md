@@ -15,7 +15,7 @@
 | [首夜综合报告](results/D-OVERNIGHT-REPORT-2026-10-22.md) | 实际结果、关键成功/残差、评价边界与接下来两项研究动作；不是新方法或已成立机制 |
 | [D-E01](results/D-E01-REPORT.md) | 64完整probe/205phase，820条回复＋1,076本地评分；Arc条件APF/PTF：通用8B65.93/60.92，专用8B78.05/83.48；跨评委绝对分差大 |
 | [D-E02](results/D-E02-REPORT.md) | 64对话问题四文本条件，256回复＋256评分＋256 NLL前向；PT对NR的Sem+0.234、NLL−0.318，有额外输入信息混杂 |
-| [D-E03](results/D-E03-REPORT.md) | 嵌套25probe/81phase，242章教师＋405新回复；普通摘要有轨迹收益；32B Arc APF/PTF74.36/72.59，尚非同信息在线推断测量 |
+| [D-E03](results/D-E03-REPORT.md) | **Monte Summary源对齐错误已发现并正在纠正；原六作品S比较暂撤回**； 嵌套25probe/81phase，242章教师＋405新回复；普通摘要有轨迹收益；32B Arc APF/PTF74.36/72.59，尚非同信息在线推断测量 |
 | [D-E04](results/D-E04-REPORT.md) | 64原生场景/8作品，256状态更新；一句提示部分恢复主体，名字正确不保证事件归属正确；PUF完整内容分另列 |
 | [D-E05](results/D-E05-REPORT.md) | Step5同信息强普通参照65次Plan请求，64完整后态；主体审阅0明确换人，47/64监督一致，修复主要Qwen身份混淆；收回手表仍记成送出 |
 | [D-E06](experiments/D-E06-closed-loop-state-enactment.md) | 用户要求持续推进：29角色/8作品，8步真实更新链，87下一出场探针；原生单步/递归与普通强摘要接回角色回复，正在运行，不以首夜报告停止 |

@@ -14,18 +14,10 @@ def main():
  from inference.context_builders import build_summary
  from inference import config
  if args.cmd=='prepare':
-  # Repair one source-edition blocker for Summary; the native parser matched
-  # only the unindented TOC and missed indented body headings in this edition.
-  from arc_construction.phase0_preprocess import load_and_strip_gutenberg
-  text=load_and_strip_gutenberg(str(repo/'data/novels/Monte_Cristo.txt'))
-  matches=list(re.finditer(r'^[ \t]*Chapter\s+(\d+)[^\n]*$',text,re.M));body=[]
-  for i,m in enumerate(matches):
-   chunk=text[m.end():matches[i+1].start() if i+1<len(matches) else len(text)].strip()
-   if len(chunk)>=300:body.append((int(m.group(1)),chunk))
-  assert [n for n,_ in body]==list(range(1,118)), 'Do not invent or silently renumber source chapters'
-  chapter_dir=config.chapter_dir('Monte_Cristo');backup=chapter_dir.with_name('chapters_native_14_backup')
-  if not backup.exists():chapter_dir.rename(backup);chapter_dir.mkdir()
-  for n,chunk in body:(chapter_dir/f'chapter_{n:02d}.txt').write_text(chunk)
+  # Published Monte_Cristo axes refer to 14 native narrative chunks. Never
+  # silently replace their IDs with the 117 literary chapter numbers.
+  n_monte=len(list(config.chapter_dir('Monte_Cristo').glob('chapter_*.txt')))
+  if n_monte!=14:raise RuntimeError('Monte source-unit mismatch: published arcs use 14 native chunks; use the explicit source-repair pipeline, never renumber to 117 literary chapters')
   tasks=read(Path(args.base_assets)/'tasks.jsonl');groups={}
   for t in tasks:
    if t['mode']!='vanilla':continue

@@ -15,3 +15,5 @@ L0是本次对有限证据的限定，不是自动科学判决。后续按[EXECU
 
 - 暂无已成立主张被作废。E01 Step首轮1条length与Llama1条拒答全部保留；Step恢复按截断状态统一选择，不覆盖初始记录。
 - `private_banquet` Original、公开档案线索及Situated年龄边界存在输入/gold欠定，保留合成评分但不作为可证明的能力错误；台词观察不升格为Style Bleed机制。
+
+- 2026-10-22源审计：D-E03/S的Monte Cristo 13phase×3模型共39回复读错叙事时点（14内部单元被本轮适配器误换117文学章号）。六作品Summary相关结论/区间暂撤回，不把差距归因于模型；原结果保留，纠正另表。[完整纠正](mine-d-affect-relationships/results/D-SOURCE-CORRECTION-2026-10-22.md)。D-E01/V/A、其他五作品S及D-E02/04–06不受影响。无已升级机制主张需继承。

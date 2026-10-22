@@ -1,5 +1,7 @@
 # Game NPC Agents：领域工作台
 
+**持续研究中的源纠正：** D-E03的Monte Summary误把14原生叙事单元改为117文学章号；六作品S相关比较暂撤回，其他V/A与D-E02/04–06保留。[纠正与修复](mine-d-affect-relationships/results/D-SOURCE-CORRECTION-2026-10-22.md)；D-E06连续更新仍在运行，D-E07按正确来源继续。
+
 **状态：ACTIVE-MAIN。2026-10-22用户明确暂停B/I01，优先转入本工作台现有矿区D：动态角色认知与长期人物演化；矿区C/NCP-Bench保留为备选。** 当前是公开资产上的研究驻留，优先ArcANE、PHASE-Tree/LongEvoRoleBench，不提前锁定方法或预设失败。B的E01–E03及历史矿区A资产保留；A仍CLOSED／TERMINATED。
 
 本工作台维护游戏NPC的行为控制、人物表现、人机互动、叙事、社会、玩家体验、作者工具与运行部署知识。先理解不同角色在游戏中承担什么功能，再比较方法、证据和仍然存在的问题。具体研究项目各自保留进展与主张，外围知识库按整个领域组织。
