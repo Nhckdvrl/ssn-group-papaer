@@ -141,3 +141,13 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 仓库外工作路径：`/var/tmp/ssn-game-npc-d/data/adaptation_views_v1/`。`episodes.jsonl`为19,029,259字节指针，SHA256 `3d0ce18d3a99c3dd14ae36a9a606ac0cba197ecba22583b3f425aa3752af3371`；`native_update_train.jsonl`实际14,079条、202,960,875字节，SHA256 `bec24aa18aeb0816dc59494a13bfa7dde5a95bec34566ec96dc323280837feb0`。原生prompt与completion分字段，全文不进Git。已观察的9作品不进入新训练或新测试，完整划分见清单；不认证基础模型或既有专用模型未见这些作品。
 
 持久本地归档：`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-adaptation-preparation/native-learning-views.tar.gz`，含视图、原生训练导出、政策与必要脚本快照；逐成员校验与完整hash见[准备归档清单](results/D-ADAPTATION-PREPARATION-MANIFEST.json)。仅限本地研究访问，不公开再分发原始文本。该资料准备没有模型调用、训练或新的心理标签，不能加入实验调用总数。
+
+## D-E10正在运行的学习与后续互动
+
+- 隔离解释器：`/var/tmp/ssn-game-npc-d/venvs/adaptation/bin/python`，使用openslime系统包，局部安装`peft==0.21.2`、`torchao==0.16.0`。torch2.9.1+cu129、transformers5.3.0未变；torchao可选量化C++扩展未加载，普通BF16/LoRA不依赖它。
+- 训练缓存：`data/training_D-E10/{tokens.bin,entries.jsonl,manifest.json}`；int32精确tokens、完整样本边界、来源row/hash及作品划分。14,079更新＋14,079动机＋23,088互动＋128验证，无截断/超长排除。[逐文件hash](results/D-E10-training-data.json)。早期单进程准备目录保留中断原因；其3,819条完整输出与并行缓存前缀逐字相同，没有不同数据版本。
+- 评测：`data/evaluation_D-E10/`内episodes/references分离；6作品47经历87后续context，来源与资格见[selection](results/D-E10-selection.json)。不是同场景行为重放或真人交互。
+- 实际训练：`runs/D-E10/train_update_v2/`与`train_multitask_v2/`，保存初始/半程/最终验证、每步loss/梯度/样本与tokens、LoRA/优化器/RNG、源码与元数据。首轮`train_update`/`train_multitask`均在适配器装配失败、0优化步，原记录不删除。base权重revision沿用Qwen3-8B；只有最终完整训练checkpoint进入主评测。
+- 七系统：`runs/D-E10/system_<name>/`保存update/motivation/actor与统一recovery所有尝试，实际messages、生成IDs、模型/adapter hash；states/motivations/outputs给出确定性选择与失败承接。`judges/<name>`保留盲评及事前12组重复；`likelihood/`使用共同未适配8B评分。
+- 运行编排：`runs/D-E10/{training_jobs,evaluation_jobs,analysis_jobs}.json`；stdout在`logs/D-E10-*`。评分等strong32完整释放GPU后才装模型，SFT路径等对应最终完整checkpoint。`finish_status.json`明确汇总/推送失败或完成；不会改用中途checkpoint或幸存系统。
+- 当前权重和raw仍在运行中，不打包搬动；结束后再按实际完整性归档。所有大文件不入Git，代码和轻量读数同步原main。D-E10全部本地，无新API和现金fallback；旧D-E01–09总账保持原数字，另计本轮。

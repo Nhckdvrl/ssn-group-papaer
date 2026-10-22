@@ -5,7 +5,7 @@ from pathlib import Path
 
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def main():
- a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--checkpoint',required=True);a.add_argument('--revision',required=True);a.add_argument('--model',required=True);a.add_argument('--out',required=True);a.add_argument('--max-tokens',type=int,required=True);a.add_argument('--temperature',type=float,default=0);a.add_argument('--seed',type=int,default=0);a.add_argument('--batch-size',type=int,default=4);a.add_argument('--context-limit',type=int,default=32768);a.add_argument('--adapter');args=a.parse_args()
+ a=argparse.ArgumentParser();a.add_argument('--tasks',required=True);a.add_argument('--checkpoint',required=True);a.add_argument('--revision',required=True);a.add_argument('--model',required=True);a.add_argument('--out',required=True);a.add_argument('--max-tokens',type=int,required=True);a.add_argument('--temperature',type=float,default=0);a.add_argument('--seed',type=int,default=0);a.add_argument('--batch-size',type=int,default=4);a.add_argument('--context-limit',type=int,default=32768);a.add_argument('--adapter');a.add_argument('--max-seconds',type=float);args=a.parse_args()
  tasks=[json.loads(l) for l in Path(args.tasks).read_text().splitlines()];assert len(tasks)==len({t['task_id'] for t in tasks})
  out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
  if (out/'metadata.json').exists():raise FileExistsError(out)
@@ -28,6 +28,7 @@ def main():
   eos=model.generation_config.eos_token_id;eos=set(eos if isinstance(eos,list) else [eos]);seen=set()
   with (out/'responses.jsonl').open('a') as f:
    for off in range(0,len(tasks),args.batch_size):
+    if args.max_seconds is not None and time.monotonic()-start>=args.max_seconds:raise TimeoutError('Registered generation budget reached before next batch')
     block=tasks[off:off+args.batch_size];assert all(t['task_id'] not in seen for t in block)
     prompts=[tok.apply_chat_template(t['messages'],tokenize=False,add_generation_prompt=True,enable_thinking=False) for t in block]
     enc=tok(prompts,padding=True,add_special_tokens=False,return_tensors='pt').to(model.device)

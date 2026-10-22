@@ -18,6 +18,7 @@
 | 完整前缀预算停止 | [D-E09报告](D-E09-REPORT.md)、[覆盖](D-E09-COVERAGE.json) | 225尝试、208/301提交态，0演员/评分；没有APF/PTF结果 |
 | 人物适应学习资料 | [全量连接与作品划分](D-ADAPTATION-VIEWS.json) | 24,977更新、22,306发布顺序接续；输入/监督/未来任务分开，无模型调用 |
 | 原生学习输入预算 | [token库存](D-ADAPTATION-TRAIN-BUDGET.json)、[持久归档](D-ADAPTATION-PREPARATION-MANIFEST.json) | 14,079训练条目共42,949,543 tokens；未截断、未训练 |
+| 学习基线与后续互动 | [D-E10运行页](D-E10-RUN-REPORT.md)、[进度快照](D-E10-progress.json)、[训练缓存](D-E10-training-data.json)、[评测选择](D-E10-selection.json) | 两条真实SFT训练和七系统互动路径运行中；6作品47经历87context，尚无训练后质量结论 |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |

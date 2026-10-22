@@ -12,6 +12,9 @@
 | 可复用连续经历入口 | `experience_store.py` | 整个发布训练文件→只读字节偏移/哈希索引，连接同一出场的动机/互动/更新与下次出场；不新增场景/标签或改训练划分 |
 | 适应学习资料视图 | `build_adaptation_views.py` | 来源索引＋冻结作品划分→全部更新的输入/监督hash、后继任务与接续资格；可显式导出原生SFT数据，不调用模型或训练 |
 | 学习输入预算 | `inspect_adaptation_budget.py` | 原生SFT导出＋固定本地tokenizer→全部输入/监督token数量及上下文预算覆盖；不截断、不筛选或训练 |
+| 训练基线 | `prepare_adaptation_training.py`、`train_adaptation_sft.py` | 原生三任务→固定token缓存→完整更新SFT/等forward-token多任务SFT；只对completion训练，保留检查点/优化器/RNG |
+| 后续互动冻结与消费 | `adaptation_protocol.py`、`prepare_adaptation_evaluation.py`、`run_adaptation_pipeline.py` | 固定经历→新态→生成动机→多个原生后续context；同场景已发生行为不当作未来评价 |
+| 学习后的评价与交付 | `score_adaptation_quality.py`、`summarize_adaptation_study.py`、`finish_adaptation_study.py` | 本地盲评/共同消费者NLL→作品层区间；只对全量完成生成主表，完成后可按授权提交两份结果至main |
 | ArcANE冻结 | `prepare_arcane.py`、`prepare_summary.py`、`prepare_state_summary.py` | 官方probe/来源→D-E01/03/07冻结messages和独立references |
 | LongEvo冻结 | `prepare_phase.py`、`prepare_phase_judge.py` | 选定对话→四文本条件及原生评分输入 |
 | 状态更新冻结 | `prepare_updates.py`、`prepare_closed_loop.py`、`prepare_closed_actor.py` | 原生单步或连续更新→状态输入与后续角色输入 |
@@ -43,6 +46,7 @@
 | D-E07纠源/评分 | `queue_corrected_summary.py`、`queue_corrected_judges.py` |
 | D-E08 | `queue_strong_compiler.py`；`handoff_gpu3.py`为本次已有队列的一次交接 |
 | D-E09（已预算停止） | `queue_prefix_memory.py`；原定后续角色/评分未启动，不自动重启 |
+| D-E10（运行中） | `queue_adaptation_evaluation.py`按训练完成标记接最终checkpoint；`score_adaptation_quality.py`等strong32释放GPU后评分；`finish_adaptation_study.py`等全部系统/评委完整后复算与提交 |
 
 旧`queue_judges.py`的Plan评分路径已资源中止，不因其文件存在而恢复。`handoff_gpu3.py`不是通用清理工具；不用于终止其他项目进程。D-E09冻结窗口、提示、恢复或抽样政策保留历史，不靠修改它们补造完成状态。
 

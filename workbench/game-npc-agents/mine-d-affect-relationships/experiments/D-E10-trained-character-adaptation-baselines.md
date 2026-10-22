@@ -1,6 +1,6 @@
 # D-E10：训练强基线并检验经历之后的动机与互动（2026-10-22）
 
-- **状态：** PLANNED
+- **状态：** RUNNING
 - **类型：** REPRO：有整作品隔离的训练基线与人物过程测量，不宣称完全复现EW七任务训练。
 - **对应：** [D-I01](../ideas/D-I01-learning-character-adaptation.md)，不继续B/I01或矿区A。
 - **问题（一句话）：** 认真训练的状态更新或多任务角色基线，是否让经历产生更合适的后续动机与互动，而不只是写出更像参考的人物卡？
@@ -50,3 +50,17 @@
 - 按决策表执行了什么：
 - 主张变化：C## Lx → Ly
 - POST-HOC 分析（事后才想到的，单独标注）：
+
+### 2026-10-22运行记录（不是最终结果）
+
+预登记由`tools/process/new.py`生成的父工作台E86骨架，按既有矿区编号移入D-E10；未启动旧矿区A。运行前版本60dd638a。
+
+实际冻结47经历/87后续上下文/6作品，A Doll's House有7个符合资格角色，其余各8；39候选缺少后继任务，未补造样本。见[D-E10-selection](../results/D-E10-selection.json)。数据准备实际保留14,079更新、14,079动机、23,088原生segment第一目标turn及128验证更新，**0超长剔除、0截断**。多任务最终固定16,931次样本曝光、85,900,956 forward tokens；更新基线28,158次/85,899,086 tokens。
+
+隔离环境复用openslime的torch2.9.1/transformers5.3.0，新增PEFT0.21.2和torchao0.16.0。首次两个启动在适配器装配时被旧torchao0.9拒绝，均0优化步，原日志/metadata保留`train_update`与`train_multitask`；实际训练为`train_update_v2`/`train_multitask_v2`。torchao的可选C++量化扩展与该Torch不匹配，未加载、未使用；本任务是BF16普通LoRA，CPU小模型装配/反传及实际底座CE对齐通过。未升级共享推理环境。
+
+两条实际训练均174,587,904可训练参数。共同初始128验证题NLL1.585129；截至北京时间23:21，更新17/440步、3,326,968 tokens，多任务10/265步、3,203,820 tokens。未给训练后角色结论。训练中的batch loss跨样本/任务不可直接比较。
+
+更新/动机/回复的原始尝试、统一恢复与carry、教师参照身份分别保存。共同消费者辅助NLL在全部系统完成后使用同一个未适配Qwen3-8B评分609个条件上下文（87×7），衡量各路径提供的状态/动机能否支持来源句子；不把不同演员权重的绝对NLL混排。
+
+实际命令、PIDs与GPU交接在仓库外`runs/D-E10/{training_jobs,evaluation_jobs,analysis_jobs}.json`。GPU0/1独立训练后自动运行对应SFT系统；GPU2顺序跑base/released/frozen/full_evidence；GPU3完成strong32全路径后才开始盲评。全部完成后自动生成数字汇总并仅提交对应结果文件；完整科学案例解读另行进行，CLAIMS不自动升级。

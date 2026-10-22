@@ -202,4 +202,17 @@ def main():
         save_meta()
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:
+        main()
+    except BaseException as error:
+        # Loading/adapter construction failures happen before the training loop.
+        # Preserve their metadata as well, without manufacturing optimizer steps.
+        import sys
+        if '--out' in sys.argv:
+            path=Path(sys.argv[sys.argv.index('--out')+1])/'metadata.json'
+            if path.exists():
+                record=json.loads(path.read_text())
+                record.update(complete=False,error=repr(error),finished_utc=now())
+                path.write_text(json.dumps(record,indent=2)+'\n')
+        raise

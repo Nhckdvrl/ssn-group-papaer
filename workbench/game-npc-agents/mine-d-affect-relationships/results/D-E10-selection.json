@@ -1,0 +1,554 @@
+{
+  "experiment": "D-E10",
+  "n_episodes": 47,
+  "n_books": 6,
+  "n_queries": 87,
+  "by_book": {
+    "A Doll's House": 7,
+    "Jude the Obscure": 8,
+    "Mansfield Park": 8,
+    "My Ántonia": 8,
+    "Siddhartha": 8,
+    "White Fang": 8
+  },
+  "exclusions": {
+    "missing_later_tasks": 39
+  },
+  "source_revision": "ae7d82d38909783805979a8055d5ae913cb982f7",
+  "selection_salt": "D-E10-future-interaction-v1",
+  "script_sha256": "73ce1f12f3c53ae963641c9d2f62470ee406ebf8dc85e2e7608d3a057faee4d8",
+  "files": {
+    "episodes.jsonl": {
+      "sha256": "57a9bd46c790198851d971400a39da685da35ee26e4d0edc58d4fd65a125349d",
+      "bytes": 3931721
+    },
+    "references.jsonl": {
+      "sha256": "2c8a02584eec691669b29d601d8944acdee61ab0e2862a002c9e6b11730fed46",
+      "bytes": 332269
+    },
+    "exclusions.jsonl": {
+      "sha256": "621c3cb5d9c6746e3356d5770fbe79350f93088fc296c375d48706593cde3b1d",
+      "bytes": 2002
+    }
+  },
+  "samples": [
+    {
+      "episode_id": "ew/74468",
+      "book": "A Doll's House",
+      "role": "Kristine Linde",
+      "update_id": 74468,
+      "next_update_id": 83641,
+      "source_scene": 1,
+      "query_scene": 2,
+      "max_registered_input_tokens": 6720,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/75275",
+      "book": "A Doll's House",
+      "role": "Nora Helmer",
+      "update_id": 75275,
+      "next_update_id": 20566,
+      "source_scene": 0,
+      "query_scene": 1,
+      "max_registered_input_tokens": 10407,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/48487",
+      "book": "A Doll's House",
+      "role": "Anne",
+      "update_id": 48487,
+      "next_update_id": 32650,
+      "source_scene": 7,
+      "query_scene": 8,
+      "max_registered_input_tokens": 4348,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/34064",
+      "book": "A Doll's House",
+      "role": "Torvald Helmer",
+      "update_id": 34064,
+      "next_update_id": 106183,
+      "source_scene": 3,
+      "query_scene": 4,
+      "max_registered_input_tokens": 17447,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/83279",
+      "book": "A Doll's House",
+      "role": "Helen",
+      "update_id": 83279,
+      "next_update_id": 100318,
+      "source_scene": 10,
+      "query_scene": 12,
+      "max_registered_input_tokens": 8577,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/81892",
+      "book": "A Doll's House",
+      "role": "Nils Krogstad",
+      "update_id": 81892,
+      "next_update_id": 82987,
+      "source_scene": 15,
+      "query_scene": 16,
+      "max_registered_input_tokens": 8631,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/35141",
+      "book": "A Doll's House",
+      "role": "Doctor Rank",
+      "update_id": 35141,
+      "next_update_id": 122160,
+      "source_scene": 0,
+      "query_scene": 3,
+      "max_registered_input_tokens": 12568,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/136933",
+      "book": "Jude the Obscure",
+      "role": "George Gillingham",
+      "update_id": 136933,
+      "next_update_id": 88391,
+      "source_scene": 208,
+      "query_scene": 220,
+      "max_registered_input_tokens": 8439,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/134924",
+      "book": "Jude the Obscure",
+      "role": "Jude Fawley",
+      "update_id": 134924,
+      "next_update_id": 89771,
+      "source_scene": 86,
+      "query_scene": 87,
+      "max_registered_input_tokens": 6039,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/17487",
+      "book": "Jude the Obscure",
+      "role": "Sue Bridehead",
+      "update_id": 17487,
+      "next_update_id": 15145,
+      "source_scene": 217,
+      "query_scene": 223,
+      "max_registered_input_tokens": 8550,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/106239",
+      "book": "Jude the Obscure",
+      "role": "Widow Edlin",
+      "update_id": 106239,
+      "next_update_id": 87478,
+      "source_scene": 157,
+      "query_scene": 168,
+      "max_registered_input_tokens": 7476,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/110352",
+      "book": "Jude the Obscure",
+      "role": "Arabella Donn",
+      "update_id": 110352,
+      "next_update_id": 25510,
+      "source_scene": 59,
+      "query_scene": 60,
+      "max_registered_input_tokens": 4780,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/103196",
+      "book": "Jude the Obscure",
+      "role": "Anny",
+      "update_id": 103196,
+      "next_update_id": 96098,
+      "source_scene": 47,
+      "query_scene": 50,
+      "max_registered_input_tokens": 4176,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/117556",
+      "book": "Jude the Obscure",
+      "role": "Drusilla Fawley",
+      "update_id": 117556,
+      "next_update_id": 16972,
+      "source_scene": 96,
+      "query_scene": 114,
+      "max_registered_input_tokens": 5978,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/28088",
+      "book": "Jude the Obscure",
+      "role": "Richard Phillotson",
+      "update_id": 28088,
+      "next_update_id": 64049,
+      "source_scene": 212,
+      "query_scene": 217,
+      "max_registered_input_tokens": 10687,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/132179",
+      "book": "Mansfield Park",
+      "role": "Mary Crawford",
+      "update_id": 132179,
+      "next_update_id": 110925,
+      "source_scene": 113,
+      "query_scene": 114,
+      "max_registered_input_tokens": 9783,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/124027",
+      "book": "Mansfield Park",
+      "role": "Mrs. Norris",
+      "update_id": 124027,
+      "next_update_id": 138569,
+      "source_scene": 224,
+      "query_scene": 225,
+      "max_registered_input_tokens": 11428,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/53924",
+      "book": "Mansfield Park",
+      "role": "John Yates",
+      "update_id": 53924,
+      "next_update_id": 27794,
+      "source_scene": 168,
+      "query_scene": 172,
+      "max_registered_input_tokens": 8001,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/84556",
+      "book": "Mansfield Park",
+      "role": "Fanny Price",
+      "update_id": 84556,
+      "next_update_id": 34421,
+      "source_scene": 32,
+      "query_scene": 33,
+      "max_registered_input_tokens": 5527,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/107962",
+      "book": "Mansfield Park",
+      "role": "Henry Crawford",
+      "update_id": 107962,
+      "next_update_id": 63069,
+      "source_scene": 74,
+      "query_scene": 76,
+      "max_registered_input_tokens": 6011,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/137529",
+      "book": "Mansfield Park",
+      "role": "Maria Bertram",
+      "update_id": 137529,
+      "next_update_id": 47040,
+      "source_scene": 248,
+      "query_scene": 249,
+      "max_registered_input_tokens": 11679,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/105476",
+      "book": "Mansfield Park",
+      "role": "Sir Thomas Bertram",
+      "update_id": 105476,
+      "next_update_id": 6589,
+      "source_scene": 128,
+      "query_scene": 133,
+      "max_registered_input_tokens": 9967,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/113972",
+      "book": "Mansfield Park",
+      "role": "Lady Bertram",
+      "update_id": 113972,
+      "next_update_id": 55027,
+      "source_scene": 140,
+      "query_scene": 141,
+      "max_registered_input_tokens": 7560,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/48290",
+      "book": "My Ántonia",
+      "role": "Josiah Burden",
+      "update_id": 48290,
+      "next_update_id": 46369,
+      "source_scene": 77,
+      "query_scene": 78,
+      "max_registered_input_tokens": 5462,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/51026",
+      "book": "My Ántonia",
+      "role": "Jim Burden",
+      "update_id": 51026,
+      "next_update_id": 19884,
+      "source_scene": 2,
+      "query_scene": 3,
+      "max_registered_input_tokens": 6047,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/56822",
+      "book": "My Ántonia",
+      "role": "Emmaline Burden",
+      "update_id": 56822,
+      "next_update_id": 27053,
+      "source_scene": 14,
+      "query_scene": 15,
+      "max_registered_input_tokens": 6038,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/135259",
+      "book": "My Ántonia",
+      "role": "Mrs. Shimerda",
+      "update_id": 135259,
+      "next_update_id": 70582,
+      "source_scene": 79,
+      "query_scene": 80,
+      "max_registered_input_tokens": 5742,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/136981",
+      "book": "My Ántonia",
+      "role": "Ántonia Cuzak Shimerda",
+      "update_id": 136981,
+      "next_update_id": 11720,
+      "source_scene": 73,
+      "query_scene": 74,
+      "max_registered_input_tokens": 7213,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/74232",
+      "book": "My Ántonia",
+      "role": "Charley Harling",
+      "update_id": 74232,
+      "next_update_id": 41798,
+      "source_scene": 98,
+      "query_scene": 111,
+      "max_registered_input_tokens": 6238,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/31811",
+      "book": "My Ántonia",
+      "role": "Anna Hansen",
+      "update_id": 31811,
+      "next_update_id": 18739,
+      "source_scene": 117,
+      "query_scene": 123,
+      "max_registered_input_tokens": 5776,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/110652",
+      "book": "My Ántonia",
+      "role": "Otto Fuchs",
+      "update_id": 110652,
+      "next_update_id": 119212,
+      "source_scene": 56,
+      "query_scene": 61,
+      "max_registered_input_tokens": 9615,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/114256",
+      "book": "Siddhartha",
+      "role": "Siddhartha",
+      "update_id": 114256,
+      "next_update_id": 9903,
+      "source_scene": 49,
+      "query_scene": 50,
+      "max_registered_input_tokens": 5535,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/43512",
+      "book": "Siddhartha",
+      "role": "Vasudeva",
+      "update_id": 43512,
+      "next_update_id": 31527,
+      "source_scene": 71,
+      "query_scene": 72,
+      "max_registered_input_tokens": 6138,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/116097",
+      "book": "Siddhartha",
+      "role": "Govinda",
+      "update_id": 116097,
+      "next_update_id": 95781,
+      "source_scene": 52,
+      "query_scene": 89,
+      "max_registered_input_tokens": 8038,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/124647",
+      "book": "Siddhartha",
+      "role": "Gautama",
+      "update_id": 124647,
+      "next_update_id": 22718,
+      "source_scene": 14,
+      "query_scene": 15,
+      "max_registered_input_tokens": 4494,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/48524",
+      "book": "Siddhartha",
+      "role": "Kamaswami",
+      "update_id": 48524,
+      "next_update_id": 127255,
+      "source_scene": 39,
+      "query_scene": 40,
+      "max_registered_input_tokens": 5968,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/40331",
+      "book": "Siddhartha",
+      "role": "Servant",
+      "update_id": 40331,
+      "next_update_id": 15086,
+      "source_scene": 30,
+      "query_scene": 31,
+      "max_registered_input_tokens": 7101,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/133157",
+      "book": "Siddhartha",
+      "role": "Kamala",
+      "update_id": 133157,
+      "next_update_id": 8300,
+      "source_scene": 45,
+      "query_scene": 46,
+      "max_registered_input_tokens": 8357,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/128453",
+      "book": "Siddhartha",
+      "role": "Siddhartha (the son)",
+      "update_id": 128453,
+      "next_update_id": 50046,
+      "source_scene": 64,
+      "query_scene": 65,
+      "max_registered_input_tokens": 6029,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/82900",
+      "book": "White Fang",
+      "role": "Matt",
+      "update_id": 82900,
+      "next_update_id": 48920,
+      "source_scene": 180,
+      "query_scene": 181,
+      "max_registered_input_tokens": 5696,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/20787",
+      "book": "White Fang",
+      "role": "Henry",
+      "update_id": 20787,
+      "next_update_id": 27514,
+      "source_scene": 32,
+      "query_scene": 33,
+      "max_registered_input_tokens": 3816,
+      "preselected_review": true
+    },
+    {
+      "episode_id": "ew/21409",
+      "book": "White Fang",
+      "role": "White Fang",
+      "update_id": 21409,
+      "next_update_id": 2921,
+      "source_scene": 150,
+      "query_scene": 151,
+      "max_registered_input_tokens": 5556,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/46654",
+      "book": "White Fang",
+      "role": "Kiche",
+      "update_id": 46654,
+      "next_update_id": 93529,
+      "source_scene": 43,
+      "query_scene": 44,
+      "max_registered_input_tokens": 5471,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/34256",
+      "book": "White Fang",
+      "role": "Grey Beaver",
+      "update_id": 34256,
+      "next_update_id": 60876,
+      "source_scene": 119,
+      "query_scene": 120,
+      "max_registered_input_tokens": 4851,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/25020",
+      "book": "White Fang",
+      "role": "One Eye",
+      "update_id": 25020,
+      "next_update_id": 63740,
+      "source_scene": 55,
+      "query_scene": 56,
+      "max_registered_input_tokens": 4961,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/12649",
+      "book": "White Fang",
+      "role": "Weedon Scott",
+      "update_id": 12649,
+      "next_update_id": 101396,
+      "source_scene": 168,
+      "query_scene": 169,
+      "max_registered_input_tokens": 6153,
+      "preselected_review": false
+    },
+    {
+      "episode_id": "ew/38255",
+      "book": "White Fang",
+      "role": "Tim Keenan",
+      "update_id": 38255,
+      "next_update_id": 66086,
+      "source_scene": 163,
+      "query_scene": 164,
+      "max_registered_input_tokens": 7120,
+      "preselected_review": false
+    }
+  ],
+  "note": "Published source-order component transitions and independent later contexts, not autonomous long dialogue or certified original-book chronology. No model-outcome selection."
+}

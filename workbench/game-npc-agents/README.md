@@ -14,6 +14,8 @@
 
 **持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/results/D-E09-REPORT.md)已按预算停止，225次尝试未完成全部前缀，未启动演员/评分。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
 
+**已开始训练与后续互动评测：** [D-E10](mine-d-affect-relationships/experiments/D-E10-trained-character-adaptation-baselines.md)使用相同Qwen3-8B底座训练原生更新SFT和多任务SFT，接回6新作品47角色经历/87互动context的动机与回复；训练后路径自动接续评测，强32B及普通完整经历同时比较。当前运行中，不提前写方法增益；固定协议、数据、原始失败与全部后续记录均保留在原矿区D。
+
 ## B/I01历史实测（已暂停；2026-10-21）
 
 - **E01：** Qwen3-8B、Llama-3.1-8B-Instruct、Step5各60请求，Step另1次截断恢复。Original / Situated / Explicit合成规则一致分别为 **75/75/100%、60/90/100%、90/85/95%（预算恢复后100%）**。Step只用Token Plan入口；严格格式与围栏恢复另报。

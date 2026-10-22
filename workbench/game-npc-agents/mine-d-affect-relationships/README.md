@@ -30,7 +30,7 @@
 
 当前没有新机制主张升级。已有方法的成功与残差作为底座；主要研究动作以[整体定位](POSITIONING.md)为准，不把修卡片、涨一个分数或完成更多调用当作方向本身。
 
-**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)已写成SEED：学习人物如何从经历改变后续互动，以新作品、多互动及不同演员检验；尚未训练或证明有效。[学习数据入口](data/README.md)已全量连接24,977次原生更新，按作品隔离为14,079训练、1,327验证、3,102测试及6,469既有开发记录。它是未来学习的资料视图，不是新benchmark或新的模型得分。
+**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED：学习人物如何从经历改变后续互动。[D-E10](experiments/D-E10-trained-character-adaptation-baselines.md)已真正启动两条强基线训练与后续互动：32作品原生更新SFT两轮，以及相近forward-token多任务SFT；6新作品47经历/87后续上下文，7系统完整比较。当前训练和评测在运行，尚无训练后方法有效性结论。[学习数据入口](data/README.md)保留24,977次更新的全量作品隔离；不把准备、运行或训练loss当科研成功。
 
 ## 我们要理解什么
 

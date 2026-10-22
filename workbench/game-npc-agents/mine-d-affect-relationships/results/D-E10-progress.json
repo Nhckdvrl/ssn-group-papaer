@@ -1,0 +1,73 @@
+{
+  "experiment": "D-E10",
+  "snapshot_time": "2026-10-22T23:27:29.279738+08:00",
+  "complete": false,
+  "training": {
+    "update": {
+      "complete": false,
+      "completed_steps": 21,
+      "planned_steps": 440,
+      "seen_examples": 1344,
+      "seen_forward_tokens": 4107966,
+      "planned_forward_tokens": 85899086,
+      "trainable_parameters": 174587904,
+      "error": null,
+      "last_step": {
+        "step": 21,
+        "loss": 1.3804988008923829,
+        "grad_norm": 0.540386438369751,
+        "lr": 1e-05,
+        "examples": 1344,
+        "forward_tokens": 4107966,
+        "step_s": 83.07269648835063,
+        "wall_s": 1860.0396464169025,
+        "peak_allocated": 37484521984
+      }
+    },
+    "multitask": {
+      "complete": false,
+      "completed_steps": 12,
+      "planned_steps": 265,
+      "seen_examples": 768,
+      "seen_forward_tokens": 3866580,
+      "planned_forward_tokens": 85900956,
+      "trainable_parameters": 174587904,
+      "error": null,
+      "last_step": {
+        "step": 12,
+        "loss": 2.9028478898108006,
+        "grad_norm": 6.8864264488220215,
+        "lr": 9.62962962962963e-06,
+        "examples": 768,
+        "forward_tokens": 3866580,
+        "step_s": 141.75572688132524,
+        "wall_s": 1823.3717812895775,
+        "peak_allocated": 35690968064
+      }
+    }
+  },
+  "systems": {
+    "strong32": {
+      "complete": false,
+      "error": null,
+      "n_outputs": null,
+      "valid_outputs": null,
+      "recorded_stage_attempts": {
+        "update": 40
+      }
+    },
+    "base": {
+      "complete": false,
+      "error": null,
+      "n_outputs": null,
+      "valid_outputs": null,
+      "recorded_stage_attempts": {
+        "update": 47,
+        "update_recovery": 1,
+        "motivation": 47,
+        "actor": 44
+      }
+    }
+  },
+  "new_paid_api_calls": 0
+}
