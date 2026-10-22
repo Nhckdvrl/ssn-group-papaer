@@ -40,16 +40,18 @@ def main():
    if changes:
     by_metric[metric]=dict(**macro([{**r,metric:r['delta']} for r in changes],metric),by_checkpoint={str(step):macro([{**r,metric:r['delta']} for r in changes if r['after_updates']==step],metric) for step in [1,4,8]},lower_tie_higher=[sum(r['delta']<0 for r in changes),sum(r['delta']==0 for r in changes),sum(r['delta']>0 for r in changes)],details=changes)
   comparisons[lhs+' minus '+rhs]=by_metric
- updates={};first_wave={}
+ updates={};first_wave={};first_committed={}
  for mode in ['teacher_forced','recursive_native','recursive_summary']:
   p=run/mode/'metadata.json'
   if not p.exists():continue
   m=json.loads(p.read_text());rows=read(p.parent/'responses.jsonl') if (p.parent/'responses.jsonl').exists() else [];committed=read(p.parent/'states.jsonl') if (p.parent/'states.jsonl').exists() else []
   updates[mode]=dict(complete=m['complete'],waves_completed=m.get('waves_completed',0),recorded_attempts=len(rows),attempts_by_number=dict(Counter(r['attempt'] for r in rows)),finishes=dict(Counter(r['finish_reason'] for r in rows)),committed_states=len(committed),carried_previous_after_invalid=sum(r['carried_previous_after_invalid'] for r in committed),words_by_step={str(step):dict(profile_mean=mean(len(r['state']['profile'].split()) for r in committed if r['step']==step),tracker_mean=mean(len(str(r['state']['hidden_tracker']).split()) for r in committed if r['step']==step)) for step in range(1,m.get('waves_completed',0)+1)},usage={key:sum(r['usage'][key] for r in rows) for key in ['prompt_tokens','completion_tokens']},wall_s=m.get('wall_s'))
-  if mode in ['teacher_forced','recursive_native']:first_wave[mode]={r['task_id'].split('/'+mode+'/')[0]:r for r in rows if r['step']==1 and r['attempt']==1}
+  if mode in ['teacher_forced','recursive_native']:
+   first_wave[mode]={r['task_id'].split('/'+mode+'/')[0]:r for r in rows if r['step']==1 and r['attempt']==1}
+   first_committed[mode]={r['trajectory_id']:r['state'] for r in committed if r['step']==1}
  anchor={}
  if len(first_wave)==2:
-  a0=first_wave['teacher_forced'];b0=first_wave['recursive_native'];common=set(a0)&set(b0);anchor=dict(n_common_first_attempts=len(common),identical_messages=sum(a0[k]['messages']==b0[k]['messages'] for k in common),identical_responses=sum(a0[k]['response']==b0[k]['response'] for k in common))
+  a0=first_wave['teacher_forced'];b0=first_wave['recursive_native'];common=set(a0)&set(b0);anchor=dict(n_common_first_attempts=len(common),identical_messages=sum(a0[k]['messages']==b0[k]['messages'] for k in common),identical_responses=sum(a0[k]['response']==b0[k]['response'] for k in common),n_common_committed_states=len(set(first_committed['teacher_forced']) & set(first_committed['recursive_native'])),identical_committed_states=sum(first_committed['teacher_forced'][k]==first_committed['recursive_native'][k] for k in set(first_committed['teacher_forced']) & set(first_committed['recursive_native'])))
  actors={}
  actor_paths={name:run/('actor_'+name) for name in ['baselines','teacher_forced','recursive_native','recursive_summary']} if args.consumer=='qwen3_8b' else {'preselected_review':run/('consumer_'+args.consumer)/'actor'}
  for name,directory in actor_paths.items():

@@ -65,4 +65,3 @@ DPO 后再 GRPO，在主评委下均分 60.2→68.2。其所谓 RLVR 使用 Qwen
 ## 2026-10-22公开训练输入补核
 
 实际读取固定ArcANE-Data revision `6076de00429ca293b6738f571196ad1264e9a433` 的DPO train：12,746条anchor全部为`arc`条件，chosen/rejected的输入前缀全部相同。这是给定Arc后的跨阶段偏好训练，不能直接等同“从原始经历学习状态更新”的监督。也不能据此推定训练模型无法在新输入形式下泛化；这种能力仍须实测。明细见工作台`D-ArcANE-training-input-audit.json`，公开十作品与历史十二作品训练池保持区别。
-

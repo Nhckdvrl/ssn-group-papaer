@@ -27,3 +27,11 @@ Qwen3-8B随后扮演培训机构中的Mary，面对被丈夫跟踪/拆信的妇�
 ## 待完整核对
 
 六个预选probe另含Louis Trevelyan、Fernand Mondego和Don Quixote；完整阶段、三消费者以及Step教师的同信息结果仍待审阅。未将上述三个先读案例写成总体结论，未修改原评分标准。
+
+## 强普通整理的实际恢复与剩余范围
+
+D-E08的81卡已完成。Step在Mary/phase1明确保留她为未婚Miss Barfoot，区分Monica/Widdowson；在Deborah/phase0只保留“Read家庭提供寄宿”这一有限证据，明确不补婚姻和子女；在Anna/phase0将Stiva识别为兄长。这些是同输入、同提示下的真实恢复，不能把32B的错配提升成普遍能力壁垒。
+
+原文复核进一步支持Anna的关系纠正：native `chapter_20.txt`明确是Anna给兄长写信；错误在自动摘要把兄长变成丈夫，不在写信者本身。Mary的原文18章也区分她与Mrs. Widdowson。不过Step仍把Mary描述为旁观暧昧谈话，摘要未确证她在场；原文章节含不同地点的多个相遇，不能把婚姻关系修复当所有认知/场景归属都已认证。
+
+Louis的末阶段摘要本身交替出现疲惫让步、持续嫉妒和妻子/妹妹的不同判断，不能仅按“最终让步”标签把每种抵抗都叫唯一心理错误。Fernand的32B卡又混入Héloïse这一配偶名，Step恢复Mercedes；是否改善公开面对指控的行为仍待下游。Don Quixote的两8B C回复普遍坚持Dulcinea与骑士义务，说明稳定身份可保留，但三阶段Sancho关系变化的完整评分尚未完成。这些正反观察与不确定性一并保留。
