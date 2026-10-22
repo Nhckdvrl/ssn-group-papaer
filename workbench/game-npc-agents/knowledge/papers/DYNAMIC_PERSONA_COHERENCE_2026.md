@@ -25,3 +25,8 @@
 | [EMA: A process model of appraisal dynamics](../../../../library/themes/game-npc-social/papers/EMA_2009.md) | EMA已有随事件和应对变化的情绪过程，DPC新增的是LLM场景下身份/状态分评与修复。 |
 | [FAtiMA Modular: Towards an Agent Architecture with a Generic Appraisal Framework](../../../../library/themes/game-npc-social/papers/FATIMA_MODULAR_2014.md) | FAtiMA展示情绪模块与动机/ToM的组合，DPC只实例化少数心理标量和表达约束。 |
 | [Agent Sociodrama: Social-Dynamics-Guided Persona Recasting for LLM Agent Teams](AGENT_SOCIODRAMA_2026.md) | Sociodrama把动态情绪放入多角色关系与团队选角，DPC主要是单人物压力轨迹。 |
+
+
+## 2026-10-22矿区D复读与规范入口合并
+
+本轮再次阅读主文§1–6与附录A/B/D/E相关段落，确认身份L固定、状态累计及普通基线缺少完整历史等判断；没有新复现。本卡是本论文唯一正文权威卡，`library/themes/game-npc-social/papers/DYNAMIC_PERSONA_COHERENCE_2026.md`仅保留兼容导航，避免两份阅读记录分叉。对D的意义是状态/表达控制谱系，不据组件先例收窄整个角色经历学习问题。
