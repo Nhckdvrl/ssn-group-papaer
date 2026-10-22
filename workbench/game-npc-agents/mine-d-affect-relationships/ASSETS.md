@@ -96,6 +96,8 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 
 ## 可复用连续经历索引
 
+**来源资格：** 该索引定义的是固定训练文件内按发布`scene_index`排列的后继，不认证原著时序，也不保证不同发布文件同号场景相同。后续新增[EW来源资格说明](results/D-EW-SOURCE-QUALIFICATION-2026-10-22.md)及[对照清单](results/D-EW-SOURCE-BINDINGS.json)，既有原始文件和索引不重排。
+
 `data/EvolvingWorld/experience_index.sqlite`是固定4.18GB混合训练文件的只读索引，约28.66MiB，不复制正文。已将138,596条任务的精确UTF-8字节区间、SHA256与作品/角色/场景/任务元数据全部回读核验；51作品、2,671角色条目、22,306相邻出场链接。24,977更新出场均有同出场动机任务，其中19,937有互动生成任务。这是来源可用性，不是新增独立科研样本或已标好的成长真值。
 
 [轻量索引清单](results/D-EXPERIENCE-INDEX.json)记录固定HF revision、原文件hash、索引hash/大小、任务数及核验覆盖；SQLite留在资产目录，不进Git。`experience_store.py`将同一出场的原生任务和同人物下次出场连接；保留未说话角色、无更新样本及原始源划分，不按模型表现挑选。返回的原生conversation包含监督目标，调用方必须把目标和未来记录与当前推理输入分开。

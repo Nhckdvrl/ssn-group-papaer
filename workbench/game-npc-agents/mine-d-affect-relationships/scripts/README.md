@@ -15,6 +15,7 @@
 | 状态更新冻结 | `prepare_updates.py`、`prepare_closed_loop.py`、`prepare_closed_actor.py` | 原生单步或连续更新→状态输入与后续角色输入 |
 | 完整前缀冻结 | `prepare_prefix_memory.py` | 原生叙事单元→固定窗口、查询截断边界及actor模板 |
 | 源纠正 | `repair_arcane_source.py` | Monte原生14单元→完整覆盖的分片/归并任务；旧117章错误记录不覆盖 |
+| 源文件资格 | `inspect_source_bindings.py` | EW冻结训练场景与单独发布场景逐字对照；只记录不同命名空间，不重排、替换输入或重评分 |
 | 本地生成 | `run_local_arcane.py`、`run_local_text.py` | 冻结任务→逐条raw、token IDs、usage、配置/源码快照 |
 | 连续生成 | `run_closed_updates.py`、`run_prefix_memory.py` | 连续冻结经历＋上一提交态→全部尝试及提交态；统一恢复/承接规则 |
 | Token Plan | `run_judge.py`、`run_plan_state.py`、`run_plan_compiler.py` | 预登记输入→完整供应方回包/usage；禁止现金fallback |

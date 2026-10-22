@@ -212,7 +212,10 @@ def summarize(store):
         WHERE EXISTS (SELECT 1 FROM records r WHERE r.book=n.book AND r.role=n.role
             AND r.scene=n.scene AND r.task='interaction_generation')
     ''').fetchone()[0]
-    result['note'] = 'Source availability, not semantic correctness or independent experimental samples. Narrator-like entries are retained, not certified as NPCs.'
+    result['note'] = ('Source availability, not semantic correctness or independent experimental samples. '
+                      'Successors follow numeric scene_index within this training-file namespace; '
+                      'canonical narrative chronology and cross-file scene ID equivalence are not certified. '
+                      'Narrator-like entries are retained, not certified as NPCs.')
     return result
 
 

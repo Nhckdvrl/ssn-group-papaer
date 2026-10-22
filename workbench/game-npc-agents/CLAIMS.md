@@ -21,3 +21,5 @@ L0是本次对有限证据的限定，不是自动科学判决。后续按[EXECU
 - 2026-10-22源审计：D-E03/S的Monte Cristo 13phase×3模型共39回复读错叙事时点（14内部单元被本轮适配器误换117文学章号）。六作品Summary相关结论/区间暂撤回，不把差距归因于模型；原结果保留，纠正另表。[完整纠正](mine-d-affect-relationships/results/D-SOURCE-CORRECTION-2026-10-22.md)。D-E01/V/A、其他五作品S及D-E02/04–06不受影响。无已升级机制主张需继承。
 
 - 同日D-E07纠正完成：原生14单元来源重建后的S结果见[D-E06–08报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)；撤回的是原错误S结果，新表不会覆盖旧raw或使旧数字重新有效。
+
+- 2026-10-22 EW来源资格：训练文件内部接续成立不等于原著时序已认证，跨发布文件的scene_index也不通用。D-E04–06数值/原始输入保留，D-E06时间解释限定为发布资料顺序中的组件测量；无统一成长/惯性机制主张据此升级。[来源说明](mine-d-affect-relationships/results/D-EW-SOURCE-QUALIFICATION-2026-10-22.md)。

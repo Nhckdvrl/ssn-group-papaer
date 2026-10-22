@@ -9,6 +9,7 @@
 | ArcANE阶段表演 | [D-E01](D-E01-REPORT.md)、[表](D-E01-summary.json) | 64完整probe/205phase，原生量表；不是准确率 |
 | LongEvo文本状态 | [D-E02](D-E02-REPORT.md)、[内容表](D-E02-summary.json)、[来源句预测](D-E02-likelihood.json) | 64问题四条件；来源预测与人物质量分开 |
 | 普通摘要/容量旧记录 | [D-E03](D-E03-REPORT.md) | **原六作品S比较无效；旧raw/表/图保留历史** |
+| EW来源资格 | [文件间对照与时间边界](D-EW-SOURCE-QUALIFICATION-2026-10-22.md) | 冻结训练文件与单独场景文件的ID不通用；不认证全库原著时序；D-E06同文件绑定保留 |
 | 源错误与修复 | [D-SOURCE-CORRECTION](D-SOURCE-CORRECTION-2026-10-22.md) | Monte14内部单元误换117文学章；已修正，当前有效S见D-E07 |
 | 单步状态与强参照 | [D-E04](D-E04-REPORT.md)、[D-E05](D-E05-REPORT.md) | 通用两Qwen＋Step Plan；发布flag、PUF、人工事实审阅分别报告 |
 | 连续状态消费 | [Qwen8表](D-E06-qwen3_8b-summary.json)、[专用8B表](D-E06-arcane_8b_dpo-summary.json)、[32B表](D-E06-qwen3_32b-summary.json) | 29角色/8作品；跨消费者绝对NLL不排榜 |
