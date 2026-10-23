@@ -1,0 +1,372 @@
+{
+  "experiment": "D-E12",
+  "status": "AUTOMATED-RESULTS-PENDING-SCIENTIFIC-REVIEW",
+  "n_books": 6,
+  "n_episodes": 47,
+  "n_queries": 87,
+  "interpretation": "Post-D-E10 exploratory full-conversation supervision baseline. Same held-out source cohort, already observed; not independent confirmation or a new algorithm.",
+  "training": {
+    "experiment": "D-E12",
+    "started_utc": "2026-10-23T05:33:47.543284+00:00",
+    "args": {
+      "data": "/var/tmp/ssn-game-npc-d/data/training_D-E12",
+      "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+      "mode": "multitask",
+      "out": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn",
+      "seed": 42,
+      "max_hours": 24.0,
+      "resume": null
+    },
+    "complete": true,
+    "source_manifest_sha256": "a3564766285c008e05e38c719e606adb4e149e780860989aac37eb412d4c3d0e",
+    "script_sha256": "89ad71f6df4748d25b529120900a040614f2d6f7dbffd3fe1d5627b6c195d241",
+    "git_commit": "672936e2d528fc9607eeda4eb45b3cc371636e47",
+    "planned_examples": 16684,
+    "planned_forward_tokens": 85900222,
+    "planned_target_tokens": 4726227,
+    "planned_steps": 261,
+    "planned_tasks": {
+      "character_motivation_update": 5562,
+      "character_state_update": 5561,
+      "interaction_generation": 5561
+    },
+    "unique_source_rows": 16684,
+    "planned_order_sha256": "88adfb2ef2e3cf9aa6159b90aa8e93613129254c85c3354847a1c4e888a8e96a",
+    "resolved_checkpoint": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "local_weight_mirror": {
+      "source_snapshot": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "complete": true,
+      "files": [
+        {
+          "name": "generation_config.json",
+          "bytes": 239,
+          "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+        },
+        {
+          "name": "config.json",
+          "bytes": 728,
+          "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+        },
+        {
+          "name": ".gitattributes",
+          "bytes": 1570,
+          "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 9732,
+          "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+        },
+        {
+          "name": "LICENSE",
+          "bytes": 11343,
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+        },
+        {
+          "name": "README.md",
+          "bytes": 16660,
+          "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6"
+        },
+        {
+          "name": "model.safetensors.index.json",
+          "bytes": 32878,
+          "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
+        },
+        {
+          "name": "merges.txt",
+          "bytes": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "name": "vocab.json",
+          "bytes": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 11422654,
+          "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        {
+          "name": "model-00005-of-00005.safetensors",
+          "bytes": 1244659840,
+          "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
+        },
+        {
+          "name": "model-00004-of-00005.safetensors",
+          "bytes": 3187841392,
+          "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
+        },
+        {
+          "name": "model-00003-of-00005.safetensors",
+          "bytes": 3959604768,
+          "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
+        },
+        {
+          "name": "model-00002-of-00005.safetensors",
+          "bytes": 3993160032,
+          "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
+        },
+        {
+          "name": "model-00001-of-00005.safetensors",
+          "bytes": 3996250744,
+          "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
+        }
+      ],
+      "wall_s": 120.42048500105739
+    },
+    "torch": "2.9.1+cu129",
+    "transformers": "5.3.0",
+    "peft": "0.21.2",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "trainable_parameters": 174587904,
+    "trainable_dtypes": [
+      "torch.float32"
+    ],
+    "base_dtype": "bfloat16",
+    "optimizer": "AdamW",
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_steps": 27,
+    "gradient_accumulation": 64,
+    "loss": "Mean of per-example assistant-only causal CE",
+    "dropout": 0.05,
+    "alignment_check": {
+      "cases": [
+        {
+          "row_id": 103704,
+          "selected_ce": 3.384491205215454,
+          "full_masked_ce": 3.384491205215454,
+          "assistant_spans": 1
+        },
+        {
+          "row_id": 87209,
+          "selected_ce": 4.710623264312744,
+          "full_masked_ce": 4.710622310638428,
+          "assistant_spans": 2
+        }
+      ],
+      "extra_forwards": 4
+    },
+    "completed_steps": 261,
+    "seen_examples": 16684,
+    "seen_forward_tokens": 85900222,
+    "processed_tasks": {
+      "character_motivation_update": 5562,
+      "character_state_update": 5561,
+      "interaction_generation": 5561
+    },
+    "last_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/step-0200",
+    "final_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final",
+    "finished_utc": "2026-10-23T16:00:30.522986+00:00",
+    "wall_s": 37602.89250989631
+  },
+  "pipeline": {
+    "experiment": "D-E12",
+    "system": "multitask_sft",
+    "started_utc": "2026-10-23T16:00:35.003399+00:00",
+    "complete": true,
+    "episode_sha256": "57a9bd46c790198851d971400a39da685da35ee26e4d0edc58d4fd65a125349d",
+    "references_sha256": "2c8a02584eec691669b29d601d8944acdee61ab0e2862a002c9e6b11730fed46",
+    "runner_sha256": "865d755496aeb161078d14e3a8973cc99b1f60195d1204a335296e4dfb8c82b8",
+    "protocol_sha256": "22dcd276948ae40e0273290b9d70b4570a7c4961ef17c9b47d130322fef1d1a6",
+    "git_commit": "dec852d0c783bdb02f933cbaaa63db480704c90f",
+    "base_checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final",
+    "max_hours": 2.5,
+    "pid": 2677824,
+    "execution_attempt": 0,
+    "previous_wall_s": 0,
+    "initial_started_utc": "2026-10-23T16:00:35.003399+00:00",
+    "n_episodes": 47,
+    "n_outputs": 87,
+    "valid_outputs": 87,
+    "valid_states": 47,
+    "valid_motivations": 47,
+    "finished_utc": "2026-10-23T16:30:26.554233+00:00",
+    "wall_s": 1791.5091850087047,
+    "completed_generation_runs": [
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/update",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/motivation",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/actor",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/actor_recovery"
+    ],
+    "all_generation_runs": [
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/update",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/motivation",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/actor",
+      "/var/tmp/ssn-game-npc-d/runs/D-E12/system_multitask_sft/actor_recovery"
+    ],
+    "reused_generation_runs": [],
+    "recorded_generation_attempts": 183,
+    "gpu_process_hours": 0.49364388116221464
+  },
+  "valid_primary": 86,
+  "dimensions": null,
+  "by_book": {
+    "A Doll's House": {
+      "experience_interpretation": 4.095238095238095,
+      "justified_change_or_preservation": 3.5238095238095237,
+      "goals_and_relationships": 4.0476190476190474,
+      "speech_action_alignment": 4.428571428571429,
+      "character_expression": 4.190476190476191
+    },
+    "Jude the Obscure": {
+      "experience_interpretation": 3.8333333333333335,
+      "justified_change_or_preservation": 3.375,
+      "goals_and_relationships": 3.5,
+      "speech_action_alignment": 4.166666666666667,
+      "character_expression": 3.875
+    },
+    "Mansfield Park": {
+      "experience_interpretation": 4.0,
+      "justified_change_or_preservation": 3.375,
+      "goals_and_relationships": 3.6875,
+      "speech_action_alignment": 4.229166666666667,
+      "character_expression": 4.041666666666667
+    },
+    "My Ántonia": {
+      "experience_interpretation": 4.0625,
+      "justified_change_or_preservation": 3.7083333333333335,
+      "goals_and_relationships": 3.75,
+      "speech_action_alignment": 3.875,
+      "character_expression": 4.020833333333333
+    },
+    "Siddhartha": {
+      "experience_interpretation": 4.142857142857143,
+      "justified_change_or_preservation": 3.8095238095238093,
+      "goals_and_relationships": 4.095238095238095,
+      "speech_action_alignment": 4.476190476190476,
+      "character_expression": 4.261904761904762
+    },
+    "White Fang": {
+      "experience_interpretation": 3.7083333333333335,
+      "justified_change_or_preservation": 3.7083333333333335,
+      "goals_and_relationships": 4.041666666666667,
+      "speech_action_alignment": 4.104166666666667,
+      "character_expression": 4.125
+    }
+  },
+  "macro_quality": null,
+  "repeat_pairs": 12,
+  "repeat_mean_absolute_difference": 0.03333333333333333,
+  "inference_wall_s": 3569.7110244482756,
+  "paired_vs": {},
+  "fixed_consumer_nll": 5.467547397528376,
+  "validation": [
+    {
+      "label": "initial",
+      "step": 0,
+      "mean_token_nll": 2.263936089797436,
+      "by_task": {
+        "interaction_generation": {
+          "target_tokens": 18024,
+          "examples": 128,
+          "mean_token_nll": 4.523303311293357
+        },
+        "character_state_update": {
+          "target_tokens": 69686,
+          "examples": 128,
+          "mean_token_nll": 1.5851290466792753
+        },
+        "character_motivation_update": {
+          "target_tokens": 11039,
+          "examples": 128,
+          "mean_token_nll": 2.8600510283325966
+        }
+      }
+    },
+    {
+      "label": "halfway",
+      "step": 130,
+      "mean_token_nll": 1.377932375783318,
+      "by_task": {
+        "interaction_generation": {
+          "target_tokens": 18024,
+          "examples": 128,
+          "mean_token_nll": 2.3613321674938894
+        },
+        "character_state_update": {
+          "target_tokens": 69686,
+          "examples": 128,
+          "mean_token_nll": 1.0894971315115
+        },
+        "character_motivation_update": {
+          "target_tokens": 11039,
+          "examples": 128,
+          "mean_token_nll": 1.5930877871914655
+        }
+      }
+    },
+    {
+      "label": "final",
+      "step": 261,
+      "mean_token_nll": 1.359574862545736,
+      "by_task": {
+        "interaction_generation": {
+          "target_tokens": 18024,
+          "examples": 128,
+          "mean_token_nll": 2.339522211202716
+        },
+        "character_state_update": {
+          "target_tokens": 69686,
+          "examples": 128,
+          "mean_token_nll": 1.0726936867615797
+        },
+        "character_motivation_update": {
+          "target_tokens": 11039,
+          "examples": 128,
+          "mean_token_nll": 1.5705568902204623
+        }
+      }
+    }
+  ],
+  "manifest": {
+    "experiment": "D-E12",
+    "source_revision": "ae7d82d38909783805979a8055d5ae913cb982f7",
+    "source_sha256": "2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07",
+    "partition_inventory_sha256": "f2914f4e9414bec6b5df7db4b7f3fe354d6155eb4bb5e5e17f6521e1252f1b73",
+    "tokenizer": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "script_sha256": "bb0f4e3a60bca3b15892352d19ae5059c04802b47242ad0c4d96dda1f57d4d68",
+    "dtype": "little-endian int32",
+    "n_tokens": 279014061,
+    "counts": {
+      "train/interaction_generation": 23088,
+      "train/character_state_update": 14079,
+      "train/character_motivation_update": 14079,
+      "validation/interaction_generation": 128,
+      "validation/character_state_update": 128,
+      "validation/character_motivation_update": 128
+    },
+    "total_tokens": {
+      "train/interaction_generation": 153960613,
+      "train/character_state_update": 42949543,
+      "train/character_motivation_update": 80589471,
+      "validation/interaction_generation": 636948,
+      "validation/character_state_update": 356737,
+      "validation/character_motivation_update": 520749
+    },
+    "exclusions": {},
+    "native_update_two_epoch_tokens": 85899086,
+    "files": {
+      "tokens.bin": {
+        "sha256": "8ee5e5f64a048552ba0086379dd0b27a5c5ad5845da0698b96ec033f79aa7544",
+        "bytes": 1116056244
+      },
+      "entries.jsonl": {
+        "sha256": "93edbb895fc8992113c81e09137423e5c0fddc081d4a2a6406f7aa221f3b7dfd",
+        "bytes": 17667533
+      },
+      "exclusions.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "max_sequence": 32768,
+    "no_truncation": true,
+    "actor_target": "All assistant turns in each full native conversation",
+    "target_helper_sha256": "428ff13dbd5e07cb2602834d0a8b1b9bdf47d04801d8fd36d4e324be49082e27",
+    "model_calls": 0
+  }
+}
