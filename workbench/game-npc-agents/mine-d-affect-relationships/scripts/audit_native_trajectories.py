@@ -83,6 +83,28 @@ def main():
             messages_equal=len(base)==len(updated) and all(a['messages']==b['messages'] for a,b in zip(base,updated)),
             responses_equal=len(base)==len(updated) and all(a['response']==b['response'] for a,b in zip(base,updated)),
             token_ids_equal=len(base)==len(updated) and all(a['completion_token_ids']==b['completion_token_ids'] for a,b in zip(base,updated))))
+    judges=runs/'judges';interruption=load(judges/'SOURCE_INPUT_INTERRUPTION.json')
+    if interruption:
+        tasks=[json.loads(x) for x in (judges/'all_tasks.jsonl').read_text().splitlines()]
+        example=next(x for x in tasks if x['task_id']=='base/6/scene0/PF')
+        before=inputs[6]['character_states']['Alice']['hidden_tracker']
+        after=next(x['hidden_tracker'] for x in load(runs/'base/snapshot_6/result.json')['scenes'][0]['character_reflections'] if x['character']=='Alice')
+        section=example['messages'][1]['content'].split('## Character Hidden Trackers (at scene start)',1)[1].split('\n## ',1)[0]
+        assert before!=after and after in section and before not in section
+        result['scoring_source_time_audit']=dict(interruption=interruption,
+            affected_metrics=['PF','SSF','MDB'],affected_registered_tasks=sum(x['metric'] in ['PF','SSF','MDB'] for x in tasks),
+            example_task_id=example['task_id'],example_prompt_sha256=hashlib.sha256(example['messages'][1]['content'].encode()).hexdigest(),
+            actual_before_tracker_sha256=hashlib.sha256(before.encode()).hexdigest(),
+            actual_after_tracker_sha256=hashlib.sha256(after.encode()).hexdigest(),
+            labeled_start_section_contains_actual_end_tracker=True,labeled_start_section_contains_actual_start_tracker=False,
+            corrected_input_reruns=False,
+            interpretation='Input time mismatch in the fixed native implementation, confirmed on saved input. Entire affected metric classes are invalidated without selecting by score; no claim about the effect size or all published results.')
+        qualified=judges/'qualified_tasks.jsonl'
+        if qualified.exists():
+            newer=[json.loads(x) for x in qualified.read_text().splitlines()]
+            assert [(x['task_id'],x['messages']) for x in tasks]==[(x['task_id'],x['messages']) for x in newer]
+            result['scoring_source_time_audit']['registered_messages_unchanged']=True
+            result['scoring_source_time_audit']['source_qualified_tasks']=sum(not x.get('unscored_reason') for x in newer)
     Path(a.out).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(dict(systems=list(result['systems']),pre_update_controls=result['pre_update_controls']),indent=2))
 

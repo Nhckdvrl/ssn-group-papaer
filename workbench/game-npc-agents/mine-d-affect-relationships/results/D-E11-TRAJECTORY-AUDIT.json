@@ -2,7 +2,7 @@
   "experiment": "D-E11",
   "post_hoc": true,
   "model_calls": 0,
-  "created_utc": "2026-10-23T11:04:35.899848+00:00",
+  "created_utc": "2026-10-23T11:54:02.011236+00:00",
   "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
   "systems": {
     "base": {
@@ -1061,5 +1061,41 @@
       "token_ids_equal": true
     }
   ],
-  "interpretation": "Operational/state-coverage description. Update flags and exact repeated strings are not growth/failure scores. Terminal snapshots include errors; incomplete cohorts are not survivor-only quality estimates."
+  "interpretation": "Operational/state-coverage description. Update flags and exact repeated strings are not growth/failure scores. Terminal snapshots include errors; incomplete cohorts are not survivor-only quality estimates.",
+  "scoring_source_time_audit": {
+    "interruption": {
+      "created_utc": "2026-10-23T11:19:13.799789+00:00",
+      "reason": "Source audit found PF/SSF/MDB tracker labeled scene-start is actually scene-end; stop further invalid input scoring, retain every attempt; no corrected-input rerun authorized in this audit",
+      "affected_metrics": [
+        "PF",
+        "SSF",
+        "MDB"
+      ],
+      "completed_raw_records": 18,
+      "possible_inflight_task_ids": [
+        "base/6/character-3bc51062973c458d/PES",
+        "base/6/character-72a57118895d8ac7/PES"
+      ],
+      "inflight_completion_tokens": null,
+      "signal": "SIGINT",
+      "worker_pid": 2558636,
+      "other_workers_untouched": true
+    },
+    "affected_metrics": [
+      "PF",
+      "SSF",
+      "MDB"
+    ],
+    "affected_registered_tasks": 129,
+    "example_task_id": "base/6/scene0/PF",
+    "example_prompt_sha256": "26edb7c6b6095c3aea12fd069a4e71d56b534205ee4bad177e52b70878504ec4",
+    "actual_before_tracker_sha256": "88c8924e0d40479d619a7a3a57985bbf5e8c1cf843cddae59ed4dc8ca8e0e3e0",
+    "actual_after_tracker_sha256": "bea5243eb4a3aba326ab8745ed417055323809705021ed5ba1a502efcb180ca1",
+    "labeled_start_section_contains_actual_end_tracker": true,
+    "labeled_start_section_contains_actual_start_tracker": false,
+    "corrected_input_reruns": false,
+    "interpretation": "Input time mismatch in the fixed native implementation, confirmed on saved input. Entire affected metric classes are invalidated without selecting by score; no claim about the effect size or all published results.",
+    "registered_messages_unchanged": true,
+    "source_qualified_tasks": 190
+  }
 }
