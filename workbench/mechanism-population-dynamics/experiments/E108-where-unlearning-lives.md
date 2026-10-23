@@ -1,7 +1,7 @@
 # E108：遗忘在功能上落在哪里？——注意力模式修补分解（2026-10-17 03:20）
 
 - **状态：** DONE（只需推理；scripts/e108_patch.py、scripts/e101_nameattn.py）
-- **类型：** CLAIM（检验 E105c 背后的机制，见 knowledge/research/QUESTION_AUDIT_2026-10-17.md）
+- **类型：** CLAIM（检验 E105c 背后的机制，见 [RESEARCH_HISTORY.md §6](../RESEARCH_HISTORY.md)（原 QUESTION_AUDIT_2026-10-17 已并入））
 - **问题：** E105c 显示，梯度差遗忘若只改 QK，会被一般训练撤回（r ≈ 0.85）；只改 OV 或 MLP 则大半保留（r ≈ 0.48）。这是因为两者在功能上做了不同的事（一个改读取、一个改写出），还是功能相同、只是实现位置不同？
 
 ## 设计

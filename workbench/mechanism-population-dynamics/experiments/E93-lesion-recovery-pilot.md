@@ -1,7 +1,7 @@
 # E93：预训练中途受损后，能恢复什么？——受控损伤 + 匹配对照继续训练的校准 pilot（2026-10-16）
 
 - **状态：** RUNNING（2026-10-16 02:12 起，8 个分组 × 1 卡：C_lo、C_hi、H_lo、H_hi、H2_lo（同时重置 3.2 与备份头 3.0）、R_lo（3.8）、N_lo、N_hi；warm-up 200 步）
-- **类型：** PILOT（为方向 B 做校准；方向见 [knowledge/research/DIRECTION_2026-10-16.md](../knowledge/research/DIRECTION_2026-10-16.md)）
+- **类型：** PILOT（为方向 B 做校准；方向见 [RESEARCH_HISTORY.md §6](../RESEARCH_HISTORY.md)（原 DIRECTION_2026-10-16 已并入））
 - **来源：** E90：两个自然 spike 后，损失大体恢复，晚出现的示例格式 ICL 不恢复，重学按原发育顺序（n = 2，无法区分原因）。DataDecide 1100 个 run 只有 4 次小幅困惑度回升，自然事件太少，必须受控。
 - **最强已有认识：** Kim et al. ICLR 2025（后期知识获取变难、知识熵衰减）；Chang et al. NeurIPS 2024（后期学习效率下降不归因于学习率衰减）；ZClip / K2-V2（以损失能否恢复区分良性 / 恶性 spike）；BLOOM 头重初始化修复（arXiv 2603.09616，只看困惑度）；［更正 2026-10-16 21:15：此处原误记为 Hapax 的结果，出处未核实，不再引用；Hapax 是屏蔽可由 induction 预测的 token 的损失］。**未见逐项能力的损伤—恢复追踪。**
 

@@ -70,4 +70,4 @@ Spearman–Brown 公式 \(R_\mathrm{SB}=2r/(1+r)\) 假设拆半同类误差；�
 
 优先在一条局部路径上满足合同，再扩展到多 GPU。不要先开80个run来换取一个可能永远解释不清的平均相关。
 
-参见[失败手册](FAILURE_MODES.md)与[候选最小实验](../research/PILOT_DESIGNS.md)。
+参见[失败手册](FAILURE_MODES.md)与[研究总档](../../RESEARCH_HISTORY.md)。

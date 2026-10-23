@@ -5,4 +5,4 @@
 
 完整文件 [main.tex](main.tex) · [main.pdf](main.pdf) · [build.sh](build.sh) 以及 `figures/`、`tables/`、`refs.bib` 全部保留；不同版本的数值与叙事不可混用。历史 README 可从 Git 旧提交查看。
 
-[最终 v3](../paper-acl-v3/) · [结项科学边界](../CLOSEOUT.md) · [研究资产地图](../ASSET_INDEX.md)。
+[最终 v3](../paper-acl-v3/) · [研究总档](../RESEARCH_HISTORY.md)。

@@ -1,7 +1,7 @@
 # E105：把“角色存于接口”接到真实的遗忘 / 重学问题上（2026-10-17）
 
 - **状态：** DESIGN + PILOT（00:30 起；基线 pilot 在跑）
-- **类型：** CLAIM（主线最关键的“so what”检验，见 knowledge/research/MAINLINE_2026-10-17.md §6.2）
+- **类型：** CLAIM（主线最关键的“so what”检验，见 [RESEARCH_HISTORY.md §6](../RESEARCH_HISTORY.md)（原 MAINLINE_2026-10-17 已并入） §6.2）
 - **最强已有认识：**
   - 遗忘普遍可被重学（Deeb & Roger 2024；Jain 2024）。
   - 抗重学可由权重距离 / 线性模式连通性预测（Siddiqui et al. 2025）。

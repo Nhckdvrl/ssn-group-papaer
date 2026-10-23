@@ -1,7 +1,7 @@
 # E109：读取侧 / 写出侧的不对称，在事实回忆与定向重学攻击下是否成立（2026-10-17）
 
 - **状态：** RUNNING（03:20 启动）
-- **类型：** CLAIM（主问题 Q1 的关键推广，见 knowledge/research/QUESTION_AUDIT_2026-10-17.md §4）
+- **类型：** CLAIM（主问题 Q1 的关键推广，见 [RESEARCH_HISTORY.md §6](../RESEARCH_HISTORY.md)（原 QUESTION_AUDIT_2026-10-17 已并入） §4）
 - **来源：** E105c / E108：在 IOI 上，梯度差遗忘若由读者自身参数（QK）实现，被一般训练撤回 r ≈ 0.85；若由上游写出内容（OV / MLP）实现，r ≈ 0.48。
 - **风险：** 只在 IOI、只在一般数据攻击下成立；遗忘社区关心事实类能力与定向攻击（Deeb & Roger 2024 的 RTT）。
 

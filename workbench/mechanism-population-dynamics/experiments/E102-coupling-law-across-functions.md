@@ -1,7 +1,7 @@
 # E102：耦合规律在另外四个功能上是否成立——事先预测（2026-10-16）
 
 - **状态：** DONE（00:50）；原为 PLANNED（预注册 19:50；QK / ROT 分组在卡空出后启动，完整重置分组 23:00 后启动）
-- **类型：** CLAIM（对 knowledge/syntheses/REPAIR_FOLLOWS_COUPLING.md 的跨功能检验）
+- **类型：** CLAIM（对 [RESEARCH_HISTORY.md §6](../RESEARCH_HISTORY.md)（原 REPAIR_FOLLOWS_COUPLING 已并入） 的跨功能检验）
 - **来源：** 在 3.2（previous-token）与 8.9（IOI）上，只重置 QK、保留并对准的输出时，受损头长回原角色；把输出旋转，则与完整重置相同（E96、E99、E101）。
 
 ## 设置

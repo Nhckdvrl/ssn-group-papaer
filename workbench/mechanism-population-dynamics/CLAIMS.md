@@ -1,6 +1,6 @@
 # 主张账本（CLAIMS）
 
-**2026-10-11 结项声明：CLOSED / TERMINATED。** 本表保留历史 C01/C02/C03/C05 的 L1/L2 局部证据、限制和撤回；这些等级并不等于独立确认的最终机制论文主张。项目不再新增实验或升级主张。见 [结项综述](CLOSEOUT.md)。
+**2026-10-11 结项声明：CLOSED / TERMINATED。** 本表保留历史 C01/C02/C03/C05 的 L1/L2 局部证据、限制和撤回；这些等级并不等于独立确认的最终机制论文主张。项目不再新增实验或升级主张。见 [结项综述](RESEARCH_HISTORY.md)。
 
 证据等级见 `../EXECUTION.md`；baseline reproduction 不自动升级为 claim。
 
