@@ -125,6 +125,8 @@ EW来源审阅补充：发布训练文件内部的状态接续可复查，但不
 
 ## 来源扫描记录
 
+2026-10-23审计期间补读EvolvingWorld训练/完整系统设置和[Belief–Behavior Trust](../../../library/themes/game-npc-social/papers/BELIEF_BEHAVIOR_TRUST_2025.md)的个体预测协议。当前角色端预算基线不代替完整EW；“描述/预测与行为应分别测”已有明确谱系，而人物经历导致关系/目标适应仍是不同的对象。此处只更新完整定位，不从信任转账或自预测不准迁入新的任务，不恢复矿区A。
+
 2026-10-23方向核验：重查[Curse of Knowledge](../../../library/themes/game-npc-social/papers/CURSE_OF_KNOWLEDGE_2026.md)、[ANIMASK](../../../library/themes/game-npc-social/papers/ANIMASK_2026.md)、[匿名化评价](../../../library/themes/game-npc-social/papers/ANONYMOUS_ROLEPLAY_2026.md)及ArcANE v2。前两者已占有“输入干预与行为归属”相关主张，不能只说静态人物/知识而忽略行动和历史路径；**compression risk**是把新设计概括成反事实双胞胎换变量。可能的整体增量仍在可见经历如何改变该人物的解释、关系/目标及跨互动延续，需要真实证据，并非当前已成立主张。venue corpus近邻检索同时保留R4、CRPO、CoSER等训练参照，没有因为相邻就关线。
 
 2026-10-22执行venue corpus近邻检索，核查最新arXiv、角色扮演awesome列表及DailyArXiv镜像（镜像标记更新至10-19）。新精读PD-LLM、EvoSpark，补CAPS理论选读；AdvRole仅核查官方摘要，其“evolving”指训练课程与Actor进步，不是角色人生变化。镜像和检索只作发现入口，以上实质判断回到原文/官方代码。未声称已读尽2026年全部相关工作。

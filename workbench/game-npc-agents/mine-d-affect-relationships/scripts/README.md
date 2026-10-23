@@ -40,6 +40,7 @@
 | 事后描述 | `describe_update_context.py`、`audit_update_subjects.py` | 输入结构统计、已完成审阅记录导出；不是新增模型评价 |
 | 学习监督与信息通路审计 | `audit_adaptation_learning.py` | D-E10训练顺序、原生多轮源及实际输入→目标覆盖/输出长度/frozen历史/来源中间回复；离线事后复核，不重评分 |
 | 配对读数核验 | `audit_contrast_calibration.py` | 已完成D-E13→115对交换完整性、位置映射及引文机械分类；原评分不变，无语义自动纠分 |
+| 完整对话学习终态核验 | `audit_fullturn_study.py` | 仅在D-E12完整终止后，核对缓存/最终adapter/实际消费路径、原分与作品CI；需D-E10参照及重建token cache，完全离线，不启动模型 |
 | 持久归档 | `archive_runs.py` | 已结束/有中断说明的run与冻结输入→仓库外tar.gz＋逐成员SHA清单 |
 | 学习与互动持久归档 | `archive_adaptation_study.py` | 等D-E10/D-E11注册结果完成，保存原始证据和最终LoRA/优化器，逐成员核验后仅同步轻量manifest |
 
