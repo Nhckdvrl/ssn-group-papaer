@@ -17,6 +17,21 @@ from run_adaptation_pipeline import Q32,read,write
 
 SYSTEMS=['base','update_sft','multitask_sft']
 METRICS=['PF','SSF','MDB','PUF','MQ','CR']
+INVALID_TRACKER_METRICS={'PF','SSF','MDB'}
+
+
+def qualify_after_source_audit(tasks):
+    """Do not rerun corrected inputs: retain original tasks but invalidate wrong-time metrics."""
+    tasks=copy.deepcopy(tasks)
+    for task in tasks:
+        if task['metric'] in INVALID_TRACKER_METRICS:
+            task['unscored_reason']='Source-time audit: scene-end hidden tracker is labeled scene-start in upstream PF/SSF/MDB inputs; no corrected-input rerun in this study'
+    return tasks
+
+
+def selected_score(task,raw):
+    # A well-formed answer to an invalid source view cannot enter scientific scores.
+    return parse_native_score(raw['response']) if raw and not task.get('unscored_reason') else None
 
 
 def has_character_state(view):
@@ -81,9 +96,18 @@ def prepare(root):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--sync-main',action='store_true');a=p.parse_args()
-    root=Path(a.asset_root);out=root/'runs/D-E11/judges';out.mkdir(exist_ok=False)
-    (out/'runner_source.py').write_bytes(Path(__file__).read_bytes())
+    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--sync-main',action='store_true')
+    p.add_argument('--resume-after-source-audit',action='store_true');a=p.parse_args()
+    root=Path(a.asset_root);out=root/'runs/D-E11/judges'
+    if a.resume_after_source_audit:
+        if not (out/'SOURCE_INPUT_INTERRUPTION.json').exists():raise ValueError('Documented source interruption required')
+        if (out/'status_before_source_audit.json').exists():raise FileExistsError('Already resumed; inspect rather than duplicate')
+        old=json.loads((out/'status.json').read_text())
+        if not old.get('error') or old.get('complete'):raise ValueError('Original coordinator must be terminal before resume')
+        (out/'status_before_source_audit.json').write_bytes((out/'status.json').read_bytes())
+        (out/'runner_source_qualified.py').write_bytes(Path(__file__).read_bytes())
+    else:
+        out.mkdir(exist_ok=False);(out/'runner_source.py').write_bytes(Path(__file__).read_bytes())
     status=dict(complete=False,error=None,phase='waiting',started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
     def save():(out/'status.json').write_text(json.dumps(status,indent=2)+'\n')
     def load(path):
@@ -103,7 +127,13 @@ def main():
         if subprocess.check_output(['git','rev-parse','HEAD'],cwd=vendor,text=True).strip()!=REVISION:raise ValueError('Upstream judge revision changed')
         status['vendor_revision']=REVISION
         status['upstream_hashes']={name:digest(vendor/'evaluation'/name) for name in ['prompts.py','data_loader.py']}
-        tasks=prepare(root);write(out/'all_tasks.jsonl',tasks);status['phase']='judge';save()
+        tasks=prepare(root)
+        if a.resume_after_source_audit:
+            if tasks!=read(out/'all_tasks.jsonl'):raise ValueError('Original native tasks changed')
+            tasks=qualify_after_source_audit(tasks);write(out/'qualified_tasks.jsonl',tasks)
+            status['source_qualification']=json.loads((out/'SOURCE_INPUT_INTERRUPTION.json').read_text())
+        else:write(out/'all_tasks.jsonl',tasks)
+        status['phase']='judge';save()
         from transformers import AutoTokenizer
         from cache_local_weights import resolve_local_checkpoint
         tok=AutoTokenizer.from_pretrained(resolve_local_checkpoint(Q32)[0],local_files_only=True)
@@ -114,32 +144,49 @@ def main():
             n=len(tok.apply_chat_template(t['messages'],tokenize=True,add_generation_prompt=True,enable_thinking=False))
             if n+2048>32768:excluded.append(dict(task_id=t['task_id'],input_tokens=n,reason='No truncation; insufficient recovery space'))
             else:eligible.append(t)
-        write(out/'unscored_tasks.jsonl',excluded);write(out/'first_tasks.jsonl',eligible)
+        prefix='qualified_' if a.resume_after_source_audit else ''
+        write(out/(prefix+'unscored_tasks.jsonl'),excluded);write(out/(prefix+'first_tasks.jsonl'),eligible)
+        scoring_errors=[]
         def invoke(file,name,limit):
             used=sum(json.loads(q.read_text()).get('wall_s',0) for q in out.glob('*/metadata.json'))
-            if used>=4*3600:raise TimeoutError('D-E11 judge budget exhausted')
+            if used>=4*3600:
+                scoring_errors.append(dict(stage=name,error='Registered D-E11 judge budget exhausted'));return {}
             cmd=[sys.executable,str(Path(__file__).with_name('run_local_text.py')),'--tasks',str(file),'--checkpoint',Q32,
                  '--revision',Path(Q32).name,'--model','qwen3_32b_native_judge','--out',str(out/name),
                  '--max-tokens',str(limit),'--batch-size','2','--max-seconds',str(4*3600-used)]
-            with (out/(name+'.log')).open('x') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True)
-            return {r['task_id']:r for r in read(out/name/'responses.jsonl')}
-        first=invoke(out/'first_tasks.jsonl','first',1024) if eligible else {}
-        bad=[t for t in eligible if parse_native_score(first[t['task_id']]['response']) is None];second={}
-        if bad:
+            with (out/(name+'.log')).open('x') as f:process=subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT)
+            if process.returncode:scoring_errors.append(dict(stage=name,returncode=process.returncode,error='Registered worker stopped; preserve completed rows and missing coverage, no automatic retry'))
+            file=out/name/'responses.jsonl'
+            return {r['task_id']:r for r in read(file)} if file.exists() else {}
+        first={r['task_id']:r for r in read(out/'first/responses.jsonl')} if a.resume_after_source_audit else {}
+        pending=[t for t in eligible if t['task_id'] not in first]
+        if pending:
+            file=out/('first_remaining_tasks.jsonl' if a.resume_after_source_audit else 'first_tasks.jsonl')
+            if a.resume_after_source_audit:write(file,pending)
+            first.update(invoke(file,'first_remaining' if a.resume_after_source_audit else 'first',1024))
+        bad=[t for t in eligible if t['task_id'] in first and parse_native_score(first[t['task_id']]['response']) is None];second={}
+        if bad and not scoring_errors:
             write(out/'recovery_tasks.jsonl',bad);second=invoke(out/'recovery_tasks.jsonl','recovery',2048)
         selected=[]
         for t in tasks:
-            raw=second.get(t['task_id'],first.get(t['task_id']));score=parse_native_score(raw['response']) if raw else None
+            raw=second.get(t['task_id'],first.get(t['task_id']));score=selected_score(t,raw)
             selected.append(dict(**{k:t[k] for k in ['task_id','system','book_name','snapshot_index','metric','role','repeat']},
                                  valid=score is not None,result=score,selected_attempt=2 if t['task_id'] in second else 1 if raw else 0,
-                                 unscored_reason=t.get('unscored_reason')))
+                                 unscored_reason=t.get('unscored_reason') or ('No completed response within registered execution' if raw is None else None)))
         write(out/'selected.jsonl',selected)
         books=sorted({t['input']['book_name'] for t in json.loads((root/'data/native_D-E11/snapshots.json').read_text())})
         result=dict(experiment='D-E11',status='AUTOMATED-AGGREGATION-PENDING-CASE-REVIEW',n_books=6,systems={},
                     scope='Short generated native trajectories, six publisher-OOD books, one seed, fixed 8B world. Official character rubric subset; PES sees full generated transcripts, not teacher summaries. Not player study or validated growth accuracy.')
         result['generation_coordinator']=load(root/'runs/D-E11/queue_status.json')
+        result['source_qualification']=status.get('source_qualification')
+        result['scoring_errors']=scoring_errors
+        result['planned_judgments']=len(tasks);result['source_and_context_eligible_judgments']=len(eligible)
+        result['valid_judgments']=sum(r['valid'] for r in selected)
+        result['judge_process_seconds']=sum(load(q).get('wall_s',0) for q in out.glob('*/metadata.json'))
+        result['judge_saved_response_records']=sum(len(read(q)) for q in out.glob('*/responses.jsonl'))
         result['all_generation_cohorts_processed']=all(load(root/'runs/D-E11'/s/'metadata.json').get('complete') for s in SYSTEMS)
         if not result['all_generation_cohorts_processed']:result['status']='PARTIAL-GENERATION-COVERAGE-PENDING-CASE-REVIEW'
+        if a.resume_after_source_audit:result['status']='SOURCE-QUALIFIED-PARTIAL-COVERAGE-PENDING-CASE-REVIEW'
         result['interrupted_runs']=[]
         for folder in sorted((root/'runs/D-E11').glob('*_interrupted*')):
             meta=load(folder/'metadata.json')
@@ -182,7 +229,9 @@ def main():
             subprocess.run(['git','add','--',file],cwd=repo,check=True)
             subprocess.run(['git','commit','--only','-m','保存原生连续互动的完整覆盖和分项读数，等待科研案例审阅','--',file],cwd=repo,check=True)
             subprocess.run(['git','push','origin','main'],cwd=repo,check=True)
-        status['complete']=True
+        status['all_eligible_judgments_completed']=all(t['task_id'] in first for t in eligible)
+        status['scoring_errors']=scoring_errors
+        status['complete']=True  # Registered execution terminated and evidence saved, not all metrics scientifically valid.
     except BaseException as e:
         status['error']=repr(e);raise
     finally:

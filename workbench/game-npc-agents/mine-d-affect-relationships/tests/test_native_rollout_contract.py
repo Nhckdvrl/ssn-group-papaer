@@ -9,7 +9,7 @@ import unittest
 
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/'scripts'))
 from run_native_rollouts import LocalClient,select_snapshots,uses_adapter
-from score_native_rollouts import parse_native_score,has_character_state
+from score_native_rollouts import parse_native_score,has_character_state,qualify_after_source_audit,selected_score
 
 
 class NativeRolloutContract(unittest.TestCase):
@@ -39,6 +39,17 @@ class NativeRolloutContract(unittest.TestCase):
         self.assertFalse(has_character_state(dict(profile_history=[{'profile':''}])))
         self.assertTrue(has_character_state(dict(initial_profile='prior outlook',profile_history=[])))
         self.assertTrue(has_character_state(dict(initial_profile='',profile_history=[{'profile':'observed state'}])))
+
+    def test_wrong_time_view_cannot_enter_scores_even_if_response_is_valid(self):
+        tasks=[dict(task_id=m,metric=m,messages=[{'role':'user','content':'frozen input'}]) for m in ['PF','SSF','MDB','PUF','MQ','CR','PES']]
+        tasks[-1]['unscored_reason']='Missing persisted profile'
+        original=copy.deepcopy(tasks);qualified=qualify_after_source_audit(tasks)
+        raw=dict(response='{"merits":[{"points":8}],"demerits":[]}')
+        self.assertEqual(tasks,original)
+        for t,before in zip(qualified,original):
+            self.assertEqual(t['messages'],before['messages'])
+            if t['metric'] in ['PF','SSF','MDB','PES']:self.assertIsNone(selected_score(t,raw))
+            else:self.assertEqual(selected_score(t,raw)['score'],58)
 
     def test_generation_failure_keeps_request_and_error(self):
         class IDs:
