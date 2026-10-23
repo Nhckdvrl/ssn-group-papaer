@@ -32,7 +32,7 @@
 
 当前没有新机制主张升级。已有方法的成功与残差作为底座；主要研究动作以[整体定位](POSITIONING.md)为准，不把修卡片、涨一个分数或完成更多调用当作方向本身。
 
-**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED，研究人物从经历改变后续互动。[D-E10科研报告](results/D-E10-RESEARCH-REPORT.md)：两训练、七系统609回复/693评分及共同消费者前向均完成并归档。base/U/MT/strong32质量为4.055/4.083/3.872/4.330；U差+0.027、95%CI[-0.120,+0.184]，MT下降，不能用更新NLL改善代替成长证据。12预选人物的七系统链条已审阅，C03仅限定L0观察。D-E11在GPU1继续原生互动及其后评分；[D-E12](experiments/D-E12-full-conversation-character-training.md)在GPU3实际训练完整对话监督基线，同约85.9M forward预算监督15,195个互动回复。没有新算法有效性主张。[学习数据入口](data/README.md)保留整作品隔离。
+**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED，研究人物从经历改变后续互动。[D-E10科研报告](results/D-E10-RESEARCH-REPORT.md)：两训练、七系统609回复/693评分及共同消费者前向均完成并归档。base/U/MT/strong32质量为4.055/4.083/3.872/4.330；U差+0.027、95%CI[-0.120,+0.184]，MT下降，不能用更新NLL改善代替成长证据。12预选人物的七系统链条已审阅，C03仅限定L0观察。[D-E11](results/D-E11-RESEARCH-REPORT.md)的506互动/合格评分已结束，三指标时点失效与覆盖缺失保留，不作完整模型排名；[D-E12](experiments/D-E12-full-conversation-character-training.md)在GPU3实际训练完整对话监督基线，同约85.9M forward预算监督15,195个互动回复。没有新算法有效性主张。[学习数据入口](data/README.md)保留整作品隔离。
 
 ## 我们要理解什么
 

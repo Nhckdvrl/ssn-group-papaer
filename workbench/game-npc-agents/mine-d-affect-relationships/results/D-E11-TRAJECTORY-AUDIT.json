@@ -2,7 +2,7 @@
   "experiment": "D-E11",
   "post_hoc": true,
   "model_calls": 0,
-  "created_utc": "2026-10-23T11:54:02.011236+00:00",
+  "created_utc": "2026-10-23T13:48:55.651117+00:00",
   "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
   "systems": {
     "base": {
@@ -1097,5 +1097,94 @@
     "interpretation": "Input time mismatch in the fixed native implementation, confirmed on saved input. Entire affected metric classes are invalidated without selecting by score; no claim about the effect size or all published results.",
     "registered_messages_unchanged": true,
     "source_qualified_tasks": 190
+  },
+  "completed_scoring_audit": {
+    "complete": true,
+    "model_calls": 0,
+    "execution_agent_recomputation_not_independent_review": true,
+    "original_task_messages_verified": true,
+    "valid_scores_and_all_aggregates_recomputed": true,
+    "groups": {
+      "base": {
+        "registered": 112,
+        "source_qualified": 66,
+        "valid": 63,
+        "by_metric": {
+          "PUF": {
+            "valid": 15,
+            "planned": 15
+          },
+          "MQ": {
+            "valid": 15,
+            "planned": 15
+          },
+          "CR": {
+            "valid": 12,
+            "planned": 15
+          },
+          "PES": {
+            "valid": 21,
+            "planned": 21
+          }
+        }
+      },
+      "update_sft": {
+        "registered": 105,
+        "source_qualified": 62,
+        "valid": 60,
+        "by_metric": {
+          "PUF": {
+            "valid": 14,
+            "planned": 14
+          },
+          "MQ": {
+            "valid": 14,
+            "planned": 14
+          },
+          "CR": {
+            "valid": 12,
+            "planned": 14
+          },
+          "PES": {
+            "valid": 20,
+            "planned": 20
+          }
+        }
+      },
+      "multitask_sft": {
+        "registered": 106,
+        "source_qualified": 62,
+        "valid": 60,
+        "by_metric": {
+          "PUF": {
+            "valid": 14,
+            "planned": 14
+          },
+          "MQ": {
+            "valid": 13,
+            "planned": 14
+          },
+          "CR": {
+            "valid": 13,
+            "planned": 14
+          },
+          "PES": {
+            "valid": 20,
+            "planned": 20
+          }
+        }
+      }
+    },
+    "saved_response_records": 212,
+    "prompt_tokens": 1018643,
+    "completion_tokens": 120091,
+    "source_invalid_returned": 9,
+    "unrecorded_inflight_attempts": [
+      "base/6/character-3bc51062973c458d/PES",
+      "base/6/character-72a57118895d8ac7/PES"
+    ],
+    "selected_sha256": "904c0c1e076e6092d8b21569391106e71d4801f0d5ce5c1a47ff76090e6ae48f",
+    "summary_sha256": "1808ed9c92309dac102cad8c0a7b0a814be0edc9827ad4530045715619ebdcdf",
+    "interpretation": "Known returned calls include invalid-source and recovery attempts; incomplete in-flight token usage is unknown. Format validity and native rubric values are not growth accuracy."
   }
 }

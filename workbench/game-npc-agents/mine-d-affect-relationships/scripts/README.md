@@ -2,7 +2,7 @@
 
 脚本在本目录维护；冻结输入、完整raw、权重和vendor均在[ASSETS](../ASSETS.md)指定的仓库外资产根。历史run保存当时runner源码/配置，当前脚本修改不会覆盖历史记录。本文是导航，不是要求重启所有队列。
 
-**当前用户执行限制：** [整体审计](../RESEARCH_AUDIT.md)完成前，只收尾已登记D-E11/D-E12；D-E13已结束。不运行新模型实验、配方或扩预算。离线audit脚本不调用模型。
+**当前用户执行限制：** [整体审计](../RESEARCH_AUDIT.md)完成前，只收尾已登记D-E12；D-E11/D-E13已结束，不重开。不运行新模型实验、配方或扩预算。离线audit脚本不调用模型。
 
 ## 工作流与文件职责
 
@@ -56,7 +56,7 @@
 | D-E08 | `queue_strong_compiler.py`；`handoff_gpu3.py`为本次已有队列的一次交接 |
 | D-E09（已预算停止） | `queue_prefix_memory.py`；原定后续角色/评分未启动，不自动重启 |
 | D-E10（已完成） | `queue_adaptation_evaluation.py`、`score_adaptation_quality.py`、`finish_adaptation_study.py`，只作历史复现入口，不重启 |
-| D-E11（运行中） | `queue_native_rollouts.py`现于GPU1顺序执行三路径；全生成结束后`score_native_rollouts.py`在GPU1评分，避免与GPU3新训练争用 |
+| D-E11（已结束，部分覆盖） | `queue_native_rollouts.py`、`score_native_rollouts.py`为历史入口；source-audit恢复仅收尾未受影响原任务，禁止据此重启或补跑无效指标；核验用`audit_native_trajectories.py` |
 | D-E12（运行中） | `run_fullturn_study.py`在GPU3训练，之后按依赖接固定评测与结果同步；D-E11生成及其后续评分已移交GPU1 |
 | D-E13（已完成） | `prepare_contrast_calibration.py`冻结材料；`run_contrast_calibration.py`会调用模型，当前不重启；核验用上表offline audit |
 

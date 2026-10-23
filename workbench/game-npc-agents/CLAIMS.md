@@ -26,3 +26,5 @@ L0是本次对有限证据的限定，不是自动科学判决。后续按[EXECU
 - 同日D-E07纠正完成：原生14单元来源重建后的S结果见[D-E06–08报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)；撤回的是原错误S结果，新表不会覆盖旧raw或使旧数字重新有效。
 
 - 2026-10-22 EW来源资格：训练文件内部接续成立不等于原著时序已认证，跨发布文件的scene_index也不通用。D-E04–06数值/原始输入保留，D-E06时间解释限定为发布资料顺序中的组件测量；无统一成长/惯性机制主张据此升级。[来源说明](mine-d-affect-relationships/results/D-EW-SOURCE-QUALIFICATION-2026-10-22.md)。
+
+- 2026-10-23 D-E11评分时间视图：固定官方PF/SSF/MDB使用场末tracker却标场前，129任务统一不作科学比较，9条已返回原分保留但不使用，未运行修正输入对照。其余190项原任务在预算内结束；因6作品覆盖不全，不报告整体质量差或CI。[终态报告](mine-d-affect-relationships/results/D-E11-RESEARCH-REPORT.md)。没有既有成长机制主张从这项升级或继承；D-E10/C03及D-E04/05的PUF协议不因此自动作废。

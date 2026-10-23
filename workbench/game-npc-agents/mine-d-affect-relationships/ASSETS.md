@@ -78,7 +78,7 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 - `summarize_state_quality.py --asset-root <资产根> --out <输出>`：D-E04原生PUF准则单角色适配；加`--include-plan`给D-E04＋D-E05共同表与同题有效配对。
 - `summarize_runs.py --asset-root <资产根> --out <输出>`和`verify_measurement.py --asset-root <资产根> --out <输出>`：总账与来源检查。所有算术从保留raw重建，不以人工改分覆盖原结果。
 
-原生阅读范围、样本来源与许可说明见正文报告及四张权威论文卡；本轮没有跑PHASE参数适配、ArcANE-32B专用权重、EvolvingWorld专用checkpoint或完整多智能体rollout，也没有声称它们已被这些普通单步基线替代。
+原生阅读范围、样本来源与许可说明见正文报告及四张权威论文卡；首夜D-E01–05当时没有跑PHASE参数适配、ArcANE-32B专用权重、EvolvingWorld专用checkpoint或完整多角色rollout，也没有声称它们已被这些普通单步基线替代。之后D-E11的短生成轨迹及资格见本页相应节。
 
 ## 持续实验资产（D-E06–D-E09）
 
@@ -132,7 +132,7 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 [逐成员清单与停止状态](results/D-CONTINUATION-RAW-MANIFEST.json)保存完整/停止run资格。该包累积保留首夜及续测raw、冻结计划输入、配置、runner源码、token IDs与日志；D-E07源中断、Step部分校准、D-E09预算停止仍明确为部分记录，不因归档而成为完成实验。D-E09冻结计划含未处理窗口，实际覆盖以[覆盖表](results/D-E09-COVERAGE.json)为准。没有权重、vendor或完整未使用的第三方corpus；文件仅限本地研究访问，下载方式同前述SSH/scp示例，替换为本节路径。
 
-[全部调用/成本记录](results/D-RESIDENCY-TOTALS.json)与[完成结果](results/D-CONTINUATION-REPORT-2026-10-22.md)分开：7,080本地生成记录、495 Plan请求，不包含公开MiniMax旧轨迹；D-E09无角色评分。旧首夜归档继续保留原hash。
+[截至D-E09的调用/成本记录](results/D-RESIDENCY-TOTALS.json)与[当时完成结果](results/D-CONTINUATION-REPORT-2026-10-22.md)分开：7,080本地生成记录、495 Plan请求，不包含公开MiniMax旧轨迹；D-E09无角色评分。D-E10之后另计，不将旧表称当前全部工作。旧首夜归档继续保留原hash。
 
 ## 人物适应学习准备：原生视图与SFT导出
 
@@ -142,7 +142,7 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 持久本地归档：`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-22-adaptation-preparation/native-learning-views.tar.gz`，含视图、原生训练导出、政策与必要脚本快照；逐成员校验与完整hash见[准备归档清单](results/D-ADAPTATION-PREPARATION-MANIFEST.json)。仅限本地研究访问，不公开再分发原始文本。该资料准备没有模型调用、训练或新的心理标签，不能加入实验调用总数。
 
-## D-E10正在运行的学习与后续互动
+## D-E10学习与后续互动（已结束）
 
 - 隔离解释器：`/var/tmp/ssn-game-npc-d/venvs/adaptation/bin/python`，使用openslime系统包，局部安装`peft==0.21.2`、`torchao==0.16.0`。torch2.9.1+cu129、transformers5.3.0未变；torchao可选量化C++扩展未加载，普通BF16/LoRA不依赖它。
 - 训练缓存：`data/training_D-E10/{tokens.bin,entries.jsonl,manifest.json}`；int32精确tokens、完整样本边界、来源row/hash及作品划分。14,079更新＋14,079动机＋23,088互动＋128验证，无截断/超长排除。[逐文件hash](results/D-E10-training-data.json)。早期单进程准备目录保留中断原因；其3,819条完整输出与并行缓存前缀逐字相同，没有不同数据版本。
@@ -168,19 +168,23 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 `runs/D-E11/{base,update_sft,multitask_sft}/`保留每次物理调用raw、精确输入/生成tokens、采样设置、adapter路由和metadata；每个`snapshot_<index>`有实时result/trace/meta、官方all_scenes/character_dynamic/world_dynamic视图和日志。官方vendor实现不修改、不入Git，本地runner保存原始源码及vendor逐文件hash。世界调用禁用LoRA；U-SFT仅角色更新启用；MT三个角色任务启用。快照输入先冻结，生成过程中不插入未来参考对白。
 
-`runs/D-E11/jobs.json`登记GPU2实际生成队列，后续评分等D-E10与三条互动路径完整结束。该项是多角色原生短轨迹参照，用于人物变化的交互后果，不是新多智能体社会研究线或真人玩家试验；最多3场景不能称长期人物成长已验证。
+`runs/D-E11/jobs.json`保留初始GPU2、后续GPU1及source-audit恢复的全部编排。生成/合格评分已终止；该项是多角色原生短轨迹参照，用于人物变化的交互后果，不是新多智能体社会研究线或真人玩家试验；最多3场景不能称长期人物成长已验证。
 
 首次资源中断的`base_interrupted_gpu_contention`含21完整生成记录及0完整轨迹。OOM/中断时原client未返回的调用没有完整输出，INTERRUPTION与实验卡明确其缺失，不将21称全部启动数。后续client先记录requests，失败写error及未知completion tokens。新队列等GPU2空闲，已消耗231.201秒仍计累计预算；不隐藏原失败或终止别的作业。
 
 生成队列优先GPU2；D-E10全部完成后，也可使用它释放的空闲GPU0/1/3，实际选择写入status与模型metadata。不会在D-E10训练/评价期间夺用其卡，也不依赖其他项目必须停机。
 
-当前资源归属更新（2026-10-23 10:14，北京时间）：已核验GPU1上的训练和全部MT-SFT后续生成结束，移交本项作为首选；D-E10剩余GPU3评分与GPU0 NLL不受影响。等待队列PIDs、先前status及移交原因保留在jobs.json；最新进度以D-E11-progress为准。不是改变输入或更换模型。
+资源移交历史（2026-10-23 10:14，北京时间）：已核验GPU1上的训练和全部MT-SFT后续生成结束，移交本项作为首选；D-E10剩余GPU3评分与GPU0 NLL不受影响。等待队列PIDs、先前status及移交原因保留在jobs.json；当前终态使用[D-E11报告](results/D-E11-RESEARCH-REPORT.md)，旧progress只是当时快照。
+
+`judges/`保留原323任务、初次18返回与中断说明、190来源合格任务/181缺失续评/13原定恢复，以及selected与原版/恢复runner源码。PF/SSF/MDB的129时点错位任务不补跑修正输入，4个缺profile目标与7个残余格式无效单列。完整分项、token与输入复核见[D-E11-summary](results/D-E11-summary.json)和[离线audit](results/D-E11-TRAJECTORY-AUDIT.json)。
 
 ### 训练实验的持久归档
 
 `archive_adaptation_study.py`在相应正式结果完整结束后，保存原始记录、失败尝试、冻结输入和最终LoRA/优化器到`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-23-adaptation/<实验ID>/raw-and-final-adapters.tar.gz`。只保留最终训练权重，基础/中途权重不复制；训练token缓存按固定源与manifest重建。
 
-**D-E10已完成：** 297文件、3,927,283,215字节，逐成员SHA核验通过；包SHA256 `5dd532267f3b92211c14331fb61132de0548e87df024257fed1c5fc6ac01eeeb`。[清单](results/D-E10-RAW-MANIFEST.json)。D-E11与D-E12仍为等待任务，预登记路径不代表包已存在；失败不发布完成清单。
+**D-E10已完成：** 297文件、3,927,283,215字节，逐成员SHA核验通过；包SHA256 `5dd532267f3b92211c14331fb61132de0548e87df024257fed1c5fc6ac01eeeb`。[清单](results/D-E10-RAW-MANIFEST.json)。
+
+**D-E11已归档：** 201文件、129,253,289字节，逐成员SHA核验通过；SHA256 `0224fc9830b0f9260a0f1f4a245c65a33e45106be83c0b840635b21926a10a07`。[清单](results/D-E11-RAW-MANIFEST.json)。包含预算停止、原错误评分视图与中断；归档不等于科学测量完整。D-E12尚未结束，预登记路径不代表包已存在。
 
 ## D-E12：完整对话监督基线
 
@@ -188,4 +192,8 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 `runs/D-E12/train_multitask_fullturn`保存实际训练、优化器/RNG、冻结顺序、逐任务验证及源码。固定16,684序列/261步/85,900,222 forward tokens，互动监督15,195个assistant回复。[实际缓存与核验](results/D-E12-training-data.json)。`run_fullturn_study.py`接最终模型→同一已观察D-E10 cohort→99评分→共同消费者NLL，单独保存D-E12结果；这是探索性后续，不冒称独立确认。
 
-`runs/D-E12/jobs.json`及`finish_status.json`登记GPU3实际队列；D-E11尚未开始的judge已移交GPU1，在其全部生成后接续，不与新训练装载竞争。运行/归档日志在`logs/D-E12-*`，无API调用。实际8B启动已核验单目标及多目标CE，与完整masked loss误差小于1e-6；独立小模型全部梯度比较通过。
+`runs/D-E12/jobs.json`及`finish_status.json`登记GPU3实际队列；D-E11在GPU1的评分已结束，后续仍由原队列接D-E12最终检查点。运行/归档日志在`logs/D-E12-*`，无API调用。实际8B启动已核验单目标及多目标CE，与完整masked loss误差小于1e-6；独立小模型全部梯度比较通过。
+
+## D-E13：配对读数校准（已结束）
+
+`data/contrast_D-E13`冻结23合格probe的230个任务；`runs/D-E13/{first,recovery,selected.jsonl}`保存231次本地判别、原始引用与选取。没有新增演员生成。来源缺失、换序与引用核验见[D-E13复查](results/D-E13-RESEARCH-REVIEW.md)。持久包位于上述归档根的`D-E13/`，20文件、765,255字节，SHA256 `3ee5a21dec81e8bbf41e502fdd263743ca393c1713ea241c69e3285ed9eb8a13`，[逐成员清单](results/D-E13-RAW-MANIFEST.json)已核验；不是经历干预数据。
