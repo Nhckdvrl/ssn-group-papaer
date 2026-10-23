@@ -2,7 +2,7 @@
 
 用户暂停B/I01，转向现有矿区D“时间证据约束下的人物状态推断与适应”。目前先复现官方资产，尚未锁定单一idea、方法或摘要机制主张；主线形态可随实证发展，不要求立刻提出RL。以下B草稿仅保留历史，不再执行。
 
-**后续建设更新（2026-10-23）：** [D-I01方法SEED](mine-d-affect-relationships/ideas/D-I01-learning-character-adaptation.md)仍研究以经历后的多种行为约束人物更新学习。D-E10两条标准SFT、609后续回复与全量评分已完成；U拟合改善但行为收益未明确，首轮MT下降，strong32明显更好。新增C03只登记限定L0观测，没有算法机制升级。[完整分析](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)。D-E11连续互动与合格评分已收尾，但覆盖不足及三指标时点失效限制完整比较；D-E12仍在同预算下补齐多轮监督；候选新方法尚未验证，不能把基线配方修订当论文贡献。
+**后续建设更新（2026-10-23）：** [D-I01方法SEED](mine-d-affect-relationships/ideas/D-I01-learning-character-adaptation.md)仍研究以经历后的多种行为约束人物更新学习。D-E10两条标准SFT、609后续回复与全量评分已完成；U拟合改善但行为收益未明确，首轮MT下降，strong32明显更好。新增C03只登记限定L0观测，没有算法机制升级。[完整分析](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)。D-E11连续互动与合格评分已收尾，但覆盖不足及三指标时点失效限制完整比较；D-E12已按同预算完成多轮监督训练并进入后续评测；候选新方法尚未验证，不能把基线配方修订当论文贡献。
 
 
 **当前更值得形成的论文对象：** 人物特有的经历学习及其跨互动后果。研究角色如何从经历修订判断、关系或应对，并把变化迁移到新情境；不是一份摘要错误目录，也不预设历史干扰或新RL。现成阶段表演、状态更新与关系演化方法均为强近邻，详见[整体定位](mine-d-affect-relationships/POSITIONING.md)。

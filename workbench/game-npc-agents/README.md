@@ -16,7 +16,7 @@
 
 **持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/results/D-E09-REPORT.md)已按预算停止，225次尝试未完成全部前缀，未启动演员/评分。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
 
-**训练与后续互动已形成完整读数：** [D-E10科研报告](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)包含两条SFT、七系统609回复/693评分及12预选人物链条。更新SFT拟合改善但后续收益未明确，首轮MT下降，普通32B更好；C03仅登记限定L0观察。[D-E11](mine-d-affect-relationships/results/D-E11-RESEARCH-REPORT.md)的506互动及合格评分已收尾，覆盖与时点失效限制完整比较；D-E12仍在同预算下训练完整对话监督基线。最终整体审计待其结束，不把配方修订当新算法贡献。
+**训练与后续互动已形成完整读数：** [D-E10科研报告](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)包含两条SFT、七系统609回复/693评分及12预选人物链条。更新SFT拟合改善但后续收益未明确，首轮MT下降，普通32B更好；C03仅登记限定L0观察。[D-E11](mine-d-affect-relationships/results/D-E11-RESEARCH-REPORT.md)的506互动及合格评分已收尾，覆盖与时点失效限制完整比较；D-E12已按同预算完成完整对话监督训练，正在进行后续评测。最终整体审计待其结束，不把配方修订当新算法贡献。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 
