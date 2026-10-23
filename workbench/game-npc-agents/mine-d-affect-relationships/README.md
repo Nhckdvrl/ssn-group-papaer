@@ -1,6 +1,8 @@
 # 矿区 D：动态角色认知与长期人物演化
 
-**先收尾、后审计：** 用户要求D-E11/D-E12/D-E13按原卡结束后，仔细核验问题对齐、局部优化和无效投入；[审计闸门](RESEARCH_AUDIT.md)生效，完成前不新增模型实验或配方。当前审计尚未完成，研究线状态不变。
+**当前状态（2026-10-24）：** D-E01–D-E13均已运行结束或明确预算终止，三条真实SFT参照已完成；[整体研究审计](RESEARCH_AUDIT.md)与当前矿区整理已完成，没有在途模型任务或自动追加训练。研究线状态不变，尚无已验证的新成长机制/算法主张。
+
+**先看这里：** [逐实验与尝试登记](experiments/README.md) · [结果/CASEBOOK索引](results/README.md) · [当前完整调用与成本账](results/D-RESIDENCY-CURRENT-LEDGER.json) · [数据/模型/原始资产位置](ASSETS.md) · [代码及离线复算](scripts/README.md) · [未执行思路](ideas/README.md)。
 
 **状态：2026-10-22用户明确选择本矿区为现有Game NPC Agents主线的优先研究方向。** B/I01暂停，C/NCP-Bench为备选，不新增平级workbench或独立ACTIVE名额。当前已完成首夜公开资产与强官方基线驻留，不预设某个失败机制，也不锁定单一方法。
 
@@ -26,13 +28,17 @@
 | [D-E06案例](results/D-E06-CASEBOOK.md) | 29角色/8作品连续更新接回表演；强消费者修复部分主体问题，仍有策略差异，不判统一惯性 |
 | [D-E07/08案例](results/D-E07-CASEBOOK.md) | 完整81phase、三消费者/两整理教师；区分真实事实修复与阶段/轨迹能力，Monte正确来源另表 |
 | [D-E09预算停止报告](results/D-E09-REPORT.md) | 225真实尝试、208/301提交态；3/6前缀完整，0演员/评分，不对子集给阶段分数；9.080 GPU·h |
+| [D-E10学习报告](results/D-E10-RESEARCH-REPORT.md) | 两条SFT、七系统609后续回复/693评分完成；U拟合改善但质量收益未明确；旧态参照仍有经历通道 |
+| [D-E11连续互动报告](results/D-E11-RESEARCH-REPORT.md) | 506真实生成互动；各4/6完整轨迹但作品不同，三评分指标时点失效，不补总体排名；已归档 |
+| [D-E12完整监督报告](results/D-E12-RESEARCH-REPORT.md) | 261步训练、87有效后续回复完成；严格主评分86/87，POST-HOC原数字复核3.876，对旧MT +0.004 [-0.172,+0.194] |
+| [D-E13测量复查](results/D-E13-RESEARCH-REVIEW.md) | 231本地judge，参考正控可辨，真实回复换序不稳；未改变经历，不能直接作训练奖励 |
 | [Baseline登记](BASELINES.md) | 实际运行系统、任务、信息条件、评价身份及尚未复现部分 |
 | [脚本导航](scripts/README.md) / [结果导航](results/README.md) | 离线复算与推理队列分开；有效/历史/在途结果可追溯 |
 | [资产入口](ASSETS.md) | 固定revision、完整raw归档/校验、环境与离线复算；模型/全原文不进Git |
 
 当前没有新机制主张升级。已有方法的成功与残差作为底座；主要研究动作以[整体定位](POSITIONING.md)为准，不把修卡片、涨一个分数或完成更多调用当作方向本身。
 
-**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED，研究人物从经历改变后续互动。[D-E10科研报告](results/D-E10-RESEARCH-REPORT.md)：两训练、七系统609回复/693评分及共同消费者前向均完成并归档。base/U/MT/strong32质量为4.055/4.083/3.872/4.330；U差+0.027、95%CI[-0.120,+0.184]，MT下降，不能用更新NLL改善代替成长证据。12预选人物的七系统链条已审阅，C03仅限定L0观察。[D-E11](results/D-E11-RESEARCH-REPORT.md)的506互动/合格评分已结束，三指标时点失效与覆盖缺失保留，不作完整模型排名；[D-E12](experiments/D-E12-full-conversation-character-training.md)已在GPU3完成完整对话监督训练并进入后续评测，同约85.9M forward预算监督15,195个互动回复。没有新算法有效性主张。[学习数据入口](data/README.md)保留整作品隔离。
+**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED，研究人物从经历改变后续互动。[D-E10科研报告](results/D-E10-RESEARCH-REPORT.md)：两训练、七系统609回复/693评分及共同消费者前向均完成并归档。base/U/MT/strong32质量为4.055/4.083/3.872/4.330；U差+0.027、95%CI[-0.120,+0.184]，MT下降，不能用更新NLL改善代替成长证据。12预选人物的七系统链条已审阅，C03仅限定L0观察。[D-E11](results/D-E11-RESEARCH-REPORT.md)的506互动/合格评分已结束，三指标时点失效与覆盖缺失保留，不作完整模型排名；[D-E12](experiments/D-E12-full-conversation-character-training.md)已完成完整训练与后续评测，同约85.9M forward预算监督15,195个互动回复；[原数字复核](results/D-E12-RESEARCH-REPORT.md)3.876，严格主表缺1项另列。没有新算法有效性主张。[学习数据入口](data/README.md)保留整作品隔离。
 
 ## 我们要理解什么
 

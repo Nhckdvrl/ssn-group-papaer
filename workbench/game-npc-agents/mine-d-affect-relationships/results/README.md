@@ -21,7 +21,7 @@
 | 学习基线与后续互动 | [D-E10科研报告](D-E10-RESEARCH-REPORT.md)、[全量表](D-E10-RUN-REPORT.md)、[训练缓存](D-E10-training-data.json) | 两条SFT、七系统609回复、693评分与609共同消费者NLL完成；U无明确收益、首轮MT下降，范围及训练覆盖另审 |
 | 原生生成互动 | [D-E11研究报告](D-E11-RESEARCH-REPORT.md)、[逐书CASEBOOK](D-E11-CASEBOOK.md)、[调用/覆盖核验](D-E11-TRAJECTORY-AUDIT.json) | 已收尾并归档：1,913正式生成/506互动；190来源合格评分中183可解析，129时点视图失效；不补幸存者主均分 |
 | 学习基线案例/监督 | [D-E10 CASEBOOK](D-E10-CASEBOOK.md)、[监督审计](D-E10-TRAINING-AUDIT.json) | 12预选人物的七系统审阅完成；首回复覆盖与输出长度仅事后描述，不是机制证明 |
-| 完整对话监督 | [D-E12实验卡](../experiments/D-E12-full-conversation-character-training.md)、[数据核验](D-E12-training-data.json) | 15,195互动回复监督，同约85.9M forward预算；训练已启动，非新算法或独立确认 |
+| 完整对话监督 | [D-E12科研报告](D-E12-RESEARCH-REPORT.md)、[12人物CASEBOOK](D-E12-CASEBOOK.md)、[最终模型与数值核验](D-E12-AUDIT.json) | 训练/87回复/评分/NLL/归档完成；严格主评分86/87，原数字复核3.876；不改原表、不当作成长因果结果 |
 | 配对读数校准与核验 | [D-E13原表](D-E13-RUN-REPORT.md)、[科研复查](D-E13-RESEARCH-REVIEW.md)、[离线核验](D-E13-READOUT-AUDIT.json) | 231本地判别，参考正控可辨、相同回复空对照稳；真实材料换序不稳，不作经历因果结论或训练奖励 |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
@@ -32,4 +32,4 @@
 
 当前科学问题和下一步优先级见[POSITIONING](../POSITIONING.md)，baseline身份见[BASELINES](../BASELINES.md)，离线复算入口见[脚本导航](../scripts/README.md)。没有因为某个结果文件新增，就自动升级CLAIMS或启动后续模型实验。
 
-截至D-E09的历史记录总数见[D-RESIDENCY-TOTALS](D-RESIDENCY-TOTALS.json)；D-E10之后由各自训练/运行账单独列，不把旧总账称当前全部工作。D-E09为预算停止，不能将所有计算条数等同已完成实验样本。
+当前完整账见[D-RESIDENCY-CURRENT-LEDGER](D-RESIDENCY-CURRENT-LEDGER.json)，逐文件清点D-E10–13并引用冻结的[D-E01–09历史账](D-RESIDENCY-TOTALS.json)。已记录本地返回11,521条、三条成功训练；含失效源、格式恢复与预算停止，未知部分另列，不将计算条数等同独立科研样本。逐项状态与尝试见[实验登记](../experiments/README.md)。

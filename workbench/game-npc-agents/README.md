@@ -1,6 +1,6 @@
 # Game NPC Agents：领域工作台
 
-**当前执行边界（2026-10-23用户指令）：** 只按原预算收尾D-E11/D-E12/D-E13，随后先做[研究方向与有效性审计](mine-d-affect-relationships/RESEARCH_AUDIT.md)。审计完成前不新增实验、配方或预算，不开始后续经历干预。ACTIVE状态不变；自动结果不等于审计通过。
+**当前交付（2026-10-24）：** 矿区D的D-E01–D-E13、三条标准SFT参照及本轮[研究审计](mine-d-affect-relationships/RESEARCH_AUDIT.md)已收尾，全部成功/失败/预算停止/来源失效记录整理入[实验与尝试登记](mine-d-affect-relationships/experiments/README.md)。没有在途模型任务或自动追加配方。ACTIVE状态不变，核心经历适应问题尚未由当前代理读数解决。
 
 **当前研究重点：** 依用户最新纠正，停止新增局部坏例/窗口/字段补丁实验，回到“角色怎样从经历中改变后续互动”的整体问题。[方向判断](mine-d-affect-relationships/POSITIONING.md) · [D-E06–08完成报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)。
 
@@ -16,7 +16,7 @@
 
 **持续推进：** D-E06–08已完成新增2,696条本地生成、1,305来源句前向和82次Step Plan请求。连续更新没有跨消费者一致的退化；强教师修复部分事实但未明确改善完整阶段轨迹。[报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)保留正负结果和不确定性，Monte源纠正后的表与旧表分开。[D-E09](mine-d-affect-relationships/results/D-E09-REPORT.md)已按预算停止，225次尝试未完成全部前缀，未启动演员/评分。主要研究投入转回人物特有的经历学习及跨互动后果；不沿局部残差追加实验，不以调用数代替贡献。
 
-**训练与后续互动已形成完整读数：** [D-E10科研报告](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)包含两条SFT、七系统609回复/693评分及12预选人物链条。更新SFT拟合改善但后续收益未明确，首轮MT下降，普通32B更好；C03仅登记限定L0观察。[D-E11](mine-d-affect-relationships/results/D-E11-RESEARCH-REPORT.md)的506互动及合格评分已收尾，覆盖与时点失效限制完整比较；D-E12已按同预算完成完整对话监督训练，正在进行后续评测。最终整体审计待其结束，不把配方修订当新算法贡献。
+**训练与后续互动已形成完整读数：** [D-E10科研报告](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md)包含两条SFT、七系统609回复/693评分及12预选人物链条。更新SFT拟合改善但后续收益未明确，首轮MT下降，普通32B更好；C03仅登记限定L0观察。[D-E11](mine-d-affect-relationships/results/D-E11-RESEARCH-REPORT.md)的506互动及合格评分已收尾，覆盖与时点失效限制完整比较；[D-E12](mine-d-affect-relationships/results/D-E12-RESEARCH-REPORT.md)及整体审计已结束；严格主表86/87，原数字复核3.876、对旧MT差+0.004，未见明确恢复。下一步从人物经历的可检验反应规律定义学习目标，不把配方修订当新算法贡献。
 
 ## B/I01历史实测（已暂停；2026-10-21）
 

@@ -1,4 +1,4 @@
-# 矿区D资产与复现入口（2026-10-22）
+# 矿区D资产与复现入口（更新2026-10-24）
 
 导航：[Baseline与复现范围](BASELINES.md) · [脚本职责与离线命令](scripts/README.md) · [结果状态](results/README.md)。本页是来源、环境与仓库外资产的唯一登记入口，不把下载缓存复制进研究仓库。
 
@@ -91,7 +91,7 @@ Step5用于D-E01评价的部分/预试与D-E05状态actor分开：前者资源�
 - `collect_continuation_costs.py --asset-root <根> --out <账本> --include-prefix --require-complete`：D-E06–09独立调用账，含Step新增用量；不把API壁钟加入GPU小时，不重复首夜账。
 - `archive_runs.py --asset-root <根> --destination <新的持久目录> --manifest <清单> --include-continuation`：所有运行结束且资格检查通过后归档。完整模型输入含实际使用的来源前缀文本，限本地研究保存；原文与权重不进Git。
 
-另外只读取得EvolvingWorld官方六部OOD作品的`extracted_data/scenes`与`character_dynamic`，hash与规模见[D-HELDOUT-SOURCE-INVENTORY](results/D-HELDOUT-SOURCE-INVENTORY.json)；尚未据此声称新实测或所有模型都未见作品。
+D-E06–09阶段只读取得EvolvingWorld官方六部OOD作品的`extracted_data/scenes`与`character_dynamic`，hash与规模见[D-HELDOUT-SOURCE-INVENTORY](results/D-HELDOUT-SOURCE-INVENTORY.json)。随后D-E11已使用其起点运行短互动，资格见最终报告；作品未入该发布训练划分，不等于所有底座预训练都未见作品。
 
 
 ## 可复用连续经历索引
@@ -184,15 +184,21 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 **D-E10已完成：** 297文件、3,927,283,215字节，逐成员SHA核验通过；包SHA256 `5dd532267f3b92211c14331fb61132de0548e87df024257fed1c5fc6ac01eeeb`。[清单](results/D-E10-RAW-MANIFEST.json)。
 
-**D-E11已归档：** 201文件、129,253,289字节，逐成员SHA核验通过；SHA256 `0224fc9830b0f9260a0f1f4a245c65a33e45106be83c0b840635b21926a10a07`。[清单](results/D-E11-RAW-MANIFEST.json)。包含预算停止、原错误评分视图与中断；归档不等于科学测量完整。D-E12尚未结束，预登记路径不代表包已存在。
+**D-E11已归档：** 201文件、129,253,289字节，逐成员SHA核验通过；SHA256 `0224fc9830b0f9260a0f1f4a245c65a33e45106be83c0b840635b21926a10a07`。[清单](results/D-E11-RAW-MANIFEST.json)。包含预算停止、原错误评分视图与中断；归档不等于科学测量完整。
+
+**D-E12已归档：** 89文件、1,953,849,789字节，逐成员SHA核验通过；SHA256 `b3f3c5bdf793efcc0d636e3216b1e5026f29fa8871ca4aa5dbe84be49d9b7519`。[清单](results/D-E12-RAW-MANIFEST.json)。最终adapter/优化器、所有生成/恢复、严格评分异常均保留；之后的数值可读性分析和审计代码在Git中，不改原包。
 
 ## D-E12：完整对话监督基线
+
+**已结束：** 261步训练、183次角色生成、100次judge与87次NLL均完成；资格及原数字复核见[D-E12科研报告](results/D-E12-RESEARCH-REPORT.md)。严格主表缺一条reason引号错误，原分/原包不覆盖。恢复全量复核需D-E10与D-E12两个包，以及按原manifest重建的训练token cache。
 
 `data/training_D-E12`为最终token/cache、assistant spans、原生row/hash与384条逐任务验证。14,079更新、14,079动机、23,088完整互动全部保留，0超长排除/0截断；28,286原有单任务编码逐token一致。前一个只做准备的`training_D-E12-included-format-prefix`有0模型调用，保留PRETRAINING_MASK_NOTE；最终目标排除模板提供的空思考前缀。
 
 `runs/D-E12/train_multitask_fullturn`保存实际训练、优化器/RNG、冻结顺序、逐任务验证及源码。固定16,684序列/261步/85,900,222 forward tokens，互动监督15,195个assistant回复。[实际缓存与核验](results/D-E12-training-data.json)。`run_fullturn_study.py`接最终模型→同一已观察D-E10 cohort→99评分→共同消费者NLL，单独保存D-E12结果；这是探索性后续，不冒称独立确认。
 
 `runs/D-E12/jobs.json`及`finish_status.json`登记GPU3实际队列；D-E11在GPU1的评分已结束，后续仍由原队列接D-E12最终检查点。运行/归档日志在`logs/D-E12-*`，无API调用。实际8B启动已核验单目标及多目标CE，与完整masked loss误差小于1e-6；独立小模型全部梯度比较通过。
+
+当前所有注册任务已经终止，上段是资源编排记录，不是待运行指令。[当前全量账](results/D-RESIDENCY-CURRENT-LEDGER.json)逐文件链接D-E10–13及此前冻结总账，记录失败启动、未知在途和已知成本；不把缺失耗时当0。
 
 ## D-E13：配对读数校准（已结束）
 
