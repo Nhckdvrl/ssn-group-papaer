@@ -86,3 +86,24 @@
   - Qiu 等 ACL 2025 *Demons in the Detail*（全局批次 vs 微批次负载均衡影响专精）；
   - OLMoE §5（路由饱和：中间检查点与终点 top-k 重合）；
   - ACL 2026 *The Illusion of Specialization*；ICML 2026 RouterInterp、*The Expert Strikes Back*。
+
+## 6. 第二轮核实（10-23 晚，为讨论外部反馈而读；详见 research/MOE_DISCUSSION_2026-10-23.md §2）
+- **Data Scarcity and Model Sparsity（2609.11917）：**
+  - 读了正文 §2–§5 与附录 B.1。
+  - 80M、64 选 4 的 MoE，相邻检查点 top-1 一致率在 10% 训练时约 60%，后期 > 95%（路由早期固化），重复数据会加剧固化；dropout 不改变固化，但降低专家专精。
+  - 训了 5 个种子，只报损失方差，没有跨种子比较路由。
+- **Beyond Routing（2605.20610）：**
+  - 读了跨种子部分。
+  - 每个配置 10 个种子，二阶 RSA + 聚类，动物 / 非动物二分重现；无一致性数值、无零假设。
+- **The Expert Strikes Back（2604.02178，ICML 2026）：**
+  - 读了引言与方法。
+  - 专家比稠密 FFN 更单义；专家是细粒度的任务专家；有代码。
+- **The Illusion of Specialization（2601.03425，ACL 2026）：**
+  - 读了引言与方法。
+  - 跨领域稳定的 Standing Committee，呈核心—外围结构。
+- **只读摘要：**
+  - Specialization through Collaboration（EACL 2026，跨层专家协作组）；
+  - When Are Experts Misrouted?（2605.07260，反事实盲点）；
+  - MoE Routing Testbed（2604.07030，参照路由器）；
+  - Probing Semantic Routing（EMNLP Findings 2025）。
+- **OLMoE-1B-7B-0924：** 244 个中间检查点，从 step 5000 起每 5000 步一个，没有 step 0（HF API 核实）。

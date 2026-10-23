@@ -6,7 +6,7 @@
 | 想知道 | 读 |
 |---|---|
 | 我们做过什么、发现了什么、为什么停 | **[RESEARCH_HISTORY.md](RESEARCH_HISTORY.md)**（唯一的总文档） |
-| 导师 10-22 的 MoE / 头方向怎么看 | [knowledge/research/ADVISOR_2026-10-23_MOE.md](knowledge/research/ADVISOR_2026-10-23_MOE.md) |
+| 导师 10-22 的 MoE / 头方向怎么看 | [knowledge/research/ADVISOR_2026-10-23_MOE.md](knowledge/research/ADVISOR_2026-10-23_MOE.md)；外部反馈讨论 [MOE_DISCUSSION_2026-10-23.md](knowledge/research/MOE_DISCUSSION_2026-10-23.md) |
 | 每条主张的证据等级与作废记录 | [CLAIMS.md](CLAIMS.md) |
 | 踩过的坑（代码、统计、公开模型数据完整性） | [PAIN_LOG.md](PAIN_LOG.md)、[knowledge/heritage/FAILURE_MODES.md](knowledge/heritage/FAILURE_MODES.md) |
 | 读过的论文 | [knowledge/PAPER_CATALOG.md](knowledge/PAPER_CATALOG.md) |
