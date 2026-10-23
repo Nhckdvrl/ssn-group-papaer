@@ -1,0 +1,161 @@
+{
+  "experiment": "D-E12",
+  "post_hoc": true,
+  "model_calls": 0,
+  "complete": true,
+  "training": {
+    "examples": 16684,
+    "forward_tokens": 85900222,
+    "target_tokens": 4726227,
+    "tasks": {
+      "character_motivation_update": 5562,
+      "character_state_update": 5561,
+      "interaction_generation": 5561
+    },
+    "interaction_assistant_turns": 15195,
+    "cache_hashes_verified": true,
+    "training_order_matches_old_prefix": true,
+    "final_adapter_sha256": {
+      "adapter_model.safetensors": "7e47ab6d4d008e3eb17c754bee049a7061ec3caf3434c0a3bcafd1b94b786420",
+      "adapter_config.json": "044407a33fd79ccd09b364615b9737f50335f3b5afa39c189c9788348f7d80d8"
+    }
+  },
+  "information_paths": {
+    "actor_uses_final_selected_state_and_motivation": true,
+    "source_dialogue_preserved": true,
+    "judge_common_evidence_matches_D_E10": true
+  },
+  "checks": {
+    "cohort_exact": true,
+    "loaded_adapters_match_final": true,
+    "selected_outputs_match_saved_generations": true,
+    "book_role_weighting_verified": true,
+    "registered_paired_intervals_recomputed": false,
+    "fixed_consumer_nll_recomputed": true
+  },
+  "generation_attempts": {
+    "judge/first": 99,
+    "judge/recovery": 1,
+    "system_multitask_sft/actor": 87,
+    "system_multitask_sft/actor_recovery": 2,
+    "system_multitask_sft/motivation": 47,
+    "system_multitask_sft/update": 47
+  },
+  "known_usage": {
+    "prompt_tokens": 1570111,
+    "completion_tokens": 37891
+  },
+  "n_outputs": 87,
+  "valid_primary": 86,
+  "macro_quality": null,
+  "response_words": {
+    "mean": 17,
+    "median": 14,
+    "min": 6,
+    "max": 88
+  },
+  "summary_sha256": "22264244cf4a6b5c177d9093c3dcbb0e213b66570bef7ceb49c9dbed0ab037e5",
+  "interpretation": "Execution-agent offline verification, not independent human review. Same previously observed source cohort; original evidence-path and quality-vs-experience-effect limitations remain. Word counts are descriptive, not quality labels.",
+  "numeric_readability_sensitivity": {
+    "post_hoc": true,
+    "registered_primary_unchanged": true,
+    "no_model_calls": true,
+    "no_manual_rescoring": true,
+    "rule": "Each of the five named numeric fields occurs exactly once, is in [1,5], and forms a complete JSON object before a malformed final reason. Ambiguous or absent fields are never invented.",
+    "strict_primary_valid": 86,
+    "readable_primary": 87,
+    "recovered": [
+      {
+        "task_id": "ew/124647/turn2/multitask_sft/judge",
+        "scores": {
+          "experience_interpretation": 1,
+          "justified_change_or_preservation": 1,
+          "goals_and_relationships": 1,
+          "speech_action_alignment": 1,
+          "character_expression": 1
+        },
+        "mode": "complete_numeric_prefix_before_malformed_reason",
+        "selected_attempt": 2,
+        "response_sha256": "78c058405e19f943ae9f6ba650cf04f56ee68ef8c6d30c3ad9841a12790eca39"
+      }
+    ],
+    "macro_quality": 3.876190476190476,
+    "paired_vs": {
+      "base": {
+        "mean": -0.178968253968254,
+        "ci95": [
+          -0.36805555555555575,
+          -0.02182539682539682
+        ]
+      },
+      "update_sft": {
+        "mean": -0.20634920634920642,
+        "ci95": [
+          -0.36527777777777787,
+          -0.047420634920634974
+        ]
+      },
+      "multitask_sft": {
+        "mean": 0.00406746031746034,
+        "ci95": [
+          -0.17222222222222192,
+          0.19424603174603158
+        ]
+      },
+      "strong32": {
+        "mean": -0.45396825396825397,
+        "ci95": [
+          -0.6215277777777778,
+          -0.29751984126984143
+        ]
+      },
+      "released": {
+        "mean": -0.29712301587301587,
+        "ci95": [
+          -0.4270833333333331,
+          -0.15892857142857153
+        ]
+      },
+      "full_evidence": {
+        "mean": -0.24087301587301577,
+        "ci95": [
+          -0.41944444444444434,
+          -0.033660714285715106
+        ]
+      },
+      "frozen": {
+        "mean": -0.19652777777777763,
+        "ci95": [
+          -0.36249999999999966,
+          -0.045138888888888916
+        ]
+      }
+    },
+    "by_book_quality": {
+      "A Doll's House": 4.057142857142857,
+      "Jude the Obscure": 3.75,
+      "Mansfield Park": 3.8666666666666667,
+      "My Ántonia": 3.8833333333333333,
+      "Siddhartha": 3.7625,
+      "White Fang": 3.9375
+    },
+    "dimensions": {
+      "experience_interpretation": 3.908234126984127,
+      "justified_change_or_preservation": 3.5248015873015874,
+      "goals_and_relationships": 3.789186507936508,
+      "speech_action_alignment": 4.140873015873016,
+      "character_expression": 4.017857142857143
+    },
+    "unknown_score_range_sensitivity": {
+      "macro_interval": [
+        3.876190476190476,
+        3.9595238095238097
+      ],
+      "delta_vs_base_interval": [
+        -0.17896825396825422,
+        -0.09563492063492074
+      ],
+      "meaning": "All original 87 contexts and their original role/book weights retained. These are deterministic [1,5] missing-score bounds, not confidence intervals or filled primary labels."
+    }
+  }
+}

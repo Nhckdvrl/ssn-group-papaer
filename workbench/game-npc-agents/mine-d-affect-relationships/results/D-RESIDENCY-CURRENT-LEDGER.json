@@ -1,0 +1,1190 @@
+{
+  "as_of": "2026-10-24T02:46:51.536337+08:00",
+  "model_calls_by_this_script": 0,
+  "historical_D_E01_to_D_E09": {
+    "path": "D-RESIDENCY-TOTALS.json",
+    "sha256": "34cc87b1aaaa023ca391ab1e5debb63c71ec8c2200b8d01b6c14e2b7663c7bb2",
+    "totals": {
+      "source_ledgers": [
+        "D-RUN-LEDGER.json",
+        "D-CONTINUATION-WITH-PREFIX-LEDGER.json"
+      ],
+      "local_generations_recorded": 7080,
+      "source_target_forward_rows": 1561,
+      "extra_alignment_validation_forwards": 6,
+      "gpu_process_hours": 38.7488515877734,
+      "step_plan_recorded_attempts": 495,
+      "step_plan_recorded_usage": {
+        "prompt_tokens": 831776,
+        "completion_tokens": 1890983,
+        "total_tokens": 2722759
+      },
+      "unpersisted_local_source_interruption_upper_bound": 4,
+      "unpersisted_api_calibration_upper_bound": 2,
+      "completed_measurements": [
+        "D-E01",
+        "D-E02",
+        "D-E03 (original Monte S withdrawn; corrected in D-E07)",
+        "D-E04",
+        "D-E05",
+        "D-E06",
+        "D-E07",
+        "D-E08"
+      ],
+      "incomplete_measurements": [
+        "D-E09: registered prefix worker compute budgets reached; no actor/judge stage"
+      ],
+      "note": "Physical recorded generations/requests, including source-disqualified and budget-stopped work; not independent scientific sample counts. Public MiniMax trajectories are excluded. API wall time is not GPU time. No training, no cash fallback."
+    }
+  },
+  "learning_and_interaction_studies": {
+    "D-E10": {
+      "execution_terminal": true,
+      "scientific_scope": "Use experiment card and research report; terminal is not a full-validity or growth-success claim",
+      "returned_generation_records": 1781,
+      "known_generation_usage": {
+        "prompt_tokens": 10661706,
+        "completion_tokens": 261777
+      },
+      "generation_process_seconds": 31239.105338092893,
+      "generation_files": [
+        {
+          "path": "runs/D-E10/judges/base/first/responses.jsonl",
+          "sha256": "0e745610fcc2a0a258b0ff41b9075b3b62ad9a5ba2e154846f018e15d4240a12",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 783045,
+            "completion_tokens": 14509
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1763.6663840450346,
+          "metadata_sha256": "ea7c5e30c7e7f6a6781e08d6e12099872f02d9bd187645fba6a4dae22caef51d",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/frozen/first/responses.jsonl",
+          "sha256": "eff4eb926412d4f2c22e39a8ecb324c4e5d904f32ef0c0b400d100b5af8b0fd7",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 783525,
+            "completion_tokens": 14777
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1718.300075147301,
+          "metadata_sha256": "9c78b8cb6b6156a82be1884543322d9fe30b4f17f05b36147b1a786250a6daf4",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/full_evidence/first/responses.jsonl",
+          "sha256": "79b39db86f095f53815ca010e540a6620418d9acfb391d65e58ad7477cf46138",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 782330,
+            "completion_tokens": 14552
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1694.956750869751,
+          "metadata_sha256": "52791764d37790e765ecac6fe406dc9b1710261906aef31bc154cd70a866aa7e",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/multitask_sft/first/responses.jsonl",
+          "sha256": "173553bb6b5f3678ffc4555cb5a7c049b3eacb9733048a3f656552da4d2f1f73",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 773639,
+            "completion_tokens": 13894
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1606.2386774122715,
+          "metadata_sha256": "ea64ededd4bde11fabcb5e5e9c7713df3b6783cb0332556d785b74908b7aeb13",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/released/first/responses.jsonl",
+          "sha256": "9a1740c7020203f663db9a53e8c2ddeea8358266113b9c4209d7722450c80ad6",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 778261,
+            "completion_tokens": 14137
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1762.442231208086,
+          "metadata_sha256": "e8a92151af5deb91bbc755844161420d0c7958d16ca011e3c5c36e80ea6621f5",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/strong32/first/responses.jsonl",
+          "sha256": "7aafb6b567847c44545b06e51075a0dee6bfba27a17f150b4b519d675fc68192",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 788337,
+            "completion_tokens": 14799
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1805.6452543735504,
+          "metadata_sha256": "150ea2745a00fc3f252c23d5f3e3a29091b72e66cbd7325eb35a4058c0dda8ae",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/judges/update_sft/first/responses.jsonl",
+          "sha256": "34fe4a1abb8b50b36c234ac8e25f8fcaef7ad0517c64feeb18e0acda15ab4dce",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 783169,
+            "completion_tokens": 14630
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1691.5005681924522,
+          "metadata_sha256": "67e81fec8555bb56f426cf84b702ca009fb0c411cd08cbcd6cc6e14982756932",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_base/actor/responses.jsonl",
+          "sha256": "945b130e3df88e67091be2109a3eaf95492de31cf57b67e46bf46d307ff32f74",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 436967,
+            "completion_tokens": 5629
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "base": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 317.420623768121,
+          "metadata_sha256": "599f4cc9d74859957872b799b3c410c96116c62f9c1e74d8d04a4628e3986994",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_base/motivation/responses.jsonl",
+          "sha256": "bb492ab1d89e5505f8243bb0718ec21b5e050f6021ed10cc065c9133a831417c",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 218844,
+            "completion_tokens": 6324
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "base": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 212.67904941365123,
+          "metadata_sha256": "f1c5bfd81cfd7473ec342116a44a5533174bdf6909efb42e19c3473eab1613ba",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_base/update/responses.jsonl",
+          "sha256": "baa4a4ed086d5742e8cc9458a060f78449aff6a7e637fef745e4a23710d92520",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 113041,
+            "completion_tokens": 23717
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "base": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 853.2335076183081,
+          "metadata_sha256": "3cc455c7cf627ec8fbf638b1af912b0448e51142ac4ef043fe1f057f48964d33",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_base/update_recovery/responses.jsonl",
+          "sha256": "aa33722a372293c133da6bdb6cb97fbb659d809993c8e4741d2b02c11e5b6dda",
+          "records": 1,
+          "returned_records": 1,
+          "known_usage": {
+            "prompt_tokens": 2328,
+            "completion_tokens": 528
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 1
+          },
+          "labels": {
+            "base": 1
+          },
+          "process_complete": true,
+          "process_wall_s": 213.86141584813595,
+          "metadata_sha256": "8f77c8ec0494c3c259e722bb6e2929fb20e1179ddc89e90d75015109d0513d8c",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_frozen/actor/responses.jsonl",
+          "sha256": "d0d2e2c9ff3688c955c916c6fd09bcc6e8c3c484e3d046307e1d6671d80984be",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 446990,
+            "completion_tokens": 5666
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "frozen": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 1375.7233562916517,
+          "metadata_sha256": "1756979860dba6efd69d661864d5d8aa4037e9e54b7cc5f9fbd8dbe55705465c",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_frozen/motivation/responses.jsonl",
+          "sha256": "63ac9f4215902c8fa8fe4f9e228760b114e9b32c9cd639183343131325add859",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 219245,
+            "completion_tokens": 6384
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "frozen": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 258.8163551427424,
+          "metadata_sha256": "c1b42ca581c40404f01eca428ea4b8cac92705e3b7dd946e6c85a126dfae49f4",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_full_evidence/actor/responses.jsonl",
+          "sha256": "ead6edc2228c158b6bbe467d794c0821a1d77fb0bf81c455df0df23f166fb847",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 616690,
+            "completion_tokens": 5103
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "full_evidence": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 952.2175201699138,
+          "metadata_sha256": "f8f12fa5887e769475d9ad281356d0e1ffca9902e040fbe22af6c462ee3a31b3",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_full_evidence/motivation/responses.jsonl",
+          "sha256": "85ec2c9c1293ba99c0ff015065656315e06de58374966801bdb26835650c41df",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 303611,
+            "completion_tokens": 6271
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "full_evidence": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 3291.8656914010644,
+          "metadata_sha256": "bbf17690a9d51862f631489df33f02dc93545d2b0a4b71dd72a265da0f144291",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_multitask_sft/actor/responses.jsonl",
+          "sha256": "a51c87bd79ea34616ec5479e5a2f6abe9720521690d041d06fd19d39dbd36fbc",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 443709,
+            "completion_tokens": 1995
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "multitask_sft": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 234.76588953658938,
+          "metadata_sha256": "38f9e34a39eb64fd46b775f4a0cb8691b2d911b7aaade3bd9c702046f7ecb338",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final"
+        },
+        {
+          "path": "runs/D-E10/system_multitask_sft/motivation/responses.jsonl",
+          "sha256": "3aa1a6576c8bfde588043df10febdd6e3c247efa67fca9e54b7b8afb04ade243",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 224165,
+            "completion_tokens": 3930
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "multitask_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 246.12857389077544,
+          "metadata_sha256": "e80f06c58ed6a63a64aafdefb0f4a9af1fe863e77151f45bad3a47f347f6e2a4",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final"
+        },
+        {
+          "path": "runs/D-E10/system_multitask_sft/update/responses.jsonl",
+          "sha256": "f5c81cdb986a1d8b1fb48dcbf4d9c7cc907aecff69e88069761e0defa37768a4",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 113041,
+            "completion_tokens": 15760
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "multitask_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 869.5594953782856,
+          "metadata_sha256": "e9a5d56cc2ddaabdd84e2be25efb43adc8b026cd8a81d3a40d3890dfe2d8d469",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final"
+        },
+        {
+          "path": "runs/D-E10/system_released/actor/responses.jsonl",
+          "sha256": "e43f6655d4af0b7ed4f477fd7e70d2a215ae1022f6de3208f56f631735e8f5ba",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 446179,
+            "completion_tokens": 5639
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "released": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 285.86163530126214,
+          "metadata_sha256": "2210500e3fc02cb731dee9c808d991921506af20b74feeff9bbd9e52f9aa7e7b",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_strong32/actor/responses.jsonl",
+          "sha256": "cd57650b4db37f08b2afd4c01a15c3a5be7ef1e9a2e1349d3cb092e8736a7568",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 448058,
+            "completion_tokens": 8416
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 87
+          },
+          "labels": {
+            "strong32": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 1335.696257956326,
+          "metadata_sha256": "5c3b250fca96b617f7ba87a550e68c32e45ef20e7920d6d1d7850b85cd8b4bd0",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_strong32/motivation/responses.jsonl",
+          "sha256": "33ec76ec14a657b8458a7ca78fbcc883e2ce72ea04d3cf66b1c1c150c46db37b",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 222625,
+            "completion_tokens": 7461
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "strong32": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 1996.2749744541943,
+          "metadata_sha256": "32c56534fe269dfe0eecb2985f36f6704a8d0939d67e0339693ade7dcfad7d98",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_strong32/motivation_recovery/responses.jsonl",
+          "sha256": "fa8681bdbaeecea1d6ae61f9e66a30bed45d2c230ce670aee7f181a998ee379b",
+          "records": 2,
+          "returned_records": 2,
+          "known_usage": {
+            "prompt_tokens": 11256,
+            "completion_tokens": 323
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 2
+          },
+          "labels": {
+            "strong32": 2
+          },
+          "process_complete": true,
+          "process_wall_s": 2977.2553286142647,
+          "metadata_sha256": "a71f4114ff3c1b2e7f937fa8e48e3c51effe5b6491e5de0e6501d0581d2c0d98",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_strong32/update/responses.jsonl",
+          "sha256": "5bf6538e9773d8c7e7a07d88d3fc4196184724c093b5e80109a05cc29f9885b5",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 113041,
+            "completion_tokens": 21672
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "strong32": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 1728.4538830816746,
+          "metadata_sha256": "ab35ca737a56f7594aaa45e0275c203228f42f481b1cf3e8345441c04d837ae4",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_strong32/update_recovery/responses.jsonl",
+          "sha256": "b012f56cd34ae84ff02803939e27e9a94d50e867113f0439f9dbd3462ab95099",
+          "records": 4,
+          "returned_records": 4,
+          "known_usage": {
+            "prompt_tokens": 8702,
+            "completion_tokens": 3273
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 4
+          },
+          "labels": {
+            "strong32": 4
+          },
+          "process_complete": true,
+          "process_wall_s": 293.96250968426466,
+          "metadata_sha256": "0dd06c10d0dea221a06990dc18013569fb6d4bbbaae0c340bf5d84fd98236740",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_update_sft/actor/responses.jsonl",
+          "sha256": "f1fdb75c21259ffe65b19195e693979038ebb1574e65ba075e02f5de3d894803",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 448498,
+            "completion_tokens": 7300
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 85,
+            "length": 2
+          },
+          "labels": {
+            "update_sft": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 362.61404564231634,
+          "metadata_sha256": "abdb4d17004e1a04681f5a0c7359872d1cc86bde9a871e4a5729bc7c491e82b0",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_update_sft/actor_recovery/responses.jsonl",
+          "sha256": "071263d38ab2599dd252f48edfcdca608964bb48aacbd5daa20b9835583390ab",
+          "records": 2,
+          "returned_records": 2,
+          "known_usage": {
+            "prompt_tokens": 15336,
+            "completion_tokens": 173
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 2
+          },
+          "labels": {
+            "update_sft": 2
+          },
+          "process_complete": true,
+          "process_wall_s": 51.12525510042906,
+          "metadata_sha256": "c533ae847b3a28617db742fff1ede55d464b0b7c57eb26fb15e304dca3aaac29",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_update_sft/motivation/responses.jsonl",
+          "sha256": "65eb0eb39c5c6374913792220d362a1906ff4816b83f8237ae1ab86a0ab9acef",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 224033,
+            "completion_tokens": 6225
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "update_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 212.99983766302466,
+          "metadata_sha256": "7547013f2b1e683635e5198ba92b510e0d73f9005afefe99c738601ea5a6e317",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E10/system_update_sft/update/responses.jsonl",
+          "sha256": "0a619528c223ef5f90e12dbe6916eeaafc34f426ab1bbe71f96f3a4b0ab20491",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 113041,
+            "completion_tokens": 18690
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "update_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 1125.8401908874512,
+          "metadata_sha256": "027407c9d13e63aa1464f96488dee7576dcee628c71446486747278cd0eb2b7e",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/final"
+        }
+      ],
+      "training_attempts": [
+        {
+          "path": "runs/D-E10/train_multitask/metadata.json",
+          "sha256": "ff7792cf59f9e5aab88a13ed279566c1f95ecc68e30c69499822148ae9095862",
+          "complete": false,
+          "error": "PEFT rejects inherited torchao 0.9.0; no optimization performed",
+          "completed_steps": null,
+          "seen_examples": null,
+          "forward_tokens": null,
+          "target_tokens": null,
+          "wall_s": null,
+          "final_checkpoint": null,
+          "extra_alignment_forwards": null,
+          "validation_sequence_evaluations": 0
+        },
+        {
+          "path": "runs/D-E10/train_multitask_v2/metadata.json",
+          "sha256": "15f321723577472575d7ba5c97c411f6d077301dec6420e520f9e0da047ce033",
+          "complete": true,
+          "error": null,
+          "completed_steps": 265,
+          "seen_examples": 16931,
+          "forward_tokens": 85900956,
+          "target_tokens": 4276475,
+          "wall_s": 38048.242968954146,
+          "final_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final",
+          "extra_alignment_forwards": 2,
+          "validation_sequence_evaluations": 384
+        },
+        {
+          "path": "runs/D-E10/train_update/metadata.json",
+          "sha256": "ac81b3f3a8cc0e7b71e999e78d37293a2352a03ea6b90135c9f2ff3625202e98",
+          "complete": false,
+          "error": "PEFT rejects inherited torchao 0.9.0; no optimization performed",
+          "completed_steps": null,
+          "seen_examples": null,
+          "forward_tokens": null,
+          "target_tokens": null,
+          "wall_s": null,
+          "final_checkpoint": null,
+          "extra_alignment_forwards": null,
+          "validation_sequence_evaluations": 0
+        },
+        {
+          "path": "runs/D-E10/train_update_v2/metadata.json",
+          "sha256": "ca09f1617e3602bc3f5b7bf69ae03f07fdd36d73a31769da25bf56a1b5036dad",
+          "complete": true,
+          "error": null,
+          "completed_steps": 440,
+          "seen_examples": 28158,
+          "forward_tokens": 85899086,
+          "target_tokens": 16983372,
+          "wall_s": 36731.39779219031,
+          "final_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/final",
+          "extra_alignment_forwards": 2,
+          "validation_sequence_evaluations": 384
+        }
+      ],
+      "source_target_forward_runs": [
+        {
+          "path": "runs/D-E10/likelihood/scores.jsonl",
+          "sha256": "1be13cae4ab833c9308b27f6a5e45ff230882cd1b3eb17eb58d13ebead8d6c4a",
+          "rows": 609,
+          "wall_s": 341.1589757874608,
+          "complete": true
+        }
+      ]
+    },
+    "D-E11": {
+      "execution_terminal": true,
+      "scientific_scope": "Use experiment card and research report; terminal is not a full-validity or growth-success claim",
+      "returned_generation_records": 2146,
+      "known_generation_usage": {
+        "prompt_tokens": 12343398,
+        "completion_tokens": 533614
+      },
+      "generation_process_seconds": 40217.81461562961,
+      "generation_files": [
+        {
+          "path": "runs/D-E11/judges/first/responses.jsonl",
+          "sha256": "9b7f6cea1a7746d2f381e614a48a7e57ffec46ad9e2fee5aabda73cf230650a3",
+          "records": 18,
+          "returned_records": 18,
+          "known_usage": {
+            "prompt_tokens": 59714,
+            "completion_tokens": 11703
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 18
+          },
+          "labels": {
+            "qwen3_32b_native_judge": 18
+          },
+          "process_complete": false,
+          "process_wall_s": 824.2907035201788,
+          "metadata_sha256": "a5105ce4f6ea2e6fada244b5c7e4a90ed64cc8aed975ca76307ce22a83a11861",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E11/judges/first_remaining/responses.jsonl",
+          "sha256": "e51bc12ea864b8b7cb7c6136fe3d5710d7282bb69b402b0a3c540755e5a1e7aa",
+          "records": 181,
+          "returned_records": 181,
+          "known_usage": {
+            "prompt_tokens": 917142,
+            "completion_tokens": 101394
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 181
+          },
+          "labels": {
+            "qwen3_32b_native_judge": 181
+          },
+          "process_complete": true,
+          "process_wall_s": 7543.288652006537,
+          "metadata_sha256": "2638f7fee327ef8fa6b97463d732082fa4087285aebcc036fed15b2df7ea9a27",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E11/judges/recovery/responses.jsonl",
+          "sha256": "e4e96384f96a5906e8cf5823a5e4a64e2e3edc2ea806800cb2d828596bb186e7",
+          "records": 13,
+          "returned_records": 13,
+          "known_usage": {
+            "prompt_tokens": 41787,
+            "completion_tokens": 6994
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 13
+          },
+          "labels": {
+            "qwen3_32b_native_judge": 13
+          },
+          "process_complete": true,
+          "process_wall_s": 625.027613889426,
+          "metadata_sha256": "62da8dcc2ef134fd7366493e0848f475dcfd0ceae36ea3e69dfaf914b655a6e0",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E11/base/raw.jsonl",
+          "sha256": "80ca5fee23a50cb0496ebb04ec88ec813970905eb7eb363510ff67a98c646152",
+          "records": 649,
+          "returned_records": 649,
+          "known_usage": {
+            "prompt_tokens": 3809257,
+            "completion_tokens": 141522
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 648,
+            "length": 1
+          },
+          "labels": {
+            "world": 380,
+            "character": 269
+          },
+          "process_complete": true,
+          "process_wall_s": 9291.837698161602,
+          "metadata_sha256": "67927cfd77bb50c6abbcf8a479583a960b56eca3fe94c1da2fc3dfcd1524548c",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E11/base_interrupted_gpu_contention/raw.jsonl",
+          "sha256": "bd19035e5077467cab68964ad9a770bbb7d4c5d71647d9ba1ad7aeb688041c70",
+          "records": 21,
+          "returned_records": 21,
+          "known_usage": {
+            "prompt_tokens": 52961,
+            "completion_tokens": 2226
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 21
+          },
+          "labels": {
+            "world": 11,
+            "character": 10
+          },
+          "process_complete": false,
+          "process_wall_s": 231.20145719125867,
+          "metadata_sha256": "18184ff60ef25ccd93d870a69b57e4e8f90d0a10fe86e2d5610525a704b24c80",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E11/multitask_sft/raw.jsonl",
+          "sha256": "72dfae0cc6b4978c9d2c2156a07db200516d7cabb799b408c70ad382fc4dc8f7",
+          "records": 635,
+          "returned_records": 635,
+          "known_usage": {
+            "prompt_tokens": 3703315,
+            "completion_tokens": 138537
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 633,
+            "length": 2
+          },
+          "labels": {
+            "world": 366,
+            "character": 269
+          },
+          "process_complete": false,
+          "process_wall_s": 10808.146628692746,
+          "metadata_sha256": "0f77609baf0f4bad67a9e9d5d2d6cbaaae0d39a2166ccd2ea548e58d34389094",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final"
+        },
+        {
+          "path": "runs/D-E11/update_sft/raw.jsonl",
+          "sha256": "e227bac03d3c932a33bed95887f7d287120a37e3a8147d99957473015c9b0ff4",
+          "records": 629,
+          "returned_records": 629,
+          "known_usage": {
+            "prompt_tokens": 3759222,
+            "completion_tokens": 131238
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 628,
+            "length": 1
+          },
+          "labels": {
+            "world": 365,
+            "character": 264
+          },
+          "process_complete": false,
+          "process_wall_s": 10894.021862167865,
+          "metadata_sha256": "f41750b4722907a81462d703d0f9ecc32201562b72cebd30a92626c31cd9307d",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/final"
+        }
+      ],
+      "training_attempts": [],
+      "source_target_forward_runs": []
+    },
+    "D-E12": {
+      "execution_terminal": true,
+      "scientific_scope": "Use experiment card and research report; terminal is not a full-validity or growth-success claim",
+      "returned_generation_records": 283,
+      "known_generation_usage": {
+        "prompt_tokens": 1570111,
+        "completion_tokens": 37891
+      },
+      "generation_process_seconds": 3466.8210380859673,
+      "generation_files": [
+        {
+          "path": "runs/D-E12/judge/first/responses.jsonl",
+          "sha256": "f6ba308559ef2bcd5f64eb0f2ff88f084568a50924f68171c1a43a7418071882",
+          "records": 99,
+          "returned_records": 99,
+          "known_usage": {
+            "prompt_tokens": 774056,
+            "completion_tokens": 13909
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 99
+          },
+          "labels": {
+            "qwen3_32b_judge": 99
+          },
+          "process_complete": true,
+          "process_wall_s": 1611.58565409109,
+          "metadata_sha256": "07ddbbf8db10e801e92f5018a7bd88769a209992191091d772d0505005398aa6",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E12/judge/recovery/responses.jsonl",
+          "sha256": "500717c8ec456025b1064ea5eb24d6b17ff8fa65aa89eeb9e1406f407a2ca0d0",
+          "records": 1,
+          "returned_records": 1,
+          "known_usage": {
+            "prompt_tokens": 5112,
+            "completion_tokens": 168
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 1
+          },
+          "labels": {
+            "qwen3_32b_judge": 1
+          },
+          "process_complete": true,
+          "process_wall_s": 78.11741181090474,
+          "metadata_sha256": "a20e2a84086067f73aa439adb75f8a31a9968ec1e6037065fb4f9cf2a729f2e6",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E12/system_multitask_sft/actor/responses.jsonl",
+          "sha256": "ea76195762f54293534756e81d8fa2c7433dc5b858522ca6f2f62238f561f245",
+          "records": 87,
+          "returned_records": 87,
+          "known_usage": {
+            "prompt_tokens": 444488,
+            "completion_tokens": 3679
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 85,
+            "length": 2
+          },
+          "labels": {
+            "multitask_sft": 87
+          },
+          "process_complete": true,
+          "process_wall_s": 440.6831821426749,
+          "metadata_sha256": "771de54d4bf6a30e28b097cd2ba742cb9db59fbd02f708bdf536eb76c346521a",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final"
+        },
+        {
+          "path": "runs/D-E12/system_multitask_sft/actor_recovery/responses.jsonl",
+          "sha256": "7d012ff5d0c5b75da8672221dba9bbd235763169558c8b3c7e7c94829cf83b6d",
+          "records": 2,
+          "returned_records": 2,
+          "known_usage": {
+            "prompt_tokens": 9010,
+            "completion_tokens": 74
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 2
+          },
+          "labels": {
+            "multitask_sft": 2
+          },
+          "process_complete": true,
+          "process_wall_s": 115.72021928057075,
+          "metadata_sha256": "10d4f3c4501103c5d66fe995083c8f9b1849c334e7619af42575c2ec662c4f16",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final"
+        },
+        {
+          "path": "runs/D-E12/system_multitask_sft/motivation/responses.jsonl",
+          "sha256": "e2ef3d3647d2a661240d5dee804d40d0ae1a272a1f5b6bbe0728cc34d1be30cf",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 224404,
+            "completion_tokens": 3888
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "multitask_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 255.92687506973743,
+          "metadata_sha256": "0ba6d49e879164d2549daa460bb7808bd8cccc63debea2c65cfc15df30b877ae",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final"
+        },
+        {
+          "path": "runs/D-E12/system_multitask_sft/update/responses.jsonl",
+          "sha256": "5b1849dfce1b3d7af67aecf7e203c1ce2368219bdca0afcbf7784cde1f517dc9",
+          "records": 47,
+          "returned_records": 47,
+          "known_usage": {
+            "prompt_tokens": 113041,
+            "completion_tokens": 16173
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 47
+          },
+          "labels": {
+            "multitask_sft": 47
+          },
+          "process_complete": true,
+          "process_wall_s": 964.7876956909895,
+          "metadata_sha256": "e72c0795d6b21c719f890f88c29a745cb211c21f9cfb7229639048ab42ff9743",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final"
+        }
+      ],
+      "training_attempts": [
+        {
+          "path": "runs/D-E12/train_multitask_fullturn/metadata.json",
+          "sha256": "58aa1a34d52c48bcb897a9a6504ec0ffec822c625444c0b930ec3756e804613f",
+          "complete": true,
+          "error": null,
+          "completed_steps": 261,
+          "seen_examples": 16684,
+          "forward_tokens": 85900222,
+          "target_tokens": 4726227,
+          "wall_s": 37602.89250989631,
+          "final_checkpoint": "/var/tmp/ssn-game-npc-d/runs/D-E12/train_multitask_fullturn/final",
+          "extra_alignment_forwards": 4,
+          "validation_sequence_evaluations": 1152
+        }
+      ],
+      "source_target_forward_runs": [
+        {
+          "path": "runs/D-E12/likelihood/scores.jsonl",
+          "sha256": "58a05d7f05e59c5b97ef3d94d0eeece3d0e0ab46fd772b1d3d120efbe4707862",
+          "rows": 87,
+          "wall_s": 77.68997738882899,
+          "complete": true
+        }
+      ]
+    },
+    "D-E13": {
+      "execution_terminal": true,
+      "scientific_scope": "Use experiment card and research report; terminal is not a full-validity or growth-success claim",
+      "returned_generation_records": 231,
+      "known_generation_usage": {
+        "prompt_tokens": 202643,
+        "completion_tokens": 39355
+      },
+      "generation_process_seconds": 3284.1774919442832,
+      "generation_files": [
+        {
+          "path": "runs/D-E13/first/responses.jsonl",
+          "sha256": "7a86c5bac9f59da02023966ceafd0cabda6daff8c9db3fa151c11a844174c3ca",
+          "records": 230,
+          "returned_records": 230,
+          "known_usage": {
+            "prompt_tokens": 201937,
+            "completion_tokens": 39148
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 230
+          },
+          "labels": {
+            "qwen3_32b_calibration_judge": 230
+          },
+          "process_complete": true,
+          "process_wall_s": 3148.7724422737956,
+          "metadata_sha256": "ae8576f4b9fdd69d3973038df95b7cb4a0a316bd88c61cfb6c583154f8657617",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        },
+        {
+          "path": "runs/D-E13/recovery/responses.jsonl",
+          "sha256": "331b1b7dd953b6083931a57a3525681f7bb7421c599f204eee06e617f63548e4",
+          "records": 1,
+          "returned_records": 1,
+          "known_usage": {
+            "prompt_tokens": 706,
+            "completion_tokens": 207
+          },
+          "missing_usage_fields": 0,
+          "finish_reasons": {
+            "stop": 1
+          },
+          "labels": {
+            "qwen3_32b_calibration_judge": 1
+          },
+          "process_complete": true,
+          "process_wall_s": 135.40504967048764,
+          "metadata_sha256": "4db3049b6992502c17773dc4270cb8dc6b70e389d21079faa6e42a16cbbf7a96",
+          "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+          "adapter": null
+        }
+      ],
+      "training_attempts": [],
+      "source_target_forward_runs": []
+    }
+  },
+  "totals": {
+    "recorded_local_generation_responses": 11521,
+    "source_target_forward_rows": 2257,
+    "successful_training_runs": 3,
+    "failed_training_startups": 2,
+    "successful_optimization_steps": 966,
+    "training_sequence_exposures": 61773,
+    "training_forward_tokens": 257700264,
+    "training_target_tokens": 25986074,
+    "training_validation_sequence_evaluations": 1920,
+    "known_training_gpu_process_hours": 31.21737035306688,
+    "known_total_gpu_process_hours": 91.80699067332057,
+    "historical_step_plan_recorded_attempts": 495,
+    "new_step_plan_attempts": 0,
+    "historical_step_plan_recorded_usage": {
+      "prompt_tokens": 831776,
+      "completion_tokens": 1890983,
+      "total_tokens": 2722759
+    },
+    "D_E10_to_D_E13_known_generation_usage": {
+      "prompt_tokens": 24777858,
+      "completion_tokens": 872637
+    }
+  },
+  "process_duration_unknown_paths": [
+    "runs/D-E10/train_multitask/metadata.json",
+    "runs/D-E10/train_update/metadata.json"
+  ],
+  "unrecorded_or_uncertain": [
+    {
+      "scope": "D-E01--09",
+      "local_inflight_upper_bound": 4,
+      "api_inflight_upper_bound": 2
+    },
+    {
+      "scope": "D-E10 failed training startups",
+      "detail": "Zero optimization steps recorded; wall duration not recorded. Do not impute it as zero."
+    },
+    {
+      "scope": "D-E11 initial GPU interruption",
+      "detail": "21 returned records saved; OOM and in-flight generation count/token usage not fully recorded. Exact total is unknown."
+    },
+    {
+      "scope": "D-E11 judge source-audit interruption",
+      "possible_inflight_requests": 2,
+      "detail": "18 returned records saved before stop; in-flight replies/tokens unknown, process wall fully charged."
+    }
+  ],
+  "units": "Generation responses count one returned record per model input, not low-level batched generate() invocations or independent scientific samples. Includes invalid/source-disqualified outputs and uniform recoveries. NLL forwards, training exposures, and validation visits are separate. Process wall includes model load/import; controller waits, API wall, and archive CPU time are not added. Known cost is incomplete where startup duration is unavailable."
+}

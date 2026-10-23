@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import statistics
 
 DIMENSIONS=['experience_interpretation','justified_change_or_preservation','goals_and_relationships',
@@ -19,6 +20,66 @@ def sha(p):
 def same(a,b):
     if a is None or b is None:assert a is b
     else:assert math.isclose(a,b,rel_tol=1e-10,abs_tol=1e-10),(a,b)
+
+
+def readable_original_scores(text):
+    """POST-HOC numeric-readability sensitivity; never replaces the registered parser."""
+    text=text.strip()
+    if text.startswith('```'):text=text.split('\n',1)[-1].rsplit('```',1)[0].strip()
+    if any(len(re.findall('"'+re.escape(d)+'"\\s*:',text))!=1 for d in DIMENSIONS):return None
+    mode='full_json'
+    try:value,_=json.JSONDecoder().raw_decode(text)
+    except ValueError:
+        at=text.find('"reason"');prefix=text[:at].rstrip() if at>=0 else ''
+        if not prefix.endswith(','):return None
+        try:value=json.loads(prefix[:-1]+'}')
+        except ValueError:return None
+        if set(value)!=set(DIMENSIONS):return None
+        mode='complete_numeric_prefix_before_malformed_reason'
+    if not isinstance(value,dict) or any(type(value.get(d)) not in [int,float] or not 1<=value[d]<=5 for d in DIMENSIONS):return None
+    return dict(scores={d:value[d] for d in DIMENSIONS},mode=mode)
+
+
+def complete_book_values(primary,books,dimension=None):
+    groups=defaultdict(list)
+    for x in primary:
+        scores=x['result']['scores'];groups[x['book_name'],x['episode_id']].append(scores[dimension] if dimension else statistics.mean(scores.values()))
+    return [statistics.mean(statistics.mean(v) for (book,_),v in groups.items() if book==b) for b in books]
+
+
+def numeric_sensitivity(primary,raw_selected,books,baseline):
+    import copy
+    import numpy as np
+    readable=[];recovered=[]
+    for row in primary:
+        raw=raw_selected[row['task_id']];value=readable_original_scores(raw['response'])
+        if row['valid']:assert value and value['scores']==row['result']['scores']
+        if value:
+            r=copy.deepcopy(row);r.update(valid=True,result=dict(scores=value['scores']));readable.append(r)
+            if not row['valid']:recovered.append(dict(task_id=row['task_id'],scores=value['scores'],mode=value['mode'],
+                selected_attempt=row['selected_attempt'],response_sha256=hashlib.sha256(raw['response'].encode()).hexdigest()))
+    result=dict(post_hoc=True,registered_primary_unchanged=True,no_model_calls=True,no_manual_rescoring=True,
+        rule='Each of the five named numeric fields occurs exactly once, is in [1,5], and forms a complete JSON object before a malformed final reason. Ambiguous or absent fields are never invented.',
+        strict_primary_valid=sum(x['valid'] for x in primary),readable_primary=len(readable),recovered=recovered)
+    if len(readable)==len(primary):
+        current=np.array(complete_book_values(readable,books));samples=np.random.default_rng(173).integers(0,len(books),(10000,len(books)))
+        result['macro_quality']=float(current.mean());result['paired_vs']={}
+        result['by_book_quality']={b:float(v) for b,v in zip(books,current)}
+        result['dimensions']={d:statistics.mean(complete_book_values(readable,books,d)) for d in DIMENSIONS}
+        same(statistics.mean(result['dimensions'].values()),result['macro_quality'])
+        for name,old in baseline['systems'].items():
+            delta=current-np.array([statistics.mean(old['by_book'][b].values()) for b in books])
+            result['paired_vs'][name]=dict(mean=float(delta.mean()),ci95=np.quantile(delta[samples].mean(1),[.025,.975]).tolist())
+    bounds=[]
+    for score in [1,5]:
+        filled=copy.deepcopy(primary)
+        for r in filled:
+            if not r['valid']:r['result']=dict(scores={d:score for d in DIMENSIONS})
+        bounds.append(statistics.mean(complete_book_values(filled,books)))
+    result['unknown_score_range_sensitivity']=dict(macro_interval=bounds,
+        delta_vs_base_interval=[v-baseline['systems']['base']['macro_quality'] for v in bounds],
+        meaning='All original 87 contexts and their original role/book weights retained. These are deterministic [1,5] missing-score bounds, not confidence intervals or filled primary labels.')
+    return result
 
 
 def main():
@@ -118,11 +179,12 @@ def main():
         training=dict(examples=len(order),forward_tokens=forward,target_tokens=targets,tasks=dict(counts),interaction_assistant_turns=interaction_turns,
                       cache_hashes_verified=True,training_order_matches_old_prefix=True,final_adapter_sha256=adapter_sha),
         information_paths=dict(actor_uses_final_selected_state_and_motivation=True,source_dialogue_preserved=True,judge_common_evidence_matches_D_E10=True),
-        checks=dict(cohort_exact=True,loaded_adapters_match_final=True,selected_outputs_match_saved_generations=True,book_role_weighting_and_paired_intervals_recomputed=True,fixed_consumer_nll_recomputed=True),
+        checks=dict(cohort_exact=True,loaded_adapters_match_final=True,selected_outputs_match_saved_generations=True,book_role_weighting_verified=True,registered_paired_intervals_recomputed=macro is not None,fixed_consumer_nll_recomputed=True),
         generation_attempts=dict(stage_calls),known_usage=dict(usage),n_outputs=len(outputs),valid_primary=len(valid),macro_quality=macro,
         response_words=dict(mean=statistics.mean(sizes),median=statistics.median(sizes),min=min(sizes),max=max(sizes)),
         summary_sha256=sha(result_dir/'D-E12-summary.json'),
         interpretation='Execution-agent offline verification, not independent human review. Same previously observed source cohort; original evidence-path and quality-vs-experience-effect limitations remain. Word counts are descriptive, not quality labels.')
+    audit['numeric_readability_sensitivity']=numeric_sensitivity(primary,{x['task_id']:recovery.get(x['task_id'],first[x['task_id']]) for x in primary},books,baseline)
     a.out.write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n');print(json.dumps(audit,ensure_ascii=False,indent=2))
 
 
