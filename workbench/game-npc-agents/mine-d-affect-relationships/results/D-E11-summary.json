@@ -1,0 +1,1125 @@
+{
+  "experiment": "D-E11",
+  "status": "SOURCE-QUALIFIED-PARTIAL-COVERAGE-PENDING-CASE-REVIEW",
+  "n_books": 6,
+  "systems": {
+    "base": {
+      "execution": {
+        "experiment": "D-E11",
+        "system": "base",
+        "complete": true,
+        "error": null,
+        "started_utc": "2026-10-23T02:14:26.214677+00:00",
+        "selection": {
+          "experiment": "D-E11",
+          "source_sha256": "d7eb96d5d59e5ac9cedf190738f033d23780576b025f5441f73c8def11240e8f",
+          "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
+          "n_books": 6,
+          "snapshots": [
+            {
+              "source_index": 6,
+              "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+              "scene": 50,
+              "n_characters": 73
+            },
+            {
+              "source_index": 42,
+              "book": "Around the World in Eighty Days",
+              "scene": 144,
+              "n_characters": 43
+            },
+            {
+              "source_index": 22,
+              "book": "Pride and Prejudice",
+              "scene": 237,
+              "n_characters": 42
+            },
+            {
+              "source_index": 91,
+              "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+              "scene": 130,
+              "n_characters": 93
+            },
+            {
+              "source_index": 95,
+              "book": "The Scarlet Letter",
+              "scene": 13,
+              "n_characters": 8
+            },
+            {
+              "source_index": 56,
+              "book": "Uncle Tom’s Cabin",
+              "scene": 114,
+              "n_characters": 119
+            }
+          ],
+          "future_reference_fields_passed_to_model": false
+        },
+        "vendor_revision": "1de26550ccfff105f3ffe9f4b386716446291341",
+        "upstream_files": {
+          "simulation/inference.py": "b82509a5c12faca840ac7d999a7249b28b332755529ad71c69ab9a4d4ae6769f",
+          "simulation/main.py": "5049a57513e2ffffa5bec05d0d8a6a24671d4d461364721866549a07da0a1256",
+          "simulation/simulator.py": "861df5624d07dcb153359982c0314863b1500e5f2acf773d53a102dc4e189b20",
+          "simulation/utils.py": "af83e35da3c3dff3eae4245a53d1a23baf6261fed069f9c03054abf3d3eb855e"
+        },
+        "runner_sha256": "870024117753a95170d99dbe0cd1134714826c6a2102b6d287f332f9cbe004f2",
+        "git_commit": "3cb2c28eb309fa2502f4a15efda81b4af17e085a",
+        "max_hours": 2.9357773730024284,
+        "seed": 42,
+        "max_scenes": 3,
+        "max_turns_per_scene": 12,
+        "processed_snapshots": [
+          {
+            "source_index": 6,
+            "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 42,
+            "book": "Around the World in Eighty Days",
+            "stop_reason": "error",
+            "error": "world_update failed to parse JSON after 5 attempts: Expected <class 'dict'>, got list: [{'name': \"Detective Fix's Arrest Warrant\", 'state': 'A legal document that has been served, leading to the arrest of Phileas Fogg. Its purpose has been fulfilled.'}, {'name': 'The Transatlantic Steamer', 'state': \"Moored at the quay, having just completed its voyage from America. Passengers are disembarking onto the dock. Phileas Fogg and Aouda are now preparing to board, with the conductor facilitating their urgent passage to London. The steamer is set to depart in ten minutes, adding a critical time constraint to their journey. The conductor has issued an order to commence boarding immediately, signaling the start of the final countdown. Passepartout is now urgently appealing to the conductor for assistance in boarding the steamer, and the conductor is visibly stressed by the time constraints. Aouda has joined Fogg in the urgency, gripping his sleeve and urging immediate action as the seconds slip away. Aouda's urgent pull on Fogg's sleeve and her low, urgent voice emphasize the critical time pressure, intensifying the atmosphere of impending departure. The conductor has raised his hand sharply, signaling the crew to begin loading passengers, marking the official start of the final countdown to the steamer's departure. Passepartout is now barreling toward the gangway, grabbing Fogg's coat and urgently demanding they get on the ship as boarding starts now. The conductor's sharp signal to commence boarding has officially initiated the final countdown to the steamer's departure, intensifying the urgency of the situation. Passepartout's exclamation about losing two hours adds to the mounting pressure, highlighting the critical time deficit and the urgency of their situation. The conductor's sharp gesture toward the gangway and his sharp command to 'Move!' further heightens the tension, signaling the start of the final push to board the steamer before it departs. Passepartout's frantic action and urgency have intensified the scene, with Fogg and Aouda now visibly pushed forward by the crowd and the conductor's commands. Phileas Fogg directly confronts Detective Fix, demanding he move aside, escalating the tension in the scene. The conductor's sharp command to Fix to step aside adds to the growing tension, signaling that the conductor is actively intervening to clear the path for Fogg and his companions. The conductor's final warning to passengers, 'The ship is leaving! Get on board or lose your chance!' has heightened the urgency, marking the official start of the final countdown to the steamer's departure. Phileas Fogg's direct confrontation with Fix has further intensified the scene, with Fix visibly shaken and retreating from the gangway as Fogg asserts his authority. Fogg now pushes through the crowd with determination, his voice firm as he instructs Passepartout and Aouda. The ship's horn blares in the distance, a stark reminder of the time slipping away. The atmosphere is electric with urgency, and the final leg of the journey begins in earnest. Detective Fix has been forced to retreat from the gangway, clearing the path for Fogg and his companions as they push forward. Phileas Fogg has successfully cleared the path by confronting Fix, and the tension in the scene has shifted toward the urgency of boarding the steamer. Passepartout's urgent warning about the ship's horn adds to the mounting pressure, emphasizing the imminent departure and the critical time constraint. The scene is now dominated by the urgency of boarding, with Fogg, Aouda, and Passepartout pushing through the crowd toward the gangway as the final countdown begins.\"}]",
+            "n_scenes": 3,
+            "n_interactions": 26
+          },
+          {
+            "source_index": 22,
+            "book": "Pride and Prejudice",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 91,
+            "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 95,
+            "book": "The Scarlet Letter",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 56,
+            "book": "Uncle Tom’s Cabin",
+            "stop_reason": "error",
+            "error": "No truncation: 30440 input + 4096 output exceeds 32768",
+            "n_scenes": 0,
+            "n_interactions": 0
+          }
+        ],
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "resolved_checkpoint": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "local_weight_mirror": {
+          "source_snapshot": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+          "complete": true,
+          "files": [
+            {
+              "name": "generation_config.json",
+              "bytes": 239,
+              "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+            },
+            {
+              "name": "config.json",
+              "bytes": 728,
+              "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+            },
+            {
+              "name": ".gitattributes",
+              "bytes": 1570,
+              "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+            },
+            {
+              "name": "tokenizer_config.json",
+              "bytes": 9732,
+              "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+            },
+            {
+              "name": "LICENSE",
+              "bytes": 11343,
+              "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+            },
+            {
+              "name": "README.md",
+              "bytes": 16660,
+              "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6"
+            },
+            {
+              "name": "model.safetensors.index.json",
+              "bytes": 32878,
+              "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
+            },
+            {
+              "name": "merges.txt",
+              "bytes": 1671853,
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+            },
+            {
+              "name": "vocab.json",
+              "bytes": 2776833,
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+            },
+            {
+              "name": "tokenizer.json",
+              "bytes": 11422654,
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+            },
+            {
+              "name": "model-00005-of-00005.safetensors",
+              "bytes": 1244659840,
+              "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
+            },
+            {
+              "name": "model-00004-of-00005.safetensors",
+              "bytes": 3187841392,
+              "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
+            },
+            {
+              "name": "model-00003-of-00005.safetensors",
+              "bytes": 3959604768,
+              "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
+            },
+            {
+              "name": "model-00002-of-00005.safetensors",
+              "bytes": 3993160032,
+              "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
+            },
+            {
+              "name": "model-00001-of-00005.safetensors",
+              "bytes": 3996250744,
+              "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
+            }
+          ],
+          "wall_s": 120.42048500105739
+        },
+        "adapter": null,
+        "generation_config": {
+          "max_length": null,
+          "max_new_tokens": null,
+          "min_length": null,
+          "min_new_tokens": null,
+          "early_stopping": null,
+          "max_time": null,
+          "stop_strings": null,
+          "do_sample": true,
+          "num_beams": null,
+          "use_cache": null,
+          "cache_implementation": null,
+          "cache_config": null,
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": null,
+          "top_h": null,
+          "typical_p": null,
+          "epsilon_cutoff": null,
+          "eta_cutoff": null,
+          "repetition_penalty": null,
+          "encoder_repetition_penalty": null,
+          "length_penalty": null,
+          "no_repeat_ngram_size": null,
+          "bad_words_ids": null,
+          "renormalize_logits": null,
+          "forced_bos_token_id": null,
+          "forced_eos_token_id": null,
+          "remove_invalid_values": null,
+          "exponential_decay_length_penalty": null,
+          "suppress_tokens": null,
+          "begin_suppress_tokens": null,
+          "sequence_bias": null,
+          "token_healing": null,
+          "guidance_scale": null,
+          "watermarking_config": null,
+          "num_return_sequences": null,
+          "output_attentions": null,
+          "output_hidden_states": null,
+          "output_scores": null,
+          "output_logits": null,
+          "return_dict_in_generate": null,
+          "pad_token_id": 151643,
+          "bos_token_id": 151643,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "encoder_no_repeat_ngram_size": null,
+          "decoder_start_token_id": null,
+          "is_assistant": null,
+          "num_assistant_tokens": null,
+          "num_assistant_tokens_schedule": null,
+          "assistant_confidence_threshold": null,
+          "prompt_lookup_num_tokens": null,
+          "max_matching_ngram_size": null,
+          "assistant_early_exit": null,
+          "assistant_lookbehind": null,
+          "target_lookbehind": null,
+          "compile_config": null,
+          "disable_compile": null,
+          "low_memory": null,
+          "penalty_alpha": null,
+          "dola_layers": null,
+          "diversity_penalty": null,
+          "num_beam_groups": null,
+          "constraints": null,
+          "force_words_ids": null,
+          "prefill_chunk_size": null,
+          "_from_model_config": null,
+          "transformers_version": "5.3.0"
+        },
+        "cuda_visible_devices": "1",
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "recorded_generation_attempts": 649,
+        "wall_s": 9291.837698161602,
+        "finished_utc": "2026-10-23T04:49:18.052438+00:00"
+      },
+      "by_book": {
+        "Alice’s Adventures in Wonderland - Through the Looking-Glass": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 86.33333333333333,
+          "MQ": 80,
+          "CR": null,
+          "PES": 69.33333333333333
+        },
+        "Around the World in Eighty Days": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 46.333333333333336,
+          "MQ": 71.33333333333333,
+          "CR": 61,
+          "PES": 64
+        },
+        "Pride and Prejudice": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 60,
+          "MQ": 69.33333333333333,
+          "CR": 62.666666666666664,
+          "PES": null
+        },
+        "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 77.33333333333333,
+          "MQ": 75.66666666666667,
+          "CR": null,
+          "PES": 71.5
+        },
+        "The Scarlet Letter": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 75.33333333333333,
+          "MQ": 77.33333333333333,
+          "CR": 72.33333333333333,
+          "PES": 71.33333333333333
+        },
+        "Uncle Tom’s Cabin": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": null,
+          "MQ": null,
+          "CR": null,
+          "PES": null
+        }
+      },
+      "macro_metrics": {
+        "PF": null,
+        "SSF": null,
+        "MDB": null,
+        "PUF": null,
+        "MQ": null,
+        "CR": null,
+        "PES": null
+      },
+      "n_repeat_pairs": 5,
+      "repeat_mean_absolute_difference": 0.4,
+      "paired_vs_base": {}
+    },
+    "update_sft": {
+      "execution": {
+        "experiment": "D-E11",
+        "system": "update_sft",
+        "complete": false,
+        "error": null,
+        "started_utc": "2026-10-23T04:49:44.902173+00:00",
+        "selection": {
+          "experiment": "D-E11",
+          "source_sha256": "d7eb96d5d59e5ac9cedf190738f033d23780576b025f5441f73c8def11240e8f",
+          "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
+          "n_books": 6,
+          "snapshots": [
+            {
+              "source_index": 6,
+              "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+              "scene": 50,
+              "n_characters": 73
+            },
+            {
+              "source_index": 42,
+              "book": "Around the World in Eighty Days",
+              "scene": 144,
+              "n_characters": 43
+            },
+            {
+              "source_index": 22,
+              "book": "Pride and Prejudice",
+              "scene": 237,
+              "n_characters": 42
+            },
+            {
+              "source_index": 91,
+              "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+              "scene": 130,
+              "n_characters": 93
+            },
+            {
+              "source_index": 95,
+              "book": "The Scarlet Letter",
+              "scene": 13,
+              "n_characters": 8
+            },
+            {
+              "source_index": 56,
+              "book": "Uncle Tom’s Cabin",
+              "scene": 114,
+              "n_characters": 119
+            }
+          ],
+          "future_reference_fields_passed_to_model": false
+        },
+        "vendor_revision": "1de26550ccfff105f3ffe9f4b386716446291341",
+        "upstream_files": {
+          "simulation/inference.py": "b82509a5c12faca840ac7d999a7249b28b332755529ad71c69ab9a4d4ae6769f",
+          "simulation/main.py": "5049a57513e2ffffa5bec05d0d8a6a24671d4d461364721866549a07da0a1256",
+          "simulation/simulator.py": "861df5624d07dcb153359982c0314863b1500e5f2acf773d53a102dc4e189b20",
+          "simulation/utils.py": "af83e35da3c3dff3eae4245a53d1a23baf6261fed069f9c03054abf3d3eb855e"
+        },
+        "runner_sha256": "870024117753a95170d99dbe0cd1134714826c6a2102b6d287f332f9cbe004f2",
+        "git_commit": "e08b06a2f353d4a22ea2000cbb5945d06403576b",
+        "max_hours": 3.0,
+        "seed": 42,
+        "max_scenes": 3,
+        "max_turns_per_scene": 12,
+        "processed_snapshots": [
+          {
+            "source_index": 6,
+            "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 42,
+            "book": "Around the World in Eighty Days",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 22,
+            "book": "Pride and Prejudice",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 91,
+            "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 95,
+            "book": "The Scarlet Letter",
+            "stop_reason": "error",
+            "error": "Registered D-E11 process budget exhausted",
+            "n_scenes": 2,
+            "n_interactions": 24
+          }
+        ],
+        "adapter_files": {
+          "adapter_model.safetensors": "05db43ad3b348a0f9a6e4c0f4936a806502c9be3ed853531a15d148123e79a8f",
+          "adapter_config.json": "f947380e809f945256608f9a20a20a5d4b1ec2a5ed28b58ef840b577aab9549c",
+          "checkpoint.json": "383691d7b986c0e352a42c667859ab3e592d13e0e69313a06567a9cc88b30552"
+        },
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "resolved_checkpoint": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "local_weight_mirror": {
+          "source_snapshot": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+          "complete": true,
+          "files": [
+            {
+              "name": "generation_config.json",
+              "bytes": 239,
+              "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+            },
+            {
+              "name": "config.json",
+              "bytes": 728,
+              "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+            },
+            {
+              "name": ".gitattributes",
+              "bytes": 1570,
+              "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+            },
+            {
+              "name": "tokenizer_config.json",
+              "bytes": 9732,
+              "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+            },
+            {
+              "name": "LICENSE",
+              "bytes": 11343,
+              "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+            },
+            {
+              "name": "README.md",
+              "bytes": 16660,
+              "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6"
+            },
+            {
+              "name": "model.safetensors.index.json",
+              "bytes": 32878,
+              "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
+            },
+            {
+              "name": "merges.txt",
+              "bytes": 1671853,
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+            },
+            {
+              "name": "vocab.json",
+              "bytes": 2776833,
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+            },
+            {
+              "name": "tokenizer.json",
+              "bytes": 11422654,
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+            },
+            {
+              "name": "model-00005-of-00005.safetensors",
+              "bytes": 1244659840,
+              "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
+            },
+            {
+              "name": "model-00004-of-00005.safetensors",
+              "bytes": 3187841392,
+              "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
+            },
+            {
+              "name": "model-00003-of-00005.safetensors",
+              "bytes": 3959604768,
+              "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
+            },
+            {
+              "name": "model-00002-of-00005.safetensors",
+              "bytes": 3993160032,
+              "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
+            },
+            {
+              "name": "model-00001-of-00005.safetensors",
+              "bytes": 3996250744,
+              "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
+            }
+          ],
+          "wall_s": 120.42048500105739
+        },
+        "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_update_v2/final",
+        "generation_config": {
+          "max_length": null,
+          "max_new_tokens": null,
+          "min_length": null,
+          "min_new_tokens": null,
+          "early_stopping": null,
+          "max_time": null,
+          "stop_strings": null,
+          "do_sample": true,
+          "num_beams": null,
+          "use_cache": null,
+          "cache_implementation": null,
+          "cache_config": null,
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": null,
+          "top_h": null,
+          "typical_p": null,
+          "epsilon_cutoff": null,
+          "eta_cutoff": null,
+          "repetition_penalty": null,
+          "encoder_repetition_penalty": null,
+          "length_penalty": null,
+          "no_repeat_ngram_size": null,
+          "bad_words_ids": null,
+          "renormalize_logits": null,
+          "forced_bos_token_id": null,
+          "forced_eos_token_id": null,
+          "remove_invalid_values": null,
+          "exponential_decay_length_penalty": null,
+          "suppress_tokens": null,
+          "begin_suppress_tokens": null,
+          "sequence_bias": null,
+          "token_healing": null,
+          "guidance_scale": null,
+          "watermarking_config": null,
+          "num_return_sequences": null,
+          "output_attentions": null,
+          "output_hidden_states": null,
+          "output_scores": null,
+          "output_logits": null,
+          "return_dict_in_generate": null,
+          "pad_token_id": 151643,
+          "bos_token_id": 151643,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "encoder_no_repeat_ngram_size": null,
+          "decoder_start_token_id": null,
+          "is_assistant": null,
+          "num_assistant_tokens": null,
+          "num_assistant_tokens_schedule": null,
+          "assistant_confidence_threshold": null,
+          "prompt_lookup_num_tokens": null,
+          "max_matching_ngram_size": null,
+          "assistant_early_exit": null,
+          "assistant_lookbehind": null,
+          "target_lookbehind": null,
+          "compile_config": null,
+          "disable_compile": null,
+          "low_memory": null,
+          "penalty_alpha": null,
+          "dola_layers": null,
+          "diversity_penalty": null,
+          "num_beam_groups": null,
+          "constraints": null,
+          "force_words_ids": null,
+          "prefill_chunk_size": null,
+          "_from_model_config": null,
+          "transformers_version": "5.3.0"
+        },
+        "cuda_visible_devices": "1",
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "recorded_generation_attempts": 629,
+        "stop_reason": "registered_budget",
+        "wall_s": 10894.021862167865,
+        "finished_utc": "2026-10-23T07:51:18.924056+00:00"
+      },
+      "by_book": {
+        "Alice’s Adventures in Wonderland - Through the Looking-Glass": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 71.33333333333333,
+          "MQ": 79.66666666666667,
+          "CR": null,
+          "PES": 63.666666666666664
+        },
+        "Around the World in Eighty Days": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 57,
+          "MQ": 74.66666666666667,
+          "CR": null,
+          "PES": 66.75
+        },
+        "Pride and Prejudice": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 54.333333333333336,
+          "MQ": 69.66666666666667,
+          "CR": 69.33333333333333,
+          "PES": null
+        },
+        "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 71,
+          "MQ": 81.66666666666667,
+          "CR": 71.66666666666667,
+          "PES": 70.5
+        },
+        "The Scarlet Letter": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 65,
+          "MQ": 72.5,
+          "CR": 64,
+          "PES": 64
+        },
+        "Uncle Tom’s Cabin": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": null,
+          "MQ": null,
+          "CR": null,
+          "PES": null
+        }
+      },
+      "macro_metrics": {
+        "PF": null,
+        "SSF": null,
+        "MDB": null,
+        "PUF": null,
+        "MQ": null,
+        "CR": null,
+        "PES": null
+      },
+      "n_repeat_pairs": 5,
+      "repeat_mean_absolute_difference": 0,
+      "paired_vs_base": {}
+    },
+    "multitask_sft": {
+      "execution": {
+        "experiment": "D-E11",
+        "system": "multitask_sft",
+        "complete": false,
+        "error": null,
+        "started_utc": "2026-10-23T08:03:49.382869+00:00",
+        "selection": {
+          "experiment": "D-E11",
+          "source_sha256": "d7eb96d5d59e5ac9cedf190738f033d23780576b025f5441f73c8def11240e8f",
+          "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
+          "n_books": 6,
+          "snapshots": [
+            {
+              "source_index": 6,
+              "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+              "scene": 50,
+              "n_characters": 73
+            },
+            {
+              "source_index": 42,
+              "book": "Around the World in Eighty Days",
+              "scene": 144,
+              "n_characters": 43
+            },
+            {
+              "source_index": 22,
+              "book": "Pride and Prejudice",
+              "scene": 237,
+              "n_characters": 42
+            },
+            {
+              "source_index": 91,
+              "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+              "scene": 130,
+              "n_characters": 93
+            },
+            {
+              "source_index": 95,
+              "book": "The Scarlet Letter",
+              "scene": 13,
+              "n_characters": 8
+            },
+            {
+              "source_index": 56,
+              "book": "Uncle Tom’s Cabin",
+              "scene": 114,
+              "n_characters": 119
+            }
+          ],
+          "future_reference_fields_passed_to_model": false
+        },
+        "vendor_revision": "1de26550ccfff105f3ffe9f4b386716446291341",
+        "upstream_files": {
+          "simulation/inference.py": "b82509a5c12faca840ac7d999a7249b28b332755529ad71c69ab9a4d4ae6769f",
+          "simulation/main.py": "5049a57513e2ffffa5bec05d0d8a6a24671d4d461364721866549a07da0a1256",
+          "simulation/simulator.py": "861df5624d07dcb153359982c0314863b1500e5f2acf773d53a102dc4e189b20",
+          "simulation/utils.py": "af83e35da3c3dff3eae4245a53d1a23baf6261fed069f9c03054abf3d3eb855e"
+        },
+        "runner_sha256": "870024117753a95170d99dbe0cd1134714826c6a2102b6d287f332f9cbe004f2",
+        "git_commit": "86e98ea9c2c2cf8a7cd53e12767503b95e12d4eb",
+        "max_hours": 3.0,
+        "seed": 42,
+        "max_scenes": 3,
+        "max_turns_per_scene": 12,
+        "processed_snapshots": [
+          {
+            "source_index": 6,
+            "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 42,
+            "book": "Around the World in Eighty Days",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 22,
+            "book": "Pride and Prejudice",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 91,
+            "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+            "stop_reason": "max_scenes_reached",
+            "error": null,
+            "n_scenes": 3,
+            "n_interactions": 36
+          },
+          {
+            "source_index": 95,
+            "book": "The Scarlet Letter",
+            "stop_reason": "error",
+            "error": "Registered D-E11 process budget exhausted",
+            "n_scenes": 2,
+            "n_interactions": 24
+          }
+        ],
+        "adapter_files": {
+          "adapter_model.safetensors": "1f0b520e7de2f83f8b0768eb36426ebd5de14003c31dcaf51f34fdbc827bc11b",
+          "adapter_config.json": "f947380e809f945256608f9a20a20a5d4b1ec2a5ed28b58ef840b577aab9549c",
+          "checkpoint.json": "1ff69e703f5fe9abcd6778fb5379019e7ea82f29101f39deffbe3a8dd1213f0d"
+        },
+        "checkpoint": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "resolved_checkpoint": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "local_weight_mirror": {
+          "source_snapshot": "/home/xiang/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+          "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+          "complete": true,
+          "files": [
+            {
+              "name": "generation_config.json",
+              "bytes": 239,
+              "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+            },
+            {
+              "name": "config.json",
+              "bytes": 728,
+              "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+            },
+            {
+              "name": ".gitattributes",
+              "bytes": 1570,
+              "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+            },
+            {
+              "name": "tokenizer_config.json",
+              "bytes": 9732,
+              "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+            },
+            {
+              "name": "LICENSE",
+              "bytes": 11343,
+              "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+            },
+            {
+              "name": "README.md",
+              "bytes": 16660,
+              "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6"
+            },
+            {
+              "name": "model.safetensors.index.json",
+              "bytes": 32878,
+              "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
+            },
+            {
+              "name": "merges.txt",
+              "bytes": 1671853,
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+            },
+            {
+              "name": "vocab.json",
+              "bytes": 2776833,
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+            },
+            {
+              "name": "tokenizer.json",
+              "bytes": 11422654,
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+            },
+            {
+              "name": "model-00005-of-00005.safetensors",
+              "bytes": 1244659840,
+              "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
+            },
+            {
+              "name": "model-00004-of-00005.safetensors",
+              "bytes": 3187841392,
+              "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
+            },
+            {
+              "name": "model-00003-of-00005.safetensors",
+              "bytes": 3959604768,
+              "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
+            },
+            {
+              "name": "model-00002-of-00005.safetensors",
+              "bytes": 3993160032,
+              "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
+            },
+            {
+              "name": "model-00001-of-00005.safetensors",
+              "bytes": 3996250744,
+              "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
+            }
+          ],
+          "wall_s": 120.42048500105739
+        },
+        "adapter": "/var/tmp/ssn-game-npc-d/runs/D-E10/train_multitask_v2/final",
+        "generation_config": {
+          "max_length": null,
+          "max_new_tokens": null,
+          "min_length": null,
+          "min_new_tokens": null,
+          "early_stopping": null,
+          "max_time": null,
+          "stop_strings": null,
+          "do_sample": true,
+          "num_beams": null,
+          "use_cache": null,
+          "cache_implementation": null,
+          "cache_config": null,
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": null,
+          "top_h": null,
+          "typical_p": null,
+          "epsilon_cutoff": null,
+          "eta_cutoff": null,
+          "repetition_penalty": null,
+          "encoder_repetition_penalty": null,
+          "length_penalty": null,
+          "no_repeat_ngram_size": null,
+          "bad_words_ids": null,
+          "renormalize_logits": null,
+          "forced_bos_token_id": null,
+          "forced_eos_token_id": null,
+          "remove_invalid_values": null,
+          "exponential_decay_length_penalty": null,
+          "suppress_tokens": null,
+          "begin_suppress_tokens": null,
+          "sequence_bias": null,
+          "token_healing": null,
+          "guidance_scale": null,
+          "watermarking_config": null,
+          "num_return_sequences": null,
+          "output_attentions": null,
+          "output_hidden_states": null,
+          "output_scores": null,
+          "output_logits": null,
+          "return_dict_in_generate": null,
+          "pad_token_id": 151643,
+          "bos_token_id": 151643,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "encoder_no_repeat_ngram_size": null,
+          "decoder_start_token_id": null,
+          "is_assistant": null,
+          "num_assistant_tokens": null,
+          "num_assistant_tokens_schedule": null,
+          "assistant_confidence_threshold": null,
+          "prompt_lookup_num_tokens": null,
+          "max_matching_ngram_size": null,
+          "assistant_early_exit": null,
+          "assistant_lookbehind": null,
+          "target_lookbehind": null,
+          "compile_config": null,
+          "disable_compile": null,
+          "low_memory": null,
+          "penalty_alpha": null,
+          "dola_layers": null,
+          "diversity_penalty": null,
+          "num_beam_groups": null,
+          "constraints": null,
+          "force_words_ids": null,
+          "prefill_chunk_size": null,
+          "_from_model_config": null,
+          "transformers_version": "5.3.0"
+        },
+        "cuda_visible_devices": "1",
+        "torch": "2.9.1+cu129",
+        "transformers": "5.3.0",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "recorded_generation_attempts": 635,
+        "stop_reason": "registered_budget",
+        "wall_s": 10808.146628692746,
+        "finished_utc": "2026-10-23T11:03:57.529516+00:00"
+      },
+      "by_book": {
+        "Alice’s Adventures in Wonderland - Through the Looking-Glass": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 64.66666666666667,
+          "MQ": null,
+          "CR": 60.333333333333336,
+          "PES": 67.66666666666667
+        },
+        "Around the World in Eighty Days": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 55,
+          "MQ": 87,
+          "CR": 55.666666666666664,
+          "PES": 66.25
+        },
+        "Pride and Prejudice": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 52,
+          "MQ": 65.66666666666667,
+          "CR": 55.666666666666664,
+          "PES": null
+        },
+        "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 53,
+          "MQ": 76,
+          "CR": null,
+          "PES": 69.25
+        },
+        "The Scarlet Letter": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": 44,
+          "MQ": 68.5,
+          "CR": 70,
+          "PES": 65
+        },
+        "Uncle Tom’s Cabin": {
+          "PF": null,
+          "SSF": null,
+          "MDB": null,
+          "PUF": null,
+          "MQ": null,
+          "CR": null,
+          "PES": null
+        }
+      },
+      "macro_metrics": {
+        "PF": null,
+        "SSF": null,
+        "MDB": null,
+        "PUF": null,
+        "MQ": null,
+        "CR": null,
+        "PES": null
+      },
+      "n_repeat_pairs": 5,
+      "repeat_mean_absolute_difference": 2.4,
+      "paired_vs_base": {}
+    }
+  },
+  "scope": "Short generated native trajectories, six publisher-OOD books, one seed, fixed 8B world. Official character rubric subset; PES sees full generated transcripts, not teacher summaries. Not player study or validated growth accuracy.",
+  "generation_coordinator": {
+    "complete": true,
+    "error": null,
+    "systems_completed": [
+      "base"
+    ],
+    "systems_stopped": [
+      {
+        "system": "update_sft",
+        "error": null,
+        "stop_reason": "registered_budget",
+        "reason": "Registered run terminated without processing the full cohort; never rerun automatically"
+      },
+      {
+        "system": "multitask_sft",
+        "error": null,
+        "stop_reason": "registered_budget",
+        "reason": "Registered run terminated without processing the full cohort; never rerun automatically"
+      }
+    ],
+    "started_utc": "2026-10-23T08:03:44.612611+00:00",
+    "initial_started_utc": "2026-10-23T02:14:18.835494+00:00",
+    "phase": "all_registered_paths_terminal",
+    "waiting_system": "multitask_sft",
+    "selected_gpu": "1",
+    "all_systems_fully_processed": false,
+    "updated_utc": "2026-10-23T11:04:00.556120+00:00"
+  },
+  "source_qualification": {
+    "created_utc": "2026-10-23T11:19:13.799789+00:00",
+    "reason": "Source audit found PF/SSF/MDB tracker labeled scene-start is actually scene-end; stop further invalid input scoring, retain every attempt; no corrected-input rerun authorized in this audit",
+    "affected_metrics": [
+      "PF",
+      "SSF",
+      "MDB"
+    ],
+    "completed_raw_records": 18,
+    "possible_inflight_task_ids": [
+      "base/6/character-3bc51062973c458d/PES",
+      "base/6/character-72a57118895d8ac7/PES"
+    ],
+    "inflight_completion_tokens": null,
+    "signal": "SIGINT",
+    "worker_pid": 2558636,
+    "other_workers_untouched": true
+  },
+  "scoring_errors": [],
+  "planned_judgments": 323,
+  "source_and_context_eligible_judgments": 190,
+  "valid_judgments": 183,
+  "judge_process_seconds": 8992.606969416142,
+  "judge_saved_response_records": 212,
+  "all_generation_cohorts_processed": false,
+  "interrupted_runs": [
+    {
+      "path": "/var/tmp/ssn-game-npc-d/runs/D-E11/base_interrupted_gpu_contention",
+      "wall_s": 231.20145719125867,
+      "saved_raw_records": 21,
+      "interruption": {
+        "stopped_utc": "2026-10-22T17:57:26.396388+00:00",
+        "reason": "GPU2 concurrently occupied by another project; first native scene OOM. Stop own run, retain every call and restart whole frozen cohort when idle. Not a character capability result.",
+        "cumulative_gpu_process_budget_hours": 3,
+        "saved_complete_generation_records": 21,
+        "total_started_model_calls": null,
+        "missing_failure_outputs": "OOM and last interrupted generation did not return full replies; first client logged only returned generations. No completion token usage is invented."
+      }
+    }
+  ]
+}
