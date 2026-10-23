@@ -1,0 +1,4486 @@
+{
+  "experiment": "D-E13",
+  "status": "CALIBRATION-COMPLETE-NOT-EXPERIENCE-INTERVENTION",
+  "manifest": {
+    "experiment": "D-E13",
+    "n_candidate_probes": 25,
+    "n_probes": 23,
+    "n_books": 6,
+    "n_requests": 230,
+    "source_exclusions": [
+      {
+        "probe_id": "stepan_oblonsky_final_rel_05_inworld_a2",
+        "novel": "Anna_Kareina",
+        "axis_id": "final_rel_05",
+        "phase_idx": 0,
+        "reason": "The actual saved Arc actor input has no matching axis state; cannot serve as an explicit-state positive control"
+      },
+      {
+        "probe_id": "william_franklin_final_intra_01_inworld_a2",
+        "novel": "Benjamin_Franklin",
+        "axis_id": "final_intra_01",
+        "phase_idx": 0,
+        "reason": "The actual saved Arc actor input has no matching axis state; cannot serve as an explicit-state positive control"
+      }
+    ],
+    "n_primary_behavior_probes": 17,
+    "strata": {
+      "overlap_or_expression": 6,
+      "strategy": 8,
+      "decision": 9
+    },
+    "task_sha256": "a94055475ec732290325e5c325a3b750e45adcb11af661b034adb5f50307cc90",
+    "rubric_sha256": "e4c0d8f964444b1a712f817c8470043ebf68ff24fcecc4abda51fda7661fc882",
+    "source_files": {
+      "data/arcane_D-E07_v2/tasks.jsonl": "b04ec51a9c7dd39af8196f93f7ec2ed485007d3825fa1ba78b94399a108788b1",
+      "data/arcane_D-E01/tasks.jsonl": "492fbac055b1719d2d1179234371ff1fae0da078e1b90a25a10922e0c6137e46",
+      "data/arcane_D-E01/references.jsonl": "b82f272fd80ff27ecddf488ad2df74686ecc6a7740a0c20c35fc49c54bd3c92f",
+      "runs/D-E01/qwen3_8b/responses.jsonl": "e550c02c0beb79dc6a89f22d5ffe42e6b25d2ef732454aa9324aae97bd1b0306",
+      "runs/D-E01/arcane_8b_dpo/responses.jsonl": "5eb939f7fe694aa78c98b62bea1142d997801c84beabe237ad21eb6ff385ddfa",
+      "runs/D-E03/qwen3_32b/responses.jsonl": "3845608b12546dea1db5085eb4066bbe9e9c3f16d81b592b75028acc7ee54124"
+    },
+    "actor_records_complete_and_input_matched": true,
+    "actor_model_calls": 0,
+    "bindings": [
+      {
+        "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+        "novel": "Anna_Kareina",
+        "character": "Alexey Alexandrovitch Karenin",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          0,
+          4
+        ],
+        "state_hashes": [
+          "68cf95b8e81baeb1995bebb5d7dedeafdccba850433af693547c5c634a0b5734",
+          "aca234671093f88c9ab7830deb274ef1dd8e4ae3a8ede9112a45976114e8847e"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "e1755c6e14ae483e2604c5668c4427f6a1b605f713784b36acbf28053afadda7",
+            "66d35abf3889e64e0dbe5b4305d5811528bb9a4e484d7081452562fc78cc585c"
+          ],
+          "arcane_8b_dpo_arc": [
+            "82a291acc706cd3531f5908ea5c8cb8ca0cb5715d1cf4e4c829706c18cfa17f9",
+            "aaca7a40eedbcd6f250e41284224fb42191cb5b67a7c1e3c20f105d6a5030b56"
+          ],
+          "qwen3_32b_arc": [
+            "19f59b1d1f9a2a3ac3d3fed01a5b71407841209fdf5ad1b1fea5e8928d7cbd4b",
+            "36c4899881cb3e5a32613b7cecbeed3693a6fcb60d8de4ecf2d108add998854f"
+          ],
+          "reference": [
+            "a7357a0e5f339290232286cde310ef37226053ffae3bf5993bfc3843716eca79",
+            "195d3c95debe01717c40b6d8bf6d9c849e1431f196a3140927338586c814a25d"
+          ],
+          "identical_reference": [
+            "a7357a0e5f339290232286cde310ef37226053ffae3bf5993bfc3843716eca79",
+            "a7357a0e5f339290232286cde310ef37226053ffae3bf5993bfc3843716eca79"
+          ]
+        }
+      },
+      {
+        "probe_id": "alice_madden_final_rel_04_outworld_a1",
+        "novel": "The Odd Women",
+        "character": "Alice Madden",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "ccc37d76a951eed204810b4c64daa1506c029f9d760ecab63d10d68dc07ccbdb",
+          "dec62984c704b407c5ac5cd01f0bdcd7cf18e0c6179d1f6b15308a309a8b1a06"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "1ba72f498511a93c4806748d999259a1d906c21b5f3f992dd2b63be6524c3755",
+            "4d37dec46d7d707abe8f9b0637e26ae0e2cfb44a8bc62435454a631e9b4f2f49"
+          ],
+          "arcane_8b_dpo_arc": [
+            "d98461b0235f33875403d1fe041df3f8aa8103e80771d28ad21a44d7da727418",
+            "65f11fca319435773c98775002b15bff9886c6a8a6731306270eb6c99ee48a15"
+          ],
+          "qwen3_32b_arc": [
+            "91326df22d6e4603f7d5d110622c24e6a0c0d471c6e6f5b75436bb59c1551051",
+            "7f63415c63de3a8130f1764a68c70f4ac0f369a740e20cf3fb4dd0ce29eb06eb"
+          ],
+          "reference": [
+            "39fe5d100699560c2a2f120fedae0484e6915f49b109a532cae4568730583f1b",
+            "6d9403f592bc61c84adb8f9bc87fe0c83a3db5fc35e5d97e198ecee7248dcab6"
+          ],
+          "identical_reference": [
+            "39fe5d100699560c2a2f120fedae0484e6915f49b109a532cae4568730583f1b",
+            "39fe5d100699560c2a2f120fedae0484e6915f49b109a532cae4568730583f1b"
+          ]
+        }
+      },
+      {
+        "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+        "novel": "Anna_Kareina",
+        "character": "Anna Arkadyevna Karenina",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "31422a6b3a7f789894c14e5df9356d1aff3f1e5c8c9148f8a1ebc8fa96d349ec",
+          "04c03e72a45e68a3236d63bd1edcccf705cef60dd610e4905bb5a04b6a13d00c"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "6df6a1365b909e05d7b195864e0000428ae44bd20575040425bf55f8d5ed2b73",
+            "4896997c95ac062778b598c7d526915a488c785dff7441a780dfb3c989ab612a"
+          ],
+          "arcane_8b_dpo_arc": [
+            "43ef2076a00c7c8ac2292014709b9d6da5cfd308625787b60a444ee2ab22f64a",
+            "aa8f137ba18a7b69f8a69a128b4488f4aa0374534579c0629b00b881b93f39b5"
+          ],
+          "qwen3_32b_arc": [
+            "45ccaa4c6613a0fc4eab49214fe6629fdccea2cfdf240c9840b2192f6a139f71",
+            "e4d2eb851bccef2bd21932f46c63529e04f893b6a51aaa56cfb451117ad6b7ca"
+          ],
+          "reference": [
+            "66b3e12172b2c4f49598decce44a86e4913e7709a2f108f11ab002326fd8fdde",
+            "c3fbdf91ab87e5a823d522aedf57d62807afe7b08c3f3af6161a4df8b074c186"
+          ],
+          "identical_reference": [
+            "c3fbdf91ab87e5a823d522aedf57d62807afe7b08c3f3af6161a4df8b074c186",
+            "c3fbdf91ab87e5a823d522aedf57d62807afe7b08c3f3af6161a4df8b074c186"
+          ]
+        }
+      },
+      {
+        "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+        "novel": "Benjamin_Franklin",
+        "character": "Benjamin Franklin",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "84d1edc7db54e1cbc3e779daa1f5aa807002a704d0377e01bfb8382b1cc6d0b4",
+          "bc85aabf980fe39574218474eb6c29e08b58f45c78258a0f14e92c5f33c0e5c6"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "1199f55bc7c562cf81d7c6bb7482e67fcb91c051a2a34c840b2941da7bf4cb7e",
+            "b6eb549d42befa64d55c16465ccaa6afe965a43d064dd0cc837e4debbecbe14b"
+          ],
+          "arcane_8b_dpo_arc": [
+            "68888847a16235bf3c4dc7e41747e0d194c230e1245ef0883f1201c4b85eaf68",
+            "4273ef7932ed6e9ad8808b07cd85dbd9c1ad21d1d01338d0ba5ee21d5cbae112"
+          ],
+          "qwen3_32b_arc": [
+            "79b89b771f3b545772d5973a05434b0723e78d45fce198288815362f4764c4d4",
+            "61be0b96f14b743c4f1fb1bd176ad0415ca5d12af8642dff683554795d629347"
+          ],
+          "reference": [
+            "16b0e3d0df475c0815ff75d17428074550d8031ea7830762a90353b555d66011",
+            "db8b18fa9b7e0204c6ad155ef7909f6d39535fe5bfadbf14f33e842fc643f68e"
+          ],
+          "identical_reference": [
+            "16b0e3d0df475c0815ff75d17428074550d8031ea7830762a90353b555d66011",
+            "16b0e3d0df475c0815ff75d17428074550d8031ea7830762a90353b555d66011"
+          ]
+        }
+      },
+      {
+        "probe_id": "danglars_final_intra_02_intext_a2",
+        "novel": "Monte_Cristo",
+        "character": "Danglars",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          1,
+          2
+        ],
+        "state_hashes": [
+          "fb7f22151af7638cd39bb6c4e9f8a22950fecda19f065d5c2aafb0c019c1549e",
+          "aff40e53e8f9728d0410ce98c9a4bd113403ce785448b8ee65546be55796fd5b"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "ccf7352ff1e9c7507855d0f0e61507f471a3556735b9d630a4912d86a4583d65",
+            "0d08d540714e9e1af5ccebdd9a9698b0f6e72266fea19336bf11bf4fff312767"
+          ],
+          "arcane_8b_dpo_arc": [
+            "00a90a6f8223ff0d73af690843302365e40f3c58fdc0b40fe319161c73dc82c5",
+            "991248255aaf84e27f876b9c9a4a6cb9b29beed0b4b8c8b47a84c7c878d1a30d"
+          ],
+          "qwen3_32b_arc": [
+            "6a1b425f9ae6e9e89f3643b903cb4fb1cab5ca3efac30d1fed03326c957a46b8",
+            "a57191c673db7ebe251cec12ed09f61c5ac11f8bfe185ed5608100f4283785c2"
+          ],
+          "reference": [
+            "ffe9a0ba7af7d00034ddd84183e71cf816f0f831586899546aa03d731e4aca27",
+            "57206b6931d617df226f9ede68e7ebfc50f27e60c4eaee7bad72d3a7a00eb0f0"
+          ],
+          "identical_reference": [
+            "ffe9a0ba7af7d00034ddd84183e71cf816f0f831586899546aa03d731e4aca27",
+            "ffe9a0ba7af7d00034ddd84183e71cf816f0f831586899546aa03d731e4aca27"
+          ]
+        }
+      },
+      {
+        "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+        "novel": "Anna_Kareina",
+        "character": "Darya Alexandrovna Oblonskaya",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "1a510ac05f9d9c9cdf8c58f1d468e9a5123ed3b62d160421f0b80f28e9fbd541",
+          "9eafeb9b2a04bbea043e6daad8798d94f4970d46e5228267eb89485f231fbb50"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "d56e939693206a21420a217cf2d922093a9af436e22dd101b5394cc3e5c4aac1",
+            "12645e27df1f747bf650e9e25c5ae46ff46a2d4d55b729746649da675b3a8639"
+          ],
+          "arcane_8b_dpo_arc": [
+            "29575b121d40ae936f71e5521b7bd8c6aaa9b7ff5da6d017fe8e5b3174d73f9b",
+            "7ab17fe2e65be0a1a29dfcf295f2f1f70de2032207e365255668b526a5d2ccfc"
+          ],
+          "qwen3_32b_arc": [
+            "dcd41d357e55b8809bb574d72a620e2f236ec5d75138143abd32de3f0c262fec",
+            "3815e795ef41cfda7ac5ce774b286c8bebb358ae3bd344103b9713db1c82fced"
+          ],
+          "reference": [
+            "3753ffceca2ade71093fd1c3b68b4c394eafedc810fe7290d9d5daa34e39d1fd",
+            "8cbd4ad7154721e9b9b490ccd496456d0424efb75c05e8b0aac7c60dd39a1636"
+          ],
+          "identical_reference": [
+            "8cbd4ad7154721e9b9b490ccd496456d0424efb75c05e8b0aac7c60dd39a1636",
+            "8cbd4ad7154721e9b9b490ccd496456d0424efb75c05e8b0aac7c60dd39a1636"
+          ]
+        }
+      },
+      {
+        "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+        "novel": "Benjamin_Franklin",
+        "character": "Deborah Read Franklin",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "58617e486ed60c751e586441b212551a64fecfbf656bbc9c045a1b8f704d6aab",
+          "f30d6e585656d137d08b17482b65a539a382eec39ac25d20072d3d51ea3456e7"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "8a63ed4a69100102f2fd3e796d92d66608e3a4b801fe7e5030d3fba7a2d3578d",
+            "9079b9dd93cfde642486b3230398194d5a4b97096359b21fb89d6b383d308cda"
+          ],
+          "arcane_8b_dpo_arc": [
+            "5a6382c3e0053cdbc759707f1815d031cdab063931afd109dde95d2d222b2bdb",
+            "cb1cd8915eb9a033fc521658f23243fa76e9406d3ff9db0bc53671738a0cb953"
+          ],
+          "qwen3_32b_arc": [
+            "3d893e9d14407178d760ad946cfa664516e5178973cff0e8ae1a7fa1fb8ac195",
+            "92dc73ab71385d70a38230d63c771a9bf445a04ceaf247a3ee91775b392ff84b"
+          ],
+          "reference": [
+            "770301f0ce7a5af1b53b146f3e55166c75c99a85ed8fefd4042a2dba9b76e0a5",
+            "bdeebfbd8b0276443822f93c09907e0f3148f0f561b78f1ff08390c489417e9a"
+          ],
+          "identical_reference": [
+            "bdeebfbd8b0276443822f93c09907e0f3148f0f561b78f1ff08390c489417e9a",
+            "bdeebfbd8b0276443822f93c09907e0f3148f0f561b78f1ff08390c489417e9a"
+          ]
+        }
+      },
+      {
+        "probe_id": "don_quixote_final_rel_01_intext_a1",
+        "novel": "don_quixote",
+        "character": "Don Quixote de la Mancha",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "4eaf996fb124ec61c2412b51f658730038eece76a3071cef306caea04dc409f5",
+          "5a0625acdb091c3504ebe00c9c45c35348493ef5f4a15e7c0e4297ae55b75821"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "20cdc049903f620bcf995860f3f7be1e113eb58da463660c37b6496f1ad126b2",
+            "39382497fd74990c09546da3396569b72c892deeeb129e2055f17dfd74a1eead"
+          ],
+          "arcane_8b_dpo_arc": [
+            "0ce19db36d30a83d11b9643d56c312b014878b275768754614c703571460bce0",
+            "6a0f282330aaf39bca8c3c8788e6f9057c62f11e2ad3f2c74c47864701db22c3"
+          ],
+          "qwen3_32b_arc": [
+            "d50909bfa23764862931c1546f32efc7395ec5662192aced1ce1f52f3327ac3c",
+            "13d7af2fee6509e1054f623ec01a59a7ea7e57ae890b0f465b04581b6edd3e07"
+          ],
+          "reference": [
+            "9bb29b63fc2ba1697db2af807cfc796694a4c3211c16a61bb672c3a58308babb",
+            "7c9f6ccf78f8f3b30af057b70f78f68384f7cc781bfb9dbd50f075a25acfcfe9"
+          ],
+          "identical_reference": [
+            "7c9f6ccf78f8f3b30af057b70f78f68384f7cc781bfb9dbd50f075a25acfcfe9",
+            "7c9f6ccf78f8f3b30af057b70f78f68384f7cc781bfb9dbd50f075a25acfcfe9"
+          ]
+        }
+      },
+      {
+        "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+        "novel": "don_quixote",
+        "character": "The Duke and Duchess",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "7e9a05b3a989374d8f8f0c75819d06774247fa424b042ef3dc46d06e7fce499d",
+          "c763c817cf8b12080895906640eb78f25466ad9d8ccd9a1802f48498415e8d2e"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "6b68ca48e8b1f02d11fd72d4c813eab336fa0d2b86b0acf6fe47f3d0931e1d7a",
+            "07200ed2f757d9d4f7604a6b54990ebe59d7818612a427dacd529b9129e9f120"
+          ],
+          "arcane_8b_dpo_arc": [
+            "2e184b5571e92b9cbd3912a47dd72e0c30409f3fb89eeb655dc53f5545785311",
+            "127152a8f377b48e15385fd001e4d9bce06d21a91a83796f83e218e86111cebe"
+          ],
+          "qwen3_32b_arc": [
+            "c24581f087da8f6b22f1bbabcc2e9385da71158ab642a0c41c1045673055bafa",
+            "327e8740a524bd7728e738e8c34992aba9a23b0d1e14434694818f093ce30306"
+          ],
+          "reference": [
+            "1d6bcb1da85430eaf63e257318b7e4c653737dd4df17d492f2c2181656019f46",
+            "79aadeef0d5edf321b7ec4f05187c21d31d2cb670932e304a9486800d75ea820"
+          ],
+          "identical_reference": [
+            "79aadeef0d5edf321b7ec4f05187c21d31d2cb670932e304a9486800d75ea820",
+            "79aadeef0d5edf321b7ec4f05187c21d31d2cb670932e304a9486800d75ea820"
+          ]
+        }
+      },
+      {
+        "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+        "novel": "don_quixote",
+        "character": "Dulcinea del Toboso",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "672897b260a9ca5a18d345ce004573f683330b646491d3d40df71fa7f8b66b6e",
+          "b9330a57f5f1a5257156c8ddbbf8c36ce0e1b9cf9c590fd8b8c05275a50e742b"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "6ffb11af9be49eccfccb12141214ee8a8a6bf05d947bf679acf037278ff9043d",
+            "3afb59b6cd39582b67087355daedf270af0cede2b8c1b7702c24b030c1649afa"
+          ],
+          "arcane_8b_dpo_arc": [
+            "d3d7c8477e700530772b818697c7efefd177ba5b7ec135d4219d6dd074aa1911",
+            "1a6e5253e7a69641d555c2db3362760073a43bfcdc96013fbd8895a91c660964"
+          ],
+          "qwen3_32b_arc": [
+            "85728787358455a6dc41c0222539f69f0cc14ef988c293f70357dfbd452960b9",
+            "c8c5a3bcd91e6d0e4d83f67288ca3c1f6bcc76769f09cc6b3217c50c91f3fb02"
+          ],
+          "reference": [
+            "b751ada9959d2c425de87f6978a29ec71da42555cd7975c509a56a409bb3421c",
+            "8380331d736ea8e075bd628aa10f5550cc1eb11ad4ac6afbda15feece0d609d2"
+          ],
+          "identical_reference": [
+            "8380331d736ea8e075bd628aa10f5550cc1eb11ad4ac6afbda15feece0d609d2",
+            "8380331d736ea8e075bd628aa10f5550cc1eb11ad4ac6afbda15feece0d609d2"
+          ]
+        }
+      },
+      {
+        "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+        "novel": "Monte_Cristo",
+        "character": "Edmond Dantès",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "612fa81cfb68198abc4daa15354a2c2d6467600c4558b100c42d5450a64f3d4c",
+          "89f82fc6d69e30379b678043d2ef6e4aa5c2c935c53c4ded7619c82a746ac1d5"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "0ee710c31a64574d4cdf4a99a38cdc1b402fba96d7689ee735f3ab587313c1e2",
+            "72a1ec5ff52a27a37acf4030d388f43ab9b2e1fe9f71949483bdf5bf1a8c456b"
+          ],
+          "arcane_8b_dpo_arc": [
+            "09f494dfbeb7e8892ee10c79f8eb3a8a04216190824c82dddb91fc259b2b0c4c",
+            "1b9547c13e0dd8518e14ead2a7d2d3a4f74102f7d04f617586d45811dcc54a61"
+          ],
+          "qwen3_32b_arc": [
+            "6feac4644c73a7584058f72dc7924fe886d11fdcdfbaf46addcee04fc018708e",
+            "f9c511598bc117aad207cd79e61503148276e2c3406153793ebb59800e5958e9"
+          ],
+          "reference": [
+            "d1352d27d2d33eafa58984e3d73e40c648f420ea1f0739481d808880707b0e82",
+            "97db7cded259e8138bb89b1e1162512d277280a94a6def37d1a3710de1ca20e9"
+          ],
+          "identical_reference": [
+            "d1352d27d2d33eafa58984e3d73e40c648f420ea1f0739481d808880707b0e82",
+            "d1352d27d2d33eafa58984e3d73e40c648f420ea1f0739481d808880707b0e82"
+          ]
+        }
+      },
+      {
+        "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+        "novel": "He Knew He Was Right",
+        "character": "Emily Trevelyan",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "c6eb00fbdb5c938dc3f76f7baa7757aa83059028fd770781cfaa2b5e86c3caa2",
+          "ad2acab85bd4ca82fda762a388fcb44963b7e78bd964cee739061af5e7e3e954"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "b20fa1d9a5d61e47eb91a544da2fef8e64377eca5c723848e297f18e637c240c",
+            "eea8c01df868fe978ed7367cca6cbb5ff9d51a37ae30bc783b19ac56c62897e5"
+          ],
+          "arcane_8b_dpo_arc": [
+            "cca93add7f2e3b9428f7d392e5c022a2235bced262dd82a46e3d25978a3efd56",
+            "9b3f8c8aca0155ac6e9f965984fcaa69299925d70798dcd3f069307d0f7be126"
+          ],
+          "qwen3_32b_arc": [
+            "b90362e91995a53e086f5b0c8507c3e0a25fbcf4d2a218069a1930c626628a7b",
+            "d2fe06baf26b425098d621ac6a51f77346c8ed2de72d3b64c257c2438b10e5bf"
+          ],
+          "reference": [
+            "ae450bfbf9c3025983ed317f408e39982efcecbfb6f52ac5f97bd7fff0ae02d9",
+            "31fb4e71cf96d365e260c0f36c8e35e8329c69657064aeffd0bfad4018bc9a2e"
+          ],
+          "identical_reference": [
+            "ae450bfbf9c3025983ed317f408e39982efcecbfb6f52ac5f97bd7fff0ae02d9",
+            "ae450bfbf9c3025983ed317f408e39982efcecbfb6f52ac5f97bd7fff0ae02d9"
+          ]
+        }
+      },
+      {
+        "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+        "novel": "Monte_Cristo",
+        "character": "Fernand Mondego",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "82cd55170859b17bcbc5a6ffc0835b3e992d951918e2c043c22c2d12ec6c7219",
+          "a82b11b70153476e045c5e74adca52c42fe044a4d84d30b4e73ea9e9ff258c7c"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "57f7cd9588772640a5c5eec1b696b028cc50fe633502606c743eb0d87343fb9c",
+            "66cd319cb8339ce3d691163805ed3aca6aad711f89d7f2ff7769cca6031df147"
+          ],
+          "arcane_8b_dpo_arc": [
+            "cb44d55bbed7c93700497f61747d6f59266f6f53ccd97912a6b8542ca7c286c8",
+            "c37f8f9234eb9e0c3ce1002a14d11c1bbe085e3663422f9e52ff82a92e1a8f2f"
+          ],
+          "qwen3_32b_arc": [
+            "209f1f60513781dc3601370bd4c134c1d7d0c257e59a1c5a684f01b104620f4c",
+            "47c601242da543b21f6b6519addb287422c25aa919da82c716284a6a58ec362d"
+          ],
+          "reference": [
+            "729512e93eb883ad53e38f916fe900333e693efa939b7abb3ecdfdf7dd4c4537",
+            "542235fb104752cf3b483f6ac91292c6e5953a83ee8ae6e5032d6343d7eda6ab"
+          ],
+          "identical_reference": [
+            "729512e93eb883ad53e38f916fe900333e693efa939b7abb3ecdfdf7dd4c4537",
+            "729512e93eb883ad53e38f916fe900333e693efa939b7abb3ecdfdf7dd4c4537"
+          ]
+        }
+      },
+      {
+        "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+        "novel": "Monte_Cristo",
+        "character": "Gérard de Villefort",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          1,
+          2
+        ],
+        "state_hashes": [
+          "17d81ac3143bfff36c709f5e7a05e222bf14c028eff4320ed80dda256f01317c",
+          "9ea93d1631bcc9ef444640d8a8048ee1853e2b3d4226a914646c9e015821ffeb"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "932b37aa847e0ac40f3255c95818c7a32b971735c5ae7b66b1453b0cef319cf8",
+            "f653d7ceda3823c5ee7bad84cfabe310bba3b6d6d8912da1f2dc962020dce589"
+          ],
+          "arcane_8b_dpo_arc": [
+            "ff5750b23a1f8550ea412431c760f99b254ce20bc8a3a49bb842b290b8ef7a71",
+            "a3b3717e63ca6be3d1cef2efb91db64720fb87414a6524e49a95b105ec48f538"
+          ],
+          "qwen3_32b_arc": [
+            "b09a724e65f55b46f285ff4d09b9ee8a7af45fb73e34c6d4cdc40970ef88e209",
+            "c5574e5f0c788d1eff0d1c5392c4345d0045454ae2441d07507b58f7d25c09e4"
+          ],
+          "reference": [
+            "3e1f44b4ff31dca0b18e3fa80aefab950f1f989454e30f292e127e40881314fb",
+            "da07edd9dc86f4468a85fa465bac487711a1be6b6ad2f7984c052d5a8ffdf5e0"
+          ],
+          "identical_reference": [
+            "da07edd9dc86f4468a85fa465bac487711a1be6b6ad2f7984c052d5a8ffdf5e0",
+            "da07edd9dc86f4468a85fa465bac487711a1be6b6ad2f7984c052d5a8ffdf5e0"
+          ]
+        }
+      },
+      {
+        "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+        "novel": "Anna_Kareina",
+        "character": "Konstantin Dmitrievich Levin",
+        "stratum": "overlap_or_expression",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "6d37d5ec587f0ab6bb56e4481cb6c9882dd550f6babe22616d185d66643e9775",
+          "403e4be5ba83d741b96e652f3c440039d105ed39618ca2dd9df00d8d2989f594"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "71d84cfbfcd3e7e3a86630a7f981e7c98942b6d4ad6e445788304b95536e1fa3",
+            "5e666f16cc554fde328317017d81204a57de8700ae44ecb28de12da2b6b5741b"
+          ],
+          "arcane_8b_dpo_arc": [
+            "d0557a16640ca0d8147769acf6b32edcda898dcf1b61d30762930fa4a4db1c14",
+            "095d095574266c2981c406750be078ade635024c5ea98545c6eebb94a3548e4a"
+          ],
+          "qwen3_32b_arc": [
+            "e714c2c8a36ce61b30543455420b10d66e1ea796c2802018a16a3d19744afb76",
+            "39f15561a186de4d2cadd8f850dd7c64727c27a6343a46aba2c698bd43803ad0"
+          ],
+          "reference": [
+            "c970d5c58424e3f911f7f69a80b9847abc936e32e9d00a5e4bbf1d720bfbad14",
+            "137b28c5804e949455d70fd6da1036e518c8d3bd87c473eec67f52a11423669c"
+          ],
+          "identical_reference": [
+            "137b28c5804e949455d70fd6da1036e518c8d3bd87c473eec67f52a11423669c",
+            "137b28c5804e949455d70fd6da1036e518c8d3bd87c473eec67f52a11423669c"
+          ]
+        }
+      },
+      {
+        "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+        "novel": "He Knew He Was Right",
+        "character": "Louis Trevelyan",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "9a905c384fba341a88d3dba34b25904a2785a82125958df604d157a3dd5cfa9c",
+          "ea56de7e4e353311573825e897d9ba1278bb4fec413281d07130e5261193e242"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "23a895e99b2ed7749b12a5cba1568df653f53922c870072ba761328316f86830",
+            "b4dda7d2106cfa892242cd3e0eeea0db8d2c6bba1e1d558120913c733f0027fd"
+          ],
+          "arcane_8b_dpo_arc": [
+            "3617a0baf79198b96cb2d83e7f140ae104985aba677686aa6a74802a81ee77ae",
+            "6c736e1508d5449955ce24ff9092c8b2732a040dbcbc4986b20a605fb977f24f"
+          ],
+          "qwen3_32b_arc": [
+            "f6ec4c43fce801288651245e9d307c85dd555813aed04b01a2f14099122f85bc",
+            "ad0ffa2e24595d1711784f092b8c1de9c05cd0303a90e0250099fd05bfca8b11"
+          ],
+          "reference": [
+            "1efcad6bd3bd3bbfa735045c35a05bd66cee91caafaa4fbbf82c35bf8bf4f7f3",
+            "b5b0eb6c2704af77fc5db3e4f2b004430737a7626e5c938361a4b7828b3299fd"
+          ],
+          "identical_reference": [
+            "b5b0eb6c2704af77fc5db3e4f2b004430737a7626e5c938361a4b7828b3299fd",
+            "b5b0eb6c2704af77fc5db3e4f2b004430737a7626e5c938361a4b7828b3299fd"
+          ]
+        }
+      },
+      {
+        "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+        "novel": "The Odd Women",
+        "character": "Mary Barfoot",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "2416af745bc79acc92291ffddfa137a2f0184da3dfb8d9a0f35f6300c9a2295c",
+          "a41202cc17b1f696064d5391137d0b5905eae56e037feb2872b72a0e79811c7c"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "1638f86821f1815200cbb47c77271dca3972e8cb3b1b59cb276bfcc993874758",
+            "2cc23fcbd85163e8f42e7474d579979c05973a8380840a1ac5d1eda651b6a31c"
+          ],
+          "arcane_8b_dpo_arc": [
+            "d05d135700d7e9bcc205f7f49ec51673478f63b500264a9c73712896d6adfea8",
+            "27fb1d96de8e93789a531572ea281646718b0bcbf7b6ef02805df0fe1e48ff2f"
+          ],
+          "qwen3_32b_arc": [
+            "0241abcd52e47d555a4022edb9485fa1fca15c4b8eda7aaef9f9261d6ae77b1e",
+            "8e342abc52f4ff3ce4a0fbc5ed933d918f1d7f51b73f119e78721d13d380812e"
+          ],
+          "reference": [
+            "296de4d76c778251ea3dbc388f607abb2ab7de94d9a80a413ff1fcd0d74571e0",
+            "c570a2f6754b3818bde82bf413cda6759f6ae4cf49c7f28fa491ee5c029a58ab"
+          ],
+          "identical_reference": [
+            "c570a2f6754b3818bde82bf413cda6759f6ae4cf49c7f28fa491ee5c029a58ab",
+            "c570a2f6754b3818bde82bf413cda6759f6ae4cf49c7f28fa491ee5c029a58ab"
+          ]
+        }
+      },
+      {
+        "probe_id": "mercedes_final_rel_01_intext_a2",
+        "novel": "Monte_Cristo",
+        "character": "Mercédès",
+        "stratum": "strategy",
+        "phase_indices": [
+          2,
+          3
+        ],
+        "state_hashes": [
+          "2a83b38cd19d89cdae321c20b4738680a01dd557136de3c5779ffcfdfef42856",
+          "6bea1b4dd9890be9e0f0691d6aa0be7a42f1ecc9bfa0b4a825ab8d56b2fad05f"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "135fe83fa3f96ae35810a7406f7c9fc0011e12cdae83e957f26b3070b7f51997",
+            "89feae277995611beee99976a0f9978d793f946cf78ecc5ef376129d17b1c031"
+          ],
+          "arcane_8b_dpo_arc": [
+            "9fb3d8ca7510c05fd769e0207641afa1ec2ecbf53d623693ce17ffdaf7bbb850",
+            "8fe6bd975628678b1c5f350380f1a582c65f1b8da1ba9e097d7451b3fe2f21eb"
+          ],
+          "qwen3_32b_arc": [
+            "4d71043352dbc507293a737eaa3f8c87b7306958074b2f38be417803a28e22ba",
+            "a544848df113903b5c9991b5d78ac8b39305a014a54c191ef02c0ab78a4dce5c"
+          ],
+          "reference": [
+            "6267f9ea211c90bd10ab2e5e27e6dd19eff7818a386c5c472c0b85a7e5dc2210",
+            "051d208a39a838ff8897713953a9485f2c0a2d952f234836ac4f59b35dabc6ad"
+          ],
+          "identical_reference": [
+            "6267f9ea211c90bd10ab2e5e27e6dd19eff7818a386c5c472c0b85a7e5dc2210",
+            "6267f9ea211c90bd10ab2e5e27e6dd19eff7818a386c5c472c0b85a7e5dc2210"
+          ]
+        }
+      },
+      {
+        "probe_id": "monica_madden_final_intra_03_outworld_a2",
+        "novel": "The Odd Women",
+        "character": "Monica Madden",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "db038af27501a47c9d4bdb98067d76099c6fcc8a493edb009212b9fb13a9f61a",
+          "f64af5f6abbf4b5709b2cd11bb8aad111ac65a68f4df954b485c35805ecc6230"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "907b49ff41b6af936b75e0a88640da099fac5f47b6c56d4b482c56b2b84fa9a4",
+            "09a626c3650180085b8195b5736ae7c4d4aecb3dca817782ba8c4d24db4066f4"
+          ],
+          "arcane_8b_dpo_arc": [
+            "1b4b3351632119a7fe1951cc37a0f24f61412cde1dcc317dd74527aa4883a0ed",
+            "54a2ed986d2f4f364c9bb29ec2a11fa743e4dfd0917d41722ba3c4f39ed698fc"
+          ],
+          "qwen3_32b_arc": [
+            "bc7e3eb0670d4b158ed7b7c7f9da0aae1167e9525a99d4d95ab35c907450e104",
+            "18f48e70a9bcab3e7dfc09ea093c6c125f0e74408c8199e6bba51432a13b112b"
+          ],
+          "reference": [
+            "0f61d9c39a76f205dfd8540913921aee7b5c5989fc3a46ca7181c1d709c90b7c",
+            "b634e88208801707a66140f8c964b81a5a1cef5897500a7e621a7afa8820fc26"
+          ],
+          "identical_reference": [
+            "b634e88208801707a66140f8c964b81a5a1cef5897500a7e621a7afa8820fc26",
+            "b634e88208801707a66140f8c964b81a5a1cef5897500a7e621a7afa8820fc26"
+          ]
+        }
+      },
+      {
+        "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+        "novel": "The Odd Women",
+        "character": "Rhoda Nunn",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "d058b7d8b7978174cbca993388637478b78e1b2ab5a08d7ff45b191901fd0004",
+          "a53492e943c435cccfca8020e8cdca376a20a48736a5923fada8fe368619e04f"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "a7df90ce2d901600e2026838ba985d6fb924ef11beeafbc0d35c723144574ce3",
+            "dad00699632425085fc2041a9db1c76b24f0784a7c154f7518b385e79dc886a0"
+          ],
+          "arcane_8b_dpo_arc": [
+            "344c2916ad415305b5c0f2a96eeae4348fa0e80168a0085128608f9158b2ef9c",
+            "5d756528de58cbd0405b7f246870ae8e7b766822368e46853f35879bfe8284de"
+          ],
+          "qwen3_32b_arc": [
+            "4e298eda8b936e9eddbbe1d7614c72446f01cdede9f8c4879724481767dc8f55",
+            "fb66590764df8cf79316ec6b2a46b0833440fc7ee9607589caae6092834f59f8"
+          ],
+          "reference": [
+            "a8d1336b964b6e3a45d29c5bf72189055c9f2e271a55f8e1849af75d06c2e204",
+            "e0ca1dec298083ae8d2047116e34293d35a4b8a25885871e1dbb0569e77b49c1"
+          ],
+          "identical_reference": [
+            "a8d1336b964b6e3a45d29c5bf72189055c9f2e271a55f8e1849af75d06c2e204",
+            "a8d1336b964b6e3a45d29c5bf72189055c9f2e271a55f8e1849af75d06c2e204"
+          ]
+        }
+      },
+      {
+        "probe_id": "sancho_panza_final_intra_02_intext_a2",
+        "novel": "don_quixote",
+        "character": "Sancho Panza",
+        "stratum": "strategy",
+        "phase_indices": [
+          0,
+          3
+        ],
+        "state_hashes": [
+          "548c7bbe5d6345f60bc20391846ffe6dbbcfb19724c1dde63e0efab3c32c1402",
+          "00cf98516a905cbc315dd3b502b432ba898203ae86a16a9033c008d3fa81a1dc"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "c47e17150eed8b913b4088b3f21383966bbaaadb61627bab95f89d6d8488e206",
+            "00233698a4c39ffe8e12745cd1f555b06d0bec7d7e04e08eeab9838fedaac751"
+          ],
+          "arcane_8b_dpo_arc": [
+            "77cbe1b5210c6ad59f23e79ff96cf69445999f9c47b5a3e544c91a8922a711b7",
+            "6dc45bb8176a5366636df9f61967e09d20f1becdad0402ce4ebbcc98942168ea"
+          ],
+          "qwen3_32b_arc": [
+            "5ae611afd3d2a3d6e9e5975f3e7b14bede3ef71f75006cbfb8f4acff0ee75ae5",
+            "f1af6abb1c1d6f3142425f76313685c136719758c180cb44249ab03200e77a4a"
+          ],
+          "reference": [
+            "c4edd5568c08c24e320c4a8ba169853741b8bdad2b021c5018f8235e15f4f659",
+            "3c99664928fed71c7ce00a2011b4591fd6d9194af27530049ae87c9ad867c744"
+          ],
+          "identical_reference": [
+            "3c99664928fed71c7ce00a2011b4591fd6d9194af27530049ae87c9ad867c744",
+            "3c99664928fed71c7ce00a2011b4591fd6d9194af27530049ae87c9ad867c744"
+          ]
+        }
+      },
+      {
+        "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+        "novel": "don_quixote",
+        "character": "Sansón Carrasco",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "4bae34900d94109fd4da97c0d5f3c608d60601445207631ed0996397998c7e99",
+          "3b68562ec584b4abd24e5263cd9ec560bd25276db35b55de4bb23160744597e4"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "183894f9cab80c090824a4b3fba497e43d671da25f12c2efc69ce0ad3f74156d",
+            "ecaeaa01fa1dba31fd1ab8f8b26975967c8c0a851549b93c36e4c6adf99c50c6"
+          ],
+          "arcane_8b_dpo_arc": [
+            "c322c20af7edfce24641b2087c6ed325f873d52b8e828622c7e5773bcf808fe6",
+            "1d85137f5b6bba38730e072bd5c7e939c1cb1865c7c4dccf33e1297bf7511b19"
+          ],
+          "qwen3_32b_arc": [
+            "69723cdce240ac3c5e31862aab4af617714c8c5daf8e2db21caa84ab3358da33",
+            "475f0ed8f7a941964eb5612bc129923c607fee0dacf102d570f9e8669228b08a"
+          ],
+          "reference": [
+            "5b2d399606b1e3dbe12cdb5d7a7229d6f83ede4bbd6ae064f8bf387bb42091e5",
+            "36343df524736e256239977c58daefb44101670663b0d929807dc376dddb7bd5"
+          ],
+          "identical_reference": [
+            "5b2d399606b1e3dbe12cdb5d7a7229d6f83ede4bbd6ae064f8bf387bb42091e5",
+            "5b2d399606b1e3dbe12cdb5d7a7229d6f83ede4bbd6ae064f8bf387bb42091e5"
+          ]
+        }
+      },
+      {
+        "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+        "novel": "He Knew He Was Right",
+        "character": "Sir Marmaduke Rowley",
+        "stratum": "decision",
+        "phase_indices": [
+          0,
+          2
+        ],
+        "state_hashes": [
+          "2a357ae0d29254740acfed57fad738422deba517fef5abaa1a75e68a73e79f02",
+          "7144413df6545352ce93fbe103cb6d1cbf6ed12fa36241203d323427f8beb1bc"
+        ],
+        "candidate_hashes": {
+          "qwen3_8b_arc": [
+            "6e6026398848db8c74eaa5183b565ff96dfcfe7e171fecd79d98e42ca2d778a5",
+            "b5ca6aa9d60a4a0f846e9c15e7c396b46a96ac82ce42726ed72b5445bd1e9f33"
+          ],
+          "arcane_8b_dpo_arc": [
+            "9e30a188bcf3c7ab5b9cec71b31e213b189d759380964f660dea403456ddaa45",
+            "fea4535e10e8b33677e2a2ca15c31befaa9c2985fc1d7c1e62d15ad7b1c1aa19"
+          ],
+          "qwen3_32b_arc": [
+            "d31be011e0960f0b72de1007c80406f105cd111d5b5353b6035dc5d77b9fcced",
+            "9e96ed51e828780d26e56af8b71013e23e12a246b30a94903c410c6aac172da0"
+          ],
+          "reference": [
+            "f4e7e1a632f3105e016b35d97b042dcbc644cf99bced2fefdb7d8692e2fdd861",
+            "fd45de60ba7843c5e74ca082a60874d95608c4482033589af1a5f6e62df55947"
+          ],
+          "identical_reference": [
+            "f4e7e1a632f3105e016b35d97b042dcbc644cf99bced2fefdb7d8692e2fdd861",
+            "f4e7e1a632f3105e016b35d97b042dcbc644cf99bced2fefdb7d8692e2fdd861"
+          ]
+        }
+      }
+    ],
+    "scope": "Calibration on already observed explicit phase-state controls. No lived experience was intervened on; not a causal adaptation result."
+  },
+  "judgment_attempts": 231,
+  "actor_generation_calls": 0,
+  "gpu_process_hours": 0.915255562805881,
+  "groups": {
+    "arcane_8b_dpo_arc": {
+      "valid": 45,
+      "planned": 46,
+      "observable_contrast_rate": 0.9777777777777777,
+      "underdetermined_rate": 0.022222222222222223,
+      "quote_supported_rate": 0.4444444444444444,
+      "swap_consistency": 0.7727272727272727,
+      "primary_by_book": {
+        "Anna_Kareina": 1,
+        "Benjamin_Franklin": 0.75,
+        "He Knew He Was Right": null,
+        "Monte_Cristo": 0.8333333333333334,
+        "The Odd Women": 1,
+        "don_quixote": 1
+      },
+      "primary_macro": null,
+      "decisive_quote_supported_rate": 0.4318181818181818,
+      "by_stratum": {
+        "decision": {
+          "n_pairs": 9,
+          "mean": null
+        },
+        "strategy": {
+          "n_pairs": 8,
+          "mean": 0.9375
+        },
+        "overlap_or_expression": {
+          "n_pairs": 6,
+          "mean": 0.7916666666666666
+        }
+      }
+    },
+    "identical_reference": {
+      "valid": 46,
+      "planned": 46,
+      "observable_contrast_rate": 0,
+      "underdetermined_rate": 1,
+      "quote_supported_rate": 1,
+      "swap_consistency": 1,
+      "primary_by_book": {},
+      "primary_macro": null,
+      "decisive_quote_supported_rate": null
+    },
+    "qwen3_32b_arc": {
+      "valid": 46,
+      "planned": 46,
+      "observable_contrast_rate": 0.8913043478260869,
+      "underdetermined_rate": 0.10869565217391304,
+      "quote_supported_rate": 0.391304347826087,
+      "swap_consistency": 0.391304347826087,
+      "primary_by_book": {
+        "Anna_Kareina": 0.75,
+        "Benjamin_Franklin": 0.5,
+        "He Knew He Was Right": 0.8333333333333334,
+        "Monte_Cristo": 0.8333333333333334,
+        "The Odd Women": 0.75,
+        "don_quixote": 0.5625
+      },
+      "primary_macro": 0.7048611111111112,
+      "decisive_quote_supported_rate": 0.34146341463414637,
+      "primary_ci95": [
+        0.5972222222222222,
+        0.8055555555555555
+      ],
+      "by_stratum": {
+        "decision": {
+          "n_pairs": 9,
+          "mean": 0.6388888888888888
+        },
+        "strategy": {
+          "n_pairs": 8,
+          "mean": 0.78125
+        },
+        "overlap_or_expression": {
+          "n_pairs": 6,
+          "mean": 0.625
+        }
+      }
+    },
+    "qwen3_8b_arc": {
+      "valid": 46,
+      "planned": 46,
+      "observable_contrast_rate": 0.7608695652173914,
+      "underdetermined_rate": 0.2391304347826087,
+      "quote_supported_rate": 0.3695652173913043,
+      "swap_consistency": 0.34782608695652173,
+      "primary_by_book": {
+        "Anna_Kareina": 0.5,
+        "Benjamin_Franklin": 0.5,
+        "He Knew He Was Right": 0.6666666666666666,
+        "Monte_Cristo": 0.5833333333333334,
+        "The Odd Women": 0.75,
+        "don_quixote": 0.5625
+      },
+      "primary_macro": 0.59375,
+      "decisive_quote_supported_rate": 0.2571428571428571,
+      "primary_ci95": [
+        0.5243055555555556,
+        0.6666666666666666
+      ],
+      "by_stratum": {
+        "decision": {
+          "n_pairs": 9,
+          "mean": 0.6111111111111112
+        },
+        "strategy": {
+          "n_pairs": 8,
+          "mean": 0.625
+        },
+        "overlap_or_expression": {
+          "n_pairs": 6,
+          "mean": 0.5416666666666666
+        }
+      }
+    },
+    "reference": {
+      "valid": 46,
+      "planned": 46,
+      "observable_contrast_rate": 0.9347826086956522,
+      "underdetermined_rate": 0.06521739130434782,
+      "quote_supported_rate": 0.9565217391304348,
+      "swap_consistency": 0.782608695652174,
+      "primary_by_book": {
+        "Anna_Kareina": 0.75,
+        "Benjamin_Franklin": 0.75,
+        "He Knew He Was Right": 1,
+        "Monte_Cristo": 0.8333333333333334,
+        "The Odd Women": 1,
+        "don_quixote": 1
+      },
+      "primary_macro": 0.888888888888889,
+      "decisive_quote_supported_rate": 0.9534883720930233,
+      "primary_ci95": [
+        0.7916666666666666,
+        0.9722222222222223
+      ],
+      "by_stratum": {
+        "decision": {
+          "n_pairs": 9,
+          "mean": 0.9444444444444444
+        },
+        "strategy": {
+          "n_pairs": 8,
+          "mean": 0.90625
+        },
+        "overlap_or_expression": {
+          "n_pairs": 6,
+          "mean": 0.75
+        }
+      }
+    }
+  },
+  "causal_experience_claim": false,
+  "interpretation": "Source-state matching combines behavioral distinguishability with expected direction. Low/reversed matching is not proof of insensitivity. Identical controls test forced guessing, not real-world scope invariance. All data are previously observed phase controls.",
+  "pairs": [
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/identical_reference/0",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_32b_arc/0",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_8b_arc/1",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/reference/0",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_32b_arc/0",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/reference/1",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/arcane_8b_dpo_arc/1",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/reference/1",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": false,
+      "source_pairing_score": null,
+      "selected_attempt": 2,
+      "mapping": null,
+      "observable_contrast": null,
+      "quotes_supported": null
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_32b_arc/0",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/reference/1",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_32b_arc/0",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_8b_arc/1",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_32b_arc/1",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_8b_arc/1",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/identical_reference/0",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_32b_arc/0",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_8b_arc/0",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_8b_arc/0",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_8b_arc/0",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_32b_arc/0",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_32b_arc/0",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/identical_reference/1",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/reference/1",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_8b_arc/1",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_32b_arc/1",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_8b_arc/0",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/arcane_8b_dpo_arc/0",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/identical_reference/1",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_32b_arc/1",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/identical_reference/0",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_8b_arc/1",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_8b_arc/1",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/identical_reference/1",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/reference/1",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/identical_reference/1",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_8b_arc/0",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_8b_arc/0",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/reference/1",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_8b_arc/1",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_32b_arc/1",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/identical_reference/1",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/reference/0",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_32b_arc/0",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/identical_reference/1",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_8b_arc/0",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/reference/1",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_8b_arc/0",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/reference/0",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/arcane_8b_dpo_arc/1",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/reference/0",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/identical_reference/0",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/reference/1",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/identical_reference/0",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/reference/0",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/identical_reference/0",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/identical_reference/1",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/arcane_8b_dpo_arc/1",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_32b_arc/1",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/identical_reference/0",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_32b_arc/1",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/arcane_8b_dpo_arc/0",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/identical_reference/0",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_8b_arc/1",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/identical_reference/0",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_32b_arc/1",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/reference/1",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/reference/0",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/reference/0",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_32b_arc/0",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/reference/1",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_32b_arc/0",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/reference/1",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_8b_arc/1",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_8b_arc/0",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_8b_arc/0",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/identical_reference/1",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/identical_reference/0",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_8b_arc/1",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/reference/1",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/identical_reference/1",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_32b_arc/1",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_32b_arc/0",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_32b_arc/1",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/identical_reference/0",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_32b_arc/0",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/reference/0",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_32b_arc/0",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_8b_arc/0",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/arcane_8b_dpo_arc/0",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/reference/0",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_8b_arc/1",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_8b_arc/1",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/reference/0",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_32b_arc/0",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/reference/0",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/identical_reference/0",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/reference/0",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_8b_arc/0",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_8b_arc/0",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_32b_arc/0",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/reference/0",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/reference/1",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_32b_arc/0",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/reference/1",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/reference/1",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_8b_arc/1",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/identical_reference/0",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_32b_arc/1",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/identical_reference/1",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/identical_reference/0",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/reference/1",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/identical_reference/0",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_8b_arc/1",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_32b_arc/0",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_8b_arc/1",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_8b_arc/0",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_32b_arc/1",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/reference/0",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/reference/1",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_32b_arc/1",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/identical_reference/1",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_8b_arc/0",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/identical_reference/0",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/reference/1",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/reference/0",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/reference/0",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/identical_reference/0",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_32b_arc/1",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_8b_arc/0",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/arcane_8b_dpo_arc/1",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_8b_arc/1",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_32b_arc/1",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/identical_reference/0",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_32b_arc/1",
+      "probe_id": "alexey_karenin_final_rel_02_inworld_a3",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/arcane_8b_dpo_arc/0",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_32b_arc/1",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_8b_arc/1",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_8b_arc/0",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_32b_arc/0",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_32b_arc/1",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/identical_reference/1",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/reference/1",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_32b_arc/1",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_8b_arc/0",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/reference/1",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/identical_reference/0",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/reference/0",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/identical_reference/1",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/identical_reference/1",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/reference/0",
+      "probe_id": "alice_madden_final_rel_04_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_8b_arc/1",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/reference/1",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_32b_arc/0",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_8b_arc/1",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/identical_reference/1",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_32b_arc/1",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/arcane_8b_dpo_arc/0",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/identical_reference/1",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "monica_madden_final_intra_03_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/identical_reference/1",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_8b_arc/1",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/identical_reference/0",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_32b_arc/0",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_32b_arc/0",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_8b_arc/0",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/identical_reference/1",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_8b_arc/0",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "benjamin_franklin_final_rel_05_intext_a1",
+      "novel": "Benjamin_Franklin",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_8b_arc/1",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_8b_arc/1",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_32b_arc/1",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/reference/0",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/identical_reference/1",
+      "probe_id": "danglars_final_intra_02_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/identical_reference/1",
+      "probe_id": "darya_oblonskaya_final_intra_04_intext_a2",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/arcane_8b_dpo_arc/1",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/identical_reference/1",
+      "probe_id": "don_quixote_final_rel_01_intext_a1",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/reference/0",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/identical_reference/0",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/arcane_8b_dpo_arc/1",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_32b_arc/1",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/reference/1",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_8b_arc/0",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 0.5,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/identical_reference/1",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_8b_arc/1",
+      "probe_id": "mary_barfoot_final_intra_02_outworld_a2",
+      "novel": "The Odd Women",
+      "material": "qwen3_8b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "mercedes_final_rel_01_intext_a2",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/reference/0",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_32b_arc/1",
+      "probe_id": "louis_trevelyan_final_intra_01_inworld_a3",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/arcane_8b_dpo_arc/0",
+      "probe_id": "gerard_de_villefort_final_intra_04_intext_a1",
+      "novel": "Monte_Cristo",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/arcane_8b_dpo_arc/0",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_8b_arc/0",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/arcane_8b_dpo_arc/1",
+      "probe_id": "sanson_carrasco_final_rel_02_inworld_a1",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/identical_reference/0",
+      "probe_id": "sancho_panza_final_intra_02_intext_a2",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/identical_reference/1",
+      "probe_id": "anna_karenina_final_rel_04_outworld_a0",
+      "novel": "Anna_Kareina",
+      "material": "identical_reference",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/arcane_8b_dpo_arc/1",
+      "probe_id": "dulcinea_del_toboso_final_intra_01_outworld_a0",
+      "novel": "don_quixote",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 1,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_32b_arc/1",
+      "probe_id": "rhoda_nunn_final_rel_03_outworld_a1",
+      "novel": "The Odd Women",
+      "material": "qwen3_32b_arc",
+      "orientation": 1,
+      "stratum": "strategy",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/reference/0",
+      "probe_id": "emily_trevelyan_final_rel_01_intext_a2",
+      "novel": "He Knew He Was Right",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/identical_reference/0",
+      "probe_id": "duke_and_duchess_final_intra_02_outworld_a3",
+      "novel": "don_quixote",
+      "material": "identical_reference",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": null,
+      "valid": true,
+      "source_pairing_score": null,
+      "selected_attempt": 1,
+      "mapping": "underdetermined",
+      "observable_contrast": false,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/reference/0",
+      "probe_id": "fernand_mondego_final_intra_02_inworld_a2",
+      "novel": "Monte_Cristo",
+      "material": "reference",
+      "orientation": 0,
+      "stratum": "strategy",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_32b_arc/0",
+      "probe_id": "edmond_dantes_final_intra_03_outworld_a1",
+      "novel": "Monte_Cristo",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A2_B1",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/reference/1",
+      "probe_id": "deborah_read_franklin_final_intra_01_outworld_a2",
+      "novel": "Benjamin_Franklin",
+      "material": "reference",
+      "orientation": 1,
+      "stratum": "decision",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_8b_arc/0",
+      "probe_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1",
+      "novel": "He Knew He Was Right",
+      "material": "qwen3_8b_arc",
+      "orientation": 0,
+      "stratum": "decision",
+      "expected_mapping": "A2_B1",
+      "valid": true,
+      "source_pairing_score": 0,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/arcane_8b_dpo_arc/0",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "arcane_8b_dpo_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": false
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_32b_arc/0",
+      "probe_id": "konstantin_levin_final_intra_05_intext_a0",
+      "novel": "Anna_Kareina",
+      "material": "qwen3_32b_arc",
+      "orientation": 0,
+      "stratum": "overlap_or_expression",
+      "expected_mapping": "A1_B2",
+      "valid": true,
+      "source_pairing_score": 1,
+      "selected_attempt": 1,
+      "mapping": "A1_B2",
+      "observable_contrast": true,
+      "quotes_supported": true
+    }
+  ]
+}
