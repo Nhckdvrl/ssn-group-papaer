@@ -48,8 +48,9 @@ def completed_requests(previous_runs,wanted,base,limit,adapter):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--system',choices=SYSTEMS,required=True)
+    p.add_argument('--experiment',choices=['D-E10','D-E12'],default='D-E10');p.add_argument('--training-run')
     p.add_argument('--max-hours',type=float,default=2.5);p.add_argument('--resume',action='store_true');a=p.parse_args();root=Path(a.asset_root)
-    data=root/'data/evaluation_D-E10';out=root/'runs/D-E10'/('system_'+a.system)
+    data=root/'data/evaluation_D-E10';out=root/'runs'/a.experiment/('system_'+a.system)
     previous=None
     if a.resume:
         previous=json.loads((out/'metadata.json').read_text())
@@ -63,12 +64,12 @@ def main():
     byid={e['episode_id']:e for e in episodes};base=Q32 if a.system=='strong32' else Q8
     training=None
     if a.system in ['update_sft','multitask_sft']:
-        name='update' if a.system=='update_sft' else 'multitask';train=root/'runs/D-E10'/('train_'+name+'_v2')
+        name='update' if a.system=='update_sft' else 'multitask';train=Path(a.training_run) if a.training_run else root/'runs/D-E10'/('train_'+name+'_v2')
         training=json.loads((train/'metadata.json').read_text())
         if not training.get('complete'):raise ValueError('Training not complete; no partial-checkpoint substitution')
-        adapter=train/'final'
+        adapter=Path(training['final_checkpoint'])
     else:adapter=None
-    meta=dict(experiment='D-E10',system=a.system,started_utc=now(),complete=False,
+    meta=dict(experiment=a.experiment,system=a.system,started_utc=now(),complete=False,
         episode_sha256=sha(data/'episodes.jsonl'),references_sha256=sha(data/'references.jsonl'),
         runner_sha256=sha(__file__),protocol_sha256=sha(Path(__file__).with_name('adaptation_protocol.py')),
         git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[4],text=True).strip(),

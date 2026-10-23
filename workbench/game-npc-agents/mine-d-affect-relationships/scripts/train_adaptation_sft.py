@@ -12,6 +12,7 @@ import random
 import subprocess
 import time
 import numpy as np
+from training_targets import target_positions
 
 
 def now():
@@ -52,9 +53,14 @@ def training_order(entries, mode, seed, token_budget):
     return result
 
 
-def selected_ce(model, input_ids, prompt_length):
+def selected_ce(model, input_ids, prompt_length, spans=None):
     """Exactly masked causal CE; compute logits only at target predecessor positions."""
     import torch.nn.functional as F
+    if spans is not None:
+        import torch
+        positions=torch.tensor(target_positions(input_ids.shape[1],prompt_length,spans),device=input_ids.device)
+        logits=model(input_ids=input_ids,use_cache=False,logits_to_keep=positions-1).logits[0]
+        return F.cross_entropy(logits.float(),input_ids[0,positions])
     n = input_ids.shape[1] - prompt_length
     logits = model(input_ids=input_ids, use_cache=False, logits_to_keep=n+1).logits[0, :-1]
     return F.cross_entropy(logits.float(), input_ids[0, prompt_length:])
@@ -83,7 +89,7 @@ def main():
     order = training_order(entries, a.mode, a.seed, manifest['native_update_two_epoch_tokens'])
     groups = [order[i:i+64] for i in range(0, len(order), 64)]
     vals = [i for i, r in enumerate(entries) if r['partition'] == 'validation']
-    meta = dict(experiment='D-E10', started_utc=now(), args=vars(a), complete=False,
+    meta = dict(experiment=manifest.get('experiment','D-E10'), started_utc=now(), args=vars(a), complete=False,
         source_manifest_sha256=sha(root/'manifest.json'), script_sha256=sha(__file__),
         git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[4],text=True).strip(),
         planned_examples=len(order), planned_forward_tokens=sum(entries[i]['length'] for i in order),
@@ -91,6 +97,8 @@ def main():
         planned_steps=len(groups), planned_tasks=dict(Counter(entries[i]['task'] for i in order)),
         unique_source_rows=len(set(order)), planned_order_sha256=hashlib.sha256(np.array(order,dtype='<i4').tobytes()).hexdigest())
     (out/'runner_source.py').write_bytes(Path(__file__).read_bytes())
+    for helper in ['training_targets.py','cache_local_weights.py']:
+        (out/helper).write_bytes(Path(__file__).with_name(helper).read_bytes())
     (out/'training_order.json').write_text(json.dumps([entries[i]['row_id'] for i in order])+'\n')
     def save_meta():
         (out/'metadata.json').write_text(json.dumps(meta, indent=2)+'\n')
@@ -101,7 +109,10 @@ def main():
     from peft import LoraConfig, get_peft_model
     set_seed(a.seed)
     torch.set_num_threads(8)
-    model = AutoModelForCausalLM.from_pretrained(a.checkpoint, local_files_only=True,
+    from cache_local_weights import resolve_local_checkpoint
+    resolved,mirror=resolve_local_checkpoint(a.checkpoint)
+    meta.update(resolved_checkpoint=resolved,local_weight_mirror=mirror)
+    model = AutoModelForCausalLM.from_pretrained(resolved, local_files_only=True,
         dtype=torch.bfloat16, attn_implementation='sdpa', device_map={'': 0})
     model.config.use_cache = False
     model = get_peft_model(model, LoraConfig(r=64, lora_alpha=128, lora_dropout=.05,
@@ -147,26 +158,36 @@ def main():
             forward_tokens=seen_tokens,files={f.name:sha(f) for f in dest.iterdir() if f.is_file()}),indent=2)+'\n')
         return str(dest)
     def evaluate(label):
-        model.eval();s=0.;nt=0;rows=[]
+        model.eval();s=0.;nt=0;rows=[];bytask={}
         with torch.inference_mode():
             for i in vals:
-                r=entries[i];loss=selected_ce(model,tensor(i),r['prompt_length']).item()
+                r=entries[i];loss=selected_ce(model,tensor(i),r['prompt_length'],r.get('target_spans')).item()
                 s+=loss*r['target_length'];nt+=r['target_length']
-                rows.append(dict(row_id=r['row_id'],book=r['book'],nll=loss,target_tokens=r['target_length']))
+                group=bytask.setdefault(r['task'],dict(loss_sum=0.,target_tokens=0,examples=0))
+                group['loss_sum']+=loss*r['target_length'];group['target_tokens']+=r['target_length'];group['examples']+=1
+                rows.append(dict(row_id=r['row_id'],book=r['book'],task=r['task'],nll=loss,target_tokens=r['target_length']))
+        for group in bytask.values():group['mean_token_nll']=group.pop('loss_sum')/group['target_tokens']
         with (out/'validation.jsonl').open('a') as f:
-            f.write(json.dumps(dict(label=label,step=completed,mean_token_nll=s/nt,rows=rows))+'\n')
+            f.write(json.dumps(dict(label=label,step=completed,mean_token_nll=s/nt,by_task=bytask,rows=rows))+'\n')
         model.train()
         print('VALIDATION',label,s/nt,flush=True)
     try:
         if not a.resume:
             # Mechanical equivalence on one real source sample, not an extra training step.
-            model.eval();i=order[0];x=tensor(i);r=entries[i]
-            with torch.inference_mode():
-                ce=selected_ce(model,x,r['prompt_length']).item()
-                labels=x.clone();labels[:,:r['prompt_length']]=-100
-                full=model(input_ids=x,labels=labels,use_cache=False).loss.item()
-            if abs(ce-full)>1e-3:raise ValueError(('Masked CE misalignment',ce,full))
-            meta['alignment_check']=dict(selected_ce=ce,full_masked_ce=full,extra_forwards=2)
+            model.eval();checks=[order[0]]
+            multiple=next((i for i in order if len(entries[i].get('target_spans',[]))>1),None)
+            if multiple is not None:checks.append(multiple)
+            alignment=[]
+            for i in checks:
+                x=tensor(i);r=entries[i]
+                with torch.inference_mode():
+                    ce=selected_ce(model,x,r['prompt_length'],r.get('target_spans')).item()
+                    labels=torch.full_like(x,-100);positions=target_positions(x.shape[1],r['prompt_length'],r.get('target_spans'))
+                    labels[0,positions]=x[0,positions]
+                    full=model(input_ids=x,labels=labels,use_cache=False).loss.item()
+                if abs(ce-full)>1e-3:raise ValueError(('Masked CE misalignment',ce,full))
+                alignment.append(dict(row_id=r['row_id'],selected_ce=ce,full_masked_ce=full,assistant_spans=len(r.get('target_spans',[])) or 1))
+            meta['alignment_check']=dict(cases=alignment,extra_forwards=2*len(checks))
             save_meta();evaluate('initial')
         model.train()
         for step in range(completed,len(groups)):
@@ -175,7 +196,7 @@ def main():
                 break
             begin=time.monotonic();group=groups[step];optimizer.zero_grad(set_to_none=True);loss_sum=0.
             for i in group:
-                r=entries[i];loss=selected_ce(model,tensor(i),r['prompt_length'])
+                r=entries[i];loss=selected_ce(model,tensor(i),r['prompt_length'],r.get('target_spans'))
                 if not torch.isfinite(loss):raise FloatingPointError('Nonfinite training loss')
                 (loss/len(group)).backward();loss_sum+=loss.detach().item()
                 seen_tokens+=r['length'];seen_examples+=1;processed_tasks[r['task']]+=1

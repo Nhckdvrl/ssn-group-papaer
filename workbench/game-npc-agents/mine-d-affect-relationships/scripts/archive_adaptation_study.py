@@ -16,10 +16,10 @@ def sha(path):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--experiment',choices=['D-E10','D-E11'],required=True)
+    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--experiment',choices=['D-E10','D-E11','D-E12'],required=True)
     p.add_argument('--destination',required=True);p.add_argument('--sync-main',action='store_true');a=p.parse_args()
     root=Path(a.asset_root);run=root/'runs'/a.experiment
-    dependency=run/('finish_status.json' if a.experiment=='D-E10' else 'judges/status.json')
+    dependency=run/('judges/status.json' if a.experiment=='D-E11' else 'finish_status.json')
     while True:
         try:status=json.loads(dependency.read_text())
         except (FileNotFoundError,json.JSONDecodeError):time.sleep(30);continue
@@ -36,11 +36,11 @@ def main():
         # checkpoint descriptions and all startup/interruption evidence.
         if f.suffix in ['.pt','.safetensors'] and f.parent.name!='final':continue
         files.append(f)
-    data=root/'data'/('evaluation_D-E10' if a.experiment=='D-E10' else 'native_D-E11')
+    data=root/'data'/('native_D-E11' if a.experiment=='D-E11' else 'evaluation_D-E10')
     files.extend(f for f in data.rglob('*') if f.is_file())
-    if a.experiment=='D-E10':
+    if a.experiment in ['D-E10','D-E12']:
         for name in ['manifest.json','entries.jsonl','exclusions.jsonl']:
-            f=root/'data/training_D-E10'/name
+            f=root/'data'/('training_'+a.experiment)/name
             if f.exists():files.append(f)
     files.extend(f for f in (root/'logs').glob(a.experiment+'-*') if f.is_file() and 'archive' not in f.name)
     files=sorted(set(files));index={str(f.relative_to(root)):dict(bytes=f.stat().st_size,sha256=sha(f)) for f in files}

@@ -1,0 +1,81 @@
+{
+  "manifest": {
+    "experiment": "D-E12",
+    "source_revision": "ae7d82d38909783805979a8055d5ae913cb982f7",
+    "source_sha256": "2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07",
+    "partition_inventory_sha256": "f2914f4e9414bec6b5df7db4b7f3fe354d6155eb4bb5e5e17f6521e1252f1b73",
+    "tokenizer": "/var/tmp/ssn-game-npc-d/models/local_snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+    "script_sha256": "bb0f4e3a60bca3b15892352d19ae5059c04802b47242ad0c4d96dda1f57d4d68",
+    "dtype": "little-endian int32",
+    "n_tokens": 279014061,
+    "counts": {
+      "train/interaction_generation": 23088,
+      "train/character_state_update": 14079,
+      "train/character_motivation_update": 14079,
+      "validation/interaction_generation": 128,
+      "validation/character_state_update": 128,
+      "validation/character_motivation_update": 128
+    },
+    "total_tokens": {
+      "train/interaction_generation": 153960613,
+      "train/character_state_update": 42949543,
+      "train/character_motivation_update": 80589471,
+      "validation/interaction_generation": 636948,
+      "validation/character_state_update": 356737,
+      "validation/character_motivation_update": 520749
+    },
+    "exclusions": {},
+    "native_update_two_epoch_tokens": 85899086,
+    "files": {
+      "tokens.bin": {
+        "sha256": "8ee5e5f64a048552ba0086379dd0b27a5c5ad5845da0698b96ec033f79aa7544",
+        "bytes": 1116056244
+      },
+      "entries.jsonl": {
+        "sha256": "93edbb895fc8992113c81e09137423e5c0fddc081d4a2a6406f7aa221f3b7dfd",
+        "bytes": 17667533
+      },
+      "exclusions.jsonl": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "max_sequence": 32768,
+    "no_truncation": true,
+    "actor_target": "All assistant turns in each full native conversation",
+    "target_helper_sha256": "428ff13dbd5e07cb2602834d0a8b1b9bdf47d04801d8fd36d4e324be49082e27",
+    "model_calls": 0
+  },
+  "contract_audit": {
+    "experiment": "D-E12",
+    "single_task_rows_byte_identical": 28286,
+    "original_update_validation_identical": true,
+    "old_training_order_prefix_identical": true,
+    "planned_examples": 16684,
+    "planned_steps": 261,
+    "planned_forward_tokens": 85900222,
+    "planned_target_tokens": 4726227,
+    "tasks": {
+      "character_motivation_update": {
+        "examples": 5562,
+        "forward_tokens": 31733110,
+        "target_tokens": 475652,
+        "assistant_turns": 5562
+      },
+      "character_state_update": {
+        "examples": 5561,
+        "forward_tokens": 17149529,
+        "target_tokens": 3407639,
+        "assistant_turns": 5561
+      },
+      "interaction_generation": {
+        "examples": 5561,
+        "forward_tokens": 37017583,
+        "target_tokens": 842936,
+        "assistant_turns": 15195
+      }
+    },
+    "source_manifest_sha256": "a3564766285c008e05e38c719e606adb4e149e780860989aac37eb412d4c3d0e",
+    "n_exclusions": 0
+  }
+}

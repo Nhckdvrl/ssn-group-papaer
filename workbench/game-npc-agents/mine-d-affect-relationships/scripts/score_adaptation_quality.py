@@ -50,9 +50,9 @@ def parse_score(text):
     except (ValueError,TypeError):return None
 
 
-def prepare(root,system,out):
+def prepare(root,system,out,runs_root=None):
     episodes={e['episode_id']:e for e in read(root/'data/evaluation_D-E10/episodes.jsonl')}
-    run=root/'runs/D-E10'/('system_'+system)
+    run=(runs_root if runs_root is not None else root/'runs/D-E10')/('system_'+system)
     if not json.loads((run/'metadata.json').read_text()).get('complete'):raise ValueError('System incomplete')
     motivations={m['episode_id']:m for m in read(run/'motivations.jsonl')}
     outputs=read(run/'outputs.jsonl');tasks=[];repeats=[];reviewed=set()
