@@ -30,7 +30,7 @@
 
 当前没有新机制主张升级。已有方法的成功与残差作为底座；主要研究动作以[整体定位](POSITIONING.md)为准，不把修卡片、涨一个分数或完成更多调用当作方向本身。
 
-**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED：学习人物如何从经历改变后续互动。[D-E10](experiments/D-E10-trained-character-adaptation-baselines.md)已真正启动两条强基线训练与后续互动：32作品原生更新SFT两轮，以及相近forward-token多任务SFT；6新作品47经历/87后续上下文，7系统完整比较。当前训练和评测在运行，尚无训练后方法有效性结论。[学习数据入口](data/README.md)保留24,977次更新的全量作品隔离；不把准备、运行或训练loss当科研成功。
+**方法建设：** [D-I01](ideas/D-I01-learning-character-adaptation.md)为SEED：学习人物如何从经历改变后续互动。[D-E10](experiments/D-E10-trained-character-adaptation-baselines.md)两条强基线已完整训练结束：原生更新440步/85.899M forward tokens，多任务265步/85.901M tokens。7系统各87条后续回复全部完成（609条），当前6系统盲评完成、MT-SFT仍在评分。已完成的U-SFT后续均分4.083，对base4.055差+0.027、6作品配对95%区间[-0.120,+0.184]，尚无清楚行为收益；不将验证NLL下降当成长证明。[进度](results/D-E10-progress.json)含完整分项/覆盖，最终比较待全部注册评分完成。[D-E11](experiments/D-E11-native-character-interaction-rollouts.md)原生连续互动已从占用的GPU2移交至本项目释放的GPU1，按固定6作品起点接完整训练模型。未升级方法有效性主张。[学习数据入口](data/README.md)保留全量作品隔离。
 
 ## 我们要理解什么
 

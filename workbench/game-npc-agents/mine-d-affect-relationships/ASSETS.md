@@ -174,6 +174,8 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 生成队列优先GPU2；D-E10全部完成后，也可使用它释放的空闲GPU0/1/3，实际选择写入status与模型metadata。不会在D-E10训练/评价期间夺用其卡，也不依赖其他项目必须停机。
 
+当前资源归属更新（2026-10-23 10:14，北京时间）：已核验GPU1上的训练和全部MT-SFT后续生成结束，移交本项作为首选；D-E10剩余GPU3评分与GPU0 NLL不受影响。等待队列PIDs、先前status及移交原因保留在jobs.json；最新进度以D-E11-progress为准。不是改变输入或更换模型。
+
 ### 完成后持久归档队列（尚未完成）
 
 `archive_adaptation_study.py`分别等待D-E10正式结果/D-E11正式评分完整完成，将原始记录、失败尝试、冻结评测输入和最终LoRA/优化器状态保存到`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-23-adaptation/{D-E10,D-E11}/raw-and-final-adapters.tar.gz`。只保留最终训练权重，基础/中途权重不复制入包；训练token缓存可按源revision及manifest重建。逐成员SHA复读通过后才产生Git轻量`D-E10-RAW-MANIFEST.json`或`D-E11-RAW-MANIFEST.json`。当前是已启动的等待任务，路径预登记不代表归档已存在；失败不会发布完成清单。
