@@ -16,7 +16,7 @@ def sha(path):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--experiment',choices=['D-E10','D-E11','D-E12'],required=True)
+    p=argparse.ArgumentParser();p.add_argument('--asset-root',required=True);p.add_argument('--experiment',choices=['D-E10','D-E11','D-E12','D-E13'],required=True)
     p.add_argument('--destination',required=True);p.add_argument('--sync-main',action='store_true');a=p.parse_args()
     root=Path(a.asset_root);run=root/'runs'/a.experiment
     dependency=run/('judges/status.json' if a.experiment=='D-E11' else 'finish_status.json')
@@ -36,7 +36,7 @@ def main():
         # checkpoint descriptions and all startup/interruption evidence.
         if f.suffix in ['.pt','.safetensors'] and f.parent.name!='final':continue
         files.append(f)
-    data=root/'data'/('native_D-E11' if a.experiment=='D-E11' else 'evaluation_D-E10')
+    data=root/'data'/('native_D-E11' if a.experiment=='D-E11' else 'contrast_D-E13' if a.experiment=='D-E13' else 'evaluation_D-E10')
     files.extend(f for f in data.rglob('*') if f.is_file())
     if a.experiment in ['D-E10','D-E12']:
         for name in ['manifest.json','entries.jsonl','exclusions.jsonl']:

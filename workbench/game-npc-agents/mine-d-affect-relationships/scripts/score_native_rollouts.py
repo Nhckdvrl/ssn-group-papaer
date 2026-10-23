@@ -19,6 +19,11 @@ SYSTEMS=['base','update_sft','multitask_sft']
 METRICS=['PF','SSF','MDB','PUF','MQ','CR']
 
 
+def has_character_state(view):
+    """PES requires an observed initial profile or a persisted profile history."""
+    return bool(view.get('initial_profile')) or any(x.get('profile') for x in view.get('profile_history',[]))
+
+
 def parse_native_score(text):
     text=text.strip()
     if text.startswith('```'):text=text.split('\n',1)[-1].rsplit('```',1)[0].strip()
@@ -45,6 +50,7 @@ def prepare(root):
         for item in selected:
             index=item['source_index'];book=item['input']['book_name']
             folder=root/'runs/D-E11'/system/('snapshot_'+str(index))
+            if not (folder/'meta.json').exists():continue  # Budget-stopped, unattempted book remains missing in aggregation.
             data=dl.load_sample_data(str(folder),snapshot=item['input'])
             scenes=data['all_scenes']['scenes'];summaries={s['scene_index']:dl.format_interactions(s['interactions']) for s in scenes}
             def add(metric,user,scope,role=None):
@@ -64,8 +70,10 @@ def prepare(root):
                 view=dl.build_cross_scene_character_slice(name,data['character_dynamic'],data['all_scenes'],summaries,
                                                          initial_states=data['initial_states'])
                 if view['num_scenes_participated']>=2:
-                    eligible.append(add('PES',prompts.build_cross_scene_character_user_prompt('PES',view),
-                                        'character-'+hashlib.sha256(name.encode()).hexdigest()[:16],name))
+                    task=add('PES',prompts.build_cross_scene_character_user_prompt('PES',view),
+                             'character-'+hashlib.sha256(name.encode()).hexdigest()[:16],name)
+                    if has_character_state(view):eligible.append(task)
+                    else:task['unscored_reason']='No initial or persisted character profile; do not ask the judge to invent one'
             if eligible:
                 repeated=copy.deepcopy(min(eligible,key=lambda x:hashlib.sha256(('D-E11-repeat|'+x['role']).encode()).hexdigest()))
                 repeated['repeat']=True;repeated['task_id']+='__repeat';tasks.append(repeated)
@@ -101,10 +109,12 @@ def main():
         tok=AutoTokenizer.from_pretrained(resolve_local_checkpoint(Q32)[0],local_files_only=True)
         eligible=[];excluded=[]
         for t in tasks:
+            if t.get('unscored_reason'):
+                excluded.append(dict(task_id=t['task_id'],reason=t['unscored_reason']));continue
             n=len(tok.apply_chat_template(t['messages'],tokenize=True,add_generation_prompt=True,enable_thinking=False))
             if n+2048>32768:excluded.append(dict(task_id=t['task_id'],input_tokens=n,reason='No truncation; insufficient recovery space'))
             else:eligible.append(t)
-        write(out/'context_exclusions.jsonl',excluded);write(out/'first_tasks.jsonl',eligible)
+        write(out/'unscored_tasks.jsonl',excluded);write(out/'first_tasks.jsonl',eligible)
         def invoke(file,name,limit):
             used=sum(json.loads(q.read_text()).get('wall_s',0) for q in out.glob('*/metadata.json'))
             if used>=4*3600:raise TimeoutError('D-E11 judge budget exhausted')
@@ -121,11 +131,15 @@ def main():
         for t in tasks:
             raw=second.get(t['task_id'],first.get(t['task_id']));score=parse_native_score(raw['response']) if raw else None
             selected.append(dict(**{k:t[k] for k in ['task_id','system','book_name','snapshot_index','metric','role','repeat']},
-                                 valid=score is not None,result=score,selected_attempt=2 if t['task_id'] in second else 1 if raw else 0))
+                                 valid=score is not None,result=score,selected_attempt=2 if t['task_id'] in second else 1 if raw else 0,
+                                 unscored_reason=t.get('unscored_reason')))
         write(out/'selected.jsonl',selected)
         books=sorted({t['input']['book_name'] for t in json.loads((root/'data/native_D-E11/snapshots.json').read_text())})
         result=dict(experiment='D-E11',status='AUTOMATED-AGGREGATION-PENDING-CASE-REVIEW',n_books=6,systems={},
                     scope='Short generated native trajectories, six publisher-OOD books, one seed, fixed 8B world. Official character rubric subset; PES sees full generated transcripts, not teacher summaries. Not player study or validated growth accuracy.')
+        result['generation_coordinator']=load(root/'runs/D-E11/queue_status.json')
+        result['all_generation_cohorts_processed']=all(load(root/'runs/D-E11'/s/'metadata.json').get('complete') for s in SYSTEMS)
+        if not result['all_generation_cohorts_processed']:result['status']='PARTIAL-GENERATION-COVERAGE-PENDING-CASE-REVIEW'
         result['interrupted_runs']=[]
         for folder in sorted((root/'runs/D-E11').glob('*_interrupted*')):
             meta=load(folder/'metadata.json')

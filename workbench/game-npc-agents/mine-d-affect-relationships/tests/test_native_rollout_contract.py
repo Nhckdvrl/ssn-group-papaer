@@ -9,7 +9,7 @@ import unittest
 
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/'scripts'))
 from run_native_rollouts import LocalClient,select_snapshots,uses_adapter
-from score_native_rollouts import parse_native_score
+from score_native_rollouts import parse_native_score,has_character_state
 
 
 class NativeRolloutContract(unittest.TestCase):
@@ -33,6 +33,12 @@ class NativeRolloutContract(unittest.TestCase):
         self.assertIsNone(parse_native_score('{"score":100}'))
         self.assertIsNone(parse_native_score('{"merits":[{"points":true}],"demerits":[]}'))
         self.assertEqual(parse_native_score('{"merits":[{"points":8}],"demerits":[{"points":-3}]}')['score'],55)
+
+    def test_untracked_cast_has_no_profile_evolution_target(self):
+        self.assertFalse(has_character_state(dict(initial_profile='',profile_history=[])))
+        self.assertFalse(has_character_state(dict(profile_history=[{'profile':''}])))
+        self.assertTrue(has_character_state(dict(initial_profile='prior outlook',profile_history=[])))
+        self.assertTrue(has_character_state(dict(initial_profile='',profile_history=[{'profile':'observed state'}])))
 
     def test_generation_failure_keeps_request_and_error(self):
         class IDs:
