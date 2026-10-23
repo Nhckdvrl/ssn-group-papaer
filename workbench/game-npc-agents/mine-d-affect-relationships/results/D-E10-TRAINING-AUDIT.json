@@ -1,0 +1,92 @@
+{
+  "experiment": "D-E10",
+  "post_hoc": true,
+  "model_calls": 0,
+  "source_sha256": "2f9dd6b90c7ed6870916cce91fc5d8ec6ac218f3c0ec6a225736c095bf751e07",
+  "order_sha256": "8e4239c00ae5e32de9a86584541402fc57edc3c431986d6635545cba42f728ba",
+  "tasks": {
+    "character_motivation_update": {
+      "examples": 5644,
+      "forward_tokens": 32198337,
+      "target_tokens": 482315
+    },
+    "character_state_update": {
+      "examples": 5644,
+      "forward_tokens": 17388230,
+      "target_tokens": 3456294
+    },
+    "interaction_generation": {
+      "examples": 5643,
+      "forward_tokens": 36314389,
+      "target_tokens": 337866
+    }
+  },
+  "interaction_coverage": {
+    "selected_segments": 5643,
+    "available_assistant_turns": 15386,
+    "supervised_assistant_turns": 5643,
+    "multi_turn_segments": 2761,
+    "max_turns": 55,
+    "first_target_characters": 1347626,
+    "all_target_characters": 3356047
+  },
+  "response_lengths": {
+    "base": {
+      "n": 87,
+      "mean_words": 47.333333333333336,
+      "median_words": 44,
+      "min_words": 13,
+      "max_words": 150
+    },
+    "update_sft": {
+      "n": 87,
+      "mean_words": 50.01149425287356,
+      "median_words": 48,
+      "min_words": 3,
+      "max_words": 114
+    },
+    "multitask_sft": {
+      "n": 87,
+      "mean_words": 15.149425287356323,
+      "median_words": 14,
+      "min_words": 5,
+      "max_words": 51
+    },
+    "strong32": {
+      "n": 87,
+      "mean_words": 73.28735632183908,
+      "median_words": 74,
+      "min_words": 13,
+      "max_words": 145
+    },
+    "released": {
+      "n": 87,
+      "mean_words": 47.57471264367816,
+      "median_words": 46,
+      "min_words": 10,
+      "max_words": 271
+    },
+    "full_evidence": {
+      "n": 87,
+      "mean_words": 43.08045977011494,
+      "median_words": 38,
+      "min_words": 8,
+      "max_words": 142
+    },
+    "frozen": {
+      "n": 87,
+      "mean_words": 47.55172413793103,
+      "median_words": 44,
+      "min_words": 8,
+      "max_words": 138
+    },
+    "reference": {
+      "n": 87,
+      "mean_words": 41.81609195402299,
+      "median_words": 34,
+      "min_words": 8,
+      "max_words": 173
+    }
+  },
+  "interpretation": "Whitespace word counts are descriptive, not quality labels. First-turn coverage and brevity do not establish the cause of MT-SFT score decline or judge bias. Original preregistered results retained."
+}

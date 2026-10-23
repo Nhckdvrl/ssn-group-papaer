@@ -150,7 +150,7 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 - 实际训练：`runs/D-E10/train_update_v2/`与`train_multitask_v2/`，保存初始/半程/最终验证、每步loss/梯度/样本与tokens、LoRA/优化器/RNG、源码与元数据。首轮`train_update`/`train_multitask`均在适配器装配失败、0优化步，原记录不删除。base权重revision沿用Qwen3-8B；只有最终完整训练checkpoint进入主评测。
 - 七系统：`runs/D-E10/system_<name>/`保存update/motivation/actor与统一recovery所有尝试，实际messages、生成IDs、模型/adapter hash；states/motivations/outputs给出确定性选择与失败承接。`judges/<name>`保留盲评及事前12组重复；`likelihood/`使用共同未适配8B评分。
 - 运行编排：`runs/D-E10/{training_jobs,evaluation_jobs,analysis_jobs}.json`；stdout在`logs/D-E10-*`。评分等strong32完整释放GPU后才装模型，SFT路径等对应最终完整checkpoint。`finish_status.json`明确汇总/推送失败或完成；不会改用中途checkpoint或幸存系统。
-- 当前权重和raw仍在运行中，不打包搬动；结束后再按实际完整性归档。所有大文件不入Git，代码和轻量读数同步原main。D-E10全部本地，无新API和现金fallback；旧D-E01–09总账保持原数字，另计本轮。
+- 运行期间不搬动权重/raw；D-E10结束后已按实际完整性归档，见本页末节。所有大文件不入Git，代码和轻量读数同步原main。D-E10全部本地，无新API和现金fallback；旧D-E01–09总账保持原数字，另计本轮。
 
 ### D-E10本地I/O与启动修复（2026-10-23，非新实验条件）
 
@@ -176,6 +176,16 @@ python3 workbench/game-npc-agents/mine-d-affect-relationships/scripts/experience
 
 当前资源归属更新（2026-10-23 10:14，北京时间）：已核验GPU1上的训练和全部MT-SFT后续生成结束，移交本项作为首选；D-E10剩余GPU3评分与GPU0 NLL不受影响。等待队列PIDs、先前status及移交原因保留在jobs.json；最新进度以D-E11-progress为准。不是改变输入或更换模型。
 
-### 完成后持久归档队列（尚未完成）
+### 训练实验的持久归档
 
-`archive_adaptation_study.py`分别等待D-E10正式结果/D-E11正式评分完整完成，将原始记录、失败尝试、冻结评测输入和最终LoRA/优化器状态保存到`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-23-adaptation/{D-E10,D-E11}/raw-and-final-adapters.tar.gz`。只保留最终训练权重，基础/中途权重不复制入包；训练token缓存可按源revision及manifest重建。逐成员SHA复读通过后才产生Git轻量`D-E10-RAW-MANIFEST.json`或`D-E11-RAW-MANIFEST.json`。当前是已启动的等待任务，路径预登记不代表归档已存在；失败不会发布完成清单。
+`archive_adaptation_study.py`在相应正式结果完整结束后，保存原始记录、失败尝试、冻结输入和最终LoRA/优化器到`/home/xiang/research-assets/game-npc-agents/mine-d/2026-10-23-adaptation/<实验ID>/raw-and-final-adapters.tar.gz`。只保留最终训练权重，基础/中途权重不复制；训练token缓存按固定源与manifest重建。
+
+**D-E10已完成：** 297文件、3,927,283,215字节，逐成员SHA核验通过；包SHA256 `5dd532267f3b92211c14331fb61132de0548e87df024257fed1c5fc6ac01eeeb`。[清单](results/D-E10-RAW-MANIFEST.json)。D-E11与D-E12仍为等待任务，预登记路径不代表包已存在；失败不发布完成清单。
+
+## D-E12：完整对话监督基线
+
+`data/training_D-E12`为最终token/cache、assistant spans、原生row/hash与384条逐任务验证。14,079更新、14,079动机、23,088完整互动全部保留，0超长排除/0截断；28,286原有单任务编码逐token一致。前一个只做准备的`training_D-E12-included-format-prefix`有0模型调用，保留PRETRAINING_MASK_NOTE；最终目标排除模板提供的空思考前缀。
+
+`runs/D-E12/train_multitask_fullturn`保存实际训练、优化器/RNG、冻结顺序、逐任务验证及源码。固定16,684序列/261步/85,900,222 forward tokens，互动监督15,195个assistant回复。[实际缓存与核验](results/D-E12-training-data.json)。`run_fullturn_study.py`接最终模型→同一已观察D-E10 cohort→99评分→共同消费者NLL，单独保存D-E12结果；这是探索性后续，不冒称独立确认。
+
+`runs/D-E12/jobs.json`及`finish_status.json`登记GPU3实际队列；D-E11尚未开始的judge已移交GPU1，在其全部生成后接续，不与新训练装载竞争。运行/归档日志在`logs/D-E12-*`，无API调用。实际8B启动已核验单目标及多目标CE，与完整masked loss误差小于1e-6；独立小模型全部梯度比较通过。

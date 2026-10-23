@@ -4,12 +4,13 @@
 
 # 主张账本（CLAIMS）
 
-**2026-10-21：E01首次真实模型与E02普通控制已完成。仅登记2条范围明确的L0观测；无已验证新机制、无L2以上主张。** 独立单位为4个开发者故事，不是245个独立科研样本；不继承旧矿区A证据。
+**2026-10-23：** B历史的C01/C02保持原范围；新增D-E10的限定观测C03（L0）。无已验证新机制、无L2以上主张。B的独立单位为4个开发者故事，D-E10以6作品为主要聚合单位；都不能把模型请求当独立科研样本，不继承旧矿区A证据。
 
 | ID | 主张（一句话，可证伪） | 等级 | 证据（实验卡/结果） | 未控混杂 | 最近更新 | 校对 |
 |---|---|---|---|---|---|---|
 | C01 | 在E01冻结4故事的8个Change情境，Qwen3-8B、Llama-3.1-8B-Instruct和Step5的Situated均与合成规则8/8匹配；完整Explicit在格式/预算处理后各20/20，因此当前材料尚未证明动作层新算法必要性。 | L0 | [E01](experiments/E01-scope-aware-character-edit-baseline-gate.md) · [报告](results/e01/REPORT.md) · [Qwen](results/e01/qwen3_8b/analysis.json) · [Llama](results/e01/llama31_8b/analysis.json) · [Step首轮](results/e01/step5/analysis.json) · [Step预算恢复](results/e01/step5/analysis_with_recovery.json) | 开发者方便样本；非等算力；单次推理；原始策略未必匹配；Situated认证分母0；Style未独立评分 | 2026-10-21 | 同会话复算，非独立校对；不升L1–L3 |
 | C02 | 在同一Qwen3-8B的E02控制中，同信息完整卡重写把Preserve从7/12提至11/12，但Change由8/8降至7/8；去掉原卡仅改变分项方向，未显示原卡总体一致增益。 | L0 | [E02](experiments/E02-same-information-controls.md) · [分析](results/e02/analysis.json) · [实际新卡](results/e02/rewritten_cards.json) · [报告](results/e02/REPORT.md) | 由E01触发的探索；同4故事；单模型/单seed；重写额外4调用；新卡内部冲突的机制未隔离；不等同CDT复现 | 2026-10-21 | 同会话复算，非独立校对；不升L1–L3 |
+| C03 | D-E10固定6作品中，U-SFT原生更新验证NLL由1.585降至0.989，但后续探索性角色评分对base差仅+0.027（作品配对95%CI[-0.120,+0.184]）；该协议下未观察到明确同步行为收益。 | L0 | [实验卡](mine-d-affect-relationships/experiments/D-E10-trained-character-adaptation-baselines.md) · [全量结果](mine-d-affect-relationships/results/D-E10-summary.json) · [科研分析](mine-d-affect-relationships/results/D-E10-RESEARCH-REPORT.md) · [完整归档](mine-d-affect-relationships/results/D-E10-RAW-MANIFEST.json) | 单训练seed、6作品、同家族judge/探索性量表；新情境可补偿状态；发布顺序与回顾性资料；不同读数不等同同一能力，未证明统一瓶颈 | 2026-10-23 | 执行agent复算与12预选人物审阅，非独立校对；不升机制主张 |
 
 L0是本次对有限证据的限定，不是自动科学判决。后续按[EXECUTION](../EXECUTION.md)核查噪声、混杂与独立性，再讨论升级；I01/工作台状态不由本表改变。
 

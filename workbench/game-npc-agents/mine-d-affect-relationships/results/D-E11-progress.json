@@ -1,31 +1,48 @@
 {
   "experiment": "D-E11",
-  "snapshot_time": "2026-10-23T10:17:32.756306+08:00",
+  "snapshot_time": "2026-10-23T13:53:56.759667+08:00",
   "complete": false,
   "queue": {
     "complete": false,
     "error": null,
-    "systems_completed": [],
+    "systems_completed": [
+      "base"
+    ],
     "started_utc": "2026-10-23T02:14:18.835494+00:00",
     "phase": "generating",
-    "waiting_system": "base",
+    "waiting_system": "update_sft",
     "selected_gpu": "1"
   },
-  "score_waiter": {
-    "complete": false,
-    "error": null,
-    "phase": "waiting",
-    "started_utc": "2026-10-22T18:11:16.233587+00:00"
+  "systems": {
+    "base": {
+      "cohort_processed": true,
+      "error": null,
+      "completed_full_trajectories": 4,
+      "attempted_snapshots": 6,
+      "interactions": 170,
+      "stopped": [
+        {
+          "source_index": 42,
+          "book": "Around the World in Eighty Days",
+          "reason": "world_update failed to parse JSON after 5 attempts"
+        },
+        {
+          "source_index": 56,
+          "book": "Uncle Tom’s Cabin",
+          "reason": "No truncation"
+        }
+      ],
+      "recorded_generation_attempts": 649
+    },
+    "update_sft": {
+      "cohort_processed": false,
+      "error": null,
+      "completed_full_trajectories": 1,
+      "attempted_snapshots": 1,
+      "interactions": 36,
+      "stopped": [],
+      "recorded_generation_attempts": 132
+    }
   },
-  "preserved_interruption": {
-    "stopped_utc": "2026-10-22T17:57:26.396388+00:00",
-    "reason": "GPU2 concurrently occupied by another project; first native scene OOM. Stop own run, retain every call and restart whole frozen cohort when idle. Not a character capability result.",
-    "cumulative_gpu_process_budget_hours": 3,
-    "saved_complete_generation_records": 21,
-    "total_started_model_calls": null,
-    "missing_failure_outputs": "OOM and last interrupted generation did not return full replies; first client logged only returned generations. No completion token usage is invented."
-  },
-  "new_paid_api_calls": 0,
-  "new_base_request_records": 43,
-  "new_base_returned_records": 42
+  "new_paid_api_calls": 0
 }
