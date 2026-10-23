@@ -1,5 +1,7 @@
 # Game NPC Agents：领域工作台
 
+**当前执行边界（2026-10-23用户指令）：** 只按原预算收尾D-E11/D-E12/D-E13，随后先做[研究方向与有效性审计](mine-d-affect-relationships/RESEARCH_AUDIT.md)。审计完成前不新增实验、配方或预算，不开始后续经历干预。ACTIVE状态不变；自动结果不等于审计通过。
+
 **当前研究重点：** 依用户最新纠正，停止新增局部坏例/窗口/字段补丁实验，回到“角色怎样从经历中改变后续互动”的整体问题。[方向判断](mine-d-affect-relationships/POSITIONING.md) · [D-E06–08完成报告](mine-d-affect-relationships/results/D-CONTINUATION-REPORT-2026-10-22.md)。
 
 **状态：ACTIVE-MAIN。2026-10-22用户明确暂停B/I01，优先转入本工作台现有矿区D：动态角色认知与长期人物演化；矿区C/NCP-Bench保留为备选。** 当前是公开资产上的研究驻留，优先ArcANE、PHASE-Tree/LongEvoRoleBench，不提前锁定方法或预设失败。B的E01–E03及历史矿区A资产保留；A仍CLOSED／TERMINATED。

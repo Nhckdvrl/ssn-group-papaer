@@ -1,5 +1,7 @@
 # 矿区D：整体研究定位
 
+**2026-10-23用户要求的执行闸门：** 当前只收尾D-E11/D-E12并核验已完成D-E13，不新增模型实验。见[整体研究审计](RESEARCH_AUDIT.md)：方向仍是人物特有的经历解释与跨互动适应，但测量资格前的状态整理/配方投入已出现优先级偏移。旧“下一步”不覆盖此指令，完整审计尚未结束。
+
 更新：2026-10-22。响应用户“不要太局部现象优化，从整体方向考虑”。这是现有ACTIVE-MAIN内部的研究判断，不是新开线、定题或已验证算法。B/I01继续PAUSED，A继续CLOSED。此前进入性设计与定位历史可由Git追溯；实验事实保留在各卡及结果。
 
 **用户进一步明确的研究尺度：** 不因相邻工作存在就不断收窄问题或拆掉贡献；要保证完整叙事有新颖性，并回答Role-playing Agent领域真正重要的问题。下文近邻表用于建立完整增量，不要求每个组件都史无前例，也不把它当作逐项排除研究空间的清单。
@@ -122,6 +124,8 @@ EW来源审阅补充：发布训练文件内部的状态接续可复查，但不
 **具体建设入口（2026-10-22续）：** [D-I01方法候选](ideas/D-I01-learning-character-adaptation.md)把上述方向落实为“人物前态＋完整经历→可支持多个后续互动的更新”。[D-E10](experiments/D-E10-trained-character-adaptation-baselines.md)已经真正训练原生更新SFT、多任务SFT，并接回后续动机与回复，普通32B与完整经历同时运行。新[数据视图](data/README.md)分开输入/监督/未来任务，不将同场景已发生回复当未来效果。当前仍是SEED；基线训练在进行，行为约束候选方法尚未证明有效。
 
 ## 来源扫描记录
+
+2026-10-23方向核验：重查[Curse of Knowledge](../../../library/themes/game-npc-social/papers/CURSE_OF_KNOWLEDGE_2026.md)、[ANIMASK](../../../library/themes/game-npc-social/papers/ANIMASK_2026.md)、[匿名化评价](../../../library/themes/game-npc-social/papers/ANONYMOUS_ROLEPLAY_2026.md)及ArcANE v2。前两者已占有“输入干预与行为归属”相关主张，不能只说静态人物/知识而忽略行动和历史路径；**compression risk**是把新设计概括成反事实双胞胎换变量。可能的整体增量仍在可见经历如何改变该人物的解释、关系/目标及跨互动延续，需要真实证据，并非当前已成立主张。venue corpus近邻检索同时保留R4、CRPO、CoSER等训练参照，没有因为相邻就关线。
 
 2026-10-22执行venue corpus近邻检索，核查最新arXiv、角色扮演awesome列表及DailyArXiv镜像（镜像标记更新至10-19）。新精读PD-LLM、EvoSpark，补CAPS理论选读；AdvRole仅核查官方摘要，其“evolving”指训练课程与Actor进步，不是角色人生变化。镜像和检索只作发现入口，以上实质判断回到原文/官方代码。未声称已读尽2026年全部相关工作。
 

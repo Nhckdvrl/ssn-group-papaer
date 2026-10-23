@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import statistics
 from experience_store import ExperienceStore
+from adaptation_protocol import sections
 
 
 def read(p):return list(map(json.loads,p.read_text().splitlines()))
@@ -35,6 +36,37 @@ def main():
         sizes=[len(x.split()) for x in texts];assert len(sizes)==87
         result['response_lengths'][name]=dict(n=len(sizes),mean_words=statistics.mean(sizes),median_words=statistics.median(sizes),min_words=min(sizes),max_words=max(sizes))
     result['interpretation']='Whitespace word counts are descriptive, not quality labels. First-turn coverage and brevity do not establish the cause of MT-SFT score decline or judge bias. Original preregistered results retained.'
+    episodes={x['episode_id']:x for x in read(root/'data/evaluation_D-E10/episodes.jsonl')}
+    paths=[]
+    for task in read(run/'system_frozen/motivation_tasks.jsonl'):
+        before=sections(episodes[task['episode_id']]['update_input'][1]['content'])['Scene Interactions'][2]
+        history=sections(task['messages'][1]['content'])['Previous Scene Interactions'][2]
+        paths.append(dict(episode_id=task['episode_id'],has_previous_scene_history=bool(history and history!='(None)'),
+                          exact_completed_experience=bool(history and history==before)))
+    result['frozen_information_paths']=dict(n=len(paths),previous_scene_history_nonempty=sum(x['has_previous_scene_history'] for x in paths),
+        exact_completed_experience=sum(x['exact_completed_experience'] for x in paths),rows=paths,
+        interpretation='Frozen fixes the persistent card, but retains the native previous-scene channel to motivation. It is not a no-experience intervention.')
+    actor_tasks={x['question_id']:x for x in read(run/'system_frozen/actor_tasks.jsonl')}
+    history_rows=[]
+    for e in episodes.values():
+        for q in e['queries']:
+            actual=actor_tasks[q['question_id']]['messages'][1:]
+            history_rows.append(dict(question_id=q['question_id'],episode_id=e['episode_id'],
+                exact_source_history=actual==q['messages'][1:],
+                source_assistant_turns=sum(m['role']=='assistant' for m in actual)))
+    assert len(history_rows)==87 and all(x['exact_source_history'] for x in history_rows)
+    result['actor_source_history']=dict(n=len(history_rows),
+        exact_source_history=sum(x['exact_source_history'] for x in history_rows),
+        queries_with_prior_source_assistant=sum(x['source_assistant_turns']>0 for x in history_rows),
+        source_assistant_turn_occurrences=sum(x['source_assistant_turns'] for x in history_rows),rows=history_rows,
+        interpretation='Independent next-turn queries retain publisher-provided intervening dialogue, including the character own prior replies in some queries. Occurrences overlap across queries; they are not unique turns or on-policy trajectories.')
+    import numpy as np
+    scores=json.loads((Path(__file__).resolve().parent.parent/'results/D-E10-summary.json').read_text())['systems']
+    books=sorted(scores['base']['by_book']);delta=np.array([statistics.mean(scores['released']['by_book'][b].values())-statistics.mean(scores['frozen']['by_book'][b].values()) for b in books])
+    draws=np.random.default_rng(173).integers(0,len(books),(10000,len(books)))
+    result['released_minus_frozen_post_hoc']=dict(mean=float(delta.mean()),ci95=np.quantile(delta[draws].mean(1),[.025,.975]).tolist(),
+        changed_components=['persistent state','published versus generated motivation'],
+        interpretation='A system comparison, not an isolated state or experience effect. CI crossing zero is not equivalence.')
     Path(a.out).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 

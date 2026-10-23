@@ -22,6 +22,7 @@
 | 原生生成互动 | [D-E11选择](D-E11-selection.json)、[进度](D-E11-progress.json) | 普通路径6起点已尝试，4完整、2被世界JSON/长度限制终止，170互动；训练路径继续，无三系统最终结论 |
 | 学习基线案例/监督 | [D-E10 CASEBOOK](D-E10-CASEBOOK.md)、[监督审计](D-E10-TRAINING-AUDIT.json) | 12预选人物的七系统审阅完成；首回复覆盖与输出长度仅事后描述，不是机制证明 |
 | 完整对话监督 | [D-E12实验卡](../experiments/D-E12-full-conversation-character-training.md)、[数据核验](D-E12-training-data.json) | 15,195互动回复监督，同约85.9M forward预算；训练已启动，非新算法或独立确认 |
+| 配对读数校准与核验 | [D-E13原表](D-E13-RUN-REPORT.md)、[科研复查](D-E13-RESEARCH-REVIEW.md)、[离线核验](D-E13-READOUT-AUDIT.json) | 231本地判别，参考正控可辨、相同回复空对照稳；真实材料换序不稳，不作经历因果结论或训练奖励 |
 | 成本与次数 | [首夜账](D-RUN-LEDGER.json)、[D-E06–08账](D-CONTINUATION-RUN-LEDGER.json) | 本地生成/前向/API分账；D-E09不计入完成账 |
 | 补充互动发布资产 | [MiniMax库存](D-MINIMAX-ASSET-INVENTORY.json) | 95种子/3,135发布轨迹及评分；结构核验，无本轮生成/重评分 |
 | 全量连续经历索引 | [D-EXPERIENCE-INDEX](D-EXPERIENCE-INDEX.json) | 138,596原任务全部字节/元数据核验；跨任务与同人物下次出场连接，无新生成/心理标签 |

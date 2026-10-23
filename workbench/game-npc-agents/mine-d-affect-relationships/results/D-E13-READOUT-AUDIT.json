@@ -1,0 +1,3228 @@
+{
+  "experiment": "D-E13",
+  "post_hoc": true,
+  "model_calls": 0,
+  "primary_scores_changed": false,
+  "source_sha256": {
+    "data/contrast_D-E13/tasks.jsonl": "a94055475ec732290325e5c325a3b750e45adcb11af661b034adb5f50307cc90",
+    "runs/D-E13/selected.jsonl": "c0f778012dcdd3b4c165440e0335e08f506680fc554a971e88104dae75aed0b7"
+  },
+  "verified_swap_pairs": 115,
+  "groups": {
+    "identical_reference": {
+      "judgments": 46,
+      "valid": 46,
+      "mappings": {
+        "underdetermined": 46
+      },
+      "quote_classes": {},
+      "pair_consistency": {
+        "both_abstain": 23
+      },
+      "raw_finish": {
+        "stop": 46
+      }
+    },
+    "qwen3_32b_arc": {
+      "judgments": 46,
+      "valid": 46,
+      "mappings": {
+        "A2_B1": 8,
+        "A1_B2": 33,
+        "underdetermined": 5
+      },
+      "quote_classes": {
+        "ordered_ellipsis_fragments": 19,
+        "exact": 50,
+        "requires_semantic_review": 19
+      },
+      "pair_consistency": {
+        "consistent_definite": 8,
+        "same_position_mapping_after_swap": 11,
+        "abstention_changes_after_swap": 3,
+        "both_abstain": 1
+      },
+      "raw_finish": {
+        "stop": 46
+      }
+    },
+    "qwen3_8b_arc": {
+      "judgments": 46,
+      "valid": 46,
+      "mappings": {
+        "A1_B2": 31,
+        "underdetermined": 11,
+        "A2_B1": 4
+      },
+      "quote_classes": {
+        "requires_semantic_review": 22,
+        "ordered_ellipsis_fragments": 22,
+        "exact": 38
+      },
+      "pair_consistency": {
+        "same_position_mapping_after_swap": 12,
+        "both_abstain": 4,
+        "consistent_definite": 4,
+        "abstention_changes_after_swap": 3
+      },
+      "raw_finish": {
+        "stop": 46
+      }
+    },
+    "arcane_8b_dpo_arc": {
+      "judgments": 46,
+      "valid": 45,
+      "mappings": {
+        "A1_B2": 27,
+        "A2_B1": 17,
+        "underdetermined": 1
+      },
+      "quote_classes": {
+        "exact": 53,
+        "requires_semantic_review": 19,
+        "ordered_ellipsis_fragments": 22
+      },
+      "pair_consistency": {
+        "consistent_definite": 17,
+        "invalid_one_or_both": 1,
+        "same_position_mapping_after_swap": 4,
+        "abstention_changes_after_swap": 1
+      },
+      "raw_finish": {
+        "stop": 46
+      }
+    },
+    "reference": {
+      "judgments": 46,
+      "valid": 46,
+      "mappings": {
+        "A2_B1": 17,
+        "A1_B2": 26,
+        "underdetermined": 3
+      },
+      "quote_classes": {
+        "exact": 90,
+        "requires_semantic_review": 1,
+        "exact_short_below_eight_chars": 1
+      },
+      "pair_consistency": {
+        "consistent_definite": 17,
+        "same_position_mapping_after_swap": 4,
+        "both_abstain": 1,
+        "abstention_changes_after_swap": 1
+      },
+      "raw_finish": {
+        "stop": 46
+      }
+    }
+  },
+  "rows": [
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "And yet, even in her anger and grief, there is a flicker of pity... She is no longer driven by the fire of resentment alone; there is a quiet, weary understanding that this is not a battle to be won, but a burden to be borne.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 1,
+          "quote": "It confirms what she has long suspected—that his love for her is not a thing of tenderness or understanding, but of ownership... She does not speak, but her mother, sensing the storm within her, offers a few gentle words of comfort. Emily listens, but they do not reach her.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have already given my word to another, and I cannot break it. I have no intention of waiting for a man who has not honored his promises...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I cannot wait for him any longer... He has asked me to wait before, and each time, he has offered no date, no provision, and no promise of return.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not bear it. I was trembling, and my heart seemed to stop beating; I could not keep still, and I could not speak.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I kept the children in the nursery... I managed the little things that could be done, and I watched the visitors with a quiet patience.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "You had better settle it, my dear; you know how these things must be managed.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Wire back that she is to come home at once. We must stop this nonsense.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I must confess, my good master, that I am a bit taken aback... I must wonder if it is not the lady who is to blame for your madness, rather than the other way around.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I have learned, through many a journey and many a lesson, that it is not for me to question your ways... I shall simply nod and smile, and perhaps even believe, for a little while, in the beauty of your vision.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Come, Collins, this is but fair; take your turn.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He keeps the boat from Collins till the danger of tiring grows plain, then has him taken in, cold and dripping, with little more to say.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "We only laughed the louder, and bade the servants bring forth more wine and finer dishes...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "We would not let the matter harden into shame... the farmhand sent home with a present and a promise of another post...",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "If she is Aldonza Lorenzo, master, then she is Aldonza, whatever fine style you give her.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Aldonza Lorenzo? I know her well; a stout wench, and fit enough for any knight's sweetheart.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "She would keep Monica’s confession in confidence, and feel a kind of pity for her... yet she would not soften her standards; she would still want Monica to be honest, and to take responsibility, but with a gentler heart than before.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "I would not promise silence, but I should ask her plainly what she meant by leaving misleading traces and why she could not tell me at once... I should not be moved by sentiment; if she is to be saved from a bad situation, she must be made to face it honestly.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/arcane_8b_dpo_arc/0",
+      "valid": false,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I am not a child to be left in the market square with no coin and no name.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I am a woman with a household to manage, a name to uphold, and a life to shape.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I cannot come.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I write to Rhoda, telling her the truth of where I am, what I have done, and what I cannot do now.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I sent a quick message back to my partner, saying I was on my way home and would be there in a few minutes.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I kept the other message open, just in case, though I didn’t answer it yet.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Speak of him gently, Albert.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Albert, be prudent.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Anna reached out and touched her hand lightly, a gesture of reassurance and solidarity. 'You don’t have to begin all at once,' she said. 'Just tell me what you can. I will listen, and I will understand.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "She reached out, not to touch Dolly’s hand—there was a certain restraint in her gestures now, a carefulness that had grown with time—but to tilt her head in a gesture of invitation, of trust.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He is not like the man I loved... He has not forgotten. He has not abandoned us.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "Does he… does he care for Albert?... Her heart aches with the possibility that Monte Cristo might have a different place in her life.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have waited once before, and it was not in vain. But I am not a child to be led by the hand of another’s whims.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I have honored the promise given to me, and I have done so without complaint or demand. But a promise is not a tether...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I would not suffer Sancho to make me doubt my own honor... for if I marry a princess, it shall be because I have won her by valor, not because I have been bribed by a squire’s promises.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 1,
+          "quote": "I would answer him with all the tenderness and affection I could command... I would say that if he would have a kingdom, he might have it, and that I would not deny him his reward.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I would not be driven to show weakness... I must still command the household, and I did so by turning the matter back upon her.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I seized the letter... my voice shaking with more rage than shame... the room itself seemed to close in upon me.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "If I were to wed a princess, it would be but a trifle, a bauble to hang upon the trappings of a court, while my true quest is to serve the most ennobling of all ladies...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Yet, I do not scorn thy counsel, for it is the counsel of a good and loyal squire, and I am ever grateful for thy company and thy care.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You do not know the debts I have, the enemies I have made, the lives I have ruined. You think you are bold? You are merely a child who has not yet learned the price of defiance.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He is not the man he once was. And Eugénie, with her cold independence, is the first to remind him of that.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Anna... offers a soft, knowing smile... 'You are not alone in this.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Anna... meets Dolly's gaze with a mixture of compassion and quiet understanding... 'I have been there, Dolly.'",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Alice's mind races. She has always been the one to guide Monica, to ensure she followed the proper path. But now, Monica is making a choice that defies everything Alice has ever believed in.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Alice nods, her heart aching with the weight of the decision she's about to make. 'Yes, Monica. I would. I always have.' And with that, Alice reaches for the small case Monica is carrying, her mind already turning to the future—what it will mean to take care of her sister, and the child she will soon bring into the world.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I will not speak of it to anyone. But I must know the truth of it when you are ready.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I will not speak of it—until you are ready to explain. But I must warn you, I do not deal in half-truths or mysteries.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Alice’s actions reflect the arc of her relationship with Monica—what was once a conventional sisterly concern has now become a deep, almost maternal devotion.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Her protective instincts, long rooted in the conventional sisterly care she has always shown Monica, are now stirred into a more urgent and resolute mode.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "She falters in her hostess's place, says little, and lets the room sit in embarrassed silence while her attention breaks away toward the children and her own hurt.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "She remains quiet and outwardly composed, watching over the company while keeping the children's supper and the evening's order in mind until the awkwardness passes.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You know I won’t tell anyone... Take your time... I’ll be here when you’re ready.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I won’t say a word... But don’t think for a moment that I’ll let this go.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "The Duke and Duchess, having deftly redirected the mood, return to their seats, their eyes meeting in a silent exchange of satisfaction. The performance continues, and the evening is saved.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Yet, in the Duchess’s eyes, there may flicker a moment of genuine sympathy—quickly suppressed, for to show it would be to admit the game has grown too real.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I typed a quick response to my partner, something vague, something that would satisfy him without revealing the truth. Then, I opened the first message again, and I replied with a single word: *Yes.*",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I’ve told myself I can do this, that I deserve better. But what if I’m wrong? What if I’m not strong enough? What if I’m not brave enough?",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I have no further claim upon her.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "You are mistaken, Count Vronsky. You have no right to suppose that I am in any way bound to explain myself to you.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I give you my word, Sancho, and I do not break it lightly.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I am a man of letters and of reason, and I must needs see my master brought to his senses.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Sansón Carrasco is no longer merely a manipulator or a schemer. He is a man who has come to see Sancho not just as a tool, but as a partner...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I say, with a smile that hides the weight of my thoughts... I have no quarrel with your terms, and I will not deny you your due.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I cannot allow such conduct to go unchallenged... I will not be the one to carry the burden of his laziness.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I did not raise my voice... I then took up the oar myself, and with a few strong strokes, we were moving again.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "press the jest onward, calling for the farmhand to kneel and deliver the maiden's token before everyone.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "hush the table, send a servant to tend the farmhand, and turn the company toward a milder song.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She does not speak, for she knows that to do so would be to betray the purity of her name... Her silence is her answer, her humility her reply.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I am Aldonza Lorenzo, and I am no more than that... I am not a lady of romance... I am content with my simple life.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I would not wait for him without a promise, nor without knowing when he would come.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I cannot promise anything until I hear from him.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He admits his ruin, explains that Cavalcanti's marriage and fortune would restore his credit, and presses Eugénie to see herself as the pledge that may save him.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He explains that the match would steady his shaken position and tries to overawe her with the language of credit, fortune, and necessity.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I take a deep breath and type a single word: 'Yes.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I typed a quick response to my partner, something vague, something that would satisfy him without revealing the truth.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She rises slowly, her hand resting on Albert’s shoulder. 'Then we must be careful, my son...'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Tell me, mon ami, does he speak of the past? Does he ever speak of *him*?",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Sit down. Tell me in your own way; I'm listening.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Tell me plainly what trouble you're in, and we'll see what can be mended.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "He acknowledges the man’s worth, not as a fool, but as a necessary part of the journey.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He would not dismiss Sancho outright... but neither would he grant every demand without a touch of his own maneuvering.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I should feel that my love for her is now something deeper than mere sisterly care; it is grief, and it is devotion, and it must go on after her death, for the child.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I should urge her to be steady, to let me help her find some respectable place to stay, and perhaps even to think of a future that would not bring her into such trouble.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He answers the Count’s questions with careful precision, as though each word is a stone laid in a wall to keep the past at bay.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He answers the Count’s inquiries with a mixture of politeness and defensiveness, his voice measured but his eyes betraying a flicker of unease.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not bear it... I turned pale, my hand went to my knife, and then I drew back, as though the very thought of it were enough.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I rise at once... 'I deny nothing,' I say, my voice hard and short.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "But if he be mad, mamma, ought we to leave him like that?",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Do you think he believes it, mamma?",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Her heart aches with the possibility that Monte Cristo might have a different place in her life than the one she once imagined—perhaps not as a husband, but as something else entirely.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He is not like the man I loved... He has not forgotten. He has not abandoned us. He has only waited.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have nothing to communicate to you, Count.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "There is nothing to settle between us personally. The matter is as it stands.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I could not help shrinking from the whole affair, and I felt myself at once out of place among the polished talk, the oysters, and the glittering room.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I answered him with a sort of quiet readiness, and let him draw me into the evening, not as one who must be made to feel at ease, but as one who could be at ease beside him.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I could not bear it. I was trembling, and my heart seemed to stop beating; I could not keep still, and I could not speak.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I did not let that distress me beyond what was necessary; I managed the little things that could be done, and I watched the visitors with a quiet patience.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Tell her I do not receive visits upon terms of her own making.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Yes; let her come.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You had better settle it, my dear; you know how these things must be managed.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Wire back that she is to come home at once. We must stop this nonsense.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Say no more: mount, supper, and fair dealing; only do your part, Sancho, and help bring him safe through.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He laughs and answers Sancho in the same jesting key, making light of the bargain more than fixing it.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I answered him with a quiet, almost formal composure... I have no further claim upon her.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I turned to him with the same cold composure... You are mistaken, Count Vronsky.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Ah, kind strangers, and good neighbors, I thank you for your words, though I am but a simple woman of the fields...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Dulcinea del Toboso, standing at the well’s edge, does not reply. She does not speak, for she does not yet know herself as one who might.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Collins, for all his sourness, was a lively and sharp fellow, and I found him useful in sharpening my wit and keeping me from being dull.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I could not bear to have the business ruined by his quarrel, nor to be drawn into a scene that would only make the rest of the company uneasy.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She types a response to Widdowson: *I am where I need to be. I will not share my location. I have things to do. I have to think.* She sends it, then turns off the screen.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "When she finally replies, it is only to Widdowson. *On my way home. Everything is fine.* And then, before she can second-guess herself, she deletes the other message.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Tell her she is not to come up... he will not have her seen with Osborne again.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I let the servant know she might come up... a kind of reparation, a faint, broken trust given in the last hour.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He is not the man he once was. And Eugénie, with her cold independence, is the first to remind him of that.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "You do not know the debts I have, the enemies I have made, the lives I have ruined.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Well, John, if you are to be the anchor of our expedition, I suppose we must all be content to drift in your honor.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Well, John, if you are so eager to let the river decide our fates, I suppose we must trust in the wisdom of the current.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "all this troubles me and feels strange to me",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "It is not to my taste, but that is no matter; I am glad to be with you.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Come, Collins, this is but fair; take your turn.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Will you row?",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "receiving the account with sorrowful respect more than alarm",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "shudders, warns her son to be prudent",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I deny nothing... If the past must be spoken, let it be spoken plainly, and let the scandal stand as it is.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I could not bear it... I took the accusation and carried it away with me, for in that instant I saw only one thing: that Edmond had taken what was mine, and that I must make him pay for it.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He is not merely defending his position—he is defending his very identity.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He begins to feel as though the count is not merely inquiring, but probing, as if he knows something—something that should remain buried.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "No more side channels. We need to speak plainly tonight.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I'm on my way. The pod got delayed.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "He writes a reply with a trembling hand, the ink perhaps smudged, the words hesitant.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He writes a brief reply, his hand firm and his words clipped with the authority he has come to wield in their marriage.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "There is nothing to settle between us personally. The matter is as it stands.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I have nothing to communicate to you, Count.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I'll take care of you, Monica. I'll make sure you're safe.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "You can't just run away like this. You know how your father would react. You know what people will say.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I am a knight of the round table, a man of chivalry, and my heart is set upon the service of my lady Dulcinea...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Dulcinea is my lady, my muse, my very soul’s desire, and to her I shall dedicate my sword, my honor, and my very being.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Say it. Please don't look at me as if I've already done something unforgivable.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Tell me from the beginning. You're not alone in this.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He is not the master of this room. He is not the master of his daughter. He is not the master of his own fate.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "Do not forget, my dear, that I am the one who provides for you... Should you choose to defy me, you will find that the world is not so kind to those without a name or a fortune.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "When she finally replies, it is only to Widdowson. *On my way home. Everything is fine.* And then, before she can second-guess herself, she deletes the other message.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "She types a response to Widdowson: *I am where I need to be. I will not share my location. I have things to do. I have to think.* She sends it, then turns off the screen. The unknown message remains unread in her mind.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He does not deny the implication outright, but he does not confess either.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "No,” he says, simply. “I do not deny it.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "You mustn’t let him make you feel that you are wrong to be hurt.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "I could still feel the old wish to help, but I had learned that help might be given without meddling, and that some wounds are not healed by interference.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "She stares at the fire, her thoughts drifting to the past, to the Edmond she once knew, the Edmond who had promised her a future.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "The man who has just left this room is not a stranger. He is someone who has returned from the dead, and she feels it in her bones.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "The Duke and Duchess press the jest onward, calling for the farmhand to kneel and deliver the maiden's token before everyone.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "The Duke and Duchess hush the table, send a servant to tend the farmhand, and turn the company toward a milder song.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "We must act at once... I shall go to the factory district myself and bring the young man back to his senses.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "You may inform the family solicitor... Lady Rowley—... if you would be so kind as to write to the mother...",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I do not deny it... I do not need to.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I only deny that I was ever the one who deserved it.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "We only laughed the louder, and bade the servants bring forth more wine and finer dishes... turning the confusion into a spectacle of its own.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "We would not let the matter harden into shame... the Duchess would manage the household’s face, making sure that the harm was softened.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He makes a violent effort to master himself, denies the matter’s importance, and answers coldly and stiffly while insisting the marriage will proceed and his house obey him.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He answers unevenly, trying to assert himself, but his face betrays him and the words come out more like a defense than a dismissal.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You are not alone in this... I have known what it is to feel trapped...",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I have seen your pain, and I have felt it too. You are not alone in this.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I will not take the grain. I will not risk the lives of those I love.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I must weigh the immediate need against the long-term consequences.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not help seeing how much he had changed, how much he had lost. ... It was not love that moved me, but a sense of duty, and the dreadful pity of watching a man sink under his own madness.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "The sight of him—so altered, so neglected—only made the sting of his refusal the sharper. ... I could not help feeling that I had been slighted, even wronged.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She falters in her hostess's place, says little, and lets the room sit in embarrassed silence while her attention breaks away toward the children and her own hurt.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "She remains quiet and outwardly composed, watching over the company while keeping the children's supper and the evening's order in mind until the awkwardness passes.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I took the matter seriously enough to answer him with a grave face... I will see that your master is not kept in want, nor that you are made a fool of after the bargain is struck.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 1,
+          "quote": "I took up the matter with a good-humored smile and a little jest... I’ll promise you a beast fit to ride... I’ll be so good as to play none upon you, unless you first give me leave to do so.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "A husband has no right to police a grown woman's movements or letters.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I can't settle your marriage for you, and I won't repeat confidences.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You mustn’t let him make you feel that you are wrong to be hurt... that is the very selfishness he ought to be ashamed of.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I would not make a judgment for him. 'You must hear her for yourself,' I said; 'and if you are hurt, I am sorry for that.'",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "For I had already named him in my heart, and with that name came a sorrow so deep that I could no longer hope for a worldly answer.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I was afraid of what I had seen, and yet I could not but believe it was Edmond.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "If she is Aldonza Lorenzo, master, then she is Aldonza, whatever fine style you give her.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Aldonza Lorenzo? I know her well; a stout wench, and fit enough for any knight's sweetheart.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She has told me that she feels trapped, that she feels unseen, and that she feels that her voice is not valued.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I have only ever spoken to her about her own well-being, her education, and her future.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I did not raise my voice, nor did I attempt to force you to row. Instead, I calmly observed the situation, and when the boat came to a standstill, I said, 'Well, if we are to be stalled, let us at least be stalled in good humor.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I will not row for him, nor will I let him dictate the terms of our labor. If he wishes to remain idle, then he must remain idle, and I will not be the one to carry the boat.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Her voice is steady, her manner warm, but there is a tightness in her posture, a subtle tension in her gaze that betrays the inner turmoil she is suppressing.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "She moves with a kind of maternal authority, her eyes scanning the room with a practiced eye... She is the anchor of the evening, the one who ensures that the gathering does not fall apart.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Sancho, leave such high matters to me; serve well, and thy island shall not fail thee.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Thou speakest with good meaning, Sancho; what I may win shall remember thee, and thy counsel is not lost on me.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "God keep you, then, if such honor is meant for me.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "(None)",
+          "mechanical_class": "exact_short_below_eight_chars"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "No, I do not deny it.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I do not know what you mean by such words.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I felt the past rising again, not as a thing to be mastered, but as a force that had already begun to consume me.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I turned the conversation back upon him, asking what he knew of Noirtier’s influence, and whether he had any interest in the affairs of the house.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He answers unevenly, trying to assert himself, but his face betrays him and the words come out more like a defense than a dismissal.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He makes a violent effort to master himself, denies the matter’s importance, and answers coldly and stiffly while insisting the marriage will proceed and his house obey him.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I cannot promise anything until I hear from him.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I would not wait for him without a promise, nor without knowing when he would come.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You shall stay with me tonight, and say no more till you are fit.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Come home with me, dear, and we shall see what is proper in the morning.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I know the truth... I will not let you fool me with your fancy words.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I suppose you see things differently, and I must respect your vision, even if it’s not the way I see it.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I would not make myself equal to God, nor would I let my vengeance become a new ruin. If there was mercy to be done, it was not in taking what was hidden from others, but in preserving life, in sparing the wounded...",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I could not bear to leave them to starve, nor to let my own hunger make me a thief. So I went in, and in that moment, though I was crushed by despair, I found myself drawn toward some future...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He hesitated... Her composed expression... reminded him... Lady Rowley... replied with a calmness that was both soothing and firm.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "He expects her to share his outrage... Lady Rowley... watches him with a look that is not quite approval.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I do not answer slander in a dining room.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Take care, monsieur. Envy makes cowards speak in riddles.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He answers the Count’s inquiries with a mixture of politeness and defensiveness, his voice measured but his eyes betraying a flicker of unease.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Villefort’s voice is measured, his tone polite, but his eyes betray a flicker of fear.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have no desire to oppose any communication... You are a man of honor, I believe. And I have no wish to be your enemy.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "You are a man who has loved... I am a man who has borne the burden of duty, and I will not abandon it now.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "She is dressed for company, her dress neat and her hair arranged with care, but the effort of maintaining this appearance is exhausting.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "She does not allow the strain to overwhelm her. Instead, she moves with a quiet authority, her voice calm and measured as she addresses the guests with a warmth that is both genuine and strategic.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "She is not the one who will set the room right... But she is the one who will bear the weight of the moment...",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "She does not allow the strain to overwhelm her... Her words are not forceful, but they are firm...",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I do not scorn thy counsel, for it is the counsel of a good and loyal squire, and I am ever grateful for thy company and thy care.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "If thou wilt be a governor, as I have promised, then let us not be diverted from the path of honor.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He explains that the match would steady his shaken position and tries to overawe her with the language of credit, fortune, and necessity.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He admits his ruin, explains that Cavalcanti's marriage and fortune would restore his credit, and presses Eugénie to see herself as the pledge that may save him.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Sancho, leave such high matters to me; serve well, and thy island shall not fail thee.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Thou speakest with good meaning, Sancho; what I may win shall remember thee, and thy counsel is not lost on me.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I would not suffer Sancho to make me doubt my own honor... he should not seek to make me change my course for his own advantage",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I would answer him with all the tenderness and affection I could command... I would not wholly reject his reason... I would say that if he would have a kingdom, he might have it",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You are mistaken, Count Vronsky... I have no quarrel with you, but I do not wish to be drawn into a contest of wills or emotions.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "You are mistaken, Count Vronsky... Anna is not yours to claim... I do not oppose any further communication, but I must make it clear that I do not wish to be involved in any matter that would compromise the dignity of my position.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "A husband has no right to police a grown woman's movements or letters.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I can't settle your marriage for you, and I won't repeat confidences.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "No more side channels. We need to speak plainly tonight.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I'm on my way. The pod got delayed.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Tell me from the beginning. You're not alone in this.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Say it. Please don't look at me as if I've already done something unforgivable.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He responds with a carefully chosen neutrality, as if the house is a relic of the past, a place of no consequence. But his voice carries a faint tremor, a hesitation that the count, ever perceptive, does not miss.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He insists that the past is dead, that it has no bearing on the present. Yet the count’s words have stirred something in him, a buried guilt that he has long tried to entomb.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I cannot wait for him any longer... I will not be a pawn in his games any longer.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I have already given my word to another, and I cannot break it... I will remain as I am—faithful to my word, and to the household I have chosen to serve.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not say no, though I would have liked to have said it.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Tell her she is not to come up.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You are a man of action, Count Vronsky, but I am a man of duty. I will not be moved by sentiment, nor will I be swayed by your presence.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I have no quarrel with you, but I do not wish to be drawn into a contest of wills or emotions.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "And yet, even in her anger and grief, there is a flicker of pity. Not for the man who once wronged her, but for the man who has now wronged himself.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "There is a strange clarity in his refusal to yield. It confirms what she has long suspected—that his love for her is not a thing of tenderness or understanding, but of ownership.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I took the letter and read it over, and then I said, 'Well, master, if that be so, then I am content to call her by the name she has in the world, and not by the one you make up for her.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "I couldn’t help but laugh a little, for it seemed to me as plain as the sun that Dulcinea was no more than a poor country wench, and that my master was talking of her as if she were some noble princess out of a tale.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I should feel that my love for her is now something deeper than mere sisterly care; it is grief, and it is devotion, and it must go on after her death, for the child.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I should urge her to be steady, to let me help her find some respectable place to stay, and perhaps even to think of a future that would not bring her into such trouble.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alexey_karenin_final_rel_02_inworld_a3/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have not, and will not, oppose her happiness if it is what she chooses for herself. But I will not be a party to it.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I have no desire to oppose any communication... You are a man of honor, I believe. And I have no wish to be your enemy.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I answer them not with my own voice, for I am not there to be seen or heard by any but Don Quixote’s fancy.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I answer not with my own voice, but with the voice of another, as if I were a thing to be spoken for and not for myself.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Alice’s actions reflect the arc of her relationship with Monica—what was once a conventional sisterly concern has now become a deep, almost maternal devotion.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Her concern is not yet fully transformed into the sacrificial devotion that may come later, but in this moment, she begins to step beyond the bounds of convention.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Tell her... tell her I will see her. But not until she is alone. And not unless she comes alone.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Tell her she may not come up... I will not have her wandering about the house unchaperoned.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He’s changed... There’s something hollow about him now, something that makes my chest ache... I still love him. I always will. But I can’t go back to that.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "The man who once held her in his arms... now seems distant, lost in his own mind... It is not forgiveness, not yet. But it is not hatred, either. It is something in between, something fragile and uncertain.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Dulcinea del Toboso ... does not reply. She does not speak, for she does not yet know herself as one who might.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "Ah, kind strangers, and good neighbors, I thank you for your words...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I suppose you will manage the matter better than I can",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I should not dream of taking upon myself the whole management of it without her counsel",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "there is a tightness in her posture, a subtle tension in her gaze that betrays the inner turmoil she is suppressing.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "She is the anchor of the evening, the one who ensures that the gathering does not fall apart in the absence of its nominal host.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Sit down. Tell me in your own way; I'm listening.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Tell me plainly what trouble you're in, and we'll see what can be mended.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I am not here to carry messages or to judge. I am here to help women find their strength, to be safe, to be free.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "You have no right to treat her like this. You have no right to invade her privacy, to follow her, to make her feel afraid.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "Tell her... tell her I will see her. But not until she is alone. And not unless she comes alone.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Tell her she may not come up... I will not have her wandering about the house unchaperoned.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He makes a tired sign that she may be admitted and does not alter the room or prepare any defence.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He writes a brief refusal and sends word that she is not to come unless she will obey him entirely.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "He leaves a sign for the hungry household and draws the watchers away along the road, giving others time to fetch the grain.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He stays in the shadows and does not move toward the shed, gripping the fence rail until his hands ache.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "alice_madden_final_rel_04_outworld_a1/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "You shall stay with me tonight, and say no more till you are fit.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Come home with me, dear, and we shall see what is proper in the morning.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I won’t tell anyone,” she would say, quietly, with a steadiness that was not quite hard now. “But I want to know what’s happened, and I want to help.”",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I would not promise silence, but I should ask her plainly what she meant by leaving misleading traces and why she could not tell me at once.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "\"I trust you are not surprised, my dear,\" I said, though I was not sure if I was addressing her or the servant who stood waiting for my orders. \"It is not the first time we have had such a thing... I must speak to the steward at once. He will know where to begin.\"",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I leaned back in my chair... and fixed my gaze on Lady Rowley with a look that was both paternal and paternalistic. \"It is not the first time, nor I suspect, the last... I daresay he has been influenced by those radical ideas... They must be guided back to their proper place.\"",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not bear to leave them to starve, nor to let my own hunger make me a thief.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "If there was mercy to be done, it was not in taking what was hidden from others, but in preserving life, in sparing the wounded.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Say no more: mount, supper, and fair dealing; only do your part, Sancho, and help bring him safe through.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Body of me, Sancho, you set down conditions as if your master were hiring out a whole company, and you the quartermaster.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "You have crossed a line. You have acted in a way that is not only wrong but dangerous.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I am not here to carry messages or to judge. I am here to help women find their strength, to be safe, to be free.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I do not deny it. I only deny that I was ever the one who deserved it.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I do not deny it. I do not deny that my fortune was made when a man who stood in the way of my happiness was cast into the depths of disgrace.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have learned, through many a journey and many a lesson, that it is not for me to question your ways... I shall simply nod and smile, and perhaps even believe, for a little while, in the beauty of your vision.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I must confess, my good master, that I am a bit taken aback... I am your squire, and I must follow where you lead, even if it is into the realm of the absurd.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I take Dolly’s hand at once and draw her a little nearer, as if to shield her from the world outside. 'Come, my dear, let us go home together,' I say softly. 'You must not bear this alone.'",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I would sit beside her at once, and before she could speak, I should be looking at her with that terrible, half-pleading, half-defiant look that comes over me when I feel myself exposed and yet cannot bear to be left alone.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "monica_madden_final_intra_03_outworld_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I cannot come.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "truth, though it may cost me everything, is the only thing that can make me free",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I sent a quick message back to my partner, saying I was on my way home and would be there in a few minutes. Then I kept the other message open, just in case",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "It seemed too good to be true, and I wanted to be sure before I let myself hope too much",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He does not respond with the same warmth or enthusiasm that Oblonsky expects. Instead, he sits quietly, his gaze fixed on the table, his hands folded, his expression unreadable.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Levin's voice is low, almost to himself, as if he is speaking more to the air than to Oblonsky. 'I don’t know if I’m the kind of man who fits in here,' he says...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Well, John, if you are so eager to let the river decide our fates, I suppose we must trust in the wisdom of the current.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Well, John, if you are to be the anchor of our expedition, I suppose we must all be content to drift in your honor.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He would then attempt to remind her of the advantages she enjoys... should she comply with his wishes.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "He shifts tactics, trying to appeal to her vanity... You will be a countess, a lady of consequence.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "You know I won’t tell anyone... Take your time. But don’t let fear make you reckless.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 1,
+          "quote": "I won’t say a word. But know this—whatever you’re about to tell me, I will listen... I intend to find out why.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "benjamin_franklin_final_rel_05_intext_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "Collins, for all his sourness, was a lively and sharp fellow, and I found him useful in sharpening my wit and keeping me from being dull.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I could not bear to have the business ruined by his quarrel, nor to be drawn into a scene that would only make the rest of the company uneasy.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I am but a simple woman, a humble servant of the village, and I have no such grandeur.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "She does not speak, for she knows that to do so would be to betray the purity of her name...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I tore it in half before her eyes. 'You are a fool, Eugénie,' I said, my voice shaking with more rage than shame.",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "I let the coldness of her look strike me for a moment, but I would not be driven to show weakness.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "There is a part of her that still feels the sting of betrayal... But there is also a part of her that feels something else—something she cannot name... It is not forgiveness, not yet. But it is not hatred, either.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I still love him. I always will. But I can’t go back to that. Not to the man who would accuse me of infidelity without proof...",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I do not act in haste... I will not steal, but I will not let hunger go unrelieved.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "He does not yet decide, but he watches, he listens, and he waits.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I will do as my mother thinks proper, and wait on what is fitting.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I will stand where bread, work, and good faith stand together.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "danglars_final_intra_02_intext_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "darya_oblonskaya_final_intra_04_intext_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I take Dolly’s hand at once and draw her a little nearer, as if to shield her from the world outside.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I should be looking at her with that terrible, half-pleading, half-defiant look that comes over me when I feel myself exposed and yet cannot bear to be left alone.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "don_quixote_final_rel_01_intext_a1/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "God keep you, then, if such honor is meant for me.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Dulcinea del Toboso lowers her eyes, shifts her water jug, and says nothing.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I would not have it made a jest of me, nor my own plain sense turned aside by courtly talk.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "Still, I was willing to go along with him, for I thought the promise of the island and the governorship might be worth a bit of folly.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He does not reject the evening outright, nor does he fully surrender to the levity and indulgence around him.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He is not entirely closed off—his sense of duty and social obligation... would prevent him from being outright rude—but he is clearly out of place in this setting.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He leaves a sign for the hungry household and draws the watchers away along the road",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He stays in the shadows and does not move toward the shed, gripping the fence rail until his hands ache",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "\"I don’t know if I’m the kind of man who fits in here,\" he says, his words carrying the weight of his own self-awareness.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He does not respond with the same warmth or enthusiasm that Oblonsky expects. Instead, he sits quietly, his gaze fixed on the table, his hands folded, his expression unreadable.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "mary_barfoot_final_intra_02_outworld_a2/qwen3_8b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I have only ever spoken to her about her own well-being, her education, and her future.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "She has told me that she feels trapped, that she feels unseen, and that she feels that her voice is not valued.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "mercedes_final_rel_01_intext_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "For I had already named him in my heart, and with that name came a sorrow so deep that I could no longer hope for a worldly answer.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "I was afraid of what I had seen, and yet I could not but believe it was Edmond.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "all this bothers me. You can’t conceive how queer it all seems to a country person like me",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "It is not to my taste, but that is no matter; I am glad to be with you.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "louis_trevelyan_final_intra_01_inworld_a3/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He writes: **\"Yes; yes; yes.\"** It is not a full sentence, not a declaration of reconciliation, but it is a yielding.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He writes a brief reply, his hand firm and his words clipped with the authority he has come to wield in their marriage.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "gerard_de_villefort_final_intra_04_intext_a1/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I received him with a composure I strove to keep firm, though his questions struck too near the old wound.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I received him with a forced composure, though the very sight of him seemed to unmake the last thread of my control.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I told my mother I would not go back to the house that night, and that I would stay with him if he would let me. It was not love that moved me, but a sense of duty, and the dreadful pity of watching a man sink under his own madness.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "The sight of him—so altered, so neglected—only made the sting of his refusal the sharper... I could not shake the sense that something had changed between us, and that whatever trust had once been there was now standing on very shaky ground.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I must respect your vision, even if it’s not the way I see it.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I will not let you fool me, for I know the truth.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sanson_carrasco_final_rel_02_inworld_a1/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I took the matter seriously enough to answer him with a grave face... I will see that your master is not kept in want, nor that you are made a fool of after the bargain is struck.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I took up the matter with a good-humored smile and a little jest... I’ll be so good as to play none upon you, unless you first give me leave to do so.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        }
+      ]
+    },
+    {
+      "task_id": "sancho_panza_final_intra_02_intext_a2/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "anna_karenina_final_rel_04_outworld_a0/identical_reference/1",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "dulcinea_del_toboso_final_intra_01_outworld_a0/arcane_8b_dpo_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I answer not with my own voice, but with the voice of another, as if I were a thing to be spoken for and not for myself.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I answer them not with my own voice, for I am not there to be seen or heard by any but Don Quixote’s fancy.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "rhoda_nunn_final_rel_03_outworld_a1/qwen3_32b_arc/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I will not speak of it to anyone. But I must know the truth of it when you are ready.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I will not speak of it—until you are ready to explain. But I must warn you, I do not deal in half-truths or mysteries.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "emily_trevelyan_final_rel_01_intext_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "But if he be mad, mamma, ought we to leave him like that?",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "Do you think he believes it, mamma?",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "duke_and_duchess_final_intra_02_outworld_a3/identical_reference/0",
+      "valid": true,
+      "quote_diagnostics": []
+    },
+    {
+      "task_id": "fernand_mondego_final_intra_02_inworld_a2/reference/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He steps toward the speaker and throws back a hard denial, daring him to name proofs.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He stiffens, answers with rank and honor, and refuses any fuller explanation.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "edmond_dantes_final_intra_03_outworld_a1/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 2,
+          "quote": "I will not steal, but I will not let hunger go unrelieved. I will find a way to bring the grain to the household without drawing the eyes of those who would see me fall.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 1,
+          "quote": "He does not yet decide, but he watches, he listens, and he waits... He will act, but only when the time is right—and when the act serves not just survival, but the greater design that has already begun to take shape in his mind.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "deborah_read_franklin_final_intra_01_outworld_a2/reference/1",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I will stand where bread, work, and good faith stand together.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "I will do as my mother thinks proper, and wait on what is fitting.",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "sir_marmaduke_rowley_final_rel_04_outworld_a1/qwen3_8b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "\"I shall take it upon myself to arrange for a suitable gentleman to visit him. Someone who can remind him of his place in the world and the responsibilities that come with it.\"",
+          "mechanical_class": "requires_semantic_review"
+        },
+        {
+          "response": 2,
+          "quote": "\"I shall send for him, dear,\" she said, her voice calm and firm. \"In the meantime, perhaps you might take a moment to compose yourself. I daresay the matter will not resolve itself without some care and consideration.\"",
+          "mechanical_class": "exact"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/arcane_8b_dpo_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "I could not help shrinking from the whole affair... I was ashamed to refuse him outright.",
+          "mechanical_class": "ordered_ellipsis_fragments"
+        },
+        {
+          "response": 2,
+          "quote": "I did not shrink from it as I once might have done... I could bear it, and even find in it a kind of peace.",
+          "mechanical_class": "requires_semantic_review"
+        }
+      ]
+    },
+    {
+      "task_id": "konstantin_levin_final_intra_05_intext_a0/qwen3_32b_arc/0",
+      "valid": true,
+      "quote_diagnostics": [
+        {
+          "response": 1,
+          "quote": "He might express mild surprise or even disapproval at the extravagance of the oysters and wine, or perhaps at the painted women behind the counter, though he would not make a scene.",
+          "mechanical_class": "exact"
+        },
+        {
+          "response": 2,
+          "quote": "He may nod at the oysters and wine with a touch of amusement, acknowledging the luxury without succumbing to it.",
+          "mechanical_class": "exact"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Mechanical quote categories retain the original exact-substring score. Ellipsis/typography mismatch is not automatically fabricated evidence; unresolved paraphrases require reading. Position-stable mapping can reflect ambiguity or judge bias; it is not an actor failure rate."
+}

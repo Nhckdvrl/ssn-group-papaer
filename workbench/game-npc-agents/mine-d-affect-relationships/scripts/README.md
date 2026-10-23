@@ -2,6 +2,8 @@
 
 脚本在本目录维护；冻结输入、完整raw、权重和vendor均在[ASSETS](../ASSETS.md)指定的仓库外资产根。历史run保存当时runner源码/配置，当前脚本修改不会覆盖历史记录。本文是导航，不是要求重启所有队列。
 
+**当前用户执行限制：** [整体审计](../RESEARCH_AUDIT.md)完成前，只收尾已登记D-E11/D-E12；D-E13已结束。不运行新模型实验、配方或扩预算。离线audit脚本不调用模型。
+
 ## 工作流与文件职责
 
 | 环节 | 入口 | 输入→输出 |
@@ -36,7 +38,8 @@
 | 图 | `plot_arcane.py`、`plot_baselines.py`、`plot_closed_behavior.py` | 聚合JSON→PNG/PDF；不同任务/样本不混分 |
 | 审计与成本 | `verify_measurement.py`、`compare_judges.py`、`summarize_runs.py`、`collect_continuation_costs.py` | 原始输入/输出/metadata→来源核验、独立调用账与评分比较 |
 | 事后描述 | `describe_update_context.py`、`audit_update_subjects.py` | 输入结构统计、已完成审阅记录导出；不是新增模型评价 |
-| 学习监督审计 | `audit_adaptation_learning.py` | D-E10训练顺序、原生多轮源及全部生成→目标覆盖/输出长度；离线事后描述，不重评分 |
+| 学习监督与信息通路审计 | `audit_adaptation_learning.py` | D-E10训练顺序、原生多轮源及实际输入→目标覆盖/输出长度/frozen历史/来源中间回复；离线事后复核，不重评分 |
+| 配对读数核验 | `audit_contrast_calibration.py` | 已完成D-E13→115对交换完整性、位置映射及引文机械分类；原评分不变，无语义自动纠分 |
 | 持久归档 | `archive_runs.py` | 已结束/有中断说明的run与冻结输入→仓库外tar.gz＋逐成员SHA清单 |
 | 学习与互动持久归档 | `archive_adaptation_study.py` | 等D-E10/D-E11注册结果完成，保存原始证据和最终LoRA/优化器，逐成员核验后仅同步轻量manifest |
 
@@ -52,9 +55,10 @@
 | D-E07纠源/评分 | `queue_corrected_summary.py`、`queue_corrected_judges.py` |
 | D-E08 | `queue_strong_compiler.py`；`handoff_gpu3.py`为本次已有队列的一次交接 |
 | D-E09（已预算停止） | `queue_prefix_memory.py`；原定后续角色/评分未启动，不自动重启 |
-| D-E10（运行中） | `queue_adaptation_evaluation.py`按训练完成标记接最终checkpoint；`score_adaptation_quality.py`等strong32释放GPU后评分；`finish_adaptation_study.py`等全部系统/评委完整后复算与提交 |
+| D-E10（已完成） | `queue_adaptation_evaluation.py`、`score_adaptation_quality.py`、`finish_adaptation_study.py`，只作历史复现入口，不重启 |
 | D-E11（运行中） | `queue_native_rollouts.py`现于GPU1顺序执行三路径；全生成结束后`score_native_rollouts.py`在GPU1评分，避免与GPU3新训练争用 |
 | D-E12（运行中） | `run_fullturn_study.py`在GPU3训练，之后按依赖接固定评测与结果同步；D-E11生成及其后续评分已移交GPU1 |
+| D-E13（已完成） | `prepare_contrast_calibration.py`冻结材料；`run_contrast_calibration.py`会调用模型，当前不重启；核验用上表offline audit |
 
 旧`queue_judges.py`的Plan评分路径已资源中止，不因其文件存在而恢复。`handoff_gpu3.py`不是通用清理工具；不用于终止其他项目进程。D-E09冻结窗口、提示、恢复或抽样政策保留历史，不靠修改它们补造完成状态。
 
