@@ -12,7 +12,7 @@
 | 读过的论文 | [knowledge/PAPER_CATALOG.md](knowledge/PAPER_CATALOG.md) |
 
 ## 目录
-- `experiments/`：实验卡 E01–E119、混杂审计 A01（原始记录，不改动）。
+- `experiments/`：实验卡 E01–E119、混杂审计 A01（原始记录，不改动）；10-23 起 MoE 方向：E120（测量工具合成验证）、E121（OLMoE 路由组织与专家差异）。
 - `results/`：全部结果（大文件只在本机）。
 - `scripts/`：全部代码。主要入口：
   - `e46_train.py`：受控预训练；
