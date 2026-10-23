@@ -863,6 +863,23 @@
     ],
     "interpretation": "Independent next-turn queries retain publisher-provided intervening dialogue, including the character own prior replies in some queries. Occurrences overlap across queries; they are not unique turns or on-policy trajectories."
   },
+  "judge_information_parity": {
+    "tasks_by_system": {
+      "base": 99,
+      "update_sft": 99,
+      "multitask_sft": 99,
+      "strong32": 99,
+      "released": 99,
+      "full_evidence": 99,
+      "frozen": 99
+    },
+    "n_queries": 87,
+    "rubric_sha256": [
+      "878d22000cfd22925fca2ab04f88ef12d73f8d5699103527e00b010827a2aa44"
+    ],
+    "common_evidence_mismatches": [],
+    "interpretation": "All systems share the same supplied evidence and rubric; only candidate motivation/reply vary. This verifies input parity, not judge construct validity or blindness to inferred writing style."
+  },
   "released_minus_frozen_post_hoc": {
     "mean": 0.10059523809523825,
     "ci95": [

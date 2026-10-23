@@ -60,6 +60,19 @@ def main():
         queries_with_prior_source_assistant=sum(x['source_assistant_turns']>0 for x in history_rows),
         source_assistant_turn_occurrences=sum(x['source_assistant_turns'] for x in history_rows),rows=history_rows,
         interpretation='Independent next-turn queries retain publisher-provided intervening dialogue, including the character own prior replies in some queries. Occurrences overlap across queries; they are not unique turns or on-policy trajectories.')
+    common={};rubrics=set();counts={};mismatches=[]
+    for system in ['base','update_sft','multitask_sft','strong32','released','full_evidence','frozen']:
+        tasks=read(run/'judges'/system/'tasks.jsonl');counts[system]=len(tasks)
+        for task in tasks:
+            rubrics.add(hashlib.sha256(task['messages'][0]['content'].encode()).hexdigest())
+            body=json.loads(task['messages'][1]['content'])
+            shared={k:v for k,v in body.items() if k not in ['candidate_motivation','candidate_reply']}
+            q=task['question_id']
+            if q in common and common[q]!=shared:mismatches.append(dict(system=system,question_id=q))
+            else:common[q]=shared
+    result['judge_information_parity']=dict(tasks_by_system=counts,n_queries=len(common),rubric_sha256=sorted(rubrics),
+        common_evidence_mismatches=mismatches,
+        interpretation='All systems share the same supplied evidence and rubric; only candidate motivation/reply vary. This verifies input parity, not judge construct validity or blindness to inferred writing style.')
     import numpy as np
     scores=json.loads((Path(__file__).resolve().parent.parent/'results/D-E10-summary.json').read_text())['systems']
     books=sorted(scores['base']['by_book']);delta=np.array([statistics.mean(scores['released']['by_book'][b].values())-statistics.mean(scores['frozen']['by_book'][b].values()) for b in books])

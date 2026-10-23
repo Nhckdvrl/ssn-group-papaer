@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Describe terminal native trajectories and state coverage without new inference."""
 import argparse
-from collections import Counter
+from collections import Counter,defaultdict
 import datetime
 import hashlib
 import json
@@ -24,6 +24,26 @@ def prefix_until_update(path,index):
             if row['task']=='character_update':return rows
             rows.append(row)
     return None
+
+
+def terminal_call_audit(run,system,meta):
+    if not meta.get('finished_utc'):return dict(terminal=False)
+    tasks=defaultdict(lambda:dict(calls=0,prompt_tokens=0,completion_tokens=0,generation_wall_s=0.0))
+    ids=[];routing=[];usage=[];finish=Counter()
+    for line in (run/'raw.jsonl').open():
+        row=json.loads(line);ids.append(row['call_index']);finish[row['finish_reason']]+=1
+        expected=row['owner']=='character' and (system=='multitask_sft' or system=='update_sft' and row['task']=='character_update')
+        if row['adapter_active']!=expected:routing.append(row['call_index'])
+        if len(row['prompt_token_ids'])!=row['usage']['prompt_tokens']:usage.append(row['call_index'])
+        if row['completion_token_ids'] is not None and len(row['completion_token_ids'])!=row['usage']['completion_tokens']:usage.append(row['call_index'])
+        t=tasks[row['task']];t['calls']+=1;t['prompt_tokens']+=row['usage']['prompt_tokens']
+        t['completion_tokens']+=row['usage']['completion_tokens'] or 0;t['generation_wall_s']+=row['wall_s']
+    requests=[json.loads(x)['call_index'] for x in (run/'requests.jsonl').read_text().splitlines()]
+    return dict(terminal=True,tasks=dict(tasks),raw_records=len(ids),request_records=len(requests),finish_reasons=dict(finish),
+        recorded_attempts=meta['recorded_generation_attempts'],process_wall_s=meta['wall_s'],
+        duplicate_raw_ids=len(ids)-len(set(ids)),requests_without_response=sorted(set(requests)-set(ids)),
+        responses_without_request=sorted(set(ids)-set(requests)),routing_mismatches=routing,usage_mismatches=usage,
+        interpretation='Wall times describe this implementation and generated workload, including parser retries. They are not equal-content model latency comparisons. Initial interrupted attempt is accounted separately.')
 
 
 def main():
@@ -53,7 +73,8 @@ def main():
             summaries.append(dict(snapshot_index=index,book=inputs[index]['book_name'],stop_reason=data['stop_reason'],
                 error_type=(data.get('error') or '').split(':',1)[0],result_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),scenes=scenes))
         result['systems'][system]=dict(cohort_processed=meta.get('complete'),terminal_snapshots=summaries,
-                                      not_terminal_snapshot_indices=sorted(set(inputs)-{x['snapshot_index'] for x in summaries}))
+                                      not_terminal_snapshot_indices=sorted(set(inputs)-{x['snapshot_index'] for x in summaries}),
+                                      calls=terminal_call_audit(run,system,meta))
     shared={x['snapshot_index'] for x in result['systems'].get('base',{}).get('terminal_snapshots',[])} & {x['snapshot_index'] for x in result['systems'].get('update_sft',{}).get('terminal_snapshots',[])}
     for index in sorted(shared):
         base=prefix_until_update(runs/'base/raw.jsonl',index);updated=prefix_until_update(runs/'update_sft/raw.jsonl',index)

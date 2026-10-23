@@ -2,7 +2,7 @@
   "experiment": "D-E11",
   "post_hoc": true,
   "model_calls": 0,
-  "created_utc": "2026-10-23T06:42:47.176926+00:00",
+  "created_utc": "2026-10-23T11:04:35.899848+00:00",
   "input_sha256": "eaf6a362fa53b7129a83df87d80188ad2404c3f33bac349449e5c4665d1bdb8b",
   "systems": {
     "base": {
@@ -290,7 +290,68 @@
           "scenes": []
         }
       ],
-      "not_terminal_snapshot_indices": []
+      "not_terminal_snapshot_indices": [],
+      "calls": {
+        "terminal": true,
+        "tasks": {
+          "scene_cast": {
+            "calls": 15,
+            "prompt_tokens": 148800,
+            "completion_tokens": 560,
+            "generation_wall_s": 49.50913555920124
+          },
+          "location_scenario": {
+            "calls": 15,
+            "prompt_tokens": 112963,
+            "completion_tokens": 1695,
+            "generation_wall_s": 115.01750839874148
+          },
+          "motivation_update": {
+            "calls": 48,
+            "prompt_tokens": 261321,
+            "completion_tokens": 5227,
+            "generation_wall_s": 347.2212874516845
+          },
+          "next_character": {
+            "calls": 171,
+            "prompt_tokens": 1083026,
+            "completion_tokens": 1190,
+            "generation_wall_s": 153.07903639227152
+          },
+          "interaction_gen": {
+            "calls": 177,
+            "prompt_tokens": 1169763,
+            "completion_tokens": 13815,
+            "generation_wall_s": 962.1256369762123
+          },
+          "world_update": {
+            "calls": 179,
+            "prompt_tokens": 952115,
+            "completion_tokens": 104702,
+            "generation_wall_s": 6660.461249362677
+          },
+          "character_update": {
+            "calls": 44,
+            "prompt_tokens": 81269,
+            "completion_tokens": 14333,
+            "generation_wall_s": 904.5486924685538
+          }
+        },
+        "raw_records": 649,
+        "request_records": 649,
+        "finish_reasons": {
+          "stop": 648,
+          "length": 1
+        },
+        "recorded_attempts": 649,
+        "process_wall_s": 9291.837698161602,
+        "duplicate_raw_ids": 0,
+        "requests_without_response": [],
+        "responses_without_request": [],
+        "routing_mismatches": [],
+        "usage_mismatches": [],
+        "interpretation": "Wall times describe this implementation and generated workload, including parser retries. They are not equal-content model latency comparisons. Initial interrupted attempt is accounted separately."
+      }
     },
     "update_sft": {
       "cohort_processed": false,
@@ -403,14 +464,559 @@
               "scene_error": false
             }
           ]
+        },
+        {
+          "snapshot_index": 22,
+          "book": "Pride and Prejudice",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "7ae35c09f4a63a3733775e97abb83062f85dfc5aaf2dbbf9173b8983a51a2cd2",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Mrs. Bennet",
+                "Mrs. Phillips",
+                "Lady Catherine de Bourgh",
+                "Mr. Collins"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Collins"
+              ],
+              "n_reflections": 3,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Elizabeth Bennet",
+                "Lady Catherine de Bourgh",
+                "Mr. Darcy"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Darcy"
+              ],
+              "n_reflections": 2,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Elizabeth Bennet",
+                "Mr. Darcy",
+                "Lady Catherine de Bourgh"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Darcy"
+              ],
+              "n_reflections": 2,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 91,
+          "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "33f9e60c219930bd3fbf862b21dfb9b0f436a82efa293a090c00f402afbb1894",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "John H. Watson",
+                "Hatty Moulton",
+                "Francis Hay Moulton"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 4,
+              "profile_updated": 3,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "John H. Watson",
+                "Francis Hay Moulton",
+                "Hatty Moulton"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 4,
+              "profile_updated": 2,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "John H. Watson",
+                "Francis Hay Moulton",
+                "Hatty Moulton",
+                "Peter Jones"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 5,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 95,
+          "book": "The Scarlet Letter",
+          "stop_reason": "error",
+          "error_type": "Registered D-E11 process budget exhausted",
+          "result_sha256": "21f6f963b3ecb6495ce8278e07d20f53002122e476467497f64a62c5b9f5c54e",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Roger Chillingworth",
+                "Arthur Dimmesdale"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 2,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Roger Chillingworth",
+                "Arthur Dimmesdale",
+                "Hester Prynne"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 2,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": true
+            }
+          ]
         }
       ],
       "not_terminal_snapshot_indices": [
-        22,
-        56,
-        91,
-        95
-      ]
+        56
+      ],
+      "calls": {
+        "terminal": true,
+        "tasks": {
+          "scene_cast": {
+            "calls": 14,
+            "prompt_tokens": 145604,
+            "completion_tokens": 537,
+            "generation_wall_s": 52.57303624972701
+          },
+          "location_scenario": {
+            "calls": 14,
+            "prompt_tokens": 109664,
+            "completion_tokens": 1653,
+            "generation_wall_s": 122.89400352910161
+          },
+          "motivation_update": {
+            "calls": 47,
+            "prompt_tokens": 282368,
+            "completion_tokens": 5146,
+            "generation_wall_s": 377.2750617675483
+          },
+          "next_character": {
+            "calls": 168,
+            "prompt_tokens": 1066391,
+            "completion_tokens": 1159,
+            "generation_wall_s": 174.13823360949755
+          },
+          "interaction_gen": {
+            "calls": 171,
+            "prompt_tokens": 1146564,
+            "completion_tokens": 12454,
+            "generation_wall_s": 959.441632013768
+          },
+          "world_update": {
+            "calls": 169,
+            "prompt_tokens": 917280,
+            "completion_tokens": 85130,
+            "generation_wall_s": 5882.658580355346
+          },
+          "character_update": {
+            "calls": 46,
+            "prompt_tokens": 91351,
+            "completion_tokens": 25159,
+            "generation_wall_s": 3159.1379776485264
+          }
+        },
+        "raw_records": 629,
+        "request_records": 629,
+        "finish_reasons": {
+          "stop": 628,
+          "length": 1
+        },
+        "recorded_attempts": 629,
+        "process_wall_s": 10894.021862167865,
+        "duplicate_raw_ids": 0,
+        "requests_without_response": [],
+        "responses_without_request": [],
+        "routing_mismatches": [],
+        "usage_mismatches": [],
+        "interpretation": "Wall times describe this implementation and generated workload, including parser retries. They are not equal-content model latency comparisons. Initial interrupted attempt is accounted separately."
+      }
+    },
+    "multitask_sft": {
+      "cohort_processed": false,
+      "terminal_snapshots": [
+        {
+          "snapshot_index": 6,
+          "book": "Alice’s Adventures in Wonderland - Through the Looking-Glass",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "2eed17d7165143f8c98261b2c1e5f8c17b675c76188b8a1c980a06b7aab9e444",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Alice",
+                "Mock Turtle",
+                "Gryphon"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 3,
+              "profile_updated": 2,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Alice",
+                "Mock Turtle",
+                "Gryphon"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 3,
+              "profile_updated": 2,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Alice",
+                "Mock Turtle",
+                "Gryphon",
+                "Chessmen"
+              ],
+              "cast_without_persisted_state": [
+                "Chessmen"
+              ],
+              "n_reflections": 3,
+              "profile_updated": 2,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 42,
+          "book": "Around the World in Eighty Days",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "d48875a01fcfbd5e87f98377a2b7ab37d31c5c2756f9d39d59936ced3e8446c1",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Phileas Fogg",
+                "Aouda",
+                "Jean Passepartout",
+                "Conductor",
+                "Forster"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 5,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Phileas Fogg",
+                "Aouda",
+                "Jean Passepartout",
+                "Conductor"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 4,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Phileas Fogg",
+                "Jean Passepartout",
+                "Aouda",
+                "Andrew Stuart",
+                "Lord Albemarle",
+                "John Sullivan",
+                "Samuel Fallentin",
+                "Thomas Flanagan",
+                "Gauthier Ralph",
+                "James Forster",
+                "Andrew Speedy"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 11,
+              "profile_updated": 2,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 22,
+          "book": "Pride and Prejudice",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "d3198523b39108177db8a53865a31df27831aedaa7e20ac6e8ab2437d32deb8d",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Mrs. Bennet",
+                "Mrs. Phillips",
+                "Lady Catherine de Bourgh",
+                "Mr. Collins"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Collins"
+              ],
+              "n_reflections": 3,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Mr. Darcy",
+                "Elizabeth Bennet",
+                "Mr. Bingley",
+                "Jane Bennet",
+                "Mr. Collins",
+                "Lady Catherine de Bourgh"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Darcy",
+                "Mr. Bingley",
+                "Mr. Collins"
+              ],
+              "n_reflections": 3,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Elizabeth Bennet",
+                "Mr. Darcy"
+              ],
+              "cast_without_persisted_state": [
+                "Mr. Darcy"
+              ],
+              "n_reflections": 1,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 91,
+          "book": "The Adventures of Sherlock Holmes (Sherlock Holmes, #3)",
+          "stop_reason": "max_scenes_reached",
+          "error_type": "",
+          "result_sha256": "128f1c12b7893db9615cf03418bafbf2f6f58f7e5790e46c3839065a0a97a8c7",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "John H. Watson",
+                "Hatty Moulton",
+                "Francis Hay Moulton"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 4,
+              "profile_updated": 1,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "John H. Watson",
+                "Hatty Moulton",
+                "Francis Hay Moulton"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 4,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 2,
+              "n_interactions": 12,
+              "cast": [
+                "Sherlock Holmes",
+                "Dr. Watson",
+                "Hatty Moulton",
+                "Francis Hay Moulton"
+              ],
+              "cast_without_persisted_state": [
+                "Dr. Watson"
+              ],
+              "n_reflections": 3,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            }
+          ]
+        },
+        {
+          "snapshot_index": 95,
+          "book": "The Scarlet Letter",
+          "stop_reason": "error",
+          "error_type": "Registered D-E11 process budget exhausted",
+          "result_sha256": "7dd2fc8f2b4d1c42dbeb61d2550eca72c97457c5e5342ed8dc5dd23ce7614f40",
+          "scenes": [
+            {
+              "scene": 0,
+              "n_interactions": 12,
+              "cast": [
+                "Roger Chillingworth",
+                "Arthur Dimmesdale"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 2,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": false
+            },
+            {
+              "scene": 1,
+              "n_interactions": 12,
+              "cast": [
+                "Roger Chillingworth",
+                "Arthur Dimmesdale"
+              ],
+              "cast_without_persisted_state": [],
+              "n_reflections": 0,
+              "profile_updated": 0,
+              "exact_repeated_interactions": 0,
+              "scene_error": true
+            }
+          ]
+        }
+      ],
+      "not_terminal_snapshot_indices": [
+        56
+      ],
+      "calls": {
+        "terminal": true,
+        "tasks": {
+          "scene_cast": {
+            "calls": 14,
+            "prompt_tokens": 139769,
+            "completion_tokens": 573,
+            "generation_wall_s": 52.3486266694963
+          },
+          "location_scenario": {
+            "calls": 14,
+            "prompt_tokens": 104332,
+            "completion_tokens": 1531,
+            "generation_wall_s": 108.94787811487913
+          },
+          "motivation_update": {
+            "calls": 51,
+            "prompt_tokens": 267895,
+            "completion_tokens": 3788,
+            "generation_wall_s": 480.67397448420525
+          },
+          "next_character": {
+            "calls": 168,
+            "prompt_tokens": 1063097,
+            "completion_tokens": 1260,
+            "generation_wall_s": 177.61253080517054
+          },
+          "interaction_gen": {
+            "calls": 169,
+            "prompt_tokens": 1125122,
+            "completion_tokens": 4985,
+            "generation_wall_s": 716.712024487555
+          },
+          "world_update": {
+            "calls": 170,
+            "prompt_tokens": 930583,
+            "completion_tokens": 111020,
+            "generation_wall_s": 7331.732523221523
+          },
+          "character_update": {
+            "calls": 49,
+            "prompt_tokens": 72517,
+            "completion_tokens": 15380,
+            "generation_wall_s": 1845.7034958191216
+          }
+        },
+        "raw_records": 635,
+        "request_records": 635,
+        "finish_reasons": {
+          "stop": 633,
+          "length": 2
+        },
+        "recorded_attempts": 635,
+        "process_wall_s": 10808.146628692746,
+        "duplicate_raw_ids": 0,
+        "requests_without_response": [],
+        "responses_without_request": [],
+        "routing_mismatches": [],
+        "usage_mismatches": [],
+        "interpretation": "Wall times describe this implementation and generated workload, including parser retries. They are not equal-content model latency comparisons. Initial interrupted attempt is accounted separately."
+      }
     }
   },
   "pre_update_controls": [
@@ -423,9 +1029,33 @@
       "token_ids_equal": true
     },
     {
+      "snapshot_index": 22,
+      "base_calls": 44,
+      "updated_calls": 44,
+      "messages_equal": true,
+      "responses_equal": true,
+      "token_ids_equal": true
+    },
+    {
       "snapshot_index": 42,
       "base_calls": 43,
       "updated_calls": 43,
+      "messages_equal": true,
+      "responses_equal": true,
+      "token_ids_equal": true
+    },
+    {
+      "snapshot_index": 91,
+      "base_calls": 42,
+      "updated_calls": 42,
+      "messages_equal": true,
+      "responses_equal": true,
+      "token_ids_equal": true
+    },
+    {
+      "snapshot_index": 95,
+      "base_calls": 40,
+      "updated_calls": 40,
       "messages_equal": true,
       "responses_equal": true,
       "token_ids_equal": true

@@ -19,7 +19,7 @@
 | 人物适应学习资料 | [全量连接与作品划分](D-ADAPTATION-VIEWS.json) | 24,977更新、22,306发布顺序接续；输入/监督/未来任务分开，无模型调用 |
 | 原生学习输入预算 | [token库存](D-ADAPTATION-TRAIN-BUDGET.json)、[持久归档](D-ADAPTATION-PREPARATION-MANIFEST.json) | 14,079训练条目共42,949,543 tokens；未截断、未训练 |
 | 学习基线与后续互动 | [D-E10科研报告](D-E10-RESEARCH-REPORT.md)、[全量表](D-E10-RUN-REPORT.md)、[训练缓存](D-E10-training-data.json) | 两条SFT、七系统609回复、693评分与609共同消费者NLL完成；U无明确收益、首轮MT下降，范围及训练覆盖另审 |
-| 原生生成互动 | [D-E11选择](D-E11-selection.json)、[进度](D-E11-progress.json) | 普通路径6起点已尝试，4完整、2被世界JSON/长度限制终止，170互动；训练路径继续，无三系统最终结论 |
+| 原生生成互动 | [D-E11研究报告](D-E11-RESEARCH-REPORT.md)、[逐书CASEBOOK](D-E11-CASEBOOK.md)、[调用/覆盖核验](D-E11-TRAJECTORY-AUDIT.json) | 1,913正式生成/506互动；三路径各4/6完整但作品不同，评分在途；不补幸存者主均分 |
 | 学习基线案例/监督 | [D-E10 CASEBOOK](D-E10-CASEBOOK.md)、[监督审计](D-E10-TRAINING-AUDIT.json) | 12预选人物的七系统审阅完成；首回复覆盖与输出长度仅事后描述，不是机制证明 |
 | 完整对话监督 | [D-E12实验卡](../experiments/D-E12-full-conversation-character-training.md)、[数据核验](D-E12-training-data.json) | 15,195互动回复监督，同约85.9M forward预算；训练已启动，非新算法或独立确认 |
 | 配对读数校准与核验 | [D-E13原表](D-E13-RUN-REPORT.md)、[科研复查](D-E13-RESEARCH-REVIEW.md)、[离线核验](D-E13-READOUT-AUDIT.json) | 231本地判别，参考正控可辨、相同回复空对照稳；真实材料换序不稳，不作经历因果结论或训练奖励 |
