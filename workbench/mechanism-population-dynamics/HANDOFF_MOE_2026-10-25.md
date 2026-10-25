@@ -25,7 +25,7 @@
 - **已决定的下一步（§9）：**
   1. 先做 X1：判断路由组织能不能当专家功能的代理，只需推理；
   2. 再做 X2（核心）：骨干 OLMo-1B-0724-hf、语料 Dolma v1.7，把第 9 层 FFN 换成 OLMoE 配置的 MoE 层，多种子训练，拿到第一份跨种子数据；
-  3. 公开套件问题不写论文，复核后向维护者提交问题报告（需人同意）。
+  3. 公开套件问题不写论文：已复核，并于 10-25 在 Hugging Face 上提交（§6 副产品）。
 - **人的最新指示：** 先自己做出成果、再对外汇报。不要以导师的意见为框架组织工作（见 §1.3）。
 
 ---
@@ -285,19 +285,22 @@
 - 用同一个科学问题、适合注意力结构的测量。
 - 不复用 E89 的合成任务，也不把头的输出范数当成“软路由”。
 
-### 副产品：公开套件问题的报告（不写论文，只提交问题报告；见 §9 决定 3）
-- **已被别人报告过的（不再单独报告）：**
-  - P09 PolyPythias weight-seed 变体没有真正换初始化：EleutherAI/pythia#203（2026-07，未回复）；
-  - P11 Pythia-2.8B 去重版终点与标准版几乎相同：同类的检查点分支问题已有 #195、#205、#207（#207 提到 1b / 1.4b-deduped 曾发布终点模型）。可以在 #207 下补一条 2.8b-deduped 的证据。
-- **没人报告过、值得报告的：**
-  1. **P14 / E95：** PolyPythias-410M seed3（75k→76k）、seed4（122k→123k）在训练中途被重置回初始化。PolyPythias 论文把这两个种子当作“loss spike 导致的异常种子”来分析，所以这一条会改变该论文的一个结论。**优先级最高。**
-  2. **P12：** DataDecide-1B 有 6 个 run 的发布 step0 与同名 seed 不符，成对共用未登记的初始化。DataDecide 没有承诺同名 seed 在配方间共享初始化，所以按“文档 / 元数据问题”报告。
-  3. **P13：** OLMo-2-0425-1B 的 `main` 与 stage1 / stage2 检查点不在同一条训练线上（张量相关 0.000），而模型卡写着 `main` 是最终检查点、可以从它微调。
-     - **报告前必须先补测：** 当时没有比较 stage2 ingredient3 的终点；模型卡说 1B 只有 ingredient3 是正式的那条线。
-- **流程：**
-  - 用干净的最小脚本，从发布权重按字节范围读单个张量，独立复核；
-  - 写成问题报告草稿（现象、复现命令、影响范围）；
-  - **对外提交前必须经人明确同意。**
+### 副产品：公开套件问题的报告（**已于 2026-10-25 提交**，人授权“直接提交”）
+- **提交前独立复核（结果在 `results/audit_reports/`）：**
+  - **P14（PolyPythias）：** 从发布权重重算（float64），结果与 E95 一致。
+  - **P12（DataDecide）：** 复核时更正了一处表述：这 6 个 run 确实是从**自己发布的** step0 开始训练的（step2500 与自己 step0 的相关 0.23，与正常 run 相同），只是这个 step0 不是同名 seed 的初始化；三对 run 各自共用一个完全相同的 step0。
+  - **P13（OLMo-2）：** 补测了 ingredient3。`main` 与所有 stage 分支（含 ingredient3 终点）在 q / v / MLP / 嵌入上的元素相关都约为 0；配置相同；功能上不同（与 ingredient3 的 KL 0.21 nats/token，top-1 一致率 0.78）。`-Instruct` 与 ingredient3 终点相关 0.995，与 `main` 约 0。
+- **提交位置（GitHub CLI 的令牌已失效，改用 Hugging Face 讨论帖；账号 Nhckdvrl）：**
+  - **PolyPythias：** [pythia-410m-seed3 #2](https://huggingface.co/EleutherAI/pythia-410m-seed3/discussions/2)、[pythia-410m-seed4 #2](https://huggingface.co/EleutherAI/pythia-410m-seed4/discussions/2)。
+  - **DataDecide：** 每对一帖：[dclm-baseline-qc-7p-fw2-1B #1](https://huggingface.co/allenai/DataDecide-dclm-baseline-qc-7p-fw2-1B/discussions/1)、[dolma1_7-no-math-code-1B #1](https://huggingface.co/allenai/DataDecide-dolma1_7-no-math-code-1B/discussions/1)、[falcon-and-cc-qc-orig-10p-1B #1](https://huggingface.co/allenai/DataDecide-falcon-and-cc-qc-orig-10p-1B/discussions/1)。
+  - **OLMo-2：** 已有别人报告“`main` 与 ingredient3 的评测 / 输出不一致”（#2、#5，原因未明），所以没有另开新帖，而是把权重证据作为评论补在 [OLMo-2-0425-1B #5](https://huggingface.co/allenai/OLMo-2-0425-1B/discussions/5)。
+- **已被别人报告过、没有再提交的：**
+  - P09（PolyPythias weight-seed）：EleutherAI/pythia#203；
+  - P11（Pythia 检查点分支）：#195、#205、#207。
+- **后续：**
+  - 关注维护者的回复；
+  - 如果需要在 GitHub 上同步（EleutherAI/pythia、allenai/DataDecide），先运行 `gh auth login -h github.com` 重新登录。
+  - 原文与复现脚本：`results/audit_reports/*.md`、`scripts/audit_polypythias_reset.py`、`scripts/audit_init_start2.py`。
 
 ---
 
@@ -335,7 +338,7 @@
      - Pythia-410M / 1B：分词器不同，E121 样本要重做；Pythia 的公开检查点有多起完整性问题。
      - OLMo-2-0425-1B：分词器不同（10 万词表），且有 P13 的谱系异常。
      - OLMoE-mix 作语料：95% 是 DCLM，与骨干的训练分布不同，MoE 层会顺带学领域适应。
-3. **公开套件审计不写论文或短文，改为向维护者提交问题报告。**
+3. **公开套件审计不写论文或短文，改为向维护者提交问题报告**（10-25 已复核并提交，见 §6 副产品）。
    - 理由：五项里三项已有别人报告；剩下的两项（加上待补测的 P13）是数据完整性问题，最有效的出口是让维护者修正与说明，而不是另写文章。
    - PolyPythias 重置一条会改变已发表论文的一个结论，优先报告。
    - 流程见 §6 副产品。**提交前需要人明确同意**（对外发布）。
