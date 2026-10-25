@@ -142,6 +142,8 @@ def run_name(a):
         n += "_ro"
     if getattr(a, "mask", "none") != "none":  # E84: MDA-style loss masking in a window
         n += f"_mask{a.mask}{a.mask_frac:g}_{a.mask_from}-{a.mask_to}"
+        if getattr(a, "mask_seed", 0):
+            n += f"_ms{a.mask_seed}"
     return n
 
 
@@ -180,6 +182,7 @@ def main():
     ap.add_argument("--mask-frac", type=float, default=0.1)
     ap.add_argument("--mask-from", type=int, default=500)
     ap.add_argument("--mask-to", type=int, default=2000)
+    ap.add_argument("--mask-seed", type=int, default=0)
     a = ap.parse_args()
     name = run_name(a)
     f = OUT / f"{name}.json"
@@ -212,7 +215,7 @@ def main():
     micro = max(MICRO, a.bs // 16)  # keep 16 sequences per micro-batch
     nat = torch.tensor(natural_texts(tokenizer()), device=dev)
     log = {"name": name, "args": vars(a), "measures": {}, "loss": {}}
-    thr, mrng = None, np.random.default_rng(90_000 + a.init)  # mask RNG is separate: data order is untouched
+    thr, mrng = None, np.random.default_rng(90_000 + a.init + 1000 * a.mask_seed)  # mask RNG is separate: data order is untouched
     if a.mask == "repeat":
         probe = Stream(corpus, 777, 0, bs=4000).next().numpy()
         thr = float(np.quantile([repeat_score(w) for w in probe], 1 - a.mask_frac))

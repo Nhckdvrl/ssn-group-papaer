@@ -128,7 +128,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-23 | **已结项**（10-11 论文线终止，10-17 修复线停止）。总文档：[RESEARCH_HISTORY.md](mechanism-population-dynamics/RESEARCH_HISTORY.md)；导师 10-22 新意见（MoE / 头）的分析：[ADVISOR_2026-10-23_MOE.md](mechanism-population-dynamics/knowledge/research/ADVISOR_2026-10-23_MOE.md)。10-23 整理：过程文档并入总文档，删除 v1 时代的独立复现包（Git 历史可恢复）；论文、结果、代码、实验卡保留。 |
+| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-25 | 头线已结项（总档 [RESEARCH_HISTORY.md](mechanism-population-dynamics/RESEARCH_HISTORY.md)）。10-23 起由人授权探索 MoE 专家分工的跨训练可重现性：E120（测量工具合成验证）、E121（OLMoE 只推理）已完成；**交接文档 [HANDOFF_MOE_2026-10-25.md](mechanism-population-dynamics/HANDOFF_MOE_2026-10-25.md)**，准备移交其他 AI。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |
