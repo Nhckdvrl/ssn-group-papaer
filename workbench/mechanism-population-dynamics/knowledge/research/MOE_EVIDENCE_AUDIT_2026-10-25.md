@@ -91,3 +91,31 @@ R2在同词形内比较控制identity，R4没有这一条件。N1减均值不能
 TOST的样本单位必须与结论相称：token留出CI量化评测不确定性，独立训练差异需按seed推断；10个seed对不是10个独立实验。先用5 seed估计实际方差，不能把海量token当作机制重现的巨大样本量。
 
 **无需现在新增的工作：** 追求所有语言现象、所有层覆盖；重跑头线；证明任意几何零假设最优；每个粗代理阴性再加一组条件。当前最有价值的改变是让“不同组织”对应一个可测、同要求、非退化的功能对象。
+
+## 5. C06关键数字的独立CPU复算（2026-10-25）
+
+**结论：独立复算支持当前数值结论——L9路由与共同输入上的输出几何有中等关联，但路由距离对held替换ΔNLL的条件关联接近零。这里没有新增forward、GPU运行、跨seed数据或完整L3独立校对。**
+
+独立脚本：`scripts/e122_independent_c06_audit.py`；未导入或调用`e122_function_bridge.py`的统计函数。使用`scipy.stats.rankdata(method="average")`逐列取秩，以含截距的`numpy.linalg.lstsq`控制变量回归残差，再求残差Pearson相关。专家对控制两专家log负载的和/绝对差、log输出范数的和/绝对差。两方向直接读取`results/e122/layer9_matrices.npz`：
+
+| 读数 | 独立复算偏ρ | E122原数 |
+|---|---:|---:|
+| R0 vs F1 | 0.463440727141636 | 0.463440727141636 |
+| R1 vs F0 | 0.454077559293662 | 0.454077559293662 |
+
+因果连接从`/tmp/xiang-moe-20261025/{capture.pt,r3_raw.pt}`重读L9原始数据；POS按原`read_items`的pos→sense顺序取前1904条，再取held964条、48词形。用原H_cal与gate在CPU重算top8选择及64×64路由phi，使用双精度二元选择矩阵相关，未将缓存Rall直接当主预测量。控制原softmax gateweight、原/替换专家logit差、原NLL；词形聚类bootstrap999次，独立种子6006，两模式共享bootstrap抽样索引。
+
+| 路由距离 vs held ΔNLL | 独立偏ρ | 词形bootstrap95% CI |
+|---|---:|---:|
+| top1→rank9 | 0.027024064848259 | [−0.033379723427916, 0.085469118764776] |
+| top1→随机未选 | −0.019886905576160 | [−0.074836833031407, 0.035407084940911] |
+
+独立CPU Rall与原GPU/fp32缓存的最大绝对差为`4.4107437133e−6`；改用缓存Rall的敏感性偏ρ分别为`0.027003104346313`与`−0.019886366501875`。与原E122差别约为2.1e−5及更小，未改变结论。Bootstrap种子不与原E122相同，区间端点不应要求逐位相等。旧E121基线fp16和capture bf16/fp16限制继续保留；本次复算不修复其量化误差，也不把零附近关联证明成严格无关系。
+
+结果：`results/e122/c06_independent_cpu_audit.json`（记录输入与脚本SHA256、CPU范围、CI与缓存敏感性）。复算命令（在本workbench目录）：
+
+```bash
+/home/xiang/.venvs/mechpop/bin/python scripts/e122_independent_c06_audit.py --bootstrap 999 --seed 6006
+```
+
+脚本SHA256：`19cf84e9a5f0f728d467ab205559ea3337dd48c6f63b8f8129f67dadf0b6c69a`。未修改CLAIMS或主分析代码。

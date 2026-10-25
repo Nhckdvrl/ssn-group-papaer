@@ -1,0 +1,47 @@
+{
+  "scope": "Independent C06 numerical reanalysis, not full L3 audit",
+  "device": "cpu",
+  "seed": 6006,
+  "bootstrap_replicates": 999,
+  "items_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+  "matrices_sha256": "4ad21790f738f04f0df19f8865284e43d657e8f44e20ed841d21f90a5a9956e5",
+  "script_sha256": "19cf84e9a5f0f728d467ab205559ea3337dd48c6f63b8f8129f67dadf0b6c69a",
+  "cross_half": [
+    {
+      "R_half": 0,
+      "F_half": 1,
+      "partial_rho": 0.46344072714163576
+    },
+    {
+      "R_half": 1,
+      "F_half": 0,
+      "partial_rho": 0.4540775592936618
+    }
+  ],
+  "route_distance_dnll": {
+    "swap9": {
+      "partial_rho": 0.027024064848259158,
+      "ci95_word_bootstrap": [
+        -0.03337972342791573,
+        0.08546911876477593
+      ],
+      "n_items": 964,
+      "n_words": 48,
+      "valid_bootstrap": 999,
+      "saved_Rall_partial_rho_sensitivity": 0.027003104346313072
+    },
+    "swaprand": {
+      "partial_rho": -0.01988690557615954,
+      "ci95_word_bootstrap": [
+        -0.07483683303140741,
+        0.03540708494091116
+      ],
+      "n_items": 964,
+      "n_words": 48,
+      "valid_bootstrap": 999,
+      "saved_Rall_partial_rho_sensitivity": -0.019886366501874805
+    }
+  },
+  "Rall_max_abs_error_vs_saved": 4.410743713267884e-06,
+  "inference_limit": "Reuses old fp16/bf16 E121 captures and intervention outcomes; no new forward, causal identification or cross-seed evidence. Bootstrap random seed differs from E122."
+}

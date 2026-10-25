@@ -1,0 +1,264 @@
+{
+  "layer": 0,
+  "n_common_each": [
+    1024,
+    1024
+  ],
+  "routing_split_spearman": 0.9854948435169778,
+  "function_split_spearman": 0.9937358134523014,
+  "same_half": [
+    {
+      "spearman": 0.37813338717459166,
+      "partial_spearman": 0.39166429123287405,
+      "qap_p": 0.001,
+      "null_95": [
+        -0.04286040780907362,
+        0.04929000043643152
+      ],
+      "pair_coverage": 1.0,
+      "n_permutations": 999
+    },
+    {
+      "spearman": 0.3730132553432888,
+      "partial_spearman": 0.39218473472345,
+      "qap_p": 0.001,
+      "null_95": [
+        -0.039887111059128844,
+        0.047458781221890886
+      ],
+      "pair_coverage": 1.0,
+      "n_permutations": 999
+    }
+  ],
+  "cross_half": [
+    {
+      "spearman": 0.366290773374913,
+      "partial_spearman": 0.3832671512695307,
+      "qap_p": 0.001,
+      "null_95": [
+        -0.04297799285442974,
+        0.0432041440258544
+      ],
+      "pair_coverage": 1.0,
+      "n_permutations": 999
+    },
+    {
+      "spearman": 0.38373350492211306,
+      "partial_spearman": 0.39923498428490406,
+      "qap_p": 0.001,
+      "null_95": [
+        -0.04128518972985801,
+        0.04647700868057647
+      ],
+      "pair_coverage": 1.0,
+      "n_permutations": 999
+    }
+  ],
+  "causal": {
+    "swap9": {
+      "route_distance": {
+        "kl": {
+          "partial_spearman": -0.03293471450759435,
+          "ci_word_bootstrap": [
+            -0.11143990035556589,
+            0.04227435458436717
+          ],
+          "spearman": -0.045764083592934914,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": -0.03987434880259277,
+          "ci_word_bootstrap": [
+            -0.1168914974806538,
+            0.04248371793867318
+          ],
+          "spearman": -0.05159580879434522,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": -0.0281927983096422,
+          "ci_word_bootstrap": [
+            -0.09103607319119852,
+            0.03611367840694018
+          ],
+          "spearman": -0.028762465731025942,
+          "n_items": 964,
+          "n_words": 48
+        }
+      },
+      "output_l2": {
+        "kl": {
+          "partial_spearman": 0.18009729045230113,
+          "ci_word_bootstrap": [
+            0.11790748872915037,
+            0.24272985709590542
+          ],
+          "spearman": 0.11043814411887004,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": 0.1827847870618246,
+          "ci_word_bootstrap": [
+            0.11962374258377938,
+            0.244800795717684
+          ],
+          "spearman": 0.11166336686561314,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": 0.0375403085424379,
+          "ci_word_bootstrap": [
+            -0.028545327907604466,
+            0.09914780988369011
+          ],
+          "spearman": 0.04304863594945086,
+          "n_items": 964,
+          "n_words": 48
+        }
+      },
+      "output_cosine": {
+        "kl": {
+          "partial_spearman": -0.014821539656180473,
+          "ci_word_bootstrap": [
+            -0.06406125439159932,
+            0.032725546018241625
+          ],
+          "spearman": 0.027803770503898522,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": -0.016570273112364576,
+          "ci_word_bootstrap": [
+            -0.06733625612752857,
+            0.026401191008184968
+          ],
+          "spearman": 0.026416559071604596,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": 0.020227826338425618,
+          "ci_word_bootstrap": [
+            -0.042891629867529285,
+            0.09712138805583001
+          ],
+          "spearman": 0.03390893409706226,
+          "n_items": 964,
+          "n_words": 48
+        }
+      }
+    },
+    "swaprand": {
+      "route_distance": {
+        "kl": {
+          "partial_spearman": 0.02172172350112704,
+          "ci_word_bootstrap": [
+            -0.04309578208541832,
+            0.0839809103544852
+          ],
+          "spearman": -0.0074003697817400065,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": 0.019251122738664448,
+          "ci_word_bootstrap": [
+            -0.04308101915119631,
+            0.08525853638228056
+          ],
+          "spearman": -0.01007675769793224,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": 0.01611409268094294,
+          "ci_word_bootstrap": [
+            -0.05472324784683458,
+            0.07888956043493622
+          ],
+          "spearman": 0.02286734651115572,
+          "n_items": 964,
+          "n_words": 48
+        }
+      },
+      "output_l2": {
+        "kl": {
+          "partial_spearman": 0.16092375030971368,
+          "ci_word_bootstrap": [
+            0.10785405346690564,
+            0.21612233806252135
+          ],
+          "spearman": 0.09969632313292238,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": 0.16784841401641917,
+          "ci_word_bootstrap": [
+            0.10876049700172445,
+            0.22273609846528672
+          ],
+          "spearman": 0.10379154375693579,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": 0.012353192319795868,
+          "ci_word_bootstrap": [
+            -0.05833737333606803,
+            0.08319931205443219
+          ],
+          "spearman": 0.018799313395984604,
+          "n_items": 964,
+          "n_words": 48
+        }
+      },
+      "output_cosine": {
+        "kl": {
+          "partial_spearman": 0.04445999480438818,
+          "ci_word_bootstrap": [
+            -0.02072258393694708,
+            0.0981338283003588
+          ],
+          "spearman": 0.03569158615854619,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "kl_minus_self": {
+          "partial_spearman": 0.04415897435284623,
+          "ci_word_bootstrap": [
+            -0.02470960152127028,
+            0.11060989300365257
+          ],
+          "spearman": 0.03466687682017708,
+          "n_items": 964,
+          "n_words": 48
+        },
+        "dnll": {
+          "partial_spearman": 0.016215938478491097,
+          "ci_word_bootstrap": [
+            -0.05011572476179204,
+            0.08597908971700458
+          ],
+          "spearman": 0.02615048247423597,
+          "n_items": 964,
+          "n_words": 48
+        }
+      }
+    }
+  },
+  "nll_note": "original E121 cache; KL baseline was fp16, self-subtraction is sensitivity only",
+  "elapsed_seconds": 104.06328892707825,
+  "total_seconds": 104.9872579574585,
+  "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "torch": "2.8.0+cu128",
+  "pid": 3739777,
+  "sampling_seed": 122,
+  "source_item_split_sha256": "9bbf147f47036cd4528691cacea9b7389a109bed5b2b1132f773c3756d88b87b",
+  "expert_identity_permutation_is_not_independent_pair_test": true
+}

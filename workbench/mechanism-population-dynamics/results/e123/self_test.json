@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.6",
+  "script_sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+  "exact_resume_max_parameter_error": 0.0,
+  "exact_resume_max_optimizer_error": 0.0,
+  "next_token_nll_alignment_error": 4.76837158203125e-07,
+  "baseline_checks": {
+    "identity_nll_error": 0.0,
+    "reinsertion_nll_error": 0.0,
+    "zero_changed_nll": true,
+    "zero_max_logit_change": 0.02695375122129917
+  },
+  "uniform_lb": 1.0,
+  "checks": [
+    "baseline zero/mean/identity/reinsert",
+    "NLL/router/expert/aux/z gradients",
+    "frozen backbone sampled hash",
+    "exact optimizer/RNG/order resume",
+    "HF no-renorm mixture vs explicit sum",
+    "explicit next-token objective vs HF labels",
+    "paired within-word condition contrast"
+  ],
+  "large_index_endpoints_check": {
+    "passed": true,
+    "device": "cpu",
+    "numel": 103022592,
+    "sample_count": 33,
+    "allocated_index_elements": 33,
+    "dtype": "torch.int64",
+    "first": 0,
+    "second": 3219455,
+    "middle": 51511295,
+    "last": 103022591,
+    "in_bounds": true,
+    "strictly_increasing": true
+  }
+}

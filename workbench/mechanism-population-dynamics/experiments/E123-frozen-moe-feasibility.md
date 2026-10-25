@@ -1,6 +1,6 @@
 # E123：冻结骨干的单MoE层是否承担可恢复的语言计算（2026-10-25）
 
-- **状态：** PLANNED
+- **状态：** RUNNING（资产与CPU校验完成，dense层干预基线运行中）
 - **类型：** REPRO / PILOT（X2开训前检查，不是完整跨种子实验）
 - **对应：** P15：把组织与计算职责接起来；D1/D2受控平台建设。
 - **问题（一句话）：** 固定原模型的输入表示和下游，随机MoE能否恢复被替换FFN承担的重要语言计算？
@@ -19,9 +19,23 @@
   - 资源/吞吐超预算→保留同一问题，优先冻结前缀缓存与单节点独立运行；不直接减小模型后宣称等价。
 - **算力预算：** 单seed上限8 GPU·时，准备/基线≤2 GPU·时；与E122合计同时≤8卡。**实际：** 待测。
 
+### 运行前落实（2026-10-25，未看E123科学结果）
+- 骨干revision=`d7cbab742d80589e714b1a2d7f838dcd21cbe143`；8文件5,121,291,958 bytes，完整sha256在`results/e123/assets.json`。分词器三个文件与OLMoE逐字节一致。加载使用本机NVMe副本。
+- Dolma v1.7 URL清单revision=`7f48140530a023e9ea4c5cfb141160922727d4d3`；15来源，train=31,999,999 token/34文件、held=1,000,001/33文件；源URL、source/file_id、token内容hash的train/held交集均0。
+- 这是**固定文件前缀的可行性样本**，不宣称精确复现骨干训练mix或代表全Dolma。按数据卡行token数×Sample Proportion归一化；行和1,645.15B与卡片总计1,715.1B不符，保留差异，不静默声称官方精确配方。CC News tail单文件仅在train，held有head/middle；books/wiki各一文件/侧。详细URL/token/hash见`results/e123/manifest.json`。
+- lb公式明确为 `E*sum_e[count_e/(N*k)]*mean_softmax_e`，uniform=1，系数.01；z系数.001。以每个microbatch全部非padding token计算。该lb归一化与[MegaBlocks实现](https://raw.githubusercontent.com/stanford-futuredata/megablocks/main/megablocks/layers/moe.py)除以`tokens*top_k`一致；HF helper的uniform=k报告尺度不直接复刻。
+- CPU已知答案校验：next-token loss对齐误差4.77e-7；连续3步与1步+resume的参数/optimizer最大差均0；identity/reinsert差0；no-renorm与lb尺度通过。摘要`results/e123/self_test.json`。
+- 正式GPU基线使用seq512/batch16、固定512 held窗口和64 train校准窗口、全部964 POS held样本；基线完成且杠杆充分后，先64更新测吞吐。训练若继续32M，保持初始化/数据顺序和同一预定学习率日程（3906更新×8192 token=31,997,952）；64更新只设调用上限，不事后改日程。
+- 模型/数据准备代码与训练harness经另一个agent只读审查；修复跨来源同名file_id伪重叠。未跑跨种子，未恢复头线。
+
 ## 结果（跑完后填写；不改上面的内容，修改需注明日期）
 - 数字（含 CI / 种子方差）：
 - 结果文件：`results/...`
 - 按决策表执行了什么：
 - 主张变化：C## Lx → Ly
 - POST-HOC 分析（事后才想到的，单独标注）：
+
+### 工程备注：大张量哈希采样索引（2026-10-25）
+- 首次真实GPU baseline在任何模型前向前失败：参数采样hash使用float32 `linspace`，大embedding的`numel-1`被舍入成`numel`，造成CUDA索引越界；没有产生科学读数。已改为int64等距整数计算，本条不是科学阴性，不新建实验卡。
+- 独立CPU已知答案检查只分配33个int64索引，设`numel=103022592`：首项0、次项3219455、中项51511295、末项103022591；全部在界内且严格递增。结果已附入`results/e123/self_test.json`。
+- 当前修复版CPU self-test重跑通过：next-token对齐误差4.77e-7，连续与resume的参数/optimizer最大误差均0，identity/reinsert误差0，no-renorm与uniform-lb=1通过；当前script SHA256=`f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80`。本轮复核未再编辑训练脚本；独立检查日志在`/tmp/e123_cpu_self_test_integer_index.log`（不进git）。

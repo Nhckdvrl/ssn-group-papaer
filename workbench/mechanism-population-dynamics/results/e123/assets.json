@@ -1,0 +1,189 @@
+{
+  "dolma_v1_7_metadata": {
+    "data_shards_downloaded": false,
+    "dataset_card_reported_weighted_total_tokens_billion": 1715.1,
+    "listed_shard_count": 2419,
+    "official_olmo_7b_0724_training_config": {
+      "commit": "e4786afc54b569223c2a801135daf31f4c9c5780",
+      "note": "Official config points to pretokenized v1_7 data and comments per-source GT; its recipe differs from the dataset-card summary and from OLMo-1B's v1_5 config.",
+      "url": "https://github.com/allenai/OLMo/blob/e4786afc54b569223c2a801135daf31f4c9c5780/configs/official-0724/OLMo-7B-0724.yaml"
+    },
+    "official_summary_source_proportions_and_normalized_mix": {
+      "Algebraic Stack": {
+        "normalized_weight_percent": 0.765887609032611,
+        "olmo_tokens_billion": 12.6,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 12.6
+      },
+      "C4": {
+        "normalized_weight_percent": 4.2063033765918005,
+        "olmo_tokens_billion": 138.4,
+        "sample_proportion_percent": 50,
+        "weighted_tokens_billion": 69.2
+      },
+      "CC News": {
+        "normalized_weight_percent": 0.869221651521138,
+        "olmo_tokens_billion": 14.3,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 14.3
+      },
+      "Dolma CC": {
+        "normalized_weight_percent": 36.334072880892315,
+        "olmo_tokens_billion": 1195.5,
+        "sample_proportion_percent": 50,
+        "weighted_tokens_billion": 597.75
+      },
+      "Flan": {
+        "normalized_weight_percent": 1.0029480594474667,
+        "olmo_tokens_billion": 16.5,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 16.5
+      },
+      "MegaWika": {
+        "normalized_weight_percent": 0.2796097620277786,
+        "olmo_tokens_billion": 4.6,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 4.6
+      },
+      "OpenWebMath": {
+        "normalized_weight_percent": 0.765887609032611,
+        "olmo_tokens_billion": 12.6,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 12.6
+      },
+      "Project Gutenberg": {
+        "normalized_weight_percent": 0.3221590736407014,
+        "olmo_tokens_billion": 5.3,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 5.3
+      },
+      "Reddit": {
+        "normalized_weight_percent": 4.856699996960764,
+        "olmo_tokens_billion": 79.9,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 79.9
+      },
+      "Refined Web": {
+        "normalized_weight_percent": 27.742151171625686,
+        "olmo_tokens_billion": 456.4,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 456.4
+      },
+      "Semantic Scholar": {
+        "normalized_weight_percent": 3.476886606084552,
+        "olmo_tokens_billion": 57.2,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 57.2
+      },
+      "StackExchange": {
+        "normalized_weight_percent": 1.1913807251618393,
+        "olmo_tokens_billion": 19.6,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 19.6
+      },
+      "StarCoder": {
+        "normalized_weight_percent": 16.03501200498435,
+        "olmo_tokens_billion": 263.8,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 263.8
+      },
+      "Wikipedia & Wikibooks": {
+        "normalized_weight_percent": 0.44980700847946997,
+        "olmo_tokens_billion": 3.7,
+        "sample_proportion_percent": 200,
+        "weighted_tokens_billion": 7.4
+      },
+      "arXiv": {
+        "normalized_weight_percent": 1.7019724645169134,
+        "olmo_tokens_billion": 28.0,
+        "sample_proportion_percent": 100,
+        "weighted_tokens_billion": 28.0
+      }
+    },
+    "official_version_gzip_size": "4.5 TB",
+    "repo": "allenai/dolma",
+    "revision": "7f48140530a023e9ea4c5cfb141160922727d4d3",
+    "shards_by_source": {
+      "books": 3,
+      "c4-filtered": 171,
+      "cc_en_head": 275,
+      "cc_en_middle": 379,
+      "cc_en_tail": 444,
+      "cc_news_head": 5,
+      "cc_news_middle": 3,
+      "cc_news_tail": 1,
+      "falcon-refinedweb-filtered": 500,
+      "pes2o": 26,
+      "proof_pile_2-algebraic_stack": 16,
+      "proof_pile_2-open_web_math": 13,
+      "reddit": 78,
+      "redpajama-arxiv": 100,
+      "redpajama-stackexchange": 26,
+      "starcoder": 49,
+      "tulu_flan": 66,
+      "wiki": 2,
+      "wikiref_megawika": 262
+    },
+    "source_mix_note": "Normalized weights use the dataset-card source OLMo-token total times its Sample Proportion column. The row-derived denominator (1645.15B) does not equal the card's reported total (1715.1B); preserve this discrepancy in any use.",
+    "url_list": {
+      "path": "/home/xiang/mechpop_cache/hf_olmo_dense/dolma-v1_7-urls.txt",
+      "sha256": "9fa8c2f0eb57149ff7914b35ca2ffb8da221c02786d712bcba5f6c39d294b49e",
+      "size_bytes": 171893,
+      "url": "https://huggingface.co/datasets/allenai/dolma/raw/7f48140530a023e9ea4c5cfb141160922727d4d3/urls/v1_7.txt"
+    },
+    "weighted_row_sum_tokens_billion": 1645.15
+  },
+  "environment": {
+    "cuda_visible_but_not_used": true,
+    "python": "3.12.0",
+    "venv_python": "/home/xiang/.venvs/mechpop/bin/python"
+  },
+  "model": {
+    "download_method": "curl one file at a time; no HF Xet client",
+    "files": {
+      "config.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/config.json",
+        "sha256": "d40e08d04a0efefe634158b8585412cb333b8019966c3f788bdae49074ce634e",
+        "size_bytes": 609
+      },
+      "generation_config.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/generation_config.json",
+        "sha256": "e9a6fc6755330e6da09ba04b1137c4db0744faafc0fa609ff378fd6989518295",
+        "size_bytes": 115
+      },
+      "model-00001-of-00002.safetensors": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/model-00001-of-00002.safetensors",
+        "sha256": "0c3e846f50db22b38cd06e3628b0bfe10f814e01217a5ac837dd2aa39ae18121",
+        "size_bytes": 4707070632
+      },
+      "model-00002-of-00002.safetensors": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/model-00002-of-00002.safetensors",
+        "sha256": "0b45bdac8c7291f3b566d201ba39560d7d1696bbe43a6a0b50666c052c5b42a1",
+        "size_bytes": 412090496
+      },
+      "model.safetensors.index.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/model.safetensors.index.json",
+        "sha256": "fef1fef6deb95bc610ad6feda0063c91e0a766ed1e4610e26d6d2c7a9f14de33",
+        "size_bytes": 9252
+      },
+      "special_tokens_map.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/special_tokens_map.json",
+        "sha256": "b77491e270c6fcc5b2ecf22370f7318a6a18d3cabea09ba7bab92e9bf12656c2",
+        "size_bytes": 65
+      },
+      "tokenizer.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/tokenizer.json",
+        "sha256": "a094266ac6c4982efba277bc251349a5a6d6ad37efb39a2a90f53d8be2a40a40",
+        "size_bytes": 2115417
+      },
+      "tokenizer_config.json": {
+        "path": "/home/xiang/mechpop_cache/hf_olmo_dense/main/tokenizer_config.json",
+        "sha256": "78a839c7851f14f9fb30e664c2b46166dc0628f2900679e5ec160656f702edff",
+        "size_bytes": 5372
+      }
+    },
+    "repo": "allenai/OLMo-1B-0724-hf",
+    "revision": "d7cbab742d80589e714b1a2d7f838dcd21cbe143",
+    "revision_url": "https://huggingface.co/allenai/OLMo-1B-0724-hf/tree/d7cbab742d80589e714b1a2d7f838dcd21cbe143"
+  }
+}

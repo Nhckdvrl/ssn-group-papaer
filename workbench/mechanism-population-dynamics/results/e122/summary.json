@@ -1,0 +1,793 @@
+{
+  "model": "OLMoE-1B-7B-0924",
+  "primary_layer": 9,
+  "control_layer": 2,
+  "scope": "one model; expert-pair association and held-POS substitution are distinct estimands",
+  "layers": [
+    {
+      "layer": 0,
+      "routing_split_rho": 0.9854948435169778,
+      "output_split_rho": 0.9937358134523014,
+      "routing_output_partial_rho_crosshalves": [
+        0.3832671512695307,
+        0.39923498428490406
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.03293471450759435,
+        "ci_word_bootstrap": [
+          -0.11143990035556589,
+          0.04227435458436717
+        ],
+        "spearman": -0.045764083592934914,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.0281927983096422,
+        "ci_word_bootstrap": [
+          -0.09103607319119852,
+          0.03611367840694018
+        ],
+        "spearman": -0.028762465731025942,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.18009729045230113,
+        "ci_word_bootstrap": [
+          0.11790748872915037,
+          0.24272985709590542
+        ],
+        "spearman": 0.11043814411887004,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.0375403085424379,
+        "ci_word_bootstrap": [
+          -0.028545327907604466,
+          0.09914780988369011
+        ],
+        "spearman": 0.04304863594945086,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 1,
+      "routing_split_rho": 0.9823280826199565,
+      "output_split_rho": 0.9933987228140153,
+      "routing_output_partial_rho_crosshalves": [
+        0.24349033873432285,
+        0.2469008147467198
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.01526316963076248,
+        "ci_word_bootstrap": [
+          -0.048243925286696694,
+          0.07268159868799334
+        ],
+        "spearman": -0.037620842378625945,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.020198004237253802,
+        "ci_word_bootstrap": [
+          -0.09598270605737355,
+          0.05536361333167218
+        ],
+        "spearman": -0.021133629691587955,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.2361056288519979,
+        "ci_word_bootstrap": [
+          0.1677025644191543,
+          0.30945802999041616
+        ],
+        "spearman": 0.20974227491113276,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.04749522743927439,
+        "ci_word_bootstrap": [
+          -0.01670893376780447,
+          0.11273828097522869
+        ],
+        "spearman": 0.04622316118116819,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 2,
+      "routing_split_rho": 0.9780172899373404,
+      "output_split_rho": 0.9874953067893716,
+      "routing_output_partial_rho_crosshalves": [
+        0.35880908423287305,
+        0.36279980066690026
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.007588423941979144,
+        "ci_word_bootstrap": [
+          -0.07778716228552122,
+          0.05592395727785935
+        ],
+        "spearman": -0.043117477504338336,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.011383245499909118,
+        "ci_word_bootstrap": [
+          -0.04976686579765363,
+          0.0713507348303079
+        ],
+        "spearman": 0.008521160426749474,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.1897549003548754,
+        "ci_word_bootstrap": [
+          0.13967212783527003,
+          0.24181847404831994
+        ],
+        "spearman": 0.21953427832445516,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.020807410288407626,
+        "ci_word_bootstrap": [
+          -0.047328011499494414,
+          0.08656408544813284
+        ],
+        "spearman": 0.02250790049790723,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 3,
+      "routing_split_rho": 0.983948605997081,
+      "output_split_rho": 0.985165092928939,
+      "routing_output_partial_rho_crosshalves": [
+        0.42693023128825974,
+        0.4491301606876002
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.0015495321502028842,
+        "ci_word_bootstrap": [
+          -0.06073162979107583,
+          0.06108959511220782
+        ],
+        "spearman": -0.015459833703766442,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.010555794352193833,
+        "ci_word_bootstrap": [
+          -0.08017526713663574,
+          0.058814204066183304
+        ],
+        "spearman": -0.005261018973985714,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.1193194436182715,
+        "ci_word_bootstrap": [
+          0.05546440351869184,
+          0.18007977009061604
+        ],
+        "spearman": 0.14005633376395357,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": -0.016566836472490975,
+        "ci_word_bootstrap": [
+          -0.07633000055171095,
+          0.0409042692467313
+        ],
+        "spearman": -0.019752358313845177,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 4,
+      "routing_split_rho": 0.9780239800874886,
+      "output_split_rho": 0.9905322058379937,
+      "routing_output_partial_rho_crosshalves": [
+        0.4045916479086152,
+        0.4064220989055174
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.0678477717766482,
+        "ci_word_bootstrap": [
+          -0.12319050135536501,
+          -0.012838137969926566
+        ],
+        "spearman": -0.07702538709194057,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.015143067195728,
+        "ci_word_bootstrap": [
+          -0.04804871008054071,
+          0.08186526323296947
+        ],
+        "spearman": 0.017609391180913033,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.18144213968795425,
+        "ci_word_bootstrap": [
+          0.11917899079937914,
+          0.2456318260582645
+        ],
+        "spearman": 0.15026791592226227,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.03964105798291977,
+        "ci_word_bootstrap": [
+          -0.012515925875723066,
+          0.09094310705196307
+        ],
+        "spearman": 0.039045936101111685,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 5,
+      "routing_split_rho": 0.9754976908493839,
+      "output_split_rho": 0.9864156087450866,
+      "routing_output_partial_rho_crosshalves": [
+        0.4156435415235709,
+        0.42060554184554244
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.01033437919092838,
+        "ci_word_bootstrap": [
+          -0.0581626422979763,
+          0.0786148780907265
+        ],
+        "spearman": 0.0017172622656416983,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.021520702133596564,
+        "ci_word_bootstrap": [
+          -0.08094271801361465,
+          0.03659805676156562
+        ],
+        "spearman": -0.022120539103439908,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.17225408648435256,
+        "ci_word_bootstrap": [
+          0.09106213962351081,
+          0.25446342039346
+        ],
+        "spearman": 0.18677260687962693,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.011200210438800057,
+        "ci_word_bootstrap": [
+          -0.06033556449596359,
+          0.08600961800788517
+        ],
+        "spearman": 0.02644658433311468,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 6,
+      "routing_split_rho": 0.9768029881420894,
+      "output_split_rho": 0.9874168278717512,
+      "routing_output_partial_rho_crosshalves": [
+        0.41816526254989633,
+        0.4195174893474821
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.038814633875267325,
+        "ci_word_bootstrap": [
+          -0.029379145496256854,
+          0.09980698760791037
+        ],
+        "spearman": -0.004321751811011137,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.005825239672787368,
+        "ci_word_bootstrap": [
+          -0.05726762258665287,
+          0.06812427560397924
+        ],
+        "spearman": 0.0018335741776795195,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.1814549424924831,
+        "ci_word_bootstrap": [
+          0.11918490867434874,
+          0.2451436170665737
+        ],
+        "spearman": 0.15086176725497746,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": -0.025390879843404632,
+        "ci_word_bootstrap": [
+          -0.08936736006374321,
+          0.039439460607338106
+        ],
+        "spearman": -0.027279942620670496,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 7,
+      "routing_split_rho": 0.981998236462214,
+      "output_split_rho": 0.9845363974924004,
+      "routing_output_partial_rho_crosshalves": [
+        0.4717501370709024,
+        0.4660842978164731
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.04005078642291117,
+        "ci_word_bootstrap": [
+          -0.10554486408220483,
+          0.016472007630395497
+        ],
+        "spearman": -0.01844444970365817,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.010144462916331027,
+        "ci_word_bootstrap": [
+          -0.05795288596361958,
+          0.07953419605062967
+        ],
+        "spearman": 0.00290283638812239,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.21922344162445348,
+        "ci_word_bootstrap": [
+          0.14041189005338736,
+          0.2955138261815876
+        ],
+        "spearman": 0.20944506124703863,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": -0.033718856021197334,
+        "ci_word_bootstrap": [
+          -0.09987156187350704,
+          0.028201730864393832
+        ],
+        "spearman": -0.0324786634365287,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 8,
+      "routing_split_rho": 0.9889629775175218,
+      "output_split_rho": 0.9879409838539494,
+      "routing_output_partial_rho_crosshalves": [
+        0.49962370026607045,
+        0.49002345309895323
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.015011929784271514,
+        "ci_word_bootstrap": [
+          -0.054426715010558256,
+          0.08031042121750395
+        ],
+        "spearman": 0.016419357409284758,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.031186125992758836,
+        "ci_word_bootstrap": [
+          -0.08937316424209342,
+          0.03481602100762822
+        ],
+        "spearman": -0.030753965398360953,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.1893351710759693,
+        "ci_word_bootstrap": [
+          0.11948281971169664,
+          0.25504697622292655
+        ],
+        "spearman": 0.16755198678135927,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.04804316839794639,
+        "ci_word_bootstrap": [
+          -0.013545572623750926,
+          0.1127066568551521
+        ],
+        "spearman": 0.0474338033600408,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 9,
+      "routing_split_rho": 0.9934405479689917,
+      "output_split_rho": 0.9851607017801867,
+      "routing_output_partial_rho_crosshalves": [
+        0.4634407271416357,
+        0.4540775592936619
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.07541385750768917,
+        "ci_word_bootstrap": [
+          0.00431234533093173,
+          0.15323051631066198
+        ],
+        "spearman": 0.06257240363490375,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.027003055764926197,
+        "ci_word_bootstrap": [
+          -0.03590670311013902,
+          0.08683263595834334
+        ],
+        "spearman": 0.02959871681501613,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.36344206399846984,
+        "ci_word_bootstrap": [
+          0.3049442445683174,
+          0.42083836563593363
+        ],
+        "spearman": 0.327508983201956,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.05240672021405893,
+        "ci_word_bootstrap": [
+          -0.0075319045251896945,
+          0.1135842491124771
+        ],
+        "spearman": 0.05238883104859929,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 10,
+      "routing_split_rho": 0.9933131583126784,
+      "output_split_rho": 0.9782838575640086,
+      "routing_output_partial_rho_crosshalves": [
+        0.48904043643451406,
+        0.49146778041933376
+      ],
+      "route_to_kl": {
+        "partial_spearman": 0.047225192221079106,
+        "ci_word_bootstrap": [
+          -0.006823020263562186,
+          0.10303347006624086
+        ],
+        "spearman": 0.013489205193906778,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.009999625203127402,
+        "ci_word_bootstrap": [
+          -0.05724551530339966,
+          0.082009581876555
+        ],
+        "spearman": 0.010277644360409328,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.3022963452536347,
+        "ci_word_bootstrap": [
+          0.2425132085334558,
+          0.36511668952582643
+        ],
+        "spearman": 0.2666870627110182,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.05159863162421546,
+        "ci_word_bootstrap": [
+          -0.010347357587273617,
+          0.11107729323227798
+        ],
+        "spearman": 0.05072191354483427,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 11,
+      "routing_split_rho": 0.9871833097039806,
+      "output_split_rho": 0.9780230603383001,
+      "routing_output_partial_rho_crosshalves": [
+        0.4037055817669748,
+        0.3964933546013986
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.03770858744537996,
+        "ci_word_bootstrap": [
+          -0.08922180452011044,
+          0.010362275106098832
+        ],
+        "spearman": -0.03278589278564814,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.025617125006512212,
+        "ci_word_bootstrap": [
+          -0.0899907447417156,
+          0.043233586710343226
+        ],
+        "spearman": -0.0249511883199618,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.4392653525978235,
+        "ci_word_bootstrap": [
+          0.3657259479479952,
+          0.5092350270450945
+        ],
+        "spearman": 0.41523140594688135,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.04862416137154274,
+        "ci_word_bootstrap": [
+          -0.018345820475742597,
+          0.11524220780010914
+        ],
+        "spearman": 0.05805255434937563,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 12,
+      "routing_split_rho": 0.9876609154616857,
+      "output_split_rho": 0.9886063154783066,
+      "routing_output_partial_rho_crosshalves": [
+        0.3326935327734437,
+        0.3314990872753796
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.019571616531594695,
+        "ci_word_bootstrap": [
+          -0.08424129038975259,
+          0.0558005980908743
+        ],
+        "spearman": -0.039738033478500814,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.011559995877870372,
+        "ci_word_bootstrap": [
+          -0.05944398785561205,
+          0.08976085561586873
+        ],
+        "spearman": 0.01265361744066074,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.4512293289215269,
+        "ci_word_bootstrap": [
+          0.38418342768736874,
+          0.5175811641509895
+        ],
+        "spearman": 0.391954410842394,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.03319902792576217,
+        "ci_word_bootstrap": [
+          -0.024265981070798314,
+          0.09160979329907398
+        ],
+        "spearman": 0.033655850835765076,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 13,
+      "routing_split_rho": 0.9804660474587065,
+      "output_split_rho": 0.9790327750572922,
+      "routing_output_partial_rho_crosshalves": [
+        0.4059255398594535,
+        0.393460437444308
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.047742517517186334,
+        "ci_word_bootstrap": [
+          -0.11030748702049396,
+          0.02580827340915556
+        ],
+        "spearman": -0.06956120313766063,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.004147970990611748,
+        "ci_word_bootstrap": [
+          -0.05724097714160696,
+          0.06603742899512806
+        ],
+        "spearman": -0.002418932923478522,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.5785878535729934,
+        "ci_word_bootstrap": [
+          0.5107809046314125,
+          0.636055899692831
+        ],
+        "spearman": 0.5021958856254898,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.053909532909600585,
+        "ci_word_bootstrap": [
+          -0.011209527670157877,
+          0.11517564531243477
+        ],
+        "spearman": 0.04892733936994895,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 14,
+      "routing_split_rho": 0.9860352503542643,
+      "output_split_rho": 0.9963217062390218,
+      "routing_output_partial_rho_crosshalves": [
+        0.3586438784255941,
+        0.3521695395774628
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.023028332178900577,
+        "ci_word_bootstrap": [
+          -0.07738942336062171,
+          0.02901247146372593
+        ],
+        "spearman": -0.04155859449807585,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": -0.0266617213504466,
+        "ci_word_bootstrap": [
+          -0.10259343514600706,
+          0.04298894923396485
+        ],
+        "spearman": -0.032983231574629325,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.48857935319675083,
+        "ci_word_bootstrap": [
+          0.41777538467553677,
+          0.5526924784297563
+        ],
+        "spearman": 0.4076561278092161,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": 0.013995033118798595,
+        "ci_word_bootstrap": [
+          -0.05140156535652337,
+          0.07894867194893168
+        ],
+        "spearman": 0.01653564455222912,
+        "n_items": 964,
+        "n_words": 48
+      }
+    },
+    {
+      "layer": 15,
+      "routing_split_rho": 0.9850481837267544,
+      "output_split_rho": 0.9942513028447731,
+      "routing_output_partial_rho_crosshalves": [
+        0.17255612473925627,
+        0.14935155552625173
+      ],
+      "route_to_kl": {
+        "partial_spearman": -0.007631173768072594,
+        "ci_word_bootstrap": [
+          -0.07780085928696144,
+          0.0644065651105504
+        ],
+        "spearman": 0.005068048600273854,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "route_to_dnll": {
+        "partial_spearman": 0.002460235028886144,
+        "ci_word_bootstrap": [
+          -0.05182807303571942,
+          0.05438161753958917
+        ],
+        "spearman": 0.0053785756747669325,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_kl": {
+        "partial_spearman": 0.45378103152375643,
+        "ci_word_bootstrap": [
+          0.394456182935666,
+          0.5090225752674431
+        ],
+        "spearman": 0.31964150122128787,
+        "n_items": 964,
+        "n_words": 48
+      },
+      "output_l2_to_dnll": {
+        "partial_spearman": -0.014969434301617878,
+        "ci_word_bootstrap": [
+          -0.08248655779608682,
+          0.05007883727815241
+        ],
+        "spearman": -0.03285969113957349,
+        "n_items": 964,
+        "n_words": 48
+      }
+    }
+  ],
+  "sum_layer_wall_seconds": 1645.0026814937592
+}
