@@ -1,0 +1,156 @@
+{
+  "experiment": "E129",
+  "status": "complete",
+  "step": 15625,
+  "train_tokens": 128000000,
+  "objective": "teacher_KL_T1",
+  "held": {
+    "files": 32,
+    "tokens": 262144,
+    "file_bootstrap_iterations": 1000,
+    "ci_degenerate": false,
+    "kl_teacher_to_student": {
+      "mean": 0.07061508763564901,
+      "ci90": [
+        0.05254966820597833,
+        0.09699287596675012
+      ],
+      "ci95": [
+        0.051043905453099475,
+        0.10363618477120123
+      ]
+    },
+    "teacher_nll": {
+      "mean": 2.493812892211078,
+      "ci90": [
+        2.1068817272356637,
+        2.810119658941158
+      ],
+      "ci95": [
+        2.041854407738455,
+        2.8674774349749503
+      ]
+    },
+    "student_nll": {
+      "mean": 2.5640975659870797,
+      "ci90": [
+        2.167101004422779,
+        2.8985711076696687
+      ],
+      "ci95": [
+        2.097353872464785,
+        2.9571713532233983
+      ]
+    },
+    "nll_gap": {
+      "mean": 0.07028467377710834,
+      "ci90": [
+        0.05174983436485893,
+        0.09802230463507434
+      ],
+      "ci95": [
+        0.04998289293539988,
+        0.10459398194724553
+      ]
+    }
+  },
+  "POS_word_balanced": {
+    "files": 48,
+    "tokens": 48,
+    "file_bootstrap_iterations": 1000,
+    "ci_degenerate": false,
+    "kl_teacher_to_student": {
+      "mean": 0.05717174335307549,
+      "ci90": [
+        0.04852184701019704,
+        0.06834403568950166
+      ],
+      "ci95": [
+        0.0467869361924526,
+        0.07096489647296556
+      ]
+    },
+    "teacher_nll": {
+      "mean": 2.361483032529741,
+      "ci90": [
+        2.1832277865914884,
+        2.544936121349122
+      ],
+      "ci95": [
+        2.1583143844995676,
+        2.5741569773705
+      ]
+    },
+    "student_nll": {
+      "mean": 2.3921681513962154,
+      "ci90": [
+        2.218399488525936,
+        2.5775128333666393
+      ],
+      "ci95": [
+        2.193905205526974,
+        2.6063530148735046
+      ]
+    },
+    "nll_gap": {
+      "mean": 0.030685118711426877,
+      "ci90": [
+        0.012805539983732251,
+        0.04903813062260585
+      ],
+      "ci95": [
+        0.010334097522180412,
+        0.05229157484218046
+      ]
+    }
+  },
+  "engineering_nll_margin": 0.02,
+  "recovered": false,
+  "elapsed_gpu_hours_single_gpu": 1.9891085050130883,
+  "coverage": {
+    "drawn_windows": 250000,
+    "unique_windows": 221009,
+    "reused_windows": 28991,
+    "reuse_fraction": 0.11596399999999996,
+    "unique_training_target_tokens": 113156608,
+    "available_windows": 998030,
+    "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd",
+    "count_arrays_sha256": "a477faedbb21d0e8a9264a66b8145a02ae2b57b0fdb9c9cd353af17087c3401d"
+  },
+  "teacher_unchanged": true,
+  "teacher_gradients_absent": true,
+  "input_chain_hash": "fdde031c36213009112ba3ea4eb2fb8760233cd22c0e616b6cb3e8780a121aa5",
+  "paired_comparison_to_128m_CE": {
+    "POST_HOC": true,
+    "direction": "teacher-KL training minus matched GT-CE training",
+    "files": 32,
+    "sequences": 512,
+    "bootstrap_iterations": 1000,
+    "KL_change": {
+      "mean": -0.01908623658524945,
+      "ci90": [
+        -0.02135851818723139,
+        -0.01704098805083548
+      ],
+      "ci95": [
+        -0.021794287474994675,
+        -0.016608843913168782
+      ]
+    },
+    "GT_NLL_change": {
+      "mean": -0.009466952526851778,
+      "ci90": [
+        -0.012072328841126875,
+        -0.006862910954127598
+      ],
+      "ci95": [
+        -0.012523066840975556,
+        -0.006455669258238689
+      ]
+    },
+    "scope": "Same initialization, inputs and schedule; extra teacher forward compute. File uncertainty only, one initialization; no seed-level inference."
+  },
+  "decision": "Teacher-distribution target improves fidelity but does not recover the original predictor at the fixed 128M endpoint. Continue the registered E128 CE endpoint; no cross-seed freedom claim or objective substitution.",
+  "raw_asset_directory": "/tmp/xiang-moe-20261025/e129_teacher_KL_seed0",
+  "script_sha256": "7ccd801cec565b861ba4faa3fc1f1fe4be15191ec81aab09e2225123c43729c8"
+}
