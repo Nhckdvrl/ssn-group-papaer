@@ -2,6 +2,16 @@
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
 
+## P15（2026-10-25）：E121 的组织显著性检验和计算职责推断之间有缺口
+- **代码审计：** `e121_analyze.py::delta_stats` 在词形内置换输入对的same/different标记，不是置换逐样本词性后重建输入对；共享样本造成的依赖未保持，原perm_p不能沿用。原效应量与词形bootstrap不因此自动作废。r12合用了cal+held，不能称留出复现。L0残差/原始仅0.08，也未达到原20%启发门槛。
+- **科学缺口：** R4全部锚点对的N1残差只扣所选几何零假设，没有自动扣token身份；只能作固定词汇锚点上的组织稳定性参照。R3词性偏好是粗代理，未检出Γ不能写成“计算差异不沿词性”。
+- **处理：** E122先纠正POS检验，再同时测共同输入上的专家输出与held替换后果。X2保留因果读数，不能凭R/F相关就只比较路由。不增加词性切片维持叙事。
+
+## P16（2026-10-25）：E121 的KL变化与语言性能损伤被混读
+- **审计：** r3_summary中swap9/drop的1.10–1.42倍是KL之比；ΔNLL之比为0.90–2.16，L11/L15的swap9 NLL损伤反而小于drop。因此“候补比什么都不放更糟”不能概括为语言性能结论。
+- **精度：** 基线log-probs存float16，反读后未经logsumexp归一化计算KL；旧self KL约1e-5。大效应仍支持分布明显变化，但数值噪声倍数与小效应受影响。
+- **处理：** 保留原结果、明确KL/NLL含义，新前向相同batch并用fp32归一化。X1旧KL仅为辅助，不能据其单独升级主张。
+
 | ID | 观察 | 复现条件 / 量级 | 可能影响 | 对应实验 | 状态 |
 |---|---|---|---|---|---|
 | P01 | **Parent 官方代码与论文文字在 4 处不一致**（kayoyin/icl-heads@c0ba06e + transformer_lens 2.16.1）：(a) `find_induction_heads` 传 `error_measure="abs"`，但 TL `detect_head` 对 list 输入递归时丢掉 kwargs，实际执行 `"mul"`（恰好等于论文文字定义）；(b) 随机 token 先 decode 再由 TL 重新 tokenize：101 个 token 变成 108 个，开头是双 BOS；token 从 `d_vocab=50304` 抽，含 27 个未训练的 padding id；(c) token-loss 消融挂在 `hook_v`，因缓存长度 506 ≠ 505 落入 except 分支，实际是“该头所有位置的 V 换成随机序列 BOS 位置的 V”，不是论文说的 mean ablation；(d) `evaluate_icl_score.py` 传 `--ckpt` 仍加载最终模型；`find_induction_heads.py` 对 Pythia 返回 HF 模型，按发布版本不能直接运行 | 实测：`scripts/` 下 smoke 检查（parent-call == mul：True；== abs：False；except 分支 == BOS-V：True）| parent 的 70M 结论“induction 消融对 token-loss difference ≈ 随机消融”建立在 (c) 这种消融上；induction score 的绝对值受 (b) 影响 | E01 | 已记录；E01 同时跑 parent 原样 / zero / mean 三种消融与 R1b（张量直喂）诊断 |

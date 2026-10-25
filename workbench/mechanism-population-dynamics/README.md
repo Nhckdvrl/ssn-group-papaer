@@ -1,6 +1,11 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-25）：** 头线已结项（10-11 论文线终止；10-17 修复线停止）。当前方向是 **MoE 专家分工的跨训练可重现性**，处于探索初期（E120、E121 已完成，尚无跨种子数据），准备移交给其他 AI 继续。**接手请先读 [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md)。**
+**状态（2026-10-25）：** 人明确要求继续投入 **MoE 专家分工的跨训练可重现性**。头线已结项（10-11 论文线终止；10-17 修复线停止），不恢复。当前处于探索初期，尚无跨种子数据、无新实证主张。**先读 [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md)，注意其中的接手校正。**
+
+**当前问题：** 固定输入表示、下游与语言建模目标后，独立训练是否重复形成相同的专家组织与计算职责？路由边界不同不自动等于职责不同。
+- **在推进：** [E122](experiments/E122-moe-routing-function-bridge.md)：共同输入上的专家函数、路由关系与留出替换损伤；同时纠正E121的POS样本置换。 [E123](experiments/E123-frozen-moe-feasibility.md)：OLMo-1B的L9替换为随机MoE，先检查层的重要性、可恢复性和实测成本。
+- **校对备注：** E121旧置换p值撤回待重算；R4未扣词形身份；swap9/drop的1.10–1.42是KL比，不是NLL比。详见[P15/P16](PAIN_LOG.md)、[独立证据审计](knowledge/research/MOE_EVIDENCE_AUDIT_2026-10-25.md)。
+- **定位：** 冻结骨干+插入MoE+多初始化已有LMC-MoE先例，增量须落在计算职责与跨训练证据。见[独立研究审计](knowledge/research/MOE_INDEPENDENT_AUDIT_2026-10-25.md)。
 
 ## 从这里读
 | 想知道 | 读 |
@@ -28,4 +33,5 @@
 
 ## 资产提醒
 - 本地缓存 `~/mechpop_cache`：头线的 Pythia 检查点与 Pile 分词数据已不存在；现有 `hf_olmoe/`（4 个 OLMoE 检查点，约 52 GB）、`e121/`（采集数组，约 21 GB）、`lingdata/`（UD EWT、SemCor）。
+- E123新资产准备：`~/mechpop_cache/hf_olmo_dense/main/`；下载脚本与固定版本见 `scripts/e123_prepare_assets.py`，小型manifest在 `results/e123/`。大权重、token文件、逐样本数组不进Git。
 - 旧的独立复现包与过程文档已于 10-23 删除，可从 Git 历史恢复（见 [RESEARCH_HISTORY.md §11](RESEARCH_HISTORY.md)）。
