@@ -1,0 +1,196 @@
+{
+  "experiment": "E125 exact-exposure diagnostic",
+  "single_seed_only": true,
+  "init_seed": 0,
+  "replay": {
+    "endpoint_step": 3906,
+    "batch_size": 16,
+    "accum": 1,
+    "order_seed": 0,
+    "rng_final_state_sha256": "75f3fdefd65badcd5097b544104ed5cdb00fa4943dad15a68e5455f6eac3d834",
+    "rng_matches_checkpoint": true,
+    "initial_three_batches_match_real_TokenData_train_batch": true,
+    "total_drawn_windows": 62496,
+    "unique_seen_windows": 39421,
+    "unseen_windows": 22937,
+    "pool_windows": 62358,
+    "unique_seen_fraction": 0.6321722954552744,
+    "repeat_fraction_of_draws": 0.36922363031233996,
+    "max_window_exposures": 8,
+    "seen_set_sha256": "03f3a069612afee35905ca399a3cfe86fb8617cf5a640d0c45f83f2ccae2b158",
+    "unseen_set_sha256": "015c6c93edb82d2de29bf4d65e95a3afee8d70db423b4301f95941d50030dd48"
+  },
+  "diagnostic_sample_seed": 125,
+  "scoring_dtype": "bfloat16 backbone/lm_head; E123 token_nll casts logits to fp32",
+  "seq_len": 512,
+  "batch_size": 16,
+  "index_sha256": {
+    "seen_train": "462c816cde579d215544591e91a91b9e9c59cbabe59e4a2a6d9ac613b71ab7a2",
+    "unseen_train": "9ff29e4c4dea19a4c0bc3e6084d3acde02376a4edd22a72d90fadfdf4a0d6d3d",
+    "held": "ce0e786beea51b92e3eaeebc5a072945b9baac737e21f9f9130121b70f3feecb"
+  },
+  "data_manifest_sha256": "f9b9f3bf820046eafd283b548be4aae8f26588d5f7dfab50edcab809b0bc0030",
+  "training_script_sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+  "current_helper_script_sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+  "diagnostic_script_sha256": "30807b46eb8e7779d79126eefd5f52c4ac2884fd7d7ef2d72fdab46d954c9368",
+  "raw_output_location": "/tmp/xiang-moe-20261025/e125_exposure",
+  "no_training_or_checkpoint_selection": true,
+  "groups": {
+    "seen_train": {
+      "dense_nll": 2.386318419600701,
+      "final_moe_nll": 1.8395223981919144,
+      "final_minus_dense_nats": -0.5467960214087866,
+      "file_clusters": 29,
+      "n_sequences": 512,
+      "n_scored_tokens": 262144,
+      "dense_file_bootstrap_ci95": [
+        1.9490456169165093,
+        2.7480087742170247
+      ],
+      "final_file_bootstrap_ci95": [
+        1.4775270759906833,
+        2.1362771701791767
+      ],
+      "paired_delta_file_bootstrap_ci95": [
+        -0.6279077629865987,
+        -0.4626315257794365
+      ],
+      "paired_delta_file_bootstrap_ci90": [
+        -0.6183983793279595,
+        -0.47520989659571383
+      ],
+      "recovery_band_nats": [
+        -0.02,
+        0.02
+      ],
+      "ci90_within_recovery_band": false,
+      "bootstrap_iterations": 1000,
+      "bootstrap_seed": 125,
+      "cluster_degenerate": false,
+      "source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ]
+    },
+    "unseen_train": {
+      "dense_nll": 2.48839146376047,
+      "final_moe_nll": 2.6698382346593044,
+      "final_minus_dense_nats": 0.18144677089883432,
+      "file_clusters": 30,
+      "n_sequences": 512,
+      "n_scored_tokens": 262144,
+      "dense_file_bootstrap_ci95": [
+        2.08119714251652,
+        2.7602262807487645
+      ],
+      "final_file_bootstrap_ci95": [
+        2.209118378659696,
+        2.9738564109970334
+      ],
+      "paired_delta_file_bootstrap_ci95": [
+        0.12344488558452944,
+        0.21836474666614733
+      ],
+      "paired_delta_file_bootstrap_ci90": [
+        0.13526698754656502,
+        0.2147601684007732
+      ],
+      "recovery_band_nats": [
+        -0.02,
+        0.02
+      ],
+      "ci90_within_recovery_band": false,
+      "bootstrap_iterations": 1000,
+      "bootstrap_seed": 126,
+      "cluster_degenerate": false,
+      "source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "arXiv"
+      ]
+    },
+    "held": {
+      "dense_nll": 2.493812892211078,
+      "final_moe_nll": 2.7363428124953755,
+      "final_minus_dense_nats": 0.24252992028429743,
+      "file_clusters": 32,
+      "n_sequences": 512,
+      "n_scored_tokens": 262144,
+      "dense_file_bootstrap_ci95": [
+        2.041854407738455,
+        2.8674774349749503
+      ],
+      "final_file_bootstrap_ci95": [
+        2.2419591708988706,
+        3.150497588338386
+      ],
+      "paired_delta_file_bootstrap_ci95": [
+        0.19188904429070447,
+        0.30262374686673077
+      ],
+      "paired_delta_file_bootstrap_ci90": [
+        0.19873575532437723,
+        0.288393942574849
+      ],
+      "recovery_band_nats": [
+        -0.02,
+        0.02
+      ],
+      "ci90_within_recovery_band": false,
+      "bootstrap_iterations": 1000,
+      "bootstrap_seed": 127,
+      "cluster_degenerate": false,
+      "source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ]
+    }
+  },
+  "diagnostic_point_contrasts_only": {
+    "unseen_minus_seen_paired_teacher_gap_nats": 0.7282427923076209,
+    "held_minus_seen_paired_teacher_gap_nats": 0.789325941693084
+  },
+  "backbone_sample_hash_before_after": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "original_dense_sample_hash": "2ac01ff92541908470a854ee4b15eb3d837a9527466e77943c9fe874b45281e1",
+  "loaded_final_moe_sample_hash_before_after": "dfd2330ff4cdce84624a93a5ad3446e408490e9a04bcbd240e6288b94550df91",
+  "sample_hash_note": "E123 33 deterministic entries per tensor, not full checkpoint hash",
+  "elapsed_seconds": 43.14533269405365,
+  "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "peak_cuda_memory_bytes": 8301348352,
+  "interpretation_limit": "Paired teacher-relative exposure diagnostic in one seed. Seen/unseen are uniform samples of distinct fixed pool windows, not independent corpus files or randomized exposure treatment. Prefix-pool and old E123 scoring precision limitations remain; no automatic overfitting verdict."
+}

@@ -1,0 +1,69 @@
+{
+  "E126": {
+    "config_hash": "75580cbed488f1c5ce73d779e3457990f83710eb0ab99ebc02d594cef90377dd",
+    "expert_size": 8192,
+    "experts": 8,
+    "final_held_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e126/G8-top1-cover_final/final_held_sequences.json",
+    "final_held_sha256": "d0b5869a05eb98d0e195454d0f863d0e00ffcbe3a00b2b214fda65a6d0f90932",
+    "provenance_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e126/G8-top1-cover_final/provenance.json",
+    "provenance_sha256": "b8fefcb880cb7a22604a81f20c81aa1bb30100058c8e9e160f9782c9c8f3a859",
+    "replacement": "moe",
+    "run_id": "G8-top1-cover",
+    "step": 15625,
+    "top_k": 1,
+    "train_tokens": 128000000
+  },
+  "M-cover": {
+    "config_hash": "d043fb622508e3b69f82cfdac95405e3e9e357788559107367fe7fb091b21c2b",
+    "expert_size": 1024,
+    "experts": 64,
+    "final_held_path": "/tmp/xiang-moe-20261025/e125_M-cover/final_held_sequences.json",
+    "final_held_sha256": "af51a250e3b24be1481453b4467135c1e8dd199f1308f506ece28b29d093d8f0",
+    "provenance_path": "/tmp/xiang-moe-20261025/e125_M-cover/provenance.json",
+    "provenance_sha256": "fe0bfcbbcbace97902739cfe7e5993e542dfa1c9816a93c8fea211f0a8ed7a6a",
+    "replacement": "moe",
+    "run_id": "M-cover",
+    "step": 15625,
+    "top_k": 8,
+    "train_tokens": 128000000
+  },
+  "comparison_scope": "Fixed 128M training endpoint; one initialization/order; paired held evaluation uncertainty only, not seed CI.",
+  "experiment": "E126 G8-top1-cover vs E125 M-cover",
+  "interval_note": "Bootstrap resamples the original 32 held source files; it quantifies evaluation-file uncertainty and is not a seed confidence interval.",
+  "paired_file_bootstrap_E126_minus_M_cover": {
+    "bootstrap_iterations": 1000,
+    "bootstrap_seed": 126,
+    "ci90": [
+      0.011053393741031781,
+      0.022926051100961346
+    ],
+    "ci95": [
+      0.010627289270315065,
+      0.024787140041210496
+    ],
+    "ci_degenerate": false,
+    "ci_unit": "original held file; evaluation uncertainty, not independent seeds",
+    "difference_nats_first_minus_second": 0.016302004621006283,
+    "file_clusters": 32,
+    "first_nll": 2.5898665231349383,
+    "second_nll": 2.573564518513932,
+    "sequences": 512,
+    "tokens": 262144
+  },
+  "pairing_contract": {
+    "E126_dense_teacher_sequence_mean": 2.4938128922110794,
+    "dense_teacher_sequence_mean": 2.4938128922110794,
+    "dense_teacher_summary_equal": true,
+    "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+    "frozen_sample_hash_equal": true,
+    "held_anchor_order_tokens_equal": true,
+    "held_row_count_512": true,
+    "held_source_records_equal": true,
+    "held_window_hash": "ce0e786beea51b92e3eaeebc5a072945b9baac737e21f9f9130121b70f3feecb",
+    "held_window_hash_equal": true,
+    "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd",
+    "source_schedule_hash_equal": true,
+    "teacher_reference_anchor_order_equal": true,
+    "train_source_records_equal": true
+  }
+}

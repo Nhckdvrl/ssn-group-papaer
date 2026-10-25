@@ -107,3 +107,8 @@
   - MoE Routing Testbed（2604.07030，参照路由器）；
   - Probing Semantic Routing（EMNLP Findings 2025）。
 - **OLMoE-1B-7B-0924：** 244 个中间检查点，从 step 5000 起每 5000 步一个，没有 step 0（HF API 核实）。
+
+## 7. 接手补读（2026-10-25）：数据复用与职责读数
+- [Data Scarcity and Model Sparsity](https://arxiv.org/html/2609.11917)，本轮读§3–§5及A.5；论文从头训练dense/MoE、固定总token而改变独立数据量，已占据“MoE对重复数据更敏感”的主张。E125是修复冻结层实验平台，不认领这项发现。
+- 其§5.2用单专家移除的损失变化衡量specialization。E120已证明同函数专家也可有正移除损伤，因此该量不能单独识别专家函数内容差异。这是E124同时保留共同环境U与自然承担A的理由，不据此否定论文的数据复用结果。
+- 论文考察过dropout、输出遮蔽、weight decay与router jitter；未直接覆盖我们的冻结骨干单层恢复问题。当前先做数据覆盖的决定性对照，不追加一张正则超参网格。

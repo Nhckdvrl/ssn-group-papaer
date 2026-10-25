@@ -1,0 +1,3520 @@
+{
+  "status": "complete",
+  "run_id": "D-cover",
+  "replacement": "dense",
+  "step": 15625,
+  "planned_steps": 15625,
+  "train_tokens": 128000000,
+  "config_hash": "56e0f789e7ab6527e08df60bca5055a762ffda2908e22fffda25934facaba4a1",
+  "initial_tensor_sha256": "5112528c23b7e33a86cc84053f86d35319ca3e2448d53f270d9880964ee12e20",
+  "frozen_sample_hash_before": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "frozen_sample_hash_after": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "coverage": {
+    "drawn_windows": 250000,
+    "unique_windows": 221009,
+    "reused_windows": 28991,
+    "reuse_fraction": 0.11596399999999996,
+    "unique_training_target_tokens": 113156608,
+    "available_windows": 998030,
+    "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd",
+    "files": [
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15182,
+        "unique_windows": 13409,
+        "sampling_probability": 0.06055681439240046
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15038,
+        "unique_windows": 13344,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15211,
+        "unique_windows": 13475,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 14942,
+        "unique_windows": 13257,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15114,
+        "unique_windows": 13387,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15116,
+        "unique_windows": 13350,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 34910,
+        "unique_windows": 30801,
+        "sampling_probability": 0.1387107543347111
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 34701,
+        "unique_windows": 30684,
+        "sampling_probability": 0.1387107543347111
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0017.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 20165,
+        "unique_windows": 17815,
+        "sampling_probability": 0.0801750650054708
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0047.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 19882,
+        "unique_windows": 17557,
+        "sampling_probability": 0.0801750650054708
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0073.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 5239,
+        "unique_windows": 4607,
+        "sampling_probability": 0.021031531907235376
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0032.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 5343,
+        "unique_windows": 4723,
+        "sampling_probability": 0.0210315006572344
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0026.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 5947,
+        "unique_windows": 5299,
+        "sampling_probability": 0.024283500758859402
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0041.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 6021,
+        "unique_windows": 5302,
+        "sampling_probability": 0.024283500758859402
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0009.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 4393,
+        "unique_windows": 3885,
+        "sampling_probability": 0.017384438043263693
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0018.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 4314,
+        "unique_windows": 3831,
+        "sampling_probability": 0.017384438043263693
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 2110,
+        "unique_windows": 1852,
+        "sampling_probability": 0.008509875265933603
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 2125,
+        "unique_windows": 1874,
+        "sampling_probability": 0.008509844015932628
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 1524,
+        "unique_windows": 1350,
+        "sampling_probability": 0.005956906436153327
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 1523,
+        "unique_windows": 1342,
+        "sampling_probability": 0.005956906436153327
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 1252,
+        "unique_windows": 1106,
+        "sampling_probability": 0.005014750156710943
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 1304,
+        "unique_windows": 1163,
+        "sampling_probability": 0.005014718906709967
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0001.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 537,
+        "unique_windows": 485,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_tail/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 559,
+        "unique_windows": 483,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_middle/cc_news-0002.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 542,
+        "unique_windows": 466,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 502,
+        "unique_windows": 443,
+        "sampling_probability": 0.002173031317907229
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 1011,
+        "unique_windows": 881,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 935,
+        "unique_windows": 821,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 970,
+        "unique_windows": 867,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 933,
+        "unique_windows": 837,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Project Gutenberg",
+        "file_id": "books/books-0000.json.gz",
+        "available_windows": 3215,
+        "drawn_windows": 848,
+        "unique_windows": 727,
+        "sampling_probability": 0.0032215938506748084
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0162.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 329,
+        "unique_windows": 289,
+        "sampling_probability": 0.0013980625436894546
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0144.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 338,
+        "unique_windows": 300,
+        "sampling_probability": 0.0013980312936884782
+      },
+      {
+        "source": "Wikipedia & Wikibooks",
+        "file_id": "wiki/wiki-0000.json.gz",
+        "available_windows": 4489,
+        "drawn_windows": 1140,
+        "unique_windows": 997,
+        "sampling_probability": 0.004498062640564458
+      }
+    ],
+    "count_arrays_sha256": "a477faedbb21d0e8a9264a66b8145a02ae2b57b0fdb9c9cd353af17087c3401d"
+  },
+  "dense_reference": {
+    "file": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.029855222423871,
+        2.8807765491502297
+      ],
+      "cluster": "file",
+      "clusters": 32,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequence": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.422263147913324,
+        2.568732465944894
+      ],
+      "cluster": "sequence",
+      "clusters": 512,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequences": 512,
+    "tokens": 262144,
+    "sources": {
+      "Algebraic Stack": {
+        "mean": 1.6639746209870194,
+        "ci95": [
+          1.4502749847057868,
+          2.3050735298307172
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "C4": {
+        "mean": 2.684300885485394,
+        "ci95": [
+          2.655091501766934,
+          2.7343741147170397
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "CC News": {
+        "mean": 2.5012168555317977,
+        "ci95": [
+          2.335912273687981,
+          2.6526938652367704
+        ],
+        "cluster": "file",
+        "clusters": 3,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Dolma CC": {
+        "mean": 3.0696471823682927,
+        "ci95": [
+          2.781108082280136,
+          3.4345635666238863
+        ],
+        "cluster": "file",
+        "clusters": 6,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Flan": {
+        "mean": 1.6107764723598712,
+        "ci95": [
+          1.412470511745657,
+          1.7595059428205317
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "MegaWika": {
+        "mean": 1.9592867608310236,
+        "ci95": [
+          1.9592867608310236,
+          1.9592867608310236
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "OpenWebMath": {
+        "mean": 1.755481708242962,
+        "ci95": [
+          1.3167515861833632,
+          2.6329419523621596
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Project Gutenberg": {
+        "mean": 2.2980363824557664,
+        "ci95": [
+          2.2980363824557664,
+          2.2980363824557664
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "Reddit": {
+        "mean": 2.870269608277654,
+        "ci95": [
+          2.8085682022240546,
+          2.9114038789800527
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Refined Web": {
+        "mean": 2.711061626322444,
+        "ci95": [
+          2.664947840669545,
+          2.752692127259088
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Semantic Scholar": {
+        "mean": 2.232750092474754,
+        "ci95": [
+          2.1977896847182,
+          2.2633404492617384
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StackExchange": {
+        "mean": 2.0341106169356147,
+        "ci95": [
+          1.8103215421909569,
+          2.3697942290526015
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StarCoder": {
+        "mean": 1.0527868530032887,
+        "ci95": [
+          1.0255099414449045,
+          1.084837224084391
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Wikipedia & Wikibooks": {
+        "mean": 2.2427655458329165,
+        "ci95": [
+          2.2427655458329165,
+          2.2427655458329165
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "arXiv": {
+        "mean": 1.4786196951716875,
+        "ci95": [
+          1.4521678575340646,
+          1.6637825586350488
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      }
+    },
+    "sources_evaluated": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "sources_available": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "missing_sources": []
+  },
+  "elapsed_wall_seconds": 3452.354270134121,
+  "tokens_per_second_after_first": 40369.111004497834,
+  "peak_cuda_memory_bytes": 13482199552,
+  "fixed_endpoint": {
+    "step": 15625,
+    "held": {
+      "file": {
+        "mean": 2.590997127013771,
+        "ci95": [
+          2.107123767470708,
+          3.011492337561017
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequence": {
+        "mean": 2.590997127013771,
+        "ci95": [
+          2.513441730041192,
+          2.669399597207961
+        ],
+        "cluster": "sequence",
+        "clusters": 512,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequences": 512,
+      "tokens": 262144,
+      "sources": {
+        "Algebraic Stack": {
+          "mean": 1.820075544009982,
+          "ci95": [
+            1.6335215221234425,
+            2.3797376096696006
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "C4": {
+          "mean": 2.7536400519109963,
+          "ci95": [
+            2.7292450763081093,
+            2.7954600100873725
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "CC News": {
+          "mean": 2.59172010489141,
+          "ci95": [
+            2.407605464304318,
+            2.7441409206175535
+          ],
+          "cluster": "file",
+          "clusters": 3,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Dolma CC": {
+          "mean": 3.1913119651809594,
+          "ci95": [
+            2.844720414174239,
+            3.6511748019680046
+          ],
+          "cluster": "file",
+          "clusters": 6,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Flan": {
+          "mean": 1.7299352642375847,
+          "ci95": [
+            1.5399008852172897,
+            1.8724610485028068
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "MegaWika": {
+          "mean": 2.1159139429400966,
+          "ci95": [
+            2.1159139429400966,
+            2.1159139429400966
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "OpenWebMath": {
+          "mean": 1.8362322622887473,
+          "ci95": [
+            1.3963234798191326,
+            2.7160498272279767
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Project Gutenberg": {
+          "mean": 2.414469923172092,
+          "ci95": [
+            2.414469923172092,
+            2.414469923172092
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "Reddit": {
+          "mean": 2.9390481608128507,
+          "ci95": [
+            2.863018155361631,
+            2.989734831113663
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Refined Web": {
+          "mean": 2.804605576850346,
+          "ci95": [
+            2.767832065124443,
+            2.8378038860473427
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Semantic Scholar": {
+          "mean": 2.3096123395178525,
+          "ci95": [
+            2.2822874832047235,
+            2.3335215887918395
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StackExchange": {
+          "mean": 2.074292194575763,
+          "ci95": [
+            1.8443340215208721,
+            2.419229454158099
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StarCoder": {
+          "mean": 1.1219107343761943,
+          "ci95": [
+            1.100097102469803,
+            1.1475417518662039
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Wikipedia & Wikibooks": {
+          "mean": 2.3261858034234404,
+          "ci95": [
+            2.3261858034234404,
+            2.3261858034234404
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "arXiv": {
+          "mean": 1.5289821441996505,
+          "ci95": [
+            1.5017114617667873,
+            1.719876921229691
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        }
+      },
+      "sources_evaluated": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "sources_available": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "missing_sources": []
+    },
+    "held_delta_dense": {
+      "file": {
+        "mean": 0.0971842348026915,
+        "ci95": [
+          0.07113646304931973,
+          0.13996325383125333
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequence": {
+        "mean": 0.0971842348026915,
+        "ci95": [
+          0.08631230753003269,
+          0.10963241699016264
+        ],
+        "cluster": "sequence",
+        "clusters": 512,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequences": 512,
+      "tokens": 262144,
+      "sources": {
+        "Algebraic Stack": {
+          "mean": 0.15610092302296263,
+          "ci95": [
+            0.07466407983888335,
+            0.18324653741765573
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "C4": {
+          "mean": 0.06933916642560212,
+          "ci95": [
+            0.06108589537033282,
+            0.07415357454117588
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "CC News": {
+          "mean": 0.09050324935961207,
+          "ci95": [
+            0.07169319061633672,
+            0.1074256960605453
+          ],
+          "cluster": "file",
+          "clusters": 3,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Dolma CC": {
+          "mean": 0.12166478281266646,
+          "ci95": [
+            0.06180997887008116,
+            0.21439496113248782
+          ],
+          "cluster": "file",
+          "clusters": 6,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Flan": {
+          "mean": 0.11915879187771394,
+          "ci95": [
+            0.11295510568227485,
+            0.12743037347163275
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "MegaWika": {
+          "mean": 0.156627182109073,
+          "ci95": [
+            0.156627182109073,
+            0.156627182109073
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "OpenWebMath": {
+          "mean": 0.08075055404578535,
+          "ci95": [
+            0.07957189363576944,
+            0.08310787486581717
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Project Gutenberg": {
+          "mean": 0.11643354071632572,
+          "ci95": [
+            0.11643354071632572,
+            0.11643354071632572
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "Reddit": {
+          "mean": 0.06877855253519638,
+          "ci95": [
+            0.054449953137575946,
+            0.07833095213361
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Refined Web": {
+          "mean": 0.09354395052790196,
+          "ci95": [
+            0.0851117587882536,
+            0.10288422445489707
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Semantic Scholar": {
+          "mean": 0.07686224704309819,
+          "ci95": [
+            0.07018113953010119,
+            0.08449779848652332
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StackExchange": {
+          "mean": 0.04018157764014827,
+          "ci95": [
+            0.03401247932991532,
+            0.04943522510549769
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StarCoder": {
+          "mean": 0.06912388137290525,
+          "ci95": [
+            0.06270452778181253,
+            0.07458716102489903
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Wikipedia & Wikibooks": {
+          "mean": 0.08342025759052385,
+          "ci95": [
+            0.08342025759052385,
+            0.08342025759052385
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "arXiv": {
+          "mean": 0.050362449027962886,
+          "ci95": [
+            0.049543604232722985,
+            0.05609436259464218
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        }
+      },
+      "sources_evaluated": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "sources_available": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "missing_sources": []
+    },
+    "pos": {
+      "word_balanced_mean": 2.400819011367697,
+      "word_bootstrap_ci95": [
+        2.1937534286009415,
+        2.614127316992778
+      ],
+      "words": 48,
+      "items": 964,
+      "conditions": {
+        "NOUN": {
+          "word_balanced_mean": 2.21040035887798,
+          "items": 476,
+          "words": 48
+        },
+        "VERB": {
+          "word_balanced_mean": 2.63140230282689,
+          "items": 488,
+          "words": 48
+        }
+      }
+    },
+    "pos_delta_dense": {
+      "word_balanced_mean": 0.039335978837956066,
+      "word_bootstrap_ci95": [
+        0.020865764029906253,
+        0.0575152470474703
+      ],
+      "words": 48,
+      "items": 964,
+      "conditions": {
+        "NOUN": {
+          "word_balanced_mean": 0.016146508247941914,
+          "items": 476,
+          "words": 48
+        },
+        "VERB": {
+          "word_balanced_mean": 0.04270341786032314,
+          "items": 488,
+          "words": 48
+        }
+      },
+      "paired_within_word_noun_minus_verb": {
+        "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+        "eligible_words": 48,
+        "word_effects": {
+          "address": -0.12102486590544384,
+          "answer": -0.3484466766769236,
+          "book": 0.10292430541345052,
+          "call": -0.14616518119970956,
+          "care": -0.19572473017291891,
+          "change": 0.01424847344557444,
+          "charge": -0.06907466790742343,
+          "check": -0.5158891364549979,
+          "contact": -0.17015000950927153,
+          "copy": 0.17489624757408384,
+          "cost": 0.35805519949644804,
+          "cover": -0.3137553462256042,
+          "deal": 0.08716416154604624,
+          "end": 0.23157853489974514,
+          "face": -0.028831039640036495,
+          "fall": -0.7740014426410198,
+          "help": -0.10527194157624854,
+          "hope": -0.08806408104988245,
+          "look": 0.14508881235184767,
+          "love": -0.08976242681965232,
+          "means": 0.06439665740444547,
+          "meeting": -0.28698052627234055,
+          "move": -0.193009109960662,
+          "name": 0.6158827115515514,
+          "need": 0.02398114317989016,
+          "needs": 0.12775765257138832,
+          "note": 0.05442459136247635,
+          "offer": -0.05311773967530046,
+          "order": -0.3807981039612339,
+          "place": 0.31274307072162627,
+          "plan": 0.19096660966222936,
+          "post": -0.3020674261663641,
+          "return": 0.03456668464992291,
+          "review": 0.18877131391603214,
+          "run": -0.1872638346420394,
+          "set": 0.3156689253573095,
+          "show": 0.2217337927115815,
+          "shows": 0.18389244920441083,
+          "sign": -0.3015236415501152,
+          "start": -0.042981304732772216,
+          "stay": 0.0253218595798199,
+          "support": -0.029948623584849492,
+          "thought": 0.24322185131410756,
+          "travel": 0.2162288451059298,
+          "use": -0.21308167891988117,
+          "visit": -0.17962870167361367,
+          "work": 0.10636039070931136,
+          "works": -0.17804370820522308
+        },
+        "mean": -0.026556909612381233,
+        "word_bootstrap_ci95": [
+          -0.09969778541226298,
+          0.04044415251324858
+        ]
+      }
+    },
+    "coverage": {
+      "drawn_windows": 250000,
+      "unique_windows": 221009,
+      "reused_windows": 28991,
+      "reuse_fraction": 0.11596399999999996,
+      "unique_training_target_tokens": 113156608,
+      "available_windows": 998030,
+      "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+    }
+  },
+  "curve": [
+    {
+      "step": 0,
+      "held_nll": 10.78531793955517,
+      "held_delta_dense": {
+        "mean": 8.29150504734409,
+        "ci95": [
+          7.9084384640081185,
+          8.74734390434066
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 10.705789128135345,
+      "coverage": {
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "reused_windows": 0,
+        "reuse_fraction": 0.0,
+        "unique_training_target_tokens": 0,
+        "available_windows": 998030,
+        "source_schedule_hash": "b827d8a782ce41c1e5c13fa0313d6b285860479ed620ef188bfd63ecb3622eb1"
+      }
+    },
+    {
+      "step": 512,
+      "held_nll": 4.6288264760129945,
+      "held_delta_dense": {
+        "mean": 2.135013583801915,
+        "ci95": [
+          1.9215494036351357,
+          2.4253517977528696
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 3.5455511446502945,
+      "coverage": {
+        "drawn_windows": 8192,
+        "unique_windows": 8167,
+        "reused_windows": 25,
+        "reuse_fraction": 0.0030517578125,
+        "unique_training_target_tokens": 4181504,
+        "available_windows": 998030,
+        "source_schedule_hash": "61f3d651cff8bc42d2f8f430ee9f25b4a94a9dda18f94f8fb0837af47cc00386"
+      }
+    },
+    {
+      "step": 1024,
+      "held_nll": 3.8918747348932374,
+      "held_delta_dense": {
+        "mean": 1.3980618426821578,
+        "ci95": [
+          1.263246348096168,
+          1.5687222767508342
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 3.1813648349381887,
+      "coverage": {
+        "drawn_windows": 16384,
+        "unique_windows": 16257,
+        "reused_windows": 127,
+        "reuse_fraction": 0.00775146484375,
+        "unique_training_target_tokens": 8323584,
+        "available_windows": 998030,
+        "source_schedule_hash": "9813ebde5183c508dca14c87185a600340c5613e4c059bfc40f7a490d243f74a"
+      }
+    },
+    {
+      "step": 1536,
+      "held_nll": 3.401435654257837,
+      "held_delta_dense": {
+        "mean": 0.9076227620467575,
+        "ci95": [
+          0.8292200439190943,
+          1.0087561395698472
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.9451512745567974,
+      "coverage": {
+        "drawn_windows": 24576,
+        "unique_windows": 24313,
+        "reused_windows": 263,
+        "reuse_fraction": 0.01070149739583337,
+        "unique_training_target_tokens": 12448256,
+        "available_windows": 998030,
+        "source_schedule_hash": "6fcc0c24a5fb46e40dec5db4a4da7372dbf811fc11b28031a2a34022d58d701d"
+      }
+    },
+    {
+      "step": 2048,
+      "held_nll": 3.107861359663209,
+      "held_delta_dense": {
+        "mean": 0.6140484674521303,
+        "ci95": [
+          0.5572528024789634,
+          0.6935950651679818
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.743130572008969,
+      "coverage": {
+        "drawn_windows": 32768,
+        "unique_windows": 32287,
+        "reused_windows": 481,
+        "reuse_fraction": 0.014678955078125,
+        "unique_training_target_tokens": 16530944,
+        "available_windows": 998030,
+        "source_schedule_hash": "e54b51ad92fe4a3518a0917029ce7e77b46738be29e45db57744ed7c4e7b8440"
+      }
+    },
+    {
+      "step": 2560,
+      "held_nll": 2.9762328864940795,
+      "held_delta_dense": {
+        "mean": 0.4824199942830001,
+        "ci95": [
+          0.4354616372033686,
+          0.5519357543933114
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.6228615458236875,
+      "coverage": {
+        "drawn_windows": 40960,
+        "unique_windows": 40181,
+        "reused_windows": 779,
+        "reuse_fraction": 0.019018554687500022,
+        "unique_training_target_tokens": 20572672,
+        "available_windows": 998030,
+        "source_schedule_hash": "2efa4e5ca7b0d37fe3eb2d7cdd3990cc898bd0d09091c341c734f3aeb2c17525"
+      }
+    },
+    {
+      "step": 3072,
+      "held_nll": 2.893361186303215,
+      "held_delta_dense": {
+        "mean": 0.3995482940921356,
+        "ci95": [
+          0.3544484852839075,
+          0.46611155113457764
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.5937684851274794,
+      "coverage": {
+        "drawn_windows": 49152,
+        "unique_windows": 48013,
+        "reused_windows": 1139,
+        "reuse_fraction": 0.02317301432291663,
+        "unique_training_target_tokens": 24582656,
+        "available_windows": 998030,
+        "source_schedule_hash": "1ef25bae0b1ea73927fec44104d33117228d29bf97da5cba8062f202b61fd1e2"
+      }
+    },
+    {
+      "step": 3584,
+      "held_nll": 2.8350314991721817,
+      "held_delta_dense": {
+        "mean": 0.3412186069611022,
+        "ci95": [
+          0.30151743830678324,
+          0.4046051755920915
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.555056556479576,
+      "coverage": {
+        "drawn_windows": 57344,
+        "unique_windows": 55787,
+        "reused_windows": 1557,
+        "reuse_fraction": 0.0271519252232143,
+        "unique_training_target_tokens": 28562944,
+        "available_windows": 998030,
+        "source_schedule_hash": "6dc15c88bf48aac890e5c4bf1815132b2718a0df311d4b20985aeae1c9cd966c"
+      }
+    },
+    {
+      "step": 4096,
+      "held_nll": 2.794626452290133,
+      "held_delta_dense": {
+        "mean": 0.3008135600790536,
+        "ci95": [
+          0.2622827853683382,
+          0.3613923229744679
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.538597934096176,
+      "coverage": {
+        "drawn_windows": 65536,
+        "unique_windows": 63508,
+        "reused_windows": 2028,
+        "reuse_fraction": 0.03094482421875,
+        "unique_training_target_tokens": 32516096,
+        "available_windows": 998030,
+        "source_schedule_hash": "bebff65532ceabae290e9a0ef29edb76b82fabbba1b1ab8095012cabc7cfe6b6"
+      }
+    },
+    {
+      "step": 4608,
+      "held_nll": 2.7634867056528174,
+      "held_delta_dense": {
+        "mean": 0.2696738134417378,
+        "ci95": [
+          0.23250684401223887,
+          0.3284000443188476
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.513859527120873,
+      "coverage": {
+        "drawn_windows": 73728,
+        "unique_windows": 71135,
+        "reused_windows": 2593,
+        "reuse_fraction": 0.03516981336805558,
+        "unique_training_target_tokens": 36421120,
+        "available_windows": 998030,
+        "source_schedule_hash": "6b3249eff22c19326aac8f3949fe3097494ee2d8c6ce5678bbdfe31c7f3569c3"
+      }
+    },
+    {
+      "step": 5120,
+      "held_nll": 2.740749131890722,
+      "held_delta_dense": {
+        "mean": 0.2469362396796425,
+        "ci95": [
+          0.21099116714169402,
+          0.30530462416091747
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4903049001147557,
+      "coverage": {
+        "drawn_windows": 81920,
+        "unique_windows": 78716,
+        "reused_windows": 3204,
+        "reuse_fraction": 0.039111328124999956,
+        "unique_training_target_tokens": 40302592,
+        "available_windows": 998030,
+        "source_schedule_hash": "732e4416c927f315c92c97e4c95d3e1dcd1bfa33d9a8c1992f5e74f1b0109768"
+      }
+    },
+    {
+      "step": 5632,
+      "held_nll": 2.7183136985917793,
+      "held_delta_dense": {
+        "mean": 0.22450080638070036,
+        "ci95": [
+          0.18961244470249833,
+          0.28113553607990927
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.47149325829707,
+      "coverage": {
+        "drawn_windows": 90112,
+        "unique_windows": 86230,
+        "reused_windows": 3882,
+        "reuse_fraction": 0.043079723011363646,
+        "unique_training_target_tokens": 44149760,
+        "available_windows": 998030,
+        "source_schedule_hash": "97be0f501a39ba9048a6330979f0e9c828f425bfb39480faeeca3e70933c5f88"
+      }
+    },
+    {
+      "step": 6144,
+      "held_nll": 2.700926488605747,
+      "held_delta_dense": {
+        "mean": 0.20711359639466786,
+        "ci95": [
+          0.1733510189369174,
+          0.26180999268871363
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.46615471388585,
+      "coverage": {
+        "drawn_windows": 98304,
+        "unique_windows": 93653,
+        "reused_windows": 4651,
+        "reuse_fraction": 0.04731241861979163,
+        "unique_training_target_tokens": 47950336,
+        "available_windows": 998030,
+        "source_schedule_hash": "b4b635e7adf37a1774225774e1c72a966bf027f0b5f2a1bf6b35cc7fa36ee1dc"
+      }
+    },
+    {
+      "step": 6656,
+      "held_nll": 2.685792218308171,
+      "held_delta_dense": {
+        "mean": 0.19197932609709123,
+        "ci95": [
+          0.1593783575083144,
+          0.24516024238486417
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4697461758144166,
+      "coverage": {
+        "drawn_windows": 106496,
+        "unique_windows": 101034,
+        "reused_windows": 5462,
+        "reuse_fraction": 0.05128831129807687,
+        "unique_training_target_tokens": 51729408,
+        "available_windows": 998030,
+        "source_schedule_hash": "0f054efaf7e6c53058c46d2e574b6eb8113cb49770499162f3e549559d66916b"
+      }
+    },
+    {
+      "step": 7168,
+      "held_nll": 2.6740789264535647,
+      "held_delta_dense": {
+        "mean": 0.18026603424248522,
+        "ci95": [
+          0.148065367632135,
+          0.2330787879076296
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4594098552586567,
+      "coverage": {
+        "drawn_windows": 114688,
+        "unique_windows": 108342,
+        "reused_windows": 6346,
+        "reuse_fraction": 0.055332728794642905,
+        "unique_training_target_tokens": 55471104,
+        "available_windows": 998030,
+        "source_schedule_hash": "ff7971f2d6a9fb29cce78f06f9f511c17ce175d9d168b7acebc199de5f039efc"
+      }
+    },
+    {
+      "step": 7680,
+      "held_nll": 2.662086112729832,
+      "held_delta_dense": {
+        "mean": 0.16827322051875288,
+        "ci95": [
+          0.13666008516624034,
+          0.21949821215166665
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4566994950761596,
+      "coverage": {
+        "drawn_windows": 122880,
+        "unique_windows": 115605,
+        "reused_windows": 7275,
+        "reuse_fraction": 0.0592041015625,
+        "unique_training_target_tokens": 59189760,
+        "available_windows": 998030,
+        "source_schedule_hash": "3f3c7ff9546325a0ea97ca6c7a7d0b884a346ffd9a72498b78da047fb41391c6"
+      }
+    },
+    {
+      "step": 8192,
+      "held_nll": 2.6524370579096255,
+      "held_delta_dense": {
+        "mean": 0.15862416569854587,
+        "ci95": [
+          0.12772403472241103,
+          0.20939292042438234
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.458227632366714,
+      "coverage": {
+        "drawn_windows": 131072,
+        "unique_windows": 122832,
+        "reused_windows": 8240,
+        "reuse_fraction": 0.0628662109375,
+        "unique_training_target_tokens": 62889984,
+        "available_windows": 998030,
+        "source_schedule_hash": "c4bf4c55c7f9c0a8050a2a405b09029e23d61206bd9c2cd3a7d9dbde3e3ca590"
+      }
+    },
+    {
+      "step": 8704,
+      "held_nll": 2.641555659166113,
+      "held_delta_dense": {
+        "mean": 0.1477427669550337,
+        "ci95": [
+          0.11800783105213049,
+          0.19660978252935177
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4398398423554126,
+      "coverage": {
+        "drawn_windows": 139264,
+        "unique_windows": 129946,
+        "reused_windows": 9318,
+        "reuse_fraction": 0.06690889246323528,
+        "unique_training_target_tokens": 66532352,
+        "available_windows": 998030,
+        "source_schedule_hash": "b3b1660b1d56f263b8064828db93602c9a94aa75f972aa1d75b0726793391a24"
+      }
+    },
+    {
+      "step": 9216,
+      "held_nll": 2.6332576445909037,
+      "held_delta_dense": {
+        "mean": 0.13944475237982426,
+        "ci95": [
+          0.11069700051908966,
+          0.18713757238787068
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4243194446888414,
+      "coverage": {
+        "drawn_windows": 147456,
+        "unique_windows": 137050,
+        "reused_windows": 10406,
+        "reuse_fraction": 0.07057020399305558,
+        "unique_training_target_tokens": 70169600,
+        "available_windows": 998030,
+        "source_schedule_hash": "52046f1e791b8ff09fc1fe4835c79cb62e8637ea57d453a11270659e944eb9bb"
+      }
+    },
+    {
+      "step": 9728,
+      "held_nll": 2.6274307657425786,
+      "held_delta_dense": {
+        "mean": 0.13361787353149943,
+        "ci95": [
+          0.10415628537964995,
+          0.1814335389227762
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4285108505529767,
+      "coverage": {
+        "drawn_windows": 155648,
+        "unique_windows": 144097,
+        "reused_windows": 11551,
+        "reuse_fraction": 0.07421232524671051,
+        "unique_training_target_tokens": 73777664,
+        "available_windows": 998030,
+        "source_schedule_hash": "e7626608cae18ce4738b6242ce1031ccb85cc27a5c07d972a59af2bcff34bb8f"
+      }
+    },
+    {
+      "step": 10240,
+      "held_nll": 2.6206565083833526,
+      "held_delta_dense": {
+        "mean": 0.12684361617227338,
+        "ci95": [
+          0.09814611322690203,
+          0.17325292032779513
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4121549705017125,
+      "coverage": {
+        "drawn_windows": 163840,
+        "unique_windows": 151064,
+        "reused_windows": 12776,
+        "reuse_fraction": 0.07797851562500002,
+        "unique_training_target_tokens": 77344768,
+        "available_windows": 998030,
+        "source_schedule_hash": "61db5f5c377eb8d58a05469149a2ec51d4a2df8bb7909c3c26e3c55879585eb2"
+      }
+    },
+    {
+      "step": 10752,
+      "held_nll": 2.614686992993631,
+      "held_delta_dense": {
+        "mean": 0.12087410078255184,
+        "ci95": [
+          0.09212411809420841,
+          0.1675175255849203
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4216999157671877,
+      "coverage": {
+        "drawn_windows": 172032,
+        "unique_windows": 157975,
+        "reused_windows": 14057,
+        "reuse_fraction": 0.08171154203869047,
+        "unique_training_target_tokens": 80883200,
+        "available_windows": 998030,
+        "source_schedule_hash": "e7784112d4edec709c3ed104723ca121e14f4722a9c4aa909142e3ce226af9b0"
+      }
+    },
+    {
+      "step": 11264,
+      "held_nll": 2.6088320838476977,
+      "held_delta_dense": {
+        "mean": 0.11501919163661832,
+        "ci95": [
+          0.08730309883702475,
+          0.16060067456691524
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4199256557627535,
+      "coverage": {
+        "drawn_windows": 180224,
+        "unique_windows": 164826,
+        "reused_windows": 15398,
+        "reuse_fraction": 0.08543812144886365,
+        "unique_training_target_tokens": 84390912,
+        "available_windows": 998030,
+        "source_schedule_hash": "1e2174b8c9474c0df3fa8204fb9ac4b62818f0154d42e56a1724f7dac0494b78"
+      }
+    },
+    {
+      "step": 11776,
+      "held_nll": 2.604251766793215,
+      "held_delta_dense": {
+        "mean": 0.11043887458213544,
+        "ci95": [
+          0.08318852027165334,
+          0.15548721440272872
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.406292536458504,
+      "coverage": {
+        "drawn_windows": 188416,
+        "unique_windows": 171593,
+        "reused_windows": 16823,
+        "reuse_fraction": 0.08928647248641308,
+        "unique_training_target_tokens": 87855616,
+        "available_windows": 998030,
+        "source_schedule_hash": "b9d7a6a3ff5510e156ad15433df5e474a04509801976e7e5bee7e3d3f64d3b73"
+      }
+    },
+    {
+      "step": 12288,
+      "held_nll": 2.599907347832983,
+      "held_delta_dense": {
+        "mean": 0.10609445562190387,
+        "ci95": [
+          0.07894599477812961,
+          0.15036344676725788
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.407002246839399,
+      "coverage": {
+        "drawn_windows": 196608,
+        "unique_windows": 178343,
+        "reused_windows": 18265,
+        "reuse_fraction": 0.09290059407552087,
+        "unique_training_target_tokens": 91311616,
+        "available_windows": 998030,
+        "source_schedule_hash": "569d8000e24bf18ed5ac3decd84938af51376c89fd553d2a3777b10d2cd683ac"
+      }
+    },
+    {
+      "step": 12800,
+      "held_nll": 2.5966589551495747,
+      "held_delta_dense": {
+        "mean": 0.1028460629384951,
+        "ci95": [
+          0.07623830876684036,
+          0.1467064390766744
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4040934927751207,
+      "coverage": {
+        "drawn_windows": 204800,
+        "unique_windows": 185029,
+        "reused_windows": 19771,
+        "reuse_fraction": 0.09653808593750002,
+        "unique_training_target_tokens": 94734848,
+        "available_windows": 998030,
+        "source_schedule_hash": "56f0c556c38c4361a7942abf2d66d538566ecc1ba393aa4235b6d5aafc4751cb"
+      }
+    },
+    {
+      "step": 13312,
+      "held_nll": 2.594494117924533,
+      "held_delta_dense": {
+        "mean": 0.10068122571345357,
+        "ci95": [
+          0.07432526169487828,
+          0.14416455452894109
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4024717338807093,
+      "coverage": {
+        "drawn_windows": 212992,
+        "unique_windows": 191636,
+        "reused_windows": 21356,
+        "reuse_fraction": 0.10026667668269229,
+        "unique_training_target_tokens": 98117632,
+        "available_windows": 998030,
+        "source_schedule_hash": "6253a2bca87ab011e7c8c4b6f491ef97726058e8ec5ec9f97558f57434fedd22"
+      }
+    },
+    {
+      "step": 13824,
+      "held_nll": 2.5926608613876296,
+      "held_delta_dense": {
+        "mean": 0.09884796917655005,
+        "ci95": [
+          0.0726408482666476,
+          0.14179843949166418
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4022612884756325,
+      "coverage": {
+        "drawn_windows": 221184,
+        "unique_windows": 198263,
+        "reused_windows": 22921,
+        "reuse_fraction": 0.10362865306712965,
+        "unique_training_target_tokens": 101510656,
+        "available_windows": 998030,
+        "source_schedule_hash": "f957839d91c7e5a6e0a10776f0805387197b9ee6def333c23349ba8065529730"
+      }
+    },
+    {
+      "step": 14336,
+      "held_nll": 2.5917508351656946,
+      "held_delta_dense": {
+        "mean": 0.09793794295461516,
+        "ci95": [
+          0.07174473063131401,
+          0.1408788650338552
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4018297543818483,
+      "coverage": {
+        "drawn_windows": 229376,
+        "unique_windows": 204816,
+        "reused_windows": 24560,
+        "reuse_fraction": 0.1070731026785714,
+        "unique_training_target_tokens": 104865792,
+        "available_windows": 998030,
+        "source_schedule_hash": "f98aeb02f5d4d45b5ec6c73bcc0de817fdce7eca5567366e7b233434a4b56498"
+      }
+    },
+    {
+      "step": 14848,
+      "held_nll": 2.5911513688159893,
+      "held_delta_dense": {
+        "mean": 0.09733847660490988,
+        "ci95": [
+          0.07131262152704003,
+          0.14016753480073565
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.4002668429766696,
+      "coverage": {
+        "drawn_windows": 237568,
+        "unique_windows": 211297,
+        "reused_windows": 26271,
+        "reuse_fraction": 0.1105830751616379,
+        "unique_training_target_tokens": 108184064,
+        "available_windows": 998030,
+        "source_schedule_hash": "cf59892eb51d8ca42b4aecb759a230ef12498ed0271f50bb898d8745da77af65"
+      }
+    },
+    {
+      "step": 15360,
+      "held_nll": 2.5909343157501317,
+      "held_delta_dense": {
+        "mean": 0.09712142353905198,
+        "ci95": [
+          0.07109574374951293,
+          0.13992388983775847
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.400169499187762,
+      "coverage": {
+        "drawn_windows": 245760,
+        "unique_windows": 217708,
+        "reused_windows": 28052,
+        "reuse_fraction": 0.11414388020833333,
+        "unique_training_target_tokens": 111466496,
+        "available_windows": 998030,
+        "source_schedule_hash": "247704cda971fd49de6fd3711fdb2d7b64d6a6cf99cb18a788de28b66f3661d0"
+      }
+    },
+    {
+      "step": 15625,
+      "held_nll": 2.590997127013771,
+      "held_delta_dense": {
+        "mean": 0.0971842348026915,
+        "ci95": [
+          0.07113646304931973,
+          0.13996325383125333
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "pos_mean": 2.400819011367697,
+      "coverage": {
+        "drawn_windows": 250000,
+        "unique_windows": 221009,
+        "reused_windows": 28991,
+        "reuse_fraction": 0.11596399999999996,
+        "unique_training_target_tokens": 113156608,
+        "available_windows": 998030,
+        "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+      }
+    }
+  ],
+  "diagnostic": {
+    "selection": {
+      "paired_file_quotas": true,
+      "requested": 512,
+      "actual": 512,
+      "seed": 125,
+      "files": [
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "quota_each": 34,
+          "seen_available": 13409,
+          "unseen_available": 47029
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "quota_each": 33,
+          "seen_available": 13344,
+          "unseen_available": 47094
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "quota_each": 39,
+          "seen_available": 13475,
+          "unseen_available": 46963
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "quota_each": 27,
+          "seen_available": 13257,
+          "unseen_available": 47181
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "quota_each": 30,
+          "seen_available": 13387,
+          "unseen_available": 47051
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "quota_each": 25,
+          "seen_available": 13350,
+          "unseen_available": 47088
+        },
+        {
+          "source": "Refined Web",
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "quota_each": 67,
+          "seen_available": 30801,
+          "unseen_available": 107639
+        },
+        {
+          "source": "Refined Web",
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "quota_each": 61,
+          "seen_available": 30684,
+          "unseen_available": 107756
+        },
+        {
+          "source": "StarCoder",
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "quota_each": 39,
+          "seen_available": 17815,
+          "unseen_available": 62203
+        },
+        {
+          "source": "StarCoder",
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "quota_each": 60,
+          "seen_available": 17557,
+          "unseen_available": 62461
+        },
+        {
+          "source": "C4",
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "quota_each": 10,
+          "seen_available": 4607,
+          "unseen_available": 16383
+        },
+        {
+          "source": "C4",
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "quota_each": 9,
+          "seen_available": 4723,
+          "unseen_available": 16267
+        },
+        {
+          "source": "Reddit",
+          "file_id": "reddit/reddit-0026.json.gz",
+          "quota_each": 11,
+          "seen_available": 5299,
+          "unseen_available": 18937
+        },
+        {
+          "source": "Reddit",
+          "file_id": "reddit/reddit-0041.json.gz",
+          "quota_each": 6,
+          "seen_available": 5302,
+          "unseen_available": 18934
+        },
+        {
+          "source": "Semantic Scholar",
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "quota_each": 13,
+          "seen_available": 3885,
+          "unseen_available": 13465
+        },
+        {
+          "source": "Semantic Scholar",
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "quota_each": 11,
+          "seen_available": 3831,
+          "unseen_available": 13519
+        },
+        {
+          "source": "arXiv",
+          "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+          "quota_each": 5,
+          "seen_available": 1852,
+          "unseen_available": 6641
+        },
+        {
+          "source": "arXiv",
+          "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+          "quota_each": 3,
+          "seen_available": 1874,
+          "unseen_available": 6619
+        },
+        {
+          "source": "StackExchange",
+          "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+          "quota_each": 6,
+          "seen_available": 1350,
+          "unseen_available": 4595
+        },
+        {
+          "source": "StackExchange",
+          "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+          "quota_each": 3,
+          "seen_available": 1342,
+          "unseen_available": 4603
+        },
+        {
+          "source": "Flan",
+          "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+          "quota_each": 2,
+          "seen_available": 1106,
+          "unseen_available": 3898
+        },
+        {
+          "source": "Flan",
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "quota_each": 2,
+          "seen_available": 1163,
+          "unseen_available": 3841
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_head/cc_news-0001.json.gz",
+          "quota_each": 0,
+          "seen_available": 485,
+          "unseen_available": 1683
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_tail/cc_news-0000.json.gz",
+          "quota_each": 3,
+          "seen_available": 483,
+          "unseen_available": 1685
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_middle/cc_news-0002.json.gz",
+          "quota_each": 1,
+          "seen_available": 466,
+          "unseen_available": 1702
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_head/cc_news-0000.json.gz",
+          "quota_each": 1,
+          "seen_available": 443,
+          "unseen_available": 1725
+        },
+        {
+          "source": "OpenWebMath",
+          "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+          "quota_each": 3,
+          "seen_available": 881,
+          "unseen_available": 2940
+        },
+        {
+          "source": "OpenWebMath",
+          "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+          "quota_each": 1,
+          "seen_available": 821,
+          "unseen_available": 3000
+        },
+        {
+          "source": "Algebraic Stack",
+          "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+          "quota_each": 1,
+          "seen_available": 867,
+          "unseen_available": 2954
+        },
+        {
+          "source": "Algebraic Stack",
+          "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+          "quota_each": 0,
+          "seen_available": 837,
+          "unseen_available": 2984
+        },
+        {
+          "source": "Project Gutenberg",
+          "file_id": "books/books-0000.json.gz",
+          "quota_each": 2,
+          "seen_available": 727,
+          "unseen_available": 2488
+        },
+        {
+          "source": "MegaWika",
+          "file_id": "wikiref_megawika/megawika-0162.json.gz",
+          "quota_each": 1,
+          "seen_available": 289,
+          "unseen_available": 1106
+        },
+        {
+          "source": "MegaWika",
+          "file_id": "wikiref_megawika/megawika-0144.json.gz",
+          "quota_each": 0,
+          "seen_available": 300,
+          "unseen_available": 1095
+        },
+        {
+          "source": "Wikipedia & Wikibooks",
+          "file_id": "wiki/wiki-0000.json.gz",
+          "quota_each": 3,
+          "seen_available": 997,
+          "unseen_available": 3492
+        }
+      ],
+      "selection_depends_on_loss": false
+    },
+    "seen": {
+      "trained": {
+        "file": {
+          "mean": 2.3966500469301035,
+          "ci95": [
+            1.9552805422739663,
+            2.7707036612406037
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.3966500469301035,
+          "ci95": [
+            2.3258762177248116,
+            2.4684002701169128
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.019540602817262,
+            "ci95": [
+              1.019540602817262,
+              1.019540602817262
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.743765603831495,
+            "ci95": [
+              2.6298182418200495,
+              2.8703737838442107
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.5994284122895084,
+            "ci95": [
+              2.0899408764983747,
+              2.8373428187676613
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.868789530024242,
+            "ci95": [
+              2.7177748961359005,
+              3.026926431036623
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.6449537240634005,
+            "ci95": [
+              1.6396396051908555,
+              1.6502678429359454
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.293361975837236,
+            "ci95": [
+              2.293361975837236,
+              2.293361975837236
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8604641068588488,
+            "ci95": [
+              1.529849876686838,
+              2.852306797374881
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.728363704712497,
+            "ci95": [
+              2.728363704712497,
+              2.728363704712497
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.812148830824209,
+            "ci95": [
+              2.8114869640654785,
+              2.812509849056243
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.7798573704020964,
+            "ci95": [
+              2.775524450671159,
+              2.78461647895903
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.5045212445270764,
+            "ci95": [
+              2.4610214252811864,
+              2.5559301218176738
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 1.7177161497300295,
+            "ci95": [
+              1.5437975671675412,
+              2.0655533148550056
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.033483365637197,
+            "ci95": [
+              0.8972139672992281,
+              1.122058474556877
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 1.9146098371558713,
+            "ci95": [
+              1.9146098371558713,
+              1.9146098371558713
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.5721863845488786,
+            "ci95": [
+              1.3053645334663682,
+              1.7322794951983849
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "dense": {
+        "file": {
+          "mean": 2.38792987231954,
+          "ci95": [
+            1.962892339790916,
+            2.737678103147724
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.38792987231954,
+          "ci95": [
+            2.3153998252131958,
+            2.4580849541257908
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.0599947729867232,
+            "ci95": [
+              1.0599947729867232,
+              1.0599947729867232
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.718050691766461,
+            "ci95": [
+              2.6181617139223796,
+              2.829038444926551
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.585181379777328,
+            "ci95": [
+              2.081231349060104,
+              2.837668162926074
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.8543922941199966,
+            "ci95": [
+              2.7079816509473162,
+              2.999830906564985
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.6868313618515477,
+            "ci95": [
+              0.18340141986816158,
+              1.1902613038349337
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.4246034576606412,
+            "ci95": [
+              2.4246034576606412,
+              2.4246034576606412
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8633040873800726,
+            "ci95": [
+              1.5563594488044448,
+              2.784138003106956
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.728593691068764,
+            "ci95": [
+              2.728593691068764,
+              2.728593691068764
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.7913540575550417,
+            "ci95": [
+              2.7908924956138965,
+              2.79220025444714
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.748980828685044,
+            "ci95": [
+              2.740761939091755,
+              2.758008133648164
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.484437407653704,
+            "ci95": [
+              2.4338173106379206,
+              2.544261158672357
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 1.7128334177516917,
+            "ci95": [
+              1.476888947081895,
+              2.1847223590912854
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.1095087165766475,
+            "ci95": [
+              1.0031884815073282,
+              1.1786168693717052
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 1.876426482897407,
+            "ci95": [
+              1.876426482897407,
+              1.876426482897407
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.5559924871910762,
+            "ci95": [
+              1.325749725914548,
+              1.6941381439569931
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "delta_dense": {
+        "file": {
+          "mean": 0.008720174610563599,
+          "ci95": [
+            -0.018497398223596175,
+            0.03816226922490228
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.008720174610563599,
+          "ci95": [
+            -0.00425230129096005,
+            0.02321830860995893
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": -0.04045417016946118,
+            "ci95": [
+              -0.04045417016946118,
+              -0.04045417016946118
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 0.025714912065033863,
+            "ci95": [
+              0.011656527897670087,
+              0.04133533891766028
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.014247032512180447,
+            "ci95": [
+              -0.0003253441584127141,
+              0.0635016675978699
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.01439723590424555,
+            "ci95": [
+              0.0004981710340462612,
+              0.03755839477719084
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.9581223622118529,
+            "ci95": [
+              0.44937830135592194,
+              1.4668664230677837
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": -0.13124148182340534,
+            "ci95": [
+              -0.13124148182340534,
+              -0.13124148182340534
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": -0.002839980521223806,
+            "ci95": [
+              -0.026509572117606666,
+              0.06816879426792477
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": -0.0002299863562669202,
+            "ci95": [
+              -0.0002299863562669202,
+              -0.0002299863562669202
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.02079477326916724,
+            "ci95": [
+              0.019286709618338598,
+              0.0216173534423465
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.030876541717052505,
+            "ci95": [
+              0.026608345310865342,
+              0.034762511579402015
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.020083836873372268,
+            "ci95": [
+              0.011668963145316463,
+              0.02720411464326564
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.004882731978337674,
+            "ci95": [
+              -0.11916904423627983,
+              0.06690862008564642
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": -0.07602535093945062,
+            "ci95": [
+              -0.10597451420810018,
+              -0.056558394814828356
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.03818335425846401,
+            "ci95": [
+              0.03818335425846401,
+              0.03818335425846401
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.01619389735780241,
+            "ci95": [
+              -0.02038519244817986,
+              0.03814135124139177
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      }
+    },
+    "unseen": {
+      "trained": {
+        "file": {
+          "mean": 2.4595391564643734,
+          "ci95": [
+            1.9894043651926572,
+            2.88445424358633
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.4595391564643734,
+          "ci95": [
+            2.381192246199909,
+            2.536680756032934
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.5117591859805994,
+            "ci95": [
+              1.5117591859805994,
+              1.5117591859805994
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.8578866081081795,
+            "ci95": [
+              2.8147832464729503,
+              2.9057792321473226
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.899440767560839,
+            "ci95": [
+              2.781060992881507,
+              3.232191200366856
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.9814746685648603,
+            "ci95": [
+              2.7792644162526288,
+              3.1958424289490566
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 2.367967638256455,
+            "ci95": [
+              2.1936809911731245,
+              2.542254285339785
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.6727372293303233,
+            "ci95": [
+              2.6727372293303233,
+              2.6727372293303233
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 2.3400251715641938,
+            "ci95": [
+              1.8431220366010166,
+              2.505659549885253
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.83623124324194,
+            "ci95": [
+              2.83623124324194,
+              2.83623124324194
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.97948680648361,
+            "ci95": [
+              2.8966862100948325,
+              3.024650768150216
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.779461696355604,
+            "ci95": [
+              2.7523972281782174,
+              2.8041024808156125
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.5905529986454625,
+            "ci95": [
+              2.5550124722647856,
+              2.6206257517368052
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.183326768725703,
+            "ci95": [
+              1.7977511261604384,
+              2.3761145900083354
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.9341424675752461,
+            "ci95": [
+              0.8449494686490215,
+              0.9921179168772921
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.0882111424179066,
+            "ci95": [
+              2.0882111424179066,
+              2.0882111424179066
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.7863134299580141,
+            "ci95": [
+              1.6889682794123377,
+              1.9485553475341415
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "dense": {
+        "file": {
+          "mean": 2.4014860056740908,
+          "ci95": [
+            1.9547634980262671,
+            2.798758355416114
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.4014860056740908,
+          "ci95": [
+            2.3249871269754516,
+            2.4754429672792755
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.4646934546131654,
+            "ci95": [
+              1.4646934546131654,
+              1.4646934546131654
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.7844120627938427,
+            "ci95": [
+              2.737476655719675,
+              2.8365625150984735
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.812946153029793,
+            "ci95": [
+              2.6775459904533676,
+              3.1657867865524167
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.9140093736390615,
+            "ci95": [
+              2.713346311538787,
+              3.122441692862018
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.234619087733735,
+            "ci95": [
+              0.37131626098142734,
+              2.097921914486043
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.534422010257925,
+            "ci95": [
+              2.534422010257925,
+              2.534422010257925
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 2.2225864558198634,
+            "ci95": [
+              1.7530668333510349,
+              2.379092996642806
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.8135467479808653,
+            "ci95": [
+              2.8135467479808653,
+              2.8135467479808653
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.9063865304459036,
+            "ci95": [
+              2.8137320363304696,
+              2.9569253454179587
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.6921992084257327,
+            "ci95": [
+              2.6641520240009244,
+              2.7177347046930946
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.5346922803274547,
+            "ci95": [
+              2.497158163751733,
+              2.566451917429988
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.1058535135023537,
+            "ci95": [
+              1.7329886990328378,
+              2.2922859207371116
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.9864673499916451,
+            "ci95": [
+              0.9210260138687665,
+              1.0290042184715158
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.0255004303558053,
+            "ci95": [
+              2.0255004303558053,
+              2.0255004303558053
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.7214183227521551,
+            "ci95": [
+              1.6272490068163037,
+              1.8783671826452402
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "delta_dense": {
+        "file": {
+          "mean": 0.05805315079028241,
+          "ci95": [
+            0.022170924506837122,
+            0.09648613181927318
+          ],
+          "cluster": "file",
+          "clusters": 31,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.05805315079028241,
+          "ci95": [
+            0.04558215345214589,
+            0.07305842404861607
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.04706573136743408,
+            "ci95": [
+              0.04706573136743408,
+              0.04706573136743408
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 0.07347454531433666,
+            "ci95": [
+              0.06921671704884919,
+              0.07730659075327537
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.0864946145310462,
+            "ci95": [
+              0.055523651556374176,
+              0.10351500242813927
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.06746529492579907,
+            "ci95": [
+              0.055664006045022134,
+              0.08753050417285464
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.1333485505227199,
+            "ci95": [
+              0.09575907668708195,
+              2.1709380243583576
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.1383152190723984,
+            "ci95": [
+              0.1383152190723984,
+              0.1383152190723984
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.11743871574433051,
+            "ci95": [
+              0.09005520324998173,
+              0.12656655324244678
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.022684495261074744,
+            "ci95": [
+              0.022684495261074744,
+              0.022684495261074744
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.07310027603770664,
+            "ci95": [
+              0.06772542273225794,
+              0.08295417376436258
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.0872624879298711,
+            "ci95": [
+              0.08636777612251764,
+              0.08824520417729215
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.05586071831800837,
+            "ci95": [
+              0.05417383430681692,
+              0.057854308513052816
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.07747325522334941,
+            "ci95": [
+              0.06476242712760039,
+              0.08382866927122394
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": -0.0523248824163988,
+            "ci95": [
+              -0.07607654521974479,
+              -0.03688630159422392
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.06271071206210148,
+            "ci95": [
+              0.06271071206210148,
+              0.06271071206210148
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.06489510720585911,
+            "ci95": [
+              0.061719272596033825,
+              0.07018816488890127
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      }
+    }
+  },
+  "full_local_summary": "/tmp/xiang-moe-20261025/e125_D-cover/training_summary.json"
+}

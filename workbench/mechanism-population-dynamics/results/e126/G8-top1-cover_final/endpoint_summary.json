@@ -1,0 +1,1866 @@
+{
+  "status": "complete",
+  "run_id": "G8-top1-cover",
+  "replacement": "moe",
+  "step": 15625,
+  "planned_steps": 15625,
+  "train_tokens": 128000000,
+  "config_hash": "75580cbed488f1c5ce73d779e3457990f83710eb0ab99ebc02d594cef90377dd",
+  "initial_tensor_sha256": "53d5ad757fbcbded12dd8136e52becedcb9cede34c7cd31767762bb7fbbf3bac",
+  "frozen_sample_hash_before": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "frozen_sample_hash_after": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "coverage": {
+    "drawn_windows": 250000,
+    "unique_windows": 221009,
+    "reused_windows": 28991,
+    "reuse_fraction": 0.11596399999999996,
+    "unique_training_target_tokens": 113156608,
+    "available_windows": 998030,
+    "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd",
+    "files": [
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15182,
+        "unique_windows": 13409,
+        "sampling_probability": 0.06055681439240046
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15038,
+        "unique_windows": 13344,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15211,
+        "unique_windows": 13475,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 14942,
+        "unique_windows": 13257,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15114,
+        "unique_windows": 13387,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 15116,
+        "unique_windows": 13350,
+        "sampling_probability": 0.06055678314239948
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 34910,
+        "unique_windows": 30801,
+        "sampling_probability": 0.1387107543347111
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 34701,
+        "unique_windows": 30684,
+        "sampling_probability": 0.1387107543347111
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0017.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 20165,
+        "unique_windows": 17815,
+        "sampling_probability": 0.0801750650054708
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0047.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 19882,
+        "unique_windows": 17557,
+        "sampling_probability": 0.0801750650054708
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0073.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 5239,
+        "unique_windows": 4607,
+        "sampling_probability": 0.021031531907235376
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0032.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 5343,
+        "unique_windows": 4723,
+        "sampling_probability": 0.0210315006572344
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0026.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 5947,
+        "unique_windows": 5299,
+        "sampling_probability": 0.024283500758859402
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0041.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 6021,
+        "unique_windows": 5302,
+        "sampling_probability": 0.024283500758859402
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0009.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 4393,
+        "unique_windows": 3885,
+        "sampling_probability": 0.017384438043263693
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0018.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 4314,
+        "unique_windows": 3831,
+        "sampling_probability": 0.017384438043263693
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 2110,
+        "unique_windows": 1852,
+        "sampling_probability": 0.008509875265933603
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 2125,
+        "unique_windows": 1874,
+        "sampling_probability": 0.008509844015932628
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 1524,
+        "unique_windows": 1350,
+        "sampling_probability": 0.005956906436153327
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 1523,
+        "unique_windows": 1342,
+        "sampling_probability": 0.005956906436153327
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 1252,
+        "unique_windows": 1106,
+        "sampling_probability": 0.005014750156710943
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 1304,
+        "unique_windows": 1163,
+        "sampling_probability": 0.005014718906709967
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0001.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 537,
+        "unique_windows": 485,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_tail/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 559,
+        "unique_windows": 483,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_middle/cc_news-0002.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 542,
+        "unique_windows": 466,
+        "sampling_probability": 0.0021730625679082056
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 502,
+        "unique_windows": 443,
+        "sampling_probability": 0.002173031317907229
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 1011,
+        "unique_windows": 881,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 935,
+        "unique_windows": 821,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 970,
+        "unique_windows": 867,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 933,
+        "unique_windows": 837,
+        "sampling_probability": 0.0038294376196699263
+      },
+      {
+        "source": "Project Gutenberg",
+        "file_id": "books/books-0000.json.gz",
+        "available_windows": 3215,
+        "drawn_windows": 848,
+        "unique_windows": 727,
+        "sampling_probability": 0.0032215938506748084
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0162.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 329,
+        "unique_windows": 289,
+        "sampling_probability": 0.0013980625436894546
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0144.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 338,
+        "unique_windows": 300,
+        "sampling_probability": 0.0013980312936884782
+      },
+      {
+        "source": "Wikipedia & Wikibooks",
+        "file_id": "wiki/wiki-0000.json.gz",
+        "available_windows": 4489,
+        "drawn_windows": 1140,
+        "unique_windows": 997,
+        "sampling_probability": 0.004498062640564458
+      }
+    ],
+    "count_arrays_sha256": "a477faedbb21d0e8a9264a66b8145a02ae2b57b0fdb9c9cd353af17087c3401d"
+  },
+  "dense_reference": {
+    "file": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.029855222423871,
+        2.8807765491502297
+      ],
+      "cluster": "file",
+      "clusters": 32,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequence": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.422263147913324,
+        2.568732465944894
+      ],
+      "cluster": "sequence",
+      "clusters": 512,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequences": 512,
+    "tokens": 262144,
+    "sources": {
+      "Algebraic Stack": {
+        "mean": 1.6639746209870194,
+        "ci95": [
+          1.4502749847057868,
+          2.3050735298307172
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "C4": {
+        "mean": 2.684300885485394,
+        "ci95": [
+          2.655091501766934,
+          2.7343741147170397
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "CC News": {
+        "mean": 2.5012168555317977,
+        "ci95": [
+          2.335912273687981,
+          2.6526938652367704
+        ],
+        "cluster": "file",
+        "clusters": 3,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Dolma CC": {
+        "mean": 3.0696471823682927,
+        "ci95": [
+          2.781108082280136,
+          3.4345635666238863
+        ],
+        "cluster": "file",
+        "clusters": 6,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Flan": {
+        "mean": 1.6107764723598712,
+        "ci95": [
+          1.412470511745657,
+          1.7595059428205317
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "MegaWika": {
+        "mean": 1.9592867608310236,
+        "ci95": [
+          1.9592867608310236,
+          1.9592867608310236
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "OpenWebMath": {
+        "mean": 1.755481708242962,
+        "ci95": [
+          1.3167515861833632,
+          2.6329419523621596
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Project Gutenberg": {
+        "mean": 2.2980363824557664,
+        "ci95": [
+          2.2980363824557664,
+          2.2980363824557664
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "Reddit": {
+        "mean": 2.870269608277654,
+        "ci95": [
+          2.8085682022240546,
+          2.9114038789800527
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Refined Web": {
+        "mean": 2.711061626322444,
+        "ci95": [
+          2.664947840669545,
+          2.752692127259088
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Semantic Scholar": {
+        "mean": 2.232750092474754,
+        "ci95": [
+          2.1977896847182,
+          2.2633404492617384
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StackExchange": {
+        "mean": 2.0341106169356147,
+        "ci95": [
+          1.8103215421909569,
+          2.3697942290526015
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StarCoder": {
+        "mean": 1.0527868530032887,
+        "ci95": [
+          1.0255099414449045,
+          1.084837224084391
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Wikipedia & Wikibooks": {
+        "mean": 2.2427655458329165,
+        "ci95": [
+          2.2427655458329165,
+          2.2427655458329165
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "arXiv": {
+        "mean": 1.4786196951716875,
+        "ci95": [
+          1.4521678575340646,
+          1.6637825586350488
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      }
+    },
+    "sources_evaluated": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "sources_available": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "missing_sources": []
+  },
+  "elapsed_wall_seconds": 3651.704846136039,
+  "tokens_per_second_after_first": 37973.44260243427,
+  "peak_cuda_memory_bytes": 18063468544,
+  "fixed_endpoint": {
+    "step": 15625,
+    "held": {
+      "file": {
+        "mean": 2.5898665231349396,
+        "ci95": [
+          2.103251218594505,
+          3.012678319708636
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequence": {
+        "mean": 2.5898665231349396,
+        "ci95": [
+          2.5119746268780716,
+          2.668722893920581
+        ],
+        "cluster": "sequence",
+        "clusters": 512,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequences": 512,
+      "tokens": 262144,
+      "sources": {
+        "Algebraic Stack": {
+          "mean": 1.8091788866474126,
+          "ci95": [
+            1.6232859914076674,
+            2.3668575723666474
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "C4": {
+          "mean": 2.7513682804873523,
+          "ci95": [
+            2.724766669489918,
+            2.7969710421972414
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "CC News": {
+          "mean": 2.580740725484868,
+          "ci95": [
+            2.4270040278643172,
+            2.7237149119960016
+          ],
+          "cluster": "file",
+          "clusters": 3,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Dolma CC": {
+          "mean": 3.1925907826168456,
+          "ci95": [
+            2.8456014124075786,
+            3.653017484794584
+          ],
+          "cluster": "file",
+          "clusters": 6,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Flan": {
+          "mean": 1.746293790455184,
+          "ci95": [
+            1.577846380754402,
+            1.8726293477307707
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "MegaWika": {
+          "mean": 2.1038564787601786,
+          "ci95": [
+            2.1038564787601786,
+            2.1038564787601786
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "OpenWebMath": {
+          "mean": 1.8270049719419694,
+          "ci95": [
+            1.3892299509830077,
+            2.702555013859893
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Project Gutenberg": {
+          "mean": 2.3898717904908313,
+          "ci95": [
+            2.3898717904908313,
+            2.3898717904908313
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "Reddit": {
+          "mean": 2.939003438532385,
+          "ci95": [
+            2.8703260816231575,
+            2.984788343138536
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Refined Web": {
+          "mean": 2.8043101097650243,
+          "ci95": [
+            2.7686426636430657,
+            2.8365098875140142
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Semantic Scholar": {
+          "mean": 2.308911547642113,
+          "ci95": [
+            2.279843389151046,
+            2.334346186321797
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StackExchange": {
+          "mean": 2.078419184679305,
+          "ci95": [
+            1.8512941916536694,
+            2.4191066742177583
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StarCoder": {
+          "mean": 1.1123625612909052,
+          "ci95": [
+            1.0877429836277275,
+            1.1412905650451401
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Wikipedia & Wikibooks": {
+          "mean": 2.3331538432293275,
+          "ci95": [
+            2.3331538432293275,
+            2.3331538432293275
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "arXiv": {
+          "mean": 1.54660439492972,
+          "ci95": [
+            1.5215885245074383,
+            1.7217154878856888
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        }
+      },
+      "sources_evaluated": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "sources_available": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "missing_sources": []
+    },
+    "held_delta_dense": {
+      "file": {
+        "mean": 0.09605363092385975,
+        "ci95": [
+          0.06950246703105219,
+          0.13882801455739502
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequence": {
+        "mean": 0.09605363092385975,
+        "ci95": [
+          0.08526318296978093,
+          0.10872333919756573
+        ],
+        "cluster": "sequence",
+        "clusters": 512,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "sequences": 512,
+      "tokens": 262144,
+      "sources": {
+        "Algebraic Stack": {
+          "mean": 0.14520426566039302,
+          "ci95": [
+            0.06178404253593017,
+            0.17301100670188063
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "C4": {
+          "mean": 0.06706739500195857,
+          "ci95": [
+            0.0625969274802013,
+            0.06967516772298366
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "CC News": {
+          "mean": 0.07952386995307048,
+          "ci95": [
+            0.07102104675923115,
+            0.09109175417633608
+          ],
+          "cluster": "file",
+          "clusters": 3,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Dolma CC": {
+          "mean": 0.122943600248553,
+          "ci95": [
+            0.06282230189645288,
+            0.21594185432856372
+          ],
+          "cluster": "file",
+          "clusters": 6,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Flan": {
+          "mean": 0.13551731809531295,
+          "ci95": [
+            0.11312340491023892,
+            0.165375869008745
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "MegaWika": {
+          "mean": 0.14456971792915496,
+          "ci95": [
+            0.14456971792915496,
+            0.14456971792915496
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "OpenWebMath": {
+          "mean": 0.07152326369900752,
+          "ci95": [
+            0.0696130614977335,
+            0.07247836479964453
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Project Gutenberg": {
+          "mean": 0.09183540803506496,
+          "ci95": [
+            0.09183540803506496,
+            0.09183540803506496
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "Reddit": {
+          "mean": 0.06873383025473105,
+          "ci95": [
+            0.06175787939910275,
+            0.07338446415848325
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Refined Web": {
+          "mean": 0.09324848344258013,
+          "ci95": [
+            0.08381776025492592,
+            0.10369482297352017
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Semantic Scholar": {
+          "mean": 0.07616145516735931,
+          "ci95": [
+            0.07100573706005875,
+            0.08205370443284567
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StackExchange": {
+          "mean": 0.0443085677436903,
+          "ci95": [
+            0.04097264946271265,
+            0.04931244516515676
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "StarCoder": {
+          "mean": 0.05957570828761636,
+          "ci95": [
+            0.05645334096074863,
+            0.0622330421828229
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "Wikipedia & Wikibooks": {
+          "mean": 0.09038829739641119,
+          "ci95": [
+            0.09038829739641119,
+            0.09038829739641119
+          ],
+          "cluster": "file",
+          "clusters": 1,
+          "iterations": 1000,
+          "ci_degenerate": true
+        },
+        "arXiv": {
+          "mean": 0.06798469975803231,
+          "ci95": [
+            0.057932929250640086,
+            0.06942066697337405
+          ],
+          "cluster": "file",
+          "clusters": 2,
+          "iterations": 1000,
+          "ci_degenerate": false
+        }
+      },
+      "sources_evaluated": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "sources_available": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ],
+      "missing_sources": []
+    },
+    "pos": {
+      "word_balanced_mean": 2.4174886795653867,
+      "word_bootstrap_ci95": [
+        2.2145506153414782,
+        2.6234291384331354
+      ],
+      "words": 48,
+      "items": 964,
+      "conditions": {
+        "NOUN": {
+          "word_balanced_mean": 2.2268765696088764,
+          "items": 476,
+          "words": 48
+        },
+        "VERB": {
+          "word_balanced_mean": 2.641576323690653,
+          "items": 488,
+          "words": 48
+        }
+      }
+    },
+    "pos_delta_dense": {
+      "word_balanced_mean": 0.05600564703564632,
+      "word_bootstrap_ci95": [
+        0.03171607863494823,
+        0.08015170350231521
+      ],
+      "words": 48,
+      "items": 964,
+      "conditions": {
+        "NOUN": {
+          "word_balanced_mean": 0.03262271897883773,
+          "items": 476,
+          "words": 48
+        },
+        "VERB": {
+          "word_balanced_mean": 0.05287743872408642,
+          "items": 488,
+          "words": 48
+        }
+      },
+      "paired_within_word_noun_minus_verb": {
+        "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+        "eligible_words": 48,
+        "word_effects": {
+          "address": 0.0249758780002594,
+          "answer": -0.157394063743678,
+          "book": 0.10942819259232944,
+          "call": 0.0008407408992449419,
+          "care": -0.14510782658018997,
+          "change": -0.007492863138516742,
+          "charge": -0.24303329639757673,
+          "check": -0.5522354268110715,
+          "contact": 0.08441235724454507,
+          "copy": 0.2669251048493953,
+          "cost": 0.26646430119872094,
+          "cover": -0.2395646395457406,
+          "deal": 0.15945848043569746,
+          "end": 0.2695150986080989,
+          "face": -0.16380146975544366,
+          "fall": -0.5881590276956559,
+          "help": -0.027726803528956873,
+          "hope": -0.32025177444402986,
+          "look": 0.028140051981123786,
+          "love": -1.6932220508653756e-05,
+          "means": 0.0986924573069527,
+          "meeting": -0.09553198609501123,
+          "move": -0.3154021468427446,
+          "name": 0.3402394863909909,
+          "need": 0.08057883605882005,
+          "needs": 0.17786147557442483,
+          "note": 0.04147305215398471,
+          "offer": 0.00356396419395294,
+          "order": -0.4024349758544794,
+          "place": 0.29606662690639496,
+          "plan": 0.06140300780534744,
+          "post": 0.024111657270363407,
+          "return": -0.05413321589525692,
+          "review": 0.12801305169461072,
+          "run": 0.00019109131147460046,
+          "set": 0.18051964852630215,
+          "show": 0.08347038472337383,
+          "shows": 0.010013598735843388,
+          "sign": -0.3243239909144384,
+          "start": -0.0649567457071195,
+          "stay": -0.05137497721574245,
+          "support": -0.0554046875664166,
+          "thought": 0.30281168191383284,
+          "travel": 0.18890457193959842,
+          "use": -0.257878212657358,
+          "visit": 0.1301010598738988,
+          "work": 0.1007319032123276,
+          "works": -0.36490924656391144
+        },
+        "mean": -0.0202547197452487,
+        "word_bootstrap_ci95": [
+          -0.08677788014052275,
+          0.0365168613289636
+        ]
+      }
+    },
+    "coverage": {
+      "drawn_windows": 250000,
+      "unique_windows": 221009,
+      "reused_windows": 28991,
+      "reuse_fraction": 0.11596399999999996,
+      "unique_training_target_tokens": 113156608,
+      "available_windows": 998030,
+      "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+    }
+  },
+  "curve": [
+    {
+      "step": 0,
+      "held_nll": 8.767047460191925,
+      "held_delta_dense": {
+        "mean": 6.273234567980846,
+        "ci95": [
+          5.978219470682958,
+          6.6708842360278275
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "reused_windows": 0,
+        "reuse_fraction": 0.0,
+        "unique_training_target_tokens": 0,
+        "available_windows": 998030,
+        "source_schedule_hash": "b827d8a782ce41c1e5c13fa0313d6b285860479ed620ef188bfd63ecb3622eb1"
+      }
+    },
+    {
+      "step": 512,
+      "held_nll": 3.2682620410062855,
+      "held_delta_dense": {
+        "mean": 0.7744491487952061,
+        "ci95": [
+          0.6907795573109576,
+          0.9004531839277122
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 8192,
+        "unique_windows": 8167,
+        "reused_windows": 25,
+        "reuse_fraction": 0.0030517578125,
+        "unique_training_target_tokens": 4181504,
+        "available_windows": 998030,
+        "source_schedule_hash": "61f3d651cff8bc42d2f8f430ee9f25b4a94a9dda18f94f8fb0837af47cc00386"
+      }
+    },
+    {
+      "step": 1024,
+      "held_nll": 2.758088810728855,
+      "held_delta_dense": {
+        "mean": 0.2642759185177753,
+        "ci95": [
+          0.2184371232699577,
+          0.3402965947207526
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 16384,
+        "unique_windows": 16257,
+        "reused_windows": 127,
+        "reuse_fraction": 0.00775146484375,
+        "unique_training_target_tokens": 8323584,
+        "available_windows": 998030,
+        "source_schedule_hash": "9813ebde5183c508dca14c87185a600340c5613e4c059bfc40f7a490d243f74a"
+      }
+    },
+    {
+      "step": 1536,
+      "held_nll": 2.734171681320353,
+      "held_delta_dense": {
+        "mean": 0.24035878910927322,
+        "ci95": [
+          0.198974214791125,
+          0.30691126168633504
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 24576,
+        "unique_windows": 24313,
+        "reused_windows": 263,
+        "reuse_fraction": 0.01070149739583337,
+        "unique_training_target_tokens": 12448256,
+        "available_windows": 998030,
+        "source_schedule_hash": "6fcc0c24a5fb46e40dec5db4a4da7372dbf811fc11b28031a2a34022d58d701d"
+      }
+    },
+    {
+      "step": 2048,
+      "held_nll": 2.7274842482758332,
+      "held_delta_dense": {
+        "mean": 0.2336713560647536,
+        "ci95": [
+          0.19312789725317123,
+          0.2979301898980154
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 32768,
+        "unique_windows": 32287,
+        "reused_windows": 481,
+        "reuse_fraction": 0.014678955078125,
+        "unique_training_target_tokens": 16530944,
+        "available_windows": 998030,
+        "source_schedule_hash": "e54b51ad92fe4a3518a0917029ce7e77b46738be29e45db57744ed7c4e7b8440"
+      }
+    },
+    {
+      "step": 2560,
+      "held_nll": 2.7266052209326235,
+      "held_delta_dense": {
+        "mean": 0.23279232872154385,
+        "ci95": [
+          0.1943973306749314,
+          0.29776739430641525
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 40960,
+        "unique_windows": 40181,
+        "reused_windows": 779,
+        "reuse_fraction": 0.019018554687500022,
+        "unique_training_target_tokens": 20572672,
+        "available_windows": 998030,
+        "source_schedule_hash": "2efa4e5ca7b0d37fe3eb2d7cdd3990cc898bd0d09091c341c734f3aeb2c17525"
+      }
+    },
+    {
+      "step": 3072,
+      "held_nll": 2.7216088425200247,
+      "held_delta_dense": {
+        "mean": 0.2277959503089455,
+        "ci95": [
+          0.18932365358836412,
+          0.2902358877891556
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 49152,
+        "unique_windows": 48013,
+        "reused_windows": 1139,
+        "reuse_fraction": 0.02317301432291663,
+        "unique_training_target_tokens": 24582656,
+        "available_windows": 998030,
+        "source_schedule_hash": "1ef25bae0b1ea73927fec44104d33117228d29bf97da5cba8062f202b61fd1e2"
+      }
+    },
+    {
+      "step": 3584,
+      "held_nll": 2.71752272364039,
+      "held_delta_dense": {
+        "mean": 0.22370983142931056,
+        "ci95": [
+          0.18456255087335846,
+          0.28747090031422257
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 57344,
+        "unique_windows": 55787,
+        "reused_windows": 1557,
+        "reuse_fraction": 0.0271519252232143,
+        "unique_training_target_tokens": 28562944,
+        "available_windows": 998030,
+        "source_schedule_hash": "6dc15c88bf48aac890e5c4bf1815132b2718a0df311d4b20985aeae1c9cd966c"
+      }
+    },
+    {
+      "step": 4096,
+      "held_nll": 2.7053158757304576,
+      "held_delta_dense": {
+        "mean": 0.21150298351937816,
+        "ci95": [
+          0.17481843476828243,
+          0.26925439066212664
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 65536,
+        "unique_windows": 63508,
+        "reused_windows": 2028,
+        "reuse_fraction": 0.03094482421875,
+        "unique_training_target_tokens": 32516096,
+        "available_windows": 998030,
+        "source_schedule_hash": "bebff65532ceabae290e9a0ef29edb76b82fabbba1b1ab8095012cabc7cfe6b6"
+      }
+    },
+    {
+      "step": 4608,
+      "held_nll": 2.6946371336580492,
+      "held_delta_dense": {
+        "mean": 0.20082424144696975,
+        "ci95": [
+          0.16488144844224253,
+          0.25826791427678936
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 73728,
+        "unique_windows": 71135,
+        "reused_windows": 2593,
+        "reuse_fraction": 0.03516981336805558,
+        "unique_training_target_tokens": 36421120,
+        "available_windows": 998030,
+        "source_schedule_hash": "6b3249eff22c19326aac8f3949fe3097494ee2d8c6ce5678bbdfe31c7f3569c3"
+      }
+    },
+    {
+      "step": 5120,
+      "held_nll": 2.681467332133955,
+      "held_delta_dense": {
+        "mean": 0.18765443992287584,
+        "ci95": [
+          0.15237983466188318,
+          0.2433772510841808
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 81920,
+        "unique_windows": 78716,
+        "reused_windows": 3204,
+        "reuse_fraction": 0.039111328124999956,
+        "unique_training_target_tokens": 40302592,
+        "available_windows": 998030,
+        "source_schedule_hash": "732e4416c927f315c92c97e4c95d3e1dcd1bfa33d9a8c1992f5e74f1b0109768"
+      }
+    },
+    {
+      "step": 5632,
+      "held_nll": 2.6716012464054013,
+      "held_delta_dense": {
+        "mean": 0.17778835419432176,
+        "ci95": [
+          0.14304516565903638,
+          0.23376766709882185
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 90112,
+        "unique_windows": 86230,
+        "reused_windows": 3882,
+        "reuse_fraction": 0.043079723011363646,
+        "unique_training_target_tokens": 44149760,
+        "available_windows": 998030,
+        "source_schedule_hash": "97be0f501a39ba9048a6330979f0e9c828f425bfb39480faeeca3e70933c5f88"
+      }
+    },
+    {
+      "step": 6144,
+      "held_nll": 2.6587937788681373,
+      "held_delta_dense": {
+        "mean": 0.16498088665705796,
+        "ci95": [
+          0.13154549404883703,
+          0.21836936934352233
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 98304,
+        "unique_windows": 93653,
+        "reused_windows": 4651,
+        "reuse_fraction": 0.04731241861979163,
+        "unique_training_target_tokens": 47950336,
+        "available_windows": 998030,
+        "source_schedule_hash": "b4b635e7adf37a1774225774e1c72a966bf027f0b5f2a1bf6b35cc7fa36ee1dc"
+      }
+    },
+    {
+      "step": 6656,
+      "held_nll": 2.650017595597567,
+      "held_delta_dense": {
+        "mean": 0.15620470338648731,
+        "ci95": [
+          0.1238201107895582,
+          0.20745281643522995
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 106496,
+        "unique_windows": 101034,
+        "reused_windows": 5462,
+        "reuse_fraction": 0.05128831129807687,
+        "unique_training_target_tokens": 51729408,
+        "available_windows": 998030,
+        "source_schedule_hash": "0f054efaf7e6c53058c46d2e574b6eb8113cb49770499162f3e549559d66916b"
+      }
+    },
+    {
+      "step": 7168,
+      "held_nll": 2.6391136400487722,
+      "held_delta_dense": {
+        "mean": 0.14530074783769303,
+        "ci95": [
+          0.11378892280146992,
+          0.19505133248841758
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 114688,
+        "unique_windows": 108342,
+        "reused_windows": 6346,
+        "reuse_fraction": 0.055332728794642905,
+        "unique_training_target_tokens": 55471104,
+        "available_windows": 998030,
+        "source_schedule_hash": "ff7971f2d6a9fb29cce78f06f9f511c17ce175d9d168b7acebc199de5f039efc"
+      }
+    },
+    {
+      "step": 7680,
+      "held_nll": 2.6323078679560723,
+      "held_delta_dense": {
+        "mean": 0.1384949757449927,
+        "ci95": [
+          0.10699274781549827,
+          0.18875709820883232
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 122880,
+        "unique_windows": 115605,
+        "reused_windows": 7275,
+        "reuse_fraction": 0.0592041015625,
+        "unique_training_target_tokens": 59189760,
+        "available_windows": 998030,
+        "source_schedule_hash": "3f3c7ff9546325a0ea97ca6c7a7d0b884a346ffd9a72498b78da047fb41391c6"
+      }
+    },
+    {
+      "step": 8192,
+      "held_nll": 2.6228816359842817,
+      "held_delta_dense": {
+        "mean": 0.129068743773202,
+        "ci95": [
+          0.0984239892130175,
+          0.1770483565355715
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 131072,
+        "unique_windows": 122832,
+        "reused_windows": 8240,
+        "reuse_fraction": 0.0628662109375,
+        "unique_training_target_tokens": 62889984,
+        "available_windows": 998030,
+        "source_schedule_hash": "c4bf4c55c7f9c0a8050a2a405b09029e23d61206bd9c2cd3a7d9dbde3e3ca590"
+      }
+    },
+    {
+      "step": 8704,
+      "held_nll": 2.6176708287013066,
+      "held_delta_dense": {
+        "mean": 0.1238579364902274,
+        "ci95": [
+          0.09352047562127594,
+          0.17383533771712714
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 139264,
+        "unique_windows": 129946,
+        "reused_windows": 9318,
+        "reuse_fraction": 0.06690889246323528,
+        "unique_training_target_tokens": 66532352,
+        "available_windows": 998030,
+        "source_schedule_hash": "b3b1660b1d56f263b8064828db93602c9a94aa75f972aa1d75b0726793391a24"
+      }
+    },
+    {
+      "step": 9216,
+      "held_nll": 2.612130663746131,
+      "held_delta_dense": {
+        "mean": 0.11831777153505156,
+        "ci95": [
+          0.08867376733983372,
+          0.16483540352083953
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 147456,
+        "unique_windows": 137050,
+        "reused_windows": 10406,
+        "reuse_fraction": 0.07057020399305558,
+        "unique_training_target_tokens": 70169600,
+        "available_windows": 998030,
+        "source_schedule_hash": "52046f1e791b8ff09fc1fe4835c79cb62e8637ea57d453a11270659e944eb9bb"
+      }
+    },
+    {
+      "step": 9728,
+      "held_nll": 2.607668109739901,
+      "held_delta_dense": {
+        "mean": 0.11385521752882148,
+        "ci95": [
+          0.08469186627535338,
+          0.16059627908593083
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 155648,
+        "unique_windows": 144097,
+        "reused_windows": 11551,
+        "reuse_fraction": 0.07421232524671051,
+        "unique_training_target_tokens": 73777664,
+        "available_windows": 998030,
+        "source_schedule_hash": "e7626608cae18ce4738b6242ce1031ccb85cc27a5c07d972a59af2bcff34bb8f"
+      }
+    },
+    {
+      "step": 10240,
+      "held_nll": 2.603287386810073,
+      "held_delta_dense": {
+        "mean": 0.10947449459899397,
+        "ci95": [
+          0.08100115157799673,
+          0.15514982792308624
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 163840,
+        "unique_windows": 151064,
+        "reused_windows": 12776,
+        "reuse_fraction": 0.07797851562500002,
+        "unique_training_target_tokens": 77344768,
+        "available_windows": 998030,
+        "source_schedule_hash": "61db5f5c377eb8d58a05469149a2ec51d4a2df8bb7909c3c26e3c55879585eb2"
+      }
+    },
+    {
+      "step": 10752,
+      "held_nll": 2.6007101491935387,
+      "held_delta_dense": {
+        "mean": 0.10689725698245921,
+        "ci95": [
+          0.0788018610231231,
+          0.1515660476937227
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 172032,
+        "unique_windows": 157975,
+        "reused_windows": 14057,
+        "reuse_fraction": 0.08171154203869047,
+        "unique_training_target_tokens": 80883200,
+        "available_windows": 998030,
+        "source_schedule_hash": "e7784112d4edec709c3ed104723ca121e14f4722a9c4aa909142e3ce226af9b0"
+      }
+    },
+    {
+      "step": 11264,
+      "held_nll": 2.5977440259073457,
+      "held_delta_dense": {
+        "mean": 0.1039311336962663,
+        "ci95": [
+          0.07621033329078199,
+          0.14740596689270585
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 180224,
+        "unique_windows": 164826,
+        "reused_windows": 15398,
+        "reuse_fraction": 0.08543812144886365,
+        "unique_training_target_tokens": 84390912,
+        "available_windows": 998030,
+        "source_schedule_hash": "1e2174b8c9474c0df3fa8204fb9ac4b62818f0154d42e56a1724f7dac0494b78"
+      }
+    },
+    {
+      "step": 11776,
+      "held_nll": 2.596477637694422,
+      "held_delta_dense": {
+        "mean": 0.10266474548334259,
+        "ci95": [
+          0.07417481916758968,
+          0.1476444601785354
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 188416,
+        "unique_windows": 171593,
+        "reused_windows": 16823,
+        "reuse_fraction": 0.08928647248641308,
+        "unique_training_target_tokens": 87855616,
+        "available_windows": 998030,
+        "source_schedule_hash": "b9d7a6a3ff5510e156ad15433df5e474a04509801976e7e5bee7e3d3f64d3b73"
+      }
+    },
+    {
+      "step": 12288,
+      "held_nll": 2.5940451353687433,
+      "held_delta_dense": {
+        "mean": 0.10023224315766388,
+        "ci95": [
+          0.0729144735659344,
+          0.1439247053361945
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 196608,
+        "unique_windows": 178343,
+        "reused_windows": 18265,
+        "reuse_fraction": 0.09290059407552087,
+        "unique_training_target_tokens": 91311616,
+        "available_windows": 998030,
+        "source_schedule_hash": "569d8000e24bf18ed5ac3decd84938af51376c89fd553d2a3777b10d2cd683ac"
+      }
+    },
+    {
+      "step": 12800,
+      "held_nll": 2.5922845305762108,
+      "held_delta_dense": {
+        "mean": 0.09847163836513169,
+        "ci95": [
+          0.07117600713343089,
+          0.14168865035535116
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 204800,
+        "unique_windows": 185029,
+        "reused_windows": 19771,
+        "reuse_fraction": 0.09653808593750002,
+        "unique_training_target_tokens": 94734848,
+        "available_windows": 998030,
+        "source_schedule_hash": "56f0c556c38c4361a7942abf2d66d538566ecc1ba393aa4235b6d5aafc4751cb"
+      }
+    },
+    {
+      "step": 13312,
+      "held_nll": 2.5915094878639144,
+      "held_delta_dense": {
+        "mean": 0.09769659565283506,
+        "ci95": [
+          0.0703288436072542,
+          0.14010699870118157
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 212992,
+        "unique_windows": 191636,
+        "reused_windows": 21356,
+        "reuse_fraction": 0.10026667668269229,
+        "unique_training_target_tokens": 98117632,
+        "available_windows": 998030,
+        "source_schedule_hash": "6253a2bca87ab011e7c8c4b6f491ef97726058e8ec5ec9f97558f57434fedd22"
+      }
+    },
+    {
+      "step": 13824,
+      "held_nll": 2.590990504174373,
+      "held_delta_dense": {
+        "mean": 0.09717761196329373,
+        "ci95": [
+          0.06992127525073773,
+          0.14011151488326798
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 221184,
+        "unique_windows": 198263,
+        "reused_windows": 22921,
+        "reuse_fraction": 0.10362865306712965,
+        "unique_training_target_tokens": 101510656,
+        "available_windows": 998030,
+        "source_schedule_hash": "f957839d91c7e5a6e0a10776f0805387197b9ee6def333c23349ba8065529730"
+      }
+    },
+    {
+      "step": 14336,
+      "held_nll": 2.590218214021638,
+      "held_delta_dense": {
+        "mean": 0.09640532181055883,
+        "ci95": [
+          0.07001726653827085,
+          0.13825424400786865
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 229376,
+        "unique_windows": 204816,
+        "reused_windows": 24560,
+        "reuse_fraction": 0.1070731026785714,
+        "unique_training_target_tokens": 104865792,
+        "available_windows": 998030,
+        "source_schedule_hash": "f98aeb02f5d4d45b5ec6c73bcc0de817fdce7eca5567366e7b233434a4b56498"
+      }
+    },
+    {
+      "step": 14848,
+      "held_nll": 2.5899783507342393,
+      "held_delta_dense": {
+        "mean": 0.09616545852315991,
+        "ci95": [
+          0.06962804683416027,
+          0.13762221483025786
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 237568,
+        "unique_windows": 211297,
+        "reused_windows": 26271,
+        "reuse_fraction": 0.1105830751616379,
+        "unique_training_target_tokens": 108184064,
+        "available_windows": 998030,
+        "source_schedule_hash": "cf59892eb51d8ca42b4aecb759a230ef12498ed0271f50bb898d8745da77af65"
+      }
+    },
+    {
+      "step": 15360,
+      "held_nll": 2.5902839426819333,
+      "held_delta_dense": {
+        "mean": 0.09647105047085403,
+        "ci95": [
+          0.06926723046956314,
+          0.13987321491858143
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 245760,
+        "unique_windows": 217708,
+        "reused_windows": 28052,
+        "reuse_fraction": 0.11414388020833333,
+        "unique_training_target_tokens": 111466496,
+        "available_windows": 998030,
+        "source_schedule_hash": "247704cda971fd49de6fd3711fdb2d7b64d6a6cf99cb18a788de28b66f3661d0"
+      }
+    },
+    {
+      "step": 15625,
+      "held_nll": 2.5898665231349396,
+      "held_delta_dense": {
+        "mean": 0.09605363092385975,
+        "ci95": [
+          0.06950246703105219,
+          0.13882801455739502
+        ],
+        "cluster": "file",
+        "clusters": 32,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "coverage": {
+        "drawn_windows": 250000,
+        "unique_windows": 221009,
+        "reused_windows": 28991,
+        "reuse_fraction": 0.11596399999999996,
+        "unique_training_target_tokens": 113156608,
+        "available_windows": 998030,
+        "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+      }
+    }
+  ]
+}

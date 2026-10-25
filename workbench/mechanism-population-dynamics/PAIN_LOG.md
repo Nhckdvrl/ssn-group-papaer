@@ -12,6 +12,12 @@
 - **精度：** 基线log-probs存float16，反读后未经logsumexp归一化计算KL；旧self KL约1e-5。大效应仍支持分布明显变化，但数值噪声倍数与小效应受影响。
 - **处理：** 保留原结果、明确KL/NLL含义，新前向相同batch并用fp32归一化。X1旧KL仅为辅助，不能据其单独升级主张。
 
+## P17（2026-10-25）：小语料上的随机MoE替换未恢复，留出曲线先降后升
+- **实测：** E123固定32M token终点 held NLL=2.73634，原dense=2.49381，差+.24253；预先记录的中途最低2.62442（6.29M token），仍差+.13060。终点不能换成最好检查点；无死专家、梯度正常、冻结骨干未变。
+- **当前判断：** 有数据复用/泛化失败迹象，但训练batch NLL与dense训练集基线尚未直接配对，不能立即把全部恶化归因过拟合，也不能说该结构学不会。
+- **决定性下一步：** E125在精确回放的已见/未见训练窗口及原held上比较dense与最终MoE；再以相同128M训练预算比较32M重复池/512M覆盖池，并加随机dense FFN的覆盖池正对照。暂不启动E124多种子，不升级自由度主张。
+- **E125诊断已证实曝光特异差距：** 同窗口配对teacher的ΔNLL：seen−.5468 [−.6279,−.4626]、unseen+.1814 [.1234,.2184]、held+.2425 [.1919,.3026]；精确RNG重放验证，63.2%训练窗口至少见一次。支持本设置过拟合，不以此认领普遍MoE数据效应。
+
 | ID | 观察 | 复现条件 / 量级 | 可能影响 | 对应实验 | 状态 |
 |---|---|---|---|---|---|
 | P01 | **Parent 官方代码与论文文字在 4 处不一致**（kayoyin/icl-heads@c0ba06e + transformer_lens 2.16.1）：(a) `find_induction_heads` 传 `error_measure="abs"`，但 TL `detect_head` 对 list 输入递归时丢掉 kwargs，实际执行 `"mul"`（恰好等于论文文字定义）；(b) 随机 token 先 decode 再由 TL 重新 tokenize：101 个 token 变成 108 个，开头是双 BOS；token 从 `d_vocab=50304` 抽，含 27 个未训练的 padding id；(c) token-loss 消融挂在 `hook_v`，因缓存长度 506 ≠ 505 落入 except 分支，实际是“该头所有位置的 V 换成随机序列 BOS 位置的 V”，不是论文说的 mean ablation；(d) `evaluate_icl_score.py` 传 `--ckpt` 仍加载最终模型；`find_induction_heads.py` 对 Pythia 返回 HF 模型，按发布版本不能直接运行 | 实测：`scripts/` 下 smoke 检查（parent-call == mul：True；== abs：False；except 分支 == BOS-V：True）| parent 的 70M 结论“induction 消融对 token-loss difference ≈ 随机消融”建立在 (c) 这种消融上；induction score 的绝对值受 (b) 影响 | E01 | 已记录；E01 同时跑 parent 原样 / zero / mean 三种消融与 R1b（张量直喂）诊断 |

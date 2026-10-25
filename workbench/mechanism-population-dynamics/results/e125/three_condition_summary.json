@@ -1,0 +1,463 @@
+{
+  "experiment": "E125",
+  "endpoint_status": {
+    "M-small": {
+      "ready": true,
+      "status": "complete",
+      "step": 15625,
+      "planned_steps": 15625,
+      "train_tokens": 128000000,
+      "missing_files": [],
+      "reason": null
+    },
+    "M-cover": {
+      "ready": true,
+      "status": "complete",
+      "step": 15625,
+      "planned_steps": 15625,
+      "train_tokens": 128000000,
+      "missing_files": [],
+      "reason": null
+    },
+    "D-cover": {
+      "ready": true,
+      "status": "complete",
+      "step": 15625,
+      "planned_steps": 15625,
+      "train_tokens": 128000000,
+      "missing_files": [],
+      "reason": null
+    }
+  },
+  "required_step": 15625,
+  "required_train_tokens": 128000000,
+  "selection_rule": "fixed endpoint only; no intermediate best selection",
+  "independent_initializations": 1,
+  "file_and_word_intervals_are_not_seed_intervals": true,
+  "status": "complete",
+  "conditions": {
+    "M-small": {
+      "directory": "/tmp/xiang-moe-20261025/e125_M-small",
+      "replacement": "moe",
+      "held_teacher_gap": {
+        "first_nll": 3.2649757574774325,
+        "second_nll": 2.493812892211078,
+        "difference_nats_first_minus_second": 0.7711628652663545,
+        "ci90": [
+          0.6566967419405483,
+          0.8640734245853005
+        ],
+        "ci95": [
+          0.6417776339127308,
+          0.8798195198389477
+        ],
+        "file_clusters": 32,
+        "sequences": 512,
+        "tokens": 262144,
+        "ci_unit": "original held file; evaluation uncertainty, not independent seeds",
+        "ci_degenerate": false,
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 125,
+        "engineering_noninferiority": false,
+        "recovery_definition": "paired teacher-gap 90% bootstrap CI upper bound <= +0.02 nats; engineering noninferiority, not two-sided TOST equivalence"
+      },
+      "POS_teacher_gap": {
+        "items": 964,
+        "overall_word_balanced": {
+          "mean": 0.8365017864967464,
+          "ci90": [
+            0.7447019693875548,
+            0.9311046741243018
+          ],
+          "ci95": [
+            0.7305408625916999,
+            0.9513255351753923
+          ],
+          "words": 48
+        },
+        "conditions_word_balanced": {
+          "NOUN": {
+            "mean": 0.7123190777618079,
+            "ci90": [
+              0.5470121916253861,
+              0.8767808847759825
+            ],
+            "ci95": [
+              0.5153905773482065,
+              0.9060483377279904
+            ],
+            "words": 48
+          },
+          "VERB": {
+            "mean": 0.9697903042320578,
+            "ci90": [
+              0.8399691467886219,
+              1.113071078325781
+            ],
+            "ci95": [
+              0.8070533814332712,
+              1.1380559420440588
+            ],
+            "words": 48
+          }
+        },
+        "paired_within_word_NOUN_minus_VERB": {
+          "mean": -0.25747122647024995,
+          "ci90": [
+            -0.48200285430649864,
+            -0.022576202377830645
+          ],
+          "ci95": [
+            -0.5158732435879109,
+            0.007250328706212187
+          ],
+          "words": 48
+        },
+        "ci_unit": "word form; evaluation uncertainty, not seed uncertainty",
+        "sign": "first-minus-second NLL; negative favors first"
+      },
+      "coverage": {
+        "drawn_windows": 250000,
+        "unique_windows": 61181,
+        "reused_windows": 188819,
+        "reuse_fraction": 0.7552760000000001,
+        "available_windows": 62358,
+        "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+      },
+      "initial_full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+      "elapsed_wall_seconds": 4878.977466188371,
+      "held_source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ]
+    },
+    "M-cover": {
+      "directory": "/tmp/xiang-moe-20261025/e125_M-cover",
+      "replacement": "moe",
+      "held_teacher_gap": {
+        "first_nll": 2.573564518513932,
+        "second_nll": 2.493812892211078,
+        "difference_nats_first_minus_second": 0.07975162630285393,
+        "ci90": [
+          0.0596265074216014,
+          0.1093941696688942
+        ],
+        "ci95": [
+          0.057562320582525625,
+          0.11534444953423456
+        ],
+        "file_clusters": 32,
+        "sequences": 512,
+        "tokens": 262144,
+        "ci_unit": "original held file; evaluation uncertainty, not independent seeds",
+        "ci_degenerate": false,
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 126,
+        "engineering_noninferiority": false,
+        "recovery_definition": "paired teacher-gap 90% bootstrap CI upper bound <= +0.02 nats; engineering noninferiority, not two-sided TOST equivalence"
+      },
+      "POS_teacher_gap": {
+        "items": 964,
+        "overall_word_balanced": {
+          "mean": 0.043380398050767544,
+          "ci90": [
+            0.022960617154944244,
+            0.0653965715798706
+          ],
+          "ci95": [
+            0.01829548282459257,
+            0.07029764661534438
+          ],
+          "words": 48
+        },
+        "conditions_word_balanced": {
+          "NOUN": {
+            "mean": 0.024587705750448302,
+            "ci90": [
+              -0.01399310334394915,
+              0.05760402282736364
+            ],
+            "ci95": [
+              -0.02159322217522525,
+              0.06231733535946981
+            ],
+            "words": 48
+          },
+          "VERB": {
+            "mean": 0.047767528870476424,
+            "ci90": [
+              0.008007018481215936,
+              0.08593958266268498
+            ],
+            "ci95": [
+              0.0008645628574359891,
+              0.09265883922993169
+            ],
+            "words": 48
+          }
+        },
+        "paired_within_word_NOUN_minus_VERB": {
+          "mean": -0.023179823120028125,
+          "ci90": [
+            -0.08296021472240189,
+            0.03837188565461708
+          ],
+          "ci95": [
+            -0.09454445127840272,
+            0.0491740558036122
+          ],
+          "words": 48
+        },
+        "ci_unit": "word form; evaluation uncertainty, not seed uncertainty",
+        "sign": "first-minus-second NLL; negative favors first"
+      },
+      "coverage": {
+        "drawn_windows": 250000,
+        "unique_windows": 221009,
+        "reused_windows": 28991,
+        "reuse_fraction": 0.11596399999999996,
+        "available_windows": 998030,
+        "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+      },
+      "initial_full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+      "elapsed_wall_seconds": 4960.649414934218,
+      "held_source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ]
+    },
+    "D-cover": {
+      "directory": "/tmp/xiang-moe-20261025/e125_D-cover",
+      "replacement": "dense",
+      "held_teacher_gap": {
+        "first_nll": 2.590997127013772,
+        "second_nll": 2.493812892211078,
+        "difference_nats_first_minus_second": 0.09718423480269411,
+        "ci90": [
+          0.07283686589332415,
+          0.1333271227451226
+        ],
+        "ci95": [
+          0.07062602764540113,
+          0.14118217041136613
+        ],
+        "file_clusters": 32,
+        "sequences": 512,
+        "tokens": 262144,
+        "ci_unit": "original held file; evaluation uncertainty, not independent seeds",
+        "ci_degenerate": false,
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 127,
+        "engineering_noninferiority": false,
+        "recovery_definition": "paired teacher-gap 90% bootstrap CI upper bound <= +0.02 nats; engineering noninferiority, not two-sided TOST equivalence"
+      },
+      "POS_teacher_gap": {
+        "items": 964,
+        "overall_word_balanced": {
+          "mean": 0.039335978837956066,
+          "ci90": [
+            0.02358019305965759,
+            0.05411359578824018
+          ],
+          "ci95": [
+            0.020241831440892703,
+            0.05743112581315765
+          ],
+          "words": 48
+        },
+        "conditions_word_balanced": {
+          "NOUN": {
+            "mean": 0.016146508247941914,
+            "ci90": [
+              -0.015772846701681765,
+              0.04646173225962342
+            ],
+            "ci95": [
+              -0.021160777734140886,
+              0.05236892197898505
+            ],
+            "words": 48
+          },
+          "VERB": {
+            "mean": 0.04270341786032314,
+            "ci90": [
+              0.00014007466156319397,
+              0.07974781027901698
+            ],
+            "ci95": [
+              -0.0053735463978872395,
+              0.08560325569805387
+            ],
+            "words": 48
+          }
+        },
+        "paired_within_word_NOUN_minus_VERB": {
+          "mean": -0.026556909612381233,
+          "ci90": [
+            -0.08776363664392926,
+            0.03185732908584241
+          ],
+          "ci95": [
+            -0.09695382791785334,
+            0.04396091861822834
+          ],
+          "words": 48
+        },
+        "ci_unit": "word form; evaluation uncertainty, not seed uncertainty",
+        "sign": "first-minus-second NLL; negative favors first"
+      },
+      "coverage": {
+        "drawn_windows": 250000,
+        "unique_windows": 221009,
+        "reused_windows": 28991,
+        "reuse_fraction": 0.11596399999999996,
+        "available_windows": 998030,
+        "source_schedule_hash": "7fa74d039137ae276afbb3be4081f2ce4bfe12647a22743c9b6701d333c8c3dd"
+      },
+      "initial_full_tensor_sha256": "5112528c23b7e33a86cc84053f86d35319ca3e2448d53f270d9880964ee12e20",
+      "elapsed_wall_seconds": 3452.354270134121,
+      "held_source_coverage": [
+        "Algebraic Stack",
+        "C4",
+        "CC News",
+        "Dolma CC",
+        "Flan",
+        "MegaWika",
+        "OpenWebMath",
+        "Project Gutenberg",
+        "Reddit",
+        "Refined Web",
+        "Semantic Scholar",
+        "StackExchange",
+        "StarCoder",
+        "Wikipedia & Wikibooks",
+        "arXiv"
+      ]
+    }
+  },
+  "comparisons": {
+    "held_M_cover_minus_M_small": {
+      "first_nll": 2.573564518513932,
+      "second_nll": 3.2649757574774325,
+      "difference_nats_first_minus_second": -0.6914112389635005,
+      "ci90": [
+        -0.7740573573027695,
+        -0.589937837112617
+      ],
+      "ci95": [
+        -0.7853723216705303,
+        -0.5664045869427533
+      ],
+      "file_clusters": 32,
+      "sequences": 512,
+      "tokens": 262144,
+      "ci_unit": "original held file; evaluation uncertainty, not independent seeds",
+      "ci_degenerate": false,
+      "bootstrap_iterations": 1000,
+      "bootstrap_seed": 175
+    },
+    "POS_M_cover_minus_M_small": {
+      "items": 964,
+      "overall_word_balanced": {
+        "mean": -0.7931213884459788,
+        "ci90": [
+          -0.882841436665352,
+          -0.7018024854825979
+        ],
+        "ci95": [
+          -0.89987580907258,
+          -0.6886373078058522
+        ],
+        "words": 48
+      },
+      "conditions_word_balanced": {
+        "NOUN": {
+          "mean": -0.6877313720113595,
+          "ci90": [
+            -0.8428516435654043,
+            -0.5451903089037898
+          ],
+          "ci95": [
+            -0.8755689112022716,
+            -0.514592746793627
+          ],
+          "words": 48
+        },
+        "VERB": {
+          "mean": -0.9220227753615814,
+          "ci90": [
+            -1.047033567993613,
+            -0.7910176563347572
+          ],
+          "ci95": [
+            -1.076276857508574,
+            -0.766572725821645
+          ],
+          "words": 48
+        }
+      },
+      "paired_within_word_NOUN_minus_VERB": {
+        "mean": 0.2342914033502219,
+        "ci90": [
+          0.01714008070545153,
+          0.43336452912039625
+        ],
+        "ci95": [
+          -0.007415739105180556,
+          0.46734587223432617
+        ],
+        "words": 48
+      },
+      "ci_unit": "word form; evaluation uncertainty, not seed uncertainty",
+      "sign": "first-minus-second NLL; negative favors first"
+    },
+    "dense_reference_max_sequence_NLL_drift_nats": 0.0
+  },
+  "contracts": {
+    "source_schedule_hash_equal_all_three": true,
+    "M_small_M_cover_full_initial_tensor_hash_equal": true,
+    "held_inputs_and_content_hashes_equal": true,
+    "POS_source_config_hashes_verified": true
+  },
+  "conclusion": {
+    "engineering_recovery": {
+      "M-small": false,
+      "M-cover": false,
+      "D-cover": false
+    },
+    "material_coverage_improvement": true,
+    "material_reverse_effect": false,
+    "evaluation_closeness_ci90_within_003": false,
+    "reading": "Coverage materially helps but M-cover has not recovered. This is a platform-learning limitation, not evidence for functional freedom; do not expand seeds yet.",
+    "decision_scope": "single initialization/order; conservative platform diagnostic, no automatic scientific decision"
+  },
+  "interval_limit": "One initialization/order. Original-file and word bootstrap quantify evaluation sampling uncertainty only; no seed/generalization certification.",
+  "curve": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e125/held_curve.png",
+  "summary_script_sha256": "255312134eb3838dad62a3ebcd949a25e7c47a9e70475733b64c1d1436ab2939"
+}
