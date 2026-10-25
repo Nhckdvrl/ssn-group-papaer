@@ -46,3 +46,8 @@
 - cal U拟合恢复64/64恒等对应，在512个held输入/48词形上，U条件列相关均值.998778、中位.998815；A均值.950314、中位.952605。raw RMSE分别.009962/.004920 nats，条件held RMS约.214/.0167 nats。文件`results/e130/comparison/seed0_late_final.json`。
 - 这些数字是同模型最后1060更新的参照，处在学习率衰减末期，不证明充分收敛或跨seed重复；当前无主张升级。不同初始化、重跑和顺序控制仍按原62500终点运行。
 - 原卡初始seed0/1参照已在释放的本地GPU0/2启动，只做未训练bank功能测量，不增加训练。新脚本`e130_initial_reference.py`重建的完整FP32初始hash均与真实预检起点相同（seed0 `0f898b42…`、seed1 `90193b86…`），最小step0 checkpoint明确reference_only/无optimizer；小型核验记录见`results/e130/initial_preparation/`。同cover/plan/Hcal/alpha，完成后归档并按原E124协议比较这一对初始bank；结果未出，不预设几何能解释多少。
+
+### 初始参照完成（2026-10-26；尚无训练终点跨seed结果）
+- 初始seed0/1的采集、SHA归档和预定pair比较均complete；64个专家在同512 held输入/48词形上，U条件对应均值.015568、中位.003623，A均值.004238、中位.006591。条件held RMS分别约.336/.345（U）、.0531/.0534（A）；它们是未训练bank上的探针作用，不是学习能力证据。
+- 这只是一个固定初始化对的辅助参照，无seed CI，不据此推断所有共享几何影响为零。不能与同模型末期U=.998778/A=.950314的差异直接当作训练后跨seed结论。文件`results/e130/comparison/initial_seed0_seed1.json`；原始数组与摘要归档`~/mechpop_cache/e130_initial_seed{0,1}/`。
+- 00:05 CST六组训练进度约55.5%–72.8%，无已完成的新增训练终点；继续原固定62500步及后处理，不改预算/读数、不筛seed。C06仍L1。
