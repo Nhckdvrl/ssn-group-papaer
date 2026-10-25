@@ -45,3 +45,4 @@
 - E128原62500步/512M训练、E127终点评分、最终权重和功能数组归档均complete；seed0的61440与62500功能采集使用同cover Hcal/plan，所有重复/identity计分误差为0。
 - cal U拟合恢复64/64恒等对应，在512个held输入/48词形上，U条件列相关均值.998778、中位.998815；A均值.950314、中位.952605。raw RMSE分别.009962/.004920 nats，条件held RMS约.214/.0167 nats。文件`results/e130/comparison/seed0_late_final.json`。
 - 这些数字是同模型最后1060更新的参照，处在学习率衰减末期，不证明充分收敛或跨seed重复；当前无主张升级。不同初始化、重跑和顺序控制仍按原62500终点运行。
+- 原卡初始seed0/1参照已在释放的本地GPU0/2启动，只做未训练bank功能测量，不增加训练。新脚本`e130_initial_reference.py`重建的完整FP32初始hash均与真实预检起点相同（seed0 `0f898b42…`、seed1 `90193b86…`），最小step0 checkpoint明确reference_only/无optimizer；小型核验记录见`results/e130/initial_preparation/`。同cover/plan/Hcal/alpha，完成后归档并按原E124协议比较这一对初始bank；结果未出，不预设几何能解释多少。

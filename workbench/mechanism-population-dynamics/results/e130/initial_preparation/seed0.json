@@ -1,0 +1,53 @@
+{
+  "args": {
+    "batch_size": 16,
+    "data": "/tmp/xiang-moe-20261025/e125_data_cover/manifest.json",
+    "driver_sha256": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+    "dtype": "bfloat16",
+    "expert_size": 1024,
+    "experts": 64,
+    "init_std": 0.02,
+    "layer": 9,
+    "mode": "initial_reference",
+    "model": "/tmp/xiang-moe-20261025/olmo_dense",
+    "order_seed": 0,
+    "replacement": "moe",
+    "seed": 0,
+    "seq_len": 512,
+    "steps": 0,
+    "top_k": 8
+  },
+  "checkpoint": "/tmp/xiang-moe-20261025/e130_initial_seed0/initial_reference.pt",
+  "checkpoint_archived": false,
+  "checkpoint_bytes": 1611215683,
+  "config_hash": "aaa460804d980aef18243bf02311124e4f9ba6605a4fe66501c7b5950236d8d5",
+  "dimensions": [
+    2048,
+    1024,
+    64,
+    8,
+    0.02
+  ],
+  "experiment": "E130",
+  "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "frozen_source_sha256": {
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+    "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+    "e127_predictive_fidelity.py": "ac37934d55891db7ab9ff873f04e9b7e4592de590917a477d0d84d9f83d1675c",
+    "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f",
+    "e130_cross_seed.py": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167"
+  },
+  "host": "fvcrc20",
+  "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+  "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+  "reference_only": true,
+  "script_sha256": "1ee511886eb5842d037fb36b22539fce0c3267e55d9f9a344cf8b0c3c894d935",
+  "seed": 0,
+  "source_training_config_hash": "691fd0524e40a548cf2cda961d638c85baf8c09eed6cea4278634373ca1316eb",
+  "source_training_provenance": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/preflight/seed0_repeat/provenance.json",
+  "source_training_provenance_sha256": "6c305e3578fe3b59104542ef8aaabd57b8f4ec27d18e2749faf0e7bf39623fb4",
+  "stage": "untrained_initial_bank",
+  "status": "initial_hash_verified",
+  "torch": "2.8.0+cu128"
+}
