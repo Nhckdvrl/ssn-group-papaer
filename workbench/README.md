@@ -128,7 +128,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-25 | 头线已结项，不恢复；登记/ACTIVE分配不变。人明确继续MoE并否定无依据硬门槛：C06=L1；E128原CE512M已完成NLL2.5593并归档、seed0末期功能参照已采完；E130五初始化＋重跑/顺序控制中其余6run继续训练。性能为连续读数，不以原+.02自动准入。无跨seed功能主张。[当前状态](mechanism-population-dynamics/README.md) · [问题形态](mechanism-population-dynamics/PAPER_SHAPE_MOE.md)。 |
+| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-26 | 头线保持结项，ACTIVE分配不变。人授权持续MoE、不设无依据准入线：E130完整五初始化/17对及独立审计形成限定C07=L2；E132/E133使用后果完成；E131严格同父等曝光历史分叉仍共同训练，E134均匀分量必要性准备中。未成论文。[当前状态](mechanism-population-dynamics/README.md) · [问题形态](mechanism-population-dynamics/PAPER_SHAPE_MOE.md)。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |

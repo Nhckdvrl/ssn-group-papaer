@@ -1,0 +1,555 @@
+{
+  "schema": "E130 functional analysis staging manifest v1",
+  "updated_utc": "2026-10-26",
+  "staging_root": "/tmp/xiang-moe-20261025/e130_analysis",
+  "sha256_verified": true,
+  "models": [
+    {
+      "id": "seed0_anchor",
+      "source_host": "fvcrc20",
+      "source_dir": "/tmp/xiang-moe-20261025/e128_seed0",
+      "status": "training_complete",
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500
+        },
+        "late": {
+          "status": "staged",
+          "step": 61440,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed0_anchor_late.json"
+        }
+      },
+      "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+      "files": {
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/functional_final.npz",
+          "source_host": "fvcrc20",
+          "sha256": "84cb39351549b9d58514020fe8346a6de05a83c165085ed37e2cae837803d222",
+          "size_bytes": 78285986
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/training_summary.json",
+          "source_host": "fvcrc20",
+          "sha256": "9d0982586b2a0c79ca8eca35444782bcda6dc514918d92811c5b418078507fb9",
+          "size_bytes": 2127332
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/provenance.json",
+          "source_host": "fvcrc20",
+          "sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+          "size_bytes": 63547
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/driver_protocol.json",
+          "source_host": "fvcrc20",
+          "sha256": "d2f189a5b3167a7825732484b7748faa8a1cb5e10ef862b97eb5a531706569e9",
+          "size_bytes": 1380
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/final_held_sequences.json",
+          "source_host": "fvcrc20",
+          "sha256": "d716dc5030613436d2fc3a8d5810faf2dd0ec21d2fb61622f2771055d6cad9de",
+          "size_bytes": 83224
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/final_pos.json",
+          "source_host": "fvcrc20",
+          "sha256": "09baf2be01c80cbc2d7a55b6413a3b0596ebdc9716959c2adfd9113e57b5eb70",
+          "size_bytes": 128629
+        },
+        "late.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/late.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/functional_late.npz",
+          "source_host": "fvcrc20",
+          "sha256": "834322ff7968a1644f7c79831b624b42fb2b9749d6f8cf7b77f0b125f223c420",
+          "size_bytes": 78286018
+        },
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e128_seed0/window_counts.npz",
+          "source_host": "fvcrc20",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        }
+      }
+    },
+    {
+      "id": "seed1_order0",
+      "source_host": "fvcrc20",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed1_order0",
+      "status": "training_complete",
+      "current_step": 62500,
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed1_order0_final.json"
+        },
+        "late": {
+          "status": "staged",
+          "step": 61440,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed1_order0_late.json"
+        }
+      },
+      "files": {
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/window_counts.npz",
+          "source_host": "fvcrc20",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        },
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/functional_final.npz",
+          "source_host": "fvcrc20",
+          "sha256": "22ef510a3bdda4604309357a491f0d6e84d758779013823d226e4a84147492ba",
+          "size_bytes": 78285994
+        },
+        "late.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/late.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/functional_late.npz",
+          "source_host": "fvcrc20",
+          "sha256": "911c2248c53330317f690523a064c9f3f212e37bea443a19906a21e8ca571233",
+          "size_bytes": 78286022
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/training_summary.json",
+          "source_host": "fvcrc20",
+          "sha256": "f22c14b0b4c67e6c319ba30b19fd3a5118d7a8a0bcea364699fa78650eb5c1d3",
+          "size_bytes": 2143672
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/provenance.json",
+          "source_host": "fvcrc20",
+          "sha256": "6f1123ea3838c50fbc6c143f96ec4cba3554a639e0bdc81ddfd534f325ea938a",
+          "size_bytes": 63614
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/driver_protocol.json",
+          "source_host": "fvcrc20",
+          "sha256": "b7415253c0814849431617f7981b0b5ca2a2933f0279cc713bb1fea67821026f",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/final_held_sequences.json",
+          "source_host": "fvcrc20",
+          "sha256": "fa4b515a7f736e80c49cb816193b58258572b371e62a4d735e0274a183ee82c7",
+          "size_bytes": 83219
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed1_order0/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed1_order0/final_pos.json",
+          "source_host": "fvcrc20",
+          "sha256": "605ffb8360dc20e35e95e4c93f366a7038e0d42464a4d33912dd63271a8ecd1b",
+          "size_bytes": 128625
+        }
+      },
+      "training_status": "complete",
+      "last_observed_tokens": 512000000,
+      "config_hash": "4364572e2ce3ad939fa86ece0deed905f9625674851df9fea0f545b231ec3610",
+      "planned_steps": 62500,
+      "target_tokens": 512000000
+    },
+    {
+      "id": "seed2_order0",
+      "source_host": "fvcrc20",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed2_order0",
+      "status": "training_complete",
+      "current_step": 62500,
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed2_order0_final.json"
+        },
+        "late": {
+          "status": "staged",
+          "step": 61440,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed2_order0_late.json"
+        }
+      },
+      "files": {
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/window_counts.npz",
+          "source_host": "fvcrc20",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        },
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/functional_final.npz",
+          "source_host": "fvcrc20",
+          "sha256": "054eb396a3be3f1a56ccccd41e5398821c73f5e4b93939839225fb5197f6c8ad",
+          "size_bytes": 78285982
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/training_summary.json",
+          "source_host": "fvcrc20",
+          "sha256": "5816158e76aca38de2eb61c89d94990141838340b94a37296d75a6f4c99889a0",
+          "size_bytes": 2143247
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/provenance.json",
+          "source_host": "fvcrc20",
+          "sha256": "bd756db3b9fd930b7ffab7e7c56cf4bcfe31af47b0cd0d66e6c5b851ac1a1d34",
+          "size_bytes": 63615
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/driver_protocol.json",
+          "source_host": "fvcrc20",
+          "sha256": "cdd14ce2c1b6b494498fee78fdca9eeb9c2228099438a08c915307af8a18d135",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/final_held_sequences.json",
+          "source_host": "fvcrc20",
+          "sha256": "de5b0069a20e49522c7e28e2c993327d98a390700288a574a56b31ae92a7266c",
+          "size_bytes": 83215
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/final_pos.json",
+          "source_host": "fvcrc20",
+          "sha256": "9e8cdf5d0748f735b8afcb66449890b25560b60ac95300b6d2ac83dcdb68aa32",
+          "size_bytes": 128597
+        },
+        "late.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed2_order0/late.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed2_order0/functional_late.npz",
+          "source_host": "fvcrc20",
+          "sha256": "a70595be190e3e5d8d8e6b6561f9da0b286476a54b9242b7c0487b63bca13268",
+          "size_bytes": 78286014
+        }
+      },
+      "training_status": "complete",
+      "last_observed_tokens": 512000000,
+      "config_hash": "8654de10cdda0ab0c415627973d28c1879e42aab974bd7fb07efa0c6e1057e78",
+      "planned_steps": 62500,
+      "target_tokens": 512000000
+    },
+    {
+      "id": "seed3_order0",
+      "source_host": "fvcrc21",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed3_order0",
+      "status": "training_complete",
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500
+        },
+        "late": {
+          "status": "staged",
+          "step": 61440,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed3_order0_late.json"
+        }
+      },
+      "config_hash": "edb8ba35509592edb719779f167eab76057d997c0c3ad07721eb3c09bc0a5d6f",
+      "files": {
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/functional_final.npz",
+          "source_host": "fvcrc21",
+          "sha256": "244421e7ebc6f91008c3e527e4aa518849f48c08690c08cfcc9796eeff7e1230",
+          "size_bytes": 78285994
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/training_summary.json",
+          "source_host": "fvcrc21",
+          "sha256": "e518b962969e3ebbfa6fc418918fdba5d7540b1333c5f4dbda054bfbe567ae04",
+          "size_bytes": 2143520
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/provenance.json",
+          "source_host": "fvcrc21",
+          "sha256": "64812591d137c08d5d5dd7269aeb1e61502c239746eb66642104b2b0251c9a14",
+          "size_bytes": 63614
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/driver_protocol.json",
+          "source_host": "fvcrc21",
+          "sha256": "17570f11f71a285c702de0f6f879924f0fe12278df558deaf1f775c59e8c3dd9",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/final_held_sequences.json",
+          "source_host": "fvcrc21",
+          "sha256": "0080cc07064982a97d49c0d21da7165511aa6cd2153813c43439891a5eef5cde",
+          "size_bytes": 83218
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/final_pos.json",
+          "source_host": "fvcrc21",
+          "sha256": "2397fe481309bf5d32b1a78f489782410cc2db9c25005b71068bc7480d986398",
+          "size_bytes": 128607
+        },
+        "late.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/late.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/functional_late.npz",
+          "source_host": "fvcrc21",
+          "sha256": "c971fd69780f190651f34be9c45605546aba85998b07f29de14e1b8aa18dbe3c",
+          "size_bytes": 78286022
+        },
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed3_order0/window_counts.npz",
+          "source_host": "fvcrc21",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        }
+      }
+    },
+    {
+      "id": "seed4_order0",
+      "source_host": "fvcrc21",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed4_order0",
+      "status": "training_complete",
+      "current_step": 62500,
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed4_order0_final.json"
+        },
+        "late": {
+          "status": "staged",
+          "step": 61440,
+          "capture_metadata": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/functional/seed4_order0_late.json"
+        }
+      },
+      "files": {
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/functional_final.npz",
+          "source_host": "fvcrc21",
+          "sha256": "1c7995d48f357ce584e4cb6e5aec2dc5f3101d3b9f9af2f48bab959490061c43",
+          "size_bytes": 78285990
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/training_summary.json",
+          "source_host": "fvcrc21",
+          "sha256": "ea8c9120b66725a2fc1793792c1c597ff1da840749497332e5a0b30564a481d9",
+          "size_bytes": 2143534
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/provenance.json",
+          "source_host": "fvcrc21",
+          "sha256": "35b12034cda829dc675ed04679a28fa3bb0b7545b34bd58c95924c94f18111e5",
+          "size_bytes": 63614
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/driver_protocol.json",
+          "source_host": "fvcrc21",
+          "sha256": "b4b1b6c3835316a12bb025bbc12d820340b78b01c45e8238183ce51defd073ac",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/final_held_sequences.json",
+          "source_host": "fvcrc21",
+          "sha256": "21e1a6e6a04ca91e1e1873615f8f0ecff03cb3e16285780d84cde9db0ac7c9f3",
+          "size_bytes": 83220
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/final_pos.json",
+          "source_host": "fvcrc21",
+          "sha256": "5d5c16bd7dad5d011fe7e78ebc858dc27e86778cbe999410ddf1206b7cf6acbe",
+          "size_bytes": 128621
+        },
+        "late.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/late.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/functional_late.npz",
+          "source_host": "fvcrc21",
+          "sha256": "a56793ef4fa16a29b71e7c661bdbf8ed9af4ad1c783811ec2cf9ddf2630e21ba",
+          "size_bytes": 78286026
+        },
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed4_order0/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed4_order0/window_counts.npz",
+          "source_host": "fvcrc21",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        }
+      },
+      "config_hash": "cf990c80b3798c8ec8c4169123c1a818f66c6e4b41ed0ffb147dca673afdf82b",
+      "planned_steps": 62500,
+      "target_tokens": 512000000
+    },
+    {
+      "id": "seed0_repeat",
+      "source_host": "fvcrc21",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed0_repeat",
+      "status": "training_complete",
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500
+        },
+        "late": {
+          "status": "not_expected_control",
+          "step": null
+        }
+      },
+      "config_hash": "691fd0524e40a548cf2cda961d638c85baf8c09eed6cea4278634373ca1316eb",
+      "files": {
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/functional_final.npz",
+          "source_host": "fvcrc21",
+          "sha256": "8e1734b76423aeac110af1bd5c62eb2b7f114d7b1924e20b78a1df8cec848281",
+          "size_bytes": 78285994
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/training_summary.json",
+          "source_host": "fvcrc21",
+          "sha256": "2b3cf3fd8df75754ef8b2f8b1e227e6ad78df70ffbf333bbb26863493229632a",
+          "size_bytes": 2143607
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/provenance.json",
+          "source_host": "fvcrc21",
+          "sha256": "0849a2d4900e456bc43da67e75a72301d720c73e6054b425b1a3975ecb6d0a86",
+          "size_bytes": 63613
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/driver_protocol.json",
+          "source_host": "fvcrc21",
+          "sha256": "b64ac0a51ae19dbb8ebdfaa7cc13d4fdbd62451ca87b18f00ef583305fa82af7",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/final_held_sequences.json",
+          "source_host": "fvcrc21",
+          "sha256": "d716dc5030613436d2fc3a8d5810faf2dd0ec21d2fb61622f2771055d6cad9de",
+          "size_bytes": 83224
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/final_pos.json",
+          "source_host": "fvcrc21",
+          "sha256": "09baf2be01c80cbc2d7a55b6413a3b0596ebdc9716959c2adfd9113e57b5eb70",
+          "size_bytes": 128629
+        },
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_repeat/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_repeat/window_counts.npz",
+          "source_host": "fvcrc21",
+          "sha256": "b8d2bea5d2a3350c04d756214384f5e51e4825bf535eb883c1fd224eccbc4aeb",
+          "size_bytes": 4000486
+        }
+      }
+    },
+    {
+      "id": "seed0_order1",
+      "source_host": "fvcrc21",
+      "source_dir": "/tmp/xiang-moe-20261025/e130_seed0_order1",
+      "status": "training_complete",
+      "endpoints": {
+        "final": {
+          "status": "staged",
+          "step": 62500
+        },
+        "late": {
+          "status": "not_expected_control",
+          "step": null
+        }
+      },
+      "config_hash": "76b04f872f3e63277570f490cb023f27b3cb1ba9281607cea893e24afa5c5cac",
+      "files": {
+        "final.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/final.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/functional_final.npz",
+          "source_host": "fvcrc21",
+          "sha256": "1bf0aca8d8c656cc0541f0e554a25d6f6a03b0e39066d031523f25fb1e436b1d",
+          "size_bytes": 78285982
+        },
+        "training_summary.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/training_summary.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/training_summary.json",
+          "source_host": "fvcrc21",
+          "sha256": "0c37378b3a0a75a6c6c98966eb8b8cbcf1dcfb6c4a423dec1cd142a89dfbd1ee",
+          "size_bytes": 2147562
+        },
+        "provenance.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/provenance.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/provenance.json",
+          "source_host": "fvcrc21",
+          "sha256": "abe73c847e5d90cfa0e939eb4a252c5003bf1a9278e8d7078a39af9dc94c70b3",
+          "size_bytes": 63614
+        },
+        "driver_protocol.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/driver_protocol.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/driver_protocol.json",
+          "source_host": "fvcrc21",
+          "sha256": "a619b5daedddfca17a2c7eb62e07ff4da5e778cc3dc2de0bb99153994ab18823",
+          "size_bytes": 1424
+        },
+        "final_held_sequences.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/final_held_sequences.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/final_held_sequences.json",
+          "source_host": "fvcrc21",
+          "sha256": "194be8afed99d9940c61681b09d26f4a9ea58810d1bff26980260b184f5fac44",
+          "size_bytes": 83201
+        },
+        "final_pos.json": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/final_pos.json",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/final_pos.json",
+          "source_host": "fvcrc21",
+          "sha256": "787966f64db8b7605b78fcac915493d31cf355b9c41139eac37be8ea553ffbe8",
+          "size_bytes": 128613
+        },
+        "window_counts.npz": {
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_order1/window_counts.npz",
+          "source_path": "/tmp/xiang-moe-20261025/e130_seed0_order1/window_counts.npz",
+          "source_host": "fvcrc21",
+          "sha256": "7d3c25431faadf9f2ed8c2ee2ea03e10938f32a7da2fbf3405daba430a023d4f",
+          "size_bytes": 4000486
+        }
+      }
+    }
+  ],
+  "updated_date": "2026-10-26",
+  "shared_assets": {
+    "Hcal.npy": {
+      "path": "/tmp/xiang-moe-20261025/e130_analysis/Hcal.npy",
+      "source_path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final.npz::Hcal",
+      "source_host": "fvcrc20",
+      "sha256": "cc8ff8a6e255186572f5cd7fcfe016c97a074e3abbc723ec76649f9fb1bc341c",
+      "size_bytes": 67108992,
+      "shape": [
+        8192,
+        2048
+      ],
+      "dtype": "float32"
+    }
+  }
+}

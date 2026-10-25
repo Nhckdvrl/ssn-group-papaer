@@ -1,0 +1,2337 @@
+{
+  "experiment": "E131",
+  "status": "pulse_complete",
+  "run_id": "e131_permuted",
+  "branch": "permuted",
+  "step": 5120,
+  "planned_steps": 62500,
+  "train_tokens": 41943040,
+  "child_train_tokens": 8388608,
+  "config_hash": "2c41393739b63961ed4ca611a87d9243f94a6244285ca2db3e7ee6c8f7e13319",
+  "parent": {
+    "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/snapshots/step004096.pt",
+    "checkpoint_sha256": "13bb7ec0c8dc899744e7e4e6c7938c80a80c1b8079d1e3c89f764251524dbabf",
+    "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+    "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+    "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+    "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+    "optimizer_steps": [
+      4096.0,
+      4096.0
+    ],
+    "saved_optimizer_lr": 0.00019660799999999997,
+    "elapsed_wall_seconds_not_charged_to_children": 1292.294880412519,
+    "frozen_sources": {
+      "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+      "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+      "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+    }
+  },
+  "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+  "frozen_sample_hash_before": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "frozen_sample_hash_after": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "pulse_cursor": 1024,
+  "pulse_input_hash": "3868429c063f8f93e522b71f8713f0224578ce67472fa8ebeab3e52d07e0861c",
+  "common_input_hash": "5919bbd3601fe091730be1a288132943089b4f654ff804595d02eb639af268b4",
+  "coverage": {
+    "drawn_windows": 81920,
+    "unique_windows": 81920,
+    "reused_windows": 0,
+    "reuse_fraction": 0.0,
+    "unique_training_target_tokens": 41943040,
+    "available_windows": 998030,
+    "source_schedule_hash": "2c56081f5079bf1cba594e86f014d3a0c90d056a26324ee747d1ce266b018bff",
+    "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+    "initialized_window_queues": 34,
+    "files_entering_repeat_epoch": 0
+  },
+  "evaluations": [
+    {
+      "step": 4096,
+      "held": {
+        "file": {
+          "mean": 2.585826475169402,
+          "ci95": [
+            2.101622067145122,
+            3.001454777027002
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.585826475169402,
+          "ci95": [
+            2.5083159011909717,
+            2.664969350078429
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.7858214844507252,
+            "ci95": [
+              1.590007715726258,
+              2.3732627906241266
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.7533842867029032,
+            "ci95": [
+              2.7286293295954454,
+              2.7958213560299745
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.5744124347957147,
+            "ci95": [
+              2.423620956556242,
+              2.7223821825254753
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.188045480095418,
+            "ci95": [
+              2.8492088246390606,
+              3.6359083302809685
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.728611312181611,
+            "ci95": [
+              1.5566020054810419,
+              1.8576182922070377
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.096760657636196,
+            "ci95": [
+              2.096760657636196,
+              2.096760657636196
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8413449124691066,
+            "ci95": [
+              1.3975133158719828,
+              2.729008105663354
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.4011759122013245,
+            "ci95": [
+              2.4011759122013245,
+              2.4011759122013245
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.94067860062691,
+            "ci95": [
+              2.8696666318743262,
+              2.9880199131286327
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.8008120356543538,
+            "ci95": [
+              2.7646452970044035,
+              2.833462563602225
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.3122192094561003,
+            "ci95": [
+              2.2910234673850005,
+              2.3307654837683116
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.0748217063997254,
+            "ci95": [
+              1.8439041141033563,
+              2.4211980948442786
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.1082855910798952,
+            "ci95": [
+              1.082724935925103,
+              1.1383193608867768
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.3495827039411945,
+            "ci95": [
+              2.3495827039411945,
+              2.3495827039411945
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.5071720644658162,
+            "ci95": [
+              1.4749753491647775,
+              1.7325490715730893
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.09201358295832271,
+          "ci95": [
+            0.06749099140849701,
+            0.13078371344926404
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.09201358295832271,
+          "ci95": [
+            0.08246224705621576,
+            0.10287280515363216
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.12184686346370582,
+            "ci95": [
+              0.06818926079340937,
+              0.13973273102047132
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.06908340121750933,
+            "ci95": [
+              0.061447241312934456,
+              0.07353782782851133
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.07319557926391695,
+            "ci95": [
+              0.06569699960999742,
+              0.08770868286826072
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.11839829772712486,
+            "ci95": [
+              0.06582618498185668,
+              0.1988326998149481
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.11783483982173963,
+            "ci95": [
+              0.09811234938650576,
+              0.1441314937353848
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.1374738968051723,
+            "ci95": [
+              0.1374738968051723,
+              0.1374738968051723
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.08586320422614453,
+            "ci95": [
+              0.08076172968861961,
+              0.09606615330119439
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.10313952974555818,
+            "ci95": [
+              0.10313952974555818,
+              0.10313952974555818
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.07040899234925627,
+            "ci95": [
+              0.06109842965027128,
+              0.07661603414857959
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.08975040933190907,
+            "ci95": [
+              0.08077043634313598,
+              0.09969745633485774
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.07946911698134601,
+            "ci95": [
+              0.06742503450657344,
+              0.09323378266680038
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.04071108946411055,
+            "ci95": [
+              0.033582571912399516,
+              0.051403865791677106
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.055498738076606165,
+            "ci95": [
+              0.05348213680238541,
+              0.05721499448019831
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.10681715810827797,
+            "ci95": [
+              0.10681715810827797,
+              0.10681715810827797
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.028552369294128743,
+            "ci95": [
+              0.022807491630712766,
+              0.06876651293804059
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.420350729648239,
+        "word_bootstrap_ci95": [
+          2.2158743017133458,
+          2.6269479214956104
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.233571714683135,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.644336349492224,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.058867697118498576,
+        "word_bootstrap_ci95": [
+          0.034039268785631696,
+          0.08498467340984911
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.039317864053096105,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.05563746452565722,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.13470188677310943,
+            "answer": -0.17326865819367496,
+            "book": 0.20960961820350754,
+            "call": 0.043331821759541825,
+            "care": -0.1987960696634319,
+            "change": -0.009224468966325124,
+            "charge": -0.17581091791184414,
+            "check": -0.4265643037282504,
+            "contact": 0.07625082042068243,
+            "copy": 0.3360290837562865,
+            "cost": 0.2914125181734562,
+            "cover": -0.20841683045266166,
+            "deal": 0.07180783796836347,
+            "end": 0.25231917136115956,
+            "face": -0.1718904750252312,
+            "fall": -0.7291916459798813,
+            "help": -0.1157674760390551,
+            "hope": -0.38079771938232276,
+            "look": -0.03301974216010421,
+            "love": -0.03804208937411507,
+            "means": 0.2965403958445504,
+            "meeting": 0.08785453530228032,
+            "move": -0.386449901594056,
+            "name": 0.15122701693326235,
+            "need": 0.1896188842145713,
+            "needs": 0.0768105826444096,
+            "note": -0.13303517550230026,
+            "offer": -0.04556603103077837,
+            "order": -0.4204984439536929,
+            "place": 0.37023757994174955,
+            "plan": 0.1452247144146399,
+            "post": -0.12339874942387855,
+            "return": 0.006673805487270534,
+            "review": 0.0287512991368979,
+            "run": 0.0034315167201889873,
+            "set": 0.2750122763584329,
+            "show": 0.08828742674418859,
+            "shows": -0.06180431087102209,
+            "sign": -0.24422362307086587,
+            "start": -0.09649247372678171,
+            "stay": 0.10274572708667853,
+            "support": 0.05721356240766389,
+            "thought": 0.42885192986577747,
+            "travel": 0.12929535149173305,
+            "use": -0.21124477910676173,
+            "visit": -0.13746415989266503,
+            "work": 0.10216149678027707,
+            "works": -0.2177736374239127
+          },
+          "mean": -0.01631960047256113,
+          "word_bootstrap_ci95": [
+            -0.08426820417001814,
+            0.04556860057763606
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 65536,
+        "unique_windows": 65536,
+        "reused_windows": 0,
+        "source_schedule_hash": "bebff65532ceabae290e9a0ef29edb76b82fabbba1b1ab8095012cabc7cfe6b6",
+        "pulse_cursor": 0,
+        "epoch_coverage_valid": false
+      }
+    },
+    {
+      "step": 4160,
+      "held": {
+        "file": {
+          "mean": 2.585621810009364,
+          "ci95": [
+            2.1017109250622767,
+            3.0016231716443498
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.585621810009364,
+          "ci95": [
+            2.508490843965372,
+            2.664468439624106
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.786805394442583,
+            "ci95": [
+              1.593152274594468,
+              2.3677647539869278
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.7542458541966757,
+            "ci95": [
+              2.729002677832831,
+              2.79751987082041
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.58027854318075,
+            "ci95": [
+              2.420471964741509,
+              2.7307131583899036
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.1871168429420362,
+            "ci95": [
+              2.84794051780683,
+              3.635597013584593
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.7319740366043554,
+            "ci95": [
+              1.5601976027205968,
+              1.8608063620171742
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.1032478613898746,
+            "ci95": [
+              2.1032478613898746,
+              2.1032478613898746
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8397490178239824,
+            "ci95": [
+              1.3963822094126304,
+              2.726482634646686
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.399636053174433,
+            "ci95": [
+              2.399636053174433,
+              2.399636053174433
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.9416249242750685,
+            "ci95": [
+              2.8705693535296,
+              2.9889953047720472
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.8006880026900407,
+            "ci95": [
+              2.764303837402622,
+              2.8335348185745146
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.3111040958207876,
+            "ci95": [
+              2.289187379393771,
+              2.3302812226944267
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.0760513340005504,
+            "ci95": [
+              1.8474800389717394,
+              2.4189082765437675
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.1079067239017382,
+            "ci95": [
+              1.0816551507336287,
+              1.1387523223742675
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.348506700027519,
+            "ci95": [
+              2.348506700027519,
+              2.348506700027519
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.5121870998286502,
+            "ci95": [
+              1.4800139575527334,
+              1.7373990957600682
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.0918089177982848,
+          "ci95": [
+            0.06726233621909027,
+            0.13069488037747534
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.0918089177982848,
+          "ci95": [
+            0.08236315932323164,
+            0.10260745602613765
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.12283077345556359,
+            "ci95": [
+              0.06269122415621053,
+              0.14287728988868129
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.0699449687112818,
+            "ci95": [
+              0.06314575610337007,
+              0.07391117606589696
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.07906168764895227,
+            "ci95": [
+              0.07564847323601498,
+              0.08455969105352779
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.11746966057374346,
+            "ci95": [
+              0.06517534015528649,
+              0.19852138311857218
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.1211975642444841,
+            "ci95": [
+              0.1013004191966424,
+              0.14772709097493966
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.14396110055885103,
+            "ci95": [
+              0.14396110055885103,
+              0.14396110055885103
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.08426730958102031,
+            "ci95": [
+              0.07963062322926717,
+              0.09354068228452661
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.1015996707186666,
+            "ci95": [
+              0.1015996707186666,
+              0.1015996707186666
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.07135531599741457,
+            "ci95": [
+              0.06200115130554509,
+              0.07759142579199423
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.08962637636759595,
+            "ci95": [
+              0.08084269131542622,
+              0.09935599673307627
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.07835400334603371,
+            "ci95": [
+              0.06694077343268856,
+              0.09139769467557102
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.04194071706493592,
+            "ci95": [
+              0.037158496780782535,
+              0.04911404749116599
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.05511987089844915,
+            "ci95": [
+              0.05391509828987586,
+              0.0561452092887243
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.1057411541946025,
+            "ci95": [
+              0.1057411541946025,
+              0.1057411541946025
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.03356740465696273,
+            "ci95": [
+              0.02784610001866891,
+              0.07361653712501948
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.4183259840511266,
+        "word_bootstrap_ci95": [
+          2.217953512926172,
+          2.623163437592631
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.2407592506057017,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.6396987197714608,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.05684295152138613,
+        "word_bootstrap_ci95": [
+          0.03256301675185995,
+          0.08271893595088067
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.04650539997566283,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.05099983480489368,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.13539041082064313,
+            "answer": -0.13594953173940832,
+            "book": 0.18642098421142217,
+            "call": 0.041190108656883245,
+            "care": -0.18763449674265253,
+            "change": 0.023839155336221066,
+            "charge": -0.2628916783258319,
+            "check": -0.18379547580694539,
+            "contact": 0.06204361800486461,
+            "copy": 0.3047545417655437,
+            "cost": 0.2536661172285676,
+            "cover": -0.17349342230175224,
+            "deal": 0.0826780344140442,
+            "end": 0.29413953780895097,
+            "face": -0.1295380692251704,
+            "fall": -0.772972609102726,
+            "help": -0.11829292820050169,
+            "hope": -0.37153252833164657,
+            "look": -0.023975149697313704,
+            "love": -0.022512555743257206,
+            "means": 0.2911973360038939,
+            "meeting": 0.08089644323834884,
+            "move": -0.3036183930105633,
+            "name": 0.23842148309839623,
+            "need": 0.1938091263800234,
+            "needs": 0.06061119298919354,
+            "note": -0.12294269291063151,
+            "offer": 0.01773031155711838,
+            "order": -0.4193771497704662,
+            "place": 0.4340198278427124,
+            "plan": 0.12831695757128975,
+            "post": -0.0955788716673851,
+            "return": 0.001739296417396799,
+            "review": 0.04133146773320395,
+            "run": -0.019227031245827697,
+            "set": 0.4136742904993604,
+            "show": 0.03902818448841572,
+            "shows": 0.04733626512544496,
+            "sign": -0.24269372005281703,
+            "start": -0.0639130593277514,
+            "stay": 0.06414559598152454,
+            "support": 0.017601155276809423,
+            "thought": 0.4801674693201979,
+            "travel": 0.026925410285140533,
+            "use": -0.2524616207758134,
+            "visit": -0.15483107417821884,
+            "work": 0.05666880901245511,
+            "works": -0.17624394471446672
+          },
+          "mean": -0.004494434829230847,
+          "word_bootstrap_ci95": [
+            -0.06963099519172611,
+            0.05554400467004739
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 66560,
+        "unique_windows": 66560,
+        "reused_windows": 0,
+        "source_schedule_hash": "e246da0bad624c7d3b6b0588b2d91beb02060fc0f631cee6193b6b587d11f3a2",
+        "pulse_cursor": 64,
+        "epoch_coverage_valid": false
+      }
+    },
+    {
+      "step": 4608,
+      "held": {
+        "file": {
+          "mean": 2.5848159072702437,
+          "ci95": [
+            2.1005757334711554,
+            3.0002066497276307
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.5848159072702437,
+          "ci95": [
+            2.5072352942758904,
+            2.663640156266629
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.7840019704803263,
+            "ci95": [
+              1.5917590305474973,
+              2.3607307902788124
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.7584682179168687,
+            "ci95": [
+              2.7347225026272155,
+              2.799175158413417
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.5804805000563587,
+            "ci95": [
+              2.4221905818926786,
+              2.7305690888050584
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.1861911543912123,
+            "ci95": [
+              2.848145490298802,
+              3.6329864996282213
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.7604256213890825,
+            "ci95": [
+              1.5509846003571406,
+              1.9175063871630393
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.091345578918123,
+            "ci95": [
+              2.091345578918123,
+              2.091345578918123
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8256779736245055,
+            "ci95": [
+              1.3854424637991691,
+              2.7061489932751783
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.4011352428698505,
+            "ci95": [
+              2.4011352428698505,
+              2.4011352428698505
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.935835087346781,
+            "ci95": [
+              2.8655304902256415,
+              2.982704818760874
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.798928369659112,
+            "ci95": [
+              2.763209835498954,
+              2.8311742685536987
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.3116560321678645,
+            "ci95": [
+              2.2883289074323945,
+              2.3320672663114
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.0791717205783424,
+            "ci95": [
+              1.8545029724750293,
+              2.4161748427333123
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.1066045717986797,
+            "ci95": [
+              1.081681514161892,
+              1.1358891645219056
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.3460617892189215,
+            "ci95": [
+              2.3460617892189215,
+              2.3460617892189215
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.517094713151407,
+            "ci95": [
+              1.4876616105994767,
+              1.7231264310149186
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.09100301505916443,
+          "ci95": [
+            0.06723645198637125,
+            0.1297073121311638
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.09100301505916443,
+          "ci95": [
+            0.08160367845389403,
+            0.10177127699075829
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.12002734949330673,
+            "ci95": [
+              0.05565726044809516,
+              0.1414840458417106
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.07416733243147468,
+            "ci95": [
+              0.06480104369637729,
+              0.07963100086028148
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.07926364452456092,
+            "ci95": [
+              0.07502582275697023,
+              0.0862783082046974
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.11654397202291955,
+            "ci95": [
+              0.06449774160181007,
+              0.1963061521570182
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.14964914902921142,
+            "ci95": [
+              0.1385140886114835,
+              0.15800044434250737
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.13205881808709918,
+            "ci95": [
+              0.13205881808709918,
+              0.13205881808709918
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.07019626538154355,
+            "ci95": [
+              0.06869087761580595,
+              0.07320704091301877
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.10309886041408411,
+            "ci95": [
+              0.10309886041408411,
+              0.10309886041408411
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.06556547906912724,
+            "ci95": [
+              0.056962288001586626,
+              0.071300939780821
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.0878667433366674,
+            "ci95": [
+              0.07848214129461012,
+              0.09826199482940778
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.07890593969311024,
+            "ci95": [
+              0.06872681704966177,
+              0.09053922271419422
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.04506110364272775,
+            "ci95": [
+              0.0441814302840724,
+              0.04638061368071078
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.053817718795390726,
+            "ci95": [
+              0.05105194043751393,
+              0.05617157271698801
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.10329624338600496,
+            "ci95": [
+              0.10329624338600496,
+              0.10329624338600496
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.038475017979719306,
+            "ci95": [
+              0.03549375306541209,
+              0.05934387237986982
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.4124812136152998,
+        "word_bootstrap_ci95": [
+          2.207162050298587,
+          2.6157131477474955
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.228622249190199,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.6371577690028363,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.050998181085559674,
+        "word_bootstrap_ci95": [
+          0.029415329499122535,
+          0.07485610703241728
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.03436839856016024,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.048458884036268766,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.15718906422456105,
+            "answer": -0.2855595526370135,
+            "book": 0.08393919302357566,
+            "call": 0.07294016977151235,
+            "care": -0.18702411134209898,
+            "change": 0.08460117230812708,
+            "charge": -0.18519033173927002,
+            "check": -0.5160616139570873,
+            "contact": -0.011357725120316714,
+            "copy": 0.11582395735950696,
+            "cost": 0.36408246103674174,
+            "cover": -0.13032988976273271,
+            "deal": 0.07920024020268637,
+            "end": 0.3453810321749188,
+            "face": -0.19446843591603366,
+            "fall": -0.577107148617506,
+            "help": -0.12472745669193758,
+            "hope": -0.3531649012978261,
+            "look": 0.07692337191353242,
+            "love": -0.05633640844995776,
+            "means": 0.25204015658015294,
+            "meeting": -0.08095133121657586,
+            "move": -0.25740449461672044,
+            "name": 0.3776475889608264,
+            "need": 0.23323403731301115,
+            "needs": 0.1615311015470355,
+            "note": -0.13063300276796025,
+            "offer": -0.06521073473351342,
+            "order": -0.41232110227529817,
+            "place": 0.4599296867847443,
+            "plan": 0.12045092731714249,
+            "post": -0.15361707497920307,
+            "return": -0.05776279465032695,
+            "review": 0.04936778953077493,
+            "run": 0.05164525132212375,
+            "set": 0.37545194373927826,
+            "show": 0.06596527818058218,
+            "shows": 0.003722232686621807,
+            "sign": -0.3138768902447607,
+            "start": -0.10745324844804903,
+            "stay": 0.11285424882020705,
+            "support": -0.060459900115217485,
+            "thought": 0.4100559010480841,
+            "travel": 0.12600150738250127,
+            "use": -0.14218842500651424,
+            "visit": -0.22461548033687803,
+            "work": 0.054552377901630464,
+            "works": -0.28305193906029064
+          },
+          "mean": -0.014090485476108527,
+          "word_bootstrap_ci95": [
+            -0.08297802344893646,
+            0.048289451789630004
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 73728,
+        "unique_windows": 73728,
+        "reused_windows": 0,
+        "source_schedule_hash": "1e589753933b62e4ea6e859784c937fec6c0d0583886c86acf5d2f8651071dad",
+        "pulse_cursor": 512,
+        "epoch_coverage_valid": false
+      }
+    },
+    {
+      "step": 5120,
+      "held": {
+        "file": {
+          "mean": 2.583051756576139,
+          "ci95": [
+            2.0993298925512067,
+            2.9969764956441005
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.583051756576139,
+          "ci95": [
+            2.505188926863708,
+            2.661188480039262
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.7860259056679488,
+            "ci95": [
+              1.5968765981625994,
+              2.353473828183997
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.7563288936373134,
+            "ci95": [
+              2.7320288963082433,
+              2.7979860319157206
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.5744561150396024,
+            "ci95": [
+              2.416071145390326,
+              2.7183117890164006
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.183341785689583,
+            "ci95": [
+              2.8466463726344036,
+              3.6283662424667873
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.746950619039138,
+            "ci95": [
+              1.5580069800896919,
+              1.8886583482512225
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.080560440990979,
+            "ci95": [
+              2.080560440990979,
+              2.080560440990979
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 1.8307093973132023,
+            "ci95": [
+              1.3892937016026288,
+              2.713540788734349
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.391437730326267,
+            "ci95": [
+              2.391437730326267,
+              2.391437730326267
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.9389530931584527,
+            "ci95": [
+              2.8671666287917597,
+              2.986810736069581
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.799306846842169,
+            "ci95": [
+              2.7619387612009523,
+              2.833041924157156
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.308037359073936,
+            "ci95": [
+              2.2834817591633043,
+              2.329523508995739
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.0784231632346235,
+            "ci95": [
+              1.8523909587469474,
+              2.417471469966138
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.1044282070225164,
+            "ci95": [
+              1.0790313812237333,
+              1.1342694773360869
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.342360382529166,
+            "ci95": [
+              2.342360382529166,
+              2.342360382529166
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.5103005325197407,
+            "ci95": [
+              1.4804312845263055,
+              1.7193852684737863
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.08923886436505915,
+          "ci95": [
+            0.065028678631953,
+            0.12644604509831384
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.08923886436505915,
+          "ci95": [
+            0.07962445974208016,
+            0.0998303849393864
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.1220512846809294,
+            "ci95": [
+              0.04840029835327986,
+              0.14660161345681258
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.07202800815191975,
+            "ci95": [
+              0.0636119171986808,
+              0.07693739454130914
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.07323925950780463,
+            "ci95": [
+              0.06561792377963016,
+              0.08156231876961328
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.11369460332129004,
+            "ci95": [
+              0.06285281948218603,
+              0.19129061200076644
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.13617414667926653,
+            "ci95": [
+              0.12915240543069045,
+              0.14553646834403464
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.12127368015995543,
+            "ci95": [
+              0.12127368015995543,
+              0.12127368015995543
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.0752276890702402,
+            "ci95": [
+              0.07254211541926558,
+              0.08059883637218945
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.09340134787050047,
+            "ci95": [
+              0.09340134787050047,
+              0.09340134787050047
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.06868348488079908,
+            "ci95": [
+              0.05859842656770473,
+              0.07540685708952864
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.08824522051972436,
+            "ci95": [
+              0.08034979689806689,
+              0.09699092053140651
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.07528726659918222,
+            "ci95": [
+              0.06618305973400074,
+              0.08569207444510393
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.044312546299008916,
+            "ci95": [
+              0.04206941655599058,
+              0.04767724091353642
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.05164135401922727,
+            "ci95": [
+              0.049432253251695216,
+              0.05352143977882904
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.09959483669624936,
+            "ci95": [
+              0.09959483669624936,
+              0.09959483669624936
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.031680837348053076,
+            "ci95": [
+              0.028263426992241016,
+              0.055602709838737496
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.408866496206743,
+        "word_bootstrap_ci95": [
+          2.206234102000476,
+          2.617472117085129
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.251274465038518,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.6082072398326717,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.04738346367700269,
+        "word_bootstrap_ci95": [
+          0.022293935525771694,
+          0.07264832903180708
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.057020614408479255,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.01950835486610503,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.10935467183589936,
+            "answer": -0.04868102750994942,
+            "book": 0.30797774770430153,
+            "call": 0.09742140571276345,
+            "care": -0.19708515755418274,
+            "change": 0.07398718247811,
+            "charge": -0.14791069880334867,
+            "check": -0.10424484045077592,
+            "contact": 0.11941931828951988,
+            "copy": 0.24147358467979801,
+            "cost": 0.495030552521348,
+            "cover": -0.10649633822992208,
+            "deal": 0.10997604223187356,
+            "end": 0.3679343807278201,
+            "face": -0.2069468626921827,
+            "fall": -0.5518021531403065,
+            "help": -0.20361186036696804,
+            "hope": -0.2286796944645735,
+            "look": 0.08825691669092824,
+            "love": -0.0400296906940639,
+            "means": 0.3722053771927243,
+            "meeting": 0.07089868237796638,
+            "move": -0.20091566609011757,
+            "name": 0.6021158257499337,
+            "need": 0.19683347981084476,
+            "needs": 0.10987220986995822,
+            "note": -0.0903928354382515,
+            "offer": 0.020796077578727687,
+            "order": -0.2870010846652664,
+            "place": 0.5209291368722915,
+            "plan": 0.10113485265861859,
+            "post": -0.03640741535595485,
+            "return": 0.1123592498449561,
+            "review": 0.11636786324369323,
+            "run": -0.015242344306574951,
+            "set": 0.39860077437498614,
+            "show": 0.09211866328758854,
+            "shows": 0.013305977412632522,
+            "sign": -0.4385785926133394,
+            "start": -0.14354715092728537,
+            "stay": 0.2854603995115329,
+            "support": -0.0949946961232594,
+            "thought": 0.31627205666154623,
+            "travel": 0.09175365023089177,
+            "use": -0.17694191674568824,
+            "visit": -0.17916372915108997,
+            "work": 0.10229397465298377,
+            "works": -0.23488784084717432
+          },
+          "mean": 0.03751225954237422,
+          "word_bootstrap_ci95": [
+            -0.032925378222836685,
+            0.10237515398195193
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 81920,
+        "unique_windows": 81920,
+        "reused_windows": 0,
+        "reuse_fraction": 0.0,
+        "unique_training_target_tokens": 41943040,
+        "available_windows": 998030,
+        "source_schedule_hash": "2c56081f5079bf1cba594e86f014d3a0c90d056a26324ee747d1ce266b018bff",
+        "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+        "initialized_window_queues": 34,
+        "files_entering_repeat_epoch": 0
+      }
+    }
+  ],
+  "elapsed_wall_seconds": 466.30970188602805,
+  "optimizer_inheritance": {
+    "nonempty": true,
+    "step_range_on_load": [
+      4160.0,
+      4160.0
+    ],
+    "reset": false
+  },
+  "tokens_per_second_after_first": 29671.75360914694
+}

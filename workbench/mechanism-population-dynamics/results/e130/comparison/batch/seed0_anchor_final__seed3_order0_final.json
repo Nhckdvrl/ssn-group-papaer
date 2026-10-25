@@ -1,0 +1,1320 @@
+{
+  "batch_identity": {
+    "A": {
+      "Hcal_data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+      "Hcal_sha256": "424158f325b849cf8bbaf2ba503834edd0214f31be9cb218548f763ec5256443",
+      "Hcal_window_hash": "af52c2f4c8e27c06e7e53d36c3312cf9a1b1ca8f539795a03d57122626acc33d",
+      "backbone_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+      "input_identity_sha256": "40f90777d4f08313426dd938143dd57b8b8c6572b146b58b5a3484d64a3d509d",
+      "path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final.npz",
+      "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+      "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+      "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+      "sha256": "84cb39351549b9d58514020fe8346a6de05a83c165085ed37e2cae837803d222",
+      "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+      "training_summary_sha256": "9d0982586b2a0c79ca8eca35444782bcda6dc514918d92811c5b418078507fb9"
+    },
+    "B": {
+      "Hcal_data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+      "Hcal_sha256": "424158f325b849cf8bbaf2ba503834edd0214f31be9cb218548f763ec5256443",
+      "Hcal_window_hash": "af52c2f4c8e27c06e7e53d36c3312cf9a1b1ca8f539795a03d57122626acc33d",
+      "backbone_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+      "input_identity_sha256": "40f90777d4f08313426dd938143dd57b8b8c6572b146b58b5a3484d64a3d509d",
+      "path": "/tmp/xiang-moe-20261025/e130_analysis/seed3_order0/final.npz",
+      "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+      "provenance_sha256": "64812591d137c08d5d5dd7269aeb1e61502c239746eb66642104b2b0251c9a14",
+      "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+      "sha256": "244421e7ebc6f91008c3e527e4aa518849f48c08690c08cfcc9796eeff7e1230",
+      "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+      "training_summary_sha256": "e518b962969e3ebbfa6fc418918fdba5d7540b1333c5f4dbda054bfbe567ae04"
+    },
+    "analysis_script_sha256": "aee65b4521d86558ca79b20f0d5951ef4406f1b9d1dbc72f8f3ffc94e166268c",
+    "comparison_script_sha256": "1cd3df24aea09e1fb2db86d9e4db52fe53ca42d7564141a0987ff6ccd7313671",
+    "kind": "cross_seed",
+    "parameters": {
+      "min_std": 1e-08,
+      "permutations": 199,
+      "random_maps": 199,
+      "seed": 124
+    }
+  },
+  "cal_valid_U_columns_A": 64,
+  "cal_valid_U_columns_B": 64,
+  "coverage": {
+    "A_A": {
+      "cal_words": 48,
+      "held_items_covered": 512,
+      "held_items_total": 512,
+      "held_word_coverage": 1.0,
+      "missing_held_words": []
+    },
+    "A_U": {
+      "cal_words": 48,
+      "held_items_covered": 512,
+      "held_items_total": 512,
+      "held_word_coverage": 1.0,
+      "missing_held_words": []
+    },
+    "B_A": {
+      "cal_words": 48,
+      "held_items_covered": 512,
+      "held_items_total": 512,
+      "held_word_coverage": 1.0,
+      "missing_held_words": []
+    },
+    "B_U": {
+      "cal_words": 48,
+      "held_items_covered": 512,
+      "held_items_total": 512,
+      "held_word_coverage": 1.0,
+      "missing_held_words": []
+    }
+  },
+  "function": {
+    "A": {
+      "cal_word_shuffle_rematch_reference": {
+        "coverage_comparable": true,
+        "mean_rho_q025_q50_q975": [
+          -0.01621236429541987,
+          0.0033162395280416906,
+          0.02815872144272942
+        ],
+        "n_draws": 199,
+        "n_finite_scores": 199,
+        "reference_tail_probability_greater": 0.865,
+        "tail_note": "Conditional calibration/random-mapping reference, not independent-seed significance; withheld for undefined scores or changing coverage.",
+        "valid_column_count_range": [
+          64,
+          64
+        ]
+      },
+      "conditional_strength_nats": {
+        "A_cal_rms": 0.015122287950666244,
+        "A_held_rms": 0.01666479144473519,
+        "B_cal_rms": 0.01573206136132515,
+        "B_held_rms": 0.016316674707040468
+      },
+      "held_conditional_columns": {
+        "column_rho": [
+          -0.0018189385292371764,
+          -0.0796191634892595,
+          0.005591543387343044,
+          -0.1035468850146445,
+          0.1260976742606104,
+          -0.027991855236464632,
+          0.08715694231643592,
+          -0.07335648888160731,
+          -0.04147449364895103,
+          -0.04092027992590908,
+          0.05367641944085238,
+          -0.07875512808109301,
+          -0.009587318802799734,
+          0.0554259600223627,
+          -0.04471915185105259,
+          -0.02606517138554251,
+          0.01480387196755143,
+          0.059241897405575145,
+          0.1660158466968448,
+          -0.05850385313296935,
+          0.09535155052683356,
+          -0.03463106041870034,
+          0.09276232728840292,
+          -0.017461746525950103,
+          -0.07420575351979782,
+          0.023959252090945262,
+          -0.04536621825481897,
+          0.05069631387308646,
+          -0.022814985368629845,
+          -0.007663443300130344,
+          0.09356811783242455,
+          -0.03875089518049737,
+          -0.07486442791014761,
+          -0.10245670440208278,
+          -0.05933391121335116,
+          0.02064061517023282,
+          -0.0413211656093361,
+          0.004007715902385367,
+          -0.08497243957962983,
+          -0.1324602977471214,
+          0.1572518877521362,
+          -0.13236039036889757,
+          -0.06266338666634623,
+          0.01615726506569069,
+          -0.018727773060494002,
+          -0.12325103704301284,
+          0.14038227826885571,
+          -0.009858378860550418,
+          0.09824381642566685,
+          0.08775950576766257,
+          -0.07420019721194039,
+          -0.037839096735124006,
+          -0.03366014211713427,
+          0.08801673329331501,
+          -0.010466932833362188,
+          0.030948404558835556,
+          -0.0667588442112427,
+          0.020179790644292133,
+          -0.044878710102785234,
+          -0.10717697022828523,
+          -0.08233047756493055,
+          0.06667470032422626,
+          0.07734530970322095,
+          -0.09766776110533405
+        ],
+        "effective_column_fraction_of_all_experts": 1.0,
+        "mean": -0.007696033361458985,
+        "median": -0.020771379214561923,
+        "n_valid_columns": 64,
+        "valid_mapping_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      },
+      "random_mapping_reference": {
+        "coverage_comparable": true,
+        "mean_rho_q025_q50_q975": [
+          -0.01763859597268989,
+          0.00413946844352835,
+          0.030512803793268567
+        ],
+        "n_draws": 199,
+        "n_finite_scores": 199,
+        "reference_tail_probability_greater": 0.845,
+        "tail_note": "Conditional calibration/random-mapping reference, not independent-seed significance; withheld for undefined scores or changing coverage.",
+        "valid_column_count_range": [
+          64,
+          64
+        ]
+      },
+      "raw_effect_difference_under_cal_U_mapping": {
+        "mean_absolute_difference_nats": 0.006574693936329368,
+        "per_expert_signed_mean_nats": [
+          -0.0003948430676246062,
+          0.00110384381696349,
+          0.0006599474108952563,
+          -0.0015107199142221361,
+          -0.0003244274830649374,
+          0.0002811226395351696,
+          0.002052562682365533,
+          0.0012109166009395267,
+          2.2985188479651697e-05,
+          -8.494508620060515e-05,
+          0.00033319588692393154,
+          -0.0011273590025666635,
+          0.0017174310278278426,
+          0.0014079981183385826,
+          0.0012330442141319509,
+          0.00010618674241413828,
+          0.0009984790267481003,
+          -0.0007108273857738823,
+          -0.0002040318813669728,
+          -0.0012496155422923039,
+          -0.00026210162468487397,
+          -0.00015128359518712386,
+          0.0005739943917433266,
+          0.0012660125148613588,
+          0.00020309742649260443,
+          -0.0009921897362801246,
+          -0.00025690748316264944,
+          -0.0005576327894232236,
+          -7.325204751396086e-05,
+          -0.00039501731862401357,
+          -0.0007089381924743066,
+          0.0003459769659457379,
+          -0.0003661446098703891,
+          0.0006233457525013364,
+          -0.0023459359017579118,
+          -8.231458377849776e-05,
+          -0.0007288723627425497,
+          0.0004942020132148173,
+          0.00034965196027769707,
+          0.0022589826166949933,
+          -0.0011208314735995373,
+          0.002745210666944331,
+          -0.00073909998536692,
+          0.0015251944369083503,
+          -0.001270209317226545,
+          0.0008095642424450489,
+          -0.0010326627034373814,
+          0.0004678800905821845,
+          -0.0008782557524682488,
+          0.00019489748865453294,
+          0.0009360883404951892,
+          0.0002687276719370857,
+          0.0033247611827391665,
+          0.00048530910316912923,
+          0.00045841329119866714,
+          0.0004835143336094916,
+          -1.751026684360113e-05,
+          0.0007994140996743226,
+          0.00038723745274182875,
+          0.00021433377060020575,
+          -1.1174816791026387e-05,
+          0.0003635371922428021,
+          -7.332128370762803e-05,
+          0.00013972916713100858
+        ],
+        "raw_mean_A_nats": 0.00013117732112277736,
+        "raw_mean_B_nats": -7.470337138215655e-05,
+        "rmse_nats": 0.02215667702205548,
+        "signed_mean_nats_A_minus_B": 0.0002058806925049339
+      },
+      "raw_unaligned_effect_summary_nats": {
+        "A_mean": 0.00013117732112277736,
+        "A_rms": 0.016198006513490213,
+        "B_mean": -7.470337138215655e-05,
+        "B_rms": 0.015837452580451283
+      }
+    },
+    "U": {
+      "cal_word_shuffle_rematch_reference": {
+        "coverage_comparable": true,
+        "mean_rho_q025_q50_q975": [
+          -0.03500977354056579,
+          -0.0035406525814622074,
+          0.03316384664575399
+        ],
+        "n_draws": 199,
+        "n_finite_scores": 199,
+        "reference_tail_probability_greater": 0.01,
+        "tail_note": "Conditional calibration/random-mapping reference, not independent-seed significance; withheld for undefined scores or changing coverage.",
+        "valid_column_count_range": [
+          64,
+          64
+        ]
+      },
+      "conditional_strength_nats": {
+        "A_cal_rms": 0.18077649151411873,
+        "A_held_rms": 0.2136851710707713,
+        "B_cal_rms": 0.18093064449177249,
+        "B_held_rms": 0.2164507776855494
+      },
+      "held_conditional_columns": {
+        "column_rho": [
+          0.03823515988426063,
+          -0.14328523570197965,
+          0.09486577020690032,
+          -0.11249989609731895,
+          -0.0911376769801822,
+          -0.04012111528107687,
+          0.010729041756191961,
+          0.04869853815732107,
+          0.195257152534271,
+          0.1913020919406312,
+          -0.031426030015831094,
+          0.1527219780032879,
+          0.1398032856818155,
+          -0.08083957229663259,
+          0.26516625312999437,
+          0.0809983442027719,
+          0.17100439059448105,
+          -0.035852900077041464,
+          0.12862770866941237,
+          -0.12998896205740526,
+          0.020093667872546916,
+          0.09579961520270142,
+          0.08482930579316755,
+          0.017103518446965053,
+          0.07388743617509491,
+          -0.07826032381157937,
+          -0.07019495239140815,
+          0.14539073399434277,
+          0.16151682437313936,
+          -0.081239807646932,
+          -0.006450035044681895,
+          0.11098109823531531,
+          0.2546037441563356,
+          0.08574960897310867,
+          -0.18406063856374902,
+          0.041830234800691,
+          -0.028372530797611862,
+          -0.10090719781949485,
+          0.13815452707402506,
+          0.028855971904213983,
+          0.025536341404407574,
+          -0.04634364083299585,
+          0.044151416040632135,
+          0.018496491294992846,
+          -0.038721697268879196,
+          -0.042064669581558245,
+          0.22876696834899612,
+          0.20993439418302495,
+          -0.08545965062673072,
+          0.11744728775517117,
+          -0.2504740707875553,
+          0.39685580071052334,
+          0.06520242172011048,
+          -0.11536904972352892,
+          0.21306239598867913,
+          0.22088883148510904,
+          -0.05458580456393293,
+          0.2091061561848728,
+          0.24196990365258103,
+          0.0008534963074001692,
+          -0.1544549322225451,
+          0.08315805794376989,
+          0.11775884970104435,
+          0.01045950081967677
+        ],
+        "effective_column_fraction_of_all_experts": 1.0,
+        "mean": 0.04652724882989574,
+        "median": 0.04003269734247582,
+        "n_valid_columns": 64,
+        "valid_mapping_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      },
+      "random_mapping_reference": {
+        "coverage_comparable": true,
+        "mean_rho_q025_q50_q975": [
+          -0.03046234633957446,
+          -0.0016313950899721303,
+          0.02411654177533518
+        ],
+        "n_draws": 199,
+        "n_finite_scores": 199,
+        "reference_tail_probability_greater": 0.005,
+        "tail_note": "Conditional calibration/random-mapping reference, not independent-seed significance; withheld for undefined scores or changing coverage.",
+        "valid_column_count_range": [
+          64,
+          64
+        ]
+      },
+      "raw_effect_difference_under_cal_U_mapping": {
+        "mean_absolute_difference_nats": 0.16487248935599297,
+        "per_expert_signed_mean_nats": [
+          -0.016662977775013132,
+          -0.001706252594885882,
+          0.009736385505675571,
+          -0.001798355719074607,
+          -0.01621615016119904,
+          -0.017841045333625516,
+          0.010558394538747962,
+          0.019941610677960853,
+          0.023752842242174665,
+          0.022228566849662457,
+          0.005874393938029243,
+          0.008863319806096115,
+          0.006904117814883648,
+          0.0004321207770772162,
+          0.009371716919304163,
+          -0.010219518429948948,
+          -0.010296655394995469,
+          -0.0037205990511210985,
+          -0.006464957251409942,
+          0.0062499539790223935,
+          -0.002646708157953981,
+          -0.005347581842215732,
+          0.025834408158516453,
+          -0.014502788903882902,
+          0.009825329176237574,
+          -0.017361597469971457,
+          -0.002699457153539697,
+          -0.00026720252390077803,
+          0.014518672199301363,
+          -0.012481172419938957,
+          -0.02249819172629941,
+          0.005500092448528449,
+          0.01726706520184962,
+          -0.003517951658068341,
+          0.0051635755589813925,
+          -0.011111270900983072,
+          0.014020310611158493,
+          0.00625552656219952,
+          -0.003855918953377113,
+          -0.0007110512769941124,
+          -0.007046029263619857,
+          0.01046680468152772,
+          -0.009894381279082154,
+          0.013555842949244834,
+          -0.013350369817999308,
+          -0.026251955304360308,
+          0.0005507858440978453,
+          -0.01466799120134965,
+          -0.0036618899166569463,
+          0.0006145718134575873,
+          0.011334378223182284,
+          -0.006309229133876215,
+          -0.008754848832722928,
+          0.016555903439439135,
+          -0.012601851106410322,
+          -0.014614768413593993,
+          -0.001662375383602921,
+          0.005727077094888955,
+          -0.014232701651053503,
+          0.01383380528750422,
+          0.0037295737774911686,
+          -0.0003296837712696288,
+          0.002988446143717738,
+          -0.0036745770321431337
+        ],
+        "raw_mean_A_nats": 0.018304117880468596,
+        "raw_mean_B_nats": 0.01857481263962768,
+        "rmse_nats": 0.28440435256249247,
+        "signed_mean_nats_A_minus_B": -0.0002706947591590847
+      },
+      "raw_unaligned_effect_summary_nats": {
+        "A_mean": 0.018304117880468596,
+        "A_rms": 0.32125583911227173,
+        "B_mean": 0.01857481263962768,
+        "B_rms": 0.31989765650129703
+      }
+    }
+  },
+  "identity": {
+    "independent_seed_pair_count": null,
+    "kind": "different_initializations",
+    "metadata_A": {
+      "A_scope": "trained MoE background; zero original target top-k weight without renormalization; A=NLL(drop)-NLL(normal)",
+      "U_scope": "dense background; target FFN output=alpha*expert; U=NLL(target FFN zero)-NLL(injection); probe, not natural role",
+      "alpha": 0.125,
+      "backbone_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+      "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/checkpoint.pt",
+      "checkpoint_config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+      "checkpoint_file_bytes": 4846515419,
+      "checkpoint_moe_tensor_sha256": "5082e19161cc6eed4276c03490e531b982e27fb74c1eab8a0f452d1dc0824851",
+      "device": "cuda:0",
+      "dtype": "bfloat16",
+      "e123_script_sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "experts": 64,
+      "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "hcal": {
+        "cal_seed": 91024,
+        "data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+        "data_manifest_sha256": "6c744887ce55db491c58ed191e8bfd427262a7a083466ca28d48134ddee2349f",
+        "seq_len": 512,
+        "split": "train",
+        "stride": 4,
+        "window_hash": "af52c2f4c8e27c06e7e53d36c3312cf9a1b1ca8f539795a03d57122626acc33d",
+        "windows": [
+          [
+            0,
+            667
+          ],
+          [
+            0,
+            27184
+          ],
+          [
+            0,
+            34892
+          ],
+          [
+            0,
+            37781
+          ],
+          [
+            1,
+            22341
+          ],
+          [
+            2,
+            3128
+          ],
+          [
+            2,
+            9147
+          ],
+          [
+            2,
+            11915
+          ],
+          [
+            2,
+            22640
+          ],
+          [
+            2,
+            40992
+          ],
+          [
+            2,
+            58342
+          ],
+          [
+            3,
+            7819
+          ],
+          [
+            3,
+            8248
+          ],
+          [
+            3,
+            12324
+          ],
+          [
+            3,
+            21416
+          ],
+          [
+            3,
+            23334
+          ],
+          [
+            3,
+            52728
+          ],
+          [
+            3,
+            59290
+          ],
+          [
+            4,
+            5639
+          ],
+          [
+            5,
+            42754
+          ],
+          [
+            6,
+            2074
+          ],
+          [
+            6,
+            8376
+          ],
+          [
+            6,
+            11723
+          ],
+          [
+            6,
+            17553
+          ],
+          [
+            6,
+            24674
+          ],
+          [
+            6,
+            37090
+          ],
+          [
+            6,
+            42776
+          ],
+          [
+            6,
+            63138
+          ],
+          [
+            6,
+            68344
+          ],
+          [
+            6,
+            96196
+          ],
+          [
+            6,
+            125991
+          ],
+          [
+            7,
+            15169
+          ],
+          [
+            7,
+            25379
+          ],
+          [
+            7,
+            41321
+          ],
+          [
+            7,
+            44238
+          ],
+          [
+            7,
+            45104
+          ],
+          [
+            7,
+            66360
+          ],
+          [
+            7,
+            90726
+          ],
+          [
+            7,
+            102555
+          ],
+          [
+            7,
+            121430
+          ],
+          [
+            7,
+            132351
+          ],
+          [
+            7,
+            132652
+          ],
+          [
+            8,
+            9699
+          ],
+          [
+            8,
+            18693
+          ],
+          [
+            9,
+            16171
+          ],
+          [
+            9,
+            30687
+          ],
+          [
+            9,
+            32626
+          ],
+          [
+            9,
+            57289
+          ],
+          [
+            10,
+            5148
+          ],
+          [
+            10,
+            8970
+          ],
+          [
+            11,
+            13241
+          ],
+          [
+            12,
+            7513
+          ],
+          [
+            12,
+            10900
+          ],
+          [
+            12,
+            12906
+          ],
+          [
+            16,
+            6429
+          ],
+          [
+            18,
+            4398
+          ],
+          [
+            20,
+            4656
+          ],
+          [
+            21,
+            233
+          ],
+          [
+            21,
+            1135
+          ],
+          [
+            27,
+            2558
+          ],
+          [
+            28,
+            1094
+          ],
+          [
+            29,
+            803
+          ],
+          [
+            33,
+            2424
+          ],
+          [
+            33,
+            4038
+          ]
+        ]
+      },
+      "layer": 9,
+      "model": "/tmp/xiang-moe-20261025/olmo_dense",
+      "noise": {
+        "dense_identity_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "inject_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "natural_identity_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "natural_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "zero_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        }
+      },
+      "order_seed": 0,
+      "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+      "readout_precision": "backbone/expert forward in selected dtype; last hidden cast to fp32 before F.linear with fp32 lm_head and fp32 log_softmax",
+      "run_id": "E130-seed0-anchor-final",
+      "schema": 1,
+      "script_sha256": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+      "seed": 0,
+      "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+      "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+      "step": 62500,
+      "timing": {
+        "A_seconds": 48.865270502865314,
+        "U_seconds": 147.31897730752826,
+        "load_seconds": 20.811415672302246,
+        "total_before_save_seconds": 220.60609366372228
+      },
+      "top_k": 8,
+      "torch": "2.8.0+cu128",
+      "unselected_drop_lp_note": "unselected A=0; drop log-prob filled with normal log-prob; use selected_mask"
+    },
+    "metadata_B": {
+      "A_scope": "trained MoE background; zero original target top-k weight without renormalization; A=NLL(drop)-NLL(normal)",
+      "U_scope": "dense background; target FFN output=alpha*expert; U=NLL(target FFN zero)-NLL(injection); probe, not natural role",
+      "alpha": 0.125,
+      "backbone_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+      "checkpoint": "/tmp/xiang-moe-20261025/e130_seed3_order0/checkpoint.pt",
+      "checkpoint_config_hash": "edb8ba35509592edb719779f167eab76057d997c0c3ad07721eb3c09bc0a5d6f",
+      "checkpoint_file_bytes": 4846516059,
+      "checkpoint_moe_tensor_sha256": "933d530afb2a9339546a8d6d0a647e14181b5d7a5ff2fe111b303a1b1a95e95b",
+      "device": "cuda:0",
+      "dtype": "bfloat16",
+      "e123_script_sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "experts": 64,
+      "hardware": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "hcal": {
+        "cal_seed": 91024,
+        "data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+        "data_manifest_sha256": "6c744887ce55db491c58ed191e8bfd427262a7a083466ca28d48134ddee2349f",
+        "seq_len": 512,
+        "split": "train",
+        "stride": 4,
+        "window_hash": "af52c2f4c8e27c06e7e53d36c3312cf9a1b1ca8f539795a03d57122626acc33d",
+        "windows": [
+          [
+            0,
+            667
+          ],
+          [
+            0,
+            27184
+          ],
+          [
+            0,
+            34892
+          ],
+          [
+            0,
+            37781
+          ],
+          [
+            1,
+            22341
+          ],
+          [
+            2,
+            3128
+          ],
+          [
+            2,
+            9147
+          ],
+          [
+            2,
+            11915
+          ],
+          [
+            2,
+            22640
+          ],
+          [
+            2,
+            40992
+          ],
+          [
+            2,
+            58342
+          ],
+          [
+            3,
+            7819
+          ],
+          [
+            3,
+            8248
+          ],
+          [
+            3,
+            12324
+          ],
+          [
+            3,
+            21416
+          ],
+          [
+            3,
+            23334
+          ],
+          [
+            3,
+            52728
+          ],
+          [
+            3,
+            59290
+          ],
+          [
+            4,
+            5639
+          ],
+          [
+            5,
+            42754
+          ],
+          [
+            6,
+            2074
+          ],
+          [
+            6,
+            8376
+          ],
+          [
+            6,
+            11723
+          ],
+          [
+            6,
+            17553
+          ],
+          [
+            6,
+            24674
+          ],
+          [
+            6,
+            37090
+          ],
+          [
+            6,
+            42776
+          ],
+          [
+            6,
+            63138
+          ],
+          [
+            6,
+            68344
+          ],
+          [
+            6,
+            96196
+          ],
+          [
+            6,
+            125991
+          ],
+          [
+            7,
+            15169
+          ],
+          [
+            7,
+            25379
+          ],
+          [
+            7,
+            41321
+          ],
+          [
+            7,
+            44238
+          ],
+          [
+            7,
+            45104
+          ],
+          [
+            7,
+            66360
+          ],
+          [
+            7,
+            90726
+          ],
+          [
+            7,
+            102555
+          ],
+          [
+            7,
+            121430
+          ],
+          [
+            7,
+            132351
+          ],
+          [
+            7,
+            132652
+          ],
+          [
+            8,
+            9699
+          ],
+          [
+            8,
+            18693
+          ],
+          [
+            9,
+            16171
+          ],
+          [
+            9,
+            30687
+          ],
+          [
+            9,
+            32626
+          ],
+          [
+            9,
+            57289
+          ],
+          [
+            10,
+            5148
+          ],
+          [
+            10,
+            8970
+          ],
+          [
+            11,
+            13241
+          ],
+          [
+            12,
+            7513
+          ],
+          [
+            12,
+            10900
+          ],
+          [
+            12,
+            12906
+          ],
+          [
+            16,
+            6429
+          ],
+          [
+            18,
+            4398
+          ],
+          [
+            20,
+            4656
+          ],
+          [
+            21,
+            233
+          ],
+          [
+            21,
+            1135
+          ],
+          [
+            27,
+            2558
+          ],
+          [
+            28,
+            1094
+          ],
+          [
+            29,
+            803
+          ],
+          [
+            33,
+            2424
+          ],
+          [
+            33,
+            4038
+          ]
+        ]
+      },
+      "layer": 9,
+      "model": "/tmp/xiang-moe-20261025/olmo_dense",
+      "noise": {
+        "dense_identity_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "inject_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "natural_identity_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "natural_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "zero_repeat_lp": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        }
+      },
+      "order_seed": 0,
+      "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+      "readout_precision": "backbone/expert forward in selected dtype; last hidden cast to fp32 before F.linear with fp32 lm_head and fp32 log_softmax",
+      "run_id": "seed3_order0_final",
+      "schema": 1,
+      "script_sha256": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+      "seed": 3,
+      "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+      "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+      "step": 62500,
+      "timing": {
+        "A_seconds": 23.541237137978896,
+        "U_seconds": 119.21245590294711,
+        "load_seconds": 4.4462439198978245,
+        "total_before_save_seconds": 148.24565204279497
+      },
+      "top_k": 8,
+      "torch": "2.8.0+cu128",
+      "unselected_drop_lp_note": "unselected A=0; drop log-prob filled with normal log-prob; use selected_mask"
+    },
+    "sampling_unit_note": "Independent initializations are the unit; pairwise comparisons share seeds. Same-seed, initialization, and checkpoint references are not additional independent-seed replications."
+  },
+  "interpretation": "U is signed common-dense-probe action; A includes natural route availability/weights. Column shape correlations do not imply equal effect size or all natural responsibilities. Undefined fingerprints are unmeasurable, not evidence of reorganization.",
+  "mapping_A_to_B": [
+    44,
+    37,
+    12,
+    53,
+    56,
+    1,
+    11,
+    14,
+    57,
+    33,
+    22,
+    58,
+    48,
+    39,
+    20,
+    30,
+    36,
+    6,
+    19,
+    21,
+    61,
+    46,
+    60,
+    34,
+    54,
+    16,
+    31,
+    42,
+    26,
+    3,
+    63,
+    28,
+    62,
+    4,
+    25,
+    17,
+    27,
+    24,
+    9,
+    7,
+    13,
+    47,
+    50,
+    52,
+    8,
+    18,
+    59,
+    43,
+    5,
+    23,
+    10,
+    55,
+    51,
+    32,
+    40,
+    29,
+    41,
+    49,
+    0,
+    45,
+    38,
+    15,
+    35,
+    2
+  ],
+  "n_cal_items": 512,
+  "n_experts": 64,
+  "n_held_items_evaluated": 512,
+  "n_held_words": 48,
+  "n_matched_columns": 64,
+  "pair_id": "seed0_anchor_final__seed3_order0_final",
+  "status": "complete",
+  "variance_floor_nats": 1e-08,
+  "variance_floor_note": "Numeric/configured floor only; compare conditional strength against separately measured intervention noise before a scientific conclusion."
+}
