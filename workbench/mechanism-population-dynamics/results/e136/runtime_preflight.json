@@ -1,0 +1,76 @@
+{
+  "experiment": "E136",
+  "snapshot_utc": "2026-10-25T23:25:29Z",
+  "host": "fvcrc21",
+  "pid": 841358,
+  "phase": "oracle_train",
+  "status": "running",
+  "source_sha256": "8c620871df90c2a10ea9be5b629727ce063164483ab8a0d22cb846e6f6841b55",
+  "initialization": {
+    "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+    "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+    "expert_hash_matches_source": true,
+    "source_initial_checkpoint_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+    "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+    "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+    "oracle_initial_file_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6"
+  },
+  "first_batch_audit": {
+    "rows": 8192,
+    "full_row_selected_slot_mismatch_rows": 0,
+    "logits_max_abs_difference": 0.0,
+    "selected_weight_max_abs_difference": 0.0,
+    "teacher_gate_frozen": true,
+    "gate_requires_grad": false,
+    "gate_unchanged_through_step": 512,
+    "aux_direct_expert_gradient": "absent",
+    "normalized_mse_expert_grad_norm": 0.008403977379202843
+  },
+  "progress": {
+    "completed_updates": 512,
+    "planned_updates": 4096,
+    "first_update_mse": 0.0007792139076627791,
+    "first_update_normalized_mse": 1.3518568277359009,
+    "first_update_positions_per_second": 30166.627001508685,
+    "step512_mse": 0.00014502121484838426,
+    "step512_normalized_mse": 0.2515970468521118,
+    "step512_positions_per_second": 90626.80748478434,
+    "updates_2_to_512_median_positions_per_second": 90957.31869089865,
+    "all_recorded_losses_finite": true,
+    "gate_unchanged_all_recorded_updates": true
+  },
+  "gpu": {
+    "physical_index": 0,
+    "uuid": "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a",
+    "memory_used_mib": 10561,
+    "utilization_percent": 32,
+    "other_indices_memory_used_mib": {
+      "1": 15,
+      "2": 15,
+      "3": 15
+    }
+  },
+  "budget_ledgers": {
+    "e136": {
+      "path": "/tmp/xiang-moe-20261025/e136_budget.json",
+      "active_runs": 1,
+      "completed_runs": 0,
+      "completed_seconds": 0.0,
+      "configured_budget_seconds": 3600
+    },
+    "e135": {
+      "path": "/tmp/xiang-moe-20261025/e135_budget.json",
+      "active_runs": 0,
+      "completed_runs": 7,
+      "completed_seconds": 3883.96926226723
+    },
+    "e135_ledger_modified_by_this_check": false
+  },
+  "read_paths": [
+    "/tmp/xiang-moe-20261025/e136_oracle/provenance.json",
+    "/tmp/xiang-moe-20261025/e136_oracle/gradient_audit.json",
+    "/tmp/xiang-moe-20261025/e136_oracle/train_steps.jsonl",
+    "/tmp/xiang-moe-20261025/e136_budget.json",
+    "/tmp/xiang-moe-20261025/e135_budget.json"
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "experiment": "E135",
+  "status": "complete",
+  "readout_sha256": "6367cc0bce561ae453cfb14dc87725808500f8d5ee2297455c32d029f1b83475",
+  "source_readout_sha256": "70274a65f532097cd4dfd017c4ce5f3def9496bb08d87e6b77b3267fc8e5690c",
+  "natural_rows_sha256": "791064d37ea475fbea7df770da1f6c5f17419e5c64a3491e19f016bbd4a8d286",
+  "method": "Independent NumPy float64 KL/reverse/NLL/top1 from complete FP32 POS log probabilities; original plan identity and functional-capture targets verified; 1000 equal-word bootstrap seed51025. No primary metric/statistic function imported.",
+  "scope": "One fixed teacher/student; residual function discrepancies reported continuously, no strict-equivalence threshold or claim promotion. POS direct full-distribution recomputation; Dolma sequence-metric aggregation only.",
+  "conditions": {
+    "copy": {
+      "POS": {
+        "items": 512,
+        "words": 48,
+        "weighting": "equal word means; same original E124 held population",
+        "max_probability_normalization_error": 5.998979801802307e-07,
+        "NLL_vs_functional_capture_max_abs_difference": 0.0,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "teacher_nll": {
+            "mean": 2.0311688756506614,
+            "ci95": [
+              1.8119436392908028,
+              2.2559186930999893
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "student_nll": {
+            "mean": 2.0311688756506614,
+            "ci95": [
+              1.8119436392908028,
+              2.2559186930999893
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "nll_gap": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "top1_agreement": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          }
+        }
+      },
+      "exact_full_POS_logp_equal_teacher": true,
+      "Dolma_sequence_aggregation": {
+        "tokens": 262144,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.0,
+            "total": 0.0,
+            "primary_mean_abs_difference": 0.0
+          },
+          "teacher_nll": {
+            "mean": 2.4178287573850312,
+            "total": 633819.3017759416,
+            "primary_mean_abs_difference": 4.440892098500626e-16
+          },
+          "student_nll": {
+            "mean": 2.4178287573850312,
+            "total": 633819.3017759416,
+            "primary_mean_abs_difference": 4.440892098500626e-16
+          },
+          "nll_gap": {
+            "mean": 0.0,
+            "total": 0.0,
+            "primary_mean_abs_difference": 0.0
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.0,
+            "total": 0.0,
+            "primary_mean_abs_difference": 0.0
+          },
+          "top1_agreement": {
+            "mean": 1.0,
+            "total": 262144.0,
+            "primary_mean_abs_difference": 0.0
+          }
+        },
+        "scope": "Independent summation of stored sequence metrics only; no claim to rederive Dolma token KL without full distributions."
+      }
+    },
+    "initial": {
+      "POS": {
+        "items": 512,
+        "words": 48,
+        "weighting": "equal word means; same original E124 held population",
+        "max_probability_normalization_error": 5.998979801802307e-07,
+        "NLL_vs_functional_capture_max_abs_difference": 0.0,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.10680487065611532,
+            "ci95": [
+              0.08932630797769012,
+              0.12626502012175408
+            ],
+            "primary_mean_abs_difference": 1.3126603456981023e-08,
+            "primary_ci95_max_abs_difference": 1.3766080775301504e-08
+          },
+          "teacher_nll": {
+            "mean": 2.0311688756506614,
+            "ci95": [
+              1.8119436392908028,
+              2.2559186930999893
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "student_nll": {
+            "mean": 2.1568420175179157,
+            "ci95": [
+              1.9331914178946654,
+              2.379773722105799
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "nll_gap": {
+            "mean": 0.12567314186725456,
+            "ci95": [
+              0.08159338540057426,
+              0.17076812221736593
+            ],
+            "primary_mean_abs_difference": 5.729541840970853e-11,
+            "primary_ci95_max_abs_difference": 2.577276031479059e-10
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.13303917611793575,
+            "ci95": [
+              0.10720357424108413,
+              0.16121118076973892
+            ],
+            "primary_mean_abs_difference": 1.3711929924831168e-08,
+            "primary_ci95_max_abs_difference": 1.696906964943068e-08
+          },
+          "top1_agreement": {
+            "mean": 0.8650700980664211,
+            "ci95": [
+              0.8365066189767474,
+              0.8944831875300624
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          }
+        }
+      },
+      "exact_full_POS_logp_equal_teacher": false,
+      "Dolma_sequence_aggregation": {
+        "tokens": 262144,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.1304894415817893,
+            "total": 34207.02417401657,
+            "primary_mean_abs_difference": 5.551115123125783e-17
+          },
+          "teacher_nll": {
+            "mean": 2.4178287573850312,
+            "total": 633819.3017759416,
+            "primary_mean_abs_difference": 4.440892098500626e-16
+          },
+          "student_nll": {
+            "mean": 2.5335945070293957,
+            "total": 664166.5984507139,
+            "primary_mean_abs_difference": 8.881784197001252e-16
+          },
+          "nll_gap": {
+            "mean": 0.11576574964169223,
+            "total": 30347.296674071767,
+            "primary_mean_abs_difference": 8.326672684688674e-17
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.17124194989683078,
+            "total": 44890.04971375481,
+            "primary_mean_abs_difference": 1.1102230246251565e-16
+          },
+          "top1_agreement": {
+            "mean": 0.8451614379882812,
+            "total": 221554.0,
+            "primary_mean_abs_difference": 0.0
+          }
+        },
+        "scope": "Independent summation of stored sequence metrics only; no claim to rederive Dolma token KL without full distributions."
+      }
+    },
+    "final": {
+      "POS": {
+        "items": 512,
+        "words": 48,
+        "weighting": "equal word means; same original E124 held population",
+        "max_probability_normalization_error": 5.998979801802307e-07,
+        "NLL_vs_functional_capture_max_abs_difference": 0.0,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.04471895840168716,
+            "ci95": [
+              0.034692962540692866,
+              0.05624668358092198
+            ],
+            "primary_mean_abs_difference": 1.513044668721708e-09,
+            "primary_ci95_max_abs_difference": 2.332468093668716e-09
+          },
+          "teacher_nll": {
+            "mean": 2.0311688756506614,
+            "ci95": [
+              1.8119436392908028,
+              2.2559186930999893
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "student_nll": {
+            "mean": 2.0729044464334105,
+            "ci95": [
+              1.8482669530757825,
+              2.295745684694759
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "nll_gap": {
+            "mean": 0.041735570782749476,
+            "ci95": [
+              0.015192016061309389,
+              0.06911954540842757
+            ],
+            "primary_mean_abs_difference": 9.785373900061956e-12,
+            "primary_ci95_max_abs_difference": 1.3838173835989398e-10
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.05785366908038265,
+            "ci95": [
+              0.04081093158601148,
+              0.07870759922144704
+            ],
+            "primary_mean_abs_difference": 2.5055679891972105e-09,
+            "primary_ci95_max_abs_difference": 2.7451957096413793e-09
+          },
+          "top1_agreement": {
+            "mean": 0.928390524576186,
+            "ci95": [
+              0.9085849556472255,
+              0.9490141852802694
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          }
+        }
+      },
+      "exact_full_POS_logp_equal_teacher": false,
+      "Dolma_sequence_aggregation": {
+        "tokens": 262144,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.042465584697222176,
+            "total": 11132.09823486861,
+            "primary_mean_abs_difference": 1.3877787807814457e-17
+          },
+          "teacher_nll": {
+            "mean": 2.4178287573850312,
+            "total": 633819.3017759416,
+            "primary_mean_abs_difference": 4.440892098500626e-16
+          },
+          "student_nll": {
+            "mean": 2.450780677674523,
+            "total": 642457.4499683102,
+            "primary_mean_abs_difference": 1.3322676295501878e-15
+          },
+          "nll_gap": {
+            "mean": 0.032951920294389134,
+            "total": 8638.148193652345,
+            "primary_mean_abs_difference": 0.0
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.04898042211440168,
+            "total": 12839.923774757714,
+            "primary_mean_abs_difference": 2.7755575615628914e-17
+          },
+          "top1_agreement": {
+            "mean": 0.9063034057617188,
+            "total": 237582.0,
+            "primary_mean_abs_difference": 0.0
+          }
+        },
+        "scope": "Independent summation of stored sequence metrics only; no claim to rederive Dolma token KL without full distributions."
+      }
+    }
+  },
+  "exact_source_plan_target_last_proof": {
+    "passed": true,
+    "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+    "POS_source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+    "items": 512,
+    "conditions": [
+      "teacher",
+      "copy",
+      "initial",
+      "final"
+    ]
+  }
+}

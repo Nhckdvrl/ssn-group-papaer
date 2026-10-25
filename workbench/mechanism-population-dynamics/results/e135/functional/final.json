@@ -1,0 +1,146 @@
+{
+  "A_scope": "Each condition's natural full-model bank at all positions; last-position selected weight removed, no renormalization",
+  "A_selection_scope": "Native full [batch*sequence,64] softmax/top8 before indexing target rows; same full shape as the drop-slot operator",
+  "U_scope": "Common native-public teacher background; at last input position zero versus1/8 expert injection",
+  "alpha": 0.125,
+  "background_kind": "native_public_teacher",
+  "capture_script_sha256": "d528f12afabad26a503bcedd02f8192bd243dc8edd22113ace65970e2dfaf9f4",
+  "condition": "final",
+  "condition_proof": {
+    "checkpoint": "/tmp/xiang-moe-20261025/e135_student/checkpoint.pt",
+    "checkpoint_sha256": "45933dc5ed847c1e393b166c1108087d708e264e08f0530d166d0dcb251cd1d7",
+    "condition": "final",
+    "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+    "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+    "step": 4096,
+    "storage": "float32",
+    "tensor_sha256": "ec27fb8063d7091d205e2d7fa613f49b170b40282c3355aaafbf25d75828c2fa"
+  },
+  "condition_tensor_sha256": "ec27fb8063d7091d205e2d7fa613f49b170b40282c3355aaafbf25d75828c2fa",
+  "experiment": "E135",
+  "expert_storage_dtypes": [
+    "torch.float32"
+  ],
+  "experts": 64,
+  "layer": 9,
+  "noise": {
+    "background_identity": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "inject_repeat": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "natural_identity": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "natural_repeat": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "zero_repeat": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    }
+  },
+  "order_seed": 135,
+  "output": "/tmp/xiang-moe-20261025/e135_readout/final_functional.npz",
+  "output_sha256": "49cdc71f6e56e5f3588b8ef91414e47e269d5c04d6aecd384a5e6fdc3ec5d298",
+  "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+  "public_Hcal_sha256": "c91f538cca8793722eaa7e08c11451ed05bb34053c77f37a5e84ebfc892d715f",
+  "readout_precision": "BF16 backbone/experts, genuine FP32 last-hidden lm_head/logsoftmax",
+  "row_shape_tie_audit": {
+    "row_only_selected_set_mismatch_rows": 0,
+    "row_only_slot_order_mismatch_rows": 0,
+    "rows": 1024
+  },
+  "seed": 1,
+  "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+  "shapes": {
+    "A": [
+      1024,
+      64
+    ],
+    "Hcal": [
+      8192,
+      2048
+    ],
+    "Htarget": [
+      1024,
+      2048
+    ],
+    "U": [
+      1024,
+      64
+    ],
+    "background_nll": [
+      1024
+    ],
+    "document": [
+      1024
+    ],
+    "gate": [
+      64,
+      2048
+    ],
+    "gate_weights": [
+      1024,
+      64
+    ],
+    "input_sha256": [
+      1024
+    ],
+    "item_id": [
+      1024
+    ],
+    "label": [
+      1024
+    ],
+    "metadata_json": [],
+    "noise_background_identity": [
+      1024
+    ],
+    "noise_inject_repeat": [
+      1024
+    ],
+    "noise_natural_identity": [
+      1024
+    ],
+    "noise_natural_repeat": [
+      1024
+    ],
+    "noise_zero_repeat": [
+      1024
+    ],
+    "normal_nll": [
+      1024
+    ],
+    "selected_experts": [
+      1024,
+      8
+    ],
+    "selected_mask": [
+      1024,
+      64
+    ],
+    "selected_weights": [
+      1024,
+      8
+    ],
+    "split": [
+      1024
+    ],
+    "word": [
+      1024
+    ],
+    "zero_nll": [
+      1024
+    ]
+  },
+  "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+  "step": 4096,
+  "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+  "top_k": 8
+}

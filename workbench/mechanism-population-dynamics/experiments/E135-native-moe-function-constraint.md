@@ -1,6 +1,6 @@
 # E135：固定原生MoE块函数后，专家承担仍能不同吗（2026-10-26）
 
-- **状态：** RUNNING（固定4096训练完整；四条件功能读数并行采集中）
+- **状态：** COMPLETE（固定训练与全部预定读数完整，独立复算吻合）
 - **类型：** PILOT；单个学生的固定函数约束实验，不是自然预训练或性能修复网格。
 - **对应：** P22：不重现的指纹是否触及任务重要计算；E134显示受控bank与原生OLMoE的均匀分量必要性关系不同。
 - **问题（一句话）：** 给定原生联合预训练OLMoE L9的实际输入→输出函数，一个随机同容量MoE重学后，会恢复怎样的预测与专家作用对应？
@@ -56,3 +56,11 @@ MoEBERT已有逐层MSE蒸馏，Every Expert Matters已有MoE教师研究，B-Dis
 - 单学生完整4096更新、33,554,432位置曝光，每个cache batch恰4次；终点train MSE=.000086822/固定train能量=.150627，held MSE=.000097614/同分母=.169350（按held自身能量=.175713）。这是有限近似误差，尚无职责/自然预测等价结论。全部9个固定MSE事件保留，无择优替换。
 - cache＋训练累计ledger1040.56秒。终点采集`e135_capture.py` SHA `d528f12afabad26a503bcedd02f8192bd243dc8edd22113ace65970e2dfaf9f4`、`e135_readout.py` SHA `70274a65f532097cd4dfd017c4ce5f3def9496bb08d87e6b77b3267fc8e5690c`经CPU oracle与真实四条件预检通过后冻结；薄worker SHA `da4214a771f6a67494841849159245369c971e2fbfec4a92ca885581c9ef5c04`只调用这些函数并核对参数不变。
 - 22:37:59 UTC在fvcrc21 GPU0–3分别启动teacher/copy/initial/final U/A（PIDs834789–834792）；copy完整画像作相同权重数值阳性对照，定义/主读数不改。并发与本机E131两卡合计6，ledger按各阶段实际占用时间相加、总上限4GPUh。四份完成后原readout会按源/权重SHA复用，不重采，再评自然分布与终点五干预。
+
+### 全部读数与独立复核（2026-10-26）
+- `results/e135/readout.json` complete/errors={}；四条件全部保留。copy在整个POS分布逐元素相同、完整Dolma/held函数误差0，U/A数组逐元素相同，rho1/CI[1,1]/RMSE0，实际测量地板通过。
+- teacher→final：Dolma KL=.042466 [95%文件CI .035951,.048165]，top1=.906303，GT NLL差+.032952 [.028530,.037569]；POS真FP32-head/等词形KL=.044719 [.034693,.056247]、top1=.928391、NLL差+.041736 [.015192,.069120]。这些剩余差异完整保留，不设等价/准入门槛。
+- cal-U→held：initial U=.016880 [词形CI −.005477,.038015]、A=.004488 [−.015388,.027923]；final U=.099435 [.051848,.145647]、A=.103208 [.053808,.162896]。各64列有效，999固定cal词形bootstrap无覆盖变更；这些不是单学生总体CI。
+- final自身五干预：c-only ΔNLL=.039522 [.036760,.041978]、r-only=.002173 [.001431,.002869]、zero=.052923 [.049971,.055741]；native-wrapper及recompose为0。与teacher E134的c/r/zero=.064010/.006290/.085875并列，均匀/偏差必要性样式有相似处，但均值含支持外输出且两模型原生函数仍不同。
+- 独立NumPy从全部profile复算cal Hungarian/heldrho/词形CI，并从POS完整F32logp重算KL/GT-NLL/top1；结果`functional_independent_audit.json`、`predictor_independent_audit.json`。Htarget/Hcal/公共背景/zero完全一致，full-row slot audit差0、重复noise0；未独立重算未保存的Dolma全词表KL，只重加已存序列统计。
+- **解释：** 更强原生块函数监督后出现部分职责对应，仍不能用剩余弱对应证明同函数自由度。C07保持限定事实/等级不变；下一项E136仅给teacher分配的oracle，检验联合分配与内容拟合的总体限制，不做LR/aux/seed网格。

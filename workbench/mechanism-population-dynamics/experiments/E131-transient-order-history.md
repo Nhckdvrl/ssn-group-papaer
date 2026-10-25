@@ -1,6 +1,6 @@
 # E131：短暂顺序历史会在共同后续训练中保留专家作用差异吗（2026-10-26）
 
-- **状态：** RUNNING（共享计划与父状态核验完成，两臂64步预检通过，正继续短暂阶段至5120；E130仍收尾）
+- **状态：** COMPLETE（两臂62500、全部原定读数与归档完整，独立复算通过）
 - **类型：** PILOT；handoff X3同父分叉，一次明确历史干预，不是性能修复。
 - **对应：** P19：E130已完成的同seed不同数据流RNG控制，验证NLL约2.559相近，但原cal-U匹配在held的U/A对应约.026/−.003；同seed同流重跑逐项复现。后续输入审计确认order1还改变了有限曝光多重集合（TV=.4041%），故该控制不能单因归纯次序，也不能区分早期选择与持续维持；本卡的等曝光处理专门隔离这些问题。
 - **问题（一句话）：** 从完全相同的早期状态出发，仅短暂改变同一批minibatch的次序，随后接受完全相同的训练，是否足以留下不同的专家组织和预测作用？
@@ -57,3 +57,12 @@
 - **精确同人口POS held512、真FP32末位head：** 等词形KL=.016809 [.013831,.020357]→.015967 [.012718,.019877]，top1=.967155→.936811；GT NLL差−.000093→+.014238，区间完整见两点summary。旧capture逐位置NLL精确匹配，重复前向地板0。
 - 独立NumPy从POS完整分布重算KL最大均值误差1.03e−9、NLL/top1完全一致；Dolma只独立重加逐token指标（未保存完整词表，不冒称重新计算KL），旧NLL对照≤3.1e−15。结果`results/e131/predictor_comparison/step*.json`及`independent_audit.json`。
 - 同一POS分布的自然预测仍有非零差异，同时U/A对应在共同后续中明显变弱；这不是已隔离同函数的分解证据，亦不是具体早期职责原样记忆。保留同任务纯次序后果的解释，原62500终点继续，无KL准入线。
+
+### 62500完整终点（2026-10-26）
+- 两臂62500/512,000,000 targets全部complete；held NLL ordered2.559498255/permuted2.558967470，配对差−.000530785 [95%文件CI −.001214,.000131]。实际common57380更新token链完全相同`ae770eea…efb4347b`，最终source/window RNG、所有count/queue/cursor/epoch数组相同，各1M窗口/996987unique；pulse/真实source次序hash不同。
+- crossfinal calU→held U=.042931 [.005185,.073989]、A=.004249 [−.009644,.023855]；late→final分别U=.998900/.998820、A=.952767/.952288。全部15对含parent/pulse/mid/final/late完整，64列有效，固定cal999-word bootstrap均无coverage变化。
+- pulse→ownfinal U=.002008/.019883，A=−.001911/.010685，说明具体早期作用继续重组；不能把末期分叉叫早期职责原样记忆。N1 final T=.060726（47有效词形），缓存统计独立复算吻合，但未独立重造32次null前向。
+- 终点自然预测：Dolma KL=.017043 [.013054,.023174]、top1=.939266；同POS人口真FP32-head KL=.009822 [.007775,.012075]、top1=.950395、等词形NLL差+.006862 [−.005882,.018537]。首批repeat噪声0，与功能capture逐位置自然NLL完全吻合；并非同预测函数。
+- 独立NumPy/SciPy复算全15个map、点估计及CI，误差≤2.22e−16；POS完整分布NumPy64 KL误差<6e−10、NLL/top1一致，实际CPU终点CP核对优化器计数62500和全部数据状态。`results/e131/final_independent_audit.json`。
+- 两finalizer complete/errors空，`~/mechpop_cache/e131_{ordered,permuted}_512m/`权重/功能原件归档完整；新增分析/62500原始分布在`~/mechpop_cache/e131_analysis_complete/`，指针`results/e131/analysis_archive.json`。正式图`results/e131/figures/history_trajectory/trajectory.png`。
+- **限定C08=L1：** 本父状态中的短暂纯batch次序留下持续终点后果；不推总体规律、同函数分解或特定记忆载体。后续E136只检验额外分配信息的作用，不改本实验任何读数。
