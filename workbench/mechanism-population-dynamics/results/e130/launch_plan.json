@@ -1,0 +1,51 @@
+{
+  "experiment": "E130",
+  "driver_sha256": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+  "anchor": "E128-seed0/order0; unchanged fixed62500 endpoint",
+  "new_runs": [
+    {
+      "id": "seed1_order0",
+      "seed": 1,
+      "order_seed": 0,
+      "host": "fvcrc20",
+      "gpu": 1
+    },
+    {
+      "id": "seed2_order0",
+      "seed": 2,
+      "order_seed": 0,
+      "host": "fvcrc20",
+      "gpu": 3
+    },
+    {
+      "id": "seed3_order0",
+      "seed": 3,
+      "order_seed": 0,
+      "host": "fvcrc21",
+      "gpu": 0
+    },
+    {
+      "id": "seed4_order0",
+      "seed": 4,
+      "order_seed": 0,
+      "host": "fvcrc21",
+      "gpu": 1
+    },
+    {
+      "id": "seed0_repeat",
+      "seed": 0,
+      "order_seed": 0,
+      "host": "fvcrc21",
+      "gpu": 2
+    },
+    {
+      "id": "seed0_order1",
+      "seed": 0,
+      "order_seed": 1,
+      "host": "fvcrc21",
+      "gpu": 3
+    }
+  ],
+  "scope": "fixed512M-token comparison, no NLL gate or seed selection",
+  "local_gpu2_reserved": "E128 finalizer"
+}

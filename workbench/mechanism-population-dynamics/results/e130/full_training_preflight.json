@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-25",
+  "scope": "Read-only E130 full-training progress snapshot; no NLL-based selection.",
+  "validation": {
+    "all_six_pids_live": true,
+    "all_six_steps_gt_80": true,
+    "per_run_config_hash_matches_preflight": true,
+    "planned_steps": 62500,
+    "target_tokens": 512000000,
+    "order0_source_hashes_equal_through_common_step": 408,
+    "order1_source_hashes_differ_through_common_step": true
+  },
+  "runs": {
+    "seed1_order0": {
+      "pid_alive": true,
+      "step": 408,
+      "train_tokens": 3342336,
+      "tokens_per_second": 29811.39153687269,
+      "config_hash": "4364572e2ce3ad939fa86ece0deed905f9625674851df9fea0f545b231ec3610",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 1,
+      "order_seed": 0
+    },
+    "seed2_order0": {
+      "pid_alive": true,
+      "step": 422,
+      "train_tokens": 3457024,
+      "tokens_per_second": 30102.97003592455,
+      "config_hash": "8654de10cdda0ab0c415627973d28c1879e42aab974bd7fb07efa0c6e1057e78",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 2,
+      "order_seed": 0
+    },
+    "seed3_order0": {
+      "pid_alive": true,
+      "step": 587,
+      "train_tokens": 4808704,
+      "tokens_per_second": 35970.308988068,
+      "config_hash": "edb8ba35509592edb719779f167eab76057d997c0c3ad07721eb3c09bc0a5d6f",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 3,
+      "order_seed": 0
+    },
+    "seed4_order0": {
+      "pid_alive": true,
+      "step": 585,
+      "train_tokens": 4792320,
+      "tokens_per_second": 35235.39216150323,
+      "config_hash": "cf990c80b3798c8ec8c4169123c1a818f66c6e4b41ed0ffb147dca673afdf82b",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 4,
+      "order_seed": 0
+    },
+    "seed0_repeat": {
+      "pid_alive": true,
+      "step": 591,
+      "train_tokens": 4841472,
+      "tokens_per_second": 36402.96543386268,
+      "config_hash": "691fd0524e40a548cf2cda961d638c85baf8c09eed6cea4278634373ca1316eb",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 0,
+      "order_seed": 0
+    },
+    "seed0_order1": {
+      "pid_alive": true,
+      "step": 583,
+      "train_tokens": 4775936,
+      "tokens_per_second": 35726.18501444117,
+      "config_hash": "76b04f872f3e63277570f490cb023f27b3cb1ba9281607cea893e24afa5c5cac",
+      "planned_steps": 62500,
+      "target_tokens": 512000000,
+      "seed": 0,
+      "order_seed": 1
+    }
+  },
+  "gpu_occupancy": {
+    "fvcrc20": [
+      {
+        "index": 0,
+        "uuid": "GPU-1acd95ff-7d72-8dd8-77f2-77418f90965e",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20362 MiB",
+        "utilization": "77 %"
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-9ec8243b-1e60-ebdb-b83e-f6a0fa24006c",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20350 MiB",
+        "utilization": "65 %"
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-5ce8d5e1-835d-49cf-0d42-cab11f8be331",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "18 MiB",
+        "utilization": "0 %"
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-eebba152-705b-320c-b4bd-18b268046caa",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20344 MiB",
+        "utilization": "68 %"
+      }
+    ],
+    "fvcrc21": [
+      {
+        "index": 0,
+        "uuid": "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20313 MiB",
+        "utilization": "93 %"
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-93c03380-7c43-8dee-64ce-644eecbfc8b5",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20345 MiB",
+        "utilization": "95 %"
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-cb99eedd-50eb-24ae-7e44-f03277ee80fd",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20319 MiB",
+        "utilization": "96 %"
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-afa51c9c-2b51-5ed1-4782-5b9a1e7c5e7b",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "memory_used": "20325 MiB",
+        "utilization": "92 %"
+      }
+    ]
+  },
+  "allocation": {
+    "fvcrc20_E130": [
+      1,
+      3
+    ],
+    "fvcrc21_E130": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "fvcrc20_GPU0": "E128 active",
+    "fvcrc20_GPU2": "reserved for E128 finalizer"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "experiment": "E130",
+  "cpu_test": false,
+  "driver_sha256": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+  "frozen_source_sha256": {
+    "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+    "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+  },
+  "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+  "window_rng_definition": "SeedSequence(order_seed).spawn(2): child0=file-choice batches; child1=lazy per-file full-window permutations, consumed in source-request order; no scalar window draws",
+  "seed": 1,
+  "order_seed": 0,
+  "expected_frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "retain_full_checkpoint_steps": [
+    61440
+  ],
+  "final_checkpoint_step": 62500,
+  "steps": 62500,
+  "target_tokens": 512000000,
+  "interpretation": "Finite fixed-budget cross-training comparison; no score-based eligibility gate.",
+  "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+  "initialization_registry_id": "238e20459662924d37f19d22ad16012f93de06b3a2f6ee273e9111a49b075ea3"
+}

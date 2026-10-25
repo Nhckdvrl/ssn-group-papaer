@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-25",
+  "purpose": "E130 资源预检；只读资源检查与 small reference 数据节点内暂存，不启动 GPU 任务。",
+  "available_slots_at_preflight": {
+    "fvcrc20": [
+      1,
+      3
+    ],
+    "fvcrc21": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "note": "fvcrc20 GPU0由E128占用；GPU2预留E128 finalizer。"
+  },
+  "hosts": {
+    "fvcrc20": {
+      "gpus": [
+        {
+          "index": 0,
+          "uuid": "GPU-1acd95ff-7d72-8dd8-77f2-77418f90965e",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "20362 MiB",
+          "memory_free": "76887 MiB",
+          "utilization": "81 %"
+        },
+        {
+          "index": 1,
+          "uuid": "GPU-9ec8243b-1e60-ebdb-b83e-f6a0fa24006c",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "21 MiB",
+          "memory_free": "97228 MiB",
+          "utilization": "0 %"
+        },
+        {
+          "index": 2,
+          "uuid": "GPU-5ce8d5e1-835d-49cf-0d42-cab11f8be331",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "20 MiB",
+          "memory_free": "97228 MiB",
+          "utilization": "0 %"
+        },
+        {
+          "index": 3,
+          "uuid": "GPU-eebba152-705b-320c-b4bd-18b268046caa",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "19 MiB",
+          "memory_free": "97230 MiB",
+          "utilization": "0 %"
+        }
+      ],
+      "python": {
+        "path": "/home/xiang/.venvs/mechpop/bin/python",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "cuda": "12.8",
+        "available": true,
+        "device_count": 4
+      },
+      "tmp_disk": "894G total / 459G used / 436G available"
+    },
+    "fvcrc21": {
+      "gpus": [
+        {
+          "index": 0,
+          "uuid": "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "15 MiB",
+          "memory_free": "97233 MiB",
+          "utilization": "0 %"
+        },
+        {
+          "index": 1,
+          "uuid": "GPU-93c03380-7c43-8dee-64ce-644eecbfc8b5",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "15 MiB",
+          "memory_free": "97233 MiB",
+          "utilization": "0 %"
+        },
+        {
+          "index": 2,
+          "uuid": "GPU-cb99eedd-50eb-24ae-7e44-f03277ee80fd",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "15 MiB",
+          "memory_free": "97233 MiB",
+          "utilization": "0 %"
+        },
+        {
+          "index": 3,
+          "uuid": "GPU-afa51c9c-2b51-5ed1-4782-5b9a1e7c5e7b",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+          "memory_total": "97887 MiB",
+          "memory_used": "15 MiB",
+          "memory_free": "97233 MiB",
+          "utilization": "0 %"
+        }
+      ],
+      "python": {
+        "path": "/home/xiang/.venvs/mechpop/bin/python",
+        "python": "3.12.0",
+        "torch": "2.8.0+cu128",
+        "cuda": "12.8",
+        "available": true,
+        "device_count": 4
+      },
+      "tmp_disk": "894G total / 94G used / 801G available",
+      "ssh": "BatchMode 非交互 SSH 成功；使用远端绝对 Python 路径。"
+    }
+  },
+  "assets": {
+    "olmo_dense": {
+      "path": "/tmp/xiang-moe-20261025/olmo_dense",
+      "present_local": true,
+      "present_remote": true,
+      "shard_bytes": [
+        4707070632,
+        412090496
+      ]
+    },
+    "e125_cover_manifest": {
+      "path": "/tmp/xiang-moe-20261025/e125_data_cover/manifest.json",
+      "reference_manifest_sha256": "f9b9f3bf820046eafd283b548be4aae8f26588d5f7dfab50edcab809b0bc0030",
+      "identity_match": {
+        "train": {
+          "local_files": 34,
+          "remote_files": 34,
+          "matching_file_id_and_sha256": true
+        },
+        "held": {
+          "local_files": 33,
+          "remote_files": 33,
+          "matching_file_id_and_sha256": true
+        }
+      }
+    },
+    "e125_small_reference": {
+      "path": "/tmp/xiang-moe-20261025/e125_data_small/manifest.json",
+      "source_manifest": "本机 results/e123/manifest.json 指向 /home/xiang/mechpop_cache/dolma_e123/tokens/{train,held}；E125 small manifest 的67条记录（34 train、33 held）file_id与SHA均匹配该源身份。",
+      "remote_stage_method": "scripts/e125_stage_tokens.py",
+      "sha256_check": "staging工具逐文件校验源与目标SHA；远端结果manifest的67个file_id/SHA与本机small manifest逐项相同，目标文件存在且大小匹配。",
+      "files": 67,
+      "bytes": 66008576,
+      "bytes_human": "66,008,576 bytes (~63 MiB)",
+      "staging_input_manifest": "/tmp/xiang-moe-20261025/e125_data_small/.stage_input_manifest.json",
+      "provenance_note": "远端保留staging输入manifest，使生成manifest中的canonical_manifest路径可追溯；输入记录的来源path来自NFS E123 origin_path。"
+    }
+  }
+}

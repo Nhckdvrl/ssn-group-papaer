@@ -1,0 +1,7421 @@
+{
+  "status": "invocation_update_limit",
+  "run_id": "E130-seed0_order1",
+  "replacement": "moe",
+  "step": 64,
+  "planned_steps": 62500,
+  "train_tokens": 524288,
+  "config_hash": "76b04f872f3e63277570f490cb023f27b3cb1ba9281607cea893e24afa5c5cac",
+  "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+  "frozen_sample_hash_before": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "frozen_sample_hash_after": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+  "evaluations": [
+    {
+      "step": 0,
+      "held": {
+        "file": {
+          "mean": 2.825287534487901,
+          "ci95": [
+            2.318547877859086,
+            3.279943874700084
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.825287534487901,
+          "ci95": [
+            2.7460848158479942,
+            2.906530745061414
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 2.0418958403092358,
+            "ci95": [
+              1.8735263258613202,
+              2.5470043836529825
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.9375748217653883,
+            "ci95": [
+              2.9083707989534417,
+              2.987638860871582
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.761466358733969,
+            "ci95": [
+              2.601217703040362,
+              2.8849512437426057
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.4535626778804116,
+            "ci95": [
+              3.0329929505722575,
+              4.018760645471236
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 2.409467355792567,
+            "ci95": [
+              2.400804143056577,
+              2.421018306107221
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.4315489999135593,
+            "ci95": [
+              2.4315489999135593,
+              2.4315489999135593
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 2.057440026431531,
+            "ci95": [
+              1.6013773512336513,
+              2.9695653768272905
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.6449497579753825,
+            "ci95": [
+              2.6449497579753825,
+              2.6449497579753825
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 3.078852392578664,
+            "ci95": [
+              2.9981790486188404,
+              3.1326346218852144
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 3.0178896497406806,
+            "ci95": [
+              3.0096225735692466,
+              3.025352982395447
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.532653785113724,
+            "ci95": [
+              2.5220282842744632,
+              2.5419510983480773
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.2460617203610695,
+            "ci95": [
+              2.04971197358636,
+              2.5405863405231344
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.3391949286710123,
+            "ci95": [
+              1.3300309418337215,
+              1.3499626132048292
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.665457290228863,
+            "ci95": [
+              2.665457290228863,
+              2.665457290228863
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.7201304283929764,
+            "ci95": [
+              1.6922065863103373,
+              1.9155973229714505
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.3314746422768216,
+          "ci95": [
+            0.27449894693139043,
+            0.42492127472805435
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.3314746422768216,
+          "ci95": [
+            0.30795151919009467,
+            0.3581824123481658
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.37792121932221634,
+            "ci95": [
+              0.2419308538222653,
+              0.42325134115553337
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.2532739362799942,
+            "ci95": [
+              0.2532647461545423,
+              0.2532792971865079
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.26024950320217144,
+            "ci95": [
+              0.23225737850583528,
+              0.3111778264446343
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.3839154955121186,
+            "ci95": [
+              0.24994888887994415,
+              0.5816850150052149
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.7986908834326961,
+            "ci95": [
+              0.6412982002360452,
+              1.008547794361564
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.47226223908253573,
+            "ci95": [
+              0.47226223908253573,
+              0.47226223908253573
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.30195831818856905,
+            "ci95": [
+              0.28462576505028814,
+              0.33662342446513094
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.3469133755196161,
+            "ci95": [
+              0.3469133755196161,
+              0.3469133755196161
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.2085827843010108,
+            "ci95": [
+              0.1896108463947856,
+              0.22123074290516093
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.30682802341823606,
+            "ci95": [
+              0.2726608551363584,
+              0.34467473289970063
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.2999036926389703,
+            "ci95": [
+              0.27861064908633915,
+              0.32423859955626305
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.21195110342545487,
+            "ci95": [
+              0.17079211147053286,
+              0.23939043139540286
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.2864080756677229,
+            "ci95": [
+              0.2651253891204375,
+              0.3045210003888171
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.4226917443959466,
+            "ci95": [
+              0.4226917443959466,
+              0.4226917443959466
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.24151073322128896,
+            "ci95": [
+              0.24003872877627286,
+              0.2518147643364017
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.531370033844407,
+        "word_bootstrap_ci95": [
+          2.3222810255634565,
+          2.734636844517262
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.3473699291258243,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.7512625577171708,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.16988700131466672,
+        "word_bootstrap_ci95": [
+          0.1304648271132267,
+          0.21195354845750408
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.15311607849578585,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.16256367275060407,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.035793070991834,
+            "answer": 0.0039439905773509636,
+            "book": 0.3115308037589467,
+            "call": 0.21569082339604695,
+            "care": -0.2412076501382722,
+            "change": 0.02643916259209317,
+            "charge": 0.28134096146871646,
+            "check": 0.32811564818406713,
+            "contact": 0.15596803803092396,
+            "copy": 0.7225394004379354,
+            "cost": 0.5459415506571531,
+            "cover": -0.40556517822874916,
+            "deal": 0.13223839529296932,
+            "end": 0.09270313406595959,
+            "face": -0.14273926056921482,
+            "fall": -0.9891136083751917,
+            "help": 0.2094232612695449,
+            "hope": -0.46496901363134385,
+            "look": -0.34187576127393793,
+            "love": 0.03176533601557216,
+            "means": 0.009652483605203183,
+            "meeting": 0.0822585051313841,
+            "move": -0.5049810194306903,
+            "name": 0.46137942440275637,
+            "need": 0.337486943790129,
+            "needs": 0.1891996277605786,
+            "note": -0.2552670296281576,
+            "offer": -0.2148448886083705,
+            "order": -0.6670614561639152,
+            "place": 0.10068934857845305,
+            "plan": -0.10454048067331315,
+            "post": 0.7086276832435812,
+            "return": 0.0752122367087465,
+            "review": 0.053712388969488906,
+            "run": -0.18193489205506108,
+            "set": 0.7954024538796928,
+            "show": -0.0727650822805507,
+            "shows": 0.045989955855267384,
+            "sign": -0.45625436705138,
+            "start": 0.02508378746764113,
+            "stay": -0.58284247532869,
+            "support": -0.27264109732849257,
+            "thought": 0.6200762170677383,
+            "travel": -0.28813212500377133,
+            "use": -0.3404907059142148,
+            "visit": -0.27034419775009155,
+            "work": 0.020293360417769635,
+            "works": -0.27441222841540974
+          },
+          "mean": -0.009447594254818217,
+          "word_bootstrap_ci95": [
+            -0.12304352544186768,
+            0.08793053458806124
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "reused_windows": 0,
+        "reuse_fraction": 0.0,
+        "unique_training_target_tokens": 0,
+        "available_windows": 998030,
+        "source_schedule_hash": "b827d8a782ce41c1e5c13fa0313d6b285860479ed620ef188bfd63ecb3622eb1",
+        "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+        "initialized_window_queues": 0,
+        "files_entering_repeat_epoch": 0
+      }
+    },
+    {
+      "step": 64,
+      "held": {
+        "file": {
+          "mean": 2.8127270538635925,
+          "ci95": [
+            2.3073221286189693,
+            3.2658937840545303
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.8127270538635925,
+          "ci95": [
+            2.7338450129403884,
+            2.893775475675169
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 2.031573205770239,
+            "ci95": [
+              1.8643158357215508,
+              2.5333453159163035
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 2.9288788474606577,
+            "ci95": [
+              2.8996446907259052,
+              2.978994544720233
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.7505539326567856,
+            "ci95": [
+              2.5927220482922593,
+              2.872692368320209
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.43894119794356,
+            "ci95": [
+              3.023130811899976,
+              3.998199640936919
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 2.3849281260897124,
+            "ci95": [
+              2.3809468361721606,
+              2.3902365126464473
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 2.418984014588119,
+            "ci95": [
+              2.418984014588119,
+              2.418984014588119
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 2.0481552055281043,
+            "ci95": [
+              1.5919399151806033,
+              2.960585786223106
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 2.6297534021593307,
+            "ci95": [
+              2.6297534021593307,
+              2.6297534021593307
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 3.0727174549584357,
+            "ci95": [
+              2.9920063673203368,
+              3.126524846717168
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 3.0078887243188444,
+            "ci95": [
+              2.99840412250562,
+              3.0164512120668934
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.5224334823743892,
+            "ci95": [
+              2.5109265767830493,
+              2.5325020247668117
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.236041160978658,
+            "ci95": [
+              2.0381183363822495,
+              2.532925397873271
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.3243869560881831,
+            "ci95": [
+              1.31445247820246,
+              1.3360599676039082
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.653927154869459,
+            "ci95": [
+              2.653927154869459,
+              2.653927154869459
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.7101223061582012,
+            "ci95": [
+              1.6827210462238043,
+              1.9019311256989795
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "held_delta_dense": {
+        "file": {
+          "mean": 0.3189141616525133,
+          "ci95": [
+            0.263705895923957,
+            0.4090987808675444
+          ],
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.3189141616525133,
+          "ci95": [
+            0.29575942433001534,
+            0.34477115147204934
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.3675985847832195,
+            "ci95": [
+              0.2282717860855863,
+              0.4140408510157639
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "C4": {
+            "mean": 0.24457796197526357,
+            "ci95": [
+              0.24455318895897138,
+              0.24462043000319308
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.24933707712498787,
+            "ci95": [
+              0.21999850308343838,
+              0.3005415277287966
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.36929401557526725,
+            "ci95": [
+              0.2394529935259243,
+              0.5611240104708988
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 0.7741516537298408,
+            "ci95": [
+              0.621440893351629,
+              0.9777660009007899
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "MegaWika": {
+            "mean": 0.4596972537570956,
+            "ci95": [
+              0.4596972537570956,
+              0.4596972537570956
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "OpenWebMath": {
+            "mean": 0.2926734972851423,
+            "ci95": [
+              0.2751883289972401,
+              0.32764383386094664
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Project Gutenberg": {
+            "mean": 0.3317170197035644,
+            "ci95": [
+              0.3317170197035644,
+              0.3317170197035644
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.2024478466807816,
+            "ci95": [
+              0.18343816509628202,
+              0.2151209677371147
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.2968270979964,
+            "ci95": [
+              0.26375908480780474,
+              0.33345628183607473
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.28968338989963544,
+            "ci95": [
+              0.2691615755050736,
+              0.313136892064849
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.20193054404304345,
+            "ci95": [
+              0.16313116882066936,
+              0.22779679419129284
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.27160010308489363,
+            "ci95": [
+              0.2512227435195163,
+              0.2889425367575555
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.4111616090365424,
+            "ci95": [
+              0.4111616090365424,
+              0.4111616090365424
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.23150261098651354,
+            "ci95": [
+              0.23055318868973965,
+              0.23814856706393073
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "MegaWika",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "pos": {
+        "word_balanced_mean": 2.5274128340254283,
+        "word_bootstrap_ci95": [
+          2.318202435840745,
+          2.7289069854973214
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 2.343968300843155,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 2.746199816454553,
+            "items": 488,
+            "words": 48
+          }
+        }
+      },
+      "pos_delta_dense": {
+        "word_balanced_mean": 0.1659298014956879,
+        "word_bootstrap_ci95": [
+          0.12681899968576713,
+          0.20687298089051329
+        ],
+        "words": 48,
+        "items": 964,
+        "conditions": {
+          "NOUN": {
+            "word_balanced_mean": 0.14971445021311666,
+            "items": 476,
+            "words": 48
+          },
+          "VERB": {
+            "word_balanced_mean": 0.15750093148798636,
+            "items": 488,
+            "words": 48
+          }
+        },
+        "paired_within_word_noun_minus_verb": {
+          "definition": "mean_word(mean_delta_NLL_NOUN - mean_delta_NLL_VERB)",
+          "eligible_words": 48,
+          "word_effects": {
+            "address": 0.053571473558743796,
+            "answer": 0.014440029859542847,
+            "book": 0.30575163283991436,
+            "call": 0.2108380387226741,
+            "care": -0.22560998280015257,
+            "change": 0.04237832228342692,
+            "charge": 0.2971205899905827,
+            "check": 0.3640640133466476,
+            "contact": 0.12559866585219517,
+            "copy": 0.7234774921754641,
+            "cost": 0.5977777238935232,
+            "cover": -0.3900892110097976,
+            "deal": 0.14548624616992825,
+            "end": 0.09678664166713136,
+            "face": -0.13029321638697927,
+            "fall": -0.9417965013533831,
+            "help": 0.20505897861260636,
+            "hope": -0.49057572197455623,
+            "look": -0.3361149706489717,
+            "love": 0.03163285426174603,
+            "means": 0.0031180334942681465,
+            "meeting": 0.047835334653167846,
+            "move": -0.5343626091877619,
+            "name": 0.4826678539227162,
+            "need": 0.3339274041615166,
+            "needs": 0.17434876499807134,
+            "note": -0.23346757081647712,
+            "offer": -0.19919463553066766,
+            "order": -0.6658692127523513,
+            "place": 0.16436407864093783,
+            "plan": -0.09745515747503801,
+            "post": 0.6327702695769923,
+            "return": 0.0828937626658724,
+            "review": 0.04854397122728658,
+            "run": -0.18607420238355793,
+            "set": 0.7734053166497092,
+            "show": -0.0962062969271626,
+            "shows": -0.015140558566365925,
+            "sign": -0.4397490213492087,
+            "start": 0.03818965253885835,
+            "stay": -0.5474719290549939,
+            "support": -0.2596879063972405,
+            "thought": 0.5860222879176338,
+            "travel": -0.3327505365014076,
+            "use": -0.3394756325847143,
+            "visit": -0.21047447290685442,
+            "work": 0.019183272897612846,
+            "works": -0.3031444611648718
+          },
+          "mean": -0.007786481274869671,
+          "word_bootstrap_ci95": [
+            -0.11858036254964112,
+            0.08609832090953666
+          ]
+        }
+      },
+      "coverage": {
+        "drawn_windows": 1024,
+        "unique_windows": 1024,
+        "reused_windows": 0,
+        "reuse_fraction": 0.0,
+        "unique_training_target_tokens": 524288,
+        "available_windows": 998030,
+        "source_schedule_hash": "67935af1e0916d3b0eb8e3e0b7ba743064654ca3f30013171476d05b66c0594d",
+        "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+        "initialized_window_queues": 31,
+        "files_entering_repeat_epoch": 0
+      }
+    }
+  ],
+  "coverage": {
+    "drawn_windows": 1024,
+    "unique_windows": 1024,
+    "reused_windows": 0,
+    "reuse_fraction": 0.0,
+    "unique_training_target_tokens": 524288,
+    "available_windows": 998030,
+    "source_schedule_hash": "67935af1e0916d3b0eb8e3e0b7ba743064654ca3f30013171476d05b66c0594d",
+    "files": [
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 59,
+        "unique_windows": 59,
+        "sampling_probability": 0.06055681439240046,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 59,
+        "permutation_sha256": "695b31bfd6a644bfb769a72f3f232a4eb9eb648215075c01114673dc9ff60dec"
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 58,
+        "unique_windows": 58,
+        "sampling_probability": 0.06055678314239948,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 58,
+        "permutation_sha256": "414590af1ad9cf3acbd3ddaee8891a458f16dbc93b5f748a1a0384e45d5954fa"
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 63,
+        "unique_windows": 63,
+        "sampling_probability": 0.06055678314239948,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 63,
+        "permutation_sha256": "a9a5727d5666f5a44f38eb26324222f029d53ba9753064c057c62003086ef92e"
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 66,
+        "unique_windows": 66,
+        "sampling_probability": 0.06055678314239948,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 66,
+        "permutation_sha256": "23edb7b9ac24d4e2442a4bf06e532dd6ee771fcb378727d8afb671b913b3b688"
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 64,
+        "unique_windows": 64,
+        "sampling_probability": 0.06055678314239948,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 64,
+        "permutation_sha256": "3adbccf9e679f9723ff093afc25289f723d97e38b749470a47f004feec32de6b"
+      },
+      {
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+        "available_windows": 60438,
+        "drawn_windows": 67,
+        "unique_windows": 67,
+        "sampling_probability": 0.06055678314239948,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 67,
+        "permutation_sha256": "f7b0d6399811725b5906633d3cb75567a4c0da3d3db898d590972ef15225695f"
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 146,
+        "unique_windows": 146,
+        "sampling_probability": 0.1387107543347111,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 146,
+        "permutation_sha256": "cb579c05bf159557a578c56bff6c9325c2b994d2d0eeaf26b82813a1e107a688"
+      },
+      {
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+        "available_windows": 138440,
+        "drawn_windows": 155,
+        "unique_windows": 155,
+        "sampling_probability": 0.1387107543347111,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 155,
+        "permutation_sha256": "bbf85872ad41cc9a70114b48236c7a9387799e47da4cc6e8921eafa86113c812"
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0017.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 70,
+        "unique_windows": 70,
+        "sampling_probability": 0.0801750650054708,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 70,
+        "permutation_sha256": "ea14db67024cd3f4ce1b4ce7bbbb6c657fdef5afbf82173a79fe5b57bee5f725"
+      },
+      {
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0047.json.gz",
+        "available_windows": 80018,
+        "drawn_windows": 69,
+        "unique_windows": 69,
+        "sampling_probability": 0.0801750650054708,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 69,
+        "permutation_sha256": "8b204a5007aa819cd60b4669c08f23c10e6223d8e576c1bf3a6fa7e2918dfa44"
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0073.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 28,
+        "unique_windows": 28,
+        "sampling_probability": 0.021031531907235376,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 28,
+        "permutation_sha256": "a3effa9c0674fc85734c9737bde68b4f2311fd658d8a3d1a6d347f157e7374a2"
+      },
+      {
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0032.json.gz",
+        "available_windows": 20990,
+        "drawn_windows": 30,
+        "unique_windows": 30,
+        "sampling_probability": 0.0210315006572344,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 30,
+        "permutation_sha256": "536e2834a97bc3dda3cc88d48b67794939b311391d0a7a197d2a517a6aab14e7"
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0026.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 24,
+        "unique_windows": 24,
+        "sampling_probability": 0.024283500758859402,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 24,
+        "permutation_sha256": "c5621176f28abc891afeda57003323c99dace32f08a4ae704f3fcfa58165ef85"
+      },
+      {
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0041.json.gz",
+        "available_windows": 24236,
+        "drawn_windows": 25,
+        "unique_windows": 25,
+        "sampling_probability": 0.024283500758859402,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 25,
+        "permutation_sha256": "85df564214c4e0fbf4806149791fabf70a55f40dc7d8b4568c87691e8d295fae"
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0009.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 22,
+        "unique_windows": 22,
+        "sampling_probability": 0.017384438043263693,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 22,
+        "permutation_sha256": "74e884bbff4ecbbf59b5fd7fe63533473d9040a9c90e08d4780aceefa9da1c35"
+      },
+      {
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0018.json.gz",
+        "available_windows": 17350,
+        "drawn_windows": 22,
+        "unique_windows": 22,
+        "sampling_probability": 0.017384438043263693,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 22,
+        "permutation_sha256": "cab9ce5f0986f4e8a9f2e0d197188b432f8d9094171a955be8395f12f3f7053f"
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 8,
+        "unique_windows": 8,
+        "sampling_probability": 0.008509875265933603,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 8,
+        "permutation_sha256": "fa66d07eb44883c778ff93806e4275e04b0d55a2d4c82b965f8338debff1d051"
+      },
+      {
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+        "available_windows": 8493,
+        "drawn_windows": 7,
+        "unique_windows": 7,
+        "sampling_probability": 0.008509844015932628,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 7,
+        "permutation_sha256": "a12a64646e2aeffef5a63504f439b3861921b038c2fa2ebb240feb3e795c155a"
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 7,
+        "unique_windows": 7,
+        "sampling_probability": 0.005956906436153327,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 7,
+        "permutation_sha256": "104caaab306d234e2c16240e5c65232dc1b5565c8f25d1250f6dc08d96828ebe"
+      },
+      {
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+        "available_windows": 5945,
+        "drawn_windows": 3,
+        "unique_windows": 3,
+        "sampling_probability": 0.005956906436153327,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 3,
+        "permutation_sha256": "8f37a5de7bcef052a3a726f96426f3f55c59e3b2897cbbec336b72e5c1a6c6aa"
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 2,
+        "unique_windows": 2,
+        "sampling_probability": 0.005014750156710943,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 2,
+        "permutation_sha256": "b34f4accd04712a96a07e99eff641dc170e7eb80e9c0362048a0727e72ab3529"
+      },
+      {
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+        "available_windows": 5004,
+        "drawn_windows": 4,
+        "unique_windows": 4,
+        "sampling_probability": 0.005014718906709967,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 4,
+        "permutation_sha256": "9022c3562b84102288dd7510053132e3ce8264d67cc8b6b5bd29f2ac012ad8a1"
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0001.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 1,
+        "unique_windows": 1,
+        "sampling_probability": 0.0021730625679082056,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 1,
+        "permutation_sha256": "fac57dd22e639131c1514c499f0655c4ef553da293b65988bc7e7412f56461f9"
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_tail/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 3,
+        "unique_windows": 3,
+        "sampling_probability": 0.0021730625679082056,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 3,
+        "permutation_sha256": "fcaee3ca85865612cca753b08be73c0a83fb6e1e5f2bd0a556a5c2207909c2bb"
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_middle/cc_news-0002.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "sampling_probability": 0.0021730625679082056,
+        "window_epoch_index": -1,
+        "next_queue_cursor": 0,
+        "permutation_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0000.json.gz",
+        "available_windows": 2168,
+        "drawn_windows": 1,
+        "unique_windows": 1,
+        "sampling_probability": 0.002173031317907229,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 1,
+        "permutation_sha256": "3ca09fb978746721969e0eac650bcda8a4dcd5cb0818434343cc2bc11c874f7e"
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "sampling_probability": 0.0038294376196699263,
+        "window_epoch_index": -1,
+        "next_queue_cursor": 0,
+        "permutation_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 4,
+        "unique_windows": 4,
+        "sampling_probability": 0.0038294376196699263,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 4,
+        "permutation_sha256": "67d62934e44248f89be7b7b7233273e076c2c3f6792ee7c34c865bc554a10175"
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 3,
+        "unique_windows": 3,
+        "sampling_probability": 0.0038294376196699263,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 3,
+        "permutation_sha256": "6c38fa702140a5a8e81acdfb95fedbb4b71b20fe9110a7ecbef3377a875a4872"
+      },
+      {
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+        "available_windows": 3821,
+        "drawn_windows": 3,
+        "unique_windows": 3,
+        "sampling_probability": 0.0038294376196699263,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 3,
+        "permutation_sha256": "c79a477b5531a29a55a3dac3cef6bfbed192fa6e0bdbe6012dde29648d432693"
+      },
+      {
+        "source": "Project Gutenberg",
+        "file_id": "books/books-0000.json.gz",
+        "available_windows": 3215,
+        "drawn_windows": 5,
+        "unique_windows": 5,
+        "sampling_probability": 0.0032215938506748084,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 5,
+        "permutation_sha256": "686663a63c7d9e33d9c432e4f19f0db496d9c1838cea1a969b1dca36f660934d"
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0162.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 0,
+        "unique_windows": 0,
+        "sampling_probability": 0.0013980625436894546,
+        "window_epoch_index": -1,
+        "next_queue_cursor": 0,
+        "permutation_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0144.json.gz",
+        "available_windows": 1395,
+        "drawn_windows": 2,
+        "unique_windows": 2,
+        "sampling_probability": 0.0013980312936884782,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 2,
+        "permutation_sha256": "72477a4b4e5398f9650273ae65094d67df26c9118139c43052993a76c66dea88"
+      },
+      {
+        "source": "Wikipedia & Wikibooks",
+        "file_id": "wiki/wiki-0000.json.gz",
+        "available_windows": 4489,
+        "drawn_windows": 3,
+        "unique_windows": 3,
+        "sampling_probability": 0.004498062640564458,
+        "window_epoch_index": 0,
+        "next_queue_cursor": 3,
+        "permutation_sha256": "1b55a8f50d5d6b54ad8e91b4d6474e6afb036e3205753a1b4b81011321dde6f7"
+      }
+    ],
+    "count_arrays_sha256": "cb7de299c1a4ae168e57301df40881e406981bc01fd59d06868f27567dfa01ca",
+    "sampling_policy": "per_file_random_permutation_without_replacement_until_exhausted_then_cycle_v1",
+    "initialized_window_queues": 31,
+    "files_entering_repeat_epoch": 0
+  },
+  "dense_reference": {
+    "file": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.029855222423871,
+        2.8807765491502297
+      ],
+      "cluster": "file",
+      "clusters": 32,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequence": {
+      "mean": 2.4938128922110794,
+      "ci95": [
+        2.422263147913324,
+        2.568732465944894
+      ],
+      "cluster": "sequence",
+      "clusters": 512,
+      "iterations": 1000,
+      "ci_degenerate": false
+    },
+    "sequences": 512,
+    "tokens": 262144,
+    "sources": {
+      "Algebraic Stack": {
+        "mean": 1.6639746209870194,
+        "ci95": [
+          1.4502749847057868,
+          2.3050735298307172
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "C4": {
+        "mean": 2.684300885485394,
+        "ci95": [
+          2.655091501766934,
+          2.7343741147170397
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "CC News": {
+        "mean": 2.5012168555317977,
+        "ci95": [
+          2.335912273687981,
+          2.6526938652367704
+        ],
+        "cluster": "file",
+        "clusters": 3,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Dolma CC": {
+        "mean": 3.0696471823682927,
+        "ci95": [
+          2.781108082280136,
+          3.4345635666238863
+        ],
+        "cluster": "file",
+        "clusters": 6,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Flan": {
+        "mean": 1.6107764723598712,
+        "ci95": [
+          1.412470511745657,
+          1.7595059428205317
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "MegaWika": {
+        "mean": 1.9592867608310236,
+        "ci95": [
+          1.9592867608310236,
+          1.9592867608310236
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "OpenWebMath": {
+        "mean": 1.755481708242962,
+        "ci95": [
+          1.3167515861833632,
+          2.6329419523621596
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Project Gutenberg": {
+        "mean": 2.2980363824557664,
+        "ci95": [
+          2.2980363824557664,
+          2.2980363824557664
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "Reddit": {
+        "mean": 2.870269608277654,
+        "ci95": [
+          2.8085682022240546,
+          2.9114038789800527
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Refined Web": {
+        "mean": 2.711061626322444,
+        "ci95": [
+          2.664947840669545,
+          2.752692127259088
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Semantic Scholar": {
+        "mean": 2.232750092474754,
+        "ci95": [
+          2.1977896847182,
+          2.2633404492617384
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StackExchange": {
+        "mean": 2.0341106169356147,
+        "ci95": [
+          1.8103215421909569,
+          2.3697942290526015
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "StarCoder": {
+        "mean": 1.0527868530032887,
+        "ci95": [
+          1.0255099414449045,
+          1.084837224084391
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      },
+      "Wikipedia & Wikibooks": {
+        "mean": 2.2427655458329165,
+        "ci95": [
+          2.2427655458329165,
+          2.2427655458329165
+        ],
+        "cluster": "file",
+        "clusters": 1,
+        "iterations": 1000,
+        "ci_degenerate": true
+      },
+      "arXiv": {
+        "mean": 1.4786196951716875,
+        "ci95": [
+          1.4521678575340646,
+          1.6637825586350488
+        ],
+        "cluster": "file",
+        "clusters": 2,
+        "iterations": 1000,
+        "ci_degenerate": false
+      }
+    },
+    "sources_evaluated": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "sources_available": [
+      "Algebraic Stack",
+      "C4",
+      "CC News",
+      "Dolma CC",
+      "Flan",
+      "MegaWika",
+      "OpenWebMath",
+      "Project Gutenberg",
+      "Reddit",
+      "Refined Web",
+      "Semantic Scholar",
+      "StackExchange",
+      "StarCoder",
+      "Wikipedia & Wikibooks",
+      "arXiv"
+    ],
+    "missing_sources": []
+  },
+  "diagnostic": {
+    "selection": {
+      "paired_file_quotas": true,
+      "requested": 512,
+      "actual": 512,
+      "seed": 125,
+      "files": [
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "quota_each": 34,
+          "seen_available": 59,
+          "unseen_available": 60379
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "quota_each": 29,
+          "seen_available": 58,
+          "unseen_available": 60380
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "quota_each": 32,
+          "seen_available": 63,
+          "unseen_available": 60375
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "quota_each": 29,
+          "seen_available": 66,
+          "unseen_available": 60372
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "quota_each": 33,
+          "seen_available": 64,
+          "unseen_available": 60374
+        },
+        {
+          "source": "Dolma CC",
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "quota_each": 25,
+          "seen_available": 67,
+          "unseen_available": 60371
+        },
+        {
+          "source": "Refined Web",
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "quota_each": 67,
+          "seen_available": 146,
+          "unseen_available": 138294
+        },
+        {
+          "source": "Refined Web",
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "quota_each": 75,
+          "seen_available": 155,
+          "unseen_available": 138285
+        },
+        {
+          "source": "StarCoder",
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "quota_each": 38,
+          "seen_available": 70,
+          "unseen_available": 79948
+        },
+        {
+          "source": "StarCoder",
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "quota_each": 48,
+          "seen_available": 69,
+          "unseen_available": 79949
+        },
+        {
+          "source": "C4",
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "quota_each": 13,
+          "seen_available": 28,
+          "unseen_available": 20962
+        },
+        {
+          "source": "C4",
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "quota_each": 15,
+          "seen_available": 30,
+          "unseen_available": 20960
+        },
+        {
+          "source": "Reddit",
+          "file_id": "reddit/reddit-0026.json.gz",
+          "quota_each": 11,
+          "seen_available": 24,
+          "unseen_available": 24212
+        },
+        {
+          "source": "Reddit",
+          "file_id": "reddit/reddit-0041.json.gz",
+          "quota_each": 8,
+          "seen_available": 25,
+          "unseen_available": 24211
+        },
+        {
+          "source": "Semantic Scholar",
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "quota_each": 11,
+          "seen_available": 22,
+          "unseen_available": 17328
+        },
+        {
+          "source": "Semantic Scholar",
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "quota_each": 11,
+          "seen_available": 22,
+          "unseen_available": 17328
+        },
+        {
+          "source": "arXiv",
+          "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+          "quota_each": 6,
+          "seen_available": 8,
+          "unseen_available": 8485
+        },
+        {
+          "source": "arXiv",
+          "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+          "quota_each": 4,
+          "seen_available": 7,
+          "unseen_available": 8486
+        },
+        {
+          "source": "StackExchange",
+          "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+          "quota_each": 3,
+          "seen_available": 7,
+          "unseen_available": 5938
+        },
+        {
+          "source": "StackExchange",
+          "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+          "quota_each": 3,
+          "seen_available": 3,
+          "unseen_available": 5942
+        },
+        {
+          "source": "Flan",
+          "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+          "quota_each": 2,
+          "seen_available": 2,
+          "unseen_available": 5002
+        },
+        {
+          "source": "Flan",
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "quota_each": 3,
+          "seen_available": 4,
+          "unseen_available": 5000
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_head/cc_news-0001.json.gz",
+          "quota_each": 1,
+          "seen_available": 1,
+          "unseen_available": 2167
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_tail/cc_news-0000.json.gz",
+          "quota_each": 2,
+          "seen_available": 3,
+          "unseen_available": 2165
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_middle/cc_news-0002.json.gz",
+          "quota_each": 0,
+          "seen_available": 0,
+          "unseen_available": 2168
+        },
+        {
+          "source": "CC News",
+          "file_id": "cc_news_head/cc_news-0000.json.gz",
+          "quota_each": 1,
+          "seen_available": 1,
+          "unseen_available": 2167
+        },
+        {
+          "source": "OpenWebMath",
+          "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+          "quota_each": 0,
+          "seen_available": 0,
+          "unseen_available": 3821
+        },
+        {
+          "source": "OpenWebMath",
+          "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+          "quota_each": 1,
+          "seen_available": 4,
+          "unseen_available": 3817
+        },
+        {
+          "source": "Algebraic Stack",
+          "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+          "quota_each": 0,
+          "seen_available": 3,
+          "unseen_available": 3818
+        },
+        {
+          "source": "Algebraic Stack",
+          "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+          "quota_each": 2,
+          "seen_available": 3,
+          "unseen_available": 3818
+        },
+        {
+          "source": "Project Gutenberg",
+          "file_id": "books/books-0000.json.gz",
+          "quota_each": 3,
+          "seen_available": 5,
+          "unseen_available": 3210
+        },
+        {
+          "source": "MegaWika",
+          "file_id": "wikiref_megawika/megawika-0162.json.gz",
+          "quota_each": 0,
+          "seen_available": 0,
+          "unseen_available": 1395
+        },
+        {
+          "source": "MegaWika",
+          "file_id": "wikiref_megawika/megawika-0144.json.gz",
+          "quota_each": 0,
+          "seen_available": 2,
+          "unseen_available": 1393
+        },
+        {
+          "source": "Wikipedia & Wikibooks",
+          "file_id": "wiki/wiki-0000.json.gz",
+          "quota_each": 2,
+          "seen_available": 3,
+          "unseen_available": 4486
+        }
+      ],
+      "selection_depends_on_loss": false
+    },
+    "seen": {
+      "windows": [
+        [
+          0,
+          55418
+        ],
+        [
+          0,
+          59856
+        ],
+        [
+          0,
+          40485
+        ],
+        [
+          0,
+          38794
+        ],
+        [
+          0,
+          35540
+        ],
+        [
+          0,
+          56389
+        ],
+        [
+          0,
+          42249
+        ],
+        [
+          0,
+          23383
+        ],
+        [
+          0,
+          32249
+        ],
+        [
+          0,
+          13900
+        ],
+        [
+          0,
+          45719
+        ],
+        [
+          0,
+          12729
+        ],
+        [
+          0,
+          6805
+        ],
+        [
+          0,
+          13326
+        ],
+        [
+          0,
+          16584
+        ],
+        [
+          0,
+          6664
+        ],
+        [
+          0,
+          16395
+        ],
+        [
+          0,
+          16460
+        ],
+        [
+          0,
+          54654
+        ],
+        [
+          0,
+          23437
+        ],
+        [
+          0,
+          39188
+        ],
+        [
+          0,
+          36159
+        ],
+        [
+          0,
+          39383
+        ],
+        [
+          0,
+          4405
+        ],
+        [
+          0,
+          5201
+        ],
+        [
+          0,
+          54451
+        ],
+        [
+          0,
+          9195
+        ],
+        [
+          0,
+          24771
+        ],
+        [
+          0,
+          51054
+        ],
+        [
+          0,
+          12046
+        ],
+        [
+          0,
+          29663
+        ],
+        [
+          0,
+          21441
+        ],
+        [
+          0,
+          30807
+        ],
+        [
+          0,
+          48340
+        ],
+        [
+          1,
+          30748
+        ],
+        [
+          1,
+          57017
+        ],
+        [
+          1,
+          402
+        ],
+        [
+          1,
+          2536
+        ],
+        [
+          1,
+          4996
+        ],
+        [
+          1,
+          446
+        ],
+        [
+          1,
+          16184
+        ],
+        [
+          1,
+          37196
+        ],
+        [
+          1,
+          36039
+        ],
+        [
+          1,
+          35447
+        ],
+        [
+          1,
+          35208
+        ],
+        [
+          1,
+          57844
+        ],
+        [
+          1,
+          5737
+        ],
+        [
+          1,
+          45287
+        ],
+        [
+          1,
+          28787
+        ],
+        [
+          1,
+          32573
+        ],
+        [
+          1,
+          30397
+        ],
+        [
+          1,
+          23716
+        ],
+        [
+          1,
+          45694
+        ],
+        [
+          1,
+          44466
+        ],
+        [
+          1,
+          35971
+        ],
+        [
+          1,
+          30215
+        ],
+        [
+          1,
+          31274
+        ],
+        [
+          1,
+          40034
+        ],
+        [
+          1,
+          8749
+        ],
+        [
+          1,
+          17808
+        ],
+        [
+          1,
+          20390
+        ],
+        [
+          1,
+          29765
+        ],
+        [
+          1,
+          36065
+        ],
+        [
+          2,
+          35997
+        ],
+        [
+          2,
+          47433
+        ],
+        [
+          2,
+          44686
+        ],
+        [
+          2,
+          24450
+        ],
+        [
+          2,
+          48170
+        ],
+        [
+          2,
+          57905
+        ],
+        [
+          2,
+          26621
+        ],
+        [
+          2,
+          38517
+        ],
+        [
+          2,
+          29211
+        ],
+        [
+          2,
+          40366
+        ],
+        [
+          2,
+          18944
+        ],
+        [
+          2,
+          56054
+        ],
+        [
+          2,
+          12065
+        ],
+        [
+          2,
+          18322
+        ],
+        [
+          2,
+          921
+        ],
+        [
+          2,
+          11295
+        ],
+        [
+          2,
+          2945
+        ],
+        [
+          2,
+          51228
+        ],
+        [
+          2,
+          5040
+        ],
+        [
+          2,
+          16085
+        ],
+        [
+          2,
+          3936
+        ],
+        [
+          2,
+          56325
+        ],
+        [
+          2,
+          47764
+        ],
+        [
+          2,
+          5661
+        ],
+        [
+          2,
+          3388
+        ],
+        [
+          2,
+          36395
+        ],
+        [
+          2,
+          1731
+        ],
+        [
+          2,
+          18558
+        ],
+        [
+          2,
+          13947
+        ],
+        [
+          2,
+          47543
+        ],
+        [
+          2,
+          49129
+        ],
+        [
+          2,
+          24634
+        ],
+        [
+          3,
+          19531
+        ],
+        [
+          3,
+          60390
+        ],
+        [
+          3,
+          20963
+        ],
+        [
+          3,
+          8695
+        ],
+        [
+          3,
+          42314
+        ],
+        [
+          3,
+          59727
+        ],
+        [
+          3,
+          31173
+        ],
+        [
+          3,
+          10360
+        ],
+        [
+          3,
+          33652
+        ],
+        [
+          3,
+          58479
+        ],
+        [
+          3,
+          18608
+        ],
+        [
+          3,
+          14490
+        ],
+        [
+          3,
+          32411
+        ],
+        [
+          3,
+          9893
+        ],
+        [
+          3,
+          51747
+        ],
+        [
+          3,
+          42988
+        ],
+        [
+          3,
+          41670
+        ],
+        [
+          3,
+          36767
+        ],
+        [
+          3,
+          10607
+        ],
+        [
+          3,
+          7537
+        ],
+        [
+          3,
+          41635
+        ],
+        [
+          3,
+          55263
+        ],
+        [
+          3,
+          14565
+        ],
+        [
+          3,
+          1588
+        ],
+        [
+          3,
+          7576
+        ],
+        [
+          3,
+          37970
+        ],
+        [
+          3,
+          7566
+        ],
+        [
+          3,
+          46760
+        ],
+        [
+          3,
+          48104
+        ],
+        [
+          4,
+          11855
+        ],
+        [
+          4,
+          37816
+        ],
+        [
+          4,
+          14909
+        ],
+        [
+          4,
+          45410
+        ],
+        [
+          4,
+          33937
+        ],
+        [
+          4,
+          960
+        ],
+        [
+          4,
+          55574
+        ],
+        [
+          4,
+          8101
+        ],
+        [
+          4,
+          11561
+        ],
+        [
+          4,
+          19163
+        ],
+        [
+          4,
+          53979
+        ],
+        [
+          4,
+          30419
+        ],
+        [
+          4,
+          14385
+        ],
+        [
+          4,
+          30397
+        ],
+        [
+          4,
+          37913
+        ],
+        [
+          4,
+          24275
+        ],
+        [
+          4,
+          29446
+        ],
+        [
+          4,
+          20898
+        ],
+        [
+          4,
+          51336
+        ],
+        [
+          4,
+          6610
+        ],
+        [
+          4,
+          59141
+        ],
+        [
+          4,
+          2747
+        ],
+        [
+          4,
+          3525
+        ],
+        [
+          4,
+          10119
+        ],
+        [
+          4,
+          56827
+        ],
+        [
+          4,
+          46742
+        ],
+        [
+          4,
+          1021
+        ],
+        [
+          4,
+          54436
+        ],
+        [
+          4,
+          55920
+        ],
+        [
+          4,
+          1840
+        ],
+        [
+          4,
+          10770
+        ],
+        [
+          4,
+          44219
+        ],
+        [
+          4,
+          6299
+        ],
+        [
+          5,
+          17424
+        ],
+        [
+          5,
+          15701
+        ],
+        [
+          5,
+          9606
+        ],
+        [
+          5,
+          35613
+        ],
+        [
+          5,
+          54383
+        ],
+        [
+          5,
+          22652
+        ],
+        [
+          5,
+          44164
+        ],
+        [
+          5,
+          12071
+        ],
+        [
+          5,
+          42304
+        ],
+        [
+          5,
+          53508
+        ],
+        [
+          5,
+          18584
+        ],
+        [
+          5,
+          1807
+        ],
+        [
+          5,
+          38067
+        ],
+        [
+          5,
+          8103
+        ],
+        [
+          5,
+          59524
+        ],
+        [
+          5,
+          49916
+        ],
+        [
+          5,
+          18403
+        ],
+        [
+          5,
+          36004
+        ],
+        [
+          5,
+          593
+        ],
+        [
+          5,
+          24513
+        ],
+        [
+          5,
+          32363
+        ],
+        [
+          5,
+          32326
+        ],
+        [
+          5,
+          40665
+        ],
+        [
+          5,
+          16143
+        ],
+        [
+          5,
+          27510
+        ],
+        [
+          6,
+          84442
+        ],
+        [
+          6,
+          138099
+        ],
+        [
+          6,
+          40131
+        ],
+        [
+          6,
+          65305
+        ],
+        [
+          6,
+          31933
+        ],
+        [
+          6,
+          65702
+        ],
+        [
+          6,
+          17513
+        ],
+        [
+          6,
+          135249
+        ],
+        [
+          6,
+          114576
+        ],
+        [
+          6,
+          99302
+        ],
+        [
+          6,
+          95185
+        ],
+        [
+          6,
+          122295
+        ],
+        [
+          6,
+          47053
+        ],
+        [
+          6,
+          100974
+        ],
+        [
+          6,
+          63457
+        ],
+        [
+          6,
+          125953
+        ],
+        [
+          6,
+          131436
+        ],
+        [
+          6,
+          49529
+        ],
+        [
+          6,
+          21309
+        ],
+        [
+          6,
+          1137
+        ],
+        [
+          6,
+          132408
+        ],
+        [
+          6,
+          90480
+        ],
+        [
+          6,
+          52729
+        ],
+        [
+          6,
+          56486
+        ],
+        [
+          6,
+          75356
+        ],
+        [
+          6,
+          63212
+        ],
+        [
+          6,
+          63985
+        ],
+        [
+          6,
+          7969
+        ],
+        [
+          6,
+          45297
+        ],
+        [
+          6,
+          78301
+        ],
+        [
+          6,
+          54916
+        ],
+        [
+          6,
+          76294
+        ],
+        [
+          6,
+          72865
+        ],
+        [
+          6,
+          58541
+        ],
+        [
+          6,
+          107524
+        ],
+        [
+          6,
+          120182
+        ],
+        [
+          6,
+          40119
+        ],
+        [
+          6,
+          105304
+        ],
+        [
+          6,
+          70211
+        ],
+        [
+          6,
+          108288
+        ],
+        [
+          6,
+          13636
+        ],
+        [
+          6,
+          84298
+        ],
+        [
+          6,
+          117783
+        ],
+        [
+          6,
+          120027
+        ],
+        [
+          6,
+          106576
+        ],
+        [
+          6,
+          45496
+        ],
+        [
+          6,
+          51483
+        ],
+        [
+          6,
+          90302
+        ],
+        [
+          6,
+          100841
+        ],
+        [
+          6,
+          46021
+        ],
+        [
+          6,
+          26594
+        ],
+        [
+          6,
+          46065
+        ],
+        [
+          6,
+          105944
+        ],
+        [
+          6,
+          126060
+        ],
+        [
+          6,
+          37455
+        ],
+        [
+          6,
+          133007
+        ],
+        [
+          6,
+          107328
+        ],
+        [
+          6,
+          86553
+        ],
+        [
+          6,
+          109815
+        ],
+        [
+          6,
+          94625
+        ],
+        [
+          6,
+          121281
+        ],
+        [
+          6,
+          102058
+        ],
+        [
+          6,
+          21002
+        ],
+        [
+          6,
+          117242
+        ],
+        [
+          6,
+          95270
+        ],
+        [
+          6,
+          6845
+        ],
+        [
+          6,
+          116911
+        ],
+        [
+          7,
+          53131
+        ],
+        [
+          7,
+          116871
+        ],
+        [
+          7,
+          3972
+        ],
+        [
+          7,
+          18671
+        ],
+        [
+          7,
+          12034
+        ],
+        [
+          7,
+          39933
+        ],
+        [
+          7,
+          49681
+        ],
+        [
+          7,
+          100920
+        ],
+        [
+          7,
+          73062
+        ],
+        [
+          7,
+          128931
+        ],
+        [
+          7,
+          3803
+        ],
+        [
+          7,
+          38451
+        ],
+        [
+          7,
+          136166
+        ],
+        [
+          7,
+          2143
+        ],
+        [
+          7,
+          85974
+        ],
+        [
+          7,
+          123108
+        ],
+        [
+          7,
+          20731
+        ],
+        [
+          7,
+          47558
+        ],
+        [
+          7,
+          130348
+        ],
+        [
+          7,
+          41932
+        ],
+        [
+          7,
+          47393
+        ],
+        [
+          7,
+          65325
+        ],
+        [
+          7,
+          55749
+        ],
+        [
+          7,
+          34967
+        ],
+        [
+          7,
+          62985
+        ],
+        [
+          7,
+          8887
+        ],
+        [
+          7,
+          63680
+        ],
+        [
+          7,
+          101692
+        ],
+        [
+          7,
+          38432
+        ],
+        [
+          7,
+          79621
+        ],
+        [
+          7,
+          90173
+        ],
+        [
+          7,
+          1645
+        ],
+        [
+          7,
+          56480
+        ],
+        [
+          7,
+          29623
+        ],
+        [
+          7,
+          12911
+        ],
+        [
+          7,
+          94031
+        ],
+        [
+          7,
+          61280
+        ],
+        [
+          7,
+          51837
+        ],
+        [
+          7,
+          78179
+        ],
+        [
+          7,
+          65430
+        ],
+        [
+          7,
+          45587
+        ],
+        [
+          7,
+          30371
+        ],
+        [
+          7,
+          129447
+        ],
+        [
+          7,
+          80568
+        ],
+        [
+          7,
+          103490
+        ],
+        [
+          7,
+          68758
+        ],
+        [
+          7,
+          104368
+        ],
+        [
+          7,
+          29786
+        ],
+        [
+          7,
+          103651
+        ],
+        [
+          7,
+          84427
+        ],
+        [
+          7,
+          95406
+        ],
+        [
+          7,
+          18777
+        ],
+        [
+          7,
+          79628
+        ],
+        [
+          7,
+          63880
+        ],
+        [
+          7,
+          134418
+        ],
+        [
+          7,
+          46562
+        ],
+        [
+          7,
+          127407
+        ],
+        [
+          7,
+          34615
+        ],
+        [
+          7,
+          25589
+        ],
+        [
+          7,
+          22695
+        ],
+        [
+          7,
+          117820
+        ],
+        [
+          7,
+          105820
+        ],
+        [
+          7,
+          64078
+        ],
+        [
+          7,
+          55259
+        ],
+        [
+          7,
+          127520
+        ],
+        [
+          7,
+          101443
+        ],
+        [
+          7,
+          60204
+        ],
+        [
+          7,
+          68941
+        ],
+        [
+          7,
+          34012
+        ],
+        [
+          7,
+          109688
+        ],
+        [
+          7,
+          97301
+        ],
+        [
+          7,
+          74097
+        ],
+        [
+          7,
+          245
+        ],
+        [
+          7,
+          130288
+        ],
+        [
+          7,
+          19126
+        ],
+        [
+          8,
+          48345
+        ],
+        [
+          8,
+          74599
+        ],
+        [
+          8,
+          21199
+        ],
+        [
+          8,
+          71633
+        ],
+        [
+          8,
+          19915
+        ],
+        [
+          8,
+          20531
+        ],
+        [
+          8,
+          49442
+        ],
+        [
+          8,
+          66449
+        ],
+        [
+          8,
+          578
+        ],
+        [
+          8,
+          28463
+        ],
+        [
+          8,
+          76258
+        ],
+        [
+          8,
+          77305
+        ],
+        [
+          8,
+          41612
+        ],
+        [
+          8,
+          36130
+        ],
+        [
+          8,
+          66587
+        ],
+        [
+          8,
+          33443
+        ],
+        [
+          8,
+          5933
+        ],
+        [
+          8,
+          60323
+        ],
+        [
+          8,
+          68812
+        ],
+        [
+          8,
+          47271
+        ],
+        [
+          8,
+          19835
+        ],
+        [
+          8,
+          25918
+        ],
+        [
+          8,
+          22455
+        ],
+        [
+          8,
+          46494
+        ],
+        [
+          8,
+          38934
+        ],
+        [
+          8,
+          46577
+        ],
+        [
+          8,
+          69972
+        ],
+        [
+          8,
+          49708
+        ],
+        [
+          8,
+          62399
+        ],
+        [
+          8,
+          11939
+        ],
+        [
+          8,
+          70263
+        ],
+        [
+          8,
+          27747
+        ],
+        [
+          8,
+          21691
+        ],
+        [
+          8,
+          13287
+        ],
+        [
+          8,
+          70190
+        ],
+        [
+          8,
+          46958
+        ],
+        [
+          8,
+          11420
+        ],
+        [
+          8,
+          51889
+        ],
+        [
+          9,
+          58948
+        ],
+        [
+          9,
+          17042
+        ],
+        [
+          9,
+          36696
+        ],
+        [
+          9,
+          61279
+        ],
+        [
+          9,
+          67973
+        ],
+        [
+          9,
+          29976
+        ],
+        [
+          9,
+          36854
+        ],
+        [
+          9,
+          74161
+        ],
+        [
+          9,
+          56140
+        ],
+        [
+          9,
+          33623
+        ],
+        [
+          9,
+          52927
+        ],
+        [
+          9,
+          1078
+        ],
+        [
+          9,
+          5489
+        ],
+        [
+          9,
+          18509
+        ],
+        [
+          9,
+          29124
+        ],
+        [
+          9,
+          2478
+        ],
+        [
+          9,
+          77523
+        ],
+        [
+          9,
+          41597
+        ],
+        [
+          9,
+          32848
+        ],
+        [
+          9,
+          9695
+        ],
+        [
+          9,
+          473
+        ],
+        [
+          9,
+          21237
+        ],
+        [
+          9,
+          20887
+        ],
+        [
+          9,
+          52620
+        ],
+        [
+          9,
+          26750
+        ],
+        [
+          9,
+          36781
+        ],
+        [
+          9,
+          12842
+        ],
+        [
+          9,
+          45761
+        ],
+        [
+          9,
+          58611
+        ],
+        [
+          9,
+          33273
+        ],
+        [
+          9,
+          7169
+        ],
+        [
+          9,
+          67175
+        ],
+        [
+          9,
+          45742
+        ],
+        [
+          9,
+          31905
+        ],
+        [
+          9,
+          77908
+        ],
+        [
+          9,
+          8910
+        ],
+        [
+          9,
+          71915
+        ],
+        [
+          9,
+          20345
+        ],
+        [
+          9,
+          45067
+        ],
+        [
+          9,
+          74377
+        ],
+        [
+          9,
+          44713
+        ],
+        [
+          9,
+          40676
+        ],
+        [
+          9,
+          137
+        ],
+        [
+          9,
+          27837
+        ],
+        [
+          9,
+          31792
+        ],
+        [
+          9,
+          43565
+        ],
+        [
+          9,
+          36572
+        ],
+        [
+          9,
+          51049
+        ],
+        [
+          10,
+          19126
+        ],
+        [
+          10,
+          9294
+        ],
+        [
+          10,
+          18970
+        ],
+        [
+          10,
+          18827
+        ],
+        [
+          10,
+          13151
+        ],
+        [
+          10,
+          7587
+        ],
+        [
+          10,
+          5371
+        ],
+        [
+          10,
+          4680
+        ],
+        [
+          10,
+          11461
+        ],
+        [
+          10,
+          8010
+        ],
+        [
+          10,
+          11689
+        ],
+        [
+          10,
+          18061
+        ],
+        [
+          10,
+          17782
+        ],
+        [
+          11,
+          13796
+        ],
+        [
+          11,
+          2286
+        ],
+        [
+          11,
+          8019
+        ],
+        [
+          11,
+          12766
+        ],
+        [
+          11,
+          5348
+        ],
+        [
+          11,
+          14214
+        ],
+        [
+          11,
+          15579
+        ],
+        [
+          11,
+          7672
+        ],
+        [
+          11,
+          11578
+        ],
+        [
+          11,
+          6297
+        ],
+        [
+          11,
+          12648
+        ],
+        [
+          11,
+          4767
+        ],
+        [
+          11,
+          2063
+        ],
+        [
+          11,
+          6868
+        ],
+        [
+          11,
+          1078
+        ],
+        [
+          12,
+          8187
+        ],
+        [
+          12,
+          13362
+        ],
+        [
+          12,
+          15312
+        ],
+        [
+          12,
+          13450
+        ],
+        [
+          12,
+          22694
+        ],
+        [
+          12,
+          7561
+        ],
+        [
+          12,
+          15571
+        ],
+        [
+          12,
+          3581
+        ],
+        [
+          12,
+          10691
+        ],
+        [
+          12,
+          8831
+        ],
+        [
+          12,
+          13851
+        ],
+        [
+          13,
+          19821
+        ],
+        [
+          13,
+          3383
+        ],
+        [
+          13,
+          6503
+        ],
+        [
+          13,
+          7338
+        ],
+        [
+          13,
+          15302
+        ],
+        [
+          13,
+          2378
+        ],
+        [
+          13,
+          5221
+        ],
+        [
+          13,
+          14227
+        ],
+        [
+          14,
+          1146
+        ],
+        [
+          14,
+          8071
+        ],
+        [
+          14,
+          4829
+        ],
+        [
+          14,
+          15143
+        ],
+        [
+          14,
+          4146
+        ],
+        [
+          14,
+          3065
+        ],
+        [
+          14,
+          10219
+        ],
+        [
+          14,
+          3906
+        ],
+        [
+          14,
+          7244
+        ],
+        [
+          14,
+          6550
+        ],
+        [
+          14,
+          7615
+        ],
+        [
+          15,
+          2829
+        ],
+        [
+          15,
+          7066
+        ],
+        [
+          15,
+          2394
+        ],
+        [
+          15,
+          957
+        ],
+        [
+          15,
+          9488
+        ],
+        [
+          15,
+          16965
+        ],
+        [
+          15,
+          7003
+        ],
+        [
+          15,
+          11762
+        ],
+        [
+          15,
+          14538
+        ],
+        [
+          15,
+          8566
+        ],
+        [
+          15,
+          13916
+        ],
+        [
+          16,
+          7489
+        ],
+        [
+          16,
+          5995
+        ],
+        [
+          16,
+          5672
+        ],
+        [
+          16,
+          4598
+        ],
+        [
+          16,
+          7144
+        ],
+        [
+          16,
+          2593
+        ],
+        [
+          17,
+          5416
+        ],
+        [
+          17,
+          3191
+        ],
+        [
+          17,
+          1762
+        ],
+        [
+          17,
+          8057
+        ],
+        [
+          18,
+          5695
+        ],
+        [
+          18,
+          4702
+        ],
+        [
+          18,
+          2319
+        ],
+        [
+          19,
+          4679
+        ],
+        [
+          19,
+          607
+        ],
+        [
+          19,
+          4943
+        ],
+        [
+          20,
+          1802
+        ],
+        [
+          20,
+          4017
+        ],
+        [
+          21,
+          2520
+        ],
+        [
+          21,
+          2871
+        ],
+        [
+          21,
+          2580
+        ],
+        [
+          22,
+          562
+        ],
+        [
+          23,
+          401
+        ],
+        [
+          23,
+          1844
+        ],
+        [
+          25,
+          169
+        ],
+        [
+          27,
+          262
+        ],
+        [
+          29,
+          492
+        ],
+        [
+          29,
+          3609
+        ],
+        [
+          30,
+          210
+        ],
+        [
+          30,
+          661
+        ],
+        [
+          30,
+          1108
+        ],
+        [
+          33,
+          760
+        ],
+        [
+          33,
+          1077
+        ]
+      ],
+      "trained": {
+        "file": {
+          "mean": 2.743485254815961,
+          "ci95": [
+            2.318471602756533,
+            3.0878215934999416
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.743485254815961,
+          "ci95": [
+            2.665302940877493,
+            2.8233102564693997
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.2799561537395234,
+            "ci95": [
+              1.2799561537395234,
+              1.2799561537395234
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.9754810742528286,
+            "ci95": [
+              2.9568624257141303,
+              2.996964130259018
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.8268573221660525,
+            "ci95": [
+              2.4274482819865213,
+              2.960206154739012
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.2021014897096203,
+            "ci95": [
+              2.920966155686423,
+              3.482127261883778
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 2.974778470448026,
+            "ci95": [
+              2.7421682248771653,
+              3.1298519674952665
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 1.797860888858125,
+            "ci95": [
+              1.797860888858125,
+              1.797860888858125
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 2.5734527674000183,
+            "ci95": [
+              2.5734527674000183,
+              2.5734527674000183
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 3.113494554010435,
+            "ci95": [
+              3.0990184352005956,
+              3.133399217373964
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 3.042950478241948,
+            "ci95": [
+              3.031083153746558,
+              3.056234796706937
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.613655407922075,
+            "ci95": [
+              2.5942919226159145,
+              2.6330188932282357
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 1.8653833712015642,
+            "ci95": [
+              1.5910644691798481,
+              2.13970227322328
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.346445998014509,
+            "ci95": [
+              1.3148869079074652,
+              1.3714302776825846
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.767546686506023,
+            "ci95": [
+              2.767546686506023,
+              2.767546686506023
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.903152327979048,
+            "ci95": [
+              1.6188730157567541,
+              2.0926718694605775
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "dense": {
+        "file": {
+          "mean": 2.464741958331275,
+          "ci95": [
+            2.0554502296697326,
+            2.809224417031843
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.464741958331275,
+          "ci95": [
+            2.3898277666737875,
+            2.5382129985299033
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.9383025819009346,
+            "ci95": [
+              0.9383025819009346,
+              0.9383025819009346
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.7497614126842,
+            "ci95": [
+              2.7072780060069674,
+              2.7987807280810078
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.5843627383437036,
+            "ci95": [
+              2.148799652338264,
+              2.738589554943843
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.9351833012239914,
+            "ci95": [
+              2.692329545858783,
+              3.1830135281878125
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.43615591803682,
+            "ci95": [
+              0.7368092387689766,
+              2.485175936938585
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 1.5396651581735057,
+            "ci95": [
+              1.5396651581735057,
+              1.5396651581735057
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 2.337659825580246,
+            "ci95": [
+              2.337659825580246,
+              2.337659825580246
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 2.9183427663206394,
+            "ci95": [
+              2.89284358448836,
+              2.953404141340023
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.771003263880937,
+            "ci95": [
+              2.76560982841889,
+              2.7770406916369605
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.3739034446169756,
+            "ci95": [
+              2.3535746123910775,
+              2.3942322768428737
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 1.6360736578819814,
+            "ci95": [
+              1.3673625046251978,
+              1.904784811138765
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.0479449613138976,
+            "ci95": [
+              0.9632253340224064,
+              1.1150146662529947
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.5463654229421877,
+            "ci95": [
+              2.5463654229421877,
+              2.5463654229421877
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.6614430666483564,
+            "ci95": [
+              1.4205323789841038,
+              1.8220501917578584
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "delta_dense": {
+        "file": {
+          "mean": 0.27874329648468593,
+          "ci95": [
+            0.24976289260949203,
+            0.31999735444722255
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.27874329648468593,
+          "ci95": [
+            0.2571654140233387,
+            0.30371390668017656
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.3416535718385888,
+            "ci95": [
+              0.3416535718385888,
+              0.3416535718385888
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 0.2257196615686277,
+            "ci95": [
+              0.19818340217801023,
+              0.24958441970716283
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.24249458382234879,
+            "ci95": [
+              0.22161659979516912,
+              0.2786486296482571
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.26691818848562954,
+            "ci95": [
+              0.2167694284888183,
+              0.3130276361909201
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.538622552411206,
+            "ci95": [
+              0.2569922879385804,
+              2.3930427287262894
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 0.2581957306846192,
+            "ci95": [
+              0.2581957306846192,
+              0.2581957306846192
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 0.2357929418197724,
+            "ci95": [
+              0.2357929418197724,
+              0.2357929418197724
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.1951517876897957,
+            "ci95": [
+              0.17999507603394083,
+              0.20617485071223562
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.27194721436101094,
+            "ci95": [
+              0.2654733253276682,
+              0.27919410506997666
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.23975196330509965,
+            "ci95": [
+              0.2387866163853623,
+              0.240717310224837
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.22930971331958272,
+            "ci95": [
+              0.22370196455465022,
+              0.23491746208451522
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.2985010367006111,
+            "ci95": [
+              0.2564156114295901,
+              0.3516615738850589
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.22118126356383527,
+            "ci95": [
+              0.22118126356383527,
+              0.22118126356383527
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.24170926133069162,
+            "ci95": [
+              0.19834063677265046,
+              0.27062167770271905
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      }
+    },
+    "unseen": {
+      "windows": [
+        [
+          0,
+          25497
+        ],
+        [
+          0,
+          842
+        ],
+        [
+          0,
+          55790
+        ],
+        [
+          0,
+          22072
+        ],
+        [
+          0,
+          39136
+        ],
+        [
+          0,
+          18797
+        ],
+        [
+          0,
+          43980
+        ],
+        [
+          0,
+          2448
+        ],
+        [
+          0,
+          58253
+        ],
+        [
+          0,
+          56654
+        ],
+        [
+          0,
+          452
+        ],
+        [
+          0,
+          13088
+        ],
+        [
+          0,
+          29583
+        ],
+        [
+          0,
+          7849
+        ],
+        [
+          0,
+          10797
+        ],
+        [
+          0,
+          35718
+        ],
+        [
+          0,
+          11734
+        ],
+        [
+          0,
+          56311
+        ],
+        [
+          0,
+          20535
+        ],
+        [
+          0,
+          36490
+        ],
+        [
+          0,
+          19450
+        ],
+        [
+          0,
+          59255
+        ],
+        [
+          0,
+          37816
+        ],
+        [
+          0,
+          17907
+        ],
+        [
+          0,
+          45467
+        ],
+        [
+          0,
+          6234
+        ],
+        [
+          0,
+          8096
+        ],
+        [
+          0,
+          59620
+        ],
+        [
+          0,
+          51192
+        ],
+        [
+          0,
+          16322
+        ],
+        [
+          0,
+          52966
+        ],
+        [
+          0,
+          56737
+        ],
+        [
+          0,
+          34030
+        ],
+        [
+          0,
+          27251
+        ],
+        [
+          1,
+          10832
+        ],
+        [
+          1,
+          34168
+        ],
+        [
+          1,
+          57002
+        ],
+        [
+          1,
+          32616
+        ],
+        [
+          1,
+          27875
+        ],
+        [
+          1,
+          57507
+        ],
+        [
+          1,
+          13959
+        ],
+        [
+          1,
+          24774
+        ],
+        [
+          1,
+          40959
+        ],
+        [
+          1,
+          16898
+        ],
+        [
+          1,
+          35723
+        ],
+        [
+          1,
+          22560
+        ],
+        [
+          1,
+          25668
+        ],
+        [
+          1,
+          31342
+        ],
+        [
+          1,
+          18735
+        ],
+        [
+          1,
+          2697
+        ],
+        [
+          1,
+          3604
+        ],
+        [
+          1,
+          58143
+        ],
+        [
+          1,
+          34279
+        ],
+        [
+          1,
+          4487
+        ],
+        [
+          1,
+          50454
+        ],
+        [
+          1,
+          54174
+        ],
+        [
+          1,
+          19846
+        ],
+        [
+          1,
+          34036
+        ],
+        [
+          1,
+          32634
+        ],
+        [
+          1,
+          33665
+        ],
+        [
+          1,
+          63
+        ],
+        [
+          1,
+          35380
+        ],
+        [
+          1,
+          1056
+        ],
+        [
+          2,
+          43812
+        ],
+        [
+          2,
+          13679
+        ],
+        [
+          2,
+          10046
+        ],
+        [
+          2,
+          5601
+        ],
+        [
+          2,
+          10932
+        ],
+        [
+          2,
+          50440
+        ],
+        [
+          2,
+          47715
+        ],
+        [
+          2,
+          33690
+        ],
+        [
+          2,
+          53549
+        ],
+        [
+          2,
+          13144
+        ],
+        [
+          2,
+          26231
+        ],
+        [
+          2,
+          18897
+        ],
+        [
+          2,
+          32102
+        ],
+        [
+          2,
+          18523
+        ],
+        [
+          2,
+          24614
+        ],
+        [
+          2,
+          13441
+        ],
+        [
+          2,
+          46821
+        ],
+        [
+          2,
+          28749
+        ],
+        [
+          2,
+          48392
+        ],
+        [
+          2,
+          30917
+        ],
+        [
+          2,
+          60015
+        ],
+        [
+          2,
+          2751
+        ],
+        [
+          2,
+          19896
+        ],
+        [
+          2,
+          11886
+        ],
+        [
+          2,
+          8507
+        ],
+        [
+          2,
+          29537
+        ],
+        [
+          2,
+          52
+        ],
+        [
+          2,
+          10160
+        ],
+        [
+          2,
+          34403
+        ],
+        [
+          2,
+          42479
+        ],
+        [
+          2,
+          34850
+        ],
+        [
+          2,
+          48210
+        ],
+        [
+          3,
+          24452
+        ],
+        [
+          3,
+          40958
+        ],
+        [
+          3,
+          33795
+        ],
+        [
+          3,
+          36210
+        ],
+        [
+          3,
+          16918
+        ],
+        [
+          3,
+          15101
+        ],
+        [
+          3,
+          47409
+        ],
+        [
+          3,
+          40703
+        ],
+        [
+          3,
+          22094
+        ],
+        [
+          3,
+          32735
+        ],
+        [
+          3,
+          44349
+        ],
+        [
+          3,
+          38940
+        ],
+        [
+          3,
+          4861
+        ],
+        [
+          3,
+          5516
+        ],
+        [
+          3,
+          49576
+        ],
+        [
+          3,
+          22707
+        ],
+        [
+          3,
+          16324
+        ],
+        [
+          3,
+          41074
+        ],
+        [
+          3,
+          30427
+        ],
+        [
+          3,
+          3413
+        ],
+        [
+          3,
+          11579
+        ],
+        [
+          3,
+          32198
+        ],
+        [
+          3,
+          28977
+        ],
+        [
+          3,
+          31584
+        ],
+        [
+          3,
+          4791
+        ],
+        [
+          3,
+          2013
+        ],
+        [
+          3,
+          33849
+        ],
+        [
+          3,
+          53168
+        ],
+        [
+          3,
+          23127
+        ],
+        [
+          4,
+          1065
+        ],
+        [
+          4,
+          16612
+        ],
+        [
+          4,
+          50131
+        ],
+        [
+          4,
+          13669
+        ],
+        [
+          4,
+          49083
+        ],
+        [
+          4,
+          22621
+        ],
+        [
+          4,
+          36702
+        ],
+        [
+          4,
+          28598
+        ],
+        [
+          4,
+          49626
+        ],
+        [
+          4,
+          55752
+        ],
+        [
+          4,
+          17387
+        ],
+        [
+          4,
+          48679
+        ],
+        [
+          4,
+          23380
+        ],
+        [
+          4,
+          33082
+        ],
+        [
+          4,
+          58284
+        ],
+        [
+          4,
+          30294
+        ],
+        [
+          4,
+          53101
+        ],
+        [
+          4,
+          23093
+        ],
+        [
+          4,
+          36231
+        ],
+        [
+          4,
+          39901
+        ],
+        [
+          4,
+          28767
+        ],
+        [
+          4,
+          50372
+        ],
+        [
+          4,
+          44169
+        ],
+        [
+          4,
+          5199
+        ],
+        [
+          4,
+          19484
+        ],
+        [
+          4,
+          5737
+        ],
+        [
+          4,
+          2960
+        ],
+        [
+          4,
+          1353
+        ],
+        [
+          4,
+          18987
+        ],
+        [
+          4,
+          29484
+        ],
+        [
+          4,
+          44738
+        ],
+        [
+          4,
+          49846
+        ],
+        [
+          4,
+          35727
+        ],
+        [
+          5,
+          26543
+        ],
+        [
+          5,
+          51706
+        ],
+        [
+          5,
+          16214
+        ],
+        [
+          5,
+          49189
+        ],
+        [
+          5,
+          52256
+        ],
+        [
+          5,
+          42494
+        ],
+        [
+          5,
+          49572
+        ],
+        [
+          5,
+          56322
+        ],
+        [
+          5,
+          38993
+        ],
+        [
+          5,
+          23678
+        ],
+        [
+          5,
+          45287
+        ],
+        [
+          5,
+          39499
+        ],
+        [
+          5,
+          9949
+        ],
+        [
+          5,
+          13468
+        ],
+        [
+          5,
+          48122
+        ],
+        [
+          5,
+          1782
+        ],
+        [
+          5,
+          45213
+        ],
+        [
+          5,
+          24472
+        ],
+        [
+          5,
+          25122
+        ],
+        [
+          5,
+          13214
+        ],
+        [
+          5,
+          45832
+        ],
+        [
+          5,
+          53831
+        ],
+        [
+          5,
+          8128
+        ],
+        [
+          5,
+          10659
+        ],
+        [
+          5,
+          57629
+        ],
+        [
+          6,
+          88177
+        ],
+        [
+          6,
+          60695
+        ],
+        [
+          6,
+          21109
+        ],
+        [
+          6,
+          21766
+        ],
+        [
+          6,
+          72933
+        ],
+        [
+          6,
+          90575
+        ],
+        [
+          6,
+          97816
+        ],
+        [
+          6,
+          41236
+        ],
+        [
+          6,
+          26764
+        ],
+        [
+          6,
+          29503
+        ],
+        [
+          6,
+          71203
+        ],
+        [
+          6,
+          46771
+        ],
+        [
+          6,
+          99450
+        ],
+        [
+          6,
+          53774
+        ],
+        [
+          6,
+          102210
+        ],
+        [
+          6,
+          132076
+        ],
+        [
+          6,
+          95820
+        ],
+        [
+          6,
+          48590
+        ],
+        [
+          6,
+          51311
+        ],
+        [
+          6,
+          72464
+        ],
+        [
+          6,
+          6357
+        ],
+        [
+          6,
+          40275
+        ],
+        [
+          6,
+          56117
+        ],
+        [
+          6,
+          19322
+        ],
+        [
+          6,
+          14330
+        ],
+        [
+          6,
+          23460
+        ],
+        [
+          6,
+          27590
+        ],
+        [
+          6,
+          41335
+        ],
+        [
+          6,
+          44316
+        ],
+        [
+          6,
+          2971
+        ],
+        [
+          6,
+          41480
+        ],
+        [
+          6,
+          109307
+        ],
+        [
+          6,
+          117347
+        ],
+        [
+          6,
+          101799
+        ],
+        [
+          6,
+          129656
+        ],
+        [
+          6,
+          126786
+        ],
+        [
+          6,
+          104685
+        ],
+        [
+          6,
+          75579
+        ],
+        [
+          6,
+          89852
+        ],
+        [
+          6,
+          22328
+        ],
+        [
+          6,
+          54723
+        ],
+        [
+          6,
+          29059
+        ],
+        [
+          6,
+          72696
+        ],
+        [
+          6,
+          29430
+        ],
+        [
+          6,
+          129685
+        ],
+        [
+          6,
+          80588
+        ],
+        [
+          6,
+          80814
+        ],
+        [
+          6,
+          99502
+        ],
+        [
+          6,
+          26552
+        ],
+        [
+          6,
+          101807
+        ],
+        [
+          6,
+          60453
+        ],
+        [
+          6,
+          6197
+        ],
+        [
+          6,
+          67221
+        ],
+        [
+          6,
+          8221
+        ],
+        [
+          6,
+          91055
+        ],
+        [
+          6,
+          128103
+        ],
+        [
+          6,
+          40052
+        ],
+        [
+          6,
+          54957
+        ],
+        [
+          6,
+          71990
+        ],
+        [
+          6,
+          8424
+        ],
+        [
+          6,
+          110132
+        ],
+        [
+          6,
+          83899
+        ],
+        [
+          6,
+          34242
+        ],
+        [
+          6,
+          20407
+        ],
+        [
+          6,
+          83843
+        ],
+        [
+          6,
+          111070
+        ],
+        [
+          6,
+          96170
+        ],
+        [
+          7,
+          6181
+        ],
+        [
+          7,
+          54519
+        ],
+        [
+          7,
+          17541
+        ],
+        [
+          7,
+          108896
+        ],
+        [
+          7,
+          113876
+        ],
+        [
+          7,
+          121080
+        ],
+        [
+          7,
+          116438
+        ],
+        [
+          7,
+          95281
+        ],
+        [
+          7,
+          29350
+        ],
+        [
+          7,
+          116452
+        ],
+        [
+          7,
+          80308
+        ],
+        [
+          7,
+          9763
+        ],
+        [
+          7,
+          133952
+        ],
+        [
+          7,
+          78360
+        ],
+        [
+          7,
+          44709
+        ],
+        [
+          7,
+          136127
+        ],
+        [
+          7,
+          93104
+        ],
+        [
+          7,
+          75324
+        ],
+        [
+          7,
+          121171
+        ],
+        [
+          7,
+          92135
+        ],
+        [
+          7,
+          89357
+        ],
+        [
+          7,
+          86625
+        ],
+        [
+          7,
+          117945
+        ],
+        [
+          7,
+          54077
+        ],
+        [
+          7,
+          106267
+        ],
+        [
+          7,
+          53082
+        ],
+        [
+          7,
+          40647
+        ],
+        [
+          7,
+          2115
+        ],
+        [
+          7,
+          17303
+        ],
+        [
+          7,
+          70910
+        ],
+        [
+          7,
+          25455
+        ],
+        [
+          7,
+          61193
+        ],
+        [
+          7,
+          14633
+        ],
+        [
+          7,
+          59629
+        ],
+        [
+          7,
+          41697
+        ],
+        [
+          7,
+          5057
+        ],
+        [
+          7,
+          48745
+        ],
+        [
+          7,
+          89737
+        ],
+        [
+          7,
+          52321
+        ],
+        [
+          7,
+          20620
+        ],
+        [
+          7,
+          89063
+        ],
+        [
+          7,
+          99612
+        ],
+        [
+          7,
+          8775
+        ],
+        [
+          7,
+          57690
+        ],
+        [
+          7,
+          13220
+        ],
+        [
+          7,
+          57837
+        ],
+        [
+          7,
+          18919
+        ],
+        [
+          7,
+          8745
+        ],
+        [
+          7,
+          67630
+        ],
+        [
+          7,
+          137145
+        ],
+        [
+          7,
+          115069
+        ],
+        [
+          7,
+          82911
+        ],
+        [
+          7,
+          118296
+        ],
+        [
+          7,
+          63089
+        ],
+        [
+          7,
+          31520
+        ],
+        [
+          7,
+          8069
+        ],
+        [
+          7,
+          47305
+        ],
+        [
+          7,
+          22259
+        ],
+        [
+          7,
+          126557
+        ],
+        [
+          7,
+          34102
+        ],
+        [
+          7,
+          47071
+        ],
+        [
+          7,
+          93051
+        ],
+        [
+          7,
+          80116
+        ],
+        [
+          7,
+          100801
+        ],
+        [
+          7,
+          31790
+        ],
+        [
+          7,
+          100652
+        ],
+        [
+          7,
+          109345
+        ],
+        [
+          7,
+          98721
+        ],
+        [
+          7,
+          15505
+        ],
+        [
+          7,
+          101344
+        ],
+        [
+          7,
+          15175
+        ],
+        [
+          7,
+          95981
+        ],
+        [
+          7,
+          48245
+        ],
+        [
+          7,
+          51181
+        ],
+        [
+          7,
+          74558
+        ],
+        [
+          8,
+          56203
+        ],
+        [
+          8,
+          61935
+        ],
+        [
+          8,
+          34162
+        ],
+        [
+          8,
+          13609
+        ],
+        [
+          8,
+          13522
+        ],
+        [
+          8,
+          51849
+        ],
+        [
+          8,
+          75580
+        ],
+        [
+          8,
+          52706
+        ],
+        [
+          8,
+          6068
+        ],
+        [
+          8,
+          28618
+        ],
+        [
+          8,
+          15862
+        ],
+        [
+          8,
+          73128
+        ],
+        [
+          8,
+          53123
+        ],
+        [
+          8,
+          30381
+        ],
+        [
+          8,
+          30605
+        ],
+        [
+          8,
+          10028
+        ],
+        [
+          8,
+          64427
+        ],
+        [
+          8,
+          37182
+        ],
+        [
+          8,
+          65544
+        ],
+        [
+          8,
+          6254
+        ],
+        [
+          8,
+          20226
+        ],
+        [
+          8,
+          62200
+        ],
+        [
+          8,
+          66745
+        ],
+        [
+          8,
+          55785
+        ],
+        [
+          8,
+          28440
+        ],
+        [
+          8,
+          29644
+        ],
+        [
+          8,
+          73946
+        ],
+        [
+          8,
+          58521
+        ],
+        [
+          8,
+          43460
+        ],
+        [
+          8,
+          52836
+        ],
+        [
+          8,
+          52440
+        ],
+        [
+          8,
+          50224
+        ],
+        [
+          8,
+          60473
+        ],
+        [
+          8,
+          50554
+        ],
+        [
+          8,
+          50758
+        ],
+        [
+          8,
+          41157
+        ],
+        [
+          8,
+          22088
+        ],
+        [
+          8,
+          636
+        ],
+        [
+          9,
+          33502
+        ],
+        [
+          9,
+          25365
+        ],
+        [
+          9,
+          62072
+        ],
+        [
+          9,
+          53349
+        ],
+        [
+          9,
+          29137
+        ],
+        [
+          9,
+          38724
+        ],
+        [
+          9,
+          10818
+        ],
+        [
+          9,
+          34336
+        ],
+        [
+          9,
+          5062
+        ],
+        [
+          9,
+          58994
+        ],
+        [
+          9,
+          61332
+        ],
+        [
+          9,
+          63827
+        ],
+        [
+          9,
+          78431
+        ],
+        [
+          9,
+          4841
+        ],
+        [
+          9,
+          21138
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          9,
+          23392
+        ],
+        [
+          9,
+          43645
+        ],
+        [
+          9,
+          45902
+        ],
+        [
+          9,
+          54438
+        ],
+        [
+          9,
+          66965
+        ],
+        [
+          9,
+          41743
+        ],
+        [
+          9,
+          47698
+        ],
+        [
+          9,
+          53286
+        ],
+        [
+          9,
+          8335
+        ],
+        [
+          9,
+          14710
+        ],
+        [
+          9,
+          67332
+        ],
+        [
+          9,
+          33171
+        ],
+        [
+          9,
+          64835
+        ],
+        [
+          9,
+          27072
+        ],
+        [
+          9,
+          504
+        ],
+        [
+          9,
+          36415
+        ],
+        [
+          9,
+          67577
+        ],
+        [
+          9,
+          33303
+        ],
+        [
+          9,
+          31675
+        ],
+        [
+          9,
+          14213
+        ],
+        [
+          9,
+          72157
+        ],
+        [
+          9,
+          27152
+        ],
+        [
+          9,
+          77582
+        ],
+        [
+          9,
+          78027
+        ],
+        [
+          9,
+          58661
+        ],
+        [
+          9,
+          72716
+        ],
+        [
+          9,
+          6364
+        ],
+        [
+          9,
+          5345
+        ],
+        [
+          9,
+          34662
+        ],
+        [
+          9,
+          46899
+        ],
+        [
+          9,
+          40450
+        ],
+        [
+          9,
+          64246
+        ],
+        [
+          10,
+          4932
+        ],
+        [
+          10,
+          14900
+        ],
+        [
+          10,
+          15426
+        ],
+        [
+          10,
+          15573
+        ],
+        [
+          10,
+          20985
+        ],
+        [
+          10,
+          12775
+        ],
+        [
+          10,
+          5236
+        ],
+        [
+          10,
+          17501
+        ],
+        [
+          10,
+          18243
+        ],
+        [
+          10,
+          13472
+        ],
+        [
+          10,
+          12298
+        ],
+        [
+          10,
+          17558
+        ],
+        [
+          10,
+          7210
+        ],
+        [
+          11,
+          15236
+        ],
+        [
+          11,
+          18654
+        ],
+        [
+          11,
+          2319
+        ],
+        [
+          11,
+          12296
+        ],
+        [
+          11,
+          15933
+        ],
+        [
+          11,
+          7578
+        ],
+        [
+          11,
+          2160
+        ],
+        [
+          11,
+          20666
+        ],
+        [
+          11,
+          6690
+        ],
+        [
+          11,
+          860
+        ],
+        [
+          11,
+          2930
+        ],
+        [
+          11,
+          912
+        ],
+        [
+          11,
+          18940
+        ],
+        [
+          11,
+          13365
+        ],
+        [
+          11,
+          6457
+        ],
+        [
+          12,
+          13199
+        ],
+        [
+          12,
+          7182
+        ],
+        [
+          12,
+          1381
+        ],
+        [
+          12,
+          12544
+        ],
+        [
+          12,
+          9214
+        ],
+        [
+          12,
+          16675
+        ],
+        [
+          12,
+          6596
+        ],
+        [
+          12,
+          18374
+        ],
+        [
+          12,
+          11185
+        ],
+        [
+          12,
+          9304
+        ],
+        [
+          12,
+          21369
+        ],
+        [
+          13,
+          18882
+        ],
+        [
+          13,
+          12156
+        ],
+        [
+          13,
+          1433
+        ],
+        [
+          13,
+          3780
+        ],
+        [
+          13,
+          1230
+        ],
+        [
+          13,
+          3484
+        ],
+        [
+          13,
+          16424
+        ],
+        [
+          13,
+          7781
+        ],
+        [
+          14,
+          3198
+        ],
+        [
+          14,
+          14341
+        ],
+        [
+          14,
+          11918
+        ],
+        [
+          14,
+          6136
+        ],
+        [
+          14,
+          11600
+        ],
+        [
+          14,
+          647
+        ],
+        [
+          14,
+          14094
+        ],
+        [
+          14,
+          8449
+        ],
+        [
+          14,
+          3521
+        ],
+        [
+          14,
+          12988
+        ],
+        [
+          14,
+          2199
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          15,
+          12968
+        ],
+        [
+          15,
+          11008
+        ],
+        [
+          15,
+          3858
+        ],
+        [
+          15,
+          17151
+        ],
+        [
+          15,
+          5345
+        ],
+        [
+          15,
+          5039
+        ],
+        [
+          15,
+          6081
+        ],
+        [
+          15,
+          2020
+        ],
+        [
+          15,
+          10473
+        ],
+        [
+          15,
+          8545
+        ],
+        [
+          16,
+          1094
+        ],
+        [
+          16,
+          59
+        ],
+        [
+          16,
+          2856
+        ],
+        [
+          16,
+          2787
+        ],
+        [
+          16,
+          3507
+        ],
+        [
+          16,
+          1993
+        ],
+        [
+          17,
+          4142
+        ],
+        [
+          17,
+          539
+        ],
+        [
+          17,
+          2187
+        ],
+        [
+          17,
+          7632
+        ],
+        [
+          18,
+          2800
+        ],
+        [
+          18,
+          2431
+        ],
+        [
+          18,
+          5632
+        ],
+        [
+          19,
+          1868
+        ],
+        [
+          19,
+          4301
+        ],
+        [
+          19,
+          1242
+        ],
+        [
+          20,
+          3692
+        ],
+        [
+          20,
+          4100
+        ],
+        [
+          21,
+          4058
+        ],
+        [
+          21,
+          2203
+        ],
+        [
+          21,
+          1313
+        ],
+        [
+          22,
+          1047
+        ],
+        [
+          23,
+          167
+        ],
+        [
+          23,
+          1347
+        ],
+        [
+          25,
+          1269
+        ],
+        [
+          27,
+          604
+        ],
+        [
+          29,
+          2472
+        ],
+        [
+          29,
+          2520
+        ],
+        [
+          30,
+          3066
+        ],
+        [
+          30,
+          1100
+        ],
+        [
+          30,
+          2243
+        ],
+        [
+          33,
+          1279
+        ],
+        [
+          33,
+          428
+        ]
+      ],
+      "trained": {
+        "file": {
+          "mean": 2.7763847260728824,
+          "ci95": [
+            2.363057004847109,
+            3.1131429270159403
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.7763847260728824,
+          "ci95": [
+            2.7019787731431344,
+            2.848670964981722
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 2.1035161377539957,
+            "ci95": [
+              2.1035161377539957,
+              2.1035161377539957
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.930233777619953,
+            "ci95": [
+              2.8104051096852354,
+              3.068497625236935
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.51365063830292,
+            "ci95": [
+              1.3740937473292263,
+              2.963949035639061
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 3.187793747199372,
+            "ci95": [
+              2.932756664814844,
+              3.456429595360004
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 3.5261611563942807,
+            "ci95": [
+              3.1021412583465517,
+              3.8088410884261
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 2.5380404723814536,
+            "ci95": [
+              2.5380404723814536,
+              2.5380404723814536
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 3.1098199202381758,
+            "ci95": [
+              3.1098199202381758,
+              3.1098199202381758
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 3.1975795523602617,
+            "ci95": [
+              3.185830766631486,
+              3.2137341327373283
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 3.0877080370699757,
+            "ci95": [
+              3.0875249565139784,
+              3.087871589033334
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.7364578350844693,
+            "ci95": [
+              2.707379107308317,
+              2.7655365628606217
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 2.197344843962558,
+            "ci95": [
+              2.031947910439596,
+              2.3627417774855197
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.3611942331723854,
+            "ci95": [
+              1.3393710563899484,
+              1.3887603512133595
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.925919001950888,
+            "ci95": [
+              2.925919001950888,
+              2.925919001950888
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 2.0014794890742396,
+            "ci95": [
+              1.9179422232028012,
+              2.057170999655199
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "dense": {
+        "file": {
+          "mean": 2.4614257983193397,
+          "ci95": [
+            2.046133281747779,
+            2.809739181833602
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 2.4614257983193397,
+          "ci95": [
+            2.3880732293620595,
+            2.533820504359668
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 1.5500145376140837,
+            "ci95": [
+              1.5500145376140837,
+              1.5500145376140837
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 2.6479793386443373,
+            "ci95": [
+              2.576298614290185,
+              2.7306878667452823
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 2.2842452206893413,
+            "ci95": [
+              1.2258906398320448,
+              2.715061003367932
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 2.897335612221036,
+            "ci95": [
+              2.6758970217721725,
+              3.124356015283006
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 1.1409195007821586,
+            "ci95": [
+              0.5721582847320158,
+              1.9940613248573733
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 2.229191781901733,
+            "ci95": [
+              2.229191781901733,
+              2.229191781901733
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 2.8161682541392845,
+            "ci95": [
+              2.8161682541392845,
+              2.8161682541392845
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 3.0005297529466173,
+            "ci95": [
+              2.9870476806251016,
+              3.0190676023887013
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 2.8025067005689444,
+            "ci95": [
+              2.7830470872171214,
+              2.8198906218299036
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 2.486088608885304,
+            "ci95": [
+              2.4427276344319937,
+              2.529449583338615
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 1.9358527245609212,
+            "ci95": [
+              1.732465703604495,
+              2.1392397455173473
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 1.0000879129907378,
+            "ci95": [
+              0.9436209586284221,
+              1.0447909185275714
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 2.7420494277764726,
+            "ci95": [
+              2.7420494277764726,
+              2.7420494277764726
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 1.7405459924641782,
+            "ci95": [
+              1.6800925626307106,
+              1.7808482790198237
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      },
+      "delta_dense": {
+        "file": {
+          "mean": 0.31495892775354273,
+          "ci95": [
+            0.2741501477033425,
+            0.37670573759610143
+          ],
+          "cluster": "file",
+          "clusters": 29,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequence": {
+          "mean": 0.31495892775354273,
+          "ci95": [
+            0.287094365374905,
+            0.3471128767490478
+          ],
+          "cluster": "sequence",
+          "clusters": 512,
+          "iterations": 1000,
+          "ci_degenerate": false
+        },
+        "sequences": 512,
+        "tokens": 262144,
+        "sources": {
+          "Algebraic Stack": {
+            "mean": 0.553501600139912,
+            "ci95": [
+              0.553501600139912,
+              0.553501600139912
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "C4": {
+            "mean": 0.28225443897561625,
+            "ci95": [
+              0.23410649539505127,
+              0.33780975849165285
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "CC News": {
+            "mean": 0.2294054176135787,
+            "ci95": [
+              0.14820310749718146,
+              0.27164249841487553
+            ],
+            "cluster": "file",
+            "clusters": 3,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Dolma CC": {
+            "mean": 0.2904581349783354,
+            "ci95": [
+              0.2521837084324775,
+              0.3480986813027962
+            ],
+            "cluster": "file",
+            "clusters": 6,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Flan": {
+            "mean": 2.385241655612122,
+            "ci95": [
+              1.1080799334891784,
+              3.2366828036940842
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "OpenWebMath": {
+            "mean": 0.30884869047972074,
+            "ci95": [
+              0.30884869047972074,
+              0.30884869047972074
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Project Gutenberg": {
+            "mean": 0.29365166609889154,
+            "ci95": [
+              0.29365166609889154,
+              0.29365166609889154
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "Reddit": {
+            "mean": 0.19704979941364456,
+            "ci95": [
+              0.19466653034862713,
+              0.1987830860063845
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Refined Web": {
+            "mean": 0.2852013365010323,
+            "ci95": [
+              0.26798096720342907,
+              0.30447786929685683
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Semantic Scholar": {
+            "mean": 0.2503692261991649,
+            "ci95": [
+              0.2360869795220067,
+              0.2646514728763231
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StackExchange": {
+            "mean": 0.26149211940163664,
+            "ci95": [
+              0.22350203196817256,
+              0.2994822068351007
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "StarCoder": {
+            "mean": 0.3611063201816476,
+            "ci95": [
+              0.2945801378623767,
+              0.4451393925849371
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          },
+          "Wikipedia & Wikibooks": {
+            "mean": 0.18386957417441518,
+            "ci95": [
+              0.18386957417441518,
+              0.18386957417441518
+            ],
+            "cluster": "file",
+            "clusters": 1,
+            "iterations": 1000,
+            "ci_degenerate": true
+          },
+          "arXiv": {
+            "mean": 0.26093349661006127,
+            "ci95": [
+              0.23784966057209045,
+              0.27632272063537516
+            ],
+            "cluster": "file",
+            "clusters": 2,
+            "iterations": 1000,
+            "ci_degenerate": false
+          }
+        },
+        "sources_evaluated": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "sources_available": [
+          "Algebraic Stack",
+          "C4",
+          "CC News",
+          "Dolma CC",
+          "Flan",
+          "OpenWebMath",
+          "Project Gutenberg",
+          "Reddit",
+          "Refined Web",
+          "Semantic Scholar",
+          "StackExchange",
+          "StarCoder",
+          "Wikipedia & Wikibooks",
+          "arXiv"
+        ],
+        "missing_sources": []
+      }
+    }
+  },
+  "elapsed_wall_seconds": 57.53111346811056,
+  "tokens_per_second_after_first": 36443.495825822065,
+  "peak_cuda_memory_bytes": 18802795520
+}
