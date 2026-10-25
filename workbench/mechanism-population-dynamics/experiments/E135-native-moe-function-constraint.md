@@ -1,6 +1,6 @@
 # E135：固定原生MoE块函数后，专家承担仍能不同吗（2026-10-26）
 
-- **状态：** RUNNING（原生H/Y缓存采集中；学生训练尚未启动）
+- **状态：** RUNNING（原生缓存完整，单学生固定预算训练中）
 - **类型：** PILOT；单个学生的固定函数约束实验，不是自然预训练或性能修复网格。
 - **对应：** P22：不重现的指纹是否触及任务重要计算；E134显示受控bank与原生OLMoE的均匀分量必要性关系不同。
 - **问题（一句话）：** 给定原生联合预训练OLMoE L9的实际输入→输出函数，一个随机同容量MoE重学后，会恢复怎样的预测与专家作用对应？
@@ -25,6 +25,12 @@
 - **全函数/任务读数：** held输出MSE与相对教师能量误差；原Dolma完整自然双向KL、top1、GT NLL配对差（BF16 logits→FP32）；精确POS held人口的自然完整分布用真正FP32末位head，词形CI。文件/词形CI仅固定模型评测误差，不是单学生训练总体CI，不设函数等价或性能准入带。
 - **资源：** 预备＋训练＋固定读数合计≤4 GPU·时，优先fvcrc21空闲单卡，source在本地NVMe；不打断E131 GPU0/2，所有探索总并发≤8卡。先做实际吞吐/内存与copy控制，预算不足明确incomplete，不换成最佳中途结果。
 
+## 前瞻补充：固定终点的干预响应（cache完成后、学生训练结果前登记）
+- 由E134启发，固定终点学生额外复用**原E134相同算子**：native、raw c、raw r、zero、c+r重组，整Dolma held512窗口与原门值总量不变；不加gamma、匹配方法或新训练条件。教师baseline复用E134同pin/同输入结果，并核对资产/窗口/精度身份。
+- 读数为各条件相对学生native的配对NLL差、KL/top1/文件CI，以及native-wrapper/recompose地板；与剩余teacher→student自然预测距离及U/A并列，不替换主读数、不设准入线。
+- 问题是“重学固定原生函数后，对同一内部干预的响应会怎样变化”，不是知识份额、固定稀疏预算压缩或严格同函数证明。均匀项含未选中专家的支持外输出；响应变化不能自动当自然分工变化，必须与A共同解释。
+- 纳入原4GPUh总预算；资源不足明确补充项incomplete，不按分数选择是否保留。学生读数产生前固定五条件，不再追加增益/层/权重网格。
+
 ## 混杂审计与事先决策表
 - 已控制：教师与输入/下游、精确architecture、cache/held身份、固定预算/初始化、cal/held分离、全体条件与原始读数。未控制：一个学生/教师、有限8,388,608 H覆盖及4次重复、具体优化器/aux；不能因拟合不佳断言架构不可表示或计算分解唯一。
 - 预测分布较初始接近且held U/A也更对应→在此训练目标/预算中有函数约束组织的迹象，不推出唯一职责。
@@ -42,3 +48,6 @@ MoEBERT已有逐层MSE蒸馏，Every Expert Matters已有MoE教师研究，B-Dis
 ### 实际启动（2026-10-26）
 - CPU bit/复制/tuple/四epoch/ledger控制通过，fvcrc21只读真实模型/数据/Hcal preflight通过；冻结`e135_common.py` SHA `2a84af164ad55853f171effd345c2719c760219119b9200e8cb47768d435a989`、`e135_prepare_cache.py` SHA `47db49fcca8e2d2443741baded5b8fc85d3a0bfe7cb20573aa69009f443df034`，后续阶段不改这两文件。
 - 缓存采集实际于2026-10-25 22:04:47 UTC在fvcrc21 GPU0启动，PID828848；原生块后停止不需要的下游计算，只缓存原生H/Y，dtype与shape均运行时核对。原始`/tmp/xiang-moe-20261025/e135_cache`，四GPU小时ledger `/tmp/xiang-moe-20261025/e135_budget.json`。正式学生训练尚未启动。
+
+- 缓存完整，manifest SHA `2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43`；16,384个训练窗口曝光全部unique，无复用，四epoch训练曝光另计。train/held能量.000576403/.000555532；真实两批copy/native/cache各MSE=0，cache费用298.78秒。小recipe已耐久归档，70GB H/Y保留fvcrc21 NVMe，重建入口仍为固定prepare脚本与recipe。
+- `e135_train.py` SHA `8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7`，CPU全程/断点续跑参数与Adam误差0、实际cache全SHA预检通过后冻结。22:17:43 UTC在fvcrc21 GPU0启动完整4096更新（PID831690），不传中途截断，不按MSE决定继续。后续readout仍在独立实现，原三源不变。

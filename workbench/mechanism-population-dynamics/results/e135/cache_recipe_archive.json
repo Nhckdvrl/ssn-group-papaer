@@ -1,0 +1,192 @@
+{
+  "schema": "E135 cache recipe archive pointer v1",
+  "created_utc": "2026-10-25T22:15:46.334352+00:00",
+  "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe",
+  "archive_manifest_path": "/home/xiang/mechpop_cache/e135_cache_recipe/archive_manifest.json",
+  "archive_manifest_sha256": "95efa887fd3a73dd385ddfcb6676b3ef9888e23d7e1eccbaece906bcad513dda",
+  "cache_status": {
+    "cache_root": "/tmp/xiang-moe-20261025/e135_cache",
+    "experiment": "E135",
+    "manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+    "status": "complete"
+  },
+  "cache_manifest": {
+    "workspace_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e135/cache_manifest.json",
+    "sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43"
+  },
+  "budget_snapshot": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e135/cache_budget_snapshot.json",
+    "sha256": "01bb720ffba8866b0242eb42a1ff37fad7ec37baf77fe773318281a1726dc899",
+    "completed_seconds": 298.7827923728619,
+    "active": {}
+  },
+  "actual_cache": {
+    "train_shape": [
+      1024,
+      16,
+      512,
+      2048
+    ],
+    "held_shape": [
+      32,
+      16,
+      512,
+      2048
+    ],
+    "train_positions": 8388608,
+    "held_positions": 262144,
+    "train_energy_mean": 0.0005764026772760625,
+    "held_energy_mean": 0.0005555316295574178,
+    "drawn_windows": 16384,
+    "unique_windows": 16384,
+    "reused_windows": 0,
+    "reuse_fraction": 0.0,
+    "files_entering_repeat_epoch": 0,
+    "training_orders": "Independent default_rng(135), four successive full permutations of1024; every cache batch exactly4 times"
+  },
+  "copy_oracle": {
+    "held": {
+      "actual_H_dtype": "torch.bfloat16",
+      "copy_storage": "float32",
+      "copy_vs_cache_MSE": 0.0,
+      "copy_vs_native_MSE": 0.0,
+      "native_direct_vs_cache_MSE": 0.0,
+      "positions": 8192,
+      "scope": "Actual BF16 operator/dtype floor; no scientific acceptance threshold",
+      "teacher_storage": "bfloat16"
+    },
+    "train": {
+      "actual_H_dtype": "torch.bfloat16",
+      "copy_storage": "float32",
+      "copy_vs_cache_MSE": 0.0,
+      "copy_vs_native_MSE": 0.0,
+      "native_direct_vs_cache_MSE": 0.0,
+      "positions": 8192,
+      "scope": "Actual BF16 operator/dtype floor; no scientific acceptance threshold",
+      "teacher_storage": "bfloat16"
+    }
+  },
+  "recipe_files": {
+    "manifest.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/manifest.json",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/manifest.json",
+      "sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+      "size_bytes": 104673,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "cache_status.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e135/cache_status.json",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/cache_status.json",
+      "sha256": "a947750d767c2b1cfa1c0a8d19afcb4de1517763ea6102d9772a68c6b4375137",
+      "size_bytes": 194,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "budget.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_budget.json",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/budget.json",
+      "sha256": "01bb720ffba8866b0242eb42a1ff37fad7ec37baf77fe773318281a1726dc899",
+      "size_bytes": 244,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "asset_preflight.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e135/asset_preflight.json",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/asset_preflight.json",
+      "sha256": "fb1860d74780bbd96137bd3e752e2ff3aefd04c97f2c6b275d262156e81f574e",
+      "size_bytes": 11785,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "copy_oracle.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/copy_oracle.json",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/copy_oracle.json",
+      "sha256": "90ca33cb1ca58be930755ff1d5561b990e02b5fe51023b3b563d35d28c5df10f",
+      "size_bytes": 664,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "epoch_orders.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/epoch_orders.npy",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/epoch_orders.npy",
+      "sha256": "eb873d937a8e5b1d5f1b39d9aa0f035c8548919f3b1d3358d54380fd8b0c2db9",
+      "size_bytes": 32896,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "window_counts.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/window_counts.npz",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/window_counts.npz",
+      "sha256": "60eb21aee48808fe2f718765f017eda9419b514a62de7a2575f570e4886b1995",
+      "size_bytes": 4000486,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "source_stream.pt": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/source_stream.pt",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/source_stream.pt",
+      "sha256": "d177a0822381c6c65923a93152b1ebc2402d4ec70b0957fb819bfeb030a8d938",
+      "size_bytes": 12843747,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "train_tokens.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/train_tokens.npy",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/train_tokens.npy",
+      "sha256": "d5cb83e0e95d1409b6a0c82952de148d99441e22ce821eb629ce6b886ab9865c",
+      "size_bytes": 16810112,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "held_tokens.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/held_tokens.npy",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/held_tokens.npy",
+      "sha256": "042cd5ba78ebb68736538f4de689ec44f3457dbd19f1614e99c2c891e39059a7",
+      "size_bytes": 525440,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "train_keys.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/train_keys.npy",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/train_keys.npy",
+      "sha256": "193f0972b526570f35d2064186dc2617eb6b71096e24c4459c65ae69fe7cab26",
+      "size_bytes": 262272,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "held_keys.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/held_keys.npy",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/held_keys.npy",
+      "sha256": "76438b5910d4e80f71f324b3f7ad38db97b02972b80f5a4465594c89487e3248",
+      "size_bytes": 8320,
+      "source_sha256_matches_cache_manifest": true
+    },
+    "teacher_block.pt": {
+      "source_path": "/tmp/xiang-moe-20261025/e135_cache/teacher_block.pt",
+      "archive_path": "/home/xiang/mechpop_cache/e135_cache_recipe/teacher_block.pt",
+      "sha256": "1670aaed0a09c99eafc73d308bd6abf163400e70d380822115c736a89abd5e5a",
+      "size_bytes": 805630332,
+      "source_sha256_matches_cache_manifest": true
+    }
+  },
+  "excluded_large_arrays": {
+    "train_H.npy": {
+      "size_bytes": 34359738496,
+      "sha256": "0a42b6a6dfe8809f59d53cd5ecb97287dc4df2033fae106eca0c98199912e38a",
+      "reason": "Kept on node-local NVMe; explicitly excluded from NFS recipe archive"
+    },
+    "train_Y.npy": {
+      "size_bytes": 34359738496,
+      "sha256": "615d2cec1d8730c504c5091094c9ef7efa27c6fabe4c44e3ab5fb093755e4d8b",
+      "reason": "Kept on node-local NVMe; explicitly excluded from NFS recipe archive"
+    },
+    "held_H.npy": {
+      "size_bytes": 1073741952,
+      "sha256": "f2a1cdadfa6aff61541499d86dbe68ac2219fb2c30414a5c2963594f8ee71b12",
+      "reason": "Kept on node-local NVMe; explicitly excluded from NFS recipe archive"
+    },
+    "held_Y.npy": {
+      "size_bytes": 1073741952,
+      "sha256": "6095766b8ac71dba070e4d1062c94ad0b314765c886072d9d37b4cab7b033e30",
+      "reason": "Kept on node-local NVMe; explicitly excluded from NFS recipe archive"
+    }
+  },
+  "teacher_block": {
+    "archived": true,
+    "path": "/home/xiang/mechpop_cache/e135_cache_recipe/teacher_block.pt",
+    "sha256": "1670aaed0a09c99eafc73d308bd6abf163400e70d380822115c736a89abd5e5a",
+    "size_bytes": 805630332
+  },
+  "model_or_checkpoint_files_copied": false,
+  "gpu_launched_by_this_asset_step": false
+}
