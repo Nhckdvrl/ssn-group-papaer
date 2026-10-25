@@ -1,0 +1,1302 @@
+{
+  "Dolma_held_window_hash": "ce0e786beea51b92e3eaeebc5a072945b9baac737e21f9f9130121b70f3feecb",
+  "POS_plan": {
+    "POS_source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+    "all_selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+    "held_input_target_last_sha256": "9b5ca5c87b9c34777df7ec80cd9da94dc96cc2635d49b1febdf0c1df9bc963ff",
+    "items": 512,
+    "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+    "words": 48
+  },
+  "common_segment_input_hash_equal": true,
+  "cumulative_seconds": 150.5509309694171,
+  "data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+  "direction": "q=ordered, p=permuted; nll_gap=NLL(p)-NLL(q)",
+  "errors": {},
+  "experiment": "E131",
+  "frozen_sources": {
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+    "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+    "e127_predictive_fidelity.py": "ac37934d55891db7ab9ff873f04e9b7e4592de590917a477d0d84d9f83d1675c",
+    "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f",
+    "e130_cross_seed.py": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+    "e130_finalize.py": "2b1bed11f13fc0cd2dbb658383b7d9c973da41760e4ec1236e7f18a10a76039f",
+    "e130_predictor_compare.py": "886cebfc51521fb8873a12aa4ee8db38838c20ba712c9c7dbb75ffd8ac4ea9a4",
+    "e131_finalize.py": "8d545eae5f01190e1fea8f7d4382b02d8cb897754db2cc62132bbf887bd99c57",
+    "e131_order_history.py": "455f90e6202da01bce1f4586d0912620f52e2ed7b3dd424c86353887237e1a78"
+  },
+  "gpu_preflight": {
+    "compute_processes": [],
+    "physical_gpu": 3,
+    "uuid": "GPU-eebba152-705b-320c-b4bd-18b268046caa"
+  },
+  "groups": {
+    "Dolma": {
+      "global": {
+        "ci_degenerate": false,
+        "file_bootstrap_iterations": 1000,
+        "files": 32,
+        "kl_student_to_teacher": {
+          "ci95": [
+            0.021532936026193893,
+            0.03806456786946974
+          ],
+          "mean": 0.027667441431924324
+        },
+        "kl_teacher_to_student": {
+          "ci90": [
+            0.02192358459536117,
+            0.03580379963171411
+          ],
+          "ci95": [
+            0.021559085207728132,
+            0.03783175148921771
+          ],
+          "mean": 0.02756344327963775
+        },
+        "nll_gap": {
+          "ci90": [
+            -0.0005876571709595281,
+            0.0011536149819668061
+          ],
+          "ci95": [
+            -0.0006735683565537102,
+            0.0013385908450879946
+          ],
+          "mean": 0.00026320444789106653
+        },
+        "student_nll": {
+          "ci90": [
+            2.176794101493634,
+            2.913456050075201
+          ],
+          "ci95": [
+            2.107790472712105,
+            2.973827155502974
+          ],
+          "mean": 2.578323067897395
+        },
+        "teacher_nll": {
+          "ci90": [
+            2.1766416552259504,
+            2.913497850020322
+          ],
+          "ci95": [
+            2.1081496691582187,
+            2.9730110217628996
+          ],
+          "mean": 2.5780598634620326
+        },
+        "tokens": 262144,
+        "top1_agreement": {
+          "ci95": [
+            0.9063423361371518,
+            0.9335304737404297
+          ],
+          "mean": 0.9216880798339844
+        }
+      },
+      "input_sha256": "f9e9991f86ef6c0f55ec9f34fe9bf19cc0522aa6f6ca2a0bc5b33040eecbda1b",
+      "legacy_NLL_difference": {
+        "ordered": 8.881784197001252e-16,
+        "permuted": 4.440892098500626e-16
+      },
+      "precision": "BF16 logits -> FP32 logsoftmax",
+      "sources": {
+        "Algebraic Stack": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.022771738488919224,
+              0.03781096758781007
+            ],
+            "mean": 0.03405116031308736
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.023304817102709652,
+              0.03690764203801281
+            ],
+            "ci95": [
+              0.023304817102709652,
+              0.03690764203801281
+            ],
+            "mean": 0.033506935804187024
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.007607262253975418,
+              -0.0021629276322014945
+            ],
+            "ci95": [
+              -0.007607262253975418,
+              -0.0021629276322014945
+            ],
+            "mean": -0.006246178598531937
+          },
+          "student_nll": {
+            "ci90": [
+              1.588490276757404,
+              2.365905145039066
+            ],
+            "ci95": [
+              1.588490276757404,
+              2.365905145039066
+            ],
+            "mean": 1.7828439938278196
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.5960975390211092,
+              2.3680680727352748
+            ],
+            "ci95": [
+              1.5960975390211092,
+              2.3680680727352748
+            ],
+            "mean": 1.7890901724496506
+          },
+          "tokens": 2048,
+          "top1_agreement": {
+            "ci95": [
+              0.9270833333333334,
+              0.927734375
+            ],
+            "mean": 0.92724609375
+          }
+        },
+        "C4": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.018040380460823496,
+              0.018243756791869688
+            ],
+            "mean": 0.01811530858278788
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.01803615660268772,
+              0.018130824371818503
+            ],
+            "ci95": [
+              0.01803615660268772,
+              0.018130824371818503
+            ],
+            "mean": 0.01807103420184117
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0005500722892911961,
+              0.004185945324984175
+            ],
+            "ci95": [
+              -0.0005500722892911961,
+              0.004185945324984175
+            ],
+            "mean": 0.0011947763054418353
+          },
+          "student_nll": {
+            "ci90": [
+              2.721561141708783,
+              2.786236680606799
+            ],
+            "ci95": [
+              2.721561141708783,
+              2.786236680606799
+            ],
+            "mean": 2.7453889718291045
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.7221112139564476,
+              2.782050735251808
+            ],
+            "ci95": [
+              2.7221112139564476,
+              2.782050735251808
+            ],
+            "mean": 2.744194195486317
+          },
+          "tokens": 9728,
+          "top1_agreement": {
+            "ci95": [
+              0.9232700892857143,
+              0.9264322916666666
+            ],
+            "mean": 0.9252672697368421
+          }
+        },
+        "CC News": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 3,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.019484008888056792,
+              0.022324434557434714
+            ],
+            "mean": 0.02126157766395853
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.020132271952389164,
+              0.02245890906470771
+            ],
+            "ci95": [
+              0.01875531649716322,
+              0.022886182862841054
+            ],
+            "mean": 0.021426192473288252
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.014907583023097951,
+              -0.00577037081787779
+            ],
+            "ci95": [
+              -0.020242857525140323,
+              -0.004237034019013208
+            ],
+            "mean": -0.009771826694409569
+          },
+          "student_nll": {
+            "ci90": [
+              2.4100342337071843,
+              2.657718517459665
+            ],
+            "ci95": [
+              2.398490204454248,
+              2.713867573771317
+            ],
+            "mean": 2.5648369110524847
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.424941816671762,
+              2.6644088903583567
+            ],
+            "ci95": [
+              2.4187330618925316,
+              2.72117128139039
+            ],
+            "mean": 2.5746087377258835
+          },
+          "tokens": 2048,
+          "top1_agreement": {
+            "ci95": [
+              0.9189453125,
+              0.935546875
+            ],
+            "mean": 0.9248046875
+          }
+        },
+        "Dolma CC": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 6,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.019109427992177068,
+              0.055208488520920265
+            ],
+            "mean": 0.033513339156772494
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.019323642017158582,
+              0.0524860163312869
+            ],
+            "ci95": [
+              0.01905855697717105,
+              0.05462144146917113
+            ],
+            "mean": 0.03327623984353161
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0006556607453688519,
+              0.0028724597164618707
+            ],
+            "ci95": [
+              -0.0008528770611472603,
+              0.003101142889043353
+            ],
+            "mean": 0.000936841398177878
+          },
+          "student_nll": {
+            "ci90": [
+              2.885048412372025,
+              3.5465249824998164
+            ],
+            "ci95": [
+              2.8620358220747826,
+              3.6057062620173395
+            ],
+            "mean": 3.177626242088644
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.8848876462965767,
+              3.5438475214939813
+            ],
+            "ci95": [
+              2.861990801158709,
+              3.602792931687742
+            ],
+            "mean": 3.1766894007031343
+          },
+          "tokens": 98304,
+          "top1_agreement": {
+            "ci95": [
+              0.8792613636363636,
+              0.925096122382199
+            ],
+            "mean": 0.9070638020833334
+          }
+        },
+        "Flan": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.038023206413975656,
+              0.0589994440454476
+            ],
+            "mean": 0.04701302254174934
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.03965386748927113,
+              0.056083042726972614
+            ],
+            "ci95": [
+              0.03965386748927113,
+              0.056083042726972614
+            ],
+            "mean": 0.0466949425911432
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0019751675861448457,
+              0.0006572964833072535
+            ],
+            "ci95": [
+              -0.0019751675861448457,
+              0.0006572964833072535
+            ],
+            "mean": -0.00047090240360078895
+          },
+          "student_nll": {
+            "ci90": [
+              1.542276735671012,
+              1.8563512177037789
+            ],
+            "ci95": [
+              1.542276735671012,
+              1.8563512177037789
+            ],
+            "mean": 1.7217478682611644
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.5442519034205688,
+              1.8556939211074912
+            ],
+            "ci95": [
+              1.5442519034205688,
+              1.8556939211074912
+            ],
+            "mean": 1.7222187706702388
+          },
+          "tokens": 3584,
+          "top1_agreement": {
+            "ci95": [
+              0.9166666666666666,
+              0.93017578125
+            ],
+            "mean": 0.9243861607142857
+          }
+        },
+        "MegaWika": {
+          "ci_degenerate": true,
+          "file_bootstrap_iterations": 1000,
+          "files": 1,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.041933121588993316,
+              0.041933121588993316
+            ],
+            "mean": 0.041933121588993316
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.03911561310326128,
+              0.03911561310326128
+            ],
+            "ci95": [
+              0.03911561310326128,
+              0.03911561310326128
+            ],
+            "mean": 0.03911561310326128
+          },
+          "nll_gap": {
+            "ci90": [
+              0.010797607432678547,
+              0.010797607432678547
+            ],
+            "ci95": [
+              0.010797607432678547,
+              0.010797607432678547
+            ],
+            "mean": 0.010797607432678547
+          },
+          "student_nll": {
+            "ci90": [
+              2.08074335002658,
+              2.08074335002658
+            ],
+            "ci95": [
+              2.08074335002658,
+              2.08074335002658
+            ],
+            "mean": 2.08074335002658
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.069945742599586,
+              2.069945742599586
+            ],
+            "ci95": [
+              2.069945742599586,
+              2.069945742599586
+            ],
+            "mean": 2.069945742599586
+          },
+          "tokens": 1024,
+          "top1_agreement": {
+            "ci95": [
+              0.9130859375,
+              0.9130859375
+            ],
+            "mean": 0.9130859375
+          }
+        },
+        "OpenWebMath": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.020282759774664094,
+              0.021037435109249714
+            ],
+            "mean": 0.020534318219525966
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.02109717941035605,
+              0.021734843026180783
+            ],
+            "ci95": [
+              0.02109717941035605,
+              0.021734843026180783
+            ],
+            "mean": 0.021309733948964293
+          },
+          "nll_gap": {
+            "ci90": [
+              0.0012899512882995623,
+              0.0025341138605843305
+            ],
+            "ci95": [
+              0.0012899512882995623,
+              0.0025341138605843305
+            ],
+            "mean": 0.0021193930031560746
+          },
+          "student_nll": {
+            "ci90": [
+              1.391184710048508,
+              2.695932677843871
+            ],
+            "ci95": [
+              1.391184710048508,
+              2.695932677843871
+            ],
+            "mean": 1.8261006993136288
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.3886505961532492,
+              2.6946427266266255
+            ],
+            "ci95": [
+              1.3886505961532492,
+              2.6946427266266255
+            ],
+            "mean": 1.8239813063110413
+          },
+          "tokens": 1536,
+          "top1_agreement": {
+            "ci95": [
+              0.927734375,
+              0.9345703125
+            ],
+            "mean": 0.9322916666666666
+          }
+        },
+        "Project Gutenberg": {
+          "ci_degenerate": true,
+          "file_bootstrap_iterations": 1000,
+          "files": 1,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.026818044411117903,
+              0.026818044411117903
+            ],
+            "mean": 0.026818044411117903
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.0262556334340438,
+              0.0262556334340438
+            ],
+            "ci95": [
+              0.0262556334340438,
+              0.0262556334340438
+            ],
+            "mean": 0.0262556334340438
+          },
+          "nll_gap": {
+            "ci90": [
+              0.0022766126274653686,
+              0.0022766126274653686
+            ],
+            "ci95": [
+              0.0022766126274653686,
+              0.0022766126274653686
+            ],
+            "mean": 0.0022766126274653686
+          },
+          "student_nll": {
+            "ci90": [
+              2.378487943197541,
+              2.378487943197541
+            ],
+            "ci95": [
+              2.378487943197541,
+              2.378487943197541
+            ],
+            "mean": 2.378487943197541
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.3762113306307278,
+              2.3762113306307278
+            ],
+            "ci95": [
+              2.3762113306307278,
+              2.3762113306307278
+            ],
+            "mean": 2.3762113306307278
+          },
+          "tokens": 1024,
+          "top1_agreement": {
+            "ci95": [
+              0.9150390625,
+              0.9150390625
+            ],
+            "mean": 0.9150390625
+          }
+        },
+        "Reddit": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.01606296582873985,
+              0.017329728120209626
+            ],
+            "mean": 0.016823023203621716
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.015861804730480378,
+              0.017296354414477393
+            ],
+            "ci95": [
+              0.015861804730480378,
+              0.017296354414477393
+            ],
+            "mean": 0.016722534540878586
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0029534957864437495,
+              7.013107990148094e-05
+            ],
+            "ci95": [
+              -0.0029534957864437495,
+              7.013107990148094e-05
+            ],
+            "mean": -0.0011393196666366111
+          },
+          "student_nll": {
+            "ci90": [
+              2.8583656303935774,
+              2.980077999655955
+            ],
+            "ci95": [
+              2.8583656303935774,
+              2.980077999655955
+            ],
+            "mean": 2.931393051951004
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.8613191261963045,
+              2.9800078685710094
+            ],
+            "ci95": [
+              2.8613191261963045,
+              2.9800078685710094
+            ],
+            "mean": 2.932532371621128
+          },
+          "tokens": 12800,
+          "top1_agreement": {
+            "ci95": [
+              0.92578125,
+              0.927734375
+            ],
+            "mean": 0.926953125
+          }
+        },
+        "Refined Web": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.022427219711409048,
+              0.028750599150801238
+            ],
+            "mean": 0.025427363241047676
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.02266463662231013,
+              0.028547821962441922
+            ],
+            "ci95": [
+              0.02266463662231013,
+              0.028547821962441922
+            ],
+            "mean": 0.025455928936971198
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0011936266898347296,
+              0.0013643987891319453
+            ],
+            "ci95": [
+              -0.0011936266898347296,
+              0.0013643987891319453
+            ],
+            "mean": 2.003503376259791e-05
+          },
+          "student_nll": {
+            "ci90": [
+              2.755646676331864,
+              2.8289104638220612
+            ],
+            "ci95": [
+              2.755646676331864,
+              2.8289104638220612
+            ],
+            "mean": 2.794150272677077
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.7542822775751925,
+              2.83010409053895
+            ],
+            "ci95": [
+              2.7542822775751925,
+              2.83010409053895
+            ],
+            "mean": 2.7941302376729333
+          },
+          "tokens": 70144,
+          "top1_agreement": {
+            "ci95": [
+              0.9182692307692307,
+              0.9207628038194444
+            ],
+            "mean": 0.9195797217153284
+          }
+        },
+        "Semantic Scholar": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.019665607219501502,
+              0.02190660770981978
+            ],
+            "mean": 0.020711407448316697
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.0192765406672587,
+              0.021774009858045038
+            ],
+            "ci95": [
+              0.0192765406672587,
+              0.021774009858045038
+            ],
+            "mean": 0.02044202628962566
+          },
+          "nll_gap": {
+            "ci90": [
+              0.00330087712219429,
+              0.003357008427958671
+            ],
+            "ci95": [
+              0.00330087712219429,
+              0.003357008427958671
+            ],
+            "mean": 0.0033270717315510012
+          },
+          "student_nll": {
+            "ci90": [
+              2.2805275433905376,
+              2.3287604886759428
+            ],
+            "ci95": [
+              2.2805275433905376,
+              2.3287604886759428
+            ],
+            "mean": 2.3062517808760874
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.277170534969781,
+              2.325459611571995
+            ],
+            "ci95": [
+              2.277170534969781,
+              2.325459611571995
+            ],
+            "mean": 2.3029247091576286
+          },
+          "tokens": 7680,
+          "top1_agreement": {
+            "ci95": [
+              0.9267578125,
+              0.9302455357142857
+            ],
+            "mean": 0.9283854166666666
+          }
+        },
+        "StackExchange": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.018329927668473633,
+              0.02548704872512797
+            ],
+            "mean": 0.022624200302466237
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.018872816155816707,
+              0.02425086732543062
+            ],
+            "ci95": [
+              0.018872816155816707,
+              0.02425086732543062
+            ],
+            "mean": 0.022099646857585052
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0065572694943369925,
+              -0.0056373983940227745
+            ],
+            "ci95": [
+              -0.0065572694943369925,
+              -0.0056373983940227745
+            ],
+            "mean": -0.006005346834148462
+          },
+          "student_nll": {
+            "ci90": [
+              1.8383718558273985,
+              2.4091139525997676
+            ],
+            "ci95": [
+              1.8383718558273985,
+              2.4091139525997676
+            ],
+            "mean": 2.0666686945363457
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.8440092542589,
+              2.4156712221013805
+            ],
+            "ci95": [
+              1.8440092542589,
+              2.4156712221013805
+            ],
+            "mean": 2.072674041395892
+          },
+          "tokens": 2560,
+          "top1_agreement": {
+            "ci95": [
+              0.9270833333333334,
+              0.9287109375
+            ],
+            "mean": 0.927734375
+          }
+        },
+        "StarCoder": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.02219391227515748,
+              0.02604819813253732
+            ],
+            "mean": 0.024276112680868427
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.022744571886057247,
+              0.025742640860371226
+            ],
+            "ci95": [
+              0.022744571886057247,
+              0.025742640860371226
+            ],
+            "mean": 0.02436421834344526
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0005018646096426494,
+              -7.656765789640097e-05
+            ],
+            "ci95": [
+              -0.0005018646096426494,
+              -7.656765789640097e-05
+            ],
+            "mean": -0.0002721064862854807
+          },
+          "student_nll": {
+            "ci90": [
+              1.076633638316499,
+              1.1350633069033826
+            ],
+            "ci95": [
+              1.076633638316499,
+              1.1350633069033826
+            ],
+            "mean": 1.1034978537587445
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.076710205995379,
+              1.1355651714927233
+            ],
+            "ci95": [
+              1.076710205995379,
+              1.1355651714927233
+            ],
+            "mean": 1.1037699602470314
+          },
+          "tokens": 44544,
+          "top1_agreement": {
+            "ci95": [
+              0.950673204787234,
+              0.951513671875
+            ],
+            "mean": 0.9510596264367817
+          }
+        },
+        "Wikipedia & Wikibooks": {
+          "ci_degenerate": true,
+          "file_bootstrap_iterations": 1000,
+          "files": 1,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.02164455920985464,
+              0.02164455920985464
+            ],
+            "mean": 0.02164455920985464
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.020828311635037622,
+              0.020828311635037622
+            ],
+            "ci95": [
+              0.020828311635037622,
+              0.020828311635037622
+            ],
+            "mean": 0.020828311635037622
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.004517802950475769,
+              -0.004517802950475769
+            ],
+            "ci95": [
+              -0.004517802950475769,
+              -0.004517802950475769
+            ],
+            "mean": -0.004517802950475769
+          },
+          "student_nll": {
+            "ci90": [
+              2.3299982107993356,
+              2.3299982107993356
+            ],
+            "ci95": [
+              2.3299982107993356,
+              2.3299982107993356
+            ],
+            "mean": 2.3299982107993356
+          },
+          "teacher_nll": {
+            "ci90": [
+              2.334516013757998,
+              2.334516013757998
+            ],
+            "ci95": [
+              2.334516013757998,
+              2.334516013757998
+            ],
+            "mean": 2.334516013757998
+          },
+          "tokens": 1024,
+          "top1_agreement": {
+            "ci95": [
+              0.9111328125,
+              0.9111328125
+            ],
+            "mean": 0.9111328125
+          }
+        },
+        "arXiv": {
+          "ci_degenerate": false,
+          "file_bootstrap_iterations": 1000,
+          "files": 2,
+          "kl_student_to_teacher": {
+            "ci95": [
+              0.018953236427443555,
+              0.021630601614214484
+            ],
+            "mean": 0.01928790707578992
+          },
+          "kl_teacher_to_student": {
+            "ci90": [
+              0.019033033533308385,
+              0.02159734280976977
+            ],
+            "ci95": [
+              0.019033033533308385,
+              0.02159734280976977
+            ],
+            "mean": 0.01935357219286606
+          },
+          "nll_gap": {
+            "ci90": [
+              -0.0013582520142492172,
+              0.000996295770549763
+            ],
+            "ci95": [
+              -0.0013582520142492172,
+              0.000996295770549763
+            ],
+            "mean": 0.0007019772974498906
+          },
+          "student_nll": {
+            "ci90": [
+              1.5140471719182305,
+              1.7218846925602378
+            ],
+            "ci95": [
+              1.5140471719182305,
+              1.7218846925602378
+            ],
+            "mean": 1.5400268619984814
+          },
+          "teacher_nll": {
+            "ci90": [
+              1.5130508761285582,
+              1.7232429445591109
+            ],
+            "ci95": [
+              1.5130508761285582,
+              1.7232429445591109
+            ],
+            "mean": 1.5393248846823773
+          },
+          "tokens": 4096,
+          "top1_agreement": {
+            "ci95": [
+              0.91796875,
+              0.9475446428571429
+            ],
+            "mean": 0.94384765625
+          }
+        }
+      }
+    },
+    "POS_plan_held": {
+      "captured_natural_NLL_max_abs_difference": {
+        "ordered": 0.0,
+        "permuted": 0.0
+      },
+      "global": {
+        "items": 512,
+        "kl_student_to_teacher": {
+          "ci95": [
+            0.012625958498804804,
+            0.022675647299157428
+          ],
+          "mean": 0.016969791617485783
+        },
+        "kl_teacher_to_student": {
+          "ci95": [
+            0.012718368473667866,
+            0.0198770622891627
+          ],
+          "mean": 0.015966513151397025
+        },
+        "nll_gap": {
+          "ci95": [
+            -0.004897154486588281,
+            0.03361798898365702
+          ],
+          "mean": 0.01423838614190123
+        },
+        "student_nll": {
+          "ci95": [
+            2.0336551129776117,
+            2.519423180629817
+          ],
+          "mean": 2.2817652970561677
+        },
+        "teacher_nll": {
+          "ci95": [
+            2.018855286952723,
+            2.5111111038625147
+          ],
+          "mean": 2.267526910914266
+        },
+        "top1_agreement": {
+          "ci95": [
+            0.9134200820115339,
+            0.9574657066109269
+          ],
+          "mean": 0.9368106634650751
+        },
+        "weighting": "equal word means, matching existing POS summary",
+        "word_bootstrap_iterations": 1000,
+        "words": 48
+      },
+      "input_padding_last_target_sha256": "f9697830154d467180c86050161f46067cb744432382fb4f2f339564af931bd7",
+      "precision": "BF16 backbone -> selected last hidden FP32 -> actual FP32 lm_head/logsoftmax"
+    }
+  },
+  "identity_first_batch_repeats": {
+    "Dolma_ordered": {
+      "NLL_delta_max_abs": 0.0,
+      "forward_KL_max_abs": 0.0,
+      "log_probability_max_abs": 0.0,
+      "reverse_KL_max_abs": 0.0,
+      "targets": 8192,
+      "top1_agreement": 1.0
+    },
+    "Dolma_permuted": {
+      "NLL_delta_max_abs": 0.0,
+      "forward_KL_max_abs": 0.0,
+      "log_probability_max_abs": 0.0,
+      "reverse_KL_max_abs": 0.0,
+      "targets": 8192,
+      "top1_agreement": 1.0
+    },
+    "POS_ordered": {
+      "NLL_delta_max_abs": 0.0,
+      "forward_KL_max_abs": 0.0,
+      "log_probability_max_abs": 0.0,
+      "reverse_KL_max_abs": 0.0,
+      "targets": 16,
+      "top1_agreement": 1.0
+    },
+    "POS_permuted": {
+      "NLL_delta_max_abs": 0.0,
+      "forward_KL_max_abs": 0.0,
+      "log_probability_max_abs": 0.0,
+      "reverse_KL_max_abs": 0.0,
+      "targets": 16,
+      "top1_agreement": 1.0
+    }
+  },
+  "post_hoc_registered_before_scoring": true,
+  "proofs": {
+    "ordered": {
+      "branch": "ordered",
+      "checkpoint": "/tmp/xiang-moe-20261025/e131_ordered/snapshots/diagnostic_step024576.pt",
+      "checkpoint_sha256": "43d5fc801ce23ed55e82eaa47b76c94d86be6b8b20fe7ba7d257544ead916657",
+      "config_hash": "79c59a104ac3a900b60b9605bd0f8a7597f430adf2e174b357103aa363dfd6f3",
+      "functional_capture": "/tmp/xiang-moe-20261025/e131_ordered/diagnostic_common24576.npz",
+      "functional_capture_sha256": "6b3ef9bfc858dd329bdc9f37c081b4b56ef72f78d6259a3f77435b10908214b3",
+      "history": {
+        "actual_source_schedule_hash": "0eb62f6cbd8bfd6e22e2d67d0f01ad34aee85eee94a006b9eed5042858412625",
+        "common_input_hash": "6ebdd986fda3fc9856a35e7c9edfba515334c7fb425d82255df77778dbadba2d",
+        "common_updates": 19456,
+        "draws": 393216,
+        "pulse_input_hash": "17d3b0525fa880947d73d21dd278ae3557c5510aa8d05f65f76d620c2f087346"
+      },
+      "legacy": {
+        "evaluation_sha256": "262850ac5643dcfeca742b9cff0cb0e7a388d75b4dcbff3facb838d42e0bdf91",
+        "evaluation_step": 24576,
+        "held_file": {
+          "ci95": [
+            2.0952874971421473,
+            2.991598695102357
+          ],
+          "ci_degenerate": false,
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "mean": 2.5780598634620318
+        },
+        "scope": "Exact registered-step event, never the current/latest NLL",
+        "source": "/tmp/xiang-moe-20261025/e131_ordered/training_summary.json"
+      },
+      "parent": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/snapshots/step004096.pt",
+        "checkpoint_sha256": "13bb7ec0c8dc899744e7e4e6c7938c80a80c1b8079d1e3c89f764251524dbabf",
+        "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+        "elapsed_wall_seconds_not_charged_to_children": 1292.294880412519,
+        "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+        "frozen_sources": {
+          "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+          "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+          "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+          "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+        },
+        "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+        "optimizer_steps": [
+          4096.0,
+          4096.0
+        ],
+        "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+        "saved_optimizer_lr": 0.00019660799999999997
+      },
+      "protocol_sha256": "0ef7fc22f0c4228c6c9ea577ab9283e0f2dfe82c877a12af75618200490101c8",
+      "provenance_sha256": "0ef7fc22f0c4228c6c9ea577ab9283e0f2dfe82c877a12af75618200490101c8",
+      "replacement_tensor_sha256": "cef9001cf136531d79e41c27a7aee1da5b1cd3dedae43dd5c660247956f44fdc",
+      "step": 24576
+    },
+    "permuted": {
+      "branch": "permuted",
+      "checkpoint": "/tmp/xiang-moe-20261025/e131_permuted/snapshots/diagnostic_step024576.pt",
+      "checkpoint_sha256": "82ed22dbba4f9a777bde77ebef442b5e338653818e0b859ed2a6b1be7ec6efa4",
+      "config_hash": "2c41393739b63961ed4ca611a87d9243f94a6244285ca2db3e7ee6c8f7e13319",
+      "functional_capture": "/tmp/xiang-moe-20261025/e131_permuted/diagnostic_common24576.npz",
+      "functional_capture_sha256": "94c3e07b5175300a8a564f9634f61f93c8d05254fb37b40067d7e3377de388c4",
+      "history": {
+        "actual_source_schedule_hash": "73655c68d8ef825fc2abe01f91d399a6580e8265a8bfdd35dc78e7285715fb60",
+        "common_input_hash": "6ebdd986fda3fc9856a35e7c9edfba515334c7fb425d82255df77778dbadba2d",
+        "common_updates": 19456,
+        "draws": 393216,
+        "pulse_input_hash": "3868429c063f8f93e522b71f8713f0224578ce67472fa8ebeab3e52d07e0861c"
+      },
+      "legacy": {
+        "evaluation_sha256": "16639cff298b7efe3e91fb832f45e7f5c44db8793c990c0ead0a333497014c59",
+        "evaluation_step": 24576,
+        "held_file": {
+          "ci95": [
+            2.0949033775603327,
+            2.993186068992403
+          ],
+          "ci_degenerate": false,
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "mean": 2.5783230678973945
+        },
+        "scope": "Exact registered-step event, never the current/latest NLL",
+        "source": "/tmp/xiang-moe-20261025/e131_permuted/training_summary.json"
+      },
+      "parent": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/snapshots/step004096.pt",
+        "checkpoint_sha256": "13bb7ec0c8dc899744e7e4e6c7938c80a80c1b8079d1e3c89f764251524dbabf",
+        "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+        "elapsed_wall_seconds_not_charged_to_children": 1292.294880412519,
+        "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+        "frozen_sources": {
+          "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+          "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+          "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+          "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+        },
+        "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+        "optimizer_steps": [
+          4096.0,
+          4096.0
+        ],
+        "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+        "saved_optimizer_lr": 0.00019660799999999997
+      },
+      "protocol_sha256": "79771aac52cdc8d53fa496f241e89cad5a49b5063aea0020a6e33a2fadd3d38a",
+      "provenance_sha256": "79771aac52cdc8d53fa496f241e89cad5a49b5063aea0020a6e33a2fadd3d38a",
+      "replacement_tensor_sha256": "d16e05da1c9ad5e229414ec3a1a69991394b0f25640f15b918caa38673b370c6",
+      "step": 24576
+    }
+  },
+  "raw": {
+    "Dolma_token_metrics": {
+      "path": "/tmp/xiang-moe-20261025/e131_predictor_compare/step024576/attempt01_Dolma_token_metrics.npy",
+      "sha256": "24b7ce760d7a8e1dd2a29dcc7f75f2b34fdb1b6ce0b2b181721ecafe3f180202",
+      "valid_rows": 512
+    },
+    "POS_ordered": {
+      "path": "/tmp/xiang-moe-20261025/e131_predictor_compare/step024576/attempt01_POS_ordered_logp.npy",
+      "sha256": "9e969d29a78e6f0fb2f1214ebcc43efcd4c0713ddf47e7a453707f634f601e6f",
+      "valid_rows": 512
+    },
+    "POS_permuted": {
+      "path": "/tmp/xiang-moe-20261025/e131_predictor_compare/step024576/attempt01_POS_permuted_logp.npy",
+      "sha256": "e3fbde5138756ab974102dcea7dc63261f6cf45ea590951daad70c7592f5a5e0",
+      "valid_rows": 512
+    },
+    "rows": {
+      "path": "/tmp/xiang-moe-20261025/e131_predictor_compare/step024576/attempt01_rows.json",
+      "sha256": "d6f662390efd656610428395b8a57e5840fdc491bc54d3ab0c5b2da7721a3881",
+      "valid_rows": 512
+    }
+  },
+  "scope": "Two natural prediction populations/precision paths, reported separately; no U/A interventions, mapping, same-function claim or scientific threshold",
+  "script_sha256": "ff594800990f15389250869704840602e806240058c29eeda9ded9f59dde5c14",
+  "seconds_this_step": 75.18844659253955,
+  "status": "complete",
+  "step": 24576
+}

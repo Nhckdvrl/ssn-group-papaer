@@ -98,3 +98,52 @@
 7. 限制：几何是指定秩线性输入子空间，功能检查不是跨训练可对应性；未复核完整附录。
 8. 动作：把重叠与可替代性作为两个命题分别干预。
 9. 对我们：E134的均值可保任务得分不等于“其它专家无用”；不能认领几何与功能不等价这一一般结论。
+
+
+## Every Expert Matters: Towards Effective Knowledge Distillation for Mixture-of-Experts Language Models `[证据：摘要/§1、§4入口，非全文]`
+[arXiv v1，2025-02-18](https://arxiv.org/html/2502.12947)
+1. 形态：MoE→dense蒸馏方法。
+2. 压力：稀疏教师原路由没有暴露全部专家知识。
+3. 前提：非选中专家也可能提供有用监督。
+4. 来源（DOCUMENTED）：教师路由与学生学习过程的诊断。
+5. 近邻：常规KD、MoEBERT、B-Distill；MoE教师不是新设置。
+6. KA多次采样专家；SAR用全部专家并调router；正文用dense学生。
+7. 限制：本次未复核全部实验；其教师目标可被改变。
+8. 动作：区分忠实拟合原函数与提取更多潜在知识。
+9. 对我们：E135明确只固定native H→Y，不用KA/SAR改教师，也不认领KD方法。
+
+## Balanced Knowledge Distillation for Large Language Models with Mix-of-Experts `[证据：AAAI正式摘要，非全文]`
+[AAAI 2026，2026-03-14](https://ojs.aaai.org/index.php/AAAI/article/view/39543)
+1. 形态：MoE→MoE蒸馏方法。
+2. 压力：教师覆盖不足与学生router负载失衡。
+3. 前提：师生MoE仍需专门的转移/均衡约束。
+4. 来源（DOCUMENTED，摘要）：专家覆盖与router失衡观察。
+5. 近邻：Every Expert Matters、常规KD、MoEBERT。
+6. Monte Carlo专家探索与entropy-aware教师路由监督。
+7. 限制：这里只读官方摘要，不作精确实现/实验覆盖判断。
+8. 动作：将函数监督与组织监督分开。
+9. 对我们：MoE→MoE已有ownership；E135不监督教师gate/专家编号，避免用强制组织对齐再声称自发恢复。
+
+## Soft-to-Hard Routing in Sparse Mixture-of-Experts Models `[证据：v2摘要/§1/§2与§5范围，非证明复核]`
+[arXiv v2，2026-05-23](https://arxiv.org/html/2605.02124)
+1. 形态：总体平方损失MoE回归的边界层理论。
+2. 压力：softmax低温近似在router ties附近奇异。
+3. 前提：控制边界概率质量，而不只温度数值。
+4. 来源（DOCUMENTED）：soft→hard极限及额外假设下的landscape转移。
+5. 近邻：经典MoE可识别性、统计MoE框架、路由几何。
+6. 归一化dense softmax→hard top1，条件性teacher recovery/对称破缺诊断。
+7. 限制：不是有限预算神经Top8 no-renorm联合训练定理；未复核长证明。检索旧标题Boundary Mass不可当作v2题名。
+8. 动作：把可识别性假设与经验优化结果分开。
+9. 对我们：E135拟合/不拟合都不自动证明唯一/不可能，不直接援引其条件定理解释原生OLMoE。
+
+## MoEBERT: from BERT to Mixture-of-Experts via Importance-Guided Adaptation `[证据：正式摘要＋§3.3检索片段]`
+[NAACL 2022](https://aclanthology.org/2022.naacl-main.116/)
+1. 形态：压缩/适配方法。
+2. 压力：小dense学生容量损失与推理成本。
+3. 前提：将原FFN适配为专家，保留部分预训练表示。
+4. 来源（DOCUMENTED）：重要性适配与逐层蒸馏。
+5. 近邻：Patient KD、Every Expert Matters、B-Distill。
+6. 有中间层MSE与最终预测分布蒸馏；非本项目同容量原生单块重学。
+7. 限制：未读全文，不能据摘要判断跨训练职责实验。
+8. 动作：层函数监督是已有工具。
+9. 对我们：E135用MSE作为科学控制，不认领逐层蒸馏首创。

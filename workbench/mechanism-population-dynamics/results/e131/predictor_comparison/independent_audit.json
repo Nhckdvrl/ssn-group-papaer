@@ -1,0 +1,1012 @@
+{
+  "experiment": "E131",
+  "status": "complete",
+  "audited_steps": [
+    5120,
+    24576
+  ],
+  "terminal_62500_not_audited_yet": true,
+  "method": "Independent NumPy float64 KL/reverse/top1/NLL directly from full FP32 POS log probabilities; exact fixed plan population and equal-word averaging/bootstrap seed51025 verified. No primary metric/statistic helpers imported.",
+  "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+  "scope": "Supplementary measured distributions; finite KL is not an eligibility gate. POS genuine full-distribution recomputation; Dolma saved-token-metric summation only. Word/file CI is fixed-model measurement uncertainty, not independent training uncertainty.",
+  "steps": {
+    "5120": {
+      "status": "complete",
+      "primary_result_sha256": "8dfff3f44b933babb3610d4537720c561564c0ea7ed16d128b7f7c4b6596764d",
+      "raw_sha256_verified": true,
+      "POS_input_targets_last_order_verified": true,
+      "POS": {
+        "n_items": 512,
+        "words": 48,
+        "weighting": "equal word means",
+        "max_probability_normalization_error": 8.294175606327059e-07,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.016808508014087776,
+            "ci95": [
+              0.013830777968541109,
+              0.020356671771401946
+            ],
+            "primary_mean_abs_difference": 6.586270279163031e-10,
+            "primary_ci95_max_abs_difference": 9.582895137139058e-10
+          },
+          "teacher_nll": {
+            "mean": 2.2891866403493517,
+            "ci95": [
+              2.036311732595069,
+              2.5288834051667095
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "student_nll": {
+            "mean": 2.2890935678770954,
+            "ci95": [
+              2.034999411046952,
+              2.529703266065414
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "nll_gap": {
+            "mean": -9.307247225495562e-05,
+            "ci95": [
+              -0.018815727905274388,
+              0.01815955848294203
+            ],
+            "primary_mean_abs_difference": 6.208817257525277e-11,
+            "primary_ci95_max_abs_difference": 1.5522062801753833e-12
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.017070108679476524,
+            "ci95": [
+              0.013923148128131392,
+              0.02067895712786376
+            ],
+            "primary_mean_abs_difference": 2.216825716050419e-10,
+            "primary_ci95_max_abs_difference": 6.928665766126052e-10
+          },
+          "top1_agreement": {
+            "mean": 0.9671547984967103,
+            "ci95": [
+              0.9527004560322575,
+              0.9823801124835132
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          }
+        },
+        "per_word": {
+          "address": {
+            "kl_teacher_to_student": 0.008557193067755535,
+            "teacher_nll": 4.5254847432176275,
+            "student_nll": 4.57291195789973,
+            "nll_gap": 0.0474272146821022,
+            "kl_student_to_teacher": 0.008542635927718947,
+            "top1_agreement": 1.0
+          },
+          "answer": {
+            "kl_teacher_to_student": 0.013403990470332784,
+            "teacher_nll": 1.8779227340763265,
+            "student_nll": 1.9206494905731895,
+            "nll_gap": 0.04272675649686293,
+            "kl_student_to_teacher": 0.013424580370965515,
+            "top1_agreement": 1.0
+          },
+          "book": {
+            "kl_teacher_to_student": 0.014349596280085124,
+            "teacher_nll": 2.7946404933929445,
+            "student_nll": 2.8555076360702514,
+            "nll_gap": 0.060867142677307126,
+            "kl_student_to_teacher": 0.013790699437156443,
+            "top1_agreement": 1.0
+          },
+          "call": {
+            "kl_teacher_to_student": 0.013638959852918698,
+            "teacher_nll": 2.5022579232851663,
+            "student_nll": 2.4606152772903442,
+            "nll_gap": -0.04164264599482218,
+            "kl_student_to_teacher": 0.013723958861628771,
+            "top1_agreement": 0.9166666666666666
+          },
+          "care": {
+            "kl_teacher_to_student": 0.00712242693924472,
+            "teacher_nll": 1.3761679522693158,
+            "student_nll": 1.4142739257775248,
+            "nll_gap": 0.03810597350820899,
+            "kl_student_to_teacher": 0.007021935014373611,
+            "top1_agreement": 1.0
+          },
+          "change": {
+            "kl_teacher_to_student": 0.014241444260484709,
+            "teacher_nll": 3.9106026725335554,
+            "student_nll": 3.9479993148283525,
+            "nll_gap": 0.03739664229479703,
+            "kl_student_to_teacher": 0.014472278717883445,
+            "top1_agreement": 0.9090909090909091
+          },
+          "charge": {
+            "kl_teacher_to_student": 0.011226407472141103,
+            "teacher_nll": 1.337973759255626,
+            "student_nll": 1.3220982863144441,
+            "nll_gap": -0.015875472941181877,
+            "kl_student_to_teacher": 0.011261431374544342,
+            "top1_agreement": 1.0
+          },
+          "check": {
+            "kl_teacher_to_student": 0.013444958249202643,
+            "teacher_nll": 1.748577815790971,
+            "student_nll": 1.8017911265293758,
+            "nll_gap": 0.053213310738404594,
+            "kl_student_to_teacher": 0.013463486628587935,
+            "top1_agreement": 1.0
+          },
+          "contact": {
+            "kl_teacher_to_student": 0.014221497570696733,
+            "teacher_nll": 2.021917339000437,
+            "student_nll": 2.117241414056884,
+            "nll_gap": 0.09532407505644692,
+            "kl_student_to_teacher": 0.014365959984572216,
+            "top1_agreement": 0.8888888888888888
+          },
+          "copy": {
+            "kl_teacher_to_student": 0.005046270279602279,
+            "teacher_nll": 1.2010338476393372,
+            "student_nll": 1.217948135221377,
+            "nll_gap": 0.016914287582039833,
+            "kl_student_to_teacher": 0.0049619693208134115,
+            "top1_agreement": 1.0
+          },
+          "cost": {
+            "kl_teacher_to_student": 0.011265127243080484,
+            "teacher_nll": 2.147938709367405,
+            "student_nll": 2.2010515711524268,
+            "nll_gap": 0.0531128617850217,
+            "kl_student_to_teacher": 0.011423599861441676,
+            "top1_agreement": 1.0
+          },
+          "cover": {
+            "kl_teacher_to_student": 0.0087470882802847,
+            "teacher_nll": 2.1899710529251024,
+            "student_nll": 2.212653291877359,
+            "nll_gap": 0.02268223895225674,
+            "kl_student_to_teacher": 0.008829459548898308,
+            "top1_agreement": 1.0
+          },
+          "deal": {
+            "kl_teacher_to_student": 0.007858870027587613,
+            "teacher_nll": 1.841655616249357,
+            "student_nll": 1.786532957639013,
+            "nll_gap": -0.05512265861034393,
+            "kl_student_to_teacher": 0.007786109080134226,
+            "top1_agreement": 1.0
+          },
+          "end": {
+            "kl_teacher_to_student": 0.016180888137426633,
+            "teacher_nll": 2.377905272213476,
+            "student_nll": 2.310591070181025,
+            "nll_gap": -0.06731420203245111,
+            "kl_student_to_teacher": 0.016042577594279506,
+            "top1_agreement": 1.0
+          },
+          "face": {
+            "kl_teacher_to_student": 0.04860435174177767,
+            "teacher_nll": 4.30794720351696,
+            "student_nll": 4.471439385414124,
+            "nll_gap": 0.16349218189716339,
+            "kl_student_to_teacher": 0.058845916394194266,
+            "top1_agreement": 1.0
+          },
+          "fall": {
+            "kl_teacher_to_student": 0.0797608186231691,
+            "teacher_nll": 2.7437461401735033,
+            "student_nll": 2.6108212087835585,
+            "nll_gap": -0.1329249313899449,
+            "kl_student_to_teacher": 0.07359003574179598,
+            "top1_agreement": 0.8571428571428571
+          },
+          "help": {
+            "kl_teacher_to_student": 0.01298709192554378,
+            "teacher_nll": 3.7467742617009208,
+            "student_nll": 3.729896526550874,
+            "nll_gap": -0.016877735150046647,
+            "kl_student_to_teacher": 0.0126332040232166,
+            "top1_agreement": 1.0
+          },
+          "hope": {
+            "kl_teacher_to_student": 0.024976178272133897,
+            "teacher_nll": 3.850000875336783,
+            "student_nll": 3.7390711988721574,
+            "nll_gap": -0.11092967646462577,
+            "kl_student_to_teacher": 0.024242221797193923,
+            "top1_agreement": 1.0
+          },
+          "look": {
+            "kl_teacher_to_student": 0.017975785420093055,
+            "teacher_nll": 1.7863565796675782,
+            "student_nll": 1.7994096694746986,
+            "nll_gap": 0.013053089807120463,
+            "kl_student_to_teacher": 0.01703390910238037,
+            "top1_agreement": 1.0
+          },
+          "love": {
+            "kl_teacher_to_student": 0.01819064003254553,
+            "teacher_nll": 2.0542569896671923,
+            "student_nll": 2.027162072341889,
+            "nll_gap": -0.027094917325302958,
+            "kl_student_to_teacher": 0.018226043259860433,
+            "top1_agreement": 0.95
+          },
+          "means": {
+            "kl_teacher_to_student": 0.019084954361867162,
+            "teacher_nll": 1.5849334553760641,
+            "student_nll": 1.5759460281799822,
+            "nll_gap": -0.008987427196081947,
+            "kl_student_to_teacher": 0.02114063820809786,
+            "top1_agreement": 0.9411764705882353
+          },
+          "meeting": {
+            "kl_teacher_to_student": 0.011354820866200065,
+            "teacher_nll": 2.5601418217023215,
+            "student_nll": 2.4677802274624505,
+            "nll_gap": -0.09236159423987071,
+            "kl_student_to_teacher": 0.011435537407542206,
+            "top1_agreement": 1.0
+          },
+          "move": {
+            "kl_teacher_to_student": 0.011668323174346986,
+            "teacher_nll": 2.8430358700454237,
+            "student_nll": 2.849908860772848,
+            "nll_gap": 0.006872990727424621,
+            "kl_student_to_teacher": 0.011457546265468872,
+            "top1_agreement": 0.8
+          },
+          "name": {
+            "kl_teacher_to_student": 0.028908430721399477,
+            "teacher_nll": 2.9572185706347227,
+            "student_nll": 2.970881092362106,
+            "nll_gap": 0.013662521727383137,
+            "kl_student_to_teacher": 0.02968563142609339,
+            "top1_agreement": 0.875
+          },
+          "need": {
+            "kl_teacher_to_student": 0.007082822403809948,
+            "teacher_nll": 1.089899969100952,
+            "student_nll": 1.0734113812446595,
+            "nll_gap": -0.016488587856292723,
+            "kl_student_to_teacher": 0.006891800275669799,
+            "top1_agreement": 1.0
+          },
+          "needs": {
+            "kl_teacher_to_student": 0.0097284931106296,
+            "teacher_nll": 0.7813407303765416,
+            "student_nll": 0.8129906617105007,
+            "nll_gap": 0.0316499313339591,
+            "kl_student_to_teacher": 0.01022524719499243,
+            "top1_agreement": 1.0
+          },
+          "note": {
+            "kl_teacher_to_student": 0.01718522073349756,
+            "teacher_nll": 1.9855607487261295,
+            "student_nll": 2.018351949751377,
+            "nll_gap": 0.032791201025247574,
+            "kl_student_to_teacher": 0.016673420734648007,
+            "top1_agreement": 1.0
+          },
+          "offer": {
+            "kl_teacher_to_student": 0.009135253672748497,
+            "teacher_nll": 3.1182192912591353,
+            "student_nll": 3.0791118650564124,
+            "nll_gap": -0.03910742620272296,
+            "kl_student_to_teacher": 0.009071247655190068,
+            "top1_agreement": 0.9285714285714286
+          },
+          "order": {
+            "kl_teacher_to_student": 0.011617765932430522,
+            "teacher_nll": 2.380786618934228,
+            "student_nll": 2.347322809581573,
+            "nll_gap": -0.03346380935265468,
+            "kl_student_to_teacher": 0.011370164558103694,
+            "top1_agreement": 0.9230769230769231
+          },
+          "place": {
+            "kl_teacher_to_student": 0.023714260532921264,
+            "teacher_nll": 3.2464996622158933,
+            "student_nll": 3.0894169486485996,
+            "nll_gap": -0.1570827135672936,
+            "kl_student_to_teacher": 0.02722584017660656,
+            "top1_agreement": 0.9230769230769231
+          },
+          "plan": {
+            "kl_teacher_to_student": 0.005532213519692783,
+            "teacher_nll": 1.1996962279081345,
+            "student_nll": 1.1801678923269112,
+            "nll_gap": -0.01952833558122317,
+            "kl_student_to_teacher": 0.005646279750334746,
+            "top1_agreement": 1.0
+          },
+          "post": {
+            "kl_teacher_to_student": 0.018842315441549455,
+            "teacher_nll": 2.793568961895429,
+            "student_nll": 2.8658287204228916,
+            "nll_gap": 0.0722597585274623,
+            "kl_student_to_teacher": 0.01819526616246022,
+            "top1_agreement": 0.9230769230769231
+          },
+          "return": {
+            "kl_teacher_to_student": 0.021324261492422652,
+            "teacher_nll": 2.614772659726441,
+            "student_nll": 2.5505436141043902,
+            "nll_gap": -0.06422904562205076,
+            "kl_student_to_teacher": 0.02235786361024687,
+            "top1_agreement": 0.85
+          },
+          "review": {
+            "kl_teacher_to_student": 0.00977851312943538,
+            "teacher_nll": 1.7251122114913804,
+            "student_nll": 1.7121693257774626,
+            "nll_gap": -0.012942885713917869,
+            "kl_student_to_teacher": 0.010068705584986641,
+            "top1_agreement": 0.9285714285714286
+          },
+          "run": {
+            "kl_teacher_to_student": 0.018552597764708793,
+            "teacher_nll": 3.6205040574487715,
+            "student_nll": 3.528161603750454,
+            "nll_gap": -0.09234245369831721,
+            "kl_student_to_teacher": 0.018414030644662054,
+            "top1_agreement": 1.0
+          },
+          "set": {
+            "kl_teacher_to_student": 0.015226490612556104,
+            "teacher_nll": 1.6463456209748983,
+            "student_nll": 1.5982864880087702,
+            "nll_gap": -0.048059132966128265,
+            "kl_student_to_teacher": 0.015138188221339078,
+            "top1_agreement": 0.9090909090909091
+          },
+          "show": {
+            "kl_teacher_to_student": 0.014881089485157362,
+            "teacher_nll": 1.807210975991828,
+            "student_nll": 1.8353623981986726,
+            "nll_gap": 0.028151422206844603,
+            "kl_student_to_teacher": 0.01499764830258644,
+            "top1_agreement": 1.0
+          },
+          "shows": {
+            "kl_teacher_to_student": 0.007017611663775242,
+            "teacher_nll": 1.8517506726913981,
+            "student_nll": 1.8700501471757889,
+            "nll_gap": 0.018299474484390683,
+            "kl_student_to_teacher": 0.007192697202574225,
+            "top1_agreement": 1.0
+          },
+          "sign": {
+            "kl_teacher_to_student": 0.02029882260262187,
+            "teacher_nll": 2.365151495418765,
+            "student_nll": 2.3920380608602003,
+            "nll_gap": 0.026886565441435032,
+            "kl_student_to_teacher": 0.020347896098718423,
+            "top1_agreement": 1.0
+          },
+          "start": {
+            "kl_teacher_to_student": 0.012642533156844517,
+            "teacher_nll": 1.8693087665596977,
+            "student_nll": 1.8433821583166718,
+            "nll_gap": -0.02592660824302584,
+            "kl_student_to_teacher": 0.013126676979330369,
+            "top1_agreement": 1.0
+          },
+          "stay": {
+            "kl_teacher_to_student": 0.022043777631398656,
+            "teacher_nll": 1.952608409523964,
+            "student_nll": 1.89908264875412,
+            "nll_gap": -0.053525760769844055,
+            "kl_student_to_teacher": 0.02350294005810094,
+            "top1_agreement": 1.0
+          },
+          "support": {
+            "kl_teacher_to_student": 0.01959472269448144,
+            "teacher_nll": 2.2198477604736886,
+            "student_nll": 2.132021273796757,
+            "nll_gap": -0.08782648667693138,
+            "kl_student_to_teacher": 0.022053946844441664,
+            "top1_agreement": 1.0
+          },
+          "thought": {
+            "kl_teacher_to_student": 0.032563218900970435,
+            "teacher_nll": 3.133260440826416,
+            "student_nll": 3.2645593762397764,
+            "nll_gap": 0.1312989354133606,
+            "kl_student_to_teacher": 0.03576575268504765,
+            "top1_agreement": 1.0
+          },
+          "travel": {
+            "kl_teacher_to_student": 0.020134896139098118,
+            "teacher_nll": 1.8739633560180664,
+            "student_nll": 2.049417495727539,
+            "nll_gap": 0.17545413970947266,
+            "kl_student_to_teacher": 0.01824826995784908,
+            "top1_agreement": 1.0
+          },
+          "use": {
+            "kl_teacher_to_student": 0.012259090926009205,
+            "teacher_nll": 1.0289501214089494,
+            "student_nll": 1.046249596402049,
+            "nll_gap": 0.017299474993099768,
+            "kl_student_to_teacher": 0.011414102999960039,
+            "top1_agreement": 1.0
+          },
+          "visit": {
+            "kl_teacher_to_student": 0.015986846532339328,
+            "teacher_nll": 1.9668208181858062,
+            "student_nll": 1.9587389081716537,
+            "nll_gap": -0.008081910014152528,
+            "kl_student_to_teacher": 0.015921326758159972,
+            "top1_agreement": 0.9
+          },
+          "work": {
+            "kl_teacher_to_student": 0.012825802159162179,
+            "teacher_nll": 1.34133444968611,
+            "student_nll": 1.3657189186972876,
+            "nll_gap": 0.02438446901117762,
+            "kl_student_to_teacher": 0.01245415718569917,
+            "top1_agreement": 1.0
+          },
+          "works": {
+            "kl_teacher_to_student": 0.016023651168032046,
+            "teacher_nll": 1.9799830108880996,
+            "student_nll": 1.9799252897500992,
+            "nll_gap": -5.772113800048828e-05,
+            "kl_student_to_teacher": 0.015660381624322844,
+            "top1_agreement": 1.0
+          }
+        },
+        "ordered_NLL_vs_original_capture_max_abs_difference": 0.0,
+        "permuted_NLL_vs_original_capture_max_abs_difference": 0.0
+      },
+      "Dolma": {
+        "tokens": 262144,
+        "n_sequences": 512,
+        "max_per_sequence_sum_difference_from_saved_rows": 2.2737367544323206e-13,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.024202271936602952,
+            "total": 6344.480374548846,
+            "primary_mean_abs_difference": 6.938893903907228e-18
+          },
+          "teacher_nll": {
+            "mean": 2.583385182184627,
+            "total": 677218.9251986077,
+            "primary_mean_abs_difference": 3.9968028886505635e-15
+          },
+          "student_nll": {
+            "mean": 2.583051756576138,
+            "total": 677131.5196758953,
+            "primary_mean_abs_difference": 4.440892098500626e-16
+          },
+          "nll_gap": {
+            "mean": -0.00033342561296878515,
+            "total": -87.40552388608921,
+            "primary_mean_abs_difference": 0.0
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.024099539073333894,
+            "total": 6317.549570840041,
+            "primary_mean_abs_difference": 1.3877787807814457e-17
+          },
+          "top1_agreement": {
+            "mean": 0.9244346618652344,
+            "total": 242335.0,
+            "primary_mean_abs_difference": 0.0
+          }
+        },
+        "legacy_native_NLL_differences": {
+          "ordered": -3.1086244689504383e-15,
+          "permuted": -8.881784197001252e-16
+        },
+        "scope": "Independent aggregation of saved per-token metrics only; full Dolma vocabulary log probabilities were not stored, so this does not independently reconstruct token KL."
+      },
+      "common_segment_input_hash_equal": true
+    },
+    "24576": {
+      "status": "complete",
+      "primary_result_sha256": "1b315456c4b38430367c811b6084583fe4b8c874a12107385460dad5e217a74f",
+      "raw_sha256_verified": true,
+      "POS_input_targets_last_order_verified": true,
+      "POS": {
+        "n_items": 512,
+        "words": 48,
+        "weighting": "equal word means",
+        "max_probability_normalization_error": 7.27445438553076e-07,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.015966512117266945,
+            "ci95": [
+              0.012718367616540745,
+              0.019877060957728253
+            ],
+            "primary_mean_abs_difference": 1.0341300801797182e-09,
+            "primary_ci95_max_abs_difference": 1.33143444880357e-09
+          },
+          "teacher_nll": {
+            "mean": 2.267526910914266,
+            "ci95": [
+              2.018855286952723,
+              2.5111111038625147
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "student_nll": {
+            "mean": 2.2817652970561677,
+            "ci95": [
+              2.0336551129776117,
+              2.519423180629817
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "nll_gap": {
+            "mean": 0.01423838614190123,
+            "ci95": [
+              -0.004897154486588281,
+              0.03361798898365702
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.01696979165662044,
+            "ci95": [
+              0.01262595791502445,
+              0.022675647962109392
+            ],
+            "primary_mean_abs_difference": 3.913465732030552e-11,
+            "primary_ci95_max_abs_difference": 6.629519641587756e-10
+          },
+          "top1_agreement": {
+            "mean": 0.9368106634650751,
+            "ci95": [
+              0.9134200820115339,
+              0.9574657066109269
+            ],
+            "primary_mean_abs_difference": 0.0,
+            "primary_ci95_max_abs_difference": 0.0
+          }
+        },
+        "per_word": {
+          "address": {
+            "kl_teacher_to_student": 0.008348355628572234,
+            "teacher_nll": 4.585829856495063,
+            "student_nll": 4.672036970655124,
+            "nll_gap": 0.08620711416006088,
+            "kl_student_to_teacher": 0.008410293350673925,
+            "top1_agreement": 1.0
+          },
+          "answer": {
+            "kl_teacher_to_student": 0.012805335303741954,
+            "teacher_nll": 1.855382046916268,
+            "student_nll": 1.8898596899075941,
+            "nll_gap": 0.03447764299132607,
+            "kl_student_to_teacher": 0.012296469189680624,
+            "top1_agreement": 1.0
+          },
+          "book": {
+            "kl_teacher_to_student": 0.011205936775367038,
+            "teacher_nll": 2.64640154838562,
+            "student_nll": 2.7114086151123047,
+            "nll_gap": 0.06500706672668458,
+            "kl_student_to_teacher": 0.011467001162679269,
+            "top1_agreement": 1.0
+          },
+          "call": {
+            "kl_teacher_to_student": 0.017431491185474973,
+            "teacher_nll": 2.5234084775050483,
+            "student_nll": 2.473660131295522,
+            "nll_gap": -0.04974834620952606,
+            "kl_student_to_teacher": 0.017729044439569935,
+            "top1_agreement": 0.9166666666666666
+          },
+          "care": {
+            "kl_teacher_to_student": 0.0082168980564662,
+            "teacher_nll": 1.3606025309767573,
+            "student_nll": 1.3499590747989714,
+            "nll_gap": -0.010643456177785993,
+            "kl_student_to_teacher": 0.008513843137655616,
+            "top1_agreement": 1.0
+          },
+          "change": {
+            "kl_teacher_to_student": 0.012827112267629105,
+            "teacher_nll": 3.8958049795844336,
+            "student_nll": 3.9094744974916633,
+            "nll_gap": 0.013669517907229338,
+            "kl_student_to_teacher": 0.012944660279720115,
+            "top1_agreement": 0.8181818181818182
+          },
+          "charge": {
+            "kl_teacher_to_student": 0.011234284108708194,
+            "teacher_nll": 1.3806165273893962,
+            "student_nll": 1.40648299862038,
+            "nll_gap": 0.025866471230983734,
+            "kl_student_to_teacher": 0.011047542332948062,
+            "top1_agreement": 0.9090909090909091
+          },
+          "check": {
+            "kl_teacher_to_student": 0.010118510976577313,
+            "teacher_nll": 1.7376344874501228,
+            "student_nll": 1.751670068750779,
+            "nll_gap": 0.014035581300656,
+            "kl_student_to_teacher": 0.010160256544239405,
+            "top1_agreement": 1.0
+          },
+          "contact": {
+            "kl_teacher_to_student": 0.014547576681212019,
+            "teacher_nll": 2.03143988798062,
+            "student_nll": 2.0433683411942587,
+            "nll_gap": 0.01192845321363873,
+            "kl_student_to_teacher": 0.013622662509166807,
+            "top1_agreement": 1.0
+          },
+          "copy": {
+            "kl_teacher_to_student": 0.013762624581210744,
+            "teacher_nll": 1.1425321174319834,
+            "student_nll": 1.218894368968904,
+            "nll_gap": 0.07636225153692067,
+            "kl_student_to_teacher": 0.01254818818623317,
+            "top1_agreement": 1.0
+          },
+          "cost": {
+            "kl_teacher_to_student": 0.012210607865361213,
+            "teacher_nll": 2.127939997748895,
+            "student_nll": 2.147182284431024,
+            "nll_gap": 0.019242286682128906,
+            "kl_student_to_teacher": 0.012336010560008522,
+            "top1_agreement": 0.8181818181818182
+          },
+          "cover": {
+            "kl_teacher_to_student": 0.006397223054104258,
+            "teacher_nll": 2.3126981239765882,
+            "student_nll": 2.316193106584251,
+            "nll_gap": 0.0034949826076626778,
+            "kl_student_to_teacher": 0.006541849362415733,
+            "top1_agreement": 0.875
+          },
+          "deal": {
+            "kl_teacher_to_student": 0.0051729183280174425,
+            "teacher_nll": 1.7682503078665053,
+            "student_nll": 1.7537889991487776,
+            "nll_gap": -0.014461308717727661,
+            "kl_student_to_teacher": 0.005248051515439762,
+            "top1_agreement": 1.0
+          },
+          "end": {
+            "kl_teacher_to_student": 0.018281018526822464,
+            "teacher_nll": 2.2081236108871445,
+            "student_nll": 2.157430083025247,
+            "nll_gap": -0.05069352786189744,
+            "kl_student_to_teacher": 0.018806100047833483,
+            "top1_agreement": 0.8571428571428571
+          },
+          "face": {
+            "kl_teacher_to_student": 0.01041147365238186,
+            "teacher_nll": 4.3116561532020565,
+            "student_nll": 4.264654141664505,
+            "nll_gap": -0.04700201153755188,
+            "kl_student_to_teacher": 0.009654865720426434,
+            "top1_agreement": 1.0
+          },
+          "fall": {
+            "kl_teacher_to_student": 0.07253132324019666,
+            "teacher_nll": 2.4022216796875,
+            "student_nll": 2.712585089462144,
+            "nll_gap": 0.31036340977464405,
+            "kl_student_to_teacher": 0.07658585560157681,
+            "top1_agreement": 0.7142857142857143
+          },
+          "help": {
+            "kl_teacher_to_student": 0.017351115502661243,
+            "teacher_nll": 3.7716530405450612,
+            "student_nll": 3.7720647561363876,
+            "nll_gap": 0.00041171559132635593,
+            "kl_student_to_teacher": 0.01667495686787281,
+            "top1_agreement": 1.0
+          },
+          "hope": {
+            "kl_teacher_to_student": 0.01612879496036167,
+            "teacher_nll": 3.6586913551603044,
+            "student_nll": 3.636253935950143,
+            "nll_gap": -0.022437419210161482,
+            "kl_student_to_teacher": 0.016170206820975006,
+            "top1_agreement": 1.0
+          },
+          "look": {
+            "kl_teacher_to_student": 0.010088165761485175,
+            "teacher_nll": 1.766665694808277,
+            "student_nll": 1.7764708838270356,
+            "nll_gap": 0.009805189018758634,
+            "kl_student_to_teacher": 0.00966735588129897,
+            "top1_agreement": 1.0
+          },
+          "love": {
+            "kl_teacher_to_student": 0.02574586736773841,
+            "teacher_nll": 2.0700577006675305,
+            "student_nll": 2.045996460132301,
+            "nll_gap": -0.024061240535229445,
+            "kl_student_to_teacher": 0.027330490456885355,
+            "top1_agreement": 0.95
+          },
+          "means": {
+            "kl_teacher_to_student": 0.022858307960873202,
+            "teacher_nll": 1.5035414577406996,
+            "student_nll": 1.5474908128380775,
+            "nll_gap": 0.043949355097378004,
+            "kl_student_to_teacher": 0.023950803618871048,
+            "top1_agreement": 0.9411764705882353
+          },
+          "meeting": {
+            "kl_teacher_to_student": 0.009779280257374626,
+            "teacher_nll": 2.4886261324087777,
+            "student_nll": 2.492238293091456,
+            "nll_gap": 0.0036121606826782227,
+            "kl_student_to_teacher": 0.010083014582886832,
+            "top1_agreement": 1.0
+          },
+          "move": {
+            "kl_teacher_to_student": 0.012130462809492764,
+            "teacher_nll": 2.8611177533864973,
+            "student_nll": 2.797728407755494,
+            "nll_gap": -0.06338934563100337,
+            "kl_student_to_teacher": 0.012080701617076542,
+            "top1_agreement": 1.0
+          },
+          "name": {
+            "kl_teacher_to_student": 0.0758816549402814,
+            "teacher_nll": 2.8313953736796975,
+            "student_nll": 3.0205391393974423,
+            "nll_gap": 0.18914376571774483,
+            "kl_student_to_teacher": 0.12295093582493659,
+            "top1_agreement": 0.875
+          },
+          "need": {
+            "kl_teacher_to_student": 0.01392889161702722,
+            "teacher_nll": 1.0521384462714196,
+            "student_nll": 1.078336553275585,
+            "nll_gap": 0.02619810700416565,
+            "kl_student_to_teacher": 0.014121263535180723,
+            "top1_agreement": 0.9
+          },
+          "needs": {
+            "kl_teacher_to_student": 0.009960234230014171,
+            "teacher_nll": 0.844838697463274,
+            "student_nll": 0.8194152964279056,
+            "nll_gap": -0.025423401035368443,
+            "kl_student_to_teacher": 0.00914480338769825,
+            "top1_agreement": 1.0
+          },
+          "note": {
+            "kl_teacher_to_student": 0.015472151760144834,
+            "teacher_nll": 1.9854665976017714,
+            "student_nll": 1.9882899038493633,
+            "nll_gap": 0.0028233062475919724,
+            "kl_student_to_teacher": 0.016045839831210527,
+            "top1_agreement": 0.875
+          },
+          "offer": {
+            "kl_teacher_to_student": 0.012619427976910153,
+            "teacher_nll": 3.0710872800222466,
+            "student_nll": 3.040810689330101,
+            "nll_gap": -0.030276590692145482,
+            "kl_student_to_teacher": 0.013530896810132255,
+            "top1_agreement": 0.9285714285714286
+          },
+          "order": {
+            "kl_teacher_to_student": 0.014442056396337645,
+            "teacher_nll": 2.2872823167305727,
+            "student_nll": 2.322444192492045,
+            "nll_gap": 0.03516187576147226,
+            "kl_student_to_teacher": 0.014018030159759607,
+            "top1_agreement": 0.9230769230769231
+          },
+          "place": {
+            "kl_teacher_to_student": 0.01213793654642422,
+            "teacher_nll": 3.151622167000404,
+            "student_nll": 3.158292678686289,
+            "nll_gap": 0.006670511685884916,
+            "kl_student_to_teacher": 0.01226936726970725,
+            "top1_agreement": 0.9230769230769231
+          },
+          "plan": {
+            "kl_teacher_to_student": 0.0047897496550222485,
+            "teacher_nll": 1.1736446221669514,
+            "student_nll": 1.1313470900058746,
+            "nll_gap": -0.042297532161076866,
+            "kl_student_to_teacher": 0.0047846545293084766,
+            "top1_agreement": 1.0
+          },
+          "post": {
+            "kl_teacher_to_student": 0.01798429943294625,
+            "teacher_nll": 2.8002483661358175,
+            "student_nll": 2.909884819617638,
+            "nll_gap": 0.10963645348182091,
+            "kl_student_to_teacher": 0.01821642205376236,
+            "top1_agreement": 1.0
+          },
+          "return": {
+            "kl_teacher_to_student": 0.013478701101536678,
+            "teacher_nll": 2.571458797901869,
+            "student_nll": 2.5018515933305023,
+            "nll_gap": -0.06960720457136631,
+            "kl_student_to_teacher": 0.013397894463624266,
+            "top1_agreement": 0.9
+          },
+          "review": {
+            "kl_teacher_to_student": 0.010707711023067782,
+            "teacher_nll": 1.7079619797212737,
+            "student_nll": 1.7351629925625665,
+            "nll_gap": 0.02720101284129279,
+            "kl_student_to_teacher": 0.01109103049331193,
+            "top1_agreement": 1.0
+          },
+          "run": {
+            "kl_teacher_to_student": 0.016287092138551968,
+            "teacher_nll": 3.543166638869378,
+            "student_nll": 3.5261788059853845,
+            "nll_gap": -0.016987832883993786,
+            "kl_student_to_teacher": 0.016173446840138272,
+            "top1_agreement": 0.7777777777777778
+          },
+          "set": {
+            "kl_teacher_to_student": 0.007790753587584668,
+            "teacher_nll": 1.6106167146089403,
+            "student_nll": 1.7257157765667548,
+            "nll_gap": 0.11509906195781448,
+            "kl_student_to_teacher": 0.007784241646283582,
+            "top1_agreement": 1.0
+          },
+          "show": {
+            "kl_teacher_to_student": 0.012383986901467787,
+            "teacher_nll": 1.838120541668364,
+            "student_nll": 1.85279612056911,
+            "nll_gap": 0.014675578900745936,
+            "kl_student_to_teacher": 0.012285786533362738,
+            "top1_agreement": 0.9285714285714286
+          },
+          "shows": {
+            "kl_teacher_to_student": 0.013009616349208405,
+            "teacher_nll": 1.9719465457730823,
+            "student_nll": 2.018174923956394,
+            "nll_gap": 0.04622837818331189,
+            "kl_student_to_teacher": 0.013006823641446518,
+            "top1_agreement": 0.7777777777777778
+          },
+          "sign": {
+            "kl_teacher_to_student": 0.023627714137995727,
+            "teacher_nll": 2.456982872702859,
+            "student_nll": 2.337321898476644,
+            "nll_gap": -0.11966097422621468,
+            "kl_student_to_teacher": 0.024989320800669148,
+            "top1_agreement": 1.0
+          },
+          "start": {
+            "kl_teacher_to_student": 0.008115201543940723,
+            "teacher_nll": 1.7920472011901438,
+            "student_nll": 1.7888449712190777,
+            "nll_gap": -0.0032022299710661173,
+            "kl_student_to_teacher": 0.008039699837391591,
+            "top1_agreement": 0.875
+          },
+          "stay": {
+            "kl_teacher_to_student": 0.010007188546445587,
+            "teacher_nll": 2.004512345790863,
+            "student_nll": 1.9797894388437272,
+            "nll_gap": -0.024722906947135925,
+            "kl_student_to_teacher": 0.01011829751479778,
+            "top1_agreement": 1.0
+          },
+          "support": {
+            "kl_teacher_to_student": 0.01382188167044363,
+            "teacher_nll": 2.1730586352447667,
+            "student_nll": 2.1645120860387883,
+            "nll_gap": -0.008546549205978712,
+            "kl_student_to_teacher": 0.01310667015070401,
+            "top1_agreement": 0.9166666666666666
+          },
+          "thought": {
+            "kl_teacher_to_student": 0.02617490143430274,
+            "teacher_nll": 3.2705056071281433,
+            "student_nll": 3.2135394334793093,
+            "nll_gap": -0.05696617364883423,
+            "kl_student_to_teacher": 0.020863453941375166,
+            "top1_agreement": 0.8
+          },
+          "travel": {
+            "kl_teacher_to_student": 0.018944926719715895,
+            "teacher_nll": 2.013524055480957,
+            "student_nll": 2.080118179321289,
+            "nll_gap": 0.06659412384033203,
+            "kl_student_to_teacher": 0.019079369794514703,
+            "top1_agreement": 1.0
+          },
+          "use": {
+            "kl_teacher_to_student": 0.011822657992546913,
+            "teacher_nll": 0.9320618716172047,
+            "student_nll": 0.9881601966917515,
+            "nll_gap": 0.056098325074546866,
+            "kl_student_to_teacher": 0.01108466130383801,
+            "top1_agreement": 1.0
+          },
+          "visit": {
+            "kl_teacher_to_student": 0.010372002928641126,
+            "teacher_nll": 2.019364485144615,
+            "student_nll": 1.917490616440773,
+            "nll_gap": -0.10187386870384216,
+            "kl_student_to_teacher": 0.010419586653129524,
+            "top1_agreement": 0.9
+          },
+          "work": {
+            "kl_teacher_to_student": 0.015301567698617756,
+            "teacher_nll": 1.330466663899521,
+            "student_nll": 1.3586645845323801,
+            "nll_gap": 0.028197920632859072,
+            "kl_student_to_teacher": 0.015548135073889885,
+            "top1_agreement": 0.8666666666666667
+          },
+          "works": {
+            "kl_teacher_to_student": 0.017745590447807064,
+            "teacher_nll": 1.9968774318695068,
+            "student_nll": 2.0201602667570113,
+            "nll_gap": 0.02328283488750458,
+            "kl_student_to_teacher": 0.018609143641473782,
+            "top1_agreement": 1.0
+          }
+        },
+        "ordered_NLL_vs_original_capture_max_abs_difference": 0.0,
+        "permuted_NLL_vs_original_capture_max_abs_difference": 0.0
+      },
+      "Dolma": {
+        "tokens": 262144,
+        "n_sequences": 512,
+        "max_per_sequence_sum_difference_from_saved_rows": 2.2737367544323206e-13,
+        "metrics": {
+          "kl_teacher_to_student": {
+            "mean": 0.02756344327963775,
+            "total": 7225.591275097358,
+            "primary_mean_abs_difference": 0.0
+          },
+          "teacher_nll": {
+            "mean": 2.578059863462034,
+            "total": 675822.9248473909,
+            "primary_mean_abs_difference": 1.3322676295501878e-15
+          },
+          "student_nll": {
+            "mean": 2.578323067897392,
+            "total": 675891.9223108946,
+            "primary_mean_abs_difference": 3.1086244689504383e-15
+          },
+          "nll_gap": {
+            "mean": 0.00026320444789106664,
+            "total": 68.99746678795574,
+            "primary_mean_abs_difference": 1.0842021724855044e-19
+          },
+          "kl_student_to_teacher": {
+            "mean": 0.027667441431924338,
+            "total": 7252.853766730372,
+            "primary_mean_abs_difference": 1.3877787807814457e-17
+          },
+          "top1_agreement": {
+            "mean": 0.9216880798339844,
+            "total": 241615.0,
+            "primary_mean_abs_difference": 0.0
+          }
+        },
+        "legacy_native_NLL_differences": {
+          "ordered": 2.220446049250313e-15,
+          "permuted": -2.6645352591003757e-15
+        },
+        "scope": "Independent aggregation of saved per-token metrics only; full Dolma vocabulary log probabilities were not stored, so this does not independently reconstruct token KL."
+      },
+      "common_segment_input_hash_equal": true
+    }
+  }
+}

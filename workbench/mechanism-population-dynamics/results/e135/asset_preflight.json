@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-26",
+  "status": "ready_on_fvcrc21_local_nvme",
+  "purpose": "E135 native OLMoE asset stage only; no model load or training. Public-native Hcal is staged separately from controlled shared Hcal.",
+  "source_pin": {
+    "model_id": "OLMoE-1B-7B-0924",
+    "source_nfs_dir": "/home/xiang/mechpop_cache/hf_olmoe/main",
+    "target_local_nvme_dir": "/tmp/xiang-moe-20261025/olmoe",
+    "e122_provenance_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json",
+    "e122_provenance_sha256": "5cd3ae52c52c710637c71537f9674a5487007c38e99808eff82a8bf37ce9d91e",
+    "e122_git_base": "d05e996395310fffd0cfe9265e55f34f17cb72b1",
+    "config_sha256_from_prior_pin": "3643aa880d2f1c9b418156269ae791c73e5612d6b6b6fde0724d927cf89b6335",
+    "weight_shards_sha256_from_prior_pin": {
+      "model-00001-of-00003.safetensors": "5e3cff7e367794685c241169072c940d200918617d5e2813f1c387dff52d845e",
+      "model-00002-of-00003.safetensors": "15ef5c730ee3cfed7199498788cd2faf337203fc74b529625e7502cdd759f4a7",
+      "model-00003-of-00003.safetensors": "a9abac4ac1b55c9adabac721a02fa39971f103eea9a65c310972b1246de76e04"
+    },
+    "hf_revision_note": "Inspected records identify the OLMoE-1B-7B-0924 main asset snapshot and pin its shards/config by SHA256; no upstream HF commit hash was present in this record.",
+    "copy_method": "For nine OLMoE files, actual source SHA was streamed during copy and compared with the partial destination SHA before atomic rename; previously pinned files also matched E122/E134 recorded SHA. No existing target files were overwritten."
+  },
+  "model_config": {
+    "model_type": "olmoe",
+    "architectures": [
+      "OlmoeForCausalLM"
+    ],
+    "num_hidden_layers": 16,
+    "hidden_size": 2048,
+    "intermediate_size": 1024,
+    "num_experts": 64,
+    "num_experts_per_tok": 8,
+    "norm_topk_prob": false,
+    "vocab_size": 50304
+  },
+  "model_index": {
+    "path": "/tmp/xiang-moe-20261025/olmoe/model.safetensors.index.json",
+    "sha256": "0e2e1e0d8d357ac7af817cff28410c3dbad398f060c517a433e4076b2aae5579",
+    "size_bytes": 287214,
+    "weight_map_entries": 3219,
+    "shards": [
+      "model-00001-of-00003.safetensors",
+      "model-00002-of-00003.safetensors",
+      "model-00003-of-00003.safetensors"
+    ]
+  },
+  "tokenizer_comparison_with_dense": {
+    "files": {
+      "tokenizer.json": {
+        "sha256": "a094266ac6c4982efba277bc251349a5a6d6ad37efb39a2a90f53d8be2a40a40",
+        "byte_identical": true
+      },
+      "tokenizer_config.json": {
+        "sha256": "78a839c7851f14f9fb30e664c2b46166dc0628f2900679e5ec160656f702edff",
+        "byte_identical": true
+      },
+      "special_tokens_map.json": {
+        "sha256": "b77491e270c6fcc5b2ecf22370f7318a6a18d3cabea09ba7bab92e9bf12656c2",
+        "byte_identical": true
+      }
+    },
+    "all_byte_identical": true
+  },
+  "assets": {
+    "model-00001-of-00003.safetensors": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00001-of-00003.safetensors",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/model-00001-of-00003.safetensors",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "5e3cff7e367794685c241169072c940d200918617d5e2813f1c387dff52d845e",
+      "target_sha256": "5e3cff7e367794685c241169072c940d200918617d5e2813f1c387dff52d845e",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json#input_hashes.model-00001-of-00003.safetensors",
+      "size_bytes": 4997744872,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "model-00002-of-00003.safetensors": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00002-of-00003.safetensors",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/model-00002-of-00003.safetensors",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "15ef5c730ee3cfed7199498788cd2faf337203fc74b529625e7502cdd759f4a7",
+      "target_sha256": "15ef5c730ee3cfed7199498788cd2faf337203fc74b529625e7502cdd759f4a7",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json#input_hashes.model-00002-of-00003.safetensors",
+      "size_bytes": 4997235176,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "model-00003-of-00003.safetensors": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00003-of-00003.safetensors",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/model-00003-of-00003.safetensors",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "a9abac4ac1b55c9adabac721a02fa39971f103eea9a65c310972b1246de76e04",
+      "target_sha256": "a9abac4ac1b55c9adabac721a02fa39971f103eea9a65c310972b1246de76e04",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json#input_hashes.model-00003-of-00003.safetensors",
+      "size_bytes": 3843741912,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "config.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/config.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/config.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "3643aa880d2f1c9b418156269ae791c73e5612d6b6b6fde0724d927cf89b6335",
+      "target_sha256": "3643aa880d2f1c9b418156269ae791c73e5612d6b6b6fde0724d927cf89b6335",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json#input_hashes.config.json",
+      "size_bytes": 759,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "model.safetensors.index.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/model.safetensors.index.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/model.safetensors.index.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "0e2e1e0d8d357ac7af817cff28410c3dbad398f060c517a433e4076b2aae5579",
+      "target_sha256": "0e2e1e0d8d357ac7af817cff28410c3dbad398f060c517a433e4076b2aae5579",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/asset_preflight.json#olmoe_config.index",
+      "size_bytes": 287214,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "generation_config.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/generation_config.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/generation_config.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "d77272ffaa7e62a904e8e130bb25ab11585bd4a5026e388d6d682e4b82892ce2",
+      "target_sha256": "d77272ffaa7e62a904e8e130bb25ab11585bd4a5026e388d6d682e4b82892ce2",
+      "prior_pin": null,
+      "size_bytes": 120,
+      "copy_status": "copied_atomic_sha_verified; source/target SHA checked after copy"
+    },
+    "tokenizer.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/tokenizer.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/tokenizer.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "a094266ac6c4982efba277bc251349a5a6d6ad37efb39a2a90f53d8be2a40a40",
+      "target_sha256": "a094266ac6c4982efba277bc251349a5a6d6ad37efb39a2a90f53d8be2a40a40",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/asset_preflight.json#tokenizers.tokenizer.json",
+      "size_bytes": 2115417,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "tokenizer_config.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/tokenizer_config.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/tokenizer_config.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "78a839c7851f14f9fb30e664c2b46166dc0628f2900679e5ec160656f702edff",
+      "target_sha256": "78a839c7851f14f9fb30e664c2b46166dc0628f2900679e5ec160656f702edff",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/asset_preflight.json#tokenizers.tokenizer_config.json",
+      "size_bytes": 5372,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "special_tokens_map.json": {
+      "source_path": "/home/xiang/mechpop_cache/hf_olmoe/main/special_tokens_map.json",
+      "target_path": "/tmp/xiang-moe-20261025/olmoe/special_tokens_map.json",
+      "source_host": "fvcrc21",
+      "target_host": "fvcrc21",
+      "source_sha256": "b77491e270c6fcc5b2ecf22370f7318a6a18d3cabea09ba7bab92e9bf12656c2",
+      "target_sha256": "b77491e270c6fcc5b2ecf22370f7318a6a18d3cabea09ba7bab92e9bf12656c2",
+      "prior_pin": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/asset_preflight.json#tokenizers.special_tokens_map.json",
+      "size_bytes": 65,
+      "copy_status": "copied_atomic_sha_verified"
+    },
+    "public_native_Hcal.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.npy",
+      "target_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.npy",
+      "source_host": "fvcrc20",
+      "target_host": "fvcrc21",
+      "source_sha256": "c91f538cca8793722eaa7e08c11451ed05bb34053c77f37a5e84ebfc892d715f",
+      "target_sha256": "c91f538cca8793722eaa7e08c11451ed05bb34053c77f37a5e84ebfc892d715f",
+      "prior_pin": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.json#file_sha256",
+      "size_bytes": 67108992,
+      "copy_status": "scp_partial_SHA_verified_atomic_rename",
+      "asset_kind": "public_olmoe_native_Hcal"
+    },
+    "public_native_Hcal.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.json",
+      "target_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.json",
+      "source_host": "fvcrc20",
+      "target_host": "fvcrc21",
+      "source_sha256": "8e991b079bf73d4049d639ced678f3838aa2ad03ab05855be37f3d5449ba7bb5",
+      "target_sha256": "8e991b079bf73d4049d639ced678f3838aa2ad03ab05855be37f3d5449ba7bb5",
+      "prior_pin": null,
+      "size_bytes": 426,
+      "copy_status": "scp_partial_SHA_verified_atomic_rename",
+      "asset_kind": "public_olmoe_native_Hcal_metadata"
+    }
+  },
+  "node_snapshot": {
+    "hostname": "fvcrc21",
+    "gpus": [
+      {
+        "index": 0,
+        "uuid": "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a",
+        "memory_used": "15 MiB",
+        "utilization": "0 %"
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-93c03380-7c43-8dee-64ce-644eecbfc8b5",
+        "memory_used": "15 MiB",
+        "utilization": "0 %"
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-cb99eedd-50eb-24ae-7e44-f03277ee80fd",
+        "memory_used": "15 MiB",
+        "utilization": "0 %"
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-afa51c9c-2b51-5ed1-4782-5b9a1e7c5e7b",
+        "memory_used": "15 MiB",
+        "utilization": "0 %"
+      }
+    ],
+    "tmp_disk": {
+      "total_bytes": 959189221376,
+      "used_bytes": 153886126080,
+      "available_bytes": 805303095296
+    },
+    "ram": {
+      "total_bytes": 540714893312,
+      "available_bytes": 522830270464
+    },
+    "python": "3.12.0",
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "torch_cuda_available": true,
+    "cuda_device_count": 4
+  },
+  "planned_8m_cache": {
+    "estimated_size_bytes": 70000000000,
+    "estimated_size_text": "about 70 GB per task request",
+    "created": false,
+    "available_tmp_bytes_after_asset_stage": 805303095296
+  },
+  "reading_boundary": "Only file SHA/size, config/index/tokenizer metadata and CPU environment were checked. No model weights loaded; no GPU allocated; no 8M cache generated."
+}
