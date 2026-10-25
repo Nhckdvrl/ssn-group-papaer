@@ -1,0 +1,41 @@
+{
+  "status": "CPU_preflight_only",
+  "conditions": {
+    "teacher": {
+      "condition": "teacher",
+      "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+      "teacher_file_sha256": "1670aaed0a09c99eafc73d308bd6abf163400e70d380822115c736a89abd5e5a",
+      "storage": "bfloat16"
+    },
+    "copy": {
+      "condition": "copy",
+      "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+      "teacher_file_sha256": "1670aaed0a09c99eafc73d308bd6abf163400e70d380822115c736a89abd5e5a",
+      "storage": "float32 exact BF16-copy values"
+    },
+    "initial": {
+      "condition": "initial",
+      "step": 0,
+      "checkpoint": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+      "checkpoint_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+      "tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+      "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+      "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+      "storage": "float32"
+    },
+    "final": {
+      "condition": "final",
+      "step": 4096,
+      "checkpoint": "/tmp/xiang-moe-20261025/e135_student/checkpoint.pt",
+      "checkpoint_sha256": "45933dc5ed847c1e393b166c1108087d708e264e08f0530d166d0dcb251cd1d7",
+      "tensor_sha256": "ec27fb8063d7091d205e2d7fa613f49b170b40282c3355aaafbf25d75828c2fa",
+      "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+      "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+      "storage": "float32"
+    }
+  },
+  "items": 1024,
+  "held_items": 512,
+  "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+  "readout_sha256": "70274a65f532097cd4dfd017c4ce5f3def9496bb08d87e6b77b3267fc8e5690c"
+}

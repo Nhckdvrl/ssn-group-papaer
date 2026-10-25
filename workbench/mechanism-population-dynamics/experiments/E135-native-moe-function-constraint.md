@@ -1,6 +1,6 @@
 # E135：固定原生MoE块函数后，专家承担仍能不同吗（2026-10-26）
 
-- **状态：** RUNNING（原生缓存完整，单学生固定预算训练中）
+- **状态：** RUNNING（固定4096训练完整；四条件功能读数并行采集中）
 - **类型：** PILOT；单个学生的固定函数约束实验，不是自然预训练或性能修复网格。
 - **对应：** P22：不重现的指纹是否触及任务重要计算；E134显示受控bank与原生OLMoE的均匀分量必要性关系不同。
 - **问题（一句话）：** 给定原生联合预训练OLMoE L9的实际输入→输出函数，一个随机同容量MoE重学后，会恢复怎样的预测与专家作用对应？
@@ -51,3 +51,8 @@ MoEBERT已有逐层MSE蒸馏，Every Expert Matters已有MoE教师研究，B-Dis
 
 - 缓存完整，manifest SHA `2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43`；16,384个训练窗口曝光全部unique，无复用，四epoch训练曝光另计。train/held能量.000576403/.000555532；真实两批copy/native/cache各MSE=0，cache费用298.78秒。小recipe已耐久归档，70GB H/Y保留fvcrc21 NVMe，重建入口仍为固定prepare脚本与recipe。
 - `e135_train.py` SHA `8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7`，CPU全程/断点续跑参数与Adam误差0、实际cache全SHA预检通过后冻结。22:17:43 UTC在fvcrc21 GPU0启动完整4096更新（PID831690），不传中途截断，不按MSE决定继续。后续readout仍在独立实现，原三源不变。
+
+### 固定训练终点与读数启动（2026-10-26）
+- 单学生完整4096更新、33,554,432位置曝光，每个cache batch恰4次；终点train MSE=.000086822/固定train能量=.150627，held MSE=.000097614/同分母=.169350（按held自身能量=.175713）。这是有限近似误差，尚无职责/自然预测等价结论。全部9个固定MSE事件保留，无择优替换。
+- cache＋训练累计ledger1040.56秒。终点采集`e135_capture.py` SHA `d528f12afabad26a503bcedd02f8192bd243dc8edd22113ace65970e2dfaf9f4`、`e135_readout.py` SHA `70274a65f532097cd4dfd017c4ce5f3def9496bb08d87e6b77b3267fc8e5690c`经CPU oracle与真实四条件预检通过后冻结；薄worker SHA `da4214a771f6a67494841849159245369c971e2fbfec4a92ca885581c9ef5c04`只调用这些函数并核对参数不变。
+- 22:37:59 UTC在fvcrc21 GPU0–3分别启动teacher/copy/initial/final U/A（PIDs834789–834792）；copy完整画像作相同权重数值阳性对照，定义/主读数不改。并发与本机E131两卡合计6，ledger按各阶段实际占用时间相加、总上限4GPUh。四份完成后原readout会按源/权重SHA复用，不重采，再评自然分布与终点五干预。

@@ -1,0 +1,121 @@
+{
+  "host": "fvcrc21",
+  "pid": 831690,
+  "pid_live": true,
+  "process_command": "/home/xiang/.venvs/mechpop/bin/python -u /home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e135_train.py --mode train --physical-gpu 0 --summary /home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e135/training_summary.json ",
+  "output_dir": "/tmp/xiang-moe-20261025/e135_student",
+  "summary_status": "running",
+  "summary_step": 1024,
+  "planned_steps": 4096,
+  "last_logged_step": 1141,
+  "last_logged_position_exposures": 9347072,
+  "last_logged_positions_per_second": 90304.53982801315,
+  "first64_updates": {
+    "count": 64,
+    "mean_positions_per_second": 70941.21219355467,
+    "median_positions_per_second": 67485.8319063129,
+    "mean_after_first_positions_per_second": 72026.45917501145
+  },
+  "full_cache_function_MSE_events": [
+    {
+      "step": 0,
+      "train": {
+        "positions": 8388608,
+        "MSE": 0.0006700734992742002,
+        "normalized_by_fixed_training_energy": 1.1625093457941642,
+        "relative_to_own_split_teacher_energy": 1.1625093457941642
+      },
+      "held": {
+        "positions": 262144,
+        "MSE": 0.0006501283271111289,
+        "normalized_by_fixed_training_energy": 1.1279065013776057,
+        "relative_to_own_split_teacher_energy": 1.170281389070636
+      }
+    },
+    {
+      "step": 1024,
+      "train": {
+        "positions": 8388608,
+        "MSE": 0.000118338724729882,
+        "normalized_by_fixed_training_energy": 0.20530564724147665,
+        "relative_to_own_split_teacher_energy": 0.20530564724147665
+      },
+      "held": {
+        "positions": 262144,
+        "MSE": 0.00012646325125384992,
+        "normalized_by_fixed_training_energy": 0.21940087414493661,
+        "relative_to_own_split_teacher_energy": 0.22764365613997706
+      }
+    }
+  ],
+  "gradient_audit": {
+    "path": "/tmp/xiang-moe-20261025/e135_student/gradient_audit.json",
+    "sha256": "37651e7cfb910c7c726be39387049614cf39d4dc66643f0387aa5b5350dfea83",
+    "norm_lists": {
+      "LB_gradient_norms": 1,
+      "normalized_output_MSE_gradient_norms": 2,
+      "z_gradient_norms": 1
+    },
+    "all_norms_finite": true,
+    "all_expected_gradients_connected": true,
+    "verification": "The frozen training helper raises if any gradient is None or nonfinite; audit JSON exists from step0."
+  },
+  "hash_binding": {
+    "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+    "provenance_initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+    "initial_hash_matches_provenance": true,
+    "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+    "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+    "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+    "cache_manifest_hash_matches_status": true
+  },
+  "gpu_snapshot": [
+    {
+      "index": 0,
+      "uuid": "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a",
+      "memory_used": "10493 MiB",
+      "utilization": "51 %"
+    },
+    {
+      "index": 1,
+      "uuid": "GPU-93c03380-7c43-8dee-64ce-644eecbfc8b5",
+      "memory_used": "15 MiB",
+      "utilization": "0 %"
+    },
+    {
+      "index": 2,
+      "uuid": "GPU-cb99eedd-50eb-24ae-7e44-f03277ee80fd",
+      "memory_used": "15 MiB",
+      "utilization": "0 %"
+    },
+    {
+      "index": 3,
+      "uuid": "GPU-afa51c9c-2b51-5ed1-4782-5b9a1e7c5e7b",
+      "memory_used": "15 MiB",
+      "utilization": "0 %"
+    }
+  ],
+  "compute_processes": [
+    "GPU-fb7eafb1-64eb-1a45-598d-ee45e454e21a, 831690, /home/xiang/.venvs/mechpop/bin/python, 10470 MiB"
+  ],
+  "tmp_cache_allocated_bytes": 71707234304,
+  "tmp_free_bytes": 727144067072,
+  "ram_total_bytes": 540714893312,
+  "ram_available_bytes": 519636799488,
+  "captured_utc": "2026-10-25T22:21:51.825908+00:00",
+  "helper_sha256": {
+    "e135_train.py": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+    "e135_common.py": "2a84af164ad55853f171effd345c2719c760219119b9200e8cb47768d435a989"
+  },
+  "initial_checkpoint": {
+    "path": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+    "schema": "E135-student-v1",
+    "step": 0,
+    "planned_steps": 4096,
+    "initial_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+    "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+    "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+    "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9"
+  },
+  "summary_status_path": "/tmp/xiang-moe-20261025/e135_student/training_summary.json"
+}

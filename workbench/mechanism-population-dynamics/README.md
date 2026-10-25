@@ -11,7 +11,7 @@
 - **E131已启动：** 同父4096、完全相同的1024个minibatch只重排先后，随后共同后续至62500；两臂GPU运行正确性检查通过。它隔离纯次序的持续后果；不设性能/相关准入线。
 - **当前进展：** E131撤除时U/A对应=.690/.230，19456次完全相同的共同更新后（step24576，补充诊断）为.012/.001，仍待原62500终点。E132五环使用损失均值U匹配+.011742、router+.009243、zero+.117107；E133计算输出匹配+.008227、支持加权+.011264。低指纹对应不能直接称不可重用，也不继续换权重追收益。
 - **E134完成：** 五受控模型仅保留逐输入专家均匀分量，ΔNLL=.0025–.0032；原生OLMoE L9为+.0640 [.0592,.0695]，仅保留偏差项则+.00629。两类模型的必要性不同，受控弱损伤不能推广原生分工任意；不是固定稀疏预算替代或“知识百分比”。[结果图](results/e134/figures/necessity.png)。
-- **E135在途：** 单个随机同容量学生拟合原生OLMoE L9实际H→Y，再测cal-U→heldU/A与自然预测距离；只监督总输出。固定8,388,608位置cache已完整，fvcrc21 GPU0正跑单学生4096更新；原E131两臂继续。
+- **E135在途：** 单个随机同容量学生拟合原生OLMoE L9实际H→Y，再测cal-U→heldU/A与自然预测距离；只监督总输出。固定4096更新完整，train/held固定能量MSE=.151/.169；fvcrc21四卡正并行采teacher/copy/initial/final职责读数，原E131两臂继续。
 - **本次读数（E122/C06，L1）：** L9路由/输出相似偏ρ约0.46，但路由距离与held替换ΔNLL偏ρ仅0.027 [−0.036,0.087]；不能只用路由代表职责。POS正确置换复核保留组织效应：L9 δ_D=.206 [.181,.228]。
 - **E122已完成：** 16层路由→替换ΔNLL偏ρ均在−.031–.027，95%词形CI均含0；[全层图](results/e122/routing_function_bridge.png)。
 - **E123恢复检查未通过：** L9置零/均值损伤.182/.114；随机MoE固定32M终点NLL=2.736（dense2.494），中途最低2.624也未恢复。保留完整失败曲线，不选最佳点，未启动跨种子网格。
@@ -53,3 +53,5 @@
 - E128一次性后处理与seed0功能采集均complete：状态见`results/e128/finalization.json`及`results/e130/seed0_anchor_functions.json`。两张卡已释放，可用于原卡登记的初始功能参照。
 - E130每run的一次性后处理已完成：在原卡测固定终点KL及U/A（独立init另采61440自身参照），保存至`results/e130/{fidelity,functional,finalization}/`，大资产归档`~/mechpop_cache/e130_<id>_512m/`。E128旧后处理退出后，另用GPU2采seed0同协议功能；GPU被占则明确延后评分，不抢其他卡。全体终点与五个独立初始化的末期功能采集均complete，正式汇总在`results/e130/batch_summary.json`。
 - 旧的独立复现包与过程文档已于 10-23 删除，可从 Git 历史恢复（见 [RESEARCH_HISTORY.md §11](RESEARCH_HISTORY.md)）。
+
+- E135原生函数资产：fvcrc21 `/tmp/xiang-moe-20261025/e135_cache/`（约70GB BF16-bit H/Y）与`e135_student/`；可重建recipe在`~/mechpop_cache/e135_cache_recipe/`，固定模型/数据/keys/prepare脚本身份见`results/e135/cache_recipe_archive.json`与E135卡。H/Y不进git。
