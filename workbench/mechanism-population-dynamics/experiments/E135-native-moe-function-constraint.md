@@ -1,6 +1,6 @@
 # E135：固定原生MoE块函数后，专家承担仍能不同吗（2026-10-26）
 
-- **状态：** REGISTERED（资产准备/实现前；未启动训练）
+- **状态：** RUNNING（原生H/Y缓存采集中；学生训练尚未启动）
 - **类型：** PILOT；单个学生的固定函数约束实验，不是自然预训练或性能修复网格。
 - **对应：** P22：不重现的指纹是否触及任务重要计算；E134显示受控bank与原生OLMoE的均匀分量必要性关系不同。
 - **问题（一句话）：** 给定原生联合预训练OLMoE L9的实际输入→输出函数，一个随机同容量MoE重学后，会恢复怎样的预测与专家作用对应？
@@ -38,3 +38,7 @@ MoEBERT已有逐层MSE蒸馏，Every Expert Matters已有MoE教师研究，B-Dis
 
 ## 结果（运行后追加）
 - 尚未运行。主张不变；E131原终点继续。
+
+### 实际启动（2026-10-26）
+- CPU bit/复制/tuple/四epoch/ledger控制通过，fvcrc21只读真实模型/数据/Hcal preflight通过；冻结`e135_common.py` SHA `2a84af164ad55853f171effd345c2719c760219119b9200e8cb47768d435a989`、`e135_prepare_cache.py` SHA `47db49fcca8e2d2443741baded5b8fc85d3a0bfe7cb20573aa69009f443df034`，后续阶段不改这两文件。
+- 缓存采集实际于2026-10-25 22:04:47 UTC在fvcrc21 GPU0启动，PID828848；原生块后停止不需要的下游计算，只缓存原生H/Y，dtype与shape均运行时核对。原始`/tmp/xiang-moe-20261025/e135_cache`，四GPU小时ledger `/tmp/xiang-moe-20261025/e135_budget.json`。正式学生训练尚未启动。
