@@ -40,3 +40,8 @@
 - 实际PID/命令见本机`results/e130/*_launch.json`，模型及大日志仅在对应节点NVMe；公共槽位与配置`launch_plan.json`，运行快照`full_training_preflight.json`。本地seed1/GPU1、seed2/GPU3；fvcrc21 seed3/GPU0、seed4/GPU1、seed0_repeat/GPU2、seed0_order1/GPU3；E128仍本地GPU0，本地GPU2保留终点评估。
 - 当前仅启动/运行结果，无跨seed终点数字或主张升级。
 - 一次性后处理`e130_finalize.py`已通过CPU readiness/scoped-step guard/GPU busy分支校验，SHA=`2b1bed11f13fc0cd2dbb658383b7d9c973da41760e4ec1236e7f18a10a76039f`。各run训练退出且固定终点/来源完整后，原卡依次KL、final U/A与独立seed的late U/A、SHA归档；缺失/失败显式记录，GPU被他人占用则只归档并延后。原E128的KL/归档流程不改，其结束后`e130_capture_anchor.py`再用预留GPU2采seed0 final/late U/A，并单独归档功能数组。没有追加训练或自动升级主张。
+
+### seed0末期自身参照已完成（2026-10-25；不是跨初始化结果）
+- E128原62500步/512M训练、E127终点评分、最终权重和功能数组归档均complete；seed0的61440与62500功能采集使用同cover Hcal/plan，所有重复/identity计分误差为0。
+- cal U拟合恢复64/64恒等对应，在512个held输入/48词形上，U条件列相关均值.998778、中位.998815；A均值.950314、中位.952605。raw RMSE分别.009962/.004920 nats，条件held RMS约.214/.0167 nats。文件`results/e130/comparison/seed0_late_final.json`。
+- 这些数字是同模型最后1060更新的参照，处在学习率衰减末期，不证明充分收敛或跨seed重复；当前无主张升级。不同初始化、重跑和顺序控制仍按原62500终点运行。
