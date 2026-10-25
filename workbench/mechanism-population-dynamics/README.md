@@ -41,4 +41,5 @@
 - E123新资产准备：`~/mechpop_cache/hf_olmo_dense/main/`；下载脚本与固定版本见 `scripts/e123_prepare_assets.py`，小型manifest在 `results/e123/`。大权重、token文件、逐样本数组不进Git。
 - 覆盖池 `~/mechpop_cache/dolma_e125_512m/`（512M tokens，按`e125_prepare_data.py`重建）；E123失败终点归档`~/mechpop_cache/e123_seed0_32m/`。在途模型与队列在`/tmp/xiang-moe-20261025/e128_seed0`、`e129_teacher_KL_seed0`，原始汇总/日志路径见对应实验卡；固定终点再归档。
 - E128重新从clone启动时可显式传`--initial-reference results/e128/initial_reference.json`；当前在途run使用E125原完整参考文件，该文件保留在本机，不能在运行中删除/替换。CE512M与KL128M均已过真实GPU梯度/冻结/输入检查。
+- E128一次性后处理`e128_finalize.py`已启动：仅完整62500步/512M且训练退出后核验、评估、归档；物理GPU2忙时只归档并标记延后评估。状态写`results/e128/finalization.json`，不改训练、不自动开种子群。
 - 旧的独立复现包与过程文档已于 10-23 删除，可从 Git 历史恢复（见 [RESEARCH_HISTORY.md §11](RESEARCH_HISTORY.md)）。
