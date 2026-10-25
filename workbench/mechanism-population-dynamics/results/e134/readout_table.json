@@ -1,0 +1,802 @@
+{
+  "experiment": "E134",
+  "input_summary": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/necessity.json",
+  "input_summary_sha256": "d9e70639c0f0a26123bed107353481d786a4d510b917c9c91b13c2207c27652d",
+  "readout": "Within-model native-relative NLL gap and KL; file-level CIs only",
+  "kl_direction": "KL(native || condition)",
+  "conditions_in_plot": [
+    "c",
+    "gamma_c",
+    "r",
+    "zero"
+  ],
+  "models": [
+    {
+      "id": "seed0_anchor",
+      "display_name": "Controlled seed0 anchor",
+      "model_class": "controlled seed",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 1.1395842661233562,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0026724919217230468,
+            "file_95_ci": [
+              -0.00037706082744934366,
+              0.005131582268201151
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.015162141780529536,
+            "file_95_ci": [
+              0.01184000906851396,
+              0.019989401851728546
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0020899955913268762,
+            "file_95_ci": [
+              -0.00036236582246411685,
+              0.004190752234900758
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.014932914312209347,
+            "file_95_ci": [
+              0.011680128991114683,
+              0.019566682588523312
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.10037931562416466,
+            "file_95_ci": [
+              0.08521570288656428,
+              0.12469365685471226
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09368238948312427,
+            "file_95_ci": [
+              0.07901368603624569,
+              0.11782074556116144
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.1169950199665968,
+            "file_95_ci": [
+              0.09610450064685072,
+              0.1496048310883246
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.1224933350456129,
+            "file_95_ci": [
+              0.10054495127449645,
+              0.15875440755756923
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    },
+    {
+      "id": "seed1_order0",
+      "display_name": "Controlled seed1",
+      "model_class": "controlled seed",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 1.1467603638949806,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.003231861571439906,
+            "file_95_ci": [
+              0.0002247320497482016,
+              0.00590528101670345
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.015308697168130811,
+            "file_95_ci": [
+              0.012018005976238927,
+              0.020015021165055172
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0024459672416444,
+            "file_95_ci": [
+              7.26560263789637e-05,
+              0.0047772752979753
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.015074321768839164,
+            "file_95_ci": [
+              0.011864141901754062,
+              0.019560084300882147
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.09918980533783692,
+            "file_95_ci": [
+              0.08488320435453706,
+              0.1214497090831355
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09235530288814581,
+            "file_95_ci": [
+              0.07762332645456002,
+              0.114913328468814
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.11712366394797073,
+            "file_95_ci": [
+              0.09637670361553093,
+              0.1497937637253728
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.12215720739706938,
+            "file_95_ci": [
+              0.10021348660143785,
+              0.15864720421612666
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    },
+    {
+      "id": "seed2_order0",
+      "display_name": "Controlled seed2",
+      "model_class": "controlled seed",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 1.1421784025367392,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0028748504637471648,
+            "file_95_ci": [
+              -0.00011221880986903834,
+              0.005376123276878853
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.014973092636406274,
+            "file_95_ci": [
+              0.01167306773978472,
+              0.019571666328566942
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0022963825240567837,
+            "file_95_ci": [
+              1.474584575832774e-05,
+              0.0043099501600189485
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.014727543345239631,
+            "file_95_ci": [
+              0.011490805141804818,
+              0.019081797511762925
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.099538656582884,
+            "file_95_ci": [
+              0.0854581468137079,
+              0.1207294395901825
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09302542357853034,
+            "file_95_ci": [
+              0.07849654467478753,
+              0.11507551142718844
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.11725859464250014,
+            "file_95_ci": [
+              0.09677052171053882,
+              0.14934874989887614
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.12238120965789508,
+            "file_95_ci": [
+              0.10034225822862113,
+              0.15907876651044792
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    },
+    {
+      "id": "seed3_order0",
+      "display_name": "Controlled seed3",
+      "model_class": "controlled seed",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 1.1424842520568803,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0025085323274182123,
+            "file_95_ci": [
+              -0.0007431272508836688,
+              0.00505304689613284
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.015379739731633568,
+            "file_95_ci": [
+              0.011912469598737322,
+              0.020362322497856727
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0018473049603814976,
+            "file_95_ci": [
+              -0.0006401196458080249,
+              0.004002053037794591
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.015126468955862189,
+            "file_95_ci": [
+              0.011691707630132315,
+              0.019807417815726206
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0992300259897527,
+            "file_95_ci": [
+              0.08507746837041827,
+              0.12113556625762507
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09233330890530415,
+            "file_95_ci": [
+              0.07818309829284137,
+              0.11438970826230545
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.1168375050251691,
+            "file_95_ci": [
+              0.09605889940320347,
+              0.1493941973106994
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.12282178282123911,
+            "file_95_ci": [
+              0.10077221787203908,
+              0.15966302938178448
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    },
+    {
+      "id": "seed4_order0",
+      "display_name": "Controlled seed4",
+      "model_class": "controlled seed",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 1.1459131623656886,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.002736848617954922,
+            "file_95_ci": [
+              -0.00022751742106526043,
+              0.005099461657706483
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.014957209143172407,
+            "file_95_ci": [
+              0.011595076609095747,
+              0.019713196001786212
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0020393494335978644,
+            "file_95_ci": [
+              -0.0002928559585586235,
+              0.0040692251843340195
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.014692414085393806,
+            "file_95_ci": [
+              0.011327068773609684,
+              0.019225386396537654
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.09861970194409157,
+            "file_95_ci": [
+              0.08416640821518287,
+              0.12068709168703147
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09178796027115455,
+            "file_95_ci": [
+              0.07720915789821317,
+              0.11416248552460359
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.11731809222043463,
+            "file_95_ci": [
+              0.09680905145713778,
+              0.14945426079392682
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.12203563049732503,
+            "file_95_ci": [
+              0.10016041991719375,
+              0.1585545159424566
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    },
+    {
+      "id": "public_olmoe_main",
+      "display_name": "Public OLMoE main",
+      "model_class": "public native",
+      "native_reference": "This model's own native readout",
+      "calibration_gamma_c": 2.358990003705659,
+      "conditions": {
+        "c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.06401037091219307,
+            "file_95_ci": [
+              0.059214951618939325,
+              0.06945131489091995
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.07685119910241796,
+            "file_95_ci": [
+              0.0685803279361792,
+              0.08535731690578065
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "gamma_c": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.06073957844977565,
+            "file_95_ci": [
+              0.05608099678765102,
+              0.0662507814045607
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.07556770285570895,
+            "file_95_ci": [
+              0.06757791633008232,
+              0.08398094233022861
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "r": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.006289946913148414,
+            "file_95_ci": [
+              0.005296652607749685,
+              0.007047069985349729
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.006318966392938309,
+            "file_95_ci": [
+              0.0055206931551851765,
+              0.006992081941480768
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "zero": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.08587523084215053,
+            "file_95_ci": [
+              0.07907186852079118,
+              0.0929090316849175
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.09863453274166491,
+            "file_95_ci": [
+              0.0883593502917505,
+              0.10881469842163688
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      },
+      "controls": {
+        "native": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        },
+        "recompose": {
+          "delta_nll_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "kl_native_to_condition_nats_per_token": {
+            "mean": 0.0,
+            "file_95_ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "files": 32,
+          "sequences": 512,
+          "tokens": 262144,
+          "file_bootstrap_iterations": 1000
+        }
+      }
+    }
+  ],
+  "plot_note": "Each model column has its own x-axis scale. Native and recomposition are controls, shown here but not plotted as interventions."
+}

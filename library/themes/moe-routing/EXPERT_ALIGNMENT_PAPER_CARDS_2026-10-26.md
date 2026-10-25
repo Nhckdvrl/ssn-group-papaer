@@ -73,3 +73,28 @@
 7. 限制：收益依赖函数类/学习规则；未复核长附录证明。
 8. 动作：分离统计对象和具体优化轨迹。
 9. 对我们：E134均匀均值不等于其统计共享函数；E131的联合非凸历史后果不由该理论直接推出。
+
+
+## Rethinking Routing Exploration in Modern Mixture-of-Experts `[证据：§1–2与C.1，非全文复核]`
+[arXiv v1，2026-10-15](https://arxiv.org/html/2610.22353)
+1. 形态：训练失败模式＋MirrorMoE方法。
+2. 压力：细粒度组合空间变大，共享专家却削弱路由探索。
+3. 前提：共享/路由专家的影响不对称，组合容量不自动被优化利用。
+4. 来源（DOCUMENTED）：单专家消融、随机路由及输出变异诊断。
+5. 近邻：DeepSeekMoE、Routers Learn Geometry、Routing Divergence；均提示路由变化与预测价值须分开。
+6. 核对共享/非共享对照、逐层随机路由；C.1界依赖非负归一化组合，不能直接用于本项目no-renorm门值。
+7. 限制：没有独立复核全实验；其显式共享模块不同于E134事后逐输入均值。
+8. 动作：检验可探索差异是否真的能影响输出。
+9. 对我们：共有计算占优、路由影响弱及随机路由检查已有ownership；E134仅增加特定均匀分量干预，不认领一般冗余结论。
+
+## Beyond Geometric Complementarity: Coherent Overlap in Sparse Mixture-of-Experts Routing `[证据：§1–2/5–6/S6，非全文复核]`
+[arXiv v1，2026-07-30](https://arxiv.org/html/2607.28308)
+1. 形态：几何构念＋factorial与功能干预。
+2. 压力：共路由几何重叠不能判定专家有无预测价值。
+3. 前提：分离候选质量、共选上下文与交互。
+4. 来源（DOCUMENTED）：固定prefix的2×2对照，再检验增添/替换专家的NLL后果。
+5. 近邻：Routers Learn Geometry、When Are Experts Misrouted、RouterInterp；功能价值不能由几何标签代替。
+6. 核对多架构调查及OLMoE/Mixtral/DeepSeek冻结路由功能检查，另有小型等活跃容量Top1/2训练。
+7. 限制：几何是指定秩线性输入子空间，功能检查不是跨训练可对应性；未复核完整附录。
+8. 动作：把重叠与可替代性作为两个命题分别干预。
+9. 对我们：E134的均值可保任务得分不等于“其它专家无用”；不能认领几何与功能不等价这一一般结论。

@@ -1,0 +1,143 @@
+{
+  "Dolma_held_window_hash": "ce0e786beea51b92e3eaeebc5a072945b9baac737e21f9f9130121b70f3feecb",
+  "POS_plan": {
+    "POS_source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+    "all_selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+    "held_input_target_last_sha256": "9b5ca5c87b9c34777df7ec80cd9da94dc96cc2635d49b1febdf0c1df9bc963ff",
+    "items": 512,
+    "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+    "words": 48
+  },
+  "common_segment_input_hash_equal": true,
+  "data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+  "experiment": "E131",
+  "frozen_sources": {
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+    "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+    "e127_predictive_fidelity.py": "ac37934d55891db7ab9ff873f04e9b7e4592de590917a477d0d84d9f83d1675c",
+    "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f",
+    "e130_cross_seed.py": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+    "e130_finalize.py": "2b1bed11f13fc0cd2dbb658383b7d9c973da41760e4ec1236e7f18a10a76039f",
+    "e130_predictor_compare.py": "886cebfc51521fb8873a12aa4ee8db38838c20ba712c9c7dbb75ffd8ac4ea9a4",
+    "e131_finalize.py": "8d545eae5f01190e1fea8f7d4382b02d8cb897754db2cc62132bbf887bd99c57",
+    "e131_order_history.py": "455f90e6202da01bce1f4586d0912620f52e2ed7b3dd424c86353887237e1a78"
+  },
+  "proofs": {
+    "ordered": {
+      "branch": "ordered",
+      "checkpoint": "/tmp/xiang-moe-20261025/e131_ordered/snapshots/diagnostic_step024576.pt",
+      "checkpoint_sha256": "43d5fc801ce23ed55e82eaa47b76c94d86be6b8b20fe7ba7d257544ead916657",
+      "config_hash": "79c59a104ac3a900b60b9605bd0f8a7597f430adf2e174b357103aa363dfd6f3",
+      "functional_capture": "/tmp/xiang-moe-20261025/e131_ordered/diagnostic_common24576.npz",
+      "functional_capture_sha256": "6b3ef9bfc858dd329bdc9f37c081b4b56ef72f78d6259a3f77435b10908214b3",
+      "history": {
+        "actual_source_schedule_hash": "0eb62f6cbd8bfd6e22e2d67d0f01ad34aee85eee94a006b9eed5042858412625",
+        "common_input_hash": "6ebdd986fda3fc9856a35e7c9edfba515334c7fb425d82255df77778dbadba2d",
+        "common_updates": 19456,
+        "draws": 393216,
+        "pulse_input_hash": "17d3b0525fa880947d73d21dd278ae3557c5510aa8d05f65f76d620c2f087346"
+      },
+      "legacy": {
+        "evaluation_sha256": "262850ac5643dcfeca742b9cff0cb0e7a388d75b4dcbff3facb838d42e0bdf91",
+        "evaluation_step": 24576,
+        "held_file": {
+          "ci95": [
+            2.0952874971421473,
+            2.991598695102357
+          ],
+          "ci_degenerate": false,
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "mean": 2.5780598634620318
+        },
+        "scope": "Exact registered-step event, never the current/latest NLL",
+        "source": "/tmp/xiang-moe-20261025/e131_ordered/training_summary.json"
+      },
+      "parent": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/snapshots/step004096.pt",
+        "checkpoint_sha256": "13bb7ec0c8dc899744e7e4e6c7938c80a80c1b8079d1e3c89f764251524dbabf",
+        "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+        "elapsed_wall_seconds_not_charged_to_children": 1292.294880412519,
+        "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+        "frozen_sources": {
+          "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+          "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+          "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+          "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+        },
+        "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+        "optimizer_steps": [
+          4096.0,
+          4096.0
+        ],
+        "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+        "saved_optimizer_lr": 0.00019660799999999997
+      },
+      "protocol_sha256": "0ef7fc22f0c4228c6c9ea577ab9283e0f2dfe82c877a12af75618200490101c8",
+      "provenance_sha256": "0ef7fc22f0c4228c6c9ea577ab9283e0f2dfe82c877a12af75618200490101c8",
+      "replacement_tensor_sha256": "cef9001cf136531d79e41c27a7aee1da5b1cd3dedae43dd5c660247956f44fdc",
+      "step": 24576
+    },
+    "permuted": {
+      "branch": "permuted",
+      "checkpoint": "/tmp/xiang-moe-20261025/e131_permuted/snapshots/diagnostic_step024576.pt",
+      "checkpoint_sha256": "82ed22dbba4f9a777bde77ebef442b5e338653818e0b859ed2a6b1be7ec6efa4",
+      "config_hash": "2c41393739b63961ed4ca611a87d9243f94a6244285ca2db3e7ee6c8f7e13319",
+      "functional_capture": "/tmp/xiang-moe-20261025/e131_permuted/diagnostic_common24576.npz",
+      "functional_capture_sha256": "94c3e07b5175300a8a564f9634f61f93c8d05254fb37b40067d7e3377de388c4",
+      "history": {
+        "actual_source_schedule_hash": "73655c68d8ef825fc2abe01f91d399a6580e8265a8bfdd35dc78e7285715fb60",
+        "common_input_hash": "6ebdd986fda3fc9856a35e7c9edfba515334c7fb425d82255df77778dbadba2d",
+        "common_updates": 19456,
+        "draws": 393216,
+        "pulse_input_hash": "3868429c063f8f93e522b71f8713f0224578ce67472fa8ebeab3e52d07e0861c"
+      },
+      "legacy": {
+        "evaluation_sha256": "16639cff298b7efe3e91fb832f45e7f5c44db8793c990c0ead0a333497014c59",
+        "evaluation_step": 24576,
+        "held_file": {
+          "ci95": [
+            2.0949033775603327,
+            2.993186068992403
+          ],
+          "ci_degenerate": false,
+          "cluster": "file",
+          "clusters": 32,
+          "iterations": 1000,
+          "mean": 2.5783230678973945
+        },
+        "scope": "Exact registered-step event, never the current/latest NLL",
+        "source": "/tmp/xiang-moe-20261025/e131_permuted/training_summary.json"
+      },
+      "parent": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e128_seed0/snapshots/step004096.pt",
+        "checkpoint_sha256": "13bb7ec0c8dc899744e7e4e6c7938c80a80c1b8079d1e3c89f764251524dbabf",
+        "config_hash": "8e70948181dde6fff44026456e97f9ffdf2aa002af7ce3a4f2e9bc15a683ea1f",
+        "elapsed_wall_seconds_not_charged_to_children": 1292.294880412519,
+        "frozen_sample_hash": "565b9dacb123aab3e1f296bcc1bad8928fa7811492b80aface1809530a0b6c03",
+        "frozen_sources": {
+          "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+          "e124_functional_capture.py": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+          "e125_coverage_control.py": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+          "e128_epoch_recovery.py": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f"
+        },
+        "initial_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+        "optimizer_steps": [
+          4096.0,
+          4096.0
+        ],
+        "provenance_sha256": "dac6552ca60629570278f2014cc0b43a012380de83406f704f2066bd49d4233f",
+        "saved_optimizer_lr": 0.00019660799999999997
+      },
+      "protocol_sha256": "79771aac52cdc8d53fa496f241e89cad5a49b5063aea0020a6e33a2fadd3d38a",
+      "provenance_sha256": "79771aac52cdc8d53fa496f241e89cad5a49b5063aea0020a6e33a2fadd3d38a",
+      "replacement_tensor_sha256": "d16e05da1c9ad5e229414ec3a1a69991394b0f25640f15b918caa38673b370c6",
+      "step": 24576
+    }
+  },
+  "script_sha256": "ff594800990f15389250869704840602e806240058c29eeda9ded9f59dde5c14",
+  "status": "preflight_only_no_GPU",
+  "step": 24576
+}

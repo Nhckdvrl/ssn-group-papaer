@@ -1,0 +1,357 @@
+{
+  "schema": "E134 raw/calibration/source-proof archive v1",
+  "created_utc": "2026-10-25T21:39:09.050193+00:00",
+  "experiment": "E134",
+  "necessity_status": "complete",
+  "models": [
+    "seed0_anchor",
+    "seed1_order0",
+    "seed2_order0",
+    "seed3_order0",
+    "seed4_order0",
+    "public_olmoe_main"
+  ],
+  "pilot_attempt": {
+    "model": "seed0_anchor",
+    "raw_sequences": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt01_sequences.json",
+    "calibration_vectors": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt01_cal_vectors.npz"
+  },
+  "archive_directory": "/home/xiang/mechpop_cache/e134_necessity",
+  "model_or_checkpoint_files_copied": false,
+  "source_run_script_sha256": "b5e7e55d39142f69ff0c3ce145eaf725d25323fc4a6c7d19f4519fca1a8da177",
+  "frozen_E132_sha256": "ed269682c2ad7e62f8fc5bac407e1834e8de304125e6c7d0794c414d6441e8e0",
+  "component_variation_source_summary_sha256": "d9e70639c0f0a26123bed107353481d786a4d510b917c9c91b13c2207c27652d",
+  "controlled_shared_Hcal": {
+    "path": "/tmp/xiang-moe-20261025/e130_analysis/Hcal.npy",
+    "sha256": "cc8ff8a6e255186572f5cd7fcfe016c97a074e3abbc723ec76649f9fb1bc341c",
+    "source_path": "/tmp/xiang-moe-20261025/e130_analysis/seed0_anchor/final.npz::Hcal"
+  },
+  "public_Hcal_metadata": {
+    "cal_seed": 91024,
+    "data_identity_sha256": "b7d5ac1e8888e93e21dbf4727576ef82895aeed7d448e9878b6d31d36e2131a5",
+    "file_sha256": "c91f538cca8793722eaa7e08c11451ed05bb34053c77f37a5e84ebfc892d715f",
+    "prefix_hash": "e650f7858d334feb0d9cd2a7cbc370d5dfae7c194c1e2dd4ea24a5a166820d4c",
+    "seq_len": 512,
+    "split": "train",
+    "stride": 4,
+    "window_hash": "af52c2f4c8e27c06e7e53d36c3312cf9a1b1ca8f539795a03d57122626acc33d"
+  },
+  "source_sha256": {
+    "necessity.json": "d9e70639c0f0a26123bed107353481d786a4d510b917c9c91b13c2207c27652d",
+    "pilot_summary.json": "9dca4163726bf7409a468a48eef69be60df35a721cc5a293619f1d5227be0735",
+    "asset_preflight.json": "b3f472ad8cbd1a3569ec15f70b539d47bc937549c87cc50ad89a941f960a38cc",
+    "full_launch.json": "aabf3b1ac94d8f92eeaa47b77ca08e9a39db2876a08baad15f1468feab8c3953",
+    "pilot_launch.json": "54bdaa8293c35234566d72cd23872eaeb01a64fafae406f302a837833d6cd0f1",
+    "self_test.json": "25c9ab8006300639426fd3f822eaef7fcd0d9a6f6fdecb6caa6d16654d6681f4",
+    "readout_table.json": "bb4501f2a310d58555c30a9071dae9b799a25f75b79ef035f2a2157664dc5eeb",
+    "component_variation.json": "12ed2c6a9b1034913f9a2392b77cb82e2b36b7f9dbedc49ccd39ad818c0c4d47",
+    "necessity.png": "9969cac7ac5fba671964fff074e3c24f5a30058ba3f0c31f2e07eb50fd916517",
+    "necessity.pdf": "ab5f2d22be150afa006660447e0cfd5da82bc26a6526bbaa028d1bb9916c5bd2",
+    "e134_experiment_card.md": "db19a21b0092738c8c89b01d1d7c43a2511305841c39b1eb5cb7f562d0979b2a",
+    "e132_bank_staging.json": "25d5ae154d50bb86e8a206bb10505f0b2746eb2d7f276b2b7baf9ebbb30ff406",
+    "e130_analysis_staging.json": "5efac44add4c15dfb90b759fe8376a8d17e0aaaf66c2e8f9b5d9a60149ddb824",
+    "e122_provenance.json": "5cd3ae52c52c710637c71537f9674a5487007c38e99808eff82a8bf37ce9d91e",
+    "source_sha256/e134_uniform_necessity.py": "b5e7e55d39142f69ff0c3ce145eaf725d25323fc4a6c7d19f4519fca1a8da177",
+    "source_sha256/e134_component_variation.py": "e4ba0e3b2d714d4ee97ff94443cf23f0c2877c1e8a98d07c97c6b52f2e6adb9c",
+    "source_sha256/e134_plot.py": "f54ae2577c5b5a955727408bbe708c2aca2542a54b9f46969d45dd22e89f856e",
+    "source_sha256/e132_bank_grafting.py": "ed269682c2ad7e62f8fc5bac407e1834e8de304125e6c7d0794c414d6441e8e0"
+  },
+  "files": {
+    "raw/public_native_Hcal.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "8e991b079bf73d4049d639ced678f3838aa2ad03ab05855be37f3d5449ba7bb5",
+      "size_bytes": 426
+    },
+    "raw/public_native_Hcal.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_native_Hcal.npy",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "c91f538cca8793722eaa7e08c11451ed05bb34053c77f37a5e84ebfc892d715f",
+      "size_bytes": 67108992
+    },
+    "raw/public_olmoe_main_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_olmoe_main_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "60dd3d436ae90f4661652aa28f91a036d690e2b739917142371b90ea2e67e874",
+      "size_bytes": 201360324
+    },
+    "raw/public_olmoe_main_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_olmoe_main_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "8d9d849b195c2da61f87710393230fb7dda7a5f563e7bc75a4a605b35cd4a7e4",
+      "size_bytes": 1746
+    },
+    "raw/public_olmoe_main_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/public_olmoe_main_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "7e83e3eb44e14168b5a53badcbaed7272be9b7a8ca41b70042ebdce01df9cd0b",
+      "size_bytes": 1194469
+    },
+    "raw/seed0_anchor_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "pilot_calibration_vectors",
+      "sha256": "58d0643408c2ab6f386ec640611ed927c420c4a68495f650e174867b4d7fc078",
+      "size_bytes": 201360324
+    },
+    "raw/seed0_anchor_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "92e3b33f408a027903448440ca6965c442474d5515784ce3bafcd1fd4f66f02f",
+      "size_bytes": 1724
+    },
+    "raw/seed0_anchor_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "pilot_raw_sequences",
+      "sha256": "731e8d722c7b875904d447e3f850d24fc13f7e592afea5f7f56dc1a777f295a7",
+      "size_bytes": 1194632
+    },
+    "raw/seed0_anchor_attempt02_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt02_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "58d0643408c2ab6f386ec640611ed927c420c4a68495f650e174867b4d7fc078",
+      "size_bytes": 201360324
+    },
+    "raw/seed0_anchor_attempt02_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt02_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "56f6265d30359461b79a3dff5452443d3e90dabb364e5ff206c06ceb9a482a18",
+      "size_bytes": 1724
+    },
+    "raw/seed0_anchor_attempt02_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed0_anchor_attempt02_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "731e8d722c7b875904d447e3f850d24fc13f7e592afea5f7f56dc1a777f295a7",
+      "size_bytes": 1194632
+    },
+    "raw/seed1_order0_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed1_order0_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "6d75dd7455e5b352dc5f8014e82a785a56c287d3b591c53c5189dac06ccb2254",
+      "size_bytes": 201360324
+    },
+    "raw/seed1_order0_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed1_order0_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "42f24d67aa55270670d8935dcae871ffaa75f7567d6e80f399aefc261f514028",
+      "size_bytes": 1727
+    },
+    "raw/seed1_order0_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed1_order0_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "3e73acd1dd86e5ffda403d8e3d029762806cdb7273fab8e06916f35fb99d6435",
+      "size_bytes": 1194673
+    },
+    "raw/seed2_order0_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed2_order0_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "09dbfc27359b17c9372ad6f113b8a2c1195ba1c090b27a97017ea3e0db00baeb",
+      "size_bytes": 201360324
+    },
+    "raw/seed2_order0_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed2_order0_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "4a7911643ebbbd97ae02f05fa16723ff917f5acbe9b3ff3656d2656e270e087d",
+      "size_bytes": 1724
+    },
+    "raw/seed2_order0_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed2_order0_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "a5ad5c4057ac1ba4a73aafb8a789c7d42713ea8d20fb33a19a5ca7fd649665b7",
+      "size_bytes": 1194485
+    },
+    "raw/seed3_order0_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed3_order0_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "ab32f763a88ffe9ed037ab947ddd0048621ccc6e870a0f3c0045737c1c6a36a9",
+      "size_bytes": 201360324
+    },
+    "raw/seed3_order0_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed3_order0_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "2663e2be477c0c7c53a515d0a4f0242f456864445db5c900c0c2b44e101edf93",
+      "size_bytes": 1726
+    },
+    "raw/seed3_order0_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed3_order0_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "b4c06c533396aff3e0d04ae0d22dfd1d4ddfd16bd2982e3e9546a0d6c84bdb17",
+      "size_bytes": 1194554
+    },
+    "raw/seed4_order0_attempt01_cal_vectors.npz": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed4_order0_attempt01_cal_vectors.npz",
+      "source_host": "fvcrc20",
+      "category": "calibration_vectors",
+      "sha256": "d10e288d96f41448bc5f9f6fa92d723bbbbf36730e1d78b47d309aa709f5fe5e",
+      "size_bytes": 201360324
+    },
+    "raw/seed4_order0_attempt01_calibration.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed4_order0_attempt01_calibration.json",
+      "source_host": "fvcrc20",
+      "category": "raw_attempt_asset",
+      "sha256": "80d3d531d94eed2d26904e5c6c340a20b5ee0d1c97e5bc714dc93d160090fdbc",
+      "size_bytes": 1727
+    },
+    "raw/seed4_order0_attempt01_sequences.json": {
+      "source_path": "/tmp/xiang-moe-20261025/e134_necessity/seed4_order0_attempt01_sequences.json",
+      "source_host": "fvcrc20",
+      "category": "raw_sequences",
+      "sha256": "82ad8500f6873445f8a36d2616ad546717739dd8e84bb84bf11cf1c4140461c9",
+      "size_bytes": 1194695
+    },
+    "raw/controlled_shared_Hcal.npy": {
+      "source_path": "/tmp/xiang-moe-20261025/e130_analysis/Hcal.npy",
+      "source_host": "fvcrc20",
+      "category": "controlled_shared_Hcal",
+      "sha256": "cc8ff8a6e255186572f5cd7fcfe016c97a074e3abbc723ec76649f9fb1bc341c",
+      "size_bytes": 67108992
+    },
+    "proof/necessity.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/necessity.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "d9e70639c0f0a26123bed107353481d786a4d510b917c9c91b13c2207c27652d",
+      "size_bytes": 871734
+    },
+    "proof/pilot_summary.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/pilot_summary.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "9dca4163726bf7409a468a48eef69be60df35a721cc5a293619f1d5227be0735",
+      "size_bytes": 148395
+    },
+    "proof/asset_preflight.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/asset_preflight.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "b3f472ad8cbd1a3569ec15f70b539d47bc937549c87cc50ad89a941f960a38cc",
+      "size_bytes": 6200
+    },
+    "proof/full_launch.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/full_launch.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "aabf3b1ac94d8f92eeaa47b77ca08e9a39db2876a08baad15f1468feab8c3953",
+      "size_bytes": 559
+    },
+    "proof/pilot_launch.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/pilot_launch.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "54bdaa8293c35234566d72cd23872eaeb01a64fafae406f302a837833d6cd0f1",
+      "size_bytes": 483
+    },
+    "proof/self_test.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/self_test.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "25c9ab8006300639426fd3f822eaef7fcd0d9a6f6fdecb6caa6d16654d6681f4",
+      "size_bytes": 853
+    },
+    "proof/readout_table.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/readout_table.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "bb4501f2a310d58555c30a9071dae9b799a25f75b79ef035f2a2157664dc5eeb",
+      "size_bytes": 21997
+    },
+    "proof/component_variation.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/component_variation.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "12ed2c6a9b1034913f9a2392b77cb82e2b36b7f9dbedc49ccd39ad818c0c4d47",
+      "size_bytes": 11740
+    },
+    "proof/necessity.png": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/figures/necessity.png",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "9969cac7ac5fba671964fff074e3c24f5a30058ba3f0c31f2e07eb50fd916517",
+      "size_bytes": 269482
+    },
+    "proof/necessity.pdf": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e134/figures/necessity.pdf",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "ab5f2d22be150afa006660447e0cfd5da82bc26a6526bbaa028d1bb9916c5bd2",
+      "size_bytes": 32865
+    },
+    "proof/e134_experiment_card.md": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/experiments/E134-expert-uniform-component-necessity.md",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "db19a21b0092738c8c89b01d1d7c43a2511305841c39b1eb5cb7f562d0979b2a",
+      "size_bytes": 6515
+    },
+    "proof/e132_bank_staging.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e132/bank_staging.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "25d5ae154d50bb86e8a206bb10505f0b2746eb2d7f276b2b7baf9ebbb30ff406",
+      "size_bytes": 4189
+    },
+    "proof/e130_analysis_staging.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e130/analysis_staging.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "5efac44add4c15dfb90b759fe8376a8d17e0aaaf66c2e8f9b5d9a60149ddb824",
+      "size_bytes": 25939
+    },
+    "proof/e122_provenance.json": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e122/provenance.json",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "5cd3ae52c52c710637c71537f9674a5487007c38e99808eff82a8bf37ce9d91e",
+      "size_bytes": 1550
+    },
+    "proof/source_sha256/e134_uniform_necessity.py": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e134_uniform_necessity.py",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "b5e7e55d39142f69ff0c3ce145eaf725d25323fc4a6c7d19f4519fca1a8da177",
+      "size_bytes": 26705
+    },
+    "proof/source_sha256/e134_component_variation.py": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e134_component_variation.py",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "e4ba0e3b2d714d4ee97ff94443cf23f0c2877c1e8a98d07c97c6b52f2e6adb9c",
+      "size_bytes": 3204
+    },
+    "proof/source_sha256/e134_plot.py": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e134_plot.py",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "f54ae2577c5b5a955727408bbe708c2aca2542a54b9f46969d45dd22e89f856e",
+      "size_bytes": 9147
+    },
+    "proof/source_sha256/e132_bank_grafting.py": {
+      "source_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e132_bank_grafting.py",
+      "source_host": "fvcrc20",
+      "category": "summary_plot_or_source_proof",
+      "sha256": "ed269682c2ad7e62f8fc5bac407e1834e8de304125e6c7d0794c414d6441e8e0",
+      "size_bytes": 28975
+    }
+  },
+  "archive_manifest_path": "/home/xiang/mechpop_cache/e134_necessity/archive_manifest.json",
+  "archive_manifest_sha256": "3dfefbc1c3217d9dd9666f66d7419580b7e5226b05467ecd6a6f8c02001baa9d"
+}
