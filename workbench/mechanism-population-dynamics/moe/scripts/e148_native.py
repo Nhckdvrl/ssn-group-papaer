@@ -37,6 +37,7 @@ def preflight(plan, physical):
     try:
         with c.Budget("native_train_preflight") as budget:
             lock = c.old.gpu_lock(physical)
+            torch.manual_seed(c.SPEC["seed"]); torch.cuda.manual_seed(c.SPEC["seed"])
             model = c.load_bf16(); model.config.use_cache = False
             tokens = torch.from_numpy(selected_tokens(plan, "warm", 0).astype(np.int64)).to("cuda:0")
             with torch.no_grad():
@@ -53,6 +54,7 @@ def preflight(plan, physical):
             optimizer = c.make_optimizer(model)
             model.train()
             rows = []
+            post_two_hash = None
             for i in range(8):
                 budget.check()
                 tokens = torch.from_numpy(selected_tokens(plan, "warm", i).astype(np.int64)).to("cuda:0")
@@ -61,6 +63,8 @@ def preflight(plan, physical):
                 torch.cuda.synchronize()
                 row.update(step=i, seconds=time.monotonic()-started)
                 rows.append(row)
+                if i == 1:
+                    post_two_hash = c.old.base.sampled_parameter_hash(model)
                 c.emit("E148_native_preflight_update", step=i, seconds=row["seconds"], loss=row["loss"], peak_gb=torch.cuda.max_memory_allocated()/1e9)
             states = optimizer.state_dict()["state"]
             state_bytes = sum(v.numel()*v.element_size() for s in states.values() for v in s.values() if torch.is_tensor(v))
@@ -68,10 +72,23 @@ def preflight(plan, physical):
                 if p["gradient_rms"] is None or p["gradient_rms"] <= 0 or p["master_delta_rms"] <= 0:
                     raise RuntimeError("Native attention/router/expert training leverage check failed")
             total_parameters = sum(p.numel() for p in model.parameters())
+            del model, optimizer, states
+            gc.collect(); torch.cuda.empty_cache()
+            torch.manual_seed(c.SPEC["seed"]); torch.cuda.manual_seed(c.SPEC["seed"])
+            repeated_model = c.load_bf16().float().train()
+            repeated_optimizer = c.make_optimizer(repeated_model)
+            repeat_rows = []
+            for i in range(2):
+                budget.check()
+                batch = torch.from_numpy(selected_tokens(plan, "warm", i).astype(np.int64)).to("cuda:0")
+                repeat_rows.append(c.train_step(repeated_model, repeated_optimizer, batch, c.SPEC["lr"]))
+            repeat_hash = c.old.base.sampled_parameter_hash(repeated_model)
             result = {"status": "passed", "phase": "train_side_only", "source_sha256": c.code_proof(),
                       "spec_hash": plan["spec_hash"], "plan_sha256": plan["plan_sha256"], "software": c.software(),
                       "native_repeat": repeat, "native_vs_FP32_master_BF16_shader": casting, "updates": rows,
-                      "parameters": total_parameters, "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad),
+                      "parameters": total_parameters, "trainable_parameters": sum(p.numel() for p in repeated_model.parameters() if p.requires_grad),
+                      "same_two_update_repeat_sample_hash_equal": post_two_hash == repeat_hash,
+                      "same_two_update_repeat_loss_gaps": [repeat_rows[i]["loss"]-rows[i]["loss"] for i in range(2)],
                       "FP32_optimizer_state_bytes": state_bytes, "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
                       "physical_gpu": physical, "visible_device_uuid": str(torch.cuda.get_device_properties(0).uuid),
                       "estimated_main_train_gpu_seconds": float(np.mean([r["seconds"] for r in rows[2:]]))*1952,

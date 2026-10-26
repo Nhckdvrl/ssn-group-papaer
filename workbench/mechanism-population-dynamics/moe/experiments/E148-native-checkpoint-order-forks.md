@@ -64,3 +64,5 @@
 **GPU前实现修订：** tiny恢复检查定位到RoPE inv_freq不在state_dict，补全所有named_buffers的保存/恢复，保留失败记录；数据字节、LR、剂量与读数均未改变。训练侧专家梯度控制按被调用的固定首个非零梯度专家记录，全部64专家保持可训练和保留，不要求离支持专家在每个batch有梯度。
 
 **原生训练侧profile后的资源修订（任何新held/parent读数之前）：** 单卡实测峰值56.270GB，稳定约4.30秒/更新，全部6.919B参数可训练，Adafactor状态仅39.90MB，原生BF16/FP32 master shader输出逐位一致。固定1952总更新的纯训练预估2.33 GPU·时，另有约194GB完整checkpoint与预测/移植读出；首包上限由3改为**4 GPU·时**留I/O余量。未增加分支、更新数、输入、LR或科学读数；修订与旧profile保留，重复预检计入预算，不依据held效果扩容。
+
+**主实验held前的数值实现修订：** 两轮训练侧相同流的短更新出现约1e−4–1e−3 loss差，故在主分叉前固定PyTorch deterministic algorithms、CUBLAS_WORKSPACE_CONFIG=:4096:8、TF32关闭，并增加两个相同更新的重跑样本hash/损失差诊断。数据/步骤/LR/aux/读数不变；旧profile、全部开销保留。该诊断不用于筛seed/输入，完整A-repeat仍给全流程地板。

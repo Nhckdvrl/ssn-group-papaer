@@ -14,8 +14,16 @@ import subprocess
 import time
 from pathlib import Path
 
+# Before the first CUDA BLAS handle is created. The treatment is input order,
+# not arbitrary atomic-accumulation order; A-repeat still measures residual noise.
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+
 import numpy as np
 import torch
+torch.use_deterministic_algorithms(True)
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
 from torch.nn import functional as F
 from transformers import Adafactor, OlmoeForCausalLM
 import transformers
@@ -42,7 +50,9 @@ def code_proof():
 
 def software():
     return {"torch": torch.__version__, "transformers": transformers.__version__,
-            "Adafactor_source_sha256": hashlib.sha256(inspect.getsource(Adafactor).encode()).hexdigest()}
+            "Adafactor_source_sha256": hashlib.sha256(inspect.getsource(Adafactor).encode()).hexdigest(),
+            "deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
+            "CUBLAS_WORKSPACE_CONFIG": os.environ.get("CUBLAS_WORKSPACE_CONFIG")}
 
 
 def array_sha(array):
