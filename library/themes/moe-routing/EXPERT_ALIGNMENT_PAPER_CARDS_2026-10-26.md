@@ -182,3 +182,12 @@
 7. **与E135–139距离：** E135固定原生public OLMoE自身H→Y、随机同容量单块学生，总函数监督无逐expert/router监督；E136/138精确提供并冻结原生teacher gate；E139配对expert初值比较free/fixed协议，以cal-only actual-component映射和held有限cohort偏差/变异/covariance及自然预测/A为对象。RRD的dense拆分初始化、shared恢复与路由KD是方法构造；我们的这些控制不是效率/恢复方法创新。
 8. **ownership/compression risk：** “总函数/任务监督不足以明确路由、teacher路由信息有助恢复”已有直接近邻，不能把E136/E139写成首次teacher-guided routing发现。中间MSE/函数恢复工具也不新。可保留的增量是固定原生函数目标、配对初始化下组织协议对跨训练实际计算分解的作用及teacher共同偏差与学生间变异分离；是否全文还有更近证据不确定。
 9. **动作：** 标为强相关待全文复核的定位项，**不是精确撞车、关线或新实验指令**；不推迟已登记E139，不增匹配/训练条件、不改claim状态。
+
+
+## Explaining the Roles of Experts in Mixture-of-Experts LLMs for Personalization `[证据：仅摘要与元数据；全文未读]`
+[arXiv v1, 2026-10-15](https://arxiv.org/abs/2610.22127)
+1. 作者：Sekh Mainul Islam、Pepa Atanasova、Isabelle Augenstein；页面标Under review，未认定接收。
+2. 来源（DOCUMENTED, abstract）：个性化改变如何定位至MoE专家；对三种公开MoE做个性化，paired activation crosscoder定位相关latent，再做行为恢复/专家boost干预。
+3. 位置：已有“专家所承载的可干预功能/适应内容”叙事；不能把单模型功能定位或expert boosting当本题新意。
+4. 与本题距离：本题固定prefix/总Y目标，从配对初始化比较独立学习协议及cohort变异。未读正文，不能断言其没有跨seed分析；这只是有阅读边界的定位，不是精确撞车判决。
+5. 发现入口：zachysun/DailyArXiv README（页面最近更新2026-10-19、最新收录10-15），已回原arXiv摘要核对；不能把该镜像当10-26完整最新覆盖。

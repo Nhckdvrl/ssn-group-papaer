@@ -22,6 +22,7 @@
 - 两组初值与固定终点都报告，不将对齐后差异声称为数学不可识别性。校准图样可能过拟合，held应用固定映射；区间不包含重新拟合映射的不确定性。
 - 自由组三个终点相对teacher及三个学生对的自然Dolma/POS预测KL、NLL、top1全部报告。POS使用真FP32最后head，Dolma沿BF16 logits→FP32 logsoftmax，精度路径分开。固定组预测以SHA绑定复用E138。
 - 辅助A只沿原自然drop实际贡献采新增seed0/2；seed1复用E135；如报告自由组A对应，只用上述cal component映射，不再cal-U/route新搜索。POS覆盖限制（teacher/fixed 42/51/52 target-on=0）完整保留，不称64个独立内容证据。
+- 两组比较报告同一群体/单位下free−fixed的有限cohort点差，并用相同file/word重采样索引给paired输入区间；不拿两组CI重叠代替差值分析，不将输入区间当处理效应的seed总体不确定性。
 - 原始逐序列/逐expert充分统计、输入/源码/权重SHA保存。Dolma file/POS word的1000次seed139 cluster bootstrap只是给定cohort的输入不确定性，不是初始化总体CI；三个重叠seed pair不当独立n。
 
 ## 阳性对照、噪声地板 + MIE、决策表（跑之前写）
@@ -41,3 +42,8 @@
 03:22:52 UTC两臂在`base.restore_rng`缺少CUDA RNG字段处退出，未写initial/checkpoint、未执行任何optimizer update；不是分数失败，不丢弃任何seed。原源c118b4…ce600d及失败proof保存在`~/mechpop_cache/e139_device_setup_failure_032252`，摘要`results/e139/device_setup_failure.json`。两次耗时合计1.008811秒仍计入原E139 ledger，不清零。只修CUDA状态初始化，保持同实验配置/初值，修正后重启原seed，使用新launch文件保留原记录。
 
 - 修复后source SHA `93ac8504e21364ca94d6dd5ca18c22493850c41e74b7f0d1cfe12b398e3bcbac`，CPU mock覆盖CUDA新运行/CPU/resume，完整/断点自检及真实预检通过。03:26:50 UTC同GPU0/1重启PID876325/876326；初值/目标/超参不变，失败预算未清零，初版source保留。
+
+### 完整训练终点与读数冻结（新held component分析前）
+- 新自由seed0/2全部4096完整、9个预定MSE事件保留，held固定train-energy MSE=.17027721505543736/.1704162564373377；复用seed1(E135)=.1693501617。无seed筛选或续训。
+- 读数源`e139_components.py` SHA `ce8e7029f707b735770a4915bbca4e53406033867bea4d4683a0b0c7fe7342b2`；`e139_readout.py` SHA `6ac6444b6b61dfc7b4380e8d4ad05c81286dbd6bfec9d6bac386060ff2e359e9`冻结，原训练SHA不变。CPU/非自逆置换/不同support零散射/方差双恒等式/paired输入CI/mapped-A已知答案及真实初始资产预检通过；完整终点CPU预检正在执行，随后才GPU读数。
+- Hcal沿原8192整体reshape B16×512 native程序，cal cost存原始SSE（除8192即原定义MSE，同一最优置换）；未中心化/缩放。固定与自由A都由各自该cal映射CPU重标，fixed identity另保留。不物理重排权重，避免引入新的BF16平局效应。

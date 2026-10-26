@@ -31,3 +31,12 @@
 ## E134必要性检查后的新增发现入口（2026-10-26）
 
 按“uniform routing / averaging / expert redundancy”搜索后回原文核对两篇，详细阅读范围见根library同日论文卡。Rethinking Routing Exploration（2610.22353v1，10-15）已拥有显式共享专家影响占优、随机路由敏感性与探索障碍的诊断；Coherent Overlap（2607.28308v1，07-30）已用冻结路由增添/替换证明几何重叠不能判定预测价值。E134与前者的显式共享架构、后者的输入线性子空间不同；这种距离只是定位，不自动构成论文增量。若继续做随机路由或均匀分量检查，须作为当前跨训练问题的诊断，不再包装一般“路由/几何不等于功能”的发现。未做新颖性自动判决或改线状态。
+
+## E139前的新主问题定位（2026-10-26；held新结果前）
+- 当前主问题：固定表示、原生总函数目标与预算，总函数监督及额外输入分配信息分别把跨训练实际计算分解约束到何种程度。不是认领蒸馏、路由指导或匹配算法。
+- 已运行venue corpus nearest检索 `Mixture of experts functional decomposition reproducibility across training fixed routing function matching expert identifiability`；出现Union-of-Experts（ACL2026 Main）、Expert Divergence Learning（ICLR2026 Poster）、The Illusion of Specialization（ACL2026 Main）等。检索相近不等于全文或精确撞车，具体跨seed功能内容尚未在本轮重读；热度/分数不作去留判决。
+- 新近邻RRD：作者实验室官网列ICML2026 Workshop，官方代码README可读，含dense拆分MoE、teacher magnitude-topK路由指导、中间输出恢复、共享专家。论文PDF/新版本全文受403未核对、后续正式接收未确认。**Compression risk：** 若把E139写成“teacher routing helps recovery”，会被已有方法压缩。应检验配对free/fixed协议下共享teacher偏差、学生总Y变异与实际component变异的分离；是否形成足够增量仍待数据与人审，不自动判死。出处/边界见根library当日RRD卡。
+- 经典可识别性近邻2402.02952v2、2309.13850v2已核对所记章节：dense确定性回归的strong-identifiability与topK条件混合密度并非当前finite-budget BF16 neural block的无条件保证。反之，也不能预设sum-only监督天然结构不可识别。自主充分条件推导及适用限制见`MOE_IDENTIFIABILITY_SCOPE_2026-10-26.md`，未认领理论新颖性。
+- E139使用actual-component cal-MSE Hungarian仅为单一预定商置换工具，既有REAP/REAM/activation matching ownership保留；seed1锚定不穷尽所有对应、非三模型joint最优。所有matched free/fixed结果和函数差均报告，不做teacher恢复准入。
+
+- DailyArXiv两入口检查：zachysun/main可读但更新止10-19；zezhishao/main README为404，不作完整最新覆盖声称。由前者发现2610.22127并回原arXiv摘要核对：个性化MoE/paired crosscoder/行为恢复与expert boost，全文未读。它约束一般“可干预专家功能”ownership，当前仅带边界定位，卡已记。
