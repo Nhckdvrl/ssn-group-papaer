@@ -9,6 +9,10 @@
 - **噪声地板 + MIE：** 固定新 batch 的 BF16/Top-k/归约与重复前向地板；不设恢复率或任意科学准入线，见 §6。
 - **决策表（跑之前写）：** 共同 gate 后的差异、预测兼容性及 donor 异质性分别更新解释，见 §7。
 
+> **2026-10-26 执行前补充（尚无新模型读数）：** 用户本轮明确恢复 MoE 科研执行；推进 C09/P27–P29。原 13+teacher 条件、四个 donor、同一接收者、既有 calibration map、64 序列和 2 GPU·时包不变。新 driver 与 E144 共享输入/数值组件，但分开预算和结果。原物理 gate 行先 softmax/Top-k，再按锁定 map 解释公共槽位；按 gate 的原物理行顺序累加，确保 donor native 对角的 BF16 语义。训练侧预检用 E135 原 train batch0，包含 self/joint-permutation、四 donor native 对角及预测指标。只问终点兼容性，不声称训练轨迹或普遍历史效应。
+> 同一批实际组件同时重算 R/S 的 native C/V，再与共同 G_A 下的 C/V 对照；不额外增加模型前向，避免以旧完整 held 的统计代替新子集的 native 差异。
+> 理论接口审计仅作 CPU 已知答案：核对完整 softmax 后截断且不重归一时的 router 梯度，与 Top-k 内归一的差别。固定合成 logits/常数输出及 tiny HF 块，不用研究输入、不变更训练，不作为新机制证据。
+
 ## 1. 为什么现在做：把一个有信息量的终点问题先问清
 
 [E142](E142-shared-random-router-cohort.md) 已观察到本有限 cohort 的 actual 组件变异较 R 低，但 actual 组件同时包含支持集、门值和专家输出。低变异不能直接改称“语义分工更一致”，也没有证明早期梯度同步、后期共同漂移等时间机制。

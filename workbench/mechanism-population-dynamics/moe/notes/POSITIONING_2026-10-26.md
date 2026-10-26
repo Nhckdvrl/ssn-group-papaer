@@ -1,5 +1,18 @@
 # MoE 近邻定位补充（2026-10-26）
 
+## 本轮执行前检索补充
+
+本轮重跑 venue corpus nearest：`MoE expert router coupling component recombination training history`。召回 ERC、PASs-MoE、FURINA 等；回一手页面核对，不把分数/接收标签用于科学判决。最新 arXiv 另查到 10-20 的 NR-SAE。当前增量必须落在**同一个原生语言接口下，跨训练历史、合法来源重组与完整预测后果的连接**，不能认领一般的 router–expert 耦合、专家复用或逐专家重构。
+
+| 近邻与本轮阅读范围 | ownership / compression risk | 与本轮的具体距离 |
+|---|---|---|
+| [ERC，ICLR 2026 官方摘要](https://proceedings.iclr.cc/paper_files/paper/2026/hash/79ff18412c1a5816f071a796375abc3d-Abstract-Conference.html)，只核对摘要 | router 表征与专家激活耦合的训练方法已有直接工作；高风险于泛称“让路由匹配能力” | 本轮不提出耦合损失；区分配对历史终点的 bank/gate 兼容性，不能据摘要断言它没有相关消融 |
+| [PASs-MoE](https://arxiv.org/abs/2601.13020)，只核对原摘要 | 持续学习里 router/expert co-drift 与保留已有研究；高风险于一般“共同漂移破坏分工”叙事 | 对象为多模态 MoE-LoRA 的连续任务；本轮是同一总函数目标/接口的重复学习与交叉使用，不观测时间轨迹 |
+| [The Router Already Knows](https://arxiv.org/html/2610.27421v1)，10-20 预印本，读 §1–3 与限制 | 原生 expert identity 帮助分量重构已有直接结果；不能认领专家身份有重构价值 | 其明确未检验下游损失/因果忠实度；E144直接重跑下游，且问跨学生拆散来源，不是 SAE 效率或语义解释 |
+| [MoRE](https://arxiv.org/abs/2609.18176)，只核对原摘要 | 跨层专家池复用属于成熟可用研究动作 | 不是不同训练来源的重组；仅作更大研究空间参照，不当最近的同主张先例 |
+
+本轮重读 [Routers Learn the Geometry](https://arxiv.org/html/2605.12476v1) §2–3 后发现接口适用限制：其掩码归一叙述不能直接用于 OLMoE 的完整 softmax 后截断/不重归一。具体梯度和 CPU 核对在[方向文档](../RESEARCH_DIRECTION.md) §4.1；这是推导适配，不是以论文差异认领新机制。
+
 > **历史定位快照。** 用户经后续讨论已确认方向并授权整理与初步设计。本文保留原检索范围，当前母问题、补充近邻与 E144–E146 设计见 [研究说明](../RESEARCH_DIRECTION.md)；旧建议不自动构成运行队列。
 
 

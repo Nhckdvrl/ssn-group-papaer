@@ -1,6 +1,6 @@
 # 研究方向：任务、学习历史与专家职责的可组合性
 
-**更新：2026-10-26。方向已由用户确认；本轮整理文档与初步实验设计，模型执行仍为 PAUSED。**
+**更新：2026-10-26。方向已由用户确认；本轮用户进一步明确授权科研执行；E144/E145 已进入实现与运行前预检，不启动新训练。**
 
 本文是 MoE 当前方向的正式说明；旧阶段总结与暂停记录作为历史保留。头线继续 CLOSED，其他 workbench 的 ACTIVE 分配不变。本文承接 [C09](../CLAIMS.md) 与 [P22、P26–P31](../PAIN_LOG.md)，不自动升级主张等级。
 
@@ -121,6 +121,8 @@ $\ker B$ 是实际组件贡献未改变的方向；$\ker A/\ker B$ 才对应组�
 [P2：ICML 2024](https://proceedings.mlr.press/v235/nguyen24f.html) 支持“总体回归函数估计与组件恢复可能不同难”，其强可识别条件、过设定与高阶 gate/expert 耦合不能省略。论文的样本数 n 不是优化步数；它没有证明本实验的 4096 步通过微小特征值留下了这份共同偏差。
 
 [NTK 原文](https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks.pdf) 提供固定核平方损失下的条件动力学参照。普通梯度流、固定 gate 时，专家更新包含 $q_e(h')K_e(h,h')$，总输出核包含 $\sum_e q_e(h)q_e(h')K_e(h,h')$。这使“共享输入组织”具体化；真实可学习 Top-8、SwiGLU 特征变化、辅助损失与 AdamW 尚未由该近似解释。
+
+**2026-10-26 接口校对（代数，非新动力学结果）：** 本模型是完整 softmax 后截断且不重归一。离开 Top-k 边界、忽略量化，令 $g=\partial L/\partial Y$，其 task router 梯度为 $\partial L/\partial z_j=p_j[\mathbf1_{j\in S}g^\top f_j-g^\top Y]$。未选行仍含 $-p_jg^\top Y$，不需要 aux 才产生该项；专家函数的 task 梯度仍仅在被选时出现。Top-k 内重新归一则不同。因此 [Routers Learn the Geometry §2–3](https://arxiv.org/html/2605.12476v1) 的掩码归一接口与“只累计被路由 token”解释不能未经适配直接搬到这里。已有共同初态事实不变，也未因此识别出其作用机制。[CPU 公式/actual tiny HF 梯度核对](results/e145/router_derivative_check.json)与[源码](scripts/e145_router_derivative_check.py)只验证这个接口边界。
 
 ### 4.2 同一 gate 下拆散来源：C−V 是精确平方误差差值
 

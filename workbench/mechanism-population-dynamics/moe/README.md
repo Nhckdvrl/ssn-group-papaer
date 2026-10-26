@@ -1,6 +1,6 @@
 # MoE：任务、学习历史与专家职责的可组合性
 
-**状态（2026-10-26，用户决定）：** 方向已确认，文档与首轮实验设计已整理；模型执行仍为 PAUSED，本轮没有新模型运行。E120–E142 是已有实验，E143 保留备选，E144/E145 为首批核心设计，E146 为条件后续。头线继续 CLOSED。
+**状态（2026-10-26，用户决定）：** 方向已确认，文档与首轮实验设计已整理；模型执行已获本轮用户明确授权，E144/E145 训练侧预检进行中，尚无新 held 读数。E120–E142 是已有实验，E143 保留备选，E144/E145 为首批核心设计，E146 为条件后续。头线继续 CLOSED。
 
 ## 1. 当前问题与阅读入口
 
@@ -28,14 +28,14 @@
 
 | 优先级 | 卡片 | 直接问题 | 当前状态 |
 |---|---|---|---|
-| 核心 1 | [E144：固定 gate 重组](experiments/E144-fixed-gate-recombination.md) | 保持共同 teacher gate，比较三学生整套来源与逐专家独立来源；层误差是否传到真实 KL/NLL？ | PLANNED；30 变体，复用终点，无训练 |
-| 核心 2 | [E145：gate × bank 交叉](experiments/E145-history-gate-bank-cross.md) | 用 R/S 共同 seed1 作接收者，四 donor 的 gate/bank 四格，区分当前路由与专家兼容性 | PLANNED；13 变体，含 teacher 至多 14，无训练 |
+| 核心 1 | [E144：固定 gate 重组](experiments/E144-fixed-gate-recombination.md) | 保持共同 teacher gate，比较三学生整套来源与逐专家独立来源；层误差是否传到真实 KL/NLL？ | 运行前预检；30 变体，复用终点，无训练 |
+| 核心 2 | [E145：gate × bank 交叉](experiments/E145-history-gate-bank-cross.md) | 用 R/S 共同 seed1 作接收者，四 donor 的 gate/bank 四格，区分当前路由与专家兼容性 | 运行前预检；13+teacher 变体，无训练 |
 | 条件后续 | [E146：分组重组](experiments/E146-grouped-recombination.md) | 保留组内共同来源是否比同大小随机组更能保持预测？ | PLANNED；8×8 粒度、4 分区、48 新 bank；依 E144 读数判断必要性 |
 | 暂存备选 | [E143：跨公开模型路由分工](experiments/E143-cross-model-routing-division.md) | 不同完整模型的组织是否对应 | 原协议保留；不进入本批 |
 
 三卡共用旧 Dolma held 中按 SHA 预定的 64 条完整序列（32768 位置），冻结成四个新 B16 batch；同子集重测原生基线、C/V 和数值地板。旧 held 已用于探索，不称新独立确认。E144 的来源 MC、E145 的两对 donor 和 E146 的四个来源基础向量各自保留正确统计单位。
 
-当前只完成设计，新 GPU driver、selected/source maps 和 E144–E146 结果均未生成。直接测完整下游 KL/NLL 优先于完整 Fisher 计算；新训练、时间轨迹、接收者旋转和更多模型仅在具体未决问题需要时讨论。资源上限与实现正确性检查不代替科学效果判断。
+已完成 E144/E145 driver、CPU 已知答案与 8 份终点核验；selected/source maps 已冻结（64 序列、22 文件簇），两卡分别用一张卡做训练侧预检，尚无 held 结果。E146 仍未运行。直接测完整下游 KL/NLL 优先于完整 Fisher 计算；新训练、时间轨迹、接收者旋转和更多模型仅在具体未决问题需要时讨论。资源上限与实现正确性检查不代替科学效果判断。
 
 ## 4. 主张与痛点
 
@@ -59,4 +59,4 @@
 
 历史代码在 [scripts](scripts/)，历史摘要在 [results](results/)；不修改旧脚本与实验结果以迎合新解释。已有 initial/final 权重和中间 loss 标量不等于中间参数轨迹。
 
-原机器上的大权重、token 与数组依 [ASSETS.md](ASSETS.md) 和各 manifest 核验；当前文档环境不证明它们已挂载。首轮推理只依赖所需终点、原 token 与元数据，不因旧训练 preflight 而自动重建约 71.7GB H/Y cache。大文件不进入 Git。
+原机器上的大权重、token 与数组依 [ASSETS.md](ASSETS.md) 和各 manifest 核验；本轮已实际核验所需 8 份终点与公共模型文件，证明见 results/e144/asset_preflight.json。首轮推理只依赖所需终点、原 token 与元数据，不因旧训练 preflight 而自动重建约 71.7GB H/Y cache。大文件不进入 Git。

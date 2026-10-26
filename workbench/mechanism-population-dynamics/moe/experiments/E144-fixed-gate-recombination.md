@@ -9,6 +9,8 @@
 - **决策表（跑之前写）：** 层误差、预测 KL 与标签 NLL 的组合结果分别更新解释，见 §7；不自动关线或扩网格。
 - **运行依据：** 用户于 2026-10-26 授权固定方向、整理与初步设计；本卡不等于已授权启动额外训练，也不表示模型资产已挂载。
 
+> **2026-10-26 执行前补充（尚无新模型读数）：** 用户本轮明确恢复 MoE 科研执行并授权 SSH 节点、缓存模型，探索并发上限 8 GPU。推进 C09/P31；本卡原 64 序列、24 来源组合、三主读数和 3 GPU·时包不变。复用 `~/.venvs/mechpop`，仅推理；训练侧预检固定为 E135 原 `train_tokens.npy` 的第 0 个 B16 batch。新实现独立解析耐久归档，核对原 checkpoint/tensor SHA、step4096、cache identity 与公共模型，不要求恢复训练 H/Y cache。E145 共用冻结 selected。参数为只读；数值实现和已知答案先检验再读 held。现有卡已满足 R3，不为实现另建实验编号。
+
 ## 1. 固定资产、算子与范围
 
 复用 [E138](E138-fixed-assignment-student-reproducibility.md) 的 F 三学生：seed0/2 的 E138 终点与 seed1 的 E136 终点，全部 step4096。模型为 OLMoE-1B-7B-0924，L9（0 起算）、64 experts、Top-8、全 softmax 后取 Top-8 且不重归一；原生 prefix/downstream 冻结。三者共同 teacher gate 与物理槽位对应保持原值，不重新匹配、不重标定、不筛学生。
