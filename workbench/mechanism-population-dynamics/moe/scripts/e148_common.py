@@ -196,7 +196,13 @@ def train_step(model, optimizer, tokens, lr, *, microbatch=2, observe=False):
     grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), SPEC["grad_clip"], error_if_nonfinite=True)
     probes = {}
     if observe:
-        for name in ("model.layers.0.self_attn.q_proj.weight", "model.layers.9.mlp.gate.weight", "model.layers.9.mlp.experts.0.up_proj.weight"):
+        params = dict(model.named_parameters())
+        active = [name for name, p in params.items() if name.startswith("model.layers.9.mlp.experts.") and name.endswith("up_proj.weight")
+                  and p.grad is not None and float(p.grad.square().sum()) > 0]
+        if not active: raise RuntimeError("No L9 expert receives a nonzero task/aux gradient")
+        # This is a training-leverage control, not expert/seed selection: every
+        # expert remains trainable and retained. An off-support expert is valid.
+        for name in ("model.layers.0.self_attn.q_proj.weight", "model.layers.9.mlp.gate.weight", active[0]):
             p = dict(model.named_parameters())[name]
             probes[name] = {"before": p.detach().clone(), "gradient_rms": float(p.grad.square().mean().sqrt()) if p.grad is not None else None}
     optimizer.step()
@@ -215,6 +221,19 @@ def cpu_tree(value):
     return value
 
 
+def buffer_state(model):
+    # RoPE inv_freq is nonpersistent in HF. state_dict alone is insufficient
+    # after a dtype conversion, even when every parameter was restored exactly.
+    return {k: v.detach().cpu().clone() for k, v in model.named_buffers()}
+
+
+def restore_buffers(model, state):
+    current = dict(model.named_buffers())
+    if set(current) != set(state): raise ValueError("Registered buffer layout changed")
+    with torch.no_grad():
+        for key, value in state.items(): current[key].copy_(value.to(current[key]))
+
+
 def save_torch(path, obj):
     path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(".partial")
@@ -228,10 +247,12 @@ def snapshot(model, optimizer, branch, step, plan, chains, *, full):
         if k.startswith("model.layers.9.mlp.") or ".mlp.gate." in k}
     obj = {"schema": "E148-full-v1" if full else "E148-thin-v1", "experiment": "E148", "branch": branch, "step": step,
            "state": state, "optimizer": cpu_tree(optimizer.state_dict()) if full else None,
+           "buffers": buffer_state(model),
            "torch_rng": torch.get_rng_state(), "cuda_rng": torch.cuda.get_rng_state(0).cpu(),
            "spec_hash": plan["spec_hash"], "plan_sha256": plan["plan_sha256"], "source_sha256": code_proof(), "chains": dict(chains)}
     proof = save_torch(directory / f"{'full' if full else 'thin'}_{step:06d}.pt", obj)
-    proof.update(step=step, branch=branch, schema=obj["schema"], state_tensor_sha256=old.tensor_hash(state))
+    proof.update(step=step, branch=branch, schema=obj["schema"], state_tensor_sha256=old.tensor_hash(state),
+                 buffer_tensor_sha256=old.tensor_hash(obj["buffers"]))
     write(directory / f"snapshot_{step:06d}.json", proof)
     del obj, state
     return proof
@@ -244,6 +265,7 @@ def restore(model, optimizer, proof, plan):
     if cp["schema"] != "E148-full-v1" or cp["spec_hash"] != plan["spec_hash"] or cp["plan_sha256"] != plan["plan_sha256"] or cp["source_sha256"] != code_proof():
         raise ValueError("Parent endpoint/config identity differs")
     model.load_state_dict(cp["state"], strict=True)
+    restore_buffers(model, cp["buffers"])
     optimizer.load_state_dict(cp["optimizer"])
     torch.set_rng_state(cp["torch_rng"]); torch.cuda.set_rng_state(cp["cuda_rng"], device=0)
     return cp["step"], cp["chains"]

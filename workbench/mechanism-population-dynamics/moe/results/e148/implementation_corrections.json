@@ -2,7 +2,7 @@
   "records": [
     {
       "stage": "CPU_known_answer_before_GPU",
-      "status": "failed_resume_check",
+      "status": "fixed_CPU_resume_exact",
       "source_sha256_before_fix": {
         "e148_common.py": "7b8d6e6c721ba0f86a19777d25b74e790b03c4dbd3e4a2fe1c7de86e8ee6bb9a",
         "e148_native.py": "e94659d25c6dbc71eebbd60fd24119b7782586c36a72def2ea771df34c3a31e4",
@@ -12,7 +12,19 @@
         "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
       },
       "unchanged_plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
-      "diagnosis_pending_confirmation": "Nonpersistent rotary buffers are absent from model.state_dict; restored constructor buffers can differ after BF16->FP32 conversion. Preserve all named buffers in full snapshots."
+      "diagnosis_pending_confirmation": "Nonpersistent rotary buffers are absent from model.state_dict; restored constructor buffers can differ after BF16->FP32 conversion. Preserve all named buffers in full snapshots.",
+      "confirmed_nonpersistent_buffer": "model.rotary_emb.inv_freq",
+      "constructor_difference_max_abs": 9.765475988388062e-05,
+      "source_sha256_after_fix": {
+        "e148_common.py": "f40fe9fc283eace3519fec1821c825711457ccbf07fc05d2021a3ef6405f6ef6",
+        "e148_native.py": "0ee635de481bb9d1ee29dcc08c5514cad5bc18d81736387cd46e10d4aa5b2c52",
+        "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+        "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+        "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+        "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+      },
+      "plan_bytes_unchanged": true,
+      "scientific_readouts_before_fix": 0
     }
   ]
 }

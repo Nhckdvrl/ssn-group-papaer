@@ -120,6 +120,10 @@ def train(plan, physical, branch):
                 if loaded_hash != parent["snapshots"][-1]["state_tensor_sha256"]:
                     raise ValueError("Reloaded common parent differs")
                 result["initial_parent_state_sha256"] = loaded_hash
+                buffer_hash = c.old.tensor_hash(c.buffer_state(model))
+                if buffer_hash != parent["snapshots"][-1]["buffer_tensor_sha256"]:
+                    raise ValueError("Reloaded nonpersistent parent buffers differ")
+                result["initial_parent_buffer_sha256"] = buffer_hash
                 result["parent_checkpoint_sha256"] = parent["snapshots"][-1]["sha256"]
                 order = arrays["order_B"] if branch == "B" else arrays["order_A"]
                 stream = [("pulse", int(i), 33+j) for j, i in enumerate(order)] + [("suffix", i, 161+i) for i in range(512)]

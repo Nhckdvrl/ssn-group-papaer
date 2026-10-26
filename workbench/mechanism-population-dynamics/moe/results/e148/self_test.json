@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "CPU_only": true,
+  "checks": {
+    "BF16_native_vs_functional_shader_exact": true,
+    "functional_restores_FP32_parameter_identity": true,
+    "manual_next_token_and_native_aux_match": true,
+    "FP32_master_gradient_max_abs_from_native_BF16": 0.0,
+    "small_updates_retained_in_FP32_masters": true,
+    "saved_optimizer_parent_resumes_exact_update": true,
+    "pulse_complete_batch_multiset_and_suffix_chain": true,
+    "paired_input_file_units": true
+  },
+  "source_sha256": {
+    "e148_common.py": "f40fe9fc283eace3519fec1821c825711457ccbf07fc05d2021a3ef6405f6ef6",
+    "e148_native.py": "0ee635de481bb9d1ee29dcc08c5514cad5bc18d81736387cd46e10d4aa5b2c52",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+  },
+  "software": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "Adafactor_source_sha256": "58ccaf2c61a19a9995c044d58ee310eb50b8243dd22128345c8fe70611ef6cb9"
+  }
+}

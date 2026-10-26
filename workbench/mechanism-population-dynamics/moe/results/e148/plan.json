@@ -37,10 +37,10 @@
   },
   "spec_hash": "4582b24aaae3038b4744c50a32dcaae4fa263a19a8d538507a2844d7bb9e0d89",
   "source_sha256": {
-    "e148_common.py": "7b8d6e6c721ba0f86a19777d25b74e790b03c4dbd3e4a2fe1c7de86e8ee6bb9a",
-    "e148_native.py": "e94659d25c6dbc71eebbd60fd24119b7782586c36a72def2ea771df34c3a31e4",
-    "e148_readout.py": "91e08af04f05f3786e72bacefe3bdee81f23db3745281d854dd496f00021bd2f",
-    "e148_test.py": "b0043b282c81aa7655ca33a85b81dc8620cc53b2abcfd8ef5053ddb8b5ff4d8a",
+    "e148_common.py": "f40fe9fc283eace3519fec1821c825711457ccbf07fc05d2021a3ef6405f6ef6",
+    "e148_native.py": "0ee635de481bb9d1ee29dcc08c5514cad5bc18d81736387cd46e10d4aa5b2c52",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
     "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
     "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
   },
@@ -3497,5 +3497,6 @@
   "old_held_excluded": 512,
   "new_held_available": 1421,
   "input_file_clusters": 20,
-  "scope": "One native pretrained parent; only the order of 128 complete batches differs. A-repeat is not an independent seed. Held exclusion is relative to the specified old512, not a claim that no historical evaluation ever touched these windows."
+  "scope": "One native pretrained parent; only the order of 128 complete batches differs. A-repeat is not an independent seed. Held exclusion is relative to the specified old512, not a claim that no historical evaluation ever touched these windows.",
+  "implementation_revision_before_GPU": "all named buffers saved/restored; frozen input/spec unchanged"
 }

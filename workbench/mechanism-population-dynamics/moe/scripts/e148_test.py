@@ -56,9 +56,10 @@ def main():
     checks["small_updates_retained_in_FP32_masters"] = True
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp)/"tiny.pt"
-        c.save_torch(path, {"state": c.cpu_tree(master.state_dict()), "optimizer": c.cpu_tree(optimizer.state_dict())})
+        c.save_torch(path, {"state": c.cpu_tree(master.state_dict()), "optimizer": c.cpu_tree(optimizer.state_dict()), "buffers": c.buffer_state(master)})
         cp = torch.load(path, mmap=True, map_location="cpu", weights_only=False)
         restored = OlmoeForCausalLM(config).float().eval(); restored.load_state_dict(cp["state"])
+        c.restore_buffers(restored, cp["buffers"])
         ropt = c.make_optimizer(restored); ropt.load_state_dict(cp["optimizer"])
         for model, opt in ((master, optimizer), (restored, ropt)):
             opt.zero_grad(set_to_none=True)

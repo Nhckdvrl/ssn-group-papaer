@@ -34,6 +34,8 @@ def completed():
     for name in ("A", "B", "A-repeat"):
         if records[name]["parent_checkpoint_sha256"] != parent["sha256"] or records[name]["initial_parent_state_sha256"] != parent["state_tensor_sha256"]:
             raise ValueError("Forks did not start from exactly one parent")
+        if records[name]["initial_parent_buffer_sha256"] != parent["buffer_tensor_sha256"]:
+            raise ValueError("Fork parent RoPE/buffers differ")
     if len({records[n]["chains"]["suffix"] for n in ("A", "B", "A-repeat")}) != 1:
         raise ValueError("Common suffix byte/order chain differs")
     pools = {}
@@ -60,6 +62,7 @@ def load_receiver(record, step):
     if cp["schema"] != "E148-full-v1": raise ValueError("Complete receiver state required")
     model = c.load_bf16().float().eval()
     model.load_state_dict(cp["state"], strict=True)
+    c.restore_buffers(model, cp["buffers"])
     return model, info
 
 
@@ -173,6 +176,14 @@ def stats(values, plan):
     return input_stats(np.asarray(values), plan["selected"], 148001)
 
 
+def q9_from_capture(raw):
+    selected = raw["selected"][9::16].reshape(-1, 8)
+    weights = torch.from_numpy(np.array(raw["weights"][9::16], copy=True)).view(torch.bfloat16).double().numpy().reshape(-1, 8)
+    q = np.zeros((len(selected), 64), np.float64)
+    np.put_along_axis(q, selected.astype(int), weights, axis=1)
+    return q
+
+
 def analyze():
     plan, records = completed()
     result = {"experiment": "E148", "status": "complete", "source_sha256": c.code_proof(), "natural": {}, "pairs": {}, "grafts": {},
@@ -214,13 +225,20 @@ def analyze():
         parent = evaluation(records["parent"], 32)
         with np.load(parent["routing"]["path"], allow_pickle=False) as raw:
             parent_selected = raw["selected"].copy()
+            parent_q = q9_from_capture(raw)
+            parent_affinity = parent_q.T @ parent_q / len(parent_q)
         for step in (160, 288, 608, 672):
             info = evaluation(records[branch], step)
             with np.load(info["routing"]["path"], allow_pickle=False) as raw:
                 selected = raw["selected"]
                 overlap = (selected[..., :, None] == parent_selected[..., None, :]).sum((-1, -2))/8
+                q = q9_from_capture(raw)
+                affinity = q.T @ q / len(q)
                 series[str(step)] = {"all_layer_top8_overlap_with_parent": overlap.mean(1).reshape(2, 16).mean(0).tolist(),
-                                     "L9_top8_overlap_with_parent": float(overlap.mean(1).reshape(2, 16).mean(0)[9])}
+                                     "L9_top8_overlap_with_parent": float(overlap.mean(1).reshape(2, 16).mean(0)[9]),
+                                     "L9_applied_gate_mass": float(q.sum(1).mean()),
+                                     "L9_applied_gate_L2_change_per_position": float(np.square(q-parent_q).sum(1).mean()),
+                                     "L9_gate_only_affinity_frobenius_change": float(np.linalg.norm(affinity-parent_affinity))}
         routing[branch] = series
     result["routing"] = routing
     result["exposure_audit"] = {"common_parent_verified": True, "pulse_multiset_equal": True, "common_suffix_chain": records["A"]["chains"]["suffix"],

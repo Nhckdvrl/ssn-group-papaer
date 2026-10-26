@@ -17,7 +17,7 @@
 - 复用E125耐久Dolma token源；与此模型tokenizer三个文件SHA一致已静态核对，执行时复核。训练/held源文件不重叠。统计从自然语言next-token CE读取，不使用提示词能力探针。
 - 全局batch **2×512=1024位置/更新**，默认microbatch2。若训练侧显存预检OOM，可在所有分支统一改microbatch1/accum2，并在任何新held读数前登记；不根据科学效果改剂量。
 - 训练计划预先生成：warm32个随机batch；pulse128个同源batch（每个batch两序列来自同一source，source按原sampling weight抽）；suffix512个随机batch。计划存token字节/原始file+window与SHA。
-- warm前16步线性lr warmup到1e−5，其后固定；warm32后保存完整FP32模型、optimizer、CPU/CUDA RNG，作为唯一共同parent。
+- warm前16步线性lr warmup到1e−5，其后固定；warm32后保存完整FP32模型、全部registered buffers（含非持久RoPE）、optimizer、CPU/CUDA RNG，作为唯一共同parent。
 - 分支A：pulse完整batch按source及原pool ID字典序排列；分支B：相同128完整batch以固定seed14803置换；A-repeat：逐字复跑A。三分支不改变batch内部组成，全部接受同一个512更新后缀。
 - pulse的batch集合/每个token曝光多重集合必须精确相同；suffix token-chain与cursor必须逐更新相同。三者从同一模型/optimizer/RNG开始，完整保留repeat，不将三分支当三个独立seed。
 - 总step：parent32、pulse-end160、中后缀288、late608、final672。最终每分支640次更新=655360位置，另有共享warm32768位置；三分支总曝光1998848位置（repeat计成本，不算独立科学重复）。
@@ -60,3 +60,5 @@
 ## 结果
 
 尚未运行；无新主张升级。
+
+**GPU前实现修订：** tiny恢复检查定位到RoPE inv_freq不在state_dict，补全所有named_buffers的保存/恢复，保留失败记录；数据字节、LR、剂量与读数均未改变。训练侧专家梯度控制按被调用的固定首个非零梯度专家记录，全部64专家保持可训练和保留，不要求离支持专家在每个batch有梯度。
