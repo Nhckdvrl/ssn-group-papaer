@@ -1,0 +1,39 @@
+{
+  "schema": "E148-E149-execution-seal-v1",
+  "source_commit": "2f4927843473acd909df346212aeddfae44319a4",
+  "sealed_utc": "2026-10-26T18:34:01Z",
+  "metadata_source_package": {
+    "path": "/home/xiang/mechpop_cache/e148_native_order_forks/run_metadata_2f492784.tar.gz",
+    "sha256": "eea5ec963674212ae100d13fa8b778a2e33e2c74b80d46f722848232f040af4e",
+    "size_bytes": 903189,
+    "format": "git archive of the exact committed source, protocol, figures and small provenance/result files; no weights in git"
+  },
+  "e148_durable": {
+    "root": "/home/xiang/mechpop_cache/e148_native_order_forks",
+    "manifest_path": "/home/xiang/mechpop_cache/e148_native_order_forks/archive_manifest.json",
+    "manifest_sha256": "6dd107479cbd146de4c74013bdc5a0b5f76c918158f010a26f384f8f9c1ef5ff",
+    "files": 72,
+    "bytes": 237114164566,
+    "verification": "Each source/destination full SHA checked by archiver during copy; final CPU audit checked unchanged stat identity.",
+    "public_base_model": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B"
+  },
+  "e149_raw": {
+    "path": "/home/xiang/mechpop_cache/e149_native_source_cube/cube_metrics.npz",
+    "sha256": "fbd55f0641c20a6044a7f0fe5fecc4f142f9428e39d6d553ef9c109ffd28ecac",
+    "size_bytes": 5114827
+  },
+  "result_proofs": {
+    "moe/results/e148/summary.json": "467f1b4c49f3803b6018e98b9f1ea16dd162085acd892193c27669361a9ee9be",
+    "moe/results/e148/grafts.json": "c106494d5e5d8d45d97625ac50d3a6dc658abdde73ed13f681407d4daf02d6a1",
+    "moe/results/e149/summary.json": "f8c28594a1bd3e6baa540d9d324d13008e0ffede9ba34a455bb46a0b811ec11b",
+    "moe/results/e149/manifest.json": "6f2a7509d06b247292617e5e0df0a7f243b5f3b9a143485a2c4f75e3f2718f7e",
+    "moe/results/e148149_raw_verification.json": "e280c5caf9152b417998a41d595233fc79ca3485c06ccaf227f633ede07e3b4c"
+  },
+  "GPU_hours": {
+    "e148_all_attempts_inclusive": 4.916197610289479,
+    "e149": 0.202382310487123
+  },
+  "max_concurrent_GPUs": 3,
+  "claimed_evidence_level": "C13=L1; no independent L3 audit",
+  "scope": "One public pretrained parent, finite order intervention and reused exact endpoints/inputs. Not independent pretraining seeds or a stable-role/noncomposability mechanism claim."
+}

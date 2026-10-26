@@ -98,6 +98,7 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 - **恢复入口：** 在目标节点建立`/tmp/xiang-moe-20261026/e148`，将上述耐久目录内容`rsync -a`到其中，再将公开`step5000-tokens20B/`内容复制到其`model/`。固定源码/HF4.57.6/torch2.8.0+cu128后，`e148_readout.py analyze`可CPU复算，`e148_analyze_gpu.py --physical-gpu N`是同公式GPU适配；原实验预算账本已结清，复算须单独计资源，不悄悄覆盖原账本。
 - E149无新训练，直接使用E148终点；raw `/home/xiang/mechpop_cache/e149_native_source_cube/cube_metrics.npz`，5,114,827 B，SHA `fbd55f0641c20a6044a7f0fe5fecc4f142f9428e39d6d553ef9c109ffd28ecac`。`results/e149/manifest.json`绑定源码、源checkpoint和输入；`e149_source_cube.py analyze --physical-gpu 0`仅CPU重算。
 - 同研究者从raw独立实现点值/角点/交互代数一致性检查：`scripts/e148149_verify_results.py`，结果`results/e148149_raw_verification.json`；不冒称独立L3校对。
+- [E148/E149封存](results/e148149_artifact_seal.json)绑定源码提交`2f492784`、完整耐久manifest、全部结果proof与实际资源。耐久`run_metadata_2f492784.tar.gz`（903,189 B）是该精确提交的源码/小型结果包，可配合独立大资产恢复；不是新增模型或科学重复。
 
 ## E150新发现的公开成熟分叉（尚在下载，不伪称已可运行）
 
