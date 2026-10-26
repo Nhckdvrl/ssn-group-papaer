@@ -147,3 +147,24 @@
 7. 限制：未读全文，不能据摘要判断跨训练职责实验。
 8. 动作：层函数监督是已有工具。
 9. 对我们：E135用MSE作为科学控制，不认领逐层蒸馏首创。
+
+
+## On Least Square Estimation in Softmax Gating Mixture of Experts `[证据：引言、§2–3；未复核附录证明]`
+[arXiv v2, 2024-06-24](https://arxiv.org/html/2402.02952v2)
+1. 形态：确定性dense softmax加权回归的统计估计理论。
+2. 问题：总回归函数估计何时约束expert函数/参数，以及速率为何依赖函数族。
+3. 来源（DOCUMENTED）：概率Gaussian MoE与确定性回归之间的理论缺口。
+4. 方法：紧参数域/有界输入；定义包含参数导数线性独立的strong identifiability，推导函数误差与参数误差联系。
+5. 最近邻距离：它已拥有“总函数估计与expert恢复不同、函数类决定可恢复性”这个理论问题；不能声称只有sum监督就必然不可识别。
+6. 阅读边界：核对setup及§3定义/定理陈述；非任意SwiGLU/top8有限优化的无条件保证。尤其非线性输入变换条件不能省略。
+7. 对本题：E138共有偏差与cohort variance需分开；近似误差不能直接升级为结构自由度，固定gate解析充分条件也不自动给稳定性界。
+
+## Statistical Perspective of Top-K Sparse Softmax Gating Mixture of Experts `[证据：引言、setup及universal assumptions；未复核证明]`
+[arXiv v2, 2024-02-23](https://arxiv.org/html/2309.13850v2)
+1. 形态：top-K sparse softmax **条件混合密度**的MLE/参数估计理论。
+2. 问题：top-K分区与模型过设定如何改变密度及参数估计。
+3. 来源（DOCUMENTED）：稀疏门控分区使经典MoE统计分析更复杂。
+4. 方法：Gaussian expert密度、紧参数域/有界输入、分区相关损失；其gate先TopK再Softmax，激活专家权重归一。
+5. 最近邻距离：稀疏MoE的可识别性/恢复速率不是空白；本项目对象是确定性vector加权和，不能直接套条件密度可识别性。
+6. 阅读边界：仅核对主setup、假设与结果陈述，不认领已验证其全部扩展。
+7. 对本题：区分条件密度、加权均值与神经块函数；OLMoE no-renorm actual BF16程序与其统计模型不同，须明确映射而非引用标题作保证。

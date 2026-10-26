@@ -2,6 +2,18 @@
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
 
+## P26（2026-10-26）：固定分配组较一致，尚不能归因于路由信息
+- E138固定gate三学生Dolma teacher误差=.162563、共同偏差=.148548、student方差=.014015；多数重建误差是共有偏差。分量方差.031209经负cross −.015262变成sum方差.015947，说明部分抵消，不代表巨大同函数自由度。
+- E139只补匹配free-router seed0/2并复用E135 seed1；同expert初值/目标/缓存/4096预算，两组同唯一cal actual-component置换，fixed identity另保留。比较完整协议，不称纯边界机制；不扫匹配/训练超参或筛拟合。卡在新增GPU前登记。
+
+## P25（2026-10-26）：恢复teacher与独立学习者之间重现是两个估计对象
+- E135–137主要比较新学生与原native teacher；共同未拟合teacher不等于独立学生彼此不重现。不能重新将某个teacher误差设成跨seed准入门槛。
+- E138预定新增seed0/2并明确复用已观察seed1，所有学生同gate/cache/Y目标/4096预算。以全Dolma actual component/Y的等权有限cohort bias/variance/cross covariance为主，预测与POS A辅助且注明support；不用新matcher/gain/恢复阈值，也不把3个pair当独立n。
+
+## P24（2026-10-26）：标量贡献对应提高后，专家向量内容与总和误差仍未分开
+- E136给定teacher分配后，known-identity A=.347、原calU→A=.257（free calU A=.103），但held aggregate MSE仍.157，预测指标并非全向改善。初值A≈.005控制了未学习时的共同支持，却不能完全排除学习共同sum导致的效应。
+- E137前瞻登记一次无新训练的on/off-native-support向量重建：固定teacher/copy/oracle初值/终点与同POS/Dolma群体、actual selected子batch/门值，单列BF16 program floor和FP32 sum-delta cross-term，区分内容恢复、支持外与组合误差，不改旧主读数。
+
 ## P23（2026-10-26）：固定总函数监督后，剩余函数差与联合分配学习仍纠缠
 - E135固定4096的held MSE/teacher能量=.175713，Dolma/POS KL=.042466/.044719；U/A由初值.0169/.0045到.0994/.1032。它说明部分恢复，但不能据剩余指纹差声称同函数自由度。
 - E136预先登记一个assignment oracle：同原始expert/同cache与预算，仅提供并冻结原生gate；已知接口identity下的自然A与原cal-U对应并列，oracle初值A控制共享支持，不以任意NLL/KL通过线筛掉模型。它是信息条件对照，不是新方法或自动修复门槛。

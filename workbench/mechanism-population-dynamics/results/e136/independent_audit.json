@@ -1,0 +1,1338 @@
+{
+  "experiment": "E136",
+  "status": "complete",
+  "readout_sha256": "8ce111953caf5ee81542162859625774287b95c1c7a22da620ef8e3696d06e70",
+  "sources": {
+    "driver_sha256": "276d7042fa8e82ead3b8a32cc65514ee7a4e362a6b7bc2ac300e0612ae7a4421",
+    "capture_sha256": "bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e",
+    "train_sha256": "8c620871df90c2a10ea9be5b629727ce063164483ab8a0d22cb846e6f6841b55"
+  },
+  "proofs": {
+    "oracle_initial": {
+      "profile_sha256": "b52098393eba901b9ca97c86c1b9b702e2745a0837531a4e7ea94350acfd50b3",
+      "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+      "actual_teacher_support_weights_masks_exact": true,
+      "fresh_A_source_sha256": "bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e",
+      "all_unselected_A_zero": true,
+      "natural_noise": {
+        "natural_repeat": {
+          "mean_abs": 0.0,
+          "max_abs": 0.0
+        },
+        "natural_identity": {
+          "mean_abs": 0.0,
+          "max_abs": 0.0
+        }
+      },
+      "coupled_U_reuse": {
+        "verified": true,
+        "source_sha256": "5939862d46d8475a4267fb238f2cc91227a34fd47a9d21312b45719a9186416b",
+        "source_initial_checkpoint_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+        "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "exact_reused_fields": [
+          "U",
+          "background_nll",
+          "zero_nll",
+          "Htarget",
+          "Hcal",
+          "noise_background_identity",
+          "noise_zero_repeat",
+          "noise_inject_repeat"
+        ],
+        "old_random_gate_A_not_reused": true,
+        "old_random_gate_normal_NLL_not_reused": true
+      }
+    },
+    "oracle_final": {
+      "profile_sha256": "0723f2bc125bc0c633cc88f899177382be0aaa9c6538aa18d8d846e9227aab42",
+      "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+      "actual_teacher_support_weights_masks_exact": true,
+      "fresh_A_source_sha256": "bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e",
+      "all_unselected_A_zero": true,
+      "natural_noise": {
+        "natural_repeat": {
+          "mean_abs": 0.0,
+          "max_abs": 0.0
+        },
+        "natural_identity": {
+          "mean_abs": 0.0,
+          "max_abs": 0.0
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "oracle_initial": {
+      "known_identity": {
+        "mapping": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "function": {
+          "U": {
+            "held_mean_rho": 0.0059912627813479835,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.34783778438766894,
+            "conditional_RMS_teacher_oracle": [
+              0.19240188084413418,
+              0.29436448802010745
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                -0.019863592319920204,
+                0.03016246762430948
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                1.734723475976807e-18,
+                8.673617379884035e-19
+              ]
+            },
+            "primary_mean_abs_difference": 8.673617379884035e-19,
+            "primary_CI_max_abs_difference": 6.938893903907228e-18
+          },
+          "A": {
+            "held_mean_rho": 0.005146533887407701,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.06508635454310228,
+            "conditional_RMS_teacher_oracle": [
+              0.04402543956376405,
+              0.054666969230808604
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                -0.059346968183056716,
+                0.09296542264575569
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                1.3877787807814457e-17,
+                4.163336342344337e-17
+              ]
+            },
+            "primary_mean_abs_difference": 6.938893903907228e-18,
+            "primary_CI_max_abs_difference": 1.3877787807814457e-17
+          }
+        }
+      },
+      "cal_U": {
+        "mapping": [
+          44,
+          9,
+          40,
+          19,
+          50,
+          26,
+          33,
+          34,
+          6,
+          63,
+          15,
+          35,
+          29,
+          58,
+          32,
+          22,
+          10,
+          20,
+          47,
+          53,
+          23,
+          21,
+          14,
+          62,
+          13,
+          7,
+          48,
+          57,
+          24,
+          55,
+          31,
+          59,
+          45,
+          37,
+          60,
+          28,
+          3,
+          18,
+          5,
+          1,
+          54,
+          56,
+          49,
+          43,
+          36,
+          41,
+          4,
+          61,
+          0,
+          30,
+          11,
+          16,
+          42,
+          51,
+          17,
+          38,
+          46,
+          12,
+          52,
+          25,
+          27,
+          2,
+          8,
+          39
+        ],
+        "function": {
+          "U": {
+            "held_mean_rho": 0.016879654128717354,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.3497360029551514,
+            "conditional_RMS_teacher_oracle": [
+              0.19240188084413418,
+              0.29436448802010745
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                -0.005194465713695702,
+                0.038169221386164735
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                1.734723475976807e-18,
+                2.0816681711721685e-17
+              ]
+            },
+            "primary_mean_abs_difference": 3.469446951953614e-18,
+            "primary_CI_max_abs_difference": 1.3877787807814457e-17
+          },
+          "A": {
+            "held_mean_rho": 0.020314523412903206,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.0665155685814853,
+            "conditional_RMS_teacher_oracle": [
+              0.04402543956376405,
+              0.054666969230808604
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                -0.02363524498818518,
+                0.055280415399942905
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                1.3010426069826053e-17,
+                4.336808689942018e-18
+              ]
+            },
+            "primary_mean_abs_difference": 6.938893903907228e-18,
+            "primary_CI_max_abs_difference": 0.0
+          }
+        }
+      }
+    },
+    "oracle_final": {
+      "known_identity": {
+        "mapping": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "function": {
+          "U": {
+            "held_mean_rho": 0.2255111169902896,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.19813555653133247,
+            "conditional_RMS_teacher_oracle": [
+              0.19240188084413418,
+              0.13705487358686036
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                0.1923057124035071,
+                0.24913953674874892
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                5.551115123125783e-17,
+                2.7755575615628914e-17
+              ]
+            },
+            "primary_mean_abs_difference": 0.0,
+            "primary_CI_max_abs_difference": 0.0
+          },
+          "A": {
+            "held_mean_rho": 0.3471973974118737,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.04220458449408826,
+            "conditional_RMS_teacher_oracle": [
+              0.04402543956376405,
+              0.034150990050964655
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                0.2503714698258392,
+                0.4012802997315722
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                5.551115123125783e-17,
+                5.551115123125783e-17
+              ]
+            },
+            "primary_mean_abs_difference": 0.0,
+            "primary_CI_max_abs_difference": 0.0
+          }
+        }
+      },
+      "cal_U": {
+        "mapping": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          40,
+          26,
+          35,
+          60,
+          10,
+          11,
+          12,
+          16,
+          14,
+          15,
+          13,
+          45,
+          24,
+          46,
+          20,
+          6,
+          17,
+          23,
+          34,
+          25,
+          19,
+          27,
+          28,
+          29,
+          30,
+          63,
+          53,
+          33,
+          8,
+          18,
+          36,
+          37,
+          38,
+          39,
+          54,
+          41,
+          22,
+          43,
+          44,
+          61,
+          42,
+          47,
+          57,
+          49,
+          50,
+          51,
+          52,
+          32,
+          9,
+          55,
+          56,
+          21,
+          58,
+          59,
+          7,
+          31,
+          62,
+          48
+        ],
+        "function": {
+          "U": {
+            "held_mean_rho": 0.17907408624299803,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.20386928908679575,
+            "conditional_RMS_teacher_oracle": [
+              0.19240188084413418,
+              0.13705487358686036
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                0.13552993828938717,
+                0.21311933858398155
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                2.7755575615628914e-17,
+                5.551115123125783e-17
+              ]
+            },
+            "primary_mean_abs_difference": 2.7755575615628914e-17,
+            "primary_CI_max_abs_difference": 2.7755575615628914e-17
+          },
+          "A": {
+            "held_mean_rho": 0.2572228957387803,
+            "valid_columns": 64,
+            "valid_mapping_positions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "raw_rmse_nats": 0.04263679065677561,
+            "conditional_RMS_teacher_oracle": [
+              0.04402543956376405,
+              0.034150990050964655
+            ],
+            "word_bootstrap": {
+              "ci95": [
+                0.18466378502915431,
+                0.3129216217345179
+              ],
+              "draws": 1000,
+              "seed": 136,
+              "finite_draws": 1000,
+              "undefined_draws": 0,
+              "valid_set_changed_draws": 0,
+              "coverage_comparable": true,
+              "valid_column_histogram": {
+                "64": 1000
+              },
+              "brute_two_draw_mean_errors": [
+                2.7755575615628914e-17,
+                2.7755575615628914e-17
+              ]
+            },
+            "primary_mean_abs_difference": 0.0,
+            "primary_CI_max_abs_difference": 0.0
+          }
+        }
+      }
+    }
+  },
+  "method": "Independent NumPy residualization/Pearson plus SciPy Hungarian only on cal U; both registered mappings retained. 1000 held-word bootstrap seed136 with cal/map fixed and exact valid-set comparison. Two bootstrap draws independently checked by brute row resampling.",
+  "scope": "One assignment-oracle student. Imposed identity/gate/support is supplied information, not discovered natural specialization; CI fixed-model measurement uncertainty only.",
+  "actual_CPU_parameter_proof": {
+    "initial_expert_values_exactly_same": true,
+    "expert_tensors": 192,
+    "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+    "oracle_initial_gate_exact_native_BF16_values_as_FP32": true,
+    "final_gate_exactly_initial": true,
+    "gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+    "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+    "oracle_final_full_tensor_sha256": "b51776965b9c1fc06506012c755b47179fa49ea94b10a901c22544277dcca120",
+    "scope": "CPU mmap parameter proof only; no GPU initialized and no original data/source modified"
+  },
+  "natural_predictions_independent": {
+    "readout_sha256": "8ce111953caf5ee81542162859625774287b95c1c7a22da620ef8e3696d06e70",
+    "natural_rows_sha256": "3e8823cc47ba817825ef9395853bd57ca55890d08b5b77462e83e55a9154c8a0",
+    "conditions": {
+      "oracle_initial": {
+        "POS": {
+          "items": 512,
+          "words": 48,
+          "fixed_source_targets_last_ids_verified": true,
+          "weighting": "equal word means",
+          "max_probability_normalization_error": 6.09715874011485e-07,
+          "natural_NLL_vs_fresh_A_capture_max_abs_difference": 0.0,
+          "metrics": {
+            "kl_teacher_to_student": {
+              "mean": 0.1775025484727429,
+              "ci95": [
+                0.14427618663620295,
+                0.21222892206204752
+              ],
+              "primary_mean_abs_difference": 2.076435723363801e-08,
+              "primary_CI_endpoint_max_abs_difference": 2.4367486528564797e-08
+            },
+            "teacher_nll": {
+              "mean": 2.0311688756506614,
+              "ci95": [
+                1.8119436392908028,
+                2.2559186930999893
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            },
+            "student_nll": {
+              "mean": 2.1901423074047304,
+              "ci95": [
+                1.9660831203459324,
+                2.413702467058179
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            },
+            "nll_gap": {
+              "mean": 0.1589734317540686,
+              "ci95": [
+                0.09999221188714737,
+                0.21840758712894087
+              ],
+              "primary_mean_abs_difference": 2.6443519596242027e-10,
+              "primary_CI_endpoint_max_abs_difference": 1.0952253964857661e-09
+            },
+            "kl_student_to_teacher": {
+              "mean": 0.2604717156101354,
+              "ci95": [
+                0.18957628481297245,
+                0.34478703717652986
+              ],
+              "primary_mean_abs_difference": 1.644968744551889e-08,
+              "primary_CI_endpoint_max_abs_difference": 1.655853890114578e-08
+            },
+            "top1_agreement": {
+              "mean": 0.8206420349802702,
+              "ci95": [
+                0.7854280196077071,
+                0.857943423338644
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            }
+          }
+        },
+        "Dolma_sequence_aggregation": {
+          "tokens": 262144,
+          "metrics": {
+            "kl_teacher_to_student": {
+              "mean": 0.2204276597462587,
+              "primary_mean_abs_difference": 2.7755575615628914e-17
+            },
+            "teacher_nll": {
+              "mean": 2.4178287573850312,
+              "primary_mean_abs_difference": 4.440892098500626e-16
+            },
+            "student_nll": {
+              "mean": 2.6189554326437845,
+              "primary_mean_abs_difference": 4.440892098500626e-16
+            },
+            "nll_gap": {
+              "mean": 0.20112667529773445,
+              "primary_mean_abs_difference": 0.0
+            },
+            "kl_student_to_teacher": {
+              "mean": 0.32018035802117467,
+              "primary_mean_abs_difference": 1.6653345369377348e-16
+            },
+            "top1_agreement": {
+              "mean": 0.806365966796875,
+              "primary_mean_abs_difference": 0.0
+            }
+          },
+          "scope": "Independent sum of saved sequence metrics; no fresh full-Dolma-vocabulary KL calculation."
+        }
+      },
+      "oracle_final": {
+        "POS": {
+          "items": 512,
+          "words": 48,
+          "fixed_source_targets_last_ids_verified": true,
+          "weighting": "equal word means",
+          "max_probability_normalization_error": 5.998979801802307e-07,
+          "natural_NLL_vs_fresh_A_capture_max_abs_difference": 0.0,
+          "metrics": {
+            "kl_teacher_to_student": {
+              "mean": 0.041980318854512526,
+              "ci95": [
+                0.032598084029408295,
+                0.05233215756395787
+              ],
+              "primary_mean_abs_difference": 1.232711328846836e-09,
+              "primary_CI_endpoint_max_abs_difference": 1.1020603180034172e-09
+            },
+            "teacher_nll": {
+              "mean": 2.0311688756506614,
+              "ci95": [
+                1.8119436392908028,
+                2.2559186930999893
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            },
+            "student_nll": {
+              "mean": 2.078338605492099,
+              "ci95": [
+                1.850250658388101,
+                2.30788231520915
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            },
+            "nll_gap": {
+              "mean": 0.047169729841437774,
+              "ci95": [
+                0.022650149900025233,
+                0.07198606728084217
+              ],
+              "primary_mean_abs_difference": 2.6527037511048235e-11,
+              "primary_CI_endpoint_max_abs_difference": 4.768752059902681e-10
+            },
+            "kl_student_to_teacher": {
+              "mean": 0.057382999287978666,
+              "ci95": [
+                0.03748544690669738,
+                0.08202510998653152
+              ],
+              "primary_mean_abs_difference": 8.670058768145417e-10,
+              "primary_CI_endpoint_max_abs_difference": 4.254988056340281e-09
+            },
+            "top1_agreement": {
+              "mean": 0.923667845634757,
+              "ci95": [
+                0.9002667121141383,
+                0.9463802917789588
+              ],
+              "primary_mean_abs_difference": 0.0,
+              "primary_CI_endpoint_max_abs_difference": 0.0
+            }
+          }
+        },
+        "Dolma_sequence_aggregation": {
+          "tokens": 262144,
+          "metrics": {
+            "kl_teacher_to_student": {
+              "mean": 0.03967262985499688,
+              "primary_mean_abs_difference": 0.0
+            },
+            "teacher_nll": {
+              "mean": 2.4178287573850312,
+              "primary_mean_abs_difference": 4.440892098500626e-16
+            },
+            "student_nll": {
+              "mean": 2.448814812393996,
+              "primary_mean_abs_difference": 0.0
+            },
+            "nll_gap": {
+              "mean": 0.030986055012238504,
+              "primary_mean_abs_difference": 6.938893903907228e-18
+            },
+            "kl_student_to_teacher": {
+              "mean": 0.04587002075581458,
+              "primary_mean_abs_difference": 6.938893903907228e-18
+            },
+            "top1_agreement": {
+              "mean": 0.9102554321289062,
+              "primary_mean_abs_difference": 0.0
+            }
+          },
+          "scope": "Independent sum of saved sequence metrics; no fresh full-Dolma-vocabulary KL calculation."
+        }
+      }
+    },
+    "method": "Independent NumPy float64 complete-FP32 POS distribution calculation; 1000 equal-word bootstrap seed51025; no primary statistics helpers."
+  },
+  "audit_totals": {
+    "functional_conditions": 2,
+    "registered_maps_each": 2,
+    "maximum_function_mean_difference_from_primary": 2.7755575615628914e-17,
+    "maximum_function_CI_endpoint_difference_from_primary": 2.7755575615628914e-17,
+    "bootstrap_undefined_plus_valid_set_changes": 0
+  },
+  "fresh_A_scope": "Fresh-A source path and no-old-A reuse verified by frozen source/provenance, zero outside new exact teacher masks, changed A/normal NLL versus random-gate source, and matching new full-POS normal NLL. No GPU/drop-forward regeneration in this CPU audit."
+}

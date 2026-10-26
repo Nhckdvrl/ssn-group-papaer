@@ -1,0 +1,168 @@
+{
+  "archive_path": "/home/xiang/mechpop_cache/e137_support_components",
+  "budget": {
+    "completed_seconds": 47.836726719047874,
+    "limit_seconds": 900,
+    "run_error": null,
+    "seconds": 47.836726719047874
+  },
+  "conditions": [
+    "teacher_reference",
+    "copy",
+    "oracle_initial",
+    "oracle_final"
+  ],
+  "copy_scope": "FP32 storage of exact BF16 teacher values; audit confirms zero content/component error.",
+  "experiment": "E137",
+  "files": {
+    "Dolma_held_positions_sufficient_statistics.json": {
+      "sha256": "df6da416fd5e5c1e23e2ec53c26c00ab31002046e18ede30c327bc07fb24b6ed",
+      "size_bytes": 72131
+    },
+    "Dolma_held_positions_sufficient_statistics.npz": {
+      "sha256": "a3a79bfbf56f1d1b1aeba3cd1c62e785a2c90b3496412a57cea316960384e891",
+      "size_bytes": 9561700
+    },
+    "POS_held_targets_sufficient_statistics.json": {
+      "sha256": "7d981274ad234d68c72b2042bce4a0c6c24d8c527de33aeeb20b6e4af9f6f778",
+      "size_bytes": 139625
+    },
+    "POS_held_targets_sufficient_statistics.npz": {
+      "sha256": "7609dc5c7251e064f86275d50ae8a0b699194d2e664dc3b96d67593f52f2264a",
+      "size_bytes": 9561700
+    },
+    "analysis/e137_plot_components.py": {
+      "sha256": "82cf074c6e47d5afad5d6b59c3d97b75fcd9019b090a82dbb2fd1aeb27f09add",
+      "size_bytes": 10947
+    },
+    "figures/readout_table.json": {
+      "sha256": "c3b8044673976abdaa5e5d5e4b7a0d323e27afff004fde8e35d5127e90fed6d7",
+      "size_bytes": 27070
+    },
+    "figures/support_components.pdf": {
+      "sha256": "6183716d54b6b2d0e28a95f47ceaf7de13a06762c29eb18ca1a3827a9559ad91",
+      "size_bytes": 28732
+    },
+    "figures/support_components.png": {
+      "sha256": "00c4f28d2962c675e0eedd0556c493d3606edbdacfbf0721768ad687878081c7",
+      "size_bytes": 452342
+    },
+    "ledger/e137_budget.json": {
+      "sha256": "0f7078f1ec4fa4f292138f0f725acba1ce4a04c281c5a626925aad84001525f2",
+      "size_bytes": 243
+    },
+    "references/archive_manifest.json": {
+      "sha256": "eae4cbdb24cb894141741debf61e58410a71ac87071c31f196a639617928afc7",
+      "size_bytes": 8773
+    },
+    "references/cache_recipe_archive.json": {
+      "sha256": "2b411e6eda644c13d46680222191b434d71ad5614a6a6528d6dcbb779988d4f7",
+      "size_bytes": 8460
+    },
+    "references/readout_archive.json": {
+      "sha256": "5290eb54f582c19377cf8f33c37330e0abe6e6a6fd42577a99809586a988e824",
+      "size_bytes": 6484
+    },
+    "references/student_archive.json": {
+      "sha256": "fbca7263a2eb88b0b399978cfabd43f87ac5a962b938cb606ebac59a64a9453f",
+      "size_bytes": 2803
+    },
+    "source_scripts/e137_components.py": {
+      "sha256": "86c57c0bc40c14d7778c036e92380e97ef3a071feeba4be484b2b45cc39bee63",
+      "size_bytes": 24251
+    },
+    "summaries/components.json": {
+      "sha256": "a44fa14e448b199831dc600014712deb77e82a4d7f0c19b7bc7127249a1b356e",
+      "size_bytes": 393471
+    },
+    "summaries/components.log": {
+      "sha256": "d509557b132b393bce3f7f30f0ebd77b6c68412120f68c6f6b19e40bfc9ad462",
+      "size_bytes": 399919
+    },
+    "summaries/cpu_preflight.json": {
+      "sha256": "8491421e85c45bcbc9945bf22902274e471251b4b803833fb23e02abb7c5c564",
+      "size_bytes": 5872
+    },
+    "summaries/independent_audit.json": {
+      "sha256": "0ad4997bf2238091d2dd5337c8f47fcb7c089d131dc8ce33f4516ace372d99be",
+      "size_bytes": 409313
+    },
+    "summaries/measurement_launch.json": {
+      "sha256": "e3bbc285d79a5d707c577148c8546b8444596d2f3209509c338ea2155ce97e78",
+      "size_bytes": 886
+    },
+    "summaries/self_test.json": {
+      "sha256": "9d5dad76b90d5e383b9d6af94b94b992e506b1fadc3b5e3159dc449084490723",
+      "size_bytes": 346
+    }
+  },
+  "floor_scope": "Native aggregate, product/shape, and FP32\u2212FP64 accumulation floors are separate sufficient-statistic fields in summary and readout_table.json.",
+  "frozen_script_sha256": "86c57c0bc40c14d7778c036e92380e97ef3a071feeba4be484b2b45cc39bee63",
+  "independent_audit_sha256": "0ad4997bf2238091d2dd5337c8f47fcb7c089d131dc8ce33f4516ace372d99be",
+  "model_or_cache_copy": false,
+  "populations": {
+    "Dolma_held_positions": {
+      "all_64_experts_retained": true,
+      "cluster": "source_file",
+      "clusters": 32,
+      "metadata_sha256": "df6da416fd5e5c1e23e2ec53c26c00ab31002046e18ede30c327bc07fb24b6ed",
+      "off_count": 14680064,
+      "off_teacher_energy_per_occurrence": 5.709829529186545,
+      "on_count": 2097152,
+      "on_teacher_energy_per_occurrence": 13.82169312203334,
+      "positions": 262144,
+      "raw_sha256": "a3a79bfbf56f1d1b1aeba3cd1c62e785a2c90b3496412a57cea316960384e891",
+      "sequences": 512,
+      "zero_on_support_experts": []
+    },
+    "POS_held_targets": {
+      "all_64_experts_retained": true,
+      "cluster": "word",
+      "clusters": 48,
+      "metadata_sha256": "7d981274ad234d68c72b2042bce4a0c6c24d8c527de33aeeb20b6e4af9f6f778",
+      "off_count": 28672,
+      "off_teacher_energy_per_occurrence": 6.67784212504765,
+      "on_count": 4096,
+      "on_teacher_energy_per_occurrence": 16.471121990004384,
+      "positions": 512,
+      "raw_sha256": "7609dc5c7251e064f86275d50ae8a0b699194d2e664dc3b96d67593f52f2264a",
+      "sequences": 512,
+      "zero_on_support_experts": [
+        42,
+        51,
+        52
+      ]
+    }
+  },
+  "reference_archives": {
+    "e135_readouts": {
+      "manifest_path": "/home/xiang/mechpop_cache/e135_readouts/archive_manifest.json",
+      "manifest_sha256": "5290eb54f582c19377cf8f33c37330e0abe6e6a6fd42577a99809586a988e824",
+      "path": "/home/xiang/mechpop_cache/e135_readouts",
+      "pointer": "results/e135/readout_archive.json"
+    },
+    "e135_recipe": {
+      "manifest_path": "/home/xiang/mechpop_cache/e135_cache_recipe/archive_manifest.json",
+      "manifest_sha256": "95efa887fd3a73dd385ddfcb6676b3ef9888e23d7e1eccbaece906bcad513dda",
+      "path": "/home/xiang/mechpop_cache/e135_cache_recipe",
+      "pointer": "results/e135/cache_recipe_archive.json"
+    },
+    "e135_student": {
+      "manifest_path": "/home/xiang/mechpop_cache/e135_student_33554432/archive_manifest.json",
+      "manifest_sha256": "ca5637114ac75b9619a26b729ba60d6c3f7544e9fa6e10e1109894e92941ed41",
+      "path": "/home/xiang/mechpop_cache/e135_student_33554432",
+      "pointer": "results/e135/student_archive.json"
+    },
+    "e136_oracle": {
+      "manifest_path": "/home/xiang/mechpop_cache/e136_assignment_oracle/archive_manifest.json",
+      "manifest_sha256": "eae4cbdb24cb894141741debf61e58410a71ac87071c31f196a639617928afc7",
+      "path": "/home/xiang/mechpop_cache/e136_assignment_oracle",
+      "pointer": "results/e136/archive_manifest.json"
+    }
+  },
+  "schema": "E137 support component archive v1",
+  "scope": "Two complete sufficient-statistics NPZs and metadata JSONs, full primary and independent summaries, preflight/self-test/launch/log, frozen source and final ledger. Existing models, checkpoints, and H/Y cache are referenced only.",
+  "status": "complete",
+  "summary_sha256": "a44fa14e448b199831dc600014712deb77e82a4d7f0c19b7bc7127249a1b356e",
+  "teacher_reference_scope": "Native identity baseline by definition; no separate model capture copied."
+}

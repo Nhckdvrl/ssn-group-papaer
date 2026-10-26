@@ -64,3 +64,6 @@ MoEBERT已有逐层MSE蒸馏，Every Expert Matters已有MoE教师研究，B-Dis
 - final自身五干预：c-only ΔNLL=.039522 [.036760,.041978]、r-only=.002173 [.001431,.002869]、zero=.052923 [.049971,.055741]；native-wrapper及recompose为0。与teacher E134的c/r/zero=.064010/.006290/.085875并列，均匀/偏差必要性样式有相似处，但均值含支持外输出且两模型原生函数仍不同。
 - 独立NumPy从全部profile复算cal Hungarian/heldrho/词形CI，并从POS完整F32logp重算KL/GT-NLL/top1；结果`functional_independent_audit.json`、`predictor_independent_audit.json`。Htarget/Hcal/公共背景/zero完全一致，full-row slot audit差0、重复noise0；未独立重算未保存的Dolma全词表KL，只重加已存序列统计。
 - **解释：** 更强原生块函数监督后出现部分职责对应，仍不能用剩余弱对应证明同函数自由度。C07保持限定事实/等级不变；下一项E136仅给teacher分配的oracle，检验联合分配与内容拟合的总体限制，不做LR/aux/seed网格。
+
+### 2026-10-26覆盖解释校正（不改原分数）
+POS held512 teacher/fixed-gate experts42/51/52 target-on=0、raw A恒0；row-centering/cal-word使这些列可继承全专家均值变化。原“64个数值有效列”不是64个独立内容承担。保留全部旧分数/列；free学生按自身实际mask报告覆盖。E138进一步分开student–teacher共同偏差和student之间变异，原单学生未完整恢复teacher不能作为跨训练不重现的证据。

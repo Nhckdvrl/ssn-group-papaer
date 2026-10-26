@@ -1,0 +1,125 @@
+{
+  "classification": "technical failure before any initial checkpoint or optimizer update; both attempts retained; same seeds will restart after CUDA RNG state setup repair",
+  "launches": [
+    {
+      "seed": 0,
+      "physical_gpu": 0,
+      "pid": 875305,
+      "command": [
+        "/home/xiang/.venvs/mechpop/bin/python",
+        "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py",
+        "--mode",
+        "train",
+        "--seed",
+        "0",
+        "--physical-gpu",
+        "0",
+        "--output",
+        "/tmp/xiang-moe-20261025/e139_seed0",
+        "--summary",
+        "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e139/seed0_training.json"
+      ],
+      "log": "/tmp/xiang-moe-20261025/e139_seed0_train.log",
+      "utc": "2026-10-26T03:22:52.042296+00:00",
+      "source_sha256": "c118b4b73ec0d549b40a6a8317b01e44ce4765eb7be5372efbc5bddbacce600d",
+      "preflight": {
+        "status": "CPU_preflight_only",
+        "initialization": {
+          "initialization_kind": "E135 free TensorMoE constructor, no teacher gate copy",
+          "expert_seed": 0,
+          "free_initial_full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+          "free_initial_expert_only_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+          "free_initial_gate_sha256": "fd4a42233bbb7f39cacffc12e70bacaaec6bc1812064830ec32076635df8652a",
+          "matched_fixed_initial": "/tmp/xiang-moe-20261025/e138_seed0/initial.pt",
+          "matched_fixed_initial_sha256": "146cacda5e9ba6a4bf231d6eda9f0a6c3b461f36a222453f1823d56a73b898ad",
+          "matched_fixed_expert_only_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+          "observed_seed1_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+          "observed_seed1_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+          "observed_seed1_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+          "reconstructed_seed1_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+          "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+          "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+          "fixed_trainer_sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200",
+          "scope": "Experts exactly pair with fixed group seed-by-seed; free gate is independently initialized and trained. Seed1 is an observed reused pilot."
+        },
+        "steps": 4096,
+        "energy": 0.0005764026772760625,
+        "driver_sha256": "c118b4b73ec0d549b40a6a8317b01e44ce4765eb7be5372efbc5bddbacce600d"
+      }
+    },
+    {
+      "seed": 2,
+      "physical_gpu": 1,
+      "pid": 875306,
+      "command": [
+        "/home/xiang/.venvs/mechpop/bin/python",
+        "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py",
+        "--mode",
+        "train",
+        "--seed",
+        "2",
+        "--physical-gpu",
+        "1",
+        "--output",
+        "/tmp/xiang-moe-20261025/e139_seed2",
+        "--summary",
+        "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e139/seed2_training.json"
+      ],
+      "log": "/tmp/xiang-moe-20261025/e139_seed2_train.log",
+      "utc": "2026-10-26T03:22:52.043385+00:00",
+      "source_sha256": "c118b4b73ec0d549b40a6a8317b01e44ce4765eb7be5372efbc5bddbacce600d",
+      "preflight": {
+        "status": "CPU_preflight_only",
+        "initialization": {
+          "initialization_kind": "E135 free TensorMoE constructor, no teacher gate copy",
+          "expert_seed": 2,
+          "free_initial_full_tensor_sha256": "8cfdb44f5eaf014ea4af3d986b493f94cb5a10cad50643c797cc474b75f4ce2e",
+          "free_initial_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+          "free_initial_gate_sha256": "b2309c4eafdff9e884a6ca2455d86b3906cc9930a3565486cb9641cc4ced5801",
+          "matched_fixed_initial": "/tmp/xiang-moe-20261025/e138_seed2/initial.pt",
+          "matched_fixed_initial_sha256": "c4af871a4d6c6808f11826ab0fa279ad6d8e457026e74c29e674a332d626e48e",
+          "matched_fixed_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+          "observed_seed1_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+          "observed_seed1_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+          "observed_seed1_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+          "reconstructed_seed1_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+          "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+          "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+          "fixed_trainer_sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200",
+          "scope": "Experts exactly pair with fixed group seed-by-seed; free gate is independently initialized and trained. Seed1 is an observed reused pilot."
+        },
+        "steps": 4096,
+        "energy": 0.0005764026772760625,
+        "driver_sha256": "c118b4b73ec0d549b40a6a8317b01e44ce4765eb7be5372efbc5bddbacce600d"
+      }
+    }
+  ],
+  "budget": {
+    "active": {},
+    "completed_seconds": 1.0088108517229557,
+    "experiment": "E139",
+    "host": "fvcrc21",
+    "runs": [
+      {
+        "error": "'cuda'",
+        "phase": "train_seed0",
+        "pid": 875305,
+        "seconds": 0.5481698429211974
+      },
+      {
+        "error": "'cuda'",
+        "phase": "train_seed2",
+        "pid": 875306,
+        "seconds": 0.4606410088017583
+      }
+    ]
+  },
+  "logs": {
+    "0": "Traceback (most recent call last):\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py\", line 263, in <module>\n    else: result = train(args)\n                   ^^^^^^^^^^^\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py\", line 119, in train\n    else: base.restore_rng(rng, args)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e123_frozen_moe.py\", line 484, in restore_rng\n    torch.cuda.set_rng_state_all([value.cpu() for value in state[\"cuda\"]])\n                                                           ~~~~~^^^^^^^^\nKeyError: 'cuda'\n",
+    "2": "Traceback (most recent call last):\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py\", line 263, in <module>\n    else: result = train(args)\n                   ^^^^^^^^^^^\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e139_train.py\", line 119, in train\n    else: base.restore_rng(rng, args)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/scripts/e123_frozen_moe.py\", line 484, in restore_rng\n    torch.cuda.set_rng_state_all([value.cpu() for value in state[\"cuda\"]])\n                                                           ~~~~~^^^^^^^^\nKeyError: 'cuda'\n"
+  },
+  "saved": {
+    "0": [],
+    "2": []
+  }
+}

@@ -353,3 +353,113 @@ POS KL的95%词形CI依次 [.013831,.020357] / [.012718,.019877]；POS NLL差CI�
 **可以得出的因果陈述：** 对这一个父状态、这一段1024更新的完整batch重排，在后面57380次完全相同的训练及原固定预算终点，留下了可测的不同预测作用指纹和组织状态。不是完整训练流的曝光差异，也不是当前同序执行噪声或最后1060步自身变化所能解释。它是短暂历史的有限预算终点后果，不需要声称两个模型位于不同损失盆地。
 
 **不能因此声称：** 撤除时的具体职责被原样保存——这套pulse→own-final指纹对应并不支持它；最终预测函数相同——自然KL与top1差异仍非零；所有语义职责都不同、存在普遍关键期、历史永久锁定或指定保存载体。两个训练来自一个父/一个固定脉冲，词形/文件区间不是跨父随机化推断。所测职责仍是E124有限人口和特定一对一对应；结合E134，不能将这个受控平台的终点指纹差直接包装成任务关键语言算法的任意分解。主张等级与后续决策留给主执行者/人，不因任一NLL/KL/相关值自动触发修复网格或状态变更。
+
+## E136独立审计：已知坐标、初值耦合与自然预测
+
+结果 `results/e136/independent_audit.json`。自己用NumPy复算已知identity及cal-U两个预定对应、固定cal offsets的1000次seed136 held词形bootstrap，未调用主统计函数。所有点及CI端点最大差2.78e−17；全部64列/1000 draw有效，valid set无变化，没有只保留finite draw。与E135的999次/seed131区间不混用。
+
+| 条件/预定对应 | U平均ρ，95%词形CI | A平均ρ，95%词形CI |
+|---|---|---|
+| oracle初值，identity | .005991 [−.019864,.030162] | .005147 [−.059347,.092965] |
+| oracle初值，cal-U | .016880 [−.005194,.038169] | .020315 [−.023635,.055280] |
+| oracle终点，identity | .225511 [.192306,.249140] | .347197 [.250371,.401280] |
+| oracle终点，cal-U | .179074 [.135530,.213119] | .257223 [.184664,.312922] |
+
+除profile/源SHA/固定plan/Htarget/Hcal核对外，另在fvcrc21只读CPU mmap原checkpoint，直接比较全部192个expert权重张量，初值与E135逐值相同；oracle初始gate逐值为native BF16的FP32副本，终点gate逐值未变。独立expert/gate/full-state hash与已登记proof一致。初值U耦合复用的8字段逐元素同E135源数组，源NPZ及源initial checkpoint的SHA绑定正确；旧随机gate的A和normal NLL没有复用，实际新support/门值/masks逐项等teacher，未选A全0，新normal NLL又与独立自然POS分布的真实目标计分吻合。fresh-A审计依赖冻结新采代码/源证据及这些原始数组一致性，未重新执行drop forward。
+
+完整POS FP32 log-prob用NumPy float64独立重算，oracle终点forward KL=.041980319 [.032598084,.052332158]、reverse=.057382999、等词形top1=.9236678、NLL差+.0471697 [.0226501,.0719861]；初值KL=.17750255。终点KL与主结果差约1e−9，NLL/top1、source targets/last/ID及fresh-A正常NLL吻合。Dolma只独立重加序列指标：KL=.039672630、NLL差+.030986055、top1=.9102554。相对自由router学生，MSE及KL有所降低，但POS top1低于其.9283905、GT NLL差高于其+.0417356，不能概括为所有自然指标都改善。
+
+这支持给定组织信息后出现部分内容/作用恢复，仍有明显函数差，不支持严格同函数或自然唯一分工。初值A控制是必要的，但不能从终点A减去初值就称纯专精：学习共同函数、共同支持和下游背景仍共同影响A。预定identity与cal-U给出不同读数也不允许挑较高者覆盖E130/E135原估计对象。
+
+### 唯一下一测量建议：固定坐标的on/off-support向量误差结构
+
+建议做一次主执行者提出的≤15GPU分钟只读测量，不新增训练/匹配/gain。现有U/A是目标词作用，H/Y cache只给总块函数，不能反推出逐expert向量或其误差抵消；因此现有数组的廉价重加不足以区分这些解释。限定teacher/copy/oracle初值/oracle终点、原held262144个H和已给teacher支持，流式统计逐expert on/off计数、teacher能量和向量误差，再统计实际gate加权分量误差、它们的和、aggregate误差和cross-term。保存逐序列/逐expert充分统计即可，不存TB级完整向量。
+
+若on-support误差较低而off-support较高，全输入指纹的弱对应可能主要反映支持外延拓；若on-support原始向量误差仍较大而加权总误差较小，则存在抵消/组合约束，scalar A的改善不足以宣称完整expert函数恢复；若两者均大，当前仍主要受拟合限制。向量接近本身也不等于独有知识或预测必要性，共同函数学习同样能改善向量误差，不再为此追加均值中心化、噪声或语言标签网格。
+
+数值解释必须保留实际算子：on-support/native gated component沿HF实际selected子batch顺序及hidden dtype门值乘积计算；全H/off-support的GEMM形状不同，不直接称bit-exact native component。`||sum δ_e||²−sum||δ_e||²`是向量误差的cross-term，不自动等于实际BF16 aggregate误差中“专家交互”的全部；两者之间的归约残差和copy地板须显式报告。on/off总样本数差约7倍，不能只比总和；zero-count支持记未定义而不删expert。此测量尚未由本审读者启动或实现，不变更任何主张。
+
+## E137完成后的统计复算、coverage边界与全局判断
+
+已只读stage两个固定人口的sequence×64充分统计，独立NumPy重算全部global点、1000次seed137的file/word cluster区间及64个expert的count/energy/error表；没有调用主统计函数。最大点差1.55e−15、CI端点差2.67e−15，64表逐项差0。正式结果 `results/e137/independent_audit.json`。POS点是pooled SSE/count或自身teacher能量的ratio，再按词形cluster bootstrap，区别于自然POS分布的等词形均值；不存在seed总体CI或未定义expert筛除。
+
+| Oracle终点，相对teacher | Dolma262144位置 | POS512目标位置 |
+|---|---:|---:|
+| on-support向量SSE/对应teacher能量 | .727000 [.718676,.733363] | .704388 [.685534,.726588] |
+| off-support向量SSE/对应teacher能量 | 1.101924 [1.097365,1.106229] | 1.077067 [1.071826,1.082527] |
+| 实际门加权分量误差/对应teacher能量 | .259114 | .631683 |
+| native aggregate误差/teacher native能量 | .162670 | .384697 |
+| 同单位每位置Σ||δ_e||² | .272994770 | .314921763 |
+| 同单位每位置||Σδ_e||²（FP32求和） | .185075344 | .229474425 |
+| FP64累计同一FP32 δ的reference cross-term | −.087919427 | −.085447339 |
+
+copy的内容、component及native差全为0；终点FP32−FP64 sum误差SSE/位置仅约2.25e−19 / 1.25e−19，故上述负cross不是这种求和误差。native−FP32 sum的残差SSE/位置为2.24e−5 / 1.11e−5，teacher query-vs-native selected形状地板MSE为6.26e−8 / 1.31e−7；它们与product/native rounding都已分列，不能偷偷并入“专家协作”。这里仅复核充分统计；POS精确Htarget replay和actual hook行顺序来自冻结执行的逐batch断言，本次核对其source/pin、原人口和完成证据，没有重新跑native hooks、prefix或FP64网络forward。
+
+**新coverage校对：** POS512目标中expert42/51/52没有任何teacher on-support，teacher/copy/oracle初值/终点这3列held原A均为0。row-centering后，这些列仍可通过`−mean_j A_j(x)`及cal词形offset产生数值变化，所以“64列数值有效”不能解释为64个专家都提供了独立内容证据。原定所有列/分数/区间保留，不能事后删掉3列或以初值作完整support扣除。Dolma全体64专家均有实际on-support，最少15074个位置，故新跨训练主分析宜用这一实际component人口。on/off误差各自teacher能量不同（Dolma每次on/off teacher能量约13.82/5.71），不能将两个ratio当同分母的知识比例。
+
+E137说明此学生确实学到部分内容，但on-support也远未完整恢复，并存在分量误差抵消；因此“低scalar对应只是off-support外推”不足以概括数据，严格同函数分解自由度仍未得到。另一方面，这些结果都主要是**学生→充分预训练teacher**的恢复比较，不等于独立学生之间不重现。未拟合与跨训练变异可能同时存在，不应把teacher恢复重新设成研究准入。
+
+### 唯一下一动作：预定两新expert初值，直接比较三个学生
+
+推荐复用E136的teacher gate/cache/四epoch4096更新协议，预定expert seeds0/2，与已完成seed1组成一个三学生跨训练pilot。只新增这两次固定训练及一次联合只读component/Y与自然预测测量，不并行fixed-feature线性试验或续训到某阈值。seed1是已见的发现run、0/2是事先固定的新增复核，全部保留。线性可解控制有助于一个指定子空间的可辨识性，却改变了问题且不告诉独立学习是否使用这些自由；当前直接比较学习出的三学生更贴原问题。
+
+主分析用同向量单位的有限cohort分解（1/3权重，不冒称总体seed方差）：`mean_s||Y_s−Y_T||² = ||mean_s Y_s−Y_T||² + mean_s||Y_s−mean_sY_s||²`，实际gated component也分共同偏差/学生间变异，再将component之间cross covariance、F32/F64 sum与native rounding分别核算。若学生共享偏置近似函数但component不同，才有该近似函数不同实现的有限证据；若Y和component均重现，当前teacher mismatch主要是共同偏差；若Y也不同，则报告函数与分解共同变化。无需任意equivalence带，也不把ρ除以KL。三个pair共享学生，不当三个独立replication；词形/文件CI仍只表示评测人口不确定性。
+
+旧teacher-relative SSE不能重建不同学生的交叉内积，故必须在相同held H上联合forward三学生，不能从既有scalar表“推算”cross covariance。无需再加匹配/gain或先收一轮全专家注入才允许看变异。新增训练每run可参考已测约6.3分钟有效时间，测量另按实测预算记账；已有固定gate意味着结论仍限于给定分配后的内容重现，不能包装为自然任务唯一选择组织。这个实验也不会给严格结构不可识别的数学证明；不论分支如何，都不自动触发恢复网格或改变线状态。
+
+## E138：跨学生共同偏差与变异的独立审计
+
+本次推进P25，未改C07/C08、冻结源码、读数或线状态。先读当前论文形态卡/E138卡并运行process check：0 error、33条既有warning。结果 `results/e138/independent_audit.json`；所有原始数组从fvcrc21只读stage。自写NumPy重加两population×初/终的sequence×64充分统计、全部1000次seed138输入cluster区间与64表，没有import主cohort/metric函数。点最大差2.22e−15、区间8.88e−16、64表0；逐序列三项teacher误差的均值和bias+variance恒等式另行检查。**bias/variance原始向量矩并非本次重新前向生成**，复核的是保存的充分统计及其代数，不能冒称独立再跑native hooks或FP64网络。
+
+另在远端仅CPU mmap新增0/2的初/终checkpoint，独立重算full/expert/gate张量hash，与登记proof逐项吻合；三个初值expert hash不同，共同gate逐值同E136且终点未变。两个新终点step/Adam均4096，1024 cache批各4次、四epoch计33,554,432位置曝光；进一步独立对比三份原train_steps，全部4096步的cache_batch_index及LR逐项完全一致。CUDA未初始化。seed1仍是已观察E136复用，不伪称三个全prospective独立发现。
+
+| 固定三学生，终点 | Dolma262144位置 | POS512目标 |
+|---|---:|---:|
+| native teacher相对误差 | .162563 [.147392,.177986] | .383934 [.367763,.399566] |
+| 共同mean相对teacher偏差 | .148548 [.134474,.162628] | .354051 [.338630,.368763] |
+| native cohort相对变异（1/3） | .014015 [.012755,.015422] | .029884 [.028513,.031312] |
+| 每位置Σ component cohort variance | .031208956 [.030497592,.031890822] | .036913420 [.034150631,.040280324] |
+| FP64 sum component cohort variance | .015947143 [.015449800,.016365020] | .017823811 [.016831072,.018859708] |
+| 同单位跨expert covariance | −.015261813 [−.015859641,−.014598048] | −.019089609 [−.022059273,−.016514827] |
+
+完整POS FP32 logp用NumPy float64重算六对双向KL/GT NLL/top1及等词形bootstrap，最大均值差3.89e−9；未重归一化原logp。Dolma从已存逐token指标独立重加，所有global/source点与区间吻合，global点差0，不声称从未保存的词表分布重建。学生三对Dolma forward KL=.008730/.008823/.008845、top1=.959415/.959133/.958897；POS KL=.008464/.006869/.009492，仍有预测函数差异。已知identity A独立复算行中心化、cal词形offset及1000次seed138区间，全点/区间吻合：学生三对ρ=.484816 [.379012,.570740]、.526466 [.404301,.604819]、.499266 [.315910,.622938]。保留原F32中心化/offset减法后再F64相关的精度路径；不因自行换F64残差的约1e−9差异改旧定义。
+
+所有POS原人口/行序/输入hash与原E135 teacher吻合，fresh A正常NLL逐项等新全分布的GT计分，未选贡献A=0。42/51/52仍target-on=0，teacher及所有学生这些held原A均0；row-centering/cal offset可继承共同均值，故有效64列不等于64个独立内容恢复。全Dolma实际覆盖64专家。所有区间只是给定这三个学生的输入cluster不确定性，不是seed区间，三个共享学生pair不是独立n=3。
+
+**全局判断：** E138支持“多数teacher mismatch来自共享的近似偏差，此外存在有限学生间变异和部分分量协方差抵消”。它明确纠正“单学生没有恢复teacher，所以跨训练内容不重现”的推断；原teacher-relative误差不足以回答跨训练问题。另一方面，总输出变异与预测KL仍非零，没有隔离严格同函数下的结构自由度，负cross也不等于task-critical知识任意分配。给定teacher gate/有限cache/固定优化预算，学生间作用比student–teacher作用更可重现，是当前有限对象；未得到自然语言任务唯一分工，也尚无free cohort来把这种重现归因于外加分配信息。
+
+### 唯一下一科学动作建议：补齐matched free-router三学生对照
+
+推荐只新增free expert seeds0/2，复用E135 free seed1，保持同native H→Y目标、同cache/4096更新、初始expert逐张量与对应fixed seed配对、原loss/optimizer/LR/曝光全部固定。不同时做理论toy、续训、额外teacher或增大样本搜索。这个对照直接检验外加分配信息是否稳定重学组织，信息增量大于现在仅凭fixed cohort做canonical叙事；不是为把误差修到准入阈值，也不需要先完整恢复teacher。冻结路由同时去除router梯度、aux作用和global clip耦合，这一组合干预的解释边界保留，不冒称纯边界难度机理。
+
+自由标签需先商掉置换。建议在结果前只登记一个**actual gated-component cal-MSE Hungarian**：在同一原生训练H校准人口上，以实际BF16 gate乘积/支持外0的向量平方距离确定全局一对一对应，不做norm/gain/旋转、不挑U/route/A多标准、不用held拟合。优先沿已有固定训练8192位置做cal，以便主评价仍为原Dolma held；校准零承担或成本tie显式报告，不删列换mapper。若做cohort变异，应事先规定统一参考学生（例如各组seed1）及其两张cal map，不能把三张互不传递的pair map当一套公共坐标；fixed组也走相同映射，并另保留施加identity。全模型Y/预测bias/variance本来不依赖expert匹配，应与component指标并列。
+
+若free总Y/预测与fixed相近、而对齐后component变异更大，才支持该有限问题中提供分配约束有额外组织稳定作用；若free的函数与component一起更变动，只能说这项oracle稳定联合学习，不能单独归因内容选择；若两组均可重现，额外teacher gate并非此预算下重现的必要解释；若free反而更稳，也完整保留。无论哪支，不自动宣称同函数不可识别/唯一、不设任意等价带、不把两个新增seed变成恢复网格。一般路由—内容耦合、共同计算与几何不等于功能均已有强近邻ownership；本对照的增量只能是本原生函数目标/配对初始化/实际分量跨训练的受控证据，尚未做新颖性认领或论文状态决策。
+
+### 对固定analytic gate下可识别条件推理的独立核对
+
+该充分条件推理成立，但须写全假设。令D为连通开域，gate g_e与两套expert函数实解析、gate完全相同，1≤k<E；每个计入incidence矩阵的top-k subset S必须在D内具有非空开区域。在该区域，严格相同aggregate且共同正常数分母可消去，得`sum_{e∈S} exp(g_e(h))*delta f_e(h)=0`。左边是D上实解析函数，在非空开集为0，故恒等延拓到D。逐个实现subset重复，于任意h有`M v(h)=0`，其中`v_e=exp(g_e)*delta f_e`。若M列rank为E，则v=0，且exp(g)>0推出各expert**函数**相同；不是参数唯一，hidden-unit对称仍在。Top-k no-renorm或相同selected renorm只要两模型的公共分母非零均可消去。
+
+若线性gate经行中心化后的rank为E−1、输入允许覆盖整个对应线性像，则可实现任意strict top-k子集；全部k-subset incidence行张成R^E（任意i/j的行差给e_i−e_j，一行的元素和k≠0再补常数方向），所以满足该rank条件。仅有“generic”二字不够：需维数允许、logit像覆盖，若D只是受限开片也未必实现全部子集。实际有限语言H上观察到incidence满rank，并没有每个区域内严格全域函数等式，因此不能套此结论；近似等式也没有由analytic continuation自动产生良好条件数或稳定恢复界。语言支持、弱权重、有限fit/数值rounding都是当前实证问题，不被该理想充分条件消除。此处是独立代数推导的条件核对，未查证理论原创性，不能认领为新定理。
+
+## E139前瞻卡独立审阅与当前主问题
+
+已读实际 `experiments/E139-matched-free-routing-cohort.md`，科学上**无致命阻塞**。它忠于补齐matched free组的建议：只有0/2新训练、复用已见seed1、expert初值配对、共同cache/目标/训练曝光与预算，fixed/free协议的aux/clip/weight-decay差异明确列出；主读数先看无需对齐的总Y，再用一个预定cal→held规则看实际component。没有以teacher恢复或某相关阈值决定比较资格。未改卡、旧源或任何指标，未启动GPU。
+
+校准cost应按卡的定义直接实现为`C[e,j]=mean_cal ||c_s,e(h)-c_seed1,j(h)||²`，actual BF16门乘积，非选位置为0，不中心化/缩放。全64一对一Hungarian可给一致组内坐标，不能直接堆不同mask的on-row数组。其总assignment cost中的两侧各自能量和与排列无关，等价于最大化总配对内积；不是通过删除高能量列获得好结果。重复/零贡献仍会造成多个等成本解，按既定tie规则保留映射与覆盖即可，不增加matcher。fixed同样走该规则且保留施加identity，使“有已知坐标”的优势不会隐藏在评价中。
+
+两项解释限定应在最终结果保留，但无需增轴：(1) 这是预定seed1锚定的一种全局置换下的held可对应性，不是三模型联合最优方差，也未穷尽所有对应；初值和终点各fit一张map只支持分别比较这两个时点，不支持专家坐标沿训练保持。(2) free component包括mask、gate幅值和expert向量，故差异属于**实际计算分解**，不等同纯内容差异。自然总Y/预测的bias与variance不受排列影响，既能检验函数与分解共同变化，也防止把较好的函数拟合隐藏成职责稳定。所有fixed原identity结果继续保留；新cal并不回写E138。区间固定cal map、只重采输入，不把3个pair当初始化总体样本。卡已覆盖这些核心边界。
+
+### 当前最有意义的单一主问题
+
+**在固定表示、语言计算目标和训练预算下，总函数目标与输入分配信息分别把跨训练的实际专家分解约束到什么程度？** “实际分解”指每个输入上门加权的向量贡献，任务作用另由自然A/预测后果读出；不预设专家天然是语义知识容器，也不把它与全输入潜在作用U混为一物。这个问题比继续证明“相近NLL但ρ低”更能改变解释专家、跨模型移用专家的人的判断：在宣称同一职责之前，究竟需要控制共同目标、实际路由，还是连同训练历史都要报告。
+
+已有实验依次改变了我们对问题的理解，而非共同证明一条自由度口号。E130说明同任务有限预算下所选标量作用对应弱；E131提供严格同父纯顺序的持续终点后果，但具体早期指纹没有原样保存，最终预测也不同。E132/133与E134又说明这些指纹差不自动意味着不可组合或任务关键计算不同，且dense→MoE受控银行与公开原生银行的必要性关系不同。E135–137把比较对象推进到原生块函数和on-support向量，但单学生teacher误差同时含共同拟合偏差。E138把这一误差拆开，确认共同偏差占主导，学生间仍有部分分量变异抵消。E139现在只补缺失的分配约束对照，能够区分“同目标本已形成可重现近似”与“额外分配协议稳定实际组织”等有限解释；它不会单独解决全域结构唯一性。
+
+### 可能的paper形态及证据边界
+
+若形成论文，较可信的形态是**受控的跨训练功能组织研究，核心为分配信息干预与集体/分量可重现性的分离**，不是新matcher/蒸馏方法或结构不可识别性定理。主图宜围绕共同teacher偏差、cohort总输出变异、实际component变异及其covariance，在free/fixed两组和同人口预测作用之间建立一条可以审查的因果证据链。E130/E131解释为什么必须问跨训练与历史，E134给出必要性和设置边界；无需把所有平台修复和多匹配过程都挤进主贡献。不同原生/受控模型之间不能拼成一条只改变router的因果链。
+
+若free在相近的总函数变异下出现更大的held component变异，主旨可落在“额外分配协议约束有限近似的实际组织”；若free也稳定，主旨应正面呈现总函数监督能产生的实用重现，同时解释旧scalar读数为何不足以断言全部职责自由；若函数与component一起变化，研究对象就是有限优化下两者的共同变异，不能强行提炼同函数分解结论。这些都是可被数据改变的论文方向，不是拟合/ρ过线才准入的绩效门槛，当前也未宣布成稿或变更线状态。
+
+ownership方面，路由与内容耦合、共享计算、随机路由和几何不等于功能已有明确近邻；蒸馏/中间MSE/冻结router也非本题发明。可争取的增量是同一原生总函数目标、配对expert初值、额外分配协议及实际分量的跨训练受控证据，并明确teacher偏差与学生间变异，而非认领一般“专家冗余”或“任务不决定分工”。当前读取边界沿已有primary论文卡，本次未新增文献优先权认领；形成论文主旨后仍需按精确claim更新定位。E139收齐后应先以这一个主问题整合证据和近邻，再判断后续最有信息的科学动作，而不自动追加第二轮拟合或匹配网格。

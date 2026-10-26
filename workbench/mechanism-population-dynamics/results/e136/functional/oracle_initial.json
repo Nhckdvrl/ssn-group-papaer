@@ -1,0 +1,87 @@
+{
+  "A_selection_scope": "Full [batch*sequence,64] native softmax/topk then target-row selection, same shape as contribution removal",
+  "U_source": {
+    "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+    "reason": "Only the gate changed; common native-teacher U injection uses identical expert functions, inputs andalpha.125; no old A/normal/support reused",
+    "source": "/tmp/xiang-moe-20261025/e135_readout/initial_functional.npz",
+    "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+    "source_sha256": "5939862d46d8475a4267fb238f2cc91227a34fd47a9d21312b45719a9186416b",
+    "status": "coupled_reuse"
+  },
+  "alpha": 0.125,
+  "background_kind": "native_public_teacher",
+  "condition": "oracle_initial",
+  "condition_proof": {
+    "U_coupled_reuse_proof": {
+      "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "reason": "Only the gate changed; common native-teacher U injection uses identical expert functions, inputs andalpha.125; no old A/normal/support reused",
+      "source": "/tmp/xiang-moe-20261025/e135_readout/initial_functional.npz",
+      "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+      "source_sha256": "5939862d46d8475a4267fb238f2cc91227a34fd47a9d21312b45719a9186416b",
+      "status": "coupled_reuse"
+    },
+    "checkpoint": "/tmp/xiang-moe-20261025/e136_oracle/initial.pt",
+    "checkpoint_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6",
+    "condition": "oracle_initial",
+    "config_hash": "44b61a622d6bce2e0f0ed2739d4c928fb50221274a64fc14e531eca6860bc9dc",
+    "experiment": "E136",
+    "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+    "full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+    "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+    "initialization": {
+      "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+      "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+      "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+      "scope": "Teacher gate rows supplied/frozen; initial experts and ordering unchanged; no teacher per-expert targets",
+      "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "source_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+      "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+      "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+      "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+      "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb"
+    },
+    "step": 0,
+    "teacher_support_source_proof": {
+      "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+      "population_exact": true,
+      "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+      "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9"
+    }
+  },
+  "condition_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+  "experiment": "E136",
+  "experts": 64,
+  "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+  "layer": 9,
+  "noise": {
+    "natural_identity": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "natural_repeat": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    }
+  },
+  "output": "/tmp/xiang-moe-20261025/e136_readout/oracle_initial_functional.npz",
+  "output_sha256": "b52098393eba901b9ca97c86c1b9b702e2745a0837531a4e7ea94350acfd50b3",
+  "plan_sha256": "aa18964afe9f8b5b450d33e54159d8fed41c79d8901c3632b07ceabf523bb227",
+  "scope": "Initial A is a shared-support control, not pure specialization. Fixed identity is supplied organization, not learned task identification.",
+  "script_sha256": "bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e",
+  "selected_inputs_sha256": "b287392f060c67a4a9c04829f7ed8f8d840625823a6d2f7f157a14bf42aeea09",
+  "source_sha256": "40d5470453d0dc17cd6746af13f09803ba2f5ad6245ae1dc7d711e678ca5a375",
+  "teacher_support": {
+    "rows": 1024,
+    "teacher_mask_mismatch_rows": 0,
+    "teacher_slot_mismatch_rows": 0,
+    "teacher_weight_max_abs_difference": 0.0
+  },
+  "teacher_support_profile": {
+    "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+    "population_exact": true,
+    "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+    "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9"
+  },
+  "top_k": 8
+}

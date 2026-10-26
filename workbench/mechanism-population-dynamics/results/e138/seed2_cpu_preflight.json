@@ -1,0 +1,26 @@
+{
+  "status": "CPU_preflight_only",
+  "initialization": {
+    "initialization_kind": "E138 fresh TensorMoE constructor, then teacher gate copy; not a copied E135 initial",
+    "expert_seed": 2,
+    "initial_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+    "oracle_initial_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+    "oracle_initial_full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+    "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+    "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb",
+    "seed1_constructor_check": {
+      "reference_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+      "reference_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+      "reconstructed_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "reference_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "training_launched": false
+    },
+    "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+    "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+    "source_oracle_helper_sha256": "8c620871df90c2a10ea9be5b629727ce063164483ab8a0d22cb846e6f6841b55",
+    "scope": "Only expert seed varies; teacher gate values/rows supplied and frozen; no individual-expert targets"
+  },
+  "steps": 4096,
+  "energy": 0.0005764026772760625,
+  "driver_sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200"
+}

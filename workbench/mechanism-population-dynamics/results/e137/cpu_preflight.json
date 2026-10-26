@@ -1,0 +1,96 @@
+{
+  "status": "CPU_preflight_only",
+  "proofs": {
+    "oracle_initial": {
+      "experiment": "E136",
+      "condition": "oracle_initial",
+      "step": 0,
+      "checkpoint": "/tmp/xiang-moe-20261025/e136_oracle/initial.pt",
+      "checkpoint_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6",
+      "full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+      "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+      "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+      "initialization": {
+        "source_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+        "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+        "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+        "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+        "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+        "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb",
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+        "scope": "Teacher gate rows supplied/frozen; initial experts and ordering unchanged; no teacher per-expert targets"
+      },
+      "config_hash": "44b61a622d6bce2e0f0ed2739d4c928fb50221274a64fc14e531eca6860bc9dc",
+      "U_coupled_reuse_proof": {
+        "status": "coupled_reuse",
+        "source": "/tmp/xiang-moe-20261025/e135_readout/initial_functional.npz",
+        "source_sha256": "5939862d46d8475a4267fb238f2cc91227a34fd47a9d21312b45719a9186416b",
+        "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+        "reason": "Only the gate changed; common native-teacher U injection uses identical expert functions, inputs andalpha.125; no old A/normal/support reused"
+      },
+      "teacher_support_source_proof": {
+        "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+        "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+        "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+        "population_exact": true
+      }
+    },
+    "oracle_final": {
+      "experiment": "E136",
+      "condition": "oracle_final",
+      "step": 4096,
+      "checkpoint": "/tmp/xiang-moe-20261025/e136_oracle/checkpoint.pt",
+      "checkpoint_sha256": "7126ae1661ba5d0bfd696b2284247a848982facfb6625b3f9265edd709368ec0",
+      "full_tensor_sha256": "b51776965b9c1fc06506012c755b47179fa49ea94b10a901c22544277dcca120",
+      "expert_only_tensor_sha256": "ece77c58c09a68d5c7c9dd7451a8b9f29726aa7e4d8eba0e5a63a71a1bf0efb2",
+      "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+      "initialization": {
+        "source_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+        "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+        "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+        "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+        "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+        "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb",
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+        "scope": "Teacher gate rows supplied/frozen; initial experts and ordering unchanged; no teacher per-expert targets"
+      },
+      "config_hash": "44b61a622d6bce2e0f0ed2739d4c928fb50221274a64fc14e531eca6860bc9dc",
+      "teacher_support_source_proof": {
+        "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+        "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+        "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+        "population_exact": true
+      }
+    },
+    "teacher": {
+      "condition": "teacher",
+      "tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+      "teacher_file_sha256": "1670aaed0a09c99eafc73d308bd6abf163400e70d380822115c736a89abd5e5a",
+      "storage": "bfloat16"
+    },
+    "copy": {
+      "condition": "copy",
+      "tensor_sha256": "6b8d721fb92e04800bc9dd4122c4af347a67c131b5776d10eabe2b166347f374",
+      "source_teacher_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+      "storage": "float32 exact BF16 teacher values"
+    }
+  },
+  "POS_held_H_shape": [
+    512,
+    2048
+  ],
+  "conditions": [
+    "teacher",
+    "copy",
+    "oracle_initial",
+    "oracle_final"
+  ],
+  "script_sha256": "86c57c0bc40c14d7778c036e92380e97ef3a071feeba4be484b2b45cc39bee63"
+}

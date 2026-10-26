@@ -1,6 +1,6 @@
 # E136：固定原生分配的oracle对照（2026-10-26）
 
-- **状态：** RUNNING（4096训练完整，全部固定读数进行中）
+- **状态：** COMPLETE（固定训练/全部读数及独立审计、归档完整）
 - **类型：** PILOT；单个组织信息对照，不是新蒸馏方法、优化器调参或新seed网格。
 - **对应：** P23：E135已见函数/职责部分恢复，但剩余函数差与联合学习分配的困难尚未分开；承接P22。
 - **问题（一句话）：** 给出原生teacher的实际gate/支持、保持相同expert初值和总函数监督后，拟合与自然承担的可对应性会怎样变化？
@@ -42,3 +42,15 @@
 - 4096固定终点完整，train/held同fixed-train-energy MSE=.135760/.156780；初始experts与E135逐项同，gate在训练中未改变，真实8192行支持/门值/logits差0。原free case .150627/.169350完整保留，不据此先判内容/唯一性。训练ledger730.23秒，新1GPUh总上限。
 - 读数源capture SHA `bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e`、readout SHA `276d7042fa8e82ead3b8a32cc65514ee7a4e362a6b7bc2ac300e0612ae7a4421`，CPU固定对应/cluster-CI/coverage-change与两端真实preflight通过后冻结。CI只在所有draw都定义且同有效列集合时报，否则明确不可用，不筛draw/word。
 - 23:43:16UTC在fvcrc21 GPU1启动完整readout PID844954，source背景/teacher支持及coupled-U引用均核对SHA；独立ledger与E135隔离。尚无oracle职责/干预结论。
+
+### 完整读数与独立核对（2026-10-26）
+- complete/errors空，ledger训练+读数1572.83秒，未改E135的3883.97秒/7runs记录。模型/全部artifact已SHA归档`~/mechpop_cache/e136_assignment_oracle/`，指针`results/e136/archive_manifest.json`。
+- known-identity：initial U=.005991 [词形CI −.019864,.030162]、A=.005147 [−.059347,.092965]；final U=.225511 [.192306,.249140]、A=.347197 [.250371,.401280]。
+- 原calU：initial U=.016880 [−.005194,.038169]、A=.020315 [−.023635,.055280]；final U=.179074 [.135530,.213119]、A=.257223 [.184664,.312922]。free E135 final calU U/A=.099435/.103208完整保留；knownidentity与calU两种预定对应全报，不选高者改旧结论。
+- 64列均定义、全部1000/seed136 word-bootstrap有效集合相同；独立NumPy/SciPy点值/CI误差≤2.78e−17。独立CPU逐值核对192 expert权重初值相同、gate为teacher BF16→FP32且final不变；actual1024条support/weights/masks全一致，unselected A全0，coupled-U八字段逐元素同源。`results/e136/independent_audit.json`。
+- final自然预测：Dolma KL=.039673 [.03411,.04478]、top1=.910255、GT NLL差+.030986；POS真FP32-head KL=.041980 [.032598,.052332]、top1=.923668、NLL差+.047170 [.022650,.071986]。相较free，MSE/KL点略低，但POS top1低于.928391、GT差高于+.041736，不能概括为全面质量改善。
+- final c/r/zero ΔNLL=.040768/.002757/.054889，native/recompose0；所选均值反事实和剩余函数差限制继续保留。
+- **解释：** 给定assignment条件后出现更强的这套贡献模式对应；它包含组织信息、router冻结及clip耦合变化。初值A不是可相减的纯support null，A也可能受共同总函数恢复影响，仍未证明逐expert向量内容或唯一语言分工。下一项E137只做既定坐标on/off向量与component/aggregate误差结构，无新训练/匹配/gain。C07/C08不升降级。
+
+### 2026-10-26覆盖解释校正（不改原分数）
+E136–138复核发现：POS held512 teacher/fixed-gate experts42/51/52 target-on=0、raw A恒0；row-centering及cal-word去均值使这些列继承全专家均值变化。原“64个数值有效列”不可解读成64个独立内容承担，旧分数/全部列保留；free学生覆盖需按自身实际mask分别报告。`results/e131/controlled_target_support_audit.json`同时记录受控E130/E131全64有on但部分低覆盖；不得将有on自动当高信度内容证据。
