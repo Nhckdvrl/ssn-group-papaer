@@ -126,3 +126,5 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 E151已完整完成，仍复用同两native权重/输入：`~/mechpop_cache/e151_native_selectivity_necessity/metrics.npz` 4,270,219 B，SHA `8c02187d75488219f82c20023382a0134495479f4586115a564a0602c6fb9ee7`；`random_masks.npz`的3份固定mask由`results/e151/plan.json`锁定，非训练seed。12条件全部保留，native逐token NLL与E150一致、源参数/buffer只读，CPU点复核误差0。实际.330641878 GPU·时、单卡81.857GB，无新训练或新模型下载。
 
 E151复算：`~/.venvs/mechpop/bin/python moe/scripts/e151_native.py analyze --physical-gpu 0`，再`e151_verify_results.py`与`e151_plot.py`。原模型重新执行须另计资源；所有phase budget已结清，不能把已有raw恢复算成新实验或独立复现。
+
+[E151封存](results/e151/artifact_seal.json)绑定精确结果提交`e12e82e4`；耐久`run_metadata_e12e82e4.tar.gz` 593,915 B，两份raw/mask共4,327,515 B逐项SHA复核。其原生source与E150逐token NLL完全相同，作为新干预而非新模型重复；源码/数据/结果层次在封存中分开。
