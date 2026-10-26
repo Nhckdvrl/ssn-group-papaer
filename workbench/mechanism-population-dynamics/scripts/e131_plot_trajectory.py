@@ -132,13 +132,13 @@ def plot(functional: dict, predictor: dict[int, dict], output_dir: Path) -> tupl
         ax.plot([], [], marker=marker, color=color, linewidth=1.5, label=f"{label} (held-word CI when defined)")
     ax.axhline(0, color="#555555", linestyle="--", linewidth=0.8)
     ax.set_title("Cross-branch U/A ρ")
-    ax.set_ylabel("Held-word correlation")
+    ax.set_ylabel("Mean held expert-column ρ")
     ax.legend(frameon=False, fontsize=8)
     ax.grid(axis="y", alpha=0.2)
 
     group_specs = [
-        (axes[0, 1], "kl_teacher_to_student", "Native→student KL", "nats/token"),
-        (axes[1, 0], "nll_gap", "Ground-truth NLL gap (student − native)", "nats/token"),
+        (axes[0, 1], "kl_teacher_to_student", "KL(ordered || permuted)", "nats/token"),
+        (axes[1, 0], "nll_gap", "NLL(permuted) − NLL(ordered)", "nats/token"),
     ]
     colors = {"Dolma": "#54A24B", "POS_plan_held": "#B279A2"}
     markers = {"Dolma": "o", "POS_plan_held": "s"}
@@ -192,7 +192,7 @@ def plot(functional: dict, predictor: dict[int, dict], output_dir: Path) -> tupl
     fig.text(
         0.5,
         0.015,
-        "One step-4096 parent; a short equal-exposure order pulse is followed by shared training. Error bars are file- or word-level CIs, not seed CIs. This plot does not assert cross-run function equivalence.",
+        "One step-4096 parent; a short equal-exposure order pulse is followed by shared training. U/A points are means over 64 expert columns; CIs bootstrap held-word clusters (the points are not word-wise correlations). Error bars are file- or word-level CIs, not seed CIs. This plot does not assert cross-run function equivalence.",
         ha="center",
         fontsize=8,
     )
