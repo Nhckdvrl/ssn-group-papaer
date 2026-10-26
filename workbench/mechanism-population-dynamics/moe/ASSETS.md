@@ -78,3 +78,15 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 以上NFS路径可在授权SSH节点直接读取；需取回时使用如`scp -r fvcrc20:/home/xiang/mechpop_cache/e147_gate_group_control <本地目录>`。逐文件SHA及全批次封存见`results/execution_2026-10-26_artifacts.json`。四项raw和全部source proof足以重算统计；大数组不入Git。Git包含源码、冻结输入/来源/组、结果摘要与PNG/PDF。
 
 本轮只重放既有token/prefix与所需MoE块，未重建约71.7GB训练H/Y cache，未训练新模型。E144/E145预算包含两轮预检，首次CUDA物理卡放置问题及旧对照在`results/e145/device_visibility_audit.json`中保留；新held在修复后完成，无丢弃条件。
+
+## 睡前约束后的成熟资产核查（E148运行期间）
+
+| 资产 | 实际核查 / 阅读范围 | 可回答的层次与限制 |
+|---|---|---|
+| OLMoE 0924四个checkpoint | 目录/配置存在；step5000分片、config、tokenizer逐字节核验，E148 parent已实际运行；其他原路径见上表 | 公开真实训练谱系；同父继续学习干预。纵向checkpoint不是独立seed，也不把20B时刻当未分工初始化 |
+| 缓存Qwen3-30B-A3B | snapshot `ad44e777bcd18fa416d9da3bd8f70d33ebb85d39`；16个分片实际共61066575648B。config：48层、128专家、top8、dim2048、expert768、norm_topk_prob=True；未运行新模型推理 | 缓存README明确Pretraining & Post-training、base_model为Qwen3-30B-A3B-Base；不能作为同目标/同配方独立seed。成熟异构原生模型可提供边界验证；本轮尚未声称评测接口已通过 |
+| [Equifinality](https://arxiv.org/html/2604.14419) | 只重核§3.7资产发布说明，仍写code/checkpoints待发表后释放；没有确认可下载权重 | 不把论文里有多seed图表等同已有可复用成熟checkpoint；也不由未找到判定领域不可行 |
+| [Data Scarcity](https://arxiv.org/html/2609.11917v2) | 已有阅读之外，本轮检索全文code/checkpoint/release入口，未确认本工作可直接下载的seed权重 | 作者训练过多个seed不等于资产已可获取；现阶段不将其当现成cohort，不触发自训补齐 |
+| [Three Phases公开仓库](https://github.com/Cmouzouni/three-phases-moe) | 通过GitHub工具读README与results列表，发布内容为代码及聚合JSON，使用原始OLMoE/OpenMoE公开checkpoint | 可核对纵向组织先验与复用统计定义，不是独立seed套件；cached aggregate不是per-token原始capture或新模型权重 |
+
+模型资产不足时优先重述为可由成熟模型识别的问题，保留需要独立初始化总体的未决问题；不通过小模型低成熟度训练或输入bootstrap伪造跨seed证据。E148后先看其实际识别结果，再选少量能区分竞争解释的成熟资产干预，避免为了保持GPU繁忙自动排新训练。
