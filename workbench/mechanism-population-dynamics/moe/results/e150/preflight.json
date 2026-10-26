@@ -1,0 +1,69 @@
+{
+  "experiment": "E150",
+  "status": "partial",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e"
+  },
+  "models": {
+    "0": {
+      "source": "StdMoE_1b14b_1T",
+      "cal_BF16_logits": {
+        "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cal_source_0.npz",
+        "sha256": "798d178cf3a1a1fb59b35f42208588bd8c0d12bd50329215d615aea2b74f94c5"
+      },
+      "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+      "precision_metric_columns": [
+        "nll",
+        "ref_to_variant_kl",
+        "variant_to_ref_kl",
+        "ref_top1_agreement"
+      ],
+      "FP32_to_BF16_metrics_per_sequence": [
+        [
+          3.188849687576294,
+          0.0010220528347417712,
+          0.0010367210488766432,
+          0.9921875
+        ],
+        [
+          2.825817823410034,
+          0.0003890334046445787,
+          0.00038802166818641126,
+          1.0
+        ]
+      ],
+      "zero_L9_metrics_per_sequence": [
+        [
+          3.267831563949585,
+          0.05451482906937599,
+          0.05621825531125069,
+          0.8203125
+        ],
+        [
+          2.8941965103149414,
+          0.033562418073415756,
+          0.03644535690546036,
+          0.921875
+        ]
+      ],
+      "BF16_repeat_exact": true,
+      "all_slot_mask_exact": true,
+      "checkpoint_keys_strict": true,
+      "parameter_count": 13568641024
+    }
+  },
+  "physical_gpu": 0,
+  "peak_allocated_bytes": 54821924352,
+  "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e",
+  "asset_manifest_sha256": "4968515ec28aa8d801130bf55e0afb5d84f8432468b3ed14a41553154d7fb22e"
+}
