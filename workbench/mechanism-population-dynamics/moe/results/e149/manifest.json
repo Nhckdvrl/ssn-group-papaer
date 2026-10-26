@@ -1,0 +1,101 @@
+{
+  "experiment": "E149",
+  "status": "complete",
+  "source_sha256": {
+    "e148_common.py": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+    "e148_native.py": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e149_source_cube.py": "9c8d86c48a0c57320909b38e169f4a08997ea39784ce1ff796249e9146665792"
+  },
+  "plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
+  "factor_order": [
+    "backbone",
+    "all_gates",
+    "all_expert_banks"
+  ],
+  "source_order": [
+    "A",
+    "B"
+  ],
+  "cases": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "controls": {
+    "both_native_corners_bitwise_equal": true,
+    "all_parameters_and_registered_buffers_unchanged": true,
+    "NLL_reference_invariant": true
+  },
+  "scope": "E149: system-wide backbone x router x expert-bank source cube, no training.",
+  "source_checkpoints": [
+    {
+      "path": "/tmp/xiang-moe-20261026/e148/A/full_000672.pt",
+      "sha256": "1f4aede20eda8478dbbf0136fc49b00549fb585f6cb73910aae6af27f42711aa",
+      "size_bytes": 27720419987,
+      "step": 672,
+      "branch": "A",
+      "schema": "E148-full-v1",
+      "state_tensor_sha256": "1c8f2984920a446727397ccafedb64f05712494e0dc9ee46e8ada2e00f1cabd1",
+      "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+    },
+    {
+      "path": "/tmp/xiang-moe-20261026/e148/B/full_000672.pt",
+      "sha256": "85b9f6957f54633c1a2b7582d24cebb3d8a8b7d6f48bf401d4ac986f65339ff7",
+      "size_bytes": 27720419987,
+      "step": 672,
+      "branch": "B",
+      "schema": "E148-full-v1",
+      "state_tensor_sha256": "90bc3df3730cd3cabd7973372b8165ce41f53c4ef3c1b71f5513036e2117194f",
+      "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+    }
+  ],
+  "raw": {
+    "path": "/home/xiang/mechpop_cache/e149_native_source_cube/cube_metrics.npz",
+    "sha256": "fbd55f0641c20a6044a7f0fe5fecc4f142f9428e39d6d553ef9c109ffd28ecac",
+    "size_bytes": 5114827
+  },
+  "peak_allocated_bytes": 72133957120,
+  "physical_gpu": 1,
+  "visible_device_uuid": "9ec8243b-1e60-ebdb-b83e-f6a0fa24006c"
+}

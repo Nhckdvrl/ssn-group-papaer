@@ -1,0 +1,1620 @@
+{
+  "experiment": "E148",
+  "status": "complete",
+  "source_sha256": {
+    "e148_common.py": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+    "e148_native.py": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+  },
+  "natural": {
+    "parent_32": {
+      "point": 2.9581752764996447,
+      "input_file_ci95": [
+        2.4598673936540996,
+        3.3761083322646157
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A_160": {
+      "point": 2.9536567665860396,
+      "input_file_ci95": [
+        2.4566220344351204,
+        3.371044044694217
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A_288": {
+      "point": 2.9508220579651305,
+      "input_file_ci95": [
+        2.4544541544891927,
+        3.366528845852345
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A_608": {
+      "point": 2.950851114422271,
+      "input_file_ci95": [
+        2.454347853909116,
+        3.3674657877408505
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A_672": {
+      "point": 2.9519847243110533,
+      "input_file_ci95": [
+        2.455247262770694,
+        3.3681021523000414
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "B_160": {
+      "point": 2.952555402243383,
+      "input_file_ci95": [
+        2.456385080381651,
+        3.3698120394555517
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "B_288": {
+      "point": 2.950759716049705,
+      "input_file_ci95": [
+        2.454675502500176,
+        3.366009744598948
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "B_608": {
+      "point": 2.9511278705062636,
+      "input_file_ci95": [
+        2.454311381831092,
+        3.367817252134473
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "B_672": {
+      "point": 2.952385500314828,
+      "input_file_ci95": [
+        2.455658585039778,
+        3.3681860613192294
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A-repeat_160": {
+      "point": 2.9536567665860396,
+      "input_file_ci95": [
+        2.4566220344351204,
+        3.371044044694217
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A-repeat_288": {
+      "point": 2.9508220579651305,
+      "input_file_ci95": [
+        2.4544541544891927,
+        3.366528845852345
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A-repeat_608": {
+      "point": 2.950851114422271,
+      "input_file_ci95": [
+        2.454347853909116,
+        3.3674657877408505
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    },
+    "A-repeat_672": {
+      "point": 2.9519847243110533,
+      "input_file_ci95": [
+        2.455247262770694,
+        3.3681021523000414
+      ],
+      "file_clusters": 20,
+      "sequences": 64,
+      "bootstrap_seed": 148001
+    }
+  },
+  "pairs": {
+    "A_160_to_B_160": {
+      "forward_kl": {
+        "point": 0.002750748982089363,
+        "input_file_ci95": [
+          0.0023666913382681875,
+          0.0031414586096760243
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.0027401076498171453,
+        "input_file_ci95": [
+          0.002361119678026765,
+          0.003122807867745399
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": -0.0011013643426565703,
+        "input_file_ci95": [
+          -0.0022473799388954734,
+          -4.902897022501141e-05
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.969451904296875,
+        "input_file_ci95": [
+          0.965146293929442,
+          0.974208490280878
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_608_to_B_608": {
+      "forward_kl": {
+        "point": 0.0010722895366456677,
+        "input_file_ci95": [
+          0.0007372967441569751,
+          0.0015768207622309002
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.0010549850142433856,
+        "input_file_ci95": [
+          0.0007374939630003523,
+          0.0015330000937582317
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0002767560839927116,
+        "input_file_ci95": [
+          -9.002345814898029e-05,
+          0.0006556293265666936
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.9830322265625,
+        "input_file_ci95": [
+          0.9808137113957112,
+          0.9850953239742976
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_672_to_B_672": {
+      "forward_kl": {
+        "point": 0.0008925760049833934,
+        "input_file_ci95": [
+          0.0006757547923341471,
+          0.0012178067786487905
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.000886191468698007,
+        "input_file_ci95": [
+          0.0006739826548583018,
+          0.0012014926215584817
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0004007760037749164,
+        "input_file_ci95": [
+          -7.148391772151887e-05,
+          0.0008601154769582943
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.98431396484375,
+        "input_file_ci95": [
+          0.9814453125,
+          0.9870237662499016
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_160_to_A-repeat_160": {
+      "forward_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 1.0,
+        "input_file_ci95": [
+          1.0,
+          1.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_608_to_A-repeat_608": {
+      "forward_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 1.0,
+        "input_file_ci95": [
+          1.0,
+          1.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_672_to_A-repeat_672": {
+      "forward_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 1.0,
+        "input_file_ci95": [
+          1.0,
+          1.0
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A_608_to_A_672": {
+      "forward_kl": {
+        "point": 0.007115765850866929,
+        "input_file_ci95": [
+          0.006147023531083299,
+          0.007939253154089065
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.007165964336378285,
+        "input_file_ci95": [
+          0.006182538167639692,
+          0.008004642582267312
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0011336098887819238,
+        "input_file_ci95": [
+          -0.0007287848484705838,
+          0.00261431748055387
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.9493408203125,
+        "input_file_ci95": [
+          0.9437056851446185,
+          0.9570031229654948
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "B_608_to_B_672": {
+      "forward_kl": {
+        "point": 0.007050327959370158,
+        "input_file_ci95": [
+          0.0061501266675925235,
+          0.007832688785159787
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.007099611405875742,
+        "input_file_ci95": [
+          0.0061859355154563955,
+          0.007890303222821103
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0012576298085641285,
+        "input_file_ci95": [
+          -0.0006309808068608396,
+          0.0027183700696120474
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.948883056640625,
+        "input_file_ci95": [
+          0.9431606726091339,
+          0.955854957217262
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    },
+    "A-repeat_608_to_A-repeat_672": {
+      "forward_kl": {
+        "point": 0.007115765850866929,
+        "input_file_ci95": [
+          0.006147023531083299,
+          0.007939253154089065
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "reverse_kl": {
+        "point": 0.007165964336378285,
+        "input_file_ci95": [
+          0.006182538167639692,
+          0.008004642582267312
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "nll_right_minus_left": {
+        "point": 0.0011336098887819238,
+        "input_file_ci95": [
+          -0.0007287848484705838,
+          0.00261431748055387
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      },
+      "top1_agreement": {
+        "point": 0.9493408203125,
+        "input_file_ci95": [
+          0.9437056851446185,
+          0.9570031229654948
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 148001
+      }
+    }
+  },
+  "grafts": {
+    "step160_A": {
+      "native": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "bank_only": {
+        "delta_nll": {
+          "point": 6.948746301406461e-05,
+          "input_file_ci95": [
+            -0.00015636770563199845,
+            0.00024689033350254935
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016960264190089434,
+          "input_file_ci95": [
+            0.00015388339768026277,
+            0.00018190048622722938
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00016957268997834756,
+          "input_file_ci95": [
+            0.00015380671103418106,
+            0.00018187155574506833
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "gate_only": {
+        "delta_nll": {
+          "point": 0.0001617000803466606,
+          "input_file_ci95": [
+            -2.903191336731975e-05,
+            0.0002873620281251418
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016815506418728937,
+          "input_file_ci95": [
+            0.00015168047918230363,
+            0.0001811059340830423
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00016818178379132535,
+          "input_file_ci95": [
+            0.00015170897308800527,
+            0.0001810879541028295
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "complete_L9_graft": {
+        "delta_nll": {
+          "point": 0.00013480667590326512,
+          "input_file_ci95": [
+            -7.79142163806599e-05,
+            0.00032099542033007383
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0001785103128586212,
+          "input_file_ci95": [
+            0.00016142106257267913,
+            0.0001927640545495401
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00017854054503087008,
+          "input_file_ci95": [
+            0.00016144458923055677,
+            0.00019278033694065616
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "zero_L9": {
+        "delta_nll": {
+          "point": 0.047534770883929545,
+          "input_file_ci95": [
+            0.04068682694992371,
+            0.054024490351143276
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.04579712857121706,
+          "input_file_ci95": [
+            0.04020333538845446,
+            0.05069464403045236
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.04862243193998161,
+          "input_file_ci95": [
+            0.0429551475170158,
+            0.053995681958389316
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "repeat_bank": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      }
+    },
+    "step160_B": {
+      "native": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "bank_only": {
+        "delta_nll": {
+          "point": -7.016082125530648e-05,
+          "input_file_ci95": [
+            -0.0002925100039242454,
+            0.00014734514076364375
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016746145682824972,
+          "input_file_ci95": [
+            0.00015096172471376458,
+            0.00017950091540753913
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0001674012447161948,
+          "input_file_ci95": [
+            0.00015085774443712805,
+            0.0001794872154775055
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "gate_only": {
+        "delta_nll": {
+          "point": -5.938482697776665e-05,
+          "input_file_ci95": [
+            -0.0003127841361806701,
+            0.00015833971078437994
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016433623790165156,
+          "input_file_ci95": [
+            0.00014924420796655222,
+            0.00017638923899574406
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00016427204430452587,
+          "input_file_ci95": [
+            0.00014917193859901063,
+            0.00017635343128439822
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "complete_L9_graft": {
+        "delta_nll": {
+          "point": -0.0001244143379294238,
+          "input_file_ci95": [
+            -0.00032147662603951126,
+            7.357968211857906e-05
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0001743945241126237,
+          "input_file_ci95": [
+            0.00015815269498380634,
+            0.00018669489818890937
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00017432356378312337,
+          "input_file_ci95": [
+            0.0001580796264014362,
+            0.00018662385924483933
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "zero_L9": {
+        "delta_nll": {
+          "point": 0.047823252403451484,
+          "input_file_ci95": [
+            0.040679022145143,
+            0.05432224362870333
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.04579187122117384,
+          "input_file_ci95": [
+            0.040293483306602915,
+            0.050677924282454885
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.048622562808570205,
+          "input_file_ci95": [
+            0.0431556126580527,
+            0.05398983227417263
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      }
+    },
+    "step672_A": {
+      "native": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "bank_only": {
+        "delta_nll": {
+          "point": -1.7367512830074316e-05,
+          "input_file_ci95": [
+            -0.00019368293634015995,
+            0.00014392397257858054
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016539395745351028,
+          "input_file_ci95": [
+            0.000148858986936938,
+            0.0001781988555683317
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00016538498596690992,
+          "input_file_ci95": [
+            0.00014886864328782104,
+            0.00017816281679699088
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "gate_only": {
+        "delta_nll": {
+          "point": 1.116979561273379e-05,
+          "input_file_ci95": [
+            -0.0002167035184929964,
+            0.0002535263852515619
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016702851232223574,
+          "input_file_ci95": [
+            0.00015215395585052927,
+            0.0001790935657552853
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0001670347785444492,
+          "input_file_ci95": [
+            0.00015217457206431116,
+            0.00017914777375311214
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "complete_L9_graft": {
+        "delta_nll": {
+          "point": 9.958099332620096e-05,
+          "input_file_ci95": [
+            -7.517035055369146e-05,
+            0.00023969818001357931
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00017252170305724374,
+          "input_file_ci95": [
+            0.0001561545436638137,
+            0.0001854350629730682
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00017256118347073614,
+          "input_file_ci95": [
+            0.00015618402561860058,
+            0.00018548976934965538
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "zero_L9": {
+        "delta_nll": {
+          "point": 0.047356097835319036,
+          "input_file_ci95": [
+            0.03985412316146112,
+            0.053896105324233175
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.04604739207690341,
+          "input_file_ci95": [
+            0.040572064520225805,
+            0.0511064934736914
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.04905881818197573,
+          "input_file_ci95": [
+            0.043446389373183326,
+            0.05450993568077918
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "repeat_bank": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "own_late_bank": {
+        "delta_nll": {
+          "point": -0.00011899091427176878,
+          "input_file_ci95": [
+            -0.00037734118275467777,
+            8.223774465658313e-05
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00020255878662609627,
+          "input_file_ci95": [
+            0.00017826714911516042,
+            0.00022042550467855085
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00020269524047735298,
+          "input_file_ci95": [
+            0.0001783567726528595,
+            0.0002205952596354383
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      }
+    },
+    "step672_B": {
+      "native": {
+        "delta_nll": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0,
+          "input_file_ci95": [
+            0.0,
+            0.0
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "bank_only": {
+        "delta_nll": {
+          "point": 8.730261665580719e-05,
+          "input_file_ci95": [
+            -7.952838985417264e-05,
+            0.00027393409915121234
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0001640491867963897,
+          "input_file_ci95": [
+            0.00015004981768736278,
+            0.00017540411201529728
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00016406769009771676,
+          "input_file_ci95": [
+            0.00015011306481044982,
+            0.00017541310956125362
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "gate_only": {
+        "delta_nll": {
+          "point": -2.1567393436339177e-05,
+          "input_file_ci95": [
+            -0.0001762167358623608,
+            0.00016744518641099036
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00016584674631084102,
+          "input_file_ci95": [
+            0.0001507272511974896,
+            0.00017815356214741901
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0001658696959036906,
+          "input_file_ci95": [
+            0.00015072841952767056,
+            0.00017821425743408704
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "complete_L9_graft": {
+        "delta_nll": {
+          "point": 0.00012788770254128223,
+          "input_file_ci95": [
+            -9.747677962508995e-05,
+            0.0003950292792393893
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.00017167067019804259,
+          "input_file_ci95": [
+            0.00015581821106272917,
+            0.00018460450427076918
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.00017168194541051374,
+          "input_file_ci95": [
+            0.00015584060314745757,
+            0.00018462389551565615
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "zero_L9": {
+        "delta_nll": {
+          "point": 0.047186069450872684,
+          "input_file_ci95": [
+            0.039898923953282144,
+            0.0536448777028149
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.04599133052302126,
+          "input_file_ci95": [
+            0.04051040920305187,
+            0.05100159522697237
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.049016769298282574,
+          "input_file_ci95": [
+            0.043389923476788994,
+            0.05449117534332224
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      },
+      "own_late_bank": {
+        "delta_nll": {
+          "point": -0.00012023743819791766,
+          "input_file_ci95": [
+            -0.000415206891173026,
+            0.00013460487278845723
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "native_to_variant_kl": {
+          "point": 0.0002004644963898064,
+          "input_file_ci95": [
+            0.00017865952730842426,
+            0.00021571648989511546
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        },
+        "variant_to_native_kl": {
+          "point": 0.0002005673421301451,
+          "input_file_ci95": [
+            0.00017877440084128736,
+            0.0002157818494135192
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 148001
+        }
+      }
+    }
+  },
+  "scope": "One pretrained parent and one finite order pulse; paired input-file intervals, not training-seed population CIs.",
+  "routing": {
+    "A": {
+      "160": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9321441650390625,
+          0.93731689453125,
+          0.953643798828125,
+          0.9547119140625,
+          0.96148681640625,
+          0.9634246826171875,
+          0.9603729248046875,
+          0.9668731689453125,
+          0.9627227783203125,
+          0.9627532958984375,
+          0.9619903564453125,
+          0.958953857421875,
+          0.954681396484375,
+          0.953460693359375,
+          0.9527587890625,
+          0.9586639404296875
+        ],
+        "L9_top8_overlap_with_parent": 0.9627532958984375,
+        "L9_applied_gate_mass": 0.6562741324305534,
+        "L9_applied_gate_L2_change_per_position": 0.001050371889618873,
+        "L9_gate_only_affinity_frobenius_change": 0.0008792244906321118
+      },
+      "288": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9090576171875,
+          0.921478271484375,
+          0.9437408447265625,
+          0.9511871337890625,
+          0.958251953125,
+          0.95758056640625,
+          0.9556732177734375,
+          0.9623260498046875,
+          0.9563446044921875,
+          0.9549102783203125,
+          0.95556640625,
+          0.952301025390625,
+          0.9478607177734375,
+          0.9470977783203125,
+          0.9451904296875,
+          0.9510650634765625
+        ],
+        "L9_top8_overlap_with_parent": 0.9549102783203125,
+        "L9_applied_gate_mass": 0.6568534094840288,
+        "L9_applied_gate_L2_change_per_position": 0.001376656445899016,
+        "L9_gate_only_affinity_frobenius_change": 0.0010663010559182735
+      },
+      "608": {
+        "all_layer_top8_overlap_with_parent": [
+          0.879486083984375,
+          0.89471435546875,
+          0.9269866943359375,
+          0.937103271484375,
+          0.9451141357421875,
+          0.9467010498046875,
+          0.94622802734375,
+          0.9520111083984375,
+          0.9472503662109375,
+          0.947418212890625,
+          0.946044921875,
+          0.9427337646484375,
+          0.9356689453125,
+          0.936187744140625,
+          0.9368133544921875,
+          0.9429168701171875
+        ],
+        "L9_top8_overlap_with_parent": 0.947418212890625,
+        "L9_applied_gate_mass": 0.6593088507652283,
+        "L9_applied_gate_L2_change_per_position": 0.001993504544998359,
+        "L9_gate_only_affinity_frobenius_change": 0.001358291131086441
+      },
+      "672": {
+        "all_layer_top8_overlap_with_parent": [
+          0.8737640380859375,
+          0.8903961181640625,
+          0.92620849609375,
+          0.936920166015625,
+          0.944915771484375,
+          0.9472808837890625,
+          0.945037841796875,
+          0.9495086669921875,
+          0.9436492919921875,
+          0.94390869140625,
+          0.9415435791015625,
+          0.9398345947265625,
+          0.9327545166015625,
+          0.9324798583984375,
+          0.9348907470703125,
+          0.94140625
+        ],
+        "L9_top8_overlap_with_parent": 0.94390869140625,
+        "L9_applied_gate_mass": 0.6605117935687304,
+        "L9_applied_gate_L2_change_per_position": 0.0022339101344925893,
+        "L9_gate_only_affinity_frobenius_change": 0.001812539835936893
+      }
+    },
+    "B": {
+      "160": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9331207275390625,
+          0.939453125,
+          0.9537200927734375,
+          0.9580841064453125,
+          0.9644317626953125,
+          0.9657135009765625,
+          0.9623870849609375,
+          0.9681854248046875,
+          0.9634552001953125,
+          0.964263916015625,
+          0.961517333984375,
+          0.9601898193359375,
+          0.955902099609375,
+          0.954345703125,
+          0.9530181884765625,
+          0.9604644775390625
+        ],
+        "L9_top8_overlap_with_parent": 0.964263916015625,
+        "L9_applied_gate_mass": 0.6580389197915792,
+        "L9_applied_gate_L2_change_per_position": 0.000943755243696387,
+        "L9_gate_only_affinity_frobenius_change": 0.0009819526300531545
+      },
+      "288": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9094390869140625,
+          0.92010498046875,
+          0.9426727294921875,
+          0.9510955810546875,
+          0.9580078125,
+          0.957855224609375,
+          0.9551544189453125,
+          0.9621734619140625,
+          0.95562744140625,
+          0.95440673828125,
+          0.9546661376953125,
+          0.951629638671875,
+          0.9475250244140625,
+          0.9462432861328125,
+          0.9441680908203125,
+          0.950897216796875
+        ],
+        "L9_top8_overlap_with_parent": 0.95440673828125,
+        "L9_applied_gate_mass": 0.6573932636529207,
+        "L9_applied_gate_L2_change_per_position": 0.0014371135859789774,
+        "L9_gate_only_affinity_frobenius_change": 0.0011023882943010834
+      },
+      "608": {
+        "all_layer_top8_overlap_with_parent": [
+          0.8788909912109375,
+          0.892913818359375,
+          0.9273529052734375,
+          0.9373626708984375,
+          0.944427490234375,
+          0.947174072265625,
+          0.9460296630859375,
+          0.9519500732421875,
+          0.9468994140625,
+          0.9478759765625,
+          0.9463653564453125,
+          0.942626953125,
+          0.935150146484375,
+          0.9358367919921875,
+          0.9366912841796875,
+          0.9433441162109375
+        ],
+        "L9_top8_overlap_with_parent": 0.9478759765625,
+        "L9_applied_gate_mass": 0.6592081990092993,
+        "L9_applied_gate_L2_change_per_position": 0.0019833430395976848,
+        "L9_gate_only_affinity_frobenius_change": 0.0013432693544951678
+      },
+      "672": {
+        "all_layer_top8_overlap_with_parent": [
+          0.873382568359375,
+          0.889556884765625,
+          0.926300048828125,
+          0.93695068359375,
+          0.945098876953125,
+          0.947113037109375,
+          0.9454345703125,
+          0.9494781494140625,
+          0.9434356689453125,
+          0.9438934326171875,
+          0.9410858154296875,
+          0.9395904541015625,
+          0.932830810546875,
+          0.932098388671875,
+          0.9351806640625,
+          0.9410400390625
+        ],
+        "L9_top8_overlap_with_parent": 0.9438934326171875,
+        "L9_applied_gate_mass": 0.6604954861104488,
+        "L9_applied_gate_L2_change_per_position": 0.002231042495964175,
+        "L9_gate_only_affinity_frobenius_change": 0.001829522394139237
+      }
+    },
+    "A-repeat": {
+      "160": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9321441650390625,
+          0.93731689453125,
+          0.953643798828125,
+          0.9547119140625,
+          0.96148681640625,
+          0.9634246826171875,
+          0.9603729248046875,
+          0.9668731689453125,
+          0.9627227783203125,
+          0.9627532958984375,
+          0.9619903564453125,
+          0.958953857421875,
+          0.954681396484375,
+          0.953460693359375,
+          0.9527587890625,
+          0.9586639404296875
+        ],
+        "L9_top8_overlap_with_parent": 0.9627532958984375,
+        "L9_applied_gate_mass": 0.6562741324305534,
+        "L9_applied_gate_L2_change_per_position": 0.001050371889618873,
+        "L9_gate_only_affinity_frobenius_change": 0.0008792244906321118
+      },
+      "288": {
+        "all_layer_top8_overlap_with_parent": [
+          0.9090576171875,
+          0.921478271484375,
+          0.9437408447265625,
+          0.9511871337890625,
+          0.958251953125,
+          0.95758056640625,
+          0.9556732177734375,
+          0.9623260498046875,
+          0.9563446044921875,
+          0.9549102783203125,
+          0.95556640625,
+          0.952301025390625,
+          0.9478607177734375,
+          0.9470977783203125,
+          0.9451904296875,
+          0.9510650634765625
+        ],
+        "L9_top8_overlap_with_parent": 0.9549102783203125,
+        "L9_applied_gate_mass": 0.6568534094840288,
+        "L9_applied_gate_L2_change_per_position": 0.001376656445899016,
+        "L9_gate_only_affinity_frobenius_change": 0.0010663010559182735
+      },
+      "608": {
+        "all_layer_top8_overlap_with_parent": [
+          0.879486083984375,
+          0.89471435546875,
+          0.9269866943359375,
+          0.937103271484375,
+          0.9451141357421875,
+          0.9467010498046875,
+          0.94622802734375,
+          0.9520111083984375,
+          0.9472503662109375,
+          0.947418212890625,
+          0.946044921875,
+          0.9427337646484375,
+          0.9356689453125,
+          0.936187744140625,
+          0.9368133544921875,
+          0.9429168701171875
+        ],
+        "L9_top8_overlap_with_parent": 0.947418212890625,
+        "L9_applied_gate_mass": 0.6593088507652283,
+        "L9_applied_gate_L2_change_per_position": 0.001993504544998359,
+        "L9_gate_only_affinity_frobenius_change": 0.001358291131086441
+      },
+      "672": {
+        "all_layer_top8_overlap_with_parent": [
+          0.8737640380859375,
+          0.8903961181640625,
+          0.92620849609375,
+          0.936920166015625,
+          0.944915771484375,
+          0.9472808837890625,
+          0.945037841796875,
+          0.9495086669921875,
+          0.9436492919921875,
+          0.94390869140625,
+          0.9415435791015625,
+          0.9398345947265625,
+          0.9327545166015625,
+          0.9324798583984375,
+          0.9348907470703125,
+          0.94140625
+        ],
+        "L9_top8_overlap_with_parent": 0.94390869140625,
+        "L9_applied_gate_mass": 0.6605117935687304,
+        "L9_applied_gate_L2_change_per_position": 0.0022339101344925893,
+        "L9_gate_only_affinity_frobenius_change": 0.001812539835936893
+      }
+    }
+  },
+  "exposure_audit": {
+    "common_parent_verified": true,
+    "pulse_multiset_equal": true,
+    "common_suffix_chain": "aca8b6b7aafc60134d3a7a733128d0b9faaa0cd21f7d475cd847577c169e14f7",
+    "A_repeat_same_pulse_chain": true
+  },
+  "analysis_execution": {
+    "adapter_sha256": "7cf26f9702931984651c27acec6bb503581a516fb64850c3207b96b23ad016f0",
+    "original_analyzer_sha256": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "physical_gpu": 3,
+    "visible_device_uuid": "eebba152-705b-320c-b4bd-18b268046caa",
+    "formulas_and_comparison_set_unchanged": true,
+    "CPU_phase160_point_absolute_differences": {
+      "forward_KL_point": 5.475470280739275e-09,
+      "reverse_KL_point": 3.184033212913148e-08,
+      "NLL_gap_point": 0.0
+    },
+    "unique_immutable_evaluations_checked": 13,
+    "metric_chunks": 9216,
+    "precision": "Stored actual BF16 logits -> FP32 logsoftmax/KL on GPU -> FP64 sequence accumulation; same predeclared input-file bootstrap"
+  }
+}

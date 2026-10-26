@@ -1,0 +1,41 @@
+{
+  "mode": "train",
+  "branch": "A",
+  "physical_gpu": 0,
+  "status": "complete",
+  "resource_policy_sha256": "a4ed3c9d0d340bc9c94d04880afefe92985a9add0f60ba618d015238250c93ea",
+  "resource_policy": {
+    "schema": "E148-resource-only-allowance-v1",
+    "max_gpu_seconds": 18000,
+    "compiled_original_limit_gpu_seconds": 14400,
+    "before_any_order_treatment": true,
+    "scientific_spec_hash": "7d322de93702115274bcabc72bbe0157cf0c1029787277ddf461d2b294d7480a",
+    "plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
+    "core_source_sha256": {
+      "e148_common.py": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+      "e148_native.py": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+      "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+      "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+      "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+    },
+    "parent_checkpoint_sha256": "1ad7f3669cd911fe23f054e4f1beaa6cdcf598974e3bb2c19e1c333bc85c1f75",
+    "reason": "Measured deterministic updates require ~3.36 GPU h before full FP32 checkpoint save/hash and reciprocal readouts. Real parent checkpoint save/hash dominated I/O; a 5 GPU h total allocation preserves all frozen conditions and source checks without changing data, dose, LR, optimizer, seeds or readouts.",
+    "numerical_program_unchanged": true,
+    "issued_utc": "2026-10-26T15:32:24.676256+00:00"
+  },
+  "execution_launcher_sha256": "ff267c08bbfeb2c9e59b68c599e61609242c4adbec40da7cf0f9f2c16fd27da8",
+  "core_source_sha256": {
+    "e148_common.py": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+    "e148_native.py": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+  },
+  "result": {
+    "status": "complete",
+    "branch": "A",
+    "step": 672
+  }
+}

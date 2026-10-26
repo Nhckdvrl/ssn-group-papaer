@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-27",
+  "sources": [
+    {
+      "url": "https://github.com/allenai/EMO/blob/main/README.md",
+      "git_blob_sha1": "91b9f05f2ba6702750a4545bf3112b882b05c616",
+      "read_scope": "emo_repository_readme"
+    },
+    {
+      "url": "https://github.com/allenai/EMO/blob/main/scripts/models/stdmoe_1b14b_1t_emoanneal.sh",
+      "git_blob_sha1": "58ebaeeef3aeb5e4cbf2e53fb0bf91ceb84194b8",
+      "read_scope": "emo_anneal_script"
+    },
+    {
+      "url": "https://github.com/allenai/EMO/blob/main/scripts/models/stdmoe_1b14b_1t_stdanneal.sh",
+      "git_blob_sha1": "fec592ada860f26406530bedd38f726724110e0c",
+      "read_scope": "std_anneal_script"
+    }
+  ],
+  "declared_parent_checkpoint": "${MODELS_DIR}/moereducedp512sharedexp1_1b14b_lr-4e-3_lb-1e-1_1T_0322/step238419",
+  "published_anneal_tokens": 50000000000,
+  "published_mix_label": "OLMoE-mix-0824",
+  "interpretation": "Published common-parent protocol-package contrast, not our byte-verified starting optimizer/RNG/batch chain and not independent initialization seeds.",
+  "static_forward_review": {
+    "config_tokenizer_files_identical": true,
+    "modeling_files_identical": false,
+    "differences": "Additional asserts and logging isinstance guard; no mathematical inference-forward change on the selected path.",
+    "expert_interface": "128 total slots; top_k=8 consists of 127 routed softmax slots top7 plus last one shared slot with separate single-slot softmax weight 1.",
+    "training_protocol_differences": [
+      "document-length generation",
+      "document random pool / model-type",
+      "attention backend flag"
+    ],
+    "shared_expert_is_separate_source_factor": true
+  }
+}

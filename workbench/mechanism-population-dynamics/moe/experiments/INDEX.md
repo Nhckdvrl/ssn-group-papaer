@@ -41,6 +41,9 @@
 | [E145](E145-history-gate-bank-cross.md) | DONE；C11/P27–29 | 同接收者bank代价S−R=−.005222；共同gate C_S/C_R=.037892/.055990 | [summary](../results/e145/summary.json) |
 | [E146](E146-grouped-recombination.md) | DONE；条件满足后执行 | Γ定8×8组ΔNLL=.000681，3随机同大小组.001690–.002151 | [summary](../results/e146/summary.json) |
 | [E147](E147-gate-coactivation-group-control.md) | DONE；新登记强对照 | gate-only−Γ NLL=+.0000048 [−.000251,.000266]，未检出Γ额外优势 | [summary](../results/e147/summary.json) |
+| [E148](E148-native-checkpoint-order-forks.md) | DONE；C13/P32 | 原生次序响应KL由.002751降至.000893，小于末期自身漂移约.0071；L9互换NLL区间均跨0 | [summary](../results/e148/summary.json) |
+| [E149](E149-native-system-source-cube.md) | DONE；C13/P32 | 全网络8格，backbone×MoE配对代价−.000061 [−.000503,.000242]，未检出交互 | [summary](../results/e149/summary.json) |
+| [E150](E150-native-mature-routing-protocol-cross.md) | 资产/接口预检；P32 | 公开1T+50B协议分支，dense/gate/routed/shared四因素16格；新模型尚未推理 | [CPU来源校对](../results/e150/self_test.json) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 

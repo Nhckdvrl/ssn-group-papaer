@@ -1,0 +1,202 @@
+{
+  "experiment": "E148",
+  "stage": "reciprocal_L9_grafts",
+  "status": "complete",
+  "source_sha256": {
+    "e148_common.py": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+    "e148_native.py": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+    "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+    "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+  },
+  "plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
+  "receivers": {
+    "step160_A": {
+      "receiver": "A",
+      "donor": "B",
+      "step": 160,
+      "receiver_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/A/full_000160.pt",
+        "sha256": "7c9101c06e41129d5668b32c030c18c2810b435d7b575d66a70efd675884788a",
+        "size_bytes": 27720416723,
+        "step": 160,
+        "branch": "A",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "0134060a53c997111a7121f690a21925d88b80146abe8e7e3a818283f0bc83da",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "donor_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/B/full_000160.pt",
+        "sha256": "033881bd1746ea89e375dde4403a9baa4da8be3cf560f489b6acd690bb870ed8",
+        "size_bytes": 27720416723,
+        "step": 160,
+        "branch": "B",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "256139dbe37e9761485eec59c13866b63ccfcb59044d064d60cfdec1b6cddccd",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "extra_sources": {
+        "repeat": {
+          "path": "/tmp/xiang-moe-20261026/e148/A-repeat/full_000160.pt",
+          "sha256": "032209d7d88f6ef63cf10d859ab122ed9a87073adfd04572c4c4295f1585aaeb",
+          "size_bytes": 27720416723,
+          "step": 160,
+          "branch": "A-repeat",
+          "schema": "E148-full-v1",
+          "state_tensor_sha256": "0134060a53c997111a7121f690a21925d88b80146abe8e7e3a818283f0bc83da",
+          "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+        }
+      },
+      "raw": {
+        "path": "/tmp/xiang-moe-20261026/e148/graft_160_A.npz",
+        "sha256": "f4121c09bb3d9806e2d04e580703f55fe45833d2cdf14c07d029f3b1c392f5ee"
+      },
+      "floors": {
+        "native_repeat_logp_max_abs": 0.0,
+        "identity_bank_logp_max_abs": 0.0
+      },
+      "read_only": true
+    },
+    "step160_B": {
+      "receiver": "B",
+      "donor": "A",
+      "step": 160,
+      "receiver_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/B/full_000160.pt",
+        "sha256": "033881bd1746ea89e375dde4403a9baa4da8be3cf560f489b6acd690bb870ed8",
+        "size_bytes": 27720416723,
+        "step": 160,
+        "branch": "B",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "256139dbe37e9761485eec59c13866b63ccfcb59044d064d60cfdec1b6cddccd",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "donor_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/A/full_000160.pt",
+        "sha256": "7c9101c06e41129d5668b32c030c18c2810b435d7b575d66a70efd675884788a",
+        "size_bytes": 27720416723,
+        "step": 160,
+        "branch": "A",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "0134060a53c997111a7121f690a21925d88b80146abe8e7e3a818283f0bc83da",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "extra_sources": {},
+      "raw": {
+        "path": "/tmp/xiang-moe-20261026/e148/graft_160_B.npz",
+        "sha256": "f445723dd5c7adcd8aa6e6782b05d55b29ecae706946be3976675be1c60a4130"
+      },
+      "floors": {
+        "native_repeat_logp_max_abs": 0.0,
+        "identity_bank_logp_max_abs": 0.0
+      },
+      "read_only": true
+    },
+    "step672_A": {
+      "receiver": "A",
+      "donor": "B",
+      "step": 672,
+      "receiver_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/A/full_000672.pt",
+        "sha256": "1f4aede20eda8478dbbf0136fc49b00549fb585f6cb73910aae6af27f42711aa",
+        "size_bytes": 27720419987,
+        "step": 672,
+        "branch": "A",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "1c8f2984920a446727397ccafedb64f05712494e0dc9ee46e8ada2e00f1cabd1",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "donor_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/B/full_000672.pt",
+        "sha256": "85b9f6957f54633c1a2b7582d24cebb3d8a8b7d6f48bf401d4ac986f65339ff7",
+        "size_bytes": 27720419987,
+        "step": 672,
+        "branch": "B",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "90bc3df3730cd3cabd7973372b8165ce41f53c4ef3c1b71f5513036e2117194f",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "extra_sources": {
+        "repeat": {
+          "path": "/tmp/xiang-moe-20261026/e148/A-repeat/full_000672.pt",
+          "sha256": "bf57518c585a59d8eb8f8d8f35b411b61b45f786275c57ab45199aa730900c6e",
+          "size_bytes": 27720419987,
+          "step": 672,
+          "branch": "A-repeat",
+          "schema": "E148-full-v1",
+          "state_tensor_sha256": "1c8f2984920a446727397ccafedb64f05712494e0dc9ee46e8ada2e00f1cabd1",
+          "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+        },
+        "own_late": {
+          "path": "/tmp/xiang-moe-20261026/e148/A/thin_000608.pt",
+          "sha256": "7e629b2a6ee24796c7529dfef4f5d6d7c6570f87ce3d5e3c136096bf3cbc0725",
+          "size_bytes": 1619077885,
+          "step": 608,
+          "branch": "A",
+          "schema": "E148-thin-v1",
+          "state_tensor_sha256": "bec7d0294475240439205c3337007de9a39271252202ec1c981821d322f335f8",
+          "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+        }
+      },
+      "raw": {
+        "path": "/tmp/xiang-moe-20261026/e148/graft_672_A.npz",
+        "sha256": "8391b42f31b3b2668bf3b98f784a256b1c8b27165abca256db1fb5e0773f8ee3"
+      },
+      "floors": {
+        "native_repeat_logp_max_abs": 0.0,
+        "identity_bank_logp_max_abs": 0.0
+      },
+      "read_only": true
+    },
+    "step672_B": {
+      "receiver": "B",
+      "donor": "A",
+      "step": 672,
+      "receiver_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/B/full_000672.pt",
+        "sha256": "85b9f6957f54633c1a2b7582d24cebb3d8a8b7d6f48bf401d4ac986f65339ff7",
+        "size_bytes": 27720419987,
+        "step": 672,
+        "branch": "B",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "90bc3df3730cd3cabd7973372b8165ce41f53c4ef3c1b71f5513036e2117194f",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "donor_checkpoint": {
+        "path": "/tmp/xiang-moe-20261026/e148/A/full_000672.pt",
+        "sha256": "1f4aede20eda8478dbbf0136fc49b00549fb585f6cb73910aae6af27f42711aa",
+        "size_bytes": 27720419987,
+        "step": 672,
+        "branch": "A",
+        "schema": "E148-full-v1",
+        "state_tensor_sha256": "1c8f2984920a446727397ccafedb64f05712494e0dc9ee46e8ada2e00f1cabd1",
+        "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+      },
+      "extra_sources": {
+        "own_late": {
+          "path": "/tmp/xiang-moe-20261026/e148/B/thin_000608.pt",
+          "sha256": "c46a536e2ab7774cd88a358d29be3120ef31c8efce669d35d54fecb8000cbba0",
+          "size_bytes": 1619077885,
+          "step": 608,
+          "branch": "B",
+          "schema": "E148-thin-v1",
+          "state_tensor_sha256": "eb96bb760555436502aa67c017046db6dd4b3133bca229a7174015b3970919ab",
+          "buffer_tensor_sha256": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe"
+        }
+      },
+      "raw": {
+        "path": "/tmp/xiang-moe-20261026/e148/graft_672_B.npz",
+        "sha256": "447a8f00134f24a7fb1d401fdfcc2f297d70408b9511c527d7c9e460ce5a9989"
+      },
+      "floors": {
+        "native_repeat_logp_max_abs": 0.0,
+        "identity_bank_logp_max_abs": 0.0
+      },
+      "read_only": true
+    }
+  },
+  "scope": "E148 sealed trajectory statistics and reciprocal legal L9 transplants.\n\nA donor's complete L9 in the receiver backbone is a block graft, not the donor\nnative predictor. No hidden-state or expert matching is fitted on held inputs.\n",
+  "physical_gpu": 0,
+  "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e"
+}

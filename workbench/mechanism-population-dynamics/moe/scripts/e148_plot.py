@@ -1,6 +1,8 @@
 """Standalone E148 figures from complete summaries; no model or input selection."""
 from pathlib import Path
 import json
+import numpy as np
+from e144145_analyze import input_stats
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -17,16 +19,21 @@ def point(ax, x, row, color, marker="o", label=None):
 def main():
     d = json.loads((WB / "results/e148/summary.json").read_text())
     if d["status"] != "complete": raise ValueError("Complete planned readouts required")
+    plan = json.loads((WB / "results/e148/plan.json").read_text())
+    records = {n: json.loads((WB / f"results/e148/{n}.json").read_text()) for n in ("parent", "A", "B", "A-repeat")}
+    parent_nll = np.array(records["parent"]["evaluations"][0]["nll_rows"])
     plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False, "pdf.fonttype": 42})
     fig, axes = plt.subplots(2, 2, figsize=(11.5, 7.5), dpi=150)
     blue, red, gray = "#2166AC", "#B2182B", "#777777"
     ax = axes[0, 0]
     for branch, color, marker in (("A", blue, "o"), ("B", red, "s"), ("A-repeat", gray, "x")):
         steps = [32, 160, 288, 608, 672]
-        rows = [d["natural"]["parent_32"]]+[d["natural"][f"{branch}_{s}"] for s in steps[1:]]
+        rows = [input_stats(np.zeros(64), plan["selected"], 148001)]+[
+            input_stats(np.array(next(e for e in records[branch]["evaluations"] if e["step"] == s)["nll_rows"])-parent_nll,
+                        plan["selected"], 148001) for s in steps[1:]]
         ax.plot(steps, [r["point"] for r in rows], color=color, linewidth=1, linestyle="--" if branch == "A-repeat" else "-", label=branch)
         for x, row in zip(steps, rows): point(ax, x, row, color, marker)
-    ax.set(title="A  Native full-model prediction", xlabel="Controlled continuation updates (shared parent = 32)", ylabel="NLL (nats / token)")
+    ax.set(title="A  Native full-model learning", xlabel="Controlled continuation updates (shared parent = 32)", ylabel="NLL minus shared parent (nats / token)")
     ax.legend(frameon=False, fontsize=8)
     ax = axes[0, 1]
     for right, color, marker in (("B", red, "s"), ("A-repeat", gray, "x")):
@@ -34,6 +41,9 @@ def main():
         rows = [d["pairs"][f"A_{s}_to_{right}_{s}"]["forward_kl"] for s in steps]
         ax.plot(steps, [r["point"] for r in rows], color=color, linewidth=1, label=f"A to {right}")
         for x, row in zip(steps, rows): point(ax, x, row, color, marker)
+    for branch, color, offset in (("A", blue, -7), ("B", gray, 7)):
+        row = d["pairs"][f"{branch}_608_to_{branch}_672"]["forward_kl"]
+        point(ax, 672+offset, row, color, "^", f"{branch} late to final")
     ax.set(title="B  Order effect and same-stream replay", xlabel="Controlled continuation updates", ylabel="Full-vocabulary KL (nats / token)")
     ax.axhline(0, color="#BBBBBB", linewidth=.6)
     ax.legend(frameon=False, fontsize=8)
@@ -46,6 +56,9 @@ def main():
             for x, (step, receiver) in enumerate(labels):
                 row = d["grafts"][f"step{step}_{receiver}"][variant][field]
                 point(panel, x+(j-1)*.17, row, color, marker, label if x == 0 else None)
+        for x, receiver in ((2, "A"), (3, "B")):
+            row = d["grafts"][f"step672_{receiver}"]["own_late_bank"][field]
+            point(panel, x+.34, row, "#238B45", "x", "Own late bank" if x == 2 else None)
         panel.set(xticks=range(4), xticklabels=[f"{s}: {r}" for s, r in labels], xlabel="Snapshot: receiving backbone", title=title, ylabel=ylabel)
         panel.axhline(0, color="#BBBBBB", linewidth=.6)
         panel.legend(frameon=False, fontsize=8)

@@ -35,6 +35,8 @@ def main():
         requested = {}
         plan = read(RESULT / "plan.json")
         requested[plan["plan_path"]] = plan["plan_sha256"]
+        assets = LOCAL / "model_assets.json"
+        requested[str(assets)] = sha(assets)
         for branch in ("parent", "A", "B", "A-repeat"):
             source = RESULT / f"{branch}.json"
             if not source.exists(): continue
@@ -52,6 +54,10 @@ def main():
             if record["status"] == "complete":
                 if "update_log" in record:
                     p = record["update_log"]; requested[p["path"]] = p["sha256"]
+        graft_file = RESULT / "grafts.json"
+        if graft_file.exists():
+            for receiver in read(graft_file)["receivers"].values():
+                p = receiver["raw"]; requested[p["path"]] = p["sha256"]
         for source, expected in requested.items():
             source = Path(source)
             relative = source.relative_to(LOCAL)
@@ -75,6 +81,8 @@ def main():
             state["files"][str(relative)] = {"source": str(source), "path": str(target), "sha256": expected,
                 "size_bytes": target.stat().st_size, "destination_mtime_ns": target.stat().st_mtime_ns,
                 "verified_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()}
+            state["verified_files"] = len(state["files"])
+            state["verified_bytes"] = sum(v["size_bytes"] for v in state["files"].values())
             write(path, state)
             print(json.dumps({"event": "E148_durable_verified", "file": str(relative), "size_bytes": target.stat().st_size}), flush=True)
         state["verified_files"] = len(state["files"])

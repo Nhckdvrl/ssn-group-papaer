@@ -90,3 +90,18 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 | [Three Phases公开仓库](https://github.com/Cmouzouni/three-phases-moe) | 通过GitHub工具读README与results列表，发布内容为代码及聚合JSON，使用原始OLMoE/OpenMoE公开checkpoint | 可核对纵向组织先验与复用统计定义，不是独立seed套件；cached aggregate不是per-token原始capture或新模型权重 |
 
 模型资产不足时优先重述为可由成熟模型识别的问题，保留需要独立初始化总体的未决问题；不通过小模型低成熟度训练或输入bootstrap伪造跨seed证据。E148后先看其实际识别结果，再选少量能区分竞争解释的成熟资产干预，避免为了保持GPU繁忙自动排新训练。
+
+## E148/E149实际完成与耐久资产（2026-10-27）
+
+- E148原生来源：`/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B`，已逐文件SHA验证；源码、软件和tokenizer同一性锁定在`results/e148/plan.json`、`model_assets.json`，不是原始optimizer续接。
+- **完整耐久位置：** `/home/xiang/mechpop_cache/e148_native_order_forks`，72个文件、237,114,164,566 B，包含唯一parent32、A/B/A-repeat完整FP32 pulse160/final672（含optimizer、全部buffer、RNG）、thin288/608、所有预测/路由、更新链与4个移植raw。每个文件在复制时对源/目的SHA核验；`results/e148/archive.json`及耐久`archive_manifest.json`给路径、size、SHA、验证时间。临时源仍保留，没有删除恢复所需内容。
+- **恢复入口：** 在目标节点建立`/tmp/xiang-moe-20261026/e148`，将上述耐久目录内容`rsync -a`到其中，再将公开`step5000-tokens20B/`内容复制到其`model/`。固定源码/HF4.57.6/torch2.8.0+cu128后，`e148_readout.py analyze`可CPU复算，`e148_analyze_gpu.py --physical-gpu N`是同公式GPU适配；原实验预算账本已结清，复算须单独计资源，不悄悄覆盖原账本。
+- E149无新训练，直接使用E148终点；raw `/home/xiang/mechpop_cache/e149_native_source_cube/cube_metrics.npz`，5,114,827 B，SHA `fbd55f0641c20a6044a7f0fe5fecc4f142f9428e39d6d553ef9c109ffd28ecac`。`results/e149/manifest.json`绑定源码、源checkpoint和输入；`e149_source_cube.py analyze --physical-gpu 0`仅CPU重算。
+- 同研究者从raw独立实现点值/角点/交互代数一致性检查：`scripts/e148149_verify_results.py`，结果`results/e148149_raw_verification.json`；不冒称独立L3校对。
+
+## E150新发现的公开成熟分叉（尚在下载，不伪称已可运行）
+
+- [作者发布清单](https://github.com/allenai/EMO#midtraining-ablation-models)与两训练脚本共同指向成熟1T parent `step238419`，之后标准/文档pool协议各退火50B；声明谱系、尚未取得的原始起点/batch/optimizer证据分开记录。HF commit/file metadata已实际读取，见`results/mature_assets_2026-10-27/emo_repo_pins.json`。
+- 标准终点`allenai/StdMoE_1b14b_1T` pin `b82073bb43aaaddc0f71d5ce139ad291a3948b32`；协议终点`allenai/StdMoE_1b14b_1T_EmoAnnealed` pin `d18c640b39e67f89669f38c5db8b5ed22a6927ca`。两份FP32权重各54,275,336,216 B，总新增下载108.55GB，写NFS HF缓存`/home/xiang/mechpop_cache/hf_emo_mature`，不在NVMe重复存两份。
+- 两份小型code/config/tokenizer已下载且与公开Git blob/LFS核验，native代码只差额外assert/logging类型保护；源码不能标为逐字节相同。实际配置128总expert/top8含末槽1共享，**127选7+1**；共享softmax单槽权重1，路由部分对127独立softmax。四因素操作必须沿真实接口，不复用OLMoE64选8的假设。
+- 原生custom code针对HF4.57.1；当前4.57.6的CPU tiny两层16格全部参数来源/native角/只读检查已通过，无新环境安装。64旧语言窗口decode后新tokenizer重编为30,994个真实target（uint32，非uint16），input CI仍20文件簇、探索性；不跨tokenizer比较绝对NLL。新GPU预检/科学读数尚未运行。

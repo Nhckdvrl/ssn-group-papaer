@@ -1,13 +1,61 @@
 {
   "experiment": "E148",
   "host": "fvcrc20",
-  "limit_gpu_seconds": 14400,
-  "completed_seconds": 51.22416654974222,
+  "limit_gpu_seconds": 18000,
+  "completed_seconds": 17698.311397042125,
   "active": {},
   "attempts": [
     {
       "phase": "native_train_preflight",
       "gpu_seconds": 51.22416654974222,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "native_train_preflight",
+      "gpu_seconds": 48.86344878003001,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "native_train_preflight",
+      "gpu_seconds": 95.0557425096631,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "train_parent",
+      "gpu_seconds": 500.3818449676037,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "train_A-repeat",
+      "gpu_seconds": 4878.1303915679455,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "train_A",
+      "gpu_seconds": 4899.519963167608,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "train_B",
+      "gpu_seconds": 4926.189170908183,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "reciprocal_endpoint_readout",
+      "gpu_seconds": 2147.32601717487,
+      "status": "complete",
+      "error": null
+    },
+    {
+      "phase": "offline_full_vocabulary_summary",
+      "gpu_seconds": 151.62065141648054,
       "status": "complete",
       "error": null
     }
@@ -17,5 +65,13 @@
     "new_limit_gpu_seconds": 14400,
     "reason": "Observed 4.30 seconds/update implies 2.33 GPU hours for fixed 1952 updates alone; preserve full checkpoint/readout and I/O margin, no change to scientific conditions.",
     "before_new_held_readout": true
-  }
+  },
+  "resource_revisions": [
+    {
+      "old_limit": 14400,
+      "new_limit": 18000,
+      "reason": "Measured deterministic updates require ~3.36 GPU h before full FP32 checkpoint save/hash and reciprocal readouts. Real parent checkpoint save/hash dominated I/O; a 5 GPU h total allocation preserves all frozen conditions and source checks without changing data, dose, LR, optimizer, seeds or readouts.",
+      "policy_sha256": "a4ed3c9d0d340bc9c94d04880afefe92985a9add0f60ba618d015238250c93ea"
+    }
+  ]
 }
