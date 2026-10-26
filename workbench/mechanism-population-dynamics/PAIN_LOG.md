@@ -2,6 +2,10 @@
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
 
+## P29（2026-10-26）：共享起点本身与native特定初态仍纠缠
+- E140共同native起点在允许学习、原选择集合约80%保留时componentVar .032818，fixed .031209、R .072467；持续冻结不是唯一稳定协议，不能独归teacher语义信息。
+- E142只补共享E135 seed1未训练random gate且可训练的组，复用seed1，只新增expert0/2并保留各自R初RNG。单个随机起点不外推全部，组内稳定不单独证明组间不同同函数分解；无性能/匹配网格。
+
 ## P28（2026-10-26）：actual贡献变异尚未分开调用支持与共同调用内容
 - E139的C09是actual mask×gate×expert贡献，不是纯expert内容；较大的component variance可能主要来自不同输入调用位置，不能只凭向量读数继续内容故事。
 - E141只读重放原held、沿原cal map，把全pair SSE精确拆XOR与both-on，并pairSum/9重建原variance；共同on的f/门值对称分解作辅助，无任何off查询/新matcher/训练。R/F先做，T原终点后补，主Dolma人口即可。

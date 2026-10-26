@@ -1,6 +1,6 @@
 # E140：同一原生路由初态，允许继续学习是否仍稳定分解（2026-10-26）
 
-- **状态：** RUNNING；04:04:20 UTC三新seed在独立GPU启动；预登记在初始化/训练前，E139已完整独立审计。
+- **状态：** DONE（全部训练、读数与独立审计完整）；原预登记保持。
 - **类型：** PILOT；只补一个区分机制的条件，不追拟合分数。
 - **对应：** P27：E139的teacher-gate/frozen与random-gate/trainable协议差，尚未分开共同初始组织与持续冻结的作用；承接P26、C08历史选择问题。
 - **问题（一句话）：** 完全相同的原生gate/随机expert初态下，解冻gate继续联合学习，是否保留固定分配组的跨训练分解稳定性？
@@ -34,3 +34,17 @@
 - `e140_train.py` SHA `1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07`冻结；CPU tiny完整/断点/三个真实schema fixture通过，node21三个实际初态的CPU预检通过，继承RNG都含一个visible CUDA state。
 - 04:04:20 UTC在fvcrc21 GPU0/1/2实际启动seed0/1/2，PID884887/884888/884889；独立ledger `/tmp/xiang-moe-20261025/e140_budget.json`，原缓存/六旧模型/旧预算不变。首批真实更新均正常，无设备故障；固定4096/全部终点仍在运行。
 - E139有限cohort结果用于提出本区分问题，非E140结果。
+
+### 三终点与完整读数
+- 三seed全4096，train fixed-energy MSE=.139666787/.139563929/.139468439，held=.159896634/.159811033/.159670965。全部9事件保留，无中途/seed筛选。原初态全193参数及torch/numpy/python/CUDA四类RNG逐项同对应fixed，初optimizer空且曝光0；终点193个Adam state皆step4096，门值全131072元素改变。实际9run逐步orders/LR/exposure同原epoch_orders，见`results/e140/training_independent_audit.json`。
+- `results/e140/readout.json`全部components/predictions/A complete/errors空；全阶段2287.598423GPU秒/4成功作业。读数源`e140_components.py`0b1222fb…4ba96a1、`e140_readout.py`1b69db4b…5ceec冻结，initial统计按全参数SHA耦合复用原E139 fixed initial，final全fresh。
+- Dolma componentVar=.032817626，FP64sumVar=.015583262，cross=−.017234364，nativeTeacher能量归一的teacher误差=.165796216/cohortVar=.013699573。fixed/free componentVar=.031208956/.072467196，sumVar=.015947143/.017869477。
+- warm−fixed componentVar=+.001608670 [paired输入CI .001293982,.001937989]，sumVar=−.000363881 [−.000651960,.000018435]；warm−free componentVar=−.039649570 [−.041180188,−.038393490]，sumVar=−.002286215 [−.002427762,−.002188357]。不把CI当seed总体，不以差是否为0作同函数准入。
+- POS componentVar=.036735117，sumVar=.016981664，cross=−.019753453，teacher误差=.395263315/cohortVar=.028471568；群体/单位与Dolma分开。final cal两张map均64identity。
+- Dolma相对初始teacher gate的选择重叠=.796019/.798233/.798254，applied gate L1/位置=.211886/.210775/.211205；POS重叠=.847900/.847412/.850586。按原物理expert行，不与cal映射混为自然身份；gate并未全程固定。
+- Dolma学生对KL=.008297069/.008166883/.008306001，teacher→学生=.040063372/.040117417/.039961110；POS学生对=.007265578/.007814435/.008938136。完整NLL/top1/CI保留。cal-map自然A=.473199/.439262/.349048，coverage/row-centering边界沿原定义，不当纯内容证据。
+- 当前解释：该共同native起点在允许router/aux/fullclip更新后仍得到较低actual分解变异，全程冻结不是本例中实现这种稳定性的唯一条件。新组vsfree还包含共享gate初始化与native具体初始化的共同改变，不独归因教师信息；函数差/有限预算保留。C09原L1事实保持，完整统计已由下述独立审计核对。
+
+### 全独立审计与覆盖边界
+`results/e140/independent_audit.json`（SHA a3ff3b9c…e87607）从cal cost/raw/fullPOS独立重算，组件/paired点CI最大差6.66e−16、64表0、POS点3.94e−9/CI6.49e−9；variance双恒等式、native bias+var、初始reuse的实际全参数/RNG/原raw绑定通过。Dolma/POS逐序列route rows全部重加；Hcal只存summary，除支持counts交叉核对外，其余Hcal scalar不冒称独立重算。
+新增POS覆盖：warm seed0/1原expert20、51，seed2原13、20、51在held target-on=0、raw A恒0；全部保留，row-centering继承共同均值，不当独立内容证据。`slot_mismatch`近1不意味着选择集合全换；集合top8保留.796–.798按原物理行解释。

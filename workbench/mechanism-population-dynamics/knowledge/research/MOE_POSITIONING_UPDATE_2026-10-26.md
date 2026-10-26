@@ -40,3 +40,9 @@
 - E139使用actual-component cal-MSE Hungarian仅为单一预定商置换工具，既有REAP/REAM/activation matching ownership保留；seed1锚定不穷尽所有对应、非三模型joint最优。所有matched free/fixed结果和函数差均报告，不做teacher恢复准入。
 
 - DailyArXiv两入口检查：zachysun/main可读但更新止10-19；zezhishao/main README为404，不作完整最新覆盖声称。由前者发现2610.22127并回原arXiv摘要核对：个性化MoE/paired crosscoder/行为恢复与expert boost，全文未读。它约束一般“可干预专家功能”ownership，当前仅带边界定位，卡已记。
+
+## E142前：初始路由因素的ownership边界
+- 当前反事实是同expert/RNG/cache/总Y/预算，仅把各自随机gate改为同一份seed1随机gate；主读数是跨训练actual分解，而非首次研究初始化或提出新路由算法。
+- 再读 [Routers Learn the Geometry of Their Experts](https://arxiv.org/html/2605.12476) v1的引言/§2–3：已拥有matched router/expert梯度沿输入方向累计历史、aux改变几何耦合及centroid routing的叙事。不能把一般“路由与内容共同演化/初态影响训练”当首创；本题增量只可能来自配对初态/固定原生函数需求下的跨训练功能分解、选择与维持的控制。
+- [LibMoE OpenReview](https://openreview.net/pdf?id=PB2ju8tq0n)在primary检索摘要中声称分析轻量router初始化对early utilization/load balancing与训练regime稳定性的影响；正文受浏览器403未读，不据摘要断言是否有跨seed职责证据。其完整定位待可读正文，当前仅记录近邻与compression risk，不作精确撞车/去留判决。
+- Drop-Upcycling/UpIT等已有专家或路由初始化/上采样方法，搜索命中不代表本轮已读全文；本项目不认领初始化方法创新。E142一个共同随机gate的结果也不自动推广所有gate、所有自然预训练或数学可识别性。

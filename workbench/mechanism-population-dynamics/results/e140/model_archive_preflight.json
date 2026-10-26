@@ -1,0 +1,120 @@
+{
+  "completed_training_seconds": 1939.2561315100174,
+  "experiment": "E140",
+  "host": "fvcrc21",
+  "readout_cpu_preflight_sha256": "7ff6863de650eda9dbc8201c126ed99d6dbeb1508825f21edaf87d7bea4ea16c",
+  "readout_stage": "launched on GPU0; raw readout and independent audit pending at snapshot",
+  "scope": "Immutable E140 initial checkpoints for all three seeds and final checkpoints/proofs for seeds 0/1/2. No E140 readout data yet; old fixed/teacher/cache assets are references only.",
+  "seeds": {
+    "0": {
+      "cache_batch_count": 1024,
+      "final_expert_only_sha256": "a537417dfd6627415a2ada097d4340a98f7e2e16996549f5d2d8a6728bc71985",
+      "final_gate_sha256": "640c275384215c1801ee0e63586f1954cea84f3fc1f3e08222218380f18e1139",
+      "final_tensor_sha256": "a3a7d643cc0dfb68a0b7c3f9e2ed7c34c80265fc4a45bd073e3d344674abc569",
+      "initialization": {
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "expert_seed": 0,
+        "fixed_initial": "/tmp/xiang-moe-20261025/e138_seed0/initial.pt",
+        "fixed_initial_cuda_rng_states": 1,
+        "fixed_initial_experiment": "E138",
+        "fixed_initial_provenance": "/tmp/xiang-moe-20261025/e138_seed0/provenance.json",
+        "fixed_initial_provenance_sha256": "5c2459b029a469380f9054addfc8ad3150f59ee972d340b44a0106417d299c12",
+        "fixed_initial_rng_tensor_sha256": "8d3ca1ffb1a002e80efb82e557054efe010ddb513fb511d8b7659b892da0dbc9",
+        "fixed_initial_schema": "E138-fixed-assignment-student-v1",
+        "fixed_initial_sha256": "146cacda5e9ba6a4bf231d6eda9f0a6c3b461f36a222453f1823d56a73b898ad",
+        "fixed_trainer_sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200",
+        "initial_expert_only_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+        "initial_full_tensor_sha256": "a9c1ad7f813bc2ed93ee5de8274b21503fbf6ffed124c67a6d5e9af852ac2291",
+        "initial_gate_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+        "initialization_kind": "Exact complete E136/E138 fixed initial FP32 tensor values; gate now trainable",
+        "scope": "Same full initial gate+experts and RNG as matched fixed seed; new E140 full-parameter optimizer/update protocol.",
+        "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7"
+      },
+      "planned_steps": 4096,
+      "position_exposures": 33554432,
+      "steps": 4096,
+      "training_summary_sha256": "72a0c02ac7510d6850c79d94e5643ee38f509d76e8522e313df68c5586ebc70b"
+    },
+    "1": {
+      "cache_batch_count": 1024,
+      "final_expert_only_sha256": "b23385fbea14cd00577b488ffbcd0316cf890d4f740d061943a94fffd765740f",
+      "final_gate_sha256": "e5fb346d01e21d52ac86453c16440b97a5bde3b2f5fcfff765b10d2293c8a56c",
+      "final_tensor_sha256": "ffb4e6ec76112a2de184c59fa7be79c450b7cd273ab089a3397fb02020976bb1",
+      "initialization": {
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "expert_seed": 1,
+        "fixed_initial": "/tmp/xiang-moe-20261025/e136_oracle/initial.pt",
+        "fixed_initial_cuda_rng_states": 1,
+        "fixed_initial_experiment": "E136",
+        "fixed_initial_provenance": "/tmp/xiang-moe-20261025/e136_oracle/provenance.json",
+        "fixed_initial_provenance_sha256": "f137f1d90f8ad0837736a8ded4235312352c1e9d612f509d8b1f11d66b62826f",
+        "fixed_initial_rng_tensor_sha256": "6b4be943fcc816ee5a04fc4d481d026112afd8d3119056270a555a0c018b246f",
+        "fixed_initial_schema": "E136-assignment-oracle-v1",
+        "fixed_initial_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6",
+        "fixed_trainer_sha256": "8c620871df90c2a10ea9be5b629727ce063164483ab8a0d22cb846e6f6841b55",
+        "initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+        "initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+        "initial_gate_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+        "initialization_kind": "Exact complete E136/E138 fixed initial FP32 tensor values; gate now trainable",
+        "scope": "Same full initial gate+experts and RNG as matched fixed seed; new E140 full-parameter optimizer/update protocol.",
+        "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7"
+      },
+      "planned_steps": 4096,
+      "position_exposures": 33554432,
+      "steps": 4096,
+      "training_summary_sha256": "e443fef9b5f8977eaac3849640eb44e95d307d6f910f303b983bdcdbacf83ad9"
+    },
+    "2": {
+      "cache_batch_count": 1024,
+      "final_expert_only_sha256": "f90a05fe0807d7a3b63134bce915018a5ffb20265d02def2a07f46a6a688ebbc",
+      "final_gate_sha256": "12964719cb4a309fb10dea753e81d7d45fb88e643b01f7daa22280fc810125ab",
+      "final_tensor_sha256": "eecbb9f58f28becbe1096226bc584fd159898388c80b822315ca78472b640016",
+      "initialization": {
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "expert_seed": 2,
+        "fixed_initial": "/tmp/xiang-moe-20261025/e138_seed2/initial.pt",
+        "fixed_initial_cuda_rng_states": 1,
+        "fixed_initial_experiment": "E138",
+        "fixed_initial_provenance": "/tmp/xiang-moe-20261025/e138_seed2/provenance.json",
+        "fixed_initial_provenance_sha256": "23833391ea7e1afd5ad2d89b1c8b059e3af6ec771359246d8791d4b34b4163f2",
+        "fixed_initial_rng_tensor_sha256": "47cf7ef1a8963d8261afd90516d4bc0e4fbd3cd3b3ad03274b9ec06fe84db10f",
+        "fixed_initial_schema": "E138-fixed-assignment-student-v1",
+        "fixed_initial_sha256": "c4af871a4d6c6808f11826ab0fa279ad6d8e457026e74c29e674a332d626e48e",
+        "fixed_trainer_sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200",
+        "initial_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+        "initial_full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+        "initial_gate_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+        "initialization_kind": "Exact complete E136/E138 fixed initial FP32 tensor values; gate now trainable",
+        "scope": "Same full initial gate+experts and RNG as matched fixed seed; new E140 full-parameter optimizer/update protocol.",
+        "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7"
+      },
+      "planned_steps": 4096,
+      "position_exposures": 33554432,
+      "steps": 4096,
+      "training_summary_sha256": "e2a4258a5cac8aea38c8f6660be32811d423e8c43c6fcbdd72df16f453b06eec"
+    }
+  },
+  "status": "all_three_training_complete_readout_pending",
+  "training_budget_snapshot_sha256": "3e09e60eb0ba57f9baa547be4b89f6924018510d422de2b64fca96bfbe1879eb",
+  "training_runs": [
+    {
+      "error": null,
+      "phase": "train_seed2",
+      "pid": 884889,
+      "seconds": 591.86771364999
+    },
+    {
+      "error": null,
+      "phase": "train_seed0",
+      "pid": 884887,
+      "seconds": 591.405890326947
+    },
+    {
+      "error": null,
+      "phase": "train_seed1",
+      "pid": 884888,
+      "seconds": 755.9825275330804
+    }
+  ],
+  "training_script_sha256": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07"
+}

@@ -1,6 +1,6 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-26）：** 人明确要求持续推进 **MoE 专家分工的跨训练可重现性**；头线保持结项，ACTIVE分配不变。E130/C07=L2、E131/C08=L1完整；E135–139均已完成并独立审计，E139形成限定C09=L1，E140检验初始组织与持续固定协议。未成论文。**先读 [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md) 顶部当前校正。**
+**状态（2026-10-26）：** 人明确要求持续推进 **MoE 专家分工的跨训练可重现性**；头线保持结项，ACTIVE分配不变。E130/C07=L2、E131/C08=L1完整；E135–141均已完成并独立审计，E139形成限定C09=L1；E140/141区分初始组织和贡献变异来源，E142检验共享随机起点。未成论文。**先读 [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md) 顶部当前校正。**
 
 **当前问题：** 固定输入表示、下游与语言建模目标后，独立训练是否重复形成相同的专家组织与计算职责？路由边界不同不自动等于职责不同。
 - **解释校正：** 先前+.02 NLL是复现原dense的工程参考，不是开展跨训练研究的必要门槛。旧范围/数字保留；后续按共同任务和预算报告质量、功能与自身训练变化，不因未达该参考值自动延后核心测量。详见E124末尾校正。
@@ -14,7 +14,8 @@
 - **E135–137完整：** 原生L9总函数学习：自由seed1 calU→A=.103、固定teacher gate seed1 identity A=.347；两者仍有teacher误差。E137在当前被选支持内也未完整恢复内容，并检出分量误差抵消，不能仅归因于支持外差异。
 - **E138完整：** 固定gate三学生（新增seed0/2＋复用E136 seed1）Dolma teacher误差/共同偏差/学生间方差分别.162563/.148548/.014015（按teacher输出能量归一）；组件方差.031209、FP64和方差.015947、cross=−.015262（同一vector²单位）。学生间KL=.00873–.00885、identity A=.485–.526；不同于严格同函数或唯一分工。POS42/51/52目标on=0，全列保留但不称独立内容证据。
 - **E139完整/C09=L1：** 同expert初值/总Y/4096预算，Dolma实际componentVar自由/固定=.072467/.031209（2.32倍），FP64sumVar=.017869/.015947（1.12倍）；额外分量变动大部由负cross抵消。全预测/A/实际CP审计通过，仍有函数/teacher误差差异，不称同函数任意分解。
-- **当前E140：** 只新增teacher-gate初态但trainable的三学生，逐seed完整初态同fixed、其余沿原full训练协议。检验初始组织还是持续固定的作用，不扩匹配/拟合网格。
+- **E140/E141完整：** native起点可训练时componentVar=.032818，固定=.031209，自由=.072467；路由相对原模型集合重叠约80%，持续冻结不是本例中稳定的唯一协议。贡献差既来自调用支持，也来自共同on向量差；全独立审计通过，非同函数/普遍语义职责结论。
+- **当前E142：** 仅补同一个random gate起点且可训练的组，复用E135 seed1、新增paired0/2并保留各自R初RNG。区分共享起点与该native起点，单random gate/共享pilot限制保留，不做拟合/匹配网格。
 - **本次读数（E122/C06，L1）：** L9路由/输出相似偏ρ约0.46，但路由距离与held替换ΔNLL偏ρ仅0.027 [−0.036,0.087]；不能只用路由代表职责。POS正确置换复核保留组织效应：L9 δ_D=.206 [.181,.228]。
 - **E122已完成：** 16层路由→替换ΔNLL偏ρ均在−.031–.027，95%词形CI均含0；[全层图](results/e122/routing_function_bridge.png)。
 - **E123历史32M终点：** L9置零/均值损伤.182/.114；随机MoE固定32M终点NLL=2.736（dense2.494），中途最低2.624也未恢复。保留完整失败曲线，不选最佳点，未启动跨种子网格。
@@ -60,3 +61,5 @@
 - E135原生函数资产：fvcrc21 `/tmp/xiang-moe-20261025/e135_cache/`（约70GB BF16-bit H/Y）与`e135_student/`；可重建recipe在`~/mechpop_cache/e135_cache_recipe/`，固定模型/数据/keys/prepare脚本身份见`results/e135/cache_recipe_archive.json`与E135卡。H/Y不进git。
 
 - E136–138完整新资产：`~/mechpop_cache/e136_assignment_oracle/`、`e137_support_components/`、`e138_fixed_cohort/`；各自`results/e13{6,7,8}/archive_manifest.json`含SHA/来源。E138只新增seed0/2资产，不重复E136 seed1或70GB H/Y。
+
+- E139–141耐久资产：`~/mechpop_cache/e139_matched_free_cohort/`、`e140_native_router_warmstart/`、`e141_support_partition/`，各`results/e###/archive_manifest.json`已seal并绑定实际审计/源/raw SHA。旧模型/HY仅引用。

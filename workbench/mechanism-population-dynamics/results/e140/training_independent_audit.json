@@ -1,0 +1,358 @@
+{
+  "experiment": "E140",
+  "status": "complete_training_object_audit_only",
+  "scope": "Own remote CPU mmap/all193 tensors/exact complete RNG comparisons and raw training-log/epoch-array audit; no primary scoring functions or GPU calls.",
+  "objects": {
+    "objects": {
+      "seed0": {
+        "initial_full_parameter_tensors_exact_equal_fixed": true,
+        "compared_parameter_tensor_count": 193,
+        "initial_RNG_exact_equal_fixed": true,
+        "initial_RNG_field_equality": {
+          "torch": true,
+          "numpy": true,
+          "python": true,
+          "cuda": true
+        },
+        "fixed_initial_sha256": "146cacda5e9ba6a4bf231d6eda9f0a6c3b461f36a222453f1823d56a73b898ad",
+        "fixed_initial_full_tensor_sha256": "a9c1ad7f813bc2ed93ee5de8274b21503fbf6ffed124c67a6d5e9af852ac2291",
+        "states": {
+          "initial": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 0,
+            "step": 0,
+            "checkpoint_sha256": "eece65e9fd3a913f204f65696d37ceabf04a258550c885a349078d8d94bd2a0f",
+            "full_tensor_sha256": "a9c1ad7f813bc2ed93ee5de8274b21503fbf6ffed124c67a6d5e9af852ac2291",
+            "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "dc7baa1a6dc666b55a755abd12777c75e4d07e5fdc9b3312b0400d0e6c04e51a",
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 0,
+            "optimizer_unique_parameter_steps": []
+          },
+          "final": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 0,
+            "step": 4096,
+            "checkpoint_sha256": "9952208674898d63ebec7bbb609b6ede833c9e497791b79ef480cf5d3b7ea519",
+            "full_tensor_sha256": "a3a7d643cc0dfb68a0b7c3f9e2ed7c34c80265fc4a45bd073e3d344674abc569",
+            "expert_only_tensor_sha256": "a537417dfd6627415a2ada097d4340a98f7e2e16996549f5d2d8a6728bc71985",
+            "gate_tensor_sha256": "640c275384215c1801ee0e63586f1954cea84f3fc1f3e08222218380f18e1139",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "dc7baa1a6dc666b55a755abd12777c75e4d07e5fdc9b3312b0400d0e6c04e51a",
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 193,
+            "optimizer_unique_parameter_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.22688832879066467,
+          "squared_L2_difference": 31.3471316534515
+        },
+        "gate_optimizer_state": {
+          "parameter_id": 0,
+          "step": 4096,
+          "first_moment_squared_L2": 2.857789710531057e-05
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07",
+          "trainable_parameters_count": 193,
+          "held_final": {
+            "MSE": 9.216484797268309e-05,
+            "elements": 536870912,
+            "normalized_by_fixed_training_energy": 0.15989663408267205,
+            "positions": 262144,
+            "relative_to_own_split_teacher_energy": 0.1659038712991179
+          }
+        }
+      },
+      "seed1": {
+        "initial_full_parameter_tensors_exact_equal_fixed": true,
+        "compared_parameter_tensor_count": 193,
+        "initial_RNG_exact_equal_fixed": true,
+        "initial_RNG_field_equality": {
+          "torch": true,
+          "numpy": true,
+          "python": true,
+          "cuda": true
+        },
+        "fixed_initial_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6",
+        "fixed_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+        "states": {
+          "initial": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 1,
+            "step": 0,
+            "checkpoint_sha256": "218f9a467f7c2fce8ac847787102419877e420d431d12cab318f54403da90e1e",
+            "full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+            "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "a3250ae0591d22314fee0e33e9dfb2e8900182361a611f0cd7ed8d99e6c1d4d7",
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 0,
+            "optimizer_unique_parameter_steps": []
+          },
+          "final": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 1,
+            "step": 4096,
+            "checkpoint_sha256": "d80f3cfd9497412adbab48a4d62cf9c1a898ca5b8ee419ced53f35e2cf760173",
+            "full_tensor_sha256": "ffb4e6ec76112a2de184c59fa7be79c450b7cd273ab089a3397fb02020976bb1",
+            "expert_only_tensor_sha256": "b23385fbea14cd00577b488ffbcd0316cf890d4f740d061943a94fffd765740f",
+            "gate_tensor_sha256": "e5fb346d01e21d52ac86453c16440b97a5bde3b2f5fcfff765b10d2293c8a56c",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "a3250ae0591d22314fee0e33e9dfb2e8900182361a611f0cd7ed8d99e6c1d4d7",
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 193,
+            "optimizer_unique_parameter_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.22499659657478333,
+          "squared_L2_difference": 34.11014627383909
+        },
+        "gate_optimizer_state": {
+          "parameter_id": 0,
+          "step": 4096,
+          "first_moment_squared_L2": 1.2267589583975369e-05
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07",
+          "trainable_parameters_count": 193,
+          "held_final": {
+            "MSE": 9.211550720459539e-05,
+            "elements": 536870912,
+            "normalized_by_fixed_training_energy": 0.15981103287012935,
+            "positions": 262144,
+            "relative_to_own_split_teacher_energy": 0.16581505409148745
+          }
+        }
+      },
+      "seed2": {
+        "initial_full_parameter_tensors_exact_equal_fixed": true,
+        "compared_parameter_tensor_count": 193,
+        "initial_RNG_exact_equal_fixed": true,
+        "initial_RNG_field_equality": {
+          "torch": true,
+          "numpy": true,
+          "python": true,
+          "cuda": true
+        },
+        "fixed_initial_sha256": "c4af871a4d6c6808f11826ab0fa279ad6d8e457026e74c29e674a332d626e48e",
+        "fixed_initial_full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+        "states": {
+          "initial": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 2,
+            "step": 0,
+            "checkpoint_sha256": "361e7328556f6931a9ee50c6bdafa17724148e56c1bdae58723e8aaec2a7d792",
+            "full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+            "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "9681f0ce249a941344706bbfea910679f47cd737e51c3d1913d9dc9f9a7584db",
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 0,
+            "optimizer_unique_parameter_steps": []
+          },
+          "final": {
+            "schema": "E140-native-router-warmstart-v1",
+            "experiment": "E140",
+            "seed": 2,
+            "step": 4096,
+            "checkpoint_sha256": "9f88e2e1704b6d4dee6f5732377ce949b3a02dcd06d63f77c7ed158f1f1ca403",
+            "full_tensor_sha256": "eecbb9f58f28becbe1096226bc584fd159898388c80b822315ca78472b640016",
+            "expert_only_tensor_sha256": "f90a05fe0807d7a3b63134bce915018a5ffb20265d02def2a07f46a6a688ebbc",
+            "gate_tensor_sha256": "12964719cb4a309fb10dea753e81d7d45fb88e643b01f7daa22280fc810125ab",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "config_hash": "9681f0ce249a941344706bbfea910679f47cd737e51c3d1913d9dc9f9a7584db",
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "all_master_FP32": true,
+            "optimizer_parameter_group_count": 1,
+            "optimizer_parameter_count": 193,
+            "optimizer_state_count": 193,
+            "optimizer_unique_parameter_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.22687894105911255,
+          "squared_L2_difference": 32.20907290315641
+        },
+        "gate_optimizer_state": {
+          "parameter_id": 0,
+          "step": 4096,
+          "first_moment_squared_L2": 1.3932735792428359e-05
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07",
+          "trainable_parameters_count": 193,
+          "held_final": {
+            "MSE": 9.203477144180648e-05,
+            "elements": 536870912,
+            "normalized_by_fixed_training_energy": 0.1596709645360084,
+            "positions": 262144,
+            "relative_to_own_split_teacher_energy": 0.16566972345954262
+          }
+        }
+      }
+    },
+    "cuda_initialized": false
+  },
+  "source_SHA256": {
+    "e140_train.py": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07",
+    "e140_components.py": "0b1222fb78634f9bd70b3762082158295cf47c626a2404bf5dd03782f4ba96a1",
+    "e140_readout.py": "1b69db4bf36d8a0780a295ea9e89970e4bb77e6cea5e31b21f4e5e573ed5ceec"
+  },
+  "all_nine_warm_free_fixed_step_epoch_batch_LR_position_exposure_sequences_exact_equal": true,
+  "actual_original_epoch_array_and_manifest_SHA_verified": true,
+  "logs": {
+    "warm_seed0": {
+      "sha256": "3c44a3d3d47f54e5b76d828fe9536aaa5d024a9a7dbf48660ed37f0878e85a44",
+      "records": 4096,
+      "exposure_total": 33554432,
+      "epochs_exact_permutations": true,
+      "H_Y_dtypes": "torch.bfloat16"
+    },
+    "warm_seed1": {
+      "sha256": "b8add1ae62da2e0eacd40870ad39f896412c68807b64a8581f7602774aac3913",
+      "records": 4096,
+      "exposure_total": 33554432,
+      "epochs_exact_permutations": true,
+      "H_Y_dtypes": "torch.bfloat16"
+    },
+    "warm_seed2": {
+      "sha256": "83e7ff83b898a9db3cf72993e06384c38c1a4d36e8bc3e99120d9ba93a0682b3",
+      "records": 4096,
+      "exposure_total": 33554432,
+      "epochs_exact_permutations": true,
+      "H_Y_dtypes": "torch.bfloat16"
+    },
+    "free_seed0": {
+      "sha256": "0d60e30bf26c7a0528dee8ce2a97505811aef42d24372d3c3f69948c30553bd2",
+      "prior_audit_SHA_unchanged": true
+    },
+    "free_seed1": {
+      "sha256": "b2d60dda5e65190f50a21229bd88bc05bdd31b03394dee468a4161af84c1ac2a",
+      "prior_audit_SHA_unchanged": true
+    },
+    "free_seed2": {
+      "sha256": "41e50bb069db2c90d4397208f2f5f40d77b82b2efee231e9ed9e3fd071352272",
+      "prior_audit_SHA_unchanged": true
+    },
+    "fixed_seed0": {
+      "sha256": "f98911dd9ec4509a16153dcf92f928328b61293b4eb9e6b0665ae413d7be9024",
+      "prior_audit_SHA_unchanged": true
+    },
+    "fixed_seed1": {
+      "sha256": "4501d3989e9a3bffbf8fea58cf8e42dc0e8b7096b579eb8edfb03675145222c9",
+      "prior_audit_SHA_unchanged": true
+    },
+    "fixed_seed2": {
+      "sha256": "10326a4080320751d24a33e0b0c46ee9ee2280e4f7130e9ef797bdaf208a503c",
+      "prior_audit_SHA_unchanged": true
+    }
+  },
+  "readout_CPU_preflight_SHA256": "7ff6863de650eda9dbc8201c126ed99d6dbeb1508825f21edaf87d7bea4ea16c",
+  "all_new_CP_hashes_independently_match_readout_preflight": true,
+  "old_fixed_initial_CP_SHA_and_full_tensors_match_previously_audited_identity": true
+}

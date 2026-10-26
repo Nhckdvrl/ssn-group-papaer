@@ -1,0 +1,622 @@
+{
+  "comparison_scope": "E139 free/fixed are complete-protocol references; E140 begins from the matched fixed initial state but trains the gate. This does not isolate a single causal mechanism.",
+  "experiment": "E140",
+  "final": {
+    "Dolma_held_positions": {
+      "fixed": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.015469114820755947,
+            0.016390520415694616
+          ],
+          "defined_draws": 1000,
+          "point": 0.015947142856658672
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.03056233178029241,
+            0.03192364914215903
+          ],
+          "defined_draws": 1000,
+          "point": 0.031208955513315872
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.01587332338861796,
+            -0.014677284880534125
+          ],
+          "defined_draws": 1000,
+          "point": -0.0152618126566572
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.015466842734491625,
+            0.016389071857124363
+          ],
+          "defined_draws": 1000,
+          "point": 0.015945794068024863
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.1634572793129924,
+            0.1737108091370989
+          ],
+          "defined_draws": 1000,
+          "point": 0.16900720931901947
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.1793053548151321,
+            0.1898167835284725
+          ],
+          "defined_draws": 1000,
+          "point": 0.18495300338704432
+        }
+      },
+      "free": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.017317861296755388,
+            0.018558051984364284
+          ],
+          "defined_draws": 1000,
+          "point": 0.017869476722383856
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.07059785934697904,
+            0.07468409652464714
+          ],
+          "defined_draws": 1000,
+          "point": 0.07246719586569297
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.05638046855926361,
+            -0.05297024009812327
+          ],
+          "defined_draws": 1000,
+          "point": -0.05459771914330912
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.017323092542242634,
+            0.01856584845607812
+          ],
+          "defined_draws": 1000,
+          "point": 0.017875288939789725
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.17346280915327764,
+            0.19039666194085536
+          ],
+          "defined_draws": 1000,
+          "point": 0.18282223645081586
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.1916739062336263,
+            0.20819716779698505
+          ],
+          "defined_draws": 1000,
+          "point": 0.2006975253906056
+        }
+      },
+      "warmstart": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.015081985364795445,
+            0.016127472701400695
+          ],
+          "defined_draws": 1000,
+          "point": 0.015583261584582335
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.032122586305274446,
+            0.0337124130607852
+          ],
+          "defined_draws": 1000,
+          "point": 0.03281762594119304
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.01776698916225592,
+            -0.01668520872984569
+          ],
+          "defined_draws": 1000,
+          "point": -0.017234364356610708
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.015084891526215569,
+            0.016130836649605143
+          ],
+          "defined_draws": 1000,
+          "point": 0.015586398656449696
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.1667582576351679,
+            0.17834004877758577
+          ],
+          "defined_draws": 1000,
+          "point": 0.17304472778217894
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.182382851674803,
+            0.19383657106376156
+          ],
+          "defined_draws": 1000,
+          "point": 0.18863112643862862
+        }
+      }
+    },
+    "POS_held_targets": {
+      "fixed": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.016787088099339896,
+            0.018925673264596186
+          ],
+          "defined_draws": 1000,
+          "point": 0.01782381140091414
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.033964499976525585,
+            0.040356881127259
+          ],
+          "defined_draws": 1000,
+          "point": 0.03691341993786304
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.02203445028278152,
+            -0.01651025183190142
+          ],
+          "defined_draws": 1000,
+          "point": -0.0190896085369489
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.0167888495573002,
+            0.018927629745333418
+          ],
+          "defined_draws": 1000,
+          "point": 0.01782582031454777
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.19560738543318912,
+            0.2265968089574025
+          ],
+          "defined_draws": 1000,
+          "point": 0.21119349856146946
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.2125324562767894,
+            0.24535539085471977
+          ],
+          "defined_draws": 1000,
+          "point": 0.22901931887601723
+        }
+      },
+      "free": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.018235624020353558,
+            0.02086383990320705
+          ],
+          "defined_draws": 1000,
+          "point": 0.019476059257639775
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.06531050337939377,
+            0.08490213100073994
+          ],
+          "defined_draws": 1000,
+          "point": 0.07479699963521032
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.0647585880414238,
+            -0.04659625879303195
+          ],
+          "defined_draws": 1000,
+          "point": -0.05532094037757054
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.018237726743114715,
+            0.020865871020174148
+          ],
+          "defined_draws": 1000,
+          "point": 0.01947826549365786
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.2207853928278254,
+            0.25253573532377804
+          ],
+          "defined_draws": 1000,
+          "point": 0.23714835677924231
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.2393945858023,
+            0.27312540525252726
+          ],
+          "defined_draws": 1000,
+          "point": 0.25662662227290023
+        }
+      },
+      "warmstart": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.015974606015691454,
+            0.01807392566559102
+          ],
+          "defined_draws": 1000,
+          "point": 0.016981663896784117
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.03365078201797616,
+            0.03989224562736523
+          ],
+          "defined_draws": 1000,
+          "point": 0.03673511695561547
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.022568902432207355,
+            -0.017260841477862915
+          ],
+          "defined_draws": 1000,
+          "point": -0.01975345305883135
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.015976734723293105,
+            0.01807593127736734
+          ],
+          "defined_draws": 1000,
+          "point": 0.016983476038444936
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.20332203879248403,
+            0.2344407594007403
+          ],
+          "defined_draws": 1000,
+          "point": 0.21879366563772581
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.21935688924297064,
+            0.25223404246499176
+          ],
+          "defined_draws": 1000,
+          "point": 0.23577714167617073
+        }
+      }
+    }
+  },
+  "initial_reference_snapshot": {
+    "Dolma_held_positions": {
+      "fixed_E139": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.3275496755204989,
+            0.3525626437706305
+          ],
+          "defined_draws": 1000,
+          "point": 0.33978994671836305
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.3275401787463593,
+            0.3525302993731672
+          ],
+          "defined_draws": 1000,
+          "point": 0.33977101401402715
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -2.6905659808804938e-05,
+            5.6608841573327604e-05
+          ],
+          "defined_draws": 1000,
+          "point": 1.8932704335894446e-05
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.32754103574207827,
+            0.35255379539360443
+          ],
+          "defined_draws": 1000,
+          "point": 0.3397812067572233
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.2290726985087101,
+            1.415817251956579
+          ],
+          "defined_draws": 1000,
+          "point": 1.3095569972646162
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.5714245283795367,
+            1.7516839760627199
+          ],
+          "defined_draws": 1000,
+          "point": 1.6493382040218396
+        }
+      },
+      "free_E139": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.12706394565801027,
+            0.13195208924133417
+          ],
+          "defined_draws": 1000,
+          "point": 0.12942255873770497
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.12709302080337553,
+            0.13197310302132945
+          ],
+          "defined_draws": 1000,
+          "point": 0.12944568851213956
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -3.660313059247141e-05,
+            -9.728109087336983e-06
+          ],
+          "defined_draws": 1000,
+          "point": -2.312977443458264e-05
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.12706064826146193,
+            0.13194866229630725
+          ],
+          "defined_draws": 1000,
+          "point": 0.1294192297146911
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.1187077060630437,
+            1.3102949517959896
+          ],
+          "defined_draws": 1000,
+          "point": 1.202139846480768
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.2466550794805566,
+            1.4401406082742685
+          ],
+          "defined_draws": 1000,
+          "point": 1.3315590761954592
+        }
+      },
+      "warmstart_initial_reused_fixed": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.3275496755204989,
+            0.3525626437706305
+          ],
+          "defined_draws": 1000,
+          "point": 0.33978994671836305
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.3275401787463593,
+            0.3525302993731672
+          ],
+          "defined_draws": 1000,
+          "point": 0.33977101401402715
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -2.6905659808804938e-05,
+            5.6608841573327604e-05
+          ],
+          "defined_draws": 1000,
+          "point": 1.8932704335894446e-05
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.32754103574207827,
+            0.35255379539360443
+          ],
+          "defined_draws": 1000,
+          "point": 0.3397812067572233
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.2290726985087101,
+            1.415817251956579
+          ],
+          "defined_draws": 1000,
+          "point": 1.3095569972646162
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.5714245283795367,
+            1.7516839760627199
+          ],
+          "defined_draws": 1000,
+          "point": 1.6493382040218396
+        }
+      }
+    },
+    "POS_held_targets": {
+      "fixed_E139": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.3495343177575242,
+            0.3917168829185796
+          ],
+          "defined_draws": 1000,
+          "point": 0.37040521131557114
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.3495051158107986,
+            0.3919624066513235
+          ],
+          "defined_draws": 1000,
+          "point": 0.37056303025937176
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.000888138658798987,
+            0.0005055386728544252
+          ],
+          "defined_draws": 1000,
+          "point": -0.000157818943800625
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.34952132812218095,
+            0.3917050027586337
+          ],
+          "defined_draws": 1000,
+          "point": 0.37039255959133466
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.740829602265333,
+            0.826495559345701
+          ],
+          "defined_draws": 1000,
+          "point": 0.7815880015090428
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.094337420656364,
+            1.2143394717918594
+          ],
+          "defined_draws": 1000,
+          "point": 1.1519805611003775
+        }
+      },
+      "free_E139": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.135909739496271,
+            0.14180429803901476
+          ],
+          "defined_draws": 1000,
+          "point": 0.13879617094222535
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.13637172194810665,
+            0.14225894051321242
+          ],
+          "defined_draws": 1000,
+          "point": 0.13923520943215778
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.000691358796838633,
+            -0.0001949685258664427
+          ],
+          "defined_draws": 1000,
+          "point": -0.00043903848993243066
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.13590677010919885,
+            0.1418008665666497
+          ],
+          "defined_draws": 1000,
+          "point": 0.13879265011688827
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.6346727489158092,
+            0.7010783357796607
+          ],
+          "defined_draws": 1000,
+          "point": 0.666162905524335
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.7725958157804905,
+            0.8398538391827448
+          ],
+          "defined_draws": 1000,
+          "point": 0.8049555556412233
+        }
+      },
+      "warmstart_initial_reused_fixed": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.3495343177575242,
+            0.3917168829185796
+          ],
+          "defined_draws": 1000,
+          "point": 0.37040521131557114
+        },
+        "cohort_variance_per_position": {
+          "ci95": [
+            0.3495051158107986,
+            0.3919624066513235
+          ],
+          "defined_draws": 1000,
+          "point": 0.37056303025937176
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.000888138658798987,
+            0.0005055386728544252
+          ],
+          "defined_draws": 1000,
+          "point": -0.000157818943800625
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.34952132812218095,
+            0.3917050027586337
+          ],
+          "defined_draws": 1000,
+          "point": 0.37039255959133466
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.740829602265333,
+            0.826495559345701
+          ],
+          "defined_draws": 1000,
+          "point": 0.7815880015090428
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.094337420656364,
+            1.2143394717918594
+          ],
+          "defined_draws": 1000,
+          "point": 1.1519805611003775
+        }
+      }
+    }
+  },
+  "initial_reference_snapshot_note": "E140 warmstart initial snapshot reuses the E139 fixed-group initial stats because full initial tensors are identical; retained as a table reference, not added as a favorable main-plot point.",
+  "scope": "E139 fixed/free cohort and E140 warmstart; intervals are input clusters conditional on each fixed cohort, not seed CI.",
+  "source_sha256": {
+    "E139": "d42ce48fe06dddcbac553c0050ad92c1c5c9079f3365f3215359a6965611bbf8",
+    "E140": "4f7d9b2b563aae82475c4185f31058b34ea836402f28c1a24b59f344079744ca"
+  }
+}

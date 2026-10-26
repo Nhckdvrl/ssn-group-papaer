@@ -1,0 +1,174 @@
+{
+  "experiment": "E141",
+  "status": "complete",
+  "method": "Independent NumPy recomputation from immutable raw NPZ; no import from E141 statistics source, no GPU/model forward.",
+  "source_summary": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/results/e141/support_partition.json",
+  "source_summary_sha256": "f3b049adb218e56910b75510b41f63231b6f0005056182237c58dcaa06c0df71",
+  "scope": "Finite fixed three-student cohorts and original held 512 sequences/32 file clusters. CI resamples input files with identical 1000 seed141 draws across groups; not seed-level or causal treatment uncertainty. Support XOR and both-on are descriptive actual contributions, not mask interventions. Matched seed1 coordinates and fixed maps are inherited from E139/E140.",
+  "groups": {
+    "free": {
+      "checks": {
+        "support_partition": 0.0,
+        "left_right_counts": 0.0,
+        "pair_SSE_partition": 2.842170943040401e-14,
+        "common_f_distance": 3.2741809263825417e-11,
+        "FP64_gate_content_cross": 6.217248937900877e-14,
+        "actual_BF16_ideal_floor": 3.271124690562566e-14,
+        "recorded_scalar_residual": 3.286869968966883e-14,
+        "original_pair_SSE": 5.684341886080802e-14,
+        "original_cohort_variance": 9.769962616701378e-15
+      },
+      "point_max_abs_error": 1.0800249583553523e-12,
+      "bootstrap_ci_max_abs_error": 0.0,
+      "expert_table_max_abs_error": 0.0,
+      "audited_global_metrics": 105,
+      "audited_expert_pair_tables": 192,
+      "withheld_global_intervals": 0,
+      "original_component_raw_sha256": "72d044ee7431ae02ce02e54d00bfe47096b1652796c50c300b85e20841826350",
+      "main_points": {
+        "cohort_total_per_position": 0.07246719586569292,
+        "cohort_xor_per_position": 0.02496404378785586,
+        "cohort_both_per_position": 0.047503152077837056
+      }
+    },
+    "fixed": {
+      "checks": {
+        "support_partition": 0.0,
+        "left_right_counts": 0.0,
+        "pair_SSE_partition": 2.1316282072803006e-14,
+        "common_f_distance": 2.9103830456733704e-11,
+        "FP64_gate_content_cross": 1.4210854715202004e-14,
+        "actual_BF16_ideal_floor": 3.891917170484316e-14,
+        "recorded_scalar_residual": 3.869910444539393e-14,
+        "original_pair_SSE": 3.197442310920451e-14,
+        "original_cohort_variance": 9.769962616701378e-15
+      },
+      "point_max_abs_error": 4.405364961712621e-13,
+      "bootstrap_ci_max_abs_error": 0.0,
+      "expert_table_max_abs_error": 0.0,
+      "audited_global_metrics": 105,
+      "audited_expert_pair_tables": 192,
+      "withheld_global_intervals": 0,
+      "original_component_raw_sha256": "ac3bad67e46c33e7dbd49af43b73439821e1cd8e3d233a6a6b428a1057ab1edd",
+      "main_points": {
+        "cohort_total_per_position": 0.031208955513315977,
+        "cohort_xor_per_position": 0.0,
+        "cohort_both_per_position": 0.031208955513315977
+      }
+    },
+    "warm": {
+      "checks": {
+        "support_partition": 0.0,
+        "left_right_counts": 0.0,
+        "pair_SSE_partition": 1.4210854715202004e-14,
+        "common_f_distance": 4.001776687800884e-11,
+        "FP64_gate_content_cross": 3.79063100353072e-14,
+        "actual_BF16_ideal_floor": 4.2626926294309087e-14,
+        "recorded_scalar_residual": 4.2354208843287073e-14,
+        "original_pair_SSE": 3.552713678800501e-14,
+        "original_cohort_variance": 8.881784197001252e-15
+      },
+      "point_max_abs_error": 7.389644451905042e-13,
+      "bootstrap_ci_max_abs_error": 0.0,
+      "expert_table_max_abs_error": 0.0,
+      "audited_global_metrics": 105,
+      "audited_expert_pair_tables": 192,
+      "withheld_global_intervals": 0,
+      "original_component_raw_sha256": "45a189bb5883ae4d67c79d1121dfc47d28528d8a5d3378fc6f06f378cafa1c13",
+      "main_points": {
+        "cohort_total_per_position": 0.032817625941192995,
+        "cohort_xor_per_position": 0.000539825463114214,
+        "cohort_both_per_position": 0.0322778004780787
+      }
+    }
+  },
+  "paired_contrasts": {
+    "free_minus_fixed": {
+      "cohort_total_per_position": {
+        "point": 0.04125824035237694,
+        "paired_file_ci95": [
+          0.040007464166280315,
+          0.042968630140814035
+        ],
+        "point_abs_error": 1.0408340855860843e-16,
+        "ci_max_abs_error": 2.0816681711721685e-17
+      },
+      "cohort_xor_per_position": {
+        "point": 0.02496404378785586,
+        "paired_file_ci95": [
+          0.024007163169723712,
+          0.026203285448443896
+        ],
+        "point_abs_error": 1.0408340855860843e-17,
+        "ci_max_abs_error": 1.0408340855860843e-17
+      },
+      "cohort_both_per_position": {
+        "point": 0.01629419656452108,
+        "paired_file_ci95": [
+          0.015436917053097876,
+          0.017557111241931288
+        ],
+        "point_abs_error": 1.9081958235744878e-16,
+        "ci_max_abs_error": 1.3877787807814457e-17
+      }
+    },
+    "warm_minus_fixed": {
+      "cohort_total_per_position": {
+        "point": 0.001608670427877018,
+        "paired_file_ci95": [
+          0.0013264359101508524,
+          0.001951853165602369
+        ],
+        "point_abs_error": 1.4224732503009818e-16,
+        "ci_max_abs_error": 6.938893903907228e-18
+      },
+      "cohort_xor_per_position": {
+        "point": 0.000539825463114214,
+        "paired_file_ci95": [
+          0.0005034016091335604,
+          0.0005859893590842394
+        ],
+        "point_abs_error": 3.2526065174565133e-19,
+        "ci_max_abs_error": 1.0842021724855044e-19
+      },
+      "cohort_both_per_position": {
+        "point": 0.0010688449647627205,
+        "paired_file_ci95": [
+          0.00081079108726953,
+          0.001374134135929728
+        ],
+        "point_abs_error": 2.185751579730777e-16,
+        "ci_max_abs_error": 9.75781955236954e-18
+      }
+    },
+    "warm_minus_free": {
+      "cohort_total_per_position": {
+        "point": -0.039649569924499924,
+        "paired_file_ci95": [
+          -0.041176075115120274,
+          -0.03849652996265744
+        ],
+        "point_abs_error": 4.163336342344337e-17,
+        "ci_max_abs_error": 6.938893903907228e-18
+      },
+      "cohort_xor_per_position": {
+        "point": -0.024424218324741644,
+        "paired_file_ci95": [
+          -0.025658339341220932,
+          -0.02345272485349263
+        ],
+        "point_abs_error": 1.0408340855860843e-17,
+        "ci_max_abs_error": 1.0408340855860843e-17
+      },
+      "cohort_both_per_position": {
+        "point": -0.015225351599758359,
+        "paired_file_ci95": [
+          -0.0163790459694326,
+          -0.014363123019984865
+        ],
+        "point_abs_error": 2.7755575615628914e-17,
+        "ci_max_abs_error": 1.3877787807814457e-17
+      }
+    }
+  }
+}

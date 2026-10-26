@@ -515,3 +515,37 @@ POS方向一致：component variance free−fixed=+.037883580 [.029155292,.04747
 ### E140实际前瞻卡最后核对
 
 已只读核对 `experiments/E140-native-router-warmstart-cohort.md`，无科学阻塞。卡已保留T−R的共同初始化/teacher-informedness混杂、F−T的完整解冻/aux/clip/decay协议效应，三新seed均prospective、全部fixed完整初态及RNG逐项绑定、fresh全参数optimizer和原4096预算；没有teacher恢复或路由变化门槛。initial cal/component的SHA耦合复用有完整状态/输入/physical program条件，final及三个新A全部fresh；两旧组以SHA引用。实际分量、无对齐Y、预测、配对输入CI与zero-on覆盖边界也齐全。辅助route相对初始teacher的变化应沿所施加的原物理expert坐标解释，不与final cal component map混作自然职责匹配；这是既有读数的坐标说明，不需新增条件。未改卡/源码，未用GPU，不再扩展后续网格。
+
+## E140完整独立审计：共同起点可在路由继续学习时稳定组织
+
+本次本审读者不是E140实现者；CPU对象审计在 `results/e140/training_independent_audit.json`，完整统计审计在 `results/e140/independent_audit.json`。三新seed的全部193个FP32初始参数逐值等对应fixed初态，torch/numpy/python/CUDA四类完整初RNG逐项相同；fresh optimizer状态空、包含193参数、曝光0。终点193参数各自均有Adam state/step4096，router一阶moment非零，131072个门值全部改变。9个固定评测事件齐全，三warm+旧free/fixed共9run的4096条step/epoch/cache index/LR/position exposure逐项完全相同，又直接等SHA锁定的原epoch_orders.npy；H/Y全程BF16。旧fixed初态原文件SHA/全参数hash仍吻合，实际新CP proof全部等readout预检。无GPU调用或主统计函数导入。
+
+独立从cal cost解Hungarian，两张终点map均64identity。全部component global点、1000次seed139区间、64表及warm−free/fixed配对区间复算通过，点/CI最大差6.66e−16、64表0；三对SSE/9与平均能量−mean-vector能量两条variance恒等式、native与FP64-sum的teacher误差=bias+variance也闭合。initial reuse的原cal/两人口记录逐项等E139 fixed initial，raw/meta SHA同原采集；结合实际全初态/程序同一性，这是合法耦合复用，不是新forward或额外独立replication。
+
+| 最终Dolma，同vector²/位置 | free R | fixed F | warm T |
+|---|---:|---:|---:|
+| actual component cohort variance之和 | .072467196 | .031208956 | .032817626 |
+| FP64 sum component variance | .017869477 | .015947143 | .015583262 |
+| 跨expert covariance | −.054597719 | −.015261813 | −.017234364 |
+| native输出cohort variance | .017875289 | .015945794 | .015586399 |
+| cohort mean对teacher偏差 | .182822236 | .169007209 | .173044728 |
+
+T−F component variance=+.001608670 [.001293982,.001937989]，T−R=−.039649570 [−.041180188,−.038393490]。T−F native variance=−.000359395 [−.000646934,.000021616]，不能以这个区间含0宣称等价；完整函数与分量数据连续报告。POS T component variance=.036735117，T−F=−.000178303 [−.002127808,.001856838]、T−R=−.038061883 [−.047402201,−.029633621]。没有按某近似带选择条件或叫严格同函数。
+
+完整POS FP32 logp自己以NumPy F64重算6对KL/reverse/NLL/top1及等词形区间，均值/CI最大差3.94e−9/6.49e−9；teacher全数组逐位等旧E139采集。Dolma只重加已存token指标，global/source点与CI吻合。warm学生三对Dolma KL=.00829707/.00816688/.00830600、POS=.00726558/.00781443/.00893814，函数差继续保留。三个fresh A的锁定cal map、F32 row-center/cal-only词形offset与1000次seed139区间全部吻合、valid set不变：ρ=.473199 [.314466,.592443]、.439262 [.314799,.531539]、.349048 [.216382,.495403]。warm0/1原expert20/51、warm2原expert13/20/51在POS held无承担，原A全0；保留所有列，不把64有效列称独立内容恢复。
+
+Dolma/POS routing逐序列raw中的全部摘要独立重加，物理student支持计数经map后等component计数，POS还逐项等fresh A masks；teacher支持计数等旧fixed同人口。warm对teacher的平均top8元素保留率Dolma约.796–.798、POS约.847–.851，应用门值已变化。ordered-slot mismatch接近1仅表示有任一排序槽改变，**不等于全部集合元素被替换或其频率**。Hcal只保存summary，独立以calibration支持表核对64计数；没有per-input masks/weights，因此其余Hcal路由scalar没有假称从raw重算。冻结公式已读、未重放GPU，这个辅读数边界不影响主component统计。
+
+**有限因果结论：** 共同native全gate起点，在允许后续联合学习、路由确有变化的协议下，可以保留这一个cohort较稳定的实际分解；持续严格冻结不是本结果的必要解释。F−T仍同时改变router优化/aux/full clip/decay；T−R同时改变共享初始化与native-informed起点，不能归因于语义教师信息本身。它支持研究“什么选择/维持组织”，不是原生预训练唯一性或严格同函数分解自由度。E141是本审读者实现的测量，其独立结果审计另由其他agent完成；不把自己的实现/自检标成独立E141证据。
+
+### 当前唯一下一控制建议：共享同一个random gate起点的S组
+
+赞成只补root提出的S条件：统一复制原E135 seed1初态的随机gate、仍允许全参数学习，expert0/2沿原paired初值，只新训这两次，seed1完整复用原E135。S−R把各自random gate换成一个共同random gate；S−T两者都共享起点、都用原full-param协议，直接改变“共享起点本身”与“这个native起点”的解释。因此它能改变J3的成因判断，信息增量明确，而不是为提升恢复分数再加训练轴。新0/2应保留各自R初始RNG，仅替换gate并fresh optimizer，不顺便把三者RNG也统一；所有预算/目标/曝光/读数沿既定协议。
+
+若S也形成较稳定分解，当前解释应转向共享随机组织起点足以稳定此问题，teacher来源不是必要说明；若S仍更变动而T稳，则这个native起点有额外作用，但输入几何、gate尺度/margins/边界与语义信息仍未分开。该S只检验seed1这一份锁定随机gate，不泛称所有随机起点；S和R共用一个已观察整模型，不能作两组独立seed推断。两组若函数距离也变化，就联合报告，不设恢复准入线，也不自动加温度/random-frozen/更多gate值网格。
+
+另一个必要逻辑边界：S/T各自内部稳定，不单独证明它们是彼此不同的两套最终组织；当前对照能够回答共享起点的稳定作用，不能仅由within-cohort variance升级“多个同函数实现”。不因此立即扩cross-mapper或其它训练条件。已有router initialization/teacher routing的性能方法ownership限制方法叙述，但不替代本配对、原生总函数目标、actual component跨训练稳定性的证据对象；不以ownership关线。本审读者未立S卡、实现或启动新条件，E140/E141冻结源保持。
+
+### E142实际前瞻卡核对
+
+已只读核对 `experiments/E142-shared-random-router-cohort.md`，无科学阻塞。0/2保留各自R全部expert及完整四类RNG、只复制原E135 seed1未训练FP32 gate、fresh全参数optimizer，seed1整模型明确复用；同cache/orders/4096与原loss均清楚。单random gate、R/S共享已见学生、S−T尺度/margin/边界与语义信息未分离、固定maps/input CI/无strict同函数解释均保留。主Dolma人口限定和不扩POS/A/crossmatcher/其它gate条件自洽；initial/final向量及自然预测可直接承接原审计。未改卡/源、未用GPU，待新CP/raw到齐再独立核对。

@@ -6,7 +6,7 @@
 - 本文与其他文档冲突时，**以本文为准**。
 
 **2026-10-25 接手校正（用户已明确继续投入；后续事实以实验卡/结果为准）：**
-- **当前状态（2026-10-26 03:58 UTC后；覆盖以下历史快照）：** E130/C07=L2、E131/C08=L1、E135–139完整并独立审计。E139/C09=L1：三学生free/fixed actual componentVar=.072467/.031209，FP64 sumVar=.017869/.015947；差+.041258的分量变动中cross差−.039336大部抵消，nativeY方差只差+.001929，函数/teacher偏差仍不同。全部结果/已观察pilot和失败预算保留。E140已前瞻登记单个新teacher-gate初始化但trainable条件，三新seed0/1/2完整初态与对应fixed一致，检验初始组织还是持续固定协议；04:04:20UTC已在node21GPU0/1/2实际启动3新seed，PID884887/884888/884889；source1b1c81…c02f07冻结，更新正常，原4096终点不变。没有恢复门槛、续训网格或新匹配网格。用户要求持续执行、不退出。
+- **当前状态（2026-10-26 04:40 UTC后；覆盖以下历史快照）：** E130/C07=L2、E131/C08=L1、E135–141全训练/读数/独立审计/归档完整。C09=L1保留有限actual-component事实：R/F componentVar .072467/.031209，sumVar .017869/.015947。E140共同native初态但gate可训练得到componentVar .032818、sumVar .015583，gate集合相对原模型约80%保留；持续完全冻结不是本例中稳定的唯一协议。E141分账：R−F额外componentVar .041258 = support-XOR .024964 + both-on .016294；非只调用位置，但不同共同on人口不能外推所有expert语义。当前E142已在新增初始化前登记：共享E135 seed1未训练random gate且trainable，只新增expert0/2、保留各自R初RNG，seed1整模型复用；检验共享起点本身与该native起点，04:48:46UTC已在node21GPU0/1启动seed0/2 PID895454/895455，源155001…12829冻结，原4096预算。没有恢复门槛/超参或匹配网格，不改ACTIVE分配/头线状态。用户要求持续执行、不退出。
 - **E136–138覆盖限制：** POS held512的teacher/fixed experts42/51/52 raw target-on=0、原A恒0；row-centering会产生继承共同均值的变化，“64个数值有效列”不代表64个独立内容承担。旧分数和全列保留，不静默删列。Dolma支持覆盖另报。
 - **E137/E138：** E137内容on/off及误差抵消见`results/e137/components.json`；E138真正分开共同teacher偏差和student之间变异见`results/e138/readout.json`与`independent_audit.json`，不要再把单学生重建误差说成跨学生不重现。E138三学生seed1是已观察pilot，seed0/2为新增；CI只表输入抽样，不是seed总体CI。
 - **E131终点执行已完整：** `e131_compare_batch.py`全15对/词形CI、`e131_predictor_compare.py`三个预定时点、`e124_routing.py`最终N1、`e131_plot_trajectory.py`及独立CP/统计审计均complete，结果和引用在E131卡；不重跑旧训练。

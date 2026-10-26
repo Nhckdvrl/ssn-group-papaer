@@ -58,3 +58,5 @@
 - **2026-10-26 E136–138构念校正：** POS held512 teacher/fixed experts42/51/52 target-on=0、raw A=0；原row-center/cal-word处理后的数值有效不等于独立内容证据。不删列/改旧分数。E138有限三学生将teacher误差.162563拆为共同偏差.148548及跨学生方差.014015；分量存在部分抵消，但不能用teacher未恢复证明跨学生不重现，也不能将相近NLL说成同函数。E138/E137独立审计完整，暂不新增或升级C##；C07/C08原限定等级不变。证据见E138卡及`results/e138/{readout,independent_audit}.json`。
 
 - **2026-10-26 E139/C09有限cohort观察：** 全stage complete/errors空；新C09=L1仅记录预定cal对应及这六模型的实际分解/总Y差，不是机制唯一解释或普遍分工任意。coverage还包括free seed0原expert11/57、seed2 expert6在POS held target-on=0；fixed仍42/51/52，原A全0。所有旧列/分数保留，A组差不作纯内容证据。进一步以E140同完整初态解冻协议区分选择与维持，C07/C08等级不变。
+
+- **2026-10-26 E140/E141对C09的解释补充（等级不变）：** 同完整native初态但gate可更新，cohort componentVar=.032818、sumVar=.015583，gate选择相对teacher保留约80%，说明持续完全冻结不是本例中形成较稳定分解的唯一条件；共享初态与native特定信息未分离。E141精确分账free−fixed的+.041258贡献方差差为XOR+.024964与both-on+.016294，后者共同on raw f也有条件向量差；不只调用位置，也不推及支持外/语义算法。两卡及`results/e140/independent_audit.json`、`results/e141/independent_audit.json`独立审计完整。warm0/1 expert20/51、warm2 13/20/51在POS held target-on=0，全保留，不把A差当纯内容证据。
