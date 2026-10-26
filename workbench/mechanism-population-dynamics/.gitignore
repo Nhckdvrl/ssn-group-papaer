@@ -1,165 +1,32 @@
-# volatile run logs / queue outputs / claim dirs (process artifacts, rewritten by running jobs; not results)
-results/**/logs/
-results/**/claims/
-results/*.out
-results/**/*.out
+# Run logs, queue/claim dirs and stdout captures inside result folders (process artifacts, not results)
+**/results/**/logs/
+**/results/**/claims/
+**/results/**/*.out
+**/results/**/*.log
+**/results/**/*.pid
+**/results/**/*.lock
 
-# E68 per-model weight samples and SeedPrints fingerprints (2.4 GB; kept locally, regenerate with scripts/e68_baselines.py)
-results/e68/*.npz
-
-# Regenerable local machine artifacts (2026-10-11)
+# Regenerable local machine artifacts
 __pycache__/
 *.pyc
 .nfs*
 
-# E121 regenerable inputs (scripts/e121_data.py) and per-part outputs
-results/e121/items_*.jsonl
-results/e121/*.log
-results/e121/r12_main_N1_pos.json
-results/e121/r12_main_N1_sense_*.json
-results/e120/logs/
+# Heads: E68 per-model weight samples and SeedPrints fingerprints (2.4 GB; regenerate with heads/scripts/e68_baselines.py)
+heads/results/e68/*.npz
 
-# E122/E123 regenerable arrays, local checkpoints and run logs
-results/e121/pos_audit_*_pairs.npz
-results/e122/*.npz
-results/e123/**/*.pt
-results/e123/**/*.npy
-results/e123/**/*.npz
-results/e123/*.log
-results/e123/**/*.log
-results/e123/**/*_sequences.json
-results/e123/**/*_pos.json
-results/e123/**/train_steps.jsonl
-results/e124/*.npz
-results/e124/**/*.npz
-results/e124/*.pt
-results/e124/**/*.pt
-results/e124/*.npy
-results/e124/**/*.npy
-results/e124/*.jsonl
-results/e125/**/*.pt
-results/e125/**/*.npz
-results/e125/**/*.npy
-results/e125/**/*.jsonl
-results/e125/*.lock
-results/e125/*_launch.json
-results/e126/*launch*.json
-results/e127/*_sequences.json
-results/e125/*_final/training_summary.json
-results/e125/*_final/coverage_diagnostic.json
-results/e128/**/*.pt
-results/e128/**/*.npz
-results/e128/**/*.npy
-results/e128/**/*.jsonl
-results/e128/*_launch.json
-results/e129/**/*.pt
-results/e129/**/*.npz
-results/e129/**/*.npy
-results/e129/**/*.jsonl
-results/e129/*_launch.json
-results/e126/**/*_sequences.json
-results/e126/**/*_pos.json
-results/e128/*_sequences.json
-results/e130/**/*.pt
-results/e130/**/*.npz
-results/e130/**/*.npy
-results/e130/**/*.jsonl
-results/e130/*_launch.json
-results/e130/initializations.json
-results/e130/initializations.lock
-results/e130/initializations.e130.lock
-results/e130/*_sequences.json
-results/e130/*_pos.json
-results/e130/**/*_sequences.json
-results/e130/**/*_pos.json
-results/e130/seed*_preflight.json
-results/e131/**/*.pt
-results/e131/**/*.npz
-results/e131/**/*.npy
-results/e131/**/*.jsonl
-results/e131/*.pid
-results/e131/*_launch.json
-results/e131/*_preflight.json
-results/e131/diagnostic_staging_attempt*.json
-results/e132/**/*.pt
-results/e132/**/*.npz
-results/e132/**/*.npy
-results/e132/**/*.jsonl
-results/e132/*_launch.json
-results/e133/**/*.pt
-results/e133/**/*.npz
-results/e133/**/*.npy
-results/e133/**/*.jsonl
-results/e133/*_launch.json
-
-# E134/E135 raw arrays, launch records and GPU logs remain local
-results/e134/**/*.pt
-results/e134/**/*.npz
-results/e134/**/*.npy
-results/e134/**/*.jsonl
-results/e134/*_launch.json
-results/e134/logs/
-results/e135/**/*.pt
-results/e135/**/*.npz
-results/e135/**/*.npy
-results/e135/**/*.jsonl
-results/e135/*_launch.json
-results/e135/logs/
-
-# E136 assignment-oracle local assets
-results/e136/**/*.pt
-results/e136/**/*.npz
-results/e136/**/*.npy
-results/e136/**/*.jsonl
-results/e136/*_launch.json
-results/e136/logs/
-
-results/e131/**/*_sequences.json
-results/e131/**/*_pos.json
-
-# E137–E139 raw arrays, launch records and GPU logs remain local
-results/e137/**/*.pt
-results/e137/**/*.npz
-results/e137/**/*.npy
-results/e137/**/*.jsonl
-results/e137/*_launch.json
-results/e137/logs/
-results/e138/**/*.pt
-results/e138/**/*.npz
-results/e138/**/*.npy
-results/e138/**/*.jsonl
-results/e138/*_launch.json
-results/e138/logs/
-results/e139/**/*.pt
-results/e139/**/*.npz
-results/e139/**/*.npy
-results/e139/**/*.jsonl
-results/e139/*_launch.json
-results/e139/logs/
-
-# E140 warmstart cohort raw assets remain local
-results/e140/**/*.pt
-results/e140/**/*.npz
-results/e140/**/*.npy
-results/e140/**/*.jsonl
-results/e140/*_launch.json
-results/e140/logs/
-
-# E141 read-only support decomposition raw assets
-results/e141/**/*.pt
-results/e141/**/*.npz
-results/e141/**/*.npy
-results/e141/**/*.jsonl
-results/e141/*_launch.json
-results/e141/logs/
-
-# E142 shared-random-router local assets
-results/e142/**/*.pt
-results/e142/**/*.npz
-results/e142/**/*.npy
-results/e142/**/*.jsonl
-results/e142/*_launch.json
-results/e142/logs/
-
-# Full local directory-metadata snapshot; portable compressed copy is tracked
-results/file_catalog_2026-10-26.json
+# MoE: raw arrays, checkpoints, per-sequence dumps and launch records stay local (see moe/ASSETS.md)
+moe/results/**/*.pt
+moe/results/**/*.npz
+moe/results/**/*.npy
+moe/results/**/*.jsonl
+moe/results/**/*_launch.json
+moe/results/**/*_sequences.json
+moe/results/**/*_pos.json
+moe/results/**/*_preflight.json
+moe/results/e121/r12_main_N1_pos.json
+moe/results/e121/r12_main_N1_sense_*.json
+moe/results/e125/*_final/training_summary.json
+moe/results/e125/*_final/coverage_diagnostic.json
+moe/results/e130/initializations.json
+moe/results/e131/diagnostic_staging_attempt*.json
+moe/results/e143/

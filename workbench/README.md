@@ -115,7 +115,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 ## 当前决定与整理（截至 2026-10-12）
 
 - **用户明确要求直接删除** `real-time-causalization-capability-preservation`、`scoped-context-state`、`cross-lingual-acquisition-regimes`、`multi-llm-collaboration`、`video-world-model-temporal-interfaces` 这五个 workbench 的当前 Git 树文件。历史 Git 提交仍可追溯，不另建 archive 副本，不擅自触及外部服务器缓存。
-- **`mechanism-population-dynamics`：CLOSED / TERMINATED / 已收尾。** 用户认为该项目投入大量研究工作后，进一步的科学价值、意义有限，决定终止。论文 v0–v3、结果、代码、实验与日志全部保留在原目录（10-23 整理见 RESEARCH_HISTORY.md），不启动新的实验或论文工作。10 月 9 日“继续”的历史决定已由 10 月 11 日决定覆盖。
+- **`mechanism-population-dynamics`：CLOSED。** 头的研究 10-11 结项、结项后的补救 10-17 停止；10-23 起按导师建议做的 MoE 方向于 10-26 由人暂停。2026-10-26 按主题整理为 `heads/`（主题 1、2）、`moe/`（主题 3）、`suite-audits/`（副产品），入口见该目录 README。
 - **没有 ACTIVE-MAIN。** `in-context-evidence-structure` 保持唯一 ACTIVE-EXPLORE；其它剩余工作台状态不变。
 - 2026-10-11 **后续人类决定**：再从 HEAD 删除 `npc-persona-behavior-grounding` 和 `npc-deception-investigability`，仍保留知识库中的 NPC 文献；**10 月 11 日清理后剩余 5 个 workbench**。2026-10-12 新建 `xeno-interpretability` 后，**截至 2026-10-12 共 6 个**；2026-10-13 新建 `game-npc-agents` 后共 7 个。详见 [清理记录](WORKBENCH_CLEANUP_2026-10-11.md)。
 - [2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)只是历史快照；相关领域的 `library/` 文献继续保留。
@@ -128,10 +128,10 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-26 | 历史头线保持结项，ACTIVE分配不变。**人要求暂停新增MoE实验，先全面整理再由人消化决定方向。** 本轮至E142训练/读数/独立审计完整；C07限定L2，C06/C08/C09 L1，不自动追加互换方案或新稿。[暂停总览](mechanism-population-dynamics/MOE_RESEARCH_SUMMARY_2026-10-26.md) · [当前状态](mechanism-population-dynamics/README.md)。 |
+| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-26 | 2026-10-26 按主题整理：[头的研究与找补](mechanism-population-dynamics/heads/README.md) · [MoE 方向（暂停，含审视）](mechanism-population-dynamics/moe/README.md) · [套件审计](mechanism-population-dynamics/suite-audits/README.md) · [总入口](mechanism-population-dynamics/README.md)。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
-| `xeno-interpretability` | PROPOSED | —（探索阶段） | — | `CLAIMS.md` | — | **用户 2026-10-12 指定新建 workbench，专属知识库在 [`knowledge/`](xeno-interpretability/knowledge/) 内；初始文献核查与实验设计仍未构成实证发现；不调整 ACTIVE 分配。** |
+| `xeno-interpretability` | PROPOSED | —（探索阶段） | — | `CLAIMS.md` | — | **用户 2026-10-12 指定新建 workbench，专属知识库在 [`knowledge/`](xeno-interpretability/knowledge) 内；初始文献核查与实验设计仍未构成实证发现；不调整 ACTIVE 分配。** |
 | `game-npc-agents` | ACTIVE-MAIN | ACL / ICML / ICLR（研究定位待人审） | — | `CLAIMS.md` | 2026-10-22 | **现有Role-playing Agent主线；B/I01暂停，D优先、C备选，A仍CLOSED。2026-10-24：D-E01–D-E13、三条标准SFT及本批审计已收尾，无在途模型任务。** [实验与尝试登记](game-npc-agents/mine-d-affect-relationships/experiments/README.md) · [研究审计](game-npc-agents/mine-d-affect-relationships/RESEARCH_AUDIT.md) · [当前总账](game-npc-agents/mine-d-affect-relationships/results/D-RESIDENCY-CURRENT-LEDGER.json)。角色如何从经历形成自己的理解并影响后续互动仍为主问题；基线和质量代理读数未确立新成长机制，C03保持L0。 |

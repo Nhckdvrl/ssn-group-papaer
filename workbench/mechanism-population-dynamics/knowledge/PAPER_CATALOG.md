@@ -1,6 +1,6 @@
 # 论文精读卡目录（2026-10-23 重建）
 
-按主题列出 `papers/` 下的全部卡片。除 [FLAGGED_ABSTRACT_ONLY](papers/FLAGGED_ABSTRACT_ONLY_2026-10-17.md) 列出的条目外，都是正文精读。研究背景见 [研究总档](../RESEARCH_HISTORY.md)。
+按主题列出 `papers/` 下的全部卡片。除 [FLAGGED_ABSTRACT_ONLY](papers/FLAGGED_ABSTRACT_ONLY_2026-10-17.md) 列出的条目外，都是正文精读。研究背景见 [研究总档](../heads/HISTORY.md)。
 
 ## 1. 跨训练的普适性、组件对应与对称
 | 卡片 | 一句话 |

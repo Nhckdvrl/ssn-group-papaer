@@ -1,8 +1,10 @@
 # 主张账本（CLAIMS）
 
-**头线：2026-10-11 CLOSED / TERMINATED。** 本表保留历史 C01/C02/C03/C05 的 L1/L2 局部证据、限制和撤回；这些等级并不等于独立确认的最终机制论文主张。头线不再新增实验或升级主张。见 [结项综述](RESEARCH_HISTORY.md)。**MoE方向由人于10-23授权、10-25明确继续投入；不恢复头线，不自动改ACTIVE登记。**
+> **路径约定（2026-10-26 起）：** MoE 一节里的 `results/`、`scripts/`、实验卡路径以 [`moe/`](moe/README.md) 为根；历史头线一节以 [`heads/`](heads/HISTORY.md) 为根。
 
-## MoE方向（暂停整理快照：2026-10-26）
+**头线：2026-10-11 CLOSED / TERMINATED。** 本表保留历史 C01/C02/C03/C05 的 L1/L2 局部证据、限制和撤回；这些等级并不等于独立确认的最终机制论文主张。头线不再新增实验或升级主张。见 [结项综述](heads/HISTORY.md)。**MoE方向由人于10-23授权、10-25明确继续投入；不恢复头线，不自动改ACTIVE登记。**
+
+## MoE方向（暂停整理快照：2026-10-26；评估见 [moe/README.md](moe/README.md)）
 
 **用户已要求停止新增实验，先消化当前材料再决定方向。本轮至E142的训练、读数、独立审计已完成；本次不升级主张等级。**
 - 当前问题：固定表示和语言建模目标后，独立训练的专家组织与计算职责是否重现、有多少自由度。E130完整五初始化测量形成限定设置的C07；历史干预与实际使用后果继续检验其原因和意义。
@@ -11,7 +13,7 @@
 | ID | 主张（一句话，可证伪） | 等级 | 证据 | 已知威胁 | 更新/校对 |
 |---|---|---|---|---|---|
 | C06 | 在OLMoE-1B-7B-0924的L9与E121固定输入上，专家路由相似与共同输入输出相似相关（交叉半偏ρ0.454–0.463），但校准路由距离与held POS top1→rank9替换ΔNLL的偏ρ仅0.027 [−0.036,0.087]，未达预定0.2尺度；这套路由量尚不能代替条件干预读数 | L1 | E122；`results/e122/layer9.json`；POS纠正`results/e121/pos_audit_20261025.json` | 一个模型一层；关联不等于职责；词形CI非seed CI；E121 cal/held按句而非文档，可能共享前文；旧KL基线fp16；QAP需交换性假设 | 2026-10-25；独立CPU从原capture/raw重算ρ=.027024、CI[−.03338,.08547]；两R/F数字一致，见`results/e122/c06_independent_cpu_audit.json`；非完整L3校对 |
-| C07 | 冻结OLMo-1B的L9输入/下游、同CE输入流与512M预算，5个独立初始化的MoE在预定cal-U一对一映射下，held U列相关为.0161–.0465，同一映射下A为−.0107–.0068；低于末期自身U≈.9988/A=.9300–.9503与同流重跑1，尽管5模型held NLL范围仅.0004806。所选N1残差组织T跨seed为−.0014–.0721 | L2（本固定设置的重复测量） | E130；`results/e130/batch_summary.json`（完整17对）、`evaluation_uncertainty.json`、`routing/batch_summary.json`；独立复算与§4混杂审计`knowledge/research/MOE_E130_SCIENTIFIC_REVIEW_2026-10-26.md` | U是共同dense背景的等系数探针，A在自然背景且只按U映射检验；一对一标量指纹不穷尽职责/其它对应。有限预算、单骨干/层/配置/固定词形集；word CI非seed CI、10对共享5seed。NLL相近不等于同函数，POST-HOC两对KL约.017–.019。N1只扣指定几何参照；独立校对未重生成32draw null | 2026-10-26；5个预定init全完成、原始输入/曝光/冻结/校准隔离与12项混杂审计核对；17对独立统计复算误差≤1.1e−16。L2仅对应此受控测量，不升级为普遍无职责、同函数自由度或论文就绪 |
+| C07 | 冻结OLMo-1B的L9输入/下游、同CE输入流与512M预算，5个独立初始化的MoE在预定cal-U一对一映射下，held U列相关为.0161–.0465，同一映射下A为−.0107–.0068；低于末期自身U≈.9988/A=.9300–.9503与同流重跑1，尽管5模型held NLL范围仅.0004806。所选N1残差组织T跨seed为−.0014–.0721 | L2（本固定设置的重复测量） | E130；`results/e130/batch_summary.json`（完整17对）、`evaluation_uncertainty.json`、`routing/batch_summary.json`；独立复算与§4混杂审计`knowledge/research/MOE_E130_SCIENTIFIC_REVIEW_2026-10-26.md` | **2026-10-26 P30：该平台专家几乎可互换（E134 换成专家平均只升 .0025–.0032，原生 OLMoE .064；E132 随机移植另一种子整套专家只升约 .012，置零 .117），本主张不构成“独立训练是否形成相同分工”的证据。** U是共同dense背景的等系数探针，A在自然背景且只按U映射检验；一对一标量指纹不穷尽职责/其它对应。有限预算、单骨干/层/配置/固定词形集；word CI非seed CI、10对共享5seed。NLL相近不等于同函数，POST-HOC两对KL约.017–.019。N1只扣指定几何参照；独立校对未重生成32draw null | 2026-10-26；5个预定init全完成、原始输入/曝光/冻结/校准隔离与12项混杂审计核对；17对独立统计复算误差≤1.1e−16。L2仅对应此受控测量，不升级为普遍无职责、同函数自由度或论文就绪 |
 | C08 | 在E128同一step4096父状态的一对分支中，仅将同1024完整minibatch作短暂重排，再接57380次完全相同更新到62500，终点cal-U映射下held U=.04293 [.00519,.07399]、A=.00425 [−.00964,.02385]；各自61440→62500 U≈.9989/A≈.9525。这个纯次序处理在本父状态留下了稳定末期仍可测的终点作用差异 | L1（单父因果pilot） | E131；`results/e131/functional_batch.json`（15对）、`predictor_comparison/step062500.json`、`routing/final.json`；独立原始数组/CP审计`results/e131/final_independent_audit.json` | 一个父状态/剂量与有限512M预算；不是普遍关键期或离散吸引子。pulse→ownfinal U仅.002/.020，不是具体早期职责原样保存。两终点预测KL仍Dolma.01704/POS.00982；U/A读数与一对一对应有限，非同函数自由度。optimizer分叉也是因果路径 | 2026-10-26；全57380共同token链、最终RNG/count/queue/epoch逐项一致，source历史/pulse次序不同；15对map/均值/词形CI独立吻合，误差≤2.22e−16；不把word CI当父状态总体CI |
 | C09 | 在E139固定原生L9总Y目标/配对expert初值/4096预算的三个学生有限cohort中，自由路由与提供冻结teacher gate两协议经同一cal-component置换后，Dolma component variance为.072467/.031209，FP64 sum variance为.017869/.015947，额外分量变动大部由负cross抵消；POS同向 | L1 | E139卡；`results/e139/readout.json`、`training_independent_audit.json`、`components_independent_audit.json`、`independent_audit.json` | 两组均复用已观察seed1，只有0/2新增；单teacher/层/有限cache；teacher误差.1764/.1626及总函数变异仍不同；free分量含mask/门值/content；free POS seed0的expert11/57、seed2的expert6在held target-on=0，fixed的42/51/52也为0，全部列保留；A组间差包含对应/coverage及row-centered共同均值，不是纯内容证据；完整协议含信息/冻结/aux/clip耦合；cal锚定不穷尽对应，输入CI非seed总体CI | 2026-10-26；实际CP/六运行曝光-LR逐项相同、maps/点/CI/variance双恒等式及POS分布/A独立复算通过，不称严格同函数自由度/纯内容效应 |
 

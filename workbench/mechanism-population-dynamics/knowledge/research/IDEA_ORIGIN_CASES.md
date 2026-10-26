@@ -32,7 +32,7 @@
 
 ## 案例5：本workbench E75 — 真正应该保留下来的过程
 
-[E73](../../experiments/E73-ioi-component-transfer.md)先出现410M同初始化兄弟仅~0.05的低transfer；[E75](../../experiments/E75-ioi-transfer-gap-decomposition.md)不是立刻宣称“算法分化”，而是分三种可能：比值/测量、头换人伴随自修复、计算机制真的不同。随后测直接/总效应、功能剖面、target任务DLA对齐，并承认该对齐用了目标侧信息。
+[E73](../../heads/1-original/experiments/E73-ioi-component-transfer.md)先出现410M同初始化兄弟仅~0.05的低transfer；[E75](../../heads/1-original/experiments/E75-ioi-transfer-gap-decomposition.md)不是立刻宣称“算法分化”，而是分三种可能：比值/测量、头换人伴随自修复、计算机制真的不同。随后测直接/总效应、功能剖面、target任务DLA对齐，并承认该对齐用了目标侧信息。
 
 **它值得学的部分**：让一个实际反常触发多个可排除的竞争解释，而不是为了确认预设story死守第一张图。
 

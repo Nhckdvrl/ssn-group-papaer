@@ -89,6 +89,6 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 
 ## 7. 本仓库相关 workbench / 历史
 
-- **已终止的实证项目**：[mechanism-population-dynamics](../../../workbench/mechanism-population-dynamics/)（2026-10-11 CLOSED；[科研结项](../../../workbench/mechanism-population-dynamics/CLOSEOUT.md)）。仅为知识与数据资产入口，不代表仍有活跃研究计划。
+- **已终止的实证项目**：[mechanism-population-dynamics](../../../workbench/mechanism-population-dynamics)（2026-10-11 CLOSED；[科研结项](../../../workbench/mechanism-population-dynamics/heads/HISTORY.md)）。仅为知识与数据资产入口，不代表仍有活跃研究计划。
 - **模型差分独立 workbench 已撤销**；不再将此题材误标为正在开展的项目。见 [模型差分知识卡](MODEL_DIFFING_MEASUREMENT.md)。
 - [Shape/OLMo 历史架构/表征混杂审计](../architecture-memory/SHAPE_OLMO_CLOSEOUT.md)（旧 workbench 已删除）

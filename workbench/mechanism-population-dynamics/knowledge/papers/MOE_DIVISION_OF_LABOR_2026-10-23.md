@@ -1,6 +1,6 @@
 # MoE 专家分工：跨训练一致性与分工成因（2026-10-23 精读）
 
-配合 [knowledge/research/ADVISOR_2026-10-23_MOE.md](../research/ADVISOR_2026-10-23_MOE.md)。前两篇视觉 MoE 见 [MOE_SPECIALIZATION_SEEDS_2026.md](MOE_SPECIALIZATION_SEEDS_2026.md)。
+配合 [knowledge/research/ADVISOR_2026-10-23_MOE.md](../../moe/notes/ADVISOR_2026-10-23.md)。前两篇视觉 MoE 见 [MOE_SPECIALIZATION_SEEDS_2026.md](MOE_SPECIALIZATION_SEEDS_2026.md)。
 
 ## 1. Ternovtsii & Bilak — Equifinality in Mixture of Experts（arXiv 2604.14419，2026-04）
 - **阅读范围：** HTML 全文（正文、讨论、附录 B 统计部分）。
