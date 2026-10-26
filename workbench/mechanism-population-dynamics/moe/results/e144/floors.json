@@ -1,0 +1,94 @@
+{
+  "experiment": "e144",
+  "phase": "training_batch0_only",
+  "source_sha256": {
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e144145_run.py": "e52275aec98269e9f8fc9b0476027dd251f65234f8ca91dbeb1792e24087a566",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e144145_test.py": "b43a997114e4d95d72feaab8a083da36b134a055dcc2e75511e3c4a79670586d",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80"
+  },
+  "asset_preflight_sha256": "8da0bea1754fca6f2dcfbdbecc0c21b603912973187b79e11c0a315825ab2eac",
+  "controls": {
+    "teacher_copy": {
+      "logp_max_abs": 0.0,
+      "nll_gap": 0.0,
+      "forward_kl": 0.0,
+      "reverse_kl": 0.0,
+      "layer_max_abs": 0.0,
+      "applied_gate_sorted_max_abs": 0.0
+    },
+    "F0_same_source": {
+      "logp_max_abs": 0.0,
+      "nll_gap": 0.0,
+      "forward_kl": 0.0,
+      "reverse_kl": 0.0,
+      "layer_max_abs": 0.0,
+      "applied_gate_sorted_max_abs": 0.0
+    },
+    "F0_sum64_cast": {
+      "logp_max_abs": 7.906211853027344,
+      "nll_gap": 0.00015154602548656578,
+      "forward_kl": 0.0003743994925853526,
+      "reverse_kl": 0.00037406264335744207,
+      "layer_floor_sse_per_position": 1.2763066181177717e-05
+    },
+    "F0_repeat": {
+      "logp_max_abs": 0.0,
+      "nll_gap": 0.0,
+      "forward_kl": 0.0,
+      "reverse_kl": 0.0,
+      "layer_max_abs": 0.0,
+      "applied_gate_sorted_max_abs": 0.0
+    },
+    "F1_same_source": {
+      "logp_max_abs": 0.0,
+      "nll_gap": 0.0,
+      "forward_kl": 0.0,
+      "reverse_kl": 0.0,
+      "layer_max_abs": 0.0,
+      "applied_gate_sorted_max_abs": 0.0
+    },
+    "F1_sum64_cast": {
+      "logp_max_abs": 6.828039169311523,
+      "nll_gap": -0.00018101818705455394,
+      "forward_kl": 0.0003640215305295896,
+      "reverse_kl": 0.0003643431207610311,
+      "layer_floor_sse_per_position": 1.2824421772530922e-05
+    },
+    "F2_same_source": {
+      "logp_max_abs": 0.0,
+      "nll_gap": 0.0,
+      "forward_kl": 0.0,
+      "reverse_kl": 0.0,
+      "layer_max_abs": 0.0,
+      "applied_gate_sorted_max_abs": 0.0
+    },
+    "F2_sum64_cast": {
+      "logp_max_abs": 4.3906097412109375,
+      "nll_gap": -0.00021028922917159642,
+      "forward_kl": 0.0003657405931818472,
+      "reverse_kl": 0.00036490723501757965,
+      "layer_floor_sse_per_position": 9.07683582499932e-06
+    },
+    "zero_response": {
+      "logp_max_abs": 22.692787170410156,
+      "nll_gap": 0.0681032478505401,
+      "forward_kl": 0.08026694146277417,
+      "reverse_kl": 0.1004747358547965
+    }
+  },
+  "forward_calls": 13,
+  "input_sha256": "7b68f4d13e806df1ecc413e3b0499e1831f8493040aabbf2c755180c42eb2a79",
+  "training_side_moments": {
+    "C": 0.028636394554607383,
+    "V": 0.01329796073876329,
+    "C_minus_V": 0.015338433815844092
+  },
+  "mu_cast_sse_per_position": 2.9988725622996506e-06,
+  "status": "passed",
+  "peak_allocated_bytes": 35441970176,
+  "precision": "FP32 trained bank storage; BF16 native GEMMs/products/aggregate/logits; FP32 logsoftmax; FP64 layer moments",
+  "read_only_source_checks": "passed",
+  "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e"
+}

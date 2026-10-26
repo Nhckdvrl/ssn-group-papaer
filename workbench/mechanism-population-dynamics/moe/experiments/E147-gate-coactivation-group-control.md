@@ -1,6 +1,6 @@
 # E147：分组预测收益来自 gate 共激活，还是跨学生函数配套（2026-10-26）
 
-- **状态：** PLANNED；E146完成后提出的前瞻强竞争对照，E147新预测尚未读取。由`tools/process/new.py experiment mechanism-population-dynamics gate-coactivation-group-control`生成编号，按主题移动至moe。
+- **状态：** DONE；E146完成后新提出、运行前预登记；12个gate-only bank全部运行并完整统计。由`tools/process/new.py experiment mechanism-population-dynamics gate-coactivation-group-control`生成编号，按主题移动至moe。
 - **类型 / 对应：** PILOT / MEASUREMENT；C10/C11/P31，复用现有F三终点，无训练。
 - **问题：** E146的Γ分组优于随机同大小分组，是否仅因保留了当前gate的强共激活/门值关系，而不需要跨学生专家函数信息？
 - **设计修订的科学理由：** E146随机粒度对照不能区分这个解释。增加一项更强的gate-only comparator，能改变“哪些变量决定可组合的计算单位”的判断；不以维护Γ分组叙事为目的，不加多种图/算法直到胜出。
@@ -37,6 +37,13 @@
 - 一张已空闲GPU；既有环境`~/.venvs/mechpop`。12×64×512=393216新增预测token条件，另计4次μ与prefix/局部块。预计0.03–0.2 GPU·时，硬包1 GPU·时，独立ledger；峰值探索并发仍≤8卡。
 - 计划源码`scripts/e147_gate_control.py`、`results/e147/`；raw耐久存储`~/mechpop_cache/e147_gate_group_control`。当前未实现、未运行。不得修改E146原预注册或其已完成结果；这是由E146结果引出的新前瞻实验，不将它倒写成E146的预设对照。
 
-## 结果
+## 结果（2026-10-26）
 
-未运行；不升级主张。
+- **主要对照：** gate-only减Γ组的标签NLL=**+.000004829**，交叉文件/来源CI **[−.000251039,+.000266366]**；KL差=−.000040128，区间[−.000210918,+.000161346]。四basis的差异正负都有，不追加basis追求Γ胜出。
+- **对随机背景：** gate-only减E146三个随机分区均值的NLL=**−.001252880**，区间[−.001684779,−.000888509]；KL=−.001545972，区间[−.001872329,−.001264599]。因此简单gate-only图也保留了大部分已观察到的分组预测收益。
+- **原单位背景：** gate-only相对完整学生的NLL/共同μ参考KL增量点值约.000685789/.000718843；Γ组为.000680960/.000758970。gate-only分组与Γ分组不相同，但cut接近：train .004784413、held .005006960（Γ组.004796232/.004897035）。不能从未检出差异宣布严格等价或全体gate-only算法已穷尽。
+- **科学更新：** 削弱“Γ已识别超出当前gate结构的内容联盟”解释；更简单的gate共激活/门值结构已是本例分组收益的较有解释力候选。E144的真实配套代价、E145共同gate下的历史兼容性差异仍成立。两类结果不等于已经复原形成机制、确定唯一计算单位或推广到原生全模型训练。
+- **控制：** 同μ逐token NLL、三个原生层端点均与E144逐位相同；全部组件与来源一致、三循环均值和只读检查通过。组只用training Hcal与gate，完整held Γ在定组和新预测完成后才读取。
+- **资源：** 106.941 GPU秒（.02971 GPU·时），峰值allocated31.199GB；一张卡、12新bank，无失败/丢弃条件、无训练。本轮E144–E147合计994.892 GPU秒≈**.27636 GPU·时**（含两轮预检）；峰值并发两张卡，完成后释放。
+- **复核入口：** [源码](../scripts/e147_gate_control.py)、[groups](../results/e147/groups.json)、[summary](../results/e147/summary.json)、[manifest](../results/e147/manifest.json)、[budget](../results/e147/budget.json)。命令 `... e147_gate_control.py self-test`、`CUDA_VISIBLE_DEVICES=0 ... e147_gate_control.py evaluate --physical-gpu 0`、`... e147_gate_control.py analyze`。raw在`~/mechpop_cache/e147_gate_group_control`，SHA见manifest。
+- **决策：** 采用原表“gate-only与Γ接近、均优于随机”的分支；本轮不再扩图/粒度/来源扫描。后续优先让该关系在自由学习gate或原生训练历史中接受前瞻检验。E147是结果后提出的新实验，绝不倒写为E146预设对照；此界限已保留。

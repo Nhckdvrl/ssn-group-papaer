@@ -1,4 +1,4 @@
-# The Router Already Knows（2026-10-20 预印本）`[证据级别：原文 §1–3、限制；未复跑]`
+# The Router Already Knows（2026-10-20 预印本）`[证据级别：原文 §1–2、摘要中的限制；未复跑]`
 
 来源：[arXiv v1 全文](https://arxiv.org/html/2610.27421v1)。作者 Andrew Bistras、Marty Johnson；不据未核对的接收信息评估。
 

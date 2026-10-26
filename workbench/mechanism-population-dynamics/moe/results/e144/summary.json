@@ -1,0 +1,3795 @@
+{
+  "experiment": "E144",
+  "status": "complete",
+  "rows": 64,
+  "positions": 32768,
+  "input_file_clusters": 22,
+  "source_MC_units": 8,
+  "manifest_sha256": "557e612ebc811b781e16097379e34c82fd245a2335ff0308a49f30f03a42a15b",
+  "scope": "Previously used held inputs; conditional finite cohorts, not seed-population inference. No training.",
+  "variants": {
+    "F0": {
+      "nll": {
+        "point": 2.3962801830711715,
+        "input_file_ci95": [
+          1.9335442686338142,
+          2.8518362436926967
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.004688489210907629,
+        "input_file_ci95": [
+          0.003172344833256077,
+          0.00731400017591596
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.004754715736414145,
+        "input_file_ci95": [
+          0.003193386716319337,
+          0.007558625649491628
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.969482421875,
+        "input_file_ci95": [
+          0.9634198715529387,
+          0.9742579994019138
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.04850226625784092,
+        "input_file_ci95": [
+          0.03774967754744895,
+          0.06507033046577981
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.19456214638990404,
+        "input_file_ci95": [
+          0.18630960819146097,
+          0.20155862002003877
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.1945652887515823,
+        "input_file_ci95": [
+          0.18630397021458023,
+          0.20155761256487967
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.8501098268264617e-05,
+        "input_file_ci95": [
+          1.457106714221248e-05,
+          2.2195523670580952e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.016894324789000735,
+        "input_file_ci95": [
+          0.015986489560847212,
+          0.017744301120436325
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.01688691598528225,
+        "input_file_ci95": [
+          0.015975316936569384,
+          0.017737594617133277
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "F1": {
+      "nll": {
+        "point": 2.3978770021769846,
+        "input_file_ci95": [
+          1.9357341570072326,
+          2.853206310966028
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.004680083742985897,
+        "input_file_ci95": [
+          0.0032790410306909085,
+          0.007014154630425085
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.004777653531702524,
+        "input_file_ci95": [
+          0.0032810125047825194,
+          0.007417332916447776
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.97088623046875,
+        "input_file_ci95": [
+          0.9657781427556819,
+          0.97557078915191
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.04915226003137439,
+        "input_file_ci95": [
+          0.038176916175055205,
+          0.06672331166039523
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.19477857474901478,
+        "input_file_ci95": [
+          0.18658140159413766,
+          0.20181466702916878
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.1947747623697457,
+        "input_file_ci95": [
+          0.1865711230553205,
+          0.20181908503456986
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.978783122120385e-05,
+        "input_file_ci95": [
+          1.4318231730143677e-05,
+          2.5593609283092417e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.016929529489228948,
+        "input_file_ci95": [
+          0.01603180436942339,
+          0.01777315579869845
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.016929590080731884,
+        "input_file_ci95": [
+          0.016032433390022256,
+          0.017773440589514744
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "F2": {
+      "nll": {
+        "point": 2.396727927658138,
+        "input_file_ci95": [
+          1.9342007537556445,
+          2.8515457151654084
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.00453540457806775,
+        "input_file_ci95": [
+          0.0031360330316565466,
+          0.007076709682402199
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.004619342831652086,
+        "input_file_ci95": [
+          0.0031646780725499667,
+          0.0072079054954334405
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.971221923828125,
+        "input_file_ci95": [
+          0.9647810766707251,
+          0.9767684651554541
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.0485601332949451,
+        "input_file_ci95": [
+          0.03807092481280345,
+          0.06474349344397982
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.19449521558912047,
+        "input_file_ci95": [
+          0.18628070612289913,
+          0.20159756689891395
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.1944909115422226,
+        "input_file_ci95": [
+          0.18627654670482138,
+          0.20159768552845284
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.2372177382483098e-05,
+        "input_file_ci95": [
+          9.492929314628208e-06,
+          1.543498349294566e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.016912127385490864,
+        "input_file_ci95": [
+          0.016002440709516993,
+          0.017758740221077436
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.016905276962175794,
+        "input_file_ci95": [
+          0.015996352900393477,
+          0.01775213004728989
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mu": {
+      "nll": {
+        "point": 2.3942407906807106,
+        "input_file_ci95": [
+          1.9315950872354668,
+          2.848783171070769
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 1.0,
+        "input_file_ci95": [
+          1.0,
+          1.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.04555473051229237,
+        "input_file_ci95": [
+          0.03567419694076376,
+          0.06063596424662786
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.17770351614172195,
+        "input_file_ci95": [
+          0.17012799941205511,
+          0.18417886229376154
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.17770305987845356,
+        "input_file_ci95": [
+          0.17013169414709114,
+          0.18417748838385242
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 3.3893636641942513e-06,
+        "input_file_ci95": [
+          2.6282258468671886e-06,
+          4.157219276285677e-06
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 3.3893636641942513e-06,
+        "input_file_ci95": [
+          2.6282258468671886e-06,
+          4.157219276285677e-06
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "teacher": {
+      "nll": {
+        "point": 2.35854687109436,
+        "input_file_ci95": [
+          1.8984082293537892,
+          2.8115208421144775
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.05590649939608973,
+        "input_file_ci95": [
+          0.038993233144608466,
+          0.08370474811970555
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.04555473051229237,
+        "input_file_ci95": [
+          0.03567419694076376,
+          0.06063596424662786
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.909423828125,
+        "input_file_ci95": [
+          0.8966077363028789,
+          0.92252734375
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 6.858332631339296e-06,
+        "input_file_ci95": [
+          6.727419152788047e-06,
+          7.0724966204602435e-06
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.17769964614827444,
+        "input_file_ci95": [
+          0.17012606406538228,
+          0.18417552200705958
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.17770305987845356,
+        "input_file_ci95": [
+          0.17013169414709114,
+          0.18417748838385242
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "zero": {
+      "nll": {
+        "point": 2.4597436127467134,
+        "input_file_ci95": [
+          1.9972305477369101,
+          2.9139986513881357
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.06871337366078123,
+        "input_file_ci95": [
+          0.06044835499809538,
+          0.08000976517025218
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.08750790345936843,
+        "input_file_ci95": [
+          0.07691247079860937,
+          0.10039100491250251
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.890625,
+        "input_file_ci95": [
+          0.8755526174625881,
+          0.9048358093773836
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.11414044272394443,
+        "input_file_ci95": [
+          0.09671209090421307,
+          0.14018138837912122
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 1.2156734049599078,
+        "input_file_ci95": [
+          1.0731012096187327,
+          1.3673212736138718
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 1.2167911354471252,
+        "input_file_ci95": [
+          1.0740612612408869,
+          1.368661802027734
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 0.0,
+        "input_file_ci95": [
+          0.0,
+          0.0
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 1.0096438118348576,
+        "input_file_ci95": [
+          0.8686268904506704,
+          1.1567480381129507
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 1.0096438118348576,
+        "input_file_ci95": [
+          0.8686268904506704,
+          1.1567480381129507
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix00_0": {
+      "nll": {
+        "point": 2.3991635118785877,
+        "input_file_ci95": [
+          1.9366426683163926,
+          2.854699686163017
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007051896713686389,
+        "input_file_ci95": [
+          0.005461933249586381,
+          0.009612102097233116
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007106658752732591,
+        "input_file_ci95": [
+          0.005493951825920149,
+          0.009667377596407517
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961212158203125,
+        "input_file_ci95": [
+          0.9555776148554105,
+          0.9662938833740751
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05114247852535163,
+        "input_file_ci95": [
+          0.040071690901773614,
+          0.06837866685122895
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2108882789602345,
+        "input_file_ci95": [
+          0.20356137560460208,
+          0.21733938724460367
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21088217918893998,
+        "input_file_ci95": [
+          0.2035613410060184,
+          0.2173422127005013
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.971192367287323e-05,
+        "input_file_ci95": [
+          1.4994696312115949e-05,
+          2.4099734338827326e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03327953322300552,
+        "input_file_ci95": [
+          0.032306504314314866,
+          0.034328491331101094
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03327833865486504,
+        "input_file_ci95": [
+          0.0323057974044534,
+          0.03432282738930772
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix00_1": {
+      "nll": {
+        "point": 2.399156552652652,
+        "input_file_ci95": [
+          1.9361491623680671,
+          2.855656368977481
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007399519049986394,
+        "input_file_ci95": [
+          0.005658880241469358,
+          0.010381778927351579
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007614164200331662,
+        "input_file_ci95": [
+          0.005748920668747471,
+          0.010569405295679958
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.96075439453125,
+        "input_file_ci95": [
+          0.9540461394074676,
+          0.9668819415918858
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05113999121216837,
+        "input_file_ci95": [
+          0.040404883794596655,
+          0.06805608389398293
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21113841957717963,
+        "input_file_ci95": [
+          0.20370935454927194,
+          0.21748129086225174
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21112118820874176,
+        "input_file_ci95": [
+          0.20369701029737258,
+          0.2174670896845061
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.5856539630319252e-05,
+        "input_file_ci95": [
+          1.252604876270325e-05,
+          1.8789530085560654e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03342564777080183,
+        "input_file_ci95": [
+          0.03224219119026932,
+          0.0348100575709391
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03340685325898635,
+        "input_file_ci95": [
+          0.032219362044326724,
+          0.03479336877693447
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix00_2": {
+      "nll": {
+        "point": 2.3992329266317154,
+        "input_file_ci95": [
+          1.9377951839938552,
+          2.853412498000667
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007190344098192565,
+        "input_file_ci95": [
+          0.005588938547602597,
+          0.00992172855527176
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007412875939287863,
+        "input_file_ci95": [
+          0.00570595032975773,
+          0.010195385478837474
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.959320068359375,
+        "input_file_ci95": [
+          0.9533191287878788,
+          0.9644731799893821
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05137614326557108,
+        "input_file_ci95": [
+          0.04045589876496065,
+          0.06857861064598716
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21139547329131292,
+        "input_file_ci95": [
+          0.2041260207366416,
+          0.21772991357411986
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21140542477334706,
+        "input_file_ci95": [
+          0.2041406215712455,
+          0.217748233370073
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.559765161038395e-05,
+        "input_file_ci95": [
+          1.1264264690907218e-05,
+          2.0515995151712313e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.033616282062001096,
+        "input_file_ci95": [
+          0.03239982794640056,
+          0.035050500465740306
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03361442062181668,
+        "input_file_ci95": [
+          0.03240185667172232,
+          0.03504064885043152
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix01_0": {
+      "nll": {
+        "point": 2.3990336897506577,
+        "input_file_ci95": [
+          1.9366459084983259,
+          2.8551579589121845
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007131488796427696,
+        "input_file_ci95": [
+          0.00533305285487295,
+          0.010110811726774825
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007211159626820432,
+        "input_file_ci95": [
+          0.0054007252777643275,
+          0.010193495379856005
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.9610595703125,
+        "input_file_ci95": [
+          0.9552985885908019,
+          0.9669254924420426
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05146507600719602,
+        "input_file_ci95": [
+          0.04028578082905067,
+          0.06884844537351265
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2104592118737607,
+        "input_file_ci95": [
+          0.20238707781743265,
+          0.2172891743740082
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21041283266290042,
+        "input_file_ci95": [
+          0.20232429929377496,
+          0.21725643862879082
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 2.3789356524027073e-05,
+        "input_file_ci95": [
+          1.7263661621870416e-05,
+          2.9857958572824445e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.032667456068137465,
+        "input_file_ci95": [
+          0.03170450709370367,
+          0.033481448379622004
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03262324884615685,
+        "input_file_ci95": [
+          0.0316690275713439,
+          0.03342473918352625
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix01_1": {
+      "nll": {
+        "point": 2.3997590814302794,
+        "input_file_ci95": [
+          1.9371245283723455,
+          2.8543680950105443
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007340355529319392,
+        "input_file_ci95": [
+          0.005449959493144615,
+          0.010395089065924023
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.0073791322152088916,
+        "input_file_ci95": [
+          0.005513815106851675,
+          0.010283407977493027
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961700439453125,
+        "input_file_ci95": [
+          0.9540587286205242,
+          0.9679361979166666
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.051112272351973104,
+        "input_file_ci95": [
+          0.04011344543642029,
+          0.06847315113779986
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2103925866784342,
+        "input_file_ci95": [
+          0.2022359222343056,
+          0.21731089002114076
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21035655371735096,
+        "input_file_ci95": [
+          0.20220104415741294,
+          0.2172734775737391
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.9516542424370036e-05,
+        "input_file_ci95": [
+          1.4666075706105274e-05,
+          2.4450757343868812e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03280789185610409,
+        "input_file_ci95": [
+          0.031721041160812855,
+          0.03361778575694098
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03276967855459785,
+        "input_file_ci95": [
+          0.0316817741621066,
+          0.03358290857029503
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix01_2": {
+      "nll": {
+        "point": 2.399140942994081,
+        "input_file_ci95": [
+          1.9369256380203637,
+          2.8540936803483334
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007142977169445019,
+        "input_file_ci95": [
+          0.005416088739650313,
+          0.009918299591945332
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007362363829308078,
+        "input_file_ci95": [
+          0.005520962160989142,
+          0.0105235158273952
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961212158203125,
+        "input_file_ci95": [
+          0.9546261349239865,
+          0.9671659419221699
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.0509034624735311,
+        "input_file_ci95": [
+          0.040083464668682685,
+          0.06718990930004673
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21062982041513367,
+        "input_file_ci95": [
+          0.20251575591382134,
+          0.21753368482517152
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2106262303067017,
+        "input_file_ci95": [
+          0.202506938086575,
+          0.21753163134314354
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.529890393282012e-05,
+        "input_file_ci95": [
+          1.162180729952185e-05,
+          1.936170998714461e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03290489238430065,
+        "input_file_ci95": [
+          0.03182843785444779,
+          0.03367985088184565
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03289350965083768,
+        "input_file_ci95": [
+          0.03181723009945506,
+          0.033668487326491546
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix02_0": {
+      "nll": {
+        "point": 2.3981888137487797,
+        "input_file_ci95": [
+          1.9358783531738837,
+          2.8547077340812184
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007509921746219441,
+        "input_file_ci95": [
+          0.005578769176015759,
+          0.010415725034713922
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007717140377305615,
+        "input_file_ci95": [
+          0.005671615955208921,
+          0.010774345505063749
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.9605712890625,
+        "input_file_ci95": [
+          0.9525382915296052,
+          0.9673642981571874
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05172311564543777,
+        "input_file_ci95": [
+          0.04057598241680575,
+          0.06978056033221172
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21011852776256779,
+        "input_file_ci95": [
+          0.20268098623156722,
+          0.21658682660495227
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21010697131202127,
+        "input_file_ci95": [
+          0.20266247002489393,
+          0.21657110215921616
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.4008818257577298e-05,
+        "input_file_ci95": [
+          1.043710571230622e-05,
+          1.801158832627959e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.032446826661389906,
+        "input_file_ci95": [
+          0.031139790121525675,
+          0.03387075825373185
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.032430382285968326,
+        "input_file_ci95": [
+          0.031121750291467323,
+          0.03385515467843937
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix02_1": {
+      "nll": {
+        "point": 2.3996059272327663,
+        "input_file_ci95": [
+          1.9378363933613636,
+          2.854722583499426
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007118372819832504,
+        "input_file_ci95": [
+          0.005402827525185458,
+          0.010025083658947725
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007317050211760562,
+        "input_file_ci95": [
+          0.005435975124329547,
+          0.010660466495688135
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.960845947265625,
+        "input_file_ci95": [
+          0.9553499210438829,
+          0.9656916721435437
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.050687523170399394,
+        "input_file_ci95": [
+          0.04023985042254209,
+          0.0674857885554505
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21019146800913707,
+        "input_file_ci95": [
+          0.2026754368087671,
+          0.21688319003705825
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21018398332570143,
+        "input_file_ci95": [
+          0.20266417607044748,
+          0.2168814668261523
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.4438803189024058e-05,
+        "input_file_ci95": [
+          1.0167015009140523e-05,
+          2.013041765637667e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03244812210931596,
+        "input_file_ci95": [
+          0.031127080083526333,
+          0.03381298058185333
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03244197973785017,
+        "input_file_ci95": [
+          0.031122327160625962,
+          0.03380614050195893
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix02_2": {
+      "nll": {
+        "point": 2.3994101893453914,
+        "input_file_ci95": [
+          1.9370002470758674,
+          2.8529751844125433
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006866352768491095,
+        "input_file_ci95": [
+          0.005374515088501521,
+          0.00924153787232587
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007023142031173987,
+        "input_file_ci95": [
+          0.005462072652033897,
+          0.009536842921268145
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.96185302734375,
+        "input_file_ci95": [
+          0.9561317635995371,
+          0.9665101686806895
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.050970373482176215,
+        "input_file_ci95": [
+          0.03984583900809306,
+          0.06781737506272557
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2100895974297292,
+        "input_file_ci95": [
+          0.20241660608940942,
+          0.21661061754525013
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2100895174103263,
+        "input_file_ci95": [
+          0.20241678145768524,
+          0.21660897041581406
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.2586622121839648e-05,
+        "input_file_ci95": [
+          9.57026033872737e-06,
+          1.63508854901245e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03240549676470764,
+        "input_file_ci95": [
+          0.031123153417147813,
+          0.033697179667581366
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03239893038886983,
+        "input_file_ci95": [
+          0.03112070277288276,
+          0.03368921635536866
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix03_0": {
+      "nll": {
+        "point": 2.3994595373671865,
+        "input_file_ci95": [
+          1.9377243229493375,
+          2.8549957544326556
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006849386900163917,
+        "input_file_ci95": [
+          0.005081595491649483,
+          0.009751737922385017
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.006918682853942086,
+        "input_file_ci95": [
+          0.005121163675033387,
+          0.009834847536812134
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.962249755859375,
+        "input_file_ci95": [
+          0.9554808407738096,
+          0.9683952386589105
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05102261651034645,
+        "input_file_ci95": [
+          0.03968607891604716,
+          0.06916931920173713
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2081681571312349,
+        "input_file_ci95": [
+          0.2008326071477025,
+          0.2147349163118746
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.20816685353881959,
+        "input_file_ci95": [
+          0.20082851088760725,
+          0.21473093262575887
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.2808577319346536e-05,
+        "input_file_ci95": [
+          9.70307906052185e-06,
+          1.5907373852972894e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.030454055725264745,
+        "input_file_ci95": [
+          0.028906051634890472,
+          0.03224439084701884
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03044624489683315,
+        "input_file_ci95": [
+          0.028899256239810957,
+          0.032237408372474755
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix03_1": {
+      "nll": {
+        "point": 2.3987813890285725,
+        "input_file_ci95": [
+          1.9355576954869256,
+          2.8544014473389816
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006938833201386414,
+        "input_file_ci95": [
+          0.005240775888193764,
+          0.009534258743593423
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007136129915275829,
+        "input_file_ci95": [
+          0.005282935840077145,
+          0.009831079187107211
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.9619140625,
+        "input_file_ci95": [
+          0.9565607733242754,
+          0.9668829697139395
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.0508998834796118,
+        "input_file_ci95": [
+          0.04018407238998775,
+          0.0676559476772645
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20840965997385735,
+        "input_file_ci95": [
+          0.20082040690386113,
+          0.21512085876602327
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2084025457600393,
+        "input_file_ci95": [
+          0.20081465107599883,
+          0.21511700523038144
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 9.980416996386959e-06,
+        "input_file_ci95": [
+          7.4258853082572405e-06,
+          1.276329261239043e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.030614686344764296,
+        "input_file_ci95": [
+          0.02904259189505787,
+          0.03232419397289997
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03060252783923279,
+        "input_file_ci95": [
+          0.0290324982663702,
+          0.03230828918792678
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix03_2": {
+      "nll": {
+        "point": 2.3981445753483674,
+        "input_file_ci95": [
+          1.9362189046832459,
+          2.8519499661064804
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006994258154933364,
+        "input_file_ci95": [
+          0.005208956302378292,
+          0.0100211183395802
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.0072160666304175594,
+        "input_file_ci95": [
+          0.00533103183204026,
+          0.010315909958148184
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.962799072265625,
+        "input_file_ci95": [
+          0.9561570413679464,
+          0.9676568764740566
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05077948643788224,
+        "input_file_ci95": [
+          0.04025780274195465,
+          0.06738567554526116
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2080017699765103,
+        "input_file_ci95": [
+          0.20046283190605563,
+          0.21474476385327268
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2079851006716748,
+        "input_file_ci95": [
+          0.20043646346772723,
+          0.2147291948275674
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.3157413454066637e-05,
+        "input_file_ci95": [
+          9.495594419540302e-06,
+          1.7949672227798495e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03041089919246763,
+        "input_file_ci95": [
+          0.028874126216445944,
+          0.03215875280481344
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.030396547599107045,
+        "input_file_ci95": [
+          0.028861816619198333,
+          0.03214296068420741
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix04_0": {
+      "nll": {
+        "point": 2.3998812242503806,
+        "input_file_ci95": [
+          1.9368729428814737,
+          2.8555442673481717
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007019421793826779,
+        "input_file_ci95": [
+          0.0052562808677112625,
+          0.009917409981762347
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.00715196317281655,
+        "input_file_ci95": [
+          0.005323990261403415,
+          0.010197622174990305
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961822509765625,
+        "input_file_ci95": [
+          0.9551309003334814,
+          0.9674484025186567
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05126641991433728,
+        "input_file_ci95": [
+          0.0400557136296465,
+          0.06887194783230143
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20940891851139687,
+        "input_file_ci95": [
+          0.2009066275860957,
+          0.21661079731692404
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2093726163099738,
+        "input_file_ci95": [
+          0.20086555039176204,
+          0.2165611699914922
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.892006729442078e-05,
+        "input_file_ci95": [
+          1.466081950262075e-05,
+          2.302800285791351e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.031814013813671965,
+        "input_file_ci95": [
+          0.030491571585550284,
+          0.03293340981426313
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03177759203354211,
+        "input_file_ci95": [
+          0.0304544041761192,
+          0.03289899109340202
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix04_1": {
+      "nll": {
+        "point": 2.3977762077300557,
+        "input_file_ci95": [
+          1.9352672671913675,
+          2.852824135355738
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007035339308893114,
+        "input_file_ci95": [
+          0.00536691550742461,
+          0.009691955120284519
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007180869941164186,
+        "input_file_ci95": [
+          0.005392110094930839,
+          0.010047220821092826
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961090087890625,
+        "input_file_ci95": [
+          0.9545697483155896,
+          0.9673933470861644
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05060190748595321,
+        "input_file_ci95": [
+          0.039880042997961086,
+          0.06681319429495845
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2097012686349119,
+        "input_file_ci95": [
+          0.20126318489035883,
+          0.21691397500636575
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.209698444716728,
+        "input_file_ci95": [
+          0.20126395812949469,
+          0.21690848388182074
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.4215678500102613e-05,
+        "input_file_ci95": [
+          1.081890019823694e-05,
+          1.8509108096781616e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.031943739209101006,
+        "input_file_ci95": [
+          0.030776209340356527,
+          0.03292058304136186
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03193368367597643,
+        "input_file_ci95": [
+          0.03076688290163068,
+          0.03290852564851688
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix04_2": {
+      "nll": {
+        "point": 2.398490187926342,
+        "input_file_ci95": [
+          1.93613128483154,
+          2.854222794420788
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007057507862538766,
+        "input_file_ci95": [
+          0.005307847373003217,
+          0.009985686078795127
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007183918059228861,
+        "input_file_ci95": [
+          0.005341676925700563,
+          0.010291046813746842
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961761474609375,
+        "input_file_ci95": [
+          0.954363375991138,
+          0.9679351857250207
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05105330742462487,
+        "input_file_ci95": [
+          0.03994237762827864,
+          0.06855148751135648
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20966803943511525,
+        "input_file_ci95": [
+          0.20135751890877845,
+          0.2167970257486954
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2096294157831245,
+        "input_file_ci95": [
+          0.2013148412740173,
+          0.21676323355298713
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.8705006433954546e-05,
+        "input_file_ci95": [
+          1.3442105849027352e-05,
+          2.362125159630701e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03191864838591939,
+        "input_file_ci95": [
+          0.030652665026141508,
+          0.033029025450934175
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.031880021464947034,
+        "input_file_ci95": [
+          0.030618362664674756,
+          0.032991616731758815
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix05_0": {
+      "nll": {
+        "point": 2.3997609109767883,
+        "input_file_ci95": [
+          1.9362967572850927,
+          2.8542995442786494
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007142237326310943,
+        "input_file_ci95": [
+          0.005451849670610365,
+          0.009955210678729577
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007319434929372219,
+        "input_file_ci95": [
+          0.005529070148896199,
+          0.010148709396513562
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.960296630859375,
+        "input_file_ci95": [
+          0.9528484186368209,
+          0.9659285585837596
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05081346696678665,
+        "input_file_ci95": [
+          0.04001904688204992,
+          0.0673942168485959
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21033283207859493,
+        "input_file_ci95": [
+          0.20229993315045983,
+          0.21730929029151816
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21029669735291073,
+        "input_file_ci95": [
+          0.20225175123695802,
+          0.21727632719064607
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 2.1319130182569752e-05,
+        "input_file_ci95": [
+          1.586231798471298e-05,
+          2.687816310757736e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03267434751707937,
+        "input_file_ci95": [
+          0.031850752210744536,
+          0.03337827978526025
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03263456776588685,
+        "input_file_ci95": [
+          0.031809418454268226,
+          0.033328762159592275
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix05_1": {
+      "nll": {
+        "point": 2.3985066461984683,
+        "input_file_ci95": [
+          1.9372690919353088,
+          2.8531885324761377
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007022641750079294,
+        "input_file_ci95": [
+          0.00540390775570944,
+          0.009680668747490734
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007223611027691588,
+        "input_file_ci95": [
+          0.005430168671916046,
+          0.010261751945428032
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.95953369140625,
+        "input_file_ci95": [
+          0.9524736120345745,
+          0.9656127958689713
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.050796120651272175,
+        "input_file_ci95": [
+          0.04026050845317044,
+          0.06705234090597563
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21040602815456394,
+        "input_file_ci95": [
+          0.2024472208294559,
+          0.21713875826870163
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.21040177583375475,
+        "input_file_ci95": [
+          0.20243977687424802,
+          0.2171363050381413
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.445976660925629e-05,
+        "input_file_ci95": [
+          1.1111225158809917e-05,
+          1.834243072847666e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.0326574986797685,
+        "input_file_ci95": [
+          0.03188199712475572,
+          0.03326664233604148
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03264608209186172,
+        "input_file_ci95": [
+          0.03187280363910964,
+          0.033254823611881895
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix05_2": {
+      "nll": {
+        "point": 2.3985466535803703,
+        "input_file_ci95": [
+          1.9358573401648942,
+          2.8545559083431487
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006954320908592448,
+        "input_file_ci95": [
+          0.005366751695627077,
+          0.00947661941199708
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.006987369270530089,
+        "input_file_ci95": [
+          0.005436036891937019,
+          0.009474781528495013
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.962493896484375,
+        "input_file_ci95": [
+          0.9569132837223101,
+          0.9678681316201252
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05118839903095608,
+        "input_file_ci95": [
+          0.039940610771785026,
+          0.06859669504046322
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21016485178512412,
+        "input_file_ci95": [
+          0.20215086071443622,
+          0.21712005126762582
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2101191947634925,
+        "input_file_ci95": [
+          0.20210495431878983,
+          0.21707901120257136
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 2.304304868078714e-05,
+        "input_file_ci95": [
+          1.6735084735293684e-05,
+          2.895450877694616e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03247109724478217,
+        "input_file_ci95": [
+          0.03170326550083652,
+          0.03316919033346377
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.032427838457048705,
+        "input_file_ci95": [
+          0.031661233252443355,
+          0.0331170387988582
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix06_0": {
+      "nll": {
+        "point": 2.3982626935317444,
+        "input_file_ci95": [
+          1.9361575655874692,
+          2.8554334270153388
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006800087959082373,
+        "input_file_ci95": [
+          0.005114333868779843,
+          0.009802617048402504
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.00686242087600754,
+        "input_file_ci95": [
+          0.005162144912314128,
+          0.009876888757221933
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.96240234375,
+        "input_file_ci95": [
+          0.95647705078125,
+          0.9679298502604167
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.050923244769529225,
+        "input_file_ci95": [
+          0.03964743184436742,
+          0.06836516005314364
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20902717333248771,
+        "input_file_ci95": [
+          0.20096615693937603,
+          0.21582548814225952
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.20900014133963063,
+        "input_file_ci95": [
+          0.20093331594872305,
+          0.21580202568936033
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.4673301645893505e-05,
+        "input_file_ci95": [
+          1.1115049671179333e-05,
+          1.8255327101900837e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03131227032248207,
+        "input_file_ci95": [
+          0.030343159164663357,
+          0.032064609482875706
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.031281806131418434,
+        "input_file_ci95": [
+          0.030316124966540053,
+          0.03203482687038671
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix06_1": {
+      "nll": {
+        "point": 2.3995707431754973,
+        "input_file_ci95": [
+          1.9366942307740567,
+          2.8546525260666824
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006923652120953922,
+        "input_file_ci95": [
+          0.0051400901399395495,
+          0.009951446725451023
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007131529188141694,
+        "input_file_ci95": [
+          0.005234292911927128,
+          0.010373520564115052
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.96282958984375,
+        "input_file_ci95": [
+          0.9554314373353097,
+          0.9682449536253078
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05079615938117751,
+        "input_file_ci95": [
+          0.039829534511980576,
+          0.06821550427187224
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20896387754413104,
+        "input_file_ci95": [
+          0.20110999075189226,
+          0.2157889044775758
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.20892794014560234,
+        "input_file_ci95": [
+          0.20107539162012703,
+          0.21575813008101272
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.7802948264994573e-05,
+        "input_file_ci95": [
+          1.392357027522842e-05,
+          2.166968561892405e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.031315369744465256,
+        "input_file_ci95": [
+          0.03034660508314026,
+          0.03214048781078209
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.0312793254299089,
+        "input_file_ci95": [
+          0.030305441712780372,
+          0.03211240281173596
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix06_2": {
+      "nll": {
+        "point": 2.399349491965232,
+        "input_file_ci95": [
+          1.9376189237086852,
+          2.8538455819153237
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006865698192511287,
+        "input_file_ci95": [
+          0.005212121226563961,
+          0.009700062238808519
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.006888819184430175,
+        "input_file_ci95": [
+          0.00528972850181943,
+          0.009544128905875075
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.961822509765625,
+        "input_file_ci95": [
+          0.9556881072741596,
+          0.9666505315900511
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.050927147720066124,
+        "input_file_ci95": [
+          0.040287053204523096,
+          0.06752106298618984
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.20922970356938164,
+        "input_file_ci95": [
+          0.2012208857992022,
+          0.21598406510423654
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2092213576253954,
+        "input_file_ci95": [
+          0.20120690672572095,
+          0.21597788806023638
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.393678418929696e-05,
+        "input_file_ci95": [
+          1.0101613186784716e-05,
+          1.8574598652033933e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.031491201449458495,
+        "input_file_ci95": [
+          0.03051784425279507,
+          0.03234217458514165
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.031479127913940363,
+        "input_file_ci95": [
+          0.030507752675895363,
+          0.0323271091111961
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix07_0": {
+      "nll": {
+        "point": 2.3989427206322027,
+        "input_file_ci95": [
+          1.9362364511328818,
+          2.8546813836801443
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007324531155565328,
+        "input_file_ci95": [
+          0.005327748073357882,
+          0.01061821228454365
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007472173347958978,
+        "input_file_ci95": [
+          0.005390534633973767,
+          0.010852860618585255
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.9609375,
+        "input_file_ci95": [
+          0.9545407284007353,
+          0.9662841184993735
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05090413269503233,
+        "input_file_ci95": [
+          0.04012929601980292,
+          0.06768816270000913
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.2100552761549374,
+        "input_file_ci95": [
+          0.20196848111997787,
+          0.21685938165696883
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2100213853194961,
+        "input_file_ci95": [
+          0.20192334257560945,
+          0.2168375161163638
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.8672696650774326e-05,
+        "input_file_ci95": [
+          1.473471075835785e-05,
+          2.242442738966601e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03234348373716735,
+        "input_file_ci95": [
+          0.03136509368720716,
+          0.03316819944819452
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03230655037766601,
+        "input_file_ci95": [
+          0.031336508300281125,
+          0.03313080748933738
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix07_1": {
+      "nll": {
+        "point": 2.3994321516561303,
+        "input_file_ci95": [
+          1.9372723868800055,
+          2.8553055438477504
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.006936696929812581,
+        "input_file_ci95": [
+          0.005236002941673038,
+          0.009797689676187493
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.006985300891930887,
+        "input_file_ci95": [
+          0.005260199380047331,
+          0.009857585920135
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.96148681640625,
+        "input_file_ci95": [
+          0.9551063833449618,
+          0.9668664051078216
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.051025798774576775,
+        "input_file_ci95": [
+          0.03996291292973328,
+          0.0683840830470644
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21000446309856718,
+        "input_file_ci95": [
+          0.20195511132437552,
+          0.2169147558380456
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.20998824223419488,
+        "input_file_ci95": [
+          0.20193384529490396,
+          0.2169031560950296
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 2.1498614975383778e-05,
+        "input_file_ci95": [
+          1.5144842623797032e-05,
+          2.7601427733930623e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03230980044650361,
+        "input_file_ci95": [
+          0.03134327678557762,
+          0.033107059341724795
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03229640533995329,
+        "input_file_ci95": [
+          0.03133182527928139,
+          0.03309150165590777
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    },
+    "mix07_2": {
+      "nll": {
+        "point": 2.39894876992003,
+        "input_file_ci95": [
+          1.9361369636735721,
+          2.855239007484959
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_to_variant_kl": {
+        "point": 0.007194559266748208,
+        "input_file_ci95": [
+          0.005466655419050064,
+          0.0102596511937002
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "variant_to_ref_kl": {
+        "point": 0.007259138012590684,
+        "input_file_ci95": [
+          0.005546765150052763,
+          0.010205329005215147
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "ref_top1_agreement": {
+        "point": 0.9622802734375,
+        "input_file_ci95": [
+          0.9550150774527287,
+          0.9692733962814529
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "teacher_to_variant_kl": {
+        "point": 0.05154887308402815,
+        "input_file_ci95": [
+          0.039971348200873044,
+          0.06962491798662969
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_teacher_sse": {
+        "point": 0.21012908586519408,
+        "input_file_ci95": [
+          0.20202085644678364,
+          0.21698506200929873
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_teacher_sse": {
+        "point": 0.2101415844790106,
+        "input_file_ci95": [
+          0.2020341781797686,
+          0.2169911408172705
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_sum64_floor_sse": {
+        "point": 1.3562848838241084e-05,
+        "input_file_ci95": [
+          1.0590576885456573e-05,
+          1.702638321634482e-05
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "native_mu_sse": {
+        "point": 0.03243554632209246,
+        "input_file_ci95": [
+          0.0314389175508568,
+          0.0332232501369812
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      },
+      "sum64_mu_sse": {
+        "point": 0.03243907667972157,
+        "input_file_ci95": [
+          0.03143810238402301,
+          0.03322825499611009
+        ],
+        "file_clusters": 22,
+        "sequences": 64,
+        "bootstrap_seed": 144001
+      }
+    }
+  },
+  "effects": {
+    "delta_nll": {
+      "point": 0.002061026487580068,
+      "input_file_ci95": [
+        0.0017984450240063807,
+        0.00245819290859918
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001,
+      "source_base_points": [
+        0.00222262608555354,
+        0.0023495337562411678,
+        0.0021066058068808574,
+        0.0018334629459439821,
+        0.0017541690001611722,
+        0.00197636594977734,
+        0.0020992719220597218,
+        0.002146176434022761
+      ],
+      "source_mc_se": 6.985388638962932e-05,
+      "crossed_file_source_ci95": [
+        0.0017590895747765642,
+        0.002516992535311059
+      ],
+      "crossed_bootstrap_seed": 144002,
+      "scope": "Conditional on these three trained students; MC units are source assignments, not training seeds.",
+      "by_source": {
+        "C4": {
+          "point": 0.0024754858706349746,
+          "input_file_ci95": [
+            0.0023413199142510166,
+            0.0025649298415576136
+          ],
+          "file_clusters": 2,
+          "sequences": 5,
+          "bootstrap_seed": 144001
+        },
+        "Dolma CC": {
+          "point": 0.0023160382677731212,
+          "input_file_ci95": [
+            0.0015257529488891509,
+            0.003438247425995778
+          ],
+          "file_clusters": 6,
+          "sequences": 17,
+          "bootstrap_seed": 144001
+        },
+        "Flan": {
+          "point": 0.002715818400963521,
+          "input_file_ci95": [
+            0.002715818400963521,
+            0.002715818400963521
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "MegaWika": {
+          "point": 0.0022920251471241493,
+          "input_file_ci95": [
+            0.0022920251471241493,
+            0.0022920251471241493
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "OpenWebMath": {
+          "point": 0.002435662795345739,
+          "input_file_ci95": [
+            0.002435662795345739,
+            0.002435662795345739
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Project Gutenberg": {
+          "point": 0.0027703951771692603,
+          "input_file_ci95": [
+            0.0027703951771692603,
+            0.0027703951771692603
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Reddit": {
+          "point": 0.002002519518735424,
+          "input_file_ci95": [
+            0.001507571220014825,
+            0.0024974678174560228
+          ],
+          "file_clusters": 2,
+          "sequences": 2,
+          "bootstrap_seed": 144001
+        },
+        "Refined Web": {
+          "point": 0.001762135726728808,
+          "input_file_ci95": [
+            0.00151304285044207,
+            0.001961410027758198
+          ],
+          "file_clusters": 2,
+          "sequences": 18,
+          "bootstrap_seed": 144001
+        },
+        "Semantic Scholar": {
+          "point": 0.0019780305341901977,
+          "input_file_ci95": [
+            0.0011774430571907524,
+            0.002244893026523346
+          ],
+          "file_clusters": 2,
+          "sequences": 4,
+          "bootstrap_seed": 144001
+        },
+        "StackExchange": {
+          "point": 0.0018897539484280523,
+          "input_file_ci95": [
+            0.0018897539484280523,
+            0.0018897539484280523
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "StarCoder": {
+          "point": 0.001944834378869795,
+          "input_file_ci95": [
+            0.0017800420411707373,
+            0.002062543191511979
+          ],
+          "file_clusters": 2,
+          "sequences": 12,
+          "bootstrap_seed": 144001
+        },
+        "Wikipedia & Wikibooks": {
+          "point": 0.0010783430289879603,
+          "input_file_ci95": [
+            0.0010783430289879603,
+            0.0010783430289879603
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        }
+      }
+    },
+    "delta_mu_to_variant_kl": {
+      "point": 0.00244077421947121,
+      "input_file_ci95": [
+        0.0021349478653586995,
+        0.002819422359733541
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001,
+      "source_base_points": [
+        0.0025792607766346913,
+        0.0025702813210769443,
+        0.002530223267527255,
+        0.002292833574840807,
+        0.002402763811099129,
+        0.0024050741510071375,
+        0.0022284869135287696,
+        0.002517269940054947
+      ],
+      "source_mc_se": 4.61896254542813e-05,
+      "crossed_file_source_ci95": [
+        0.0021230764659232793,
+        0.0028197032808013637
+      ],
+      "crossed_bootstrap_seed": 144002,
+      "scope": "Conditional on these three trained students; MC units are source assignments, not training seeds.",
+      "by_source": {
+        "C4": {
+          "point": 0.0020308705065761787,
+          "input_file_ci95": [
+            0.0018196717462736864,
+            0.0021716696801111733
+          ],
+          "file_clusters": 2,
+          "sequences": 5,
+          "bootstrap_seed": 144001
+        },
+        "Dolma CC": {
+          "point": 0.0028867848424648495,
+          "input_file_ci95": [
+            0.0021660482459421987,
+            0.003923699097931426
+          ],
+          "file_clusters": 6,
+          "sequences": 17,
+          "bootstrap_seed": 144001
+        },
+        "Flan": {
+          "point": 0.0032577881189837787,
+          "input_file_ci95": [
+            0.0032577881189837787,
+            0.0032577881189837787
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "MegaWika": {
+          "point": 0.0018073052786676076,
+          "input_file_ci95": [
+            0.0018073052786676076,
+            0.0018073052786676076
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "OpenWebMath": {
+          "point": 0.0018838893533262503,
+          "input_file_ci95": [
+            0.0018838893533262503,
+            0.0018838893533262503
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Project Gutenberg": {
+          "point": 0.003045204595082099,
+          "input_file_ci95": [
+            0.003045204595082099,
+            0.003045204595082099
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Reddit": {
+          "point": 0.0021269062020757867,
+          "input_file_ci95": [
+            0.0019419874823387627,
+            0.0023118249218128106
+          ],
+          "file_clusters": 2,
+          "sequences": 2,
+          "bootstrap_seed": 144001
+        },
+        "Refined Web": {
+          "point": 0.002386431472132222,
+          "input_file_ci95": [
+            0.0021605437811129838,
+            0.0025671416249476125
+          ],
+          "file_clusters": 2,
+          "sequences": 18,
+          "bootstrap_seed": 144001
+        },
+        "Semantic Scholar": {
+          "point": 0.0018601264614125329,
+          "input_file_ci95": [
+            0.0016877662589904667,
+            0.002377207068678731
+          ],
+          "file_clusters": 2,
+          "sequences": 4,
+          "bootstrap_seed": 144001
+        },
+        "StackExchange": {
+          "point": 0.0018377072400632966,
+          "input_file_ci95": [
+            0.0018377072400632966,
+            0.0018377072400632966
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "StarCoder": {
+          "point": 0.002278934819842203,
+          "input_file_ci95": [
+            0.00177936163128736,
+            0.00263577281166709
+          ],
+          "file_clusters": 2,
+          "sequences": 12,
+          "bootstrap_seed": 144001
+        },
+        "Wikipedia & Wikibooks": {
+          "point": 0.003150658018962952,
+          "input_file_ci95": [
+            0.003150658018962952,
+            0.003150658018962952
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        }
+      }
+    },
+    "delta_native_teacher_sse": {
+      "point": 0.015261958142466002,
+      "input_file_ci95": [
+        0.01458566447564465,
+        0.015808443867642036
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001,
+      "source_base_points": [
+        0.016528745033562577,
+        0.0158818940797631,
+        0.015521218824464944,
+        0.013581216784521098,
+        0.014980763284461587,
+        0.015689258430081232,
+        0.014461605905987013,
+        0.015450962796886462
+      ],
+      "source_mc_se": 0.00032235516551560716,
+      "crossed_file_source_ci95": [
+        0.014332208708621102,
+        0.016112845653882556
+      ],
+      "crossed_bootstrap_seed": 144002,
+      "scope": "Conditional on these three trained students; MC units are source assignments, not training seeds.",
+      "by_source": {
+        "C4": {
+          "point": 0.015964898106271767,
+          "input_file_ci95": [
+            0.015864778216333336,
+            0.016031644699564054
+          ],
+          "file_clusters": 2,
+          "sequences": 5,
+          "bootstrap_seed": 144001
+        },
+        "Dolma CC": {
+          "point": 0.014817951724256448,
+          "input_file_ci95": [
+            0.013934769647647147,
+            0.0163304461454439
+          ],
+          "file_clusters": 6,
+          "sequences": 17,
+          "bootstrap_seed": 144001
+        },
+        "Flan": {
+          "point": 0.014139207489634084,
+          "input_file_ci95": [
+            0.014139207489634084,
+            0.014139207489634084
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "MegaWika": {
+          "point": 0.011988686479320373,
+          "input_file_ci95": [
+            0.011988686479320373,
+            0.011988686479320373
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "OpenWebMath": {
+          "point": 0.01298741944242798,
+          "input_file_ci95": [
+            0.01298741944242798,
+            0.01298741944242798
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Project Gutenberg": {
+          "point": 0.014257648432936691,
+          "input_file_ci95": [
+            0.014257648432936691,
+            0.014257648432936691
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Reddit": {
+          "point": 0.01878924491292084,
+          "input_file_ci95": [
+            0.01813228844979229,
+            0.01944620137604939
+          ],
+          "file_clusters": 2,
+          "sequences": 2,
+          "bootstrap_seed": 144001
+        },
+        "Refined Web": {
+          "point": 0.015730695613979558,
+          "input_file_ci95": [
+            0.015308515213721056,
+            0.01606843993418635
+          ],
+          "file_clusters": 2,
+          "sequences": 18,
+          "bootstrap_seed": 144001
+        },
+        "Semantic Scholar": {
+          "point": 0.013058397374324703,
+          "input_file_ci95": [
+            0.012681895574488318,
+            0.014187902773833853
+          ],
+          "file_clusters": 2,
+          "sequences": 4,
+          "bootstrap_seed": 144001
+        },
+        "StackExchange": {
+          "point": 0.015167781974499209,
+          "input_file_ci95": [
+            0.015167781974499209,
+            0.015167781974499209
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "StarCoder": {
+          "point": 0.015480920511750445,
+          "input_file_ci95": [
+            0.014264867473046425,
+            0.016349529825110464
+          ],
+          "file_clusters": 2,
+          "sequences": 12,
+          "bootstrap_seed": 144001
+        },
+        "Wikipedia & Wikibooks": {
+          "point": 0.017759260939509514,
+          "input_file_ci95": [
+            0.017759260939509514,
+            0.017759260939509514
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        }
+      }
+    },
+    "delta_sum64_teacher_sse": {
+      "point": 0.01524626981131141,
+      "input_file_ci95": [
+        0.014571006544955484,
+        0.015789798155572146
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001,
+      "source_base_points": [
+        0.0165259431691594,
+        0.015854884674467485,
+        0.015516503128166133,
+        0.013574512435661015,
+        0.014956504715425215,
+        0.01566223509553578,
+        0.014439492149025918,
+        0.015440083123050327
+      ],
+      "source_mc_se": 0.0003224133174664406,
+      "crossed_file_source_ci95": [
+        0.0143202360392062,
+        0.01609624517141421
+      ],
+      "crossed_bootstrap_seed": 144002,
+      "scope": "Conditional on these three trained students; MC units are source assignments, not training seeds.",
+      "by_source": {
+        "C4": {
+          "point": 0.01595129174814528,
+          "input_file_ci95": [
+            0.015846385772594097,
+            0.0160212290651794
+          ],
+          "file_clusters": 2,
+          "sequences": 5,
+          "bootstrap_seed": 144001
+        },
+        "Dolma CC": {
+          "point": 0.014803704461516331,
+          "input_file_ci95": [
+            0.0139223565683721,
+            0.016293153232104965
+          ],
+          "file_clusters": 6,
+          "sequences": 17,
+          "bootstrap_seed": 144001
+        },
+        "Flan": {
+          "point": 0.01408925023532143,
+          "input_file_ci95": [
+            0.01408925023532143,
+            0.01408925023532143
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "MegaWika": {
+          "point": 0.011987724011267818,
+          "input_file_ci95": [
+            0.011987724011267818,
+            0.011987724011267818
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "OpenWebMath": {
+          "point": 0.012986346720713134,
+          "input_file_ci95": [
+            0.012986346720713134,
+            0.012986346720713134
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Project Gutenberg": {
+          "point": 0.014258445020790388,
+          "input_file_ci95": [
+            0.014258445020790388,
+            0.014258445020790388
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "Reddit": {
+          "point": 0.018735671363967178,
+          "input_file_ci95": [
+            0.018078683168633237,
+            0.01939265955930112
+          ],
+          "file_clusters": 2,
+          "sequences": 2,
+          "bootstrap_seed": 144001
+        },
+        "Refined Web": {
+          "point": 0.015709506052268816,
+          "input_file_ci95": [
+            0.01528671128788408,
+            0.016047741863776603
+          ],
+          "file_clusters": 2,
+          "sequences": 18,
+          "bootstrap_seed": 144001
+        },
+        "Semantic Scholar": {
+          "point": 0.01305298212759044,
+          "input_file_ci95": [
+            0.01267398008956562,
+            0.014189988241664894
+          ],
+          "file_clusters": 2,
+          "sequences": 4,
+          "bootstrap_seed": 144001
+        },
+        "StackExchange": {
+          "point": 0.015169112098764106,
+          "input_file_ci95": [
+            0.015169112098764106,
+            0.015169112098764106
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        },
+        "StarCoder": {
+          "point": 0.01547253942899173,
+          "input_file_ci95": [
+            0.014248517847315623,
+            0.01634684055876038
+          ],
+          "file_clusters": 2,
+          "sequences": 12,
+          "bootstrap_seed": 144001
+        },
+        "Wikipedia & Wikibooks": {
+          "point": 0.017726101923533685,
+          "input_file_ci95": [
+            0.017726101923533685,
+            0.017726101923533685
+          ],
+          "file_clusters": 1,
+          "sequences": 1,
+          "bootstrap_seed": 144001
+        }
+      }
+    }
+  },
+  "moments": {
+    "C": {
+      "point": 0.03227240058517629,
+      "input_file_ci95": [
+        0.03128683490429812,
+        0.03319031001710735
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001
+    },
+    "V": {
+      "point": 0.016907261009396643,
+      "input_file_ci95": [
+        0.015998830994175622,
+        0.01775229921068935
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001
+    },
+    "C_minus_V": {
+      "point": 0.015365139575779648,
+      "input_file_ci95": [
+        0.01455229292283741,
+        0.016109876179322438
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001
+    }
+  },
+  "arithmetic": {
+    "finite_MC_delta_minus_expected_C_minus_V": {
+      "point": -0.00011886976446823686,
+      "input_file_ci95": [
+        -0.000493122431758642,
+        0.00016984918564201824
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 144001,
+      "source_base_points": [
+        0.0011608035933797522,
+        0.0004897450986878395,
+        0.00015136355238648717,
+        -0.0017906271401186323,
+        -0.0004086348603544302,
+        0.00029709551975613477,
+        -0.0009256474267537268,
+        7.494354727068074e-05
+      ],
+      "source_mc_se": 0.0003224133174664405,
+      "crossed_file_source_ci95": [
+        -0.000867076607656141,
+        0.0005701439304338602
+      ],
+      "crossed_bootstrap_seed": 144002,
+      "scope": "Conditional on these three trained students; MC units are source assignments, not training seeds."
+    },
+    "batch_floors": [
+      {
+        "balanced_sum64_mean_max_abs": 7.105427357601002e-15,
+        "component_selected_native_max_abs": 0.0,
+        "mu_cast_sse_per_position": 2.72129574158382e-06
+      },
+      {
+        "balanced_sum64_mean_max_abs": 7.105427357601002e-15,
+        "component_selected_native_max_abs": 0.0,
+        "mu_cast_sse_per_position": 2.9687283186549755e-06
+      },
+      {
+        "balanced_sum64_mean_max_abs": 3.552713678800501e-15,
+        "component_selected_native_max_abs": 0.0,
+        "mu_cast_sse_per_position": 5.262753483162131e-06
+      },
+      {
+        "balanced_sum64_mean_max_abs": 7.105427357601002e-15,
+        "component_selected_native_max_abs": 0.0,
+        "mu_cast_sse_per_position": 2.604677113376081e-06
+      }
+    ],
+    "note": "C-V predicts infinite independent-source squared-risk difference; 24 cyclic maps have exact first but finite second moments."
+  },
+  "native_average_nll": {
+    "point": 2.3969617043020985,
+    "input_file_ci95": [
+      1.9344924704723354,
+      2.8521960899413776
+    ],
+    "file_clusters": 22,
+    "sequences": 64,
+    "bootstrap_seed": 144001
+  },
+  "mixed_average_nll": {
+    "point": 2.399022730789678,
+    "input_file_ci95": [
+      1.9366339123271243,
+      2.8543976348289983
+    ],
+    "file_clusters": 22,
+    "sequences": 64,
+    "bootstrap_seed": 144001
+  },
+  "native_average_mu_kl": {
+    "point": 0.004634659177320425,
+    "input_file_ci95": [
+      0.0032130722594928963,
+      0.007166849194696885
+    ],
+    "file_clusters": 22,
+    "sequences": 64,
+    "bootstrap_seed": 144001
+  },
+  "mixed_average_mu_kl": {
+    "point": 0.007075433396791635,
+    "input_file_ci95": [
+      0.0053930447040611085,
+      0.009905848766142807
+    ],
+    "file_clusters": 22,
+    "sequences": 64,
+    "bootstrap_seed": 144001
+  },
+  "analysis_sha256": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f"
+}

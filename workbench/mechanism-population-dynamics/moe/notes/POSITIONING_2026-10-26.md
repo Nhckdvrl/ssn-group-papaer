@@ -8,7 +8,7 @@
 |---|---|---|
 | [ERC，ICLR 2026 官方摘要](https://proceedings.iclr.cc/paper_files/paper/2026/hash/79ff18412c1a5816f071a796375abc3d-Abstract-Conference.html)，只核对摘要 | router 表征与专家激活耦合的训练方法已有直接工作；高风险于泛称“让路由匹配能力” | 本轮不提出耦合损失；区分配对历史终点的 bank/gate 兼容性，不能据摘要断言它没有相关消融 |
 | [PASs-MoE](https://arxiv.org/abs/2601.13020)，只核对原摘要 | 持续学习里 router/expert co-drift 与保留已有研究；高风险于一般“共同漂移破坏分工”叙事 | 对象为多模态 MoE-LoRA 的连续任务；本轮是同一总函数目标/接口的重复学习与交叉使用，不观测时间轨迹 |
-| [The Router Already Knows](https://arxiv.org/html/2610.27421v1)，10-20 预印本，读 §1–3 与限制 | 原生 expert identity 帮助分量重构已有直接结果；不能认领专家身份有重构价值 | 其明确未检验下游损失/因果忠实度；E144直接重跑下游，且问跨学生拆散来源，不是 SAE 效率或语义解释 |
+| [The Router Already Knows](https://arxiv.org/html/2610.27421v1)，10-20 预印本，读 §1–2 与摘要限制 | 原生 expert identity 帮助分量重构已有直接结果；不能认领专家身份有重构价值 | 其明确未检验下游损失/因果忠实度；E144直接重跑下游，且问跨学生拆散来源，不是 SAE 效率或语义解释 |
 | [MoRE](https://arxiv.org/abs/2609.18176)，只核对原摘要 | 跨层专家池复用属于成熟可用研究动作 | 不是不同训练来源的重组；仅作更大研究空间参照，不当最近的同主张先例 |
 
 本轮重读 [Routers Learn the Geometry](https://arxiv.org/html/2605.12476v1) §2–3 后发现接口适用限制：其掩码先于激活的叙述不能直接用于 OLMoE 的完整 softmax 后截断/不重归一。具体梯度和 CPU 核对在[方向文档](../RESEARCH_DIRECTION.md) §4.1；这是推导适配，不是以论文差异认领新机制。
@@ -62,3 +62,9 @@
 - 再读 [Routers Learn the Geometry of Their Experts](https://arxiv.org/html/2605.12476) v1的引言/§2–3：已拥有matched router/expert梯度沿输入方向累计历史、aux改变几何耦合及centroid routing的叙事。不能把一般“路由与内容共同演化/初态影响训练”当首创；本题增量只可能来自配对初态/固定原生函数需求下的跨训练功能分解、选择与维持的控制。
 - [LibMoE OpenReview](https://openreview.net/pdf?id=PB2ju8tq0n)在primary检索摘要中声称分析轻量router初始化对early utilization/load balancing与训练regime稳定性的影响；正文受浏览器403未读，不据摘要断言是否有跨seed职责证据。其完整定位待可读正文，当前仅记录近邻与compression risk，不作精确撞车/去留判决。
 - Drop-Upcycling/UpIT等已有专家或路由初始化/上采样方法，搜索命中不代表本轮已读全文；本项目不认领初始化方法创新。E142一个共同随机gate的结果也不自动推广所有gate、所有自然预训练或数学可识别性。
+
+## E144–E147结果后的增量边界
+
+本轮实际确认：固定gate拆散学生来源有真实预测代价，共同接收者下历史相关兼容性仍不同，保留特定组能优于随机同大小分组。但强gate-only组取得与Γ组相近收益，未检出Γ额外优势。因而不认领协方差聚类、共激活图、一般co-adaptation或天然语义模块发现；已有router–expert耦合、专家聚类/合并、可组合接口工作的ownership仍成立。
+
+较具体的候选增量是把配对训练历史、同接口内的合法重组和完整预测后果接起来，并用较简单的gate结构竞争解释约束其边界。当前仍是单teacher层的受控pilot；需要自由gate/原生学习的前瞻证据才可能超出局部窗口，不因这项竞争解释吸收了一部分故事而自动关线。

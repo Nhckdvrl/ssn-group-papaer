@@ -61,3 +61,20 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 - [E145](experiments/E145-history-gate-bank-cross.md)：E135 seed1 共同接收者、E139 seed0/2、E142 seed0/2，以及既有 final Hcal→seed1 对应。R/S 共享的 seed1 只是一份模型，不能按两份独立模型计算资产或重复数。
 - 原训练归档包含 initial 与最终 checkpoint；九次 evaluation 是标量日志，不是九份中间参数快照。首轮只读推理不依赖整份约 71.7GB 训练 H/Y cache；缺少派生 H 时可由固定 prefix 重放有来源与哈希的 token。
 - 本轮只核对仓库清单与脚本，未访问计算节点验证资产可读性。新 driver、E144 selected/source maps、E145 交叉配置、E146 分组及新结果尚不存在；不能把设计文档当执行完成证明。执行端按 manifest 核验来源，再登记自己的实际资源和恢复动作。
+
+## E144–E147：本轮实际核验与新读数（2026-10-26）
+
+- **实际访问，不是旧清单推断：** fvcrc20核验了8份唯一step4096终点的文件/tensor/gate SHA、原cache identity；F0/F1/F2与A/R0/R2/S0/S2的耐久来源仍为上表E135/E136/E138/E139/E142。公共OLMoE分片/config/tokenizer逐文件SHA复核，冻结prefix/teacher加载前后检查通过。机器可读证明见`results/e144/asset_preflight.json`。
+- **临时只读权重提取：** fvcrc20 `/tmp/xiang-moe-20261026/e144145/sources/{F0,F1,F2,A,R0,R2,S0,S2}.pt`，共约12.9GB，保留原FP32学生参数。可以从原耐久checkpoint重新提取；不依赖这份NVMe作为唯一备份。
+- **环境：** `~/.venvs/mechpop/bin/python`，torch2.8.0+cu128、transformers4.57.6；未新建环境或下载模型。CUDA visibility必须在库导入前设置，driver同时核对物理UUID。
+
+| 新实验 | 耐久raw（均已实际生成） | 追溯入口 |
+|---|---|---|
+| E144 | `~/mechpop_cache/e144_prediction_recombination/batch00–03.npz` | `results/e144/manifest.json`：24来源+3学生+μ/teacher/zero的逐token读数、层风险与C/V |
+| E145 | `~/mechpop_cache/e145_history_cross/batch00–03.npz` | `results/e145/manifest.json`：14变体、双向KL、四格/共同gate/支持外调用 |
+| E146 | `~/mechpop_cache/e146_grouped_recombination/` | `results/e146/manifest.json`：4×12组装，`cal_gamma.npy`/`held_gamma.npy`完整64×64矩阵；定组轨迹在Git摘要 |
+| E147 | `~/mechpop_cache/e147_gate_group_control/` | `results/e147/manifest.json`：gate-only的12组装和`training_gate_affinity.npy`；强对照原始来源保留 |
+
+以上NFS路径可在授权SSH节点直接读取；需取回时使用如`scp -r fvcrc20:/home/xiang/mechpop_cache/e147_gate_group_control <本地目录>`。逐文件SHA及全批次封存见`results/execution_2026-10-26_artifacts.json`。四项raw和全部source proof足以重算统计；大数组不入Git。Git包含源码、冻结输入/来源/组、结果摘要与PNG/PDF。
+
+本轮只重放既有token/prefix与所需MoE块，未重建约71.7GB训练H/Y cache，未训练新模型。E144/E145预算包含两轮预检，首次CUDA物理卡放置问题及旧对照在`results/e145/device_visibility_audit.json`中保留；新held在修复后完成，无丢弃条件。

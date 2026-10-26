@@ -1,0 +1,55 @@
+{
+  "experiment": "e144",
+  "status": "complete",
+  "source_sha256": {
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e144145_run.py": "e52275aec98269e9f8fc9b0476027dd251f65234f8ca91dbeb1792e24087a566",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e144145_test.py": "b43a997114e4d95d72feaab8a083da36b134a055dcc2e75511e3c4a79670586d",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80"
+  },
+  "asset_preflight_sha256": "8da0bea1754fca6f2dcfbdbecc0c21b603912973187b79e11c0a315825ab2eac",
+  "selected_sha256": "da306f44b142591dea3aa46b84419815755e493599bf5bdab82cf890e7d04066",
+  "source_maps_sha256": "c0cf85d6b6bfaa10744a613e920b7f04345edff8aeb66ce2b6c0a67fabfb24c1",
+  "host": "fvcrc20",
+  "physical_gpu": 0,
+  "batch_size": 16,
+  "seq_len": 512,
+  "planned_batches": 4,
+  "raw_batches": [
+    {
+      "path": "/home/xiang/mechpop_cache/e144_prediction_recombination/batch00.npz",
+      "sha256": "5de4a868127c16b6d4e07e198e898ab70ae8afa88239b6613d39b5dbb9a65ecc",
+      "size_bytes": 14846639,
+      "batch": 0,
+      "forward_seconds": 25.79058999195695
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/e144_prediction_recombination/batch01.npz",
+      "sha256": "c877ef103d1d971ea7cc29a10e9fbf71b188bff3c87ad6844e6102cb51b121c6",
+      "size_bytes": 14868012,
+      "batch": 1,
+      "forward_seconds": 23.481740813702345
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/e144_prediction_recombination/batch02.npz",
+      "sha256": "60cb4c9c8ba75568635945b6f74c5b4132f7fe969e4e7c8824452b03f499cbfc",
+      "size_bytes": 14874875,
+      "batch": 2,
+      "forward_seconds": 23.733497634530067
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/e144_prediction_recombination/batch03.npz",
+      "sha256": "78a1d7c26b7b5041616252430ff39703ad840d5712249a0d214561ad1c285bea",
+      "size_bytes": 14848993,
+      "batch": 3,
+      "forward_seconds": 23.590596333146095
+    }
+  ],
+  "source_commit": "29debbe8d0593188ddd431669e527786fd669f89",
+  "scope": "Previously used held inputs; conditional finite cohorts, not seed-population inference. No training.",
+  "peak_allocated_bytes": 37852975104,
+  "evaluation_seconds": 98.27592739462852,
+  "read_only_source_checks": "passed",
+  "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e"
+}

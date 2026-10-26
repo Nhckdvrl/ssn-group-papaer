@@ -115,7 +115,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 ## 当前决定与整理（截至 2026-10-12）
 
 - **用户明确要求直接删除** `real-time-causalization-capability-preservation`、`scoped-context-state`、`cross-lingual-acquisition-regimes`、`multi-llm-collaboration`、`video-world-model-temporal-interfaces` 这五个 workbench 的当前 Git 树文件。历史 Git 提交仍可追溯，不另建 archive 副本，不擅自触及外部服务器缓存。
-- **`mechanism-population-dynamics`：CLOSED。** 头的研究 10-11 结项、结项后的补救 10-17 停止；10-23 起按导师建议做的 MoE 方向于 10-26 由人暂停。2026-10-26 按主题整理为 `heads/`（主题 1、2）、`moe/`（主题 3）、`suite-audits/`（副产品），入口见该目录 README。
+- **`mechanism-population-dynamics`：PROPOSED（MoE用户恢复执行，其他ACTIVE分配不变）。** 头的研究10-11结项、结项后的补救10-17停止；MoE 10-26暂停后，经用户明确恢复，E144–E147已完成；头线仍CLOSED。2026-10-26 按主题整理为 `heads/`（主题 1、2）、`moe/`（主题 3）、`suite-audits/`（副产品），入口见该目录 README。
 - **没有 ACTIVE-MAIN。** `in-context-evidence-structure` 保持唯一 ACTIVE-EXPLORE；其它剩余工作台状态不变。
 - 2026-10-11 **后续人类决定**：再从 HEAD 删除 `npc-persona-behavior-grounding` 和 `npc-deception-investigability`，仍保留知识库中的 NPC 文献；**10 月 11 日清理后剩余 5 个 workbench**。2026-10-12 新建 `xeno-interpretability` 后，**截至 2026-10-12 共 6 个**；2026-10-13 新建 `game-npc-agents` 后共 7 个。详见 [清理记录](WORKBENCH_CLEANUP_2026-10-11.md)。
 - [2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md)只是历史快照；相关领域的 `library/` 文献继续保留。
@@ -128,7 +128,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-26 | **用户本轮明确恢复 MoE 科研执行；E144/E145 只复用终点推理，探索并发≤8 GPU；E146 条件后续。** [当前问题与证据](mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md) · [E144–E146 设计入口](mechanism-population-dynamics/moe/README.md)。头线仍 CLOSED，其他 ACTIVE 分配不变；[总入口](mechanism-population-dynamics/README.md)。 |
+| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-26 | **用户明确恢复MoE执行；E144–E147已完整完成、仅复用终点推理，累计.27636 GPU·时、峰值并发2卡；当前无在途任务。** [当前问题与证据](mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md) · [E144–E146 设计入口](mechanism-population-dynamics/moe/README.md)。头线仍 CLOSED，其他 ACTIVE 分配不变；[总入口](mechanism-population-dynamics/README.md)。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |

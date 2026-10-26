@@ -1,6 +1,6 @@
-# MoE 实验索引 E120–E146（2026-10-26）
+# MoE 实验索引 E120–E147（2026-10-26）
 
-这是已有证据与新设计的导航。E120–E142 是已有结果；用户在讨论后确认 [当前方向](../RESEARCH_DIRECTION.md)，E144–E146 于本次正式登记设计，均未实现/运行。E143 保留备选。大模型、缓存和原始数组以原卡及归档清单中的路径为准；下列历史数字不因新设计而更改，主张等级不变。
+这是已有证据与新设计的导航。E120–E142 是已有结果；用户在讨论后确认 [当前方向](../RESEARCH_DIRECTION.md)，本轮用户进一步授权执行，E144–E147已完整获得新读数（E147为E146后新登记的强对照）。E143 保留备选。大模型、缓存和原始数组以原卡及归档清单中的路径为准；下列历史数字不因新设计而更改，主张等级不变。
 
 ## 已有实验 E120–E142
 
@@ -32,13 +32,16 @@
 
 **解释边界：** 上列E138–142的变异是同一teacher/层/cache/有限训练预算下三个学生的有限cohort统计；文件/词形区间是输入评测不确定性，不是seed总体或协议处理效应区间。E141的XOR是观察到的支持分账，不是替换mask的因果效应。所有工作仍属已结项头线之外的人授权MoE驻留，未自动形成论文或新工作台状态。
 
-## 新登记的设计与备选（没有新模型结果）
+## 本轮执行与备选
 
-| 实验 | 状态 / 对应 | 设计问题与固定规模 | 结果 |
+| 实验 | 状态 / 对应 | 主结果 | 直接证据 |
 |---|---|---|---|
-| [E143](E143-cross-model-routing-division.md) | PLANNED；暂存备选 | 不同公开 MoE 的跨模型路由组织；原协议保留，不进本批 | 模型测量未运行；数据脚本曾运行，不等同结果 |
-| [E144](E144-fixed-gate-recombination.md) | PLANNED；核心 1；C09/P31 | F 三学生共同 gate 下 24 重组 + 3 native + μ/teacher/zero；64 完整序列，真实 KL/NLL 与同子集 C−V | driver、配置、来源表与结果未生成 |
-| [E145](E145-history-gate-bank-cross.md) | PLANNED；核心 2；C09/P27–P29 | R/S 同一 seed1 接收者、四 donor 的 gate×bank 四格，共 13 条件，teacher 至多另 1；同 E144 输入 | driver、配置与结果未生成 |
-| [E146](E146-grouped-recombination.md) | PLANNED；条件后续；C09/P31 | 一个 training-Γ 分区 + 三个随机同大小分区；固定 8×8；共 48 新 bank | 未生成分区或结果；不自动排队 |
+| [E143](E143-cross-model-routing-division.md) | PLANNED；备选 | 未执行模型测量，不进本批 | 原协议保留 |
+| [E144](E144-fixed-gate-recombination.md) | DONE；C10/P31 | 固定gate拆来源ΔNLL+.002061、ΔKL+.002441；正交叉CI | [summary](../results/e144/summary.json) |
+| [E145](E145-history-gate-bank-cross.md) | DONE；C11/P27–29 | 同接收者bank代价S−R=−.005222；共同gate C_S/C_R=.037892/.055990 | [summary](../results/e145/summary.json) |
+| [E146](E146-grouped-recombination.md) | DONE；条件满足后执行 | Γ定8×8组ΔNLL=.000681，3随机同大小组.001690–.002151 | [summary](../results/e146/summary.json) |
+| [E147](E147-gate-coactivation-group-control.md) | DONE；新登记强对照 | gate-only−Γ NLL=+.0000048 [−.000251,.000266]，未检出Γ额外优势 | [summary](../results/e147/summary.json) |
 
-本轮另有 [POST-HOC 摘要重算](../results/discussion_2026-10-26/reanalysis.json) 与 [CPU 脚本](../scripts/recompute_discussion_20261026.py)，只重算已提交统计，不算新实验或新训练。优先级按问题与依赖，不排日期、不自动扩大网格；现有结果与失败记录保持完整。
+E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
+
+旧[摘要重算](../results/discussion_2026-10-26/reanalysis.json)仍为POST-HOC；新GPU结果和它分开。后续按证据与问题推进，不排日期或自动扩训练网格。

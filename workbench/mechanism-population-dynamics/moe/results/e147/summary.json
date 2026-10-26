@@ -1,0 +1,138 @@
+{
+  "experiment": "E147",
+  "status": "complete",
+  "gate_only_minus_cal_gamma": {
+    "nll": {
+      "point": 4.828514575641336e-06,
+      "input_file_ci95": [
+        -0.00013394820597152567,
+        0.0001166087147773829
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -4.589583123523148e-05,
+        -0.00024190881786944132,
+        0.00015370270291819622,
+        0.00015341600448904192
+      ],
+      "source_mc_se": 9.473385376651953e-05,
+      "crossed_file_source_ci95": [
+        -0.00025103902740409396,
+        0.0002663659264753147
+      ]
+    },
+    "mu_to_variant_kl": {
+      "point": -4.012757868740723e-05,
+      "input_file_ci95": [
+        -0.00010632153910813207,
+        1.693610090420464e-05
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -7.977015538629363e-05,
+        -0.00027215706914139517,
+        0.00017722563235293774,
+        1.4191277425122155e-05
+      ],
+      "source_mc_se": 9.380928117133309e-05,
+      "crossed_file_source_ci95": [
+        -0.00021091797808370328,
+        0.0001613460027177912
+      ]
+    },
+    "sum64_teacher_sse": {
+      "point": -0.0003028379007810883,
+      "input_file_ci95": [
+        -0.000642506970847285,
+        9.891681718530286e-05
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -0.0010706434979487157,
+        -0.0013235638895071648,
+        0.0008895315387046718,
+        0.0002933242456268554
+      ],
+      "source_mc_se": 0.0005329603772117332,
+      "crossed_file_source_ci95": [
+        -0.0011910380042961495,
+        0.0008238385070295648
+      ]
+    }
+  },
+  "gate_only_minus_random_mean": {
+    "nll": {
+      "point": -0.0012528803895942295,
+      "input_file_ci95": [
+        -0.0015901524657341616,
+        -0.000958645521956947
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -0.001006734600300283,
+        -0.0016146507229157225,
+        -0.0011639357911610452,
+        -0.0012262004439998675
+      ],
+      "source_mc_se": 0.0001291280000445432,
+      "crossed_file_source_ci95": [
+        -0.0016847792350702603,
+        -0.0008885093169112787
+      ]
+    },
+    "mu_to_variant_kl": {
+      "point": -0.0015459721297081815,
+      "input_file_ci95": [
+        -0.0018155605528944949,
+        -0.0013268988961213693
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -0.0014596930221505056,
+        -0.0018125092025489265,
+        -0.0013690745450357896,
+        -0.0015426117490975049
+      ],
+      "source_mc_se": 9.565133873441794e-05,
+      "crossed_file_source_ci95": [
+        -0.0018723285535791954,
+        -0.0012645985652627433
+      ]
+    },
+    "sum64_teacher_sse": {
+      "point": -0.009028061695460169,
+      "input_file_ci95": [
+        -0.009464707343226868,
+        -0.008578806111893962
+      ],
+      "file_clusters": 22,
+      "sequences": 64,
+      "bootstrap_seed": 146001,
+      "source_base_points": [
+        -0.008884247885546818,
+        -0.010624680441740995,
+        -0.008026881090193791,
+        -0.008576437364359077
+      ],
+      "source_mc_se": 0.0005609665003145027,
+      "crossed_file_source_ci95": [
+        -0.01032959008883094,
+        -0.008026736243894331
+      ]
+    }
+  },
+  "cal_cut": 0.004784412627134434,
+  "held_cut": 0.005006960015991952,
+  "independent_source_units": 4,
+  "scope": "Same four source bases and input files, conditional finite cohort; neither training-seed nor random-partition population intervals."
+}
