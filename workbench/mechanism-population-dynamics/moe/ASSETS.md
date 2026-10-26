@@ -121,4 +121,6 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 
 恢复统计：`~/.venvs/mechpop/bin/python moe/scripts/e150_analyze.py`，再`e150_verify_results.py`与`e150_plot.py`。重新跑模型另计资源，先恢复上述固定pins/source/input与既有环境；流程是`e150_execute.py evaluate --physical-gpu N`，不是漏掉normalizer observer的裸driver。源代码9cd5ba33、完整统计27050fad及之后封存摘要中的确切SHA是追溯入口。
 
+[E150封存](results/e150/artifact_seal.json)：精确结果提交870f88cf的`run_metadata_870f88cf.tar.gz`已存同一耐久raw目录，761,274 B；6个科学raw/input/cal文件共88,515,567 B逐项重核SHA，公开108.55GB模型权重只引用原完整核验的HF缓存，避免重复复制。封存与后续E151新结果分开，不回写旧raw。
+
 E151只复用同两native权重/输入，新增3份固定random mask和全局R/S必要性raw于`~/mechpop_cache/e151_native_selectivity_necessity/`；目前主读数运行中，不将计划写成完成。
