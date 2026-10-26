@@ -1,0 +1,183 @@
+{
+  "experiment": "E142",
+  "status": "complete_training_object_audit_only",
+  "scope": "Own CPU reads only two new final CPs/new initial gate references. No repeated old-CP preflight; original source identity uses prior independent initial audit. No primary metrics or GPU.",
+  "initial_independent_audit_sha256": "8c134bdfbcab63c2256e1443b9f7961fd2993b33d27597d8d4c536571aa2a747",
+  "new_final_objects": {
+    "new_final_CP_objects_only": {
+      "seed0": {
+        "experiment": "E142",
+        "schema": "E142-shared-random-router-v1",
+        "seed": 0,
+        "step": 4096,
+        "checkpoint_sha256": "b2dcb996b4cf96254ae67252cd2b4aa38df0e075b129817b47fb7a44a535fc24",
+        "full_tensor_sha256": "748e6a87789ea24dd31bdac722958a1a05bf3de79a8ed530b62aed63ce3982b7",
+        "expert_only_tensor_sha256": "497e95f39a2f5d0ac48ebc3819b6d186923bf702cb23f6dc7a5affa10196cb6d",
+        "gate_tensor_sha256": "7844f9ec56ee5c6c571405654f7584addd8d133bfd2b6b3da2606be0f3727646",
+        "initial_gate_tensor_sha256": "676b94a0026c60374b615a4b6a2bbe9ec4064b3058e6f4abef83ed9e7e78457e",
+        "initialization_proof_unchanged": true,
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "config_hash": "1f8300048ddd587d93212aca49157479d35d7b8c404344dc5bc80824efecab57",
+        "config_matches_provenance": true,
+        "all_master_FP32": true,
+        "parameter_tensor_count": 193,
+        "optimizer_parameter_count": 193,
+        "optimizer_state_count": 193,
+        "optimizer_unique_steps": [
+          4096
+        ],
+        "gate_optimizer_step": 4096,
+        "gate_optimizer_first_moment_squared_L2": 7.837419900928348e-06,
+        "cache_batch_count": 1024,
+        "cache_counts_minmax": [
+          4,
+          4
+        ],
+        "gate_changed_entries": 131072,
+        "gate_entries": 131072,
+        "gate_max_abs_difference": 0.270351380109787,
+        "gate_squared_L2_difference": 101.73454173799242,
+        "summary_status": "complete",
+        "evaluation_steps": [
+          0,
+          512,
+          1024,
+          1536,
+          2048,
+          2560,
+          3072,
+          3584,
+          4096
+        ],
+        "held_final": {
+          "MSE": 9.798157041892231e-05,
+          "elements": 536870912,
+          "normalized_by_fixed_training_energy": 0.16998805571472905,
+          "positions": 262144,
+          "relative_to_own_split_teacher_energy": 0.17637442263545372
+        },
+        "summary_final_full_tensor_hash_matches": true,
+        "driver_sha256": "155001f774c76ad906e40f5571163411243d9f260c9575a5f6d992c2b1e12829",
+        "trainable_parameters_count": 193
+      },
+      "seed2": {
+        "experiment": "E142",
+        "schema": "E142-shared-random-router-v1",
+        "seed": 2,
+        "step": 4096,
+        "checkpoint_sha256": "49dc35f5b37a16372b3bd837a42f48da1c4440609e303e0508aabdfaba67b42b",
+        "full_tensor_sha256": "25de7b4b6a8ae01afcd64acd8e077fc66967573de6e3294e6a771894f3a78747",
+        "expert_only_tensor_sha256": "17715f30b8be58ccd9c0c7095ff7e7578e25ccd17f38c3722997fe4416083f06",
+        "gate_tensor_sha256": "15267332eeb9f3cfc8896860940770cf330f035d2e64c5724465dbb168ea96a6",
+        "initial_gate_tensor_sha256": "676b94a0026c60374b615a4b6a2bbe9ec4064b3058e6f4abef83ed9e7e78457e",
+        "initialization_proof_unchanged": true,
+        "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+        "config_hash": "70bfa6e3a58d0544391460a981d66f8451335de2e4e26e7acf030b48a9e8c118",
+        "config_matches_provenance": true,
+        "all_master_FP32": true,
+        "parameter_tensor_count": 193,
+        "optimizer_parameter_count": 193,
+        "optimizer_state_count": 193,
+        "optimizer_unique_steps": [
+          4096
+        ],
+        "gate_optimizer_step": 4096,
+        "gate_optimizer_first_moment_squared_L2": 1.1875951137159227e-05,
+        "cache_batch_count": 1024,
+        "cache_counts_minmax": [
+          4,
+          4
+        ],
+        "gate_changed_entries": 131072,
+        "gate_entries": 131072,
+        "gate_max_abs_difference": 0.2840040326118469,
+        "gate_squared_L2_difference": 99.33634427767015,
+        "summary_status": "complete",
+        "evaluation_steps": [
+          0,
+          512,
+          1024,
+          1536,
+          2048,
+          2560,
+          3072,
+          3584,
+          4096
+        ],
+        "held_final": {
+          "MSE": 9.816781457536292e-05,
+          "elements": 536870912,
+          "normalized_by_fixed_training_energy": 0.17031117037707022,
+          "positions": 262144,
+          "relative_to_own_split_teacher_energy": 0.17670967655535919
+        },
+        "summary_final_full_tensor_hash_matches": true,
+        "driver_sha256": "155001f774c76ad906e40f5571163411243d9f260c9575a5f6d992c2b1e12829",
+        "trainable_parameters_count": 193
+      }
+    },
+    "cuda_initialized": false
+  },
+  "source_sha256": {
+    "e142_train.py": "155001f774c76ad906e40f5571163411243d9f260c9575a5f6d992c2b1e12829",
+    "e142_components.py": "227fa7864c5f99ddd9c48e6a49894d7edb053bc6305d19c317e6a000c570e9f2",
+    "e142_readout.py": "3680818bbca98249660016f0c188b0e888de2c82db812bafaf805ca7f80af999"
+  },
+  "all_new_S_step_epoch_index_LR_exposure_logs_match_all_nine_old_runs": true,
+  "S_seed1_is_same_old_R_seed1_not_a_new_run": true,
+  "distinct_runs_in_log_comparison": 11,
+  "logs": {
+    "S_seed0": {
+      "sha256": "1647847a7c32c9cf8808e6446ce91e0c16885ad6b7a88c8f5b608eeffdf5d378",
+      "records": 4096,
+      "position_exposure": 33554432,
+      "four_exact_permutations": true,
+      "H_Y_dtypes": "torch.bfloat16"
+    },
+    "S_seed2": {
+      "sha256": "1c3e843f1e0695bb9f4e5c141842fa157c3fd96b5f971a991506811b626534b5",
+      "records": 4096,
+      "position_exposure": 33554432,
+      "four_exact_permutations": true,
+      "H_Y_dtypes": "torch.bfloat16"
+    },
+    "free_seed0": {
+      "sha256": "0d60e30bf26c7a0528dee8ce2a97505811aef42d24372d3c3f69948c30553bd2",
+      "prior_audit_log_unchanged": true
+    },
+    "free_seed1": {
+      "sha256": "b2d60dda5e65190f50a21229bd88bc05bdd31b03394dee468a4161af84c1ac2a",
+      "prior_audit_log_unchanged": true
+    },
+    "free_seed2": {
+      "sha256": "41e50bb069db2c90d4397208f2f5f40d77b82b2efee231e9ed9e3fd071352272",
+      "prior_audit_log_unchanged": true
+    },
+    "fixed_seed0": {
+      "sha256": "f98911dd9ec4509a16153dcf92f928328b61293b4eb9e6b0665ae413d7be9024",
+      "prior_audit_log_unchanged": true
+    },
+    "fixed_seed1": {
+      "sha256": "4501d3989e9a3bffbf8fea58cf8e42dc0e8b7096b579eb8edfb03675145222c9",
+      "prior_audit_log_unchanged": true
+    },
+    "fixed_seed2": {
+      "sha256": "10326a4080320751d24a33e0b0c46ee9ee2280e4f7130e9ef797bdaf208a503c",
+      "prior_audit_log_unchanged": true
+    },
+    "warm_seed0": {
+      "sha256": "3c44a3d3d47f54e5b76d828fe9536aaa5d024a9a7dbf48660ed37f0878e85a44",
+      "prior_audit_log_unchanged": true
+    },
+    "warm_seed1": {
+      "sha256": "b8add1ae62da2e0eacd40870ad39f896412c68807b64a8581f7602774aac3913",
+      "prior_audit_log_unchanged": true
+    },
+    "warm_seed2": {
+      "sha256": "83e7ff83b898a9db3cf72993e06384c38c1a4d36e8bc3e99120d9ba93a0682b3",
+      "prior_audit_log_unchanged": true
+    }
+  },
+  "original_epoch_array_and_manifest_SHA_bound": true,
+  "limits": "Final protocol and identity only; no independent readout result claim yet."
+}

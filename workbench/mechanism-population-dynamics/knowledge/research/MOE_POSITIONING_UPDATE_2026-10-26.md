@@ -1,5 +1,8 @@
 # MoE 近邻定位补充（2026-10-26）
 
+> **当前为用户暂停整理快照。** 前文/各日期的下一项建议只保留为历史讨论，不构成执行队列；当前事实与授权见[研究总览](../../MOE_RESEARCH_SUMMARY_2026-10-26.md)及工作台README。
+
+
 **范围：** 按 E130 固定目标下的跨训练功能对应与 E132 bank readout 检索；用 venue corpus 最近邻、MoE awesome / DailyArXiv 镜像发现来源，再回原论文核对。以下是 claim ownership 与 compression risk 地图，不作新颖性裁决。
 
 ## 五个相关近邻
@@ -22,7 +25,7 @@
 ## 检索入口与输出
 
 - 执行 `python3 ../../tools/venue_corpus/query.py nearest "MoE expert functional reproducibility training history expert bank grafting"`。返回的高相关已接收条目包括 *Expert Divergence Learning*；近错配中 *FLEx* 以 expert grafting 被召回。排序和接收状态只作定位。
-- 按 [`AWESOME_LISTS.md`](../../library/sources/AWESOME_LISTS.md) 检查 SuperBruceJia / XueFuzhao 两份 MoE list：前者主题覆盖 expert merging、random assignment、balance；XueFuzhao README 仍以早期模型/基础论文为主。当前页面检索未找到上述 2026 arXiv ID，列表只作发现入口。
+- 按 [`AWESOME_LISTS.md`](../../../../library/sources/AWESOME_LISTS.md) 检查 SuperBruceJia / XueFuzhao 两份 MoE list：前者主题覆盖 expert merging、random assignment、balance；XueFuzhao README 仍以早期模型/基础论文为主。当前页面检索未找到上述 2026 arXiv ID，列表只作发现入口。
 - DailyArXiv 镜像检查：zachysun README 标示最后更新 **2026-10-19**，zezhishao README 标示 **2026-10-23**；搜索其页面未命中 RouterInterp、Data Scarcity、Beyond Routing 等 ID。镜像有日期滞后且按关键词保留有限篇数，未命中不表示没有先例。
 
 **读者边界：** 这些来源已占据若干一般设定、代理或方法动作；现有检索并未判定它们覆盖了 E130/E132 的固定 LM 目标、共享骨干、seed/顺序隔离、U/A/T 直接功能读数及 held 计分组合。是否足以形成论文增量仍由 root / 人审判断。

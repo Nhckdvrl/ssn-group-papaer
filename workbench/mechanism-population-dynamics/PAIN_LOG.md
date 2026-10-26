@@ -1,16 +1,22 @@
 # PAIN LOG — Mechanism Population Dynamics
 
+> **2026-10-26：用户已暂停新增实验，先整理供其消化。** 各痛点中的“下一步/建议”是当时动作记录，不是当前队列；当前状态以[研究总览](MOE_RESEARCH_SUMMARY_2026-10-26.md)为准。
+
+
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
 
 ## P29（2026-10-26）：共享起点本身与native特定初态仍纠缠
+- **整理时结果：** E142已完成并独立审计，S componentVar=.043262，R=.072467；共享这一份随机起点本身有稳定作用，native具体优势仍未分离。用户暂停，不追加gate或互换实验。
 - E140共同native起点在允许学习、原选择集合约80%保留时componentVar .032818，fixed .031209、R .072467；持续冻结不是唯一稳定协议，不能独归teacher语义信息。
 - E142只补共享E135 seed1未训练random gate且可训练的组，复用seed1，只新增expert0/2并保留各自R初RNG。单个随机起点不外推全部，组内稳定不单独证明组间不同同函数分解；无性能/匹配网格。
 
 ## P28（2026-10-26）：actual贡献变异尚未分开调用支持与共同调用内容
+- **整理时结果：** E141三组已完整，R−F额外方差由XOR .024964与both-on .016294构成；共同on向量差仅条件人口，S未新增该分账。
 - E139的C09是actual mask×gate×expert贡献，不是纯expert内容；较大的component variance可能主要来自不同输入调用位置，不能只凭向量读数继续内容故事。
 - E141只读重放原held、沿原cal map，把全pair SSE精确拆XOR与both-on，并pairSum/9重建原variance；共同on的f/门值对称分解作辅助，无任何off查询/新matcher/训练。R/F先做，T原终点后补，主Dolma人口即可。
 
 ## P27（2026-10-26）：共同初始组织与持续固定接口尚未分开
+- **整理时结果：** E140已完整，native初态可训练组componentVar .032818、fixed .031209，持续完全冻结不是本例中稳定的唯一协议。
 - E139三学生组间Dolma componentVar .072467/.031209，而sumVar .017869/.015947；多数额外分量变动由负cross抵消，独立统计通过。原对照同时提供共同teacher gate与全程冻结/移除router优化，不能区分这些条件。
 - E140只新增teacher-gate初始化但trainable的三学生，同fixed逐张量完整初态/同总Y与4096预算；单一旧cal component对应及完整函数差。它检验初始组织还是持续冻结协议，不能单独归因teacher信息vs共享初始化，不加随机gate/超参网格。
 

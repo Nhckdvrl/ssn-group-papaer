@@ -1,0 +1,938 @@
+{
+  "snapshot_date": "2026-10-26",
+  "workspace": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics",
+  "durable_root": "/home/xiang/mechpop_cache (NFS-backed; no large files were rehashed)",
+  "inventory_method": "Read-only review of existing results pointers/manifests plus named-directory stat/du. No broad node scan, no model/data downloads, no moves/deletes. Added NFS backups of the previously NVMe-only E132 banks and E133 output-alignment assets; original NVMe sources remain in place.",
+  "filesystem_snapshot": {
+    "nfs": {
+      "mount": "192.168.0.25:/data/home",
+      "total": "131T",
+      "used": "98T",
+      "available": "34T"
+    },
+    "fvcrc20_nvme": {
+      "mount": "/dev/nvme0n1p2",
+      "total": "894G",
+      "used": "545G",
+      "available": "349G"
+    },
+    "fvcrc21_nvme": {
+      "mount": "/dev/nvme0n1p2",
+      "total": "894G",
+      "used": "279G",
+      "available": "615G"
+    }
+  },
+  "experiments": [
+    {
+      "id": "E120",
+      "status": "workspace summaries only",
+      "workspace_results_bytes": 39983,
+      "durable_assets": [
+        {
+          "path": "results/e120",
+          "type": "summary JSONs",
+          "size_bytes": 39983,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e120_synth.py"
+      ],
+      "note": "No separate mechpop_cache archive or large checkpoint identified."
+    },
+    {
+      "id": "E121",
+      "status": "NFS data/results present; no archive manifest",
+      "workspace_results_bytes": 10357855,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e121",
+          "type": "raw analysis/capture JSONL and NPZ assets",
+          "size_bytes": 21620723929,
+          "manifest": null,
+          "sealed": false
+        },
+        {
+          "path": "results/e121",
+          "type": "summaries/audits",
+          "size_bytes": 10357855,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e121_data.py",
+        "scripts/e121_analyze.py",
+        "scripts/e121_olmoe.py",
+        "scripts/e121_pos_audit.py"
+      ],
+      "note": "Durable NFS source folder exists, but no central archive manifest was found."
+    },
+    {
+      "id": "E122",
+      "status": "workspace matrices/audits present",
+      "workspace_results_bytes": 3432350,
+      "durable_assets": [
+        {
+          "path": "results/e122",
+          "type": "16-layer matrices, summaries, independent C06 audit, figures",
+          "size_bytes": 3432350,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e122_function_bridge.py",
+        "scripts/e122_summarize.py",
+        "scripts/e122_independent_c06_audit.py"
+      ],
+      "note": "Workspace is on NFS; no separate mechpop_cache archive manifest."
+    },
+    {
+      "id": "E123",
+      "status": "checkpoint and token manifest present; no archive_manifest",
+      "workspace_results_bytes": 3116560,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e123_seed0_32m",
+          "type": "seed0 checkpoint and training proof",
+          "size_bytes": 4833861625,
+          "manifest": "results/e123/manifest.json (data/source manifest)",
+          "sealed": false
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/dolma_e123",
+          "type": "tokenized source data used by later token cohorts",
+          "size_bytes": 66008576,
+          "manifest": "results/e123/manifest.json",
+          "sealed": false
+        },
+        {
+          "path": "results/e123",
+          "type": "run/provenance manifest",
+          "size_bytes": 3116560,
+          "manifest": "results/e123/manifest.json",
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e123_prepare_dolma.py",
+        "scripts/e123_prepare_assets.py",
+        "scripts/e123_frozen_moe.py"
+      ],
+      "note": "Large checkpoint folder has no dedicated archive_manifest.json; dataset manifest is retained in results."
+    },
+    {
+      "id": "E124",
+      "status": "k-means/reference NPZs present; no archive_manifest",
+      "workspace_results_bytes": 361858,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e124_kmeans",
+          "type": "reference permutation/cluster NPZs",
+          "size_bytes": 3019482,
+          "manifest": null,
+          "sealed": false
+        },
+        {
+          "path": "results/e124",
+          "type": "plan, calibration/control summaries",
+          "size_bytes": 361858,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e124_kmeans_reference.py",
+        "scripts/e124_make_permutation.py",
+        "scripts/e124_functional_capture.py",
+        "scripts/e124_compare.py"
+      ],
+      "note": "Small reference assets are durable on NFS, no centralized archive seal."
+    },
+    {
+      "id": "E125",
+      "status": "cover/small manifests and model assets present",
+      "workspace_results_bytes": 33745223,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e125_M-cover_128m",
+          "type": "M-cover model/training proof",
+          "size_bytes": 30161460,
+          "manifest": "results/e125/cover_manifest.json",
+          "sealed": false
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/dolma_e125_512m",
+          "type": "tokenized cover train/held source data",
+          "size_bytes": 1024004352,
+          "manifest": "results/e125/cover_manifest.json",
+          "sealed": false
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/dolma_e123",
+          "type": "small reference token pool",
+          "size_bytes": 66008576,
+          "manifest": "results/e125/small_manifest.json",
+          "sealed": false
+        },
+        {
+          "path": "results/e125",
+          "type": "cover/small manifests, endpoint summaries, figures",
+          "size_bytes": 33745223,
+          "manifest": "cover_manifest.json; small_manifest.json",
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e125_prepare_data.py",
+        "scripts/e125_stage_tokens.py",
+        "scripts/e125_coverage_control.py",
+        "scripts/e125_summarize.py"
+      ],
+      "note": "The tokenizer/source-token caches are durable; these are not the later E135 H/Y arrays."
+    },
+    {
+      "id": "E126",
+      "status": "workspace results only",
+      "workspace_results_bytes": 11901781,
+      "durable_assets": [
+        {
+          "path": "results/e126",
+          "type": "G8-top1-cover outputs and comparison",
+          "size_bytes": 11901781,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e125_coverage_control.py"
+      ],
+      "note": "No separate archive manifest or dedicated E126 script found."
+    },
+    {
+      "id": "E127",
+      "status": "workspace results only",
+      "workspace_results_bytes": 893596,
+      "durable_assets": [
+        {
+          "path": "results/e127",
+          "type": "predictive-fidelity summaries and sequences",
+          "size_bytes": 893596,
+          "manifest": null,
+          "sealed": false
+        }
+      ],
+      "nvme_temp": [],
+      "rebuild": [
+        "scripts/e127_predictive_fidelity.py"
+      ],
+      "note": "Uses retained E123/E125/E126 summary inputs; no separate cache archive."
+    },
+    {
+      "id": "E128",
+      "status": "complete; checkpoint archive manifest present",
+      "workspace_results_bytes": 55307501,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e128_seed0_512m",
+          "type": "512M-token seed0 checkpoint, pulse and final functional assets",
+          "size_bytes": 4848708828,
+          "manifest": "/home/xiang/mechpop_cache/e128_seed0_512m/archive_manifest.json; results/e128/finalization.json complete",
+          "sealed": true
+        },
+        {
+          "path": "results/e128",
+          "type": "finalization, predictive fidelity, source/provenance summaries",
+          "size_bytes": 55307501,
+          "manifest": "finalization.json",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e128_seed0",
+          "role": "original run scratch; NFS archive is durable"
+        }
+      ],
+      "rebuild": [
+        "scripts/e128_epoch_recovery.py",
+        "scripts/e128_finalize.py"
+      ],
+      "note": "Final checkpoint SHA and NFS archive manifest were cross-checked against finalization."
+    },
+    {
+      "id": "E129",
+      "status": "complete asset pointer; no standard archive manifest",
+      "workspace_results_bytes": 11743049,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e129_teacher_KL_seed0_128m",
+          "type": "128M-token teacher-KL checkpoint, raw sequences and proof assets",
+          "size_bytes": 4868640508,
+          "manifest": "results/e129/assets.json (7 files SHA-verified)",
+          "sealed": true
+        },
+        {
+          "path": "results/e129",
+          "type": "endpoint summary/assets pointer",
+          "size_bytes": 11743049,
+          "manifest": "assets.json; endpoint_summary.json complete",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e129_teacher_KL_seed0",
+          "role": "source run scratch; archive durable"
+        }
+      ],
+      "rebuild": [
+        "scripts/e129_teacher_distribution.py",
+        "scripts/e129_summarize.py"
+      ],
+      "note": "No archive_manifest.json; asset pointer lists per-file SHA."
+    },
+    {
+      "id": "E130",
+      "status": "all seven model/readout runs complete; per-run NFS manifests verified, no single consolidated archive",
+      "workspace_results_bytes": 339034083,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e130_initial_seed0",
+          "type": "initial function capture",
+          "size_bytes": 78364623,
+          "manifest": "archive_manifest.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_initial_seed1",
+          "type": "initial function capture",
+          "size_bytes": 78364620,
+          "manifest": "archive_manifest.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed0_anchor_functions",
+          "type": "anchor final/late captures and proofs (checkpoint referenced to E128)",
+          "size_bytes": 156590888,
+          "manifest": "functional_assets_manifest.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed0_order1_512m",
+          "type": "seed0 order-control 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 4927405086,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed0_repeat_512m",
+          "type": "seed0 repeat 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 4927401188,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed1_order0_512m",
+          "type": "seed1 order0 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 5005696644,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed2_order0_512m",
+          "type": "seed2 order0 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 5005696118,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed3_order0_512m",
+          "type": "seed3 order0 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 5005696427,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e130_seed4_order0_512m",
+          "type": "seed4 order0 512M final/pulse checkpoints and raw summaries",
+          "size_bytes": 5005696437,
+          "manifest": "archive_manifest.json; finalization complete",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e130_analysis",
+          "size_bytes": 1051474889,
+          "role": "analysis/readout staging; files copied to durable per-run archives"
+        },
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e130_analysis/Hcal.npy",
+          "size_bytes": 67108992,
+          "role": "derived Hcal staging; recover from E130 anchor functional capture by SHA"
+        }
+      ],
+      "rebuild": [
+        "scripts/e130_cross_seed.py",
+        "scripts/e130_finalize.py",
+        "scripts/e130_predictor_compare.py",
+        "scripts/e130_capture_anchor.py",
+        "scripts/e130_routing_batch.py"
+      ],
+      "note": "Six child finalizers have complete status and manifest SHA checks; E130 aggregate analysis remains in workspace results, while durable assets are organized per model."
+    },
+    {
+      "id": "E131",
+      "status": "complete; branch/readout/analysis manifests verified",
+      "workspace_results_bytes": 121770680,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e131_ordered_512m",
+          "type": "ordered 512M checkpoint/pulse/final/late captures",
+          "size_bytes": 9955138341,
+          "manifest": "archive_manifest.json; finalization ordered complete step62500",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e131_permuted_512m",
+          "type": "permuted 512M checkpoint/pulse/final/late captures",
+          "size_bytes": 9955138470,
+          "manifest": "archive_manifest.json; finalization permuted complete step62500",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e131_parent_and_plan",
+          "type": "step4096 parent model and pulse plan",
+          "size_bytes": 4967720204,
+          "manifest": "archive_manifest.json; results/e131/shared_assets.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e131_common24576_functions",
+          "type": "diagnostic pulse/common24576 functions and snapshot proof",
+          "size_bytes": 313191627,
+          "manifest": "archive_manifest.json; results/e131/diagnostic_function_archive.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e131_predictor_comparison",
+          "type": "5120/24576 predictor raw and audit; terminal step62500 added in analysis archive",
+          "size_bytes": 427559386,
+          "manifest": "prior-steps archive_manifest.json",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e131_analysis_complete",
+          "type": "15-pair summary, terminal predictor raw, N1 cache/proof, figures, scripts and references to branch captures",
+          "size_bytes": 215253871,
+          "manifest": "archive_manifest.json; results/e131/analysis_archive.json complete",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e131_ordered and e131_permuted",
+          "role": "source run scratch; durable branch archives verified"
+        },
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e131_predictor_compare",
+          "role": "raw scorer scratch; terminal raw and prior endpoints archived"
+        }
+      ],
+      "rebuild": [
+        "scripts/e131_order_history.py",
+        "scripts/e131_finalize.py",
+        "scripts/e131_predictor_compare.py",
+        "scripts/e131_plot_trajectory.py"
+      ],
+      "note": "N1 Hcal source is referenced by path/SHA; final function captures/checkpoints reside in durable branch archives."
+    },
+    {
+      "id": "E132",
+      "status": "complete bank backup sealed; original node-local staging retained",
+      "workspace_results_bytes": 3406909,
+      "durable_assets": [
+        {
+          "path": "results/e132",
+          "type": "bank staging pointer and bank-grafting result summary",
+          "size_bytes": 3406909,
+          "manifest": "bank_staging.json lists five staged_verified banks; paths point to node-local NVMe",
+          "sealed": false
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e132_bank_graft_assets",
+          "type": "five model-only bank.pt files and per-bank metadata/source proofs",
+          "size_bytes": 8057766504,
+          "manifest": "results/e132/asset_archive_manifest.json; 18 files, sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e132_banks",
+          "size_bytes": 8056033472,
+          "role": "original verified source retained after durable bank backup",
+          "model_payload_bytes": 8055987505
+        }
+      ],
+      "rebuild": [
+        "/home/xiang/mechpop_cache/e132_bank_graft_assets (durable bank assets)",
+        "scripts/e132_bank_grafting.py"
+      ],
+      "note": "Bank SHA was verified against E132 bank_staging.json and each metadata bank_file SHA; source E130 checkpoints were matched by archive SHA. Original fvcrc20 NVMe copy remains untouched."
+    },
+    {
+      "id": "E133",
+      "status": "complete output-alignment raw archive sealed; original node-local source retained",
+      "workspace_results_bytes": 7330321,
+      "durable_assets": [
+        {
+          "path": "results/e133/output_alignment.json",
+          "type": "five-ring-pair output alignment summary",
+          "size_bytes": 3030865,
+          "manifest": "output_alignment.json complete; no raw archive_manifest",
+          "sealed": false
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e133_output_alignment_assets",
+          "type": "five output-alignment pairs, cal-cache FP32 arrays/metadata, calibration and sequence proofs including retained retry",
+          "size_bytes": 1358451717,
+          "manifest": "results/e133/asset_archive_manifest.json; 32 files, sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/e133_output_alignment",
+          "size_bytes": 1353278770,
+          "role": "original output-alignment source retained after durable archive copy"
+        }
+      ],
+      "rebuild": [
+        "/home/xiang/mechpop_cache/e133_output_alignment_assets (durable readout raw)",
+        "scripts/e133_output_alignment.py",
+        "scripts/e132_bank_grafting.py"
+      ],
+      "note": "E133 output summary, per-pair calibration/sequence SHA and five cal-cache array SHA were checked. Original fvcrc20 NVMe source remains untouched."
+    },
+    {
+      "id": "E134",
+      "status": "complete; raw/calibration/source-proof archive sealed",
+      "workspace_results_bytes": 2424665,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e134_necessity",
+          "type": "necessity captures/raw rows/calibration/proofs",
+          "size_bytes": 1553603695,
+          "manifest": "results/e134/archive_manifest.json; 42 files; sealed",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/main",
+          "type": "public OLMoE-1B-7B-0924 model shards/config/tokenizer",
+          "size_bytes": 13841130907,
+          "manifest": "E122 prior checksum record and E134/E135 asset preflight",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/olmoe",
+          "size_bytes": 13841130907,
+          "role": "local copy of durable public model"
+        },
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e134_necessity",
+          "role": "readout source; NFS archive exists"
+        }
+      ],
+      "rebuild": [
+        "scripts/e134_uniform_necessity.py",
+        "scripts/e134_component_variation.py"
+      ],
+      "note": "No model checkpoint included in necessity archive."
+    },
+    {
+      "id": "E135",
+      "status": "complete; student/readout/recipe archives sealed; H/Y cache is NVMe-only",
+      "workspace_results_bytes": 4164593,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e135_student_33554432",
+          "type": "initial/final student checkpoints and training proof",
+          "size_bytes": 6452038109,
+          "manifest": "results/e135/student_archive.json; sealed",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e135_cache_recipe",
+          "type": "recipe and compact source metadata, not H/Y arrays",
+          "size_bytes": 840239327,
+          "manifest": "results/e135/cache_recipe_archive.json; sealed",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/e135_readouts",
+          "type": "functional/POS raw readouts and audits",
+          "size_bytes": 727867212,
+          "manifest": "results/e135/readout_archive.json; sealed",
+          "sealed": true
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/dolma_e125_512m",
+          "type": "tokenized source pool for cache rebuild",
+          "size_bytes": 1024004352,
+          "manifest": "results/e125/cover_manifest.json",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e135_cache",
+          "size_bytes": 71707179838,
+          "role": "train/held H/Y tensors; intentionally not copied to durable archives"
+        },
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/olmoe",
+          "size_bytes": 13841130907,
+          "role": "local model copy; durable model source at hf_olmoe/main"
+        }
+      ],
+      "rebuild": [
+        "scripts/e135_prepare_cache.py",
+        "scripts/e135_train.py",
+        "scripts/e135_capture.py",
+        "scripts/e135_readout.py"
+      ],
+      "note": "Recipe plus durable token source is the recovery route for NVMe-only H/Y."
+    },
+    {
+      "id": "E136",
+      "status": "complete; assignment-oracle archive sealed",
+      "workspace_results_bytes": 3486575,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e136_assignment_oracle",
+          "type": "initial/final oracle checkpoints and six readout raw assets/audits",
+          "size_bytes": 6914295779,
+          "manifest": "results/e136/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e136_oracle and e136_readout",
+          "role": "source assets; durable archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e136_train.py",
+        "scripts/e136_readout.py",
+        "scripts/e136_capture.py"
+      ],
+      "note": "E135 source/checkpoint/cache referenced, not duplicated."
+    },
+    {
+      "id": "E137",
+      "status": "complete; sufficient-statistics archive sealed",
+      "workspace_results_bytes": 1725065,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e137_support_components",
+          "type": "two populations of sufficient stats/metadata, audit, table and plots",
+          "size_bytes": 21122182,
+          "manifest": "results/e137/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e137_components",
+          "role": "source stats; durable archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e137_components.py",
+        "scripts/e137_plot_components.py"
+      ],
+      "note": "No model/cache weight files duplicated."
+    },
+    {
+      "id": "E138",
+      "status": "complete; fixed-cohort archive sealed",
+      "workspace_results_bytes": 7493451,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e138_fixed_cohort",
+          "type": "seed0/2 checkpoints, joint component/predictor/A raw and proofs; seed1 referenced to E136",
+          "size_bytes": 13372413430,
+          "manifest": "results/e138/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e138_seed0/2 and e138_readout",
+          "role": "source model/readout assets; archived"
+        }
+      ],
+      "rebuild": [
+        "scripts/e138_train.py",
+        "scripts/e138_components.py",
+        "scripts/e138_readout.py",
+        "scripts/e138_plot_cohort.py"
+      ],
+      "note": "Reused seed1 is an E136 observed pilot; not recopied."
+    },
+    {
+      "id": "E139",
+      "status": "complete; matched free/fixed archive sealed",
+      "workspace_results_bytes": 3766929,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e139_matched_free_cohort",
+          "type": "new seed0/2 weights/proofs and full readout raw/figures/documents",
+          "size_bytes": 13401084624,
+          "manifest": "results/e139/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e139_seed0/2 and e139_readout",
+          "role": "source training/readout assets; durable archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e139_train.py",
+        "scripts/e139_components.py",
+        "scripts/e139_readout.py",
+        "scripts/e139_plot_cohort.py"
+      ],
+      "note": "Initial device failure of 1.008811s preserved; E135/E138 models referenced."
+    },
+    {
+      "id": "E140",
+      "status": "complete; warmstart archive sealed",
+      "workspace_results_bytes": 2515864,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e140_native_router_warmstart",
+          "type": "three initial/final checkpoints, readout raw/audit and plots/table",
+          "size_bytes": 19824000238,
+          "manifest": "results/e140/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e140_seed0/1/2 and e140_readout",
+          "role": "source weights/readout; durable archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e140_train.py",
+        "scripts/e140_components.py",
+        "scripts/e140_readout.py",
+        "scripts/e140_plot_warmstart.py"
+      ],
+      "note": "Readout audit documents warm POS zero-support expert rows 20/51 and 13/20/51; raw columns retained."
+    },
+    {
+      "id": "E141",
+      "status": "complete; support-partition sufficient-statistics archive sealed",
+      "workspace_results_bytes": 3049398,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e141_support_partition",
+          "type": "free/fixed/warm XOR/both/total stats, pair CIs, audit and figures",
+          "size_bytes": 71765029,
+          "manifest": "results/e141/archive_manifest.json; sealed",
+          "sealed": true
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e141_support_partition",
+          "role": "small raw stats source; archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e141_support_partition.py",
+        "scripts/e141_independent_audit.py",
+        "scripts/e141_plot_support_partition.py"
+      ],
+      "note": "Stats-only; no model or H/Y files copied."
+    },
+    {
+      "id": "E142",
+      "status": "complete; shared-random-router archive sealed",
+      "workspace_results_bytes": 2405335,
+      "durable_assets": [
+        {
+          "path": "/home/xiang/mechpop_cache/e142_shared_random_router",
+          "type": "seed0/2 weights, readout raw, full independent audit, R/S/T/F figure/table",
+          "size_bytes": 12954858397,
+          "manifest": "results/e142/archive_manifest.json; complete; sealed",
+          "sealed": true,
+          "manifest_sha256": "fc070c957126d49e765e1265085c9ac935f1856030768c8689869a8e11b24d2d"
+        }
+      ],
+      "nvme_temp": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/e142_seed0/2 and e142_readout",
+          "role": "source training/readout; durable archive verified"
+        }
+      ],
+      "rebuild": [
+        "scripts/e142_train.py",
+        "scripts/e142_components.py",
+        "scripts/e142_readout.py",
+        "scripts/e142_plot_warmstart_compare.py"
+      ],
+      "note": "E139 free and E140 warmstart are reference cohorts; no duplicated old weights/cache."
+    }
+  ],
+  "shared_assets": [
+    {
+      "name": "Public OLMoE-1B-7B-0924 model",
+      "durable_path": "/home/xiang/mechpop_cache/hf_olmoe/main",
+      "size_bytes": 13841130907,
+      "checksum_source": "E122 provenance; E134/E135 preflight verified existing shard/config pins",
+      "local_copy": [
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/olmoe",
+          "size_bytes": 13841130907
+        }
+      ]
+    },
+    {
+      "name": "E123 token source pool",
+      "durable_path": "/home/xiang/mechpop_cache/dolma_e123",
+      "size_bytes": 66008576,
+      "checksum_source": "results/e123/manifest.json"
+    },
+    {
+      "name": "E125 cover token pool",
+      "durable_path": "/home/xiang/mechpop_cache/dolma_e125_512m",
+      "size_bytes": 1024004352,
+      "checksum_source": "results/e125/cover_manifest.json"
+    },
+    {
+      "name": "E135 H/Y training cache",
+      "durable_path": null,
+      "local_nvme": {
+        "host": "fvcrc21",
+        "path": "/tmp/xiang-moe-20261025/e135_cache",
+        "size_bytes": 71707179838
+      },
+      "status": "NVMe only; excluded from durable NFS archive, rebuild from e135_cache_recipe and durable token pools",
+      "rebuild": "scripts/e135_prepare_cache.py"
+    },
+    {
+      "name": "E130 dense base model cache",
+      "durable_path": "not found in mechpop_cache during this inventory",
+      "local_nvme": [
+        {
+          "host": "fvcrc20",
+          "path": "/tmp/xiang-moe-20261025/olmo_dense",
+          "shards_bytes": [
+            4707070632,
+            412090496
+          ]
+        },
+        {
+          "host": "fvcrc21",
+          "path": "/tmp/xiang-moe-20261025/olmo_dense",
+          "shards_bytes": [
+            4707070632,
+            412090496
+          ]
+        }
+      ],
+      "status": "E130 preflight recorded local copies on both nodes; no canonical durable NFS path/checksum pin found in this asset inventory."
+    }
+  ],
+  "e130_run_finalization": [
+    {
+      "run": "seed0_order1",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed0_order1_512m",
+      "manifest_sha256": "0101d9d85dbe84c4761342877e2145f625e074dd1c9f89e24eeca81e9bc67b77",
+      "step": 62500,
+      "train_tokens": 512000000
+    },
+    {
+      "run": "seed0_repeat",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed0_repeat_512m",
+      "manifest_sha256": "62edac44cbf0478643c9553223fb8882d1dbab5683ee67fbabc6f46a5fb56e65",
+      "step": 62500,
+      "train_tokens": 512000000
+    },
+    {
+      "run": "seed1_order0",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed1_order0_512m",
+      "manifest_sha256": "4084039b70b498d90716e0ea54339005f8590acc33af9240aec6a9a247b37560",
+      "step": 62500,
+      "train_tokens": 512000000
+    },
+    {
+      "run": "seed2_order0",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed2_order0_512m",
+      "manifest_sha256": "068baa97f2aca31ca39bfe468773460bdbab6d70cba2de22b55b50e92913e7a3",
+      "step": 62500,
+      "train_tokens": 512000000
+    },
+    {
+      "run": "seed3_order0",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed3_order0_512m",
+      "manifest_sha256": "aba11df1b24e51882b3b4c0abc058aae3da39e6d3bcd51880050fcea68331ce5",
+      "step": 62500,
+      "train_tokens": 512000000
+    },
+    {
+      "run": "seed4_order0",
+      "status": "complete",
+      "archive": "/home/xiang/mechpop_cache/e130_seed4_order0_512m",
+      "manifest_sha256": "c1b52ac08e32f5f35cfb9fee0ff728127ccf8335ce34bcee79982b7a21ea64a2",
+      "step": 62500,
+      "train_tokens": 512000000
+    }
+  ],
+  "recovery_note": "Use the listed frozen script entrypoints with the referenced manifests/proofs. Entries marked NVMe-only require preserving the source NVMe or rebuilding from their listed durable parent assets."
+}

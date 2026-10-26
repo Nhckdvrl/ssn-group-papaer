@@ -1,6 +1,6 @@
 # E142：共享一个随机路由起点是否也稳定专家分解（2026-10-26）
 
-- **状态：** RUNNING；04:48:46 UTC新增seed0/2已启动，预登记在新初始化/训练前；E139–141完整并独立审计。
+- **状态：** DONE；训练、全部Dolma读数与独立审计完整。用户随后要求暂停新增实验并整理，原预登记保持。
 - **类型：** PILOT；一个新初始条件，非拟合优化。
 - **对应：** P29/C09：共同native初态同时提供共享起点与native特定几何，二者尚未分离。
 - **问题（一句话）：** 让独立expert初值共享同一个未训练random gate、继续联合训练，是否也能稳定本有限cohort的实际分解？
@@ -28,5 +28,16 @@
 
 ## 结果（运行后追加，以上预登记保持）
 - 训练源`e142_train.py` SHA `155001f774c76ad906e40f5571163411243d9f260c9575a5f6d992c2b1e12829`冻结。CPU完整/断点已知答案与node21两实际初态预检通过；各自expert/RNG保留，只替换FP32 gate，fresh全参数Adam，旧状态不变。
-- 04:48:46 UTC在fvcrc21 GPU0/1实际启动seed0/2，PID895454/895455；独立ledger `/tmp/xiang-moe-20261025/e142_budget.json`，原seed1不重训，原4096终点不变。尚无新终点结果。
+- 04:48:46 UTC在fvcrc21 GPU0/1实际启动seed0/2，PID895454/895455；独立ledger `/tmp/xiang-moe-20261025/e142_budget.json`，原seed1不重训，原4096终点不变。启动时尚无终点结果；最终完整结果见下文。
 - 这是看到E140/141后的新前瞻控制，非修改旧主读数。
+
+### 最终结果与独立核对（暂停快照）
+- 两新seed0/2均4096完整，held固定train-energy MSE=.170330199/.170648526；seed1复用E135=.169350162。全部9事件、所有seed保留，没有续训或取中途最佳。
+- 三组独立证据齐：`initial_independent_audit.json`逐值证明只替换gate、192expert及各自四类RNG保留；`training_independent_audit.json`核实际新终点/Adam状态与11个不同运行的固定orders/LR/exposure；`independent_audit.json`重算cal、raw组件双variance恒等式、三组paired输入CI、6预测pair和route rows。全部在`results/e142/`，非作者CPU审计，无主统计导入/GPU重跑。
+- 读数源`e142_components.py` SHA227fa786…570e9f2、`e142_readout.py` SHA3680818b…f80af999冻结；完整终点preflight在run()内、select_gpu之前执行一次。`readout.json`全components/predictions complete、errors空。新增只测Dolma，没有新增POS/A。
+- 初态R/S componentVar=.129445689/.129586911；最终S=.043261927 [95%文件输入CI .042166570,.044191263]，FP64sumVar=.016036914；cross=-0.027225013。S−R componentVar=−.029205269 [−.031120653,−.027909625]，sumVar=−.001832563 [−.001951869,−.001744559]。
+- S−T componentVar=+.010444301 [.009505025,.011338638]，S−F=+.012052972 [.011278556,.012870387]；完整原始差值与所有seed/文件读数都保留。输入CI只给定这份cohort，不当seed总体/处理效应CI；R/S共享同一个trained seed1。
+- nativeTeacher能量归一的S平均teacher误差=.176265554、共同偏差=.162165321、学生间方差=.014100233；R teacher误差=.176401906。相近平均拟合不能声明函数等价。S三学生对Dolma KL=.008179565/.008318280/.008336895，teacher→学生=.042678496/.042465585/.042750894。
+- 最终cal maps的identity数为60/62；相对共享random初gate的top8保留=.221588/.222526/.224545。该保留率按原物理expert行计算，不能据此断言忽略初终全局置换后的分区重组，也不拿它代替主要终点cal对齐读数。
+- 实际总1312.509864 GPU秒：**2次新增训练+1次readout，共3成功作业**，无失败，seed1没有重新训练。完整durable archive位于`~/mechpop_cache/e142_shared_random_router`；清单`results/e142/archive_manifest.json`，大模型/HY与旧R/F/T只引用。
+- C09等级保持L1。共享这一份random起点降低本cohort的actual分量变异，尚不证明所有共享gate、S/T之间不同最终组织、严格同函数或普遍语义分工。用户要求暂停，后续方向与未执行用途讨论待人决定，不自动继续。

@@ -1,65 +1,54 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-26）：** 人明确要求持续推进 **MoE 专家分工的跨训练可重现性**；头线保持结项，ACTIVE分配不变。E130/C07=L2、E131/C08=L1完整；E135–141均已完成并独立审计，E139形成限定C09=L1；E140/141区分初始组织和贡献变异来源，E142检验共享随机起点。未成论文。**先读 [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md) 顶部当前校正。**
+**当前状态：按用户要求暂停新增实验，先整理供人消化（2026-10-26）。** 本轮训练、读数与独立审计已收齐，没有本项目GPU作业在运行，也没有后续实验队列。只有用户明确恢复后才继续新增研究实验。
 
-**当前问题：** 固定输入表示、下游与语言建模目标后，独立训练是否重复形成相同的专家组织与计算职责？路由边界不同不自动等于职责不同。
-- **解释校正：** 先前+.02 NLL是复现原dense的工程参考，不是开展跨训练研究的必要门槛。旧范围/数字保留；后续按共同任务和预算报告质量、功能与自身训练变化，不因未达该参考值自动延后核心测量。详见E124末尾校正。
-- **核心实验E130：** [固定预算专家可重现性](experiments/E130-fixed-budget-expert-reproducibility.md)：相同512M CE协议，5个初始化（seed0复用E128），另同初始化重跑/换顺序；新增6个run均已完成并归档。直接测U/A作用并与末期自身变化比较，全部结果保留，不以原+.02筛seed。
-- **参照数据已收齐：** seed0末期61440→62500的U/A条件对应均值.9988/.9503；初始seed0/1为.0156/.0042。均为固定探针参照，不能替代训练后跨seed比较；结果与原始数组已归档。
-- **完整E130/C07：** 5个init的NLL为2.558987–2.559467；10个跨init对cal-U映射held U=.0161–.0465、A=−.0107–.0068，自身末期U≈.9988/A=.9300–.9503、重跑1；N1残差T跨init=−.0014–.0721。全部17对及原始输入/曝光经独立审计，CI为held测量误差，不把共享pair当独立seed。[全图](results/e130/figures/functional_batch.png)。
-- **解释边界：** order1还改变.4041%曝光多重集合，不能称纯次序因果；两对模型KL约.017–.019、top1约94%，不称同函数。C07只陈述既定cal-U对应/指定N1读数，不意味着所有语义职责或对应不存在。
-- **E131已完成：** 同父4096、同1024个minibatch仅重排次序，再共同57380更新至62500；完整曝光/状态独立核对。它隔离这个父状态的历史后果，不设分数准入线。
-- **当前进展：** E131终点U/A=.043/.004，自身late≈.999/.953；完整共同57380更新已独立核对，形成单父C08=L1；早期具体指纹继续重组。E132五环使用损失均值U匹配+.011742、router+.009243、zero+.117107；E133计算输出匹配+.008227、支持加权+.011264。低指纹对应不能直接称不可重用，也不继续换权重追收益。
-- **E134完成：** 五受控模型仅保留逐输入专家均匀分量，ΔNLL=.0025–.0032；原生OLMoE L9为+.0640 [.0592,.0695]，仅保留偏差项则+.00629。两类模型的必要性不同，受控弱损伤不能推广原生分工任意；不是固定稀疏预算替代或“知识百分比”。[结果图](results/e134/figures/necessity.png)。
-- **E135–137完整：** 原生L9总函数学习：自由seed1 calU→A=.103、固定teacher gate seed1 identity A=.347；两者仍有teacher误差。E137在当前被选支持内也未完整恢复内容，并检出分量误差抵消，不能仅归因于支持外差异。
-- **E138完整：** 固定gate三学生（新增seed0/2＋复用E136 seed1）Dolma teacher误差/共同偏差/学生间方差分别.162563/.148548/.014015（按teacher输出能量归一）；组件方差.031209、FP64和方差.015947、cross=−.015262（同一vector²单位）。学生间KL=.00873–.00885、identity A=.485–.526；不同于严格同函数或唯一分工。POS42/51/52目标on=0，全列保留但不称独立内容证据。
-- **E139完整/C09=L1：** 同expert初值/总Y/4096预算，Dolma实际componentVar自由/固定=.072467/.031209（2.32倍），FP64sumVar=.017869/.015947（1.12倍）；额外分量变动大部由负cross抵消。全预测/A/实际CP审计通过，仍有函数/teacher误差差异，不称同函数任意分解。
-- **E140/E141完整：** native起点可训练时componentVar=.032818，固定=.031209，自由=.072467；路由相对原模型集合重叠约80%，持续冻结不是本例中稳定的唯一协议。贡献差既来自调用支持，也来自共同on向量差；全独立审计通过，非同函数/普遍语义职责结论。
-- **当前E142：** 仅补同一个random gate起点且可训练的组，复用E135 seed1、新增paired0/2并保留各自R初RNG。区分共享起点与该native起点，单random gate/共享pilot限制保留，不做拟合/匹配网格。
-- **本次读数（E122/C06，L1）：** L9路由/输出相似偏ρ约0.46，但路由距离与held替换ΔNLL偏ρ仅0.027 [−0.036,0.087]；不能只用路由代表职责。POS正确置换复核保留组织效应：L9 δ_D=.206 [.181,.228]。
-- **E122已完成：** 16层路由→替换ΔNLL偏ρ均在−.031–.027，95%词形CI均含0；[全层图](results/e122/routing_function_bridge.png)。
-- **E123历史32M终点：** L9置零/均值损伤.182/.114；随机MoE固定32M终点NLL=2.736（dense2.494），中途最低2.624也未恢复。保留完整失败曲线，不选最佳点，未启动跨种子网格。
-- **128M控制已完成：** [E125](experiments/E125-frozen-moe-data-coverage-control.md) small/cover MoE与cover dense NLL=3.265/2.574/2.591；覆盖改善−.691（95%文件CI[−.785,−.566]），仍未恢复原dense2.494。[E126](experiments/E126-equal-capacity-moe-granularity-control.md)同容量8×8192/top1为2.590，未提供恢复。这些128M平台控制本身不支持跨seed自由度结论。
-- **E128已完成：** 原CE512M终点NLL2.559310，距原dense+.065497（95%文件CI[.047944,.094528]），KL=.077889；5.345 GPU·时，实际窗口重复0.3013%，评估/归档与seed0末期两份功能采集均完成。[E129](experiments/E129-teacher-distribution-feasibility.md) 同128M教师目标NLL2.564、KL=.0706。核心E130已按同预算完成全体，不追加性能修复网格。
-- **校对备注：** E121旧置换p值撤回，E122已正确重算；R4未扣词形身份；swap9/drop的1.10–1.42是KL比，不是NLL比。详见[P15/P16](PAIN_LOG.md)、[独立证据审计](knowledge/research/MOE_EVIDENCE_AUDIT_2026-10-25.md)。
-- **定位：** 冻结骨干+插入MoE+多初始化已有LMC-MoE先例，增量须落在计算职责与跨训练证据。见[独立研究审计](knowledge/research/MOE_INDEPENDENT_AUDIT_2026-10-25.md)。
+历史注意力头线仍为CLOSED（10-11论文线终止、10-17修复线停止）；本次MoE整理不恢复头线、不改变正式ACTIVE分配。尚未进入论文候选或投稿。
 
-## 从这里读
-| 想知道 | 读 |
+## 阅读入口
+
+| 想知道什么 | 入口 |
 |---|---|
-| 接手当前方向：研究问题、已知事实、测量合同、下一步实验 | **[HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md)** |
-| 主问题、论文贡献尚缺什么、如何避免停在代理指标/平台修补 | [PAPER_SHAPE_MOE.md](PAPER_SHAPE_MOE.md)（问题形态，未成稿） |
-| 我们做过什么、发现了什么、为什么停 | [RESEARCH_HISTORY.md](RESEARCH_HISTORY.md)（历史总档） |
-| MoE 方向的讨论过程（已被交接文档吸收） | [ADVISOR_2026-10-23_MOE.md](knowledge/research/ADVISOR_2026-10-23_MOE.md)、[MOE_DISCUSSION_2026-10-23.md](knowledge/research/MOE_DISCUSSION_2026-10-23.md) |
-| 每条主张的证据等级与作废记录 | [CLAIMS.md](CLAIMS.md) |
-| 踩过的坑（代码、统计、公开模型数据完整性） | [PAIN_LOG.md](PAIN_LOG.md)、[knowledge/heritage/FAILURE_MODES.md](knowledge/heritage/FAILURE_MODES.md) |
-| 读过的论文 | [knowledge/PAPER_CATALOG.md](knowledge/PAPER_CATALOG.md) |
+| 先消化当前问题、全部主要结果、证据边界和未知 | **[MoE研究总览](MOE_RESEARCH_SUMMARY_2026-10-26.md)** |
+| E120–142每项做了什么、结果在哪里 | [MoE逐实验索引](experiments/INDEX_MOE_2026-10-26.md) |
+| 当前主张及作废/校正 | [CLAIMS.md](CLAIMS.md) |
+| checkpoint、raw、模型、数据与恢复入口 | [资产索引](results/ASSET_INDEX_MOE_2026-10-26.md) · [机器清单](results/asset_inventory_2026-10-26.json) |
+| 全工作台卡片、结果与脚本对应 | [研究inventory](results/research_inventory_2026-10-26.json) |
+| 含缓存的全部文件元数据/目录分布 | [目录说明](results/FILE_CATALOG_2026-10-26.md) · [逐文件清单压缩包](results/file_catalog_2026-10-26.json.gz) |
+| 论文形态仍缺什么、由人决定什么 | [论文形态卡](PAPER_SHAPE_MOE.md)（暂停，非稿件） |
+| 独立审读/文献定位 | [最终科学审读](knowledge/research/MOE_E130_SCIENTIFIC_REVIEW_2026-10-26.md) · [近邻定位](knowledge/research/MOE_POSITIONING_UPDATE_2026-10-26.md) |
+| 旧头线、四版论文与历史教训 | [RESEARCH_HISTORY.md](RESEARCH_HISTORY.md) |
+| 原始交接与过程快照 | [HANDOFF_MOE_2026-10-25.md](HANDOFF_MOE_2026-10-25.md)（历史，不是执行队列） |
+| 逐日过程 | [logs/2026-10-26.md](logs/2026-10-26.md) |
 
-## 目录
-- `experiments/`：实验卡 E01–E119、混杂审计 A01（原始记录，不改动）；10-23 起 MoE 方向：E120（测量工具合成验证）、E121（OLMoE 路由组织与专家差异）。
-- `results/`：全部结果（大文件只在本机）。
-- `scripts/`：全部代码。主要入口：
-  - `e46_train.py`：受控预训练；
-  - `e59_roles.py`：头角色图；
-  - `e89_labor.py`：多任务因果分工；
-  - `e93_lesion.py`：损伤 + 继续训练；
-  - `e105_unlearn.py`：参数子集遗忘；
-  - MoE 方向：`moe_measure.py`（测量工具库）、`e120_synth.py`、`e121_data.py`、`e121_olmoe.py`、`e121_analyze.py`。
-- `paper-acl-v0`–`v3/`：四版论文（PDF + LaTeX），均已被取代，v3 为最后一版。
-- `logs/`：每日记录。
-- `knowledge/`：论文卡、方法教训、概念工具、当前分析。
+## 当前已有的证据
 
-## 资产提醒
-- 本地缓存 `~/mechpop_cache`：头线的 Pythia 检查点与 Pile 分词数据已不存在；现有 `hf_olmoe/`（4 个 OLMoE 检查点，约 52 GB）、`e121/`（采集数组，约 21 GB）、`lingdata/`（UD EWT、SemCor）。
-- E123新资产准备：`~/mechpop_cache/hf_olmo_dense/main/`；下载脚本与固定版本见 `scripts/e123_prepare_assets.py`，小型manifest在 `results/e123/`。大权重、token文件、逐样本数组不进Git。
-- 覆盖池 `~/mechpop_cache/dolma_e125_512m/`（512M tokens，按`e125_prepare_data.py`重建）；E123失败终点归档`~/mechpop_cache/e123_seed0_32m/`。E128完成并归档`~/mechpop_cache/e128_seed0_512m/`，seed0功能参照在`~/mechpop_cache/e130_seed0_anchor_functions/`；E129固定终点归档`~/mechpop_cache/e129_teacher_KL_seed0_128m/`。本机NVMe原件均保留。
-- E128重放时可显式传`--initial-reference results/e128/initial_reference.json`；已完成run使用的E125原完整参考仍在本机保留。E130使用提交的initial_reference.json；所有在途训练源码、输入和资产均保持。
-- E128一次性后处理与seed0功能采集均complete：状态见`results/e128/finalization.json`及`results/e130/seed0_anchor_functions.json`。两张卡已释放，可用于原卡登记的初始功能参照。
-- E130每run的一次性后处理已完成：在原卡测固定终点KL及U/A（独立init另采61440自身参照），保存至`results/e130/{fidelity,functional,finalization}/`，大资产归档`~/mechpop_cache/e130_<id>_512m/`。E128旧后处理退出后，另用GPU2采seed0同协议功能；GPU被占则明确延后评分，不抢其他卡。全体终点与五个独立初始化的末期功能采集均complete，正式汇总在`results/e130/batch_summary.json`。
-- 旧的独立复现包与过程文档已于 10-23 删除，可从 Git 历史恢复（见 [RESEARCH_HISTORY.md §11](RESEARCH_HISTORY.md)）。
+主问题是固定表示、任务/函数要求后，专家的实际计算分解有多可重现，初始组织和训练历史能约束什么。
 
-- E135原生函数资产：fvcrc21 `/tmp/xiang-moe-20261025/e135_cache/`（约70GB BF16-bit H/Y）与`e135_student/`；可重建recipe在`~/mechpop_cache/e135_cache_recipe/`，固定模型/数据/keys/prepare脚本身份见`results/e135/cache_recipe_archive.json`与E135卡。H/Y不进git。
+- **C06=L1：** 路由几何与输出有关联，但不能直接代替held干预后果。
+- **C07=L2（限定设置）：** E130五初始化的指定U/A/N1对应弱，末期自身与精确重跑很稳定；不代表所有功能对应不存在。
+- **C08=L1：** E131单父状态的短暂纯次序干预，在共同57,380更新后仍有终点后果；不证明具体早期职责原样固化。
+- **C09=L1：** 固定原生L9总函数学习时，路由条件对实际分量和合成输出的可重现性影响不同。E139–142的完整结果与独立审计已收齐。
 
-- E136–138完整新资产：`~/mechpop_cache/e136_assignment_oracle/`、`e137_support_components/`、`e138_fixed_cohort/`；各自`results/e13{6,7,8}/archive_manifest.json`含SHA/来源。E138只新增seed0/2资产，不重复E136 seed1或70GB H/Y。
+Dolma同一held人口、同单位的最终方差：
 
-- E139–141耐久资产：`~/mechpop_cache/e139_matched_free_cohort/`、`e140_native_router_warmstart/`、`e141_support_partition/`，各`results/e###/archive_manifest.json`已seal并绑定实际审计/源/raw SHA。旧模型/HY仅引用。
+| 路由条件 | 各专家贡献方差之和 | 贡献求和后的方差 |
+|---|---:|---:|
+| R：各自随机，可训练 | 0.072467 | 0.017869 |
+| S：共同随机，可训练 | 0.043262 | 0.016037 |
+| T：共同原生，可训练 | 0.032818 | 0.015583 |
+| F：共同原生，固定 | 0.031209 | 0.015947 |
+
+此处求和用FP64统计参照；实际BF16前向地板另存原结果。每组是三个学生的有限cohort，R/S共享同一个已观察seed1，输入区间不是seed总体区间。各模型仍有函数误差，不称严格同函数多解、普遍语义职责或纯内容效应。
+
+[四组对照图](results/e142/figures/shared_random_vs_RTF.png) · [分量差的支持分账图](results/e141/figures/support_partition.png)。
+
+## 文件与资产保管
+
+科学源代码、预登记协议与原始结果保持可追溯；本次以索引和当前入口统一状态。大模型、checkpoint和raw数组不进git，具体路径见资产索引。
+
+- E130各run、E131分支/分析与E134–142主要结果有独立归档或恢复指针，不能把同名跨节点`/tmp`当同一文件。
+- E132约8.06GB bank资产、E133约1.36GB alignment资产已补持久备份，原NVMe源保留。
+- E135约71.7GB H/Y是有durable recipe与源依赖的可重建缓存，本次未重建；历史缺失资产如实标记。
+- `paper-acl-v0`–`v3/`为历史稿件；`experiments/`、`results/`、`scripts/`为原记录，`logs/`保留过程，不把旧稿或日志中的“下一步”当当前授权。
+
+原dense+0.02 NLL只是旧工程参考，不是科学准入线；所有seed与负结果保持，不据此自动筛选或阻断测量。新的R/S同一接收者专家互换只讨论过，未注册、未实现、未运行。后续问题由用户消化材料后决定，不自动执行。
