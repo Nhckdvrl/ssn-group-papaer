@@ -42,3 +42,5 @@
 - 三学生自然Dolma pair KL=.008730334/.008823162/.008845247，top1=.9594/.9591/.9589；identity A=.484816 [.379012,.570740] / .526466 [.404301,.604819] / .499266 [.315910,.622938]。POS42/51/52无target-on，原列全部保留、限制解释。
 - 主文件`results/e138/readout.json` complete/errors空；`results/e138/independent_audit.json`独立复算统计、CIs、全部实际CP/exposure/逐步LR输入通过，无GPU复跑forward。全部4096 step/batch/LR三个学生逐项相同，gate不变、expert初值不同。
 - 解释：teacher差主要是共同偏差，部分分量变异相互抵消；目前不是严格同函数自由度或唯一分工证明。C07/C08不变；按预定分支补匹配free cohort（E139），不追加恢复网格。
+
+- 全阶段实际1757.469719 GPU秒（0.488186 GPU时），三次无错误作业；66文件耐久归档`~/mechpop_cache/e138_fixed_cohort`，清单`results/e138/archive_manifest.json`，不重复E136 pilot权重/E135 H/Y。图`results/e138/figures/finite_cohort_components.png`与`predictor_A.png`；全部输入CI/人群单位/有限cohort限制已标明。

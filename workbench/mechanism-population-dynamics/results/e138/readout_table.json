@@ -1,0 +1,551 @@
+{
+  "cohort": "seed0, reused observed E136 seed1, seed2; pair/cluster intervals describe input uncertainty, not seed CI",
+  "experiment": "E138",
+  "natural_predictor_and_A": {
+    "Dolma_held_positions": {
+      "pairs": {
+        "seed0_to_seed1": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007301929300796632,
+              0.010036977919696254
+            ],
+            "point": 0.0087303337720003
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007346167654964858,
+              0.01012432136444312
+            ],
+            "point": 0.008791797007900021
+          },
+          "left_nll": {
+            "ci95": [
+              1.9839884919519848,
+              2.848755035736823
+            ],
+            "point": 2.4486626731199164
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.00040581859451717687,
+              0.0007462101104820086
+            ],
+            "point": 0.00015213927203688483
+          },
+          "right_nll": {
+            "ci95": [
+              1.984390663096768,
+              2.8494491720002193
+            ],
+            "point": 2.448814812393996
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9545849846620673,
+              0.9653140397556608
+            ],
+            "point": 0.9594154357910156
+          },
+          "weighting": "token mean, file clusters"
+        },
+        "seed0_to_seed2": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007372393036148239,
+              0.010210853623616943
+            ],
+            "point": 0.008823162024820069
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007303743627299072,
+              0.010155668732018258
+            ],
+            "point": 0.008753867541881039
+          },
+          "left_nll": {
+            "ci95": [
+              1.9839884919519848,
+              2.848755035736823
+            ],
+            "point": 2.4486626731199164
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0006646323746302271,
+              0.0005865138738706203
+            ],
+            "point": -4.940497240779845e-05
+          },
+          "right_nll": {
+            "ci95": [
+              1.9837969360285712,
+              2.8486966140632197
+            ],
+            "point": 2.44861326814467
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.954419606942739,
+              0.9647348294054865
+            ],
+            "point": 0.9591331481933594
+          },
+          "weighting": "token mean, file clusters"
+        },
+        "seed1_to_seed2": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007383559710042377,
+              0.01012989064462052
+            ],
+            "point": 0.008845246587003672
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007326904025185146,
+              0.010026336692614827
+            ],
+            "point": 0.008745209740849299
+          },
+          "left_nll": {
+            "ci95": [
+              1.984390663096768,
+              2.8494491720002193
+            ],
+            "point": 2.448814812393996
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0008998236014315327,
+              0.0004885006054370279
+            ],
+            "point": -0.00020154424503188433
+          },
+          "right_nll": {
+            "ci95": [
+              1.9837969360285712,
+              2.8486966140632197
+            ],
+            "point": 2.44861326814467
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9537416716235773,
+              0.9650081756797377
+            ],
+            "point": 0.9588966369628906
+          },
+          "weighting": "token mean, file clusters"
+        }
+      },
+      "precision": "BF16 whole logits then FP32 logsoftmax"
+    },
+    "POS_held_targets": {
+      "pairs": {
+        "seed0_to_seed1": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0055494184192391785,
+              0.01258554336039209
+            ],
+            "point": 0.008463626129894396
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005675034860878638,
+              0.01402822394886584
+            ],
+            "point": 0.008899417775022378
+          },
+          "left_nll": {
+            "ci95": [
+              1.8572295845050826,
+              2.306018700682501
+            ],
+            "point": 2.070506244452448
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.003554074161546962,
+              0.018276995977143388
+            ],
+            "point": 0.007832361056708382
+          },
+          "right_nll": {
+            "ci95": [
+              1.8614086620686787,
+              2.314252477017029
+            ],
+            "point": 2.078338605492099
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.935898648345799,
+              0.9706533008624
+            ],
+            "point": 0.9535532380201496
+          },
+          "weighting": "equal word means"
+        },
+        "seed0_to_seed2": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0055015032800103105,
+              0.008532039234601227
+            ],
+            "point": 0.006869213132886918
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.00549198628441249,
+              0.008119665150624478
+            ],
+            "point": 0.00670509715038034
+          },
+          "left_nll": {
+            "ci95": [
+              1.8572295845050826,
+              2.306018700682501
+            ],
+            "point": 2.070506244452448
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.009505361095999108,
+              0.013476123059852267
+            ],
+            "point": 0.0016544631900643255
+          },
+          "right_nll": {
+            "ci95": [
+              1.8549933732215098,
+              2.3093079872228404
+            ],
+            "point": 2.0721607076365425
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.944994627172936,
+              0.9765600522333058
+            ],
+            "point": 0.962097549781373
+          },
+          "weighting": "equal word means"
+        },
+        "seed1_to_seed2": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0057928567460462784,
+              0.014991995164102545
+            ],
+            "point": 0.009492485626110677
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005740521882344877,
+              0.012737346754302298
+            ],
+            "point": 0.008646826367098953
+          },
+          "left_nll": {
+            "ci95": [
+              1.8614086620686787,
+              2.314252477017029
+            ],
+            "point": 2.078338605492099
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.016216052518961473,
+              0.003424319687489876
+            ],
+            "point": -0.0061778979080077435
+          },
+          "right_nll": {
+            "ci95": [
+              1.8549933732215098,
+              2.3093079872228404
+            ],
+            "point": 2.0721607076365425
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9437502207929596,
+              0.9773292401532291
+            ],
+            "point": 0.9615057600351716
+          },
+          "weighting": "equal word means"
+        }
+      },
+      "precision": "BF16 backbone, true FP32 final vocabulary head"
+    },
+    "known_identity_A": {
+      "seed0_to_seed1": {
+        "ci95": [
+          0.37901197902521616,
+          0.5707396039039988
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.48481618488169653,
+        "scope": "Only A, imposed identity, original all64 row-centering/cal-word offsets. Zero-on columns may inherit common row mean; no independent content claim for uncovered columns. CI requires every draw finite and identical valid-coordinate set."
+      },
+      "seed0_to_seed2": {
+        "ci95": [
+          0.40430094716346643,
+          0.6048191081703408
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.5264663119949338,
+        "scope": "Only A, imposed identity, original all64 row-centering/cal-word offsets. Zero-on columns may inherit common row mean; no independent content claim for uncovered columns. CI requires every draw finite and identical valid-coordinate set."
+      },
+      "seed1_to_seed2": {
+        "ci95": [
+          0.31591006791319237,
+          0.622938244827172
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.499266457460193,
+        "scope": "Only A, imposed identity, original all64 row-centering/cal-word offsets. Zero-on columns may inherit common row mean; no independent content claim for uncovered columns. CI requires every draw finite and identical valid-coordinate set."
+      }
+    }
+  },
+  "populations": {
+    "Dolma_held_positions": {
+      "final": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.015449800398578413,
+            0.016365019548341256
+          ],
+          "defined_draws": 1000,
+          "point": 0.015947142856658672
+        },
+        "component_cohort_variance_per_position": {
+          "ci95": [
+            0.03049759227151483,
+            0.03189082179515929
+          ],
+          "defined_draws": 1000,
+          "point": 0.031208955513315872
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.015859641404689748,
+            -0.014598048336003049
+          ],
+          "defined_draws": 1000,
+          "point": -0.0152618126566572
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.015446828040796216,
+            0.016363550324987996
+          ],
+          "defined_draws": 1000,
+          "point": 0.015945794068024863
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.16323707482733804,
+            0.17376402520863019
+          ],
+          "defined_draws": 1000,
+          "point": 0.16900720931901947
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.17881442892625207,
+            0.1898127542003191
+          ],
+          "defined_draws": 1000,
+          "point": 0.18495300338704432
+        }
+      },
+      "initial": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.32687176922358374,
+            0.3531796946869957
+          ],
+          "defined_draws": 1000,
+          "point": 0.33978994671836305
+        },
+        "component_cohort_variance_per_position": {
+          "ci95": [
+            0.3269164717400161,
+            0.35321487252552974
+          ],
+          "defined_draws": 1000,
+          "point": 0.33982592898583774
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -7.489907727316033e-05,
+            6.099332884583621e-06
+          ],
+          "defined_draws": 1000,
+          "point": -3.5982267474699015e-05
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.32686321906794163,
+            0.35317072742338507
+          ],
+          "defined_draws": 1000,
+          "point": 0.3397812067572233
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.2189865297578724,
+            1.4095762883603098
+          ],
+          "defined_draws": 1000,
+          "point": 1.3095569972646164
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.5629534054522773,
+            1.744171227572233
+          ],
+          "defined_draws": 1000,
+          "point": 1.6493382040218396
+        }
+      }
+    },
+    "POS_held_targets": {
+      "final": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.01683107162184789,
+            0.01885970766931753
+          ],
+          "defined_draws": 1000,
+          "point": 0.01782381140091414
+        },
+        "component_cohort_variance_per_position": {
+          "ci95": [
+            0.03415063062966446,
+            0.04028032409069105
+          ],
+          "defined_draws": 1000,
+          "point": 0.03691341993786304
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.022059273042492146,
+            -0.016514827373528388
+          ],
+          "defined_draws": 1000,
+          "point": -0.0190896085369489
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.01683316931131352,
+            0.01886104968392307
+          ],
+          "defined_draws": 1000,
+          "point": 0.01782582031454777
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.19664436964006568,
+            0.22756296084665117
+          ],
+          "defined_draws": 1000,
+          "point": 0.21119349856146946
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.21365582012846876,
+            0.24628257253090732
+          ],
+          "defined_draws": 1000,
+          "point": 0.22901931887601723
+        }
+      },
+      "initial": {
+        "FP64_sum_cohort_variance_per_position": {
+          "ci95": [
+            0.34883190077210713,
+            0.3914569733893778
+          ],
+          "defined_draws": 1000,
+          "point": 0.37040521131557114
+        },
+        "component_cohort_variance_per_position": {
+          "ci95": [
+            0.34899494855350316,
+            0.392195119514789
+          ],
+          "defined_draws": 1000,
+          "point": 0.37068539314845417
+        },
+        "component_cross_covariance_per_position": {
+          "ci95": [
+            -0.000982707239737631,
+            0.0004238450741953011
+          ],
+          "defined_draws": 1000,
+          "point": -0.0002801818328830308
+        },
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.348821011080818,
+            0.39144109546312006
+          ],
+          "defined_draws": 1000,
+          "point": 0.37039255959133466
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.7401777624047013,
+            0.8238293533510396
+          ],
+          "defined_draws": 1000,
+          "point": 0.7815880015090428
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.0912522571381094,
+            1.2120430205657615
+          ],
+          "defined_draws": 1000,
+          "point": 1.1519805611003775
+        }
+      }
+    }
+  },
+  "scope": "E138 fixed-cohort joint components, final predictors and known-coordinate A.\n\nThree fixed students include the observed E136 seed1 pilot; intervals resample\ninputs, never seeds or their three nonindependent pairs. No U injections/maps.\n",
+  "source_independent_audit_sha256": "81ccdf0856629447f4b98e41bf9b8c5cde56e76bc8777ecf7fb79f480f14fe2a",
+  "source_readout_sha256": "d6c7de86c76f0fff2494de4fdd48b442aa757165b41bcddd26b0d0eef626cf98"
+}

@@ -168,3 +168,17 @@
 5. 最近邻距离：稀疏MoE的可识别性/恢复速率不是空白；本项目对象是确定性vector加权和，不能直接套条件密度可识别性。
 6. 阅读边界：仅核对主setup、假设与结果陈述，不认领已验证其全部扩展。
 7. 对本题：区分条件密度、加权均值与神经块函数；OLMoE no-renorm actual BF16程序与其统计模型不同，须明确映射而非引用标题作保证。
+
+## RRD: Routing-and-Residual Distillation for Efficient MoE Recovery in Large Language Models `[证据：作者实验室/主页及公开代码README；论文全文未核对]`
+
+- **核对时间：** 2026-10-26。作者实验室[出版页](https://mlai.yonsei.ac.kr/publications)实读，将此题名列为**ICML 2026 Workshop**；作者为 Hoyoon Byun, Kangjun Noh, SoMin Kim, Heedong Kim, Jaeyoon Shim, Sungjun Lim, Youngjun Choi, Kyungwoo Song。[Sungjun Lim主页](https://sungjun98.github.io/)另将 **RRD: Routing-and-Residual Distillation for Recovery after Dense-to-MoE Conversion** 列为Under-Review，未给可读新稿链接。具体版本/投稿修订日期未核对；**没有确认后续正式主会/期刊接收版**。搜索引擎出现的NeurIPS Downloads命中未能在其可读官方页核实，不当接收依据。
+- **读取边界：** 原[hash PDF](https://openreview.net/pdf/30dff17a034b9e0643e0845fb5265d98d06b447b.pdf)、[note PDF](https://openreview.net/pdf?id=liG5bLSb7m)、forum及api/api2在本机web/curl和另节点均403/浏览器校验。搜索缓存中的匿名摘要/日期不是全文实读。以下方法事实只归于已读的[作者公开代码README](https://github.com/MLAI-Yonsei/routing_and_residual_distillation)，不冒称论文公式/表格逐项核对；未复现实验。
+1. **形态：** dense→carved sparse MoE恢复方法；非本项目跨初始化职责研究的直接复刻判定。
+2. **痛点：** README目标为让稀疏学生恢复dense教师MLP行为；仅task监督不给明确路由目标。
+3. **前提：** 从dense参数拆出routed/shared专家，另用teacher侧信号指导router；不是随机同容量原生MoE学生的自然组织恢复。
+4. **idea来源（DOCUMENTED，代码说明）：** 把总输出恢复与专家选择监督结合，利用shared专家及teacher magnitude top-K profile。
+5. **已读方法：** 代码说明joint task CE、中间输出RMSE与router KL；routed top-K门控加always-active shared专家，并提供all-active MoE与dense MLP一致的sanity probe。KL方向/共享残差的实际公式尚未查源码，不能只凭README当论文精确定义。
+6. **证据范围：** README给Llama-2-7B/Qwen2.5-7B入口、C4/WikiText-2数据与PIQA/WinoGrande/ARC/HellaSwag评测命令；具体论文数字、随机种子数量、置信区间、所报性能提升和版本变动均未核对。已读primary未呈现跨seed实际component重现读数，但不能据此断言全文没有。
+7. **与E135–139距离：** E135固定原生public OLMoE自身H→Y、随机同容量单块学生，总函数监督无逐expert/router监督；E136/138精确提供并冻结原生teacher gate；E139配对expert初值比较free/fixed协议，以cal-only actual-component映射和held有限cohort偏差/变异/covariance及自然预测/A为对象。RRD的dense拆分初始化、shared恢复与路由KD是方法构造；我们的这些控制不是效率/恢复方法创新。
+8. **ownership/compression risk：** “总函数/任务监督不足以明确路由、teacher路由信息有助恢复”已有直接近邻，不能把E136/E139写成首次teacher-guided routing发现。中间MSE/函数恢复工具也不新。可保留的增量是固定原生函数目标、配对初始化下组织协议对跨训练实际计算分解的作用及teacher共同偏差与学生间变异分离；是否全文还有更近证据不确定。
+9. **动作：** 标为强相关待全文复核的定位项，**不是精确撞车、关线或新实验指令**；不推迟已登记E139，不增匹配/训练条件、不改claim状态。

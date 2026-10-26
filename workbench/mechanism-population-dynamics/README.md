@@ -57,3 +57,5 @@
 - 旧的独立复现包与过程文档已于 10-23 删除，可从 Git 历史恢复（见 [RESEARCH_HISTORY.md §11](RESEARCH_HISTORY.md)）。
 
 - E135原生函数资产：fvcrc21 `/tmp/xiang-moe-20261025/e135_cache/`（约70GB BF16-bit H/Y）与`e135_student/`；可重建recipe在`~/mechpop_cache/e135_cache_recipe/`，固定模型/数据/keys/prepare脚本身份见`results/e135/cache_recipe_archive.json`与E135卡。H/Y不进git。
+
+- E136–138完整新资产：`~/mechpop_cache/e136_assignment_oracle/`、`e137_support_components/`、`e138_fixed_cohort/`；各自`results/e13{6,7,8}/archive_manifest.json`含SHA/来源。E138只新增seed0/2资产，不重复E136 seed1或70GB H/Y。
