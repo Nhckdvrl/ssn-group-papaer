@@ -1,0 +1,108 @@
+{
+  "experiment": "E150",
+  "status": "complete",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e"
+  },
+  "input_plan_sha256": "7120393167dd55a77305664e985a89547b09f8c1ed2058715e7b54a4ffb7cdbe",
+  "asset_manifest_sha256": "1fcd4994577134cb83a73777d52e21f73c94c9ba52c6dc0cea2d4e2ea8bb4ead",
+  "source_order": [
+    "StdMoE_1b14b_1T",
+    "StdMoE_1b14b_1T_EmoAnnealed"
+  ],
+  "factor_order": [
+    "dense_backbone",
+    "all_routers",
+    "routed_experts",
+    "shared_experts"
+  ],
+  "factor_parameter_counts": {
+    "dense_backbone": 679544832,
+    "all_routers": 4194304,
+    "routed_experts": 12784238592,
+    "shared_experts": 100663296
+  },
+  "source_parameter_hashes": [
+    "b2c25adf81371253188b9c02f8ed371a15e45a05ead18104da9b3e0acb3ef91f",
+    "efd18fc624f5a153aeffb12c724028a613a5e4c6a42210b37ca6e0021e4f79c6"
+  ],
+  "source_buffer_hashes": [
+    "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+    "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47"
+  ],
+  "controls": {
+    "all_16_parameter_sources_tiny_checked": true,
+    "native_corners_exact_all_held": true,
+    "native_calibration_reload_exact": true,
+    "source_parameters_and_buffers_unchanged": true,
+    "NLL_reference_invariant": true
+  },
+  "raw": {
+    "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cube_metrics.npz",
+    "sha256": "83577a3343aa7366216029ab0b4a02a75f513d39e18c6a66d0b8b0e0cb3f1d83",
+    "size_bytes": 23911964
+  },
+  "physical_gpu": 0,
+  "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e",
+  "peak_allocated_bytes": 81857491968,
+  "software": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "deterministic": true
+  },
+  "restriction": {
+    "prefix_observed_tokens": 128,
+    "first_scored_target_id_index": 128,
+    "total_kept_slots": 32,
+    "coverage_fields": [
+      "selected_top7_fraction_kept",
+      "selected_top7_weight_fraction_kept",
+      "native_applied_top7_total_weight"
+    ],
+    "routed_kept": 31,
+    "shared_kept": 1,
+    "selector_sources": [
+      "A",
+      "B"
+    ],
+    "future_or_labels_used_for_selection": false,
+    "restricted_metric_reference": "The same assembled hybrid with all experts available",
+    "operator": "Mask omitted routed logits to -inf before native routed softmax; shared slot remains unmasked. Diagnostic, not a deployment memory method."
+  },
+  "scope": "Published protocol-package endpoints with a declared common parent; actual BF16 whole-model cast, no new training or independent-seed inference.",
+  "normalizer_observation": {
+    "experiment": "E150",
+    "status": "complete",
+    "execution_adapter_sha256": "d4887b09ab2e34b7bc4bebea6da8680cde9737c9bd43a7dfe89850e1f748f2d6",
+    "frozen_core_source_sha256": {
+      "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+      "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+      "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+      "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+      "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+      "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+      "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+      "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+      "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+      "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e"
+    },
+    "model_math_inputs_and_condition_set_unchanged": true,
+    "addition": "Read-only observation of full routed softmax retained probability / inverse; no additional model forwards.",
+    "raw": {
+      "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/normalizer_observations.npz",
+      "sha256": "12f1209ef42c8647ccd3584bc0388ba1d360d95b528d6d0e8cc9e8ce7f8413a7",
+      "size_bytes": 229605
+    }
+  }
+}
