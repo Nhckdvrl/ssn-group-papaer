@@ -30,7 +30,7 @@ SPEC = {"experiment": "E148", "revision": "step5000-tokens20B", "seq_len": 512, 
         "warmup_steps": 16, "grad_clip": 1., "aux_coef": .001, "layer": 9, "seed": 148,
         "optimizer": "HF_Adafactor_FP32_master", "beta1": None, "weight_decay": 0.,
         "relative_step": False, "scale_parameter": False, "held_sequences": 64, "eval_batch": 8,
-        "snapshots": [32, 160, 288, 608, 672], "full_snapshots": [32, 160, 672], "max_gpu_seconds": 10800}
+        "snapshots": [32, 160, 288, 608, 672], "full_snapshots": [32, 160, 672], "max_gpu_seconds": 14400}
 
 sha, read, write, emit = old.sha, old.read, old.write, old.emit
 
@@ -144,7 +144,7 @@ class Budget:
         self.check(); return self
     def check(self):
         used = self.update(lambda d: d["completed_seconds"]+sum(time.monotonic()-a["started_monotonic"] for a in d["active"].values()))
-        if used >= SPEC["max_gpu_seconds"]: raise TimeoutError("E148 total three-GPU-hour package exhausted")
+        if used >= SPEC["max_gpu_seconds"]: raise TimeoutError("E148 total four-GPU-hour package exhausted")
         return used
     def __exit__(self, kind, error, tb):
         elapsed = time.monotonic()-self.start
@@ -209,8 +209,8 @@ def train_step(model, optimizer, tokens, lr, *, microbatch=2, observe=False):
     for name, row in probes.items():
         p = dict(model.named_parameters())[name]
         before = row.pop("before")
-        row.update(master_delta_rms=float((p-before).square().mean().sqrt()),
-                   bf16_changed_fraction=float((p.bfloat16()!=before.bfloat16()).float().mean()))
+        row.update(master_delta_rms=float((p.detach()-before).square().mean().sqrt()),
+                   bf16_changed_fraction=float((p.detach().bfloat16()!=before.bfloat16()).float().mean()))
     return {"loss": float(metrics[0]), "ce": float(metrics[1]), "aux": float(metrics[2]), "grad_norm_before_clip": float(grad_norm), "probes": probes}
 
 

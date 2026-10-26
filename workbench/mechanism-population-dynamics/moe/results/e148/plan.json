@@ -33,11 +33,11 @@
       160,
       672
     ],
-    "max_gpu_seconds": 10800
+    "max_gpu_seconds": 14400
   },
-  "spec_hash": "4582b24aaae3038b4744c50a32dcaae4fa263a19a8d538507a2844d7bb9e0d89",
+  "spec_hash": "7d322de93702115274bcabc72bbe0157cf0c1029787277ddf461d2b294d7480a",
   "source_sha256": {
-    "e148_common.py": "f40fe9fc283eace3519fec1821c825711457ccbf07fc05d2021a3ef6405f6ef6",
+    "e148_common.py": "60ee7c2c6ebd8f4abe4ef91ac97304e9f6e43c63ac6764b92b436006d307d766",
     "e148_native.py": "0ee635de481bb9d1ee29dcc08c5514cad5bc18d81736387cd46e10d4aa5b2c52",
     "e148_readout.py": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
     "e148_test.py": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
@@ -3498,5 +3498,11 @@
   "new_held_available": 1421,
   "input_file_clusters": 20,
   "scope": "One native pretrained parent; only the order of 128 complete batches differs. A-repeat is not an independent seed. Held exclusion is relative to the specified old512, not a claim that no historical evaluation ever touched these windows.",
-  "implementation_revision_before_GPU": "all named buffers saved/restored; frozen input/spec unchanged"
+  "implementation_revision_before_GPU": "all named buffers saved/restored; frozen input/spec unchanged",
+  "resource_revision_before_held": {
+    "old_max_gpu_seconds": 10800,
+    "new_max_gpu_seconds": 14400,
+    "measured_core_training_estimate_seconds": 8393.438261608282,
+    "inputs_and_scientific_conditions_unchanged": true
+  }
 }

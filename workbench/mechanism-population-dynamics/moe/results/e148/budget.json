@@ -1,0 +1,21 @@
+{
+  "experiment": "E148",
+  "host": "fvcrc20",
+  "limit_gpu_seconds": 14400,
+  "completed_seconds": 51.22416654974222,
+  "active": {},
+  "attempts": [
+    {
+      "phase": "native_train_preflight",
+      "gpu_seconds": 51.22416654974222,
+      "status": "complete",
+      "error": null
+    }
+  ],
+  "resource_revision_before_parent": {
+    "old_limit_gpu_seconds": 10800,
+    "new_limit_gpu_seconds": 14400,
+    "reason": "Observed 4.30 seconds/update implies 2.33 GPU hours for fixed 1952 updates alone; preserve full checkpoint/readout and I/O margin, no change to scientific conditions.",
+    "before_new_held_readout": true
+  }
+}
