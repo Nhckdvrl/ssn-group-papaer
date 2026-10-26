@@ -383,5 +383,10 @@ def gpu_lock(physical):
         raise RuntimeError(f"GPU {physical} occupied: {rows}")
     if torch.cuda.is_initialized():
         raise RuntimeError("GPU initialized before lock/preflight")
-    os.environ["CUDA_VISIBLE_DEVICES"] = str(physical)
+    if os.environ.get("CUDA_VISIBLE_DEVICES") != str(physical):
+        raise RuntimeError("Set CUDA_VISIBLE_DEVICES before importing torch/transformers")
+    expected = subprocess.check_output(["nvidia-smi", "-i", str(physical), "--query-gpu=uuid", "--format=csv,noheader"], text=True).strip().removeprefix("GPU-")
+    actual = str(torch.cuda.get_device_properties(0).uuid).removeprefix("GPU-")
+    if actual != expected:
+        raise RuntimeError(f"Physical device UUID mismatch: {actual} != {expected}")
     return handle

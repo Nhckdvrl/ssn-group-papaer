@@ -11,9 +11,19 @@ from __future__ import annotations
 import argparse
 import gc
 import json
+import os
 import socket
 import time
 from pathlib import Path
+
+# Transformers can query CUDA availability during import. Pin visibility before
+# importing either library, not merely before the first tensor allocation.
+_early = argparse.ArgumentParser(add_help=False)
+_early.add_argument("--physical-gpu", type=int, default=0)
+_device_args, _unused_args = _early.parse_known_args()
+if os.environ.get("CUDA_VISIBLE_DEVICES") not in (None, "", str(_device_args.physical_gpu)):
+    raise ValueError("Requested physical GPU differs from process visibility")
+os.environ["CUDA_VISIBLE_DEVICES"] = str(_device_args.physical_gpu)
 
 import numpy as np
 import torch
@@ -346,9 +356,10 @@ def run(args):
         raise ValueError("Frozen held/source selection changed")
     result_root = c.WB / "results" / args.experiment
     ledger = result_root / "budget.json"
-    lock = c.gpu_lock(args.physical_gpu)
+    lock = None
     try:
         with c.Budget(ledger, args.experiment, args.mode) as budget:
+            lock = c.gpu_lock(args.physical_gpu)
             model, teacher, blocks = load(args, proof)
             start = time.monotonic()
             if args.mode == "preflight":
@@ -407,9 +418,11 @@ def run(args):
                 if digest != proof["sources"][name]["tensor_sha256"]:
                     raise RuntimeError(f"Source parameters mutated: {name}")
             result["read_only_source_checks"] = "passed"
+            result["visible_device_uuid"] = str(torch.cuda.get_device_properties(0).uuid)
             c.write(result_root / ("floors.json" if args.mode == "preflight" else "manifest.json"), result)
     finally:
-        lock.close()
+        if lock is not None:
+            lock.close()
     return {"status": result["status"], "experiment": args.experiment, "mode": args.mode}
 
 

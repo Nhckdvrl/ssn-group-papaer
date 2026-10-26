@@ -11,7 +11,7 @@
 | [The Router Already Knows](https://arxiv.org/html/2610.27421v1)，10-20 预印本，读 §1–3 与限制 | 原生 expert identity 帮助分量重构已有直接结果；不能认领专家身份有重构价值 | 其明确未检验下游损失/因果忠实度；E144直接重跑下游，且问跨学生拆散来源，不是 SAE 效率或语义解释 |
 | [MoRE](https://arxiv.org/abs/2609.18176)，只核对原摘要 | 跨层专家池复用属于成熟可用研究动作 | 不是不同训练来源的重组；仅作更大研究空间参照，不当最近的同主张先例 |
 
-本轮重读 [Routers Learn the Geometry](https://arxiv.org/html/2605.12476v1) §2–3 后发现接口适用限制：其掩码归一叙述不能直接用于 OLMoE 的完整 softmax 后截断/不重归一。具体梯度和 CPU 核对在[方向文档](../RESEARCH_DIRECTION.md) §4.1；这是推导适配，不是以论文差异认领新机制。
+本轮重读 [Routers Learn the Geometry](https://arxiv.org/html/2605.12476v1) §2–3 后发现接口适用限制：其掩码先于激活的叙述不能直接用于 OLMoE 的完整 softmax 后截断/不重归一。具体梯度和 CPU 核对在[方向文档](../RESEARCH_DIRECTION.md) §4.1；这是推导适配，不是以论文差异认领新机制。
 
 > **历史定位快照。** 用户经后续讨论已确认方向并授权整理与初步设计。本文保留原检索范围，当前母问题、补充近邻与 E144–E146 设计见 [研究说明](../RESEARCH_DIRECTION.md)；旧建议不自动构成运行队列。
 

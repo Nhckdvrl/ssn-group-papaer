@@ -122,7 +122,7 @@ $\ker B$ 是实际组件贡献未改变的方向；$\ker A/\ker B$ 才对应组�
 
 [NTK 原文](https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks.pdf) 提供固定核平方损失下的条件动力学参照。普通梯度流、固定 gate 时，专家更新包含 $q_e(h')K_e(h,h')$，总输出核包含 $\sum_e q_e(h)q_e(h')K_e(h,h')$。这使“共享输入组织”具体化；真实可学习 Top-8、SwiGLU 特征变化、辅助损失与 AdamW 尚未由该近似解释。
 
-**2026-10-26 接口校对（代数，非新动力学结果）：** 本模型是完整 softmax 后截断且不重归一。离开 Top-k 边界、忽略量化，令 $g=\partial L/\partial Y$，其 task router 梯度为 $\partial L/\partial z_j=p_j[\mathbf1_{j\in S}g^\top f_j-g^\top Y]$。未选行仍含 $-p_jg^\top Y$，不需要 aux 才产生该项；专家函数的 task 梯度仍仅在被选时出现。Top-k 内重新归一则不同。因此 [Routers Learn the Geometry §2–3](https://arxiv.org/html/2605.12476v1) 的掩码归一接口与“只累计被路由 token”解释不能未经适配直接搬到这里。已有共同初态事实不变，也未因此识别出其作用机制。[CPU 公式/actual tiny HF 梯度核对](results/e145/router_derivative_check.json)与[源码](scripts/e145_router_derivative_check.py)只验证这个接口边界。
+**2026-10-26 接口校对（代数，非新动力学结果）：** 本模型是完整 softmax 后截断且不重归一。离开 Top-k 边界、忽略量化，令 $g=\partial L/\partial Y$，其 task router 梯度为 $\partial L/\partial z_j=p_j[\mathbf1_{j\in S}g^\top f_j-g^\top Y]$。未选行仍含 $-p_jg^\top Y$，不需要 aux 才产生该项；专家函数的 task 梯度仍仅在被选时出现。Top-k 内重新归一则不同。因此 [Routers Learn the Geometry §2–3](https://arxiv.org/html/2605.12476v1) 的掩码先于激活的接口与“只累计被路由 token”解释不能未经适配直接搬到这里。已有共同初态事实不变，也未因此识别出其作用机制。[CPU 公式/actual tiny HF 梯度核对](results/e145/router_derivative_check.json)与[源码](scripts/e145_router_derivative_check.py)只验证这个接口边界。
 
 ### 4.2 同一 gate 下拆散来源：C−V 是精确平方误差差值
 
